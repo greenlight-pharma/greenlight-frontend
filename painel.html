@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Painel Médico - Telemed Brasil</title>
+
+  <style>
+
+    body{
+      font-family: Arial;
+      max-width: 1200px;
+      margin: 40px auto;
+      padding: 20px;
+      background: #f5f5f5;
+    }
+
+    h1{
+      color: #111;
+    }
+
+    .login-box{
+      max-width: 400px;
+      margin: 100px auto;
+      background: white;
+      padding: 25px;
+      border-radius: 12px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    }
+
+    .login-box input{
+      width: 100%;
+      padding: 12px;
+      margin-bottom: 12px;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+      box-sizing: border-box;
+    }
+
+    .top-bar{
+      display: flex;
+      gap: 10px;
+      margin-bottom: 20px;
+      flex-wrap: wrap;
+    }
+
+    input{
+      padding: 10px;
+      width: 300px;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+    }
+
+    button{
+      padding: 10px 15px;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      background: #111;
+      color: white;
+    }
+
+    .copy-btn{
+      background: #2563eb;
+      margin-top: 10px;
+    }
+
+    .logout-btn{
+      background: #991b1b;
+    }
+
+    .card{
+      background: white;
+      border-radius: 10px;
+      padding: 18px;
+      margin-bottom: 20px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    }
+
+    .risco-baixo{
+      border-left: 8px solid green;
+    }
+
+    .risco-moderado{
+      border-left: 8px solid orange;
+    }
+
+    .risco-alto{
+      border-left: 8px solid red;
+    }
+
+    .date{
+      color: #666;
+      font-size: 13px;
+      margin-bottom: 10px;
+    }
+
+    pre{
+      white-space: pre-wrap;
+      background: #fafafa;
+      padding: 12px;
+      border-radius: 8px;
+      line-height: 1.5;
+      overflow-x: auto;
+    }
+
+  </style>
+</head>
+
+<body>
+
+<div id="loginArea" class="login-box">
+
+  <h2>Login - Painel Médico</h2>
+
+  <input
+    type="text"
+    id="username"
+    placeholder="Usuário"
+  >
+
+  <input
+    type="password"
+    id="password"
+    placeholder="Senha"
+  >
+
+  <button onclick="login()">
+    Entrar
+  </button>
+
+  <p id="loginError" style="color:red;"></p>
+
+</div>
+
+<div id="panelArea" style="display:none;">
+
+  <h1>Painel Médico - Telemed Brasil</h1>
+
+  <div class="top-bar">
+
+    <button onclick="loadForms()">
+      Atualizar fichas
+    </button>
+
+    <input
+      type="text"
+      id="search"
+      placeholder="Buscar paciente..."
+    >
+
+    <button
+      class="logout-btn"
+      onclick="logout()"
+    >
+      Sair
+    </button>
+
+  </div>
+
+  <div id="forms"></div>
+
+</div>
+
+<script>
+
+const API_URL =
+  "https://greenlight-backend-production-35c8.up.railway.app";
+
+let allForms = [];
+
+const USER = "medico";
+const PASS = "1234";
+
+function login(){
+
+  const username =
+    document.getElementById("username").value;
+
+  const password =
+    document.getElementById("password").value;
+
+  if(username === USER && password === PASS){
+
+    localStorage.setItem("loggedIn", "true");
+
+    document.getElementById("loginArea")
+    .style.display = "none";
+
+    document.getElementById("panelArea")
+    .style.display = "block";
+
+    loadForms();
+
+  }else{
+
+    document.getElementById("loginError")
+    .innerText = "Usuário ou senha incorretos.";
+
+  }
+}
+
+function logout(){
+
+  localStorage.removeItem("loggedIn");
+
+  location.reload();
+}
+
+function checkLogin(){
+
+  if(localStorage.getItem("loggedIn") === "true"){
+
+    document.getElementById("loginArea")
+    .style.display = "none";
+
+    document.getElementById("panelArea")
+    .style.display = "block";
+
+    loadForms();
+  }
+}
+
+function getRiskClass(text){
+
+  const lower = text.toLowerCase();
+
+  if(
+    lower.includes("alto") ||
+    lower.includes("emergência") ||
+    lower.includes("pronto atendimento")
+  ){
+    return "risco-alto";
+  }
+
+  if(
+    lower.includes("moderado") ||
+    lower.includes("atenção")
+  ){
+    return "risco-moderado";
+  }
+
+  return "risco-baixo";
+}
+
+function copyText(text){
+
+  navigator.clipboard.writeText(text);
+
+  alert("Ficha copiada!");
+}
+
+function renderForms(forms){
+
+  const container =
+    document.getElementById("forms");
+
+  container.innerHTML = "";
+
+  if(forms.length === 0){
+
+    container.innerHTML =
+      "Nenhuma ficha encontrada.";
+
+    return;
+  }
+
+  forms.forEach(item => {
+
+    const riskClass =
+      getRiskClass(item.form);
+
+    container.innerHTML += `
+      <div class="card ${riskClass}">
+
+        <h3>Ficha Pré-Consulta</h3>
+
+        <div class="date">
+          Sessão: ${item.sessionId}<br>
+          Criado em: ${item.createdAt}
+        </div>
+
+        <pre>${item.form}</pre>
+
+        <button
+          class="copy-btn"
+          onclick='copyText(${JSON.stringify(item.form)})'
+        >
+          Copiar ficha
+        </button>
+
+      </div>
+    `;
+  });
+}
+
+async function loadForms(){
+
+  const container =
+    document.getElementById("forms");
+
+  container.innerHTML =
+    "Carregando fichas...";
+
+  try{
+
+    const response = await fetch(
+      `${API_URL}/medical-forms`
+    );
+
+    allForms = await response.json();
+
+    renderForms(allForms);
+
+  }catch(error){
+
+    container.innerHTML =
+      "Erro ao carregar fichas.";
+
+    console.error(error);
+  }
+}
+
+document
+.getElementById("search")
+.addEventListener("input", function(){
+
+  const term = this.value.toLowerCase();
+
+  const filtered = allForms.filter(item => {
+
+    return item.form
+      .toLowerCase()
+      .includes(term);
+
+  });
+
+  renderForms(filtered);
+
+});
+
+checkLogin();
+
+</script>
+
+</body>
+</html>

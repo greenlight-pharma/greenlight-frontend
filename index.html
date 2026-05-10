@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Telemed Brasil</title>
+
+  <style>
+
+    body{
+      font-family: Arial;
+      max-width: 700px;
+      margin: 40px auto;
+      padding: 20px;
+    }
+
+    #chat{
+      border: 1px solid #ccc;
+      height: 500px;
+      overflow-y: auto;
+      padding: 10px;
+      margin-bottom: 10px;
+      white-space: pre-wrap;
+    }
+
+    .user{
+      text-align: right;
+      margin: 10px;
+      color: blue;
+    }
+
+    .bot{
+      text-align: left;
+      margin: 10px;
+      color: green;
+    }
+
+    input{
+      width: 80%;
+      padding: 10px;
+    }
+
+    button{
+      padding: 10px;
+      margin-left: 5px;
+    }
+
+  </style>
+</head>
+
+<body>
+
+<h1>Telemed Brasil</h1>
+
+<div id="chat"></div>
+
+<input
+  type="text"
+  id="message"
+  placeholder="Digite sua mensagem"
+>
+
+<button id="sendButton">
+  Enviar
+</button>
+
+<button id="formButton">
+  Gerar ficha médica
+</button>
+
+<script>
+
+const API_URL =
+  "https://greenlight-backend-production-35c8.up.railway.app";
+
+const sessionId = "paciente-" + Date.now();
+
+document
+.getElementById("sendButton")
+.addEventListener("click", sendMessage);
+
+document
+.getElementById("formButton")
+.addEventListener("click", generateForm);
+
+document
+.getElementById("message")
+.addEventListener("keydown", function(event){
+
+  if(event.key === "Enter"){
+    sendMessage();
+  }
+
+});
+
+async function sendMessage(){
+
+  const input = document.getElementById("message");
+
+  const chat = document.getElementById("chat");
+
+  const text = input.value.trim();
+
+  if(!text) return;
+
+  chat.innerHTML += `
+    <div class="user">
+      <b>Você:</b> ${text}
+    </div>
+  `;
+
+  input.value = "";
+
+  try{
+
+    const response = await fetch(
+      `${API_URL}/chat`,
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+          message: text,
+          sessionId: sessionId
+        })
+      }
+    );
+
+    const data = await response.json();
+
+    chat.innerHTML += `
+      <div class="bot">
+        <b>Bot:</b> ${data.reply}
+      </div>
+    `;
+
+    chat.scrollTop = chat.scrollHeight;
+
+  }catch(error){
+
+    chat.innerHTML += `
+      <div class="bot">
+        <b>Erro:</b> Não consegui conectar ao servidor.
+      </div>
+    `;
+
+    console.error(error);
+  }
+}
+
+async function generateForm(){
+
+  const chat = document.getElementById("chat");
+
+  chat.innerHTML += `
+    <div class="bot">
+      <b>Sistema:</b> Gerando ficha médica...
+    </div>
+  `;
+
+  try{
+
+    const response = await fetch(
+      `${API_URL}/generate-form`,
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+          sessionId: sessionId
+        })
+      }
+    );
+
+    const data = await response.json();
+
+    chat.innerHTML += `
+      <div class="bot">
+        <b>Ficha médica:</b>
+        <pre>${data.form}</pre>
+      </div>
+    `;
+
+    chat.scrollTop = chat.scrollHeight;
+
+  }catch(error){
+
+    chat.innerHTML += `
+      <div class="bot">
+        <b>Erro:</b> Não consegui gerar a ficha.
+      </div>
+    `;
+
+    console.error(error);
+  }
+}
+
+</script>
+
+</body>
+</html>
