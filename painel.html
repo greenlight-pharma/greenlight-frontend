@@ -5,8 +5,7 @@
   <title>Painel Médico - Telemed Brasil</title>
 
   <style>
-
-    body{
+    body {
       font-family: Arial;
       max-width: 1200px;
       margin: 40px auto;
@@ -14,11 +13,11 @@
       background: #f5f5f5;
     }
 
-    h1{
+    h1, h2 {
       color: #111;
     }
 
-    .login-box{
+    .login-box {
       max-width: 400px;
       margin: 100px auto;
       background: white;
@@ -27,7 +26,7 @@
       box-shadow: 0 2px 10px rgba(0,0,0,0.1);
     }
 
-    .login-box input{
+    .login-box input {
       width: 100%;
       padding: 12px;
       margin-bottom: 12px;
@@ -36,39 +35,48 @@
       box-sizing: border-box;
     }
 
-    .top-bar{
+    .top-bar {
       display: flex;
       gap: 10px;
       margin-bottom: 20px;
       flex-wrap: wrap;
     }
 
-    input{
+    input {
       padding: 10px;
       width: 300px;
       border-radius: 6px;
       border: 1px solid #ccc;
     }
 
-    button{
+    button {
       padding: 10px 15px;
       border: none;
       border-radius: 6px;
       cursor: pointer;
       background: #111;
       color: white;
+      margin: 4px;
     }
 
-    .copy-btn{
+    .copy-btn {
       background: #2563eb;
       margin-top: 10px;
     }
 
-    .logout-btn{
+    .logout-btn {
       background: #991b1b;
     }
 
-    .card{
+    .done-btn {
+      background: #15803d;
+    }
+
+    .cancel-btn {
+      background: #b91c1c;
+    }
+
+    .card {
       background: white;
       border-radius: 10px;
       padding: 18px;
@@ -76,25 +84,25 @@
       box-shadow: 0 2px 8px rgba(0,0,0,0.08);
     }
 
-    .risco-baixo{
+    .risco-baixo {
       border-left: 8px solid green;
     }
 
-    .risco-moderado{
+    .risco-moderado {
       border-left: 8px solid orange;
     }
 
-    .risco-alto{
+    .risco-alto {
       border-left: 8px solid red;
     }
 
-    .date{
+    .date {
       color: #666;
       font-size: 13px;
       margin-bottom: 10px;
     }
 
-    pre{
+    pre {
       white-space: pre-wrap;
       background: #fafafa;
       padding: 12px;
@@ -103,33 +111,31 @@
       overflow-x: auto;
     }
 
+    .appointment-pendente {
+      border-left: 8px solid orange;
+    }
+
+    .appointment-confirmado {
+      border-left: 8px solid green;
+    }
+
+    .appointment-cancelado {
+      border-left: 8px solid red;
+    }
   </style>
 </head>
 
 <body>
 
 <div id="loginArea" class="login-box">
-
   <h2>Login - Painel Médico</h2>
 
-  <input
-    type="text"
-    id="username"
-    placeholder="Usuário"
-  >
+  <input type="text" id="username" placeholder="Usuário">
+  <input type="password" id="password" placeholder="Senha">
 
-  <input
-    type="password"
-    id="password"
-    placeholder="Senha"
-  >
-
-  <button onclick="login()">
-    Entrar
-  </button>
+  <button onclick="login()">Entrar</button>
 
   <p id="loginError" style="color:red;"></p>
-
 </div>
 
 <div id="panelArea" style="display:none;">
@@ -137,10 +143,8 @@
   <h1>Painel Médico - Telemed Brasil</h1>
 
   <div class="top-bar">
-
-    <button onclick="loadForms()">
-      Atualizar fichas
-    </button>
+    <button onclick="loadForms()">Atualizar fichas</button>
+    <button onclick="loadAppointments()">Atualizar agendamentos</button>
 
     <input
       type="text"
@@ -148,130 +152,98 @@
       placeholder="Buscar paciente..."
     >
 
-    <button
-      class="logout-btn"
-      onclick="logout()"
-    >
-      Sair
-    </button>
-
+    <button class="logout-btn" onclick="logout()">Sair</button>
   </div>
 
+  <h2>Agendamentos</h2>
+  <div id="appointments"></div>
+
+  <h2>Fichas pré-consulta</h2>
   <div id="forms"></div>
 
 </div>
 
 <script>
-
-const API_URL =
-  "https://greenlight-backend-production-35c8.up.railway.app";
+const API_URL = "https://greenlight-backend-production-35c8.up.railway.app";
 
 let allForms = [];
 
 const USER = "medico";
 const PASS = "1234";
 
-function login(){
+function login() {
+  const username = document.getElementById("username").value;
+  const password = document.getElementById("password").value;
 
-  const username =
-    document.getElementById("username").value;
-
-  const password =
-    document.getElementById("password").value;
-
-  if(username === USER && password === PASS){
-
+  if (username === USER && password === PASS) {
     localStorage.setItem("loggedIn", "true");
 
-    document.getElementById("loginArea")
-    .style.display = "none";
+    document.getElementById("loginArea").style.display = "none";
+    document.getElementById("panelArea").style.display = "block";
 
-    document.getElementById("panelArea")
-    .style.display = "block";
-
+    loadAppointments();
     loadForms();
-
-  }else{
-
-    document.getElementById("loginError")
-    .innerText = "Usuário ou senha incorretos.";
-
+  } else {
+    document.getElementById("loginError").innerText = "Usuário ou senha incorretos.";
   }
 }
 
-function logout(){
-
+function logout() {
   localStorage.removeItem("loggedIn");
-
   location.reload();
 }
 
-function checkLogin(){
+function checkLogin() {
+  if (localStorage.getItem("loggedIn") === "true") {
+    document.getElementById("loginArea").style.display = "none";
+    document.getElementById("panelArea").style.display = "block";
 
-  if(localStorage.getItem("loggedIn") === "true"){
-
-    document.getElementById("loginArea")
-    .style.display = "none";
-
-    document.getElementById("panelArea")
-    .style.display = "block";
-
+    loadAppointments();
     loadForms();
   }
 }
 
-function getRiskClass(text){
-
+function getRiskClass(text) {
   const lower = text.toLowerCase();
 
-  if(
+  if (
     lower.includes("alto") ||
     lower.includes("emergência") ||
     lower.includes("pronto atendimento")
-  ){
+  ) {
     return "risco-alto";
   }
 
-  if(
+  if (
     lower.includes("moderado") ||
     lower.includes("atenção")
-  ){
+  ) {
     return "risco-moderado";
   }
 
   return "risco-baixo";
 }
 
-function copyText(text){
-
+function copyText(text) {
   navigator.clipboard.writeText(text);
-
-  alert("Ficha copiada!");
+  alert("Copiado!");
 }
 
-function renderForms(forms){
-
-  const container =
-    document.getElementById("forms");
+function renderForms(forms) {
+  const container = document.getElementById("forms");
 
   container.innerHTML = "";
 
-  if(forms.length === 0){
-
-    container.innerHTML =
-      "Nenhuma ficha encontrada.";
-
+  if (forms.length === 0) {
+    container.innerHTML = "Nenhuma ficha encontrada.";
     return;
   }
 
   forms.forEach(item => {
-
-    const riskClass =
-      getRiskClass(item.form);
+    const riskClass = getRiskClass(item.form);
 
     container.innerHTML += `
       <div class="card ${riskClass}">
-
         <h3>Ficha Pré-Consulta</h3>
 
         <div class="date">
@@ -287,59 +259,108 @@ function renderForms(forms){
         >
           Copiar ficha
         </button>
-
       </div>
     `;
   });
 }
 
-async function loadForms(){
+async function loadForms() {
+  const container = document.getElementById("forms");
+  container.innerHTML = "Carregando fichas...";
 
-  const container =
-    document.getElementById("forms");
-
-  container.innerHTML =
-    "Carregando fichas...";
-
-  try{
-
-    const response = await fetch(
-      `${API_URL}/medical-forms`
-    );
-
+  try {
+    const response = await fetch(`${API_URL}/medical-forms`);
     allForms = await response.json();
-
     renderForms(allForms);
 
-  }catch(error){
-
-    container.innerHTML =
-      "Erro ao carregar fichas.";
-
+  } catch (error) {
+    container.innerHTML = "Erro ao carregar fichas.";
     console.error(error);
   }
 }
 
-document
-.getElementById("search")
-.addEventListener("input", function(){
+async function loadAppointments() {
+  const container = document.getElementById("appointments");
+  container.innerHTML = "Carregando agendamentos...";
 
+  try {
+    const response = await fetch(`${API_URL}/appointments`);
+    const appointments = await response.json();
+
+    container.innerHTML = "";
+
+    if (appointments.length === 0) {
+      container.innerHTML = "Nenhum agendamento encontrado.";
+      return;
+    }
+
+    appointments.forEach(item => {
+      container.innerHTML += `
+        <div class="card appointment-${item.status}">
+          <h3>${item.name}</h3>
+
+          <p><b>Telefone:</b> ${item.phone}</p>
+          <p><b>Motivo:</b> ${item.reason}</p>
+          <p><b>Melhor horário:</b> ${item.preferredTime}</p>
+          <p><b>Status:</b> ${item.status}</p>
+
+          <div class="date">
+            Criado em: ${item.createdAt}<br>
+            Sessão: ${item.sessionId}
+          </div>
+
+          <button
+            class="done-btn"
+            onclick="updateAppointmentStatus(${item.id}, 'confirmado')"
+          >
+            Marcar como confirmado
+          </button>
+
+          <button
+            class="cancel-btn"
+            onclick="updateAppointmentStatus(${item.id}, 'cancelado')"
+          >
+            Cancelar
+          </button>
+        </div>
+      `;
+    });
+
+  } catch (error) {
+    container.innerHTML = "Erro ao carregar agendamentos.";
+    console.error(error);
+  }
+}
+
+async function updateAppointmentStatus(id, status) {
+  try {
+    await fetch(`${API_URL}/appointments/${id}/status`, {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({ status })
+    });
+
+    loadAppointments();
+
+  } catch (error) {
+    alert("Erro ao atualizar agendamento.");
+    console.error(error);
+  }
+}
+
+document.getElementById("search").addEventListener("input", function() {
   const term = this.value.toLowerCase();
 
   const filtered = allForms.filter(item => {
-
-    return item.form
-      .toLowerCase()
-      .includes(term);
-
+    return item.form.toLowerCase().includes(term);
   });
 
   renderForms(filtered);
-
 });
 
 checkLogin();
-
 </script>
 
 </body>

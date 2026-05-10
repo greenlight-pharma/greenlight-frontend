@@ -5,15 +5,14 @@
   <title>Telemed Brasil</title>
 
   <style>
-
-    body{
+    body {
       font-family: Arial;
-      max-width: 700px;
+      max-width: 760px;
       margin: 40px auto;
       padding: 20px;
     }
 
-    #chat{
+    #chat {
       border: 1px solid #ccc;
       height: 500px;
       overflow-y: auto;
@@ -22,28 +21,45 @@
       white-space: pre-wrap;
     }
 
-    .user{
+    .user {
       text-align: right;
       margin: 10px;
       color: blue;
     }
 
-    .bot{
+    .bot {
       text-align: left;
       margin: 10px;
       color: green;
     }
 
-    input{
-      width: 80%;
+    input {
       padding: 10px;
+      margin-bottom: 8px;
     }
 
-    button{
-      padding: 10px;
-      margin-left: 5px;
+    #message {
+      width: 75%;
     }
 
+    button {
+      padding: 10px;
+      margin: 5px 0;
+      cursor: pointer;
+    }
+
+    .box {
+      margin-top: 25px;
+      padding: 15px;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      background: #fafafa;
+    }
+
+    .box input {
+      width: 95%;
+      display: block;
+    }
   </style>
 </head>
 
@@ -53,149 +69,142 @@
 
 <div id="chat"></div>
 
-<input
-  type="text"
-  id="message"
-  placeholder="Digite sua mensagem"
->
+<input type="text" id="message" placeholder="Digite sua mensagem">
 
-<button id="sendButton">
-  Enviar
-</button>
+<button id="sendButton">Enviar</button>
+<button id="formButton">Gerar ficha médica</button>
 
-<button id="formButton">
-  Gerar ficha médica
-</button>
+<div class="box">
+  <h3>Solicitar agendamento</h3>
+
+  <input id="name" placeholder="Nome completo">
+  <input id="phone" placeholder="Telefone / WhatsApp">
+  <input id="reason" placeholder="Motivo da consulta">
+  <input id="preferredTime" placeholder="Melhor dia/horário">
+
+  <button onclick="requestAppointment()">
+    Solicitar agendamento
+  </button>
+
+  <p id="appointmentStatus"></p>
+</div>
 
 <script>
-
-const API_URL =
-  "https://greenlight-backend-production-35c8.up.railway.app";
+const API_URL = "https://greenlight-backend-production-35c8.up.railway.app";
 
 const sessionId = "paciente-" + Date.now();
 
-document
-.getElementById("sendButton")
-.addEventListener("click", sendMessage);
+document.getElementById("sendButton").addEventListener("click", sendMessage);
+document.getElementById("formButton").addEventListener("click", generateForm);
 
-document
-.getElementById("formButton")
-.addEventListener("click", generateForm);
-
-document
-.getElementById("message")
-.addEventListener("keydown", function(event){
-
-  if(event.key === "Enter"){
+document.getElementById("message").addEventListener("keydown", function(event) {
+  if (event.key === "Enter") {
     sendMessage();
   }
-
 });
 
-async function sendMessage(){
-
+async function sendMessage() {
   const input = document.getElementById("message");
-
   const chat = document.getElementById("chat");
-
   const text = input.value.trim();
 
-  if(!text) return;
+  if (!text) return;
 
-  chat.innerHTML += `
-    <div class="user">
-      <b>Você:</b> ${text}
-    </div>
-  `;
-
+  chat.innerHTML += `<div class="user"><b>Você:</b> ${text}</div>`;
   input.value = "";
 
-  try{
-
-    const response = await fetch(
-      `${API_URL}/chat`,
-      {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json"
-        },
-        body: JSON.stringify({
-          message: text,
-          sessionId: sessionId
-        })
-      }
-    );
+  try {
+    const response = await fetch(`${API_URL}/chat`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        message: text,
+        sessionId: sessionId
+      })
+    });
 
     const data = await response.json();
 
-    chat.innerHTML += `
-      <div class="bot">
-        <b>Bot:</b> ${data.reply}
-      </div>
-    `;
-
+    chat.innerHTML += `<div class="bot"><b>Bot:</b> ${data.reply}</div>`;
     chat.scrollTop = chat.scrollHeight;
 
-  }catch(error){
-
-    chat.innerHTML += `
-      <div class="bot">
-        <b>Erro:</b> Não consegui conectar ao servidor.
-      </div>
-    `;
-
+  } catch (error) {
+    chat.innerHTML += `<div class="bot"><b>Erro:</b> Não consegui conectar ao servidor.</div>`;
     console.error(error);
   }
 }
 
-async function generateForm(){
-
+async function generateForm() {
   const chat = document.getElementById("chat");
 
-  chat.innerHTML += `
-    <div class="bot">
-      <b>Sistema:</b> Gerando ficha médica...
-    </div>
-  `;
+  chat.innerHTML += `<div class="bot"><b>Sistema:</b> Gerando ficha médica...</div>`;
 
-  try{
-
-    const response = await fetch(
-      `${API_URL}/generate-form`,
-      {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json"
-        },
-        body: JSON.stringify({
-          sessionId: sessionId
-        })
-      }
-    );
+  try {
+    const response = await fetch(`${API_URL}/generate-form`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        sessionId: sessionId
+      })
+    });
 
     const data = await response.json();
 
-    chat.innerHTML += `
-      <div class="bot">
-        <b>Ficha médica:</b>
-        <pre>${data.form}</pre>
-      </div>
-    `;
-
+    chat.innerHTML += `<div class="bot"><b>Ficha médica:</b><pre>${data.form}</pre></div>`;
     chat.scrollTop = chat.scrollHeight;
 
-  }catch(error){
-
-    chat.innerHTML += `
-      <div class="bot">
-        <b>Erro:</b> Não consegui gerar a ficha.
-      </div>
-    `;
-
+  } catch (error) {
+    chat.innerHTML += `<div class="bot"><b>Erro:</b> Não consegui gerar a ficha.</div>`;
     console.error(error);
   }
 }
 
+async function requestAppointment() {
+  const status = document.getElementById("appointmentStatus");
+
+  const payload = {
+    sessionId,
+    name: document.getElementById("name").value.trim(),
+    phone: document.getElementById("phone").value.trim(),
+    reason: document.getElementById("reason").value.trim(),
+    preferredTime: document.getElementById("preferredTime").value.trim()
+  };
+
+  if (!payload.name || !payload.phone || !payload.reason) {
+    status.innerText = "Preencha nome, telefone e motivo da consulta.";
+    status.style.color = "red";
+    return;
+  }
+
+  try {
+    const response = await fetch(`${API_URL}/appointments`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(payload)
+    });
+
+    const data = await response.json();
+
+    if (data.success) {
+      status.innerText = "Agendamento solicitado com sucesso. Nossa equipe entrará em contato.";
+      status.style.color = "green";
+    } else {
+      status.innerText = "Erro ao solicitar agendamento.";
+      status.style.color = "red";
+    }
+
+  } catch (error) {
+    status.innerText = "Erro ao conectar ao servidor.";
+    status.style.color = "red";
+    console.error(error);
+  }
+}
 </script>
 
 </body>
