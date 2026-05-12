@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Health OS - Administrador</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    body {
+      margin: 0;
+      background: #f3f5f7;
+      color: #1f2933;
+    }
+
+    header {
+      background: #0f766e;
+      color: white;
+      padding: 18px 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 22px;
+    }
+
+    header button {
+      background: white;
+      color: #0f766e;
+      border: none;
+      padding: 10px 14px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    main {
+      max-width: 1100px;
+      margin: 28px auto;
+      padding: 0 16px;
+    }
+
+    .card {
+      background: white;
+      border-radius: 14px;
+      padding: 22px;
+      margin-bottom: 22px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.06);
+    }
+
+    .card h2 {
+      margin-top: 0;
+      font-size: 20px;
+      color: #0f766e;
+    }
+
+    label {
+      display: block;
+      margin-top: 12px;
+      margin-bottom: 6px;
+      font-weight: bold;
+      font-size: 14px;
+    }
+
+    input,
+    select {
+      width: 100%;
+      padding: 12px;
+      border: 1px solid #cbd5e1;
+      border-radius: 8px;
+      font-size: 15px;
+    }
+
+    button.primary {
+      background: #0f766e;
+      color: white;
+      border: none;
+      padding: 12px 18px;
+      border-radius: 8px;
+      margin-top: 16px;
+      cursor: pointer;
+      font-weight: bold;
+      font-size: 15px;
+    }
+
+    button.primary:hover {
+      background: #115e59;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 22px;
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    .message {
+      margin-top: 14px;
+      padding: 12px;
+      border-radius: 8px;
+      font-size: 14px;
+      display: none;
+    }
+
+    .success {
+      display: block;
+      background: #dcfce7;
+      color: #166534;
+      border: 1px solid #86efac;
+    }
+
+    .error {
+      display: block;
+      background: #fee2e2;
+      color: #991b1b;
+      border: 1px solid #fecaca;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 14px;
+      font-size: 14px;
+    }
+
+    th,
+    td {
+      border-bottom: 1px solid #e5e7eb;
+      padding: 10px;
+      text-align: left;
+    }
+
+    th {
+      background: #f8fafc;
+      color: #334155;
+    }
+
+    .small {
+      font-size: 13px;
+      color: #64748b;
+    }
+
+    @media (max-width: 800px) {
+      .grid {
+        grid-template-columns: 1fr;
+      }
+
+      header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div>
+      <h1>Health OS - Painel Administrador</h1>
+      <div class="small" style="color: #e0f2f1;">Cadastrar médicos e vincular pacientes</div>
+    </div>
+    <button id="logoutBtn" class="hidden" onclick="logout()">Sair</button>
+  </header>
+
+  <main>
+    <section id="loginSection" class="card">
+      <h2>Login do Administrador</h2>
+
+      <label>Email do administrador</label>
+      <input id="adminEmail" type="email" value="admin@healthos.com" />
+
+      <label>Senha do administrador</label>
+      <input id="adminPassword" type="password" value="admin123" />
+
+      <button class="primary" onclick="adminLogin()">Entrar</button>
+
+      <div id="loginMessage" class="message"></div>
+    </section>
+
+    <section id="dashboardSection" class="hidden">
+      <div class="grid">
+        <div class="card">
+          <h2>Cadastrar Médico</h2>
+
+          <label>Nome do médico</label>
+          <input id="doctorName" type="text" placeholder="Ex: Dr João Silva" />
+
+          <label>Email do médico</label>
+          <input id="doctorEmail" type="email" placeholder="Ex: joao@clinica.com" />
+
+          <label>Senha inicial</label>
+          <input id="doctorPassword" type="password" placeholder="Ex: 123456" />
+
+          <button class="primary" onclick="createDoctor()">Cadastrar Médico</button>
+
+          <div id="doctorMessage" class="message"></div>
+        </div>
+
+        <div class="card">
+          <h2>Vincular Paciente ao Médico</h2>
+
+          <label>Selecione o médico</label>
+          <select id="doctorSelect">
+            <option value="">Carregando médicos...</option>
+          </select>
+
+          <label>Nome do paciente</label>
+          <input id="patientName" type="text" placeholder="Ex: Maria Souza" />
+
+          <label>Telefone do paciente com DDI e DDD</label>
+          <input id="patientPhone" type="text" placeholder="Ex: 5512999999999" />
+
+          <button class="primary" onclick="linkPatient()">Vincular Paciente</button>
+
+          <div id="patientMessage" class="message"></div>
+        </div>
+      </div>
+
+      <div class="card">
+        <h2>Médicos Cadastrados</h2>
+        <button class="primary" onclick="loadDoctors()">Atualizar Lista</button>
+
+        <table>
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Nome</th>
+              <th>Email</th>
+              <th>Perfil</th>
+              <th>Status</th>
+            </tr>
+          </thead>
+          <tbody id="doctorsTableBody">
+            <tr>
+              <td colspan="5">Nenhum médico carregado.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    const API_URL = "https://greenlight-backend-production-35c8.up.railway.app";
+
+    function getToken() {
+      return localStorage.getItem("adminToken");
+    }
+
+    function setMessage(elementId, type, text) {
+      const el = document.getElementById(elementId);
+      el.className = "message " + type;
+      el.innerText = text;
+    }
+
+    function clearMessage(elementId) {
+      const el = document.getElementById(elementId);
+      el.className = "message";
+      el.innerText = "";
+    }
+
+    function showDashboard() {
+      document.getElementById("loginSection").classList.add("hidden");
+      document.getElementById("dashboardSection").classList.remove("hidden");
+      document.getElementById("logoutBtn").classList.remove("hidden");
+      loadDoctors();
+    }
+
+    function showLogin() {
+      document.getElementById("loginSection").classList.remove("hidden");
+      document.getElementById("dashboardSection").classList.add("hidden");
+      document.getElementById("logoutBtn").classList.add("hidden");
+    }
+
+    async function adminLogin() {
+      clearMessage("loginMessage");
+
+      const email = document.getElementById("adminEmail").value.trim();
+      const password = document.getElementById("adminPassword").value.trim();
+
+      try {
+        const response = await fetch(`${API_URL}/admin/login`, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify({ email, password })
+        });
+
+        const data = await response.json();
+
+        if (!response.ok) {
+          throw new Error(data.error || "Erro no login");
+        }
+
+        localStorage.setItem("adminToken", data.token);
+        setMessage("loginMessage", "success", "Login realizado com sucesso.");
+        showDashboard();
+      } catch (error) {
+        setMessage("loginMessage", "error", error.message);
+      }
+    }
+
+    async function createDoctor() {
+      clearMessage("doctorMessage");
+
+      const token = getToken();
+      const name = document.getElementById("doctorName").value.trim();
+      const email = document.getElementById("doctorEmail").value.trim();
+      const password = document.getElementById("doctorPassword").value.trim();
+
+      if (!name || !email || !password) {
+        setMessage("doctorMessage", "error", "Preencha nome, email e senha.");
+        return;
+      }
+
+      try {
+        const response = await fetch(`${API_URL}/doctors`, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            "Authorization": `Bearer ${token}`
+          },
+          body: JSON.stringify({
+            name,
+            email,
+            password,
+            role: "doctor"
+          })
+        });
+
+        const data = await response.json();
+
+        if (!response.ok) {
+          throw new Error(data.error || "Erro ao cadastrar médico");
+        }
+
+        setMessage("doctorMessage", "success", `Médico cadastrado com sucesso. ID: ${data.doctorId}`);
+
+        document.getElementById("doctorName").value = "";
+        document.getElementById("doctorEmail").value = "";
+        document.getElementById("doctorPassword").value = "";
+
+        loadDoctors();
+      } catch (error) {
+        setMessage("doctorMessage", "error", error.message);
+      }
+    }
+
+    async function loadDoctors() {
+      const token = getToken();
+      const tableBody = document.getElementById("doctorsTableBody");
+      const doctorSelect = document.getElementById("doctorSelect");
+
+      tableBody.innerHTML = `
+        <tr>
+          <td colspan="5">Carregando...</td>
+        </tr>
+      `;
+
+      doctorSelect.innerHTML = `<option value="">Carregando médicos...</option>`;
+
+      try {
+        const response = await fetch(`${API_URL}/doctors`, {
+          method: "GET",
+          headers: {
+            "Authorization": `Bearer ${token}`
+          }
+        });
+
+        const doctors = await response.json();
+
+        if (!response.ok) {
+          throw new Error(doctors.error || "Erro ao carregar médicos");
+        }
+
+        if (!doctors.length) {
+          tableBody.innerHTML = `
+            <tr>
+              <td colspan="5">Nenhum médico cadastrado.</td>
+            </tr>
+          `;
+          doctorSelect.innerHTML = `<option value="">Nenhum médico cadastrado</option>`;
+          return;
+        }
+
+        tableBody.innerHTML = "";
+        doctorSelect.innerHTML = `<option value="">Selecione um médico</option>`;
+
+        doctors.forEach((doctor) => {
+          const tr = document.createElement("tr");
+          tr.innerHTML = `
+            <td>${doctor.id}</td>
+            <td>${doctor.name}</td>
+            <td>${doctor.email}</td>
+            <td>${doctor.role}</td>
+            <td>${doctor.status}</td>
+          `;
+          tableBody.appendChild(tr);
+
+          const option = document.createElement("option");
+          option.value = doctor.id;
+          option.textContent = `${doctor.name} - ${doctor.email}`;
+          doctorSelect.appendChild(option);
+        });
+      } catch (error) {
+        tableBody.innerHTML = `
+          <tr>
+            <td colspan="5">${error.message}</td>
+          </tr>
+        `;
+        doctorSelect.innerHTML = `<option value="">Erro ao carregar médicos</option>`;
+      }
+    }
+
+    async function linkPatient() {
+      clearMessage("patientMessage");
+
+      const token = getToken();
+      const doctorId = document.getElementById("doctorSelect").value;
+      const patientName = document.getElementById("patientName").value.trim();
+      const patientPhone = document.getElementById("patientPhone").value.trim();
+
+      if (!doctorId || !patientPhone) {
+        setMessage("patientMessage", "error", "Selecione o médico e informe o telefone do paciente.");
+        return;
+      }
+
+      try {
+        const response = await fetch(`${API_URL}/doctor-patients`, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            "Authorization": `Bearer ${token}`
+          },
+          body: JSON.stringify({
+            doctorId,
+            patientPhone,
+            patientName
+          })
+        });
+
+        const data = await response.json();
+
+        if (!response.ok) {
+          throw new Error(data.error || "Erro ao vincular paciente");
+        }
+
+        setMessage("patientMessage", "success", "Paciente vinculado ao médico com sucesso.");
+
+        document.getElementById("patientName").value = "";
+        document.getElementById("patientPhone").value = "";
+      } catch (error) {
+        setMessage("patientMessage", "error", error.message);
+      }
+    }
+
+    function logout() {
+      localStorage.removeItem("adminToken");
+      showLogin();
+    }
+
+    window.onload = function () {
+      if (getToken()) {
+        showDashboard();
+      } else {
+        showLogin();
+      }
+    };
+  </script>
+</body>
+</html>
