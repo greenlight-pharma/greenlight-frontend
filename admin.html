@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Health OS - Administrador</title>
+  <title>Vytal OS - Administrador</title>
 
   <style>
     * {
@@ -42,7 +42,7 @@
     }
 
     main {
-      max-width: 1100px;
+      max-width: 1200px;
       margin: 28px auto;
       padding: 0 16px;
     }
@@ -138,6 +138,7 @@
       border-bottom: 1px solid #e5e7eb;
       padding: 10px;
       text-align: left;
+      vertical-align: top;
     }
 
     th {
@@ -148,6 +149,12 @@
     .small {
       font-size: 13px;
       color: #64748b;
+    }
+
+    .danger-text {
+      color: #b91c1c;
+      font-size: 13px;
+      margin-top: 6px;
     }
 
     @media (max-width: 800px) {
@@ -166,8 +173,8 @@
 <body>
   <header>
     <div>
-      <h1>Health OS - Painel Administrador</h1>
-      <div class="small" style="color: #e0f2f1;">Cadastrar médicos e vincular pacientes</div>
+      <h1>Vytal OS - Painel Administrador</h1>
+      <div class="small" style="color: #e0f2f1;">Cadastrar médicos, vincular pacientes e configurar WhatsApp médico</div>
     </div>
     <button id="logoutBtn" class="hidden" onclick="logout()">Sair</button>
   </header>
@@ -197,6 +204,10 @@
 
           <label>Email do médico</label>
           <input id="doctorEmail" type="email" placeholder="Ex: joao@clinica.com" />
+
+          <label>Telefone WhatsApp do médico com DDI e DDD</label>
+          <input id="doctorPhone" type="text" placeholder="Ex: 5512999999999" />
+          <div class="small">Esse número receberá ofertas de consulta. Use apenas números, com 55 + DDD.</div>
 
           <label>Senha inicial</label>
           <input id="doctorPassword" type="password" placeholder="Ex: 123456" />
@@ -236,13 +247,14 @@
               <th>ID</th>
               <th>Nome</th>
               <th>Email</th>
+              <th>WhatsApp</th>
               <th>Perfil</th>
               <th>Status</th>
             </tr>
           </thead>
           <tbody id="doctorsTableBody">
             <tr>
-              <td colspan="5">Nenhum médico carregado.</td>
+              <td colspan="6">Nenhum médico carregado.</td>
             </tr>
           </tbody>
         </table>
@@ -255,6 +267,10 @@
 
     function getToken() {
       return localStorage.getItem("adminToken");
+    }
+
+    function onlyNumbers(value) {
+      return String(value || "").replace(/\D/g, "");
     }
 
     function setMessage(elementId, type, text) {
@@ -317,10 +333,16 @@
       const token = getToken();
       const name = document.getElementById("doctorName").value.trim();
       const email = document.getElementById("doctorEmail").value.trim();
+      const phone = onlyNumbers(document.getElementById("doctorPhone").value.trim());
       const password = document.getElementById("doctorPassword").value.trim();
 
       if (!name || !email || !password) {
         setMessage("doctorMessage", "error", "Preencha nome, email e senha.");
+        return;
+      }
+
+      if (!phone) {
+        setMessage("doctorMessage", "error", "Informe o WhatsApp do médico para ele receber ofertas de consulta.");
         return;
       }
 
@@ -334,6 +356,7 @@
           body: JSON.stringify({
             name,
             email,
+            phone,
             password,
             role: "doctor"
           })
@@ -349,6 +372,7 @@
 
         document.getElementById("doctorName").value = "";
         document.getElementById("doctorEmail").value = "";
+        document.getElementById("doctorPhone").value = "";
         document.getElementById("doctorPassword").value = "";
 
         loadDoctors();
@@ -364,7 +388,7 @@
 
       tableBody.innerHTML = `
         <tr>
-          <td colspan="5">Carregando...</td>
+          <td colspan="6">Carregando...</td>
         </tr>
       `;
 
@@ -387,7 +411,7 @@
         if (!doctors.length) {
           tableBody.innerHTML = `
             <tr>
-              <td colspan="5">Nenhum médico cadastrado.</td>
+              <td colspan="6">Nenhum médico cadastrado.</td>
             </tr>
           `;
           doctorSelect.innerHTML = `<option value="">Nenhum médico cadastrado</option>`;
@@ -403,6 +427,7 @@
             <td>${doctor.id}</td>
             <td>${doctor.name}</td>
             <td>${doctor.email}</td>
+            <td>${doctor.phone || "Não cadastrado"}</td>
             <td>${doctor.role}</td>
             <td>${doctor.status}</td>
           `;
@@ -410,13 +435,13 @@
 
           const option = document.createElement("option");
           option.value = doctor.id;
-          option.textContent = `${doctor.name} - ${doctor.email}`;
+          option.textContent = `${doctor.name} - ${doctor.email}${doctor.phone ? " - " + doctor.phone : ""}`;
           doctorSelect.appendChild(option);
         });
       } catch (error) {
         tableBody.innerHTML = `
           <tr>
-            <td colspan="5">${error.message}</td>
+            <td colspan="6">${error.message}</td>
           </tr>
         `;
         doctorSelect.innerHTML = `<option value="">Erro ao carregar médicos</option>`;
@@ -429,7 +454,7 @@
       const token = getToken();
       const doctorId = document.getElementById("doctorSelect").value;
       const patientName = document.getElementById("patientName").value.trim();
-      const patientPhone = document.getElementById("patientPhone").value.trim();
+      const patientPhone = onlyNumbers(document.getElementById("patientPhone").value.trim());
 
       if (!doctorId || !patientPhone) {
         setMessage("patientMessage", "error", "Selecione o médico e informe o telefone do paciente.");
