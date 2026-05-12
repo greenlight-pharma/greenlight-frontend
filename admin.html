@@ -42,7 +42,7 @@
     }
 
     main {
-      max-width: 1200px;
+      max-width: 1250px;
       margin: 28px auto;
       padding: 0 16px;
     }
@@ -151,10 +151,32 @@
       color: #64748b;
     }
 
-    .danger-text {
-      color: #b91c1c;
-      font-size: 13px;
-      margin-top: 6px;
+    .status-pill {
+      display: inline-block;
+      padding: 4px 8px;
+      border-radius: 999px;
+      font-size: 12px;
+      font-weight: bold;
+    }
+
+    .status-pendente {
+      background: #fef3c7;
+      color: #92400e;
+    }
+
+    .status-oferecida {
+      background: #dbeafe;
+      color: #1e40af;
+    }
+
+    .status-aceita {
+      background: #dcfce7;
+      color: #166534;
+    }
+
+    .status-cancelada {
+      background: #fee2e2;
+      color: #991b1b;
     }
 
     @media (max-width: 800px) {
@@ -174,7 +196,7 @@
   <header>
     <div>
       <h1>Vytal OS - Painel Administrador</h1>
-      <div class="small" style="color: #e0f2f1;">Cadastrar médicos, vincular pacientes e configurar WhatsApp médico</div>
+      <div class="small" style="color: #e0f2f1;">Cadastrar médicos, vincular pacientes e acompanhar agendamentos</div>
     </div>
     <button id="logoutBtn" class="hidden" onclick="logout()">Sair</button>
   </header>
@@ -238,6 +260,31 @@
       </div>
 
       <div class="card">
+        <h2>Agendamentos em Aberto</h2>
+        <div class="small">Mostra consultas pendentes ou oferecidas, ou seja, ainda sem médico confirmado.</div>
+        <button class="primary" onclick="loadOpenAppointments()">Atualizar Agendamentos</button>
+
+        <table>
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Paciente</th>
+              <th>Telefone</th>
+              <th>Motivo</th>
+              <th>Horário</th>
+              <th>Status</th>
+              <th>Médico Aceito</th>
+            </tr>
+          </thead>
+          <tbody id="appointmentsTableBody">
+            <tr>
+              <td colspan="7">Nenhum agendamento carregado.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="card">
         <h2>Médicos Cadastrados</h2>
         <button class="primary" onclick="loadDoctors()">Atualizar Lista</button>
 
@@ -285,11 +332,18 @@
       el.innerText = "";
     }
 
+    function statusBadge(status) {
+      const value = status || "pendente";
+      const css = `status-pill status-${value}`;
+      return `<span class="${css}">${value}</span>`;
+    }
+
     function showDashboard() {
       document.getElementById("loginSection").classList.add("hidden");
       document.getElementById("dashboardSection").classList.remove("hidden");
       document.getElementById("logoutBtn").classList.remove("hidden");
       loadDoctors();
+      loadOpenAppointments();
     }
 
     function showLogin() {
@@ -445,6 +499,63 @@
           </tr>
         `;
         doctorSelect.innerHTML = `<option value="">Erro ao carregar médicos</option>`;
+      }
+    }
+
+    async function loadOpenAppointments() {
+      const token = getToken();
+      const tableBody = document.getElementById("appointmentsTableBody");
+
+      tableBody.innerHTML = `
+        <tr>
+          <td colspan="7">Carregando...</td>
+        </tr>
+      `;
+
+      try {
+        const response = await fetch(`${API_URL}/admin/appointments/open`, {
+          method: "GET",
+          headers: {
+            "Authorization": `Bearer ${token}`
+          }
+        });
+
+        const appointments = await response.json();
+
+        if (!response.ok) {
+          throw new Error(appointments.error || "Erro ao carregar agendamentos");
+        }
+
+        if (!appointments.length) {
+          tableBody.innerHTML = `
+            <tr>
+              <td colspan="7">Nenhum agendamento em aberto.</td>
+            </tr>
+          `;
+          return;
+        }
+
+        tableBody.innerHTML = "";
+
+        appointments.forEach((appointment) => {
+          const tr = document.createElement("tr");
+          tr.innerHTML = `
+            <td>${appointment.id}</td>
+            <td>${appointment.name || "Sem nome"}</td>
+            <td>${appointment.phone || "-"}</td>
+            <td>${appointment.reason || "-"}</td>
+            <td>${appointment.appointmentDateTime || appointment.preferredTime || "-"}</td>
+            <td>${statusBadge(appointment.status)}</td>
+            <td>${appointment.acceptedDoctorName || "Ainda não aceito"}</td>
+          `;
+          tableBody.appendChild(tr);
+        });
+      } catch (error) {
+        tableBody.innerHTML = `
+          <tr>
+            <td colspan="7">${error.message}</td>
+          </tr>
+        `;
       }
     }
 
