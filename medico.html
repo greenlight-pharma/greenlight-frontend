@@ -274,11 +274,12 @@
               <th>Dose</th>
               <th>Horários</th>
               <th>Status</th>
+              <th>Ações</th>
             </tr>
           </thead>
           <tbody id="medicationsTableBody">
             <tr>
-              <td colspan="6">Nenhuma medicação carregada.</td>
+              <td colspan="7">Nenhuma medicação carregada.</td>
             </tr>
           </tbody>
         </table>
@@ -509,7 +510,7 @@
 
       tableBody.innerHTML = `
         <tr>
-          <td colspan="6">Carregando...</td>
+          <td colspan="7">Carregando...</td>
         </tr>
       `;
 
@@ -530,7 +531,7 @@
         if (!medications.length) {
           tableBody.innerHTML = `
             <tr>
-              <td colspan="6">Nenhuma medicação cadastrada.</td>
+              <td colspan="7">Nenhuma medicação cadastrada.</td>
             </tr>
           `;
           return;
@@ -547,13 +548,29 @@
             <td>${med.dose || "-"}</td>
             <td>${med.scheduleTimes}</td>
             <td>${med.status}</td>
+            <td>
+              <button
+                onclick="deleteMedication(${med.id})"
+                style="
+                  background:#dc2626;
+                  color:white;
+                  border:none;
+                  padding:8px 10px;
+                  border-radius:6px;
+                  cursor:pointer;
+                  font-weight:bold;
+                "
+              >
+                Apagar
+              </button>
+            </td>
           `;
           tableBody.appendChild(tr);
         });
       } catch (error) {
         tableBody.innerHTML = `
           <tr>
-            <td colspan="6">${error.message}</td>
+            <td colspan="7">${error.message}</td>
           </tr>
         `;
       }
@@ -563,6 +580,38 @@
       localStorage.removeItem("doctorToken");
       localStorage.removeItem("doctorData");
       showLogin();
+    }
+
+    async function deleteMedication(id) {
+      const confirmDelete = confirm(
+        "Deseja realmente apagar esta medicação?"
+      );
+
+      if (!confirmDelete) {
+        return;
+      }
+
+      try {
+        const token = getToken();
+
+        const response = await fetch(`${API_URL}/medications/${id}`, {
+          method: "DELETE",
+          headers: {
+            "Authorization": `Bearer ${token}`
+          }
+        });
+
+        const data = await response.json();
+
+        if (!response.ok) {
+          throw new Error(data.error || "Erro ao apagar medicação");
+        }
+
+        alert("Medicação apagada com sucesso.");
+        loadMedications();
+      } catch (error) {
+        alert(error.message);
+      }
     }
 
     window.onload = function () {
