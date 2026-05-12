@@ -44,9 +44,11 @@
 
     input {
       padding: 10px;
-      width: 300px;
+      width: 100%;
       border-radius: 6px;
       border: 1px solid #ccc;
+      box-sizing: border-box;
+      margin-bottom: 10px;
     }
 
     button {
@@ -115,10 +117,6 @@
       border-left: 8px solid green;
     }
 
-    .status-inativo {
-      border-left: 8px solid gray;
-    }
-
     .date {
       color: #666;
       font-size: 13px;
@@ -139,18 +137,13 @@
       grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
       gap: 15px;
     }
-
-    .mini {
-      font-size: 14px;
-      color: #333;
-    }
   </style>
 </head>
 
 <body>
 
 <div id="loginArea" class="login-box">
-  <h2>Login - Painel Health OS</h2>
+  <h2>Login - Health OS</h2>
 
   <input type="text" id="username" placeholder="Usuário">
   <input type="password" id="password" placeholder="Senha">
@@ -171,9 +164,64 @@
       type="text"
       id="search"
       placeholder="Buscar paciente, telefone, medicação..."
+      style="width:300px;"
     >
 
     <button class="logout-btn" onclick="logout()">Sair</button>
+  </div>
+
+  <div class="section">
+    <h2>Cadastrar medicação</h2>
+
+    <div class="card">
+
+      <div class="grid">
+
+        <div>
+          <input id="medPhone" placeholder="Telefone com DDI e DDD">
+        </div>
+
+        <div>
+          <input id="medPatientName" placeholder="Nome do paciente">
+        </div>
+
+        <div>
+          <input id="medicationName" placeholder="Nome da medicação">
+        </div>
+
+        <div>
+          <input id="medDose" placeholder="Dose prescrita">
+        </div>
+
+        <div>
+          <input id="medScheduleTimes" placeholder="Horários. Ex: 08:00,20:00">
+        </div>
+
+        <div>
+          <input id="medStartDate" placeholder="Data início. Ex: 2026-05-12">
+        </div>
+
+        <div>
+          <input id="medEndDate" placeholder="Data final (opcional)">
+        </div>
+
+        <div>
+          <input id="medInstructions" placeholder="Orientações">
+        </div>
+
+        <div>
+          <input id="medPrescribedBy" placeholder="Prescrito por">
+        </div>
+
+      </div>
+
+      <button onclick="createMedication()">
+        Cadastrar medicação
+      </button>
+
+      <p id="medicationCreateStatus"></p>
+
+    </div>
   </div>
 
   <div class="section">
@@ -204,6 +252,7 @@
 </div>
 
 <script>
+
 const API_URL = "https://greenlight-backend-production-35c8.up.railway.app";
 
 const USER = "medico";
@@ -216,18 +265,23 @@ let allMedicationLogs = [];
 let allDailyCheckins = [];
 
 function login() {
+
   const username = document.getElementById("username").value;
   const password = document.getElementById("password").value;
 
   if (username === USER && password === PASS) {
+
     localStorage.setItem("loggedIn", "true");
 
     document.getElementById("loginArea").style.display = "none";
     document.getElementById("panelArea").style.display = "block";
 
     loadAll();
+
   } else {
-    document.getElementById("loginError").innerText = "Usuário ou senha incorretos.";
+
+    document.getElementById("loginError").innerText =
+      "Usuário ou senha incorretos.";
   }
 }
 
@@ -237,21 +291,24 @@ function logout() {
 }
 
 function checkLogin() {
+
   if (localStorage.getItem("loggedIn") === "true") {
+
     document.getElementById("loginArea").style.display = "none";
     document.getElementById("panelArea").style.display = "block";
+
     loadAll();
   }
 }
 
 function getRiskClass(text) {
+
   const lower = String(text || "").toLowerCase();
 
   if (
     lower.includes("alto") ||
     lower.includes("emergência") ||
-    lower.includes("pronto atendimento") ||
-    lower.includes("sinal de alerta")
+    lower.includes("pronto atendimento")
   ) {
     return "risk-high";
   }
@@ -271,17 +328,108 @@ function copyText(text) {
   alert("Copiado!");
 }
 
-function filterByTerm(items, fields, term) {
-  if (!term) return items;
+async function createMedication() {
 
-  return items.filter(item => {
-    return fields.some(field => {
-      return String(item[field] || "").toLowerCase().includes(term);
+  const status = document.getElementById("medicationCreateStatus");
+
+  const payload = {
+
+    phone: document.getElementById("medPhone").value.trim(),
+
+    patientName:
+      document.getElementById("medPatientName").value.trim(),
+
+    medicationName:
+      document.getElementById("medicationName").value.trim(),
+
+    dose:
+      document.getElementById("medDose").value.trim(),
+
+    scheduleTimes:
+      document.getElementById("medScheduleTimes").value.trim(),
+
+    startDate:
+      document.getElementById("medStartDate").value.trim(),
+
+    endDate:
+      document.getElementById("medEndDate").value.trim(),
+
+    instructions:
+      document.getElementById("medInstructions").value.trim(),
+
+    prescribedBy:
+      document.getElementById("medPrescribedBy").value.trim()
+  };
+
+  if (
+    !payload.phone ||
+    !payload.medicationName ||
+    !payload.scheduleTimes
+  ) {
+
+    status.innerText =
+      "Preencha telefone, medicação e horários.";
+
+    status.style.color = "red";
+
+    return;
+  }
+
+  try {
+
+    const response = await fetch(`${API_URL}/medications`, {
+
+      method: "POST",
+
+      headers: {
+        "Content-Type": "application/json"
+      },
+
+      body: JSON.stringify(payload)
     });
-  });
+
+    const data = await response.json();
+
+    if (data.success) {
+
+      status.innerText =
+        "Medicação cadastrada com sucesso.";
+
+      status.style.color = "green";
+
+      document.getElementById("medPhone").value = "";
+      document.getElementById("medPatientName").value = "";
+      document.getElementById("medicationName").value = "";
+      document.getElementById("medDose").value = "";
+      document.getElementById("medScheduleTimes").value = "";
+      document.getElementById("medStartDate").value = "";
+      document.getElementById("medEndDate").value = "";
+      document.getElementById("medInstructions").value = "";
+      document.getElementById("medPrescribedBy").value = "";
+
+      loadMedications();
+
+    } else {
+
+      status.innerText =
+        data.error || "Erro ao cadastrar.";
+
+      status.style.color = "red";
+    }
+
+  } catch (error) {
+
+    status.innerText =
+      "Erro ao conectar.";
+
+    status.style.color = "red";
+
+    console.error(error);
+  }
 }
 
 async function loadAll() {
+
   await Promise.all([
     loadAppointments(),
     loadMedications(),
@@ -292,232 +440,291 @@ async function loadAll() {
 }
 
 async function loadAppointments() {
-  const container = document.getElementById("appointments");
-  container.innerHTML = "Carregando agendamentos...";
+
+  const container =
+    document.getElementById("appointments");
+
+  container.innerHTML =
+    "Carregando agendamentos...";
 
   try {
-    const response = await fetch(`${API_URL}/appointments`);
-    allAppointments = await response.json();
+
+    const response =
+      await fetch(`${API_URL}/appointments`);
+
+    allAppointments =
+      await response.json();
+
     renderAppointments(allAppointments);
+
   } catch (error) {
-    container.innerHTML = "Erro ao carregar agendamentos.";
+
+    container.innerHTML =
+      "Erro ao carregar agendamentos.";
+
     console.error(error);
   }
 }
 
 function renderAppointments(items) {
-  const container = document.getElementById("appointments");
+
+  const container =
+    document.getElementById("appointments");
+
   container.innerHTML = "";
 
-  if (items.length === 0) {
-    container.innerHTML = "Nenhum agendamento encontrado.";
-    return;
-  }
-
   items.forEach(item => {
+
     container.innerHTML += `
       <div class="card status-${item.status}">
+
         <h3>${item.name}</h3>
 
         <p><b>Telefone:</b> ${item.phone}</p>
+
         <p><b>Motivo:</b> ${item.reason}</p>
-        <p><b>Melhor horário:</b> ${item.preferredTime}</p>
+
         <p><b>Status:</b> ${item.status}</p>
 
         <div class="date">
-          Criado em: ${item.createdAt}<br>
-          Sessão: ${item.sessionId}
+          ${item.createdAt}
         </div>
 
-        <button class="done-btn" onclick="updateAppointmentStatus(${item.id}, 'confirmado')">
-          Confirmar
-        </button>
-
-        <button class="cancel-btn" onclick="updateAppointmentStatus(${item.id}, 'cancelado')">
-          Cancelar
-        </button>
       </div>
     `;
   });
 }
 
-async function updateAppointmentStatus(id, status) {
-  try {
-    await fetch(`${API_URL}/appointments/${id}/status`, {
-      method: "PATCH",
-      headers: {
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify({ status })
-    });
-
-    loadAppointments();
-  } catch (error) {
-    alert("Erro ao atualizar agendamento.");
-    console.error(error);
-  }
-}
-
 async function loadMedications() {
-  const container = document.getElementById("medications");
-  container.innerHTML = "Carregando medicações...";
+
+  const container =
+    document.getElementById("medications");
+
+  container.innerHTML =
+    "Carregando medicações...";
 
   try {
-    const response = await fetch(`${API_URL}/medications`);
-    allMedications = await response.json();
+
+    const response =
+      await fetch(`${API_URL}/medications`);
+
+    allMedications =
+      await response.json();
+
     renderMedications(allMedications);
+
   } catch (error) {
-    container.innerHTML = "Erro ao carregar medicações.";
+
+    container.innerHTML =
+      "Erro ao carregar medicações.";
+
     console.error(error);
   }
 }
 
 function renderMedications(items) {
-  const container = document.getElementById("medications");
+
+  const container =
+    document.getElementById("medications");
+
   container.innerHTML = "";
 
-  if (items.length === 0) {
-    container.innerHTML = "Nenhuma medicação cadastrada.";
-    return;
-  }
-
   items.forEach(item => {
+
     container.innerHTML += `
       <div class="card status-${item.status}">
+
         <h3>${item.medicationName}</h3>
 
-        <p><b>Paciente:</b> ${item.patientName || "Não informado"}</p>
-        <p><b>Telefone:</b> ${item.phone}</p>
-        <p><b>Dose:</b> ${item.dose || "Não informado"}</p>
-        <p><b>Horários:</b> ${item.scheduleTimes}</p>
-        <p><b>Início:</b> ${item.startDate || "Não informado"}</p>
-        <p><b>Fim:</b> ${item.endDate || "Não informado"}</p>
-        <p><b>Status:</b> ${item.status}</p>
-        <p><b>Instruções:</b> ${item.instructions || "Nenhuma"}</p>
-        <p><b>Prescrito por:</b> ${item.prescribedBy || "Não informado"}</p>
+        <p><b>Paciente:</b>
+        ${item.patientName || "Não informado"}</p>
+
+        <p><b>Telefone:</b>
+        ${item.phone}</p>
+
+        <p><b>Dose:</b>
+        ${item.dose || "Não informado"}</p>
+
+        <p><b>Horários:</b>
+        ${item.scheduleTimes}</p>
+
+        <p><b>Início:</b>
+        ${item.startDate || "Não informado"}</p>
+
+        <p><b>Fim:</b>
+        ${item.endDate || "Não informado"}</p>
+
+        <p><b>Prescrito por:</b>
+        ${item.prescribedBy || "Não informado"}</p>
 
         <div class="date">
-          Criado em: ${item.createdAt}
+          ${item.createdAt}
         </div>
+
       </div>
     `;
   });
 }
 
 async function loadMedicationLogs() {
-  const container = document.getElementById("medicationLogs");
-  container.innerHTML = "Carregando respostas...";
+
+  const container =
+    document.getElementById("medicationLogs");
+
+  container.innerHTML =
+    "Carregando respostas...";
 
   try {
-    const response = await fetch(`${API_URL}/medication-logs`);
-    allMedicationLogs = await response.json();
+
+    const response =
+      await fetch(`${API_URL}/medication-logs`);
+
+    allMedicationLogs =
+      await response.json();
+
     renderMedicationLogs(allMedicationLogs);
+
   } catch (error) {
-    container.innerHTML = "Erro ao carregar respostas.";
+
+    container.innerHTML =
+      "Erro ao carregar logs.";
+
     console.error(error);
   }
 }
 
 function renderMedicationLogs(items) {
-  const container = document.getElementById("medicationLogs");
+
+  const container =
+    document.getElementById("medicationLogs");
+
   container.innerHTML = "";
 
-  if (items.length === 0) {
-    container.innerHTML = "Nenhuma resposta registrada.";
-    return;
-  }
-
   items.forEach(item => {
+
     container.innerHTML += `
       <div class="card">
+
         <h3>${item.action}</h3>
 
-        <p><b>Telefone:</b> ${item.phone}</p>
-        <p><b>Medicação ID:</b> ${item.medicationId}</p>
-        <p><b>Horário:</b> ${item.scheduledTime || "Não informado"}</p>
-        <p><b>Resposta do paciente:</b> ${item.patientResponse || "Sem resposta"}</p>
+        <p><b>Telefone:</b>
+        ${item.phone}</p>
+
+        <p><b>Resposta:</b>
+        ${item.patientResponse || "Sem resposta"}</p>
 
         <div class="date">
-          Criado em: ${item.createdAt}
+          ${item.createdAt}
         </div>
+
       </div>
     `;
   });
 }
 
 async function loadDailyCheckins() {
-  const container = document.getElementById("dailyCheckins");
-  container.innerHTML = "Carregando check-ins...";
+
+  const container =
+    document.getElementById("dailyCheckins");
+
+  container.innerHTML =
+    "Carregando check-ins...";
 
   try {
-    const response = await fetch(`${API_URL}/daily-checkins`);
-    allDailyCheckins = await response.json();
+
+    const response =
+      await fetch(`${API_URL}/daily-checkins`);
+
+    allDailyCheckins =
+      await response.json();
+
     renderDailyCheckins(allDailyCheckins);
+
   } catch (error) {
-    container.innerHTML = "Erro ao carregar check-ins.";
+
+    container.innerHTML =
+      "Erro ao carregar check-ins.";
+
     console.error(error);
   }
 }
 
 function renderDailyCheckins(items) {
-  const container = document.getElementById("dailyCheckins");
+
+  const container =
+    document.getElementById("dailyCheckins");
+
   container.innerHTML = "";
 
-  if (items.length === 0) {
-    container.innerHTML = "Nenhum check-in registrado.";
-    return;
-  }
-
   items.forEach(item => {
+
     container.innerHTML += `
       <div class="card">
+
         <h3>Check-in diário</h3>
 
-        <p><b>Telefone:</b> ${item.phone}</p>
+        <p><b>Telefone:</b>
+        ${item.phone}</p>
 
-        <pre>${item.symptoms || item.observations || "Sem detalhes"}</pre>
+        <pre>
+${item.symptoms || item.observations || ""}
+        </pre>
 
         <div class="date">
-          Criado em: ${item.createdAt}
+          ${item.createdAt}
         </div>
+
       </div>
     `;
   });
 }
 
 async function loadForms() {
-  const container = document.getElementById("forms");
-  container.innerHTML = "Carregando fichas...";
+
+  const container =
+    document.getElementById("forms");
+
+  container.innerHTML =
+    "Carregando fichas...";
 
   try {
-    const response = await fetch(`${API_URL}/medical-forms`);
-    allForms = await response.json();
+
+    const response =
+      await fetch(`${API_URL}/medical-forms`);
+
+    allForms =
+      await response.json();
+
     renderForms(allForms);
+
   } catch (error) {
-    container.innerHTML = "Erro ao carregar fichas.";
+
+    container.innerHTML =
+      "Erro ao carregar fichas.";
+
     console.error(error);
   }
 }
 
 function renderForms(items) {
-  const container = document.getElementById("forms");
+
+  const container =
+    document.getElementById("forms");
+
   container.innerHTML = "";
 
-  if (items.length === 0) {
-    container.innerHTML = "Nenhuma ficha encontrada.";
-    return;
-  }
-
   items.forEach(item => {
-    const riskClass = getRiskClass(item.form);
+
+    const riskClass =
+      getRiskClass(item.form);
 
     container.innerHTML += `
       <div class="card ${riskClass}">
+
         <h3>Ficha Pré-Consulta</h3>
 
         <div class="date">
-          Sessão: ${item.sessionId}<br>
-          Criado em: ${item.createdAt}
+          ${item.createdAt}
         </div>
 
         <pre>${item.form}</pre>
@@ -528,36 +735,14 @@ function renderForms(items) {
         >
           Copiar ficha
         </button>
+
       </div>
     `;
   });
 }
 
-document.getElementById("search").addEventListener("input", function() {
-  const term = this.value.toLowerCase();
-
-  renderAppointments(
-    filterByTerm(allAppointments, ["name", "phone", "reason", "status"], term)
-  );
-
-  renderMedications(
-    filterByTerm(allMedications, ["patientName", "phone", "medicationName", "dose", "status"], term)
-  );
-
-  renderMedicationLogs(
-    filterByTerm(allMedicationLogs, ["phone", "action", "patientResponse"], term)
-  );
-
-  renderDailyCheckins(
-    filterByTerm(allDailyCheckins, ["phone", "symptoms", "observations"], term)
-  );
-
-  renderForms(
-    allForms.filter(item => String(item.form || "").toLowerCase().includes(term))
-  );
-});
-
 checkLogin();
+
 </script>
 
 </body>
