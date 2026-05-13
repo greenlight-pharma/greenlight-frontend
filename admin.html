@@ -94,6 +94,37 @@
       background: #115e59;
     }
 
+    /* Botões de ação dentro de tabelas — menores e contextuais.
+       btn-danger: vermelho moderado, para "Cancelar"/"Desativar".
+       btn-secondary: cinza claro, para "Reativar" e ações reversíveis. */
+    .btn-danger, .btn-secondary {
+      border: none;
+      padding: 6px 12px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-weight: 600;
+      font-size: 13px;
+      margin: 0;
+    }
+
+    .btn-danger {
+      background: #fee2e2;
+      color: #991b1b;
+    }
+
+    .btn-danger:hover {
+      background: #fecaca;
+    }
+
+    .btn-secondary {
+      background: #e5e7eb;
+      color: #374151;
+    }
+
+    .btn-secondary:hover {
+      background: #d1d5db;
+    }
+
     .grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -279,11 +310,12 @@
               <th>Horário</th>
               <th>Status</th>
               <th>Médico Aceito</th>
+              <th>Ações</th>
             </tr>
           </thead>
           <tbody id="appointmentsTableBody">
             <tr>
-              <td colspan="7">Nenhum agendamento carregado.</td>
+              <td colspan="8">Nenhum agendamento carregado.</td>
             </tr>
           </tbody>
         </table>
@@ -305,11 +337,12 @@
               <th>Status</th>
               <th>Médico</th>
               <th>Aceito em</th>
+              <th>Ações</th>
             </tr>
           </thead>
           <tbody id="historyTableBody">
             <tr>
-              <td colspan="8">Nenhum histórico carregado.</td>
+              <td colspan="9">Nenhum histórico carregado.</td>
             </tr>
           </tbody>
         </table>
@@ -328,11 +361,12 @@
               <th>WhatsApp</th>
               <th>Perfil</th>
               <th>Status</th>
+              <th>Ações</th>
             </tr>
           </thead>
           <tbody id="doctorsTableBody">
             <tr>
-              <td colspan="6">Nenhum médico carregado.</td>
+              <td colspan="7">Nenhum médico carregado.</td>
             </tr>
           </tbody>
         </table>
@@ -403,6 +437,104 @@
       const value = status || "pendente";
       const css = `status-pill status-${value}`;
       return `<span class="${css}">${value}</span>`;
+    }
+
+    // ============================================================
+    // BOTÕES DE AÇÃO (cancelar agendamento, ativar/desativar médico)
+    // ============================================================
+
+    // Botão "Cancelar" para uma linha de agendamento. Usa addEventListener
+    // (não inline onclick) pra ficar consistente com o padrão anti-XSS.
+    function makeCancelAppointmentBtn(appointment) {
+      const btn = document.createElement("button");
+      btn.textContent = "Cancelar";
+      btn.className = "btn-danger";
+      btn.addEventListener("click", () => cancelAppointment(appointment));
+      return btn;
+    }
+
+    // Botão "Desativar" / "Reativar" para médico. Muda conforme status atual.
+    function makeDoctorToggleBtn(doctor) {
+      const btn = document.createElement("button");
+      if (doctor.status === "inactive") {
+        btn.textContent = "Reativar";
+        btn.className = "btn-secondary";
+      } else {
+        btn.textContent = "Desativar";
+        btn.className = "btn-danger";
+      }
+      btn.addEventListener("click", () => toggleDoctorStatus(doctor));
+      return btn;
+    }
+
+    // Cancela um agendamento. Confirma com o usuário, chama o endpoint,
+    // e recarrega as duas tabelas (em aberto + histórico) pra refletir a mudança.
+    async function cancelAppointment(appointment) {
+      const patientLabel = appointment.name || `ID ${appointment.id}`;
+      const ok = window.confirm(
+        `Cancelar o agendamento de "${patientLabel}"?\n\n` +
+        `Esta ação:\n` +
+        `• marca o agendamento como cancelado\n` +
+        `• preserva o registro no histórico\n` +
+        `• não pode ser desfeita pela interface`
+      );
+      if (!ok) return;
+
+      try {
+        const response = await fetch(
+          `${API_URL}/admin/appointments/${appointment.id}/cancel`,
+          {
+            method: "PATCH",
+            headers: { "Authorization": `Bearer ${getToken()}` },
+          }
+        );
+        const data = await response.json();
+        if (!response.ok) {
+          throw new Error(data.error || "Erro ao cancelar");
+        }
+        // Recarrega as duas listas — o registro pode ter saído de uma e
+        // entrado na outra (em aberto → histórico como 'cancelada')
+        loadOpenAppointments();
+        loadHistoryAppointments();
+      } catch (error) {
+        alert(`Erro ao cancelar: ${error.message}`);
+      }
+    }
+
+    // Desativa ou reativa um médico conforme status atual.
+    async function toggleDoctorStatus(doctor) {
+      const willDeactivate = doctor.status !== "inactive";
+      const action = willDeactivate ? "desativar" : "reativar";
+      const endpoint = willDeactivate ? "deactivate" : "reactivate";
+
+      const explanation = willDeactivate
+        ? `Esta ação:\n` +
+          `• impede o médico de receber novas ofertas de consulta\n` +
+          `• mantém o histórico de pacientes vinculados (preserva prontuário)\n` +
+          `• pode ser revertida com "Reativar"`
+        : `O médico voltará a receber ofertas de novas consultas.`;
+
+      const ok = window.confirm(
+        `Deseja ${action} o médico "${doctor.name}"?\n\n${explanation}`
+      );
+      if (!ok) return;
+
+      try {
+        const response = await fetch(
+          `${API_URL}/admin/doctors/${doctor.id}/${endpoint}`,
+          {
+            method: "PATCH",
+            headers: { "Authorization": `Bearer ${getToken()}` },
+          }
+        );
+        const data = await response.json();
+        if (!response.ok) {
+          throw new Error(data.error || `Erro ao ${action}`);
+        }
+        loadDoctors();
+      } catch (error) {
+        alert(`Erro ao ${action}: ${error.message}`);
+      }
     }
 
     function showDashboard() {
@@ -509,7 +641,7 @@
       const doctorSelect = document.getElementById("doctorSelect");
 
       tableBody.innerHTML = "";
-      renderRowMessage(tableBody, 6, "Carregando...");
+      renderRowMessage(tableBody, 7, "Carregando...");
 
       doctorSelect.innerHTML = `<option value="">Carregando médicos...</option>`;
 
@@ -528,7 +660,7 @@
         }
 
         if (!doctors.length) {
-          renderRowMessage(tableBody, 6, "Nenhum médico cadastrado.");
+          renderRowMessage(tableBody, 7, "Nenhum médico cadastrado.");
           doctorSelect.innerHTML = `<option value="">Nenhum médico cadastrado</option>`;
           return;
         }
@@ -538,6 +670,7 @@
 
         doctors.forEach((doctor) => {
           // [ANTI-XSS] dados do banco (name, email) passam por textContent
+          // Médico inativo: linha em opacity reduzida pra deixar claro no UI
           appendRow(tableBody, [
             doctor.id,
             doctor.name,
@@ -545,15 +678,20 @@
             doctor.phone || "Não cadastrado",
             doctor.role,
             doctor.status,
+            { node: makeDoctorToggleBtn(doctor) },
           ]);
 
-          const option = document.createElement("option");
-          option.value = doctor.id;
-          option.textContent = `${doctor.name} - ${doctor.email}${doctor.phone ? " - " + doctor.phone : ""}`;
-          doctorSelect.appendChild(option);
+          // Médico inativo não aparece no dropdown de vincular paciente
+          // (pra não vincular paciente novo a médico desativado)
+          if (doctor.status !== "inactive") {
+            const option = document.createElement("option");
+            option.value = doctor.id;
+            option.textContent = `${doctor.name} - ${doctor.email}${doctor.phone ? " - " + doctor.phone : ""}`;
+            doctorSelect.appendChild(option);
+          }
         });
       } catch (error) {
-        renderRowMessage(tableBody, 6, error.message);
+        renderRowMessage(tableBody, 7, error.message);
         doctorSelect.innerHTML = `<option value="">Erro ao carregar médicos</option>`;
       }
     }
@@ -562,7 +700,7 @@
       const token = getToken();
       const tableBody = document.getElementById("appointmentsTableBody");
 
-      renderRowMessage(tableBody, 7, "Carregando...");
+      renderRowMessage(tableBody, 8, "Carregando...");
 
       try {
         const response = await fetch(`${API_URL}/admin/appointments/open`, {
@@ -579,7 +717,7 @@
         }
 
         if (!appointments.length) {
-          renderRowMessage(tableBody, 7, "Nenhum agendamento em aberto.");
+          renderRowMessage(tableBody, 8, "Nenhum agendamento em aberto.");
           return;
         }
 
@@ -597,10 +735,11 @@
             appointment.appointmentDateTime || appointment.preferredTime || "-",
             { html: statusBadge(appointment.status) },
             appointment.acceptedDoctorName || "Ainda não aceito",
+            { node: makeCancelAppointmentBtn(appointment) },
           ]);
         });
       } catch (error) {
-        renderRowMessage(tableBody, 7, error.message);
+        renderRowMessage(tableBody, 8, error.message);
       }
     }
 
@@ -611,7 +750,7 @@
       const token = getToken();
       const tableBody = document.getElementById("historyTableBody");
 
-      renderRowMessage(tableBody, 8, "Carregando...");
+      renderRowMessage(tableBody, 9, "Carregando...");
 
       try {
         const response = await fetch(`${API_URL}/admin/appointments/all`, {
@@ -632,7 +771,7 @@
         const history = appointments.filter((a) => historyStatuses.has(a.status));
 
         if (!history.length) {
-          renderRowMessage(tableBody, 8, "Nenhum registro no histórico.");
+          renderRowMessage(tableBody, 9, "Nenhum registro no histórico.");
           return;
         }
 
@@ -644,6 +783,11 @@
             : "-";
 
           // [ANTI-XSS] dados do banco escapados via appendRow
+          // Botão Cancelar só pra status 'aceita' (concluída ou cancelada não voltam)
+          const actionCell = appointment.status === "aceita"
+            ? { node: makeCancelAppointmentBtn(appointment) }
+            : "-";
+
           appendRow(tableBody, [
             appointment.id,
             appointment.name || "Sem nome",
@@ -653,10 +797,11 @@
             { html: statusBadge(appointment.status) },
             appointment.acceptedDoctorName || "-",
             acceptedAt,
+            actionCell,
           ]);
         });
       } catch (error) {
-        renderRowMessage(tableBody, 8, error.message);
+        renderRowMessage(tableBody, 9, error.message);
       }
     }
 
