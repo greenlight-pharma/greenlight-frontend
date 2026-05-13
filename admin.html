@@ -215,6 +215,11 @@
       color: #374151;
     }
 
+    .status-expirada {
+      background: #fed7aa;
+      color: #9a3412;
+    }
+
     @media (max-width: 800px) {
       .grid {
         grid-template-columns: 1fr;
@@ -297,7 +302,7 @@
 
       <div class="card">
         <h2>Agendamentos em Aberto</h2>
-        <div class="small">Mostra consultas pendentes ou oferecidas, ou seja, ainda sem médico confirmado.</div>
+        <div class="small">Consultas pendentes ou oferecidas, com horário ainda no futuro. Aguardando médico aceitar.</div>
         <button class="primary" onclick="loadOpenAppointments()">Atualizar Agendamentos</button>
 
         <table>
@@ -316,6 +321,30 @@
           <tbody id="appointmentsTableBody">
             <tr>
               <td colspan="8">Nenhum agendamento carregado.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="card">
+        <h2>Agendamentos Expirados</h2>
+        <div class="small">Consultas que passaram do horário sem médico aceitar. O paciente foi notificado e pode remarcar.</div>
+        <button class="primary" onclick="loadExpiredAppointments()">Atualizar Expirados</button>
+
+        <table>
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Paciente</th>
+              <th>Telefone</th>
+              <th>Motivo</th>
+              <th>Horário Marcado</th>
+              <th>Status</th>
+            </tr>
+          </thead>
+          <tbody id="expiredTableBody">
+            <tr>
+              <td colspan="6">Nenhum agendamento expirado.</td>
             </tr>
           </tbody>
         </table>
@@ -446,6 +475,52 @@
       return `<span class="${css}">${value}</span>`;
     }
 
+    // [TIME] Renderiza célula de horário do agendamento.
+    // Se tem appointmentAt (timestamp estruturado): mostra data formatada em
+    // pt-BR + cor verde, e texto original do paciente abaixo em cinza pequeno.
+    // Se NÃO tem appointmentAt (legado): mostra só o texto livre em vermelho.
+    // Retorna um DOM node (TD interno) — pra usar via { node: ... } no appendRow.
+    function makeTimeCell(appointment) {
+      const container = document.createElement("div");
+      const at = appointment.appointmentAt;
+      const text = appointment.appointmentDateTime || appointment.preferredTime || "-";
+
+      if (at) {
+        const date = new Date(at);
+        const formatted = date.toLocaleString("pt-BR", {
+          timeZone: "America/Sao_Paulo",
+          day: "2-digit",
+          month: "2-digit",
+          year: "numeric",
+          hour: "2-digit",
+          minute: "2-digit",
+        });
+
+        const main = document.createElement("div");
+        main.textContent = formatted;
+        main.style.fontWeight = "600";
+        main.style.color = "#0f766e";
+        container.appendChild(main);
+
+        if (text && text !== "-" && text !== formatted) {
+          const sub = document.createElement("div");
+          sub.textContent = `"${text}"`;
+          sub.style.fontSize = "11px";
+          sub.style.color = "#94a3b8";
+          sub.style.marginTop = "2px";
+          container.appendChild(sub);
+        }
+      } else {
+        // Sem timestamp estruturado (registro legado)
+        const main = document.createElement("div");
+        main.textContent = text;
+        main.style.color = "#b91c1c";
+        main.title = "Horário não estruturado (legado)";
+        container.appendChild(main);
+      }
+      return container;
+    }
+
     // ============================================================
     // BOTÕES DE AÇÃO (cancelar agendamento, ativar/desativar médico)
     // ============================================================
@@ -551,6 +626,7 @@
       loadDoctors();
       loadOpenAppointments();
       loadHistoryAppointments();
+      loadExpiredAppointments();
     }
 
     function showLogin() {
@@ -710,7 +786,9 @@
       renderRowMessage(tableBody, 8, "Carregando...");
 
       try {
-        const response = await fetch(`${API_URL}/admin/appointments/open`, {
+        // [TIME] /open/future filtra automaticamente agendamentos cujo horário
+        // ainda não passou. Os que passaram vão pra /expired pelo cron.
+        const response = await fetch(`${API_URL}/admin/appointments/open/future`, {
           method: "GET",
           headers: {
             "Authorization": `Bearer ${token}`
@@ -734,12 +812,13 @@
           // [ANTI-XSS] appointment.name e appointment.reason vêm do paciente
           // via WhatsApp — vetor primário de XSS. statusBadge() gera HTML
           // controlado pelo nosso código (passa via {html: ...}).
+          // [TIME] makeTimeCell formata appointmentAt em pt-BR + texto original
           appendRow(tableBody, [
             appointment.id,
             appointment.name || "Sem nome",
             appointment.phone || "-",
             appointment.reason || "-",
-            appointment.appointmentDateTime || appointment.preferredTime || "-",
+            { node: makeTimeCell(appointment) },
             { html: statusBadge(appointment.status) },
             appointment.acceptedDoctorName || "Ainda não aceito",
             { node: makeCancelAppointmentBtn(appointment) },
@@ -774,6 +853,7 @@
         }
 
         // Filtra: tudo que NÃO está em aberto (já tem decisão de médico ou foi cancelado)
+        // 'expirada' fica fora — tem tabela separada
         const historyStatuses = new Set(["aceita", "concluida", "cancelada"]);
         const history = appointments.filter((a) => historyStatuses.has(a.status));
 
@@ -790,6 +870,7 @@
             : "-";
 
           // [ANTI-XSS] dados do banco escapados via appendRow
+          // [TIME] makeTimeCell formata horário com appointmentAt + texto original
           // Botão Cancelar só pra status 'aceita' (concluída ou cancelada não voltam)
           const actionCell = appointment.status === "aceita"
             ? { node: makeCancelAppointmentBtn(appointment) }
@@ -800,7 +881,7 @@
             appointment.name || "Sem nome",
             appointment.phone || "-",
             appointment.reason || "-",
-            appointment.appointmentDateTime || appointment.preferredTime || "-",
+            { node: makeTimeCell(appointment) },
             { html: statusBadge(appointment.status) },
             appointment.acceptedDoctorName || "-",
             acceptedAt,
@@ -809,6 +890,51 @@
         });
       } catch (error) {
         renderRowMessage(tableBody, 9, error.message);
+      }
+    }
+
+    // [TIME] Carrega agendamentos expirados (cron os move pra 'expirada'
+    // 1h após o appointmentAt sem aceite). Tabela separada porque é um
+    // estado terminal mas não-histórico — paciente foi avisado e pode remarcar.
+    async function loadExpiredAppointments() {
+      const token = getToken();
+      const tableBody = document.getElementById("expiredTableBody");
+
+      renderRowMessage(tableBody, 6, "Carregando...");
+
+      try {
+        const response = await fetch(`${API_URL}/admin/appointments/expired`, {
+          method: "GET",
+          headers: {
+            "Authorization": `Bearer ${token}`
+          }
+        });
+
+        const appointments = await response.json();
+
+        if (!response.ok) {
+          throw new Error(appointments.error || "Erro ao carregar expirados");
+        }
+
+        if (!appointments.length) {
+          renderRowMessage(tableBody, 6, "Nenhum agendamento expirado.");
+          return;
+        }
+
+        tableBody.innerHTML = "";
+
+        appointments.forEach((appointment) => {
+          appendRow(tableBody, [
+            appointment.id,
+            appointment.name || "Sem nome",
+            appointment.phone || "-",
+            appointment.reason || "-",
+            { node: makeTimeCell(appointment) },
+            { html: statusBadge(appointment.status) },
+          ]);
+        });
+      } catch (error) {
+        renderRowMessage(tableBody, 6, error.message);
       }
     }
 
