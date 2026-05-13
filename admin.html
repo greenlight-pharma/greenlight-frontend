@@ -397,9 +397,16 @@
       const tr = document.createElement("tr");
       for (const cell of cells) {
         const td = document.createElement("td");
-        if (cell && typeof cell === "object" && cell.html !== undefined) {
-          // HTML controlado pelo nosso código — seguro
-          td.innerHTML = cell.html;
+        if (cell && typeof cell === "object") {
+          if (cell.node) {
+            // Elemento DOM pronto (ex: botão com event listener) — anexa direto
+            td.appendChild(cell.node);
+          } else if (cell.html !== undefined) {
+            // HTML controlado pelo nosso código (ex: statusBadge) — seguro
+            td.innerHTML = cell.html;
+          } else {
+            td.textContent = String(cell);
+          }
         } else {
           // Texto vindo do banco — escapa via textContent
           td.textContent = cell == null ? "" : String(cell);
