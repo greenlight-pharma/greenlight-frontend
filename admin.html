@@ -179,6 +179,11 @@
       color: #991b1b;
     }
 
+    .status-concluida {
+      background: #e5e7eb;
+      color: #374151;
+    }
+
     @media (max-width: 800px) {
       .grid {
         grid-template-columns: 1fr;
@@ -206,10 +211,10 @@
       <h2>Login do Administrador</h2>
 
       <label>Email do administrador</label>
-      <input id="adminEmail" type="email" placeholder="Email cadastrado" autocomplete="username" />
+      <input id="adminEmail" type="email" value="admin@healthos.com" />
 
       <label>Senha do administrador</label>
-      <input id="adminPassword" type="password" placeholder="Senha de acesso" autocomplete="current-password" />
+      <input id="adminPassword" type="password" value="admin123" />
 
       <button class="primary" onclick="adminLogin()">Entrar</button>
 
@@ -285,6 +290,32 @@
       </div>
 
       <div class="card">
+        <h2>Aceitas e Histórico</h2>
+        <div class="small">Consultas aceitas por médicos, concluídas ou canceladas.</div>
+        <button class="primary" onclick="loadHistoryAppointments()">Atualizar Histórico</button>
+
+        <table>
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Paciente</th>
+              <th>Telefone</th>
+              <th>Motivo</th>
+              <th>Horário</th>
+              <th>Status</th>
+              <th>Médico</th>
+              <th>Aceito em</th>
+            </tr>
+          </thead>
+          <tbody id="historyTableBody">
+            <tr>
+              <td colspan="8">Nenhum histórico carregado.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="card">
         <h2>Médicos Cadastrados</h2>
         <button class="primary" onclick="loadDoctors()">Atualizar Lista</button>
 
@@ -344,6 +375,7 @@
       document.getElementById("logoutBtn").classList.remove("hidden");
       loadDoctors();
       loadOpenAppointments();
+      loadHistoryAppointments();
     }
 
     function showLogin() {
@@ -554,6 +586,75 @@
         tableBody.innerHTML = `
           <tr>
             <td colspan="7">${error.message}</td>
+          </tr>
+        `;
+      }
+    }
+
+    // Carrega histórico: agendamentos aceitos, concluídos ou cancelados.
+    // Usa o endpoint /admin/appointments/all e filtra no cliente — preserva
+    // performance (poucos registros) e mantém o endpoint simples no backend.
+    async function loadHistoryAppointments() {
+      const token = getToken();
+      const tableBody = document.getElementById("historyTableBody");
+
+      tableBody.innerHTML = `
+        <tr>
+          <td colspan="8">Carregando...</td>
+        </tr>
+      `;
+
+      try {
+        const response = await fetch(`${API_URL}/admin/appointments/all`, {
+          method: "GET",
+          headers: {
+            "Authorization": `Bearer ${token}`
+          }
+        });
+
+        const appointments = await response.json();
+
+        if (!response.ok) {
+          throw new Error(appointments.error || "Erro ao carregar histórico");
+        }
+
+        // Filtra: tudo que NÃO está em aberto (já tem decisão de médico ou foi cancelado)
+        const historyStatuses = new Set(["aceita", "concluida", "cancelada"]);
+        const history = appointments.filter((a) => historyStatuses.has(a.status));
+
+        if (!history.length) {
+          tableBody.innerHTML = `
+            <tr>
+              <td colspan="8">Nenhum registro no histórico.</td>
+            </tr>
+          `;
+          return;
+        }
+
+        tableBody.innerHTML = "";
+
+        history.forEach((appointment) => {
+          const acceptedAt = appointment.acceptedAt
+            ? new Date(appointment.acceptedAt).toLocaleString("pt-BR")
+            : "-";
+
+          const tr = document.createElement("tr");
+          tr.innerHTML = `
+            <td>${appointment.id}</td>
+            <td>${appointment.name || "Sem nome"}</td>
+            <td>${appointment.phone || "-"}</td>
+            <td>${appointment.reason || "-"}</td>
+            <td>${appointment.appointmentDateTime || appointment.preferredTime || "-"}</td>
+            <td>${statusBadge(appointment.status)}</td>
+            <td>${appointment.acceptedDoctorName || "-"}</td>
+            <td>${acceptedAt}</td>
+          `;
+          tableBody.appendChild(tr);
+        });
+      } catch (error) {
+        tableBody.innerHTML = `
+          <tr>
+            <td colspan="8">${error.message}</td>
           </tr>
         `;
       }
