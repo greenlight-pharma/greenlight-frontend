@@ -351,6 +351,42 @@
       return String(value || "").replace(/\D/g, "");
     }
 
+    // [ANTI-XSS] Cria uma <tr> com células de texto, escapando automaticamente.
+    // Use no lugar de tr.innerHTML = `<td>${dados}</td>...` que é vulnerável
+    // a injeção de HTML/JS vindo do banco (paciente envia <script>... como
+    // nome no WhatsApp, médico abre painel, JS roda no contexto autenticado).
+    //
+    // Aceita strings (vira texto) ou objetos { html: "..." } para casos
+    // controlados onde o HTML é hardcoded pelo nosso próprio código (ex: badges
+    // de status que renderizamos com classes CSS fixas — não vêm do usuário).
+    function appendRow(tbody, cells) {
+      const tr = document.createElement("tr");
+      for (const cell of cells) {
+        const td = document.createElement("td");
+        if (cell && typeof cell === "object" && cell.html !== undefined) {
+          // HTML controlado pelo nosso código — seguro
+          td.innerHTML = cell.html;
+        } else {
+          // Texto vindo do banco — escapa via textContent
+          td.textContent = cell == null ? "" : String(cell);
+        }
+        tr.appendChild(td);
+      }
+      tbody.appendChild(tr);
+    }
+
+    // [ANTI-XSS] Renderiza linha de mensagem (erro, "carregando...", "vazio")
+    // usando textContent. Substitui tbody.innerHTML = `<tr><td>${msg}</td></tr>`
+    function renderRowMessage(tbody, colspan, message) {
+      tbody.replaceChildren(); // limpa
+      const tr = document.createElement("tr");
+      const td = document.createElement("td");
+      td.colSpan = colspan;
+      td.textContent = message;
+      tr.appendChild(td);
+      tbody.appendChild(tr);
+    }
+
     function setMessage(elementId, type, text) {
       const el = document.getElementById(elementId);
       el.className = "message " + type;
@@ -472,11 +508,8 @@
       const tableBody = document.getElementById("doctorsTableBody");
       const doctorSelect = document.getElementById("doctorSelect");
 
-      tableBody.innerHTML = `
-        <tr>
-          <td colspan="6">Carregando...</td>
-        </tr>
-      `;
+      tableBody.innerHTML = "";
+      renderRowMessage(tableBody, 6, "Carregando...");
 
       doctorSelect.innerHTML = `<option value="">Carregando médicos...</option>`;
 
@@ -495,11 +528,7 @@
         }
 
         if (!doctors.length) {
-          tableBody.innerHTML = `
-            <tr>
-              <td colspan="6">Nenhum médico cadastrado.</td>
-            </tr>
-          `;
+          renderRowMessage(tableBody, 6, "Nenhum médico cadastrado.");
           doctorSelect.innerHTML = `<option value="">Nenhum médico cadastrado</option>`;
           return;
         }
@@ -508,16 +537,15 @@
         doctorSelect.innerHTML = `<option value="">Selecione um médico</option>`;
 
         doctors.forEach((doctor) => {
-          const tr = document.createElement("tr");
-          tr.innerHTML = `
-            <td>${doctor.id}</td>
-            <td>${doctor.name}</td>
-            <td>${doctor.email}</td>
-            <td>${doctor.phone || "Não cadastrado"}</td>
-            <td>${doctor.role}</td>
-            <td>${doctor.status}</td>
-          `;
-          tableBody.appendChild(tr);
+          // [ANTI-XSS] dados do banco (name, email) passam por textContent
+          appendRow(tableBody, [
+            doctor.id,
+            doctor.name,
+            doctor.email,
+            doctor.phone || "Não cadastrado",
+            doctor.role,
+            doctor.status,
+          ]);
 
           const option = document.createElement("option");
           option.value = doctor.id;
@@ -525,11 +553,7 @@
           doctorSelect.appendChild(option);
         });
       } catch (error) {
-        tableBody.innerHTML = `
-          <tr>
-            <td colspan="6">${error.message}</td>
-          </tr>
-        `;
+        renderRowMessage(tableBody, 6, error.message);
         doctorSelect.innerHTML = `<option value="">Erro ao carregar médicos</option>`;
       }
     }
@@ -538,11 +562,7 @@
       const token = getToken();
       const tableBody = document.getElementById("appointmentsTableBody");
 
-      tableBody.innerHTML = `
-        <tr>
-          <td colspan="7">Carregando...</td>
-        </tr>
-      `;
+      renderRowMessage(tableBody, 7, "Carregando...");
 
       try {
         const response = await fetch(`${API_URL}/admin/appointments/open`, {
@@ -559,35 +579,28 @@
         }
 
         if (!appointments.length) {
-          tableBody.innerHTML = `
-            <tr>
-              <td colspan="7">Nenhum agendamento em aberto.</td>
-            </tr>
-          `;
+          renderRowMessage(tableBody, 7, "Nenhum agendamento em aberto.");
           return;
         }
 
         tableBody.innerHTML = "";
 
         appointments.forEach((appointment) => {
-          const tr = document.createElement("tr");
-          tr.innerHTML = `
-            <td>${appointment.id}</td>
-            <td>${appointment.name || "Sem nome"}</td>
-            <td>${appointment.phone || "-"}</td>
-            <td>${appointment.reason || "-"}</td>
-            <td>${appointment.appointmentDateTime || appointment.preferredTime || "-"}</td>
-            <td>${statusBadge(appointment.status)}</td>
-            <td>${appointment.acceptedDoctorName || "Ainda não aceito"}</td>
-          `;
-          tableBody.appendChild(tr);
+          // [ANTI-XSS] appointment.name e appointment.reason vêm do paciente
+          // via WhatsApp — vetor primário de XSS. statusBadge() gera HTML
+          // controlado pelo nosso código (passa via {html: ...}).
+          appendRow(tableBody, [
+            appointment.id,
+            appointment.name || "Sem nome",
+            appointment.phone || "-",
+            appointment.reason || "-",
+            appointment.appointmentDateTime || appointment.preferredTime || "-",
+            { html: statusBadge(appointment.status) },
+            appointment.acceptedDoctorName || "Ainda não aceito",
+          ]);
         });
       } catch (error) {
-        tableBody.innerHTML = `
-          <tr>
-            <td colspan="7">${error.message}</td>
-          </tr>
-        `;
+        renderRowMessage(tableBody, 7, error.message);
       }
     }
 
@@ -598,11 +611,7 @@
       const token = getToken();
       const tableBody = document.getElementById("historyTableBody");
 
-      tableBody.innerHTML = `
-        <tr>
-          <td colspan="8">Carregando...</td>
-        </tr>
-      `;
+      renderRowMessage(tableBody, 8, "Carregando...");
 
       try {
         const response = await fetch(`${API_URL}/admin/appointments/all`, {
@@ -623,11 +632,7 @@
         const history = appointments.filter((a) => historyStatuses.has(a.status));
 
         if (!history.length) {
-          tableBody.innerHTML = `
-            <tr>
-              <td colspan="8">Nenhum registro no histórico.</td>
-            </tr>
-          `;
+          renderRowMessage(tableBody, 8, "Nenhum registro no histórico.");
           return;
         }
 
@@ -638,25 +643,20 @@
             ? new Date(appointment.acceptedAt).toLocaleString("pt-BR")
             : "-";
 
-          const tr = document.createElement("tr");
-          tr.innerHTML = `
-            <td>${appointment.id}</td>
-            <td>${appointment.name || "Sem nome"}</td>
-            <td>${appointment.phone || "-"}</td>
-            <td>${appointment.reason || "-"}</td>
-            <td>${appointment.appointmentDateTime || appointment.preferredTime || "-"}</td>
-            <td>${statusBadge(appointment.status)}</td>
-            <td>${appointment.acceptedDoctorName || "-"}</td>
-            <td>${acceptedAt}</td>
-          `;
-          tableBody.appendChild(tr);
+          // [ANTI-XSS] dados do banco escapados via appendRow
+          appendRow(tableBody, [
+            appointment.id,
+            appointment.name || "Sem nome",
+            appointment.phone || "-",
+            appointment.reason || "-",
+            appointment.appointmentDateTime || appointment.preferredTime || "-",
+            { html: statusBadge(appointment.status) },
+            appointment.acceptedDoctorName || "-",
+            acceptedAt,
+          ]);
         });
       } catch (error) {
-        tableBody.innerHTML = `
-          <tr>
-            <td colspan="8">${error.message}</td>
-          </tr>
-        `;
+        renderRowMessage(tableBody, 8, error.message);
       }
     }
 

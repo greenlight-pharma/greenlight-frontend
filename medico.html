@@ -302,6 +302,39 @@
       }
     }
 
+    // [ANTI-XSS] Cria uma <tr> com células de texto, escapando automaticamente.
+    // Aceita strings (texto seguro), { html: "..." } (HTML hardcoded controlado)
+    // ou { node: elemento } (DOM element pronto, ex: botão com listener).
+    function appendRow(tbody, cells) {
+      const tr = document.createElement("tr");
+      for (const cell of cells) {
+        const td = document.createElement("td");
+        if (cell && typeof cell === "object") {
+          if (cell.node) {
+            td.appendChild(cell.node);
+          } else if (cell.html !== undefined) {
+            td.innerHTML = cell.html;
+          } else {
+            td.textContent = String(cell);
+          }
+        } else {
+          td.textContent = cell == null ? "" : String(cell);
+        }
+        tr.appendChild(td);
+      }
+      tbody.appendChild(tr);
+    }
+
+    function renderRowMessage(tbody, colspan, message) {
+      tbody.replaceChildren();
+      const tr = document.createElement("tr");
+      const td = document.createElement("td");
+      td.colSpan = colspan;
+      td.textContent = message;
+      tr.appendChild(td);
+      tbody.appendChild(tr);
+    }
+
     function setMessage(elementId, type, text) {
       const el = document.getElementById(elementId);
       el.className = "message " + type;
@@ -377,12 +410,7 @@
       const tableBody = document.getElementById("patientsTableBody");
       const patientSelect = document.getElementById("patientSelect");
 
-      tableBody.innerHTML = `
-        <tr>
-          <td colspan="2">Carregando...</td>
-        </tr>
-      `;
-
+      renderRowMessage(tableBody, 2, "Carregando...");
       patientSelect.innerHTML = `<option value="">Carregando pacientes...</option>`;
 
       try {
@@ -400,11 +428,7 @@
         }
 
         if (!patients.length) {
-          tableBody.innerHTML = `
-            <tr>
-              <td colspan="2">Nenhum paciente vinculado a este médico.</td>
-            </tr>
-          `;
+          renderRowMessage(tableBody, 2, "Nenhum paciente vinculado a este médico.");
           patientSelect.innerHTML = `<option value="">Nenhum paciente vinculado</option>`;
           return;
         }
@@ -413,12 +437,11 @@
         patientSelect.innerHTML = `<option value="">Selecione um paciente</option>`;
 
         patients.forEach((patient) => {
-          const tr = document.createElement("tr");
-          tr.innerHTML = `
-            <td>${patient.patientName || "Sem nome"}</td>
-            <td>${patient.patientPhone}</td>
-          `;
-          tableBody.appendChild(tr);
+          // [ANTI-XSS] patientName e patientPhone vêm do banco — usar textContent
+          appendRow(tableBody, [
+            patient.patientName || "Sem nome",
+            patient.patientPhone,
+          ]);
 
           const option = document.createElement("option");
           option.value = patient.patientPhone;
@@ -427,11 +450,7 @@
           patientSelect.appendChild(option);
         });
       } catch (error) {
-        tableBody.innerHTML = `
-          <tr>
-            <td colspan="2">${error.message}</td>
-          </tr>
-        `;
+        renderRowMessage(tableBody, 2, error.message);
         patientSelect.innerHTML = `<option value="">Erro ao carregar pacientes</option>`;
       }
     }
@@ -508,11 +527,7 @@
       const token = getToken();
       const tableBody = document.getElementById("medicationsTableBody");
 
-      tableBody.innerHTML = `
-        <tr>
-          <td colspan="7">Carregando...</td>
-        </tr>
-      `;
+      renderRowMessage(tableBody, 7, "Carregando...");
 
       try {
         const response = await fetch(`${API_URL}/medications`, {
@@ -529,50 +544,34 @@
         }
 
         if (!medications.length) {
-          tableBody.innerHTML = `
-            <tr>
-              <td colspan="7">Nenhuma medicação cadastrada.</td>
-            </tr>
-          `;
+          renderRowMessage(tableBody, 7, "Nenhuma medicação cadastrada.");
           return;
         }
 
         tableBody.innerHTML = "";
 
         medications.forEach((med) => {
-          const tr = document.createElement("tr");
-          tr.innerHTML = `
-            <td>${med.patientName || "Sem nome"}</td>
-            <td>${med.phone}</td>
-            <td>${med.medicationName}</td>
-            <td>${med.dose || "-"}</td>
-            <td>${med.scheduleTimes}</td>
-            <td>${med.status}</td>
-            <td>
-              <button
-                onclick="deleteMedication(${med.id})"
-                style="
-                  background:#dc2626;
-                  color:white;
-                  border:none;
-                  padding:8px 10px;
-                  border-radius:6px;
-                  cursor:pointer;
-                  font-weight:bold;
-                "
-              >
-                Apagar
-              </button>
-            </td>
-          `;
-          tableBody.appendChild(tr);
+          // [ANTI-XSS] patientName, medicationName, dose etc. vêm do banco
+          // (alguns originados de input do paciente). Usar textContent via appendRow.
+          // Botão de apagar: addEventListener evita inline onclick (CSP-friendly)
+          // e evita interpolação de variável em HTML.
+          const deleteBtn = document.createElement("button");
+          deleteBtn.textContent = "Apagar";
+          deleteBtn.style.cssText = "background:#dc2626;color:white;border:none;padding:8px 10px;border-radius:6px;cursor:pointer;font-weight:bold";
+          deleteBtn.addEventListener("click", () => deleteMedication(med.id));
+
+          appendRow(tableBody, [
+            med.patientName || "Sem nome",
+            med.phone,
+            med.medicationName,
+            med.dose || "-",
+            med.scheduleTimes,
+            med.status,
+            { node: deleteBtn },
+          ]);
         });
       } catch (error) {
-        tableBody.innerHTML = `
-          <tr>
-            <td colspan="7">${error.message}</td>
-          </tr>
-        `;
+        renderRowMessage(tableBody, 7, error.message);
       }
     }
 
