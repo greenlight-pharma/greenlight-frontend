@@ -310,6 +310,7 @@
             <tr>
               <th>ID</th>
               <th>Paciente</th>
+              <th>Idade</th>
               <th>Telefone</th>
               <th>Motivo</th>
               <th>Horário</th>
@@ -320,7 +321,7 @@
           </thead>
           <tbody id="appointmentsTableBody">
             <tr>
-              <td colspan="8">Nenhum agendamento carregado.</td>
+              <td colspan="9">Nenhum agendamento carregado.</td>
             </tr>
           </tbody>
         </table>
@@ -336,6 +337,7 @@
             <tr>
               <th>ID</th>
               <th>Paciente</th>
+              <th>Idade</th>
               <th>Telefone</th>
               <th>Motivo</th>
               <th>Horário Marcado</th>
@@ -344,7 +346,7 @@
           </thead>
           <tbody id="expiredTableBody">
             <tr>
-              <td colspan="6">Nenhum agendamento expirado.</td>
+              <td colspan="7">Nenhum agendamento expirado.</td>
             </tr>
           </tbody>
         </table>
@@ -360,6 +362,7 @@
             <tr>
               <th>ID</th>
               <th>Paciente</th>
+              <th>Idade</th>
               <th>Telefone</th>
               <th>Motivo</th>
               <th>Horário</th>
@@ -371,7 +374,7 @@
           </thead>
           <tbody id="historyTableBody">
             <tr>
-              <td colspan="9">Nenhum histórico carregado.</td>
+              <td colspan="10">Nenhum histórico carregado.</td>
             </tr>
           </tbody>
         </table>
@@ -478,6 +481,16 @@
     // [TIME] Renderiza célula de horário do agendamento.
     // Se tem appointmentAt (timestamp estruturado): mostra data formatada em
     // pt-BR + cor verde, e texto original do paciente abaixo em cinza pequeno.
+    // [AGE] Formata idade do paciente para exibição.
+    // - null/undefined → "—" (não coletada, comum em registros legados)
+    // - 0 → "Recusou" (paciente preferiu não informar — convenção do sistema)
+    // - número 1-120 → "N anos"
+    function formatAge(age) {
+      if (age === null || age === undefined) return "—";
+      if (age === 0) return "Recusou";
+      return `${age} anos`;
+    }
+
     // Se NÃO tem appointmentAt (legado): mostra só o texto livre em vermelho.
     // Retorna um DOM node (TD interno) — pra usar via { node: ... } no appendRow.
     function makeTimeCell(appointment) {
@@ -783,7 +796,7 @@
       const token = getToken();
       const tableBody = document.getElementById("appointmentsTableBody");
 
-      renderRowMessage(tableBody, 8, "Carregando...");
+      renderRowMessage(tableBody, 9, "Carregando...");
 
       try {
         // [TIME] /open/future filtra automaticamente agendamentos cujo horário
@@ -802,7 +815,7 @@
         }
 
         if (!appointments.length) {
-          renderRowMessage(tableBody, 8, "Nenhum agendamento em aberto.");
+          renderRowMessage(tableBody, 9, "Nenhum agendamento em aberto.");
           return;
         }
 
@@ -813,9 +826,11 @@
           // via WhatsApp — vetor primário de XSS. statusBadge() gera HTML
           // controlado pelo nosso código (passa via {html: ...}).
           // [TIME] makeTimeCell formata appointmentAt em pt-BR + texto original
+          // [AGE] formatAge mostra idade ("35 anos"), "Recusou" (=0) ou "—" (null)
           appendRow(tableBody, [
             appointment.id,
             appointment.name || "Sem nome",
+            formatAge(appointment.patientAge),
             appointment.phone || "-",
             appointment.reason || "-",
             { node: makeTimeCell(appointment) },
@@ -825,7 +840,7 @@
           ]);
         });
       } catch (error) {
-        renderRowMessage(tableBody, 8, error.message);
+        renderRowMessage(tableBody, 9, error.message);
       }
     }
 
@@ -836,7 +851,7 @@
       const token = getToken();
       const tableBody = document.getElementById("historyTableBody");
 
-      renderRowMessage(tableBody, 9, "Carregando...");
+      renderRowMessage(tableBody, 10, "Carregando...");
 
       try {
         const response = await fetch(`${API_URL}/admin/appointments/all`, {
@@ -858,7 +873,7 @@
         const history = appointments.filter((a) => historyStatuses.has(a.status));
 
         if (!history.length) {
-          renderRowMessage(tableBody, 9, "Nenhum registro no histórico.");
+          renderRowMessage(tableBody, 10, "Nenhum registro no histórico.");
           return;
         }
 
@@ -871,6 +886,7 @@
 
           // [ANTI-XSS] dados do banco escapados via appendRow
           // [TIME] makeTimeCell formata horário com appointmentAt + texto original
+          // [AGE] formatAge mostra idade ou indicação
           // Botão Cancelar só pra status 'aceita' (concluída ou cancelada não voltam)
           const actionCell = appointment.status === "aceita"
             ? { node: makeCancelAppointmentBtn(appointment) }
@@ -879,6 +895,7 @@
           appendRow(tableBody, [
             appointment.id,
             appointment.name || "Sem nome",
+            formatAge(appointment.patientAge),
             appointment.phone || "-",
             appointment.reason || "-",
             { node: makeTimeCell(appointment) },
@@ -889,7 +906,7 @@
           ]);
         });
       } catch (error) {
-        renderRowMessage(tableBody, 9, error.message);
+        renderRowMessage(tableBody, 10, error.message);
       }
     }
 
@@ -900,7 +917,7 @@
       const token = getToken();
       const tableBody = document.getElementById("expiredTableBody");
 
-      renderRowMessage(tableBody, 6, "Carregando...");
+      renderRowMessage(tableBody, 7, "Carregando...");
 
       try {
         const response = await fetch(`${API_URL}/admin/appointments/expired`, {
@@ -917,7 +934,7 @@
         }
 
         if (!appointments.length) {
-          renderRowMessage(tableBody, 6, "Nenhum agendamento expirado.");
+          renderRowMessage(tableBody, 7, "Nenhum agendamento expirado.");
           return;
         }
 
@@ -927,6 +944,7 @@
           appendRow(tableBody, [
             appointment.id,
             appointment.name || "Sem nome",
+            formatAge(appointment.patientAge),
             appointment.phone || "-",
             appointment.reason || "-",
             { node: makeTimeCell(appointment) },
@@ -934,7 +952,7 @@
           ]);
         });
       } catch (error) {
-        renderRowMessage(tableBody, 6, error.message);
+        renderRowMessage(tableBody, 7, error.message);
       }
     }
 
