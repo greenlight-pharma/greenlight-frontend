@@ -3,12 +3,17 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Vytal OS - Administrador</title>
+  <title>Vytal OS - Painel Administrativo</title>
 
   <style>
+    /* ============================================================
+       VYTAL OS — PAINEL ADMINISTRATIVO
+       Layout sidebar fixa + área de conteúdo com tabs
+       ============================================================ */
+
     * {
       box-sizing: border-box;
-      font-family: Arial, Helvetica, sans-serif;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
     }
 
     body {
@@ -17,177 +22,394 @@
       color: #1f2933;
     }
 
-    header {
-      background: #0f766e;
-      color: white;
-      padding: 18px 24px;
+    .hidden {
+      display: none !important;
+    }
+
+    /* ----- LOGIN ----- */
+
+    #loginScreen {
       display: flex;
-      justify-content: space-between;
       align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      padding: 16px;
     }
 
-    header h1 {
-      margin: 0;
-      font-size: 22px;
-    }
-
-    header button {
+    .login-card {
       background: white;
-      color: #0f766e;
+      padding: 32px;
+      border-radius: 12px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+      width: 100%;
+      max-width: 400px;
+    }
+
+    .login-card h1 {
+      margin: 0 0 8px 0;
+      color: #1d4ed8;
+      font-size: 24px;
+    }
+
+    .login-card .subtitle {
+      color: #6b7280;
+      font-size: 14px;
+      margin-bottom: 24px;
+    }
+
+    /* ----- APP LAYOUT ----- */
+
+    #appLayout {
+      display: flex;
+      min-height: 100vh;
+    }
+
+    .sidebar {
+      width: 240px;
+      background: #1e293b;
+      color: white;
+      display: flex;
+      flex-direction: column;
+      position: fixed;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      z-index: 10;
+    }
+
+    .sidebar-header {
+      padding: 24px 20px;
+      border-bottom: 1px solid #334155;
+    }
+
+    .sidebar-header .brand {
+      font-size: 18px;
+      font-weight: 700;
+      letter-spacing: -0.3px;
+    }
+
+    .sidebar-header .brand-sub {
+      font-size: 12px;
+      color: #94a3b8;
+      margin-top: 4px;
+    }
+
+    .sidebar-nav {
+      flex: 1;
+      padding: 16px 8px;
+    }
+
+    .sidebar-nav button {
+      width: 100%;
+      text-align: left;
+      background: transparent;
+      color: #cbd5e1;
       border: none;
-      padding: 10px 14px;
+      padding: 12px 14px;
       border-radius: 8px;
       cursor: pointer;
-      font-weight: bold;
+      font-size: 14px;
+      font-weight: 500;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 4px;
+      transition: background 0.15s, color 0.15s;
     }
 
-    main {
-      max-width: 1250px;
-      margin: 28px auto;
-      padding: 0 16px;
+    .sidebar-nav button:hover {
+      background: #334155;
+      color: white;
     }
 
-    .card {
-      background: white;
-      border-radius: 14px;
-      padding: 22px;
-      margin-bottom: 22px;
-      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.06);
+    .sidebar-nav button.active {
+      background: #1d4ed8;
+      color: white;
     }
 
-    .card h2 {
-      margin-top: 0;
-      font-size: 20px;
-      color: #0f766e;
+    .sidebar-nav .nav-icon {
+      font-size: 18px;
+      width: 22px;
+      text-align: center;
     }
 
-    label {
-      display: block;
-      margin-top: 12px;
-      margin-bottom: 6px;
-      font-weight: bold;
+    .sidebar-footer {
+      padding: 16px 20px;
+      border-top: 1px solid #334155;
+    }
+
+    .sidebar-footer .admin-name {
+      font-size: 14px;
+      font-weight: 600;
+      color: white;
+      margin-bottom: 2px;
+    }
+
+    .sidebar-footer .admin-email {
+      font-size: 12px;
+      color: #94a3b8;
+      margin-bottom: 12px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    .sidebar-footer button {
+      width: 100%;
+      background: transparent;
+      color: #cbd5e1;
+      border: 1px solid #475569;
+      padding: 8px 12px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 13px;
+      font-weight: 500;
+    }
+
+    .sidebar-footer button:hover {
+      background: #334155;
+      color: white;
+    }
+
+    .content {
+      flex: 1;
+      margin-left: 240px;
+      padding: 32px 40px;
+      max-width: 1400px;
+    }
+
+    .page-header {
+      margin-bottom: 24px;
+    }
+
+    .page-header h2 {
+      margin: 0 0 4px 0;
+      font-size: 24px;
+      color: #1f2933;
+    }
+
+    .page-header .page-subtitle {
+      color: #6b7280;
       font-size: 14px;
     }
 
-    input,
-    select {
-      width: 100%;
-      padding: 12px;
-      border: 1px solid #cbd5e1;
-      border-radius: 8px;
-      font-size: 15px;
+    .page {
+      display: none;
     }
 
-    button.primary {
-      background: #0f766e;
-      color: white;
-      border: none;
-      padding: 12px 18px;
-      border-radius: 8px;
-      margin-top: 16px;
-      cursor: pointer;
-      font-weight: bold;
-      font-size: 15px;
+    .page.active {
+      display: block;
     }
 
-    button.primary:hover {
-      background: #115e59;
+    /* ----- CARDS ----- */
+
+    .card {
+      background: white;
+      padding: 24px;
+      border-radius: 12px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+      margin-bottom: 20px;
     }
 
-    /* Botões de ação dentro de tabelas — menores e contextuais.
-       btn-danger: vermelho moderado, para "Cancelar"/"Desativar".
-       btn-secondary: cinza claro, para "Reativar" e ações reversíveis. */
-    .btn-danger, .btn-secondary {
-      border: none;
-      padding: 6px 12px;
-      border-radius: 6px;
-      cursor: pointer;
-      font-weight: 600;
-      font-size: 13px;
-      margin: 0;
+    .card h3 {
+      margin: 0 0 16px 0;
+      font-size: 18px;
+      color: #1f2933;
     }
 
-    .btn-danger {
-      background: #fee2e2;
-      color: #991b1b;
-    }
-
-    .btn-danger:hover {
-      background: #fecaca;
-    }
-
-    .btn-secondary {
-      background: #e5e7eb;
-      color: #374151;
-    }
-
-    .btn-secondary:hover {
-      background: #d1d5db;
+    .card .card-subtitle {
+      color: #6b7280;
+      font-size: 14px;
+      margin-bottom: 16px;
+      margin-top: -8px;
     }
 
     .grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 22px;
+      gap: 20px;
     }
 
-    .hidden {
-      display: none;
+    @media (max-width: 1100px) {
+      .grid {
+        grid-template-columns: 1fr;
+      }
     }
 
-    .message {
+    /* ----- STAT CARDS ----- */
+
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 16px;
+      margin-bottom: 24px;
+    }
+
+    .stat-card {
+      background: white;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    }
+
+    .stat-card .stat-label {
+      font-size: 13px;
+      color: #6b7280;
+      margin-bottom: 8px;
+    }
+
+    .stat-card .stat-value {
+      font-size: 28px;
+      font-weight: 700;
+      color: #1d4ed8;
+    }
+
+    .stat-card .stat-sub {
+      font-size: 12px;
+      color: #6b7280;
+      margin-top: 4px;
+    }
+
+    /* ----- FORMS ----- */
+
+    label {
+      display: block;
       margin-top: 14px;
-      padding: 12px;
+      font-weight: 600;
+      font-size: 13px;
+      color: #374151;
+    }
+
+    input, textarea, select {
+      width: 100%;
+      padding: 10px 12px;
+      margin-top: 6px;
+      border: 1px solid #d1d5db;
       border-radius: 8px;
       font-size: 14px;
-      display: none;
+      background: white;
     }
 
-    .success {
-      display: block;
-      background: #dcfce7;
-      color: #166534;
-      border: 1px solid #86efac;
+    input:focus, textarea:focus, select:focus {
+      outline: none;
+      border-color: #1d4ed8;
+      box-shadow: 0 0 0 3px rgba(29, 78, 216, 0.1);
     }
 
-    .error {
-      display: block;
-      background: #fee2e2;
-      color: #991b1b;
-      border: 1px solid #fecaca;
+    /* ----- BUTTONS ----- */
+
+    button.primary {
+      background: #1d4ed8;
+      color: white;
+      border: none;
+      padding: 10px 18px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: 600;
+      font-size: 14px;
+      margin-top: 16px;
+      margin-right: 8px;
     }
+
+    button.primary:hover {
+      background: #1e40af;
+    }
+
+    /* Botão Cancelar/Arquivar (vermelho) */
+    .btn-danger {
+      background: #ef4444;
+      color: white;
+      border: none;
+      padding: 6px 12px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 13px;
+      font-weight: 500;
+      margin-top: 16px;
+    }
+
+    .btn-danger:hover {
+      background: #dc2626;
+    }
+
+    /* Botão secundário (Desativar/Reativar) */
+    .btn-secondary {
+      background: #6b7280;
+      color: white;
+      border: none;
+      padding: 6px 12px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 13px;
+      font-weight: 500;
+    }
+
+    .btn-secondary:hover {
+      background: #4b5563;
+    }
+
+    /* ----- TABELAS ----- */
 
     table {
       width: 100%;
       border-collapse: collapse;
-      margin-top: 14px;
+      margin-top: 12px;
       font-size: 14px;
     }
 
-    th,
-    td {
-      border-bottom: 1px solid #e5e7eb;
-      padding: 10px;
+    th, td {
       text-align: left;
-      vertical-align: top;
+      padding: 10px 12px;
+      border-bottom: 1px solid #e5e7eb;
     }
 
     th {
-      background: #f8fafc;
-      color: #334155;
+      font-weight: 600;
+      color: #4b5563;
+      background: #f9fafb;
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: 0.3px;
     }
+
+    tr:last-child td {
+      border-bottom: none;
+    }
+
+    /* ----- HELPERS ----- */
 
     .small {
-      font-size: 13px;
-      color: #64748b;
+      font-size: 12px;
+      color: #6b7280;
+      margin-top: 4px;
     }
 
+    .message {
+      margin-top: 12px;
+      padding: 10px 14px;
+      border-radius: 8px;
+      font-size: 14px;
+    }
+
+    .message.success {
+      background: #d1fae5;
+      color: #065f46;
+    }
+
+    .message.error {
+      background: #fee2e2;
+      color: #991b1b;
+    }
+
+    /* Status pills */
     .status-pill {
       display: inline-block;
-      padding: 4px 8px;
-      border-radius: 999px;
+      padding: 4px 10px;
+      border-radius: 12px;
       font-size: 12px;
-      font-weight: bold;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.3px;
     }
 
     .status-pendente {
@@ -220,194 +442,314 @@
       color: #9a3412;
     }
 
-    @media (max-width: 800px) {
-      .grid {
-        grid-template-columns: 1fr;
+    .status-active {
+      background: #dcfce7;
+      color: #166534;
+    }
+
+    .status-inactive {
+      background: #fee2e2;
+      color: #991b1b;
+    }
+
+    /* ----- MOBILE ----- */
+
+    @media (max-width: 768px) {
+      .sidebar {
+        position: relative;
+        width: 100%;
+        height: auto;
       }
 
-      header {
+      .sidebar-nav {
+        display: flex;
+        overflow-x: auto;
+        padding: 8px;
+      }
+
+      .sidebar-nav button {
+        flex-shrink: 0;
+        margin-bottom: 0;
+        margin-right: 4px;
+        white-space: nowrap;
+      }
+
+      .sidebar-footer {
+        display: none;
+      }
+
+      #appLayout {
         flex-direction: column;
-        align-items: flex-start;
-        gap: 12px;
+      }
+
+      .content {
+        margin-left: 0;
+        padding: 16px;
       }
     }
   </style>
 </head>
 <body>
-  <header>
-    <div>
-      <h1>Vytal OS - Painel Administrador</h1>
-      <div class="small" style="color: #e0f2f1;">Cadastrar médicos, vincular pacientes e acompanhar agendamentos</div>
-    </div>
-    <button id="logoutBtn" class="hidden" onclick="logout()">Sair</button>
-  </header>
 
-  <main>
-    <section id="loginSection" class="card">
-      <h2>Login do Administrador</h2>
+  <!-- ====== LOGIN ====== -->
+  <div id="loginScreen">
+    <div class="login-card">
+      <h1>Vytal OS</h1>
+      <div class="subtitle">Painel Administrativo</div>
 
-      <label>Email do administrador</label>
-      <input id="adminEmail" type="email" value="admin@healthos.com" />
+      <label>Email</label>
+      <input id="adminEmail" type="email" placeholder="Email do administrador" />
 
-      <label>Senha do administrador</label>
-      <input id="adminPassword" type="password" value="admin123" />
+      <label>Senha</label>
+      <input id="adminPassword" type="password" placeholder="Senha do administrador" />
 
-      <button class="primary" onclick="adminLogin()">Entrar</button>
+      <button class="primary" onclick="adminLogin()" style="width:100%; margin-right:0;">Entrar</button>
 
       <div id="loginMessage" class="message"></div>
-    </section>
+    </div>
+  </div>
 
-    <section id="dashboardSection" class="hidden">
-      <div class="grid">
-        <div class="card">
-          <h2>Cadastrar Médico</h2>
+  <!-- ====== APP ====== -->
+  <div id="appLayout" class="hidden">
 
-          <label>Nome do médico</label>
-          <input id="doctorName" type="text" placeholder="Ex: Dr João Silva" />
+    <aside class="sidebar">
+      <div class="sidebar-header">
+        <div class="brand">Vytal OS</div>
+        <div class="brand-sub">Painel Administrativo</div>
+      </div>
 
-          <label>Email do médico</label>
-          <input id="doctorEmail" type="email" placeholder="Ex: joao@clinica.com" />
+      <nav class="sidebar-nav">
+        <button class="nav-btn active" data-page="overview" onclick="switchPage('overview')">
+          <span class="nav-icon">🏠</span>
+          <span>Início</span>
+        </button>
+        <button class="nav-btn" data-page="appointments" onclick="switchPage('appointments')">
+          <span class="nav-icon">📋</span>
+          <span>Agendamentos</span>
+        </button>
+        <button class="nav-btn" data-page="doctors" onclick="switchPage('doctors')">
+          <span class="nav-icon">👨‍⚕️</span>
+          <span>Médicos</span>
+        </button>
+      </nav>
 
-          <label>Telefone WhatsApp do médico com DDI e DDD</label>
-          <input id="doctorPhone" type="text" placeholder="Ex: 5512999999999" />
-          <div class="small">Esse número receberá ofertas de consulta. Use apenas números, com 55 + DDD.</div>
+      <div class="sidebar-footer">
+        <div class="admin-name">Administrador</div>
+        <div class="admin-email" id="sidebarAdminEmail">—</div>
+        <button onclick="logout()">Sair</button>
+      </div>
+    </aside>
 
-          <label>Senha inicial</label>
-          <input id="doctorPassword" type="password" placeholder="Ex: 123456" />
+    <main class="content">
 
-          <button class="primary" onclick="createDoctor()">Cadastrar Médico</button>
+      <!-- Página: INÍCIO -->
+      <section id="page-overview" class="page active">
+        <div class="page-header">
+          <h2>Início</h2>
+          <div class="page-subtitle">Visão geral do sistema</div>
+        </div>
 
-          <div id="doctorMessage" class="message"></div>
+        <div class="stats-grid">
+          <div class="stat-card">
+            <div class="stat-label">Médicos cadastrados</div>
+            <div class="stat-value" id="statDoctorsTotal">—</div>
+            <div class="stat-sub" id="statDoctorsActive">— ativos</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-label">Agendamentos em aberto</div>
+            <div class="stat-value" id="statOpenCount">—</div>
+            <div class="stat-sub">aguardando médico</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-label">Agendamentos expirados</div>
+            <div class="stat-value" id="statExpiredCount">—</div>
+            <div class="stat-sub">sem médico aceitando</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-label">Histórico</div>
+            <div class="stat-value" id="statHistoryCount">—</div>
+            <div class="stat-sub">aceitas, concluídas, canceladas</div>
+          </div>
         </div>
 
         <div class="card">
-          <h2>Vincular Paciente ao Médico</h2>
-
-          <label>Selecione o médico</label>
-          <select id="doctorSelect">
-            <option value="">Carregando médicos...</option>
-          </select>
-
-          <label>Nome do paciente</label>
-          <input id="patientName" type="text" placeholder="Ex: Maria Souza" />
-
-          <label>Telefone do paciente com DDI e DDD</label>
-          <input id="patientPhone" type="text" placeholder="Ex: 5512999999999" />
-
-          <button class="primary" onclick="linkPatient()">Vincular Paciente</button>
-
-          <div id="patientMessage" class="message"></div>
+          <h3>Atalhos rápidos</h3>
+          <div class="card-subtitle">Acesse as principais áreas pelo menu lateral</div>
+          <ul style="line-height:1.8; color:#374151;">
+            <li><strong>📋 Agendamentos</strong> — gerencie consultas em aberto, expiradas e histórico</li>
+            <li><strong>👨‍⚕️ Médicos</strong> — cadastre médicos, ative/desative, vincule pacientes</li>
+          </ul>
         </div>
-      </div>
+      </section>
 
-      <div class="card">
-        <h2>Agendamentos em Aberto</h2>
-        <div class="small">Consultas pendentes ou oferecidas, com horário ainda no futuro. Aguardando médico aceitar.</div>
-        <button class="primary" onclick="loadOpenAppointments()">Atualizar Agendamentos</button>
-        <button class="btn-danger" onclick="archiveBatch('future')">Arquivar todos</button>
+      <!-- Página: AGENDAMENTOS -->
+      <section id="page-appointments" class="page">
+        <div class="page-header">
+          <h2>Agendamentos</h2>
+          <div class="page-subtitle">Consultas em todas as fases</div>
+        </div>
 
-        <table>
-          <thead>
-            <tr>
-              <th>ID</th>
-              <th>Paciente</th>
-              <th>Idade</th>
-              <th>Telefone</th>
-              <th>Motivo</th>
-              <th>Horário</th>
-              <th>Status</th>
-              <th>Médico Aceito</th>
-              <th>Ações</th>
-            </tr>
-          </thead>
-          <tbody id="appointmentsTableBody">
-            <tr>
-              <td colspan="9">Nenhum agendamento carregado.</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
+        <div class="card">
+          <h3>Em Aberto</h3>
+          <div class="card-subtitle">Consultas pendentes ou oferecidas, com horário ainda no futuro. Aguardando médico aceitar.</div>
+          <button class="primary" onclick="loadOpenAppointments()">Atualizar Agendamentos</button>
+          <button class="btn-danger" onclick="archiveBatch('future')">Arquivar todos</button>
 
-      <div class="card">
-        <h2>Agendamentos Expirados</h2>
-        <div class="small">Consultas que passaram do horário sem médico aceitar. O paciente foi notificado e pode remarcar.</div>
-        <button class="primary" onclick="loadExpiredAppointments()">Atualizar Expirados</button>
-        <button class="btn-danger" onclick="archiveBatch('expired')">Arquivar todos</button>
+          <table>
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Paciente</th>
+                <th>Idade</th>
+                <th>Telefone</th>
+                <th>Motivo</th>
+                <th>Horário</th>
+                <th>Status</th>
+                <th>Médico Aceito</th>
+                <th>Ações</th>
+              </tr>
+            </thead>
+            <tbody id="appointmentsTableBody">
+              <tr>
+                <td colspan="9">Nenhum agendamento carregado.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
 
-        <table>
-          <thead>
-            <tr>
-              <th>ID</th>
-              <th>Paciente</th>
-              <th>Idade</th>
-              <th>Telefone</th>
-              <th>Motivo</th>
-              <th>Horário Marcado</th>
-              <th>Status</th>
-            </tr>
-          </thead>
-          <tbody id="expiredTableBody">
-            <tr>
-              <td colspan="7">Nenhum agendamento expirado.</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
+        <div class="card">
+          <h3>Expirados</h3>
+          <div class="card-subtitle">Consultas que passaram do horário sem médico aceitar. O paciente foi notificado e pode remarcar.</div>
+          <button class="primary" onclick="loadExpiredAppointments()">Atualizar Expirados</button>
+          <button class="btn-danger" onclick="archiveBatch('expired')">Arquivar todos</button>
 
-      <div class="card">
-        <h2>Aceitas e Histórico</h2>
-        <div class="small">Consultas aceitas por médicos, concluídas ou canceladas.</div>
-        <button class="primary" onclick="loadHistoryAppointments()">Atualizar Histórico</button>
-        <button class="btn-danger" onclick="archiveBatch('history')">Arquivar todos</button>
+          <table>
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Paciente</th>
+                <th>Idade</th>
+                <th>Telefone</th>
+                <th>Motivo</th>
+                <th>Horário Marcado</th>
+                <th>Status</th>
+              </tr>
+            </thead>
+            <tbody id="expiredTableBody">
+              <tr>
+                <td colspan="7">Nenhum agendamento expirado.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
 
-        <table>
-          <thead>
-            <tr>
-              <th>ID</th>
-              <th>Paciente</th>
-              <th>Idade</th>
-              <th>Telefone</th>
-              <th>Motivo</th>
-              <th>Horário</th>
-              <th>Status</th>
-              <th>Médico</th>
-              <th>Aceito em</th>
-              <th>Ações</th>
-            </tr>
-          </thead>
-          <tbody id="historyTableBody">
-            <tr>
-              <td colspan="10">Nenhum histórico carregado.</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
+        <div class="card">
+          <h3>Aceitas e Histórico</h3>
+          <div class="card-subtitle">Consultas aceitas por médicos, concluídas ou canceladas.</div>
+          <button class="primary" onclick="loadHistoryAppointments()">Atualizar Histórico</button>
+          <button class="btn-danger" onclick="archiveBatch('history')">Arquivar todos</button>
 
-      <div class="card">
-        <h2>Médicos Cadastrados</h2>
-        <button class="primary" onclick="loadDoctors()">Atualizar Lista</button>
+          <table>
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Paciente</th>
+                <th>Idade</th>
+                <th>Telefone</th>
+                <th>Motivo</th>
+                <th>Horário</th>
+                <th>Status</th>
+                <th>Médico</th>
+                <th>Aceito em</th>
+                <th>Ações</th>
+              </tr>
+            </thead>
+            <tbody id="historyTableBody">
+              <tr>
+                <td colspan="10">Nenhum histórico carregado.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
 
-        <table>
-          <thead>
-            <tr>
-              <th>ID</th>
-              <th>Nome</th>
-              <th>Email</th>
-              <th>WhatsApp</th>
-              <th>Perfil</th>
-              <th>Status</th>
-              <th>Ações</th>
-            </tr>
-          </thead>
-          <tbody id="doctorsTableBody">
-            <tr>
-              <td colspan="7">Nenhum médico carregado.</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    </section>
-  </main>
+      <!-- Página: MÉDICOS -->
+      <section id="page-doctors" class="page">
+        <div class="page-header">
+          <h2>Médicos</h2>
+          <div class="page-subtitle">Gerencie médicos cadastrados e vínculos com pacientes</div>
+        </div>
+
+        <div class="grid">
+          <!-- Card: Cadastrar médico -->
+          <div class="card">
+            <h3>Cadastrar Médico</h3>
+
+            <label>Nome</label>
+            <input id="doctorName" type="text" placeholder="Nome completo do médico" />
+
+            <label>Email</label>
+            <input id="doctorEmail" type="email" placeholder="email@exemplo.com" />
+
+            <label>Telefone (WhatsApp)</label>
+            <input id="doctorPhone" type="text" placeholder="Ex: 5512999999999" />
+
+            <label>Senha provisória</label>
+            <input id="doctorPassword" type="password" placeholder="Senha provisória para o médico" />
+
+            <button class="primary" onclick="createDoctor()">Cadastrar Médico</button>
+            <div id="doctorMessage" class="message"></div>
+          </div>
+
+          <!-- Card: Vincular paciente -->
+          <div class="card">
+            <h3>Vincular Paciente ao Médico</h3>
+            <div class="card-subtitle">Após vinculado, o médico passa a ver o paciente no painel dele e pode cadastrar medicações.</div>
+
+            <label>Médico</label>
+            <select id="doctorSelect">
+              <option value="">Selecione um médico</option>
+            </select>
+
+            <label>Telefone do paciente</label>
+            <input id="patientPhone" type="text" placeholder="Ex: 5512999999999" />
+
+            <label>Nome do paciente (opcional)</label>
+            <input id="patientName" type="text" placeholder="Nome do paciente, se souber" />
+
+            <button class="primary" onclick="linkPatient()">Vincular Paciente</button>
+            <div id="patientMessage" class="message"></div>
+          </div>
+        </div>
+
+        <div class="card">
+          <h3>Médicos Cadastrados</h3>
+          <div class="card-subtitle">Médicos inativos não recebem ofertas de consulta mas mantêm vínculo histórico com pacientes.</div>
+          <button class="primary" onclick="loadDoctors()">Atualizar Lista</button>
+
+          <table>
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Nome</th>
+                <th>Email</th>
+                <th>Telefone</th>
+                <th>Função</th>
+                <th>Status</th>
+                <th>Ações</th>
+              </tr>
+            </thead>
+            <tbody id="doctorsTableBody">
+              <tr>
+                <td colspan="7">Nenhum médico carregado.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+    </main>
+  </div>
 
   <script>
     const API_URL = "https://greenlight-backend-production-35c8.up.railway.app";
@@ -417,33 +759,23 @@
     }
 
     function onlyNumbers(value) {
-      return String(value || "").replace(/\D/g, "");
+      return String(value || "").replace(/[^\d]/g, "");
     }
 
     // [ANTI-XSS] Cria uma <tr> com células de texto, escapando automaticamente.
-    // Use no lugar de tr.innerHTML = `<td>${dados}</td>...` que é vulnerável
-    // a injeção de HTML/JS vindo do banco (paciente envia <script>... como
-    // nome no WhatsApp, médico abre painel, JS roda no contexto autenticado).
-    //
-    // Aceita strings (vira texto) ou objetos { html: "..." } para casos
-    // controlados onde o HTML é hardcoded pelo nosso próprio código (ex: badges
-    // de status que renderizamos com classes CSS fixas — não vêm do usuário).
     function appendRow(tbody, cells) {
       const tr = document.createElement("tr");
       for (const cell of cells) {
         const td = document.createElement("td");
         if (cell && typeof cell === "object") {
           if (cell.node) {
-            // Elemento DOM pronto (ex: botão com event listener) — anexa direto
             td.appendChild(cell.node);
           } else if (cell.html !== undefined) {
-            // HTML controlado pelo nosso código (ex: statusBadge) — seguro
             td.innerHTML = cell.html;
           } else {
             td.textContent = String(cell);
           }
         } else {
-          // Texto vindo do banco — escapa via textContent
           td.textContent = cell == null ? "" : String(cell);
         }
         tr.appendChild(td);
@@ -451,10 +783,8 @@
       tbody.appendChild(tr);
     }
 
-    // [ANTI-XSS] Renderiza linha de mensagem (erro, "carregando...", "vazio")
-    // usando textContent. Substitui tbody.innerHTML = `<tr><td>${msg}</td></tr>`
     function renderRowMessage(tbody, colspan, message) {
-      tbody.replaceChildren(); // limpa
+      tbody.replaceChildren();
       const tr = document.createElement("tr");
       const td = document.createElement("td");
       td.colSpan = colspan;
@@ -466,13 +796,13 @@
     function setMessage(elementId, type, text) {
       const el = document.getElementById(elementId);
       el.className = "message " + type;
-      el.innerText = text;
+      el.textContent = text;
     }
 
     function clearMessage(elementId) {
       const el = document.getElementById(elementId);
       el.className = "message";
-      el.innerText = "";
+      el.textContent = "";
     }
 
     function statusBadge(status) {
@@ -481,21 +811,14 @@
       return `<span class="${css}">${value}</span>`;
     }
 
-    // [TIME] Renderiza célula de horário do agendamento.
-    // Se tem appointmentAt (timestamp estruturado): mostra data formatada em
-    // pt-BR + cor verde, e texto original do paciente abaixo em cinza pequeno.
     // [AGE] Formata idade do paciente para exibição.
-    // - null/undefined → "—" (não coletada, comum em registros legados)
-    // - 0 → "Recusou" (paciente preferiu não informar — convenção do sistema)
-    // - número 1-120 → "N anos"
     function formatAge(age) {
       if (age === null || age === undefined) return "—";
       if (age === 0) return "Recusou";
       return `${age} anos`;
     }
 
-    // Se NÃO tem appointmentAt (legado): mostra só o texto livre em vermelho.
-    // Retorna um DOM node (TD interno) — pra usar via { node: ... } no appendRow.
+    // [TIME] Renderiza célula de horário do agendamento.
     function makeTimeCell(appointment) {
       const container = document.createElement("div");
       const at = appointment.appointmentAt;
@@ -527,7 +850,6 @@
           container.appendChild(sub);
         }
       } else {
-        // Sem timestamp estruturado (registro legado)
         const main = document.createElement("div");
         main.textContent = text;
         main.style.color = "#b91c1c";
@@ -538,60 +860,51 @@
     }
 
     // ============================================================
-    // BOTÕES DE AÇÃO (cancelar agendamento, ativar/desativar médico)
+    // BOTÕES DE AÇÃO
     // ============================================================
 
-    // Botão "Cancelar" para uma linha de agendamento. Usa addEventListener
-    // (não inline onclick) pra ficar consistente com o padrão anti-XSS.
     function makeCancelAppointmentBtn(appointment) {
       const btn = document.createElement("button");
       btn.textContent = "Cancelar";
       btn.className = "btn-danger";
+      btn.style.marginTop = "0";
       btn.addEventListener("click", () => cancelAppointment(appointment));
       return btn;
     }
 
-    // Botão "Desativar" / "Reativar" para médico. Muda conforme status atual.
     function makeDoctorToggleBtn(doctor) {
+      const isInactive = doctor.status === "inactive";
       const btn = document.createElement("button");
-      if (doctor.status === "inactive") {
-        btn.textContent = "Reativar";
-        btn.className = "btn-secondary";
-      } else {
-        btn.textContent = "Desativar";
-        btn.className = "btn-danger";
-      }
+      btn.textContent = isInactive ? "Reativar" : "Desativar";
+      btn.className = isInactive ? "btn-secondary" : "btn-danger";
+      btn.style.marginTop = "0";
       btn.addEventListener("click", () => toggleDoctorStatus(doctor));
       return btn;
     }
 
-    // Cancela um agendamento. Confirma com o usuário, chama o endpoint,
-    // e recarrega as duas tabelas (em aberto + histórico) pra refletir a mudança.
     async function cancelAppointment(appointment) {
-      const patientLabel = appointment.name || `ID ${appointment.id}`;
-      const ok = window.confirm(
-        `Cancelar o agendamento de "${patientLabel}"?\n\n` +
-        `Esta ação:\n` +
-        `• marca o agendamento como cancelado\n` +
-        `• preserva o registro no histórico\n` +
-        `• não pode ser desfeita pela interface`
-      );
-      if (!ok) return;
+      const confirmMsg = appointment.status === "aceita"
+        ? `Cancelar a consulta de ${appointment.name}?\n\nO médico ${appointment.acceptedDoctorName || "designado"} será informado e o paciente verá esse cancelamento. Esta ação não pode ser desfeita pelo painel.`
+        : `Cancelar a consulta de ${appointment.name}?\n\nO agendamento sairá da lista de aberto. Esta ação não pode ser desfeita pelo painel.`;
 
+      if (!window.confirm(confirmMsg)) return;
+
+      const token = getToken();
       try {
-        const response = await fetch(
-          `${API_URL}/admin/appointments/${appointment.id}/cancel`,
-          {
-            method: "PATCH",
-            headers: { "Authorization": `Bearer ${getToken()}` },
+        const response = await fetch(`${API_URL}/admin/appointments/${appointment.id}/cancel`, {
+          method: "PATCH",
+          headers: {
+            "Content-Type": "application/json",
+            "Authorization": `Bearer ${token}`
           }
-        );
+        });
+
         const data = await response.json();
+
         if (!response.ok) {
           throw new Error(data.error || "Erro ao cancelar");
         }
-        // Recarrega as duas listas — o registro pode ter saído de uma e
-        // entrado na outra (em aberto → histórico como 'cancelada')
+        // Recarrega as duas listas — registro pode ter saído de uma e entrado na outra
         loadOpenAppointments();
         loadHistoryAppointments();
       } catch (error) {
@@ -600,8 +913,6 @@
     }
 
     // [ARCHIVE] Arquiva agendamentos em batch.
-    // scope: 'future' (em aberto), 'expired' (expirados), 'history' (aceitas/concluidas/canceladas)
-    // Operação reversível só via SQL — confirma com texto claro antes.
     async function archiveBatch(scope) {
       const labels = {
         future: { title: "Agendamentos em Aberto", warning: "ATENÇÃO: agendamentos em aberto podem estar aguardando médico aceitar. Arquivar agora vai escondê-los — pacientes podem ficar sem atendimento. Tem certeza?" },
@@ -615,9 +926,7 @@
         return;
       }
 
-      if (!window.confirm(label.warning)) {
-        return;
-      }
+      if (!window.confirm(label.warning)) return;
 
       const token = getToken();
       try {
@@ -638,7 +947,6 @@
 
         alert(`✓ ${data.archivedCount} agendamento(s) arquivado(s) em "${label.title}".\n\nVocê pode acessá-los via SQL na tabela appointments (filtrar por "archivedAt" IS NOT NULL).`);
 
-        // Recarrega a tabela correspondente pra refletir o arquivamento
         if (scope === "future") loadOpenAppointments();
         else if (scope === "expired") loadExpiredAppointments();
         else if (scope === "history") loadHistoryAppointments();
@@ -647,33 +955,29 @@
       }
     }
 
-    // Desativa ou reativa um médico conforme status atual.
     async function toggleDoctorStatus(doctor) {
       const willDeactivate = doctor.status !== "inactive";
       const action = willDeactivate ? "desativar" : "reativar";
-      const endpoint = willDeactivate ? "deactivate" : "reactivate";
 
-      const explanation = willDeactivate
-        ? `Esta ação:\n` +
-          `• impede o médico de receber novas ofertas de consulta\n` +
-          `• mantém o histórico de pacientes vinculados (preserva prontuário)\n` +
-          `• pode ser revertida com "Reativar"`
-        : `O médico voltará a receber ofertas de novas consultas.`;
+      const confirmMsg = willDeactivate
+        ? `Desativar o médico ${doctor.name}?\n\nMédicos desativados:\n• Não recebem novas ofertas de consulta\n• Mantêm vínculos com pacientes (histórico preservado)\n• Continuam aparecendo nesta lista para auditoria\n\nVocê pode reativar a qualquer momento.`
+        : `Reativar o médico ${doctor.name}?\n\nMédicos reativados voltam a receber ofertas e a aparecer no dropdown de vincular paciente.`;
 
-      const ok = window.confirm(
-        `Deseja ${action} o médico "${doctor.name}"?\n\n${explanation}`
-      );
-      if (!ok) return;
+      if (!window.confirm(confirmMsg)) return;
 
+      const token = getToken();
       try {
-        const response = await fetch(
-          `${API_URL}/admin/doctors/${doctor.id}/${endpoint}`,
-          {
-            method: "PATCH",
-            headers: { "Authorization": `Bearer ${getToken()}` },
+        const endpoint = willDeactivate ? "deactivate" : "reactivate";
+        const response = await fetch(`${API_URL}/admin/doctors/${doctor.id}/${endpoint}`, {
+          method: "PATCH",
+          headers: {
+            "Content-Type": "application/json",
+            "Authorization": `Bearer ${token}`
           }
-        );
+        });
+
         const data = await response.json();
+
         if (!response.ok) {
           throw new Error(data.error || `Erro ao ${action}`);
         }
@@ -683,10 +987,64 @@
       }
     }
 
+    // ============================================================
+    // NAVEGAÇÃO POR TABS
+    // ============================================================
+
+    function switchPage(pageId) {
+      document.querySelectorAll(".page").forEach((p) => p.classList.remove("active"));
+      const target = document.getElementById(`page-${pageId}`);
+      if (target) target.classList.add("active");
+
+      document.querySelectorAll(".nav-btn").forEach((b) => b.classList.remove("active"));
+      const activeBtn = document.querySelector(`.nav-btn[data-page="${pageId}"]`);
+      if (activeBtn) activeBtn.classList.add("active");
+
+      if (pageId === "overview") {
+        refreshStats();
+      }
+    }
+
+    // ============================================================
+    // STATS DA SEÇÃO INÍCIO
+    // ============================================================
+    // Calcula localmente a partir dos dados já carregados — sem novos endpoints.
+
+    let cachedDoctors = [];
+    let cachedOpen = [];
+    let cachedExpired = [];
+    let cachedHistory = [];
+
+    function refreshStats() {
+      const totalDoctors = cachedDoctors.length;
+      const activeDoctors = cachedDoctors.filter((d) => d.status !== "inactive").length;
+
+      document.getElementById("statDoctorsTotal").textContent = totalDoctors || "—";
+      document.getElementById("statDoctorsActive").textContent = `${activeDoctors} ativos`;
+      document.getElementById("statOpenCount").textContent = cachedOpen.length || "—";
+      document.getElementById("statExpiredCount").textContent = cachedExpired.length || "—";
+      document.getElementById("statHistoryCount").textContent = cachedHistory.length || "—";
+    }
+
+    // ============================================================
+    // LOGIN / LOGOUT
+    // ============================================================
+
     function showDashboard() {
-      document.getElementById("loginSection").classList.add("hidden");
-      document.getElementById("dashboardSection").classList.remove("hidden");
-      document.getElementById("logoutBtn").classList.remove("hidden");
+      document.getElementById("loginScreen").classList.add("hidden");
+      document.getElementById("appLayout").classList.remove("hidden");
+
+      // Tenta extrair email do JWT (decode simples, só pra display)
+      try {
+        const token = getToken();
+        if (token) {
+          const payload = JSON.parse(atob(token.split(".")[1]));
+          document.getElementById("sidebarAdminEmail").textContent = payload.email || "—";
+        }
+      } catch (e) {
+        document.getElementById("sidebarAdminEmail").textContent = "—";
+      }
+
       loadDoctors();
       loadOpenAppointments();
       loadHistoryAppointments();
@@ -694,59 +1052,65 @@
     }
 
     function showLogin() {
-      document.getElementById("loginSection").classList.remove("hidden");
-      document.getElementById("dashboardSection").classList.add("hidden");
-      document.getElementById("logoutBtn").classList.add("hidden");
+      document.getElementById("loginScreen").classList.remove("hidden");
+      document.getElementById("appLayout").classList.add("hidden");
     }
 
     async function adminLogin() {
       clearMessage("loginMessage");
 
       const email = document.getElementById("adminEmail").value.trim();
-      const password = document.getElementById("adminPassword").value.trim();
+      const password = document.getElementById("adminPassword").value;
+
+      if (!email || !password) {
+        setMessage("loginMessage", "error", "Email e senha são obrigatórios.");
+        return;
+      }
 
       try {
         const response = await fetch(`${API_URL}/admin/login`, {
           method: "POST",
-          headers: {
-            "Content-Type": "application/json"
-          },
+          headers: { "Content-Type": "application/json" },
           body: JSON.stringify({ email, password })
         });
 
         const data = await response.json();
 
         if (!response.ok) {
-          throw new Error(data.error || "Erro no login");
+          throw new Error(data.error || "Erro ao entrar");
         }
 
         localStorage.setItem("adminToken", data.token);
         setMessage("loginMessage", "success", "Login realizado com sucesso.");
-        showDashboard();
+        setTimeout(showDashboard, 600);
       } catch (error) {
         setMessage("loginMessage", "error", error.message);
       }
     }
 
+    function logout() {
+      localStorage.removeItem("adminToken");
+      showLogin();
+    }
+
+    // ============================================================
+    // CADASTRAR MÉDICO
+    // ============================================================
+
     async function createDoctor() {
       clearMessage("doctorMessage");
 
-      const token = getToken();
       const name = document.getElementById("doctorName").value.trim();
       const email = document.getElementById("doctorEmail").value.trim();
-      const phone = onlyNumbers(document.getElementById("doctorPhone").value.trim());
-      const password = document.getElementById("doctorPassword").value.trim();
+      const phone = onlyNumbers(document.getElementById("doctorPhone").value);
+      const password = document.getElementById("doctorPassword").value;
 
       if (!name || !email || !password) {
-        setMessage("doctorMessage", "error", "Preencha nome, email e senha.");
+        setMessage("doctorMessage", "error", "Nome, email e senha são obrigatórios.");
         return;
       }
 
-      if (!phone) {
-        setMessage("doctorMessage", "error", "Informe o WhatsApp do médico para ele receber ofertas de consulta.");
-        return;
-      }
-
+      const token = getToken();
       try {
         const response = await fetch(`${API_URL}/doctors`, {
           method: "POST",
@@ -754,13 +1118,7 @@
             "Content-Type": "application/json",
             "Authorization": `Bearer ${token}`
           },
-          body: JSON.stringify({
-            name,
-            email,
-            phone,
-            password,
-            role: "doctor"
-          })
+          body: JSON.stringify({ name, email, phone, password })
         });
 
         const data = await response.json();
@@ -769,8 +1127,7 @@
           throw new Error(data.error || "Erro ao cadastrar médico");
         }
 
-        setMessage("doctorMessage", "success", `Médico cadastrado com sucesso. ID: ${data.doctorId}`);
-
+        setMessage("doctorMessage", "success", "Médico cadastrado com sucesso.");
         document.getElementById("doctorName").value = "";
         document.getElementById("doctorEmail").value = "";
         document.getElementById("doctorPhone").value = "";
@@ -782,22 +1139,62 @@
       }
     }
 
+    // ============================================================
+    // VINCULAR PACIENTE
+    // ============================================================
+
+    async function linkPatient() {
+      clearMessage("patientMessage");
+
+      const token = getToken();
+      const doctorId = document.getElementById("doctorSelect").value;
+      const patientPhone = onlyNumbers(document.getElementById("patientPhone").value);
+      const patientName = document.getElementById("patientName").value.trim();
+
+      if (!doctorId || !patientPhone) {
+        setMessage("patientMessage", "error", "Selecione um médico e informe o telefone do paciente.");
+        return;
+      }
+
+      try {
+        const response = await fetch(`${API_URL}/doctor-patients`, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            "Authorization": `Bearer ${token}`
+          },
+          body: JSON.stringify({ doctorId, patientPhone, patientName })
+        });
+
+        const data = await response.json();
+
+        if (!response.ok) {
+          throw new Error(data.error || "Erro ao vincular paciente");
+        }
+
+        setMessage("patientMessage", "success", "Paciente vinculado com sucesso.");
+        document.getElementById("patientPhone").value = "";
+        document.getElementById("patientName").value = "";
+      } catch (error) {
+        setMessage("patientMessage", "error", error.message);
+      }
+    }
+
+    // ============================================================
+    // LISTAR MÉDICOS
+    // ============================================================
+
     async function loadDoctors() {
       const token = getToken();
       const tableBody = document.getElementById("doctorsTableBody");
-      const doctorSelect = document.getElementById("doctorSelect");
+      const select = document.getElementById("doctorSelect");
 
-      tableBody.innerHTML = "";
       renderRowMessage(tableBody, 7, "Carregando...");
-
-      doctorSelect.innerHTML = `<option value="">Carregando médicos...</option>`;
 
       try {
         const response = await fetch(`${API_URL}/doctors`, {
           method: "GET",
-          headers: {
-            "Authorization": `Bearer ${token}`
-          }
+          headers: { "Authorization": `Bearer ${token}` }
         });
 
         const doctors = await response.json();
@@ -806,42 +1203,52 @@
           throw new Error(doctors.error || "Erro ao carregar médicos");
         }
 
+        cachedDoctors = Array.isArray(doctors) ? doctors : [];
+        refreshStats();
+
+        // [ANTI-XSS] select reconstruído via createElement.
+        // Apenas médicos ativos vão pro dropdown — não faz sentido vincular paciente a desativado.
+        select.replaceChildren();
+        const defaultOpt = document.createElement("option");
+        defaultOpt.value = "";
+        defaultOpt.textContent = "Selecione um médico";
+        select.appendChild(defaultOpt);
+
         if (!doctors.length) {
           renderRowMessage(tableBody, 7, "Nenhum médico cadastrado.");
-          doctorSelect.innerHTML = `<option value="">Nenhum médico cadastrado</option>`;
           return;
         }
 
         tableBody.innerHTML = "";
-        doctorSelect.innerHTML = `<option value="">Selecione um médico</option>`;
 
         doctors.forEach((doctor) => {
-          // [ANTI-XSS] dados do banco (name, email) passam por textContent
-          // Médico inativo: linha em opacity reduzida pra deixar claro no UI
+          // Tabela mostra TODOS, ativos e inativos (com badge de status)
           appendRow(tableBody, [
             doctor.id,
-            doctor.name,
-            doctor.email,
-            doctor.phone || "Não cadastrado",
-            doctor.role,
-            doctor.status,
+            doctor.name || "Sem nome",
+            doctor.email || "-",
+            doctor.phone || "-",
+            doctor.role || "doctor",
+            { html: statusBadge(doctor.status || "active") },
             { node: makeDoctorToggleBtn(doctor) },
           ]);
 
-          // Médico inativo não aparece no dropdown de vincular paciente
-          // (pra não vincular paciente novo a médico desativado)
-          if (doctor.status !== "inactive") {
-            const option = document.createElement("option");
-            option.value = doctor.id;
-            option.textContent = `${doctor.name} - ${doctor.email}${doctor.phone ? " - " + doctor.phone : ""}`;
-            doctorSelect.appendChild(option);
+          // Dropdown só inclui ativos
+          if ((doctor.status || "active") !== "inactive") {
+            const opt = document.createElement("option");
+            opt.value = doctor.id;
+            opt.textContent = `${doctor.name} - ${doctor.email}`;
+            select.appendChild(opt);
           }
         });
       } catch (error) {
         renderRowMessage(tableBody, 7, error.message);
-        doctorSelect.innerHTML = `<option value="">Erro ao carregar médicos</option>`;
       }
     }
+
+    // ============================================================
+    // AGENDAMENTOS EM ABERTO (futuras)
+    // ============================================================
 
     async function loadOpenAppointments() {
       const token = getToken();
@@ -850,13 +1257,9 @@
       renderRowMessage(tableBody, 9, "Carregando...");
 
       try {
-        // [TIME] /open/future filtra automaticamente agendamentos cujo horário
-        // ainda não passou. Os que passaram vão pra /expired pelo cron.
         const response = await fetch(`${API_URL}/admin/appointments/open/future`, {
           method: "GET",
-          headers: {
-            "Authorization": `Bearer ${token}`
-          }
+          headers: { "Authorization": `Bearer ${token}` }
         });
 
         const appointments = await response.json();
@@ -864,6 +1267,9 @@
         if (!response.ok) {
           throw new Error(appointments.error || "Erro ao carregar agendamentos");
         }
+
+        cachedOpen = Array.isArray(appointments) ? appointments : [];
+        refreshStats();
 
         if (!appointments.length) {
           renderRowMessage(tableBody, 9, "Nenhum agendamento em aberto.");
@@ -873,11 +1279,6 @@
         tableBody.innerHTML = "";
 
         appointments.forEach((appointment) => {
-          // [ANTI-XSS] appointment.name e appointment.reason vêm do paciente
-          // via WhatsApp — vetor primário de XSS. statusBadge() gera HTML
-          // controlado pelo nosso código (passa via {html: ...}).
-          // [TIME] makeTimeCell formata appointmentAt em pt-BR + texto original
-          // [AGE] formatAge mostra idade ("35 anos"), "Recusou" (=0) ou "—" (null)
           appendRow(tableBody, [
             appointment.id,
             appointment.name || "Sem nome",
@@ -895,9 +1296,10 @@
       }
     }
 
-    // Carrega histórico: agendamentos aceitos, concluídos ou cancelados.
-    // Usa o endpoint /admin/appointments/all e filtra no cliente — preserva
-    // performance (poucos registros) e mantém o endpoint simples no backend.
+    // ============================================================
+    // HISTÓRICO
+    // ============================================================
+
     async function loadHistoryAppointments() {
       const token = getToken();
       const tableBody = document.getElementById("historyTableBody");
@@ -907,9 +1309,7 @@
       try {
         const response = await fetch(`${API_URL}/admin/appointments/all`, {
           method: "GET",
-          headers: {
-            "Authorization": `Bearer ${token}`
-          }
+          headers: { "Authorization": `Bearer ${token}` }
         });
 
         const appointments = await response.json();
@@ -918,10 +1318,11 @@
           throw new Error(appointments.error || "Erro ao carregar histórico");
         }
 
-        // Filtra: tudo que NÃO está em aberto (já tem decisão de médico ou foi cancelado)
-        // 'expirada' fica fora — tem tabela separada
         const historyStatuses = new Set(["aceita", "concluida", "cancelada"]);
         const history = appointments.filter((a) => historyStatuses.has(a.status));
+
+        cachedHistory = history;
+        refreshStats();
 
         if (!history.length) {
           renderRowMessage(tableBody, 10, "Nenhum registro no histórico.");
@@ -935,10 +1336,6 @@
             ? new Date(appointment.acceptedAt).toLocaleString("pt-BR")
             : "-";
 
-          // [ANTI-XSS] dados do banco escapados via appendRow
-          // [TIME] makeTimeCell formata horário com appointmentAt + texto original
-          // [AGE] formatAge mostra idade ou indicação
-          // Botão Cancelar só pra status 'aceita' (concluída ou cancelada não voltam)
           const actionCell = appointment.status === "aceita"
             ? { node: makeCancelAppointmentBtn(appointment) }
             : "-";
@@ -961,9 +1358,10 @@
       }
     }
 
-    // [TIME] Carrega agendamentos expirados (cron os move pra 'expirada'
-    // 1h após o appointmentAt sem aceite). Tabela separada porque é um
-    // estado terminal mas não-histórico — paciente foi avisado e pode remarcar.
+    // ============================================================
+    // EXPIRADOS
+    // ============================================================
+
     async function loadExpiredAppointments() {
       const token = getToken();
       const tableBody = document.getElementById("expiredTableBody");
@@ -973,9 +1371,7 @@
       try {
         const response = await fetch(`${API_URL}/admin/appointments/expired`, {
           method: "GET",
-          headers: {
-            "Authorization": `Bearer ${token}`
-          }
+          headers: { "Authorization": `Bearer ${token}` }
         });
 
         const appointments = await response.json();
@@ -983,6 +1379,9 @@
         if (!response.ok) {
           throw new Error(appointments.error || "Erro ao carregar expirados");
         }
+
+        cachedExpired = Array.isArray(appointments) ? appointments : [];
+        refreshStats();
 
         if (!appointments.length) {
           renderRowMessage(tableBody, 7, "Nenhum agendamento expirado.");
@@ -1005,53 +1404,6 @@
       } catch (error) {
         renderRowMessage(tableBody, 7, error.message);
       }
-    }
-
-    async function linkPatient() {
-      clearMessage("patientMessage");
-
-      const token = getToken();
-      const doctorId = document.getElementById("doctorSelect").value;
-      const patientName = document.getElementById("patientName").value.trim();
-      const patientPhone = onlyNumbers(document.getElementById("patientPhone").value.trim());
-
-      if (!doctorId || !patientPhone) {
-        setMessage("patientMessage", "error", "Selecione o médico e informe o telefone do paciente.");
-        return;
-      }
-
-      try {
-        const response = await fetch(`${API_URL}/doctor-patients`, {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-            "Authorization": `Bearer ${token}`
-          },
-          body: JSON.stringify({
-            doctorId,
-            patientPhone,
-            patientName
-          })
-        });
-
-        const data = await response.json();
-
-        if (!response.ok) {
-          throw new Error(data.error || "Erro ao vincular paciente");
-        }
-
-        setMessage("patientMessage", "success", "Paciente vinculado ao médico com sucesso.");
-
-        document.getElementById("patientName").value = "";
-        document.getElementById("patientPhone").value = "";
-      } catch (error) {
-        setMessage("patientMessage", "error", error.message);
-      }
-    }
-
-    function logout() {
-      localStorage.removeItem("adminToken");
-      showLogin();
     }
 
     window.onload = function () {
