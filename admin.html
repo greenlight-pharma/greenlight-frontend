@@ -304,6 +304,7 @@
         <h2>Agendamentos em Aberto</h2>
         <div class="small">Consultas pendentes ou oferecidas, com horário ainda no futuro. Aguardando médico aceitar.</div>
         <button class="primary" onclick="loadOpenAppointments()">Atualizar Agendamentos</button>
+        <button class="btn-danger" onclick="archiveBatch('future')">Arquivar todos</button>
 
         <table>
           <thead>
@@ -331,6 +332,7 @@
         <h2>Agendamentos Expirados</h2>
         <div class="small">Consultas que passaram do horário sem médico aceitar. O paciente foi notificado e pode remarcar.</div>
         <button class="primary" onclick="loadExpiredAppointments()">Atualizar Expirados</button>
+        <button class="btn-danger" onclick="archiveBatch('expired')">Arquivar todos</button>
 
         <table>
           <thead>
@@ -356,6 +358,7 @@
         <h2>Aceitas e Histórico</h2>
         <div class="small">Consultas aceitas por médicos, concluídas ou canceladas.</div>
         <button class="primary" onclick="loadHistoryAppointments()">Atualizar Histórico</button>
+        <button class="btn-danger" onclick="archiveBatch('history')">Arquivar todos</button>
 
         <table>
           <thead>
@@ -593,6 +596,54 @@
         loadHistoryAppointments();
       } catch (error) {
         alert(`Erro ao cancelar: ${error.message}`);
+      }
+    }
+
+    // [ARCHIVE] Arquiva agendamentos em batch.
+    // scope: 'future' (em aberto), 'expired' (expirados), 'history' (aceitas/concluidas/canceladas)
+    // Operação reversível só via SQL — confirma com texto claro antes.
+    async function archiveBatch(scope) {
+      const labels = {
+        future: { title: "Agendamentos em Aberto", warning: "ATENÇÃO: agendamentos em aberto podem estar aguardando médico aceitar. Arquivar agora vai escondê-los — pacientes podem ficar sem atendimento. Tem certeza?" },
+        expired: { title: "Agendamentos Expirados", warning: "Arquivar todos os agendamentos expirados? Eles somem da lista mas continuam no banco para auditoria." },
+        history: { title: "Aceitas e Histórico", warning: "Arquivar todo o histórico (aceitas, concluídas, canceladas)? Eles somem da lista mas continuam no banco para auditoria." }
+      };
+
+      const label = labels[scope];
+      if (!label) {
+        alert("Scope inválido.");
+        return;
+      }
+
+      if (!window.confirm(label.warning)) {
+        return;
+      }
+
+      const token = getToken();
+      try {
+        const response = await fetch(`${API_URL}/admin/appointments/archive-batch`, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            "Authorization": `Bearer ${token}`
+          },
+          body: JSON.stringify({ scope })
+        });
+
+        const data = await response.json();
+
+        if (!response.ok) {
+          throw new Error(data.error || "Erro ao arquivar");
+        }
+
+        alert(`✓ ${data.archivedCount} agendamento(s) arquivado(s) em "${label.title}".\n\nVocê pode acessá-los via SQL na tabela appointments (filtrar por "archivedAt" IS NOT NULL).`);
+
+        // Recarrega a tabela correspondente pra refletir o arquivamento
+        if (scope === "future") loadOpenAppointments();
+        else if (scope === "expired") loadExpiredAppointments();
+        else if (scope === "history") loadHistoryAppointments();
+      } catch (error) {
+        alert(`Erro ao arquivar: ${error.message}`);
       }
     }
 
