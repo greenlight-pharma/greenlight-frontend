@@ -765,6 +765,10 @@
           <span class="nav-icon">💊</span>
           <span>Medicações</span>
         </button>
+        <button class="nav-btn" data-page="account" onclick="switchPage('account')">
+          <span class="nav-icon">🔐</span>
+          <span>Alterar Senha</span>
+        </button>
       </nav>
 
       <div class="sidebar-footer">
@@ -943,6 +947,32 @@
               </tbody>
             </table>
           </div>
+        </div>
+      </section>
+
+      <!-- Página: MINHA CONTA -->
+      <section id="page-account" class="page">
+        <div class="page-header">
+          <h2>Minha Conta</h2>
+          <div class="page-subtitle">Gerencie suas credenciais de acesso</div>
+        </div>
+
+        <div class="card" style="max-width:500px;">
+          <h3>Alterar Senha</h3>
+          <div class="card-subtitle">Você precisa informar sua senha atual antes de definir uma nova.</div>
+
+          <label>Senha atual</label>
+          <input id="currentPassword" type="password" placeholder="Sua senha atual" autocomplete="current-password" />
+
+          <label>Nova senha</label>
+          <input id="newPassword" type="password" placeholder="Mínimo 8 caracteres" autocomplete="new-password" />
+
+          <label>Confirmar nova senha</label>
+          <input id="confirmPassword" type="password" placeholder="Repita a nova senha" autocomplete="new-password" />
+
+          <button class="primary" onclick="changePassword()">Alterar Senha</button>
+
+          <div id="passwordMessage" class="message"></div>
         </div>
       </section>
 
@@ -1638,6 +1668,64 @@
         });
       } catch (error) {
         renderRowMessage(tableBody, 5, error.message);
+      }
+    }
+
+    // ============================================================
+    // MINHA CONTA — ALTERAR SENHA
+    // ============================================================
+
+    async function changePassword() {
+      clearMessage("passwordMessage");
+
+      const currentPassword = document.getElementById("currentPassword").value;
+      const newPassword = document.getElementById("newPassword").value;
+      const confirmPassword = document.getElementById("confirmPassword").value;
+
+      // Validações client-side (fail fast antes de chamar API)
+      if (!currentPassword || !newPassword || !confirmPassword) {
+        setMessage("passwordMessage", "error", "Preencha todos os campos.");
+        return;
+      }
+
+      if (newPassword.length < 8) {
+        setMessage("passwordMessage", "error", "A nova senha precisa ter pelo menos 8 caracteres.");
+        return;
+      }
+
+      if (newPassword !== confirmPassword) {
+        setMessage("passwordMessage", "error", "A nova senha e a confirmação não coincidem.");
+        return;
+      }
+
+      if (newPassword === currentPassword) {
+        setMessage("passwordMessage", "error", "A nova senha precisa ser diferente da atual.");
+        return;
+      }
+
+      const token = getToken();
+      try {
+        const response = await fetch(`${API_URL}/auth/password`, {
+          method: "PATCH",
+          headers: {
+            "Content-Type": "application/json",
+            "Authorization": `Bearer ${token}`
+          },
+          body: JSON.stringify({ currentPassword, newPassword })
+        });
+
+        const data = await response.json();
+
+        if (!response.ok) {
+          throw new Error(data.error || "Erro ao alterar senha");
+        }
+
+        setMessage("passwordMessage", "success", "✓ Senha alterada com sucesso.");
+        document.getElementById("currentPassword").value = "";
+        document.getElementById("newPassword").value = "";
+        document.getElementById("confirmPassword").value = "";
+      } catch (error) {
+        setMessage("passwordMessage", "error", error.message);
       }
     }
 
