@@ -3,12 +3,17 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Health OS - Painel Médico</title>
+  <title>Vytal OS - Painel Médico</title>
 
   <style>
+    /* ============================================================
+       VYTAL OS — PAINEL MÉDICO
+       Layout sidebar fixa + área de conteúdo com tabs
+       ============================================================ */
+
     * {
       box-sizing: border-box;
-      font-family: Arial, Helvetica, sans-serif;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
     }
 
     body {
@@ -17,177 +22,426 @@
       color: #1f2933;
     }
 
-    header {
-      background: #1d4ed8;
-      color: white;
-      padding: 18px 24px;
+    .hidden {
+      display: none !important;
+    }
+
+    /* ----- LOGIN (centralizado, sem sidebar) ----- */
+
+    #loginScreen {
       display: flex;
-      justify-content: space-between;
       align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      padding: 16px;
     }
 
-    header h1 {
-      margin: 0;
-      font-size: 22px;
-    }
-
-    header button {
+    .login-card {
       background: white;
+      padding: 32px;
+      border-radius: 12px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+      width: 100%;
+      max-width: 400px;
+    }
+
+    .login-card h1 {
+      margin: 0 0 8px 0;
       color: #1d4ed8;
+      font-size: 24px;
+    }
+
+    .login-card .subtitle {
+      color: #6b7280;
+      font-size: 14px;
+      margin-bottom: 24px;
+    }
+
+    /* ----- APP LAYOUT (sidebar + content) ----- */
+
+    #appLayout {
+      display: flex;
+      min-height: 100vh;
+    }
+
+    .sidebar {
+      width: 240px;
+      background: #1e293b;
+      color: white;
+      display: flex;
+      flex-direction: column;
+      position: fixed;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      z-index: 10;
+    }
+
+    .sidebar-header {
+      padding: 24px 20px;
+      border-bottom: 1px solid #334155;
+    }
+
+    .sidebar-header .brand {
+      font-size: 18px;
+      font-weight: 700;
+      letter-spacing: -0.3px;
+    }
+
+    .sidebar-header .brand-sub {
+      font-size: 12px;
+      color: #94a3b8;
+      margin-top: 4px;
+    }
+
+    .sidebar-nav {
+      flex: 1;
+      padding: 16px 8px;
+    }
+
+    .sidebar-nav button {
+      width: 100%;
+      text-align: left;
+      background: transparent;
+      color: #cbd5e1;
       border: none;
-      padding: 10px 14px;
+      padding: 12px 14px;
       border-radius: 8px;
       cursor: pointer;
-      font-weight: bold;
+      font-size: 14px;
+      font-weight: 500;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 4px;
+      transition: background 0.15s, color 0.15s;
     }
 
-    main {
-      max-width: 1150px;
-      margin: 28px auto;
-      padding: 0 16px;
+    .sidebar-nav button:hover {
+      background: #334155;
+      color: white;
     }
 
-    .card {
-      background: white;
-      border-radius: 14px;
-      padding: 22px;
-      margin-bottom: 22px;
-      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.06);
+    .sidebar-nav button.active {
+      background: #1d4ed8;
+      color: white;
     }
 
-    .card h2 {
-      margin-top: 0;
-      font-size: 20px;
-      color: #1d4ed8;
+    .sidebar-nav .nav-icon {
+      font-size: 18px;
+      width: 22px;
+      text-align: center;
     }
 
-    label {
-      display: block;
-      margin-top: 12px;
-      margin-bottom: 6px;
-      font-weight: bold;
+    .sidebar-footer {
+      padding: 16px 20px;
+      border-top: 1px solid #334155;
+    }
+
+    .sidebar-footer .doctor-name {
+      font-size: 14px;
+      font-weight: 600;
+      color: white;
+      margin-bottom: 2px;
+    }
+
+    .sidebar-footer .doctor-email {
+      font-size: 12px;
+      color: #94a3b8;
+      margin-bottom: 12px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    .sidebar-footer button {
+      width: 100%;
+      background: transparent;
+      color: #cbd5e1;
+      border: 1px solid #475569;
+      padding: 8px 12px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 13px;
+      font-weight: 500;
+    }
+
+    .sidebar-footer button:hover {
+      background: #334155;
+      color: white;
+    }
+
+    /* Área de conteúdo principal */
+    .content {
+      flex: 1;
+      margin-left: 240px;
+      padding: 32px 40px;
+      max-width: 1300px;
+    }
+
+    .page-header {
+      margin-bottom: 24px;
+    }
+
+    .page-header h2 {
+      margin: 0 0 4px 0;
+      font-size: 24px;
+      color: #1f2933;
+    }
+
+    .page-header .page-subtitle {
+      color: #6b7280;
       font-size: 14px;
     }
 
-    input,
-    select,
-    textarea {
+    .page {
+      display: none;
+    }
+
+    .page.active {
+      display: block;
+    }
+
+    /* ----- CARDS ----- */
+
+    .card {
+      background: white;
+      padding: 24px;
+      border-radius: 12px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+      margin-bottom: 20px;
+    }
+
+    .card h3 {
+      margin: 0 0 16px 0;
+      font-size: 18px;
+      color: #1f2933;
+    }
+
+    .card .card-subtitle {
+      color: #6b7280;
+      font-size: 14px;
+      margin-bottom: 16px;
+      margin-top: -8px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+
+    @media (max-width: 1000px) {
+      .grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* ----- STAT CARDS ----- */
+
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 16px;
+      margin-bottom: 24px;
+    }
+
+    .stat-card {
+      background: white;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    }
+
+    .stat-card .stat-label {
+      font-size: 13px;
+      color: #6b7280;
+      margin-bottom: 8px;
+    }
+
+    .stat-card .stat-value {
+      font-size: 28px;
+      font-weight: 700;
+      color: #1d4ed8;
+    }
+
+    /* ----- FORMS ----- */
+
+    label {
+      display: block;
+      margin-top: 14px;
+      font-weight: 600;
+      font-size: 13px;
+      color: #374151;
+    }
+
+    input, textarea, select {
       width: 100%;
-      padding: 12px;
-      border: 1px solid #cbd5e1;
+      padding: 10px 12px;
+      margin-top: 6px;
+      border: 1px solid #d1d5db;
       border-radius: 8px;
-      font-size: 15px;
+      font-size: 14px;
+      background: white;
+    }
+
+    input:focus, textarea:focus, select:focus {
+      outline: none;
+      border-color: #1d4ed8;
+      box-shadow: 0 0 0 3px rgba(29, 78, 216, 0.1);
     }
 
     textarea {
-      min-height: 90px;
+      min-height: 70px;
       resize: vertical;
+      font-family: inherit;
     }
+
+    /* ----- BUTTONS ----- */
 
     button.primary {
       background: #1d4ed8;
       color: white;
       border: none;
-      padding: 12px 18px;
+      padding: 10px 18px;
       border-radius: 8px;
-      margin-top: 16px;
       cursor: pointer;
-      font-weight: bold;
-      font-size: 15px;
+      font-weight: 600;
+      font-size: 14px;
+      margin-top: 16px;
     }
 
     button.primary:hover {
       background: #1e40af;
     }
 
-    .grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 22px;
+    button.primary:disabled {
+      background: #94a3b8;
+      cursor: not-allowed;
     }
 
-    .hidden {
-      display: none;
-    }
-
-    .message {
-      margin-top: 14px;
-      padding: 12px;
-      border-radius: 8px;
-      font-size: 14px;
-      display: none;
-    }
-
-    .success {
-      display: block;
-      background: #dcfce7;
-      color: #166534;
-      border: 1px solid #86efac;
-    }
-
-    .error {
-      display: block;
-      background: #fee2e2;
-      color: #991b1b;
-      border: 1px solid #fecaca;
-    }
+    /* ----- TABELAS ----- */
 
     table {
       width: 100%;
       border-collapse: collapse;
-      margin-top: 14px;
+      margin-top: 12px;
       font-size: 14px;
     }
 
-    th,
-    td {
-      border-bottom: 1px solid #e5e7eb;
-      padding: 10px;
+    th, td {
       text-align: left;
-      vertical-align: top;
+      padding: 10px 12px;
+      border-bottom: 1px solid #e5e7eb;
     }
 
     th {
-      background: #f8fafc;
-      color: #334155;
+      font-weight: 600;
+      color: #4b5563;
+      background: #f9fafb;
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: 0.3px;
     }
+
+    tr:last-child td {
+      border-bottom: none;
+    }
+
+    /* ----- HELPERS ----- */
 
     .small {
-      font-size: 13px;
-      color: #64748b;
+      font-size: 12px;
+      color: #6b7280;
+      margin-top: 4px;
     }
 
-    .doctor-info {
+    .message {
+      margin-top: 12px;
+      padding: 10px 14px;
+      border-radius: 8px;
       font-size: 14px;
-      margin-top: 6px;
-      color: #dbeafe;
     }
 
-    @media (max-width: 850px) {
-      .grid {
-        grid-template-columns: 1fr;
+    .message.success {
+      background: #d1fae5;
+      color: #065f46;
+    }
+
+    .message.error {
+      background: #fee2e2;
+      color: #991b1b;
+    }
+
+    .status-pill {
+      display: inline-block;
+      padding: 4px 10px;
+      border-radius: 12px;
+      font-size: 12px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.3px;
+    }
+
+    .status-ativo {
+      background: #d1fae5;
+      color: #065f46;
+    }
+
+    .status-pausado {
+      background: #fef3c7;
+      color: #92400e;
+    }
+
+    .status-encerrado {
+      background: #e5e7eb;
+      color: #374151;
+    }
+
+    /* ----- MOBILE ----- */
+
+    @media (max-width: 768px) {
+      .sidebar {
+        position: relative;
+        width: 100%;
+        height: auto;
       }
 
-      header {
+      .sidebar-nav {
+        display: flex;
+        overflow-x: auto;
+        padding: 8px;
+      }
+
+      .sidebar-nav button {
+        flex-shrink: 0;
+        margin-bottom: 0;
+        margin-right: 4px;
+        white-space: nowrap;
+      }
+
+      .sidebar-footer {
+        display: none;
+      }
+
+      #appLayout {
         flex-direction: column;
-        align-items: flex-start;
-        gap: 12px;
+      }
+
+      .content {
+        margin-left: 0;
+        padding: 16px;
       }
     }
   </style>
 </head>
 <body>
-  <header>
-    <div>
-      <h1>Health OS - Painel Médico</h1>
-      <div id="doctorInfo" class="doctor-info">Login médico</div>
-    </div>
-    <button id="logoutBtn" class="hidden" onclick="logout()">Sair</button>
-  </header>
 
-  <main>
-    <section id="loginSection" class="card">
-      <h2>Login do Médico</h2>
+  <!-- ====== LOGIN ====== -->
+  <div id="loginScreen">
+    <div class="login-card">
+      <h1>Vytal OS</h1>
+      <div class="subtitle">Painel Médico</div>
 
       <label>Email</label>
       <input id="doctorEmail" type="email" placeholder="Email cadastrado pelo administrador" />
@@ -195,54 +449,87 @@
       <label>Senha</label>
       <input id="doctorPassword" type="password" placeholder="Senha cadastrada pelo administrador" />
 
-      <button class="primary" onclick="doctorLogin()">Entrar</button>
+      <button class="primary" onclick="doctorLogin()" style="width:100%;">Entrar</button>
 
       <div id="loginMessage" class="message"></div>
-    </section>
+    </div>
+  </div>
 
-    <section id="dashboardSection" class="hidden">
-      <div class="grid">
-        <div class="card">
-          <h2>Cadastrar Medicação</h2>
+  <!-- ====== APP (sidebar + conteúdo) ====== -->
+  <div id="appLayout" class="hidden">
 
-          <label>Paciente vinculado</label>
-          <select id="patientSelect" onchange="fillPatientFields()">
-            <option value="">Carregando pacientes...</option>
-          </select>
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <div class="sidebar-header">
+        <div class="brand">Vytal OS</div>
+        <div class="brand-sub">Painel Médico</div>
+      </div>
 
-          <label>Nome do paciente</label>
-          <input id="patientName" type="text" placeholder="Nome do paciente" />
+      <nav class="sidebar-nav">
+        <button class="nav-btn active" data-page="overview" onclick="switchPage('overview')">
+          <span class="nav-icon">🏠</span>
+          <span>Início</span>
+        </button>
+        <button class="nav-btn" data-page="patients" onclick="switchPage('patients')">
+          <span class="nav-icon">👥</span>
+          <span>Meus Pacientes</span>
+        </button>
+        <button class="nav-btn" data-page="medications" onclick="switchPage('medications')">
+          <span class="nav-icon">💊</span>
+          <span>Medicações</span>
+        </button>
+      </nav>
 
-          <label>Telefone do paciente</label>
-          <input id="patientPhone" type="text" placeholder="Ex: 5512999999999" />
+      <div class="sidebar-footer">
+        <div class="doctor-name" id="sidebarDoctorName">Médico</div>
+        <div class="doctor-email" id="sidebarDoctorEmail">email@exemplo.com</div>
+        <button onclick="logout()">Sair</button>
+      </div>
+    </aside>
 
-          <label>Nome da medicação</label>
-          <input id="medicationName" type="text" placeholder="Ex: Canabidiol" />
+    <!-- Conteúdo principal -->
+    <main class="content">
 
-          <label>Dose</label>
-          <input id="dose" type="text" placeholder="Ex: 5 gotas ou conforme prescrição" />
+      <!-- Página: INÍCIO -->
+      <section id="page-overview" class="page active">
+        <div class="page-header">
+          <h2>Início</h2>
+          <div class="page-subtitle">Visão geral do seu atendimento</div>
+        </div>
 
-          <label>Horários dos lembretes</label>
-          <input id="scheduleTimes" type="text" placeholder="Ex: 08:00,20:00" />
-          <div class="small">Separe os horários por vírgula. Exemplo: 08:00,14:00,20:00</div>
-
-          <label>Data de início</label>
-          <input id="startDate" type="date" />
-
-          <label>Data de término</label>
-          <input id="endDate" type="date" />
-          <div class="small">Pode deixar em branco se for uso contínuo.</div>
-
-          <label>Orientações</label>
-          <textarea id="instructions" placeholder="Ex: Usar após refeições. Observar sonolência. Retornar em 30 dias."></textarea>
-
-          <button class="primary" onclick="createMedication()">Cadastrar Medicação</button>
-
-          <div id="medicationMessage" class="message"></div>
+        <div class="stats-grid">
+          <div class="stat-card">
+            <div class="stat-label">Pacientes vinculados</div>
+            <div class="stat-value" id="statPatients">—</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-label">Medicações ativas</div>
+            <div class="stat-value" id="statMedicationsActive">—</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-label">Total de medicações</div>
+            <div class="stat-value" id="statMedicationsTotal">—</div>
+          </div>
         </div>
 
         <div class="card">
+          <h3>Atalhos rápidos</h3>
+          <div class="card-subtitle">Acesse as principais ações pelo menu lateral</div>
+          <ul style="line-height:1.8; color:#374151;">
+            <li><strong>👥 Meus Pacientes</strong> — veja seus pacientes vinculados</li>
+            <li><strong>💊 Medicações</strong> — cadastre e gerencie prescrições</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- Página: PACIENTES -->
+      <section id="page-patients" class="page">
+        <div class="page-header">
           <h2>Meus Pacientes</h2>
+          <div class="page-subtitle">Pacientes vinculados a você pelo administrador</div>
+        </div>
+
+        <div class="card">
           <button class="primary" onclick="loadPatients()">Atualizar Pacientes</button>
 
           <table>
@@ -259,33 +546,81 @@
             </tbody>
           </table>
         </div>
-      </div>
+      </section>
 
-      <div class="card">
-        <h2>Medicações Cadastradas</h2>
-        <button class="primary" onclick="loadMedications()">Atualizar Medicações</button>
+      <!-- Página: MEDICAÇÕES -->
+      <section id="page-medications" class="page">
+        <div class="page-header">
+          <h2>Medicações</h2>
+          <div class="page-subtitle">Cadastre prescrições e veja medicações ativas</div>
+        </div>
 
-        <table>
-          <thead>
-            <tr>
-              <th>Paciente</th>
-              <th>Telefone</th>
-              <th>Medicação</th>
-              <th>Dose</th>
-              <th>Horários</th>
-              <th>Status</th>
-              <th>Ações</th>
-            </tr>
-          </thead>
-          <tbody id="medicationsTableBody">
-            <tr>
-              <td colspan="7">Nenhuma medicação carregada.</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    </section>
-  </main>
+        <div class="grid">
+          <div class="card">
+            <h3>Cadastrar Medicação</h3>
+
+            <label>Paciente vinculado</label>
+            <select id="patientSelect" onchange="fillPatientFields()">
+              <option value="">Carregando pacientes...</option>
+            </select>
+
+            <label>Nome do paciente</label>
+            <input id="patientName" type="text" placeholder="Nome do paciente" />
+
+            <label>Telefone do paciente</label>
+            <input id="patientPhone" type="text" placeholder="Ex: 5512999999999" />
+
+            <label>Nome da medicação</label>
+            <input id="medicationName" type="text" placeholder="Ex: Canabidiol" />
+
+            <label>Dose</label>
+            <input id="dose" type="text" placeholder="Ex: 5 gotas ou conforme prescrição" />
+
+            <label>Horários dos lembretes</label>
+            <input id="scheduleTimes" type="text" placeholder="Ex: 08:00,20:00" />
+            <div class="small">Separe os horários por vírgula. Exemplo: 08:00,14:00,20:00</div>
+
+            <label>Data de início</label>
+            <input id="startDate" type="date" />
+
+            <label>Data de término</label>
+            <input id="endDate" type="date" />
+            <div class="small">Pode deixar em branco se for uso contínuo.</div>
+
+            <label>Orientações</label>
+            <textarea id="instructions" placeholder="Ex: Usar após refeições. Observar sonolência. Retornar em 30 dias."></textarea>
+
+            <button class="primary" onclick="createMedication()">Cadastrar Medicação</button>
+
+            <div id="medicationMessage" class="message"></div>
+          </div>
+
+          <div class="card">
+            <h3>Medicações Cadastradas</h3>
+            <button class="primary" onclick="loadMedications()">Atualizar Medicações</button>
+
+            <table>
+              <thead>
+                <tr>
+                  <th>Paciente</th>
+                  <th>Medicação</th>
+                  <th>Dose</th>
+                  <th>Horários</th>
+                  <th>Status</th>
+                </tr>
+              </thead>
+              <tbody id="medicationsTableBody">
+                <tr>
+                  <td colspan="5">Nenhuma medicação carregada.</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+    </main>
+  </div>
 
   <script>
     const API_URL = "https://greenlight-backend-production-35c8.up.railway.app";
@@ -303,8 +638,6 @@
     }
 
     // [ANTI-XSS] Cria uma <tr> com células de texto, escapando automaticamente.
-    // Aceita strings (texto seguro), { html: "..." } (HTML hardcoded controlado)
-    // ou { node: elemento } (DOM element pronto, ex: botão com listener).
     function appendRow(tbody, cells) {
       const tr = document.createElement("tr");
       for (const cell of cells) {
@@ -338,22 +671,62 @@
     function setMessage(elementId, type, text) {
       const el = document.getElementById(elementId);
       el.className = "message " + type;
-      el.innerText = text;
+      el.textContent = text;
     }
 
     function clearMessage(elementId) {
       const el = document.getElementById(elementId);
       el.className = "message";
-      el.innerText = "";
+      el.textContent = "";
     }
+
+    // ============================================================
+    // NAVEGAÇÃO POR TABS
+    // ============================================================
+
+    function switchPage(pageId) {
+      document.querySelectorAll(".page").forEach((p) => p.classList.remove("active"));
+      const target = document.getElementById(`page-${pageId}`);
+      if (target) target.classList.add("active");
+
+      document.querySelectorAll(".nav-btn").forEach((b) => b.classList.remove("active"));
+      const activeBtn = document.querySelector(`.nav-btn[data-page="${pageId}"]`);
+      if (activeBtn) activeBtn.classList.add("active");
+
+      if (pageId === "overview") {
+        refreshStats();
+      }
+    }
+
+    // ============================================================
+    // STATS DA SEÇÃO INÍCIO
+    // ============================================================
+
+    let cachedPatients = [];
+    let cachedMedications = [];
+
+    function refreshStats() {
+      document.getElementById("statPatients").textContent = cachedPatients.length;
+
+      const totalMeds = cachedMedications.length;
+      const activeMeds = cachedMedications.filter((m) => m.status === "ativo").length;
+
+      document.getElementById("statMedicationsTotal").textContent = totalMeds;
+      document.getElementById("statMedicationsActive").textContent = activeMeds;
+    }
+
+    // ============================================================
+    // LOGIN / LOGOUT
+    // ============================================================
 
     function showDashboard() {
       const doctor = getDoctor();
 
-      document.getElementById("loginSection").classList.add("hidden");
-      document.getElementById("dashboardSection").classList.remove("hidden");
-      document.getElementById("logoutBtn").classList.remove("hidden");
-      document.getElementById("doctorInfo").innerText = doctor.name ? `${doctor.name} - ${doctor.email}` : "Médico logado";
+      document.getElementById("loginScreen").classList.add("hidden");
+      document.getElementById("appLayout").classList.remove("hidden");
+
+      document.getElementById("sidebarDoctorName").textContent = doctor.name || "Médico";
+      document.getElementById("sidebarDoctorEmail").textContent = doctor.email || "";
 
       setTodayAsDefault();
       loadPatients();
@@ -361,10 +734,8 @@
     }
 
     function showLogin() {
-      document.getElementById("loginSection").classList.remove("hidden");
-      document.getElementById("dashboardSection").classList.add("hidden");
-      document.getElementById("logoutBtn").classList.add("hidden");
-      document.getElementById("doctorInfo").innerText = "Login médico";
+      document.getElementById("loginScreen").classList.remove("hidden");
+      document.getElementById("appLayout").classList.add("hidden");
     }
 
     function setTodayAsDefault() {
@@ -378,10 +749,15 @@
       clearMessage("loginMessage");
 
       const email = document.getElementById("doctorEmail").value.trim();
-      const password = document.getElementById("doctorPassword").value.trim();
+      const password = document.getElementById("doctorPassword").value;
+
+      if (!email || !password) {
+        setMessage("loginMessage", "error", "Email e senha são obrigatórios.");
+        return;
+      }
 
       try {
-        const response = await fetch(`${API_URL}/auth/login`, {
+        const response = await fetch(`${API_URL}/doctor/login`, {
           method: "POST",
           headers: {
             "Content-Type": "application/json"
@@ -392,29 +768,42 @@
         const data = await response.json();
 
         if (!response.ok) {
-          throw new Error(data.error || "Erro no login");
+          throw new Error(data.error || "Erro ao entrar");
         }
 
         localStorage.setItem("doctorToken", data.token);
-        localStorage.setItem("doctorData", JSON.stringify(data.doctor || {}));
+        localStorage.setItem("doctorData", JSON.stringify({
+          doctorId: data.doctorId,
+          name: data.name,
+          email: data.email
+        }));
 
-        setMessage("loginMessage", "success", "Login realizado com sucesso.");
-        showDashboard();
+        setMessage("loginMessage", "success", `Bem-vindo(a) ${data.name}!`);
+        setTimeout(showDashboard, 600);
       } catch (error) {
         setMessage("loginMessage", "error", error.message);
       }
     }
 
+    function logout() {
+      localStorage.removeItem("doctorToken");
+      localStorage.removeItem("doctorData");
+      showLogin();
+    }
+
+    // ============================================================
+    // PACIENTES
+    // ============================================================
+
     async function loadPatients() {
       const token = getToken();
       const tableBody = document.getElementById("patientsTableBody");
-      const patientSelect = document.getElementById("patientSelect");
+      const select = document.getElementById("patientSelect");
 
       renderRowMessage(tableBody, 2, "Carregando...");
-      patientSelect.innerHTML = `<option value="">Carregando pacientes...</option>`;
 
       try {
-        const response = await fetch(`${API_URL}/my-patients`, {
+        const response = await fetch(`${API_URL}/doctor/patients`, {
           method: "GET",
           headers: {
             "Authorization": `Bearer ${token}`
@@ -427,78 +816,90 @@
           throw new Error(patients.error || "Erro ao carregar pacientes");
         }
 
+        cachedPatients = Array.isArray(patients) ? patients : [];
+        refreshStats();
+
+        // [ANTI-XSS] select preenchido via createElement
+        select.replaceChildren();
+        const defaultOpt = document.createElement("option");
+        defaultOpt.value = "";
+        defaultOpt.textContent = "Selecione um paciente";
+        select.appendChild(defaultOpt);
+
         if (!patients.length) {
-          renderRowMessage(tableBody, 2, "Nenhum paciente vinculado a este médico.");
-          patientSelect.innerHTML = `<option value="">Nenhum paciente vinculado</option>`;
+          renderRowMessage(tableBody, 2, "Nenhum paciente vinculado.");
           return;
         }
 
         tableBody.innerHTML = "";
-        patientSelect.innerHTML = `<option value="">Selecione um paciente</option>`;
 
-        patients.forEach((patient) => {
-          // [ANTI-XSS] patientName e patientPhone vêm do banco — usar textContent
+        patients.forEach((p) => {
           appendRow(tableBody, [
-            patient.patientName || "Sem nome",
-            patient.patientPhone,
+            p.name || "Sem nome",
+            p.phone || "-",
           ]);
 
-          const option = document.createElement("option");
-          option.value = patient.patientPhone;
-          option.dataset.name = patient.patientName || "";
-          option.textContent = `${patient.patientName || "Sem nome"} - ${patient.patientPhone}`;
-          patientSelect.appendChild(option);
+          const opt = document.createElement("option");
+          opt.value = p.phone;
+          opt.textContent = `${p.name || "Sem nome"} - ${p.phone || "-"}`;
+          opt.dataset.name = p.name || "";
+          select.appendChild(opt);
         });
       } catch (error) {
         renderRowMessage(tableBody, 2, error.message);
-        patientSelect.innerHTML = `<option value="">Erro ao carregar pacientes</option>`;
       }
     }
 
     function fillPatientFields() {
       const select = document.getElementById("patientSelect");
-      const selected = select.options[select.selectedIndex];
+      const selectedOption = select.options[select.selectedIndex];
 
-      document.getElementById("patientPhone").value = select.value || "";
-      document.getElementById("patientName").value = selected?.dataset?.name || "";
+      if (!selectedOption.value) {
+        return;
+      }
+
+      document.getElementById("patientName").value = selectedOption.dataset.name || "";
+      document.getElementById("patientPhone").value = selectedOption.value;
     }
+
+    // ============================================================
+    // MEDICAÇÕES
+    // ============================================================
 
     async function createMedication() {
       clearMessage("medicationMessage");
 
       const token = getToken();
       const patientName = document.getElementById("patientName").value.trim();
-      const phone = document.getElementById("patientPhone").value.trim();
+      const patientPhone = document.getElementById("patientPhone").value.trim();
       const medicationName = document.getElementById("medicationName").value.trim();
       const dose = document.getElementById("dose").value.trim();
       const scheduleTimes = document.getElementById("scheduleTimes").value.trim();
       const startDate = document.getElementById("startDate").value;
       const endDate = document.getElementById("endDate").value;
       const instructions = document.getElementById("instructions").value.trim();
-      const doctor = getDoctor();
 
-      if (!phone || !medicationName || !scheduleTimes) {
-        setMessage("medicationMessage", "error", "Informe paciente, medicação e horários.");
+      if (!patientPhone || !medicationName || !dose || !scheduleTimes) {
+        setMessage("medicationMessage", "error", "Telefone, medicação, dose e horários são obrigatórios.");
         return;
       }
 
       try {
-        const response = await fetch(`${API_URL}/medications`, {
+        const response = await fetch(`${API_URL}/doctor/medications`, {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
             "Authorization": `Bearer ${token}`
           },
           body: JSON.stringify({
-            phone,
             patientName,
+            patientPhone,
             medicationName,
             dose,
             scheduleTimes,
-            startDate,
-            endDate,
-            instructions,
-            prescribedBy: doctor.name || ""
+            startDate: startDate || null,
+            endDate: endDate || null,
+            instructions
           })
         });
 
@@ -508,14 +909,13 @@
           throw new Error(data.error || "Erro ao cadastrar medicação");
         }
 
-        setMessage("medicationMessage", "success", `Medicação cadastrada com sucesso. ID: ${data.medicationId}`);
+        setMessage("medicationMessage", "success", "Medicação cadastrada!");
 
         document.getElementById("medicationName").value = "";
         document.getElementById("dose").value = "";
         document.getElementById("scheduleTimes").value = "";
         document.getElementById("endDate").value = "";
         document.getElementById("instructions").value = "";
-        setTodayAsDefault();
 
         loadMedications();
       } catch (error) {
@@ -527,10 +927,10 @@
       const token = getToken();
       const tableBody = document.getElementById("medicationsTableBody");
 
-      renderRowMessage(tableBody, 7, "Carregando...");
+      renderRowMessage(tableBody, 5, "Carregando...");
 
       try {
-        const response = await fetch(`${API_URL}/medications`, {
+        const response = await fetch(`${API_URL}/doctor/medications`, {
           method: "GET",
           headers: {
             "Authorization": `Bearer ${token}`
@@ -543,73 +943,28 @@
           throw new Error(medications.error || "Erro ao carregar medicações");
         }
 
+        cachedMedications = Array.isArray(medications) ? medications : [];
+        refreshStats();
+
         if (!medications.length) {
-          renderRowMessage(tableBody, 7, "Nenhuma medicação cadastrada.");
+          renderRowMessage(tableBody, 5, "Nenhuma medicação cadastrada.");
           return;
         }
 
         tableBody.innerHTML = "";
 
         medications.forEach((med) => {
-          // [ANTI-XSS] patientName, medicationName, dose etc. vêm do banco
-          // (alguns originados de input do paciente). Usar textContent via appendRow.
-          // Botão de apagar: addEventListener evita inline onclick (CSP-friendly)
-          // e evita interpolação de variável em HTML.
-          const deleteBtn = document.createElement("button");
-          deleteBtn.textContent = "Apagar";
-          deleteBtn.style.cssText = "background:#dc2626;color:white;border:none;padding:8px 10px;border-radius:6px;cursor:pointer;font-weight:bold";
-          deleteBtn.addEventListener("click", () => deleteMedication(med.id));
-
+          const statusHtml = `<span class="status-pill status-${med.status || 'ativo'}">${med.status || 'ativo'}</span>`;
           appendRow(tableBody, [
             med.patientName || "Sem nome",
-            med.phone,
-            med.medicationName,
+            med.medicationName || "-",
             med.dose || "-",
-            med.scheduleTimes,
-            med.status,
-            { node: deleteBtn },
+            med.scheduleTimes || "-",
+            { html: statusHtml },
           ]);
         });
       } catch (error) {
-        renderRowMessage(tableBody, 7, error.message);
-      }
-    }
-
-    function logout() {
-      localStorage.removeItem("doctorToken");
-      localStorage.removeItem("doctorData");
-      showLogin();
-    }
-
-    async function deleteMedication(id) {
-      const confirmDelete = confirm(
-        "Deseja realmente apagar esta medicação?"
-      );
-
-      if (!confirmDelete) {
-        return;
-      }
-
-      try {
-        const token = getToken();
-
-        const response = await fetch(`${API_URL}/medications/${id}`, {
-          method: "DELETE",
-          headers: {
-            "Authorization": `Bearer ${token}`
-          }
-        });
-
-        const data = await response.json();
-
-        if (!response.ok) {
-          throw new Error(data.error || "Erro ao apagar medicação");
-        }
-
-        alert("Medicação apagada com sucesso.");
-        loadMedications();
-      } catch (error) {
-        alert(error.message);
+        renderRowMessage(tableBody, 5, error.message);
       }
     }
 
