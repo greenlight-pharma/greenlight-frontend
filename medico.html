@@ -757,7 +757,7 @@
       }
 
       try {
-        const response = await fetch(`${API_URL}/doctor/login`, {
+        const response = await fetch(`${API_URL}/auth/login`, {
           method: "POST",
           headers: {
             "Content-Type": "application/json"
@@ -771,14 +771,18 @@
           throw new Error(data.error || "Erro ao entrar");
         }
 
+        // [FIX-LOGIN-SHAPE] Backend retorna { token, doctor: {...} }
+        // Antes o frontend tentava data.doctorId direto (esperando shape antigo).
+        const doctorPayload = data.doctor || {};
+
         localStorage.setItem("doctorToken", data.token);
         localStorage.setItem("doctorData", JSON.stringify({
-          doctorId: data.doctorId,
-          name: data.name,
-          email: data.email
+          doctorId: doctorPayload.id,
+          name: doctorPayload.name,
+          email: doctorPayload.email
         }));
 
-        setMessage("loginMessage", "success", `Bem-vindo(a) ${data.name}!`);
+        setMessage("loginMessage", "success", `Bem-vindo(a) ${doctorPayload.name || ""}!`);
         setTimeout(showDashboard, 600);
       } catch (error) {
         setMessage("loginMessage", "error", error.message);
@@ -803,7 +807,7 @@
       renderRowMessage(tableBody, 2, "Carregando...");
 
       try {
-        const response = await fetch(`${API_URL}/doctor/patients`, {
+        const response = await fetch(`${API_URL}/my-patients`, {
           method: "GET",
           headers: {
             "Authorization": `Bearer ${token}`
@@ -816,7 +820,14 @@
           throw new Error(patients.error || "Erro ao carregar pacientes");
         }
 
-        cachedPatients = Array.isArray(patients) ? patients : [];
+        // [FIX-PATIENTS-SHAPE] Backend retorna campos da tabela doctor_patients:
+        // { patientName, patientPhone }. Frontend usa { name, phone } — adapta.
+        const normalized = (Array.isArray(patients) ? patients : []).map((p) => ({
+          name: p.patientName || p.name || null,
+          phone: p.patientPhone || p.phone || null,
+        }));
+
+        cachedPatients = normalized;
         refreshStats();
 
         // [ANTI-XSS] select preenchido via createElement
@@ -826,14 +837,14 @@
         defaultOpt.textContent = "Selecione um paciente";
         select.appendChild(defaultOpt);
 
-        if (!patients.length) {
+        if (!normalized.length) {
           renderRowMessage(tableBody, 2, "Nenhum paciente vinculado.");
           return;
         }
 
         tableBody.innerHTML = "";
 
-        patients.forEach((p) => {
+        normalized.forEach((p) => {
           appendRow(tableBody, [
             p.name || "Sem nome",
             p.phone || "-",
@@ -885,15 +896,16 @@
       }
 
       try {
-        const response = await fetch(`${API_URL}/doctor/medications`, {
+        const response = await fetch(`${API_URL}/medications`, {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
             "Authorization": `Bearer ${token}`
           },
           body: JSON.stringify({
+            // [FIX-MED-BODY] Backend espera "phone" (não "patientPhone")
+            phone: patientPhone,
             patientName,
-            patientPhone,
             medicationName,
             dose,
             scheduleTimes,
@@ -930,7 +942,7 @@
       renderRowMessage(tableBody, 5, "Carregando...");
 
       try {
-        const response = await fetch(`${API_URL}/doctor/medications`, {
+        const response = await fetch(`${API_URL}/medications`, {
           method: "GET",
           headers: {
             "Authorization": `Bearer ${token}`
