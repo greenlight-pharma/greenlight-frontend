@@ -398,6 +398,179 @@
       color: #374151;
     }
 
+    /* ----- ANÁLISE CLÍNICA ----- */
+
+    .disclaimer-box {
+      background: #fef3c7;
+      border-left: 4px solid #f59e0b;
+      padding: 14px 18px;
+      border-radius: 8px;
+      margin-bottom: 20px;
+      font-size: 14px;
+      line-height: 1.5;
+      color: #78350f;
+    }
+
+    .disclaimer-box strong {
+      display: block;
+      margin-bottom: 4px;
+    }
+
+    .analysis-section {
+      background: white;
+      padding: 24px;
+      border-radius: 12px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+      margin-bottom: 16px;
+    }
+
+    .analysis-section h4 {
+      margin: 0 0 12px 0;
+      font-size: 16px;
+      color: #1d4ed8;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .analysis-section ul {
+      margin: 0;
+      padding-left: 20px;
+      line-height: 1.7;
+      color: #374151;
+    }
+
+    .analysis-section li {
+      margin-bottom: 4px;
+    }
+
+    .analysis-section .resumo-caso {
+      background: #eff6ff;
+      padding: 12px 14px;
+      border-radius: 8px;
+      color: #1e3a8a;
+      line-height: 1.6;
+    }
+
+    .hypothesis-card {
+      border: 1px solid #e5e7eb;
+      border-radius: 8px;
+      padding: 12px 14px;
+      margin-bottom: 10px;
+    }
+
+    .hypothesis-card .hyp-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 6px;
+    }
+
+    .hypothesis-card .hyp-name {
+      font-weight: 700;
+      color: #1f2933;
+    }
+
+    .hypothesis-card .hyp-prob {
+      font-size: 12px;
+      font-weight: 600;
+      padding: 3px 10px;
+      border-radius: 12px;
+      text-transform: uppercase;
+    }
+
+    .hyp-prob-alta {
+      background: #fee2e2;
+      color: #991b1b;
+    }
+
+    .hyp-prob-moderada {
+      background: #fef3c7;
+      color: #92400e;
+    }
+
+    .hyp-prob-baixa {
+      background: #e0e7ff;
+      color: #3730a3;
+    }
+
+    .hypothesis-card .hyp-just {
+      color: #4b5563;
+      font-size: 14px;
+      line-height: 1.5;
+    }
+
+    .red-flags-box {
+      background: #fef2f2;
+      border-left: 4px solid #dc2626;
+      padding: 12px 16px;
+      border-radius: 8px;
+      margin-bottom: 16px;
+    }
+
+    .red-flags-box h4 {
+      color: #991b1b !important;
+    }
+
+    .red-flags-box ul {
+      color: #7f1d1d;
+    }
+
+    .analysis-meta {
+      font-size: 12px;
+      color: #6b7280;
+      margin-top: 12px;
+      padding-top: 12px;
+      border-top: 1px solid #e5e7eb;
+    }
+
+    .conduta-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+
+    @media (max-width: 800px) {
+      .conduta-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .btn-generate {
+      background: #1d4ed8;
+      color: white;
+      border: none;
+      padding: 6px 12px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 13px;
+      font-weight: 500;
+    }
+
+    .btn-generate:hover {
+      background: #1e40af;
+    }
+
+    .btn-generate:disabled {
+      background: #94a3b8;
+      cursor: not-allowed;
+    }
+
+    .btn-view {
+      background: #10b981;
+      color: white;
+      border: none;
+      padding: 6px 12px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 13px;
+      font-weight: 500;
+    }
+
+    .btn-view:hover {
+      background: #059669;
+    }
+
     /* ----- MOBILE ----- */
 
     @media (max-width: 768px) {
@@ -474,6 +647,10 @@
           <span class="nav-icon">👥</span>
           <span>Meus Pacientes</span>
         </button>
+        <button class="nav-btn" data-page="analysis" onclick="switchPage('analysis')">
+          <span class="nav-icon">🩺</span>
+          <span>Análise Clínica</span>
+        </button>
         <button class="nav-btn" data-page="medications" onclick="switchPage('medications')">
           <span class="nav-icon">💊</span>
           <span>Medicações</span>
@@ -546,6 +723,46 @@
             </tbody>
           </table>
         </div>
+      </section>
+
+      <!-- Página: ANÁLISE CLÍNICA -->
+      <section id="page-analysis" class="page">
+        <div class="page-header">
+          <h2>Análise Clínica</h2>
+          <div class="page-subtitle">Análise de apoio baseada na triagem do paciente</div>
+        </div>
+
+        <div class="disclaimer-box">
+          <strong>⚠️ Análise gerada por inteligência artificial.</strong>
+          As hipóteses e condutas sugeridas são apoio ao raciocínio clínico, não substituem
+          sua avaliação. A decisão final é sempre sua, como médico responsável.
+        </div>
+
+        <div class="card">
+          <h3>Suas consultas aceitas</h3>
+          <div class="card-subtitle">Selecione um caso para ver ou gerar a análise clínica</div>
+          <button class="primary" onclick="loadMyAppointments()">Atualizar Lista</button>
+
+          <table>
+            <thead>
+              <tr>
+                <th>Paciente</th>
+                <th>Idade</th>
+                <th>Motivo</th>
+                <th>Análise</th>
+                <th>Ações</th>
+              </tr>
+            </thead>
+            <tbody id="appointmentsAnalysisTableBody">
+              <tr>
+                <td colspan="5">Nenhuma consulta carregada.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- Container onde a análise renderiza após clicar "Gerar" / "Ver" -->
+        <div id="analysisResultContainer"></div>
       </section>
 
       <!-- Página: MEDICAÇÕES -->
@@ -695,6 +912,8 @@
 
       if (pageId === "overview") {
         refreshStats();
+      } else if (pageId === "analysis") {
+        loadMyAppointments();
       }
     }
 
@@ -871,6 +1090,314 @@
 
       document.getElementById("patientName").value = selectedOption.dataset.name || "";
       document.getElementById("patientPhone").value = selectedOption.value;
+    }
+
+    // ============================================================
+    // ANÁLISE CLÍNICA
+    // ============================================================
+    //
+    // Fluxo:
+    // 1. switchPage('analysis') → carrega lista de consultas aceitas
+    // 2. Médico clica "Gerar análise" → POST endpoint, mostra resultado
+    // 3. Médico clica "Ver análise" se já existe → GET retorna cached, mostra
+    // 4. Resultado renderizado no container abaixo da tabela
+
+    let cachedMyAppointments = [];
+
+    async function loadMyAppointments() {
+      const token = getToken();
+      const tableBody = document.getElementById("appointmentsAnalysisTableBody");
+
+      renderRowMessage(tableBody, 5, "Carregando...");
+
+      try {
+        const response = await fetch(`${API_URL}/my-appointments`, {
+          method: "GET",
+          headers: { "Authorization": `Bearer ${token}` }
+        });
+
+        const appointments = await response.json();
+
+        if (!response.ok) {
+          throw new Error(appointments.error || "Erro ao carregar consultas");
+        }
+
+        cachedMyAppointments = Array.isArray(appointments) ? appointments : [];
+
+        if (!cachedMyAppointments.length) {
+          renderRowMessage(tableBody, 5, "Você ainda não aceitou nenhuma consulta.");
+          return;
+        }
+
+        tableBody.innerHTML = "";
+
+        cachedMyAppointments.forEach((apt) => {
+          const idade = apt.patientAge ? `${apt.patientAge} anos`
+            : apt.patientAge === 0 ? "Recusou"
+            : "—";
+
+          const reasonShort = (apt.reason || "-").length > 80
+            ? (apt.reason || "").substring(0, 80) + "..."
+            : (apt.reason || "-");
+
+          const hasAnalysis = !!apt.analysisId;
+          const statusCell = hasAnalysis
+            ? "✅ Análise pronta"
+            : "Não gerada";
+
+          // Botão Gerar (se não tem) ou Ver (se já tem)
+          const btn = document.createElement("button");
+          if (hasAnalysis) {
+            btn.textContent = "Ver análise";
+            btn.className = "btn-view";
+          } else {
+            btn.textContent = "Gerar análise";
+            btn.className = "btn-generate";
+          }
+          btn.addEventListener("click", () => generateOrShowAnalysis(apt.id, btn));
+
+          appendRow(tableBody, [
+            apt.name || "Sem nome",
+            idade,
+            reasonShort,
+            statusCell,
+            { node: btn },
+          ]);
+        });
+      } catch (error) {
+        renderRowMessage(tableBody, 5, error.message);
+      }
+    }
+
+    async function generateOrShowAnalysis(appointmentId, btn) {
+      const container = document.getElementById("analysisResultContainer");
+      const originalText = btn.textContent;
+      btn.disabled = true;
+      btn.textContent = "Carregando...";
+
+      try {
+        const token = getToken();
+        const response = await fetch(
+          `${API_URL}/appointments/${appointmentId}/clinical-analysis`,
+          {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+              "Authorization": `Bearer ${token}`
+            }
+          }
+        );
+
+        const data = await response.json();
+
+        if (!response.ok) {
+          throw new Error(data.error || "Erro ao gerar análise");
+        }
+
+        renderAnalysis(container, data, appointmentId);
+
+        // Após gerar pela primeira vez, recarrega a lista pra atualizar o status
+        if (!data.cached) {
+          loadMyAppointments();
+        }
+
+        // Rola até o resultado
+        container.scrollIntoView({ behavior: "smooth", block: "start" });
+      } catch (error) {
+        container.innerHTML = "";
+        const errBox = document.createElement("div");
+        errBox.className = "analysis-section";
+        errBox.style.borderLeft = "4px solid #dc2626";
+        errBox.style.background = "#fef2f2";
+        errBox.textContent = "Erro: " + error.message;
+        container.appendChild(errBox);
+      } finally {
+        btn.disabled = false;
+        btn.textContent = originalText;
+      }
+    }
+
+    // [ANTI-XSS] Renderiza análise estruturada via createElement.
+    // Conteúdo vem da IA — é texto, mas sempre tratamos como dado não-confiável.
+    function renderAnalysis(container, data, appointmentId) {
+      container.replaceChildren();
+
+      const c = data.content || {};
+      const apt = cachedMyAppointments.find((a) => a.id === appointmentId);
+
+      // Header com nome do paciente
+      if (apt) {
+        const header = document.createElement("div");
+        header.className = "analysis-section";
+        header.style.background = "#1e293b";
+        header.style.color = "white";
+        const h3 = document.createElement("h3");
+        h3.style.margin = "0";
+        h3.style.color = "white";
+        h3.textContent = `Análise — ${apt.name || "Paciente"}${apt.patientAge ? `, ${apt.patientAge} anos` : ""}`;
+        header.appendChild(h3);
+        container.appendChild(header);
+      }
+
+      // Resumo do caso
+      if (c.resumoCaso) {
+        const sec = document.createElement("div");
+        sec.className = "analysis-section";
+        sec.innerHTML = '<h4>📋 Resumo do caso</h4>';
+        const p = document.createElement("div");
+        p.className = "resumo-caso";
+        p.textContent = c.resumoCaso;
+        sec.appendChild(p);
+        container.appendChild(sec);
+      }
+
+      // Red Flags (se existem)
+      if (Array.isArray(c.redFlags) && c.redFlags.length > 0) {
+        const sec = document.createElement("div");
+        sec.className = "analysis-section red-flags-box";
+        sec.innerHTML = '<h4>🚨 Sinais de alerta (red flags)</h4>';
+        const ul = document.createElement("ul");
+        c.redFlags.forEach((item) => {
+          const li = document.createElement("li");
+          li.textContent = item;
+          ul.appendChild(li);
+        });
+        sec.appendChild(ul);
+        container.appendChild(sec);
+      }
+
+      // Pontos de atenção
+      if (Array.isArray(c.pontosAtencao) && c.pontosAtencao.length > 0) {
+        const sec = document.createElement("div");
+        sec.className = "analysis-section";
+        sec.innerHTML = '<h4>👀 Pontos de atenção</h4>';
+        const ul = document.createElement("ul");
+        c.pontosAtencao.forEach((item) => {
+          const li = document.createElement("li");
+          li.textContent = item;
+          ul.appendChild(li);
+        });
+        sec.appendChild(ul);
+        container.appendChild(sec);
+      }
+
+      // Hipóteses diagnósticas
+      if (Array.isArray(c.hipotesesDiagnosticas) && c.hipotesesDiagnosticas.length > 0) {
+        const sec = document.createElement("div");
+        sec.className = "analysis-section";
+        sec.innerHTML = '<h4>🔍 Hipóteses diagnósticas</h4>';
+
+        c.hipotesesDiagnosticas.forEach((h) => {
+          const card = document.createElement("div");
+          card.className = "hypothesis-card";
+
+          const headerDiv = document.createElement("div");
+          headerDiv.className = "hyp-header";
+
+          const name = document.createElement("div");
+          name.className = "hyp-name";
+          name.textContent = h.hipotese || "—";
+          headerDiv.appendChild(name);
+
+          const prob = document.createElement("span");
+          const probVal = (h.probabilidade || "moderada").toLowerCase();
+          prob.className = `hyp-prob hyp-prob-${probVal}`;
+          prob.textContent = probVal;
+          headerDiv.appendChild(prob);
+
+          card.appendChild(headerDiv);
+
+          if (h.justificativa) {
+            const just = document.createElement("div");
+            just.className = "hyp-just";
+            just.textContent = h.justificativa;
+            card.appendChild(just);
+          }
+
+          sec.appendChild(card);
+        });
+
+        container.appendChild(sec);
+      }
+
+      // Conduta sugerida (grid de subseções)
+      if (c.condutaSugerida) {
+        const sec = document.createElement("div");
+        sec.className = "analysis-section";
+        sec.innerHTML = '<h4>🩺 Conduta sugerida</h4>';
+
+        const grid = document.createElement("div");
+        grid.className = "conduta-grid";
+
+        const subsec = (titulo, items) => {
+          if (!Array.isArray(items) || items.length === 0) return null;
+          const div = document.createElement("div");
+          const h = document.createElement("strong");
+          h.textContent = titulo;
+          h.style.display = "block";
+          h.style.marginBottom = "6px";
+          h.style.color = "#374151";
+          div.appendChild(h);
+          const ul = document.createElement("ul");
+          ul.style.paddingLeft = "20px";
+          ul.style.margin = "0";
+          items.forEach((i) => {
+            const li = document.createElement("li");
+            li.textContent = i;
+            ul.appendChild(li);
+          });
+          div.appendChild(ul);
+          return div;
+        };
+
+        const cs = c.condutaSugerida;
+        [
+          subsec("Anamnese adicional", cs.anamnese),
+          subsec("Exame físico", cs.exameFisico),
+          subsec("Exames complementares", cs.examesComplementares),
+          subsec("Tratamento inicial", cs.tratamentoInicial),
+        ].forEach((el) => { if (el) grid.appendChild(el); });
+
+        sec.appendChild(grid);
+
+        if (cs.encaminhamento) {
+          const enc = document.createElement("div");
+          enc.style.marginTop = "16px";
+          enc.style.padding = "10px 14px";
+          enc.style.background = "#eff6ff";
+          enc.style.borderRadius = "8px";
+          enc.style.color = "#1e3a8a";
+          const strong = document.createElement("strong");
+          strong.textContent = "Encaminhamento: ";
+          enc.appendChild(strong);
+          enc.appendChild(document.createTextNode(cs.encaminhamento));
+          sec.appendChild(enc);
+        }
+
+        container.appendChild(sec);
+      }
+
+      // Observações gerais
+      if (c.observacoesGerais) {
+        const sec = document.createElement("div");
+        sec.className = "analysis-section";
+        sec.innerHTML = '<h4>💭 Observações gerais</h4>';
+        const p = document.createElement("div");
+        p.style.color = "#374151";
+        p.style.lineHeight = "1.6";
+        p.textContent = c.observacoesGerais;
+        sec.appendChild(p);
+        container.appendChild(sec);
+      }
+
+      // Metadata
+      const meta = document.createElement("div");
+      meta.className = "analysis-meta";
+      const generatedDate = data.generatedAt
+        ? new Date(data.generatedAt).toLocaleString("pt-BR", { timeZone: "America/Sao_Paulo" })
+        : "agora";
+      meta.textContent = `Análise ${data.cached ? "carregada do registro" : "gerada"} em ${generatedDate} usando ${data.modelUsed || "IA"}.`;
+      container.appendChild(meta);
     }
 
     // ============================================================
