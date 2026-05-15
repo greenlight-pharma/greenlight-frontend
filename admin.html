@@ -831,6 +831,27 @@
           </div>
         </div>
 
+        <!-- [VERTICAL] Distribuição de pacientes por vertical de entrada -->
+        <div class="card">
+          <h3>Origem dos Pacientes</h3>
+          <div class="card-subtitle">Vertical pela qual o paciente entrou na plataforma (landing page).</div>
+          <table>
+            <thead>
+              <tr>
+                <th>Vertical</th>
+                <th>Entradas</th>
+                <th>Agendamentos</th>
+                <th>Concluídas</th>
+              </tr>
+            </thead>
+            <tbody id="verticalStatsBody">
+              <tr>
+                <td colspan="4">Carregando...</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
         <div class="card">
           <h3>Atalhos rápidos</h3>
           <div class="card-subtitle">Acesse as principais áreas pelo menu lateral</div>
@@ -1413,6 +1434,7 @@
       loadHistoryAppointments();
       loadExpiredAppointments();
       loadConcludedAppointments();
+      loadVerticalStats();
     }
 
     function showLogin() {
@@ -1835,6 +1857,61 @@
         });
       } catch (error) {
         renderRowMessage(tableBody, 7, error.message);
+      }
+    }
+
+    // ============================================================
+    // STATS DE VERTICAIS
+    // ============================================================
+
+    // Mapeia chave da vertical pra label legível
+    const VERTICAL_LABELS = {
+      consulta_clinica: "Consulta Clínica",
+      checkup: "Check-up",
+      emagrecimento: "Emagrecimento e Obesidade",
+      saude_mental: "Saúde Mental",
+      saude_homem: "Saúde do Homem",
+      dor_cronica: "Dor Crônica",
+      diabetes_hipertensao: "Diabetes e Hipertensão",
+    };
+
+    async function loadVerticalStats() {
+      const tableBody = document.getElementById("verticalStatsBody");
+      if (!tableBody) return;
+
+      renderRowMessage(tableBody, 4, "Carregando...");
+
+      const token = getToken();
+      try {
+        const response = await fetch(`${API_URL}/admin/stats/verticals`, {
+          method: "GET",
+          headers: { "Authorization": `Bearer ${token}` }
+        });
+
+        const stats = await response.json();
+        if (!response.ok) {
+          throw new Error(stats.error || "Erro ao carregar stats");
+        }
+
+        const list = Array.isArray(stats) ? stats : [];
+
+        if (!list.length) {
+          renderRowMessage(tableBody, 4, "Nenhuma entrada registrada ainda. Quando pacientes começarem a chegar pela landing, os dados aparecem aqui.");
+          return;
+        }
+
+        tableBody.innerHTML = "";
+
+        list.forEach((row) => {
+          appendRow(tableBody, [
+            VERTICAL_LABELS[row.vertical] || row.vertical || "—",
+            row.entries || 0,
+            row.appointments || 0,
+            row.concluded || 0,
+          ]);
+        });
+      } catch (error) {
+        renderRowMessage(tableBody, 4, error.message);
       }
     }
 
