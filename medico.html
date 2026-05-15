@@ -1264,6 +1264,20 @@
           <div id="patientMedicationsList">Carregando...</div>
         </div>
 
+        <!-- Card: Exames -->
+        <div class="card">
+          <h3>Exames</h3>
+          <div class="card-subtitle">Resultados de exames anexados em PDF. Médicos vinculados podem visualizar; só quem anexou pode apagar.</div>
+
+          <div style="display:flex; gap:8px; flex-wrap:wrap; align-items:center; margin-bottom:12px;">
+            <input type="file" id="examFileInput" accept="application/pdf" style="display:none" onchange="onExamFileSelected(event)" />
+            <button class="primary" onclick="document.getElementById('examFileInput').click()">📎 Anexar Exame (PDF)</button>
+            <span id="examUploadStatus" style="font-size:13px; color:#6b7280;"></span>
+          </div>
+
+          <div id="patientExamsList">Carregando...</div>
+        </div>
+
         <!-- Card: Análises clínicas -->
         <div class="card">
           <h3>Análises clínicas</h3>
@@ -1359,7 +1373,9 @@
             <input id="patientPhone" type="text" placeholder="Ex: 5512999999999" />
 
             <label>Nome da medicação</label>
-            <input id="medicationName" type="text" placeholder="Ex: Canabidiol" />
+            <input id="medicationName" type="text" placeholder="Comece a digitar... (ex: Losartana)" autocomplete="off" list="medicationOptions" oninput="onMedicationInput(this)" />
+            <datalist id="medicationOptions"></datalist>
+            <div class="small">Sugestões baseadas na RENAME 2024. Se não encontrar, pode digitar livre.</div>
 
             <label>Dose</label>
             <input id="dose" type="text" placeholder="Ex: 5 gotas ou conforme prescrição" />
@@ -1455,7 +1471,8 @@
       <input id="editPatientName" type="text" />
 
       <label>Nome da medicação</label>
-      <input id="editMedicationName" type="text" />
+      <input id="editMedicationName" type="text" autocomplete="off" list="editMedicationOptions" oninput="onEditMedicationInput(this)" />
+      <datalist id="editMedicationOptions"></datalist>
 
       <label>Dose</label>
       <input id="editDose" type="text" />
@@ -1878,6 +1895,7 @@
       document.getElementById("patientBasicData").textContent = "Carregando...";
       document.getElementById("patientAppointmentsList").textContent = "Carregando...";
       document.getElementById("patientMedicationsList").textContent = "Carregando...";
+      document.getElementById("patientExamsList").textContent = "Carregando...";
       document.getElementById("patientAnalysesList").textContent = "Carregando...";
 
       try {
@@ -1898,6 +1916,7 @@
         renderPatientBasicData(data.patient, data.linkedToMe);
         renderPatientAppointments(data.appointments || []);
         renderPatientMedications(data.medications || []);
+        renderPatientExams(data.exams || []);
         renderPatientAnalyses(data.analyses || []);
       } catch (error) {
         document.getElementById("patientDetailName").textContent = "Erro";
@@ -1905,6 +1924,7 @@
         document.getElementById("patientBasicData").textContent = "—";
         document.getElementById("patientAppointmentsList").textContent = "—";
         document.getElementById("patientMedicationsList").textContent = "—";
+        document.getElementById("patientExamsList").textContent = "—";
         document.getElementById("patientAnalysesList").textContent = "—";
       }
     }
@@ -2093,6 +2113,227 @@
 
         container.appendChild(item);
       });
+    }
+
+    // ============================================================
+    // [EXAMS] EXAMES DO PACIENTE (Fase 1: anexar/baixar)
+    // ============================================================
+
+    function renderPatientExams(exams) {
+      const container = document.getElementById("patientExamsList");
+      container.replaceChildren();
+
+      if (!exams.length) {
+        container.textContent = "Nenhum exame anexado ainda.";
+        return;
+      }
+
+      exams.forEach((exam) => {
+        const item = makePatientItem(exam.isMine);
+
+        const header = document.createElement("div");
+        header.className = "item-header";
+
+        const title = document.createElement("div");
+        title.className = "item-title";
+        title.textContent = `📄 ${exam.fileName || "Exame"}`;
+        header.appendChild(title);
+        header.appendChild(makeBadge(exam.isMine));
+
+        const meta = document.createElement("div");
+        meta.className = "item-meta";
+        const metaParts = [];
+        if (exam.doctorName) metaParts.push(`Anexado por: ${exam.doctorName}`);
+        const uploadedFmt = exam.uploadedAt
+          ? new Date(exam.uploadedAt).toLocaleString("pt-BR", { timeZone: "America/Sao_Paulo" })
+          : "—";
+        metaParts.push(`Em: ${uploadedFmt}`);
+        if (exam.fileSize) {
+          const sizeKB = Math.round(exam.fileSize / 1024);
+          const sizeStr = sizeKB > 1024 ? `${(sizeKB / 1024).toFixed(1)}MB` : `${sizeKB}KB`;
+          metaParts.push(sizeStr);
+        }
+        meta.textContent = metaParts.join(" • ");
+
+        item.appendChild(header);
+        item.appendChild(meta);
+
+        if (exam.notes) {
+          const body = document.createElement("div");
+          body.className = "item-body";
+          body.textContent = exam.notes;
+          item.appendChild(body);
+        }
+
+        // Botões de ação
+        const actions = document.createElement("div");
+        actions.style.marginTop = "10px";
+        actions.style.display = "flex";
+        actions.style.gap = "8px";
+        actions.style.flexWrap = "wrap";
+
+        const downloadBtn = document.createElement("button");
+        downloadBtn.textContent = "📥 Baixar/Visualizar";
+        downloadBtn.className = "btn-view";
+        downloadBtn.addEventListener("click", () => downloadExam(exam.id, exam.fileName));
+        actions.appendChild(downloadBtn);
+
+        if (exam.isMine) {
+          const deleteBtn = document.createElement("button");
+          deleteBtn.textContent = "🗑️ Apagar";
+          deleteBtn.className = "btn-icon btn-archive";
+          deleteBtn.style.padding = "6px 12px";
+          deleteBtn.addEventListener("click", () => deleteExam(exam.id, exam.fileName));
+          actions.appendChild(deleteBtn);
+        }
+
+        item.appendChild(actions);
+        container.appendChild(item);
+      });
+    }
+
+    // Handler do input file. Lê arquivo, valida, converte pra base64, upload.
+    async function onExamFileSelected(event) {
+      const file = event.target.files[0];
+      if (!file) return;
+
+      // Reset do input pra permitir selecionar mesmo arquivo de novo depois
+      event.target.value = "";
+
+      const statusEl = document.getElementById("examUploadStatus");
+
+      // Validações client-side
+      if (file.type !== "application/pdf") {
+        statusEl.style.color = "#dc2626";
+        statusEl.textContent = "Apenas PDFs são aceitos.";
+        return;
+      }
+
+      const MAX_SIZE = 10 * 1024 * 1024;
+      if (file.size > MAX_SIZE) {
+        statusEl.style.color = "#dc2626";
+        statusEl.textContent = `Arquivo muito grande. Máximo: 10MB.`;
+        return;
+      }
+
+      statusEl.style.color = "#6b7280";
+      statusEl.textContent = `Enviando ${file.name}...`;
+
+      try {
+        // Lê arquivo como base64
+        const base64 = await readFileAsBase64(file);
+
+        const token = getToken();
+        const response = await fetch(
+          `${API_URL}/patients/${encodeURIComponent(currentPatientPhone)}/exams`,
+          {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+              "Authorization": `Bearer ${token}`
+            },
+            body: JSON.stringify({
+              fileName: file.name,
+              fileSize: file.size,
+              mimeType: file.type,
+              fileDataBase64: base64,
+            })
+          }
+        );
+
+        const data = await response.json();
+        if (!response.ok) {
+          throw new Error(data.error || "Erro ao fazer upload");
+        }
+
+        statusEl.style.color = "#10b981";
+        statusEl.textContent = `✓ ${file.name} anexado com sucesso.`;
+        // Recarrega a página do paciente pra mostrar o novo exame
+        loadPatientDetail(currentPatientPhone);
+
+        // Limpa mensagem depois de 4s
+        setTimeout(() => {
+          statusEl.textContent = "";
+        }, 4000);
+      } catch (error) {
+        statusEl.style.color = "#dc2626";
+        statusEl.textContent = `Erro: ${error.message}`;
+      }
+    }
+
+    // Lê File como string base64 (sem o prefixo "data:application/pdf;base64,")
+    function readFileAsBase64(file) {
+      return new Promise((resolve, reject) => {
+        const reader = new FileReader();
+        reader.onload = () => {
+          const result = reader.result;
+          // result vem como "data:application/pdf;base64,XXXX..." — remove o prefix
+          const base64 = result.split(",")[1] || "";
+          resolve(base64);
+        };
+        reader.onerror = () => reject(new Error("Erro ao ler arquivo"));
+        reader.readAsDataURL(file);
+      });
+    }
+
+    // Download: faz fetch autenticado e força download usando blob
+    async function downloadExam(examId, fileName) {
+      try {
+        const token = getToken();
+        const response = await fetch(
+          `${API_URL}/patients/${encodeURIComponent(currentPatientPhone)}/exams/${examId}/download`,
+          {
+            method: "GET",
+            headers: { "Authorization": `Bearer ${token}` }
+          }
+        );
+
+        if (!response.ok) {
+          let errMsg = "Erro ao baixar";
+          try {
+            const errData = await response.json();
+            errMsg = errData.error || errMsg;
+          } catch (e) {}
+          throw new Error(errMsg);
+        }
+
+        const blob = await response.blob();
+        const url = URL.createObjectURL(blob);
+
+        // Abre em nova aba pra paciente visualizar (PDF abre inline)
+        window.open(url, "_blank");
+
+        // Libera o URL depois de 30s
+        setTimeout(() => URL.revokeObjectURL(url), 30000);
+      } catch (error) {
+        alert(`Erro ao baixar exame: ${error.message}`);
+      }
+    }
+
+    async function deleteExam(examId, fileName) {
+      if (!window.confirm(`Apagar o exame "${fileName}"?\n\nEsta ação é definitiva — o arquivo será removido do sistema.`)) {
+        return;
+      }
+
+      try {
+        const token = getToken();
+        const response = await fetch(
+          `${API_URL}/patients/${encodeURIComponent(currentPatientPhone)}/exams/${examId}`,
+          {
+            method: "DELETE",
+            headers: { "Authorization": `Bearer ${token}` }
+          }
+        );
+
+        const data = await response.json();
+        if (!response.ok) {
+          throw new Error(data.error || "Erro ao apagar");
+        }
+
+        loadPatientDetail(currentPatientPhone);
+      } catch (error) {
+        alert(`Erro: ${error.message}`);
+      }
     }
 
     function renderPatientAnalyses(analyses) {
@@ -2810,6 +3051,79 @@
     // ============================================================
     // MEDICAÇÕES
     // ============================================================
+
+    // ============================================================
+    // [RENAME] AUTOCOMPLETE DE MEDICAMENTOS
+    // ============================================================
+    // Usa <datalist> HTML nativo. Conforme médico digita (mín 2 chars),
+    // busca no backend e popula as opções. Sem debounce explícito porque
+    // datalist nativo já é eficiente — browser deduplica chamadas.
+    //
+    // Cache simples: queries idênticas não refazem fetch dentro da sessão.
+
+    const medicationSearchCache = new Map();
+    let medicationSearchTimer = null;
+
+    async function searchMedications(query) {
+      const cleanQ = String(query || "").trim();
+      if (cleanQ.length < 2) return [];
+
+      if (medicationSearchCache.has(cleanQ)) {
+        return medicationSearchCache.get(cleanQ);
+      }
+
+      try {
+        const token = getToken();
+        const response = await fetch(
+          `${API_URL}/medications/search?q=${encodeURIComponent(cleanQ)}`,
+          {
+            method: "GET",
+            headers: { "Authorization": `Bearer ${token}` }
+          }
+        );
+
+        if (!response.ok) return [];
+        const results = await response.json();
+        const list = Array.isArray(results) ? results : [];
+        medicationSearchCache.set(cleanQ, list);
+        return list;
+      } catch (e) {
+        return [];
+      }
+    }
+
+    function populateDatalist(datalistId, options) {
+      const datalist = document.getElementById(datalistId);
+      if (!datalist) return;
+      datalist.replaceChildren();
+      options.forEach((opt) => {
+        const o = document.createElement("option");
+        o.value = opt;
+        datalist.appendChild(o);
+      });
+    }
+
+    // Handler do input do formulário de cadastro
+    function onMedicationInput(inputEl) {
+      const query = inputEl.value;
+      // Debounce simples — 200ms após parar de digitar
+      if (medicationSearchTimer) clearTimeout(medicationSearchTimer);
+      medicationSearchTimer = setTimeout(async () => {
+        const results = await searchMedications(query);
+        populateDatalist("medicationOptions", results);
+      }, 200);
+    }
+
+    // Handler do modal de edição
+    let editMedicationSearchTimer = null;
+    function onEditMedicationInput(inputEl) {
+      const query = inputEl.value;
+      if (editMedicationSearchTimer) clearTimeout(editMedicationSearchTimer);
+      editMedicationSearchTimer = setTimeout(async () => {
+        const results = await searchMedications(query);
+        populateDatalist("editMedicationOptions", results);
+      }, 200);
+    }
 
     async function createMedication() {
       clearMessage("medicationMessage");
