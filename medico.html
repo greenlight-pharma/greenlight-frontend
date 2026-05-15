@@ -1506,6 +1506,35 @@
     </div>
   </div>
 
+  <!-- ====== MODAL DE ANÁLISE DE EXAME ====== -->
+  <!-- Mostra estruturação de laudo. SEM classificação clínica - só organização dos dados. -->
+  <div id="examAnalysisModal" class="modal-backdrop hidden" onclick="closeExamAnalysisOnBackdrop(event)">
+    <div class="modal-content modal-soap">
+      <div class="modal-header">
+        <h3 id="examAnalysisTitle">Análise estruturada do laudo</h3>
+        <button class="modal-close" onclick="closeExamAnalysisModal()" aria-label="Fechar">✕</button>
+      </div>
+
+      <!-- Disclaimer permanente - não substitui interpretação clínica -->
+      <div class="disclaimer-box" style="background:#fef3c7; border:1px solid #f59e0b; color:#78350f; padding:12px; border-radius:8px; margin-bottom:16px; font-size:13px; line-height:1.5;">
+        ⚠️ <strong>Esta estruturação é apoio à leitura do laudo.</strong>
+        Os valores e marcação "alterado/normal" vêm do próprio laboratório que emitiu o exame.
+        <strong>Não substitui interpretação clínica do médico.</strong>
+        Sempre revise o PDF original antes de tomar conduta.
+      </div>
+
+      <div id="examAnalysisBody">
+        <div style="text-align:center; padding:40px; color:#6b7280;">
+          Carregando análise...
+        </div>
+      </div>
+
+      <div class="modal-footer" style="margin-top:16px;">
+        <button class="primary" onclick="closeExamAnalysisModal()">Fechar</button>
+      </div>
+    </div>
+  </div>
+
   <!-- ====== MODAL DE ENCERRAMENTO DE CONSULTA (SOAP) ====== -->
   <div id="closingModal" class="modal-backdrop hidden" onclick="closeClosingOnBackdrop(event)">
     <div class="modal-content modal-soap">
@@ -2178,6 +2207,14 @@
         downloadBtn.addEventListener("click", () => downloadExam(exam.id, exam.fileName));
         actions.appendChild(downloadBtn);
 
+        // Botão de análise — texto muda se já existe análise cacheada
+        const analyzeBtn = document.createElement("button");
+        analyzeBtn.textContent = exam.hasAnalysis ? "🔍 Ver análise" : "🧪 Gerar análise";
+        analyzeBtn.className = "btn-soap";
+        analyzeBtn.style.background = exam.hasAnalysis ? "#0891b2" : "#0ea5e9";
+        analyzeBtn.addEventListener("click", () => openExamAnalysis(exam.id, exam.fileName));
+        actions.appendChild(analyzeBtn);
+
         if (exam.isMine) {
           const deleteBtn = document.createElement("button");
           deleteBtn.textContent = "🗑️ Apagar";
@@ -2334,6 +2371,231 @@
       } catch (error) {
         alert(`Erro: ${error.message}`);
       }
+    }
+
+    // ============================================================
+    // [EXAM-ANALYSIS] Estruturação de laudo (sem classificação clínica)
+    // ============================================================
+
+    function closeExamAnalysisModal() {
+      const modal = document.getElementById("examAnalysisModal");
+      if (modal) modal.classList.add("hidden");
+    }
+
+    function closeExamAnalysisOnBackdrop(event) {
+      if (event.target.id === "examAnalysisModal") {
+        closeExamAnalysisModal();
+      }
+    }
+
+    // Mapa de status do exame pra cor visual.
+    // IMPORTANTE: status vem do PRÓPRIO LAUDO (extraído literal pelo Claude),
+    // não é classificação clínica feita pela IA.
+    const EXAM_STATUS_STYLE = {
+      normal:         { label: "Dentro da referência", bg: "#dcfce7", color: "#166534", icon: "✓" },
+      alterado:       { label: "Fora da referência",   bg: "#fee2e2", color: "#991b1b", icon: "⚠" },
+      sem_referencia: { label: "Sem referência",       bg: "#f3f4f6", color: "#6b7280", icon: "—" },
+    };
+
+    async function openExamAnalysis(examId, fileName) {
+      const modal = document.getElementById("examAnalysisModal");
+      const titleEl = document.getElementById("examAnalysisTitle");
+      const bodyEl = document.getElementById("examAnalysisBody");
+
+      titleEl.textContent = `Análise estruturada — ${fileName || "laudo"}`;
+      bodyEl.replaceChildren();
+
+      const loadingDiv = document.createElement("div");
+      loadingDiv.style.textAlign = "center";
+      loadingDiv.style.padding = "40px";
+      loadingDiv.style.color = "#6b7280";
+      loadingDiv.textContent = "Processando laudo com IA... isso pode levar 15-30 segundos.";
+      bodyEl.appendChild(loadingDiv);
+
+      modal.classList.remove("hidden");
+
+      try {
+        const token = getToken();
+        const response = await fetch(
+          `${API_URL}/patients/${encodeURIComponent(currentPatientPhone)}/exams/${examId}/analyze`,
+          {
+            method: "POST",
+            headers: { "Authorization": `Bearer ${token}` }
+          }
+        );
+
+        const data = await response.json();
+        if (!response.ok) {
+          throw new Error(data.error || "Erro ao gerar análise");
+        }
+
+        renderExamAnalysis(data.content, data.cached, data.generatedAt);
+
+        // Recarrega a lista pro botão virar "Ver análise"
+        loadPatientDetail(currentPatientPhone);
+      } catch (error) {
+        bodyEl.replaceChildren();
+        const errorDiv = document.createElement("div");
+        errorDiv.style.padding = "20px";
+        errorDiv.style.background = "#fee2e2";
+        errorDiv.style.color = "#991b1b";
+        errorDiv.style.borderRadius = "8px";
+        errorDiv.textContent = `Erro: ${error.message}`;
+        bodyEl.appendChild(errorDiv);
+      }
+    }
+
+    function renderExamAnalysis(content, cached, generatedAt) {
+      const bodyEl = document.getElementById("examAnalysisBody");
+      bodyEl.replaceChildren();
+
+      const dataInfo = content.dataInfo || {};
+      const exams = Array.isArray(content.exams) ? content.exams : [];
+
+      // Se a IA reportou erro, mostra mensagem específica
+      if (dataInfo.error) {
+        const errDiv = document.createElement("div");
+        errDiv.style.padding = "16px";
+        errDiv.style.background = "#fef3c7";
+        errDiv.style.color = "#78350f";
+        errDiv.style.borderRadius = "8px";
+        errDiv.style.marginBottom = "16px";
+        errDiv.textContent = `Não foi possível estruturar este laudo: ${dataInfo.error}`;
+        bodyEl.appendChild(errDiv);
+        return;
+      }
+
+      // Cabeçalho com info do laudo
+      if (dataInfo.examDate || dataInfo.laboratory || dataInfo.patientName) {
+        const headerDiv = document.createElement("div");
+        headerDiv.style.background = "#f9fafb";
+        headerDiv.style.padding = "12px";
+        headerDiv.style.borderRadius = "8px";
+        headerDiv.style.marginBottom = "16px";
+        headerDiv.style.fontSize = "13px";
+
+        const parts = [];
+        if (dataInfo.patientName) parts.push(`<strong>Paciente:</strong> ${escapeHtml(dataInfo.patientName)}`);
+        if (dataInfo.examDate) parts.push(`<strong>Data do exame:</strong> ${escapeHtml(dataInfo.examDate)}`);
+        if (dataInfo.laboratory) parts.push(`<strong>Laboratório:</strong> ${escapeHtml(dataInfo.laboratory)}`);
+
+        headerDiv.innerHTML = parts.join(" • ");
+        bodyEl.appendChild(headerDiv);
+      }
+
+      if (!exams.length) {
+        const noneDiv = document.createElement("div");
+        noneDiv.style.padding = "20px";
+        noneDiv.style.textAlign = "center";
+        noneDiv.style.color = "#6b7280";
+        noneDiv.textContent = "Nenhum exame estruturado foi extraído deste PDF. Confira o original.";
+        bodyEl.appendChild(noneDiv);
+        return;
+      }
+
+      // Tabela de exames
+      const table = document.createElement("table");
+      table.style.width = "100%";
+      table.style.borderCollapse = "collapse";
+      table.style.fontSize = "14px";
+
+      const thead = document.createElement("thead");
+      const trHead = document.createElement("tr");
+      ["Exame", "Valor", "Unidade", "Referência (do laudo)", "Status"].forEach((h) => {
+        const th = document.createElement("th");
+        th.textContent = h;
+        th.style.padding = "10px 8px";
+        th.style.textAlign = "left";
+        th.style.borderBottom = "2px solid #e5e7eb";
+        th.style.fontSize = "13px";
+        th.style.color = "#374151";
+        trHead.appendChild(th);
+      });
+      thead.appendChild(trHead);
+      table.appendChild(thead);
+
+      const tbody = document.createElement("tbody");
+      exams.forEach((ex) => {
+        const tr = document.createElement("tr");
+
+        const styleInfo = EXAM_STATUS_STYLE[ex.status] || EXAM_STATUS_STYLE.sem_referencia;
+        tr.style.background = ex.status === "alterado" ? "#fef9f9" : "transparent";
+
+        // Nome do exame
+        const tdName = document.createElement("td");
+        tdName.textContent = ex.name || "—";
+        tdName.style.padding = "10px 8px";
+        tdName.style.borderBottom = "1px solid #f3f4f6";
+        tdName.style.fontWeight = "500";
+        tr.appendChild(tdName);
+
+        // Valor
+        const tdValue = document.createElement("td");
+        tdValue.textContent = ex.value || "—";
+        tdValue.style.padding = "10px 8px";
+        tdValue.style.borderBottom = "1px solid #f3f4f6";
+        tdValue.style.fontFamily = "monospace";
+        tdValue.style.fontWeight = "600";
+        tr.appendChild(tdValue);
+
+        // Unidade
+        const tdUnit = document.createElement("td");
+        tdUnit.textContent = ex.unit || "—";
+        tdUnit.style.padding = "10px 8px";
+        tdUnit.style.borderBottom = "1px solid #f3f4f6";
+        tdUnit.style.color = "#6b7280";
+        tr.appendChild(tdUnit);
+
+        // Referência
+        const tdRef = document.createElement("td");
+        tdRef.textContent = ex.reference || "—";
+        tdRef.style.padding = "10px 8px";
+        tdRef.style.borderBottom = "1px solid #f3f4f6";
+        tdRef.style.color = "#6b7280";
+        tdRef.style.fontSize = "13px";
+        tr.appendChild(tdRef);
+
+        // Status pill
+        const tdStatus = document.createElement("td");
+        tdStatus.style.padding = "10px 8px";
+        tdStatus.style.borderBottom = "1px solid #f3f4f6";
+
+        const pill = document.createElement("span");
+        pill.style.padding = "3px 10px";
+        pill.style.borderRadius = "12px";
+        pill.style.fontSize = "12px";
+        pill.style.fontWeight = "600";
+        pill.style.background = styleInfo.bg;
+        pill.style.color = styleInfo.color;
+        pill.textContent = `${styleInfo.icon} ${styleInfo.label}`;
+        tdStatus.appendChild(pill);
+        tr.appendChild(tdStatus);
+
+        tbody.appendChild(tr);
+      });
+      table.appendChild(tbody);
+      bodyEl.appendChild(table);
+
+      // Rodapé com info de geração
+      const footerDiv = document.createElement("div");
+      footerDiv.style.marginTop = "16px";
+      footerDiv.style.fontSize = "12px";
+      footerDiv.style.color = "#9ca3af";
+      footerDiv.style.fontStyle = "italic";
+      const genStr = generatedAt
+        ? new Date(generatedAt).toLocaleString("pt-BR", { timeZone: "America/Sao_Paulo" })
+        : "agora";
+      footerDiv.textContent = cached
+        ? `Análise gerada em ${genStr} (recuperada do cache).`
+        : `Análise gerada agora (${genStr}).`;
+      bodyEl.appendChild(footerDiv);
+    }
+
+    // Helper simples pra escape de HTML quando uso innerHTML
+    function escapeHtml(text) {
+      const div = document.createElement("div");
+      div.textContent = String(text || "");
+      return div.innerHTML;
     }
 
     function renderPatientAnalyses(analyses) {
