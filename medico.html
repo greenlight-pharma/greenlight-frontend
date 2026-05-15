@@ -1476,9 +1476,14 @@
             : apt.patientAge === 0 ? "Recusou"
             : "—";
 
-          const reasonShort = (apt.reason || "-").length > 80
-            ? (apt.reason || "").substring(0, 80) + "..."
-            : (apt.reason || "-");
+          // [REASON-FULL] Mostra motivo completo da triagem.
+          // Limita largura via CSS pra texto longo quebrar em múltiplas
+          // linhas em vez de esticar a coluna pro lado.
+          const reasonCell = document.createElement("div");
+          reasonCell.textContent = apt.reason || "-";
+          reasonCell.style.maxWidth = "480px";
+          reasonCell.style.whiteSpace = "normal";
+          reasonCell.style.lineHeight = "1.5";
 
           const hasAnalysis = !!apt.analysisId;
           const statusCell = hasAnalysis
@@ -1499,7 +1504,7 @@
           appendRow(tableBody, [
             apt.name || "Sem nome",
             idade,
-            reasonShort,
+            { node: reasonCell },
             statusCell,
             { node: btn },
           ]);
