@@ -1332,6 +1332,11 @@
         <div class="card" id="card-medicacoes">
           <h3>Medicações</h3>
           <div class="card-subtitle">Ativas e arquivadas. Inclui prescrições de outros médicos.</div>
+
+          <div style="margin-bottom: 12px;">
+            <button class="primary" style="margin-top:0;" onclick="openAddMedicationModal()">➕ Adicionar medicação</button>
+          </div>
+
           <div id="patientMedicationsList">Carregando...</div>
         </div>
 
@@ -1522,6 +1527,49 @@
       </section>
 
     </main>
+  </div>
+
+  <!-- ====== MODAL DE ADICIONAR MEDICAÇÃO (a partir do prontuário) ====== -->
+  <!-- Versão simplificada: paciente já é o do prontuário aberto, não precisa selecionar -->
+  <div id="addMedicationModal" class="modal-backdrop hidden" onclick="closeAddMedicationOnBackdrop(event)">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3>Adicionar medicação</h3>
+        <button class="modal-close" onclick="closeAddMedicationModal()" aria-label="Fechar">✕</button>
+      </div>
+
+      <div style="background:#eff6ff; border:1px solid #93c5fd; color:#1e40af; padding:10px 12px; border-radius:8px; margin-bottom:14px; font-size:13px;">
+        💊 Cadastrando para: <strong id="addMedicationPatientLabel">—</strong>
+      </div>
+
+      <label>Nome da medicação</label>
+      <input id="addMedicationName" type="text" placeholder="Comece a digitar... (ex: Losartana)" autocomplete="off" list="addMedicationOptions" oninput="onAddMedicationInput(this)" />
+      <datalist id="addMedicationOptions"></datalist>
+      <div class="small">Sugestões baseadas na RENAME 2024. Se não encontrar, pode digitar livre.</div>
+
+      <label>Dose</label>
+      <input id="addMedicationDose" type="text" placeholder="Ex: 50mg, 5 gotas, conforme prescrição" />
+
+      <label>Horários dos lembretes</label>
+      <input id="addMedicationScheduleTimes" type="text" placeholder="Ex: 08:00,20:00" />
+      <div class="small">Separe os horários por vírgula. Paciente receberá lembrete via WhatsApp.</div>
+
+      <label>Data de início</label>
+      <input id="addMedicationStartDate" type="date" />
+
+      <label>Data de término (opcional)</label>
+      <input id="addMedicationEndDate" type="date" />
+
+      <label>Orientações ao paciente</label>
+      <textarea id="addMedicationInstructions" placeholder="Ex: Tomar 1 comprimido após o café da manhã. Pode causar sonolência."></textarea>
+
+      <div class="modal-actions">
+        <button class="btn-secondary-outline" onclick="closeAddMedicationModal()">Cancelar</button>
+        <button class="primary" onclick="saveNewMedicationFromProntuario()">Cadastrar medicação</button>
+      </div>
+
+      <div id="addMedicationMessage" class="message"></div>
+    </div>
   </div>
 
   <!-- ====== MODAL DE EDIÇÃO DE MEDICAÇÃO ====== -->
@@ -2286,13 +2334,20 @@
           item.appendChild(body);
         }
 
-        // [PRONTUARIO-DELETE] Botão apagar — só pra medicações próprias E não arquivadas
+        // [PRONTUARIO-EDIT/DELETE] Botões editar e apagar — só pra medicações próprias E não arquivadas
         if (med.isMine && !med.archivedAt) {
           const actions = document.createElement("div");
           actions.style.marginTop = "10px";
           actions.style.display = "flex";
           actions.style.gap = "8px";
           actions.style.flexWrap = "wrap";
+
+          const editBtn = document.createElement("button");
+          editBtn.textContent = "✏️ Editar";
+          editBtn.className = "btn-soap";
+          editBtn.style.padding = "6px 12px";
+          editBtn.addEventListener("click", () => openEditMedicationFromProntuario(med));
+          actions.appendChild(editBtn);
 
           const deleteBtn = document.createElement("button");
           deleteBtn.textContent = "🗑️ Apagar";
@@ -2339,6 +2394,114 @@
       } catch (error) {
         alert(`Erro ao arquivar: ${error.message}`);
       }
+    }
+
+    // [PRONTUARIO-ADD] Estado: quando médico cadastra/edita pelo prontuário,
+    // depois de salvar, recarregar o PRONTUÁRIO (não a lista de medicações).
+    // Setado em true quando openAddMedicationModal/openEditMedicationFromProntuario
+    // é chamado, e lido em saveEditMedication pra decidir onde recarregar.
+    let isMedicationEditFromProntuario = false;
+
+    // [PRONTUARIO-ADD] Abre modal de adicionar medicação, com paciente atual pré-fixo.
+    function openAddMedicationModal() {
+      if (!currentPatientPhone) {
+        alert("Paciente não identificado. Recarregue o prontuário.");
+        return;
+      }
+
+      // Pega o nome do paciente já exibido no prontuário pra mostrar no label
+      const nameEl = document.getElementById("patientDetailName");
+      const patientName = (nameEl && nameEl.textContent) || "este paciente";
+      document.getElementById("addMedicationPatientLabel").textContent = patientName;
+
+      // Limpa todos os campos do form
+      document.getElementById("addMedicationName").value = "";
+      document.getElementById("addMedicationDose").value = "";
+      document.getElementById("addMedicationScheduleTimes").value = "";
+      document.getElementById("addMedicationStartDate").value = new Date().toISOString().slice(0, 10);
+      document.getElementById("addMedicationEndDate").value = "";
+      document.getElementById("addMedicationInstructions").value = "";
+      clearMessage("addMedicationMessage");
+
+      document.getElementById("addMedicationModal").classList.remove("hidden");
+    }
+
+    function closeAddMedicationModal() {
+      document.getElementById("addMedicationModal").classList.add("hidden");
+    }
+
+    function closeAddMedicationOnBackdrop(event) {
+      if (event.target.id === "addMedicationModal") closeAddMedicationModal();
+    }
+
+    // [PRONTUARIO-ADD] Autocomplete do campo de medicação no modal de add
+    let addMedicationSearchTimer = null;
+    function onAddMedicationInput(inputEl) {
+      const query = inputEl.value;
+      if (addMedicationSearchTimer) clearTimeout(addMedicationSearchTimer);
+      addMedicationSearchTimer = setTimeout(async () => {
+        const results = await searchMedications(query);
+        populateDatalist("addMedicationOptions", results);
+      }, 200);
+    }
+
+    // [PRONTUARIO-ADD] Salva nova medicação cadastrada a partir do prontuário.
+    async function saveNewMedicationFromProntuario() {
+      clearMessage("addMedicationMessage");
+
+      const medicationName = document.getElementById("addMedicationName").value.trim();
+      const dose = document.getElementById("addMedicationDose").value.trim();
+      const scheduleTimes = document.getElementById("addMedicationScheduleTimes").value.trim();
+      const startDate = document.getElementById("addMedicationStartDate").value;
+      const endDate = document.getElementById("addMedicationEndDate").value;
+      const instructions = document.getElementById("addMedicationInstructions").value.trim();
+
+      if (!medicationName || !dose || !scheduleTimes) {
+        setMessage("addMedicationMessage", "error", "Medicação, dose e horários são obrigatórios.");
+        return;
+      }
+
+      // Pega nome do paciente do header pra enviar junto
+      const nameEl = document.getElementById("patientDetailName");
+      const patientName = (nameEl && nameEl.textContent) || "";
+
+      try {
+        const token = getToken();
+        const response = await fetch(`${API_URL}/medications`, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            "Authorization": `Bearer ${token}`
+          },
+          body: JSON.stringify({
+            phone: currentPatientPhone,
+            patientName,
+            medicationName,
+            dose,
+            scheduleTimes,
+            startDate: startDate || null,
+            endDate: endDate || null,
+            instructions
+          })
+        });
+
+        const data = await response.json();
+        if (!response.ok) {
+          throw new Error(data.error || "Erro ao cadastrar medicação");
+        }
+
+        closeAddMedicationModal();
+        loadPatientDetail(currentPatientPhone);
+      } catch (error) {
+        setMessage("addMedicationMessage", "error", error.message);
+      }
+    }
+
+    // [PRONTUARIO-EDIT] Abre modal de edição existente, marcando flag pra
+    // recarregar o prontuário em vez da lista de medicações ao salvar.
+    function openEditMedicationFromProntuario(med) {
+      isMedicationEditFromProntuario = true;
+      openEditMedication(med);
     }
 
     // ============================================================
@@ -3978,6 +4141,7 @@
     }
 
     function closeEditMedication() {
+      isMedicationEditFromProntuario = false; // reset pra não confundir próxima edição
       document.getElementById("editMedicationModal").classList.add("hidden");
     }
 
@@ -4032,9 +4196,14 @@
           throw new Error(data.error || "Erro ao salvar alterações");
         }
 
-        // Sucesso — fecha modal e recarrega lista
+        // Sucesso — fecha modal e recarrega lista (ou prontuário, se veio de lá)
         closeEditMedication();
-        loadMedications();
+        if (isMedicationEditFromProntuario) {
+          isMedicationEditFromProntuario = false; // reset
+          if (currentPatientPhone) loadPatientDetail(currentPatientPhone);
+        } else {
+          loadMedications();
+        }
       } catch (error) {
         setMessage("editMedicationMessage", "error", error.message);
       }
