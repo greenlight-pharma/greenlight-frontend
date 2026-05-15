@@ -1194,7 +1194,7 @@
         </button>
         <button class="nav-btn" data-page="analysis" onclick="switchPage('analysis')">
           <span class="nav-icon">🩺</span>
-          <span>Análise Clínica</span>
+          <span>Consultas</span>
         </button>
         <button class="nav-btn" data-page="medications" onclick="switchPage('medications')">
           <span class="nav-icon">💊</span>
@@ -1362,14 +1362,15 @@
         </div>
       </section>
 
-      <!-- Página: ANÁLISE CLÍNICA -->
+      <!-- Página: CONSULTAS (gerencia em-atendimento e concluídas; análise IA abre no click) -->
       <section id="page-analysis" class="page">
         <div class="page-header">
-          <h2>Análise Clínica</h2>
-          <div class="page-subtitle">Análise de apoio baseada na triagem do paciente</div>
+          <h2>Consultas</h2>
+          <div class="page-subtitle">Gerencie suas consultas em atendimento e concluídas</div>
         </div>
 
-        <div class="disclaimer-box">
+        <!-- Disclaimer da análise IA — só aparece quando uma análise é renderizada -->
+        <div id="analysisDisclaimer" class="disclaimer-box hidden">
           <strong>⚠️ Análise gerada por inteligência artificial.</strong>
           As hipóteses e condutas sugeridas são apoio ao raciocínio clínico, não substituem
           sua avaliação. A decisão final é sempre sua, como médico responsável.
@@ -1800,6 +1801,9 @@
         refreshStats();
       } else if (pageId === "analysis") {
         loadMyAppointments();
+        // Reset: oculta disclaimer ao entrar/voltar pra lista de consultas
+        const disclaimer = document.getElementById("analysisDisclaimer");
+        if (disclaimer) disclaimer.classList.add("hidden");
       }
 
       // Em mobile, fecha a sidebar ao trocar de página (UX padrão de drawer)
@@ -3730,6 +3734,10 @@
     // Conteúdo vem da IA — é texto, mas sempre tratamos como dado não-confiável.
     function renderAnalysis(container, data, appointmentId) {
       container.replaceChildren();
+
+      // Mostra o disclaimer agora que uma análise está sendo exibida
+      const disclaimer = document.getElementById("analysisDisclaimer");
+      if (disclaimer) disclaimer.classList.remove("hidden");
 
       const c = data.content || {};
       const apt = cachedMyAppointments.find((a) => a.id === appointmentId);
