@@ -1256,7 +1256,18 @@
         </div>
 
         <div class="card">
-          <button class="primary" onclick="loadPatients()">Atualizar Pacientes</button>
+          <div style="display:flex; gap:10px; flex-wrap:wrap; align-items:center; margin-bottom:14px;">
+            <button class="primary" style="margin:0;" onclick="loadPatients()">Atualizar Pacientes</button>
+            <input
+              type="text"
+              id="patientSearchInput"
+              placeholder="🔍 Buscar por nome..."
+              autocomplete="off"
+              oninput="filterPatients()"
+              style="flex:1; min-width:200px; padding:8px 12px; border:1px solid #d1d5db; border-radius:6px; font-size:14px;"
+            />
+            <span id="patientsCount" style="font-size:13px; color:#6b7280;"></span>
+          </div>
 
           <table>
             <thead>
@@ -1897,6 +1908,17 @@
           phone: p.patientPhone || p.phone || null,
         }));
 
+        // [SEARCH] Ordena alfabeticamente por nome (case-insensitive, sem acentos).
+        // Pacientes sem nome ficam no fim.
+        normalized.sort((a, b) => {
+          const an = normalizeForSearch(a.name || "");
+          const bn = normalizeForSearch(b.name || "");
+          if (!an && !bn) return 0;
+          if (!an) return 1;   // a sem nome vai pro fim
+          if (!bn) return -1;
+          return an.localeCompare(bn);
+        });
+
         cachedPatients = normalized;
         refreshStats();
 
@@ -1907,35 +1929,82 @@
         defaultOpt.textContent = "Selecione um paciente";
         select.appendChild(defaultOpt);
 
-        if (!normalized.length) {
-          renderRowMessage(tableBody, 3, "Nenhum paciente vinculado.");
-          return;
-        }
-
-        tableBody.innerHTML = "";
-
+        // Popula o <select> de medicações (sem filtro — lista completa, ordenada)
         normalized.forEach((p) => {
-          // Botão pra abrir o prontuário do paciente
-          const openBtn = document.createElement("button");
-          openBtn.textContent = "Abrir prontuário";
-          openBtn.className = "btn-soap";
-          openBtn.addEventListener("click", () => openPatientDetail(p.phone));
-
-          appendRow(tableBody, [
-            p.name || "Sem nome",
-            p.phone || "-",
-            { node: openBtn },
-          ]);
-
           const opt = document.createElement("option");
           opt.value = p.phone;
           opt.textContent = `${p.name || "Sem nome"} - ${p.phone || "-"}`;
           opt.dataset.name = p.name || "";
           select.appendChild(opt);
         });
+
+        // Renderiza a tabela (aplicando o filtro atual, se houver)
+        renderPatientsTable();
       } catch (error) {
         renderRowMessage(tableBody, 3, error.message);
       }
+    }
+
+    // [SEARCH] Normaliza pra busca: lowercase + sem acentos
+    function normalizeForSearch(text) {
+      return String(text || "")
+        .toLowerCase()
+        .normalize("NFD")
+        .replace(/[\u0300-\u036f]/g, "")
+        .trim();
+    }
+
+    // [SEARCH] Renderiza a tabela aplicando o filtro de busca atual.
+    // Chamada quando a lista é carregada OU quando o campo de busca muda.
+    function renderPatientsTable() {
+      const tableBody = document.getElementById("patientsTableBody");
+      const countEl = document.getElementById("patientsCount");
+      const searchInput = document.getElementById("patientSearchInput");
+      const query = normalizeForSearch(searchInput ? searchInput.value : "");
+
+      if (!cachedPatients || !cachedPatients.length) {
+        renderRowMessage(tableBody, 3, "Nenhum paciente vinculado.");
+        if (countEl) countEl.textContent = "";
+        return;
+      }
+
+      const filtered = query
+        ? cachedPatients.filter((p) => normalizeForSearch(p.name || "").includes(query))
+        : cachedPatients;
+
+      // Atualiza contador
+      if (countEl) {
+        if (query) {
+          countEl.textContent = `${filtered.length} de ${cachedPatients.length} pacientes`;
+        } else {
+          countEl.textContent = `${cachedPatients.length} paciente${cachedPatients.length !== 1 ? "s" : ""}`;
+        }
+      }
+
+      if (!filtered.length) {
+        renderRowMessage(tableBody, 3, `Nenhum paciente encontrado com "${searchInput.value}".`);
+        return;
+      }
+
+      tableBody.innerHTML = "";
+
+      filtered.forEach((p) => {
+        const openBtn = document.createElement("button");
+        openBtn.textContent = "Abrir prontuário";
+        openBtn.className = "btn-soap";
+        openBtn.addEventListener("click", () => openPatientDetail(p.phone));
+
+        appendRow(tableBody, [
+          p.name || "Sem nome",
+          p.phone || "-",
+          { node: openBtn },
+        ]);
+      });
+    }
+
+    // [SEARCH] Handler do input — re-renderiza a tabela com filtro atual.
+    function filterPatients() {
+      renderPatientsTable();
     }
 
     function fillPatientFields() {
