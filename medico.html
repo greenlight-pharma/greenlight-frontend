@@ -750,6 +750,56 @@
       gap: 6px;
     }
 
+    /* [PRONTUARIO-NAV] Menu horizontal sticky de navegação entre cards */
+    .prontuario-nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      background: white;
+      padding: 12px 16px;
+      border-radius: 8px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+      margin-bottom: 16px;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      border: 1px solid #e5e7eb;
+    }
+
+    .prontuario-nav-btn {
+      background: #f3f4f6;
+      color: #374151;
+      border: 1px solid #e5e7eb;
+      padding: 8px 14px;
+      border-radius: 6px;
+      font-size: 13px;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.15s;
+      margin: 0;
+    }
+
+    .prontuario-nav-btn:hover {
+      background: #e5e7eb;
+      border-color: #9ca3af;
+      color: #111827;
+    }
+
+    .prontuario-nav-btn:active {
+      background: #d1d5db;
+    }
+
+    /* Highlight visual quando navega pra um card */
+    .card.card-highlight {
+      animation: cardPulse 1.2s ease-out;
+    }
+
+    @keyframes cardPulse {
+      0%   { box-shadow: 0 0 0 0 rgba(59, 130, 246, 0.5); }
+      50%  { box-shadow: 0 0 0 6px rgba(59, 130, 246, 0.15); }
+      100% { box-shadow: 0 0 0 0 rgba(59, 130, 246, 0); }
+    }
+
     .badge-mine, .badge-other {
       display: inline-block;
       padding: 2px 8px;
@@ -1244,28 +1294,38 @@
           </span>
         </div>
 
+        <!-- [PRONTUARIO-NAV] Menu horizontal de navegação rápida entre cards.
+             Sticky pra acompanhar o scroll. Clicar = scroll suave até o card. -->
+        <div class="prontuario-nav">
+          <button class="prontuario-nav-btn" onclick="scrollToCard('card-dados')">📋 Dados</button>
+          <button class="prontuario-nav-btn" onclick="scrollToCard('card-consultas')">🩺 Consultas</button>
+          <button class="prontuario-nav-btn" onclick="scrollToCard('card-medicacoes')">💊 Medicações</button>
+          <button class="prontuario-nav-btn" onclick="scrollToCard('card-exames')">🧪 Exames</button>
+          <button class="prontuario-nav-btn" onclick="scrollToCard('card-analises')">📊 Análises</button>
+        </div>
+
         <!-- Card: Dados básicos -->
-        <div class="card">
+        <div class="card" id="card-dados">
           <h3>Dados</h3>
           <div id="patientBasicData">Carregando...</div>
         </div>
 
         <!-- Card: Consultas -->
-        <div class="card">
+        <div class="card" id="card-consultas">
           <h3>Consultas</h3>
           <div class="card-subtitle">Aceitas e concluídas. Canceladas/expiradas ficam no painel do administrador.</div>
           <div id="patientAppointmentsList">Carregando...</div>
         </div>
 
         <!-- Card: Medicações -->
-        <div class="card">
+        <div class="card" id="card-medicacoes">
           <h3>Medicações</h3>
           <div class="card-subtitle">Ativas e arquivadas. Inclui prescrições de outros médicos.</div>
           <div id="patientMedicationsList">Carregando...</div>
         </div>
 
         <!-- Card: Exames -->
-        <div class="card">
+        <div class="card" id="card-exames">
           <h3>Exames</h3>
           <div class="card-subtitle">Resultados de exames anexados em PDF. Médicos vinculados podem visualizar; só quem anexou pode apagar.</div>
 
@@ -1279,7 +1339,7 @@
         </div>
 
         <!-- Card: Análises clínicas -->
-        <div class="card">
+        <div class="card" id="card-analises">
           <h3>Análises clínicas</h3>
           <div class="card-subtitle">Análises de apoio geradas por IA para consultas deste paciente.</div>
           <div id="patientAnalysesList">Carregando...</div>
@@ -1915,6 +1975,23 @@
       loadPatientDetail(phone);
     }
 
+    // [PRONTUARIO-NAV] Scroll suave até o card e adiciona destaque visual.
+    function scrollToCard(cardId) {
+      const card = document.getElementById(cardId);
+      if (!card) return;
+
+      // Scroll suave levando em conta altura da sticky nav (offset)
+      const yOffset = -80;
+      const y = card.getBoundingClientRect().top + window.pageYOffset + yOffset;
+      window.scrollTo({ top: y, behavior: "smooth" });
+
+      // Aplica highlight temporário pra usuário identificar o card
+      card.classList.remove("card-highlight");
+      void card.offsetWidth; // força reflow pra reanimar
+      card.classList.add("card-highlight");
+      setTimeout(() => card.classList.remove("card-highlight"), 1200);
+    }
+
     async function loadPatientDetail(phone) {
       const token = getToken();
 
@@ -2140,8 +2217,59 @@
           item.appendChild(body);
         }
 
+        // [PRONTUARIO-DELETE] Botão apagar — só pra medicações próprias E não arquivadas
+        if (med.isMine && !med.archivedAt) {
+          const actions = document.createElement("div");
+          actions.style.marginTop = "10px";
+          actions.style.display = "flex";
+          actions.style.gap = "8px";
+          actions.style.flexWrap = "wrap";
+
+          const deleteBtn = document.createElement("button");
+          deleteBtn.textContent = "🗑️ Apagar";
+          deleteBtn.className = "btn-icon btn-archive";
+          deleteBtn.style.padding = "6px 12px";
+          deleteBtn.addEventListener("click", () => archiveMedicationFromProntuario(med));
+          actions.appendChild(deleteBtn);
+
+          item.appendChild(actions);
+        }
+
         container.appendChild(item);
       });
+    }
+
+    // [PRONTUARIO-DELETE] Apaga medicação a partir do prontuário do paciente.
+    // Reusa a mesma rota DELETE /medications/:id (soft delete = arquivamento).
+    // Depois recarrega o prontuário (não a lista de medicações principal).
+    async function archiveMedicationFromProntuario(med) {
+      const confirmMsg =
+        `Arquivar a medicação "${med.medicationName}"?\n\n` +
+        `A medicação:\n` +
+        `• Sai desta lista\n` +
+        `• Não envia mais lembretes ao paciente\n` +
+        `• Continua no banco para histórico clínico\n\n` +
+        `Esta ação não pode ser desfeita pelo painel.`;
+
+      if (!window.confirm(confirmMsg)) return;
+
+      try {
+        const token = getToken();
+        const response = await fetch(`${API_URL}/medications/${med.id}`, {
+          method: "DELETE",
+          headers: { "Authorization": `Bearer ${token}` }
+        });
+
+        const data = await response.json();
+        if (!response.ok) {
+          throw new Error(data.error || "Erro ao arquivar");
+        }
+
+        // Recarrega o prontuário pra refletir a mudança
+        loadPatientDetail(currentPatientPhone);
+      } catch (error) {
+        alert(`Erro ao arquivar: ${error.message}`);
+      }
     }
 
     // ============================================================
