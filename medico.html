@@ -729,6 +729,164 @@
       background: #f3f4f6;
     }
 
+    /* ----- MODAL SOAP ----- */
+
+    .modal-soap {
+      max-width: 1000px;
+    }
+
+    .soap-patient-info {
+      background: #eff6ff;
+      padding: 12px 14px;
+      border-radius: 8px;
+      margin-bottom: 16px;
+      font-size: 14px;
+      color: #1e3a8a;
+      line-height: 1.5;
+    }
+
+    .soap-patient-info strong {
+      color: #1d4ed8;
+    }
+
+    .soap-grid {
+      display: grid;
+      grid-template-columns: 1.4fr 1fr;
+      gap: 20px;
+    }
+
+    @media (max-width: 900px) {
+      .soap-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .soap-fields label {
+      margin-top: 14px;
+      font-weight: 600;
+      font-size: 14px;
+      color: #1f2933;
+    }
+
+    .soap-fields label:first-child {
+      margin-top: 0;
+    }
+
+    .soap-required {
+      color: #dc2626;
+      font-size: 12px;
+      font-weight: 600;
+      margin-left: 6px;
+    }
+
+    .soap-optional {
+      color: #6b7280;
+      font-size: 12px;
+      font-weight: 500;
+      margin-left: 6px;
+    }
+
+    .soap-hint {
+      font-size: 12px;
+      color: #6b7280;
+      margin: 4px 0 6px 0;
+      line-height: 1.4;
+    }
+
+    .soap-fields textarea {
+      width: 100%;
+      padding: 10px 12px;
+      border: 1px solid #d1d5db;
+      border-radius: 8px;
+      font-size: 14px;
+      font-family: inherit;
+      resize: vertical;
+      min-height: 90px;
+    }
+
+    .soap-fields textarea:focus {
+      outline: none;
+      border-color: #1d4ed8;
+      box-shadow: 0 0 0 3px rgba(29, 78, 216, 0.1);
+    }
+
+    .soap-ai-ref {
+      background: #f9fafb;
+      border: 1px solid #e5e7eb;
+      border-radius: 8px;
+      padding: 14px;
+      max-height: 600px;
+      overflow-y: auto;
+    }
+
+    .soap-ref-header {
+      font-weight: 700;
+      color: #1d4ed8;
+      margin-bottom: 10px;
+      font-size: 14px;
+      padding-bottom: 8px;
+      border-bottom: 1px solid #e5e7eb;
+    }
+
+    .soap-ref-content {
+      font-size: 13px;
+      color: #374151;
+      line-height: 1.5;
+    }
+
+    .soap-ref-content h5 {
+      margin: 12px 0 4px 0;
+      font-size: 13px;
+      color: #1d4ed8;
+    }
+
+    .soap-ref-content ul {
+      margin: 4px 0;
+      padding-left: 18px;
+    }
+
+    .soap-actions {
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    /* Botão Encerrar/Reabrir na tabela */
+    .btn-conclude {
+      background: #10b981;
+      color: white;
+      border: none;
+      padding: 6px 12px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 13px;
+      font-weight: 500;
+      margin-left: 6px;
+    }
+
+    .btn-conclude:hover {
+      background: #059669;
+    }
+
+    .btn-reopen {
+      background: #f59e0b;
+      color: white;
+      border: none;
+      padding: 6px 12px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 13px;
+      font-weight: 500;
+    }
+
+    .btn-reopen:hover {
+      background: #d97706;
+    }
+
+    .btn-reopen:disabled {
+      background: #d1d5db;
+      cursor: not-allowed;
+    }
+
     /* ----- MOBILE TOPBAR (hambúrguer, só visível em mobile) ----- */
 
     .mobile-topbar {
@@ -975,9 +1133,10 @@
           sua avaliação. A decisão final é sempre sua, como médico responsável.
         </div>
 
+        <!-- Card 1: Em Atendimento -->
         <div class="card">
-          <h3>Suas consultas aceitas</h3>
-          <div class="card-subtitle">Selecione um caso para ver ou gerar a análise clínica</div>
+          <h3>Em Atendimento</h3>
+          <div class="card-subtitle">Consultas aceitas que ainda não foram encerradas. Selecione um caso para ver/gerar análise ou encerrar a consulta.</div>
           <button class="primary" onclick="loadMyAppointments()">Atualizar Lista</button>
 
           <table>
@@ -992,7 +1151,30 @@
             </thead>
             <tbody id="appointmentsAnalysisTableBody">
               <tr>
-                <td colspan="5">Nenhuma consulta carregada.</td>
+                <td colspan="5">Nenhuma consulta em atendimento.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- Card 2: Concluídas -->
+        <div class="card">
+          <h3>Concluídas</h3>
+          <div class="card-subtitle">Consultas já encerradas. Você pode visualizar a evolução SOAP ou reabrir (até 24h após o encerramento).</div>
+
+          <table>
+            <thead>
+              <tr>
+                <th>Paciente</th>
+                <th>Idade</th>
+                <th>Motivo</th>
+                <th>Encerrada em</th>
+                <th>Ações</th>
+              </tr>
+            </thead>
+            <tbody id="appointmentsConcludedTableBody">
+              <tr>
+                <td colspan="5">Nenhuma consulta concluída.</td>
               </tr>
             </tbody>
           </table>
@@ -1152,6 +1334,77 @@
       </div>
 
       <div id="editMedicationMessage" class="message"></div>
+    </div>
+  </div>
+
+  <!-- ====== MODAL DE ENCERRAMENTO DE CONSULTA (SOAP) ====== -->
+  <div id="closingModal" class="modal-backdrop hidden" onclick="closeClosingOnBackdrop(event)">
+    <div class="modal-content modal-soap">
+      <div class="modal-header">
+        <h3>Encerrar Consulta</h3>
+        <button class="modal-close" onclick="closeClosingModal()" aria-label="Fechar">✕</button>
+      </div>
+
+      <div class="modal-warning">
+        ⚠️ <strong>Limitação importante:</strong> esta funcionalidade registra uma evolução
+        SOAP no sistema. <strong>Não é prescrição digital com validade ICP-Brasil</strong>,
+        nem atestado médico legal. Use sistemas certificados (Memed, etc.) para esse fim.
+      </div>
+
+      <input type="hidden" id="closingAppointmentId" />
+
+      <div class="soap-patient-info" id="soapPatientInfo">
+        <!-- Preenchido dinamicamente -->
+      </div>
+
+      <div class="soap-grid">
+        <!-- Coluna esquerda: 4 campos SOAP -->
+        <div class="soap-fields">
+          <label>
+            S — Subjetivo
+            <span class="soap-optional">(opcional)</span>
+          </label>
+          <div class="soap-hint">O que o paciente relata: queixa principal, evolução, sintomas atuais na perspectiva dele.</div>
+          <textarea id="soapSubjective" rows="4" placeholder="Ex: Paciente relata melhora parcial da dor após uso de Dipirona. Mantém sono fragmentado..."></textarea>
+
+          <label>
+            O — Objetivo
+            <span class="soap-optional">(opcional)</span>
+          </label>
+          <div class="soap-hint">O que você observou/mediu: sinais vitais, exame físico, exames com resultados.</div>
+          <textarea id="soapObjective" rows="4" placeholder="Ex: PA 130x85 mmHg, FC 78 bpm. Sem sinais inflamatórios em região dolorosa..."></textarea>
+
+          <label>
+            A — Avaliação
+            <span class="soap-required">(obrigatório)</span>
+          </label>
+          <div class="soap-hint">Diagnóstico, raciocínio clínico, hipóteses descartadas, evolução do caso.</div>
+          <textarea id="soapAssessment" rows="4" placeholder="Ex: Cefaleia tensional em curso favorável. Descartado quadro infeccioso..." required></textarea>
+
+          <label>
+            P — Plano
+            <span class="soap-required">(obrigatório)</span>
+          </label>
+          <div class="soap-hint">Conduta: medicações ajustadas, exames solicitados, retorno, encaminhamentos, orientações.</div>
+          <textarea id="soapPlan" rows="4" placeholder="Ex: Mantém Dipirona 500mg SOS. Solicitado hemograma e VHS. Retorno em 7 dias se mantiver sintomas..." required></textarea>
+        </div>
+
+        <!-- Coluna direita: análise IA de referência -->
+        <div class="soap-ai-ref" id="soapAiReference">
+          <div class="soap-ref-header">📋 Análise IA de referência</div>
+          <div class="soap-ref-content" id="soapAiContent">
+            Carregando análise...
+          </div>
+        </div>
+      </div>
+
+      <div class="modal-actions soap-actions">
+        <button class="btn-secondary-outline" onclick="closeClosingModal()">Cancelar</button>
+        <button class="btn-secondary-outline" onclick="saveDraftSoap()">Salvar Rascunho</button>
+        <button class="primary" onclick="concludeAppointment()">Encerrar Consulta</button>
+      </div>
+
+      <div id="closingMessage" class="message"></div>
     </div>
   </div>
 
@@ -1446,9 +1699,11 @@
 
     async function loadMyAppointments() {
       const token = getToken();
-      const tableBody = document.getElementById("appointmentsAnalysisTableBody");
+      const activeBody = document.getElementById("appointmentsAnalysisTableBody");
+      const concludedBody = document.getElementById("appointmentsConcludedTableBody");
 
-      renderRowMessage(tableBody, 5, "Carregando...");
+      renderRowMessage(activeBody, 5, "Carregando...");
+      renderRowMessage(concludedBody, 5, "Carregando...");
 
       try {
         const response = await fetch(`${API_URL}/my-appointments`, {
@@ -1464,53 +1719,405 @@
 
         cachedMyAppointments = Array.isArray(appointments) ? appointments : [];
 
-        if (!cachedMyAppointments.length) {
-          renderRowMessage(tableBody, 5, "Você ainda não aceitou nenhuma consulta.");
-          return;
+        const active = cachedMyAppointments.filter((a) => a.status === "aceita");
+        const concluded = cachedMyAppointments.filter((a) => a.status === "concluida");
+
+        renderActiveAppointments(active, activeBody);
+        renderConcludedAppointments(concluded, concludedBody);
+      } catch (error) {
+        renderRowMessage(activeBody, 5, error.message);
+        renderRowMessage(concludedBody, 5, error.message);
+      }
+    }
+
+    // Renderiza tabela de consultas em atendimento (status='aceita')
+    function renderActiveAppointments(active, tbody) {
+      if (!active.length) {
+        renderRowMessage(tbody, 5, "Nenhuma consulta em atendimento.");
+        return;
+      }
+
+      tbody.innerHTML = "";
+
+      active.forEach((apt) => {
+        const idade = apt.patientAge ? `${apt.patientAge} anos`
+          : apt.patientAge === 0 ? "Recusou"
+          : "—";
+
+        const reasonCell = document.createElement("div");
+        reasonCell.textContent = apt.reason || "-";
+        reasonCell.style.maxWidth = "480px";
+        reasonCell.style.whiteSpace = "normal";
+        reasonCell.style.lineHeight = "1.5";
+
+        const hasAnalysis = !!apt.analysisId;
+        const hasDraft = apt.closingNotes && (
+          apt.closingNotes.subjective || apt.closingNotes.objective ||
+          apt.closingNotes.assessment || apt.closingNotes.plan
+        );
+        const statusCell = document.createElement("div");
+        statusCell.textContent = hasAnalysis ? "✅ Análise pronta" : "Não gerada";
+        if (hasDraft) {
+          const draftBadge = document.createElement("div");
+          draftBadge.textContent = "📝 Rascunho salvo";
+          draftBadge.style.fontSize = "12px";
+          draftBadge.style.color = "#92400e";
+          draftBadge.style.marginTop = "2px";
+          statusCell.appendChild(draftBadge);
         }
 
-        tableBody.innerHTML = "";
+        // Container com 2 botões: Ver/Gerar análise + Encerrar
+        const actions = document.createElement("div");
+        actions.className = "row-actions";
 
-        cachedMyAppointments.forEach((apt) => {
-          const idade = apt.patientAge ? `${apt.patientAge} anos`
-            : apt.patientAge === 0 ? "Recusou"
-            : "—";
+        const analysisBtn = document.createElement("button");
+        if (hasAnalysis) {
+          analysisBtn.textContent = "Ver análise";
+          analysisBtn.className = "btn-view";
+        } else {
+          analysisBtn.textContent = "Gerar análise";
+          analysisBtn.className = "btn-generate";
+        }
+        analysisBtn.addEventListener("click", () => generateOrShowAnalysis(apt.id, analysisBtn));
+        actions.appendChild(analysisBtn);
 
-          // [REASON-FULL] Mostra motivo completo da triagem.
-          // Limita largura via CSS pra texto longo quebrar em múltiplas
-          // linhas em vez de esticar a coluna pro lado.
-          const reasonCell = document.createElement("div");
-          reasonCell.textContent = apt.reason || "-";
-          reasonCell.style.maxWidth = "480px";
-          reasonCell.style.whiteSpace = "normal";
-          reasonCell.style.lineHeight = "1.5";
+        const concludeBtn = document.createElement("button");
+        concludeBtn.textContent = hasDraft ? "Continuar" : "Encerrar";
+        concludeBtn.className = "btn-conclude";
+        concludeBtn.addEventListener("click", () => openClosingModal(apt));
+        actions.appendChild(concludeBtn);
 
-          const hasAnalysis = !!apt.analysisId;
-          const statusCell = hasAnalysis
-            ? "✅ Análise pronta"
-            : "Não gerada";
+        appendRow(tbody, [
+          apt.name || "Sem nome",
+          idade,
+          { node: reasonCell },
+          { node: statusCell },
+          { node: actions },
+        ]);
+      });
+    }
 
-          // Botão Gerar (se não tem) ou Ver (se já tem)
-          const btn = document.createElement("button");
-          if (hasAnalysis) {
-            btn.textContent = "Ver análise";
-            btn.className = "btn-view";
-          } else {
-            btn.textContent = "Gerar análise";
-            btn.className = "btn-generate";
+    // Renderiza tabela de consultas concluídas
+    function renderConcludedAppointments(concluded, tbody) {
+      if (!concluded.length) {
+        renderRowMessage(tbody, 5, "Nenhuma consulta concluída.");
+        return;
+      }
+
+      tbody.innerHTML = "";
+
+      concluded.forEach((apt) => {
+        const idade = apt.patientAge ? `${apt.patientAge} anos`
+          : apt.patientAge === 0 ? "Recusou"
+          : "—";
+
+        const reasonCell = document.createElement("div");
+        reasonCell.textContent = apt.reason || "-";
+        reasonCell.style.maxWidth = "420px";
+        reasonCell.style.whiteSpace = "normal";
+        reasonCell.style.lineHeight = "1.5";
+
+        const concludedFmt = apt.concludedAt
+          ? new Date(apt.concludedAt).toLocaleString("pt-BR", {
+              timeZone: "America/Sao_Paulo",
+              day: "2-digit", month: "2-digit", year: "numeric",
+              hour: "2-digit", minute: "2-digit",
+            })
+          : "—";
+
+        // Calcula se ainda pode reabrir (< 24h)
+        const canReopen = apt.concludedAt
+          ? (Date.now() - new Date(apt.concludedAt).getTime()) < 24 * 60 * 60 * 1000
+          : false;
+
+        const actions = document.createElement("div");
+        actions.className = "row-actions";
+
+        const viewBtn = document.createElement("button");
+        viewBtn.textContent = "Ver SOAP";
+        viewBtn.className = "btn-view";
+        viewBtn.addEventListener("click", () => viewSoapNotes(apt));
+        actions.appendChild(viewBtn);
+
+        const reopenBtn = document.createElement("button");
+        reopenBtn.textContent = canReopen ? "Reabrir" : "Reabrir (expirado)";
+        reopenBtn.className = "btn-reopen";
+        reopenBtn.disabled = !canReopen;
+        if (canReopen) {
+          reopenBtn.title = "Você tem até 24h após o encerramento para reabrir";
+          reopenBtn.addEventListener("click", () => reopenAppointment(apt));
+        } else {
+          reopenBtn.title = "Janela de 24h para reabrir já expirou";
+        }
+        actions.appendChild(reopenBtn);
+
+        appendRow(tbody, [
+          apt.name || "Sem nome",
+          idade,
+          { node: reasonCell },
+          concludedFmt,
+          { node: actions },
+        ]);
+      });
+    }
+
+    // ============================================================
+    // ENCERRAR CONSULTA — MODAL SOAP
+    // ============================================================
+
+    let currentClosingAppointmentId = null;
+
+    function openClosingModal(apt) {
+      currentClosingAppointmentId = apt.id;
+      document.getElementById("closingAppointmentId").value = apt.id;
+      clearMessage("closingMessage");
+
+      // Informações do paciente no topo do modal
+      const info = document.getElementById("soapPatientInfo");
+      const idade = apt.patientAge ? `${apt.patientAge} anos` : "idade não informada";
+      info.innerHTML = "";
+      const strong = document.createElement("strong");
+      strong.textContent = apt.name || "Paciente";
+      info.appendChild(strong);
+      info.appendChild(document.createTextNode(` — ${idade}`));
+      const reasonDiv = document.createElement("div");
+      reasonDiv.style.marginTop = "6px";
+      reasonDiv.style.fontSize = "13px";
+      reasonDiv.textContent = `Motivo da triagem: ${apt.reason || "—"}`;
+      info.appendChild(reasonDiv);
+
+      // Preenche campos com rascunho existente (se houver)
+      const notes = apt.closingNotes || {};
+      document.getElementById("soapSubjective").value = notes.subjective || "";
+      document.getElementById("soapObjective").value = notes.objective || "";
+      document.getElementById("soapAssessment").value = notes.assessment || "";
+      document.getElementById("soapPlan").value = notes.plan || "";
+
+      // Carrega análise IA de referência (se já gerada) ou mensagem padrão
+      loadAiReferenceInModal(apt);
+
+      document.getElementById("closingModal").classList.remove("hidden");
+    }
+
+    function closeClosingModal() {
+      document.getElementById("closingModal").classList.add("hidden");
+      currentClosingAppointmentId = null;
+    }
+
+    function closeClosingOnBackdrop(event) {
+      if (event.target.id === "closingModal") {
+        closeClosingModal();
+      }
+    }
+
+    // Carrega análise IA no painel lateral do modal SOAP
+    async function loadAiReferenceInModal(apt) {
+      const container = document.getElementById("soapAiContent");
+      container.replaceChildren();
+
+      if (!apt.analysisId) {
+        const empty = document.createElement("div");
+        empty.style.color = "#6b7280";
+        empty.style.fontStyle = "italic";
+        empty.textContent = "Análise clínica ainda não foi gerada para este caso. Você pode gerar pela tabela antes de encerrar a consulta.";
+        container.appendChild(empty);
+        return;
+      }
+
+      try {
+        const token = getToken();
+        const response = await fetch(
+          `${API_URL}/appointments/${apt.id}/clinical-analysis`,
+          {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+              "Authorization": `Bearer ${token}`
+            }
           }
-          btn.addEventListener("click", () => generateOrShowAnalysis(apt.id, btn));
+        );
 
-          appendRow(tableBody, [
-            apt.name || "Sem nome",
-            idade,
-            { node: reasonCell },
-            statusCell,
-            { node: btn },
-          ]);
-        });
+        const data = await response.json();
+        if (!response.ok) throw new Error(data.error || "Erro");
+
+        renderCompactAnalysis(container, data.content);
       } catch (error) {
-        renderRowMessage(tableBody, 5, error.message);
+        container.textContent = "Erro ao carregar análise: " + error.message;
+      }
+    }
+
+    // Renderização compacta da análise IA dentro do modal
+    function renderCompactAnalysis(container, content) {
+      container.replaceChildren();
+      const c = content || {};
+
+      if (c.resumoCaso) {
+        const h = document.createElement("h5");
+        h.textContent = "📋 Resumo";
+        container.appendChild(h);
+        const p = document.createElement("div");
+        p.textContent = c.resumoCaso;
+        container.appendChild(p);
+      }
+
+      if (Array.isArray(c.redFlags) && c.redFlags.length) {
+        const h = document.createElement("h5");
+        h.style.color = "#991b1b";
+        h.textContent = "🚨 Red flags";
+        container.appendChild(h);
+        const ul = document.createElement("ul");
+        c.redFlags.forEach((it) => {
+          const li = document.createElement("li");
+          li.textContent = it;
+          ul.appendChild(li);
+        });
+        container.appendChild(ul);
+      }
+
+      if (Array.isArray(c.hipotesesDiagnosticas) && c.hipotesesDiagnosticas.length) {
+        const h = document.createElement("h5");
+        h.textContent = "🔍 Hipóteses";
+        container.appendChild(h);
+        const ul = document.createElement("ul");
+        c.hipotesesDiagnosticas.forEach((it) => {
+          const li = document.createElement("li");
+          li.textContent = `${it.hipotese} (${it.probabilidade || "?"})`;
+          ul.appendChild(li);
+        });
+        container.appendChild(ul);
+      }
+
+      if (c.condutaSugerida) {
+        const cs = c.condutaSugerida;
+        const subsec = (title, arr) => {
+          if (!Array.isArray(arr) || !arr.length) return;
+          const h = document.createElement("h5");
+          h.textContent = title;
+          container.appendChild(h);
+          const ul = document.createElement("ul");
+          arr.forEach((it) => {
+            const li = document.createElement("li");
+            li.textContent = it;
+            ul.appendChild(li);
+          });
+          container.appendChild(ul);
+        };
+        subsec("🩺 Anamnese sugerida", cs.anamnese);
+        subsec("Exame físico", cs.exameFisico);
+        subsec("Exames complementares", cs.examesComplementares);
+        subsec("Tratamento inicial", cs.tratamentoInicial);
+      }
+    }
+
+    function gatherSoapPayload() {
+      return {
+        subjective: document.getElementById("soapSubjective").value.trim(),
+        objective: document.getElementById("soapObjective").value.trim(),
+        assessment: document.getElementById("soapAssessment").value.trim(),
+        plan: document.getElementById("soapPlan").value.trim(),
+      };
+    }
+
+    async function saveDraftSoap() {
+      clearMessage("closingMessage");
+      const id = currentClosingAppointmentId;
+      if (!id) return;
+
+      const payload = gatherSoapPayload();
+      const token = getToken();
+      try {
+        const response = await fetch(`${API_URL}/appointments/${id}/draft-soap`, {
+          method: "PATCH",
+          headers: {
+            "Content-Type": "application/json",
+            "Authorization": `Bearer ${token}`
+          },
+          body: JSON.stringify(payload),
+        });
+
+        const data = await response.json();
+        if (!response.ok) throw new Error(data.error || "Erro ao salvar rascunho");
+
+        setMessage("closingMessage", "success", "✓ Rascunho salvo. Você pode continuar depois.");
+        loadMyAppointments();
+      } catch (error) {
+        setMessage("closingMessage", "error", error.message);
+      }
+    }
+
+    async function concludeAppointment() {
+      clearMessage("closingMessage");
+      const id = currentClosingAppointmentId;
+      if (!id) return;
+
+      const payload = gatherSoapPayload();
+
+      if (!payload.assessment || !payload.plan) {
+        setMessage("closingMessage", "error", "Avaliação e Plano são obrigatórios para encerrar a consulta.");
+        return;
+      }
+
+      if (!window.confirm("Encerrar consulta?\n\nO paciente será notificado e o status mudará para concluída. Você pode reabrir em até 24h se necessário.")) {
+        return;
+      }
+
+      const token = getToken();
+      try {
+        const response = await fetch(`${API_URL}/appointments/${id}/conclude`, {
+          method: "PATCH",
+          headers: {
+            "Content-Type": "application/json",
+            "Authorization": `Bearer ${token}`
+          },
+          body: JSON.stringify(payload),
+        });
+
+        const data = await response.json();
+        if (!response.ok) throw new Error(data.error || "Erro ao encerrar");
+
+        setMessage("closingMessage", "success", "✓ Consulta encerrada. Paciente notificado.");
+        // Fecha modal após delay e recarrega
+        setTimeout(() => {
+          closeClosingModal();
+          loadMyAppointments();
+        }, 1200);
+      } catch (error) {
+        setMessage("closingMessage", "error", error.message);
+      }
+    }
+
+    // ============================================================
+    // VER SOAP DE CONSULTA CONCLUÍDA
+    // ============================================================
+
+    function viewSoapNotes(apt) {
+      // Reusa o modal de fechamento em modo "visualização" — abre com dados
+      // preenchidos e o médico pode reabrir/editar usando os botões existentes.
+      openClosingModal(apt);
+    }
+
+    // ============================================================
+    // REABRIR CONSULTA
+    // ============================================================
+
+    async function reopenAppointment(apt) {
+      if (!window.confirm(`Reabrir a consulta de ${apt.name}?\n\nA consulta voltará pra "Em Atendimento" e suas anotações SOAP serão mantidas. Você poderá editar e encerrar novamente.`)) {
+        return;
+      }
+
+      const token = getToken();
+      try {
+        const response = await fetch(`${API_URL}/appointments/${apt.id}/reopen`, {
+          method: "PATCH",
+          headers: { "Authorization": `Bearer ${token}` }
+        });
+
+        const data = await response.json();
+        if (!response.ok) throw new Error(data.error || "Erro ao reabrir");
+
+        loadMyAppointments();
+      } catch (error) {
+        alert("Erro ao reabrir: " + error.message);
       }
     }
 
