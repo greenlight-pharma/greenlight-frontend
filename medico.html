@@ -729,6 +729,110 @@
       background: #f3f4f6;
     }
 
+    /* ----- PRONTUÁRIO DO PACIENTE ----- */
+
+    .patient-legend {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      font-size: 13px;
+      color: #6b7280;
+      margin-bottom: 16px;
+      background: white;
+      padding: 12px 16px;
+      border-radius: 8px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    }
+
+    .legend-item {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .badge-mine, .badge-other {
+      display: inline-block;
+      padding: 2px 8px;
+      border-radius: 10px;
+      font-size: 11px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.3px;
+    }
+
+    .badge-mine {
+      background: #dbeafe;
+      color: #1d4ed8;
+    }
+
+    .badge-other {
+      background: #f3f4f6;
+      color: #6b7280;
+    }
+
+    /* Item da lista — consulta, medicação, análise */
+    .patient-item {
+      border: 1px solid #e5e7eb;
+      border-left: 4px solid #cbd5e1;
+      border-radius: 8px;
+      padding: 12px 14px;
+      margin-bottom: 10px;
+      background: white;
+    }
+
+    .patient-item.mine {
+      border-left-color: #1d4ed8;
+      background: #f8faff;
+    }
+
+    .patient-item .item-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 6px;
+      flex-wrap: wrap;
+    }
+
+    .patient-item .item-title {
+      font-weight: 600;
+      color: #1f2933;
+      font-size: 14px;
+    }
+
+    .patient-item .item-meta {
+      font-size: 12px;
+      color: #6b7280;
+    }
+
+    .patient-item .item-body {
+      font-size: 13px;
+      color: #374151;
+      line-height: 1.5;
+      margin-top: 4px;
+    }
+
+    .patient-data-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 12px;
+    }
+
+    .patient-data-grid .data-field {
+      font-size: 13px;
+    }
+
+    .patient-data-grid .data-label {
+      color: #6b7280;
+      font-size: 12px;
+      margin-bottom: 2px;
+    }
+
+    .patient-data-grid .data-value {
+      color: #1f2933;
+      font-weight: 600;
+    }
+
     /* ----- MODAL SOAP ----- */
 
     .modal-soap {
@@ -1109,14 +1213,62 @@
               <tr>
                 <th>Nome</th>
                 <th>Telefone</th>
+                <th>Ações</th>
               </tr>
             </thead>
             <tbody id="patientsTableBody">
               <tr>
-                <td colspan="2">Nenhum paciente carregado.</td>
+                <td colspan="3">Nenhum paciente carregado.</td>
               </tr>
             </tbody>
           </table>
+        </div>
+      </section>
+
+      <!-- Página: PRONTUÁRIO DO PACIENTE -->
+      <section id="page-patient-detail" class="page">
+        <div class="page-header" style="display:flex; align-items:center; gap:12px;">
+          <button class="btn-secondary-outline" onclick="switchPage('patients')" style="margin-top:0;">← Voltar</button>
+          <div>
+            <h2 id="patientDetailName">Prontuário do Paciente</h2>
+            <div class="page-subtitle" id="patientDetailSubtitle">—</div>
+          </div>
+        </div>
+
+        <div class="patient-legend">
+          <span class="legend-item">
+            <span class="badge-mine">Meu</span> registros que você fez
+          </span>
+          <span class="legend-item">
+            <span class="badge-other">Outro médico</span> registros de outros profissionais
+          </span>
+        </div>
+
+        <!-- Card: Dados básicos -->
+        <div class="card">
+          <h3>Dados</h3>
+          <div id="patientBasicData">Carregando...</div>
+        </div>
+
+        <!-- Card: Consultas -->
+        <div class="card">
+          <h3>Consultas</h3>
+          <div class="card-subtitle">Aceitas e concluídas. Canceladas/expiradas ficam no painel do administrador.</div>
+          <div id="patientAppointmentsList">Carregando...</div>
+        </div>
+
+        <!-- Card: Medicações -->
+        <div class="card">
+          <h3>Medicações</h3>
+          <div class="card-subtitle">Ativas e arquivadas. Inclui prescrições de outros médicos.</div>
+          <div id="patientMedicationsList">Carregando...</div>
+        </div>
+
+        <!-- Card: Análises clínicas -->
+        <div class="card">
+          <h3>Análises clínicas</h3>
+          <div class="card-subtitle">Análises de apoio geradas por IA para consultas deste paciente.</div>
+          <div id="patientAnalysesList">Carregando...</div>
         </div>
       </section>
 
@@ -1616,7 +1768,7 @@
       const tableBody = document.getElementById("patientsTableBody");
       const select = document.getElementById("patientSelect");
 
-      renderRowMessage(tableBody, 2, "Carregando...");
+      renderRowMessage(tableBody, 3, "Carregando...");
 
       try {
         const response = await fetch(`${API_URL}/my-patients`, {
@@ -1650,16 +1802,23 @@
         select.appendChild(defaultOpt);
 
         if (!normalized.length) {
-          renderRowMessage(tableBody, 2, "Nenhum paciente vinculado.");
+          renderRowMessage(tableBody, 3, "Nenhum paciente vinculado.");
           return;
         }
 
         tableBody.innerHTML = "";
 
         normalized.forEach((p) => {
+          // Botão pra abrir o prontuário do paciente
+          const openBtn = document.createElement("button");
+          openBtn.textContent = "Abrir prontuário";
+          openBtn.className = "btn-soap";
+          openBtn.addEventListener("click", () => openPatientDetail(p.phone));
+
           appendRow(tableBody, [
             p.name || "Sem nome",
             p.phone || "-",
+            { node: openBtn },
           ]);
 
           const opt = document.createElement("option");
@@ -1669,7 +1828,7 @@
           select.appendChild(opt);
         });
       } catch (error) {
-        renderRowMessage(tableBody, 2, error.message);
+        renderRowMessage(tableBody, 3, error.message);
       }
     }
 
@@ -1683,6 +1842,302 @@
 
       document.getElementById("patientName").value = selectedOption.dataset.name || "";
       document.getElementById("patientPhone").value = selectedOption.value;
+    }
+
+    // ============================================================
+    // PRONTUÁRIO DO PACIENTE
+    // ============================================================
+    // Abre a página dedicada com tudo do paciente.
+    // Marca cada item com badge "Meu" (este médico) ou "Outro médico".
+
+    let currentPatientPhone = null;
+
+    function openPatientDetail(phone) {
+      if (!phone) return;
+      currentPatientPhone = phone;
+
+      // Atualiza URL com ?patient=NUMERO pra permitir deep link / refresh
+      try {
+        const url = new URL(window.location.href);
+        url.searchParams.set("patient", phone);
+        window.history.pushState({ patient: phone }, "", url.toString());
+      } catch (e) {
+        // history.pushState pode falhar em ambientes restritos; não é crítico
+      }
+
+      switchPage("patient-detail");
+      loadPatientDetail(phone);
+    }
+
+    async function loadPatientDetail(phone) {
+      const token = getToken();
+
+      // Reset visual com "carregando"
+      document.getElementById("patientDetailName").textContent = "Carregando...";
+      document.getElementById("patientDetailSubtitle").textContent = "—";
+      document.getElementById("patientBasicData").textContent = "Carregando...";
+      document.getElementById("patientAppointmentsList").textContent = "Carregando...";
+      document.getElementById("patientMedicationsList").textContent = "Carregando...";
+      document.getElementById("patientAnalysesList").textContent = "Carregando...";
+
+      try {
+        const response = await fetch(
+          `${API_URL}/patients/${encodeURIComponent(phone)}/summary`,
+          {
+            method: "GET",
+            headers: { "Authorization": `Bearer ${token}` }
+          }
+        );
+
+        const data = await response.json();
+        if (!response.ok) {
+          throw new Error(data.error || "Erro ao carregar prontuário");
+        }
+
+        renderPatientHeader(data.patient, data.linkedToMe);
+        renderPatientBasicData(data.patient, data.linkedToMe);
+        renderPatientAppointments(data.appointments || []);
+        renderPatientMedications(data.medications || []);
+        renderPatientAnalyses(data.analyses || []);
+      } catch (error) {
+        document.getElementById("patientDetailName").textContent = "Erro";
+        document.getElementById("patientDetailSubtitle").textContent = error.message;
+        document.getElementById("patientBasicData").textContent = "—";
+        document.getElementById("patientAppointmentsList").textContent = "—";
+        document.getElementById("patientMedicationsList").textContent = "—";
+        document.getElementById("patientAnalysesList").textContent = "—";
+      }
+    }
+
+    function renderPatientHeader(patient, linkedToMe) {
+      const nameEl = document.getElementById("patientDetailName");
+      const subEl = document.getElementById("patientDetailSubtitle");
+
+      nameEl.textContent = patient?.name || "Paciente sem nome";
+
+      const parts = [];
+      if (patient?.phone) parts.push(patient.phone);
+      if (patient?.patientAge) parts.push(`${patient.patientAge} anos`);
+      parts.push(linkedToMe ? "Vinculado a você" : "Acesso via consulta aceita");
+      subEl.textContent = parts.join(" • ");
+    }
+
+    function renderPatientBasicData(patient, linkedToMe) {
+      const container = document.getElementById("patientBasicData");
+      container.replaceChildren();
+
+      const grid = document.createElement("div");
+      grid.className = "patient-data-grid";
+
+      const fields = [
+        { label: "Nome", value: patient?.name || "—" },
+        { label: "Telefone", value: patient?.phone || "—" },
+        { label: "Idade", value: patient?.patientAge ? `${patient.patientAge} anos` : "—" },
+        { label: "Vínculo", value: linkedToMe ? "Sim, vinculado a você" : "Não vinculado (acesso por consulta)" },
+      ];
+
+      fields.forEach((f) => {
+        const item = document.createElement("div");
+        item.className = "data-field";
+        const lbl = document.createElement("div");
+        lbl.className = "data-label";
+        lbl.textContent = f.label;
+        const val = document.createElement("div");
+        val.className = "data-value";
+        val.textContent = f.value;
+        item.appendChild(lbl);
+        item.appendChild(val);
+        grid.appendChild(item);
+      });
+
+      container.appendChild(grid);
+    }
+
+    // Helper: cria <div class="patient-item"> com badge de propriedade
+    function makePatientItem(isMine) {
+      const item = document.createElement("div");
+      item.className = "patient-item" + (isMine ? " mine" : "");
+      return item;
+    }
+
+    function makeBadge(isMine) {
+      const b = document.createElement("span");
+      b.className = isMine ? "badge-mine" : "badge-other";
+      b.textContent = isMine ? "Meu" : "Outro médico";
+      return b;
+    }
+
+    function renderPatientAppointments(appointments) {
+      const container = document.getElementById("patientAppointmentsList");
+      container.replaceChildren();
+
+      if (!appointments.length) {
+        container.textContent = "Nenhuma consulta registrada.";
+        return;
+      }
+
+      appointments.forEach((apt) => {
+        const item = makePatientItem(apt.isMine);
+
+        const header = document.createElement("div");
+        header.className = "item-header";
+
+        const title = document.createElement("div");
+        title.className = "item-title";
+        const statusTxt = apt.status === "concluida" ? "Concluída" : "Em atendimento";
+        const when = apt.concludedAt
+          ? `concluída em ${new Date(apt.concludedAt).toLocaleString("pt-BR", { timeZone: "America/Sao_Paulo" })}`
+          : (apt.acceptedAt
+              ? `aceita em ${new Date(apt.acceptedAt).toLocaleString("pt-BR", { timeZone: "America/Sao_Paulo" })}`
+              : "sem data");
+        title.textContent = `${statusTxt} — ${when}`;
+        header.appendChild(title);
+        header.appendChild(makeBadge(apt.isMine));
+
+        const meta = document.createElement("div");
+        meta.className = "item-meta";
+        meta.textContent = `Médico: ${apt.doctorName || "—"}`;
+
+        const body = document.createElement("div");
+        body.className = "item-body";
+        body.textContent = apt.reason || "Sem motivo registrado.";
+
+        item.appendChild(header);
+        item.appendChild(meta);
+        item.appendChild(body);
+
+        // Se há SOAP concluído, mostra "Plano" resumido como destaque
+        if (apt.status === "concluida" && apt.closingNotes && apt.closingNotes.plan) {
+          const planLabel = document.createElement("div");
+          planLabel.style.marginTop = "8px";
+          planLabel.style.fontSize = "12px";
+          planLabel.style.color = "#1d4ed8";
+          planLabel.style.fontWeight = "600";
+          planLabel.textContent = "Plano (SOAP):";
+          item.appendChild(planLabel);
+
+          const planText = document.createElement("div");
+          planText.className = "item-body";
+          planText.style.whiteSpace = "pre-wrap";
+          planText.textContent = apt.closingNotes.plan;
+          item.appendChild(planText);
+        }
+
+        container.appendChild(item);
+      });
+    }
+
+    function renderPatientMedications(medications) {
+      const container = document.getElementById("patientMedicationsList");
+      container.replaceChildren();
+
+      if (!medications.length) {
+        container.textContent = "Nenhuma medicação registrada.";
+        return;
+      }
+
+      medications.forEach((med) => {
+        const item = makePatientItem(med.isMine);
+
+        const header = document.createElement("div");
+        header.className = "item-header";
+
+        const title = document.createElement("div");
+        title.className = "item-title";
+        title.textContent = `${med.medicationName || "—"} ${med.dose ? `(${med.dose})` : ""}`;
+        header.appendChild(title);
+
+        const rightSide = document.createElement("div");
+        rightSide.style.display = "flex";
+        rightSide.style.gap = "8px";
+        rightSide.style.alignItems = "center";
+
+        // Status pill: ativa ou arquivada
+        const statusPill = document.createElement("span");
+        statusPill.style.padding = "2px 8px";
+        statusPill.style.borderRadius = "10px";
+        statusPill.style.fontSize = "11px";
+        statusPill.style.fontWeight = "600";
+        statusPill.style.textTransform = "uppercase";
+        if (med.archivedAt) {
+          statusPill.style.background = "#f3f4f6";
+          statusPill.style.color = "#6b7280";
+          statusPill.textContent = "Arquivada";
+        } else {
+          statusPill.style.background = "#dcfce7";
+          statusPill.style.color = "#166534";
+          statusPill.textContent = med.status || "Ativa";
+        }
+        rightSide.appendChild(statusPill);
+        rightSide.appendChild(makeBadge(med.isMine));
+
+        header.appendChild(rightSide);
+
+        const meta = document.createElement("div");
+        meta.className = "item-meta";
+        const metaParts = [];
+        if (med.doctorName) metaParts.push(`Prescrita por: ${med.doctorName}`);
+        if (med.scheduleTimes) metaParts.push(`Horários: ${med.scheduleTimes}`);
+        meta.textContent = metaParts.join(" • ") || "—";
+
+        item.appendChild(header);
+        item.appendChild(meta);
+
+        if (med.instructions) {
+          const body = document.createElement("div");
+          body.className = "item-body";
+          body.style.whiteSpace = "pre-wrap";
+          body.textContent = med.instructions;
+          item.appendChild(body);
+        }
+
+        container.appendChild(item);
+      });
+    }
+
+    function renderPatientAnalyses(analyses) {
+      const container = document.getElementById("patientAnalysesList");
+      container.replaceChildren();
+
+      if (!analyses.length) {
+        container.textContent = "Nenhuma análise clínica gerada para este paciente.";
+        return;
+      }
+
+      analyses.forEach((an) => {
+        const item = makePatientItem(an.isMine);
+
+        const header = document.createElement("div");
+        header.className = "item-header";
+
+        const title = document.createElement("div");
+        title.className = "item-title";
+        const when = an.generatedAt
+          ? new Date(an.generatedAt).toLocaleString("pt-BR", { timeZone: "America/Sao_Paulo" })
+          : "—";
+        title.textContent = `Análise gerada em ${when}`;
+        header.appendChild(title);
+        header.appendChild(makeBadge(an.isMine));
+
+        const meta = document.createElement("div");
+        meta.className = "item-meta";
+        const metaParts = [];
+        if (an.doctorName) metaParts.push(`Médico: ${an.doctorName}`);
+        if (an.modelUsed) metaParts.push(`Modelo: ${an.modelUsed}`);
+        meta.textContent = metaParts.join(" • ") || "—";
+
+        const body = document.createElement("div");
+        body.className = "item-body";
+        body.textContent = an.reason
+          ? `Triagem: ${an.reason}`
+          : "Sem motivo registrado na consulta vinculada.";
+
+        item.appendChild(header);
+        item.appendChild(meta);
+        item.appendChild(body);
+
+        container.appendChild(item);
+      });
     }
 
     // ============================================================
@@ -2670,6 +3125,17 @@
     window.onload = function () {
       if (getToken()) {
         showDashboard();
+        // Deep link: se URL tem ?patient=NUMERO, abre direto na página do paciente
+        try {
+          const params = new URLSearchParams(window.location.search);
+          const patientPhone = params.get("patient");
+          if (patientPhone) {
+            // Pequeno delay pra showDashboard terminar de montar
+            setTimeout(() => openPatientDetail(patientPhone), 100);
+          }
+        } catch (e) {
+          // Ignora se URLSearchParams não funcionar
+        }
       } else {
         showLogin();
       }
