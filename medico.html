@@ -2397,6 +2397,183 @@
       sem_referencia: { label: "Sem referência",       bg: "#f3f4f6", color: "#6b7280", icon: "—" },
     };
 
+    // [PANEL-CLASSIFIER] Agrupa exames por painel (Hemograma, Função Renal, etc).
+    // Mantido no frontend (não no Claude) pra:
+    // - Não inflar prompt (Claude já retorna exames com nome literal)
+    // - Determinístico (mesmo exame sempre cai no mesmo painel)
+    // - Fácil de ajustar conforme você descobre exames novos nos testes
+    //
+    // Match é case-insensitive, sem acentos, busca por substring no nome literal
+    // do exame. Ordem importa: primeiro match vence (lista de cima pra baixo).
+    //
+    // Se não bate em nenhum painel, cai em "Outros".
+    const EXAM_PANELS = [
+      {
+        key: "hemograma",
+        label: "Hemograma",
+        match: [
+          "hemoglobina", "hematocrito", "hemacia", "eritrocito",
+          "leucocito", "neutrofil", "linfocit", "monocit", "eosinofil",
+          "basofil", "bastonete", "segmentado", "mielocit", "metamielocit",
+          "plaqueta", "vcm", "hcm", "chcm", "rdw", "volume globular",
+          "hemoglobina globular", "indice de anisocitose",
+        ],
+      },
+      {
+        key: "glicemia",
+        label: "Glicemia e Diabetes",
+        match: [
+          "glicose", "glicemia", "hemoglobina glicada", "hba1c", "a1c",
+          "frutosamina", "insulina", "peptideo c", "curva glicemica",
+        ],
+      },
+      {
+        key: "lipidograma",
+        label: "Lipidograma",
+        match: [
+          "colesterol", "hdl", "ldl", "vldl", "triglicerid", "lipoprotein",
+          "apolipoprotein", "lp(a)", "nao-hdl",
+        ],
+      },
+      {
+        key: "funcao_renal",
+        label: "Função Renal",
+        match: [
+          "ureia", "creatinina", "acido urico", "urato", "clearance",
+          "tfg", "filtracao glomerular", "cistatina", "microalbumin",
+          "relacao albumina", "albumina urinaria",
+        ],
+      },
+      {
+        key: "funcao_hepatica",
+        label: "Função Hepática",
+        match: [
+          "tgo", "tgp", "ast", "alt", "ggt", "gama gt", "gama-gt",
+          "fosfatase alcalina", "bilirrubina", "albumina",
+          "proteinas totais", "globulina", "ldh", "amonia",
+        ],
+      },
+      {
+        key: "tireoide",
+        label: "Tireoide",
+        match: [
+          "tsh", "t3", "t4", "tiroglobulin", "anti-tpo", "anti tpo",
+          "anti-tireoglobulin", "tiroide", "tireoide",
+        ],
+      },
+      {
+        key: "urina",
+        label: "Urina",
+        match: [
+          "urina tipo", "eas", "elementos anormais", "sumario de urina",
+          "densidade urinaria", "ph urinario", "proteinuria",
+          "hematuria", "leucocituria", "nitrito", "cilindro",
+          "urinocultura", "urocultura",
+        ],
+      },
+      {
+        key: "vitaminas",
+        label: "Vitaminas e Minerais",
+        match: [
+          "vitamina", "b12", "cobalamina", "acido folico", "folato",
+          "hidroxivitamina", "25-oh", "ferro serico", "ferritina",
+          "transferrina", "saturacao de transferrina", "tibc",
+          "calcio", "fosforo", "magnesio", "zinco", "sodio", "potassio",
+          "cloro", "bicarbonato",
+        ],
+      },
+      {
+        key: "hormonios",
+        label: "Hormônios",
+        match: [
+          "testosterona", "estradiol", "estrogeno", "progesterona",
+          "fsh", "lh", "prolactina", "cortisol", "dhea",
+          "androstenediona", "hcg", "beta hcg", "pth", "paratormonio",
+        ],
+      },
+      {
+        key: "inflamacao",
+        label: "Marcadores Inflamatórios",
+        match: [
+          "vhs", "velocidade de hemossedimentacao", "pcr", "proteina c reativa",
+          "ferritina", "procalcitonina",
+        ],
+      },
+      {
+        key: "coagulacao",
+        label: "Coagulação",
+        match: [
+          "tap", "tempo de protrombina", "inr", "rni", "ttpa",
+          "tempo de tromboplastina", "fibrinogenio", "d-dimero",
+          "antitrombina",
+        ],
+      },
+      {
+        key: "sorologia",
+        label: "Sorologias",
+        match: [
+          "hiv", "hbsag", "anti-hbs", "anti-hbc", "anti-hcv", "hcv",
+          "sifilis", "vdrl", "fta-abs", "toxoplasmose", "rubeola",
+          "citomegalovirus", "cmv", "epstein-barr", "ebv", "dengue",
+          "covid", "sars-cov", "h pylori", "helicobacter",
+        ],
+      },
+      {
+        key: "marcadores_tumorais",
+        label: "Marcadores Tumorais",
+        match: [
+          "psa", "cea", "ca 125", "ca 15-3", "ca 19-9", "afp", "alfa-fetoproteina",
+          "beta hcg",
+        ],
+      },
+    ];
+
+    // Normaliza string pra match (lower + sem acentos)
+    function normalizeForPanel(text) {
+      return String(text || "")
+        .toLowerCase()
+        .normalize("NFD")
+        .replace(/[\u0300-\u036f]/g, "");
+    }
+
+    // Classifica um exame em um painel. Retorna { key, label } ou painel "outros".
+    function classifyExamToPanel(examName) {
+      const norm = normalizeForPanel(examName);
+
+      for (const panel of EXAM_PANELS) {
+        for (const keyword of panel.match) {
+          if (norm.includes(keyword)) {
+            return { key: panel.key, label: panel.label };
+          }
+        }
+      }
+
+      return { key: "outros", label: "Outros" };
+    }
+
+    // Agrupa array de exames em objeto { panelKey: { label, exams: [] } }
+    // mantendo a ordem definida em EXAM_PANELS.
+    function groupExamsByPanel(exams) {
+      const groups = new Map();
+
+      // Pré-popula na ordem oficial
+      EXAM_PANELS.forEach((p) => {
+        groups.set(p.key, { label: p.label, exams: [] });
+      });
+      // "Outros" fica por último
+      groups.set("outros", { label: "Outros", exams: [] });
+
+      exams.forEach((ex) => {
+        const panel = classifyExamToPanel(ex.name);
+        groups.get(panel.key).exams.push(ex);
+      });
+
+      // Filtra grupos vazios e retorna array ordenado
+      return Array.from(groups.entries())
+        .filter(([_, g]) => g.exams.length > 0)
+        .map(([key, g]) => ({ key, ...g }));
+    }
+
     async function openExamAnalysis(examId, fileName) {
       const modal = document.getElementById("examAnalysisModal");
       const titleEl = document.getElementById("examAnalysisTitle");
@@ -2493,88 +2670,150 @@
         return;
       }
 
-      // Tabela de exames
-      const table = document.createElement("table");
-      table.style.width = "100%";
-      table.style.borderCollapse = "collapse";
-      table.style.fontSize = "14px";
+      // [PANEL-GROUPING] Agrupa exames por painel pra apresentação organizada
+      const grouped = groupExamsByPanel(exams);
 
-      const thead = document.createElement("thead");
-      const trHead = document.createElement("tr");
-      ["Exame", "Valor", "Unidade", "Referência (do laudo)", "Status"].forEach((h) => {
-        const th = document.createElement("th");
-        th.textContent = h;
-        th.style.padding = "10px 8px";
-        th.style.textAlign = "left";
-        th.style.borderBottom = "2px solid #e5e7eb";
-        th.style.fontSize = "13px";
-        th.style.color = "#374151";
-        trHead.appendChild(th);
+      // Resumo no topo: contagem de alterados por painel
+      const summaryDiv = document.createElement("div");
+      summaryDiv.style.marginBottom = "20px";
+      summaryDiv.style.padding = "12px";
+      summaryDiv.style.background = "#f9fafb";
+      summaryDiv.style.borderRadius = "8px";
+      summaryDiv.style.fontSize = "13px";
+
+      const totalAlterados = exams.filter((e) => e.status === "alterado").length;
+      const totalNormais = exams.filter((e) => e.status === "normal").length;
+      const totalSemRef = exams.filter((e) => e.status === "sem_referencia").length;
+
+      const summaryParts = [`<strong>${exams.length} exames extraídos</strong>`];
+      if (totalAlterados > 0) summaryParts.push(`<span style="color:#991b1b;">⚠ ${totalAlterados} fora da referência</span>`);
+      if (totalNormais > 0) summaryParts.push(`<span style="color:#166534;">✓ ${totalNormais} dentro</span>`);
+      if (totalSemRef > 0) summaryParts.push(`<span style="color:#6b7280;">— ${totalSemRef} sem referência</span>`);
+
+      summaryDiv.innerHTML = summaryParts.join(" • ");
+      bodyEl.appendChild(summaryDiv);
+
+      // Renderiza cada painel como uma seção
+      grouped.forEach((panel) => {
+        const panelAlterados = panel.exams.filter((e) => e.status === "alterado").length;
+
+        // Cabeçalho do painel
+        const panelHeader = document.createElement("div");
+        panelHeader.style.marginTop = "20px";
+        panelHeader.style.marginBottom = "8px";
+        panelHeader.style.display = "flex";
+        panelHeader.style.alignItems = "center";
+        panelHeader.style.gap = "10px";
+        panelHeader.style.padding = "8px 12px";
+        panelHeader.style.background = panelAlterados > 0 ? "#fef2f2" : "#f0fdf4";
+        panelHeader.style.borderLeft = `4px solid ${panelAlterados > 0 ? "#dc2626" : "#16a34a"}`;
+        panelHeader.style.borderRadius = "4px";
+
+        const panelTitle = document.createElement("div");
+        panelTitle.style.fontWeight = "700";
+        panelTitle.style.fontSize = "15px";
+        panelTitle.style.color = "#1f2937";
+        panelTitle.textContent = panel.label;
+        panelHeader.appendChild(panelTitle);
+
+        const panelCount = document.createElement("div");
+        panelCount.style.fontSize = "12px";
+        panelCount.style.color = "#6b7280";
+        panelCount.style.marginLeft = "auto";
+        if (panelAlterados > 0) {
+          panelCount.innerHTML = `<span style="color:#991b1b; font-weight:600;">${panelAlterados} alterado(s)</span> de ${panel.exams.length}`;
+        } else {
+          panelCount.textContent = `${panel.exams.length} exame(s)`;
+        }
+        panelHeader.appendChild(panelCount);
+
+        bodyEl.appendChild(panelHeader);
+
+        // Tabela do painel
+        const table = document.createElement("table");
+        table.style.width = "100%";
+        table.style.borderCollapse = "collapse";
+        table.style.fontSize = "14px";
+        table.style.marginBottom = "8px";
+
+        const thead = document.createElement("thead");
+        const trHead = document.createElement("tr");
+        ["Exame", "Valor", "Unidade", "Referência (do laudo)", "Status"].forEach((h) => {
+          const th = document.createElement("th");
+          th.textContent = h;
+          th.style.padding = "8px";
+          th.style.textAlign = "left";
+          th.style.borderBottom = "2px solid #e5e7eb";
+          th.style.fontSize = "12px";
+          th.style.color = "#374151";
+          th.style.fontWeight = "600";
+          trHead.appendChild(th);
+        });
+        thead.appendChild(trHead);
+        table.appendChild(thead);
+
+        const tbody = document.createElement("tbody");
+        panel.exams.forEach((ex) => {
+          const tr = document.createElement("tr");
+
+          const styleInfo = EXAM_STATUS_STYLE[ex.status] || EXAM_STATUS_STYLE.sem_referencia;
+          tr.style.background = ex.status === "alterado" ? "#fef9f9" : "transparent";
+
+          // Nome do exame
+          const tdName = document.createElement("td");
+          tdName.textContent = ex.name || "—";
+          tdName.style.padding = "8px";
+          tdName.style.borderBottom = "1px solid #f3f4f6";
+          tdName.style.fontWeight = "500";
+          tr.appendChild(tdName);
+
+          // Valor
+          const tdValue = document.createElement("td");
+          tdValue.textContent = ex.value || "—";
+          tdValue.style.padding = "8px";
+          tdValue.style.borderBottom = "1px solid #f3f4f6";
+          tdValue.style.fontFamily = "monospace";
+          tdValue.style.fontWeight = "600";
+          tr.appendChild(tdValue);
+
+          // Unidade
+          const tdUnit = document.createElement("td");
+          tdUnit.textContent = ex.unit || "—";
+          tdUnit.style.padding = "8px";
+          tdUnit.style.borderBottom = "1px solid #f3f4f6";
+          tdUnit.style.color = "#6b7280";
+          tr.appendChild(tdUnit);
+
+          // Referência
+          const tdRef = document.createElement("td");
+          tdRef.textContent = ex.reference || "—";
+          tdRef.style.padding = "8px";
+          tdRef.style.borderBottom = "1px solid #f3f4f6";
+          tdRef.style.color = "#6b7280";
+          tdRef.style.fontSize = "13px";
+          tr.appendChild(tdRef);
+
+          // Status pill
+          const tdStatus = document.createElement("td");
+          tdStatus.style.padding = "8px";
+          tdStatus.style.borderBottom = "1px solid #f3f4f6";
+
+          const pill = document.createElement("span");
+          pill.style.padding = "3px 10px";
+          pill.style.borderRadius = "12px";
+          pill.style.fontSize = "12px";
+          pill.style.fontWeight = "600";
+          pill.style.background = styleInfo.bg;
+          pill.style.color = styleInfo.color;
+          pill.textContent = `${styleInfo.icon} ${styleInfo.label}`;
+          tdStatus.appendChild(pill);
+          tr.appendChild(tdStatus);
+
+          tbody.appendChild(tr);
+        });
+        table.appendChild(tbody);
+        bodyEl.appendChild(table);
       });
-      thead.appendChild(trHead);
-      table.appendChild(thead);
-
-      const tbody = document.createElement("tbody");
-      exams.forEach((ex) => {
-        const tr = document.createElement("tr");
-
-        const styleInfo = EXAM_STATUS_STYLE[ex.status] || EXAM_STATUS_STYLE.sem_referencia;
-        tr.style.background = ex.status === "alterado" ? "#fef9f9" : "transparent";
-
-        // Nome do exame
-        const tdName = document.createElement("td");
-        tdName.textContent = ex.name || "—";
-        tdName.style.padding = "10px 8px";
-        tdName.style.borderBottom = "1px solid #f3f4f6";
-        tdName.style.fontWeight = "500";
-        tr.appendChild(tdName);
-
-        // Valor
-        const tdValue = document.createElement("td");
-        tdValue.textContent = ex.value || "—";
-        tdValue.style.padding = "10px 8px";
-        tdValue.style.borderBottom = "1px solid #f3f4f6";
-        tdValue.style.fontFamily = "monospace";
-        tdValue.style.fontWeight = "600";
-        tr.appendChild(tdValue);
-
-        // Unidade
-        const tdUnit = document.createElement("td");
-        tdUnit.textContent = ex.unit || "—";
-        tdUnit.style.padding = "10px 8px";
-        tdUnit.style.borderBottom = "1px solid #f3f4f6";
-        tdUnit.style.color = "#6b7280";
-        tr.appendChild(tdUnit);
-
-        // Referência
-        const tdRef = document.createElement("td");
-        tdRef.textContent = ex.reference || "—";
-        tdRef.style.padding = "10px 8px";
-        tdRef.style.borderBottom = "1px solid #f3f4f6";
-        tdRef.style.color = "#6b7280";
-        tdRef.style.fontSize = "13px";
-        tr.appendChild(tdRef);
-
-        // Status pill
-        const tdStatus = document.createElement("td");
-        tdStatus.style.padding = "10px 8px";
-        tdStatus.style.borderBottom = "1px solid #f3f4f6";
-
-        const pill = document.createElement("span");
-        pill.style.padding = "3px 10px";
-        pill.style.borderRadius = "12px";
-        pill.style.fontSize = "12px";
-        pill.style.fontWeight = "600";
-        pill.style.background = styleInfo.bg;
-        pill.style.color = styleInfo.color;
-        pill.textContent = `${styleInfo.icon} ${styleInfo.label}`;
-        tdStatus.appendChild(pill);
-        tr.appendChild(tdStatus);
-
-        tbody.appendChild(tr);
-      });
-      table.appendChild(tbody);
-      bodyEl.appendChild(table);
 
       // Rodapé com info de geração
       const footerDiv = document.createElement("div");
