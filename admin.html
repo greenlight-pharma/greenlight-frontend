@@ -484,6 +484,161 @@
       color: #991b1b;
     }
 
+    /* ----- MODAL ----- */
+
+    .modal-backdrop {
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(15, 23, 42, 0.6);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 50;
+      padding: 16px;
+    }
+
+    .modal-backdrop.hidden {
+      display: none;
+    }
+
+    .modal-content {
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 20px 50px rgba(0,0,0,0.25);
+      width: 100%;
+      max-width: 520px;
+      max-height: 90vh;
+      overflow-y: auto;
+      padding: 24px;
+    }
+
+    .modal-soap-view {
+      max-width: 700px;
+    }
+
+    .modal-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 16px;
+    }
+
+    .modal-header h3 {
+      margin: 0;
+      font-size: 18px;
+      color: #1f2933;
+    }
+
+    .modal-close {
+      background: transparent;
+      border: none;
+      cursor: pointer;
+      font-size: 18px;
+      color: #6b7280;
+      line-height: 1;
+      padding: 4px 8px;
+    }
+
+    .modal-close:hover {
+      color: #1f2933;
+    }
+
+    .modal-warning {
+      background: #fef3c7;
+      border-left: 4px solid #f59e0b;
+      padding: 10px 14px;
+      border-radius: 6px;
+      font-size: 13px;
+      color: #78350f;
+      margin-bottom: 16px;
+      line-height: 1.5;
+    }
+
+    .modal-actions {
+      display: flex;
+      justify-content: flex-end;
+      gap: 8px;
+      margin-top: 20px;
+    }
+
+    .btn-secondary-outline {
+      background: transparent;
+      color: #374151;
+      border: 1px solid #d1d5db;
+      padding: 10px 18px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: 600;
+      font-size: 14px;
+    }
+
+    .btn-secondary-outline:hover {
+      background: #f3f4f6;
+    }
+
+    /* SOAP view (admin lê, não edita) */
+    .soap-view-header {
+      background: #eff6ff;
+      padding: 12px 14px;
+      border-radius: 8px;
+      margin-bottom: 16px;
+      font-size: 14px;
+      color: #1e3a8a;
+      line-height: 1.6;
+    }
+
+    .soap-view-header strong {
+      color: #1d4ed8;
+    }
+
+    .soap-view-section {
+      margin-bottom: 18px;
+      padding-bottom: 14px;
+      border-bottom: 1px solid #e5e7eb;
+    }
+
+    .soap-view-section:last-of-type {
+      border-bottom: none;
+    }
+
+    .soap-view-section h4 {
+      margin: 0 0 8px 0;
+      color: #1d4ed8;
+      font-size: 14px;
+    }
+
+    .soap-view-content {
+      font-size: 14px;
+      color: #374151;
+      line-height: 1.6;
+      white-space: pre-wrap;
+      background: #f9fafb;
+      padding: 10px 14px;
+      border-radius: 6px;
+      min-height: 28px;
+    }
+
+    .soap-view-content.empty {
+      color: #9ca3af;
+      font-style: italic;
+    }
+
+    /* Botão pequeno na tabela */
+    .btn-soap {
+      background: #1d4ed8;
+      color: white;
+      border: none;
+      padding: 6px 12px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 13px;
+      font-weight: 500;
+    }
+
+    .btn-soap:hover {
+      background: #1e40af;
+    }
+
     /* ----- MOBILE TOPBAR (hambúrguer, só visível em mobile) ----- */
 
     .mobile-topbar {
@@ -665,9 +820,14 @@
             <div class="stat-sub">sem médico aceitando</div>
           </div>
           <div class="stat-card">
+            <div class="stat-label">Concluídas</div>
+            <div class="stat-value" id="statConcludedCount">—</div>
+            <div class="stat-sub">com SOAP registrado</div>
+          </div>
+          <div class="stat-card">
             <div class="stat-label">Histórico</div>
             <div class="stat-value" id="statHistoryCount">—</div>
-            <div class="stat-sub">aceitas, concluídas, canceladas</div>
+            <div class="stat-sub">aceitas, canceladas</div>
           </div>
         </div>
 
@@ -743,8 +903,34 @@
         </div>
 
         <div class="card">
+          <h3>Concluídas</h3>
+          <div class="card-subtitle">Consultas finalizadas pelo médico com evolução SOAP registrada. Clique em "Ver SOAP" para auditar o conteúdo clínico.</div>
+          <button class="primary" onclick="loadConcludedAppointments()">Atualizar Concluídas</button>
+          <button class="btn-danger" onclick="archiveBatch('concluded')">Arquivar todas</button>
+
+          <table>
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Paciente</th>
+                <th>Idade</th>
+                <th>Motivo</th>
+                <th>Médico</th>
+                <th>Concluída em</th>
+                <th>SOAP</th>
+              </tr>
+            </thead>
+            <tbody id="concludedTableBody">
+              <tr>
+                <td colspan="7">Nenhuma consulta concluída carregada.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="card">
           <h3>Aceitas e Histórico</h3>
-          <div class="card-subtitle">Consultas aceitas por médicos, concluídas ou canceladas.</div>
+          <div class="card-subtitle">Consultas aceitas por médicos ou canceladas (concluídas têm card próprio acima).</div>
           <button class="primary" onclick="loadHistoryAppointments()">Atualizar Histórico</button>
           <button class="btn-danger" onclick="archiveBatch('history')">Arquivar todos</button>
 
@@ -848,6 +1034,49 @@
       </section>
 
     </main>
+  </div>
+
+  <!-- ====== MODAL DE VISUALIZAÇÃO SOAP (admin) ====== -->
+  <div id="soapViewModal" class="modal-backdrop hidden" onclick="closeSoapViewOnBackdrop(event)">
+    <div class="modal-content modal-soap-view">
+      <div class="modal-header">
+        <h3>Evolução SOAP</h3>
+        <button class="modal-close" onclick="closeSoapView()" aria-label="Fechar">✕</button>
+      </div>
+
+      <div class="modal-warning">
+        ⚠️ <strong>Dados clínicos sensíveis (LGPD).</strong> Acesso administrativo
+        registrado para auditoria. Não compartilhe externamente.
+      </div>
+
+      <div class="soap-view-header" id="soapViewPatientInfo">
+        <!-- Preenchido dinamicamente -->
+      </div>
+
+      <div class="soap-view-section">
+        <h4>S — Subjetivo</h4>
+        <div class="soap-view-content" id="soapViewSubjective"></div>
+      </div>
+
+      <div class="soap-view-section">
+        <h4>O — Objetivo</h4>
+        <div class="soap-view-content" id="soapViewObjective"></div>
+      </div>
+
+      <div class="soap-view-section">
+        <h4>A — Avaliação</h4>
+        <div class="soap-view-content" id="soapViewAssessment"></div>
+      </div>
+
+      <div class="soap-view-section">
+        <h4>P — Plano</h4>
+        <div class="soap-view-content" id="soapViewPlan"></div>
+      </div>
+
+      <div class="modal-actions">
+        <button class="btn-secondary-outline" onclick="closeSoapView()">Fechar</button>
+      </div>
+    </div>
   </div>
 
   <script>
@@ -1016,7 +1245,8 @@
       const labels = {
         future: { title: "Agendamentos em Aberto", warning: "ATENÇÃO: agendamentos em aberto podem estar aguardando médico aceitar. Arquivar agora vai escondê-los — pacientes podem ficar sem atendimento. Tem certeza?" },
         expired: { title: "Agendamentos Expirados", warning: "Arquivar todos os agendamentos expirados? Eles somem da lista mas continuam no banco para auditoria." },
-        history: { title: "Aceitas e Histórico", warning: "Arquivar todo o histórico (aceitas, concluídas, canceladas)? Eles somem da lista mas continuam no banco para auditoria." }
+        history: { title: "Aceitas e Histórico", warning: "Arquivar todo o histórico (aceitas, canceladas)? Eles somem da lista mas continuam no banco para auditoria." },
+        concluded: { title: "Concluídas", warning: "⚠️ ATENÇÃO: você está arquivando consultas CONCLUÍDAS com EVOLUÇÃO SOAP registrada. Estes são DADOS CLÍNICOS (LGPD). Os registros não são apagados — continuam no banco para fins de auditoria e retenção legal (CFM exige 20 anos), apenas somem da interface.\n\nTem certeza absoluta?" }
       };
 
       const label = labels[scope];
@@ -1026,6 +1256,15 @@
       }
 
       if (!window.confirm(label.warning)) return;
+
+      // [SAFETY] Confirmação extra pra concluídas (dados clínicos)
+      if (scope === "concluded") {
+        const second = window.prompt('Digite "CONFIRMAR" para arquivar as consultas concluídas:');
+        if (second !== "CONFIRMAR") {
+          alert("Operação cancelada.");
+          return;
+        }
+      }
 
       const token = getToken();
       try {
@@ -1049,6 +1288,7 @@
         if (scope === "future") loadOpenAppointments();
         else if (scope === "expired") loadExpiredAppointments();
         else if (scope === "history") loadHistoryAppointments();
+        else if (scope === "concluded") loadConcludedAppointments();
       } catch (error) {
         alert(`Erro ao arquivar: ${error.message}`);
       }
@@ -1135,6 +1375,7 @@
     let cachedOpen = [];
     let cachedExpired = [];
     let cachedHistory = [];
+    let cachedConcluded = [];
 
     function refreshStats() {
       const totalDoctors = cachedDoctors.length;
@@ -1144,6 +1385,7 @@
       document.getElementById("statDoctorsActive").textContent = `${activeDoctors} ativos`;
       document.getElementById("statOpenCount").textContent = cachedOpen.length || "—";
       document.getElementById("statExpiredCount").textContent = cachedExpired.length || "—";
+      document.getElementById("statConcludedCount").textContent = cachedConcluded.length || "—";
       document.getElementById("statHistoryCount").textContent = cachedHistory.length || "—";
     }
 
@@ -1170,6 +1412,7 @@
       loadOpenAppointments();
       loadHistoryAppointments();
       loadExpiredAppointments();
+      loadConcludedAppointments();
     }
 
     function showLogin() {
@@ -1439,8 +1682,9 @@
           throw new Error(appointments.error || "Erro ao carregar histórico");
         }
 
-        const historyStatuses = new Set(["aceita", "concluida", "cancelada"]);
-        const history = appointments.filter((a) => historyStatuses.has(a.status));
+        // [CONCLUDED-SPLIT] Backend já filtra: só aceita/cancelada vêm aqui.
+        // Concluídas têm endpoint próprio (loadConcludedAppointments).
+        const history = Array.isArray(appointments) ? appointments : [];
 
         cachedHistory = history;
         refreshStats();
@@ -1524,6 +1768,145 @@
         });
       } catch (error) {
         renderRowMessage(tableBody, 7, error.message);
+      }
+    }
+
+    // ============================================================
+    // CONCLUÍDAS (com SOAP)
+    // ============================================================
+
+    async function loadConcludedAppointments() {
+      const token = getToken();
+      const tableBody = document.getElementById("concludedTableBody");
+
+      renderRowMessage(tableBody, 7, "Carregando...");
+
+      try {
+        const response = await fetch(`${API_URL}/admin/appointments/concluded`, {
+          method: "GET",
+          headers: { "Authorization": `Bearer ${token}` }
+        });
+
+        const appointments = await response.json();
+
+        if (!response.ok) {
+          throw new Error(appointments.error || "Erro ao carregar concluídas");
+        }
+
+        cachedConcluded = Array.isArray(appointments) ? appointments : [];
+        refreshStats();
+
+        if (!cachedConcluded.length) {
+          renderRowMessage(tableBody, 7, "Nenhuma consulta concluída.");
+          return;
+        }
+
+        tableBody.innerHTML = "";
+
+        cachedConcluded.forEach((apt) => {
+          const concludedAtFmt = apt.concludedAt
+            ? new Date(apt.concludedAt).toLocaleString("pt-BR", {
+                timeZone: "America/Sao_Paulo",
+                day: "2-digit", month: "2-digit", year: "numeric",
+                hour: "2-digit", minute: "2-digit",
+              })
+            : "—";
+
+          const reasonCell = document.createElement("div");
+          reasonCell.textContent = apt.reason || "-";
+          reasonCell.style.maxWidth = "380px";
+          reasonCell.style.whiteSpace = "normal";
+          reasonCell.style.lineHeight = "1.5";
+
+          const soapBtn = document.createElement("button");
+          soapBtn.textContent = "Ver SOAP";
+          soapBtn.className = "btn-soap";
+          soapBtn.addEventListener("click", () => openSoapView(apt));
+
+          appendRow(tableBody, [
+            apt.id,
+            apt.name || "Sem nome",
+            formatAge(apt.patientAge),
+            { node: reasonCell },
+            apt.doctorName || apt.acceptedDoctorName || "—",
+            concludedAtFmt,
+            { node: soapBtn },
+          ]);
+        });
+      } catch (error) {
+        renderRowMessage(tableBody, 7, error.message);
+      }
+    }
+
+    // ============================================================
+    // MODAL DE VISUALIZAÇÃO SOAP
+    // ============================================================
+
+    function openSoapView(apt) {
+      // Header com identificação do caso
+      const info = document.getElementById("soapViewPatientInfo");
+      info.replaceChildren();
+
+      const name = document.createElement("strong");
+      name.textContent = apt.name || "Paciente";
+      info.appendChild(name);
+
+      const idade = apt.patientAge ? `, ${apt.patientAge} anos` : "";
+      info.appendChild(document.createTextNode(idade));
+
+      const sep = document.createElement("div");
+      sep.style.marginTop = "6px";
+      sep.style.fontSize = "13px";
+      sep.textContent = `Médico: ${apt.doctorName || apt.acceptedDoctorName || "—"} • Concluída em ${
+        apt.concludedAt
+          ? new Date(apt.concludedAt).toLocaleString("pt-BR", { timeZone: "America/Sao_Paulo" })
+          : "—"
+      }`;
+      info.appendChild(sep);
+
+      if (apt.reason) {
+        const reason = document.createElement("div");
+        reason.style.marginTop = "6px";
+        reason.style.fontSize = "13px";
+        reason.style.color = "#475569";
+        reason.textContent = `Triagem: ${apt.reason}`;
+        info.appendChild(reason);
+      }
+
+      // Preenche os 4 campos SOAP (vazio se não tiver)
+      const notes = apt.closingNotes || {};
+      fillSoapField("soapViewSubjective", notes.subjective);
+      fillSoapField("soapViewObjective", notes.objective);
+      fillSoapField("soapViewAssessment", notes.assessment);
+      fillSoapField("soapViewPlan", notes.plan);
+
+      document.getElementById("soapViewModal").classList.remove("hidden");
+
+      // Log de acesso administrativo (auditoria simples — só client-side por enquanto)
+      console.log("[ADMIN_VIEW_SOAP]", JSON.stringify({
+        appointmentId: apt.id,
+        at: new Date().toISOString(),
+      }));
+    }
+
+    function fillSoapField(elementId, text) {
+      const el = document.getElementById(elementId);
+      if (text && text.trim()) {
+        el.classList.remove("empty");
+        el.textContent = text;
+      } else {
+        el.classList.add("empty");
+        el.textContent = "(campo não preenchido)";
+      }
+    }
+
+    function closeSoapView() {
+      document.getElementById("soapViewModal").classList.add("hidden");
+    }
+
+    function closeSoapViewOnBackdrop(event) {
+      if (event.target.id === "soapViewModal") {
+        closeSoapView();
       }
     }
 
