@@ -1369,12 +1369,8 @@
           <div class="page-subtitle">Gerencie suas consultas em atendimento e concluídas</div>
         </div>
 
-        <!-- Disclaimer da análise IA — só aparece quando uma análise é renderizada -->
-        <div id="analysisDisclaimer" class="disclaimer-box hidden">
-          <strong>⚠️ Análise gerada por inteligência artificial.</strong>
-          As hipóteses e condutas sugeridas são apoio ao raciocínio clínico, não substituem
-          sua avaliação. A decisão final é sempre sua, como médico responsável.
-        </div>
+        <!-- Disclaimer da análise IA é renderizado dinamicamente dentro do
+             container da análise (renderAnalysis), pra ficar grudado nela. -->
 
         <!-- Card 1: Em Atendimento -->
         <div class="card">
@@ -1801,9 +1797,6 @@
         refreshStats();
       } else if (pageId === "analysis") {
         loadMyAppointments();
-        // Reset: oculta disclaimer ao entrar/voltar pra lista de consultas
-        const disclaimer = document.getElementById("analysisDisclaimer");
-        if (disclaimer) disclaimer.classList.add("hidden");
       }
 
       // Em mobile, fecha a sidebar ao trocar de página (UX padrão de drawer)
@@ -3735,9 +3728,21 @@
     function renderAnalysis(container, data, appointmentId) {
       container.replaceChildren();
 
-      // Mostra o disclaimer agora que uma análise está sendo exibida
-      const disclaimer = document.getElementById("analysisDisclaimer");
-      if (disclaimer) disclaimer.classList.remove("hidden");
+      // [DISCLAIMER-INLINE] Disclaimer fica grudado na análise (não no topo
+      // da página) pra garantir que o médico veja antes do conteúdo.
+      // Texto + nome (textContent) protegem contra XSS — disclaimer só é
+      // texto estático, sem dados de input.
+      const disclaimer = document.createElement("div");
+      disclaimer.className = "disclaimer-box";
+      disclaimer.style.marginBottom = "16px";
+      const discTitle = document.createElement("strong");
+      discTitle.textContent = "⚠️ Análise gerada por inteligência artificial.";
+      disclaimer.appendChild(discTitle);
+      disclaimer.appendChild(document.createTextNode(
+        " As hipóteses e condutas sugeridas são apoio ao raciocínio clínico, " +
+        "não substituem sua avaliação. A decisão final é sempre sua, como médico responsável."
+      ));
+      container.appendChild(disclaimer);
 
       const c = data.content || {};
       const apt = cachedMyAppointments.find((a) => a.id === appointmentId);
