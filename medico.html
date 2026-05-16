@@ -1254,10 +1254,6 @@
           <span class="nav-icon">🩺</span>
           <span>Consultas</span>
         </button>
-        <button class="nav-btn" data-page="medications" onclick="switchPage('medications')">
-          <span class="nav-icon">💊</span>
-          <span>Medicações</span>
-        </button>
         <button class="nav-btn" data-page="account" onclick="switchPage('account')">
           <span class="nav-icon">🔐</span>
           <span>Alterar Senha</span>
@@ -1505,80 +1501,6 @@
 
         <!-- Container onde a análise renderiza após clicar "Gerar" / "Ver" -->
         <div id="analysisResultContainer"></div>
-      </section>
-
-      <!-- Página: MEDICAÇÕES -->
-      <section id="page-medications" class="page">
-        <div class="page-header">
-          <h2>Medicações</h2>
-          <div class="page-subtitle">Cadastre prescrições e veja medicações ativas</div>
-        </div>
-
-        <div class="grid">
-          <div class="card">
-            <h3>Cadastrar Medicação</h3>
-
-            <label>Paciente vinculado</label>
-            <select id="patientSelect" onchange="fillPatientFields()">
-              <option value="">Carregando pacientes...</option>
-            </select>
-
-            <label>Nome do paciente</label>
-            <input id="patientName" type="text" placeholder="Nome do paciente" />
-
-            <label>Telefone do paciente</label>
-            <input id="patientPhone" type="text" placeholder="Ex: 5512999999999" />
-
-            <label>Nome da medicação</label>
-            <input id="medicationName" type="text" placeholder="Comece a digitar... (ex: Losartana)" autocomplete="off" list="medicationOptions" oninput="onMedicationInput(this)" />
-            <datalist id="medicationOptions"></datalist>
-            <div class="small">Sugestões baseadas na RENAME 2024. Se não encontrar, pode digitar livre.</div>
-
-            <label>Dose</label>
-            <input id="dose" type="text" placeholder="Ex: 5 gotas ou conforme prescrição" />
-
-            <label>Horários dos lembretes</label>
-            <input id="scheduleTimes" type="text" placeholder="Ex: 08:00,20:00" />
-            <div class="small">Separe os horários por vírgula. Exemplo: 08:00,14:00,20:00</div>
-
-            <label>Data de início</label>
-            <input id="startDate" type="date" />
-
-            <label>Data de término</label>
-            <input id="endDate" type="date" />
-            <div class="small">Pode deixar em branco se for uso contínuo.</div>
-
-            <label>Orientações</label>
-            <textarea id="instructions" placeholder="Ex: Usar após refeições. Observar sonolência. Retornar em 30 dias."></textarea>
-
-            <button class="primary" onclick="createMedication()">Cadastrar Medicação</button>
-
-            <div id="medicationMessage" class="message"></div>
-          </div>
-
-          <div class="card">
-            <h3>Medicações Cadastradas</h3>
-            <button class="primary" onclick="loadMedications()">Atualizar Medicações</button>
-
-            <table>
-              <thead>
-                <tr>
-                  <th>Paciente</th>
-                  <th>Medicação</th>
-                  <th>Dose</th>
-                  <th>Horários</th>
-                  <th>Status</th>
-                  <th>Ações</th>
-                </tr>
-              </thead>
-              <tbody id="medicationsTableBody">
-                <tr>
-                  <td colspan="6">Nenhuma medicação carregada.</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-        </div>
       </section>
 
       <!-- Página: ALTERAR SENHA -->
@@ -2169,21 +2091,24 @@
         cachedPatients = normalized;
         refreshStats();
 
-        // [ANTI-XSS] select preenchido via createElement
-        select.replaceChildren();
-        const defaultOpt = document.createElement("option");
-        defaultOpt.value = "";
-        defaultOpt.textContent = "Selecione um paciente";
-        select.appendChild(defaultOpt);
+        // [MED-PAGE-REMOVED] O <select id="patientSelect"> pertencia à
+        // página global de Medicações (removida). Só popula se ainda
+        // existir — a página Meus Pacientes não depende disso.
+        if (select) {
+          select.replaceChildren();
+          const defaultOpt = document.createElement("option");
+          defaultOpt.value = "";
+          defaultOpt.textContent = "Selecione um paciente";
+          select.appendChild(defaultOpt);
 
-        // Popula o <select> de medicações (sem filtro — lista completa, ordenada)
-        normalized.forEach((p) => {
-          const opt = document.createElement("option");
-          opt.value = p.phone;
-          opt.textContent = `${p.name || "Sem nome"} - ${p.phone || "-"}`;
-          opt.dataset.name = p.name || "";
-          select.appendChild(opt);
-        });
+          normalized.forEach((p) => {
+            const opt = document.createElement("option");
+            opt.value = p.phone;
+            opt.textContent = `${p.name || "Sem nome"} - ${p.phone || "-"}`;
+            opt.dataset.name = p.name || "";
+            select.appendChild(opt);
+          });
+        }
 
         // Renderiza a tabela (aplicando o filtro atual, se houver)
         renderPatientsTable();
@@ -2430,15 +2355,21 @@
     }
 
     function fillPatientFields() {
+      // [MED-PAGE-REMOVED] Era usada pelo dropdown da página global de
+      // Medicações (removida). Mantida blindada por segurança caso
+      // algum fluxo antigo ainda referencie.
       const select = document.getElementById("patientSelect");
+      if (!select) return;
       const selectedOption = select.options[select.selectedIndex];
 
-      if (!selectedOption.value) {
+      if (!selectedOption || !selectedOption.value) {
         return;
       }
 
-      document.getElementById("patientName").value = selectedOption.dataset.name || "";
-      document.getElementById("patientPhone").value = selectedOption.value;
+      const nameEl = document.getElementById("patientName");
+      const phoneEl = document.getElementById("patientPhone");
+      if (nameEl) nameEl.value = selectedOption.dataset.name || "";
+      if (phoneEl) phoneEl.value = selectedOption.value;
     }
 
     // ============================================================
@@ -5334,68 +5265,16 @@
       }, 200);
     }
 
-    async function createMedication() {
-      clearMessage("medicationMessage");
-
-      const token = getToken();
-      const patientName = document.getElementById("patientName").value.trim();
-      const patientPhone = document.getElementById("patientPhone").value.trim();
-      const medicationName = document.getElementById("medicationName").value.trim();
-      const dose = document.getElementById("dose").value.trim();
-      const scheduleTimes = document.getElementById("scheduleTimes").value.trim();
-      const startDate = document.getElementById("startDate").value;
-      const endDate = document.getElementById("endDate").value;
-      const instructions = document.getElementById("instructions").value.trim();
-
-      if (!patientPhone || !medicationName || !dose || !scheduleTimes) {
-        setMessage("medicationMessage", "error", "Telefone, medicação, dose e horários são obrigatórios.");
-        return;
-      }
-
-      try {
-        const response = await fetch(`${API_URL}/medications`, {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-            "Authorization": `Bearer ${token}`
-          },
-          body: JSON.stringify({
-            // [FIX-MED-BODY] Backend espera "phone" (não "patientPhone")
-            phone: patientPhone,
-            patientName,
-            medicationName,
-            dose,
-            scheduleTimes,
-            startDate: startDate || null,
-            endDate: endDate || null,
-            instructions
-          })
-        });
-
-        const data = await response.json();
-
-        if (!response.ok) {
-          throw new Error(data.error || "Erro ao cadastrar medicação");
-        }
-
-        setMessage("medicationMessage", "success", "Medicação cadastrada!");
-
-        document.getElementById("medicationName").value = "";
-        document.getElementById("dose").value = "";
-        document.getElementById("scheduleTimes").value = "";
-        document.getElementById("endDate").value = "";
-        document.getElementById("instructions").value = "";
-
-        loadMedications();
-      } catch (error) {
-        setMessage("medicationMessage", "error", error.message);
-      }
-    }
-
     async function loadMedications() {
-      const token = getToken();
       const tableBody = document.getElementById("medicationsTableBody");
 
+      // [MED-PAGE-REMOVED] A página global de Medicações foi removida —
+      // medicações agora são geridas no prontuário do paciente.
+      // Esta função ainda é chamada por fluxos antigos (boot, pós-edição
+      // pela lista principal). Se a tabela não existe, não há o que fazer.
+      if (!tableBody) return;
+
+      const token = getToken();
       renderRowMessage(tableBody, 6, "Carregando...");
 
       try {
