@@ -2011,9 +2011,13 @@
     }
 
     function setTodayAsDefault() {
-      const today = new Date().toISOString().slice(0, 10);
-      if (!document.getElementById("startDate").value) {
-        document.getElementById("startDate").value = today;
+      // [MED-PAGE-REMOVED-FIX] #startDate era do formulário da página
+      // Medicações (removida). Sem este guard, getElementById retorna null
+      // e null.value lança TypeError — que quebrava TODO o boot (esta
+      // função roda antes de loadPatients), deixando a tela vazia.
+      const startEl = document.getElementById("startDate");
+      if (startEl && !startEl.value) {
+        startEl.value = new Date().toISOString().slice(0, 10);
       }
     }
 
