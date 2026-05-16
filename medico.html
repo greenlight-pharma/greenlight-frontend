@@ -2560,7 +2560,7 @@
 
         renderPatientHeader(data.patient, data.linkedToMe);
         renderPatientBasicData(data.patient, data.linkedToMe);
-        renderPatientAppointments(data.appointments || []);
+        renderPatientAppointments(data.appointments || [], data.analyses || []);
         renderPatientMedications(data.medications || []);
 
         // [EXAM-TYPE] Separa exames laboratoriais dos de imagem.
@@ -2885,7 +2885,7 @@
       return b;
     }
 
-    function renderPatientAppointments(appointments) {
+    function renderPatientAppointments(appointments, analyses) {
       const container = document.getElementById("patientAppointmentsList");
       container.replaceChildren();
 
@@ -2893,6 +2893,14 @@
         container.textContent = "Nenhuma consulta registrada.";
         return;
       }
+
+      // [PRONTUARIO-CONSULTA-ACTIONS] Set de appointmentIds que já têm
+      // análise clínica gerada (vem da lista data.analyses do /summary).
+      const analyzedSet = new Set(
+        (Array.isArray(analyses) ? analyses : [])
+          .map((a) => a.appointmentId)
+          .filter((id) => id != null)
+      );
 
       appointments.forEach((apt) => {
         const item = makePatientItem(apt.isMine);
@@ -2941,8 +2949,84 @@
           item.appendChild(planText);
         }
 
+        // [PRONTUARIO-CONSULTA-ACTIONS] Botões só pra consulta EM ATENDIMENTO
+        // e que é DESTE médico. Concluídas ou de outro médico não têm ações.
+        //
+        // NOTA REGULATÓRIA: o botão "análise clínica" é um SEGUNDO ponto de
+        // entrada pra feature de análise diagnóstica (o primeiro é a página
+        // Consultas). Decisão consciente do owner em 16/05/2026. Ele leva o
+        // médico até a página Consultas e dispara a análise LÁ — a renderização
+        // da análise continua centralizada num único lugar (não duplicada),
+        // só o gatilho é replicado. Documentar ambos os pontos de entrada
+        // na análise de risco SaMD quando for ao consultor regulatório.
+        if (apt.status !== "concluida" && apt.isMine) {
+          const actions = document.createElement("div");
+          actions.style.marginTop = "12px";
+          actions.style.display = "flex";
+          actions.style.gap = "8px";
+          actions.style.flexWrap = "wrap";
+
+          const hasAnalysis = analyzedSet.has(apt.id);
+
+          const analysisBtn = document.createElement("button");
+          analysisBtn.textContent = hasAnalysis ? "🔍 Ver análise clínica" : "🧪 Gerar análise clínica";
+          analysisBtn.className = "btn-soap";
+          analysisBtn.style.background = hasAnalysis ? "#0891b2" : "#0ea5e9";
+          analysisBtn.addEventListener("click", () => goToAnalysisFromProntuario(apt.id));
+          actions.appendChild(analysisBtn);
+
+          const concludeBtn = document.createElement("button");
+          const hasDraft = apt.closingNotes && (
+            apt.closingNotes.subjective || apt.closingNotes.objective ||
+            apt.closingNotes.assessment || apt.closingNotes.plan
+          );
+          concludeBtn.textContent = hasDraft ? "📝 Continuar encerramento" : "✅ Encerrar consulta";
+          concludeBtn.className = "btn-conclude";
+          concludeBtn.style.padding = "8px 14px";
+          concludeBtn.addEventListener("click", () => openClosingModal(apt));
+          actions.appendChild(concludeBtn);
+
+          item.appendChild(actions);
+        }
+
         container.appendChild(item);
       });
+    }
+
+    // [PRONTUARIO-CONSULTA-ACTIONS] Atalho: leva pra página Consultas e
+    // dispara a análise do appointment lá (onde o container de render
+    // existe). NÃO renderiza análise no prontuário — mantém a feature
+    // diagnóstica centralizada num único lugar de exibição.
+    function goToAnalysisFromProntuario(appointmentId) {
+      switchPage("analysis");
+      // Aguarda a página Consultas carregar a lista, então localiza o
+      // botão daquela consulta e dispara o mesmo fluxo do clique normal.
+      setTimeout(async () => {
+        try {
+          await loadMyAppointments();
+        } catch (e) { /* loadMyAppointments já trata erro */ }
+
+        // Pequeno delay extra pra DOM da tabela assentar após render
+        setTimeout(() => {
+          const apt = cachedMyAppointments.find((a) => a.id === appointmentId);
+          if (!apt) {
+            alert("Consulta não encontrada na lista de atendimento. Ela pode ter sido encerrada.");
+            return;
+          }
+          // Cria um botão temporário pra reusar generateOrShowAnalysis
+          // (a função espera um btn pra trocar texto/estado). Não precisa
+          // estar no DOM — só serve de alvo pros estados de loading.
+          const proxyBtn = document.createElement("button");
+          proxyBtn.textContent = apt.analysisId ? "Ver análise" : "Gerar análise";
+          generateOrShowAnalysis(appointmentId, proxyBtn);
+
+          // Rola até o container de resultado da análise
+          const resultEl = document.getElementById("analysisResultContainer");
+          if (resultEl) {
+            setTimeout(() => resultEl.scrollIntoView({ behavior: "smooth", block: "start" }), 300);
+          }
+        }, 200);
+      }, 80);
     }
 
     function renderPatientMedications(medications) {
