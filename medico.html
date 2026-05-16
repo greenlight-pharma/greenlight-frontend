@@ -1277,18 +1277,28 @@
           <div class="page-subtitle">Visão geral do seu atendimento</div>
         </div>
 
+        <!-- [HOME-CTA] Ação principal destacada — atalho pra fluxo de
+             paciente que não veio pelo WhatsApp. Útil sobretudo no celular. -->
+        <div class="card" style="margin-bottom:16px; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:12px;">
+          <div>
+            <div style="font-weight:700; font-size:16px; color:#1f2937;">Atender um paciente novo</div>
+            <div style="font-size:13px; color:#6b7280; margin-top:2px;">Cadastre um paciente e abra uma consulta — sem precisar que ele entre pelo WhatsApp.</div>
+          </div>
+          <button class="primary" style="margin:0; background:#10b981; padding:12px 20px; font-size:15px;" onclick="goToManualPatientFromHome()">➕ Cadastrar paciente e iniciar consulta</button>
+        </div>
+
         <div class="stats-grid">
           <div class="stat-card">
             <div class="stat-label">Pacientes vinculados</div>
             <div class="stat-value" id="statPatients">—</div>
           </div>
           <div class="stat-card">
-            <div class="stat-label">Medicações ativas</div>
-            <div class="stat-value" id="statMedicationsActive">—</div>
+            <div class="stat-label">Consultas em atendimento</div>
+            <div class="stat-value" id="statActiveAppointments">—</div>
           </div>
           <div class="stat-card">
-            <div class="stat-label">Total de medicações</div>
-            <div class="stat-value" id="statMedicationsTotal">—</div>
+            <div class="stat-label">Consultas concluídas</div>
+            <div class="stat-value" id="statConcludedAppointments">—</div>
           </div>
         </div>
 
@@ -1296,8 +1306,8 @@
           <h3>Atalhos rápidos</h3>
           <div class="card-subtitle">Acesse as principais ações pelo menu lateral</div>
           <ul style="line-height:1.8; color:#374151;">
-            <li><strong>👥 Meus Pacientes</strong> — veja seus pacientes vinculados</li>
-            <li><strong>💊 Medicações</strong> — cadastre e gerencie prescrições</li>
+            <li><strong>👥 Meus Pacientes</strong> — veja seus pacientes e abra prontuários</li>
+            <li><strong>🩺 Consultas</strong> — consultas em atendimento e concluídas</li>
           </ul>
         </div>
       </section>
@@ -1956,13 +1966,20 @@
     let cachedMedications = [];
 
     function refreshStats() {
-      document.getElementById("statPatients").textContent = cachedPatients.length;
+      const pEl = document.getElementById("statPatients");
+      if (pEl) pEl.textContent = cachedPatients.length;
 
-      const totalMeds = cachedMedications.length;
-      const activeMeds = cachedMedications.filter((m) => m.status === "ativo").length;
+      // [HOME-STATS] Métricas de consulta (substituíram as de medicação
+      // após remoção da página global de Medicações).
+      // cachedMyAppointments pode estar vazio se a página Consultas ainda
+      // não foi aberta — por isso carregamos no boot também.
+      const active = cachedMyAppointments.filter((a) => a.status === "aceita").length;
+      const concluded = cachedMyAppointments.filter((a) => a.status === "concluida").length;
 
-      document.getElementById("statMedicationsTotal").textContent = totalMeds;
-      document.getElementById("statMedicationsActive").textContent = activeMeds;
+      const aEl = document.getElementById("statActiveAppointments");
+      const cEl = document.getElementById("statConcludedAppointments");
+      if (aEl) aEl.textContent = active;
+      if (cEl) cEl.textContent = concluded;
     }
 
     // ============================================================
@@ -1981,6 +1998,11 @@
       setTodayAsDefault();
       loadPatients();
       loadMedications();
+
+      // [HOME-STATS] Carrega consultas no boot pra as métricas da tela
+      // Início refletirem dados reais sem precisar abrir a página Consultas.
+      // refreshStats roda de novo ao terminar (atualiza os números).
+      loadMyAppointments().then(() => refreshStats()).catch(() => {});
     }
 
     function showLogin() {
@@ -2199,6 +2221,15 @@
 
     function closeManualPatientModal() {
       document.getElementById("manualPatientModal").classList.add("hidden");
+    }
+
+    // [HOME-CTA] Atalho da tela Início: vai pra Meus Pacientes e já abre
+    // o modal de cadastro manual. Reusa as funções existentes (zero
+    // lógica duplicada).
+    function goToManualPatientFromHome() {
+      switchPage("patients");
+      // pequeno delay pra a página trocar antes de abrir o modal
+      setTimeout(openManualPatientModal, 60);
     }
 
     function closeManualPatientOnBackdrop(event) {
@@ -4522,8 +4553,11 @@
       const activeBody = document.getElementById("appointmentsAnalysisTableBody");
       const concludedBody = document.getElementById("appointmentsConcludedTableBody");
 
-      renderRowMessage(activeBody, 5, "Carregando...");
-      renderRowMessage(concludedBody, 5, "Carregando...");
+      // [HOME-STATS] Pode ser chamada no boot só pra alimentar cachedMyAppointments
+      // (métricas da Início). Se as tabelas existem, mostra loading; se não,
+      // segue mesmo assim pra atualizar o cache.
+      if (activeBody) renderRowMessage(activeBody, 5, "Carregando...");
+      if (concludedBody) renderRowMessage(concludedBody, 5, "Carregando...");
 
       try {
         const response = await fetch(`${API_URL}/my-appointments`, {
@@ -4542,11 +4576,11 @@
         const active = cachedMyAppointments.filter((a) => a.status === "aceita");
         const concluded = cachedMyAppointments.filter((a) => a.status === "concluida");
 
-        renderActiveAppointments(active, activeBody);
-        renderConcludedAppointments(concluded, concludedBody);
+        if (activeBody) renderActiveAppointments(active, activeBody);
+        if (concludedBody) renderConcludedAppointments(concluded, concludedBody);
       } catch (error) {
-        renderRowMessage(activeBody, 5, error.message);
-        renderRowMessage(concludedBody, 5, error.message);
+        if (activeBody) renderRowMessage(activeBody, 5, error.message);
+        if (concludedBody) renderRowMessage(concludedBody, 5, error.message);
       }
     }
 
