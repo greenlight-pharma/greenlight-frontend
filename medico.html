@@ -1258,6 +1258,7 @@
         <div class="card">
           <div style="display:flex; gap:10px; flex-wrap:wrap; align-items:center; margin-bottom:14px;">
             <button class="primary" style="margin:0;" onclick="loadPatients()">Atualizar Pacientes</button>
+            <button class="primary" style="margin:0; background:#10b981;" onclick="openManualPatientModal()">➕ Cadastrar paciente</button>
             <input
               type="text"
               id="patientSearchInput"
@@ -1528,6 +1529,58 @@
 
   <!-- ====== MODAL DE ADICIONAR MEDICAÇÃO (a partir do prontuário) ====== -->
   <!-- Versão simplificada: paciente já é o do prontuário aberto, não precisa selecionar -->
+  <!-- ====== MODAL DE CADASTRO MANUAL DE PACIENTE ====== -->
+  <!-- Médico cadastra paciente que ainda não interagiu com o bot WhatsApp.
+       Cria paciente + vincula ao médico + inicia consulta (status aceita). -->
+  <div id="manualPatientModal" class="modal-backdrop hidden" onclick="closeManualPatientOnBackdrop(event)">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3>Cadastrar paciente</h3>
+        <button class="modal-close" onclick="closeManualPatientModal()" aria-label="Fechar">✕</button>
+      </div>
+
+      <div style="background:#eff6ff; border:1px solid #93c5fd; color:#1e40af; padding:10px 12px; border-radius:8px; margin-bottom:14px; font-size:13px;">
+        💡 Use este cadastro quando o paciente <strong>ainda não interagiu</strong> com a Vytal pelo WhatsApp.
+        Será criada uma consulta aberta vinculada a você imediatamente.
+      </div>
+
+      <label>Nome completo <span style="color:#dc2626;">*</span></label>
+      <input id="manualPatientName" type="text" placeholder="Ex: Maria Silva" />
+
+      <label>Telefone (com DDD, sem espaços) <span style="color:#dc2626;">*</span></label>
+      <input id="manualPatientPhone" type="text" placeholder="Ex: 5511999998888" inputmode="numeric" oninput="onManualPhoneInput(this)" />
+      <div id="manualPatientPhoneStatus" style="margin-top:6px; font-size:13px;"></div>
+
+      <label>Idade (opcional)</label>
+      <input id="manualPatientAge" type="number" min="0" max="120" placeholder="Ex: 45" style="width:120px;" />
+
+      <label>Queixa principal <span style="color:#dc2626;">*</span></label>
+      <input id="manualPatientComplaint" type="text" placeholder="Ex: Dor torácica, cefaleia, hipertensão de difícil controle..." />
+
+      <label>HMA — História da Moléstia Atual (opcional)</label>
+      <textarea id="manualPatientHma" placeholder="Início, evolução, fatores associados, tratamentos prévios..." style="min-height:80px;"></textarea>
+
+      <div style="margin-top:14px; padding:10px 12px; background:#fef3c7; border:1px solid #f59e0b; border-radius:8px;">
+        <label style="display:flex; gap:10px; align-items:flex-start; margin:0; cursor:pointer;">
+          <input type="checkbox" id="manualPatientNotify" style="margin-top:3px;" />
+          <span style="font-size:13px; color:#78350f;">
+            <strong>Avisar paciente por WhatsApp</strong> — envia uma mensagem de boas-vindas
+            explicando que o(a) Dr(a). cadastrou o paciente na Vytal. Marque APENAS se você
+            avisou o paciente que isso seria feito.
+          </span>
+        </label>
+      </div>
+
+      <div class="modal-actions">
+        <button class="btn-secondary-outline" onclick="closeManualPatientModal()">Cancelar</button>
+        <button class="primary" onclick="submitManualPatient()">Cadastrar e abrir prontuário</button>
+      </div>
+
+      <div id="manualPatientMessage" class="message"></div>
+    </div>
+  </div>
+
+  <!-- ====== MODAL DE ADICIONAR MEDICAÇÃO (a partir do prontuário) ====== -->
   <div id="addMedicationModal" class="modal-backdrop hidden" onclick="closeAddMedicationOnBackdrop(event)">
     <div class="modal-content">
       <div class="modal-header">
@@ -2060,6 +2113,181 @@
     // [SEARCH] Handler do input — re-renderiza a tabela com filtro atual.
     function filterPatients() {
       renderPatientsTable();
+    }
+
+    // ============================================================
+    // [MANUAL-PATIENT] Cadastro manual de paciente
+    // ============================================================
+
+    function openManualPatientModal() {
+      // Reset todos os campos
+      document.getElementById("manualPatientName").value = "";
+      document.getElementById("manualPatientPhone").value = "";
+      document.getElementById("manualPatientAge").value = "";
+      document.getElementById("manualPatientComplaint").value = "";
+      document.getElementById("manualPatientHma").value = "";
+      document.getElementById("manualPatientNotify").checked = false;
+      document.getElementById("manualPatientPhoneStatus").textContent = "";
+      clearMessage("manualPatientMessage");
+
+      document.getElementById("manualPatientModal").classList.remove("hidden");
+    }
+
+    function closeManualPatientModal() {
+      document.getElementById("manualPatientModal").classList.add("hidden");
+    }
+
+    function closeManualPatientOnBackdrop(event) {
+      if (event.target.id === "manualPatientModal") closeManualPatientModal();
+    }
+
+    // [MANUAL-PATIENT] Debounce do lookup ao digitar telefone.
+    // Conforme médico digita, busca se já existe e mostra info inline.
+    let manualPhoneTimer = null;
+    function onManualPhoneInput(inputEl) {
+      const statusEl = document.getElementById("manualPatientPhoneStatus");
+      const phone = inputEl.value.trim();
+
+      if (phone.length < 10) {
+        statusEl.textContent = "";
+        return;
+      }
+
+      if (manualPhoneTimer) clearTimeout(manualPhoneTimer);
+      manualPhoneTimer = setTimeout(async () => {
+        await lookupManualPatient(phone);
+      }, 400);
+    }
+
+    async function lookupManualPatient(phone) {
+      const statusEl = document.getElementById("manualPatientPhoneStatus");
+      statusEl.textContent = "Verificando...";
+      statusEl.style.color = "#6b7280";
+
+      try {
+        const token = getToken();
+        const response = await fetch(
+          `${API_URL}/patients/lookup?phone=${encodeURIComponent(phone)}`,
+          {
+            method: "GET",
+            headers: { "Authorization": `Bearer ${token}` }
+          }
+        );
+
+        const data = await response.json();
+        if (!response.ok) {
+          statusEl.textContent = "";
+          return;
+        }
+
+        if (!data.exists) {
+          statusEl.style.color = "#16a34a";
+          statusEl.textContent = "✓ Novo paciente.";
+
+          // Auto-preenche nome se vazio
+          const nameInput = document.getElementById("manualPatientName");
+          if (nameInput && !nameInput.value.trim()) {
+            // não tem nada pra pré-preencher, mantém vazio
+          }
+          return;
+        }
+
+        // Paciente já existe
+        if (data.linkedToMe) {
+          statusEl.style.color = "#0891b2";
+          const ageStr = data.patient.age ? `, ${data.patient.age} anos` : "";
+          statusEl.innerHTML = `ℹ️ Já é seu paciente: <strong>${escapeHtmlManual(data.patient.name || "—")}${ageStr}</strong>. Ao continuar, será criada uma nova consulta.`;
+        } else if (data.otherDoctorName) {
+          statusEl.style.color = "#b45309";
+          statusEl.innerHTML = `⚠️ Já atendido por <strong>${escapeHtmlManual(data.otherDoctorName)}</strong>. Ao continuar, você também será vinculado(a).`;
+        } else {
+          statusEl.style.color = "#b45309";
+          statusEl.innerHTML = `⚠️ Paciente já existe na base: <strong>${escapeHtmlManual(data.patient.name || "—")}</strong>. Ao continuar, será vinculado(a) a você.`;
+        }
+
+        // Auto-preenche nome se vazio
+        const nameInput = document.getElementById("manualPatientName");
+        if (nameInput && !nameInput.value.trim() && data.patient.name) {
+          nameInput.value = data.patient.name;
+        }
+        // Auto-preenche idade se vazia
+        const ageInput = document.getElementById("manualPatientAge");
+        if (ageInput && !ageInput.value && data.patient.age) {
+          ageInput.value = data.patient.age;
+        }
+      } catch (e) {
+        statusEl.textContent = "";
+      }
+    }
+
+    // [MANUAL-PATIENT] Submete o formulário pro backend.
+    async function submitManualPatient() {
+      clearMessage("manualPatientMessage");
+
+      const name = document.getElementById("manualPatientName").value.trim();
+      const phone = document.getElementById("manualPatientPhone").value.trim();
+      const age = document.getElementById("manualPatientAge").value;
+      const mainComplaint = document.getElementById("manualPatientComplaint").value.trim();
+      const hma = document.getElementById("manualPatientHma").value.trim();
+      const notifyPatient = document.getElementById("manualPatientNotify").checked;
+
+      if (!name) {
+        setMessage("manualPatientMessage", "error", "Nome é obrigatório.");
+        return;
+      }
+      if (!phone) {
+        setMessage("manualPatientMessage", "error", "Telefone é obrigatório.");
+        return;
+      }
+      if (!mainComplaint) {
+        setMessage("manualPatientMessage", "error", "Queixa principal é obrigatória.");
+        return;
+      }
+
+      try {
+        const token = getToken();
+        const response = await fetch(`${API_URL}/patients/manual`, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            "Authorization": `Bearer ${token}`
+          },
+          body: JSON.stringify({
+            name,
+            phone,
+            age: age || null,
+            mainComplaint,
+            hma: hma || null,
+            notifyPatient,
+          })
+        });
+
+        const data = await response.json();
+        if (!response.ok) {
+          throw new Error(data.error || "Erro ao cadastrar paciente");
+        }
+
+        // Sucesso — fecha modal e abre prontuário
+        closeManualPatientModal();
+
+        // Recarrega lista de pacientes pra refletir novo vínculo
+        await loadPatients();
+
+        // Abre prontuário do paciente recém-cadastrado
+        if (data.phone) {
+          openPatientDetail(data.phone);
+        }
+      } catch (error) {
+        setMessage("manualPatientMessage", "error", error.message);
+      }
+    }
+
+    // Escape simples pra uso em innerHTML (dados vindos do backend mas
+    // que podem conter caracteres especiais como apóstrofo no nome)
+    function escapeHtmlManual(text) {
+      const div = document.createElement("div");
+      div.textContent = String(text || "");
+      return div.innerHTML;
     }
 
     function fillPatientFields() {
