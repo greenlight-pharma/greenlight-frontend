@@ -2325,13 +2325,16 @@
 
         const meta = document.createElement("div");
         meta.className = "item-meta";
-        const metaParts = [];
-        if (med.doctorName) metaParts.push(`Prescrita por: ${med.doctorName}`);
-        if (med.scheduleTimes) metaParts.push(`Horários: ${med.scheduleTimes}`);
-        meta.textContent = metaParts.join(" • ") || "—";
+        // Render inicial — sem classe ainda. Classe é puxada async via fetchMedicationClassForMeta.
+        renderMedicationMeta(meta, med, null);
 
         item.appendChild(header);
         item.appendChild(meta);
+
+        // Busca classe da RENAME e atualiza a meta quando vier
+        fetchMedicationClassForMeta(med.medicationName, (cls) => {
+          if (cls) renderMedicationMeta(meta, med, cls);
+        });
 
         if (med.instructions) {
           const body = document.createElement("div");
@@ -2368,6 +2371,59 @@
 
         container.appendChild(item);
       });
+    }
+
+    // [MED-CLASS] Renderiza a linha de meta de uma medicação.
+    // Reutilizada pra atualizar quando a classe vem da API (async).
+    function renderMedicationMeta(metaEl, med, cls) {
+      const parts = [];
+      if (cls) parts.push(cls);
+      if (med.doctorName) parts.push(`Prescrita por: ${med.doctorName}`);
+      if (med.scheduleTimes) parts.push(`Horários: ${med.scheduleTimes}`);
+      metaEl.textContent = parts.join(" • ") || "—";
+    }
+
+    // [MED-CLASS] Cache de classe por nome de medicação (sessão).
+    // Evita N requests pra mesma medicação cadastrada várias vezes.
+    // Cache armazena: string (classe) | null (já checado, sem match).
+    const medicationClassCache = new Map();
+
+    // [MED-CLASS] Busca classe da RENAME e chama callback quando vier.
+    // Reusa endpoint /medications/doses (já retorna commonClass também).
+    async function fetchMedicationClassForMeta(medicationName, callback) {
+      if (!medicationName) return;
+
+      const key = medicationName.trim().toLowerCase();
+
+      // Cache hit — chama sincronamente se possível
+      if (medicationClassCache.has(key)) {
+        const cached = medicationClassCache.get(key);
+        if (cached) callback(cached);
+        return;
+      }
+
+      try {
+        const token = getToken();
+        const response = await fetch(
+          `${API_URL}/medications/doses?name=${encodeURIComponent(medicationName)}`,
+          {
+            method: "GET",
+            headers: { "Authorization": `Bearer ${token}` }
+          }
+        );
+
+        if (!response.ok) {
+          medicationClassCache.set(key, null);
+          return;
+        }
+
+        const data = await response.json();
+        const cls = data.commonClass || null;
+        medicationClassCache.set(key, cls);
+        if (cls) callback(cls);
+      } catch (e) {
+        medicationClassCache.set(key, null);
+      }
     }
 
     // [PRONTUARIO-DELETE] Apaga medicação a partir do prontuário do paciente.
