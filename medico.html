@@ -1321,6 +1321,16 @@
         <div class="card" id="card-dados">
           <h3>Dados</h3>
           <div id="patientBasicData">Carregando...</div>
+
+          <!-- [ANTHRO] Dados antropométricos e sinais vitais -->
+          <div style="margin-top:20px; padding-top:16px; border-top:1px solid #e5e7eb;">
+            <div style="display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:8px; margin-bottom:6px;">
+              <strong style="font-size:15px; color:#1f2937;">Antropometria e sinais vitais</strong>
+              <button class="primary" style="margin:0; padding:6px 14px; font-size:13px;" onclick="openAnthroModal()">➕ Registrar medida</button>
+            </div>
+            <div class="card-subtitle" style="margin-bottom:10px;">Histórico de medidas. Cada registro guarda a data — útil pra acompanhar evolução.</div>
+            <div id="patientAnthroList">Carregando...</div>
+          </div>
         </div>
 
         <!-- Card: Consultas -->
@@ -1544,6 +1554,61 @@
 
   <!-- ====== MODAL DE ADICIONAR MEDICAÇÃO (a partir do prontuário) ====== -->
   <!-- Versão simplificada: paciente já é o do prontuário aberto, não precisa selecionar -->
+  <!-- ====== MODAL DE REGISTRO ANTROPOMÉTRICO ====== -->
+  <div id="anthroModal" class="modal-backdrop hidden" onclick="closeAnthroOnBackdrop(event)">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3>Registrar medida</h3>
+        <button class="modal-close" onclick="closeAnthroModal()" aria-label="Fechar">✕</button>
+      </div>
+
+      <div style="background:#eff6ff; border:1px solid #93c5fd; color:#1e40af; padding:10px 12px; border-radius:8px; margin-bottom:14px; font-size:13px;">
+        💡 Preencha só o que mediu. Campos vazios não são gravados. O IMC é calculado automaticamente quando há peso e altura.
+      </div>
+
+      <div style="display:flex; gap:12px; flex-wrap:wrap;">
+        <div style="flex:1; min-width:120px;">
+          <label>Peso (kg)</label>
+          <input id="anthroWeight" type="number" step="0.1" min="0" placeholder="Ex: 72.5" oninput="updateAnthroBMI()" />
+        </div>
+        <div style="flex:1; min-width:120px;">
+          <label>Altura (cm)</label>
+          <input id="anthroHeight" type="number" step="0.1" min="0" placeholder="Ex: 168" oninput="updateAnthroBMI()" />
+        </div>
+      </div>
+
+      <div id="anthroBMIPreview" style="margin:8px 0; font-size:14px; color:#374151;"></div>
+
+      <label>Circunferência abdominal (cm)</label>
+      <input id="anthroWaist" type="number" step="0.1" min="0" placeholder="Ex: 94" style="width:160px;" />
+
+      <div style="display:flex; gap:12px; flex-wrap:wrap; margin-top:4px;">
+        <div style="flex:1; min-width:120px;">
+          <label>PA sistólica (mmHg)</label>
+          <input id="anthroSBP" type="number" min="0" placeholder="Ex: 120" />
+        </div>
+        <div style="flex:1; min-width:120px;">
+          <label>PA diastólica (mmHg)</label>
+          <input id="anthroDBP" type="number" min="0" placeholder="Ex: 80" />
+        </div>
+        <div style="flex:1; min-width:120px;">
+          <label>FC (bpm)</label>
+          <input id="anthroHR" type="number" min="0" placeholder="Ex: 72" />
+        </div>
+      </div>
+
+      <label>Observações (opcional)</label>
+      <textarea id="anthroNotes" placeholder="Ex: medido em jejum, pós-exercício, etc." style="min-height:60px;"></textarea>
+
+      <div class="modal-actions">
+        <button class="btn-secondary-outline" onclick="closeAnthroModal()">Cancelar</button>
+        <button class="primary" onclick="submitAnthro()">Salvar registro</button>
+      </div>
+
+      <div id="anthroMessage" class="message"></div>
+    </div>
+  </div>
+
   <!-- ====== MODAL DE CADASTRO MANUAL DE PACIENTE ====== -->
   <!-- Médico cadastra paciente que ainda não interagiu com o bot WhatsApp.
        Cria paciente + vincula ao médico + inicia consulta (status aceita). -->
@@ -2399,6 +2464,9 @@
         renderPatientImaging(imagingExams);
 
         renderPatientAnalyses(data.analyses || []);
+
+        // [ANTHRO] Carrega histórico antropométrico (endpoint separado)
+        loadPatientAnthro(currentPatientPhone);
       } catch (error) {
         document.getElementById("patientDetailName").textContent = "Erro";
         document.getElementById("patientDetailSubtitle").textContent = error.message;
@@ -2421,6 +2489,231 @@
       if (patient?.patientAge) parts.push(`${patient.patientAge} anos`);
       parts.push(linkedToMe ? "Vinculado a você" : "Acesso via consulta aceita");
       subEl.textContent = parts.join(" • ");
+    }
+
+    // ============================================================
+    // [ANTHRO] Antropometria e sinais vitais
+    // ============================================================
+
+    // Calcula IMC. Retorna número (1 casa) ou null. SEM classificação.
+    function calcBMI(weightKg, heightCm) {
+      const w = Number(weightKg);
+      const h = Number(heightCm);
+      if (!w || !h || w <= 0 || h <= 0) return null;
+      const hM = h / 100;
+      const bmi = w / (hM * hM);
+      if (!isFinite(bmi)) return null;
+      return Math.round(bmi * 10) / 10;
+    }
+
+    // Preview do IMC no modal enquanto digita (sem rótulo clínico)
+    function updateAnthroBMI() {
+      const w = document.getElementById("anthroWeight").value;
+      const h = document.getElementById("anthroHeight").value;
+      const bmi = calcBMI(w, h);
+      const el = document.getElementById("anthroBMIPreview");
+      if (bmi !== null) {
+        el.innerHTML = `<strong>IMC calculado:</strong> ${bmi} kg/m²`;
+      } else {
+        el.textContent = "";
+      }
+    }
+
+    async function loadPatientAnthro(phone) {
+      const container = document.getElementById("patientAnthroList");
+      if (!container) return;
+      container.textContent = "Carregando...";
+
+      try {
+        const token = getToken();
+        const response = await fetch(
+          `${API_URL}/patients/${encodeURIComponent(phone)}/anthropometrics`,
+          { method: "GET", headers: { "Authorization": `Bearer ${token}` } }
+        );
+
+        const data = await response.json();
+        if (!response.ok) {
+          throw new Error(data.error || "Erro ao carregar antropometria");
+        }
+
+        renderAnthroList(data);
+      } catch (error) {
+        container.textContent = error.message;
+      }
+    }
+
+    function renderAnthroList(records) {
+      const container = document.getElementById("patientAnthroList");
+      container.replaceChildren();
+
+      if (!records.length) {
+        container.textContent = "Nenhuma medida registrada ainda.";
+        return;
+      }
+
+      records.forEach((r) => {
+        const item = document.createElement("div");
+        item.style.padding = "10px 12px";
+        item.style.borderLeft = "3px solid #3b82f6";
+        item.style.background = "#f9fafb";
+        item.style.borderRadius = "6px";
+        item.style.marginBottom = "8px";
+
+        // Data do registro
+        const dateLine = document.createElement("div");
+        dateLine.style.fontWeight = "600";
+        dateLine.style.fontSize = "13px";
+        dateLine.style.color = "#1f2937";
+        dateLine.style.marginBottom = "4px";
+        const dt = r.measuredAt
+          ? new Date(r.measuredAt).toLocaleString("pt-BR", { timeZone: "America/Sao_Paulo" })
+          : "—";
+        dateLine.textContent = `📅 ${dt}`;
+        item.appendChild(dateLine);
+
+        // Valores medidos — só mostra o que existe
+        const parts = [];
+        if (r.weightKg != null) parts.push(`Peso: ${r.weightKg} kg`);
+        if (r.heightCm != null) parts.push(`Altura: ${r.heightCm} cm`);
+        const bmi = calcBMI(r.weightKg, r.heightCm);
+        if (bmi !== null) parts.push(`IMC: ${bmi} kg/m²`);
+        if (r.waistCm != null) parts.push(`Circ. abdominal: ${r.waistCm} cm`);
+        if (r.systolicBP != null || r.diastolicBP != null) {
+          const s = r.systolicBP != null ? r.systolicBP : "?";
+          const d = r.diastolicBP != null ? r.diastolicBP : "?";
+          parts.push(`PA: ${s}/${d} mmHg`);
+        }
+        if (r.heartRate != null) parts.push(`FC: ${r.heartRate} bpm`);
+
+        const valuesLine = document.createElement("div");
+        valuesLine.style.fontSize = "14px";
+        valuesLine.style.color = "#374151";
+        valuesLine.textContent = parts.join(" • ");
+        item.appendChild(valuesLine);
+
+        // Meta: quem registrou + origem
+        const metaLine = document.createElement("div");
+        metaLine.style.fontSize = "12px";
+        metaLine.style.color = "#9ca3af";
+        metaLine.style.marginTop = "4px";
+        const who = r.source === "bot" ? "Informado pelo paciente (WhatsApp)" : (r.doctorName ? `Registrado por: ${r.doctorName}` : "Registrado pelo médico");
+        metaLine.textContent = who;
+        item.appendChild(metaLine);
+
+        if (r.notes) {
+          const notesLine = document.createElement("div");
+          notesLine.style.fontSize = "13px";
+          notesLine.style.color = "#6b7280";
+          notesLine.style.fontStyle = "italic";
+          notesLine.style.marginTop = "4px";
+          notesLine.textContent = r.notes;
+          item.appendChild(notesLine);
+        }
+
+        // Botão apagar (backend valida se é o dono)
+        const delBtn = document.createElement("button");
+        delBtn.textContent = "🗑️ Apagar";
+        delBtn.className = "btn-icon btn-archive";
+        delBtn.style.padding = "4px 10px";
+        delBtn.style.fontSize = "12px";
+        delBtn.style.marginTop = "8px";
+        delBtn.addEventListener("click", () => deleteAnthro(r.id));
+        item.appendChild(delBtn);
+
+        container.appendChild(item);
+      });
+    }
+
+    function openAnthroModal() {
+      if (!currentPatientPhone) {
+        alert("Paciente não identificado.");
+        return;
+      }
+      document.getElementById("anthroWeight").value = "";
+      document.getElementById("anthroHeight").value = "";
+      document.getElementById("anthroWaist").value = "";
+      document.getElementById("anthroSBP").value = "";
+      document.getElementById("anthroDBP").value = "";
+      document.getElementById("anthroHR").value = "";
+      document.getElementById("anthroNotes").value = "";
+      document.getElementById("anthroBMIPreview").textContent = "";
+      clearMessage("anthroMessage");
+      document.getElementById("anthroModal").classList.remove("hidden");
+    }
+
+    function closeAnthroModal() {
+      document.getElementById("anthroModal").classList.add("hidden");
+    }
+
+    function closeAnthroOnBackdrop(event) {
+      if (event.target.id === "anthroModal") closeAnthroModal();
+    }
+
+    async function submitAnthro() {
+      clearMessage("anthroMessage");
+
+      const payload = {
+        weightKg: document.getElementById("anthroWeight").value || null,
+        heightCm: document.getElementById("anthroHeight").value || null,
+        waistCm: document.getElementById("anthroWaist").value || null,
+        systolicBP: document.getElementById("anthroSBP").value || null,
+        diastolicBP: document.getElementById("anthroDBP").value || null,
+        heartRate: document.getElementById("anthroHR").value || null,
+        notes: document.getElementById("anthroNotes").value.trim() || null,
+      };
+
+      // Valida que tem pelo menos um valor antes de enviar
+      const hasAny = ["weightKg","heightCm","waistCm","systolicBP","diastolicBP","heartRate"]
+        .some((k) => payload[k] !== null && payload[k] !== "");
+      if (!hasAny) {
+        setMessage("anthroMessage", "error", "Informe ao menos uma medida.");
+        return;
+      }
+
+      try {
+        const token = getToken();
+        const response = await fetch(
+          `${API_URL}/patients/${encodeURIComponent(currentPatientPhone)}/anthropometrics`,
+          {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+              "Authorization": `Bearer ${token}`
+            },
+            body: JSON.stringify(payload)
+          }
+        );
+
+        const data = await response.json();
+        if (!response.ok) {
+          throw new Error(data.error || "Erro ao salvar");
+        }
+
+        closeAnthroModal();
+        loadPatientAnthro(currentPatientPhone);
+      } catch (error) {
+        setMessage("anthroMessage", "error", error.message);
+      }
+    }
+
+    async function deleteAnthro(recordId) {
+      if (!window.confirm("Apagar este registro de medida? Esta ação não pode ser desfeita.")) {
+        return;
+      }
+      try {
+        const token = getToken();
+        const response = await fetch(
+          `${API_URL}/patients/${encodeURIComponent(currentPatientPhone)}/anthropometrics/${recordId}`,
+          { method: "DELETE", headers: { "Authorization": `Bearer ${token}` } }
+        );
+        const data = await response.json();
+        if (!response.ok) {
+          throw new Error(data.error || "Erro ao apagar");
+        }
+        loadPatientAnthro(currentPatientPhone);
+      } catch (error) {
+        alert(`Erro: ${error.message}`);
+      }
     }
 
     function renderPatientBasicData(patient, linkedToMe) {
