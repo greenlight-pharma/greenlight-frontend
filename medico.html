@@ -797,10 +797,30 @@
       transition: max-height 0.22s ease, opacity 0.18s ease;
     }
 
+    /* [COLLAPSIBLE-FIX] O .card-subtitle tem margin-top:-8px pra colar no
+       h3 quando estavam juntos. Agora o subtitle está DENTRO do wrapper
+       e o h3 FORA — a margem negativa puxava o subtitle pra trás do
+       overflow:hidden, cortando o texto. Zera a margem negativa do
+       primeiro filho do wrapper e dá um respiro no topo. */
+    .card.collapsible > .card-collapse-body {
+      padding-top: 4px;
+    }
+
+    .card.collapsible > .card-collapse-body > .card-subtitle:first-child {
+      margin-top: 0;
+    }
+
+    /* Defensivo: qualquer card-subtitle dentro do wrapper colapsável
+       não deve ter margem negativa (h3 não é mais adjacente a ele). */
+    .card.collapsible > .card-collapse-body .card-subtitle {
+      margin-top: 0;
+    }
+
     .card.collapsed .card-collapse-body {
       max-height: 0 !important;
       opacity: 0;
       margin-top: 0;
+      padding-top: 0;
       pointer-events: none;
     }
 
