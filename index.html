@@ -1,210 +1,494 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <title>Telemed Brasil</title>
+<meta charset="UTF-8" />
+<script>document.documentElement.className='js';</script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Vytal — Infraestrutura de saúde com apoio ao médico</title>
+<meta name="description" content="Vytal é uma infraestrutura de saúde digital que organiza informação clínica e apoia o trabalho do médico em consultas e plantões. O profissional sempre no centro da decisão." />
+<link rel="icon" type="image/png" href="vytal-logo.png" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    --navy:#1c2a63;
+    --navy-deep:#16204d;
+    --cyan:#39c4c8;
+    --cyan-soft:#5fd6d6;
+    --ink:#1a2238;
+    --slate:#5a6478;
+    --mist:#f5f8fa;
+    --line:#e6ebf0;
+    --white:#ffffff;
+    --grad:linear-gradient(120deg,var(--navy) 0%,#2a4a8c 45%,var(--cyan) 100%);
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:'Outfit',sans-serif;
+    color:var(--ink);
+    background:var(--white);
+    line-height:1.65;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3{font-family:'Fraunces',serif;font-weight:500;line-height:1.15;letter-spacing:-.01em}
+  a{color:inherit;text-decoration:none}
+  .wrap{max-width:1140px;margin:0 auto;padding:0 28px}
+  section{padding:110px 0}
 
-  <style>
-    body {
-      font-family: Arial;
-      max-width: 760px;
-      margin: 40px auto;
-      padding: 20px;
-    }
+  /* NAV */
+  header{
+    position:sticky;top:0;z-index:50;
+    background:rgba(255,255,255,.86);
+    backdrop-filter:saturate(180%) blur(14px);
+    border-bottom:1px solid var(--line);
+  }
+  nav{display:flex;align-items:center;justify-content:space-between;height:74px}
+  .brand{display:flex;align-items:center;gap:11px;font-family:'Fraunces',serif;font-size:23px;font-weight:600;color:var(--navy)}
+  .brand img{height:42px;width:auto;display:block}
+  .navlinks{display:flex;align-items:center;gap:34px}
+  .navlinks a{font-size:15px;color:var(--slate);transition:color .2s;font-weight:400}
+  .navlinks a:hover{color:var(--navy)}
+  .btn{
+    display:inline-flex;align-items:center;gap:9px;
+    padding:13px 26px;border-radius:999px;
+    font-family:'Outfit',sans-serif;font-size:15px;font-weight:500;
+    transition:transform .2s,box-shadow .2s,background .2s;cursor:pointer;border:none;
+  }
+  .btn-primary{background:var(--grad);color:#fff;box-shadow:0 8px 26px -10px rgba(28,42,99,.5)}
+  .btn-primary:hover{transform:translateY(-2px);box-shadow:0 14px 32px -10px rgba(28,42,99,.55)}
+  .btn-ghost{background:transparent;color:var(--navy);border:1.5px solid var(--line)}
+  .btn-ghost:hover{border-color:var(--cyan);color:var(--navy)}
+  .nav-cta{display:flex;gap:12px;align-items:center}
 
-    #chat {
-      border: 1px solid #ccc;
-      height: 500px;
-      overflow-y: auto;
-      padding: 10px;
-      margin-bottom: 10px;
-      white-space: pre-wrap;
-    }
+  /* HERO */
+  .hero{
+    position:relative;padding:120px 0 130px;overflow:hidden;
+    background:
+      radial-gradient(1100px 520px at 78% -8%,rgba(57,196,200,.16),transparent 60%),
+      radial-gradient(800px 480px at 8% 12%,rgba(28,42,99,.07),transparent 55%);
+  }
+  .hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:64px;align-items:center}
+  .eyebrow{
+    display:inline-flex;align-items:center;gap:9px;
+    font-size:13px;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--navy);font-weight:600;margin-bottom:26px;
+  }
+  .eyebrow::before{content:"";width:30px;height:2px;background:var(--cyan);display:block}
+  .hero h1{font-size:clamp(2.6rem,5vw,4rem);color:var(--ink)}
+  .hero h1 .accent{
+    background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent;
+  }
+  .hero p.lead{
+    margin:30px 0 38px;font-size:19px;color:var(--slate);max-width:520px;font-weight:300;
+  }
+  .hero-actions{display:flex;gap:14px;flex-wrap:wrap}
 
-    .user {
-      text-align: right;
-      margin: 10px;
-      color: blue;
-    }
+  .hero-visual{
+    position:relative;display:flex;align-items:center;justify-content:center;
+  }
+  .hero-card{
+    position:relative;width:100%;max-width:420px;
+    background:#fff;border:1px solid var(--line);border-radius:26px;
+    padding:34px 32px;box-shadow:0 30px 70px -34px rgba(28,42,99,.32);
+  }
+  .hero-card .hc-logo{display:flex;justify-content:center;margin-bottom:8px}
+  .hero-card .hc-logo img{height:128px;width:auto}
+  .hero-card .hc-tag{
+    text-align:center;font-family:'Fraunces',serif;font-size:18px;color:var(--navy);
+    font-weight:600;margin-bottom:22px;
+  }
+  .hc-row{
+    display:flex;align-items:center;gap:13px;padding:14px 0;border-top:1px solid var(--line);
+    font-size:14.5px;color:var(--slate);
+  }
+  .hc-dot{
+    width:30px;height:30px;border-radius:9px;flex-shrink:0;
+    background:linear-gradient(135deg,rgba(57,196,200,.18),rgba(28,42,99,.12));
+    display:flex;align-items:center;justify-content:center;color:var(--navy);font-weight:600;font-size:14px;
+  }
+  .hc-float{
+    position:absolute;right:-22px;top:34px;
+    background:#fff;border:1px solid var(--line);border-radius:14px;
+    padding:12px 16px;box-shadow:0 16px 40px -18px rgba(28,42,99,.3);
+    font-size:13px;color:var(--navy);font-weight:500;display:flex;align-items:center;gap:8px;
+  }
+  .pulse{width:9px;height:9px;border-radius:50%;background:var(--cyan);box-shadow:0 0 0 0 rgba(57,196,200,.6);animation:pulse 2.4s infinite}
+  @keyframes pulse{70%{box-shadow:0 0 0 12px rgba(57,196,200,0)}100%{box-shadow:0 0 0 0 rgba(57,196,200,0)}}
 
-    .bot {
-      text-align: left;
-      margin: 10px;
-      color: green;
-    }
+  /* TRUST STRIP */
+  .strip{background:var(--navy-deep);color:#fff;padding:30px 0}
+  .strip .wrap{display:flex;align-items:center;justify-content:center;gap:14px;flex-wrap:wrap;text-align:center}
+  .strip p{font-size:15.5px;color:#cdd6ea;font-weight:300}
+  .strip strong{color:#fff;font-weight:500}
 
-    input {
-      padding: 10px;
-      margin-bottom: 8px;
-    }
+  /* SECTION HEADERS */
+  .sec-head{max-width:680px;margin-bottom:62px}
+  .sec-head .eyebrow{margin-bottom:18px}
+  .sec-head h2{font-size:clamp(2rem,3.6vw,2.85rem);color:var(--ink)}
+  .sec-head p{margin-top:18px;font-size:18px;color:var(--slate);font-weight:300}
 
-    #message {
-      width: 75%;
-    }
+  /* WHAT IS — feature grid */
+  .features{display:grid;grid-template-columns:repeat(3,1fr);gap:26px}
+  .feature{
+    background:#fff;border:1px solid var(--line);border-radius:20px;padding:34px 30px;
+    transition:transform .25s,box-shadow .25s,border-color .25s;
+  }
+  .feature:hover{transform:translateY(-5px);box-shadow:0 26px 54px -30px rgba(28,42,99,.28);border-color:transparent}
+  .feature .ic{
+    width:48px;height:48px;border-radius:13px;margin-bottom:22px;
+    background:linear-gradient(135deg,var(--navy),var(--cyan));
+    display:flex;align-items:center;justify-content:center;
+  }
+  .feature .ic svg{width:23px;height:23px;stroke:#fff;fill:none;stroke-width:1.7}
+  .feature h3{font-size:20px;margin-bottom:10px;color:var(--ink)}
+  .feature p{font-size:15px;color:var(--slate);font-weight:300}
 
-    button {
-      padding: 10px;
-      margin: 5px 0;
-      cursor: pointer;
-    }
+  /* AUDIENCE split */
+  .audience{background:var(--mist)}
+  .aud-grid{display:grid;grid-template-columns:1fr 1fr;gap:30px}
+  .aud-card{
+    background:#fff;border:1px solid var(--line);border-radius:24px;padding:48px 44px;
+    position:relative;overflow:hidden;
+  }
+  .aud-card::before{
+    content:"";position:absolute;inset:0 0 auto 0;height:5px;background:var(--grad);
+  }
+  .aud-card .tag{
+    font-size:13px;letter-spacing:.12em;text-transform:uppercase;color:var(--navy);
+    font-weight:600;margin-bottom:14px;display:block;
+  }
+  .aud-card h3{font-size:26px;margin-bottom:16px;color:var(--ink)}
+  .aud-card p.intro{font-size:16px;color:var(--slate);margin-bottom:26px;font-weight:300}
+  .aud-list{list-style:none;display:flex;flex-direction:column;gap:15px}
+  .aud-list li{display:flex;gap:13px;font-size:15px;color:var(--ink);align-items:flex-start}
+  .aud-list .chk{
+    width:22px;height:22px;border-radius:50%;flex-shrink:0;margin-top:1px;
+    background:linear-gradient(135deg,rgba(57,196,200,.2),rgba(28,42,99,.14));
+    display:flex;align-items:center;justify-content:center;
+  }
+  .aud-list .chk svg{width:12px;height:12px;stroke:var(--navy);stroke-width:2.4;fill:none}
 
-    .box {
-      margin-top: 25px;
-      padding: 15px;
-      border: 1px solid #ddd;
-      border-radius: 8px;
-      background: #fafafa;
-    }
+  /* HOW */
+  .steps{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;counter-reset:s}
+  .step{position:relative;padding-top:54px}
+  .step::before{
+    counter-increment:s;content:counter(s);
+    position:absolute;top:0;left:0;
+    width:42px;height:42px;border-radius:12px;
+    background:#fff;border:1.5px solid var(--line);
+    display:flex;align-items:center;justify-content:center;
+    font-family:'Fraunces',serif;font-size:18px;font-weight:600;color:var(--navy);
+  }
+  .step h3{font-size:18px;margin-bottom:9px;color:var(--ink)}
+  .step p{font-size:14.5px;color:var(--slate);font-weight:300}
 
-    .box input {
-      width: 95%;
-      display: block;
-    }
-  </style>
+  /* CONTACT / CTA */
+  .cta{
+    background:var(--grad);color:#fff;border-radius:30px;
+    padding:74px 60px;text-align:center;position:relative;overflow:hidden;
+  }
+  .cta::after{
+    content:"";position:absolute;width:340px;height:340px;border-radius:50%;
+    background:rgba(255,255,255,.07);right:-90px;top:-120px;
+  }
+  .cta h2{font-size:clamp(1.9rem,3.4vw,2.6rem);margin-bottom:16px;position:relative}
+  .cta p{font-size:18px;color:#dfe7f5;max-width:560px;margin:0 auto 36px;font-weight:300;position:relative}
+  .cta-actions{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;position:relative}
+  .btn-white{background:#fff;color:var(--navy)}
+  .btn-white:hover{transform:translateY(-2px)}
+  .btn-outline-w{background:transparent;color:#fff;border:1.5px solid rgba(255,255,255,.5)}
+  .btn-outline-w:hover{border-color:#fff}
+
+  /* FOOTER */
+  footer{padding:60px 0 50px;border-top:1px solid var(--line);background:#fff}
+  .foot-grid{display:flex;justify-content:space-between;align-items:flex-start;gap:40px;flex-wrap:wrap}
+  .foot-brand{display:flex;align-items:center;gap:11px;font-family:'Fraunces',serif;font-size:21px;font-weight:600;color:var(--navy);margin-bottom:14px}
+  .foot-brand img{height:38px}
+  .foot-col p{font-size:14px;color:var(--slate);max-width:330px;font-weight:300}
+  .foot-links{display:flex;flex-direction:column;gap:11px}
+  .foot-links a{font-size:14.5px;color:var(--slate);transition:color .2s}
+  .foot-links a:hover{color:var(--navy)}
+  .foot-links .h{font-size:13px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink);font-weight:600;margin-bottom:5px}
+  .disclaimer{
+    margin-top:46px;padding-top:26px;border-top:1px solid var(--line);
+    font-size:13px;color:#909ab0;line-height:1.7;font-weight:300;
+  }
+  .disclaimer strong{color:var(--slate);font-weight:500}
+  .copyr{margin-top:18px;font-size:13px;color:#909ab0}
+
+  /* reveal anim — só ativa se JS marcar <html class="js">.
+     Sem JS (ou se falhar), o conteúdo fica 100% visível. */
+  .js .reveal{opacity:0;transform:translateY(22px);transition:opacity .7s ease,transform .7s ease}
+  .js .reveal.in{opacity:1;transform:none}
+
+  /* RESPONSIVE */
+  @media(max-width:960px){
+    section{padding:78px 0}
+    .hero{padding:80px 0 90px}
+    .hero-grid{grid-template-columns:1fr;gap:48px}
+    .hero-visual{order:-1}
+    .features{grid-template-columns:1fr}
+    .aud-grid{grid-template-columns:1fr}
+    .steps{grid-template-columns:1fr 1fr}
+    .navlinks{display:none}
+    .cta{padding:54px 28px}
+  }
+  @media(max-width:560px){
+    .steps{grid-template-columns:1fr}
+    .nav-cta .btn-ghost{display:none}
+    .wrap{padding:0 20px}
+    .aud-card{padding:36px 26px}
+  }
+</style>
 </head>
-
 <body>
 
-<h1>Telemed Brasil</h1>
+<header>
+  <div class="wrap">
+    <nav>
+      <a href="#" class="brand">
+        <img src="vytal-logo.png" alt="Vytal" />
+        <span>Vytal</span>
+      </a>
+      <div class="navlinks">
+        <a href="#oque">O que é</a>
+        <a href="#medicos">Para médicos</a>
+        <a href="#pacientes">Para pacientes</a>
+        <a href="#como">Como funciona</a>
+      </div>
+      <div class="nav-cta">
+        <a href="#contato" class="btn btn-ghost">Falar com a gente</a>
+      </div>
+    </nav>
+  </div>
+</header>
 
-<div id="chat"></div>
+<!-- HERO -->
+<section class="hero">
+  <div class="wrap">
+    <div class="hero-grid">
+      <div class="reveal in">
+        <span class="eyebrow">Infraestrutura de saúde digital</span>
+        <h1>Tecnologia que <span class="accent">apoia o médico</span>, não substitui o cuidado.</h1>
+        <p class="lead">A Vytal organiza a informação clínica e dá suporte ao trabalho do profissional de saúde em consultas e plantões — com o médico sempre no centro da decisão.</p>
+        <div class="hero-actions">
+          <a href="#contato" class="btn btn-primary">Quero conhecer
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </a>
+          <a href="#oque" class="btn btn-ghost">Entender o conceito</a>
+        </div>
+      </div>
+      <div class="hero-visual reveal in">
+        <div class="hero-card">
+          <div class="hc-logo"><img src="vytal-logo.png" alt="Vytal" /></div>
+          <div class="hc-tag">Saúde organizada, cuidado humano</div>
+          <div class="hc-row"><span class="hc-dot">1</span> Paciente inicia contato por um canal acessível</div>
+          <div class="hc-row"><span class="hc-dot">2</span> Informação chega organizada ao profissional</div>
+          <div class="hc-row"><span class="hc-dot">3</span> O médico avalia, decide e conduz o atendimento</div>
+          <div class="hc-float"><span class="pulse"></span> Profissional no centro</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
-<input type="text" id="message" placeholder="Digite sua mensagem">
-
-<button id="sendButton">Enviar</button>
-<button id="formButton">Gerar ficha médica</button>
-
-<div class="box">
-  <h3>Solicitar agendamento</h3>
-
-  <input id="name" placeholder="Nome completo">
-  <input id="phone" placeholder="Telefone / WhatsApp">
-  <input id="reason" placeholder="Motivo da consulta">
-  <input id="preferredTime" placeholder="Melhor dia/horário">
-
-  <button onclick="requestAppointment()">
-    Solicitar agendamento
-  </button>
-
-  <p id="appointmentStatus"></p>
+<!-- TRUST STRIP -->
+<div class="strip">
+  <div class="wrap">
+    <p><strong>A Vytal é uma ferramenta de apoio.</strong> Ela não realiza diagnóstico nem substitui a avaliação de um profissional de saúde habilitado.</p>
+  </div>
 </div>
 
+<!-- O QUE É -->
+<section id="oque">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="eyebrow">O que é a Vytal</span>
+      <h2>Uma camada que conecta e organiza, para o médico cuidar melhor.</h2>
+      <p>Reduzimos o atrito entre quem precisa de atendimento e quem atende. A informação clínica chega estruturada ao profissional — que mantém o controle de cada decisão.</p>
+    </div>
+    <div class="features">
+      <div class="feature reveal">
+        <div class="ic"><svg viewBox="0 0 24 24"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg></div>
+        <h3>Canal acessível</h3>
+        <p>O paciente inicia o contato por um canal que ele já usa no dia a dia, sem instalar nada nem aprender ferramenta nova.</p>
+      </div>
+      <div class="feature reveal">
+        <div class="ic"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6M9 13h6M9 17h4"/></svg></div>
+        <h3>Informação organizada</h3>
+        <p>Histórico, medicações e exames reunidos e estruturados, para o profissional ter o contexto na hora do atendimento.</p>
+      </div>
+      <div class="feature reveal">
+        <div class="ic"><svg viewBox="0 0 24 24"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg></div>
+        <h3>Apoio ao trabalho clínico</h3>
+        <p>Ferramentas que ajudam a organizar o raciocínio e a documentação — sempre como apoio, com a decisão final do médico.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PARA MÉDICOS -->
+<section id="medicos" class="audience">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="eyebrow">Para médicos</span>
+      <h2>Mais contexto, menos trabalho repetitivo.</h2>
+      <p>A Vytal cuida da organização para você focar no que importa: avaliar e cuidar do paciente.</p>
+    </div>
+    <div class="aud-grid">
+      <div class="aud-card reveal">
+        <span class="tag">No atendimento</span>
+        <h3>O paciente chega organizado</h3>
+        <p class="intro">Quando o atendimento começa, a informação relevante já está estruturada — você não perde tempo reconstruindo o contexto.</p>
+        <ul class="aud-list">
+          <li><span class="chk"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg></span> Prontuário com histórico, medicações e exames reunidos</li>
+          <li><span class="chk"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg></span> Exames em PDF organizados por painéis, com os valores do próprio laudo</li>
+          <li><span class="chk"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg></span> Registro estruturado da evolução clínica</li>
+        </ul>
+      </div>
+      <div class="aud-card reveal">
+        <span class="tag">No controle</span>
+        <h3>A decisão é sempre sua</h3>
+        <p class="intro">A Vytal é apoio. Toda conduta, hipótese e interpretação clínica permanece com você, profissional responsável.</p>
+        <ul class="aud-list">
+          <li><span class="chk"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg></span> Ferramentas de apoio, nunca substituição do julgamento médico</li>
+          <li><span class="chk"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg></span> Você revisa e valida tudo antes de qualquer conduta</li>
+          <li><span class="chk"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg></span> Transparência sobre o que é apoio e o que é decisão clínica</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PARA PACIENTES -->
+<section id="pacientes">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="eyebrow">Para pacientes</span>
+      <h2>Um caminho mais simples até o cuidado.</h2>
+      <p>Menos burocracia para chegar até um profissional, com sua informação acompanhando você.</p>
+    </div>
+    <div class="aud-grid">
+      <div class="aud-card reveal">
+        <span class="tag">Acesso</span>
+        <h3>Simples desde o primeiro contato</h3>
+        <p class="intro">Você inicia por um canal acessível e conhecido, sem aplicativos complicados nem cadastros longos.</p>
+        <ul class="aud-list">
+          <li><span class="chk"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg></span> Contato por um canal que você já usa</li>
+          <li><span class="chk"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg></span> Suas informações organizadas em um só lugar</li>
+          <li><span class="chk"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg></span> Lembretes de medicação para apoiar seu tratamento</li>
+        </ul>
+      </div>
+      <div class="aud-card reveal">
+        <span class="tag">Cuidado humano</span>
+        <h3>Sempre com um profissional</h3>
+        <p class="intro">A Vytal organiza e encaminha — quem avalia, decide e cuida de você é sempre um profissional de saúde.</p>
+        <ul class="aud-list">
+          <li><span class="chk"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg></span> A tecnologia não substitui a consulta médica</li>
+          <li><span class="chk"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg></span> O profissional sempre no centro da decisão</li>
+          <li><span class="chk"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg></span> Em emergências, procure atendimento presencial imediato</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- COMO FUNCIONA -->
+<section id="como" class="audience">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="eyebrow">Como funciona</span>
+      <h2>Quatro passos, o médico no comando.</h2>
+    </div>
+    <div class="steps">
+      <div class="step reveal">
+        <h3>Contato</h3>
+        <p>O paciente inicia o atendimento por um canal acessível.</p>
+      </div>
+      <div class="step reveal">
+        <h3>Organização</h3>
+        <p>As informações são estruturadas e reunidas de forma clara.</p>
+      </div>
+      <div class="step reveal">
+        <h3>Apoio</h3>
+        <p>O profissional recebe o contexto organizado para o atendimento.</p>
+      </div>
+      <div class="step reveal">
+        <h3>Decisão</h3>
+        <p>O médico avalia, decide a conduta e cuida do paciente.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTATO / CTA -->
+<section id="contato">
+  <div class="wrap">
+    <div class="cta reveal">
+      <h2>Quer conhecer a Vytal?</h2>
+      <p>Estamos em desenvolvimento e conversando com profissionais de saúde interessados. Fale com a gente diretamente — sem formulários, no seu canal.</p>
+      <div class="cta-actions">
+        <a href="https://wa.me/55SEUNUMERO" class="btn btn-white" target="_blank" rel="noopener">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15l-1.3 4.7 4.8-1.3A10 10 0 1 0 12 2zm0 18a8 8 0 0 1-4.1-1.1l-.3-.2-2.9.8.8-2.8-.2-.3A8 8 0 1 1 12 20zm4.4-6c-.2-.1-1.4-.7-1.6-.8s-.4-.1-.5.1-.6.8-.8 1-.3.2-.5.1a6.5 6.5 0 0 1-1.9-1.2 7.2 7.2 0 0 1-1.3-1.7c-.1-.2 0-.4.1-.5l.4-.5.3-.5v-.4c0-.1-.5-1.3-.7-1.7s-.4-.4-.5-.4h-.5a1 1 0 0 0-.7.3 2.8 2.8 0 0 0-.9 2.1A4.9 4.9 0 0 0 8 12a11 11 0 0 0 4.2 3.7c.6.3 1 .4 1.4.5a3.4 3.4 0 0 0 1.5.1 2.5 2.5 0 0 0 1.6-1.1 2 2 0 0 0 .1-1.1c0-.1-.2-.1-.4-.2z"/></svg>
+          Falar pelo WhatsApp
+        </a>
+        <a href="mailto:contato@vytalsaude.com.br?subject=Tenho%20interesse%20na%20Vytal" class="btn btn-outline-w">Enviar e-mail</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="foot-col">
+        <div class="foot-brand"><img src="vytal-logo.png" alt="Vytal" /><span>Vytal</span></div>
+        <p>Infraestrutura de saúde digital que organiza informação clínica e apoia o trabalho do médico — com o profissional sempre no centro da decisão.</p>
+      </div>
+      <div class="foot-col">
+        <div class="foot-links">
+          <span class="h">Navegação</span>
+          <a href="#oque">O que é</a>
+          <a href="#medicos">Para médicos</a>
+          <a href="#pacientes">Para pacientes</a>
+          <a href="#como">Como funciona</a>
+        </div>
+      </div>
+      <div class="foot-col">
+        <div class="foot-links">
+          <span class="h">Contato</span>
+          <a href="https://wa.me/55SEUNUMERO" target="_blank" rel="noopener">WhatsApp</a>
+          <a href="mailto:contato@vytalsaude.com.br">contato@vytalsaude.com.br</a>
+        </div>
+      </div>
+    </div>
+    <div class="disclaimer">
+      <strong>Aviso importante.</strong> A Vytal é uma ferramenta de apoio à organização de informação em saúde e ao trabalho do profissional. Ela não realiza diagnóstico, não prescreve e não substitui a avaliação, o julgamento ou a conduta de um profissional de saúde habilitado. O produto encontra-se em fase de desenvolvimento. Em caso de emergência ou sintomas graves, procure atendimento médico presencial imediatamente ou ligue para o SAMU (192).
+    </div>
+    <div class="copyr">© 2026 Vytal · vytalsaude.com.br · Todos os direitos reservados.</div>
+  </div>
+</footer>
+
 <script>
-const API_URL = "https://greenlight-backend-production-35c8.up.railway.app";
-
-const sessionId = "paciente-" + Date.now();
-
-document.getElementById("sendButton").addEventListener("click", sendMessage);
-document.getElementById("formButton").addEventListener("click", generateForm);
-
-document.getElementById("message").addEventListener("keydown", function(event) {
-  if (event.key === "Enter") {
-    sendMessage();
-  }
-});
-
-async function sendMessage() {
-  const input = document.getElementById("message");
-  const chat = document.getElementById("chat");
-  const text = input.value.trim();
-
-  if (!text) return;
-
-  chat.innerHTML += `<div class="user"><b>Você:</b> ${text}</div>`;
-  input.value = "";
-
-  try {
-    const response = await fetch(`${API_URL}/chat`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify({
-        message: text,
-        sessionId: sessionId
-      })
-    });
-
-    const data = await response.json();
-
-    chat.innerHTML += `<div class="bot"><b>Bot:</b> ${data.reply}</div>`;
-    chat.scrollTop = chat.scrollHeight;
-
-  } catch (error) {
-    chat.innerHTML += `<div class="bot"><b>Erro:</b> Não consegui conectar ao servidor.</div>`;
-    console.error(error);
-  }
-}
-
-async function generateForm() {
-  const chat = document.getElementById("chat");
-
-  chat.innerHTML += `<div class="bot"><b>Sistema:</b> Gerando ficha médica...</div>`;
-
-  try {
-    const response = await fetch(`${API_URL}/generate-form`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify({
-        sessionId: sessionId
-      })
-    });
-
-    const data = await response.json();
-
-    chat.innerHTML += `<div class="bot"><b>Ficha médica:</b><pre>${data.form}</pre></div>`;
-    chat.scrollTop = chat.scrollHeight;
-
-  } catch (error) {
-    chat.innerHTML += `<div class="bot"><b>Erro:</b> Não consegui gerar a ficha.</div>`;
-    console.error(error);
-  }
-}
-
-async function requestAppointment() {
-  const status = document.getElementById("appointmentStatus");
-
-  const payload = {
-    sessionId,
-    name: document.getElementById("name").value.trim(),
-    phone: document.getElementById("phone").value.trim(),
-    reason: document.getElementById("reason").value.trim(),
-    preferredTime: document.getElementById("preferredTime").value.trim()
-  };
-
-  if (!payload.name || !payload.phone || !payload.reason) {
-    status.innerText = "Preencha nome, telefone e motivo da consulta.";
-    status.style.color = "red";
-    return;
-  }
-
-  try {
-    const response = await fetch(`${API_URL}/appointments`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify(payload)
-    });
-
-    const data = await response.json();
-
-    if (data.success) {
-      status.innerText = "Agendamento solicitado com sucesso. Nossa equipe entrará em contato.";
-      status.style.color = "green";
-    } else {
-      status.innerText = "Erro ao solicitar agendamento.";
-      status.style.color = "red";
+  // Reveal on scroll. Se IntersectionObserver não existir, mostra tudo.
+  (function(){
+    var els = document.querySelectorAll('.reveal:not(.in)');
+    if(!('IntersectionObserver' in window)){
+      els.forEach(function(el){ el.classList.add('in'); });
+      return;
     }
-
-  } catch (error) {
-    status.innerText = "Erro ao conectar ao servidor.";
-    status.style.color = "red";
-    console.error(error);
-  }
-}
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); }
+      });
+    },{threshold:.14, rootMargin:'0px 0px -40px 0px'});
+    els.forEach(function(el){ io.observe(el); });
+    // Rede de segurança: após 4s, garante que tudo apareceu
+    setTimeout(function(){ els.forEach(function(el){ el.classList.add('in'); }); }, 4000);
+  })();
 </script>
 
 </body>
