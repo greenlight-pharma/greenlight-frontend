@@ -1699,7 +1699,37 @@
     </div>
   </div>
 
-  <!-- ====== MODAL DE ADICIONAR MEDICAÇÃO (a partir do prontuário) ====== -->
+  <!-- ====== MODAL DE REMOVER PACIENTE (remove só o vínculo) ====== -->
+  <div id="removePatientModal" class="modal-backdrop hidden" onclick="closeRemovePatientOnBackdrop(event)">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3>Remover paciente da sua lista</h3>
+        <button class="modal-close" onclick="closeRemovePatientModal()" aria-label="Fechar">✕</button>
+      </div>
+
+      <div class="modal-warning">
+        Esta ação remove <strong id="removePatientNameLabel"></strong> da sua lista
+        de pacientes. O histórico clínico (consultas, exames, prontuário)
+        <strong>não é apagado</strong> e permanece no sistema — apenas o vínculo
+        com você é desfeito. O paciente deixa de aparecer aqui.
+      </div>
+
+      <label>Para confirmar, digite o nome do paciente exatamente como aparece:</label>
+      <input id="removePatientConfirmInput" type="text" autocomplete="off"
+             placeholder="Digite o nome para confirmar"
+             oninput="onRemoveConfirmInput()" />
+
+      <div class="modal-actions">
+        <button class="btn-secondary-outline" onclick="closeRemovePatientModal()">Cancelar</button>
+        <button id="removePatientConfirmBtn" class="primary"
+                style="background:#dc2626; opacity:0.5; pointer-events:none;"
+                onclick="confirmRemovePatient()">Remover paciente</button>
+      </div>
+
+      <div id="removePatientMessage" class="message"></div>
+    </div>
+  </div>
+
   <div id="addMedicationModal" class="modal-backdrop hidden" onclick="closeAddMedicationOnBackdrop(event)">
     <div class="modal-content">
       <div class="modal-header">
@@ -2150,6 +2180,7 @@
         // [FIX-PATIENTS-SHAPE] Backend retorna campos da tabela doctor_patients:
         // { patientName, patientPhone }. Frontend usa { name, phone } — adapta.
         const normalized = (Array.isArray(patients) ? patients : []).map((p) => ({
+          id: p.id != null ? p.id : null,
           name: p.patientName || p.name || null,
           phone: p.patientPhone || p.phone || null,
         }));
@@ -2243,10 +2274,31 @@
         openBtn.className = "btn-soap";
         openBtn.addEventListener("click", () => openPatientDetail(p.phone));
 
+        const actions = document.createElement("div");
+        actions.style.display = "flex";
+        actions.style.gap = "8px";
+        actions.style.alignItems = "center";
+        actions.appendChild(openBtn);
+
+        // [REMOVE-LINK] Botão só aparece se temos o id do vínculo.
+        // Sem id não dá pra remover com segurança (ver loadPatients).
+        if (p.id != null) {
+          const removeBtn = document.createElement("button");
+          removeBtn.textContent = "Remover";
+          removeBtn.title = "Remover este paciente da sua lista";
+          removeBtn.style.cssText =
+            "background:#fff;color:#dc2626;border:1px solid #fca5a5;" +
+            "padding:6px 12px;border-radius:6px;font-size:13px;cursor:pointer;";
+          removeBtn.addEventListener("click", () =>
+            openRemovePatientModal(p.id, p.name, p.phone)
+          );
+          actions.appendChild(removeBtn);
+        }
+
         appendRow(tableBody, [
           p.name || "Sem nome",
           p.phone || "-",
-          { node: openBtn },
+          { node: actions },
         ]);
       });
     }
@@ -2289,6 +2341,96 @@
 
     function closeManualPatientOnBackdrop(event) {
       if (event.target.id === "manualPatientModal") closeManualPatientModal();
+    }
+
+    // ============================================================
+    // [REMOVE-LINK] Remoção de vínculo médico↔paciente
+    // Remove SÓ o vínculo (doctor_patients). Histórico preservado.
+    // Exige digitar o nome do paciente pra confirmar (evita engano).
+    // ============================================================
+
+    let removePatientTarget = null; // { id, name, phone }
+
+    function openRemovePatientModal(id, name, phone) {
+      removePatientTarget = { id, name: name || "", phone: phone || "" };
+
+      document.getElementById("removePatientNameLabel").textContent =
+        name || "(sem nome)";
+
+      const input = document.getElementById("removePatientConfirmInput");
+      input.value = "";
+
+      clearMessage("removePatientMessage");
+      setRemoveBtnEnabled(false);
+
+      document.getElementById("removePatientModal").classList.remove("hidden");
+      setTimeout(() => input.focus(), 60);
+    }
+
+    function closeRemovePatientModal() {
+      document.getElementById("removePatientModal").classList.add("hidden");
+      removePatientTarget = null;
+    }
+
+    function closeRemovePatientOnBackdrop(event) {
+      if (event.target.id === "removePatientModal") closeRemovePatientModal();
+    }
+
+    function setRemoveBtnEnabled(enabled) {
+      const btn = document.getElementById("removePatientConfirmBtn");
+      btn.style.opacity = enabled ? "1" : "0.5";
+      btn.style.pointerEvents = enabled ? "auto" : "none";
+    }
+
+    // Habilita o botão só quando o texto digitado bate com o nome.
+    // Comparação tolerante a acento/caixa/espaços, usando o mesmo
+    // normalizeForSearch já existente no arquivo.
+    function onRemoveConfirmInput() {
+      if (!removePatientTarget) return;
+      const typed = normalizeForSearch(
+        document.getElementById("removePatientConfirmInput").value
+      );
+      const target = normalizeForSearch(removePatientTarget.name);
+      // Se o paciente não tem nome, exige digitar a palavra REMOVER.
+      const match = target
+        ? typed === target
+        : typed === "remover";
+      setRemoveBtnEnabled(match);
+    }
+
+    async function confirmRemovePatient() {
+      if (!removePatientTarget || removePatientTarget.id == null) {
+        setMessage("removePatientMessage", "error",
+          "Não foi possível identificar o vínculo. Recarregue a lista.");
+        return;
+      }
+
+      const { id } = removePatientTarget;
+      const btn = document.getElementById("removePatientConfirmBtn");
+      setRemoveBtnEnabled(false);
+      btn.textContent = "Removendo...";
+
+      try {
+        const response = await fetch(`${API_URL}/doctor-patients/${id}`, {
+          method: "DELETE",
+          headers: {
+            "Authorization": `Bearer ${getToken()}`
+          }
+        });
+
+        const data = await response.json().catch(() => ({}));
+
+        if (!response.ok) {
+          throw new Error(data.error || "Erro ao remover paciente.");
+        }
+
+        closeRemovePatientModal();
+        await loadPatients();
+      } catch (error) {
+        setMessage("removePatientMessage", "error", error.message);
+        btn.textContent = "Remover paciente";
+        setRemoveBtnEnabled(true);
+      }
     }
 
     // [MANUAL-PATIENT] Debounce do lookup ao digitar telefone.
