@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<script>document.documentElement.className='js';</script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="robots" content="noindex, nofollow" />
+<title>Vytal — Infraestrutura de saúde · a direção que vamos seguir</title>
+<meta name="description" content="Documento privado de direção. A Vytal em duas frentes: a tecnologia que apoia o médico hoje, e o modelo de cuidado contínuo que estamos construindo." />
+<link rel="icon" type="image/png" href="vytal-logo.png" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    --navy:#1c2a63;
+    --navy-deep:#16204d;
+    --cyan:#39c4c8;
+    --cyan-soft:#5fd6d6;
+    --ink:#1a2238;
+    --slate:#5a6478;
+    --mist:#f5f8fa;
+    --line:#e6ebf0;
+    --white:#ffffff;
+    --gold:#b08948;
+    --grad:linear-gradient(120deg,var(--navy) 0%,#2a4a8c 45%,var(--cyan) 100%);
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:'Outfit',sans-serif;
+    color:var(--ink);
+    background:var(--white);
+    line-height:1.65;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3{font-family:'Fraunces',serif;font-weight:500;line-height:1.15;letter-spacing:-.01em}
+  a{color:inherit;text-decoration:none}
+  .wrap{max-width:1140px;margin:0 auto;padding:0 28px}
+  section{padding:110px 0}
+
+  /* PRIVATE BANNER */
+  .private-note{
+    background:var(--navy-deep);color:#cdd6ea;
+    font-size:12px;letter-spacing:.16em;text-transform:uppercase;
+    text-align:center;padding:10px 16px;font-weight:400;
+  }
+  .private-note strong{color:#fff;font-weight:600}
+
+  /* NAV */
+  header{
+    position:sticky;top:0;z-index:50;
+    background:rgba(255,255,255,.86);
+    backdrop-filter:saturate(180%) blur(14px);
+    border-bottom:1px solid var(--line);
+  }
+  nav{display:flex;align-items:center;justify-content:space-between;height:74px}
+  .brand{display:flex;align-items:center;gap:11px;font-family:'Fraunces',serif;font-size:23px;font-weight:600;color:var(--navy)}
+  .brand img{height:42px;width:auto;display:block}
+  .navlinks{display:flex;align-items:center;gap:34px}
+  .navlinks a{font-size:15px;color:var(--slate);transition:color .2s;font-weight:400}
+  .navlinks a:hover{color:var(--navy)}
+  .btn{
+    display:inline-flex;align-items:center;gap:9px;
+    padding:13px 26px;border-radius:999px;
+    font-family:'Outfit',sans-serif;font-size:15px;font-weight:500;
+    transition:transform .2s,box-shadow .2s,background .2s;cursor:pointer;border:none;
+  }
+  .btn-primary{background:var(--grad);color:#fff;box-shadow:0 8px 26px -10px rgba(28,42,99,.5)}
+  .btn-primary:hover{transform:translateY(-2px);box-shadow:0 14px 32px -10px rgba(28,42,99,.55)}
+  .btn-ghost{background:transparent;color:var(--navy);border:1.5px solid var(--line)}
+  .btn-ghost:hover{border-color:var(--cyan);color:var(--navy)}
+  .nav-cta{display:flex;gap:12px;align-items:center}
+
+  /* HERO */
+  .hero{
+    position:relative;padding:120px 0 130px;overflow:hidden;
+    background:
+      radial-gradient(1100px 520px at 78% -8%,rgba(57,196,200,.16),transparent 60%),
+      radial-gradient(800px 480px at 8% 12%,rgba(28,42,99,.07),transparent 55%);
+  }
+  .hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:64px;align-items:center}
+  .eyebrow{
+    display:inline-flex;align-items:center;gap:9px;
+    font-size:13px;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--navy);font-weight:600;margin-bottom:26px;
+  }
+  .eyebrow::before{content:"";width:30px;height:2px;background:var(--cyan);display:block}
+  .hero h1{font-size:clamp(2.6rem,5vw,4rem);color:var(--ink)}
+  .hero h1 .accent{
+    background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent;
+  }
+  .hero p.lead{
+    margin:30px 0 38px;font-size:19px;color:var(--slate);max-width:520px;font-weight:300;
+  }
+  .hero-actions{display:flex;gap:14px;flex-wrap:wrap}
+
+  .hero-visual{
+    position:relative;display:flex;align-items:center;justify-content:center;
+  }
+  .hero-card{
+    position:relative;width:100%;max-width:420px;
+    background:#fff;border:1px solid var(--line);border-radius:26px;
+    padding:34px 32px;box-shadow:0 30px 70px -34px rgba(28,42,99,.32);
+  }
+  .hero-card .hc-logo{display:flex;justify-content:center;margin-bottom:8px}
+  .hero-card .hc-logo img{height:128px;width:auto}
+  .hero-card .hc-tag{
+    text-align:center;font-family:'Fraunces',serif;font-size:18px;color:var(--navy);
+    font-weight:600;margin-bottom:22px;
+  }
+  .hc-row{
+    display:flex;align-items:center;gap:13px;padding:14px 0;border-top:1px solid var(--line);
+    font-size:14.5px;color:var(--slate);
+  }
+  .hc-dot{
+    width:30px;height:30px;border-radius:9px;flex-shrink:0;
+    background:linear-gradient(135deg,rgba(57,196,200,.18),rgba(28,42,99,.12));
+    display:flex;align-items:center;justify-content:center;color:var(--navy);font-weight:600;font-size:14px;
+  }
+  .hc-float{
+    position:absolute;right:-22px;top:34px;
+    background:#fff;border:1px solid var(--line);border-radius:14px;
+    padding:12px 16px;box-shadow:0 16px 40px -18px rgba(28,42,99,.3);
+    font-size:13px;color:var(--navy);font-weight:500;display:flex;align-items:center;gap:8px;
+  }
+  .pulse{width:9px;height:9px;border-radius:50%;background:var(--cyan);box-shadow:0 0 0 0 rgba(57,196,200,.6);animation:pulse 2.4s infinite}
+  @keyframes pulse{70%{box-shadow:0 0 0 12px rgba(57,196,200,0)}100%{box-shadow:0 0 0 0 rgba(57,196,200,0)}}
+
+  /* TRUST STRIP */
+  .strip{background:var(--navy-deep);color:#fff;padding:30px 0}
+  .strip .wrap{display:flex;align-items:center;justify-content:center;gap:14px;flex-wrap:wrap;text-align:center}
+  .strip p{font-size:15.5px;color:#cdd6ea;font-weight:300}
+  .strip strong{color:#fff;font-weight:500}
+
+  /* SECTION HEADERS */
+  .sec-head{max-width:680px;margin-bottom:62px}
+  .sec-head .eyebrow{margin-bottom:18px}
+  .sec-head h2{font-size:clamp(2rem,3.6vw,2.85rem);color:var(--ink)}
+  .sec-head p{margin-top:18px;font-size:18px;color:var(--slate);font-weight:300}
+
+  /* AUDIENCE / PRODUCT split */
+  .audience{background:var(--mist)}
+  .aud-grid{display:grid;grid-template-columns:1fr 1fr;gap:30px}
+  .aud-card{
+    background:#fff;border:1px solid var(--line);border-radius:24px;padding:48px 44px;
+    position:relative;overflow:hidden;
+  }
+  .aud-card::before{
+    content:"";position:absolute;inset:0 0 auto 0;height:5px;background:var(--grad);
+  }
+  .aud-card.vision::before{background:linear-gradient(120deg,var(--gold),#d8b878)}
+  .aud-card .tag{
+    font-size:13px;letter-spacing:.12em;text-transform:uppercase;color:var(--navy);
+    font-weight:600;margin-bottom:14px;display:flex;align-items:center;gap:10px;
+  }
+  .aud-card.vision .tag{color:var(--gold)}
+  .badge{
+    font-size:11px;letter-spacing:.08em;padding:4px 10px;border-radius:999px;
+    background:rgba(57,196,200,.15);color:var(--navy);font-weight:600;
+  }
+  .aud-card.vision .badge{background:rgba(176,137,72,.16);color:var(--gold)}
+  .aud-card h3{font-size:26px;margin-bottom:16px;color:var(--ink)}
+  .aud-card p.intro{font-size:16px;color:var(--slate);margin-bottom:26px;font-weight:300}
+  .aud-list{list-style:none;display:flex;flex-direction:column;gap:15px}
+  .aud-list li{display:flex;gap:13px;font-size:15px;color:var(--ink);align-items:flex-start}
+  .aud-list .chk{
+    width:22px;height:22px;border-radius:50%;flex-shrink:0;margin-top:1px;
+    background:linear-gradient(135deg,rgba(57,196,200,.2),rgba(28,42,99,.14));
+    display:flex;align-items:center;justify-content:center;
+  }
+  .aud-card.vision .chk{background:linear-gradient(135deg,rgba(176,137,72,.22),rgba(176,137,72,.12))}
+  .aud-list .chk svg{width:12px;height:12px;stroke:var(--navy);stroke-width:2.4;fill:none}
+  .aud-card.vision .chk svg{stroke:var(--gold)}
+
+  /* CARE LINES grid */
+  .lines{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+  .line-card{
+    background:#fff;border:1px solid var(--line);border-radius:18px;padding:26px 24px;
+    transition:transform .25s,box-shadow .25s;
+  }
+  .line-card:hover{transform:translateY(-4px);box-shadow:0 22px 46px -28px rgba(28,42,99,.26)}
+  .line-card .num{font-family:'Fraunces',serif;font-size:15px;color:var(--gold);font-weight:600}
+  .line-card h3{font-size:17px;margin:9px 0 7px;color:var(--ink)}
+  .line-card p{font-size:13.5px;color:var(--slate);font-weight:300;line-height:1.6}
+
+  /* SEQUENCE */
+  .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;counter-reset:s}
+  .step{position:relative;padding-top:54px}
+  .step::before{
+    counter-increment:s;content:counter(s);
+    position:absolute;top:0;left:0;
+    width:42px;height:42px;border-radius:12px;
+    background:#fff;border:1.5px solid var(--line);
+    display:flex;align-items:center;justify-content:center;
+    font-family:'Fraunces',serif;font-size:18px;font-weight:600;color:var(--navy);
+  }
+  .step .ph{font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--cyan);font-weight:600;margin-bottom:6px}
+  .step h3{font-size:18px;margin-bottom:9px;color:var(--ink)}
+  .step p{font-size:14.5px;color:var(--slate);font-weight:300}
+
+  /* PRINCIPLE / CTA */
+  .cta{
+    background:var(--grad);color:#fff;border-radius:30px;
+    padding:74px 60px;text-align:center;position:relative;overflow:hidden;
+  }
+  .cta::after{
+    content:"";position:absolute;width:340px;height:340px;border-radius:50%;
+    background:rgba(255,255,255,.07);right:-90px;top:-120px;
+  }
+  .cta h2{font-size:clamp(1.9rem,3.4vw,2.6rem);margin-bottom:16px;position:relative}
+  .cta h2 em{font-style:italic;color:var(--cyan-soft)}
+  .cta p{font-size:18px;color:#dfe7f5;max-width:560px;margin:0 auto;font-weight:300;position:relative}
+
+  /* FOOTER */
+  footer{padding:60px 0 50px;border-top:1px solid var(--line);background:#fff}
+  .foot-grid{display:flex;justify-content:space-between;align-items:flex-start;gap:40px;flex-wrap:wrap}
+  .foot-brand{display:flex;align-items:center;gap:11px;font-family:'Fraunces',serif;font-size:21px;font-weight:600;color:var(--navy);margin-bottom:14px}
+  .foot-brand img{height:38px}
+  .foot-col p{font-size:14px;color:var(--slate);max-width:330px;font-weight:300}
+  .foot-links{display:flex;flex-direction:column;gap:11px}
+  .foot-links a{font-size:14.5px;color:var(--slate);transition:color .2s}
+  .foot-links a:hover{color:var(--navy)}
+  .foot-links .h{font-size:13px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink);font-weight:600;margin-bottom:5px}
+  .disclaimer{
+    margin-top:46px;padding-top:26px;border-top:1px solid var(--line);
+    font-size:13px;color:#909ab0;line-height:1.7;font-weight:300;
+  }
+  .disclaimer strong{color:var(--slate);font-weight:500}
+  .copyr{margin-top:18px;font-size:13px;color:#909ab0}
+
+  .js .reveal{opacity:0;transform:translateY(22px);transition:opacity .7s ease,transform .7s ease}
+  .js .reveal.in{opacity:1;transform:none}
+
+  /* RESPONSIVE */
+  @media(max-width:960px){
+    section{padding:78px 0}
+    .hero{padding:80px 0 90px}
+    .hero-grid{grid-template-columns:1fr;gap:48px}
+    .hero-visual{order:-1}
+    .aud-grid{grid-template-columns:1fr}
+    .lines{grid-template-columns:1fr 1fr}
+    .steps{grid-template-columns:1fr}
+    .navlinks{display:none}
+    .cta{padding:54px 28px}
+  }
+  @media(max-width:560px){
+    .lines{grid-template-columns:1fr}
+    .nav-cta .btn-ghost{display:none}
+    .wrap{padding:0 20px}
+    .aud-card{padding:36px 26px}
+  }
+</style>
+</head>
+<body>
+
+<div class="private-note"><strong>Documento privado</strong> · rascunho de direção · não publicado · não indexado · não divulgar</div>
+
+<header>
+  <div class="wrap">
+    <nav>
+      <a href="#" class="brand">
+        <img src="vytal-logo.png" alt="Vytal" />
+        <span>Vytal</span>
+      </a>
+      <div class="navlinks">
+        <a href="#frentes">As duas frentes</a>
+        <a href="#linhas">Linhas de atenção</a>
+        <a href="#sequencia">Sequência</a>
+        <a href="#principio">Princípio</a>
+      </div>
+      <div class="nav-cta">
+        <a href="#principio" class="btn btn-ghost">A direção</a>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="wrap">
+    <div class="hero-grid">
+      <div class="reveal in">
+        <span class="eyebrow">O caminho que vamos seguir</span>
+        <h1>Tecnologia que <span class="accent">apoia o médico</span> hoje. Cuidado contínuo a seguir.</h1>
+        <p class="lead">A Vytal se organiza em duas frentes complementares: a tecnologia que dá suporte ao médico — que já existe e funciona — e o modelo de cuidado contínuo que estamos construindo sobre base formal.</p>
+        <div class="hero-actions">
+          <a href="#frentes" class="btn btn-primary">Ver as duas frentes
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </a>
+          <a href="#sequencia" class="btn btn-ghost">Por que nesta ordem</a>
+        </div>
+      </div>
+      <div class="hero-visual reveal in">
+        <div class="hero-card">
+          <div class="hc-logo"><img src="vytal-logo.png" alt="Vytal" /></div>
+          <div class="hc-tag">Duas frentes, um princípio</div>
+          <div class="hc-row"><span class="hc-dot">1</span> Tecnologia de apoio ao médico — existe hoje</div>
+          <div class="hc-row"><span class="hc-dot">2</span> Estrutura formal de saúde — pré-requisito</div>
+          <div class="hc-row"><span class="hc-dot">3</span> Modelo de cuidado contínuo — a direção</div>
+          <div class="hc-float"><span class="pulse"></span> Médico no centro</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TRUST STRIP -->
+<div class="strip">
+  <div class="wrap">
+    <p><strong>A tecnologia apoia o médico — nunca substitui o cuidado.</strong> Esta é a linha que separa o que existe hoje do que estamos construindo.</p>
+  </div>
+</div>
+
+<!-- AS DUAS FRENTES -->
+<section id="frentes">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="eyebrow">As duas frentes</span>
+      <h2>Tecnologia agora. Cuidado contínuo a seguir.</h2>
+      <p>São dois produtos com papéis distintos. O primeiro já existe e funciona. O segundo é a direção — e depende de estrutura formal antes de operar.</p>
+    </div>
+    <div class="aud-grid">
+      <div class="aud-card reveal">
+        <span class="tag"><span class="badge">Existe hoje</span> Produto 1</span>
+        <h3>Tecnologia de apoio ao médico</h3>
+        <p class="intro">Software que organiza prontuário, dados clínicos, monitoramento e adesão. O médico detém integralmente a relação com o paciente; a Vytal não substitui o cuidado, dá estrutura a ele.</p>
+        <ul class="aud-list">
+          <li><span class="chk"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg></span> Organização de histórico e resultados para o médico</li>
+          <li><span class="chk"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg></span> Monitoramento de séries clínicas (pressão, glicemia, medidas)</li>
+          <li><span class="chk"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg></span> Acompanhamento de adesão entre as consultas</li>
+          <li><span class="chk"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg></span> Painéis para o profissional e para a operação</li>
+        </ul>
+      </div>
+      <div class="aud-card vision reveal">
+        <span class="tag"><span class="badge">Visão · em construção</span> Produto 2</span>
+        <h3>Modelo de cuidado contínuo</h3>
+        <p class="intro">O destino: cuidado longitudinal organizado pelas linhas de atenção abaixo. Esta frente exige estrutura formal de estabelecimento de saúde — e só será apresentada como serviço quando essa base estiver pronta.</p>
+        <ul class="aud-list">
+          <li><span class="chk"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg></span> Cuidado longitudinal por linha de atenção</li>
+          <li><span class="chk"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg></span> Integração entre presencial e telemedicina</li>
+          <li><span class="chk"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg></span> Continuidade apoiada pela tecnologia da outra frente</li>
+          <li><span class="chk"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg></span> Estrutura formal como pré-requisito, não atalho</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- LINHAS DE ATENÇÃO -->
+<section id="linhas" class="audience">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="eyebrow">As linhas de atenção</span>
+      <h2>Sete frentes de cuidado que orientam o modelo.</h2>
+      <p>Estas linhas definem a direção do modelo de cuidado contínuo. Não são serviços oferecidos hoje — são o desenho do que estamos construindo.</p>
+    </div>
+    <div class="lines">
+      <div class="line-card reveal">
+        <div class="num">01</div>
+        <h3>Consulta clínica</h3>
+        <p>O encontro clínico como base de toda a continuidade.</p>
+      </div>
+      <div class="line-card reveal">
+        <div class="num">02</div>
+        <h3>Check-up</h3>
+        <p>Rastreamento organizado e leitura estruturada do histórico.</p>
+      </div>
+      <div class="line-card reveal">
+        <div class="num">03</div>
+        <h3>Emagrecimento e obesidade</h3>
+        <p>Acompanhamento longitudinal de medidas e adesão.</p>
+      </div>
+      <div class="line-card reveal">
+        <div class="num">04</div>
+        <h3>Saúde mental</h3>
+        <p>Continuidade de registro e seguimento entre encontros.</p>
+      </div>
+      <div class="line-card reveal">
+        <div class="num">05</div>
+        <h3>Saúde do homem</h3>
+        <p>Rastreamento por idade e risco, com seguimento ativo.</p>
+      </div>
+      <div class="line-card reveal">
+        <div class="num">06</div>
+        <h3>Dor crônica</h3>
+        <p>Diário estruturado e série temporal para avaliação clínica.</p>
+      </div>
+      <div class="line-card reveal">
+        <div class="num">07</div>
+        <h3>Diabetes e hipertensão</h3>
+        <p>Monitoramento contínuo e alertas de fora-da-faixa para o médico.</p>
+      </div>
+      <div class="line-card reveal" style="background:linear-gradient(135deg,rgba(57,196,200,.08),rgba(28,42,99,.05))">
+        <div class="num" style="color:var(--cyan)">+</div>
+        <h3>Tecnologia transversal</h3>
+        <p>A frente de apoio sustenta todas as sete linhas.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SEQUÊNCIA -->
+<section id="sequencia">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="eyebrow">Sequência</span>
+      <h2>Por que nesta ordem.</h2>
+      <p>A sequência é deliberada. A tecnologia sustenta a operação; o modelo de cuidado vem sobre uma base formal, não antes dela.</p>
+    </div>
+    <div class="steps">
+      <div class="step reveal">
+        <div class="ph">Fase atual</div>
+        <h3>Tecnologia de apoio em operação</h3>
+        <p>Backend e painéis funcionais. A Vytal entrega valor como infraestrutura para o médico, sem assumir a relação clínica.</p>
+      </div>
+      <div class="step reveal">
+        <div class="ph">Pré-requisito</div>
+        <h3>Estrutura formal de saúde</h3>
+        <p>Responsabilidade técnica médica, registros e conformidade regulatória. A fundação que precede qualquer oferta de cuidado.</p>
+      </div>
+      <div class="step reveal">
+        <div class="ph">Direção</div>
+        <h3>Modelo de cuidado contínuo</h3>
+        <p>Com a base pronta, as sete linhas passam de desenho a serviço — sustentadas pela tecnologia já em operação.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRINCÍPIO -->
+<section id="principio">
+  <div class="wrap">
+    <div class="cta reveal">
+      <h2>A tecnologia <em>apoia</em> o médico.<br>Nunca <em>substitui</em> o cuidado.</h2>
+      <p>É a linha que separa o que oferecemos hoje do que construímos para amanhã — e a razão de a estrutura formal vir antes, não depois.</p>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="foot-col">
+        <div class="foot-brand"><img src="vytal-logo.png" alt="Vytal" /><span>Vytal</span></div>
+        <p>Rascunho de direção para conversa privada. Duas frentes: a tecnologia que apoia o médico hoje, e o modelo de cuidado contínuo em construção.</p>
+      </div>
+      <div class="foot-col">
+        <div class="foot-links">
+          <span class="h">Navegação</span>
+          <a href="#frentes">As duas frentes</a>
+          <a href="#linhas">Linhas de atenção</a>
+          <a href="#sequencia">Sequência</a>
+          <a href="#principio">Princípio</a>
+        </div>
+      </div>
+      <div class="foot-col">
+        <div class="foot-links">
+          <span class="h">Status</span>
+          <span style="font-size:14.5px;color:var(--slate)">Não publicado</span>
+          <span style="font-size:14.5px;color:var(--slate)">Não indexado</span>
+          <span style="font-size:14.5px;color:var(--slate)">Sujeito a validação regulatória</span>
+        </div>
+      </div>
+    </div>
+    <div class="disclaimer">
+      <strong>Aviso.</strong> Este documento é um rascunho interno de direção, para conversa privada. Não constitui oferta de serviço médico. A frente "modelo de cuidado contínuo" é uma visão em construção e depende de estrutura formal de estabelecimento de saúde (responsabilidade técnica médica, registros e conformidade regulatória) antes de qualquer apresentação como serviço ativo. O conteúdo está sujeito a validação jurídica.
+    </div>
+    <div class="copyr">© 2026 Vytal · rascunho privado · não divulgar</div>
+  </div>
+</footer>
+
+<script>
+  (function(){
+    var els = document.querySelectorAll('.reveal:not(.in)');
+    if(!('IntersectionObserver' in window)){
+      els.forEach(function(el){ el.classList.add('in'); });
+      return;
+    }
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); }
+      });
+    },{threshold:.14, rootMargin:'0px 0px -40px 0px'});
+    els.forEach(function(el){ io.observe(el); });
+    setTimeout(function(){ els.forEach(function(el){ el.classList.add('in'); }); }, 4000);
+  })();
+</script>
+
+</body>
+</html>
