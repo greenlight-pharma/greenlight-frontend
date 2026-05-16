@@ -766,6 +766,44 @@
       border: 1px solid #e5e7eb;
     }
 
+    /* [COLLAPSIBLE] Cards do prontuário que minimizam */
+    .card.collapsible > h3 {
+      cursor: pointer;
+      user-select: none;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      transition: color 0.12s;
+    }
+
+    .card.collapsible > h3:hover {
+      color: #2563eb;
+    }
+
+    .card-collapse-arrow {
+      display: inline-block;
+      font-size: 12px;
+      color: #9ca3af;
+      transition: transform 0.18s ease;
+      flex-shrink: 0;
+    }
+
+    .card.collapsed .card-collapse-arrow {
+      transform: rotate(-90deg);
+    }
+
+    .card-collapse-body {
+      overflow: hidden;
+      transition: max-height 0.22s ease, opacity 0.18s ease;
+    }
+
+    .card.collapsed .card-collapse-body {
+      max-height: 0 !important;
+      opacity: 0;
+      margin-top: 0;
+      pointer-events: none;
+    }
+
     .prontuario-nav-btn {
       background: #f3f4f6;
       color: #374151;
@@ -2409,6 +2447,93 @@
     }
 
     // [PRONTUARIO-NAV] Scroll suave até o card e adiciona destaque visual.
+    // [COLLAPSIBLE] Estado de minimização por card (em memória, dura a sessão).
+    // Chave = id do card, valor = true se minimizado.
+    const collapsedCardState = {};
+
+    // Torna os cards do prontuário colapsáveis. Idempotente: se já foi
+    // configurado, só re-aplica o estado salvo (importante porque o
+    // conteúdo dos cards é re-renderizado a cada loadPatientDetail).
+    function setupCollapsibleCards() {
+      const cardIds = [
+        "card-dados", "card-consultas", "card-medicacoes",
+        "card-exames", "card-exames-imagem", "card-analises",
+      ];
+
+      cardIds.forEach((cardId) => {
+        const card = document.getElementById(cardId);
+        if (!card) return;
+
+        const h3 = card.querySelector(":scope > h3");
+        if (!h3) return;
+
+        // Se ainda não foi configurado, monta a estrutura
+        if (!card.classList.contains("collapsible")) {
+          card.classList.add("collapsible");
+
+          // Adiciona a setinha no início do título
+          const arrow = document.createElement("span");
+          arrow.className = "card-collapse-arrow";
+          arrow.textContent = "▼";
+          h3.insertBefore(arrow, h3.firstChild);
+
+          // Envolve tudo depois do h3 num wrapper colapsável
+          const body = document.createElement("div");
+          body.className = "card-collapse-body";
+          let node = h3.nextSibling;
+          while (node) {
+            const next = node.nextSibling;
+            body.appendChild(node);
+            node = next;
+          }
+          card.appendChild(body);
+
+          // Clique no título alterna
+          h3.addEventListener("click", () => toggleCardCollapse(cardId));
+        }
+
+        // (Re)aplica o estado salvo
+        applyCardCollapseState(cardId);
+      });
+    }
+
+    function toggleCardCollapse(cardId) {
+      const card = document.getElementById(cardId);
+      const body = card ? card.querySelector(":scope > .card-collapse-body") : null;
+      const willCollapse = !collapsedCardState[cardId];
+
+      // Pra animar suave ao colapsar: fixa a altura atual em px antes de
+      // zerar (CSS não transiciona de 'none' pra 0).
+      if (willCollapse && body) {
+        body.style.maxHeight = `${body.scrollHeight}px`;
+        // força reflow pra o browser registrar o valor antes de mudar
+        void body.offsetHeight;
+      }
+
+      collapsedCardState[cardId] = willCollapse;
+      applyCardCollapseState(cardId);
+    }
+
+    function applyCardCollapseState(cardId) {
+      const card = document.getElementById(cardId);
+      if (!card) return;
+      const body = card.querySelector(":scope > .card-collapse-body");
+      const collapsed = !!collapsedCardState[cardId];
+
+      if (collapsed) {
+        card.classList.add("collapsed");
+        if (body) body.style.maxHeight = "0px";
+      } else {
+        card.classList.remove("collapsed");
+        // Conteúdo do prontuário pode ser grande (muitas medicações/exames)
+        // e muda dinamicamente. Em vez de depender de scrollHeight (que pode
+        // estar 0 se o card estava colapsado), usa 'none' = sem limite.
+        // A transição CSS só anima quando há valor numérico; com 'none'
+        // expande direto, o que é aceitável (expandir não precisa animar).
+        if (body) body.style.maxHeight = "none";
+      }
+    }
+
     function scrollToCard(cardId) {
       const card = document.getElementById(cardId);
       if (!card) return;
@@ -2468,6 +2593,10 @@
 
         // [ANTHRO] Carrega histórico antropométrico (endpoint separado)
         loadPatientAnthro(currentPatientPhone);
+
+        // [COLLAPSIBLE] Torna cards minimizáveis (idempotente).
+        // Pequeno timeout pra rodar após o DOM dos renders assentar.
+        setTimeout(setupCollapsibleCards, 50);
       } catch (error) {
         document.getElementById("patientDetailName").textContent = "Erro";
         document.getElementById("patientDetailSubtitle").textContent = error.message;
