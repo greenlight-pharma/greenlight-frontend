@@ -1540,9 +1540,19 @@
       </div>
 
       <label>Nome da medicação</label>
-      <input id="addMedicationName" type="text" placeholder="Comece a digitar... (ex: Losartana)" autocomplete="off" list="addMedicationOptions" oninput="onAddMedicationInput(this)" />
+      <input id="addMedicationName" type="text" placeholder="Comece a digitar... (ex: Losartana)" autocomplete="off" list="addMedicationOptions" oninput="onAddMedicationInput(this)" onchange="onAddMedicationNameChange(this)" onblur="onAddMedicationNameChange(this)" />
       <datalist id="addMedicationOptions"></datalist>
       <div class="small">Sugestões baseadas na RENAME 2024. Se não encontrar, pode digitar livre.</div>
+
+      <!-- [DOSE-HINT] Texto auxiliar com apresentações comerciais comuns.
+           Só aparece quando o nome bate com um medicamento da RENAME. -->
+      <div id="addMedicationDoseHint" class="hidden" style="margin-top:8px; padding:10px 12px; background:#eff6ff; border:1px solid #93c5fd; border-radius:6px; font-size:13px; color:#1e40af;">
+        <strong>💡 Apresentações comerciais comuns:</strong>
+        <span id="addMedicationDoseHintValue">—</span>
+        <div style="margin-top:6px; font-size:11px; color:#475569; font-style:italic;">
+          Esta lista é apenas informativa. A dose terapêutica depende do caso clínico — você decide.
+        </div>
+      </div>
 
       <label>Dose</label>
       <input id="addMedicationDose" type="text" placeholder="Ex: 50mg, 5 gotas, conforme prescrição" />
@@ -2419,6 +2429,7 @@
       document.getElementById("addMedicationEndDate").value = "";
       document.getElementById("addMedicationInstructions").value = "";
       clearMessage("addMedicationMessage");
+      hideDoseHint(); // reset visual
 
       document.getElementById("addMedicationModal").classList.remove("hidden");
     }
@@ -2439,7 +2450,81 @@
       addMedicationSearchTimer = setTimeout(async () => {
         const results = await searchMedications(query);
         populateDatalist("addMedicationOptions", results);
+
+        // Se o que está digitado bate exatamente com um item da lista,
+        // já busca as doses (caso médico clique no autocomplete e não dispare change)
+        const exactMatch = results.find(
+          (r) => r.toLowerCase() === query.trim().toLowerCase()
+        );
+        if (exactMatch) {
+          fetchDosesForMedication(exactMatch);
+        }
       }, 200);
+    }
+
+    // [DOSE-HINT] Handler dispatched on change/blur — busca doses pela API.
+    // Dispara em 2 situações:
+    // 1. Usuário sai do campo (blur) — captura digitação livre
+    // 2. Usuário seleciona do autocomplete (change)
+    function onAddMedicationNameChange(inputEl) {
+      const name = inputEl.value.trim();
+      if (!name) {
+        hideDoseHint();
+        return;
+      }
+      fetchDosesForMedication(name);
+    }
+
+    // Cache de doses por nome — evita refazer a mesma busca
+    const dosesCache = new Map();
+
+    async function fetchDosesForMedication(name) {
+      const key = name.toLowerCase();
+
+      if (dosesCache.has(key)) {
+        applyDoseHint(dosesCache.get(key));
+        return;
+      }
+
+      try {
+        const token = getToken();
+        const response = await fetch(
+          `${API_URL}/medications/doses?name=${encodeURIComponent(name)}`,
+          {
+            method: "GET",
+            headers: { "Authorization": `Bearer ${token}` }
+          }
+        );
+
+        if (!response.ok) {
+          hideDoseHint();
+          return;
+        }
+
+        const data = await response.json();
+        dosesCache.set(key, data.commonDoses);
+        applyDoseHint(data.commonDoses);
+      } catch (e) {
+        hideDoseHint();
+      }
+    }
+
+    function applyDoseHint(commonDoses) {
+      const hintEl = document.getElementById("addMedicationDoseHint");
+      const valueEl = document.getElementById("addMedicationDoseHintValue");
+      if (!hintEl || !valueEl) return;
+
+      if (commonDoses) {
+        valueEl.textContent = commonDoses;
+        hintEl.classList.remove("hidden");
+      } else {
+        hideDoseHint();
+      }
+    }
+
+    function hideDoseHint() {
+      const hintEl = document.getElementById("addMedicationDoseHint");
+      if (hintEl) hintEl.classList.add("hidden");
     }
 
     // [PRONTUARIO-ADD] Salva nova medicação cadastrada a partir do prontuário.
