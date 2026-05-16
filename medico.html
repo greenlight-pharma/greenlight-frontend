@@ -766,6 +766,41 @@
       border: 1px solid #e5e7eb;
     }
 
+    /* [CONSULTAS-TABS] Abas Em atendimento / Concluídas */
+    .consultas-tabs {
+      display: flex;
+      gap: 4px;
+      margin-bottom: 16px;
+      border-bottom: 2px solid #e5e7eb;
+    }
+
+    .consultas-tab {
+      background: transparent;
+      border: none;
+      border-bottom: 3px solid transparent;
+      padding: 10px 20px;
+      font-size: 14px;
+      font-weight: 600;
+      color: #6b7280;
+      cursor: pointer;
+      margin: 0;
+      margin-bottom: -2px;
+      transition: color 0.15s, border-color 0.15s;
+    }
+
+    .consultas-tab:hover {
+      color: #2563eb;
+    }
+
+    .consultas-tab.active {
+      color: #2563eb;
+      border-bottom-color: #2563eb;
+    }
+
+    .consultas-tab-pane.hidden {
+      display: none;
+    }
+
     /* [COLLAPSIBLE] Cards do prontuário que minimizam */
     .card.collapsible > h3 {
       cursor: pointer;
@@ -1459,58 +1494,71 @@
           <div class="page-subtitle">Gerencie suas consultas em atendimento e concluídas</div>
         </div>
 
-        <!-- Disclaimer da análise IA é renderizado dinamicamente dentro do
-             container da análise (renderAnalysis), pra ficar grudado nela. -->
-
-        <!-- Card 1: Em Atendimento -->
-        <div class="card">
-          <h3>Em Atendimento</h3>
-          <div class="card-subtitle">Consultas aceitas que ainda não foram encerradas. Selecione um caso para ver/gerar análise ou encerrar a consulta.</div>
-          <button class="primary" onclick="loadMyAppointments()">Atualizar Lista</button>
-
-          <table>
-            <thead>
-              <tr>
-                <th>Paciente</th>
-                <th>Idade</th>
-                <th>Motivo</th>
-                <th>Análise</th>
-                <th>Ações</th>
-              </tr>
-            </thead>
-            <tbody id="appointmentsAnalysisTableBody">
-              <tr>
-                <td colspan="5">Nenhuma consulta em atendimento.</td>
-              </tr>
-            </tbody>
-          </table>
+        <!-- [CONSULTAS-TABS] Abas pra separar atendimento de concluídas.
+             Evita poluir a tela com o histórico enquanto o médico atende. -->
+        <div class="consultas-tabs">
+          <button id="tabBtnAtendimento" class="consultas-tab active" onclick="switchConsultaTab('atendimento')">
+            Em atendimento
+          </button>
+          <button id="tabBtnConcluidas" class="consultas-tab" onclick="switchConsultaTab('concluidas')">
+            Concluídas
+          </button>
         </div>
 
-        <!-- Card 2: Concluídas -->
-        <div class="card">
-          <h3>Concluídas</h3>
-          <div class="card-subtitle">Consultas já encerradas. Você pode visualizar a evolução SOAP ou reabrir (até 24h após o encerramento).</div>
+        <!-- Aba: EM ATENDIMENTO (inclui o container da análise, pra ela
+             aparecer perto da consulta ativa e longe das concluídas) -->
+        <div id="tabPaneAtendimento" class="consultas-tab-pane">
+          <div class="card">
+            <h3>Em Atendimento</h3>
+            <div class="card-subtitle">Consultas aceitas que ainda não foram encerradas. Selecione um caso para ver/gerar análise ou encerrar a consulta.</div>
+            <button class="primary" onclick="loadMyAppointments()">Atualizar Lista</button>
 
-          <table>
-            <thead>
-              <tr>
-                <th>Paciente</th>
-                <th>Idade</th>
-                <th>Motivo</th>
-                <th>Encerrada em</th>
-                <th>Ações</th>
-              </tr>
-            </thead>
-            <tbody id="appointmentsConcludedTableBody">
-              <tr>
-                <td colspan="5">Nenhuma consulta concluída.</td>
-              </tr>
-            </tbody>
-          </table>
+            <table>
+              <thead>
+                <tr>
+                  <th>Paciente</th>
+                  <th>Idade</th>
+                  <th>Motivo</th>
+                  <th>Análise</th>
+                  <th>Ações</th>
+                </tr>
+              </thead>
+              <tbody id="appointmentsAnalysisTableBody">
+                <tr>
+                  <td colspan="5">Nenhuma consulta em atendimento.</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <!-- Análise renderiza aqui — dentro da aba Em atendimento -->
+          <div id="analysisResultContainer"></div>
         </div>
 
-        <!-- Container onde a análise renderiza após clicar "Gerar" / "Ver" -->
-        <div id="analysisResultContainer"></div>
+        <!-- Aba: CONCLUÍDAS -->
+        <div id="tabPaneConcluidas" class="consultas-tab-pane hidden">
+          <div class="card">
+            <h3>Concluídas</h3>
+            <div class="card-subtitle">Consultas já encerradas. Você pode visualizar a evolução SOAP ou reabrir (até 24h após o encerramento).</div>
+
+            <table>
+              <thead>
+                <tr>
+                  <th>Paciente</th>
+                  <th>Idade</th>
+                  <th>Motivo</th>
+                  <th>Encerrada em</th>
+                  <th>Ações</th>
+                </tr>
+              </thead>
+              <tbody id="appointmentsConcludedTableBody">
+                <tr>
+                  <td colspan="5">Nenhuma consulta concluída.</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
       </section>
 
       <!-- Página: ALTERAR SENHA -->
@@ -1931,6 +1979,9 @@
         refreshStats();
       } else if (pageId === "analysis") {
         loadMyAppointments();
+        // [CONSULTAS-TABS] Ao entrar na página, começa sempre na aba
+        // "Em atendimento" (foco no trabalho atual, não no histórico).
+        switchConsultaTab("atendimento");
       }
 
       // Em mobile, fecha a sidebar ao trocar de página (UX padrão de drawer)
@@ -3003,6 +3054,9 @@
     // diagnóstica centralizada num único lugar de exibição.
     function goToAnalysisFromProntuario(appointmentId) {
       switchPage("analysis");
+      // [CONSULTAS-TABS] Garante que a aba "Em atendimento" esteja ativa,
+      // pois a análise renderiza dentro dela (não nas Concluídas).
+      switchConsultaTab("atendimento");
       // Aguarda a página Consultas carregar a lista, então localiza o
       // botão daquela consulta e dispara o mesmo fluxo do clique normal.
       setTimeout(async () => {
@@ -4635,6 +4689,28 @@
     // 4. Resultado renderizado no container abaixo da tabela
 
     let cachedMyAppointments = [];
+
+    // [CONSULTAS-TABS] Alterna entre abas Em atendimento / Concluídas.
+    // Estado em memória — ao reabrir a página volta pra "atendimento".
+    function switchConsultaTab(tab) {
+      const paneAtend = document.getElementById("tabPaneAtendimento");
+      const paneConcl = document.getElementById("tabPaneConcluidas");
+      const btnAtend = document.getElementById("tabBtnAtendimento");
+      const btnConcl = document.getElementById("tabBtnConcluidas");
+      if (!paneAtend || !paneConcl) return;
+
+      if (tab === "concluidas") {
+        paneAtend.classList.add("hidden");
+        paneConcl.classList.remove("hidden");
+        btnAtend.classList.remove("active");
+        btnConcl.classList.add("active");
+      } else {
+        paneConcl.classList.add("hidden");
+        paneAtend.classList.remove("hidden");
+        btnConcl.classList.remove("active");
+        btnAtend.classList.add("active");
+      }
+    }
 
     async function loadMyAppointments() {
       const token = getToken();
