@@ -1313,6 +1313,7 @@
           <button class="prontuario-nav-btn" onclick="scrollToCard('card-consultas')">🩺 Consultas</button>
           <button class="prontuario-nav-btn" onclick="scrollToCard('card-medicacoes')">💊 Medicações</button>
           <button class="prontuario-nav-btn" onclick="scrollToCard('card-exames')">🧪 Exames</button>
+          <button class="prontuario-nav-btn" onclick="scrollToCard('card-exames-imagem')">🩻 Imagem</button>
           <button class="prontuario-nav-btn" onclick="scrollToCard('card-analises')">📊 Análises</button>
         </div>
 
@@ -1341,10 +1342,10 @@
           <div id="patientMedicationsList">Carregando...</div>
         </div>
 
-        <!-- Card: Exames -->
+        <!-- Card: Exames (laboratoriais) -->
         <div class="card" id="card-exames">
-          <h3>Exames</h3>
-          <div class="card-subtitle">Resultados de exames anexados em PDF. Médicos vinculados podem visualizar; só quem anexou pode apagar.</div>
+          <h3>Exames laboratoriais</h3>
+          <div class="card-subtitle">Resultados de exames laboratoriais em PDF. Médicos vinculados podem visualizar; só quem anexou pode apagar.</div>
 
           <div style="display:flex; gap:8px; flex-wrap:wrap; align-items:center; margin-bottom:12px;">
             <input type="file" id="examFileInput" accept="application/pdf" style="display:none" onchange="onExamFileSelected(event)" />
@@ -1353,6 +1354,20 @@
           </div>
 
           <div id="patientExamsList">Carregando...</div>
+        </div>
+
+        <!-- Card: Exames de Imagem (laudo PDF, sem análise IA) -->
+        <div class="card" id="card-exames-imagem">
+          <h3>Exames de imagem</h3>
+          <div class="card-subtitle">Laudos de exames de imagem (raio-X, tomografia, ressonância, ultrassom, etc) em PDF. Sem análise automática — apenas o laudo do radiologista.</div>
+
+          <div style="display:flex; gap:8px; flex-wrap:wrap; align-items:center; margin-bottom:12px;">
+            <input type="file" id="imagingFileInput" accept="application/pdf" style="display:none" onchange="onImagingFileSelected(event)" />
+            <button class="primary" onclick="document.getElementById('imagingFileInput').click()">📎 Anexar Laudo de Imagem (PDF)</button>
+            <span id="imagingUploadStatus" style="font-size:13px; color:#6b7280;"></span>
+          </div>
+
+          <div id="patientImagingList">Carregando...</div>
         </div>
 
         <!-- Card: Análises clínicas -->
@@ -2374,7 +2389,15 @@
         renderPatientBasicData(data.patient, data.linkedToMe);
         renderPatientAppointments(data.appointments || []);
         renderPatientMedications(data.medications || []);
-        renderPatientExams(data.exams || []);
+
+        // [EXAM-TYPE] Separa exames laboratoriais dos de imagem.
+        // examType ausente (registros antigos) = 'lab' por compatibilidade.
+        const allExams = data.exams || [];
+        const labExams = allExams.filter((e) => (e.examType || "lab") !== "imaging");
+        const imagingExams = allExams.filter((e) => e.examType === "imaging");
+        renderPatientExams(labExams);
+        renderPatientImaging(imagingExams);
+
         renderPatientAnalyses(data.analyses || []);
       } catch (error) {
         document.getElementById("patientDetailName").textContent = "Erro";
@@ -3024,6 +3047,157 @@
         loadPatientDetail(currentPatientPhone);
 
         // Limpa mensagem depois de 4s
+        setTimeout(() => {
+          statusEl.textContent = "";
+        }, 4000);
+      } catch (error) {
+        statusEl.style.color = "#dc2626";
+        statusEl.textContent = `Erro: ${error.message}`;
+      }
+    }
+
+    // ============================================================
+    // [EXAM-IMAGING] EXAMES DE IMAGEM (laudo PDF, SEM análise IA)
+    // ============================================================
+
+    function renderPatientImaging(exams) {
+      const container = document.getElementById("patientImagingList");
+      container.replaceChildren();
+
+      if (!exams.length) {
+        container.textContent = "Nenhum laudo de imagem anexado ainda.";
+        return;
+      }
+
+      exams.forEach((exam) => {
+        const item = makePatientItem(exam.isMine);
+
+        const header = document.createElement("div");
+        header.className = "item-header";
+
+        const title = document.createElement("div");
+        title.className = "item-title";
+        title.textContent = `🩻 ${exam.fileName || "Laudo de imagem"}`;
+        header.appendChild(title);
+        header.appendChild(makeBadge(exam.isMine));
+
+        const meta = document.createElement("div");
+        meta.className = "item-meta";
+        const metaParts = [];
+
+        // Data de realização — só se médico digitou no upload (exame de
+        // imagem não gera análise, então não há analysisExamDate).
+        const realizadoEm = formatDateBR(exam.examDate);
+        if (realizadoEm) {
+          metaParts.push(`📅 Realizado em: ${realizadoEm}`);
+        }
+
+        if (exam.doctorName) metaParts.push(`Anexado por: ${exam.doctorName}`);
+        const uploadedFmt = exam.uploadedAt
+          ? new Date(exam.uploadedAt).toLocaleString("pt-BR", { timeZone: "America/Sao_Paulo" })
+          : "—";
+        metaParts.push(`Em: ${uploadedFmt}`);
+        if (exam.fileSize) {
+          const sizeKB = Math.round(exam.fileSize / 1024);
+          const sizeStr = sizeKB > 1024 ? `${(sizeKB / 1024).toFixed(1)}MB` : `${sizeKB}KB`;
+          metaParts.push(sizeStr);
+        }
+        meta.textContent = metaParts.join(" • ");
+
+        item.appendChild(header);
+        item.appendChild(meta);
+
+        if (exam.notes) {
+          const body = document.createElement("div");
+          body.className = "item-body";
+          body.textContent = exam.notes;
+          item.appendChild(body);
+        }
+
+        // Botões — SEM "Gerar análise" (exame de imagem não tem análise IA)
+        const actions = document.createElement("div");
+        actions.style.marginTop = "10px";
+        actions.style.display = "flex";
+        actions.style.gap = "8px";
+        actions.style.flexWrap = "wrap";
+
+        const downloadBtn = document.createElement("button");
+        downloadBtn.textContent = "📥 Baixar/Visualizar";
+        downloadBtn.className = "btn-view";
+        downloadBtn.addEventListener("click", () => downloadExam(exam.id, exam.fileName));
+        actions.appendChild(downloadBtn);
+
+        if (exam.isMine) {
+          const deleteBtn = document.createElement("button");
+          deleteBtn.textContent = "🗑️ Apagar";
+          deleteBtn.className = "btn-icon btn-archive";
+          deleteBtn.style.padding = "6px 12px";
+          deleteBtn.addEventListener("click", () => deleteExam(exam.id, exam.fileName));
+          actions.appendChild(deleteBtn);
+        }
+
+        item.appendChild(actions);
+        container.appendChild(item);
+      });
+    }
+
+    // Handler do upload de laudo de imagem. Igual ao de exame lab,
+    // mas envia examType: 'imaging'.
+    async function onImagingFileSelected(event) {
+      const file = event.target.files[0];
+      if (!file) return;
+
+      event.target.value = "";
+
+      const statusEl = document.getElementById("imagingUploadStatus");
+
+      if (file.type !== "application/pdf") {
+        statusEl.style.color = "#dc2626";
+        statusEl.textContent = "Apenas PDFs são aceitos.";
+        return;
+      }
+
+      const MAX_SIZE = 10 * 1024 * 1024;
+      if (file.size > MAX_SIZE) {
+        statusEl.style.color = "#dc2626";
+        statusEl.textContent = `Arquivo muito grande. Máximo: 10MB.`;
+        return;
+      }
+
+      statusEl.style.color = "#6b7280";
+      statusEl.textContent = `Enviando ${file.name}...`;
+
+      try {
+        const base64 = await readFileAsBase64(file);
+
+        const token = getToken();
+        const response = await fetch(
+          `${API_URL}/patients/${encodeURIComponent(currentPatientPhone)}/exams`,
+          {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+              "Authorization": `Bearer ${token}`
+            },
+            body: JSON.stringify({
+              fileName: file.name,
+              fileSize: file.size,
+              mimeType: file.type,
+              fileDataBase64: base64,
+              examType: "imaging",
+            })
+          }
+        );
+
+        const data = await response.json();
+        if (!response.ok) {
+          throw new Error(data.error || "Erro ao fazer upload");
+        }
+
+        statusEl.style.color = "#10b981";
+        statusEl.textContent = `✓ ${file.name} anexado com sucesso.`;
+        loadPatientDetail(currentPatientPhone);
+
         setTimeout(() => {
           statusEl.textContent = "";
         }, 4000);
