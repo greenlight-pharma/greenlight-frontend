@@ -1315,14 +1315,41 @@
         font-size: 12px !important;
       }
 
-      /* Navegação rápida do prontuário: rola lateralmente sem espremer */
+      /* Navegação rápida do prontuário: rola lateralmente sem espremer.
+         Precisa de largura contida pro overflow-x funcionar (antes
+         estourava a tela em vez de criar scroll). */
       .prontuario-nav {
         overflow-x: auto;
         -webkit-overflow-scrolling: touch;
         flex-wrap: nowrap;
+        max-width: 100%;
+        width: 100%;
+        box-sizing: border-box;
       }
       .prontuario-nav-btn {
         flex: 0 0 auto;
+      }
+
+      /* [MOBILE-FIX] Cabeçalho do prontuário (e da timeline, mesmo
+         padrão): no celular não cabem Voltar + título + 2 botões numa
+         linha — o último botão vazava pra fora da tela. Aqui o header
+         quebra: título ocupa a largura toda, botões de ação descem para
+         uma linha própria, lado a lado (metade cada). Escopado ao
+         prontuário/timeline pra NÃO afetar os page-header das outras
+         páginas (Agenda, Pacientes, Consultas). */
+      #page-patient-detail .page-header,
+      #page-timeline .page-header {
+        flex-wrap: wrap;
+      }
+      #page-patient-detail .page-header > div[style*="flex:1"],
+      #page-timeline .page-header > div[style*="flex:1"] {
+        flex: 1 1 100%;
+        min-width: 0;
+        order: -1; /* título vai pro topo, antes dos botões */
+      }
+      #page-patient-detail .page-header > button.primary {
+        flex: 1 1 calc(50% - 6px);
+        white-space: normal;
       }
 
       /* Botões de ação em geral: alvo de toque mínimo confortável */
@@ -2048,6 +2075,45 @@
       </div>
 
       <div id="clinicalProfileMessage" class="message"></div>
+    </div>
+  </div>
+
+  <!-- ====== MODAL EDITAR DADOS DO PACIENTE ====== -->
+  <div id="editBasicModal" class="modal-backdrop hidden" onclick="closeEditBasicOnBackdrop(event)">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3>📋 Editar dados</h3>
+        <button class="modal-close" onclick="closeEditBasicModal()" aria-label="Fechar">✕</button>
+      </div>
+
+      <div style="font-size:13px; color:#6b7280; margin-bottom:14px;">
+        O telefone não é editável — ele é a chave que liga o paciente a
+        consultas, medicações e histórico. Para corrigir telefone, fale com
+        o administrador.
+      </div>
+
+      <label>Nome</label>
+      <input id="ebName" type="text" placeholder="Nome completo do paciente" />
+
+      <label>Idade</label>
+      <input id="ebAge" type="number" min="0" max="120" placeholder="Ex: 52" style="width:120px;" />
+
+      <label>Sexo biológico (para rastreios)</label>
+      <select id="ebSex" style="width:auto; min-width:200px;">
+        <option value="">Não informado</option>
+        <option value="feminino">Feminino</option>
+        <option value="masculino">Masculino</option>
+      </select>
+      <div style="font-size:12px; color:#6b7280; margin-top:4px;">
+        Sexo biológico (anatomia), usado só para apoiar a visualização de rastreios por faixa. Não é identidade de gênero.
+      </div>
+
+      <div class="modal-actions">
+        <button class="btn-secondary-outline" onclick="closeEditBasicModal()">Cancelar</button>
+        <button class="primary" onclick="saveEditBasic()">Salvar</button>
+      </div>
+
+      <div id="editBasicMessage" class="message"></div>
     </div>
   </div>
 
@@ -3156,6 +3222,75 @@
     }
 
     // ============================================================
+    // [PATIENT-OVERRIDE] Editar dados do paciente (nome/idade/sexo).
+    // Grava como override no perfil clínico (backend). Telefone fora.
+    // Pré-preenche com o snapshot capturado em renderPatientBasicData.
+    // ============================================================
+    function openEditBasicModal() {
+      if (!currentPatientPhone) {
+        alert("Abra um paciente primeiro.");
+        return;
+      }
+      document.getElementById("ebName").value = currentPatientBasic.name || "";
+      document.getElementById("ebAge").value =
+        (currentPatientBasic.patientAge !== "" && currentPatientBasic.patientAge != null)
+          ? currentPatientBasic.patientAge : "";
+      document.getElementById("ebSex").value = currentPatientBasic.biologicalSex || "";
+      clearMessage("editBasicMessage");
+      document.getElementById("editBasicModal").classList.remove("hidden");
+    }
+
+    function closeEditBasicModal() {
+      document.getElementById("editBasicModal").classList.add("hidden");
+    }
+
+    function closeEditBasicOnBackdrop(event) {
+      if (event.target.id === "editBasicModal") closeEditBasicModal();
+    }
+
+    async function saveEditBasic() {
+      if (!currentPatientPhone) return;
+      const name = document.getElementById("ebName").value.trim();
+      const age = document.getElementById("ebAge").value;
+      const biologicalSex = document.getElementById("ebSex").value;
+
+      try {
+        const token = getToken();
+        const response = await fetch(
+          `${API_URL}/patients/${encodeURIComponent(currentPatientPhone)}/basic-data`,
+          {
+            method: "PUT",
+            headers: {
+              "Content-Type": "application/json",
+              "Authorization": `Bearer ${token}`
+            },
+            // Envia os três sempre: "" no nome limpa o override (volta a
+            // derivar); idade/sexo idem. Comportamento previsível.
+            body: JSON.stringify({
+              name: name,
+              age: age === "" ? "" : age,
+              biologicalSex: biologicalSex,
+            })
+          }
+        );
+        const data = await response.json().catch(() => ({}));
+        if (!response.ok) {
+          throw new Error(data.error || "Erro ao salvar");
+        }
+
+        setMessage("editBasicMessage", "success", "✅ Salvo.");
+        setTimeout(() => {
+          closeEditBasicModal();
+          // Recarrega o prontuário pra refletir nome/idade/sexo novos
+          // (o card de rastreios depende do sexo, então precisa atualizar).
+          if (currentPatientPhone) loadPatientDetail(currentPatientPhone);
+        }, 900);
+      } catch (error) {
+        setMessage("editBasicMessage", "error", error.message);
+      }
+    }
+
+    // ============================================================
     // [CASE-SUMMARY] Resumo do caso — transferência de cuidado
     // Monta texto consolidado + PDF a partir dos dados já carregados
     // pelo prontuário (não refaz requisição). PDF gerado no navegador
@@ -3984,6 +4119,9 @@
     // Marca cada item com badge "Meu" (este médico) ou "Outro médico".
 
     let currentPatientPhone = null;
+    // [PATIENT-OVERRIDE] Snapshot dos dados básicos exibidos, pra
+    // pré-preencher o modal de edição sem refetch.
+    let currentPatientBasic = { name: "", patientAge: "", biologicalSex: "" };
 
     function openPatientDetail(phone) {
       if (!phone) return;
@@ -4483,6 +4621,18 @@
       const container = document.getElementById("patientBasicData");
       container.replaceChildren();
 
+      // Guarda os dados atuais pra pré-preencher o modal de edição.
+      currentPatientBasic = {
+        name: patient?.name || "",
+        patientAge: (patient?.patientAge != null) ? patient.patientAge : "",
+        biologicalSex: (patient?.biologicalSex === "feminino" || patient?.biologicalSex === "masculino")
+          ? patient.biologicalSex : "",
+      };
+
+      const sexoLabel = patient?.biologicalSex === "feminino" ? "Feminino"
+        : patient?.biologicalSex === "masculino" ? "Masculino"
+        : "Não informado";
+
       const grid = document.createElement("div");
       grid.className = "patient-data-grid";
 
@@ -4490,6 +4640,7 @@
         { label: "Nome", value: patient?.name || "—" },
         { label: "Telefone", value: patient?.phone || "—" },
         { label: "Idade", value: patient?.patientAge ? `${patient.patientAge} anos` : "—" },
+        { label: "Sexo biológico", value: sexoLabel },
         { label: "Vínculo", value: linkedToMe ? "Sim, vinculado a você" : "Não vinculado (acesso por consulta)" },
       ];
 
@@ -4508,6 +4659,18 @@
       });
 
       container.appendChild(grid);
+
+      // Botão Editar — abre modal de edição (nome/idade/sexo).
+      // Telefone fica de fora (é a chave do histórico).
+      const editWrap = document.createElement("div");
+      editWrap.style.cssText = "margin-top:12px;";
+      const editBtn = document.createElement("button");
+      editBtn.className = "primary";
+      editBtn.style.cssText = "margin-top:0; padding:6px 14px; font-size:13px;";
+      editBtn.textContent = "Editar dados";
+      editBtn.addEventListener("click", openEditBasicModal);
+      editWrap.appendChild(editBtn);
+      container.appendChild(editWrap);
     }
 
     // Helper: cria <div class="patient-item"> com badge de propriedade
