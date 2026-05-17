@@ -1545,6 +1545,7 @@
         <div class="prontuario-nav">
           <button class="prontuario-nav-btn" onclick="scrollToCard('card-dados')">📋 Dados</button>
           <button class="prontuario-nav-btn" onclick="scrollToCard('card-alergias')">⚠️ Alergias</button>
+          <button class="prontuario-nav-btn" onclick="scrollToCard('card-rastreios')">🔎 Rastreios</button>
           <button class="prontuario-nav-btn" onclick="scrollToCard('card-consultas')">🩺 Consultas</button>
           <button class="prontuario-nav-btn" onclick="scrollToCard('card-medicacoes')">💊 Medicações</button>
           <button class="prontuario-nav-btn" onclick="scrollToCard('card-exames')">🧪 Exames</button>
@@ -1578,6 +1579,19 @@
                     onclick="openClinicalProfileModal()">Editar</button>
           </div>
           <div id="clinicalProfileContent" style="font-size:14px; color:#374151;">
+            Carregando...
+          </div>
+        </div>
+
+        <!-- Card: Rastreios (APOIO ao médico — não decide nem comunica) -->
+        <div class="card" id="card-rastreios">
+          <h3>🔎 Rastreios por faixa</h3>
+          <div class="card-subtitle">
+            Referência geral por idade e sexo biológico, como apoio à decisão.
+            <strong>Não é prescrição</strong> — o médico confirma conforme a diretriz
+            vigente e o caso individual. Nada é enviado ao paciente automaticamente.
+          </div>
+          <div id="screeningContent" style="font-size:14px; color:#374151; margin-top:8px;">
             Carregando...
           </div>
         </div>
@@ -1837,6 +1851,16 @@
 
       <label>Idade (opcional)</label>
       <input id="manualPatientAge" type="number" min="0" max="120" placeholder="Ex: 45" style="width:120px;" />
+
+      <label>Sexo biológico (para rastreios)</label>
+      <select id="manualPatientSex" style="width:auto; min-width:200px;">
+        <option value="">Não informado</option>
+        <option value="feminino">Feminino</option>
+        <option value="masculino">Masculino</option>
+      </select>
+      <div style="font-size:12px; color:#6b7280; margin-top:4px;">
+        Sexo biológico (anatomia), usado só para apoiar a visualização de rastreios por faixa. Não é identidade de gênero.
+      </div>
 
       <label>Queixa principal <span style="color:#dc2626;">*</span></label>
       <input id="manualPatientComplaint" type="text" placeholder="Ex: Dor torácica, cefaleia, hipertensão de difícil controle..." />
@@ -2759,6 +2783,7 @@
       document.getElementById("manualPatientName").value = "";
       document.getElementById("manualPatientPhone").value = "";
       document.getElementById("manualPatientAge").value = "";
+      document.getElementById("manualPatientSex").value = "";
       document.getElementById("manualPatientComplaint").value = "";
       document.getElementById("manualPatientHma").value = "";
       document.getElementById("manualPatientNotify").checked = false;
@@ -2916,6 +2941,164 @@
         meta.textContent = txt;
         content.appendChild(meta);
       }
+    }
+
+    // ============================================================
+    // [SCREENING] CONTEÚDO CLÍNICO — REVISAR/VALIDAR COM RT MÉDICO
+    // ------------------------------------------------------------
+    // Este bloco é a ÚNICA fonte de conteúdo clínico de rastreio.
+    // Foi mantido ISOLADO de propósito: quando houver responsável
+    // técnico médico, ele revisa/substitui APENAS este array, sem
+    // tocar em lógica ou layout.
+    //
+    // Princípios adotados:
+    //  - Conjunto ENXUTO, só rastreios de consenso amplo no Brasil.
+    //  - Faixas LARGAS; onde há divergência entre fontes, o item traz
+    //    `divergence` e o card sinaliza explicitamente (não crava
+    //    número único como verdade).
+    //  - Cada item cita FONTE e ANO. Sem fingir precisão que o
+    //    sistema não tem autoridade para afirmar.
+    //  - É REFERÊNCIA, não conduta. O texto do card deixa explícito
+    //    que o médico confirma conforme diretriz vigente e o caso.
+    //
+    // Fontes usadas (consulta pública, 2025/2026):
+    //  - INCA / Ministério da Saúde (Brasil) — referência nacional.
+    // Datas conferidas: posicionamento INCA mama jan/2025;
+    // ampliação acesso mamografia SUS (MS) fev/2026; colo do útero
+    // diretrizes INCA; colorretal — sem idade nacional fechada (em
+    // elaboração pelo INCA), faixa de incidência citada como contexto.
+    // ============================================================
+    const SCREENING_GUIDELINES = [
+      {
+        nome: "Câncer de colo do útero",
+        sexo: "feminino",
+        faixaTexto: "25 a 64 anos (após início da atividade sexual)",
+        idadeMin: 25, idadeMax: 64,
+        fonte: "INCA — Diretrizes brasileiras (rastreamento do colo do útero)",
+        nota: "Citopatológico; periodicidade conforme diretriz após exames normais.",
+      },
+      {
+        nome: "Câncer de mama",
+        sexo: "feminino",
+        faixaTexto: "50 a 69 anos (posição INCA)",
+        idadeMin: 50, idadeMax: 69,
+        fonte: "INCA — posicionamento jan/2025",
+        divergence: "O Ministério da Saúde ampliou o acesso à mamografia no SUS para 40–74 anos (fev/2026). INCA mantém maior benefício consistente em 50–69. Confirme conforme a diretriz que você adota e o caso.",
+      },
+      {
+        nome: "Câncer colorretal",
+        sexo: "ambos",
+        faixaTexto: "faixa de maior incidência: 50 a 75 anos",
+        idadeMin: 50, idadeMax: 75,
+        fonte: "INCA / Ministério da Saúde (Brasil)",
+        divergence: "Não há idade nacional fechada — o INCA tem projeto de detecção precoce em elaboração; sociedades brasileiras divergem entre 45 e 50 anos para início. Avalie histórico familiar e o caso.",
+      },
+      {
+        nome: "Pressão arterial (rastreio de hipertensão)",
+        sexo: "ambos",
+        faixaTexto: "adultos, aferição periódica",
+        idadeMin: 18, idadeMax: 120,
+        fonte: "Ministério da Saúde (Brasil) — atenção básica",
+        nota: "Aferição periódica conforme rotina clínica e fatores de risco.",
+      },
+      {
+        nome: "Glicemia (rastreio de diabetes)",
+        sexo: "ambos",
+        faixaTexto: "adultos, conforme fatores de risco",
+        idadeMin: 18, idadeMax: 120,
+        fonte: "Ministério da Saúde (Brasil) — atenção básica",
+        nota: "Indicação e periodicidade dependem de fatores de risco; avaliar caso.",
+      },
+    ];
+
+    // Renderiza o card de rastreios. APOIO: lê idade+sexo do paciente
+    // e lista o que tipicamente se considera, com fonte e divergências.
+    // Não decide, não comunica nada ao paciente.
+    function renderScreening(patient) {
+      const box = document.getElementById("screeningContent");
+      if (!box) return;
+      box.replaceChildren();
+
+      const p = patient || {};
+      const idade = (p.patientAge != null && !isNaN(parseInt(p.patientAge, 10)))
+        ? parseInt(p.patientAge, 10) : null;
+      const sexo = (p.biologicalSex === "feminino" || p.biologicalSex === "masculino")
+        ? p.biologicalSex : null;
+
+      // Sem dado suficiente: deixa explícito, não inventa.
+      if (idade == null || sexo == null) {
+        const warn = document.createElement("div");
+        warn.style.cssText = "color:#9ca3af; font-style:italic;";
+        const faltando = [];
+        if (idade == null) faltando.push("idade");
+        if (sexo == null) faltando.push("sexo biológico");
+        warn.textContent = "Sem " + faltando.join(" e ") +
+          " registrado(s). Os rastreios por faixa aparecem quando esses dados existem.";
+        box.appendChild(warn);
+        return;
+      }
+
+      const aplicaveis = SCREENING_GUIDELINES.filter((g) => {
+        const sexoOk = g.sexo === "ambos" || g.sexo === sexo;
+        const idadeOk = idade >= g.idadeMin && idade <= g.idadeMax;
+        return sexoOk && idadeOk;
+      });
+
+      const head = document.createElement("div");
+      head.style.cssText = "margin-bottom:10px; color:#1f2937;";
+      const sexoLabel = sexo === "feminino" ? "feminino" : "masculino";
+      head.innerHTML = `Para sexo biológico <strong>${sexoLabel}</strong>, <strong>${idade} anos</strong> — rastreios geralmente considerados nesta faixa:`;
+      box.appendChild(head);
+
+      if (!aplicaveis.length) {
+        const none = document.createElement("div");
+        none.style.cssText = "color:#6b7280;";
+        none.textContent = "Nenhum rastreio do conjunto de referência se aplica a esta faixa. Isso não substitui avaliação clínica individual.";
+        box.appendChild(none);
+      } else {
+        aplicaveis.forEach((g) => {
+          const item = document.createElement("div");
+          item.style.cssText =
+            "border:1px solid #e5e7eb; border-radius:8px; padding:10px 12px; margin-bottom:8px;";
+          if (g.divergence) item.style.borderLeft = "4px solid #f59e0b";
+
+          const t = document.createElement("div");
+          t.style.cssText = "font-weight:600; color:#1f2937;";
+          t.textContent = g.nome;
+          item.appendChild(t);
+
+          const faixa = document.createElement("div");
+          faixa.style.cssText = "font-size:13px; color:#374151; margin-top:2px;";
+          faixa.textContent = "Faixa de referência: " + g.faixaTexto;
+          item.appendChild(faixa);
+
+          if (g.nota) {
+            const nota = document.createElement("div");
+            nota.style.cssText = "font-size:12px; color:#6b7280; margin-top:4px;";
+            nota.textContent = g.nota;
+            item.appendChild(nota);
+          }
+
+          if (g.divergence) {
+            const dv = document.createElement("div");
+            dv.style.cssText = "font-size:12px; color:#92400e; background:#fffbeb; border-radius:6px; padding:6px 8px; margin-top:6px;";
+            dv.textContent = "⚠ Divergência entre fontes: " + g.divergence;
+            item.appendChild(dv);
+          }
+
+          const fonte = document.createElement("div");
+          fonte.style.cssText = "font-size:11px; color:#9ca3af; margin-top:6px;";
+          fonte.textContent = "Fonte: " + g.fonte;
+          item.appendChild(fonte);
+
+          box.appendChild(item);
+        });
+      }
+
+      const disclaimer = document.createElement("div");
+      disclaimer.style.cssText = "font-size:12px; color:#6b7280; margin-top:10px; padding-top:8px; border-top:1px solid #eef0f2;";
+      disclaimer.textContent = "Conjunto de referência, não exaustivo e não prescritivo. Diretrizes mudam e podem divergir entre entidades. O médico confirma conforme a diretriz vigente, o histórico e o caso individual. Nada é enviado ao paciente pelo sistema.";
+      box.appendChild(disclaimer);
     }
 
     function openClinicalProfileModal() {
@@ -3711,6 +3894,7 @@
       const name = document.getElementById("manualPatientName").value.trim();
       const phone = document.getElementById("manualPatientPhone").value.trim();
       const age = document.getElementById("manualPatientAge").value;
+      const biologicalSex = document.getElementById("manualPatientSex").value;
       const mainComplaint = document.getElementById("manualPatientComplaint").value.trim();
       const hma = document.getElementById("manualPatientHma").value.trim();
       const notifyPatient = document.getElementById("manualPatientNotify").checked;
@@ -3740,6 +3924,7 @@
             name,
             phone,
             age: age || null,
+            biologicalSex: biologicalSex || null,
             mainComplaint,
             hma: hma || null,
             notifyPatient,
@@ -3856,7 +4041,7 @@
     // conteúdo dos cards é re-renderizado a cada loadPatientDetail).
     function setupCollapsibleCards() {
       const cardIds = [
-        "card-dados", "card-alergias", "card-consultas", "card-medicacoes",
+        "card-dados", "card-alergias", "card-rastreios", "card-consultas", "card-medicacoes",
         "card-exames", "card-exames-imagem", "card-analises",
       ];
 
@@ -3993,6 +4178,9 @@
 
         renderPatientHeader(data.patient, data.linkedToMe);
         renderPatientBasicData(data.patient, data.linkedToMe);
+        // [SCREENING] Card de rastreios por faixa — apoio ao médico.
+        // Usa idade + sexo biológico que vêm em data.patient.
+        renderScreening(data.patient);
         renderPatientAppointments(data.appointments || [], data.analyses || []);
         renderPatientMedications(data.medications || []);
 
