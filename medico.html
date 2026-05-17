@@ -2442,6 +2442,109 @@
       }
     }
 
+    // [CASE-SUMMARY-ANALYSIS] Análises de exame não vêm no /summary —
+    // exigem POST .../analyze por exame. Análise já feita volta do cache
+    // (rápida); nunca feita custaria 15-30s de IA. Para manter o resumo
+    // INSTANTÂNEO, cada chamada corre contra um timeout curto: se não
+    // voltar rápido, não estava em cache → abandonamos e marcamos como
+    // "análise não gerada". NÃO dispara/espera IA nova.
+    let caseSummaryAnalyses = {}; // { [examId]: content | "pending" | "none" }
+
+    const ANALYSIS_CACHE_TIMEOUT_MS = 4000;
+
+    function fetchExamAnalysisCachedOnly(phone, examId) {
+      const token = getToken();
+      const controller = new AbortController();
+      const timer = setTimeout(() => controller.abort(), ANALYSIS_CACHE_TIMEOUT_MS);
+
+      return fetch(
+        `${API_URL}/patients/${encodeURIComponent(phone)}/exams/${examId}/analyze`,
+        {
+          method: "POST",
+          headers: { "Authorization": `Bearer ${token}` },
+          signal: controller.signal,
+        }
+      )
+        .then((r) => r.json().then((data) => ({ ok: r.ok, data })))
+        .then(({ ok, data }) => {
+          clearTimeout(timer);
+          // Só aproveita se veio do CACHE. Resposta sem cached=true
+          // significa que a IA processou agora (não queríamos isso) ou
+          // formato inesperado — ignora pra não introduzir lentidão/erro.
+          if (ok && data && data.cached === true && data.content) {
+            return data.content;
+          }
+          return null;
+        })
+        .catch(() => {
+          clearTimeout(timer);
+          return null; // abort por timeout OU erro de rede → trata como "não em cache"
+        });
+    }
+
+    // Busca em paralelo as análises em cache de todos os exames lab.
+    // Preenche caseSummaryAnalyses. Resolve rápido: o timeout limita
+    // qualquer chamada lenta.
+    async function prefetchCachedAnalyses() {
+      caseSummaryAnalyses = {};
+      const d = caseSummaryData;
+      if (!d) return;
+
+      const labExams = (d.exams || [])
+        .filter((e) => (e.examType || "lab") !== "imaging");
+
+      await Promise.all(
+        labExams.map(async (e) => {
+          if (e.id == null) { return; }
+          const content = await fetchExamAnalysisCachedOnly(d.phone, e.id);
+          caseSummaryAnalyses[e.id] = content || "none";
+        })
+      );
+    }
+
+    // Formata UMA análise (content) em texto compacto pro resumo.
+    // Indenta sob o exame. Mostra alterados primeiro, depois normais.
+    function formatAnalysisForSummary(content) {
+      const out = [];
+      const dataInfo = (content && content.dataInfo) || {};
+      const exams = Array.isArray(content && content.exams) ? content.exams : [];
+
+      if (dataInfo.error) {
+        out.push(`  [Não foi possível estruturar o laudo: ${dataInfo.error}]`);
+        return out;
+      }
+      if (!exams.length) {
+        out.push("  [Nenhum valor estruturado extraído — conferir o PDF original]");
+        return out;
+      }
+
+      const lab = dataInfo.laboratory ? ` | Lab: ${dataInfo.laboratory}` : "";
+      const dt = dataInfo.examDate ? `Data do laudo: ${formatDateBR(dataInfo.examDate)}` : "";
+      if (dt || lab) out.push(`  ${dt}${lab}`.trimEnd());
+
+      const alterados = exams.filter((x) => x.status === "alterado");
+      const outros = exams.filter((x) => x.status !== "alterado");
+
+      const fmtRow = (x) => {
+        const nome = x.name || "—";
+        const val = x.value != null && x.value !== "" ? x.value : "—";
+        const un = x.unit ? ` ${x.unit}` : "";
+        const ref = x.reference ? ` (ref: ${x.reference})` : "";
+        const flag = x.status === "alterado" ? "  *** FORA DA REFERÊNCIA ***" : "";
+        return `    - ${nome}: ${val}${un}${ref}${flag}`;
+      };
+
+      if (alterados.length) {
+        out.push(`  Alterados (${alterados.length}):`);
+        alterados.forEach((x) => out.push(fmtRow(x)));
+      }
+      if (outros.length) {
+        out.push(`  Demais (${outros.length}):`);
+        outros.forEach((x) => out.push(fmtRow(x)));
+      }
+      return out;
+    }
+
     // Monta o texto puro do resumo. Só inclui o que existe — seções
     // vazias aparecem como "Nenhum registro." pra não dar falsa
     // impressão de ausência por erro.
@@ -2549,6 +2652,17 @@
           const real = fmtDateOnlyBR(e.examDate) || fmtDateOnlyBR(e.analysisExamDate);
           L.push(`• ${e.fileName || "Exame"}${real ? " — realizado em " + real : ""}`);
           if (e.doctorName) L.push(`  Anexado por: ${e.doctorName}`);
+
+          // [CASE-SUMMARY-ANALYSIS] Anexa a análise estruturada SE já
+          // estava em cache (prefetch). "none" = não gerada ou não
+          // estava em cache — não trava o resumo esperando IA.
+          const an = caseSummaryAnalyses[e.id];
+          if (an && an !== "none") {
+            L.push("  Análise estruturada do laudo:");
+            formatAnalysisForSummary(an).forEach((ln) => L.push(ln));
+          } else {
+            L.push("  Análise estruturada: não gerada — abrir o exame no sistema para gerar.");
+          }
         });
       }
       L.push("");
@@ -2573,15 +2687,30 @@
       return L.join("\n");
     }
 
-    function openCaseSummary() {
+    async function openCaseSummary() {
       if (!caseSummaryData) {
         alert("Aguarde o prontuário terminar de carregar e tente de novo.");
         return;
       }
-      const text = buildCaseSummaryText();
-      document.getElementById("caseSummaryText").value = text;
+
+      const modal = document.getElementById("caseSummaryModal");
+      const ta = document.getElementById("caseSummaryText");
+
+      // Abre já, com estado de carregando — o prefetch das análises em
+      // cache é rápido (timeout curto por exame), mas não é zero.
+      ta.value = "Montando resumo e buscando análises já geradas...";
       clearMessage("caseSummaryMessage");
-      document.getElementById("caseSummaryModal").classList.remove("hidden");
+      modal.classList.remove("hidden");
+
+      try {
+        await prefetchCachedAnalyses();
+      } catch (e) {
+        // Se o prefetch falhar inteiro, segue sem análises (resumo ainda útil)
+        caseSummaryAnalyses = {};
+      }
+
+      const text = buildCaseSummaryText();
+      ta.value = text;
     }
 
     function closeCaseSummaryModal() {
