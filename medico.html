@@ -1534,39 +1534,17 @@
         <!-- [PRONTUARIO-NAV] Menu horizontal de navegação rápida entre cards.
              Sticky pra acompanhar o scroll. Clicar = scroll suave até o card. -->
         <div class="prontuario-nav">
-          <button class="prontuario-nav-btn" onclick="scrollToCard('card-timeline')">📈 Linha do tempo</button>
           <button class="prontuario-nav-btn" onclick="scrollToCard('card-dados')">📋 Dados</button>
+          <button class="prontuario-nav-btn" onclick="scrollToCard('card-alergias')">⚠️ Alergias</button>
           <button class="prontuario-nav-btn" onclick="scrollToCard('card-consultas')">🩺 Consultas</button>
           <button class="prontuario-nav-btn" onclick="scrollToCard('card-medicacoes')">💊 Medicações</button>
           <button class="prontuario-nav-btn" onclick="scrollToCard('card-exames')">🧪 Exames</button>
           <button class="prontuario-nav-btn" onclick="scrollToCard('card-exames-imagem')">🩻 Imagem</button>
           <button class="prontuario-nav-btn" onclick="scrollToCard('card-analises')">📊 Análises</button>
+          <button class="prontuario-nav-btn" onclick="openTimelinePage()">📈 Linha do tempo</button>
         </div>
 
-        <!-- [CLINICAL-PROFILE] Faixa de segurança: alergias/comorbidades.
-             Fica ANTES de tudo de propósito — é informação de segurança
-             que o médico precisa ver antes de prescrever. -->
-        <div id="clinicalProfileBanner"
-             style="border-radius:10px; padding:14px 16px; margin-bottom:16px;
-                    border:1px solid #e5e7eb; background:#f9fafb;">
-          <div style="display:flex; justify-content:space-between; align-items:center; gap:10px; flex-wrap:wrap;">
-            <strong style="font-size:15px; color:#1f2937;">⚠️ Alergias e comorbidades</strong>
-            <button class="primary" style="margin:0; padding:6px 14px; font-size:13px;"
-                    onclick="openClinicalProfileModal()">Editar</button>
-          </div>
-          <div id="clinicalProfileContent" style="margin-top:10px; font-size:14px; color:#374151;">
-            Carregando...
-          </div>
-        </div>
-
-        <!-- Card: Linha do tempo (eventos cronológicos consolidados) -->
-        <div class="card" id="card-timeline">
-          <h3>📈 Linha do tempo</h3>
-          <div class="card-subtitle">Todos os eventos do paciente em ordem cronológica (mais recente primeiro). Reúne consultas, medicações, exames e medidas — apenas reorganiza o que já está no prontuário.</div>
-          <div id="patientTimelineList">Carregando...</div>
-        </div>
-
-        <!-- Card: Dados básicos -->
+        <!-- Card: Dados básicos (vem primeiro — identificação do paciente) -->
         <div class="card" id="card-dados">
           <h3>Dados</h3>
           <div id="patientBasicData">Carregando...</div>
@@ -1579,6 +1557,19 @@
             </div>
             <div class="card-subtitle" style="margin-bottom:10px;">Histórico de medidas. Cada registro guarda a data — útil pra acompanhar evolução.</div>
             <div id="patientAnthroList">Carregando...</div>
+          </div>
+        </div>
+
+        <!-- Card: Alergias e comorbidades (segurança — vem logo após Dados) -->
+        <div class="card" id="card-alergias">
+          <h3>⚠️ Alergias e comorbidades</h3>
+          <div class="card-subtitle">Informação de segurança. Confira antes de prescrever.</div>
+          <div style="margin-bottom:12px;">
+            <button class="primary" style="margin-top:0; padding:6px 14px; font-size:13px;"
+                    onclick="openClinicalProfileModal()">Editar</button>
+          </div>
+          <div id="clinicalProfileContent" style="font-size:14px; color:#374151;">
+            Carregando...
           </div>
         </div>
 
@@ -1634,6 +1625,21 @@
           <h3>Análises clínicas</h3>
           <div class="card-subtitle">Análises de apoio geradas por IA para consultas deste paciente.</div>
           <div id="patientAnalysesList">Carregando...</div>
+        </div>
+      </section>
+
+      <!-- Página: LINHA DO TEMPO (aberta a partir do prontuário de um paciente) -->
+      <section id="page-timeline" class="page">
+        <div class="page-header" style="display:flex; align-items:center; gap:12px;">
+          <button class="btn-secondary-outline" onclick="backFromTimeline()" style="margin-top:0;">← Voltar ao prontuário</button>
+          <div style="flex:1;">
+            <h2>📈 Linha do tempo</h2>
+            <div class="page-subtitle" id="timelinePageSubtitle">—</div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-subtitle">Todos os eventos do paciente em ordem cronológica (mais recente primeiro). Reúne consultas, medicações, exames e medidas — apenas reorganiza o que já está no prontuário.</div>
+          <div id="patientTimelineList">Carregando...</div>
         </div>
       </section>
 
@@ -2704,24 +2710,24 @@
     }
 
     function renderClinicalProfile(data) {
-      const banner = document.getElementById("clinicalProfileBanner");
+      const banner = document.getElementById("card-alergias");
       const content = document.getElementById("clinicalProfileContent");
-      if (!banner || !content) return;
+      if (!content) return;
 
       const allergies = (data && data.allergies) ? String(data.allergies).trim() : "";
       const chronic = (data && data.chronicConditions) ? String(data.chronicConditions).trim() : "";
 
-      // Cor da faixa: vermelha se há alergia registrada (alerta de
+      // Realce do card: borda esquerda vermelha se há alergia (alerta de
       // segurança); âmbar se só comorbidade; neutra se nada registrado.
-      if (allergies) {
-        banner.style.background = "#fef2f2";
-        banner.style.border = "1px solid #fca5a5";
-      } else if (chronic) {
-        banner.style.background = "#fffbeb";
-        banner.style.border = "1px solid #fde68a";
-      } else {
-        banner.style.background = "#f9fafb";
-        banner.style.border = "1px solid #e5e7eb";
+      // Usa borderLeft pra não brigar com o estilo padrão do .card.
+      if (banner) {
+        if (allergies) {
+          banner.style.borderLeft = "5px solid #dc2626";
+        } else if (chronic) {
+          banner.style.borderLeft = "5px solid #f59e0b";
+        } else {
+          banner.style.borderLeft = "";
+        }
       }
 
       content.replaceChildren();
@@ -3660,6 +3666,35 @@
       loadPatientDetail(phone);
     }
 
+    // [TIMELINE-PAGE] Abre a Linha do tempo como página dedicada, a
+    // partir do prontuário do paciente atual. Não há entrada por menu
+    // global de propósito: a timeline é SEMPRE de um paciente — abrir
+    // sem paciente não faria sentido (decisão consciente p/ evitar
+    // ambiguidade de "timeline de quem").
+    function openTimelinePage() {
+      if (!currentPatientPhone || !caseSummaryData) {
+        alert("Abra um paciente e aguarde o prontuário carregar.");
+        return;
+      }
+      const p = (caseSummaryData && caseSummaryData.patient) || {};
+      const sub = document.getElementById("timelinePageSubtitle");
+      if (sub) {
+        const ageStr = p.patientAge ? `, ${p.patientAge} anos` : "";
+        sub.textContent = `${p.name || "—"}${ageStr}`;
+      }
+      switchPage("timeline");
+      // Re-renderiza com o estado atual (anthro já carregada no prontuário).
+      renderPatientTimeline(true);
+    }
+
+    function backFromTimeline() {
+      if (currentPatientPhone) {
+        switchPage("patient-detail");
+      } else {
+        switchPage("patients");
+      }
+    }
+
     // [PRONTUARIO-NAV] Scroll suave até o card e adiciona destaque visual.
     // [COLLAPSIBLE] Estado de minimização por card (em memória, dura a sessão).
     // Chave = id do card, valor = true se minimizado.
@@ -3670,7 +3705,7 @@
     // conteúdo dos cards é re-renderizado a cada loadPatientDetail).
     function setupCollapsibleCards() {
       const cardIds = [
-        "card-dados", "card-consultas", "card-medicacoes",
+        "card-dados", "card-alergias", "card-consultas", "card-medicacoes",
         "card-exames", "card-exames-imagem", "card-analises",
       ];
 
@@ -3820,9 +3855,9 @@
 
         renderPatientAnalyses(data.analyses || []);
 
-        // [TIMELINE] Render inicial — sem antropometria ainda (endpoint
-        // separado). Re-renderiza ao fim de loadPatientAnthro.
-        renderPatientTimeline(false);
+        // [TIMELINE] A linha do tempo agora é página própria, renderizada
+        // sob demanda em openTimelinePage(). Não renderiza aqui pra não
+        // processar página oculta a cada abertura de paciente.
 
         // [CLINICAL-PROFILE] Carrega alergias/comorbidades (endpoint
         // separado). Faixa de segurança no topo do prontuário.
@@ -3922,9 +3957,9 @@
 
         renderAnthroList(data);
 
-        // [TIMELINE] Agora que a antropometria chegou, re-renderiza a
-        // linha do tempo completa (com as medidas incluídas).
-        renderPatientTimeline(true);
+        // [TIMELINE] Não re-renderiza aqui: a página própria da linha do
+        // tempo renderiza sob demanda em openTimelinePage(), e a essa
+        // altura a antropometria já está em caseSummaryData.
       } catch (error) {
         container.textContent = error.message;
       }
