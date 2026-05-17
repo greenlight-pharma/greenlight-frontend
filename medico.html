@@ -5763,14 +5763,26 @@
           throw new Error(data.error || "Erro ao salvar alterações");
         }
 
-        // Sucesso — fecha modal e recarrega lista (ou prontuário, se veio de lá)
-        closeEditMedication();
-        if (isMedicationEditFromProntuario) {
-          isMedicationEditFromProntuario = false; // reset
-          if (currentPatientPhone) loadPatientDetail(currentPatientPhone);
-        } else {
-          loadMedications();
-        }
+        // [EDIT-MED-FEEDBACK] Antes não havia NENHUM retorno de sucesso:
+        // o modal fechava e a lista recarregava, mas sem confirmação
+        // visual parecia que "nada aconteceu". Agora: mensagem verde →
+        // pequena pausa pra leitura → fecha modal → recarrega.
+        setMessage("editMedicationMessage", "success",
+          "✅ Medicação atualizada com sucesso.");
+
+        // Captura o destino do refresh ANTES de resetar a flag, porque
+        // closeEditMedication() também zera isMedicationEditFromProntuario.
+        const reloadFromProntuario = isMedicationEditFromProntuario;
+
+        setTimeout(() => {
+          closeEditMedication();
+          if (reloadFromProntuario) {
+            isMedicationEditFromProntuario = false; // reset
+            if (currentPatientPhone) loadPatientDetail(currentPatientPhone);
+          } else {
+            loadMedications();
+          }
+        }, 1500);
       } catch (error) {
         setMessage("editMedicationMessage", "error", error.message);
       }
