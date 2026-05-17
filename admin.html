@@ -727,6 +727,19 @@
         padding: 16px;
       }
     }
+    /* [BOT-CONFIG] Toggle switch */
+    .switch { position: relative; display: inline-block; width: 50px; height: 28px; flex: 0 0 auto; }
+    .switch input { opacity: 0; width: 0; height: 0; }
+    .switch .slider {
+      position: absolute; cursor: pointer; inset: 0;
+      background: #cbd5e1; transition: .2s; border-radius: 28px;
+    }
+    .switch .slider:before {
+      position: absolute; content: ""; height: 22px; width: 22px;
+      left: 3px; bottom: 3px; background: #fff; transition: .2s; border-radius: 50%;
+    }
+    .switch input:checked + .slider { background: #2563eb; }
+    .switch input:checked + .slider:before { transform: translateX(22px); }
   </style>
 </head>
 <body>
@@ -788,6 +801,10 @@
         <button class="nav-btn" data-page="plans" onclick="switchPage('plans')">
           <span class="nav-icon">💎</span>
           <span>Planos</span>
+        </button>
+        <button class="nav-btn" data-page="bot" onclick="switchPage('bot')">
+          <span class="nav-icon">🤖</span>
+          <span>Bot &amp; Mensagens</span>
         </button>
       </nav>
 
@@ -1099,6 +1116,87 @@
               </tr>
             </tbody>
           </table>
+        </div>
+      </section>
+
+      <section id="page-bot" class="page">
+        <div class="page-header">
+          <h2>Bot &amp; Mensagens</h2>
+          <p class="page-subtitle">Controle como o assistente do WhatsApp trabalha e envie mensagens aos pacientes.</p>
+        </div>
+
+        <div class="card" style="margin-bottom:20px;">
+          <h3 style="margin-top:0;">Comportamento do bot</h3>
+          <p style="color:#6b7280; font-size:14px;">
+            Mudanças valem para novas conversas. O bot continua tirando dúvidas
+            e orientando normalmente — estes controles afetam apenas as funções abaixo.
+          </p>
+
+          <div style="display:flex; align-items:center; justify-content:space-between; padding:14px 0; border-bottom:1px solid #eef0f2;">
+            <div>
+              <strong>Agendamento de consultas</strong>
+              <div style="font-size:13px; color:#6b7280;">Quando desligado, o bot não marca consultas (orienta procurar a clínica).</div>
+            </div>
+            <label class="switch">
+              <input type="checkbox" id="cfgScheduling" />
+              <span class="slider"></span>
+            </label>
+          </div>
+
+          <div style="display:flex; align-items:center; justify-content:space-between; padding:14px 0;">
+            <div>
+              <strong>Check-in diário</strong>
+              <div style="font-size:13px; color:#6b7280;">Quando desligado, nenhum paciente recebe a pergunta diária de acompanhamento. Lembrete de medicação não é afetado.</div>
+            </div>
+            <label class="switch">
+              <input type="checkbox" id="cfgCheckin" />
+              <span class="slider"></span>
+            </label>
+          </div>
+
+          <div style="margin-top:16px;">
+            <button class="primary" onclick="saveBotConfig()">Salvar configuração</button>
+          </div>
+          <div id="botConfigMessage" class="message"></div>
+        </div>
+
+        <div class="card" style="margin-bottom:20px;">
+          <h3 style="margin-top:0;">Mensagem para um paciente</h3>
+          <label>Telefone do paciente (com DDD, sem espaços)</label>
+          <input id="msgPatientPhone" type="text" placeholder="Ex: 5512999998888" />
+          <label>Mensagem</label>
+          <textarea id="msgPatientText" rows="4" placeholder="Texto que será enviado ao paciente via WhatsApp" maxlength="2000"></textarea>
+          <div style="margin-top:12px;">
+            <button class="primary" onclick="sendPatientMessage()">Enviar ao paciente</button>
+          </div>
+          <div id="msgPatientMessage" class="message"></div>
+        </div>
+
+        <div class="card">
+          <h3 style="margin-top:0;">Mensagem para TODOS os pacientes</h3>
+          <div class="modal-warning" style="margin-bottom:14px;">
+            ⚠️ <strong>Ação irreversível e em massa.</strong> Isso envia a mesma
+            mensagem para todos os pacientes da base. Use só para avisos
+            operacionais legítimos. Disparo em massa indevido pode bloquear
+            o número do WhatsApp e tem implicações de privacidade.
+          </div>
+          <label>Mensagem</label>
+          <textarea id="msgBroadcastText" rows="4" placeholder="Texto que será enviado a TODOS os pacientes" maxlength="2000"></textarea>
+
+          <div style="margin-top:12px;">
+            <button class="btn-secondary" onclick="prepareBroadcast()">Verificar destinatários</button>
+          </div>
+
+          <div id="broadcastConfirmBox" style="display:none; margin-top:14px; padding:14px; border:1px solid #fca5a5; border-radius:8px; background:#fef2f2;">
+            <div id="broadcastCountText" style="font-weight:600; color:#991b1b; margin-bottom:10px;"></div>
+            <label>Para confirmar, digite <strong>ENVIAR</strong> abaixo:</label>
+            <input id="broadcastConfirmInput" type="text" placeholder="ENVIAR" autocomplete="off" />
+            <div style="margin-top:12px;">
+              <button class="btn-danger" onclick="doBroadcast()">Disparar para todos</button>
+              <button class="btn-secondary-outline" onclick="cancelBroadcast()">Cancelar</button>
+            </div>
+          </div>
+          <div id="msgBroadcastMessage" class="message"></div>
         </div>
       </section>
 
@@ -1511,10 +1609,143 @@
         refreshStats();
       } else if (pageId === "plans") {
         loadSubscriptions();
+      } else if (pageId === "bot") {
+        loadBotConfig();
       }
 
       // Em mobile, fecha a sidebar ao trocar de página
       closeSidebar();
+    }
+
+    // ============================================================
+    // [BOT-CONFIG] Configuração do bot e mensagens
+    // ============================================================
+    async function loadBotConfig() {
+      clearMessage("botConfigMessage");
+      try {
+        const token = getToken();
+        const r = await fetch(`${API_URL}/admin/bot-config`, {
+          headers: { "Authorization": `Bearer ${token}` },
+        });
+        const data = await r.json();
+        if (!r.ok) throw new Error(data.error || "Erro ao carregar configuração");
+        document.getElementById("cfgScheduling").checked = !!data.schedulingEnabled;
+        document.getElementById("cfgCheckin").checked = !!data.checkinEnabled;
+      } catch (e) {
+        setMessage("botConfigMessage", "error", e.message);
+      }
+    }
+
+    async function saveBotConfig() {
+      clearMessage("botConfigMessage");
+      try {
+        const token = getToken();
+        const r = await fetch(`${API_URL}/admin/bot-config`, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            "Authorization": `Bearer ${token}`,
+          },
+          body: JSON.stringify({
+            schedulingEnabled: document.getElementById("cfgScheduling").checked,
+            checkinEnabled: document.getElementById("cfgCheckin").checked,
+          }),
+        });
+        const data = await r.json();
+        if (!r.ok) throw new Error(data.error || "Erro ao salvar");
+        setMessage("botConfigMessage", "success", "Configuração salva. Vale para novas conversas.");
+      } catch (e) {
+        setMessage("botConfigMessage", "error", e.message);
+      }
+    }
+
+    async function sendPatientMessage() {
+      clearMessage("msgPatientMessage");
+      const phone = onlyNumbers(document.getElementById("msgPatientPhone").value);
+      const text = document.getElementById("msgPatientText").value.trim();
+      if (!phone || phone.length < 10) {
+        setMessage("msgPatientMessage", "error", "Telefone inválido.");
+        return;
+      }
+      if (!text) {
+        setMessage("msgPatientMessage", "error", "Mensagem vazia.");
+        return;
+      }
+      try {
+        const token = getToken();
+        const r = await fetch(`${API_URL}/admin/message/patient`, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            "Authorization": `Bearer ${token}`,
+          },
+          body: JSON.stringify({ phone, text }),
+        });
+        const data = await r.json();
+        if (!r.ok) throw new Error(data.error || "Erro ao enviar");
+        setMessage("msgPatientMessage", "success", "Mensagem enviada.");
+        document.getElementById("msgPatientText").value = "";
+      } catch (e) {
+        setMessage("msgPatientMessage", "error", e.message);
+      }
+    }
+
+    // Broadcast: 2 etapas. 1) verificar contagem. 2) confirmar digitando ENVIAR.
+    async function prepareBroadcast() {
+      clearMessage("msgBroadcastMessage");
+      const text = document.getElementById("msgBroadcastText").value.trim();
+      if (!text) {
+        setMessage("msgBroadcastMessage", "error", "Escreva a mensagem antes de verificar.");
+        return;
+      }
+      try {
+        const token = getToken();
+        const r = await fetch(`${API_URL}/admin/message/broadcast-count`, {
+          headers: { "Authorization": `Bearer ${token}` },
+        });
+        const data = await r.json();
+        if (!r.ok) throw new Error(data.error || "Erro ao contar destinatários");
+        document.getElementById("broadcastCountText").textContent =
+          `Esta mensagem será enviada para ${data.count} paciente(s). Esta ação não pode ser desfeita.`;
+        document.getElementById("broadcastConfirmInput").value = "";
+        document.getElementById("broadcastConfirmBox").style.display = "block";
+      } catch (e) {
+        setMessage("msgBroadcastMessage", "error", e.message);
+      }
+    }
+
+    function cancelBroadcast() {
+      document.getElementById("broadcastConfirmBox").style.display = "none";
+      document.getElementById("broadcastConfirmInput").value = "";
+    }
+
+    async function doBroadcast() {
+      clearMessage("msgBroadcastMessage");
+      const text = document.getElementById("msgBroadcastText").value.trim();
+      const confirmText = document.getElementById("broadcastConfirmInput").value.trim();
+      if (confirmText !== "ENVIAR") {
+        setMessage("msgBroadcastMessage", "error", 'Digite exatamente ENVIAR para confirmar.');
+        return;
+      }
+      try {
+        const token = getToken();
+        const r = await fetch(`${API_URL}/admin/message/broadcast`, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            "Authorization": `Bearer ${token}`,
+          },
+          body: JSON.stringify({ text, confirmText }),
+        });
+        const data = await r.json();
+        if (!r.ok) throw new Error(data.error || "Erro ao disparar");
+        setMessage("msgBroadcastMessage", "success",
+          `Disparo iniciado para ${data.recipients} paciente(s). O envio ocorre de forma gradual em segundo plano.`);
+        cancelBroadcast();
+        document.getElementById("msgBroadcastText").value = "";
+      } catch (e) {
+        setMessage("msgBroadcastMessage", "error", e.message);
+      }
     }
 
     // ============================================================
