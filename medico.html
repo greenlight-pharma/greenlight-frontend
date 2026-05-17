@@ -1823,7 +1823,7 @@
       </select>
 
       <label>Orientações</label>
-      <textarea id="editInstructions"></textarea>
+      <textarea id="editInstructions" placeholder="Ex: Tomar 1 comprimido após o café da manhã, com bastante água." style="min-height:60px;"></textarea>
 
       <div class="modal-actions">
         <button class="btn-secondary-outline" onclick="closeEditMedication()">Cancelar</button>
@@ -5596,8 +5596,68 @@
 
     // Handler do modal de edição
     let editMedicationSearchTimer = null;
+    // [MED-HINT-PLACEHOLDER] Dica de uso por medicamento, mostrada APENAS
+    // como placeholder do campo Orientações (texto cinza que some 100% das
+    // vezes que o médico digita; NADA é salvo se ele não escrever a dele).
+    //
+    // ESCOPO INTENCIONALMENTE RESTRITO — nível "uso prático" apenas:
+    // horário em relação à refeição / com água. NUNCA dose, ajuste de
+    // dose, conduta ou decisão terapêutica. Lista pequena de comuns;
+    // medicamento fora da lista cai no texto genérico fixo.
+    //
+    // Esta dica NÃO substitui a orientação do médico — é só lembrete.
+    // A orientação que vale é a que o médico digita.
+    const MED_HINT_FALLBACK =
+      "Ex: Tomar 1 comprimido após o café da manhã, com bastante água.";
+
+    const MED_HINTS = {
+      "metformina": "Ex: Tomar após as refeições, com água, para reduzir desconforto gastrointestinal.",
+      "sinvastatina": "Ex: Tomar à noite, em horário fixo.",
+      "atorvastatina": "Ex: Tomar 1 vez ao dia, em horário fixo.",
+      "losartana": "Ex: Tomar 1 vez ao dia, em horário fixo, podendo ser com ou sem alimento.",
+      "enalapril": "Ex: Tomar em horário fixo, com ou sem alimento.",
+      "hidroclorotiazida": "Ex: Tomar pela manhã, para evitar idas ao banheiro à noite.",
+      "furosemida": "Ex: Tomar pela manhã, para evitar idas ao banheiro à noite.",
+      "omeprazol": "Ex: Tomar em jejum, cerca de 30 minutos antes do café da manhã.",
+      "levotiroxina": "Ex: Tomar em jejum, 30 a 60 minutos antes do café da manhã.",
+      "amoxicilina": "Ex: Tomar nos intervalos indicados, podendo ser com alimento.",
+      "metoprolol": "Ex: Tomar em horário fixo, com alimento.",
+      "anlodipino": "Ex: Tomar 1 vez ao dia, em horário fixo.",
+      "pregabalina": "Ex: Tomar em horário fixo; pode ser com ou sem alimento.",
+      "ibuprofeno": "Ex: Tomar após as refeições, para reduzir desconforto no estômago.",
+    };
+
+    // Normaliza o nome digitado (minúsculo, sem acento) e procura a dica.
+    // Match por "começa com" pra tolerar "Losartana potássica 50mg".
+    function getMedHint(medName) {
+      const norm = String(medName || "")
+        .toLowerCase()
+        .normalize("NFD")
+        .replace(/[\u0300-\u036f]/g, "")
+        .trim();
+      if (!norm) return MED_HINT_FALLBACK;
+      for (const key in MED_HINTS) {
+        if (norm.startsWith(key) || norm.includes(key)) {
+          return MED_HINTS[key];
+        }
+      }
+      return MED_HINT_FALLBACK;
+    }
+
+    // Atualiza SÓ o placeholder do campo Orientações. Não toca no .value,
+    // então nunca sobrescreve o que o médico já digitou.
+    function updateInstructionsPlaceholder(medName) {
+      const el = document.getElementById("editInstructions");
+      if (el) el.placeholder = getMedHint(medName);
+    }
+
     function onEditMedicationInput(inputEl) {
       const query = inputEl.value;
+
+      // [MED-HINT-PLACEHOLDER] Atualiza a dica conforme o médico digita
+      // o nome. Imediato (não espera o debounce da busca).
+      updateInstructionsPlaceholder(query);
+
       if (editMedicationSearchTimer) clearTimeout(editMedicationSearchTimer);
       editMedicationSearchTimer = setTimeout(async () => {
         const results = await searchMedications(query);
@@ -5702,6 +5762,11 @@
 
       document.getElementById("editStatus").value = med.status || "ativo";
       document.getElementById("editInstructions").value = med.instructions || "";
+
+      // [MED-HINT-PLACEHOLDER] Já abre com a dica do medicamento atual.
+      // Só afeta o placeholder; se instructions tem valor, o médico vê o
+      // texto dele normalmente (placeholder nem aparece).
+      updateInstructionsPlaceholder(med.medicationName || "");
 
       clearMessage("editMedicationMessage");
       document.getElementById("editMedicationModal").classList.remove("hidden");
