@@ -1265,6 +1265,34 @@
         min-width: 44px;   /* alvo de toque confortável */
         min-height: 44px;
       }
+
+      /* [MOBILE-FIX] Modal SOAP (Encerrar Consulta) no celular.
+         Causa do bug: a regra geral usa height:100vh. Em navegador
+         mobile, 100vh inclui a área atrás da barra de endereço, então o
+         modal fica mais alto que o espaço visível e o rodapé (botões
+         Cancelar/Rascunho/Encerrar) fica inalcançável por scroll.
+         Correção: 100dvh (dynamic viewport, desconta a barra do
+         navegador), com fallback 100vh para browsers antigos, e um
+         respiro no fim pra o último botão sempre sobrar área de rolagem.
+         Escopado ao .modal-soap — não toca nos outros modais que a
+         Camada 1 já validou. */
+      .modal-content.modal-soap {
+        height: 100vh;          /* fallback */
+        height: 100dvh;         /* navegadores modernos: desconta barra */
+        max-height: 100vh;
+        max-height: 100dvh;
+        padding-bottom: 32px !important; /* respiro no fim do scroll */
+      }
+      /* Garante que a barra de ações nunca cole na borda inferior
+         (onde a barra do navegador pode sobrepor) e tenha alvo de
+         toque confortável no celular. */
+      .modal-soap .soap-actions {
+        margin-bottom: 16px;
+      }
+      .modal-soap .soap-actions button {
+        flex: 1 1 100%;
+        min-height: 46px;
+      }
       .modal-actions {
         flex-wrap: wrap;
       }
