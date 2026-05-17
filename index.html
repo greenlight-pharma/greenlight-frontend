@@ -60,6 +60,11 @@
   .btn-primary:hover{transform:translateY(-2px);box-shadow:0 14px 32px -10px rgba(28,42,99,.55)}
   .btn-ghost{background:transparent;color:var(--navy);border:1.5px solid var(--line)}
   .btn-ghost:hover{border-color:var(--cyan);color:var(--navy)}
+  /* Mesmo visual discreto do ghost, mas classe própria pra NÃO ser
+     escondida pela regra mobile que oculta .btn-ghost (médico acessa
+     o painel pelo celular — o botão precisa aparecer lá). */
+  .btn-medico{background:transparent;color:var(--navy);border:1.5px solid var(--line)}
+  .btn-medico:hover{border-color:var(--cyan);color:var(--navy)}
   .nav-cta{display:flex;gap:12px;align-items:center}
 
   /* HERO */
@@ -259,7 +264,8 @@
         <a href="#como">Como funciona</a>
       </div>
       <div class="nav-cta">
-        <a href="#contato" class="btn btn-ghost">Falar com a gente</a>
+        <a href="medico.html" class="btn btn-medico">Área do médico</a>
+        <a href="#contato" class="btn btn-primary">Falar com a gente</a>
       </div>
     </nav>
   </div>
