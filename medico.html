@@ -1390,10 +1390,11 @@
       <section id="page-patient-detail" class="page">
         <div class="page-header" style="display:flex; align-items:center; gap:12px;">
           <button class="btn-secondary-outline" onclick="switchPage('patients')" style="margin-top:0;">← Voltar</button>
-          <div>
+          <div style="flex:1;">
             <h2 id="patientDetailName">Prontuário do Paciente</h2>
             <div class="page-subtitle" id="patientDetailSubtitle">—</div>
           </div>
+          <button class="primary" onclick="openCaseSummary()" style="margin-top:0; white-space:nowrap;">📋 Resumo do caso</button>
         </div>
 
         <div class="patient-legend">
@@ -1727,6 +1728,33 @@
       </div>
 
       <div id="removePatientMessage" class="message"></div>
+    </div>
+  </div>
+
+  <!-- ====== MODAL RESUMO DO CASO (transferência de cuidado) ====== -->
+  <div id="caseSummaryModal" class="modal-backdrop hidden" onclick="closeCaseSummaryOnBackdrop(event)">
+    <div class="modal-content" style="max-width:760px;">
+      <div class="modal-header">
+        <h3>📋 Resumo do caso</h3>
+        <button class="modal-close" onclick="closeCaseSummaryModal()" aria-label="Fechar">✕</button>
+      </div>
+
+      <div class="modal-warning">
+        Documento de <strong>transferência de cuidado</strong>: consolida dados,
+        antropometria, consultas, medicações e exames do paciente para
+        compartilhar com outro médico. Confira o conteúdo antes de enviar —
+        você é responsável pelas informações repassadas.
+      </div>
+
+      <div style="display:flex; gap:8px; margin-bottom:12px; flex-wrap:wrap;">
+        <button class="primary" onclick="downloadCaseSummaryPDF()">⬇️ Baixar PDF</button>
+        <button class="btn-secondary-outline" onclick="copyCaseSummaryText()">📄 Copiar texto</button>
+      </div>
+
+      <textarea id="caseSummaryText" readonly
+        style="width:100%; min-height:340px; font-family:ui-monospace,Menlo,Consolas,monospace; font-size:12.5px; line-height:1.55; white-space:pre; overflow:auto;"></textarea>
+
+      <div id="caseSummaryMessage" class="message"></div>
     </div>
   </div>
 
@@ -2382,6 +2410,263 @@
       btn.style.pointerEvents = enabled ? "auto" : "none";
     }
 
+    // ============================================================
+    // [CASE-SUMMARY] Resumo do caso — transferência de cuidado
+    // Monta texto consolidado + PDF a partir dos dados já carregados
+    // pelo prontuário (não refaz requisição). PDF gerado no navegador
+    // via jsPDF carregado sob demanda (não pesa o load da página).
+    //
+    // NOTA: documento consolida dado de saúde sensível para circular
+    // entre médicos (uso clínico legítimo). "Exportar prontuário
+    // completo" é item pra pauta do consultor regulatório/LGPD —
+    // finalidade, quem gera, quem recebe.
+    // ============================================================
+
+    let caseSummaryData = null;
+
+    function fmtDateTimeBR(v) {
+      if (!v) return "—";
+      try {
+        return new Date(v).toLocaleString("pt-BR", { timeZone: "America/Sao_Paulo" });
+      } catch (e) {
+        return String(v);
+      }
+    }
+
+    function fmtDateOnlyBR(v) {
+      if (!v) return null;
+      try {
+        return new Date(v).toLocaleDateString("pt-BR", { timeZone: "America/Sao_Paulo" });
+      } catch (e) {
+        return String(v);
+      }
+    }
+
+    // Monta o texto puro do resumo. Só inclui o que existe — seções
+    // vazias aparecem como "Nenhum registro." pra não dar falsa
+    // impressão de ausência por erro.
+    function buildCaseSummaryText() {
+      const d = caseSummaryData;
+      if (!d) return "Nenhum dado carregado.";
+
+      const L = [];
+      const sep = "=".repeat(56);
+      const sub = "-".repeat(56);
+
+      L.push(sep);
+      L.push("RESUMO DO CASO — TRANSFERÊNCIA DE CUIDADO");
+      L.push(sep);
+      L.push(`Gerado em: ${fmtDateTimeBR(new Date().toISOString())}`);
+      L.push("");
+
+      // --- Dados do paciente ---
+      L.push("1. DADOS DO PACIENTE");
+      L.push(sub);
+      const p = d.patient || {};
+      L.push(`Nome: ${p.name || "—"}`);
+      L.push(`Telefone: ${p.phone || d.phone || "—"}`);
+      L.push(`Idade: ${p.patientAge ? p.patientAge + " anos" : "—"}`);
+      L.push("");
+
+      // --- Antropometria / sinais vitais ---
+      L.push("2. ANTROPOMETRIA E SINAIS VITAIS");
+      L.push(sub);
+      if (!d.anthro || !d.anthro.length) {
+        L.push("Nenhum registro.");
+      } else {
+        d.anthro.forEach((r) => {
+          const parts = [];
+          if (r.weightKg != null) parts.push(`Peso ${r.weightKg} kg`);
+          if (r.heightCm != null) parts.push(`Altura ${r.heightCm} cm`);
+          if (r.waistCm != null) parts.push(`Circ. abd. ${r.waistCm} cm`);
+          if (r.systolicBP != null || r.diastolicBP != null) {
+            parts.push(`PA ${r.systolicBP != null ? r.systolicBP : "?"}/${r.diastolicBP != null ? r.diastolicBP : "?"} mmHg`);
+          }
+          if (r.heartRate != null) parts.push(`FC ${r.heartRate} bpm`);
+          L.push(`• ${fmtDateTimeBR(r.measuredAt)}: ${parts.join(" | ") || "sem valores"}`);
+        });
+      }
+      L.push("");
+
+      // --- Histórico de consultas ---
+      L.push("3. HISTÓRICO DE CONSULTAS");
+      L.push(sub);
+      if (!d.appointments || !d.appointments.length) {
+        L.push("Nenhuma consulta registrada.");
+      } else {
+        d.appointments.forEach((a) => {
+          const st = a.status === "concluida" ? "Concluída" : "Em atendimento";
+          const when = a.concludedAt ? fmtDateTimeBR(a.concludedAt)
+            : (a.acceptedAt ? fmtDateTimeBR(a.acceptedAt) : "sem data");
+          L.push(`• [${st}] ${when} — Médico: ${a.doctorName || "—"}`);
+          L.push(`  Motivo: ${a.reason || "não registrado"}`);
+          if (a.status === "concluida" && a.closingNotes && a.closingNotes.plan) {
+            L.push(`  Plano (SOAP): ${String(a.closingNotes.plan).replace(/\s*\n\s*/g, " ")}`);
+          }
+        });
+      }
+      L.push("");
+
+      // --- Medicações ---
+      L.push("4. MEDICAÇÕES");
+      L.push(sub);
+      if (!d.medications || !d.medications.length) {
+        L.push("Nenhuma medicação registrada.");
+      } else {
+        const ativas = d.medications.filter((m) => !m.archivedAt);
+        const arquiv = d.medications.filter((m) => m.archivedAt);
+        L.push("Em uso:");
+        if (!ativas.length) {
+          L.push("  (nenhuma)");
+        } else {
+          ativas.forEach((m) => {
+            let line = `  • ${m.medicationName || "—"}${m.dose ? " " + m.dose : ""}`;
+            if (m.scheduleTimes) line += ` — horários: ${m.scheduleTimes}`;
+            L.push(line);
+            if (m.instructions) L.push(`    Orientações: ${m.instructions}`);
+          });
+        }
+        if (arquiv.length) {
+          L.push("Arquivadas (histórico):");
+          arquiv.forEach((m) => {
+            L.push(`  • ${m.medicationName || "—"}${m.dose ? " " + m.dose : ""}`);
+          });
+        }
+      }
+      L.push("");
+
+      // --- Exames laboratoriais e de imagem ---
+      const allExams = d.exams || [];
+      const labExams = allExams.filter((e) => (e.examType || "lab") !== "imaging");
+      const imgExams = allExams.filter((e) => e.examType === "imaging");
+
+      L.push("5. EXAMES LABORATORIAIS");
+      L.push(sub);
+      if (!labExams.length) {
+        L.push("Nenhum exame laboratorial anexado.");
+      } else {
+        labExams.forEach((e) => {
+          const real = fmtDateOnlyBR(e.examDate) || fmtDateOnlyBR(e.analysisExamDate);
+          L.push(`• ${e.fileName || "Exame"}${real ? " — realizado em " + real : ""}`);
+          if (e.doctorName) L.push(`  Anexado por: ${e.doctorName}`);
+        });
+      }
+      L.push("");
+
+      L.push("6. EXAMES DE IMAGEM");
+      L.push(sub);
+      if (!imgExams.length) {
+        L.push("Nenhum exame de imagem anexado.");
+      } else {
+        imgExams.forEach((e) => {
+          const real = fmtDateOnlyBR(e.examDate) || fmtDateOnlyBR(e.analysisExamDate);
+          L.push(`• ${e.fileName || "Exame"}${real ? " — realizado em " + real : ""}`);
+          if (e.doctorName) L.push(`  Anexado por: ${e.doctorName}`);
+        });
+      }
+      L.push("");
+      L.push(sep);
+      L.push("Documento gerado pela Vytal para transferência de cuidado.");
+      L.push("Conteúdo de responsabilidade do médico que o compartilha.");
+      L.push(sep);
+
+      return L.join("\n");
+    }
+
+    function openCaseSummary() {
+      if (!caseSummaryData) {
+        alert("Aguarde o prontuário terminar de carregar e tente de novo.");
+        return;
+      }
+      const text = buildCaseSummaryText();
+      document.getElementById("caseSummaryText").value = text;
+      clearMessage("caseSummaryMessage");
+      document.getElementById("caseSummaryModal").classList.remove("hidden");
+    }
+
+    function closeCaseSummaryModal() {
+      document.getElementById("caseSummaryModal").classList.add("hidden");
+    }
+
+    function closeCaseSummaryOnBackdrop(event) {
+      if (event.target.id === "caseSummaryModal") closeCaseSummaryModal();
+    }
+
+    function copyCaseSummaryText() {
+      const ta = document.getElementById("caseSummaryText");
+      ta.select();
+      ta.setSelectionRange(0, 999999);
+      try {
+        const ok = document.execCommand("copy");
+        if (navigator.clipboard) {
+          navigator.clipboard.writeText(ta.value).catch(() => {});
+        }
+        setMessage("caseSummaryMessage", ok ? "success" : "error",
+          ok ? "✅ Texto copiado." : "Não foi possível copiar — selecione e copie manualmente.");
+      } catch (e) {
+        setMessage("caseSummaryMessage", "error",
+          "Não foi possível copiar — selecione e copie manualmente.");
+      }
+      window.getSelection && window.getSelection().removeAllRanges();
+    }
+
+    // Carrega jsPDF sob demanda (só no primeiro clique em "Baixar PDF").
+    function loadJsPdf() {
+      return new Promise((resolve, reject) => {
+        if (window.jspdf && window.jspdf.jsPDF) return resolve();
+        const s = document.createElement("script");
+        s.src = "https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js";
+        s.onload = () => resolve();
+        s.onerror = () => reject(new Error("Falha ao carregar gerador de PDF."));
+        document.head.appendChild(s);
+      });
+    }
+
+    async function downloadCaseSummaryPDF() {
+      setMessage("caseSummaryMessage", "", "Gerando PDF...");
+      try {
+        await loadJsPdf();
+        const { jsPDF } = window.jspdf;
+        const doc = new jsPDF({ unit: "pt", format: "a4" });
+
+        const text = buildCaseSummaryText();
+        const marginX = 40;
+        const marginY = 48;
+        const maxWidth = 595 - marginX * 2; // A4 width in pt ≈ 595
+        const lineH = 13;
+        const pageH = 842; // A4 height in pt
+
+        doc.setFont("courier", "normal");
+        doc.setFontSize(9);
+
+        let y = marginY;
+        const rawLines = text.split("\n");
+        rawLines.forEach((raw) => {
+          const wrapped = doc.splitTextToSize(raw, maxWidth);
+          wrapped.forEach((ln) => {
+            if (y > pageH - marginY) {
+              doc.addPage();
+              y = marginY;
+            }
+            doc.text(ln, marginX, y);
+            y += lineH;
+          });
+        });
+
+        const p = caseSummaryData && caseSummaryData.patient ? caseSummaryData.patient : {};
+        const safeName = String(p.name || "paciente")
+          .normalize("NFD").replace(/[\u0300-\u036f]/g, "")
+          .replace(/[^a-zA-Z0-9]+/g, "_").slice(0, 40);
+        const stamp = new Date().toISOString().slice(0, 10);
+        doc.save(`resumo_caso_${safeName}_${stamp}.pdf`);
+
+        setMessage("caseSummaryMessage", "success", "✅ PDF gerado.");
+      } catch (e) {
+        setMessage("caseSummaryMessage", "error",
+          (e && e.message) ? e.message : "Erro ao gerar PDF. Você ainda pode copiar o texto.");
+      }
+    }
+
     // Habilita o botão só quando o texto digitado bate com o nome.
     // Comparação tolerante a acento/caixa/espaços, usando o mesmo
     // normalizeForSearch já existente no arquivo.
@@ -2755,6 +3040,20 @@
           throw new Error(data.error || "Erro ao carregar prontuário");
         }
 
+        // [CASE-SUMMARY] Guarda os dados do /summary pra reaproveitar no
+        // botão "Resumo do caso" sem refazer a requisição. A antropometria
+        // vem de endpoint separado e é capturada dentro de loadPatientAnthro.
+        caseSummaryData = {
+          phone: phone,
+          patient: data.patient || null,
+          linkedToMe: !!data.linkedToMe,
+          appointments: data.appointments || [],
+          medications: data.medications || [],
+          exams: data.exams || [],
+          analyses: data.analyses || [],
+          anthro: [],
+        };
+
         renderPatientHeader(data.patient, data.linkedToMe);
         renderPatientBasicData(data.patient, data.linkedToMe);
         renderPatientAppointments(data.appointments || [], data.analyses || []);
@@ -2854,6 +3153,12 @@
         const data = await response.json();
         if (!response.ok) {
           throw new Error(data.error || "Erro ao carregar antropometria");
+        }
+
+        // [CASE-SUMMARY] Antropometria vem de endpoint separado — guarda
+        // no mesmo objeto de estado, se for do paciente atual.
+        if (caseSummaryData && caseSummaryData.phone === phone) {
+          caseSummaryData.anthro = Array.isArray(data) ? data : [];
         }
 
         renderAnthroList(data);
