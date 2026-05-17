@@ -4261,6 +4261,19 @@
       const card = document.getElementById(cardId);
       if (!card) return;
 
+      // [NAV-EXPAND] Se o alvo é um card colapsável e está minimizado,
+      // expande antes de rolar — clicar em "Medicações" na nav deve
+      // mostrar as medicações, não levar a um card fechado. Só mexe no
+      // card alvo; os outros que o médico minimizou ficam como estão.
+      if (card.classList.contains("collapsible") && collapsedCardState[cardId]) {
+        collapsedCardState[cardId] = false;
+        applyCardCollapseState(cardId);
+        // Expandir muda o layout. Força reflow pra getBoundingClientRect
+        // abaixo ler a posição já com o card aberto (senão o scroll para
+        // num ponto impreciso porque calculou com o card ainda fechado).
+        void card.offsetHeight;
+      }
+
       // Scroll suave levando em conta altura da sticky nav (offset)
       const yOffset = -80;
       const y = card.getBoundingClientRect().top + window.pageYOffset + yOffset;
