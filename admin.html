@@ -1047,6 +1047,7 @@
                 <th>Nome</th>
                 <th>Email</th>
                 <th>Telefone</th>
+                <th>CRM</th>
                 <th>Função</th>
                 <th>Status</th>
                 <th>Ações</th>
@@ -1144,6 +1145,45 @@
       <div class="modal-actions">
         <button class="btn-secondary-outline" onclick="closeSoapView()">Fechar</button>
       </div>
+    </div>
+  </div>
+
+  <!-- ====== MODAL EDITAR MÉDICO ====== -->
+  <div id="editDoctorModal" class="modal-backdrop hidden" onclick="closeEditDoctorOnBackdrop(event)">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3>Editar médico</h3>
+        <button class="modal-close" onclick="closeEditDoctorModal()" aria-label="Fechar">✕</button>
+      </div>
+
+      <div style="font-size:13px; color:#6b7280; margin-bottom:14px;">
+        Email não é editável aqui (é a chave de login). Senha tem fluxo próprio.
+      </div>
+
+      <input type="hidden" id="editDoctorId" />
+
+      <label>Nome</label>
+      <input id="editDoctorName" type="text" placeholder="Nome completo do médico" />
+
+      <label>Email (não editável)</label>
+      <input id="editDoctorEmail" type="email" disabled
+             style="background:#f3f4f6; color:#6b7280;" />
+
+      <label>Telefone (WhatsApp)</label>
+      <input id="editDoctorPhone" type="text" placeholder="Ex: 5512999999999" />
+
+      <label>CRM</label>
+      <input id="editDoctorCrm" type="text" placeholder="Ex: CRM/SP 123456" />
+
+      <label>Função</label>
+      <input id="editDoctorRole" type="text" placeholder="doctor" />
+
+      <div class="modal-actions">
+        <button class="btn-secondary-outline" onclick="closeEditDoctorModal()">Cancelar</button>
+        <button class="primary" onclick="saveEditDoctor()">Salvar alterações</button>
+      </div>
+
+      <div id="editDoctorMessage" class="message"></div>
     </div>
   </div>
 
@@ -1276,6 +1316,66 @@
       btn.style.marginTop = "0";
       btn.addEventListener("click", () => toggleDoctorStatus(doctor));
       return btn;
+    }
+
+    // [ADMIN-EDIT-DOCTOR] Edição de dados cadastrais do médico.
+    // Email fica somente-leitura (chave de login). Senha não entra aqui.
+    function openEditDoctorModal(doctor) {
+      document.getElementById("editDoctorId").value = doctor.id;
+      document.getElementById("editDoctorName").value = doctor.name || "";
+      document.getElementById("editDoctorEmail").value = doctor.email || "";
+      document.getElementById("editDoctorPhone").value = doctor.phone || "";
+      document.getElementById("editDoctorCrm").value = doctor.crm || "";
+      document.getElementById("editDoctorRole").value = doctor.role || "doctor";
+      clearMessage("editDoctorMessage");
+      document.getElementById("editDoctorModal").classList.remove("hidden");
+    }
+
+    function closeEditDoctorModal() {
+      document.getElementById("editDoctorModal").classList.add("hidden");
+    }
+
+    function closeEditDoctorOnBackdrop(event) {
+      if (event.target.id === "editDoctorModal") closeEditDoctorModal();
+    }
+
+    async function saveEditDoctor() {
+      const id = document.getElementById("editDoctorId").value;
+      const name = document.getElementById("editDoctorName").value.trim();
+      const phone = onlyNumbers(document.getElementById("editDoctorPhone").value);
+      const crm = document.getElementById("editDoctorCrm").value.trim();
+      const role = document.getElementById("editDoctorRole").value.trim() || "doctor";
+
+      if (!name) {
+        setMessage("editDoctorMessage", "error", "Nome não pode ficar vazio.");
+        return;
+      }
+
+      const token = getToken();
+      try {
+        const response = await fetch(`${API_URL}/admin/doctors/${id}`, {
+          method: "PATCH",
+          headers: {
+            "Content-Type": "application/json",
+            "Authorization": `Bearer ${token}`
+          },
+          body: JSON.stringify({ name, phone, crm, role })
+        });
+
+        const data = await response.json();
+
+        if (!response.ok) {
+          throw new Error(data.error || "Erro ao salvar alterações");
+        }
+
+        setMessage("editDoctorMessage", "success", "Médico atualizado com sucesso.");
+        setTimeout(() => {
+          closeEditDoctorModal();
+          loadDoctors();
+        }, 900);
+      } catch (error) {
+        setMessage("editDoctorMessage", "error", error.message);
+      }
     }
 
     async function cancelAppointment(appointment) {
@@ -1626,7 +1726,7 @@
       const tableBody = document.getElementById("doctorsTableBody");
       const select = document.getElementById("doctorSelect");
 
-      renderRowMessage(tableBody, 7, "Carregando...");
+      renderRowMessage(tableBody, 8, "Carregando...");
 
       try {
         const response = await fetch(`${API_URL}/doctors`, {
@@ -1652,7 +1752,7 @@
         select.appendChild(defaultOpt);
 
         if (!doctors.length) {
-          renderRowMessage(tableBody, 7, "Nenhum médico cadastrado.");
+          renderRowMessage(tableBody, 8, "Nenhum médico cadastrado.");
           return;
         }
 
@@ -1660,14 +1760,29 @@
 
         doctors.forEach((doctor) => {
           // Tabela mostra TODOS, ativos e inativos (com badge de status)
+          const actions = document.createElement("div");
+          actions.style.display = "flex";
+          actions.style.gap = "6px";
+          actions.style.flexWrap = "wrap";
+
+          const editBtn = document.createElement("button");
+          editBtn.textContent = "Editar";
+          editBtn.className = "btn-secondary";
+          editBtn.style.marginTop = "0";
+          editBtn.addEventListener("click", () => openEditDoctorModal(doctor));
+          actions.appendChild(editBtn);
+
+          actions.appendChild(makeDoctorToggleBtn(doctor));
+
           appendRow(tableBody, [
             doctor.id,
             doctor.name || "Sem nome",
             doctor.email || "-",
             doctor.phone || "-",
+            doctor.crm || "—",
             doctor.role || "doctor",
             { html: statusBadge(doctor.status || "active") },
-            { node: makeDoctorToggleBtn(doctor) },
+            { node: actions },
           ]);
 
           // Dropdown só inclui ativos
@@ -1679,7 +1794,7 @@
           }
         });
       } catch (error) {
-        renderRowMessage(tableBody, 7, error.message);
+        renderRowMessage(tableBody, 8, error.message);
       }
     }
 
