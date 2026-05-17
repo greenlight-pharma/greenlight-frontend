@@ -1227,6 +1227,108 @@
         margin-left: 0;
         padding: 16px;
       }
+
+      /* ============================================================
+         [MOBILE-FIX] Camada 1 — Modais quase tela cheia no celular.
+         Antes: .modal-content tinha max-width:520px + padding:24px e
+         nenhuma regra mobile → estourava a tela (texto cortado).
+         Agora: ocupa quase toda a tela, padding menor, rolagem ok.
+         Vale pra TODOS os modais (mesma classe). O !important anula
+         os max-width inline (760/720px) dos modais maiores.
+         ============================================================ */
+      .modal-backdrop {
+        padding: 0 !important;
+        align-items: stretch !important;
+      }
+      .modal-content {
+        max-width: 100% !important;
+        width: 100% !important;
+        max-height: 100vh !important;
+        height: 100vh;
+        border-radius: 0 !important;
+        padding: 16px !important;
+        overflow-y: auto;
+        -webkit-overflow-scrolling: touch;
+      }
+      .modal-header {
+        position: sticky;
+        top: -16px;
+        background: #fff;
+        padding: 12px 0;
+        margin: -16px 0 12px 0;
+        z-index: 2;
+        border-bottom: 1px solid #eef0f2;
+      }
+      .modal-close {
+        font-size: 26px;
+        padding: 8px 12px;
+        min-width: 44px;   /* alvo de toque confortável */
+        min-height: 44px;
+      }
+      .modal-actions {
+        flex-wrap: wrap;
+      }
+      .modal-actions button {
+        flex: 1 1 auto;
+        min-height: 44px;
+      }
+
+      /* ============================================================
+         [MOBILE-FIX] Camada 2 — Campos e prontuário no celular.
+         Inputs/textarea ocupam a largura toda; nada de width fixo
+         estourando. Tabelas rolam horizontalmente em vez de cortar.
+         Só afeta telas <=768px — desktop intacto.
+         ============================================================ */
+      .modal-content input,
+      .modal-content select,
+      .modal-content textarea {
+        width: 100% !important;
+        min-width: 0 !important;
+        box-sizing: border-box;
+        font-size: 16px;  /* >=16px evita zoom automático do iOS */
+      }
+      /* Linhas de campos lado-a-lado quebram em coluna no celular */
+      .modal-content [style*="display:flex"],
+      .modal-content [style*="display: flex"] {
+        flex-wrap: wrap;
+      }
+
+      /* Cards do prontuário: padding menor, sem overflow lateral */
+      .card {
+        padding: 14px !important;
+        overflow-x: auto;
+      }
+
+      /* Tabelas largas (pacientes, consultas) rolam em vez de cortar */
+      table {
+        display: block;
+        width: 100%;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        white-space: nowrap;
+      }
+
+      /* Textarea do resumo do caso tinha white-space:pre (não quebra
+         linha) → forçava scroll horizontal. No celular, deixa quebrar. */
+      #caseSummaryText {
+        white-space: pre-wrap !important;
+        font-size: 12px !important;
+      }
+
+      /* Navegação rápida do prontuário: rola lateralmente sem espremer */
+      .prontuario-nav {
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        flex-wrap: nowrap;
+      }
+      .prontuario-nav-btn {
+        flex: 0 0 auto;
+      }
+
+      /* Botões de ação em geral: alvo de toque mínimo confortável */
+      .primary, .btn-soap, .btn-secondary-outline {
+        min-height: 42px;
+      }
     }
   </style>
 </head>
@@ -1417,6 +1519,7 @@
             <div class="page-subtitle" id="patientDetailSubtitle">—</div>
           </div>
           <button class="primary" onclick="openCaseSummary()" style="margin-top:0; white-space:nowrap;">📋 Resumo do caso</button>
+          <button class="primary" onclick="openDocsModal()" style="margin-top:0; white-space:nowrap; background:#0d9488;">📄 Documentos</button>
         </div>
 
         <div class="patient-legend">
@@ -1431,12 +1534,36 @@
         <!-- [PRONTUARIO-NAV] Menu horizontal de navegação rápida entre cards.
              Sticky pra acompanhar o scroll. Clicar = scroll suave até o card. -->
         <div class="prontuario-nav">
+          <button class="prontuario-nav-btn" onclick="scrollToCard('card-timeline')">📈 Linha do tempo</button>
           <button class="prontuario-nav-btn" onclick="scrollToCard('card-dados')">📋 Dados</button>
           <button class="prontuario-nav-btn" onclick="scrollToCard('card-consultas')">🩺 Consultas</button>
           <button class="prontuario-nav-btn" onclick="scrollToCard('card-medicacoes')">💊 Medicações</button>
           <button class="prontuario-nav-btn" onclick="scrollToCard('card-exames')">🧪 Exames</button>
           <button class="prontuario-nav-btn" onclick="scrollToCard('card-exames-imagem')">🩻 Imagem</button>
           <button class="prontuario-nav-btn" onclick="scrollToCard('card-analises')">📊 Análises</button>
+        </div>
+
+        <!-- [CLINICAL-PROFILE] Faixa de segurança: alergias/comorbidades.
+             Fica ANTES de tudo de propósito — é informação de segurança
+             que o médico precisa ver antes de prescrever. -->
+        <div id="clinicalProfileBanner"
+             style="border-radius:10px; padding:14px 16px; margin-bottom:16px;
+                    border:1px solid #e5e7eb; background:#f9fafb;">
+          <div style="display:flex; justify-content:space-between; align-items:center; gap:10px; flex-wrap:wrap;">
+            <strong style="font-size:15px; color:#1f2937;">⚠️ Alergias e comorbidades</strong>
+            <button class="primary" style="margin:0; padding:6px 14px; font-size:13px;"
+                    onclick="openClinicalProfileModal()">Editar</button>
+          </div>
+          <div id="clinicalProfileContent" style="margin-top:10px; font-size:14px; color:#374151;">
+            Carregando...
+          </div>
+        </div>
+
+        <!-- Card: Linha do tempo (eventos cronológicos consolidados) -->
+        <div class="card" id="card-timeline">
+          <h3>📈 Linha do tempo</h3>
+          <div class="card-subtitle">Todos os eventos do paciente em ordem cronológica (mais recente primeiro). Reúne consultas, medicações, exames e medidas — apenas reorganiza o que já está no prontuário.</div>
+          <div id="patientTimelineList">Carregando...</div>
         </div>
 
         <!-- Card: Dados básicos -->
@@ -1777,6 +1904,111 @@
         style="width:100%; min-height:340px; font-family:ui-monospace,Menlo,Consolas,monospace; font-size:12.5px; line-height:1.55; white-space:pre; overflow:auto;"></textarea>
 
       <div id="caseSummaryMessage" class="message"></div>
+    </div>
+  </div>
+
+  <!-- ====== MODAL DOCUMENTOS DE SAÍDA (imprimir e carimbar) ====== -->
+  <div id="docsModal" class="modal-backdrop hidden" onclick="closeDocsOnBackdrop(event)">
+    <div class="modal-content" style="max-width:720px;">
+      <div class="modal-header">
+        <h3>📄 Documentos</h3>
+        <button class="modal-close" onclick="closeDocsModal()" aria-label="Fechar">✕</button>
+      </div>
+
+      <div class="modal-warning">
+        Documento para <strong>imprimir, assinar e carimbar</strong>. Não tem
+        validade sem a assinatura e o carimbo do médico. Confira todo o
+        conteúdo antes de gerar — você é responsável pelo que assina.
+      </div>
+
+      <!-- Abas -->
+      <div style="display:flex; gap:6px; border-bottom:1px solid #e5e7eb; margin-bottom:14px; flex-wrap:wrap;">
+        <button class="docs-tab-btn" data-doctab="receita" onclick="switchDocTab('receita')"
+          style="border:none; background:none; padding:8px 14px; cursor:pointer; font-size:14px; border-bottom:2px solid transparent;">Receita</button>
+        <button class="docs-tab-btn" data-doctab="atestado" onclick="switchDocTab('atestado')"
+          style="border:none; background:none; padding:8px 14px; cursor:pointer; font-size:14px; border-bottom:2px solid transparent;">Atestado</button>
+        <button class="docs-tab-btn" data-doctab="pedido" onclick="switchDocTab('pedido')"
+          style="border:none; background:none; padding:8px 14px; cursor:pointer; font-size:14px; border-bottom:2px solid transparent;">Pedido de exame</button>
+      </div>
+
+      <!-- Identificação do médico (puxa do cadastro; editável aqui) -->
+      <div style="background:#f9fafb; border:1px solid #e5e7eb; border-radius:8px; padding:10px 12px; margin-bottom:14px;">
+        <div style="font-size:12px; color:#6b7280; margin-bottom:6px;">Cabeçalho do médico (puxado do seu cadastro — ajuste se necessário)</div>
+        <div style="display:flex; gap:10px; flex-wrap:wrap;">
+          <input id="docDoctorName" type="text" placeholder="Nome do médico" style="flex:1; min-width:200px;" />
+          <input id="docDoctorCrm" type="text" placeholder="CRM (ex: CRM/SP 123456)" style="flex:1; min-width:160px;" />
+        </div>
+        <div id="docCrmHint" style="font-size:12px; color:#b45309; margin-top:6px; display:none;">
+          CRM não cadastrado. Preencha aqui ou peça ao administrador para cadastrar no seu perfil.
+        </div>
+      </div>
+
+      <!-- Aba Receita -->
+      <div id="doctab-receita" class="doctab-pane">
+        <div style="font-size:13px; color:#6b7280; margin-bottom:8px;">
+          Pré-preenchida com as medicações ativas do paciente. Edite livremente — o que estiver aqui é o que será impresso.
+        </div>
+        <textarea id="docReceitaBody" style="width:100%; min-height:220px; font-size:14px; line-height:1.6;"></textarea>
+      </div>
+
+      <!-- Aba Atestado -->
+      <div id="doctab-atestado" class="doctab-pane" style="display:none;">
+        <label>Texto do atestado</label>
+        <textarea id="docAtestadoBody" style="width:100%; min-height:160px; font-size:14px; line-height:1.6;"
+          placeholder="Ex: Atesto, para os devidos fins, que o(a) paciente acima necessita de afastamento de suas atividades por X dia(s), a partir de DD/MM/AAAA, por motivo de saúde."></textarea>
+        <label style="margin-top:10px;">CID (opcional)</label>
+        <input id="docAtestadoCid" type="text" placeholder="Deixe em branco para preservar o sigilo do diagnóstico" style="width:100%;" />
+        <div style="font-size:12px; color:#6b7280; margin-top:4px;">
+          Informar CID é opcional e expõe o diagnóstico no documento. Inclua apenas com ciência do paciente.
+        </div>
+      </div>
+
+      <!-- Aba Pedido de exame -->
+      <div id="doctab-pedido" class="doctab-pane" style="display:none;">
+        <label>Exames solicitados</label>
+        <textarea id="docPedidoBody" style="width:100%; min-height:200px; font-size:14px; line-height:1.6;"
+          placeholder="Liste os exames solicitados, um por linha. Ex:&#10;- Hemograma completo&#10;- Glicemia de jejum&#10;- TSH e T4 livre"></textarea>
+        <label style="margin-top:10px;">Indicação clínica (opcional)</label>
+        <input id="docPedidoIndicacao" type="text" placeholder="Ex: investigação de fadiga; controle de DM2" style="width:100%;" />
+      </div>
+
+      <div style="display:flex; gap:8px; margin-top:16px; flex-wrap:wrap;">
+        <button class="primary" onclick="downloadDocPDF()">⬇️ Gerar PDF para imprimir</button>
+        <button class="btn-secondary-outline" onclick="copyDocText()">📄 Copiar texto</button>
+      </div>
+
+      <div id="docsMessage" class="message"></div>
+    </div>
+  </div>
+
+  <!-- ====== MODAL ALERGIAS / COMORBIDADES ====== -->
+  <div id="clinicalProfileModal" class="modal-backdrop hidden" onclick="closeClinicalProfileOnBackdrop(event)">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3>⚠️ Alergias e comorbidades</h3>
+        <button class="modal-close" onclick="closeClinicalProfileModal()" aria-label="Fechar">✕</button>
+      </div>
+
+      <div class="modal-warning">
+        Informação de segurança do paciente. Descreva com texto livre.
+        Campo deixado em branco aparece como <strong>"Não registrado"</strong> —
+        o sistema não assume ausência de alergia.
+      </div>
+
+      <label>Alergias</label>
+      <textarea id="cpAllergies" placeholder="Ex: Penicilina (anafilaxia); dipirona; látex. Descreva reação se souber."
+                style="min-height:80px;"></textarea>
+
+      <label>Condições crônicas / comorbidades</label>
+      <textarea id="cpChronic" placeholder="Ex: Hipertensão; diabetes tipo 2; asma; hipotireoidismo."
+                style="min-height:80px;"></textarea>
+
+      <div class="modal-actions">
+        <button class="btn-secondary-outline" onclick="closeClinicalProfileModal()">Cancelar</button>
+        <button class="primary" onclick="saveClinicalProfile()">Salvar</button>
+      </div>
+
+      <div id="clinicalProfileMessage" class="message"></div>
     </div>
   </div>
 
@@ -2188,7 +2420,8 @@
         localStorage.setItem("doctorData", JSON.stringify({
           doctorId: doctorPayload.id,
           name: doctorPayload.name,
-          email: doctorPayload.email
+          email: doctorPayload.email,
+          crm: doctorPayload.crm || null
         }));
 
         setMessage("loginMessage", "success", `Bem-vindo(a) ${doctorPayload.name || ""}!`);
@@ -2435,6 +2668,154 @@
     }
 
     // ============================================================
+    // [CLINICAL-PROFILE] Alergias e comorbidades do paciente
+    // Faixa de segurança no topo do prontuário + edição em modal.
+    // Campo vazio = "Não registrado" (NÃO assume "sem alergia").
+    // Também alimenta o resumo do caso (caseSummaryData.clinicalProfile).
+    // ============================================================
+
+    async function loadClinicalProfile(phone) {
+      const content = document.getElementById("clinicalProfileContent");
+      if (content) content.textContent = "Carregando...";
+
+      try {
+        const token = getToken();
+        const response = await fetch(
+          `${API_URL}/patients/${encodeURIComponent(phone)}/clinical-profile`,
+          { method: "GET", headers: { "Authorization": `Bearer ${token}` } }
+        );
+        const data = await response.json();
+        if (!response.ok) {
+          throw new Error(data.error || "Erro ao carregar perfil clínico");
+        }
+
+        // Guarda no estado do resumo do caso (se for o paciente atual).
+        if (caseSummaryData && caseSummaryData.phone === phone) {
+          caseSummaryData.clinicalProfile = {
+            allergies: data.allergies || null,
+            chronicConditions: data.chronicConditions || null,
+          };
+        }
+
+        renderClinicalProfile(data);
+      } catch (error) {
+        if (content) content.textContent = error.message;
+      }
+    }
+
+    function renderClinicalProfile(data) {
+      const banner = document.getElementById("clinicalProfileBanner");
+      const content = document.getElementById("clinicalProfileContent");
+      if (!banner || !content) return;
+
+      const allergies = (data && data.allergies) ? String(data.allergies).trim() : "";
+      const chronic = (data && data.chronicConditions) ? String(data.chronicConditions).trim() : "";
+
+      // Cor da faixa: vermelha se há alergia registrada (alerta de
+      // segurança); âmbar se só comorbidade; neutra se nada registrado.
+      if (allergies) {
+        banner.style.background = "#fef2f2";
+        banner.style.border = "1px solid #fca5a5";
+      } else if (chronic) {
+        banner.style.background = "#fffbeb";
+        banner.style.border = "1px solid #fde68a";
+      } else {
+        banner.style.background = "#f9fafb";
+        banner.style.border = "1px solid #e5e7eb";
+      }
+
+      content.replaceChildren();
+
+      const mk = (label, value, danger) => {
+        const wrap = document.createElement("div");
+        wrap.style.marginBottom = "6px";
+        const l = document.createElement("span");
+        l.style.cssText = "font-weight:600; color:#1f2937;";
+        l.textContent = label + ": ";
+        wrap.appendChild(l);
+        const v = document.createElement("span");
+        if (value) {
+          v.textContent = value;
+          v.style.color = danger ? "#991b1b" : "#374151";
+          if (danger) v.style.fontWeight = "600";
+        } else {
+          v.textContent = "Não registrado";
+          v.style.color = "#9ca3af";
+          v.style.fontStyle = "italic";
+        }
+        wrap.appendChild(v);
+        return wrap;
+      };
+
+      content.appendChild(mk("Alergias", allergies, true));
+      content.appendChild(mk("Comorbidades", chronic, false));
+
+      if (data && data.updatedAt) {
+        const meta = document.createElement("div");
+        meta.style.cssText = "font-size:12px; color:#9ca3af; margin-top:8px;";
+        let txt = "Atualizado em " + new Date(data.updatedAt).toLocaleString(
+          "pt-BR", { timeZone: "America/Sao_Paulo" });
+        if (data.updatedByDoctorName) txt += " · por " + data.updatedByDoctorName;
+        meta.textContent = txt;
+        content.appendChild(meta);
+      }
+    }
+
+    function openClinicalProfileModal() {
+      if (!currentPatientPhone) {
+        alert("Abra um paciente primeiro.");
+        return;
+      }
+      // Pré-preenche com o que está no estado (se já carregado).
+      const cp = (caseSummaryData && caseSummaryData.clinicalProfile) || {};
+      document.getElementById("cpAllergies").value = cp.allergies || "";
+      document.getElementById("cpChronic").value = cp.chronicConditions || "";
+      clearMessage("clinicalProfileMessage");
+      document.getElementById("clinicalProfileModal").classList.remove("hidden");
+    }
+
+    function closeClinicalProfileModal() {
+      document.getElementById("clinicalProfileModal").classList.add("hidden");
+    }
+
+    function closeClinicalProfileOnBackdrop(event) {
+      if (event.target.id === "clinicalProfileModal") closeClinicalProfileModal();
+    }
+
+    async function saveClinicalProfile() {
+      if (!currentPatientPhone) return;
+      const allergies = document.getElementById("cpAllergies").value.trim();
+      const chronicConditions = document.getElementById("cpChronic").value.trim();
+
+      try {
+        const token = getToken();
+        const response = await fetch(
+          `${API_URL}/patients/${encodeURIComponent(currentPatientPhone)}/clinical-profile`,
+          {
+            method: "PUT",
+            headers: {
+              "Content-Type": "application/json",
+              "Authorization": `Bearer ${token}`
+            },
+            body: JSON.stringify({ allergies, chronicConditions })
+          }
+        );
+        const data = await response.json().catch(() => ({}));
+        if (!response.ok) {
+          throw new Error(data.error || "Erro ao salvar");
+        }
+
+        setMessage("clinicalProfileMessage", "success", "✅ Salvo.");
+        setTimeout(() => {
+          closeClinicalProfileModal();
+          loadClinicalProfile(currentPatientPhone);
+        }, 900);
+      } catch (error) {
+        setMessage("clinicalProfileMessage", "error", error.message);
+      }
+    }
+
+    // ============================================================
     // [CASE-SUMMARY] Resumo do caso — transferência de cuidado
     // Monta texto consolidado + PDF a partir dos dados já carregados
     // pelo prontuário (não refaz requisição). PDF gerado no navegador
@@ -2593,6 +2974,16 @@
       L.push(`Nome: ${p.name || "—"}`);
       L.push(`Telefone: ${p.phone || d.phone || "—"}`);
       L.push(`Idade: ${p.patientAge ? p.patientAge + " anos" : "—"}`);
+      L.push("");
+
+      // --- Alergias e comorbidades (segurança — vem cedo no documento) ---
+      L.push("ALERGIAS E COMORBIDADES");
+      L.push(sub);
+      const cp = d.clinicalProfile || {};
+      const cpAll = cp.allergies ? String(cp.allergies).trim() : "";
+      const cpChr = cp.chronicConditions ? String(cp.chronicConditions).trim() : "";
+      L.push(`Alergias: ${cpAll || "NÃO REGISTRADO (não assumir ausência)"}`);
+      L.push(`Comorbidades: ${cpChr || "Não registrado"}`);
       L.push("");
 
       // --- Antropometria / sinais vitais ---
@@ -2817,6 +3208,212 @@
       } catch (e) {
         setMessage("caseSummaryMessage", "error",
           (e && e.message) ? e.message : "Erro ao gerar PDF. Você ainda pode copiar o texto.");
+      }
+    }
+
+    // ============================================================
+    // [DOC-OUTPUT] Documentos de saída — receita / atestado / pedido
+    // Para IMPRIMIR, ASSINAR e CARIMBAR. Sem validade digital.
+    // Conteúdo vem do prontuário (medicações ativas → receita) e/ou
+    // é digitado pelo médico. Cabeçalho do médico = cadastro (token),
+    // editável no modal. PDF gerado no navegador (reusa loadJsPdf).
+    //
+    // O sistema NÃO inventa CRM nem assina nada. O rodapé do PDF deixa
+    // explícito que o documento só vale assinado e carimbado.
+    // Casos específicos (medicamento controlado, CID/sigilo) seguem
+    // para a pauta do consultor regulatório — não resolvidos aqui.
+    // ============================================================
+
+    let currentDocTab = "receita";
+
+    function switchDocTab(tab) {
+      currentDocTab = tab;
+      ["receita", "atestado", "pedido"].forEach((t) => {
+        const pane = document.getElementById("doctab-" + t);
+        if (pane) pane.style.display = (t === tab) ? "block" : "none";
+        const btn = document.querySelector(`.docs-tab-btn[data-doctab="${t}"]`);
+        if (btn) {
+          btn.style.borderBottomColor = (t === tab) ? "#0d9488" : "transparent";
+          btn.style.fontWeight = (t === tab) ? "600" : "400";
+          btn.style.color = (t === tab) ? "#0f766e" : "#6b7280";
+        }
+      });
+    }
+
+    function openDocsModal() {
+      if (!currentPatientPhone || !caseSummaryData) {
+        alert("Abra um paciente e aguarde o prontuário carregar.");
+        return;
+      }
+
+      // Cabeçalho do médico — do cadastro (doctorData salvo no login).
+      const doc = getDoctor();
+      document.getElementById("docDoctorName").value = doc.name || "";
+      document.getElementById("docDoctorCrm").value = doc.crm || "";
+      document.getElementById("docCrmHint").style.display = doc.crm ? "none" : "block";
+
+      // Receita pré-preenchida com medicações ATIVAS (não arquivadas).
+      const meds = (caseSummaryData.medications || [])
+        .filter((m) => !m.archivedAt);
+      let receita = "";
+      if (!meds.length) {
+        receita = "(Nenhuma medicação ativa no prontuário. Escreva a prescrição abaixo.)\n\n";
+      } else {
+        meds.forEach((m, i) => {
+          const nome = `${m.medicationName || "—"}${m.dose ? " " + m.dose : ""}`;
+          receita += `${i + 1}) ${nome}\n`;
+          if (m.scheduleTimes) receita += `   Horários: ${m.scheduleTimes}\n`;
+          if (m.instructions) receita += `   ${m.instructions}\n`;
+          receita += "\n";
+        });
+      }
+      document.getElementById("docReceitaBody").value = receita.trimEnd();
+
+      // Atestado e pedido começam conforme placeholders (nada a gerar).
+      document.getElementById("docAtestadoBody").value = "";
+      document.getElementById("docAtestadoCid").value = "";
+      document.getElementById("docPedidoBody").value = "";
+      document.getElementById("docPedidoIndicacao").value = "";
+
+      clearMessage("docsMessage");
+      switchDocTab("receita");
+      document.getElementById("docsModal").classList.remove("hidden");
+    }
+
+    function closeDocsModal() {
+      document.getElementById("docsModal").classList.add("hidden");
+    }
+
+    function closeDocsOnBackdrop(event) {
+      if (event.target.id === "docsModal") closeDocsModal();
+    }
+
+    // Monta o texto do documento da aba ativa. Retorna { titulo, texto }.
+    function buildDocText() {
+      const p = (caseSummaryData && caseSummaryData.patient) || {};
+      const nome = document.getElementById("docDoctorName").value.trim();
+      const crm = document.getElementById("docDoctorCrm").value.trim();
+      const hoje = new Date().toLocaleDateString("pt-BR", { timeZone: "America/Sao_Paulo" });
+
+      const L = [];
+      let titulo = "";
+
+      if (currentDocTab === "receita") {
+        titulo = "RECEITUÁRIO MÉDICO";
+      } else if (currentDocTab === "atestado") {
+        titulo = "ATESTADO MÉDICO";
+      } else {
+        titulo = "SOLICITAÇÃO DE EXAMES";
+      }
+
+      L.push(titulo);
+      L.push("");
+      L.push(`Médico(a): ${nome || "_______________________________"}`);
+      L.push(`CRM: ${crm || "____________________"}`);
+      L.push("");
+      L.push(`Paciente: ${p.name || "—"}`);
+      const idade = p.patientAge ? `${p.patientAge} anos` : "";
+      L.push(`${idade ? "Idade: " + idade : ""}`.trim() || "Idade: —");
+      L.push("-".repeat(56));
+      L.push("");
+
+      if (currentDocTab === "receita") {
+        L.push(document.getElementById("docReceitaBody").value.trim() || "(sem itens)");
+      } else if (currentDocTab === "atestado") {
+        const corpo = document.getElementById("docAtestadoBody").value.trim();
+        const cid = document.getElementById("docAtestadoCid").value.trim();
+        L.push(corpo || "(texto do atestado não preenchido)");
+        if (cid) {
+          L.push("");
+          L.push(`CID: ${cid}`);
+        }
+      } else {
+        const corpo = document.getElementById("docPedidoBody").value.trim();
+        const ind = document.getElementById("docPedidoIndicacao").value.trim();
+        L.push("Solicito os exames abaixo:");
+        L.push("");
+        L.push(corpo || "(nenhum exame listado)");
+        if (ind) {
+          L.push("");
+          L.push(`Indicação clínica: ${ind}`);
+        }
+      }
+
+      L.push("");
+      L.push("");
+      L.push(`Local e data: _________________________, ${hoje}`);
+      L.push("");
+      L.push("");
+      L.push("_________________________________________");
+      L.push("Assinatura e carimbo do médico");
+      L.push("");
+      L.push("-".repeat(56));
+      L.push("Documento sem validade sem a assinatura e o carimbo do médico.");
+
+      return { titulo, texto: L.join("\n") };
+    }
+
+    function copyDocText() {
+      const { texto } = buildDocText();
+      const tmp = document.createElement("textarea");
+      tmp.value = texto;
+      document.body.appendChild(tmp);
+      tmp.select();
+      let ok = false;
+      try { ok = document.execCommand("copy"); } catch (e) { ok = false; }
+      if (navigator.clipboard) navigator.clipboard.writeText(texto).catch(() => {});
+      document.body.removeChild(tmp);
+      setMessage("docsMessage", ok ? "success" : "error",
+        ok ? "✅ Texto copiado." : "Não foi possível copiar — selecione manualmente.");
+    }
+
+    async function downloadDocPDF() {
+      setMessage("docsMessage", "", "Gerando PDF...");
+      try {
+        const { titulo, texto } = buildDocText();
+        await loadJsPdf();
+        const { jsPDF } = window.jspdf;
+        const doc = new jsPDF({ unit: "pt", format: "a4" });
+
+        const marginX = 50;
+        const marginY = 56;
+        const maxWidth = 595 - marginX * 2;
+        const pageH = 842;
+
+        // Título maior; corpo em fonte legível (não monoespaçada — é
+        // documento pra paciente/terceiro, não relatório técnico).
+        doc.setFont("helvetica", "bold");
+        doc.setFontSize(14);
+        let y = marginY;
+        doc.text(titulo, marginX, y);
+        y += 24;
+
+        doc.setFont("helvetica", "normal");
+        doc.setFontSize(11);
+        const lineH = 16;
+
+        // Pula a primeira linha (título já desenhado) e o vazio seguinte.
+        const lines = texto.split("\n").slice(2);
+        lines.forEach((raw) => {
+          const wrapped = doc.splitTextToSize(raw, maxWidth);
+          wrapped.forEach((ln) => {
+            if (y > pageH - marginY) { doc.addPage(); y = marginY; }
+            doc.text(ln, marginX, y);
+            y += lineH;
+          });
+        });
+
+        const p = (caseSummaryData && caseSummaryData.patient) || {};
+        const safeName = String(p.name || "paciente")
+          .normalize("NFD").replace(/[\u0300-\u036f]/g, "")
+          .replace(/[^a-zA-Z0-9]+/g, "_").slice(0, 40);
+        const stamp = new Date().toISOString().slice(0, 10);
+        doc.save(`${currentDocTab}_${safeName}_${stamp}.pdf`);
+
+        setMessage("docsMessage", "success", "✅ PDF gerado. Imprima, assine e carimbe.");
+      } catch (e) {
+        setMessage("docsMessage", "error",
+          (e && e.message) ? e.message : "Erro ao gerar PDF. Você pode copiar o texto.");
       }
     }
 
@@ -3205,6 +3802,7 @@
           exams: data.exams || [],
           analyses: data.analyses || [],
           anthro: [],
+          clinicalProfile: { allergies: null, chronicConditions: null },
         };
 
         renderPatientHeader(data.patient, data.linkedToMe);
@@ -3221,6 +3819,14 @@
         renderPatientImaging(imagingExams);
 
         renderPatientAnalyses(data.analyses || []);
+
+        // [TIMELINE] Render inicial — sem antropometria ainda (endpoint
+        // separado). Re-renderiza ao fim de loadPatientAnthro.
+        renderPatientTimeline(false);
+
+        // [CLINICAL-PROFILE] Carrega alergias/comorbidades (endpoint
+        // separado). Faixa de segurança no topo do prontuário.
+        loadClinicalProfile(currentPatientPhone);
 
         // [ANTHRO] Carrega histórico antropométrico (endpoint separado)
         loadPatientAnthro(currentPatientPhone);
@@ -3315,6 +3921,10 @@
         }
 
         renderAnthroList(data);
+
+        // [TIMELINE] Agora que a antropometria chegou, re-renderiza a
+        // linha do tempo completa (com as medidas incluídas).
+        renderPatientTimeline(true);
       } catch (error) {
         container.textContent = error.message;
       }
@@ -5231,6 +5841,209 @@
 
       // Formato desconhecido — devolve original (não inventa data)
       return s;
+    }
+
+    // ============================================================
+    // [TIMELINE] Linha do tempo do paciente
+    // Reúne eventos de caseSummaryData (consultas, medicações, exames
+    // lab/imagem, antropometria) numa lista cronológica decrescente.
+    // NÃO faz fetch — só reorganiza o que o prontuário já carregou.
+    // NÃO interpreta nada clinicamente — só ordena por data.
+    //
+    // Datas por evento (escolha honesta, exibida quando ambígua):
+    //  - Consulta: concludedAt (concluída) senão acceptedAt
+    //  - Medicação: startDate/createdAt (prescrita) + archivedAt (fim)
+    //  - Exame: examDate (data real do laudo) senão uploadedAt (anexo)
+    //  - Antropometria: measuredAt
+    // Evento sem data utilizável → bloco "Sem data definida" (não some).
+    // ============================================================
+
+    function tlParseDate(v) {
+      if (!v) return null;
+      const d = new Date(v);
+      return isNaN(d.getTime()) ? null : d;
+    }
+
+    function tlFmt(dateObj) {
+      try {
+        return dateObj.toLocaleString("pt-BR", {
+          timeZone: "America/Sao_Paulo",
+          day: "2-digit", month: "2-digit", year: "numeric",
+          hour: "2-digit", minute: "2-digit",
+        });
+      } catch (e) {
+        return "—";
+      }
+    }
+
+    function renderPatientTimeline(anthroReady) {
+      const container = document.getElementById("patientTimelineList");
+      if (!container) return;
+
+      const d = caseSummaryData;
+      if (!d) {
+        container.textContent = "—";
+        return;
+      }
+
+      const events = []; // { date: Date|null, kind, color, title, lines:[], phone }
+      const noDate = [];
+
+      function push(date, kind, color, title, lines, phone) {
+        const ev = { date, kind, color, title, lines: lines || [], phone: phone || null };
+        if (date) events.push(ev);
+        else noDate.push(ev);
+      }
+
+      // --- Consultas ---
+      (d.appointments || []).forEach((a) => {
+        const dt = tlParseDate(a.concludedAt) || tlParseDate(a.acceptedAt);
+        const concluida = a.status === "concluida";
+        const lines = [];
+        lines.push(`Médico: ${a.doctorName || "—"}`);
+        if (a.reason) lines.push(`Motivo: ${a.reason}`);
+        if (concluida && a.closingNotes && a.closingNotes.plan) {
+          lines.push(`Plano (SOAP): ${String(a.closingNotes.plan).replace(/\s*\n\s*/g, " ")}`);
+        }
+        push(dt, "Consulta", "#2563eb",
+          concluida ? "Consulta concluída" : "Consulta iniciada",
+          lines, a.phone);
+      });
+
+      // --- Medicações: prescrição (e arquivamento, se houver) ---
+      (d.medications || []).forEach((m) => {
+        const nome = `${m.medicationName || "—"}${m.dose ? " " + m.dose : ""}`;
+        const startDt = tlParseDate(m.startDate) || tlParseDate(m.createdAt);
+        const sLines = [];
+        if (m.scheduleTimes) sLines.push(`Horários: ${m.scheduleTimes}`);
+        if (m.instructions) sLines.push(`Orientações: ${m.instructions}`);
+        if (m.prescribedBy) sLines.push(`Prescrita por: ${m.prescribedBy}`);
+        push(startDt, "Medicação", "#7c3aed",
+          `Medicação prescrita — ${nome}`, sLines, null);
+
+        const archDt = tlParseDate(m.archivedAt);
+        if (archDt) {
+          push(archDt, "Medicação", "#9ca3af",
+            `Medicação arquivada — ${nome}`, [], null);
+        }
+      });
+
+      // --- Exames (lab + imagem) ---
+      (d.exams || []).forEach((e) => {
+        const isImg = e.examType === "imaging";
+        const realDt = tlParseDate(e.examDate) || tlParseDate(e.analysisExamDate);
+        const upDt = tlParseDate(e.uploadedAt);
+        const dt = realDt || upDt;
+        const lines = [];
+        if (!realDt && upDt) {
+          lines.push("(data do anexo — laudo não informou data do exame)");
+        }
+        if (e.doctorName) lines.push(`Anexado por: ${e.doctorName}`);
+        push(dt, isImg ? "Imagem" : "Exame",
+          isImg ? "#0891b2" : "#0d9488",
+          `${isImg ? "Exame de imagem" : "Exame laboratorial"} — ${e.fileName || "arquivo"}`,
+          lines, null);
+      });
+
+      // --- Antropometria ---
+      if (anthroReady) {
+        (d.anthro || []).forEach((r) => {
+          const dt = tlParseDate(r.measuredAt);
+          const parts = [];
+          if (r.weightKg != null) parts.push(`Peso ${r.weightKg} kg`);
+          if (r.heightCm != null) parts.push(`Altura ${r.heightCm} cm`);
+          if (r.waistCm != null) parts.push(`Circ. abd. ${r.waistCm} cm`);
+          if (r.systolicBP != null || r.diastolicBP != null) {
+            parts.push(`PA ${r.systolicBP != null ? r.systolicBP : "?"}/${r.diastolicBP != null ? r.diastolicBP : "?"} mmHg`);
+          }
+          if (r.heartRate != null) parts.push(`FC ${r.heartRate} bpm`);
+          const who = r.source === "bot"
+            ? "Informado pelo paciente (WhatsApp)"
+            : (r.doctorName ? `Registrado por: ${r.doctorName}` : "Registrado pelo médico");
+          push(dt, "Medidas", "#d97706",
+            "Medidas registradas",
+            [parts.join(" • ") || "sem valores", who], null);
+        });
+      }
+
+      // Ordena por data, mais recente primeiro.
+      events.sort((x, y) => y.date.getTime() - x.date.getTime());
+
+      container.replaceChildren();
+
+      if (!events.length && !noDate.length) {
+        container.textContent = "Nenhum evento registrado para este paciente.";
+        return;
+      }
+
+      // Aviso enquanto antropometria não chegou (re-render depois).
+      if (!anthroReady) {
+        const loading = document.createElement("div");
+        loading.style.cssText = "font-size:12px; color:#9ca3af; margin-bottom:10px;";
+        loading.textContent = "Carregando medidas antropométricas...";
+        container.appendChild(loading);
+      }
+
+      function eventNode(ev) {
+        const item = document.createElement("div");
+        item.style.cssText =
+          "border:1px solid #e5e7eb; border-left:4px solid " + ev.color +
+          "; border-radius:8px; padding:10px 12px; margin-bottom:8px; background:#fff;";
+
+        const head = document.createElement("div");
+        head.style.cssText =
+          "display:flex; justify-content:space-between; gap:10px; align-items:baseline; flex-wrap:wrap;";
+
+        const left = document.createElement("div");
+        left.innerHTML =
+          `<strong style="font-size:14px;">${escapeHtmlManual(ev.title)}</strong>`;
+        head.appendChild(left);
+
+        const tag = document.createElement("span");
+        tag.style.cssText =
+          "font-size:11px; font-weight:600; text-transform:uppercase; padding:2px 8px; " +
+          "border-radius:10px; background:#f3f4f6; color:#4b5563; white-space:nowrap;";
+        tag.textContent = ev.kind;
+        head.appendChild(tag);
+        item.appendChild(head);
+
+        const dateLine = document.createElement("div");
+        dateLine.style.cssText = "font-size:12px; color:#6b7280; margin-top:3px;";
+        dateLine.textContent = ev.date ? tlFmt(ev.date) : "sem data definida";
+        item.appendChild(dateLine);
+
+        ev.lines.forEach((ln) => {
+          const p = document.createElement("div");
+          p.style.cssText = "font-size:13px; color:#374151; margin-top:5px;";
+          p.textContent = ln;
+          item.appendChild(p);
+        });
+
+        if (ev.phone) {
+          const btn = document.createElement("button");
+          btn.className = "btn-soap";
+          btn.style.cssText = "margin-top:8px; padding:5px 11px; font-size:12px;";
+          btn.textContent = "Abrir prontuário";
+          btn.addEventListener("click", () => openPatientDetail(ev.phone));
+          item.appendChild(btn);
+        }
+        return item;
+      }
+
+      events.forEach((ev) => container.appendChild(eventNode(ev)));
+
+      if (noDate.length) {
+        const sec = document.createElement("div");
+        sec.style.cssText =
+          "margin-top:14px; padding:12px 14px; background:#f9fafb; " +
+          "border:1px solid #e5e7eb; border-radius:8px;";
+        const t = document.createElement("div");
+        t.style.cssText = "font-weight:600; font-size:13px; color:#374151; margin-bottom:8px;";
+        t.textContent = `Sem data definida (${noDate.length})`;
+        sec.appendChild(t);
+        noDate.forEach((ev) => sec.appendChild(eventNode(ev)));
+        container.appendChild(sec);
+      }
     }
 
     function renderPatientAnalyses(analyses) {

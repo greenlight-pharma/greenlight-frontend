@@ -1004,6 +1004,9 @@
             <label>Telefone (WhatsApp)</label>
             <input id="doctorPhone" type="text" placeholder="Ex: 5512999999999" />
 
+            <label>CRM</label>
+            <input id="doctorCrm" type="text" placeholder="Ex: CRM/SP 123456" />
+
             <label>Senha provisória</label>
             <input id="doctorPassword" type="password" placeholder="Senha provisória para o médico" />
 
@@ -1535,6 +1538,7 @@
       const name = document.getElementById("doctorName").value.trim();
       const email = document.getElementById("doctorEmail").value.trim();
       const phone = onlyNumbers(document.getElementById("doctorPhone").value);
+      const crm = document.getElementById("doctorCrm").value.trim();
       const password = document.getElementById("doctorPassword").value;
 
       if (!name || !email || !password) {
@@ -1550,7 +1554,7 @@
             "Content-Type": "application/json",
             "Authorization": `Bearer ${token}`
           },
-          body: JSON.stringify({ name, email, phone, password })
+          body: JSON.stringify({ name, email, phone, crm, password })
         });
 
         const data = await response.json();
@@ -1563,6 +1567,7 @@
         document.getElementById("doctorName").value = "";
         document.getElementById("doctorEmail").value = "";
         document.getElementById("doctorPhone").value = "";
+        document.getElementById("doctorCrm").value = "";
         document.getElementById("doctorPassword").value = "";
 
         loadDoctors();
