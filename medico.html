@@ -5058,7 +5058,6 @@
           analysisBtn.textContent = hasAnalysis ? "🔍 Ver análise clínica" : "🧪 Gerar análise clínica";
           analysisBtn.className = "btn-soap";
           analysisBtn.style.background = hasAnalysis ? "#0891b2" : "#0ea5e9";
-          analysisBtn.addEventListener("click", () => goToAnalysisFromProntuario(apt.id));
           actions.appendChild(analysisBtn);
 
           const concludeBtn = document.createElement("button");
@@ -5073,6 +5072,21 @@
           actions.appendChild(concludeBtn);
 
           item.appendChild(actions);
+
+          // [ANALISE-INLINE] A análise renderiza AQUI MESMO, dentro do
+          // card Consultas do prontuário — não manda mais pra outra
+          // página (era o vai-e-volta que incomodava). Reusa
+          // generateOrShowAnalysis/renderAnalysis já existentes; só
+          // muda ONDE renderiza. O botão Encerrar/SOAP (acima) fica
+          // logo junto: lê a análise e encerra sem trocar de tela.
+          const inlineAnalysis = document.createElement("div");
+          inlineAnalysis.id = `inlineAnalysis-${apt.id}`;
+          inlineAnalysis.style.marginTop = "14px";
+          item.appendChild(inlineAnalysis);
+
+          analysisBtn.addEventListener("click", () => {
+            generateOrShowAnalysisInline(apt.id, analysisBtn, inlineAnalysis);
+          });
         }
 
         container.appendChild(item);
@@ -7699,6 +7713,57 @@
       } finally {
         btn.disabled = false;
         btn.textContent = originalText;
+      }
+    }
+
+    // [ANALISE-INLINE] Variante de generateOrShowAnalysis que renderiza
+    // no container DO CARD do prontuário (passado como parâmetro), em
+    // vez do container fixo da página Consultas. Mesma lógica de fetch
+    // e renderAnalysis — só muda ONDE aparece. NÃO chama
+    // loadMyAppointments no sucesso de propósito: recarregar a lista
+    // recriaria o card inteiro e apagaria a análise que acabou de
+    // renderizar aqui (bug sutil que seria fácil introduzir).
+    async function generateOrShowAnalysisInline(appointmentId, btn, targetContainer) {
+      const originalText = btn.textContent;
+      btn.disabled = true;
+      btn.textContent = "Carregando...";
+
+      try {
+        const token = getToken();
+        const response = await fetch(
+          `${API_URL}/appointments/${appointmentId}/clinical-analysis`,
+          {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+              "Authorization": `Bearer ${token}`
+            }
+          }
+        );
+
+        const data = await response.json();
+        if (!response.ok) {
+          throw new Error(data.error || "Erro ao gerar análise");
+        }
+
+        renderAnalysis(targetContainer, data, appointmentId);
+
+        // Análise existe agora: botão vira "Ver" (não "Gerar").
+        btn.textContent = "🔍 Ver análise clínica";
+        btn.style.background = "#0891b2";
+
+        targetContainer.scrollIntoView({ behavior: "smooth", block: "start" });
+      } catch (error) {
+        targetContainer.replaceChildren();
+        const errBox = document.createElement("div");
+        errBox.className = "analysis-section";
+        errBox.style.borderLeft = "4px solid #dc2626";
+        errBox.style.background = "#fef2f2";
+        errBox.textContent = "Erro: " + error.message;
+        targetContainer.appendChild(errBox);
+        btn.textContent = originalText;
+      } finally {
+        btn.disabled = false;
       }
     }
 
