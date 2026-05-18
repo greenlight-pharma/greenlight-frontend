@@ -2540,6 +2540,26 @@
       let acc = "";
       let finishedOk = false;
       let errored = false;
+      // [AUTOSCROLL] Throttle: rolar a cada token trava a UI e briga
+      // com o médico se ele subir pra reler. Rola no máximo a cada
+      // ~400ms, e PARA de auto-rolar se o usuário rolar manualmente
+      // pra cima (sinal de que quer reler — não sequestrar o scroll).
+      let lastScroll = 0;
+      let userScrolledUp = false;
+      const onUserScroll = () => {
+        const nearBottom =
+          window.innerHeight + window.scrollY >=
+          document.body.scrollHeight - 120;
+        userScrolledUp = !nearBottom;
+      };
+      window.addEventListener("scroll", onUserScroll, { passive: true });
+      const maybeScroll = () => {
+        if (userScrolledUp) return;
+        const now = Date.now();
+        if (now - lastScroll < 400) return;
+        lastScroll = now;
+        answerEl.scrollIntoView({ block: "end", behavior: "smooth" });
+      };
 
       try {
         const token = getToken();
@@ -2561,6 +2581,30 @@
         const decoder = new TextDecoder();
         let buffer = "";
 
+        // [B-PROGRESSIVO] Render formatado conforme chega, com proteção
+        // contra marcação quebrada: formata só até a última linha
+        // COMPLETA (até o último \n); a linha final ainda em formação
+        // fica como texto cru até fechar. Evita o "salto" de um título
+        // ou negrito se reformatando no meio do token.
+        const paintProgressive = () => {
+          const lastNL = acc.lastIndexOf("\n");
+          if (lastNL === -1) {
+            // ainda não fechou nenhuma linha: tudo cru por enquanto
+            answerEl.textContent = acc;
+          } else {
+            const complete = acc.slice(0, lastNL);
+            const tail = acc.slice(lastNL + 1);
+            answerEl.innerHTML =
+              renderClinicalMarkdown(complete) +
+              (tail ? `<div style="margin:4px 0;color:#374151;">${
+                tail.replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;")
+              }</div>` : "");
+          }
+          // [AUTOSCROLL] Acompanha o texto novo (throttled, e só se o
+          // médico não tiver subido pra reler).
+          maybeScroll();
+        };
+
         while (true) {
           const { done, value } = await reader.read();
           if (done) break;
@@ -2578,8 +2622,7 @@
             if (payload.delta) {
               acc += payload.delta;
               statusEl.textContent = "";
-              // Mostra texto cru enquanto chega (rápido); formata no fim.
-              answerEl.textContent = acc;
+              paintProgressive();
             } else if (payload.done) {
               finishedOk = true;
             } else if (payload.error) {
@@ -2600,16 +2643,22 @@
           return;
         }
 
-        // Terminou OK: renderiza markdown como HTML formatado.
+        // Terminou OK: render final completo e estável (formata tudo,
+        // inclusive a última linha que estava sendo segurada).
         statusEl.textContent = "";
         answerEl.innerHTML = renderClinicalMarkdown(acc);
         discEl.style.display = "block";
+        answerEl.scrollIntoView({ block: "end", behavior: "smooth" });
       } catch (e) {
         answerEl.textContent = "";
         statusEl.textContent = e.message || "Erro ao consultar o assistente.";
         discEl.style.display = "none";
       } finally {
         btn.disabled = false;
+        // Remove o listener em QUALQUER saída (inclusive o return da
+        // resposta interrompida) — senão acumula um listener por
+        // pergunta feita. Limpeza obrigatória.
+        window.removeEventListener("scroll", onUserScroll);
       }
     }
 
