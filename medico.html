@@ -2475,6 +2475,45 @@
     // backend (prompt de sistema) — aqui só envia a pergunta e
     // mostra a resposta com o disclaimer sempre visível.
     // ============================================================
+    // [MD-RENDER] Conversor markdown->HTML mínimo, cobre só o que a IA
+    // usa (headers #, **negrito**, listas -, regra ---, quebras). Sem
+    // biblioteca externa de propósito (menos dependência/risco). Escapa
+    // HTML antes de aplicar, pra não injetar marcação vinda do texto.
+    function renderClinicalMarkdown(md) {
+      const esc = (s) => s
+        .replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+      const lines = esc(md).split("\n");
+      let html = "";
+      let inList = false;
+      const closeList = () => { if (inList) { html += "</ul>"; inList = false; } };
+      for (let raw of lines) {
+        let l = raw.trimEnd();
+        if (/^\s*---\s*$/.test(l)) { closeList(); html += "<hr style='border:none;border-top:1px solid #e5e7eb;margin:14px 0;'>"; continue; }
+        let h = l.match(/^(#{1,4})\s+(.*)$/);
+        if (h) {
+          closeList();
+          const lvl = h[1].length;
+          const size = lvl === 1 ? "17px" : lvl === 2 ? "15.5px" : "14.5px";
+          let t = h[2].replace(/\*\*(.+?)\*\*/g, "<strong>$1</strong>");
+          html += `<div style="font-weight:700;font-size:${size};margin:14px 0 6px;">${t}</div>`;
+          continue;
+        }
+        let li = l.match(/^\s*[-*]\s+(.*)$/);
+        if (li) {
+          if (!inList) { html += "<ul style='margin:6px 0 6px 18px;padding:0;'>"; inList = true; }
+          let t = li[1].replace(/\*\*(.+?)\*\*/g, "<strong>$1</strong>");
+          html += `<li style="margin:3px 0;">${t}</li>`;
+          continue;
+        }
+        closeList();
+        if (l.trim() === "") { html += "<div style='height:8px;'></div>"; continue; }
+        let t = l.replace(/\*\*(.+?)\*\*/g, "<strong>$1</strong>");
+        html += `<div style="margin:4px 0;">${t}</div>`;
+      }
+      closeList();
+      return html;
+    }
+
     async function askAssistant() {
       const q = document.getElementById("assistantQuestion").value.trim();
       const statusEl = document.getElementById("assistantStatus");
@@ -2483,6 +2522,7 @@
       const btn = document.getElementById("assistantAskBtn");
 
       answerEl.textContent = "";
+      answerEl.removeAttribute("data-raw");
       discEl.style.display = "none";
 
       if (!q) {
@@ -2497,6 +2537,10 @@
       btn.disabled = true;
       statusEl.textContent = "Consultando o assistente…";
 
+      let acc = "";
+      let finishedOk = false;
+      let errored = false;
+
       try {
         const token = getToken();
         const response = await fetch(`${API_URL}/assistant/ask`, {
@@ -2507,18 +2551,63 @@
           },
           body: JSON.stringify({ question: q }),
         });
-        const data = await response.json().catch(() => ({}));
-        if (!response.ok) {
+
+        if (!response.ok || !response.body) {
+          const data = await response.json().catch(() => ({}));
           throw new Error(data.error || "Não foi possível obter resposta agora.");
         }
 
+        const reader = response.body.getReader();
+        const decoder = new TextDecoder();
+        let buffer = "";
+
+        while (true) {
+          const { done, value } = await reader.read();
+          if (done) break;
+          buffer += decoder.decode(value, { stream: true });
+
+          // SSE: eventos separados por \n\n, cada linha "data: {...}"
+          const events = buffer.split("\n\n");
+          buffer = events.pop(); // resto incompleto fica no buffer
+          for (const ev of events) {
+            const line = ev.split("\n").find((x) => x.startsWith("data: "));
+            if (!line) continue;
+            let payload;
+            try { payload = JSON.parse(line.slice(6)); } catch (_) { continue; }
+
+            if (payload.delta) {
+              acc += payload.delta;
+              statusEl.textContent = "";
+              // Mostra texto cru enquanto chega (rápido); formata no fim.
+              answerEl.textContent = acc;
+            } else if (payload.done) {
+              finishedOk = true;
+            } else if (payload.error) {
+              errored = true;
+              statusEl.textContent = payload.error;
+            }
+          }
+        }
+
+        if (errored || !finishedOk) {
+          // Resposta interrompida: NÃO apresentar texto parcial como
+          // se fosse completa (resposta clínica truncada é perigosa).
+          answerEl.textContent = "";
+          if (!statusEl.textContent) {
+            statusEl.textContent = "Resposta interrompida. Por favor, refaça a pergunta.";
+          }
+          discEl.style.display = "none";
+          return;
+        }
+
+        // Terminou OK: renderiza markdown como HTML formatado.
         statusEl.textContent = "";
-        answerEl.textContent = data.answer || "(sem resposta)";
+        answerEl.innerHTML = renderClinicalMarkdown(acc);
         discEl.style.display = "block";
       } catch (e) {
-        statusEl.textContent = "";
         answerEl.textContent = "";
         statusEl.textContent = e.message || "Erro ao consultar o assistente.";
+        discEl.style.display = "none";
       } finally {
         btn.disabled = false;
       }
