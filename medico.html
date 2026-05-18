@@ -4332,9 +4332,11 @@
         // Recarrega lista de pacientes pra refletir novo vínculo
         await loadPatients();
 
-        // Abre prontuário do paciente recém-cadastrado
+        // Abre prontuário do paciente recém-cadastrado, já rolando até
+        // o card Consultas (o médico cadastrou "pra iniciar consulta" —
+        // leva ele à consulta, não ao topo pra caçar).
         if (data.phone) {
-          openPatientDetail(data.phone);
+          openPatientDetail(data.phone, true);
         }
       } catch (error) {
         setMessage("manualPatientMessage", "error", error.message);
@@ -4377,10 +4379,15 @@
     // [PATIENT-OVERRIDE] Snapshot dos dados básicos exibidos, pra
     // pré-preencher o modal de edição sem refetch.
     let currentPatientBasic = { name: "", patientAge: "", biologicalSex: "" };
+    // [FLUXO-CONSULTA] Quando true, após o prontuário carregar e
+    // renderizar, rola direto até o card Consultas (vindo do cadastro
+    // de paciente "pra iniciar consulta" — não fazer o médico caçar).
+    let pendingScrollToConsultas = false;
 
-    function openPatientDetail(phone) {
+    function openPatientDetail(phone, goToConsultas) {
       if (!phone) return;
       currentPatientPhone = phone;
+      pendingScrollToConsultas = !!goToConsultas;
 
       // Atualiza URL com ?patient=NUMERO pra permitir deep link / refresh
       try {
@@ -4614,6 +4621,15 @@
         // [COLLAPSIBLE] Torna cards minimizáveis (idempotente).
         // Pequeno timeout pra rodar após o DOM dos renders assentar.
         setTimeout(setupCollapsibleCards, 50);
+
+        // [FLUXO-CONSULTA] Se viemos do cadastro "pra iniciar consulta",
+        // rola até o card Consultas DEPOIS que os cards renderizaram e
+        // ficaram colapsáveis (senão rolaria pro vazio — bug de timing).
+        // scrollToCard já existe e expande o card se estiver minimizado.
+        if (pendingScrollToConsultas) {
+          pendingScrollToConsultas = false;
+          setTimeout(() => scrollToCard("card-consultas"), 120);
+        }
       } catch (error) {
         document.getElementById("patientDetailName").textContent = "Erro";
         document.getElementById("patientDetailSubtitle").textContent = error.message;
