@@ -1450,6 +1450,10 @@
           <span class="nav-icon">🩺</span>
           <span>Consultas</span>
         </button>
+        <button class="nav-btn" data-page="assistant" onclick="switchPage('assistant')">
+          <span class="nav-icon">💬</span>
+          <span>Assistente</span>
+        </button>
         <button class="nav-btn" data-page="account" onclick="switchPage('account')">
           <span class="nav-icon">🔐</span>
           <span>Alterar Senha</span>
@@ -1791,6 +1795,36 @@
                 </tr>
               </tbody>
             </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- Página: ASSISTENTE DE APOIO CLÍNICO -->
+      <section id="page-assistant" class="page">
+        <div class="page-header">
+          <h2>💬 Assistente de apoio clínico</h2>
+        </div>
+
+        <div class="card" style="max-width:820px;">
+          <div style="background:#fffbeb; border:1px solid #fcd34d; border-radius:8px; padding:12px 14px; font-size:13px; color:#92400e; margin-bottom:16px;">
+            ⚕️ <strong>Apoio ao raciocínio clínico, gerado por IA.</strong> Não é diagnóstico nem conduta. Pode conter erros ou omissões. A decisão é do médico, no contexto do paciente real, validada com fontes oficiais.
+          </div>
+
+          <label style="font-weight:600;">Sua dúvida clínica</label>
+          <div style="font-size:12px; color:#6b7280; margin:4px 0 8px;">
+            Descreva o caso de forma abstrata (ex.: "paciente 34 anos, cefaleia há 2 dias, intensidade 5"). <strong>Não inclua dados que identifiquem o paciente</strong> (nome, CPF, telefone).
+          </div>
+          <textarea id="assistantQuestion" rows="4" placeholder="Ex: paciente 34 anos com cefaleia há 2 dias, intensidade 5/10, sem outros sintomas. Quais hipóteses considerar?" maxlength="1500" style="width:100%; box-sizing:border-box;"></textarea>
+
+          <div style="margin-top:12px;">
+            <button class="primary" id="assistantAskBtn" onclick="askAssistant()">Perguntar</button>
+          </div>
+
+          <div id="assistantStatus" style="margin-top:14px; font-size:14px; color:#6b7280;"></div>
+          <div id="assistantAnswer" style="margin-top:14px; white-space:pre-wrap; line-height:1.55; font-size:15px;"></div>
+
+          <div id="assistantAnswerDisclaimer" style="display:none; margin-top:16px; padding-top:12px; border-top:1px solid #e5e7eb; font-size:12px; color:#92400e;">
+            ⚕️ Resposta de apoio gerada por IA — não é diagnóstico nem conduta. Valide no contexto do paciente real e com fontes oficiais antes de qualquer decisão.
           </div>
         </div>
       </section>
@@ -2433,6 +2467,61 @@
 
       // Em mobile, fecha a sidebar ao trocar de página (UX padrão de drawer)
       closeSidebar();
+    }
+
+    // ============================================================
+    // [ASSISTENTE CLÍNICO] Pergunta-e-resposta avulsa, apoio ao
+    // raciocínio do médico. O enquadramento de segurança vive no
+    // backend (prompt de sistema) — aqui só envia a pergunta e
+    // mostra a resposta com o disclaimer sempre visível.
+    // ============================================================
+    async function askAssistant() {
+      const q = document.getElementById("assistantQuestion").value.trim();
+      const statusEl = document.getElementById("assistantStatus");
+      const answerEl = document.getElementById("assistantAnswer");
+      const discEl = document.getElementById("assistantAnswerDisclaimer");
+      const btn = document.getElementById("assistantAskBtn");
+
+      answerEl.textContent = "";
+      discEl.style.display = "none";
+
+      if (!q) {
+        statusEl.textContent = "Escreva sua dúvida clínica antes de perguntar.";
+        return;
+      }
+      if (q.length < 10) {
+        statusEl.textContent = "Descreva o caso com um pouco mais de detalhe.";
+        return;
+      }
+
+      btn.disabled = true;
+      statusEl.textContent = "Consultando o assistente…";
+
+      try {
+        const token = getToken();
+        const response = await fetch(`${API_URL}/assistant/ask`, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            "Authorization": `Bearer ${token}`,
+          },
+          body: JSON.stringify({ question: q }),
+        });
+        const data = await response.json().catch(() => ({}));
+        if (!response.ok) {
+          throw new Error(data.error || "Não foi possível obter resposta agora.");
+        }
+
+        statusEl.textContent = "";
+        answerEl.textContent = data.answer || "(sem resposta)";
+        discEl.style.display = "block";
+      } catch (e) {
+        statusEl.textContent = "";
+        answerEl.textContent = "";
+        statusEl.textContent = e.message || "Erro ao consultar o assistente.";
+      } finally {
+        btn.disabled = false;
+      }
     }
 
     // ============================================================
