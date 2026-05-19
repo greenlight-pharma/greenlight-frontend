@@ -5085,7 +5085,7 @@
           item.appendChild(inlineAnalysis);
 
           analysisBtn.addEventListener("click", () => {
-            generateOrShowAnalysisInline(apt.id, analysisBtn, inlineAnalysis);
+            generateOrShowAnalysisInline(apt.id, analysisBtn, inlineAnalysis, apt);
           });
         }
 
@@ -7723,10 +7723,35 @@
     // loadMyAppointments no sucesso de propósito: recarregar a lista
     // recriaria o card inteiro e apagaria a análise que acabou de
     // renderizar aqui (bug sutil que seria fácil introduzir).
-    async function generateOrShowAnalysisInline(appointmentId, btn, targetContainer) {
+    async function generateOrShowAnalysisInline(appointmentId, btn, targetContainer, aptRef) {
       const originalText = btn.textContent;
       btn.disabled = true;
-      btn.textContent = "Carregando...";
+      btn.textContent = "Gerando…";
+
+      // [PROGRESSO] Barra indeterminada + texto. A IA não reporta % real,
+      // então é uma animação contínua de "trabalhando" — resolve o
+      // "será que travou?" sem fingir precisão que não existe.
+      targetContainer.replaceChildren();
+      const prog = document.createElement("div");
+      prog.style.cssText = "margin:8px 0;padding:14px;border:1px solid #bae6fd;background:#f0f9ff;border-radius:8px;";
+      const progText = document.createElement("div");
+      progText.style.cssText = "font-size:13px;color:#0369a1;margin-bottom:8px;";
+      progText.textContent = "Gerando análise clínica… isso pode levar alguns segundos.";
+      const barOuter = document.createElement("div");
+      barOuter.style.cssText = "height:6px;background:#e0f2fe;border-radius:3px;overflow:hidden;position:relative;";
+      const barInner = document.createElement("div");
+      barInner.style.cssText = "position:absolute;height:100%;width:35%;background:#0ea5e9;border-radius:3px;animation:vytalIndet 1.1s ease-in-out infinite;";
+      barOuter.appendChild(barInner);
+      prog.appendChild(progText);
+      prog.appendChild(barOuter);
+      targetContainer.appendChild(prog);
+      // Injeta o keyframe uma única vez (idempotente).
+      if (!document.getElementById("vytalIndetKeyframe")) {
+        const st = document.createElement("style");
+        st.id = "vytalIndetKeyframe";
+        st.textContent = "@keyframes vytalIndet{0%{left:-35%}100%{left:100%}}";
+        document.head.appendChild(st);
+      }
 
       try {
         const token = getToken();
@@ -7751,6 +7776,17 @@
         // Análise existe agora: botão vira "Ver" (não "Gerar").
         btn.textContent = "🔍 Ver análise clínica";
         btn.style.background = "#0891b2";
+
+        // [FIX-MODAL-ANALISE] Sincroniza o estado do PRÓPRIO apt deste
+        // card (mesmo objeto que vai pro openClosingModal via closure).
+        // Bug que introduzi: ao renderizar inline parei de recarregar a
+        // lista, então o apt ficava sem marca de análise e o modal de
+        // Encerrar (que lê apt.analysisId) achava que não havia análise.
+        // Marco aqui o objeto que o modal realmente lê. (cachedMyAppointments
+        // é OUTRA lista, de outro endpoint — não serve aqui; verifiquei.)
+        if (aptRef && !aptRef.analysisId) {
+          aptRef.analysisId = "exists"; // sentinela truthy p/ o gate do modal
+        }
 
         targetContainer.scrollIntoView({ behavior: "smooth", block: "start" });
       } catch (error) {
