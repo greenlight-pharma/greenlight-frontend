@@ -1934,8 +1934,9 @@
       <label>Nome completo <span style="color:#dc2626;">*</span></label>
       <input id="manualPatientName" type="text" placeholder="Ex: Maria Silva" />
 
-      <label>Telefone (com DDD, sem espaços) <span style="color:#dc2626;">*</span></label>
-      <input id="manualPatientPhone" type="text" placeholder="Ex: 5511999998888" inputmode="numeric" oninput="onManualPhoneInput(this)" />
+      <label>Telefone — DDD + número, sem o 55 <span style="color:#dc2626;">*</span></label>
+      <input id="manualPatientPhone" type="text" placeholder="Ex: 11999998888" inputmode="numeric" oninput="onManualPhoneInput(this)" />
+      <div style="font-size:12px; color:#6b7280; margin-top:2px;">Apenas números do Brasil. Digite só DDD + número (ex: 11999998888) — o código do país é adicionado automaticamente.</div>
       <div id="manualPatientPhoneStatus" style="margin-top:6px; font-size:13px;"></div>
 
       <label>Idade (opcional)</label>
@@ -4216,15 +4217,62 @@
       }, 400);
     }
 
+    // [BR-PHONE] Normaliza telefone para o formato ÚNICO do sistema:
+    // 55 + DDD + número (ex: 5511999998888), idêntico ao que o WhatsApp
+    // entrega. O médico digita SÓ DDD+número; aqui garantimos o 55 sem
+    // duplicar se ele colar com 55 por hábito. Retorna:
+    //   { ok:true, phone:"55..." }  -> número BR válido normalizado
+    //   { ok:false, reason:"..." }  -> inválido, com motivo p/ exibir
+    // Regra é a MESMA usada no lookup e no submit (senão verifica um
+    // número e cadastra outro — bug de identidade que queremos evitar).
+    function normalizeBRPhone(raw) {
+      let d = String(raw || "").replace(/\D/g, "");
+      if (!d) return { ok: false, reason: "Telefone é obrigatório." };
+
+      // Caso o médico tenha colado com 55 na frente: só remove esse 55
+      // se o que sobra tiver tamanho de número BR (10 ou 11 dígitos:
+      // DDD 2 + 8 ou 9). Assim não confundimos um DDD que por acaso
+      // comece com 55 nem duplicamos o prefixo.
+      if (d.length >= 12 && d.startsWith("55")) {
+        const semDDI = d.slice(2);
+        if (semDDI.length === 10 || semDDI.length === 11) {
+          d = semDDI;
+        }
+      }
+
+      if (d.length < 10 || d.length > 11) {
+        return {
+          ok: false,
+          reason: "Informe DDD + número (ex: 11999998888). Apenas números do Brasil.",
+        };
+      }
+
+      // d agora é DDD+número sem DDI. Prefixa o 55 (Brasil) — sempre,
+      // garantindo formato idêntico ao do WhatsApp.
+      return { ok: true, phone: "55" + d };
+    }
+
     async function lookupManualPatient(phone) {
       const statusEl = document.getElementById("manualPatientPhoneStatus");
+
+      // Normaliza com a MESMA função do submit. Se inválido, mostra o
+      // motivo e não consulta (evita verificar um formato e cadastrar
+      // outro). Consistência de identidade do paciente.
+      const norm = normalizeBRPhone(phone);
+      if (!norm.ok) {
+        statusEl.style.color = "#b45309";
+        statusEl.textContent = norm.reason;
+        return;
+      }
+      const normalizedPhone = norm.phone;
+
       statusEl.textContent = "Verificando...";
       statusEl.style.color = "#6b7280";
 
       try {
         const token = getToken();
         const response = await fetch(
-          `${API_URL}/patients/lookup?phone=${encodeURIComponent(phone)}`,
+          `${API_URL}/patients/lookup?phone=${encodeURIComponent(normalizedPhone)}`,
           {
             method: "GET",
             headers: { "Authorization": `Bearer ${token}` }
@@ -4297,6 +4345,17 @@
         setMessage("manualPatientMessage", "error", "Telefone é obrigatório.");
         return;
       }
+
+      // [BR-PHONE] Normaliza pro formato único do sistema (55+DDD+nº).
+      // Mesma função do lookup — garante que o número verificado é o
+      // mesmo que será gravado (identidade do paciente consistente).
+      const phoneNorm = normalizeBRPhone(phone);
+      if (!phoneNorm.ok) {
+        setMessage("manualPatientMessage", "error", phoneNorm.reason);
+        return;
+      }
+      const phoneToSend = phoneNorm.phone;
+
       if (!mainComplaint) {
         setMessage("manualPatientMessage", "error", "Queixa principal é obrigatória.");
         return;
@@ -4312,7 +4371,7 @@
           },
           body: JSON.stringify({
             name,
-            phone,
+            phone: phoneToSend,
             age: age || null,
             biologicalSex: biologicalSex || null,
             mainComplaint,
