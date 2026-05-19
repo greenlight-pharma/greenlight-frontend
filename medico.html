@@ -1884,44 +1884,94 @@
         </div>
 
         <div class="card" style="max-width:880px;">
-          <!-- [CALC-LIST] Lista de calculadoras. Estrutura preparada pra
-               crescer: cada calculadora é um botão que mostra seu painel.
-               Adicionar nova = +1 botão aqui +1 painel calc-panel abaixo. -->
-          <label style="font-weight:600; display:block; margin-bottom:8px;">Escolha a calculadora</label>
-          <div id="calcList" style="display:flex; flex-wrap:wrap; gap:8px; margin-bottom:18px;">
-            <button class="btn-soap" style="background:#0ea5e9;" onclick="showCalc('gotejamento')">💧 Gotejamento → mL/h</button>
-            <!-- próximas calculadoras entram aqui como mais botões -->
+          <!-- [CALC-MENU] Estrutura: CATEGORIA -> calculadoras da categoria.
+               Só aparece categoria que tem calculadora real (nada de menu
+               fantasma). Adicionar: +1 botão de categoria, +1 grupo de
+               botões, +1 painel calc-panel, +1 função validada. -->
+          <label style="font-weight:600; display:block; margin-bottom:8px;">Categoria</label>
+          <div id="calcCategories" style="display:flex; flex-wrap:wrap; gap:8px; margin-bottom:16px;">
+            <button class="btn-soap" style="background:#0ea5e9;" onclick="showCalcCategory('bomba')">💉 Bomba Infusora</button>
+            <!-- novas categorias entram aqui conforme tiverem conteúdo -->
           </div>
 
-          <!-- ===== Calculadora: Gotejamento → mL/h ===== -->
-          <div id="calc-gotejamento" class="calc-panel">
-            <h3 style="margin-top:0;">💧 Gotejamento → mL/h</h3>
-            <div style="background:#fffbeb; border:1px solid #fcd34d; border-radius:8px; padding:10px 12px; font-size:13px; color:#92400e; margin:10px 0 16px;">
-              ⚕️ Ferramenta de apoio ao cálculo. Confira o resultado e ajuste conforme o equipo e o caso. A responsabilidade da infusão é do médico.
+          <!-- ===== Categoria: Bomba Infusora ===== -->
+          <div id="calccat-bomba" class="calc-category">
+            <label style="font-weight:600; display:block; margin:6px 0 8px;">Calculadora</label>
+            <div style="display:flex; flex-wrap:wrap; gap:8px; margin-bottom:18px;">
+              <button class="btn-soap" style="background:#0284c7;" onclick="showCalc('gotejamento')">💧 Gotejamento → mL/h</button>
+              <button class="btn-soap" style="background:#0284c7;" onclick="showCalc('mcgkgmin')">⚖️ mcg/kg/min ⇄ mL/h</button>
             </div>
 
-            <label style="font-weight:600;">Número de gotas contadas</label>
-            <input id="calcGotasQtd" type="number" min="1" step="1" inputmode="numeric" placeholder="Ex: 20" style="width:100%; box-sizing:border-box; margin:4px 0 12px;" />
+            <!-- ===== Calculadora: Gotejamento → mL/h ===== -->
+            <div id="calc-gotejamento" class="calc-panel">
+              <h3 style="margin-top:0;">💧 Gotejamento → mL/h</h3>
+              <div style="background:#fffbeb; border:1px solid #fcd34d; border-radius:8px; padding:10px 12px; font-size:13px; color:#92400e; margin:10px 0 16px;">
+                ⚕️ Ferramenta de apoio ao cálculo. Confira o resultado e ajuste conforme o equipo e o caso. A responsabilidade da infusão é do médico.
+              </div>
 
-            <label style="font-weight:600;">Tempo da contagem (segundos)</label>
-            <input id="calcGotasTempo" type="number" min="0.1" step="any" inputmode="decimal" placeholder="Ex: 60" style="width:100%; box-sizing:border-box; margin:4px 0 12px;" />
+              <label style="font-weight:600;">Número de gotas contadas</label>
+              <input id="calcGotasQtd" type="number" min="1" step="1" inputmode="numeric" placeholder="Ex: 20" style="width:100%; box-sizing:border-box; margin:4px 0 12px;" />
 
-            <label style="font-weight:600;">Relação gotas/mL do equipo</label>
-            <input id="calcGotasRelacao" type="number" min="1" step="any" inputmode="numeric" value="20" style="width:100%; box-sizing:border-box; margin:4px 0 4px;" />
-            <div style="font-size:12px; color:#6b7280; margin-bottom:14px;">Macrogotas geralmente 20; microgotas 60. Confira o equipo usado.</div>
+              <label style="font-weight:600;">Tempo da contagem (segundos)</label>
+              <input id="calcGotasTempo" type="number" min="0.1" step="any" inputmode="decimal" placeholder="Ex: 60" style="width:100%; box-sizing:border-box; margin:4px 0 12px;" />
 
-            <button class="primary" onclick="calcGotejamento()">Calcular</button>
+              <label style="font-weight:600;">Relação gotas/mL do equipo</label>
+              <input id="calcGotasRelacao" type="number" min="1" step="any" inputmode="numeric" value="20" style="width:100%; box-sizing:border-box; margin:4px 0 4px;" />
+              <div style="font-size:12px; color:#6b7280; margin-bottom:14px;">Macrogotas geralmente 20; microgotas 60. Confira o equipo usado.</div>
 
-            <div id="calcGotasErro" style="margin-top:12px; color:#b45309; font-size:14px;"></div>
-            <div id="calcGotasResultado" style="display:none; margin-top:16px; padding:14px; background:#f0f9ff; border:1px solid #bae6fd; border-radius:8px;">
-              <div style="font-size:14px; color:#0369a1;">Gotas/min: <strong id="calcOutGotasMin">—</strong></div>
-              <div style="font-size:20px; color:#075985; margin-top:6px;">Taxa de infusão: <strong id="calcOutMlh">—</strong> mL/h</div>
-              <div style="font-size:12px; color:#6b7280; margin-top:10px; padding-top:10px; border-top:1px solid #bae6fd;">
-                Fórmula: gotas/min = nº de gotas ÷ (tempo_segundos ÷ 60) &nbsp;|&nbsp; mL/h = (gotas/min ÷ relação gotas/mL) × 60
+              <button class="primary" onclick="calcGotejamento()">Calcular</button>
+
+              <div id="calcGotasErro" style="margin-top:12px; color:#b45309; font-size:14px;"></div>
+              <div id="calcGotasResultado" style="display:none; margin-top:16px; padding:14px; background:#f0f9ff; border:1px solid #bae6fd; border-radius:8px;">
+                <div style="font-size:14px; color:#0369a1;">Gotas/min: <strong id="calcOutGotasMin">—</strong></div>
+                <div style="font-size:20px; color:#075985; margin-top:6px;">Taxa de infusão: <strong id="calcOutMlh">—</strong> mL/h</div>
+                <div style="font-size:12px; color:#6b7280; margin-top:10px; padding-top:10px; border-top:1px solid #bae6fd;">
+                  Fórmula: gotas/min = nº de gotas ÷ (tempo_segundos ÷ 60) &nbsp;|&nbsp; mL/h = (gotas/min ÷ relação gotas/mL) × 60
+                </div>
               </div>
             </div>
+            <!-- ===== fim Gotejamento ===== -->
+
+            <!-- ===== Calculadora: mcg/kg/min ⇄ mL/h ===== -->
+            <div id="calc-mcgkgmin" class="calc-panel" style="display:none;">
+              <h3 style="margin-top:0;">⚖️ mcg/kg/min ⇄ mL/h</h3>
+              <div style="background:#fffbeb; border:1px solid #fcd34d; border-radius:8px; padding:10px 12px; font-size:13px; color:#92400e; margin:10px 0 16px;">
+                ⚕️ Cálculo de dose de droga em infusão contínua. Ferramenta de apoio — confira o resultado, a diluição e o caso. A responsabilidade da prescrição e da infusão é do médico.
+              </div>
+
+              <label style="font-weight:600;">Conversão</label>
+              <div style="margin:6px 0 14px;">
+                <label style="display:block; font-weight:400; margin:4px 0;">
+                  <input type="radio" name="mcgDir" value="dose2ml" checked onchange="mcgUpdateLabel()" /> mcg/kg/min → mL/h
+                </label>
+                <label style="display:block; font-weight:400; margin:4px 0;">
+                  <input type="radio" name="mcgDir" value="ml2dose" onchange="mcgUpdateLabel()" /> mL/h → mcg/kg/min
+                </label>
+              </div>
+
+              <label style="font-weight:600;" id="mcgTaxaLabel">Dose (mcg/kg/min)</label>
+              <input id="calcMcgTaxa" type="number" min="0" step="any" inputmode="decimal" placeholder="Valor" style="width:100%; box-sizing:border-box; margin:4px 0 12px;" />
+
+              <label style="font-weight:600;">Peso (kg)</label>
+              <input id="calcMcgPeso" type="number" min="0.1" step="any" inputmode="decimal" placeholder="Insira o peso em kg" style="width:100%; box-sizing:border-box; margin:4px 0 12px;" />
+
+              <label style="font-weight:600;">Diluição da solução (mg por 1 mL)</label>
+              <input id="calcMcgDiluicao" type="number" min="0.0001" step="any" inputmode="decimal" placeholder="Ex: 0.064 (4 mg em 250 mL)" style="width:100%; box-sizing:border-box; margin:4px 0 4px;" />
+              <div style="font-size:12px; color:#6b7280; margin-bottom:14px;">Concentração final da solução, em mg por mL. Confira a diluição preparada.</div>
+
+              <button class="primary" onclick="calcMcgKgMin()">Calcular</button>
+
+              <div id="calcMcgErro" style="margin-top:12px; color:#b45309; font-size:14px;"></div>
+              <div id="calcMcgResultado" style="display:none; margin-top:16px; padding:14px; background:#f0f9ff; border:1px solid #bae6fd; border-radius:8px;">
+                <div style="font-size:20px; color:#075985;"><span id="calcMcgOutLabel">Resultado</span>: <strong id="calcMcgOutValor">—</strong> <span id="calcMcgOutUnidade"></span></div>
+                <div style="font-size:12px; color:#6b7280; margin-top:10px; padding-top:10px; border-top:1px solid #bae6fd;">
+                  Fórmula: mL/h = (dose × peso × 60) ÷ (diluição_mg/mL × 1000) &nbsp;|&nbsp; mcg/kg/min = (mL/h × diluição_mg/mL × 1000) ÷ (peso × 60)
+                </div>
+              </div>
+            </div>
+            <!-- ===== fim mcg/kg/min ===== -->
           </div>
-          <!-- ===== fim Gotejamento ===== -->
+          <!-- ===== fim categoria Bomba Infusora ===== -->
 
         </div>
       </section>
@@ -2580,9 +2630,8 @@
       } else if (pageId === "agenda") {
         loadAgenda();
       } else if (pageId === "calculators") {
-        // Abre já mostrando a primeira calculadora (só há uma por ora;
-        // quando houver mais, esta é a default — médico troca pela lista).
-        showCalc("gotejamento");
+        // Abre a primeira categoria, que abre sua 1ª calculadora.
+        showCalcCategory("bomba");
       }
 
       // Em mobile, fecha a sidebar ao trocar de página (UX padrão de drawer)
@@ -2603,6 +2652,76 @@
       });
       const target = document.getElementById("calc-" + which);
       if (target) target.style.display = "block";
+    }
+
+    // [CALC-CATEGORIA] Mostra uma categoria e abre sua 1ª calculadora.
+    function showCalcCategory(cat) {
+      document.querySelectorAll(".calc-category").forEach((c) => {
+        c.style.display = "none";
+      });
+      const target = document.getElementById("calccat-" + cat);
+      if (target) target.style.display = "block";
+      // Abre a primeira calculadora da categoria por padrão.
+      if (cat === "bomba") showCalc("gotejamento");
+    }
+
+    // [CALC-MCGKGMIN] Conversão dose vasoativa ⇄ mL/h. Fórmula validada
+    // clinicamente pelo usuário (inclusive conferência numérica com
+    // caso real de noradrenalina). NÃO alterar sem nova validação:
+    //   mL/h        = (dose × peso × 60) ÷ (diluição_mg/mL × 1000)
+    //   mcg/kg/min  = (mL/h × diluição_mg/mL × 1000) ÷ (peso × 60)
+    function mcgUpdateLabel() {
+      const dir = document.querySelector('input[name="mcgDir"]:checked');
+      const lbl = document.getElementById("mcgTaxaLabel");
+      if (!dir || !lbl) return;
+      lbl.textContent = dir.value === "dose2ml"
+        ? "Dose (mcg/kg/min)"
+        : "Taxa de infusão (mL/h)";
+    }
+
+    function calcMcgKgMin() {
+      const erroEl = document.getElementById("calcMcgErro");
+      const resEl = document.getElementById("calcMcgResultado");
+      erroEl.textContent = "";
+      resEl.style.display = "none";
+
+      const dirEl = document.querySelector('input[name="mcgDir"]:checked');
+      const dir = dirEl ? dirEl.value : "dose2ml";
+      const taxa = parseFloat(document.getElementById("calcMcgTaxa").value);
+      const peso = parseFloat(document.getElementById("calcMcgPeso").value);
+      const dil = parseFloat(document.getElementById("calcMcgDiluicao").value);
+
+      // Validação rigorosa: dose de droga — nunca calcular com lixo.
+      if (!isFinite(taxa) || taxa < 0) {
+        erroEl.textContent = "Informe um valor válido no campo de conversão.";
+        return;
+      }
+      if (!isFinite(peso) || peso <= 0) {
+        erroEl.textContent = "Informe um peso válido em kg (maior que zero).";
+        return;
+      }
+      if (!isFinite(dil) || dil <= 0) {
+        erroEl.textContent = "Informe a diluição em mg/mL (maior que zero).";
+        return;
+      }
+
+      let valor, unidade, label;
+      if (dir === "dose2ml") {
+        // dose (mcg/kg/min) -> mL/h
+        valor = (taxa * peso * 60) / (dil * 1000);
+        unidade = "mL/h";
+        label = "Taxa de infusão";
+      } else {
+        // mL/h -> dose (mcg/kg/min)
+        valor = (taxa * dil * 1000) / (peso * 60);
+        unidade = "mcg/kg/min";
+        label = "Dose";
+      }
+
+      document.getElementById("calcMcgOutLabel").textContent = label;
+      document.getElementById("calcMcgOutValor").textContent = valor.toFixed(2);
+      document.getElementById("calcMcgOutUnidade").textContent = unidade;
+      resEl.style.display = "block";
     }
 
     function calcGotejamento() {
