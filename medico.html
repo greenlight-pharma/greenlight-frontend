@@ -8848,7 +8848,7 @@
       const generatedDate = data.generatedAt
         ? new Date(data.generatedAt).toLocaleString("pt-BR", { timeZone: "America/Sao_Paulo" })
         : "agora";
-      meta.textContent = `Análise ${data.cached ? "carregada do registro" : "gerada"} em ${generatedDate} usando ${data.modelUsed || "IA"}.`;
+      meta.textContent = `Análise ${data.cached ? "carregada do registro" : "gerada"} em ${generatedDate}.`;
       container.appendChild(meta);
     }
 
