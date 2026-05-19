@@ -1327,13 +1327,56 @@
         overflow-x: auto;
       }
 
-      /* Tabelas largas (pacientes, consultas) rolam em vez de cortar */
-      table {
+      /* [MOBILE-CARDS] Tabelas largas (pacientes, consultas) não cabem
+         em tela de celular. A tentativa antiga (overflow-x + nowrap)
+         empurrava botões pra fora da tela — ninguém via que precisava
+         rolar lateralmente. Agora cada linha vira um CARTÃO vertical:
+         thead some, cada <tr> é um bloco, cada <td> é "Rótulo: valor"
+         (rótulo vem do data-label setado em appendRow lendo do thead).
+         No desktop (acima do breakpoint) nada muda — segue tabela. */
+      table, table tbody, table tr, table td {
         display: block;
         width: 100%;
-        overflow-x: auto;
-        -webkit-overflow-scrolling: touch;
-        white-space: nowrap;
+        box-sizing: border-box;
+      }
+      table thead {
+        display: none; /* cabeçalho não faz sentido em modo cartão */
+      }
+      table tr {
+        background: #fff;
+        border: 1px solid #e5e7eb;
+        border-radius: 10px;
+        padding: 12px 14px;
+        margin-bottom: 10px;
+      }
+      table td {
+        border: none !important;
+        padding: 6px 0 !important;
+        white-space: normal;       /* texto quebra normal, não estoura */
+        text-align: left !important;
+      }
+      table td[data-label]::before {
+        content: attr(data-label) ": ";
+        font-weight: 600;
+        color: #374151;
+        display: inline;
+      }
+      /* Célula que contém só botões de ação: rótulo atrapalha, esconde
+         e empilha os botões pra caberem na largura do celular. */
+      table td.row-actions::before,
+      table td:has(button)::before {
+        content: "";
+      }
+      table td.row-actions,
+      table td:has(button) {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        margin-top: 6px;
+      }
+      table td:has(button) button {
+        flex: 1 1 auto;
+        min-width: 120px;
       }
 
       /* Textarea do resumo do caso tinha white-space:pre (não quebra
@@ -2402,8 +2445,25 @@
     // [ANTI-XSS] Cria uma <tr> com células de texto, escapando automaticamente.
     function appendRow(tbody, cells) {
       const tr = document.createElement("tr");
+
+      // [MOBILE-CARDS] Lê os rótulos das colunas do <thead> da própria
+      // tabela e marca cada <td> com data-label. No mobile, o CSS usa
+      // esse atributo pra mostrar "Rótulo: valor" quando a tabela vira
+      // cartão. Assinatura de appendRow inalterada — as chamadas
+      // existentes (4) não mudam; o rótulo é descoberto, não passado.
+      let labels = [];
+      try {
+        const table = tbody && tbody.closest ? tbody.closest("table") : null;
+        if (table) {
+          const ths = table.querySelectorAll("thead th");
+          labels = Array.from(ths).map((th) => th.textContent.trim());
+        }
+      } catch (_) { labels = []; }
+
+      let i = 0;
       for (const cell of cells) {
         const td = document.createElement("td");
+        if (labels[i]) td.setAttribute("data-label", labels[i]);
         if (cell && typeof cell === "object") {
           if (cell.node) {
             td.appendChild(cell.node);
@@ -2416,6 +2476,7 @@
           td.textContent = cell == null ? "" : String(cell);
         }
         tr.appendChild(td);
+        i++;
       }
       tbody.appendChild(tr);
     }
