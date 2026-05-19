@@ -1893,6 +1893,7 @@
             <button class="btn-soap" style="background:#0ea5e9;" onclick="showCalcCategory('bomba')">💉 Bomba Infusora</button>
             <button class="btn-soap" style="background:#0ea5e9;" onclick="showCalcCategory('gaso')">🩸 Gasometria Arterial</button>
             <button class="btn-soap" style="background:#0ea5e9;" onclick="showCalcCategory('iot')">🫁 Sequência Rápida de IOT</button>
+            <button class="btn-soap" style="background:#0ea5e9;" onclick="showCalcCategory('renal')">🫘 Função Renal</button>
             <!-- novas categorias entram aqui conforme tiverem conteúdo -->
           </div>
 
@@ -2102,6 +2103,52 @@
             </div>
           </div>
           <!-- ===== fim categoria Sequência Rápida de IOT ===== -->
+
+          <!-- ===== Categoria: Função Renal ===== -->
+          <div id="calccat-renal" class="calc-category" style="display:none;">
+            <label style="font-weight:600; display:block; margin:6px 0 8px;">Calculadora</label>
+            <div style="display:flex; flex-wrap:wrap; gap:8px; margin-bottom:18px;">
+              <button class="btn-soap" style="background:#0284c7;" onclick="showCalc('ckdepi')">🫘 Clearance de Creatinina (CKD-EPI 2021)</button>
+            </div>
+
+            <div id="calc-ckdepi" class="calc-panel">
+              <h3 style="margin-top:0;">🫘 Clearance de Creatinina (CKD-EPI 2021)</h3>
+              <div style="background:#fffbeb; border:1px solid #fcd34d; border-radius:8px; padding:10px 12px; font-size:13px; color:#92400e; margin:10px 0 16px;">
+                ⚕️ Estima a TFG (mL/min/1,73m²) pela equação CKD-EPI 2021, sem variável de raça. Ferramenta de apoio — a interpretação e a conduta são do médico, no contexto clínico do paciente.
+              </div>
+
+              <label style="font-weight:600;">Sexo</label>
+              <div style="margin:6px 0 14px;">
+                <label style="display:block; font-weight:400; margin:4px 0;">
+                  <input type="radio" name="ckdSexo" value="m" /> Masculino
+                </label>
+                <label style="display:block; font-weight:400; margin:4px 0;">
+                  <input type="radio" name="ckdSexo" value="f" /> Feminino
+                </label>
+              </div>
+
+              <label style="font-weight:600;">Idade (anos)</label>
+              <input id="ckdIdade" type="number" min="18" max="120" step="1" inputmode="numeric" placeholder="Idade em anos (≥ 18)" style="width:100%; box-sizing:border-box; margin:4px 0 12px;" />
+
+              <label style="font-weight:600;">Creatinina sérica (mg/dL)</label>
+              <input id="ckdCr" type="number" min="0.1" step="any" inputmode="decimal" placeholder="Creatinina sérica em mg/dL" style="width:100%; box-sizing:border-box; margin:4px 0 12px;" />
+
+              <button class="primary" onclick="calcCKDEPI()">Calcular</button>
+
+              <div id="ckdErro" style="margin-top:12px; color:#b45309; font-size:14px;"></div>
+
+              <div id="ckdResultado" style="display:none; margin-top:16px; padding:14px; background:#f0f9ff; border:1px solid #bae6fd; border-radius:8px;">
+                <div style="font-size:20px; color:#075985;">TFGe: <strong id="ckdOutTfg">—</strong> mL/min/1,73m²</div>
+                <div style="font-size:15px; color:#0369a1; margin-top:8px;">Estágio (KDIGO): <strong id="ckdOutEstagio">—</strong></div>
+                <div style="font-size:12px; color:#6b7280; margin-top:12px; padding-top:10px; border-top:1px solid #bae6fd;">
+                  Equação CKD-EPI 2021 (sem raça): 142 × min(SCr/κ,1)^α × max(SCr/κ,1)^−1,200 × 0,9938^idade × 1,012 [se feminino]. κ=0,7(F)/0,9(M); α=−0,241(F)/−0,302(M).<br>
+                  Fontes: Inker LA, et al. New creatinine- and cystatin C–based equations to estimate GFR without race. N Engl J Med. 2021;385:1737-1749. Estágios: KDIGO 2012/2024 (G1 ≥90; G2 60–89; G3a 45–59; G3b 30–44; G4 15–29; G5 &lt;15). Apoio; a interpretação é do médico.
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- ===== fim categoria Função Renal ===== -->
+
 
 
 
@@ -2797,6 +2844,7 @@
       if (cat === "bomba") showCalc("gotejamento");
       if (cat === "gaso") showCalc("gasometria");
       if (cat === "iot") showCalc("iotdoses");
+      if (cat === "renal") showCalc("ckdepi");
     }
 
     // [CALC-MCGKGMIN] Conversão dose vasoativa ⇄ mL/h. Fórmula validada
@@ -3158,6 +3206,60 @@
       });
 
       document.getElementById("iotDoses").innerHTML = html.join("");
+      resEl.style.display = "block";
+    }
+
+    // [CKD-EPI 2021] Clearance de creatinina. Fórmula VERBATIM do
+    // NIDDK / Inker LA et al. NEJM 2021 (sem variável de raça),
+    // conferida pelo usuário contra a fonte antes da implementação.
+    // NÃO alterar coeficientes sem nova conferência contra a fonte.
+    //   eGFR = 142 × min(SCr/κ,1)^α × max(SCr/κ,1)^-1.200
+    //          × 0.9938^idade × 1.012 [se feminino]
+    //   κ = 0,7 (F) / 0,9 (M);  α = -0,241 (F) / -0,302 (M)
+    // Estágios KDIGO (faixas confirmadas pelo usuário).
+    function calcCKDEPI() {
+      const erroEl = document.getElementById("ckdErro");
+      const resEl = document.getElementById("ckdResultado");
+      erroEl.textContent = "";
+      resEl.style.display = "none";
+
+      const sexoEl = document.querySelector('input[name="ckdSexo"]:checked');
+      const idade = parseFloat(document.getElementById("ckdIdade").value);
+      const cr = parseFloat(document.getElementById("ckdCr").value);
+
+      if (!sexoEl) {
+        erroEl.textContent = "Selecione o sexo.";
+        return;
+      }
+      if (!isFinite(idade) || idade < 18 || idade > 120) {
+        erroEl.textContent = "A equação CKD-EPI 2021 é validada para adultos (≥ 18 anos). Informe uma idade válida.";
+        return;
+      }
+      if (!isFinite(cr) || cr <= 0) {
+        erroEl.textContent = "Informe uma creatinina sérica válida em mg/dL (maior que zero).";
+        return;
+      }
+
+      const feminino = sexoEl.value === "f";
+      const kappa = feminino ? 0.7 : 0.9;
+      const alpha = feminino ? -0.241 : -0.302;
+      const r = cr / kappa;
+      const minPart = Math.pow(Math.min(r, 1), alpha);
+      const maxPart = Math.pow(Math.max(r, 1), -1.200);
+      let egfr = 142 * minPart * maxPart * Math.pow(0.9938, idade);
+      if (feminino) egfr *= 1.012;
+
+      // Estágios KDIGO (mL/min/1,73m²) — faixas confirmadas pelo usuário.
+      let estagio;
+      if (egfr >= 90) estagio = "G1 — normal ou alta (≥ 90)";
+      else if (egfr >= 60) estagio = "G2 — levemente diminuída (60–89)";
+      else if (egfr >= 45) estagio = "G3a — leve a moderadamente diminuída (45–59)";
+      else if (egfr >= 30) estagio = "G3b — moderada a gravemente diminuída (30–44)";
+      else if (egfr >= 15) estagio = "G4 — gravemente diminuída (15–29)";
+      else estagio = "G5 — falência renal (< 15)";
+
+      document.getElementById("ckdOutTfg").textContent = egfr.toFixed(1);
+      document.getElementById("ckdOutEstagio").textContent = estagio;
       resEl.style.display = "block";
     }
 
