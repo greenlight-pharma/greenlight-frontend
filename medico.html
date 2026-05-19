@@ -1891,6 +1891,7 @@
           <label style="font-weight:600; display:block; margin-bottom:8px;">Categoria</label>
           <div id="calcCategories" style="display:flex; flex-wrap:wrap; gap:8px; margin-bottom:16px;">
             <button class="btn-soap" style="background:#0ea5e9;" onclick="showCalcCategory('bomba')">💉 Bomba Infusora</button>
+            <button class="btn-soap" style="background:#0ea5e9;" onclick="showCalcCategory('gaso')">🩸 Gasometria Arterial</button>
             <!-- novas categorias entram aqui conforme tiverem conteúdo -->
           </div>
 
@@ -1972,6 +1973,90 @@
             <!-- ===== fim mcg/kg/min ===== -->
           </div>
           <!-- ===== fim categoria Bomba Infusora ===== -->
+
+          <!-- ===== Categoria: Gasometria Arterial ===== -->
+          <div id="calccat-gaso" class="calc-category" style="display:none;">
+            <label style="font-weight:600; display:block; margin:6px 0 8px;">Calculadora</label>
+            <div style="display:flex; flex-wrap:wrap; gap:8px; margin-bottom:18px;">
+              <button class="btn-soap" style="background:#0284c7;" onclick="showCalc('gasometria')">🩸 Interpretador de Gasometria Arterial</button>
+            </div>
+
+            <div id="calc-gasometria" class="calc-panel">
+              <h3 style="margin-top:0;">🩸 Interpretador de Gasometria Arterial</h3>
+              <div style="background:#fffbeb; border:1px solid #fcd34d; border-radius:8px; padding:10px 12px; font-size:13px; color:#92400e; margin:10px 0 16px;">
+                ⚕️ <strong>Apoio à interpretação, não diagnóstico.</strong> Os cálculos e a avaliação de compensação são ferramentas de apoio. A interpretação final do distúrbio ácido-base é do médico, no contexto clínico do paciente. Pode conter erros — confira.
+              </div>
+
+              <!-- INTERFACE PROGRESSIVA: campos aparecem conforme preenche.
+                   Etapa 1: gasometria básica. -->
+              <label style="font-weight:600;">pH</label>
+              <input id="gasoPh" type="number" step="any" inputmode="decimal" placeholder="Ex: 7.30" oninput="gasoStep()" style="width:100%; box-sizing:border-box; margin:4px 0 12px;" />
+
+              <div id="gasoEtapa2" style="display:none;">
+                <label style="font-weight:600;">PCO₂ (mmHg)</label>
+                <input id="gasoPco2" type="number" step="any" inputmode="decimal" placeholder="Ex: 30" oninput="gasoStep()" style="width:100%; box-sizing:border-box; margin:4px 0 12px;" />
+              </div>
+
+              <div id="gasoEtapa3" style="display:none;">
+                <label style="font-weight:600;">HCO₃⁻ (mEq/L)</label>
+                <input id="gasoHco3" type="number" step="any" inputmode="decimal" placeholder="Ex: 18" oninput="gasoStep()" style="width:100%; box-sizing:border-box; margin:4px 0 12px;" />
+              </div>
+
+              <!-- Etapa 4: dados opcionais pra ânion gap (só aparecem após
+                   os 3 básicos, como no Whitebook — pede devagar). -->
+              <div id="gasoEtapa4" style="display:none;">
+                <div style="font-size:13px; color:#6b7280; margin:6px 0 10px; border-top:1px solid #e5e7eb; padding-top:10px;">
+                  Opcional — para ânion gap e relação delta:
+                </div>
+                <label style="font-weight:600;">Na⁺ (mEq/L)</label>
+                <input id="gasoNa" type="number" step="any" inputmode="decimal" placeholder="Ex: 140" style="width:100%; box-sizing:border-box; margin:4px 0 12px;" />
+                <label style="font-weight:600;">Cl⁻ (mEq/L)</label>
+                <input id="gasoCl" type="number" step="any" inputmode="decimal" placeholder="Ex: 104" style="width:100%; box-sizing:border-box; margin:4px 0 12px;" />
+                <label style="font-weight:600;">Albumina (g/dL) — opcional</label>
+                <input id="gasoAlb" type="number" step="any" inputmode="decimal" placeholder="Ex: 4.0 (deixe vazio se não tiver)" style="width:100%; box-sizing:border-box; margin:4px 0 12px;" />
+              </div>
+
+              <div id="gasoEtapa5" style="display:none; margin-top:6px;">
+                <button class="primary" onclick="calcGasometria()">Interpretar</button>
+              </div>
+
+              <div id="gasoErro" style="margin-top:12px; color:#b45309; font-size:14px;"></div>
+
+              <div id="gasoResultado" style="display:none; margin-top:16px;">
+                <!-- Parte 1: cálculos determinísticos (validados no rito) -->
+                <div style="padding:14px; background:#f0f9ff; border:1px solid #bae6fd; border-radius:8px;">
+                  <div style="font-weight:600; color:#075985; margin-bottom:8px;">Componentes calculados</div>
+                  <div id="gasoComponentes" style="font-size:14px; color:#0369a1; line-height:1.7;"></div>
+                  <div style="font-size:12px; color:#6b7280; margin-top:10px; padding-top:10px; border-top:1px solid #bae6fd;">
+                    Ânion gap = Na − (Cl + HCO₃) &nbsp;|&nbsp; AG corrigido = AG + 2,5 × (4 − albumina) &nbsp;|&nbsp;
+                    PCO₂ esperado (Winter, acidose metabólica) = 1,5 × HCO₃ + 8 (±2) &nbsp;|&nbsp;
+                    Relação delta = (AG − 12) ÷ (24 − HCO₃)
+                  </div>
+                </div>
+
+                <!-- Parte 2: avaliação de compensação — fonte Baillie 2008 -->
+                <div style="padding:14px; background:#f0fdf4; border:1px solid #bbf7d0; border-radius:8px; margin-top:12px;">
+                  <div style="font-weight:600; color:#166534; margin-bottom:8px;">Avaliação de compensação</div>
+                  <div id="gasoCompensacao" style="font-size:14px; color:#15803d; line-height:1.6;"></div>
+                  <div style="font-size:11px; color:#6b7280; margin-top:10px; padding-top:10px; border-top:1px solid #bbf7d0;">
+                    Referência: Baillie JK. Simple, easily memorised 'rules of thumb' for the rapid assessment of physiological compensation for respiratory acid-base disorders. <em>Thorax</em> 2008;63:289-290.
+                  </div>
+                </div>
+
+                <!-- Parte 3: módulo de classificação diagnóstica — DEMARCADO.
+                     Aguardando os limiares/passos da fonte ATS que o usuário
+                     vai confirmar. NÃO preenchido com lógica inventada. -->
+                <div style="padding:14px; background:#fef9c3; border:1px solid #fde047; border-radius:8px; margin-top:12px;">
+                  <div style="font-weight:600; color:#854d0e; margin-bottom:6px;">Classificação do distúrbio</div>
+                  <div id="gasoClassificacao" style="font-size:14px; color:#713f12; line-height:1.6;">
+                    A conclusão diagnóstica encadeada (ex.: "acidose metabólica com ânion gap aumentado + alcalose respiratória") ainda não está ativa: ela depende dos limiares do algoritmo da fonte clínica adotada, a serem confirmados pelo médico antes da ativação. Por ora, use os componentes e a avaliação de compensação acima como apoio, e conclua o distúrbio clinicamente.
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- ===== fim categoria Gasometria Arterial ===== -->
+
 
         </div>
       </section>
@@ -2663,6 +2748,7 @@
       if (target) target.style.display = "block";
       // Abre a primeira calculadora da categoria por padrão.
       if (cat === "bomba") showCalc("gotejamento");
+      if (cat === "gaso") showCalc("gasometria");
     }
 
     // [CALC-MCGKGMIN] Conversão dose vasoativa ⇄ mL/h. Fórmula validada
@@ -2758,6 +2844,208 @@
       document.getElementById("calcOutGotasMin").textContent =
         gotasMin.toFixed(1);
       document.getElementById("calcOutMlh").textContent = mlh.toFixed(1);
+      resEl.style.display = "block";
+    }
+
+    // [GASOMETRIA] Interface progressiva: revela campos conforme o
+    // médico preenche (como o Whitebook pede devagar). Mostra etapa
+    // seguinte só quando a anterior tem valor numérico.
+    function gasoStep() {
+      const ph = parseFloat(document.getElementById("gasoPh").value);
+      const pco2 = parseFloat(document.getElementById("gasoPco2").value);
+      const hco3 = parseFloat(document.getElementById("gasoHco3").value);
+
+      const show = (id, cond) => {
+        const el = document.getElementById(id);
+        if (el) el.style.display = cond ? "block" : "none";
+      };
+
+      show("gasoEtapa2", isFinite(ph));
+      show("gasoEtapa3", isFinite(ph) && isFinite(pco2));
+      show("gasoEtapa4", isFinite(ph) && isFinite(pco2) && isFinite(hco3));
+      show("gasoEtapa5", isFinite(ph) && isFinite(pco2) && isFinite(hco3));
+    }
+
+    // [GASOMETRIA] Calcula APENAS o que está validado/com fonte:
+    //  - componentes determinísticos (rito de validação numérica)
+    //  - avaliação de compensação pelas regras de Baillie 2008 (fonte
+    //    fornecida pelo médico)
+    // NÃO produz a conclusão diagnóstica encadeada — esse módulo fica
+    // demarcado, aguardando os limiares do algoritmo da fonte ATS que
+    // o médico vai confirmar. Não inventar lógica clínica aqui.
+    function calcGasometria() {
+      const erroEl = document.getElementById("gasoErro");
+      const resEl = document.getElementById("gasoResultado");
+      erroEl.textContent = "";
+      resEl.style.display = "none";
+
+      const ph = parseFloat(document.getElementById("gasoPh").value);
+      const pco2 = parseFloat(document.getElementById("gasoPco2").value);
+      const hco3 = parseFloat(document.getElementById("gasoHco3").value);
+      const na = parseFloat(document.getElementById("gasoNa").value);
+      const cl = parseFloat(document.getElementById("gasoCl").value);
+      const alb = parseFloat(document.getElementById("gasoAlb").value);
+
+      // Validação: os 3 básicos são obrigatórios e precisam ser válidos.
+      if (!isFinite(ph) || ph <= 0 || ph > 14) {
+        erroEl.textContent = "Informe um pH válido.";
+        return;
+      }
+      if (!isFinite(pco2) || pco2 <= 0) {
+        erroEl.textContent = "Informe um PCO₂ válido (mmHg).";
+        return;
+      }
+      if (!isFinite(hco3) || hco3 <= 0) {
+        erroEl.textContent = "Informe um HCO₃⁻ válido (mEq/L).";
+        return;
+      }
+
+      const comp = [];
+      comp.push("pH: " + ph.toFixed(2));
+      comp.push("PCO₂: " + pco2.toFixed(1) + " mmHg");
+      comp.push("HCO₃⁻: " + hco3.toFixed(1) + " mEq/L");
+
+      // Ânion gap (se Na e Cl informados). Fórmulas validadas no rito.
+      let ag = null, agCorr = null;
+      if (isFinite(na) && isFinite(cl)) {
+        ag = na - (cl + hco3);
+        comp.push("Ânion gap: " + ag.toFixed(1) + " mEq/L");
+        if (isFinite(alb) && alb > 0) {
+          agCorr = ag + 2.5 * (4 - alb);
+          comp.push("Ânion gap corrigido p/ albumina: " + agCorr.toFixed(1) + " mEq/L");
+        }
+        // Relação delta — só faz sentido com AG; é um número de apoio,
+        // a INTERPRETAÇÃO da faixa fica com o médico (não classificamos).
+        const denom = 24 - hco3;
+        if (denom !== 0) {
+          const agUse = (agCorr !== null) ? agCorr : ag;
+          const deltaRatio = (agUse - 12) / denom;
+          comp.push("Relação delta: " + deltaRatio.toFixed(2));
+        }
+      } else {
+        comp.push("(Ânion gap não calculado — informe Na e Cl)");
+      }
+
+      // PCO₂ esperado por Winter (apoio; aplicável à acidose metabólica).
+      // É um valor de referência calculado, NÃO uma classificação.
+      const pco2EsperadoWinter = 1.5 * hco3 + 8;
+      comp.push(
+        "PCO₂ esperado (Winter, p/ acidose metabólica): " +
+        (pco2EsperadoWinter - 2).toFixed(1) + " a " +
+        (pco2EsperadoWinter + 2).toFixed(1) + " mmHg"
+      );
+
+      document.getElementById("gasoComponentes").innerHTML =
+        comp.map((c) => "• " + c).join("<br>");
+
+      // ---- Avaliação de compensação (regras de Baillie 2008) ----
+      // Apoio: compara o esperado com o medido e sinaliza possível
+      // distúrbio adicional. NÃO conclui o distúrbio primário.
+      const compMsgs = [];
+      const baixo = (pco2EsperadoWinter - 2), alto = (pco2EsperadoWinter + 2);
+      if (pco2 >= baixo && pco2 <= alto) {
+        compMsgs.push("Se o quadro for acidose metabólica: o PCO₂ medido está dentro da compensação respiratória esperada (Winter).");
+      } else if (pco2 < baixo) {
+        compMsgs.push("Se o quadro for acidose metabólica: o PCO₂ medido está ABAIXO do esperado por Winter — pode sugerir alcalose respiratória associada. Avalie clinicamente.");
+      } else {
+        compMsgs.push("Se o quadro for acidose metabólica: o PCO₂ medido está ACIMA do esperado por Winter — pode sugerir acidose respiratória associada. Avalie clinicamente.");
+      }
+      compMsgs.push("As regras de Baillie cobrem a compensação dos distúrbios respiratórios; a checagem completa de compensação para todos os distúrbios depende do algoritmo clínico adotado.");
+      document.getElementById("gasoCompensacao").innerHTML =
+        compMsgs.map((c) => "• " + c).join("<br>");
+
+      // ====== CLASSIFICAÇÃO — ALGORITMO ATS DE 6 PASSOS ======
+      // Implementado VERBATIM do documento American Thoracic Society
+      // "Interpretation of Arterial Blood Gases (ABGs)" (Kaufman DA),
+      // fetchado da fonte oficial. Cada limiar/fórmula abaixo está
+      // explícito naquele documento — nada inventado. Constantes ATS:
+      //   pH normal 7,35–7,45 | PaCO2 normal 35–45 | HCO3 normal 24
+      //   AG normal ~12 | correção albumina −2,5 por g/dL < 4
+      const cls = [];
+      const PH_LO = 7.35, PH_HI = 7.45;
+      const HCO3_NL = 24, PACO2_NL = 40, AG_NL = 12;
+
+      // -- Passo 2: acidemia / alcalemia --
+      let lado = null; // "acid" | "alc" | "normal"
+      if (ph < PH_LO) lado = "acid";
+      else if (ph > PH_HI) lado = "alc";
+      else lado = "normal";
+
+      // -- Passo 3: respiratório vs metabólico --
+      // Respiratório: pH e PaCO2 em direções OPOSTAS.
+      // Metabólico: pH e PaCO2 na MESMA direção.
+      // (ATS Tabela: Ac.resp pH↓PaCO2↑ | Ac.metab pH↓PaCO2↓ |
+      //  Alc.resp pH↑PaCO2↓ | Alc.metab pH↑PaCO2↑)
+      let primario = null;
+      const pco2Alto = pco2 > 45, pco2Baixo = pco2 < 35;
+      if (lado === "acid") {
+        if (pco2Alto) primario = "Acidose respiratória";
+        else if (pco2Baixo) primario = "Acidose metabólica";
+        else primario = "Acidose (padrão de PaCO2 indefinido — avalie clinicamente)";
+      } else if (lado === "alc") {
+        if (pco2Baixo) primario = "Alcalose respiratória";
+        else if (pco2Alto) primario = "Alcalose metabólica";
+        else primario = "Alcalose (padrão de PaCO2 indefinido — avalie clinicamente)";
+      } else {
+        primario = "pH na faixa normal — pode haver distúrbio compensado ou misto (avalie PaCO2, HCO3 e ânion gap)";
+      }
+      cls.push("<strong>Distúrbio primário (passos 2–3 ATS):</strong> " + primario);
+
+      // -- Passo 4: compensação esperada conforme o distúrbio primário --
+      // Fórmulas verbatim ATS. Sinaliza se a compensação medida foge do
+      // esperado (→ provável distúrbio adicional). Usa só quando aplicável.
+      let compTxt = null;
+      if (primario === "Acidose metabólica") {
+        const esp = 1.5 * hco3 + 8;
+        if (pco2 < esp - 2) compTxt = "PaCO2 abaixo do esperado por Winter (" + (esp-2).toFixed(1) + "–" + (esp+2).toFixed(1) + ") → provável alcalose respiratória associada.";
+        else if (pco2 > esp + 2) compTxt = "PaCO2 acima do esperado por Winter (" + (esp-2).toFixed(1) + "–" + (esp+2).toFixed(1) + ") → provável acidose respiratória associada.";
+        else compTxt = "Compensação respiratória adequada (Winter " + (esp-2).toFixed(1) + "–" + (esp+2).toFixed(1) + ").";
+      } else if (primario === "Alcalose metabólica") {
+        const espP = 40 + 0.6 * (hco3 - HCO3_NL);
+        compTxt = "PaCO2 esperado ≈ " + espP.toFixed(1) + " (ATS: 40 + 0,6·ΔHCO3). Compare com o medido (" + pco2.toFixed(1) + ") — divergência sugere distúrbio respiratório associado.";
+      } else if (primario === "Acidose respiratória") {
+        const dPco2 = (pco2 - PACO2_NL) / 10;
+        const espAgudo = HCO3_NL + dPco2;          // ΔHCO3 = ΔPaCO2/10
+        const espCron = HCO3_NL + 3.5 * dPco2;     // crônica: 3,5·(ΔPaCO2/10)
+        compTxt = "HCO3 esperado — agudo ≈ " + espAgudo.toFixed(1) + " (±3); crônico (3–5d) ≈ " + espCron.toFixed(1) + ". Medido: " + hco3.toFixed(1) + ". Fora dessas faixas sugere componente metabólico associado.";
+      } else if (primario === "Alcalose respiratória") {
+        const dPco2 = (PACO2_NL - pco2) / 10;
+        const espAgudo = HCO3_NL - 2 * dPco2;            // aguda: 2·(ΔPaCO2/10)
+        const espCronLo = HCO3_NL - 7 * dPco2;           // crônica: 5 a 7
+        const espCronHi = HCO3_NL - 5 * dPco2;
+        compTxt = "HCO3 esperado — agudo ≈ " + espAgudo.toFixed(1) + "; crônico ≈ " + espCronLo.toFixed(1) + "–" + espCronHi.toFixed(1) + ". Medido: " + hco3.toFixed(1) + ". Fora disso sugere componente metabólico associado.";
+      }
+      if (compTxt) cls.push("<strong>Compensação (passo 4 ATS):</strong> " + compTxt);
+
+      // -- Passos 5–6: ânion gap e relação delta (se AG calculável) --
+      if (ag !== null) {
+        const agUse = (agCorr !== null) ? agCorr : ag;
+        const agElevado = agUse > AG_NL;
+        cls.push("<strong>Ânion gap (passo 5 ATS):</strong> " +
+          (agElevado
+            ? "Aumentado (" + agUse.toFixed(1) + " > ~12) → considerar acidose metabólica com ânion gap aumentado."
+            : "Normal/não aumentado (" + agUse.toFixed(1) + ")."));
+
+        if (agElevado) {
+          const dAG = agUse - AG_NL;
+          const dHCO3 = HCO3_NL - hco3;
+          if (dHCO3 !== 0) {
+            const ratio = dAG / dHCO3;
+            let interp;
+            if (ratio < 1.0) interp = "< 1,0 → provável acidose metabólica de ânion gap normal (hiperclorêmica) concomitante.";
+            else if (ratio > 2.0) interp = "> 2,0 → provável alcalose metabólica concomitante.";
+            else interp = "entre 1,0 e 2,0 → acidose metabólica de ânion gap aumentado não complicada.";
+            cls.push("<strong>Relação delta ΔAG/ΔHCO3 (passo 6 ATS):</strong> " + ratio.toFixed(2) + " — " + interp);
+          }
+        }
+      } else {
+        cls.push("<strong>Ânion gap (passo 5):</strong> não calculado — informe Na e Cl para os passos 5–6.");
+      }
+
+      document.getElementById("gasoClassificacao").innerHTML =
+        cls.map((c) => "• " + c).join("<br>") +
+        "<div style='margin-top:10px; font-size:11px; color:#6b7280;'>Algoritmo: American Thoracic Society — Interpretation of Arterial Blood Gases (6-step approach), Kaufman DA. Apoio à interpretação; a conclusão final é do médico.</div>";
+
       resEl.style.display = "block";
     }
 
