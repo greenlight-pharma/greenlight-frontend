@@ -1497,6 +1497,10 @@
           <span class="nav-icon">💬</span>
           <span>Assistente</span>
         </button>
+        <button class="nav-btn" data-page="calculators" onclick="switchPage('calculators')">
+          <span class="nav-icon">🧮</span>
+          <span>Calculadoras</span>
+        </button>
         <button class="nav-btn" data-page="account" onclick="switchPage('account')">
           <span class="nav-icon">🔐</span>
           <span>Alterar Senha</span>
@@ -1869,6 +1873,56 @@
           <div id="assistantAnswerDisclaimer" style="display:none; margin-top:16px; padding-top:12px; border-top:1px solid #e5e7eb; font-size:12px; color:#92400e;">
             ⚕️ Resposta de apoio gerada por IA — não é diagnóstico nem conduta. Valide no contexto do paciente real e com fontes oficiais antes de qualquer decisão.
           </div>
+        </div>
+      </section>
+
+      <!-- Página: CALCULADORAS -->
+      <section id="page-calculators" class="page">
+        <div class="page-header">
+          <h2>🧮 Calculadoras</h2>
+          <div class="page-subtitle">Ferramentas de apoio ao cálculo clínico. O médico confere o resultado.</div>
+        </div>
+
+        <div class="card" style="max-width:880px;">
+          <!-- [CALC-LIST] Lista de calculadoras. Estrutura preparada pra
+               crescer: cada calculadora é um botão que mostra seu painel.
+               Adicionar nova = +1 botão aqui +1 painel calc-panel abaixo. -->
+          <label style="font-weight:600; display:block; margin-bottom:8px;">Escolha a calculadora</label>
+          <div id="calcList" style="display:flex; flex-wrap:wrap; gap:8px; margin-bottom:18px;">
+            <button class="btn-soap" style="background:#0ea5e9;" onclick="showCalc('gotejamento')">💧 Gotejamento → mL/h</button>
+            <!-- próximas calculadoras entram aqui como mais botões -->
+          </div>
+
+          <!-- ===== Calculadora: Gotejamento → mL/h ===== -->
+          <div id="calc-gotejamento" class="calc-panel">
+            <h3 style="margin-top:0;">💧 Gotejamento → mL/h</h3>
+            <div style="background:#fffbeb; border:1px solid #fcd34d; border-radius:8px; padding:10px 12px; font-size:13px; color:#92400e; margin:10px 0 16px;">
+              ⚕️ Ferramenta de apoio ao cálculo. Confira o resultado e ajuste conforme o equipo e o caso. A responsabilidade da infusão é do médico.
+            </div>
+
+            <label style="font-weight:600;">Número de gotas contadas</label>
+            <input id="calcGotasQtd" type="number" min="1" step="1" inputmode="numeric" placeholder="Ex: 20" style="width:100%; box-sizing:border-box; margin:4px 0 12px;" />
+
+            <label style="font-weight:600;">Tempo da contagem (segundos)</label>
+            <input id="calcGotasTempo" type="number" min="0.1" step="any" inputmode="decimal" placeholder="Ex: 60" style="width:100%; box-sizing:border-box; margin:4px 0 12px;" />
+
+            <label style="font-weight:600;">Relação gotas/mL do equipo</label>
+            <input id="calcGotasRelacao" type="number" min="1" step="any" inputmode="numeric" value="20" style="width:100%; box-sizing:border-box; margin:4px 0 4px;" />
+            <div style="font-size:12px; color:#6b7280; margin-bottom:14px;">Macrogotas geralmente 20; microgotas 60. Confira o equipo usado.</div>
+
+            <button class="primary" onclick="calcGotejamento()">Calcular</button>
+
+            <div id="calcGotasErro" style="margin-top:12px; color:#b45309; font-size:14px;"></div>
+            <div id="calcGotasResultado" style="display:none; margin-top:16px; padding:14px; background:#f0f9ff; border:1px solid #bae6fd; border-radius:8px;">
+              <div style="font-size:14px; color:#0369a1;">Gotas/min: <strong id="calcOutGotasMin">—</strong></div>
+              <div style="font-size:20px; color:#075985; margin-top:6px;">Taxa de infusão: <strong id="calcOutMlh">—</strong> mL/h</div>
+              <div style="font-size:12px; color:#6b7280; margin-top:10px; padding-top:10px; border-top:1px solid #bae6fd;">
+                Fórmula: gotas/min = nº de gotas ÷ (tempo_segundos ÷ 60) &nbsp;|&nbsp; mL/h = (gotas/min ÷ relação gotas/mL) × 60
+              </div>
+            </div>
+          </div>
+          <!-- ===== fim Gotejamento ===== -->
+
         </div>
       </section>
 
@@ -2525,10 +2579,67 @@
         switchConsultaTab("atendimento");
       } else if (pageId === "agenda") {
         loadAgenda();
+      } else if (pageId === "calculators") {
+        // Abre já mostrando a primeira calculadora (só há uma por ora;
+        // quando houver mais, esta é a default — médico troca pela lista).
+        showCalc("gotejamento");
       }
 
       // Em mobile, fecha a sidebar ao trocar de página (UX padrão de drawer)
       closeSidebar();
+    }
+
+    // ============================================================
+    // [CALCULADORAS] Lista de calculadoras de apoio ao médico.
+    // showCalc alterna qual painel aparece. Adicionar nova calculadora:
+    // +1 botão na lista (HTML), +1 div .calc-panel, +1 função de cálculo.
+    // Toda calculadora clínica: valida entrada ANTES de exibir resultado
+    // (resultado errado com cara de certo é o pior caso) e mostra a
+    // fórmula usada (transparência pro médico conferir).
+    // ============================================================
+    function showCalc(which) {
+      document.querySelectorAll(".calc-panel").forEach((p) => {
+        p.style.display = "none";
+      });
+      const target = document.getElementById("calc-" + which);
+      if (target) target.style.display = "block";
+    }
+
+    function calcGotejamento() {
+      const erroEl = document.getElementById("calcGotasErro");
+      const resEl = document.getElementById("calcGotasResultado");
+      erroEl.textContent = "";
+      resEl.style.display = "none";
+
+      const qtd = parseFloat(document.getElementById("calcGotasQtd").value);
+      const tempo = parseFloat(document.getElementById("calcGotasTempo").value);
+      const relacao = parseFloat(document.getElementById("calcGotasRelacao").value);
+
+      // Validação de segurança: nunca calcular com entrada inválida.
+      // Resultado a partir de lixo seria pior que erro explícito.
+      if (!isFinite(qtd) || qtd <= 0) {
+        erroEl.textContent = "Informe um número de gotas válido (maior que zero).";
+        return;
+      }
+      if (!isFinite(tempo) || tempo <= 0) {
+        erroEl.textContent = "Informe um tempo válido em segundos (maior que zero).";
+        return;
+      }
+      if (!isFinite(relacao) || relacao <= 0) {
+        erroEl.textContent = "Informe a relação gotas/mL do equipo (maior que zero).";
+        return;
+      }
+
+      // Fórmulas confirmadas clinicamente pelo usuário:
+      //   gotas/min = nº de gotas ÷ (tempo_segundos ÷ 60)
+      //   mL/h      = (gotas/min ÷ relação gotas/mL) × 60
+      const gotasMin = qtd / (tempo / 60);
+      const mlh = (gotasMin / relacao) * 60;
+
+      document.getElementById("calcOutGotasMin").textContent =
+        gotasMin.toFixed(1);
+      document.getElementById("calcOutMlh").textContent = mlh.toFixed(1);
+      resEl.style.display = "block";
     }
 
     // ============================================================
