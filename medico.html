@@ -1892,6 +1892,7 @@
           <div id="calcCategories" style="display:flex; flex-wrap:wrap; gap:8px; margin-bottom:16px;">
             <button class="btn-soap" style="background:#0ea5e9;" onclick="showCalcCategory('bomba')">💉 Bomba Infusora</button>
             <button class="btn-soap" style="background:#0ea5e9;" onclick="showCalcCategory('gaso')">🩸 Gasometria Arterial</button>
+            <button class="btn-soap" style="background:#0ea5e9;" onclick="showCalcCategory('iot')">🫁 Sequência Rápida de IOT</button>
             <!-- novas categorias entram aqui conforme tiverem conteúdo -->
           </div>
 
@@ -2056,6 +2057,52 @@
             </div>
           </div>
           <!-- ===== fim categoria Gasometria Arterial ===== -->
+
+          <!-- ===== Categoria: Sequência Rápida de IOT ===== -->
+          <div id="calccat-iot" class="calc-category" style="display:none;">
+            <label style="font-weight:600; display:block; margin:6px 0 8px;">Calculadora</label>
+            <div style="display:flex; flex-wrap:wrap; gap:8px; margin-bottom:18px;">
+              <button class="btn-soap" style="background:#0284c7;" onclick="showCalc('iotdoses')">🫁 Doses para Sequência Rápida de IOT</button>
+            </div>
+
+            <div id="calc-iotdoses" class="calc-panel">
+              <!-- [TRAVA-IOT] Trava de segurança VISÍVEL e bloqueante.
+                   Acordada com o usuário: feature construída mas NÃO
+                   liberada pra uso real até validação com médicos +
+                   advogado. O gate só é real se estiver na tela, não
+                   só na intenção. Remover esta trava = 1 alteração,
+                   quando houver liberação formal. -->
+              <div style="background:#7f1d1d; color:#fff; border-radius:8px; padding:16px; margin-bottom:18px;">
+                <div style="font-weight:700; font-size:15px; margin-bottom:6px;">⛔ NÃO VALIDADO — NÃO USAR EM PACIENTE</div>
+                <div style="font-size:13px; line-height:1.6;">
+                  Esta calculadora calcula doses de fármacos de indução e bloqueio neuromuscular — drogas que causam apneia. Está <strong>disponível apenas para revisão e validação</strong> pela equipe médica e jurídica. <strong>Não está liberada para uso clínico real.</strong> Não utilize os valores em um paciente até a liberação formal.
+                </div>
+              </div>
+
+              <h3 style="margin-top:0;">🫁 Doses para Sequência Rápida de IOT</h3>
+              <div style="background:#fffbeb; border:1px solid #fcd34d; border-radius:8px; padding:10px 12px; font-size:13px; color:#92400e; margin:10px 0 16px;">
+                ⚕️ Apoio ao cálculo de dose por peso. Mostra a <strong>faixa de dose em mg/mcg</strong> conforme a diretriz citada. A conversão para mL depende da <strong>concentração da ampola disponível</strong> — confira o rótulo do fármaco. A decisão e a responsabilidade são do médico.
+              </div>
+
+              <label style="font-weight:600;">Peso do paciente (kg)</label>
+              <input id="iotPeso" type="number" min="0.5" step="any" inputmode="decimal" placeholder="Ex: 70" style="width:100%; box-sizing:border-box; margin:4px 0 12px;" />
+
+              <button class="primary" onclick="calcIOT()">Calcular doses</button>
+
+              <div id="iotErro" style="margin-top:12px; color:#b45309; font-size:14px;"></div>
+
+              <div id="iotResultado" style="display:none; margin-top:16px;">
+                <div style="padding:14px; background:#f0f9ff; border:1px solid #bae6fd; border-radius:8px;">
+                  <div id="iotDoses" style="font-size:14px; color:#0c4a6e; line-height:1.9;"></div>
+                  <div style="font-size:11px; color:#6b7280; margin-top:12px; padding-top:10px; border-top:1px solid #bae6fd;">
+                    Fonte: Takashima AKK, Guimarães HP, Rosa MB, et al. Orientações sobre o manejo de medicamentos analgésicos, sedativos e bloqueadores neuromusculares para intubação traqueal… no contexto da pandemia Covid-19. Abramede/Amib/SBA/SBRAFH/ISMP-Br; 2021. Doses de indução para sequência rápida. Conversão para mL é responsabilidade do médico, conforme a concentração da ampola.
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- ===== fim categoria Sequência Rápida de IOT ===== -->
+
 
 
         </div>
@@ -2749,6 +2796,7 @@
       // Abre a primeira calculadora da categoria por padrão.
       if (cat === "bomba") showCalc("gotejamento");
       if (cat === "gaso") showCalc("gasometria");
+      if (cat === "iot") showCalc("iotdoses");
     }
 
     // [CALC-MCGKGMIN] Conversão dose vasoativa ⇄ mL/h. Fórmula validada
@@ -3049,8 +3097,70 @@
       resEl.style.display = "block";
     }
 
-    // ============================================================
-    // [ASSISTENTE CLÍNICO] Pergunta-e-resposta avulsa, apoio ao
+    // [IOT] Doses de indução para sequência rápida de IOT.
+    // Doses VERBATIM da diretriz SBA/Amib/Abramede 2021, conferidas
+    // pelo usuário contra o PDF da fonte antes da implementação.
+    // NÃO alterar dose sem nova conferência contra a fonte.
+    // Entrega faixa em mg/mcg (dose/kg × peso). Conversão p/ mL fica
+    // com o médico (concentração da ampola varia por fabricante —
+    // assumir uma é o erro que mata; por isso NÃO fazemos isso aqui).
+    function calcIOT() {
+      const erroEl = document.getElementById("iotErro");
+      const resEl = document.getElementById("iotResultado");
+      erroEl.textContent = "";
+      resEl.style.display = "none";
+
+      const peso = parseFloat(document.getElementById("iotPeso").value);
+      if (!isFinite(peso) || peso <= 0) {
+        erroEl.textContent = "Informe um peso válido em kg (maior que zero).";
+        return;
+      }
+
+      // [min, max, unidade/kg, rótulo]. Unidade "mg" ou "mcg" = por kg.
+      const grupos = [
+        ["Indução / sedação", [
+          ["Propofol", 1, 2.5, "mg", "IV"],
+          ["Etomidato", 0.15, 0.3, "mg", "IV (boa opção se instabilidade hemodinâmica)"],
+          ["Midazolam", 0.1, 0.3, "mg", "IV"],
+          ["Dextrocetamina (cetamina S+)", 0.2, 0.4, "mg", "IV (preferir se instabilidade)"],
+        ]],
+        ["Opioide", [
+          ["Fentanil", 2, 6, "mcg", "IV em bólus lento"],
+          ["Alfentanil", 20, 40, "mcg", "IV"],
+          ["Sufentanil", 0.5, 1, "mcg", "IV"],
+          ["Remifentanil", 0.5, 2, "mcg", "IV"],
+        ]],
+        ["Bloqueador neuromuscular", [
+          ["Succinilcolina", 0.5, 1.5, "mg", "IV (priorizada p/ IOT)"],
+          ["Rocurônio", 0.6, 1.2, "mg", "IV (priorizado p/ IOT; checar sugamadex)"],
+        ]],
+        ["Adjuvante", [
+          ["Lidocaína", 0.5, 1.5, "mg", "IV — injetar 1–2 min antes da laringoscopia"],
+        ]],
+      ];
+
+      const fmt = (v) => {
+        // até 2 casas, sem zeros à toa
+        return parseFloat(v.toFixed(2)).toString().replace(".", ",");
+      };
+
+      const html = [];
+      grupos.forEach(([titulo, drogas]) => {
+        html.push("<div style='font-weight:700; color:#075985; margin:10px 0 4px;'>" + titulo + "</div>");
+        drogas.forEach(([nome, mn, mx, un, obs]) => {
+          const lo = fmt(mn * peso);
+          const hi = fmt(mx * peso);
+          html.push(
+            "<div>• <strong>" + nome + "</strong>: " + lo + " a " + hi + " " + un +
+            " <span style='color:#64748b;'>(" + fmt(mn) + "–" + fmt(mx) + " " + un + "/kg — " + obs + ")</span></div>"
+          );
+        });
+      });
+
+      document.getElementById("iotDoses").innerHTML = html.join("");
+      resEl.style.display = "block";
+    }
+
     // raciocínio do médico. O enquadramento de segurança vive no
     // backend (prompt de sistema) — aqui só envia a pergunta e
     // mostra a resposta com o disclaimer sempre visível.
