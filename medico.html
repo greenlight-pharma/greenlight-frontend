@@ -729,6 +729,68 @@
       background: #f3f4f6;
     }
 
+    /* ----- EDITOR ESTRUTURADO DE HORÁRIOS (medicação) ----- */
+    .times-editor {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      margin: 4px 0 4px;
+    }
+    .times-editor .time-row {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .times-editor .time-row input[type="time"] {
+      flex: 0 0 140px;
+      padding: 8px 10px;
+      border: 1px solid #d1d5db;
+      border-radius: 6px;
+      font-size: 14px;
+      font-family: inherit;
+    }
+    .times-editor .time-row .remove-time {
+      background: none;
+      border: 1px solid #e5e7eb;
+      color: #6b7280;
+      width: 30px;
+      height: 30px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 16px;
+      line-height: 1;
+      padding: 0;
+    }
+    .times-editor .time-row .remove-time:hover {
+      background: #fee2e2;
+      border-color: #fca5a5;
+      color: #b91c1c;
+    }
+    .times-editor .add-time-btn {
+      align-self: flex-start;
+      background: #f1f5f9;
+      border: 1px dashed #cbd5e1;
+      color: #0284c7;
+      padding: 6px 12px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 13px;
+      font-weight: 600;
+    }
+    .times-editor .add-time-btn:hover {
+      background: #e0f2fe;
+      border-color: #0284c7;
+    }
+    .times-editor .legacy-warning {
+      background: #fef3c7;
+      border: 1px solid #fcd34d;
+      border-radius: 6px;
+      padding: 8px 10px;
+      font-size: 12px;
+      color: #78350f;
+      line-height: 1.4;
+    }
+
     /* ----- PRONTUÁRIO DO PACIENTE ----- */
 
     .patient-legend {
@@ -2536,8 +2598,15 @@
       <input id="addMedicationDose" type="text" placeholder="Ex: 50mg, 5 gotas, conforme prescrição" />
 
       <label>Horários dos lembretes</label>
-      <input id="addMedicationScheduleTimes" type="text" placeholder="Ex: 08:00,20:00" />
-      <div class="small">Separe os horários por vírgula. Paciente receberá lembrete via WhatsApp.</div>
+      <!-- [HORARIOS-ESTRUTURADO] Editor estruturado de horários.
+           Cada horário é um <input type="time"> (validado pelo navegador,
+           mobile abre teclado de hora — impossível digitar "8;00").
+           O hidden input #addMedicationScheduleTimes mantém o ID antigo
+           e contém a string final ("HH:MM,HH:MM,...") que o submit lê
+           sem nenhuma mudança. -->
+      <div id="addMedicationTimesEditor" data-target="addMedicationScheduleTimes" class="times-editor"></div>
+      <input type="hidden" id="addMedicationScheduleTimes" value="" />
+      <div class="small">Adicione um ou mais horários. Paciente receberá lembrete via WhatsApp.</div>
 
       <label>Data de início</label>
       <input id="addMedicationStartDate" type="date" />
@@ -2582,8 +2651,9 @@
       <input id="editDose" type="text" />
 
       <label>Horários dos lembretes</label>
-      <input id="editScheduleTimes" type="text" placeholder="Ex: 08:00,20:00" />
-      <div class="small">Separe os horários por vírgula.</div>
+      <div id="editTimesEditor" data-target="editScheduleTimes" class="times-editor"></div>
+      <input type="hidden" id="editScheduleTimes" value="" />
+      <div class="small">Adicione um ou mais horários.</div>
 
       <label>Data de início</label>
       <input id="editStartDate" type="date" />
@@ -5248,6 +5318,106 @@
       return div.innerHTML;
     }
 
+    // [HORARIOS-ESTRUTURADO] Editor de horários para cadastro/edição de
+    // medicação. Substitui input de texto livre (que aceitava "8;00").
+    // - Cada horário é <input type="time"> nativo do navegador, que IMPEDE
+    //   entrada inválida (mobile abre teclado de hora, desktop valida HH:MM).
+    // - Hidden input mantém compatibilidade: o submit existente segue lendo
+    //   #addMedicationScheduleTimes / #editScheduleTimes como string —
+    //   nada muda no envio ao backend.
+    // - Sem migração: se o valor inicial não bate com HH:MM,HH:MM, mostra
+    //   um aviso e começa vazio (médico re-cadastra usando o seletor).
+    //
+    // Uso: renderTimesEditor("addMedicationTimesEditor", "08:00,20:00")
+    function renderTimesEditor(containerId, initialString) {
+      const container = document.getElementById(containerId);
+      if (!container) return;
+      const hiddenId = container.getAttribute("data-target");
+      const hidden = document.getElementById(hiddenId);
+
+      // Reconhece formato esperado "HH:MM" ou "HH:MM,HH:MM,..." (espaços ok).
+      // Qualquer outra coisa (ex: "8;00 e 20;00") é tratada como LEGADO.
+      function parseTimes(s) {
+        if (!s) return { ok: true, times: [] };
+        const parts = String(s).split(",").map(p => p.trim()).filter(Boolean);
+        const HHMM = /^([01]\d|2[0-3]):[0-5]\d$/;
+        for (const p of parts) if (!HHMM.test(p)) return { ok: false, times: [] };
+        return { ok: true, times: parts };
+      }
+
+      const parsed = parseTimes(initialString);
+      container.replaceChildren();
+
+      // Aviso de legado, se aplicável.
+      if (!parsed.ok) {
+        const warn = document.createElement("div");
+        warn.className = "legacy-warning";
+        warn.textContent =
+          "⚠ Horário cadastrado em formato antigo (" +
+          (initialString || "vazio") +
+          "). Adicione os horários no formato estruturado abaixo e salve para atualizar.";
+        container.appendChild(warn);
+      }
+
+      // Estado: lista de horários no editor. Começa com o que veio (se ok),
+      // ou um campo vazio (se legado/vazio) pra facilitar.
+      let times = parsed.ok && parsed.times.length ? [...parsed.times] : [""];
+
+      function sync() {
+        const valid = times.filter(t => /^([01]\d|2[0-3]):[0-5]\d$/.test(t));
+        hidden.value = valid.join(",");
+      }
+
+      function render() {
+        // Limpa só as time-rows e o botão; mantém aviso de legado se existir.
+        Array.from(container.querySelectorAll(".time-row, .add-time-btn"))
+          .forEach(el => el.remove());
+
+        times.forEach((value, idx) => {
+          const row = document.createElement("div");
+          row.className = "time-row";
+
+          const input = document.createElement("input");
+          input.type = "time";
+          input.value = value || "";
+          input.addEventListener("input", () => {
+            times[idx] = input.value;
+            sync();
+          });
+
+          const remove = document.createElement("button");
+          remove.type = "button";
+          remove.className = "remove-time";
+          remove.title = "Remover este horário";
+          remove.textContent = "×";
+          remove.addEventListener("click", () => {
+            times.splice(idx, 1);
+            if (times.length === 0) times = [""]; // sempre pelo menos 1 campo
+            render();
+            sync();
+          });
+
+          row.appendChild(input);
+          row.appendChild(remove);
+          container.appendChild(row);
+        });
+
+        const addBtn = document.createElement("button");
+        addBtn.type = "button";
+        addBtn.className = "add-time-btn";
+        addBtn.textContent = "+ adicionar horário";
+        addBtn.addEventListener("click", () => {
+          times.push("");
+          render();
+          // não precisa sync — campo vazio não conta
+        });
+        container.appendChild(addBtn);
+      }
+
+      render();
+      sync();
+    }
+
     function fillPatientFields() {
       // [MED-PAGE-REMOVED] Era usada pelo dropdown da página global de
       // Medicações (removida). Mantida blindada por segurança caso
@@ -6233,6 +6403,7 @@
       document.getElementById("addMedicationName").value = "";
       document.getElementById("addMedicationDose").value = "";
       document.getElementById("addMedicationScheduleTimes").value = "";
+      renderTimesEditor("addMedicationTimesEditor", "");
       document.getElementById("addMedicationStartDate").value = new Date().toISOString().slice(0, 10);
       document.getElementById("addMedicationEndDate").value = "";
       document.getElementById("addMedicationInstructions").value = "";
@@ -9118,6 +9289,7 @@
       document.getElementById("editMedicationName").value = med.medicationName || "";
       document.getElementById("editDose").value = med.dose || "";
       document.getElementById("editScheduleTimes").value = med.scheduleTimes || "";
+      renderTimesEditor("editTimesEditor", med.scheduleTimes || "");
 
       // Datas: backend pode retornar como string ISO ou Date
       const fmt = (d) => {
