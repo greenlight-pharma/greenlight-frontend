@@ -5120,6 +5120,13 @@
     async function submitManualPatient() {
       clearMessage("manualPatientMessage");
 
+      // [LOCK-CADASTRO] Protege contra duplo-clique. Se o botão já está
+      // desabilitado, ignora cliques extras enquanto a requisição roda.
+      // Causa raiz do bug "4 consultas idênticas em segundos": médico
+      // clicava várias vezes esperando feedback.
+      const submitBtn = document.querySelector('[onclick="submitManualPatient()"]');
+      if (submitBtn && submitBtn.disabled) return;
+
       const name = document.getElementById("manualPatientName").value.trim();
       const phone = document.getElementById("manualPatientPhone").value.trim();
       const age = document.getElementById("manualPatientAge").value;
@@ -5150,6 +5157,37 @@
       if (!mainComplaint) {
         setMessage("manualPatientMessage", "error", "Queixa principal é obrigatória.");
         return;
+      }
+
+      // [DUPLICACAO-CLINICA] Antes de criar, verifica se o médico já tem
+      // uma consulta EM ATENDIMENTO aberta pro mesmo telefone. Pergunta
+      // explicitamente antes de criar outra (cobre o caso de "abri duas
+      // sem querer" e o caso clínico de "achei que já tinha, vou abrir
+      // de novo"). Usa cachedMyAppointments (lista já carregada do painel)
+      // — frontend puro, sem chamada extra ao backend.
+      if (Array.isArray(cachedMyAppointments)) {
+        const consultaAberta = cachedMyAppointments.find((a) => {
+          return a && a.phone === phoneToSend
+            && (a.status === "accepted" || a.status === "in_progress");
+        });
+        if (consultaAberta) {
+          const ok = confirm(
+            "Este paciente já tem uma consulta em atendimento aberta com você.\n\n" +
+            "Tem certeza que deseja abrir OUTRA consulta?\n\n" +
+            "(Se foi clique sem querer, clique em Cancelar.)"
+          );
+          if (!ok) return;
+        }
+      }
+
+      // [LOCK-CADASTRO] A partir daqui, trava o botão até a requisição
+      // terminar. finally garante destrava em qualquer caminho de saída.
+      const submitBtnOriginalText = submitBtn ? submitBtn.textContent : null;
+      if (submitBtn) {
+        submitBtn.disabled = true;
+        submitBtn.textContent = "Cadastrando...";
+        submitBtn.style.opacity = "0.7";
+        submitBtn.style.cursor = "not-allowed";
       }
 
       try {
@@ -5190,6 +5228,15 @@
         }
       } catch (error) {
         setMessage("manualPatientMessage", "error", error.message);
+      } finally {
+        // [LOCK-CADASTRO] Destrava o botão SEMPRE — sucesso, erro, qualquer
+        // caminho de saída. Sem isso, um erro deixaria o médico bloqueado.
+        if (submitBtn) {
+          submitBtn.disabled = false;
+          submitBtn.textContent = submitBtnOriginalText || "Cadastrar e abrir prontuário";
+          submitBtn.style.opacity = "";
+          submitBtn.style.cursor = "";
+        }
       }
     }
 
@@ -8848,7 +8895,7 @@
       const generatedDate = data.generatedAt
         ? new Date(data.generatedAt).toLocaleString("pt-BR", { timeZone: "America/Sao_Paulo" })
         : "agora";
-      meta.textContent = `Análise ${data.cached ? "carregada do registro" : "gerada"} em ${generatedDate}.`;
+      meta.textContent = `Análise ${data.cached ? "carregada do registro" : "gerada"} em ${generatedDate} usando ${data.modelUsed || "IA"}.`;
       container.appendChild(meta);
     }
 
