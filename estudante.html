@@ -840,13 +840,16 @@
         html += "</div>";
       }
 
-      // 9. Temas de estudo
+      // 9. Temas de estudo (cada tema vira link para Google Scholar
+      // em nova aba — busca direta, sem alucinação de URL pelo modelo).
       if (Array.isArray(data.temas_de_estudo) && data.temas_de_estudo.length) {
         html += '<div class="analysis-section">';
         html += '<h4>📚 Temas de estudo</h4>';
-        html += "<ul>";
+        html += '<ul style="list-style:none; padding-left:0;">';
         data.temas_de_estudo.forEach((t) => {
-          html += `<li>${escapeHtml(String(t))}</li>`;
+          const tema = String(t);
+          const url = "https://scholar.google.com/scholar?q=" + encodeURIComponent(tema);
+          html += `<li style="margin-bottom:6px;"><a href="${escapeHtml(url)}" target="_blank" rel="noopener noreferrer" style="color:#0c4a6e; text-decoration:none; display:inline-flex; align-items:center; gap:6px; padding:4px 0;"><span>${escapeHtml(tema)}</span><span style="font-size:11px; color:#64748b;">↗</span></a></li>`;
         });
         html += "</ul>";
         html += "</div>";
