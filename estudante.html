@@ -171,6 +171,83 @@
     }
     .msg.success { background: #d1fae5; color: #065f46; display: block; }
     .msg.error { background: #fee2e2; color: #991b1b; display: block; }
+
+    /* ===== Análise didática (portado do medico.html, sem badges de probabilidade) ===== */
+    .analysis-section {
+      background: #fff;
+      border: 1px solid #e5e7eb;
+      border-radius: 10px;
+      padding: 14px 16px;
+      margin-bottom: 12px;
+    }
+    .analysis-section h4 {
+      margin: 0 0 10px;
+      font-size: 15px;
+      color: #0f172a;
+      font-weight: 600;
+    }
+    .analysis-section ul {
+      margin: 0;
+      padding-left: 20px;
+      line-height: 1.55;
+      font-size: 14px;
+      color: #334155;
+    }
+    .analysis-section ul li { margin-bottom: 4px; }
+    .analysis-section ul li:last-child { margin-bottom: 0; }
+
+    .hypothesis-card {
+      border: 1px solid #e5e7eb;
+      border-radius: 8px;
+      padding: 11px 13px;
+      margin-bottom: 8px;
+      background: #fafafa;
+    }
+    .hypothesis-card:last-child { margin-bottom: 0; }
+    .hypothesis-card .hyp-name {
+      font-weight: 700;
+      color: #1f2933;
+      font-size: 14px;
+      margin-bottom: 4px;
+    }
+    .hypothesis-card .hyp-just {
+      color: #4b5563;
+      font-size: 13.5px;
+      line-height: 1.5;
+    }
+
+    .red-flags-box {
+      background: #fef2f2;
+      border: 1px solid #fecaca;
+      border-left: 4px solid #dc2626;
+      border-radius: 8px;
+      padding: 12px 16px;
+      margin-bottom: 12px;
+    }
+    .red-flags-box h4 { color: #991b1b; }
+    .red-flags-box ul { color: #7f1d1d; }
+
+    .comparacao-box {
+      background: #f0f9ff;
+      border: 1px solid #bae6fd;
+      border-radius: 8px;
+      padding: 12px 14px;
+      margin-bottom: 12px;
+      font-size: 13.5px;
+      line-height: 1.55;
+      color: #0c4a6e;
+    }
+    .comparacao-box h4 {
+      margin: 0 0 6px;
+      font-size: 14px;
+      color: #0c4a6e;
+      font-weight: 600;
+    }
+
+    .exame-row { margin-bottom: 6px; }
+    .exame-row:last-child { margin-bottom: 0; }
+    .exame-nome { font-weight: 600; color: #1f2933; }
+    .exame-just { color: #4b5563; }
   </style>
 </head>
 <body>
@@ -312,7 +389,7 @@
             @keyframes progmove { 0% { left: -30%; } 100% { left: 100%; } }
           </style>
 
-          <div id="feedback-container" style="display:none; background:#f8fafc; border:1px solid #e5e7eb; border-radius:10px; padding:18px; line-height:1.6; font-size:14px; color:#1f2937;"></div>
+          <div id="feedback-container" style="display:none;"></div>
 
           <div id="feedback-disclaimer" style="display:none; background:#fef3c7; border:1px solid #fcd34d; border-radius:8px; padding:12px 14px; margin-top:10px; color:#78350f; font-size:12.5px; line-height:1.5;">
             📘 Esta análise é <strong>didática</strong>, em formato de gabarito comentado de caso clínico. <strong>Não diagnostica, não prescreve e não orienta atendimento real.</strong> Uso restrito a ensino, portfólio e discussão com preceptor.
@@ -505,13 +582,18 @@
           throw new Error(data.error || `Erro ${resp.status}.`);
         }
 
-        feedbackRecebido = data.feedback || "";
-        if (!feedbackRecebido) throw new Error("Resposta vazia.");
+        // A IA agora devolve JSON estruturado (schema aprovado pelo
+        // advogado). data.feedback deve ser objeto. Defesa caso seja
+        // string (versão antiga em cache) ou outro tipo.
+        feedbackRecebido = data.feedback;
+        if (!feedbackRecebido || typeof feedbackRecebido !== "object") {
+          throw new Error("Resposta em formato inesperado.");
+        }
 
-        // Renderiza feedback.
+        // Renderiza feedback estruturado.
         document.getElementById("feedback-loading").style.display = "none";
         const fc = document.getElementById("feedback-container");
-        fc.innerHTML = renderFeedbackMarkdown(feedbackRecebido);
+        fc.innerHTML = renderAnaliseDidatica(feedbackRecebido);
         fc.style.display = "block";
         document.getElementById("feedback-disclaimer").style.display = "block";
         document.getElementById("aprendizado-box").style.display = "block";
@@ -533,47 +615,118 @@
       window.scrollTo({ top: 0, behavior: "smooth" });
     }
 
-    // Render simples de markdown do feedback: ## viram h3, parágrafos,
-    // listas com - viram <ul>, *itálico* fica em <em>. Não usa biblioteca
-    // externa pra manter o standalone leve.
-    function renderFeedbackMarkdown(md) {
-      const lines = String(md).split("\n");
+    // Render do feedback educacional: a IA devolve JSON estruturado
+    // (formato gabarito comentado, schema aprovado pelo advogado).
+    // Este render espelha o visual do medico.html (cards por seção,
+    // red flags em vermelho), MAS sem badges de probabilidade nas
+    // hipóteses — vetado pelo advogado para preservar o exercício
+    // pedagógico de estratificação do próprio aluno.
+    function renderAnaliseDidatica(data) {
+      if (!data || typeof data !== "object") {
+        return '<div class="analysis-section"><em>Resposta inesperada.</em></div>';
+      }
       let html = "";
-      let inList = false;
-      const closeList = () => { if (inList) { html += "</ul>"; inList = false; } };
 
-      lines.forEach((raw) => {
-        const line = raw.replace(/\s+$/, "");
-        if (!line.trim()) { closeList(); html += ""; return; }
+      // 1. Hipóteses para discussão (cards, sem badge de probabilidade)
+      if (Array.isArray(data.hipoteses_para_discussao) && data.hipoteses_para_discussao.length) {
+        html += '<div class="analysis-section">';
+        html += '<h4>🔍 Hipóteses para discussão</h4>';
+        data.hipoteses_para_discussao.forEach((h) => {
+          if (!h || typeof h !== "object") return;
+          html += '<div class="hypothesis-card">';
+          html += `<div class="hyp-name">${escapeHtml(h.hipotese || "—")}</div>`;
+          if (h.justificativa) {
+            html += `<div class="hyp-just">${escapeHtml(h.justificativa)}</div>`;
+          }
+          html += "</div>";
+        });
+        html += "</div>";
+      }
 
-        // título ## ou ###
-        const h2 = line.match(/^##\s+(.*)$/);
-        if (h2) {
-          closeList();
-          html += `<h3 style="margin:18px 0 8px; color:#075985; font-size:15px;">${escapeHtml(h2[1])}</h3>`;
-          return;
-        }
+      // 2. Comparação com a hipótese do aluno (caixa azul, prosa curta)
+      if (data.comparacao_hipoteses_aluno) {
+        html += '<div class="comparacao-box">';
+        html += '<h4>🎯 Sua hipótese vs. discussão didática</h4>';
+        html += `<div>${escapeHtml(data.comparacao_hipoteses_aluno)}</div>`;
+        html += "</div>";
+      }
 
-        // item de lista - ou *
-        const li = line.match(/^[-*]\s+(.*)$/);
-        if (li) {
-          if (!inList) { html += '<ul style="margin:6px 0 6px 22px;">'; inList = true; }
-          html += `<li style="margin-bottom:4px;">${inlineMd(li[1])}</li>`;
-          return;
-        }
+      // 3. Elementos de manejo em contexto acadêmico
+      if (Array.isArray(data.elementos_de_manejo_academico) && data.elementos_de_manejo_academico.length) {
+        html += '<div class="analysis-section">';
+        html += '<h4>🩺 Elementos de manejo em contexto acadêmico</h4>';
+        html += "<ul>";
+        data.elementos_de_manejo_academico.forEach((p) => {
+          html += `<li>${escapeHtml(String(p))}</li>`;
+        });
+        html += "</ul>";
+        html += "</div>";
+      }
 
-        closeList();
-        html += `<p style="margin:6px 0;">${inlineMd(line)}</p>`;
-      });
-      closeList();
+      // 4. Comparação com a conduta do aluno
+      if (data.comparacao_conduta_aluno) {
+        html += '<div class="comparacao-box">';
+        html += '<h4>🎯 Sua conduta vs. manejo discutido</h4>';
+        html += `<div>${escapeHtml(data.comparacao_conduta_aluno)}</div>`;
+        html += "</div>";
+      }
+
+      // 5. Red flags educacionais (caixa vermelha)
+      if (Array.isArray(data.red_flags_educacionais) && data.red_flags_educacionais.length) {
+        html += '<div class="analysis-section red-flags-box">';
+        html += '<h4>🚨 Red flags educacionais</h4>';
+        html += "<ul>";
+        data.red_flags_educacionais.forEach((r) => {
+          if (!r || typeof r !== "object") return;
+          const sinal = escapeHtml(r.sinal || "—");
+          const just = r.justificativa_didatica ? ` — ${escapeHtml(r.justificativa_didatica)}` : "";
+          html += `<li><strong>${sinal}</strong>${just}</li>`;
+        });
+        html += "</ul>";
+        html += "</div>";
+      }
+
+      // 6. Exames para discussão acadêmica
+      if (Array.isArray(data.exames_para_discussao_academica) && data.exames_para_discussao_academica.length) {
+        html += '<div class="analysis-section">';
+        html += '<h4>🧪 Exames para discussão acadêmica</h4>';
+        data.exames_para_discussao_academica.forEach((e) => {
+          if (!e || typeof e !== "object") return;
+          html += '<div class="exame-row">';
+          html += `<span class="exame-nome">${escapeHtml(e.exame || "—")}</span>`;
+          if (e.justificativa_didatica) {
+            html += ` <span class="exame-just">— ${escapeHtml(e.justificativa_didatica)}</span>`;
+          }
+          html += "</div>";
+        });
+        html += "</div>";
+      }
+
+      // 7. Temas de estudo
+      if (Array.isArray(data.temas_de_estudo) && data.temas_de_estudo.length) {
+        html += '<div class="analysis-section">';
+        html += '<h4>📚 Temas de estudo</h4>';
+        html += "<ul>";
+        data.temas_de_estudo.forEach((t) => {
+          html += `<li>${escapeHtml(String(t))}</li>`;
+        });
+        html += "</ul>";
+        html += "</div>";
+      }
+
+      // 8. Perguntas ao preceptor (reforço pedagógico: IA não substitui humano)
+      if (Array.isArray(data.perguntas_ao_preceptor) && data.perguntas_ao_preceptor.length) {
+        html += '<div class="analysis-section">';
+        html += '<h4>💬 Perguntas para levar ao preceptor</h4>';
+        html += "<ul>";
+        data.perguntas_ao_preceptor.forEach((p) => {
+          html += `<li>${escapeHtml(String(p))}</li>`;
+        });
+        html += "</ul>";
+        html += "</div>";
+      }
+
       return html;
-    }
-    function inlineMd(s) {
-      // **negrito** e *itálico*. Escape primeiro.
-      let r = escapeHtml(s);
-      r = r.replace(/\*\*(.+?)\*\*/g, "<strong>$1</strong>");
-      r = r.replace(/(^|[^*])\*([^*\n]+)\*/g, "$1<em>$2</em>");
-      return r;
     }
 
     // ----- ETAPA 3: SALVAR FINAL -----
@@ -647,7 +800,7 @@
           <div class="preview"><strong>Queixa:</strong> ${escapeHtml(c.queixa)}</div>
           ${c.hipoteses ? `<div class="preview" style="margin-top:6px;"><strong>Suas hipóteses:</strong> ${escapeHtml(c.hipoteses)}</div>` : ""}
           ${c.conduta ? `<div class="preview" style="margin-top:6px;"><strong>Sua conduta:</strong> ${escapeHtml(c.conduta)}</div>` : ""}
-          ${c.feedback ? `<details style="margin-top:8px;"><summary style="cursor:pointer; color:#0284c7; font-size:13px; font-weight:600;">Ver feedback educacional</summary><div style="margin-top:6px; padding:10px; background:#f1f5f9; border-radius:6px; font-size:13px;">${renderFeedbackMarkdown(c.feedback)}</div></details>` : ""}
+          ${(c.feedback && typeof c.feedback === "object") ? `<details style="margin-top:8px;"><summary style="cursor:pointer; color:#0284c7; font-size:13px; font-weight:600;">Ver feedback educacional</summary><div style="margin-top:6px;">${renderAnaliseDidatica(c.feedback)}</div></details>` : ""}
           ${c.aprendizado ? `<div class="preview" style="margin-top:6px;"><strong>Aprendizado:</strong> ${escapeHtml(c.aprendizado)}</div>` : ""}
         </div>
       `).join("");
