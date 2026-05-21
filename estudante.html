@@ -635,17 +635,55 @@
 
     // Render do feedback educacional: a IA devolve JSON estruturado
     // (formato gabarito comentado, schema aprovado pelo advogado).
-    // Este render espelha o visual do medico.html (cards por seção,
-    // red flags em vermelho), MAS sem badges de probabilidade nas
-    // hipóteses — vetado pelo advogado para preservar o exercício
-    // pedagógico de estratificação do próprio aluno.
+    // Visual portado do medico.html (cards por seção, red flags em
+    // vermelho). Inclui badge de probabilidade didática nas hipóteses
+    // (aprovado pelo advogado em parecer revisado, com nome de campo
+    // "probabilidade_didatica" para distinguir de probabilidade clínica).
+    // Ordem das seções segue medico.html: resumo → red flags → pontos
+    // de atenção → hipóteses → comparações com aluno intercaladas →
+    // manejo → exames → estudo → preceptor.
     function renderAnaliseDidatica(data) {
       if (!data || typeof data !== "object") {
         return '<div class="analysis-section"><em>Resposta inesperada.</em></div>';
       }
       let html = "";
 
-      // 1. Hipóteses para discussão (cards com badge de probabilidade didática)
+      // 1. Resumo do caso
+      if (data.resumo_caso) {
+        html += '<div class="analysis-section">';
+        html += '<h4>📋 Resumo do caso</h4>';
+        html += `<div style="font-size:13.5px; line-height:1.55; color:#334155;">${escapeHtml(data.resumo_caso)}</div>`;
+        html += "</div>";
+      }
+
+      // 2. Red flags educacionais (caixa vermelha)
+      if (Array.isArray(data.red_flags_educacionais) && data.red_flags_educacionais.length) {
+        html += '<div class="analysis-section red-flags-box">';
+        html += '<h4>🚨 Sinais de alerta (red flags)</h4>';
+        html += "<ul>";
+        data.red_flags_educacionais.forEach((r) => {
+          if (!r || typeof r !== "object") return;
+          const sinal = escapeHtml(r.sinal || "—");
+          const just = r.justificativa_didatica ? ` — ${escapeHtml(r.justificativa_didatica)}` : "";
+          html += `<li><strong>${sinal}</strong>${just}</li>`;
+        });
+        html += "</ul>";
+        html += "</div>";
+      }
+
+      // 3. Pontos de atenção (investigações/lacunas a explorar)
+      if (Array.isArray(data.pontos_de_atencao) && data.pontos_de_atencao.length) {
+        html += '<div class="analysis-section">';
+        html += '<h4>👀 Pontos de atenção</h4>';
+        html += "<ul>";
+        data.pontos_de_atencao.forEach((p) => {
+          html += `<li>${escapeHtml(String(p))}</li>`;
+        });
+        html += "</ul>";
+        html += "</div>";
+      }
+
+      // 4. Hipóteses para discussão (cards com badge de probabilidade didática)
       if (Array.isArray(data.hipoteses_para_discussao) && data.hipoteses_para_discussao.length) {
         html += '<div class="analysis-section">';
         html += '<h4>🔍 Hipóteses para discussão</h4>';
@@ -668,7 +706,7 @@
         html += "</div>";
       }
 
-      // 2. Comparação com a hipótese do aluno (caixa azul, prosa curta)
+      // 5. Comparação com a hipótese do aluno (caixa azul, prosa curta)
       if (data.comparacao_hipoteses_aluno) {
         html += '<div class="comparacao-box">';
         html += '<h4>🎯 Sua hipótese vs. discussão didática</h4>';
@@ -676,7 +714,7 @@
         html += "</div>";
       }
 
-      // 3. Elementos de manejo em contexto acadêmico
+      // 6. Elementos de manejo em contexto acadêmico
       if (Array.isArray(data.elementos_de_manejo_academico) && data.elementos_de_manejo_academico.length) {
         html += '<div class="analysis-section">';
         html += '<h4>🩺 Elementos de manejo em contexto acadêmico</h4>';
@@ -688,7 +726,7 @@
         html += "</div>";
       }
 
-      // 4. Comparação com a conduta do aluno
+      // 7. Comparação com a conduta do aluno
       if (data.comparacao_conduta_aluno) {
         html += '<div class="comparacao-box">';
         html += '<h4>🎯 Sua conduta vs. manejo discutido</h4>';
@@ -696,22 +734,7 @@
         html += "</div>";
       }
 
-      // 5. Red flags educacionais (caixa vermelha)
-      if (Array.isArray(data.red_flags_educacionais) && data.red_flags_educacionais.length) {
-        html += '<div class="analysis-section red-flags-box">';
-        html += '<h4>🚨 Red flags educacionais</h4>';
-        html += "<ul>";
-        data.red_flags_educacionais.forEach((r) => {
-          if (!r || typeof r !== "object") return;
-          const sinal = escapeHtml(r.sinal || "—");
-          const just = r.justificativa_didatica ? ` — ${escapeHtml(r.justificativa_didatica)}` : "";
-          html += `<li><strong>${sinal}</strong>${just}</li>`;
-        });
-        html += "</ul>";
-        html += "</div>";
-      }
-
-      // 6. Exames para discussão acadêmica
+      // 8. Exames para discussão acadêmica
       if (Array.isArray(data.exames_para_discussao_academica) && data.exames_para_discussao_academica.length) {
         html += '<div class="analysis-section">';
         html += '<h4>🧪 Exames para discussão acadêmica</h4>';
@@ -727,7 +750,7 @@
         html += "</div>";
       }
 
-      // 7. Temas de estudo
+      // 9. Temas de estudo
       if (Array.isArray(data.temas_de_estudo) && data.temas_de_estudo.length) {
         html += '<div class="analysis-section">';
         html += '<h4>📚 Temas de estudo</h4>';
@@ -739,7 +762,7 @@
         html += "</div>";
       }
 
-      // 8. Perguntas ao preceptor (reforço pedagógico: IA não substitui humano)
+      // 10. Perguntas ao preceptor (reforço pedagógico: IA não substitui humano)
       if (Array.isArray(data.perguntas_ao_preceptor) && data.perguntas_ao_preceptor.length) {
         html += '<div class="analysis-section">';
         html += '<h4>💬 Perguntas para levar ao preceptor</h4>';
