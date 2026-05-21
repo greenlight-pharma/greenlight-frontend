@@ -1,501 +1,505 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="pt-BR">
 <head>
-<meta charset="UTF-8" />
-<script>document.documentElement.className='js';</script>
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Vytal — Infraestrutura de saúde com apoio ao médico</title>
-<meta name="description" content="Vytal é uma infraestrutura de saúde digital que organiza informação clínica e apoia o trabalho do médico em consultas e plantões. O profissional sempre no centro da decisão." />
-<link rel="icon" type="image/png" href="vytal-logo.png" />
-<link rel="preconnect" href="https://fonts.googleapis.com" />
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet" />
-<style>
-  :root{
-    --navy:#1c2a63;
-    --navy-deep:#16204d;
-    --cyan:#39c4c8;
-    --cyan-soft:#5fd6d6;
-    --ink:#1a2238;
-    --slate:#5a6478;
-    --mist:#f5f8fa;
-    --line:#e6ebf0;
-    --white:#ffffff;
-    --grad:linear-gradient(120deg,var(--navy) 0%,#2a4a8c 45%,var(--cyan) 100%);
-  }
-  *{margin:0;padding:0;box-sizing:border-box}
-  html{scroll-behavior:smooth}
-  body{
-    font-family:'Outfit',sans-serif;
-    color:var(--ink);
-    background:var(--white);
-    line-height:1.65;
-    -webkit-font-smoothing:antialiased;
-  }
-  h1,h2,h3{font-family:'Fraunces',serif;font-weight:500;line-height:1.15;letter-spacing:-.01em}
-  a{color:inherit;text-decoration:none}
-  .wrap{max-width:1140px;margin:0 auto;padding:0 28px}
-  section{padding:110px 0}
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Vytal — Infraestrutura contínua de saúde baseada em IA</title>
+  <meta name="description" content="Vytal — infraestrutura contínua de saúde baseada em IA. CNPJ em processo de abertura. Em breve." />
+  <link rel="icon" type="image/png" href="vytal-logo.png" />
 
-  /* NAV */
-  header{
-    position:sticky;top:0;z-index:50;
-    background:rgba(255,255,255,.86);
-    backdrop-filter:saturate(180%) blur(14px);
-    border-bottom:1px solid var(--line);
-  }
-  nav{display:flex;align-items:center;justify-content:space-between;height:74px}
-  .brand{display:flex;align-items:center;gap:11px;font-family:'Fraunces',serif;font-size:23px;font-weight:600;color:var(--navy)}
-  .brand img{height:42px;width:auto;display:block}
-  .navlinks{display:flex;align-items:center;gap:34px}
-  .navlinks a{font-size:15px;color:var(--slate);transition:color .2s;font-weight:400}
-  .navlinks a:hover{color:var(--navy)}
-  .btn{
-    display:inline-flex;align-items:center;gap:9px;
-    padding:13px 26px;border-radius:999px;
-    font-family:'Outfit',sans-serif;font-size:15px;font-weight:500;
-    transition:transform .2s,box-shadow .2s,background .2s;cursor:pointer;border:none;
-  }
-  .btn-primary{background:var(--grad);color:#fff;box-shadow:0 8px 26px -10px rgba(28,42,99,.5)}
-  .btn-primary:hover{transform:translateY(-2px);box-shadow:0 14px 32px -10px rgba(28,42,99,.55)}
-  .btn-ghost{background:transparent;color:var(--navy);border:1.5px solid var(--line)}
-  .btn-ghost:hover{border-color:var(--cyan);color:var(--navy)}
-  /* Mesmo visual discreto do ghost, mas classe própria pra NÃO ser
-     escondida pela regra mobile que oculta .btn-ghost (médico acessa
-     o painel pelo celular — o botão precisa aparecer lá). */
-  .btn-medico{background:transparent;color:var(--navy);border:1.5px solid var(--line)}
-  .btn-medico:hover{border-color:var(--cyan);color:var(--navy)}
-  .nav-cta{display:flex;gap:12px;align-items:center}
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet" />
 
-  /* HERO */
-  .hero{
-    position:relative;padding:120px 0 130px;overflow:hidden;
-    background:
-      radial-gradient(1100px 520px at 78% -8%,rgba(57,196,200,.16),transparent 60%),
-      radial-gradient(800px 480px at 8% 12%,rgba(28,42,99,.07),transparent 55%);
-  }
-  .hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:64px;align-items:center}
-  .eyebrow{
-    display:inline-flex;align-items:center;gap:9px;
-    font-size:13px;letter-spacing:.14em;text-transform:uppercase;
-    color:var(--navy);font-weight:600;margin-bottom:26px;
-  }
-  .eyebrow::before{content:"";width:30px;height:2px;background:var(--cyan);display:block}
-  .hero h1{font-size:clamp(2.6rem,5vw,4rem);color:var(--ink)}
-  .hero h1 .accent{
-    background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent;
-  }
-  .hero p.lead{
-    margin:30px 0 38px;font-size:19px;color:var(--slate);max-width:520px;font-weight:300;
-  }
-  .hero-actions{display:flex;gap:14px;flex-wrap:wrap}
+  <style>
+    /* Paleta e tokens exatamente alinhados ao site institucional
+       que está pronto (mesmas variáveis, mesmas fontes) — assim a
+       transição de coming-soon para o site real é orgânica. */
+    :root {
+      --navy: #1c2a63;
+      --navy-deep: #16204d;
+      --cyan: #39c4c8;
+      --cyan-soft: #5fd6d6;
+      --ink: #1a2238;
+      --slate: #5a6478;
+      --mist: #f5f8fa;
+      --line: #e6ebf0;
+      --white: #ffffff;
+      --warn: #92621a;
+      --grad: linear-gradient(120deg, var(--navy) 0%, #2a4a8c 45%, var(--cyan) 100%);
+      --max: 1140px;
+    }
 
-  .hero-visual{
-    position:relative;display:flex;align-items:center;justify-content:center;
-  }
-  .hero-card{
-    position:relative;width:100%;max-width:420px;
-    background:#fff;border:1px solid var(--line);border-radius:26px;
-    padding:34px 32px;box-shadow:0 30px 70px -34px rgba(28,42,99,.32);
-  }
-  .hero-card .hc-logo{display:flex;justify-content:center;margin-bottom:8px}
-  .hero-card .hc-logo img{height:128px;width:auto}
-  .hero-card .hc-tag{
-    text-align:center;font-family:'Fraunces',serif;font-size:18px;color:var(--navy);
-    font-weight:600;margin-bottom:22px;
-  }
-  .hc-row{
-    display:flex;align-items:center;gap:13px;padding:14px 0;border-top:1px solid var(--line);
-    font-size:14.5px;color:var(--slate);
-  }
-  .hc-dot{
-    width:30px;height:30px;border-radius:9px;flex-shrink:0;
-    background:linear-gradient(135deg,rgba(57,196,200,.18),rgba(28,42,99,.12));
-    display:flex;align-items:center;justify-content:center;color:var(--navy);font-weight:600;font-size:14px;
-  }
-  .hc-float{
-    position:absolute;right:-22px;top:34px;
-    background:#fff;border:1px solid var(--line);border-radius:14px;
-    padding:12px 16px;box-shadow:0 16px 40px -18px rgba(28,42,99,.3);
-    font-size:13px;color:var(--navy);font-weight:500;display:flex;align-items:center;gap:8px;
-  }
-  .pulse{width:9px;height:9px;border-radius:50%;background:var(--cyan);box-shadow:0 0 0 0 rgba(57,196,200,.6);animation:pulse 2.4s infinite}
-  @keyframes pulse{70%{box-shadow:0 0 0 12px rgba(57,196,200,0)}100%{box-shadow:0 0 0 0 rgba(57,196,200,0)}}
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
 
-  /* TRUST STRIP */
-  .strip{background:var(--navy-deep);color:#fff;padding:30px 0}
-  .strip .wrap{display:flex;align-items:center;justify-content:center;gap:14px;flex-wrap:wrap;text-align:center}
-  .strip p{font-size:15.5px;color:#cdd6ea;font-weight:300}
-  .strip strong{color:#fff;font-weight:500}
+    body {
+      background: var(--white);
+      color: var(--ink);
+      font-family: "Outfit", system-ui, sans-serif;
+      font-size: 16px;
+      line-height: 1.65;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      overflow-x: hidden;
+    }
 
-  /* SECTION HEADERS */
-  .sec-head{max-width:680px;margin-bottom:62px}
-  .sec-head .eyebrow{margin-bottom:18px}
-  .sec-head h2{font-size:clamp(2rem,3.6vw,2.85rem);color:var(--ink)}
-  .sec-head p{margin-top:18px;font-size:18px;color:var(--slate);font-weight:300}
+    /* Atmosfera de fundo — radial-gradients sutis no mesmo padrão
+       do hero do institucional (cyan no canto superior direito,
+       navy claro no canto superior esquerdo). */
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 0;
+      background:
+        radial-gradient(1100px 520px at 82% -8%, rgba(57,196,200,0.16), transparent 60%),
+        radial-gradient(800px 480px at 6% 10%, rgba(28,42,99,0.07), transparent 55%);
+    }
 
-  /* WHAT IS — feature grid */
-  .features{display:grid;grid-template-columns:repeat(3,1fr);gap:26px}
-  .feature{
-    background:#fff;border:1px solid var(--line);border-radius:20px;padding:34px 30px;
-    transition:transform .25s,box-shadow .25s,border-color .25s;
-  }
-  .feature:hover{transform:translateY(-5px);box-shadow:0 26px 54px -30px rgba(28,42,99,.28);border-color:transparent}
-  .feature .ic{
-    width:48px;height:48px;border-radius:13px;margin-bottom:22px;
-    background:linear-gradient(135deg,var(--navy),var(--cyan));
-    display:flex;align-items:center;justify-content:center;
-  }
-  .feature .ic svg{width:23px;height:23px;stroke:#fff;fill:none;stroke-width:1.7}
-  .feature h3{font-size:20px;margin-bottom:10px;color:var(--ink)}
-  .feature p{font-size:15px;color:var(--slate);font-weight:300}
+    h1, h2, h3 {
+      font-family: "Fraunces", Georgia, serif;
+      font-weight: 500;
+      line-height: 1.15;
+      letter-spacing: -0.01em;
+      color: var(--ink);
+    }
 
-  /* AUDIENCE split */
-  .audience{background:var(--mist)}
-  .aud-grid{display:grid;grid-template-columns:1fr 1fr;gap:30px}
-  .aud-card{
-    background:#fff;border:1px solid var(--line);border-radius:24px;padding:48px 44px;
-    position:relative;overflow:hidden;
-  }
-  .aud-card::before{
-    content:"";position:absolute;inset:0 0 auto 0;height:5px;background:var(--grad);
-  }
-  .aud-card .tag{
-    font-size:13px;letter-spacing:.12em;text-transform:uppercase;color:var(--navy);
-    font-weight:600;margin-bottom:14px;display:block;
-  }
-  .aud-card h3{font-size:26px;margin-bottom:16px;color:var(--ink)}
-  .aud-card p.intro{font-size:16px;color:var(--slate);margin-bottom:26px;font-weight:300}
-  .aud-list{list-style:none;display:flex;flex-direction:column;gap:15px}
-  .aud-list li{display:flex;gap:13px;font-size:15px;color:var(--ink);align-items:flex-start}
-  .aud-list .chk{
-    width:22px;height:22px;border-radius:50%;flex-shrink:0;margin-top:1px;
-    background:linear-gradient(135deg,rgba(57,196,200,.2),rgba(28,42,99,.14));
-    display:flex;align-items:center;justify-content:center;
-  }
-  .aud-list .chk svg{width:12px;height:12px;stroke:var(--navy);stroke-width:2.4;fill:none}
+    .wrap {
+      position: relative;
+      z-index: 1;
+      max-width: var(--max);
+      width: 100%;
+      margin: 0 auto;
+      padding: 26px 28px 60px;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
 
-  /* HOW */
-  .steps{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;counter-reset:s}
-  .step{position:relative;padding-top:54px}
-  .step::before{
-    counter-increment:s;content:counter(s);
-    position:absolute;top:0;left:0;
-    width:42px;height:42px;border-radius:12px;
-    background:#fff;border:1.5px solid var(--line);
-    display:flex;align-items:center;justify-content:center;
-    font-family:'Fraunces',serif;font-size:18px;font-weight:600;color:var(--navy);
-  }
-  .step h3{font-size:18px;margin-bottom:9px;color:var(--ink)}
-  .step p{font-size:14.5px;color:var(--slate);font-weight:300}
+    /* ===== Cabeçalho com logo ===== */
+    header.top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-bottom: 22px;
+      border-bottom: 1px solid var(--line);
+      animation: fadeUp 0.8s ease-out both;
+    }
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 11px;
+      font-family: "Fraunces", serif;
+      font-size: 23px;
+      font-weight: 600;
+      color: var(--navy);
+    }
+    .brand img {
+      height: 42px;
+      width: auto;
+      display: block;
+    }
+    .meta {
+      font-size: 13px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--slate);
+      font-weight: 500;
+    }
 
-  /* CONTACT / CTA */
-  .cta{
-    background:var(--grad);color:#fff;border-radius:30px;
-    padding:74px 60px;text-align:center;position:relative;overflow:hidden;
-  }
-  .cta::after{
-    content:"";position:absolute;width:340px;height:340px;border-radius:50%;
-    background:rgba(255,255,255,.07);right:-90px;top:-120px;
-  }
-  .cta h2{font-size:clamp(1.9rem,3.4vw,2.6rem);margin-bottom:16px;position:relative}
-  .cta p{font-size:18px;color:#dfe7f5;max-width:560px;margin:0 auto 36px;font-weight:300;position:relative}
-  .cta-actions{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;position:relative}
-  .btn-white{background:#fff;color:var(--navy)}
-  .btn-white:hover{transform:translateY(-2px)}
-  .btn-outline-w{background:transparent;color:#fff;border:1.5px solid rgba(255,255,255,.5)}
-  .btn-outline-w:hover{border-color:#fff}
+    /* ===== Hero ===== */
+    .hero {
+      padding: 96px 0 56px;
+      max-width: 880px;
+      animation: fadeUp 0.9s 0.15s ease-out both;
+    }
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 13px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--navy);
+      font-weight: 600;
+      margin-bottom: 26px;
+    }
+    .eyebrow::before {
+      content: "";
+      width: 30px;
+      height: 2px;
+      background: var(--cyan);
+      display: block;
+    }
+    h1 {
+      font-size: clamp(2.6rem, 5vw, 4rem);
+    }
+    h1 .accent {
+      background: var(--grad);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+    .lede {
+      margin-top: 28px;
+      max-width: 600px;
+      font-size: 19px;
+      line-height: 1.6;
+      color: var(--slate);
+      font-weight: 300;
+    }
+    .status {
+      margin-top: 38px;
+      display: inline-flex;
+      align-items: center;
+      gap: 11px;
+      padding: 11px 18px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      font-size: 14px;
+      color: var(--slate);
+      background: var(--white);
+      box-shadow: 0 8px 26px -18px rgba(28,42,99,0.25);
+    }
+    .pulse {
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+      background: var(--cyan);
+      box-shadow: 0 0 0 0 rgba(57,196,200,0.6);
+      animation: pulse 2.4s infinite;
+    }
+    @keyframes pulse {
+      70% { box-shadow: 0 0 0 12px rgba(57,196,200, 0); }
+      100% { box-shadow: 0 0 0 0 rgba(57,196,200, 0); }
+    }
 
-  /* FOOTER */
-  footer{padding:60px 0 50px;border-top:1px solid var(--line);background:#fff}
-  .foot-grid{display:flex;justify-content:space-between;align-items:flex-start;gap:40px;flex-wrap:wrap}
-  .foot-brand{display:flex;align-items:center;gap:11px;font-family:'Fraunces',serif;font-size:21px;font-weight:600;color:var(--navy);margin-bottom:14px}
-  .foot-brand img{height:38px}
-  .foot-col p{font-size:14px;color:var(--slate);max-width:330px;font-weight:300}
-  .foot-links{display:flex;flex-direction:column;gap:11px}
-  .foot-links a{font-size:14.5px;color:var(--slate);transition:color .2s}
-  .foot-links a:hover{color:var(--navy)}
-  .foot-links .h{font-size:13px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink);font-weight:600;margin-bottom:5px}
-  .disclaimer{
-    margin-top:46px;padding-top:26px;border-top:1px solid var(--line);
-    font-size:13px;color:#909ab0;line-height:1.7;font-weight:300;
-  }
-  .disclaimer strong{color:var(--slate);font-weight:500}
-  .copyr{margin-top:18px;font-size:13px;color:#909ab0}
+    /* ===== Seção de notícias ===== */
+    .news-section {
+      margin-top: 68px;
+      padding-top: 44px;
+      border-top: 1px solid var(--line);
+      animation: fadeUp 1s 0.35s ease-out both;
+    }
+    .news-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 16px;
+      margin-bottom: 34px;
+    }
+    .news-head h2 {
+      font-size: clamp(1.7rem, 3vw, 2.1rem);
+    }
+    .news-head h2 .num {
+      font-family: "Outfit", sans-serif;
+      font-size: 13px;
+      letter-spacing: 0.14em;
+      vertical-align: top;
+      color: var(--slate);
+      margin-right: 12px;
+      font-weight: 500;
+    }
+    .news-status {
+      font-size: 12px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--slate);
+      font-weight: 500;
+    }
+    .news-status.is-fallback { color: var(--warn); }
 
-  /* reveal anim — só ativa se JS marcar <html class="js">.
-     Sem JS (ou se falhar), o conteúdo fica 100% visível. */
-  .js .reveal{opacity:0;transform:translateY(22px);transition:opacity .7s ease,transform .7s ease}
-  .js .reveal.in{opacity:1;transform:none}
+    .news-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 22px;
+    }
+    .news-item {
+      background: var(--white);
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      padding: 22px 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      min-height: 150px;
+      transition: transform 0.25s, box-shadow 0.25s, border-color 0.25s;
+    }
+    .news-item:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 22px 48px -28px rgba(28,42,99,0.28);
+      border-color: transparent;
+    }
 
-  /* RESPONSIVE */
-  @media(max-width:960px){
-    section{padding:78px 0}
-    .hero{padding:80px 0 90px}
-    .hero-grid{grid-template-columns:1fr;gap:48px}
-    .hero-visual{order:-1}
-    .features{grid-template-columns:1fr}
-    .aud-grid{grid-template-columns:1fr}
-    .steps{grid-template-columns:1fr 1fr}
-    .navlinks{display:none}
-    .cta{padding:54px 28px}
-  }
-  @media(max-width:560px){
-    .steps{grid-template-columns:1fr}
-    .nav-cta .btn-ghost{display:none}
-    .wrap{padding:0 20px}
-    .aud-card{padding:36px 26px}
-  }
-</style>
+    .news-item .src {
+      font-size: 11px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--slate);
+      font-weight: 600;
+    }
+    .news-item .src .sep {
+      margin: 0 8px;
+      color: var(--line);
+    }
+    .news-item a.title {
+      color: var(--ink);
+      text-decoration: none;
+      font-family: "Fraunces", Georgia, serif;
+      font-weight: 500;
+      font-size: 17px;
+      line-height: 1.32;
+      letter-spacing: -0.005em;
+      display: inline-block;
+      position: relative;
+    }
+    .news-item a.title::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: -3px;
+      height: 1px;
+      background: var(--cyan);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.3s ease;
+    }
+    .news-item a.title:hover { color: var(--navy); }
+    .news-item a.title:hover::after { transform: scaleX(1); }
+    .news-item.placeholder a.title,
+    .news-item.placeholder .title {
+      color: var(--slate);
+      font-style: italic;
+    }
+
+    .loading {
+      grid-column: 1 / -1;
+      padding: 40px;
+      text-align: center;
+      color: var(--slate);
+      font-size: 14px;
+    }
+    .loading-bar {
+      display: inline-block;
+      width: 140px;
+      height: 2px;
+      margin-left: 10px;
+      vertical-align: middle;
+      background: var(--line);
+      border-radius: 2px;
+      overflow: hidden;
+      position: relative;
+    }
+    .loading-bar::after {
+      content: "";
+      position: absolute;
+      top: 0; left: -40%;
+      width: 40%;
+      height: 100%;
+      background: var(--cyan);
+      animation: bar 1.4s ease-in-out infinite;
+    }
+    @keyframes bar {
+      0% { left: -40%; }
+      100% { left: 100%; }
+    }
+
+    /* ===== Rodapé ===== */
+    footer {
+      margin-top: 60px;
+      padding-top: 24px;
+      border-top: 1px solid var(--line);
+      font-size: 13.5px;
+      color: var(--slate);
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    footer a { color: var(--slate); text-decoration: none; }
+    footer a:hover { color: var(--navy); }
+
+    /* ===== Animações ===== */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(12px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ===== Responsivo ===== */
+    @media (max-width: 760px) {
+      .wrap { padding: 20px 20px 48px; }
+      .hero { padding: 56px 0 32px; }
+      .brand { font-size: 20px; }
+      .brand img { height: 38px; }
+      .news-section { margin-top: 48px; padding-top: 32px; }
+      footer { flex-direction: column; gap: 6px; }
+    }
+  </style>
 </head>
 <body>
-
-<header>
   <div class="wrap">
-    <nav>
-      <a href="#" class="brand">
+
+    <header class="top">
+      <div class="brand">
         <img src="vytal-logo.png" alt="Vytal" />
         <span>Vytal</span>
-      </a>
-      <div class="navlinks">
-        <a href="#oque">O que é</a>
-        <a href="#medicos">Para médicos</a>
-        <a href="#pacientes">Para pacientes</a>
-        <a href="#como">Como funciona</a>
       </div>
-      <div class="nav-cta">
-        <a href="medico.html" class="btn btn-medico">Área do médico</a>
-        <a href="#contato" class="btn btn-primary">Falar com a gente</a>
-      </div>
-    </nav>
-  </div>
-</header>
+      <div class="meta">São Paulo · Brasil</div>
+    </header>
 
-<!-- HERO -->
-<section class="hero">
-  <div class="wrap">
-    <div class="hero-grid">
-      <div class="reveal in">
-        <span class="eyebrow">Infraestrutura de saúde digital</span>
-        <h1>Tecnologia que <span class="accent">apoia o médico</span>, não substitui o cuidado.</h1>
-        <p class="lead">A Vytal organiza a informação clínica e dá suporte ao trabalho do profissional de saúde em consultas e plantões — com o médico sempre no centro da decisão.</p>
-        <div class="hero-actions">
-          <a href="#contato" class="btn btn-primary">Quero conhecer
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-          </a>
-          <a href="#oque" class="btn btn-ghost">Entender o conceito</a>
+    <section class="hero">
+      <div class="eyebrow">Em construção · 2026</div>
+      <h1>Infraestrutura contínua de saúde baseada em <span class="accent">inteligência artificial</span>.</h1>
+      <p class="lede">Vytal é um sistema integrado de triagem, apoio à decisão clínica e formação médica continuada. Em desenvolvimento, com CNPJ em processo de abertura.</p>
+      <div class="status">
+        <span class="pulse"></span>
+        <span>Lançamento previsto · contato em breve</span>
+      </div>
+    </section>
+
+    <section class="news-section">
+      <div class="news-head">
+        <h2><span class="num">01 /</span>Leituras · IA &amp; Saúde</h2>
+        <div class="news-status" id="news-status">Carregando últimas publicações</div>
+      </div>
+      <div class="news-grid" id="news-grid">
+        <div class="loading" id="loading-row">
+          Buscando notícias recentes
+          <span class="loading-bar"></span>
         </div>
       </div>
-      <div class="hero-visual reveal in">
-        <div class="hero-card">
-          <div class="hc-logo"><img src="vytal-logo.png" alt="Vytal" /></div>
-          <div class="hc-tag">Saúde organizada, cuidado humano</div>
-          <div class="hc-row"><span class="hc-dot">1</span> Paciente inicia contato por um canal acessível</div>
-          <div class="hc-row"><span class="hc-dot">2</span> Informação chega organizada ao profissional</div>
-          <div class="hc-row"><span class="hc-dot">3</span> O médico avalia, decide e conduz o atendimento</div>
-          <div class="hc-float"><span class="pulse"></span> Profissional no centro</div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
+    </section>
 
-<!-- TRUST STRIP -->
-<div class="strip">
-  <div class="wrap">
-    <p><strong>A Vytal é uma ferramenta de apoio.</strong> Ela não realiza diagnóstico nem substitui a avaliação de um profissional de saúde habilitado.</p>
-  </div>
-</div>
+    <footer>
+      <div>© 2026 Vytal · Todos os direitos reservados</div>
+      <div>Site institucional · versão preliminar</div>
+    </footer>
 
-<!-- O QUE É -->
-<section id="oque">
-  <div class="wrap">
-    <div class="sec-head reveal">
-      <span class="eyebrow">O que é a Vytal</span>
-      <h2>Uma camada que conecta e organiza, para o médico cuidar melhor.</h2>
-      <p>Reduzimos o atrito entre quem precisa de atendimento e quem atende. A informação clínica chega estruturada ao profissional — que mantém o controle de cada decisão.</p>
-    </div>
-    <div class="features">
-      <div class="feature reveal">
-        <div class="ic"><svg viewBox="0 0 24 24"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg></div>
-        <h3>Canal acessível</h3>
-        <p>O paciente inicia o contato por um canal que ele já usa no dia a dia, sem instalar nada nem aprender ferramenta nova.</p>
-      </div>
-      <div class="feature reveal">
-        <div class="ic"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6M9 13h6M9 17h4"/></svg></div>
-        <h3>Informação organizada</h3>
-        <p>Histórico, medicações e exames reunidos e estruturados, para o profissional ter o contexto na hora do atendimento.</p>
-      </div>
-      <div class="feature reveal">
-        <div class="ic"><svg viewBox="0 0 24 24"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg></div>
-        <h3>Apoio ao trabalho clínico</h3>
-        <p>Ferramentas que ajudam a organizar o raciocínio e a documentação — sempre como apoio, com a decisão final do médico.</p>
-      </div>
-    </div>
   </div>
-</section>
 
-<!-- PARA MÉDICOS -->
-<section id="medicos" class="audience">
-  <div class="wrap">
-    <div class="sec-head reveal">
-      <span class="eyebrow">Para médicos</span>
-      <h2>Mais contexto, menos trabalho repetitivo.</h2>
-      <p>A Vytal cuida da organização para você focar no que importa: avaliar e cuidar do paciente.</p>
-    </div>
-    <div class="aud-grid">
-      <div class="aud-card reveal">
-        <span class="tag">No atendimento</span>
-        <h3>O paciente chega organizado</h3>
-        <p class="intro">Quando o atendimento começa, a informação relevante já está estruturada — você não perde tempo reconstruindo o contexto.</p>
-        <ul class="aud-list">
-          <li><span class="chk"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg></span> Prontuário com histórico, medicações e exames reunidos</li>
-          <li><span class="chk"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg></span> Exames em PDF organizados por painéis, com os valores do próprio laudo</li>
-          <li><span class="chk"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg></span> Registro estruturado da evolução clínica</li>
-        </ul>
-      </div>
-      <div class="aud-card reveal">
-        <span class="tag">No controle</span>
-        <h3>A decisão é sempre sua</h3>
-        <p class="intro">A Vytal é apoio. Toda conduta, hipótese e interpretação clínica permanece com você, profissional responsável.</p>
-        <ul class="aud-list">
-          <li><span class="chk"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg></span> Ferramentas de apoio, nunca substituição do julgamento médico</li>
-          <li><span class="chk"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg></span> Você revisa e valida tudo antes de qualquer conduta</li>
-          <li><span class="chk"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg></span> Transparência sobre o que é apoio e o que é decisão clínica</li>
-        </ul>
-      </div>
-    </div>
-  </div>
-</section>
+  <script>
+    /* ==========================================================
+     * Feed de notícias IA + Saúde
+     *
+     * Estratégia (Caminho C):
+     *   1. Busca RSS do Google News (filtro IA + saúde, pt-BR)
+     *      via proxy público — Google News bloqueia chamadas
+     *      diretas por CORS, então o proxy é necessário.
+     *   2. Se falhar (proxy fora, timeout 8s, erro, sem internet),
+     *      mostra fallback estático de placeholders com aviso
+     *      visual claro de que é fallback.
+     *
+     * Notícias: até 6 últimas, com título + fonte + link.
+     * Tudo abre em nova aba com rel="noopener noreferrer".
+     *
+     * Nada de IA gerando conteúdo — só RSS real ou fallback claro.
+     * ========================================================== */
 
-<!-- PARA PACIENTES -->
-<section id="pacientes">
-  <div class="wrap">
-    <div class="sec-head reveal">
-      <span class="eyebrow">Para pacientes</span>
-      <h2>Um caminho mais simples até o cuidado.</h2>
-      <p>Menos burocracia para chegar até um profissional, com sua informação acompanhando você.</p>
-    </div>
-    <div class="aud-grid">
-      <div class="aud-card reveal">
-        <span class="tag">Acesso</span>
-        <h3>Simples desde o primeiro contato</h3>
-        <p class="intro">Você inicia por um canal acessível e conhecido, sem aplicativos complicados nem cadastros longos.</p>
-        <ul class="aud-list">
-          <li><span class="chk"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg></span> Contato por um canal que você já usa</li>
-          <li><span class="chk"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg></span> Suas informações organizadas em um só lugar</li>
-          <li><span class="chk"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg></span> Lembretes de medicação para apoiar seu tratamento</li>
-        </ul>
-      </div>
-      <div class="aud-card reveal">
-        <span class="tag">Cuidado humano</span>
-        <h3>Sempre com um profissional</h3>
-        <p class="intro">A Vytal organiza e encaminha — quem avalia, decide e cuida de você é sempre um profissional de saúde.</p>
-        <ul class="aud-list">
-          <li><span class="chk"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg></span> A tecnologia não substitui a consulta médica</li>
-          <li><span class="chk"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg></span> O profissional sempre no centro da decisão</li>
-          <li><span class="chk"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg></span> Em emergências, procure atendimento presencial imediato</li>
-        </ul>
-      </div>
-    </div>
-  </div>
-</section>
+    const FEED_URL = "https://news.google.com/rss/search?q=" +
+      encodeURIComponent('"inteligência artificial" saúde OR medicina OR "AI healthcare"') +
+      "&hl=pt-BR&gl=BR&ceid=BR:pt-419";
 
-<!-- COMO FUNCIONA -->
-<section id="como" class="audience">
-  <div class="wrap">
-    <div class="sec-head reveal">
-      <span class="eyebrow">Como funciona</span>
-      <h2>Quatro passos, o médico no comando.</h2>
-    </div>
-    <div class="steps">
-      <div class="step reveal">
-        <h3>Contato</h3>
-        <p>O paciente inicia o atendimento por um canal acessível.</p>
-      </div>
-      <div class="step reveal">
-        <h3>Organização</h3>
-        <p>As informações são estruturadas e reunidas de forma clara.</p>
-      </div>
-      <div class="step reveal">
-        <h3>Apoio</h3>
-        <p>O profissional recebe o contexto organizado para o atendimento.</p>
-      </div>
-      <div class="step reveal">
-        <h3>Decisão</h3>
-        <p>O médico avalia, decide a conduta e cuida do paciente.</p>
-      </div>
-    </div>
-  </div>
-</section>
+    const PROXY = "https://api.allorigins.win/raw?url=";
+    const TIMEOUT_MS = 8000;
+    const MAX_ITEMS = 6;
 
-<!-- CONTATO / CTA -->
-<section id="contato">
-  <div class="wrap">
-    <div class="cta reveal">
-      <h2>Quer conhecer a Vytal?</h2>
-      <p>Estamos em desenvolvimento e conversando com profissionais de saúde interessados. Fale com a gente diretamente — sem formulários, no seu canal.</p>
-      <div class="cta-actions">
-        <a href="https://wa.me/55SEUNUMERO" class="btn btn-white" target="_blank" rel="noopener">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15l-1.3 4.7 4.8-1.3A10 10 0 1 0 12 2zm0 18a8 8 0 0 1-4.1-1.1l-.3-.2-2.9.8.8-2.8-.2-.3A8 8 0 1 1 12 20zm4.4-6c-.2-.1-1.4-.7-1.6-.8s-.4-.1-.5.1-.6.8-.8 1-.3.2-.5.1a6.5 6.5 0 0 1-1.9-1.2 7.2 7.2 0 0 1-1.3-1.7c-.1-.2 0-.4.1-.5l.4-.5.3-.5v-.4c0-.1-.5-1.3-.7-1.7s-.4-.4-.5-.4h-.5a1 1 0 0 0-.7.3 2.8 2.8 0 0 0-.9 2.1A4.9 4.9 0 0 0 8 12a11 11 0 0 0 4.2 3.7c.6.3 1 .4 1.4.5a3.4 3.4 0 0 0 1.5.1 2.5 2.5 0 0 0 1.6-1.1 2 2 0 0 0 .1-1.1c0-.1-.2-.1-.4-.2z"/></svg>
-          Falar pelo WhatsApp
-        </a>
-        <a href="mailto:contato@vytalsaude.com.br?subject=Tenho%20interesse%20na%20Vytal" class="btn btn-outline-w">Enviar e-mail</a>
-      </div>
-    </div>
-  </div>
-</section>
+    const FALLBACK = [
+      { titulo: "Notícia indisponível — placeholder estático", fonte: "Fallback", link: null },
+      { titulo: "Notícia indisponível — placeholder estático", fonte: "Fallback", link: null },
+      { titulo: "Notícia indisponível — placeholder estático", fonte: "Fallback", link: null },
+      { titulo: "Notícia indisponível — placeholder estático", fonte: "Fallback", link: null },
+    ];
 
-<!-- FOOTER -->
-<footer>
-  <div class="wrap">
-    <div class="foot-grid">
-      <div class="foot-col">
-        <div class="foot-brand"><img src="vytal-logo.png" alt="Vytal" /><span>Vytal</span></div>
-        <p>Infraestrutura de saúde digital que organiza informação clínica e apoia o trabalho do médico — com o profissional sempre no centro da decisão.</p>
-      </div>
-      <div class="foot-col">
-        <div class="foot-links">
-          <span class="h">Navegação</span>
-          <a href="#oque">O que é</a>
-          <a href="#medicos">Para médicos</a>
-          <a href="#pacientes">Para pacientes</a>
-          <a href="#como">Como funciona</a>
-        </div>
-      </div>
-      <div class="foot-col">
-        <div class="foot-links">
-          <span class="h">Contato</span>
-          <a href="https://wa.me/55SEUNUMERO" target="_blank" rel="noopener">WhatsApp</a>
-          <a href="mailto:contato@vytalsaude.com.br">contato@vytalsaude.com.br</a>
-        </div>
-      </div>
-    </div>
-    <div class="disclaimer">
-      <strong>Aviso importante.</strong> A Vytal é uma ferramenta de apoio à organização de informação em saúde e ao trabalho do profissional. Ela não realiza diagnóstico, não prescreve e não substitui a avaliação, o julgamento ou a conduta de um profissional de saúde habilitado. O produto encontra-se em fase de desenvolvimento. Em caso de emergência ou sintomas graves, procure atendimento médico presencial imediatamente ou ligue para o SAMU (192).
-    </div>
-    <div class="copyr">© 2026 Vytal · vytalsaude.com.br · Todos os direitos reservados.</div>
-  </div>
-</footer>
-
-<script>
-  // Reveal on scroll. Se IntersectionObserver não existir, mostra tudo.
-  (function(){
-    var els = document.querySelectorAll('.reveal:not(.in)');
-    if(!('IntersectionObserver' in window)){
-      els.forEach(function(el){ el.classList.add('in'); });
-      return;
+    function escapeHtml(s) {
+      return String(s)
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#039;");
     }
-    var io = new IntersectionObserver(function(entries){
-      entries.forEach(function(e){
-        if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); }
-      });
-    },{threshold:.14, rootMargin:'0px 0px -40px 0px'});
-    els.forEach(function(el){ io.observe(el); });
-    // Rede de segurança: após 4s, garante que tudo apareceu
-    setTimeout(function(){ els.forEach(function(el){ el.classList.add('in'); }); }, 4000);
-  })();
-</script>
 
+    function fetchComTimeout(url, ms) {
+      return new Promise((resolve, reject) => {
+        const ctrl = new AbortController();
+        const t = setTimeout(() => { ctrl.abort(); reject(new Error("timeout")); }, ms);
+        fetch(url, { signal: ctrl.signal })
+          .then(r => { clearTimeout(t); resolve(r); })
+          .catch(e => { clearTimeout(t); reject(e); });
+      });
+    }
+
+    function parseRSS(xmlText) {
+      // Parse XML do RSS — DOMParser nativo, sem libs externas.
+      const doc = new DOMParser().parseFromString(xmlText, "application/xml");
+      if (doc.querySelector("parsererror")) {
+        throw new Error("RSS inválido");
+      }
+      const items = Array.from(doc.querySelectorAll("item")).slice(0, MAX_ITEMS);
+      return items.map(it => {
+        const tituloRaw = (it.querySelector("title")?.textContent || "").trim();
+        const link = (it.querySelector("link")?.textContent || "").trim();
+        // O Google News formata o título como "Título da matéria - Fonte".
+        let titulo = tituloRaw;
+        let fonte = "";
+        const m = tituloRaw.match(/^(.*?)\s+-\s+([^-]+)$/);
+        if (m) { titulo = m[1].trim(); fonte = m[2].trim(); }
+        return { titulo, fonte, link };
+      }).filter(n => n.titulo && n.link);
+    }
+
+    function renderNoticias(noticias, isFallback) {
+      const grid = document.getElementById("news-grid");
+      const status = document.getElementById("news-status");
+
+      if (isFallback) {
+        status.textContent = "Modo de exibição estático · RSS indisponível";
+        status.classList.add("is-fallback");
+      } else {
+        const agora = new Date();
+        const hh = String(agora.getHours()).padStart(2, "0");
+        const mm = String(agora.getMinutes()).padStart(2, "0");
+        status.textContent = `Atualizado às ${hh}:${mm} · via Google News`;
+        status.classList.remove("is-fallback");
+      }
+
+      const html = noticias.map((n, i) => {
+        const classes = "news-item" + (isFallback ? " placeholder" : "");
+        const numero = String(i + 1).padStart(2, "0");
+        const fonteHtml = n.fonte
+          ? `<span class="src">${escapeHtml(n.fonte)}<span class="sep">·</span>${numero}</span>`
+          : `<span class="src">${numero}</span>`;
+        const tituloHtml = n.link
+          ? `<a class="title" href="${escapeHtml(n.link)}" target="_blank" rel="noopener noreferrer">${escapeHtml(n.titulo)}</a>`
+          : `<span class="title">${escapeHtml(n.titulo)}</span>`;
+        return `<article class="${classes}">${fonteHtml}${tituloHtml}</article>`;
+      }).join("");
+
+      grid.innerHTML = html;
+    }
+
+    async function carregarNoticias() {
+      try {
+        const url = PROXY + encodeURIComponent(FEED_URL);
+        const resp = await fetchComTimeout(url, TIMEOUT_MS);
+        if (!resp.ok) throw new Error("HTTP " + resp.status);
+        const xml = await resp.text();
+        const noticias = parseRSS(xml);
+        if (!noticias.length) throw new Error("RSS vazio");
+        renderNoticias(noticias, false);
+      } catch (err) {
+        console.log("[NEWS_FALLBACK]", err.message || err);
+        renderNoticias(FALLBACK, true);
+      }
+    }
+
+    carregarNoticias();
+  </script>
 </body>
 </html>
