@@ -410,7 +410,10 @@
           </h2>
 
           <div id="feedback-loading" style="display:none; padding:24px; text-align:center; color:#0284c7; font-size:14px;">
-            Analisando sua resposta…
+            <div style="display:flex; align-items:center; justify-content:center; gap:10px; flex-wrap:wrap;">
+              <span id="feedback-loading-etapa">Lendo o caso clínico…</span>
+              <span id="feedback-loading-tempo" style="color:#64748b; font-size:12px; font-variant-numeric:tabular-nums; min-width:34px;">0s</span>
+            </div>
             <div style="margin-top:10px; width:100%; height:3px; background:#e0f2fe; border-radius:2px; overflow:hidden; position:relative;">
               <div style="position:absolute; top:0; left:-30%; width:30%; height:100%; background:#0284c7; animation: progmove 1.2s ease-in-out infinite;"></div>
             </div>
@@ -529,6 +532,59 @@
     let casoEmConstrucao = null;
     let feedbackRecebido = null;
 
+    // ----- LOADING DINÂMICO -----
+    // O modelo leva tempo variável para gerar o JSON. Para evitar a
+    // percepção de que o sistema travou, mostramos uma sequência de
+    // etapas plausíveis + cronômetro em segundos. As etapas NÃO refletem
+    // a ordem temporal interna do modelo (que gera o JSON inteiro junto),
+    // mas refletem as ações que o gabarito de fato contém.
+    let _loadingTimers = []; // ids de setTimeout/setInterval ativos
+
+    function startLoadingProgress() {
+      stopLoadingProgress(); // safety: limpa qualquer ciclo anterior
+      const etapaEl = document.getElementById("feedback-loading-etapa");
+      const tempoEl = document.getElementById("feedback-loading-tempo");
+      if (!etapaEl || !tempoEl) return;
+
+      const etapas = [
+        { aos: 0,  texto: "Lendo o caso clínico…" },
+        { aos: 5,  texto: "Identificando sinais de alerta…" },
+        { aos: 12, texto: "Estruturando hipóteses diagnósticas…" },
+        { aos: 22, texto: "Comparando com a sua resposta…" },
+        { aos: 35, texto: "Organizando elementos de manejo…" },
+        { aos: 50, texto: "Finalizando o gabarito comentado…" },
+      ];
+
+      // Reseta visual no início
+      etapaEl.textContent = etapas[0].texto;
+      tempoEl.textContent = "0s";
+
+      const inicio = Date.now();
+
+      // Cronômetro a cada 1s
+      const tickId = setInterval(() => {
+        const seg = Math.floor((Date.now() - inicio) / 1000);
+        tempoEl.textContent = seg + "s";
+      }, 1000);
+      _loadingTimers.push(tickId);
+
+      // Mudança de etapa nos marcos definidos
+      etapas.slice(1).forEach((et) => {
+        const id = setTimeout(() => {
+          etapaEl.textContent = et.texto;
+        }, et.aos * 1000);
+        _loadingTimers.push(id);
+      });
+    }
+
+    function stopLoadingProgress() {
+      _loadingTimers.forEach((id) => {
+        clearTimeout(id);
+        clearInterval(id);
+      });
+      _loadingTimers = [];
+    }
+
     // ----- ETAPA 1 → ETAPA 2 -----
     function avancarEtapa2() {
       const titulo = document.getElementById("f-titulo").value.trim();
@@ -609,6 +665,8 @@
       document.getElementById("aprendizado-box").style.display = "none";
       window.scrollTo({ top: 0, behavior: "smooth" });
 
+      startLoadingProgress();
+
       try {
         const resp = await fetch(`${API_BASE}/academic/case-feedback`, {
           method: "POST",
@@ -653,6 +711,7 @@
         errEl.textContent = "Não foi possível gerar o feedback: " + err.message + " Você pode voltar e tentar novamente.";
         errEl.style.display = "block";
       } finally {
+        stopLoadingProgress();
         btn.disabled = false;
         btn.textContent = "Receber feedback educacional →";
       }
