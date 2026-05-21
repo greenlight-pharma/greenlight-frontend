@@ -218,6 +218,10 @@
           ⚠️ <strong>Exercício acadêmico.</strong> Descreva o caso de forma <strong>anonimizada</strong>, sem dados que permitam identificar o paciente (nome, RG, prontuário, endereço, data exata da consulta, telefone, e-mail). Use idade aproximada (faixa) e descreva achados clínicos e raciocínio. <strong>Não copie o prontuário hospitalar.</strong>
         </div>
 
+        <div style="background:#fef3c7; border:1px solid #fcd34d; border-radius:8px; padding:14px 16px; margin:10px 0 0; color:#78350f; font-size:13px; line-height:1.55;">
+          📘 <strong>Sobre esta ferramenta.</strong> O Vytal Acadêmico é uma ferramenta <strong>educacional</strong>. <strong>Não diagnostica, não prescreve e não orienta atendimento real</strong>. Uso restrito a <strong>ensino, portfólio e discussão com preceptor</strong>. Nenhuma resposta gerada aqui deve ser aplicada a um paciente real sem avaliação presencial por médico responsável.
+        </div>
+
         <!-- ===== ETAPA 1: CADASTRO DO CASO ===== -->
         <div id="etapa-1">
           <h2 style="margin:18px 0 4px; color:#0f172a; font-size:17px;">
@@ -309,6 +313,10 @@
           </style>
 
           <div id="feedback-container" style="display:none; background:#f8fafc; border:1px solid #e5e7eb; border-radius:10px; padding:18px; line-height:1.6; font-size:14px; color:#1f2937;"></div>
+
+          <div id="feedback-disclaimer" style="display:none; background:#fef3c7; border:1px solid #fcd34d; border-radius:8px; padding:12px 14px; margin-top:10px; color:#78350f; font-size:12.5px; line-height:1.5;">
+            📘 Esta análise é <strong>didática</strong>, em formato de gabarito comentado de caso clínico. <strong>Não diagnostica, não prescreve e não orienta atendimento real.</strong> Uso restrito a ensino, portfólio e discussão com preceptor.
+          </div>
 
           <div id="feedback-error" style="display:none; background:#fee2e2; border:1px solid #fca5a5; color:#991b1b; border-radius:8px; padding:12px; margin:10px 0;"></div>
 
@@ -470,6 +478,7 @@
       document.getElementById("etapa-3").style.display = "block";
       document.getElementById("feedback-loading").style.display = "block";
       document.getElementById("feedback-container").style.display = "none";
+      document.getElementById("feedback-disclaimer").style.display = "none";
       document.getElementById("feedback-error").style.display = "none";
       document.getElementById("aprendizado-box").style.display = "none";
       window.scrollTo({ top: 0, behavior: "smooth" });
@@ -504,6 +513,7 @@
         const fc = document.getElementById("feedback-container");
         fc.innerHTML = renderFeedbackMarkdown(feedbackRecebido);
         fc.style.display = "block";
+        document.getElementById("feedback-disclaimer").style.display = "block";
         document.getElementById("aprendizado-box").style.display = "block";
 
       } catch (err) {
@@ -613,6 +623,7 @@
       document.getElementById("f-faixa").value = "";
       document.getElementById("feedback-container").innerHTML = "";
       document.getElementById("feedback-container").style.display = "none";
+      document.getElementById("feedback-disclaimer").style.display = "none";
       document.getElementById("aprendizado-box").style.display = "none";
 
       setTimeout(() => {
