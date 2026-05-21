@@ -275,13 +275,13 @@
       <div class="logo">🩺 Vytal — Módulo Acadêmico</div>
       <div class="sub">Portfólio de casos do internato</div>
     </div>
-    <div class="user">Aluno: Rodrigo Oliveira · 9º período · FM-XYZ</div>
+    <div class="user">Aluno: Daniel Silva · 9º período · FM-XYZ</div>
   </div>
 
   <div class="container">
 
     <div class="card">
-      <h1>Olá, Rodrigo 👋</h1>
+      <h1>Olá, Daniel 👋</h1>
       <div class="subtitle">Registre os casos que você viu no internato como exercício acadêmico. Seus registros formam seu portfólio e contam para o acompanhamento da coordenação.</div>
 
       <div class="stats-row">
@@ -360,8 +360,20 @@
           <label>Queixa principal *</label>
           <input type="text" id="f-queixa" placeholder="Ex: dor torácica em pontada, 3h de evolução" />
 
-          <label>História e achados clínicos *</label>
-          <textarea id="f-historia" placeholder="Resumo da HMA, exame físico relevante, exames complementares. NÃO inclua dados identificáveis."></textarea>
+          <label>HMA (História da moléstia atual) *</label>
+          <textarea id="f-hma" placeholder="Evolução, fatores de melhora/piora, sintomas associados, características da queixa. NÃO inclua dados identificáveis."></textarea>
+
+          <label>Antecedentes pessoais</label>
+          <textarea id="f-antecedentes-pessoais" placeholder="Comorbidades, cirurgias prévias, medicações em uso, alergias. (Opcional)"></textarea>
+
+          <label>Hábitos e vícios</label>
+          <textarea id="f-habitos" placeholder="Tabagismo, etilismo, uso de drogas, atividade física, alimentação. (Opcional)"></textarea>
+
+          <label>Antecedentes familiares</label>
+          <textarea id="f-antecedentes-familiares" placeholder="Doenças relevantes na família, idade e causa de óbito de pais/irmãos quando pertinente. (Opcional)"></textarea>
+
+          <label>Exame físico</label>
+          <textarea id="f-exame-fisico" placeholder="Sinais vitais, exame geral e exame segmentar dirigido. Resultados de exames complementares já realizados, se houver. (Opcional)"></textarea>
 
           <button class="primary" onclick="avancarEtapa2()">Avançar para sua avaliação →</button>
         </div>
@@ -523,12 +535,31 @@
       const especialidade = document.getElementById("f-especialidade").value;
       const faixa = document.getElementById("f-faixa").value;
       const queixa = document.getElementById("f-queixa").value.trim();
-      const historia = document.getElementById("f-historia").value.trim();
 
-      if (!titulo || !especialidade || !faixa || !queixa || !historia) {
-        alert("Preencha todos os campos obrigatórios da Etapa 1 antes de avançar.");
+      // Anamnese estruturada em 5 campos. Só HMA é obrigatório; os
+      // outros 4 são opcionais (decisão de UX: aluno nem sempre tem
+      // todos os dados disponíveis no caso que está estudando).
+      // O backend continua recebendo um único campo `clinicalHistory`,
+      // então concatenamos com cabeçalhos para preservar a estrutura
+      // semiológica na leitura do modelo.
+      const hma = document.getElementById("f-hma").value.trim();
+      const antPessoais = document.getElementById("f-antecedentes-pessoais").value.trim();
+      const habitos = document.getElementById("f-habitos").value.trim();
+      const antFamiliares = document.getElementById("f-antecedentes-familiares").value.trim();
+      const exameFisico = document.getElementById("f-exame-fisico").value.trim();
+
+      if (!titulo || !especialidade || !faixa || !queixa || !hma) {
+        alert("Preencha todos os campos obrigatórios da Etapa 1 antes de avançar (Título, Especialidade, Faixa etária, Queixa principal e HMA).");
         return;
       }
+
+      // Monta o bloco de história concatenando apenas seções preenchidas.
+      const blocos = [`HMA (História da moléstia atual):\n${hma}`];
+      if (antPessoais) blocos.push(`Antecedentes pessoais:\n${antPessoais}`);
+      if (habitos) blocos.push(`Hábitos e vícios:\n${habitos}`);
+      if (antFamiliares) blocos.push(`Antecedentes familiares:\n${antFamiliares}`);
+      if (exameFisico) blocos.push(`Exame físico:\n${exameFisico}`);
+      const historia = blocos.join("\n\n");
 
       casoEmConstrucao = { titulo, especialidade, faixa, queixa, historia };
       document.getElementById("etapa-1").style.display = "none";
@@ -817,7 +848,7 @@
       // Reseta estado e volta para etapa 1 (próximo caso).
       casoEmConstrucao = null;
       feedbackRecebido = null;
-      ["f-titulo","f-queixa","f-historia","f-hipoteses","f-conduta","f-aprendizado"].forEach(id => {
+      ["f-titulo","f-queixa","f-hma","f-antecedentes-pessoais","f-habitos","f-antecedentes-familiares","f-exame-fisico","f-hipoteses","f-conduta","f-aprendizado"].forEach(id => {
         document.getElementById(id).value = "";
       });
       document.getElementById("f-especialidade").value = "";
