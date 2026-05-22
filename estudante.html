@@ -586,6 +586,32 @@
     }
 
     // ----- ETAPA 1 → ETAPA 2 -----
+    // [PII-CLIENT] Detecção de PII no navegador, ANTES de o aluno
+    // escrever hipóteses e conduta. Espelha a função detectAcademicPII
+    // do server.js — qualquer mudança na regex precisa ser refeita lá
+    // também. O servidor mantém validação independente como defesa
+    // real (cliente é só UX). Detecta padrões estruturados (CPF,
+    // telefone, data exata, prontuário, e-mail). Nome próprio não
+    // é coberto aqui — fica para a IA detectar (e nesse caso o aluno
+    // perde a etapa 2, então preservamos os campos em memória).
+    function detectAcademicPIIClient(text) {
+      if (!text) return null;
+      const s = String(text);
+
+      if (/\b\d{3}\.?\d{3}\.?\d{3}-?\d{2}\b/.test(s)) return "CPF";
+      if (/\b(?:\+?55\s?)?\(?\d{2}\)?\s?9?\d{4}-?\d{4}\b/.test(s)) return "telefone";
+
+      if (/\b(0?[1-9]|[12]\d|3[01])\/(0?[1-9]|1[0-2])\/(19|20)\d{2}\b/.test(s)) return "data exata";
+      if (/\b(0?[1-9]|[12]\d|3[01])\/(0?[1-9]|1[0-2])\/\d{2}\b/.test(s)) return "data exata";
+      if (/\b(0?[1-9]|[12]\d|3[01])-(0?[1-9]|1[0-2])-(19|20)\d{2}\b/.test(s)) return "data exata";
+      if (/\b(19|20)\d{2}-(0?[1-9]|1[0-2])-(0?[1-9]|[12]\d|3[01])\b/.test(s)) return "data exata";
+
+      if (/\b(prontu[aá]rio|registro|matr[ií]cula|rg|cart[aã]o\s+(do\s+)?sus|cns)\s*[:#nº.]*\s*\d/i.test(s)) return "prontuário/RG/CNS";
+      if (/[a-z0-9._%+\-]+@[a-z0-9.\-]+\.[a-z]{2,}/i.test(s)) return "e-mail";
+
+      return null;
+    }
+
     function avancarEtapa2() {
       const titulo = document.getElementById("f-titulo").value.trim();
       const especialidade = document.getElementById("f-especialidade").value;
@@ -609,6 +635,37 @@
         return;
       }
 
+      // [PII-CHECK] Verifica cada campo de texto antes de avançar.
+      // Para o aluno na etapa 1 — assim ele corrige sem ter perdido
+      // tempo escrevendo hipóteses e conduta na etapa 2.
+      const camposParaChecar = [
+        { nome: "Título", valor: titulo },
+        { nome: "Queixa principal", valor: queixa },
+        { nome: "HMA", valor: hma },
+        { nome: "Antecedentes pessoais", valor: antPessoais },
+        { nome: "Hábitos e vícios", valor: habitos },
+        { nome: "Antecedentes familiares", valor: antFamiliares },
+        { nome: "Exame físico", valor: exameFisico },
+      ];
+      for (const c of camposParaChecar) {
+        const tipo = detectAcademicPIIClient(c.valor);
+        if (tipo) {
+          alert(
+            `Detectamos possível dado identificável (${tipo}) no campo "${c.nome}". ` +
+            `Remova essa informação antes de avançar — o caso deve ser totalmente anonimizado. ` +
+            `\n\nLembrete: nomes próprios também devem ser removidos (use "paciente" ou "pessoa de X anos").`
+          );
+          document.getElementById("f-" + (c.nome === "HMA" ? "hma" :
+                                           c.nome === "Antecedentes pessoais" ? "antecedentes-pessoais" :
+                                           c.nome === "Hábitos e vícios" ? "habitos" :
+                                           c.nome === "Antecedentes familiares" ? "antecedentes-familiares" :
+                                           c.nome === "Exame físico" ? "exame-fisico" :
+                                           c.nome === "Título" ? "titulo" :
+                                           "queixa"))?.focus();
+          return;
+        }
+      }
+
       // Monta o bloco de história concatenando apenas seções preenchidas.
       const blocos = [`HMA (História da moléstia atual):\n${hma}`];
       if (antPessoais) blocos.push(`Antecedentes pessoais:\n${antPessoais}`);
@@ -618,6 +675,9 @@
       const historia = blocos.join("\n\n");
 
       casoEmConstrucao = { titulo, especialidade, faixa, queixa, historia };
+      // Guarda também os campos individuais — usado para repopular
+      // a etapa 1 caso a IA detecte PII (nome próprio) no final.
+      casoEmConstrucao._camposEtapa1 = { titulo, especialidade, faixa, queixa, hma, antPessoais, habitos, antFamiliares, exameFisico };
       document.getElementById("etapa-1").style.display = "none";
       document.getElementById("etapa-2").style.display = "block";
       window.scrollTo({ top: 0, behavior: "smooth" });
@@ -637,9 +697,9 @@
       msg.className = "msg";
       msg.textContent = "";
 
-      if (!hipoteses || hipoteses.length < 20) {
+      if (!hipoteses || hipoteses.length < 10) {
         msg.className = "msg error";
-        msg.textContent = "Liste suas hipóteses com pelo menos um raciocínio breve (mín. 20 caracteres). A IA precisa entender seu raciocínio para avaliá-lo.";
+        msg.textContent = "Liste suas hipóteses com pelo menos uma palavra (mín. 10 caracteres). A IA precisa do seu raciocínio para avaliá-lo.";
         return;
       }
       if (!conduta || conduta.length < 20) {
@@ -707,9 +767,42 @@
 
       } catch (err) {
         document.getElementById("feedback-loading").style.display = "none";
-        const errEl = document.getElementById("feedback-error");
-        errEl.textContent = "Não foi possível gerar o feedback: " + err.message + " Você pode voltar e tentar novamente.";
-        errEl.style.display = "block";
+
+        // [PII-TARDIO] Se o erro veio da IA detectando nome próprio
+        // (ou outro PII que escapou da validação client-side), volta
+        // o aluno para a etapa 1 com TODOS os campos preenchidos —
+        // título, especialidade, faixa, queixa, HMA, antecedentes,
+        // hábitos, familiares, exame físico — para ele só editar e
+        // ressubmeter. As hipóteses e conduta da etapa 2 ficam em
+        // casoEmConstrucao para reaparecer quando ele avançar.
+        const msg = String(err.message || "");
+        const ehErroPII = /dados que podem identificar|identific[aá]vel/i.test(msg);
+
+        if (ehErroPII && casoEmConstrucao && casoEmConstrucao._camposEtapa1) {
+          const c = casoEmConstrucao._camposEtapa1;
+          document.getElementById("f-titulo").value = c.titulo || "";
+          document.getElementById("f-especialidade").value = c.especialidade || "";
+          document.getElementById("f-faixa").value = c.faixa || "";
+          document.getElementById("f-queixa").value = c.queixa || "";
+          document.getElementById("f-hma").value = c.hma || "";
+          document.getElementById("f-antecedentes-pessoais").value = c.antPessoais || "";
+          document.getElementById("f-habitos").value = c.habitos || "";
+          document.getElementById("f-antecedentes-familiares").value = c.antFamiliares || "";
+          document.getElementById("f-exame-fisico").value = c.exameFisico || "";
+          // (hipóteses e conduta continuam preenchidas na etapa 2 — não mexemos)
+          document.getElementById("etapa-3").style.display = "none";
+          document.getElementById("etapa-1").style.display = "block";
+          alert(
+            "A IA detectou possível dado identificável no caso (provavelmente um nome próprio). " +
+            "Edite os campos do caso na etapa 1 para anonimizar — use 'paciente' ou 'pessoa de X anos' " +
+            "em vez de nomes — e refaça o envio. Suas hipóteses e conduta foram preservadas."
+          );
+          window.scrollTo({ top: 0, behavior: "smooth" });
+        } else {
+          const errEl = document.getElementById("feedback-error");
+          errEl.textContent = "Não foi possível gerar o feedback: " + err.message + " Você pode voltar e tentar novamente.";
+          errEl.style.display = "block";
+        }
       } finally {
         stopLoadingProgress();
         btn.disabled = false;
