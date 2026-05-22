@@ -261,6 +261,50 @@
       color: #0c4a6e;
       font-weight: 600;
     }
+    /* Pill de alinhamento didatico — autorizado pelo advogado em
+       parecer especifico. Rotulo "Alinhamento didatico" e tres
+       valores fixos: alta concordancia / concordancia parcial /
+       divergencia. Sem vermelho. NAO eh nota nem avaliacao de
+       desempenho — eh resumo visual da prosa da IA. */
+    .comparacao-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 6px;
+      flex-wrap: wrap;
+    }
+    .comparacao-head h4 { margin: 0; }
+    .alinh-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 11px;
+      font-weight: 600;
+      padding: 3px 10px;
+      border-radius: 999px;
+      letter-spacing: 0.02em;
+      white-space: nowrap;
+    }
+    .alinh-pill-label {
+      font-weight: 500;
+      opacity: 0.85;
+    }
+    .alinh-alta_concordancia {
+      background: #dcfce7;
+      color: #166534;
+      border: 1px solid #bbf7d0;
+    }
+    .alinh-concordancia_parcial {
+      background: #fef3c7;
+      color: #92400e;
+      border: 1px solid #fde68a;
+    }
+    .alinh-divergencia {
+      background: #e0e7ff;
+      color: #3730a3;
+      border: 1px solid #c7d2fe;
+    }
 
     .exame-row { margin-bottom: 6px; }
     .exame-row:last-child { margin-bottom: 0; }
@@ -889,10 +933,27 @@
         html += "</div>";
       }
 
-      // 5. Comparação com a hipótese do aluno (caixa azul, prosa curta)
+      // [PILL-ALINHAMENTO] Renderiza o rotulo pedagogico de alinhamento
+      // didatico autorizado pelo advogado: "alta concordancia /
+      // concordancia parcial / divergencia". Sem vermelho. NAO eh
+      // nota — eh resumo visual da prosa da IA.
+      function renderAlinhamentoPill(valor) {
+        const LABELS = {
+          alta_concordancia: "alta concordância",
+          concordancia_parcial: "concordância parcial",
+          divergencia: "divergência",
+        };
+        const v = LABELS[valor] ? valor : "concordancia_parcial";
+        return `<span class="alinh-pill alinh-${v}"><span class="alinh-pill-label">Alinhamento didático:</span> ${LABELS[v]}</span>`;
+      }
+
+      // 5. Comparação com a hipótese do aluno (caixa azul, prosa curta + pill)
       if (data.comparacao_hipoteses_aluno) {
         html += '<div class="comparacao-box">';
+        html += '<div class="comparacao-head">';
         html += '<h4>🎯 Sua hipótese vs. discussão didática</h4>';
+        html += renderAlinhamentoPill(data.alinhamento_hipoteses_didatico);
+        html += '</div>';
         html += `<div>${escapeHtml(data.comparacao_hipoteses_aluno)}</div>`;
         html += "</div>";
       }
@@ -909,10 +970,13 @@
         html += "</div>";
       }
 
-      // 7. Comparação com a conduta do aluno
+      // 7. Comparação com a conduta do aluno (+ pill)
       if (data.comparacao_conduta_aluno) {
         html += '<div class="comparacao-box">';
+        html += '<div class="comparacao-head">';
         html += '<h4>🎯 Sua conduta vs. manejo discutido</h4>';
+        html += renderAlinhamentoPill(data.alinhamento_conduta_didatico);
+        html += '</div>';
         html += `<div>${escapeHtml(data.comparacao_conduta_aluno)}</div>`;
         html += "</div>";
       }
