@@ -356,7 +356,7 @@
     <section class="hero">
       <div class="eyebrow">Em construção · 2026</div>
       <h1>Infraestrutura contínua de saúde baseada em <span class="accent">inteligência artificial</span>.</h1>
-      <p class="lede">Vytal é um sistema integrado de triagem, apoio à decisão clínica e formação médica continuada. Em desenvolvimento...</p>
+      <p class="lede">Vytal é um sistema integrado de triagem, apoio à decisão clínica e formação médica continuada. Em desenvolvimento, com CNPJ em processo de abertura.</p>
       <div class="status">
         <span class="pulse"></span>
         <span>Lançamento previsto · contato em breve</span>
@@ -366,14 +366,9 @@
     <section class="news-section">
       <div class="news-head">
         <h2><span class="num">01 /</span>Leituras · IA &amp; Saúde</h2>
-        <div class="news-status" id="news-status">Carregando últimas publicações</div>
+        <div class="news-status" id="news-status">Curadoria · IA &amp; Saúde</div>
       </div>
-      <div class="news-grid" id="news-grid">
-        <div class="loading" id="loading-row">
-          Buscando notícias recentes
-          <span class="loading-bar"></span>
-        </div>
-      </div>
+      <div class="news-grid" id="news-grid"></div>
     </section>
 
     <footer>
@@ -385,55 +380,51 @@
 
   <script>
     /* ==========================================================
-     * Feed de notícias IA + Saúde
+     * Curadoria estática de notícias IA + Saúde
      *
-     * Estratégia (Caminho C):
-     *   1. Busca RSS do Google News (filtro IA + saúde, pt-BR)
-     *      via proxy público — Google News bloqueia chamadas
-     *      diretas por CORS, então o proxy é necessário.
-     *   2. Se falhar (proxy fora, timeout 8s, erro, sem internet),
-     *      mostra fallback estático de placeholders com aviso
-     *      visual claro de que é fallback.
+     * Decisão: substituímos o feed RSS dinâmico (que dependia de
+     * proxies comunitários gratuitos — allorigins.win, corsproxy.io
+     * — sujeitos a downtime sem SLA) por uma curadoria estática.
      *
-     * Notícias: até 6 últimas, com título + fonte + link.
-     * Tudo abre em nova aba com rel="noopener noreferrer".
+     * Vantagens:
+     *  - 100% confiável, sem dependência externa.
+     *  - Curadoria controlada (notícias relevantes para o público
+     *    Vytal: médicos e faculdades), não as últimas do Google News
+     *    que muitas vezes são clickbait.
+     *  - Sem invenção de manchete/fonte/data — só notícias reais
+     *    verificadas, com links que funcionam.
      *
-     * Nada de IA gerando conteúdo — só RSS real ou fallback claro.
+     * Atualização: manual, periódica. Quando o site institucional
+     * real subir (pós-piloto/CNPJ), considerar endpoint próprio
+     * no Railway para feed dinâmico server-side com cache.
      * ========================================================== */
 
-    const FEED_URL = "https://news.google.com/rss/search?q=" +
-      encodeURIComponent('"inteligência artificial" saúde OR medicina OR "AI healthcare"') +
-      "&hl=pt-BR&gl=BR&ceid=BR:pt-419";
-
-    const PROXIES = [
+    const NOTICIAS = [
       {
-        // allorigins.win endpoint /get — envia headers CORS
-        // corretamente (diferente do /raw que falha no Safari/WebKit).
-        // Resposta é JSON com { contents: "<xml...>", status: {...} }.
-        nome: "allorigins",
-        buildUrl: (target) => "https://api.allorigins.win/get?url=" + encodeURIComponent(target),
-        extrair: async (resp) => {
-          const j = await resp.json();
-          if (!j || typeof j.contents !== "string") throw new Error("allorigins payload invalido");
-          return j.contents;
-        },
+        titulo: "Resolução CFM nº 2.454/2026 regulamenta o uso de inteligência artificial na medicina",
+        fonte: "Conselho Federal de Medicina",
+        link: "https://portal.cfm.org.br/noticias/cfm-normatiza-uso-da-ia-na-medicina/",
       },
       {
-        // corsproxy.io — proxy alternativo, CORS-friendly.
-        // Resposta é o conteúdo direto (XML, neste caso).
-        nome: "corsproxy",
-        buildUrl: (target) => "https://corsproxy.io/?" + encodeURIComponent(target),
-        extrair: async (resp) => await resp.text(),
+        titulo: "Uso de IA cresce na saúde e já alcança 18% dos atendimentos no Brasil",
+        fonte: "TIC Saúde · CGI.br",
+        link: "https://oimparcial.com.br/noticias/2026/05/uso-de-inteligencia-artificial-cresce-na-saude-e-ja-alcanca-18-dos-atendimentos-no-brasil/",
       },
-    ];
-    const TIMEOUT_MS = 10000;
-    const MAX_ITEMS = 6;
-
-    const FALLBACK = [
-      { titulo: "Notícia indisponível — placeholder estático", fonte: "Fallback", link: null },
-      { titulo: "Notícia indisponível — placeholder estático", fonte: "Fallback", link: null },
-      { titulo: "Notícia indisponível — placeholder estático", fonte: "Fallback", link: null },
-      { titulo: "Notícia indisponível — placeholder estático", fonte: "Fallback", link: null },
+      {
+        titulo: "Saúde 2026: colaboração e inovação para um crescimento sustentável",
+        fonte: "Medicina S/A · Deloitte Outlook 2026",
+        link: "https://medicinasa.com.br/deloitte-edicao33/",
+      },
+      {
+        titulo: "Tendências para a saúde em 2026: inteligência artificial como espinha dorsal da eficiência",
+        fonte: "Medicina S/A",
+        link: "https://medicinasa.com.br/tendencias-saude-2026/",
+      },
+      {
+        titulo: "Reflexões sobre a regulação da IA médica após a Resolução CFM 2.454/26",
+        fonte: "Migalhas · Direito Médico",
+        link: "https://www.migalhas.com.br/coluna/migalhas-de-direito-medico-e-bioetica/450962/reflexoes-sobre-a-regulacao-da-ia-medica-apos-a-resolucao-cfm-2-454-26",
+      },
     ];
 
     function escapeHtml(s) {
@@ -445,52 +436,14 @@
         .replace(/'/g, "&#039;");
     }
 
-    function fetchComTimeout(url, ms) {
-      return new Promise((resolve, reject) => {
-        const ctrl = new AbortController();
-        const t = setTimeout(() => { ctrl.abort(); reject(new Error("timeout")); }, ms);
-        fetch(url, { signal: ctrl.signal })
-          .then(r => { clearTimeout(t); resolve(r); })
-          .catch(e => { clearTimeout(t); reject(e); });
-      });
-    }
-
-    function parseRSS(xmlText) {
-      // Parse XML do RSS — DOMParser nativo, sem libs externas.
-      const doc = new DOMParser().parseFromString(xmlText, "application/xml");
-      if (doc.querySelector("parsererror")) {
-        throw new Error("RSS inválido");
-      }
-      const items = Array.from(doc.querySelectorAll("item")).slice(0, MAX_ITEMS);
-      return items.map(it => {
-        const tituloRaw = (it.querySelector("title")?.textContent || "").trim();
-        const link = (it.querySelector("link")?.textContent || "").trim();
-        // O Google News formata o título como "Título da matéria - Fonte".
-        let titulo = tituloRaw;
-        let fonte = "";
-        const m = tituloRaw.match(/^(.*?)\s+-\s+([^-]+)$/);
-        if (m) { titulo = m[1].trim(); fonte = m[2].trim(); }
-        return { titulo, fonte, link };
-      }).filter(n => n.titulo && n.link);
-    }
-
-    function renderNoticias(noticias, isFallback) {
+    function renderNoticias() {
       const grid = document.getElementById("news-grid");
       const status = document.getElementById("news-status");
 
-      if (isFallback) {
-        status.textContent = "Modo de exibição estático · RSS indisponível";
-        status.classList.add("is-fallback");
-      } else {
-        const agora = new Date();
-        const hh = String(agora.getHours()).padStart(2, "0");
-        const mm = String(agora.getMinutes()).padStart(2, "0");
-        status.textContent = `Atualizado às ${hh}:${mm} · via Google News`;
-        status.classList.remove("is-fallback");
-      }
+      status.textContent = "Curadoria · IA & Saúde · Atualização periódica";
+      status.classList.remove("is-fallback");
 
-      const html = noticias.map((n, i) => {
-        const classes = "news-item" + (isFallback ? " placeholder" : "");
+      const html = NOTICIAS.map((n, i) => {
         const numero = String(i + 1).padStart(2, "0");
         const fonteHtml = n.fonte
           ? `<span class="src">${escapeHtml(n.fonte)}<span class="sep">·</span>${numero}</span>`
@@ -498,38 +451,13 @@
         const tituloHtml = n.link
           ? `<a class="title" href="${escapeHtml(n.link)}" target="_blank" rel="noopener noreferrer">${escapeHtml(n.titulo)}</a>`
           : `<span class="title">${escapeHtml(n.titulo)}</span>`;
-        return `<article class="${classes}">${fonteHtml}${tituloHtml}</article>`;
+        return `<article class="news-item">${fonteHtml}${tituloHtml}</article>`;
       }).join("");
 
       grid.innerHTML = html;
     }
 
-    async function carregarNoticias() {
-      // Cascata: tenta cada proxy em ordem. O primeiro que devolver
-      // RSS parseável vence. Se todos falharem, fallback.
-      // No iOS Safari/WebKit, allorigins/raw (versão antiga) era
-      // bloqueado silenciosamente por CORS — daí a cascata.
-      for (const p of PROXIES) {
-        try {
-          const url = p.buildUrl(FEED_URL);
-          const resp = await fetchComTimeout(url, TIMEOUT_MS);
-          if (!resp.ok) throw new Error("HTTP " + resp.status);
-          const xml = await p.extrair(resp);
-          const noticias = parseRSS(xml);
-          if (!noticias.length) throw new Error("RSS vazio");
-          renderNoticias(noticias, false);
-          return; // sucesso, sai
-        } catch (err) {
-          console.log("[NEWS_PROXY_FAIL]", p.nome, err.message || err);
-          // continua para o próximo proxy
-        }
-      }
-      // Todos os proxies falharam.
-      console.log("[NEWS_FALLBACK] todos os proxies falharam");
-      renderNoticias(FALLBACK, true);
-    }
-
-    carregarNoticias();
+    renderNoticias();
   </script>
 </body>
 </html>
