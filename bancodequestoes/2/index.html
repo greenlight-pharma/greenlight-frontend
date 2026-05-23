@@ -1,0 +1,1401 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Vytal · Banco AD1 — Residência Médica USP/FUVEST 2026</title>
+  <meta name="description" content="Banco de questões da prova AD1 USP/FUVEST 2026 — 120 questões com gabarito, explicações e filtros." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ============================================================
+       Identidade Vytal — paleta, fontes e atmosfera idênticas ao
+       site institucional. Banco AD1 é um produto adjacente, então
+       conserva a mesma linguagem visual.
+       ============================================================ */
+    :root {
+      --navy: #1c2a63;
+      --navy-deep: #16204d;
+      --cyan: #39c4c8;
+      --cyan-soft: #5fd6d6;
+      --cyan-bg: #eafafa;
+      --ink: #1a2238;
+      --slate: #5a6478;
+      --slate-soft: #8892a3;
+      --mist: #f5f8fa;
+      --line: #e6ebf0;
+      --line-strong: #d6dde6;
+      --white: #ffffff;
+      --warn: #92621a;
+      --warn-bg: #fdf4e3;
+      --success: #2f8f6b;
+      --success-bg: #e6f4ee;
+      --error: #b53a3a;
+      --error-bg: #fbeaea;
+      --grad: linear-gradient(120deg, var(--navy) 0%, #2a4a8c 45%, var(--cyan) 100%);
+      --max: 1280px;
+      --shadow-soft: 0 8px 26px -18px rgba(28,42,99,0.25);
+      --shadow-mid: 0 18px 42px -24px rgba(28,42,99,0.28);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; scroll-behavior: smooth; }
+
+    body {
+      background: var(--white);
+      color: var(--ink);
+      font-family: "Outfit", system-ui, sans-serif;
+      font-size: 16px;
+      line-height: 1.65;
+      min-height: 100vh;
+      position: relative;
+      overflow-x: hidden;
+    }
+
+    /* Atmosfera de fundo idêntica ao site institucional */
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 0;
+      background:
+        radial-gradient(1100px 520px at 82% -8%, rgba(57,196,200,0.16), transparent 60%),
+        radial-gradient(800px 480px at 6% 10%, rgba(28,42,99,0.07), transparent 55%);
+    }
+
+    h1, h2, h3 {
+      font-family: "Fraunces", Georgia, serif;
+      font-weight: 500;
+      line-height: 1.15;
+      letter-spacing: -0.01em;
+      color: var(--ink);
+    }
+
+    /* ===== Cabeçalho ===== */
+    header.top {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: rgba(255,255,255,0.88);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--line);
+    }
+    .top-inner {
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 18px 28px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
+    }
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      text-decoration: none;
+    }
+    .brand-mark {
+      width: 38px;
+      height: 38px;
+      border-radius: 10px;
+      background: var(--grad);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: "Fraunces", serif;
+      font-weight: 600;
+      font-size: 19px;
+      color: var(--white);
+      letter-spacing: -0.02em;
+      box-shadow: var(--shadow-soft);
+    }
+    .brand-text {
+      display: flex;
+      flex-direction: column;
+      gap: 1px;
+      line-height: 1.1;
+    }
+    .brand-name {
+      font-family: "Fraunces", serif;
+      font-size: 21px;
+      font-weight: 600;
+      color: var(--navy);
+      letter-spacing: -0.01em;
+    }
+    .brand-sub {
+      font-size: 11px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--slate);
+      font-weight: 500;
+    }
+    .top-meta {
+      font-size: 12px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--slate);
+      font-weight: 500;
+    }
+
+    /* ===== Hero compacto ===== */
+    .hero-band {
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 44px 28px 28px;
+      position: relative;
+      z-index: 1;
+    }
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 12px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--navy);
+      font-weight: 600;
+      margin-bottom: 14px;
+    }
+    .eyebrow::before {
+      content: "";
+      width: 30px;
+      height: 2px;
+      background: var(--cyan);
+      display: block;
+    }
+    .hero-title {
+      font-size: clamp(1.9rem, 3.6vw, 2.7rem);
+      max-width: 760px;
+    }
+    .hero-title .accent {
+      background: var(--grad);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+    .hero-sub {
+      margin-top: 14px;
+      max-width: 640px;
+      color: var(--slate);
+      font-size: 16px;
+      font-weight: 300;
+    }
+
+    /* ===== Layout principal ===== */
+    .main {
+      position: relative;
+      z-index: 1;
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 24px 28px 60px;
+      display: grid;
+      grid-template-columns: 280px 1fr;
+      gap: 32px;
+    }
+
+    /* ===== Sidebar ===== */
+    .sidebar {
+      position: sticky;
+      top: 96px;
+      height: fit-content;
+      max-height: calc(100vh - 120px);
+      overflow-y: auto;
+      padding-right: 4px;
+    }
+    .sidebar::-webkit-scrollbar { width: 5px; }
+    .sidebar::-webkit-scrollbar-track { background: transparent; }
+    .sidebar::-webkit-scrollbar-thumb { background: var(--line-strong); border-radius: 3px; }
+
+    .stats-card {
+      background: var(--white);
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      padding: 20px;
+      margin-bottom: 22px;
+      box-shadow: var(--shadow-soft);
+    }
+    .stats-card .stat-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      padding: 9px 0;
+      border-bottom: 1px solid var(--line);
+    }
+    .stats-card .stat-row:last-child { border-bottom: none; padding-bottom: 0; }
+    .stats-card .stat-row:first-child { padding-top: 0; }
+    .stat-label {
+      font-size: 11px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--slate);
+      font-weight: 500;
+    }
+    .stat-value {
+      font-family: "Fraunces", serif;
+      font-size: 22px;
+      font-weight: 500;
+      letter-spacing: -0.02em;
+      color: var(--ink);
+    }
+    .stat-row.accent .stat-value {
+      background: var(--grad);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .panel { margin-bottom: 26px; }
+    .panel-label {
+      font-size: 11px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--slate);
+      font-weight: 600;
+      margin-bottom: 12px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .panel-label .count {
+      color: var(--navy);
+      font-weight: 600;
+    }
+
+    .search-box {
+      width: 100%;
+      background: var(--white);
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      padding: 11px 14px;
+      font-family: "Outfit", sans-serif;
+      font-size: 14px;
+      color: var(--ink);
+      outline: none;
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+    .search-box::placeholder { color: var(--slate-soft); }
+    .search-box:focus {
+      border-color: var(--cyan);
+      box-shadow: 0 0 0 3px rgba(57,196,200,0.15);
+    }
+
+    .filter-list {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+    .filter-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 8px 12px;
+      cursor: pointer;
+      font-size: 14px;
+      color: var(--slate);
+      border-radius: 8px;
+      background: transparent;
+      border: none;
+      text-align: left;
+      font-family: "Outfit", sans-serif;
+      width: 100%;
+      transition: all 0.18s ease;
+    }
+    .filter-item:hover {
+      color: var(--ink);
+      background: var(--mist);
+    }
+    .filter-item.active {
+      color: var(--navy);
+      background: var(--cyan-bg);
+      font-weight: 500;
+    }
+    .filter-item .item-count {
+      font-size: 11px;
+      color: var(--slate-soft);
+      padding: 2px 8px;
+      background: var(--mist);
+      border-radius: 999px;
+      font-weight: 500;
+    }
+    .filter-item.active .item-count {
+      background: var(--cyan);
+      color: var(--white);
+    }
+
+    .toggle-row {
+      display: flex;
+      gap: 6px;
+      flex-wrap: wrap;
+    }
+    .toggle-btn {
+      padding: 7px 12px;
+      background: var(--white);
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      font-family: "Outfit", sans-serif;
+      font-size: 12px;
+      cursor: pointer;
+      color: var(--slate);
+      transition: all 0.18s ease;
+      font-weight: 500;
+    }
+    .toggle-btn:hover {
+      border-color: var(--cyan);
+      color: var(--navy);
+    }
+    .toggle-btn.active {
+      background: var(--navy);
+      color: var(--white);
+      border-color: var(--navy);
+    }
+
+    .reset-btn {
+      display: block;
+      width: 100%;
+      background: transparent;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 9px;
+      font-family: "Outfit", sans-serif;
+      font-size: 11px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--slate);
+      cursor: pointer;
+      transition: all 0.2s;
+      margin-top: 6px;
+      font-weight: 500;
+    }
+    .reset-btn:hover {
+      border-color: var(--cyan);
+      color: var(--navy);
+      background: var(--cyan-bg);
+    }
+    .reset-btn.danger:hover {
+      border-color: var(--error);
+      color: var(--error);
+      background: var(--error-bg);
+    }
+
+    /* ===== Conteúdo ===== */
+    .content { min-height: 70vh; }
+
+    .tab-bar {
+      display: flex;
+      gap: 4px;
+      margin-bottom: 28px;
+      padding: 4px;
+      background: var(--mist);
+      border-radius: 12px;
+      width: fit-content;
+    }
+    .tab {
+      background: transparent;
+      border: none;
+      padding: 9px 18px;
+      font-family: "Outfit", sans-serif;
+      font-size: 14px;
+      cursor: pointer;
+      color: var(--slate);
+      border-radius: 8px;
+      font-weight: 500;
+      transition: all 0.2s ease;
+    }
+    .tab:hover { color: var(--ink); }
+    .tab.active {
+      color: var(--navy);
+      background: var(--white);
+      box-shadow: var(--shadow-soft);
+      font-weight: 600;
+    }
+
+    /* ===== Lista de questões ===== */
+    .question-list {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .q-row {
+      background: var(--white);
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      display: grid;
+      grid-template-columns: 56px 1fr auto auto auto;
+      gap: 16px;
+      align-items: center;
+      padding: 14px 18px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+    .q-row:hover {
+      border-color: var(--cyan);
+      transform: translateY(-1px);
+      box-shadow: var(--shadow-soft);
+    }
+    .q-num {
+      font-family: "Fraunces", serif;
+      font-size: 15px;
+      color: var(--navy);
+      font-weight: 500;
+      letter-spacing: -0.01em;
+    }
+    .q-title {
+      font-size: 14.5px;
+      color: var(--ink);
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      line-height: 1.4;
+    }
+    .q-tag {
+      font-size: 11px;
+      letter-spacing: 0.04em;
+      color: var(--slate);
+      padding: 3px 10px;
+      border-radius: 999px;
+      background: var(--mist);
+      font-weight: 500;
+      white-space: nowrap;
+    }
+    .q-tag.diff-Fácil { color: var(--success); background: var(--success-bg); }
+    .q-tag.diff-Médio { color: var(--warn); background: var(--warn-bg); }
+    .q-tag.diff-Difícil { color: var(--error); background: var(--error-bg); }
+
+    .q-status {
+      width: 10px; height: 10px;
+      border-radius: 50%;
+      background: var(--line-strong);
+    }
+    .q-status.correct { background: var(--success); }
+    .q-status.wrong { background: var(--error); }
+
+    /* ===== Visão de questão ===== */
+    .q-view {
+      background: var(--white);
+      border: 1px solid var(--line);
+      border-radius: 20px;
+      padding: 40px;
+      box-shadow: var(--shadow-soft);
+    }
+    .q-meta-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-bottom: 22px;
+      border-bottom: 1px solid var(--line);
+      margin-bottom: 28px;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+    .q-meta-left {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+    .q-number-big {
+      font-family: "Fraunces", serif;
+      font-size: 30px;
+      font-weight: 500;
+      letter-spacing: -0.03em;
+      background: var(--grad);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      line-height: 1;
+      margin-right: 6px;
+    }
+    .q-tag-pill {
+      font-size: 11px;
+      letter-spacing: 0.06em;
+      padding: 4px 11px;
+      border-radius: 999px;
+      color: var(--slate);
+      background: var(--mist);
+      font-weight: 500;
+    }
+    .q-tag-pill.spec {
+      background: var(--navy);
+      color: var(--white);
+    }
+    .q-tag-pill.image {
+      background: var(--cyan-bg);
+      color: var(--navy);
+    }
+
+    .q-nav {
+      display: flex;
+      gap: 6px;
+    }
+    .nav-btn {
+      font-family: "Outfit", sans-serif;
+      font-size: 12px;
+      letter-spacing: 0.04em;
+      padding: 8px 14px;
+      background: var(--white);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      cursor: pointer;
+      color: var(--slate);
+      transition: all 0.18s ease;
+      font-weight: 500;
+    }
+    .nav-btn:hover:not(:disabled) {
+      border-color: var(--cyan);
+      color: var(--navy);
+    }
+    .nav-btn:disabled { opacity: 0.35; cursor: not-allowed; }
+    .nav-btn.primary {
+      background: var(--mist);
+    }
+
+    .q-tema {
+      font-size: 11px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--slate);
+      margin-bottom: 8px;
+      font-weight: 500;
+    }
+    .q-tema strong { color: var(--navy); font-weight: 600; }
+
+    .q-enunciado {
+      font-family: "Outfit", sans-serif;
+      font-size: 17px;
+      line-height: 1.65;
+      color: var(--ink);
+      margin: 18px 0 28px;
+    }
+
+    .q-image-note {
+      background: var(--cyan-bg);
+      border-left: 3px solid var(--cyan);
+      border-radius: 0 10px 10px 0;
+      padding: 12px 18px;
+      margin-bottom: 24px;
+      font-size: 13.5px;
+      color: var(--navy);
+      line-height: 1.5;
+    }
+
+    .alternativas {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-bottom: 28px;
+    }
+    .alt {
+      display: flex;
+      gap: 16px;
+      padding: 16px 20px;
+      background: var(--white);
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      align-items: flex-start;
+      font-family: "Outfit", sans-serif;
+      text-align: left;
+      font-size: 15.5px;
+      color: var(--ink);
+      width: 100%;
+      line-height: 1.5;
+    }
+    .alt:hover:not(:disabled):not(.revealed) {
+      border-color: var(--cyan);
+      background: var(--mist);
+      transform: translateX(2px);
+    }
+    .alt:disabled { cursor: default; }
+    .alt-letter {
+      font-family: "Fraunces", serif;
+      font-size: 20px;
+      font-weight: 600;
+      color: var(--navy);
+      min-width: 24px;
+      line-height: 1.1;
+      margin-top: 1px;
+    }
+    .alt-text { flex: 1; }
+
+    .alt.selected {
+      border-color: var(--navy);
+      background: var(--mist);
+      box-shadow: inset 3px 0 0 var(--navy);
+    }
+    .alt.correct {
+      border-color: var(--success);
+      background: var(--success-bg);
+      box-shadow: inset 3px 0 0 var(--success);
+    }
+    .alt.correct .alt-letter { color: var(--success); }
+    .alt.wrong {
+      border-color: var(--error);
+      background: var(--error-bg);
+      box-shadow: inset 3px 0 0 var(--error);
+    }
+    .alt.wrong .alt-letter { color: var(--error); }
+    .alt.revealed { cursor: default; }
+
+    .action-bar {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 24px;
+      flex-wrap: wrap;
+    }
+    .btn {
+      font-family: "Outfit", sans-serif;
+      font-size: 13px;
+      letter-spacing: 0.04em;
+      padding: 11px 22px;
+      cursor: pointer;
+      border: none;
+      border-radius: 10px;
+      background: var(--navy);
+      color: var(--white);
+      transition: all 0.2s ease;
+      font-weight: 500;
+    }
+    .btn:hover {
+      background: var(--navy-deep);
+      transform: translateY(-1px);
+      box-shadow: var(--shadow-soft);
+    }
+    .btn:disabled { opacity: 0.4; cursor: not-allowed; }
+    .btn.secondary {
+      background: var(--white);
+      color: var(--navy);
+      border: 1px solid var(--line);
+    }
+    .btn.secondary:hover {
+      background: var(--mist);
+      border-color: var(--cyan);
+    }
+
+    .feedback {
+      display: none;
+      padding: 24px 26px;
+      background: var(--mist);
+      border-radius: 14px;
+      margin-top: 24px;
+      border-left: 3px solid var(--cyan);
+    }
+    .feedback.show { display: block; animation: slideIn 0.4s ease; }
+    @keyframes slideIn {
+      from { opacity: 0; transform: translateY(8px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .feedback-header {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 14px;
+      padding-bottom: 14px;
+      border-bottom: 1px solid var(--line);
+      flex-wrap: wrap;
+    }
+    .feedback-label {
+      font-size: 11px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--slate);
+      font-weight: 500;
+    }
+    .feedback-answer {
+      font-family: "Fraunces", serif;
+      font-size: 22px;
+      font-weight: 600;
+      color: var(--navy);
+      letter-spacing: -0.02em;
+    }
+    .feedback-result {
+      font-size: 11px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 5px 12px;
+      margin-left: auto;
+      border-radius: 999px;
+      font-weight: 600;
+    }
+    .feedback-result.correct { background: var(--success); color: white; }
+    .feedback-result.wrong { background: var(--error); color: white; }
+
+    .explicacao {
+      font-family: "Outfit", sans-serif;
+      font-size: 15.5px;
+      line-height: 1.7;
+      color: var(--slate);
+    }
+
+    .subtemas-row {
+      display: flex;
+      gap: 6px;
+      flex-wrap: wrap;
+      margin-top: 22px;
+      padding-top: 18px;
+      border-top: 1px solid var(--line);
+    }
+    .subtema {
+      font-size: 11px;
+      letter-spacing: 0.04em;
+      color: var(--slate);
+      padding: 4px 10px;
+      background: var(--mist);
+      border-radius: 999px;
+      font-weight: 500;
+    }
+
+    /* ===== Estado vazio ===== */
+    .empty {
+      text-align: center;
+      padding: 80px 20px;
+      color: var(--slate);
+      background: var(--white);
+      border: 1px dashed var(--line-strong);
+      border-radius: 16px;
+    }
+    .empty-icon {
+      font-family: "Fraunces", serif;
+      font-size: 56px;
+      color: var(--line-strong);
+      margin-bottom: 14px;
+      font-style: italic;
+    }
+    .empty-text {
+      font-family: "Fraunces", serif;
+      font-size: 18px;
+      font-style: italic;
+      color: var(--slate);
+    }
+
+    /* ===== Barra simulado ===== */
+    .simulado-bar {
+      background: var(--grad);
+      color: var(--white);
+      padding: 14px 22px;
+      border-radius: 14px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 22px;
+      font-size: 13px;
+      font-weight: 500;
+      flex-wrap: wrap;
+      gap: 14px;
+      box-shadow: var(--shadow-mid);
+    }
+    .simulado-bar .progress {
+      flex: 1;
+      max-width: 240px;
+      height: 4px;
+      background: rgba(255,255,255,0.25);
+      border-radius: 2px;
+      overflow: hidden;
+    }
+    .simulado-bar .progress-fill {
+      height: 100%;
+      background: var(--white);
+      transition: width 0.3s ease;
+    }
+    .simulado-bar .end-btn {
+      background: var(--white);
+      color: var(--navy);
+      border: none;
+      padding: 8px 16px;
+      border-radius: 8px;
+      font-family: inherit;
+      font-size: 12px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .simulado-bar .end-btn:hover {
+      background: var(--cyan-bg);
+    }
+
+    /* ===== Modal ===== */
+    .modal-bg {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(28,42,99,0.5);
+      z-index: 100;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      backdrop-filter: blur(6px);
+      -webkit-backdrop-filter: blur(6px);
+    }
+    .modal-bg.show { display: flex; animation: fadeIn 0.3s; }
+    @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+    .modal {
+      background: var(--white);
+      padding: 44px 48px;
+      max-width: 540px;
+      width: 100%;
+      border-radius: 20px;
+      text-align: center;
+      box-shadow: var(--shadow-mid);
+    }
+    .modal-kicker {
+      font-size: 11px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--slate);
+      margin-bottom: 10px;
+      font-weight: 600;
+    }
+    .modal-title {
+      font-family: "Fraunces", serif;
+      font-size: 32px;
+      font-weight: 500;
+      background: var(--grad);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      letter-spacing: -0.03em;
+      margin-bottom: 24px;
+    }
+    .modal-stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      margin: 24px 0;
+      padding: 24px 0;
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+    }
+    .modal-stat-num {
+      font-family: "Fraunces", serif;
+      font-size: 32px;
+      font-weight: 500;
+      letter-spacing: -0.02em;
+    }
+    .modal-stat-lbl {
+      font-size: 10px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--slate);
+      margin-top: 4px;
+      font-weight: 500;
+    }
+
+    /* ===== Rodapé ===== */
+    footer {
+      max-width: var(--max);
+      margin: 40px auto 0;
+      padding: 24px 28px;
+      border-top: 1px solid var(--line);
+      font-size: 13px;
+      color: var(--slate);
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* ===== Responsivo ===== */
+    @media (max-width: 920px) {
+      .main { grid-template-columns: 1fr; padding: 20px; gap: 24px; }
+      .sidebar { position: static; max-height: none; }
+      .hero-band { padding: 32px 20px 20px; }
+      .top-inner { padding: 16px 20px; }
+      .q-view { padding: 24px; }
+      .q-row { grid-template-columns: 50px 1fr auto auto; gap: 10px; padding: 12px 14px; }
+      .q-row .q-spec-tag { display: none; }
+      .q-meta-bar { flex-direction: column; align-items: flex-start; }
+      .q-nav { width: 100%; justify-content: space-between; }
+      .modal { padding: 28px; }
+      footer { flex-direction: column; gap: 6px; }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="top">
+    <div class="top-inner">
+      <a href="#" class="brand">
+        <div class="brand-mark">V</div>
+        <div class="brand-text">
+          <span class="brand-name">Vytal</span>
+          <span class="brand-sub">Banco AD1 · Residência</span>
+        </div>
+      </a>
+      <div class="top-meta">USP / FUVEST · 2026</div>
+    </div>
+  </header>
+
+  <section class="hero-band">
+    <div class="eyebrow">120 questões · Áreas Básicas &amp; Acesso Direto</div>
+    <h1 class="hero-title">Banco interativo de questões da prova <span class="accent">AD1 USP/FUVEST 2026</span></h1>
+    <p class="hero-sub">Estudo dirigido com gabarito comentado, filtros múltiplos por especialidade, tema e dificuldade, e modo simulado com placar de aproveitamento.</p>
+  </section>
+
+  <main class="main">
+    <aside class="sidebar">
+      <div class="stats-card">
+        <div class="stat-row">
+          <span class="stat-label">Resolvidas</span>
+          <span class="stat-value" id="stat-solved">0</span>
+        </div>
+        <div class="stat-row accent">
+          <span class="stat-label">Acertos</span>
+          <span class="stat-value" id="stat-accuracy">—</span>
+        </div>
+        <div class="stat-row">
+          <span class="stat-label">Filtradas</span>
+          <span class="stat-value" id="stat-shown">120</span>
+        </div>
+      </div>
+
+      <div class="panel">
+        <div class="panel-label">Busca textual</div>
+        <input class="search-box" id="search" type="text" placeholder="agente, fármaco, sintoma…">
+      </div>
+
+      <div class="panel">
+        <div class="panel-label">Especialidade <span class="count" id="spec-count">5</span></div>
+        <div class="filter-list" id="filter-spec"></div>
+      </div>
+
+      <div class="panel">
+        <div class="panel-label">Dificuldade</div>
+        <div class="toggle-row" id="filter-diff">
+          <button class="toggle-btn" data-diff="Fácil">Fácil</button>
+          <button class="toggle-btn" data-diff="Médio">Médio</button>
+          <button class="toggle-btn" data-diff="Difícil">Difícil</button>
+        </div>
+      </div>
+
+      <div class="panel">
+        <div class="panel-label">Imagem</div>
+        <div class="toggle-row" id="filter-img">
+          <button class="toggle-btn" data-img="yes">Com imagem</button>
+          <button class="toggle-btn" data-img="no">Sem imagem</button>
+        </div>
+      </div>
+
+      <div class="panel">
+        <div class="panel-label">Estado</div>
+        <div class="toggle-row" id="filter-state">
+          <button class="toggle-btn" data-state="unsolved">Pendentes</button>
+          <button class="toggle-btn" data-state="correct">Acertadas</button>
+          <button class="toggle-btn" data-state="wrong">Erradas</button>
+        </div>
+      </div>
+
+      <button class="reset-btn" id="reset-filters">Limpar filtros</button>
+      <button class="reset-btn danger" id="reset-progress">Resetar progresso</button>
+    </aside>
+
+    <section class="content">
+      <div class="tab-bar">
+        <button class="tab active" data-tab="list">Índice</button>
+        <button class="tab" data-tab="study">Estudo dirigido</button>
+        <button class="tab" data-tab="simulado">Simulado</button>
+      </div>
+
+      <div id="view-list">
+        <div class="question-list" id="question-list"></div>
+      </div>
+
+      <div id="view-question" style="display:none;">
+        <div id="simulado-bar-container"></div>
+        <div class="q-view" id="q-content"></div>
+      </div>
+    </section>
+  </main>
+
+  <div class="modal-bg" id="modal">
+    <div class="modal">
+      <div class="modal-kicker">Simulado encerrado</div>
+      <div class="modal-title" id="modal-score">—</div>
+      <div class="modal-stats">
+        <div>
+          <div class="modal-stat-num" id="m-correct" style="color:var(--success);">0</div>
+          <div class="modal-stat-lbl">Acertos</div>
+        </div>
+        <div>
+          <div class="modal-stat-num" id="m-wrong" style="color:var(--error);">0</div>
+          <div class="modal-stat-lbl">Erros</div>
+        </div>
+        <div>
+          <div class="modal-stat-num" id="m-pct" style="background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent;">—</div>
+          <div class="modal-stat-lbl">Aproveitamento</div>
+        </div>
+      </div>
+      <button class="btn" onclick="closeModal()">Fechar</button>
+    </div>
+  </div>
+
+  <footer>
+    <div>© 2026 Vytal · Banco de Estudos · Material didático</div>
+    <div>Versão preliminar · uso interno</div>
+  </footer>
+
+  <script src="questoes.js"></script>
+  <script>
+    // ============= STATE =============
+    const state = {
+      filters: {
+        search: '',
+        spec: new Set(),
+        diff: new Set(),
+        img: null,
+        statefilt: null
+      },
+      progress: {},
+      view: 'list',
+      currentQ: null,
+      mode: 'list',
+      simulado: { active: false, queue: [], answers: {} }
+    };
+
+    const STORE_KEY = 'vytal-banco-ad1-usp-2026';
+    function loadProgress() {
+      try {
+        const data = localStorage.getItem(STORE_KEY);
+        if (data) state.progress = JSON.parse(data);
+      } catch(e) { state.progress = {}; }
+    }
+    function saveProgress() {
+      try { localStorage.setItem(STORE_KEY, JSON.stringify(state.progress)); } catch(e) {}
+    }
+    loadProgress();
+
+    function getSpecialties() {
+      const counts = {};
+      QUESTOES.forEach(q => { counts[q.especialidade] = (counts[q.especialidade] || 0) + 1; });
+      return counts;
+    }
+
+    function getFilteredQuestions() {
+      return QUESTOES.filter(q => {
+        if (state.filters.spec.size && !state.filters.spec.has(q.especialidade)) return false;
+        if (state.filters.diff.size && !state.filters.diff.has(q.dificuldade)) return false;
+        if (state.filters.img === 'yes' && !q.temImagem) return false;
+        if (state.filters.img === 'no' && q.temImagem) return false;
+        if (state.filters.statefilt) {
+          const p = state.progress[q.n];
+          if (state.filters.statefilt === 'unsolved' && p) return false;
+          if (state.filters.statefilt === 'correct' && (!p || !p.correct)) return false;
+          if (state.filters.statefilt === 'wrong' && (!p || p.correct)) return false;
+        }
+        if (state.filters.search) {
+          const s = state.filters.search.toLowerCase();
+          const blob = `${q.n} ${q.especialidade} ${q.tema} ${q.subtemas.join(' ')} ${q.enunciado} ${q.explicacao}`.toLowerCase();
+          if (!blob.includes(s)) return false;
+        }
+        return true;
+      });
+    }
+
+    function renderSpecFilters() {
+      const counts = getSpecialties();
+      const container = document.getElementById('filter-spec');
+      container.innerHTML = '';
+      Object.entries(counts).forEach(([spec, count]) => {
+        const btn = document.createElement('button');
+        btn.className = 'filter-item' + (state.filters.spec.has(spec) ? ' active' : '');
+        btn.innerHTML = `<span>${spec}</span><span class="item-count">${count}</span>`;
+        btn.onclick = () => {
+          if (state.filters.spec.has(spec)) state.filters.spec.delete(spec);
+          else state.filters.spec.add(spec);
+          renderAll();
+        };
+        container.appendChild(btn);
+      });
+    }
+
+    function renderToggleButtons() {
+      document.querySelectorAll('[data-diff]').forEach(b => {
+        b.classList.toggle('active', state.filters.diff.has(b.dataset.diff));
+        b.onclick = () => {
+          if (state.filters.diff.has(b.dataset.diff)) state.filters.diff.delete(b.dataset.diff);
+          else state.filters.diff.add(b.dataset.diff);
+          renderAll();
+        };
+      });
+      document.querySelectorAll('[data-img]').forEach(b => {
+        b.classList.toggle('active', state.filters.img === b.dataset.img);
+        b.onclick = () => {
+          state.filters.img = state.filters.img === b.dataset.img ? null : b.dataset.img;
+          renderAll();
+        };
+      });
+      document.querySelectorAll('[data-state]').forEach(b => {
+        b.classList.toggle('active', state.filters.statefilt === b.dataset.state);
+        b.onclick = () => {
+          state.filters.statefilt = state.filters.statefilt === b.dataset.state ? null : b.dataset.state;
+          renderAll();
+        };
+      });
+    }
+
+    function renderList() {
+      const list = document.getElementById('question-list');
+      const filtered = getFilteredQuestions();
+      if (filtered.length === 0) {
+        list.innerHTML = `<div class="empty"><div class="empty-icon">∅</div><div class="empty-text">Nenhuma questão atende aos filtros</div></div>`;
+        return;
+      }
+      list.innerHTML = filtered.map(q => {
+        const p = state.progress[q.n];
+        const statusClass = p ? (p.correct ? 'correct' : 'wrong') : '';
+        const preview = q.enunciado.length > 110 ? q.enunciado.substring(0, 107) + '…' : q.enunciado;
+        return `
+          <div class="q-row" onclick="openQuestion(${q.n})">
+            <span class="q-num">№ ${String(q.n).padStart(3, '0')}</span>
+            <span class="q-title">${preview}</span>
+            <span class="q-tag q-spec-tag">${q.especialidade.split(' ')[0]}</span>
+            <span class="q-tag diff-${q.dificuldade}">${q.dificuldade}</span>
+            <span class="q-status ${statusClass}"></span>
+          </div>
+        `;
+      }).join('');
+    }
+
+    function openQuestion(n) {
+      state.currentQ = n;
+      state.view = 'question';
+      document.getElementById('view-list').style.display = 'none';
+      document.getElementById('view-question').style.display = 'block';
+      renderQuestion();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    function renderQuestion() {
+      const q = QUESTOES.find(x => x.n === state.currentQ);
+      if (!q) return;
+      const p = state.progress[q.n];
+      const filtered = getFilteredQuestions();
+      const idx = filtered.findIndex(x => x.n === q.n);
+      const prev = idx > 0 ? filtered[idx - 1].n : null;
+      const next = idx < filtered.length - 1 ? filtered[idx + 1].n : null;
+
+      const simBar = document.getElementById('simulado-bar-container');
+      if (state.simulado.active) {
+        const ansCount = Object.keys(state.simulado.answers).length;
+        const total = state.simulado.queue.length;
+        const pct = (ansCount / total) * 100;
+        simBar.innerHTML = `
+          <div class="simulado-bar">
+            <span>◯ Simulado · ${ansCount}/${total} respondidas</span>
+            <div class="progress"><div class="progress-fill" style="width:${pct}%"></div></div>
+            <button class="end-btn" onclick="endSimulado()">Finalizar</button>
+          </div>
+        `;
+      } else { simBar.innerHTML = ''; }
+
+      let altsHTML = '';
+      ['A','B','C','D'].forEach(letter => {
+        let classes = 'alt';
+        let disabled = '';
+        if (state.simulado.active) {
+          if (state.simulado.answers[q.n] === letter) classes += ' selected';
+        } else if (p) {
+          classes += ' revealed';
+          disabled = 'disabled';
+          if (letter === q.gabarito) classes += ' correct';
+          else if (letter === p.answer) classes += ' wrong';
+        }
+        altsHTML += `
+          <button class="${classes}" ${disabled} onclick="selectAnswer(${q.n}, '${letter}')">
+            <span class="alt-letter">${letter}</span>
+            <span class="alt-text">${q.alternativas[letter]}</span>
+          </button>
+        `;
+      });
+
+      let feedbackHTML = '';
+      if (p && !state.simulado.active) {
+        feedbackHTML = `
+          <div class="feedback show">
+            <div class="feedback-header">
+              <span class="feedback-label">Gabarito</span>
+              <span class="feedback-answer">${q.gabarito}</span>
+              <span class="feedback-result ${p.correct ? 'correct' : 'wrong'}">${p.correct ? 'Você acertou' : 'Você errou'}</span>
+            </div>
+            <div class="explicacao">${q.explicacao}</div>
+          </div>
+        `;
+      }
+
+      const imgNote = q.temImagem ?
+        `<div class="q-image-note">◐ Esta questão original contém imagem ilustrativa (ECG, radiografia, tomografia, fotografia clínica ou similar). A descrição do achado está incluída no enunciado adaptado.</div>`
+        : '';
+
+      document.getElementById('q-content').innerHTML = `
+        <div class="q-meta-bar">
+          <div class="q-meta-left">
+            <span class="q-number-big">№ ${String(q.n).padStart(3,'0')}</span>
+            <span class="q-tag-pill spec">${q.especialidade}</span>
+            <span class="q-tag-pill diff-${q.dificuldade}" style="background:${q.dificuldade==='Fácil'?'var(--success-bg)':q.dificuldade==='Médio'?'var(--warn-bg)':'var(--error-bg)'};color:${q.dificuldade==='Fácil'?'var(--success)':q.dificuldade==='Médio'?'var(--warn)':'var(--error)'};">${q.dificuldade}</span>
+            ${q.temImagem ? '<span class="q-tag-pill image">◐ Com imagem</span>' : ''}
+          </div>
+          <div class="q-nav">
+            <button class="nav-btn primary" onclick="backToList()">Índice</button>
+            <button class="nav-btn" onclick="navQuestion(${prev})" ${prev===null?'disabled':''}>‹ Anterior</button>
+            <button class="nav-btn" onclick="navQuestion(${next})" ${next===null?'disabled':''}>Próxima ›</button>
+          </div>
+        </div>
+
+        <div class="q-tema"><strong>${q.tema}</strong></div>
+        ${imgNote}
+        <div class="q-enunciado">${q.enunciado}</div>
+
+        <div class="alternativas">${altsHTML}</div>
+
+        ${state.simulado.active && state.simulado.answers[q.n] && next !== null ?
+          `<div class="action-bar">
+            <button class="btn" onclick="navQuestion(${next})">Próxima questão</button>
+           </div>` : ''}
+
+        ${feedbackHTML}
+
+        <div class="subtemas-row">
+          ${q.subtemas.map(s => `<span class="subtema">${s}</span>`).join('')}
+        </div>
+      `;
+    }
+
+    function selectAnswer(qN, letter) {
+      if (state.simulado.active) {
+        state.simulado.answers[qN] = letter;
+        renderQuestion();
+        return;
+      }
+      if (state.progress[qN]) return;
+      const q = QUESTOES.find(x => x.n === qN);
+      const correct = q.gabarito === letter;
+      state.progress[qN] = { answer: letter, correct: correct };
+      saveProgress();
+      renderQuestion();
+      renderStats();
+    }
+
+    function navQuestion(n) {
+      if (n === null) return;
+      state.currentQ = n;
+      renderQuestion();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    function backToList() {
+      state.view = 'list';
+      document.getElementById('view-list').style.display = 'block';
+      document.getElementById('view-question').style.display = 'none';
+      renderList();
+    }
+
+    function renderStats() {
+      const solved = Object.keys(state.progress).length;
+      const correct = Object.values(state.progress).filter(p => p.correct).length;
+      document.getElementById('stat-solved').textContent = solved;
+      document.getElementById('stat-accuracy').textContent =
+        solved === 0 ? '—' : Math.round((correct / solved) * 100) + '%';
+      document.getElementById('stat-shown').textContent = getFilteredQuestions().length;
+    }
+
+    function setTab(tab) {
+      document.querySelectorAll('.tab').forEach(t =>
+        t.classList.toggle('active', t.dataset.tab === tab));
+      state.mode = tab;
+      if (tab === 'simulado') startSimulado();
+      else {
+        state.simulado.active = false;
+        backToList();
+      }
+    }
+    document.querySelectorAll('.tab').forEach(t => {
+      t.onclick = () => setTab(t.dataset.tab);
+    });
+
+    function startSimulado() {
+      const filtered = getFilteredQuestions();
+      if (filtered.length === 0) {
+        alert('Nenhuma questão com os filtros atuais. Limpe filtros para iniciar.');
+        setTab('list');
+        return;
+      }
+      state.simulado.active = true;
+      state.simulado.queue = filtered.map(q => q.n);
+      state.simulado.answers = {};
+      state.currentQ = state.simulado.queue[0];
+      state.view = 'question';
+      document.getElementById('view-list').style.display = 'none';
+      document.getElementById('view-question').style.display = 'block';
+      renderQuestion();
+    }
+
+    function endSimulado() {
+      let correct = 0, wrong = 0;
+      Object.entries(state.simulado.answers).forEach(([n, ans]) => {
+        const q = QUESTOES.find(x => x.n === parseInt(n));
+        if (!q) return;
+        const isCorrect = q.gabarito === ans;
+        state.progress[n] = { answer: ans, correct: isCorrect };
+        if (isCorrect) correct++; else wrong++;
+      });
+      saveProgress();
+      state.simulado.active = false;
+      const total = correct + wrong;
+      const pct = total ? Math.round((correct/total)*100) : 0;
+      document.getElementById('m-correct').textContent = correct;
+      document.getElementById('m-wrong').textContent = wrong;
+      document.getElementById('m-pct').textContent = pct + '%';
+      document.getElementById('modal-score').textContent =
+        pct >= 80 ? 'Excelente.' : pct >= 60 ? 'Bom resultado.' : pct >= 40 ? 'Em desenvolvimento.' : 'Necessita revisão.';
+      document.getElementById('modal').classList.add('show');
+    }
+
+    function closeModal() {
+      document.getElementById('modal').classList.remove('show');
+      setTab('list');
+      renderStats();
+    }
+
+    document.getElementById('search').addEventListener('input', (e) => {
+      state.filters.search = e.target.value;
+      renderAll();
+    });
+
+    document.getElementById('reset-filters').onclick = () => {
+      state.filters.spec.clear();
+      state.filters.diff.clear();
+      state.filters.img = null;
+      state.filters.statefilt = null;
+      state.filters.search = '';
+      document.getElementById('search').value = '';
+      renderAll();
+    };
+
+    document.getElementById('reset-progress').onclick = () => {
+      if (confirm('Resetar todo o progresso? Esta ação não pode ser desfeita.')) {
+        state.progress = {};
+        saveProgress();
+        renderAll();
+      }
+    };
+
+    function renderAll() {
+      renderSpecFilters();
+      renderToggleButtons();
+      if (state.view === 'list') renderList();
+      else renderQuestion();
+      renderStats();
+    }
+
+    renderAll();
+  </script>
+</body>
+</html>
