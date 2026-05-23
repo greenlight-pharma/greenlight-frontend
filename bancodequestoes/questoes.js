@@ -2182,3 +2182,2191 @@ QUESTOES.push(
 );
 
 console.log("Total de questões:", QUESTOES.length);
+
+// ==================== EC6 COLOPROCTOLOGIA - Bloco 1 (121-150) ====================
+// Cirurgia Geral / Trauma / Hemorragia Digestiva / Hérnias
+QUESTOES.push(
+  {
+    n: 121,
+    banca: "USP/FUVEST 2026 — EC6 Coloproctologia",
+    especialidade: "Cirurgia",
+    tema: "Gastroenterologia/HDA",
+    subtemas: ["Úlcera péptica", "Classificação de Forrest", "AINEs"],
+    dificuldade: "Médio",
+    temImagem: true,
+    enunciado: "Homem, 45 anos, epigastralgia, hematêmese e melena há 24h. Uso de diclofenaco há 3 dias por lombalgia. PA 90x70, FC 120, Hb 5,0, INR 1,1. Após reposição volêmica, EDA visualiza no bulbo duodenal lesão (vaso visível não sangrante na úlcera). Classificação e tratamento?",
+    alternativas: {
+      A: "Forrest 1B - tratamento endoscópico com esclerose e bloqueador H2 + profilaxia de PBE.",
+      B: "Forrest 2B - remoção endoscópica do coágulo e esclerose se necessário + bloqueador H2.",
+      C: "Forrest 2A - tratamento endoscópico com duas técnicas + bloqueador H2 em dose plena.",
+      D: "Forrest 2A - tratamento endoscópico e embolização endovascular + bloqueador H2."
+    },
+    gabarito: "C",
+    explicacao: "CLASSIFICAÇÃO DE FORREST para HDA por úlcera péptica: 1A = sangramento ativo em jato; 1B = babação ativa; 2A = VASO VISÍVEL NÃO SANGRANTE (alto risco de ressangramento ~50%); 2B = coágulo aderido; 2C = hematina; 3 = base limpa. Tratamento de Forrest 2A: TERAPIA ENDOSCÓPICA DUPLA (adrenalina + termo/clipe ou esclerose) + IBP (não H2!) em altas doses. Erro do enunciado: deveria ser IBP em dose plena, mas a opção C é a única coerente com 2A + terapia dupla. Embolização (D) é resgate se falha endoscópica."
+  },
+  {
+    n: 122,
+    banca: "USP/FUVEST 2026 — EC6 Coloproctologia",
+    especialidade: "Cirurgia",
+    tema: "Trauma Torácico",
+    subtemas: ["Hemotórax tardio", "Fratura de costela"],
+    dificuldade: "Médio",
+    temImagem: false,
+    enunciado: "Hemotórax tardio (entre 2 e 40 dias após o trauma). Qual a origem mais provável?",
+    alternativas: {
+      A: "Fratura de costela.",
+      B: "Fratura de esterno.",
+      C: "Lesão pulmonar.",
+      D: "Lesão da artéria intercostal."
+    },
+    gabarito: "D",
+    explicacao: "HEMOTÓRAX TARDIO: complicação rara mas conhecida, geralmente por LESÃO DA ARTÉRIA INTERCOSTAL associada a fratura de costela, onde fragmentos podem erodir o vaso ao longo dos dias/semanas. A pressão arterial sistêmica do vaso explica o sangramento progressivo. Fratura de costela isolada (A) sangra do osso (autolimitado). Lesão pulmonar dá sangramento precoce e autolimita pela baixa pressão do circuito pulmonar. Esterno raramente associa com hemotórax."
+  },
+  {
+    n: 123,
+    banca: "USP/FUVEST 2026 — EC6 Coloproctologia",
+    especialidade: "Cirurgia",
+    tema: "Hérnias",
+    subtemas: ["Hérnia de Littre", "Divertículo de Meckel", "Hérnia inguinal"],
+    dificuldade: "Difícil",
+    temImagem: false,
+    enunciado: "Homem, 51 anos, abaulamento inguinal direito agudo doloroso, irredutível, com dor abdominal. Operado por incisão inguinal: 50 mL líquido sanguinolento no saco herniário + DIVERTÍCULO DE INTESTINO DELGADO de 6 cm com base isquêmica. Tipo de hérnia?",
+    alternativas: {
+      A: "de Littre.",
+      B: "Amyand.",
+      C: "de Richter.",
+      D: "de Spiegel."
+    },
+    gabarito: "A",
+    explicacao: "HÉRNIA DE LITTRE: hérnia contendo DIVERTÍCULO DE MECKEL (divertículo de intestino delgado) dentro do saco herniário. Pode encarcerar/estrangular. Hérnia de AMYAND = apêndice cecal no saco herniário inguinal. Hérnia de RICHTER = apenas parte da circunferência da alça (pinçamento), risco de necrose sem obstrução. Hérnia de SPIEGEL = hérnia ventral pela linha semilunar (lateral ao reto abdominal)."
+  },
+  {
+    n: 124,
+    banca: "USP/FUVEST 2026 — EC6 Coloproctologia",
+    especialidade: "Cirurgia",
+    tema: "Trauma Torácico",
+    subtemas: ["Pneumotórax hipertensivo", "Choque", "Drenagem"],
+    dificuldade: "Médio",
+    temImagem: false,
+    enunciado: "Homem, 20 anos, FAF transfixante em hemitórax direito (entrada 3º EIC + saída 4º EIC linha axilar média). PA 70x50, FC 120, SpO2 86%, MV ausente à direita, percussão timpânica. Tratamento imediato?",
+    alternativas: {
+      A: "Intubação orotraqueal e ventilação mecânica.",
+      B: "Máscara não-reinalante e drenagem torácica.",
+      C: "Máscara não-reinalante e iniciar protocolo de transfusão maciça.",
+      D: "Drenagem torácica e iniciar protocolo de transfusão maciça."
+    },
+    gabarito: "D",
+    explicacao: "PNEUMOTÓRAX HIPERTENSIVO (MV ausente + timpanismo + choque) + ferimento transfixante = drenagem torácica IMEDIATA + protocolo de transfusão maciça (PA 70x50 = choque hemorrágico). A drenagem alivia o pneumotórax E permite avaliar/tratar o hemotórax associado. IOT em paciente com pneumotórax hipertensivo NÃO DRENADO pode causar parada (VPP piora). Não basta máscara - é necessário descomprimir + tratar o choque."
+  },
+  {
+    n: 125,
+    banca: "USP/FUVEST 2026 — EC6 Coloproctologia",
+    especialidade: "Cirurgia",
+    tema: "Coloproctologia",
+    subtemas: ["Síndrome de Ogilvie", "Necrose cecal", "Colectomia"],
+    dificuldade: "Médio",
+    temImagem: false,
+    enunciado: "Homem, 65 anos, D5 pós-revascularização miocárdica. Pseudo-obstrução de Ogilvie tratada por colonoscopia descompressiva. 24h após: dor abdominal + pneumoperitônio à radiografia. Laparotomia: NECROSE NO CECO COM PERFURAÇÃO e distensão do cólon. Conduta cirúrgica?",
+    alternativas: {
+      A: "Cecostomia.",
+      B: "Colectomia total.",
+      C: "Colectomia parcial direita com ileostomia e colostomia.",
+      D: "Colectomia parcial com anastomose ileocólica manual."
+    },
+    gabarito: "C",
+    explicacao: "PERFURAÇÃO CECAL com peritonite em paciente crítico (pós-CRVM, instável) + cólon distendido = COLECTOMIA DIREITA com ILEOSTOMIA + COLOSTOMIA (cirurgia em dois tempos, sem anastomose primária em contexto séptico/contaminado). Anastomose primária (D) é contraindicada em peritonite/instabilidade. Colectomia total seria excessiva. Cecostomia (A) deixa o cólon necrótico in situ."
+  },
+  {
+    n: 126,
+    banca: "USP/FUVEST 2026 — EC6 Coloproctologia",
+    especialidade: "Cirurgia",
+    tema: "Hérnias",
+    subtemas: ["Hérnia femoral estrangulada", "Necrose intestinal"],
+    dificuldade: "Difícil",
+    temImagem: true,
+    enunciado: "Mulher, 45 anos, abaulamento inguinal direito 15 cm, irredutível, hiperemiado, doloroso há 2 dias. Cirurgia por incisão inguinal: alça intestinal NECRÓTICA (azulada) saindo abaixo do ligamento inguinal. Diagnóstico e tratamento?",
+    alternativas: {
+      A: "Hérnia femoral estrangulada - laparotomia infraumbilical + ressecção da alça + reparo com tela.",
+      B: "Hérnia femoral estrangulada - ressecção da alça e reparo com tela pela incisão inguinal.",
+      C: "Hérnia inguinal estrangulada - ressecção da alça + correção com tela + videolaparoscopia.",
+      D: "Hérnia inguinal encarcerada - aumentar anel, aquecer a alça, reduzir conteúdo + reparo com tela."
+    },
+    gabarito: "A",
+    explicacao: "HÉRNIA FEMORAL ESTRANGULADA: mulher, abaulamento abaixo do ligamento inguinal, mais comum em mulheres, alto risco de estrangulamento. Com NECROSE INTESTINAL = LAPAROTOMIA INFRAUMBILICAL para ressecção segura da alça necrótica (acesso à cavidade) + reparo herniário. Reparo com TELA está CONTRAINDICADO em campo CONTAMINADO/séptico (necrose/perfuração) - reparo deve ser PRIMÁRIO. Erro da banca em manter 'reparo com tela' em alça necrótica - mas é a opção menos errada pela via correta."
+  },
+  {
+    n: 127,
+    banca: "USP/FUVEST 2026 — EC6 Coloproctologia",
+    especialidade: "Cirurgia",
+    tema: "Hematologia/Trauma",
+    subtemas: ["Tromboelastograma", "Coagulopatia"],
+    dificuldade: "Médio",
+    temImagem: true,
+    enunciado: "No tromboelastograma (TEG/ROTEM), qual segmento, quando DIMINUÍDO, representa FALTA DE PLAQUETAS?",
+    alternativas: {
+      A: "ML (lise máxima).",
+      B: "CT (tempo de coagulação).",
+      C: "CFT (tempo de formação do coágulo).",
+      D: "MCF (firmeza máxima do coágulo)."
+    },
+    gabarito: "D",
+    explicacao: "TROMBOELASTOGRAMA - parâmetros: CT (tempo de coagulação) = início da formação do coágulo → reflete FATORES de coagulação; CFT (tempo de formação) = velocidade da polimerização → reflete fibrinogênio + plaquetas; MCF (FIRMEZA MÁXIMA DO COÁGULO) = força final do coágulo → reflete PLAQUETAS + FIBRINOGÊNIO (principalmente plaquetas em FIBTEM normal); ML = fibrinólise. MCF diminuído = TROMBOCITOPENIA ou disfunção plaquetária."
+  },
+  {
+    n: 128,
+    banca: "USP/FUVEST 2026 — EC6 Coloproctologia",
+    especialidade: "Cirurgia",
+    tema: "Trauma Abdominal",
+    subtemas: ["Hematoma retroperitoneal", "Zonas retroperitoneais", "Damage control"],
+    dificuldade: "Difícil",
+    temImagem: false,
+    enunciado: "FAF no flanco esquerdo. Laparotomia: 3 lesões transfixantes de delgado (20, 30 e 35 cm do Treitz) + HEMATOMA NA ZONA 2 ESQUERDA, NÃO PULSÁTIL e SEM EXPANSÃO durante cirurgia. Conduta?",
+    alternativas: {
+      A: "Apenas ressecção e anastomose primária do delgado.",
+      B: "Apenas desbridamento e sutura dos ferimentos + drenagem.",
+      C: "Ressecção e anastomose primária + EXPLORAÇÃO do hematoma de zona II.",
+      D: "Grampeamento das lesões + compressas em zona II + peritoneostomia."
+    },
+    gabarito: "C",
+    explicacao: "ZONAS DO RETROPERITÔNIO: Zona I (central - aorta/cava) - SEMPRE explorar; Zona II (flancos - rim, ureter, cólon ascendente/descendente) - explorar SE PENETRANTE (FAF), pulsátil, em expansão; Zona III (pélvica) - NÃO explorar em trauma fechado, explorar se penetrante. Como este é trauma PENETRANTE (FAF), mesmo hematoma sem expansão = EXPLORAR para descartar lesão renal/ureteral/cólon. Anastomose primária OK por estabilidade hemodinâmica."
+  },
+  {
+    n: 129,
+    banca: "USP/FUVEST 2026 — EC6 Coloproctologia",
+    especialidade: "Cirurgia",
+    tema: "Coloproctologia",
+    subtemas: ["Diverticulite complicada", "Abscesso", "Hinchey"],
+    dificuldade: "Médio",
+    temImagem: false,
+    enunciado: "Mulher, 78 anos, constipada, dor abdominal em baixo ventre há 2 sem, parada de evacuação, calafrios. Plastrão palpável em hipogástrio. TC: coleção com paredes espessadas + gás 8x7x5 cm (~150 mL) no mesogástrio/hipogástrio, em contato com sigmoide, aderências entre alças ileais. Diagnóstico e tratamento?",
+    alternativas: {
+      A: "Perfuração por corpo estranho - ATB e colonoscopia.",
+      B: "Tumor de cólon - colonoscopia para diagnóstico e tratamento.",
+      C: "Videolaparoscopia diagnóstica e drenagem.",
+      D: "Diverticulite complicada - ATB e drenagem percutânea por radiologia intervencionista."
+    },
+    gabarito: "D",
+    explicacao: "DIVERTICULITE AGUDA COMPLICADA - HINCHEY II: abscesso pélvico/intra-abdominal a distância (não pericólico). Tratamento: ATB + DRENAGEM PERCUTÂNEA guiada por imagem para abscessos >3-4 cm. Apresentação clássica: idosa, dor em FIE/hipogástrio, plastrão. A localização em sigmoide com diverticulose é a etiologia mais provável. Colonoscopia ESTÁ CONTRAINDICADA na fase aguda (risco de perfuração). Cirurgia reservada para falha do tratamento conservador."
+  },
+  {
+    n: 130,
+    banca: "USP/FUVEST 2026 — EC6 Coloproctologia",
+    especialidade: "Cirurgia",
+    tema: "Parede Abdominal",
+    subtemas: ["Lesão de artéria epigástrica", "Paracentese", "Complicações"],
+    dificuldade: "Médio",
+    temImagem: true,
+    enunciado: "Homem, 34 anos, ascite. Paracentese diagnóstica realizada. 1h após: dor abdominal intensa. TC mostra hematoma de parede abdominal. Diagnóstico e tratamento?",
+    alternativas: {
+      A: "Lesão da artéria EPIGÁSTRICA - angio-embolização.",
+      B: "Lesão de veia umbilical - laparotomia e ligadura.",
+      C: "Hematoma muscular - drenagem cirúrgica.",
+      D: "Tumor de parede com necrose - biópsia."
+    },
+    gabarito: "A",
+    explicacao: "LESÃO DE ARTÉRIA EPIGÁSTRICA INFERIOR: complicação clássica da paracentese (e procedimentos abdominais inferiores). A artéria corre na parede posterior do músculo reto abdominal. Para EVITAR a lesão, o local correto da paracentese é em REGIÃO LATERAL (~3 cm medial e cefálico à espinha ilíaca anterossuperior) ou linha alba. Tratamento: ANGIO-EMBOLIZAÇÃO por radiologia intervencionista (minimamente invasivo, eficaz). Laparotomia raramente necessária."
+  },
+  {
+    n: 131,
+    banca: "USP/FUVEST 2026 — EC6 Coloproctologia",
+    especialidade: "Cirurgia",
+    tema: "Trauma Abdominal",
+    subtemas: ["Choque hemorrágico", "Damage control", "FAST"],
+    dificuldade: "Médio",
+    temImagem: false,
+    enunciado: "Homem, 53 anos, trauma abdominal contuso. Inicialmente FC 128, PA 88 sist, Glasgow 14. Recebeu 1.750 mL Ringer + 1g transamin. Na admissão terciária: FC 133, PA 53x34, Glasgow 13, enchimento >5s, descorado, FAST+ HEPATORRENAL. Conduta?",
+    alternativas: {
+      A: "IOT sequência rápida + protocolo transfusão maciça + noradrenalina + tomografia.",
+      B: "IOT sequência retardada + transfusão de hemácias + angio-TC.",
+      C: "IOT sequência retardada + droga vasoativa + ECG + curva enzimática.",
+      D: "Protocolo de transfusão maciça + noradrenalina + LAPAROTOMIA EXPLORADORA."
+    },
+    gabarito: "D",
+    explicacao: "CHOQUE HEMORRÁGICO CLASSE IV (PA 53x34, FC 133, perfusão crítica) + FAST POSITIVO + responder mal à reposição cristalóide = INSTABILIDADE HEMODINÂMICA com FONTE INTRA-ABDOMINAL = LAPAROTOMIA EXPLORADORA IMEDIATA + protocolo de transfusão maciça. NÃO PERDER TEMPO COM TC em paciente instável (regra de ouro do ATLS: instável + FAST+ vai para sala). Noradrenalina em choque hemorrágico só após restauração de volume."
+  },
+  {
+    n: 132,
+    banca: "USP/FUVEST 2026 — EC6 Coloproctologia",
+    especialidade: "Cirurgia",
+    tema: "Cirurgia Hepatobiliar",
+    subtemas: ["Colecistite aguda", "Tokyo Guidelines"],
+    dificuldade: "Fácil",
+    temImagem: false,
+    enunciado: "Mulher, 75 anos, dor HD há 3 dias, T 37,5°C, Murphy+, FC 112, leuco 23.000. USG: vesícula com cálculos + parede espessada/delaminada, sem dilatação biliar. Tratamento mais adequado?",
+    alternativas: {
+      A: "ATB e colecistectomia eletiva.",
+      B: "ATB e colecistectomia em até 72 horas.",
+      C: "Drenagem percutânea biliar + cirurgia em 24-48h.",
+      D: "Estabilização clínica + ATB + colecistectomia em 3 meses."
+    },
+    gabarito: "B",
+    explicacao: "COLECISTITE AGUDA (Murphy+, leucocitose, parede espessada/delaminada à USG): TOKYO GUIDELINES recomendam COLECISTECTOMIA PRECOCE (até 72h dos sintomas, ou no mesmo internamento) para colecistite Grau I/II. Reduz complicações, internação e morbidade comparado à cirurgia tardia. ATB perioperatório. Colecistectomia eletiva (A) só se >72h e BEG. Drenagem percutânea (C) reservada para casos GRAVES (III) com falha clínica ou risco cirúrgico proibitivo."
+  },
+  {
+    n: 133,
+    banca: "USP/FUVEST 2026 — EC6 Coloproctologia",
+    especialidade: "Cirurgia",
+    tema: "Coloproctologia",
+    subtemas: ["Apendicite aguda", "Videolaparoscopia"],
+    dificuldade: "Médio",
+    temImagem: true,
+    enunciado: "Mulher, 24 anos, dor abdominal em FID, vômitos, diarreia há 4 dias. Dor à palpação e descompressão (DB+). Leuco 26.500, PCR 38. Imagens compatíveis com apendicite. Sequência de tratamento?",
+    alternativas: {
+      A: "Videolaparoscopia diagnóstica/terapêutica + ATB profilática.",
+      B: "Laparotomia exploradora.",
+      C: "ATB - tratamento para moléstia inflamatória pélvica.",
+      D: "Reposição volêmica + ATB + videolaparoscopia."
+    },
+    gabarito: "D",
+    explicacao: "APENDICITE AGUDA COMPLICADA (4 dias de evolução, peritonite com DB+, leucocitose alta, PCR elevada). Conduta: 1) REPOSIÇÃO VOLÊMICA (paciente possivelmente desidratada/séptica); 2) ANTIBIÓTICO TERAPÊUTICO (não profilático - é peritonite); 3) VIDEOLAPAROSCOPIA para apendicectomia + lavagem da cavidade. Em apendicite NÃO complicada (<48h), profilaxia ATB é suficiente. Em complicada, ATB é terapêutico por 5-7 dias."
+  },
+  {
+    n: 134,
+    banca: "USP/FUVEST 2026 — EC6 Coloproctologia",
+    especialidade: "Cirurgia",
+    tema: "Trauma Torácico",
+    subtemas: ["Hemotórax retido"],
+    dificuldade: "Médio",
+    temImagem: false,
+    enunciado: "Hemotórax retido é:",
+    alternativas: {
+      A: "100 mL de coágulos diagnosticados por TC após drenagem.",
+      B: "300 mL de sangue na pleura após 24h diagnosticado por TC.",
+      C: "Sangue ocupando 1/3 do espaço pleural, não removido por dreno, <24h.",
+      D: "Sangue ocupando 1/3 do espaço pleural, não removido por dreno, >72h."
+    },
+    gabarito: "D",
+    explicacao: "HEMOTÓRAX RETIDO (EAST/AAST): sangue que persiste na cavidade pleural APÓS 72 HORAS de drenagem torácica adequada, ocupando >300 mL ou >1/3 do espaço pleural. Risco: empiema, fibrotórax, encarceramento pulmonar. Tratamento: VATS (videotoracoscopia) para evacuação. NÃO se define hemotórax retido nas primeiras 24h (ainda pode drenar). Volumes menores que 300 mL podem ser observados."
+  },
+  {
+    n: 135,
+    banca: "USP/FUVEST 2026 — EC6 Coloproctologia",
+    especialidade: "Cirurgia",
+    tema: "Cirurgia Geral",
+    subtemas: ["Divertículo de Meckel", "Tecido ectópico"],
+    dificuldade: "Fácil",
+    temImagem: false,
+    enunciado: "Achado intraoperatório de DIVERTÍCULO DE MECKEL com nódulo de 1 cm no ápice. Lesão mais frequente?",
+    alternativas: {
+      A: "Leiomioma.",
+      B: "Carcinoide.",
+      C: "Adenocarcinoma.",
+      D: "Tecido gástrico ectópico."
+    },
+    gabarito: "B",
+    explicacao: "DIVERTÍCULO DE MECKEL: divertículo verdadeiro do íleo (regra dos 2s: 2% da população, 2 pés do íleo, 2 polegadas, 2% sintomáticos, 2 tipos de mucosa ectópica). TECIDO ECTÓPICO mais comum = GÁSTRICO (causa sangramento - cintilografia com pertecnetato). Mas em NÓDULO/TUMORAÇÃO no ápice, a neoplasia mais comum é o TUMOR CARCINOIDE (neuroendócrino) - 33-50% dos tumores do Meckel. Por isso ressecção é recomendada se incidentalmente achado."
+  },
+  {
+    n: 136,
+    banca: "USP/FUVEST 2026 — EC6 Coloproctologia",
+    especialidade: "Cirurgia",
+    tema: "Cirurgia Geral",
+    subtemas: ["Íleo biliar", "Obstrução intestinal"],
+    dificuldade: "Difícil",
+    temImagem: true,
+    enunciado: "Mulher, 70 anos, dor epigástrica/HD há 5 dias + anorexia. Leuco 23.000, BT 1,6 (D 0,8), PCR 61. TC mostra (clássico): aerobilia + obstrução intestinal + cálculo ectópico no delgado. Suspeita clínica?",
+    alternativas: {
+      A: "Colangite aguda supurativa.",
+      B: "Colecistite aguda enfisematosa.",
+      C: "Obstrução intestinal por íleo biliar.",
+      D: "Trombose mesentérica."
+    },
+    gabarito: "C",
+    explicacao: "ÍLEO BILIAR: tríade de Rigler na TC = 1) AEROBILIA (gás na via biliar); 2) OBSTRUÇÃO INTESTINAL; 3) CÁLCULO ECTÓPICO (geralmente no íleo terminal). Fisiopatologia: fístula bilio-entérica (colecistoduodenal) por colecistite crônica permite passagem do cálculo, que impacta no íleo. Idosos, mulheres. Tratamento: ENTEROLITOTOMIA (retirada do cálculo) - colecistectomia em 2º tempo. Colangite teria febre/tríade de Charcot."
+  },
+  {
+    n: 137,
+    banca: "USP/FUVEST 2026 — EC6 Coloproctologia",
+    especialidade: "Cirurgia",
+    tema: "Trauma/Anatomia Cirúrgica",
+    subtemas: ["Manobras de exposição", "Kocher", "Cattell-Braasch"],
+    dificuldade: "Médio",
+    temImagem: true,
+    enunciado: "Imagem cirúrgica mostra mobilização do bloco duodeno-pancreático + cólon direito + raiz do mesentério (exposição completa do retroperitônio direito). Nome da manobra?",
+    alternativas: {
+      A: "Kocher (apenas duodeno).",
+      B: "Mattox (retroperitônio esquerdo).",
+      C: "Cattell (apenas cólon direito).",
+      D: "Cattell-Braasch."
+    },
+    gabarito: "D",
+    explicacao: "MANOBRA DE CATTELL-BRAASCH: mobilização completa do CÓLON DIREITO + DUODENO + CABEÇA DO PÂNCREAS + RAIZ DO MESENTÉRIO, expondo TODO O RETROPERITÔNIO DIREITO (cava, aorta direita, vasos renais direitos, ureter). Combina Cattell (cólon direito) + Kocher (duodeno-pâncreas) + secção da raiz do mesentério. KOCHER isolada = só duodeno/cabeça do pâncreas. MATTOX = rotação medial visceral ESQUERDA (cólon E, baço, pâncreas, rim E) para expor retroperitônio esquerdo (aorta)."
+  },
+  {
+    n: 138,
+    banca: "USP/FUVEST 2026 — EC6 Coloproctologia",
+    especialidade: "Cirurgia",
+    tema: "Coloproctologia",
+    subtemas: ["Apendicite", "Cirurgia laparoscópica"],
+    dificuldade: "Fácil",
+    temImagem: true,
+    enunciado: "Paciente, 26 anos, dor em hipogástrio/FID há 1 dia, T 38,5°C, anorexia, dor à palpação em FID SEM sinais de irritação peritoneal. TC com apendicite NÃO complicada. Tratamento?",
+    alternativas: {
+      A: "Colonoscopia.",
+      B: "Colectomia parcial com anastomose primária.",
+      C: "Apendicectomia por VIDEOLAPAROSCOPIA.",
+      D: "Apendicectomia por laparotomia."
+    },
+    gabarito: "C",
+    explicacao: "APENDICITE AGUDA NÃO COMPLICADA: tratamento padrão atual = APENDICECTOMIA VIDEOLAPAROSCÓPICA. Vantagens sobre laparotomia: menor dor pós-op, menor tempo de internação, retorno mais rápido às atividades, menor taxa de infecção de ferida, melhor visualização da cavidade (especialmente em mulheres). Laparotomia (D) reservada para casos com peritonite grave, instabilidade, ou inexperiência laparoscópica. Tratamento ATB isolado é alternativa em casos selecionados, mas não foi opção aqui."
+  },
+  {
+    n: 139,
+    banca: "USP/FUVEST 2026 — EC6 Coloproctologia",
+    especialidade: "Cirurgia",
+    tema: "Trauma",
+    subtemas: ["Trauma duodenal", "Lesão posterior gástrica"],
+    dificuldade: "Difícil",
+    temImagem: true,
+    enunciado: "Homem, 19 anos, ferimento por arma branca em epigástrio. Laparotomia: ferimento GÁSTRICO ANTERIOR visível. Tratamento cirúrgico recomendado?",
+    alternativas: {
+      A: "Gastroduodenopancreatectomia cefálica.",
+      B: "Sutura ferimento gástrico anterior + procura/sutura ferimento gástrico POSTERIOR + colecistectomia com colangio.",
+      C: "Sutura ferimento gástrico anterior + procura/sutura ferimento gástrico POSTERIOR + drenagem pancreática.",
+      D: "Gastrectomia (diverticulação duodenal) + colecistectomia + dreno de Kehr + drenagem pancreática."
+    },
+    gabarito: "C",
+    explicacao: "FERIMENTO PENETRANTE EM EPIGÁSTRICO: princípio cirúrgico = SEMPRE INSPECIONAR a PAREDE POSTERIOR do estômago (pelo ligamento gastrocólico/transcavidade dos epíplons), pois lesão transfixante é frequente. Após sutura das lesões gástricas (anterior + posterior), DRENAGEM da loja pancreática (proximidade anatômica, risco de lesão pancreática inadvertida e fístula). Não há indicação de colecistectomia neste contexto. Pancreatoduodenectomia (Whipple) só para lesões catastróficas."
+  },
+  {
+    n: 140,
+    banca: "USP/FUVEST 2026 — EC6 Coloproctologia",
+    especialidade: "Cirurgia",
+    tema: "Coloproctologia",
+    subtemas: ["RCU fulminante", "Colite refratária", "Colectomia"],
+    dificuldade: "Médio",
+    temImagem: false,
+    enunciado: "Homem, 30 anos, RCU em uso de mesalazina há 5 anos. Diarreia com sangue há 3 dias (8x/dia). Internado, ATB + hidratação. Evolui com enterorragia maciça, PA 90x70, FC 120, Hb 10→7 g/dL. Após reanimação, mantém enterorragia. Cirurgia indicada. Conduta?",
+    alternativas: {
+      A: "COLECTOMIA SUBTOTAL e ILEOSTOMIA.",
+      B: "Colectomia subtotal + ileorretoanastomose.",
+      C: "Proctocolectomia total com ileostomia.",
+      D: "Proctocolectomia total com pouch-anal anastomose."
+    },
+    gabarito: "A",
+    explicacao: "RCU FULMINANTE / EMERGÊNCIA com HEMORRAGIA MACIÇA refratária: cirurgia de escolha = COLECTOMIA SUBTOTAL + ILEOSTOMIA TERMINAL + preservação do COTO RETAL (reto fechado em bolsa de Hartmann ou colostomia mucosa). Vantagens: cirurgia mais simples e segura em paciente crítico/desnutrido/corticodependente, evita proctectomia em condições adversas, preserva opções futuras (pouch ileal pode ser feito em 2º tempo após estabilização). Proctocolectomia em 1 tempo é morbidade excessiva em emergência."
+  },
+  {
+    n: 141,
+    banca: "USP/FUVEST 2026 — EC6 Coloproctologia",
+    especialidade: "Cirurgia",
+    tema: "Urologia/Trauma",
+    subtemas: ["Trauma vesical", "Ruptura extraperitoneal"],
+    dificuldade: "Médio",
+    temImagem: true,
+    enunciado: "Homem, 49 anos, agredido há 3 dias, sem urinar há 2 dias, dor abdominal, equimose hipogástrica. PA 177x86, próstata aumentada ao toque. Cr 4,9, ureia 96. TC com ruptura vesical EXTRAPERITONEAL e hematoma pélvico. Conduta?",
+    alternativas: {
+      A: "Tratamento não operatório.",
+      B: "SONDAGEM VESICAL POR 2 SEMANAS.",
+      C: "Laparoscopia diagnóstica/terapêutica.",
+      D: "Paracentese diagnóstica + ATB."
+    },
+    gabarito: "B",
+    explicacao: "RUPTURA VESICAL EXTRAPERITONEAL (mais comum, geralmente associada à fratura pélvica): tratamento CONSERVADOR com SONDA VESICAL DE DEMORA por 10-14 dias + ATB. Cistografia de controle. Ruptura INTRAPERITONEAL é sempre CIRÚRGICA (extravasamento para cavidade peritoneal = peritonite). A elevação da Cr e ureia pode ser por reabsorção da urina extravasada pelo peritônio. Próstata elevada + equimose pode ser por hematoma pélvico ou trauma uretral associado."
+  },
+  {
+    n: 142,
+    banca: "USP/FUVEST 2026 — EC6 Coloproctologia",
+    especialidade: "Cirurgia",
+    tema: "Oncologia Cirúrgica",
+    subtemas: ["Câncer de pâncreas", "Laparoscopia diagnóstica", "Estadiamento"],
+    dificuldade: "Difícil",
+    temImagem: false,
+    enunciado: "Adenocarcinoma de pâncreas: massa 2,8 cm em processo uncinado, contato de 120° com VMS, sem metástase em TC. CA 19-9 = 120 U/mL. Característica MAIS PREDITIVA para metástase oculta na laparoscopia diagnóstica?",
+    alternativas: {
+      A: "Nível de CA-19-9.",
+      B: "Tamanho do tumor.",
+      C: "Localização do tumor.",
+      D: "Envolvimento da veia mesentérica superior."
+    },
+    gabarito: "A",
+    explicacao: "Em adenocarcinoma de pâncreas borderline-resectable, a LAPAROSCOPIA DIAGNÓSTICA é usada para detectar METÁSTASES OCULTAS (carcinomatose, hepáticas pequenas) não vistas em TC. Fatores preditivos de metástase oculta: 1) CA 19-9 ELEVADO (>200-500 U/mL = alto risco; este 120 é intermediário); 2) Tumor de CORPO/CAUDA (mais que cabeça); 3) Tamanho >3 cm. O CA 19-9 é o MELHOR preditor isolado segundo guidelines NCCN."
+  },
+  {
+    n: 143,
+    banca: "USP/FUVEST 2026 — EC6 Coloproctologia",
+    especialidade: "Cirurgia",
+    tema: "Anatomia Cirúrgica",
+    subtemas: ["Nervos da região inguinal", "Complicações pós-apendicectomia"],
+    dificuldade: "Médio",
+    temImagem: false,
+    enunciado: "Homem, 30 anos, pós-apendicectomia McBurney, dor em região inferior do abdome e FACE INTERNA DA COXA + desconforto local. Cicatriz normal. Lesão de qual nervo?",
+    alternativas: {
+      A: "Ilioinguinal.",
+      B: "Ílio-hipogástrico.",
+      C: "Lateral da coxa (cutâneo femoral lateral).",
+      D: "Genitofemoral."
+    },
+    gabarito: "A",
+    explicacao: "NERVO ILIOINGUINAL (L1): inerva pele do ABDOMEN INFERIOR + REGIÃO INGUINAL + RAIZ DA COXA INTERNA + escroto/grande lábio. Curso lateral ao ânulo inguinal interno, vulnerável em incisão de McBurney. Ílio-hipogástrico: pele suprapúbica. Genitofemoral: ramo genital (cremaster, escroto/lábio) + femoral (face anterior da coxa superior, não interna). Cutâneo femoral lateral: face LATERAL da coxa (meralgia parestésica). Lesão do ilioinguinal causa dor crônica na inguinotomia."
+  },
+  {
+    n: 144,
+    banca: "USP/FUVEST 2026 — EC6 Coloproctologia",
+    especialidade: "Cirurgia",
+    tema: "Anatomia Cirúrgica",
+    subtemas: ["Cervicotomia", "Nervo vago", "Laríngeo recorrente"],
+    dificuldade: "Médio",
+    temImagem: true,
+    enunciado: "Em cervicotomia exploradora, secção acidental de estrutura nervosa (linha vermelha A na imagem) - identificada como nervo vago ANTES da emergência do laríngeo recorrente. Estrutura e alteração esperada?",
+    alternativas: {
+      A: "Nervo vago - arritmia cardíaca.",
+      B: "Nervo vago antes da liberação do nervo laríngeo recorrente - ROUQUIDÃO.",
+      C: "Nervo frênico - diminuição do MV em base direita.",
+      D: "Ramo do plexo braquial - alteração de movimentação do braço."
+    },
+    gabarito: "B",
+    explicacao: "NERVO LARÍNGEO RECORRENTE emerge do VAGO no tórax (à direita ao redor da a. subclávia; à esquerda ao redor do arco aórtico) e ASCENDE até inervar a musculatura intrínseca da LARINGE. Se o vago for seccionado ABAIXO da emergência do recorrente → preserva fonação (o recorrente já saiu). Se for seccionado ACIMA (no pescoço, antes da emergência intratorácica não se aplica, mas no contexto da questão, antes da liberação significa proximal ao nível onde o ramo se origina) → ROUQUIDÃO por paralisia de prega vocal."
+  },
+  {
+    n: 145,
+    banca: "USP/FUVEST 2026 — EC6 Coloproctologia",
+    especialidade: "Cirurgia",
+    tema: "Cirurgia Geral",
+    subtemas: ["Tricobezoar", "Síndrome de Rapunzel"],
+    dificuldade: "Difícil",
+    temImagem: true,
+    enunciado: "Menina, 12 anos, dor epigástrica, anorexia, sem evacuar há 3 dias. Massa epigástrica palpável. Mãe relata queda de cabelo há 1 ano (usa dreads para disfarçar). TC: imagem em 'redemoinho' compatível com TRICOBEZOAR gástrico. Tratamento?",
+    alternativas: {
+      A: "Esvaziamento manual (endoscópico).",
+      B: "Laparotomia e GASTROTOMIA.",
+      C: "Colectomia parcial e colostomia.",
+      D: "Lavagem intestinal com solução glicerinada."
+    },
+    gabarito: "B",
+    explicacao: "TRICOBEZOAR (síndrome de RAPUNZEL quando extensão para delgado) em criança com TRICOTILOMANIA + TRICOFAGIA: a remoção endoscópica é GERALMENTE IMPOSSÍVEL pela CONSISTÊNCIA FIRME e GRANDE TAMANHO da massa. Tratamento: LAPAROTOMIA + GASTROTOMIA para extração em bloco. Acompanhamento psiquiátrico essencial (transtorno compulsivo). Bezoares de matéria vegetal (fitobezoar) podem ser dissolvidos com coca-cola ou removidos por endoscopia. Tricobezoar: sempre cirúrgico."
+  },
+  {
+    n: 146,
+    banca: "USP/FUVEST 2026 — EC6 Coloproctologia",
+    especialidade: "Cirurgia",
+    tema: "Coloproctologia",
+    subtemas: ["Pós-operatório", "Fístula", "Coleção"],
+    dificuldade: "Médio",
+    temImagem: true,
+    enunciado: "D5 pós-colectomia subtotal por enterorragia. Apesar de ileostomia funcionante: anorexia, febre, leucocitose 18.500, PCR 40, albumina 2,0. RX/TC mostram SNE BEM POSICIONADA + coleção abdominal. Tratamento?",
+    alternativas: {
+      A: "Laparotomia exploradora.",
+      B: "DRENAGEM PERCUTÂNEA.",
+      C: "Iniciar dieta pela SNE - está bem posicionada.",
+      D: "Não iniciar dieta + acesso central + nutrição parenteral."
+    },
+    gabarito: "B",
+    explicacao: "COLEÇÃO ABDOMINAL pós-operatória + sinais infecciosos sistêmicos (febre, leucocitose, PCR elevada, hipoalbuminemia) + paciente sem peritonite difusa = DRENAGEM PERCUTÂNEA guiada por imagem é o tratamento de escolha. Permite controle do foco séptico sem reoperação. Após drenagem, ATB direcionada + nutrição enteral (a SNE bem posicionada permite). Reoperação (A) reservada para falha da drenagem ou peritonite. Nutrição parenteral é última opção (atrofia intestinal, infecção de cateter)."
+  },
+  {
+    n: 147,
+    banca: "USP/FUVEST 2026 — EC6 Coloproctologia",
+    especialidade: "Cirurgia",
+    tema: "Trauma/Coloproctologia",
+    subtemas: ["Trauma de cólon", "Reparo primário"],
+    dificuldade: "Médio",
+    temImagem: true,
+    enunciado: "Homem, 26 anos, FAF em flanco esquerdo. Laparotomia mostra lesão de cólon (perfuração única, paciente estável, contaminação mínima). Tratamento?",
+    alternativas: {
+      A: "Exteriorização do ferimento.",
+      B: "Sutura + colostomia de proteção.",
+      C: "Ressecção e ANASTOMOSE PRIMÁRIA.",
+      D: "Colectomia parcial e colostomia (Hartmann)."
+    },
+    gabarito: "C",
+    explicacao: "TRAUMA DE CÓLON em paciente ESTÁVEL com perfuração simples (lesão pequena, sem desvitalização, contaminação mínima, sem choque, sem múltiplas transfusões): REPARO PRIMÁRIO (sutura ou ressecção + anastomose) é o padrão atual conforme estudos randomizados. Colostomia/Hartmann só em: instabilidade, contaminação maciça, múltiplas lesões, desvitalização extensa, transfusão maciça, lesões associadas graves. Política antiga de 'todo trauma de cólon = colostomia' está superada."
+  },
+  {
+    n: 148,
+    banca: "USP/FUVEST 2026 — EC6 Coloproctologia",
+    especialidade: "Cirurgia",
+    tema: "Hérnias",
+    subtemas: ["Hérnia umbilical estrangulada", "Tela em contaminação"],
+    dificuldade: "Médio",
+    temImagem: true,
+    enunciado: "Homem, 80 anos, hérnia umbilical estrangulada há 6h com necrose intestinal. Conduta cirúrgica?",
+    alternativas: {
+      A: "Enterectomia segmentar + hernioplastia COM TELA.",
+      B: "Enterectomia segmentar + fechamento da parede SEM TELA.",
+      C: "Enterectomia + fechamento aponeurose + curativo vácuo (peritoneostomia).",
+      D: "Ampliar para laparotomia mediana + revisão + fechamento com poligalactina 1."
+    },
+    gabarito: "B",
+    explicacao: "HÉRNIA UMBILICAL ESTRANGULADA com NECROSE INTESTINAL: campo CONTAMINADO. ENTERECTOMIA + fechamento SEM TELA. TELA SINTÉTICA está CONTRAINDICADA em campo contaminado (alto risco de infecção, fistulização, necessidade de retirada). Em casos selecionados, telas biológicas podem ser consideradas, mas não são padrão de cuidado. Reparo PRIMÁRIO da aponeurose (sutura simples) com fio inabsorvível ou de absorção lenta é a melhor opção. Vácuo só se síndrome compartimental ou laparotomia ampliada."
+  },
+  {
+    n: 149,
+    banca: "USP/FUVEST 2026 — EC6 Coloproctologia",
+    especialidade: "Cirurgia",
+    tema: "Trauma/Vascular",
+    subtemas: ["Hematoma de zona I", "Manobra de Mattox"],
+    dificuldade: "Difícil",
+    temImagem: true,
+    enunciado: "Trauma abdominal contuso, instabilidade + FAST+. Laparotomia: HEMATOMA RETROPERITONEAL CENTRAL (zona I esquerda - supramesocólica). Manobra de exposição cirúrgica?",
+    alternativas: {
+      A: "Manobra de MATTOX.",
+      B: "Manobra de Cattell-Braasch.",
+      C: "Abordagem direta do hematoma.",
+      D: "Toracotomia esquerda + clampeamento aorta descendente."
+    },
+    gabarito: "A",
+    explicacao: "MANOBRA DE MATTOX (rotação medial visceral esquerda): mobilização medial do cólon E + baço + cauda do pâncreas + rim E + estômago, expondo o retroperitônio ESQUERDO completo - AORTA SUPRA E INFRARRENAL, tronco celíaco, artéria mesentérica superior, vasos renais esquerdos. Ideal para hematoma ZONA I (central/grandes vasos). Catell-Braasch expõe retroperitônio DIREITO (cava). Toracotomia D para clampeamento aórtico é manobra de SALVAMENTO em parada iminente. Nunca abordagem direta em hematoma central!"
+  },
+  {
+    n: 150,
+    banca: "USP/FUVEST 2026 — EC6 Coloproctologia",
+    especialidade: "Cirurgia",
+    tema: "Trauma",
+    subtemas: ["Trauma perineal", "Colostomia derivativa"],
+    dificuldade: "Médio",
+    temImagem: true,
+    enunciado: "Homem, 30 anos, motociclista, FERIMENTO PERINEAL extenso com sangramento contido. Anel pélvico estável, FAST negativo. Estabilizado, levado ao centro cirúrgico. Conduta?",
+    alternativas: {
+      A: "Tamponamento + laparotomia + COLOSTOMIA + ATB.",
+      B: "Limpeza + avaliação canal anal/reto + hemostasia + tamponamento + ATB.",
+      C: "Limpeza após avaliação retal + sutura/aproximação + COLOSTOMIA + ATB.",
+      D: "Reconstrução do períneo + drenagem + ATB."
+    },
+    gabarito: "C",
+    explicacao: "TRAUMA PERINEAL COMPLEXO: avaliar lesões associadas (reto, canal anal, esfíncteres, uretra). Princípios: 1) Limpeza/desbridamento; 2) Avaliação da extensão (retossigmoidoscopia); 3) Reparo primário das lesões viáveis; 4) COLOSTOMIA DERIVATIVA para proteção (essencial em lesões retais e perineais extensas, evita contaminação fecal da ferida); 5) ATB amplo espectro. Lesões pequenas extra-peritoneais podem dispensar colostomia, mas em ferimentos extensos, é mandatória. Reconstrução definitiva em 2º tempo após cicatrização."
+  }
+);
+
+console.log("Bloco 1 EC6 (121-150) adicionado");
+
+// ==================== EC6 COLOPROCTOLOGIA - Bloco 2 (151-180) ====================
+// Cirurgia do Aparelho Digestivo: esôfago, estômago, pâncreas, fígado, vias biliares
+QUESTOES.push(
+  {
+    n: 151,
+    banca: "USP/FUVEST 2026 — EC6 Coloproctologia",
+    especialidade: "Cirurgia",
+    tema: "Cirurgia Esofágica",
+    subtemas: ["Hérnia hiatal paraesofágica", "Cirurgia anti-refluxo"],
+    dificuldade: "Médio",
+    temImagem: false,
+    enunciado: "Mulher, 78 anos, asmática, com grande hérnia hiatal e migração intratorácica do estômago. IMC 30,5. Nega disfagia/vômitos, refere apenas leve empachamento. Conduta?",
+    alternativas: {
+      A: "Cirurgia + tela INABSORVÍVEL no hiato para evitar recidiva.",
+      B: "Cirurgia + tela ABSORVÍVEL no hiato.",
+      C: "Afastar complicações (anemia, doenças esofágicas/gástricas) e conduta EXPECTANTE (paciente oligossintomática).",
+      D: "Manometria esofágica para programar cirurgia."
+    },
+    gabarito: "C",
+    explicacao: "GRANDE HÉRNIA HIATAL PARAESOFÁGICA EM IDOSA OLIGOSSINTOMÁTICA: paradigma mudou - antigamente todas eram operadas pelo risco de complicações catastróficas. Estudos atuais (Stylopoulos) mostram que o risco de morte/complicação aguda é baixo (~1% ao ano) em pacientes assintomáticas/oligossintomáticas, e a morbimortalidade da cirurgia em idosos pode superar esse risco. Conduta atual: afastar complicações silenciosas (anemia ferropriva, esofagite, úlcera) e SEGUIMENTO. Cirurgia indicada se SINTOMÁTICA."
+  },
+  {
+    n: 152,
+    banca: "USP/FUVEST 2026 — EC6 Coloproctologia",
+    especialidade: "Cirurgia",
+    tema: "Oncologia Cirúrgica",
+    subtemas: ["Câncer esofágico avançado", "Neoadjuvância"],
+    dificuldade: "Médio",
+    temImagem: false,
+    enunciado: "Homem, 53 anos, tabagista/etilista, CEC de língua tratado com QT/RT. EDA: lesão infiltrativa em esôfago médio (23 cm) - CEC moderadamente diferenciado. TC com linfonodos adjacentes. PET-CT capta no esôfago e em pequeno linfonodo. Tratamento?",
+    alternativas: {
+      A: "Esofagectomia Ivor Lewis para evitar anastomose cervical em área irradiada.",
+      B: "QT/RT definitivas (paciente já foi irradiado).",
+      C: "Ecoendoscopia para avaliar tratamento endoscópico.",
+      D: "Discussão multidisciplinar + provavelmente neoadjuvância com QT/RT."
+    },
+    gabarito: "D",
+    explicacao: "CEC DE ESÔFAGO MÉDIO LOCALMENTE AVANÇADO (cT3N1 provável pelo PET): manejo PADRÃO atual = TRATAMENTO MULTIDISCIPLINAR com QT/RT NEOADJUVANTE (protocolo CROSS) seguida de esofagectomia. Apesar da QT/RT prévia em outra topografia (CEC de língua), o tratamento neoadjuvante para CEC esofágico continua indicado, com planejamento radioterápico adequado evitando sobreposição. RT 'definitiva' (B) apenas se não-cirúrgico. Ivor Lewis (anastomose torácica) é uma opção para CEC distal, não médio."
+  },
+  {
+    n: 153,
+    banca: "USP/FUVEST 2026 — EC6 Coloproctologia",
+    especialidade: "Cirurgia",
+    tema: "Oncologia Cirúrgica",
+    subtemas: ["Tumor neuroendócrino", "Tumor de cauda do pâncreas"],
+    dificuldade: "Médio",
+    temImagem: false,
+    enunciado: "Homem, 65 anos, achado incidental em RM: nódulo sólido 4,0 cm na cauda do pâncreas, hipervascularizado na fase arterial, com restrição à difusão. Exame mais adequado para estadiamento?",
+    alternativas: {
+      A: "Laparoscopia diagnóstica.",
+      B: "PET-CT Ga68-DOTATATE.",
+      C: "PET-CT com 18F-FDG.",
+      D: "TC de tórax, abdome e pelve."
+    },
+    gabarito: "B",
+    explicacao: "LESÃO HIPERVASCULARIZADA na fase ARTERIAL + restrição à difusão em pâncreas = sugere TUMOR NEUROENDÓCRINO PANCREÁTICO (NET). Adenocarcinoma seria HIPOVASCULAR. Para estadiamento de NET, o exame de eleição é o PET-CT com Ga68-DOTATATE (ligando para receptores de somatostatina, altamente expresso em NETs bem diferenciados). PET-FDG (C) só capta NETs pouco diferenciados/G3 ou carcinomas neuroendócrinos. TC já foi feita (RM). Laparoscopia não tem papel no estadiamento inicial de NET."
+  },
+  {
+    n: 154,
+    banca: "USP/FUVEST 2026 — EC6 Coloproctologia",
+    especialidade: "Cirurgia",
+    tema: "Oncologia Cirúrgica",
+    subtemas: ["Câncer gástrico precoce", "ESD vs gastrectomia"],
+    dificuldade: "Médio",
+    temImagem: false,
+    enunciado: "Homem, 68 anos, ECOG 1, lesão ulcerada 8 mm em grande curvatura (transição corpo-antro). Biópsia: adenocarcinoma DIFUSO de Lauren. Ecoendoscopia: cT1b (SUBMUCOSA) cN0. Conduta?",
+    alternativas: {
+      A: "Ressecção endoscópica submucosa (ESD).",
+      B: "Gastrectomia em cunha sem linfadenectomia.",
+      C: "Gastrectomia subtotal com linfadenectomia D1+.",
+      D: "Gastrectomia total com linfadenectomia D2."
+    },
+    gabarito: "C",
+    explicacao: "CÂNCER GÁSTRICO PRECOCE (T1b - invasão de submucosa) tipo DIFUSO de Lauren: INDICAÇÃO CIRÚRGICA. ESD (A) é critério para T1a (mucosa), tipo INTESTINAL, <2 cm, sem ulceração, bem diferenciado - este caso não preenche por ser DIFUSO + submucosa. T1b tem risco de metástase linfonodal ~15-20%, exigindo linfadenectomia. Para câncer DISTAL (antro/transição), GASTRECTOMIA SUBTOTAL com LINFADENECTOMIA D1+ (T1) ou D2 (T2+) é adequada. Gastrectomia TOTAL (D) só para tumores de corpo proximal/cárdia ou difusos extensos."
+  },
+  {
+    n: 155,
+    banca: "USP/FUVEST 2026 — EC6 Coloproctologia",
+    especialidade: "Cirurgia",
+    tema: "DRGE/Cirurgia Esofágica",
+    subtemas: ["DRGE refratária", "Disfagia pós-fundoplicatura"],
+    dificuldade: "Difícil",
+    temImagem: false,
+    enunciado: "Homem, 52 anos, regurgitação noturna importante há 6 meses, EDA: esofagite grau A. IBP por 3 meses sem resposta clínica. Foi indicada fundoplicatura total + hiatoplastia para 'DRGE refratária'. Evoluiu com DISFAGIA importante pós-op. Análise?",
+    alternativas: {
+      A: "Pseudoacalasia causada por hiato apertado.",
+      B: "INDICAÇÃO CIRÚRGICA FOI PRECIPITADA - não foram afastados diagnósticos diferenciais.",
+      C: "Indicação correta - DRGE refratária = tratamento cirúrgico.",
+      D: "Esofagite grau A afasta o diagnóstico de DRGE (Lyon 2.0)."
+    },
+    gabarito: "B",
+    explicacao: "CASO CLÁSSICO DE INDICAÇÃO CIRÚRGICA PRECIPITADA: paciente com REGURGITAÇÃO + esofagite GRAU A (achado INESPECÍFICO pelo Consenso de Lyon 2.0) + falha de IBP. Antes de operar DRGE 'refratária' é OBRIGATÓRIO: 1) pHmetria/impedanciometria para CONFIRMAR refluxo patológico; 2) MANOMETRIA para descartar TRANSTORNOS MOTORES (acalasia, motilidade ineficaz); 3) Avaliar diagnósticos diferenciais (acalasia, esofagite eosinofílica, gastroparesia). 'Pseudoacalasia' por hiato apertado existe (A), mas a verdadeira falha foi não investigar antes."
+  },
+  {
+    n: 156,
+    banca: "USP/FUVEST 2026 — EC6 Coloproctologia",
+    especialidade: "Cirurgia",
+    tema: "DRGE",
+    subtemas: ["Esôfago de Barrett", "Seguimento endoscópico"],
+    dificuldade: "Médio",
+    temImagem: false,
+    enunciado: "Sobre o esôfago de BARRETT como complicação da DRGE:",
+    alternativas: {
+      A: "Fundoplicatura ideal é PARCIAL (dismotilidade esofágica frequente).",
+      B: "Tratamento cirúrgico pode estabilizar epitélio colunar e reduzir risco de adenocarcinoma, mas o SEGUIMENTO ENDOSCÓPICO deve ser MANTIDO.",
+      C: "Cirurgia libera o paciente do seguimento endoscópico.",
+      D: "pHmetria 24h deve ser realizada em todos para programar tratamento."
+    },
+    gabarito: "B",
+    explicacao: "ESÔFAGO DE BARRETT: metaplasia intestinal do epitélio escamoso → risco de DISPLASIA → ADENOCARCINOMA. O tratamento da DRGE (clínico OU cirúrgico) pode estabilizar/regredir parte do Barrett, mas NÃO ELIMINA O RISCO de progressão para câncer. Por isso o SEGUIMENTO ENDOSCÓPICO com biópsias deve ser MANTIDO conforme protocolo (Seattle), mesmo após fundoplicatura bem-sucedida. Pacientes com Barrett geralmente têm dismotilidade leve, mas fundoplicatura TOTAL é o padrão se motilidade adequada."
+  },
+  {
+    n: 157,
+    banca: "USP/FUVEST 2026 — EC6 Coloproctologia",
+    especialidade: "Cirurgia",
+    tema: "Pâncreas",
+    subtemas: ["Pancreatite crônica", "Cirurgia derivativa"],
+    dificuldade: "Difícil",
+    temImagem: false,
+    enunciado: "Homem, 52 anos, etilista crônico, dor epigástrica com piora pós-prandial, perda de 7 kg/6m. TC: pâncreas atrófico, ducto pancreático dilatado (9 mm), calcificações intraductais. Sem lesão focal. Tratamento?",
+    alternativas: {
+      A: "Pancreatoscopia e litotripsia.",
+      B: "Derivação PANCREATOJEJUNAL (Puestow/Partington-Rochelle).",
+      C: "Alcoolização do plexo celíaco.",
+      D: "Reposição de enzimas pancreáticas."
+    },
+    gabarito: "B",
+    explicacao: "PANCREATITE CRÔNICA com DUCTO DILATADO (>7 mm) + DOR INTRATÁVEL + CALCIFICAÇÕES: indicação clássica de CIRURGIA DE DRENAGEM - PROCEDIMENTO DE PUESTOW/PARTINGTON-ROCHELLE (pancreatojejunostomia látero-lateral em Y de Roux). Ducto dilatado permite anastomose efetiva, alivia hipertensão ductal e dor em ~80% dos casos. Litotripsia (A) é opção menos invasiva mas com resultado inferior. Alcoolização do plexo (C) é paliativo temporário. Enzimas (D) tratam insuficiência exócrina, NÃO a dor."
+  },
+  {
+    n: 158,
+    banca: "USP/FUVEST 2026 — EC6 Coloproctologia",
+    especialidade: "Cirurgia",
+    tema: "Esôfago",
+    subtemas: ["Acalasia", "Investigação"],
+    dificuldade: "Médio",
+    temImagem: false,
+    enunciado: "Homem, 45 anos, disfagia progressiva para sólidos há 2 anos, agora pastosos. EDA normal há 10 meses. Nega zona endêmica para Chagas, perdeu 5 kg. Conduta?",
+    alternativas: {
+      A: "Prosseguir investigação com RX contrastado de esôfago e MANOMETRIA.",
+      B: "Repetir endoscopia (câncer de esôfago).",
+      C: "Cardiomiotomia endoscópica (POEM) se confirmar acalasia.",
+      D: "EDA normal + epidemiologia negativa para Chagas afasta acalasia."
+    },
+    gabarito: "A",
+    explicacao: "DISFAGIA PROGRESSIVA + perda ponderal + EDA NORMAL = sugere TRANSTORNO MOTOR (ACALASIA, espasmo difuso, motilidade ineficaz). EDA normal NÃO AFASTA acalasia (especialmente em fases iniciais sem dilatação). Investigação adequada: 1) RX CONTRASTADO de esôfago (sinal do bico de pássaro, megaesôfago); 2) MANOMETRIA ESOFÁGICA (padrão-ouro - confirma acalasia, classifica em tipos I/II/III pela Chicago). Chagas é apenas UMA causa de acalasia - acalasia idiopática existe globalmente."
+  },
+  {
+    n: 159,
+    banca: "USP/FUVEST 2026 — EC6 Coloproctologia",
+    especialidade: "Cirurgia",
+    tema: "Oncologia Cirúrgica",
+    subtemas: ["GIST", "Tumor estromal", "Imunohistoquímica"],
+    dificuldade: "Médio",
+    temImagem: false,
+    enunciado: "Homem, 63 anos, abaulamento subepitelial gástrico 1,7 cm na 4ª camada (muscular própria). Punção: neoplasia fusocelular, <5 mitoses/50CGA. IHQ: DOG-1+, CD117+, actina ML+. Diagnóstico e conduta?",
+    alternativas: {
+      A: "Leiomioma, seguimento endoscópico.",
+      B: "Leiomioma, ressecção cirúrgica.",
+      C: "GIST, RESSECÇÃO CIRÚRGICA.",
+      D: "GIST, seguimento endoscópico."
+    },
+    gabarito: "C",
+    explicacao: "GIST (Tumor Estromal Gastrointestinal): marcadores ESPECÍFICOS = CD117 (c-KIT) POSITIVO + DOG-1 POSITIVO (alta especificidade). Origem na 4ª camada (muscular própria), origem nas células intersticiais de Cajal. Para GIST gástrico ≥2 cm = INDICAÇÃO DE RESSECÇÃO (estudos mostram que mesmo pequenos podem ter potencial maligno; >2 cm sempre operar). <2 cm pode ser seguido. Cirurgia: ressecção em cunha com margens livres, SEM linfadenectomia (GIST não metastatiza por linfa). Imatinib adjuvante se risco intermediário/alto."
+  },
+  {
+    n: 160,
+    banca: "USP/FUVEST 2026 — EC6 Coloproctologia",
+    especialidade: "Cirurgia",
+    tema: "Cirurgia Bariátrica",
+    subtemas: ["Indicações", "Bypass gástrico"],
+    dificuldade: "Médio",
+    temImagem: false,
+    enunciado: "Homem, 66 anos, DM2 controlado (1 droga), dislipidêmico, IMC 43, sem HAS, sem sarcopenia, ECOG bom, com ESOFAGITE GRAU C de LA. Melhor opção terapêutica?",
+    alternativas: {
+      A: "Gastrectomia vertical (sleeve) - é idoso.",
+      B: "Balão intragástrico - sem indicação cirúrgica.",
+      C: "BYPASS GÁSTRICO se apto - benefícios em múltiplos aspectos.",
+      D: "Encaminhar para endocrinologia - não preenche critérios ANS."
+    },
+    gabarito: "C",
+    explicacao: "BYPASS GÁSTRICO em Y de Roux é PREFERÍVEL em: DRGE/ESOFAGITE GRAVE (GRAU C de LA), DM2 (melhores resultados metabólicos), HÉRNIA HIATAL. SLEEVE (A) é CONTRAINDICADO em esofagite grave/DRGE significativa (pode piorar). Idade 66 anos NÃO é contraindicação se boa funcionalidade/ECOG. IMC 43 + comorbidades preenche critérios ANS (IMC ≥35 + comorbidade ou IMC ≥40). Balão (B) é temporário, não trata definitivamente. Endocrinologia (D) já tentou."
+  },
+  {
+    n: 161,
+    banca: "USP/FUVEST 2026 — EC6 Coloproctologia",
+    especialidade: "Cirurgia",
+    tema: "Cirurgia Hepática",
+    subtemas: ["CHC", "Segmentação hepática", "Couinaud"],
+    dificuldade: "Difícil",
+    temImagem: true,
+    enunciado: "Homem, 61 anos, hepatite C tratada (RVS). Nódulo hepático 4,5 cm à RM com contraste, padrão típico de CHC (wash-in arterial e wash-out portal). Localização (pela imagem) em segmento HEPÁTICO POSTERIOR DIREITO. Child A6, MELD 7. Diagnóstico e segmento?",
+    alternativas: {
+      A: "Carcinoma hepatocelular, segmento 4a.",
+      B: "Colangiocarcinoma intra-hepático, segmento 5.",
+      C: "CHC, SEGMENTO 7.",
+      D: "CHC, segmento 8."
+    },
+    gabarito: "C",
+    explicacao: "Padrão clássico de CHC à RM: realce arterial intenso (wash-in) + lavagem na fase portal/equilíbrio (wash-out) + cápsula. Em paciente com hepatopatia crônica (hep C tratada, mas com risco residual), a imagem típica DISPENSA biópsia (LI-RADS 5). SEGMENTAÇÃO de COUINAUD: lobo direito = segmentos 5, 6, 7, 8. Segmento 7 = POSTERIOR SUPERIOR direito (acima da veia porta direita posterior). Segmento 8 = ANTERIOR superior direito. Segmento 4 = lobo médio. Pela descrição posterior, segmento 7."
+  },
+  {
+    n: 162,
+    banca: "USP/FUVEST 2026 — EC6 Coloproctologia",
+    especialidade: "Cirurgia",
+    tema: "Cirurgia Hepática",
+    subtemas: ["Setorectomia", "Veias hepáticas"],
+    dificuldade: "Difícil",
+    temImagem: true,
+    enunciado: "Após CHC em segmento 7, cirurgia realizada. Imagem final mostra ressecção do setor posterior direito + estruturas vasculares preservadas (setas 1 e 2). Cirurgia e estruturas apontadas?",
+    alternativas: {
+      A: "Ressecção regrada do seg 4 - VH média - VH esquerda.",
+      B: "Mesohepatectomia - VH média - VH esquerda.",
+      C: "Setorectomia anterior direita - VH direita - VH média.",
+      D: "SETORECTOMIA POSTERIOR DIREITA - VH MÉDIA - VH ESQUERDA."
+    },
+    gabarito: "D",
+    explicacao: "SETORECTOMIA POSTERIOR DIREITA: ressecção dos segmentos 6 e 7 (setor posterior do fígado direito). Preserva o setor anterior direito (5, 8) com a VEIA HEPÁTICA MÉDIA + lobo esquerdo com a VEIA HEPÁTICA ESQUERDA. Por isso as setas 1 e 2 são VH MÉDIA e VH ESQUERDA (que permanecem expostas após a ressecção). Mesohepatectomia = ressecção dos segs 4, 5, 8. Setorectomia anterior direita = segs 5, 8 (preserva VH D para os segs 6, 7). Ressecção do seg 4 isolado não expõe essas estruturas."
+  },
+  {
+    n: 163,
+    banca: "USP/FUVEST 2026 — EC6 Coloproctologia",
+    especialidade: "Cirurgia",
+    tema: "Oncologia Cirúrgica",
+    subtemas: ["Câncer gástrico", "Neoadjuvância"],
+    dificuldade: "Médio",
+    temImagem: false,
+    enunciado: "Homem, 67 anos, adenocarcinoma BEM diferenciado de ANTRO gástrico cT2cN+ (muscular + 1 linfonodo suspeito). Conduta?",
+    alternativas: {
+      A: "QUIMIOTERAPIA PERIOPERATÓRIA.",
+      B: "Gastrectomia subtotal + D1+.",
+      C: "Gastrectomia subtotal + D2.",
+      D: "Gastrectomia total + D2."
+    },
+    gabarito: "A",
+    explicacao: "CÂNCER GÁSTRICO LOCALMENTE AVANÇADO (cT2N+): tratamento padrão atual = QUIMIOTERAPIA PERIOPERATÓRIA (esquema FLOT - docetaxel/oxaliplatina/leucovorina/5-FU): 4 ciclos PRÉ-OP + cirurgia + 4 ciclos PÓS-OP. Estudo FLOT4 mostrou superioridade sobre ECF/ECX. Para tumor de ANTRO: gastrectomia subtotal + D2 é a cirurgia (não D1+, que é para precoce). Após neoadjuvância. Gastrectomia total (D) só se proximal/corpo. Cirurgia direta sem neoadjuvância está em desuso para cT2+/N+ na Europa/Brasil."
+  },
+  {
+    n: 164,
+    banca: "USP/FUVEST 2026 — EC6 Coloproctologia",
+    especialidade: "Cirurgia",
+    tema: "Cirurgia Hepatobiliar",
+    subtemas: ["Colangite esclerosante primária", "RCU"],
+    dificuldade: "Fácil",
+    temImagem: false,
+    enunciado: "Mulher, 45 anos, RCU idiopática. Episódios recorrentes de febre, calafrios, icterícia, hipocolia fecal. Colangio-RM: estenoses MULTIFOCAIS e irregularidades alternando com dilatações em vias biliares intra E extra-hepáticas. Hipótese?",
+    alternativas: {
+      A: "Coledocolitíase.",
+      B: "Colangiocarcinoma.",
+      C: "Cirrose biliar primária.",
+      D: "COLANGITE ESCLEROSANTE PRIMÁRIA (CEP)."
+    },
+    gabarito: "D",
+    explicacao: "COLANGITE ESCLEROSANTE PRIMÁRIA (CEP): doença autoimune com fortíssima associação com RCU (80% dos pacientes com CEP têm DII, geralmente RCU). Achado patognomônico à colangio-RM: ESTENOSES MULTIFOCAIS + dilatações alternantes ('em rosário/contas') em vias biliares INTRA E EXTRA-HEPÁTICAS. Apresentação: episódios de colangite, icterícia flutuante. Aumenta risco de COLANGIOCARCINOMA (B) e câncer colorretal. Tratamento: ácido ursodesoxicólico, transplante hepático nos avançados. CBP (C) acomete mulheres meia-idade mas é doença intra-hepática microscópica."
+  },
+  {
+    n: 165,
+    banca: "USP/FUVEST 2026 — EC6 Coloproctologia",
+    especialidade: "Cirurgia",
+    tema: "Cirurgia Hepatobiliar",
+    subtemas: ["Colecistite em paciente crítico", "Colecistostomia"],
+    dificuldade: "Médio",
+    temImagem: false,
+    enunciado: "Homem, 85 anos, UTI pós-IAM com angioplastia (5 dias), dor HD. FC 130, PAM 58, alteração TGO/TGP/Cr, plaquetas 45.000. USG: colecistite litiásica com cálculo impactado em infundíbulo. Conduta?",
+    alternativas: {
+      A: "COLECISTOSTOMIA PERCUTÂNEA.",
+      B: "Colecistectomia laparoscópica.",
+      C: "Suporte intensivo e observação.",
+      D: "CPRE."
+    },
+    gabarito: "A",
+    explicacao: "COLECISTITE AGUDA em paciente CRÍTICO/INSTÁVEL (idoso, pós-IAM recente, dupla antiagregação, plaquetopenia, choque) = RISCO CIRÚRGICO PROIBITIVO. Conduta: COLECISTOSTOMIA PERCUTÂNEA guiada por imagem (drenagem da vesícula sob anestesia local). Tratamento DE PONTE: alivia o quadro agudo, controla sepse; colecistectomia eletiva em 6-12 semanas quando paciente estabilizado. Tokyo Guidelines: Grau III (colecistite grave) em pacientes não-elegíveis para cirurgia = drenagem. CPRE não trata colecistite (trata via biliar)."
+  },
+  {
+    n: 166,
+    banca: "USP/FUVEST 2026 — EC6 Coloproctologia",
+    especialidade: "Cirurgia",
+    tema: "Cirurgia Hepática",
+    subtemas: ["Adenoma hepático", "Classificação molecular"],
+    dificuldade: "Difícil",
+    temImagem: false,
+    enunciado: "Sobre a classificação MOLECULAR do adenoma hepático:",
+    alternativas: {
+      A: "Baseada em HE de cortes histológicos.",
+      B: "Subtipo HNF1α inativado ('adenoma esteatótico') tem BAIXO risco de complicações.",
+      C: "Subtipo BETA-CATENINA mutado tem MAIOR risco de TRANSFORMAÇÃO MALIGNA.",
+      D: "Subtipo inflamatório não tem associação com ACO."
+    },
+    gabarito: "C",
+    explicacao: "CLASSIFICAÇÃO MOLECULAR DOS ADENOMAS HEPÁTICOS (Zucman-Rossi): baseada em IMUNOHISTOQUÍMICA + biologia molecular. Subtipos: 1) HNF1α inativado - 'esteatótico', baixo risco, frequente em ACO; 2) INFLAMATÓRIO (mais comum) - associado a obesidade, ACO, álcool, risco de SANGRAMENTO; 3) BETA-CATENINA mutado - MAIOR RISCO DE TRANSFORMAÇÃO MALIGNA (em CHC) - INDICAÇÃO CIRÚRGICA mesmo se pequeno; 4) Não classificável. O sangramento está mais associado ao tamanho >5cm e subtipo inflamatório."
+  },
+  {
+    n: 167,
+    banca: "USP/FUVEST 2026 — EC6 Coloproctologia",
+    especialidade: "Cirurgia",
+    tema: "Coloproctologia",
+    subtemas: ["Doença de Crohn", "Cirurgia"],
+    dificuldade: "Médio",
+    temImagem: false,
+    enunciado: "Sobre o tratamento cirúrgico da DOENÇA DE CROHN:",
+    alternativas: {
+      A: "Otimização pré-op geralmente não melhora condições para cirurgia.",
+      B: "Diferentes técnicas de ANASTOMOSE devem ser consideradas com base na gravidade e localização.",
+      C: "Radicalidade com ressecção de todas as áreas acometidas é fundamental.",
+      D: "Momento ideal é quando começa aumento de evacuações."
+    },
+    gabarito: "B",
+    explicacao: "CIRURGIA NA DOENÇA DE CROHN: princípios fundamentais: 1) NÃO É CURATIVA (doença recidiva) - cirurgia PARCIMONIOSA, evitar ressecções extensas (síndrome do intestino curto); 2) OTIMIZAR pré-op (nutrição, suspender biológicos quando possível, controle de sepse); 3) Diferentes ANASTOMOSES (látero-lateral isoperistáltica de Kono-S reduz recidiva; ressecção mínima das margens macroscópicas). Tratamento cirúrgico só para COMPLICAÇÕES (estenose, fístula, abscesso, perfuração, refratariedade, displasia) - não pelo aumento de evacuações isolado."
+  },
+  {
+    n: 168,
+    banca: "USP/FUVEST 2026 — EC6 Coloproctologia",
+    especialidade: "Cirurgia",
+    tema: "Coloproctologia/Oncologia",
+    subtemas: ["Câncer de cólon", "CME", "Linfadenectomia"],
+    dificuldade: "Médio",
+    temImagem: false,
+    enunciado: "Sobre NEOPLASIA DE CÓLON:",
+    alternativas: {
+      A: "Objetivos da ressecção: margens CIRCUNFERENCIAIS NEGATIVAS + remoção do mesentério com maior risco de disseminação linfática.",
+      B: "QT/RT neoadjuvante seguida de cirurgia em CA cólon esquerdo III oferece menor recidiva.",
+      C: "Região do mesentério a ressecar é pouco relacionada à embriologia.",
+      D: "Extensão da colectomia é determinada pela profundidade do tumor."
+    },
+    gabarito: "A",
+    explicacao: "EXCISÃO MESOCÓLICA COMPLETA (CME - Complete Mesocolic Excision): princípio cirúrgico atual para CA de cólon. Análogo da TME (excisão total do mesorreto) no reto. Princípios: 1) MARGENS CIRCUNFERENCIAIS LIVRES (ressecção do envelope mesocólico íntegro); 2) LIGADURA VASCULAR ALTA na origem (para retirar todos os linfonodos do território); 3) Embriologia: o mesocólon segue planos avasculares embrionários (importante guiar a dissecção). Reduz recidiva local. NEOADJUVÂNCIA QT/RT é padrão para RETO, não cólon. Extensão da colectomia segue território LINFOVASCULAR, não profundidade."
+  },
+  {
+    n: 169,
+    banca: "USP/FUVEST 2026 — EC6 Coloproctologia",
+    especialidade: "Cirurgia",
+    tema: "Coloproctologia",
+    subtemas: ["Doença anorretal benigna", "Abscessos e fístulas"],
+    dificuldade: "Médio",
+    temImagem: false,
+    enunciado: "Sobre ABSCESSOS e FÍSTULAS PERIANAIS:",
+    alternativas: {
+      A: "Raramente (<1/10) os abscessos criptoglandulares evoluem para fístulas.",
+      B: "Para tratamento de fístula interesfincteriana, exame sob anestesia é menos importante que TC.",
+      C: "ABSCESSO ANORRETAL deve ser tratado prioritariamente com DRENAGEM CIRÚRGICA, não ATB.",
+      D: "Prioridade: cura sem recorrência > continência > sepse."
+    },
+    gabarito: "C",
+    explicacao: "ABSCESSO ANORRETAL: tratamento padrão = DRENAGEM CIRÚRGICA imediata (sob anestesia, com incisão adequada). ATB sozinho não funciona em coleção purulenta loculada e pode mascarar/piorar o quadro. ATB associado apenas em: imunossuprimidos, celulite extensa, diabetes, valvopatia. Frequência de fístula pós-abscesso: 30-50% (não <10%). PRIORIDADES: 1º) CONTROLE DA SEPSE (drenagem); 2º) PRESERVAÇÃO DA CONTINÊNCIA; 3º) Cura sem recorrência. Exame sob anestesia (EUA) é MELHOR que imagem para fístula simples."
+  },
+  {
+    n: 170,
+    banca: "USP/FUVEST 2026 — EC6 Coloproctologia",
+    especialidade: "Cirurgia",
+    tema: "Cirurgia Bariátrica",
+    subtemas: ["Encefalopatia de Wernicke", "Deficiência de B1"],
+    dificuldade: "Médio",
+    temImagem: false,
+    enunciado: "Mulher, 27 anos, 30 dias pós-bypass gástrico. Vômitos frequentes, depois DIPLOPIA + CONFUSÃO MENTAL. Causa?",
+    alternativas: {
+      A: "Fístula gástrica.",
+      B: "Deficiência de zinco.",
+      C: "Deficiência de vitamina A.",
+      D: "DEFICIÊNCIA DE VITAMINA B1 (TIAMINA)."
+    },
+    gabarito: "D",
+    explicacao: "TRÍADE DE WERNICKE (oftalmoplegia/diplopia + confusão mental + ataxia) por DEFICIÊNCIA DE TIAMINA (B1): complicação SÉRIA pós-bariátrica com VÔMITOS PERSISTENTES (impede absorção da escassa B1 disponível). Estoques de B1 duram apenas 2-3 semanas. Tratamento URGENTE: TIAMINA IV em altas doses ANTES de qualquer reposição glicada (glicose sem B1 pode precipitar Wernicke). Se não tratado: síndrome de Korsakoff (déficits cognitivos permanentes). Outros déficits comuns pós-bypass: ferro, B12, cálcio, vit D, mas não causam esta apresentação."
+  },
+  {
+    n: 171,
+    banca: "USP/FUVEST 2026 — EC6 Coloproctologia",
+    especialidade: "Cirurgia",
+    tema: "Cirurgia Hepatobiliar",
+    subtemas: ["Hidatidose hepática", "Echinococcus"],
+    dificuldade: "Médio",
+    temImagem: true,
+    enunciado: "Mulher, 37 anos, boliviana há 5 anos no Brasil. Dor HD há 3 anos. USG/RM: LESÃO CÍSTICA COMPLEXA no LD hepático 15 cm, paredes espessas, septos grosseiros e 'CISTOS FILHOS'. Diagnóstico e tratamento?",
+    alternativas: {
+      A: "CISTO HIDÁTICO + PERICISTECTOMIA.",
+      B: "Cisto hepático simples + 'destelhamento' laparoscópico.",
+      C: "Abscesso hepático + drenagem percutânea.",
+      D: "Neoplasia cística mucinosa + hepatectomia D."
+    },
+    gabarito: "A",
+    explicacao: "HIDATIDOSE HEPÁTICA por ECHINOCOCCUS GRANULOSUS: paciente de área endêmica (Bolívia/Andes) + cisto complexo COM CISTOS FILHOS (sinal patognomônico - cistos dentro de cisto) + paredes espessadas + septos = diagnóstico clássico. Tratamento: 1) ALBENDAZOL pré e pós-op; 2) CIRURGIA - PERICISTECTOMIA (ressecção completa do cisto + pericisto, evita derrame de líquido hidático que pode causar choque anafilático e disseminação). Punção (PAIR) em casos selecionados. Destelhamento é técnica antiga, alta recidiva."
+  },
+  {
+    n: 172,
+    banca: "USP/FUVEST 2026 — EC6 Coloproctologia",
+    especialidade: "Cirurgia",
+    tema: "Cirurgia Hepatobiliar",
+    subtemas: ["IPMN", "Cisto pancreático"],
+    dificuldade: "Difícil",
+    temImagem: false,
+    enunciado: "Mulher, 65 anos, achado incidental: cisto em cauda do pâncreas 2,7 cm, comunicação com ducto pancreático principal (calibre 0,5 cm - normal), sem nódulos. Ecoendoscopia + punção: MUCINA + CEA 350 ng/mL. CA 19-9 normal. Diagnóstico e conduta?",
+    alternativas: {
+      A: "IPMN de ductos secundários, pancreatectomia caudal com preservação esplênica.",
+      B: "IPMN tipo misto, pancreatectomia corpocaudal com preservação esplênica.",
+      C: "IPMN DE DUCTOS SECUNDÁRIOS, SEGUIMENTO POR IMAGEM.",
+      D: "Neoplasia cística mucinosa, pancreatectomia caudal + esplenectomia."
+    },
+    gabarito: "C",
+    explicacao: "IPMN (Neoplasia Mucinosa Papilar Intraductal) de DUCTOS SECUNDÁRIOS (BD-IPMN): cisto pancreático com comunicação com ducto principal, ducto pancreático principal NORMAL (<5 mm), MUCINA + CEA ELEVADO (>192) confirma origem mucinosa. INDICAÇÕES CIRÚRGICAS (worrisome features/high-risk stigmata): cisto >3 cm, ducto >10 mm, nódulo mural, CA 19-9 elevado, citologia suspeita. ESTE CASO: 2,7 cm + ducto 5 mm + SEM nódulos + CA 19-9 normal = SEGUIMENTO com RM/ecoendoscopia (intervalo conforme tamanho). IPMN misto teria ducto principal dilatado. Neoplasia mucinosa cística não comunica com ducto."
+  },
+  {
+    n: 173,
+    banca: "USP/FUVEST 2026 — EC6 Coloproctologia",
+    especialidade: "Cirurgia",
+    tema: "Oncologia Cirúrgica",
+    subtemas: ["Câncer gástrico", "Cirurgia radical"],
+    dificuldade: "Difícil",
+    temImagem: false,
+    enunciado: "Etapa FUNDAMENTAL da cirurgia RADICAL no tratamento do adenocarcinoma gástrico:",
+    alternativas: {
+      A: "Bursectomia.",
+      B: "OMENTECTOMIA.",
+      C: "Coleta de citologia oncótica.",
+      D: "Margem de 2 cm em lesões T1."
+    },
+    gabarito: "B",
+    explicacao: "OMENTECTOMIA: parte INTEGRAL e mandatória da gastrectomia oncológica radical para adenocarcinoma gástrico. O omento maior é removido em bloco com o estômago pois pode conter linfonodos e implantes microscópicos. BURSECTOMIA (A) (retirada do omento menor + folheto anterior da retrocavidade) era padrão antigamente mas estudo japonês JCOG1001 mostrou QUE NÃO melhora sobrevida = NÃO é mais rotina. CITOLOGIA ONCÓTICA da cavidade (lavado peritoneal) é importante para estadiamento mas não é cirurgia. MARGEM em T1 = 2 cm é apenas critério oncológico, não etapa cirúrgica."
+  },
+  {
+    n: 174,
+    banca: "USP/FUVEST 2026 — EC6 Coloproctologia",
+    especialidade: "Cirurgia",
+    tema: "Oncologia",
+    subtemas: ["Tumor neuroendócrino gástrico", "Gastrina"],
+    dificuldade: "Difícil",
+    temImagem: false,
+    enunciado: "TNE GÁSTRICO TIPO 1, bem diferenciado (G1 OMS): achados endoscópicos e laboratoriais esperados?",
+    alternativas: {
+      A: "GASTRITE ATRÓFICA + múltiplas lesões pequenas (<1cm) + ANTI-CÉLULAS PARIETAIS POSITIVO.",
+      B: "Hiperplasia de pregas + múltiplas lesões pequenas + GASTRINA ELEVADA.",
+      C: "Múltiplas lesões pequenas + úlceras pépticas + gastrina elevada.",
+      D: "Lesão vegetante única >1 cm + gastrina normal."
+    },
+    gabarito: "A",
+    explicacao: "TIPOS DE TNE GÁSTRICOS: TIPO 1 (75%) - associado à GASTRITE ATRÓFICA AUTOIMUNE (anticorpos anti-células parietais), hipocloridria, hipergastrinemia REATIVA (secundária à falta de feedback ácido), múltiplas lesões pequenas no fundo/corpo, comportamento INDOLENTE. TIPO 2 (5%) - associado à síndrome de Zollinger-Ellison/NEM1, hipergastrinemia PRIMÁRIA (gastrinoma), múltiplas lesões + úlceras pépticas. TIPO 3 (15-25%) - esporádico, lesão ÚNICA maior, agressivo, gastrina NORMAL, prognóstico ruim. Anti-parietal+ é específico do tipo 1."
+  },
+  {
+    n: 175,
+    banca: "USP/FUVEST 2026 — EC6 Coloproctologia",
+    especialidade: "Cirurgia",
+    tema: "Cirurgia Bariátrica",
+    subtemas: ["Estenose pós-bypass", "Disfagia"],
+    dificuldade: "Médio",
+    temImagem: false,
+    enunciado: "Mulher, 38 anos, D43 pós-bypass. Disfagia progressiva (iniciada com dieta sólida há 1 semana), piora para sólidos. Sem dor abdominal. Causa e tratamento?",
+    alternativas: {
+      A: "Hérnia interna, tratamento cirúrgico.",
+      B: "Esofagite de refluxo, tratamento clínico.",
+      C: "Distensão aguda do estômago excluso, tratamento cirúrgico.",
+      D: "ESTENOSE DA GASTROENTEROANASTOMOSE, TRATAMENTO ENDOSCÓPICO."
+    },
+    gabarito: "D",
+    explicacao: "ESTENOSE DA GASTROJEJUNOANASTOMOSE: complicação comum (3-10%) do bypass gástrico, manifesta-se entre 4-12 semanas pós-op com DISFAGIA PROGRESSIVA, intolerância alimentar, vômitos sem dor (diferente de hérnia interna). Tratamento: DILATAÇÃO ENDOSCÓPICA com balão (eficaz em ~95% dos casos), pode necessitar 2-3 sessões. Cirurgia reservada para falha endoscópica. HÉRNIA INTERNA (A) seria DOR PÓS-PRANDIAL, sem disfagia mecânica. Refluxo (B) raro pós-bypass. Distensão do remanescente é precoce."
+  },
+  {
+    n: 176,
+    banca: "USP/FUVEST 2026 — EC6 Coloproctologia",
+    especialidade: "Cirurgia",
+    tema: "Cirurgia Hepatobiliar",
+    subtemas: ["Colangiocarcinoma hilar", "Bismuth", "Embolização portal"],
+    dificuldade: "Difícil",
+    temImagem: false,
+    enunciado: "Homem, 62 anos, icterícia + colúria. RM: colangiocarcinoma hilar BISMUTH IIIa (estenose hilar com extensão para confluências secundárias direitas), 3,1 cm, com acometimento da a. hepática direita. BT 14, CA 19-9 5330. Volume hepático remanescente futuro = 30%. Conduta?",
+    alternativas: {
+      A: "QT/RT de consolidação.",
+      B: "Trissetorectomia esquerda + linfadenectomia + biliodigestiva.",
+      C: "Drenagem do lobo esquerdo + embolização do ramo portal DIREITO.",
+      D: "DRENAGEM TRANSPARIETO-HEPÁTICA DO LOBO DIREITO seguida de TRISSETORECTOMIA DIREITA + ressecção segmento 1 + linfadenectomia + biliodigestiva."
+    },
+    gabarito: "D",
+    explicacao: "COLANGIOCARCINOMA HILAR BISMUTH IIIa (extensão para confluências secundárias DIREITAS): ressecabilidade requer TRISSETORECTOMIA DIREITA (segs 4, 5, 6, 7, 8) + caudado (segmento 1 - SEMPRE ressecado em colangio hilar pois drenagem biliar do caudado é hilar) + linfadenectomia + reconstrução biliodigestiva (hepaticojejunostomia). REMANESCENTE 30% É INSUFICIENTE (necessário >30% em fígado normal, >40% em pós-quimio): exige EMBOLIZAÇÃO PORTAL DIREITA (hipertrofia compensatória do remanescente em 4-6 sem). DRENAGEM BILIAR PRÉ-OP DO LOBO REMANESCENTE (que vai ficar = ESQUERDO) reduz colestase. Erro na D: drenar o REMANESCENTE (esquerdo) e não o lado a ser ressecado."
+  },
+  {
+    n: 177,
+    banca: "USP/FUVEST 2026 — EC6 Coloproctologia",
+    especialidade: "Cirurgia",
+    tema: "Cirurgia Bariátrica",
+    subtemas: ["Bariátrica em adolescente", "Super-obesidade"],
+    dificuldade: "Médio",
+    temImagem: false,
+    enunciado: "Adolescente 16 anos, obesidade desde infância, IMC 63, HAS, resistência à insulina. Melhor terapia?",
+    alternativas: {
+      A: "Derivação biliopancreática (super-obesos).",
+      B: "Bypass gástrico (procedimento seguro com remissão de comorbidades).",
+      C: "Gastrectomia vertical (é adolescente).",
+      D: "Tratamento PRÉ-OP com balão intragástrico + medidas clínicas + integração com equipe multidisciplinar + discussão familiar."
+    },
+    gabarito: "D",
+    explicacao: "BARIÁTRICA EM ADOLESCENTE com SUPER-OBESIDADE (IMC ≥50): abordagem deve ser CAUTELOSA E MULTIDISCIPLINAR. Princípios: 1) Avaliação por EQUIPE MULTIDISCIPLINAR (pediatra, endócrino, psicólogo, nutricionista, cirurgião); 2) Suporte FAMILIAR e maturidade psicológica; 3) BALÃO INTRAGÁSTRICO ou medidas clínicas como PONTE para perda de peso pré-operatória (reduz risco anestésico/cirúrgico); 4) Escolha técnica DISCUTIDA com família. Em adolescentes, sleeve (gastrectomia vertical) é geralmente preferida (menos restrições nutricionais futuras), mas IMC 63 pode requerer bypass. NUNCA decisão isolada."
+  },
+  {
+    n: 178,
+    banca: "USP/FUVEST 2026 — EC6 Coloproctologia",
+    especialidade: "Cirurgia",
+    tema: "Cirurgia Bariátrica",
+    subtemas: ["Fístula pós-sleeve", "Tratamento de fístula"],
+    dificuldade: "Difícil",
+    temImagem: false,
+    enunciado: "Homem, 59 anos, D5 pós-gastrectomia vertical com SEPTICEMIA. TC: extravasamento de grande quantidade de contraste para a cavidade. Conduta?",
+    alternativas: {
+      A: "Endoscopia para prótese.",
+      B: "LAPAROSCOPIA com limpeza + drenagem para direcionar fístula + posterior PRÓTESE endoscópica se necessário.",
+      C: "Sutura primária do orifício + limpeza (fístula precoce).",
+      D: "Aplicar alça de delgado sobre o orifício para ocluir."
+    },
+    gabarito: "B",
+    explicacao: "FÍSTULA PÓS-SLEEVE COM SEPSE: complicação grave. PRINCÍPIOS DE TRATAMENTO: 1) CONTROLE DA INFECÇÃO PRIMEIRO - LAPAROSCOPIA (ou laparotomia) para LAVAGEM + DRENAGEM da cavidade + drenos para EXTERIORIZAR a fístula; 2) APÓS CONTROLE da sepse, FECHAMENTO INTERNO com PRÓTESE ENDOSCÓPICA (stent metálico autoexpansível) que cobre o defeito, permitindo cicatrização; 3) Suporte nutricional (frequentemente jejunostomia). SUTURA PRIMÁRIA do orifício (C) NÃO funciona (tecido friável, isquemia da linha de grampeamento, tensão), recidiva é a regra. ATB de amplo espectro."
+  },
+  {
+    n: 179,
+    banca: "USP/FUVEST 2026 — EC6 Coloproctologia",
+    especialidade: "Cirurgia",
+    tema: "Coloproctologia",
+    subtemas: ["Anatomia anorretal", "Espaços perirretais"],
+    dificuldade: "Difícil",
+    temImagem: false,
+    enunciado: "Sobre anatomia COLORRETAL e anal:",
+    alternativas: {
+      A: "Reflexão peritoneal anterior do reto é CONSTANTE (12 cm).",
+      B: "Espaços isquioanais dividem-se em proximal e distal - justificam fístula em ferradura.",
+      C: "FLEXURA ESPLÊNICA é ZONA DE RISCO DE ISQUEMIA (artéria cólica média).",
+      D: "Linha pectínea é divisão entre endoderma/ectoderma (adenoCA/CEC)."
+    },
+    gabarito: "B",
+    explicacao: "ESPAÇOS ISQUIOANAIS: divididos por uma fáscia (transversa anal/Courtney) em ESPAÇO ISQUIOANAL PROFUNDO (proximal, comunicação posterior atrás do esfíncter via espaço pós-anal profundo) e SUPERFICIAL (distal). Esta anatomia EXPLICA a FÍSTULA EM FERRADURA: o trajeto da fístula passa pelo espaço pós-anal profundo e contorna o reto pelos dois espaços isquioanais profundos formando 'ferradura'. Tratamento: drenagem do espaço pós-anal profundo. Alternativas erradas: reflexão peritoneal é VARIÁVEL (5-9 cm anterior); zona crítica de isquemia é GRIFFITHS (na flexura esplênica, mas pela junção SMA/IMA, NÃO pela cólica média que é da SMA); linha pectínea separa terço médio do canal anal - origem embrionária é proctoderma/cloaca."
+  },
+  {
+    n: 180,
+    banca: "USP/FUVEST 2026 — EC6 Coloproctologia",
+    especialidade: "Cirurgia",
+    tema: "Coloproctologia",
+    subtemas: ["Hemorroidas", "Tratamento conservador"],
+    dificuldade: "Médio",
+    temImagem: false,
+    enunciado: "Sobre doença hemorroidária COM sangramento esporádico e plicoma externo assintomático:",
+    alternativas: {
+      A: "Procedimentos ambulatoriais (ligadura elástica) são eficazes para HEMORROIDAS GRAU III e IV.",
+      B: "COMPLICAÇÕES da cirurgia hemorroidária: retenção urinária, sangramento, infecção, estenose, INCONTINÊNCIA e recorrência.",
+      C: "Têm indicação de PRINCÍPIO cirúrgico: grávidas, Crohn, imunodeprimidos, hipertensão portal.",
+      D: "Minimizar esforço, hidratar e fibras são POUCO eficazes."
+    },
+    gabarito: "B",
+    explicacao: "COMPLICAÇÕES DA HEMORROIDECTOMIA: RETENÇÃO URINÁRIA (mais comum, ~15%), SANGRAMENTO precoce/tardio, INFECÇÃO/abscesso, ESTENOSE anal (excesso de ressecção mucosa), INCONTINÊNCIA (lesão esfincteriana), RECORRÊNCIA. Conhecimento dessas complicações é essencial para consentimento. Procedimentos AMBULATORIAIS (ligadura elástica, escleroterapia, infravermelho) são para GRAU I-II/III INICIAIS, NÃO III avançado/IV. CONTRAINDICAÇÕES cirúrgicas: gestantes (não fazer eletivamente), Crohn (alta morbidade), HIV não-controlado, HIPERTENSÃO PORTAL (risco de sangramento). Tratamento conservador (fibras, hidratação) é MUITO EFICAZ."
+  }
+);
+
+console.log("Bloco 2 EC6 (151-180) adicionado");
+
+// ==================== EC6 COLOPROCTOLOGIA - Bloco 3 (181-210) ====================
+// Trauma torácico, cirurgia torácica, plástica/queimados, vascular, cabeça/pescoço, urologia
+QUESTOES.push(
+  {
+    n: 181,
+    banca: "USP/FUVEST 2026 — EC6 Coloproctologia",
+    especialidade: "Cirurgia",
+    tema: "Trauma Torácico",
+    subtemas: ["Hemotórax", "Hérnia diafragmática traumática"],
+    dificuldade: "Médio",
+    temImagem: false,
+    enunciado: "Homem, 26 anos, politrauma auto x auto, drenagem torácica bilateral por hemopneumotórax. Múltiplas fraturas de arcos costais. RX: VELAMENTO DE SEIO COSTOFRÊNICO ESQUERDO pós-drenagem. Conduta?",
+    alternativas: {
+      A: "Toracotomia de emergência E (hérnia diafragmática).",
+      B: "Toracotomia de emergência D (hérnia diafragmática).",
+      C: "SOLICITAR TC DE TÓRAX para diferenciar hemotórax retido vs hérnia diafragmática à esquerda.",
+      D: "Solicitar RNM (único exame para diferenciar paralisia frênica de hérnia diafragmática)."
+    },
+    gabarito: "C",
+    explicacao: "VELAMENTO DE SEIO COSTOFRÊNICO PÓS-DRENAGEM em politrauma com múltiplas fraturas: diagnóstico DIFERENCIAL inclui HEMOTÓRAX RETIDO (mais comum, requer VATS após 72h se >300mL) ou HÉRNIA DIAFRAGMÁTICA TRAUMÁTICA (mais comum à esquerda - lado direito é protegido pelo fígado). TC DE TÓRAX é o exame DEFINITIVO para distinguir: vê presença de vísceras abdominais no tórax (hérnia) vs apenas líquido (hemotórax). Toracotomia 'às cegas' sem diagnóstico definido é ERRO. RNM não tem papel no agudo."
+  },
+  {
+    n: 182,
+    banca: "USP/FUVEST 2026 — EC6 Coloproctologia",
+    especialidade: "Cirurgia",
+    tema: "Cirurgia Torácica/Endócrina",
+    subtemas: ["Paraganglioma", "Catecolaminas"],
+    dificuldade: "Difícil",
+    temImagem: true,
+    enunciado: "Mulher, 29 anos, picos de HAS há 2 anos. CATECOLAMINAS urinárias elevadas confirmadas. TC abdome SEM tumores em adrenais. RM tórax: massa sólida 10x5x5 cm em MEDIASTINO POSTERIOR PARAVERTEBRAL, contato com aorta torácica. Diagnóstico?",
+    alternativas: {
+      A: "Schwannoma.",
+      B: "PARAGANGLIOMA.",
+      C: "Linfoma de Hodgkin.",
+      D: "Linfoma não-Hodgkin."
+    },
+    gabarito: "B",
+    explicacao: "PARAGANGLIOMA: tumor neuroendócrino derivado de células das CRISTAS NEURAIS (mesma origem do feocromocitoma adrenal). Quando localização extra-adrenal e PRODUTOR DE CATECOLAMINAS = paraganglioma simpático. Localizações: paragânglios ao longo da cadeia simpática paraVERTEBRAL (MEDIASTINO POSTERIOR é localização clássica de Zuckerkandl-like), órgão de Zuckerkandl (paraaórtico), bexiga. Apresentação: HAS PAROXÍSTICA, cefaleia, sudorese, palpitações. Schwannoma é a neoplasia mais comum do mediastino posterior MAS NÃO É HORMONALMENTE ATIVO (sem catecolaminas). Linfomas raramente no mediastino posterior."
+  },
+  {
+    n: 183,
+    banca: "USP/FUVEST 2026 — EC6 Coloproctologia",
+    especialidade: "Cirurgia",
+    tema: "Cirurgia Torácica",
+    subtemas: ["TB pulmonar", "Cirurgia eletiva"],
+    dificuldade: "Médio",
+    temImagem: false,
+    enunciado: "Homem, 25 anos, cavidade em LSE pulmonar pós-TB. Hemoptise leve. Sobre avaliação cirúrgica:",
+    alternativas: {
+      A: "Vias minimamente invasivas (VATS) são contraindicadas (impossibilidade técnica).",
+      B: "Mortalidade da cirurgia >10%.",
+      C: "Embolização substituiu cirurgia (sem indicação cirúrgica aqui).",
+      D: "CONDIÇÃO NUTRICIONAL deve ser avaliada no pré-op + recuperação nutricional se necessária."
+    },
+    gabarito: "D",
+    explicacao: "CIRURGIA POR SEQUELA DE TB: pacientes geralmente DESNUTRIDOS (doença consuntiva, déficits crônicos). RECUPERAÇÃO NUTRICIONAL pré-op é ESSENCIAL para reduzir complicações (fístula brônquica, deiscência, infecção). Albumina <3,0, IMC baixo, anemia = otimizar antes da cirurgia eletiva. VATS é DIFÍCIL mas POSSÍVEL em mãos experientes (aderências fibrosas). Mortalidade variável (3-7% em centros experientes), não >10%. Embolização brônquica trata hemoptise AGUDA, mas cirurgia pode ser indicada para cavidade residual sintomática, hemoptise refratária, suspeita de neoplasia."
+  },
+  {
+    n: 184,
+    banca: "USP/FUVEST 2026 — EC6 Coloproctologia",
+    especialidade: "Cirurgia",
+    tema: "Oncologia Cirúrgica",
+    subtemas: ["Câncer de pulmão", "Terapias-alvo"],
+    dificuldade: "Médio",
+    temImagem: true,
+    enunciado: "Homem, 59 anos, NÃO TABAGISTA, opacidade subsólida 5,5 cm em LSD. Biópsia: ADENOCARCINOMA PRIMÁRIO de pulmão. PET-FDG sem metástases. RM crânio normal. Em adenoCA pulmonar INICIAL/LOCALMENTE AVANÇADO, quais genes devem ser testados (alvos terapêuticos)?",
+    alternativas: {
+      A: "EGFR e PD-L1.",
+      B: "EGFR e ALK.",
+      C: "PD-L1 e ALK.",
+      D: "KRAS e EGFR."
+    },
+    gabarito: "B",
+    explicacao: "ADENOCARCINOMA PULMONAR em NÃO-FUMANTE: maior chance de MUTAÇÕES DRIVERS com TERAPIA-ALVO disponível. PAINEL MOLECULAR obrigatório atual: EGFR (osimertinib - inibidor), ALK (alectinib - inibidor), ROS1, BRAF, MET, RET, NTRK, KRAS-G12C (sotorasib). EGFR e ALK são os DOIS MAIS IMPORTANTES e PRIMEIROS DESCOBERTOS, com benefício claro em doença INICIAL E AVANÇADA (adjuvância com osimertinib em EGFR+ por estudo ADAURA). PD-L1 (A,C) é IMUNOTERÁPICO (imunoexpressão), não terapia-alvo molecular. KRAS-G12C tem terapia mas é menos comum em não-fumantes."
+  },
+  {
+    n: 185,
+    banca: "USP/FUVEST 2026 — EC6 Coloproctologia",
+    especialidade: "Cirurgia",
+    tema: "Cirurgia Torácica",
+    subtemas: ["Abscesso pulmonar", "Diagnóstico diferencial"],
+    dificuldade: "Médio",
+    temImagem: false,
+    enunciado: "Mulher, 45 anos, DM, epilepsia (crises recentes), queda do estado geral + febre. Leucocitose, PCR elevada. RX: OPACIDADE CAVITADA em lobo INFERIOR ESQUERDO. Hipótese para tratamento IMEDIATO?",
+    alternativas: {
+      A: "Histoplasmose.",
+      B: "ABSCESSO PULMONAR.",
+      C: "Sequestro pulmonar.",
+      D: "Câncer de pulmão NSCLC."
+    },
+    gabarito: "B",
+    explicacao: "ABSCESSO PULMONAR: cavidade pulmonar com nível líquido, infectada. Fatores de risco no caso: DIABETES + EPILEPSIA COM CRISES (broncoaspiração durante crises convulsivas é mecanismo clássico). Localização típica: SEGMENTOS POSTERIORES dos lobos superiores OU SUPERIORES DOS LOBOS INFERIORES (gravitacional, decúbito dorsal durante crise). Agente: anaeróbios, Strep, S. aureus. Tratamento: ATB amplo espectro + clindamicina ou amox-clav, por 4-6 sem. Drenagem se >6cm ou falha clínica. Histoplasmose (A) é fungo, evolução crônica. Sequestro (C) é congênito. CA pulmonar (D) ocorre, mas não em adulto jovem sem TBG."
+  },
+  {
+    n: 186,
+    banca: "USP/FUVEST 2026 — EC6 Coloproctologia",
+    especialidade: "Cirurgia",
+    tema: "Cirurgia Plástica/Queimados",
+    subtemas: ["Lesão inalatória", "Queimadura de face"],
+    dificuldade: "Médio",
+    temImagem: false,
+    enunciado: "Homem, 40 anos, EXPLOSÃO DE LAREIRA ECOLÓGICA com chamas. Queimaduras em face, pescoço, MMSS. Em face/pescoço: bolhas e áreas NACARADAS sem perfusão (3º grau). TAQUIPNEICO + VOZ ROUCA. Conduta?",
+    alternativas: {
+      A: "Indicação de IOT pela saturação na oximetria.",
+      B: "Evitar oxigênio a 100%.",
+      C: "CONSIDERAR INTUBAÇÃO OROTRAQUEAL PREVENTIVA.",
+      D: "Escarotomia imediata das áreas não-perfundidas em face."
+    },
+    gabarito: "C",
+    explicacao: "LESÃO INALATÓRIA com sinais de COMPROMETIMENTO PRECOCE DE VIA AÉREA: voz rouca (edema laríngeo iminente), queimadura facial extensa, mecanismo (explosão em ambiente fechado), taquipneia. INDICAÇÃO DE IOT PREVENTIVA PRECOCE antes que o edema feche a via aérea (após algumas horas pode ser impossível). Saturação (A) pode estar normal nas primeiras horas e cair tardiamente - não esperar. OXIGÊNIO 100% É RECOMENDADO se suspeita de inalação de CO/cianeto (acelera dissociação). Escarotomia (D) em face é raramente necessária; em tórax/membros sim, se compromete ventilação/perfusão."
+  },
+  {
+    n: 187,
+    banca: "USP/FUVEST 2026 — EC6 Coloproctologia",
+    especialidade: "Cirurgia",
+    tema: "Cirurgia Plástica",
+    subtemas: ["Cicatriz queloide", "Diagnóstico"],
+    dificuldade: "Fácil",
+    temImagem: false,
+    enunciado: "Característica DETERMINANTE para diagnóstico de cicatriz QUELOIDE:",
+    alternativas: {
+      A: "Presença de prurido na região.",
+      B: "MAIOR DIMENSÃO DA TUMORAÇÃO em relação à LESÃO TECIDUAL PRIMÁRIA.",
+      C: "Aumento da cor avermelhada nos primeiros meses.",
+      D: "Coexistência com processos infecciosos agudos locais."
+    },
+    gabarito: "B",
+    explicacao: "DIAGNÓSTICO DIFERENCIAL: QUELOIDE vs CICATRIZ HIPERTRÓFICA. QUELOIDE: cresce ALÉM dos LIMITES da lesão original (invade pele adjacente saudável), pode crescer indefinidamente, raramente regride, predisposição genética/racial (afrodescendentes), sítios típicos (deltóide, esterno, lóbulo orelha). CICATRIZ HIPERTRÓFICA: respeita os LIMITES da lesão, pode regredir espontaneamente. Prurido (A) e eritema (C) ocorrem em AMBAS. A característica DEFINIDORA do queloide é a EXTRAVASIO/extensão além da ferida original."
+  },
+  {
+    n: 188,
+    banca: "USP/FUVEST 2026 — EC6 Coloproctologia",
+    especialidade: "Cirurgia",
+    tema: "Cirurgia Plástica/Trauma",
+    subtemas: ["Lesão de partes moles", "Atropelamento"],
+    dificuldade: "Médio",
+    temImagem: false,
+    enunciado: "Atropelamento, roda passou sobre coxa. Equimose anterolateral extensa, pele íntegra, pulsos distais presentes. Sobre o ferimento de partes moles:",
+    alternativas: {
+      A: "PERFUSÃO CUTÂNEA deve ser AVALIADA INICIALMENTE e REAVALIADA em 24/48h (risco de LESÃO VASCULAR pelo mecanismo).",
+      B: "ATB sistêmico precoce evita celulite em trauma fechado.",
+      C: "Causa principal de redução pulsos = rotura proximal de vasos femorais.",
+      D: "Para fraturas ocultas, RX IMEDIATO obrigatório."
+    },
+    gabarito: "A",
+    explicacao: "LESÃO POR ESMAGAMENTO/AVULSÃO OCULTA (Morel-Lavallée e similares) por mecanismo de cisalhamento (roda passando): pele aparentemente íntegra MAS pode evoluir com NECROSE TARDIA por descolamento do plano subcutâneo e ruptura dos vasos perfurantes da pele. AVALIAÇÃO SERIADA da perfusão cutânea (preenchimento capilar, temperatura, sensibilidade, coloração) é ESSENCIAL nas primeiras 24-72h. Pulsos distais presentes NÃO descartam isquemia cutânea localizada. ATB profilático em trauma fechado: SEM evidência. Pulsos diminuem por edema, compressão, lesão de pequenos vasos - rotura de femoral seria choque/ausência total. RX só se suspeita."
+  },
+  {
+    n: 189,
+    banca: "USP/FUVEST 2026 — EC6 Coloproctologia",
+    especialidade: "Cirurgia",
+    tema: "Cirurgia Plástica/Oncologia",
+    subtemas: ["Tumores de pele não-melanoma", "CBC vs CEC"],
+    dificuldade: "Médio",
+    temImagem: false,
+    enunciado: "Sobre TUMORES DE PELE NÃO-MELANOMA:",
+    alternativas: {
+      A: "Idade >40, tabagismo, albinismo, xeroderma pigmentoso = relacionados a CBC.",
+      B: "Margens cirúrgicas em CBC são MAIORES (invasão local).",
+      C: "FATORES ETIOLÓGICOS COMUNS A CBC E CEC: PREDISPOSIÇÃO GENÉTICA + RADIAÇÃO UV CUMULATIVA.",
+      D: "Terapias não-cirúrgicas (5-FU, imiquimod, RT) dispensam avaliação de margens."
+    },
+    gabarito: "C",
+    explicacao: "CBC (CARCINOMA BASOCELULAR) e CEC (CARCINOMA ESPINOCELULAR) compartilham fatores de risco principais: EXPOSIÇÃO CUMULATIVA À RADIAÇÃO ULTRAVIOLETA (sol, fototipo claro), PREDISPOSIÇÃO GENÉTICA (xeroderma pigmentoso, albinismo, síndrome de Gorlin), idade avançada, imunossupressão. CEC tem associações ADICIONAIS: TABAGISMO (CEC de lábio/oral), HPV, queimaduras antigas, úlceras crônicas (úlcera de Marjolin), produtos químicos. CBC: margens MENORES (invasão local, raramente metastatiza). CEC: margens MAIORES (potencial metastático). Terapias não-cirúrgicas ainda precisam de avaliação de eficácia/resposta (biópsia confirma cura)."
+  },
+  {
+    n: 190,
+    banca: "USP/FUVEST 2026 — EC6 Coloproctologia",
+    especialidade: "Cirurgia",
+    tema: "Cirurgia Plástica",
+    subtemas: ["Acidente por aracnídeo", "Necrose cutânea"],
+    dificuldade: "Médio",
+    temImagem: false,
+    enunciado: "Mulher acordou em casa de campo com lesão cutânea posterior na perna. Em 2 dias: NECROSE CENTRAL + halo eritematoso + dor intensa. Hipótese: acidente por ARACNÍDEO (LOXOSCELES). Procura avaliação após 6 dias da lesão. Conduta?",
+    alternativas: {
+      A: "Pomada antibiótica + aguardar a necrose seca.",
+      B: "DESBRIDAMENTO da área de necrose + ANTIMICROBIANO TÓPICO + CURATIVOS para prevenir infecção secundária.",
+      C: "Remover só a necrose e fechamento primário.",
+      D: "Curativo a vácuo (NPWT) imediato sobre a ferida."
+    },
+    gabarito: "B",
+    explicacao: "LOXOSCELISMO CUTÂNEO (aranha-marrom): necrose isquêmica progressiva, halo de hiperemia, dor. APÓS 6 DIAS, lesão já definida com necrose seca. Tratamento: DESBRIDAMENTO da área necrótica + curativos seriados com ANTIMICROBIANOS TÓPICOS (sulfadiazina de prata) + prevenção de infecção secundária. SORO ANTIARACNÍDICO só é eficaz nas primeiras 24-48h. FECHAMENTO PRIMÁRIO (C) é INADEQUADO em ferida potencialmente contaminada/com necrose subjacente - alta taxa de deiscência. VAC pode ser usado APÓS desbridamento, NÃO sobre ferida ainda com necrose."
+  },
+  {
+    n: 191,
+    banca: "USP/FUVEST 2026 — EC6 Coloproctologia",
+    especialidade: "Cirurgia",
+    tema: "Cirurgia Plástica/Pediátrica",
+    subtemas: ["Fenda labiopalatal", "Etiologia"],
+    dificuldade: "Médio",
+    temImagem: false,
+    enunciado: "Sobre FENDA LABIOPALATAL:",
+    alternativas: {
+      A: "Doenças infecciosas perinatais associam-se. Cirurgia do palato mole visa fechamento do FORRO NASAL.",
+      B: "Anti-hipertensivos gestacionais são contraindicados. Cirurgia do lábio: ideal no 1º mês de vida.",
+      C: "Fendas isoladas do palato MENOS associadas a síndromes. Fechamento do palato duro REDUZ otites médias.",
+      D: "DEFICIÊNCIAS NUTRICIONAIS MATERNAS associam-se à etiologia. Cirurgia do LÁBIO recomendada AOS 4 MESES."
+    },
+    gabarito: "D",
+    explicacao: "FENDA LABIOPALATAL: ETIOLOGIA multifatorial - genética (síndromes - Pierre Robin, Stickler, 22q11) + ambiental (DEFICIÊNCIAS NUTRICIONAIS maternas, especialmente ÁCIDO FÓLICO e B-COMPLEX; tabagismo, álcool, anticonvulsivantes na gestação). FENDAS ISOLADAS DO PALATO são MAIS associadas a SÍNDROMES (não menos - alternativa C errada). CRONOLOGIA CIRÚRGICA padrão (Regra dos 10): Cirurgia do LÁBIO aos 3-6 MESES (10 semanas, 10 lb peso, Hb 10) - corrige musculatura e estética; Cirurgia do PALATO (9-18 meses) - importante para fala e reduzir otites médias por disfunção tubária."
+  },
+  {
+    n: 192,
+    banca: "USP/FUVEST 2026 — EC6 Coloproctologia",
+    especialidade: "Cirurgia",
+    tema: "Cirurgia Maxilofacial",
+    subtemas: ["Fraturas mandibulares", "Via aérea"],
+    dificuldade: "Médio",
+    temImagem: false,
+    enunciado: "Fratura mandibular que mais frequentemente evolui com INSUFICIÊNCIA RESPIRATÓRIA:",
+    alternativas: {
+      A: "Fratura unilateral cominutiva de corpo.",
+      B: "FRATURA BILATERAL DA CABEÇA DO CÔNDILO mandibular (na verdade fratura bilateral de parassínfise).",
+      C: "Fraturas dento-alveolares múltiplas.",
+      D: "FRATURAS MANDIBULAR BILATERAL DAS REGIÕES DE PARASSÍNFISE MANDIBULAR."
+    },
+    gabarito: "D",
+    explicacao: "FRATURA MANDIBULAR BILATERAL DE PARASSÍNFISE (regiões anteriores entre as fossas caninas): a fratura em DOIS pontos no arco anterior da mandíbula PERDE A INSERÇÃO ANTERIOR DOS MÚSCULOS DA LÍNGUA (genioglosso, geniohióideo, milohióideo). A LÍNGUA PODE CAIR POSTERIORMENTE OCLUINDO A VIA AÉREA (glossoptose) - clássica obstrução respiratória aguda. Conduta IMEDIATA: posicionamento, tração da língua, IOT/traqueostomia. Fraturas isoladas de côndilo ou corpo não causam essa instabilidade da musculatura lingual."
+  },
+  {
+    n: 193,
+    banca: "USP/FUVEST 2026 — EC6 Coloproctologia",
+    especialidade: "Cirurgia",
+    tema: "Cirurgia Pediátrica/Neonatologia",
+    subtemas: ["Hérnia diafragmática congênita", "Bochdalek"],
+    dificuldade: "Médio",
+    temImagem: true,
+    enunciado: "RN a termo com desconforto respiratório grave imediato. RX tórax/abdome: ALÇAS INTESTINAIS no hemitórax esquerdo + desvio do mediastino para a direita. Hipótese é HÉRNIA DIAFRAGMÁTICA CONGÊNITA. Conduta?",
+    alternativas: {
+      A: "Toracotomia de emergência.",
+      B: "Laparotomia de emergência.",
+      C: "Drenagem torácica esquerda.",
+      D: "INTUBAÇÃO E ESTABILIZAÇÃO CLÍNICA."
+    },
+    gabarito: "D",
+    explicacao: "HÉRNIA DIAFRAGMÁTICA CONGÊNITA DE BOCHDALEK (mais comum, póstero-lateral, esquerda em 80%): vísceras abdominais no tórax → HIPOPLASIA PULMONAR + HIPERTENSÃO PULMONAR persistente. ABORDAGEM MUDOU radicalmente nas últimas décadas: ESTABILIZAÇÃO CLÍNICA PRIMEIRO (IOT, ventilação GENTLE, evitar VPP de máscara que distende vísceras herniadas, surfactante, óxido nítrico, ECMO se necessário) por 24-72h. CIRURGIA é ELETIVA após estabilização hemodinâmica/respiratória, NÃO emergência. Drenagem torácica é CONTRAINDICADA (vísceras no tórax, lesão visceral). Laparotomia é a via cirúrgica eletiva."
+  },
+  {
+    n: 194,
+    banca: "USP/FUVEST 2026 — EC6 Coloproctologia",
+    especialidade: "Cirurgia",
+    tema: "Cirurgia Pediátrica/Hepatobiliar",
+    subtemas: ["Atresia de vias biliares", "Icterícia neonatal"],
+    dificuldade: "Médio",
+    temImagem: false,
+    enunciado: "Neonato 28 dias, icterícia desde D5, MELHOROU 2ª sem, depois PIORA PROGRESSIVA + ACOLIA + COLÚRIA. Diagnóstico?",
+    alternativas: {
+      A: "Cisto de colédoco.",
+      B: "ATRESIA DAS VIAS BILIARES.",
+      C: "Icterícia fisiológica.",
+      D: "Cálculo biliar impactado."
+    },
+    gabarito: "B",
+    explicacao: "ATRESIA DE VIAS BILIARES (AVB): icterícia COLESTÁTICA (bilirrubina DIRETA) com FEZES ACÓLICAS (massa de putty) + COLÚRIA + hepatomegalia, geralmente após período de aparente icterícia 'fisiológica' (3-8 sem). EMERGÊNCIA PEDIÁTRICA - quanto mais precoce a cirurgia de Kasai (portoenterostomia), melhor o prognóstico (ideal <8 sem, antes de 60 dias de vida). Após 90 dias, melhor opção é TRANSPLANTE. Cisto de colédoco (A) tem massa abdominal palpável + sintomas mais brandos. Icterícia fisiológica (C) é por bilirrubina INDIRETA. Cálculo (D) é raríssimo em neonato."
+  },
+  {
+    n: 195,
+    banca: "USP/FUVEST 2026 — EC6 Coloproctologia",
+    especialidade: "Cirurgia",
+    tema: "Cirurgia Pediátrica/Neonatologia",
+    subtemas: ["Enterocolite necrosante", "Prematuro"],
+    dificuldade: "Médio",
+    temImagem: true,
+    enunciado: "Prematuro 31 sem, baixo peso, 9 dias na UTIN. Hipoatividade, hipotermia, distensão abdominal, débito bilioso pela SOG há 2 dias. RX abdome: PNEUMATOSE INTESTINAL. Diagnóstico?",
+    alternativas: {
+      A: "Apendicite aguda.",
+      B: "Obstrução duodenal.",
+      C: "ENTEROCOLITE NECROSANTE (NEC).",
+      D: "Volvo de intestino médio."
+    },
+    gabarito: "C",
+    explicacao: "ENTEROCOLITE NECROSANTE (NEC): grave doença intestinal isquêmica/inflamatória do PREMATURO (especialmente <32 sem e/ou baixo peso), no início do uso da dieta enteral. Sinais: hipoatividade, hipotermia, intolerância alimentar, distensão, sangue nas fezes. RX característico: PNEUMATOSE INTESTINAL (gás intramural) - patognomônico; ar portal; pneumoperitônio (perfuração). Tratamento: jejum, SOG aberta, antibióticos amplos, suporte. Cirurgia: se PERFURAÇÃO ou peritonite. Mortalidade alta. Estágios de Bell."
+  },
+  {
+    n: 196,
+    banca: "USP/FUVEST 2026 — EC6 Coloproctologia",
+    especialidade: "Cirurgia",
+    tema: "Cirurgia Pediátrica",
+    subtemas: ["Hérnia inguinal", "Criptorquidia", "Hidrocele"],
+    dificuldade: "Médio",
+    temImagem: false,
+    enunciado: "Sobre AFECÇÕES INGUINOESCROTAIS, momento adequado para cirurgia:",
+    alternativas: {
+      A: "HÉRNIA INGUINAL NO RN: TRATAMENTO CIRÚRGICO ELETIVO O MAIS RAPIDAMENTE POSSÍVEL (alto risco de encarceramento).",
+      B: "Hidrocele comunicante bilateral em RN: cirurgia no 1º mês.",
+      C: "Criptorquidia bilateral em RN: cirurgia após 2 anos.",
+      D: "Prematuro com testículo não-palpável unilateral: cirurgia antes de 3 meses."
+    },
+    gabarito: "A",
+    explicacao: "HÉRNIA INGUINAL EM RN/LACTENTE: alto risco de ENCARCERAMENTO (até 30% em <1 ano) e estrangulamento. RECOMENDAÇÃO ATUAL: cirurgia ELETIVA PROGRAMADA logo após o diagnóstico (semanas, não meses). HIDROCELE COMUNICANTE NO RN (B): geralmente FECHA ESPONTANEAMENTE - aguardar até 1-2 ANOS antes de operar. CRIPTORQUIDIA (C): tratamento entre 6 e 18 meses (NÃO após 2 anos - perde-se função germinativa, aumenta risco tumoral). PREMATURO com testículo não-palpável (D): aguardar descida espontânea antes da cirurgia (semanas/meses), avaliar após 6 meses corrigidos."
+  },
+  {
+    n: 197,
+    banca: "USP/FUVEST 2026 — EC6 Coloproctologia",
+    especialidade: "Cirurgia",
+    tema: "Cirurgia Pediátrica",
+    subtemas: ["Atresia intestinal", "Sinal da dupla bolha"],
+    dificuldade: "Médio",
+    temImagem: false,
+    enunciado: "RN com vômitos biliosos e distensão abdominal desde 1º dia de vida. Diagnóstico provável + achado radiológico TÍPICO:",
+    alternativas: {
+      A: "Anomalia anorretal com fístula perineal / sinal da DUPLA BOLHA.",
+      B: "Estenose hipertrófica do piloro / níveis hidroaéreos.",
+      C: "ATRESIA JEJUNAL / DISTENSÃO DE ALÇAS PROXIMAIS + AUSÊNCIA DE AERAÇÃO NO CÓLON.",
+      D: "Atresia esofágica sem fístula / distensão de alças com níveis."
+    },
+    gabarito: "C",
+    explicacao: "ATRESIA INTESTINAL JEJUNAL/ILEAL: RN com vômitos BILIOSOS desde primeiro dia (sinal de obstrução abaixo da papila de Vater) + distensão. RX: distensão de alças PROXIMAIS à atresia + AUSÊNCIA DE GÁS DISTAL/CÓLON. SINAL DA DUPLA BOLHA é da ATRESIA DUODENAL (2 níveis hidroaéreos: estômago + duodeno proximal à atresia). ANOMALIA ANORRETAL: ausência de mecônio ao nascimento, RX mostra ar até o nível da atresia anal. ATRESIA ESOFÁGICA SEM FÍSTULA: SEM ar no estômago (não distende). Estenose pilórica: aparece após 3-6 semanas, vômito NÃO bilioso."
+  },
+  {
+    n: 198,
+    banca: "USP/FUVEST 2026 — EC6 Coloproctologia",
+    especialidade: "Cirurgia",
+    tema: "Cirurgia Pediátrica",
+    subtemas: ["Volvo de intestino médio", "Má rotação"],
+    dificuldade: "Difícil",
+    temImagem: false,
+    enunciado: "Neonato 27 dias, deterioração súbita + vômitos biliosos + evacuação sanguinolenta há 5h. Prostrado, descorado, abdome doloroso/tenso. Hipótese e conduta?",
+    alternativas: {
+      A: "VOLVO DE INTESTINO MÉDIO / CIRURGIA DE URGÊNCIA.",
+      B: "Volvo de intestino médio / trânsito intestinal contrastado.",
+      C: "Intussuscepção / cirurgia de urgência.",
+      D: "Intussuscepção / enema opaco."
+    },
+    gabarito: "A",
+    explicacao: "VOLVO DE INTESTINO MÉDIO secundário à MÁ ROTAÇÃO INTESTINAL: EMERGÊNCIA cirúrgica do lactente/neonato. Apresentação: vômitos biliosos súbitos + deterioração rápida + sangue nas fezes (isquemia/necrose) + abdome doloroso. NECROSE EM HORAS. NÃO PERDER TEMPO COM EXAMES - laparotomia URGENTE para destorção (cirurgia de LADD): desfazer o volvo, ampliar a base do mesentério, apendicectomia, posicionar delgado à direita e cólon à esquerda. INTUSSUSCEPÇÃO (C/D) é mais comum em 6m-2a, com cólica + sangue 'em geleia de morango', massa palpável em formato de salsicha. Vólvulo: deterioração mais rápida e grave."
+  },
+  {
+    n: 199,
+    banca: "USP/FUVEST 2026 — EC6 Coloproctologia",
+    especialidade: "Cirurgia",
+    tema: "Cirurgia Pediátrica",
+    subtemas: ["Estenose hipertrófica do piloro", "Alcalose"],
+    dificuldade: "Médio",
+    temImagem: false,
+    enunciado: "RN masculino, 25 dias, AME, vômitos em LEITE COALHADO progressivos pós-mamada há 1 semana. Peso ABAIXO do nascimento, desidratado, distensão epigástrica. Hipótese e conduta INICIAL?",
+    alternativas: {
+      A: "Atresia intestinal / exame contrastado.",
+      B: "Atresia de esôfago / pesquisa de fístula traqueoesofágica.",
+      C: "ESTENOSE HIPERTRÓFICA DO PILORO / HIDRATAÇÃO + CORREÇÃO DE DISTÚRBIOS METABÓLICOS.",
+      D: "DRGE / fórmula engrossada + procinético."
+    },
+    gabarito: "C",
+    explicacao: "ESTENOSE HIPERTRÓFICA DO PILORO (EHP): clássico - lactente MASCULINO (4:1) primogênito, 3-6 SEMANAS de vida, VÔMITOS EM JATO NÃO BILIOSOS pós-mamadas progressivos, FOME após vômito, perda de peso, desidratação. Distúrbio metabólico: ALCALOSE METABÓLICA HIPOCLORÊMICA HIPOCALÊMICA (perda de HCl pelos vômitos). PRINCÍPIO FUNDAMENTAL: CORRIGIR HIDRATAÇÃO E DISTÚRBIOS METABÓLICOS ANTES DA CIRURGIA (pilorotomia de Fredet-Ramstedt). Operar paciente alcalótico = risco anestésico alto (depressão respiratória pós-op). Diagnóstico por USG (oliva pilórica, espessura >4mm)."
+  },
+  {
+    n: 200,
+    banca: "USP/FUVEST 2026 — EC6 Coloproctologia",
+    especialidade: "Cirurgia",
+    tema: "Cirurgia Vascular",
+    subtemas: ["Varizes", "Forame oval patente", "Escleroterapia"],
+    dificuldade: "Difícil",
+    temImagem: false,
+    enunciado: "Mulher, 49 anos, IMC 29, varizes MMII CEAP C5. Safena magna E insuficiente 8 mm de diâmetro. Pré-op: ECO mostra FORAME OVAL PATENTE. Qual tratamento CONTRAINDICADO?",
+    alternativas: {
+      A: "Safenectomia com fleboextrator.",
+      B: "Ablação por radiofrequência.",
+      C: "Ablação com laser endovenoso.",
+      D: "ESCLEROSE COM ESPUMA DENSA DE POLIDOCANOL."
+    },
+    gabarito: "D",
+    explicacao: "ESCLEROTERAPIA COM ESPUMA densa (polidocanol em espuma) em paciente com FORAME OVAL PATENTE (FOP): risco de EMBOLIA PARADOXAL da espuma para circulação arterial (cérebro) → AVC embólico, eventos neurológicos isquêmicos (cegueira, AIT). FOP é CONTRAINDICAÇÃO formal para escleroterapia com espuma densa em grandes troncos. As demais técnicas (safenectomia mecânica, radiofrequência, laser endovenoso) são SEGURAS - não geram microêmbolos que possam atravessar o FOP. Atualmente é obrigatório investigar FOP antes de espuma em pacientes com risco/sintomas neurológicos."
+  },
+  {
+    n: 201,
+    banca: "USP/FUVEST 2026 — EC6 Coloproctologia",
+    especialidade: "Cirurgia",
+    tema: "Cirurgia Vascular",
+    subtemas: ["Oclusão arterial embólica", "Fibrilação atrial"],
+    dificuldade: "Médio",
+    temImagem: true,
+    enunciado: "Mulher, 58 anos, dor súbita em MID, frialdade, ausência de pulsos poplíteo/distais há 2h. ECG: FIBRILAÇÃO ATRIAL. Hipótese e tratamento?",
+    alternativas: {
+      A: "Oclusão arterial TROMBÓTICA - angioplastia.",
+      B: "Oclusão arterial EMBÓLICA - angioplastia.",
+      C: "Oclusão arterial trombótica - tromboembolectomia.",
+      D: "OCLUSÃO ARTERIAL EMBÓLICA - TROMBOEMBOLECTOMIA (Fogarty)."
+    },
+    gabarito: "D",
+    explicacao: "ISQUEMIA AGUDA DO MEMBRO + FIBRILAÇÃO ATRIAL = ALTA SUSPEITA DE OCLUSÃO EMBÓLICA (trombo no apêndice atrial esquerdo embolizando). Características clínicas que apoiam: início SÚBITO, MEMBRO CONTRALATERAL com PULSOS NORMAIS (sem doença aterosclerótica), AUSÊNCIA DE CIRCULAÇÃO COLATERAL (isquemia mais grave). Tratamento: TROMBOEMBOLECTOMIA com cateter de FOGARTY por via cirúrgica (anestesia local, arteriotomia femoral) - permite remover o êmbolo rapidamente. ANGIOPLASTIA seria para doença ATEROSCLERÓTICA com estenose subjacente. Anticoagulação plena imediata + tratar FA. 6Ps: pain, pallor, paresthesia, paralysis, pulselessness, poikilothermia."
+  },
+  {
+    n: 202,
+    banca: "USP/FUVEST 2026 — EC6 Coloproctologia",
+    especialidade: "Cirurgia",
+    tema: "Cirurgia Vascular",
+    subtemas: ["Acesso para hemodiálise", "Trombose"],
+    dificuldade: "Médio",
+    temImagem: false,
+    enunciado: "Mulher, 60 anos, DRC dialítica com PRÓTESE PTFE braquioaxilar trombosada (após hipotensão na diálise). Sem sinais infecciosos. Conduta?",
+    alternativas: {
+      A: "Instalar cateter de longa permanência.",
+      B: "Trocar prótese no mesmo membro.",
+      C: "TROMBECTOMIA + ANGIOGRAFIA.",
+      D: "Colocar prótese nova no outro membro."
+    },
+    gabarito: "C",
+    explicacao: "OCLUSÃO AGUDA DE ACESSO PROTÉTICO PTFE para hemodiálise: tratamento PADRÃO = TROMBECTOMIA CIRÚRGICA ou ENDOVASCULAR (com cateter de Fogarty ou farmacomecânica) + ANGIOGRAFIA INTRAOPERATÓRIA para identificar a CAUSA da trombose (estenose anastomótica venosa, estenose central, hiperplasia mio-intimal) e tratar com angioplastia/stent se necessário. Preserva o acesso, evita confecção de novo acesso, mantém anatomia para futuros acessos. Cateter de longa permanência é PONTE (não preserva acesso definitivo). Trocar prótese sem investigar causa = recidiva. Outro membro só se não houver opção do atual."
+  },
+  {
+    n: 203,
+    banca: "USP/FUVEST 2026 — EC6 Coloproctologia",
+    especialidade: "Cirurgia",
+    tema: "Cirurgia Vascular",
+    subtemas: ["Dissecção aórtica", "Emergência aórtica"],
+    dificuldade: "Médio",
+    temImagem: true,
+    enunciado: "Homem, 62 anos, HAS, DOR TORÁCICA INTENSA SÚBITA + síncope. Hipertenso no PS. RX tórax: ALARGAMENTO DE MEDIASTINO. Conduta?",
+    alternativas: {
+      A: "MONA (morfina, O2, nitrato, AAS) + betabloqueador.",
+      B: "CONTROLE PRESSÓRICO + ANALGESIA + ANGIO-TC.",
+      C: "Trombólise química com alteplase.",
+      D: "Cateterismo de urgência."
+    },
+    gabarito: "B",
+    explicacao: "DISSECÇÃO AÓRTICA aguda: tríade clássica = DOR torácica/dorsal LANCINANTE súbita 'em rasgo' + DIFERENÇA DE PULSO/PA entre membros + MEDIASTINO ALARGADO no RX. Fatores: HAS, idade. Conduta IMEDIATA: 1) CONTROLE PRESSÓRICO rigoroso (alvo PAS 100-120 com BB - esmolol - e nitroprussiato se necessário); 2) ANALGESIA (controle adrenérgico); 3) ANGIO-TC TORÁCICA = exame DEFINITIVO (Stanford A = ascendente, cirurgia urgente; Stanford B = descendente, tratamento clínico). NUNCA TROMBOLÍTICO (catastrófico). MONA seria para SCA, mas se mascara dissecção pode ser fatal."
+  },
+  {
+    n: 204,
+    banca: "USP/FUVEST 2026 — EC6 Coloproctologia",
+    especialidade: "Cirurgia",
+    tema: "Cirurgia Vascular",
+    subtemas: ["Doença carotídea", "AVC"],
+    dificuldade: "Difícil",
+    temImagem: false,
+    enunciado: "Homem, 88 anos, AVC com paresia braço esquerdo. Achados: VPS 320 cm/s na CIE (estenose ~80% E), VPS 145 cm/s na CID, placa subc. carótida externa direita, fenômeno de roubo subclávia E, placa calcificada na origem da carótida comum direita. Doppler transcraniano: sem atividade embólica, doença aterosclerótica intracraniana, teste de apneia POSITIVO para BAIXA RESERVA. Intervenção indicada em:",
+    alternativas: {
+      A: "Subclávia esquerda.",
+      B: "CARÓTIDA INTERNA ESQUERDA.",
+      C: "Carótida externa direita.",
+      D: "Origem da carótida comum direita."
+    },
+    gabarito: "B",
+    explicacao: "AVC + ESTENOSE CRÍTICA NA CARÓTIDA INTERNA ESQUERDA (VPS 320 cm/s = >70% estenose) + paresia BRAÇO ESQUERDO (= território hemisfério DIREITO?) - aqui há aparente paradoxo, mas pelo padrão da questão a lesão sintomática a tratar é a CIE pelo grau de estenose. ENDARTERECTOMIA CAROTÍDEA INDICADA para estenose ≥70% SINTOMÁTICA (benefício mais robusto - ECST/NASCET). Reserva cerebrovascular reduzida (apneia+) confirma má hemodinâmica. Subclávia (fenômeno de roubo): só se sintomático, geralmente angioplastia. Carótida EXTERNA: irrelevante para AVC. Origem carótida comum: lesão difícil, alto risco. Em octogenário, ANGIOPLASTIA/STENT carotídeo pode ser preferida à endarterectomia."
+  },
+  {
+    n: 205,
+    banca: "USP/FUVEST 2026 — EC6 Coloproctologia",
+    especialidade: "Cirurgia",
+    tema: "Cirurgia Vascular",
+    subtemas: ["Síndrome compartimental", "Nervo fibular"],
+    dificuldade: "Médio",
+    temImagem: false,
+    enunciado: "Jovem, trauma + revascularização + FASCIOTOMIA do MI. Acorda com IMPOSSIBILIDADE DE DORSIFLEXÃO do pé (pé caído). Nervo afetado?",
+    alternativas: {
+      A: "Safeno.",
+      B: "FIBULAR (FÍBULAR COMUM/PERONEAL).",
+      C: "Tibial anterior.",
+      D: "Tibial posterior."
+    },
+    gabarito: "B",
+    explicacao: "NERVO FIBULAR COMUM (peroneal/peroneal) inerva os compartimentos ANTERIOR e LATERAL da perna - responsáveis pela DORSIFLEXÃO DO PÉ e EVERSÃO. Lesão = PÉ CAÍDO ('foot drop'). Vulnerável: 1) na CABEÇA DA FÍBULA (sítio mais comum de lesão por compressão); 2) Durante FASCIOTOMIA mal executada do compartimento lateral. NERVO TIBIAL POSTERIOR inerva compartimento posterior (flexão plantar). NERVO SAFENO é apenas sensitivo (face medial da perna). 'Tibial anterior' (C) é músculo, não nervo. FASCIOTOMIA da perna: 4 compartimentos, incisões antero-lateral E pósteromedial - cuidado com nervo fibular na cabeça da fíbula."
+  },
+  {
+    n: 206,
+    banca: "USP/FUVEST 2026 — EC6 Coloproctologia",
+    especialidade: "Cirurgia",
+    tema: "Cirurgia Vascular",
+    subtemas: ["Flegmasia cerulea dolens", "Trombose iliacofemoral"],
+    dificuldade: "Difícil",
+    temImagem: false,
+    enunciado: "Mulher, 58 anos, pós-artroscopia, profilaxia 30 dias. D42: após fisioterapia, dor súbita MID, aumento volume, dor constante. Reintroduzida anticoagulação. 24h: PIORA importante de dor e volume. Diagnóstico e conduta?",
+    alternativas: {
+      A: "Trombose progressiva; ANTICOAGULAÇÃO plena.",
+      B: "TROMBOSE REFRATÁRIA / flegmasia cerulea / TROMBECTOMIA VENOSA.",
+      C: "Síndrome da pedrada; fasciotomia e drenagem.",
+      D: "Oclusão arterial; trombectomia arterial."
+    },
+    gabarito: "B",
+    explicacao: "TVP ILEOFEMORAL EXTENSA COM PIORA APESAR DE ANTICOAGULAÇÃO PLENA: configura quadro de FLEGMASIA CERULEA DOLENS (forma grave de TVP com cianose, edema maciço, dor intensa) ou TROMBOSE REFRATÁRIA. Risco de gangrena venosa (necrose tecidual por estase) e síndrome compartimental venosa. Tratamento: TROMBECTOMIA VENOSA cirúrgica OU TROMBOLÍTICO DIRIGIDO POR CATETER (CDT) + angioplastia se síndrome de May-Thurner. Anticoagulação plena isolada (A) já falhou. 'Síndrome da pedrada' (C) é rotura muscular - quadro diferente. Oclusão arterial (D) teria frialdade/ausência de pulsos."
+  },
+  {
+    n: 207,
+    banca: "USP/FUVEST 2026 — EC6 Coloproctologia",
+    especialidade: "Cirurgia",
+    tema: "Cabeça e Pescoço",
+    subtemas: ["Tumor de parótida", "Punção aspirativa"],
+    dificuldade: "Médio",
+    temImagem: false,
+    enunciado: "Homem, 47 anos, não-tabagista, encaminhado para 'biópsia de linfonodo cervical'. Exame: nódulo PRÉ-AURICULAR 1 cm direito, liso, indolor, CARTILAGÍNEO, móvel. Conduta MAIS adequada?",
+    alternativas: {
+      A: "Biópsia incisional.",
+      B: "Biópsia excisional.",
+      C: "Biópsia com agulha grossa (core).",
+      D: "PUNÇÃO ASPIRATIVA POR AGULHA FINA (PAAF)."
+    },
+    gabarito: "D",
+    explicacao: "NÓDULO PARÓTIDA (pré-auricular): NÃO É LINFONODO! Características clássicas de TUMOR DE PARÓTIDA - localização anatômica, móvel, consistência cartilaginosa (sugestivo de adenoma pleomórfico, mais comum). NUNCA fazer BIÓPSIA INCISIONAL/EXCISIONAL ou CORE em tumor de parótida: 1) Risco de LESÃO DO NERVO FACIAL (atravessa a glândula); 2) IMPLANTE TUMORAL no trajeto (adenoma pleomórfico tem alta recidiva se rotura capsular); 3) NÃO É CIRURGIA ELETIVA com técnica adequada. PAAF é o método correto (segura, acurada). Tratamento definitivo após PAAF: parotidectomia."
+  },
+  {
+    n: 208,
+    banca: "USP/FUVEST 2026 — EC6 Coloproctologia",
+    especialidade: "Cirurgia",
+    tema: "Endocrinologia Cirúrgica",
+    subtemas: ["NEM 1", "Hiperparatireoidismo", "Gastrinoma"],
+    dificuldade: "Difícil",
+    temImagem: false,
+    enunciado: "Homem, 52 anos, úlceras pépticas de REPETIÇÃO, FAMILIARES com câncer 'da barriga'. Cólica nefrética + TC: cálculos renais + NÓDULOS PANCREÁTICOS. Cálcio total 14,5 (HIPERCALCEMIA) + PTH 312 (elevado). NEM tipo?",
+    alternativas: {
+      A: "NEM TIPO 1.",
+      B: "NEM 2A.",
+      C: "NEM 2B.",
+      D: "NEM 3."
+    },
+    gabarito: "A",
+    explicacao: "NEM 1 (síndrome de Wermer): mutação MEN1 - tríade '3 Ps': PARATIREOIDE (hiperparatireoidismo primário hipercalcêmico, mais comum, primeira manifestação geralmente), PÂNCREAS (tumores neuroendócrinos - GASTRINOMA é o mais frequente, ZES = úlceras pépticas recorrentes), PITUITÁRIA (adenomas hipofisários, prolactinoma mais comum). Caso CLÁSSICO de NEM1: úlceras pépticas (ZES) + nódulos pancreáticos (gastrinoma) + hipercalcemia/HPP. NEM 2A = carcinoma medular tireoide + feocromocitoma + HPP. NEM 2B = CMT + feo + neuromas mucosos + hábito marfanóide. 'NEM 3' não existe na classificação atual."
+  },
+  {
+    n: 209,
+    banca: "USP/FUVEST 2026 — EC6 Coloproctologia",
+    especialidade: "Cirurgia",
+    tema: "Cabeça e Pescoço",
+    subtemas: ["Nódulo cervical", "Tabagismo", "CEC"],
+    dificuldade: "Médio",
+    temImagem: false,
+    enunciado: "Homem, 62 anos, TABAGISTA 20 anos-maço, NÃO etilista. Nódulo cervical 3 cm no TRIÂNGULO CAROTÍDEO direito há 3 meses, móvel, indolor, ENDURECIDO. Sem sinais flogísticos. Principal suspeita?",
+    alternativas: {
+      A: "Paraganglioma.",
+      B: "NEOPLASIA MALIGNA (linfonodo metastático).",
+      C: "Anomalia congênita.",
+      D: "Linfonodomegalia reacional."
+    },
+    gabarito: "B",
+    explicacao: "Nódulo cervical >2 cm + ENDURECIDO + EVOLUÇÃO >3 meses + ADULTO TABAGISTA = ALTÍSSIMA SUSPEITA DE LINFONODO METASTÁTICO de carcinoma escamoso (CEC) DE CABEÇA E PESCOÇO (orofaringe, laringe, base de língua, hipofaringe). Investigar: exame de via aérea superior (laringoscopia, nasofaringoscopia) + PAAF do nódulo + TC/RM. 80% dos nódulos cervicais em ADULTOS são neoplásicos (regra dos 80 de Skandalakis). PARAGANGLIOMA é pulsátil, em local específico (corpo carotídeo). Linfonodomegalia REACIONAL: pequena, móvel, fugaz. Anomalia congênita (cisto branquial) em jovens."
+  },
+  {
+    n: 210,
+    banca: "USP/FUVEST 2026 — EC6 Coloproctologia",
+    especialidade: "Cirurgia",
+    tema: "Cabeça e Pescoço",
+    subtemas: ["Angina de Ludwig", "Infecção odontogênica"],
+    dificuldade: "Médio",
+    temImagem: false,
+    enunciado: "Homem, 32 anos, 4 dias pós-extração 2º molar inferior E. Febre + queda EG + AUMENTO DE VOLUME CERVICAL bilateral, drenagem purulenta pela mucosa. Edema/hiperemia em REGIÃO SUBMANDIBULAR. Diagnóstico e complicação?",
+    alternativas: {
+      A: "Actinomicose / sepse.",
+      B: "Cisto dentígero / necrose mandibular.",
+      C: "Abscesso cervical / necrose mandibular.",
+      D: "ANGINA DE LUDWIG / OBSTRUÇÃO RESPIRATÓRIA."
+    },
+    gabarito: "D",
+    explicacao: "ANGINA DE LUDWIG: CELULITE BILATERAL dos espaços submandibular + sublingual + submentoniano de origem ODONTOGÊNICA (frequentemente 2º/3º molares inferiores). Edema brawny rapidamente progressivo, ELEVAÇÃO DO ASSOALHO BUCAL e DESLOCAMENTO POSTERIOR DA LÍNGUA → OBSTRUÇÃO RESPIRATÓRIA AGUDA (principal causa de morte). EMERGÊNCIA: 1) MANEJO DE VIA AÉREA precoce (IOT difícil, considerar traqueostomia/cricotireoidostomia); 2) ATB amplo espectro (anaeróbios + Gram+); 3) DRENAGEM CIRÚRGICA dos espaços. Mortalidade ainda significativa se não tratada. Actinomicose (A) é crônica, indolente."
+  }
+);
+
+console.log("Bloco 3 EC6 (181-210) adicionado");
+
+// ==================== EC6 COLOPROCTOLOGIA - Bloco 4 (211-240) ====================
+// Tireoide, paratireoide, urologia, sífilis, CA esôfago/gástrico/reto, hepatobiliar/pâncreas, bariátrica
+QUESTOES.push(
+  {
+    n: 211,
+    banca: "USP/FUVEST 2026 — EC6 Coloproctologia",
+    especialidade: "Cirurgia",
+    tema: "Endocrinologia Cirúrgica",
+    subtemas: ["Tireotoxicose", "Doença de Graves", "Cintilografia"],
+    dificuldade: "Médio",
+    temImagem: false,
+    enunciado: "Mulher, 43 anos, tremores, vasodilatação, agitação, palpitação. Aumento DIFUSO da tireoide, SEM exoftalmo ou mixedema. TSH <0,01, T4L 2,2. Hipótese e achados esperados na cintilografia?",
+    alternativas: {
+      A: "Hipertireoidismo - tireoidite - HIPOCAPTAÇÃO difusa.",
+      B: "Hipertireoidismo - tireoidite - HIPERCAPTAÇÃO difusa.",
+      C: "Tireotoxicose - tireoidite - HIPOCAPTAÇÃO difusa.",
+      D: "Tireotoxicose - tireoidite - HIPERCAPTAÇÃO difusa."
+    },
+    gabarito: "D",
+    explicacao: "DIFERENCIAÇÃO ENTRE TIREOTOXICOSE E HIPERTIREOIDISMO: TIREOTOXICOSE = síndrome clínica de excesso de hormônio tireoidiano (independente da causa). HIPERTIREOIDISMO = hiperprodução pela tireoide (subconjunto da tireotoxicose). CINTILOGRAFIA: HIPERCAPTAÇÃO difusa = doença de GRAVES (hiperprodução autoimune, mais comum); HIPOCAPTAÇÃO = tireoidite subaguda/silenciosa, tireotoxicose factícia, struma ovarii. A imagem clínica de bócio difuso + tireotoxicose sem oftalmopatia é compatível com GRAVES inicial = HIPERCAPTAÇÃO. ATENÇÃO: o gabarito oficial considera o termo 'tireoidite' como genérico - apenas a opção D combina tireotoxicose + hipercaptação. Tecnicamente o quadro é GRAVES, não tireoidite."
+  },
+  {
+    n: 212,
+    banca: "USP/FUVEST 2026 — EC6 Coloproctologia",
+    especialidade: "Cirurgia",
+    tema: "Endocrinologia Cirúrgica",
+    subtemas: ["Carcinoma anaplásico de tireoide", "Insuficiência respiratória"],
+    dificuldade: "Médio",
+    temImagem: false,
+    enunciado: "Mulher, 72 anos, INSUFICIÊNCIA RESPIRATÓRIA. Há muitos anos teve nódulos cervicais. Há 3 SEMANAS: CRESCIMENTO RÁPIDO + piora de voz e respiração. Hipótese?",
+    alternativas: {
+      A: "CARCINOMA ANAPLÁSICO DA TIREOIDE.",
+      B: "Carcinoma papilífero da tireoide.",
+      C: "Carcinoma folicular da tireoide.",
+      D: "Carcinoma medular da tireoide."
+    },
+    gabarito: "A",
+    explicacao: "CARCINOMA ANAPLÁSICO DA TIREOIDE: neoplasia indiferenciada, AGRESSIVA, das mais letais conhecidas (sobrevida média 6 meses). Apresentação clássica: IDOSO (>60 anos) com BÓCIO de longa data + CRESCIMENTO RÁPIDO (semanas) + sintomas COMPRESSIVOS (rouquidão, disfagia, dispneia, INSUFICIÊNCIA RESPIRATÓRIA por invasão traqueal). Frequentemente surge sobre carcinoma diferenciado pré-existente (desdiferenciação). Tratamento: paliativo na maioria (traqueostomia para via aérea, QT/RT). Carcinoma papilífero/folicular crescem em ANOS, não semanas. Medular tem síntese de calcitonina."
+  },
+  {
+    n: 213,
+    banca: "USP/FUVEST 2026 — EC6 Coloproctologia",
+    especialidade: "Cirurgia",
+    tema: "Endocrinologia Cirúrgica",
+    subtemas: ["Feocromocitoma", "Crise hipertensiva", "Risco anestésico"],
+    dificuldade: "Médio",
+    temImagem: false,
+    enunciado: "Homem, 35 anos, admitido para TIREOIDECTOMIA por nódulo Bethesda IV. SEM avaliação pré-anestésica. Em anamnese revela episódios PAROXÍSTICOS de mal-estar com palidez + sudorese (PA 190x120). Massa abdominal 5 cm no QSE. Atitude e diagnóstico?",
+    alternativas: {
+      A: "SUSPENDER A OPERAÇÃO; FEOCROMOCITOMA.",
+      B: "Suspender a operação; tumor pancreático produtor de VIP.",
+      C: "Manter a operação; carcinoma medular da tireoide.",
+      D: "Manter a operação; paraganglioma intratireoideo."
+    },
+    gabarito: "A",
+    explicacao: "FEOCROMOCITOMA NÃO DIAGNOSTICADO + cirurgia eletiva = RISCO PROIBITIVO DE MORTE POR CRISE HIPERTENSIVA INTRAOPERATÓRIA. Tríade clássica: CEFALEIA + SUDORESE + PALPITAÇÕES paroxísticas + HAS PAROXÍSTICA. A massa em QSE sugere TUMOR ADRENAL. SUSPENDER a cirurgia IMEDIATAMENTE. Investigar: catecolaminas/metanefrinas urinárias + TC/RM. SE confirmado: BLOQUEIO ALFA-ADRENÉRGICO (fenoxibenzamina) por 7-14 dias ANTES de qualquer cirurgia, depois beta-bloqueio. Pode ser parte de NEM 2 (carcinoma medular + feocromocitoma + HPP) - ainda mais perigoso!"
+  },
+  {
+    n: 214,
+    banca: "USP/FUVEST 2026 — EC6 Coloproctologia",
+    especialidade: "Cirurgia",
+    tema: "Urologia",
+    subtemas: ["Pielonefrite obstrutiva", "Nefrostomia/duplo J"],
+    dificuldade: "Médio",
+    temImagem: false,
+    enunciado: "Homem, 42 anos, cólica renal E + febre 38,3°C, dor refratária, hematúria + piúria, TC: cálculo 7 mm em ureter distal E com hidronefrose. Mantém febre + reduz diurese. Conduta correta?",
+    alternativas: {
+      A: "RM (melhor sensibilidade que TC).",
+      B: "Terapia expulsiva para cálculos <10 mm INDEPENDENTE de infecção.",
+      C: "PIELONEFRITE OBSTRUTIVA = DERIVAÇÃO URGENTE via NEFROSTOMIA percutânea ou CATETER DUPLO J.",
+      D: "Tratar ambulatorialmente com ATB oral + AINE."
+    },
+    gabarito: "C",
+    explicacao: "PIELONEFRITE OBSTRUTIVA / UROSSEPSE OBSTRUTIVA: emergência urológica. Cálculo + infecção urinária + sinais sistêmicos (febre, oligúria) = RISCO DE SEPSE GRAVE/CHOQUE SÉPTICO. Conduta IMEDIATA: 1) ATB EV amplo espectro (cobertura para gram-negativos); 2) DRENAGEM URGENTE da via excretora obstruída - NEFROSTOMIA PERCUTÂNEA (preferida se sepse grave) ou CATETER DUPLO J. NÃO TENTAR tratar o cálculo na fase aguda. Após resolução da infecção, tratar o cálculo eletivamente (LECO, ureteroscopia). Terapia expulsiva está CONTRAINDICADA em quadro infeccioso. TC sem contraste é padrão-ouro para cálculos."
+  },
+  {
+    n: 215,
+    banca: "USP/FUVEST 2026 — EC6 Coloproctologia",
+    especialidade: "Cirurgia",
+    tema: "Urologia/Oncologia",
+    subtemas: ["Carcinoma de células renais", "Trombo tumoral em cava"],
+    dificuldade: "Difícil",
+    temImagem: true,
+    enunciado: "Homem, 55 anos, dor lombar D + perda 10 kg em 6m. TC: extensa lesão renal D + TROMBO TUMORAL em veia renal e cava infradiafragmática. Sem linfonodos. Microsondulos pulmonares 0,5 cm inespecíficos. Diagnóstico e conduta?",
+    alternativas: {
+      A: "Localmente avançado; QT com cisplatina pré-op.",
+      B: "Metastático em cava; sistêmico + RT.",
+      C: "TUMOR RENAL LOCALMENTE AVANÇADO; NEFRECTOMIA RADICAL DIREITA + TROMBECTOMIA DE CAVA.",
+      D: "Doença avançada; tratamento paliativo."
+    },
+    gabarito: "C",
+    explicacao: "CARCINOMA DE CÉLULAS RENAIS (CCR) com TROMBO TUMORAL NA VEIA CAVA INFERIOR: classificação de Mayo Clinic (níveis I-IV). Trombo infradiafragmático = nível II-III. Não é metástase (é extensão tumoral por contigüidade vascular) - LOCALMENTE AVANÇADO. Tratamento: NEFRECTOMIA RADICAL + TROMBECTOMIA DE CAVA (cirurgia complexa, abordagem vascular). CCR é QUIMIORRESISTENTE - cisplatina não tem papel; tratamento sistêmico moderno em CCR avançado/metastático: TKI (sunitinibe, axitinibe) e/ou IMUNOTERAPIA (nivolumabe+ipilimumabe). Microsondulos pulmonares 0,5 cm são INESPECÍFICOS. Mesmo com doença metastática, NEFRECTOMIA CITORREDUTORA pode ser indicada em casos selecionados."
+  },
+  {
+    n: 216,
+    banca: "USP/FUVEST 2026 — EC6 Coloproctologia",
+    especialidade: "Cirurgia",
+    tema: "Infectologia",
+    subtemas: ["Sífilis tratada", "VDRL vs FTA-ABS"],
+    dificuldade: "Médio",
+    temImagem: false,
+    enunciado: "Homem, 32 anos, sífilis primária diagnosticada há 14m (cancro indolor regredido, VDRL 1:64, FTA+, HIV/HBV/HCV negativos), tratada com penicilina benzatina dose única. Atual: VDRL 1:4 + FTA reagente. Interpretação?",
+    alternativas: {
+      A: "Falha terapêutica - posologia adequada seria 3 doses.",
+      B: "Reinfecção - novo tratamento indicado.",
+      C: "Diagnóstico duvidoso - FTA-ABS falso-positivo.",
+      D: "RESPOSTA IMUNOLÓGICA ESPERADA - VDRL caiu adequadamente e FTA pode permanecer reagente."
+    },
+    gabarito: "D",
+    explicacao: "SEGUIMENTO SOROLÓGICO DA SÍFILIS: TRATAMENTO ADEQUADO de sífilis primária = PENICILINA BENZATINA 2,4 milhões UI DOSE ÚNICA (sífilis primária, secundária ou latente RECENTE <1 ano). Resposta sorológica satisfatória: QUEDA do VDRL ≥4 DILUIÇÕES (2 títulos) em até 6-12 meses. Caso: VDRL 1:64 → 1:4 = queda de 4 diluições = RESPOSTA ADEQUADA. FTA-ABS (TREPONÊMICO) - permanece REAGENTE para SEMPRE em quem teve sífilis (cicatriz sorológica). NÃO é falso-positivo. A persistência do FTA reagente NÃO indica falha terapêutica nem reinfecção. Tratamento foi correto."
+  },
+  {
+    n: 217,
+    banca: "USP/FUVEST 2026 — EC6 Coloproctologia",
+    especialidade: "Cirurgia",
+    tema: "Urologia",
+    subtemas: ["Litíase renal", "Prevenção", "Cálcio"],
+    dificuldade: "Médio",
+    temImagem: false,
+    enunciado: "Sobre PREVENÇÃO DE LITÍASE RENAL recorrente, qual orientação dietética está CORRETA?",
+    alternativas: {
+      A: "INGESTÃO ADEQUADA DE CÁLCIO ALIMENTAR é recomendada - reduz absorção intestinal de OXALATO.",
+      B: "Citrato de potássio empiricamente em todos.",
+      C: "Restrição de frutas cítricas (acidez urinária).",
+      D: "Minimizar cálcio (aumenta excreção urinária)."
+    },
+    gabarito: "A",
+    explicacao: "PARADIGMA MODERNO DA LITÍASE CÁLCICA: a restrição de cálcio dietético AUMENTA O RISCO de cálculos (contraintuitivo!). MECANISMO: cálcio no intestino LIGA-SE AO OXALATO, formando complexo NÃO-ABSORVÍVEL eliminado nas fezes. Sem cálcio dietético, OXALATO LIVRE é absorvido, AUMENTA OXALÚRIA, gerando cálculos de oxalato de cálcio. Recomendação: INGESTÃO NORMAL de cálcio alimentar (1000-1200 mg/dia, dietético, NÃO suplementação). Outras medidas: hidratação (urina >2,5L/dia), restrição de sódio, oxalato e proteína animal. Citrato de potássio: só após avaliação metabólica (hipocitratúria, RTA). Citrato (frutas cítricas) é PROTETOR contra cálculos."
+  },
+  {
+    n: 218,
+    banca: "USP/FUVEST 2026 — EC6 Coloproctologia",
+    especialidade: "Cirurgia",
+    tema: "Urologia",
+    subtemas: ["Cólica nefrética", "Diagnóstico por imagem"],
+    dificuldade: "Fácil",
+    temImagem: false,
+    enunciado: "Mulher, 34 anos, dor lombar E em cólica + escurecimento da urina + Giordano+ E. Após analgésicos parenterais, próxima conduta?",
+    alternativas: {
+      A: "Exames + ATB empírica.",
+      B: "RNM de abdome e pelve.",
+      C: "RX simples + USG (mesma sensibilidade da TC).",
+      D: "EXAMES SÉRICOS/URINÁRIOS + TC ABDOME E PELVE SEM CONTRASTE."
+    },
+    gabarito: "D",
+    explicacao: "CÓLICA NEFRÉTICA: investigação padrão = TC DE ABDOME E PELVE SEM CONTRASTE (uro-TC sem contraste). Vantagens: sensibilidade ~95-98% para cálculos urinários, identifica localização/tamanho/densidade do cálculo, detecta hidronefrose, diagnósticos diferenciais (apendicite, diverticulite). RNM (B) não é exame de primeira linha para cálculos (cálculo é pobre em sinal, não capta contraste). USG (C) é boa para hidronefrose mas sensibilidade BAIXA para cálculos ureterais. Sem sinais infecciosos, ATB (A) não está indicado. Exames laboratoriais (Cr, urina I, hemograma) sempre complementares."
+  },
+  {
+    n: 219,
+    banca: "USP/FUVEST 2026 — EC6 Coloproctologia",
+    especialidade: "Cirurgia",
+    tema: "Urologia/Trauma",
+    subtemas: ["Lesão pedículo renal", "Trauma renal"],
+    dificuldade: "Difícil",
+    temImagem: false,
+    enunciado: "Homem, 39 anos, queda de andaime (~3m) há 4 dias, hematúria, dor lombar E. TC contrastada: RIM D normal + EXCLUSÃO RENAL COMPLETA À ESQUERDA. Diagnóstico e conduta?",
+    alternativas: {
+      A: "Trombose veia renal E; nefrectomia E.",
+      B: "Trombose artéria renal E; observação clínica.",
+      C: "Trombose artéria renal E; trombólise.",
+      D: "LESÃO DO PEDÍCULO RENAL ESQUERDO; REVASCULARIZAÇÃO OU ANGIOPLASTIA COM STENT."
+    },
+    gabarito: "D",
+    explicacao: "EXCLUSÃO RENAL COMPLETA PÓS-TRAUMA = lesão da ARTÉRIA RENAL ou avulsão do pedículo. Mecanismo: desaceleração brusca causa CISALHAMENTO da artéria renal (sem perfusão = rim não capta contraste). Trauma renal grau V (AAST). LIMITE DE TEMPO PARA SALVAR O RIM: 4-6 HORAS de isquemia quente (depois fibrose irreversível). NESTE CASO: 4 DIAS de exclusão = rim provavelmente não viável. Mesmo assim, indicação atual: ANGIOTOMOGRAFIA + tentativa de RESTAURAR FLUXO via STENT ENDOVASCULAR (menos invasivo, possibilidade de retorno parcial de função). Observação (B) inadequada (já se passou tempo). Nefrectomia (A) precoce em paciente estável é evitada quando há chance de recuperação."
+  },
+  {
+    n: 220,
+    banca: "USP/FUVEST 2026 — EC6 Coloproctologia",
+    especialidade: "Cirurgia",
+    tema: "Urologia/Oncologia",
+    subtemas: ["Câncer de bexiga", "VI-RADS", "RTUB"],
+    dificuldade: "Médio",
+    temImagem: true,
+    enunciado: "Homem, 66 anos, tabagista pesado, hematúria macroscópica terminal indolor. RM: lesão vegetante 7 cm em parede lateral E da bexiga, VI-RADS 4, sem linfonodos/hidronefrose. Conduta INICIAL?",
+    alternativas: {
+      A: "QT neoadjuvante baseada em cisplatina + cistoprostatectomia.",
+      B: "Cistoprostatectomia robô-assistida upfront + QT adjuvante.",
+      C: "QT + RT (preservação vesical).",
+      D: "RESSECÇÃO TRANSURETRAL DE BEXIGA (RTUB) - anatomopatológico definirá próximas condutas."
+    },
+    gabarito: "D",
+    explicacao: "INVESTIGAÇÃO DE TUMOR VESICAL: o passo OBRIGATÓRIO INICIAL é SEMPRE a RESSECÇÃO TRANSURETRAL DE BEXIGA (RTUB). Objetivos: 1) DIAGNÓSTICO HISTOPATOLÓGICO (urotelial vs outros tipos); 2) ESTADIAMENTO patológico (T1, T2, T3 - se invade músculo detrusor); 3) Em tumores NÃO-INVASIVOS (Ta, T1), a RTUB COMPLETA pode ser CURATIVA + BCG intravesical. VI-RADS 4 sugere doença INVASIVA MUSCULAR (alta probabilidade), mas o diagnóstico DEFINITIVO é PATOLÓGICO. Após RTUB confirmar T2+: discutir QT NEOADJUVANTE (cisplatina) + CISTECTOMIA RADICAL. NUNCA fazer cistectomia ou QT sem histopatológico definitivo."
+  },
+  {
+    n: 221,
+    banca: "USP/FUVEST 2026 — EC6 Coloproctologia",
+    especialidade: "Cirurgia",
+    tema: "Oncologia Cirúrgica",
+    subtemas: ["Adenocarcinoma de esôfago", "Epidemiologia"],
+    dificuldade: "Médio",
+    temImagem: true,
+    enunciado: "Sobre ADENOCARCINOMA DE ESÔFAGO:",
+    alternativas: {
+      A: "Maioria diagnosticada em estágio inicial pela vigilância do Barrett.",
+      B: "Incidência tem DIMINUÍDO drasticamente nos países ocidentais.",
+      C: "Mundialmente é o tipo MAIS COMUM de CA esofágico.",
+      D: "Tem prognóstico FAVORÁVEL se PRECOCE, mas MAIORIA é DETECTADA AVANÇADO - uma das neoplasias COM MAIOR LETALIDADE em ambos os sexos."
+    },
+    gabarito: "D",
+    explicacao: "ADENOCARCINOMA DE ESÔFAGO: tipo histológico EM ASCENSÃO no Ocidente (associado a DRGE, OBESIDADE, ESÔFAGO DE BARRETT, tabagismo). CEC ainda é o mais comum GLOBALMENTE (predomina no Oriente, África - associado álcool/tabaco/agentes irritativos). DETECÇÃO TARDIA é a regra (sintomas tardios: disfagia já indica doença avançada). PROGNÓSTICO RUIM: sobrevida em 5 anos ~20% global, <5% em doença avançada. Uma das neoplasias DIGESTIVAS MAIS LETAIS junto com pâncreas. Vigilância de Barrett detecta apenas FRAÇÃO dos casos (a maioria não tem Barrett conhecido). A alternativa D resume corretamente o cenário."
+  },
+  {
+    n: 222,
+    banca: "USP/FUVEST 2026 — EC6 Coloproctologia",
+    especialidade: "Cirurgia",
+    tema: "Oncologia Cirúrgica",
+    subtemas: ["Esofagectomia", "Neoadjuvância (CROSS)"],
+    dificuldade: "Médio",
+    temImagem: true,
+    enunciado: "Homem, 51 anos, tabagista, adenoCA de esôfago distal (36 cm da ADS), lesão circunferencial estenosante. TC: linfonodos regionais suspeitos. PET: hipercaptação no esôfago + linfonodos. Tratamento?",
+    alternativas: {
+      A: "TRATAMENTO NEOADJUVANTE seguido de ESOFAGECTOMIA EM 2 CAMPOS.",
+      B: "Esofagectomia com linfadenectomia em 3 campos de princípio.",
+      C: "Prótese endoscópica + QT definitiva.",
+      D: "Gastrectomia total com esofagectomia distal + D2."
+    },
+    gabarito: "A",
+    explicacao: "ADENOCARCINOMA DE ESÔFAGO DISTAL LOCALMENTE AVANÇADO (cT3/T4 cN+ pelo PET): tratamento PADRÃO atual = NEOADJUVÂNCIA (QT+RT - protocolo CROSS, ou FLOT em adenoCA da JEG/Siewert I-II) seguida de ESOFAGECTOMIA EM DOIS CAMPOS (linfadenectomia abdominal + torácica). Estudo CROSS: QT/RT neoadjuvante AUMENTA sobrevida em vs cirurgia isolada. ESOFAGECTOMIA EM 3 CAMPOS (linfadenectomia cervical) está reservada para CEC do esôfago MÉDIO/SUPERIOR ou casos selecionados de adeno de JEG com linfonodos cervicais positivos - NÃO é rotina em adenoCA distal. Prótese (C) é PALIATIVA (doença irressecável). Gastrectomia total + esofagectomia (D) seria para câncer GÁSTRICO PROXIMAL invadindo esôfago, não o contrário."
+  },
+  {
+    n: 223,
+    banca: "USP/FUVEST 2026 — EC6 Coloproctologia",
+    especialidade: "Cirurgia",
+    tema: "Oncologia Cirúrgica",
+    subtemas: ["GIST", "Imunohistoquímica"],
+    dificuldade: "Fácil",
+    temImagem: false,
+    enunciado: "Mulher, 67 anos, massa subepitelial 7 cm em grande curvatura gástrica, extra-gástrica à ecoendoscopia. Punção: neoplasia fusocelular, 10 mitoses/50CGA. IHQ: actina ML+, DOG-1+, CD117+. Diagnóstico?",
+    alternativas: {
+      A: "Linfoma.",
+      B: "Schwannoma.",
+      C: "Leiomiossarcoma.",
+      D: "TUMOR DO ESTROMA GASTROINTESTINAL (GIST)."
+    },
+    gabarito: "D",
+    explicacao: "GIST: marcadores PATOGNOMÔNICOS = CD117 (c-KIT) + DOG-1 POSITIVOS. Origem nas células intersticiais de Cajal (marcapasso intestinal). Aspectos morfológicos: tumor fusocelular ou epitelioide. ESTRATIFICAÇÃO DE RISCO de Miettinen-Lasota: baseado em LOCALIZAÇÃO (gástrico é menos agressivo que delgado/reto), TAMANHO e ÍNDICE MITÓTICO. Este caso: 7 cm + 10 mitoses/50CGA = RISCO INTERMEDIÁRIO-ALTO (gástrico). LEIOMIOMA/LEIOMIOSSARCOMA verdadeiros são RAROS no TGI (CD117 NEGATIVO, desmina+, actina+). SCHWANNOMA: S100+, CD117-. LINFOMA: CD20/CD3+, CD117-."
+  },
+  {
+    n: 224,
+    banca: "USP/FUVEST 2026 — EC6 Coloproctologia",
+    especialidade: "Cirurgia",
+    tema: "Oncologia Cirúrgica",
+    subtemas: ["Cirurgia do GIST", "Margens livres"],
+    dificuldade: "Médio",
+    temImagem: true,
+    enunciado: "GIST gástrico 7 cm na GRANDE CURVATURA, abaulando pâncreas/baço/cólon transverso SEM invasão direta, sem metástases. Conduta cirúrgica?",
+    alternativas: {
+      A: "GASTRECTOMIA SUBTOTAL COM LINFADENECTOMIA D2.",
+      B: "Gastrectomia total com D2.",
+      C: "Gastrectomia vertical (sleeve) com margens livres.",
+      D: "Gastrectomia total + esplenectomia + D2."
+    },
+    gabarito: "A",
+    explicacao: "CIRURGIA DO GIST: princípios = 1) RESSECÇÃO COM MARGENS LIVRES (R0), SEM necessidade de margens amplas (1 cm é suficiente); 2) SEM LINFADENECTOMIA SISTEMÁTICA (GIST raramente metastatiza por via linfática - <2-5%, exceto subtipos pediátricos); 3) EVITAR RUPTURA TUMORAL (sangramento, implante peritoneal); 4) Ressecção em cunha ou segmentar quando possível, gastrectomia formal quando necessário pelo tamanho/localização. Para tumor de 7 cm em grande curvatura: GASTRECTOMIA SUBTOTAL com margens livres geralmente suficiente. Erro do gabarito 'A': mencionar D2 - tecnicamente o GIST não requer linfadenectomia formal, mas a banca trata como cirurgia padrão. Imatinib (Gleevec) adjuvante por 3 anos se alto risco."
+  },
+  {
+    n: 225,
+    banca: "USP/FUVEST 2026 — EC6 Coloproctologia",
+    especialidade: "Cirurgia",
+    tema: "Oncologia Cirúrgica",
+    subtemas: ["Câncer de pâncreas", "Ressecabilidade"],
+    dificuldade: "Médio",
+    temImagem: true,
+    enunciado: "Homem, 65 anos, lesão sólida infiltrativa no processo uncinado pancreático com envolvimento da artéria e veia mesentérica superiores em MENOS DE 180°, sem trombose. Tronco celíaco livre. CA 19-9 1250. Classificação de ressecabilidade?",
+    alternativas: {
+      A: "BORDERLINE.",
+      B: "Ressecável.",
+      C: "Metastático.",
+      D: "Localmente avançado."
+    },
+    gabarito: "A",
+    explicacao: "CLASSIFICAÇÃO DE RESSECABILIDADE DO CÂNCER DE PÂNCREAS (NCCN/MD Anderson): RESSECÁVEL: sem contato vascular ou contato <180° com veias (VMS/VP) sem distorção. BORDERLINE-RESSECÁVEL: contato com VMS/VP >180° OU com distorção/trombose curta; contato ARTERIAL <180° (AMS, tronco celíaco, hepática); ou características anatômicas que dificultam R0. LOCALMENTE AVANÇADO/IRRESSECÁVEL: contato arterial >180°; envolvimento da aorta. METASTÁTICO: doença a distância. Este caso: contato com AMS <180° + VMS <180° SEM trombose = BORDERLINE. Tratamento: NEOADJUVÂNCIA com FOLFIRINOX (ou gencitabina+nabPaclitaxel) seguida de reavaliação de ressecabilidade."
+  },
+  {
+    n: 226,
+    banca: "USP/FUVEST 2026 — EC6 Coloproctologia",
+    especialidade: "Cirurgia",
+    tema: "Oncologia Cirúrgica",
+    subtemas: ["CA 19-9", "Avaliação de resposta"],
+    dificuldade: "Médio",
+    temImagem: false,
+    enunciado: "Adenocarcinoma de pâncreas borderline, CA 19-9 1250, tratado com QT neoadjuvante. Melhor forma de AVALIAR RESPOSTA ao tratamento?",
+    alternativas: {
+      A: "Melhora da dor.",
+      B: "Ganho de peso.",
+      C: "Diminuição do tamanho do tumor.",
+      D: "QUEDA DO MARCADOR TUMORAL (CA 19-9)."
+    },
+    gabarito: "D",
+    explicacao: "AVALIAÇÃO DE RESPOSTA À NEOADJUVÂNCIA EM CA DE PÂNCREAS: o CA 19-9 É O MELHOR INDICADOR. POR QUÊ? 1) Tumor pancreático tem RESPOSTA RADIOLÓGICA POBRE (estroma desmoplásico fibroso não regride significativamente mesmo com boa resposta tumoral); 2) Tamanho na TC PODE NÃO REFLETIR atividade tumoral residual; 3) CA 19-9 reflete VIABILIDADE TUMORAL e correlaciona com sobrevida. Queda de CA 19-9 >50% pós-neoadjuvância = bom prognóstico, candidatos a cirurgia. Dor (A) e peso (B) são SINTOMÁTICOS, não-objetivos. Tamanho na TC (C) - útil mas limitado, RECIST modificado é usado mas inferior ao CA 19-9. Pacientes com CA 19-9 NORMAL ao diagnóstico (10% não produzem) = uso de imagem isolada."
+  },
+  {
+    n: 227,
+    banca: "USP/FUVEST 2026 — EC6 Coloproctologia",
+    especialidade: "Cirurgia",
+    tema: "Cirurgia Esofágica",
+    subtemas: ["Acalasia tipo III", "Classificação de Chicago"],
+    dificuldade: "Difícil",
+    temImagem: true,
+    enunciado: "Homem, 50 anos, baiano, disfagia + regurgitação 4 anos, perda 9 kg, Eckardt 8. Manometria: ACALASIA TIPO III (Chicago 4.0). Sobre os achados:",
+    alternativas: {
+      A: "Acalasia com grau III RADIOLÓGICO.",
+      B: "Ausência de relaxamento configura o diagnóstico isolado.",
+      C: "ACALASIA TIPO III: CONTRAÇÃO ESPÁSTICA do corpo do esôfago, INDEPENDENTE do relaxamento do EIE.",
+      D: "RX sugere dismotilidade LEVE (corpo não dilatado)."
+    },
+    gabarito: "C",
+    explicacao: "CLASSIFICAÇÃO DE CHICAGO 4.0 DA ACALASIA (manometria de alta resolução): TIPO I (clássica): aperistalse SEM pressurização do corpo; TIPO II (com compressão): pressurização pan-esofágica em >20% das deglutições - MELHOR resposta a tratamento; TIPO III (ESPÁSTICA): contrações ESPÁSTICAS PREMATURAS no corpo do esôfago em ≥20% das deglutições - PIOR resposta a tratamentos convencionais (Heller/dilatação). Característica: ESPASMO independente do estado do esfíncter. CLASSIFICAÇÃO RADIOLÓGICA (Rezende para mega de Chagas: grau I a IV pela dilatação) não se aplica aqui. POEM (cardiomiotomia endoscópica) é EXCELENTE para tipo III (permite miotomia mais longa cobrindo segmento espástico)."
+  },
+  {
+    n: 228,
+    banca: "USP/FUVEST 2026 — EC6 Coloproctologia",
+    especialidade: "Cirurgia",
+    tema: "Cirurgia Esofágica",
+    subtemas: ["Tratamento de acalasia tipo III", "POEM vs Heller"],
+    dificuldade: "Difícil",
+    temImagem: true,
+    enunciado: "Acalasia tipo III, paciente jovem, falha de dilatações. Melhor tratamento?",
+    alternativas: {
+      A: "Esofagectomia por ser jovem.",
+      B: "CARDIOMIOTOMIA LONGA + FUNDOPLICATURA PARCIAL pode tratar disfagia SEM grande risco de refluxo grave.",
+      C: "POEM porque na acalasia tipo III não há refluxo após tratamento.",
+      D: "Cardiomiotomia longa SEM fundoplicatura."
+    },
+    gabarito: "B",
+    explicacao: "ACALASIA TIPO III - MIOTOMIA LONGA: necessária para cobrir TODO o segmento de espasmo esofágico (pode estender >10 cm), maior que a miotomia de Heller convencional (5-7 cm). POEM (cardiomiotomia endoscópica per-oral) é EXCELENTE OPÇÃO pois permite controlar a EXTENSÃO da miotomia conforme manometria - melhor para tipo III. PORÉM, POEM tem ALTA TAXA DE REFLUXO PÓS-OP (até 40-50%) pois NÃO ASSOCIA fundoplicatura. CARDIOMIOTOMIA DE HELLER LAPAROSCÓPICA + FUNDOPLICATURA PARCIAL (Dor anterior ou Toupet posterior, 180-270°) oferece controle de refluxo. A alternativa B reconhece a vantagem da fundoplicatura parcial em PREVENIR refluxo grave - completa não usada por causar disfagia em motilidade aperistáltica. POEM SEM fundoplicatura = refluxo significativo (C errada)."
+  },
+  {
+    n: 229,
+    banca: "USP/FUVEST 2026 — EC6 Coloproctologia",
+    especialidade: "Cirurgia",
+    tema: "Oncologia Cirúrgica",
+    subtemas: ["Câncer gástrico avançado", "Estadiamento"],
+    dificuldade: "Médio",
+    temImagem: true,
+    enunciado: "Homem, 59 anos, adenocarcinoma gástrico DIFUSO em ANEL DE SINETE, lesão úlcero-infiltrativa começando 4 cm abaixo da TEG até antro proximal. TC abdome (mostra invasão local mas sem ascite/lesões a distância clara). Conduta?",
+    alternativas: {
+      A: "RM de fígado.",
+      B: "PET-CT.",
+      C: "QT perioperatória (esquema FLOT).",
+      D: "CIRURGIA."
+    },
+    gabarito: "D",
+    explicacao: "PERSPECTIVA DO GABARITO OFICIAL: a banca considera que diante de doença extensa em paciente sintomático, com TC já caracterizada, a CIRURGIA é a próxima etapa. ATENÇÃO: Esta é uma resposta debatível. NA PRÁTICA MODERNA, câncer gástrico AVANÇADO (cT3/T4 ou N+) tem indicação de QT PERIOPERATÓRIA (FLOT) ANTES da cirurgia (estudo FLOT4). PET/CT pode ser solicitado para descartar metástases ocultas em casos de alta suspeita. RM hepática para caracterizar lesões hepáticas inespecíficas. CONTEXTO CT difuso anel-de-sinete = LINITE PLÁSTICA, prognóstico ruim, indicação clássica de QT NEOADJUVANTE. Possível anulação ou gabarito C (perioperatória). Seguindo gabarito oficial: D."
+  },
+  {
+    n: 230,
+    banca: "USP/FUVEST 2026 — EC6 Coloproctologia",
+    especialidade: "Cirurgia",
+    tema: "Oncologia Cirúrgica",
+    subtemas: ["Cirurgia paliativa", "Gastrectomia higiênica"],
+    dificuldade: "Difícil",
+    temImagem: false,
+    enunciado: "Durante a cirurgia, tumor gástrico INVADIA segmentos 2 e 3 do fígado e CORPO PANCREÁTICO. Fundo gástrico livre. Conduta intraoperatória?",
+    alternativas: {
+      A: "Jejunostomia.",
+      B: "GASTRECTOMIA HIGIÊNICA (paliativa).",
+      C: "Gastrectomia subtotal + pancreatoesplenectomia + hepatectomia 2/3 + D2.",
+      D: "Gastrectomia total + pancreatoesplenectomia + hepatectomia 2/3 + D2."
+    },
+    gabarito: "B",
+    explicacao: "GASTRECTOMIA HIGIÊNICA (paliativa) - indicada quando há doença AVANÇADA NÃO-CURATIVA mas com SINTOMAS (sangramento, obstrução) ou EXTENSA INVASÃO MULTIESTRUTURAS impossibilitando R0 com morbimortalidade aceitável. Caso: invasão simultânea de FÍGADO (segs 2-3) + PÂNCREAS = doença T4b extensa. Ressecção multiorgânica (C/D) tem MORBIMORTALIDADE EXTREMAMENTE ALTA com sobrevida questionável - NÃO É padrão. Filosofia atual: NÃO oferecer ressecção heroica em CA gástrico T4 multiorgânico. GASTRECTOMIA PALIATIVA (subtotal/parcial) trata sintomas, evita progressão obstrutiva, mas SEM intuito curativo. Jejunostomia (A) só nutricional, sem tratar a doença. Posteriormente QT paliativa."
+  },
+  {
+    n: 231,
+    banca: "USP/FUVEST 2026 — EC6 Coloproctologia",
+    especialidade: "Cirurgia",
+    tema: "Coloproctologia",
+    subtemas: ["Fissura anal crônica", "Tratamento conservador"],
+    dificuldade: "Médio",
+    temImagem: false,
+    enunciado: "Mulher, 55 anos, sangramento doloroso + dor à evacuação há 2 meses. Exame: fissura anal CRÔNICA 1 cm em linha média POSTERIOR + mínimo sangramento. Conduta?",
+    alternativas: {
+      A: "Esfincterotomia BILATERAL com secção COMPLETA do esfíncter interno.",
+      B: "Cirurgia + ressecção de tecido hemorroidário e plicomas.",
+      C: "ESFINCTEROTOMIA deve ser PRECEDIDA da correção de HÁBITOS alimentares/intestinais + VASODILATADOR TÓPICO por pelo menos 30 dias.",
+      D: "Dilatação anal ambulatorial + banhos de assento."
+    },
+    gabarito: "C",
+    explicacao: "FISSURA ANAL CRÔNICA (>4-6 semanas, com plicoma sentinela, papila hipertrófica, fibras esfincterianas visíveis): ALGORITMO de tratamento começa SEMPRE com TRATAMENTO CLÍNICO antes de cirurgia: 1) DIETÉTICO: fibras, hidratação (amolecer fezes); 2) HÁBITOS intestinais (não forçar evacuação); 3) Vasodilatadores TÓPICOS: NITROGLICERINA 0,2% ou DILTIAZEM 2% pomada por 6-8 SEMANAS - relaxam o esfíncter interno hipertônico, melhoram cicatrização (~70% sucesso). 4) Toxina botulínica em casos refratários. ESFINCTEROTOMIA LATERAL INTERNA (SOMENTE UNILATERAL, parcial, até a linha pectínea) é o tratamento cirúrgico padrão - só após falha clínica. BILATERAL ou TOTAL (A) causa INCONTINÊNCIA. Dilatação anal (D) está ABANDONADA (alta incontinência)."
+  },
+  {
+    n: 232,
+    banca: "USP/FUVEST 2026 — EC6 Coloproctologia",
+    especialidade: "Cirurgia",
+    tema: "Cirurgia Bariátrica",
+    subtemas: ["Deiscência pós-bypass", "Pneumoperitônio"],
+    dificuldade: "Médio",
+    temImagem: true,
+    enunciado: "Mulher, 36 anos, D7 pós-bypass em Y de Roux, dor abdominal súbita, FC 120, PA 70x50, DB+. TC: pneumoperitônio + líquido livre + extravasamento de contraste. Hipótese?",
+    alternativas: {
+      A: "Hemorragia digestiva.",
+      B: "Trombose esplenomesentérica.",
+      C: "Estenose da gastroenteroanastomose.",
+      D: "DEISCÊNCIA DE ANASTOMOSE ou LINHA DE GRAMPEAMENTO."
+    },
+    gabarito: "D",
+    explicacao: "DEISCÊNCIA / FÍSTULA pós-BYPASS gástrico em Y de Roux: complicação grave (1-5% dos casos), MORTALIDADE até 15% se não reconhecida rapidamente. PONTOS DE FÍSTULA: 1) Gastrojejunoanastomose (mais comum); 2) Linha de grampeamento do remanescente gástrico (estômago excluso); 3) Enteroanastomose pé do Y. Apresentação típica entre D3-D10: dor abdominal, taquicardia (>120 bpm é SINAL DE ALARME), febre, sinais peritoneais, sepse. TC: PNEUMOPERITÔNIO + LÍQUIDO LIVRE + EXTRAVASAMENTO DE CONTRASTE ORAL. Hemorragia digestiva (A): sangue/anemia. Trombose mesentérica (B): isquemia, sangue venoso. Estenose (C): vômitos, sem peritonite."
+  },
+  {
+    n: 233,
+    banca: "USP/FUVEST 2026 — EC6 Coloproctologia",
+    especialidade: "Cirurgia",
+    tema: "Cirurgia Bariátrica",
+    subtemas: ["Tratamento de deiscência grave", "Sepse"],
+    dificuldade: "Médio",
+    temImagem: true,
+    enunciado: "Deiscência de bypass gástrico com PA 70x50, FC 120, DB+, pneumoperitônio + líquido livre. Tratamento?",
+    alternativas: {
+      A: "LAPAROTOMIA EXPLORADORA.",
+      B: "Dilatação endoscópica.",
+      C: "Observação + ATB amplo espectro.",
+      D: "Endoscopia + SNG."
+    },
+    gabarito: "A",
+    explicacao: "DEISCÊNCIA com INSTABILIDADE HEMODINÂMICA + PERITONITE DIFUSA (DB+, pneumoperitônio, líquido livre, taquicardia, hipotensão) = INDICAÇÃO ABSOLUTA DE CIRURGIA URGENTE - LAPAROTOMIA ou LAPAROSCOPIA. Princípios: 1) Lavagem da cavidade; 2) Identificação e tentativa de reparo do orifício se possível (frequentemente impossível por friabilidade dos tecidos); 3) DRENAGEM exteriorizando a fístula; 4) JEJUNOSTOMIA NUTRICIONAL; 5) ATB amplo espectro. Após estabilização, ENDOSCOPIA pode complementar com colocação de PRÓTESE ENDOSCÓPICA para cobrir o orifício. Observação (C) em paciente instável = morte. Dilatação (B) é para estenose, NÃO fístula. Endoscopia isolada (D) inadequada no paciente instável."
+  },
+  {
+    n: 234,
+    banca: "USP/FUVEST 2026 — EC6 Coloproctologia",
+    especialidade: "Cirurgia",
+    tema: "Coloproctologia/Oncologia",
+    subtemas: ["Câncer de reto", "Neoadjuvância", "Fáscia mesorretal"],
+    dificuldade: "Médio",
+    temImagem: true,
+    enunciado: "Homem, 45 anos, adenoCA pouco diferenciado de RETO MÉDIO (7 cm da borda anal), linfonodos mesorretais positivos, invasão parede >10 mm, FÁSCIA MESORRETAL COMPROMETIDA. Sem metástases.",
+    alternativas: {
+      A: "ALTA chance de recidiva pélvica - NEOADJUVÂNCIA COM QT/RT JUSTIFICADA.",
+      B: "Retossigmoidectomia com excisão PARCIAL do mesorreto.",
+      C: "Neoadjuvância com imunoterapia EXCLUSIVA.",
+      D: "Amputação abdominoperineal para controle de margem distal."
+    },
+    gabarito: "A",
+    explicacao: "CÂNCER DE RETO MÉDIO LOCALMENTE AVANÇADO (cT3 invasão >5 mm, cN+, FÁSCIA MESORRETAL COMPROMETIDA = MARGEM CIRCUNFERENCIAL AMEAÇADA): ALTO RISCO DE RECIDIVA LOCAL. Tratamento PADRÃO: NEOADJUVÂNCIA com QT/RT longa (FLOT/CAPOX + RT 50,4 Gy) → REAVALIAÇÃO → CIRURGIA com EXCISÃO TOTAL DO MESORRETO (TME) + reconstrução (retossigmoidectomia baixa com anastomose colorretal/coloanal + ileostomia derivativa). Atualmente TNT (TOTAL NEOADJUVANT THERAPY) é padrão emergente. TME PARCIAL (B) - INADEQUADA, princípio é TME COMPLETA (Heald). Imunoterapia (C) só se DEFICIENTE DE MMR (este é PROFICIENTE). Amputação (D) só se tumor de reto BAIXO invadindo esfíncter (margem distal <1-2 cm)."
+  },
+  {
+    n: 235,
+    banca: "USP/FUVEST 2026 — EC6 Coloproctologia",
+    especialidade: "Cirurgia",
+    tema: "Coloproctologia/Oncologia",
+    subtemas: ["Seguimento pós-CA retal", "Recidiva"],
+    dificuldade: "Médio",
+    temImagem: false,
+    enunciado: "Um ano APÓS cirurgia radical para CA de reto: SANGRAMENTO INTERMITENTE nas fezes. Conduta correta?",
+    alternativas: {
+      A: "TOMOGRAFIA DE ABDOME COM CONTRASTE EV INDICADA.",
+      B: "Risco de SEGUNDA neoplasia colorretal é elevado.",
+      C: "Profilaxia pós-op antitrombótica = causa mais provável.",
+      D: "Colonoscopia menos importante se TC for normal."
+    },
+    gabarito: "A",
+    explicacao: "SEGUIMENTO PÓS-CA COLORRETAL (NCCN/ESMO): 1) Consulta + CEA + exame físico a cada 3-6 meses por 2 anos, depois cada 6 meses até 5 anos; 2) TC TÓRAX/ABDOME/PELVE COM CONTRASTE anualmente por 5 anos; 3) COLONOSCOPIA aos 1 ano (se incompleta no pré-op) ou aos 3 anos. SANGRAMENTO NAS FEZES PÓS-CIRURGIA = ALARME para: A) RECIDIVA LOCAL (mais comum em 1º-2º ano); B) METÁSTASE; C) SEGUNDA NEOPLASIA (risco aumentado mas em fases TARDIAS, não em 1 ano); D) Lesões benignas (hemorroidas, fissura). INVESTIGAÇÃO: TC com contraste (avaliar recidiva local + metástases) + COLONOSCOPIA (lesão anastomótica, segunda neoplasia). NÃO atribuir a anticoagulante (C) sem investigar. Colonoscopia (D) é ESSENCIAL mesmo com TC normal (recidiva pode ser mucosa)."
+  },
+  {
+    n: 236,
+    banca: "USP/FUVEST 2026 — EC6 Coloproctologia",
+    especialidade: "Cirurgia",
+    tema: "Oncologia Cirúrgica",
+    subtemas: ["Tumor sólido pseudopapilar", "Mulher jovem"],
+    dificuldade: "Difícil",
+    temImagem: true,
+    enunciado: "Mulher, 24 anos, achado incidental de massa em CAUDA pancreática 9 cm, contornos bem definidos, CÁPSULA aparente, ÁREAS SÓLIDAS E CÍSTICAS + CALCIFICAÇÕES periféricas, realce discreto-moderado. Diagnóstico?",
+    alternativas: {
+      A: "Neoplasia cística serosa.",
+      B: "TUMOR SÓLIDO PSEUDOPAPILAR (Frantz).",
+      C: "Neoplasia cística mucinosa.",
+      D: "Walled-off necrosis."
+    },
+    gabarito: "B",
+    explicacao: "TUMOR SÓLIDO PSEUDOPAPILAR DO PÂNCREAS (TSPN, tumor de FRANTZ): neoplasia RARA do pâncreas, PRINCIPALMENTE em MULHERES JOVENS (20-30 anos), localização mais comum CAUDA pancreática. Características: TUMOR ENCAPSULADO + MISTO sólido-cístico + degeneração hemorrágica/cística + calcificações periféricas. Biologia: BAIXO grau de malignidade (raras metástases), PROGNÓSTICO BOM após ressecção R0. NEOPLASIA SEROSA (A): mulheres MAIS VELHAS, microcística 'favo de mel'. MUCINOSA (C): mulheres meia-idade, corpo/cauda, septações, sem comunicação com ducto. WALLED-OFF NECROSIS (D): coleção necrótica pós-pancreatite aguda, contexto clínico diferente. Tratamento: ressecção cirúrgica."
+  },
+  {
+    n: 237,
+    banca: "USP/FUVEST 2026 — EC6 Coloproctologia",
+    especialidade: "Cirurgia",
+    tema: "Cirurgia Pancreática",
+    subtemas: ["Pancreatectomia distal", "Indicação cirúrgica"],
+    dificuldade: "Fácil",
+    temImagem: false,
+    enunciado: "Tumor sólido pseudopapilar de 9 cm em cauda pancreática (mulher jovem, 24 anos). Conduta?",
+    alternativas: {
+      A: "Necrosectomia.",
+      B: "Seguimento clínico.",
+      C: "PANCREATECTOMIA DISTAL.",
+      D: "Cistojejuno anastomose."
+    },
+    gabarito: "C",
+    explicacao: "TUMOR SÓLIDO PSEUDOPAPILAR é uma NEOPLASIA com POTENCIAL DE MALIGNIDADE (baixo grau) - INDICAÇÃO CIRÚRGICA EM TODOS OS CASOS, mesmo assintomáticos. Localização em CAUDA pancreática (9 cm) = PANCREATECTOMIA DISTAL (CORPOCAUDAL): ressecção do corpo e cauda do pâncreas, geralmente COM ESPLENECTOMIA (proximidade do hilo esplênico, dificuldade de preservar vasos esplênicos em tumor grande - 9 cm), embora seja desejável tentar preservar baço quando possível (técnica de Warshaw ou Kimura). Sobrevida em 5 anos >95% após cirurgia R0. NÃO é cisto puro (necrosectomia/cistojejunoanastomose erradas). NÃO é benigno absoluto (seguimento clínico inadequado)."
+  },
+  {
+    n: 238,
+    banca: "USP/FUVEST 2026 — EC6 Coloproctologia",
+    especialidade: "Cirurgia",
+    tema: "Cirurgia Bariátrica",
+    subtemas: ["Hérnia interna pós-bypass", "Espaços de Petersen"],
+    dificuldade: "Difícil",
+    temImagem: true,
+    enunciado: "Mulher, 59 anos, 2 anos pós-bypass em Y de Roux, perda 55 kg, dor abdominal recorrente (1 sem, episódios prévios). TC: ROTAÇÃO DE VASOS MESENTÉRICOS no mesogástrio + alças de delgado AGRUPADAS no HCD. Diagnóstico?",
+    alternativas: {
+      A: "HÉRNIA INTERNA.",
+      B: "Pancreatite aguda.",
+      C: "Volvo de sigmoide.",
+      D: "Trombose mesentérica com isquemia."
+    },
+    gabarito: "A",
+    explicacao: "HÉRNIA INTERNA PÓS-BYPASS GÁSTRICO EM Y DE ROUX: complicação tardia (meses a anos), frequência ~3-5%. ESPAÇOS DEFEITUOSOS: 1) Mesentério da ENTEROANASTOMOSE (Petersen mesenterial); 2) Espaço de PETERSEN (entre alça alimentar e mesocólon transverso); 3) Defeito mesocólico (se transmesocólico). FATORES PREDISPONENTES: perda ponderal intensa (gordura mesentérica reduz = espaços alargam). SINAIS NA TC: SINAL DO REDEMOINHO ('swirl sign') = ROTAÇÃO DOS VASOS MESENTÉRICOS, agrupamento anômalo de alças, sinal de mushroom. EMERGÊNCIA: pode evoluir para isquemia/necrose. Cirurgia urgente: reduzir alças + fechar defeitos. Pancreatite (B): amilase/lipase alteradas. Volvo (C): obstrução colônica."
+  },
+  {
+    n: 239,
+    banca: "USP/FUVEST 2026 — EC6 Coloproctologia",
+    especialidade: "Cirurgia",
+    tema: "Cirurgia Hepática",
+    subtemas: ["Adenoma hepático", "Subtipo HNF1-α", "Esteatose"],
+    dificuldade: "Difícil",
+    temImagem: true,
+    enunciado: "Mulher, 35 anos, ASSINTOMÁTICA, nódulo hepático 7 cm em setor posterior D, ACO há 7 anos. RM: hipervascular + QUEDA DE SINAL no T1 OUT-OF-PHASE (esteatose intralesional). Diagnóstico provável?",
+    alternativas: {
+      A: "Hiperplasia nodular focal.",
+      B: "Hemangioma hepático.",
+      C: "Adenoma hepático subtipo INFLAMATÓRIO.",
+      D: "ADENOMA HEPÁTICO SUBTIPO HNF1-α."
+    },
+    gabarito: "D",
+    explicacao: "ADENOMA HEPÁTICO - SUBTIPO HNF1α INATIVADO ('ADENOMA ESTEATÓTICO'): 35-50% dos adenomas, ACO frequente, GENE HNF1α inativado leva à ESTEATOSE INTRALESIONAL DIFUSA. ACHADO PATOGNOMÔNICO NA RM: PERDA DE SINAL NO T1 OUT-OF-PHASE (queda) comparado ao IN-PHASE = confirma gordura intracelular. Hipervascular na fase arterial. Comportamento BENIGNO, BAIXO RISCO de transformação maligna ou sangramento. SUBTIPO INFLAMATÓRIO (C): mais comum (50%), associado obesidade/álcool/ACO, RM com hipersinal T2 + 'sinal do atol' + realce sustentado, RISCO INTERMEDIÁRIO. HNF (A): cicatriz central, capta nas fases tardias (hepatobiliar). HEMANGIOMA (B): realce nodular periférico centrípeto, sem esteatose."
+  },
+  {
+    n: 240,
+    banca: "USP/FUVEST 2026 — EC6 Coloproctologia",
+    especialidade: "Cirurgia",
+    tema: "Cirurgia Hepática",
+    subtemas: ["Manejo de adenoma esteatótico", "ACO"],
+    dificuldade: "Médio",
+    temImagem: true,
+    enunciado: "Adenoma hepático SUBTIPO HNF1-α (esteatótico), 7 cm, mulher 35 anos com ACO há 7 anos. Conduta?",
+    alternativas: {
+      A: "Ablação por micro-ondas.",
+      B: "SUSPENSÃO DO ANTICONCEPCIONAL + PERDA DE PESO.",
+      C: "Ressecção cirúrgica laparoscópica/robótica.",
+      D: "Embolização arterial."
+    },
+    gabarito: "B",
+    explicacao: "MANEJO DO ADENOMA HEPÁTICO - INDIVIDUALIZADO POR SUBTIPO E TAMANHO: 1) SUSPENDER ACO (estímulo hormonal, pode levar à REGRESSÃO do adenoma) + perda de peso (especialmente em inflamatório); 2) Reavaliar com imagem em 6 meses. INDICAÇÃO CIRÚRGICA: a) HOMENS (qualquer tamanho - risco maligno alto); b) Subtipo BETA-CATENINA mutado; c) ADENOMA >5 cm que NÃO REGRIDE após 6-12 meses de medidas conservadoras; d) Sangramento ou suspeita de malignização. GABARITO B: HNF1α inativado tem BAIXO RISCO de complicações - tentativa de manejo conservador com suspensão do ACO é razoável ANTES da cirurgia. Em adenomas >5 cm de outros subtipos, cirurgia mais precoce. Embolização: emergência se sangramento ativo. Ablação: reservada para casos selecionados."
+  }
+);
+
+console.log("Bloco 4 EC6 (211-240) adicionado. Total: 240 questões");
