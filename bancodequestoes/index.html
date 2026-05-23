@@ -1,1465 +1,1401 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="pt-BR">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Banco AD1 · USP/FUVEST 2026 · Residência Médica — Vytal</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Vytal · Banco AD1 — Residência Médica USP/FUVEST 2026</title>
+  <meta name="description" content="Banco de questões da prova AD1 USP/FUVEST 2026 — 120 questões com gabarito, explicações e filtros." />
 
-<style>
-/* ============================================================
-   Banco AD1 — Vytal design system
-   Paleta navy/cyan e fontes Fraunces+Outfit do site institucional.
-============================================================ */
-:root {
-  --navy: #1c2a63;
-  --navy-deep: #16204d;
-  --cyan: #39c4c8;
-  --cyan-soft: #5fd6d6;
-  --cyan-bg: rgba(57, 196, 200, 0.10);
-  --ink: #1a2238;
-  --ink-soft: #4a5570;
-  --slate: #5a6478;
-  --ink-faint: #8c95a8;
-  --mist: #f5f8fa;
-  --line: #e6ebf0;
-  --line-soft: #eef1f6;
-  --bg: #ffffff;
-  --bg-card: #fafbfd;
-  --white: #ffffff;
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet" />
 
-  /* Aliases semânticos (mantidos para não quebrar referências do JS/HTML) */
-  --accent: var(--navy);
-  --accent-soft: var(--cyan);
-  --accent-bg: var(--cyan-bg);
+  <style>
+    /* ============================================================
+       Identidade Vytal — paleta, fontes e atmosfera idênticas ao
+       site institucional. Banco AD1 é um produto adjacente, então
+       conserva a mesma linguagem visual.
+       ============================================================ */
+    :root {
+      --navy: #1c2a63;
+      --navy-deep: #16204d;
+      --cyan: #39c4c8;
+      --cyan-soft: #5fd6d6;
+      --cyan-bg: #eafafa;
+      --ink: #1a2238;
+      --slate: #5a6478;
+      --slate-soft: #8892a3;
+      --mist: #f5f8fa;
+      --line: #e6ebf0;
+      --line-strong: #d6dde6;
+      --white: #ffffff;
+      --warn: #92621a;
+      --warn-bg: #fdf4e3;
+      --success: #2f8f6b;
+      --success-bg: #e6f4ee;
+      --error: #b53a3a;
+      --error-bg: #fbeaea;
+      --grad: linear-gradient(120deg, var(--navy) 0%, #2a4a8c 45%, var(--cyan) 100%);
+      --max: 1280px;
+      --shadow-soft: 0 8px 26px -18px rgba(28,42,99,0.25);
+      --shadow-mid: 0 18px 42px -24px rgba(28,42,99,0.28);
+    }
 
-  --gold: #b08442;
-  --green: #2a8d6f;
-  --green-bg: #e3f3ed;
-  --red: #b8364a;
-  --red-bg: #fbe7eb;
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; scroll-behavior: smooth; }
 
-  --grad: linear-gradient(120deg, var(--navy) 0%, #2a4a8c 45%, var(--cyan) 100%);
-  --shadow-soft: 0 8px 26px -18px rgba(28, 42, 99, 0.25);
-  --shadow-card: 0 1px 0 rgba(28, 42, 99, 0.04), 0 4px 22px -10px rgba(28, 42, 99, 0.12);
+    body {
+      background: var(--white);
+      color: var(--ink);
+      font-family: "Outfit", system-ui, sans-serif;
+      font-size: 16px;
+      line-height: 1.65;
+      min-height: 100vh;
+      position: relative;
+      overflow-x: hidden;
+    }
 
-  --radius: 14px;
-  --radius-sm: 10px;
-  --radius-pill: 999px;
-}
+    /* Atmosfera de fundo idêntica ao site institucional */
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 0;
+      background:
+        radial-gradient(1100px 520px at 82% -8%, rgba(57,196,200,0.16), transparent 60%),
+        radial-gradient(800px 480px at 6% 10%, rgba(28,42,99,0.07), transparent 55%);
+    }
 
-* { box-sizing: border-box; margin: 0; padding: 0; }
+    h1, h2, h3 {
+      font-family: "Fraunces", Georgia, serif;
+      font-weight: 500;
+      line-height: 1.15;
+      letter-spacing: -0.01em;
+      color: var(--ink);
+    }
 
-html {
-  scroll-behavior: smooth;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
+    /* ===== Cabeçalho ===== */
+    header.top {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: rgba(255,255,255,0.88);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--line);
+    }
+    .top-inner {
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 18px 28px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
+    }
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      text-decoration: none;
+    }
+    .brand-mark {
+      width: 38px;
+      height: 38px;
+      border-radius: 10px;
+      background: var(--grad);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: "Fraunces", serif;
+      font-weight: 600;
+      font-size: 19px;
+      color: var(--white);
+      letter-spacing: -0.02em;
+      box-shadow: var(--shadow-soft);
+    }
+    .brand-text {
+      display: flex;
+      flex-direction: column;
+      gap: 1px;
+      line-height: 1.1;
+    }
+    .brand-name {
+      font-family: "Fraunces", serif;
+      font-size: 21px;
+      font-weight: 600;
+      color: var(--navy);
+      letter-spacing: -0.01em;
+    }
+    .brand-sub {
+      font-size: 11px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--slate);
+      font-weight: 500;
+    }
+    .top-meta {
+      font-size: 12px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--slate);
+      font-weight: 500;
+    }
 
-body {
-  font-family: "Outfit", system-ui, sans-serif;
-  background: var(--bg);
-  color: var(--ink);
-  line-height: 1.6;
-  min-height: 100vh;
-  font-size: 16px;
-  position: relative;
-  overflow-x: hidden;
-}
+    /* ===== Hero compacto ===== */
+    .hero-band {
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 44px 28px 28px;
+      position: relative;
+      z-index: 1;
+    }
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 12px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--navy);
+      font-weight: 600;
+      margin-bottom: 14px;
+    }
+    .eyebrow::before {
+      content: "";
+      width: 30px;
+      height: 2px;
+      background: var(--cyan);
+      display: block;
+    }
+    .hero-title {
+      font-size: clamp(1.9rem, 3.6vw, 2.7rem);
+      max-width: 760px;
+    }
+    .hero-title .accent {
+      background: var(--grad);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+    .hero-sub {
+      margin-top: 14px;
+      max-width: 640px;
+      color: var(--slate);
+      font-size: 16px;
+      font-weight: 300;
+    }
 
-/* Atmosfera de fundo — radiais sutis (mesmo padrão do hero institucional) */
-body::before {
-  content: "";
-  position: fixed;
-  inset: 0;
-  pointer-events: none;
-  z-index: 0;
-  background:
-    radial-gradient(1100px 520px at 82% -8%, rgba(57, 196, 200, 0.14), transparent 60%),
-    radial-gradient(800px 480px at 6% 10%, rgba(28, 42, 99, 0.06), transparent 55%);
-}
+    /* ===== Layout principal ===== */
+    .main {
+      position: relative;
+      z-index: 1;
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 24px 28px 60px;
+      display: grid;
+      grid-template-columns: 280px 1fr;
+      gap: 32px;
+    }
 
-h1, h2, h3 {
-  font-family: "Fraunces", Georgia, serif;
-  font-weight: 500;
-  line-height: 1.15;
-  letter-spacing: -0.01em;
-  color: var(--ink);
-}
+    /* ===== Sidebar ===== */
+    .sidebar {
+      position: sticky;
+      top: 96px;
+      height: fit-content;
+      max-height: calc(100vh - 120px);
+      overflow-y: auto;
+      padding-right: 4px;
+    }
+    .sidebar::-webkit-scrollbar { width: 5px; }
+    .sidebar::-webkit-scrollbar-track { background: transparent; }
+    .sidebar::-webkit-scrollbar-thumb { background: var(--line-strong); border-radius: 3px; }
 
-/* ============================================================
-   MASTHEAD
-============================================================ */
-.masthead {
-  position: sticky;
-  top: 0;
-  z-index: 50;
-  border-bottom: 1px solid var(--line);
-  background: rgba(255, 255, 255, 0.94);
-  backdrop-filter: blur(10px);
-  padding: 22px 0 18px;
-  animation: fadeUp 0.7s ease-out both;
-}
-.masthead-inner {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 0 32px;
-  display: grid;
-  grid-template-columns: auto 1fr auto;
-  gap: 24px;
-  align-items: end;
-  position: relative;
-  z-index: 1;
-}
+    .stats-card {
+      background: var(--white);
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      padding: 20px;
+      margin-bottom: 22px;
+      box-shadow: var(--shadow-soft);
+    }
+    .stats-card .stat-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      padding: 9px 0;
+      border-bottom: 1px solid var(--line);
+    }
+    .stats-card .stat-row:last-child { border-bottom: none; padding-bottom: 0; }
+    .stats-card .stat-row:first-child { padding-top: 0; }
+    .stat-label {
+      font-size: 11px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--slate);
+      font-weight: 500;
+    }
+    .stat-value {
+      font-family: "Fraunces", serif;
+      font-size: 22px;
+      font-weight: 500;
+      letter-spacing: -0.02em;
+      color: var(--ink);
+    }
+    .stat-row.accent .stat-value {
+      background: var(--grad);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
 
-.kicker {
-  font-family: "Outfit", sans-serif;
-  font-size: 11px;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.18em;
-  color: var(--slate);
-  border-top: 1px solid var(--cyan);
-  padding-top: 6px;
-  min-width: 110px;
-}
+    .panel { margin-bottom: 26px; }
+    .panel-label {
+      font-size: 11px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--slate);
+      font-weight: 600;
+      margin-bottom: 12px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .panel-label .count {
+      color: var(--navy);
+      font-weight: 600;
+    }
 
-.title-block { text-align: center; }
-.title {
-  font-family: "Fraunces", Georgia, serif;
-  font-weight: 600;
-  font-size: clamp(28px, 4.6vw, 44px);
-  line-height: 1.05;
-  letter-spacing: -0.025em;
-  color: var(--ink);
-}
-.title em {
-  font-style: italic;
-  font-weight: 500;
-  background: var(--grad);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-}
-.subtitle {
-  margin-top: 8px;
-  font-family: "Outfit", sans-serif;
-  font-size: 11px;
-  font-weight: 500;
-  text-transform: uppercase;
-  letter-spacing: 0.18em;
-  color: var(--slate);
-}
+    .search-box {
+      width: 100%;
+      background: var(--white);
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      padding: 11px 14px;
+      font-family: "Outfit", sans-serif;
+      font-size: 14px;
+      color: var(--ink);
+      outline: none;
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+    .search-box::placeholder { color: var(--slate-soft); }
+    .search-box:focus {
+      border-color: var(--cyan);
+      box-shadow: 0 0 0 3px rgba(57,196,200,0.15);
+    }
 
-.edition {
-  font-family: "Outfit", sans-serif;
-  font-size: 11px;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.16em;
-  color: var(--slate);
-  text-align: right;
-  border-top: 1px solid var(--cyan);
-  padding-top: 6px;
-  min-width: 110px;
-}
+    .filter-list {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+    .filter-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 8px 12px;
+      cursor: pointer;
+      font-size: 14px;
+      color: var(--slate);
+      border-radius: 8px;
+      background: transparent;
+      border: none;
+      text-align: left;
+      font-family: "Outfit", sans-serif;
+      width: 100%;
+      transition: all 0.18s ease;
+    }
+    .filter-item:hover {
+      color: var(--ink);
+      background: var(--mist);
+    }
+    .filter-item.active {
+      color: var(--navy);
+      background: var(--cyan-bg);
+      font-weight: 500;
+    }
+    .filter-item .item-count {
+      font-size: 11px;
+      color: var(--slate-soft);
+      padding: 2px 8px;
+      background: var(--mist);
+      border-radius: 999px;
+      font-weight: 500;
+    }
+    .filter-item.active .item-count {
+      background: var(--cyan);
+      color: var(--white);
+    }
 
-/* ============================================================
-   MAIN
-============================================================ */
-.main {
-  position: relative;
-  z-index: 1;
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 36px 32px;
-  display: grid;
-  grid-template-columns: 280px 1fr;
-  gap: 36px;
-}
+    .toggle-row {
+      display: flex;
+      gap: 6px;
+      flex-wrap: wrap;
+    }
+    .toggle-btn {
+      padding: 7px 12px;
+      background: var(--white);
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      font-family: "Outfit", sans-serif;
+      font-size: 12px;
+      cursor: pointer;
+      color: var(--slate);
+      transition: all 0.18s ease;
+      font-weight: 500;
+    }
+    .toggle-btn:hover {
+      border-color: var(--cyan);
+      color: var(--navy);
+    }
+    .toggle-btn.active {
+      background: var(--navy);
+      color: var(--white);
+      border-color: var(--navy);
+    }
 
-/* ============================================================
-   SIDEBAR
-============================================================ */
-.sidebar {
-  position: sticky;
-  top: 110px;
-  height: fit-content;
-  max-height: calc(100vh - 130px);
-  overflow-y: auto;
-  padding-right: 8px;
-}
-.sidebar::-webkit-scrollbar { width: 4px; }
-.sidebar::-webkit-scrollbar-track { background: transparent; }
-.sidebar::-webkit-scrollbar-thumb { background: var(--line); border-radius: 2px; }
+    .reset-btn {
+      display: block;
+      width: 100%;
+      background: transparent;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 9px;
+      font-family: "Outfit", sans-serif;
+      font-size: 11px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--slate);
+      cursor: pointer;
+      transition: all 0.2s;
+      margin-top: 6px;
+      font-weight: 500;
+    }
+    .reset-btn:hover {
+      border-color: var(--cyan);
+      color: var(--navy);
+      background: var(--cyan-bg);
+    }
+    .reset-btn.danger:hover {
+      border-color: var(--error);
+      color: var(--error);
+      background: var(--error-bg);
+    }
 
-.panel { margin-bottom: 26px; }
-.panel-label {
-  font-family: "Outfit", sans-serif;
-  font-size: 10px;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.16em;
-  color: var(--slate);
-  margin-bottom: 12px;
-  padding-bottom: 6px;
-  border-bottom: 1px solid var(--line);
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-.panel-label .count {
-  color: var(--navy);
-  font-weight: 600;
-}
+    /* ===== Conteúdo ===== */
+    .content { min-height: 70vh; }
 
-/* Stats */
-.stats {
-  background: var(--white);
-  border: 1px solid var(--line);
-  border-radius: var(--radius-sm);
-  padding: 16px 18px;
-  margin-bottom: 28px;
-  box-shadow: var(--shadow-soft);
-}
-.stat-row {
-  display: flex;
-  justify-content: space-between;
-  align-items: baseline;
-  margin-bottom: 10px;
-}
-.stat-row:last-child { margin-bottom: 0; }
-.stat-row span:first-child {
-  font-family: "Outfit", sans-serif;
-  font-size: 10px;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.12em;
-  color: var(--slate);
-}
-.stat-row .num {
-  font-family: "Fraunces", Georgia, serif;
-  font-size: 24px;
-  font-weight: 500;
-  color: var(--ink);
-  letter-spacing: -0.02em;
-  line-height: 1;
-}
-.stat-accuracy .num {
-  background: var(--grad);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-}
+    .tab-bar {
+      display: flex;
+      gap: 4px;
+      margin-bottom: 28px;
+      padding: 4px;
+      background: var(--mist);
+      border-radius: 12px;
+      width: fit-content;
+    }
+    .tab {
+      background: transparent;
+      border: none;
+      padding: 9px 18px;
+      font-family: "Outfit", sans-serif;
+      font-size: 14px;
+      cursor: pointer;
+      color: var(--slate);
+      border-radius: 8px;
+      font-weight: 500;
+      transition: all 0.2s ease;
+    }
+    .tab:hover { color: var(--ink); }
+    .tab.active {
+      color: var(--navy);
+      background: var(--white);
+      box-shadow: var(--shadow-soft);
+      font-weight: 600;
+    }
 
-/* Search */
-.search-box {
-  width: 100%;
-  background: var(--white);
-  border: 1px solid var(--line);
-  border-radius: var(--radius-sm);
-  padding: 11px 14px;
-  font-family: "Outfit", sans-serif;
-  font-size: 14px;
-  color: var(--ink);
-  outline: none;
-  transition: border-color 0.18s ease, box-shadow 0.18s ease;
-}
-.search-box::placeholder { color: var(--ink-faint); }
-.search-box:focus {
-  border-color: var(--cyan);
-  box-shadow: 0 0 0 4px rgba(57, 196, 200, 0.12);
-}
+    /* ===== Lista de questões ===== */
+    .question-list {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .q-row {
+      background: var(--white);
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      display: grid;
+      grid-template-columns: 56px 1fr auto auto auto;
+      gap: 16px;
+      align-items: center;
+      padding: 14px 18px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+    .q-row:hover {
+      border-color: var(--cyan);
+      transform: translateY(-1px);
+      box-shadow: var(--shadow-soft);
+    }
+    .q-num {
+      font-family: "Fraunces", serif;
+      font-size: 15px;
+      color: var(--navy);
+      font-weight: 500;
+      letter-spacing: -0.01em;
+    }
+    .q-title {
+      font-size: 14.5px;
+      color: var(--ink);
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      line-height: 1.4;
+    }
+    .q-tag {
+      font-size: 11px;
+      letter-spacing: 0.04em;
+      color: var(--slate);
+      padding: 3px 10px;
+      border-radius: 999px;
+      background: var(--mist);
+      font-weight: 500;
+      white-space: nowrap;
+    }
+    .q-tag.diff-Fácil { color: var(--success); background: var(--success-bg); }
+    .q-tag.diff-Médio { color: var(--warn); background: var(--warn-bg); }
+    .q-tag.diff-Difícil { color: var(--error); background: var(--error-bg); }
 
-/* Filter chips */
-.filter-group {
-  display: flex;
-  flex-direction: column;
-  gap: 2px;
-}
-.filter-chip {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 9px 12px;
-  cursor: pointer;
-  font-size: 14px;
-  color: var(--ink-soft);
-  border-left: 2px solid transparent;
-  background: transparent;
-  border-top: none;
-  border-right: none;
-  border-bottom: none;
-  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
-  text-align: left;
-  font-family: "Outfit", sans-serif;
-  width: 100%;
-  transition: all 0.18s ease;
-}
-.filter-chip:hover {
-  color: var(--ink);
-  background: var(--mist);
-}
-.filter-chip.active {
-  color: var(--navy);
-  background: var(--cyan-bg);
-  border-left-color: var(--cyan);
-  font-weight: 500;
-}
-.filter-chip .chip-count {
-  font-family: "Outfit", sans-serif;
-  font-size: 11px;
-  font-weight: 600;
-  color: var(--ink-faint);
-  padding: 2px 8px;
-  background: var(--mist);
-  border-radius: var(--radius-pill);
-}
-.filter-chip.active .chip-count {
-  background: var(--cyan);
-  color: var(--white);
-}
+    .q-status {
+      width: 10px; height: 10px;
+      border-radius: 50%;
+      background: var(--line-strong);
+    }
+    .q-status.correct { background: var(--success); }
+    .q-status.wrong { background: var(--error); }
 
-/* Toggle buttons */
-.toggle-row {
-  display: flex;
-  gap: 6px;
-  flex-wrap: wrap;
-}
-.toggle-btn {
-  padding: 6px 12px;
-  background: var(--white);
-  border: 1px solid var(--line);
-  border-radius: var(--radius-pill);
-  font-family: "Outfit", sans-serif;
-  font-size: 11px;
-  font-weight: 500;
-  letter-spacing: 0.04em;
-  cursor: pointer;
-  color: var(--slate);
-  transition: all 0.18s ease;
-}
-.toggle-btn:hover {
-  border-color: var(--navy);
-  color: var(--navy);
-}
-.toggle-btn.active {
-  background: var(--navy);
-  color: var(--white);
-  border-color: var(--navy);
-}
+    /* ===== Visão de questão ===== */
+    .q-view {
+      background: var(--white);
+      border: 1px solid var(--line);
+      border-radius: 20px;
+      padding: 40px;
+      box-shadow: var(--shadow-soft);
+    }
+    .q-meta-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-bottom: 22px;
+      border-bottom: 1px solid var(--line);
+      margin-bottom: 28px;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+    .q-meta-left {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+    .q-number-big {
+      font-family: "Fraunces", serif;
+      font-size: 30px;
+      font-weight: 500;
+      letter-spacing: -0.03em;
+      background: var(--grad);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      line-height: 1;
+      margin-right: 6px;
+    }
+    .q-tag-pill {
+      font-size: 11px;
+      letter-spacing: 0.06em;
+      padding: 4px 11px;
+      border-radius: 999px;
+      color: var(--slate);
+      background: var(--mist);
+      font-weight: 500;
+    }
+    .q-tag-pill.spec {
+      background: var(--navy);
+      color: var(--white);
+    }
+    .q-tag-pill.image {
+      background: var(--cyan-bg);
+      color: var(--navy);
+    }
 
-/* Reset */
-.reset-btn {
-  display: block;
-  width: 100%;
-  background: transparent;
-  border: 1px dashed var(--line);
-  border-radius: var(--radius-sm);
-  padding: 9px;
-  font-family: "Outfit", sans-serif;
-  font-size: 11px;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.12em;
-  color: var(--ink-faint);
-  cursor: pointer;
-  transition: all 0.2s;
-  margin-top: 8px;
-}
-.reset-btn:hover {
-  border-color: var(--cyan);
-  color: var(--navy);
-  background: var(--cyan-bg);
-}
+    .q-nav {
+      display: flex;
+      gap: 6px;
+    }
+    .nav-btn {
+      font-family: "Outfit", sans-serif;
+      font-size: 12px;
+      letter-spacing: 0.04em;
+      padding: 8px 14px;
+      background: var(--white);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      cursor: pointer;
+      color: var(--slate);
+      transition: all 0.18s ease;
+      font-weight: 500;
+    }
+    .nav-btn:hover:not(:disabled) {
+      border-color: var(--cyan);
+      color: var(--navy);
+    }
+    .nav-btn:disabled { opacity: 0.35; cursor: not-allowed; }
+    .nav-btn.primary {
+      background: var(--mist);
+    }
 
-/* ============================================================
-   CONTENT
-============================================================ */
-.content { min-height: 70vh; }
+    .q-tema {
+      font-size: 11px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--slate);
+      margin-bottom: 8px;
+      font-weight: 500;
+    }
+    .q-tema strong { color: var(--navy); font-weight: 600; }
 
-.tab-bar {
-  border-bottom: 1px solid var(--line);
-  display: flex;
-  gap: 0;
-  margin-bottom: 28px;
-}
-.tab {
-  background: transparent;
-  border: none;
-  padding: 12px 0;
-  margin-right: 28px;
-  font-family: "Fraunces", Georgia, serif;
-  font-size: 18px;
-  font-weight: 500;
-  cursor: pointer;
-  color: var(--ink-faint);
-  position: relative;
-  letter-spacing: -0.01em;
-  transition: color 0.18s ease;
-}
-.tab:hover { color: var(--ink-soft); }
-.tab.active {
-  color: var(--ink);
-  font-weight: 500;
-}
-.tab.active::after {
-  content: "";
-  position: absolute;
-  bottom: -1px;
-  left: 0;
-  width: 100%;
-  height: 2px;
-  background: var(--cyan);
-  border-radius: 1px;
-}
+    .q-enunciado {
+      font-family: "Outfit", sans-serif;
+      font-size: 17px;
+      line-height: 1.65;
+      color: var(--ink);
+      margin: 18px 0 28px;
+    }
 
-/* ============================================================
-   LIST VIEW
-============================================================ */
-.question-list {
-  display: flex;
-  flex-direction: column;
-  gap: 1px;
-  background: var(--line);
-  border: 1px solid var(--line);
-  border-radius: var(--radius);
-  overflow: hidden;
-  box-shadow: var(--shadow-card);
-}
-.q-row {
-  background: var(--white);
-  display: grid;
-  grid-template-columns: 64px 1fr 110px 80px 28px;
-  gap: 16px;
-  align-items: center;
-  padding: 14px 18px;
-  cursor: pointer;
-  transition: background 0.15s ease;
-}
-.q-row:hover {
-  background: var(--mist);
-}
-.q-row .q-num {
-  font-family: "Outfit", sans-serif;
-  font-size: 12px;
-  font-weight: 600;
-  color: var(--ink-faint);
-  letter-spacing: 0.04em;
-}
-.q-row .q-title {
-  font-size: 15px;
-  color: var(--ink);
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-}
-.q-row .q-tag {
-  font-family: "Outfit", sans-serif;
-  font-size: 10px;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  color: var(--slate);
-  padding: 4px 10px;
-  border: 1px solid var(--line);
-  border-radius: var(--radius-pill);
-  text-align: center;
-}
-.diff-Fácil   { color: var(--green) !important; border-color: var(--green) !important; }
-.diff-Médio   { color: var(--gold) !important;  border-color: var(--gold) !important; }
-.diff-Difícil { color: var(--red) !important;   border-color: var(--red) !important; }
+    .q-image-note {
+      background: var(--cyan-bg);
+      border-left: 3px solid var(--cyan);
+      border-radius: 0 10px 10px 0;
+      padding: 12px 18px;
+      margin-bottom: 24px;
+      font-size: 13.5px;
+      color: var(--navy);
+      line-height: 1.5;
+    }
 
-.q-status {
-  width: 12px;
-  height: 12px;
-  border-radius: 50%;
-  background: var(--line);
-  margin: 0 auto;
-}
-.q-status.correct { background: var(--green); }
-.q-status.wrong   { background: var(--red); }
+    .alternativas {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-bottom: 28px;
+    }
+    .alt {
+      display: flex;
+      gap: 16px;
+      padding: 16px 20px;
+      background: var(--white);
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      align-items: flex-start;
+      font-family: "Outfit", sans-serif;
+      text-align: left;
+      font-size: 15.5px;
+      color: var(--ink);
+      width: 100%;
+      line-height: 1.5;
+    }
+    .alt:hover:not(:disabled):not(.revealed) {
+      border-color: var(--cyan);
+      background: var(--mist);
+      transform: translateX(2px);
+    }
+    .alt:disabled { cursor: default; }
+    .alt-letter {
+      font-family: "Fraunces", serif;
+      font-size: 20px;
+      font-weight: 600;
+      color: var(--navy);
+      min-width: 24px;
+      line-height: 1.1;
+      margin-top: 1px;
+    }
+    .alt-text { flex: 1; }
 
-/* ============================================================
-   QUESTION VIEW
-============================================================ */
-.q-view {
-  background: var(--white);
-  border: 1px solid var(--line);
-  border-radius: var(--radius);
-  padding: 40px;
-  box-shadow: var(--shadow-card);
-}
+    .alt.selected {
+      border-color: var(--navy);
+      background: var(--mist);
+      box-shadow: inset 3px 0 0 var(--navy);
+    }
+    .alt.correct {
+      border-color: var(--success);
+      background: var(--success-bg);
+      box-shadow: inset 3px 0 0 var(--success);
+    }
+    .alt.correct .alt-letter { color: var(--success); }
+    .alt.wrong {
+      border-color: var(--error);
+      background: var(--error-bg);
+      box-shadow: inset 3px 0 0 var(--error);
+    }
+    .alt.wrong .alt-letter { color: var(--error); }
+    .alt.revealed { cursor: default; }
 
-.q-meta-bar {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding-bottom: 22px;
-  border-bottom: 1px solid var(--line);
-  margin-bottom: 30px;
-  flex-wrap: wrap;
-  gap: 16px;
-}
-.q-meta-left {
-  display: flex;
-  gap: 12px;
-  align-items: center;
-  flex-wrap: wrap;
-}
-.q-number {
-  font-family: "Fraunces", Georgia, serif;
-  font-size: 38px;
-  font-weight: 500;
-  letter-spacing: -0.035em;
-  line-height: 1;
-  background: var(--grad);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-}
-.q-tag-pill {
-  font-family: "Outfit", sans-serif;
-  font-size: 11px;
-  font-weight: 500;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  padding: 5px 12px;
-  border: 1px solid var(--line);
-  border-radius: var(--radius-pill);
-  color: var(--slate);
-  background: var(--white);
-}
-.q-tag-pill.spec {
-  background: var(--navy);
-  color: var(--white);
-  border-color: var(--navy);
-}
-.q-tag-pill.image {
-  border-color: var(--cyan);
-  color: var(--navy);
-  background: var(--cyan-bg);
-}
-.q-tag-pill.image::before { content: "◐ "; }
+    .action-bar {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 24px;
+      flex-wrap: wrap;
+    }
+    .btn {
+      font-family: "Outfit", sans-serif;
+      font-size: 13px;
+      letter-spacing: 0.04em;
+      padding: 11px 22px;
+      cursor: pointer;
+      border: none;
+      border-radius: 10px;
+      background: var(--navy);
+      color: var(--white);
+      transition: all 0.2s ease;
+      font-weight: 500;
+    }
+    .btn:hover {
+      background: var(--navy-deep);
+      transform: translateY(-1px);
+      box-shadow: var(--shadow-soft);
+    }
+    .btn:disabled { opacity: 0.4; cursor: not-allowed; }
+    .btn.secondary {
+      background: var(--white);
+      color: var(--navy);
+      border: 1px solid var(--line);
+    }
+    .btn.secondary:hover {
+      background: var(--mist);
+      border-color: var(--cyan);
+    }
 
-.q-nav {
-  display: flex;
-  gap: 6px;
-}
-.nav-btn {
-  font-family: "Outfit", sans-serif;
-  font-size: 11px;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-  padding: 8px 14px;
-  background: var(--white);
-  border: 1px solid var(--line);
-  border-radius: var(--radius-pill);
-  cursor: pointer;
-  color: var(--slate);
-  transition: all 0.18s ease;
-}
-.nav-btn:hover:not(:disabled) {
-  border-color: var(--navy);
-  color: var(--navy);
-  background: var(--mist);
-}
-.nav-btn:disabled { opacity: 0.35; cursor: not-allowed; }
-.nav-btn.list {
-  background: var(--navy);
-  color: var(--white);
-  border-color: var(--navy);
-}
-.nav-btn.list:hover {
-  background: var(--navy-deep);
-  border-color: var(--navy-deep);
-  color: var(--white);
-}
+    .feedback {
+      display: none;
+      padding: 24px 26px;
+      background: var(--mist);
+      border-radius: 14px;
+      margin-top: 24px;
+      border-left: 3px solid var(--cyan);
+    }
+    .feedback.show { display: block; animation: slideIn 0.4s ease; }
+    @keyframes slideIn {
+      from { opacity: 0; transform: translateY(8px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
 
-.q-tema {
-  font-family: "Outfit", sans-serif;
-  font-size: 11px;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.14em;
-  color: var(--slate);
-  margin-bottom: 6px;
-}
-.q-tema strong {
-  color: var(--navy);
-  font-weight: 600;
-}
+    .feedback-header {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 14px;
+      padding-bottom: 14px;
+      border-bottom: 1px solid var(--line);
+      flex-wrap: wrap;
+    }
+    .feedback-label {
+      font-size: 11px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--slate);
+      font-weight: 500;
+    }
+    .feedback-answer {
+      font-family: "Fraunces", serif;
+      font-size: 22px;
+      font-weight: 600;
+      color: var(--navy);
+      letter-spacing: -0.02em;
+    }
+    .feedback-result {
+      font-size: 11px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 5px 12px;
+      margin-left: auto;
+      border-radius: 999px;
+      font-weight: 600;
+    }
+    .feedback-result.correct { background: var(--success); color: white; }
+    .feedback-result.wrong { background: var(--error); color: white; }
 
-.q-enunciado {
-  font-family: "Outfit", sans-serif;
-  font-size: 17px;
-  font-weight: 400;
-  line-height: 1.7;
-  color: var(--ink);
-  margin: 18px 0 32px;
-}
+    .explicacao {
+      font-family: "Outfit", sans-serif;
+      font-size: 15.5px;
+      line-height: 1.7;
+      color: var(--slate);
+    }
 
-.q-image-note {
-  background: var(--cyan-bg);
-  border-left: 3px solid var(--cyan);
-  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
-  padding: 12px 18px;
-  margin-bottom: 24px;
-  font-size: 14px;
-  color: var(--ink-soft);
-}
+    .subtemas-row {
+      display: flex;
+      gap: 6px;
+      flex-wrap: wrap;
+      margin-top: 22px;
+      padding-top: 18px;
+      border-top: 1px solid var(--line);
+    }
+    .subtema {
+      font-size: 11px;
+      letter-spacing: 0.04em;
+      color: var(--slate);
+      padding: 4px 10px;
+      background: var(--mist);
+      border-radius: 999px;
+      font-weight: 500;
+    }
 
-.alternativas {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  margin-bottom: 28px;
-}
-.alt {
-  display: flex;
-  gap: 16px;
-  padding: 16px 20px;
-  background: var(--white);
-  border: 1px solid var(--line);
-  border-radius: var(--radius-sm);
-  cursor: pointer;
-  transition: all 0.18s ease;
-  align-items: flex-start;
-  font-family: "Outfit", sans-serif;
-  text-align: left;
-  font-size: 16px;
-  color: var(--ink);
-  width: 100%;
-  line-height: 1.55;
-}
-.alt:hover:not(:disabled):not(.revealed) {
-  border-color: var(--cyan);
-  background: var(--cyan-bg);
-  transform: translateY(-1px);
-  box-shadow: var(--shadow-soft);
-}
-.alt:disabled { cursor: default; }
-.alt-letter {
-  font-family: "Fraunces", Georgia, serif;
-  font-size: 22px;
-  font-weight: 600;
-  color: var(--navy);
-  min-width: 28px;
-  line-height: 1;
-  margin-top: 1px;
-}
-.alt-text { flex: 1; }
+    /* ===== Estado vazio ===== */
+    .empty {
+      text-align: center;
+      padding: 80px 20px;
+      color: var(--slate);
+      background: var(--white);
+      border: 1px dashed var(--line-strong);
+      border-radius: 16px;
+    }
+    .empty-icon {
+      font-family: "Fraunces", serif;
+      font-size: 56px;
+      color: var(--line-strong);
+      margin-bottom: 14px;
+      font-style: italic;
+    }
+    .empty-text {
+      font-family: "Fraunces", serif;
+      font-size: 18px;
+      font-style: italic;
+      color: var(--slate);
+    }
 
-.alt.selected {
-  border-color: var(--navy);
-  background: var(--mist);
-  box-shadow: inset 3px 0 0 var(--navy);
-}
-.alt.correct {
-  border-color: var(--green) !important;
-  background: var(--green-bg) !important;
-  box-shadow: inset 3px 0 0 var(--green) !important;
-}
-.alt.correct .alt-letter { color: var(--green); }
-.alt.wrong {
-  border-color: var(--red) !important;
-  background: var(--red-bg) !important;
-  box-shadow: inset 3px 0 0 var(--red) !important;
-}
-.alt.wrong .alt-letter { color: var(--red); }
-.alt.revealed { cursor: default; }
+    /* ===== Barra simulado ===== */
+    .simulado-bar {
+      background: var(--grad);
+      color: var(--white);
+      padding: 14px 22px;
+      border-radius: 14px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 22px;
+      font-size: 13px;
+      font-weight: 500;
+      flex-wrap: wrap;
+      gap: 14px;
+      box-shadow: var(--shadow-mid);
+    }
+    .simulado-bar .progress {
+      flex: 1;
+      max-width: 240px;
+      height: 4px;
+      background: rgba(255,255,255,0.25);
+      border-radius: 2px;
+      overflow: hidden;
+    }
+    .simulado-bar .progress-fill {
+      height: 100%;
+      background: var(--white);
+      transition: width 0.3s ease;
+    }
+    .simulado-bar .end-btn {
+      background: var(--white);
+      color: var(--navy);
+      border: none;
+      padding: 8px 16px;
+      border-radius: 8px;
+      font-family: inherit;
+      font-size: 12px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .simulado-bar .end-btn:hover {
+      background: var(--cyan-bg);
+    }
 
-/* Action bar / buttons */
-.action-bar {
-  display: flex;
-  gap: 12px;
-  margin-bottom: 28px;
-}
-.btn {
-  font-family: "Outfit", sans-serif;
-  font-size: 12px;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.14em;
-  padding: 12px 24px;
-  border-radius: var(--radius-pill);
-  cursor: pointer;
-  border: 1px solid var(--navy);
-  background: var(--navy);
-  color: var(--white);
-  transition: all 0.2s ease;
-}
-.btn:hover {
-  background: var(--navy-deep);
-  border-color: var(--navy-deep);
-  box-shadow: var(--shadow-soft);
-}
-.btn:disabled { opacity: 0.4; cursor: not-allowed; }
-.btn.secondary {
-  background: transparent;
-  color: var(--navy);
-}
-.btn.secondary:hover {
-  background: var(--navy);
-  color: var(--white);
-}
+    /* ===== Modal ===== */
+    .modal-bg {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(28,42,99,0.5);
+      z-index: 100;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      backdrop-filter: blur(6px);
+      -webkit-backdrop-filter: blur(6px);
+    }
+    .modal-bg.show { display: flex; animation: fadeIn 0.3s; }
+    @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+    .modal {
+      background: var(--white);
+      padding: 44px 48px;
+      max-width: 540px;
+      width: 100%;
+      border-radius: 20px;
+      text-align: center;
+      box-shadow: var(--shadow-mid);
+    }
+    .modal-kicker {
+      font-size: 11px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--slate);
+      margin-bottom: 10px;
+      font-weight: 600;
+    }
+    .modal-title {
+      font-family: "Fraunces", serif;
+      font-size: 32px;
+      font-weight: 500;
+      background: var(--grad);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      letter-spacing: -0.03em;
+      margin-bottom: 24px;
+    }
+    .modal-stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      margin: 24px 0;
+      padding: 24px 0;
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+    }
+    .modal-stat-num {
+      font-family: "Fraunces", serif;
+      font-size: 32px;
+      font-weight: 500;
+      letter-spacing: -0.02em;
+    }
+    .modal-stat-lbl {
+      font-size: 10px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--slate);
+      margin-top: 4px;
+      font-weight: 500;
+    }
 
-/* Feedback */
-.feedback {
-  display: none;
-  padding: 24px 26px;
-  background: var(--mist);
-  border: 1px solid var(--line);
-  border-left: 3px solid var(--cyan);
-  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
-  margin-top: 24px;
-}
-.feedback.show {
-  display: block;
-  animation: slideIn 0.4s ease;
-}
-@keyframes slideIn {
-  from { opacity: 0; transform: translateY(8px); }
-  to   { opacity: 1; transform: translateY(0); }
-}
-.feedback-header {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  margin-bottom: 14px;
-  padding-bottom: 12px;
-  border-bottom: 1px solid var(--line);
-}
-.feedback-label {
-  font-family: "Outfit", sans-serif;
-  font-size: 10px;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.16em;
-  color: var(--slate);
-}
-.feedback-answer {
-  font-family: "Fraunces", Georgia, serif;
-  font-size: 22px;
-  font-weight: 600;
-  color: var(--navy);
-  letter-spacing: -0.02em;
-  line-height: 1;
-}
-.feedback-result {
-  font-family: "Outfit", sans-serif;
-  font-size: 10px;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.14em;
-  padding: 5px 11px;
-  border-radius: var(--radius-pill);
-  margin-left: auto;
-}
-.feedback-result.correct { background: var(--green); color: var(--white); }
-.feedback-result.wrong   { background: var(--red);   color: var(--white); }
+    /* ===== Rodapé ===== */
+    footer {
+      max-width: var(--max);
+      margin: 40px auto 0;
+      padding: 24px 28px;
+      border-top: 1px solid var(--line);
+      font-size: 13px;
+      color: var(--slate);
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+      position: relative;
+      z-index: 1;
+    }
 
-.explicacao {
-  font-family: "Outfit", sans-serif;
-  font-size: 15px;
-  line-height: 1.7;
-  color: var(--ink-soft);
-}
-
-.subtemas-row {
-  display: flex;
-  gap: 6px;
-  flex-wrap: wrap;
-  margin-top: 22px;
-  padding-top: 16px;
-  border-top: 1px solid var(--line);
-}
-.subtema {
-  font-family: "Outfit", sans-serif;
-  font-size: 10px;
-  font-weight: 500;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  color: var(--slate);
-  padding: 4px 10px;
-  background: var(--mist);
-  border: 1px solid var(--line);
-  border-radius: var(--radius-pill);
-}
-
-/* ============================================================
-   EMPTY STATE
-============================================================ */
-.empty {
-  text-align: center;
-  padding: 80px 20px;
-  color: var(--ink-faint);
-  background: var(--white);
-}
-.empty-icon {
-  font-family: "Fraunces", Georgia, serif;
-  font-size: 72px;
-  font-style: italic;
-  color: var(--line);
-  margin-bottom: 16px;
-}
-.empty-text {
-  font-family: "Fraunces", Georgia, serif;
-  font-size: 20px;
-  font-style: italic;
-  color: var(--slate);
-}
-
-/* ============================================================
-   FOOTER
-============================================================ */
-.footer {
-  position: relative;
-  z-index: 1;
-  border-top: 1px solid var(--line);
-  margin: 60px auto 0;
-  padding: 24px 32px;
-  text-align: center;
-  font-family: "Outfit", sans-serif;
-  font-size: 11px;
-  font-weight: 500;
-  text-transform: uppercase;
-  letter-spacing: 0.16em;
-  color: var(--ink-faint);
-  max-width: 1280px;
-}
-
-/* ============================================================
-   SIMULADO BAR
-============================================================ */
-.simulado-bar {
-  background: var(--grad);
-  color: var(--white);
-  padding: 14px 22px;
-  border-radius: var(--radius-pill);
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 24px;
-  font-family: "Outfit", sans-serif;
-  font-size: 12px;
-  font-weight: 500;
-  text-transform: uppercase;
-  letter-spacing: 0.12em;
-  box-shadow: var(--shadow-soft);
-}
-.simulado-bar .end-btn {
-  background: var(--white);
-  color: var(--navy);
-  border: none;
-  border-radius: var(--radius-pill);
-  padding: 7px 16px;
-  font-family: inherit;
-  font-size: inherit;
-  font-weight: 600;
-  letter-spacing: inherit;
-  text-transform: inherit;
-  cursor: pointer;
-  transition: all 0.18s ease;
-}
-.simulado-bar .end-btn:hover {
-  background: var(--cyan);
-  color: var(--white);
-}
-
-/* ============================================================
-   MODAL
-============================================================ */
-.modal-bg {
-  display: none;
-  position: fixed;
-  inset: 0;
-  background: rgba(28, 42, 99, 0.45);
-  z-index: 100;
-  align-items: center;
-  justify-content: center;
-  padding: 20px;
-  backdrop-filter: blur(6px);
-}
-.modal-bg.show { display: flex; }
-.modal {
-  background: var(--white);
-  padding: 44px 52px;
-  max-width: 540px;
-  width: 100%;
-  border: 1px solid var(--line);
-  border-radius: var(--radius);
-  text-align: center;
-  box-shadow: 0 30px 80px -30px rgba(28, 42, 99, 0.4);
-  animation: fadeUp 0.4s ease-out both;
-}
-.modal-kicker {
-  font-family: "Outfit", sans-serif;
-  font-size: 11px;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.2em;
-  color: var(--slate);
-  margin-bottom: 10px;
-}
-.modal-title {
-  font-family: "Fraunces", Georgia, serif;
-  font-size: 38px;
-  font-weight: 500;
-  letter-spacing: -0.03em;
-  margin-bottom: 22px;
-  background: var(--grad);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-}
-.modal-stats {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 18px;
-  margin: 26px 0;
-  padding: 22px 0;
-  border-top: 1px solid var(--line);
-  border-bottom: 1px solid var(--line);
-}
-.modal-stat-num {
-  font-family: "Fraunces", Georgia, serif;
-  font-size: 34px;
-  font-weight: 500;
-  letter-spacing: -0.02em;
-  line-height: 1;
-}
-.modal-stat-lbl {
-  font-family: "Outfit", sans-serif;
-  font-size: 10px;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.14em;
-  color: var(--slate);
-  margin-top: 6px;
-}
-
-/* ============================================================
-   ANIMATIONS
-============================================================ */
-@keyframes fadeUp {
-  from { opacity: 0; transform: translateY(12px); }
-  to   { opacity: 1; transform: translateY(0); }
-}
-
-/* ============================================================
-   RESPONSIVO
-============================================================ */
-@media (max-width: 920px) {
-  .main {
-    grid-template-columns: 1fr;
-    padding: 20px 16px;
-    gap: 22px;
-  }
-  .sidebar {
-    position: static;
-    max-height: none;
-    padding-right: 0;
-  }
-  .masthead-inner { padding: 0 16px; }
-  .title { font-size: 26px; }
-  .kicker, .edition { display: none; }
-  .q-view { padding: 24px 20px; }
-  .q-row { grid-template-columns: 54px 1fr 70px 28px; }
-  .q-row .q-tag.q-spec-tag { display: none; }
-  .q-meta-bar { flex-direction: column; align-items: flex-start; }
-  .modal { padding: 32px 28px; }
-}
-</style>
+    /* ===== Responsivo ===== */
+    @media (max-width: 920px) {
+      .main { grid-template-columns: 1fr; padding: 20px; gap: 24px; }
+      .sidebar { position: static; max-height: none; }
+      .hero-band { padding: 32px 20px 20px; }
+      .top-inner { padding: 16px 20px; }
+      .q-view { padding: 24px; }
+      .q-row { grid-template-columns: 50px 1fr auto auto; gap: 10px; padding: 12px 14px; }
+      .q-row .q-spec-tag { display: none; }
+      .q-meta-bar { flex-direction: column; align-items: flex-start; }
+      .q-nav { width: 100%; justify-content: space-between; }
+      .modal { padding: 28px; }
+      footer { flex-direction: column; gap: 6px; }
+    }
+  </style>
 </head>
 <body>
 
-<header class="masthead">
-  <div class="masthead-inner">
-    <div class="kicker">Vytal · Vol. I</div>
-    <div class="title-block">
-      <h1 class="title">Banco <em>AD1</em> · Residência</h1>
-      <div class="subtitle">USP / FUVEST · Edital COREME/FM Nº 03/2025 · 120 questões</div>
-    </div>
-    <div class="edition">Maio · MMXXVI</div>
-  </div>
-</header>
-
-<main class="main">
-  <aside class="sidebar">
-    <div class="stats">
-      <div class="stat-row">
-        <span>Resolvidas</span>
-        <span class="num" id="stat-solved">0</span>
-      </div>
-      <div class="stat-row stat-accuracy">
-        <span>Acertos</span>
-        <span class="num" id="stat-accuracy">—</span>
-      </div>
-      <div class="stat-row">
-        <span>Filtradas</span>
-        <span class="num" id="stat-shown">120</span>
-      </div>
-    </div>
-
-    <div class="panel">
-      <div class="panel-label">Busca textual</div>
-      <input class="search-box" id="search" type="text" placeholder="palavras-chave, agente, fármaco…">
-    </div>
-
-    <div class="panel">
-      <div class="panel-label">Especialidade <span class="count" id="spec-count">5</span></div>
-      <div class="filter-group" id="filter-spec"></div>
-    </div>
-
-    <div class="panel">
-      <div class="panel-label">Dificuldade</div>
-      <div class="toggle-row" id="filter-diff">
-        <button class="toggle-btn" data-diff="Fácil">Fácil</button>
-        <button class="toggle-btn" data-diff="Médio">Médio</button>
-        <button class="toggle-btn" data-diff="Difícil">Difícil</button>
-      </div>
-    </div>
-
-    <div class="panel">
-      <div class="panel-label">Imagem</div>
-      <div class="toggle-row" id="filter-img">
-        <button class="toggle-btn" data-img="yes">Com imagem</button>
-        <button class="toggle-btn" data-img="no">Sem imagem</button>
-      </div>
-    </div>
-
-    <div class="panel">
-      <div class="panel-label">Estado</div>
-      <div class="toggle-row" id="filter-state">
-        <button class="toggle-btn" data-state="unsolved">Pendentes</button>
-        <button class="toggle-btn" data-state="correct">Acertadas</button>
-        <button class="toggle-btn" data-state="wrong">Erradas</button>
-      </div>
-    </div>
-
-    <button class="reset-btn" id="reset-filters">Limpar filtros</button>
-    <button class="reset-btn" id="reset-progress" style="margin-top:4px;">Resetar progresso</button>
-  </aside>
-
-  <section class="content">
-    <div class="tab-bar">
-      <button class="tab active" data-tab="list">Índice</button>
-      <button class="tab" data-tab="study">Estudo dirigido</button>
-      <button class="tab" data-tab="simulado">Simulado</button>
-    </div>
-
-    <div id="view-list">
-      <div class="question-list" id="question-list"></div>
-    </div>
-
-    <div id="view-question" style="display:none;">
-      <div id="simulado-bar-container"></div>
-      <div class="q-view" id="q-content"></div>
-    </div>
-  </section>
-</main>
-
-<div class="modal-bg" id="modal">
-  <div class="modal">
-    <div class="modal-kicker">Simulado encerrado</div>
-    <div class="modal-title" id="modal-score">—</div>
-    <div class="modal-stats">
-      <div>
-        <div class="modal-stat-num" id="m-correct" style="color:var(--green);">0</div>
-        <div class="modal-stat-lbl">Acertos</div>
-      </div>
-      <div>
-        <div class="modal-stat-num" id="m-wrong" style="color:var(--red);">0</div>
-        <div class="modal-stat-lbl">Erros</div>
-      </div>
-      <div>
-        <div class="modal-stat-num" id="m-pct" style="color:var(--navy);">—</div>
-        <div class="modal-stat-lbl">Aproveitamento</div>
-      </div>
-    </div>
-    <button class="btn" onclick="closeModal()">Fechar</button>
-  </div>
-</div>
-
-<footer class="footer">
-  Vytal · Banco de Estudos · Material didático · Sem fins lucrativos
-</footer>
-
-<script src="questoes.js"></script>
-<script>
-// ============= STATE =============
-const state = {
-  filters: {
-    search: '',
-    spec: new Set(),
-    diff: new Set(),
-    img: null,    // null | 'yes' | 'no'
-    statefilt: null  // null | 'unsolved' | 'correct' | 'wrong'
-  },
-  progress: {},  // {1: {answer:'A', correct:false}, ...}
-  view: 'list',  // 'list' | 'question'
-  currentQ: null,
-  mode: 'study', // 'study' | 'simulado'
-  simulado: {
-    active: false,
-    queue: [],
-    answers: {}
-  }
-};
-
-// Storage
-const STORE_KEY = 'banco-ad1-usp-2026';
-function loadProgress() {
-  try {
-    const data = localStorage.getItem(STORE_KEY);
-    if (data) state.progress = JSON.parse(data);
-  } catch(e) { state.progress = {}; }
-}
-function saveProgress() {
-  try { localStorage.setItem(STORE_KEY, JSON.stringify(state.progress)); }
-  catch(e) {}
-}
-loadProgress();
-
-// ============= COMPUTED =============
-function getSpecialties() {
-  const counts = {};
-  QUESTOES.forEach(q => { counts[q.especialidade] = (counts[q.especialidade] || 0) + 1; });
-  return counts;
-}
-function getFilteredQuestions() {
-  return QUESTOES.filter(q => {
-    if (state.filters.spec.size && !state.filters.spec.has(q.especialidade)) return false;
-    if (state.filters.diff.size && !state.filters.diff.has(q.dificuldade)) return false;
-    if (state.filters.img === 'yes' && !q.temImagem) return false;
-    if (state.filters.img === 'no' && q.temImagem) return false;
-    if (state.filters.statefilt) {
-      const p = state.progress[q.n];
-      if (state.filters.statefilt === 'unsolved' && p) return false;
-      if (state.filters.statefilt === 'correct' && (!p || !p.correct)) return false;
-      if (state.filters.statefilt === 'wrong' && (!p || p.correct)) return false;
-    }
-    if (state.filters.search) {
-      const s = state.filters.search.toLowerCase();
-      const blob = `${q.n} ${q.especialidade} ${q.tema} ${q.subtemas.join(' ')} ${q.enunciado} ${q.explicacao}`.toLowerCase();
-      if (!blob.includes(s)) return false;
-    }
-    return true;
-  });
-}
-
-// ============= RENDER FILTERS =============
-function renderSpecFilters() {
-  const counts = getSpecialties();
-  const container = document.getElementById('filter-spec');
-  container.innerHTML = '';
-  Object.entries(counts).forEach(([spec, count]) => {
-    const btn = document.createElement('button');
-    btn.className = 'filter-chip' + (state.filters.spec.has(spec) ? ' active' : '');
-    btn.innerHTML = `<span>${spec}</span><span class="chip-count">${count}</span>`;
-    btn.onclick = () => {
-      if (state.filters.spec.has(spec)) state.filters.spec.delete(spec);
-      else state.filters.spec.add(spec);
-      renderAll();
-    };
-    container.appendChild(btn);
-  });
-}
-function renderToggleButtons() {
-  document.querySelectorAll('[data-diff]').forEach(b => {
-    b.classList.toggle('active', state.filters.diff.has(b.dataset.diff));
-    b.onclick = () => {
-      if (state.filters.diff.has(b.dataset.diff)) state.filters.diff.delete(b.dataset.diff);
-      else state.filters.diff.add(b.dataset.diff);
-      renderAll();
-    };
-  });
-  document.querySelectorAll('[data-img]').forEach(b => {
-    b.classList.toggle('active', state.filters.img === b.dataset.img);
-    b.onclick = () => {
-      state.filters.img = state.filters.img === b.dataset.img ? null : b.dataset.img;
-      renderAll();
-    };
-  });
-  document.querySelectorAll('[data-state]').forEach(b => {
-    b.classList.toggle('active', state.filters.statefilt === b.dataset.state);
-    b.onclick = () => {
-      state.filters.statefilt = state.filters.statefilt === b.dataset.state ? null : b.dataset.state;
-      renderAll();
-    };
-  });
-}
-
-// ============= LIST VIEW =============
-function renderList() {
-  const list = document.getElementById('question-list');
-  const filtered = getFilteredQuestions();
-  if (filtered.length === 0) {
-    list.innerHTML = `<div class="empty"><div class="empty-icon">∅</div><div class="empty-text">Nenhuma questão atende aos filtros</div></div>`;
-    return;
-  }
-  list.innerHTML = filtered.map(q => {
-    const p = state.progress[q.n];
-    const statusClass = p ? (p.correct ? 'correct' : 'wrong') : '';
-    const preview = q.enunciado.length > 95 ? q.enunciado.substring(0, 92) + '…' : q.enunciado;
-    return `
-      <div class="q-row" onclick="openQuestion(${q.n})">
-        <span class="q-num">№ ${String(q.n).padStart(3, '0')}</span>
-        <span class="q-title">${preview}</span>
-        <span class="q-tag q-spec-tag">${q.especialidade.split(' ')[0]}</span>
-        <span class="q-tag diff-${q.dificuldade}">${q.dificuldade}</span>
-        <span class="q-status ${statusClass}"></span>
-      </div>
-    `;
-  }).join('');
-}
-
-// ============= QUESTION VIEW =============
-function openQuestion(n, fromList = true) {
-  state.currentQ = n;
-  state.view = 'question';
-  document.getElementById('view-list').style.display = 'none';
-  document.getElementById('view-question').style.display = 'block';
-  renderQuestion();
-  window.scrollTo({ top: 0, behavior: 'smooth' });
-}
-
-function renderQuestion() {
-  const q = QUESTOES.find(x => x.n === state.currentQ);
-  if (!q) return;
-  const p = state.progress[q.n];
-  const filtered = getFilteredQuestions();
-  const idx = filtered.findIndex(x => x.n === q.n);
-  const prev = idx > 0 ? filtered[idx - 1].n : null;
-  const next = idx < filtered.length - 1 ? filtered[idx + 1].n : null;
-
-  // Sim bar
-  const simBar = document.getElementById('simulado-bar-container');
-  if (state.simulado.active) {
-    const ansCount = Object.keys(state.simulado.answers).length;
-    simBar.innerHTML = `
-      <div class="simulado-bar">
-        <span>◯ Simulado em andamento · ${ansCount}/${state.simulado.queue.length} respondidas</span>
-        <button class="end-btn" onclick="endSimulado()">Finalizar</button>
-      </div>
-    `;
-  } else { simBar.innerHTML = ''; }
-
-  let altsHTML = '';
-  ['A','B','C','D'].forEach(letter => {
-    let classes = 'alt';
-    let disabled = '';
-    let revealed = '';
-    if (state.simulado.active) {
-      // Simulado mode - just mark selection, no reveal
-      if (state.simulado.answers[q.n] === letter) classes += ' selected';
-    } else if (p) {
-      // Already answered - show feedback
-      classes += ' revealed';
-      disabled = 'disabled';
-      revealed = 'revealed';
-      if (letter === q.gabarito) classes += ' correct';
-      else if (letter === p.answer) classes += ' wrong';
-    }
-    altsHTML += `
-      <button class="${classes}" ${disabled} onclick="selectAnswer(${q.n}, '${letter}')">
-        <span class="alt-letter">${letter}</span>
-        <span class="alt-text">${q.alternativas[letter]}</span>
-      </button>
-    `;
-  });
-
-  let feedbackHTML = '';
-  if (p && !state.simulado.active) {
-    feedbackHTML = `
-      <div class="feedback show">
-        <div class="feedback-header">
-          <span class="feedback-label">Gabarito</span>
-          <span class="feedback-answer">${q.gabarito}</span>
-          <span class="feedback-result ${p.correct ? 'correct' : 'wrong'}">${p.correct ? 'Você acertou' : 'Você errou'}</span>
+  <header class="top">
+    <div class="top-inner">
+      <a href="#" class="brand">
+        <div class="brand-mark">V</div>
+        <div class="brand-text">
+          <span class="brand-name">Vytal</span>
+          <span class="brand-sub">Banco AD1 · Residência</span>
         </div>
-        <div class="explicacao">${q.explicacao}</div>
-      </div>
-    `;
-  }
-
-  const imgNote = q.temImagem ?
-    `<div class="q-image-note">◐ Esta questão original contém imagem ilustrativa (ECG, radiografia, tomografia, fotografia clínica ou similar). A descrição do achado está incluída no enunciado adaptado.</div>`
-    : '';
-
-  document.getElementById('q-content').innerHTML = `
-    <div class="q-meta-bar">
-      <div class="q-meta-left">
-        <span class="q-number">№ ${String(q.n).padStart(3,'0')}</span>
-        <span class="q-tag-pill spec">${q.especialidade}</span>
-        <span class="q-tag-pill diff-${q.dificuldade}" style="border-color:currentColor;">${q.dificuldade}</span>
-        ${q.temImagem ? '<span class="q-tag-pill image">Com imagem</span>' : ''}
-      </div>
-      <div class="q-nav">
-        <button class="nav-btn list" onclick="backToList()">Índice</button>
-        <button class="nav-btn" onclick="navQuestion(${prev})" ${prev===null?'disabled':''}>‹ Anterior</button>
-        <button class="nav-btn" onclick="navQuestion(${next})" ${next===null?'disabled':''}>Próxima ›</button>
-      </div>
+      </a>
+      <div class="top-meta">USP / FUVEST · 2026</div>
     </div>
+  </header>
 
-    <div class="q-tema"><strong>${q.tema}</strong></div>
-    ${imgNote}
-    <div class="q-enunciado">${q.enunciado}</div>
+  <section class="hero-band">
+    <div class="eyebrow">120 questões · Áreas Básicas &amp; Acesso Direto</div>
+    <h1 class="hero-title">Banco interativo de questões da prova <span class="accent">AD1 USP/FUVEST 2026</span></h1>
+    <p class="hero-sub">Estudo dirigido com gabarito comentado, filtros múltiplos por especialidade, tema e dificuldade, e modo simulado com placar de aproveitamento.</p>
+  </section>
 
-    <div class="alternativas">${altsHTML}</div>
+  <main class="main">
+    <aside class="sidebar">
+      <div class="stats-card">
+        <div class="stat-row">
+          <span class="stat-label">Resolvidas</span>
+          <span class="stat-value" id="stat-solved">0</span>
+        </div>
+        <div class="stat-row accent">
+          <span class="stat-label">Acertos</span>
+          <span class="stat-value" id="stat-accuracy">—</span>
+        </div>
+        <div class="stat-row">
+          <span class="stat-label">Filtradas</span>
+          <span class="stat-value" id="stat-shown">120</span>
+        </div>
+      </div>
 
-    ${state.simulado.active && state.simulado.answers[q.n] ?
-      `<div class="action-bar">
-        <button class="btn secondary" onclick="navQuestion(${next})" ${next===null?'disabled':''}>Próxima questão</button>
-       </div>` : ''}
+      <div class="panel">
+        <div class="panel-label">Busca textual</div>
+        <input class="search-box" id="search" type="text" placeholder="agente, fármaco, sintoma…">
+      </div>
 
-    ${feedbackHTML}
+      <div class="panel">
+        <div class="panel-label">Especialidade <span class="count" id="spec-count">5</span></div>
+        <div class="filter-list" id="filter-spec"></div>
+      </div>
 
-    <div class="subtemas-row">
-      ${q.subtemas.map(s => `<span class="subtema">${s}</span>`).join('')}
+      <div class="panel">
+        <div class="panel-label">Dificuldade</div>
+        <div class="toggle-row" id="filter-diff">
+          <button class="toggle-btn" data-diff="Fácil">Fácil</button>
+          <button class="toggle-btn" data-diff="Médio">Médio</button>
+          <button class="toggle-btn" data-diff="Difícil">Difícil</button>
+        </div>
+      </div>
+
+      <div class="panel">
+        <div class="panel-label">Imagem</div>
+        <div class="toggle-row" id="filter-img">
+          <button class="toggle-btn" data-img="yes">Com imagem</button>
+          <button class="toggle-btn" data-img="no">Sem imagem</button>
+        </div>
+      </div>
+
+      <div class="panel">
+        <div class="panel-label">Estado</div>
+        <div class="toggle-row" id="filter-state">
+          <button class="toggle-btn" data-state="unsolved">Pendentes</button>
+          <button class="toggle-btn" data-state="correct">Acertadas</button>
+          <button class="toggle-btn" data-state="wrong">Erradas</button>
+        </div>
+      </div>
+
+      <button class="reset-btn" id="reset-filters">Limpar filtros</button>
+      <button class="reset-btn danger" id="reset-progress">Resetar progresso</button>
+    </aside>
+
+    <section class="content">
+      <div class="tab-bar">
+        <button class="tab active" data-tab="list">Índice</button>
+        <button class="tab" data-tab="study">Estudo dirigido</button>
+        <button class="tab" data-tab="simulado">Simulado</button>
+      </div>
+
+      <div id="view-list">
+        <div class="question-list" id="question-list"></div>
+      </div>
+
+      <div id="view-question" style="display:none;">
+        <div id="simulado-bar-container"></div>
+        <div class="q-view" id="q-content"></div>
+      </div>
+    </section>
+  </main>
+
+  <div class="modal-bg" id="modal">
+    <div class="modal">
+      <div class="modal-kicker">Simulado encerrado</div>
+      <div class="modal-title" id="modal-score">—</div>
+      <div class="modal-stats">
+        <div>
+          <div class="modal-stat-num" id="m-correct" style="color:var(--success);">0</div>
+          <div class="modal-stat-lbl">Acertos</div>
+        </div>
+        <div>
+          <div class="modal-stat-num" id="m-wrong" style="color:var(--error);">0</div>
+          <div class="modal-stat-lbl">Erros</div>
+        </div>
+        <div>
+          <div class="modal-stat-num" id="m-pct" style="background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent;">—</div>
+          <div class="modal-stat-lbl">Aproveitamento</div>
+        </div>
+      </div>
+      <button class="btn" onclick="closeModal()">Fechar</button>
     </div>
-  `;
-}
+  </div>
 
-function selectAnswer(qN, letter) {
-  if (state.simulado.active) {
-    state.simulado.answers[qN] = letter;
-    renderQuestion();
-    return;
-  }
-  if (state.progress[qN]) return; // already answered
-  const q = QUESTOES.find(x => x.n === qN);
-  const correct = q.gabarito === letter;
-  state.progress[qN] = { answer: letter, correct: correct };
-  saveProgress();
-  renderQuestion();
-  renderStats();
-}
+  <footer>
+    <div>© 2026 Vytal · Banco de Estudos · Material didático</div>
+    <div>Versão preliminar · uso interno</div>
+  </footer>
 
-function navQuestion(n) {
-  if (n === null) return;
-  state.currentQ = n;
-  renderQuestion();
-  window.scrollTo({ top: 0, behavior: 'smooth' });
-}
+  <script src="/bancodequestoes/questoes.js"></script>
+  <script>
+    // ============= STATE =============
+    const state = {
+      filters: {
+        search: '',
+        spec: new Set(),
+        diff: new Set(),
+        img: null,
+        statefilt: null
+      },
+      progress: {},
+      view: 'list',
+      currentQ: null,
+      mode: 'list',
+      simulado: { active: false, queue: [], answers: {} }
+    };
 
-function backToList() {
-  state.view = 'list';
-  document.getElementById('view-list').style.display = 'block';
-  document.getElementById('view-question').style.display = 'none';
-  renderList();
-}
+    const STORE_KEY = 'vytal-banco-ad1-usp-2026';
+    function loadProgress() {
+      try {
+        const data = localStorage.getItem(STORE_KEY);
+        if (data) state.progress = JSON.parse(data);
+      } catch(e) { state.progress = {}; }
+    }
+    function saveProgress() {
+      try { localStorage.setItem(STORE_KEY, JSON.stringify(state.progress)); } catch(e) {}
+    }
+    loadProgress();
 
-// ============= STATS =============
-function renderStats() {
-  const solved = Object.keys(state.progress).length;
-  const correct = Object.values(state.progress).filter(p => p.correct).length;
-  document.getElementById('stat-solved').textContent = solved;
-  document.getElementById('stat-accuracy').textContent =
-    solved === 0 ? '—' : Math.round((correct / solved) * 100) + '%';
-  document.getElementById('stat-shown').textContent = getFilteredQuestions().length;
-}
+    function getSpecialties() {
+      const counts = {};
+      QUESTOES.forEach(q => { counts[q.especialidade] = (counts[q.especialidade] || 0) + 1; });
+      return counts;
+    }
 
-// ============= TABS =============
-function setTab(tab) {
-  document.querySelectorAll('.tab').forEach(t =>
-    t.classList.toggle('active', t.dataset.tab === tab));
-  state.mode = tab;
-  if (tab === 'simulado') startSimulado();
-  else {
-    state.simulado.active = false;
-    backToList();
-  }
-}
+    function getFilteredQuestions() {
+      return QUESTOES.filter(q => {
+        if (state.filters.spec.size && !state.filters.spec.has(q.especialidade)) return false;
+        if (state.filters.diff.size && !state.filters.diff.has(q.dificuldade)) return false;
+        if (state.filters.img === 'yes' && !q.temImagem) return false;
+        if (state.filters.img === 'no' && q.temImagem) return false;
+        if (state.filters.statefilt) {
+          const p = state.progress[q.n];
+          if (state.filters.statefilt === 'unsolved' && p) return false;
+          if (state.filters.statefilt === 'correct' && (!p || !p.correct)) return false;
+          if (state.filters.statefilt === 'wrong' && (!p || p.correct)) return false;
+        }
+        if (state.filters.search) {
+          const s = state.filters.search.toLowerCase();
+          const blob = `${q.n} ${q.especialidade} ${q.tema} ${q.subtemas.join(' ')} ${q.enunciado} ${q.explicacao}`.toLowerCase();
+          if (!blob.includes(s)) return false;
+        }
+        return true;
+      });
+    }
 
-document.querySelectorAll('.tab').forEach(t => {
-  t.onclick = () => setTab(t.dataset.tab);
-});
+    function renderSpecFilters() {
+      const counts = getSpecialties();
+      const container = document.getElementById('filter-spec');
+      container.innerHTML = '';
+      Object.entries(counts).forEach(([spec, count]) => {
+        const btn = document.createElement('button');
+        btn.className = 'filter-item' + (state.filters.spec.has(spec) ? ' active' : '');
+        btn.innerHTML = `<span>${spec}</span><span class="item-count">${count}</span>`;
+        btn.onclick = () => {
+          if (state.filters.spec.has(spec)) state.filters.spec.delete(spec);
+          else state.filters.spec.add(spec);
+          renderAll();
+        };
+        container.appendChild(btn);
+      });
+    }
 
-// ============= SIMULADO =============
-function startSimulado() {
-  const filtered = getFilteredQuestions();
-  if (filtered.length === 0) {
-    alert('Nenhuma questão com os filtros atuais. Limpe filtros para iniciar.');
-    setTab('list');
-    return;
-  }
-  state.simulado.active = true;
-  state.simulado.queue = filtered.map(q => q.n);
-  state.simulado.answers = {};
-  state.currentQ = state.simulado.queue[0];
-  state.view = 'question';
-  document.getElementById('view-list').style.display = 'none';
-  document.getElementById('view-question').style.display = 'block';
-  renderQuestion();
-}
-function endSimulado() {
-  let correct = 0, wrong = 0;
-  Object.entries(state.simulado.answers).forEach(([n, ans]) => {
-    const q = QUESTOES.find(x => x.n === parseInt(n));
-    if (!q) return;
-    const isCorrect = q.gabarito === ans;
-    state.progress[n] = { answer: ans, correct: isCorrect };
-    if (isCorrect) correct++; else wrong++;
-  });
-  saveProgress();
-  state.simulado.active = false;
-  const total = correct + wrong;
-  const pct = total ? Math.round((correct/total)*100) : 0;
-  document.getElementById('m-correct').textContent = correct;
-  document.getElementById('m-wrong').textContent = wrong;
-  document.getElementById('m-pct').textContent = pct + '%';
-  document.getElementById('modal-score').textContent =
-    pct >= 80 ? 'Excelente.' : pct >= 60 ? 'Bom resultado.' : pct >= 40 ? 'Em desenvolvimento.' : 'Necessita revisão.';
-  document.getElementById('modal').classList.add('show');
-}
-function closeModal() {
-  document.getElementById('modal').classList.remove('show');
-  setTab('list');
-  renderStats();
-}
+    function renderToggleButtons() {
+      document.querySelectorAll('[data-diff]').forEach(b => {
+        b.classList.toggle('active', state.filters.diff.has(b.dataset.diff));
+        b.onclick = () => {
+          if (state.filters.diff.has(b.dataset.diff)) state.filters.diff.delete(b.dataset.diff);
+          else state.filters.diff.add(b.dataset.diff);
+          renderAll();
+        };
+      });
+      document.querySelectorAll('[data-img]').forEach(b => {
+        b.classList.toggle('active', state.filters.img === b.dataset.img);
+        b.onclick = () => {
+          state.filters.img = state.filters.img === b.dataset.img ? null : b.dataset.img;
+          renderAll();
+        };
+      });
+      document.querySelectorAll('[data-state]').forEach(b => {
+        b.classList.toggle('active', state.filters.statefilt === b.dataset.state);
+        b.onclick = () => {
+          state.filters.statefilt = state.filters.statefilt === b.dataset.state ? null : b.dataset.state;
+          renderAll();
+        };
+      });
+    }
 
-// ============= SEARCH =============
-document.getElementById('search').addEventListener('input', (e) => {
-  state.filters.search = e.target.value;
-  renderAll();
-});
+    function renderList() {
+      const list = document.getElementById('question-list');
+      const filtered = getFilteredQuestions();
+      if (filtered.length === 0) {
+        list.innerHTML = `<div class="empty"><div class="empty-icon">∅</div><div class="empty-text">Nenhuma questão atende aos filtros</div></div>`;
+        return;
+      }
+      list.innerHTML = filtered.map(q => {
+        const p = state.progress[q.n];
+        const statusClass = p ? (p.correct ? 'correct' : 'wrong') : '';
+        const preview = q.enunciado.length > 110 ? q.enunciado.substring(0, 107) + '…' : q.enunciado;
+        return `
+          <div class="q-row" onclick="openQuestion(${q.n})">
+            <span class="q-num">№ ${String(q.n).padStart(3, '0')}</span>
+            <span class="q-title">${preview}</span>
+            <span class="q-tag q-spec-tag">${q.especialidade.split(' ')[0]}</span>
+            <span class="q-tag diff-${q.dificuldade}">${q.dificuldade}</span>
+            <span class="q-status ${statusClass}"></span>
+          </div>
+        `;
+      }).join('');
+    }
 
-// ============= RESET =============
-document.getElementById('reset-filters').onclick = () => {
-  state.filters.spec.clear();
-  state.filters.diff.clear();
-  state.filters.img = null;
-  state.filters.statefilt = null;
-  state.filters.search = '';
-  document.getElementById('search').value = '';
-  renderAll();
-};
-document.getElementById('reset-progress').onclick = () => {
-  if (confirm('Resetar todo o progresso? Esta ação não pode ser desfeita.')) {
-    state.progress = {};
-    saveProgress();
+    function openQuestion(n) {
+      state.currentQ = n;
+      state.view = 'question';
+      document.getElementById('view-list').style.display = 'none';
+      document.getElementById('view-question').style.display = 'block';
+      renderQuestion();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    function renderQuestion() {
+      const q = QUESTOES.find(x => x.n === state.currentQ);
+      if (!q) return;
+      const p = state.progress[q.n];
+      const filtered = getFilteredQuestions();
+      const idx = filtered.findIndex(x => x.n === q.n);
+      const prev = idx > 0 ? filtered[idx - 1].n : null;
+      const next = idx < filtered.length - 1 ? filtered[idx + 1].n : null;
+
+      const simBar = document.getElementById('simulado-bar-container');
+      if (state.simulado.active) {
+        const ansCount = Object.keys(state.simulado.answers).length;
+        const total = state.simulado.queue.length;
+        const pct = (ansCount / total) * 100;
+        simBar.innerHTML = `
+          <div class="simulado-bar">
+            <span>◯ Simulado · ${ansCount}/${total} respondidas</span>
+            <div class="progress"><div class="progress-fill" style="width:${pct}%"></div></div>
+            <button class="end-btn" onclick="endSimulado()">Finalizar</button>
+          </div>
+        `;
+      } else { simBar.innerHTML = ''; }
+
+      let altsHTML = '';
+      ['A','B','C','D'].forEach(letter => {
+        let classes = 'alt';
+        let disabled = '';
+        if (state.simulado.active) {
+          if (state.simulado.answers[q.n] === letter) classes += ' selected';
+        } else if (p) {
+          classes += ' revealed';
+          disabled = 'disabled';
+          if (letter === q.gabarito) classes += ' correct';
+          else if (letter === p.answer) classes += ' wrong';
+        }
+        altsHTML += `
+          <button class="${classes}" ${disabled} onclick="selectAnswer(${q.n}, '${letter}')">
+            <span class="alt-letter">${letter}</span>
+            <span class="alt-text">${q.alternativas[letter]}</span>
+          </button>
+        `;
+      });
+
+      let feedbackHTML = '';
+      if (p && !state.simulado.active) {
+        feedbackHTML = `
+          <div class="feedback show">
+            <div class="feedback-header">
+              <span class="feedback-label">Gabarito</span>
+              <span class="feedback-answer">${q.gabarito}</span>
+              <span class="feedback-result ${p.correct ? 'correct' : 'wrong'}">${p.correct ? 'Você acertou' : 'Você errou'}</span>
+            </div>
+            <div class="explicacao">${q.explicacao}</div>
+          </div>
+        `;
+      }
+
+      const imgNote = q.temImagem ?
+        `<div class="q-image-note">◐ Esta questão original contém imagem ilustrativa (ECG, radiografia, tomografia, fotografia clínica ou similar). A descrição do achado está incluída no enunciado adaptado.</div>`
+        : '';
+
+      document.getElementById('q-content').innerHTML = `
+        <div class="q-meta-bar">
+          <div class="q-meta-left">
+            <span class="q-number-big">№ ${String(q.n).padStart(3,'0')}</span>
+            <span class="q-tag-pill spec">${q.especialidade}</span>
+            <span class="q-tag-pill diff-${q.dificuldade}" style="background:${q.dificuldade==='Fácil'?'var(--success-bg)':q.dificuldade==='Médio'?'var(--warn-bg)':'var(--error-bg)'};color:${q.dificuldade==='Fácil'?'var(--success)':q.dificuldade==='Médio'?'var(--warn)':'var(--error)'};">${q.dificuldade}</span>
+            ${q.temImagem ? '<span class="q-tag-pill image">◐ Com imagem</span>' : ''}
+          </div>
+          <div class="q-nav">
+            <button class="nav-btn primary" onclick="backToList()">Índice</button>
+            <button class="nav-btn" onclick="navQuestion(${prev})" ${prev===null?'disabled':''}>‹ Anterior</button>
+            <button class="nav-btn" onclick="navQuestion(${next})" ${next===null?'disabled':''}>Próxima ›</button>
+          </div>
+        </div>
+
+        <div class="q-tema"><strong>${q.tema}</strong></div>
+        ${imgNote}
+        <div class="q-enunciado">${q.enunciado}</div>
+
+        <div class="alternativas">${altsHTML}</div>
+
+        ${state.simulado.active && state.simulado.answers[q.n] && next !== null ?
+          `<div class="action-bar">
+            <button class="btn" onclick="navQuestion(${next})">Próxima questão</button>
+           </div>` : ''}
+
+        ${feedbackHTML}
+
+        <div class="subtemas-row">
+          ${q.subtemas.map(s => `<span class="subtema">${s}</span>`).join('')}
+        </div>
+      `;
+    }
+
+    function selectAnswer(qN, letter) {
+      if (state.simulado.active) {
+        state.simulado.answers[qN] = letter;
+        renderQuestion();
+        return;
+      }
+      if (state.progress[qN]) return;
+      const q = QUESTOES.find(x => x.n === qN);
+      const correct = q.gabarito === letter;
+      state.progress[qN] = { answer: letter, correct: correct };
+      saveProgress();
+      renderQuestion();
+      renderStats();
+    }
+
+    function navQuestion(n) {
+      if (n === null) return;
+      state.currentQ = n;
+      renderQuestion();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    function backToList() {
+      state.view = 'list';
+      document.getElementById('view-list').style.display = 'block';
+      document.getElementById('view-question').style.display = 'none';
+      renderList();
+    }
+
+    function renderStats() {
+      const solved = Object.keys(state.progress).length;
+      const correct = Object.values(state.progress).filter(p => p.correct).length;
+      document.getElementById('stat-solved').textContent = solved;
+      document.getElementById('stat-accuracy').textContent =
+        solved === 0 ? '—' : Math.round((correct / solved) * 100) + '%';
+      document.getElementById('stat-shown').textContent = getFilteredQuestions().length;
+    }
+
+    function setTab(tab) {
+      document.querySelectorAll('.tab').forEach(t =>
+        t.classList.toggle('active', t.dataset.tab === tab));
+      state.mode = tab;
+      if (tab === 'simulado') startSimulado();
+      else {
+        state.simulado.active = false;
+        backToList();
+      }
+    }
+    document.querySelectorAll('.tab').forEach(t => {
+      t.onclick = () => setTab(t.dataset.tab);
+    });
+
+    function startSimulado() {
+      const filtered = getFilteredQuestions();
+      if (filtered.length === 0) {
+        alert('Nenhuma questão com os filtros atuais. Limpe filtros para iniciar.');
+        setTab('list');
+        return;
+      }
+      state.simulado.active = true;
+      state.simulado.queue = filtered.map(q => q.n);
+      state.simulado.answers = {};
+      state.currentQ = state.simulado.queue[0];
+      state.view = 'question';
+      document.getElementById('view-list').style.display = 'none';
+      document.getElementById('view-question').style.display = 'block';
+      renderQuestion();
+    }
+
+    function endSimulado() {
+      let correct = 0, wrong = 0;
+      Object.entries(state.simulado.answers).forEach(([n, ans]) => {
+        const q = QUESTOES.find(x => x.n === parseInt(n));
+        if (!q) return;
+        const isCorrect = q.gabarito === ans;
+        state.progress[n] = { answer: ans, correct: isCorrect };
+        if (isCorrect) correct++; else wrong++;
+      });
+      saveProgress();
+      state.simulado.active = false;
+      const total = correct + wrong;
+      const pct = total ? Math.round((correct/total)*100) : 0;
+      document.getElementById('m-correct').textContent = correct;
+      document.getElementById('m-wrong').textContent = wrong;
+      document.getElementById('m-pct').textContent = pct + '%';
+      document.getElementById('modal-score').textContent =
+        pct >= 80 ? 'Excelente.' : pct >= 60 ? 'Bom resultado.' : pct >= 40 ? 'Em desenvolvimento.' : 'Necessita revisão.';
+      document.getElementById('modal').classList.add('show');
+    }
+
+    function closeModal() {
+      document.getElementById('modal').classList.remove('show');
+      setTab('list');
+      renderStats();
+    }
+
+    document.getElementById('search').addEventListener('input', (e) => {
+      state.filters.search = e.target.value;
+      renderAll();
+    });
+
+    document.getElementById('reset-filters').onclick = () => {
+      state.filters.spec.clear();
+      state.filters.diff.clear();
+      state.filters.img = null;
+      state.filters.statefilt = null;
+      state.filters.search = '';
+      document.getElementById('search').value = '';
+      renderAll();
+    };
+
+    document.getElementById('reset-progress').onclick = () => {
+      if (confirm('Resetar todo o progresso? Esta ação não pode ser desfeita.')) {
+        state.progress = {};
+        saveProgress();
+        renderAll();
+      }
+    };
+
+    function renderAll() {
+      renderSpecFilters();
+      renderToggleButtons();
+      if (state.view === 'list') renderList();
+      else renderQuestion();
+      renderStats();
+    }
+
     renderAll();
-  }
-};
-
-// ============= MASTER RENDER =============
-function renderAll() {
-  renderSpecFilters();
-  renderToggleButtons();
-  if (state.view === 'list') {
-    renderList();
-  } else {
-    renderQuestion();
-  }
-  renderStats();
-}
-
-renderAll();
-</script>
+  </script>
 </body>
 </html>
