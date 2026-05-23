@@ -5,6 +5,7 @@ const QUESTOES = [
   // ==================== CLÍNICA MÉDICA (1-24) ====================
   {
     n: 1,
+    banca: "USP/FUVEST 2026",
     especialidade: "Clínica Médica",
     tema: "Pneumologia/POCUS",
     subtemas: ["DPOC", "Ultrassom point-of-care", "Asma"],
@@ -22,6 +23,7 @@ const QUESTOES = [
   },
   {
     n: 2,
+    banca: "USP/FUVEST 2026",
     especialidade: "Clínica Médica",
     tema: "Nefrologia",
     subtemas: ["Hiponatremia", "Distúrbios hidroeletrolíticos", "GECA"],
@@ -39,6 +41,7 @@ const QUESTOES = [
   },
   {
     n: 3,
+    banca: "USP/FUVEST 2026",
     especialidade: "Clínica Médica",
     tema: "Gastroenterologia",
     subtemas: ["Cirrose", "Varizes esofágicas", "Profilaxia HDA"],
@@ -56,6 +59,7 @@ const QUESTOES = [
   },
   {
     n: 4,
+    banca: "USP/FUVEST 2026",
     especialidade: "Clínica Médica",
     tema: "Cardiologia",
     subtemas: ["Insuficiência cardíaca", "Cardiomiopatias", "Hemocromatose"],
@@ -73,6 +77,7 @@ const QUESTOES = [
   },
   {
     n: 5,
+    banca: "USP/FUVEST 2026",
     especialidade: "Clínica Médica",
     tema: "Dermatologia/Geriatria",
     subtemas: ["Prurido", "Xerose senil"],
@@ -90,6 +95,7 @@ const QUESTOES = [
   },
   {
     n: 6,
+    banca: "USP/FUVEST 2026",
     especialidade: "Clínica Médica",
     tema: "Cardiologia",
     subtemas: ["IAM", "Infarto de VD", "ECG"],
@@ -107,6 +113,7 @@ const QUESTOES = [
   },
   {
     n: 7,
+    banca: "USP/FUVEST 2026",
     especialidade: "Clínica Médica",
     tema: "Hematologia",
     subtemas: ["Gamopatia monoclonal", "MGUS", "Mieloma múltiplo"],
@@ -124,6 +131,7 @@ const QUESTOES = [
   },
   {
     n: 8,
+    banca: "USP/FUVEST 2026",
     especialidade: "Clínica Médica",
     tema: "Psiquiatria",
     subtemas: ["Transtorno de pânico", "Agorafobia"],
@@ -141,6 +149,7 @@ const QUESTOES = [
   },
   {
     n: 9,
+    banca: "USP/FUVEST 2026",
     especialidade: "Clínica Médica",
     tema: "Gastroenterologia",
     subtemas: ["Doença celíaca", "Anemia ferropriva"],
@@ -158,6 +167,7 @@ const QUESTOES = [
   },
   {
     n: 10,
+    banca: "USP/FUVEST 2026",
     especialidade: "Clínica Médica",
     tema: "Psiquiatria/Farmacologia",
     subtemas: ["ISRS", "Insônia", "Efeitos adversos"],
@@ -175,6 +185,7 @@ const QUESTOES = [
   },
   {
     n: 11,
+    banca: "USP/FUVEST 2026",
     especialidade: "Clínica Médica",
     tema: "Neurologia",
     subtemas: ["AVC", "Heminegligência", "Síndromes hemisféricas"],
@@ -192,6 +203,7 @@ const QUESTOES = [
   },
   {
     n: 12,
+    banca: "USP/FUVEST 2026",
     especialidade: "Clínica Médica",
     tema: "Endocrinologia",
     subtemas: ["Cetoacidose diabética", "Hipocalemia", "Distúrbios eletrolíticos"],
@@ -209,6 +221,7 @@ const QUESTOES = [
   },
   {
     n: 13,
+    banca: "USP/FUVEST 2026",
     especialidade: "Clínica Médica",
     tema: "Bioestatística/Cardiologia",
     subtemas: ["Razão de verossimilhança", "Insuficiência cardíaca", "Semiologia"],
@@ -226,6 +239,7 @@ const QUESTOES = [
   },
   {
     n: 14,
+    banca: "USP/FUVEST 2026",
     especialidade: "Clínica Médica",
     tema: "Pneumologia",
     subtemas: ["Intubação", "Radiografia de tórax", "Intubação seletiva"],
@@ -243,6 +257,7 @@ const QUESTOES = [
   },
   {
     n: 15,
+    banca: "USP/FUVEST 2026",
     especialidade: "Clínica Médica",
     tema: "Alergia/Imunologia",
     subtemas: ["Anafilaxia", "Angioedema", "Urticária"],
@@ -260,6 +275,7 @@ const QUESTOES = [
   },
   {
     n: 16,
+    banca: "USP/FUVEST 2026",
     especialidade: "Clínica Médica",
     tema: "Hematologia/Oncologia",
     subtemas: ["Linfadenomegalia", "Linfoma", "Biópsia"],
@@ -277,6 +293,7 @@ const QUESTOES = [
   },
   {
     n: 17,
+    banca: "USP/FUVEST 2026",
     especialidade: "Clínica Médica",
     tema: "Cardiologia",
     subtemas: ["Hipertensão", "Aferição da PA"],
@@ -294,6 +311,7 @@ const QUESTOES = [
   },
   {
     n: 18,
+    banca: "USP/FUVEST 2026",
     especialidade: "Clínica Médica",
     tema: "Bioestatística/Ginecologia",
     subtemas: ["Trombofilias", "Anticoncepcional", "Triagem"],
@@ -311,6 +329,7 @@ const QUESTOES = [
   },
   {
     n: 19,
+    banca: "USP/FUVEST 2026",
     especialidade: "Clínica Médica",
     tema: "Infectologia",
     subtemas: ["Hemocultura", "Contaminação", "Staphylococcus epidermidis"],
@@ -328,6 +347,7 @@ const QUESTOES = [
   },
   {
     n: 20,
+    banca: "USP/FUVEST 2026",
     especialidade: "Clínica Médica",
     tema: "Neurologia/Farmacologia",
     subtemas: ["Parkinsonismo medicamentoso", "Reações adversas"],
@@ -345,6 +365,7 @@ const QUESTOES = [
   },
   {
     n: 21,
+    banca: "USP/FUVEST 2026",
     especialidade: "Clínica Médica",
     tema: "Nefrologia",
     subtemas: ["Hipercalemia", "ECG", "LES"],
@@ -362,6 +383,7 @@ const QUESTOES = [
   },
   {
     n: 22,
+    banca: "USP/FUVEST 2026",
     especialidade: "Clínica Médica",
     tema: "Cardiologia",
     subtemas: ["Emergência hipertensiva", "DRC dialítica"],
@@ -379,6 +401,7 @@ const QUESTOES = [
   },
   {
     n: 23,
+    banca: "USP/FUVEST 2026",
     especialidade: "Clínica Médica",
     tema: "Oncologia/Paliativos",
     subtemas: ["Hipercalcemia", "Síndromes paraneoplásicas"],
@@ -396,6 +419,7 @@ const QUESTOES = [
   },
   {
     n: 24,
+    banca: "USP/FUVEST 2026",
     especialidade: "Clínica Médica",
     tema: "Endocrinologia",
     subtemas: ["Insuficiência adrenal", "Crise adrenal", "Stress dose"],
@@ -417,6 +441,7 @@ const QUESTOES = [
 QUESTOES.push(
   {
     n: 25,
+    banca: "USP/FUVEST 2026",
     especialidade: "Cirurgia",
     tema: "Coloproctologia/Oncologia",
     subtemas: ["Câncer anal", "HSH", "Lesão anal"],
@@ -434,6 +459,7 @@ QUESTOES.push(
   },
   {
     n: 26,
+    banca: "USP/FUVEST 2026",
     especialidade: "Cirurgia",
     tema: "Cirurgia Geral",
     subtemas: ["Pseudo-obstrução", "Síndrome de Ogilvie", "Pós-operatório"],
@@ -451,6 +477,7 @@ QUESTOES.push(
   },
   {
     n: 27,
+    banca: "USP/FUVEST 2026",
     especialidade: "Cirurgia",
     tema: "Trauma",
     subtemas: ["Trauma abdominal fechado", "FAST", "Lesão hepática"],
@@ -468,6 +495,7 @@ QUESTOES.push(
   },
   {
     n: 28,
+    banca: "USP/FUVEST 2026",
     especialidade: "Cirurgia",
     tema: "Cirurgia Bariátrica",
     subtemas: ["Bypass gástrico", "Sangramento pós-op", "Anastomose"],
@@ -485,6 +513,7 @@ QUESTOES.push(
   },
   {
     n: 29,
+    banca: "USP/FUVEST 2026",
     especialidade: "Cirurgia",
     tema: "Cirurgia Pediátrica",
     subtemas: ["Esofagocoloplastia", "Necrose de cólon"],
@@ -502,6 +531,7 @@ QUESTOES.push(
   },
   {
     n: 30,
+    banca: "USP/FUVEST 2026",
     especialidade: "Cirurgia",
     tema: "Coloproctologia",
     subtemas: ["Câncer de cólon", "Obstrução", "Metástase hepática"],
@@ -519,6 +549,7 @@ QUESTOES.push(
   },
   {
     n: 31,
+    banca: "USP/FUVEST 2026",
     especialidade: "Cirurgia",
     tema: "Cirurgia Plástica/Oncologia",
     subtemas: ["Melanoma", "Linfonodo sentinela", "Margens"],
@@ -536,6 +567,7 @@ QUESTOES.push(
   },
   {
     n: 32,
+    banca: "USP/FUVEST 2026",
     especialidade: "Cirurgia",
     tema: "Urologia",
     subtemas: ["Tumor de testículo", "Marcadores tumorais"],
@@ -553,6 +585,7 @@ QUESTOES.push(
   },
   {
     n: 33,
+    banca: "USP/FUVEST 2026",
     especialidade: "Cirurgia",
     tema: "Cirurgia Geral",
     subtemas: ["Obstrução intestinal", "Bridas", "Suboclusão"],
@@ -570,6 +603,7 @@ QUESTOES.push(
   },
   {
     n: 34,
+    banca: "USP/FUVEST 2026",
     especialidade: "Cirurgia",
     tema: "Cirurgia Geral",
     subtemas: ["Profilaxia antibiótica", "Cirurgia colorretal"],
@@ -587,6 +621,7 @@ QUESTOES.push(
   },
   {
     n: 35,
+    banca: "USP/FUVEST 2026",
     especialidade: "Cirurgia",
     tema: "Nutrição",
     subtemas: ["Suporte nutricional", "Câncer", "Caquexia"],
@@ -604,6 +639,7 @@ QUESTOES.push(
   },
   {
     n: 36,
+    banca: "USP/FUVEST 2026",
     especialidade: "Cirurgia",
     tema: "Cirurgia Hepatobiliar",
     subtemas: ["Coledocolitíase", "Pós-bariátrica", "CPRE"],
@@ -621,6 +657,7 @@ QUESTOES.push(
   },
   {
     n: 37,
+    banca: "USP/FUVEST 2026",
     especialidade: "Cirurgia",
     tema: "Coloproctologia",
     subtemas: ["Diverticulite", "Abscesso", "Classificação de Hinchey"],
@@ -638,6 +675,7 @@ QUESTOES.push(
   },
   {
     n: 38,
+    banca: "USP/FUVEST 2026",
     especialidade: "Cirurgia",
     tema: "Cirurgia Plástica/Trauma",
     subtemas: ["Lesão de Morel-Lavallée", "Ferimento descolante"],
@@ -655,6 +693,7 @@ QUESTOES.push(
   },
   {
     n: 39,
+    banca: "USP/FUVEST 2026",
     especialidade: "Cirurgia",
     tema: "Ortopedia/MFC",
     subtemas: ["Lombalgia", "Fatores de risco", "Cronificação"],
@@ -672,6 +711,7 @@ QUESTOES.push(
   },
   {
     n: 40,
+    banca: "USP/FUVEST 2026",
     especialidade: "Cirurgia",
     tema: "Cirurgia Vascular",
     subtemas: ["Isquemia mesentérica", "Trombose"],
@@ -689,6 +729,7 @@ QUESTOES.push(
   },
   {
     n: 41,
+    banca: "USP/FUVEST 2026",
     especialidade: "Cirurgia",
     tema: "Cirurgia Hepatobiliar",
     subtemas: ["Anatomia biliar", "Colangiografia"],
@@ -706,6 +747,7 @@ QUESTOES.push(
   },
   {
     n: 42,
+    banca: "USP/FUVEST 2026",
     especialidade: "Cirurgia",
     tema: "Cirurgia Hepatobiliar",
     subtemas: ["Lesão de via biliar", "Pós-colecistectomia"],
@@ -723,6 +765,7 @@ QUESTOES.push(
   },
   {
     n: 43,
+    banca: "USP/FUVEST 2026",
     especialidade: "Cirurgia",
     tema: "Cirurgia Hepatobiliar",
     subtemas: ["Coledocolitíase", "Síndromes ictéricas"],
@@ -740,6 +783,7 @@ QUESTOES.push(
   },
   {
     n: 44,
+    banca: "USP/FUVEST 2026",
     especialidade: "Cirurgia",
     tema: "Cirurgia Torácica",
     subtemas: ["Drenagem torácica", "Pós-trauma"],
@@ -757,6 +801,7 @@ QUESTOES.push(
   },
   {
     n: 45,
+    banca: "USP/FUVEST 2026",
     especialidade: "Cirurgia",
     tema: "Trauma",
     subtemas: ["Síndrome do cinto de segurança", "Trauma abdominal"],
@@ -774,6 +819,7 @@ QUESTOES.push(
   },
   {
     n: 46,
+    banca: "USP/FUVEST 2026",
     especialidade: "Cirurgia",
     tema: "Cirurgia Geral",
     subtemas: ["Hérnia hiatal", "Refluxo gastroesofágico"],
@@ -791,6 +837,7 @@ QUESTOES.push(
   },
   {
     n: 47,
+    banca: "USP/FUVEST 2026",
     especialidade: "Cirurgia",
     tema: "Bioética/Psiquiatria",
     subtemas: ["Suicídio", "Autonomia", "Capacidade"],
@@ -808,6 +855,7 @@ QUESTOES.push(
   },
   {
     n: 48,
+    banca: "USP/FUVEST 2026",
     especialidade: "Cirurgia",
     tema: "Cirurgia Vascular/Ortopedia",
     subtemas: ["Trauma vascular", "Fratura com lesão vascular"],
@@ -829,6 +877,7 @@ QUESTOES.push(
 QUESTOES.push(
   {
     n: 49,
+    banca: "USP/FUVEST 2026",
     especialidade: "Pediatria",
     tema: "Emergência Pediátrica",
     subtemas: ["TCE", "Maus-tratos", "Via aérea"],
@@ -846,6 +895,7 @@ QUESTOES.push(
   },
   {
     n: 50,
+    banca: "USP/FUVEST 2026",
     especialidade: "Pediatria",
     tema: "Emergência Pediátrica",
     subtemas: ["Maus-tratos", "Hematoma subdural", "ECA"],
@@ -863,6 +913,7 @@ QUESTOES.push(
   },
   {
     n: 51,
+    banca: "USP/FUVEST 2026",
     especialidade: "Pediatria",
     tema: "Emergência Pediátrica",
     subtemas: ["Maus-tratos", "Síndrome do bebê sacudido", "Anemia"],
@@ -880,6 +931,7 @@ QUESTOES.push(
   },
   {
     n: 52,
+    banca: "USP/FUVEST 2026",
     especialidade: "Pediatria",
     tema: "Neonatologia",
     subtemas: ["Prematuridade", "Crescimento", "Aleitamento"],
@@ -897,6 +949,7 @@ QUESTOES.push(
   },
   {
     n: 53,
+    banca: "USP/FUVEST 2026",
     especialidade: "Pediatria",
     tema: "Infectologia Pediátrica",
     subtemas: ["Sepse", "ITU", "Choque"],
@@ -914,6 +967,7 @@ QUESTOES.push(
   },
   {
     n: 54,
+    banca: "USP/FUVEST 2026",
     especialidade: "Pediatria",
     tema: "Distúrbios Eletrolíticos",
     subtemas: ["Hipocalcemia", "ECG", "Desidratação"],
@@ -931,6 +985,7 @@ QUESTOES.push(
   },
   {
     n: 55,
+    banca: "USP/FUVEST 2026",
     especialidade: "Pediatria",
     tema: "Infectologia Pediátrica",
     subtemas: ["Bacteremia por cateter", "S. aureus"],
@@ -948,6 +1003,7 @@ QUESTOES.push(
   },
   {
     n: 56,
+    banca: "USP/FUVEST 2026",
     especialidade: "Pediatria",
     tema: "Infectologia/Imunizações",
     subtemas: ["Coqueluche", "Vacinas", "Gestante"],
@@ -965,6 +1021,7 @@ QUESTOES.push(
   },
   {
     n: 57,
+    banca: "USP/FUVEST 2026",
     especialidade: "Pediatria",
     tema: "Alergia/Emergência",
     subtemas: ["Anafilaxia", "Adrenalina", "Alergia alimentar"],
@@ -982,6 +1039,7 @@ QUESTOES.push(
   },
   {
     n: 58,
+    banca: "USP/FUVEST 2026",
     especialidade: "Pediatria",
     tema: "Neurologia Pediátrica",
     subtemas: ["Crise febril", "CFS simples", "Avaliação"],
@@ -999,6 +1057,7 @@ QUESTOES.push(
   },
   {
     n: 59,
+    banca: "USP/FUVEST 2026",
     especialidade: "Pediatria",
     tema: "Pediatria/MFC",
     subtemas: ["Obesidade infantil", "Z-score", "Avaliação nutricional"],
@@ -1016,6 +1075,7 @@ QUESTOES.push(
   },
   {
     n: 60,
+    banca: "USP/FUVEST 2026",
     especialidade: "Pediatria",
     tema: "Saúde da Criança",
     subtemas: ["Acuidade visual", "Teste de Snellen", "Triagem"],
@@ -1033,6 +1093,7 @@ QUESTOES.push(
   },
   {
     n: 61,
+    banca: "USP/FUVEST 2026",
     especialidade: "Pediatria",
     tema: "Neonatologia/Endocrinologia",
     subtemas: ["Hiperplasia adrenal congênita", "Teste do pezinho"],
@@ -1050,6 +1111,7 @@ QUESTOES.push(
   },
   {
     n: 62,
+    banca: "USP/FUVEST 2026",
     especialidade: "Pediatria",
     tema: "Pediatria/Dermatologia",
     subtemas: ["Candidíase", "Aleitamento materno"],
@@ -1067,6 +1129,7 @@ QUESTOES.push(
   },
   {
     n: 63,
+    banca: "USP/FUVEST 2026",
     especialidade: "Pediatria",
     tema: "Pneumologia Pediátrica",
     subtemas: ["Asma", "GINA", "Técnica inalatória"],
@@ -1084,6 +1147,7 @@ QUESTOES.push(
   },
   {
     n: 64,
+    banca: "USP/FUVEST 2026",
     especialidade: "Pediatria",
     tema: "Neonatologia/Cirurgia Pediátrica",
     subtemas: ["Hérnia umbilical", "Coto umbilical"],
@@ -1101,6 +1165,7 @@ QUESTOES.push(
   },
   {
     n: 65,
+    banca: "USP/FUVEST 2026",
     especialidade: "Pediatria",
     tema: "Hematologia Pediátrica",
     subtemas: ["Anemia falciforme", "Aplasia transitória", "Parvovírus B19"],
@@ -1118,6 +1183,7 @@ QUESTOES.push(
   },
   {
     n: 66,
+    banca: "USP/FUVEST 2026",
     especialidade: "Pediatria",
     tema: "Nefrologia Pediátrica",
     subtemas: ["RVU", "Uretrocistografia miccional"],
@@ -1135,6 +1201,7 @@ QUESTOES.push(
   },
   {
     n: 67,
+    banca: "USP/FUVEST 2026",
     especialidade: "Pediatria",
     tema: "Psiquiatria Pediátrica",
     subtemas: ["Depressão", "Câncer pediátrico", "Saúde mental"],
@@ -1152,6 +1219,7 @@ QUESTOES.push(
   },
   {
     n: 68,
+    banca: "USP/FUVEST 2026",
     especialidade: "Pediatria",
     tema: "Infectologia Pediátrica",
     subtemas: ["Pneumonia complicada", "Pneumonia necrotizante"],
@@ -1169,6 +1237,7 @@ QUESTOES.push(
   },
   {
     n: 69,
+    banca: "USP/FUVEST 2026",
     especialidade: "Pediatria",
     tema: "Pneumologia Pediátrica",
     subtemas: ["Laringotraqueíte", "Crupe viral"],
@@ -1186,6 +1255,7 @@ QUESTOES.push(
   },
   {
     n: 70,
+    banca: "USP/FUVEST 2026",
     especialidade: "Pediatria",
     tema: "Emergência Pediátrica",
     subtemas: ["Pneumotórax", "Asma grave", "Toracocentese"],
@@ -1203,6 +1273,7 @@ QUESTOES.push(
   },
   {
     n: 71,
+    banca: "USP/FUVEST 2026",
     especialidade: "Pediatria",
     tema: "Neonatologia",
     subtemas: ["Icterícia neonatal", "Aleitamento materno"],
@@ -1220,6 +1291,7 @@ QUESTOES.push(
   },
   {
     n: 72,
+    banca: "USP/FUVEST 2026",
     especialidade: "Pediatria",
     tema: "Neonatologia",
     subtemas: ["Reanimação neonatal", "Intubação"],
@@ -1241,6 +1313,7 @@ QUESTOES.push(
 QUESTOES.push(
   {
     n: 73,
+    banca: "USP/FUVEST 2026",
     especialidade: "Preventiva",
     tema: "Epidemiologia",
     subtemas: ["Mortalidade proporcional", "Taxa de mortalidade", "Indicadores"],
@@ -1258,6 +1331,7 @@ QUESTOES.push(
   },
   {
     n: 74,
+    banca: "USP/FUVEST 2026",
     especialidade: "Preventiva",
     tema: "Medicina de Família",
     subtemas: ["Pré-natal", "SOAP", "Risco psicossocial"],
@@ -1275,6 +1349,7 @@ QUESTOES.push(
   },
   {
     n: 75,
+    banca: "USP/FUVEST 2026",
     especialidade: "Preventiva",
     tema: "Epidemiologia",
     subtemas: ["Viés de seleção", "Perda de seguimento"],
@@ -1292,6 +1367,7 @@ QUESTOES.push(
   },
   {
     n: 76,
+    banca: "USP/FUVEST 2026",
     especialidade: "Preventiva",
     tema: "Epidemiologia",
     subtemas: ["Padronização", "Mortalidade", "Confundimento por idade"],
@@ -1309,6 +1385,7 @@ QUESTOES.push(
   },
   {
     n: 77,
+    banca: "USP/FUVEST 2026",
     especialidade: "Preventiva",
     tema: "Epidemiologia",
     subtemas: ["Tipos de estudo", "Causalidade", "Prevalência"],
@@ -1326,6 +1403,7 @@ QUESTOES.push(
   },
   {
     n: 78,
+    banca: "USP/FUVEST 2026",
     especialidade: "Preventiva",
     tema: "Epidemiologia",
     subtemas: ["Viés de informação", "Memória", "Odds ratio"],
@@ -1343,6 +1421,7 @@ QUESTOES.push(
   },
   {
     n: 79,
+    banca: "USP/FUVEST 2026",
     especialidade: "Preventiva",
     tema: "Epidemiologia",
     subtemas: ["Ensaios clínicos", "Hipótese nula", "Intervalo de confiança"],
@@ -1360,6 +1439,7 @@ QUESTOES.push(
   },
   {
     n: 80,
+    banca: "USP/FUVEST 2026",
     especialidade: "Preventiva",
     tema: "SUS/Políticas de Saúde",
     subtemas: ["Setor privado", "Complementaridade", "Lei 8080"],
@@ -1377,6 +1457,7 @@ QUESTOES.push(
   },
   {
     n: 81,
+    banca: "USP/FUVEST 2026",
     especialidade: "Preventiva",
     tema: "Epidemiologia",
     subtemas: ["Caso-controle", "Análise estratificada", "OR"],
@@ -1394,6 +1475,7 @@ QUESTOES.push(
   },
   {
     n: 82,
+    banca: "USP/FUVEST 2026",
     especialidade: "Preventiva",
     tema: "Epidemiologia",
     subtemas: ["NNT", "Redução absoluta de risco"],
@@ -1411,6 +1493,7 @@ QUESTOES.push(
   },
   {
     n: 83,
+    banca: "USP/FUVEST 2026",
     especialidade: "Preventiva",
     tema: "Medicina de Família",
     subtemas: ["Climatério", "Manejo inicial"],
@@ -1428,6 +1511,7 @@ QUESTOES.push(
   },
   {
     n: 84,
+    banca: "USP/FUVEST 2026",
     especialidade: "Preventiva",
     tema: "MFC/SUS",
     subtemas: ["APS", "Sífilis congênita", "Coordenação do cuidado"],
@@ -1445,6 +1529,7 @@ QUESTOES.push(
   },
   {
     n: 85,
+    banca: "USP/FUVEST 2026",
     especialidade: "Preventiva",
     tema: "Saúde da Mulher",
     subtemas: ["Rastreamento", "CA mama", "CA colo"],
@@ -1462,6 +1547,7 @@ QUESTOES.push(
   },
   {
     n: 86,
+    banca: "USP/FUVEST 2026",
     especialidade: "Preventiva",
     tema: "Medicina de Família",
     subtemas: ["HIV", "PrEP", "Diarreia crônica", "HSH"],
@@ -1479,6 +1565,7 @@ QUESTOES.push(
   },
   {
     n: 87,
+    banca: "USP/FUVEST 2026",
     especialidade: "Preventiva",
     tema: "Epidemiologia",
     subtemas: ["Risco relativo", "Leptospirose", "Análise estratificada"],
@@ -1496,6 +1583,7 @@ QUESTOES.push(
   },
   {
     n: 88,
+    banca: "USP/FUVEST 2026",
     especialidade: "Preventiva",
     tema: "Infectologia/Saúde Coletiva",
     subtemas: ["Tuberculose", "ILTB", "Contactantes"],
@@ -1513,6 +1601,7 @@ QUESTOES.push(
   },
   {
     n: 89,
+    banca: "USP/FUVEST 2026",
     especialidade: "Preventiva",
     tema: "Vigilância em Saúde",
     subtemas: ["Doenças de notificação", "Esporotricose"],
@@ -1530,6 +1619,7 @@ QUESTOES.push(
   },
   {
     n: 90,
+    banca: "USP/FUVEST 2026",
     especialidade: "Preventiva",
     tema: "Saúde Mental",
     subtemas: ["Depressão", "Atividade física", "Manejo inicial"],
@@ -1547,6 +1637,7 @@ QUESTOES.push(
   },
   {
     n: 91,
+    banca: "USP/FUVEST 2026",
     especialidade: "Preventiva",
     tema: "Medicina de Família/Farmacologia",
     subtemas: ["ECA inibidor x BRA", "Efeitos adversos", "Substituição"],
@@ -1564,6 +1655,7 @@ QUESTOES.push(
   },
   {
     n: 92,
+    banca: "USP/FUVEST 2026",
     especialidade: "Preventiva",
     tema: "Epidemiologia",
     subtemas: ["Indicadores", "Tuberculose", "Qualidade da assistência"],
@@ -1581,6 +1673,7 @@ QUESTOES.push(
   },
   {
     n: 93,
+    banca: "USP/FUVEST 2026",
     especialidade: "Preventiva",
     tema: "Saúde da Mulher/Psiquiatria",
     subtemas: ["Compulsão alimentar", "Lisdexanfetamina", "Avaliação"],
@@ -1598,6 +1691,7 @@ QUESTOES.push(
   },
   {
     n: 94,
+    banca: "USP/FUVEST 2026",
     especialidade: "Preventiva",
     tema: "SUS/Saúde Pública",
     subtemas: ["Gastos out of pocket", "Financiamento"],
@@ -1615,6 +1709,7 @@ QUESTOES.push(
   },
   {
     n: 95,
+    banca: "USP/FUVEST 2026",
     especialidade: "Preventiva",
     tema: "SUS/APS",
     subtemas: ["eMulti", "Equipes multiprofissionais"],
@@ -1636,6 +1731,7 @@ QUESTOES.push(
 QUESTOES.push(
   {
     n: 96,
+    banca: "USP/FUVEST 2026",
     especialidade: "Ginecologia e Obstetrícia",
     tema: "Psiquiatria/Puerpério",
     subtemas: ["Depressão pós-parto", "Tristeza materna"],
@@ -1653,6 +1749,7 @@ QUESTOES.push(
   },
   {
     n: 97,
+    banca: "USP/FUVEST 2026",
     especialidade: "Ginecologia e Obstetrícia",
     tema: "Cardiologia/Obstetrícia",
     subtemas: ["Anemia gestacional", "Cardiopatia"],
@@ -1670,6 +1767,7 @@ QUESTOES.push(
   },
   {
     n: 98,
+    banca: "USP/FUVEST 2026",
     especialidade: "Ginecologia e Obstetrícia",
     tema: "Uroginecologia",
     subtemas: ["Prolapso genital", "POP-Q"],
@@ -1687,6 +1785,7 @@ QUESTOES.push(
   },
   {
     n: 99,
+    banca: "USP/FUVEST 2026",
     especialidade: "Ginecologia e Obstetrícia",
     tema: "Obstetrícia/Endocrinologia",
     subtemas: ["DMG", "Insulina", "Indução do parto"],
@@ -1704,6 +1803,7 @@ QUESTOES.push(
   },
   {
     n: 100,
+    banca: "USP/FUVEST 2026",
     especialidade: "Ginecologia e Obstetrícia",
     tema: "Obstetrícia",
     subtemas: ["Distocia", "Bandl-Frommel", "Iminência de rotura"],
@@ -1721,6 +1821,7 @@ QUESTOES.push(
   },
   {
     n: 101,
+    banca: "USP/FUVEST 2026",
     especialidade: "Ginecologia e Obstetrícia",
     tema: "Mastologia",
     subtemas: ["Nódulo mamário na gestação"],
@@ -1738,6 +1839,7 @@ QUESTOES.push(
   },
   {
     n: 102,
+    banca: "USP/FUVEST 2026",
     especialidade: "Ginecologia e Obstetrícia",
     tema: "Obstetrícia",
     subtemas: ["Hiperêmese gravídica", "Hipertireoidismo transitório"],
@@ -1755,6 +1857,7 @@ QUESTOES.push(
   },
   {
     n: 103,
+    banca: "USP/FUVEST 2026",
     especialidade: "Ginecologia e Obstetrícia",
     tema: "Obstetrícia/Ética",
     subtemas: ["Violência sexual", "Aborto legal"],
@@ -1772,6 +1875,7 @@ QUESTOES.push(
   },
   {
     n: 104,
+    banca: "USP/FUVEST 2026",
     especialidade: "Ginecologia e Obstetrícia",
     tema: "Obstetrícia",
     subtemas: ["Pré-eclâmpsia", "CTG", "Doppler"],
@@ -1789,6 +1893,7 @@ QUESTOES.push(
   },
   {
     n: 105,
+    banca: "USP/FUVEST 2026",
     especialidade: "Ginecologia e Obstetrícia",
     tema: "Obstetrícia",
     subtemas: ["Hemorragia pós-parto", "Choque hemorrágico"],
@@ -1806,6 +1911,7 @@ QUESTOES.push(
   },
   {
     n: 106,
+    banca: "USP/FUVEST 2026",
     especialidade: "Ginecologia e Obstetrícia",
     tema: "Ginecologia/Infectologia",
     subtemas: ["ITU", "Cistite simples"],
@@ -1823,6 +1929,7 @@ QUESTOES.push(
   },
   {
     n: 107,
+    banca: "USP/FUVEST 2026",
     especialidade: "Ginecologia e Obstetrícia",
     tema: "Endocrinologia/Adolescência",
     subtemas: ["Atraso puberal", "Hipogonadismo"],
@@ -1840,6 +1947,7 @@ QUESTOES.push(
   },
   {
     n: 108,
+    banca: "USP/FUVEST 2026",
     especialidade: "Ginecologia e Obstetrícia",
     tema: "Endocrinologia Pediátrica",
     subtemas: ["Puberdade precoce", "Avaliação"],
@@ -1857,6 +1965,7 @@ QUESTOES.push(
   },
   {
     n: 109,
+    banca: "USP/FUVEST 2026",
     especialidade: "Ginecologia e Obstetrícia",
     tema: "Infectologia",
     subtemas: ["PEP", "HIV", "Violência sexual"],
@@ -1874,6 +1983,7 @@ QUESTOES.push(
   },
   {
     n: 110,
+    banca: "USP/FUVEST 2026",
     especialidade: "Ginecologia e Obstetrícia",
     tema: "Infectologia/IST",
     subtemas: ["Cervicite", "Gonococo", "Clamídia"],
@@ -1891,6 +2001,7 @@ QUESTOES.push(
   },
   {
     n: 111,
+    banca: "USP/FUVEST 2026",
     especialidade: "Ginecologia e Obstetrícia",
     tema: "Obstetrícia",
     subtemas: ["Insuficiência cervical", "Pessário", "Cerclagem"],
@@ -1908,6 +2019,7 @@ QUESTOES.push(
   },
   {
     n: 112,
+    banca: "USP/FUVEST 2026",
     especialidade: "Ginecologia e Obstetrícia",
     tema: "Obstetrícia",
     subtemas: ["Trabalho de parto pré-termo", "Tocólise", "Corticoide"],
@@ -1925,6 +2037,7 @@ QUESTOES.push(
   },
   {
     n: 113,
+    banca: "USP/FUVEST 2026",
     especialidade: "Ginecologia e Obstetrícia",
     tema: "Climatério",
     subtemas: ["TRH", "Sintomas vasomotores", "Apetite"],
@@ -1942,6 +2055,7 @@ QUESTOES.push(
   },
   {
     n: 114,
+    banca: "USP/FUVEST 2026",
     especialidade: "Ginecologia e Obstetrícia",
     tema: "Oncologia/HIV",
     subtemas: ["Rastreamento CA colo", "HIV"],
@@ -1959,6 +2073,7 @@ QUESTOES.push(
   },
   {
     n: 115,
+    banca: "USP/FUVEST 2026",
     especialidade: "Ginecologia e Obstetrícia",
     tema: "Planejamento Familiar",
     subtemas: ["Método de Billings", "Muco cervical"],
@@ -1976,6 +2091,7 @@ QUESTOES.push(
   },
   {
     n: 116,
+    banca: "USP/FUVEST 2026",
     especialidade: "Ginecologia e Obstetrícia",
     tema: "Planejamento Familiar",
     subtemas: ["SAAF", "Contracepção", "LES"],
@@ -1993,6 +2109,7 @@ QUESTOES.push(
   },
   {
     n: 117,
+    banca: "USP/FUVEST 2026",
     especialidade: "Ginecologia e Obstetrícia",
     tema: "Uroginecologia",
     subtemas: ["Incontinência urinária mista"],
@@ -2010,6 +2127,7 @@ QUESTOES.push(
   },
   {
     n: 118,
+    banca: "USP/FUVEST 2026",
     especialidade: "Ginecologia e Obstetrícia",
     tema: "Endometriose",
     subtemas: ["Manejo pós-operatório"],
@@ -2027,6 +2145,7 @@ QUESTOES.push(
   },
   {
     n: 119,
+    banca: "USP/FUVEST 2026",
     especialidade: "Ginecologia e Obstetrícia",
     tema: "Sangramento Uterino Anormal",
     subtemas: ["Mioma", "DIU LNG"],
@@ -2044,6 +2163,7 @@ QUESTOES.push(
   },
   {
     n: 120,
+    banca: "USP/FUVEST 2026",
     especialidade: "Ginecologia e Obstetrícia",
     tema: "Obstetrícia/Infectologia",
     subtemas: ["Estreptococo B", "Profilaxia", "Endocardite"],
