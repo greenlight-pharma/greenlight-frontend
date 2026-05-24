@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Vytal — Módulo Acadêmico (Coordenação)</title>
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+      background: #f1f5f9;
+      color: #1f2937;
+      margin: 0;
+      padding: 0;
+      line-height: 1.5;
+    }
+    .topbar {
+      background: #0f172a;
+      color: #fff;
+      padding: 14px 24px;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+    .topbar .logo { font-weight: 700; font-size: 18px; }
+    .topbar .sub { font-size: 13px; color: #94a3b8; }
+    .topbar .user { margin-left: auto; font-size: 13px; color: #cbd5e1; text-align:right; }
+    .container { max-width: 1200px; margin: 24px auto; padding: 0 16px; }
+    .card {
+      background: #fff;
+      border-radius: 12px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+      padding: 22px;
+      margin-bottom: 18px;
+    }
+    h1 { font-size: 24px; margin: 0 0 6px; }
+    .subtitle { color: #64748b; font-size: 14px; margin-bottom: 6px; }
+    h2 { font-size: 17px; margin: 0 0 12px; color: #0f172a; }
+
+    .filtros {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      align-items: end;
+      margin-bottom: 18px;
+    }
+    .filtros > div { flex: 1; min-width: 180px; }
+    .filtros label { font-size: 12px; font-weight: 600; color: #64748b; display: block; margin-bottom: 4px; }
+    .filtros select, .filtros input {
+      width: 100%;
+      padding: 8px 10px;
+      border: 1px solid #d1d5db;
+      border-radius: 8px;
+      font-family: inherit;
+      font-size: 14px;
+      background: #fff;
+    }
+
+    /* ===== STATS AGREGADAS (b) ===== */
+    .stats-row {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 14px;
+      margin-bottom: 18px;
+    }
+    @media (max-width: 800px) {
+      .stats-row { grid-template-columns: repeat(2, 1fr); }
+    }
+    .stat-card {
+      background: #fff;
+      border: 1px solid #e5e7eb;
+      border-radius: 12px;
+      padding: 18px;
+      box-shadow: 0 1px 2px rgba(0,0,0,0.04);
+    }
+    .stat-card .label { font-size: 12px; color: #64748b; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; }
+    .stat-card .value { font-size: 28px; font-weight: 700; color: #0f172a; margin-top: 4px; }
+    .stat-card .delta { font-size: 12px; color: #16a34a; margin-top: 4px; }
+    .stat-card .delta.neg { color: #dc2626; }
+
+    /* ===== GRÁFICO SIMPLES (b) ===== */
+    .chart {
+      display: flex;
+      align-items: flex-end;
+      gap: 6px;
+      height: 140px;
+      padding: 8px 0;
+      border-bottom: 1px solid #e5e7eb;
+      margin-bottom: 8px;
+    }
+    .chart .bar {
+      flex: 1;
+      background: linear-gradient(to top, #0284c7, #38bdf8);
+      border-radius: 4px 4px 0 0;
+      min-height: 4px;
+      position: relative;
+    }
+    .chart .bar:hover { background: linear-gradient(to top, #0369a1, #0284c7); }
+    .chart-labels {
+      display: flex;
+      gap: 6px;
+      font-size: 11px;
+      color: #64748b;
+    }
+    .chart-labels span { flex: 1; text-align: center; }
+
+    /* ===== TABELA DE ALUNOS (a) — engajamento individual ===== */
+    table { width: 100%; border-collapse: collapse; }
+    th, td { padding: 10px 12px; text-align: left; font-size: 14px; border-bottom: 1px solid #f1f5f9; }
+    th { font-size: 12px; font-weight: 600; color: #64748b; text-transform: uppercase; letter-spacing: 0.3px; background: #f8fafc; }
+    tr:hover { background: #f8fafc; cursor: pointer; }
+    .badge-status {
+      display: inline-block;
+      padding: 3px 10px;
+      border-radius: 12px;
+      font-size: 11px;
+      font-weight: 600;
+    }
+    .badge-status.ok { background: #d1fae5; color: #065f46; }
+    .badge-status.atencao { background: #fef3c7; color: #92400e; }
+    .badge-status.baixo { background: #fee2e2; color: #991b1b; }
+
+    .mini-bar {
+      display: inline-block;
+      vertical-align: middle;
+      width: 80px;
+      height: 6px;
+      background: #e5e7eb;
+      border-radius: 3px;
+      margin-left: 8px;
+      overflow: hidden;
+    }
+    .mini-bar > div {
+      height: 100%;
+      background: #0284c7;
+      border-radius: 3px;
+    }
+    .mini-bar.baixo > div { background: #dc2626; }
+    .mini-bar.atencao > div { background: #d97706; }
+
+    /* ===== MODAL DE ALUNO (c) — drill-down ===== */
+    .modal-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(15,23,42,0.6);
+      display: none;
+      align-items: flex-start;
+      justify-content: center;
+      z-index: 100;
+      padding: 40px 16px;
+      overflow-y: auto;
+    }
+    .modal-overlay.open { display: flex; }
+    .modal {
+      background: #fff;
+      border-radius: 12px;
+      max-width: 760px;
+      width: 100%;
+      padding: 24px;
+      box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+    }
+    .modal-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: start;
+      margin-bottom: 18px;
+    }
+    .modal-header h2 { margin: 0; font-size: 20px; }
+    .modal-header .close {
+      background: none;
+      border: none;
+      font-size: 24px;
+      cursor: pointer;
+      color: #64748b;
+      padding: 0 4px;
+    }
+    .caso-item {
+      border: 1px solid #e5e7eb;
+      border-radius: 10px;
+      padding: 14px 16px;
+      margin-bottom: 10px;
+    }
+    .caso-item h3 { margin: 0 0 4px; font-size: 14px; }
+    .caso-item .meta { font-size: 12px; color: #64748b; margin-bottom: 6px; }
+    .caso-item .preview { font-size: 13px; color: #374151; }
+    .badge {
+      display: inline-block;
+      padding: 2px 8px;
+      border-radius: 12px;
+      font-size: 11px;
+      font-weight: 600;
+      background: #dbeafe;
+      color: #1e40af;
+    }
+    .modal-stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+      margin-bottom: 18px;
+    }
+    .modal-stats .item {
+      background: #f8fafc;
+      border-radius: 8px;
+      padding: 10px;
+      text-align: center;
+    }
+    .modal-stats .num { font-size: 20px; font-weight: 700; color: #0284c7; }
+    .modal-stats .lbl { font-size: 11px; color: #64748b; margin-top: 2px; }
+  </style>
+</head>
+<body>
+
+  <div class="topbar">
+    <div>
+      <div class="logo">🩺 Vytal — Módulo Acadêmico</div>
+      <div class="sub">Painel da Coordenação</div>
+    </div>
+    <div class="user">Coord. Profa. Helena Martins<br><span style="color:#94a3b8;">Faculdade de Medicina XYZ</span></div>
+  </div>
+
+  <div class="container">
+
+    <div class="card">
+      <h1>Acompanhamento do Internato</h1>
+      <div class="subtitle">Engajamento dos alunos no portfólio de casos clínicos · Período: Maio/2026</div>
+
+      <!-- ===== FILTROS ===== -->
+      <div class="filtros" style="margin-top:18px;">
+        <div>
+          <label>Período</label>
+          <select>
+            <option>Este mês (Maio/2026)</option>
+            <option>Mês anterior</option>
+            <option>Semestre atual</option>
+          </select>
+        </div>
+        <div>
+          <label>Turma</label>
+          <select>
+            <option>Todas</option>
+            <option>9º período — Turma A</option>
+            <option>9º período — Turma B</option>
+            <option>10º período</option>
+            <option>11º período</option>
+            <option>12º período</option>
+          </select>
+        </div>
+        <div>
+          <label>Setor / Rotação</label>
+          <select>
+            <option>Todos</option>
+            <option>Clínica Médica</option>
+            <option>Cirurgia Geral</option>
+            <option>Pediatria</option>
+            <option>Ginecologia / Obstetrícia</option>
+            <option>Pronto-Socorro</option>
+          </select>
+        </div>
+        <div>
+          <label>Buscar aluno</label>
+          <input type="text" placeholder="Nome do aluno" />
+        </div>
+      </div>
+    </div>
+
+    <!-- ===== (b) MÉTRICAS AGREGADAS ===== -->
+    <div class="stats-row">
+      <div class="stat-card">
+        <div class="label">Alunos ativos</div>
+        <div class="value">142 <span style="font-size:14px; color:#94a3b8;">/ 158</span></div>
+        <div class="delta">+12% vs. mês anterior</div>
+      </div>
+      <div class="stat-card">
+        <div class="label">Casos registrados</div>
+        <div class="value">1.287</div>
+        <div class="delta">+24% vs. mês anterior</div>
+      </div>
+      <div class="stat-card">
+        <div class="label">Média por aluno</div>
+        <div class="value">9,1</div>
+        <div class="delta">Meta: 8 casos/mês</div>
+      </div>
+      <div class="stat-card">
+        <div class="label">Alunos abaixo da meta</div>
+        <div class="value" style="color:#dc2626;">16</div>
+        <div class="delta neg">Atenção necessária</div>
+      </div>
+    </div>
+
+    <!-- ===== (b) GRÁFICO DE EVOLUÇÃO ===== -->
+    <div class="card">
+      <h2>Evolução do engajamento — últimos 8 meses</h2>
+      <div class="chart">
+        <div class="bar" style="height:35%;" title="Out: 412"></div>
+        <div class="bar" style="height:42%;" title="Nov: 498"></div>
+        <div class="bar" style="height:38%;" title="Dez: 451"></div>
+        <div class="bar" style="height:48%;" title="Jan: 564"></div>
+        <div class="bar" style="height:55%;" title="Fev: 651"></div>
+        <div class="bar" style="height:72%;" title="Mar: 851"></div>
+        <div class="bar" style="height:85%;" title="Abr: 1003"></div>
+        <div class="bar" style="height:100%;" title="Mai: 1287"></div>
+      </div>
+      <div class="chart-labels">
+        <span>Out</span><span>Nov</span><span>Dez</span><span>Jan</span><span>Fev</span><span>Mar</span><span>Abr</span><span>Mai</span>
+      </div>
+    </div>
+
+    <!-- ===== (a) ENGAJAMENTO INDIVIDUAL — TABELA DE ALUNOS ===== -->
+    <div class="card">
+      <h2>Engajamento individual dos alunos</h2>
+      <div class="subtitle" style="margin-bottom:14px;">Ordenado por menor atividade (alunos que precisam de atenção primeiro). Clique para detalhar.</div>
+      <table>
+        <thead>
+          <tr>
+            <th>Aluno</th>
+            <th>Turma</th>
+            <th>Casos no mês</th>
+            <th>% da meta</th>
+            <th>Último registro</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+        <tbody id="tabela-alunos"></tbody>
+      </table>
+    </div>
+
+    <div class="card" style="text-align:center; color:#94a3b8; font-size:12px;">
+      Mock de demonstração — Vytal Módulo Acadêmico · Dados simulados, sem backend real.
+    </div>
+
+  </div>
+
+  <!-- ===== (c) MODAL DE DRILL-DOWN DO ALUNO ===== -->
+  <div class="modal-overlay" id="modal-overlay" onclick="fecharModalSeFora(event)">
+    <div class="modal" id="modal-aluno">
+      <div class="modal-header">
+        <div>
+          <h2 id="modal-nome">—</h2>
+          <div class="subtitle" id="modal-info">—</div>
+        </div>
+        <button class="close" onclick="fecharModal()">×</button>
+      </div>
+
+      <div class="modal-stats">
+        <div class="item"><div class="num" id="modal-total">—</div><div class="lbl">Casos no mês</div></div>
+        <div class="item"><div class="num" id="modal-rotacoes">—</div><div class="lbl">Setores cobertos</div></div>
+        <div class="item"><div class="num" id="modal-ultimo">—</div><div class="lbl">Dias desde último</div></div>
+      </div>
+
+      <h2 style="font-size:15px;">Casos registrados</h2>
+      <div id="modal-casos"></div>
+    </div>
+  </div>
+
+  <script>
+    // ===== Dados simulados =====
+    const alunos = [
+      { id: 1, nome: "Bruna Costa", turma: "9º P — A", casosMes: 2, ultimo: "há 11 dias", setores: 1,
+        casos: [
+          { titulo: "Hipertensão descompensada em adulto", setor: "Clínica Médica", data: "06/05/2026", queixa: "Cefaleia + PA 180x110" }
+        ]
+      },
+      { id: 2, nome: "Pedro Henrique Lima", turma: "10º P", casosMes: 3, ultimo: "há 8 dias", setores: 1,
+        casos: [
+          { titulo: "Pneumonia comunitária", setor: "Pronto-Socorro", data: "09/05/2026", queixa: "Tosse produtiva + febre" }
+        ]
+      },
+      { id: 3, nome: "Ana Beatriz Rocha", turma: "9º P — B", casosMes: 4, ultimo: "há 5 dias", setores: 2,
+        casos: [
+          { titulo: "Asma exacerbada", setor: "Pronto-Socorro", data: "12/05/2026", queixa: "Dispneia + sibilância" }
+        ]
+      },
+      { id: 4, nome: "Daniel Silva", turma: "9º P — A", casosMes: 11, ultimo: "há 1 dia", setores: 3,
+        casos: [
+          { titulo: "Cefaleia + febre — suspeita de meningite", setor: "Pronto-Socorro", data: "15/05/2026", queixa: "Cefaleia frontal + febre 39°C" },
+          { titulo: "Dor torácica jovem — descartando SCA", setor: "Clínica Médica", data: "12/05/2026", queixa: "Dor precordial em pontada" },
+          { titulo: "ITU em gestante", setor: "GO", data: "08/05/2026", queixa: "Disúria em gestante 2º tri" }
+        ]
+      },
+      { id: 5, nome: "Mariana Oliveira", turma: "10º P", casosMes: 14, ultimo: "hoje", setores: 4,
+        casos: [
+          { titulo: "AVC isquêmico na janela terapêutica", setor: "Pronto-Socorro", data: "18/05/2026", queixa: "Hemiparesia direita súbita" },
+          { titulo: "DPOC exacerbada", setor: "Clínica Médica", data: "14/05/2026", queixa: "Dispneia + tosse" }
+        ]
+      },
+      { id: 6, nome: "Lucas Almeida", turma: "11º P", casosMes: 9, ultimo: "há 2 dias", setores: 2,
+        casos: [{ titulo: "Apendicite aguda", setor: "Cirurgia", data: "16/05/2026", queixa: "Dor em FID com Blumberg+" }]
+      },
+      { id: 7, nome: "Carolina Mendes", turma: "12º P", casosMes: 16, ultimo: "hoje", setores: 5,
+        casos: [{ titulo: "Sepse de foco urinário", setor: "UTI", data: "18/05/2026", queixa: "Idosa, febre + hipotensão" }]
+      },
+      { id: 8, nome: "Rafael Souza", turma: "9º P — B", casosMes: 1, ultimo: "há 18 dias", setores: 1,
+        casos: [{ titulo: "Lombalgia mecânica", setor: "Ambulatório", data: "01/05/2026", queixa: "Lombalgia há 1 semana" }]
+      },
+      { id: 9, nome: "Juliana Pereira", turma: "10º P", casosMes: 7, ultimo: "há 3 dias", setores: 2,
+        casos: [{ titulo: "Crise convulsiva", setor: "Pronto-Socorro", data: "15/05/2026", queixa: "Crise tônico-clônica" }]
+      },
+      { id: 10, nome: "Felipe Carvalho", turma: "11º P", casosMes: 8, ultimo: "há 2 dias", setores: 3,
+        casos: [{ titulo: "IAM com supra de ST", setor: "Pronto-Socorro", data: "16/05/2026", queixa: "Dor precordial típica" }]
+      },
+      { id: 11, nome: "Isabela Ferreira", turma: "9º P — A", casosMes: 6, ultimo: "há 4 dias", setores: 2,
+        casos: [{ titulo: "Bronquiolite em lactente", setor: "Pediatria", data: "14/05/2026", queixa: "Tosse + dispneia em lactente" }]
+      },
+      { id: 12, nome: "Gabriel Ribeiro", turma: "12º P", casosMes: 13, ultimo: "hoje", setores: 4,
+        casos: [{ titulo: "Cetoacidose diabética", setor: "UTI", data: "18/05/2026", queixa: "Vômitos + alteração de consciência" }]
+      }
+    ];
+
+    const META = 8;
+
+    function statusAluno(casosMes) {
+      if (casosMes >= META) return { label: "✅ Em dia", cls: "ok" };
+      if (casosMes >= META / 2) return { label: "⚠️ Atenção", cls: "atencao" };
+      return { label: "🔴 Abaixo", cls: "baixo" };
+    }
+
+    function renderTabela() {
+      const tbody = document.getElementById("tabela-alunos");
+      // Ordena: menor primeiro (atenção primeiro — quem decide quer ver quem está abaixo).
+      const ord = [...alunos].sort((a, b) => a.casosMes - b.casosMes);
+      tbody.innerHTML = ord.map(a => {
+        const pct = Math.min(100, Math.round((a.casosMes / META) * 100));
+        const st = statusAluno(a.casosMes);
+        const cls = st.cls;
+        return `
+          <tr onclick="abrirAluno(${a.id})">
+            <td><strong>${a.nome}</strong></td>
+            <td>${a.turma}</td>
+            <td>${a.casosMes}</td>
+            <td>${pct}%<span class="mini-bar ${cls}"><div style="width:${pct}%;"></div></span></td>
+            <td>${a.ultimo}</td>
+            <td><span class="badge-status ${cls}">${st.label}</span></td>
+          </tr>
+        `;
+      }).join("");
+    }
+
+    function abrirAluno(id) {
+      const a = alunos.find(x => x.id === id);
+      if (!a) return;
+      document.getElementById("modal-nome").textContent = a.nome;
+      document.getElementById("modal-info").textContent = `${a.turma} · Internato em andamento`;
+      document.getElementById("modal-total").textContent = a.casosMes;
+      document.getElementById("modal-rotacoes").textContent = a.setores;
+      document.getElementById("modal-ultimo").textContent = a.ultimo;
+
+      const cont = document.getElementById("modal-casos");
+      if (!a.casos || a.casos.length === 0) {
+        cont.innerHTML = '<div style="text-align:center; color:#94a3b8; padding:20px;">Nenhum caso registrado.</div>';
+      } else {
+        cont.innerHTML = a.casos.map(c => `
+          <div class="caso-item">
+            <span class="badge">${c.setor}</span>
+            <h3>${c.titulo}</h3>
+            <div class="meta">${c.data}</div>
+            <div class="preview"><strong>Queixa:</strong> ${c.queixa}</div>
+          </div>
+        `).join("");
+      }
+      document.getElementById("modal-overlay").classList.add("open");
+    }
+
+    function fecharModal() {
+      document.getElementById("modal-overlay").classList.remove("open");
+    }
+    function fecharModalSeFora(e) {
+      if (e.target.id === "modal-overlay") fecharModal();
+    }
+
+    renderTabela();
+  </script>
+</body>
+</html>
