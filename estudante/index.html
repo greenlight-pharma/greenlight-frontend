@@ -1,0 +1,1130 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Vytal — Módulo Acadêmico (Aluno)</title>
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+      background: #f1f5f9;
+      color: #1f2937;
+      margin: 0;
+      padding: 0;
+      line-height: 1.5;
+    }
+    .topbar {
+      background: #0f172a;
+      color: #fff;
+      padding: 14px 24px;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+    .topbar .logo {
+      font-weight: 700;
+      font-size: 18px;
+    }
+    .topbar .sub {
+      font-size: 13px;
+      color: #94a3b8;
+    }
+    .topbar .user {
+      margin-left: auto;
+      font-size: 13px;
+      color: #cbd5e1;
+    }
+    .container {
+      max-width: 980px;
+      margin: 24px auto;
+      padding: 0 16px;
+    }
+    .card {
+      background: #fff;
+      border-radius: 12px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+      padding: 22px;
+      margin-bottom: 18px;
+    }
+    h1 { font-size: 24px; margin: 0 0 6px; }
+    .subtitle { color: #64748b; font-size: 14px; margin-bottom: 18px; }
+    h2 { font-size: 18px; margin: 0 0 12px; color: #0f172a; }
+    .tabs {
+      display: flex;
+      gap: 4px;
+      border-bottom: 1px solid #e5e7eb;
+      margin-bottom: 18px;
+    }
+    .tab {
+      padding: 10px 18px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      font-size: 14px;
+      font-weight: 500;
+      color: #64748b;
+      border-bottom: 2px solid transparent;
+      margin-bottom: -1px;
+    }
+    .tab.active {
+      color: #0284c7;
+      border-bottom-color: #0284c7;
+    }
+    label {
+      display: block;
+      font-weight: 600;
+      margin: 12px 0 4px;
+      font-size: 14px;
+    }
+    input, textarea, select {
+      width: 100%;
+      padding: 10px 12px;
+      border: 1px solid #d1d5db;
+      border-radius: 8px;
+      font-family: inherit;
+      font-size: 14px;
+      background: #fff;
+    }
+    textarea { resize: vertical; min-height: 80px; }
+    .hint { font-size: 12px; color: #6b7280; margin-top: 4px; }
+    .row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+    }
+    @media (max-width: 640px) {
+      .row { grid-template-columns: 1fr; }
+    }
+    button.primary {
+      background: #0284c7;
+      color: #fff;
+      border: none;
+      padding: 11px 22px;
+      border-radius: 8px;
+      font-size: 15px;
+      font-weight: 600;
+      cursor: pointer;
+      margin-top: 18px;
+    }
+    button.primary:hover { background: #0369a1; }
+
+    .alerta-lgpd {
+      background: #fef3c7;
+      border: 1px solid #fcd34d;
+      border-left: 4px solid #d97706;
+      border-radius: 8px;
+      padding: 12px 14px;
+      margin-bottom: 18px;
+      font-size: 13px;
+      color: #78350f;
+      line-height: 1.55;
+    }
+    .alerta-lgpd strong { color: #92400e; }
+
+    .caso-item {
+      border: 1px solid #e5e7eb;
+      border-radius: 10px;
+      padding: 14px 16px;
+      margin-bottom: 10px;
+      background: #fff;
+    }
+    .caso-item h3 { margin: 0 0 4px; font-size: 15px; }
+    .caso-item .meta { font-size: 12px; color: #64748b; margin-bottom: 8px; }
+    .caso-item .preview { font-size: 13px; color: #374151; }
+    .badge {
+      display: inline-block;
+      padding: 2px 8px;
+      border-radius: 12px;
+      font-size: 11px;
+      font-weight: 600;
+      background: #dbeafe;
+      color: #1e40af;
+    }
+    .empty {
+      text-align: center;
+      padding: 40px 20px;
+      color: #94a3b8;
+      font-size: 14px;
+    }
+    .stats-row {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      margin-bottom: 18px;
+    }
+    .stat {
+      background: #f8fafc;
+      border: 1px solid #e5e7eb;
+      border-radius: 10px;
+      padding: 14px;
+      text-align: center;
+    }
+    .stat .num { font-size: 24px; font-weight: 700; color: #0284c7; }
+    .stat .lbl { font-size: 12px; color: #64748b; margin-top: 2px; }
+    .msg {
+      padding: 10px 14px;
+      border-radius: 8px;
+      margin-top: 12px;
+      font-size: 14px;
+      display: none;
+    }
+    .msg.success { background: #d1fae5; color: #065f46; display: block; }
+    .msg.error { background: #fee2e2; color: #991b1b; display: block; }
+
+    /* ===== Análise didática (portado do medico.html, sem badges de probabilidade) ===== */
+    .analysis-section {
+      background: #fff;
+      border: 1px solid #e5e7eb;
+      border-radius: 10px;
+      padding: 14px 16px;
+      margin-bottom: 12px;
+    }
+    .analysis-section h4 {
+      margin: 0 0 10px;
+      font-size: 15px;
+      color: #0f172a;
+      font-weight: 600;
+    }
+    .analysis-section ul {
+      margin: 0;
+      padding-left: 20px;
+      line-height: 1.55;
+      font-size: 14px;
+      color: #334155;
+    }
+    .analysis-section ul li { margin-bottom: 4px; }
+    .analysis-section ul li:last-child { margin-bottom: 0; }
+
+    .hypothesis-card {
+      border: 1px solid #e5e7eb;
+      border-radius: 8px;
+      padding: 11px 13px;
+      margin-bottom: 8px;
+      background: #fafafa;
+    }
+    .hypothesis-card:last-child { margin-bottom: 0; }
+    .hypothesis-card .hyp-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 4px;
+    }
+    .hypothesis-card .hyp-name {
+      font-weight: 700;
+      color: #1f2933;
+      font-size: 14px;
+    }
+    .hypothesis-card .hyp-prob {
+      font-size: 11px;
+      font-weight: 600;
+      padding: 3px 10px;
+      border-radius: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.3px;
+      flex-shrink: 0;
+    }
+    .hyp-prob-alta { background: #fee2e2; color: #991b1b; }
+    .hyp-prob-moderada { background: #fef3c7; color: #92400e; }
+    .hyp-prob-baixa { background: #e0e7ff; color: #3730a3; }
+    .hypothesis-card .hyp-just {
+      color: #4b5563;
+      font-size: 13.5px;
+      line-height: 1.5;
+    }
+
+    .red-flags-box {
+      background: #fef2f2;
+      border: 1px solid #fecaca;
+      border-left: 4px solid #dc2626;
+      border-radius: 8px;
+      padding: 12px 16px;
+      margin-bottom: 12px;
+    }
+    .red-flags-box h4 { color: #991b1b; }
+    .red-flags-box ul { color: #7f1d1d; }
+
+    .comparacao-box {
+      background: #f0f9ff;
+      border: 1px solid #bae6fd;
+      border-radius: 8px;
+      padding: 12px 14px;
+      margin-bottom: 12px;
+      font-size: 13.5px;
+      line-height: 1.55;
+      color: #0c4a6e;
+    }
+    .comparacao-box h4 {
+      margin: 0 0 6px;
+      font-size: 14px;
+      color: #0c4a6e;
+      font-weight: 600;
+    }
+    /* Pill de alinhamento didatico — autorizado pelo advogado em
+       parecer especifico. Rotulo "Alinhamento didatico" e tres
+       valores fixos: alta concordancia / concordancia parcial /
+       divergencia. Sem vermelho. NAO eh nota nem avaliacao de
+       desempenho — eh resumo visual da prosa da IA. */
+    .comparacao-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 6px;
+      flex-wrap: wrap;
+    }
+    .comparacao-head h4 { margin: 0; }
+    .alinh-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 11px;
+      font-weight: 600;
+      padding: 3px 10px;
+      border-radius: 999px;
+      letter-spacing: 0.02em;
+      white-space: nowrap;
+    }
+    .alinh-pill-label {
+      font-weight: 500;
+      opacity: 0.85;
+    }
+    .alinh-alta_concordancia {
+      background: #dcfce7;
+      color: #166534;
+      border: 1px solid #bbf7d0;
+    }
+    .alinh-concordancia_parcial {
+      background: #fef3c7;
+      color: #92400e;
+      border: 1px solid #fde68a;
+    }
+    .alinh-divergencia {
+      background: #e0e7ff;
+      color: #3730a3;
+      border: 1px solid #c7d2fe;
+    }
+
+    .exame-row { margin-bottom: 6px; }
+    .exame-row:last-child { margin-bottom: 0; }
+    .exame-nome { font-weight: 600; color: #1f2933; }
+    .exame-just { color: #4b5563; }
+  </style>
+</head>
+<body>
+
+  <div class="topbar">
+    <div>
+      <div class="logo">🩺 Vytal — Módulo Acadêmico</div>
+      <div class="sub">Portfólio de casos do internato</div>
+    </div>
+    <div class="user">Aluno: Daniel Silva · 9º período · FM-XYZ</div>
+  </div>
+
+  <div class="container">
+
+    <div class="card">
+      <h1>Olá, Daniel 👋</h1>
+      <div class="subtitle">Registre os casos que você viu no internato como exercício acadêmico. Seus registros formam seu portfólio e contam para o acompanhamento da coordenação.</div>
+
+      <div class="stats-row">
+        <div class="stat"><div class="num" id="statTotal">0</div><div class="lbl">Casos cadastrados</div></div>
+        <div class="stat"><div class="num" id="statSemana">0</div><div class="lbl">Esta semana</div></div>
+        <div class="stat"><div class="num">8</div><div class="lbl">Mínimo / mês</div></div>
+      </div>
+
+      <div class="tabs">
+        <button class="tab active" id="tab-novo" onclick="switchTab('novo')">➕ Novo caso</button>
+        <button class="tab" id="tab-meus" onclick="switchTab('meus')">📚 Meus casos</button>
+      </div>
+
+      <!-- ===== NOVO CASO — fluxo em 3 etapas progressivas ===== -->
+      <!--
+        Desenho aprovado pelo advogado (CFM, LGPD, SaMD-friendly):
+          ETAPA 1 — Aluno cadastra o caso (descrição clínica didática)
+          ETAPA 2 — Aluno se COMPROMETE com hipóteses + conduta ANTES
+                    de receber qualquer apoio do sistema
+          ETAPA 3 — IA dá feedback educacional sobre a resposta do
+                    aluno (não diagnostica) + aluno registra seu
+                    aprendizado pessoal
+        As etapas são REVELADAS PROGRESSIVAMENTE — não dá para pular.
+        Isso é o que torna a feature defensável: a IA avalia o
+        raciocínio do aluno, não substitui o pensamento dele.
+      -->
+      <div id="painel-novo">
+        <div class="alerta-lgpd">
+          ⚠️ <strong>Exercício acadêmico.</strong> Descreva o caso de forma <strong>anonimizada</strong>, sem dados que permitam identificar o paciente (nome, RG, prontuário, endereço, data exata da consulta, telefone, e-mail). Use idade aproximada (faixa) e descreva achados clínicos e raciocínio. <strong>Não copie o prontuário hospitalar.</strong>
+        </div>
+
+        <div style="background:#fef3c7; border:1px solid #fcd34d; border-radius:8px; padding:14px 16px; margin:10px 0 0; color:#78350f; font-size:13px; line-height:1.55;">
+          📘 <strong>Sobre esta ferramenta.</strong> O Vytal Acadêmico é uma ferramenta <strong>educacional</strong>. <strong>Não diagnostica, não prescreve e não orienta atendimento real</strong>. Uso restrito a <strong>ensino, portfólio e discussão com preceptor</strong>. Nenhuma resposta gerada aqui deve ser aplicada a um paciente real sem avaliação presencial por médico responsável.
+        </div>
+
+        <!-- ===== ETAPA 1: CADASTRO DO CASO ===== -->
+        <div id="etapa-1">
+          <h2 style="margin:18px 0 4px; color:#0f172a; font-size:17px;">
+            <span style="background:#0284c7; color:#fff; border-radius:50%; width:24px; height:24px; display:inline-flex; align-items:center; justify-content:center; font-size:13px; margin-right:6px;">1</span>
+            Descreva o caso
+          </h2>
+          <div style="color:#64748b; font-size:13px; margin-bottom:10px;">Os achados clínicos do caso que você viu, sem dados identificáveis.</div>
+
+          <label>Título do caso (resumo curto) *</label>
+          <input type="text" id="f-titulo" placeholder="Ex: Dor torácica em adulto jovem, troponina negativa" />
+
+          <div class="row">
+            <div>
+              <label>Especialidade / Setor *</label>
+              <select id="f-especialidade">
+                <option value="">Selecione</option>
+                <option>Clínica Médica</option>
+                <option>Cirurgia Geral</option>
+                <option>Pediatria</option>
+                <option>Ginecologia / Obstetrícia</option>
+                <option>Pronto-Socorro</option>
+                <option>UTI</option>
+                <option>Ambulatório</option>
+                <option>Outra</option>
+              </select>
+            </div>
+            <div>
+              <label>Faixa etária do paciente *</label>
+              <select id="f-faixa">
+                <option value="">Selecione</option>
+                <option>0–11 (criança)</option>
+                <option>12–17 (adolescente)</option>
+                <option>18–39 (adulto jovem)</option>
+                <option>40–59 (adulto)</option>
+                <option>60–79 (idoso)</option>
+                <option>80+ (idoso)</option>
+              </select>
+            </div>
+          </div>
+
+          <label>Queixa principal *</label>
+          <input type="text" id="f-queixa" placeholder="Ex: dor torácica em pontada, 3h de evolução" />
+
+          <label>HMA (História da moléstia atual) *</label>
+          <textarea id="f-hma" placeholder="Evolução, fatores de melhora/piora, sintomas associados, características da queixa. NÃO inclua dados identificáveis."></textarea>
+
+          <label>Antecedentes pessoais</label>
+          <textarea id="f-antecedentes-pessoais" placeholder="Comorbidades, cirurgias prévias, medicações em uso, alergias. (Opcional)"></textarea>
+
+          <label>Hábitos e vícios</label>
+          <textarea id="f-habitos" placeholder="Tabagismo, etilismo, uso de drogas, atividade física, alimentação. (Opcional)"></textarea>
+
+          <label>Antecedentes familiares</label>
+          <textarea id="f-antecedentes-familiares" placeholder="Doenças relevantes na família, idade e causa de óbito de pais/irmãos quando pertinente. (Opcional)"></textarea>
+
+          <label>Exame físico</label>
+          <textarea id="f-exame-fisico" placeholder="Sinais vitais, exame geral e exame segmentar dirigido. Resultados de exames complementares já realizados, se houver. (Opcional)"></textarea>
+
+          <button class="primary" onclick="avancarEtapa2()">Avançar para sua avaliação →</button>
+        </div>
+
+        <!-- ===== ETAPA 2: RESPOSTA DO ALUNO ===== -->
+        <div id="etapa-2" style="display:none;">
+          <div style="background:#f0f9ff; border:1px solid #bae6fd; border-radius:8px; padding:14px 16px; margin:10px 0 18px; color:#0c4a6e; font-size:13px;">
+            🧠 <strong>Sua vez de pensar antes de receber apoio.</strong> Liste as hipóteses diagnósticas e a conduta que VOCÊ proporia. A IA só avalia sua resposta DEPOIS — não vai te dar a resposta antes. Isso é o que torna o aprendizado real.
+          </div>
+
+          <h2 style="margin:18px 0 4px; color:#0f172a; font-size:17px;">
+            <span style="background:#0284c7; color:#fff; border-radius:50%; width:24px; height:24px; display:inline-flex; align-items:center; justify-content:center; font-size:13px; margin-right:6px;">2</span>
+            Sua avaliação do caso
+          </h2>
+
+          <label>Suas hipóteses diagnósticas *</label>
+          <textarea id="f-hipoteses" placeholder="Quais hipóteses você levantou para este caso? Liste e explique o raciocínio que te levou a cada uma."></textarea>
+
+          <label>Sua conduta proposta *</label>
+          <textarea id="f-conduta" placeholder="Que conduta você proporia? Exames, condutas iniciais, decisões de manejo. Não copie o que foi feito — escreva o que VOCÊ faria."></textarea>
+
+          <div style="display:flex; gap:10px; margin-top:14px;">
+            <button class="primary" onclick="solicitarFeedback()" id="btn-feedback">Receber feedback educacional →</button>
+            <button onclick="voltarEtapa1()" style="background:none; border:1px solid #d1d5db; padding:11px 22px; border-radius:8px; cursor:pointer;">← Voltar</button>
+          </div>
+          <div class="msg" id="msg-etapa2"></div>
+        </div>
+
+        <!-- ===== ETAPA 3: FEEDBACK + APRENDIZADO ===== -->
+        <div id="etapa-3" style="display:none;">
+          <h2 style="margin:18px 0 4px; color:#0f172a; font-size:17px;">
+            <span style="background:#0284c7; color:#fff; border-radius:50%; width:24px; height:24px; display:inline-flex; align-items:center; justify-content:center; font-size:13px; margin-right:6px;">3</span>
+            Feedback educacional
+          </h2>
+
+          <div id="feedback-loading" style="display:none; padding:24px; text-align:center; color:#0284c7; font-size:14px;">
+            <div style="display:flex; align-items:center; justify-content:center; gap:10px; flex-wrap:wrap;">
+              <span id="feedback-loading-etapa">Lendo o caso clínico…</span>
+              <span id="feedback-loading-tempo" style="color:#64748b; font-size:12px; font-variant-numeric:tabular-nums; min-width:34px;">0s</span>
+            </div>
+            <div style="margin-top:10px; width:100%; height:3px; background:#e0f2fe; border-radius:2px; overflow:hidden; position:relative;">
+              <div style="position:absolute; top:0; left:-30%; width:30%; height:100%; background:#0284c7; animation: progmove 1.2s ease-in-out infinite;"></div>
+            </div>
+          </div>
+          <style>
+            @keyframes progmove { 0% { left: -30%; } 100% { left: 100%; } }
+          </style>
+
+          <div id="feedback-container" style="display:none;"></div>
+
+          <div id="feedback-disclaimer" style="display:none; background:#fef3c7; border:1px solid #fcd34d; border-radius:8px; padding:12px 14px; margin-top:10px; color:#78350f; font-size:12.5px; line-height:1.5;">
+            📘 Esta análise é <strong>didática</strong>, em formato de gabarito comentado de caso clínico. <strong>Não diagnostica, não prescreve e não orienta atendimento real.</strong> Uso restrito a ensino, portfólio e discussão com preceptor.
+          </div>
+
+          <div id="feedback-error" style="display:none; background:#fee2e2; border:1px solid #fca5a5; color:#991b1b; border-radius:8px; padding:12px; margin:10px 0;"></div>
+
+          <div id="aprendizado-box" style="display:none; margin-top:18px;">
+            <label>Seu aprendizado pessoal com este caso *</label>
+            <div style="color:#64748b; font-size:12px; margin:-2px 0 6px;">Reflita sobre o feedback acima. O que ficou de aprendizado clínico? O que faria diferente? Esta é a parte mais importante do portfólio.</div>
+            <textarea id="f-aprendizado" placeholder="Reflexão pessoal — após ler o feedback educacional."></textarea>
+
+            <div style="display:flex; gap:10px; margin-top:14px;">
+              <button class="primary" onclick="salvarCaso()">Salvar no portfólio</button>
+              <button onclick="voltarEtapa2()" style="background:none; border:1px solid #d1d5db; padding:11px 22px; border-radius:8px; cursor:pointer;">← Voltar</button>
+            </div>
+            <div class="msg" id="msg"></div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- ===== MEUS CASOS ===== -->
+      <div id="painel-meus" style="display:none;">
+        <div id="lista-casos"></div>
+      </div>
+
+    </div>
+
+    <div class="card" style="text-align:center; color:#94a3b8; font-size:12px;">
+      Vytal Saúde Tecnologia · Módulo Acadêmico · Ferramenta educacional para registro e discussão de casos clínicos.
+    </div>
+
+  </div>
+
+  <script>
+    // Casos seedados pra dar realismo na demo. Em memória apenas.
+    let casos = [
+      {
+        id: 1,
+        titulo: "Cefaleia + febre — suspeita de meningite",
+        especialidade: "Pronto-Socorro",
+        faixa: "18–39 (adulto jovem)",
+        queixa: "Cefaleia frontal intensa, febre 39°C, rigidez de nuca",
+        historia: "Quadro de início há 2 dias, piora progressiva. Sem comorbidades. Sinais meníngeos positivos.",
+        hipoteses: "Meningite bacteriana vs viral; também consideramos enxaqueca status mas sinais não batiam.",
+        conduta: "Coleta de hemocultura, punção lombar, ATB empírico precoce.",
+        aprendizado: "Aprendi a importância de não atrasar ATB empírico em suspeita de meningite, mesmo antes do resultado da PL.",
+        data: "2026-05-15T14:30"
+      },
+      {
+        id: 2,
+        titulo: "Dor torácica jovem — descartando SCA",
+        especialidade: "Clínica Médica",
+        faixa: "18–39 (adulto jovem)",
+        queixa: "Dor precordial em pontada, sem irradiação",
+        historia: "Sem fatores de risco cardiovascular significativos. ECG normal, troponina seriada negativa.",
+        hipoteses: "Dor osteomuscular vs SCA atípica vs ansiedade.",
+        conduta: "Observação, alta com orientação após troponina seriada e ECG normais.",
+        aprendizado: "Mesmo em paciente jovem sem fatores de risco, o protocolo de descartar SCA não pode ser pulado. Aprendi a importância de troponina seriada.",
+        data: "2026-05-12T09:15"
+      },
+      {
+        id: 3,
+        titulo: "ITU em gestante — escolha do antibiótico",
+        especialidade: "Ginecologia / Obstetrícia",
+        faixa: "18–39 (adulto jovem)",
+        queixa: "Disúria e polaciúria em gestante de 2º trimestre",
+        historia: "Sem febre, urina I com leucocitúria. Sem alergias.",
+        hipoteses: "ITU baixa (cistite).",
+        conduta: "Cefalexina por 7 dias. Orientações de hidratação.",
+        aprendizado: "Aprendi que vários antibióticos comuns são contraindicados na gestação (ciprofloxacino, sulfa no 3º tri, nitrofurantoína no fim da gestação). A escolha precisa ser específica.",
+        data: "2026-05-08T16:45"
+      }
+    ];
+    let nextId = 4;
+
+    // ============================================================
+    // [VYTAL ACADEMICO] Fluxo de 3 etapas para cadastro com feedback IA.
+    // Validado com advogado: aluno se compromete com hipótese/conduta
+    // ANTES da IA. A IA só avalia o raciocínio do aluno; não diagnostica.
+    // ============================================================
+
+    function switchTab(qual) {
+      document.getElementById("tab-novo").classList.toggle("active", qual === "novo");
+      document.getElementById("tab-meus").classList.toggle("active", qual === "meus");
+      document.getElementById("painel-novo").style.display = qual === "novo" ? "block" : "none";
+      document.getElementById("painel-meus").style.display = qual === "meus" ? "block" : "none";
+      if (qual === "meus") renderLista();
+    }
+
+    function atualizarStats() {
+      document.getElementById("statTotal").textContent = casos.length;
+      // "Esta semana" = últimos 7 dias. Como é mock, conta os com data >= hoje-7d
+      const seteDiasAtras = new Date();
+      seteDiasAtras.setDate(seteDiasAtras.getDate() - 7);
+      const semana = casos.filter(c => new Date(c.data) >= seteDiasAtras).length;
+      document.getElementById("statSemana").textContent = semana;
+    }
+
+    // URL do backend. Em demonstração, aponta pra Railway de produção.
+    // !!! ATENÇÃO: endpoint /academic/case-feedback hoje NÃO TEM auth.
+    // Ver comentário equivalente no server.js. Demo, não produção real.
+    const API_BASE = "https://greenlight-backend-production-35c8.up.railway.app";
+
+    // Estado do caso em construção entre etapas.
+    let casoEmConstrucao = null;
+    let feedbackRecebido = null;
+
+    // ----- LOADING DINÂMICO -----
+    // O modelo leva tempo variável para gerar o JSON. Para evitar a
+    // percepção de que o sistema travou, mostramos uma sequência de
+    // etapas plausíveis + cronômetro em segundos. As etapas NÃO refletem
+    // a ordem temporal interna do modelo (que gera o JSON inteiro junto),
+    // mas refletem as ações que o gabarito de fato contém.
+    let _loadingTimers = []; // ids de setTimeout/setInterval ativos
+
+    function startLoadingProgress() {
+      stopLoadingProgress(); // safety: limpa qualquer ciclo anterior
+      const etapaEl = document.getElementById("feedback-loading-etapa");
+      const tempoEl = document.getElementById("feedback-loading-tempo");
+      if (!etapaEl || !tempoEl) return;
+
+      const etapas = [
+        { aos: 0,  texto: "Lendo o caso clínico…" },
+        { aos: 5,  texto: "Identificando sinais de alerta…" },
+        { aos: 12, texto: "Estruturando hipóteses diagnósticas…" },
+        { aos: 22, texto: "Comparando com a sua resposta…" },
+        { aos: 35, texto: "Organizando elementos de manejo…" },
+        { aos: 50, texto: "Finalizando o gabarito comentado…" },
+      ];
+
+      // Reseta visual no início
+      etapaEl.textContent = etapas[0].texto;
+      tempoEl.textContent = "0s";
+
+      const inicio = Date.now();
+
+      // Cronômetro a cada 1s
+      const tickId = setInterval(() => {
+        const seg = Math.floor((Date.now() - inicio) / 1000);
+        tempoEl.textContent = seg + "s";
+      }, 1000);
+      _loadingTimers.push(tickId);
+
+      // Mudança de etapa nos marcos definidos
+      etapas.slice(1).forEach((et) => {
+        const id = setTimeout(() => {
+          etapaEl.textContent = et.texto;
+        }, et.aos * 1000);
+        _loadingTimers.push(id);
+      });
+    }
+
+    function stopLoadingProgress() {
+      _loadingTimers.forEach((id) => {
+        clearTimeout(id);
+        clearInterval(id);
+      });
+      _loadingTimers = [];
+    }
+
+    // ----- ETAPA 1 → ETAPA 2 -----
+    // [PII-CLIENT] Detecção de PII no navegador, ANTES de o aluno
+    // escrever hipóteses e conduta. Espelha a função detectAcademicPII
+    // do server.js — qualquer mudança na regex precisa ser refeita lá
+    // também. O servidor mantém validação independente como defesa
+    // real (cliente é só UX). Detecta padrões estruturados (CPF,
+    // telefone, data exata, prontuário, e-mail). Nome próprio não
+    // é coberto aqui — fica para a IA detectar (e nesse caso o aluno
+    // perde a etapa 2, então preservamos os campos em memória).
+    function detectAcademicPIIClient(text) {
+      if (!text) return null;
+      const s = String(text);
+
+      if (/\b\d{3}\.?\d{3}\.?\d{3}-?\d{2}\b/.test(s)) return "CPF";
+      if (/\b(?:\+?55\s?)?\(?\d{2}\)?\s?9?\d{4}-?\d{4}\b/.test(s)) return "telefone";
+
+      if (/\b(0?[1-9]|[12]\d|3[01])\/(0?[1-9]|1[0-2])\/(19|20)\d{2}\b/.test(s)) return "data exata";
+      if (/\b(0?[1-9]|[12]\d|3[01])\/(0?[1-9]|1[0-2])\/\d{2}\b/.test(s)) return "data exata";
+      if (/\b(0?[1-9]|[12]\d|3[01])-(0?[1-9]|1[0-2])-(19|20)\d{2}\b/.test(s)) return "data exata";
+      if (/\b(19|20)\d{2}-(0?[1-9]|1[0-2])-(0?[1-9]|[12]\d|3[01])\b/.test(s)) return "data exata";
+
+      if (/\b(prontu[aá]rio|registro|matr[ií]cula|rg|cart[aã]o\s+(do\s+)?sus|cns)\s*[:#nº.]*\s*\d/i.test(s)) return "prontuário/RG/CNS";
+      if (/[a-z0-9._%+\-]+@[a-z0-9.\-]+\.[a-z]{2,}/i.test(s)) return "e-mail";
+
+      return null;
+    }
+
+    function avancarEtapa2() {
+      const titulo = document.getElementById("f-titulo").value.trim();
+      const especialidade = document.getElementById("f-especialidade").value;
+      const faixa = document.getElementById("f-faixa").value;
+      const queixa = document.getElementById("f-queixa").value.trim();
+
+      // Anamnese estruturada em 5 campos. Só HMA é obrigatório; os
+      // outros 4 são opcionais (decisão de UX: aluno nem sempre tem
+      // todos os dados disponíveis no caso que está estudando).
+      // O backend continua recebendo um único campo `clinicalHistory`,
+      // então concatenamos com cabeçalhos para preservar a estrutura
+      // semiológica na leitura do modelo.
+      const hma = document.getElementById("f-hma").value.trim();
+      const antPessoais = document.getElementById("f-antecedentes-pessoais").value.trim();
+      const habitos = document.getElementById("f-habitos").value.trim();
+      const antFamiliares = document.getElementById("f-antecedentes-familiares").value.trim();
+      const exameFisico = document.getElementById("f-exame-fisico").value.trim();
+
+      if (!titulo || !especialidade || !faixa || !queixa || !hma) {
+        alert("Preencha todos os campos obrigatórios da Etapa 1 antes de avançar (Título, Especialidade, Faixa etária, Queixa principal e HMA).");
+        return;
+      }
+
+      // [PII-CHECK] Verifica cada campo de texto antes de avançar.
+      // Para o aluno na etapa 1 — assim ele corrige sem ter perdido
+      // tempo escrevendo hipóteses e conduta na etapa 2.
+      const camposParaChecar = [
+        { nome: "Título", valor: titulo },
+        { nome: "Queixa principal", valor: queixa },
+        { nome: "HMA", valor: hma },
+        { nome: "Antecedentes pessoais", valor: antPessoais },
+        { nome: "Hábitos e vícios", valor: habitos },
+        { nome: "Antecedentes familiares", valor: antFamiliares },
+        { nome: "Exame físico", valor: exameFisico },
+      ];
+      for (const c of camposParaChecar) {
+        const tipo = detectAcademicPIIClient(c.valor);
+        if (tipo) {
+          alert(
+            `Detectamos possível dado identificável (${tipo}) no campo "${c.nome}". ` +
+            `Remova essa informação antes de avançar — o caso deve ser totalmente anonimizado. ` +
+            `\n\nLembrete: nomes próprios também devem ser removidos (use "paciente" ou "pessoa de X anos").`
+          );
+          document.getElementById("f-" + (c.nome === "HMA" ? "hma" :
+                                           c.nome === "Antecedentes pessoais" ? "antecedentes-pessoais" :
+                                           c.nome === "Hábitos e vícios" ? "habitos" :
+                                           c.nome === "Antecedentes familiares" ? "antecedentes-familiares" :
+                                           c.nome === "Exame físico" ? "exame-fisico" :
+                                           c.nome === "Título" ? "titulo" :
+                                           "queixa"))?.focus();
+          return;
+        }
+      }
+
+      // Monta o bloco de história concatenando apenas seções preenchidas.
+      const blocos = [`HMA (História da moléstia atual):\n${hma}`];
+      if (antPessoais) blocos.push(`Antecedentes pessoais:\n${antPessoais}`);
+      if (habitos) blocos.push(`Hábitos e vícios:\n${habitos}`);
+      if (antFamiliares) blocos.push(`Antecedentes familiares:\n${antFamiliares}`);
+      if (exameFisico) blocos.push(`Exame físico:\n${exameFisico}`);
+      const historia = blocos.join("\n\n");
+
+      casoEmConstrucao = { titulo, especialidade, faixa, queixa, historia };
+      // Guarda também os campos individuais — usado para repopular
+      // a etapa 1 caso a IA detecte PII (nome próprio) no final.
+      casoEmConstrucao._camposEtapa1 = { titulo, especialidade, faixa, queixa, hma, antPessoais, habitos, antFamiliares, exameFisico };
+      document.getElementById("etapa-1").style.display = "none";
+      document.getElementById("etapa-2").style.display = "block";
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+
+    function voltarEtapa1() {
+      document.getElementById("etapa-2").style.display = "none";
+      document.getElementById("etapa-1").style.display = "block";
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+
+    // ----- ETAPA 2 → ETAPA 3 (chamada à IA) -----
+    async function solicitarFeedback() {
+      const hipoteses = document.getElementById("f-hipoteses").value.trim();
+      const conduta = document.getElementById("f-conduta").value.trim();
+      const msg = document.getElementById("msg-etapa2");
+      msg.className = "msg";
+      msg.textContent = "";
+
+      if (!hipoteses || hipoteses.length < 10) {
+        msg.className = "msg error";
+        msg.textContent = "Liste suas hipóteses com pelo menos uma palavra (mín. 10 caracteres). A IA precisa do seu raciocínio para avaliá-lo.";
+        return;
+      }
+      if (!conduta || conduta.length < 20) {
+        msg.className = "msg error";
+        msg.textContent = "Descreva sua conduta proposta com algum detalhamento (mín. 20 caracteres).";
+        return;
+      }
+
+      // Trava botão durante a chamada (anti-duplo-clique).
+      const btn = document.getElementById("btn-feedback");
+      btn.disabled = true;
+      btn.textContent = "Enviando…";
+
+      // Avança visualmente já — etapa 3 começa em "loading".
+      casoEmConstrucao.hipoteses = hipoteses;
+      casoEmConstrucao.conduta = conduta;
+      document.getElementById("etapa-2").style.display = "none";
+      document.getElementById("etapa-3").style.display = "block";
+      document.getElementById("feedback-loading").style.display = "block";
+      document.getElementById("feedback-container").style.display = "none";
+      document.getElementById("feedback-disclaimer").style.display = "none";
+      document.getElementById("feedback-error").style.display = "none";
+      document.getElementById("aprendizado-box").style.display = "none";
+      window.scrollTo({ top: 0, behavior: "smooth" });
+
+      startLoadingProgress();
+
+      try {
+        const resp = await fetch(`${API_BASE}/academic/case-feedback`, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            title: casoEmConstrucao.titulo,
+            specialty: casoEmConstrucao.especialidade,
+            ageRange: casoEmConstrucao.faixa,
+            mainComplaint: casoEmConstrucao.queixa,
+            clinicalHistory: casoEmConstrucao.historia,
+            studentHypotheses: hipoteses,
+            studentConduct: conduta,
+          })
+        });
+
+        const data = await resp.json().catch(() => ({}));
+
+        if (!resp.ok) {
+          // Erro do servidor: mostra mensagem e permite voltar.
+          throw new Error(data.error || `Erro ${resp.status}.`);
+        }
+
+        // A IA agora devolve JSON estruturado (schema aprovado pelo
+        // advogado). data.feedback deve ser objeto. Defesa caso seja
+        // string (versão antiga em cache) ou outro tipo.
+        feedbackRecebido = data.feedback;
+        if (!feedbackRecebido || typeof feedbackRecebido !== "object") {
+          throw new Error("Resposta em formato inesperado.");
+        }
+
+        // Renderiza feedback estruturado.
+        document.getElementById("feedback-loading").style.display = "none";
+        const fc = document.getElementById("feedback-container");
+        fc.innerHTML = renderAnaliseDidatica(feedbackRecebido);
+        fc.style.display = "block";
+        document.getElementById("feedback-disclaimer").style.display = "block";
+        document.getElementById("aprendizado-box").style.display = "block";
+
+      } catch (err) {
+        document.getElementById("feedback-loading").style.display = "none";
+
+        // [PII-TARDIO] Se o erro veio da IA detectando nome próprio
+        // (ou outro PII que escapou da validação client-side), volta
+        // o aluno para a etapa 1 com TODOS os campos preenchidos —
+        // título, especialidade, faixa, queixa, HMA, antecedentes,
+        // hábitos, familiares, exame físico — para ele só editar e
+        // ressubmeter. As hipóteses e conduta da etapa 2 ficam em
+        // casoEmConstrucao para reaparecer quando ele avançar.
+        const msg = String(err.message || "");
+        const ehErroPII = /dados que podem identificar|identific[aá]vel/i.test(msg);
+
+        if (ehErroPII && casoEmConstrucao && casoEmConstrucao._camposEtapa1) {
+          const c = casoEmConstrucao._camposEtapa1;
+          document.getElementById("f-titulo").value = c.titulo || "";
+          document.getElementById("f-especialidade").value = c.especialidade || "";
+          document.getElementById("f-faixa").value = c.faixa || "";
+          document.getElementById("f-queixa").value = c.queixa || "";
+          document.getElementById("f-hma").value = c.hma || "";
+          document.getElementById("f-antecedentes-pessoais").value = c.antPessoais || "";
+          document.getElementById("f-habitos").value = c.habitos || "";
+          document.getElementById("f-antecedentes-familiares").value = c.antFamiliares || "";
+          document.getElementById("f-exame-fisico").value = c.exameFisico || "";
+          // (hipóteses e conduta continuam preenchidas na etapa 2 — não mexemos)
+          document.getElementById("etapa-3").style.display = "none";
+          document.getElementById("etapa-1").style.display = "block";
+          alert(
+            "A IA detectou possível dado identificável no caso (provavelmente um nome próprio). " +
+            "Edite os campos do caso na etapa 1 para anonimizar — use 'paciente' ou 'pessoa de X anos' " +
+            "em vez de nomes — e refaça o envio. Suas hipóteses e conduta foram preservadas."
+          );
+          window.scrollTo({ top: 0, behavior: "smooth" });
+        } else {
+          const errEl = document.getElementById("feedback-error");
+          errEl.textContent = "Não foi possível gerar o feedback: " + err.message + " Você pode voltar e tentar novamente.";
+          errEl.style.display = "block";
+        }
+      } finally {
+        stopLoadingProgress();
+        btn.disabled = false;
+        btn.textContent = "Receber feedback educacional →";
+      }
+    }
+
+    function voltarEtapa2() {
+      document.getElementById("etapa-3").style.display = "none";
+      document.getElementById("etapa-2").style.display = "block";
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+
+    // Render do feedback educacional: a IA devolve JSON estruturado
+    // (formato gabarito comentado, schema aprovado pelo advogado).
+    // Visual portado do medico.html (cards por seção, red flags em
+    // vermelho). Inclui badge de probabilidade didática nas hipóteses
+    // (aprovado pelo advogado em parecer revisado, com nome de campo
+    // "probabilidade_didatica" para distinguir de probabilidade clínica).
+    // Ordem das seções segue medico.html: resumo → red flags → pontos
+    // de atenção → hipóteses → comparações com aluno intercaladas →
+    // manejo → exames → estudo → preceptor.
+    function renderAnaliseDidatica(data) {
+      if (!data || typeof data !== "object") {
+        return '<div class="analysis-section"><em>Resposta inesperada.</em></div>';
+      }
+      let html = "";
+
+      // 1. Resumo do caso
+      if (data.resumo_caso) {
+        html += '<div class="analysis-section">';
+        html += '<h4>📋 Resumo do caso</h4>';
+        html += `<div style="font-size:13.5px; line-height:1.55; color:#334155;">${escapeHtml(data.resumo_caso)}</div>`;
+        html += "</div>";
+      }
+
+      // 2. Red flags educacionais (caixa vermelha)
+      if (Array.isArray(data.red_flags_educacionais) && data.red_flags_educacionais.length) {
+        html += '<div class="analysis-section red-flags-box">';
+        html += '<h4>🚨 Sinais de alerta (red flags)</h4>';
+        html += "<ul>";
+        data.red_flags_educacionais.forEach((r) => {
+          if (!r || typeof r !== "object") return;
+          const sinal = escapeHtml(r.sinal || "—");
+          const just = r.justificativa_didatica ? ` — ${escapeHtml(r.justificativa_didatica)}` : "";
+          html += `<li><strong>${sinal}</strong>${just}</li>`;
+        });
+        html += "</ul>";
+        html += "</div>";
+      }
+
+      // 3. Pontos de atenção (investigações/lacunas a explorar)
+      if (Array.isArray(data.pontos_de_atencao) && data.pontos_de_atencao.length) {
+        html += '<div class="analysis-section">';
+        html += '<h4>👀 Pontos de atenção</h4>';
+        html += "<ul>";
+        data.pontos_de_atencao.forEach((p) => {
+          html += `<li>${escapeHtml(String(p))}</li>`;
+        });
+        html += "</ul>";
+        html += "</div>";
+      }
+
+      // 4. Hipóteses para discussão (cards com badge de probabilidade didática)
+      if (Array.isArray(data.hipoteses_para_discussao) && data.hipoteses_para_discussao.length) {
+        html += '<div class="analysis-section">';
+        html += '<h4>🔍 Hipóteses para discussão</h4>';
+        data.hipoteses_para_discussao.forEach((h) => {
+          if (!h || typeof h !== "object") return;
+          html += '<div class="hypothesis-card">';
+          html += '<div class="hyp-header">';
+          html += `<div class="hyp-name">${escapeHtml(h.hipotese || "—")}</div>`;
+          // Badge de probabilidade didática. O servidor garante que o
+          // valor é sempre um de {alta, moderada, baixa} — vem normalizado.
+          const probVal = (h.probabilidade_didatica || "moderada").toLowerCase();
+          const probClasse = ["alta","moderada","baixa"].includes(probVal) ? probVal : "moderada";
+          html += `<span class="hyp-prob hyp-prob-${probClasse}">${escapeHtml(probClasse)}</span>`;
+          html += '</div>';
+          if (h.justificativa) {
+            html += `<div class="hyp-just">${escapeHtml(h.justificativa)}</div>`;
+          }
+          html += "</div>";
+        });
+        html += "</div>";
+      }
+
+      // [PILL-ALINHAMENTO] Renderiza o rotulo pedagogico de alinhamento
+      // didatico autorizado pelo advogado: "alta concordancia /
+      // concordancia parcial / divergencia". Sem vermelho. NAO eh
+      // nota — eh resumo visual da prosa da IA.
+      function renderAlinhamentoPill(valor) {
+        const LABELS = {
+          alta_concordancia: "alta concordância",
+          concordancia_parcial: "concordância parcial",
+          divergencia: "divergência",
+        };
+        const v = LABELS[valor] ? valor : "concordancia_parcial";
+        return `<span class="alinh-pill alinh-${v}"><span class="alinh-pill-label">Alinhamento didático:</span> ${LABELS[v]}</span>`;
+      }
+
+      // 5. Comparação com a hipótese do aluno (caixa azul, prosa curta + pill)
+      if (data.comparacao_hipoteses_aluno) {
+        html += '<div class="comparacao-box">';
+        html += '<div class="comparacao-head">';
+        html += '<h4>🎯 Sua hipótese vs. discussão didática</h4>';
+        html += renderAlinhamentoPill(data.alinhamento_hipoteses_didatico);
+        html += '</div>';
+        html += `<div>${escapeHtml(data.comparacao_hipoteses_aluno)}</div>`;
+        html += "</div>";
+      }
+
+      // 6. Elementos de manejo em contexto acadêmico
+      if (Array.isArray(data.elementos_de_manejo_academico) && data.elementos_de_manejo_academico.length) {
+        html += '<div class="analysis-section">';
+        html += '<h4>🩺 Elementos de manejo em contexto acadêmico</h4>';
+        html += "<ul>";
+        data.elementos_de_manejo_academico.forEach((p) => {
+          html += `<li>${escapeHtml(String(p))}</li>`;
+        });
+        html += "</ul>";
+        html += "</div>";
+      }
+
+      // 7. Comparação com a conduta do aluno (+ pill)
+      if (data.comparacao_conduta_aluno) {
+        html += '<div class="comparacao-box">';
+        html += '<div class="comparacao-head">';
+        html += '<h4>🎯 Sua conduta vs. manejo discutido</h4>';
+        html += renderAlinhamentoPill(data.alinhamento_conduta_didatico);
+        html += '</div>';
+        html += `<div>${escapeHtml(data.comparacao_conduta_aluno)}</div>`;
+        html += "</div>";
+      }
+
+      // 8. Exames para discussão acadêmica
+      if (Array.isArray(data.exames_para_discussao_academica) && data.exames_para_discussao_academica.length) {
+        html += '<div class="analysis-section">';
+        html += '<h4>🧪 Exames para discussão acadêmica</h4>';
+        data.exames_para_discussao_academica.forEach((e) => {
+          if (!e || typeof e !== "object") return;
+          html += '<div class="exame-row">';
+          html += `<span class="exame-nome">${escapeHtml(e.exame || "—")}</span>`;
+          if (e.justificativa_didatica) {
+            html += ` <span class="exame-just">— ${escapeHtml(e.justificativa_didatica)}</span>`;
+          }
+          html += "</div>";
+        });
+        html += "</div>";
+      }
+
+      // 9. Temas de estudo (cada tema vira link para Google Scholar
+      // em nova aba — busca direta, sem alucinação de URL pelo modelo).
+      if (Array.isArray(data.temas_de_estudo) && data.temas_de_estudo.length) {
+        html += '<div class="analysis-section">';
+        html += '<h4>📚 Temas de estudo</h4>';
+        html += '<ul style="list-style:none; padding-left:0;">';
+        data.temas_de_estudo.forEach((t) => {
+          const tema = String(t);
+          const url = "https://scholar.google.com/scholar?q=" + encodeURIComponent(tema);
+          html += `<li style="margin-bottom:6px;"><a href="${escapeHtml(url)}" target="_blank" rel="noopener noreferrer" style="color:#0c4a6e; text-decoration:none; display:inline-flex; align-items:center; gap:6px; padding:4px 0;"><span>${escapeHtml(tema)}</span><span style="font-size:11px; color:#64748b;">↗</span></a></li>`;
+        });
+        html += "</ul>";
+        html += "</div>";
+      }
+
+      // 10. Perguntas ao preceptor (reforço pedagógico: IA não substitui humano)
+      if (Array.isArray(data.perguntas_ao_preceptor) && data.perguntas_ao_preceptor.length) {
+        html += '<div class="analysis-section">';
+        html += '<h4>💬 Perguntas para levar ao preceptor</h4>';
+        html += "<ul>";
+        data.perguntas_ao_preceptor.forEach((p) => {
+          html += `<li>${escapeHtml(String(p))}</li>`;
+        });
+        html += "</ul>";
+        html += "</div>";
+      }
+
+      return html;
+    }
+
+    // ----- ETAPA 3: SALVAR FINAL -----
+    function salvarCaso() {
+      const aprendizado = document.getElementById("f-aprendizado").value.trim();
+      const msg = document.getElementById("msg");
+      msg.className = "msg"; msg.textContent = "";
+
+      if (!aprendizado || aprendizado.length < 20) {
+        msg.className = "msg error";
+        msg.textContent = "Escreva sua reflexão pessoal sobre o caso (mín. 20 caracteres). Esta é a parte mais importante do portfólio.";
+        return;
+      }
+
+      const novo = {
+        id: nextId++,
+        titulo: casoEmConstrucao.titulo,
+        especialidade: casoEmConstrucao.especialidade,
+        faixa: casoEmConstrucao.faixa,
+        queixa: casoEmConstrucao.queixa,
+        historia: casoEmConstrucao.historia,
+        // PRESERVA as hipóteses/conduta originais do aluno (registro
+        // honesto, não pode editar depois — decisão pedagógica).
+        hipoteses: casoEmConstrucao.hipoteses,
+        conduta: casoEmConstrucao.conduta,
+        feedback: feedbackRecebido,
+        aprendizado,
+        data: (() => {
+          const d = new Date();
+          const pad = (n) => String(n).padStart(2, "0");
+          return `${d.getFullYear()}-${pad(d.getMonth()+1)}-${pad(d.getDate())}T${pad(d.getHours())}:${pad(d.getMinutes())}`;
+        })()
+      };
+      casos.unshift(novo);
+      atualizarStats();
+
+      msg.className = "msg success";
+      msg.textContent = "✅ Caso salvo no seu portfólio.";
+
+      // Reseta estado e volta para etapa 1 (próximo caso).
+      casoEmConstrucao = null;
+      feedbackRecebido = null;
+      ["f-titulo","f-queixa","f-hma","f-antecedentes-pessoais","f-habitos","f-antecedentes-familiares","f-exame-fisico","f-hipoteses","f-conduta","f-aprendizado"].forEach(id => {
+        document.getElementById(id).value = "";
+      });
+      document.getElementById("f-especialidade").value = "";
+      document.getElementById("f-faixa").value = "";
+      document.getElementById("feedback-container").innerHTML = "";
+      document.getElementById("feedback-container").style.display = "none";
+      document.getElementById("feedback-disclaimer").style.display = "none";
+      document.getElementById("aprendizado-box").style.display = "none";
+
+      setTimeout(() => {
+        document.getElementById("etapa-3").style.display = "none";
+        document.getElementById("etapa-1").style.display = "block";
+        msg.className = "msg"; msg.textContent = "";
+      }, 2500);
+    }
+
+    function renderLista() {
+      const cont = document.getElementById("lista-casos");
+      if (casos.length === 0) {
+        cont.innerHTML = '<div class="empty">Você ainda não cadastrou casos. Comece pelo botão "Novo caso".</div>';
+        return;
+      }
+      cont.innerHTML = casos.map(c => `
+        <div class="caso-item">
+          <span class="badge">${escapeHtml(c.especialidade)}</span>
+          <h3>${escapeHtml(c.titulo)}</h3>
+          <div class="meta">${formatDate(c.data)} · ${escapeHtml(c.faixa)}</div>
+          <div class="preview"><strong>Queixa:</strong> ${escapeHtml(c.queixa)}</div>
+          ${c.hipoteses ? `<div class="preview" style="margin-top:6px;"><strong>Suas hipóteses:</strong> ${escapeHtml(c.hipoteses)}</div>` : ""}
+          ${c.conduta ? `<div class="preview" style="margin-top:6px;"><strong>Sua conduta:</strong> ${escapeHtml(c.conduta)}</div>` : ""}
+          ${(c.feedback && typeof c.feedback === "object") ? `<details style="margin-top:8px;"><summary style="cursor:pointer; color:#0284c7; font-size:13px; font-weight:600;">Ver feedback educacional</summary><div style="margin-top:6px;">${renderAnaliseDidatica(c.feedback)}</div></details>` : ""}
+          ${c.aprendizado ? `<div class="preview" style="margin-top:6px;"><strong>Aprendizado:</strong> ${escapeHtml(c.aprendizado)}</div>` : ""}
+        </div>
+      `).join("");
+    }
+
+    function escapeHtml(s) {
+      return String(s || "").replace(/[&<>"']/g, m => ({
+        "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"
+      }[m]));
+    }
+    function formatDate(s) {
+      try {
+        // Aceita "YYYY-MM-DD" (formato antigo, só dia) e "YYYY-MM-DDTHH:MM"
+        // (novo, com horário). Anexa T00:00 quando vier só a data, pra
+        // não pegar fuso UTC indevido.
+        const str = String(s || "");
+        const temHora = str.includes("T");
+        const d = new Date(temHora ? str : str + "T00:00");
+        const dataFmt = d.toLocaleDateString("pt-BR");
+        if (!temHora) return dataFmt;
+        const horaFmt = d.toLocaleTimeString("pt-BR", { hour: "2-digit", minute: "2-digit" });
+        return `${dataFmt} · ${horaFmt}`;
+      } catch { return s; }
+    }
+
+    atualizarStats();
+  </script>
+</body>
+</html>
