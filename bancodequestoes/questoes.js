@@ -5838,3 +5838,1827 @@ QUESTOES.push(
 );
 
 console.log("UNICAMP Bloco 4 (308-320) adicionado. Total: 320 questões");
+
+// ==================== ENAMED 2025 — Caderno 2 — Bloco 1 (321-345) ====================
+QUESTOES.push(
+  {
+    n: 321,
+    banca: "ENAMED 2025 — Caderno 2",
+    especialidade: "GO",
+    tema: "Pré-natal de Alto Risco",
+    subtemas: ["Indicações de encaminhamento", "Gestação de alto risco"],
+    dificuldade: "Fácil",
+    temImagem: false,
+    enunciado: "Considerando a atenção ao pré-natal de pacientes na atenção primária em saúde, assinale a condição clínica que indica a referência da gestante para acompanhamento conjunto em um centro de referência especializado (pré-natal de alto risco).",
+    alternativas: {
+      A: "Malária no 3º trimestre da gestação.",
+      B: "Anemia com 9,5 mg/dL de hemoglobina.",
+      C: "Gestação gemelar dicoriônica diamniótica.",
+      D: "Diabetes mellitus gestacional controlada com dieta."
+    },
+    gabarito: "A",
+    explicacao: "MANUAL DE GESTAÇÃO DE ALTO RISCO (MS 2022): MALÁRIA NA GESTAÇÃO é INDICAÇÃO ABSOLUTA de pré-natal de alto risco (PNAR), especialmente no 3º trimestre — risco de malária grave materna, abortamento, prematuridade, baixo peso, morte fetal/materna. A) CORRETA. B) Anemia indica PNAR apenas se Hb<8 g/dL (anemia grave) ou refratária — 9,5 g/dL é anemia LEVE, conduta na APS com sulfato ferroso. C) Gemelar DC/DA tem riscos aumentados mas a maioria pode ser acompanhada na APS com vigilância (PNAR principalmente em MONOCORIÔNICA ou complicações). D) DMG controlada com DIETA é manejo da APS — encaminhar apenas se necessitar insulina ou descontrole."
+  },
+  {
+    n: 322,
+    banca: "ENAMED 2025 — Caderno 2",
+    especialidade: "GO",
+    tema: "RPMO (Rotura Prematura de Membranas)",
+    subtemas: ["Amniorrexe pré-termo", "Conduta"],
+    dificuldade: "Médio",
+    temImagem: false,
+    enunciado: "Primigesta de 28 anos, com 33 semanas de gestação, pré-natal de risco habitual, chega ao pronto-atendimento obstétrico relatando saída de líquido claro pela vagina há cerca de 2 horas. Ao exame físico, sinais vitais normais, tônus uterino normal, sem contrações, AU compatível, MF presentes, BCF 140 bpm. Exame especular: saída de líquido amniótico claro pelo orifício externo do colo uterino. Após prescrição de antibiótico e corticoterapia antenatal, a conduta adequada é:",
+    alternativas: {
+      A: "internação hospitalar e monitoramento materno-fetal diário.",
+      B: "internação hospitalar, cardiotocografia e indução imediata do parto.",
+      C: "alta, repouso domiciliar e monitoramento materno-fetal ambulatorial diário.",
+      D: "alta, repouso domiciliar e monitoramento materno-fetal ambulatorial semanal."
+    },
+    gabarito: "A",
+    explicacao: "RPMO PRÉ-TERMO (RPM <37 semanas) com 33 semanas: CONDUTA EXPECTANTE com INTERNAÇÃO HOSPITALAR é o padrão entre 24-34 semanas (FEBRASGO/ACOG). Justificativa: 1) Vigilância materna (sinais de corioamnionite: febre, taquicardia materna/fetal, leucocitose, dor uterina); 2) Vigilância fetal (CTG diária, USG seriada); 3) CORTICOIDE (betametasona) para maturação pulmonar; 4) ANTIBIÓTICOPROFILAXIA (ampicilina+azitromicina) para latência; 5) NÃO induzir antes de 34 semanas se ausência de corioamnionite/sofrimento fetal. B errada: induzir aos 33s aumenta morbimortalidade neonatal por prematuridade. C e D erradas: alta domiciliar é INADEQUADA (risco de corioamnionite, sofrimento fetal, descolamento)."
+  },
+  {
+    n: 323,
+    banca: "ENAMED 2025 — Caderno 2",
+    especialidade: "Cirurgia",
+    tema: "Hepatobiliar",
+    subtemas: ["Coledocolitíase", "Colangite", "Síndrome colestática"],
+    dificuldade: "Médio",
+    temImagem: false,
+    enunciado: "Mulher 43 anos, internada em cirurgia. Icterícia +++, colúria, acolia há 72h. Dor HCD à palpação profunda. T 37,4°C, FC 83, PA 123x76. USG: múltiplos cálculos vesiculares 0,5-1cm móveis, dilatação de vias biliares intra e extra-hepáticas. Lab: FA 760, GGT 900, BT 6,2/BD 5,1, TGO/TGP normais, amilase normal, leucócitos 9.000 sem desvio. Diagnóstico sindrômico e exame para prosseguir:",
+    alternativas: {
+      A: "Síndrome colestática sem colangite; tomografia de abdome com contraste venoso.",
+      B: "Síndrome colestática com colangite; ressonância nuclear magnética de vias biliares.",
+      C: "Síndrome colestática sem colangite; ressonância nuclear magnética de vias biliares.",
+      D: "Síndrome colestática com colangite; colangiopancreatografia retrógrada endoscópica."
+    },
+    gabarito: "C",
+    explicacao: "SÍNDROME COLESTÁTICA: icterícia + colúria + acolia + elevação de FA (760, >3x) e GGT (900) + dilatação de vias biliares = padrão obstrutivo extra-hepático. TRÍADE DE CHARCOT para colangite = febre + icterícia + dor em HCD — não tem critério inflamatório aqui (leucócitos normais sem desvio, T apenas 37,4°C). Paciente NÃO tem colangite. PRÓXIMO EXAME: a coledocolitíase é a hipótese (cálculos múltiplos vesiculares + dilatação extra-hepática); a COLANGIORRESSONÂNCIA (CPRM) é o exame de ESCOLHA para confirmar coledocolitíase ANTES de CPRE (que é INTERVENCIONISTA — reservada quando há confirmação para resolução). D errada porque CPRE em paciente SEM colangite é overuse. RESPOSTA C."
+  },
+  {
+    n: 324,
+    banca: "ENAMED 2025 — Caderno 2",
+    especialidade: "Pediatria",
+    tema: "Crescimento",
+    subtemas: ["Baixa estatura", "Atraso constitucional"],
+    dificuldade: "Médio",
+    temImagem: false,
+    enunciado: "Menina 7 anos, baixa estatura. Sem intercorrências peri/neonatais. Tanner M1P1 (pré-púbere). Peso 19kg (z-1), estatura 1,07m (-3<z<-2), alvo 1,50m (z-2), IMC 16,6 (0<z<+1), SS/SI 1,02 (referência). Há 4m: estatura 1,05m (-3<z<-2), IMC z0. Idade óssea aos 6a8m = 5a10m (atrasada ~10m). Hipótese:",
+    alternativas: {
+      A: "acondroplasia.",
+      B: "síndrome de Turner.",
+      C: "baixa estatura familiar.",
+      D: "atraso constitucional do crescimento."
+    },
+    gabarito: "D",
+    explicacao: "Causas comuns de baixa estatura em prepúberes: 1) BAIXA ESTATURA FAMILIAR: estatura compatível com alvo familiar, IDADE ÓSSEA = IDADE CRONOLÓGICA, puberdade no tempo normal. 2) ATRASO CONSTITUCIONAL DO CRESCIMENTO E DESENVOLVIMENTO (ACCD): IDADE ÓSSEA ATRASADA em relação à cronológica (como neste caso: 5a10m com 6a8m crono), velocidade de crescimento normal, puberdade tardia, ALVO atingido tardiamente. 3) Turner: meninas com baixa estatura, geralmente com estigmas (pescoço alado, hipertelorismo mamário, cubitus valgus) — aqui SS/SI=1,02 normal. 4) Acondroplasia: displasia esquelética com encurtamento DESPROPORCIONAL (SS/SI muito alterada), fácies típica. CASO: IDADE ÓSSEA ATRASADA + crescimento mantido + sem estigmas = ATRASO CONSTITUCIONAL. RESPOSTA D."
+  },
+  {
+    n: 325,
+    banca: "ENAMED 2025 — Caderno 2",
+    especialidade: "MFC/Preventiva",
+    tema: "ISTs",
+    subtemas: ["Úlcera genital", "Abordagem sindrômica"],
+    dificuldade: "Médio",
+    temImagem: true,
+    enunciado: "Homem 30 anos, profissional do sexo, uso irregular de preservativo. Há 3m: emagrecimento 10kg, astenia, febre baixa. Há 1 sem: úlcera DOLOROSA pênis. EF: lesão ULCERADA 3cm BORDAS ELEVADAS sem secreção, RASA e de BASE MOLE abaixo da glande, linfonodomegalia inguinal D com sinais inflamatórios sem fistulização. (Imagem: úlcera genital). Investigação, achado e tratamento:",
+    alternativas: {
+      A: "sorologia para Chlamydia trachomatis; positiva; doxiciclina 100 mg, 2x/dia, VO, 7 dias.",
+      B: "biópsia da úlcera; bacilos álcool ácido resistentes; esquema RIP, VO.",
+      C: "VDRL; reagente; benzilpenicilina benzatina 1,2 milhão UI, IM, dose única.",
+      D: "microscopia de esfregaço do fundo da úlcera; Gram negativos agrupados em correntes; azitromicina 500 mg, VO, 2cp dose única."
+    },
+    gabarito: "C",
+    explicacao: "CASO COM CARACTERÍSTICAS MISTAS: úlcera com BORDAS ELEVADAS é mais sugestivo de cancro duro (sífilis primária, classicamente INDOLOR), mas a descrição de DOR + base mole + adenopatia INFLAMATÓRIA sugere CANCRO MOLE (Haemophilus ducreyi). PEGADINHA: paciente com sintomas sistêmicos (emagrecimento, febre, astenia 3m) sugere SÍFILIS SECUNDÁRIA ou COINFECÇÃO HIV. ABORDAGEM SINDRÔMICA do MS para ÚLCERA GENITAL: tratar simultaneamente sífilis (PenG Benzatina 2,4mi UI) + cancro mole (azitromicina 1g). A alternativa C identifica sífilis e usa penicilina benzatina, mas a DOSE de 1,2 milhão UI está INCORRETA tecnicamente (sífilis primária é 2,4 mi UI). É a opção menos inadequada. NOTA: questão com problemas técnicos; possível anulação. Em prova real, atenção ao gabarito oficial."
+  },
+  {
+    n: 326,
+    banca: "ENAMED 2025 — Caderno 2",
+    especialidade: "Pediatria",
+    tema: "Hematologia",
+    subtemas: ["Anemia ferropriva", "Tratamento"],
+    dificuldade: "Médio",
+    temImagem: false,
+    enunciado: "Menina 11 anos, cansaço, palidez, baixo rendimento escolar há 3m. EF: mucosas hipocrômicas 3+/4+, FC 104, sopro sistólico 2/6. Hemograma: Hb 8,4, VCM 62, HCM 24, CHCM 28, RDW 22%, leucócitos 8.430 com 10% eosinófilos, plaquetas 480.000. Assinale a correta:",
+    alternativas: {
+      A: "Dosar ferro sérico (sensível e específico), atentar para ritmo circadiano (mais elevados pela manhã).",
+      B: "Iniciar tratamento com 4 mg/kg/dia ferro elementar; aumento de reticulócitos em 4-7 dias.",
+      C: "Com base no HCM a anemia é normocítica; esfregaço evidencia anisocitose, eliptocitose e poiquilocitose.",
+      D: "Eosinofilia e trombocitose justificam encaminhamento para hematologista para investigar comprometimento esplênico."
+    },
+    gabarito: "B",
+    explicacao: "ANEMIA MICROCÍTICA HIPOCRÔMICA com RDW alto = padrão clássico de FERROPRIVA. Hb 8,4 indica anemia MODERADA. TRATAMENTO: SULFATO FERROSO 3-5 mg/kg/dia de FERRO ELEMENTAR (3-6 mg/kg/dia em deficiência grave). RESPOSTA: reticulocitose em 5-10 dias (pico ~7-10 dias), aumento de Hb 1g/dL em 4 semanas. A alternativa B (4mg/kg + reticulócitos em 4-7 dias) está compatível. A errada: ferro sérico tem muitas LIMITAÇÕES (variação circadiana, infecção/inflamação) — não é o melhor exame. C errada: VCM 62 e HCM 24 = MICROCÍTICA E HIPOCRÔMICA, não normocítica. D errada: eosinofilia 10% pode sugerir parasitose (ANCILOSTOMOSE é causa clássica de anemia ferropriva!), trombocitose é REATIVA à ferropriva — não justifica encaminhamento hematológico isolado. RESPOSTA B. NOTA: eosinofilia merece pesquisa parasitológica das fezes."
+  },
+  {
+    n: 327,
+    banca: "ENAMED 2025 — Caderno 2",
+    especialidade: "GO",
+    tema: "Sangramento Pós-Menopausa",
+    subtemas: ["Hiperplasia/Câncer endometrial"],
+    dificuldade: "Médio",
+    temImagem: false,
+    enunciado: "Mulher 72 anos, menopausa aos 53a, obesa, nulípara, sem TH. Sangramento vaginal há 2 dias. Especular: lesão polipoide pelo OE do colo. USG TV: útero com 3 nódulos (2,5/3,5/1,5cm — 2 intramurais e 1 submucoso), endométrio 8mm, pólipo de 1,5cm no canal endocervical. Hipótese principal:",
+    alternativas: {
+      A: "Hiperplasia endometrial.",
+      B: "Câncer de colo de útero.",
+      C: "Leiomioma submucoso.",
+      D: "Endométrio atrófico."
+    },
+    gabarito: "A",
+    explicacao: "PACIENTE PÓS-MENOPAUSA com SANGRAMENTO: TODA mulher pós-menopausa com sangramento DEVE ser investigada para CÂNCER/HIPERPLASIA DE ENDOMÉTRIO. FATORES DE RISCO desta paciente: OBESIDADE + NULIPARIDADE + IDADE 72a = perfil clássico de adenocarcinoma endometrial tipo I (estrogênio-dependente). ENDOMÉTRIO 8mm em PÓS-MENOPAUSA é ANORMAL (corte de 4-5mm em mulheres sem TRH; >4mm requer investigação por histeroscopia/biópsia). O quadro indica HIPERPLASIA ENDOMETRIAL como hipótese — lesão precursora do CA endometrial. A LESÃO POLIPOIDE no colo é provavelmente um PÓLIPO ENDOCERVICAL ou PÓLIPO ENDOMETRIAL PROLAPSADO. RESPOSTA A. B (CA colo) é menos provável pelo aspecto USG; C (mioma submucoso) é frequente mas não justifica espessamento endometrial; D (atrofia) cursaria com endométrio <4mm. INVESTIGAÇÃO: HISTEROSCOPIA + BIÓPSIA endometrial."
+  },
+  {
+    n: 328,
+    banca: "ENAMED 2025 — Caderno 2",
+    especialidade: "Cirurgia",
+    tema: "Oftalmologia",
+    subtemas: ["Queimadura química ocular", "Emergência"],
+    dificuldade: "Fácil",
+    temImagem: false,
+    enunciado: "Mulher 45 anos UBS com dor ocular. Limpeza com ALVEJANTE acidentalmente atingiu olho. EF: hiperemia intensa com opacidade da córnea e queimadura química da pálpebra superior OD. Manejo correto:",
+    alternativas: {
+      A: "Prescrição de analgésico tópico e colírio lubrificante.",
+      B: "Lavagem dos olhos com solução de água boricada e curativo oclusivo.",
+      C: "Lavagem ocular com solução fisiológica e avaliação imediata do especialista.",
+      D: "Prescrição de colírio de corticoide tópico e avaliação precoce do especialista."
+    },
+    gabarito: "C",
+    explicacao: "QUEIMADURA QUÍMICA OCULAR é EMERGÊNCIA OFTALMOLÓGICA — tempo é córnea! ALVEJANTE (hipoclorito) é ÁLCALI — mais grave que ácidos pois penetra rapidamente (saponificação de membranas). CONDUTA IMEDIATA: 1) IRRIGAÇÃO COPIOSA E IMEDIATA com SORO FISIOLÓGICO ou ÁGUA por NO MÍNIMO 15-30 MINUTOS (alguns protocolos: até pH neutro no fórnix). 2) Não usar substâncias 'neutralizantes' (reações exotérmicas pioram). 3) ENCAMINHAMENTO IMEDIATO para oftalmologista (necessita avaliação de pH, córnea, conjuntiva, tratamento subsequente). RESPOSTA C. A (lubrificante) e B (água boricada/oclusão) e D (corticoide isolado) são INADEQUADAS e perigosas. Opacidade de córnea já indica lesão grave."
+  },
+  {
+    n: 329,
+    banca: "ENAMED 2025 — Caderno 2",
+    especialidade: "Pediatria",
+    tema: "Pneumologia",
+    subtemas: ["Crise asmática grave", "Sulfato de magnésio"],
+    dificuldade: "Difícil",
+    temImagem: false,
+    enunciado: "Menina 1a10m, tosse e dispneia 4 dias. Aumento de salbutamol sem melhora, piora há 6h. Exacerbações frequentes nos últimos 3m apesar de prednisolona. Pais asmáticos. EF: SONOLENTA, taquidispneica, choro entrecortado, SatO2 94% em AA, retração de musculatura acessória. Conduta além de internação:",
+    alternativas: {
+      A: "metilprednisolona endovenoso.",
+      B: "ventilação não invasiva (VNI) com sedação.",
+      C: "salbutamol endovenoso em infusão contínua.",
+      D: "sulfato de magnésio em infusão intravenosa contínua."
+    },
+    gabarito: "D",
+    explicacao: "CRISE ASMÁTICA GRAVE/AMEAÇA À VIDA: alteração de consciência (SONOLENTA), choro entrecortado, retração de musculatura acessória, falha de salbutamol em altas doses = ESTÁGIO REFRATÁRIO. ESCALADA TERAPÊUTICA padrão (GINA/SBP) na crise grave refratária: 1) Beta2-agonista inalatório CONTÍNUO + ipratrópio; 2) CORTICOIDE SISTÊMICO (oral ou IV); 3) SULFATO DE MAGNÉSIO IV — 25-75 mg/kg em 20min OU INFUSÃO CONTÍNUA em crise grave refratária; 4) UTI/IOT se piora. A questão sugere que paciente JÁ recebeu broncodilatador e prednisolona oral. PRÓXIMO PASSO em crise refratária = SULFATO DE MAGNÉSIO. Metilprednisolona IV (A) é importante mas o paciente já está em prednisolona oral e o magnésio age mais rapidamente em crise refratária. VNI com sedação (B) é INADEQUADA (sedação pode piorar drive respiratório); salbutamol IV (C) tem riscos cardíacos e é menos utilizado que magnésio. RESPOSTA D."
+  },
+  {
+    n: 330,
+    banca: "ENAMED 2025 — Caderno 2",
+    especialidade: "Clínica Médica",
+    tema: "Cardiologia",
+    subtemas: ["SCA SSST", "Estratégia invasiva precoce"],
+    dificuldade: "Médio",
+    temImagem: false,
+    enunciado: "Homem 56 anos, angina instável recente, DM2, HAS, dislipidemia. Internado UCO com dor torácica em aperto irradiada MSE + mandíbula há 2h. 3 episódios em 24h. Uso: losartana, HCTZ, AAS, dapagliflozina, metformina, atorvastatina. EF: B4, PA normal, sem congestão. ECG: novo INFRADESNIVELAMENTO ST 1mm parede anterior + inversão T. Troponina I elevada com curva. GRACE 152, TIMI 5. Conduta:",
+    alternativas: {
+      A: "angiotomografia coronária em até 48 horas.",
+      B: "cateterismo cardíaco nas primeiras 24 horas.",
+      C: "cateterismo cardíaco em até 3 dias do evento.",
+      D: "ecocardiograma de estresse em até 7 dias do evento."
+    },
+    gabarito: "B",
+    explicacao: "SCA SEM SUPRA-ST (IAMSST/Angina Instável) — ESTRATIFICAÇÃO DE RISCO determina TEMPO da CINEANGIOCORONARIOGRAFIA: 1) RISCO MUITO ALTO (instabilidade hemodinâmica, choque, IC, arritmias graves, dor refratária): CATE EMERGENCIAL (<2h); 2) RISCO ALTO (GRACE >140, troponina dinâmica, alterações dinâmicas de ST/T, IRC): CATE em ATÉ 24h — estratégia invasiva precoce; 3) RISCO INTERMEDIÁRIO (GRACE 109-140, DM, FEVE<40%): CATE em até 72h; 4) RISCO BAIXO: estratégia conservadora ou teste de isquemia não invasivo. ESTE PACIENTE: GRACE 152 (ALTO RISCO >140) + TIMI 5 (ALTO RISCO) + troponina+ + alterações dinâmicas de ST/T = ALTO RISCO. RECOMENDAÇÃO: CATE EM ATÉ 24h (SBC, ESC, ACC/AHA). RESPOSTA B."
+  },
+  {
+    n: 331,
+    banca: "ENAMED 2025 — Caderno 2",
+    especialidade: "MFC/Preventiva",
+    tema: "Profilaxia da Raiva",
+    subtemas: ["Esquema pós-exposição", "Acidente com gato"],
+    dificuldade: "Médio",
+    temImagem: false,
+    enunciado: "Homem 23 anos, mordida há 2h por gato de RUA (animal sumiu após resgate). Feridas cortocontusas em dedos da mão esquerda. Cidade com confirmação de raiva em felinos no ano anterior. Conduta imediata:",
+    alternativas: {
+      A: "Higienizar e SUTURAR; soro antirrábico; penicilina benzatina 1,2 milhão UI.",
+      B: "Lavar com antissépticos; aguardar busca ativa do animal; reforço dT.",
+      C: "Lavar com água corrente abundante e sabão; vacina antirrábica 4 doses (D0,3,7,14); imunoglobulina humana antirrábica.",
+      D: "Higienizar com antisséptico; 1ª dose da vacina antirrábica; contraindicar doses subsequentes em qualquer reação adversa; soro antirrábico."
+    },
+    gabarito: "C",
+    explicacao: "PROFILAXIA DA RAIVA HUMANA (MS, 2022): GATO DE RUA + animal NÃO observável (fugiu) + região com circulação viral (raiva em felinos confirmada) = ACIDENTE GRAVE com EXPOSIÇÃO GRAVE. PROFILAXIA: 1) LAVAR COM ÁGUA E SABÃO; 2) ESQUEMA DE VACINA: 4 doses (D0, D3, D7, D14) pelo SUS — esquema atual MS; 3) SORO ANTIRRÁBICO/IMUNOGLOBULINA: indicado em mordeduras em CABEÇA, PESCOÇO, MÃOS, PÉS (locais nobres), ou múltiplas lesões, ou em imunossuprimidos — MÃOS = INDICADO. NÃO SUTURAR lesões por mordedura (risco infeccioso). PROFILAXIA ANTIBIÓTICA com AMOXICILINA/CLAVULANATO (não penicilina benzatina) por 3-7 dias devido a Pasteurella multocida. ATUALIZAR dT/tétano. RESPOSTA C — única que contempla lavagem correta + vacina + imunoglobulina."
+  },
+  {
+    n: 332,
+    banca: "ENAMED 2025 — Caderno 2",
+    especialidade: "GO",
+    tema: "Obstetrícia",
+    subtemas: ["DPP", "Cocaína", "Couvelaire"],
+    dificuldade: "Médio",
+    temImagem: false,
+    enunciado: "Gestante 28 anos, IG desconhecida, vulnerabilidade social. SAMU com sangramento vaginal intenso, HIPERTONIA UTERINA, PA 130x90, AU 32cm, BCF 90 bpm (BRADICARDIA FETAL). TV: colo grosso, posterior, IMPÉRVIO. Acompanhante refere uso de COCAÍNA antes do ocorrido. Diagnóstico, conduta e complicação:",
+    alternativas: {
+      A: "descolamento de placenta; cesárea; útero de Couvelaire.",
+      B: "rotura de vasa prévia; amniotomia; anemia fetal.",
+      C: "trabalho de parto; inibição; prematuridade.",
+      D: "pré-eclâmpsia; cesárea; rotura uterina."
+    },
+    gabarito: "A",
+    explicacao: "DESCOLAMENTO PREMATURO DE PLACENTA (DPP) — QUADRO CLÁSSICO: 1) SANGRAMENTO VAGINAL (escuro, quantidade variável); 2) HIPERTONIA UTERINA (útero tipo 'tábua'); 3) DOR ABDOMINAL; 4) SOFRIMENTO FETAL (bradicardia fetal). FATORES DE RISCO clássicos: HAS/Pré-eclâmpsia, TRAUMA, COCAÍNA (vasoespasmo placentário), tabagismo, idade. COLO IMPÉRVIO afasta trabalho de parto. CONDUTA: CESÁREA DE EMERGÊNCIA se feto vivo e SF agudo. COMPLICAÇÃO TÍPICA: ÚTERO DE COUVELAIRE — apoplexia uteroplacentária com infiltração hemorrágica do miométrio. Outras complicações: CIVD, choque hemorrágico, IRA. RESPOSTA A."
+  },
+  {
+    n: 333,
+    banca: "ENAMED 2025 — Caderno 2",
+    especialidade: "Cirurgia",
+    tema: "Câncer de Pâncreas",
+    subtemas: ["Tumor periampular", "Investigação"],
+    dificuldade: "Médio",
+    temImagem: false,
+    enunciado: "Homem 72 anos com dor epigástrica irradiada em FAIXA para dorso há 3m, perda 8kg, prurido, ICTERÍCIA, náuseas, COLÚRIA e ACOLIA há 1 sem. Tabagismo 30 maços/ano, etilismo 35a, dislipidemia, HAS, DM. IMC 30. Exames iniciais a solicitar:",
+    alternativas: {
+      A: "USG abdome, aminotransferases, bilirrubinas e sorologias para hepatites.",
+      B: "CPRE e dosagem de aminotransferases e GGT.",
+      C: "RM de abdome e dosagem de amilase, lipase e cálcio.",
+      D: "TC de abdome com contraste e dosagem de CA 19.9."
+    },
+    gabarito: "D",
+    explicacao: "QUADRO CLÁSSICO de CA DE PÂNCREAS (cabeça/periampular): SÍNDROME CONSUMPTIVA + DOR EPIGÁSTRICA IRRADIADA EM FAIXA DORSO + ICTERÍCIA OBSTRUTIVA INDOLOR PROGRESSIVA + colúria/acolia + sinal de Courvoisier (vesícula palpável indolor) + FATORES DE RISCO (tabagismo, álcool, DM, idade). MELHOR EXAME INICIAL: TC DE ABDOME COM CONTRASTE (protocolo pancreático trifásico) — acurácia para detectar massa, vascularização (mesentérica superior, tronco celíaco, veia porta — critérios de ressecabilidade), metástases hepáticas. MARCADOR: CA 19.9 elevado em 70-90% (auxilia seguimento e prognóstico). USG (A) é POUCO SENSÍVEL para cabeça do pâncreas; CPRE (B) é invasiva e reservada para drenagem terapêutica; RM (C) é alternativa mas TC tem maior disponibilidade e é padrão inicial. RESPOSTA D."
+  },
+  {
+    n: 334,
+    banca: "ENAMED 2025 — Caderno 2",
+    especialidade: "Pediatria",
+    tema: "Endocrinologia",
+    subtemas: ["Acantose nigricans", "Resistência insulínica"],
+    dificuldade: "Fácil",
+    temImagem: false,
+    enunciado: "Adolescente 13a M, UBS, manchas escurecidas em dobras (pescoço, axilas, virilha). IMC z entre +2 e +3 (obesidade), relação CA/estatura aumentada, ACANTOSE NIGRICANS. Além de mudança de hábitos:",
+    alternativas: {
+      A: "Biópsia das lesões e hemoglobina glicada.",
+      B: "Perfil lipídico e ultrassonografia de abdome.",
+      C: "Corticoide tópico e evitar exposição solar.",
+      D: "Antifúngico nas lesões e teste de tolerância oral à glicose."
+    },
+    gabarito: "B",
+    explicacao: "ACANTOSE NIGRICANS em adolescente OBESO = sinal cutâneo de RESISTÊNCIA INSULÍNICA. INVESTIGAÇÃO DE OBESIDADE PEDIÁTRICA COMPLICADA (SBP, AAP, MS): 1) PERFIL LIPÍDICO (dislipidemia da obesidade: ↑TG, ↓HDL); 2) GLICEMIA/HbA1c/insulinemia (resistência insulínica, pré-DM/DM2); 3) USG DE ABDOME para DOENÇA HEPÁTICA GORDUROSA NÃO ALCOÓLICA (DHGNA — achado comum com obesidade); 4) TGO/TGP. ALTERNATIVA B contempla PERFIL LIPÍDICO + USG ABDOME = correto. A errada: biópsia não é necessária (acantose tem aspecto clínico) e HbA1c isolada é insuficiente. D errada: NÃO é tinea/fungo. C errada: corticoide não trata acantose. RESPOSTA B."
+  },
+  {
+    n: 335,
+    banca: "ENAMED 2025 — Caderno 2",
+    especialidade: "Clínica Médica",
+    tema: "Neurologia",
+    subtemas: ["Arterite temporal", "Cefaleia secundária"],
+    dificuldade: "Médio",
+    temImagem: false,
+    enunciado: "Mulher 55 anos, sem comorbidades, cefaleia BILATERAL persistente + amaurose fugaz + diplopia + cansaço + artralgias. Dor em TODO o COURO CABELUDO. Perda 2kg em 2m. Sem fotofobia, fonofobia, febre, náusea. EF: afebril, pupilas isocóricas, sem rigidez de nuca. Tipo de cefaleia e exame:",
+    alternativas: {
+      A: "Cefaleia primária (cefaleia tensional); nenhum exame é necessário.",
+      B: "Cefaleia secundária (hemorragia subaracnoideia); análise de líquor.",
+      C: "Cefaleia primária (migrânea); tomografia computadorizada de encéfalo.",
+      D: "Cefaleia secundária (arterite temporal); velocidade de hemossedimentação."
+    },
+    gabarito: "D",
+    explicacao: "ARTERITE TEMPORAL / ARTERITE DE CÉLULAS GIGANTES (Horton): vasculite de GRANDES VASOS (artéria temporal, ramos da carótida externa) em MULHERES >50 ANOS. QUADRO CLÁSSICO: 1) CEFALEIA NOVA, frequentemente temporal mas pode ser bilateral; 2) SENSIBILIDADE DO COURO CABELUDO (sinal patognomônico — 'dor ao pentear cabelo'); 3) CLAUDICAÇÃO MANDIBULAR; 4) SINTOMAS VISUAIS — AMAUROSE FUGAZ, diplopia (URGÊNCIA — risco de CEGUEIRA por neurite isquêmica anterior); 5) SINTOMAS CONSTITUCIONAIS (perda peso, febre, fadiga); 6) Associação com POLIMIALGIA REUMÁTICA em 50%. INVESTIGAÇÃO: VHS MUITO ELEVADA (>50 mm/h) e PCR ELEVADA. CONFIRMAÇÃO: BIÓPSIA de artéria temporal. TRATAMENTO IMEDIATO: PREDNISONA 60mg/dia (PULSO se sintomas visuais) — INICIAR ANTES DA BIÓPSIA para preservar visão. RESPOSTA D."
+  },
+  {
+    n: 336,
+    banca: "ENAMED 2025 — Caderno 2",
+    especialidade: "Clínica Médica",
+    tema: "Toxicologia",
+    subtemas: ["Intoxicação benzodiazepínicos", "Flumazenil"],
+    dificuldade: "Fácil",
+    temImagem: false,
+    enunciado: "Mulher 42 anos, UPA, fala alterada, lentificação, tontura, sonolência. Ingeriu 30 cp de clonazepam 2mg há 20min. Evolui com hipotensão, rebaixamento, coma e necessita VM. Medicação indicada:",
+    alternativas: {
+      A: "N-acetilcisteína.",
+      B: "Flumazenil.",
+      C: "Naloxona.",
+      D: "Atropina."
+    },
+    gabarito: "B",
+    explicacao: "ANTÍDOTOS clássicos: 1) BENZODIAZEPÍNICOS → FLUMAZENIL (antagonista GABA-A); 2) OPIOIDES → NALOXONA; 3) PARACETAMOL → N-ACETILCISTEÍNA; 4) ORGANOFOSFORADOS/CARBAMATOS → ATROPINA + PRALIDOXIMA. CASO: ingesta MACIÇA de CLONAZEPAM (60mg) + sintomas (lentificação, coma, hipotensão, depressão respiratória) = INTOXICAÇÃO POR BENZODIAZEPÍNICO. FLUMAZENIL: 0,2mg IV em 30s, repetir até 1mg. CUIDADOS: pode precipitar CRISES CONVULSIVAS em usuários crônicos ou coingestão com tricíclicos. Em IOT/depressão respiratória grave SEM contraindicações, o flumazenil pode ser tentado. RESPOSTA B."
+  },
+  {
+    n: 337,
+    banca: "ENAMED 2025 — Caderno 2",
+    especialidade: "MFC/Preventiva",
+    tema: "Violência Institucional/Idoso",
+    subtemas: ["ILPI", "Notificação compulsória"],
+    dificuldade: "Médio",
+    temImagem: false,
+    enunciado: "ACS relata ILPI no território com 38 idosos em isolamento, agressões pelos funcionários, contenção física em demência avançada, lesões por pressão. Conduta adequada:",
+    alternativas: {
+      A: "Denunciar ao Conselho Municipal do Idoso — contenção e UPP em institucionalização são normais e não requerem intervenção clínica imediata.",
+      B: "Oferecer apoio clínico aos mais vulneráveis e sugerir adequações respeitando a autonomia da ILPI.",
+      C: "Articular ação intersetorial com órgãos de controle social, NOTIFICAR violência institucional e elaborar plano com a ILPI.",
+      D: "Reuniões quinzenais com a equipe da ILPI sobre cuidados paliativos, sem envolver outras instâncias."
+    },
+    gabarito: "C",
+    explicacao: "VIOLÊNCIA CONTRA IDOSO em ILPI: situação grave envolvendo NEGLIGÊNCIA (lesões por pressão), VIOLÊNCIA FÍSICA (agressões), VIOLÊNCIA INSTITUCIONAL (contenção física, isolamento). LEGISLAÇÃO: Estatuto do Idoso (Lei 10.741/2003) e PORTARIA MS 1.271/2014 tornam OBRIGATÓRIA a NOTIFICAÇÃO COMPULSÓRIA (SINAN/Ficha de violência interpessoal) em SUSPEITA OU CONFIRMAÇÃO. CONDUTA INTEGRAL: 1) NOTIFICAR no SINAN; 2) COMUNICAR órgãos de proteção: Delegacia do Idoso, Ministério Público, Conselho Municipal do Idoso, Vigilância Sanitária; 3) ARTICULAÇÃO INTERSETORIAL; 4) PLANO de cuidado compartilhado (capacitação, mudanças estruturais); 5) Cuidado clínico aos idosos. RESPOSTA C — única que contempla NOTIFICAÇÃO + INTERSETORIALIDADE + PLANO."
+  },
+  {
+    n: 338,
+    banca: "ENAMED 2025 — Caderno 2",
+    especialidade: "GO",
+    tema: "Rastreamento CA de Colo",
+    subtemas: ["LSIL/LIE-BG", "Conduta"],
+    dificuldade: "Médio",
+    temImagem: false,
+    enunciado: "Mulher 32 anos, sexualmente ativa, MFC, 1º preventivo. Citologia: presença de LIE-BG (lesão intraepitelial de baixo grau). Conduta:",
+    alternativas: {
+      A: "Solicitar ultrassonografia transvaginal.",
+      B: "Repetir o exame citopatológico em 6 meses.",
+      C: "Encaminhar para a realização de colposcopia.",
+      D: "Repetir o exame citopatológico imediatamente."
+    },
+    gabarito: "B",
+    explicacao: "DIRETRIZES BRASILEIRAS PARA RASTREAMENTO DO CA DO COLO DO ÚTERO (INCA/MS): CONDUTA POR ACHADO CITOLÓGICO: 1) ASC-US em >30a: repetir citologia em 6 meses; <30a: 12m; 2) LSIL/LIE-BG em ≥25 anos: REPETIR em 6 MESES; se 2x LSIL ou ASC-US+ → colposcopia. Em <25 anos: NÃO REPETIR antes de 3 anos (alta taxa de regressão); 3) HSIL/LIE-AG: COLPOSCOPIA imediata; 4) ASC-H: COLPOSCOPIA imediata. PARA ESTA PACIENTE de 32a com LIE-BG: REPETIR EM 6 MESES — conduta INCA clássica. RESPOSTA B. NOTA: em algumas diretrizes mais recentes com triagem por HPV-AR, LIE-BG ≥30 anos pode ir direto à colposcopia, mas o gabarito esperado pelo MS/INCA tradicional é B."
+  },
+  {
+    n: 339,
+    banca: "ENAMED 2025 — Caderno 2",
+    especialidade: "GO",
+    tema: "Prevenção Parto Pré-termo",
+    subtemas: ["Colo curto", "Progesterona vaginal"],
+    dificuldade: "Médio",
+    temImagem: false,
+    enunciado: "Paciente G3P1A1, 24 sem. 1ª gestação: aborto com 16 sem. 2ª: TP rápido com 28 sem. USG TV atual (23 sem): COLO 1,5 cm. Conduta:",
+    alternativas: {
+      A: "Solicitar pesquisa de estreptococo do Grupo B na 28ª semana.",
+      B: "Internar para atosiban IV até 34 semanas.",
+      C: "Prescrever nifedipina 20 mg VO à noite até 39 semanas.",
+      D: "Prescrever progesterona micronizada vaginal 200 mg ao dia até 36 semanas."
+    },
+    gabarito: "D",
+    explicacao: "PREVENÇÃO DE PARTO PRÉ-TERMO em paciente com COLO CURTO (≤25mm) e/ou HISTÓRIA de PP prévio: 1) PROGESTERONA MICRONIZADA VAGINAL 200mg/dia DA ~16ª SEMANA ATÉ 36ª SEMANA — indicada em: a) Colo curto (≤25mm) na USG TV de 2º trimestre; b) História de PP espontâneo prévio. 2) CERCLAGEM CERVICAL (12-14 sem): em INCOMPETÊNCIA ISTMOCERVICAL clássica (perdas indolores recorrentes 2º trimestre). ESTA PACIENTE: 2 perdas prévias (1 aborto tardio 16s + 1 PP precoce 28s) + colo CURTO (1,5cm) = mistura de incompetência istmocervical + colo curto. Com 24s já está no LIMITE para cerclagem — geralmente preferem PROGESTERONA. ATOSIBAN/NIFEDIPINA (B,C) são TOCOLÍTICOS para inibir TP EM CURSO (não há TP). RESPOSTA D."
+  },
+  {
+    n: 340,
+    banca: "ENAMED 2025 — Caderno 2",
+    especialidade: "Cirurgia",
+    tema: "Proctologia",
+    subtemas: ["Fissura anal", "Doença de Crohn"],
+    dificuldade: "Fácil",
+    temImagem: false,
+    enunciado: "Adulto jovem M, UBS, dor + ARDOR anal com sangramento vivo em pequena quantidade ao evacuar com ESFORÇO e fezes ENDURECIDAS. Sem tumoração perianal. Constipação crônica + Doença de Crohn. Diagnóstico mais provável:",
+    alternativas: {
+      A: "Abcesso perianal.",
+      B: "Fístula perianal.",
+      C: "Cisto pilonidal.",
+      D: "Fissura anal."
+    },
+    gabarito: "D",
+    explicacao: "FISSURA ANAL: solução de continuidade no canal anal, geralmente na LINHA MÉDIA POSTERIOR (90%) ou anterior. CLÍNICA: DOR ANAL INTENSA DURANTE EVACUAÇÃO (sintoma principal), ardor, sangramento de pequena quantidade (rajas vivas no papel), constipação reflexa. FATORES DE RISCO: constipação, fezes endurecidas, Doença de Crohn (fissuras atípicas, fora da linha média), trauma. ABSCESSO PERIANAL (A): dor pulsátil progressiva, sinais flogísticos, tumoração, febre. FÍSTULA (B): trajeto fistuloso, secreção. CISTO PILONIDAL (C): região SACROCOCCÍGEA. RESPOSTA D. CONDUTA: laxantes/fibras, banhos de assento, nitroglicerina/diltiazem tópico; cirurgia (esfincterotomia) em crônicas."
+  },
+  {
+    n: 341,
+    banca: "ENAMED 2025 — Caderno 2",
+    especialidade: "Pediatria",
+    tema: "Neonatologia",
+    subtemas: ["Hérnia diafragmática congênita", "Reanimação neonatal"],
+    dificuldade: "Difícil",
+    temImagem: false,
+    enunciado: "RN a termo, 1º min: APNEIA + BRADICARDIA, DESVIO DE ICTUS À DIREITA, ABDOME ESCAVADO, RUÍDOS HIDROAÉREOS no HEMITÓRAX ESQUERDO. Procedimentos adequados:",
+    alternativas: {
+      A: "intubação traqueal e massagem cardíaca externa.",
+      B: "cateterismo umbilical e drenagem de hemitórax esquerdo.",
+      C: "ventilação com óxido nítrico e administração de surfactante.",
+      D: "ventilação com balão autoinflável com pressão expiratória final positiva."
+    },
+    gabarito: "A",
+    explicacao: "HÉRNIA DIAFRAGMÁTICA CONGÊNITA (HDC) — QUADRO CLÁSSICO: 1) DESCONFORTO RESPIRATÓRIO imediato ao nascimento; 2) DESVIO DE BULHAS/ICTUS para o lado CONTRALATERAL; 3) ABDOME ESCAVADO/EM BARCO (vísceras no tórax); 4) RHA TORÁCICOS — mais comum à esquerda (Bochdalek). REANIMAÇÃO ESPECÍFICA DA HDC (PRN/SBP): 1) NÃO usar VPP com MÁSCARA (insufla estômago/alças no tórax, piorando compressão); 2) INTUBAÇÃO OROTRAQUEAL IMEDIATA com baixas pressões; 3) Sonda orogástrica para descompressão; 4) Massagem cardíaca se FC<60 após VPP adequada. SURFACTANTE não está indicado de rotina; ÓXIDO NÍTRICO tem uso controverso. NÃO drenar tórax (B). RESPOSTA A."
+  },
+  {
+    n: 342,
+    banca: "ENAMED 2025 — Caderno 2",
+    especialidade: "Clínica Médica",
+    tema: "Sepse",
+    subtemas: ["Pielonefrite", "Sepsis bundle 1h"],
+    dificuldade: "Fácil",
+    temImagem: false,
+    enunciado: "Mulher 62 anos, ITU de repetição, DM2 (metformina+glicazida). UPA com febre alta e calafrios. PA 110x70, FC 106, FR 25, T 38°C. Hb 12,3, leucócitos 14.000 (84% neutrófilos, 12% bastões), plaquetas 210.000. Conduta:",
+    alternativas: {
+      A: "Antitérmico, hidratação oral vigorosa e observação.",
+      B: "Esquema antibiótico de amplo espectro na 1ª hora.",
+      C: "Cobertura contra Candida sp por ITU repetição em diabética.",
+      D: "Antibiótico de amplo espectro durante todo o curso mesmo após culturas."
+    },
+    gabarito: "B",
+    explicacao: "SEPSE com FOCO URINÁRIO (Pielonefrite/Urossepse): pacientes com ≥2 critérios SIRS + foco infeccioso (febre, ITU repetição, DM = pielonefrite provável). SEPSIS BUNDLE 1 HORA (SSC): 1) MEDIR LACTATO; 2) HEMOCULTURAS ANTES do ATB; 3) ANTIBIÓTICO DE AMPLO ESPECTRO NA 1ª HORA; 4) Cristaloides 30mL/kg se hipotensão/lactato≥4; 5) Vasopressores se hipotensão refratária. ANTIBIÓTICO PRECOCE (na 1ª hora) reduz mortalidade significativamente. RESPOSTA B. A erra (hidratação oral só é insuficiente); C errada (candida não é primária); D errada (descalonamento conforme cultura é princípio do uso racional)."
+  },
+  {
+    n: 343,
+    banca: "ENAMED 2025 — Caderno 2",
+    especialidade: "MFC/Preventiva",
+    tema: "Populações Específicas",
+    subtemas: ["Pessoas trans", "Identidade de gênero"],
+    dificuldade: "Médio",
+    temImagem: false,
+    enunciado: "Paciente 21 anos, MFC. Reconhece-se como HOMEM TRANS, em afirmação de gênero. Usa BINDER, cogita iniciar HT. SEM sofrimento psíquico intenso, sem sintomas depressivos/ansiosos/psicóticos. Quer informações e cuidados de saúde. Conduta:",
+    alternativas: {
+      A: "Solicitar avaliação psiquiátrica para diagnóstico de disforia de gênero antes do acompanhamento.",
+      B: "Iniciar terapia hormonal na UBS conforme processo transexualizador do SUS e retorno em 8 sem.",
+      C: "Encaminhar para serviço especializado e informar que o seguimento da transição é com especialista.",
+      D: "Esclarecer que identidade trans NÃO é transtorno mental, ofertar acompanhamento contínuo na UBS e orientar cuidados gerais."
+    },
+    gabarito: "D",
+    explicacao: "POLÍTICA NACIONAL DE SAÚDE INTEGRAL DE LGBT+ (Portaria 2.836/2011) e PROCESSO TRANSEXUALIZADOR (Portaria 2.803/2013): 1) IDENTIDADE TRANS NÃO É TRANSTORNO MENTAL — DSM-5 (Disforia de Gênero) e CID-11 (Incongruência de gênero, fora dos transtornos mentais); 2) APS é a PORTA DE ENTRADA do cuidado integral; 3) ACOMPANHAMENTO INTEGRAL NA UBS inclui: cuidados gerais, prevenção, exames, vacinas, ISTs, saúde mental, ORIENTAÇÕES sobre afirmação, ENCAMINHAMENTO especializado QUANDO desejado. NÃO se exige avaliação psiquiátrica para uso de binder (A errada). Hormonioterapia pode ser iniciada na APS por médico capacitado (cresce o número), mas tradicionalmente especializada (B parcialmente correta). Encaminhar e fragmentar o cuidado (C) é inadequado. RESPOSTA D — acolher, desmedicalizar, cuidado integral na APS."
+  },
+  {
+    n: 344,
+    banca: "ENAMED 2025 — Caderno 2",
+    especialidade: "MFC/Preventiva",
+    tema: "Competência Cultural",
+    subtemas: ["Saúde indígena/ribeirinha", "Educação permanente"],
+    dificuldade: "Médio",
+    temImagem: false,
+    enunciado: "eSF itinerante em comunidades ribeirinhas e indígenas (Amazônia). Médica nova: mulher ribeirinha responde monossílabos, indígena Tikuna pede presença do PAJÉ. Abordagem adequada da equipe:",
+    alternativas: {
+      A: "Padronizar rotinas clínicas e capacitar a equipe para comunicação técnica propositiva e objetiva.",
+      B: "Promover espaços formativos para a equipe, reconhecendo saberes e práticas das populações atendidas.",
+      C: "Reforçar a autonomia profissional da médica, mantendo condutas baseadas em evidências científicas.",
+      D: "Estabelecer rotinas padronizadas uniformes de atendimento para ribeirinhos e indígenas."
+    },
+    gabarito: "B",
+    explicacao: "POLÍTICA NACIONAL DE ATENÇÃO À SAÚDE DOS POVOS INDÍGENAS (PNASPI, Lei 9.836/1999) e PNAB: o cuidado para POPULAÇÕES TRADICIONAIS exige COMPETÊNCIA CULTURAL, RESPEITO aos SABERES TRADICIONAIS (pajé, parteira tradicional, medicina indígena) e INTERCULTURALIDADE. EDUCAÇÃO PERMANENTE EM SAÚDE (Portaria GM 198/2004): formação continuada baseada em problemas do território, RECONHECENDO os saberes locais. ABORDAGEM CORRETA = formar a equipe para INTERCULTURALIDADE (B). Padronizar (A,D) ignora as diferenças culturais legítimas; reforçar autonomia técnica isolada (C) é etnocêntrico e desrespeita as práticas locais. RESPOSTA B."
+  },
+  {
+    n: 345,
+    banca: "ENAMED 2025 — Caderno 2",
+    especialidade: "MFC/Preventiva",
+    tema: "PEP HIV / ISTs",
+    subtemas: ["Profilaxia pós-exposição", "Exposição sexual"],
+    dificuldade: "Médio",
+    temImagem: false,
+    enunciado: "Mulher 28 anos, sem preservativo, namorado teve úlcera peniana tratada com benzetacil há 30 dias + HIV reagente. Última relação há 2 DIAS. Sem queixas. Manejo inicial:",
+    alternativas: {
+      A: "Testes rápidos sífilis/HIV/HepB/C. Se sífilis+ Pen G Benzatina. Prescrever TDF/3TC 300/300 + DTG 50mg/dia por 28 dias.",
+      B: "Sumário de urina e anti-HIV. Azitromicina 1g VO única + fosfomicina se nitrito+. Solicitar vinda do namorado.",
+      C: "VDRL e anti-HIV. Abordagem sindrômica com doxiciclina 100mg 12/12h 21 dias + TDF/FTC 300/200 1cp/dia por 3 meses.",
+      D: "Urocultura, colpo, anti-HIV. Se E. coli e Trichomonas: ciprofloxacino + metronidazol creme."
+    },
+    gabarito: "A",
+    explicacao: "EXPOSIÇÃO SEXUAL DE RISCO ao HIV há 2 DIAS (48h): JANELA PARA PEP é de até 72 HORAS — PACIENTE ELEGÍVEL. PROFILAXIA PÓS-EXPOSIÇÃO HIV (PCDT Brasil): 1) TESTES RÁPIDOS: HIV, sífilis, hepatites B e C; 2) Se HIV NÃO REAGENTE: iniciar IMEDIATAMENTE PEP por 28 DIAS — esquema preferencial: TDF 300mg + 3TC 300mg + DTG 50mg em 1 cp/dia; 3) Avaliar exposição ao HBV (vacina/imunoglobulina); 4) TRATAR SÍFILIS empiricamente — parceira de pessoa com cancro tratado: PenG Benzatina 2,4mi UI dose única para sífilis recente; 5) Considerar PrEP após PEP. ALTERNATIVA A contempla os PRINCIPAIS COMPONENTES corretos. C tem DOXICICLINA 21 DIAS (esquema antigo para sífilis tardia, NÃO indicado para primária) e TDF/FTC 3 MESES (PEP é 28 dias, não 3 meses). B e D ignoram HIV. RESPOSTA A."
+  }
+);
+
+console.log("ENAMED 2025 Bloco 1 (321-345) adicionado");
+
+// ==================== ENAMED 2025 — Caderno 2 — Bloco 2 (346-370) ====================
+QUESTOES.push(
+  {
+    n: 346,
+    banca: "ENAMED 2025 — Caderno 2",
+    especialidade: "GO",
+    tema: "Contracepção",
+    subtemas: ["Obesidade mórbida", "Pré-bariátrica"],
+    dificuldade: "Médio",
+    temImagem: false,
+    enunciado: "Mulher 29 anos, nuligesta, ciclos 20-65d, duração 4-10d, intensidade moderada. IMC 41,5 (obesidade III). Cirurgia bariátrica em alguns meses. Orientação contraceptiva:",
+    alternativas: {
+      A: "Para contracepção efetiva e proteção endometrial, está indicado o ENDOCEPTIVO antes da operação.",
+      B: "Devido ao risco de tromboembolismo, está contraindicado o uso de métodos hormonais.",
+      C: "Apresenta anovulação crônica, portanto deve usar preservativo masculino.",
+      D: "Está contraindicada gravidez na fase de perda de peso, logo ela pode usar o adesivo anticoncepcional."
+    },
+    gabarito: "A",
+    explicacao: "OBESIDADE MÓRBIDA (IMC>40) + CIRURGIA BARIÁTRICA: 1) NÃO se deve engravidar nos primeiros 12-18 MESES pós-bariátrica (perda ponderal rápida, deficiências nutricionais, risco fetal); 2) MÉTODOS HORMONAIS COMBINADOS (pílula, anel, adesivo): CONTRAINDICADOS pelos CRITÉRIOS DE ELEGIBILIDADE OMS em IMC>40 (categoria 3-4) por risco TROMBOEMBÓLICO; 3) APÓS bariátrica (sobretudo bypass): pílulas orais têm ABSORÇÃO REDUZIDA; 4) MÉTODOS IDEAIS: DIU/SIU-LNG (Mirena = ENDOCEPTIVO), DIU de cobre, implante, injetável trimestral. SIU-LNG tem benefício ADICIONAL: proteção contra HIPERPLASIA endometrial (paciente com ciclos irregulares e anovulação tem risco endometrial aumentado). RESPOSTA A. B é parcialmente correta mas categórica demais; C (preservativo) tem alta falha; D (adesivo combinado) contraindicado por IMC."
+  },
+  {
+    n: 347,
+    banca: "ENAMED 2025 — Caderno 2",
+    especialidade: "Cirurgia",
+    tema: "Cirurgia de Cabeça e Pescoço",
+    subtemas: ["Tireoidectomia", "Nervo laríngeo recorrente"],
+    dificuldade: "Fácil",
+    temImagem: false,
+    enunciado: "Mulher 47 anos, tireoidectomia total há 60 dias por CA folicular. ROUQUIDÃO desde PO imediato, sem melhora. Nervo lesionado:",
+    alternativas: {
+      A: "Laríngeo recorrente.",
+      B: "Glossofaríngeo.",
+      C: "Hipoglosso.",
+      D: "Vago."
+    },
+    gabarito: "A",
+    explicacao: "COMPLICAÇÕES DA TIREOIDECTOMIA: 1) LESÃO DO NERVO LARÍNGEO RECORRENTE (ramo do vago): MAIS COMUM (1-5%); unilateral causa ROUQUIDÃO PERSISTENTE (paralisia de prega vocal); bilateral causa DISPNEIA AGUDA grave (estridor); 2) LESÃO DO RAMO EXTERNO DO LARÍNGEO SUPERIOR: alteração da voz para AGUDOS, fadiga vocal; 3) HIPOCALCEMIA (lesão das paratireoides); 4) Hematoma cervical; 5) Crise tireotóxica. O NERVO LARÍNGEO RECORRENTE inerva quase todos os músculos intrínsecos da laringe (exceto cricotireoideo) e tem trajeto na RANHURA TRAQUEOESOFÁGICA, próximo à artéria tireoidiana inferior. ROUQUIDÃO PERSISTENTE (>6 sem) pós-tireoidectomia = laríngeo recorrente até prova em contrário. Diagnóstico: NASOFIBROLARINGOSCOPIA. RESPOSTA A."
+  },
+  {
+    n: 348,
+    banca: "ENAMED 2025 — Caderno 2",
+    especialidade: "Pediatria",
+    tema: "Neurologia",
+    subtemas: ["Crise febril simples"],
+    dificuldade: "Fácil",
+    temImagem: false,
+    enunciado: "Criança 2 anos, há 7d: 1 crise tônico-clônica generalizada com T 39,3°C, durou 2 minutos, SEM recorrência em 24h. Exame compatível com infecção viral de VAS, sem outras alterações. Conduta:",
+    alternativas: {
+      A: "Solicitar eletroencefalograma.",
+      B: "Indicar profilaxia com barbitúricos.",
+      C: "Tranquilizar e orientar puericultura de rotina.",
+      D: "Solicitar exames laboratoriais e de imagem."
+    },
+    gabarito: "C",
+    explicacao: "CRISE FEBRIL SIMPLES (Critérios SBP, AAP): 1) Idade 6m-5 anos; 2) Crise GENERALIZADA tônico-clônica; 3) Duração <15 min; 4) UMA CRISE em 24h; 5) Sem sinais focais; 6) Exame neurológico NORMAL após; 7) Associada a FEBRE em vigência de doença infecciosa BENIGNA. PROGNÓSTICO: EXCELENTE — 30% recorrem; risco MUITO BAIXO de epilepsia (2-4%); NÃO causa lesão cerebral. CONDUTA: 1) ORIENTAR PAIS (benignidade, manejo agudo de febre, posição lateral de segurança); 2) NENHUM EXAME complementar (EEG, neuroimagem, lab) em crise febril SIMPLES não complicada; 3) NÃO usar antiepilépticos profiláticos (efeitos > benefício); 4) Antitérmico para conforto. RESPOSTA C."
+  },
+  {
+    n: 349,
+    banca: "ENAMED 2025 — Caderno 2",
+    especialidade: "Clínica Médica",
+    tema: "Gastroenterologia",
+    subtemas: ["SIBO", "Supercrescimento bacteriano"],
+    dificuldade: "Médio",
+    temImagem: false,
+    enunciado: "Homem 35 anos, IMC 15 (desnutrição), diarreia líquida com produtos patológicos + flatulência + desconforto abdominal 4 sem. Perdeu 10kg em 1m. EDA e colonoscopia: SEM alterações macro. Histopatológico de estômago/delgado/cólon: normais. TESTE RESPIRATÓRIO DE LACTULOSE POSITIVO. Tratamento:",
+    alternativas: {
+      A: "neomicina e rifaximina.",
+      B: "loperamida e escopolamina.",
+      C: "dieta sem glúten e sem lactose.",
+      D: "probióticos e inibidores da bomba de prótons."
+    },
+    gabarito: "A",
+    explicacao: "SUPERCRESCIMENTO BACTERIANO DO INTESTINO DELGADO (SIBO): proliferação anormal de bactérias colônicas no intestino delgado. CLÍNICA: distensão, flatulência, dor abdominal, diarreia, desnutrição, perda de peso, deficiências (B12, ferro, vit lipossolúveis). DIAGNÓSTICO: padrão-ouro é o ASPIRADO DUODENAL (>10^5 UFC/mL); na prática usa-se TESTE RESPIRATÓRIO COM LACTULOSE ou GLICOSE (aumento de H2 ou metano expirado) — POSITIVO confirma. TRATAMENTO: ANTIBIÓTICOS NÃO ABSORVÍVEIS: 1) RIFAXIMINA 550mg 3x/dia por 14 dias (padrão-ouro atual); 2) Alternativas: NEOMICINA, metronidazol, ciprofloxacino. Loperamida (B) piora; dieta SG/SL (C) não é primeira linha; PPI (D) PIORA SIBO (reduz acidez gástrica que é barreira). RESPOSTA A."
+  },
+  {
+    n: 350,
+    banca: "ENAMED 2025 — Caderno 2",
+    especialidade: "Clínica Médica",
+    tema: "Psiquiatria",
+    subtemas: ["TOC", "Obsessões"],
+    dificuldade: "Fácil",
+    temImagem: false,
+    enunciado: "Homem 28 anos, CAPS, constrangido. Pensamentos RECORRENTES E INDESEJADOS que INVADEM a cabeça: mãe sendo vítima de violência. ANGÚSTIA, >6 meses, prejuízo pessoal/profissional. ENTENDE QUE NÃO FAZ SENTIDO e não tem fundamento. Descrição clínica é:",
+    alternativas: {
+      A: "delírio.",
+      B: "obsessão.",
+      C: "hipertimia.",
+      D: "compulsão."
+    },
+    gabarito: "B",
+    explicacao: "FENÔMENOS PSICOPATOLÓGICOS: 1) OBSESSÃO: pensamento, imagem ou impulso RECORRENTE, INTRUSIVO, EGODISTÔNICO (incomoda o paciente), reconhecido como ABSURDO/EXAGERADO, gera ANSIEDADE; o paciente TEM CRÍTICA e RESISTE — clássico do TOC. 2) COMPULSÃO: ATO ou ato mental REPETITIVO para neutralizar a obsessão/ansiedade (lavar mãos, contar). 3) DELÍRIO: crença FIXA, FALSA, INABALÁVEL, EGOSSINTÔNICA, sem crítica — típico de psicoses. 4) HIPERTIMIA: humor elevado, euforia — mania/hipomania. CASO: pensamento INTRUSIVO + ANGÚSTIA + CRÍTICA preservada = OBSESSÃO. Provável TOC. TRATAMENTO: ISRS em doses altas (sertralina, fluoxetina) + TCC com exposição e prevenção de resposta. RESPOSTA B."
+  },
+  {
+    n: 351,
+    banca: "ENAMED 2025 — Caderno 2",
+    especialidade: "MFC/Preventiva",
+    tema: "Saúde Prisional",
+    subtemas: ["Escabiose/surto", "PNAISP"],
+    dificuldade: "Médio",
+    temImagem: false,
+    enunciado: "Agentes penitenciários relatam aumento de PRURIDO INTENSO e LESÕES CUTÂNEAS entre pessoas privadas de liberdade. Celas para 35 com 75 pessoas (superlotação). Ações prioritárias:",
+    alternativas: {
+      A: "Isolamento dos sintomáticos, tratamento individual, higienização de colchões e ampliar sabão.",
+      B: "BLOQUEIO COLETIVO com tratamento simultâneo, notificar o surto à vigilância, reorganizar fluxos com administração prisional e medidas educativas e estruturais.",
+      C: "Preferir tratamento tópico individualizado e restringir medicação aos confirmados, evitando exposição em massa.",
+      D: "Discutir transferência de casos graves, focar em medidas educativas com folhetos."
+    },
+    gabarito: "B",
+    explicacao: "ESCABIOSE em populações vulneráveis aglomeradas (presídios, ILPI, abrigos): SURTO institucional. ABORDAGEM em SURTO em UNIDADE PRISIONAL (PNAISP — Portaria 482/2014): 1) TRATAMENTO COLETIVO/EM MASSA (bloqueio): TODAS as pessoas em contato próximo simultaneamente (mesmo assintomáticos) — geralmente IVERMECTINA 200mcg/kg dose única, repetir 7-14 dias, e/ou permetrina tópica; 2) NOTIFICAÇÃO de SURTO à VIGILÂNCIA EPIDEMIOLÓGICA; 3) MEDIDAS AMBIENTAIS: lavar roupas/colchões em água quente, higienização, ventilação; 4) AÇÃO INTERSETORIAL com administração penitenciária para resolver SUPERLOTAÇÃO (CAUSA ESTRUTURAL); 5) Educação em saúde. RESPOSTA B contempla TODOS os componentes. A é parcial; C contraria a evidência; D ignora ação clínica."
+  },
+  {
+    n: 352,
+    banca: "ENAMED 2025 — Caderno 2",
+    especialidade: "Clínica Médica",
+    tema: "Psiquiatria",
+    subtemas: ["Dependência química", "DSM-5"],
+    dificuldade: "Médio",
+    temImagem: false,
+    enunciado: "Homem 45 anos, UBS, não controla frequência/quantidade de álcool. Falta ao trabalho, blackouts. Investigar padrão de dependência conforme DSM-5:",
+    alternativas: {
+      A: "Intolerância cruzada entre outras substâncias e a abusiva.",
+      B: "Aceitação e adesão à proposta de abstinência da equipe.",
+      C: "Tempo gasto para obter a substância ou recuperar-se de seus efeitos.",
+      D: "Tipo e classe da substância, diferenciando lícita/ilícita."
+    },
+    gabarito: "C",
+    explicacao: "CRITÉRIOS DSM-5 PARA TRANSTORNO POR USO DE SUBSTÂNCIA (11 critérios): A) CONTROLE PREJUDICADO: 1) Uso maior que pretendido; 2) Desejo persistente/esforço malsucedido de reduzir; 3) MUITO TEMPO em atividades para OBTER, USAR ou RECUPERAR-SE; 4) FISSURA (craving). B) PREJUÍZO SOCIAL: 5) Falha em obrigações; 6) Uso apesar de problemas sociais; 7) Abandono de atividades. C) USO ARRISCADO: 8) Uso em situações perigosas; 9) Uso apesar de problemas físicos/psicológicos. D) FARMACOLÓGICO: 10) Tolerância; 11) Abstinência. Classificação: leve (2-3), moderado (4-5), grave (≥6). C é critério DIRETO do DSM-5. A (intolerância cruzada) é farmacológica, não diagnóstica; B é meta de tratamento; D classifica tipo de substância. RESPOSTA C."
+  },
+  {
+    n: 353,
+    banca: "ENAMED 2025 — Caderno 2",
+    especialidade: "GO",
+    tema: "Rastreamento CA de Colo",
+    subtemas: ["ASC-H", "Colposcopia"],
+    dificuldade: "Fácil",
+    temImagem: false,
+    enunciado: "Mulher 30 anos, citologia: ASC-H (não se pode afastar alto grau). Sem tabagismo, sem IST conhecida. Conduta:",
+    alternativas: {
+      A: "Conização.",
+      B: "Colposcopia.",
+      C: "Cirurgia de alta frequência.",
+      D: "Nova citologia oncótica em 6 meses."
+    },
+    gabarito: "B",
+    explicacao: "DIRETRIZES BRASILEIRAS (INCA) para citologia ASC-H ('células escamosas atípicas — NÃO PODENDO EXCLUIR LESÃO DE ALTO GRAU') tem ALTO valor preditivo positivo para NIC2-3. CONDUTA: COLPOSCOPIA IMEDIATA (independente da idade). Se a colposcopia mostrar achados: BIÓPSIA dirigida; conforme histologia: NIC1 segue, NIC2-3 trata com CAF/conização. CONDUTAS QUE EXIGEM COLPOSCOPIA: HSIL, ASC-H, AGC, AOI, adenocarcinoma in situ, carcinoma. CONIZAÇÃO (A): reservada para confirmação/tratamento de NIC2-3/NIC3/AIS — não é primeira conduta. CAF (C): tratamento de NIC. Nova citologia 6m (D): inadequada para ASC-H. RESPOSTA B — colposcopia."
+  },
+  {
+    n: 354,
+    banca: "ENAMED 2025 — Caderno 2",
+    especialidade: "Cirurgia",
+    tema: "Trauma",
+    subtemas: ["Hemorragia em extremidade", "Torniquete"],
+    dificuldade: "Médio",
+    temImagem: false,
+    enunciado: "Homem 26 anos, FAF em braço D há 15min. PHTLS sem hemoderivados. Pálido, frio, sudoreico, FC 120, PA 90x50, ECG 15. EF: ferida perfuro-contusa em terço distal medial braço D com HEMORRAGIA PULSÁTIL em grande volume. Sem outras lesões. Conduta pré-hospitalar:",
+    alternativas: {
+      A: "Dissecção e hemostasia com pinças; reposição com albumina e SF.",
+      B: "Dissecção e hemostasia com pinças; reposição com SF e glicofisiológico.",
+      C: "COMPRESSÃO LOCAL e, se falhar, TORNIQUETE proximal e fora de articulação; reposição com SF.",
+      D: "Compressão local e, se falhar, torniquete proximal e fora de articulação; reposição com albumina e SF."
+    },
+    gabarito: "C",
+    explicacao: "CONTROLE DE HEMORRAGIA EM EXTREMIDADE (XABCDE/Stop the Bleed/PHTLS): ORDEM ESCALONADA: 1) COMPRESSÃO DIRETA com gaze/pano; 2) Curativo compressivo; 3) Se a hemorragia ARTERIAL EM EXTREMIDADE for INCONTROLÁVEL: TORNIQUETE proximal à lesão, FORA DE ARTICULAÇÃO (3-5 cm acima da ferida) — aplicar com força até cessar sangramento, REGISTRAR HORA, NÃO afrouxar até atendimento hospitalar. TORNIQUETE em PHTLS atualizado é RECOMENDADO em hemorragia exsanguinante de membro. NÃO DISSECCAR/PINÇAR no PH (A,B errados — lesão de outras estruturas, perda de tempo). REPOSIÇÃO VOLÊMICA: cristaloides (SF, RL) — SEM albumina; glicofisiológico (B) inadequado. RESPOSTA C."
+  },
+  {
+    n: 355,
+    banca: "ENAMED 2025 — Caderno 2",
+    especialidade: "Pediatria",
+    tema: "Endocrinologia",
+    subtemas: ["CAD", "Reposição de potássio"],
+    dificuldade: "Médio",
+    temImagem: false,
+    enunciado: "Menina 11 anos UPA: QEG, náuseas, dor abdominal, desidratação, hálito cetônico. Glicemia 410, gasoVENOSA pH 7,15 e BIC 13, EAS com cetonúria. Além de FLUIDOTERAPIA, próximo passo:",
+    alternativas: {
+      A: "Reposição de potássio.",
+      B: "Correção imediata da glicemia.",
+      C: "Reposição de bicarbonato de sódio.",
+      D: "Administração imediata de manitol."
+    },
+    gabarito: "A",
+    explicacao: "CAD - PROTOCOLO PEDIATRIA (ISPAD): hiperglicemia + acidose (pH<7,3 e/ou bic<15) + cetonemia/cetonúria. MANEJO INICIAL: 1) HIDRATAÇÃO com SF 0,9% (10-20 mL/kg em 1h, depois déficit + manutenção em 24-48h — cuidado com edema cerebral); 2) REPOSIÇÃO DE POTÁSSIO: a hiperglicemia/acidose desloca K+ extracelular (sérico pode estar normal/alto, mas TOTAL CORPORAL DEPLETADO). Ao iniciar INSULINA, o K+ entra nas células = HIPOCALEMIA GRAVE/ARRITMIAS. PROTOCOLO: aguardar K+ <5,5 + diurese, então repor 20-40 mEq/L na hidratação ANTES ou JUNTO da insulina; 3) INSULINOTERAPIA: regular IV 0,05-0,1 U/kg/h APÓS expansão e K+; 4) BICARBONATO: contraindicado de rotina (risco edema cerebral, hipocalemia paradoxal, acidose paradoxal no SNC); só em pH<6,9. PRÓXIMO PASSO após hidratação = REPOSIÇÃO DE POTÁSSIO. RESPOSTA A."
+  },
+  {
+    n: 356,
+    banca: "ENAMED 2025 — Caderno 2",
+    especialidade: "Clínica Médica",
+    tema: "Hematologia",
+    subtemas: ["Trombofilias hereditárias", "Fator V de Leiden"],
+    dificuldade: "Médio",
+    temImagem: false,
+    enunciado: "Mulher 35 anos, TVP há 2 anos, tratada e curada. Pai e irmã com trombose nos últimos 6m. Investigação para hipercoagulabilidade PRIMÁRIA. Alteração laboratorial compatível com doença HEREDITÁRIA:",
+    alternativas: {
+      A: "Presença de Fator V de Leiden.",
+      B: "Níveis AUMENTADOS de proteína S.",
+      C: "Níveis AUMENTADOS de antitrombina III.",
+      D: "Níveis REDUZIDOS de Fator de Von Willebrand."
+    },
+    gabarito: "A",
+    explicacao: "TROMBOFILIAS HEREDITÁRIAS: 1) FATOR V DE LEIDEN: MAIS COMUM (resistência à proteína C ativada por mutação no Fator V) — presença da MUTAÇÃO confere TROMBOFILIA; 2) MUTAÇÃO DO GENE DA PROTROMBINA G20210A; 3) DEFICIÊNCIA DE PROTEÍNA C; 4) DEFICIÊNCIA DE PROTEÍNA S (reduzida); 5) DEFICIÊNCIA DE ANTITROMBINA III (reduzida); 6) Hiperhomocisteinemia. RESPOSTA A. B errada: proteína S AUMENTADA não causa trombose, REDUZIDA sim; C errada: antitrombina III AUMENTADA não causa trombose, REDUZIDA sim; D errada: vWF REDUZIDO causa SANGRAMENTO (Doença de Von Willebrand). NOTA: História familiar de TVP em paciente jovem é forte indicação de investigação de trombofilia HEREDITÁRIA."
+  },
+  {
+    n: 357,
+    banca: "ENAMED 2025 — Caderno 2",
+    especialidade: "Clínica Médica",
+    tema: "Psiquiatria",
+    subtemas: ["Risco suicida", "Internação"],
+    dificuldade: "Médio",
+    temImagem: false,
+    enunciado: "Homem 23 anos, encontrado chorando, trancado, cartelas de medicamentos próximas. Nega ingerir mas ADMITE pensar em suicídio. Tristeza profunda 2m após término. 'Sem propósito', 'ninguém sentiria falta'. PESQUISOU MÉTODO (paracetamol). Insônia, perda apetite, isolamento. Abandonou psicoterapia. Família distante. Afeto INTENSAMENTE REBAIXADO, contato visual pobre. Exames OK. Conduta:",
+    alternativas: {
+      A: "Encaminhar para acompanhamento médico em UBS.",
+      B: "Encaminhar para psicoterapia multiprofissional na APS.",
+      C: "Encaminhar para avaliação ambulatorial com psiquiatra em CAPS I.",
+      D: "Internação em enfermaria de SAÚDE MENTAL em hospital geral ou serviço congênere."
+    },
+    gabarito: "D",
+    explicacao: "AVALIAÇÃO DO RISCO SUICIDA (CFM, OMS): paciente com MÚLTIPLOS FATORES DE ALTO RISCO: 1) IDEAÇÃO SUICIDA ATIVA com PLANO (paracetamol) e ACESSO ao método (cartelas); 2) Tentativa interrompida; 3) Depressão grave; 4) DESESPERANÇA ('sem propósito', 'ninguém sentiria falta') — PREDITOR FORTÍSSIMO de suicídio consumado; 5) ISOLAMENTO SOCIAL (família distante, fim de relacionamento); 6) Abandono de tratamento; 7) Jovem M = grupo de risco; 8) Uso de álcool. RISCO IMINENTE = INDICAÇÃO DE INTERNAÇÃO em SAÚDE MENTAL (HOSPITAL GERAL/Leito SM/Hospital Psiquiátrico) para PROTEÇÃO, estabilização, início de tratamento. Lei 10.216/2001: internação em última instância, mas é necessária com risco iminente. A, B, C subdimensionam o risco. RESPOSTA D."
+  },
+  {
+    n: 358,
+    banca: "ENAMED 2025 — Caderno 2",
+    especialidade: "MFC/Preventiva",
+    tema: "Epidemiologia",
+    subtemas: ["Desenho de pesquisa", "Ensaio quase-experimental"],
+    dificuldade: "Médio",
+    temImagem: false,
+    enunciado: "eSF com 3.500 cadastrados, 280 com DM2 (4 amputações, 28 retinopatia, 80 DRC). Equipe planeja PROJETO DE INTERVENÇÃO (orientação nutricional e atividade física). Desenho de pesquisa para avaliar IMPACTO da INTERVENÇÃO COLETIVA:",
+    alternativas: {
+      A: "Estudo de caso-controle aninhado.",
+      B: "Ensaio clínico NÃO randomizado.",
+      C: "Estudo de coorte retrospectivo.",
+      D: "Ensaio clínico randomizado."
+    },
+    gabarito: "B",
+    explicacao: "DESENHOS DE PESQUISA: 1) ENSAIO CLÍNICO RANDOMIZADO: padrão-ouro, alocação ALEATÓRIA; 2) ENSAIO CLÍNICO NÃO RANDOMIZADO (quase-experimental): intervenção SEM alocação aleatória; 3) COORTE: observação exposição → desfecho; 4) CASO-CONTROLE: comparação com vs sem desfecho. CONTEXTO: a EQUIPE aplica a INTERVENÇÃO PARA TODA POPULAÇÃO da área. NÃO HÁ GRUPO CONTROLE PARALELO. ANTES e DEPOIS da intervenção: desenho QUASE-EXPERIMENTAL = ENSAIO CLÍNICO NÃO RANDOMIZADO. RESPOSTA B. ECR (D) idealmente seria melhor mas exige randomização (não factível); coorte retrospectiva (C) é OBSERVACIONAL; caso-controle (A) é OBSERVACIONAL pós-fato."
+  },
+  {
+    n: 359,
+    banca: "ENAMED 2025 — Caderno 2",
+    especialidade: "MFC/Preventiva",
+    tema: "Atestado de Óbito",
+    subtemas: ["DO", "Causa básica"],
+    dificuldade: "Médio",
+    temImagem: false,
+    enunciado: "MFC preenche DO de paciente regular. Hipertenso 30 anos, AVE há 5 anos. Há 10 dias quadro gripal, agravamento respiratório há 1 dia com dispneia e cianose. DO deve ser preenchida:",
+    alternativas: {
+      A: "Pelo IML; Parte I: a) IRA grave (h); b) Síndrome gripal (10d); c) HAS (30a). Parte II: AVE (5a).",
+      B: "Pela MÉDICA; Parte I: a) IRA grave (h); b) Pneumonia (1d); c) Síndrome gripal (10d). Parte II: a) AVE (5a); b) HAS (30a).",
+      C: "Pelo SAMU; Parte I: a) Síndrome gripal (10d); b) Pneumonia (1d); c) IRA grave (h). Parte II: a) AVE (5a); b) HAS (30a).",
+      D: "Pelo SVO; Parte I: a) IRA grave (h); b) AVE (5a); c) HAS (30a). Parte II: a) Pneumonia (1d); b) Síndrome gripal (10d)."
+    },
+    gabarito: "B",
+    explicacao: "DECLARAÇÃO DE ÓBITO (DO) — Manual MS. QUEM PREENCHE: 1) MORTE NATURAL COM ASSISTÊNCIA MÉDICA: MÉDICO ASSISTENTE que tratou o paciente — este caso (MFC que acompanhava); 2) Morte natural SEM assistência: SVO; 3) Morte VIOLENTA/SUSPEITA: IML; 4) SAMU não preenche DO. PREENCHIMENTO PARTE I (em ORDEM CRONOLÓGICA INVERSA — da mais recente à mais antiga — REGRA DE CAUSALIDADE LÓGICA): a) CAUSA TERMINAL: IRA grave; b) CAUSA INTERMEDIÁRIA: Pneumonia; c) CAUSA BÁSICA (iniciou a sequência): Síndrome gripal. PARTE II: outras condições significativas (AVE, HAS — comorbidades). RESPOSTA B."
+  },
+  {
+    n: 360,
+    banca: "ENAMED 2025 — Caderno 2",
+    especialidade: "GO",
+    tema: "Candidíase Vulvovaginal",
+    subtemas: ["Tratamento", "Pós-antibiótico"],
+    dificuldade: "Fácil",
+    temImagem: false,
+    enunciado: "Mulher 35 anos diabética, laqueadura. Prurido genital + disúria terminal há 7d. ATB recente (abscesso dental). EF: edema vulvar, hiperemia, fissura, corrimento ESBRANQUIÇADO, teste de AMINAS NEGATIVO. Tratamento:",
+    alternativas: {
+      A: "Miconazol 1 aplicador via vaginal por 7 noites.",
+      B: "Cefalexina 2g/dia VO por 7 dias.",
+      C: "Azitromicina 1g/dia VO por 10 dias.",
+      D: "Metronidazol 1 aplicador via vaginal por 10 noites."
+    },
+    gabarito: "A",
+    explicacao: "CANDIDÍASE VULVOVAGINAL — quadro clássico (Candida albicans, 90%): PRURIDO VULVAR + corrimento ESBRANQUIÇADO em GRUMOS, disúria externa, edema/fissura/hiperemia, TESTE DE AMINAS NEGATIVO (diferencia de vaginose). FATORES PREDISPONENTES: 1) DIABETES (hiperglicemia favorece fungo); 2) ATB recente (altera flora). TRATAMENTO: tópico (azoles: miconazol, clotrimazol, terconazol creme vaginal 7 noites) ou oral (FLUCONAZOL 150mg VO dose única). Recorrentes: fluconazol D1-D4-D7 e manutenção semanal. RESPOSTA A. Metronidazol (D) é para vaginose/tricomoníase; cefalexina/azitromicina (B,C) são bacterianas, não fúngicas."
+  },
+  {
+    n: 361,
+    banca: "ENAMED 2025 — Caderno 2",
+    especialidade: "Cirurgia",
+    tema: "Diverticulite Aguda",
+    subtemas: ["Hinchey", "TC abdome"],
+    dificuldade: "Fácil",
+    temImagem: false,
+    enunciado: "Homem 59 anos, dor FIE 5d, T 38°C 48h, prostração. Episódio similar há 1 ano com resolução espontânea + hematoquezia há 6m. Discretamente desidratado, FC 95, PA 140x90, IMC 30,5. Abdome doloroso palpação profunda FIE+hipogástrio, PLASTRÃO PALPÁVEL hipogástrio. Leuco 17.000 com 7% bastões. Exame de MAIOR ACURÁCIA:",
+    alternativas: {
+      A: "Radiografia abdominal em 3 posições.",
+      B: "Colonoscopia com biópsia.",
+      C: "Tomografia de abdome com contraste.",
+      D: "Ultrassonografia de abdome."
+    },
+    gabarito: "C",
+    explicacao: "DIVERTICULITE AGUDA DO SIGMOIDE — quadro clássico: dor em FIE ('apendicite do lado esquerdo'), febre, alteração de hábito intestinal. PLASTRÃO PALPÁVEL = COMPLICAÇÃO (abscesso paracólico — Hinchey IB ou II). EXAME DE ESCOLHA: TC DE ABDOME E PELVE COM CONTRASTE — PADRÃO-OURO para: 1) Confirmar diverticulite; 2) Identificar COMPLICAÇÕES (abscesso, perfuração, fístula, peritonite); 3) Classificação de Hinchey (I-IV). Sensibilidade/especificidade >95%. RX (A) é pouco sensível (só pneumoperitônio); COLONOSCOPIA (B) é CONTRAINDICADA na fase aguda (risco de perfuração) — fazer 4-6 sem APÓS resolução; USG (D) operador-dependente. RESPOSTA C."
+  },
+  {
+    n: 362,
+    banca: "ENAMED 2025 — Caderno 2",
+    especialidade: "Pediatria",
+    tema: "Neurologia",
+    subtemas: ["Esclerose tuberosa", "Síndrome neurocutânea"],
+    dificuldade: "Difícil",
+    temImagem: false,
+    enunciado: "Lactente 9 meses UBS, crises EPILÉPTICAS há 3 meses: espasmos em FLEXÃO de MMSS sobre tronco, semelhantes a sustos, em horários de sonolência (Sd de WEST). História G/P sem alterações. EF: interage mas NÃO SENTA. MANCHAS HIPOMELANÓTICAS em MMII e tronco. RM: 2 astrocitomas subependimários de células gigantes (SEGA). Hipótese:",
+    alternativas: {
+      A: "neurofibromatose.",
+      B: "esclerose tuberosa.",
+      C: "síndrome de Sturge-Weber.",
+      D: "doença de von Hippel-Lindau."
+    },
+    gabarito: "B",
+    explicacao: "ESCLEROSE TUBEROSA (Complexo TSC1/TSC2 — autossômica dominante) — SÍNDROME NEUROCUTÂNEA. CRITÉRIOS MAIORES: 1) Máculas HIPOMELANÓTICAS em folha de freixo (≥3); 2) Angiofibromas faciais; 3) Fibroma ungueal; 4) Placa de Shagreen; 5) Hamartomas retinianos; 6) TUBERS corticais; 7) NÓDULOS subependimários; 8) ASTROCITOMA SUBEPENDIMÁRIO DE CÉLULAS GIGANTES (SEGA); 9) Rabdomiomas cardíacos; 10) Linfangioleiomatose pulmonar; 11) Angiomiolipomas renais. CLÍNICA NEUROLÓGICA: ESPASMOS INFANTIS (SÍNDROME DE WEST), autismo, atraso DNPM, epilepsia refratária. Sd West + manchas hipomelanóticas = ESCLEROSE TUBEROSA. Tratamento: vigabatrina, everolimo. NEUROFIBROMATOSE (A): manchas café com leite, neurofibromas; STURGE-WEBER (C): angioma facial em V1, glaucoma; VHL (D): hemangioblastomas, feocromocitoma. RESPOSTA B."
+  },
+  {
+    n: 363,
+    banca: "ENAMED 2025 — Caderno 2",
+    especialidade: "Clínica Médica",
+    tema: "Endocrinologia",
+    subtemas: ["Tireoidite subaguda", "De Quervain"],
+    dificuldade: "Médio",
+    temImagem: false,
+    enunciado: "Mulher 45 anos internada: febre 38°C, mialgia, DOR CERVICAL ANTERIOR irradiada para mandíbula/orelhas há 2 sem após IVAS. Palpitações + tremores há 3 dias. EF: febril, taquicardia, tremores finos. Palpação tireoide: DOLOROSA, firme, levemente aumentada, assimétrica, NÃO NODULAR. VHS e PCR ELEVADAS. Exames e tratamento:",
+    alternativas: {
+      A: "REDUÇÃO da captação de iodo radioativo; BETABLOQUEADOR + ANTI-INFLAMATÓRIO.",
+      B: "Nódulo quente à cintilografia; tireoidectomia subtotal.",
+      C: "TSH, T4L e TRAb AUMENTADOS; ablação com iodo radioativo.",
+      D: "TSH, T3 e T4 livre AUMENTADOS; oseltamivir + metimazol + atenolol."
+    },
+    gabarito: "A",
+    explicacao: "TIREOIDITE SUBAGUDA DE DE QUERVAIN (granulomatosa): tireoidite VIRAL/PÓS-VIRAL. QUADRO TÍPICO: 1) ANTECEDENTE de IVAS (2-8 sem); 2) TIREOIDE DOLOROSA, firme, aumentada, irradiação para mandíbula/orelhas; 3) FEBRE, mialgia; 4) FASES: hipertireoidismo inicial (destruição folicular libera hormônios estocados) → hipotireoidismo transitório → eutireoidismo (em meses); 5) VHS e PCR MUITO ELEVADOS; 6) TSH SUPRIMIDO, T3/T4 ELEVADOS na fase tireotóxica. CINTILOGRAFIA: REDUÇÃO/ABOLIÇÃO da CAPTAÇÃO de I131 (diferencia de Graves, onde a captação é AUMENTADA) — CHAVE DIAGNÓSTICA. TRAb NEGATIVO. TRATAMENTO: 1) AINEs ou prednisona se intenso; 2) BETABLOQUEADOR para sintomas adrenérgicos; 3) NÃO usar antitireoidiano (metimazol) — é DESTRUIÇÃO, não hipertireoidismo verdadeiro; 4) Auto-limitada. RESPOSTA A. D errada: TSH está SUPRIMIDO (não aumentado)."
+  },
+  {
+    n: 364,
+    banca: "ENAMED 2025 — Caderno 2",
+    especialidade: "Pediatria",
+    tema: "TDAH",
+    subtemas: ["Metilfenidato", "Monitoramento"],
+    dificuldade: "Médio",
+    temImagem: false,
+    enunciado: "Criança 9 anos com TDAH há 2 anos, em uso de metilfenidato há >1 ano. Pai relata melhora escolar e pede manter. Estratégias de monitoramento:",
+    alternativas: {
+      A: "Seguir com neuropediatra para AUMENTO DE PESO e dislipidemia do uso crônico.",
+      B: "Testes psicodinâmicos para atenção e desempenho escolar.",
+      C: "Hemograma e hormônios tireoidianos anuais, prescrever antipsicóticos para efeitos colaterais.",
+      D: "Consultas periódicas para verificar ESTATURA, PESO e PRESSÃO ARTERIAL, com reavaliação para retirada após 1 ano."
+    },
+    gabarito: "D",
+    explicacao: "MONITORAMENTO DO METILFENIDATO em CRIANÇAS (SBP, AAP, NICE): psicoestimulante com efeitos adversos: 1) DIMINUIÇÃO DO APETITE e DESACELERAÇÃO DO CRESCIMENTO — efeito mais preocupante; 2) AUMENTO DE PA e FC; 3) Insônia; 4) Irritabilidade. MONITORAMENTO em CONSULTAS PERIÓDICAS (3-6 meses): 1) PESO, ESTATURA (curvas), IMC; 2) PA e FC; 3) Sintomas adversos; 4) Eficácia clínica. PAUSAS de 'férias farmacológicas' nos fins de semana ou férias escolares podem ser feitas. REAVALIAÇÃO ANUAL: ~50% persistem na adolescência/adulto; reavaliar periodicamente. RESPOSTA D. A erra: o efeito é PERDA de peso, NÃO ganho. B inadequado. C errada: antipsicóticos não tratam efeitos colaterais."
+  },
+  {
+    n: 365,
+    banca: "ENAMED 2025 — Caderno 2",
+    especialidade: "MFC/Preventiva",
+    tema: "Vigilância em Saúde",
+    subtemas: ["Manejo integrado de vetores", "Aedes"],
+    dificuldade: "Médio",
+    temImagem: false,
+    enunciado: "Chikungunya é transmitida pelo Aedes. MANEJO INTEGRADO DE VETORES envolve atividades cíclicas pela vigilância. Inclui:",
+    alternativas: {
+      A: "Levantamento do índice larvário, notificação de vetores infectados e avaliação de indicadores entomológicos e epidemiológicos.",
+      B: "Treinamento da equipe de controle, uso intensivo de inseticidas, mutirões de limpeza e tratamento de pontos estratégicos.",
+      C: "Vigilância virológica, notificação semanal de casos suspeitos em áreas sem transmissão e definição do LPI.",
+      D: "Análise situacional com informações epidemiológicas e entomológicas, desenho das operações de planificação, implementação, monitoramento e avaliação."
+    },
+    gabarito: "D",
+    explicacao: "MANEJO INTEGRADO DE VETORES (MIV) — PNCD/MS: abordagem ESTRATÉGICA e SISTEMÁTICA com CICLOS de PLANIFICAÇÃO baseados em EVIDÊNCIAS. ETAPAS CÍCLICAS: 1) ANÁLISE DA SITUAÇÃO (epidemiológica + entomológica do território); 2) PLANEJAMENTO/PLANIFICAÇÃO (definir intervenções com base na evidência local); 3) IMPLEMENTAÇÃO (controle químico, biológico, mecânico, ambiental, mobilização social); 4) MONITORAMENTO e AVALIAÇÃO (entomológica = LIRAa/Índices, virológica, epidemiológica); 5) Revisão e ajuste. PRINCÍPIOS: intersetorialidade, participação comunitária, evidência científica, integração entre vetores. RESPOSTA D — descreve o CICLO METODOLÓGICO. A, B, C descrevem ATIVIDADES, mas não a ESTRUTURA cíclica."
+  },
+  {
+    n: 366,
+    banca: "ENAMED 2025 — Caderno 2",
+    especialidade: "MFC/Preventiva",
+    tema: "Imunização Idoso",
+    subtemas: ["Calendário vacinal", "Abordagem familiar"],
+    dificuldade: "Médio",
+    temImagem: false,
+    enunciado: "MFC visita idoso 80a acamado, dependente. Filha cuidadora recusa vacinas: frágil, não aguenta efeitos, restrito ao lar. Vacinas do calendário do idoso e forma de abordar:",
+    alternativas: {
+      A: "Pneumocócica 23-valente (1 dose, reforço 5a); dT 10/10a; influenza e covid anuais; HepB 3 doses. Agendar nova visita com mais familiares.",
+      B: "Influenza e covid anuais; dT 10/10a; HepB 3 doses; herpes-zoster 2 doses. Denunciar ao Conselho Municipal do Idoso.",
+      C: "Pneumocócica 10-valente (1 dose, reforço 5a); dT 10/10a; influenza e covid anuais; HepB 3 doses. Termo de responsabilidade pela não-vacinação.",
+      D: "Pneumocócica 10-valente (1 dose, reforço 5a); influenza e covid anuais; herpes-zoster 2 doses; dT 10/10a. Respeitar autonomia da filha."
+    },
+    gabarito: "A",
+    explicacao: "CALENDÁRIO VACINAL DO IDOSO ≥60a (SUS/PNI): 1) INFLUENZA anual; 2) COVID-19 — reforços conforme MS; 3) dT a cada 10 anos; 4) PNEUMOCÓCICA 23-VALENTE (em idosos institucionalizados ou com comorbidades; em algumas localidades VPC13 antes) — NÃO é 10-valente (esta é PEDIÁTRICA); 5) HEPATITE B 3 doses se não vacinado; 6) Febre amarela em áreas de risco (1 dose, restrições em idosos); 7) HERPES-ZOSTER: NÃO disponibilizada pelo SUS de rotina (rede privada). C e D erram em PNEUMO 10-VALENTE (pediátrica). ABORDAGEM: dialogar, informar, NÃO confrontar — chamar familiares à conversa (educação em saúde, vínculo, esclarecimento de mitos). Denúncia (B) é desproporcional; termo de responsabilidade (C) fragmenta vínculo; respeitar autonomia da filha (D) ignora a autonomia do PRÓPRIO IDOSO. RESPOSTA A."
+  },
+  {
+    n: 367,
+    banca: "ENAMED 2025 — Caderno 2",
+    especialidade: "GO",
+    tema: "Contracepção",
+    subtemas: ["Enxaqueca com aura", "Contraindicação ACO"],
+    dificuldade: "Fácil",
+    temImagem: false,
+    enunciado: "Adolescente 15 anos, deseja contracepção. ENXAQUECA COM AURA. HF: avó CA mama, mãe HAS, irmã DM. Anticoncepcional COMBINADO contraindicado pelo risco de:",
+    alternativas: {
+      A: "Câncer de mama.",
+      B: "Diabetes mellitus.",
+      C: "Acidente vascular cerebral.",
+      D: "Hipertensão arterial sistêmica."
+    },
+    gabarito: "C",
+    explicacao: "CRITÉRIOS DE ELEGIBILIDADE OMS para CONTRACEPTIVOS COMBINADOS (com estrogênio): ENXAQUECA COM AURA = CATEGORIA 4 (risco INACEITÁVEL — CONTRAINDICAÇÃO ABSOLUTA) em qualquer idade. RAZÃO: enxaqueca com aura tem RISCO AUMENTADO de AVC ISQUÊMICO (~2x base); ESTROGÊNIOS aumentam adicionalmente o risco TROMBOEMBÓLICO/AVC isquêmico (~2-3x); a combinação multiplica o risco (~8-9x). ENXAQUECA SEM AURA é categoria 2-3 (uso com cautela). RESPOSTA C. Os antecedentes familiares (CA mama avó — tardio; HAS mãe; DM irmã) NÃO são contraindicações diretas. ALTERNATIVAS: progestágeno isolado (minipílula, implante, injeção trimestral, SIU-LNG), DIU de cobre, métodos de barreira."
+  },
+  {
+    n: 368,
+    banca: "ENAMED 2025 — Caderno 2",
+    especialidade: "Cirurgia",
+    tema: "TCE",
+    subtemas: ["Hematoma epidural", "Intervalo lúcido"],
+    dificuldade: "Médio",
+    temImagem: true,
+    enunciado: "Homem 23 anos, AAA, colisão com caminhão, cinto, consciente, AMNÉSIA ANTERÓGRADA. PS sem déficits. Médico pede TC. Minutos depois: REBAIXAMENTO + IOT + ANISOCORIA com PUPILA E DILATADA. (Imagem: TC com hematoma extra-axial biconvexo em região temporal). Diagnóstico e conduta:",
+    alternativas: {
+      A: "Hematoma subdural agudo; hidantalização e aguardar melhora.",
+      B: "Contusão cerebral; cirurgia de emergência para controle HIC.",
+      C: "Hematoma epidural; CIRURGIA DE EMERGÊNCIA para controle da HIC.",
+      D: "Hematoma intraparenquimatoso; hidantalização e aguardar melhora."
+    },
+    gabarito: "C",
+    explicacao: "HEMATOMA EPIDURAL (HED) — apresentação CLÁSSICA: 1) Trauma craniano com fratura temporal (rompe ARTÉRIA MENÍNGEA MÉDIA — 85% dos casos); 2) PERDA DE CONSCIÊNCIA TRANSITÓRIA inicial; 3) INTERVALO LÚCIDO (paciente acorda, pode conversar); 4) DETERIORAÇÃO NEUROLÓGICA RÁPIDA (origem ARTERIAL); 5) ANISOCORIA HOMOLATERAL (compressão do III par); 6) HEMIPARESIA CONTRALATERAL. TC: LESÃO HIPERDENSA EXTRA-AXIAL BICONVEXA (LENTIFORME) que NÃO CRUZA SUTURAS. CONDUTA: EMERGÊNCIA NEUROCIRÚRGICA — CRANIOTOMIA com DRENAGEM IMEDIATA. HIDANTOÍNA e medidas para HIC são adjuntos, SEM CIRURGIA o paciente MORRE. Hematoma subdural (A): em meia-lua, cresce mais lento (venoso), CRUZA SUTURAS. RESPOSTA C."
+  },
+  {
+    n: 369,
+    banca: "ENAMED 2025 — Caderno 2",
+    especialidade: "Pediatria",
+    tema: "Puericultura",
+    subtemas: ["Reflexos primitivos", "Marcos"],
+    dificuldade: "Médio",
+    temImagem: false,
+    enunciado: "Mãe de menina 11m em puericultura. Sem queixas, trocando passos independentes, marcos prévios normais. Reflexo primitivo USUALMENTE PRESENTE nessa faixa etária:",
+    alternativas: {
+      A: "Reflexo plantar.",
+      B: "Reflexo de Moro.",
+      C: "Reflexo de procura.",
+      D: "Reflexo tônico cervical."
+    },
+    gabarito: "A",
+    explicacao: "REFLEXOS PRIMITIVOS — desaparecimento esperado: 1) MORO: nascimento, desaparece 4-6 MESES. 2) PROCURA/ROOTING: nascimento, desaparece 3-4 MESES. 3) PREENSÃO PALMAR: nascimento, desaparece 3-6 MESES. 4) TÔNICO-CERVICAL ASSIMÉTRICO: 2-6 MESES. 5) MARCHA REFLEXA: nascimento, desaparece 2 MESES. 6) BABINSKI/PLANTAR EM EXTENSÃO: pode persistir até 1-2 ANOS (não é considerado patológico antes de 2 anos) — DOS LISTADOS é o ÚNICO ESPERADO aos 11m. 7) REFLEXO PARAQUEDISTA: surge aos 8-9 meses e persiste por toda vida. Aos 11m: Moro, procura, tônico-cervical já desapareceram; plantar (Babinski) ainda fisiologicamente extensor. RESPOSTA A."
+  },
+  {
+    n: 370,
+    banca: "ENAMED 2025 — Caderno 2",
+    especialidade: "Clínica Médica",
+    tema: "Hepatobiliar",
+    subtemas: ["Colangite esclerosante primária", "RCU"],
+    dificuldade: "Difícil",
+    temImagem: false,
+    enunciado: "Homem 38 anos, RETOCOLITE ULCERATIVA em acompanhamento. Lab: FA e GGT MUITO ELEVADAS, discreta elevação de AST/ALT, SEM hiperbilirrubinemia. Leve desconforto HCD, sem icterícia/febre/Murphy. Exame e resultado:",
+    alternativas: {
+      A: "TC abdome; lesão tumoral em hilo hepático.",
+      B: "CPRE; litíase impactada em colédoco terminal.",
+      C: "Colangiorressonância; múltiplas ESTENOSES intercaladas na árvore biliar, com áreas normais ou dilatadas de permeio.",
+      D: "USG abdominal total; espessamento da parede vesicular com nodulação interna sem sombra acústica."
+    },
+    gabarito: "C",
+    explicacao: "COLANGITE ESCLEROSANTE PRIMÁRIA (CEP) — associação ÍNTIMA com DOENÇA INFLAMATÓRIA INTESTINAL, especialmente RCU (80% dos pacientes com CEP têm DII; 5-10% dos RCU desenvolvem CEP). CLÍNICA: muitas vezes assintomática inicialmente — PADRÃO COLESTÁTICO LABORATORIAL (FA e GGT elevadas, com bilirrubinas/transaminases mais discretas) é a apresentação clássica. FISIOPATOLOGIA: inflamação fibrosante de DUCTOS BILIARES INTRA e EXTRA-hepáticos — estenoses irregulares alternadas com dilatações = aspecto em 'COLAR DE CONTAS'. DIAGNÓSTICO: COLANGIORRESSONÂNCIA é o exame INICIAL — achado patognomônico: MÚLTIPLAS ESTENOSES com áreas dilatadas/normais entre elas. Complicações: cirrose biliar, COLANGIOCARCINOMA (10-15%), CA cólon. RESPOSTA C."
+  }
+);
+
+console.log("ENAMED 2025 Bloco 2 (346-370) adicionado");
+
+// ==================== ENAMED 2025 — Caderno 2 — Bloco 3 (371-395) ====================
+QUESTOES.push(
+  {
+    n: 371,
+    banca: "ENAMED 2025 — Caderno 2",
+    especialidade: "Clínica Médica",
+    tema: "Cardiologia",
+    subtemas: ["ICFER", "Espironolactona"],
+    dificuldade: "Médio",
+    temImagem: false,
+    enunciado: "Mulher 58 anos, HAS em tratamento irregular. Fadiga e dispneia progressivas. EF: 4 tempos (B3+B4), sem sopros, crépitos basais, PA 148x90. ECO: HVE concêntrica, FEVE 38% (REDUZIDA). BNP elevado. IECA mantido. Fármaco a associar pelo IMPACTO em SOBREVIDA:",
+    alternativas: {
+      A: "Espironolactona.",
+      B: "Clortalidona.",
+      C: "Hidralazina.",
+      D: "Clonidina."
+    },
+    gabarito: "A",
+    explicacao: "ICFER (FEVE ≤40%) — PILARES TERAPÊUTICOS COM IMPACTO EM MORTALIDADE (SBC, ESC 2021, ACC/AHA — QUATRO PILARES): 1) IECA/BRA ou SACUBITRIL-VALSARTANA; 2) BETABLOQUEADORES (carvedilol, bisoprolol, metoprolol succinato, nebivolol); 3) ANTAGONISTAS DOS RECEPTORES MINERALOCORTICOIDES (ESPIRONOLACTONA ou EPLERENONA — estudos RALES, EMPHASIS); 4) iSGLT2 (dapagliflozina, empagliflozina — DAPA-HF, EMPEROR). ESPIRONOLACTONA reduz mortalidade ~30% em ICFER NYHA II-IV. CLORTALIDONA (B): diurético, sem benefício em IC; HIDRALAZINA (C): combinada com nitrato em pacientes intolerantes a IECA/BRA ou em afro-descendentes; CLONIDINA (D): sem papel em IC. RESPOSTA A."
+  },
+  {
+    n: 372,
+    banca: "ENAMED 2025 — Caderno 2",
+    especialidade: "Pediatria",
+    tema: "Nefrologia",
+    subtemas: ["Síndrome de Fanconi", "ATR proximal"],
+    dificuldade: "Difícil",
+    temImagem: false,
+    enunciado: "Lactente 4m, ER: vômitos, POLIÚRIA, fraqueza intensa, febre. EF: desidratação grave, déficit de crescimento. RX: osteopenia + RAQUITISMO RESISTENTE À VITAMINA D. Distúrbio ácido-base relacionado:",
+    alternativas: {
+      A: "Alcalose respiratória hipoclorêmica.",
+      B: "Acidose metabólica hiperclorêmica.",
+      C: "Alcalose respiratória hipocalêmica.",
+      D: "Acidose metabólica hipercalêmica."
+    },
+    gabarito: "B",
+    explicacao: "SÍNDROME DE FANCONI: defeito GENERALIZADO da REABSORÇÃO TUBULAR PROXIMAL — perda de bicarbonato, fósforo, glicose, aminoácidos, ácido úrico, sódio, potássio. CAUSAS PEDIÁTRICAS: 1) CISTINOSE (mais comum); 2) Tirosinemia; 3) Doença de Wilson; 4) Galactosemia. QUADRO em lactente: déficit de crescimento, RAQUITISMO HIPOFOSFATÊMICO RESISTENTE A VITAMINA D (perda urinária de P), poliúria/polidipsia (osmótica), desidratação. DISTÚRBIO ÁCIDO-BASE: ACIDOSE METABÓLICA HIPERCLORÊMICA (perda de bicarbonato urinário = ATR proximal/tipo 2), com ânion gap NORMAL e CLORO sérico ELEVADO. Hipocalemia comum. RESPOSTA B. Tratamento: bicarbonato, fósforo, vit D ativa (calcitriol), K+, fluidos."
+  },
+  {
+    n: 373,
+    banca: "ENAMED 2025 — Caderno 2",
+    especialidade: "Cirurgia",
+    tema: "TCE",
+    subtemas: ["Trauma com perda de consciência", "TC crânio/cervical"],
+    dificuldade: "Médio",
+    temImagem: false,
+    enunciado: "Homem 45 anos, inconsciente em escada. Conduzido em carro, sem medidas pré-hospitalares. PS: inconsciente, equimose/escoriações orbital D + cervical posterior + MMSD. SEM resposta verbal mas respira espontaneamente. PA 140x90, pupilas isocóricas. Abre olhos, agita, depois responde sem recordar do trauma. Conduta:",
+    alternativas: {
+      A: "TC de CRÂNIO, FACE E COLUNA CERVICAL; RX de membros; observação 12h.",
+      B: "RX de crânio, coluna cervical e membros em 2 posições; internar.",
+      C: "TC crânio + face + RX membros; observação domiciliar.",
+      D: "RX crânio e face; RX membros; internar 24h."
+    },
+    gabarito: "A",
+    explicacao: "TCE COM PERDA DE CONSCIÊNCIA prolongada + amnésia + sinais de trauma cervical — INDICAÇÕES DE TC EM TCE (CANADIAN CT HEAD RULE): 1) ECG <15 às 2h; 2) Fratura aberta/deprimida; 3) Sinal de fratura de base de crânio; 4) Vômito ≥2; 5) Idade ≥65a; 6) AMNÉSIA pré-trauma >30min; 7) MECANISMO PERIGOSO. ESTE PACIENTE: amnésia, queda de escada, perda de consciência prolongada = INDICAÇÃO TC CRÂNIO. COLUNA CERVICAL (NEXUS/Canadian C-Spine): paciente NÃO está alerta, com TRAUMA EM CERVICAL POSTERIOR, MECANISMO de risco = TC CERVICAL OBRIGATÓRIA antes de remover colar. FACE: trauma facial = TC FACE. MEMBROS: RX. Internar/observar pelo menos 12h. RESPOSTA A."
+  },
+  {
+    n: 374,
+    banca: "ENAMED 2025 — Caderno 2",
+    especialidade: "GO",
+    tema: "Endometriose",
+    subtemas: ["Dispareunia profunda", "Tríade clássica"],
+    dificuldade: "Fácil",
+    temImagem: false,
+    enunciado: "Paciente 30 anos: FADIGA, DISMENORREIA PROGRESSIVA, DISPAREUNIA DE PROFUNDIDADE. TV: útero retroversofletido, dor à MOBILIZAÇÃO DO COLO. Hipótese principal:",
+    alternativas: {
+      A: "Doença inflamatória pélvica.",
+      B: "Miomatose uterina.",
+      C: "Cisto hemorrágico.",
+      D: "Endometriose."
+    },
+    gabarito: "D",
+    explicacao: "ENDOMETRIOSE — TRÍADE CLÁSSICA: 1) DISMENORREIA PROGRESSIVA; 2) DISPAREUNIA DE PROFUNDIDADE (sugere endometriose profunda em fundo de saco posterior, retossigmoide, ligamentos uterossacros); 3) INFERTILIDADE / FADIGA. Outras: dor pélvica crônica acíclica, disquezia cíclica, hematoquezia/hematúria cíclica. EXAME FÍSICO/TV: 1) ÚTERO RETROVERTIDO/RETROFLETIDO (frequente por aderências); 2) DOR À MOBILIZAÇÃO do colo; 3) Nodularidade em uterossacros; 4) Massa anexial (endometrioma). DIAGNÓSTICO: clínico + imagem (USG TV mapeamento, RM pélvica); padrão-ouro histológico (laparoscopia). DIP (A): febre, leucorreia, agudo. Miomatose (B): hipermenorreia, útero aumentado. Cisto hemorrágico (C): agudo. RESPOSTA D."
+  },
+  {
+    n: 375,
+    banca: "ENAMED 2025 — Caderno 2",
+    especialidade: "MFC/Preventiva",
+    tema: "Tuberculose",
+    subtemas: ["Retratamento", "TB MDR"],
+    dificuldade: "Difícil",
+    temImagem: false,
+    enunciado: "Homem 48 anos, UBS, deseja REINICIAR tratamento de TB. Iniciou poliquimio há 6m, INTERROMPEU há 2m por uso de psicoativos. Mudou para o território há 15d. Solicitar TRM-TB, baciloscopia e RX. Conduta correta:",
+    alternativas: {
+      A: "Se TRM-TB+, sem resistência à rifampicina, baciloscopia-, REINICIAR esquema básico.",
+      B: "Se TRM-TB-, baciloscopia+, REINICIAR esquema básico desde que resistência à rifampicina+.",
+      C: "Se TRM-TB-, baciloscopia+, solicitar CULTURA com TESTE DE SENSIBILIDADE e REINICIAR esquema básico aguardando.",
+      D: "Se TRM-TB+ com resistência à rifampicina, baciloscopia+, solicitar cultura com TS e REINICIAR esquema básico aguardando."
+    },
+    gabarito: "A",
+    explicacao: "RETRATAMENTO DE TB ABANDONO (MS): ABANDONO = uso irregular do esquema por >30 DIAS consecutivos após início. CONDUTA: 1) Solicitar TRM-TB (Xpert MTB/RIF) — confirma TB ativa + detecta RESISTÊNCIA À RIFAMPICINA; 2) Cultura com teste de sensibilidade (sempre em retratamentos); 3) Se TRM-TB POSITIVO e SEM resistência à RMP: REINICIAR ESQUEMA BÁSICO (2RHZE/4RH); 4) Se TRM-TB COM RESISTÊNCIA À RIFAMPICINA: encaminhar para REFERÊNCIA em TB resistente (MDR) — NÃO reiniciar esquema básico até cultura/TS. A está CORRETA. B errada: com resistência à rifampicina, NÃO se usa esquema básico. D errada: com resistência à RMP confirmada, NÃO reiniciar esquema básico. RESPOSTA A."
+  },
+  {
+    n: 376,
+    banca: "ENAMED 2025 — Caderno 2",
+    especialidade: "MFC/Preventiva",
+    tema: "Níveis de Atenção/Prevenção",
+    subtemas: ["Prevenção terciária", "Pós-IAM"],
+    dificuldade: "Médio",
+    temImagem: false,
+    enunciado: "Encaminhamento à cardiologia: paciente 56 anos, cardiopatia isquêmica, IAM há 3 meses, orientação para antiagregante. Hist de úlcera péptica e alergia a clopidogrel e ticlopidina. Solicita conduta preventiva. Será atendido em qual NÍVEL DE ATENÇÃO e que PREVENÇÃO:",
+    alternativas: {
+      A: "Primário; secundário.",
+      B: "Secundário; secundário.",
+      C: "Terciário; terciário.",
+      D: "Quaternário; terciário."
+    },
+    gabarito: "C",
+    explicacao: "NÍVEIS DE ATENÇÃO (SUS): 1) PRIMÁRIA: UBS, eSF; 2) SECUNDÁRIA: ambulatórios especializados, média complexidade; 3) TERCIÁRIA: alta complexidade, hospitais de referência. NÍVEIS DE PREVENÇÃO (Leavell & Clark): 1) PRIMÁRIA: evitar adoecimento (vacinas, MEV); 2) SECUNDÁRIA: detectar precocemente (rastreamentos); 3) TERCIÁRIA: limitar incapacidade, reabilitação após doença instalada; 4) QUATERNÁRIA: evitar iatrogenia. CASO: cardiologista pós-IAM com complicações terapêuticas (alergias múltiplas) é cuidado de ALTA COMPLEXIDADE = TERCIÁRIO. PREVENÇÃO: paciente JÁ TEVE IAM = doença instalada = prevenção TERCIÁRIA (evitar re-IAM/incapacidade). RESPOSTA C."
+  },
+  {
+    n: 377,
+    banca: "ENAMED 2025 — Caderno 2",
+    especialidade: "Clínica Médica",
+    tema: "Psiquiatria",
+    subtemas: ["Distonia aguda", "Biperideno"],
+    dificuldade: "Médio",
+    temImagem: false,
+    enunciado: "Homem 20 anos esquizofrenia, UPA, acordou TORTO. Troca de RISPERIDONA para HALOPERIDOL há 5 dias. EF: CONTRATURA cervical e fácies de dor. Hipótese e conduta:",
+    alternativas: {
+      A: "Distonia; biperideno IM.",
+      B: "Acatisia; haloperidol IM.",
+      C: "Discinesia tardia; diazepam IM.",
+      D: "Síndrome extrapiramidal; prometazina IM."
+    },
+    gabarito: "A",
+    explicacao: "EFEITOS EXTRAPIRAMIDAIS dos ANTIPSICÓTICOS por TEMPO: 1) DISTONIA AGUDA: surge em HORAS-DIAS após início/aumento da dose — mais comum com TÍPICOS (haloperidol). Contratura involuntária (torcicolo, trismo, crise oculogírica, opistótono, laringoespasmo). MAIS COMUM em HOMENS JOVENS. 2) ACATISIA: 1ª semana, inquietação motora — benzodiazepínico ou betabloqueador. 3) PARKINSONISMO: 2-3 semanas — anticolinérgico. 4) DISCINESIA TARDIA: meses-anos. TRATAMENTO DA DISTONIA AGUDA: 1ª LINHA = ANTICOLINÉRGICO (BIPERIDENO 2-4mg IM/IV; ou prometazina, difenidramina). Resolução em minutos. RESPOSTA A."
+  },
+  {
+    n: 378,
+    banca: "ENAMED 2025 — Caderno 2",
+    especialidade: "Clínica Médica",
+    tema: "Reumatologia",
+    subtemas: ["Artrite reumatoide", "Metotrexato"],
+    dificuldade: "Médio",
+    temImagem: false,
+    enunciado: "Mulher 20 anos, 3m: dor e edema articular em IFP, MCF, punhos, cotovelos, joelhos, tornozelos. RIGIDEZ MATINAL >2h. EF: dor/edema articular, mucosas hipocoradas. Hipótese, achado laboratorial e tratamento:",
+    alternativas: {
+      A: "Esclerose sistêmica; CK elevada; prednisona.",
+      B: "Artrite reumatoide; fator reumatoide positivo; metotrexato.",
+      C: "Lúpus sistêmico; FAN nuclear pontilhado fino denso; cloroquina.",
+      D: "DMTC; FAN nuclear pontilhado fino; azatioprina."
+    },
+    gabarito: "B",
+    explicacao: "ARTRITE REUMATOIDE (AR) — critérios ACR/EULAR 2010. QUADRO CLÁSSICO: POLIARTRITE SIMÉTRICA de PEQUENAS articulações (IFP, MCF, punhos), RIGIDEZ MATINAL >1 HORA, duração ≥6 semanas, sintomas constitucionais. LABORATÓRIO: 1) FATOR REUMATOIDE (FR) POSITIVO em ~70%; 2) ANTI-CCP POSITIVO em ~70% (mais ESPECÍFICO); 3) VHS/PCR elevadas. TRATAMENTO: 1ª LINHA = METOTREXATO (DMARD) 15-25mg/semana com ácido fólico. Adjuvantes: AINH, corticoide como ponte. Refratários: biológicos. RESPOSTA B. A: esclerose sistêmica cursa com Raynaud, espessamento cutâneo. C: LES tem rash malar, fotossensibilidade, anti-DNA. FAN denso é geralmente NEGATIVO para LES."
+  },
+  {
+    n: 379,
+    banca: "ENAMED 2025 — Caderno 2",
+    especialidade: "Pediatria",
+    tema: "Sepse",
+    subtemas: ["Choque séptico pediátrico"],
+    dificuldade: "Médio",
+    temImagem: false,
+    enunciado: "Paciente 7a, 4ª sem QT para LLA. Admitido com FEBRE há 12h (T 39°C), tosse, dispneia. 24h depois: febril, DIURESE 2 mL/kg/h. EF: pálido, FC 130, FR 36, PA 90x60 (HIPOTENSÃO para idade), boa perfusão, MV diminuído base D com crepitações, fígado a 4cm RCD, baço 4cm. LACTATO AUMENTADO + ACIDOSE METABÓLICA + LEUCO COM DESVIO. Diagnóstico:",
+    alternativas: {
+      A: "Sepse.",
+      B: "Choque séptico.",
+      C: "Disfunção de múltiplos órgãos.",
+      D: "Síndrome da resposta inflamatória sistêmica."
+    },
+    gabarito: "B",
+    explicacao: "DEFINIÇÕES SEPSE: 1) SIRS: 2+ critérios; 2) SEPSE: infecção + DISFUNÇÃO ORGÂNICA; 3) CHOQUE SÉPTICO: SEPSE + HIPOTENSÃO REFRATÁRIA À RESSUSCITAÇÃO VOLÊMICA, ou NECESSIDADE DE VASOPRESSOR, ou HIPOPERFUSÃO TECIDUAL (lactato >2 mmol/L); em pediatria critérios de baixa perfusão/hipotensão/lactato. ESTE PACIENTE: PEDIÁTRICO IMUNOSSUPRIMIDO (QT, neutropenia febril) com FEBRE + foco pulmonar + HIPOTENSÃO (PAS 90 abaixo do P5 para 7 anos) + LACTATO AUMENTADO + ACIDOSE METABÓLICA = CHOQUE SÉPTICO. RESPOSTA B. Conduta: cristaloides 20mL/kg em bolus, ATB amplo espectro (cobertura para neutropenia febril), vasoativos se refratário."
+  },
+  {
+    n: 380,
+    banca: "ENAMED 2025 — Caderno 2",
+    especialidade: "Cirurgia",
+    tema: "Hérnias",
+    subtemas: ["Hérnia femoral encarcerada", "Obstrução"],
+    dificuldade: "Médio",
+    temImagem: false,
+    enunciado: "Mulher 78 anos, 24h dor + abaulamento progressivo INGUINAL D. Vômitos e diminuição de flatos. ANT: CA mama (30a), DM (20a), tab 40 maços/ano. PA, FC, T, FR normais. IMC 35. Abdome com abaulamento NÃO REDUTÍVEL e desconforto FID, hiperemia leve, SEM peritonite. Lab: Hb 13, leucócitos 10.300, creat 1,8. Hipótese principal: (QUESTÃO ANULADA)",
+    alternativas: {
+      A: "Isquemia mesentérica.",
+      B: "Hérnia inguinal indireta.",
+      C: "Hérnia femoral encarcerada.",
+      D: "Neoplasia de cólon obstrutiva."
+    },
+    gabarito: "C",
+    explicacao: "QUESTÃO ANULADA pela banca. HÉRNIA FEMORAL (CRURAL): protrusão de conteúdo abdominal pelo canal femoral. EPIDEMIOLOGIA: MULHERES IDOSAS, obesidade. CARACTERÍSTICAS: 1) ALTO RISCO DE ENCARCERAMENTO (canal estreito) — até 40% encarceram; 2) Localização ABAIXO E LATERAL ao tubérculo púbico (vs inguinal: acima e medial). CASO: idosa, obesa, abaulamento INGUINAL/FEMORAL NÃO REDUTÍVEL (encarcerado), com OBSTRUÇÃO INTESTINAL (vômitos, diminuição de flatos), hiperemia, SEM peritonite. CONDUTA: TC para confirmar, cirurgia URGENTE. Hérnia inguinal indireta (B) é mais comum em homens; tipicamente REDUTÍVEL. RESPOSTA C (mas a banca anulou — possivelmente pela descrição de localização FID em vez de FII causando ambiguidade)."
+  },
+  {
+    n: 381,
+    banca: "ENAMED 2025 — Caderno 2",
+    especialidade: "GO",
+    tema: "Sífilis na Gestação",
+    subtemas: ["VDRL seguimento"],
+    dificuldade: "Médio",
+    temImagem: false,
+    enunciado: "Paciente 25 anos, G2P1, 2º trimestre, 1ª consulta de PN. Teste rápido sífilis POSITIVO, recebeu 2,4 mi UI PENICILINA BENZATINA IM. Nega tto prévio. Em relação ao acompanhamento, é correto afirmar que:",
+    alternativas: {
+      A: "Com o tratamento instituído, o feto não terá sequelas.",
+      B: "Titulações menores ou iguais a 1/4 indicarão cicatriz sorológica.",
+      C: "A queda de 2 titulações do VDRL indicará efetividade do tratamento.",
+      D: "FTA-Abs reagente indicará doença ativa."
+    },
+    gabarito: "C",
+    explicacao: "SÍFILIS NA GESTAÇÃO — ACOMPANHAMENTO (MS, PCDT): 1) TRATAMENTO: penicilina benzatina conforme fase. Em paciente com história desconhecida, considera-se SÍFILIS RECENTE INDETERMINADA = 1 dose se recente; 3 doses semanais se TARDIA. 2) SEGUIMENTO: VDRL MENSAL durante gestação. RESPOSTA AO TRATAMENTO: QUEDA DE 2 TITULAÇÕES (4x) em 6-12 meses = TRATAMENTO EFETIVO. 3) FALHA/REINFECÇÃO: persistência ou aumento de 2 titulações. 4) CICATRIZ SOROLÓGICA: VDRL+ em baixos títulos (≤1/4) por anos — não significa doença ativa, mas não pode ser ASSUMIDA precocemente. 5) FTA-Abs: TREPONÊMICO — permanece positivo PARA SEMPRE após contato com Treponema. RESPOSTA C. A errada (sífilis congênita pode ocorrer); B errada (cicatriz só após confirmação de queda); D errada (FTA-Abs permanece + após cura)."
+  },
+  {
+    n: 382,
+    banca: "ENAMED 2025 — Caderno 2",
+    especialidade: "MFC/Preventiva",
+    tema: "Rastreamento Adulto",
+    subtemas: ["Tabagismo", "Prevenção"],
+    dificuldade: "Médio",
+    temImagem: false,
+    enunciado: "Homem 52 anos, branco, solteiro, sem acompanhamento desde 35a. HF: DM, HAS, mãe com CA pulmão. Sem HF CA próstata. TABAGISTA 2 maços/dia há 21 anos. EF: PA 120x80, IMC 23. Rastreamentos a solicitar:",
+    alternativas: {
+      A: "Colest total e frações, hemograma, glicemia, creatinina, PSA, RX tórax, colonoscopia, toque retal; orientar atividade física.",
+      B: "Colest total, glicemia, sangue oculto nas fezes, PSA, anti-HIV/HBsAg, toque retal; grupo de cessação tabagismo.",
+      C: "Abordar mudança de estilo e cessação do tabagismo; aguardar futuras possibilidades de exames quando atingir faixa etária.",
+      D: "Colest total + HDL + TG, glicemia, sangue oculto fezes, testes rápidos HIV/sífilis/HEP B e C; cessação do tabagismo."
+    },
+    gabarito: "D",
+    explicacao: "RASTREAMENTOS para ADULTO 50-69 ANOS (MS, INCA, USPSTF): 1) HAS — aferição PA periódica; 2) DM — glicemia de jejum; 3) DISLIPIDEMIA — colesterol total + HDL + LDL + TG; 4) CA COLORRETAL ≥50a (45a USPSTF): SANGUE OCULTO FEZES anual; 5) HEPATITE B e C — rastreio pelo menos 1x; 6) HIV — oferta universal; 7) Sífilis — se fatores de risco. NÃO recomendados de rotina: 1) PSA — controverso (INCA NÃO recomenda); 2) Toque retal para CA próstata; 3) RX tórax: CONTRAINDICADO como rastreio para CA pulmão. Para CA PULMÃO em FUMANTE PESADO (50-80a, ≥20 maços-ano, ativo): TC TÓRAX DE BAIXA DOSE anual (USPSTF) — este paciente se enquadra, mas RX tórax (A) NÃO é rastreio adequado. ABORDAGEM do TABAGISMO é central. RESPOSTA D."
+  },
+  {
+    n: 383,
+    banca: "ENAMED 2025 — Caderno 2",
+    especialidade: "MFC/Preventiva",
+    tema: "Saúde do Trabalhador",
+    subtemas: ["Intoxicação por agrotóxicos", "SINAN/CAT"],
+    dificuldade: "Médio",
+    temImagem: false,
+    enunciado: "Mulher 32 anos, trabalhadora rural, plantio de morango. Tonturas, cefaleia, cansaço, náuseas, falta de ar há 2 sem após PULVERIZAÇÃO DE AGROTÓXICOS. Colega tem queixas similares. Conduta:",
+    alternativas: {
+      A: "Encaminhar como suspeito ao CEREST estadual e denunciar ao MPT.",
+      B: "Estabelecer nexo causal com exames complementares para confirmar e notificar VS municipal.",
+      C: "Tratar sintomas + exames + notificar no SINAN + atestado + matriciamento com VS do Trabalhador.",
+      D: "Informar que não preenche CAT (atribuição da medicina do trabalho)."
+    },
+    gabarito: "C",
+    explicacao: "INTOXICAÇÃO AGUDA POR AGROTÓXICOS — DRT DE NOTIFICAÇÃO COMPULSÓRIA (Portaria GM 1.271/2014). CONDUTA INTEGRAL DA APS: 1) TRATAMENTO CLÍNICO DOS SINTOMAS (atropina para organofosforados se grave); 2) EXAMES (colinesterase eritrocitária e plasmática); 3) NOTIFICAÇÃO no SINAN (Ficha de Notificação de Intoxicação Exógena); 4) CAT — o MÉDICO ASSISTENTE EMITE (não é exclusivo da medicina do trabalho — D ERRADA); 5) ATESTADO; 6) MATRICIAMENTO com VS DO TRABALHADOR (CEREST); 7) Investigação do ambiente. RESPOSTA C — é a mais COMPLETA. Encaminhar ao CEREST e MPT (A) é desproporcional isoladamente; estabelecer nexo só com exames (B) atrasa; D ERRADA."
+  },
+  {
+    n: 384,
+    banca: "ENAMED 2025 — Caderno 2",
+    especialidade: "Pediatria",
+    tema: "Psiquiatria Infantil",
+    subtemas: ["Transtorno de oposição desafiante", "TOD"],
+    dificuldade: "Médio",
+    temImagem: false,
+    enunciado: "Menino 10 anos, pais relatam: SE DÁ BEM com a família até NÃO PODER FAZER o que quer; nesse caso fica irritado, agressivo, agitado por HORAS. Acalma-se ao conseguir o que quer. AGE DELIBERADAMENTE PARA ABORRECER, NUNCA ASSUME A CULPA. DISCUTE com adultos e autoridade, não aceita REGRAS. Diagnóstico mais provável:",
+    alternativas: {
+      A: "Transtorno afetivo bipolar.",
+      B: "Transtorno de oposição desafiante.",
+      C: "Transtorno disruptivo da desregulação do humor.",
+      D: "TDAH."
+    },
+    gabarito: "B",
+    explicacao: "TRANSTORNO DE OPOSIÇÃO DESAFIANTE (TOD - DSM-5): PADRÃO PERSISTENTE (≥6 MESES) de comportamento RAIVOSO/IRRITADO, ARGUMENTATIVO/DESAFIADOR, ou VINGATIVO contra figuras de autoridade. ≥4 critérios: 1) Perde paciência; 2) Suscetível; 3) Raivoso/ressentido; 4) Discute com adultos/autoridade; 5) Desafia/recusa regras; 6) Aborrece os outros deliberadamente; 7) Culpa outros; 8) Vingativo. CASO: padrão ESPECÍFICO de OPOSIÇÃO contra AUTORIDADE/REGRAS, COMPORTAMENTO DELIBERADO de irritar, CULPAR OUTROS — típico TOD. TAB (A): episódios de humor; TDDH (C): IRRITABILIDADE PERSISTENTE com OUTBURSTS (≥3x/semana), HUMOR IRRITÁVEL ENTRE EPISÓDIOS — humor irritável BASAL; TDAH (D): desatenção/hiperatividade transversal. RESPOSTA B."
+  },
+  {
+    n: 385,
+    banca: "ENAMED 2025 — Caderno 2",
+    especialidade: "Clínica Médica",
+    tema: "Nefrologia",
+    subtemas: ["Síndrome nefrótica", "Critérios"],
+    dificuldade: "Médio",
+    temImagem: false,
+    enunciado: "Homem 50 anos: astenia, constipação com FEZES EM FITA, edema MMII bilateral. Perda 10kg em 6m. PA 130x80. Ht 35%, glicemia 88, ALBUMINA 1,8 (baixa), creat 1,2, TG 200 (alto), PROTEINÚRIA 24h = 3,6g (alta), proteínas +++ + hemácias 5/campo na urina. Achados NECESSÁRIOS para definir SÍNDROME RENAL:",
+    alternativas: {
+      A: "Proteinúria 24h 3,6g E ALBUMINA SÉRICA 1,8 g/dL.",
+      B: "Proteinúria 24h 3,6g e triglicerídeos 200.",
+      C: "Hematúria e triglicerídeos 200.",
+      D: "Hematúria e albumina sérica 1,8."
+    },
+    gabarito: "A",
+    explicacao: "CRITÉRIOS DIAGNÓSTICOS DA SÍNDROME NEFRÓTICA: 1) PROTEINÚRIA NEFRÓTICA: >3,5 g/24h — caso 3,6 g/24h ✓; 2) HIPOALBUMINEMIA: <3,0 g/dL (alguns <2,5) — caso 1,8 g/dL ✓; 3) EDEMA periférico ✓; 4) DISLIPIDEMIA e LIPIDÚRIA — comum mas NÃO ESSENCIAL; 5) Hipercoagulabilidade. OS DOIS PRIMEIROS são critérios DEFINIDORES. NOTA: constipação + fezes em fita + perda de 10kg sugere NEOPLASIA DE CÓLON OBSTRUTIVA — causa NEOPLÁSICA possível para síndrome nefrótica (paraneoplásica — GN membranosa). DEVE-SE INVESTIGAR colonoscopia. RESPOSTA A."
+  },
+  {
+    n: 386,
+    banca: "ENAMED 2025 — Caderno 2",
+    especialidade: "Pediatria",
+    tema: "Síndrome de Down",
+    subtemas: ["Curvas de crescimento"],
+    dificuldade: "Médio",
+    temImagem: false,
+    enunciado: "RN 15 dias, a termo, Apgar 8/9. Sd DOWN, peso 2.600g e comp 46cm ao nascer. Sem outras intercorrências. Atualmente: 2.900g e 47cm. Curvas para acompanhamento PONDERO-ESTATURAL:",
+    alternativas: {
+      A: "Curvas da OMS desde o nascimento até a adolescência.",
+      B: "Curvas de crescimento específicas para Sd Down desde o nascimento.",
+      C: "Curvas da OMS, corrigindo peso e comprimento para Sd Down.",
+      D: "Curvas da OMS até 2 anos e depois curvas específicas para Sd Down."
+    },
+    gabarito: "B",
+    explicacao: "ACOMPANHAMENTO DE CRIANÇAS COM SD DOWN — crescimento: apresentam MENOR VELOCIDADE DE CRESCIMENTO e MENOR ESTATURA FINAL. USAR CURVAS DA OMS leva a interpretação inadequada (parecem desnutridas/com baixa estatura). CURVAS ESPECÍFICAS: 1) ZEMEL et al. (CDC/AAP 2015); 2) Cronk et al. (1988); 3) MS Brasil — DIRETRIZES DE ATENÇÃO À PESSOA COM SD DOWN (2013): recomendam o uso de CURVAS ESPECÍFICAS DESDE O NASCIMENTO; 4) Mustacchi (Brasil). RECOMENDAÇÃO ATUAL: CURVAS ESPECÍFICAS PARA DOWN DESDE O NASCIMENTO. Outras avaliações: cardiopatia (eco), TSH, audição/visão, hematologia, atlanto-axial. RESPOSTA B."
+  },
+  {
+    n: 387,
+    banca: "ENAMED 2025 — Caderno 2",
+    especialidade: "Cirurgia",
+    tema: "Trauma Torácico",
+    subtemas: ["Pneumotórax hipertensivo", "Toracocentese"],
+    dificuldade: "Fácil",
+    temImagem: false,
+    enunciado: "Homem 20 anos, sem cinto, colisão. SAMU: torporoso, SatO2 60% AA, FR 28, FC 112, PA 90x50. DESVIO DE TRAQUEIA para D, TURGÊNCIA JUGULAR, HIPOFONESE de bulhas, DIMINUIÇÃO MARCADA do MV à esquerda. Conduta pré-hospitalar:",
+    alternativas: {
+      A: "Reposição volêmica.",
+      B: "Cricotireoidostomia.",
+      C: "Pericardiocentese.",
+      D: "Toracocentese."
+    },
+    gabarito: "D",
+    explicacao: "PNEUMOTÓRAX HIPERTENSIVO — DIAGNÓSTICO CLÍNICO (ATLS): 1) DESCONFORTO RESPIRATÓRIO + hipoxemia; 2) HIPOTENSÃO/CHOQUE; 3) DESVIO DE TRAQUEIA contralateral; 4) TURGÊNCIA JUGULAR; 5) HIPOFONESE de bulhas; 6) DIMINUIÇÃO/ABOLIÇÃO de MV no lado do pneumotórax; 7) Hipertimpanismo; 8) Enfisema subcutâneo possível. EMERGÊNCIA VITAL — tratar antes de imagem. CONDUTA IMEDIATA: TORACOCENTESE DESCOMPRESSIVA (PUNÇÃO COM AGULHA): 1) 2º EIC linha hemiclavicular OU 4º-5º EIC linha axilar anterior (atualizado ATLS 10ª ed); 2) Agulha calibrosa (14G) - converte em pneumotórax simples; 3) Depois: drenagem torácica em selo d'água. RESPOSTA D."
+  },
+  {
+    n: 388,
+    banca: "ENAMED 2025 — Caderno 2",
+    especialidade: "GO",
+    tema: "Amenorreia Primária",
+    subtemas: ["Insensibilidade androgênica", "Síndrome de Morris"],
+    dificuldade: "Difícil",
+    temImagem: false,
+    enunciado: "Paciente 16 anos, AMENORREIA PRIMÁRIA. Fenótipo feminino, pelos pubianos e axilares ESPARSOS. USG pélvica: AUSÊNCIA DE ÚTERO. FSH normal, TESTOSTERONA em níveis MASCULINOS, cariótipo 46 XY. Hipótese:",
+    alternativas: {
+      A: "Disgenesia gonadal.",
+      B: "Malformação Mulleriana.",
+      C: "Obstrução do trato genital.",
+      D: "Insensibilidade androgênica."
+    },
+    gabarito: "D",
+    explicacao: "SÍNDROME DE INSENSIBILIDADE ANDROGÊNICA COMPLETA (SIAC — Sd de Morris): paciente 46XY com RECEPTOR ANDROGÊNICO NÃO FUNCIONAL (mutação ligada ao X). FISIOPATOLOGIA: testículos PRODUZEM testosterona NORMAL (níveis masculinos) e FATOR INIBIDOR MULLERIANO (FIM/AMH) — mas células não respondem ao androgênio. CONSEQUÊNCIA: 1) GENITÁLIA EXTERNA FEMININA (sem virilização); 2) MAMAS DESENVOLVEM (testosterona é AROMATIZADA em estradiol — caracteres femininos); 3) PELOS PUBIANOS/AXILARES ESPARSOS (dependem de androgênio); 4) AUSÊNCIA DE ÚTERO E TUBAS (efeito do FIM mantido) — DERIVADOS MULLERIANOS REGRIDEM; 5) Vagina em fundo cego, curta; 6) TESTÍCULOS na cavidade abdominal/inguinal — RISCO de gonadoblastoma — gonadectomia recomendada após puberdade. RESPOSTA D. Disgenesia gonadal (A) tem FSH alto (gônada não funcional); malformação mulleriana (B) tem 46XX com cariótipo feminino; obstrução (C) tem genitália interna íntegra."
+  },
+  {
+    n: 389,
+    banca: "ENAMED 2025 — Caderno 2",
+    especialidade: "MFC/Preventiva",
+    tema: "Hipertensão no Idoso",
+    subtemas: ["Diagnóstico HAS", "Idoso"],
+    dificuldade: "Médio",
+    temImagem: false,
+    enunciado: "Mulher 82 anos, sem história prévia de HAS. Aferiu PA na farmácia (146x86) e na UBS há 2 sem (144x88). Hoje na consulta: 148x88. Sem sintomas, sem outros agravos. Abordagem adequada:",
+    alternativas: {
+      A: "Referenciar ao cardiologista para manejo específico.",
+      B: "Solicitar holter 24h e ecocardiograma.",
+      C: "Prescrever losartana 50 mg à noite com monitoramento.",
+      D: "Conduta expectante, sem medicamentos, com monitoramento de PA na unidade."
+    },
+    gabarito: "C",
+    explicacao: "DIAGNÓSTICO DE HAS (Diretriz Brasileira 2020, SBC; ESC 2023): HAS confirmada se PA ≥140x90 em CONSULTÓRIO em 2 ocasiões diferentes ou MAPA/MRPA elevadas. CASO: 3 aferições em momentos distintos com PAS 144-148 e PAD 86-88 = HAS CONFIRMADA (PA estágio 1, 140-159 / 90-99). MANEJO DA HAS NO IDOSO: 1) MEV sempre; 2) Tratamento medicamentoso iniciado se PA ≥150x90 (a maioria das diretrizes para >80a — algumas dizem ≥140x90); 3) METAS no idoso: 130-140 sistólica (não tão agressivo quanto adulto jovem); 4) FÁRMACOS DE PRIMEIRA LINHA: TIAZÍDICOS (clortalidona), BCC (anlodipino), IECA/BRA (losartana). LOSARTANA é apropriado (sem evidência de IR, com perfil seguro no idoso). RESPOSTA C. Referenciar cardiologista (A) é desnecessário em HAS leve; B é desproporcional; D conduta expectante após 3 medições ≥140x90 não é apropriada — paciente tem HAS confirmada e merece tratamento. NOTA: discussão com paciente sobre risco/benefício é fundamental no idoso (fragilidade, polifarmácia)."
+  },
+  {
+    n: 390,
+    banca: "ENAMED 2025 — Caderno 2",
+    especialidade: "MFC/Preventiva",
+    tema: "PrEP/PEP HIV",
+    subtemas: ["Mulher trans", "Profilaxia"],
+    dificuldade: "Médio",
+    temImagem: false,
+    enunciado: "Mulher TRAVESTI 28 anos, profissional do sexo, demanda espontânea UBS. Relações sexuais com diferentes parceiros, uso INCONSISTENTE de preservativos (anal receptiva). Há 2 dias: relação SEM preservativo. Nunca usou PrEP ou PEP. Assintomática. Estratégia de prevenção:",
+    alternativas: {
+      A: "Prescrever PrEP após HIV não reagente; indicar PEP após tratamento inicial; rastreio de ISTs a cada 3 meses.",
+      B: "Oferecer teste rápido HIV/sífilis; prescrever PrEP imediato; orientar sobre vacinas disponíveis no SUS.",
+      C: "Testagem rápida HIV/sífilis; prescrever PEP após HIV não reagente; programar início de PrEP após término da PEP.",
+      D: "Prescrever PEP e PrEP concomitantes; sorologias ISTs; agendar retorno para análise dos resultados."
+    },
+    gabarito: "C",
+    explicacao: "EXPOSIÇÃO SEXUAL DE RISCO AO HIV há 2 DIAS (48h, dentro da janela de até 72h) em PROFISSIONAL DO SEXO TRAVESTI (população-chave, risco aumentado). CONDUTA SEQUENCIAL (PCDT Brasil): 1) TESTAGEM RÁPIDA HIV e sífilis IMEDIATAMENTE; 2) Se HIV NÃO REAGENTE: iniciar PEP por 28 DIAS (TDF/3TC + DTG); 3) APÓS término da PEP (28 dias), iniciar PrEP de modo contínuo (TDF/FTC diariamente) — paciente é POPULAÇÃO-CHAVE elegível; 4) NÃO se usa PEP e PrEP SIMULTANEAMENTE (são esquemas diferentes — PEP com 3 drogas, PrEP com 2); D ERRADA; 5) Vacinas (hepatite B, HPV se elegível) e rastreio de ISTs periódico. RESPOSTA C — sequência correta. A inverte ordem; B prescreve PrEP de início imediato ignorando a exposição aguda (precisa PEP primeiro)."
+  },
+  {
+    n: 391,
+    banca: "ENAMED 2025 — Caderno 2",
+    especialidade: "Clínica Médica",
+    tema: "Psiquiatria",
+    subtemas: ["Anorexia nervosa", "Internação clínica"],
+    dificuldade: "Médio",
+    temImagem: false,
+    enunciado: "Mulher 21 anos, AMENORREIA 4 meses. Há 10 meses dieta, perdeu 30 kg. Desmaio no exercício, ECG: alterações ST e T. Sem dx psiquiátrico prévio. Quer perder mais peso. EF: palidez, turgor diminuído. Alt 1,63m, PESO 39 kg, IMC 14,7 (DESNUTRIÇÃO GRAVE), PA 80x60, FC 55, FR 15. Conduta:",
+    alternativas: {
+      A: "Solicitar internação em enfermaria de clínica médica.",
+      B: "Encaminhar para internação em enfermaria de saúde mental.",
+      C: "Continuar investigação na UBS.",
+      D: "Acompanhar em ambulatório do CAPS."
+    },
+    gabarito: "A",
+    explicacao: "ANOREXIA NERVOSA (DSM-5): restrição alimentar persistente com peso significativamente baixo, medo intenso de ganhar peso, distorção da imagem corporal. CRITÉRIOS DE INTERNAÇÃO HOSPITALAR CLÍNICA (urgentes, AAP, SBP): 1) IMC <15 (ESTE CASO: 14,7) — DESNUTRIÇÃO GRAVE; 2) Hipotensão (PA <80x50) ou BRADICARDIA (<50) — sinais cardíacos descompensados; 3) ALTERAÇÕES ELETROLÍTICAS/ECG (este caso: alterações ST/T = pode ser repolarização, prolongamento de QT, alto risco arritmia); 4) Hipotermia <35,5°C; 5) Síncope/desmaio (este caso!); 6) Desidratação grave; 7) Falha de tratamento ambulatorial. ESTE CASO TEM MÚLTIPLOS CRITÉRIOS = INDICAÇÃO DE INTERNAÇÃO CLÍNICA URGENTE (não psiquiátrica) para REALIMENTAÇÃO SEGURA (cuidado com Sd da Realimentação — distúrbios eletrolíticos potencialmente fatais). Após estabilização clínica, tratamento psiquiátrico/multidisciplinar especializado. RESPOSTA A. Internação em SM (B) é para risco psiquiátrico agudo (suicídio); UBS (C) e CAPS (D) inadequados pela gravidade clínica."
+  },
+  {
+    n: 392,
+    banca: "ENAMED 2025 — Caderno 2",
+    especialidade: "Clínica Médica",
+    tema: "Neurologia",
+    subtemas: ["Doença de Parkinson", "Levodopa"],
+    dificuldade: "Médio",
+    temImagem: false,
+    enunciado: "Mulher 65 anos, lentidão de movimentos 6m, dificuldade para amarrar sapato/abotoar. Marcha com passos curtos, 1 queda. TREMOR DE REPOUSO, RIGIDEZ, alteração do sono. Cognição preservada. EF: FÁCIES EM MÁSCARA, marcha em pequenos passos, tremores ASSIMÉTRICOS na manobra dos braços estendidos, RIGIDEZ EM RODA DENTADA. RM: atrofia compatível com idade. Tratamento inicial:",
+    alternativas: {
+      A: "Levodopa e carbidopa.",
+      B: "Donepezila e memantina.",
+      C: "Propranolol e amantadina.",
+      D: "Atorvastatina e baclofeno."
+    },
+    gabarito: "A",
+    explicacao: "DOENÇA DE PARKINSON IDIOPÁTICA (DPI): quadro clássico TRIPÉ MOTOR (TREMOR DE REPOUSO, RIGIDEZ EM RODA DENTADA, BRADICINESIA) + INSTABILIDADE POSTURAL (queda), ASSIMETRIA (mais em um lado), FÁCIES EM MÁSCARA (hipomimia), marcha em pequenos passos. Sintomas não-motores: depressão, alterações do sono, autonômicas. TRATAMENTO MEDICAMENTOSO INICIAL: 1) LEVODOPA + CARBIDOPA (precursor da dopamina + inibidor da decarboxilase periférica — Prolopa/Sinemet): PADRÃO-OURO em pacientes IDOSOS (>65a) — maior eficácia, menos efeitos colaterais; 2) Agonistas dopaminérgicos (pramipexol, ropinirol): preferenciais em pacientes JOVENS (<65a) para retardar complicações motoras da levodopa (flutuações on-off, discinesias); 3) IMAO-B (selegilina, rasagilina). DONEPEZILA/MEMANTINA (B): para demência de Alzheimer; PROPRANOLOL (C): tremor essencial; AMANTADINA: tratamento auxiliar em discinesias. RESPOSTA A — levodopa+carbidopa é tratamento inicial em paciente IDOSA com DPI."
+  },
+  {
+    n: 393,
+    banca: "ENAMED 2025 — Caderno 2",
+    especialidade: "Pediatria",
+    tema: "Violência contra Adolescente",
+    subtemas: ["Notificação", "Conselho Tutelar"],
+    dificuldade: "Médio",
+    temImagem: false,
+    enunciado: "Situação para notificar ao Conselho Tutelar:",
+    alternativas: {
+      A: "Manuel, 15a, abandonado, com febre/vômitos/petéquias/rigidez de nuca, vacinação desconhecida (MENINGOCOCCEMIA).",
+      B: "Michele, 13a, morando com tios, com EQUIMOSES em face/pernas/coxas em VÁRIOS ESTÁGIOS, EVITA FALAR.",
+      C: "Felipe, 11a, em abrigo, febre + dor retro-orbital + sangramento gengival + petéquias (DENGUE).",
+      D: "Edilene, 16a, medidas socioeducativas, equimoses + suores noturnos + febre + perda de peso + linfonodomegalia generalizada (LINFOMA)."
+    },
+    gabarito: "B",
+    explicacao: "VIOLÊNCIA CONTRA CRIANÇA/ADOLESCENTE — NOTIFICAÇÃO COMPULSÓRIA ao CONSELHO TUTELAR (Estatuto da Criança e do Adolescente, Lei 8.069/1990, Art. 13 — OBRIGATÓRIA para profissional de saúde em SUSPEITA OU CONFIRMAÇÃO). SINAIS DE VIOLÊNCIA FÍSICA: 1) Lesões em DIFERENTES ESTÁGIOS DE EVOLUÇÃO (compatível com agressões REPETIDAS em tempos diferentes) — ESTE É SINAL CLÁSSICO; 2) Lesões em LOCAIS NÃO USUAIS para acidentes (face, dorso, coxas internas, glúteos); 3) HISTÓRIA INCOMPATÍVEL com a lesão; 4) Demora em buscar atendimento; 5) CRIANÇA TEMEROSA/EVITA FALAR (este caso!). MICHELE (B): equimoses em DIVERSOS ESTÁGIOS EM FACE + PERNAS + COXAS + EVITA FALAR = SUSPEITA FORTE DE VIOLÊNCIA → NOTIFICAR CONSELHO TUTELAR (e SINAN, Ficha de Violência Interpessoal). Outras opções: A (meningococcemia), C (dengue), D (linfoma) são doenças clínicas com petéquias/equimoses por mecanismos hematológicos/infecciosos. RESPOSTA B."
+  },
+  {
+    n: 394,
+    banca: "ENAMED 2025 — Caderno 2",
+    especialidade: "Cirurgia",
+    tema: "Apendicite",
+    subtemas: ["Quadro clássico", "Conduta"],
+    dificuldade: "Fácil",
+    temImagem: false,
+    enunciado: "Paciente F 27 anos, UPA, dor abdominal há 2 dias INICIANDO EM EPIGÁSTRIO, contínua, com náusea e perda de apetite. Evoluindo para FID há 1 dia + febre 38,2°C. Última menstruação há 23 dias, ciclos regulares 28 dias. EF: desidratada +/4+, ruídos hidroaéreos diminuídos, DESCOMPRESSÃO BRUSCA DOLOROSA EM QID. Lab: Hb 10,7, leucócitos 13.400, bastões 7%. EAS: 25 leuco/campo, 8 hemácias. β-hCG NEGATIVO. Conduta:",
+    alternativas: {
+      A: "Antibioticoterapia empírica até urocultura.",
+      B: "TC abdome e iniciar metotrexato.",
+      C: "Antibioticoterapia empírica e acompanhamento ambulatorial.",
+      D: "USG abdome e solicitar parecer cirúrgico."
+    },
+    gabarito: "D",
+    explicacao: "APENDICITE AGUDA — QUADRO CLÁSSICO (CRONOLOGIA DE MURPHY): 1) Dor periumbilical/epigástrica visceral (24-48h); 2) Anorexia, náusea, vômito; 3) MIGRAÇÃO da dor para FID (Blumberg+); 4) Febre baixa; 5) Leucocitose com desvio à esquerda. ESCALA DE ALVARADO/AIR para estratificação. Esta paciente: dor migratória de epi → FID, febre, anorexia, descompressão brusca dolorosa em QID (Blumberg+), leucocitose com desvio = APENDICITE TÍPICA. CONFIRMAÇÃO: USG (operador-dependente em adultos, primeira linha em jovens/grávidas/crianças) ou TC abdome (padrão-ouro em adultos) + AVALIAÇÃO CIRÚRGICA URGENTE para apendicectomia. Beta-hCG NEGATIVO afasta gravidez ectópica (DDx); 25 leuco/campo na urina pode ser REATIVO pela proximidade do apêndice/pielite reativa, não significa ITU primária. RESPOSTA D. ATB sem investigação cirúrgica (A) é INADEQUADO. B (metotrexato) trata ectópica que aqui não há. C subdimensiona a urgência."
+  },
+  {
+    n: 395,
+    banca: "ENAMED 2025 — Caderno 2",
+    especialidade: "GO",
+    tema: "Puerpério Imediato em DM",
+    subtemas: ["Insulina pós-parto", "DMG"],
+    dificuldade: "Médio",
+    temImagem: false,
+    enunciado: "Multípara 37 sem, obesa, DMG controlada com insulina NPH e regular. Parto normal, RN 3.300g. Conduta no puerpério imediato:",
+    alternativas: {
+      A: "Suspender insulinoterapia.",
+      B: "Iniciar hipoglicemiante oral.",
+      C: "Manter insulina NPH em 1/3 da dose da gravidez.",
+      D: "Manter insulinoterapia com a dosagem do pré-natal."
+    },
+    gabarito: "A",
+    explicacao: "DIABETES MELLITUS GESTACIONAL (DMG) — manejo PÓS-PARTO: a resistência insulínica da gestação CESSA ABRUPTAMENTE com a saída da placenta (perda dos hormônios contrainsulínicos placentários — hPL, estrogênio, progesterona, cortisol). CONDUTA NO PUERPÉRIO IMEDIATO: 1) SUSPENDER A INSULINA (a maioria das DMG não precisa mais de tratamento após o parto); 2) Monitorar glicemias capilares por 24-48h para confirmar normalização; 3) REAVALIAR em 6-12 SEMANAS pós-parto com TOTG 75g — risco aumentado de DM2 futuro (50% em 10 anos). NOTA: em paciente com diabetes pré-gestacional (DM1/DM2 anterior à gestação), o manejo é diferente — geralmente retomar tratamento prévio. Manter insulina (D) ou em 1/3 da dose (C) é INADEQUADO em DMG após parto. Hipoglicemiante oral (B) não é primeira escolha imediata pós-parto. RESPOSTA A."
+  }
+);
+
+console.log("ENAMED 2025 Bloco 3 (371-395) adicionado");
+
+// ==================== ENAMED 2025 — Caderno 2 — Bloco 4 (396-420) ====================
+QUESTOES.push(
+  {
+    n: 396,
+    banca: "ENAMED 2025 — Caderno 2",
+    especialidade: "MFC/Preventiva",
+    tema: "Arboviroses",
+    subtemas: ["Dengue grupo B", "Hidratação"],
+    dificuldade: "Médio",
+    temImagem: false,
+    enunciado: "Mulher 35 anos, UBS, febre 39°C há 3 dias, cefaleia retro-orbital, mialgia, prostração. Petéquias em MMII (PROVA DO LAÇO POSITIVA). Sem comorbidades, sem gestação. Hemograma: Hto 45%, plaquetas 90.000 (PLAQUETOPENIA), leuco 3.500. PA 110x70, FC 88. Classificação e conduta:",
+    alternativas: {
+      A: "Dengue grupo A; hidratação oral 60mL/kg/dia em casa, retorno em 24h.",
+      B: "Dengue grupo B; HIDRATAÇÃO ORAL VIGIADA + OBSERVAÇÃO até resultado de exames; reavaliar.",
+      C: "Dengue grupo C; expansão IV 20mL/kg em 2h, internar.",
+      D: "Dengue grupo D; expansão rápida 20mL/kg em 20min, UTI."
+    },
+    gabarito: "B",
+    explicacao: "CLASSIFICAÇÃO DE DENGUE (MS 2024): GRUPO A: sem sinais de alarme + sem condições especiais + prova do laço NEGATIVA + sem manifestações hemorrágicas → MANEJO DOMICILIAR. GRUPO B: SEM sinais de alarme, MAS com PROVA DO LAÇO POSITIVA ou MANIFESTAÇÕES HEMORRÁGICAS espontâneas (petéquias) ou CONDIÇÕES ESPECIAIS (gestante, <2a, >65a, comorbidades) — OBSERVAÇÃO em UNIDADE com hidratação oral até resultado de exames; se hematócrito normal e plaquetas ≥50.000, ALTA com reavaliação 24h. GRUPO C: SINAIS DE ALARME (dor abdominal intensa, vômitos persistentes, sangramento de mucosa, letargia, hepatomegalia >2cm, ↑Hto) — INTERNAR + EXPANSÃO 10mL/kg em 1h. GRUPO D: dengue grave/choque — expansão 20mL/kg em 20min + UTI. CASO: prova do laço+, plaquetopenia → GRUPO B. RESPOSTA B."
+  },
+  {
+    n: 397,
+    banca: "ENAMED 2025 — Caderno 2",
+    especialidade: "MFC/Preventiva",
+    tema: "Dor Lombar",
+    subtemas: ["Dor inespecífica", "Sinais de alerta"],
+    dificuldade: "Fácil",
+    temImagem: false,
+    enunciado: "Homem 42 anos, UBS, dor lombar há 1 semana, após carregar peso. Sem irradiação para MMII, sem sintomas urinários/intestinais, sem febre, sem perda ponderal. EF: dor à palpação paravertebral lombar, Lasègue negativo, força/reflexos/sensibilidade normais. Conduta:",
+    alternativas: {
+      A: "Solicitar RM de coluna lombar.",
+      B: "Encaminhar para ortopedista.",
+      C: "Solicitar RX de coluna lombossacra.",
+      D: "Orientar manter atividade, analgésico simples, evitar repouso prolongado."
+    },
+    gabarito: "D",
+    explicacao: "DOR LOMBAR INESPECÍFICA (>90% dos casos): mecânica, sem sinais de alarme (red flags). RED FLAGS que justificam investigação adicional: 1) Idade <20 ou >55 anos; 2) Trauma significativo; 3) Sintomas neurológicos progressivos (déficit motor, sensitivo, esfincteriano); 4) Sintomas sistêmicos (febre, perda de peso, sudorese noturna); 5) História de câncer; 6) Imunossupressão, uso de drogas IV; 7) Uso de corticoide; 8) Dor noturna constante; 9) Síndrome de cauda equina (anestesia em sela, retenção urinária). PACIENTE SEM red flags. CONDUTA (USPSTF, NICE): 1) ORIENTAÇÃO/EDUCAÇÃO (prognóstico autolimitado, 80-90% melhoram em 4-6 semanas); 2) MANTER ATIVIDADE FÍSICA (NÃO repouso prolongado); 3) Analgesia simples (paracetamol/AINH); 4) NÃO solicitar imagem em primeira consulta sem red flags (sobrediagnóstico, achados incidentais); 5) Calor local, fisioterapia se persistir. RESPOSTA D."
+  },
+  {
+    n: 398,
+    banca: "ENAMED 2025 — Caderno 2",
+    especialidade: "Clínica Médica",
+    tema: "Psiquiatria",
+    subtemas: ["Internação involuntária", "Lei 10.216"],
+    dificuldade: "Médio",
+    temImagem: false,
+    enunciado: "Mulher 28 anos, ESQUIZOFRENIA. Família leva à UPA por surto psicótico AGUDO: agressiva, ouvindo vozes, ameaça AGREDIR FAMILIARES, recusa medicação. Sem crítica. Sobre INTERNAÇÃO INVOLUNTÁRIA (Lei 10.216/2001):",
+    alternativas: {
+      A: "Determinada pela Justiça após pedido familiar.",
+      B: "Autorizada pelo MÉDICO e comunicada ao MINISTÉRIO PÚBLICO em 72 HORAS.",
+      C: "Realizada apenas com consentimento do paciente em momento de lucidez.",
+      D: "Autorizada apenas em hospital psiquiátrico, não em hospital geral."
+    },
+    gabarito: "B",
+    explicacao: "LEI 10.216/2001 (Reforma Psiquiátrica) — TIPOS DE INTERNAÇÃO EM SAÚDE MENTAL: 1) VOLUNTÁRIA: com CONSENTIMENTO do paciente (assina termo). 2) INVOLUNTÁRIA: SEM consentimento do paciente, A PEDIDO DE TERCEIRO (família) — AUTORIZADA PELO MÉDICO RESPONSÁVEL, devendo ser COMUNICADA AO MINISTÉRIO PÚBLICO em até 72 HORAS (do início e do término). 3) COMPULSÓRIA: DETERMINADA PELA JUSTIÇA. INDICAÇÕES da INVOLUNTÁRIA: risco de auto/heteroagressão, comprometimento grave da capacidade de julgamento. Pode ser feita em HOSPITAL GERAL com leito de saúde mental (não exclusivo de hospital psiquiátrico — D errada). A errada (não exige Justiça); C errada (involuntária dispensa consentimento). RESPOSTA B."
+  },
+  {
+    n: 399,
+    banca: "ENAMED 2025 — Caderno 2",
+    especialidade: "Clínica Médica",
+    tema: "Neurologia",
+    subtemas: ["AVE isquêmico", "Contraindicação trombólise"],
+    dificuldade: "Médio",
+    temImagem: false,
+    enunciado: "Homem 68 anos, HAS, DM, FA. Levado à UPA com HEMIPARESIA E DISARTRIA. Última vez visto bem há 6 HORAS. NIHSS 8. TC crânio sem sangramento, sem hipodensidades extensas. INR 1,2, glicemia 130. Conduta sobre trombólise:",
+    alternativas: {
+      A: "Alteplase 0,9mg/kg IV.",
+      B: "NÃO indicada por estar FORA da janela de tempo (>4,5h da última hora visto bem).",
+      C: "Tenecteplase em dose única.",
+      D: "Trombectomia mecânica após trombólise."
+    },
+    gabarito: "B",
+    explicacao: "AVE ISQUÊMICO AGUDO — TROMBÓLISE INTRAVENOSA com ALTEPLASE (rtPA 0,9 mg/kg, máx 90mg): JANELA padrão de até 4,5 HORAS do INÍCIO DOS SINTOMAS (ou da última vez visto bem). FORA DA JANELA (>4,5h): NÃO indicada trombólise IV de rotina. ESTE PACIENTE: 6h da última vez visto bem = FORA da janela para alteplase IV. ALTERNATIVAS para janelas estendidas: 1) TROMBECTOMIA MECÂNICA: até 6h da rotina; em casos selecionados com critérios de imagem favorável (DAWN/DEFUSE-3), até 24h, em oclusão de grande vaso; 2) Wake-up stroke ou janela estendida: protocolos especiais com RM e mismatch — em centros especializados. RESPOSTA B. Em casos selecionados com OCLUSÃO DE GRANDE VASO (artéria cerebral média M1) e neuroimagem favorável, trombectomia poderia ser considerada, mas alteplase IV pura está contraindicada. NIHSS 8 é moderado."
+  },
+  {
+    n: 400,
+    banca: "ENAMED 2025 — Caderno 2",
+    especialidade: "Pediatria",
+    tema: "Urologia",
+    subtemas: ["Fimose patológica", "Conduta"],
+    dificuldade: "Fácil",
+    temImagem: false,
+    enunciado: "Menino 8 anos, UBS, mãe relata DIFICULDADE PARA URINAR (esforço miccional, jato fraco, balonamento de prepúcio) e infecções urinárias de repetição. EF: prepúcio com ANEL FIBRÓTICO ESTREITADO, NÃO retrátil. Sem cicatrizes prévias. Conduta:",
+    alternativas: {
+      A: "Aguardar até a puberdade.",
+      B: "Manobras de tração diária pelos pais.",
+      C: "POSTECTOMIA (circuncisão cirúrgica).",
+      D: "Corticoide tópico baixa potência."
+    },
+    gabarito: "C",
+    explicacao: "FIMOSE em pediatria: 1) FISIOLÓGICA: presente em quase todos os RN, regredindo até 3-5 anos (acima de 80% retráteis aos 5 anos). NÃO TRATAR. 2) PATOLÓGICA: persistente após 5-7 anos OU com SINTOMAS (ITUs de repetição, balanopostite recorrente, balonamento, dificuldade miccional, esforço miccional). ESTE CASO: 8 anos, sintomático (ITU repetição, balonamento), ANEL FIBRÓTICO (sugestivo de BXO/líquen escleroso ou cicatricial pós-balanites). CONDUTA: 1) CORTICOIDE TÓPICO DE ALTA potência (betametasona 0,05%, 2x/dia por 4-8 semanas) — 1ª linha, resolve 70-90%; 2) Se falha ou anel fibrótico instalado (como neste caso) → POSTECTOMIA. CORTICOIDE BAIXA POTÊNCIA (D) é ineficaz; manobras de tração sem corticoide podem traumatizar. Anel fibrótico com sintomas é INDICAÇÃO de cirurgia. RESPOSTA C."
+  },
+  {
+    n: 401,
+    banca: "ENAMED 2025 — Caderno 2",
+    especialidade: "Cirurgia",
+    tema: "Câncer Periampular",
+    subtemas: ["Sinal de Courvoisier", "CA cabeça pâncreas"],
+    dificuldade: "Médio",
+    temImagem: false,
+    enunciado: "Homem 67 anos, ICTERÍCIA progressiva, indolor, há 1 mês. Colúria, acolia, prurido. Perda 5kg em 2m. EF: ictérico (3+/4+), VESÍCULA PALPÁVEL INDOLOR no HCD (Sinal de Courvoisier). Sem dor à palpação. Lab: BT 12, BD 10, FA muito elevada, GGT muito elevada. Hipótese e exame inicial:",
+    alternativas: {
+      A: "Colelitíase com coledocolitíase; USG abdome.",
+      B: "Tumor PERIAMPULAR (CA cabeça do pâncreas, ampolar, colédoco distal, duodeno); TC de abdome com contraste.",
+      C: "Hepatite viral aguda; sorologias HAV/HBV/HCV.",
+      D: "Cirrose biliar primária; anti-mitocôndria."
+    },
+    gabarito: "B",
+    explicacao: "SINAL DE COURVOISIER-TERRIER: VESÍCULA PALPÁVEL INDOLOR em paciente com ICTERÍCIA COLESTÁTICA — fortemente sugestivo de OBSTRUÇÃO BILIAR EXTRA-HEPÁTICA por TUMOR PERIAMPULAR (CA cabeça do pâncreas, CA ampola de Vater, CA colédoco distal, CA duodeno). A obstrução crônica permite dilatação progressiva da vesícula sem inflamação prévia — vesícula 'em pera'. DIFERENCIAL: na coledocolitíase, a vesícula geralmente NÃO é palpável (cálculos prévios causam fibrose, vesícula esclerótica). EXAME INICIAL: TC ABDOME COM CONTRASTE (protocolo pancreático) — visualiza massa pancreática, dilatação biliar, ressecabilidade vascular. Marcador: CA 19.9. RESPOSTA B."
+  },
+  {
+    n: 402,
+    banca: "ENAMED 2025 — Caderno 2",
+    especialidade: "GO",
+    tema: "HAS Crônica e Gestação",
+    subtemas: ["Drogas seguras", "Pré-eclâmpsia profilaxia"],
+    dificuldade: "Médio",
+    temImagem: false,
+    enunciado: "Mulher 32 anos, G2P1, 15 semanas. HAS crônica, em uso de ENALAPRIL 20 mg/dia. PA atual: 145x95. Conduta:",
+    alternativas: {
+      A: "Manter enalapril com monitoramento renal mensal.",
+      B: "Suspender enalapril, NÃO substituir, monitorar PA.",
+      C: "Trocar enalapril por LOSARTANA.",
+      D: "Suspender enalapril, iniciar ALFA-METILDOPA, AAS 100mg/dia e suplementação de CÁLCIO."
+    },
+    gabarito: "D",
+    explicacao: "HAS NA GESTAÇÃO: 1) DROGAS CONTRAINDICADAS: IECA (ENALAPRIL) e BRA (losartana) — TERATOGÊNESE no 2º/3º trimestre (oligodrâmnio, insuficiência renal fetal, hipoplasia pulmonar, deformidades). DEVEM SER SUSPENSAS na confirmação de gestação ou já no pré-concepcional. 2) DROGAS SEGURAS: ALFA-METILDOPA (1ª linha clássica), HIDRALAZINA (oral), BETABLOQUEADORES (preferir LABETALOL ou PINDOLOL — atenolol pode causar CIUR), NIFEDIPINA (BCC). 3) DIURÉTICOS: evitar em gestantes (depleção de volume → CIUR). 4) PROFILAXIA DE PRÉ-ECLÂMPSIA em pacientes de risco (HAS crônica é fator de alto risco): AAS 100 mg/dia (12-36 semanas) + CÁLCIO 1-1,5 g/dia se baixa ingestão. RESPOSTA D — única que aborda os 4 elementos: suspender IECA + substituir por droga segura + profilaxia com AAS + cálcio."
+  },
+  {
+    n: 403,
+    banca: "ENAMED 2025 — Caderno 2",
+    especialidade: "Clínica Médica",
+    tema: "Endocrinologia",
+    subtemas: ["DM2 descompensado", "Insulinoterapia"],
+    dificuldade: "Médio",
+    temImagem: false,
+    enunciado: "Homem 58 anos, DM2 há 10 anos, em uso de metformina 2g/dia + glimepirida 4mg. Poliúria, polidipsia, perda 6kg em 2 meses. HbA1c 9,5%. Glicemia jejum 245. Sem cetonúria, sem acidose. Conduta:",
+    alternativas: {
+      A: "Aumentar metformina para 2,5g.",
+      B: "Trocar glimepirida por gliclazida.",
+      C: "Iniciar INSULINA BASAL (NPH ou glargina) noturna, manter metformina, considerar retirar sulfonilureia.",
+      D: "Iniciar dapagliflozina e suspender metformina."
+    },
+    gabarito: "C",
+    explicacao: "DM2 DESCOMPENSADO em terapia dupla (metformina + sulfonilureia) com HbA1c ≥9,0% + SINTOMAS DE HIPERGLICEMIA (poliúria, polidipsia, perda de peso) = INDICAÇÃO DE INSULINIZAÇÃO. DIRETRIZ SBD: 1) HbA1c <7,5%: monoterapia (metformina); 2) HbA1c 7,5-9,0%: dupla terapia; 3) HbA1c ≥9,0%: tripla terapia OU INSULINIZAÇÃO; 4) HbA1c ≥10% OU SINTOMAS CATABÓLICOS: INICIAR INSULINA. ESQUEMA INICIAL: INSULINA BASAL NOTURNA (NPH bedtime ou GLARGINA/DETEMIR) 0,1-0,2 U/kg/dia, titulando pela glicemia de jejum; MANTER METFORMINA (controle hepático, sensibilizador); CONSIDERAR retirar sulfonilureia (risco de hipoglicemia com insulina, ganho de peso). RESPOSTA C. Aumentar metformina (A) já está dose máxima usual; trocar sulfonilureia (B) é insuficiente; suspender metformina (D) é INADEQUADO."
+  },
+  {
+    n: 404,
+    banca: "ENAMED 2025 — Caderno 2",
+    especialidade: "MFC/Preventiva",
+    tema: "Epidemiologia",
+    subtemas: ["Teste em baixa prevalência", "VPP"],
+    dificuldade: "Difícil",
+    temImagem: false,
+    enunciado: "Sobre teste de rastreio com SENSIBILIDADE 95% e ESPECIFICIDADE 90% aplicado em população com PREVALÊNCIA BAIXA da doença (1%), é correto afirmar:",
+    alternativas: {
+      A: "VPP será alto porque a sensibilidade é alta.",
+      B: "VPP será BAIXO, pois em populações de BAIXA PREVALÊNCIA muitos resultados positivos são FALSOS-POSITIVOS.",
+      C: "VPN será baixo, dada a alta sensibilidade.",
+      D: "Sensibilidade e especificidade variam conforme a prevalência."
+    },
+    gabarito: "B",
+    explicacao: "PROPRIEDADES DE TESTES DIAGNÓSTICOS: 1) SENSIBILIDADE e ESPECIFICIDADE: características INTRÍNSECAS do teste, NÃO variam com a prevalência (D errada); 2) VALORES PREDITIVOS (VPP e VPN): DEPENDEM da PREVALÊNCIA. Em POPULAÇÕES DE BAIXA PREVALÊNCIA: VPP é BAIXO (muitos falsos-positivos relativos aos verdadeiros), VPN é ALTO. Exemplo numérico (1.000 pessoas, prevalência 1% = 10 doentes): TESTE: 95% sens × 10 doentes = 9,5 VP; 5% × 10 = 0,5 FN. ESPECIFICIDADE: 90% × 990 sadios = 891 VN; 10% × 990 = 99 FP. VPP = VP/(VP+FP) = 9,5/(9,5+99) ≈ 8,7% — APENAS 8,7% dos positivos são REALMENTE doentes; 91% são falsos-positivos! VPN = 891/(891+0,5) ≈ 99,9%. CONCLUSÃO: testes de rastreio em baixa prevalência geram MUITOS FALSOS-POSITIVOS — sobrediagnóstico, custos, ansiedade, exames invasivos desnecessários. RESPOSTA B."
+  },
+  {
+    n: 405,
+    banca: "ENAMED 2025 — Caderno 2",
+    especialidade: "MFC/Preventiva",
+    tema: "Saúde Mental",
+    subtemas: ["Luto agudo", "APS"],
+    dificuldade: "Fácil",
+    temImagem: false,
+    enunciado: "Mulher 45 anos, UBS, perdeu o marido há 1 mês. Tristeza, choro frequente, insônia, perda de apetite, mas mantém rotina (cuida dos filhos, vai ao trabalho). Sem ideação suicida, sem sintomas psicóticos, sem desesperança. Conduta:",
+    alternativas: {
+      A: "Iniciar sertralina 50mg.",
+      B: "Encaminhar para CAPS.",
+      C: "Iniciar clonazepam para o sono.",
+      D: "ACOMPANHAR NA APS com escuta qualificada e suporte; não medicar; reavaliar."
+    },
+    gabarito: "D",
+    explicacao: "LUTO AGUDO NORMAL: reações esperadas de TRISTEZA, choro, insônia, perda apetite, saudade, raiva, culpa, dificuldade de aceitação, NOS PRIMEIROS MESES (até ~6m) após perda significativa. DSM-5: o LUTO NORMAL NÃO É TRANSTORNO PSIQUIÁTRICO. Antes do DSM-5, o luto era excludente de diagnóstico de depressão maior nas primeiras 8 semanas. A nova versão removeu essa exclusão mas reforçou que SOMENTE quando há SINTOMAS DEPRESSIVOS GRAVES, persistentes, desproporcionais (desesperança intensa, ideação suicida, sintomas psicóticos, incapacidade funcional grave) é que se diagnostica TRANSTORNO DEPRESSIVO. Em luto normal: 1) ACOLHIMENTO, ESCUTA QUALIFICADA na APS; 2) NÃO MEDICAR de rotina (medicalização do sofrimento normal — prevenção quaternária); 3) Apoio multiprofissional se necessário (psicologia, grupos); 4) Reavaliar — se sintomas persistirem >6-12m com prejuízo grave = LUTO COMPLICADO/PERSISTENTE. RESPOSTA D. ISRS (A), CAPS (B), BZD (C) são INADEQUADOS no luto normal sem sintomas graves."
+  },
+  {
+    n: 406,
+    banca: "ENAMED 2025 — Caderno 2",
+    especialidade: "Clínica Médica",
+    tema: "Geriatria",
+    subtemas: ["Quedas em idoso", "Polifarmácia"],
+    dificuldade: "Médio",
+    temImagem: false,
+    enunciado: "Mulher 78 anos, UBS, 3 quedas em 6 meses (todas com tontura ao levantar). Uso: clortalidona 25mg, propranolol 40mg, anlodipino 10mg, amitriptilina 25mg, alprazolam 0,5mg, omeprazol. PA deitada 145x85, em pé 110x70 (HIPOTENSÃO ORTOSTÁTICA). Marcha lenta, sem défices focais. Cognição preservada. Conduta:",
+    alternativas: {
+      A: "Solicitar TC crânio, RM cervical e holter.",
+      B: "Encaminhar para neurologista.",
+      C: "REVISAR POLIFARMÁCIA — suspender/reduzir drogas associadas à QUEDA (BZD, tricíclico, anti-hipertensivos em excesso).",
+      D: "Encaminhar para fisioterapia para reabilitação vestibular."
+    },
+    gabarito: "C",
+    explicacao: "QUEDAS EM IDOSOS — CAUSAS MULTIFATORIAIS: 1) Polifarmácia (>4 drogas, especialmente PSICOTRÓPICOS); 2) HIPOTENSÃO ORTOSTÁTICA; 3) Sarcopenia; 4) Déficits sensoriais (visão, vestibular); 5) Comorbidades neurológicas. PREVENÇÃO QUATERNÁRIA: REVISÃO DA POLIFARMÁCIA é INTERVENÇÃO CHAVE. CRITÉRIOS DE BEERS / STOPP/START — fármacos a EVITAR EM IDOSOS: 1) BENZODIAZEPÍNICOS (alprazolam): aumentam risco de quedas, declínio cognitivo, dependência; 2) TRICÍCLICOS (amitriptilina): anticolinérgicos, sedativos, ortostase; 3) Antipsicóticos; 4) AINEs; 5) Sulfonilureias. CONDUTA: 1) Suspender ALPRAZOLAM (desmame gradual); 2) Suspender AMITRIPTILINA; 3) Reavaliar anti-hipertensivos (3 drogas! Reduzir; metas mais permissivas no idoso); 4) Avaliação multidimensional do idoso. RESPOSTA C — intervenção mais COSTO-EFETIVA e baseada em EVIDÊNCIA."
+  },
+  {
+    n: 407,
+    banca: "ENAMED 2025 — Caderno 2",
+    especialidade: "Pediatria",
+    tema: "Cardiologia",
+    subtemas: ["Febre reumática", "Profilaxia"],
+    dificuldade: "Médio",
+    temImagem: false,
+    enunciado: "Menino 10 anos, há 3 sem: faringite tratada incorretamente. Há 2 dias: poliartrite migratória (joelhos, tornozelos, cotovelos), febre, SOPRO SISTÓLICO MITRAL NOVO. Critérios de Jones presentes. Conduta TERAPÊUTICA E PROFILÁTICA:",
+    alternativas: {
+      A: "Cefalexina por 14 dias.",
+      B: "Penicilina V oral por 30 dias.",
+      C: "Apenas tratamento sintomático com AAS.",
+      D: "PENICILINA BENZATINA dose única (erradicação) + AAS + iniciar PROFILAXIA SECUNDÁRIA com Pen Benz 1,2 mi UI IM A CADA 21 DIAS."
+    },
+    gabarito: "D",
+    explicacao: "FEBRE REUMÁTICA AGUDA (FRA) — CRITÉRIOS DE JONES (modificados): MAIORES: cardite, poliartrite migratória, coreia de Sydenham, eritema marginatum, nódulos subcutâneos. MENORES: febre, artralgia, ↑VHS/PCR, BAV 1º grau. EVIDÊNCIA DE ESTREPTOCOCO RECENTE: ASLO, faringite recente. DIAGNÓSTICO: 2 maiores OU 1 maior + 2 menores + evidência GAS. TRATAMENTO AGUDO: 1) ERRADICAÇÃO do GAS: PENICILINA BENZATINA 1,2 mi UI IM dose única (peso ≥20kg) ou amoxicilina 10 dias; 2) ANTIINFLAMATÓRIO: AAS para artrite; corticoide se cardite grave; 3) Coreia: anticonvulsivante (haloperidol, ácido valproico). PROFILAXIA SECUNDÁRIA — PENICILINA BENZATINA 1,2 mi UI IM A CADA 21 DIAS (algumas referências dizem 28d, mas 21d é o padrão MS Brasil): a) SEM cardite: por 5 anos ou até 21 anos; b) COM cardite SEM sequela: 10 anos ou até 25 anos; c) COM lesão valvar: 10 anos ou até 40 anos; d) Pós-cirurgia valvar: por toda a vida. RESPOSTA D — contempla erradicação + sintomático + profilaxia."
+  },
+  {
+    n: 408,
+    banca: "ENAMED 2025 — Caderno 2",
+    especialidade: "Cirurgia",
+    tema: "Pancreatite Crônica",
+    subtemas: ["Etilismo", "Insuficiência exócrina"],
+    dificuldade: "Médio",
+    temImagem: false,
+    enunciado: "Homem 56 anos, ETILISMO 33 anos, dor abdominal recorrente em FAIXA, perda 12kg em 6m, ESTEATORREIA, diarreia crônica. DM diagnosticado recentemente. EF: emagrecido, abdome doloroso à palpação profunda. AMILASE/LIPASE NORMAIS. Hipótese mais provável:",
+    alternativas: {
+      A: "Pancreatite aguda recorrente.",
+      B: "Doença celíaca.",
+      C: "Câncer de pâncreas.",
+      D: "PANCREATITE CRÔNICA."
+    },
+    gabarito: "D",
+    explicacao: "PANCREATITE CRÔNICA: doença INFLAMATÓRIA progressiva com FIBROSE pancreática e PERDA DE FUNÇÃO ENDÓCRINA E EXÓCRINA. ETIOLOGIA mais comum: ETILISMO CRÔNICO (60-80%). QUADRO CLÁSSICO: 1) DOR ABDOMINAL EM FAIXA, recorrente, persistente; 2) PERDA DE PESO; 3) Insuficiência EXÓCRINA: ESTEATORREIA, MÁ-ABSORÇÃO, diarreia, deficiência de vitaminas lipossolúveis (A, D, E, K); 4) Insuficiência ENDÓCRINA: DM (pancreatogênico/tipo 3c — geralmente tardio na história). LABORATÓRIO: AMILASE e LIPASE PODEM ESTAR NORMAIS (pâncreas já fibrótico, não produz mais enzimas em quantidade); elastase fecal BAIXA (avalia função exócrina); HbA1c. IMAGEM: TC abdome (calcificações pancreáticas — patognomônicas!), ducto pancreático dilatado em 'colar de pérolas'. TRATAMENTO: 1) Abstinência de álcool; 2) ENZIMAS PANCREÁTICAS (Creon); 3) Vitaminas; 4) Manejo da dor; 5) DM com insulina. RESPOSTA D. Pancreatite AGUDA (A) tem amilase/lipase elevadas; CA pâncreas (C) é diferencial importante — investigar com TC."
+  },
+  {
+    n: 409,
+    banca: "ENAMED 2025 — Caderno 2",
+    especialidade: "GO",
+    tema: "Pós-datismo",
+    subtemas: ["Indução", "41 semanas"],
+    dificuldade: "Fácil",
+    temImagem: false,
+    enunciado: "Gestante G1P0, 41 semanas confirmadas pela USG do 1º trimestre. PN normal, sem comorbidades. Sem TP espontâneo. Bishop 4, BCF 142, MF presentes. Conduta:",
+    alternativas: {
+      A: "Aguardar até 42 semanas de TP espontâneo.",
+      B: "Cesárea eletiva imediata.",
+      C: "Misoprostol intravaginal sem indicação clínica.",
+      D: "INDUÇÃO DO PARTO até 41+6 semanas."
+    },
+    gabarito: "D",
+    explicacao: "PÓS-DATISMO/GESTAÇÃO PROLONGADA: ≥42 semanas (294 dias). RISCOS aumentados após 41 sem: 1) Macrossomia/desproporção; 2) Oligodrâmnio (insuficiência placentária); 3) Síndrome de aspiração meconial; 4) Sofrimento fetal; 5) MORTE PERINATAL — risco aumenta progressivamente após 40 sem. CONDUTA (FEBRASGO, ACOG, NICE): INDUÇÃO DO PARTO entre 41+0 e 41+6 SEMANAS reduz mortalidade perinatal sem aumentar cesárea (metanálises) — recomendação atual. MÉTODO: depende do BISHOP. Bishop ≤6 (cervical desfavorável): MISOPROSTOL vaginal 25mcg 6/6h ou sonda de Foley; Bishop ≥7: OCITOCINA + amniotomia. SE COLO MUITO IMATURO E SEM TP em 41+6: alguns serviços optam por cesárea, mas a INDUÇÃO é tentativa preferencial. AGUARDAR até 42 sem (A) — AUMENTA RISCO PERINATAL. CESÁREA ELETIVA SEM TRABALHO DE PARTO (B) inadequada de rotina (sem indicação obstétrica adicional). RESPOSTA D."
+  },
+  {
+    n: 410,
+    banca: "ENAMED 2025 — Caderno 2",
+    especialidade: "MFC/Preventiva",
+    tema: "Malária",
+    subtemas: ["Quimioprofilaxia", "Yanomami"],
+    dificuldade: "Difícil",
+    temImagem: false,
+    enunciado: "Médica residente vai ATUAR em Distrito Sanitário Especial Indígena (DSEI) YANOMAMI por 6 meses. Área de ALTA TRANSMISSÃO DE MALÁRIA (predomínio P. vivax e P. falciparum). Quimioprofilaxia indicada:",
+    alternativas: {
+      A: "Não indicada quimioprofilaxia; apenas medidas individuais.",
+      B: "Cloroquina semanal por toda permanência.",
+      C: "Mefloquina 250mg semanal por toda permanência.",
+      D: "DOXICICLINA 100mg/dia (cobertura P. falciparum); reforçar medidas individuais e diagnóstico/tratamento precoce em adoecimento."
+    },
+    gabarito: "D",
+    explicacao: "QUIMIOPROFILAXIA DA MALÁRIA NO BRASIL: o MS NÃO recomenda QUIMIOPROFILAXIA DE ROTINA para profissionais em áreas endêmicas (custo, efeitos colaterais, RESISTÊNCIA). RECOMENDAÇÃO: 1) MEDIDAS INDIVIDUAIS: repelentes (DEET 30%+), mosquiteiros impregnados, roupas longas, telas; 2) DIAGNÓSTICO PRECOCE (teste rápido/gota espessa) ao primeiro sintoma; 3) TRATAMENTO IMEDIATO conforme espécie. EXCEÇÕES com QUIMIOPROFILAXIA: 1) Viajantes a áreas de ALTÍSSIMA transmissão de P. FALCIPARUM, por curtos períodos: DOXICICLINA 100mg/dia (mefloquina é alternativa); 2) Gestantes em área endêmica de falciparum: cloroquina semanal. EM REGIÕES YANOMAMI: predomina P. vivax e P. falciparum. Para profissional permanente, a recomendação prática varia, mas a MELHOR OPÇÃO LISTADA é DOXICICLINA + medidas individuais + diagnóstico precoce. CLOROQUINA SEMANAL (B) cobre vivax mas tem RESISTÊNCIA em falciparum (alta no Brasil amazônico); MEFLOQUINA tem efeitos neuropsiquiátricos. RESPOSTA D."
+  },
+  {
+    n: 411,
+    banca: "ENAMED 2025 — Caderno 2",
+    especialidade: "Pediatria",
+    tema: "Endocrinologia",
+    subtemas: ["CAD pediátrica", "Insulina contínua"],
+    dificuldade: "Médio",
+    temImagem: false,
+    enunciado: "Menino 12 anos, primeiro episódio de CAD em DM1: glicemia 480, pH 7,15, bic 10, cetonúria 3+, K+ 4,2. Após HIDRATAÇÃO inicial com SF 0,9% 20mL/kg em 1h, conduta sequencial:",
+    alternativas: {
+      A: "Bicarbonato de sódio 1mEq/kg em bolus.",
+      B: "Insulina regular IV 0,3 U/kg em bolus + manutenção 0,3 U/kg/h.",
+      C: "INSULINA REGULAR IV em INFUSÃO CONTÍNUA 0,05-0,1 U/kg/h (sem bolus) + manter hidratação com adição de K+.",
+      D: "Manitol e furosemida para diurese forçada."
+    },
+    gabarito: "C",
+    explicacao: "CAD PEDIÁTRICA — PROTOCOLO ISPAD (2022): 1) FASE 1 — HIDRATAÇÃO INICIAL: SF 0,9% 10-20 mL/kg em 30-60 min para correção de choque/hipovolemia. CALCULAR déficit (5-10%) e repor em 24-48h junto com manutenção; CUIDADO COM EDEMA CEREBRAL (limitar bolus, não corrigir muito rápido). 2) FASE 2 — INSULINA REGULAR IV CONTÍNUA: 0,05-0,1 U/kg/h SEM BOLUS (bolus aumenta risco de edema cerebral em crianças). Iniciar 1h APÓS hidratação. 3) POTÁSSIO: repor 20-40 mEq/L de K+ na hidratação quando K+<5,5 + diurese (sempre antes/junto com insulina); 4) BICARBONATO: CONTRAINDICADO de rotina (risco edema cerebral, acidose paradoxal SNC); só em pH <6,9 e instabilidade hemodinâmica. 5) Quando glicemia <250-300: trocar SF por SG 5%, manter insulina. 6) Resolver acidose (pH>7,3, bic>15, BE>-5) antes de transicionar para SC. RESPOSTA C — sem bolus, infusão contínua + manter hidratação com K+."
+  },
+  {
+    n: 412,
+    banca: "ENAMED 2025 — Caderno 2",
+    especialidade: "Pediatria",
+    tema: "Neonatologia",
+    subtemas: ["Onfalite", "Sepse neonatal precoce"],
+    dificuldade: "Médio",
+    temImagem: false,
+    enunciado: "RN 8 dias, parto domiciliar não assistido. Trazido por SECREÇÃO PURULENTA E HIPEREMIA PERIUMBILICAL (ONFALITE), febre, recusa alimentar há 24h. EF: rebaixado, T 38,5°C, FC 180, FR 70, perfusão lenta 4s, hipoatividade, hipotonia. Conduta:",
+    alternativas: {
+      A: "ATB tópico (mupirocina) ambulatorial e retorno em 48h.",
+      B: "Amoxicilina-clavulanato VO domiciliar.",
+      C: "Internar, observar evolução clínica antes de antibiótico sistêmico.",
+      D: "INTERNAR para coleta de culturas (hemo, líquor, urina), iniciar ATB IV de amplo espectro (ampicilina + gentamicina), suporte clínico."
+    },
+    gabarito: "D",
+    explicacao: "ONFALITE NEONATAL com SINAIS DE SEPSE: RN com TRÊS sinais ou mais sugestivos (febre, taquicardia, taquipneia, perfusão lenta, hipoatividade, hipotonia) = SEPSE NEONATAL TARDIA. RISCO: choque, meningite, óbito. CONDUTA (Manual MS, SBP, AAP): 1) INTERNAÇÃO IMEDIATA em unidade neonatal/pediátrica; 2) CULTURAS (sangue, urina, LÍQUOR — punção lombar — sepse neonatal sempre investigar meningite); 3) HMG, PCR; 4) ANTIBIOTICOTERAPIA IV de AMPLO ESPECTRO IMEDIATA: AMPICILINA + GENTAMICINA (cobertura para Strepto, GBS, E. coli, Listeria) — em ONFALITE/foco cutâneo considerar VANCOMICINA (S. aureus, incluindo MRSA); ajustar conforme cultura; 5) Suporte clínico (oxigênio, fluidos, vasoativos se choque). RESPOSTA D. ATB tópico (A), VO (B), aguardar (C) são GRAVES INADEQUAÇÕES — risco de morte."
+  },
+  {
+    n: 413,
+    banca: "ENAMED 2025 — Caderno 2",
+    especialidade: "Cirurgia",
+    tema: "Coloproctologia",
+    subtemas: ["Diverticulite complicada", "Abscesso paracólico"],
+    dificuldade: "Difícil",
+    temImagem: false,
+    enunciado: "Homem 65 anos, PO recente de cardiocirurgia. Dor FIE, febre 38,7°C. TC abdome: abscesso paracólico de 6cm associado a diverticulite (HINCHEY IB/II). Sem peritonite. Conduta:",
+    alternativas: {
+      A: "Cirurgia de urgência com colostomia (Hartmann).",
+      B: "Apenas antibioticoterapia oral ambulatorial.",
+      C: "Cirurgia eletiva em 4-6 semanas após resolução do abscesso.",
+      D: "INTERNAR + ATB IV de AMPLO ESPECTRO + DRENAGEM PERCUTÂNEA do abscesso guiada por TC."
+    },
+    gabarito: "D",
+    explicacao: "DIVERTICULITE AGUDA — CLASSIFICAÇÃO DE HINCHEY: I) Abscesso pericólico (a — flegmão; b — abscesso pericólico <5cm); II) Abscesso pélvico/intra-abdominal/retroperitoneal; III) Peritonite purulenta generalizada; IV) Peritonite fecal. TRATAMENTO POR ESTÁGIO: 1) Hinchey IA: ATB ambulatorial (não complicada); 2) HINCHEY IB-II (abscesso >4cm): INTERNAÇÃO + ATB IV AMPLO ESPECTRO (cobertura para Gram-negativos e anaeróbios — ceftriaxona+metronidazol ou piperacilina-tazobactam) + DRENAGEM PERCUTÂNEA guiada por TC se abscesso ≥4cm (o caso, 6cm). Esta abordagem evita CIRURGIA DE URGÊNCIA em pacientes de RISCO (cardiopatas, pós-cardiocirurgia) e permite recuperação para cirurgia eletiva posterior se necessário; 3) HINCHEY III-IV: cirurgia de URGÊNCIA (Hartmann ou lavagem laparoscópica). Cirurgia eletiva (C) após resolução pode ser considerada em casos selecionados (atualmente debatida — não rotineira). RESPOSTA D."
+  },
+  {
+    n: 414,
+    banca: "ENAMED 2025 — Caderno 2",
+    especialidade: "GO",
+    tema: "Terceiro Período do Parto",
+    subtemas: ["Dequitação fisiológica", "Conduta ativa"],
+    dificuldade: "Médio",
+    temImagem: false,
+    enunciado: "Primípara, parto normal há 15 minutos. RN no peito, vigoroso. Sem perda sanguínea anormal, útero contraído. Placenta NÃO dequitada ainda. Conduta:",
+    alternativas: {
+      A: "AGUARDAR DEQUITAÇÃO FISIOLÓGICA até 30-45 minutos; já feito manejo ativo com ocitocina 10 UI IM pós-parto.",
+      B: "Extração manual imediata da placenta.",
+      C: "Curetagem uterina.",
+      D: "Histerectomia de urgência."
+    },
+    gabarito: "A",
+    explicacao: "TERCEIRO PERÍODO DO PARTO (DEQUITAÇÃO): tempo entre nascimento do RN e expulsão da placenta. DURAÇÃO NORMAL: até 30-45 MINUTOS. CONDUTA ATIVA (recomendada pela OMS para redução de HPP): 1) OCITOCINA 10 UI IM imediatamente após o nascimento; 2) TRAÇÃO CONTROLADA do cordão (Brandt-Andrews); 3) MASSAGEM uterina. SINAIS DE DEQUITAÇÃO: descida do cordão, jato sanguíneo, útero arredondado. RETENÇÃO PLACENTÁRIA: >30 min com manejo ativo OU >60 min sem manejo. CONDUTA NA RETENÇÃO: extração manual sob analgesia; se acretismo, cirurgia. ESTE CASO: 15 minutos pós-parto, sem sangramento anormal, útero contraído — TUDO DENTRO DA NORMALIDADE — AGUARDAR. RESPOSTA A. Extração manual prematura (B) aumenta risco de hemorragia/inversão uterina; curetagem (C) e histerectomia (D) são desproporcionais."
+  },
+  {
+    n: 415,
+    banca: "ENAMED 2025 — Caderno 2",
+    especialidade: "MFC/Preventiva",
+    tema: "Tuberculose em PPL",
+    subtemas: ["Vulnerabilidade", "Busca ativa"],
+    dificuldade: "Médio",
+    temImagem: false,
+    enunciado: "Pessoa Privada de Liberdade (PPL), homem 35 anos, tosse há 2 semanas, perda 5kg em 1 mês, sudorese noturna. Sem febre intensa. Sobre o RASTREAMENTO/CONDUTA na população prisional:",
+    alternativas: {
+      A: "Aguardar 3 semanas de tosse antes de investigar TB.",
+      B: "INVESTIGAR IMEDIATAMENTE com baciloscopia + TRM-TB + RX tórax; PPL é POPULAÇÃO DE ALTO RISCO para TB.",
+      C: "Iniciar empiricamente esquema RIPE sem confirmação.",
+      D: "Encaminhar para hospital de referência sem qualquer triagem inicial."
+    },
+    gabarito: "B",
+    explicacao: "TUBERCULOSE em POPULAÇÕES VULNERÁVEIS (MS): a definição padrão de SINTOMÁTICO RESPIRATÓRIO é TOSSE ≥3 SEMANAS — porém em POPULAÇÕES DE ALTO RISCO o LIMIAR É REDUZIDO: 1) PESSOAS PRIVADAS DE LIBERDADE (PPL): TOSSE de QUALQUER DURAÇÃO; 2) PVHA (vivendo com HIV/aids): tosse de qualquer duração; 3) População em situação de rua; 4) Profissionais de saúde; 5) Indígenas; 6) Contatos próximos. INCIDÊNCIA EM PPL é ~28x MAIOR que população geral (superlotação, ventilação ruim, vulnerabilidade nutricional). CONDUTA: BACILOSCOPIA + TRM-TB (Xpert MTB/RIF — detecta TB + resistência à rifampicina) + RX TÓRAX. Confirmar diagnóstico ANTES de iniciar RIPE (não tratar empiricamente — C errada — exceto em casos específicos como TB meningítica grave). RESPOSTA B."
+  },
+  {
+    n: 416,
+    banca: "ENAMED 2025 — Caderno 2",
+    especialidade: "Clínica Médica",
+    tema: "Reumatologia",
+    subtemas: ["Espondilite anquilosante", "HLA-B27"],
+    dificuldade: "Médio",
+    temImagem: false,
+    enunciado: "Homem 28 anos, DOR LOMBAR INFLAMATÓRIA (pior pela manhã, melhora com atividade) há >6 meses, com RIGIDEZ MATINAL >1h, irradiação para nádegas (bilateral). Sem trauma. EF: dor à manobra de sacroilíaca. HF: pai com 'coluna travada'. Hipótese e exame diagnóstico:",
+    alternativas: {
+      A: "Hérnia de disco lombar; RM coluna lombar.",
+      B: "Dor lombar inespecífica; observação.",
+      C: "ESPONDILITE ANQUILOSANTE; HLA-B27 + RX SACROILÍACAS / RM sacroilíaca.",
+      D: "Estenose espinhal; eletroneuromiografia."
+    },
+    gabarito: "C",
+    explicacao: "ESPONDILITE ANQUILOSANTE / ESPONDILOARTRITES AXIAIS: doença reumatológica INFLAMATÓRIA crônica do ESQUELETO AXIAL (coluna + sacroilíacas). EPIDEMIOLOGIA: HOMENS jovens (20-40a), forte associação genética com HLA-B27 (90% positivos). QUADRO CLÁSSICO: 1) DOR LOMBAR INFLAMATÓRIA (critérios ASAS): início <40a, insidiosa, MELHORA COM ATIVIDADE, piora com REPOUSO, dor NOTURNA, RIGIDEZ MATINAL >30 min; 2) SACROILEÍTE bilateral (dor em nádegas, alternada inicialmente); 3) ENTESITE (tendão de Aquiles, fáscia plantar); 4) UVEÍTE ANTERIOR aguda recorrente; 5) DACTILITE; 6) Manifestações extra-articulares (psoríase, DII). DIAGNÓSTICO: 1) HLA-B27; 2) RX SACROILÍACAS (alterações tardias — esclerose, erosão, anquilose); 3) RM sacroilíacas (alterações precoces — edema medular ósseo) — exame de escolha em fase inicial; 4) PCR/VHS elevadas. TRATAMENTO: AINEs, fisioterapia, anti-TNF/anti-IL17 se refratário. RESPOSTA C."
+  },
+  {
+    n: 417,
+    banca: "ENAMED 2025 — Caderno 2",
+    especialidade: "Pediatria",
+    tema: "Imunização",
+    subtemas: ["Calendário adolescente", "12 anos"],
+    dificuldade: "Médio",
+    temImagem: false,
+    enunciado: "Adolescente 12 anos, mulher, sexualmente ativa. Carteira de vacinação: aplicou todas vacinas da infância (incluindo Hep B, SCR, varicela, febre amarela). NÃO recebeu vacinas do calendário do adolescente. Vacinas a aplicar:",
+    alternativas: {
+      A: "HPV 2 doses (D0-D6m), reforço da Hep B (se necessário), dT.",
+      B: "BCG, polio oral, rotavírus.",
+      C: "Influenza apenas.",
+      D: "Pneumocócica 10-valente e meningocócica C."
+    },
+    gabarito: "A",
+    explicacao: "CALENDÁRIO VACINAL DO ADOLESCENTE (PNI/SUS): 1) HPV QUADRIVALENTE: meninas 9-14 anos, meninos 11-14 anos — 2 DOSES (intervalo 6 meses) — em adolescente 12 anos, esquema de 2 doses; 2) MENINGOCÓCICA ACWY ou C: 1 dose entre 11-14 anos; 3) dT (dupla adulto): a cada 10 anos (reforço); 4) HEPATITE B: completar esquema se incompleto; 5) Varicela, SCR: verificar/completar; 6) Febre amarela: 1 dose para vida em área de recomendação; 7) COVID-19: conforme MS; 8) Influenza: anual. PACIENTE JÁ TEM Hep B, SCR, varicela, FA. FALTAM: HPV (2 doses), dT (reforço), MENINGOCÓCICA ACWY/C. Esta alternativa (A) contempla HPV + reforço Hep B + dT. PNEUMO 10-VALENTE e MENING C (D) só pneumo é pediátrico (até 5 anos). RESPOSTA A."
+  },
+  {
+    n: 418,
+    banca: "ENAMED 2025 — Caderno 2",
+    especialidade: "Clínica Médica",
+    tema: "Pneumologia",
+    subtemas: ["Derrame pleural", "Toracocentese diagnóstica"],
+    dificuldade: "Médio",
+    temImagem: false,
+    enunciado: "Homem 45 anos, ER, tosse + dispneia + perda 8kg + sudorese noturna há 2 meses. EF: MV diminuído base D, macicez à percussão. RX: opacidade homogênea com obliteração do seio costofrênico D (DERRAME PLEURAL moderado). Conduta investigatória inicial:",
+    alternativas: {
+      A: "Iniciar empiricamente RIPE para TB.",
+      B: "Drenagem torácica imediata.",
+      C: "TC tórax sem outras avaliações.",
+      D: "TORACOCENTESE DIAGNÓSTICA com análise do líquido (bioquímica, citologia, ADA, BAAR, cultura)."
+    },
+    gabarito: "D",
+    explicacao: "DERRAME PLEURAL — INVESTIGAÇÃO: paciente jovem com SINTOMAS SISTÊMICOS B (febre, sudorese, perda de peso) sugere TB PLEURAL ou NEOPLASIA. CONDUTA: TORACOCENTESE DIAGNÓSTICA é o PRIMEIRO PASSO em derrames pleurais sem etiologia clara. ANÁLISE DO LÍQUIDO: 1) CRITÉRIOS DE LIGHT (transudato x exsudato — relação proteína LP/sérica >0,5; LDH LP/sérica >0,6; LDH LP >2/3 do limite superior do soro = EXSUDATO); 2) BIOQUÍMICA: glicose, pH; 3) CITOLOGIA (CA pulmão, linfoma, mesotelioma); 4) CULTURAS (bacteriana, BAAR, fungos); 5) ADA (ADENOSINA DEAMINASE): >40 U/L sugere TB pleural (sensibilidade/especificidade altas); 6) BIÓPSIA PLEURAL se necessária. NÃO INICIAR EMPÍRICA RIPE (A) sem confirmação. DRENAGEM (B) reserva-se para derrames complicados/empiema. TC (C) é complementar mas não substitui análise do líquido. RESPOSTA D."
+  },
+  {
+    n: 419,
+    banca: "ENAMED 2025 — Caderno 2",
+    especialidade: "GO",
+    tema: "Contracepção em Comorbidade",
+    subtemas: ["LES/SAF", "SIU-LNG"],
+    dificuldade: "Difícil",
+    temImagem: false,
+    enunciado: "Mulher 32 anos, LES com SAF (Síndrome AntiFosfolípide), TVP prévia há 2 anos em uso de varfarina. Sangramento uterino aumentado/abundante. Deseja contracepção e controle do sangramento. Método mais adequado:",
+    alternativas: {
+      A: "Anticoncepcional combinado oral.",
+      B: "SIU-LNG (Mirena/levonorgestrel).",
+      C: "DIU de cobre.",
+      D: "Adesivo combinado transdérmico."
+    },
+    gabarito: "B",
+    explicacao: "CONTRACEPÇÃO EM LES/SAF — CRITÉRIOS DE ELEGIBILIDADE OMS: 1) MÉTODOS COMBINADOS (estrogênio + progestágeno — pílula, anel, adesivo): CATEGORIA 4 (CONTRAINDICAÇÃO ABSOLUTA) em SAF e/ou TVP prévia — estrogênio aumenta TROMBOFILIA, RISCO INACEITÁVEL. 2) PROGESTÁGENO ISOLADO (pílula, injeção, implante, SIU-LNG): SEGUROS em LES/SAF/TVP — CATEGORIA 1-2. 3) DIU DE COBRE: pode ser usado mas PIORA SANGRAMENTO (efeito colateral) — CONTRAINDICADO funcionalmente em SUA. 4) MÉTODOS DEFINITIVOS: laqueadura tubária. ESCOLHA IDEAL: SIU-LNG (MIRENA) — combina: 1) ALTA EFICÁCIA contraceptiva (>99%); 2) REDUÇÃO DRAMÁTICA DO SANGRAMENTO UTERINO (50-90% das pacientes ficam em amenorreia); 3) Seguro em SAF/LES (apenas progestágeno local). RESPOSTA B."
+  },
+  {
+    n: 420,
+    banca: "ENAMED 2025 — Caderno 2",
+    especialidade: "MFC/Preventiva",
+    tema: "Esporotricose",
+    subtemas: ["Itraconazol", "Zoonose felina"],
+    dificuldade: "Médio",
+    temImagem: false,
+    enunciado: "Mulher 45 anos, cuidadora de gatos resgatados. Pápula em DORSO DA MÃO há 3 sem, com EVOLUÇÃO para NÓDULOS LINFANGÍTICOS ascendentes (forma SPOROTRICOIDE/linfocutânea). Sem sintomas sistêmicos. Cidade do RJ com epidemia de esporotricose felina. Tratamento de PRIMEIRA LINHA:",
+    alternativas: {
+      A: "Sulfametoxazol-trimetoprim 6 meses.",
+      B: "Anfotericina B IV.",
+      C: "ITRACONAZOL 100-200mg/dia VO por 3-6 MESES (até resolução + 30 dias).",
+      D: "Cetoconazol 200mg/dia por 30 dias."
+    },
+    gabarito: "C",
+    explicacao: "ESPOROTRICOSE: micose subcutânea causada por SPOROTHRIX schenckii / S. brasiliensis. EPIDEMIOLOGIA NO BRASIL: EPIDEMIA URBANA NO RJ por transmissão ZOONÓTICA via GATOS (arranhão/mordida). FORMA LINFOCUTÂNEA (mais comum, 75%): inoculação em pele → pápula/nódulo no local da inoculação → ASCENSÃO LINFÁTICA com NÓDULOS EM CADEIA ('aspecto SPOROTRICOIDE') ulcerando ao longo dos vasos linfáticos. OUTRAS FORMAS: cutânea fixa, disseminada (imunossuprimidos), extracutânea. TRATAMENTO de 1ª LINHA: ITRACONAZOL 100-200 mg/dia VO por 3-6 MESES (geralmente 3-4 meses; até resolução + 30 dias adicionais) — eficaz, seguro, padrão MS. ALTERNATIVAS: 1) Iodeto de potássio (KI) — tratamento tradicional, eficaz, barato; 2) Terbinafina; 3) Anfotericina B para formas graves/disseminadas/sistêmicas (B somente em casos extremos); 4) Cetoconazol (D) NÃO é mais recomendado (hepatotoxicidade, eficácia inferior). RESPOSTA C."
+  }
+);
+
+console.log("ENAMED 2025 Bloco 4 (396-420) adicionado. Total: 420 questões");
