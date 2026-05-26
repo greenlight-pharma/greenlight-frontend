@@ -717,8 +717,8 @@
         atualizaHeader();
         hideAuthOverlay();
         await carregarMeusCasos();
-        atualizaStats();
-        renderTimeline();
+        atualizarStats();
+        renderLista();
       } catch (e) {
         mostraErroAuth("Falha de conexao. Tente novamente.");
       } finally {
@@ -738,13 +738,28 @@
         }
         const data = await resp.json();
         if (Array.isArray(data.casos)) {
-          // Adapta formato do backend para o que o frontend espera
-          casos = data.casos.map(c => ({
-            id: c.id,
-            titulo: c.titulo,
-            data: c.createdAt,
-            _remoto: true
-          }));
+          // Adapta formato do backend (payload/feedback como JSONB) para
+          // o que renderLista espera (campos planos no objeto caso).
+          casos = data.casos.map(c => {
+            // payload e feedback podem vir como string (JSONB serializado)
+            // ou como objeto, dependendo da config do driver. Defensivo:
+            const p = typeof c.payload === "string" ? JSON.parse(c.payload) : (c.payload || {});
+            const fb = typeof c.feedback === "string" ? JSON.parse(c.feedback) : (c.feedback || {});
+            return {
+              id: c.id,
+              titulo: c.titulo,
+              data: c.createdAt,
+              especialidade: p.especialidade || "",
+              faixa: p.faixa || "",
+              queixa: p.queixa || p.queixaPrincipal || "",
+              historia: p.historia || p.historiaClinica || "",
+              hipoteses: p.hipoteses || "",
+              conduta: p.conduta || "",
+              aprendizado: p.aprendizado || "",
+              feedback: fb,
+              _remoto: true
+            };
+          });
         }
       } catch (e) {
         console.log("[INTERNATO] erro ao carregar casos:", e.message);
@@ -834,8 +849,8 @@
 
       validarSessao().then((ok) => {
         if (ok) {
-          atualizaStats();
-          renderTimeline();
+          atualizarStats();
+          renderLista();
         }
       });
     });
@@ -1111,26 +1126,10 @@
         document.getElementById("feedback-disclaimer").style.display = "block";
         document.getElementById("aprendizado-box").style.display = "block";
 
-        // [INTERNATO] Apos gabarito gerado com sucesso, salva o caso
-        // no banco vinculado ao usuario logado. Fire-and-forget: nao
-        // bloqueia UI, mas recarrega a timeline depois.
-        salvarCasoNoBanco({
-          titulo: casoEmConstrucao.titulo,
-          especialidade: casoEmConstrucao.especialidade,
-          faixa: casoEmConstrucao.faixa,
-          queixaPrincipal: casoEmConstrucao.queixa,
-          historiaClinica: casoEmConstrucao.historia,
-          hipotesesAluno: hipoteses,
-          condutaAluno: conduta,
-        }, feedbackRecebido).then(caso => {
-          if (caso) {
-            // Recarrega lista para incluir o novo caso
-            carregarMeusCasos().then(() => {
-              atualizaStats();
-              renderTimeline();
-            });
-          }
-        });
+        // [INTERNATO] NAO salvamos no banco aqui — caso so eh persistido
+        // apos o aluno escrever aprendizado e clicar em "Salvar no
+        // portfolio" (logica em salvarPortfolio mais abaixo). Garante
+        // que o caso salvo tenha tudo: payload + feedback + aprendizado.
 
       } catch (err) {
         document.getElementById("feedback-loading").style.display = "none";
@@ -1351,7 +1350,7 @@
     }
 
     // ----- ETAPA 3: SALVAR FINAL -----
-    function salvarCaso() {
+    async function salvarCaso() {
       const aprendizado = document.getElementById("f-aprendizado").value.trim();
       const msg = document.getElementById("msg");
       msg.className = "msg"; msg.textContent = "";
@@ -1362,27 +1361,38 @@
         return;
       }
 
-      const novo = {
-        id: nextId++,
+      // [INTERNATO] Persiste no backend com tudo:
+      //   - payload (caso completo + hipoteses/conduta do aluno + aprendizado)
+      //   - feedback (resposta da IA)
+      // Depois recarrega a lista e atualiza UI.
+      msg.className = "msg";
+      msg.textContent = "Salvando…";
+
+      const payload = {
         titulo: casoEmConstrucao.titulo,
         especialidade: casoEmConstrucao.especialidade,
         faixa: casoEmConstrucao.faixa,
         queixa: casoEmConstrucao.queixa,
         historia: casoEmConstrucao.historia,
-        // PRESERVA as hipóteses/conduta originais do aluno (registro
-        // honesto, não pode editar depois — decisão pedagógica).
         hipoteses: casoEmConstrucao.hipoteses,
         conduta: casoEmConstrucao.conduta,
-        feedback: feedbackRecebido,
-        aprendizado,
-        data: (() => {
-          const d = new Date();
-          const pad = (n) => String(n).padStart(2, "0");
-          return `${d.getFullYear()}-${pad(d.getMonth()+1)}-${pad(d.getDate())}T${pad(d.getHours())}:${pad(d.getMinutes())}`;
-        })()
+        aprendizado: aprendizado,
+        // Conserva tambem em formato camelCase para futuro
+        queixaPrincipal: casoEmConstrucao.queixa,
+        historiaClinica: casoEmConstrucao.historia,
       };
-      casos.unshift(novo);
+
+      const casoSalvo = await salvarCasoNoBanco(payload, feedbackRecebido);
+      if (!casoSalvo) {
+        msg.className = "msg error";
+        msg.textContent = "❌ Não foi possível salvar o caso. Tente novamente ou recarregue a página.";
+        return;
+      }
+
+      // Recarrega lista do backend (fonte de verdade)
+      await carregarMeusCasos();
       atualizarStats();
+      renderLista();
 
       msg.className = "msg success";
       msg.textContent = "✅ Caso salvo no seu portfólio.";
