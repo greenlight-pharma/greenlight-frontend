@@ -1500,6 +1500,13 @@
     align-items: center;
     margin: -12px -12px 12px -12px;
     font-size: 13px;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  .preview-bar .acoes {
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
   }
   .preview-bar button {
     background: white;
@@ -1510,11 +1517,46 @@
     cursor: pointer;
     font-size: 13px;
     font-weight: 600;
-    margin-left: 8px;
   }
   .preview-bar button:hover { background: #e0f2fe; }
+  .preview-bar button.secundario {
+    background: #1e40af;
+    color: white;
+  }
+  .preview-bar button.secundario:hover { background: #1e3a8a; }
+  .preview-bar button.fechar {
+    background: transparent;
+    color: white;
+    border: 1px solid rgba(255,255,255,0.4);
+  }
+  .preview-bar button.fechar:hover {
+    background: rgba(255,255,255,0.1);
+  }
+  /* Aviso temporario no topo (substitui o toast desta janela) */
+  .preview-aviso {
+    position: fixed;
+    top: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #059669;
+    color: white;
+    padding: 10px 18px;
+    border-radius: 6px;
+    font-size: 13px;
+    font-weight: 600;
+    z-index: 9999;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    max-width: 90%;
+    text-align: center;
+    opacity: 0;
+    transition: opacity 0.3s;
+    pointer-events: none;
+  }
+  .preview-aviso.visivel { opacity: 1; }
+  .preview-aviso.alerta { background: #b45309; }
   @media print {
     .preview-bar { display: none !important; }
+    .preview-aviso { display: none !important; }
     body { padding: 0; }
   }
 </style>
@@ -1522,11 +1564,82 @@
 <body>
   <div class="preview-bar">
     <span>📄 Pré-visualização do gabarito</span>
-    <span>
-      <button onclick="window.print()">🖨️ Imprimir / Salvar PDF</button>
-      <button onclick="window.close()" style="background:#475569; color:white;">Fechar</button>
+    <span class="acoes">
+      <button onclick="acaoImprimir()" title="Imprimir em impressora">🖨️ Imprimir</button>
+      <button class="secundario" onclick="acaoSalvarPDF()" title="Salvar como PDF">📥 Salvar PDF</button>
+      <button class="secundario" onclick="acaoCompartilhar()" title="Compartilhar (WhatsApp, etc.)">📱 Compartilhar</button>
+      <button class="fechar" onclick="window.close()">Fechar</button>
     </span>
   </div>
+
+  <div id="aviso" class="preview-aviso"></div>
+
+  <script>
+    // [PDF-ACOES] Scripts que rodam DENTRO da janela de preview.
+    // Nao confundir com o script principal do internato.html — esta
+    // janela eh outro contexto isolado.
+
+    function mostrarAvisoLocal(texto, tipo) {
+      const el = document.getElementById("aviso");
+      el.textContent = texto;
+      el.className = "preview-aviso visivel" + (tipo === "alerta" ? " alerta" : "");
+      clearTimeout(el._timer);
+      el._timer = setTimeout(() => {
+        el.classList.remove("visivel");
+      }, 4500);
+    }
+
+    function acaoImprimir() {
+      // Abre dialogo de impressao. Usuario escolhe impressora real.
+      window.print();
+    }
+
+    function acaoSalvarPDF() {
+      // Mesmo dialogo — usuario escolhe destino "Salvar como PDF".
+      // Aviso explicito antes para guiar a escolha.
+      mostrarAvisoLocal("📥 No diálogo, mude o Destino para 'Salvar como PDF'");
+      setTimeout(() => window.print(), 700);
+    }
+
+    function acaoCompartilhar() {
+      // [SHARE] Tenta Web Share API. Em mobile, abre menu nativo
+      // (WhatsApp, e-mail, Telegram, AirDrop, etc.). Em desktop sem
+      // suporte, orienta o usuario a salvar PDF primeiro.
+      //
+      // Limitacao tecnica: nao conseguimos anexar o PDF binario aqui
+      // porque o CSP do site bloqueia eval (necessario para libs como
+      // html2pdf). Entao compartilhamos TEXTO descritivo + sugestao.
+
+      const titulo = document.title || "Gabarito Vytal";
+      const textoCompartilhamento = "Gabarito comentado de caso clínico — " + titulo + " (gerado pela Vytal Internato).";
+
+      if (navigator.share) {
+        // API disponivel (Chrome/Safari mobile, Safari desktop, Edge)
+        navigator.share({
+          title: "Gabarito Vytal — " + titulo,
+          text: textoCompartilhamento
+        }).then(() => {
+          mostrarAvisoLocal("✅ Compartilhado!");
+        }).catch((err) => {
+          // Usuario cancelou ou erro real — nao mostrar como erro.
+          if (err && err.name !== "AbortError") {
+            mostrarAvisoLocal("Não foi possível compartilhar. Use 'Salvar PDF' e envie manualmente.", "alerta");
+          }
+        });
+      } else {
+        // Desktop sem Web Share API (Chrome desktop, Firefox, etc.)
+        mostrarAvisoLocal("Compartilhamento direto não disponível aqui. Use 'Salvar PDF' e envie no WhatsApp.", "alerta");
+      }
+    }
+
+    // Atalho de teclado: Ctrl/Cmd + P imprime (comportamento padrao)
+    // Esc fecha a janela.
+    document.addEventListener("keydown", function(e) {
+      if (e.key === "Escape") {
+        window.close();
+      }
+    });
+  </script>
 
   <div class="pdf-header">
     <div>
