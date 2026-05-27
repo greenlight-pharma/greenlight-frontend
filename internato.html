@@ -372,6 +372,52 @@
     .topbar-btn:hover { background: #f1f5f9; }
     .topbar-btn-ghost { background: transparent; color: #94a3b8; }
     .topbar-btn-ghost:hover { background: #f1f5f9; color: #334155; }
+
+    /* ============ [TERMO-DE-USO] Modal ============ */
+    .termo-overlay {
+      position: fixed; inset: 0;
+      background: rgba(15, 23, 42, 0.92);
+      z-index: 9998;
+      display: flex; align-items: center; justify-content: center;
+      padding: 16px;
+    }
+    .termo-card {
+      background: white; border-radius: 12px;
+      padding: 28px 24px; max-width: 580px; width: 100%;
+      max-height: 90vh; overflow-y: auto;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+    }
+    .termo-titulo {
+      font-size: 18px; font-weight: 700; color: #0c4a6e;
+      margin-bottom: 16px;
+    }
+    .termo-conteudo {
+      font-size: 13.5px; color: #1f2937; line-height: 1.55;
+      margin-bottom: 18px;
+    }
+    .termo-conteudo p { margin: 0 0 12px 0; }
+    .termo-conteudo strong { color: #0c4a6e; }
+    .termo-acoes {
+      display: flex; gap: 10px; flex-wrap: wrap;
+      margin-top: 18px; padding-top: 14px;
+      border-top: 1px solid #e2e8f0;
+    }
+    .termo-btn-aceitar {
+      flex: 1; min-width: 140px;
+      padding: 11px 16px;
+      background: #059669; color: white;
+      border: none; border-radius: 7px;
+      font-size: 14px; font-weight: 600; cursor: pointer;
+    }
+    .termo-btn-aceitar:hover { background: #047857; }
+    .termo-btn-aceitar:disabled { background: #94a3b8; cursor: not-allowed; }
+    .termo-btn-recusar {
+      padding: 11px 16px;
+      background: transparent; color: #64748b;
+      border: 1px solid #cbd5e1; border-radius: 7px;
+      font-size: 13px; cursor: pointer;
+    }
+    .termo-btn-recusar:hover { background: #f1f5f9; }
   </style>
 </head>
 <body>
@@ -423,6 +469,32 @@
       <span id="userName">—</span>
       <button class="topbar-btn" id="btnMeusCasos" type="button">Meus Casos</button>
       <button class="topbar-btn topbar-btn-ghost" id="btnLogout" type="button">Sair</button>
+    </div>
+  </div>
+
+  <!-- ===== [TERMO-DE-USO] Modal de aceite =====
+       Aparece apos login se o aluno nunca aceitou (ou aceitou versao antiga).
+       Bloqueia uso ate o aceite. Comunica que coordenacao acompanha. -->
+  <div id="termoOverlay" class="termo-overlay" style="display:none;">
+    <div class="termo-card">
+      <div class="termo-titulo">📋 Termo de uso — Vytal Internato</div>
+      <div class="termo-conteudo">
+        <p>Antes de começar a usar, leia e aceite:</p>
+
+        <p><strong>1. Anonimização obrigatória.</strong> Todos os casos registrados devem ser <strong>anonimizados</strong>. Nunca insira nome, CPF, prontuário, data exata, telefone, e-mail ou qualquer dado que permita identificar o paciente. Use faixa etária em vez de idade exata.</p>
+
+        <p><strong>2. Finalidade pedagógica.</strong> Esta ferramenta é educacional. <strong>Não diagnostica, não prescreve, não orienta atendimento real.</strong> O gabarito comentado é apoio ao estudo, não substitui preceptor nem decisão clínica.</p>
+
+        <p><strong>3. Acompanhamento pela coordenação.</strong> Seu uso desta ferramenta pode ser acompanhado pela coordenação pedagógica da sua instituição para fins formativos. A coordenação tem acesso a métricas agregadas (número de casos registrados, especialidades, alinhamento didático) e à lista de alunos do piloto.</p>
+
+        <p><strong>4. Sem decisão automatizada.</strong> Nenhuma decisão sobre sua aprovação, reprovação ou avaliação acadêmica é tomada pelo sistema. Essa prerrogativa é exclusiva da faculdade.</p>
+
+        <p><strong>5. LGPD e direitos.</strong> Você pode solicitar acesso, correção ou eliminação dos seus dados a qualquer momento, escrevendo para <strong>dilson@vytalsaude.com.br</strong>.</p>
+      </div>
+      <div class="termo-acoes">
+        <button id="termoBtnAceitar" class="termo-btn-aceitar">Li e aceito</button>
+        <button id="termoBtnRecusar" class="termo-btn-recusar">Não aceito (sair)</button>
+      </div>
     </div>
   </div>
 
@@ -662,6 +734,48 @@
       document.querySelector(".topbar .user").style.visibility = "visible";
     }
 
+    // [TERMO-DE-USO] Modal de aceite. Bloqueia uso ate o aluno aceitar.
+    // Disparado por validarSessao/tentarAuth quando backend retorna
+    // precisaAceitarTermo=true.
+    function showTermoOverlay() {
+      document.getElementById("termoOverlay").style.display = "flex";
+    }
+    function hideTermoOverlay() {
+      document.getElementById("termoOverlay").style.display = "none";
+    }
+
+    async function aceitarTermo() {
+      const btn = document.getElementById("termoBtnAceitar");
+      btn.disabled = true;
+      try {
+        const resp = await fetch(API_BASE + "/estudante/aceitar-termo", {
+          method: "POST",
+          headers: {
+            "Authorization": "Bearer " + getToken(),
+            "Content-Type": "application/json"
+          }
+        });
+        if (!resp.ok) {
+          alert("Erro ao registrar aceite. Tente novamente.");
+          return;
+        }
+        hideTermoOverlay();
+      } catch (e) {
+        alert("Falha de conexao. Tente novamente.");
+      } finally {
+        btn.disabled = false;
+      }
+    }
+
+    function recusarTermo() {
+      // Sem aceite, nao pode usar. Limpa sessao e volta para login.
+      clearAuth();
+      hideTermoOverlay();
+      casos = [];
+      showAuthOverlay();
+      setModoCadastro(false);
+    }
+
     function atualizaHeader() {
       const user = getUser();
       if (user) {
@@ -727,6 +841,9 @@
         setUser(data.user);
         atualizaHeader();
         hideAuthOverlay();
+        // [TERMO-DE-USO] Apos login, conferir se aluno precisa aceitar
+        // o termo (primeira vez OU versao do termo mudou).
+        await verificarTermo();
         await carregarMeusCasos();
         atualizarStats();
         renderLista();
@@ -735,6 +852,19 @@
       } finally {
         btn.disabled = false;
       }
+    }
+
+    async function verificarTermo() {
+      try {
+        const resp = await fetch(API_BASE + "/estudante/me", {
+          headers: { "Authorization": "Bearer " + getToken() }
+        });
+        if (!resp.ok) return;
+        const data = await resp.json();
+        if (data && data.precisaAceitarTermo) {
+          showTermoOverlay();
+        }
+      } catch (e) { /* silencioso */ }
     }
 
     async function carregarMeusCasos() {
@@ -825,6 +955,10 @@
           setUser(data.user);
           atualizaHeader();
           hideAuthOverlay();
+          // [TERMO-DE-USO] Flag vem direto do /estudante/me.
+          if (data.precisaAceitarTermo) {
+            showTermoOverlay();
+          }
           await carregarMeusCasos();
           return true;
         }
@@ -856,6 +990,14 @@
       document.getElementById("btnMeusCasos").addEventListener("click", () => {
         // Scroll para timeline + foco
         document.querySelector(".timeline-wrap")?.scrollIntoView({ behavior: "smooth", block: "start" });
+      });
+
+      // [TERMO-DE-USO] Botoes do modal de termo
+      document.getElementById("termoBtnAceitar").addEventListener("click", aceitarTermo);
+      document.getElementById("termoBtnRecusar").addEventListener("click", () => {
+        if (confirm("Sem aceitar o termo, você não pode usar o sistema. Sair?")) {
+          recusarTermo();
+        }
       });
 
       validarSessao().then((ok) => {

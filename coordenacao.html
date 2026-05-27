@@ -1,473 +1,665 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Vytal — Módulo Acadêmico (Coordenação)</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vytal — Painel da Coordenação</title>
   <style>
     * { box-sizing: border-box; }
     body {
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
       background: #f1f5f9;
       color: #1f2937;
-      margin: 0;
-      padding: 0;
-      line-height: 1.5;
+      min-height: 100vh;
     }
+
+    /* ============ Topbar ============ */
     .topbar {
-      background: #0f172a;
-      color: #fff;
+      background: linear-gradient(135deg, #0c4a6e, #1e40af);
+      color: white;
       padding: 14px 24px;
       display: flex;
+      justify-content: space-between;
       align-items: center;
-      gap: 14px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
     }
-    .topbar .logo { font-weight: 700; font-size: 18px; }
-    .topbar .sub { font-size: 13px; color: #94a3b8; }
-    .topbar .user { margin-left: auto; font-size: 13px; color: #cbd5e1; text-align:right; }
-    .container { max-width: 1200px; margin: 24px auto; padding: 0 16px; }
-    .card {
-      background: #fff;
-      border-radius: 12px;
-      box-shadow: 0 1px 3px rgba(0,0,0,0.06);
-      padding: 22px;
-      margin-bottom: 18px;
+    .topbar .logo { font-size: 16px; font-weight: 700; }
+    .topbar .sub { font-size: 12px; opacity: 0.85; margin-top: 2px; }
+    .topbar .user {
+      display: flex; align-items: center; gap: 10px; flex-wrap: wrap;
+      font-size: 13px;
     }
-    h1 { font-size: 24px; margin: 0 0 6px; }
-    .subtitle { color: #64748b; font-size: 14px; margin-bottom: 6px; }
-    h2 { font-size: 17px; margin: 0 0 12px; color: #0f172a; }
+    .topbar-btn {
+      background: rgba(255,255,255,0.15);
+      color: white;
+      border: 1px solid rgba(255,255,255,0.3);
+      padding: 6px 12px;
+      border-radius: 6px;
+      font-size: 12px;
+      cursor: pointer;
+    }
+    .topbar-btn:hover { background: rgba(255,255,255,0.25); }
 
-    .filtros {
-      display: flex;
-      gap: 12px;
-      flex-wrap: wrap;
-      align-items: end;
-      margin-bottom: 18px;
+    /* ============ Container ============ */
+    .container {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 24px;
     }
-    .filtros > div { flex: 1; min-width: 180px; }
-    .filtros label { font-size: 12px; font-weight: 600; color: #64748b; display: block; margin-bottom: 4px; }
-    .filtros select, .filtros input {
-      width: 100%;
-      padding: 8px 10px;
-      border: 1px solid #d1d5db;
-      border-radius: 8px;
-      font-family: inherit;
-      font-size: 14px;
-      background: #fff;
+    h1 {
+      font-size: 22px;
+      color: #0c4a6e;
+      margin: 0 0 4px 0;
     }
-
-    /* ===== STATS AGREGADAS (b) ===== */
-    .stats-row {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 14px;
-      margin-bottom: 18px;
-    }
-    @media (max-width: 800px) {
-      .stats-row { grid-template-columns: repeat(2, 1fr); }
-    }
-    .stat-card {
-      background: #fff;
-      border: 1px solid #e5e7eb;
-      border-radius: 12px;
-      padding: 18px;
-      box-shadow: 0 1px 2px rgba(0,0,0,0.04);
-    }
-    .stat-card .label { font-size: 12px; color: #64748b; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; }
-    .stat-card .value { font-size: 28px; font-weight: 700; color: #0f172a; margin-top: 4px; }
-    .stat-card .delta { font-size: 12px; color: #16a34a; margin-top: 4px; }
-    .stat-card .delta.neg { color: #dc2626; }
-
-    /* ===== GRÁFICO SIMPLES (b) ===== */
-    .chart {
-      display: flex;
-      align-items: flex-end;
-      gap: 6px;
-      height: 140px;
-      padding: 8px 0;
-      border-bottom: 1px solid #e5e7eb;
-      margin-bottom: 8px;
-    }
-    .chart .bar {
-      flex: 1;
-      background: linear-gradient(to top, #0284c7, #38bdf8);
-      border-radius: 4px 4px 0 0;
-      min-height: 4px;
-      position: relative;
-    }
-    .chart .bar:hover { background: linear-gradient(to top, #0369a1, #0284c7); }
-    .chart-labels {
-      display: flex;
-      gap: 6px;
-      font-size: 11px;
+    .subtitle {
       color: #64748b;
+      font-size: 14px;
+      margin-bottom: 24px;
     }
-    .chart-labels span { flex: 1; text-align: center; }
 
-    /* ===== TABELA DE ALUNOS (a) — engajamento individual ===== */
-    table { width: 100%; border-collapse: collapse; }
-    th, td { padding: 10px 12px; text-align: left; font-size: 14px; border-bottom: 1px solid #f1f5f9; }
-    th { font-size: 12px; font-weight: 600; color: #64748b; text-transform: uppercase; letter-spacing: 0.3px; background: #f8fafc; }
-    tr:hover { background: #f8fafc; cursor: pointer; }
-    .badge-status {
-      display: inline-block;
-      padding: 3px 10px;
-      border-radius: 12px;
+    /* ============ KPIs ============ */
+    .kpis {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 16px;
+      margin-bottom: 24px;
+    }
+    .kpi {
+      background: white;
+      border-radius: 10px;
+      padding: 18px 20px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+      border-left: 4px solid #0ea5e9;
+    }
+    .kpi.aderencia { border-left-color: #059669; }
+    .kpi.casos { border-left-color: #7c3aed; }
+    .kpi.update { border-left-color: #94a3b8; }
+    .kpi-label {
+      font-size: 12px;
+      color: #64748b;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    .kpi-valor {
+      font-size: 32px;
+      font-weight: 700;
+      color: #0f172a;
+      margin-top: 6px;
+      line-height: 1;
+    }
+    .kpi-sub {
       font-size: 11px;
+      color: #94a3b8;
+      margin-top: 6px;
+    }
+
+    /* ============ Cards (gráficos + tabela) ============ */
+    .card {
+      background: white;
+      border-radius: 10px;
+      padding: 20px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+      margin-bottom: 20px;
+    }
+    .card h3 {
+      margin: 0 0 16px 0;
+      font-size: 15px;
+      color: #0c4a6e;
       font-weight: 600;
     }
-    .badge-status.ok { background: #d1fae5; color: #065f46; }
-    .badge-status.atencao { background: #fef3c7; color: #92400e; }
-    .badge-status.baixo { background: #fee2e2; color: #991b1b; }
+    .graficos {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+      margin-bottom: 20px;
+    }
+    @media (max-width: 900px) {
+      .graficos { grid-template-columns: 1fr; }
+    }
+    .grafico-wrap {
+      position: relative;
+      height: 260px;
+    }
 
-    .mini-bar {
-      display: inline-block;
-      vertical-align: middle;
-      width: 80px;
-      height: 6px;
-      background: #e5e7eb;
-      border-radius: 3px;
-      margin-left: 8px;
-      overflow: hidden;
-    }
-    .mini-bar > div {
-      height: 100%;
-      background: #0284c7;
-      border-radius: 3px;
-    }
-    .mini-bar.baixo > div { background: #dc2626; }
-    .mini-bar.atencao > div { background: #d97706; }
-
-    /* ===== MODAL DE ALUNO (c) — drill-down ===== */
-    .modal-overlay {
-      position: fixed;
-      inset: 0;
-      background: rgba(15,23,42,0.6);
-      display: none;
-      align-items: flex-start;
-      justify-content: center;
-      z-index: 100;
-      padding: 40px 16px;
-      overflow-y: auto;
-    }
-    .modal-overlay.open { display: flex; }
-    .modal {
-      background: #fff;
-      border-radius: 12px;
-      max-width: 760px;
+    /* ============ Tabela de alunos ============ */
+    .tabela-alunos {
       width: 100%;
-      padding: 24px;
-      box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+      border-collapse: collapse;
+      font-size: 13px;
     }
-    .modal-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: start;
-      margin-bottom: 18px;
+    .tabela-alunos th {
+      text-align: left;
+      padding: 10px 12px;
+      background: #f8fafc;
+      color: #475569;
+      font-weight: 600;
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.3px;
+      border-bottom: 1px solid #e2e8f0;
     }
-    .modal-header h2 { margin: 0; font-size: 20px; }
-    .modal-header .close {
-      background: none;
-      border: none;
-      font-size: 24px;
-      cursor: pointer;
-      color: #64748b;
-      padding: 0 4px;
+    .tabela-alunos td {
+      padding: 12px;
+      border-bottom: 1px solid #f1f5f9;
+      color: #1f2937;
     }
-    .caso-item {
-      border: 1px solid #e5e7eb;
-      border-radius: 10px;
-      padding: 14px 16px;
-      margin-bottom: 10px;
+    .tabela-alunos tr:hover { background: #f8fafc; }
+    .tabela-alunos .num {
+      font-variant-numeric: tabular-nums;
+      text-align: right;
     }
-    .caso-item h3 { margin: 0 0 4px; font-size: 14px; }
-    .caso-item .meta { font-size: 12px; color: #64748b; margin-bottom: 6px; }
-    .caso-item .preview { font-size: 13px; color: #374151; }
-    .badge {
+    .badge-concord {
       display: inline-block;
       padding: 2px 8px;
-      border-radius: 12px;
+      border-radius: 10px;
       font-size: 11px;
       font-weight: 600;
-      background: #dbeafe;
-      color: #1e40af;
     }
-    .modal-stats {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 10px;
-      margin-bottom: 18px;
-    }
-    .modal-stats .item {
-      background: #f8fafc;
-      border-radius: 8px;
-      padding: 10px;
+    .badge-concord.alta { background: #d1fae5; color: #065f46; }
+    .badge-concord.media { background: #fef3c7; color: #78350f; }
+    .badge-concord.baixa { background: #e0e7ff; color: #3730a3; }
+    .badge-concord.vazio { background: #f1f5f9; color: #94a3b8; }
+
+    .empty-state {
       text-align: center;
+      padding: 40px 20px;
+      color: #94a3b8;
+      font-size: 13px;
     }
-    .modal-stats .num { font-size: 20px; font-weight: 700; color: #0284c7; }
-    .modal-stats .lbl { font-size: 11px; color: #64748b; margin-top: 2px; }
+
+    /* ============ Auth overlay ============ */
+    .auth-overlay {
+      position: fixed; inset: 0;
+      background: rgba(15, 23, 42, 0.95);
+      z-index: 9999;
+      display: none;
+      align-items: center; justify-content: center;
+      padding: 16px;
+    }
+    .auth-overlay.aberto { display: flex; }
+    .auth-card {
+      background: white; border-radius: 12px;
+      padding: 28px 24px; max-width: 400px; width: 100%;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+    }
+    .auth-logo { font-size: 18px; font-weight: 700; color: #0c4a6e; margin-bottom: 4px; }
+    .auth-title { font-size: 22px; font-weight: 600; color: #0f172a; margin-bottom: 4px; }
+    .auth-sub { font-size: 13px; color: #64748b; margin-bottom: 20px; }
+    .auth-field { margin-bottom: 14px; }
+    .auth-field label {
+      display: block; font-size: 12px; color: #475569;
+      margin-bottom: 5px; font-weight: 500;
+    }
+    .auth-field input {
+      width: 100%; padding: 10px 12px;
+      border: 1px solid #cbd5e1; border-radius: 7px;
+      font-size: 14px;
+    }
+    .auth-field input:focus { outline: 2px solid #0ea5e9; border-color: #0ea5e9; }
+    .auth-btn {
+      width: 100%; padding: 12px;
+      background: #0c4a6e; color: white;
+      border: none; border-radius: 7px;
+      font-size: 14px; font-weight: 600; cursor: pointer;
+      margin-top: 6px;
+    }
+    .auth-btn:hover { background: #0a3d5c; }
+    .auth-btn:disabled { background: #94a3b8; cursor: not-allowed; }
+    .auth-toggle {
+      text-align: center; margin-top: 14px;
+      font-size: 13px; color: #0ea5e9; cursor: pointer;
+    }
+    .auth-toggle:hover { text-decoration: underline; }
+    .auth-error {
+      background: #fee2e2; color: #991b1b;
+      border: 1px solid #fca5a5; border-radius: 6px;
+      padding: 8px 10px; font-size: 13px; margin-bottom: 14px;
+      display: none;
+    }
+    .auth-error.visivel { display: block; }
+    .auth-note {
+      text-align: center; margin-top: 18px;
+      font-size: 11px; color: #94a3b8;
+    }
+
+    /* ============ Loading / toast ============ */
+    .loading {
+      display: inline-block;
+      width: 18px; height: 18px;
+      border: 3px solid #cbd5e1;
+      border-top-color: #0c4a6e;
+      border-radius: 50%;
+      animation: spin 0.8s linear infinite;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
   </style>
 </head>
 <body>
 
-  <div class="topbar">
+  <!-- ===== Overlay de auth ===== -->
+  <div id="authOverlay" class="auth-overlay">
+    <div class="auth-card">
+      <div class="auth-logo">🩺 Vytal — Coordenação</div>
+      <div class="auth-title" id="authTitle">Entrar</div>
+      <div class="auth-sub">Painel de acompanhamento pedagógico</div>
+
+      <div id="authError" class="auth-error"></div>
+
+      <div class="auth-field">
+        <label>E-mail</label>
+        <input type="email" id="authEmail" autocomplete="email">
+      </div>
+
+      <div class="auth-field" id="fieldNome" style="display:none;">
+        <label>Nome (opcional)</label>
+        <input type="text" id="authNome" autocomplete="name">
+      </div>
+
+      <div class="auth-field" id="fieldInst" style="display:none;">
+        <label>Instituição (opcional)</label>
+        <input type="text" id="authInst" autocomplete="organization">
+      </div>
+
+      <div class="auth-field">
+        <label>Senha</label>
+        <input type="password" id="authSenha" autocomplete="current-password">
+      </div>
+
+      <button class="auth-btn" id="authBtn">Entrar</button>
+
+      <div class="auth-toggle" id="authToggleLink">Não tem conta? Cadastre-se</div>
+
+      <div class="auth-note">
+        Acesso restrito a coordenadores pedagógicos previamente autorizados.
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== Topbar ===== -->
+  <div class="topbar" id="topbar" style="display:none;">
     <div>
-      <div class="logo">🩺 Vytal — Módulo Acadêmico</div>
-      <div class="sub">Painel da Coordenação</div>
+      <div class="logo">🩺 Vytal — Coordenação</div>
+      <div class="sub">Acompanhamento pedagógico do internato</div>
     </div>
-    <div class="user">Coord. Profa. Helena Martins<br><span style="color:#94a3b8;">Faculdade de Medicina XYZ</span></div>
-  </div>
-
-  <div class="container">
-
-    <div class="card">
-      <h1>Acompanhamento do Internato</h1>
-      <div class="subtitle">Engajamento dos alunos no portfólio de casos clínicos · Período: Maio/2026</div>
-
-      <!-- ===== FILTROS ===== -->
-      <div class="filtros" style="margin-top:18px;">
-        <div>
-          <label>Período</label>
-          <select>
-            <option>Este mês (Maio/2026)</option>
-            <option>Mês anterior</option>
-            <option>Semestre atual</option>
-          </select>
-        </div>
-        <div>
-          <label>Turma</label>
-          <select>
-            <option>Todas</option>
-            <option>9º período — Turma A</option>
-            <option>9º período — Turma B</option>
-            <option>10º período</option>
-            <option>11º período</option>
-            <option>12º período</option>
-          </select>
-        </div>
-        <div>
-          <label>Setor / Rotação</label>
-          <select>
-            <option>Todos</option>
-            <option>Clínica Médica</option>
-            <option>Cirurgia Geral</option>
-            <option>Pediatria</option>
-            <option>Ginecologia / Obstetrícia</option>
-            <option>Pronto-Socorro</option>
-          </select>
-        </div>
-        <div>
-          <label>Buscar aluno</label>
-          <input type="text" placeholder="Nome do aluno" />
-        </div>
-      </div>
-    </div>
-
-    <!-- ===== (b) MÉTRICAS AGREGADAS ===== -->
-    <div class="stats-row">
-      <div class="stat-card">
-        <div class="label">Alunos ativos</div>
-        <div class="value">142 <span style="font-size:14px; color:#94a3b8;">/ 158</span></div>
-        <div class="delta">+12% vs. mês anterior</div>
-      </div>
-      <div class="stat-card">
-        <div class="label">Casos registrados</div>
-        <div class="value">1.287</div>
-        <div class="delta">+24% vs. mês anterior</div>
-      </div>
-      <div class="stat-card">
-        <div class="label">Média por aluno</div>
-        <div class="value">9,1</div>
-        <div class="delta">Meta: 8 casos/mês</div>
-      </div>
-      <div class="stat-card">
-        <div class="label">Alunos abaixo da meta</div>
-        <div class="value" style="color:#dc2626;">16</div>
-        <div class="delta neg">Atenção necessária</div>
-      </div>
-    </div>
-
-    <!-- ===== (b) GRÁFICO DE EVOLUÇÃO ===== -->
-    <div class="card">
-      <h2>Evolução do engajamento — últimos 8 meses</h2>
-      <div class="chart">
-        <div class="bar" style="height:35%;" title="Out: 412"></div>
-        <div class="bar" style="height:42%;" title="Nov: 498"></div>
-        <div class="bar" style="height:38%;" title="Dez: 451"></div>
-        <div class="bar" style="height:48%;" title="Jan: 564"></div>
-        <div class="bar" style="height:55%;" title="Fev: 651"></div>
-        <div class="bar" style="height:72%;" title="Mar: 851"></div>
-        <div class="bar" style="height:85%;" title="Abr: 1003"></div>
-        <div class="bar" style="height:100%;" title="Mai: 1287"></div>
-      </div>
-      <div class="chart-labels">
-        <span>Out</span><span>Nov</span><span>Dez</span><span>Jan</span><span>Fev</span><span>Mar</span><span>Abr</span><span>Mai</span>
-      </div>
-    </div>
-
-    <!-- ===== (a) ENGAJAMENTO INDIVIDUAL — TABELA DE ALUNOS ===== -->
-    <div class="card">
-      <h2>Engajamento individual dos alunos</h2>
-      <div class="subtitle" style="margin-bottom:14px;">Ordenado por menor atividade (alunos que precisam de atenção primeiro). Clique para detalhar.</div>
-      <table>
-        <thead>
-          <tr>
-            <th>Aluno</th>
-            <th>Turma</th>
-            <th>Casos no mês</th>
-            <th>% da meta</th>
-            <th>Último registro</th>
-            <th>Status</th>
-          </tr>
-        </thead>
-        <tbody id="tabela-alunos"></tbody>
-      </table>
-    </div>
-
-    <div class="card" style="text-align:center; color:#94a3b8; font-size:12px;">
-      Mock de demonstração — Vytal Módulo Acadêmico · Dados simulados, sem backend real.
-    </div>
-
-  </div>
-
-  <!-- ===== (c) MODAL DE DRILL-DOWN DO ALUNO ===== -->
-  <div class="modal-overlay" id="modal-overlay" onclick="fecharModalSeFora(event)">
-    <div class="modal" id="modal-aluno">
-      <div class="modal-header">
-        <div>
-          <h2 id="modal-nome">—</h2>
-          <div class="subtitle" id="modal-info">—</div>
-        </div>
-        <button class="close" onclick="fecharModal()">×</button>
-      </div>
-
-      <div class="modal-stats">
-        <div class="item"><div class="num" id="modal-total">—</div><div class="lbl">Casos no mês</div></div>
-        <div class="item"><div class="num" id="modal-rotacoes">—</div><div class="lbl">Setores cobertos</div></div>
-        <div class="item"><div class="num" id="modal-ultimo">—</div><div class="lbl">Dias desde último</div></div>
-      </div>
-
-      <h2 style="font-size:15px;">Casos registrados</h2>
-      <div id="modal-casos"></div>
+    <div class="user">
+      <span id="userInfo">—</span>
+      <button class="topbar-btn" id="btnAtualizar" type="button">↻ Atualizar</button>
+      <button class="topbar-btn" id="btnLogout" type="button">Sair</button>
     </div>
   </div>
+
+  <div class="container" id="mainContainer" style="display:none;">
+    <h1>Painel da Coordenação</h1>
+    <div class="subtitle">Métricas agregadas de uso da Vytal Acadêmico no internato</div>
+
+    <!-- KPIs -->
+    <div class="kpis">
+      <div class="kpi">
+        <div class="kpi-label">Alunos cadastrados</div>
+        <div class="kpi-valor" id="kpi-alunos">—</div>
+        <div class="kpi-sub">Total no piloto</div>
+      </div>
+      <div class="kpi casos">
+        <div class="kpi-label">Casos registrados</div>
+        <div class="kpi-valor" id="kpi-casos">—</div>
+        <div class="kpi-sub">Total acumulado</div>
+      </div>
+      <div class="kpi aderencia">
+        <div class="kpi-label">Aderência semanal</div>
+        <div class="kpi-valor" id="kpi-aderencia">—</div>
+        <div class="kpi-sub" id="kpi-aderencia-sub">% de alunos ativos</div>
+      </div>
+      <div class="kpi update">
+        <div class="kpi-label">Última atualização</div>
+        <div class="kpi-valor" id="kpi-update" style="font-size:18px;">—</div>
+        <div class="kpi-sub">Dados em tempo real</div>
+      </div>
+    </div>
+
+    <!-- Gráficos -->
+    <div class="graficos">
+      <div class="card">
+        <h3>📊 Casos por semana</h3>
+        <div class="grafico-wrap"><canvas id="grafCasos"></canvas></div>
+      </div>
+      <div class="card">
+        <h3>🏥 Distribuição por especialidade</h3>
+        <div class="grafico-wrap"><canvas id="grafEspec"></canvas></div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>🎯 Distribuição do alinhamento didático</h3>
+      <div class="grafico-wrap" style="height:200px;"><canvas id="grafAlinhamento"></canvas></div>
+    </div>
+
+    <!-- Tabela de alunos -->
+    <div class="card">
+      <h3>👥 Alunos do piloto</h3>
+      <div id="tabela-wrap">
+        <table class="tabela-alunos">
+          <thead>
+            <tr>
+              <th>Nome</th>
+              <th>E-mail</th>
+              <th class="num">Casos</th>
+              <th>Especialidade frequente</th>
+              <th>Último caso</th>
+              <th class="num">% Alta concordância</th>
+            </tr>
+          </thead>
+          <tbody id="tbody-alunos">
+            <tr><td colspan="6" class="empty-state">Carregando…</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
 
   <script>
-    // ===== Dados simulados =====
-    const alunos = [
-      { id: 1, nome: "Bruna Costa", turma: "9º P — A", casosMes: 2, ultimo: "há 11 dias", setores: 1,
-        casos: [
-          { titulo: "Hipertensão descompensada em adulto", setor: "Clínica Médica", data: "06/05/2026", queixa: "Cefaleia + PA 180x110" }
-        ]
-      },
-      { id: 2, nome: "Pedro Henrique Lima", turma: "10º P", casosMes: 3, ultimo: "há 8 dias", setores: 1,
-        casos: [
-          { titulo: "Pneumonia comunitária", setor: "Pronto-Socorro", data: "09/05/2026", queixa: "Tosse produtiva + febre" }
-        ]
-      },
-      { id: 3, nome: "Ana Beatriz Rocha", turma: "9º P — B", casosMes: 4, ultimo: "há 5 dias", setores: 2,
-        casos: [
-          { titulo: "Asma exacerbada", setor: "Pronto-Socorro", data: "12/05/2026", queixa: "Dispneia + sibilância" }
-        ]
-      },
-      { id: 4, nome: "Daniel Silva", turma: "9º P — A", casosMes: 11, ultimo: "há 1 dia", setores: 3,
-        casos: [
-          { titulo: "Cefaleia + febre — suspeita de meningite", setor: "Pronto-Socorro", data: "15/05/2026", queixa: "Cefaleia frontal + febre 39°C" },
-          { titulo: "Dor torácica jovem — descartando SCA", setor: "Clínica Médica", data: "12/05/2026", queixa: "Dor precordial em pontada" },
-          { titulo: "ITU em gestante", setor: "GO", data: "08/05/2026", queixa: "Disúria em gestante 2º tri" }
-        ]
-      },
-      { id: 5, nome: "Mariana Oliveira", turma: "10º P", casosMes: 14, ultimo: "hoje", setores: 4,
-        casos: [
-          { titulo: "AVC isquêmico na janela terapêutica", setor: "Pronto-Socorro", data: "18/05/2026", queixa: "Hemiparesia direita súbita" },
-          { titulo: "DPOC exacerbada", setor: "Clínica Médica", data: "14/05/2026", queixa: "Dispneia + tosse" }
-        ]
-      },
-      { id: 6, nome: "Lucas Almeida", turma: "11º P", casosMes: 9, ultimo: "há 2 dias", setores: 2,
-        casos: [{ titulo: "Apendicite aguda", setor: "Cirurgia", data: "16/05/2026", queixa: "Dor em FID com Blumberg+" }]
-      },
-      { id: 7, nome: "Carolina Mendes", turma: "12º P", casosMes: 16, ultimo: "hoje", setores: 5,
-        casos: [{ titulo: "Sepse de foco urinário", setor: "UTI", data: "18/05/2026", queixa: "Idosa, febre + hipotensão" }]
-      },
-      { id: 8, nome: "Rafael Souza", turma: "9º P — B", casosMes: 1, ultimo: "há 18 dias", setores: 1,
-        casos: [{ titulo: "Lombalgia mecânica", setor: "Ambulatório", data: "01/05/2026", queixa: "Lombalgia há 1 semana" }]
-      },
-      { id: 9, nome: "Juliana Pereira", turma: "10º P", casosMes: 7, ultimo: "há 3 dias", setores: 2,
-        casos: [{ titulo: "Crise convulsiva", setor: "Pronto-Socorro", data: "15/05/2026", queixa: "Crise tônico-clônica" }]
-      },
-      { id: 10, nome: "Felipe Carvalho", turma: "11º P", casosMes: 8, ultimo: "há 2 dias", setores: 3,
-        casos: [{ titulo: "IAM com supra de ST", setor: "Pronto-Socorro", data: "16/05/2026", queixa: "Dor precordial típica" }]
-      },
-      { id: 11, nome: "Isabela Ferreira", turma: "9º P — A", casosMes: 6, ultimo: "há 4 dias", setores: 2,
-        casos: [{ titulo: "Bronquiolite em lactente", setor: "Pediatria", data: "14/05/2026", queixa: "Tosse + dispneia em lactente" }]
-      },
-      { id: 12, nome: "Gabriel Ribeiro", turma: "12º P", casosMes: 13, ultimo: "hoje", setores: 4,
-        casos: [{ titulo: "Cetoacidose diabética", setor: "UTI", data: "18/05/2026", queixa: "Vômitos + alteração de consciência" }]
+    // ============================================================
+    // [COORDENACAO] Painel de acompanhamento pedagogico
+    // ============================================================
+
+    const API_BASE = "https://greenlight-backend-production-35c8.up.railway.app";
+    const TOKEN_KEY = "vytal_coord_token";
+    const USER_KEY = "vytal_coord_user";
+
+    let modoCadastro = false;
+    let graficos = { casos: null, espec: null, alinhamento: null };
+
+    function getToken() { return localStorage.getItem(TOKEN_KEY); }
+    function setToken(t) { localStorage.setItem(TOKEN_KEY, t); }
+    function clearAuth() {
+      localStorage.removeItem(TOKEN_KEY);
+      localStorage.removeItem(USER_KEY);
+    }
+    function getUser() {
+      try { return JSON.parse(localStorage.getItem(USER_KEY) || "null"); }
+      catch (e) { return null; }
+    }
+    function setUser(u) { localStorage.setItem(USER_KEY, JSON.stringify(u)); }
+
+    function showOverlay() {
+      document.getElementById("authOverlay").classList.add("aberto");
+      document.getElementById("topbar").style.display = "none";
+      document.getElementById("mainContainer").style.display = "none";
+    }
+    function hideOverlay() {
+      document.getElementById("authOverlay").classList.remove("aberto");
+      document.getElementById("topbar").style.display = "flex";
+      document.getElementById("mainContainer").style.display = "block";
+    }
+
+    function setModo(cadastro) {
+      modoCadastro = cadastro;
+      document.getElementById("authTitle").textContent = cadastro ? "Cadastro" : "Entrar";
+      document.getElementById("authBtn").textContent = cadastro ? "Criar conta" : "Entrar";
+      document.getElementById("authToggleLink").textContent = cadastro
+        ? "Já tenho conta. Fazer login"
+        : "Não tem conta? Cadastre-se";
+      document.getElementById("fieldNome").style.display = cadastro ? "" : "none";
+      document.getElementById("fieldInst").style.display = cadastro ? "" : "none";
+      document.getElementById("authError").classList.remove("visivel");
+    }
+
+    function mostraErro(msg) {
+      const el = document.getElementById("authError");
+      el.textContent = msg;
+      el.classList.add("visivel");
+    }
+
+    async function tentarAuth() {
+      const btn = document.getElementById("authBtn");
+      btn.disabled = true;
+      document.getElementById("authError").classList.remove("visivel");
+
+      const email = document.getElementById("authEmail").value.trim();
+      const senha = document.getElementById("authSenha").value;
+      const nome = document.getElementById("authNome").value.trim();
+      const inst = document.getElementById("authInst").value.trim();
+
+      try {
+        if (!email || !senha) { mostraErro("Preencha e-mail e senha."); return; }
+        if (modoCadastro && senha.length < 8) {
+          mostraErro("Senha deve ter pelo menos 8 caracteres.");
+          return;
+        }
+
+        const url = modoCadastro ? "/coordenacao/auth/cadastro" : "/coordenacao/auth/login";
+        const body = modoCadastro
+          ? { email, password: senha, nome, instituicao: inst }
+          : { email, password: senha };
+
+        const resp = await fetch(API_BASE + url, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(body)
+        });
+        const data = await resp.json();
+        if (!resp.ok) { mostraErro(data.error || "Erro ao autenticar"); return; }
+
+        setToken(data.token);
+        setUser(data.user);
+        atualizarHeader();
+        hideOverlay();
+        await carregarTudo();
+      } catch (e) {
+        mostraErro("Falha de conexão. Tente novamente.");
+      } finally {
+        btn.disabled = false;
       }
-    ];
-
-    const META = 8;
-
-    function statusAluno(casosMes) {
-      if (casosMes >= META) return { label: "✅ Em dia", cls: "ok" };
-      if (casosMes >= META / 2) return { label: "⚠️ Atenção", cls: "atencao" };
-      return { label: "🔴 Abaixo", cls: "baixo" };
     }
 
-    function renderTabela() {
-      const tbody = document.getElementById("tabela-alunos");
-      // Ordena: menor primeiro (atenção primeiro — quem decide quer ver quem está abaixo).
-      const ord = [...alunos].sort((a, b) => a.casosMes - b.casosMes);
-      tbody.innerHTML = ord.map(a => {
-        const pct = Math.min(100, Math.round((a.casosMes / META) * 100));
-        const st = statusAluno(a.casosMes);
-        const cls = st.cls;
-        return `
-          <tr onclick="abrirAluno(${a.id})">
-            <td><strong>${a.nome}</strong></td>
-            <td>${a.turma}</td>
-            <td>${a.casosMes}</td>
-            <td>${pct}%<span class="mini-bar ${cls}"><div style="width:${pct}%;"></div></span></td>
-            <td>${a.ultimo}</td>
-            <td><span class="badge-status ${cls}">${st.label}</span></td>
-          </tr>
-        `;
-      }).join("");
-    }
-
-    function abrirAluno(id) {
-      const a = alunos.find(x => x.id === id);
-      if (!a) return;
-      document.getElementById("modal-nome").textContent = a.nome;
-      document.getElementById("modal-info").textContent = `${a.turma} · Internato em andamento`;
-      document.getElementById("modal-total").textContent = a.casosMes;
-      document.getElementById("modal-rotacoes").textContent = a.setores;
-      document.getElementById("modal-ultimo").textContent = a.ultimo;
-
-      const cont = document.getElementById("modal-casos");
-      if (!a.casos || a.casos.length === 0) {
-        cont.innerHTML = '<div style="text-align:center; color:#94a3b8; padding:20px;">Nenhum caso registrado.</div>';
-      } else {
-        cont.innerHTML = a.casos.map(c => `
-          <div class="caso-item">
-            <span class="badge">${c.setor}</span>
-            <h3>${c.titulo}</h3>
-            <div class="meta">${c.data}</div>
-            <div class="preview"><strong>Queixa:</strong> ${c.queixa}</div>
-          </div>
-        `).join("");
+    function atualizarHeader() {
+      const u = getUser();
+      if (u) {
+        const txt = (u.nome || u.email) + (u.instituicao ? " · " + u.instituicao : "");
+        document.getElementById("userInfo").textContent = txt;
       }
-      document.getElementById("modal-overlay").classList.add("open");
     }
 
-    function fecharModal() {
-      document.getElementById("modal-overlay").classList.remove("open");
-    }
-    function fecharModalSeFora(e) {
-      if (e.target.id === "modal-overlay") fecharModal();
+    async function fetchAuth(path) {
+      const resp = await fetch(API_BASE + path, {
+        headers: { "Authorization": "Bearer " + getToken() }
+      });
+      if (resp.status === 401) {
+        clearAuth();
+        showOverlay();
+        setModo(false);
+        throw new Error("Não autorizado");
+      }
+      return resp.json();
     }
 
-    renderTabela();
+    async function carregarResumo() {
+      const d = await fetchAuth("/coordenacao/metricas/resumo");
+      document.getElementById("kpi-alunos").textContent = d.alunosCadastrados;
+      document.getElementById("kpi-casos").textContent = d.casosRegistrados;
+      document.getElementById("kpi-aderencia").textContent = d.aderenciaSemanal + "%";
+      document.getElementById("kpi-aderencia-sub").textContent =
+        d.alunosAtivosSemana + " de " + d.alunosCadastrados + " ativos esta semana";
+      const dt = new Date(d.ultimaAtualizacao);
+      document.getElementById("kpi-update").textContent = dt.toLocaleTimeString("pt-BR", {
+        hour: "2-digit", minute: "2-digit"
+      });
+    }
+
+    async function carregarSeries() {
+      const d = await fetchAuth("/coordenacao/metricas/series");
+
+      // 1. Casos por semana (barras)
+      if (graficos.casos) graficos.casos.destroy();
+      const labelsSemanas = d.casosPorSemana.map(r => {
+        const dt = new Date(r.semana);
+        return dt.toLocaleDateString("pt-BR", { day: "2-digit", month: "2-digit" });
+      });
+      const dadosSemanas = d.casosPorSemana.map(r => r.total);
+      graficos.casos = new Chart(document.getElementById("grafCasos"), {
+        type: "bar",
+        data: {
+          labels: labelsSemanas,
+          datasets: [{
+            label: "Casos",
+            data: dadosSemanas,
+            backgroundColor: "#0ea5e9",
+            borderRadius: 6
+          }]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          plugins: { legend: { display: false } },
+          scales: { y: { beginAtZero: true, ticks: { precision: 0 } } }
+        }
+      });
+
+      // 2. Especialidades (donut)
+      if (graficos.espec) graficos.espec.destroy();
+      graficos.espec = new Chart(document.getElementById("grafEspec"), {
+        type: "doughnut",
+        data: {
+          labels: d.porEspecialidade.map(r => r.especialidade),
+          datasets: [{
+            data: d.porEspecialidade.map(r => r.total),
+            backgroundColor: [
+              "#0c4a6e", "#0ea5e9", "#22c55e", "#a855f7",
+              "#f59e0b", "#ef4444", "#14b8a6", "#94a3b8"
+            ]
+          }]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          plugins: { legend: { position: "right", labels: { font: { size: 11 } } } }
+        }
+      });
+
+      // 3. Alinhamento didático (barras horizontais)
+      if (graficos.alinhamento) graficos.alinhamento.destroy();
+      const mapaAlinh = {
+        "alta_concordancia": { label: "Alta concordância", cor: "#059669" },
+        "concordancia_parcial": { label: "Concordância parcial", cor: "#d97706" },
+        "divergencia": { label: "Divergência", cor: "#475569" },
+        "sem_classificacao": { label: "Sem classificação", cor: "#cbd5e1" }
+      };
+      const labelsAlinh = d.porAlinhamento.map(r => (mapaAlinh[r.alinhamento] || { label: r.alinhamento }).label);
+      const dadosAlinh = d.porAlinhamento.map(r => r.total);
+      const coresAlinh = d.porAlinhamento.map(r => (mapaAlinh[r.alinhamento] || { cor: "#94a3b8" }).cor);
+      graficos.alinhamento = new Chart(document.getElementById("grafAlinhamento"), {
+        type: "bar",
+        data: {
+          labels: labelsAlinh,
+          datasets: [{
+            data: dadosAlinh,
+            backgroundColor: coresAlinh,
+            borderRadius: 6
+          }]
+        },
+        options: {
+          indexAxis: "y",
+          responsive: true,
+          maintainAspectRatio: false,
+          plugins: { legend: { display: false } },
+          scales: { x: { beginAtZero: true, ticks: { precision: 0 } } }
+        }
+      });
+    }
+
+    function badgeConcord(v) {
+      if (v === null || v === undefined) return '<span class="badge-concord vazio">—</span>';
+      const num = Number(v);
+      if (num >= 70) return '<span class="badge-concord alta">' + num + '%</span>';
+      if (num >= 40) return '<span class="badge-concord media">' + num + '%</span>';
+      return '<span class="badge-concord baixa">' + num + '%</span>';
+    }
+
+    function escapeHtml(s) {
+      if (s === null || s === undefined) return "";
+      return String(s)
+        .replace(/&/g, "&amp;").replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;").replace(/"/g, "&quot;")
+        .replace(/'/g, "&#39;");
+    }
+
+    function formatDate(s) {
+      if (!s) return "—";
+      const d = new Date(s);
+      return d.toLocaleDateString("pt-BR", { day: "2-digit", month: "2-digit", year: "2-digit" });
+    }
+
+    async function carregarTabela() {
+      const d = await fetchAuth("/coordenacao/metricas/alunos");
+      const tbody = document.getElementById("tbody-alunos");
+      if (!d.alunos || d.alunos.length === 0) {
+        tbody.innerHTML = '<tr><td colspan="6" class="empty-state">Nenhum aluno cadastrado ainda.</td></tr>';
+        return;
+      }
+      tbody.innerHTML = d.alunos.map(a => `
+        <tr>
+          <td>${escapeHtml(a.nome || "—")}</td>
+          <td style="color:#64748b; font-size:12px;">${escapeHtml(a.email)}</td>
+          <td class="num"><strong>${a.totalCasos}</strong></td>
+          <td>${escapeHtml(a.especialidadeFrequente || "—")}</td>
+          <td>${formatDate(a.ultimoCaso)}</td>
+          <td class="num">${badgeConcord(a.percAltaConcordancia)}</td>
+        </tr>
+      `).join("");
+    }
+
+    async function carregarTudo() {
+      try {
+        await Promise.all([carregarResumo(), carregarSeries(), carregarTabela()]);
+      } catch (e) {
+        console.log("[COORD] erro:", e.message);
+      }
+    }
+
+    async function validarSessao() {
+      const token = getToken();
+      if (!token) { showOverlay(); setModo(false); return false; }
+      try {
+        const resp = await fetch(API_BASE + "/coordenacao/me", {
+          headers: { "Authorization": "Bearer " + token }
+        });
+        if (!resp.ok) { clearAuth(); showOverlay(); setModo(false); return false; }
+        const data = await resp.json();
+        if (data.user) {
+          setUser(data.user);
+          atualizarHeader();
+          hideOverlay();
+          await carregarTudo();
+          return true;
+        }
+        return false;
+      } catch (e) {
+        showOverlay();
+        setModo(false);
+        return false;
+      }
+    }
+
+    document.addEventListener("DOMContentLoaded", () => {
+      document.getElementById("authBtn").addEventListener("click", tentarAuth);
+      document.getElementById("authSenha").addEventListener("keydown", (e) => {
+        if (e.key === "Enter") tentarAuth();
+      });
+      document.getElementById("authToggleLink").addEventListener("click", () => setModo(!modoCadastro));
+      document.getElementById("btnLogout").addEventListener("click", () => {
+        if (confirm("Sair?")) {
+          clearAuth();
+          showOverlay();
+          setModo(false);
+        }
+      });
+      document.getElementById("btnAtualizar").addEventListener("click", carregarTudo);
+
+      validarSessao();
+    });
   </script>
 </body>
 </html>
