@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Protótipo Vytal ECG — Vytal Saúde</title>
+  <meta name="description" content="Protótipo de pesquisa de análise auxiliar de ECG. Em desenvolvimento e validação interna. Não substitui avaliação médica." />
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, system-ui, sans-serif;
+      line-height: 1.6;
+      color: #1f2937;
+      background: #f9fafb;
+    }
+
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 40px 24px;
+    }
+
+    /* Banner de pesquisa */
+    .banner-pesquisa {
+      background: #fef3c7;
+      border-left: 4px solid #f59e0b;
+      padding: 14px 20px;
+      margin-bottom: 32px;
+      border-radius: 4px;
+      font-size: 14px;
+      color: #78350f;
+    }
+    .banner-pesquisa strong { color: #92400e; }
+
+    /* Header */
+    header {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+    header .logo {
+      font-size: 13px;
+      letter-spacing: 2px;
+      color: #6b7280;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+    header h1 {
+      font-size: 32px;
+      font-weight: 700;
+      color: #1e3a8a;
+      margin-bottom: 12px;
+    }
+    header .badge {
+      display: inline-block;
+      background: #dbeafe;
+      color: #1e40af;
+      padding: 4px 12px;
+      border-radius: 12px;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+    }
+    header .subtitle {
+      color: #6b7280;
+      margin-top: 16px;
+      font-size: 16px;
+    }
+
+    /* Cards */
+    .card {
+      background: white;
+      border-radius: 8px;
+      padding: 28px;
+      margin-bottom: 20px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+      border: 1px solid #e5e7eb;
+    }
+
+    h2 {
+      font-size: 20px;
+      color: #1e3a8a;
+      margin-bottom: 14px;
+    }
+    h3 {
+      font-size: 15px;
+      color: #374151;
+      margin-bottom: 8px;
+      margin-top: 16px;
+      font-weight: 600;
+    }
+    p { margin-bottom: 12px; color: #374151; }
+
+    ul {
+      list-style: none;
+      padding-left: 0;
+    }
+    ul li {
+      padding: 6px 0 6px 24px;
+      position: relative;
+      color: #374151;
+      font-size: 15px;
+    }
+    ul li::before {
+      content: "→";
+      position: absolute;
+      left: 0;
+      color: #2563eb;
+      font-weight: bold;
+    }
+
+    /* CTA / Botão de teste */
+    .cta-card {
+      background: linear-gradient(135deg, #1e3a8a 0%, #2563eb 100%);
+      color: white;
+      text-align: center;
+      padding: 36px 28px;
+    }
+    .cta-card h2 {
+      color: white;
+      margin-bottom: 12px;
+    }
+    .cta-card p {
+      color: #dbeafe;
+      margin-bottom: 24px;
+      font-size: 15px;
+    }
+    .cta-btn {
+      display: inline-block;
+      background: white;
+      color: #1e3a8a;
+      padding: 14px 32px;
+      border-radius: 6px;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 16px;
+      transition: transform 0.15s, box-shadow 0.15s;
+    }
+    .cta-btn:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    }
+    .cta-aviso {
+      margin-top: 18px;
+      font-size: 12px;
+      color: #bfdbfe;
+    }
+
+    /* Limitações */
+    .limites {
+      background: #fee2e2;
+      border-left: 4px solid #dc2626;
+      padding: 16px 20px;
+      border-radius: 4px;
+      margin-top: 12px;
+    }
+    .limites h3 {
+      color: #991b1b;
+      margin-top: 0;
+    }
+    .limites ul li {
+      color: #7f1d1d;
+    }
+    .limites ul li::before {
+      content: "⚠";
+      color: #dc2626;
+    }
+
+    /* Footer */
+    footer {
+      text-align: center;
+      margin-top: 40px;
+      padding: 24px;
+      color: #6b7280;
+      font-size: 13px;
+      border-top: 1px solid #e5e7eb;
+    }
+    footer a {
+      color: #2563eb;
+      text-decoration: none;
+    }
+    .disclaimer-final {
+      background: #f3f4f6;
+      padding: 16px;
+      border-radius: 6px;
+      margin-top: 20px;
+      font-size: 12px;
+      color: #4b5563;
+      line-height: 1.5;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+
+    <!-- Banner de aviso -->
+    <div class="banner-pesquisa">
+      <strong>⚠️ Protótipo de pesquisa</strong> — Esta ferramenta está em fase de desenvolvimento e validação interna. <strong>Não substitui avaliação médica</strong> e não deve ser utilizada para decisões clínicas reais.
+    </div>
+
+    <!-- Header -->
+    <header>
+      <div class="logo">VYTAL SAÚDE</div>
+      <h1>Protótipo Vytal ECG</h1>
+      <span class="badge">EM DESENVOLVIMENTO</span>
+      <p class="subtitle">Análise auxiliar de ECG por foto — ferramenta de apoio à interpretação médica</p>
+    </header>
+
+    <!-- O que é -->
+    <div class="card">
+      <h2>O que estamos construindo</h2>
+      <p>
+        O Vytal ECG é um sistema web em fase de pesquisa que permite a um profissional de saúde fotografar um eletrocardiograma impresso (papel) e receber um laudo auxiliar com métricas calculadas automaticamente, como frequência cardíaca, ritmo e intervalos PR/QRS/QT/QTc.
+      </p>
+      <p>
+        A proposta é oferecer uma <strong>ferramenta de apoio à interpretação médica</strong>, nunca um diagnóstico. Toda análise inclui linguagem cautelosa ("achados sugestivos"), disclaimers regulatórios fortes e espaço reservado para a interpretação e assinatura do médico responsável.
+      </p>
+    </div>
+
+    <!-- Como funciona -->
+    <div class="card">
+      <h2>Como funciona</h2>
+      <ul>
+        <li>Profissional acessa o sistema e envia foto do ECG impresso</li>
+        <li>Motor de digitalização extrai os sinais elétricos da imagem</li>
+        <li>Pipeline científico (NeuroKit2) calcula métricas e detecta achados sugestivos</li>
+        <li>Sistema gera laudo em PDF com sinal digitalizado, métricas e disclaimers</li>
+        <li>Médico revisa, interpreta e assina o documento final</li>
+      </ul>
+    </div>
+
+    <!-- Diferenciais -->
+    <div class="card">
+      <h2>Princípios do protótipo</h2>
+      <ul>
+        <li>Linguagem cautelosa por padrão — fala em "achados sugestivos", nunca diagnósticos</li>
+        <li>Disclaimers regulatórios em todos os outputs</li>
+        <li>Câmera mobile customizada com guia visual e detecção de qualidade da foto</li>
+        <li>PDF profissional com campo de assinatura e CRM do médico responsável</li>
+        <li>Indicador de confiança técnica da digitalização (não da interpretação clínica)</li>
+        <li>Limitações documentadas de forma transparente — descritas abaixo</li>
+      </ul>
+    </div>
+
+    <!-- Limitações -->
+    <div class="card">
+      <h2>Limitações conhecidas</h2>
+      <p>
+        Acreditamos que transparência sobre limites é parte do desenvolvimento responsável. O protótipo atual tem restrições importantes:
+      </p>
+      <div class="limites">
+        <h3>Importante saber antes de testar</h3>
+        <ul>
+          <li>Funciona apenas com ECGs em <strong>layout americano 4×3 + ritmo</strong> (3 linhas × 4 colunas + tira de ritmo no rodapé). Outros formatos (ex: Bionet 2×6) podem gerar resultados imprecisos.</li>
+          <li>Intervalos calculados a partir de foto têm precisão limitada (estimativa de ±30 a 50 ms)</li>
+          <li>Qualidade da análise depende fortemente da qualidade da foto (iluminação, foco, ângulo)</li>
+          <li><strong>Não é validado clinicamente</strong> e não substitui avaliação por médico habilitado</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- CTA / Link de teste -->
+    <div class="card cta-card">
+      <h2>Acesso ao protótipo</h2>
+      <p>Acesso restrito a profissionais beta-testers convidados pela Vytal Saúde.<br/>Disponibilidade limitada e sujeita a alterações.</p>
+      <a href="https://subtype-scorecard-overlay.ngrok-free.dev" target="_blank" rel="noopener noreferrer" class="cta-btn">
+        Acessar protótipo →
+      </a>
+      <div class="cta-aviso">
+        Ao acessar você concorda com o termo de uso de protótipo de pesquisa.<br/>
+        O link pode estar temporariamente indisponível durante manutenção.
+      </div>
+    </div>
+
+    <!-- Status -->
+    <div class="card">
+      <h2>Status atual</h2>
+      <p>
+        O protótipo está em <strong>fase de validação interna</strong>, sendo testado por um grupo restrito de profissionais convidados. Não temos previsão de lançamento comercial. As decisões sobre evolução do projeto serão tomadas com base no feedback dos beta-testers e em conformidade com os requisitos regulatórios aplicáveis (CFM e ANVISA).
+      </p>
+    </div>
+
+    <!-- Disclaimer final -->
+    <div class="disclaimer-final">
+      <strong>Aviso legal:</strong> O Vytal ECG é um protótipo de pesquisa em desenvolvimento e não constitui dispositivo médico registrado na ANVISA. As análises geradas são automatizadas e servem apenas como auxílio à interpretação por profissional médico habilitado. O sistema não emite diagnóstico nem substitui avaliação clínica. Decisões médicas devem ser baseadas na avaliação completa do paciente por profissional capacitado, considerando histórico clínico, exame físico e demais exames complementares quando indicados.
+    </div>
+
+    <footer>
+      <p>
+        <strong>Vytal Saúde</strong> — <a href="https://vytalsaude.com.br">vytalsaude.com.br</a><br/>
+        Protótipo Vytal ECG · Pesquisa e desenvolvimento
+      </p>
+    </footer>
+
+  </div>
+</body>
+</html>
