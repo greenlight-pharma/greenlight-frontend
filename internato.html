@@ -1389,10 +1389,20 @@
         hour: "2-digit", minute: "2-digit"
       });
 
-      // HTML completo do documento que vai para impressao.
-      // Inclui @page (margens A4), @media print (oculta tudo o que
-      // nao deve aparecer no PDF), e estilos inline para garantir
-      // que o CSS aparece igual em qualquer navegador.
+      // [PDF-COMPACTO] HTML do documento para impressao/PDF.
+      //
+      // Estrategia para couber em 1-2 folhas:
+      //   - Fontes reduzidas: corpo 9pt, headings 10pt, titulo 12pt.
+      //   - Line-height 1.35 (mais compacto que 1.55).
+      //   - Margens @page reduzidas para 10mm.
+      //   - Espacamentos entre secoes minimizados.
+      //   - Bullets sem margem extra.
+      //
+      // [PDF-PREVIEW] Abre em nova janela em vez de iframe oculto.
+      // Vantagem: o usuario VE o conteudo antes de imprimir/salvar, pode
+      // cancelar o dialogo de impressao e ainda ler o gabarito, fechar
+      // depois. Comportamento de "preview natural" que o Ctrl+P em PDF
+      // dentro do Chrome ja tem.
       const htmlImpressao = `<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -1401,89 +1411,123 @@
 <style>
   @page {
     size: A4;
-    margin: 15mm;
+    margin: 10mm;
   }
   * { box-sizing: border-box; }
   body {
     font-family: Arial, Helvetica, sans-serif;
     color: #1f2937;
-    line-height: 1.55;
-    font-size: 12pt;
+    line-height: 1.35;
+    font-size: 9pt;
     margin: 0;
-    padding: 0;
+    padding: 12px;
   }
   .pdf-header {
-    border-bottom: 2px solid #0c4a6e;
-    padding-bottom: 10px;
-    margin-bottom: 16px;
+    border-bottom: 1.5px solid #0c4a6e;
+    padding-bottom: 4px;
+    margin-bottom: 8px;
     display: flex;
     justify-content: space-between;
     align-items: baseline;
   }
   .pdf-logo {
-    font-size: 16pt;
+    font-size: 13pt;
     font-weight: 700;
     color: #0c4a6e;
   }
   .pdf-date {
-    font-size: 9pt;
+    font-size: 8pt;
     color: #64748b;
   }
   .pdf-subtitle {
-    font-size: 10pt;
+    font-size: 8.5pt;
     color: #475569;
-    margin-top: 2px;
+    margin-top: 1px;
   }
   h2.pdf-titulo {
-    font-size: 14pt;
+    font-size: 11pt;
     color: #0f172a;
-    margin: 14px 0 12px 0;
+    margin: 6px 0 8px 0;
     border-left: 3px solid #0284c7;
-    padding-left: 8px;
+    padding-left: 6px;
+    line-height: 1.3;
   }
   .pdf-content {
-    font-size: 11pt;
+    font-size: 9pt;
   }
   .pdf-content h4 {
     color: #0c4a6e;
-    font-size: 12pt;
-    margin: 12px 0 6px 0;
-    padding-bottom: 3px;
+    font-size: 10pt;
+    margin: 8px 0 3px 0;
+    padding-bottom: 2px;
     border-bottom: 1px solid #e5e7eb;
+    page-break-after: avoid;
   }
   .pdf-content ul, .pdf-content ol {
-    margin: 4px 0 8px 0;
-    padding-left: 22px;
+    margin: 2px 0 5px 0;
+    padding-left: 18px;
   }
   .pdf-content li {
-    margin-bottom: 4px;
+    margin-bottom: 2px;
   }
   .pdf-content p {
-    margin: 4px 0 8px 0;
+    margin: 2px 0 5px 0;
   }
   .pdf-content strong { color: #0f172a; }
   .pdf-disclaimer {
-    margin-top: 18px;
-    padding-top: 10px;
+    margin-top: 10px;
+    padding-top: 5px;
     border-top: 1px solid #e5e7eb;
-    font-size: 9pt;
+    font-size: 7.5pt;
     color: #6b7280;
     font-style: italic;
-    line-height: 1.5;
+    line-height: 1.4;
   }
   .pdf-footer {
-    margin-top: 6px;
-    font-size: 8pt;
+    margin-top: 3px;
+    font-size: 7pt;
     color: #9ca3af;
     text-align: center;
   }
-  /* Evita quebra dentro de secoes-chave */
   .analysis-section { page-break-inside: avoid; }
-  /* Esconde elementos da pagina pai caso herdem por engano */
-  .topbar, .auth-overlay, button { display: none !important; }
+  /* Barra de instrucao no topo (so na tela, nao na impressao) */
+  .preview-bar {
+    background: #0c4a6e;
+    color: white;
+    padding: 10px 16px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: -12px -12px 12px -12px;
+    font-size: 13px;
+  }
+  .preview-bar button {
+    background: white;
+    color: #0c4a6e;
+    border: none;
+    padding: 8px 14px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 13px;
+    font-weight: 600;
+    margin-left: 8px;
+  }
+  .preview-bar button:hover { background: #e0f2fe; }
+  @media print {
+    .preview-bar { display: none !important; }
+    body { padding: 0; }
+  }
 </style>
 </head>
 <body>
+  <div class="preview-bar">
+    <span>📄 Pré-visualização do gabarito</span>
+    <span>
+      <button onclick="window.print()">🖨️ Imprimir / Salvar PDF</button>
+      <button onclick="window.close()" style="background:#475569; color:white;">Fechar</button>
+    </span>
+  </div>
+
   <div class="pdf-header">
     <div>
       <div class="pdf-logo">🩺 Vytal — Internato</div>
@@ -1510,52 +1554,21 @@
 </body>
 </html>`;
 
-      // Cria iframe oculto, escreve o HTML, dispara print().
-      // Depois da impressao, remove o iframe (com pequeno delay
-      // para garantir que o dialogo abriu antes).
-      const iframe = document.createElement("iframe");
-      iframe.style.position = "fixed";
-      iframe.style.right = "0";
-      iframe.style.bottom = "0";
-      iframe.style.width = "0";
-      iframe.style.height = "0";
-      iframe.style.border = "0";
-      iframe.setAttribute("aria-hidden", "true");
-      document.body.appendChild(iframe);
-
-      try {
-        const doc = iframe.contentWindow.document;
-        doc.open();
-        doc.write(htmlImpressao);
-        doc.close();
-
-        // Espera o conteudo terminar de renderizar antes de imprimir.
-        // onload do iframe garante isso de forma confiavel.
-        iframe.onload = function() {
-          try {
-            iframe.contentWindow.focus();
-            iframe.contentWindow.print();
-            mostrarToast("📄 Escolha 'Salvar como PDF' no diálogo");
-          } catch (e) {
-            console.log("[PDF-EXPORT-ERRO]", e && e.message);
-            mostrarToast("❌ Falha ao abrir impressão");
-          }
-          // Remove o iframe depois de um delay generoso.
-          // 60s eh o suficiente mesmo se o usuario demorar no dialogo.
-          setTimeout(() => {
-            if (iframe && iframe.parentNode) {
-              iframe.parentNode.removeChild(iframe);
-            }
-          }, 60000);
-        };
-      } catch (e) {
-        console.log("[PDF-EXPORT-ERRO]", e && e.message);
-        mostrarToast("❌ Falha ao gerar PDF");
-        if (iframe && iframe.parentNode) {
-          iframe.parentNode.removeChild(iframe);
-        }
+      // Abre nova janela/aba com o conteudo. Usuario ve o preview e
+      // decide se imprime/salva como PDF ou apenas le e fecha.
+      // Tamanho menor para parecer documento (nao tela cheia).
+      const janela = window.open("", "_blank", "width=900,height=1000,scrollbars=yes");
+      if (!janela) {
+        mostrarToast("❌ Pop-up bloqueado. Permita pop-ups e tente de novo.");
+        return;
       }
+      janela.document.open();
+      janela.document.write(htmlImpressao);
+      janela.document.close();
+      janela.focus();
+      mostrarToast("📄 Pré-visualização aberta em nova aba");
     }
+
 
 
     // Helper: exportar PDF do gabarito recem-gerado (etapa 3).
