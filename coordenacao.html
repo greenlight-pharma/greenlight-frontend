@@ -74,6 +74,7 @@
     }
     .kpi.aderencia { border-left-color: #059669; }
     .kpi.casos { border-left-color: #7c3aed; }
+    .kpi.reflexao { border-left-color: #c89b3c; }
     .kpi.update { border-left-color: #94a3b8; }
     .kpi-label {
       font-size: 12px;
@@ -168,6 +169,202 @@
       color: #94a3b8;
       font-size: 13px;
     }
+
+    /* ============ [NIVEL-2] Filtros ============ */
+    .filtros {
+      background: white;
+      border-radius: 10px;
+      padding: 16px 20px;
+      margin-bottom: 20px;
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+      align-items: flex-end;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    }
+    .filtro-campo { display: flex; flex-direction: column; gap: 4px; min-width: 140px; }
+    .filtro-campo label {
+      font-size: 11px;
+      color: #64748b;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.3px;
+    }
+    .filtro-campo select,
+    .filtro-campo input {
+      padding: 8px 10px;
+      border: 1px solid #cbd5e1;
+      border-radius: 6px;
+      font-size: 13px;
+      background: white;
+      min-width: 140px;
+    }
+    .filtro-campo select:focus,
+    .filtro-campo input:focus { outline: 2px solid #0ea5e9; border-color: #0ea5e9; }
+    .filtro-acoes {
+      display: flex;
+      gap: 8px;
+      margin-left: auto;
+      flex-wrap: wrap;
+    }
+    .btn-filtro {
+      padding: 9px 14px;
+      background: #0c4a6e;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+    }
+    .btn-filtro:hover { background: #0a3d5c; }
+    .btn-filtro.secundario {
+      background: white;
+      color: #475569;
+      border: 1px solid #cbd5e1;
+    }
+    .btn-filtro.secundario:hover { background: #f8fafc; }
+    .btn-filtro.acao {
+      background: #059669;
+    }
+    .btn-filtro.acao:hover { background: #047857; }
+
+    /* ============ Link no nome do aluno (drill-down) ============ */
+    .aluno-link {
+      color: #0c4a6e;
+      font-weight: 600;
+      cursor: pointer;
+      text-decoration: none;
+      border-bottom: 1px dotted #0c4a6e;
+    }
+    .aluno-link:hover {
+      color: #1e40af;
+      border-bottom-style: solid;
+    }
+
+    /* ============ Heatmap ============ */
+    .heatmap-table {
+      border-collapse: separate;
+      border-spacing: 3px;
+      font-size: 12px;
+    }
+    .heatmap-table th {
+      padding: 6px 10px;
+      font-weight: 600;
+      color: #475569;
+      text-align: center;
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.3px;
+    }
+    .heatmap-table th.linha {
+      text-align: right;
+      padding-right: 14px;
+      color: #1f2937;
+      text-transform: none;
+      letter-spacing: 0;
+      font-size: 12px;
+    }
+    .heatmap-cell {
+      width: 80px;
+      height: 40px;
+      border-radius: 5px;
+      text-align: center;
+      vertical-align: middle;
+      color: white;
+      font-weight: 600;
+      font-size: 13px;
+      font-variant-numeric: tabular-nums;
+    }
+    .heatmap-cell.vazio { background: #f1f5f9; color: #cbd5e1; }
+    .heatmap-cell.h-alta { background: #059669; }
+    .heatmap-cell.h-parcial { background: #d97706; }
+    .heatmap-cell.h-divergencia { background: #475569; }
+    .heatmap-cell.h-sem { background: #94a3b8; }
+
+    /* ============ Drill-down do aluno ============ */
+    .detalhe-header {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 20px;
+      flex-wrap: wrap;
+    }
+    .btn-voltar {
+      background: white;
+      border: 1px solid #cbd5e1;
+      padding: 8px 14px;
+      border-radius: 6px;
+      font-size: 13px;
+      color: #475569;
+      cursor: pointer;
+    }
+    .btn-voltar:hover { background: #f8fafc; color: #0c4a6e; }
+    .dados-aluno {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 14px;
+    }
+    .dado-item {
+      padding: 10px 12px;
+      background: #f8fafc;
+      border-radius: 6px;
+      border-left: 3px solid #0ea5e9;
+    }
+    .dado-item .dado-label {
+      font-size: 11px;
+      color: #64748b;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.3px;
+      margin-bottom: 3px;
+    }
+    .dado-item .dado-valor {
+      font-size: 14px;
+      color: #1f2937;
+      font-weight: 600;
+    }
+    .caso-detalhe {
+      background: #f8fafc;
+      border-radius: 8px;
+      padding: 14px 16px;
+      margin-bottom: 10px;
+      border-left: 3px solid #0ea5e9;
+    }
+    .caso-detalhe h4 {
+      margin: 0 0 6px 0;
+      font-size: 14px;
+      color: #0f172a;
+    }
+    .caso-detalhe .caso-meta {
+      font-size: 11px;
+      color: #64748b;
+      margin-bottom: 8px;
+    }
+    .caso-detalhe summary {
+      cursor: pointer;
+      color: #0284c7;
+      font-size: 12px;
+      font-weight: 600;
+      margin-top: 6px;
+    }
+    .caso-detalhe .preview {
+      font-size: 12px;
+      color: #475569;
+      margin: 3px 0;
+    }
+    .caso-detalhe .pill-alinh {
+      display: inline-block;
+      padding: 2px 8px;
+      border-radius: 10px;
+      font-size: 10px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.3px;
+    }
+    .caso-detalhe .pill-alinh.alta { background: #d1fae5; color: #065f46; }
+    .caso-detalhe .pill-alinh.parcial { background: #fef3c7; color: #78350f; }
+    .caso-detalhe .pill-alinh.diverg { background: #e0e7ff; color: #3730a3; }
 
     /* ============ Auth overlay ============ */
     .auth-overlay {
@@ -294,6 +491,38 @@
     <h1>Painel da Coordenação</h1>
     <div class="subtitle">Métricas agregadas de uso da Vytal Acadêmico no internato</div>
 
+    <!-- ===== [NIVEL-2] Barra de filtros ===== -->
+    <div class="filtros" id="barraFiltros">
+      <div class="filtro-campo">
+        <label>Especialidade</label>
+        <select id="fEspecialidade">
+          <option value="">Todas</option>
+        </select>
+      </div>
+      <div class="filtro-campo">
+        <label>Turma</label>
+        <select id="fTurma">
+          <option value="">Todas</option>
+        </select>
+      </div>
+      <div class="filtro-campo">
+        <label>De</label>
+        <input type="date" id="fDataInicio">
+      </div>
+      <div class="filtro-campo">
+        <label>Até</label>
+        <input type="date" id="fDataFim">
+      </div>
+      <div class="filtro-acoes">
+        <button class="btn-filtro" id="btnAplicarFiltros">Aplicar</button>
+        <button class="btn-filtro secundario" id="btnLimparFiltros">Limpar</button>
+        <button class="btn-filtro acao" id="btnExportar">📥 Exportar CSV</button>
+      </div>
+    </div>
+
+    <!-- ===== Vista LISTA (padrão) ===== -->
+    <div id="viewLista">
+
     <!-- KPIs -->
     <div class="kpis">
       <div class="kpi">
@@ -305,6 +534,11 @@
         <div class="kpi-label">Casos registrados</div>
         <div class="kpi-valor" id="kpi-casos">—</div>
         <div class="kpi-sub">Total acumulado</div>
+      </div>
+      <div class="kpi reflexao">
+        <div class="kpi-label">Casos com reflexão</div>
+        <div class="kpi-valor" id="kpi-reflexao">—</div>
+        <div class="kpi-sub" id="kpi-reflexao-sub">% do total</div>
       </div>
       <div class="kpi aderencia">
         <div class="kpi-label">Aderência semanal</div>
@@ -344,6 +578,7 @@
             <tr>
               <th>Nome</th>
               <th>E-mail</th>
+              <th>Turma</th>
               <th class="num">Casos</th>
               <th>Especialidade frequente</th>
               <th>Último caso</th>
@@ -351,9 +586,39 @@
             </tr>
           </thead>
           <tbody id="tbody-alunos">
-            <tr><td colspan="6" class="empty-state">Carregando…</td></tr>
+            <tr><td colspan="7" class="empty-state">Carregando…</td></tr>
           </tbody>
         </table>
+      </div>
+    </div>
+
+    <!-- Heatmap -->
+    <div class="card">
+      <h3>🔥 Heatmap — Especialidade × Alinhamento didático</h3>
+      <div id="heatmapWrap" style="overflow-x:auto;">
+        <div class="empty-state">Carregando…</div>
+      </div>
+    </div>
+
+    </div><!-- fim viewLista -->
+
+    <!-- ===== [NIVEL-2] Vista DETALHE do aluno (drill-down) ===== -->
+    <div id="viewDetalhe" style="display:none;">
+      <div class="detalhe-header">
+        <button class="btn-voltar" id="btnVoltarLista">← Voltar para o painel</button>
+        <div id="detalheTitulo"></div>
+      </div>
+
+      <div class="card">
+        <h3>👤 Dados do aluno</h3>
+        <div id="detalheDados" class="dados-aluno"></div>
+      </div>
+
+      <div class="card">
+        <h3 id="detalheCasosTitulo">📚 Casos registrados</h3>
+        <div id="detalheCasos">
+          <div class="empty-state">Carregando…</div>
+        </div>
       </div>
     </div>
   </div>
@@ -463,6 +728,23 @@
       }
     }
 
+    // ============================================================
+    // [NIVEL-2] Estado de filtros e fetch com query string
+    // ============================================================
+    function getFiltrosQuery() {
+      const params = new URLSearchParams();
+      const e = document.getElementById("fEspecialidade").value;
+      const t = document.getElementById("fTurma").value;
+      const di = document.getElementById("fDataInicio").value;
+      const df = document.getElementById("fDataFim").value;
+      if (e) params.set("especialidade", e);
+      if (t) params.set("turma", t);
+      if (di) params.set("dataInicio", di);
+      if (df) params.set("dataFim", df);
+      const q = params.toString();
+      return q ? "?" + q : "";
+    }
+
     async function fetchAuth(path) {
       const resp = await fetch(API_BASE + path, {
         headers: { "Authorization": "Bearer " + getToken() }
@@ -477,12 +759,18 @@
     }
 
     async function carregarResumo() {
-      const d = await fetchAuth("/coordenacao/metricas/resumo");
+      const d = await fetchAuth("/coordenacao/metricas/resumo" + getFiltrosQuery());
       document.getElementById("kpi-alunos").textContent = d.alunosCadastrados;
       document.getElementById("kpi-casos").textContent = d.casosRegistrados;
       document.getElementById("kpi-aderencia").textContent = d.aderenciaSemanal + "%";
       document.getElementById("kpi-aderencia-sub").textContent =
         d.alunosAtivosSemana + " de " + d.alunosCadastrados + " ativos esta semana";
+      // [REFLEXAO] % de casos com reflexao escrita
+      const percRefl = (d.percCasosComReflexao !== undefined) ? d.percCasosComReflexao : 0;
+      const numRefl = (d.casosComReflexao !== undefined) ? d.casosComReflexao : 0;
+      document.getElementById("kpi-reflexao").textContent = percRefl + "%";
+      document.getElementById("kpi-reflexao-sub").textContent =
+        numRefl + " de " + d.casosRegistrados + " com reflexão";
       const dt = new Date(d.ultimaAtualizacao);
       document.getElementById("kpi-update").textContent = dt.toLocaleTimeString("pt-BR", {
         hour: "2-digit", minute: "2-digit"
@@ -490,29 +778,27 @@
     }
 
     async function carregarSeries() {
-      const d = await fetchAuth("/coordenacao/metricas/series");
+      const d = await fetchAuth("/coordenacao/metricas/series" + getFiltrosQuery());
 
-      // 1. Casos por semana (barras)
+      // 1. Casos por semana
       if (graficos.casos) graficos.casos.destroy();
       const labelsSemanas = d.casosPorSemana.map(r => {
         const dt = new Date(r.semana);
         return dt.toLocaleDateString("pt-BR", { day: "2-digit", month: "2-digit" });
       });
-      const dadosSemanas = d.casosPorSemana.map(r => r.total);
       graficos.casos = new Chart(document.getElementById("grafCasos"), {
         type: "bar",
         data: {
           labels: labelsSemanas,
           datasets: [{
             label: "Casos",
-            data: dadosSemanas,
+            data: d.casosPorSemana.map(r => r.total),
             backgroundColor: "#0ea5e9",
             borderRadius: 6
           }]
         },
         options: {
-          responsive: true,
-          maintainAspectRatio: false,
+          responsive: true, maintainAspectRatio: false,
           plugins: { legend: { display: false } },
           scales: { y: { beginAtZero: true, ticks: { precision: 0 } } }
         }
@@ -526,20 +812,16 @@
           labels: d.porEspecialidade.map(r => r.especialidade),
           datasets: [{
             data: d.porEspecialidade.map(r => r.total),
-            backgroundColor: [
-              "#0c4a6e", "#0ea5e9", "#22c55e", "#a855f7",
-              "#f59e0b", "#ef4444", "#14b8a6", "#94a3b8"
-            ]
+            backgroundColor: ["#0c4a6e", "#0ea5e9", "#22c55e", "#a855f7", "#f59e0b", "#ef4444", "#14b8a6", "#94a3b8"]
           }]
         },
         options: {
-          responsive: true,
-          maintainAspectRatio: false,
+          responsive: true, maintainAspectRatio: false,
           plugins: { legend: { position: "right", labels: { font: { size: 11 } } } }
         }
       });
 
-      // 3. Alinhamento didático (barras horizontais)
+      // 3. Alinhamento didatico (horizontal)
       if (graficos.alinhamento) graficos.alinhamento.destroy();
       const mapaAlinh = {
         "alta_concordancia": { label: "Alta concordância", cor: "#059669" },
@@ -547,23 +829,18 @@
         "divergencia": { label: "Divergência", cor: "#475569" },
         "sem_classificacao": { label: "Sem classificação", cor: "#cbd5e1" }
       };
-      const labelsAlinh = d.porAlinhamento.map(r => (mapaAlinh[r.alinhamento] || { label: r.alinhamento }).label);
-      const dadosAlinh = d.porAlinhamento.map(r => r.total);
-      const coresAlinh = d.porAlinhamento.map(r => (mapaAlinh[r.alinhamento] || { cor: "#94a3b8" }).cor);
       graficos.alinhamento = new Chart(document.getElementById("grafAlinhamento"), {
         type: "bar",
         data: {
-          labels: labelsAlinh,
+          labels: d.porAlinhamento.map(r => (mapaAlinh[r.alinhamento] || { label: r.alinhamento }).label),
           datasets: [{
-            data: dadosAlinh,
-            backgroundColor: coresAlinh,
+            data: d.porAlinhamento.map(r => r.total),
+            backgroundColor: d.porAlinhamento.map(r => (mapaAlinh[r.alinhamento] || { cor: "#94a3b8" }).cor),
             borderRadius: 6
           }]
         },
         options: {
-          indexAxis: "y",
-          responsive: true,
-          maintainAspectRatio: false,
+          indexAxis: "y", responsive: true, maintainAspectRatio: false,
           plugins: { legend: { display: false } },
           scales: { x: { beginAtZero: true, ticks: { precision: 0 } } }
         }
@@ -592,17 +869,24 @@
       return d.toLocaleDateString("pt-BR", { day: "2-digit", month: "2-digit", year: "2-digit" });
     }
 
+    function formatDateTime(s) {
+      if (!s) return "—";
+      const d = new Date(s);
+      return d.toLocaleDateString("pt-BR") + " " + d.toLocaleTimeString("pt-BR", { hour: "2-digit", minute: "2-digit" });
+    }
+
     async function carregarTabela() {
-      const d = await fetchAuth("/coordenacao/metricas/alunos");
+      const d = await fetchAuth("/coordenacao/metricas/alunos" + getFiltrosQuery());
       const tbody = document.getElementById("tbody-alunos");
       if (!d.alunos || d.alunos.length === 0) {
-        tbody.innerHTML = '<tr><td colspan="6" class="empty-state">Nenhum aluno cadastrado ainda.</td></tr>';
+        tbody.innerHTML = '<tr><td colspan="7" class="empty-state">Nenhum aluno encontrado com esses filtros.</td></tr>';
         return;
       }
       tbody.innerHTML = d.alunos.map(a => `
         <tr>
-          <td>${escapeHtml(a.nome || "—")}</td>
+          <td><a class="aluno-link" onclick="abrirDetalhesAluno(${a.id})">${escapeHtml(a.nome || "(sem nome)")}</a></td>
           <td style="color:#64748b; font-size:12px;">${escapeHtml(a.email)}</td>
+          <td style="color:#475569; font-size:12px;">${escapeHtml(a.turma || "—")}</td>
           <td class="num"><strong>${a.totalCasos}</strong></td>
           <td>${escapeHtml(a.especialidadeFrequente || "—")}</td>
           <td>${formatDate(a.ultimoCaso)}</td>
@@ -611,12 +895,222 @@
       `).join("");
     }
 
+    async function carregarHeatmap() {
+      const d = await fetchAuth("/coordenacao/metricas/heatmap" + getFiltrosQuery());
+      const wrap = document.getElementById("heatmapWrap");
+
+      if (!d.celulas || d.celulas.length === 0) {
+        wrap.innerHTML = '<div class="empty-state">Sem dados para gerar heatmap.</div>';
+        return;
+      }
+
+      // Agrupa em mapa { especialidade: { alinhamento: total } }
+      const map = {};
+      const colunasSet = new Set();
+      d.celulas.forEach(c => {
+        if (!map[c.especialidade]) map[c.especialidade] = {};
+        map[c.especialidade][c.alinhamento] = c.total;
+        colunasSet.add(c.alinhamento);
+      });
+
+      // Ordem fixa das colunas (alinhamento)
+      const ordemColunas = ["alta_concordancia", "concordancia_parcial", "divergencia", "sem_classificacao"];
+      const colunas = ordemColunas.filter(c => colunasSet.has(c));
+
+      const rotuloCol = {
+        "alta_concordancia": "Alta concord.",
+        "concordancia_parcial": "Parcial",
+        "divergencia": "Divergência",
+        "sem_classificacao": "S/ classif.",
+      };
+      const classeCol = {
+        "alta_concordancia": "h-alta",
+        "concordancia_parcial": "h-parcial",
+        "divergencia": "h-divergencia",
+        "sem_classificacao": "h-sem",
+      };
+
+      const especs = Object.keys(map).sort();
+
+      let html = '<table class="heatmap-table"><thead><tr><th></th>';
+      colunas.forEach(c => { html += '<th>' + rotuloCol[c] + '</th>'; });
+      html += '</tr></thead><tbody>';
+      especs.forEach(esp => {
+        html += '<tr><th class="linha">' + escapeHtml(esp) + '</th>';
+        colunas.forEach(c => {
+          const valor = map[esp][c];
+          if (!valor) {
+            html += '<td class="heatmap-cell vazio">0</td>';
+          } else {
+            html += '<td class="heatmap-cell ' + classeCol[c] + '">' + valor + '</td>';
+          }
+        });
+        html += '</tr>';
+      });
+      html += '</tbody></table>';
+      wrap.innerHTML = html;
+    }
+
+    async function carregarListas() {
+      // Popula selects de especialidade e turma com valores existentes no banco.
+      try {
+        const d = await fetchAuth("/coordenacao/listas");
+        const fEsp = document.getElementById("fEspecialidade");
+        const fT = document.getElementById("fTurma");
+
+        // Preserva valor atual ao recarregar
+        const atualEsp = fEsp.value;
+        const atualT = fT.value;
+
+        fEsp.innerHTML = '<option value="">Todas</option>' +
+          (d.especialidades || []).map(e => `<option value="${escapeHtml(e)}">${escapeHtml(e)}</option>`).join("");
+        fT.innerHTML = '<option value="">Todas</option>' +
+          (d.turmas || []).map(t => `<option value="${escapeHtml(t)}">${escapeHtml(t)}</option>`).join("");
+
+        fEsp.value = atualEsp;
+        fT.value = atualT;
+      } catch (e) { console.log("[COORD] listas:", e.message); }
+    }
+
+    async function exportarCSV() {
+      // Download direto via link com Authorization header simulado.
+      // Como fetch nao serve para download direto sem assembling, faz fetch
+      // e cria blob para download.
+      try {
+        const resp = await fetch(API_BASE + "/coordenacao/export" + getFiltrosQuery(), {
+          headers: { "Authorization": "Bearer " + getToken() }
+        });
+        if (!resp.ok) { alert("Erro ao exportar"); return; }
+        const blob = await resp.blob();
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement("a");
+        a.href = url;
+        a.download = "vytal-alunos-" + new Date().toISOString().substring(0,10) + ".csv";
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        URL.revokeObjectURL(url);
+      } catch (e) { alert("Falha de conexao"); }
+    }
+
+    // ============================================================
+    // [NIVEL-2] Drill-down: detalhes individuais do aluno
+    // ============================================================
+    async function abrirDetalhesAluno(id) {
+      // Esconde lista, mostra view de detalhe
+      document.getElementById("viewLista").style.display = "none";
+      document.getElementById("viewDetalhe").style.display = "block";
+      window.scrollTo({ top: 0, behavior: "smooth" });
+
+      const dadosDiv = document.getElementById("detalheDados");
+      const casosDiv = document.getElementById("detalheCasos");
+      const titulo = document.getElementById("detalheTitulo");
+      dadosDiv.innerHTML = '<div class="empty-state">Carregando…</div>';
+      casosDiv.innerHTML = '<div class="empty-state">Carregando…</div>';
+      titulo.textContent = "Carregando…";
+
+      try {
+        const d = await fetchAuth("/coordenacao/aluno/" + id);
+        const a = d.aluno;
+        titulo.innerHTML = '<h2 style="margin:0; font-size:20px; color:#0c4a6e;">' + escapeHtml(a.nome || "Aluno #" + a.id) + '</h2>';
+
+        dadosDiv.innerHTML = `
+          <div class="dado-item">
+            <div class="dado-label">E-mail</div>
+            <div class="dado-valor" style="font-size:12px;">${escapeHtml(a.email)}</div>
+          </div>
+          <div class="dado-item">
+            <div class="dado-label">Turma</div>
+            <div class="dado-valor">${escapeHtml(a.turma || "—")}</div>
+          </div>
+          <div class="dado-item">
+            <div class="dado-label">Cadastrado em</div>
+            <div class="dado-valor">${formatDate(a.createdAt)}</div>
+          </div>
+          <div class="dado-item">
+            <div class="dado-label">Último login</div>
+            <div class="dado-valor">${formatDateTime(a.lastLoginAt)}</div>
+          </div>
+          <div class="dado-item">
+            <div class="dado-label">Termo aceito em</div>
+            <div class="dado-valor">${formatDate(a.termoAceitoEm)}</div>
+          </div>
+        `;
+
+        document.getElementById("detalheCasosTitulo").innerHTML =
+          '📚 Casos registrados <span style="color:#64748b; font-weight:400; font-size:13px;">(' + d.casos.length + ')</span>';
+
+        if (!d.casos || d.casos.length === 0) {
+          casosDiv.innerHTML = '<div class="empty-state">Esse aluno ainda não registrou casos.</div>';
+          return;
+        }
+
+        const pillClass = {
+          "alta_concordancia": "alta",
+          "concordancia_parcial": "parcial",
+          "divergencia": "diverg",
+        };
+        const pillLabel = {
+          "alta_concordancia": "Alta concord.",
+          "concordancia_parcial": "Parcial",
+          "divergencia": "Divergência",
+        };
+
+        casosDiv.innerHTML = d.casos.map(c => {
+          const p = typeof c.payload === "string" ? JSON.parse(c.payload) : (c.payload || {});
+          const fb = typeof c.feedback === "string" ? JSON.parse(c.feedback) : (c.feedback || {});
+          const alinh = fb.alinhamento_didatico;
+          const pillHtml = alinh && pillClass[alinh]
+            ? `<span class="pill-alinh ${pillClass[alinh]}">${pillLabel[alinh] || alinh}</span>`
+            : "";
+          return `
+            <div class="caso-detalhe">
+              <h4>${escapeHtml(p.titulo || c.titulo || "Caso")}</h4>
+              <div class="caso-meta">
+                ${formatDateTime(c.createdAt)} ·
+                ${escapeHtml(p.especialidade || "—")} ·
+                ${escapeHtml(p.faixa || "—")}
+                ${pillHtml ? " · " + pillHtml : ""}
+              </div>
+              ${p.queixa ? `<div class="preview"><strong>Queixa:</strong> ${escapeHtml(p.queixa)}</div>` : ""}
+              ${p.hipoteses ? `<div class="preview"><strong>Hipóteses do aluno:</strong> ${escapeHtml(p.hipoteses)}</div>` : ""}
+              ${p.conduta ? `<div class="preview"><strong>Conduta do aluno:</strong> ${escapeHtml(p.conduta)}</div>` : ""}
+              ${p.aprendizado ? `<div class="preview"><strong>Aprendizado:</strong> ${escapeHtml(p.aprendizado)}</div>` : ""}
+            </div>
+          `;
+        }).join("");
+      } catch (e) {
+        casosDiv.innerHTML = '<div class="empty-state">Erro ao carregar detalhes do aluno.</div>';
+        console.log("[COORD] drill-down:", e.message);
+      }
+    }
+
+    function voltarParaLista() {
+      document.getElementById("viewDetalhe").style.display = "none";
+      document.getElementById("viewLista").style.display = "block";
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+
     async function carregarTudo() {
       try {
-        await Promise.all([carregarResumo(), carregarSeries(), carregarTabela()]);
+        await Promise.all([
+          carregarResumo(),
+          carregarSeries(),
+          carregarTabela(),
+          carregarHeatmap(),
+          carregarListas(),
+        ]);
       } catch (e) {
         console.log("[COORD] erro:", e.message);
       }
+    }
+
+    function limparFiltros() {
+      document.getElementById("fEspecialidade").value = "";
+      document.getElementById("fTurma").value = "";
+      document.getElementById("fDataInicio").value = "";
+      document.getElementById("fDataFim").value = "";
+      carregarTudo();
     }
 
     async function validarSessao() {
@@ -657,6 +1151,19 @@
         }
       });
       document.getElementById("btnAtualizar").addEventListener("click", carregarTudo);
+
+      // [NIVEL-2] Listeners dos botoes de filtros, export e drill-down
+      document.getElementById("btnAplicarFiltros").addEventListener("click", carregarTudo);
+      document.getElementById("btnLimparFiltros").addEventListener("click", limparFiltros);
+      document.getElementById("btnExportar").addEventListener("click", exportarCSV);
+      document.getElementById("btnVoltarLista").addEventListener("click", voltarParaLista);
+
+      // Enter nos campos de data tambem aplica filtros
+      ["fDataInicio", "fDataFim"].forEach(id => {
+        document.getElementById(id).addEventListener("keydown", (e) => {
+          if (e.key === "Enter") carregarTudo();
+        });
+      });
 
       validarSessao();
     });
