@@ -187,6 +187,47 @@
       color: #4b5563;
       line-height: 1.5;
     }
+
+    /* Leituras recomendadas */
+    ul.leituras {
+      margin-bottom: 8px;
+    }
+    ul.leituras li {
+      padding: 10px 0 10px 0;
+      border-bottom: 1px solid #f3f4f6;
+    }
+    ul.leituras li:last-child {
+      border-bottom: none;
+    }
+    ul.leituras li::before {
+      content: "";
+    }
+    ul.leituras li a {
+      color: #1e40af;
+      text-decoration: none;
+      font-weight: 500;
+      display: inline-block;
+      margin-bottom: 4px;
+    }
+    ul.leituras li a:hover {
+      text-decoration: underline;
+    }
+    ul.leituras .ref-meta {
+      display: block;
+      color: #6b7280;
+      font-size: 13px;
+      line-height: 1.5;
+      margin-top: 2px;
+    }
+    .leituras-aviso {
+      background: #f3f4f6;
+      padding: 12px 16px;
+      border-radius: 4px;
+      font-size: 13px;
+      color: #4b5563;
+      margin-top: 20px;
+      border-left: 3px solid #6b7280;
+    }
   </style>
 </head>
 <body>
@@ -276,6 +317,84 @@
       <h2>Status atual</h2>
       <p>
         O protótipo está em <strong>fase de validação interna</strong>, sendo testado por um grupo restrito de profissionais convidados. Não temos previsão de lançamento comercial. As decisões sobre evolução do projeto serão tomadas com base no feedback dos beta-testers e em conformidade com os requisitos regulatórios aplicáveis (CFM e ANVISA).
+      </p>
+    </div>
+
+    <!-- Leituras Recomendadas -->
+    <div class="card">
+      <h2>Leituras recomendadas</h2>
+      <p>
+        Construir uma ferramenta responsável exige estudo contínuo. Compartilhamos aqui referências públicas que orientam o desenvolvimento do Vytal ECG — para que profissionais interessados possam aprofundar o tema por conta própria.
+      </p>
+
+      <h3>Artigos científicos sobre digitalização de ECG</h3>
+      <ul class="leituras">
+        <li>
+          <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC9722713/" target="_blank" rel="noopener noreferrer">
+            A fully-automated paper ECG digitisation algorithm using deep learning
+          </a>
+          <span class="ref-meta">Imperial College London (Scientific Reports, 2022) — abordagem com deep learning para ECG 3×4 + ritmo, base referencial do problema.</span>
+        </li>
+        <li>
+          <a href="https://arxiv.org/abs/2506.10617" target="_blank" rel="noopener noreferrer">
+            Deep Learning-Based Digitization of Overlapping ECG Images with Open-Source Python Code
+          </a>
+          <span class="ref-meta">Karbasi et al. (arXiv, 2025) — pipeline em duas etapas usando U-Net com ResNet34 para lidar com sobreposição de sinais.</span>
+        </li>
+        <li>
+          <a href="https://arxiv.org/pdf/2510.19590" target="_blank" rel="noopener noreferrer">
+            Digitizing Paper ECGs at Scale: An Open-Source Algorithm for Clinical Research
+          </a>
+          <span class="ref-meta">2025 — discussão sobre digitalização em escala para pesquisa clínica.</span>
+        </li>
+        <li>
+          <a href="https://www.medrxiv.org/content/10.1101/2024.08.31.24312876.full.pdf" target="_blank" rel="noopener noreferrer">
+            High Precision ECG Digitization Using Artificial Intelligence
+          </a>
+          <span class="ref-meta">medRxiv (2024) — comparação de soluções existentes (Imperial, ECGMiner) e seus limites em layouts reais.</span>
+        </li>
+      </ul>
+
+      <h3>Ferramentas open-source citadas na literatura</h3>
+      <ul class="leituras">
+        <li>
+          <a href="https://github.com/alphanumericslab/ecg-image-kit" target="_blank" rel="noopener noreferrer">
+            ECG-Image-Kit
+          </a>
+          <span class="ref-meta">Toolbox open-source para gerar imagens sintéticas multi-lead com artefatos realistas — usado em pesquisa e treinamento de modelos.</span>
+        </li>
+        <li>
+          <a href="http://ecg-digitisation.hh.med.ic.ac.uk:8050/" target="_blank" rel="noopener noreferrer">
+            ECG Digitisation Tool — Imperial College London
+          </a>
+          <span class="ref-meta">Ferramenta online aberta para upload de ECG escaneado e extração de sinais digitais.</span>
+        </li>
+      </ul>
+
+      <h3>Regulação brasileira — software como dispositivo médico</h3>
+      <ul class="leituras">
+        <li>
+          <a href="https://anvisalegis.datalegis.net/action/ActionDatalegis.php?acao=abrirTextoAto&tipo=RDC&numeroAto=00000657&seqAto=000&valorAno=2022&orgao=RDC%2FDC%2FANVISA%2FMS" target="_blank" rel="noopener noreferrer">
+            RDC nº 657/2022 — ANVISA
+          </a>
+          <span class="ref-meta">Resolução vigente que dispõe sobre requisitos sanitários aplicáveis a Software como Dispositivo Médico (SaMD).</span>
+        </li>
+        <li>
+          <a href="https://www.gov.br/anvisa/pt-br/assuntos/noticias-anvisa/2022/software-como-dispositivo-medico-perguntas-e-respostas/perguntas-respostas-rdc-657-de-2022-v1-01-09-2022.pdf" target="_blank" rel="noopener noreferrer">
+            Perguntas e Respostas — RDC 657/2022 (ANVISA)
+          </a>
+          <span class="ref-meta">Documento oficial da ANVISA esclarecendo dúvidas sobre enquadramento e regularização de SaMD, incluindo softwares com IA.</span>
+        </li>
+        <li>
+          <a href="https://abimed.org.br/noticias/revisao-da-resolucao-rdc-657-2022-propoe-novas-regras-para-softwares-como-dispositivos-medicos/" target="_blank" rel="noopener noreferrer">
+            Revisão da RDC 657/2022 — ABIMED
+          </a>
+          <span class="ref-meta">Reportagem técnica sobre a minuta de revisão da RDC, incluindo tratamento de softwares baseados em IA com aprendizado contínuo.</span>
+        </li>
+      </ul>
+
+      <p class="leituras-aviso">
+        <strong>Importante:</strong> as referências acima são pontos de partida para estudo, não constituem endosso à utilização das ferramentas mencionadas para uso clínico. A escolha de qualquer ferramenta em ambiente real exige avaliação regulatória, clínica e ética caso a caso.
       </p>
     </div>
 
