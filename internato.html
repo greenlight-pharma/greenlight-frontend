@@ -373,13 +373,6 @@
     .topbar-btn-ghost { background: transparent; color: #94a3b8; }
     .topbar-btn-ghost:hover { background: #f1f5f9; color: #334155; }
   </style>
-  <!-- [PDF-EXPORT] html2pdf.js: gera PDF a partir de HTML preservando estilos.
-       Versao 0.10.1 estavel. Combina html2canvas (renderiza) + jsPDF (gera PDF).
-       SRI hash garante integridade — se o arquivo for adulterado, o browser recusa. -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"
-          integrity="sha512-GsLlZN/3F2ErC5ifS5QtgpiJtWd43JWSuIgh7mbzZ8zBps+dvLusV+eNQATqgA/HdeKFVgA5v3S/cIrLF7QnIg=="
-          crossorigin="anonymous"
-          referrerpolicy="no-referrer"></script>
 </head>
 <body>
 
@@ -1372,20 +1365,22 @@
     // ============================================================
     // [PDF-EXPORT] Exportar feedback educacional em PDF
     //
-    // Recebe o HTML do gabarito + titulo do caso. Monta documento
-    // standalone com cabecalho Vytal + corpo do gabarito + rodape
-    // com disclaimer obrigatorio. Gera PDF via html2pdf.js.
+    // Estrategia: window.print() em um iframe oculto com conteudo
+    // standalone. Sem biblioteca externa, sem eval, compativel com
+    // CSP rigido. Usuario escolhe "Salvar como PDF" no dialogo do
+    // navegador (presente em Chrome, Firefox, Edge, Safari).
+    //
+    // Por que iframe e nao window.print() direto:
+    //   - print() direto imprimiria a pagina inteira (topbar, lista,
+    //     formularios), nao so o gabarito.
+    //   - Iframe permite documento completamente separado com seu
+    //     proprio CSS @page (margens, tamanho), sem afetar a UI.
     //
     // Disclaimer no rodape eh fixo e obrigatorio (orientacao do
     // advogado): a IA nao diagnostica, nao prescreve, nao orienta
-    // atendimento real. Mesmo padrao do estudante.html original.
+    // atendimento real.
     // ============================================================
     function exportarFeedbackPDF(htmlGabarito, tituloCaso) {
-      if (typeof html2pdf === "undefined") {
-        alert("Biblioteca de PDF nao carregou. Verifique sua conexao e tente recarregar a pagina.");
-        return;
-      }
-
       const tituloLimpo = (tituloCaso || "Caso clinico").substring(0, 100);
       const dataAtual = new Date().toLocaleDateString("pt-BR", {
         day: "2-digit", month: "2-digit", year: "numeric"
@@ -1394,132 +1389,174 @@
         hour: "2-digit", minute: "2-digit"
       });
 
-      // Cria container temporario com estilo proprio (nao depende
-      // do CSS da pagina; PDF precisa ser auto-contido).
-      const container = document.createElement("div");
-      container.style.cssText = `
-        font-family: Arial, Helvetica, sans-serif;
-        color: #1f2937;
-        padding: 20px;
-        max-width: 720px;
-        line-height: 1.6;
-      `;
+      // HTML completo do documento que vai para impressao.
+      // Inclui @page (margens A4), @media print (oculta tudo o que
+      // nao deve aparecer no PDF), e estilos inline para garantir
+      // que o CSS aparece igual em qualquer navegador.
+      const htmlImpressao = `<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<title>${escapeHtml(tituloLimpo)}</title>
+<style>
+  @page {
+    size: A4;
+    margin: 15mm;
+  }
+  * { box-sizing: border-box; }
+  body {
+    font-family: Arial, Helvetica, sans-serif;
+    color: #1f2937;
+    line-height: 1.55;
+    font-size: 12pt;
+    margin: 0;
+    padding: 0;
+  }
+  .pdf-header {
+    border-bottom: 2px solid #0c4a6e;
+    padding-bottom: 10px;
+    margin-bottom: 16px;
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+  }
+  .pdf-logo {
+    font-size: 16pt;
+    font-weight: 700;
+    color: #0c4a6e;
+  }
+  .pdf-date {
+    font-size: 9pt;
+    color: #64748b;
+  }
+  .pdf-subtitle {
+    font-size: 10pt;
+    color: #475569;
+    margin-top: 2px;
+  }
+  h2.pdf-titulo {
+    font-size: 14pt;
+    color: #0f172a;
+    margin: 14px 0 12px 0;
+    border-left: 3px solid #0284c7;
+    padding-left: 8px;
+  }
+  .pdf-content {
+    font-size: 11pt;
+  }
+  .pdf-content h4 {
+    color: #0c4a6e;
+    font-size: 12pt;
+    margin: 12px 0 6px 0;
+    padding-bottom: 3px;
+    border-bottom: 1px solid #e5e7eb;
+  }
+  .pdf-content ul, .pdf-content ol {
+    margin: 4px 0 8px 0;
+    padding-left: 22px;
+  }
+  .pdf-content li {
+    margin-bottom: 4px;
+  }
+  .pdf-content p {
+    margin: 4px 0 8px 0;
+  }
+  .pdf-content strong { color: #0f172a; }
+  .pdf-disclaimer {
+    margin-top: 18px;
+    padding-top: 10px;
+    border-top: 1px solid #e5e7eb;
+    font-size: 9pt;
+    color: #6b7280;
+    font-style: italic;
+    line-height: 1.5;
+  }
+  .pdf-footer {
+    margin-top: 6px;
+    font-size: 8pt;
+    color: #9ca3af;
+    text-align: center;
+  }
+  /* Evita quebra dentro de secoes-chave */
+  .analysis-section { page-break-inside: avoid; }
+  /* Esconde elementos da pagina pai caso herdem por engano */
+  .topbar, .auth-overlay, button { display: none !important; }
+</style>
+</head>
+<body>
+  <div class="pdf-header">
+    <div>
+      <div class="pdf-logo">🩺 Vytal — Internato</div>
+      <div class="pdf-subtitle">Gabarito comentado · ferramenta educacional</div>
+    </div>
+    <div class="pdf-date">${dataAtual} · ${horaAtual}</div>
+  </div>
 
-      container.innerHTML = `
-        <div style="border-bottom: 2px solid #0c4a6e; padding-bottom: 12px; margin-bottom: 20px;">
-          <div style="display: flex; justify-content: space-between; align-items: baseline;">
-            <div style="font-size: 18px; font-weight: 700; color: #0c4a6e;">
-              🩺 Vytal — Internato
-            </div>
-            <div style="font-size: 11px; color: #64748b;">
-              ${dataAtual} · ${horaAtual}
-            </div>
-          </div>
-          <div style="font-size: 13px; color: #475569; margin-top: 4px;">
-            Gabarito comentado · ferramenta educacional
-          </div>
-        </div>
+  <h2 class="pdf-titulo">${escapeHtml(tituloLimpo)}</h2>
 
-        <h2 style="font-size: 16px; color: #0f172a; margin: 0 0 16px 0;">
-          ${escapeHtml(tituloLimpo)}
-        </h2>
+  <div class="pdf-content">${htmlGabarito}</div>
 
-        <div style="font-size: 13px;">
-          ${htmlGabarito}
-        </div>
+  <div class="pdf-disclaimer">
+    Esta analise eh uma ferramenta educacional em formato de gabarito comentado.
+    Nao diagnostica, nao prescreve e nao orienta atendimento real.
+    Uso restrito a ensino, portfolio e discussao com preceptor.
+    Em um caso real, a conduta deve sempre ser definida por medico
+    responsavel apos avaliacao presencial.
+  </div>
 
-        <div style="margin-top: 30px; padding-top: 14px; border-top: 1px solid #e5e7eb;
-                    font-size: 10px; color: #6b7280; font-style: italic; line-height: 1.5;">
-          Esta analise é uma ferramenta educacional em formato de gabarito comentado.
-          Nao diagnostica, nao prescreve e nao orienta atendimento real.
-          Uso restrito a ensino, portfolio e discussao com preceptor.
-          Em um caso real, a conduta deve sempre ser definida por medico
-          responsavel apos avaliacao presencial.
-        </div>
+  <div class="pdf-footer">
+    Gerado por Vytal Saude Tecnologia · vytalsaude.com.br
+  </div>
+</body>
+</html>`;
 
-        <div style="margin-top: 8px; font-size: 9px; color: #9ca3af; text-align: center;">
-          Gerado por Vytal Saude Tecnologia · vytalsaude.com.br
-        </div>
-      `;
+      // Cria iframe oculto, escreve o HTML, dispara print().
+      // Depois da impressao, remove o iframe (com pequeno delay
+      // para garantir que o dialogo abriu antes).
+      const iframe = document.createElement("iframe");
+      iframe.style.position = "fixed";
+      iframe.style.right = "0";
+      iframe.style.bottom = "0";
+      iframe.style.width = "0";
+      iframe.style.height = "0";
+      iframe.style.border = "0";
+      iframe.setAttribute("aria-hidden", "true");
+      document.body.appendChild(iframe);
 
-      // Nome do arquivo: data + titulo curto, slug-safe.
-      const slug = tituloLimpo
-        .toLowerCase()
-        .replace(/[^a-z0-9]+/g, "-")
-        .replace(/^-+|-+$/g, "")
-        .substring(0, 50);
-      const dataSlug = new Date().toISOString().substring(0, 10);
-      const nomeArquivo = `vytal-${dataSlug}-${slug || "caso"}.pdf`;
+      try {
+        const doc = iframe.contentWindow.document;
+        doc.open();
+        doc.write(htmlImpressao);
+        doc.close();
 
-      const opcoes = {
-        margin: [10, 10, 10, 10],          // mm
-        filename: nomeArquivo,
-        image: { type: "jpeg", quality: 0.95 },
-        html2canvas: {
-          scale: 2,                          // resolucao 2x para impressao nitida
-          useCORS: true,
-          logging: false,
-          // [FIX-PDF-EM-BRANCO] Forca largura do canvas para combinar com
-          // o container (794px = 210mm @ 96dpi). Sem isso, html2canvas
-          // pode usar a largura da viewport e cortar/distorcer o conteudo.
-          width: 794,
-          windowWidth: 794,
-          // backgroundColor explicito previne PDF transparente.
-          backgroundColor: "#ffffff"
-        },
-        jsPDF: {
-          unit: "mm",
-          format: "a4",
-          orientation: "portrait"
-        },
-        pagebreak: { mode: ["avoid-all", "css", "legacy"] }
-      };
-
-      // [FIX-PDF-EM-BRANCO] Renderiza em DOM visivel mas FORA do fluxo,
-      // sem usar `left: -9999px` (que causa PDF em branco no html2canvas).
-      //
-      // Tecnica que funciona:
-      //   - position: absolute (nao fixed) + top: 0, left: 0
-      //   - z-index: -1 (atras de tudo) + opacity 0 (invisivel ao usuario)
-      //   - Largura em PX (nao mm) para o browser resolver corretamente
-      //   - 794px = 210mm @ 96dpi (largura A4)
-      //   - requestAnimationFrame antes de gerar PDF, garantindo que o
-      //     browser pintou o DOM antes do html2canvas tentar capturar.
-      container.style.position = "absolute";
-      container.style.left = "0";
-      container.style.top = "0";
-      container.style.width = "794px";        // 210mm @ 96dpi
-      container.style.background = "white";
-      container.style.zIndex = "-1";
-      container.style.opacity = "0";
-      container.style.pointerEvents = "none";
-      document.body.appendChild(container);
-
-      mostrarToast("📄 Gerando PDF…");
-
-      // [FIX-PDF-EM-BRANCO] Espera o browser pintar o DOM antes de
-      // chamar html2canvas. Sem isso, o canvas pode capturar o
-      // container vazio (antes do conteudo ter sido renderizado).
-      // Tecnica padrao: requestAnimationFrame aninhado garante que
-      // pelo menos 1 paint completo aconteceu.
-      requestAnimationFrame(() => {
-        requestAnimationFrame(() => {
-          html2pdf()
-            .set(opcoes)
-            .from(container)
-            .save()
-            .then(() => {
-              document.body.removeChild(container);
-              mostrarToast("✅ PDF gerado!");
-            })
-            .catch((err) => {
-              document.body.removeChild(container);
-              console.log("[PDF-EXPORT-ERRO]", err && err.message);
-              mostrarToast("❌ Falha ao gerar PDF. Tente novamente.");
-            });
-        });
-      });
+        // Espera o conteudo terminar de renderizar antes de imprimir.
+        // onload do iframe garante isso de forma confiavel.
+        iframe.onload = function() {
+          try {
+            iframe.contentWindow.focus();
+            iframe.contentWindow.print();
+            mostrarToast("📄 Escolha 'Salvar como PDF' no diálogo");
+          } catch (e) {
+            console.log("[PDF-EXPORT-ERRO]", e && e.message);
+            mostrarToast("❌ Falha ao abrir impressão");
+          }
+          // Remove o iframe depois de um delay generoso.
+          // 60s eh o suficiente mesmo se o usuario demorar no dialogo.
+          setTimeout(() => {
+            if (iframe && iframe.parentNode) {
+              iframe.parentNode.removeChild(iframe);
+            }
+          }, 60000);
+        };
+      } catch (e) {
+        console.log("[PDF-EXPORT-ERRO]", e && e.message);
+        mostrarToast("❌ Falha ao gerar PDF");
+        if (iframe && iframe.parentNode) {
+          iframe.parentNode.removeChild(iframe);
+        }
+      }
     }
+
 
     // Helper: exportar PDF do gabarito recem-gerado (etapa 3).
     // Usa o feedbackRecebido em memoria e o titulo do casoEmConstrucao.
