@@ -1458,7 +1458,14 @@
         html2canvas: {
           scale: 2,                          // resolucao 2x para impressao nitida
           useCORS: true,
-          logging: false
+          logging: false,
+          // [FIX-PDF-EM-BRANCO] Forca largura do canvas para combinar com
+          // o container (794px = 210mm @ 96dpi). Sem isso, html2canvas
+          // pode usar a largura da viewport e cortar/distorcer o conteudo.
+          width: 794,
+          windowWidth: 794,
+          // backgroundColor explicito previne PDF transparente.
+          backgroundColor: "#ffffff"
         },
         jsPDF: {
           unit: "mm",
@@ -1468,30 +1475,50 @@
         pagebreak: { mode: ["avoid-all", "css", "legacy"] }
       };
 
-      // Renderiza em DOM oculto (necessario para html2canvas funcionar).
-      // Depois remove. Toast curto enquanto processa.
-      container.style.position = "fixed";
-      container.style.left = "-9999px";
+      // [FIX-PDF-EM-BRANCO] Renderiza em DOM visivel mas FORA do fluxo,
+      // sem usar `left: -9999px` (que causa PDF em branco no html2canvas).
+      //
+      // Tecnica que funciona:
+      //   - position: absolute (nao fixed) + top: 0, left: 0
+      //   - z-index: -1 (atras de tudo) + opacity 0 (invisivel ao usuario)
+      //   - Largura em PX (nao mm) para o browser resolver corretamente
+      //   - 794px = 210mm @ 96dpi (largura A4)
+      //   - requestAnimationFrame antes de gerar PDF, garantindo que o
+      //     browser pintou o DOM antes do html2canvas tentar capturar.
+      container.style.position = "absolute";
+      container.style.left = "0";
       container.style.top = "0";
-      container.style.width = "210mm";       // largura A4
+      container.style.width = "794px";        // 210mm @ 96dpi
       container.style.background = "white";
+      container.style.zIndex = "-1";
+      container.style.opacity = "0";
+      container.style.pointerEvents = "none";
       document.body.appendChild(container);
 
       mostrarToast("📄 Gerando PDF…");
 
-      html2pdf()
-        .set(opcoes)
-        .from(container)
-        .save()
-        .then(() => {
-          document.body.removeChild(container);
-          mostrarToast("✅ PDF gerado!");
-        })
-        .catch((err) => {
-          document.body.removeChild(container);
-          console.log("[PDF-EXPORT-ERRO]", err && err.message);
-          mostrarToast("❌ Falha ao gerar PDF. Tente novamente.");
+      // [FIX-PDF-EM-BRANCO] Espera o browser pintar o DOM antes de
+      // chamar html2canvas. Sem isso, o canvas pode capturar o
+      // container vazio (antes do conteudo ter sido renderizado).
+      // Tecnica padrao: requestAnimationFrame aninhado garante que
+      // pelo menos 1 paint completo aconteceu.
+      requestAnimationFrame(() => {
+        requestAnimationFrame(() => {
+          html2pdf()
+            .set(opcoes)
+            .from(container)
+            .save()
+            .then(() => {
+              document.body.removeChild(container);
+              mostrarToast("✅ PDF gerado!");
+            })
+            .catch((err) => {
+              document.body.removeChild(container);
+              console.log("[PDF-EXPORT-ERRO]", err && err.message);
+              mostrarToast("❌ Falha ao gerar PDF. Tente novamente.");
+            });
         });
+      });
     }
 
     // Helper: exportar PDF do gabarito recem-gerado (etapa 3).
