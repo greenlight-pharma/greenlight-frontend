@@ -71,6 +71,148 @@
       color: #0284c7;
       border-bottom-color: #0284c7;
     }
+
+    /* ============ [STEPPER] Indicador de progresso 3 etapas ============ */
+    .stepper {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin: 10px 0 18px;
+      padding: 14px 16px;
+      background: #f8fafc;
+      border-radius: 10px;
+      border: 1px solid #e2e8f0;
+      flex-wrap: wrap;
+    }
+    .stepper-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      color: #94a3b8;
+      transition: color 0.2s;
+    }
+    .stepper-num {
+      width: 26px;
+      height: 26px;
+      border-radius: 50%;
+      background: #e2e8f0;
+      color: #94a3b8;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 12px;
+      font-weight: 600;
+      transition: background 0.2s, color 0.2s;
+    }
+    .stepper-label {
+      font-size: 13px;
+      font-weight: 500;
+    }
+    .stepper-item.ativo {
+      color: #0c4a6e;
+    }
+    .stepper-item.ativo .stepper-num {
+      background: #0c4a6e;
+      color: white;
+    }
+    .stepper-item.feito {
+      color: #059669;
+    }
+    .stepper-item.feito .stepper-num {
+      background: #059669;
+      color: white;
+    }
+    .stepper-item.feito .stepper-num::after {
+      content: "✓";
+    }
+    .stepper-item.feito .stepper-num {
+      font-size: 0;
+    }
+    .stepper-item.feito .stepper-num::after {
+      font-size: 14px;
+    }
+    .stepper-divisor {
+      flex: 1;
+      min-width: 12px;
+      height: 1px;
+      background: #cbd5e1;
+    }
+
+    /* ============ [FAIXA] Grid de botões para faixa etária ============ */
+    .faixa-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 6px;
+      margin-bottom: 14px;
+    }
+    @media (min-width: 640px) {
+      .faixa-grid { grid-template-columns: repeat(6, 1fr); }
+    }
+    .faixa-btn {
+      padding: 10px 8px;
+      background: white;
+      border: 1px solid #cbd5e1;
+      border-radius: 7px;
+      font-size: 13px;
+      font-weight: 600;
+      color: #475569;
+      cursor: pointer;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 2px;
+      transition: all 0.15s;
+      font-family: inherit;
+    }
+    .faixa-btn:hover {
+      border-color: #0c4a6e;
+      color: #0c4a6e;
+    }
+    .faixa-btn.ativo {
+      background: #0c4a6e;
+      border-color: #0c4a6e;
+      color: white;
+    }
+    .faixa-sub {
+      font-size: 10px;
+      font-weight: 400;
+      opacity: 0.8;
+      text-transform: lowercase;
+    }
+
+    /* ============ [OPCIONAIS] Bloco colapsável ============ */
+    .opcionais-detalhes {
+      margin: 16px 0;
+      padding: 12px 16px;
+      background: #f8fafc;
+      border: 1px solid #e2e8f0;
+      border-radius: 8px;
+    }
+    .opcionais-detalhes[open] {
+      padding-bottom: 8px;
+    }
+    .opcionais-summary {
+      cursor: pointer;
+      font-size: 13px;
+      font-weight: 600;
+      color: #0c4a6e;
+      list-style: none;
+      user-select: none;
+    }
+    .opcionais-summary::-webkit-details-marker { display: none; }
+    .opcionais-summary::before {
+      content: "▸ ";
+      transition: transform 0.2s;
+      display: inline-block;
+    }
+    .opcionais-detalhes[open] .opcionais-summary::before {
+      content: "▾ ";
+    }
+    .opcionais-conteudo {
+      margin-top: 12px;
+      padding-top: 12px;
+      border-top: 1px solid #e2e8f0;
+    }
     label {
       display: block;
       font-weight: 600;
@@ -820,6 +962,26 @@
         raciocínio do aluno, não substitui o pensamento dele.
       -->
       <div id="painel-novo">
+
+        <!-- [STEPPER] Indicador visual de progresso das 3 etapas.
+             Atualizado dinamicamente via funcao atualizarStepper(). -->
+        <div class="stepper" id="stepper">
+          <div class="stepper-item ativo" id="step-1">
+            <div class="stepper-num">1</div>
+            <div class="stepper-label">Caso clínico</div>
+          </div>
+          <div class="stepper-divisor"></div>
+          <div class="stepper-item" id="step-2">
+            <div class="stepper-num">2</div>
+            <div class="stepper-label">Sua avaliação</div>
+          </div>
+          <div class="stepper-divisor"></div>
+          <div class="stepper-item" id="step-3">
+            <div class="stepper-num">3</div>
+            <div class="stepper-label">Feedback IA</div>
+          </div>
+        </div>
+
         <div class="alerta-lgpd">
           ⚠️ <strong>Exercício acadêmico.</strong> Descreva o caso de forma <strong>anonimizada</strong>, sem dados que permitam identificar o paciente (nome, RG, prontuário, endereço, data exata da consulta, telefone, e-mail). Use idade aproximada (faixa) e descreva achados clínicos e raciocínio. <strong>Não copie o prontuário hospitalar.</strong>
         </div>
@@ -856,15 +1018,15 @@
 
           <!-- 3. Faixa etaria -->
           <label>Faixa etária do paciente *</label>
-          <select id="f-faixa">
-            <option value="">Selecione</option>
-            <option>0–11 (criança)</option>
-            <option>12–17 (adolescente)</option>
-            <option>18–39 (adulto jovem)</option>
-            <option>40–59 (adulto)</option>
-            <option>60–79 (idoso)</option>
-            <option>80+ (idoso)</option>
-          </select>
+          <div class="faixa-grid" id="faixa-grid">
+            <button type="button" class="faixa-btn" data-faixa="0–11 (criança)">0–11<span class="faixa-sub">criança</span></button>
+            <button type="button" class="faixa-btn" data-faixa="12–17 (adolescente)">12–17<span class="faixa-sub">adolescente</span></button>
+            <button type="button" class="faixa-btn" data-faixa="18–39 (adulto jovem)">18–39<span class="faixa-sub">adulto jovem</span></button>
+            <button type="button" class="faixa-btn" data-faixa="40–59 (adulto)">40–59<span class="faixa-sub">adulto</span></button>
+            <button type="button" class="faixa-btn" data-faixa="60–79 (idoso)">60–79<span class="faixa-sub">idoso</span></button>
+            <button type="button" class="faixa-btn" data-faixa="80+ (idoso)">80+<span class="faixa-sub">idoso</span></button>
+          </div>
+          <input type="hidden" id="f-faixa" value="" />
 
           <!-- 4. Sinais vitais (NOVO - opcional, texto livre) -->
           <label>Sinais vitais</label>
@@ -874,21 +1036,31 @@
           <label>HMA (História da moléstia atual) *</label>
           <textarea id="f-hma" placeholder="Evolução, fatores de melhora/piora, sintomas associados, características da queixa. NÃO inclua dados identificáveis."></textarea>
 
-          <!-- 6. Antecedentes pessoais -->
-          <label>Antecedentes pessoais</label>
-          <textarea id="f-antecedentes-pessoais" placeholder="Comorbidades, cirurgias prévias, medicações em uso, alergias. (Opcional)"></textarea>
+          <!-- 5. HMA já está acima -->
 
-          <!-- 7. Habitos e vicios -->
-          <label>Hábitos e vícios</label>
-          <textarea id="f-habitos" placeholder="Tabagismo, etilismo, uso de drogas, atividade física, alimentação. (Opcional)"></textarea>
+          <!-- [OPCIONAIS] Bloco colapsavel — antecedentes, habitos, familiares, exame.
+               Reduz frição visual na entrada do caso. Aluno expande quando precisa. -->
+          <details class="opcionais-detalhes">
+            <summary class="opcionais-summary">+ Antecedentes, hábitos, exame físico (opcionais)</summary>
+            <div class="opcionais-conteudo">
 
-          <!-- 8. Antecedentes familiares -->
-          <label>Antecedentes familiares</label>
-          <textarea id="f-antecedentes-familiares" placeholder="Doenças relevantes na família, idade e causa de óbito de pais/irmãos quando pertinente. (Opcional)"></textarea>
+              <!-- 6. Antecedentes pessoais -->
+              <label>Antecedentes pessoais</label>
+              <textarea id="f-antecedentes-pessoais" placeholder="Comorbidades, cirurgias prévias, medicações em uso, alergias."></textarea>
 
-          <!-- 9. Exame fisico -->
-          <label>Exame físico</label>
-          <textarea id="f-exame-fisico" placeholder="Exame geral e segmentar dirigido. Resultados de exames complementares já realizados, se houver. (Opcional)"></textarea>
+              <!-- 7. Habitos e vicios -->
+              <label>Hábitos e vícios</label>
+              <textarea id="f-habitos" placeholder="Tabagismo, etilismo, uso de drogas, atividade física, alimentação."></textarea>
+
+              <!-- 8. Antecedentes familiares -->
+              <label>Antecedentes familiares</label>
+              <textarea id="f-antecedentes-familiares" placeholder="Doenças relevantes na família, idade e causa de óbito de pais/irmãos quando pertinente."></textarea>
+
+              <!-- 9. Exame fisico -->
+              <label>Exame físico</label>
+              <textarea id="f-exame-fisico" placeholder="Exame geral e segmentar dirigido. Resultados de exames complementares já realizados, se houver."></textarea>
+            </div>
+          </details>
 
           <button class="primary" onclick="avancarEtapa2()">Avançar para sua avaliação →</button>
         </div>
@@ -1392,6 +1564,15 @@
         if (e.target.id === "eventoOverlay") fecharModalEvento();
       });
 
+      // [FAIXA] Plugar clicks no grid de botoes de faixa etaria.
+      document.querySelectorAll(".faixa-btn").forEach(btn => {
+        btn.addEventListener("click", (e) => {
+          e.preventDefault();
+          const valor = btn.getAttribute("data-faixa");
+          selecionarFaixa(valor, btn);
+        });
+      });
+
       validarSessao().then((ok) => {
         if (ok) {
           atualizarStats();
@@ -1868,6 +2049,14 @@
         set("f-especialidade", r.especialidade);
         set("f-faixa", r.faixa);
         set("f-queixa", r.queixa);
+        // [FAIXA] Atualiza tambem o botao visual correspondente.
+        if (r.faixa) {
+          const btn = document.querySelector('.faixa-btn[data-faixa="' + r.faixa.replace(/"/g, '\\"') + '"]');
+          if (btn) {
+            document.querySelectorAll(".faixa-btn").forEach(b => b.classList.remove("ativo"));
+            btn.classList.add("ativo");
+          }
+        }
         set("f-sinais-vitais", r.sinaisVitais);
         set("f-hma", r.hma);
         set("f-antecedentes-pessoais", r.antPessoais);
@@ -1876,6 +2065,14 @@
         set("f-exame-fisico", r.exameFisico);
         set("f-hipoteses", r.hipoteses);
         set("f-conduta", r.conduta);
+
+        // [OPCIONAIS] Se algum dos campos opcionais tem conteudo, abre
+        // o details para o aluno ver o que ja foi preenchido antes.
+        const temOpcional = (r.antPessoais || r.habitos || r.antFamiliares || r.exameFisico);
+        if (temOpcional) {
+          const det = document.querySelector(".opcionais-detalhes");
+          if (det) det.open = true;
+        }
       } catch (e) {
         console.log("[RASCUNHO-RESTAURAR-ERRO]", e.message);
       }
@@ -2044,13 +2241,37 @@
       casoEmConstrucao._camposEtapa1 = { especialidade, faixa, queixa, sinaisVitais, hma, antPessoais, habitos, antFamiliares, exameFisico };
       document.getElementById("etapa-1").style.display = "none";
       document.getElementById("etapa-2").style.display = "block";
+      atualizarStepper(2);
       window.scrollTo({ top: 0, behavior: "smooth" });
     }
 
     function voltarEtapa1() {
       document.getElementById("etapa-2").style.display = "none";
       document.getElementById("etapa-1").style.display = "block";
+      atualizarStepper(1);
       window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+
+    // [STEPPER] Atualiza visualmente o indicador 1/2/3.
+    // etapa: 1, 2 ou 3. Etapas anteriores ficam "feito" (verde),
+    // a atual fica "ativo" (azul), futuras ficam neutras.
+    function atualizarStepper(etapa) {
+      for (let i = 1; i <= 3; i++) {
+        const el = document.getElementById("step-" + i);
+        if (!el) continue;
+        el.classList.remove("ativo", "feito");
+        if (i < etapa) el.classList.add("feito");
+        else if (i === etapa) el.classList.add("ativo");
+      }
+    }
+
+    // [FAIXA] Click handler para grid de botoes de faixa etaria.
+    // Atualiza o hidden input f-faixa (compativel com codigo existente).
+    function selecionarFaixa(valor, btn) {
+      document.querySelectorAll(".faixa-btn").forEach(b => b.classList.remove("ativo"));
+      btn.classList.add("ativo");
+      const hidden = document.getElementById("f-faixa");
+      if (hidden) hidden.value = valor;
     }
 
     // ----- ETAPA 2 → ETAPA 3 (chamada à IA) -----
@@ -2082,6 +2303,7 @@
       casoEmConstrucao.conduta = conduta;
       document.getElementById("etapa-2").style.display = "none";
       document.getElementById("etapa-3").style.display = "block";
+      atualizarStepper(3);
       document.getElementById("feedback-loading").style.display = "block";
       document.getElementById("feedback-container").style.display = "none";
       document.getElementById("feedback-disclaimer").style.display = "none";
@@ -2192,6 +2414,7 @@
           // (hipóteses e conduta continuam preenchidas na etapa 2 — não mexemos)
           document.getElementById("etapa-3").style.display = "none";
           document.getElementById("etapa-1").style.display = "block";
+          atualizarStepper(1);
           alert(
             "A IA detectou possível dado identificável no caso (provavelmente um nome próprio). " +
             "Edite os campos do caso na etapa 1 para anonimizar — use 'paciente' ou 'pessoa de X anos' " +
@@ -2829,6 +3052,9 @@
       });
       document.getElementById("f-especialidade").value = "";
       document.getElementById("f-faixa").value = "";
+      document.querySelectorAll(".faixa-btn").forEach(b => b.classList.remove("ativo"));
+      const det = document.querySelector(".opcionais-detalhes");
+      if (det) det.open = false;
       document.getElementById("feedback-container").innerHTML = "";
       document.getElementById("feedback-container").style.display = "none";
       document.getElementById("feedback-disclaimer").style.display = "none";
@@ -2840,6 +3066,7 @@
       document.getElementById("etapa-3").style.display = "none";
       document.getElementById("etapa-2").style.display = "none";
       document.getElementById("etapa-1").style.display = "block";
+      atualizarStepper(1);
       window.scrollTo({ top: 0, behavior: "smooth" });
     }
 
