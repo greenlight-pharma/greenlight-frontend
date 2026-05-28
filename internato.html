@@ -619,9 +619,25 @@
       padding: 14px 24px;
       border-top: 1px solid #f0ece4;
       display: flex;
-      justify-content: flex-end;
+      justify-content: space-between;
+      gap: 10px;
       flex-shrink: 0;
     }
+    .discussao-modal-btn-pdf {
+      background: white;
+      color: #334155;
+      border: 1px solid #d4cfc3;
+      border-radius: 8px;
+      padding: 9px 18px;
+      font-size: 13.5px;
+      font-weight: 600;
+      cursor: pointer;
+      font-family: inherit;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .discussao-modal-btn-pdf:hover { background: #faf8f3; border-color: #b87333; }
     .discussao-modal-btn-ok {
       background: #0f1f3a;
       color: white;
@@ -1695,6 +1711,7 @@
       </div>
       <div class="discussao-modal-corpo" id="discussaoModalCorpo"></div>
       <div class="discussao-modal-rodape">
+        <button type="button" class="discussao-modal-btn-pdf" id="discussaoBtnPdf">📄 Salvar em PDF</button>
         <button type="button" class="discussao-modal-btn-ok" id="discussaoBtnOk">Fechar</button>
       </div>
     </div>
@@ -2156,6 +2173,7 @@
       // [DISCUSSAO-MODAL] Listeners
       document.getElementById("discussaoBtnFechar").addEventListener("click", fecharModalDiscussao);
       document.getElementById("discussaoBtnOk").addEventListener("click", fecharModalDiscussao);
+      document.getElementById("discussaoBtnPdf").addEventListener("click", exportarPDFModalDiscussao);
       document.getElementById("discussaoOverlay").addEventListener("click", (e) => {
         if (e.target.id === "discussaoOverlay") fecharModalDiscussao();
       });
@@ -3165,11 +3183,14 @@
       }
 
       // Resumo em destaque
+      // [MODAL-COMPLETO] Capturamos resumo + disclaimer + pontos em
+      // htmlResumoPontos para reuso no modal (que mostra TUDO).
+      let htmlResumoPontos = "";
       if (data.resumo_caso) {
-        html += '<div class="analise-resumo">';
-        html += '<div class="analise-resumo-label">RESUMO</div>';
-        html += `<div class="analise-resumo-texto">${escapeHtml(data.resumo_caso)}</div>`;
-        html += '</div>';
+        htmlResumoPontos += '<div class="analise-resumo">';
+        htmlResumoPontos += '<div class="analise-resumo-label">RESUMO</div>';
+        htmlResumoPontos += `<div class="analise-resumo-texto">${escapeHtml(data.resumo_caso)}</div>`;
+        htmlResumoPontos += '</div>';
       }
 
       // Disclaimer reforcado proximo aos cards — condicao 1 do parecer.
@@ -3183,35 +3204,36 @@
       const temFortes = Array.isArray(data.pontos_fortes) && data.pontos_fortes.length > 0;
       const temAprofundar = Array.isArray(data.pontos_a_aprofundar) && data.pontos_a_aprofundar.length > 0;
       if (temFortes || temAprofundar) {
-        html += '<div class="disclaimer-pontos">';
-        html += '⚠️ <strong>Feedback preliminar formativo.</strong> ';
-        html += '<strong>Sugestões para estudo e reflexão</strong>, não constituem avaliação acadêmica. ';
-        html += 'Discuta com preceptor.';
-        html += '</div>';
+        htmlResumoPontos += '<div class="disclaimer-pontos">';
+        htmlResumoPontos += '⚠️ <strong>Feedback preliminar formativo.</strong> ';
+        htmlResumoPontos += '<strong>Sugestões para estudo e reflexão</strong>, não constituem avaliação acadêmica. ';
+        htmlResumoPontos += 'Discuta com preceptor.';
+        htmlResumoPontos += '</div>';
 
-        html += '<div class="pontos-grid">';
+        htmlResumoPontos += '<div class="pontos-grid">';
         if (temFortes) {
-          html += '<div class="pontos-card pontos-fortes">';
-          html += '<h4>✓ PONTOS FORTES</h4>';
-          html += '<ul>';
+          htmlResumoPontos += '<div class="pontos-card pontos-fortes">';
+          htmlResumoPontos += '<h4>✓ PONTOS FORTES</h4>';
+          htmlResumoPontos += '<ul>';
           data.pontos_fortes.forEach((p) => {
-            html += `<li>${escapeHtml(String(p))}</li>`;
+            htmlResumoPontos += `<li>${escapeHtml(String(p))}</li>`;
           });
-          html += '</ul>';
-          html += '</div>';
+          htmlResumoPontos += '</ul>';
+          htmlResumoPontos += '</div>';
         }
         if (temAprofundar) {
-          html += '<div class="pontos-card pontos-aprofundar">';
-          html += '<h4>⚠ PONTOS A APROFUNDAR</h4>';
-          html += '<ul>';
+          htmlResumoPontos += '<div class="pontos-card pontos-aprofundar">';
+          htmlResumoPontos += '<h4>⚠ PONTOS A APROFUNDAR</h4>';
+          htmlResumoPontos += '<ul>';
           data.pontos_a_aprofundar.forEach((p) => {
-            html += `<li>${escapeHtml(String(p))}</li>`;
+            htmlResumoPontos += `<li>${escapeHtml(String(p))}</li>`;
           });
-          html += '</ul>';
-          html += '</div>';
+          htmlResumoPontos += '</ul>';
+          htmlResumoPontos += '</div>';
         }
-        html += '</div>';
+        htmlResumoPontos += '</div>';
       }
+      html += htmlResumoPontos;
 
       // ---- Discussao completa (vai para MODAL) ----
       // Prioridade visual: red flags > comparacoes > resto (recolhivel).
@@ -3348,12 +3370,15 @@
           html += htmlPdf;
           html += '</div>';
         } else {
-          // Tela: botao que abre o MODAL.
+          // Tela: botao que abre o MODAL com o feedback COMPLETO.
           const discussaoId = "discussao_" + Math.random().toString(36).slice(2, 10);
           window._discussoesFeedback = window._discussoesFeedback || {};
           window._discussoesFeedback[discussaoId] = {
             titulo: tituloDidatico,
-            html: htmlDiscussao
+            html: htmlDiscussao,
+            resumoPontos: htmlResumoPontos,
+            data: data,
+            contexto: contexto
           };
           html += `<div style="margin-top:6px; border-top:1px solid #f0ece4; padding-top:12px;">`;
           html += `<button type="button" class="btn-ver-discussao" onclick="abrirModalDiscussao('${discussaoId}')">`;
@@ -3744,10 +3769,26 @@
     function abrirModalDiscussao(discussaoId) {
       const reg = (window._discussoesFeedback || {})[discussaoId];
       if (!reg) return;
+      window._discussaoModalAtual = discussaoId;
       document.getElementById("discussaoModalTitulo").textContent = reg.titulo || "Discussão";
-      document.getElementById("discussaoModalCorpo").innerHTML = reg.html || "";
+      // Modal mostra TUDO: resumo + pontos fortes/aprofundar + discussao.
+      const corpo = (reg.resumoPontos || "") + (reg.html || "");
+      document.getElementById("discussaoModalCorpo").innerHTML = corpo;
       document.getElementById("discussaoOverlay").style.display = "flex";
       document.body.style.overflow = "hidden";
+    }
+
+    // [MODAL-PDF] Exporta o feedback COMPLETO do caso aberto no modal.
+    function exportarPDFModalDiscussao() {
+      const id = window._discussaoModalAtual;
+      const reg = (window._discussoesFeedback || {})[id];
+      if (!reg || !reg.data) {
+        alert("Não foi possível gerar o PDF.");
+        return;
+      }
+      const ctxPdf = Object.assign({}, reg.contexto || {}, { modo: "pdf" });
+      const htmlGabarito = renderAnaliseDidatica(reg.data, ctxPdf);
+      exportarFeedbackPDF(htmlGabarito, reg.titulo || "Caso clinico");
     }
 
     function fecharModalDiscussao() {
