@@ -533,6 +533,17 @@
       justify-content: flex-end;
     }
 
+    /* [MEUS-CASOS-COLAPSAVEL] Card clicavel para expandir/recolher */
+    .caso-item-clicavel { cursor: pointer; transition: box-shadow 0.15s; }
+    .caso-item-clicavel:hover { box-shadow: 0 2px 10px rgba(15,31,58,0.08); }
+    .caso-toggle-hint {
+      margin-top: 12px;
+      font-size: 12.5px;
+      font-weight: 600;
+      color: #b87333;
+      user-select: none;
+    }
+
     /* [DISCUSSAO-MODAL] Botao que abre a discussao completa */
     .btn-ver-discussao {
       background: #0f1f3a;
@@ -3185,8 +3196,11 @@
       // Resumo em destaque
       // [MODAL-COMPLETO] Capturamos resumo + disclaimer + pontos em
       // htmlResumoPontos para reuso no modal (que mostra TUDO).
+      // semResumo=true: em Meus Casos o resumo ja aparece fora (no card),
+      // entao aqui pulamos para nao duplicar.
+      const semResumo = !!(contexto && contexto.semResumo);
       let htmlResumoPontos = "";
-      if (data.resumo_caso) {
+      if (data.resumo_caso && !semResumo) {
         htmlResumoPontos += '<div class="analise-resumo">';
         htmlResumoPontos += '<div class="analise-resumo-label">RESUMO</div>';
         htmlResumoPontos += `<div class="analise-resumo-texto">${escapeHtml(data.resumo_caso)}</div>`;
@@ -4071,8 +4085,57 @@
           pillAlinhamento = `<span class="alinh-destaque alinh-destaque-${alinhP}">${escapeHtml(labelD)}</span>`;
         }
 
+        // [MEUS-CASOS-COLAPSAVEL] Estado de expansao por caso (default: fechado).
+        const expandido = !!window._casosExpandidos && !!window._casosExpandidos[c.id];
+
+        // Resumo (sempre visivel quando ha feedback).
+        const resumoHtml = (temFeedback && c.feedback.resumo_caso)
+          ? `<div class="analise-resumo" style="margin-top:12px;">
+               <div class="analise-resumo-label">RESUMO</div>
+               <div class="analise-resumo-texto">${escapeHtml(c.feedback.resumo_caso)}</div>
+             </div>`
+          : "";
+
+        // Conteudo recolhivel: pontos + discussao + aprendizado + acoes.
+        // So renderiza o "miolo" pesado se estiver expandido (lazy).
+        let conteudoExpandido = "";
+        if (expandido) {
+          conteudoExpandido += temFeedback
+            ? `<div style="margin-top:4px;">${renderAnaliseDidatica(c.feedback, { queixa: c.queixa, modo: "meus_casos", semBadges: true, semResumo: true })}</div>`
+            : "";
+          conteudoExpandido += temReflexao
+            ? `<div class="preview" style="margin-top:6px;"><strong>Aprendizado:</strong> ${escapeHtml(c.aprendizado)}</div>`
+            : "";
+          conteudoExpandido += numContestacoes > 0 ? renderContestacoesDoCaso(c._contestacoes) : "";
+          conteudoExpandido += `<div style="margin-top:10px; display:flex; gap:8px; flex-wrap:wrap;" data-no-toggle="1">`;
+          if (!temReflexao) {
+            conteudoExpandido += `<button type="button" onclick="event.stopPropagation(); abrirReflexaoTardia(${c.id})"
+                      style="background:#fef9f0; border:1px solid #e8d5b7; color:#5a3a14;
+                             padding:7px 14px; border-radius:6px; cursor:pointer;
+                             font-size:12px; font-weight:600;">+ Completar agora</button>`;
+          }
+          if (temFeedback) {
+            conteudoExpandido += `<button type="button" onclick="event.stopPropagation(); abrirContestacaoMeusCasos(${c.id})"
+                      style="background:white; border:1px solid #e8d5b7; color:#5a3a14;
+                             padding:6px 12px; border-radius:6px; cursor:pointer; font-size:12px;
+                             display:inline-flex; align-items:center; gap:5px;">🚩 Contestar feedback</button>`;
+            conteudoExpandido += `<button type="button" onclick="event.stopPropagation(); exportarPDFCasoSalvo(${c.id})"
+                      style="background:white; border:1px solid #d4cfc3; padding:6px 12px;
+                             border-radius:6px; cursor:pointer; font-size:12px;
+                             color:#334155; display:inline-flex; align-items:center; gap:5px;">📄 Exportar gabarito em PDF</button>`;
+          }
+          conteudoExpandido += `</div>`;
+        }
+
+        // Indicador clicavel (chevron + texto) — so quando ha algo a expandir.
+        const temAlgoExpandir = temFeedback || temReflexao || numContestacoes > 0;
+        const indicadorExpand = temAlgoExpandir
+          ? `<div class="caso-toggle-hint">${expandido ? "▾ Recolher" : "▸ Ver análise completa"}</div>`
+          : "";
+
         return `
-        <div class="caso-item caso-item-unificado">
+        <div class="caso-item caso-item-unificado${temAlgoExpandir ? ' caso-item-clicavel' : ''}"
+             ${temAlgoExpandir ? `onclick="toggleCasoExpandido(${c.id}, event)"` : ""}>
           <div style="display:flex; justify-content:space-between; align-items:center; gap:10px; flex-wrap:wrap; margin-bottom:4px;">
             <div style="display:flex; gap:6px; align-items:center; flex-wrap:wrap;">
               <span class="badge">${escapeHtml(c.especialidade)}</span>
@@ -4089,36 +4152,32 @@
               ${pillAlinhamento}
             </div>
           </div>
-          ${temFeedback ? `<div style="margin-top:12px;">${renderAnaliseDidatica(c.feedback, { queixa: c.queixa, modo: "meus_casos", semBadges: true })}</div>` : ""}
-          ${temReflexao ? `<div class="preview" style="margin-top:6px;"><strong>Aprendizado:</strong> ${escapeHtml(c.aprendizado)}</div>` : ""}
-          ${numContestacoes > 0 ? renderContestacoesDoCaso(c._contestacoes) : ""}
-          <div style="margin-top:10px; display:flex; gap:8px; flex-wrap:wrap;">
-            ${!temReflexao ? `
-              <button type="button" onclick="abrirReflexaoTardia(${c.id})"
-                      style="background:#fef9f0; border:1px solid #e8d5b7; color:#5a3a14;
-                             padding:7px 14px; border-radius:6px; cursor:pointer;
-                             font-size:12px; font-weight:600;">
-                + Completar agora
-              </button>
-            ` : ""}
-            ${temFeedback ? `
-              <button type="button" onclick="abrirContestacaoMeusCasos(${c.id})"
-                      style="background:white; border:1px solid #e8d5b7; color:#5a3a14;
-                             padding:6px 12px; border-radius:6px; cursor:pointer; font-size:12px;
-                             display:inline-flex; align-items:center; gap:5px;">
-                🚩 Contestar feedback
-              </button>
-              <button type="button" onclick="exportarPDFCasoSalvo(${c.id})"
-                      style="background:white; border:1px solid #d4cfc3; padding:6px 12px;
-                             border-radius:6px; cursor:pointer; font-size:12px;
-                             color:#334155; display:inline-flex; align-items:center; gap:5px;">
-                📄 Exportar gabarito em PDF
-              </button>
-            ` : ""}
-          </div>
+          ${resumoHtml}
+          ${indicadorExpand}
+          ${conteudoExpandido}
         </div>
         `;
       }).join("");
+    }
+
+    // [MEUS-CASOS-COLAPSAVEL] Alterna expansao de um caso. Ignora cliques
+    // vindos de botoes/links/elementos interativos (data-no-toggle ou tags
+    // a/button), para nao expandir quando o aluno clica num botao.
+    function toggleCasoExpandido(casoId, event) {
+      if (event) {
+        let el = event.target;
+        while (el && el !== event.currentTarget) {
+          const tag = (el.tagName || "").toLowerCase();
+          if (tag === "button" || tag === "a" || tag === "summary"
+              || el.getAttribute && el.getAttribute("data-no-toggle")) {
+            return; // clique em elemento interativo — nao alterna
+          }
+          el = el.parentElement;
+        }
+      }
+      window._casosExpandidos = window._casosExpandidos || {};
+      window._casosExpandidos[casoId] = !window._casosExpandidos[casoId];
+      renderLista();
     }
 
     // [CONTESTACAO] Render das contestacoes registradas em cada caso.
