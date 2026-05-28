@@ -490,6 +490,126 @@
     .red-flags-box h4 { color: #991b1b; }
     .red-flags-box ul { color: #7f1d1d; }
 
+    /* ============ [REORG-FEEDBACK] Card principal de Análise Didática ============
+       Layout reorganizado autorizado pelo advogado em 29/05/2026. */
+    .analise-card-principal {
+      background: white;
+      border: 1px solid #e8e4dc;
+      border-radius: 12px;
+      padding: 22px 24px;
+      margin-bottom: 14px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    }
+    .analise-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 14px;
+      flex-wrap: wrap;
+      margin-bottom: 18px;
+      padding-bottom: 14px;
+      border-bottom: 1px solid #f0ece4;
+    }
+    .analise-header-texto { flex: 1; min-width: 200px; }
+    .analise-eyebrow {
+      font-size: 11px;
+      color: #94a3b8;
+      font-weight: 600;
+      letter-spacing: 0.6px;
+      text-transform: uppercase;
+      margin-bottom: 4px;
+    }
+    .analise-titulo {
+      font-size: 19px;
+      font-weight: 600;
+      color: #0f1f3a;
+      line-height: 1.3;
+      letter-spacing: -0.2px;
+    }
+    .alinh-destaque {
+      display: inline-block;
+      padding: 6px 13px;
+      border-radius: 16px;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.4px;
+      white-space: nowrap;
+      flex-shrink: 0;
+      margin-top: 4px;
+    }
+    .alinh-destaque-alta_concordancia {
+      background: #1a3a3a;
+      color: white;
+    }
+    .alinh-destaque-concordancia_parcial {
+      background: #fef9f0;
+      color: #5a3a14;
+      border: 1px solid #e8d5b7;
+    }
+    .alinh-destaque-divergencia {
+      background: #fef9f0;
+      color: #b87333;
+      border: 1px solid #d4a574;
+    }
+
+    .analise-resumo {
+      margin-bottom: 16px;
+    }
+    .analise-resumo-label {
+      font-size: 11px;
+      color: #94a3b8;
+      font-weight: 600;
+      letter-spacing: 0.6px;
+      text-transform: uppercase;
+      margin-bottom: 6px;
+    }
+    .analise-resumo-texto {
+      font-size: 14px;
+      line-height: 1.6;
+      color: #334155;
+    }
+
+    .analise-discussao {
+      margin-top: 6px;
+      border-top: 1px solid #f0ece4;
+      padding-top: 12px;
+    }
+    .analise-discussao-summary {
+      cursor: pointer;
+      font-size: 13px;
+      font-weight: 600;
+      color: #0f1f3a;
+      list-style: none;
+      user-select: none;
+      padding: 4px 0;
+    }
+    .analise-discussao-summary::-webkit-details-marker { display: none; }
+    .analise-discussao-summary::before {
+      content: "▸ ";
+      color: #b87333;
+      font-weight: 700;
+    }
+    .analise-discussao[open] .analise-discussao-summary::before { content: "▾ "; }
+    .analise-discussao-summary:hover { color: #1e3a5f; }
+    .analise-discussao-conteudo {
+      margin-top: 14px;
+    }
+
+    /* ============ [REORG-FEEDBACK] Cards pontos fortes / aprofundar
+       reestilizados (compactos, dentro do card principal) ============ */
+    .pontos-card h4 {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.6px;
+      margin: 0 0 8px;
+    }
+    .pontos-fortes {
+      background: #e8f3eb;
+      border-color: #b8d4c0;
+    }
+    .pontos-fortes h4 { color: #1a3a3a; }
+    .pontos-aprofundar h4 { color: #b87333; }
+
     /* ============ [PONTOS-FORTES-APROFUNDAR] Cards lado a lado ============ */
     .disclaimer-pontos {
       background: #fef9f0;
@@ -2735,130 +2855,106 @@
     // Ordem das seções segue medico.html: resumo → red flags → pontos
     // de atenção → hipóteses → comparações com aluno intercaladas →
     // manejo → exames → estudo → preceptor.
+    // [PILL-ALINHAMENTO] Renderiza o rotulo pedagogico de alinhamento
+    // didatico autorizado pelo advogado: "alta concordancia / concordancia
+    // parcial / divergencia". Sem vermelho. NAO eh nota — eh resumo visual
+    // da prosa da IA. Funcao no escopo do bloco para reuso por
+    // renderAnaliseDidatica e por outras partes do feedback.
+    function renderAlinhamentoPill(valor) {
+      const LABELS = {
+        alta_concordancia: "alta concordância",
+        concordancia_parcial: "concordância parcial",
+        divergencia: "divergência",
+      };
+      const v = LABELS[valor] ? valor : "concordancia_parcial";
+      return `<span class="alinh-pill alinh-${v}"><span class="alinh-pill-label">Alinhamento didático:</span> ${LABELS[v]}</span>`;
+    }
+
+    // [REORG-FEEDBACK] Calcula o "pior" alinhamento entre hipoteses e
+    // conduta, para a pill principal destacada no card de Analise Didatica.
+    // Ordem de severidade: divergencia > concordancia_parcial > alta_concordancia.
+    // Decisao deliberadamente conservadora — se uma das comparacoes mostra
+    // divergencia, prevalece. Autorizada pelo parecer juridico de 28/05/2026.
+    function piorAlinhamento(a, b) {
+      const ORDEM = { divergencia: 3, concordancia_parcial: 2, alta_concordancia: 1 };
+      const va = ORDEM[a] || 0;
+      const vb = ORDEM[b] || 0;
+      if (va === 0 && vb === 0) return "concordancia_parcial";
+      return va >= vb ? (a || b) : (b || a);
+    }
+
+    // [REORG-FEEDBACK] Compoe titulo descritivo do feedback a partir da
+    // primeira hipotese (mais provavel didaticamente). Renderizado APENAS
+    // no frontend — nao mexe no schema da IA, nao gera campo novo.
+    // Decisao A2 da conversa de 29/05/2026 (sem mexer no prompt).
+    function composeTituloDidatico(data) {
+      if (!Array.isArray(data.hipoteses_para_discussao) || !data.hipoteses_para_discussao.length) {
+        return "Discussão didática do caso";
+      }
+      const primeiraHip = data.hipoteses_para_discussao[0];
+      if (!primeiraHip || !primeiraHip.hipotese) return "Discussão didática do caso";
+      const prob = (primeiraHip.probabilidade_didatica || "").toLowerCase();
+      let sufixo = "";
+      if (prob === "alta") sufixo = " — provável";
+      else if (prob === "moderada") sufixo = " — possível";
+      else if (prob === "baixa") sufixo = " — diferencial";
+      return primeiraHip.hipotese + sufixo;
+    }
+
     function renderAnaliseDidatica(data) {
       if (!data || typeof data !== "object") {
         return '<div class="analysis-section"><em>Resposta inesperada.</em></div>';
       }
       let html = "";
 
-      // 1. Resumo do caso
+      // ============================================================
+      // [REORG-FEEDBACK] Layout reorganizado (autorizado pelo advogado
+      // em 29/05/2026). Card unico de "Analise Didatica" com:
+      //   - Eyebrow + titulo composto
+      //   - Pill destacada de alinhamento (pior dos dois)
+      //   - Resumo em destaque
+      //   - Disclaimer reforcado
+      //   - 2 cards lado a lado (pontos_fortes, pontos_a_aprofundar)
+      //   - Accordion "Ver discussao completa" com o restante
+      // ============================================================
+
+      // Pill principal: pior entre alinhamento_hipoteses e alinhamento_conduta.
+      const alinhPrincipal = piorAlinhamento(
+        data.alinhamento_hipoteses_didatico,
+        data.alinhamento_conduta_didatico
+      );
+      const LABELS_DESTAQUE = {
+        alta_concordancia: "ALTA CONCORDÂNCIA",
+        concordancia_parcial: "CONCORDÂNCIA PARCIAL",
+        divergencia: "DIVERGÊNCIA",
+      };
+      const labelDestaque = LABELS_DESTAQUE[alinhPrincipal] || "CONCORDÂNCIA PARCIAL";
+      const tituloDidatico = composeTituloDidatico(data);
+
+      // ---- Card principal de Analise Didatica ----
+      html += '<div class="analise-card-principal">';
+
+      // Header: eyebrow + titulo + pill destacada
+      html += '<div class="analise-header">';
+      html += '<div class="analise-header-texto">';
+      html += '<div class="analise-eyebrow">ANÁLISE DIDÁTICA</div>';
+      html += `<div class="analise-titulo">${escapeHtml(tituloDidatico)}</div>`;
+      html += '</div>';
+      html += `<span class="alinh-destaque alinh-destaque-${alinhPrincipal}">${escapeHtml(labelDestaque)}</span>`;
+      html += '</div>';
+
+      // Resumo em destaque
       if (data.resumo_caso) {
-        html += '<div class="analysis-section">';
-        html += '<h4>📋 Resumo do caso</h4>';
-        html += `<div style="font-size:13.5px; line-height:1.55; color:#334155;">${escapeHtml(data.resumo_caso)}</div>`;
-        html += "</div>";
-      }
-
-      // 2. Red flags educacionais (caixa vermelha)
-      if (Array.isArray(data.red_flags_educacionais) && data.red_flags_educacionais.length) {
-        html += '<div class="analysis-section red-flags-box">';
-        html += '<h4>🚨 Sinais de alerta (red flags)</h4>';
-        html += "<ul>";
-        data.red_flags_educacionais.forEach((r) => {
-          if (!r || typeof r !== "object") return;
-          const sinal = escapeHtml(r.sinal || "—");
-          const just = r.justificativa_didatica ? ` — ${escapeHtml(r.justificativa_didatica)}` : "";
-          html += `<li><strong>${sinal}</strong>${just}</li>`;
-        });
-        html += "</ul>";
-        html += "</div>";
-      }
-
-      // 3. Pontos de atenção (investigações/lacunas a explorar)
-      if (Array.isArray(data.pontos_de_atencao) && data.pontos_de_atencao.length) {
-        html += '<div class="analysis-section">';
-        html += '<h4>👀 Pontos de atenção</h4>';
-        html += "<ul>";
-        data.pontos_de_atencao.forEach((p) => {
-          html += `<li>${escapeHtml(String(p))}</li>`;
-        });
-        html += "</ul>";
-        html += "</div>";
-      }
-
-      // 4. Hipóteses para discussão (cards com badge de probabilidade didática)
-      if (Array.isArray(data.hipoteses_para_discussao) && data.hipoteses_para_discussao.length) {
-        html += '<div class="analysis-section">';
-        html += '<h4>🔍 Hipóteses para discussão</h4>';
-        data.hipoteses_para_discussao.forEach((h) => {
-          if (!h || typeof h !== "object") return;
-          html += '<div class="hypothesis-card">';
-          html += '<div class="hyp-header">';
-          html += `<div class="hyp-name">${escapeHtml(h.hipotese || "—")}</div>`;
-          // Badge de probabilidade didática. O servidor garante que o
-          // valor é sempre um de {alta, moderada, baixa} — vem normalizado.
-          const probVal = (h.probabilidade_didatica || "moderada").toLowerCase();
-          const probClasse = ["alta","moderada","baixa"].includes(probVal) ? probVal : "moderada";
-          html += `<span class="hyp-prob hyp-prob-${probClasse}">${escapeHtml(probClasse)}</span>`;
-          html += '</div>';
-          if (h.justificativa) {
-            html += `<div class="hyp-just">${escapeHtml(h.justificativa)}</div>`;
-          }
-          html += "</div>";
-        });
-        html += "</div>";
-      }
-
-      // [PILL-ALINHAMENTO] Renderiza o rotulo pedagogico de alinhamento
-      // didatico autorizado pelo advogado: "alta concordancia /
-      // concordancia parcial / divergencia". Sem vermelho. NAO eh
-      // nota — eh resumo visual da prosa da IA.
-      function renderAlinhamentoPill(valor) {
-        const LABELS = {
-          alta_concordancia: "alta concordância",
-          concordancia_parcial: "concordância parcial",
-          divergencia: "divergência",
-        };
-        const v = LABELS[valor] ? valor : "concordancia_parcial";
-        return `<span class="alinh-pill alinh-${v}"><span class="alinh-pill-label">Alinhamento didático:</span> ${LABELS[v]}</span>`;
-      }
-
-      // 5. Comparação com a hipótese do aluno (caixa azul, prosa curta + pill)
-      if (data.comparacao_hipoteses_aluno) {
-        html += '<div class="comparacao-box">';
-        html += '<div class="comparacao-head">';
-        html += '<h4>🎯 Sua hipótese vs. discussão didática</h4>';
-        html += renderAlinhamentoPill(data.alinhamento_hipoteses_didatico);
+        html += '<div class="analise-resumo">';
+        html += '<div class="analise-resumo-label">RESUMO</div>';
+        html += `<div class="analise-resumo-texto">${escapeHtml(data.resumo_caso)}</div>`;
         html += '</div>';
-        html += `<div>${escapeHtml(data.comparacao_hipoteses_aluno)}</div>`;
-        html += "</div>";
       }
 
-      // 6. Elementos de manejo em contexto acadêmico
-      if (Array.isArray(data.elementos_de_manejo_academico) && data.elementos_de_manejo_academico.length) {
-        html += '<div class="analysis-section">';
-        html += '<h4>🩺 Elementos de manejo em contexto acadêmico</h4>';
-        html += "<ul>";
-        data.elementos_de_manejo_academico.forEach((p) => {
-          html += `<li>${escapeHtml(String(p))}</li>`;
-        });
-        html += "</ul>";
-        html += "</div>";
-      }
-
-      // 7. Comparação com a conduta do aluno (+ pill)
-      if (data.comparacao_conduta_aluno) {
-        html += '<div class="comparacao-box">';
-        html += '<div class="comparacao-head">';
-        html += '<h4>🎯 Sua conduta vs. manejo discutido</h4>';
-        html += renderAlinhamentoPill(data.alinhamento_conduta_didatico);
-        html += '</div>';
-        html += `<div>${escapeHtml(data.comparacao_conduta_aluno)}</div>`;
-        html += "</div>";
-      }
-
-      // 7.5 [PONTOS-FORTES-APROFUNDAR] Organizacao didatica do feedback
-      // formativo. Autorizado pelo parecer juridico de 28/05/2026 condicional
-      // a 3 requisitos: disclaimer reforcado (renderizado abaixo), vedacao
-      // contratual de uso isolado (cobrira contrato Inspirali) e mecanismo
-      // de contestacao (botao no final desta funcao).
-      //
-      // Renderiza apenas se a IA gerou os campos (compatibilidade com casos
-      // antigos salvos antes desta mudanca de schema).
+      // Disclaimer reforcado proximo aos cards — condicao 1 do parecer.
       const temFortes = Array.isArray(data.pontos_fortes) && data.pontos_fortes.length > 0;
       const temAprofundar = Array.isArray(data.pontos_a_aprofundar) && data.pontos_a_aprofundar.length > 0;
       if (temFortes || temAprofundar) {
-        // Disclaimer reforcado proximo aos cards — condicao 1 do parecer.
         html += '<div class="disclaimer-pontos">';
         html += '⚠️ <strong>Feedback preliminar formativo.</strong> As listas abaixo são organização didática do gabarito comentado e ';
         html += '<strong>não constituem avaliação acadêmica</strong>. ';
@@ -2869,7 +2965,7 @@
         html += '<div class="pontos-grid">';
         if (temFortes) {
           html += '<div class="pontos-card pontos-fortes">';
-          html += '<h4>✓ Pontos fortes</h4>';
+          html += '<h4>✓ PONTOS FORTES</h4>';
           html += '<ul>';
           data.pontos_fortes.forEach((p) => {
             html += `<li>${escapeHtml(String(p))}</li>`;
@@ -2879,7 +2975,7 @@
         }
         if (temAprofundar) {
           html += '<div class="pontos-card pontos-aprofundar">';
-          html += '<h4>📚 Pontos a aprofundar</h4>';
+          html += '<h4>⚠ PONTOS A APROFUNDAR</h4>';
           html += '<ul>';
           data.pontos_a_aprofundar.forEach((p) => {
             html += `<li>${escapeHtml(String(p))}</li>`;
@@ -2890,48 +2986,144 @@
         html += '</div>';
       }
 
-      // 8. Exames para discussão acadêmica
-      if (Array.isArray(data.exames_para_discussao_academica) && data.exames_para_discussao_academica.length) {
-        html += '<div class="analysis-section">';
-        html += '<h4>🧪 Exames para discussão acadêmica</h4>';
-        data.exames_para_discussao_academica.forEach((e) => {
-          if (!e || typeof e !== "object") return;
-          html += '<div class="exame-row">';
-          html += `<span class="exame-nome">${escapeHtml(e.exame || "—")}</span>`;
-          if (e.justificativa_didatica) {
-            html += ` <span class="exame-just">— ${escapeHtml(e.justificativa_didatica)}</span>`;
-          }
-          html += "</div>";
+      // ---- Accordion com discussao completa ----
+      let htmlAccordion = "";
+
+      // Red flags educacionais (caixa vermelha)
+      if (Array.isArray(data.red_flags_educacionais) && data.red_flags_educacionais.length) {
+        htmlAccordion += '<div class="analysis-section red-flags-box">';
+        htmlAccordion += '<h4>🚨 Sinais de alerta (red flags)</h4>';
+        htmlAccordion += "<ul>";
+        data.red_flags_educacionais.forEach((r) => {
+          if (!r || typeof r !== "object") return;
+          const sinal = escapeHtml(r.sinal || "—");
+          const just = r.justificativa_didatica ? ` — ${escapeHtml(r.justificativa_didatica)}` : "";
+          htmlAccordion += `<li><strong>${sinal}</strong>${just}</li>`;
         });
-        html += "</div>";
+        htmlAccordion += "</ul>";
+        htmlAccordion += "</div>";
       }
 
-      // 9. Temas de estudo (cada tema vira link para Google Scholar
-      // em nova aba — busca direta, sem alucinação de URL pelo modelo).
+      // Pontos de atenção
+      if (Array.isArray(data.pontos_de_atencao) && data.pontos_de_atencao.length) {
+        htmlAccordion += '<div class="analysis-section">';
+        htmlAccordion += '<h4>👀 Pontos de atenção</h4>';
+        htmlAccordion += "<ul>";
+        data.pontos_de_atencao.forEach((p) => {
+          htmlAccordion += `<li>${escapeHtml(String(p))}</li>`;
+        });
+        htmlAccordion += "</ul>";
+        htmlAccordion += "</div>";
+      }
+
+      // Hipóteses para discussão
+      if (Array.isArray(data.hipoteses_para_discussao) && data.hipoteses_para_discussao.length) {
+        htmlAccordion += '<div class="analysis-section">';
+        htmlAccordion += '<h4>🔍 Hipóteses para discussão</h4>';
+        data.hipoteses_para_discussao.forEach((h) => {
+          if (!h || typeof h !== "object") return;
+          htmlAccordion += '<div class="hypothesis-card">';
+          htmlAccordion += '<div class="hyp-header">';
+          htmlAccordion += `<div class="hyp-name">${escapeHtml(h.hipotese || "—")}</div>`;
+          const probVal = (h.probabilidade_didatica || "moderada").toLowerCase();
+          const probClasse = ["alta","moderada","baixa"].includes(probVal) ? probVal : "moderada";
+          htmlAccordion += `<span class="hyp-prob hyp-prob-${probClasse}">${escapeHtml(probClasse)}</span>`;
+          htmlAccordion += '</div>';
+          if (h.justificativa) {
+            htmlAccordion += `<div class="hyp-just">${escapeHtml(h.justificativa)}</div>`;
+          }
+          htmlAccordion += "</div>";
+        });
+        htmlAccordion += "</div>";
+      }
+
+      // Comparação com a hipótese do aluno (+ pill)
+      if (data.comparacao_hipoteses_aluno) {
+        htmlAccordion += '<div class="comparacao-box">';
+        htmlAccordion += '<div class="comparacao-head">';
+        htmlAccordion += '<h4>🎯 Sua hipótese vs. discussão didática</h4>';
+        htmlAccordion += renderAlinhamentoPill(data.alinhamento_hipoteses_didatico);
+        htmlAccordion += '</div>';
+        htmlAccordion += `<div>${escapeHtml(data.comparacao_hipoteses_aluno)}</div>`;
+        htmlAccordion += "</div>";
+      }
+
+      // Elementos de manejo
+      if (Array.isArray(data.elementos_de_manejo_academico) && data.elementos_de_manejo_academico.length) {
+        htmlAccordion += '<div class="analysis-section">';
+        htmlAccordion += '<h4>🩺 Elementos de manejo em contexto acadêmico</h4>';
+        htmlAccordion += "<ul>";
+        data.elementos_de_manejo_academico.forEach((p) => {
+          htmlAccordion += `<li>${escapeHtml(String(p))}</li>`;
+        });
+        htmlAccordion += "</ul>";
+        htmlAccordion += "</div>";
+      }
+
+      // Comparação com a conduta do aluno (+ pill)
+      if (data.comparacao_conduta_aluno) {
+        htmlAccordion += '<div class="comparacao-box">';
+        htmlAccordion += '<div class="comparacao-head">';
+        htmlAccordion += '<h4>🎯 Sua conduta vs. manejo discutido</h4>';
+        htmlAccordion += renderAlinhamentoPill(data.alinhamento_conduta_didatico);
+        htmlAccordion += '</div>';
+        htmlAccordion += `<div>${escapeHtml(data.comparacao_conduta_aluno)}</div>`;
+        htmlAccordion += "</div>";
+      }
+
+      // Exames
+      if (Array.isArray(data.exames_para_discussao_academica) && data.exames_para_discussao_academica.length) {
+        htmlAccordion += '<div class="analysis-section">';
+        htmlAccordion += '<h4>🧪 Exames para discussão acadêmica</h4>';
+        data.exames_para_discussao_academica.forEach((e) => {
+          if (!e || typeof e !== "object") return;
+          htmlAccordion += '<div class="exame-row">';
+          htmlAccordion += `<span class="exame-nome">${escapeHtml(e.exame || "—")}</span>`;
+          if (e.justificativa_didatica) {
+            htmlAccordion += ` <span class="exame-just">— ${escapeHtml(e.justificativa_didatica)}</span>`;
+          }
+          htmlAccordion += "</div>";
+        });
+        htmlAccordion += "</div>";
+      }
+
+      // Temas de estudo
       if (Array.isArray(data.temas_de_estudo) && data.temas_de_estudo.length) {
-        html += '<div class="analysis-section">';
-        html += '<h4>📚 Temas de estudo</h4>';
-        html += '<ul style="list-style:none; padding-left:0;">';
+        htmlAccordion += '<div class="analysis-section">';
+        htmlAccordion += '<h4>📚 Temas de estudo</h4>';
+        htmlAccordion += '<ul style="list-style:none; padding-left:0;">';
         data.temas_de_estudo.forEach((t) => {
           const tema = String(t);
           const url = "https://scholar.google.com/scholar?q=" + encodeURIComponent(tema);
-          html += `<li style="margin-bottom:6px;"><a href="${escapeHtml(url)}" target="_blank" rel="noopener noreferrer" style="color:#0f1f3a; text-decoration:none; display:inline-flex; align-items:center; gap:6px; padding:4px 0;"><span>${escapeHtml(tema)}</span><span style="font-size:11px; color:#64748b;">↗</span></a></li>`;
+          htmlAccordion += `<li style="margin-bottom:6px;"><a href="${escapeHtml(url)}" target="_blank" rel="noopener noreferrer" style="color:#0f1f3a; text-decoration:none; display:inline-flex; align-items:center; gap:6px; padding:4px 0;"><span>${escapeHtml(tema)}</span><span style="font-size:11px; color:#64748b;">↗</span></a></li>`;
         });
-        html += "</ul>";
-        html += "</div>";
+        htmlAccordion += "</ul>";
+        htmlAccordion += "</div>";
       }
 
-      // 10. Perguntas ao preceptor (reforço pedagógico: IA não substitui humano)
+      // Perguntas ao preceptor
       if (Array.isArray(data.perguntas_ao_preceptor) && data.perguntas_ao_preceptor.length) {
-        html += '<div class="analysis-section">';
-        html += '<h4>💬 Perguntas para levar ao preceptor</h4>';
-        html += "<ul>";
+        htmlAccordion += '<div class="analysis-section">';
+        htmlAccordion += '<h4>💬 Perguntas para levar ao preceptor</h4>';
+        htmlAccordion += "<ul>";
         data.perguntas_ao_preceptor.forEach((p) => {
-          html += `<li>${escapeHtml(String(p))}</li>`;
+          htmlAccordion += `<li>${escapeHtml(String(p))}</li>`;
         });
-        html += "</ul>";
-        html += "</div>";
+        htmlAccordion += "</ul>";
+        htmlAccordion += "</div>";
       }
+
+      // Wrappa accordion (somente se houver conteudo)
+      if (htmlAccordion) {
+        html += '<details class="analise-discussao">';
+        html += '<summary class="analise-discussao-summary">Ver discussão completa, referências e pontos para estudo</summary>';
+        html += '<div class="analise-discussao-conteudo">';
+        html += htmlAccordion;
+        html += '</div>';
+        html += '</details>';
+      }
+
+      html += '</div>'; // fecha analise-card-principal
 
       return html;
     }
