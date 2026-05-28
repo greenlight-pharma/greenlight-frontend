@@ -532,6 +532,140 @@
       flex-shrink: 0;
       justify-content: flex-end;
     }
+
+    /* [DISCUSSAO-MODAL] Botao que abre a discussao completa */
+    .btn-ver-discussao {
+      background: #0f1f3a;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      padding: 11px 18px;
+      font-size: 13.5px;
+      font-weight: 600;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: background 0.15s;
+      font-family: inherit;
+    }
+    .btn-ver-discussao:hover { background: #1e3a5f; }
+
+    /* [DISCUSSAO-MODAL] Overlay + modal */
+    .discussao-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(15, 31, 58, 0.55);
+      z-index: 9000;
+      display: flex;
+      align-items: flex-start;
+      justify-content: center;
+      padding: 24px 16px;
+      overflow-y: auto;
+    }
+    .discussao-modal {
+      background: white;
+      border-radius: 14px;
+      max-width: 720px;
+      width: 100%;
+      margin: auto;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+      display: flex;
+      flex-direction: column;
+      max-height: calc(100vh - 48px);
+    }
+    .discussao-modal-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 14px;
+      padding: 20px 24px 16px;
+      border-bottom: 1px solid #f0ece4;
+      flex-shrink: 0;
+    }
+    .discussao-modal-eyebrow {
+      font-size: 11px;
+      color: #94a3b8;
+      font-weight: 600;
+      letter-spacing: 0.6px;
+      text-transform: uppercase;
+      margin-bottom: 3px;
+    }
+    .discussao-modal-titulo {
+      font-size: 17px;
+      font-weight: 600;
+      color: #0f1f3a;
+      line-height: 1.3;
+    }
+    .discussao-modal-fechar {
+      background: #f5f3ee;
+      border: none;
+      border-radius: 8px;
+      width: 34px;
+      height: 34px;
+      font-size: 16px;
+      color: #64748b;
+      cursor: pointer;
+      flex-shrink: 0;
+      line-height: 1;
+    }
+    .discussao-modal-fechar:hover { background: #e8e4dc; color: #0f1f3a; }
+    .discussao-modal-corpo {
+      padding: 18px 24px;
+      overflow-y: auto;
+      flex: 1;
+    }
+    .discussao-modal-rodape {
+      padding: 14px 24px;
+      border-top: 1px solid #f0ece4;
+      display: flex;
+      justify-content: flex-end;
+      flex-shrink: 0;
+    }
+    .discussao-modal-btn-ok {
+      background: #0f1f3a;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      padding: 9px 20px;
+      font-size: 13.5px;
+      font-weight: 600;
+      cursor: pointer;
+      font-family: inherit;
+    }
+    .discussao-modal-btn-ok:hover { background: #1e3a5f; }
+
+    /* [DISCUSSAO-MODAL] Sub-secoes recolhiveis (camada 2) */
+    .discussao-subsecao {
+      border: 1px solid #e8e4dc;
+      border-radius: 8px;
+      margin-bottom: 8px;
+      overflow: hidden;
+    }
+    .discussao-subsecao summary {
+      cursor: pointer;
+      padding: 11px 14px;
+      font-size: 13.5px;
+      font-weight: 600;
+      color: #0f1f3a;
+      background: #faf8f3;
+      list-style: none;
+      user-select: none;
+    }
+    .discussao-subsecao summary::-webkit-details-marker { display: none; }
+    .discussao-subsecao summary::after {
+      content: " ▸";
+      color: #b87333;
+      float: right;
+    }
+    .discussao-subsecao[open] summary::after { content: " ▾"; }
+    .discussao-subsecao[open] summary { border-bottom: 1px solid #e8e4dc; }
+    .discussao-subsecao-conteudo { padding: 12px 14px; }
+
+    @media (max-width: 640px) {
+      .discussao-overlay { padding: 0; }
+      .discussao-modal { border-radius: 0; max-height: 100vh; min-height: 100vh; }
+    }
     /* [REORG-FEEDBACK] Em Meus Casos, header so tem os badges — alinha
        a direita e remove borda inferior (o card do caso ja tem separadores). */
     .analise-header-so-badges {
@@ -1547,6 +1681,25 @@
   <!-- [CONTESTACAO] Modal de contestação/revisão humana de feedback IA.
        Aluno escolhe categoria + descreve motivo + opta por notificar coordenação.
        Implementação do mecanismo autorizado pelo parecer juridico de 28/05/2026. -->
+  <!-- [DISCUSSAO-MODAL] Modal que mostra a discussao completa do feedback.
+       Aberto via botao "Ver discussao completa". Conteudo injetado por JS
+       a partir de window._discussoesFeedback. Fecha no X, botao ou fora. -->
+  <div id="discussaoOverlay" class="discussao-overlay" style="display:none;">
+    <div class="discussao-modal">
+      <div class="discussao-modal-header">
+        <div>
+          <div class="discussao-modal-eyebrow">DISCUSSÃO COMPLETA</div>
+          <div class="discussao-modal-titulo" id="discussaoModalTitulo">—</div>
+        </div>
+        <button type="button" class="discussao-modal-fechar" id="discussaoBtnFechar" aria-label="Fechar">✕</button>
+      </div>
+      <div class="discussao-modal-corpo" id="discussaoModalCorpo"></div>
+      <div class="discussao-modal-rodape">
+        <button type="button" class="discussao-modal-btn-ok" id="discussaoBtnOk">Fechar</button>
+      </div>
+    </div>
+  </div>
+
   <div id="contestacaoOverlay" class="evento-overlay" style="display:none;">
     <div class="evento-card" style="max-width:560px;">
       <div class="evento-titulo">🚩 Contestar feedback / solicitar revisão</div>
@@ -1998,6 +2151,18 @@
       });
       document.getElementById("contestacaoMotivo").addEventListener("input", (e) => {
         document.getElementById("contestacaoCharCount").textContent = e.target.value.length;
+      });
+
+      // [DISCUSSAO-MODAL] Listeners
+      document.getElementById("discussaoBtnFechar").addEventListener("click", fecharModalDiscussao);
+      document.getElementById("discussaoBtnOk").addEventListener("click", fecharModalDiscussao);
+      document.getElementById("discussaoOverlay").addEventListener("click", (e) => {
+        if (e.target.id === "discussaoOverlay") fecharModalDiscussao();
+      });
+      document.addEventListener("keydown", (e) => {
+        if (e.key === "Escape" && document.getElementById("discussaoOverlay").style.display === "flex") {
+          fecharModalDiscussao();
+        }
       });
       document.getElementById("btnSemanaAnterior").addEventListener("click", () => {
         agendaSemanaOffset -= 1; renderAgenda();
@@ -3048,144 +3213,154 @@
         html += '</div>';
       }
 
-      // ---- Accordion com discussao completa ----
-      let htmlAccordion = "";
+      // ---- Discussao completa (vai para MODAL) ----
+      // Prioridade visual: red flags > comparacoes > resto (recolhivel).
+      let htmlDiscussao = "";
 
-      // Red flags educacionais (caixa vermelha)
+      // CAMADA 1 — DESTAQUE: Red flags (perigo clinico, vem primeiro)
       if (Array.isArray(data.red_flags_educacionais) && data.red_flags_educacionais.length) {
-        htmlAccordion += '<div class="analysis-section red-flags-box">';
-        htmlAccordion += '<h4>🚨 Sinais de alerta (red flags)</h4>';
-        htmlAccordion += "<ul>";
+        htmlDiscussao += '<div class="analysis-section red-flags-box">';
+        htmlDiscussao += '<h4>🚨 Sinais de alerta (red flags)</h4>';
+        htmlDiscussao += "<ul>";
         data.red_flags_educacionais.forEach((r) => {
           if (!r || typeof r !== "object") return;
           const sinal = escapeHtml(r.sinal || "—");
           const just = r.justificativa_didatica ? ` — ${escapeHtml(r.justificativa_didatica)}` : "";
-          htmlAccordion += `<li><strong>${sinal}</strong>${just}</li>`;
+          htmlDiscussao += `<li><strong>${sinal}</strong>${just}</li>`;
         });
-        htmlAccordion += "</ul>";
-        htmlAccordion += "</div>";
+        htmlDiscussao += "</ul>";
+        htmlDiscussao += "</div>";
+      }
+
+      // CAMADA 1 — DESTAQUE: Comparacoes (feedback personalizado do aluno)
+      if (data.comparacao_hipoteses_aluno) {
+        htmlDiscussao += '<div class="comparacao-box">';
+        htmlDiscussao += '<div class="comparacao-head">';
+        htmlDiscussao += '<h4>🎯 Sua hipótese vs. discussão didática</h4>';
+        htmlDiscussao += renderAlinhamentoPill(data.alinhamento_hipoteses_didatico);
+        htmlDiscussao += '</div>';
+        htmlDiscussao += `<div>${escapeHtml(data.comparacao_hipoteses_aluno)}</div>`;
+        htmlDiscussao += "</div>";
+      }
+      if (data.comparacao_conduta_aluno) {
+        htmlDiscussao += '<div class="comparacao-box">';
+        htmlDiscussao += '<div class="comparacao-head">';
+        htmlDiscussao += '<h4>🎯 Sua conduta vs. manejo discutido</h4>';
+        htmlDiscussao += renderAlinhamentoPill(data.alinhamento_conduta_didatico);
+        htmlDiscussao += '</div>';
+        htmlDiscussao += `<div>${escapeHtml(data.comparacao_conduta_aluno)}</div>`;
+        htmlDiscussao += "</div>";
+      }
+
+      // CAMADA 2 — SECUNDARIA: cada secao vira sub-accordion recolhivel.
+      // Helper que monta um <details> de sub-secao.
+      function subSecao(titulo, conteudoInterno) {
+        if (!conteudoInterno) return "";
+        return `<details class="discussao-subsecao"><summary>${titulo}</summary><div class="discussao-subsecao-conteudo">${conteudoInterno}</div></details>`;
       }
 
       // Pontos de atenção
+      let subAtencao = "";
       if (Array.isArray(data.pontos_de_atencao) && data.pontos_de_atencao.length) {
-        htmlAccordion += '<div class="analysis-section">';
-        htmlAccordion += '<h4>👀 Pontos de atenção</h4>';
-        htmlAccordion += "<ul>";
-        data.pontos_de_atencao.forEach((p) => {
-          htmlAccordion += `<li>${escapeHtml(String(p))}</li>`;
-        });
-        htmlAccordion += "</ul>";
-        htmlAccordion += "</div>";
+        subAtencao += "<ul>";
+        data.pontos_de_atencao.forEach((p) => { subAtencao += `<li>${escapeHtml(String(p))}</li>`; });
+        subAtencao += "</ul>";
       }
+      htmlDiscussao += subSecao("👀 Pontos de atenção", subAtencao);
 
       // Hipóteses para discussão
+      let subHip = "";
       if (Array.isArray(data.hipoteses_para_discussao) && data.hipoteses_para_discussao.length) {
-        htmlAccordion += '<div class="analysis-section">';
-        htmlAccordion += '<h4>🔍 Hipóteses para discussão</h4>';
         data.hipoteses_para_discussao.forEach((h) => {
           if (!h || typeof h !== "object") return;
-          htmlAccordion += '<div class="hypothesis-card">';
-          htmlAccordion += '<div class="hyp-header">';
-          htmlAccordion += `<div class="hyp-name">${escapeHtml(h.hipotese || "—")}</div>`;
+          subHip += '<div class="hypothesis-card">';
+          subHip += '<div class="hyp-header">';
+          subHip += `<div class="hyp-name">${escapeHtml(h.hipotese || "—")}</div>`;
           const probVal = (h.probabilidade_didatica || "moderada").toLowerCase();
           const probClasse = ["alta","moderada","baixa"].includes(probVal) ? probVal : "moderada";
-          htmlAccordion += `<span class="hyp-prob hyp-prob-${probClasse}">${escapeHtml(probClasse)}</span>`;
-          htmlAccordion += '</div>';
-          if (h.justificativa) {
-            htmlAccordion += `<div class="hyp-just">${escapeHtml(h.justificativa)}</div>`;
-          }
-          htmlAccordion += "</div>";
+          subHip += `<span class="hyp-prob hyp-prob-${probClasse}">${escapeHtml(probClasse)}</span>`;
+          subHip += '</div>';
+          if (h.justificativa) subHip += `<div class="hyp-just">${escapeHtml(h.justificativa)}</div>`;
+          subHip += "</div>";
         });
-        htmlAccordion += "</div>";
       }
-
-      // Comparação com a hipótese do aluno (+ pill)
-      if (data.comparacao_hipoteses_aluno) {
-        htmlAccordion += '<div class="comparacao-box">';
-        htmlAccordion += '<div class="comparacao-head">';
-        htmlAccordion += '<h4>🎯 Sua hipótese vs. discussão didática</h4>';
-        htmlAccordion += renderAlinhamentoPill(data.alinhamento_hipoteses_didatico);
-        htmlAccordion += '</div>';
-        htmlAccordion += `<div>${escapeHtml(data.comparacao_hipoteses_aluno)}</div>`;
-        htmlAccordion += "</div>";
-      }
+      htmlDiscussao += subSecao("🔍 Hipóteses para discussão", subHip);
 
       // Elementos de manejo
+      let subManejo = "";
       if (Array.isArray(data.elementos_de_manejo_academico) && data.elementos_de_manejo_academico.length) {
-        htmlAccordion += '<div class="analysis-section">';
-        htmlAccordion += '<h4>🩺 Elementos de manejo em contexto acadêmico</h4>';
-        htmlAccordion += "<ul>";
-        data.elementos_de_manejo_academico.forEach((p) => {
-          htmlAccordion += `<li>${escapeHtml(String(p))}</li>`;
-        });
-        htmlAccordion += "</ul>";
-        htmlAccordion += "</div>";
+        subManejo += "<ul>";
+        data.elementos_de_manejo_academico.forEach((p) => { subManejo += `<li>${escapeHtml(String(p))}</li>`; });
+        subManejo += "</ul>";
       }
-
-      // Comparação com a conduta do aluno (+ pill)
-      if (data.comparacao_conduta_aluno) {
-        htmlAccordion += '<div class="comparacao-box">';
-        htmlAccordion += '<div class="comparacao-head">';
-        htmlAccordion += '<h4>🎯 Sua conduta vs. manejo discutido</h4>';
-        htmlAccordion += renderAlinhamentoPill(data.alinhamento_conduta_didatico);
-        htmlAccordion += '</div>';
-        htmlAccordion += `<div>${escapeHtml(data.comparacao_conduta_aluno)}</div>`;
-        htmlAccordion += "</div>";
-      }
+      htmlDiscussao += subSecao("🩺 Elementos de manejo em contexto acadêmico", subManejo);
 
       // Exames
+      let subExames = "";
       if (Array.isArray(data.exames_para_discussao_academica) && data.exames_para_discussao_academica.length) {
-        htmlAccordion += '<div class="analysis-section">';
-        htmlAccordion += '<h4>🧪 Exames para discussão acadêmica</h4>';
         data.exames_para_discussao_academica.forEach((e) => {
           if (!e || typeof e !== "object") return;
-          htmlAccordion += '<div class="exame-row">';
-          htmlAccordion += `<span class="exame-nome">${escapeHtml(e.exame || "—")}</span>`;
-          if (e.justificativa_didatica) {
-            htmlAccordion += ` <span class="exame-just">— ${escapeHtml(e.justificativa_didatica)}</span>`;
-          }
-          htmlAccordion += "</div>";
+          subExames += '<div class="exame-row">';
+          subExames += `<span class="exame-nome">${escapeHtml(e.exame || "—")}</span>`;
+          if (e.justificativa_didatica) subExames += ` <span class="exame-just">— ${escapeHtml(e.justificativa_didatica)}</span>`;
+          subExames += "</div>";
         });
-        htmlAccordion += "</div>";
       }
+      htmlDiscussao += subSecao("🧪 Exames para discussão acadêmica", subExames);
 
       // Temas de estudo
+      let subTemas = "";
       if (Array.isArray(data.temas_de_estudo) && data.temas_de_estudo.length) {
-        htmlAccordion += '<div class="analysis-section">';
-        htmlAccordion += '<h4>📚 Temas de estudo</h4>';
-        htmlAccordion += '<ul style="list-style:none; padding-left:0;">';
+        subTemas += '<ul style="list-style:none; padding-left:0;">';
         data.temas_de_estudo.forEach((t) => {
           const tema = String(t);
           const url = "https://scholar.google.com/scholar?q=" + encodeURIComponent(tema);
-          htmlAccordion += `<li style="margin-bottom:6px;"><a href="${escapeHtml(url)}" target="_blank" rel="noopener noreferrer" style="color:#0f1f3a; text-decoration:none; display:inline-flex; align-items:center; gap:6px; padding:4px 0;"><span>${escapeHtml(tema)}</span><span style="font-size:11px; color:#64748b;">↗</span></a></li>`;
+          subTemas += `<li style="margin-bottom:6px;"><a href="${escapeHtml(url)}" target="_blank" rel="noopener noreferrer" style="color:#0f1f3a; text-decoration:none; display:inline-flex; align-items:center; gap:6px; padding:4px 0;"><span>${escapeHtml(tema)}</span><span style="font-size:11px; color:#64748b;">↗</span></a></li>`;
         });
-        htmlAccordion += "</ul>";
-        htmlAccordion += "</div>";
+        subTemas += "</ul>";
       }
+      htmlDiscussao += subSecao("📚 Temas de estudo", subTemas);
 
       // Perguntas ao preceptor
+      let subPerg = "";
       if (Array.isArray(data.perguntas_ao_preceptor) && data.perguntas_ao_preceptor.length) {
-        htmlAccordion += '<div class="analysis-section">';
-        htmlAccordion += '<h4>💬 Perguntas para levar ao preceptor</h4>';
-        htmlAccordion += "<ul>";
-        data.perguntas_ao_preceptor.forEach((p) => {
-          htmlAccordion += `<li>${escapeHtml(String(p))}</li>`;
-        });
-        htmlAccordion += "</ul>";
-        htmlAccordion += "</div>";
+        subPerg += "<ul>";
+        data.perguntas_ao_preceptor.forEach((p) => { subPerg += `<li>${escapeHtml(String(p))}</li>`; });
+        subPerg += "</ul>";
       }
+      htmlDiscussao += subSecao("💬 Perguntas para levar ao preceptor", subPerg);
 
-      // Wrappa accordion (somente se houver conteudo)
-      // Em "meus_casos" comeca fechado (revisao). Em outros modos
-      // (etapa 3, PDF) comeca aberto — aluno ve tudo na primeira vez.
-      if (htmlAccordion) {
-        const accordionAberto = ehMeusCasos ? "" : " open";
-        html += `<details class="analise-discussao"${accordionAberto}>`;
-        html += '<summary class="analise-discussao-summary">Ver discussão completa, referências e pontos para estudo</summary>';
-        html += '<div class="analise-discussao-conteudo">';
-        html += htmlAccordion;
-        html += '</div>';
-        html += '</details>';
+      // Em modo PDF, a discussao vai INLINE (sem modal) — o PDF precisa
+      // ser auto-contido para estudo/portfolio. Sub-secoes ficam abertas.
+      const ehPdf = modo === "pdf";
+
+      if (htmlDiscussao) {
+        if (ehPdf) {
+          // Inline, com sub-secoes abertas (PDF nao tem interatividade).
+          // Substitui <details> por blocos sempre visiveis.
+          const htmlPdf = htmlDiscussao
+            .replace(/<details class="discussao-subsecao">/g, '<div class="discussao-subsecao" style="margin-bottom:8px;">')
+            .replace(/<\/details>/g, '</div>')
+            .replace(/<summary>/g, '<div style="font-weight:600; padding:8px 0; color:#0f1f3a;">')
+            .replace(/<\/summary>/g, '</div>');
+          html += '<div style="margin-top:14px; border-top:1px solid #f0ece4; padding-top:14px;">';
+          html += '<div style="font-size:11px; color:#94a3b8; font-weight:600; letter-spacing:0.6px; text-transform:uppercase; margin-bottom:10px;">DISCUSSÃO COMPLETA</div>';
+          html += htmlPdf;
+          html += '</div>';
+        } else {
+          // Tela: botao que abre o MODAL.
+          const discussaoId = "discussao_" + Math.random().toString(36).slice(2, 10);
+          window._discussoesFeedback = window._discussoesFeedback || {};
+          window._discussoesFeedback[discussaoId] = {
+            titulo: tituloDidatico,
+            html: htmlDiscussao
+          };
+          html += `<div style="margin-top:6px; border-top:1px solid #f0ece4; padding-top:12px;">`;
+          html += `<button type="button" class="btn-ver-discussao" onclick="abrirModalDiscussao('${discussaoId}')">`;
+          html += `📖 Ver discussão completa, referências e pontos para estudo`;
+          html += `</button>`;
+          html += `</div>`;
+        }
       }
 
       html += '</div>'; // fecha analise-card-principal
@@ -3523,7 +3698,8 @@
         return;
       }
       const titulo = (casoEmConstrucao && casoEmConstrucao.titulo) || "Caso clinico";
-      const htmlGabarito = renderAnaliseDidatica(feedbackRecebido, casoEmConstrucao);
+      const ctxPdf = Object.assign({}, casoEmConstrucao || {}, { modo: "pdf" });
+      const htmlGabarito = renderAnaliseDidatica(feedbackRecebido, ctxPdf);
       exportarFeedbackPDF(htmlGabarito, titulo);
     }
 
@@ -3539,7 +3715,8 @@
         alert("Este caso nao tem gabarito armazenado.");
         return;
       }
-      const htmlGabarito = renderAnaliseDidatica(caso.feedback, caso);
+      const ctxPdfSalvo = { queixa: caso.queixa, modo: "pdf" };
+      const htmlGabarito = renderAnaliseDidatica(caso.feedback, ctxPdfSalvo);
       exportarFeedbackPDF(htmlGabarito, caso.titulo || "Caso clinico");
     }
 
@@ -3558,6 +3735,25 @@
     // 28/05/2026 (condicao 3). Permite ao aluno discordar de itens do
     // feedback, com opcao de notificar a coordenacao pedagogica.
     // ============================================================
+
+    // ============================================================
+    // [DISCUSSAO-MODAL] Abre/fecha o modal com a discussao completa.
+    // Conteudo lido de window._discussoesFeedback[id]. Bloqueia scroll
+    // do body enquanto aberto. Fecha no X, botao OK, clique fora ou ESC.
+    // ============================================================
+    function abrirModalDiscussao(discussaoId) {
+      const reg = (window._discussoesFeedback || {})[discussaoId];
+      if (!reg) return;
+      document.getElementById("discussaoModalTitulo").textContent = reg.titulo || "Discussão";
+      document.getElementById("discussaoModalCorpo").innerHTML = reg.html || "";
+      document.getElementById("discussaoOverlay").style.display = "flex";
+      document.body.style.overflow = "hidden";
+    }
+
+    function fecharModalDiscussao() {
+      document.getElementById("discussaoOverlay").style.display = "none";
+      document.body.style.overflow = "";
+    }
 
     function abrirModalContestacao() {
       // Reset do formulario
