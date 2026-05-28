@@ -1133,7 +1133,7 @@
 
           <!-- 4. Sinais vitais (NOVO - opcional, texto livre) -->
           <label>Sinais vitais</label>
-          <input type="text" id="f-sinais-vitais" placeholder="Ex: PA 130/80, FC 92, FR 18, SatO2 96%, T 37,2°C (Opcional)" />
+          <input type="text" id="f-sinais-vitais" placeholder="Ex: PA 130/80, FC 92, FR 18, SatO2 96%, T 37,2°C" />
 
           <!-- 5. HMA -->
           <label>HMA (História da moléstia atual) *</label>
@@ -1225,7 +1225,7 @@
 
           <div id="aprendizado-box" style="display:none; margin-top:18px;">
             <div style="background:#d1fae5; border:1px solid #6ee7b7; color:#065f46; border-radius:8px; padding:10px 14px; margin-bottom:14px; font-size:13px;">
-              ✅ <strong>Caso salvo automaticamente</strong> no seu portfólio. Você pode escrever a reflexão agora ou voltar mais tarde — fica em "Meus Casos" marcado como pendente até você refletir.
+              ✅ <strong>Caso salvo automaticamente</strong> no seu portfólio. Você pode escrever a reflexão agora ou voltar mais tarde — fica em "Meus Casos" marcado como <strong>em aberto</strong> até você completar.
             </div>
 
             <label>Seu aprendizado pessoal com este caso</label>
@@ -1234,7 +1234,7 @@
 
             <div style="display:flex; gap:10px; margin-top:14px; flex-wrap:wrap;">
               <button class="primary" onclick="salvarReflexao()">Salvar reflexão</button>
-              <button onclick="proximoCaso()" style="background:white; border:1px solid #d4cfc3; padding:11px 22px; border-radius:8px; cursor:pointer; color:#475569;">Pular reflexão e ir para próximo caso →</button>
+              <button onclick="proximoCaso()" style="background:white; border:1px solid #d4cfc3; padding:11px 22px; border-radius:8px; cursor:pointer; color:#475569;">Pular e completar depois →</button>
             </div>
             <div class="msg" id="msg"></div>
           </div>
@@ -3059,7 +3059,7 @@
 
       if (!aprendizado || aprendizado.length < 5) {
         msg.className = "msg error";
-        msg.textContent = "Escreva sua reflexão (mín. 5 caracteres) ou clique em 'Pular reflexão' para ir para o próximo caso.";
+        msg.textContent = "Escreva sua reflexão (mín. 5 caracteres) ou clique em 'Pular e completar depois' para ir para o próximo caso.";
         return;
       }
       if (aprendizado.length > 5000) {
@@ -3201,7 +3201,7 @@
         const temReflexao = !!(c.aprendizado && String(c.aprendizado).trim().length > 0);
         const badgeRefl = temReflexao
           ? `<span class="badge-refl ok">✓ Completo</span>`
-          : `<span class="badge-refl pendente">⏳ Pendente reflexão</span>`;
+          : `<span class="badge-refl pendente">⏳ Em aberto</span>`;
         return `
         <div class="caso-item">
           <div style="display:flex; justify-content:space-between; align-items:center; gap:10px; flex-wrap:wrap; margin-bottom:4px;">
@@ -3221,7 +3221,7 @@
                       style="background:#fef9f0; border:1px solid #e8d5b7; color:#5a3a14;
                              padding:7px 14px; border-radius:6px; cursor:pointer;
                              font-size:12px; font-weight:600;">
-                + Adicionar reflexão agora
+                + Completar agora
               </button>
             </div>
           ` : ""}
