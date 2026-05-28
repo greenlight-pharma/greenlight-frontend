@@ -3762,9 +3762,7 @@
           </div>
           <h3>${escapeHtml(c.titulo)}</h3>
           <div class="meta">${formatDate(c.data)} · ${escapeHtml(c.faixa)}</div>
-          ${c.hipoteses ? `<div class="preview" style="margin-top:6px;"><strong>Suas hipóteses:</strong> ${escapeHtml(c.hipoteses)}</div>` : ""}
-          ${c.conduta ? `<div class="preview" style="margin-top:6px;"><strong>Sua conduta:</strong> ${escapeHtml(c.conduta)}</div>` : ""}
-          ${temFeedback ? `<details style="margin-top:8px;"><summary style="cursor:pointer; color:#0f1f3a; font-size:13px; font-weight:600;">Ver feedback educacional</summary><div style="margin-top:6px;">${renderAnaliseDidatica(c.feedback)}</div></details>` : ""}
+          ${temFeedback ? `<div style="margin-top:12px;">${renderAnaliseDidatica(c.feedback)}</div>` : ""}
           ${temReflexao ? `<div class="preview" style="margin-top:6px;"><strong>Aprendizado:</strong> ${escapeHtml(c.aprendizado)}</div>` : ""}
           ${numContestacoes > 0 ? renderContestacoesDoCaso(c._contestacoes) : ""}
           <div style="margin-top:10px; display:flex; gap:8px; flex-wrap:wrap;">
