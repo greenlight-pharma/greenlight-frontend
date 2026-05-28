@@ -500,6 +500,17 @@
       margin-bottom: 14px;
       box-shadow: 0 1px 3px rgba(0,0,0,0.04);
     }
+    /* [REORG-FEEDBACK] Em Meus Casos, o card de analise vira parte do
+       proprio caso-item — sem borda, sem padding extra, sem background
+       redundante. Fica visualmente um card so. */
+    .caso-item-unificado .analise-card-principal {
+      background: transparent;
+      border: none;
+      border-radius: 0;
+      padding: 0;
+      margin-bottom: 0;
+      box-shadow: none;
+    }
     .analise-header {
       display: flex;
       justify-content: space-between;
@@ -525,6 +536,13 @@
       color: #0f1f3a;
       line-height: 1.3;
       letter-spacing: -0.2px;
+    }
+    .analise-header-badges {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+      flex-shrink: 0;
     }
     .alinh-destaque {
       display: inline-block;
@@ -614,12 +632,12 @@
     .disclaimer-pontos {
       background: #fef9f0;
       border: 1px solid #e8d5b7;
-      border-left: 4px solid #b87333;
-      border-radius: 8px;
-      padding: 11px 14px;
-      margin-bottom: 12px;
-      font-size: 12.5px;
-      line-height: 1.55;
+      border-left: 3px solid #b87333;
+      border-radius: 6px;
+      padding: 7px 11px;
+      margin-bottom: 10px;
+      font-size: 11.5px;
+      line-height: 1.45;
       color: #5a3a14;
     }
     .disclaimer-pontos strong { color: #3a1f08; }
@@ -2952,7 +2970,12 @@
         html += `<div class="analise-titulo">${escapeHtml(tituloDidatico)}</div>`;
       }
       html += '</div>';
+      // Em Meus Casos, badge "Completo" / "Em aberto" aparece ao lado da pill.
+      const badgeRefAdjacente = (contexto && contexto.badgeReflexao) ? contexto.badgeReflexao : "";
+      html += '<div class="analise-header-badges">';
+      html += badgeRefAdjacente;
       html += `<span class="alinh-destaque alinh-destaque-${alinhPrincipal}">${escapeHtml(labelDestaque)}</span>`;
+      html += '</div>';
       html += '</div>';
 
       // Resumo em destaque
@@ -2964,14 +2987,20 @@
       }
 
       // Disclaimer reforcado proximo aos cards — condicao 1 do parecer.
+      // Versao compacta: mantem AS 4 EXPRESSOES JURIDICAMENTE OBRIGATORIAS
+      // que o advogado fundamentou no parecer de 28/05/2026:
+      //   1. "feedback preliminar formativo"
+      //   2. "nao constituem avaliacao academica"
+      //   3. "sugestoes para estudo e reflexao"
+      //   4. "discuta com preceptor"
+      // NAO REMOVER nenhuma das 4 sem novo parecer juridico.
       const temFortes = Array.isArray(data.pontos_fortes) && data.pontos_fortes.length > 0;
       const temAprofundar = Array.isArray(data.pontos_a_aprofundar) && data.pontos_a_aprofundar.length > 0;
       if (temFortes || temAprofundar) {
         html += '<div class="disclaimer-pontos">';
-        html += '⚠️ <strong>Feedback preliminar formativo.</strong> As listas abaixo são organização didática do gabarito comentado e ';
-        html += '<strong>não constituem avaliação acadêmica</strong>. ';
-        html += 'Os itens listados são <strong>sugestões para estudo e reflexão</strong>, sujeitas à supervisão docente. ';
-        html += 'Sempre discuta com seu preceptor antes de aplicar qualquer conduta a paciente real.';
+        html += '⚠️ <strong>Feedback preliminar formativo.</strong> ';
+        html += '<strong>Sugestões para estudo e reflexão</strong>, não constituem avaliação acadêmica. ';
+        html += 'Discuta com preceptor.';
         html += '</div>';
 
         html += '<div class="pontos-grid">';
@@ -3767,17 +3796,17 @@
         const temFeedback = c.feedback && typeof c.feedback === "object";
 
         return `
-        <div class="caso-item">
+        <div class="caso-item caso-item-unificado">
           <div style="display:flex; justify-content:space-between; align-items:center; gap:10px; flex-wrap:wrap; margin-bottom:4px;">
             <div style="display:flex; gap:6px; align-items:center; flex-wrap:wrap;">
               <span class="badge">${escapeHtml(c.especialidade)}</span>
               ${badgeContest}
             </div>
-            ${badgeRefl}
+            ${!temFeedback ? badgeRefl : ""}
           </div>
           <h3>${escapeHtml(c.titulo)}</h3>
           <div class="meta">${formatDate(c.data)} · ${escapeHtml(c.faixa)}</div>
-          ${temFeedback ? `<div style="margin-top:12px;">${renderAnaliseDidatica(c.feedback, { queixa: c.queixa, modo: "meus_casos" })}</div>` : ""}
+          ${temFeedback ? `<div style="margin-top:12px;">${renderAnaliseDidatica(c.feedback, { queixa: c.queixa, modo: "meus_casos", badgeReflexao: badgeRefl })}</div>` : ""}
           ${temReflexao ? `<div class="preview" style="margin-top:6px;"><strong>Aprendizado:</strong> ${escapeHtml(c.aprendizado)}</div>` : ""}
           ${numContestacoes > 0 ? renderContestacoesDoCaso(c._contestacoes) : ""}
           <div style="margin-top:10px; display:flex; gap:8px; flex-wrap:wrap;">
