@@ -3274,11 +3274,12 @@
         htmlDiscussao += "</div>";
       }
 
-      // CAMADA 2 — SECUNDARIA: cada secao vira sub-accordion recolhivel.
-      // Helper que monta um <details> de sub-secao.
+      // CAMADA 2 — SECUNDARIA: cada secao vira sub-accordion.
+      // Abertas por padrao (open) — aluno ve o conteudo direto, mas pode
+      // recolher se quiser. Helper que monta um <details open> de sub-secao.
       function subSecao(titulo, conteudoInterno) {
         if (!conteudoInterno) return "";
-        return `<details class="discussao-subsecao"><summary>${titulo}</summary><div class="discussao-subsecao-conteudo">${conteudoInterno}</div></details>`;
+        return `<details class="discussao-subsecao" open><summary>${titulo}</summary><div class="discussao-subsecao-conteudo">${conteudoInterno}</div></details>`;
       }
 
       // Pontos de atenção
