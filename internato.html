@@ -235,6 +235,49 @@
     }
     .alerta-lgpd strong { color: #3a1f08; }
 
+    /* ============ [DISCLAIMER] Estilo discreto com 'ver detalhes' ============ */
+    .alerta-disclaimer {
+      background: #fef9f0;
+      border-left: 4px solid #b87333;
+      border-radius: 4px;
+      padding: 10px 14px;
+      font-size: 13px;
+      color: #5a3a14;
+      line-height: 1.5;
+    }
+    .alerta-disclaimer strong { color: #3a1f08; }
+    .alerta-mais {
+      margin-top: 4px;
+    }
+    .alerta-mais summary {
+      cursor: pointer;
+      font-size: 11.5px;
+      color: #b87333;
+      font-weight: 500;
+      list-style: none;
+      display: inline-block;
+      user-select: none;
+      padding: 2px 0;
+    }
+    .alerta-mais summary::-webkit-details-marker { display: none; }
+    .alerta-mais summary::before {
+      content: "+ ";
+      font-weight: 600;
+    }
+    .alerta-mais[open] summary::before {
+      content: "− ";
+    }
+    .alerta-mais summary:hover {
+      color: #8b5723;
+      text-decoration: underline;
+    }
+    .alerta-mais-conteudo {
+      margin-top: 8px;
+      padding-top: 8px;
+      border-top: 1px dashed #e8d5b7;
+      font-size: 12.5px;
+    }
+
     .caso-item {
       border: 1px solid #e8e4dc;
       border-radius: 10px;
@@ -953,12 +996,24 @@
           </div>
         </div>
 
-        <div class="alerta-lgpd">
-          ⚠️ <strong>Exercício acadêmico.</strong> Descreva o caso de forma <strong>anonimizada</strong>, sem dados que permitam identificar o paciente (nome, RG, prontuário, endereço, data exata da consulta, telefone, e-mail). Use idade aproximada (faixa) e descreva achados clínicos e raciocínio. <strong>Não copie o prontuário hospitalar.</strong>
+        <div class="alerta-disclaimer">
+          <strong>Exercício acadêmico.</strong> Use idade aproximada, descreva achados e raciocínio. Não copie prontuário hospitalar.
+          <details class="alerta-mais">
+            <summary>ver detalhes</summary>
+            <div class="alerta-mais-conteudo">
+              Descreva o caso de forma <strong>anonimizada</strong>, sem dados que permitam identificar o paciente (nome, RG, prontuário, endereço, data exata da consulta, telefone, e-mail). Use idade aproximada (faixa) e descreva achados clínicos e raciocínio. <strong>Não copie o prontuário hospitalar.</strong>
+            </div>
+          </details>
         </div>
 
-        <div style="background:#fef9f0; border:1px solid #e8d5b7; border-radius:8px; padding:14px 16px; margin:10px 0 0; color:#5a3a14; font-size:13px; line-height:1.55;">
-          📘 <strong>Sobre esta ferramenta.</strong> O Vytal Acadêmico é uma ferramenta <strong>educacional</strong>. <strong>Não diagnostica, não prescreve e não orienta atendimento real</strong>. Uso restrito a <strong>ensino, portfólio e discussão com preceptor</strong>. Nenhuma resposta gerada aqui deve ser aplicada a um paciente real sem avaliação presencial por médico responsável.
+        <div class="alerta-disclaimer" style="margin-top:10px;">
+          <strong>Ferramenta educacional.</strong> Não diagnostica nem prescreve. Uso restrito a ensino, portfólio e discussão com preceptor.
+          <details class="alerta-mais">
+            <summary>ver detalhes</summary>
+            <div class="alerta-mais-conteudo">
+              O Vytal Acadêmico é uma ferramenta <strong>educacional</strong>. <strong>Não diagnostica, não prescreve e não orienta atendimento real</strong>. Uso restrito a <strong>ensino, portfólio e discussão com preceptor</strong>. Nenhuma resposta gerada aqui deve ser aplicada a um paciente real sem avaliação presencial por médico responsável.
+            </div>
+          </details>
         </div>
 
         <!-- ===== ETAPA 1: CADASTRO DO CASO ===== -->
@@ -3068,7 +3123,7 @@
       cont.innerHTML = casos.map(c => {
         const temReflexao = !!(c.aprendizado && String(c.aprendizado).trim().length > 0);
         const badgeRefl = temReflexao
-          ? `<span class="badge-refl ok">✓ Refletido</span>`
+          ? `<span class="badge-refl ok">✓ Completo</span>`
           : `<span class="badge-refl pendente">⏳ Pendente reflexão</span>`;
         return `
         <div class="caso-item">
