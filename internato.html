@@ -3762,7 +3762,6 @@
           </div>
           <h3>${escapeHtml(c.titulo)}</h3>
           <div class="meta">${formatDate(c.data)} · ${escapeHtml(c.faixa)}</div>
-          <div class="preview"><strong>Queixa:</strong> ${escapeHtml(c.queixa)}</div>
           ${c.hipoteses ? `<div class="preview" style="margin-top:6px;"><strong>Suas hipóteses:</strong> ${escapeHtml(c.hipoteses)}</div>` : ""}
           ${c.conduta ? `<div class="preview" style="margin-top:6px;"><strong>Sua conduta:</strong> ${escapeHtml(c.conduta)}</div>` : ""}
           ${temFeedback ? `<details style="margin-top:8px;"><summary style="cursor:pointer; color:#0f1f3a; font-size:13px; font-weight:600;">Ver feedback educacional</summary><div style="margin-top:6px;">${renderAnaliseDidatica(c.feedback)}</div></details>` : ""}
