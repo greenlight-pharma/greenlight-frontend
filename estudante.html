@@ -8,14 +8,14 @@
     * { box-sizing: border-box; }
     body {
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
-      background: #f1f5f9;
+      background: #f5f3ee;
       color: #1f2937;
       margin: 0;
       padding: 0;
       line-height: 1.5;
     }
     .topbar {
-      background: #0f172a;
+      background: #0f1f3a;
       color: #fff;
       padding: 14px 24px;
       display: flex;
@@ -33,7 +33,7 @@
     .topbar .user {
       margin-left: auto;
       font-size: 13px;
-      color: #cbd5e1;
+      color: #d4cfc3;
     }
     .container {
       max-width: 980px;
@@ -49,11 +49,11 @@
     }
     h1 { font-size: 24px; margin: 0 0 6px; }
     .subtitle { color: #64748b; font-size: 14px; margin-bottom: 18px; }
-    h2 { font-size: 18px; margin: 0 0 12px; color: #0f172a; }
+    h2 { font-size: 18px; margin: 0 0 12px; color: #0f1f3a; }
     .tabs {
       display: flex;
       gap: 4px;
-      border-bottom: 1px solid #e5e7eb;
+      border-bottom: 1px solid #e8e4dc;
       margin-bottom: 18px;
     }
     .tab {
@@ -68,8 +68,8 @@
       margin-bottom: -1px;
     }
     .tab.active {
-      color: #0284c7;
-      border-bottom-color: #0284c7;
+      color: #0f1f3a;
+      border-bottom-color: #0f1f3a;
     }
     label {
       display: block;
@@ -80,7 +80,7 @@
     input, textarea, select {
       width: 100%;
       padding: 10px 12px;
-      border: 1px solid #d1d5db;
+      border: 1px solid #d4cfc3;
       border-radius: 8px;
       font-family: inherit;
       font-size: 14px;
@@ -97,7 +97,7 @@
       .row { grid-template-columns: 1fr; }
     }
     button.primary {
-      background: #0284c7;
+      background: #0f1f3a;
       color: #fff;
       border: none;
       padding: 11px 22px;
@@ -107,12 +107,12 @@
       cursor: pointer;
       margin-top: 18px;
     }
-    button.primary:hover { background: #0369a1; }
+    button.primary:hover { background: #1e3a5f; }
 
     .alerta-lgpd {
-      background: #fef3c7;
-      border: 1px solid #fcd34d;
-      border-left: 4px solid #d97706;
+      background: #fef9f0;
+      border: 1px solid #e8d5b7;
+      border-left: 4px solid #b87333;
       border-radius: 8px;
       padding: 12px 14px;
       margin-bottom: 18px;
@@ -123,7 +123,7 @@
     .alerta-lgpd strong { color: #92400e; }
 
     .caso-item {
-      border: 1px solid #e5e7eb;
+      border: 1px solid #e8e4dc;
       border-radius: 10px;
       padding: 14px 16px;
       margin-bottom: 10px;
@@ -138,7 +138,7 @@
       border-radius: 12px;
       font-size: 11px;
       font-weight: 600;
-      background: #dbeafe;
+      background: #eef3f9;
       color: #1e40af;
     }
     .empty {
@@ -154,13 +154,13 @@
       margin-bottom: 18px;
     }
     .stat {
-      background: #f8fafc;
-      border: 1px solid #e5e7eb;
+      background: #faf8f3;
+      border: 1px solid #e8e4dc;
       border-radius: 10px;
       padding: 14px;
       text-align: center;
     }
-    .stat .num { font-size: 24px; font-weight: 700; color: #0284c7; }
+    .stat .num { font-size: 24px; font-weight: 700; color: #0f1f3a; }
     .stat .lbl { font-size: 12px; color: #64748b; margin-top: 2px; }
     .msg {
       padding: 10px 14px;
@@ -175,7 +175,7 @@
     /* ===== Análise didática (portado do medico.html, sem badges de probabilidade) ===== */
     .analysis-section {
       background: #fff;
-      border: 1px solid #e5e7eb;
+      border: 1px solid #e8e4dc;
       border-radius: 10px;
       padding: 14px 16px;
       margin-bottom: 12px;
@@ -183,7 +183,7 @@
     .analysis-section h4 {
       margin: 0 0 10px;
       font-size: 15px;
-      color: #0f172a;
+      color: #0f1f3a;
       font-weight: 600;
     }
     .analysis-section ul {
@@ -197,7 +197,7 @@
     .analysis-section ul li:last-child { margin-bottom: 0; }
 
     .hypothesis-card {
-      border: 1px solid #e5e7eb;
+      border: 1px solid #e8e4dc;
       border-radius: 8px;
       padding: 11px 13px;
       margin-bottom: 8px;
@@ -226,7 +226,7 @@
       flex-shrink: 0;
     }
     .hyp-prob-alta { background: #fee2e2; color: #991b1b; }
-    .hyp-prob-moderada { background: #fef3c7; color: #92400e; }
+    .hyp-prob-moderada { background: #fef9f0; color: #92400e; }
     .hyp-prob-baixa { background: #e0e7ff; color: #3730a3; }
     .hypothesis-card .hyp-just {
       color: #4b5563;
@@ -246,19 +246,19 @@
     .red-flags-box ul { color: #7f1d1d; }
 
     .comparacao-box {
-      background: #f0f9ff;
-      border: 1px solid #bae6fd;
+      background: #fef9f0;
+      border: 1px solid #e8d5b7;
       border-radius: 8px;
       padding: 12px 14px;
       margin-bottom: 12px;
       font-size: 13.5px;
       line-height: 1.55;
-      color: #0c4a6e;
+      color: #0f1f3a;
     }
     .comparacao-box h4 {
       margin: 0 0 6px;
       font-size: 14px;
-      color: #0c4a6e;
+      color: #0f1f3a;
       font-weight: 600;
     }
     /* Pill de alinhamento didatico — autorizado pelo advogado em
@@ -296,9 +296,9 @@
       border: 1px solid #bbf7d0;
     }
     .alinh-concordancia_parcial {
-      background: #fef3c7;
+      background: #fef9f0;
       color: #92400e;
-      border: 1px solid #fde68a;
+      border: 1px solid #e8d5b7;
     }
     .alinh-divergencia {
       background: #e0e7ff;
@@ -357,14 +357,14 @@
           ⚠️ <strong>Exercício acadêmico.</strong> Descreva o caso de forma <strong>anonimizada</strong>, sem dados que permitam identificar o paciente (nome, RG, prontuário, endereço, data exata da consulta, telefone, e-mail). Use idade aproximada (faixa) e descreva achados clínicos e raciocínio. <strong>Não copie o prontuário hospitalar.</strong>
         </div>
 
-        <div style="background:#fef3c7; border:1px solid #fcd34d; border-radius:8px; padding:14px 16px; margin:10px 0 0; color:#78350f; font-size:13px; line-height:1.55;">
+        <div style="background:#fef9f0; border:1px solid #e8d5b7; border-radius:8px; padding:14px 16px; margin:10px 0 0; color:#78350f; font-size:13px; line-height:1.55;">
           📘 <strong>Sobre esta ferramenta.</strong> O Vytal Acadêmico é uma ferramenta <strong>educacional</strong>. <strong>Não diagnostica, não prescreve e não orienta atendimento real</strong>. Uso restrito a <strong>ensino, portfólio e discussão com preceptor</strong>. Nenhuma resposta gerada aqui deve ser aplicada a um paciente real sem avaliação presencial por médico responsável.
         </div>
 
         <!-- ===== ETAPA 1: CADASTRO DO CASO ===== -->
         <div id="etapa-1">
-          <h2 style="margin:18px 0 4px; color:#0f172a; font-size:17px;">
-            <span style="background:#0284c7; color:#fff; border-radius:50%; width:24px; height:24px; display:inline-flex; align-items:center; justify-content:center; font-size:13px; margin-right:6px;">1</span>
+          <h2 style="margin:18px 0 4px; color:#0f1f3a; font-size:17px;">
+            <span style="background:#0f1f3a; color:#fff; border-radius:50%; width:24px; height:24px; display:inline-flex; align-items:center; justify-content:center; font-size:13px; margin-right:6px;">1</span>
             Descreva o caso
           </h2>
           <div style="color:#64748b; font-size:13px; margin-bottom:10px;">Os achados clínicos do caso que você viu, sem dados identificáveis.</div>
@@ -424,12 +424,12 @@
 
         <!-- ===== ETAPA 2: RESPOSTA DO ALUNO ===== -->
         <div id="etapa-2" style="display:none;">
-          <div style="background:#f0f9ff; border:1px solid #bae6fd; border-radius:8px; padding:14px 16px; margin:10px 0 18px; color:#0c4a6e; font-size:13px;">
+          <div style="background:#fef9f0; border:1px solid #e8d5b7; border-radius:8px; padding:14px 16px; margin:10px 0 18px; color:#0f1f3a; font-size:13px;">
             🧠 <strong>Sua vez de pensar antes de receber apoio.</strong> Liste as hipóteses diagnósticas e a conduta que VOCÊ proporia. A IA só avalia sua resposta DEPOIS — não vai te dar a resposta antes. Isso é o que torna o aprendizado real.
           </div>
 
-          <h2 style="margin:18px 0 4px; color:#0f172a; font-size:17px;">
-            <span style="background:#0284c7; color:#fff; border-radius:50%; width:24px; height:24px; display:inline-flex; align-items:center; justify-content:center; font-size:13px; margin-right:6px;">2</span>
+          <h2 style="margin:18px 0 4px; color:#0f1f3a; font-size:17px;">
+            <span style="background:#0f1f3a; color:#fff; border-radius:50%; width:24px; height:24px; display:inline-flex; align-items:center; justify-content:center; font-size:13px; margin-right:6px;">2</span>
             Sua avaliação do caso
           </h2>
 
@@ -441,25 +441,25 @@
 
           <div style="display:flex; gap:10px; margin-top:14px;">
             <button class="primary" onclick="solicitarFeedback()" id="btn-feedback">Receber feedback educacional →</button>
-            <button onclick="voltarEtapa1()" style="background:none; border:1px solid #d1d5db; padding:11px 22px; border-radius:8px; cursor:pointer;">← Voltar</button>
+            <button onclick="voltarEtapa1()" style="background:none; border:1px solid #d4cfc3; padding:11px 22px; border-radius:8px; cursor:pointer;">← Voltar</button>
           </div>
           <div class="msg" id="msg-etapa2"></div>
         </div>
 
         <!-- ===== ETAPA 3: FEEDBACK + APRENDIZADO ===== -->
         <div id="etapa-3" style="display:none;">
-          <h2 style="margin:18px 0 4px; color:#0f172a; font-size:17px;">
-            <span style="background:#0284c7; color:#fff; border-radius:50%; width:24px; height:24px; display:inline-flex; align-items:center; justify-content:center; font-size:13px; margin-right:6px;">3</span>
+          <h2 style="margin:18px 0 4px; color:#0f1f3a; font-size:17px;">
+            <span style="background:#0f1f3a; color:#fff; border-radius:50%; width:24px; height:24px; display:inline-flex; align-items:center; justify-content:center; font-size:13px; margin-right:6px;">3</span>
             Feedback educacional
           </h2>
 
-          <div id="feedback-loading" style="display:none; padding:24px; text-align:center; color:#0284c7; font-size:14px;">
+          <div id="feedback-loading" style="display:none; padding:24px; text-align:center; color:#0f1f3a; font-size:14px;">
             <div style="display:flex; align-items:center; justify-content:center; gap:10px; flex-wrap:wrap;">
               <span id="feedback-loading-etapa">Lendo o caso clínico…</span>
               <span id="feedback-loading-tempo" style="color:#64748b; font-size:12px; font-variant-numeric:tabular-nums; min-width:34px;">0s</span>
             </div>
-            <div style="margin-top:10px; width:100%; height:3px; background:#e0f2fe; border-radius:2px; overflow:hidden; position:relative;">
-              <div style="position:absolute; top:0; left:-30%; width:30%; height:100%; background:#0284c7; animation: progmove 1.2s ease-in-out infinite;"></div>
+            <div style="margin-top:10px; width:100%; height:3px; background:#eef3f9; border-radius:2px; overflow:hidden; position:relative;">
+              <div style="position:absolute; top:0; left:-30%; width:30%; height:100%; background:#0f1f3a; animation: progmove 1.2s ease-in-out infinite;"></div>
             </div>
           </div>
           <style>
@@ -468,7 +468,7 @@
 
           <div id="feedback-container" style="display:none;"></div>
 
-          <div id="feedback-disclaimer" style="display:none; background:#fef3c7; border:1px solid #fcd34d; border-radius:8px; padding:12px 14px; margin-top:10px; color:#78350f; font-size:12.5px; line-height:1.5;">
+          <div id="feedback-disclaimer" style="display:none; background:#fef9f0; border:1px solid #e8d5b7; border-radius:8px; padding:12px 14px; margin-top:10px; color:#78350f; font-size:12.5px; line-height:1.5;">
             📘 Esta análise é <strong>didática</strong>, em formato de gabarito comentado de caso clínico. <strong>Não diagnostica, não prescreve e não orienta atendimento real.</strong> Uso restrito a ensino, portfólio e discussão com preceptor.
           </div>
 
@@ -481,7 +481,7 @@
 
             <div style="display:flex; gap:10px; margin-top:14px;">
               <button class="primary" onclick="salvarCaso()">Salvar no portfólio</button>
-              <button onclick="voltarEtapa2()" style="background:none; border:1px solid #d1d5db; padding:11px 22px; border-radius:8px; cursor:pointer;">← Voltar</button>
+              <button onclick="voltarEtapa2()" style="background:none; border:1px solid #d4cfc3; padding:11px 22px; border-radius:8px; cursor:pointer;">← Voltar</button>
             </div>
             <div class="msg" id="msg"></div>
           </div>
@@ -1006,7 +1006,7 @@
         data.temas_de_estudo.forEach((t) => {
           const tema = String(t);
           const url = "https://scholar.google.com/scholar?q=" + encodeURIComponent(tema);
-          html += `<li style="margin-bottom:6px;"><a href="${escapeHtml(url)}" target="_blank" rel="noopener noreferrer" style="color:#0c4a6e; text-decoration:none; display:inline-flex; align-items:center; gap:6px; padding:4px 0;"><span>${escapeHtml(tema)}</span><span style="font-size:11px; color:#64748b;">↗</span></a></li>`;
+          html += `<li style="margin-bottom:6px;"><a href="${escapeHtml(url)}" target="_blank" rel="noopener noreferrer" style="color:#0f1f3a; text-decoration:none; display:inline-flex; align-items:center; gap:6px; padding:4px 0;"><span>${escapeHtml(tema)}</span><span style="font-size:11px; color:#64748b;">↗</span></a></li>`;
         });
         html += "</ul>";
         html += "</div>";
@@ -1098,7 +1098,7 @@
           <div class="preview"><strong>Queixa:</strong> ${escapeHtml(c.queixa)}</div>
           ${c.hipoteses ? `<div class="preview" style="margin-top:6px;"><strong>Suas hipóteses:</strong> ${escapeHtml(c.hipoteses)}</div>` : ""}
           ${c.conduta ? `<div class="preview" style="margin-top:6px;"><strong>Sua conduta:</strong> ${escapeHtml(c.conduta)}</div>` : ""}
-          ${(c.feedback && typeof c.feedback === "object") ? `<details style="margin-top:8px;"><summary style="cursor:pointer; color:#0284c7; font-size:13px; font-weight:600;">Ver feedback educacional</summary><div style="margin-top:6px;">${renderAnaliseDidatica(c.feedback)}</div></details>` : ""}
+          ${(c.feedback && typeof c.feedback === "object") ? `<details style="margin-top:8px;"><summary style="cursor:pointer; color:#0f1f3a; font-size:13px; font-weight:600;">Ver feedback educacional</summary><div style="margin-top:6px;">${renderAnaliseDidatica(c.feedback)}</div></details>` : ""}
           ${c.aprendizado ? `<div class="preview" style="margin-top:6px;"><strong>Aprendizado:</strong> ${escapeHtml(c.aprendizado)}</div>` : ""}
         </div>
       `).join("");

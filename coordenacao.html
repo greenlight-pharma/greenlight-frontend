@@ -9,14 +9,14 @@
     body {
       margin: 0;
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
-      background: #f1f5f9;
+      background: #f5f3ee;
       color: #1f2937;
       min-height: 100vh;
     }
 
     /* ============ Topbar ============ */
     .topbar {
-      background: linear-gradient(135deg, #0c4a6e, #1e40af);
+      background: linear-gradient(135deg, #0f1f3a, #0f1f3a);
       color: white;
       padding: 14px 24px;
       display: flex;
@@ -49,7 +49,7 @@
     }
     h1 {
       font-size: 22px;
-      color: #0c4a6e;
+      color: #0f1f3a;
       margin: 0 0 4px 0;
     }
     .subtitle {
@@ -70,11 +70,11 @@
       border-radius: 10px;
       padding: 18px 20px;
       box-shadow: 0 2px 8px rgba(0,0,0,0.05);
-      border-left: 4px solid #0ea5e9;
+      border-left: 4px solid #b87333;
     }
     .kpi.aderencia { border-left-color: #059669; }
     .kpi.casos { border-left-color: #7c3aed; }
-    .kpi.reflexao { border-left-color: #c89b3c; }
+    .kpi.reflexao { border-left-color: #b87333; }
     .kpi.update { border-left-color: #94a3b8; }
     .kpi-label {
       font-size: 12px;
@@ -86,7 +86,7 @@
     .kpi-valor {
       font-size: 32px;
       font-weight: 700;
-      color: #0f172a;
+      color: #0f1f3a;
       margin-top: 6px;
       line-height: 1;
     }
@@ -107,7 +107,7 @@
     .card h3 {
       margin: 0 0 16px 0;
       font-size: 15px;
-      color: #0c4a6e;
+      color: #0f1f3a;
       font-weight: 600;
     }
     .graficos {
@@ -133,20 +133,20 @@
     .tabela-alunos th {
       text-align: left;
       padding: 10px 12px;
-      background: #f8fafc;
+      background: #faf8f3;
       color: #475569;
       font-weight: 600;
       font-size: 12px;
       text-transform: uppercase;
       letter-spacing: 0.3px;
-      border-bottom: 1px solid #e2e8f0;
+      border-bottom: 1px solid #e8e4dc;
     }
     .tabela-alunos td {
       padding: 12px;
-      border-bottom: 1px solid #f1f5f9;
+      border-bottom: 1px solid #f5f3ee;
       color: #1f2937;
     }
-    .tabela-alunos tr:hover { background: #f8fafc; }
+    .tabela-alunos tr:hover { background: #faf8f3; }
     .tabela-alunos .num {
       font-variant-numeric: tabular-nums;
       text-align: right;
@@ -159,9 +159,9 @@
       font-weight: 600;
     }
     .badge-concord.alta { background: #d1fae5; color: #065f46; }
-    .badge-concord.media { background: #fef3c7; color: #78350f; }
+    .badge-concord.media { background: #fef9f0; color: #5a3a14; }
     .badge-concord.baixa { background: #e0e7ff; color: #3730a3; }
-    .badge-concord.vazio { background: #f1f5f9; color: #94a3b8; }
+    .badge-concord.vazio { background: #f5f3ee; color: #94a3b8; }
 
     .empty-state {
       text-align: center;
@@ -193,14 +193,14 @@
     .filtro-campo select,
     .filtro-campo input {
       padding: 8px 10px;
-      border: 1px solid #cbd5e1;
+      border: 1px solid #d4cfc3;
       border-radius: 6px;
       font-size: 13px;
       background: white;
       min-width: 140px;
     }
     .filtro-campo select:focus,
-    .filtro-campo input:focus { outline: 2px solid #0ea5e9; border-color: #0ea5e9; }
+    .filtro-campo input:focus { outline: 2px solid #b87333; border-color: #b87333; }
     .filtro-acoes {
       display: flex;
       gap: 8px;
@@ -209,7 +209,7 @@
     }
     .btn-filtro {
       padding: 9px 14px;
-      background: #0c4a6e;
+      background: #0f1f3a;
       color: white;
       border: none;
       border-radius: 6px;
@@ -221,9 +221,9 @@
     .btn-filtro.secundario {
       background: white;
       color: #475569;
-      border: 1px solid #cbd5e1;
+      border: 1px solid #d4cfc3;
     }
-    .btn-filtro.secundario:hover { background: #f8fafc; }
+    .btn-filtro.secundario:hover { background: #faf8f3; }
     .btn-filtro.acao {
       background: #059669;
     }
@@ -231,14 +231,14 @@
 
     /* ============ Link no nome do aluno (drill-down) ============ */
     .aluno-link {
-      color: #0c4a6e;
+      color: #0f1f3a;
       font-weight: 600;
       cursor: pointer;
       text-decoration: none;
-      border-bottom: 1px dotted #0c4a6e;
+      border-bottom: 1px dotted #0f1f3a;
     }
     .aluno-link:hover {
-      color: #1e40af;
+      color: #0f1f3a;
       border-bottom-style: solid;
     }
 
@@ -276,9 +276,9 @@
       font-size: 13px;
       font-variant-numeric: tabular-nums;
     }
-    .heatmap-cell.vazio { background: #f1f5f9; color: #cbd5e1; }
+    .heatmap-cell.vazio { background: #f5f3ee; color: #d4cfc3; }
     .heatmap-cell.h-alta { background: #059669; }
-    .heatmap-cell.h-parcial { background: #d97706; }
+    .heatmap-cell.h-parcial { background: #b87333; }
     .heatmap-cell.h-divergencia { background: #475569; }
     .heatmap-cell.h-sem { background: #94a3b8; }
 
@@ -292,14 +292,14 @@
     }
     .btn-voltar {
       background: white;
-      border: 1px solid #cbd5e1;
+      border: 1px solid #d4cfc3;
       padding: 8px 14px;
       border-radius: 6px;
       font-size: 13px;
       color: #475569;
       cursor: pointer;
     }
-    .btn-voltar:hover { background: #f8fafc; color: #0c4a6e; }
+    .btn-voltar:hover { background: #faf8f3; color: #0f1f3a; }
     .dados-aluno {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
@@ -307,9 +307,9 @@
     }
     .dado-item {
       padding: 10px 12px;
-      background: #f8fafc;
+      background: #faf8f3;
       border-radius: 6px;
-      border-left: 3px solid #0ea5e9;
+      border-left: 3px solid #b87333;
     }
     .dado-item .dado-label {
       font-size: 11px;
@@ -325,16 +325,16 @@
       font-weight: 600;
     }
     .caso-detalhe {
-      background: #f8fafc;
+      background: #faf8f3;
       border-radius: 8px;
       padding: 14px 16px;
       margin-bottom: 10px;
-      border-left: 3px solid #0ea5e9;
+      border-left: 3px solid #b87333;
     }
     .caso-detalhe h4 {
       margin: 0 0 6px 0;
       font-size: 14px;
-      color: #0f172a;
+      color: #0f1f3a;
     }
     .caso-detalhe .caso-meta {
       font-size: 11px;
@@ -343,7 +343,7 @@
     }
     .caso-detalhe summary {
       cursor: pointer;
-      color: #0284c7;
+      color: #0f1f3a;
       font-size: 12px;
       font-weight: 600;
       margin-top: 6px;
@@ -363,7 +363,7 @@
       letter-spacing: 0.3px;
     }
     .caso-detalhe .pill-alinh.alta { background: #d1fae5; color: #065f46; }
-    .caso-detalhe .pill-alinh.parcial { background: #fef3c7; color: #78350f; }
+    .caso-detalhe .pill-alinh.parcial { background: #fef9f0; color: #5a3a14; }
     .caso-detalhe .pill-alinh.diverg { background: #e0e7ff; color: #3730a3; }
 
     /* ============ Auth overlay ============ */
@@ -381,8 +381,8 @@
       padding: 28px 24px; max-width: 400px; width: 100%;
       box-shadow: 0 20px 60px rgba(0,0,0,0.3);
     }
-    .auth-logo { font-size: 18px; font-weight: 700; color: #0c4a6e; margin-bottom: 4px; }
-    .auth-title { font-size: 22px; font-weight: 600; color: #0f172a; margin-bottom: 4px; }
+    .auth-logo { font-size: 18px; font-weight: 700; color: #0f1f3a; margin-bottom: 4px; }
+    .auth-title { font-size: 22px; font-weight: 600; color: #0f1f3a; margin-bottom: 4px; }
     .auth-sub { font-size: 13px; color: #64748b; margin-bottom: 20px; }
     .auth-field { margin-bottom: 14px; }
     .auth-field label {
@@ -391,13 +391,13 @@
     }
     .auth-field input {
       width: 100%; padding: 10px 12px;
-      border: 1px solid #cbd5e1; border-radius: 7px;
+      border: 1px solid #d4cfc3; border-radius: 7px;
       font-size: 14px;
     }
-    .auth-field input:focus { outline: 2px solid #0ea5e9; border-color: #0ea5e9; }
+    .auth-field input:focus { outline: 2px solid #b87333; border-color: #b87333; }
     .auth-btn {
       width: 100%; padding: 12px;
-      background: #0c4a6e; color: white;
+      background: #0f1f3a; color: white;
       border: none; border-radius: 7px;
       font-size: 14px; font-weight: 600; cursor: pointer;
       margin-top: 6px;
@@ -406,7 +406,7 @@
     .auth-btn:disabled { background: #94a3b8; cursor: not-allowed; }
     .auth-toggle {
       text-align: center; margin-top: 14px;
-      font-size: 13px; color: #0ea5e9; cursor: pointer;
+      font-size: 13px; color: #b87333; cursor: pointer;
     }
     .auth-toggle:hover { text-decoration: underline; }
     .auth-error {
@@ -425,8 +425,8 @@
     .loading {
       display: inline-block;
       width: 18px; height: 18px;
-      border: 3px solid #cbd5e1;
-      border-top-color: #0c4a6e;
+      border: 3px solid #d4cfc3;
+      border-top-color: #0f1f3a;
       border-radius: 50%;
       animation: spin 0.8s linear infinite;
     }
@@ -793,7 +793,7 @@
           datasets: [{
             label: "Casos",
             data: d.casosPorSemana.map(r => r.total),
-            backgroundColor: "#0ea5e9",
+            backgroundColor: "#b87333",
             borderRadius: 6
           }]
         },
@@ -812,7 +812,7 @@
           labels: d.porEspecialidade.map(r => r.especialidade),
           datasets: [{
             data: d.porEspecialidade.map(r => r.total),
-            backgroundColor: ["#0c4a6e", "#0ea5e9", "#22c55e", "#a855f7", "#f59e0b", "#ef4444", "#14b8a6", "#94a3b8"]
+            backgroundColor: ["#0f1f3a", "#b87333", "#22c55e", "#a855f7", "#f59e0b", "#ef4444", "#14b8a6", "#94a3b8"]
           }]
         },
         options: {
@@ -825,9 +825,9 @@
       if (graficos.alinhamento) graficos.alinhamento.destroy();
       const mapaAlinh = {
         "alta_concordancia": { label: "Alta concordância", cor: "#059669" },
-        "concordancia_parcial": { label: "Concordância parcial", cor: "#d97706" },
+        "concordancia_parcial": { label: "Concordância parcial", cor: "#b87333" },
         "divergencia": { label: "Divergência", cor: "#475569" },
-        "sem_classificacao": { label: "Sem classificação", cor: "#cbd5e1" }
+        "sem_classificacao": { label: "Sem classificação", cor: "#d4cfc3" }
       };
       graficos.alinhamento = new Chart(document.getElementById("grafAlinhamento"), {
         type: "bar",
@@ -1012,7 +1012,7 @@
       try {
         const d = await fetchAuth("/coordenacao/aluno/" + id);
         const a = d.aluno;
-        titulo.innerHTML = '<h2 style="margin:0; font-size:20px; color:#0c4a6e;">' + escapeHtml(a.nome || "Aluno #" + a.id) + '</h2>';
+        titulo.innerHTML = '<h2 style="margin:0; font-size:20px; color:#0f1f3a;">' + escapeHtml(a.nome || "Aluno #" + a.id) + '</h2>';
 
         dadosDiv.innerHTML = `
           <div class="dado-item">

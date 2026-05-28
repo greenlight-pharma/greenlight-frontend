@@ -8,14 +8,14 @@
     * { box-sizing: border-box; }
     body {
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
-      background: #f1f5f9;
+      background: #f5f3ee;
       color: #1f2937;
       margin: 0;
       padding: 0;
       line-height: 1.5;
     }
     .topbar {
-      background: #0f172a;
+      background: #0f1f3a;
       color: #fff;
       padding: 14px 24px;
       display: flex;
@@ -28,12 +28,12 @@
     }
     .topbar .sub {
       font-size: 13px;
-      color: #94a3b8;
+      color: #d4a574;
     }
     .topbar .user {
       margin-left: auto;
       font-size: 13px;
-      color: #cbd5e1;
+      color: #d4cfc3;
     }
     .container {
       max-width: 980px;
@@ -49,11 +49,11 @@
     }
     h1 { font-size: 24px; margin: 0 0 6px; }
     .subtitle { color: #64748b; font-size: 14px; margin-bottom: 18px; }
-    h2 { font-size: 18px; margin: 0 0 12px; color: #0f172a; }
+    h2 { font-size: 18px; margin: 0 0 12px; color: #0f1f3a; }
     .tabs {
       display: flex;
       gap: 4px;
-      border-bottom: 1px solid #e5e7eb;
+      border-bottom: 1px solid #e8e4dc;
       margin-bottom: 18px;
     }
     .tab {
@@ -68,8 +68,8 @@
       margin-bottom: -1px;
     }
     .tab.active {
-      color: #0284c7;
-      border-bottom-color: #0284c7;
+      color: #0f1f3a;
+      border-bottom-color: #b87333;
     }
 
     /* ============ [STEPPER] Indicador de progresso 3 etapas ============ */
@@ -79,9 +79,9 @@
       gap: 8px;
       margin: 10px 0 18px;
       padding: 14px 16px;
-      background: #f8fafc;
+      background: #faf8f3;
       border-radius: 10px;
-      border: 1px solid #e2e8f0;
+      border: 1px solid #e8e4dc;
       flex-wrap: wrap;
     }
     .stepper-item {
@@ -95,7 +95,7 @@
       width: 26px;
       height: 26px;
       border-radius: 50%;
-      background: #e2e8f0;
+      background: #e8e4dc;
       color: #94a3b8;
       display: flex;
       align-items: center;
@@ -109,10 +109,10 @@
       font-weight: 500;
     }
     .stepper-item.ativo {
-      color: #0c4a6e;
+      color: #0f1f3a;
     }
     .stepper-item.ativo .stepper-num {
-      background: #0c4a6e;
+      background: #0f1f3a;
       color: white;
     }
     .stepper-item.feito {
@@ -135,7 +135,7 @@
       flex: 1;
       min-width: 12px;
       height: 1px;
-      background: #cbd5e1;
+      background: #d4cfc3;
     }
 
     /* ============ [FAIXA] Grid de botões para faixa etária ============ */
@@ -151,7 +151,7 @@
     .faixa-btn {
       padding: 10px 8px;
       background: white;
-      border: 1px solid #cbd5e1;
+      border: 1px solid #d4cfc3;
       border-radius: 7px;
       font-size: 13px;
       font-weight: 600;
@@ -165,12 +165,12 @@
       font-family: inherit;
     }
     .faixa-btn:hover {
-      border-color: #0c4a6e;
-      color: #0c4a6e;
+      border-color: #0f1f3a;
+      color: #0f1f3a;
     }
     .faixa-btn.ativo {
-      background: #0c4a6e;
-      border-color: #0c4a6e;
+      background: #0f1f3a;
+      border-color: #0f1f3a;
       color: white;
     }
     .faixa-sub {
@@ -188,11 +188,16 @@
     input, textarea, select {
       width: 100%;
       padding: 10px 12px;
-      border: 1px solid #d1d5db;
+      border: 1px solid #d4cfc3;
       border-radius: 8px;
       font-family: inherit;
       font-size: 14px;
       background: #fff;
+    }
+    input:focus, textarea:focus, select:focus {
+      outline: 2px solid #b87333;
+      outline-offset: -2px;
+      border-color: #b87333;
     }
     textarea { resize: vertical; min-height: 80px; }
     .hint { font-size: 12px; color: #6b7280; margin-top: 4px; }
@@ -205,7 +210,7 @@
       .row { grid-template-columns: 1fr; }
     }
     button.primary {
-      background: #0284c7;
+      background: #0f1f3a;
       color: #fff;
       border: none;
       padding: 11px 22px;
@@ -215,29 +220,29 @@
       cursor: pointer;
       margin-top: 18px;
     }
-    button.primary:hover { background: #0369a1; }
+    button.primary:hover { background: #1e3a5f; }
 
     .alerta-lgpd {
-      background: #fef3c7;
-      border: 1px solid #fcd34d;
-      border-left: 4px solid #d97706;
+      background: #fef9f0;
+      border: 1px solid #e8d5b7;
+      border-left: 4px solid #b87333;
       border-radius: 8px;
       padding: 12px 14px;
       margin-bottom: 18px;
       font-size: 13px;
-      color: #78350f;
+      color: #5a3a14;
       line-height: 1.55;
     }
-    .alerta-lgpd strong { color: #92400e; }
+    .alerta-lgpd strong { color: #3a1f08; }
 
     .caso-item {
-      border: 1px solid #e5e7eb;
+      border: 1px solid #e8e4dc;
       border-radius: 10px;
       padding: 14px 16px;
       margin-bottom: 10px;
       background: #fff;
     }
-    .caso-item h3 { margin: 0 0 4px; font-size: 15px; }
+    .caso-item h3 { margin: 0 0 4px; font-size: 15px; color: #0f1f3a; }
     .caso-item .meta { font-size: 12px; color: #64748b; margin-bottom: 8px; }
     .caso-item .preview { font-size: 13px; color: #374151; }
     .badge {
@@ -246,8 +251,8 @@
       border-radius: 12px;
       font-size: 11px;
       font-weight: 600;
-      background: #dbeafe;
-      color: #1e40af;
+      background: #eef3f9;
+      color: #1e3a5f;
     }
     .badge-refl {
       display: inline-block;
@@ -256,8 +261,8 @@
       font-size: 11px;
       font-weight: 600;
     }
-    .badge-refl.ok { background: #d1fae5; color: #065f46; }
-    .badge-refl.pendente { background: #fef3c7; color: #78350f; }
+    .badge-refl.ok { background: #1a3a3a; color: #ffffff; }
+    .badge-refl.pendente { background: #b87333; color: #ffffff; }
     .empty {
       text-align: center;
       padding: 40px 20px;
@@ -271,13 +276,13 @@
       margin-bottom: 18px;
     }
     .stat {
-      background: #f8fafc;
-      border: 1px solid #e5e7eb;
+      background: #fff;
+      border: 1px solid #e8e4dc;
       border-radius: 10px;
       padding: 14px;
       text-align: center;
     }
-    .stat .num { font-size: 24px; font-weight: 700; color: #0284c7; }
+    .stat .num { font-size: 24px; font-weight: 700; color: #b87333; }
     .stat .lbl { font-size: 12px; color: #64748b; margin-top: 2px; }
     .msg {
       padding: 10px 14px;
@@ -286,13 +291,13 @@
       font-size: 14px;
       display: none;
     }
-    .msg.success { background: #d1fae5; color: #065f46; display: block; }
+    .msg.success { background: #d4f5dd; color: #065f46; display: block; }
     .msg.error { background: #fee2e2; color: #991b1b; display: block; }
 
     /* ===== Análise didática (portado do medico.html, sem badges de probabilidade) ===== */
     .analysis-section {
       background: #fff;
-      border: 1px solid #e5e7eb;
+      border: 1px solid #e8e4dc;
       border-radius: 10px;
       padding: 14px 16px;
       margin-bottom: 12px;
@@ -300,7 +305,7 @@
     .analysis-section h4 {
       margin: 0 0 10px;
       font-size: 15px;
-      color: #0f172a;
+      color: #0f1f3a;
       font-weight: 600;
     }
     .analysis-section ul {
@@ -314,11 +319,11 @@
     .analysis-section ul li:last-child { margin-bottom: 0; }
 
     .hypothesis-card {
-      border: 1px solid #e5e7eb;
+      border: 1px solid #e8e4dc;
       border-radius: 8px;
       padding: 11px 13px;
       margin-bottom: 8px;
-      background: #fafafa;
+      background: #faf8f3;
     }
     .hypothesis-card:last-child { margin-bottom: 0; }
     .hypothesis-card .hyp-header {
@@ -343,8 +348,8 @@
       flex-shrink: 0;
     }
     .hyp-prob-alta { background: #fee2e2; color: #991b1b; }
-    .hyp-prob-moderada { background: #fef3c7; color: #92400e; }
-    .hyp-prob-baixa { background: #e0e7ff; color: #3730a3; }
+    .hyp-prob-moderada { background: #fef9f0; color: #5a3a14; }
+    .hyp-prob-baixa { background: #fef9f0; color: #1e3a5f; }
     .hypothesis-card .hyp-just {
       color: #4b5563;
       font-size: 13.5px;
@@ -363,19 +368,19 @@
     .red-flags-box ul { color: #7f1d1d; }
 
     .comparacao-box {
-      background: #f0f9ff;
-      border: 1px solid #bae6fd;
+      background: #fef9f0;
+      border: 1px solid #e8d5b7;
       border-radius: 8px;
       padding: 12px 14px;
       margin-bottom: 12px;
       font-size: 13.5px;
       line-height: 1.55;
-      color: #0c4a6e;
+      color: #0f1f3a;
     }
     .comparacao-box h4 {
       margin: 0 0 6px;
       font-size: 14px;
-      color: #0c4a6e;
+      color: #0f1f3a;
       font-weight: 600;
     }
     /* Pill de alinhamento didatico — autorizado pelo advogado em
@@ -410,17 +415,17 @@
     .alinh-alta_concordancia {
       background: #dcfce7;
       color: #166534;
-      border: 1px solid #bbf7d0;
+      border: 1px solid #a7e3b8;
     }
     .alinh-concordancia_parcial {
-      background: #fef3c7;
-      color: #92400e;
-      border: 1px solid #fde68a;
+      background: #fef9f0;
+      color: #5a3a14;
+      border: 1px solid #e8d5b7;
     }
     .alinh-divergencia {
-      background: #e0e7ff;
-      color: #3730a3;
-      border: 1px solid #c7d2fe;
+      background: #fef9f0;
+      color: #1e3a5f;
+      border: 1px solid #d4a574;
     }
 
     .exame-row { margin-bottom: 6px; }
@@ -441,8 +446,8 @@
       padding: 28px 24px; max-width: 380px; width: 100%;
       box-shadow: 0 20px 60px rgba(0,0,0,0.3);
     }
-    .auth-logo { font-size: 18px; font-weight: 700; color: #0c4a6e; margin-bottom: 4px; }
-    .auth-title { font-size: 22px; font-weight: 600; color: #0f172a; margin-bottom: 4px; }
+    .auth-logo { font-size: 18px; font-weight: 700; color: #0f1f3a; margin-bottom: 4px; }
+    .auth-title { font-size: 22px; font-weight: 600; color: #0f1f3a; margin-bottom: 4px; }
     .auth-sub { font-size: 13px; color: #64748b; margin-bottom: 20px; }
     .auth-field { margin-bottom: 14px; }
     .auth-field label {
@@ -451,22 +456,22 @@
     }
     .auth-field input {
       width: 100%; padding: 10px 12px;
-      border: 1px solid #cbd5e1; border-radius: 7px;
+      border: 1px solid #d4cfc3; border-radius: 7px;
       font-size: 14px; box-sizing: border-box;
     }
-    .auth-field input:focus { outline: 2px solid #0ea5e9; border-color: #0ea5e9; }
+    .auth-field input:focus { outline: 2px solid #b87333; border-color: #b87333; }
     .auth-btn {
       width: 100%; padding: 12px;
-      background: #0ea5e9; color: white;
+      background: #b87333; color: white;
       border: none; border-radius: 7px;
       font-size: 14px; font-weight: 600; cursor: pointer;
       margin-top: 6px;
     }
-    .auth-btn:hover { background: #0284c7; }
+    .auth-btn:hover { background: #0f1f3a; }
     .auth-btn:disabled { background: #94a3b8; cursor: not-allowed; }
     .auth-toggle {
       text-align: center; margin-top: 14px;
-      font-size: 13px; color: #0ea5e9; cursor: pointer;
+      font-size: 13px; color: #b87333; cursor: pointer;
     }
     .auth-toggle:hover { text-decoration: underline; }
     .auth-error {
@@ -482,13 +487,13 @@
     /* Botoes da topbar (Meus Casos, Sair) */
     .topbar .user { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
     .topbar-btn {
-      background: white; border: 1px solid #cbd5e1;
+      background: white; border: 1px solid #d4cfc3;
       padding: 5px 11px; border-radius: 6px;
       font-size: 12px; color: #334155; cursor: pointer;
     }
-    .topbar-btn:hover { background: #f1f5f9; }
+    .topbar-btn:hover { background: #f5f3ee; }
     .topbar-btn-ghost { background: transparent; color: #94a3b8; }
-    .topbar-btn-ghost:hover { background: #f1f5f9; color: #334155; }
+    .topbar-btn-ghost:hover { background: #f5f3ee; color: #334155; }
 
     /* ============ [AGENDA] Painel da agenda ============ */
     .agenda-topbar {
@@ -509,7 +514,7 @@
     }
     .agenda-titulo {
       font-size: 18px;
-      color: #0c4a6e;
+      color: #0f1f3a;
       font-weight: 700;
       margin-top: 2px;
     }
@@ -522,32 +527,32 @@
     .agenda-btn-toggle {
       background: white;
       color: #64748b;
-      border: 1px solid #cbd5e1;
+      border: 1px solid #d4cfc3;
       padding: 7px 12px;
       border-radius: 6px;
       font-size: 12.5px;
       font-weight: 500;
       cursor: pointer;
     }
-    .agenda-btn-toggle:hover { background: #f8fafc; }
+    .agenda-btn-toggle:hover { background: #faf8f3; }
     .agenda-btn-toggle.ativo {
-      background: #0c4a6e;
+      background: #0f1f3a;
       color: white;
-      border-color: #0c4a6e;
+      border-color: #0f1f3a;
     }
     .agenda-btn-nav {
       background: white;
       color: #64748b;
-      border: 1px solid #cbd5e1;
+      border: 1px solid #d4cfc3;
       padding: 6px 10px;
       border-radius: 6px;
       font-size: 14px;
       cursor: pointer;
       min-width: 32px;
     }
-    .agenda-btn-nav:hover { background: #f8fafc; color: #0c4a6e; }
+    .agenda-btn-nav:hover { background: #faf8f3; color: #0f1f3a; }
     .agenda-btn-novo {
-      background: #0c4a6e;
+      background: #0f1f3a;
       color: white;
       border: none;
       padding: 7px 14px;
@@ -556,7 +561,7 @@
       font-weight: 600;
       cursor: pointer;
     }
-    .agenda-btn-novo:hover { background: #0a3d5c; }
+    .agenda-btn-novo:hover { background: #1e3a5f; }
 
     .agenda-card {
       background: white;
@@ -569,7 +574,7 @@
       padding: 10px 14px;
       background: white;
       border-radius: 8px;
-      border: 1px dashed #cbd5e1;
+      border: 1px dashed #d4cfc3;
       font-size: 12px;
       color: #64748b;
       text-align: center;
@@ -580,7 +585,7 @@
       display: flex;
       gap: 14px;
       padding: 10px 0;
-      border-bottom: 1px solid #f1f5f9;
+      border-bottom: 1px solid #f5f3ee;
     }
     .timeline-item:last-child { border-bottom: none; }
     .timeline-hora {
@@ -592,7 +597,7 @@
     .timeline-hora .hh {
       font-size: 13px;
       font-weight: 700;
-      color: #0c4a6e;
+      color: #0f1f3a;
     }
     .timeline-hora .mm {
       font-size: 10px;
@@ -603,21 +608,21 @@
       padding: 8px 12px;
       border-radius: 6px;
       cursor: pointer;
-      background: #e0f2fe;
-      border-left: 3px solid #0ea5e9;
+      background: #eef3f9;
+      border-left: 3px solid #b87333;
       transition: transform 0.1s;
     }
     .timeline-evento:hover { transform: translateX(2px); }
     .timeline-evento.cor-amber {
-      background: #fef3c7;
-      border-left-color: #c89b3c;
+      background: #fef9f0;
+      border-left-color: #b87333;
     }
-    .timeline-evento.cor-amber .timeline-sub { color: #78350f; }
+    .timeline-evento.cor-amber .timeline-sub { color: #5a3a14; }
     .timeline-evento.cor-blue {
-      background: #e0f2fe;
-      border-left-color: #0ea5e9;
+      background: #eef3f9;
+      border-left-color: #b87333;
     }
-    .timeline-evento.cor-blue .timeline-sub { color: #0c4a6e; }
+    .timeline-evento.cor-blue .timeline-sub { color: #0f1f3a; }
     .timeline-evento.cor-green {
       background: #d1fae5;
       border-left-color: #059669;
@@ -626,7 +631,7 @@
     .timeline-titulo {
       font-size: 14px;
       font-weight: 600;
-      color: #0f172a;
+      color: #0f1f3a;
     }
     .timeline-sub {
       font-size: 11px;
@@ -662,7 +667,7 @@
       border-radius: 4px;
     }
     .semana-cab.hoje {
-      background: #0c4a6e;
+      background: #0f1f3a;
       color: white;
     }
     .semana-evento {
@@ -679,7 +684,7 @@
     }
     .semana-evento .se-titulo {
       font-size: 10px;
-      color: #0f172a;
+      color: #0f1f3a;
       line-height: 1.2;
       overflow: hidden;
       text-overflow: ellipsis;
@@ -700,7 +705,7 @@
       box-shadow: 0 20px 60px rgba(0,0,0,0.3);
     }
     .evento-titulo {
-      font-size: 18px; font-weight: 700; color: #0c4a6e;
+      font-size: 18px; font-weight: 700; color: #0f1f3a;
       margin-bottom: 16px;
     }
     .evento-erro {
@@ -727,36 +732,36 @@
     .evento-campo select {
       width: 100%;
       padding: 10px 12px;
-      border: 1px solid #cbd5e1;
+      border: 1px solid #d4cfc3;
       border-radius: 7px;
       font-size: 14px;
       font-family: inherit;
     }
     .evento-campo input:focus,
     .evento-campo select:focus {
-      outline: 2px solid #0ea5e9; border-color: #0ea5e9;
+      outline: 2px solid #b87333; border-color: #b87333;
     }
     .evento-acoes {
       display: flex; gap: 10px; flex-wrap: wrap;
       margin-top: 18px; padding-top: 14px;
-      border-top: 1px solid #e2e8f0;
+      border-top: 1px solid #e8e4dc;
     }
     .evento-btn-salvar {
       flex: 1; min-width: 120px;
       padding: 11px 16px;
-      background: #0c4a6e; color: white;
+      background: #0f1f3a; color: white;
       border: none; border-radius: 7px;
       font-size: 14px; font-weight: 600; cursor: pointer;
     }
-    .evento-btn-salvar:hover { background: #0a3d5c; }
+    .evento-btn-salvar:hover { background: #1e3a5f; }
     .evento-btn-salvar:disabled { background: #94a3b8; cursor: not-allowed; }
     .evento-btn-cancelar {
       padding: 11px 16px;
       background: white; color: #475569;
-      border: 1px solid #cbd5e1; border-radius: 7px;
+      border: 1px solid #d4cfc3; border-radius: 7px;
       font-size: 13px; cursor: pointer;
     }
-    .evento-btn-cancelar:hover { background: #f1f5f9; }
+    .evento-btn-cancelar:hover { background: #f5f3ee; }
     .evento-btn-deletar {
       padding: 11px 16px;
       background: transparent; color: #991b1b;
@@ -780,7 +785,7 @@
       box-shadow: 0 20px 60px rgba(0,0,0,0.3);
     }
     .termo-titulo {
-      font-size: 18px; font-weight: 700; color: #0c4a6e;
+      font-size: 18px; font-weight: 700; color: #0f1f3a;
       margin-bottom: 16px;
     }
     .termo-conteudo {
@@ -788,11 +793,11 @@
       margin-bottom: 18px;
     }
     .termo-conteudo p { margin: 0 0 12px 0; }
-    .termo-conteudo strong { color: #0c4a6e; }
+    .termo-conteudo strong { color: #0f1f3a; }
     .termo-acoes {
       display: flex; gap: 10px; flex-wrap: wrap;
       margin-top: 18px; padding-top: 14px;
-      border-top: 1px solid #e2e8f0;
+      border-top: 1px solid #e8e4dc;
     }
     .termo-btn-aceitar {
       flex: 1; min-width: 140px;
@@ -806,10 +811,10 @@
     .termo-btn-recusar {
       padding: 11px 16px;
       background: transparent; color: #64748b;
-      border: 1px solid #cbd5e1; border-radius: 7px;
+      border: 1px solid #d4cfc3; border-radius: 7px;
       font-size: 13px; cursor: pointer;
     }
-    .termo-btn-recusar:hover { background: #f1f5f9; }
+    .termo-btn-recusar:hover { background: #f5f3ee; }
   </style>
 </head>
 <body>
@@ -952,14 +957,14 @@
           ⚠️ <strong>Exercício acadêmico.</strong> Descreva o caso de forma <strong>anonimizada</strong>, sem dados que permitam identificar o paciente (nome, RG, prontuário, endereço, data exata da consulta, telefone, e-mail). Use idade aproximada (faixa) e descreva achados clínicos e raciocínio. <strong>Não copie o prontuário hospitalar.</strong>
         </div>
 
-        <div style="background:#fef3c7; border:1px solid #fcd34d; border-radius:8px; padding:14px 16px; margin:10px 0 0; color:#78350f; font-size:13px; line-height:1.55;">
+        <div style="background:#fef9f0; border:1px solid #e8d5b7; border-radius:8px; padding:14px 16px; margin:10px 0 0; color:#5a3a14; font-size:13px; line-height:1.55;">
           📘 <strong>Sobre esta ferramenta.</strong> O Vytal Acadêmico é uma ferramenta <strong>educacional</strong>. <strong>Não diagnostica, não prescreve e não orienta atendimento real</strong>. Uso restrito a <strong>ensino, portfólio e discussão com preceptor</strong>. Nenhuma resposta gerada aqui deve ser aplicada a um paciente real sem avaliação presencial por médico responsável.
         </div>
 
         <!-- ===== ETAPA 1: CADASTRO DO CASO ===== -->
         <div id="etapa-1">
-          <h2 style="margin:18px 0 4px; color:#0f172a; font-size:17px;">
-            <span style="background:#0284c7; color:#fff; border-radius:50%; width:24px; height:24px; display:inline-flex; align-items:center; justify-content:center; font-size:13px; margin-right:6px;">1</span>
+          <h2 style="margin:18px 0 4px; color:#0f1f3a; font-size:17px;">
+            <span style="background:#0f1f3a; color:#fff; border-radius:50%; width:24px; height:24px; display:inline-flex; align-items:center; justify-content:center; font-size:13px; margin-right:6px;">1</span>
             Descreva o caso
           </h2>
           <div style="color:#64748b; font-size:13px; margin-bottom:10px;">Os achados clínicos do caso que você viu, sem dados identificáveis.</div>
@@ -1025,12 +1030,12 @@
 
         <!-- ===== ETAPA 2: RESPOSTA DO ALUNO ===== -->
         <div id="etapa-2" style="display:none;">
-          <div style="background:#f0f9ff; border:1px solid #bae6fd; border-radius:8px; padding:14px 16px; margin:10px 0 18px; color:#0c4a6e; font-size:13px;">
+          <div style="background:#fef9f0; border:1px solid #e8d5b7; border-radius:8px; padding:14px 16px; margin:10px 0 18px; color:#0f1f3a; font-size:13px;">
             🧠 <strong>Sua vez de pensar antes de receber apoio.</strong> Liste as hipóteses diagnósticas e a conduta que VOCÊ proporia. A IA só avalia sua resposta DEPOIS — não vai te dar a resposta antes. Isso é o que torna o aprendizado real.
           </div>
 
-          <h2 style="margin:18px 0 4px; color:#0f172a; font-size:17px;">
-            <span style="background:#0284c7; color:#fff; border-radius:50%; width:24px; height:24px; display:inline-flex; align-items:center; justify-content:center; font-size:13px; margin-right:6px;">2</span>
+          <h2 style="margin:18px 0 4px; color:#0f1f3a; font-size:17px;">
+            <span style="background:#0f1f3a; color:#fff; border-radius:50%; width:24px; height:24px; display:inline-flex; align-items:center; justify-content:center; font-size:13px; margin-right:6px;">2</span>
             Sua avaliação do caso
           </h2>
 
@@ -1042,25 +1047,25 @@
 
           <div style="display:flex; gap:10px; margin-top:14px;">
             <button class="primary" onclick="solicitarFeedback()" id="btn-feedback">Receber feedback educacional →</button>
-            <button onclick="voltarEtapa1()" style="background:none; border:1px solid #d1d5db; padding:11px 22px; border-radius:8px; cursor:pointer;">← Voltar</button>
+            <button onclick="voltarEtapa1()" style="background:none; border:1px solid #d4cfc3; padding:11px 22px; border-radius:8px; cursor:pointer;">← Voltar</button>
           </div>
           <div class="msg" id="msg-etapa2"></div>
         </div>
 
         <!-- ===== ETAPA 3: FEEDBACK + APRENDIZADO ===== -->
         <div id="etapa-3" style="display:none;">
-          <h2 style="margin:18px 0 4px; color:#0f172a; font-size:17px;">
-            <span style="background:#0284c7; color:#fff; border-radius:50%; width:24px; height:24px; display:inline-flex; align-items:center; justify-content:center; font-size:13px; margin-right:6px;">3</span>
+          <h2 style="margin:18px 0 4px; color:#0f1f3a; font-size:17px;">
+            <span style="background:#0f1f3a; color:#fff; border-radius:50%; width:24px; height:24px; display:inline-flex; align-items:center; justify-content:center; font-size:13px; margin-right:6px;">3</span>
             Feedback educacional
           </h2>
 
-          <div id="feedback-loading" style="display:none; padding:24px; text-align:center; color:#0284c7; font-size:14px;">
+          <div id="feedback-loading" style="display:none; padding:24px; text-align:center; color:#0f1f3a; font-size:14px;">
             <div style="display:flex; align-items:center; justify-content:center; gap:10px; flex-wrap:wrap;">
               <span id="feedback-loading-etapa">Lendo o caso clínico…</span>
               <span id="feedback-loading-tempo" style="color:#64748b; font-size:12px; font-variant-numeric:tabular-nums; min-width:34px;">0s</span>
             </div>
-            <div style="margin-top:10px; width:100%; height:3px; background:#e0f2fe; border-radius:2px; overflow:hidden; position:relative;">
-              <div style="position:absolute; top:0; left:-30%; width:30%; height:100%; background:#0284c7; animation: progmove 1.2s ease-in-out infinite;"></div>
+            <div style="margin-top:10px; width:100%; height:3px; background:#eef3f9; border-radius:2px; overflow:hidden; position:relative;">
+              <div style="position:absolute; top:0; left:-30%; width:30%; height:100%; background:#0f1f3a; animation: progmove 1.2s ease-in-out infinite;"></div>
             </div>
           </div>
           <style>
@@ -1069,7 +1074,7 @@
 
           <div id="feedback-container" style="display:none;"></div>
 
-          <div id="feedback-disclaimer" style="display:none; background:#fef3c7; border:1px solid #fcd34d; border-radius:8px; padding:12px 14px; margin-top:10px; color:#78350f; font-size:12.5px; line-height:1.5;">
+          <div id="feedback-disclaimer" style="display:none; background:#fef9f0; border:1px solid #e8d5b7; border-radius:8px; padding:12px 14px; margin-top:10px; color:#5a3a14; font-size:12.5px; line-height:1.5;">
             📘 Esta análise é <strong>didática</strong>, em formato de gabarito comentado de caso clínico. <strong>Não diagnostica, não prescreve e não orienta atendimento real.</strong> Uso restrito a ensino, portfólio e discussão com preceptor.
           </div>
 
@@ -1077,7 +1082,7 @@
                Aparece junto com o feedback (controlado pelo mesmo display do feedback-disclaimer). -->
           <div id="pdf-export-etapa3" style="display:none; margin-top:10px;">
             <button type="button" onclick="exportarPDFEtapa3()"
-                    style="background:white; border:1px solid #cbd5e1; padding:8px 16px;
+                    style="background:white; border:1px solid #d4cfc3; padding:8px 16px;
                            border-radius:7px; cursor:pointer; font-size:13px;
                            color:#334155; display:inline-flex; align-items:center; gap:6px;">
               📄 Exportar gabarito em PDF
@@ -1097,7 +1102,7 @@
 
             <div style="display:flex; gap:10px; margin-top:14px; flex-wrap:wrap;">
               <button class="primary" onclick="salvarReflexao()">Salvar reflexão</button>
-              <button onclick="proximoCaso()" style="background:white; border:1px solid #cbd5e1; padding:11px 22px; border-radius:8px; cursor:pointer; color:#475569;">Pular reflexão e ir para próximo caso →</button>
+              <button onclick="proximoCaso()" style="background:white; border:1px solid #d4cfc3; padding:11px 22px; border-radius:8px; cursor:pointer; color:#475569;">Pular reflexão e ir para próximo caso →</button>
             </div>
             <div class="msg" id="msg"></div>
           </div>
@@ -1765,13 +1770,13 @@
           eventosDoDia.forEach(e => {
             const cor = agendaCorParaEvento(e);
             const corStyle = {
-              "cor-blue": "background:#e0f2fe; border-left-color:#0ea5e9;",
-              "cor-amber": "background:#fef3c7; border-left-color:#c89b3c;",
+              "cor-blue": "background:#eef3f9; border-left-color:#b87333;",
+              "cor-amber": "background:#fef9f0; border-left-color:#b87333;",
               "cor-green": "background:#d1fae5; border-left-color:#059669;"
             }[cor];
             const corHora = {
-              "cor-blue": "color:#0c4a6e;",
-              "cor-amber": "color:#78350f;",
+              "cor-blue": "color:#0f1f3a;",
+              "cor-amber": "color:#5a3a14;",
               "cor-green": "color:#065f46;"
             }[cor];
             const horaTxt = e.hora ? e.hora.substring(0, 5) : "Sem hora";
@@ -2535,7 +2540,7 @@
         data.temas_de_estudo.forEach((t) => {
           const tema = String(t);
           const url = "https://scholar.google.com/scholar?q=" + encodeURIComponent(tema);
-          html += `<li style="margin-bottom:6px;"><a href="${escapeHtml(url)}" target="_blank" rel="noopener noreferrer" style="color:#0c4a6e; text-decoration:none; display:inline-flex; align-items:center; gap:6px; padding:4px 0;"><span>${escapeHtml(tema)}</span><span style="font-size:11px; color:#64748b;">↗</span></a></li>`;
+          html += `<li style="margin-bottom:6px;"><a href="${escapeHtml(url)}" target="_blank" rel="noopener noreferrer" style="color:#0f1f3a; text-decoration:none; display:inline-flex; align-items:center; gap:6px; padding:4px 0;"><span>${escapeHtml(tema)}</span><span style="font-size:11px; color:#64748b;">↗</span></a></li>`;
         });
         html += "</ul>";
         html += "</div>";
@@ -2617,7 +2622,7 @@
     padding: 12px;
   }
   .pdf-header {
-    border-bottom: 1.5px solid #0c4a6e;
+    border-bottom: 1.5px solid #0f1f3a;
     padding-bottom: 4px;
     margin-bottom: 8px;
     display: flex;
@@ -2627,7 +2632,7 @@
   .pdf-logo {
     font-size: 13pt;
     font-weight: 700;
-    color: #0c4a6e;
+    color: #0f1f3a;
   }
   .pdf-date {
     font-size: 8pt;
@@ -2640,9 +2645,9 @@
   }
   h2.pdf-titulo {
     font-size: 11pt;
-    color: #0f172a;
+    color: #0f1f3a;
     margin: 6px 0 8px 0;
-    border-left: 3px solid #0284c7;
+    border-left: 3px solid #0f1f3a;
     padding-left: 6px;
     line-height: 1.3;
   }
@@ -2650,11 +2655,11 @@
     font-size: 9pt;
   }
   .pdf-content h4 {
-    color: #0c4a6e;
+    color: #0f1f3a;
     font-size: 10pt;
     margin: 8px 0 3px 0;
     padding-bottom: 2px;
-    border-bottom: 1px solid #e5e7eb;
+    border-bottom: 1px solid #e8e4dc;
     page-break-after: avoid;
   }
   .pdf-content ul, .pdf-content ol {
@@ -2667,11 +2672,11 @@
   .pdf-content p {
     margin: 2px 0 5px 0;
   }
-  .pdf-content strong { color: #0f172a; }
+  .pdf-content strong { color: #0f1f3a; }
   .pdf-disclaimer {
     margin-top: 10px;
     padding-top: 5px;
-    border-top: 1px solid #e5e7eb;
+    border-top: 1px solid #e8e4dc;
     font-size: 7.5pt;
     color: #6b7280;
     font-style: italic;
@@ -2686,7 +2691,7 @@
   .analysis-section { page-break-inside: avoid; }
   /* Barra de instrucao no topo (so na tela, nao na impressao) */
   .preview-bar {
-    background: #0c4a6e;
+    background: #0f1f3a;
     color: white;
     padding: 10px 16px;
     display: flex;
@@ -2704,7 +2709,7 @@
   }
   .preview-bar button {
     background: white;
-    color: #0c4a6e;
+    color: #0f1f3a;
     border: none;
     padding: 8px 14px;
     border-radius: 6px;
@@ -2712,12 +2717,12 @@
     font-size: 13px;
     font-weight: 600;
   }
-  .preview-bar button:hover { background: #e0f2fe; }
+  .preview-bar button:hover { background: #eef3f9; }
   .preview-bar button.secundario {
-    background: #1e40af;
+    background: #0f1f3a;
     color: white;
   }
-  .preview-bar button.secundario:hover { background: #1e3a8a; }
+  .preview-bar button.secundario:hover { background: #0f1f3a; }
   .preview-bar button.fechar {
     background: transparent;
     color: white;
@@ -3076,12 +3081,12 @@
           <div class="preview"><strong>Queixa:</strong> ${escapeHtml(c.queixa)}</div>
           ${c.hipoteses ? `<div class="preview" style="margin-top:6px;"><strong>Suas hipóteses:</strong> ${escapeHtml(c.hipoteses)}</div>` : ""}
           ${c.conduta ? `<div class="preview" style="margin-top:6px;"><strong>Sua conduta:</strong> ${escapeHtml(c.conduta)}</div>` : ""}
-          ${(c.feedback && typeof c.feedback === "object") ? `<details style="margin-top:8px;"><summary style="cursor:pointer; color:#0284c7; font-size:13px; font-weight:600;">Ver feedback educacional</summary><div style="margin-top:6px;">${renderAnaliseDidatica(c.feedback)}</div></details>` : ""}
+          ${(c.feedback && typeof c.feedback === "object") ? `<details style="margin-top:8px;"><summary style="cursor:pointer; color:#0f1f3a; font-size:13px; font-weight:600;">Ver feedback educacional</summary><div style="margin-top:6px;">${renderAnaliseDidatica(c.feedback)}</div></details>` : ""}
           ${temReflexao ? `<div class="preview" style="margin-top:6px;"><strong>Aprendizado:</strong> ${escapeHtml(c.aprendizado)}</div>` : ""}
           ${!temReflexao ? `
             <div style="margin-top:10px;">
               <button type="button" onclick="abrirReflexaoTardia(${c.id})"
-                      style="background:#fef3c7; border:1px solid #fde68a; color:#78350f;
+                      style="background:#fef9f0; border:1px solid #e8d5b7; color:#5a3a14;
                              padding:7px 14px; border-radius:6px; cursor:pointer;
                              font-size:12px; font-weight:600;">
                 + Adicionar reflexão agora
@@ -3091,7 +3096,7 @@
           ${(c.feedback && typeof c.feedback === "object") ? `
             <div style="margin-top:10px;">
               <button type="button" onclick="exportarPDFCasoSalvo(${c.id})"
-                      style="background:white; border:1px solid #cbd5e1; padding:6px 12px;
+                      style="background:white; border:1px solid #d4cfc3; padding:6px 12px;
                              border-radius:6px; cursor:pointer; font-size:12px;
                              color:#334155; display:inline-flex; align-items:center; gap:5px;">
                 📄 Exportar gabarito em PDF
