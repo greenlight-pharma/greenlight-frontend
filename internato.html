@@ -235,6 +235,76 @@
     }
     .alerta-lgpd strong { color: #3a1f08; }
 
+    /* ============ [DISCLAIMER-FAIXA] Faixa fina abaixo do topbar ============ */
+    .disclaimer-faixa {
+      background: #fef9f0;
+      border-bottom: 1px solid #e8d5b7;
+      border-top: 1px solid #b87333;
+    }
+    .disclaimer-faixa-inner {
+      max-width: 980px;
+      margin: 0 auto;
+      padding: 7px 16px;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 8px 12px;
+      font-size: 12px;
+      color: #5a3a14;
+      line-height: 1.4;
+    }
+    .disclaimer-item {
+      display: inline-flex;
+      flex-wrap: wrap;
+      align-items: baseline;
+      gap: 4px;
+    }
+    .disclaimer-item strong {
+      color: #3a1f08;
+      font-weight: 600;
+    }
+    .disclaimer-sep {
+      color: #b87333;
+      font-weight: 600;
+      opacity: 0.7;
+    }
+    .disclaimer-mais {
+      display: inline;
+    }
+    .disclaimer-mais summary {
+      cursor: pointer;
+      font-size: 11px;
+      color: #b87333;
+      font-weight: 500;
+      list-style: none;
+      display: inline-block;
+      user-select: none;
+      padding: 0 4px;
+      border-radius: 3px;
+      background: rgba(184, 115, 51, 0.08);
+    }
+    .disclaimer-mais summary::-webkit-details-marker { display: none; }
+    .disclaimer-mais summary:hover {
+      background: rgba(184, 115, 51, 0.15);
+      text-decoration: underline;
+    }
+    .disclaimer-mais-conteudo {
+      flex-basis: 100%;
+      margin-top: 8px;
+      padding: 10px 12px;
+      background: white;
+      border: 1px solid #e8d5b7;
+      border-left: 3px solid #b87333;
+      border-radius: 4px;
+      font-size: 12.5px;
+      color: #5a3a14;
+      line-height: 1.55;
+    }
+    @media (max-width: 640px) {
+      .disclaimer-sep { display: none; }
+      .disclaimer-faixa-inner { gap: 6px; }
+    }
+
     /* ============ [DISCLAIMER] Estilo discreto com 'ver detalhes' ============ */
     .alerta-disclaimer {
       background: #fef9f0;
@@ -918,6 +988,33 @@
     </div>
   </div>
 
+  <!-- [DISCLAIMER-FIXO] Faixa persistente com os 2 avisos curtos.
+       Aparece em todas as telas (etapa 1, 2, 3, Meus Casos, Agenda).
+       Disclaimers exigidos pelo parecer juridico de 28/05/2026. -->
+  <div class="disclaimer-faixa">
+    <div class="disclaimer-faixa-inner">
+      <span class="disclaimer-item">
+        <strong>Exercício acadêmico.</strong> Caso anonimizado, sem dados que identifiquem o paciente.
+        <details class="disclaimer-mais">
+          <summary>detalhes</summary>
+          <div class="disclaimer-mais-conteudo">
+            Descreva o caso de forma <strong>anonimizada</strong>, sem dados que permitam identificar o paciente (nome, RG, prontuário, endereço, data exata da consulta, telefone, e-mail). Use idade aproximada (faixa) e descreva achados clínicos e raciocínio. <strong>Não copie o prontuário hospitalar.</strong>
+          </div>
+        </details>
+      </span>
+      <span class="disclaimer-sep">·</span>
+      <span class="disclaimer-item">
+        <strong>Ferramenta educacional.</strong> Não diagnostica nem prescreve.
+        <details class="disclaimer-mais">
+          <summary>detalhes</summary>
+          <div class="disclaimer-mais-conteudo">
+            O Vytal Acadêmico é uma ferramenta <strong>educacional</strong>. <strong>Não diagnostica, não prescreve e não orienta atendimento real</strong>. Uso restrito a <strong>ensino, portfólio e discussão com preceptor</strong>. Nenhuma resposta gerada aqui deve ser aplicada a um paciente real sem avaliação presencial por médico responsável.
+          </div>
+        </details>
+      </span>
+    </div>
+  </div>
+
   <!-- ===== [TERMO-DE-USO] Modal de aceite =====
        Aparece apos login se o aluno nunca aceitou (ou aceitou versao antiga).
        Bloqueia uso ate o aceite. Comunica que coordenacao acompanha. -->
@@ -994,26 +1091,6 @@
             <div class="stepper-num">3</div>
             <div class="stepper-label">Feedback IA</div>
           </div>
-        </div>
-
-        <div class="alerta-disclaimer">
-          <strong>Exercício acadêmico.</strong> Use idade aproximada, descreva achados e raciocínio. Não copie prontuário hospitalar.
-          <details class="alerta-mais">
-            <summary>ver detalhes</summary>
-            <div class="alerta-mais-conteudo">
-              Descreva o caso de forma <strong>anonimizada</strong>, sem dados que permitam identificar o paciente (nome, RG, prontuário, endereço, data exata da consulta, telefone, e-mail). Use idade aproximada (faixa) e descreva achados clínicos e raciocínio. <strong>Não copie o prontuário hospitalar.</strong>
-            </div>
-          </details>
-        </div>
-
-        <div class="alerta-disclaimer" style="margin-top:10px;">
-          <strong>Ferramenta educacional.</strong> Não diagnostica nem prescreve. Uso restrito a ensino, portfólio e discussão com preceptor.
-          <details class="alerta-mais">
-            <summary>ver detalhes</summary>
-            <div class="alerta-mais-conteudo">
-              O Vytal Acadêmico é uma ferramenta <strong>educacional</strong>. <strong>Não diagnostica, não prescreve e não orienta atendimento real</strong>. Uso restrito a <strong>ensino, portfólio e discussão com preceptor</strong>. Nenhuma resposta gerada aqui deve ser aplicada a um paciente real sem avaliação presencial por médico responsável.
-            </div>
-          </details>
         </div>
 
         <!-- ===== ETAPA 1: CADASTRO DO CASO ===== -->
@@ -1127,11 +1204,11 @@
             @keyframes progmove { 0% { left: -30%; } 100% { left: 100%; } }
           </style>
 
-          <div id="feedback-container" style="display:none;"></div>
-
-          <div id="feedback-disclaimer" style="display:none; background:#fef9f0; border:1px solid #e8d5b7; border-radius:8px; padding:12px 14px; margin-top:10px; color:#5a3a14; font-size:12.5px; line-height:1.5;">
-            📘 Esta análise é <strong>didática</strong>, em formato de gabarito comentado de caso clínico. <strong>Não diagnostica, não prescreve e não orienta atendimento real.</strong> Uso restrito a ensino, portfólio e discussão com preceptor.
+          <div id="feedback-disclaimer" style="display:none; background:#fef9f0; border:1px solid #e8d5b7; border-left:4px solid #b87333; border-radius:8px; padding:12px 14px; margin-bottom:14px; color:#5a3a14; font-size:12.5px; line-height:1.55;">
+            ⚠️ <strong>Feedback preliminar formativo.</strong> Esta análise é <strong>didática</strong>, em formato de gabarito comentado de caso clínico, sujeita à supervisão docente. <strong>Não constitui avaliação acadêmica. Não diagnostica, não prescreve, não orienta atendimento real.</strong> Itens listados são <strong>sugestões para estudo e reflexão</strong>. Sempre discuta com seu preceptor antes de aplicar qualquer conduta a paciente real.
           </div>
+
+          <div id="feedback-container" style="display:none;"></div>
 
           <!-- [PDF-EXPORT] Botao de exportar PDF na etapa 3, logo apos o gabarito.
                Aparece junto com o feedback (controlado pelo mesmo display do feedback-disclaimer). -->
