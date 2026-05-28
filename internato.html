@@ -2907,6 +2907,14 @@
       }
       let html = "";
 
+      // [REORG-FEEDBACK] Modo de renderizacao controla a visualizacao:
+      //   - "meus_casos": esconde titulo grande (cabeca do caso ja mostra
+      //     a queixa) e accordion comeca FECHADO (aluno ja viu antes).
+      //   - default (etapa 3, PDF): titulo visivel + accordion ABERTO
+      //     na primeira vez que o aluno ve o feedback.
+      const modo = (contexto && contexto.modo) || "padrao";
+      const ehMeusCasos = modo === "meus_casos";
+
       // ============================================================
       // [REORG-FEEDBACK] Layout reorganizado (autorizado pelo advogado
       // em 29/05/2026). Card unico de "Analise Didatica" com:
@@ -2935,10 +2943,14 @@
       html += '<div class="analise-card-principal">';
 
       // Header: eyebrow + titulo + pill destacada
+      // Em Meus Casos, o titulo da queixa ja aparece no cabecalho do card,
+      // entao escondemos para evitar duplicacao.
       html += '<div class="analise-header">';
       html += '<div class="analise-header-texto">';
       html += '<div class="analise-eyebrow">ANÁLISE DIDÁTICA</div>';
-      html += `<div class="analise-titulo">${escapeHtml(tituloDidatico)}</div>`;
+      if (!ehMeusCasos) {
+        html += `<div class="analise-titulo">${escapeHtml(tituloDidatico)}</div>`;
+      }
       html += '</div>';
       html += `<span class="alinh-destaque alinh-destaque-${alinhPrincipal}">${escapeHtml(labelDestaque)}</span>`;
       html += '</div>';
@@ -3114,8 +3126,11 @@
       }
 
       // Wrappa accordion (somente se houver conteudo)
+      // Em "meus_casos" comeca fechado (revisao). Em outros modos
+      // (etapa 3, PDF) comeca aberto — aluno ve tudo na primeira vez.
       if (htmlAccordion) {
-        html += '<details class="analise-discussao">';
+        const accordionAberto = ehMeusCasos ? "" : " open";
+        html += `<details class="analise-discussao"${accordionAberto}>`;
         html += '<summary class="analise-discussao-summary">Ver discussão completa, referências e pontos para estudo</summary>';
         html += '<div class="analise-discussao-conteudo">';
         html += htmlAccordion;
@@ -3762,7 +3777,7 @@
           </div>
           <h3>${escapeHtml(c.titulo)}</h3>
           <div class="meta">${formatDate(c.data)} · ${escapeHtml(c.faixa)}</div>
-          ${temFeedback ? `<div style="margin-top:12px;">${renderAnaliseDidatica(c.feedback, c)}</div>` : ""}
+          ${temFeedback ? `<div style="margin-top:12px;">${renderAnaliseDidatica(c.feedback, { queixa: c.queixa, modo: "meus_casos" })}</div>` : ""}
           ${temReflexao ? `<div class="preview" style="margin-top:6px;"><strong>Aprendizado:</strong> ${escapeHtml(c.aprendizado)}</div>` : ""}
           ${numContestacoes > 0 ? renderContestacoesDoCaso(c._contestacoes) : ""}
           <div style="margin-top:10px; display:flex; gap:8px; flex-wrap:wrap;">
