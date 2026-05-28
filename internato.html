@@ -3282,56 +3282,58 @@
       // [MODAL-COMPLETO] Capturamos resumo + disclaimer + pontos em
       // htmlResumoPontos para reuso no modal (que mostra TUDO).
       // semResumo=true: em Meus Casos o resumo ja aparece fora (no card),
-      // entao aqui pulamos para nao duplicar.
+      // entao no card NAO repetimos. Mas o resumo SEMPRE e montado em
+      // htmlResumoSozinho para o modal, que mostra tudo.
       const semResumo = !!(contexto && contexto.semResumo);
-      let htmlResumoPontos = "";
-      if (data.resumo_caso && !semResumo) {
-        htmlResumoPontos += '<div class="analise-resumo">';
-        htmlResumoPontos += '<div class="analise-resumo-label">RESUMO</div>';
-        htmlResumoPontos += `<div class="analise-resumo-texto">${escapeHtml(data.resumo_caso)}</div>`;
-        htmlResumoPontos += '</div>';
+      let htmlResumoSozinho = "";
+      if (data.resumo_caso) {
+        htmlResumoSozinho += '<div class="analise-resumo">';
+        htmlResumoSozinho += '<div class="analise-resumo-label">RESUMO</div>';
+        htmlResumoSozinho += `<div class="analise-resumo-texto">${escapeHtml(data.resumo_caso)}</div>`;
+        htmlResumoSozinho += '</div>';
       }
-
-      // Disclaimer reforcado proximo aos cards — condicao 1 do parecer.
-      // Versao compacta: mantem AS 4 EXPRESSOES JURIDICAMENTE OBRIGATORIAS
-      // que o advogado fundamentou no parecer de 28/05/2026:
-      //   1. "feedback preliminar formativo"
-      //   2. "nao constituem avaliacao academica"
-      //   3. "sugestoes para estudo e reflexao"
-      //   4. "discuta com preceptor"
-      // NAO REMOVER nenhuma das 4 sem novo parecer juridico.
+      // No card de tela, so adiciona o resumo se nao for semResumo.
+      let htmlResumoPontos = "";
+      if (!semResumo) {
+        htmlResumoPontos += htmlResumoSozinho;
+      }
+      // Disclaimer + pontos numa variavel propria (htmlPontosSozinho),
+      // para o modal poder montar resumo + pontos sem depender do semResumo.
       const temFortes = Array.isArray(data.pontos_fortes) && data.pontos_fortes.length > 0;
       const temAprofundar = Array.isArray(data.pontos_a_aprofundar) && data.pontos_a_aprofundar.length > 0;
+      let htmlPontosSozinho = "";
       if (temFortes || temAprofundar) {
-        htmlResumoPontos += '<div class="disclaimer-pontos">';
-        htmlResumoPontos += '⚠️ <strong>Feedback preliminar formativo.</strong> ';
-        htmlResumoPontos += '<strong>Sugestões para estudo e reflexão</strong>, não constituem avaliação acadêmica. ';
-        htmlResumoPontos += 'Discuta com preceptor.';
-        htmlResumoPontos += '</div>';
+        htmlPontosSozinho += '<div class="disclaimer-pontos">';
+        htmlPontosSozinho += '⚠️ <strong>Feedback preliminar formativo.</strong> ';
+        htmlPontosSozinho += '<strong>Sugestões para estudo e reflexão</strong>, não constituem avaliação acadêmica. ';
+        htmlPontosSozinho += 'Discuta com preceptor.';
+        htmlPontosSozinho += '</div>';
 
-        htmlResumoPontos += '<div class="pontos-grid">';
+        htmlPontosSozinho += '<div class="pontos-grid">';
         if (temFortes) {
-          htmlResumoPontos += '<div class="pontos-card pontos-fortes">';
-          htmlResumoPontos += '<h4>✓ PONTOS FORTES</h4>';
-          htmlResumoPontos += '<ul>';
+          htmlPontosSozinho += '<div class="pontos-card pontos-fortes">';
+          htmlPontosSozinho += '<h4>✓ PONTOS FORTES</h4>';
+          htmlPontosSozinho += '<ul>';
           data.pontos_fortes.forEach((p) => {
-            htmlResumoPontos += `<li>${escapeHtml(String(p))}</li>`;
+            htmlPontosSozinho += `<li>${escapeHtml(String(p))}</li>`;
           });
-          htmlResumoPontos += '</ul>';
-          htmlResumoPontos += '</div>';
+          htmlPontosSozinho += '</ul>';
+          htmlPontosSozinho += '</div>';
         }
         if (temAprofundar) {
-          htmlResumoPontos += '<div class="pontos-card pontos-aprofundar">';
-          htmlResumoPontos += '<h4>⚠ PONTOS A APROFUNDAR</h4>';
-          htmlResumoPontos += '<ul>';
+          htmlPontosSozinho += '<div class="pontos-card pontos-aprofundar">';
+          htmlPontosSozinho += '<h4>⚠ PONTOS A APROFUNDAR</h4>';
+          htmlPontosSozinho += '<ul>';
           data.pontos_a_aprofundar.forEach((p) => {
-            htmlResumoPontos += `<li>${escapeHtml(String(p))}</li>`;
+            htmlPontosSozinho += `<li>${escapeHtml(String(p))}</li>`;
           });
-          htmlResumoPontos += '</ul>';
-          htmlResumoPontos += '</div>';
+          htmlPontosSozinho += '</ul>';
+          htmlPontosSozinho += '</div>';
         }
-        htmlResumoPontos += '</div>';
+        htmlPontosSozinho += '</div>';
       }
+      // No card de tela: resumo (se nao semResumo) + pontos.
+      htmlResumoPontos += htmlPontosSozinho;
       html += htmlResumoPontos;
 
       // ---- Discussao completa (vai para MODAL) ----
@@ -3476,7 +3478,8 @@
           window._discussoesFeedback[discussaoId] = {
             titulo: tituloDidatico,
             html: htmlDiscussao,
-            resumoPontos: htmlResumoPontos,
+            resumoSozinho: htmlResumoSozinho,
+            pontosSozinho: htmlPontosSozinho,
             data: data,
             contexto: contexto
           };
@@ -3872,7 +3875,7 @@
       window._discussaoModalAtual = discussaoId;
       document.getElementById("discussaoModalTitulo").textContent = reg.titulo || "Discussão";
       // Modal mostra TUDO: resumo + pontos fortes/aprofundar + discussao.
-      const corpo = (reg.resumoPontos || "") + (reg.html || "");
+      const corpo = (reg.resumoSozinho || "") + (reg.pontosSozinho || "") + (reg.html || "");
       document.getElementById("discussaoModalCorpo").innerHTML = corpo;
       document.getElementById("discussaoOverlay").style.display = "flex";
       document.body.style.overflow = "hidden";
