@@ -544,6 +544,60 @@
       user-select: none;
     }
 
+    /* [BUSCA] Campo de busca em Meus Casos */
+    .busca-casos-wrap {
+      position: relative;
+      display: flex;
+      align-items: center;
+      margin-bottom: 14px;
+    }
+    .busca-casos-icone {
+      position: absolute;
+      left: 14px;
+      font-size: 15px;
+      pointer-events: none;
+      opacity: 0.6;
+    }
+    .busca-casos-input {
+      width: 100%;
+      padding: 12px 40px 12px 40px;
+      border: 1px solid #d4cfc3;
+      border-radius: 10px;
+      font-size: 14px;
+      font-family: inherit;
+      color: #0f1f3a;
+      background: white;
+      transition: border-color 0.15s, box-shadow 0.15s;
+    }
+    .busca-casos-input:focus {
+      outline: none;
+      border-color: #b87333;
+      box-shadow: 0 0 0 3px rgba(184,115,51,0.12);
+    }
+    .busca-casos-input::placeholder { color: #94a3b8; }
+    .busca-casos-limpar {
+      position: absolute;
+      right: 10px;
+      background: #f5f3ee;
+      border: none;
+      border-radius: 50%;
+      width: 26px;
+      height: 26px;
+      font-size: 12px;
+      color: #64748b;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .busca-casos-limpar:hover { background: #e8e4dc; color: #0f1f3a; }
+    .busca-casos-contador {
+      font-size: 12.5px;
+      color: #64748b;
+      margin-bottom: 12px;
+      padding-left: 2px;
+    }
+
     /* [DISCUSSAO-MODAL] Botao que abre a discussao completa */
     .btn-ver-discussao {
       background: #0f1f3a;
@@ -1670,6 +1724,17 @@
 
       <!-- ===== MEUS CASOS ===== -->
       <div id="painel-meus" style="display:none;">
+        <!-- [BUSCA] Campo de busca nos casos salvos. Filtra client-side
+             em todos os campos (queixa, especialidade, resumo, hipoteses,
+             conduta, aprendizado). -->
+        <div class="busca-casos-wrap">
+          <span class="busca-casos-icone">🔍</span>
+          <input type="text" id="buscaCasos" class="busca-casos-input"
+                 placeholder="Buscar nos seus casos (queixa, especialidade, hipóteses…)"
+                 autocomplete="off" />
+          <button type="button" id="buscaCasosLimpar" class="busca-casos-limpar" style="display:none;" aria-label="Limpar busca">✕</button>
+        </div>
+        <div id="busca-casos-contador" class="busca-casos-contador" style="display:none;"></div>
         <div id="lista-casos"></div>
       </div>
 
@@ -2185,6 +2250,26 @@
       document.getElementById("discussaoBtnFechar").addEventListener("click", fecharModalDiscussao);
       document.getElementById("discussaoBtnOk").addEventListener("click", fecharModalDiscussao);
       document.getElementById("discussaoBtnPdf").addEventListener("click", exportarPDFModalDiscussao);
+
+      // [BUSCA] Listeners do campo de busca em Meus Casos.
+      const inputBusca = document.getElementById("buscaCasos");
+      const btnLimpar = document.getElementById("buscaCasosLimpar");
+      if (inputBusca) {
+        inputBusca.addEventListener("input", (e) => {
+          _buscaCasosTermo = e.target.value;
+          btnLimpar.style.display = _buscaCasosTermo ? "flex" : "none";
+          renderLista();
+        });
+      }
+      if (btnLimpar) {
+        btnLimpar.addEventListener("click", () => {
+          _buscaCasosTermo = "";
+          inputBusca.value = "";
+          btnLimpar.style.display = "none";
+          renderLista();
+          inputBusca.focus();
+        });
+      }
       document.getElementById("discussaoOverlay").addEventListener("click", (e) => {
         if (e.target.id === "discussaoOverlay") fecharModalDiscussao();
       });
@@ -4048,13 +4133,67 @@
       }, 5000);
     }
 
+    // [BUSCA] Termo de busca atual nos casos (filtro client-side).
+    let _buscaCasosTermo = "";
+
+    // [BUSCA] Normaliza texto: minusculo + sem acentos, para busca tolerante.
+    function normalizarBusca(s) {
+      return String(s || "")
+        .toLowerCase()
+        .normalize("NFD")
+        .replace(/[\u0300-\u036f]/g, "");
+    }
+
+    // [BUSCA] Verifica se um caso bate com o termo (procura em todos os campos).
+    function casoBateBusca(c, termoNorm) {
+      if (!termoNorm) return true;
+      const fb = (c.feedback && typeof c.feedback === "object") ? c.feedback : {};
+      const partes = [
+        c.titulo, c.queixa, c.especialidade, c.faixa,
+        c.hipoteses, c.conduta, c.aprendizado,
+        fb.resumo_caso
+      ];
+      // Inclui pontos fortes/aprofundar e temas se existirem.
+      if (Array.isArray(fb.pontos_fortes)) partes.push(fb.pontos_fortes.join(" "));
+      if (Array.isArray(fb.pontos_a_aprofundar)) partes.push(fb.pontos_a_aprofundar.join(" "));
+      if (Array.isArray(fb.temas_de_estudo)) partes.push(fb.temas_de_estudo.join(" "));
+      const alvo = normalizarBusca(partes.filter(Boolean).join(" \u0001 "));
+      // Todos os tokens do termo devem aparecer (busca AND).
+      return termoNorm.split(/\s+/).filter(Boolean).every(tok => alvo.includes(tok));
+    }
+
     function renderLista() {
       const cont = document.getElementById("lista-casos");
+      const contador = document.getElementById("busca-casos-contador");
       if (casos.length === 0) {
         cont.innerHTML = '<div class="empty">Você ainda não cadastrou casos. Comece pelo botão "Novo caso".</div>';
+        if (contador) contador.style.display = "none";
         return;
       }
-      cont.innerHTML = casos.map(c => {
+
+      // Filtra pela busca.
+      const termoNorm = normalizarBusca(_buscaCasosTermo).trim();
+      const casosFiltrados = termoNorm ? casos.filter(c => casoBateBusca(c, termoNorm)) : casos;
+
+      // Atualiza contador de resultados quando ha busca ativa.
+      if (contador) {
+        if (termoNorm) {
+          const n = casosFiltrados.length;
+          contador.textContent = n === 0
+            ? "Nenhum caso encontrado para esta busca."
+            : `${n} caso${n === 1 ? "" : "s"} encontrado${n === 1 ? "" : "s"}.`;
+          contador.style.display = "block";
+        } else {
+          contador.style.display = "none";
+        }
+      }
+
+      if (casosFiltrados.length === 0) {
+        cont.innerHTML = '<div class="empty">Nenhum caso corresponde à busca. Tente outras palavras.</div>';
+        return;
+      }
+
+      cont.innerHTML = casosFiltrados.map(c => {
         const temReflexao = !!(c.aprendizado && String(c.aprendizado).trim().length > 0);
         const badgeRefl = temReflexao
           ? `<span class="badge-refl ok">✓ Completo</span>`
