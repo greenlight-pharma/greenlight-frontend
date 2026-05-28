@@ -522,6 +522,14 @@
       border-bottom: 1px solid #f0ece4;
     }
     .analise-header-texto { flex: 1; min-width: 200px; }
+    /* [REORG-FEEDBACK] Em Meus Casos, header so tem os badges — alinha
+       a direita e remove borda inferior (o card do caso ja tem separadores). */
+    .analise-header-so-badges {
+      justify-content: flex-end;
+      margin-bottom: 12px;
+      padding-bottom: 0;
+      border-bottom: none;
+    }
     .analise-eyebrow {
       font-size: 11px;
       color: #94a3b8;
@@ -2961,17 +2969,17 @@
       html += '<div class="analise-card-principal">';
 
       // Header: eyebrow + titulo + pill destacada
-      // Em Meus Casos, o titulo da queixa ja aparece no cabecalho do card,
-      // entao escondemos para evitar duplicacao.
-      html += '<div class="analise-header">';
-      html += '<div class="analise-header-texto">';
-      html += '<div class="analise-eyebrow">ANÁLISE DIDÁTICA</div>';
-      if (!ehMeusCasos) {
-        html += `<div class="analise-titulo">${escapeHtml(tituloDidatico)}</div>`;
-      }
-      html += '</div>';
-      // Em Meus Casos, badge "Completo" / "Em aberto" aparece ao lado da pill.
+      // Em Meus Casos, o titulo da queixa ja aparece no cabecalho do card
+      // e o eyebrow "ANALISE DIDATICA" e redundante — escondemos ambos,
+      // deixando so os badges alinhados a direita.
       const badgeRefAdjacente = (contexto && contexto.badgeReflexao) ? contexto.badgeReflexao : "";
+      html += `<div class="analise-header${ehMeusCasos ? ' analise-header-so-badges' : ''}">`;
+      if (!ehMeusCasos) {
+        html += '<div class="analise-header-texto">';
+        html += '<div class="analise-eyebrow">ANÁLISE DIDÁTICA</div>';
+        html += `<div class="analise-titulo">${escapeHtml(tituloDidatico)}</div>`;
+        html += '</div>';
+      }
       html += '<div class="analise-header-badges">';
       html += badgeRefAdjacente;
       html += `<span class="alinh-destaque alinh-destaque-${alinhPrincipal}">${escapeHtml(labelDestaque)}</span>`;
