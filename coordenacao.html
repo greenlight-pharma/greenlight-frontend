@@ -536,7 +536,7 @@
         <div class="kpi-sub">Total acumulado</div>
       </div>
       <div class="kpi reflexao">
-        <div class="kpi-label">Casos com reflexão</div>
+        <div class="kpi-label">Casos completos</div>
         <div class="kpi-valor" id="kpi-reflexao">—</div>
         <div class="kpi-sub" id="kpi-reflexao-sub">% do total</div>
       </div>
@@ -590,6 +590,15 @@
           </tbody>
         </table>
       </div>
+    </div>
+
+    <!-- [CONTESTACOES] Contestações enviadas pelos alunos -->
+    <div class="card" id="card-contestacoes" style="display:none;">
+      <h3>🚩 Contestações pendentes <span id="contestacoes-count" style="font-size:13px; color:#94a3b8; font-weight:normal;"></span></h3>
+      <div style="font-size:12.5px; color:#64748b; margin-bottom:14px; line-height:1.5;">
+        Alunos podem contestar pontos do feedback IA e enviar para revisão da coordenação. Estes são casos pendentes de discussão.
+      </div>
+      <div id="lista-contestacoes"></div>
     </div>
 
     <!-- Heatmap -->
@@ -770,7 +779,7 @@
       const numRefl = (d.casosComReflexao !== undefined) ? d.casosComReflexao : 0;
       document.getElementById("kpi-reflexao").textContent = percRefl + "%";
       document.getElementById("kpi-reflexao-sub").textContent =
-        numRefl + " de " + d.casosRegistrados + " com reflexão";
+        numRefl + " de " + d.casosRegistrados + " completos";
       const dt = new Date(d.ultimaAtualizacao);
       document.getElementById("kpi-update").textContent = dt.toLocaleTimeString("pt-BR", {
         hour: "2-digit", minute: "2-digit"
@@ -972,6 +981,63 @@
       } catch (e) { console.log("[COORD] listas:", e.message); }
     }
 
+    // [CONTESTACOES] Carrega contestacoes enviadas pelos alunos com flag
+    // "notificar coordenacao". Renderiza no card #card-contestacoes.
+    async function carregarContestacoes() {
+      const card = document.getElementById("card-contestacoes");
+      const lista = document.getElementById("lista-contestacoes");
+      const count = document.getElementById("contestacoes-count");
+
+      try {
+        const d = await fetchAuth("/coordenacao/contestacoes?status=aberta,em_analise");
+        const cts = Array.isArray(d.contestacoes) ? d.contestacoes : [];
+
+        if (cts.length === 0) {
+          // Sem contestações: esconde o card para nao poluir o painel.
+          card.style.display = "none";
+          return;
+        }
+
+        const LABELS = {
+          discordo_ponto_aprofundar: "Discordo de 'ponto a aprofundar'",
+          ia_nao_considerou_detalhe: "IA não considerou detalhe",
+          discussao_com_erro_factual: "Erro factual na discussão",
+          outro_motivo: "Outro motivo"
+        };
+
+        let html = '';
+        cts.forEach(ct => {
+          const cat = LABELS[ct.motivoCategoria] || ct.motivoCategoria;
+          const data = new Date(ct.createdAt).toLocaleString("pt-BR", {
+            day: "2-digit", month: "2-digit", year: "numeric", hour: "2-digit", minute: "2-digit"
+          });
+          // Caso titulo
+          const casoTitulo = ct.casoTitulo || "—";
+          // Aluno
+          const alunoNome = ct.alunoNome || "—";
+          const alunoEmail = ct.alunoEmail || "";
+          const alunoTurma = ct.alunoTurma ? ` · turma ${ct.alunoTurma}` : "";
+
+          html += `
+            <div style="background:#fef9f0; border:1px solid #e8d5b7; border-left:3px solid #b87333; border-radius:8px; padding:14px 16px; margin-bottom:10px;">
+              <div style="display:flex; justify-content:space-between; flex-wrap:wrap; gap:8px; margin-bottom:6px;">
+                <div style="font-size:13px; color:#0f1f3a;"><strong>${escapeHtml(alunoNome)}</strong> ${escapeHtml(alunoEmail)}${escapeHtml(alunoTurma)}</div>
+                <div style="font-size:11px; color:#94a3b8;">${escapeHtml(data)}</div>
+              </div>
+              <div style="font-size:12px; color:#5a3a14; margin-bottom:6px;"><strong>Caso:</strong> ${escapeHtml(casoTitulo)} · <strong>Categoria:</strong> ${escapeHtml(cat)}</div>
+              <div style="font-size:13px; color:#3a1f08; line-height:1.55; padding:10px 12px; background:white; border-radius:6px; border:1px solid #e8d5b7;">${escapeHtml(ct.motivo)}</div>
+            </div>`;
+        });
+
+        lista.innerHTML = html;
+        count.textContent = ` (${cts.length})`;
+        card.style.display = "block";
+      } catch (e) {
+        console.log("[COORD] contestacoes:", e.message);
+        card.style.display = "none";
+      }
+    }
+
     async function exportarCSV() {
       // Download direto via link com Authorization header simulado.
       // Como fetch nao serve para download direto sem assembling, faz fetch
@@ -1099,6 +1165,7 @@
           carregarTabela(),
           carregarHeatmap(),
           carregarListas(),
+          carregarContestacoes(),
         ]);
       } catch (e) {
         console.log("[COORD] erro:", e.message);

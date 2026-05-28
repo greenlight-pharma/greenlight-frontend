@@ -376,6 +376,16 @@
     }
     .badge-refl.ok { background: #1a3a3a; color: #ffffff; }
     .badge-refl.pendente { background: #b87333; color: #ffffff; }
+    .badge-contest {
+      display: inline-block;
+      padding: 2px 8px;
+      border-radius: 12px;
+      font-size: 11px;
+      font-weight: 600;
+      background: #fef9f0;
+      color: #5a3a14;
+      border: 1px solid #e8d5b7;
+    }
     .empty {
       text-align: center;
       padding: 40px 20px;
@@ -479,6 +489,93 @@
     }
     .red-flags-box h4 { color: #991b1b; }
     .red-flags-box ul { color: #7f1d1d; }
+
+    /* ============ [PONTOS-FORTES-APROFUNDAR] Cards lado a lado ============ */
+    .disclaimer-pontos {
+      background: #fef9f0;
+      border: 1px solid #e8d5b7;
+      border-left: 4px solid #b87333;
+      border-radius: 8px;
+      padding: 11px 14px;
+      margin-bottom: 12px;
+      font-size: 12.5px;
+      line-height: 1.55;
+      color: #5a3a14;
+    }
+    .disclaimer-pontos strong { color: #3a1f08; }
+    .pontos-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 12px;
+      margin-bottom: 12px;
+    }
+    @media (min-width: 680px) {
+      .pontos-grid { grid-template-columns: 1fr 1fr; }
+    }
+    .pontos-card {
+      border-radius: 8px;
+      padding: 12px 14px;
+      border: 1px solid;
+    }
+    .pontos-card h4 {
+      margin: 0 0 8px;
+      font-size: 14px;
+      font-weight: 600;
+    }
+    .pontos-card ul {
+      margin: 0;
+      padding-left: 18px;
+      font-size: 13px;
+      line-height: 1.55;
+    }
+    .pontos-card ul li { margin-bottom: 4px; }
+    .pontos-card ul li:last-child { margin-bottom: 0; }
+    .pontos-fortes {
+      background: #f0f8f2;
+      border-color: #c2d9c8;
+    }
+    .pontos-fortes h4 { color: #1a3a3a; }
+    .pontos-fortes ul { color: #1f2937; }
+    .pontos-aprofundar {
+      background: #fef9f0;
+      border-color: #e8d5b7;
+    }
+    .pontos-aprofundar h4 { color: #5a3a14; }
+    .pontos-aprofundar ul { color: #3a2c14; }
+
+    /* ============ [CONTESTACAO] Radios do modal ============ */
+    .contestacao-radios {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+    .contestacao-radio {
+      display: flex;
+      gap: 8px;
+      align-items: flex-start;
+      padding: 8px 10px;
+      border: 1px solid #d4cfc3;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 13px;
+      color: #475569;
+      transition: all 0.15s;
+      font-weight: normal;
+      margin: 0;
+    }
+    .contestacao-radio:hover {
+      background: #faf8f3;
+      border-color: #b87333;
+    }
+    .contestacao-radio input[type="radio"] {
+      width: auto;
+      margin-top: 2px;
+      flex-shrink: 0;
+    }
+    .contestacao-radio input[type="radio"]:checked + span {
+      color: #0f1f3a;
+      font-weight: 500;
+    }
 
     .comparacao-box {
       background: #fef9f0;
@@ -1033,6 +1130,8 @@
         <p><strong>4. Sem decisão automatizada.</strong> Nenhuma decisão sobre sua aprovação, reprovação ou avaliação acadêmica é tomada pelo sistema. Essa prerrogativa é exclusiva da faculdade.</p>
 
         <p><strong>5. LGPD e direitos.</strong> Você pode solicitar acesso, correção ou eliminação dos seus dados a qualquer momento, escrevendo para <strong>dilson@vytalsaude.com.br</strong>.</p>
+
+        <p><strong>6. Natureza do feedback e direito de contestação.</strong> O feedback gerado pela inteligência artificial é <strong>preliminar e formativo</strong>. <strong>Não constitui avaliação acadêmica</strong>. As listas de "Pontos fortes" e "Pontos a aprofundar" são organização didática para orientar seu estudo, sujeitas à supervisão docente e à sua discussão com preceptor humano. Você tem direito a <strong>contestar</strong> qualquer item do feedback a qualquer momento, registrando sua discordância e, se desejar, notificando a coordenação pedagógica para revisão humana.</p>
       </div>
       <div class="termo-acoes">
         <button id="termoBtnAceitar" class="termo-btn-aceitar">Li e aceito</button>
@@ -1212,13 +1311,23 @@
 
           <!-- [PDF-EXPORT] Botao de exportar PDF na etapa 3, logo apos o gabarito.
                Aparece junto com o feedback (controlado pelo mesmo display do feedback-disclaimer). -->
-          <div id="pdf-export-etapa3" style="display:none; margin-top:10px;">
+          <div id="pdf-export-etapa3" style="display:none; margin-top:10px; display:flex; gap:8px; flex-wrap:wrap;">
             <button type="button" onclick="exportarPDFEtapa3()"
                     style="background:white; border:1px solid #d4cfc3; padding:8px 16px;
                            border-radius:7px; cursor:pointer; font-size:13px;
                            color:#334155; display:inline-flex; align-items:center; gap:6px;">
               📄 Exportar gabarito em PDF
             </button>
+            <button type="button" id="btnContestarFeedback" onclick="abrirModalContestacao()"
+                    style="background:white; border:1px solid #e8d5b7; padding:8px 16px;
+                           border-radius:7px; cursor:pointer; font-size:13px;
+                           color:#5a3a14; display:inline-flex; align-items:center; gap:6px;">
+              🚩 Contestar feedback / solicitar revisão
+            </button>
+          </div>
+
+          <div id="contestacaoHint" style="display:none; font-size:11.5px; color:#64748b; margin-top:6px; font-style:italic;">
+            Esse feedback é preliminar e formativo. Se você discordar de algum item, registre sua contestação — ela ficará no seu histórico e pode ser discutida com a coordenação.
           </div>
 
           <div id="feedback-error" style="display:none; background:#fee2e2; border:1px solid #fca5a5; color:#991b1b; border-radius:8px; padding:12px; margin:10px 0;"></div>
@@ -1277,6 +1386,68 @@
       Vytal Saúde Tecnologia · Módulo Acadêmico · Ferramenta educacional para registro e discussão de casos clínicos.
     </div>
 
+  </div>
+
+  <!-- [CONTESTACAO] Modal de contestação/revisão humana de feedback IA.
+       Aluno escolhe categoria + descreve motivo + opta por notificar coordenação.
+       Implementação do mecanismo autorizado pelo parecer juridico de 28/05/2026. -->
+  <div id="contestacaoOverlay" class="evento-overlay" style="display:none;">
+    <div class="evento-card" style="max-width:560px;">
+      <div class="evento-titulo">🚩 Contestar feedback / solicitar revisão</div>
+
+      <div style="font-size:12px; color:#64748b; line-height:1.5; margin-bottom:14px;">
+        Esse feedback é <strong>preliminar e formativo</strong>. Se você discordar de algum item, sua contestação ficará registrada no histórico. Você pode optar por notificar a coordenação pedagógica para revisão.
+      </div>
+
+      <div id="contestacaoErro" class="evento-erro" style="display:none;"></div>
+
+      <div class="evento-campo">
+        <label>Qual o motivo da contestação? *</label>
+        <div class="contestacao-radios">
+          <label class="contestacao-radio">
+            <input type="radio" name="contestacaoCategoria" value="discordo_ponto_aprofundar" />
+            <span>Discordo da classificação como "ponto a aprofundar"</span>
+          </label>
+          <label class="contestacao-radio">
+            <input type="radio" name="contestacaoCategoria" value="ia_nao_considerou_detalhe" />
+            <span>A IA não considerou um detalhe relevante do caso</span>
+          </label>
+          <label class="contestacao-radio">
+            <input type="radio" name="contestacaoCategoria" value="discussao_com_erro_factual" />
+            <span>A discussão didática contém erro factual</span>
+          </label>
+          <label class="contestacao-radio">
+            <input type="radio" name="contestacaoCategoria" value="outro_motivo" />
+            <span>Outro motivo</span>
+          </label>
+        </div>
+      </div>
+
+      <div class="evento-campo">
+        <label>Descreva seu motivo (mínimo 20 caracteres) *</label>
+        <textarea id="contestacaoMotivo" rows="4" maxlength="3000" placeholder="Explique o que motiva sua contestação. Quanto mais específico, melhor a discussão posterior." style="width:100%; padding:10px 12px; border:1px solid #d4cfc3; border-radius:7px; font-size:14px; font-family:inherit; resize:vertical;"></textarea>
+        <div style="font-size:11px; color:#94a3b8; margin-top:3px;"><span id="contestacaoCharCount">0</span> / 3000 caracteres</div>
+      </div>
+
+      <div class="evento-campo">
+        <label>Encaminhamento</label>
+        <div class="contestacao-radios">
+          <label class="contestacao-radio">
+            <input type="radio" name="contestacaoNotificar" value="false" checked />
+            <span>Apenas registrar no meu histórico (sem notificar coordenação)</span>
+          </label>
+          <label class="contestacao-radio">
+            <input type="radio" name="contestacaoNotificar" value="true" />
+            <span>Notificar coordenação pedagógica para revisão</span>
+          </label>
+        </div>
+      </div>
+
+      <div class="evento-acoes">
+        <button class="evento-btn-salvar" id="contestacaoBtnSalvar" type="button">Enviar contestação</button>
+        <button class="evento-btn-cancelar" id="contestacaoBtnCancelar" type="button">Cancelar</button>
+      </div>
+    </div>
   </div>
 
   <!-- [AGENDA] Modal de criar/editar evento -->
@@ -1505,21 +1676,38 @@
 
     async function carregarMeusCasos() {
       try {
-        const resp = await fetch(API_BASE + "/estudante/casos", {
-          headers: { "Authorization": "Bearer " + getToken() }
-        });
-        if (resp.status === 401) {
+        // [CONTESTACOES] Busca casos e contestacoes em paralelo. Cada caso
+        // recebe um campo _contestacoes com array das proprias contestacoes.
+        const [respCasos, respCont] = await Promise.all([
+          fetch(API_BASE + "/estudante/casos", {
+            headers: { "Authorization": "Bearer " + getToken() }
+          }),
+          fetch(API_BASE + "/estudante/contestacoes", {
+            headers: { "Authorization": "Bearer " + getToken() }
+          }).catch(() => null)
+        ]);
+
+        if (respCasos.status === 401) {
           clearAuth();
           showAuthOverlay();
           return;
         }
-        const data = await resp.json();
+        const data = await respCasos.json();
+
+        // Indexar contestacoes por casoId (silencioso se endpoint falhar).
+        let contestacoesPorCaso = {};
+        if (respCont && respCont.ok) {
+          try {
+            const dc = await respCont.json();
+            (dc.contestacoes || []).forEach(c => {
+              if (!contestacoesPorCaso[c.casoId]) contestacoesPorCaso[c.casoId] = [];
+              contestacoesPorCaso[c.casoId].push(c);
+            });
+          } catch (e) { /* silencioso */ }
+        }
+
         if (Array.isArray(data.casos)) {
-          // Adapta formato do backend (payload/feedback como JSONB) para
-          // o que renderLista espera (campos planos no objeto caso).
           casos = data.casos.map(c => {
-            // payload e feedback podem vir como string (JSONB serializado)
-            // ou como objeto, dependendo da config do driver. Defensivo:
             const p = typeof c.payload === "string" ? JSON.parse(c.payload) : (c.payload || {});
             const fb = typeof c.feedback === "string" ? JSON.parse(c.feedback) : (c.feedback || {});
             return {
@@ -1534,6 +1722,7 @@
               conduta: p.conduta || "",
               aprendizado: p.aprendizado || "",
               feedback: fb,
+              _contestacoes: contestacoesPorCaso[c.id] || [],
               _remoto: true
             };
           });
@@ -1644,6 +1833,16 @@
       document.getElementById("eventoBtnSalvar").addEventListener("click", salvarEvento);
       document.getElementById("eventoBtnCancelar").addEventListener("click", fecharModalEvento);
       document.getElementById("eventoBtnDeletar").addEventListener("click", deletarEvento);
+
+      // [CONTESTACAO] Listeners do modal
+      document.getElementById("contestacaoBtnSalvar").addEventListener("click", enviarContestacao);
+      document.getElementById("contestacaoBtnCancelar").addEventListener("click", fecharModalContestacao);
+      document.getElementById("contestacaoOverlay").addEventListener("click", (e) => {
+        if (e.target.id === "contestacaoOverlay") fecharModalContestacao();
+      });
+      document.getElementById("contestacaoMotivo").addEventListener("input", (e) => {
+        document.getElementById("contestacaoCharCount").textContent = e.target.value.length;
+      });
       document.getElementById("btnSemanaAnterior").addEventListener("click", () => {
         agendaSemanaOffset -= 1; renderAgenda();
       });
@@ -2437,7 +2636,8 @@
         fc.innerHTML = renderAnaliseDidatica(feedbackRecebido);
         fc.style.display = "block";
         document.getElementById("feedback-disclaimer").style.display = "block";
-        document.getElementById("pdf-export-etapa3").style.display = "block";
+        document.getElementById("pdf-export-etapa3").style.display = "flex";
+        document.getElementById("contestacaoHint").style.display = "block";
         document.getElementById("aprendizado-box").style.display = "block";
 
         // [SALVAMENTO-AUTOMATICO] Caso e persistido NO MOMENTO em que
@@ -2645,6 +2845,49 @@
         html += '</div>';
         html += `<div>${escapeHtml(data.comparacao_conduta_aluno)}</div>`;
         html += "</div>";
+      }
+
+      // 7.5 [PONTOS-FORTES-APROFUNDAR] Organizacao didatica do feedback
+      // formativo. Autorizado pelo parecer juridico de 28/05/2026 condicional
+      // a 3 requisitos: disclaimer reforcado (renderizado abaixo), vedacao
+      // contratual de uso isolado (cobrira contrato Inspirali) e mecanismo
+      // de contestacao (botao no final desta funcao).
+      //
+      // Renderiza apenas se a IA gerou os campos (compatibilidade com casos
+      // antigos salvos antes desta mudanca de schema).
+      const temFortes = Array.isArray(data.pontos_fortes) && data.pontos_fortes.length > 0;
+      const temAprofundar = Array.isArray(data.pontos_a_aprofundar) && data.pontos_a_aprofundar.length > 0;
+      if (temFortes || temAprofundar) {
+        // Disclaimer reforcado proximo aos cards — condicao 1 do parecer.
+        html += '<div class="disclaimer-pontos">';
+        html += '⚠️ <strong>Feedback preliminar formativo.</strong> As listas abaixo são organização didática do gabarito comentado e ';
+        html += '<strong>não constituem avaliação acadêmica</strong>. ';
+        html += 'Os itens listados são <strong>sugestões para estudo e reflexão</strong>, sujeitas à supervisão docente. ';
+        html += 'Sempre discuta com seu preceptor antes de aplicar qualquer conduta a paciente real.';
+        html += '</div>';
+
+        html += '<div class="pontos-grid">';
+        if (temFortes) {
+          html += '<div class="pontos-card pontos-fortes">';
+          html += '<h4>✓ Pontos fortes</h4>';
+          html += '<ul>';
+          data.pontos_fortes.forEach((p) => {
+            html += `<li>${escapeHtml(String(p))}</li>`;
+          });
+          html += '</ul>';
+          html += '</div>';
+        }
+        if (temAprofundar) {
+          html += '<div class="pontos-card pontos-aprofundar">';
+          html += '<h4>📚 Pontos a aprofundar</h4>';
+          html += '<ul>';
+          data.pontos_a_aprofundar.forEach((p) => {
+            html += `<li>${escapeHtml(String(p))}</li>`;
+          });
+          html += '</ul>';
+          html += '</div>';
+        }
+        html += '</div>';
       }
 
       // 8. Exames para discussão acadêmica
@@ -3052,6 +3295,110 @@
     // Fallback: se por algum motivo o salvamento automatico falhou
     // (casoEmConstrucao.casoId vazio), tenta criar o caso agora com
     // a reflexao ja embutida.
+    // ============================================================
+    // [CONTESTACAO] Modal e logica de contestacao de feedback IA.
+    // Mecanismo de revisao humana autorizado pelo parecer juridico de
+    // 28/05/2026 (condicao 3). Permite ao aluno discordar de itens do
+    // feedback, com opcao de notificar a coordenacao pedagogica.
+    // ============================================================
+
+    function abrirModalContestacao() {
+      // Reset do formulario
+      document.getElementsByName("contestacaoCategoria").forEach(r => r.checked = false);
+      document.getElementById("contestacaoMotivo").value = "";
+      document.getElementById("contestacaoCharCount").textContent = "0";
+      document.getElementById("contestacaoErro").style.display = "none";
+      // Default: nao notificar
+      document.querySelectorAll('input[name="contestacaoNotificar"]').forEach(r => {
+        r.checked = (r.value === "false");
+      });
+      document.getElementById("contestacaoOverlay").style.display = "flex";
+    }
+
+    function fecharModalContestacao() {
+      document.getElementById("contestacaoOverlay").style.display = "none";
+    }
+
+    function mostrarErroContestacao(msg) {
+      const el = document.getElementById("contestacaoErro");
+      el.textContent = msg;
+      el.style.display = "block";
+    }
+
+    async function enviarContestacao() {
+      const btn = document.getElementById("contestacaoBtnSalvar");
+      const errEl = document.getElementById("contestacaoErro");
+      btn.disabled = true;
+      errEl.style.display = "none";
+
+      try {
+        // Validacao categoria
+        const cat = document.querySelector('input[name="contestacaoCategoria"]:checked');
+        if (!cat) {
+          mostrarErroContestacao("Selecione o motivo da contestação.");
+          return;
+        }
+
+        // Validacao motivo
+        const motivo = document.getElementById("contestacaoMotivo").value.trim();
+        if (motivo.length < 20) {
+          mostrarErroContestacao("Descreva seu motivo com pelo menos 20 caracteres.");
+          return;
+        }
+        if (motivo.length > 3000) {
+          mostrarErroContestacao("Motivo muito longo (máx. 3000 caracteres).");
+          return;
+        }
+
+        // Notificacao
+        const notifEl = document.querySelector('input[name="contestacaoNotificar"]:checked');
+        const notificarCoord = notifEl && notifEl.value === "true";
+
+        // Caso ID — pega de casoEmConstrucao (etapa 3) ou de variavel em
+        // construcao se aluno estiver contestando em "Meus Casos".
+        const casoId = (casoEmConstrucao && casoEmConstrucao.casoId)
+          || window._contestacaoCasoIdContexto;
+
+        if (!casoId) {
+          mostrarErroContestacao("Não foi possível identificar o caso. Recarregue a página.");
+          return;
+        }
+
+        const resp = await fetch(API_BASE + "/estudante/contestacoes", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            "Authorization": "Bearer " + getToken()
+          },
+          body: JSON.stringify({
+            casoId, motivo, motivoCategoria: cat.value, notificarCoord
+          })
+        });
+        const data = await resp.json();
+        if (!resp.ok) {
+          mostrarErroContestacao(data.error || "Erro ao registrar contestação.");
+          return;
+        }
+
+        fecharModalContestacao();
+        mostrarToast(notificarCoord
+          ? "✅ Contestação registrada e enviada à coordenação"
+          : "✅ Contestação registrada no seu histórico");
+
+        // Limpa contexto temporario (caso veio de Meus Casos).
+        window._contestacaoCasoIdContexto = null;
+
+        // Se houver lista de Meus Casos aberta, recarrega para mostrar marcacao.
+        if (typeof carregarMeusCasos === "function") {
+          carregarMeusCasos().then(() => renderLista()).catch(() => {});
+        }
+      } catch (e) {
+        mostrarErroContestacao("Falha de conexão. Tente novamente.");
+      } finally {
+        btn.disabled = false;
+      }
+    }
+
     async function salvarReflexao() {
       const aprendizado = document.getElementById("f-aprendizado").value.trim();
       const msg = document.getElementById("msg");
@@ -3144,6 +3491,7 @@
       document.getElementById("feedback-container").style.display = "none";
       document.getElementById("feedback-disclaimer").style.display = "none";
       document.getElementById("pdf-export-etapa3").style.display = "none";
+      document.getElementById("contestacaoHint").style.display = "none";
       document.getElementById("aprendizado-box").style.display = "none";
       document.getElementById("msg").textContent = "";
       document.getElementById("msg-etapa2").textContent = "";
@@ -3202,10 +3550,22 @@
         const badgeRefl = temReflexao
           ? `<span class="badge-refl ok">✓ Completo</span>`
           : `<span class="badge-refl pendente">⏳ Em aberto</span>`;
+
+        // [CONTESTACAO] Badge de contestacao se houver pelo menos uma.
+        const numContestacoes = Array.isArray(c._contestacoes) ? c._contestacoes.length : 0;
+        const badgeContest = numContestacoes > 0
+          ? `<span class="badge-contest">🚩 ${numContestacoes} contestaç${numContestacoes === 1 ? 'ão' : 'ões'}</span>`
+          : "";
+
+        const temFeedback = c.feedback && typeof c.feedback === "object";
+
         return `
         <div class="caso-item">
           <div style="display:flex; justify-content:space-between; align-items:center; gap:10px; flex-wrap:wrap; margin-bottom:4px;">
-            <span class="badge">${escapeHtml(c.especialidade)}</span>
+            <div style="display:flex; gap:6px; align-items:center; flex-wrap:wrap;">
+              <span class="badge">${escapeHtml(c.especialidade)}</span>
+              ${badgeContest}
+            </div>
             ${badgeRefl}
           </div>
           <h3>${escapeHtml(c.titulo)}</h3>
@@ -3213,31 +3573,67 @@
           <div class="preview"><strong>Queixa:</strong> ${escapeHtml(c.queixa)}</div>
           ${c.hipoteses ? `<div class="preview" style="margin-top:6px;"><strong>Suas hipóteses:</strong> ${escapeHtml(c.hipoteses)}</div>` : ""}
           ${c.conduta ? `<div class="preview" style="margin-top:6px;"><strong>Sua conduta:</strong> ${escapeHtml(c.conduta)}</div>` : ""}
-          ${(c.feedback && typeof c.feedback === "object") ? `<details style="margin-top:8px;"><summary style="cursor:pointer; color:#0f1f3a; font-size:13px; font-weight:600;">Ver feedback educacional</summary><div style="margin-top:6px;">${renderAnaliseDidatica(c.feedback)}</div></details>` : ""}
+          ${temFeedback ? `<details style="margin-top:8px;"><summary style="cursor:pointer; color:#0f1f3a; font-size:13px; font-weight:600;">Ver feedback educacional</summary><div style="margin-top:6px;">${renderAnaliseDidatica(c.feedback)}</div></details>` : ""}
           ${temReflexao ? `<div class="preview" style="margin-top:6px;"><strong>Aprendizado:</strong> ${escapeHtml(c.aprendizado)}</div>` : ""}
-          ${!temReflexao ? `
-            <div style="margin-top:10px;">
+          ${numContestacoes > 0 ? renderContestacoesDoCaso(c._contestacoes) : ""}
+          <div style="margin-top:10px; display:flex; gap:8px; flex-wrap:wrap;">
+            ${!temReflexao ? `
               <button type="button" onclick="abrirReflexaoTardia(${c.id})"
                       style="background:#fef9f0; border:1px solid #e8d5b7; color:#5a3a14;
                              padding:7px 14px; border-radius:6px; cursor:pointer;
                              font-size:12px; font-weight:600;">
                 + Completar agora
               </button>
-            </div>
-          ` : ""}
-          ${(c.feedback && typeof c.feedback === "object") ? `
-            <div style="margin-top:10px;">
+            ` : ""}
+            ${temFeedback ? `
+              <button type="button" onclick="abrirContestacaoMeusCasos(${c.id})"
+                      style="background:white; border:1px solid #e8d5b7; color:#5a3a14;
+                             padding:6px 12px; border-radius:6px; cursor:pointer; font-size:12px;
+                             display:inline-flex; align-items:center; gap:5px;">
+                🚩 Contestar feedback
+              </button>
               <button type="button" onclick="exportarPDFCasoSalvo(${c.id})"
                       style="background:white; border:1px solid #d4cfc3; padding:6px 12px;
                              border-radius:6px; cursor:pointer; font-size:12px;
                              color:#334155; display:inline-flex; align-items:center; gap:5px;">
                 📄 Exportar gabarito em PDF
               </button>
-            </div>
-          ` : ""}
+            ` : ""}
+          </div>
         </div>
         `;
       }).join("");
+    }
+
+    // [CONTESTACAO] Render das contestacoes registradas em cada caso.
+    function renderContestacoesDoCaso(contestacoes) {
+      if (!Array.isArray(contestacoes) || contestacoes.length === 0) return "";
+      const LABELS = {
+        discordo_ponto_aprofundar: "Discordo de 'ponto a aprofundar'",
+        ia_nao_considerou_detalhe: "IA não considerou detalhe",
+        discussao_com_erro_factual: "Erro factual na discussão",
+        outro_motivo: "Outro motivo"
+      };
+      let html = '<details style="margin-top:8px;">';
+      html += `<summary style="cursor:pointer; color:#5a3a14; font-size:13px; font-weight:600;">🚩 Ver minhas contestações (${contestacoes.length})</summary>`;
+      html += '<div style="margin-top:8px; display:flex; flex-direction:column; gap:8px;">';
+      contestacoes.forEach(ct => {
+        const cat = LABELS[ct.motivoCategoria] || ct.motivoCategoria;
+        const data = formatDate(ct.createdAt);
+        const notif = ct.notificarCoord ? " · enviada à coordenação" : "";
+        html += `<div style="background:#fef9f0; border:1px solid #e8d5b7; border-left:3px solid #b87333; border-radius:6px; padding:10px 12px; font-size:12.5px;">`;
+        html += `<div style="font-size:11px; color:#94a3b8; margin-bottom:3px;">${escapeHtml(data)} · ${escapeHtml(cat)}${escapeHtml(notif)}</div>`;
+        html += `<div style="color:#3a1f08;">${escapeHtml(ct.motivo)}</div>`;
+        html += `</div>`;
+      });
+      html += '</div></details>';
+      return html;
+    }
+
+    // [CONTESTACAO] Abrir modal para contestar caso ja salvo (de Meus Casos).
+    function abrirContestacaoMeusCasos(casoId) {
+      window._contestacaoCasoIdContexto = casoId;
+      abrirModalContestacao();
     }
 
     // [REFLEXAO-TARDIA] Abre modal inline para aluno adicionar reflexao
