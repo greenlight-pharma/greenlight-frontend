@@ -522,6 +522,16 @@
       border-bottom: 1px solid #f0ece4;
     }
     .analise-header-texto { flex: 1; min-width: 200px; }
+    /* [REORG-FEEDBACK] Badges (Completo + alinhamento) no topo do card,
+       ao lado da queixa principal. */
+    .caso-badges-topo {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+      flex-shrink: 0;
+      justify-content: flex-end;
+    }
     /* [REORG-FEEDBACK] Em Meus Casos, header so tem os badges — alinha
        a direita e remove borda inferior (o card do caso ja tem separadores). */
     .analise-header-so-badges {
@@ -2969,22 +2979,25 @@
       html += '<div class="analise-card-principal">';
 
       // Header: eyebrow + titulo + pill destacada
-      // Em Meus Casos, o titulo da queixa ja aparece no cabecalho do card
-      // e o eyebrow "ANALISE DIDATICA" e redundante — escondemos ambos,
-      // deixando so os badges alinhados a direita.
-      const badgeRefAdjacente = (contexto && contexto.badgeReflexao) ? contexto.badgeReflexao : "";
-      html += `<div class="analise-header${ehMeusCasos ? ' analise-header-so-badges' : ''}">`;
-      if (!ehMeusCasos) {
-        html += '<div class="analise-header-texto">';
-        html += '<div class="analise-eyebrow">ANÁLISE DIDÁTICA</div>';
-        html += `<div class="analise-titulo">${escapeHtml(tituloDidatico)}</div>`;
+      // Em Meus Casos os badges sobem para o topo do card (ao lado da queixa),
+      // entao aqui escondemos todo o header (semBadges=true). Na etapa 3 e PDF,
+      // mostra eyebrow + titulo + pill normalmente.
+      const semBadges = !!(contexto && contexto.semBadges);
+      if (!semBadges) {
+        const badgeRefAdjacente = (contexto && contexto.badgeReflexao) ? contexto.badgeReflexao : "";
+        html += `<div class="analise-header${ehMeusCasos ? ' analise-header-so-badges' : ''}">`;
+        if (!ehMeusCasos) {
+          html += '<div class="analise-header-texto">';
+          html += '<div class="analise-eyebrow">ANÁLISE DIDÁTICA</div>';
+          html += `<div class="analise-titulo">${escapeHtml(tituloDidatico)}</div>`;
+          html += '</div>';
+        }
+        html += '<div class="analise-header-badges">';
+        html += badgeRefAdjacente;
+        html += `<span class="alinh-destaque alinh-destaque-${alinhPrincipal}">${escapeHtml(labelDestaque)}</span>`;
+        html += '</div>';
         html += '</div>';
       }
-      html += '<div class="analise-header-badges">';
-      html += badgeRefAdjacente;
-      html += `<span class="alinh-destaque alinh-destaque-${alinhPrincipal}">${escapeHtml(labelDestaque)}</span>`;
-      html += '</div>';
-      html += '</div>';
 
       // Resumo em destaque
       if (data.resumo_caso) {
@@ -3803,6 +3816,23 @@
 
         const temFeedback = c.feedback && typeof c.feedback === "object";
 
+        // Pill de alinhamento (pior dos dois) para mostrar ao lado da queixa,
+        // junto com o badge Completo/Em aberto, quando ha feedback.
+        let pillAlinhamento = "";
+        if (temFeedback) {
+          const alinhP = piorAlinhamento(
+            c.feedback.alinhamento_hipoteses_didatico,
+            c.feedback.alinhamento_conduta_didatico
+          );
+          const LABELS_D = {
+            alta_concordancia: "ALTA CONCORDÂNCIA",
+            concordancia_parcial: "CONCORDÂNCIA PARCIAL",
+            divergencia: "DIVERGÊNCIA",
+          };
+          const labelD = LABELS_D[alinhP] || "CONCORDÂNCIA PARCIAL";
+          pillAlinhamento = `<span class="alinh-destaque alinh-destaque-${alinhP}">${escapeHtml(labelD)}</span>`;
+        }
+
         return `
         <div class="caso-item caso-item-unificado">
           <div style="display:flex; justify-content:space-between; align-items:center; gap:10px; flex-wrap:wrap; margin-bottom:4px;">
@@ -3810,11 +3840,18 @@
               <span class="badge">${escapeHtml(c.especialidade)}</span>
               ${badgeContest}
             </div>
-            ${!temFeedback ? badgeRefl : ""}
           </div>
-          <h3>${escapeHtml(c.titulo)}</h3>
-          <div class="meta">${formatDate(c.data)} · ${escapeHtml(c.faixa)}</div>
-          ${temFeedback ? `<div style="margin-top:12px;">${renderAnaliseDidatica(c.feedback, { queixa: c.queixa, modo: "meus_casos", badgeReflexao: badgeRefl })}</div>` : ""}
+          <div style="display:flex; justify-content:space-between; align-items:flex-start; gap:12px; flex-wrap:wrap;">
+            <div style="flex:1; min-width:200px;">
+              <h3 style="margin:0;">${escapeHtml(c.titulo)}</h3>
+              <div class="meta">${formatDate(c.data)} · ${escapeHtml(c.faixa)}</div>
+            </div>
+            <div class="caso-badges-topo">
+              ${badgeRefl}
+              ${pillAlinhamento}
+            </div>
+          </div>
+          ${temFeedback ? `<div style="margin-top:12px;">${renderAnaliseDidatica(c.feedback, { queixa: c.queixa, modo: "meus_casos", semBadges: true })}</div>` : ""}
           ${temReflexao ? `<div class="preview" style="margin-top:6px;"><strong>Aprendizado:</strong> ${escapeHtml(c.aprendizado)}</div>` : ""}
           ${numContestacoes > 0 ? renderContestacoesDoCaso(c._contestacoes) : ""}
           <div style="margin-top:10px; display:flex; gap:8px; flex-wrap:wrap;">
