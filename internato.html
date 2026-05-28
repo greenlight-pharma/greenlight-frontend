@@ -2753,7 +2753,7 @@
         // Renderiza feedback estruturado.
         document.getElementById("feedback-loading").style.display = "none";
         const fc = document.getElementById("feedback-container");
-        fc.innerHTML = renderAnaliseDidatica(feedbackRecebido);
+        fc.innerHTML = renderAnaliseDidatica(feedbackRecebido, casoEmConstrucao);
         fc.style.display = "block";
         document.getElementById("feedback-disclaimer").style.display = "block";
         document.getElementById("pdf-export-etapa3").style.display = "flex";
@@ -2883,25 +2883,25 @@
       return va >= vb ? (a || b) : (b || a);
     }
 
-    // [REORG-FEEDBACK] Compoe titulo descritivo do feedback a partir da
-    // primeira hipotese (mais provavel didaticamente). Renderizado APENAS
-    // no frontend — nao mexe no schema da IA, nao gera campo novo.
-    // Decisao A2 da conversa de 29/05/2026 (sem mexer no prompt).
-    function composeTituloDidatico(data) {
-      if (!Array.isArray(data.hipoteses_para_discussao) || !data.hipoteses_para_discussao.length) {
-        return "Discussão didática do caso";
+    // [REORG-FEEDBACK] Compoe titulo do card de Analise Didatica.
+    // Usa a queixa principal digitada pelo aluno (mais descritivo e neutro
+    // que nome de hipotese). Recebe o objeto caso/contexto como segundo
+    // parametro. Fallback para "Discussao didatica do caso" se nao houver.
+    function composeTituloDidatico(data, contexto) {
+      // contexto pode ser: caso salvo (com .queixa) ou casoEmConstrucao
+      // (com .queixa) ou null/undefined (etapa 3 com escopo via variavel global).
+      if (contexto && typeof contexto.queixa === "string" && contexto.queixa.trim()) {
+        return contexto.queixa.trim();
       }
-      const primeiraHip = data.hipoteses_para_discussao[0];
-      if (!primeiraHip || !primeiraHip.hipotese) return "Discussão didática do caso";
-      const prob = (primeiraHip.probabilidade_didatica || "").toLowerCase();
-      let sufixo = "";
-      if (prob === "alta") sufixo = " — provável";
-      else if (prob === "moderada") sufixo = " — possível";
-      else if (prob === "baixa") sufixo = " — diferencial";
-      return primeiraHip.hipotese + sufixo;
+      // Fallback: tenta pegar do casoEmConstrucao (escopo global) na etapa 3.
+      if (typeof casoEmConstrucao !== "undefined" && casoEmConstrucao
+          && typeof casoEmConstrucao.queixa === "string" && casoEmConstrucao.queixa.trim()) {
+        return casoEmConstrucao.queixa.trim();
+      }
+      return "Discussão didática do caso";
     }
 
-    function renderAnaliseDidatica(data) {
+    function renderAnaliseDidatica(data, contexto) {
       if (!data || typeof data !== "object") {
         return '<div class="analysis-section"><em>Resposta inesperada.</em></div>';
       }
@@ -2929,7 +2929,7 @@
         divergencia: "DIVERGÊNCIA",
       };
       const labelDestaque = LABELS_DESTAQUE[alinhPrincipal] || "CONCORDÂNCIA PARCIAL";
-      const tituloDidatico = composeTituloDidatico(data);
+      const tituloDidatico = composeTituloDidatico(data, contexto);
 
       // ---- Card principal de Analise Didatica ----
       html += '<div class="analise-card-principal">';
@@ -3458,7 +3458,7 @@
         return;
       }
       const titulo = (casoEmConstrucao && casoEmConstrucao.titulo) || "Caso clinico";
-      const htmlGabarito = renderAnaliseDidatica(feedbackRecebido);
+      const htmlGabarito = renderAnaliseDidatica(feedbackRecebido, casoEmConstrucao);
       exportarFeedbackPDF(htmlGabarito, titulo);
     }
 
@@ -3474,7 +3474,7 @@
         alert("Este caso nao tem gabarito armazenado.");
         return;
       }
-      const htmlGabarito = renderAnaliseDidatica(caso.feedback);
+      const htmlGabarito = renderAnaliseDidatica(caso.feedback, caso);
       exportarFeedbackPDF(htmlGabarito, caso.titulo || "Caso clinico");
     }
 
@@ -3762,7 +3762,7 @@
           </div>
           <h3>${escapeHtml(c.titulo)}</h3>
           <div class="meta">${formatDate(c.data)} · ${escapeHtml(c.faixa)}</div>
-          ${temFeedback ? `<div style="margin-top:12px;">${renderAnaliseDidatica(c.feedback)}</div>` : ""}
+          ${temFeedback ? `<div style="margin-top:12px;">${renderAnaliseDidatica(c.feedback, c)}</div>` : ""}
           ${temReflexao ? `<div class="preview" style="margin-top:6px;"><strong>Aprendizado:</strong> ${escapeHtml(c.aprendizado)}</div>` : ""}
           ${numContestacoes > 0 ? renderContestacoesDoCaso(c._contestacoes) : ""}
           <div style="margin-top:10px; display:flex; gap:8px; flex-wrap:wrap;">
