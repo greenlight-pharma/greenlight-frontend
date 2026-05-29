@@ -8,7 +8,7 @@
     * { box-sizing: border-box; }
     body {
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
-      background: #f5f3ee;
+      background: #f8fafc;
       color: #1f2937;
       margin: 0;
       padding: 0;
@@ -28,7 +28,7 @@
     }
     .topbar .sub {
       font-size: 13px;
-      color: #d4a574;
+      color: #3a7fb5;
     }
     .topbar .user {
       margin-left: auto;
@@ -53,7 +53,7 @@
     .tabs {
       display: flex;
       gap: 4px;
-      border-bottom: 1px solid #e8e4dc;
+      border-bottom: 1px solid #e2e8f0;
       margin-bottom: 18px;
     }
     .tab {
@@ -69,7 +69,7 @@
     }
     .tab.active {
       color: #0f1f3a;
-      border-bottom-color: #b87333;
+      border-bottom-color: #1e6091;
     }
 
     /* ============ [STEPPER] Indicador de progresso 3 etapas ============ */
@@ -79,9 +79,9 @@
       gap: 8px;
       margin: 10px 0 18px;
       padding: 14px 16px;
-      background: #faf8f3;
+      background: #f1f5f9;
       border-radius: 10px;
-      border: 1px solid #e8e4dc;
+      border: 1px solid #e2e8f0;
       flex-wrap: wrap;
     }
     .stepper-item {
@@ -95,7 +95,7 @@
       width: 26px;
       height: 26px;
       border-radius: 50%;
-      background: #e8e4dc;
+      background: #e2e8f0;
       color: #94a3b8;
       display: flex;
       align-items: center;
@@ -195,9 +195,9 @@
       background: #fff;
     }
     input:focus, textarea:focus, select:focus {
-      outline: 2px solid #b87333;
+      outline: 2px solid #1e6091;
       outline-offset: -2px;
-      border-color: #b87333;
+      border-color: #1e6091;
     }
     textarea { resize: vertical; min-height: 80px; }
     .hint { font-size: 12px; color: #6b7280; margin-top: 4px; }
@@ -223,23 +223,23 @@
     button.primary:hover { background: #1e3a5f; }
 
     .alerta-lgpd {
-      background: #fef9f0;
-      border: 1px solid #e8d5b7;
-      border-left: 4px solid #b87333;
+      background: #eff6fb;
+      border: 1px solid #c8d8ea;
+      border-left: 4px solid #1e6091;
       border-radius: 8px;
       padding: 12px 14px;
       margin-bottom: 18px;
       font-size: 13px;
-      color: #5a3a14;
+      color: #1e3a5f;
       line-height: 1.55;
     }
-    .alerta-lgpd strong { color: #3a1f08; }
+    .alerta-lgpd strong { color: #0f172a; }
 
     /* ============ [DISCLAIMER-FAIXA] Faixa fina abaixo do topbar ============ */
     .disclaimer-faixa {
-      background: #fef9f0;
-      border-bottom: 1px solid #e8d5b7;
-      border-top: 1px solid #b87333;
+      background: #eff6fb;
+      border-bottom: 1px solid #c8d8ea;
+      border-top: 1px solid #1e6091;
     }
     .disclaimer-faixa-inner {
       max-width: 980px;
@@ -250,7 +250,7 @@
       align-items: center;
       gap: 8px 12px;
       font-size: 12px;
-      color: #5a3a14;
+      color: #1e3a5f;
       line-height: 1.4;
     }
     .disclaimer-item {
@@ -260,11 +260,11 @@
       gap: 4px;
     }
     .disclaimer-item strong {
-      color: #3a1f08;
+      color: #0f172a;
       font-weight: 600;
     }
     .disclaimer-sep {
-      color: #b87333;
+      color: #1e6091;
       font-weight: 600;
       opacity: 0.7;
     }
@@ -274,18 +274,18 @@
     .disclaimer-mais summary {
       cursor: pointer;
       font-size: 11px;
-      color: #b87333;
+      color: #1e6091;
       font-weight: 500;
       list-style: none;
       display: inline-block;
       user-select: none;
       padding: 0 4px;
       border-radius: 3px;
-      background: rgba(184, 115, 51, 0.08);
+      background: rgba(30, 96, 145, 0.08);
     }
     .disclaimer-mais summary::-webkit-details-marker { display: none; }
     .disclaimer-mais summary:hover {
-      background: rgba(184, 115, 51, 0.15);
+      background: rgba(30, 96, 145, 0.15);
       text-decoration: underline;
     }
     .disclaimer-mais-conteudo {
@@ -293,11 +293,11 @@
       margin-top: 8px;
       padding: 10px 12px;
       background: white;
-      border: 1px solid #e8d5b7;
-      border-left: 3px solid #b87333;
+      border: 1px solid #c8d8ea;
+      border-left: 3px solid #1e6091;
       border-radius: 4px;
       font-size: 12.5px;
-      color: #5a3a14;
+      color: #1e3a5f;
       line-height: 1.55;
     }
     @media (max-width: 640px) {
@@ -307,22 +307,22 @@
 
     /* ============ [DISCLAIMER] Estilo discreto com 'ver detalhes' ============ */
     .alerta-disclaimer {
-      background: #fef9f0;
-      border-left: 4px solid #b87333;
+      background: #eff6fb;
+      border-left: 4px solid #1e6091;
       border-radius: 4px;
       padding: 10px 14px;
       font-size: 13px;
-      color: #5a3a14;
+      color: #1e3a5f;
       line-height: 1.5;
     }
-    .alerta-disclaimer strong { color: #3a1f08; }
+    .alerta-disclaimer strong { color: #0f172a; }
     .alerta-mais {
       margin-top: 4px;
     }
     .alerta-mais summary {
       cursor: pointer;
       font-size: 11.5px;
-      color: #b87333;
+      color: #1e6091;
       font-weight: 500;
       list-style: none;
       display: inline-block;
@@ -344,12 +344,12 @@
     .alerta-mais-conteudo {
       margin-top: 8px;
       padding-top: 8px;
-      border-top: 1px dashed #e8d5b7;
+      border-top: 1px dashed #c8d8ea;
       font-size: 12.5px;
     }
 
     .caso-item {
-      border: 1px solid #e8e4dc;
+      border: 1px solid #e2e8f0;
       border-radius: 10px;
       padding: 14px 16px;
       margin-bottom: 10px;
@@ -374,17 +374,17 @@
       font-size: 11px;
       font-weight: 600;
     }
-    .badge-refl.ok { background: #1a3a3a; color: #ffffff; }
-    .badge-refl.pendente { background: #b87333; color: #ffffff; }
+    .badge-refl.ok { background: #0f1f3a; color: #ffffff; }
+    .badge-refl.pendente { background: #1e6091; color: #ffffff; }
     .badge-contest {
       display: inline-block;
       padding: 2px 8px;
       border-radius: 12px;
       font-size: 11px;
       font-weight: 600;
-      background: #fef9f0;
-      color: #5a3a14;
-      border: 1px solid #e8d5b7;
+      background: #eff6fb;
+      color: #1e3a5f;
+      border: 1px solid #c8d8ea;
     }
     .empty {
       text-align: center;
@@ -400,12 +400,12 @@
     }
     .stat {
       background: #fff;
-      border: 1px solid #e8e4dc;
+      border: 1px solid #e2e8f0;
       border-radius: 10px;
       padding: 14px;
       text-align: center;
     }
-    .stat .num { font-size: 24px; font-weight: 700; color: #b87333; }
+    .stat .num { font-size: 24px; font-weight: 700; color: #1e6091; }
     .stat .lbl { font-size: 12px; color: #64748b; margin-top: 2px; }
     .msg {
       padding: 10px 14px;
@@ -420,7 +420,7 @@
     /* ===== Análise didática (portado do medico.html, sem badges de probabilidade) ===== */
     .analysis-section {
       background: #fff;
-      border: 1px solid #e8e4dc;
+      border: 1px solid #e2e8f0;
       border-radius: 10px;
       padding: 14px 16px;
       margin-bottom: 12px;
@@ -442,11 +442,11 @@
     .analysis-section ul li:last-child { margin-bottom: 0; }
 
     .hypothesis-card {
-      border: 1px solid #e8e4dc;
+      border: 1px solid #e2e8f0;
       border-radius: 8px;
       padding: 11px 13px;
       margin-bottom: 8px;
-      background: #faf8f3;
+      background: #f1f5f9;
     }
     .hypothesis-card:last-child { margin-bottom: 0; }
     .hypothesis-card .hyp-header {
@@ -471,8 +471,8 @@
       flex-shrink: 0;
     }
     .hyp-prob-alta { background: #fee2e2; color: #991b1b; }
-    .hyp-prob-moderada { background: #fef9f0; color: #5a3a14; }
-    .hyp-prob-baixa { background: #fef9f0; color: #1e3a5f; }
+    .hyp-prob-moderada { background: #eff6fb; color: #1e3a5f; }
+    .hyp-prob-baixa { background: #eff6fb; color: #1e3a5f; }
     .hypothesis-card .hyp-just {
       color: #4b5563;
       font-size: 13.5px;
@@ -494,7 +494,7 @@
        Layout reorganizado autorizado pelo advogado em 29/05/2026. */
     .analise-card-principal {
       background: white;
-      border: 1px solid #e8e4dc;
+      border: 1px solid #e2e8f0;
       border-radius: 12px;
       padding: 22px 24px;
       margin-bottom: 14px;
@@ -519,7 +519,7 @@
       flex-wrap: wrap;
       margin-bottom: 18px;
       padding-bottom: 14px;
-      border-bottom: 1px solid #f0ece4;
+      border-bottom: 1px solid #e2e8f0;
     }
     .analise-header-texto { flex: 1; min-width: 200px; }
     /* [REORG-FEEDBACK] Badges (Completo + alinhamento) no topo do card,
@@ -540,7 +540,7 @@
       margin-top: 12px;
       font-size: 12.5px;
       font-weight: 600;
-      color: #b87333;
+      color: #1e6091;
       user-select: none;
     }
 
@@ -571,14 +571,14 @@
     }
     .busca-casos-input:focus {
       outline: none;
-      border-color: #b87333;
-      box-shadow: 0 0 0 3px rgba(184,115,51,0.12);
+      border-color: #1e6091;
+      box-shadow: 0 0 0 3px rgba(30,96,145,0.12);
     }
     .busca-casos-input::placeholder { color: #94a3b8; }
     .busca-casos-limpar {
       position: absolute;
       right: 10px;
-      background: #f5f3ee;
+      background: #f8fafc;
       border: none;
       border-radius: 50%;
       width: 26px;
@@ -590,7 +590,7 @@
       align-items: center;
       justify-content: center;
     }
-    .busca-casos-limpar:hover { background: #e8e4dc; color: #0f1f3a; }
+    .busca-casos-limpar:hover { background: #e2e8f0; color: #0f1f3a; }
     .busca-casos-contador {
       font-size: 12.5px;
       color: #64748b;
@@ -645,7 +645,7 @@
       align-items: flex-start;
       gap: 14px;
       padding: 20px 24px 16px;
-      border-bottom: 1px solid #f0ece4;
+      border-bottom: 1px solid #e2e8f0;
       flex-shrink: 0;
     }
     .discussao-modal-eyebrow {
@@ -663,7 +663,7 @@
       line-height: 1.3;
     }
     .discussao-modal-fechar {
-      background: #f5f3ee;
+      background: #f8fafc;
       border: none;
       border-radius: 8px;
       width: 34px;
@@ -674,7 +674,7 @@
       flex-shrink: 0;
       line-height: 1;
     }
-    .discussao-modal-fechar:hover { background: #e8e4dc; color: #0f1f3a; }
+    .discussao-modal-fechar:hover { background: #e2e8f0; color: #0f1f3a; }
     .discussao-modal-corpo {
       padding: 18px 24px;
       overflow-y: auto;
@@ -682,7 +682,7 @@
     }
     .discussao-modal-rodape {
       padding: 14px 24px;
-      border-top: 1px solid #f0ece4;
+      border-top: 1px solid #e2e8f0;
       display: flex;
       justify-content: space-between;
       gap: 10px;
@@ -702,7 +702,7 @@
       align-items: center;
       gap: 6px;
     }
-    .discussao-modal-btn-pdf:hover { background: #faf8f3; border-color: #b87333; }
+    .discussao-modal-btn-pdf:hover { background: #f1f5f9; border-color: #1e6091; }
     .discussao-modal-btn-ok {
       background: #0f1f3a;
       color: white;
@@ -718,7 +718,7 @@
 
     /* [DISCUSSAO-MODAL] Sub-secoes recolhiveis (camada 2) */
     .discussao-subsecao {
-      border: 1px solid #e8e4dc;
+      border: 1px solid #e2e8f0;
       border-radius: 8px;
       margin-bottom: 8px;
       overflow: hidden;
@@ -729,18 +729,18 @@
       font-size: 13.5px;
       font-weight: 600;
       color: #0f1f3a;
-      background: #faf8f3;
+      background: #f1f5f9;
       list-style: none;
       user-select: none;
     }
     .discussao-subsecao summary::-webkit-details-marker { display: none; }
     .discussao-subsecao summary::after {
       content: " ▸";
-      color: #b87333;
+      color: #1e6091;
       float: right;
     }
     .discussao-subsecao[open] summary::after { content: " ▾"; }
-    .discussao-subsecao[open] summary { border-bottom: 1px solid #e8e4dc; }
+    .discussao-subsecao[open] summary { border-bottom: 1px solid #e2e8f0; }
     .discussao-subsecao-conteudo { padding: 12px 14px; }
 
     @media (max-width: 640px) {
@@ -789,18 +789,18 @@
       margin-top: 4px;
     }
     .alinh-destaque-alta_concordancia {
-      background: #1a3a3a;
+      background: #0f1f3a;
       color: white;
     }
     .alinh-destaque-concordancia_parcial {
-      background: #fef9f0;
-      color: #5a3a14;
-      border: 1px solid #e8d5b7;
+      background: #eff6fb;
+      color: #1e3a5f;
+      border: 1px solid #c8d8ea;
     }
     .alinh-destaque-divergencia {
-      background: #fef9f0;
-      color: #b87333;
-      border: 1px solid #d4a574;
+      background: #eff6fb;
+      color: #1e6091;
+      border: 1px solid #3a7fb5;
     }
 
     .analise-resumo {
@@ -822,7 +822,7 @@
 
     .analise-discussao {
       margin-top: 6px;
-      border-top: 1px solid #f0ece4;
+      border-top: 1px solid #e2e8f0;
       padding-top: 12px;
     }
     .analise-discussao-summary {
@@ -837,7 +837,7 @@
     .analise-discussao-summary::-webkit-details-marker { display: none; }
     .analise-discussao-summary::before {
       content: "▸ ";
-      color: #b87333;
+      color: #1e6091;
       font-weight: 700;
     }
     .analise-discussao[open] .analise-discussao-summary::before { content: "▾ "; }
@@ -855,25 +855,25 @@
       margin: 0 0 8px;
     }
     .pontos-fortes {
-      background: #e8f3eb;
-      border-color: #b8d4c0;
+      background: #dfeaf5;
+      border-color: #c8d8ea;
     }
-    .pontos-fortes h4 { color: #1a3a3a; }
-    .pontos-aprofundar h4 { color: #b87333; }
+    .pontos-fortes h4 { color: #0f1f3a; }
+    .pontos-aprofundar h4 { color: #1e6091; }
 
     /* ============ [PONTOS-FORTES-APROFUNDAR] Cards lado a lado ============ */
     .disclaimer-pontos {
-      background: #fef9f0;
-      border: 1px solid #e8d5b7;
-      border-left: 3px solid #b87333;
+      background: #eff6fb;
+      border: 1px solid #c8d8ea;
+      border-left: 3px solid #1e6091;
       border-radius: 6px;
       padding: 7px 11px;
       margin-bottom: 10px;
       font-size: 11.5px;
       line-height: 1.45;
-      color: #5a3a14;
+      color: #1e3a5f;
     }
-    .disclaimer-pontos strong { color: #3a1f08; }
+    .disclaimer-pontos strong { color: #0f172a; }
     .pontos-grid {
       display: grid;
       grid-template-columns: 1fr;
@@ -902,17 +902,17 @@
     .pontos-card ul li { margin-bottom: 4px; }
     .pontos-card ul li:last-child { margin-bottom: 0; }
     .pontos-fortes {
-      background: #f0f8f2;
+      background: #eff6fb;
       border-color: #c2d9c8;
     }
-    .pontos-fortes h4 { color: #1a3a3a; }
+    .pontos-fortes h4 { color: #0f1f3a; }
     .pontos-fortes ul { color: #1f2937; }
     .pontos-aprofundar {
-      background: #fef9f0;
-      border-color: #e8d5b7;
+      background: #eff6fb;
+      border-color: #c8d8ea;
     }
-    .pontos-aprofundar h4 { color: #5a3a14; }
-    .pontos-aprofundar ul { color: #3a2c14; }
+    .pontos-aprofundar h4 { color: #1e3a5f; }
+    .pontos-aprofundar ul { color: #0f172a; }
 
     /* ============ [CONTESTACAO] Radios do modal ============ */
     .contestacao-radios {
@@ -935,8 +935,8 @@
       margin: 0;
     }
     .contestacao-radio:hover {
-      background: #faf8f3;
-      border-color: #b87333;
+      background: #f1f5f9;
+      border-color: #1e6091;
     }
     .contestacao-radio input[type="radio"] {
       width: auto;
@@ -949,8 +949,8 @@
     }
 
     .comparacao-box {
-      background: #fef9f0;
-      border: 1px solid #e8d5b7;
+      background: #eff6fb;
+      border: 1px solid #c8d8ea;
       border-radius: 8px;
       padding: 12px 14px;
       margin-bottom: 12px;
@@ -999,14 +999,14 @@
       border: 1px solid #a7e3b8;
     }
     .alinh-concordancia_parcial {
-      background: #fef9f0;
-      color: #5a3a14;
-      border: 1px solid #e8d5b7;
+      background: #eff6fb;
+      color: #1e3a5f;
+      border: 1px solid #c8d8ea;
     }
     .alinh-divergencia {
-      background: #fef9f0;
+      background: #eff6fb;
       color: #1e3a5f;
-      border: 1px solid #d4a574;
+      border: 1px solid #3a7fb5;
     }
 
     .exame-row { margin-bottom: 6px; }
@@ -1040,10 +1040,10 @@
       border: 1px solid #d4cfc3; border-radius: 7px;
       font-size: 14px; box-sizing: border-box;
     }
-    .auth-field input:focus { outline: 2px solid #b87333; border-color: #b87333; }
+    .auth-field input:focus { outline: 2px solid #1e6091; border-color: #1e6091; }
     .auth-btn {
       width: 100%; padding: 12px;
-      background: #b87333; color: white;
+      background: #1e6091; color: white;
       border: none; border-radius: 7px;
       font-size: 14px; font-weight: 600; cursor: pointer;
       margin-top: 6px;
@@ -1052,7 +1052,7 @@
     .auth-btn:disabled { background: #94a3b8; cursor: not-allowed; }
     .auth-toggle {
       text-align: center; margin-top: 14px;
-      font-size: 13px; color: #b87333; cursor: pointer;
+      font-size: 13px; color: #1e6091; cursor: pointer;
     }
     .auth-toggle:hover { text-decoration: underline; }
     .auth-error {
@@ -1072,9 +1072,9 @@
       padding: 5px 11px; border-radius: 6px;
       font-size: 12px; color: #334155; cursor: pointer;
     }
-    .topbar-btn:hover { background: #f5f3ee; }
+    .topbar-btn:hover { background: #f8fafc; }
     .topbar-btn-ghost { background: transparent; color: #94a3b8; }
-    .topbar-btn-ghost:hover { background: #f5f3ee; color: #334155; }
+    .topbar-btn-ghost:hover { background: #f8fafc; color: #334155; }
 
     /* ============ [AGENDA] Painel da agenda ============ */
     .agenda-topbar {
@@ -1115,7 +1115,7 @@
       font-weight: 500;
       cursor: pointer;
     }
-    .agenda-btn-toggle:hover { background: #faf8f3; }
+    .agenda-btn-toggle:hover { background: #f1f5f9; }
     .agenda-btn-toggle.ativo {
       background: #0f1f3a;
       color: white;
@@ -1131,7 +1131,7 @@
       cursor: pointer;
       min-width: 32px;
     }
-    .agenda-btn-nav:hover { background: #faf8f3; color: #0f1f3a; }
+    .agenda-btn-nav:hover { background: #f1f5f9; color: #0f1f3a; }
     .agenda-btn-novo {
       background: #0f1f3a;
       color: white;
@@ -1166,7 +1166,7 @@
       display: flex;
       gap: 14px;
       padding: 10px 0;
-      border-bottom: 1px solid #f5f3ee;
+      border-bottom: 1px solid #f8fafc;
     }
     .timeline-item:last-child { border-bottom: none; }
     .timeline-hora {
@@ -1190,18 +1190,18 @@
       border-radius: 6px;
       cursor: pointer;
       background: #eef3f9;
-      border-left: 3px solid #b87333;
+      border-left: 3px solid #1e6091;
       transition: transform 0.1s;
     }
     .timeline-evento:hover { transform: translateX(2px); }
     .timeline-evento.cor-amber {
-      background: #fef9f0;
-      border-left-color: #b87333;
+      background: #eff6fb;
+      border-left-color: #1e6091;
     }
-    .timeline-evento.cor-amber .timeline-sub { color: #5a3a14; }
+    .timeline-evento.cor-amber .timeline-sub { color: #1e3a5f; }
     .timeline-evento.cor-blue {
       background: #eef3f9;
-      border-left-color: #b87333;
+      border-left-color: #1e6091;
     }
     .timeline-evento.cor-blue .timeline-sub { color: #0f1f3a; }
     .timeline-evento.cor-green {
@@ -1320,12 +1320,12 @@
     }
     .evento-campo input:focus,
     .evento-campo select:focus {
-      outline: 2px solid #b87333; border-color: #b87333;
+      outline: 2px solid #1e6091; border-color: #1e6091;
     }
     .evento-acoes {
       display: flex; gap: 10px; flex-wrap: wrap;
       margin-top: 18px; padding-top: 14px;
-      border-top: 1px solid #e8e4dc;
+      border-top: 1px solid #e2e8f0;
     }
     .evento-btn-salvar {
       flex: 1; min-width: 120px;
@@ -1342,7 +1342,7 @@
       border: 1px solid #d4cfc3; border-radius: 7px;
       font-size: 13px; cursor: pointer;
     }
-    .evento-btn-cancelar:hover { background: #f5f3ee; }
+    .evento-btn-cancelar:hover { background: #f8fafc; }
     .evento-btn-deletar {
       padding: 11px 16px;
       background: transparent; color: #991b1b;
@@ -1378,7 +1378,7 @@
     .termo-acoes {
       display: flex; gap: 10px; flex-wrap: wrap;
       margin-top: 18px; padding-top: 14px;
-      border-top: 1px solid #e8e4dc;
+      border-top: 1px solid #e2e8f0;
     }
     .termo-btn-aceitar {
       flex: 1; min-width: 140px;
@@ -1395,7 +1395,7 @@
       border: 1px solid #d4cfc3; border-radius: 7px;
       font-size: 13px; cursor: pointer;
     }
-    .termo-btn-recusar:hover { background: #f5f3ee; }
+    .termo-btn-recusar:hover { background: #f8fafc; }
   </style>
 </head>
 <body>
@@ -1632,7 +1632,7 @@
 
         <!-- ===== ETAPA 2: RESPOSTA DO ALUNO ===== -->
         <div id="etapa-2" style="display:none;">
-          <div style="background:#fef9f0; border:1px solid #e8d5b7; border-radius:8px; padding:14px 16px; margin:10px 0 18px; color:#0f1f3a; font-size:13px;">
+          <div style="background:#eff6fb; border:1px solid #c8d8ea; border-radius:8px; padding:14px 16px; margin:10px 0 18px; color:#0f1f3a; font-size:13px;">
             🧠 <strong>Sua vez de pensar antes de receber apoio.</strong> Liste as hipóteses diagnósticas e a conduta que VOCÊ proporia. A IA só avalia sua resposta DEPOIS — não vai te dar a resposta antes. Isso é o que torna o aprendizado real.
           </div>
 
@@ -1674,7 +1674,7 @@
             @keyframes progmove { 0% { left: -30%; } 100% { left: 100%; } }
           </style>
 
-          <div id="feedback-disclaimer" style="display:none; background:#fef9f0; border:1px solid #e8d5b7; border-left:4px solid #b87333; border-radius:8px; padding:12px 14px; margin-bottom:14px; color:#5a3a14; font-size:12.5px; line-height:1.55;">
+          <div id="feedback-disclaimer" style="display:none; background:#eff6fb; border:1px solid #c8d8ea; border-left:4px solid #1e6091; border-radius:8px; padding:12px 14px; margin-bottom:14px; color:#1e3a5f; font-size:12.5px; line-height:1.55;">
             ⚠️ <strong>Feedback preliminar formativo.</strong> Esta análise é <strong>didática</strong>, em formato de gabarito comentado de caso clínico, sujeita à supervisão docente. <strong>Não constitui avaliação acadêmica. Não diagnostica, não prescreve, não orienta atendimento real.</strong> Itens listados são <strong>sugestões para estudo e reflexão</strong>. Sempre discuta com seu preceptor antes de aplicar qualquer conduta a paciente real.
           </div>
 
@@ -1690,9 +1690,9 @@
               📄 Exportar gabarito em PDF
             </button>
             <button type="button" id="btnContestarFeedback" onclick="abrirModalContestacao()"
-                    style="background:white; border:1px solid #e8d5b7; padding:8px 16px;
+                    style="background:white; border:1px solid #c8d8ea; padding:8px 16px;
                            border-radius:7px; cursor:pointer; font-size:13px;
-                           color:#5a3a14; display:inline-flex; align-items:center; gap:6px;">
+                           color:#1e3a5f; display:inline-flex; align-items:center; gap:6px;">
               🚩 Contestar feedback / solicitar revisão
             </button>
           </div>
@@ -2536,13 +2536,13 @@
           eventosDoDia.forEach(e => {
             const cor = agendaCorParaEvento(e);
             const corStyle = {
-              "cor-blue": "background:#eef3f9; border-left-color:#b87333;",
-              "cor-amber": "background:#fef9f0; border-left-color:#b87333;",
+              "cor-blue": "background:#eef3f9; border-left-color:#1e6091;",
+              "cor-amber": "background:#eff6fb; border-left-color:#1e6091;",
               "cor-green": "background:#d1fae5; border-left-color:#059669;"
             }[cor];
             const corHora = {
               "cor-blue": "color:#0f1f3a;",
-              "cor-amber": "color:#5a3a14;",
+              "cor-amber": "color:#1e3a5f;",
               "cor-green": "color:#065f46;"
             }[cor];
             const horaTxt = e.hora ? e.hora.substring(0, 5) : "Sem hora";
@@ -3467,7 +3467,7 @@
             .replace(/<\/details>/g, '</div>')
             .replace(/<summary>/g, '<div style="font-weight:600; padding:8px 0; color:#0f1f3a;">')
             .replace(/<\/summary>/g, '</div>');
-          html += '<div style="margin-top:14px; border-top:1px solid #f0ece4; padding-top:14px;">';
+          html += '<div style="margin-top:14px; border-top:1px solid #e2e8f0; padding-top:14px;">';
           html += '<div style="font-size:11px; color:#94a3b8; font-weight:600; letter-spacing:0.6px; text-transform:uppercase; margin-bottom:10px;">DISCUSSÃO COMPLETA</div>';
           html += htmlPdf;
           html += '</div>';
@@ -3483,7 +3483,7 @@
             data: data,
             contexto: contexto
           };
-          html += `<div style="margin-top:6px; border-top:1px solid #f0ece4; padding-top:12px;">`;
+          html += `<div style="margin-top:6px; border-top:1px solid #e2e8f0; padding-top:12px;">`;
           html += `<button type="button" class="btn-ver-discussao" onclick="abrirModalDiscussao('${discussaoId}')">`;
           html += `📖 Ver discussão completa, referências e pontos para estudo`;
           html += `</button>`;
@@ -3594,7 +3594,7 @@
     font-size: 10pt;
     margin: 8px 0 3px 0;
     padding-bottom: 2px;
-    border-bottom: 1px solid #e8e4dc;
+    border-bottom: 1px solid #e2e8f0;
     page-break-after: avoid;
   }
   .pdf-content ul, .pdf-content ol {
@@ -3611,7 +3611,7 @@
   .pdf-disclaimer {
     margin-top: 10px;
     padding-top: 5px;
-    border-top: 1px solid #e8e4dc;
+    border-top: 1px solid #e2e8f0;
     font-size: 7.5pt;
     color: #6b7280;
     font-style: italic;
@@ -4252,13 +4252,13 @@
           conteudoExpandido += `<div style="margin-top:10px; display:flex; gap:8px; flex-wrap:wrap;" data-no-toggle="1">`;
           if (!temReflexao) {
             conteudoExpandido += `<button type="button" onclick="event.stopPropagation(); abrirReflexaoTardia(${c.id})"
-                      style="background:#fef9f0; border:1px solid #e8d5b7; color:#5a3a14;
+                      style="background:#eff6fb; border:1px solid #c8d8ea; color:#1e3a5f;
                              padding:7px 14px; border-radius:6px; cursor:pointer;
                              font-size:12px; font-weight:600;">+ Completar agora</button>`;
           }
           if (temFeedback) {
             conteudoExpandido += `<button type="button" onclick="event.stopPropagation(); abrirContestacaoMeusCasos(${c.id})"
-                      style="background:white; border:1px solid #e8d5b7; color:#5a3a14;
+                      style="background:white; border:1px solid #c8d8ea; color:#1e3a5f;
                              padding:6px 12px; border-radius:6px; cursor:pointer; font-size:12px;
                              display:inline-flex; align-items:center; gap:5px;">🚩 Contestar feedback</button>`;
             conteudoExpandido += `<button type="button" onclick="event.stopPropagation(); exportarPDFCasoSalvo(${c.id})"
@@ -4332,15 +4332,15 @@
         outro_motivo: "Outro motivo"
       };
       let html = '<details style="margin-top:8px;">';
-      html += `<summary style="cursor:pointer; color:#5a3a14; font-size:13px; font-weight:600;">🚩 Ver minhas contestações (${contestacoes.length})</summary>`;
+      html += `<summary style="cursor:pointer; color:#1e3a5f; font-size:13px; font-weight:600;">🚩 Ver minhas contestações (${contestacoes.length})</summary>`;
       html += '<div style="margin-top:8px; display:flex; flex-direction:column; gap:8px;">';
       contestacoes.forEach(ct => {
         const cat = LABELS[ct.motivoCategoria] || ct.motivoCategoria;
         const data = formatDate(ct.createdAt);
         const notif = ct.notificarCoord ? " · enviada à coordenação" : "";
-        html += `<div style="background:#fef9f0; border:1px solid #e8d5b7; border-left:3px solid #b87333; border-radius:6px; padding:10px 12px; font-size:12.5px;">`;
+        html += `<div style="background:#eff6fb; border:1px solid #c8d8ea; border-left:3px solid #1e6091; border-radius:6px; padding:10px 12px; font-size:12.5px;">`;
         html += `<div style="font-size:11px; color:#94a3b8; margin-bottom:3px;">${escapeHtml(data)} · ${escapeHtml(cat)}${escapeHtml(notif)}</div>`;
-        html += `<div style="color:#3a1f08;">${escapeHtml(ct.motivo)}</div>`;
+        html += `<div style="color:#0f172a;">${escapeHtml(ct.motivo)}</div>`;
         html += `</div>`;
       });
       html += '</div></details>';
