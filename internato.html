@@ -1559,7 +1559,7 @@
           <div class="stepper-divisor"></div>
           <div class="stepper-item" id="step-3">
             <div class="stepper-num">3</div>
-            <div class="stepper-label">Feedback IA</div>
+            <div class="stepper-label">Feedback</div>
           </div>
         </div>
 
@@ -1633,7 +1633,7 @@
           <textarea id="f-antecedentes-familiares" placeholder="Doenças relevantes na família, idade e causa de óbito de pais/irmãos quando pertinente."></textarea>
 
           <!-- 9. Exame fisico -->
-          <label>Exame físico</label>
+          <label>Exame físico e complementares</label>
           <textarea id="f-exame-fisico" placeholder="Exame geral e segmentar dirigido. Resultados de exames complementares já realizados, se houver."></textarea>
 
           <button class="primary" onclick="avancarEtapa2()">Avançar para sua avaliação →</button>
@@ -3094,9 +3094,9 @@
         msg.textContent = "Liste suas hipóteses com pelo menos uma palavra (mín. 10 caracteres). A IA precisa do seu raciocínio para avaliá-lo.";
         return;
       }
-      if (!conduta || conduta.length < 20) {
+      if (!conduta || conduta.length < 10) {
         msg.className = "msg error";
-        msg.textContent = "Descreva sua conduta proposta com algum detalhamento (mín. 20 caracteres).";
+        msg.textContent = "Descreva sua conduta proposta com algum detalhamento (mín. 10 caracteres).";
         return;
       }
 
