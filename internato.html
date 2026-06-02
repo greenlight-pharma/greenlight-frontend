@@ -1571,6 +1571,15 @@
           </h2>
           <div style="color:#64748b; font-size:13px; margin-bottom:10px;">Os achados clínicos do caso que você viu, sem dados identificáveis.</div>
 
+          <!-- [RASCUNHO-BANNER] Aparece se rascunho foi restaurado.
+               Mostra quando foi salvo + botao Descartar. -->
+          <div id="rascunho-banner" style="display:none; margin:10px 0 14px; padding:10px 14px; background:#eff6fb; border:1px solid #c8d8ea; border-radius:8px; font-size:13px; color:#0f1f3a;">
+            <div style="display:flex; align-items:center; justify-content:space-between; gap:12px; flex-wrap:wrap;">
+              <span>📝 Rascunho restaurado (<span id="rascunho-banner-quando">há pouco</span>). Continue de onde parou.</span>
+              <button type="button" id="btn-rascunho-descartar" style="background:transparent; color:#1e6091; border:1px solid #1e6091; padding:4px 12px; border-radius:6px; font-size:12px; font-weight:600; cursor:pointer;">Descartar e começar limpo</button>
+            </div>
+          </div>
+
           <!-- 1. Especialidade / Setor -->
           <label>Especialidade / Setor *</label>
           <select id="f-especialidade">
@@ -2052,9 +2061,10 @@
         await carregarMeusCasos();
         atualizarStats();
         renderLista();
-        // [RASCUNHO] Restaura silenciosamente o que aluno tinha digitado
-        // antes de fechar a aba / atualizar / perder conexao.
-        rascunhoRestaurar();
+        // [RASCUNHO] Restaura o que aluno tinha digitado antes de
+        // fechar a aba / atualizar / perder conexao. Banner discreto
+        // se algo foi restaurado, com opcao de descartar.
+        rascunhoRestaurarComBanner();
         rascunhoIniciarAutoSave();
       } catch (e) {
         mostraErroAuth("Falha de conexao. Tente novamente.");
@@ -2188,7 +2198,7 @@
           }
           await carregarMeusCasos();
           // [RASCUNHO] Restaura + inicia auto-save (mesmo que tentarAuth).
-          rascunhoRestaurar();
+          rascunhoRestaurarComBanner();
           rascunhoIniciarAutoSave();
           return true;
         }
@@ -2756,20 +2766,33 @@
 
     function rascunhoLimpar() {
       try { localStorage.removeItem(rascunhoChave()); } catch (e) {}
+      // Esconde o banner de "rascunho restaurado", caso ainda visivel.
+      const banner = document.getElementById("rascunho-banner");
+      if (banner) banner.style.display = "none";
     }
 
     // Restaura silenciosamente. Chamado APOS validarSessao + APOS
     // hideAuthOverlay (ou seja, quando aluno ja esta logado e dentro
     // do app). Nao mostra aviso — apenas preenche os campos.
+    // TTL: rascunhos com mais de 24h sao descartados automaticamente.
+    // Cobre o caso "aluno digitou um caso, abandonou, voltou semana depois".
+    const RASCUNHO_TTL_MS = 24 * 60 * 60 * 1000;
+
     function rascunhoRestaurar() {
       try {
         const raw = localStorage.getItem(rascunhoChave());
-        if (!raw) return;
+        if (!raw) return null;
         const r = JSON.parse(raw);
         if (!r || r.v !== RASCUNHO_VERSAO) {
           // Versao incompativel — limpa rascunho antigo.
           rascunhoLimpar();
-          return;
+          return null;
+        }
+        // [TTL] Descarta rascunho antigo demais. Usa a flag ts salva
+        // em rascunhoColetar (Date.now no momento do save).
+        if (r.ts && (Date.now() - r.ts) > RASCUNHO_TTL_MS) {
+          rascunhoLimpar();
+          return null;
         }
         const set = (id, valor) => {
           const el = document.getElementById(id);
@@ -2794,8 +2817,11 @@
         set("f-exame-fisico", r.exameFisico);
         set("f-hipoteses", r.hipoteses);
         set("f-conduta", r.conduta);
+        // Retorna o timestamp para a UI poder mostrar banner.
+        return r.ts || null;
       } catch (e) {
         console.log("[RASCUNHO-RESTAURAR-ERRO]", e.message);
+        return null;
       }
     }
 
@@ -2806,6 +2832,66 @@
     function rascunhoPararAutoSave() {
       if (_rascunhoTimer) { clearInterval(_rascunhoTimer); _rascunhoTimer = null; }
     }
+
+    // [RASCUNHO-BANNER] Helper: restaura rascunho e mostra banner
+    // discreto se algo foi restaurado, com tempo relativo + botao
+    // Descartar. Substitui chamadas isoladas a rascunhoRestaurar()
+    // em todos os pontos onde a UI pode estar visivel ao aluno.
+    function rascunhoRestaurarComBanner() {
+      const ts = rascunhoRestaurar();
+      const banner = document.getElementById("rascunho-banner");
+      if (!banner) return;
+      if (!ts) {
+        banner.style.display = "none";
+        return;
+      }
+      // Calcula tempo relativo humano-legivel.
+      const qd = document.getElementById("rascunho-banner-quando");
+      if (qd) qd.textContent = rascunhoTempoRelativo(ts);
+      banner.style.display = "block";
+    }
+
+    function rascunhoTempoRelativo(ts) {
+      const diff = Date.now() - ts;
+      const min = Math.floor(diff / 60000);
+      if (min < 1) return "há instantes";
+      if (min < 60) return "há " + min + " min";
+      const h = Math.floor(min / 60);
+      if (h < 24) return "há " + h + "h";
+      return "há mais de 1 dia";
+    }
+
+    // [RASCUNHO-DESCARTAR] Limpa o rascunho do localStorage E zera os
+    // campos visiveis na tela. Esconde o banner. Mostra confirmacao
+    // antes de fato apagar, porque a acao e irreversivel.
+    function rascunhoDescartar() {
+      const conf = confirm("Tem certeza? Isso vai apagar o rascunho atual e limpar todos os campos.");
+      if (!conf) return;
+      rascunhoLimpar();
+      // Zera os campos da tela.
+      const idsLimpar = [
+        "f-especialidade", "f-faixa", "f-queixa", "f-sinais-vitais",
+        "f-hma", "f-antecedentes-pessoais", "f-habitos",
+        "f-antecedentes-familiares", "f-exame-fisico",
+        "f-hipoteses", "f-conduta"
+      ];
+      idsLimpar.forEach(id => {
+        const el = document.getElementById(id);
+        if (el) el.value = "";
+      });
+      // Reseta selecao visual de faixa etaria.
+      document.querySelectorAll(".faixa-btn").forEach(b => b.classList.remove("ativo"));
+      // Esconde banner.
+      const banner = document.getElementById("rascunho-banner");
+      if (banner) banner.style.display = "none";
+    }
+
+    // Liga o listener do botao Descartar do banner quando DOM monta.
+    // Como o botao esta dentro do HTML estatico, basta amarrar uma vez.
+    document.addEventListener("DOMContentLoaded", function() {
+      const btn = document.getElementById("btn-rascunho-descartar");
+      if (btn) btn.addEventListener("click", rascunhoDescartar);
+    });
 
     // ----- LOADING DINÂMICO -----
     // O modelo leva tempo variável para gerar o JSON. Para evitar a
