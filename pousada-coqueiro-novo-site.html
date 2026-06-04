@@ -46,7 +46,11 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:cen
 .burger span{display:block;height:2px;background:var(--verde);margin:6px 0;transition:.3s}
 
 /* ---------- HERO ---------- */
-header{min-height:100svh;display:flex;flex-direction:column;justify-content:flex-end;position:relative;background:linear-gradient(180deg,rgba(15,51,43,.25) 0%,rgba(15,51,43,.05) 40%,rgba(15,51,43,.75) 100%),url('https://www.pousadacoqueiro.com.br/images/slide.jpg') center/cover no-repeat;}
+/* ===== IMAGEM DE FUNDO DO HERO =====
+   Troque a URL abaixo pela foto do MAR de Tarituba.
+   As fotos do site antigo estão em /images/slide.jpg e slide1.jpg até slide6.jpg.
+   Se tiver uma foto nova, suba no servidor como /images/mar-tarituba.jpg e aponte aqui. */
+header{min-height:100svh;display:flex;flex-direction:column;justify-content:flex-end;position:relative;background:linear-gradient(180deg,rgba(15,51,43,.25) 0%,rgba(15,51,43,.05) 40%,rgba(15,51,43,.75) 100%),url('https://www.pousadacoqueiro.com.br/images/slide2.jpg') center/cover no-repeat;}
 .hero-inner{padding:0 6vw 11vh;color:var(--branco);max-width:1200px}
 .hero-tag{display:inline-flex;align-items:center;gap:.5rem;font-size:.82rem;letter-spacing:.22em;text-transform:uppercase;font-weight:700;background:rgba(255,253,248,.14);border:1px solid rgba(255,253,248,.35);padding:.45rem 1rem;border-radius:99px;backdrop-filter:blur(6px);margin-bottom:1.4rem;animation:rise .9s .1s both}
 header h1{color:var(--branco);font-size:clamp(2.6rem,7vw,5.2rem);max-width:14ch;animation:rise .9s .25s both}
