@@ -115,6 +115,43 @@
       font-weight: 500;
     }
 
+    .top-right {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+    a.cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--grad);
+      color: var(--white);
+      padding: 10px 22px;
+      border-radius: 999px;
+      font-size: 14px;
+      font-weight: 500;
+      letter-spacing: 0.01em;
+      text-decoration: none;
+      box-shadow: 0 12px 28px -16px rgba(15,31,58,0.5);
+      transition: transform 0.2s, box-shadow 0.2s;
+      white-space: nowrap;
+    }
+    a.cta:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 16px 34px -16px rgba(15,31,58,0.55);
+    }
+    a.hero-link {
+      display: inline-block;
+      margin-top: 18px;
+      font-size: 15px;
+      color: var(--steel);
+      text-decoration: none;
+      font-weight: 500;
+      border-bottom: 1px solid transparent;
+      transition: border-color 0.2s;
+    }
+    a.hero-link:hover { border-color: var(--steel); }
+
     /* ===== Hero ===== */
     .hero {
       padding: 96px 0 56px;
@@ -338,6 +375,8 @@
     /* ===== Responsivo ===== */
     @media (max-width: 760px) {
       .wrap { padding: 20px 20px 48px; }
+      .meta { display: none; }
+      a.cta { padding: 9px 18px; font-size: 13px; }
       .hero { padding: 56px 0 32px; }
       .brand { font-size: 20px; }
       .brand img { height: 38px; }
@@ -354,7 +393,12 @@
         <img src="vytal-logo.png" alt="Vytal" />
         <span>Vytal</span>
       </div>
-      <div class="meta">São Paulo · Brasil</div>
+      <div class="top-right">
+        <div class="meta">São Paulo · Brasil</div>
+        <a class="cta" href="https://app.vytalsaude.com.br" rel="noopener">
+          Acessar plataforma →
+        </a>
+      </div>
     </header>
 
     <section class="hero">
@@ -365,6 +409,10 @@
         <span class="pulse"></span>
         <span>Em pré-lançamento · contato em breve</span>
       </div>
+      <br />
+      <a class="hero-link" href="https://app.vytalsaude.com.br" rel="noopener">
+        Aluno ou instituição parceira? Acesse o Vytal Acadêmico →
+      </a>
     </section>
 
     <section class="news-section">
