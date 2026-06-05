@@ -1,0 +1,467 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Vytal — Infraestrutura contínua de saúde baseada em IA</title>
+  <meta name="description" content="Vytal — infraestrutura contínua de saúde baseada em IA. Empresa registrada · pré-lançamento." />
+  <link rel="icon" type="image/png" href="vytal-logo.png" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet" />
+
+  <style>
+    /* Paleta navy profundo + azul-aço — exploração inspirada na vibe
+       dashboard tech (sidebar escura + acento médio), mas com tons
+       próprios para diferenciar de healthtechs com turquesa. Em
+       avaliação em 29/05/2026; produto interno mantém paleta atual
+       até decisão final de identidade. */
+    :root {
+      --ink-deep: #020617;
+      --navy: #0f1f3a;
+      --navy-soft: #1e3a5f;
+      --steel: #1e6091;
+      --steel-soft: #3a7fb5;
+      --ink: #0f172a;
+      --slate: #475569;
+      --slate-soft: #94a3b8;
+      --mist: #f8fafc;
+      --line: #e2e8f0;
+      --white: #ffffff;
+      --warn: #b45309;
+      --grad: linear-gradient(120deg, var(--navy) 0%, var(--navy-soft) 45%, var(--steel) 100%);
+      --max: 1140px;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+
+    body {
+      background: var(--white);
+      color: var(--ink);
+      font-family: "Outfit", system-ui, sans-serif;
+      font-size: 16px;
+      line-height: 1.65;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      overflow-x: hidden;
+    }
+
+    /* Atmosfera de fundo — radial-gradients sutis: glow azul-aço suave
+       no canto superior direito, navy no canto superior esquerdo.
+       Tons baixos pra dar profundidade sem dominar. */
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 0;
+      background:
+        radial-gradient(1100px 520px at 82% -8%, rgba(30,96,145,0.10), transparent 60%),
+        radial-gradient(800px 480px at 6% 10%, rgba(15,31,58,0.06), transparent 55%);
+    }
+
+    h1, h2, h3 {
+      font-family: "Fraunces", Georgia, serif;
+      font-weight: 500;
+      line-height: 1.15;
+      letter-spacing: -0.01em;
+      color: var(--ink);
+    }
+
+    .wrap {
+      position: relative;
+      z-index: 1;
+      max-width: var(--max);
+      width: 100%;
+      margin: 0 auto;
+      padding: 26px 28px 60px;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* ===== Cabeçalho com logo ===== */
+    header.top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-bottom: 22px;
+      border-bottom: 1px solid var(--line);
+      animation: fadeUp 0.8s ease-out both;
+    }
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 11px;
+      font-family: "Fraunces", serif;
+      font-size: 23px;
+      font-weight: 600;
+      color: var(--navy);
+    }
+    .brand img {
+      height: 42px;
+      width: auto;
+      display: block;
+    }
+    .meta {
+      font-size: 13px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--slate);
+      font-weight: 500;
+    }
+
+    /* ===== Hero ===== */
+    .hero {
+      padding: 96px 0 56px;
+      max-width: 880px;
+      animation: fadeUp 0.9s 0.15s ease-out both;
+    }
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 13px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--navy);
+      font-weight: 600;
+      margin-bottom: 26px;
+    }
+    .eyebrow::before {
+      content: "";
+      width: 30px;
+      height: 2px;
+      background: var(--steel);
+      display: block;
+    }
+    h1 {
+      font-size: clamp(2.6rem, 5vw, 4rem);
+    }
+    h1 .accent {
+      background: var(--grad);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+    .lede {
+      margin-top: 28px;
+      max-width: 600px;
+      font-size: 19px;
+      line-height: 1.6;
+      color: var(--slate);
+      font-weight: 300;
+    }
+    .status {
+      margin-top: 38px;
+      display: inline-flex;
+      align-items: center;
+      gap: 11px;
+      padding: 11px 18px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      font-size: 14px;
+      color: var(--slate);
+      background: var(--white);
+      box-shadow: 0 8px 26px -18px rgba(15,31,58,0.18);
+    }
+    .pulse {
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+      background: var(--steel);
+      box-shadow: 0 0 0 0 rgba(30,96,145,0.5);
+      animation: pulse 2.4s infinite;
+    }
+    @keyframes pulse {
+      70% { box-shadow: 0 0 0 12px rgba(30,96,145, 0); }
+      100% { box-shadow: 0 0 0 0 rgba(30,96,145, 0); }
+    }
+
+    /* ===== Seção de notícias ===== */
+    .news-section {
+      margin-top: 68px;
+      padding-top: 44px;
+      border-top: 1px solid var(--line);
+      animation: fadeUp 1s 0.35s ease-out both;
+    }
+    .news-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 16px;
+      margin-bottom: 34px;
+    }
+    .news-head h2 {
+      font-size: clamp(1.7rem, 3vw, 2.1rem);
+    }
+    .news-head h2 .num {
+      font-family: "Outfit", sans-serif;
+      font-size: 13px;
+      letter-spacing: 0.14em;
+      vertical-align: top;
+      color: var(--slate);
+      margin-right: 12px;
+      font-weight: 500;
+    }
+    .news-status {
+      font-size: 12px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--slate);
+      font-weight: 500;
+    }
+    .news-status.is-fallback { color: var(--warn); }
+
+    .news-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 22px;
+    }
+    .news-item {
+      background: var(--white);
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      padding: 22px 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      min-height: 150px;
+      transition: transform 0.25s, box-shadow 0.25s, border-color 0.25s;
+    }
+    .news-item:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 22px 48px -28px rgba(15,31,58,0.20);
+      border-color: transparent;
+    }
+
+    .news-item .src {
+      font-size: 11px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--slate);
+      font-weight: 600;
+    }
+    .news-item .src .sep {
+      margin: 0 8px;
+      color: var(--line);
+    }
+    .news-item a.title {
+      color: var(--ink);
+      text-decoration: none;
+      font-family: "Fraunces", Georgia, serif;
+      font-weight: 500;
+      font-size: 17px;
+      line-height: 1.32;
+      letter-spacing: -0.005em;
+      display: inline-block;
+      position: relative;
+    }
+    .news-item a.title::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: -3px;
+      height: 1px;
+      background: var(--steel);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.3s ease;
+    }
+    .news-item a.title:hover { color: var(--navy); }
+    .news-item a.title:hover::after { transform: scaleX(1); }
+    .news-item.placeholder a.title,
+    .news-item.placeholder .title {
+      color: var(--slate);
+      font-style: italic;
+    }
+
+    .loading {
+      grid-column: 1 / -1;
+      padding: 40px;
+      text-align: center;
+      color: var(--slate);
+      font-size: 14px;
+    }
+    .loading-bar {
+      display: inline-block;
+      width: 140px;
+      height: 2px;
+      margin-left: 10px;
+      vertical-align: middle;
+      background: var(--line);
+      border-radius: 2px;
+      overflow: hidden;
+      position: relative;
+    }
+    .loading-bar::after {
+      content: "";
+      position: absolute;
+      top: 0; left: -40%;
+      width: 40%;
+      height: 100%;
+      background: var(--steel);
+      animation: bar 1.4s ease-in-out infinite;
+    }
+    @keyframes bar {
+      0% { left: -40%; }
+      100% { left: 100%; }
+    }
+
+    /* ===== Rodapé ===== */
+    footer {
+      margin-top: 60px;
+      padding-top: 24px;
+      border-top: 1px solid var(--line);
+      font-size: 13.5px;
+      color: var(--slate);
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    footer a { color: var(--slate); text-decoration: none; }
+    footer a:hover { color: var(--navy); }
+
+    /* ===== Animações ===== */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(12px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ===== Responsivo ===== */
+    @media (max-width: 760px) {
+      .wrap { padding: 20px 20px 48px; }
+      .hero { padding: 56px 0 32px; }
+      .brand { font-size: 20px; }
+      .brand img { height: 38px; }
+      .news-section { margin-top: 48px; padding-top: 32px; }
+      footer { flex-direction: column; gap: 6px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+
+    <header class="top">
+      <div class="brand">
+        <img src="vytal-logo.png" alt="Vytal" />
+        <span>Vytal</span>
+      </div>
+      <div class="meta">São Paulo · Brasil</div>
+    </header>
+
+    <section class="hero">
+      <div class="eyebrow">Pré-lançamento · 2026</div>
+      <h1>Infraestrutura contínua de saúde baseada em <span class="accent">inteligência artificial</span>.</h1>
+      <p class="lede">Vytal é um sistema integrado de triagem, apoio à decisão clínica e formação médica continuada.</p>
+      <div class="status">
+        <span class="pulse"></span>
+        <span>Em pré-lançamento · contato em breve</span>
+      </div>
+    </section>
+
+    <section class="news-section">
+      <div class="news-head">
+        <h2><span class="num">01 /</span>Leituras · IA &amp; Saúde</h2>
+        <div class="news-status" id="news-status">Curadoria · IA &amp; Saúde</div>
+      </div>
+      <div class="news-grid" id="news-grid"></div>
+    </section>
+
+    <footer>
+      <div>© 2026 Vytal Saúde Tecnologia LTDA · CNPJ 67.051.119/0001-64 · Todos os direitos reservados</div>
+      <div>Site institucional · versão preliminar</div>
+    </footer>
+
+  </div>
+
+  <script>
+    /* ==========================================================
+     * Curadoria estática de notícias IA + Saúde
+     *
+     * Decisão: substituímos o feed RSS dinâmico (que dependia de
+     * proxies comunitários gratuitos — allorigins.win, corsproxy.io
+     * — sujeitos a downtime sem SLA) por uma curadoria estática.
+     *
+     * Vantagens:
+     *  - 100% confiável, sem dependência externa.
+     *  - Curadoria controlada (notícias relevantes para o público
+     *    Vytal: médicos e faculdades), não as últimas do Google News
+     *    que muitas vezes são clickbait.
+     *  - Sem invenção de manchete/fonte/data — só notícias reais
+     *    verificadas, com links que funcionam.
+     *
+     * Atualização: manual, periódica. Quando o site institucional
+     * real subir (pós-piloto/CNPJ), considerar endpoint próprio
+     * no Railway para feed dinâmico server-side com cache.
+     * ========================================================== */
+
+    const NOTICIAS = [
+      {
+        titulo: "Resolução CFM nº 2.454/2026 regulamenta o uso de inteligência artificial na medicina",
+        fonte: "Conselho Federal de Medicina",
+        link: "https://portal.cfm.org.br/noticias/cfm-normatiza-uso-da-ia-na-medicina/",
+      },
+      {
+        titulo: "Uso de IA cresce na saúde e já alcança 18% dos atendimentos no Brasil",
+        fonte: "TIC Saúde · CGI.br",
+        link: "https://oimparcial.com.br/noticias/2026/05/uso-de-inteligencia-artificial-cresce-na-saude-e-ja-alcanca-18-dos-atendimentos-no-brasil/",
+      },
+      {
+        titulo: "Saúde 2026: colaboração e inovação para um crescimento sustentável",
+        fonte: "Medicina S/A · Deloitte Outlook 2026",
+        link: "https://medicinasa.com.br/deloitte-edicao33/",
+      },
+      {
+        titulo: "Tendências para a saúde em 2026: inteligência artificial como espinha dorsal da eficiência",
+        fonte: "Medicina S/A",
+        link: "https://medicinasa.com.br/tendencias-saude-2026/",
+      },
+      {
+        titulo: "Reflexões sobre a regulação da IA médica após a Resolução CFM 2.454/26",
+        fonte: "Migalhas · Direito Médico",
+        link: "https://www.migalhas.com.br/coluna/migalhas-de-direito-medico-e-bioetica/450962/reflexoes-sobre-a-regulacao-da-ia-medica-apos-a-resolucao-cfm-2-454-26",
+      },
+    ];
+
+    function escapeHtml(s) {
+      return String(s)
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#039;");
+    }
+
+    function renderNoticias() {
+      const grid = document.getElementById("news-grid");
+      const status = document.getElementById("news-status");
+
+      status.textContent = "Curadoria · IA & Saúde · Atualização periódica";
+      status.classList.remove("is-fallback");
+
+      const html = NOTICIAS.map((n, i) => {
+        const numero = String(i + 1).padStart(2, "0");
+        const fonteHtml = n.fonte
+          ? `<span class="src">${escapeHtml(n.fonte)}<span class="sep">·</span>${numero}</span>`
+          : `<span class="src">${numero}</span>`;
+        const tituloHtml = n.link
+          ? `<a class="title" href="${escapeHtml(n.link)}" target="_blank" rel="noopener noreferrer">${escapeHtml(n.titulo)}</a>`
+          : `<span class="title">${escapeHtml(n.titulo)}</span>`;
+        return `<article class="news-item">${fonteHtml}${tituloHtml}</article>`;
+      }).join("");
+
+      grid.innerHTML = html;
+    }
+
+    renderNoticias();
+  </script>
+</body>
+</html>

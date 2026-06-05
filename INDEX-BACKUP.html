@@ -4,9 +4,8 @@
 <meta charset="UTF-8" />
 <script>document.documentElement.className='js';</script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<meta name="robots" content="noindex, nofollow" />
-<title>Vytal — Infraestrutura de saúde · a direção que vamos seguir</title>
-<meta name="description" content="Documento privado de direção. A Vytal em duas frentes: a tecnologia que apoia o médico hoje, e o modelo de cuidado contínuo que estamos construindo." />
+<title>Vytal — Infraestrutura de saúde com apoio ao médico</title>
+<meta name="description" content="Vytal é uma infraestrutura de saúde digital que organiza informação clínica e apoia o trabalho do médico em consultas e plantões. O profissional sempre no centro da decisão." />
 <link rel="icon" type="image/png" href="vytal-logo.png" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -22,7 +21,6 @@
     --mist:#F6F8FA;
     --line:#e6ebf0;
     --white:#ffffff;
-    --gold:#b08948;
     --cta:#FF7A59;
     --cta-hover:#E96749;
     --grad:linear-gradient(120deg,var(--navy) 0%,#196070 45%,var(--cyan) 100%);
@@ -40,14 +38,6 @@
   a{color:inherit;text-decoration:none}
   .wrap{max-width:1140px;margin:0 auto;padding:0 28px}
   section{padding:110px 0}
-
-  /* PRIVATE BANNER */
-  .private-note{
-    background:var(--navy-deep);color:#cdd6ea;
-    font-size:12px;letter-spacing:.16em;text-transform:uppercase;
-    text-align:center;padding:10px 16px;font-weight:400;
-  }
-  .private-note strong{color:#fff;font-weight:600}
 
   /* NAV */
   header{
@@ -68,8 +58,8 @@
     font-family:'Outfit',sans-serif;font-size:15px;font-weight:500;
     transition:transform .2s,box-shadow .2s,background .2s;cursor:pointer;border:none;
   }
-  .btn-primary{background:var(--cta);color:#fff;box-shadow:0 8px 26px -10px rgba(255,122,89,.5)}
-  .btn-primary:hover{transform:translateY(-2px);background:var(--cta-hover);box-shadow:0 14px 32px -10px rgba(255,122,89,.55)}
+  .btn-primary{background:var(--grad);color:#fff;box-shadow:0 8px 26px -10px rgba(15,61,76,.5)}
+  .btn-primary:hover{transform:translateY(-2px);box-shadow:0 14px 32px -10px rgba(15,61,76,.55)}
   .btn-ghost{background:transparent;color:var(--navy);border:1.5px solid var(--line)}
   .btn-ghost:hover{border-color:var(--cyan);color:var(--navy)}
   .nav-cta{display:flex;gap:12px;align-items:center}
@@ -141,7 +131,23 @@
   .sec-head h2{font-size:clamp(2rem,3.6vw,2.85rem);color:var(--ink)}
   .sec-head p{margin-top:18px;font-size:18px;color:var(--slate);font-weight:300}
 
-  /* AUDIENCE / PRODUCT split */
+  /* WHAT IS — feature grid */
+  .features{display:grid;grid-template-columns:repeat(3,1fr);gap:26px}
+  .feature{
+    background:#fff;border:1px solid var(--line);border-radius:20px;padding:34px 30px;
+    transition:transform .25s,box-shadow .25s,border-color .25s;
+  }
+  .feature:hover{transform:translateY(-5px);box-shadow:0 26px 54px -30px rgba(15,61,76,.28);border-color:transparent}
+  .feature .ic{
+    width:48px;height:48px;border-radius:13px;margin-bottom:22px;
+    background:linear-gradient(135deg,var(--navy),var(--cyan));
+    display:flex;align-items:center;justify-content:center;
+  }
+  .feature .ic svg{width:23px;height:23px;stroke:#fff;fill:none;stroke-width:1.7}
+  .feature h3{font-size:20px;margin-bottom:10px;color:var(--ink)}
+  .feature p{font-size:15px;color:var(--slate);font-weight:300}
+
+  /* AUDIENCE split */
   .audience{background:var(--mist)}
   .aud-grid{display:grid;grid-template-columns:1fr 1fr;gap:30px}
   .aud-card{
@@ -151,17 +157,10 @@
   .aud-card::before{
     content:"";position:absolute;inset:0 0 auto 0;height:5px;background:var(--grad);
   }
-  .aud-card.vision::before{background:linear-gradient(120deg,var(--gold),#d8b878)}
   .aud-card .tag{
     font-size:13px;letter-spacing:.12em;text-transform:uppercase;color:var(--navy);
-    font-weight:600;margin-bottom:14px;display:flex;align-items:center;gap:10px;
+    font-weight:600;margin-bottom:14px;display:block;
   }
-  .aud-card.vision .tag{color:var(--gold)}
-  .badge{
-    font-size:11px;letter-spacing:.08em;padding:4px 10px;border-radius:999px;
-    background:rgba(39,199,184,.15);color:var(--navy);font-weight:600;
-  }
-  .aud-card.vision .badge{background:rgba(176,137,72,.16);color:var(--gold)}
   .aud-card h3{font-size:26px;margin-bottom:16px;color:var(--ink)}
   .aud-card p.intro{font-size:16px;color:var(--slate);margin-bottom:26px;font-weight:300}
   .aud-list{list-style:none;display:flex;flex-direction:column;gap:15px}
@@ -171,23 +170,10 @@
     background:linear-gradient(135deg,rgba(39,199,184,.2),rgba(15,61,76,.14));
     display:flex;align-items:center;justify-content:center;
   }
-  .aud-card.vision .chk{background:linear-gradient(135deg,rgba(176,137,72,.22),rgba(176,137,72,.12))}
   .aud-list .chk svg{width:12px;height:12px;stroke:var(--navy);stroke-width:2.4;fill:none}
-  .aud-card.vision .chk svg{stroke:var(--gold)}
 
-  /* CARE LINES grid */
-  .lines{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
-  .line-card{
-    background:#fff;border:1px solid var(--line);border-radius:18px;padding:26px 24px;
-    transition:transform .25s,box-shadow .25s;
-  }
-  .line-card:hover{transform:translateY(-4px);box-shadow:0 22px 46px -28px rgba(15,61,76,.26)}
-  .line-card .num{font-family:'Fraunces',serif;font-size:15px;color:var(--gold);font-weight:600}
-  .line-card h3{font-size:17px;margin:9px 0 7px;color:var(--ink)}
-  .line-card p{font-size:13.5px;color:var(--slate);font-weight:300;line-height:1.6}
-
-  /* SEQUENCE */
-  .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;counter-reset:s}
+  /* HOW */
+  .steps{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;counter-reset:s}
   .step{position:relative;padding-top:54px}
   .step::before{
     counter-increment:s;content:counter(s);
@@ -197,11 +183,10 @@
     display:flex;align-items:center;justify-content:center;
     font-family:'Fraunces',serif;font-size:18px;font-weight:600;color:var(--navy);
   }
-  .step .ph{font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--cyan);font-weight:600;margin-bottom:6px}
   .step h3{font-size:18px;margin-bottom:9px;color:var(--ink)}
   .step p{font-size:14.5px;color:var(--slate);font-weight:300}
 
-  /* PRINCIPLE / CTA */
+  /* CONTACT / CTA */
   .cta{
     background:var(--grad);color:#fff;border-radius:30px;
     padding:74px 60px;text-align:center;position:relative;overflow:hidden;
@@ -211,8 +196,12 @@
     background:rgba(255,255,255,.07);right:-90px;top:-120px;
   }
   .cta h2{font-size:clamp(1.9rem,3.4vw,2.6rem);margin-bottom:16px;position:relative}
-  .cta h2 em{font-style:italic;color:var(--cyan-soft)}
-  .cta p{font-size:18px;color:#dfe7f5;max-width:560px;margin:0 auto;font-weight:300;position:relative}
+  .cta p{font-size:18px;color:#dfe7f5;max-width:560px;margin:0 auto 36px;font-weight:300;position:relative}
+  .cta-actions{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;position:relative}
+  .btn-white{background:#fff;color:var(--navy)}
+  .btn-white:hover{transform:translateY(-2px)}
+  .btn-outline-w{background:transparent;color:#fff;border:1.5px solid rgba(255,255,255,.5)}
+  .btn-outline-w:hover{border-color:#fff}
 
   /* FOOTER */
   footer{padding:60px 0 50px;border-top:1px solid var(--line);background:#fff}
@@ -231,6 +220,8 @@
   .disclaimer strong{color:var(--slate);font-weight:500}
   .copyr{margin-top:18px;font-size:13px;color:#909ab0}
 
+  /* reveal anim — só ativa se JS marcar <html class="js">.
+     Sem JS (ou se falhar), o conteúdo fica 100% visível. */
   .js .reveal{opacity:0;transform:translateY(22px);transition:opacity .7s ease,transform .7s ease}
   .js .reveal.in{opacity:1;transform:none}
 
@@ -240,14 +231,14 @@
     .hero{padding:80px 0 90px}
     .hero-grid{grid-template-columns:1fr;gap:48px}
     .hero-visual{order:-1}
+    .features{grid-template-columns:1fr}
     .aud-grid{grid-template-columns:1fr}
-    .lines{grid-template-columns:1fr 1fr}
-    .steps{grid-template-columns:1fr}
+    .steps{grid-template-columns:1fr 1fr}
     .navlinks{display:none}
     .cta{padding:54px 28px}
   }
   @media(max-width:560px){
-    .lines{grid-template-columns:1fr}
+    .steps{grid-template-columns:1fr}
     .nav-cta .btn-ghost{display:none}
     .wrap{padding:0 20px}
     .aud-card{padding:36px 26px}
@@ -255,8 +246,6 @@
 </style>
 </head>
 <body>
-
-<div class="private-note"><strong>Documento privado</strong> · rascunho de direção · não publicado · não indexado · não divulgar</div>
 
 <header>
   <div class="wrap">
@@ -266,13 +255,13 @@
         <span>Vytal</span>
       </a>
       <div class="navlinks">
-        <a href="#frentes">As duas frentes</a>
-        <a href="#linhas">Linhas de atenção</a>
-        <a href="#sequencia">Sequência</a>
-        <a href="#principio">Princípio</a>
+        <a href="#oque">O que é</a>
+        <a href="#medicos">Para médicos</a>
+        <a href="#pacientes">Para pacientes</a>
+        <a href="#como">Como funciona</a>
       </div>
       <div class="nav-cta">
-        <a href="#principio" class="btn btn-ghost">A direção</a>
+        <a href="#contato" class="btn btn-ghost">Falar com a gente</a>
       </div>
     </nav>
   </div>
@@ -283,24 +272,24 @@
   <div class="wrap">
     <div class="hero-grid">
       <div class="reveal in">
-        <span class="eyebrow">O caminho que vamos seguir</span>
-        <h1>Tecnologia que <span class="accent">apoia o médico</span> hoje. Cuidado contínuo a seguir.</h1>
-        <p class="lead">A Vytal se organiza em duas frentes complementares: a tecnologia que dá suporte ao médico — que já existe e funciona — e o modelo de cuidado contínuo que estamos construindo sobre base formal.</p>
+        <span class="eyebrow">Infraestrutura de saúde digital</span>
+        <h1>Tecnologia que <span class="accent">apoia o médico</span>, não substitui o cuidado.</h1>
+        <p class="lead">A Vytal organiza a informação clínica e dá suporte ao trabalho do profissional de saúde em consultas e plantões — com o médico sempre no centro da decisão.</p>
         <div class="hero-actions">
-          <a href="#frentes" class="btn btn-primary">Ver as duas frentes
+          <a href="#contato" class="btn btn-primary">Quero conhecer
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
           </a>
-          <a href="#sequencia" class="btn btn-ghost">Por que nesta ordem</a>
+          <a href="#oque" class="btn btn-ghost">Entender o conceito</a>
         </div>
       </div>
       <div class="hero-visual reveal in">
         <div class="hero-card">
           <div class="hc-logo"><img src="vytal-logo.png" alt="Vytal" /></div>
-          <div class="hc-tag">Duas frentes, um princípio</div>
-          <div class="hc-row"><span class="hc-dot">1</span> Tecnologia de apoio ao médico — existe hoje</div>
-          <div class="hc-row"><span class="hc-dot">2</span> Estrutura formal de saúde — pré-requisito</div>
-          <div class="hc-row"><span class="hc-dot">3</span> Modelo de cuidado contínuo — a direção</div>
-          <div class="hc-float"><span class="pulse"></span> Médico no centro</div>
+          <div class="hc-tag">Saúde organizada, cuidado humano</div>
+          <div class="hc-row"><span class="hc-dot">1</span> Paciente inicia contato por um canal acessível</div>
+          <div class="hc-row"><span class="hc-dot">2</span> Informação chega organizada ao profissional</div>
+          <div class="hc-row"><span class="hc-dot">3</span> O médico avalia, decide e conduz o atendimento</div>
+          <div class="hc-float"><span class="pulse"></span> Profissional no centro</div>
         </div>
       </div>
     </div>
@@ -310,132 +299,145 @@
 <!-- TRUST STRIP -->
 <div class="strip">
   <div class="wrap">
-    <p><strong>A tecnologia apoia o médico — nunca substitui o cuidado.</strong> Esta é a linha que separa o que existe hoje do que estamos construindo.</p>
+    <p><strong>A Vytal é uma ferramenta de apoio.</strong> Ela não realiza diagnóstico nem substitui a avaliação de um profissional de saúde habilitado.</p>
   </div>
 </div>
 
-<!-- AS DUAS FRENTES -->
-<section id="frentes">
+<!-- O QUE É -->
+<section id="oque">
   <div class="wrap">
     <div class="sec-head reveal">
-      <span class="eyebrow">As duas frentes</span>
-      <h2>Tecnologia agora. Cuidado contínuo a seguir.</h2>
-      <p>São dois produtos com papéis distintos. O primeiro já existe e funciona. O segundo é a direção — e depende de estrutura formal antes de operar.</p>
+      <span class="eyebrow">O que é a Vytal</span>
+      <h2>Uma camada que conecta e organiza, para o médico cuidar melhor.</h2>
+      <p>Reduzimos o atrito entre quem precisa de atendimento e quem atende. A informação clínica chega estruturada ao profissional — que mantém o controle de cada decisão.</p>
+    </div>
+    <div class="features">
+      <div class="feature reveal">
+        <div class="ic"><svg viewBox="0 0 24 24"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg></div>
+        <h3>Canal acessível</h3>
+        <p>O paciente inicia o contato por um canal que ele já usa no dia a dia, sem instalar nada nem aprender ferramenta nova.</p>
+      </div>
+      <div class="feature reveal">
+        <div class="ic"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6M9 13h6M9 17h4"/></svg></div>
+        <h3>Informação organizada</h3>
+        <p>Histórico, medicações e exames reunidos e estruturados, para o profissional ter o contexto na hora do atendimento.</p>
+      </div>
+      <div class="feature reveal">
+        <div class="ic"><svg viewBox="0 0 24 24"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg></div>
+        <h3>Apoio ao trabalho clínico</h3>
+        <p>Ferramentas que ajudam a organizar o raciocínio e a documentação — sempre como apoio, com a decisão final do médico.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PARA MÉDICOS -->
+<section id="medicos" class="audience">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="eyebrow">Para médicos</span>
+      <h2>Mais contexto, menos trabalho repetitivo.</h2>
+      <p>A Vytal cuida da organização para você focar no que importa: avaliar e cuidar do paciente.</p>
     </div>
     <div class="aud-grid">
       <div class="aud-card reveal">
-        <span class="tag"><span class="badge">Existe hoje</span> Produto 1</span>
-        <h3>Tecnologia de apoio ao médico</h3>
-        <p class="intro">Software que organiza prontuário, dados clínicos, monitoramento e adesão. O médico detém integralmente a relação com o paciente; a Vytal não substitui o cuidado, dá estrutura a ele.</p>
+        <span class="tag">No atendimento</span>
+        <h3>O paciente chega organizado</h3>
+        <p class="intro">Quando o atendimento começa, a informação relevante já está estruturada — você não perde tempo reconstruindo o contexto.</p>
         <ul class="aud-list">
-          <li><span class="chk"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg></span> Organização de histórico e resultados para o médico</li>
-          <li><span class="chk"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg></span> Monitoramento de séries clínicas (pressão, glicemia, medidas)</li>
-          <li><span class="chk"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg></span> Acompanhamento de adesão entre as consultas</li>
-          <li><span class="chk"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg></span> Painéis para o profissional e para a operação</li>
+          <li><span class="chk"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg></span> Prontuário com histórico, medicações e exames reunidos</li>
+          <li><span class="chk"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg></span> Exames em PDF organizados por painéis, com os valores do próprio laudo</li>
+          <li><span class="chk"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg></span> Registro estruturado da evolução clínica</li>
         </ul>
       </div>
-      <div class="aud-card vision reveal">
-        <span class="tag"><span class="badge">Visão · em construção</span> Produto 2</span>
-        <h3>Modelo de cuidado contínuo</h3>
-        <p class="intro">O destino: cuidado longitudinal organizado pelas linhas de atenção abaixo. Esta frente exige estrutura formal de estabelecimento de saúde — e só será apresentada como serviço quando essa base estiver pronta.</p>
+      <div class="aud-card reveal">
+        <span class="tag">No controle</span>
+        <h3>A decisão é sempre sua</h3>
+        <p class="intro">A Vytal é apoio. Toda conduta, hipótese e interpretação clínica permanece com você, profissional responsável.</p>
         <ul class="aud-list">
-          <li><span class="chk"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg></span> Cuidado longitudinal por linha de atenção</li>
-          <li><span class="chk"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg></span> Integração entre presencial e telemedicina</li>
-          <li><span class="chk"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg></span> Continuidade apoiada pela tecnologia da outra frente</li>
-          <li><span class="chk"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg></span> Estrutura formal como pré-requisito, não atalho</li>
+          <li><span class="chk"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg></span> Ferramentas de apoio, nunca substituição do julgamento médico</li>
+          <li><span class="chk"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg></span> Você revisa e valida tudo antes de qualquer conduta</li>
+          <li><span class="chk"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg></span> Transparência sobre o que é apoio e o que é decisão clínica</li>
         </ul>
       </div>
     </div>
   </div>
 </section>
 
-<!-- LINHAS DE ATENÇÃO -->
-<section id="linhas" class="audience">
+<!-- PARA PACIENTES -->
+<section id="pacientes">
   <div class="wrap">
     <div class="sec-head reveal">
-      <span class="eyebrow">As linhas de atenção</span>
-      <h2>Sete frentes de cuidado que orientam o modelo.</h2>
-      <p>Estas linhas definem a direção do modelo de cuidado contínuo. Não são serviços oferecidos hoje — são o desenho do que estamos construindo.</p>
+      <span class="eyebrow">Para pacientes</span>
+      <h2>Um caminho mais simples até o cuidado.</h2>
+      <p>Menos burocracia para chegar até um profissional, com sua informação acompanhando você.</p>
     </div>
-    <div class="lines">
-      <div class="line-card reveal">
-        <div class="num">01</div>
-        <h3>Consulta clínica</h3>
-        <p>O encontro clínico como base de toda a continuidade.</p>
+    <div class="aud-grid">
+      <div class="aud-card reveal">
+        <span class="tag">Acesso</span>
+        <h3>Simples desde o primeiro contato</h3>
+        <p class="intro">Você inicia por um canal acessível e conhecido, sem aplicativos complicados nem cadastros longos.</p>
+        <ul class="aud-list">
+          <li><span class="chk"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg></span> Contato por um canal que você já usa</li>
+          <li><span class="chk"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg></span> Suas informações organizadas em um só lugar</li>
+          <li><span class="chk"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg></span> Lembretes de medicação para apoiar seu tratamento</li>
+        </ul>
       </div>
-      <div class="line-card reveal">
-        <div class="num">02</div>
-        <h3>Check-up</h3>
-        <p>Rastreamento organizado e leitura estruturada do histórico.</p>
-      </div>
-      <div class="line-card reveal">
-        <div class="num">03</div>
-        <h3>Emagrecimento e obesidade</h3>
-        <p>Acompanhamento longitudinal de medidas e adesão.</p>
-      </div>
-      <div class="line-card reveal">
-        <div class="num">04</div>
-        <h3>Saúde mental</h3>
-        <p>Continuidade de registro e seguimento entre encontros.</p>
-      </div>
-      <div class="line-card reveal">
-        <div class="num">05</div>
-        <h3>Saúde do homem</h3>
-        <p>Rastreamento por idade e risco, com seguimento ativo.</p>
-      </div>
-      <div class="line-card reveal">
-        <div class="num">06</div>
-        <h3>Dor crônica</h3>
-        <p>Diário estruturado e série temporal para avaliação clínica.</p>
-      </div>
-      <div class="line-card reveal">
-        <div class="num">07</div>
-        <h3>Diabetes e hipertensão</h3>
-        <p>Monitoramento contínuo e alertas de fora-da-faixa para o médico.</p>
-      </div>
-      <div class="line-card reveal" style="background:linear-gradient(135deg,rgba(39,199,184,.08),rgba(15,61,76,.05))">
-        <div class="num" style="color:var(--cyan)">+</div>
-        <h3>Tecnologia transversal</h3>
-        <p>A frente de apoio sustenta todas as sete linhas.</p>
+      <div class="aud-card reveal">
+        <span class="tag">Cuidado humano</span>
+        <h3>Sempre com um profissional</h3>
+        <p class="intro">A Vytal organiza e encaminha — quem avalia, decide e cuida de você é sempre um profissional de saúde.</p>
+        <ul class="aud-list">
+          <li><span class="chk"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg></span> A tecnologia não substitui a consulta médica</li>
+          <li><span class="chk"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg></span> O profissional sempre no centro da decisão</li>
+          <li><span class="chk"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg></span> Em emergências, procure atendimento presencial imediato</li>
+        </ul>
       </div>
     </div>
   </div>
 </section>
 
-<!-- SEQUÊNCIA -->
-<section id="sequencia">
+<!-- COMO FUNCIONA -->
+<section id="como" class="audience">
   <div class="wrap">
     <div class="sec-head reveal">
-      <span class="eyebrow">Sequência</span>
-      <h2>Por que nesta ordem.</h2>
-      <p>A sequência é deliberada. A tecnologia sustenta a operação; o modelo de cuidado vem sobre uma base formal, não antes dela.</p>
+      <span class="eyebrow">Como funciona</span>
+      <h2>Quatro passos, o médico no comando.</h2>
     </div>
     <div class="steps">
       <div class="step reveal">
-        <div class="ph">Fase atual</div>
-        <h3>Tecnologia de apoio em operação</h3>
-        <p>Backend e painéis funcionais. A Vytal entrega valor como infraestrutura para o médico, sem assumir a relação clínica.</p>
+        <h3>Contato</h3>
+        <p>O paciente inicia o atendimento por um canal acessível.</p>
       </div>
       <div class="step reveal">
-        <div class="ph">Pré-requisito</div>
-        <h3>Estrutura formal de saúde</h3>
-        <p>Responsabilidade técnica médica, registros e conformidade regulatória. A fundação que precede qualquer oferta de cuidado.</p>
+        <h3>Organização</h3>
+        <p>As informações são estruturadas e reunidas de forma clara.</p>
       </div>
       <div class="step reveal">
-        <div class="ph">Direção</div>
-        <h3>Modelo de cuidado contínuo</h3>
-        <p>Com a base pronta, as sete linhas passam de desenho a serviço — sustentadas pela tecnologia já em operação.</p>
+        <h3>Apoio</h3>
+        <p>O profissional recebe o contexto organizado para o atendimento.</p>
+      </div>
+      <div class="step reveal">
+        <h3>Decisão</h3>
+        <p>O médico avalia, decide a conduta e cuida do paciente.</p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- PRINCÍPIO -->
-<section id="principio">
+<!-- CONTATO / CTA -->
+<section id="contato">
   <div class="wrap">
     <div class="cta reveal">
-      <h2>A tecnologia <em>apoia</em> o médico.<br>Nunca <em>substitui</em> o cuidado.</h2>
-      <p>É a linha que separa o que oferecemos hoje do que construímos para amanhã — e a razão de a estrutura formal vir antes, não depois.</p>
+      <h2>Quer conhecer a Vytal?</h2>
+      <p>Estamos em desenvolvimento e conversando com profissionais de saúde interessados. Fale com a gente diretamente — sem formulários, no seu canal.</p>
+      <div class="cta-actions">
+        <a href="https://wa.me/55SEUNUMERO" class="btn btn-white" target="_blank" rel="noopener">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15l-1.3 4.7 4.8-1.3A10 10 0 1 0 12 2zm0 18a8 8 0 0 1-4.1-1.1l-.3-.2-2.9.8.8-2.8-.2-.3A8 8 0 1 1 12 20zm4.4-6c-.2-.1-1.4-.7-1.6-.8s-.4-.1-.5.1-.6.8-.8 1-.3.2-.5.1a6.5 6.5 0 0 1-1.9-1.2 7.2 7.2 0 0 1-1.3-1.7c-.1-.2 0-.4.1-.5l.4-.5.3-.5v-.4c0-.1-.5-1.3-.7-1.7s-.4-.4-.5-.4h-.5a1 1 0 0 0-.7.3 2.8 2.8 0 0 0-.9 2.1A4.9 4.9 0 0 0 8 12a11 11 0 0 0 4.2 3.7c.6.3 1 .4 1.4.5a3.4 3.4 0 0 0 1.5.1 2.5 2.5 0 0 0 1.6-1.1 2 2 0 0 0 .1-1.1c0-.1-.2-.1-.4-.2z"/></svg>
+          Falar pelo WhatsApp
+        </a>
+        <a href="mailto:contato@vytalsaude.com.br?subject=Tenho%20interesse%20na%20Vytal" class="btn btn-outline-w">Enviar e-mail</a>
+      </div>
     </div>
   </div>
 </section>
@@ -446,34 +448,34 @@
     <div class="foot-grid">
       <div class="foot-col">
         <div class="foot-brand"><img src="vytal-logo.png" alt="Vytal" /><span>Vytal</span></div>
-        <p>Rascunho de direção para conversa privada. Duas frentes: a tecnologia que apoia o médico hoje, e o modelo de cuidado contínuo em construção.</p>
+        <p>Infraestrutura de saúde digital que organiza informação clínica e apoia o trabalho do médico — com o profissional sempre no centro da decisão.</p>
       </div>
       <div class="foot-col">
         <div class="foot-links">
           <span class="h">Navegação</span>
-          <a href="#frentes">As duas frentes</a>
-          <a href="#linhas">Linhas de atenção</a>
-          <a href="#sequencia">Sequência</a>
-          <a href="#principio">Princípio</a>
+          <a href="#oque">O que é</a>
+          <a href="#medicos">Para médicos</a>
+          <a href="#pacientes">Para pacientes</a>
+          <a href="#como">Como funciona</a>
         </div>
       </div>
       <div class="foot-col">
         <div class="foot-links">
-          <span class="h">Status</span>
-          <span style="font-size:14.5px;color:var(--slate)">Não publicado</span>
-          <span style="font-size:14.5px;color:var(--slate)">Não indexado</span>
-          <span style="font-size:14.5px;color:var(--slate)">Sujeito a validação regulatória</span>
+          <span class="h">Contato</span>
+          <a href="https://wa.me/55SEUNUMERO" target="_blank" rel="noopener">WhatsApp</a>
+          <a href="mailto:contato@vytalsaude.com.br">contato@vytalsaude.com.br</a>
         </div>
       </div>
     </div>
     <div class="disclaimer">
-      <strong>Aviso.</strong> Este documento é um rascunho interno de direção, para conversa privada. Não constitui oferta de serviço médico. A frente "modelo de cuidado contínuo" é uma visão em construção e depende de estrutura formal de estabelecimento de saúde (responsabilidade técnica médica, registros e conformidade regulatória) antes de qualquer apresentação como serviço ativo. O conteúdo está sujeito a validação jurídica.
+      <strong>Aviso importante.</strong> A Vytal é uma ferramenta de apoio à organização de informação em saúde e ao trabalho do profissional. Ela não realiza diagnóstico, não prescreve e não substitui a avaliação, o julgamento ou a conduta de um profissional de saúde habilitado. O produto encontra-se em fase de desenvolvimento. Em caso de emergência ou sintomas graves, procure atendimento médico presencial imediatamente ou ligue para o SAMU (192).
     </div>
-    <div class="copyr">© 2026 Vytal · rascunho privado · não divulgar</div>
+    <div class="copyr">© 2026 Vytal · vytalsaude.com.br · Todos os direitos reservados.</div>
   </div>
 </footer>
 
 <script>
+  // Reveal on scroll. Se IntersectionObserver não existir, mostra tudo.
   (function(){
     var els = document.querySelectorAll('.reveal:not(.in)');
     if(!('IntersectionObserver' in window)){
@@ -486,6 +488,7 @@
       });
     },{threshold:.14, rootMargin:'0px 0px -40px 0px'});
     els.forEach(function(el){ io.observe(el); });
+    // Rede de segurança: após 4s, garante que tudo apareceu
     setTimeout(function(){ els.forEach(function(el){ el.classList.add('in'); }); }, 4000);
   })();
 </script>
