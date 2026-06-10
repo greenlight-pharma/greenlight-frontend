@@ -372,16 +372,61 @@ body{
 .progress{height:3px;background:rgba(232,238,246,.12);border-radius:99px;margin-top:18px;overflow:hidden}
 .progress i{display:block;height:100%;background:linear-gradient(90deg,var(--aco),#5aa9dd);width:0%;transition:width .5s ease}
 
+/* barra superior mobile (espelha o Sidebar mobile real) */
+.vtopbar{display:none;align-items:center;gap:9px;background:var(--navy);padding:11px 14px}
+.vtopbar .ham{color:#fff;font-size:18px;line-height:1}
+.vtopbar .vtl{width:26px;height:26px;object-fit:contain;background:#fff;border-radius:6px;padding:2px;flex-shrink:0}
+.vtopbar .vt-name{color:#fff;font-size:14px;font-weight:600}
+.vtopbar .vt-sec{color:var(--slate-400);font-size:12px;border-left:1px solid rgba(255,255,255,.2);padding-left:9px;
+  white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.vtopbar .vt-sair{margin-left:auto;color:var(--slate-300);font-size:12.5px;white-space:nowrap}
+
 /* responsivo */
 @media (max-width:980px){
   .wrap{grid-template-columns:1fr}
   .stage{position:static;order:-1}
   .vsidebar{width:170px}
 }
-@media (max-width:560px){
+@media (max-width:760px){
+  body{background-image:none}
+  .topbar{padding:14px 16px}
+  .topbar .tag{display:none}
+  .wrap{padding:14px 12px 48px;gap:18px}
+  .rail h1{font-size:21px}
+  .rail>p.lede{font-size:13.5px;margin-bottom:16px}
+  .narration{min-height:0}
+  .frame{border-radius:12px;box-shadow:0 12px 30px -16px rgba(0,0,0,.5),0 0 0 1px rgba(232,238,246,.08)}
+  .chrome{padding:8px 10px}
+  .chrome .url{font-size:10px}
+  .screen{min-height:auto}
+  /* shell: sidebar vira barra superior; conteúdo flui sem scroll aninhado */
+  .appshell{flex-direction:column;min-height:auto}
   .vsidebar{display:none}
+  .vtopbar{display:flex}
+  .appcontent{max-height:none;overflow:visible}
+  .disclaimer{font-size:11px;padding:7px 14px;line-height:1.45}
+  .disclaimer .dot-sep{display:none}
+  .disclaimer .disc-x{display:block;margin-top:2px}
+  .pad{padding:16px 15px}
+  .h-page{font-size:18px}
+  .metrics{grid-template-columns:1fr 1fr;max-width:none}
+  .navgrid{grid-template-columns:1fr 1fr;max-width:none}
+  .an-grid2{grid-template-columns:1fr}
+  .ev-cmp{max-width:none}
+  .ev-card{padding:12px}
+  /* tutor: altura natural, sem scroll interno minúsculo */
+  .tutor{height:auto;min-height:78vh;padding:14px}
+  .bubbles{min-height:46vh}
+  .bub.ai .body,.bub.user .body{font-size:14px}
+}
+@media (max-width:430px){
   .faixas{grid-template-columns:repeat(3,1fr)}
-  .an-grid2,.metrics,.navgrid{grid-template-columns:1fr}
+  .metrics,.navgrid{grid-template-columns:1fr}
+  .actions{flex-direction:column-reverse;align-items:stretch;gap:8px}
+  .actions .btn-app{width:100%;text-align:center}
+  .vtopbar .vt-sec{display:none}
+  .controls{flex-direction:column}
+  .controls .btn{width:100%}
 }
 @media (prefers-reduced-motion:reduce){
   *,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important}
@@ -475,12 +520,19 @@ body{
             </aside>
 
             <div class="appmain">
+              <div class="vtopbar">
+                <span class="ham">☰</span>
+                <img src="data:image/png;base64,iVBORw0KGgo=" alt="" class="vtl" id="mobLogo">
+                <span class="vt-name">Vytal</span>
+                <span class="vt-sec" id="mobTitle">Início</span>
+                <span class="vt-sair">🚪 Sair</span>
+              </div>
               <div class="disclaimer">
-                <strong>Exercício acadêmico.</strong> Caso anonimizado, sem dados que identifiquem o paciente. <a>detalhes</a>
+                <span class="disc-x"><strong>Exercício acadêmico.</strong> Caso anonimizado, sem dados que identifiquem o paciente. <a>detalhes</a></span>
                 <span class="dot-sep">·</span>
-                <strong>Aprender sem medo de errar.</strong> Registros formativos, sem nota.
+                <span class="disc-x"><strong>Aprender sem medo de errar.</strong> Registros formativos, sem nota.</span>
                 <span class="dot-sep">·</span>
-                <strong>Ferramenta educacional.</strong> Não diagnostica nem prescreve.
+                <span class="disc-x"><strong>Ferramenta educacional.</strong> Não diagnostica nem prescreve.</span>
               </div>
 
               <div class="appcontent" id="appcontent">
@@ -844,8 +896,10 @@ body{
   function showPanel(name){
     document.querySelectorAll('.panel').forEach(p=>p.style.display=(p.dataset.panel===name?'block':'none'));
   }
+  const NAV_LABEL={inicio:'Início',novocaso:'Novo caso',casos:'Meus casos',tutor:'Assistente',evolucao:'Minha evolução',agenda:'Agenda'};
   function setNav(name){
     document.querySelectorAll('#vnav a').forEach(a=>a.classList.toggle('active',a.dataset.nav===name));
+    const mt=$('mobTitle'); if(mt) mt.textContent=NAV_LABEL[name]||'';
   }
 
   // ---- reseta tudo ----
@@ -1192,6 +1246,9 @@ body{
     btnNext.disabled=i===STEPS.length-1;
     play(i,token);
   }
+
+  // usa o logo real (da sidebar) também na barra superior mobile
+  (function(){const src=document.querySelector('.vhead img')?.src; const m=$('mobLogo'); if(src&&m)m.src=src;})();
 
   go(0);
 })();
