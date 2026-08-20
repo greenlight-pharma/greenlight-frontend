@@ -28,7 +28,7 @@ export default function LoginPage() {
           onclick e digitar Enter na senha não fazia nada. */}
       <form className="login-card" onSubmit={onSubmit}>
         <div className="login-logo">
-          <img src="./vytalsaude.png" alt="Vytal" />
+          <img src={`${import.meta.env.BASE_URL}vytalsaude.png`} alt="Vytal" />
         </div>
         <div className="subtitle">Painel Médico</div>
 

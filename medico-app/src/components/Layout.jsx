@@ -44,7 +44,7 @@ export default function Layout({ children }) {
       <aside className={menuOpen ? "sidebar open" : "sidebar"}>
         <div className="sidebar-header">
           <div className="sidebar-logo">
-            <img src="./vytalsaude.png" alt="Vytal" />
+            <img src={`${import.meta.env.BASE_URL}vytalsaude.png`} alt="Vytal" />
             <div className="brand-text">
               <div className="brand">Vytal</div>
               <div className="brand-sub">Painel Médico</div>

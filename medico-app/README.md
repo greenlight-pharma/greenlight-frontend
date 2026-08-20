@@ -18,10 +18,16 @@ para outro: `VITE_API_URL=http://localhost:3000 npm run dev`.
 
 ## Deploy
 
-`npm run build` gera `dist/` com caminhos relativos (`base: "./"`), então o
-build funciona em qualquer subpasta de hospedagem estática — igual ao
-`medico.html` de hoje. O roteamento é por hash (`#/pacientes`), o que evita
-404 no F5 sem precisar de regra de rewrite no servidor.
+Publicado em **https://www.vytalsaude.com.br/painel-medico**, junto do
+`medico.html` antigo, que segue no ar e intocado.
+
+`npm run build` gera `dist/` com base **absoluta** `/painel-medico/`. Não é
+`./` de propósito: com base relativa, abrir a URL sem a barra final fazia o
+`./assets/...` resolver para a pasta pai e a página vinha em branco. Para
+publicar em outro caminho: `VITE_BASE=/outro/ npm run build`.
+
+O roteamento é por hash (`#/pacientes`), o que evita 404 no F5 sem precisar
+de regra de rewrite no servidor.
 
 ## Estrutura
 
