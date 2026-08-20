@@ -85,9 +85,14 @@ então resolva as duas coisas de uma vez: uma coluna `optInAt` e
 
 ## 3. Passo a passo
 
-### Passo 0 — Junte os documentos (é aqui que trava)
+### Passo 0 — Junte os documentos e submeta cedo
 
-A verificação de empresa da Meta é o gargalo. Tenha em mãos:
+A verificação de empresa é o que demora, mas **não bloqueia o resto**: no fluxo
+guiado da Meta ela aparece como Etapa 3, e os "5 minutos" são só o upload — a
+análise leva dias. Suba os documentos assim que puder e siga trabalhando nas
+etapas 1 e 2 em paralelo.
+
+Tenha em mãos:
 
 - CNPJ ativo
 - Cartão CNPJ / contrato social
@@ -164,6 +169,35 @@ Cuidados que causam rejeição:
 Se o médico não preencheu orientações, `{{3}}` não pode ir vazia — mande
 algo neutro como "conforme a prescrição" ou registre **dois templates**,
 um com e um sem o bloco de orientação.
+
+### Passo 4.5 — Usuário do sistema (o token que NÃO expira)
+
+Este é o passo que mais derruba integração da Cloud API, e é fácil de não
+perceber que existe.
+
+O token que a Meta mostra no painel durante os testes **expira em 24 horas**.
+Você constrói com ele, tudo funciona, e no dia seguinte a produção morre com
+401 sem explicação nenhuma — o lembrete simplesmente para de sair.
+
+O token permanente vem de um **Usuário do sistema**:
+
+1. Business Manager → Configurações da empresa → **Usuários do sistema**
+2. Criar usuário do sistema (função: administrador)
+3. **Adicionar ativos** → sua WABA → permissão de controle total
+4. **Gerar novo token** → escolher o App → marcar:
+   - `whatsapp_business_messaging` (enviar mensagem)
+   - `whatsapp_business_management` (gerir templates e número)
+5. Copiar o token **na hora** — ele não é exibido de novo
+
+Esse é o valor de `WA_TOKEN` no Railway. Nunca o token do painel de teste.
+
+### Passo 4.6 — Forma de pagamento
+
+A WABA precisa de cartão cadastrado antes de sair da franquia gratuita.
+Business Manager → Contas do WhatsApp → sua WABA → **Cobrança**.
+
+Sem cartão, o disparo para quando a franquia acaba — e você descobre pelo
+paciente que não recebeu o lembrete, não por um alerta.
 
 ### Passo 5 — Trocar o envio no backend
 
@@ -393,12 +427,17 @@ de decisão, e é melhor decidir antes do piloto do que depois.
 ## 7. Ordem sugerida
 
 1. Reunir documentos e submeter a verificação de empresa — **começa hoje**,
-   é o que demora e não depende de código.
+   é o que demora. Ela roda em paralelo: não espere aprovar para seguir.
 2. Enquanto aguarda: app + número de teste + implementar `sendCloudTemplate`
-   e o webhook com o provider `cloud` desligado em produção.
-3. Submeter os templates assim que a conta for aprovada (aprovação de
+   e o webhook, com o provider `cloud` desligado em produção. O número de
+   teste só alcança até 5 destinatários que você cadastra na hora — serve
+   para validar webhook e formato de template, não para testar com paciente.
+3. Criar o **Usuário do sistema** e trocar o token temporário pelo permanente
+   ANTES de qualquer teste que precise durar mais de um dia.
+4. Submeter os templates assim que a conta for aprovada (aprovação de
    template costuma ser rápida, mas rejeição custa nova rodada).
-4. Número novo de produção, testar com a equipe.
-5. Migrar por lote, com a Evolution ainda de pé.
-6. Só desligar a Evolution quando o status de entrega da Cloud API mostrar
+5. Cadastrar forma de pagamento na WABA.
+6. Número novo de produção, testar com a equipe.
+7. Migrar por lote, com a Evolution ainda de pé.
+8. Só desligar a Evolution quando o status de entrega da Cloud API mostrar
    que os pacientes estão recebendo.
