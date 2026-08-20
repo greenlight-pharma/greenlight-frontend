@@ -3,13 +3,69 @@ import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import Modal from "../../components/Modal.jsx";
 import Message from "../../components/Message.jsx";
 import ConfirmDialog from "../../components/ConfirmDialog.jsx";
+import EditBasicModal from "./EditBasicModal.jsx";
+import { dataHoraBR } from "./PatientItem.jsx";
 import { api } from "../../lib/api.js";
 import { calcBMI } from "../../lib/calculators.js";
+import { formatBRPhone } from "../../lib/phone.js";
 
-// [ANTHRO] Antropometria e sinais vitais. O IMC é derivado na hora a partir
-// de peso e altura — nunca guardado — pra não existir a chance de um IMC
-// gravado ficar em desacordo com os valores que o originaram.
-export default function AnthroCard({ phone }) {
+// [PRONTUARIO] Card "📋 Dados" — primeiro do prontuário, igual ao medico.html:
+// identificação do paciente e, no mesmo card (separado por linha), o histórico
+// de antropometria e sinais vitais.
+export default function DadosCard({ phone, patient, linkedToMe }) {
+  const [editando, setEditando] = useState(false);
+
+  const sexoLabel =
+    patient?.biologicalSex === "feminino"
+      ? "Feminino"
+      : patient?.biologicalSex === "masculino"
+        ? "Masculino"
+        : "Não informado";
+
+  const campos = [
+    { label: "Nome", value: patient?.name || "—" },
+    { label: "Telefone", value: patient?.phone ? formatBRPhone(patient.phone) : formatBRPhone(phone) },
+    { label: "Idade", value: patient?.patientAge ? `${patient.patientAge} anos` : "—" },
+    { label: "Sexo biológico", value: sexoLabel },
+    {
+      label: "Vínculo",
+      value: linkedToMe ? "Sim, vinculado a você" : "Não vinculado (acesso por consulta)",
+    },
+  ];
+
+  return (
+    <div className="card" id="card-dados">
+      <h3>📋 Dados</h3>
+
+      <div className="patient-data-grid">
+        {campos.map((f) => (
+          <div className="data-field" key={f.label}>
+            <div className="data-label">{f.label}</div>
+            <div className="data-value">{f.value}</div>
+          </div>
+        ))}
+      </div>
+
+      {/* Telefone fica fora da edição de propósito: é a chave do histórico
+          e a identidade do paciente no WhatsApp. */}
+      <div style={{ marginTop: 12 }}>
+        <button className="primary btn-compacto" onClick={() => setEditando(true)}>
+          Editar dados
+        </button>
+      </div>
+
+      <AnthroSecao phone={phone} />
+
+      {editando && (
+        <EditBasicModal phone={phone} patient={patient} onClose={() => setEditando(false)} />
+      )}
+    </div>
+  );
+}
+
+// [ANTHRO] Antropometria vive DENTRO do card de Dados, como no medico.html —
+// é dado de identificação/acompanhamento, não card próprio.
+function AnthroSecao({ phone }) {
   const qc = useQueryClient();
   const [aberto, setAberto] = useState(false);
   const [removendo, setRemovendo] = useState(null);
@@ -26,12 +82,16 @@ export default function AnthroCard({ phone }) {
   });
 
   return (
-    <div className="card">
-      <div className="card-header">
-        <h3>📏 Antropometria e sinais vitais</h3>
-        <button className="btn-secondary-outline" onClick={() => setAberto(true)}>
-          + Registrar
+    <div className="anthro-secao">
+      <div className="anthro-cabecalho">
+        <strong>Antropometria e sinais vitais</strong>
+        <button className="primary btn-compacto" onClick={() => setAberto(true)}>
+          ➕ Registrar medida
         </button>
+      </div>
+      <div className="card-subtitle">
+        Histórico de medidas. Cada registro guarda a data — útil pra acompanhar
+        evolução.
       </div>
 
       {isLoading && <div className="state-msg">Carregando...</div>}
@@ -40,25 +100,27 @@ export default function AnthroCard({ phone }) {
       )}
 
       {registros.map((r) => {
+        // O IMC é calculado na hora a partir de peso e altura, nunca gravado:
+        // um IMC persistido pode ficar em desacordo com os valores que o geraram.
         const imc = calcBMI(r.weightKg, r.heightCm);
         return (
           <div className="anthro-linha" key={r.id}>
             <div>
               <div className="anthro-valores">
-                {r.weightKg != null && <span>{r.weightKg} kg</span>}
-                {r.heightCm != null && <span>{r.heightCm} cm</span>}
+                {r.weightKg != null && <span>Peso {r.weightKg} kg</span>}
+                {r.heightCm != null && <span>Altura {r.heightCm} cm</span>}
                 {imc && <span className="anthro-imc">IMC {imc.toFixed(1)}</span>}
-                {r.waistCm != null && <span>cintura {r.waistCm} cm</span>}
-                {r.systolicBP != null && r.diastolicBP != null && (
+                {r.waistCm != null && <span>Circ. abd. {r.waistCm} cm</span>}
+                {(r.systolicBP != null || r.diastolicBP != null) && (
                   <span>
-                    PA {r.systolicBP}/{r.diastolicBP} mmHg
+                    PA {r.systolicBP ?? "?"}/{r.diastolicBP ?? "?"} mmHg
                   </span>
                 )}
                 {r.heartRate != null && <span>FC {r.heartRate} bpm</span>}
               </div>
               {r.notes && <div className="texto-suave">{r.notes}</div>}
               <div className="anthro-data">
-                {new Date(r.measuredAt || r.createdAt).toLocaleString("pt-BR")}
+                {dataHoraBR(r.measuredAt || r.createdAt)}
                 {r.doctorName && ` · ${r.doctorName}`}
               </div>
             </div>
@@ -114,14 +176,12 @@ function AnthroForm({ phone, onClose }) {
   });
 
   const set = (k, v) => setF((x) => ({ ...x, [k]: v }));
-
-  // Prévia do IMC enquanto digita — o médico confere o número antes de gravar.
   const imc = calcBMI(f.weightKg, f.heightCm);
 
   async function submeter(e) {
     e.preventDefault();
     setErro("");
-    // Campos vazios viram null: o backend distingue "não medido" de zero.
+    // Campo vazio vira null: o backend distingue "não medido" de zero.
     const body = Object.fromEntries(
       Object.entries(f).map(([k, v]) => [k, v === "" ? null : v])
     );

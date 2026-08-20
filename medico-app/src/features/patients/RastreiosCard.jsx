@@ -1,14 +1,18 @@
 import { rastreiosAplicaveis } from "../../lib/screening.js";
 
-// Apoio a rastreios por faixa etária/sexo. Não decide nem comunica ao
-// paciente — e mostra a divergência entre diretrizes quando existe, em vez
-// de escolher uma por conta própria.
-export default function ScreeningCard({ patient }) {
+// [PRONTUARIO] Card "🔎 Rastreios por faixa". APOIO ao médico: não decide,
+// não prescreve e nada é enviado ao paciente automaticamente.
+export default function RastreiosCard({ patient }) {
   const r = rastreiosAplicaveis(patient);
 
   return (
-    <div className="card">
-      <h3>🔎 Rastreios a considerar</h3>
+    <div className="card" id="card-rastreios">
+      <h3>🔎 Rastreios por faixa</h3>
+      <div className="card-subtitle">
+        Referência geral por idade e sexo biológico, como apoio à decisão.{" "}
+        <strong>Não é prescrição</strong> — o médico confirma conforme a diretriz
+        vigente e o caso individual. Nada é enviado ao paciente automaticamente.
+      </div>
 
       {!r.ok ? (
         <div className="state-msg">
@@ -17,10 +21,9 @@ export default function ScreeningCard({ patient }) {
         </div>
       ) : (
         <>
-          <div className="perfil-linha">
-            Para sexo biológico <strong>{r.sexo}</strong>,{" "}
-            <strong>{r.idade} anos</strong> — rastreios geralmente considerados
-            nesta faixa:
+          <div className="rastreio-intro">
+            Para sexo biológico <strong>{r.sexo}</strong>, <strong>{r.idade} anos</strong> —
+            rastreios geralmente considerados nesta faixa:
           </div>
 
           {!r.itens.length && (
@@ -34,6 +37,8 @@ export default function ScreeningCard({ patient }) {
               <div className="rastreio-nome">{g.nome}</div>
               <div className="rastreio-faixa">{g.faixaTexto}</div>
               {g.nota && <div className="rastreio-nota">{g.nota}</div>}
+              {/* Divergência entre diretrizes aparece em vez de o sistema
+                  escolher uma por conta própria. */}
               {g.divergencia && (
                 <div className="rastreio-divergencia">
                   ⚠️ <strong>Diretrizes divergem:</strong> {g.divergencia}
@@ -42,11 +47,6 @@ export default function ScreeningCard({ patient }) {
               <div className="rastreio-fonte">Fonte: {g.fonte}</div>
             </div>
           ))}
-
-          <div className="calc-aviso">
-            Lista de apoio por faixa etária. A indicação é sua, considerando
-            histórico e o caso.
-          </div>
         </>
       )}
     </div>

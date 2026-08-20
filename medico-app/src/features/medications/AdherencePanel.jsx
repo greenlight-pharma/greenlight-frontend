@@ -1,13 +1,17 @@
 import { RESPOSTA } from "../../lib/adherence.js";
 
-// [ADESAO] Painel dedicado. O dado sempre existiu no backend (patient_events)
-// e nunca teve tela. Para UBS é o número que a coordenação vai pedir:
-// quem está abandonando o tratamento antes de descompensar.
+// [ADESAO] O dado sempre existiu no backend (patient_events) e nunca teve
+// tela. Para UBS é o número que a coordenação vai pedir: quem está
+// abandonando o tratamento antes de descompensar.
+//
+// Renderiza como SEÇÃO dentro do card de Medicações, não como card próprio —
+// card dentro de card duplica borda e padding, e a adesão fala justamente
+// sobre as medicações listadas acima dela.
 export default function AdherencePanel({ resumo = [], respostas = [] }) {
   if (!resumo.length) {
     return (
-      <div className="card">
-        <h3>📊 Adesão ao tratamento</h3>
+      <div className="adesao-secao">
+        <strong>📊 Adesão ao tratamento</strong>
         <div className="state-msg">
           Nenhuma resposta do paciente registrada nos últimos 30 dias. O
           lembrete pode estar sendo enviado sem retorno — vale confirmar o
@@ -18,8 +22,8 @@ export default function AdherencePanel({ resumo = [], respostas = [] }) {
   }
 
   return (
-    <div className="card">
-      <h3>📊 Adesão ao tratamento (30 dias)</h3>
+    <div className="adesao-secao">
+      <strong>📊 Adesão ao tratamento (30 dias)</strong>
 
       <div className="adesao-grid">
         {resumo.map((r) => (

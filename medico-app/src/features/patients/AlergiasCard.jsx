@@ -3,21 +3,21 @@ import Modal from "../../components/Modal.jsx";
 import Message from "../../components/Message.jsx";
 import { useClinicalProfile, useSaveClinicalProfile } from "./api.js";
 
-// Alergias e comorbidades. Fica em card próprio porque é o dado que o médico
-// precisa ver ANTES de prescrever — e o lembrete de medicação depende de
-// prescrição correta.
-export default function ClinicalProfileCard({ phone }) {
+// [PRONTUARIO] Card "⚠️ Alergias e comorbidades" — vem logo depois de Dados,
+// como no medico.html. Posição é decisão de segurança: é o que o médico
+// precisa ver ANTES de prescrever.
+export default function AlergiasCard({ phone }) {
   const { data, isLoading } = useClinicalProfile(phone);
   const salvar = useSaveClinicalProfile(phone);
   const [aberto, setAberto] = useState(false);
-  const [form, setForm] = useState({ allergies: "", comorbidities: "" });
+  const [form, setForm] = useState({ allergies: "", chronicConditions: "" });
   const [erro, setErro] = useState("");
 
   useEffect(() => {
     if (data) {
       setForm({
         allergies: data.allergies || "",
-        comorbidities: data.comorbidities || "",
+        chronicConditions: data.chronicConditions || data.comorbidities || "",
       });
     }
   }, [data]);
@@ -33,11 +33,16 @@ export default function ClinicalProfileCard({ phone }) {
     }
   }
 
+  const alergias = data?.allergies?.trim();
+  const comorbidades = (data?.chronicConditions || data?.comorbidities || "").trim();
+
   return (
-    <div className="card">
-      <div className="card-header">
-        <h3>🩺 Perfil clínico</h3>
-        <button className="btn-secondary-outline" onClick={() => setAberto(true)}>
+    <div className="card" id="card-alergias">
+      <h3>⚠️ Alergias e comorbidades</h3>
+      <div className="card-subtitle">Informação de segurança. Confira antes de prescrever.</div>
+
+      <div style={{ marginBottom: 12 }}>
+        <button className="primary btn-compacto" onClick={() => setAberto(true)}>
           Editar
         </button>
       </div>
@@ -45,23 +50,27 @@ export default function ClinicalProfileCard({ phone }) {
       {isLoading ? (
         <div className="state-msg">Carregando...</div>
       ) : (
-        <>
+        <div className="perfil-conteudo">
           <div className="perfil-linha">
             <strong>Alergias:</strong>{" "}
-            {data?.allergies ? (
-              <span className="destaque-alerta">{data.allergies}</span>
+            {alergias ? (
+              <span className="destaque-alerta">{alergias}</span>
             ) : (
-              <span className="texto-suave">não informado</span>
+              /* Campo em branco seria lido como "não tem alergia". Dizer que
+                 não foi registrado é a diferença entre não saber e afirmar. */
+              <span className="texto-suave">
+                não registrado — não assumir ausência
+              </span>
             )}
           </div>
           <div className="perfil-linha">
             <strong>Comorbidades:</strong>{" "}
-            {data?.comorbidities || <span className="texto-suave">não informado</span>}
+            {comorbidades || <span className="texto-suave">não registrado</span>}
           </div>
-        </>
+        </div>
       )}
 
-      <Modal open={aberto} title="Perfil clínico" onClose={() => setAberto(false)}>
+      <Modal open={aberto} title="Alergias e comorbidades" onClose={() => setAberto(false)}>
         <form onSubmit={submeter}>
           <label htmlFor="cpAlergias">Alergias</label>
           <textarea
@@ -74,8 +83,8 @@ export default function ClinicalProfileCard({ phone }) {
           <label htmlFor="cpComorb">Comorbidades</label>
           <textarea
             id="cpComorb"
-            value={form.comorbidities}
-            onChange={(e) => setForm((f) => ({ ...f, comorbidities: e.target.value }))}
+            value={form.chronicConditions}
+            onChange={(e) => setForm((f) => ({ ...f, chronicConditions: e.target.value }))}
             placeholder="Ex: HAS, DM2"
           />
 
