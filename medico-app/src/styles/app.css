@@ -1,0 +1,311 @@
+/* ============================================================
+   Estilos dos componentes novos do painel em React.
+   O que veio do medico.html está nos outros arquivos; aqui ficam as
+   classes que substituem os ~250 style="" inline do arquivo antigo.
+   ============================================================ */
+
+/* ----- estados de lista ----- */
+.state-msg {
+  padding: 14px;
+  color: var(--texto-suave);
+  font-size: 14px;
+  text-align: center;
+}
+.state-error { color: var(--erro-forte); }
+
+/* ----- mensagens ----- */
+.message-error {
+  background: var(--erro-fundo);
+  color: var(--erro-forte);
+  border: 1px solid var(--erro);
+  padding: 10px 12px;
+  border-radius: var(--raio);
+  margin: 10px 0;
+  font-size: 14px;
+}
+.message-success {
+  background: var(--sucesso-fundo);
+  color: #065f46;
+  border: 1px solid var(--sucesso);
+  padding: 10px 12px;
+  border-radius: var(--raio);
+  margin: 10px 0;
+  font-size: 14px;
+}
+.message-warning {
+  background: var(--alerta-fundo);
+  color: #92400e;
+  border: 1px solid var(--alerta);
+  padding: 10px 12px;
+  border-radius: var(--raio);
+  margin: 10px 0;
+  font-size: 14px;
+}
+
+/* ----- cabeçalho de página e cards ----- */
+.page-header { display: flex; justify-content: space-between; align-items: flex-start; gap: 12px; flex-wrap: wrap; }
+.page-header-actions { display: flex; gap: 8px; }
+.card-header { display: flex; justify-content: space-between; align-items: center; gap: 12px; margin-bottom: 10px; }
+.card-header h3 { margin: 0; }
+.card-estreito { max-width: 440px; }
+.card-atencao { border-left: 4px solid var(--alerta); }
+.card-cta { display: flex; justify-content: space-between; align-items: center; gap: 16px; flex-wrap: wrap; }
+
+/* ----- busca ----- */
+.busca {
+  width: 100%;
+  padding: 11px 14px;
+  border: 1px solid var(--borda-forte);
+  border-radius: var(--raio);
+  font-size: 15px;
+}
+.busca-resultados { margin-top: 8px; display: flex; flex-direction: column; }
+.busca-item {
+  text-align: left;
+  background: none;
+  border: none;
+  border-bottom: 1px solid var(--borda);
+  padding: 10px 4px;
+  cursor: pointer;
+  font-size: 14px;
+}
+.busca-item:hover { background: var(--fundo-suave); }
+
+/* ----- stats ----- */
+.stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 12px; margin-bottom: 16px; }
+.stats a { text-decoration: none; }
+.stat-valor { font-size: 30px; font-weight: 700; color: var(--azul); }
+.stat-rotulo { font-size: 13px; color: var(--texto-suave); }
+
+/* ----- formulário ----- */
+.field { margin-bottom: 4px; }
+.field-error { color: var(--erro-forte); font-size: 12px; margin-top: 2px; }
+.grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
+.radio-linha { display: flex; gap: 18px; margin: 8px 0; flex-wrap: wrap; }
+.radio-linha label { display: flex; align-items: center; gap: 6px; font-weight: 500; white-space: nowrap; }
+.checkbox-linha { display: flex; gap: 8px; align-items: flex-start; margin: 12px 0; font-weight: 400; }
+.obrigatorio { color: var(--erro); }
+.arquivo-btn { cursor: pointer; display: inline-block; }
+
+/* ----- modal: contexto e confirmação ----- */
+.modal-context {
+  background: var(--azul-claro);
+  border: 1px solid var(--azul-borda);
+  color: var(--azul-escuro);
+  padding: 10px 12px;
+  border-radius: var(--raio);
+  margin-bottom: 14px;
+  font-size: 13px;
+}
+.confirm-body { font-size: 14px; color: var(--texto-forte); }
+.confirm-body ul { margin: 8px 0 8px 18px; padding: 0; }
+.confirm-warn { color: var(--erro-forte); font-weight: 600; }
+.btn-danger {
+  background: var(--erro);
+  color: var(--branco);
+  border: none;
+  padding: 10px 18px;
+  border-radius: var(--raio);
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+/* ----- editor de horários ----- */
+.posologia-presets { display: flex; align-items: center; gap: 6px; flex-wrap: wrap; margin-bottom: 8px; }
+.preset-btn {
+  background: var(--azul-claro);
+  border: 1px solid var(--azul-borda);
+  color: var(--azul-escuro);
+  border-radius: 999px;
+  padding: 4px 10px;
+  font-size: 12px;
+  cursor: pointer;
+}
+.preset-btn:hover { background: var(--azul-borda); }
+.time-warn { color: #92400e; font-size: 12px; }
+.times-preview {
+  margin-top: 8px;
+  padding: 8px 10px;
+  background: var(--azul-claro);
+  border-radius: var(--raio);
+  font-size: 13px;
+  color: var(--azul-escuro);
+}
+
+/* ----- dica de dose ----- */
+.dose-hint {
+  margin-top: 8px;
+  padding: 10px 12px;
+  background: var(--azul-claro);
+  border: 1px solid var(--azul-borda);
+  border-radius: 6px;
+  font-size: 13px;
+  color: var(--azul-escuro);
+}
+.dose-hint-note { margin-top: 6px; font-size: 11px; color: #475569; font-style: italic; }
+
+/* ----- medicações ----- */
+.med-row { display: flex; justify-content: space-between; gap: 12px; padding: 12px 0; border-bottom: 1px solid var(--borda); }
+.med-row:last-child { border-bottom: none; }
+.med-main { flex: 1; min-width: 0; }
+.med-name { font-weight: 600; font-size: 15px; display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+.med-dose { font-weight: 400; color: var(--texto-forte); }
+.med-times { font-size: 13px; color: var(--texto-forte); margin-top: 4px; }
+.med-instr { font-size: 13px; color: var(--texto-suave); margin-top: 4px; }
+.med-meta { font-size: 12px; color: var(--texto-fraco); margin-top: 4px; }
+.med-alert { color: #92400e; background: var(--alerta-fundo); border-radius: 6px; padding: 6px 8px; font-size: 13px; margin-top: 6px; }
+.med-inativa-nota { font-size: 12px; color: var(--texto-fraco); }
+.med-encerradas { margin-top: 10px; font-size: 14px; }
+.med-encerradas summary { cursor: pointer; color: var(--texto-suave); }
+
+/* ----- adesão ----- */
+.adesao-inline { font-size: 13px; color: var(--texto-forte); margin-top: 6px; }
+.adesao-erro { color: var(--erro-forte); }
+.adesao-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 12px; }
+.adesao-card { border: 1px solid var(--borda); border-radius: var(--raio); padding: 12px; }
+.adesao-med { font-weight: 600; font-size: 14px; }
+.adesao-taxa { font-size: 26px; font-weight: 700; }
+.adesao-taxa.boa { color: var(--sucesso); }
+.adesao-taxa.baixa { color: var(--erro); }
+.adesao-detalhe { font-size: 12px; color: var(--texto-suave); }
+.adesao-nota { margin-top: 12px; font-size: 12px; color: var(--texto-suave); background: var(--fundo-suave); padding: 8px 10px; border-radius: 6px; }
+.adesao-historico { margin-top: 12px; }
+.adesao-historico summary { cursor: pointer; color: var(--texto-suave); font-size: 14px; }
+.resposta-ok { color: var(--sucesso); }
+.resposta-alerta { color: #92400e; }
+.resposta-erro { color: var(--erro-forte); font-weight: 600; }
+
+/* ----- pendências no início ----- */
+.pendencia { font-size: 14px; padding: 8px 0; border-bottom: 1px solid var(--borda); }
+.pendencia:last-child { border-bottom: none; }
+
+/* ----- perfil clínico ----- */
+.perfil-linha { font-size: 14px; margin: 4px 0; }
+.destaque-alerta { color: var(--erro-forte); font-weight: 600; }
+.texto-suave { color: var(--texto-suave); }
+.texto-alerta { color: #92400e; }
+.link-forte { color: var(--azul); font-weight: 600; text-decoration: none; }
+.link-forte:hover { text-decoration: underline; }
+.col-acoes { text-align: right; }
+
+/* ----- exames ----- */
+.exam-row { display: flex; justify-content: space-between; align-items: center; gap: 12px; padding: 10px 0; border-bottom: 1px solid var(--borda); }
+.exam-row:last-child { border-bottom: none; }
+.exam-name { font-weight: 600; font-size: 14px; }
+.exam-meta { font-size: 12px; color: var(--texto-suave); }
+
+/* ----- linha do tempo ----- */
+.timeline { list-style: none; margin: 0; padding: 0; }
+.timeline li { display: flex; gap: 10px; padding: 10px 0; border-bottom: 1px solid var(--borda); }
+.timeline li:last-child { border-bottom: none; }
+.tl-icone { font-size: 18px; }
+.tl-titulo { font-weight: 600; font-size: 14px; }
+.tl-detalhe { font-size: 13px; color: var(--texto-forte); }
+.tl-quando { font-size: 12px; color: var(--texto-fraco); }
+
+/* ----- consultas ----- */
+.consultas-tabs { display: flex; gap: 6px; margin-bottom: 12px; flex-wrap: wrap; }
+.consulta-row { display: flex; justify-content: space-between; gap: 12px; padding: 12px 0; border-bottom: 1px solid var(--borda); flex-wrap: wrap; }
+.consulta-row:last-child { border-bottom: none; }
+.consulta-nome { font-size: 15px; }
+.consulta-motivo { font-size: 13px; color: var(--texto-forte); }
+.consulta-meta { font-size: 12px; color: var(--texto-fraco); }
+.soap-campo { min-height: 90px; }
+.rascunho-status { font-size: 12px; color: var(--texto-fraco); margin: 8px 0; }
+
+/* ----- agenda ----- */
+.agenda-grade { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 12px; }
+.agenda-cabecalho { display: flex; justify-content: space-between; align-items: baseline; border-bottom: 1px solid var(--borda); padding-bottom: 6px; margin-bottom: 8px; text-transform: capitalize; }
+.agenda-item { display: flex; gap: 10px; padding: 8px 0; border-bottom: 1px solid var(--borda); }
+.agenda-item:last-child { border-bottom: none; }
+.agenda-hora { font-weight: 700; color: var(--azul); font-size: 14px; min-width: 46px; }
+.agenda-motivo { font-size: 13px; color: var(--texto-forte); }
+.agenda-meta { font-size: 12px; color: var(--texto-fraco); }
+
+/* ----- assistente ----- */
+.assistente-conversa { max-height: 60vh; overflow-y: auto; padding: 4px; }
+.balao { padding: 12px 14px; border-radius: var(--raio-g); margin: 8px 0; font-size: 14px; line-height: 1.5; }
+.balao-medico { background: var(--azul-claro); border: 1px solid var(--azul-borda); margin-left: 15%; }
+.balao-assistente { background: var(--fundo-suave); border: 1px solid var(--borda); margin-right: 10%; }
+.assistente-form { display: flex; gap: 8px; align-items: flex-end; margin-top: 10px; }
+.assistente-form textarea { flex: 1; min-height: 64px; margin: 0; }
+
+/* markdown do assistente */
+.md-h { font-weight: 700; margin: 14px 0 6px; }
+.md-h1 { font-size: 17px; }
+.md-h2 { font-size: 15.5px; }
+.md-h3, .md-h4 { font-size: 14.5px; }
+.md-ul { margin: 6px 0 6px 18px; padding: 0; }
+.md-ul li { margin: 3px 0; }
+.md-p { margin: 4px 0; }
+.md-parcial { color: var(--texto-forte); }
+.md-espaco { height: 8px; }
+.md-hr { border: none; border-top: 1px solid var(--borda); margin: 14px 0; }
+
+/* ----- calculadoras ----- */
+.calc-layout { display: grid; grid-template-columns: 230px 1fr; gap: 16px; align-items: start; }
+.calc-menu { display: flex; flex-direction: column; gap: 4px; }
+.calc-categoria { font-size: 11px; text-transform: uppercase; letter-spacing: .04em; color: var(--texto-fraco); margin: 12px 0 4px; }
+.calc-btn { text-align: left; background: var(--branco); border: 1px solid var(--borda); border-radius: var(--raio); padding: 9px 12px; font-size: 14px; cursor: pointer; width: 100%; }
+.calc-btn.active { background: var(--azul); color: var(--branco); border-color: var(--azul); font-weight: 600; }
+.calc-resultado { margin-top: 14px; padding: 14px; background: var(--azul-claro); border: 1px solid var(--azul-borda); border-radius: var(--raio); }
+.calc-rotulo { font-size: 13px; color: var(--texto-suave); }
+.calc-valor { font-size: 26px; font-weight: 700; color: var(--azul-escuro); }
+.calc-valor span { font-size: 14px; font-weight: 500; }
+.calc-estagio { font-size: 14px; font-weight: 600; margin-top: 4px; }
+.calc-fonte { margin-top: 10px; font-size: 11px; color: var(--texto-suave); font-style: italic; }
+.calc-aviso { margin-top: 10px; padding: 8px 10px; background: var(--alerta-fundo); color: #92400e; border-radius: 6px; font-size: 12px; }
+.calc-secao { margin: 14px 0 6px; font-weight: 600; font-size: 13px; color: var(--texto-suave); }
+.iot-grupo { font-weight: 700; color: #075985; margin: 10px 0 4px; }
+.iot-droga { font-size: 13px; margin: 2px 0; }
+.gaso-bloco { margin-bottom: 12px; font-size: 14px; }
+.gaso-bloco ul { margin: 6px 0 0 18px; padding: 0; }
+
+@media (max-width: 768px) {
+  .calc-layout { grid-template-columns: 1fr; }
+  .grid-2, .grid-3 { grid-template-columns: 1fr; }
+  .balao-medico { margin-left: 0; }
+  .balao-assistente { margin-right: 0; }
+}
+
+/* ----- rastreios ----- */
+.rastreio { padding: 10px 0; border-bottom: 1px solid var(--borda); font-size: 14px; }
+.rastreio:last-of-type { border-bottom: none; }
+.rastreio-nome { font-weight: 600; }
+.rastreio-faixa { color: var(--texto-forte); font-size: 13px; }
+.rastreio-nota { color: var(--texto-suave); font-size: 13px; margin-top: 2px; }
+.rastreio-divergencia { background: var(--alerta-fundo); color: #92400e; border-radius: 6px; padding: 6px 8px; font-size: 13px; margin-top: 6px; }
+.rastreio-fonte { font-size: 11px; color: var(--texto-fraco); font-style: italic; margin-top: 4px; }
+
+/* ----- antropometria ----- */
+.anthro-linha { display: flex; justify-content: space-between; gap: 12px; padding: 8px 0; border-bottom: 1px solid var(--borda); font-size: 14px; }
+.anthro-linha:last-child { border-bottom: none; }
+.anthro-valores { display: flex; gap: 14px; flex-wrap: wrap; }
+.anthro-imc { font-weight: 600; }
+.anthro-data { font-size: 12px; color: var(--texto-fraco); }
+
+/* ----- documentos ----- */
+.doc-preview {
+  background: var(--fundo-suave);
+  border: 1px solid var(--borda);
+  border-radius: var(--raio);
+  padding: 12px;
+  font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+  font-size: 11px;
+  line-height: 1.45;
+  white-space: pre-wrap;
+  max-height: 260px;
+  overflow-y: auto;
+  color: var(--texto-forte);
+}
+
+/* ----- análise de exame ----- */
+.analise-cabecalho { display: flex; gap: 14px; flex-wrap: wrap; font-size: 13px; color: var(--texto-suave); margin-bottom: 10px; }
+.analise-resumo { padding: 10px 12px; border-radius: var(--raio); background: var(--sucesso-fundo); color: #065f46; font-weight: 600; font-size: 14px; margin-bottom: 12px; }
+.analise-resumo.alterado { background: var(--erro-fundo); color: var(--erro-forte); }
+.painel { margin-bottom: 16px; }
+.painel-titulo { font-weight: 700; font-size: 14px; color: #075985; margin-bottom: 6px; }
+.status-exame { display: inline-block; padding: 2px 8px; border-radius: 999px; font-size: 12px; font-weight: 600; white-space: nowrap; }
+.com-dica { border-bottom: 1px dotted var(--texto-fraco); cursor: help; }
