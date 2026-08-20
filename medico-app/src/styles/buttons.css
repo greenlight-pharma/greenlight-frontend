@@ -1,0 +1,56 @@
+/* ----- BUTTONS ----- */
+
+button.primary {
+  background: var(--azul);
+  color: white;
+  border: none;
+  padding: 10px 18px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 14px;
+  margin-top: 16px;
+}
+
+button.primary:hover {
+  background: var(--azul-escuro);
+}
+
+button.primary:disabled {
+  background: var(--sidebar-texto);
+  cursor: not-allowed;
+}
+
+/* ----- BOTÕES DE AÇÃO NA TABELA ----- */
+
+.row-actions {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+}
+
+.btn-icon {
+  background: transparent;
+  border: 1px solid var(--borda-forte);
+  color: var(--texto-forte);
+  padding: 4px 8px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 13px;
+  line-height: 1;
+  transition: background 0.15s, border-color 0.15s, color 0.15s;
+}
+
+.btn-icon:hover {
+  background: var(--fundo-cinza);
+}
+
+.btn-icon.btn-edit:hover {
+  border-color: var(--azul);
+  color: var(--azul);
+}
+
+.btn-icon.btn-archive:hover {
+  border-color: var(--erro);
+  color: var(--erro);
+}

@@ -1,0 +1,7 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "buildCommand": "bash scripts/build-vercel.sh",
+  "outputDirectory": ".vercel-out",
+  "installCommand": "echo 'sem dependências na raiz — o painel instala as suas no build'",
+  "trailingSlash": false
+}

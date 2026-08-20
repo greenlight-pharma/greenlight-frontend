@@ -1,0 +1,14 @@
+/* Ordem importa: tokens primeiro (define as variáveis), base depois
+   (reset), e então os domínios. */
+@import "./tokens.css";
+@import "./base.css";
+@import "./layout.css";
+@import "./login.css";
+@import "./cards.css";
+@import "./tables.css";
+@import "./forms.css";
+@import "./buttons.css";
+@import "./modal.css";
+@import "./prontuario.css";
+@import "./analysis.css";
+@import "./app.css";

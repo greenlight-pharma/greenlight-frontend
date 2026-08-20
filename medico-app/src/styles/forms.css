@@ -1,0 +1,93 @@
+/* ----- FORMS ----- */
+
+label {
+  display: block;
+  margin-top: 14px;
+  font-weight: 600;
+  font-size: 13px;
+  color: var(--texto-forte);
+}
+
+input, textarea, select {
+  width: 100%;
+  padding: 10px 12px;
+  margin-top: 6px;
+  border: 1px solid var(--borda-forte);
+  border-radius: 8px;
+  font-size: 14px;
+  background: white;
+}
+
+input:focus, textarea:focus, select:focus {
+  outline: none;
+  border-color: var(--azul);
+  box-shadow: 0 0 0 3px rgba(29, 78, 216, 0.1);
+}
+
+textarea {
+  min-height: 70px;
+  resize: vertical;
+  font-family: inherit;
+}
+
+/* ----- EDITOR ESTRUTURADO DE HORÁRIOS (medicação) ----- */
+.times-editor {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin: 4px 0 4px;
+}
+.times-editor .time-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.times-editor .time-row input[type="time"] {
+  flex: 0 0 140px;
+  padding: 8px 10px;
+  border: 1px solid var(--borda-forte);
+  border-radius: 6px;
+  font-size: 14px;
+  font-family: inherit;
+}
+.times-editor .time-row .remove-time {
+  background: none;
+  border: 1px solid var(--borda);
+  color: var(--texto-suave);
+  width: 30px;
+  height: 30px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 16px;
+  line-height: 1;
+  padding: 0;
+}
+.times-editor .time-row .remove-time:hover {
+  background: var(--erro-fundo);
+  border-color: #fca5a5;
+  color: #b91c1c;
+}
+.times-editor .add-time-btn {
+  align-self: flex-start;
+  background: #f1f5f9;
+  border: 1px dashed var(--sidebar-divisor);
+  color: #0284c7;
+  padding: 6px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 600;
+}
+.times-editor .add-time-btn:hover {
+  background: #e0f2fe;
+  border-color: #0284c7;
+}
+.times-editor .legacy-warning {
+  background: var(--alerta-fundo);
+  border: 1px solid #fcd34d;
+  border-radius: 6px;
+  padding: 8px 10px;
+  font-size: 12px;
+  color: #78350f;
+  line-height: 1.4;
+}

@@ -1,0 +1,49 @@
+/* ============================================================
+   TOKENS — paleta e forma do painel.
+
+   O medico.html repetia hex cru em ~250 pontos (CSS + style inline).
+   Trocar um tom de azul era caçar string pelo arquivo. Aqui cada cor tem
+   nome e um único lugar de edição; o resto do CSS referencia a variável.
+   ============================================================ */
+
+:root {
+  /* Marca */
+  --azul: #1d4ed8;
+  --azul-escuro: #1e40af;
+  --azul-medio: #2563eb;
+  --azul-claro: #eff6ff;
+  --azul-borda: #93c5fd;
+
+  /* Neutros */
+  --texto: #1f2933;
+  --texto-forte: #374151;
+  --texto-suave: #6b7280;
+  --texto-fraco: #9ca3af;
+  --borda: #e5e7eb;
+  --borda-forte: #d1d5db;
+  --fundo: #f3f5f7;
+  --fundo-suave: #f9fafb;
+  --fundo-cinza: #f3f4f6;
+  --branco: #ffffff;
+
+  /* Sidebar (escala escura) */
+  --sidebar-bg: #1e293b;
+  --sidebar-borda: #334155;
+  --sidebar-texto: #94a3b8;
+  --sidebar-divisor: #cbd5e1;
+
+  /* Estados */
+  --sucesso: #059669;
+  --sucesso-fundo: #d1fae5;
+  --alerta: #f59e0b;
+  --alerta-fundo: #fef3c7;
+  --erro: #dc2626;
+  --erro-forte: #991b1b;
+  --erro-fundo: #fee2e2;
+
+  /* Forma */
+  --raio: 8px;
+  --raio-g: 12px;
+  --sombra: 0 1px 3px rgba(0, 0, 0, 0.08);
+  --sombra-g: 0 4px 20px rgba(0, 0, 0, 0.08);
+}

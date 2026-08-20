@@ -1,0 +1,172 @@
+/* ----- ANÁLISE CLÍNICA ----- */
+
+.disclaimer-box {
+  background: var(--alerta-fundo);
+  border-left: 4px solid var(--alerta);
+  padding: 14px 18px;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  font-size: 14px;
+  line-height: 1.5;
+  color: #78350f;
+}
+
+.disclaimer-box strong {
+  display: block;
+  margin-bottom: 4px;
+}
+
+.analysis-section {
+  background: white;
+  padding: 24px;
+  border-radius: 12px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+  margin-bottom: 16px;
+}
+
+.analysis-section h4 {
+  margin: 0 0 12px 0;
+  font-size: 16px;
+  color: var(--azul);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.analysis-section ul {
+  margin: 0;
+  padding-left: 20px;
+  line-height: 1.7;
+  color: var(--texto-forte);
+}
+
+.analysis-section li {
+  margin-bottom: 4px;
+}
+
+.analysis-section .resumo-caso {
+  background: var(--azul-claro);
+  padding: 12px 14px;
+  border-radius: 8px;
+  color: #1e3a8a;
+  line-height: 1.6;
+}
+
+.hypothesis-card {
+  border: 1px solid var(--borda);
+  border-radius: 8px;
+  padding: 12px 14px;
+  margin-bottom: 10px;
+}
+
+.hypothesis-card .hyp-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 6px;
+}
+
+.hypothesis-card .hyp-name {
+  font-weight: 700;
+  color: var(--texto);
+}
+
+.hypothesis-card .hyp-prob {
+  font-size: 12px;
+  font-weight: 600;
+  padding: 3px 10px;
+  border-radius: 12px;
+  text-transform: uppercase;
+}
+
+.hyp-prob-alta {
+  background: var(--erro-fundo);
+  color: var(--erro-forte);
+}
+
+.hyp-prob-moderada {
+  background: var(--alerta-fundo);
+  color: #92400e;
+}
+
+.hyp-prob-baixa {
+  background: #e0e7ff;
+  color: #3730a3;
+}
+
+.hypothesis-card .hyp-just {
+  color: #4b5563;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.red-flags-box {
+  background: #fef2f2;
+  border-left: 4px solid var(--erro);
+  padding: 12px 16px;
+  border-radius: 8px;
+  margin-bottom: 16px;
+}
+
+.red-flags-box h4 {
+  color: var(--erro-forte) !important;
+}
+
+.red-flags-box ul {
+  color: #7f1d1d;
+}
+
+.analysis-meta {
+  font-size: 12px;
+  color: var(--texto-suave);
+  margin-top: 12px;
+  padding-top: 12px;
+  border-top: 1px solid var(--borda);
+}
+
+.conduta-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+@media (max-width: 800px) {
+  .conduta-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.btn-generate {
+  background: var(--azul);
+  color: white;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 500;
+}
+
+.btn-generate:hover {
+  background: var(--azul-escuro);
+}
+
+.btn-generate:disabled {
+  background: var(--sidebar-texto);
+  cursor: not-allowed;
+}
+
+.btn-view {
+  background: #10b981;
+  color: white;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 500;
+}
+
+.btn-view:hover {
+  background: var(--sucesso);
+}

@@ -1,0 +1,470 @@
+/* ----- APP LAYOUT (sidebar + content) ----- */
+
+#appLayout {
+  display: flex;
+  min-height: 100vh;
+}
+
+.sidebar {
+  width: 240px;
+  background: var(--sidebar-bg);
+  color: white;
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 10;
+}
+
+.sidebar-header {
+  padding: 20px 16px;
+  border-bottom: 1px solid var(--sidebar-borda);
+}
+
+/* Logo no header da sidebar: ícone + texto lado a lado.
+   Logo recebe fundo branco semi-transparente pra ter contraste
+   no fundo escuro var(--sidebar-bg). */
+.sidebar-logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.sidebar-logo img {
+  width: 36px;
+  height: 36px;
+  object-fit: contain;
+  background: white;
+  border-radius: 8px;
+  padding: 4px;
+}
+
+.sidebar-logo .brand-text {
+  display: flex;
+  flex-direction: column;
+}
+
+.sidebar-header .brand {
+  font-size: 18px;
+  font-weight: 700;
+  letter-spacing: -0.3px;
+}
+
+.sidebar-header .brand-sub {
+  font-size: 12px;
+  color: var(--sidebar-texto);
+  margin-top: 2px;
+}
+
+.sidebar-nav {
+  flex: 1;
+  padding: 16px 8px;
+}
+
+.sidebar-nav button,
+.sidebar-nav .nav-btn {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  box-sizing: border-box;
+  width: 100%;
+  text-align: left;
+  background: transparent;
+  color: var(--sidebar-divisor);
+  border: none;
+  padding: 12px 14px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 4px;
+  transition: background 0.15s, color 0.15s;
+}
+
+.sidebar-nav button:hover,
+.sidebar-nav .nav-btn:hover {
+  background: var(--sidebar-borda);
+  color: white;
+}
+
+.sidebar-nav button.active,
+.sidebar-nav .nav-btn.active {
+  background: var(--azul);
+  color: white;
+}
+
+.sidebar-nav .nav-icon {
+  font-size: 18px;
+  width: 22px;
+  text-align: center;
+}
+
+.sidebar-footer {
+  padding: 16px 20px;
+  border-top: 1px solid var(--sidebar-borda);
+}
+
+.sidebar-footer .doctor-name {
+  font-size: 14px;
+  font-weight: 600;
+  color: white;
+  margin-bottom: 2px;
+}
+
+.sidebar-footer .doctor-email {
+  font-size: 12px;
+  color: var(--sidebar-texto);
+  margin-bottom: 12px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.sidebar-footer button {
+  width: 100%;
+  background: transparent;
+  color: var(--sidebar-divisor);
+  border: 1px solid #475569;
+  padding: 8px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 500;
+}
+
+.sidebar-footer button:hover {
+  background: var(--sidebar-borda);
+  color: white;
+}
+
+/* Área de conteúdo principal */
+.content {
+  flex: 1;
+  margin-left: 240px;
+  padding: 32px 40px;
+  max-width: 1300px;
+}
+
+.page-header {
+  margin-bottom: 24px;
+}
+
+.page-header h2 {
+  margin: 0 0 4px 0;
+  font-size: 24px;
+  color: var(--texto);
+}
+
+.page-header .page-subtitle {
+  color: var(--texto-suave);
+  font-size: 14px;
+}
+
+.page {
+  display: none;
+}
+
+.page.active {
+  display: block;
+}
+
+/* ----- MOBILE TOPBAR (hambúrguer, só visível em mobile) ----- */
+
+.mobile-topbar {
+  display: none;
+  align-items: center;
+  background: var(--sidebar-bg);
+  color: white;
+  padding: 12px 16px;
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  gap: 12px;
+}
+
+.hamburger-btn {
+  background: transparent;
+  border: none;
+  color: white;
+  font-size: 24px;
+  cursor: pointer;
+  padding: 4px 8px;
+  line-height: 1;
+}
+
+.mobile-topbar .mobile-brand {
+  font-size: 16px;
+  font-weight: 700;
+}
+
+/* Overlay escuro atrás da sidebar quando aberta em mobile */
+.sidebar-overlay {
+  display: none;
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0,0,0,0.5);
+  z-index: 15;
+}
+
+.sidebar-overlay.open {
+  display: block;
+}
+
+/* ----- MOBILE LAYOUT ----- */
+
+@media (max-width: 768px) {
+  /* Topbar com hambúrguer aparece em mobile */
+  .mobile-topbar {
+    display: flex;
+  }
+
+  /* Sidebar vira drawer: começa fechada (off-screen à esquerda),
+     abre quando recebe class .open */
+  .sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: 260px;
+    height: 100vh;
+    transform: translateX(-100%);
+    transition: transform 0.25s ease;
+    z-index: 25;
+  }
+
+  .sidebar.open {
+    transform: translateX(0);
+  }
+
+  /* Restaura o layout vertical do menu — sem scroll horizontal */
+  .sidebar-nav {
+    flex-direction: column;
+    padding: 16px 8px;
+  }
+
+  .sidebar-nav button,
+  .sidebar-nav .nav-btn {
+    margin-bottom: 4px;
+    margin-right: 0;
+    white-space: normal;
+  }
+
+  /* Footer da sidebar volta a aparecer dentro do drawer */
+  .sidebar-footer {
+    display: block;
+  }
+
+  #appLayout {
+    flex-direction: column;
+  }
+
+  .content {
+    margin-left: 0;
+    padding: 16px;
+  }
+
+  /* ============================================================
+     [MOBILE-FIX] Camada 1 — Modais quase tela cheia no celular.
+     Antes: .modal-content tinha max-width:520px + padding:24px e
+     nenhuma regra mobile → estourava a tela (texto cortado).
+     Agora: ocupa quase toda a tela, padding menor, rolagem ok.
+     Vale pra TODOS os modais (mesma classe). O !important anula
+     os max-width inline (760/720px) dos modais maiores.
+     ============================================================ */
+  .modal-backdrop {
+    padding: 0 !important;
+    align-items: stretch !important;
+  }
+  .modal-content {
+    max-width: 100% !important;
+    width: 100% !important;
+    max-height: 100vh !important;
+    height: 100vh;
+    border-radius: 0 !important;
+    padding: 16px !important;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+  .modal-header {
+    position: sticky;
+    top: -16px;
+    background: #fff;
+    padding: 12px 0;
+    margin: -16px 0 12px 0;
+    z-index: 2;
+    border-bottom: 1px solid #eef0f2;
+  }
+  .modal-close {
+    font-size: 26px;
+    padding: 8px 12px;
+    min-width: 44px;   /* alvo de toque confortável */
+    min-height: 44px;
+  }
+
+  /* [MOBILE-FIX] Modal SOAP (Encerrar Consulta) no celular.
+     Causa do bug: a regra geral usa height:100vh. Em navegador
+     mobile, 100vh inclui a área atrás da barra de endereço, então o
+     modal fica mais alto que o espaço visível e o rodapé (botões
+     Cancelar/Rascunho/Encerrar) fica inalcançável por scroll.
+     Correção: 100dvh (dynamic viewport, desconta a barra do
+     navegador), com fallback 100vh para browsers antigos, e um
+     respiro no fim pra o último botão sempre sobrar área de rolagem.
+     Escopado ao .modal-soap — não toca nos outros modais que a
+     Camada 1 já validou. */
+  .modal-content.modal-soap {
+    height: 100vh;          /* fallback */
+    height: 100dvh;         /* navegadores modernos: desconta barra */
+    max-height: 100vh;
+    max-height: 100dvh;
+    padding-bottom: 32px !important; /* respiro no fim do scroll */
+  }
+  /* Garante que a barra de ações nunca cole na borda inferior
+     (onde a barra do navegador pode sobrepor) e tenha alvo de
+     toque confortável no celular. */
+  .modal-soap .soap-actions {
+    margin-bottom: 16px;
+  }
+  .modal-soap .soap-actions button {
+    flex: 1 1 100%;
+    min-height: 46px;
+  }
+  .modal-actions {
+    flex-wrap: wrap;
+  }
+  .modal-actions button {
+    flex: 1 1 auto;
+    min-height: 44px;
+  }
+
+  /* ============================================================
+     [MOBILE-FIX] Camada 2 — Campos e prontuário no celular.
+     Inputs/textarea ocupam a largura toda; nada de width fixo
+     estourando. Tabelas rolam horizontalmente em vez de cortar.
+     Só afeta telas <=768px — desktop intacto.
+     ============================================================ */
+  .modal-content input,
+  .modal-content select,
+  .modal-content textarea {
+    width: 100% !important;
+    min-width: 0 !important;
+    box-sizing: border-box;
+    font-size: 16px;  /* >=16px evita zoom automático do iOS */
+  }
+  /* Linhas de campos lado-a-lado quebram em coluna no celular */
+  .modal-content [style*="display:flex"],
+  .modal-content [style*="display: flex"] {
+    flex-wrap: wrap;
+  }
+
+  /* Cards do prontuário: padding menor, sem overflow lateral */
+  .card {
+    padding: 14px !important;
+    overflow-x: auto;
+  }
+
+  /* [MOBILE-CARDS] Tabelas largas (pacientes, consultas) não cabem
+     em tela de celular. A tentativa antiga (overflow-x + nowrap)
+     empurrava botões pra fora da tela — ninguém via que precisava
+     rolar lateralmente. Agora cada linha vira um CARTÃO vertical:
+     thead some, cada <tr> é um bloco, cada <td> é "Rótulo: valor"
+     (rótulo vem do data-label setado em appendRow lendo do thead).
+     No desktop (acima do breakpoint) nada muda — segue tabela. */
+  table, table tbody, table tr, table td {
+    display: block;
+    width: 100%;
+    box-sizing: border-box;
+  }
+  table thead {
+    display: none; /* cabeçalho não faz sentido em modo cartão */
+  }
+  table tr {
+    background: #fff;
+    border: 1px solid var(--borda);
+    border-radius: 10px;
+    padding: 12px 14px;
+    margin-bottom: 10px;
+  }
+  table td {
+    border: none !important;
+    padding: 6px 0 !important;
+    white-space: normal;       /* texto quebra normal, não estoura */
+    text-align: left !important;
+  }
+  table td[data-label]::before {
+    content: attr(data-label) ": ";
+    font-weight: 600;
+    color: var(--texto-forte);
+    display: inline;
+  }
+  /* Célula que contém só botões de ação: rótulo atrapalha, esconde
+     e empilha os botões pra caberem na largura do celular. */
+  table td.row-actions::before,
+  table td:has(button)::before {
+    content: "";
+  }
+  table td.row-actions,
+  table td:has(button) {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 6px;
+  }
+  table td:has(button) button {
+    flex: 1 1 auto;
+    min-width: 120px;
+  }
+
+  /* Textarea do resumo do caso tinha white-space:pre (não quebra
+     linha) → forçava scroll horizontal. No celular, deixa quebrar. */
+  #caseSummaryText {
+    white-space: pre-wrap !important;
+    font-size: 12px !important;
+  }
+
+  /* Navegação rápida do prontuário: rola lateralmente sem espremer.
+     Precisa de largura contida pro overflow-x funcionar (antes
+     estourava a tela em vez de criar scroll). */
+  .prontuario-nav {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    flex-wrap: nowrap;
+    max-width: 100%;
+    width: 100%;
+    box-sizing: border-box;
+  }
+  .prontuario-nav-btn {
+    flex: 0 0 auto;
+  }
+
+  /* [MOBILE-FIX] Cabeçalho do prontuário (e da timeline, mesmo
+     padrão): no celular não cabem Voltar + título + 2 botões numa
+     linha — o último botão vazava pra fora da tela. Aqui o header
+     quebra: título ocupa a largura toda, botões de ação descem para
+     uma linha própria, lado a lado (metade cada). Escopado ao
+     prontuário/timeline pra NÃO afetar os page-header das outras
+     páginas (Agenda, Pacientes, Consultas). */
+  #page-patient-detail .page-header,
+  #page-timeline .page-header {
+    flex-wrap: wrap;
+  }
+  #page-patient-detail .page-header > div[style*="flex:1"],
+  #page-timeline .page-header > div[style*="flex:1"] {
+    flex: 1 1 100%;
+    min-width: 0;
+    order: -1; /* título vai pro topo, antes dos botões */
+  }
+  #page-patient-detail .page-header > button.primary {
+    flex: 1 1 calc(50% - 6px);
+    white-space: normal;
+  }
+
+  /* Botões de ação em geral: alvo de toque mínimo confortável */
+  .primary, .btn-soap, .btn-secondary-outline {
+    min-height: 42px;
+  }
+}
