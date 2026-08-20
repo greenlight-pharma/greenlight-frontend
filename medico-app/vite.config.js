@@ -1,5 +1,6 @@
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
+import { fileURLToPath } from "node:url";
 
 // O painel é servido como arquivo ESTÁTICO (o backend é API pura, não serve
 // HTML), hoje em https://www.vytalsaude.com.br/painel-medico.
@@ -20,8 +21,22 @@ export default defineConfig({
   base: process.env.VITE_BASE || "/painel-medico/",
   plugins: [react()],
   build: {
-    outDir: "dist",
+    // [DOIS-PAINEIS] Uma entrada por painel. O Vite gera um bundle para cada
+    // e extrai o que é comum (React, lib/) num chunk compartilhado — então o
+    // médico não baixa o código do administrativo, nem o contrário, e o
+    // código compartilhado não é duplicado.
+    outDir: process.env.VITE_OUT_DIR || "dist",
     sourcemap: true,
+    // Um build por painel, cada um autocontido em sua própria pasta
+    // (/painel-medico e /painel-admin). Custa duplicar o chunk do React,
+    // mas evita que uma pasta dependa de assets da outra — o que tornaria
+    // impossível publicar, mover ou reverter um painel sem mexer no outro.
+    // São dois produtos, com logins e públicos diferentes.
+    rollupOptions: {
+      input: fileURLToPath(
+        new URL(process.env.VITE_ENTRY || "./index.html", import.meta.url)
+      ),
+    },
   },
   server: {
     port: 5173,

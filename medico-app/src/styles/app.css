@@ -343,3 +343,71 @@ button.btn-docs:hover { background: #0f766e; }
 /* Adesão é seção do card de Medicações, não card próprio. */
 .adesao-secao { margin-top: 20px; padding-top: 16px; border-top: 1px solid var(--borda); }
 .adesao-secao > strong { display: block; font-size: 15px; color: #1f2937; margin-bottom: 8px; }
+
+/* ============================================================
+   PAINEL ADMINISTRATIVO
+   ============================================================ */
+.stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); gap: 12px; margin-bottom: 16px; }
+.stat-card { background: var(--branco); border: 1px solid var(--borda); border-radius: var(--raio); padding: 16px; }
+.stat-label { font-size: 12px; color: var(--texto-suave); }
+.stat-value { font-size: 30px; font-weight: 700; color: var(--azul); font-variant-numeric: tabular-nums; }
+.stat-sub { font-size: 12px; color: var(--texto-fraco); }
+
+/* Tabelas do admin são largas: rolam dentro do próprio container,
+   nunca empurrando a página inteira pro lado. */
+.tabela-scroll { overflow-x: auto; }
+.tabela-scroll table { width: 100%; border-collapse: collapse; min-width: 640px; }
+
+.aviso-preparacao {
+  background: var(--alerta-fundo);
+  border: 1px solid var(--alerta);
+  color: #78350f;
+  padding: 12px 14px;
+  border-radius: var(--raio);
+  font-size: 14px;
+  margin-bottom: 16px;
+}
+.aviso-preparacao code { background: rgba(0,0,0,.06); padding: 1px 4px; border-radius: 3px; }
+
+.sub-offered   { background: var(--fundo-cinza); color: var(--texto-suave); }
+.sub-accepted  { background: #dbeafe; color: var(--azul); }
+.sub-active    { background: #dcfce7; color: #166534; }
+.sub-cancelled { background: var(--erro-fundo); color: var(--erro-forte); }
+
+/* Chave liga/desliga do bot */
+.chave-linha {
+  display: flex; align-items: center; justify-content: space-between; gap: 16px;
+  padding: 14px 0; border-bottom: 1px solid var(--borda); font-weight: 400; cursor: pointer;
+}
+.chave-linha:last-of-type { border-bottom: none; }
+.chave-descricao { display: block; font-size: 13px; color: var(--texto-suave); margin-top: 2px; }
+.switch { position: relative; display: inline-block; width: 46px; height: 26px; flex: 0 0 auto; }
+.switch input { opacity: 0; width: 0; height: 0; }
+.slider {
+  position: absolute; inset: 0; background: var(--borda-forte);
+  border-radius: 26px; transition: background .18s;
+}
+.slider::before {
+  content: ""; position: absolute; height: 20px; width: 20px; left: 3px; top: 3px;
+  background: var(--branco); border-radius: 50%; transition: transform .18s;
+}
+.switch input:checked + .slider { background: var(--sucesso); }
+.switch input:checked + .slider::before { transform: translateX(20px); }
+.switch input:focus-visible + .slider { outline: 2px solid var(--azul); outline-offset: 2px; }
+
+/* Confirmação do disparo em massa — deliberadamente destacada em vermelho */
+.broadcast-confirma {
+  margin-top: 14px; padding: 14px;
+  border: 1px solid #fca5a5; border-radius: var(--raio); background: #fef2f2;
+}
+.broadcast-total { font-weight: 600; color: var(--erro-forte); margin-bottom: 10px; }
+
+/* SOAP visto pelo admin */
+.soap-view-header { padding-bottom: 12px; border-bottom: 1px solid var(--borda); margin-bottom: 14px; font-size: 14px; }
+.soap-view-section { margin-bottom: 16px; }
+.soap-view-section h4 { margin: 0 0 4px; font-size: 14px; color: var(--azul); }
+.soap-view-content { white-space: pre-wrap; font-size: 14px; color: var(--texto-forte); }
+
+@media (prefers-reduced-motion: reduce) {
+  .slider, .slider::before { transition: none; }
+}

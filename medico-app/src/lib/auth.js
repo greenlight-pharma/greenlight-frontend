@@ -1,7 +1,18 @@
-// Guarda do token e dos dados do médico. Único lugar do app que fala com o
-// localStorage — antes isso estava espalhado em 6 pontos do medico.html.
-const TOKEN_KEY = "doctorToken";
-const DOCTOR_KEY = "doctorData";
+// Guarda do token e dos dados do usuário logado. Único lugar do app que fala
+// com o localStorage — antes isso estava espalhado em 6 pontos do medico.html.
+//
+// [DOIS-PAINEIS] Médico e administrador são sessões DIFERENTES, com chaves
+// diferentes (doctorToken / adminToken), exatamente como no medico.html e no
+// admin.html. Cada entrada do build chama configureSession() antes de
+// renderizar. Manter separado importa: um admin logado não deve herdar
+// acesso de médico a prontuário, nem o contrário.
+let TOKEN_KEY = "doctorToken";
+let DOCTOR_KEY = "doctorData";
+
+export function configureSession(tokenKey, userKey) {
+  TOKEN_KEY = tokenKey;
+  DOCTOR_KEY = userKey;
+}
 
 export function getToken() {
   return localStorage.getItem(TOKEN_KEY);
