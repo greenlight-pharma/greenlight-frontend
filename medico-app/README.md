@@ -1,8 +1,13 @@
-# Painel do Médico — React + Vite
+# Painéis Vytal — React + Vite
 
-Refactor do `medico.html` (arquivo único de 9.513 linhas) em uma aplicação
-React com Vite. O `medico.html` original **continua no repositório e
-funcionando** — este app roda em paralelo até você validar.
+Refactor do `medico.html` (9.513 linhas) e do `admin.html` (2.540 linhas)
+em uma aplicação React com Vite. Os dois arquivos originais **continuam no
+repositório e no ar** — os painéis novos rodam em paralelo até a validação.
+
+| Painel | Novo | Original (ainda no ar) |
+|---|---|---|
+| Médico | `/painel-medico` | `/medico.html` |
+| Administrativo | `/painel-admin` | `/admin.html` |
 
 ## Rodar
 
@@ -18,10 +23,17 @@ para outro: `VITE_API_URL=http://localhost:3000 npm run dev`.
 
 ## Deploy
 
-Publicado em **https://www.vytalsaude.com.br/painel-medico**, junto do
-`medico.html` antigo, que segue no ar e intocado.
+São **dois builds autocontidos**, um por painel — cada pasta traz seus
+próprios assets. Custa duplicar o chunk do React, mas permite publicar,
+mover ou reverter um painel sem tocar no outro. O script
+`scripts/build-vercel.sh` roda os dois.
 
-`npm run build` gera `dist/` com base **absoluta** `/painel-medico/`. Não é
+```bash
+VITE_BASE=/painel-medico/ VITE_ENTRY=./index.html VITE_OUT_DIR=dist-medico npx vite build
+VITE_BASE=/painel-admin/  VITE_ENTRY=./admin.html VITE_OUT_DIR=dist-admin  npx vite build
+```
+
+A base é **absoluta**. Não é
 `./` de propósito: com base relativa, abrir a URL sem a barra final fazia o
 `./assets/...` resolver para a pasta pai e a página vinha em branco. Para
 publicar em outro caminho: `VITE_BASE=/outro/ npm run build`.
@@ -46,7 +58,8 @@ src/
     stream.js       consumo do SSE do assistente
     pdf.js          geração de PDF (jsPDF por import dinâmico)
   components/     UI compartilhada (Modal, TimesEditor, ConfirmDialog, …)
-  features/       uma pasta por domínio, com api.js próprio
+  features/       painel do médico — uma pasta por domínio, com api.js próprio
+  admin/          painel administrativo — reusa lib/ e components/
   styles/         tokens.css + um arquivo por domínio
 ```
 
@@ -63,6 +76,7 @@ subir a tela.
 | `window.confirm` | diálogo próprio, com as consequências em lista |
 | Horário só como lista manual | atalhos de posologia (8/8h, 12/12h) + aviso de duplicata |
 | Adesão coletada e nunca exibida | painel de adesão no prontuário |
+| Sessão de médico e admin na mesma chave | chaves separadas por entrada |
 | Lembrete quebrado invisível | pendências na tela de Início |
 | Fórmulas clínicas dentro do DOM | funções puras com teste |
 
