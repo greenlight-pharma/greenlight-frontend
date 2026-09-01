@@ -37,12 +37,18 @@ echo "==> Construindo o painel administrativo"
 ( cd medico-app && VITE_BASE=/painel-admin/ VITE_ENTRY=./admin.html \
     VITE_OUT_DIR=dist-admin npx vite build )
 
-echo "==> Publicando em /painel-medico e /painel-admin"
-mkdir -p "$OUT/painel-medico" "$OUT/painel-admin"
+echo "==> Construindo o painel da UBS"
+( cd medico-app && VITE_BASE=/painel-ubs/ VITE_ENTRY=./ubs.html \
+    VITE_OUT_DIR=dist-ubs npx vite build )
+
+echo "==> Publicando em /painel-medico, /painel-admin e /painel-ubs"
+mkdir -p "$OUT/painel-medico" "$OUT/painel-admin" "$OUT/painel-ubs"
 cp -R medico-app/dist-medico/* "$OUT/painel-medico"/
 cp -R medico-app/dist-admin/* "$OUT/painel-admin"/
+cp -R medico-app/dist-ubs/* "$OUT/painel-ubs"/
 # O Vite nomeia a saída pelo arquivo de entrada; a pasta serve index.html.
 mv "$OUT/painel-admin/admin.html" "$OUT/painel-admin/index.html"
+mv "$OUT/painel-ubs/ubs.html" "$OUT/painel-ubs/index.html"
 
 echo "==> Conteúdo publicado:"
 ls "$OUT" | head -30
@@ -50,3 +56,5 @@ echo "    /painel-medico ->"
 ls "$OUT/painel-medico"
 echo "    /painel-admin ->"
 ls "$OUT/painel-admin"
+echo "    /painel-ubs ->"
+ls "$OUT/painel-ubs"

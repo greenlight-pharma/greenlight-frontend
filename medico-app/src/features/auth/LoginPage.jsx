@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useAuth } from "./AuthContext.jsx";
 import Message from "../../components/Message.jsx";
 
-export default function LoginPage() {
+export default function LoginPage({ subtitle = "Painel Médico" }) {
   const { login, expiredNotice } = useAuth();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -30,7 +30,7 @@ export default function LoginPage() {
         <div className="login-logo">
           <img src={`${import.meta.env.BASE_URL}vytalsaude.png`} alt="Vytal" />
         </div>
-        <div className="subtitle">Painel Médico</div>
+        <div className="subtitle">{subtitle}</div>
 
         {expiredNotice && <Message type="warning">{expiredNotice}</Message>}
 

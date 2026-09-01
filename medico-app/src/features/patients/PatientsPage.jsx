@@ -7,7 +7,13 @@ import ManualPatientModal from "./ManualPatientModal.jsx";
 import { usePatients, useUnlinkPatient } from "./api.js";
 import { formatBRPhone } from "../../lib/phone.js";
 
-export default function PatientsPage() {
+// Os títulos são parâmetros porque o painel UBS mostra esta mesma lista
+// com outro enquadramento ("Medicações"), mas o comportamento é idêntico:
+// buscar, cadastrar e abrir o paciente. Só o texto muda.
+export default function PatientsPage({
+  title = "Meus Pacientes",
+  subtitle = "Pacientes vinculados a você",
+}) {
   const { data: patients, isLoading, error, refetch } = usePatients();
   const [busca, setBusca] = useState("");
   const [removendo, setRemovendo] = useState(null);
@@ -31,8 +37,8 @@ export default function PatientsPage() {
   return (
     <>
       <PageHeader
-        title="Meus Pacientes"
-        subtitle="Pacientes vinculados a você"
+        title={title}
+        subtitle={subtitle}
         actions={
           <button className="primary" onClick={() => setCadastroAberto(true)}>
             + Cadastrar paciente

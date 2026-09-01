@@ -14,7 +14,11 @@ const NAV = [
   { to: "/conta", icon: "🔐", label: "Alterar Senha" },
 ];
 
-export default function Layout({ children }) {
+// [TRES-PAINEIS] O menu e o subtítulo são parâmetros porque o painel UBS
+// reusa esta mesma casca com outro conjunto de itens. Duplicar o Layout
+// significaria manter duas vezes o drawer, o overlay e o fecha-ao-navegar —
+// e a segunda cópia é sempre a que esquece uma correção.
+export default function Layout({ children, nav = NAV, brandSub = "Painel Médico" }) {
   const { doctor, logout } = useAuth();
   const [menuOpen, setMenuOpen] = useState(false);
   const location = useLocation();
@@ -49,13 +53,13 @@ export default function Layout({ children }) {
             <img src={`${import.meta.env.BASE_URL}vytalsaude.png`} alt="Vytal" />
             <div className="brand-text">
               <div className="brand">Vytal</div>
-              <div className="brand-sub">Painel Médico</div>
+              <div className="brand-sub">{brandSub}</div>
             </div>
           </div>
         </div>
 
         <nav className="sidebar-nav">
-          {NAV.map((item) => (
+          {nav.map((item) => (
             <NavLink
               key={item.to}
               to={item.to}
