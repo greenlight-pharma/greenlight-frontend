@@ -261,6 +261,7 @@ function AbaAgenda({ unidadeId, data }) {
       {escolhendoPessoa && (
         <EscolherPessoaModal
           fila={ordenarFila(fila.data || [])}
+          jaOferecidos={escolhendoPessoa.vaga.jaOferecidoPara || []}
           acao={escolhendoPessoa.para}
           onClose={() => setEscolhendoPessoa(null)}
           onEscolher={async (p) => {
@@ -283,19 +284,41 @@ function AbaAgenda({ unidadeId, data }) {
 // próxima fatia. Até lá, quem decide é a recepção, e o log registra
 // origem "equipe". Automatizar sem esse controle produziria a oferta
 // duplicada que a máquina de estados existe para impedir.
-function EscolherPessoaModal({ fila, acao, onClose, onEscolher }) {
+function EscolherPessoaModal({ fila, jaOferecidos = [], acao, onClose, onEscolher }) {
+  // Quem já recebeu esta vaga não reaparece. Reconvidar quem acabou de
+  // recusar é a forma mais rápida de a fila parar de confiar na mensagem —
+  // e o servidor calcula essa lista a partir do log de eventos, não de uma
+  // coluna, porque o que importa é o histórico e não a oferta atual.
+  const disponiveis = fila.filter((p) => !jaOferecidos.includes(p.fone));
+  const ocultados = fila.length - disponiveis.length;
+
   return (
     <Modal open title={ACAO[acao]} onClose={onClose}>
-      {!fila.length ? (
-        <Empty label="Fila de espera vazia para esta unidade." />
+      {!disponiveis.length ? (
+        <Empty
+          label={
+            ocultados
+              ? "Todos da fila já receberam esta vaga."
+              : "Fila de espera vazia para esta unidade."
+          }
+        />
       ) : (
         <>
           <div className="modal-context">
             💡 A fila já vem ordenada: prioridade clínica primeiro, depois tempo de espera.
+            {ocultados > 0 && (
+              <>
+                {" "}
+                <strong>
+                  {ocultados} {ocultados === 1 ? "pessoa já recebeu" : "pessoas já receberam"}
+                </strong>{" "}
+                esta vaga e não aparece{ocultados === 1 ? "" : "m"} aqui.
+              </>
+            )}
           </div>
           <table className="tabela">
             <tbody>
-              {fila.map((p) => (
+              {disponiveis.map((p) => (
                 <tr key={p.id}>
                   <td>
                     <strong>{p.nome || "(sem nome)"}</strong>
