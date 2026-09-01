@@ -11,6 +11,7 @@ import ConsultasPage from "./features/consultas/ConsultasPage.jsx";
 import AssistantPage from "./features/assistant/AssistantPage.jsx";
 import CalculatorsPage from "./features/calculators/CalculatorsPage.jsx";
 import AccountPage from "./features/account/AccountPage.jsx";
+import AgendaUbsPage from "./features/agendaUbs/AgendaUbsPage.jsx";
 
 function Shell() {
   const { isLoggedIn } = useAuth();
@@ -30,6 +31,8 @@ function Shell() {
         <Route path="/consultas" element={<ConsultasPage />} />
         <Route path="/assistente" element={<AssistantPage />} />
         <Route path="/calculadoras" element={<CalculatorsPage />} />
+        {/* [AGENDA-UBS] Maquete do módulo 2 — dados fictícios, sem backend. */}
+        <Route path="/agenda-unidade" element={<AgendaUbsPage />} />
         <Route path="/conta" element={<AccountPage />} />
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
