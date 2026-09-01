@@ -26,7 +26,7 @@ import AgendaUbsPage from "../features/agendaUbs/AgendaUbsPage.jsx";
 // importadas daqui — corrigir a adesão conserta os dois.
 const NAV = [
   { to: "/pacientes", icon: "💊", label: "Medicações" },
-  { to: "/agenda-unidade", icon: "🏥", label: "Agenda da unidade", previa: true },
+  { to: "/agenda-unidade", icon: "🏥", label: "Agenda da unidade" },
 ];
 
 function Shell() {
@@ -49,7 +49,6 @@ function Shell() {
         {/* O telefone é a identidade do paciente — é a chave que o WhatsApp
             entrega de volta na resposta do lembrete. */}
         <Route path="/pacientes/:phone" element={<UbsPacientePage />} />
-        {/* Maquete: dados fictícios, sem backend. A própria tela avisa. */}
         <Route path="/agenda-unidade" element={<AgendaUbsPage />} />
         <Route path="*" element={<Navigate to="/pacientes" replace />} />
       </Routes>
