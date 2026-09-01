@@ -6,6 +6,8 @@ const NAV = [
   { to: "/", icon: "🏠", label: "Início", end: true },
   { to: "/pacientes", icon: "👥", label: "Meus Pacientes" },
   { to: "/agenda", icon: "📅", label: "Agenda" },
+  // Maquete do módulo de agenda da unidade — ver AgendaUbsPage.
+  { to: "/agenda-unidade", icon: "🏥", label: "Agenda da unidade", previa: true },
   { to: "/consultas", icon: "🩺", label: "Consultas" },
   { to: "/assistente", icon: "💬", label: "Assistente" },
   { to: "/calculadoras", icon: "🧮", label: "Calculadoras" },
@@ -62,6 +64,7 @@ export default function Layout({ children }) {
             >
               <span className="nav-icon">{item.icon}</span>
               <span>{item.label}</span>
+              {item.previa && <span className="nav-previa">prévia</span>}
             </NavLink>
           ))}
         </nav>
