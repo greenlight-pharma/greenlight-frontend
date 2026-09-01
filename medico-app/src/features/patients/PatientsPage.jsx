@@ -13,6 +13,8 @@ import { formatBRPhone } from "../../lib/phone.js";
 export default function PatientsPage({
   title = "Meus Pacientes",
   subtitle = "Pacientes vinculados a você",
+  // No painel da UBS o cadastro é enxuto — ver [CADASTRO-ENXUTO].
+  cadastroEnxuto = false,
 }) {
   const { data: patients, isLoading, error, refetch } = usePatients();
   const [busca, setBusca] = useState("");
@@ -122,7 +124,11 @@ export default function PatientsPage({
       </ConfirmDialog>
 
       {cadastroAberto && (
-        <ManualPatientModal open onClose={() => setCadastroAberto(false)} />
+        <ManualPatientModal
+          open
+          enxuto={cadastroEnxuto}
+          onClose={() => setCadastroAberto(false)}
+        />
       )}
     </>
   );

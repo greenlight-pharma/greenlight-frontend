@@ -42,6 +42,7 @@ function Shell() {
             <PatientsPage
               title="Medicações"
               subtitle="Escolha o paciente para cadastrar ou revisar as medicações"
+              cadastroEnxuto
             />
           }
         />

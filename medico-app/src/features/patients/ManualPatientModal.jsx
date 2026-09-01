@@ -8,7 +8,21 @@ import { normalizeBRPhone, formatBRPhone } from "../../lib/phone.js";
 
 // [MANUAL-PATIENT] Cadastro de paciente que ainda não falou com o bot.
 // Fluxo real em UBS: paciente chega ao balcão, nunca mandou WhatsApp.
-export default function ManualPatientModal({ open, onClose }) {
+//
+// [CADASTRO-ENXUTO] `enxuto` é o modo do painel da UBS, onde cadastrar
+// paciente serve a UM fim: mandar o lembrete de medicação. Ali o formulário
+// pede só o que a mensagem precisa — nome (a mensagem chama pelo nome) e
+// telefone (é a identidade no WhatsApp).
+//
+// Queixa principal, HMA, idade e sexo saem porque são campos de PRONTUÁRIO.
+// Quem opera na recepção não tem essa informação e não está numa consulta;
+// obrigá-la a preencher produz dado inventado, que é pior que dado ausente
+// porque parece informação para quem ler depois.
+//
+// No modo normal (painel médico) nada muda — inclusive a queixa continua
+// obrigatória, agora validada aqui em vez de voltar como erro 400 do
+// servidor.
+export default function ManualPatientModal({ open, onClose, enxuto = false }) {
   const navigate = useNavigate();
   const criar = useCreateManualPatient();
   const [form, setForm] = useState({
@@ -39,10 +53,20 @@ export default function ManualPatientModal({ open, onClose }) {
       setErro(norm.reason);
       return;
     }
+    if (!enxuto && !form.mainComplaint.trim()) {
+      setErro("Queixa principal é obrigatória.");
+      return;
+    }
     try {
       await criar.mutateAsync({ ...form, phone: norm.phone });
       onClose();
-      navigate(`/pacientes/${norm.phone}`);
+      // No modo enxuto o cadastro é meio, não fim: o objetivo era a
+      // medicação. Abrir o formulário dela já aberto evita que a atendente
+      // cadastre a pessoa e feche a tela achando que terminou — que é como
+      // se acumula paciente cadastrado sem nenhum lembrete configurado.
+      navigate(`/pacientes/${norm.phone}`, {
+        state: enxuto ? { novaMedicacao: true } : undefined,
+      });
     } catch (err) {
       setErro(err.message);
     }
@@ -52,8 +76,17 @@ export default function ManualPatientModal({ open, onClose }) {
     <Modal open={open} title="Cadastrar paciente" onClose={onClose}>
       <form onSubmit={salvar}>
         <div className="modal-context">
-          💡 Use este cadastro quando o paciente <strong>ainda não interagiu</strong>{" "}
-          com a Vytal pelo WhatsApp.
+          {enxuto ? (
+            <>
+              💡 Cadastre o paciente para <strong>receber os lembretes</strong>. Na
+              tela seguinte você adiciona a medicação e os horários.
+            </>
+          ) : (
+            <>
+              💡 Use este cadastro quando o paciente{" "}
+              <strong>ainda não interagiu</strong> com a Vytal pelo WhatsApp.
+            </>
+          )}
         </div>
 
         <label htmlFor="mpName">Nome do paciente</label>
@@ -97,6 +130,7 @@ export default function ManualPatientModal({ open, onClose }) {
           </Message>
         )}
 
+        {!enxuto && (
         <div className="grid-2">
           <div>
             <label htmlFor="mpAge">Idade</label>
@@ -122,16 +156,25 @@ export default function ManualPatientModal({ open, onClose }) {
             </select>
           </div>
         </div>
+        )}
 
-        <label htmlFor="mpQueixa">Queixa principal</label>
-        <input
-          id="mpQueixa"
-          value={form.mainComplaint}
-          onChange={(e) => set("mainComplaint", e.target.value)}
-        />
+        {!enxuto && (
+          <>
+            <label htmlFor="mpQueixa">Queixa principal</label>
+            <input
+              id="mpQueixa"
+              value={form.mainComplaint}
+              onChange={(e) => set("mainComplaint", e.target.value)}
+            />
 
-        <label htmlFor="mpHma">História da moléstia atual (opcional)</label>
-        <textarea id="mpHma" value={form.hma} onChange={(e) => set("hma", e.target.value)} />
+            <label htmlFor="mpHma">História da moléstia atual (opcional)</label>
+            <textarea
+              id="mpHma"
+              value={form.hma}
+              onChange={(e) => set("hma", e.target.value)}
+            />
+          </>
+        )}
 
         <label className="checkbox-linha">
           <input
@@ -152,7 +195,11 @@ export default function ManualPatientModal({ open, onClose }) {
             Cancelar
           </button>
           <button className="primary" disabled={criar.isPending}>
-            {criar.isPending ? "Cadastrando..." : "Cadastrar e abrir prontuário"}
+            {criar.isPending
+              ? "Cadastrando..."
+              : enxuto
+                ? "Cadastrar e adicionar medicação"
+                : "Cadastrar e abrir prontuário"}
           </button>
         </div>
       </form>
