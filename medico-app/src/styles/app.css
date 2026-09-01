@@ -453,28 +453,21 @@ button.btn-docs:hover { background: #0f766e; }
 .falha-valor { min-width: 42px; text-align: right; color: var(--texto-suave); font-variant-numeric: tabular-nums; }
 .falha-trilha { display: flex; }
 .falha-barra.silencio { background: var(--borda-forte); }
-/* ----- maquete da agenda da unidade ----- */
-.maquete-aviso {
-  background: var(--alerta-fundo);
-  border: 1px solid var(--alerta);
-  color: #92400e;
-  border-radius: var(--raio);
-  padding: 12px 14px;
-  font-size: 14px;
-  margin-bottom: 16px;
-}
+/* ----- agenda da unidade ----- */
 .nav-previa {
-  margin-left: auto;
-  font-size: 10px;
-  text-transform: uppercase;
-  letter-spacing: .06em;
-  background: var(--alerta);
-  color: #3b2a06;
-  border-radius: 999px;
-  padding: 1px 6px;
+  margin-left: auto; font-size: 10px; text-transform: uppercase; letter-spacing: .06em;
+  background: var(--alerta); color: #3b2a06; border-radius: 999px; padding: 1px 6px;
 }
-.stat-destaque .stat-valor { color: var(--alerta); }
-.col-hora { font-variant-numeric: tabular-nums; font-weight: 600; white-space: nowrap; }
+
+.abas { display: flex; gap: 4px; margin: 16px 0 12px; flex-wrap: wrap; }
+.aba {
+  background: none; border: none; border-bottom: 2px solid transparent;
+  padding: 8px 14px; font-size: 14px; font-weight: 600;
+  color: var(--texto-suave); cursor: pointer;
+}
+.aba.ativa { color: var(--azul); border-bottom-color: var(--azul); }
+
+.linha-acoes { display: flex; gap: 8px; margin-bottom: 12px; flex-wrap: wrap; }
 
 .situacao { display: inline-block; padding: 2px 9px; border-radius: 999px; font-size: 12px; font-weight: 600; white-space: nowrap; }
 .situacao-ok       { background: var(--sucesso-fundo); color: #065f46; }
@@ -483,29 +476,25 @@ button.btn-docs:hover { background: #0f766e; }
 .situacao-erro     { background: var(--erro-fundo);    color: var(--erro-forte); }
 .situacao-neutro   { background: var(--fundo-cinza);   color: var(--texto-suave); }
 
-.origem { font-size: 12px; white-space: nowrap; }
-.origem-ia { color: var(--azul); font-weight: 600; }
-.origem-equipe { color: var(--texto-suave); }
-
-.oferta-inline { font-size: 12px; color: var(--azul-escuro); background: var(--azul-claro); border-radius: 6px; padding: 3px 7px; margin-top: 4px; display: inline-block; }
-
 .prioridade { font-size: 12px; font-weight: 600; text-transform: capitalize; }
 .prioridade-alta { color: var(--erro-forte); }
 .prioridade-media { color: #92400e; }
 .prioridade-normal { color: var(--texto-suave); }
 
-.fluxo-oferta { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 14px; margin: 12px 0; }
-.passo-oferta { display: flex; gap: 10px; align-items: flex-start; }
-.passo-oferta-num {
-  flex: 0 0 26px; height: 26px; border-radius: 50%;
-  background: var(--azul); color: var(--branco);
-  display: grid; place-items: center; font-size: 13px; font-weight: 700;
+/* Botões de transição: muitos por linha, então compactos e quebrando bem. */
+.btn-mini {
+  font-size: 12px; padding: 3px 9px; border-radius: 6px;
+  border: 1px solid var(--borda-forte); background: var(--branco);
+  color: var(--texto-forte); cursor: pointer; margin: 2px 2px 2px 0;
 }
-.passo-oferta-titulo { font-weight: 600; font-size: 14px; }
-.passo-oferta-texto { font-size: 13px; color: var(--texto-forte); }
+.btn-mini:hover:not(:disabled) { background: var(--fundo-cinza); }
+.btn-mini:disabled { opacity: .5; cursor: default; }
 
-.lista-controles { margin: 8px 0 12px 18px; font-size: 14px; }
-.lista-controles li { margin: 4px 0; }
+.ind-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 12px; margin: 12px 0; }
+.ind-card { border: 1px solid var(--borda); border-radius: var(--raio); padding: 12px 14px; }
+.ind-card.destaque { border-color: var(--azul); background: var(--azul-claro); }
+.ind-valor { font-size: 26px; font-weight: 700; line-height: 1.1; }
+.ind-rotulo { font-size: 12px; color: var(--texto-suave); margin-top: 2px; }
 
 /* ----- cartaz de autorização (QR da UBS) ----- */
 .cartaz {

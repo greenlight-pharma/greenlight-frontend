@@ -1,9 +1,14 @@
 // ============================================================
 // [AGENDA-UBS] Máquina de estados da consulta.
 //
-// A tela desta feature é MAQUETE — dados fixos, sem backend. Este arquivo
-// não é: é a regra de negócio de verdade, testada, e é o que sobrevive
-// quando o módulo for implementado.
+// Esta cópia é do CLIENTE, e serve para uma coisa só: saber quais botões
+// mostrar. A autoridade é o backend (agenda.js), que valida toda transição
+// e responde 409 com a lista do que seria permitido.
+//
+// Duplicação consciente. A alternativa — pedir ao servidor quais ações
+// existem para cada linha — significaria uma chamada por linha numa agenda
+// de centenas, para uma tabela que muda de mês em mês. Se as duas
+// divergirem, quem manda é o servidor, e a tela mostra o erro dele.
 //
 // Os estados são os que o Rodrigo especificou. O que este módulo acrescenta
 // é o que a especificação não define: QUAIS TRANSIÇÕES SÃO LEGAIS.
@@ -146,3 +151,28 @@ export function ordenarFila(pacientes) {
     return new Date(a.esperandoDesde) - new Date(b.esperandoDesde);
   });
 }
+
+
+// Rótulo da AÇÃO, que não é o mesmo que o rótulo do estado: o botão diz o
+// que a pessoa vai fazer ("Registrar presença"), não o nome do estado a que
+// isso leva ("paciente_presente"). Quem opera a recepção não pensa em
+// máquina de estados.
+export const ACAO = {
+  [STATUS.AGUARDANDO_CONFIRMACAO]: "Pedir confirmação",
+  [STATUS.CONFIRMADA]: "Marcar confirmada",
+  [STATUS.CANCELADA]: "Cancelar",
+  [STATUS.VAGA_DISPONIVEL]: "Liberar vaga",
+  [STATUS.VAGA_OFERECIDA]: "Ofertar à fila",
+  [STATUS.AGENDADA]: "Agendar paciente",
+  [STATUS.REMARCADA]: "Remarcar",
+  [STATUS.PACIENTE_PRESENTE]: "Registrar presença",
+  [STATUS.PACIENTE_NAO_CHEGOU]: "Ainda não chegou",
+  [STATUS.NAO_RESPONDEU]: "Sem resposta",
+  [STATUS.FALTA]: "Registrar falta",
+};
+
+// Ações que destroem informação ou fecham o caso pedem confirmação antes.
+export const ACAO_GRAVE = new Set([STATUS.CANCELADA, STATUS.FALTA, STATUS.VAGA_DISPONIVEL]);
+
+// Transições que precisam saber DE QUEM se trata antes de acontecer.
+export const ACAO_PEDE_PESSOA = new Set([STATUS.VAGA_OFERECIDA, STATUS.AGENDADA]);

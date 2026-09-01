@@ -6,8 +6,7 @@ const NAV = [
   { to: "/", icon: "🏠", label: "Início", end: true },
   { to: "/pacientes", icon: "👥", label: "Meus Pacientes" },
   { to: "/agenda", icon: "📅", label: "Agenda" },
-  // Maquete do módulo de agenda da unidade — ver AgendaUbsPage.
-  { to: "/agenda-unidade", icon: "🏥", label: "Agenda da unidade", previa: true },
+  { to: "/agenda-unidade", icon: "🏥", label: "Agenda da unidade" },
   { to: "/consultas", icon: "🩺", label: "Consultas" },
   { to: "/assistente", icon: "💬", label: "Assistente" },
   { to: "/calculadoras", icon: "🧮", label: "Calculadoras" },
