@@ -22,8 +22,13 @@ export default function MedicacoesCard({
   respostasAdesao = [],
   falhas,
   evolucao = [],
+  // Vindo do cadastro enxuto da UBS: a atendente pediu "cadastrar medicação",
+  // então o formulário já abre. Sem isso ela cadastra a pessoa, vê uma tela
+  // de prontuário e fecha achando que terminou — e o paciente fica no
+  // sistema sem nenhum lembrete configurado.
+  abrirNovoAoMontar = false,
 }) {
-  const [formAberto, setFormAberto] = useState(false);
+  const [formAberto, setFormAberto] = useState(abrirNovoAoMontar);
   const [editando, setEditando] = useState(null);
   const [arquivando, setArquivando] = useState(null);
   const arquivar = useArchiveMedication(phone);

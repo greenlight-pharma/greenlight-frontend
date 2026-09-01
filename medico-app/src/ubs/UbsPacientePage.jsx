@@ -1,5 +1,5 @@
 import { useMemo } from "react";
-import { useParams, useNavigate } from "react-router-dom";
+import { useParams, useNavigate, useLocation } from "react-router-dom";
 import { Loading, ErrorState } from "../components/Loading.jsx";
 import DadosCard from "../features/patients/DadosCard.jsx";
 import MedicacoesCard from "../features/medications/MedicacoesCard.jsx";
@@ -27,6 +27,7 @@ import {
 export default function UbsPacientePage() {
   const { phone } = useParams();
   const navigate = useNavigate();
+  const location = useLocation();
   const summary = usePatientSummary(phone);
   const history = usePatientHistory(phone);
 
@@ -78,6 +79,7 @@ export default function UbsPacientePage() {
         respostasAdesao={respostas}
         falhas={falhas}
         evolucao={evolucao}
+        abrirNovoAoMontar={!!location.state?.novaMedicacao}
       />
     </>
   );
