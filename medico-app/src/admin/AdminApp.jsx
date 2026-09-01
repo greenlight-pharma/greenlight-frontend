@@ -7,6 +7,7 @@ import AgendamentosPage from "./features/AgendamentosPage.jsx";
 import MedicosPage from "./features/MedicosPage.jsx";
 import PlanosPage from "./features/PlanosPage.jsx";
 import BotPage from "./features/BotPage.jsx";
+import QrAutorizacaoPage from "./features/QrAutorizacaoPage.jsx";
 
 const NAV = [
   { to: "/", icon: "🏠", label: "Início", end: true },
@@ -14,6 +15,7 @@ const NAV = [
   { to: "/medicos", icon: "👨‍⚕️", label: "Médicos" },
   { to: "/planos", icon: "💳", label: "Planos" },
   { to: "/bot", icon: "🤖", label: "Bot & Mensagens" },
+  { to: "/qr-autorizacao", icon: "📱", label: "QR de autorização" },
 ];
 
 function Shell() {
@@ -83,6 +85,7 @@ function Shell() {
           <Route path="/medicos" element={<MedicosPage />} />
           <Route path="/planos" element={<PlanosPage />} />
           <Route path="/bot" element={<BotPage />} />
+          <Route path="/qr-autorizacao" element={<QrAutorizacaoPage />} />
           <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>
       </main>
