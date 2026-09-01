@@ -20,6 +20,8 @@ export default function MedicacoesCard({
   medications = [],
   adesaoPorMed = [],
   respostasAdesao = [],
+  falhas,
+  evolucao = [],
 }) {
   const [formAberto, setFormAberto] = useState(false);
   const [editando, setEditando] = useState(null);
@@ -60,7 +62,12 @@ export default function MedicacoesCard({
         />
       ))}
 
-      <AdherencePanel resumo={adesaoPorMed} respostas={respostasAdesao} />
+      <AdherencePanel
+        resumo={adesaoPorMed}
+        respostas={respostasAdesao}
+        falhas={falhas}
+        evolucao={evolucao}
+      />
 
       {formAberto && (
         <MedicationForm
@@ -147,13 +154,13 @@ function MedicacaoItem({ med, adesao, onEdit, onArchive }) {
 
       {med.instructions && <ItemBody preserveLineBreaks>{med.instructions}</ItemBody>}
 
-      {adesao?.total > 0 && (
+      {adesao?.esperadas > 0 && (
         <div className={adesao.efeito_colateral > 0 ? "adesao-inline adesao-erro" : "adesao-inline"}>
           {adesao.efeito_colateral > 0 && (
             <strong>🚨 {adesao.efeito_colateral} relato(s) de efeito colateral. </strong>
           )}
-          Respondeu {adesao.total} lembrete(s) em 30 dias — {adesao.tomou} tomou,{" "}
-          {adesao.nao_tomou} não tomou.
+          {adesao.tomou} de {adesao.esperadas} doses confirmadas · {adesao.nao_tomou} não tomadas ·{" "}
+          {adesao.semResposta} sem resposta.
         </div>
       )}
 

@@ -1,83 +1,215 @@
 import { RESPOSTA } from "../../lib/adherence.js";
 
-// [ADESAO] O dado sempre existiu no backend (patient_events) e nunca teve
-// tela. Para UBS é o número que a coordenação vai pedir: quem está
-// abandonando o tratamento antes de descompensar.
+// [ADESAO] Seção do card de Medicações. Responde às quatro perguntas que o
+// médico leva para a consulta seguinte:
+//   quantas doses foram confirmadas · quantas falharam ·
+//   em que dias/horários furou · está melhorando ou piorando
 //
-// Renderiza como SEÇÃO dentro do card de Medicações, não como card próprio —
-// card dentro de card duplica borda e padding, e a adesão fala justamente
-// sobre as medicações listadas acima dela.
-export default function AdherencePanel({ resumo = [], respostas = [] }) {
-  if (!resumo.length) {
+// Os TRÊS estados aparecem sempre separados. Confundir "não tomou" com
+// "não respondeu" é o erro que faria o médico ler o paciente errado.
+export default function AdherencePanel({ resumo = [], respostas = [], falhas, evolucao = [] }) {
+  const comDenominador = resumo.filter((r) => r.esperadas > 0);
+
+  if (!comDenominador.length && !respostas.length) {
     return (
       <div className="adesao-secao">
         <strong>📊 Adesão ao tratamento</strong>
         <div className="state-msg">
-          Nenhuma resposta do paciente registrada nos últimos 30 dias. O
-          lembrete pode estar sendo enviado sem retorno — vale confirmar o
-          número de WhatsApp.
+          Nenhuma dose esperada no período. A adesão aparece quando houver
+          prescrição ativa com horários e data de início.
         </div>
       </div>
     );
   }
 
+  const total = comDenominador.reduce(
+    (a, r) => ({
+      esperadas: a.esperadas + r.esperadas,
+      tomou: a.tomou + r.tomou,
+      nao_tomou: a.nao_tomou + r.nao_tomou,
+      semResposta: a.semResposta + r.semResposta,
+    }),
+    { esperadas: 0, tomou: 0, nao_tomou: 0, semResposta: 0 }
+  );
+
+  const pct = (n) => (total.esperadas ? Math.round((n / total.esperadas) * 100) : 0);
+
   return (
     <div className="adesao-secao">
       <strong>📊 Adesão ao tratamento (30 dias)</strong>
 
+      {total.esperadas > 0 && (
+        <>
+          <div
+            className="adesao-barra"
+            role="img"
+            aria-label={`${pct(total.tomou)}% confirmadas, ${pct(total.nao_tomou)}% não tomadas, ${pct(total.semResposta)}% sem resposta`}
+          >
+            <span className="faixa-ok" style={{ width: `${pct(total.tomou)}%` }} />
+            <span className="faixa-nao" style={{ width: `${pct(total.nao_tomou)}%` }} />
+            <span className="faixa-silencio" style={{ width: `${pct(total.semResposta)}%` }} />
+          </div>
+
+          <div className="adesao-legenda">
+            <span>
+              <i className="ponto ok" /> {total.tomou} confirmadas ({pct(total.tomou)}%)
+            </span>
+            <span>
+              <i className="ponto nao" /> {total.nao_tomou} não tomadas ({pct(total.nao_tomou)}%)
+            </span>
+            <span>
+              <i className="ponto silencio" /> {total.semResposta} sem resposta ({pct(total.semResposta)}%)
+            </span>
+            <span className="texto-suave">de {total.esperadas} doses esperadas</span>
+          </div>
+        </>
+      )}
+
       <div className="adesao-grid">
-        {resumo.map((r) => (
-          <div key={r.medicationId ?? r.medicationName} className="adesao-card">
-            <div className="adesao-med">{r.medicationName || "Medicação"}</div>
-            <div className={`adesao-taxa ${r.taxa < 60 ? "baixa" : "boa"}`}>
-              {r.taxa}%
+        {comDenominador.map((r) => (
+          <div key={r.medicationId} className="adesao-card">
+            <div className="adesao-med">
+              {r.medicationName} {r.dose && <span className="texto-suave">{r.dose}</span>}
+            </div>
+            <div className={`adesao-taxa ${r.taxaConfirmada < 60 ? "baixa" : "boa"}`}>
+              {r.taxaConfirmada}%
             </div>
             <div className="adesao-detalhe">
-              {r.tomou} tomou · {r.nao_tomou} não tomou
-              {r.efeito_colateral > 0 && ` · ${r.efeito_colateral} efeito colateral`}
+              {r.tomou} de {r.esperadas} doses confirmadas
+            </div>
+            <div className="adesao-detalhe">
+              {r.nao_tomou} não tomadas · {r.semResposta} sem resposta
+              {r.efeito_colateral > 0 && (
+                <>
+                  {" · "}
+                  <strong className="texto-erro">{r.efeito_colateral} efeito colateral</strong>
+                </>
+              )}
             </div>
           </div>
         ))}
       </div>
 
-      {/* Este aviso não é decoração. Sem ele, o médico lê "40%" como
-          "tomou 40% das doses", que é falso: o paciente que ignora o
-          lembrete não gera evento nenhum. O denominador é resposta. */}
+      {/* Este aviso não é rodapé: sem ele o médico lê o percentual como
+          "tomou X% das doses" quando parte do denominador é silêncio. */}
       <div className="adesao-nota">
-        ℹ️ O percentual é sobre os lembretes que o paciente <strong>respondeu</strong>,
-        não sobre as doses prescritas. Quem não responde não entra na conta.
+        ℹ️ O percentual é sobre as <strong>doses esperadas</strong> da prescrição
+        (horários × dias). “Sem resposta” não significa que o paciente deixou de
+        tomar — significa que não sabemos. É um sinal diferente de “não tomou”, e
+        costuma pedir busca ativa.
       </div>
+
+      {evolucao.length > 0 && evolucao.some((s) => s.esperadas > 0) && (
+        <div className="adesao-bloco">
+          <strong>Evolução</strong>
+          <div className="evolucao">
+            {evolucao.map((s) => (
+              <div className="evolucao-col" key={s.inicio}>
+                <div className="evolucao-trilha">
+                  <div
+                    className={`evolucao-barra ${s.taxa != null && s.taxa < 60 ? "baixa" : "boa"}`}
+                    style={{ height: `${s.taxa ?? 0}%` }}
+                  />
+                </div>
+                <div className="evolucao-valor">{s.taxa != null ? `${s.taxa}%` : "—"}</div>
+                <div className="evolucao-rotulo">{s.rotulo}</div>
+              </div>
+            ))}
+          </div>
+        </div>
+      )}
+
+      {falhas?.porHorario?.length > 0 && (
+        <div className="adesao-bloco">
+          <strong>Onde o tratamento falha</strong>
+          <div className="grid-2">
+            <div>
+              <div className="small">Por horário</div>
+              {falhas.porHorario.map((h) => (
+                <LinhaHorario key={h.horario} h={h} />
+              ))}
+            </div>
+            <div>
+              <div className="small">Por dia da semana</div>
+              {falhas.porDiaSemana.map((d) => (
+                <LinhaFalha key={d.dia} rotulo={d.dia} falhas={d.falhas} total={d.total} />
+              ))}
+            </div>
+          </div>
+          <div className="small">
+            Por horário, a barra mostra <strong>recusa</strong> e{" "}
+            <strong>silêncio</strong> sobre as doses esperadas — um horário em que o
+            paciente parou de responder é tão relevante quanto um em que ele
+            disse que não tomou. Por dia da semana, só as doses respondidas.
+          </div>
+        </div>
+      )}
 
       {respostas.length > 0 && (
         <details className="adesao-historico">
-          <summary>Ver respostas ({respostas.length})</summary>
-          <table className="tabela">
-            <thead>
-              <tr>
-                <th>Quando</th>
-                <th>Medicação</th>
-                <th>Horário</th>
-                <th>Resposta</th>
-              </tr>
-            </thead>
-            <tbody>
-              {respostas.map((r) => {
-                const info = RESPOSTA[r.resposta] || {};
-                return (
-                  <tr key={r.id}>
-                    <td>{formatarDataHora(r.createdAt)}</td>
-                    <td>{r.medicationName}</td>
-                    <td>{r.scheduleTime}</td>
-                    <td className={`resposta-${info.tipo || ""}`}>
-                      {info.icone} {info.label || r.resposta}
-                    </td>
-                  </tr>
-                );
-              })}
-            </tbody>
-          </table>
+          <summary>Ver todas as respostas ({respostas.length})</summary>
+          <div className="tabela-wrap">
+            <table className="tabela">
+              <thead>
+                <tr>
+                  <th>Quando</th>
+                  <th>Medicação</th>
+                  <th>Horário</th>
+                  <th>Resposta</th>
+                </tr>
+              </thead>
+              <tbody>
+                {respostas.map((r) => {
+                  const info = RESPOSTA[r.resposta] || {};
+                  return (
+                    <tr key={r.id}>
+                      <td>{formatarDataHora(r.createdAt)}</td>
+                      <td>{r.medicationName}</td>
+                      <td>{r.scheduleTime || "—"}</td>
+                      <td className={`resposta-${info.tipo || ""}`}>
+                        {info.icone} {info.label || r.resposta}
+                      </td>
+                    </tr>
+                  );
+                })}
+              </tbody>
+            </table>
+          </div>
         </details>
       )}
+    </div>
+  );
+}
+
+function LinhaHorario({ h }) {
+  const base = h.esperadas || h.respondidas || 1;
+  const pctRecusa = Math.round((h.falhas / base) * 100);
+  const pctSilencio = Math.round((h.semResposta / base) * 100);
+  return (
+    <div className="falha-linha">
+      <span className="falha-rotulo">{h.horario}</span>
+      <span className="falha-trilha" title={`${h.falhas} recusadas, ${h.semResposta} sem resposta, de ${h.esperadas} esperadas`}>
+        <span className="falha-barra" style={{ width: `${pctRecusa}%` }} />
+        <span className="falha-barra silencio" style={{ width: `${pctSilencio}%` }} />
+      </span>
+      <span className="falha-valor">
+        {h.falhas + h.semResposta}/{h.esperadas || h.respondidas}
+      </span>
+    </div>
+  );
+}
+
+function LinhaFalha({ rotulo, falhas, total }) {
+  const pct = total ? Math.round((falhas / total) * 100) : 0;
+  return (
+    <div className="falha-linha">
+      <span className="falha-rotulo">{rotulo}</span>
+      <span className="falha-trilha">
+        <span className="falha-barra" style={{ width: `${pct}%` }} />
+      </span>
+      <span className="falha-valor">
+        {falhas}/{total}
+      </span>
     </div>
   );
 }
