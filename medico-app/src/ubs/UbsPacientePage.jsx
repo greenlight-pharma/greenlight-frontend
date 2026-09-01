@@ -3,6 +3,7 @@ import { useParams, useNavigate, useLocation } from "react-router-dom";
 import { Loading, ErrorState } from "../components/Loading.jsx";
 import DadosCard from "../features/patients/DadosCard.jsx";
 import MedicacoesCard from "../features/medications/MedicacoesCard.jsx";
+import MedicoesCard from "../features/medicoes/MedicoesCard.jsx";
 import { usePatientSummary, usePatientHistory } from "../features/patients/api.js";
 import { formatBRPhone } from "../lib/phone.js";
 import {
@@ -81,6 +82,8 @@ export default function UbsPacientePage() {
         evolucao={evolucao}
         abrirNovoAoMontar={!!location.state?.novaMedicacao}
       />
+
+      <MedicoesCard phone={phone} patientName={patient?.name || ""} />
     </>
   );
 }

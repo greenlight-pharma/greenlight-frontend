@@ -8,6 +8,7 @@ import RastreiosCard from "./RastreiosCard.jsx";
 import ConsultasCard from "./ConsultasCard.jsx";
 import AnalisesCard from "./AnalisesCard.jsx";
 import MedicacoesCard from "../medications/MedicacoesCard.jsx";
+import MedicoesCard from "../medicoes/MedicoesCard.jsx";
 import ExamesCard from "../exams/ExamesCard.jsx";
 import DocumentsModal from "../documents/DocumentsModal.jsx";
 import CaseSummaryModal from "../caseSummary/CaseSummaryModal.jsx";
@@ -118,6 +119,11 @@ export default function PatientDetailPage() {
         falhas={falhas}
         evolucao={evolucao}
       />
+
+      {/* [MEDICOES] Logo depois de Medicações: é acompanhamento, como ela.
+          Não altera a ordem dos cards do medico.html — entra como acréscimo
+          entre Medicações e Exames. */}
+      <MedicoesCard phone={phone} patientName={patient?.name || ""} />
 
       <ExamesCard phone={phone} exams={exams} tipo="lab" />
 

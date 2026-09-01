@@ -533,3 +533,13 @@ button.btn-docs:hover { background: #0f766e; }
   }
   .no-print { display: none !important; }
 }
+
+/* ----- pressão e glicemia ----- */
+.medicoes-bloco { margin-top: 14px; padding-top: 12px; border-top: 1px solid var(--borda); }
+.medicoes-bloco > strong { display: block; margin-bottom: 6px; }
+.medicoes-linha { display: flex; justify-content: space-between; align-items: center; padding: 4px 0; }
+.medicoes-form { display: grid; grid-template-columns: 130px 1fr auto; gap: 8px; align-items: end; margin-top: 8px; }
+.medicoes-form select, .medicoes-form input { margin: 0; }
+/* Linha com alerta: chama atenção sem gritar — o médico vai ler a coluna. */
+.medicao-alerta td { background: var(--erro-fundo); }
+@media (max-width: 700px) { .medicoes-form { grid-template-columns: 1fr; } }
