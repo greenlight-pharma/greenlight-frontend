@@ -411,3 +411,45 @@ button.btn-docs:hover { background: #0f766e; }
 @media (prefers-reduced-motion: reduce) {
   .slider, .slider::before { transition: none; }
 }
+
+/* ----- adesão: três estados, evolução e mapa de falhas ----- */
+.adesao-barra {
+  display: flex; height: 16px; border-radius: 999px; overflow: hidden;
+  background: var(--borda); margin: 10px 0 8px;
+}
+.adesao-barra span { display: block; height: 100%; }
+.faixa-ok       { background: var(--sucesso); }
+.faixa-nao      { background: var(--alerta); }
+.faixa-silencio { background: var(--borda-forte); }
+
+.adesao-legenda { display: flex; flex-wrap: wrap; gap: 14px; font-size: 13px; margin-bottom: 12px; }
+.adesao-legenda .ponto { display: inline-block; width: 9px; height: 9px; border-radius: 50%; margin-right: 5px; }
+.ponto.ok { background: var(--sucesso); }
+.ponto.nao { background: var(--alerta); }
+.ponto.silencio { background: var(--borda-forte); }
+.texto-erro { color: var(--erro-forte); }
+
+.adesao-bloco { margin-top: 16px; }
+.adesao-bloco > strong { display: block; font-size: 14px; margin-bottom: 8px; }
+
+/* evolução semanal */
+.evolucao { display: flex; gap: 12px; align-items: flex-end; }
+.evolucao-col { flex: 1; text-align: center; }
+.evolucao-trilha {
+  height: 90px; background: var(--fundo-suave); border: 1px solid var(--borda);
+  border-radius: 4px; display: flex; align-items: flex-end; overflow: hidden;
+}
+.evolucao-barra { width: 100%; transition: height .2s; }
+.evolucao-barra.boa { background: var(--sucesso); }
+.evolucao-barra.baixa { background: var(--alerta); }
+.evolucao-valor { font-size: 13px; font-weight: 600; margin-top: 4px; font-variant-numeric: tabular-nums; }
+.evolucao-rotulo { font-size: 11px; color: var(--texto-fraco); }
+
+/* mapa de falhas */
+.falha-linha { display: flex; align-items: center; gap: 8px; margin: 4px 0; font-size: 13px; }
+.falha-rotulo { min-width: 62px; font-variant-numeric: tabular-nums; }
+.falha-trilha { flex: 1; height: 8px; background: var(--fundo-cinza); border-radius: 999px; overflow: hidden; }
+.falha-barra { display: block; height: 100%; background: var(--alerta); }
+.falha-valor { min-width: 42px; text-align: right; color: var(--texto-suave); font-variant-numeric: tabular-nums; }
+.falha-trilha { display: flex; }
+.falha-barra.silencio { background: var(--borda-forte); }

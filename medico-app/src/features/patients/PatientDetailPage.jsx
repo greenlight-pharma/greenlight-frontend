@@ -13,7 +13,12 @@ import DocumentsModal from "../documents/DocumentsModal.jsx";
 import CaseSummaryModal from "../caseSummary/CaseSummaryModal.jsx";
 import { usePatientSummary, usePatientHistory } from "./api.js";
 import { formatBRPhone } from "../../lib/phone.js";
-import { extrairRespostas, resumoPorMedicacao } from "../../lib/adherence.js";
+import {
+  extrairRespostas,
+  resumoPorMedicacao,
+  mapaDeFalhas,
+  evolucaoSemanal,
+} from "../../lib/adherence.js";
 
 // [PRONTUARIO] A ordem dos cards é a MESMA do medico.html e não é arbitrária:
 //   Dados -> Alergias -> Rastreios -> Consultas -> Medicações
@@ -31,8 +36,22 @@ export default function PatientDetailPage() {
 
   // Derivado dos eventos a cada render, não guardado em estado: assim não
   // sai de sincronia com o histórico depois de um refetch.
-  const respostas = useMemo(() => extrairRespostas(history.data?.events), [history.data]);
-  const resumoAdesao = useMemo(() => resumoPorMedicacao(history.data?.events), [history.data]);
+  const eventos = history.data?.events;
+  const medicacoes = summary.data?.medications;
+
+  const respostas = useMemo(() => extrairRespostas(eventos), [eventos]);
+  // [TRES-ESTADOS] O resumo agora precisa das medicações: é delas que sai o
+  // denominador real (doses esperadas). Sem isso a adesão seria calculada
+  // sobre as respostas, o que infla o número e esconde quem parou de responder.
+  const resumoAdesao = useMemo(
+    () => resumoPorMedicacao(eventos, medicacoes),
+    [eventos, medicacoes]
+  );
+  const falhas = useMemo(() => mapaDeFalhas(eventos, medicacoes), [eventos, medicacoes]);
+  const evolucao = useMemo(
+    () => evolucaoSemanal(eventos, medicacoes),
+    [eventos, medicacoes]
+  );
 
   if (summary.isLoading) return <Loading label="Carregando prontuário..." />;
   if (summary.error) return <ErrorState error={summary.error} onRetry={summary.refetch} />;
@@ -96,6 +115,8 @@ export default function PatientDetailPage() {
         medications={medications}
         adesaoPorMed={resumoAdesao}
         respostasAdesao={respostas}
+        falhas={falhas}
+        evolucao={evolucao}
       />
 
       <ExamesCard phone={phone} exams={exams} tipo="lab" />
