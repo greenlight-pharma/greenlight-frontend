@@ -12,6 +12,7 @@ import AssistantPage from "./features/assistant/AssistantPage.jsx";
 import CalculatorsPage from "./features/calculators/CalculatorsPage.jsx";
 import AccountPage from "./features/account/AccountPage.jsx";
 import AgendaUbsPage from "./features/agendaUbs/AgendaUbsPage.jsx";
+import MedicoesPacientePage from "./features/medicoes/MedicoesPacientePage.jsx";
 
 function Shell() {
   const { isLoggedIn } = useAuth();
@@ -27,6 +28,20 @@ function Shell() {
         <Route path="/pacientes/:phone" element={<PatientDetailPage />} />
         {/* Linha do tempo é página própria, como no medico.html */}
         <Route path="/pacientes/:phone/linha-do-tempo" element={<TimelinePage />} />
+        {/* [MEDICOES] Fluxo próprio no menu. No prontuário o card continua,
+            porque prontuário agrega tudo do paciente; aqui é o caminho de
+            quem vai aferir, que não passa pelo prontuário inteiro. */}
+        <Route
+          path="/medicoes"
+          element={
+            <PatientsPage
+              title="Pressão e glicemia"
+              subtitle="Escolha o paciente para agendar as medições ou registrar um valor"
+              linkBase="/medicoes"
+            />
+          }
+        />
+        <Route path="/medicoes/:phone" element={<MedicoesPacientePage />} />
         <Route path="/agenda" element={<AgendaPage />} />
         <Route path="/consultas" element={<ConsultasPage />} />
         <Route path="/assistente" element={<AssistantPage />} />

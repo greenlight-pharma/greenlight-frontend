@@ -5,6 +5,7 @@ import { useAuth } from "../features/auth/AuthContext.jsx";
 const NAV = [
   { to: "/", icon: "🏠", label: "Início", end: true },
   { to: "/pacientes", icon: "👥", label: "Meus Pacientes" },
+  { to: "/medicoes", icon: "🩺", label: "Pressão e glicemia" },
   { to: "/agenda", icon: "📅", label: "Agenda" },
   { to: "/agenda-unidade", icon: "🏥", label: "Agenda da unidade" },
   { to: "/consultas", icon: "🩺", label: "Consultas" },
