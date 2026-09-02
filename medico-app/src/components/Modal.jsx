@@ -7,20 +7,36 @@ import { useEffect, useRef } from "react";
 export default function Modal({ open, title, onClose, children, actions, wide }) {
   const boxRef = useRef(null);
 
+  // [FOCO-ROUBADO] onClose fica num ref, e o efeito abaixo depende SÓ de
+  // `open`. Antes ele dependia de `onClose` também — e quase todo chamador
+  // passa `onClose={() => ...}`, uma função nova a cada render. Resultado: a
+  // cada tecla digitada num campo do modal, o estado do formulário mudava,
+  // o pai re-renderizava, `onClose` trocava de identidade, o efeito rodava
+  // de novo e `focus()` puxava o foco para a caixa do modal. Entrava UMA
+  // letra e o resto ia para o nada. Afetava todo modal com campo de texto.
+  const onCloseRef = useRef(onClose);
+  useEffect(() => {
+    onCloseRef.current = onClose;
+  });
+
   useEffect(() => {
     if (!open) return;
     const onKey = (e) => {
-      if (e.key === "Escape") onClose?.();
+      if (e.key === "Escape") onCloseRef.current?.();
     };
     document.addEventListener("keydown", onKey);
     const previousOverflow = document.body.style.overflow;
     document.body.style.overflow = "hidden";
-    boxRef.current?.focus();
+    // Foco inicial só ao ABRIR — e só se o foco não estiver já dentro do
+    // modal (o navegador pode ter focado um campo antes deste efeito).
+    if (!boxRef.current?.contains(document.activeElement)) {
+      boxRef.current?.focus();
+    }
     return () => {
       document.removeEventListener("keydown", onKey);
       document.body.style.overflow = previousOverflow;
     };
-  }, [open, onClose]);
+  }, [open]);
 
   if (!open) return null;
 
