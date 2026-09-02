@@ -48,9 +48,49 @@ function safeParse(s) {
   }
 }
 
+// ============================================================
+// [UMA-RESPOSTA-POR-DOSE] O botão do WhatsApp não expira.
+//
+// Em 2/set/2026 um paciente clicou "Já tomei" às 20h e, horas depois,
+// "Ainda não tomei" na MESMA mensagem. Cada clique virava um evento
+// independente: a dose contou duas vezes, uma confirmada e outra recusada.
+//
+// Corrigir a própria resposta é legítimo — é até desejável, porque a pessoa
+// que volta para consertar está engajada. O que não pode é a correção virar
+// uma segunda dose.
+//
+// Então: guardamos TODOS os eventos (o histórico é auditoria e não se
+// apaga) e, na contagem, ficamos com a ÚLTIMA resposta de cada dose.
+//
+// A identidade da dose vem do payload do botão (doseEm). Para eventos
+// antigos, que não têm, caímos em medicação + dia + horário. E quando nem
+// isso existe — respostas da Cloud API antes desta correção, que gravavam
+// scheduleTime null — cada evento fica sozinho no seu grupo, porque agrupar
+// no chute seria descartar resposta legítima.
+// ============================================================
+// [DUAS-CATEGORIAS] "Tomei" e "não tomei" são a MESMA pergunta — a segunda
+// resposta corrige a primeira. Efeito colateral é outra coisa: um relato
+// clínico, que convive com qualquer das duas. Tomar o remédio e depois passar
+// mal é justamente o caso que mais importa registrar.
+//
+// Um teste que já existia pegou isso: sem separar as categorias, a correção
+// apagava o relato de efeito colateral, ou vice-versa.
+function categoriaDaResposta(resposta) {
+  return resposta === "efeito_colateral" ? "efeito" : "adesao";
+}
+
+function chaveDaDose(r) {
+  const cat = categoriaDaResposta(r.resposta);
+  if (r.doseEm) return `${r.medicationId}|${r.doseEm}|${cat}`;
+  if (r.scheduleTime) {
+    return `${r.medicationId}|${soData(r.createdAt)}|${r.scheduleTime}|${cat}`;
+  }
+  return `evento|${r.id}`;
+}
+
 /** Extrai só os eventos de resposta a lembrete, já com o payload aberto. */
 export function extrairRespostas(events = []) {
-  return events
+  const todas = events
     .filter((e) => e?.type === "medication_response")
     .map((e) => {
       const payload =
@@ -62,6 +102,45 @@ export function extrairRespostas(events = []) {
         medicationName: payload.medicationName || "",
         dose: payload.dose || "",
         scheduleTime: payload.scheduleTime || "",
+        doseEm: payload.doseEm || null,
+        resposta: payload.response || null,
+      };
+    })
+    .filter((r) => r.resposta);
+
+  // Mais recente primeiro; o primeiro de cada dose é o que vale.
+  const ordenadas = [...todas].sort(
+    (a, b) => new Date(b.createdAt) - new Date(a.createdAt)
+  );
+  const vistas = new Set();
+  const finais = [];
+  for (const r of ordenadas) {
+    const chave = chaveDaDose(r);
+    if (vistas.has(chave)) continue;
+    vistas.add(chave);
+    finais.push(r);
+  }
+  // Devolve na ordem cronológica original, que é o que as telas esperam.
+  return finais.sort((a, b) => new Date(a.createdAt) - new Date(b.createdAt));
+}
+
+/**
+ * Todas as respostas, inclusive as substituídas. Para o histórico da tela,
+ * onde ver que o paciente mudou de ideia é informação, não ruído.
+ */
+export function extrairRespostasBrutas(events = []) {
+  return events
+    .filter((e) => e?.type === "medication_response")
+    .map((e) => {
+      const payload =
+        typeof e.payload === "string" ? safeParse(e.payload) : e.payload || {};
+      return {
+        id: e.id,
+        createdAt: e.createdAt,
+        medicationId: payload.medicationId,
+        medicationName: payload.medicationName || "",
+        scheduleTime: payload.scheduleTime || "",
+        doseEm: payload.doseEm || null,
         resposta: payload.response || null,
       };
     })

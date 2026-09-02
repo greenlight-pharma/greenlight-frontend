@@ -7,7 +7,17 @@ import { RESPOSTA } from "../../lib/adherence.js";
 //
 // Os TRÊS estados aparecem sempre separados. Confundir "não tomou" com
 // "não respondeu" é o erro que faria o médico ler o paciente errado.
-export default function AdherencePanel({ resumo = [], respostas = [], falhas, evolucao = [] }) {
+export default function AdherencePanel({
+  resumo = [],
+  respostas = [],
+  // Todas as respostas, inclusive as que foram substituídas por uma
+  // correção. Os números usam `respostas` (uma por dose); o histórico usa
+  // esta, porque o paciente ter voltado e mudado a resposta é informação.
+  respostasHistorico = null,
+  falhas,
+  evolucao = [],
+}) {
+  const historico = respostasHistorico || respostas;
   const comDenominador = resumo.filter((r) => r.esperadas > 0);
 
   // [EFEITO-COLATERAL] Este bloco é o único aviso que existe.
@@ -191,9 +201,9 @@ export default function AdherencePanel({ resumo = [], respostas = [], falhas, ev
         </div>
       )}
 
-      {respostas.length > 0 && (
+      {historico.length > 0 && (
         <details className="adesao-historico">
-          <summary>Ver todas as respostas ({respostas.length})</summary>
+          <summary>Ver todas as respostas ({historico.length})</summary>
           <div className="tabela-wrap">
             <table className="tabela">
               <thead>
@@ -205,7 +215,7 @@ export default function AdherencePanel({ resumo = [], respostas = [], falhas, ev
                 </tr>
               </thead>
               <tbody>
-                {respostas.map((r) => {
+                {historico.map((r) => {
                   const info = RESPOSTA[r.resposta] || {};
                   return (
                     <tr key={r.id}>

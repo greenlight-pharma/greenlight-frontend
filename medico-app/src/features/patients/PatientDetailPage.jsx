@@ -16,6 +16,7 @@ import { usePatientSummary, usePatientHistory } from "./api.js";
 import { formatBRPhone } from "../../lib/phone.js";
 import {
   extrairRespostas,
+  extrairRespostasBrutas,
   resumoPorMedicacao,
   mapaDeFalhas,
   evolucaoSemanal,
@@ -41,6 +42,9 @@ export default function PatientDetailPage() {
   const medicacoes = summary.data?.medications;
 
   const respostas = useMemo(() => extrairRespostas(eventos), [eventos]);
+  // O histórico mostra TODAS, inclusive as substituídas: ver que o paciente
+  // voltou e corrigiu é informação, e some se mostrarmos só o que contou.
+  const respostasBrutas = useMemo(() => extrairRespostasBrutas(eventos), [eventos]);
   // [TRES-ESTADOS] O resumo agora precisa das medicações: é delas que sai o
   // denominador real (doses esperadas). Sem isso a adesão seria calculada
   // sobre as respostas, o que infla o número e esconde quem parou de responder.
@@ -116,6 +120,7 @@ export default function PatientDetailPage() {
         medications={medications}
         adesaoPorMed={resumoAdesao}
         respostasAdesao={respostas}
+        respostasHistorico={respostasBrutas}
         falhas={falhas}
         evolucao={evolucao}
       />
