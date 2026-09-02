@@ -1,6 +1,7 @@
 import { describe, it, expect } from "vitest";
 import {
   extrairRespostas,
+  extrairRespostasBrutas,
   dosesEsperadas,
   resumoPorMedicacao,
   mapaDeFalhas,
@@ -206,5 +207,115 @@ describe("sinalDeAdesao", () => {
   it("sem doses esperadas não inventa número", () => {
     const resumo = resumoPorMedicacao([], [medicacao({ scheduleTimes: "8;00" })], { agora: AGORA });
     expect(sinalDeAdesao(resumo).nivel).toBe("sem-dados");
+  });
+});
+
+// ------------------------------------------------------------
+// [UMA-RESPOSTA-POR-DOSE] O bug de 2/set/2026: o paciente clicou "Já tomei"
+// e, horas depois, "Ainda não tomei" na MESMA mensagem. Contou duas doses.
+describe("uma resposta por dose", () => {
+  const comDose = (resposta, doseEm, minutosDepois) => ({
+    id: `${resposta}-${minutosDepois}`,
+    type: "medication_response",
+    createdAt: new Date(AGORA.getTime() + minutosDepois * 60000).toISOString(),
+    payload: {
+      medicationId: 1,
+      medicationName: "Losartana",
+      doseEm,
+      scheduleTime: "08:00",
+      response: resposta,
+    },
+  });
+
+  it("clicar de novo na mesma mensagem CORRIGE, não soma outra dose", () => {
+    const eventos = [
+      comDose("tomou", "2026-08-31T08:00", 0),
+      comDose("nao_tomou", "2026-08-31T08:00", 240), // 4h depois, mesma dose
+    ];
+    const r = extrairRespostas(eventos);
+    expect(r).toHaveLength(1);
+    expect(r[0].resposta).toBe("nao_tomou"); // vale a última
+  });
+
+  it("doses diferentes do mesmo remédio continuam contando separado", () => {
+    const eventos = [
+      comDose("tomou", "2026-08-31T08:00", 0),
+      comDose("tomou", "2026-08-31T20:00", 720),
+    ];
+    expect(extrairRespostas(eventos)).toHaveLength(2);
+  });
+
+  it("o resumo não conta a dose corrigida duas vezes", () => {
+    const eventos = [
+      comDose("tomou", "2026-08-31T08:00", 0),
+      comDose("nao_tomou", "2026-08-31T08:00", 240),
+    ];
+    const [resumo] = resumoPorMedicacao(eventos, [medicacao()], { agora: AGORA });
+    expect(resumo.respondidas).toBe(1);
+    expect(resumo.tomou).toBe(0);
+    expect(resumo.nao_tomou).toBe(1);
+  });
+
+  // Eventos antigos não têm doseEm. O par medicação+dia+horário resolve.
+  it("evento antigo sem doseEm agrupa por dia e horário", () => {
+    const antigo = (resposta, min) => ({
+      id: `a-${min}`,
+      type: "medication_response",
+      createdAt: new Date(AGORA.getTime() + min * 60000).toISOString(),
+      payload: { medicationId: 1, medicationName: "Losartana", scheduleTime: "08:00", response: resposta },
+    });
+    const r = extrairRespostas([antigo("tomou", 0), antigo("nao_tomou", 60)]);
+    expect(r).toHaveLength(1);
+    expect(r[0].resposta).toBe("nao_tomou");
+  });
+
+  // Sem doseEm E sem scheduleTime não dá para saber se é a mesma dose.
+  // Agrupar no chute descartaria resposta legítima — melhor manter as duas.
+  it("sem identidade nenhuma, não agrupa no chute", () => {
+    const sem = (resposta, min) => ({
+      id: `s-${min}`,
+      type: "medication_response",
+      createdAt: new Date(AGORA.getTime() + min * 60000).toISOString(),
+      payload: { medicationId: 1, medicationName: "Losartana", response: resposta },
+    });
+    expect(extrairRespostas([sem("tomou", 0), sem("nao_tomou", 60)])).toHaveLength(2);
+  });
+
+  it("o histórico bruto preserva as duas, para o médico ver a correção", () => {
+    const eventos = [
+      comDose("tomou", "2026-08-31T08:00", 0),
+      comDose("nao_tomou", "2026-08-31T08:00", 240),
+    ];
+    expect(extrairRespostasBrutas(eventos)).toHaveLength(2);
+  });
+});
+
+describe("adesão e efeito colateral são perguntas diferentes", () => {
+  const naDose = (resposta, min) => ({
+    id: `x-${resposta}-${min}`,
+    type: "medication_response",
+    createdAt: new Date(AGORA.getTime() + min * 60000).toISOString(),
+    payload: {
+      medicationId: 1, medicationName: "Losartana",
+      doseEm: "2026-08-31T08:00", scheduleTime: "08:00", response: resposta,
+    },
+  });
+
+  // Tomou o remédio e depois passou mal: as DUAS coisas são verdade.
+  it("tomou + efeito colateral na mesma dose convivem", () => {
+    const r = extrairRespostas([naDose("tomou", 0), naDose("efeito_colateral", 30)]);
+    expect(r).toHaveLength(2);
+    expect(r.map((x) => x.resposta).sort()).toEqual(["efeito_colateral", "tomou"]);
+  });
+
+  it("mas corrigir tomou -> não tomei continua sendo uma coisa só", () => {
+    const r = extrairRespostas([naDose("tomou", 0), naDose("nao_tomou", 30)]);
+    expect(r).toHaveLength(1);
+    expect(r[0].resposta).toBe("nao_tomou");
+  });
+
+  it("clicar duas vezes em efeito colateral não conta dois relatos", () => {
+    const r = extrairRespostas([naDose("efeito_colateral", 0), naDose("efeito_colateral", 30)]);
+    expect(r).toHaveLength(1);
   });
 });

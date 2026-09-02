@@ -20,6 +20,7 @@ export default function MedicacoesCard({
   medications = [],
   adesaoPorMed = [],
   respostasAdesao = [],
+  respostasHistorico = null,
   falhas,
   evolucao = [],
   // Vindo do cadastro enxuto da UBS: a atendente pediu "cadastrar medicação",
@@ -70,6 +71,7 @@ export default function MedicacoesCard({
       <AdherencePanel
         resumo={adesaoPorMed}
         respostas={respostasAdesao}
+        respostasHistorico={respostasHistorico}
         falhas={falhas}
         evolucao={evolucao}
       />

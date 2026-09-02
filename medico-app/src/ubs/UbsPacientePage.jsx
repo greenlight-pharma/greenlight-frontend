@@ -7,6 +7,7 @@ import { usePatientSummary, usePatientHistory } from "../features/patients/api.j
 import { formatBRPhone } from "../lib/phone.js";
 import {
   extrairRespostas,
+  extrairRespostasBrutas,
   resumoPorMedicacao,
   mapaDeFalhas,
   evolucaoSemanal,
@@ -38,6 +39,7 @@ export default function UbsPacientePage() {
   // dias), não das respostas recebidas. Por isso o resumo precisa das
   // medicações, e não só dos eventos.
   const respostas = useMemo(() => extrairRespostas(eventos), [eventos]);
+  const respostasBrutas = useMemo(() => extrairRespostasBrutas(eventos), [eventos]);
   const resumoAdesao = useMemo(
     () => resumoPorMedicacao(eventos, medicacoes),
     [eventos, medicacoes]
@@ -77,6 +79,7 @@ export default function UbsPacientePage() {
         medications={medications}
         adesaoPorMed={resumoAdesao}
         respostasAdesao={respostas}
+        respostasHistorico={respostasBrutas}
         falhas={falhas}
         evolucao={evolucao}
         abrirNovoAoMontar={!!location.state?.novaMedicacao}
