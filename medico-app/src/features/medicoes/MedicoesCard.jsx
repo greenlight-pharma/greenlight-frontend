@@ -48,9 +48,12 @@ export default function MedicoesCard({ phone, patientName }) {
     setErroMedida(""); setOkMedida("");
     try {
       const r = await registrar.mutateAsync({ tipo: medida.tipo, texto: medida.texto });
+      // Não diz "a equipe foi avisada": o alerta não sai mais por WhatsApp
+      // (ver [SO-NO-PAINEL] no backend). Dizer isso faria a recepção supor
+      // que alguém já foi acionado, e ninguém foi.
       setOkMedida(
         r.alerta
-          ? `Registrado. ⚠️ Fora do limiar (${r.alerta}) — a equipe foi avisada.`
+          ? `Registrado. ⚠️ Fora do limiar (${r.alerta}) — fica destacado no histórico abaixo.`
           : "Registrado."
       );
       setMedida((m) => ({ ...m, texto: "" }));

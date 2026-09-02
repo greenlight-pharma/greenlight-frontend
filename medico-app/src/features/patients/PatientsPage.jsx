@@ -15,6 +15,10 @@ export default function PatientsPage({
   subtitle = "Pacientes vinculados a você",
   // No painel da UBS o cadastro é enxuto — ver [CADASTRO-ENXUTO].
   cadastroEnxuto = false,
+  // Para onde a linha do paciente leva. A mesma lista serve a fluxos
+  // diferentes (prontuário, medicações, pressão e glicemia) — o que muda
+  // é só o destino, não o comportamento de buscar e cadastrar.
+  linkBase = "/pacientes",
 }) {
   const { data: patients, isLoading, error, refetch } = usePatients();
   const [busca, setBusca] = useState("");
@@ -81,7 +85,7 @@ export default function PatientsPage({
               {filtrados.map((p) => (
                 <tr key={p.id}>
                   <td>
-                    <Link to={`/pacientes/${p.patientPhone}`} className="link-forte">
+                    <Link to={`${linkBase}/${p.patientPhone}`} className="link-forte">
                       {p.patientName || "(sem nome)"}
                     </Link>
                   </td>

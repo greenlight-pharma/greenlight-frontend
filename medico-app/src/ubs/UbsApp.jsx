@@ -5,6 +5,7 @@ import Layout from "../components/Layout.jsx";
 import PatientsPage from "../features/patients/PatientsPage.jsx";
 import UbsPacientePage from "./UbsPacientePage.jsx";
 import AgendaUbsPage from "../features/agendaUbs/AgendaUbsPage.jsx";
+import MedicoesPacientePage from "../features/medicoes/MedicoesPacientePage.jsx";
 
 // [PAINEL-UBS] O produto que vai à Secretaria de Saúde: lembrete de
 // medicação com acompanhamento de adesão, e agenda com reaproveitamento de
@@ -26,6 +27,10 @@ import AgendaUbsPage from "../features/agendaUbs/AgendaUbsPage.jsx";
 // importadas daqui — corrigir a adesão conserta os dois.
 const NAV = [
   { to: "/pacientes", icon: "💊", label: "Medicações" },
+  // Item próprio, e não um card dentro de Medicações: prescrever remédio e
+  // aferir pressão são rotinas diferentes, de pessoas diferentes, em
+  // momentos diferentes.
+  { to: "/medicoes", icon: "🩺", label: "Pressão e glicemia" },
   { to: "/agenda-unidade", icon: "🏥", label: "Agenda da unidade" },
 ];
 
@@ -49,6 +54,18 @@ function Shell() {
         {/* O telefone é a identidade do paciente — é a chave que o WhatsApp
             entrega de volta na resposta do lembrete. */}
         <Route path="/pacientes/:phone" element={<UbsPacientePage />} />
+        <Route
+          path="/medicoes"
+          element={
+            <PatientsPage
+              title="Pressão e glicemia"
+              subtitle="Escolha o paciente para agendar as medições ou registrar um valor"
+              cadastroEnxuto
+              linkBase="/medicoes"
+            />
+          }
+        />
+        <Route path="/medicoes/:phone" element={<MedicoesPacientePage />} />
         <Route path="/agenda-unidade" element={<AgendaUbsPage />} />
         <Route path="*" element={<Navigate to="/pacientes" replace />} />
       </Routes>
