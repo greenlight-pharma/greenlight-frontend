@@ -10,6 +10,20 @@ import { RESPOSTA } from "../../lib/adherence.js";
 export default function AdherencePanel({ resumo = [], respostas = [], falhas, evolucao = [] }) {
   const comDenominador = resumo.filter((r) => r.esperadas > 0);
 
+  // [EFEITO-COLATERAL] Este bloco é o único aviso que existe.
+  //
+  // O relato deixou de ser empurrado para o WhatsApp do médico (ver
+  // [EFEITO-NAO-VAI-POR-WHATSAPP] no backend): o lugar de acompanhar adesão
+  // é aqui, junto do histórico. Mas antes disso o efeito colateral aparecia
+  // só como letra miúda numa linha de detalhe — o que bastava quando havia
+  // um alerta em paralelo, e não basta mais.
+  //
+  // Ordenado do mais recente para o mais antigo: em efeito colateral o que
+  // importa primeiro é o que acabou de acontecer.
+  const efeitos = respostas
+    .filter((r) => r.resposta === "efeito_colateral")
+    .sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
+
   if (!comDenominador.length && !respostas.length) {
     return (
       <div className="adesao-secao">
@@ -37,6 +51,38 @@ export default function AdherencePanel({ resumo = [], respostas = [], falhas, ev
   return (
     <div className="adesao-secao">
       <strong>📊 Adesão ao tratamento (30 dias)</strong>
+
+      {efeitos.length > 0 && (
+        <div className="efeito-aviso">
+          <div className="efeito-aviso-titulo">
+            🚨 {efeitos.length}{" "}
+            {efeitos.length === 1
+              ? "relato de efeito colateral"
+              : "relatos de efeito colateral"}
+          </div>
+          <ul>
+            {efeitos.slice(0, 5).map((r) => (
+              <li key={r.id}>
+                <strong>{r.medicationName}</strong>
+                {r.scheduleTime ? ` (${r.scheduleTime})` : ""} —{" "}
+                {formatarDataHora(r.createdAt)}
+              </li>
+            ))}
+          </ul>
+          {efeitos.length > 5 && (
+            <div className="small">
+              e mais {efeitos.length - 5}. Veja todas as respostas abaixo.
+            </div>
+          )}
+          {/* O paciente já recebeu a orientação de procurar atendimento se
+              o efeito for grave. Aqui a mensagem é para o médico: o relato
+              não dispara aviso em lugar nenhum, então quem olha é quem vê. */}
+          <div className="small">
+            O paciente foi orientado a procurar atendimento se o efeito for grave.
+            Este registro não gera aviso automático — é visto aqui.
+          </div>
+        </div>
+      )}
 
       {total.esperadas > 0 && (
         <>

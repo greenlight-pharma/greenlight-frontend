@@ -543,3 +543,18 @@ button.btn-docs:hover { background: #0f766e; }
 /* Linha com alerta: chama atenção sem gritar — o médico vai ler a coluna. */
 .medicao-alerta td { background: var(--erro-fundo); }
 @media (max-width: 700px) { .medicoes-form { grid-template-columns: 1fr; } }
+
+/* ----- relato de efeito colateral ----- */
+/* Único canal do aviso desde que ele deixou de ir ao WhatsApp do médico:
+   precisa saltar aos olhos de quem abre o prontuário. */
+.efeito-aviso {
+  background: var(--erro-fundo);
+  border: 1px solid var(--erro);
+  border-left-width: 4px;
+  border-radius: var(--raio);
+  padding: 12px 14px;
+  margin: 10px 0 14px;
+}
+.efeito-aviso-titulo { font-weight: 700; color: var(--erro-forte); }
+.efeito-aviso ul { margin: 8px 0 6px 18px; font-size: 14px; }
+.efeito-aviso li { margin: 3px 0; }
