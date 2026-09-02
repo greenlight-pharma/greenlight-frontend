@@ -41,7 +41,10 @@ export default function PatientDetailPage() {
   const eventos = history.data?.events;
   const medicacoes = summary.data?.medications;
 
-  const respostas = useMemo(() => extrairRespostas(eventos), [eventos]);
+  const respostas = useMemo(
+    () => extrairRespostas(eventos, medicacoes),
+    [eventos, medicacoes]
+  );
   // O histórico mostra TODAS, inclusive as substituídas: ver que o paciente
   // voltou e corrigiu é informação, e some se mostrarmos só o que contou.
   const respostasBrutas = useMemo(() => extrairRespostasBrutas(eventos), [eventos]);

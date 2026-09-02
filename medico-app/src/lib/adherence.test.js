@@ -319,3 +319,60 @@ describe("adesão e efeito colateral são perguntas diferentes", () => {
     expect(r).toHaveLength(1);
   });
 });
+
+// [DOSE-LEGADA] Eventos anteriores ao carimbo de dose no botão: a correção
+// contava dobrado porque cada clique ficava sozinho no seu grupo.
+describe("dose legada, atribuída pela janela", () => {
+  const medUmaVez = { id: 7, medicationName: "Losartana", scheduleTimes: "21:00" };
+  const legado = (resposta, createdAt, id) => ({
+    id,
+    type: "medication_response",
+    createdAt,
+    payload: { medicationId: 7, medicationName: "Losartana", response: resposta },
+  });
+
+  it("junta a correção feita depois da meia-noite na dose da noite", () => {
+    const eventos = [
+      legado("tomou", "2026-09-01T21:05:00-03:00", 1),
+      legado("nao_tomou", "2026-09-02T00:09:00-03:00", 2),
+    ];
+    const r = extrairRespostas(eventos, [medUmaVez]);
+    expect(r).toHaveLength(1);
+    expect(r[0].resposta).toBe("nao_tomou");
+  });
+
+  it("mantém separadas as respostas de doses diferentes", () => {
+    const medDuasVezes = { id: 7, medicationName: "Losartana", scheduleTimes: "08:00,20:00" };
+    const eventos = [
+      legado("tomou", "2026-09-01T08:05:00-03:00", 1),
+      legado("nao_tomou", "2026-09-01T20:05:00-03:00", 2),
+    ];
+    expect(extrairRespostas(eventos, [medDuasVezes])).toHaveLength(2);
+  });
+
+  it("não agrupa quando a dose seguinte já passou (resposta atrasada)", () => {
+    const medDuasVezes = { id: 7, medicationName: "Losartana", scheduleTimes: "08:00,20:00" };
+    const eventos = [
+      legado("tomou", "2026-09-01T21:00:00-03:00", 1),
+      legado("nao_tomou", "2026-09-01T21:05:00-03:00", 2),
+    ];
+    // as duas caem na MESMA janela (20:00) — aqui agrupar é o certo
+    expect(extrairRespostas(eventos, [medDuasVezes])).toHaveLength(1);
+  });
+
+  it("sem medicação conhecida, cada evento continua sozinho", () => {
+    const eventos = [
+      legado("tomou", "2026-09-01T21:05:00-03:00", 1),
+      legado("nao_tomou", "2026-09-02T00:09:00-03:00", 2),
+    ];
+    expect(extrairRespostas(eventos, [])).toHaveLength(2);
+  });
+
+  it("efeito colateral convive com a resposta de adesão da mesma dose", () => {
+    const eventos = [
+      legado("tomou", "2026-09-01T21:05:00-03:00", 1),
+      legado("efeito_colateral", "2026-09-01T22:00:00-03:00", 2),
+    ];
+    expect(extrairRespostas(eventos, [medUmaVez])).toHaveLength(2);
+  });
+});

@@ -79,17 +79,63 @@ function categoriaDaResposta(resposta) {
   return resposta === "efeito_colateral" ? "efeito" : "adesao";
 }
 
-function chaveDaDose(r) {
+// [DOSE-LEGADA] Eventos gravados ANTES do carimbo de dose no botão (até
+// 2/set/2026) chegam sem `doseEm` e sem `scheduleTime` — e era justamente
+// nesses que o clique de correção contava dobrado, porque cada um ficava
+// sozinho no seu grupo. Não dá para carimbá-los depois, mas dá para dizer em
+// QUAL JANELA a resposta caiu: a dose agendada mais recente antes dela.
+//
+// A atribuição só vale quando a janela é inequívoca — ou seja, quando a
+// resposta chegou ANTES do próximo horário agendado. Paciente que responde
+// duas mensagens atrasadas de uma vez (a das 08h e a das 20h, ambas às 21h)
+// cai fora da regra e mantém os dois eventos separados: aí agrupar seria
+// descartar resposta legítima, que é o erro oposto e pior.
+function janelaDaDose(r, med) {
+  if (!med || !r.createdAt) return null;
+  const { ok, times } = parseScheduleTimes(med.scheduleTimes);
+  if (!ok || !times.length) return null;
+  const quando = new Date(r.createdAt);
+  if (Number.isNaN(quando.getTime())) return null;
+
+  const emDia = (base, hhmm) => {
+    const [hh, mm] = hhmm.split(":").map(Number);
+    const d = new Date(base);
+    d.setHours(hh, mm, 0, 0);
+    return d;
+  };
+  // Candidatos de ontem, hoje e amanhã cobrem a janela que cruza a meia-noite.
+  const marcos = [];
+  for (const dia of [-1, 0, 1]) {
+    const base = new Date(quando.getTime() + dia * DIA_MS);
+    for (const t of times) marcos.push(emDia(base, t));
+  }
+  marcos.sort((a, b) => a - b);
+
+  let atual = null;
+  let proximo = null;
+  for (const m of marcos) {
+    if (m <= quando) atual = m;
+    else if (proximo === null) proximo = m;
+  }
+  if (!atual) return null;
+  if (proximo && quando >= proximo) return null; // ambíguo: já passou a dose seguinte
+  return atual.toISOString();
+}
+
+function chaveDaDose(r, med) {
   const cat = categoriaDaResposta(r.resposta);
   if (r.doseEm) return `${r.medicationId}|${r.doseEm}|${cat}`;
   if (r.scheduleTime) {
     return `${r.medicationId}|${soData(r.createdAt)}|${r.scheduleTime}|${cat}`;
   }
+  const janela = janelaDaDose(r, med);
+  if (janela) return `${r.medicationId}|janela:${janela}|${cat}`;
   return `evento|${r.id}`;
 }
 
 /** Extrai só os eventos de resposta a lembrete, já com o payload aberto. */
-export function extrairRespostas(events = []) {
+export function extrairRespostas(events = [], medications = []) {
+  const porId = new Map((medications || []).map((m) => [m.id, m]));
   const todas = events
     .filter((e) => e?.type === "medication_response")
     .map((e) => {
@@ -115,7 +161,7 @@ export function extrairRespostas(events = []) {
   const vistas = new Set();
   const finais = [];
   for (const r of ordenadas) {
-    const chave = chaveDaDose(r);
+    const chave = chaveDaDose(r, porId.get(r.medicationId));
     if (vistas.has(chave)) continue;
     vistas.add(chave);
     finais.push(r);
@@ -222,7 +268,7 @@ export function resumoPorMedicacao(
     });
   }
 
-  for (const r of extrairRespostas(events)) {
+  for (const r of extrairRespostas(events, medications)) {
     if (r.createdAt && new Date(r.createdAt) < corte) continue;
 
     // Resposta de medicação fora da lista (arquivada, por exemplo) ainda
@@ -287,7 +333,7 @@ export function mapaDeFalhas(events = [], medications = [], { dias = 30, agora =
   const porHorario = new Map();
   const porDiaSemana = new Map();
 
-  for (const r of extrairRespostas(events)) {
+  for (const r of extrairRespostas(events, medications)) {
     if (!r.createdAt || new Date(r.createdAt) < corte) continue;
 
     const falhou = r.resposta === "nao_tomou";
@@ -356,7 +402,7 @@ export function evolucaoSemanal(
   medications = [],
   { semanas = 4, agora = new Date() } = {}
 ) {
-  const respostas = extrairRespostas(events);
+  const respostas = extrairRespostas(events, medications);
   const saida = [];
 
   for (let i = semanas - 1; i >= 0; i--) {

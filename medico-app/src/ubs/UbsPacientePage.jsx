@@ -38,7 +38,10 @@ export default function UbsPacientePage() {
   // [TRES-ESTADOS] O denominador da adesão vem da prescrição (horários ×
   // dias), não das respostas recebidas. Por isso o resumo precisa das
   // medicações, e não só dos eventos.
-  const respostas = useMemo(() => extrairRespostas(eventos), [eventos]);
+  const respostas = useMemo(
+    () => extrairRespostas(eventos, medicacoes),
+    [eventos, medicacoes]
+  );
   const respostasBrutas = useMemo(() => extrairRespostasBrutas(eventos), [eventos]);
   const resumoAdesao = useMemo(
     () => resumoPorMedicacao(eventos, medicacoes),
