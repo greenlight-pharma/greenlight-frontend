@@ -11,6 +11,7 @@ const NAV = [
   { to: "/consultas", icon: "🩺", label: "Consultas" },
   { to: "/assistente", icon: "💬", label: "Assistente" },
   { to: "/calculadoras", icon: "🧮", label: "Calculadoras" },
+  { to: "/assinatura", icon: "💳", label: "Meu plano" },
   { to: "/conta", icon: "🔐", label: "Alterar Senha" },
 ];
 

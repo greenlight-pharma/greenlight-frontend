@@ -558,3 +558,28 @@ button.btn-docs:hover { background: #0f766e; }
 .efeito-aviso-titulo { font-weight: 700; color: var(--erro-forte); }
 .efeito-aviso ul { margin: 8px 0 6px 18px; font-size: 14px; }
 .efeito-aviso li { margin: 3px 0; }
+
+/* ----- assinatura do médico ----- */
+.link-botao {
+  background: none; border: none; color: var(--azul);
+  font-size: 14px; cursor: pointer; padding: 8px 0; width: 100%;
+}
+.link-botao:hover { text-decoration: underline; }
+
+.plano-uso { margin: 12px 0; }
+.plano-barra { height: 10px; border-radius: 999px; background: var(--borda); overflow: hidden; }
+.plano-preenchido { display: block; height: 100%; background: var(--azul); }
+.plano-preenchido.excedido { background: var(--alerta); }
+.plano-numeros { font-size: 14px; margin-top: 6px; }
+
+.planos-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); gap: 12px; margin: 12px 0; }
+.plano-card { border: 1px solid var(--borda); border-radius: var(--raio); padding: 14px; position: relative; }
+.plano-card.atual { border-color: var(--azul); background: var(--azul-claro); }
+.plano-nome { font-weight: 700; }
+.plano-preco { font-size: 22px; font-weight: 700; margin: 4px 0; }
+.plano-limite { font-size: 13px; color: var(--texto-forte); margin-bottom: 6px; }
+.plano-tag {
+  position: absolute; top: 10px; right: 10px; font-size: 10px; text-transform: uppercase;
+  letter-spacing: .05em; background: var(--azul); color: var(--branco);
+  border-radius: 999px; padding: 2px 7px;
+}
