@@ -11,12 +11,13 @@ import ConsultasPage from "./features/consultas/ConsultasPage.jsx";
 import AssistantPage from "./features/assistant/AssistantPage.jsx";
 import CalculatorsPage from "./features/calculators/CalculatorsPage.jsx";
 import AccountPage from "./features/account/AccountPage.jsx";
+import AssinaturaPage from "./features/assinatura/AssinaturaPage.jsx";
 import AgendaUbsPage from "./features/agendaUbs/AgendaUbsPage.jsx";
 import MedicoesPacientePage from "./features/medicoes/MedicoesPacientePage.jsx";
 
 function Shell() {
   const { isLoggedIn } = useAuth();
-  if (!isLoggedIn) return <LoginPage />;
+  if (!isLoggedIn) return <LoginPage permiteCadastro />;
 
   return (
     <Layout>
@@ -48,6 +49,7 @@ function Shell() {
         <Route path="/calculadoras" element={<CalculatorsPage />} />
         {/* [AGENDA-UBS] Maquete do módulo 2 — dados fictícios, sem backend. */}
         <Route path="/agenda-unidade" element={<AgendaUbsPage />} />
+        <Route path="/assinatura" element={<AssinaturaPage />} />
         <Route path="/conta" element={<AccountPage />} />
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
