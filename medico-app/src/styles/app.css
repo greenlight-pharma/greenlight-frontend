@@ -583,3 +583,17 @@ button.btn-docs:hover { background: #0f766e; }
   letter-spacing: .05em; background: var(--azul); color: var(--branco);
   border-radius: 999px; padding: 2px 7px;
 }
+
+/* ----- leitura de receita por foto ----- */
+.receita-item {
+  border: 1px solid var(--borda); border-radius: var(--raio);
+  padding: 12px 14px; margin: 10px 0;
+}
+.receita-item.salvo { background: var(--sucesso-fundo); border-color: var(--sucesso); }
+/* O que não foi lido aparece nomeado, não como aviso genérico: dizer ONDE
+   olhar é o que salva a conferência de seis medicações de uma vez. */
+.receita-motivos {
+  font-size: 13px; color: #92400e; background: var(--alerta-fundo);
+  border-radius: 6px; padding: 6px 9px; margin: 6px 0;
+}
+.texto-sucesso { color: #065f46; font-weight: 600; }
