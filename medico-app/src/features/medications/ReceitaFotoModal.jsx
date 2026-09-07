@@ -9,6 +9,10 @@ import { useCreateMedication } from "./api.js";
 
 // [RECEITA-FOTO] Fotografa a receita, confere, salva.
 //
+// [SO-IMPRESSA] Só receita IMPRESSA. Manuscrita é recusada pelo servidor, e
+// a tela avisa disso ANTES da foto — descobrir a regra depois de fotografar
+// é gastar o tempo de quem está com o paciente na frente.
+//
 // A tela é deliberadamente de CONFERÊNCIA, não de importação. Nada é salvo
 // pela leitura: cada medicação vira um formulário preenchido que a pessoa
 // revisa e confirma uma a uma.
@@ -21,6 +25,10 @@ export default function ReceitaFotoModal({ open, onClose, phone, patientName }) 
   const [etapa, setEtapa] = useState("foto"); // foto | lendo | conferir
   const [itens, setItens] = useState([]);
   const [erro, setErro] = useState("");
+  // Recusa por manuscrita não é erro de uso — é o sistema funcionando. Ela
+  // aparece diferente de "a foto ficou ruim", porque a ação é outra: numa
+  // vale tentar de novo, na outra vale digitar.
+  const [recusadaManuscrita, setRecusadaManuscrita] = useState(false);
   const criar = useCreateMedication(phone);
 
   async function aoEscolherArquivo(e) {
@@ -34,6 +42,7 @@ export default function ReceitaFotoModal({ open, onClose, phone, patientName }) 
     }
 
     setEtapa("lendo");
+    setRecusadaManuscrita(false);
     try {
       const base64 = await paraBase64(file);
       const r = await api.post("/prescricoes/ler", {
@@ -51,6 +60,12 @@ export default function ReceitaFotoModal({ open, onClose, phone, patientName }) 
       );
       setEtapa("conferir");
     } catch (err) {
+      // O servidor marca a recusa por manuscrita; qualquer outra falha é
+      // problema de leitura e pede outra foto.
+      // ApiError expõe o corpo em `body` (ver lib/api.js), não em `data`.
+      if (err?.body?.manuscrita) {
+        setRecusadaManuscrita(true);
+      }
       setErro(err.message);
       setEtapa("foto");
     }
@@ -103,6 +118,12 @@ export default function ReceitaFotoModal({ open, onClose, phone, patientName }) 
     <Modal open={open} title="Adicionar pela foto da receita" onClose={() => onClose(salvos > 0)} wide>
       {etapa === "foto" && (
         <>
+          <div className="modal-warning">
+            🖨️ <strong>Apenas receita impressa.</strong> Receita escrita à mão não é
+            aceita: a leitura automática erra dose em letra manuscrita, e o erro
+            não parece erro. Nesses casos, cadastre pelo formulário normal.
+          </div>
+
           <div className="modal-context">
             📷 Fotografe a receita inteira, com boa luz e sem sombra. A leitura{" "}
             <strong>preenche o formulário</strong> — nada é salvo antes de você conferir.
@@ -118,7 +139,22 @@ export default function ReceitaFotoModal({ open, onClose, phone, patientName }) 
           <div className="small">
             A foto não é armazenada. Ela é usada para ler e descartada em seguida.
           </div>
-          <Message type="error">{erro}</Message>
+          {recusadaManuscrita ? (
+            <div className="modal-warning">
+              ✋ {erro}
+              <div style={{ marginTop: 8 }}>
+                <button
+                  type="button"
+                  className="primary btn-compacto"
+                  onClick={() => onClose(false)}
+                >
+                  Cadastrar manualmente
+                </button>
+              </div>
+            </div>
+          ) : (
+            <Message type="error">{erro}</Message>
+          )}
         </>
       )}
 
