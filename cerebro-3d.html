@@ -1,0 +1,711 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Cérebro 3D Observável — 166 mil neurônios em português</title>
+<meta name="description" content="Visualização 3D interativa de um cérebro completo de mosca-da-fruta: mais de 166 mil neurônios observáveis um a um, com regiões, neurotransmissores e parceiros sinápticos. Inspirado no mapa do cérebro do Google Research e do consórcio FlyWire.">
+<link rel="icon" type="image/png" href="vytal-mark-navy.png">
+<style>
+:root{
+  --navy:#0b1730; --navy-2:#111f3d; --aco:#1e6091; --aco-2:#2a78b0;
+  --linha:rgba(232,238,246,.12); --texto:#e8eef6; --mudo:rgba(232,238,246,.6); --mudo-2:rgba(232,238,246,.4);
+  --painel:rgba(11,23,48,.86); --radius:12px;
+  --sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;
+  --mono:ui-monospace,"SF Mono","Cascadia Code","Roboto Mono",monospace;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{height:100%;overflow:hidden;background:var(--navy);color:var(--texto);font-family:var(--sans);-webkit-font-smoothing:antialiased}
+button,input,select{font:inherit;color:inherit}
+a{color:#9cc6e6}
+
+#cena{position:fixed;inset:0;width:100%;height:100%;display:block;touch-action:none;cursor:grab;
+  background:radial-gradient(1200px 700px at 70% 30%, #17305a 0%, #0b1730 55%, #060d1d 100%)}
+#cena.arrastando{cursor:grabbing}
+
+/* ---------- topo ---------- */
+.topo{position:fixed;left:0;right:0;top:0;z-index:5;display:flex;align-items:center;justify-content:space-between;gap:12px;
+  padding:12px clamp(12px,3vw,28px);background:linear-gradient(180deg,rgba(6,13,29,.85),rgba(6,13,29,0));pointer-events:none}
+.topo>*{pointer-events:auto}
+.marca{display:flex;align-items:center;gap:10px;text-decoration:none;color:inherit}
+.marca .selo{width:36px;height:36px;border-radius:9px;background:#fff;display:grid;place-items:center;overflow:hidden;flex-shrink:0}
+.marca .selo img{width:28px;height:28px;object-fit:contain}
+.marca strong{display:block;font-size:15px;font-weight:600;letter-spacing:.2px;line-height:1.1}
+.marca span{display:block;font-size:10.5px;color:var(--mudo);letter-spacing:.12em;text-transform:uppercase}
+.contador{display:flex;gap:8px;flex-wrap:wrap;justify-content:flex-end}
+.chip{font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:#9cc6e6;
+  border:1px solid rgba(156,198,230,.35);border-radius:999px;padding:6px 11px;background:rgba(11,23,48,.6);white-space:nowrap}
+.chip b{color:#fff;font-weight:600}
+
+/* ---------- painéis ---------- */
+.painel{position:fixed;z-index:4;background:var(--painel);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);
+  border:1px solid var(--linha);border-radius:14px;padding:14px;width:300px;max-height:calc(100vh - 120px);overflow:auto;
+  scrollbar-width:thin;scrollbar-color:rgba(255,255,255,.18) transparent;transition:transform .25s ease,opacity .25s ease}
+.painel h2{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--mudo);font-weight:600;margin:0 0 10px}
+.painel h2+p{margin-top:-4px}
+#controles{left:14px;top:74px}
+#detalhes{right:14px;top:74px;width:330px}
+.painel.oculto{transform:translateX(-120%);opacity:0;pointer-events:none}
+#detalhes.oculto{transform:translateX(120%)}
+.abrir{position:fixed;z-index:6;top:74px;display:none;width:38px;height:38px;border-radius:10px;border:1px solid var(--linha);
+  background:var(--painel);color:#fff;font-size:18px;cursor:pointer}
+#abrirControles{left:14px}#abrirDetalhes{right:14px}
+.fechar{position:absolute;right:10px;top:8px;width:28px;height:28px;border:0;background:transparent;color:var(--mudo);cursor:pointer;font-size:18px;border-radius:8px}
+.fechar:hover{background:rgba(255,255,255,.08);color:#fff}
+
+.linha{display:flex;align-items:center;justify-content:space-between;gap:10px;margin:8px 0;font-size:13px}
+.linha label{color:var(--mudo);flex-shrink:0}
+input[type=range]{width:140px;accent-color:#4fd1c5}
+.seg{display:inline-flex;border:1px solid var(--linha);border-radius:8px;overflow:hidden}
+.seg button{border:0;background:transparent;padding:6px 10px;font-size:12px;cursor:pointer;color:var(--mudo)}
+.seg button.ativo{background:var(--aco);color:#fff}
+.botao{border:1px solid rgba(156,198,230,.35);background:rgba(30,96,145,.35);color:#fff;border-radius:8px;padding:7px 11px;font-size:12.5px;cursor:pointer}
+.botao:hover{background:rgba(30,96,145,.6)}
+.botao.fantasma{background:transparent}
+.busca{display:flex;gap:6px;margin:8px 0}
+.busca input{flex:1;min-width:0;border:1px solid var(--linha);background:rgba(255,255,255,.05);border-radius:8px;padding:7px 9px;font-size:13px;color:#fff}
+.busca input::placeholder{color:var(--mudo-2)}
+
+.legenda{list-style:none;margin:6px 0 0}
+.legenda li{display:flex;align-items:center;gap:8px;padding:5px 4px;border-radius:8px;font-size:12.5px;cursor:pointer}
+.legenda li:hover{background:rgba(255,255,255,.06)}
+.legenda li.foco{background:rgba(79,209,197,.12);outline:1px solid rgba(79,209,197,.35)}
+.legenda li.desligado{opacity:.4}
+.legenda .cor{width:11px;height:11px;border-radius:50%;flex-shrink:0;box-shadow:0 0 8px currentColor}
+.legenda .nome{flex:1}
+.legenda .qtd{font-family:var(--mono);font-size:11px;color:var(--mudo)}
+.legenda input{accent-color:#4fd1c5}
+hr{border:0;border-top:1px solid var(--linha);margin:12px 0}
+small.nota{display:block;font-size:11.5px;color:var(--mudo);line-height:1.45;margin-top:6px}
+
+/* ---------- detalhes do neurônio ---------- */
+.vazio p{font-size:13.5px;line-height:1.55;color:var(--mudo)}
+.vazio p+p{margin-top:8px}
+.id{font-family:var(--mono);font-size:13px;word-break:break-all;color:#fff;background:rgba(255,255,255,.06);border-radius:8px;padding:8px 10px;margin:4px 0 10px}
+.id small{display:block;font-size:10px;color:var(--mudo);letter-spacing:.1em;text-transform:uppercase;margin-bottom:3px}
+.grade{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.dado{background:rgba(255,255,255,.04);border:1px solid var(--linha);border-radius:10px;padding:8px 10px}
+.dado small{display:block;font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--mudo);margin-bottom:2px}
+.dado b{font-size:14px;font-weight:600}
+.dado .sub{font-size:11px;color:var(--mudo)}
+.tag-nt{display:inline-block;width:9px;height:9px;border-radius:50%;margin-right:6px;vertical-align:middle}
+.parceiros{list-style:none;margin-top:6px}
+.parceiros li{display:flex;align-items:center;gap:8px;padding:6px 6px;border-radius:8px;font-size:12px;cursor:pointer;border-bottom:1px solid rgba(255,255,255,.05)}
+.parceiros li:hover{background:rgba(255,255,255,.06)}
+.parceiros .dir{font-family:var(--mono);font-size:10px;padding:2px 6px;border-radius:5px;background:rgba(255,255,255,.08);color:#9cc6e6;flex-shrink:0}
+.parceiros .dir.pre{color:#ffd166}
+.parceiros .pid{font-family:var(--mono);font-size:11px;color:#fff;flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.parceiros .sin{font-family:var(--mono);font-size:11px;color:var(--mudo);flex-shrink:0}
+.historico{display:flex;gap:6px;flex-wrap:wrap;margin-top:8px}
+.historico button{font-family:var(--mono);font-size:10.5px;border:1px solid var(--linha);background:transparent;color:var(--mudo);border-radius:6px;padding:3px 7px;cursor:pointer}
+details{margin-top:6px}
+details summary{cursor:pointer;font-size:12.5px;color:#9cc6e6;list-style:none;padding:6px 0}
+details summary::before{content:"▸ ";color:var(--mudo)}
+details[open] summary::before{content:"▾ "}
+details p{font-size:12.5px;line-height:1.55;color:var(--mudo);margin:6px 0}
+details p b{color:var(--texto)}
+.importar{border:1px dashed rgba(156,198,230,.4);border-radius:10px;padding:10px;font-size:12px;color:var(--mudo);line-height:1.5}
+.importar input{display:block;margin-top:8px;font-size:12px;max-width:100%}
+
+/* ---------- rodapé ---------- */
+.dica{position:fixed;left:50%;bottom:14px;transform:translateX(-50%);z-index:4;font-size:12px;color:var(--mudo);
+  background:rgba(11,23,48,.7);border:1px solid var(--linha);border-radius:999px;padding:7px 14px;white-space:nowrap;pointer-events:none}
+.dica kbd{font-family:var(--mono);font-size:11px;border:1px solid rgba(255,255,255,.2);border-radius:4px;padding:0 5px;color:#fff}
+#aviso{position:fixed;inset:0;display:none;place-items:center;z-index:20;background:var(--navy);padding:24px;text-align:center}
+#aviso div{max-width:520px;line-height:1.6}
+#carregando{position:fixed;inset:0;display:grid;place-items:center;z-index:10;background:rgba(6,13,29,.85);font-size:14px;color:var(--mudo);transition:opacity .4s}
+#carregando .barra{width:220px;height:3px;background:rgba(255,255,255,.1);border-radius:3px;margin:12px auto 0;overflow:hidden}
+#carregando .barra i{display:block;height:100%;width:40%;background:#4fd1c5;animation:vai 1s infinite ease-in-out}
+@keyframes vai{0%{transform:translateX(-100%)}100%{transform:translateX(550px)}}
+
+@media (max-width:820px){
+  .painel{width:min(300px,calc(100vw - 28px));max-height:calc(100vh - 150px)}
+  #detalhes{width:min(330px,calc(100vw - 28px))}
+  #controles{top:auto;bottom:56px}
+  #detalhes{top:auto;bottom:56px}
+  .abrir{top:auto;bottom:56px}
+  .contador .chip:not(:first-child){display:none}
+  .marca span{display:none}
+  .dica{font-size:11px;padding:6px 10px;max-width:calc(100vw - 130px);white-space:normal;text-align:center;bottom:16px}
+}
+</style>
+</head>
+<body>
+
+<canvas id="cena"></canvas>
+
+<header class="topo">
+  <a class="marca" href="index.html" title="Vytal Saúde Tecnologia">
+    <span class="selo"><img src="vytal-mark-navy.png" alt="Vytal"></span>
+    <span><strong>Cérebro 3D Observável</strong><span>Vytal Saúde Tecnologia · conectoma da mosca-da-fruta</span></span>
+  </a>
+  <div class="contador">
+    <span class="chip"><b id="nTotal">—</b> neurônios</span>
+    <span class="chip"><b id="nVisiveis">—</b> visíveis</span>
+    <span class="chip"><b id="fps">—</b> fps</span>
+  </div>
+</header>
+
+<button class="abrir" id="abrirControles" title="Abrir controles">☰</button>
+<button class="abrir" id="abrirDetalhes" title="Abrir detalhes">◉</button>
+
+<aside class="painel" id="controles">
+  <button class="fechar" data-fecha="controles" title="Recolher">×</button>
+  <h2>Controles</h2>
+
+  <div class="busca">
+    <input id="campoBusca" type="text" placeholder="Buscar por ID ou nº do neurônio" inputmode="numeric" autocomplete="off">
+    <button class="botao" id="btnBuscar">Ir</button>
+  </div>
+
+  <div class="linha"><label>Colorir por</label>
+    <span class="seg" id="modoCor">
+      <button data-modo="0" class="ativo">Região</button>
+      <button data-modo="1">Neurotransmissor</button>
+    </span>
+  </div>
+  <div class="linha"><label for="densidade">Densidade</label><input id="densidade" type="range" min="1" max="100" value="100"></div>
+  <div class="linha"><label for="tamanho">Tamanho</label><input id="tamanho" type="range" min="0.4" max="4" step="0.1" value="1.4"></div>
+  <div class="linha"><label for="corte">Corte anterior→posterior</label><input id="corte" type="range" min="-100" max="100" value="100"></div>
+  <div class="linha"><label for="atividade">Atividade (pulso)</label><input id="atividade" type="range" min="0" max="100" value="35"></div>
+  <div class="linha"><label>Rotação automática</label>
+    <span class="seg" id="autoGiro"><button data-v="1" class="ativo">Ligada</button><button data-v="0">Desligada</button></span>
+  </div>
+  <div class="linha" style="justify-content:flex-start;gap:6px;flex-wrap:wrap">
+    <button class="botao fantasma" id="btnReset">Recentrar (R)</button>
+    <button class="botao fantasma" id="btnTodas">Todas as regiões</button>
+  </div>
+
+  <hr>
+  <h2 id="tituloLegenda">Regiões (neurópilos)</h2>
+  <ul class="legenda" id="legendaRegioes"></ul>
+  <small class="nota">Clique no nome para focar a região; a caixa liga e desliga a região.</small>
+
+  <hr>
+  <h2>Neurotransmissores</h2>
+  <ul class="legenda" id="legendaNt"></ul>
+</aside>
+
+<aside class="painel" id="detalhes">
+  <button class="fechar" data-fecha="detalhes" title="Recolher">×</button>
+  <div id="conteudoDetalhes"></div>
+</aside>
+
+<div class="dica">Arraste para girar · rolagem ou pinça para aproximar · <kbd>clique</kbd> em um neurônio para observá-lo · <kbd>Esc</kbd> limpa</div>
+
+<div id="carregando"><div>Construindo o cérebro: gerando <b id="nGerando">166 mil</b> neurônios…<div class="barra"><i></i></div></div></div>
+<div id="aviso"><div><h1 style="font-size:20px;margin-bottom:10px">Seu navegador não conseguiu iniciar o WebGL</h1><p>A visualização 3D precisa de aceleração gráfica. Tente outro navegador (Chrome, Firefox, Safari ou Edge atualizados) ou ative a aceleração de hardware nas configurações.</p></div></div>
+
+<script>
+'use strict';
+/* =====================================================================
+   Cérebro 3D Observável — versão em português
+   Um cérebro completo de mosca-da-fruta com todos os seus neurônios
+   observáveis individualmente. Sem dependências: WebGL puro.
+
+   A anatomia (regiões, proporções, contagens) segue o conectoma real,
+   mas as posições individuais são geradas proceduralmente. O botão
+   "Carregar dados reais" aceita um export do FlyWire/Codex (x, y, z).
+   ===================================================================== */
+
+// ---------- utilidades numéricas ----------
+function mulberry32(a){return function(){a|=0;a=a+0x6D2B79F5|0;let t=Math.imul(a^a>>>15,1|a);t=t+Math.imul(t^t>>>7,61|t)^t;return((t^t>>>14)>>>0)/4294967296}}
+function hash32(a,b){let h=(a*374761393+b*668265263)|0;h=(h^(h>>>13))*1274126177|0;h=h^(h>>>16);return h>>>0}
+function hex(c){return [parseInt(c.slice(1,3),16)/255,parseInt(c.slice(3,5),16)/255,parseInt(c.slice(5,7),16)/255]}
+const fmt=n=>n.toLocaleString('pt-BR');
+
+// ---------- mat4 (column-major) ----------
+const M4={
+  perspective(f,a,n,fr){const t=1/Math.tan(f/2),r=1/(n-fr);return new Float32Array([t/a,0,0,0,0,t,0,0,0,0,(n+fr)*r,-1,0,0,2*n*fr*r,0])},
+  lookAt(e,c,u){let zx=e[0]-c[0],zy=e[1]-c[1],zz=e[2]-c[2];let l=Math.hypot(zx,zy,zz)||1;zx/=l;zy/=l;zz/=l;
+    let xx=u[1]*zz-u[2]*zy,xy=u[2]*zx-u[0]*zz,xz=u[0]*zy-u[1]*zx;l=Math.hypot(xx,xy,xz)||1;xx/=l;xy/=l;xz/=l;
+    const yx=zy*xz-zz*xy,yy=zz*xx-zx*xz,yz=zx*xy-zy*xx;
+    return new Float32Array([xx,yx,zx,0,xy,yy,zy,0,xz,yz,zz,0,-(xx*e[0]+xy*e[1]+xz*e[2]),-(yx*e[0]+yy*e[1]+yz*e[2]),-(zx*e[0]+zy*e[1]+zz*e[2]),1])},
+  mul(a,b){const o=new Float32Array(16);for(let i=0;i<4;i++)for(let j=0;j<4;j++){let s=0;for(let k=0;k<4;k++)s+=a[k*4+j]*b[i*4+k];o[i*4+j]=s}return o}
+};
+
+// ---------- catálogo anatômico ----------
+const REGIOES=[
+  {nome:'Lâmina',cor:'#f2c14e',qtd:6400,bilateral:true,tipos:['L1','L2','L3','L4','L5','Lawf1','Lawf2','C2','C3','T1'],desc:'Primeira estação visual, logo atrás da retina.'},
+  {nome:'Medula',cor:'#4fd1c5',qtd:37000,bilateral:true,tipos:['Mi1','Mi4','Mi9','Tm1','Tm2','Tm3','Tm4','Tm9','Tm20','TmY5a','Dm8','Dm9','Dm12','Pm2','Mi15','T2','T3'],desc:'Maior neurópilo do cérebro: detecção de movimento e cor.'},
+  {nome:'Lóbula e placa da lóbula',cor:'#7aa2ff',qtd:13500,bilateral:true,tipos:['T4a','T4b','T4c','T4d','T5a','T5b','T5c','T5d','LC4','LC6','LC10','LC11','LPLC1','LPLC2','LPi','Li2','H2','HS','VS'],desc:'Integra movimento em campo amplo e detecta objetos.'},
+  {nome:'Corpos cogumelares',cor:'#ff7b7b',qtd:2600,bilateral:true,tipos:['KCγ-m','KCγ-d','KCαβ-c','KCαβ-s','KCα\'β\'-ap','KCα\'β\'-m','MBON-α1','MBON-γ2α\'1','MBON-β2β\'2a','PAM-β\'2m','PPL1-γ1pedc','APL','DPM'],desc:'Centro de memória e aprendizado olfativo.'},
+  {nome:'Complexo central',cor:'#ff9f43',qtd:3000,bilateral:false,tipos:['EPG','PEG','PEN_a','PEN_b','Δ7','ER4d','ER2','hΔB','vΔA','FB4X','FB5H','PFL3','PFNa','PFR'],desc:'Bússola interna, navegação e sono.'},
+  {nome:'Lobos antenais',cor:'#b48cff',qtd:2400,bilateral:true,tipos:['ORN_DA1','ORN_DM1','ORN_VA1v','ORN_DL3','uPN_DA1','uPN_DM2','mPN','LN1','LN2','lLN2','v2LN'],desc:'Olfato: recebe os neurônios receptores das antenas.'},
+  {nome:'Protocérebro superior e lateral',cor:'#6ee7a8',qtd:11000,bilateral:true,tipos:['LHAV2a','LHPV5','LHAD1b','SMP001','SMP112','SLP045','SIP012','CRE010','AOTU019','WED049','PLP110'],desc:'Integração multissensorial e decisões inatas.'},
+  {nome:'Protocérebro ventral e inferior',cor:'#5fb3ff',qtd:5200,bilateral:true,tipos:['AVLP003','PVLP012','IPS','GNG-VES','SAD004','VES006','ATL','JO-A','JO-B','JO-C'],desc:'Audição, mecanossensação e vias de saída.'},
+  {nome:'Gânglio gnatal',cor:'#ff6fb1',qtd:5600,bilateral:false,tipos:['GRN-sugar','GRN-bitter','MN9','MN11','MN12','IN05B','IN12A','G2N-SLP','SEZ-DN'],desc:'Paladar, alimentação e controle motor da probóscide.'},
+  {nome:'Conectivo cervical',cor:'#cbd5e1',qtd:1400,bilateral:false,tipos:['DNa02','DNp09','DNg13','DNb01','DNpe','AN01','AN05','MDN','oviDN'],desc:'Neurônios descendentes e ascendentes: liga cérebro e corpo.'},
+];
+const NTS=[
+  {nome:'Acetilcolina',sigla:'ACh',cor:'#ffd166'},
+  {nome:'GABA',sigla:'GABA',cor:'#ef476f'},
+  {nome:'Glutamato',sigla:'Glu',cor:'#06d6a0'},
+  {nome:'Dopamina',sigla:'DA',cor:'#118ab2'},
+  {nome:'Serotonina',sigla:'5-HT',cor:'#c77dff'},
+  {nome:'Octopamina',sigla:'OA',cor:'#f4a261'},
+  {nome:'Indeterminado',sigla:'?',cor:'#94a3b8'},
+];
+// pesos por região: ACh, GABA, Glu, DA, 5-HT, OA, ?
+const PESOS_NT=[
+  [.55,.12,.25,.01,.01,.01,.05],[.62,.14,.17,.01,.01,.01,.04],[.60,.12,.20,.01,.01,.02,.04],
+  [.70,.06,.04,.14,.02,.01,.03],[.52,.22,.14,.04,.02,.02,.04],[.58,.28,.07,.01,.02,.01,.03],
+  [.60,.20,.12,.02,.02,.01,.03],[.56,.20,.15,.02,.02,.02,.03],[.55,.20,.12,.03,.03,.04,.03],[.62,.15,.10,.02,.03,.05,.03],
+];
+
+// ---------- geração do cérebro ----------
+let N=0, pos, reg, nt, seed, lado;          // arrays por neurônio
+let regRanges=[], centroides=[], dadosReais=false, nomeArquivo='';
+
+function gerarCerebro(){
+  const rnd=mulberry32(20241002);
+  const gauss=()=>{let u=0,v=0;while(u===0)u=rnd();while(v===0)v=rnd();return Math.sqrt(-2*Math.log(u))*Math.cos(2*Math.PI*v)};
+  N=0;for(const r of REGIOES)N+=r.qtd*(r.bilateral?2:1);
+  pos=new Float32Array(N*3);reg=new Uint8Array(N);nt=new Uint8Array(N);seed=new Float32Array(N);lado=new Int8Array(N);
+  regRanges=[];centroides=[];
+  let i=0;
+  const escrever=(x,y,z,r,s)=>{pos[i*3]=x;pos[i*3+1]=y;pos[i*3+2]=z;reg[i]=r;lado[i]=s;seed[i]=rnd();
+    const p=PESOS_NT[r];let u=rnd(),k=0;while(k<p.length-1&&u>p[k]){u-=p[k];k++}nt[i]=k;i++};
+
+  // primitivas
+  const elipsoide=(cx,cy,cz,rx,ry,rz)=>{let x=gauss(),y=gauss(),z=gauss();const l=Math.hypot(x,y,z)||1;const t=Math.cbrt(rnd());
+    return [cx+x/l*t*rx,cy+y/l*t*ry,cz+z/l*t*rz]};
+  const casca=(cx,cy,cz,rx,ry,rz,e0,e1,dirMin,sinal)=>{ // camada curva na face lateral de um elipsoide
+    for(let tent=0;tent<40;tent++){let x=gauss(),y=gauss(),z=gauss();const l=Math.hypot(x,y,z)||1;x/=l;y/=l;z/=l;
+      if(x*sinal<dirMin)continue;const e=e0+(e1-e0)*rnd();return [cx+x*e*rx,cy+y*e*ry,cz+z*e*rz]}
+    return [cx+sinal*rx,cy,cz]};
+  const segmento=(a,b,esp)=>{const t=rnd();return [a[0]+(b[0]-a[0])*t+gauss()*esp,a[1]+(b[1]-a[1])*t+gauss()*esp,a[2]+(b[2]-a[2])*t+gauss()*esp]};
+
+  REGIOES.forEach((R,r)=>{
+    const ini=i;
+    const lados=R.bilateral?[-1,1]:[0];
+    for(const s of lados){
+      const sx=s===0?1:s;
+      for(let k=0;k<R.qtd;k++){
+        let p;
+        switch(r){
+          case 0: p=casca(sx*0.62,0.0,-0.05,0.31,0.31,0.27,1.04,1.10,0.62,sx);break;
+          case 1: p=casca(sx*0.62,0.0,-0.05,0.31,0.31,0.27,0.70,0.98,0.05,sx);break;
+          case 2: p=rnd()<0.6?elipsoide(sx*0.45,0.0,-0.02,0.15,0.18,0.15):elipsoide(sx*0.50,-0.02,-0.16,0.12,0.15,0.07);break;
+          case 3:{const u=rnd();
+            if(u<0.42)p=elipsoide(sx*0.17,0.15,-0.15,0.065,0.055,0.06);                 // cálice (corpos celulares das KC)
+            else if(u<0.62)p=segmento([sx*0.15,0.02,0.08],[sx*0.15,0.21,0.09],0.022);      // lobo α (vertical)
+            else if(u<0.85)p=segmento([sx*0.16,0.02,0.09],[sx*0.035,0.03,0.10],0.024);     // lobos β/γ (horizontais)
+            else p=segmento([sx*0.17,0.13,-0.14],[sx*0.16,0.04,0.06],0.02);               // pedúnculo
+            break}
+          case 4:{const u=rnd();
+            if(u<0.45)p=elipsoide(0,0.045,0.02,0.11,0.05,0.045);                           // corpo em leque
+            else if(u<0.65)p=elipsoide(0,0.02,-0.035,0.04,0.045,0.03);                     // corpo elipsoide
+            else if(u<0.85){const a=(rnd()-0.5)*Math.PI*0.9;p=[Math.sin(a)*0.14+gauss()*0.008,0.1+Math.cos(a)*0.02+gauss()*0.008,-0.11+gauss()*0.008]} // ponte protocerebral
+            else p=elipsoide((rnd()<0.5?-1:1)*0.05,-0.03,0.0,0.02,0.02,0.02);                // nódulos
+            break}
+          case 5: p=elipsoide(sx*0.13,-0.12,0.17,0.07,0.07,0.065);break;
+          case 6: p=rnd()<0.7?elipsoide(sx*0.20,0.13,0.02,0.20,0.13,0.15):elipsoide(sx*0.31,0.02,0.06,0.10,0.09,0.11);break;
+          case 7: p=elipsoide(sx*0.23,-0.09,-0.01,0.15,0.10,0.14);break;
+          case 8: p=elipsoide(0,-0.31,0.03,0.20,0.12,0.13);break;
+          case 9: p=segmento([0,-0.40,0.0],[0,-0.70,-0.02],0.03);break;
+        }
+        escrever(p[0],p[1],p[2],r,s);
+      }
+    }
+    regRanges.push([ini,i]);
+    let cx=0,cy=0,cz=0;for(let j=ini;j<i;j++){cx+=pos[j*3];cy+=pos[j*3+1];cz+=pos[j*3+2]}
+    const n=i-ini||1;centroides.push([cx/n,cy/n,cz/n]);
+  });
+  dadosReais=false;
+}
+
+// ---------- ficha de um neurônio (determinística) ----------
+function idNeuronio(i){const h=hash32(i,7);const h2=hash32(i,11);return '7205759'+String(40+(h%60)).padStart(2,'0')+String(h2%1e9).padStart(9,'0')}
+function fichaNeuronio(i){
+  const r=reg[i],R=REGIOES[r]||REGIOES[0];const h=hash32(i,3);
+  const tipo=R.tipos[h%R.tipos.length];
+  const preSin=Math.round(Math.exp(3.2+((hash32(i,5)%1000)/1000)*3.4));
+  const posSin=Math.round(Math.exp(3.4+((hash32(i,9)%1000)/1000)*3.3));
+  const comp=Math.round(180+((hash32(i,13)%1000)/1000)**2*3600);
+  const conf=(0.62+((hash32(i,17)%1000)/1000)*0.37).toFixed(2);
+  const classe=r===9?'Descendente/ascendente':r===5&&tipo.startsWith('ORN')?'Sensorial':r===8&&tipo.startsWith('MN')?'Motor':(tipo.startsWith('LN')||tipo.startsWith('IN')||tipo.startsWith('Dm')||tipo.startsWith('Pm')||tipo.startsWith('Mi'))?'Interneurônio local':'Interneurônio de projeção';
+  return {id:idNeuronio(i),indice:i,regiao:R.nome,ladoTxt:lado[i]<0?'Esquerdo':lado[i]>0?'Direito':'Mediano',tipo,classe,nt:NTS[nt[i]],preSin,posSin,comp,conf};
+}
+function parceiros(i){
+  const h=hash32(i,23);const k=6+(h%18);const out=[];
+  const [ini,fim]=regRanges[reg[i]]||[0,N];
+  for(let j=0;j<k;j++){
+    const a=hash32(i*31+j,41);let p;
+    if(a%5===0)p=hash32(i,j+101)%N;else p=ini+hash32(i,j+211)%Math.max(1,fim-ini);
+    if(p===i)p=(p+1)%N;
+    const sin=1+(hash32(p,i)%60);
+    out.push({idx:p,pre:(a>>>3)%2===0,sin});
+  }
+  out.sort((x,y)=>y.sin-x.sin);
+  const vistos=new Set();return out.filter(o=>!vistos.has(o.idx)&&vistos.add(o.idx));
+}
+
+// ---------- WebGL ----------
+const canvas=document.getElementById('cena');
+const gl=canvas.getContext('webgl',{antialias:false,alpha:false,premultipliedAlpha:false,powerPreference:'high-performance'});
+if(!gl){document.getElementById('aviso').style.display='grid';document.getElementById('carregando').style.display='none';throw new Error('sem WebGL')}
+
+function compilar(tipo,src){const s=gl.createShader(tipo);gl.shaderSource(s,src);gl.compileShader(s);if(!gl.getShaderParameter(s,gl.COMPILE_STATUS))throw new Error(gl.getShaderInfoLog(s));return s}
+function programa(vs,fs){const p=gl.createProgram();gl.attachShader(p,compilar(gl.VERTEX_SHADER,vs));gl.attachShader(p,compilar(gl.FRAGMENT_SHADER,fs));gl.linkProgram(p);if(!gl.getProgramParameter(p,gl.LINK_STATUS))throw new Error(gl.getProgramInfoLog(p));return p}
+const U=(p,n)=>gl.getUniformLocation(p,n)||gl.getUniformLocation(p,n+'[0]');
+
+const VS_PONTOS=`
+attribute vec3 aPos; attribute float aReg; attribute float aNt; attribute float aSeed;
+uniform mat4 uMVP; uniform float uRegMask[16]; uniform float uNtMask[8];
+uniform vec3 uRegCor[16]; uniform vec3 uNtCor[8];
+uniform float uTam, uCorte, uTempo, uDens, uAtiv, uFoco, uModo, uDpr;
+varying vec4 vCor;
+void main(){
+  int r=int(aReg+0.5); int n=int(aNt+0.5);
+  float vis=uRegMask[r]*uNtMask[n]*step(aSeed,uDens)*step(aPos.z,uCorte);
+  vec4 cp=uMVP*vec4(aPos,1.0);
+  float foco=(uFoco<-0.5)?1.0:((abs(uFoco-aReg)<0.5)?1.0:0.10);
+  float pulso=1.0-uAtiv*0.5*(1.0+sin(uTempo*1.7+aSeed*40.0));
+  vec3 c=(uModo<0.5)?uRegCor[r]:uNtCor[n];
+  vCor=vec4(c*pulso*foco,0.55*foco);
+  gl_PointSize=uTam*uDpr*3.6/max(cp.w,0.2);
+  gl_Position=(vis>0.5)?cp:vec4(3.0,3.0,3.0,1.0);
+}`;
+const FS_PONTOS=`
+precision mediump float; varying vec4 vCor;
+void main(){ vec2 p=gl_PointCoord*2.0-1.0; float d=dot(p,p); if(d>1.0) discard;
+  float a=smoothstep(1.0,0.15,d); gl_FragColor=vec4(vCor.rgb*a*vCor.a,1.0); }`;
+const VS_SIMPLES=`
+attribute vec3 aPos; uniform mat4 uMVP; uniform float uTam;
+void main(){ gl_Position=uMVP*vec4(aPos,1.0); gl_PointSize=uTam/max(gl_Position.w,0.2); }`;
+const FS_SIMPLES=`
+precision mediump float; uniform vec4 uCor; uniform float uRedondo;
+void main(){ if(uRedondo>0.5){ vec2 p=gl_PointCoord*2.0-1.0; float d=dot(p,p); if(d>1.0) discard; float a=smoothstep(1.0,0.4,d); gl_FragColor=vec4(uCor.rgb*a,1.0); } else gl_FragColor=vec4(uCor.rgb*uCor.a,1.0); }`;
+
+const progP=programa(VS_PONTOS,FS_PONTOS), progS=programa(VS_SIMPLES,FS_SIMPLES);
+const locP={aPos:gl.getAttribLocation(progP,'aPos'),aReg:gl.getAttribLocation(progP,'aReg'),aNt:gl.getAttribLocation(progP,'aNt'),aSeed:gl.getAttribLocation(progP,'aSeed'),
+  uMVP:U(progP,'uMVP'),uRegMask:U(progP,'uRegMask'),uNtMask:U(progP,'uNtMask'),uRegCor:U(progP,'uRegCor'),uNtCor:U(progP,'uNtCor'),
+  uTam:U(progP,'uTam'),uCorte:U(progP,'uCorte'),uTempo:U(progP,'uTempo'),uDens:U(progP,'uDens'),uAtiv:U(progP,'uAtiv'),uFoco:U(progP,'uFoco'),uModo:U(progP,'uModo'),uDpr:U(progP,'uDpr')};
+const locS={aPos:gl.getAttribLocation(progS,'aPos'),uMVP:U(progS,'uMVP'),uTam:U(progS,'uTam'),uCor:U(progS,'uCor'),uRedondo:U(progS,'uRedondo')};
+
+const bufPos=gl.createBuffer(),bufReg=gl.createBuffer(),bufNt=gl.createBuffer(),bufSeed=gl.createBuffer();
+const bufLinhas=gl.createBuffer(),bufParc=gl.createBuffer(),bufSel=gl.createBuffer();
+let nLinhas=0,nParc=0;
+
+function enviarBuffers(){
+  gl.bindBuffer(gl.ARRAY_BUFFER,bufPos);gl.bufferData(gl.ARRAY_BUFFER,pos,gl.STATIC_DRAW);
+  gl.bindBuffer(gl.ARRAY_BUFFER,bufReg);gl.bufferData(gl.ARRAY_BUFFER,reg,gl.STATIC_DRAW);
+  gl.bindBuffer(gl.ARRAY_BUFFER,bufNt);gl.bufferData(gl.ARRAY_BUFFER,nt,gl.STATIC_DRAW);
+  gl.bindBuffer(gl.ARRAY_BUFFER,bufSeed);gl.bufferData(gl.ARRAY_BUFFER,seed,gl.STATIC_DRAW);
+}
+
+// ---------- estado ----------
+const estado={
+  regMask:new Float32Array(16).fill(1),ntMask:new Float32Array(8).fill(1),
+  modo:0,tam:1.4,dens:1,corte:1,ativ:0.35,foco:-1,autoGiro:true,
+  theta:0.55,phi:0.22,dist:2.6,alvo:[0,-0.05,0],
+  thetaAlvo:0.55,phiAlvo:0.22,distAlvo:2.6,alvoAlvo:[0,-0.05,0],
+  selecionado:-1,historico:[],
+};
+let MVP=null,dpr=1,largura=1,altura=1;
+
+function redimensionar(){
+  dpr=Math.min(window.devicePixelRatio||1,2);
+  largura=canvas.clientWidth;altura=canvas.clientHeight;
+  canvas.width=Math.round(largura*dpr);canvas.height=Math.round(altura*dpr);
+  gl.viewport(0,0,canvas.width,canvas.height);
+}
+window.addEventListener('resize',redimensionar);
+
+function calcularMVP(){
+  const e=estado;
+  const eye=[e.alvo[0]+e.dist*Math.cos(e.phi)*Math.sin(e.theta),e.alvo[1]+e.dist*Math.sin(e.phi),e.alvo[2]+e.dist*Math.cos(e.phi)*Math.cos(e.theta)];
+  const V=M4.lookAt(eye,e.alvo,[0,1,0]);
+  const P=M4.perspective(0.75,largura/altura,0.05,20);
+  MVP=M4.mul(P,V);
+}
+
+// ---------- seleção ----------
+function projetar(i){const m=MVP,x=pos[i*3],y=pos[i*3+1],z=pos[i*3+2];
+  const w=m[3]*x+m[7]*y+m[11]*z+m[15];if(w<=0)return null;
+  return [(m[0]*x+m[4]*y+m[8]*z+m[12])/w,(m[1]*x+m[5]*y+m[9]*z+m[13])/w,w]}
+function visivel(i){return estado.regMask[reg[i]]>0.5&&estado.ntMask[nt[i]]>0.5&&seed[i]<=estado.dens&&pos[i*3+2]<=estado.corte&&(estado.foco<0||estado.foco===reg[i])}
+function escolherEm(px,py){
+  calcularMVP();
+  const raio=14*dpr;let melhor=-1,melhorD=raio*raio,melhorW=Infinity;
+  const nx=px/largura*2-1,ny=1-py/altura*2;
+  for(let i=0;i<N;i++){
+    if(!visivel(i))continue;
+    const p=projetar(i);if(!p)continue;
+    const dx=(p[0]-nx)*0.5*canvas.width,dy=(p[1]-ny)*0.5*canvas.height;
+    const d=dx*dx+dy*dy;
+    if(d<melhorD*1.0&&(d<melhorD*0.35||p[2]<melhorW)){melhor=i;melhorD=Math.max(d,melhorD*0.5);melhorW=p[2]}
+  }
+  return melhor;
+}
+function selecionar(i,voar){
+  if(i<0||i>=N){limparSelecao();return}
+  estado.selecionado=i;
+  if(estado.historico[estado.historico.length-1]!==i){estado.historico.push(i);if(estado.historico.length>8)estado.historico.shift()}
+  const ps=parceiros(i);
+  const L=new Float32Array(ps.length*6),Pp=new Float32Array(ps.length*3);
+  ps.forEach((p,k)=>{L.set([pos[i*3],pos[i*3+1],pos[i*3+2],pos[p.idx*3],pos[p.idx*3+1],pos[p.idx*3+2]],k*6);Pp.set([pos[p.idx*3],pos[p.idx*3+1],pos[p.idx*3+2]],k*3)});
+  gl.bindBuffer(gl.ARRAY_BUFFER,bufLinhas);gl.bufferData(gl.ARRAY_BUFFER,L,gl.DYNAMIC_DRAW);nLinhas=ps.length*2;
+  gl.bindBuffer(gl.ARRAY_BUFFER,bufParc);gl.bufferData(gl.ARRAY_BUFFER,Pp,gl.DYNAMIC_DRAW);nParc=ps.length;
+  gl.bindBuffer(gl.ARRAY_BUFFER,bufSel);gl.bufferData(gl.ARRAY_BUFFER,new Float32Array([pos[i*3],pos[i*3+1],pos[i*3+2]]),gl.DYNAMIC_DRAW);
+  if(voar){estado.alvoAlvo=[pos[i*3],pos[i*3+1],pos[i*3+2]];estado.distAlvo=Math.min(estado.distAlvo,1.3)}
+  renderDetalhes(i,ps);
+  abrirPainel('detalhes');
+}
+function limparSelecao(){estado.selecionado=-1;nLinhas=0;nParc=0;renderDetalhes(-1,[])}
+
+// ---------- desenho ----------
+let tempo0=performance.now(),frames=0,fpsT=performance.now();
+function desenhar(){
+  const agora=performance.now(),t=(agora-tempo0)/1000;
+  const e=estado;
+  if(e.autoGiro&&!arrastando)e.thetaAlvo+=0.0022;
+  e.theta+=(e.thetaAlvo-e.theta)*0.12;e.phi+=(e.phiAlvo-e.phi)*0.12;e.dist+=(e.distAlvo-e.dist)*0.1;
+  for(let k=0;k<3;k++)e.alvo[k]+=(e.alvoAlvo[k]-e.alvo[k])*0.1;
+  calcularMVP();
+
+  gl.clearColor(0,0,0,0);gl.clear(gl.COLOR_BUFFER_BIT);
+  gl.disable(gl.DEPTH_TEST);gl.enable(gl.BLEND);gl.blendFunc(gl.ONE,gl.ONE);
+
+  gl.useProgram(progP);
+  gl.bindBuffer(gl.ARRAY_BUFFER,bufPos);gl.enableVertexAttribArray(locP.aPos);gl.vertexAttribPointer(locP.aPos,3,gl.FLOAT,false,0,0);
+  gl.bindBuffer(gl.ARRAY_BUFFER,bufReg);gl.enableVertexAttribArray(locP.aReg);gl.vertexAttribPointer(locP.aReg,1,gl.UNSIGNED_BYTE,false,0,0);
+  gl.bindBuffer(gl.ARRAY_BUFFER,bufNt);gl.enableVertexAttribArray(locP.aNt);gl.vertexAttribPointer(locP.aNt,1,gl.UNSIGNED_BYTE,false,0,0);
+  gl.bindBuffer(gl.ARRAY_BUFFER,bufSeed);gl.enableVertexAttribArray(locP.aSeed);gl.vertexAttribPointer(locP.aSeed,1,gl.FLOAT,false,0,0);
+  gl.uniformMatrix4fv(locP.uMVP,false,MVP);
+  gl.uniform1fv(locP.uRegMask,e.regMask);gl.uniform1fv(locP.uNtMask,e.ntMask);
+  gl.uniform3fv(locP.uRegCor,coresReg);gl.uniform3fv(locP.uNtCor,coresNt);
+  gl.uniform1f(locP.uTam,e.tam);gl.uniform1f(locP.uCorte,e.corte);gl.uniform1f(locP.uTempo,t);gl.uniform1f(locP.uDens,e.dens);
+  gl.uniform1f(locP.uAtiv,e.ativ);gl.uniform1f(locP.uFoco,e.foco);gl.uniform1f(locP.uModo,e.modo);gl.uniform1f(locP.uDpr,dpr);
+  gl.drawArrays(gl.POINTS,0,N);
+  gl.disableVertexAttribArray(locP.aReg);gl.disableVertexAttribArray(locP.aNt);gl.disableVertexAttribArray(locP.aSeed);
+
+  if(e.selecionado>=0){
+    gl.useProgram(progS);gl.uniformMatrix4fv(locS.uMVP,false,MVP);
+    gl.enableVertexAttribArray(locS.aPos);
+    gl.bindBuffer(gl.ARRAY_BUFFER,bufLinhas);gl.vertexAttribPointer(locS.aPos,3,gl.FLOAT,false,0,0);
+    gl.uniform4f(locS.uCor,1,1,1,0.28);gl.uniform1f(locS.uRedondo,0);gl.drawArrays(gl.LINES,0,nLinhas);
+    gl.bindBuffer(gl.ARRAY_BUFFER,bufParc);gl.vertexAttribPointer(locS.aPos,3,gl.FLOAT,false,0,0);
+    gl.uniform4f(locS.uCor,1,0.85,0.4,1);gl.uniform1f(locS.uRedondo,1);gl.uniform1f(locS.uTam,14*dpr);gl.drawArrays(gl.POINTS,0,nParc);
+    gl.bindBuffer(gl.ARRAY_BUFFER,bufSel);gl.vertexAttribPointer(locS.aPos,3,gl.FLOAT,false,0,0);
+    const pulso=0.8+0.2*Math.sin(t*5);
+    gl.uniform4f(locS.uCor,0.9,1,1,1);gl.uniform1f(locS.uTam,26*dpr*pulso);gl.drawArrays(gl.POINTS,0,1);
+    gl.uniform4f(locS.uCor,0.2,0.9,0.95,1);gl.uniform1f(locS.uTam,12*dpr);gl.drawArrays(gl.POINTS,0,1);
+  }
+
+  frames++;if(agora-fpsT>800){document.getElementById('fps').textContent=Math.round(frames*1000/(agora-fpsT));frames=0;fpsT=agora}
+  requestAnimationFrame(desenhar);
+}
+let coresReg=new Float32Array(48),coresNt=new Float32Array(24);
+function atualizarCores(){coresReg.fill(0);REGIOES.forEach((R,i)=>{if(i<16)coresReg.set(hex(R.cor),i*3)});NTS.forEach((n,i)=>coresNt.set(hex(n.cor),i*3))}
+
+// ---------- contagem de visíveis ----------
+function contarVisiveis(){
+  let c=0;const e=estado;
+  for(let i=0;i<N;i++){if(e.regMask[reg[i]]>0.5&&e.ntMask[nt[i]]>0.5&&seed[i]<=e.dens&&pos[i*3+2]<=e.corte&&(e.foco<0||e.foco===reg[i]))c++}
+  document.getElementById('nVisiveis').textContent=fmt(c);
+}
+let timerContagem=null;const agendarContagem=()=>{clearTimeout(timerContagem);timerContagem=setTimeout(contarVisiveis,120)};
+
+// ---------- interação com o canvas ----------
+let arrastando=false,moveu=0,ux=0,uy=0,pinca=null;
+const ponteiros=new Map();
+canvas.addEventListener('pointerdown',ev=>{canvas.setPointerCapture(ev.pointerId);ponteiros.set(ev.pointerId,[ev.clientX,ev.clientY]);
+  if(ponteiros.size===1){arrastando=true;moveu=0;ux=ev.clientX;uy=ev.clientY;canvas.classList.add('arrastando')}
+  else if(ponteiros.size===2){const p=[...ponteiros.values()];pinca=Math.hypot(p[0][0]-p[1][0],p[0][1]-p[1][1])}});
+canvas.addEventListener('pointermove',ev=>{
+  if(!ponteiros.has(ev.pointerId))return;ponteiros.set(ev.pointerId,[ev.clientX,ev.clientY]);
+  if(ponteiros.size===2&&pinca){const p=[...ponteiros.values()];const d=Math.hypot(p[0][0]-p[1][0],p[0][1]-p[1][1]);estado.distAlvo=Math.min(6,Math.max(0.4,estado.distAlvo*pinca/d));pinca=d;return}
+  if(!arrastando)return;
+  const dx=ev.clientX-ux,dy=ev.clientY-uy;ux=ev.clientX;uy=ev.clientY;moveu+=Math.abs(dx)+Math.abs(dy);
+  estado.thetaAlvo-=dx*0.006;estado.phiAlvo=Math.max(-1.45,Math.min(1.45,estado.phiAlvo+dy*0.006));estado.theta=estado.thetaAlvo;estado.phi=estado.phiAlvo;
+});
+function soltar(ev){ponteiros.delete(ev.pointerId);if(ponteiros.size<2)pinca=null;
+  if(ponteiros.size===0){canvas.classList.remove('arrastando');const era=arrastando;arrastando=false;
+    if(era&&moveu<6&&ev.type==='pointerup'){const r=canvas.getBoundingClientRect();const i=escolherEm(ev.clientX-r.left,ev.clientY-r.top);if(i>=0)selecionar(i,false);else limparSelecao()}}}
+canvas.addEventListener('pointerup',soltar);canvas.addEventListener('pointercancel',soltar);
+canvas.addEventListener('wheel',ev=>{ev.preventDefault();estado.distAlvo=Math.min(6,Math.max(0.4,estado.distAlvo*Math.exp(ev.deltaY*0.0012)))},{passive:false});
+window.addEventListener('keydown',ev=>{
+  if(ev.target.tagName==='INPUT')return;
+  if(ev.key==='Escape')limparSelecao();
+  if(ev.key==='r'||ev.key==='R')recentrar();
+  if(ev.key===' '){ev.preventDefault();definirAutoGiro(!estado.autoGiro)}
+});
+function recentrar(){Object.assign(estado,{thetaAlvo:0.55,phiAlvo:0.22,distAlvo:2.6,alvoAlvo:[0,-0.05,0],foco:-1});document.querySelectorAll('#legendaRegioes li').forEach(li=>li.classList.remove('foco'));agendarContagem()}
+
+// ---------- UI ----------
+function abrirPainel(id){document.getElementById(id).classList.remove('oculto');document.getElementById(id==='controles'?'abrirControles':'abrirDetalhes').style.display='none'}
+function fecharPainel(id){document.getElementById(id).classList.add('oculto');document.getElementById(id==='controles'?'abrirControles':'abrirDetalhes').style.display='block'}
+document.querySelectorAll('.fechar').forEach(b=>b.addEventListener('click',()=>fecharPainel(b.dataset.fecha)));
+document.getElementById('abrirControles').addEventListener('click',()=>abrirPainel('controles'));
+document.getElementById('abrirDetalhes').addEventListener('click',()=>abrirPainel('detalhes'));
+if(window.innerWidth<820){fecharPainel('controles');fecharPainel('detalhes')}
+
+document.querySelectorAll('#modoCor button').forEach(b=>b.addEventListener('click',()=>{document.querySelectorAll('#modoCor button').forEach(x=>x.classList.remove('ativo'));b.classList.add('ativo');estado.modo=+b.dataset.modo}));
+function definirAutoGiro(v){estado.autoGiro=v;document.querySelectorAll('#autoGiro button').forEach(x=>x.classList.toggle('ativo',+x.dataset.v===(v?1:0)))}
+document.querySelectorAll('#autoGiro button').forEach(b=>b.addEventListener('click',()=>definirAutoGiro(b.dataset.v==='1')));
+document.getElementById('densidade').addEventListener('input',ev=>{estado.dens=ev.target.value/100;agendarContagem()});
+document.getElementById('tamanho').addEventListener('input',ev=>{estado.tam=+ev.target.value});
+document.getElementById('corte').addEventListener('input',ev=>{estado.corte=ev.target.value/100;agendarContagem()});
+document.getElementById('atividade').addEventListener('input',ev=>{estado.ativ=ev.target.value/100});
+document.getElementById('btnReset').addEventListener('click',recentrar);
+document.getElementById('btnTodas').addEventListener('click',()=>{estado.regMask.fill(1);estado.ntMask.fill(1);estado.foco=-1;montarLegendas();agendarContagem()});
+document.getElementById('btnBuscar').addEventListener('click',buscar);
+document.getElementById('campoBusca').addEventListener('keydown',ev=>{if(ev.key==='Enter')buscar()});
+function buscar(){
+  const v=document.getElementById('campoBusca').value.trim();if(!v)return;
+  let i=-1;
+  if(v.length>=15){for(let k=0;k<N;k++){if(idNeuronio(k)===v){i=k;break}}}
+  else if(/^\d+$/.test(v))i=parseInt(v,10);
+  if(i>=0&&i<N){selecionar(i,true)}
+  else{const c=document.getElementById('campoBusca');c.value='';c.placeholder='Não encontrado — tente um nº de 0 a '+fmt(N-1);}
+}
+
+function montarLegendas(){
+  const ul=document.getElementById('legendaRegioes');ul.innerHTML='';
+  REGIOES.forEach((R,i)=>{
+    const [a,b]=regRanges[i]||[0,0];
+    const li=document.createElement('li');li.style.color=R.cor;li.title=R.desc||'';
+    li.className=(estado.regMask[i]>0.5?'':'desligado')+(estado.foco===i?' foco':'');
+    li.innerHTML=`<input type="checkbox" ${estado.regMask[i]>0.5?'checked':''}><span class="cor" style="background:${R.cor}"></span><span class="nome" style="color:#e8eef6">${R.nome}</span><span class="qtd">${fmt(b-a)}</span>`;
+    li.querySelector('input').addEventListener('click',ev=>{ev.stopPropagation();estado.regMask[i]=ev.target.checked?1:0;li.classList.toggle('desligado',!ev.target.checked);agendarContagem()});
+    li.addEventListener('click',()=>focarRegiao(i));
+    ul.appendChild(li);
+  });
+  const un=document.getElementById('legendaNt');un.innerHTML='';
+  NTS.forEach((n,i)=>{
+    const li=document.createElement('li');li.style.color=n.cor;li.className=estado.ntMask[i]>0.5?'':'desligado';
+    li.innerHTML=`<input type="checkbox" ${estado.ntMask[i]>0.5?'checked':''}><span class="cor" style="background:${n.cor}"></span><span class="nome" style="color:#e8eef6">${n.nome} <span style="color:var(--mudo)">(${n.sigla})</span></span>`;
+    li.querySelector('input').addEventListener('click',ev=>{ev.stopPropagation();estado.ntMask[i]=ev.target.checked?1:0;li.classList.toggle('desligado',!ev.target.checked);agendarContagem()});
+    li.addEventListener('click',ev=>{if(ev.target.tagName!=='INPUT'){const cb=li.querySelector('input');cb.checked=!cb.checked;cb.dispatchEvent(new Event('click'))}});
+    un.appendChild(li);
+  });
+}
+function focarRegiao(i){
+  if(estado.foco===i){estado.foco=-1;estado.alvoAlvo=[0,-0.05,0];estado.distAlvo=2.6}
+  else{estado.foco=i;const c=centroides[i];estado.alvoAlvo=[c[0],c[1],c[2]];estado.distAlvo=1.25}
+  document.querySelectorAll('#legendaRegioes li').forEach((li,k)=>li.classList.toggle('foco',k===estado.foco));
+  agendarContagem();
+}
+
+function renderDetalhes(i,ps){
+  const el=document.getElementById('conteudoDetalhes');
+  if(i<0){
+    el.innerHTML=`<h2>Observar um neurônio</h2>
+      <div class="vazio">
+        <p><b style="color:#fff">Cada ponto é um neurônio.</b> Clique em qualquer um deles para abrir sua ficha: identificador, região, tipo celular, neurotransmissor previsto e os parceiros com quem faz sinapse. As linhas brancas mostram as conexões.</p>
+        <p>Use a legenda à esquerda para ligar, desligar ou focar regiões, e o corte anterior→posterior para enxergar o interior do cérebro.</p>
+      </div>
+      ${blocoHistorico()}
+      <hr>
+      <details open><summary>Sobre esta pesquisa</summary>
+        <p>Em outubro de 2024, o consórcio <b>FlyWire</b> (Universidade de Princeton, com o Google Research e centenas de colaboradores) publicou na revista <i>Nature</i> o primeiro <b>conectoma completo de um cérebro adulto</b>: o da mosca-da-fruta <i>Drosophila melanogaster</i>, com cerca de <b>139 mil neurônios</b> e <b>50 milhões de sinapses</b> reconstruídos a partir de imagens de microscopia eletrônica.</p>
+        <p>O mapa do <b>cérebro do macho</b>, divulgado pelo Google Research, estende esse trabalho: são <b>mais de 166 mil neurônios</b> e seus circuitos, o que permite comparar diferenças entre sexos em comportamentos como corte e agressão.</p>
+        <p>Fontes: <a href="https://blog.google/innovation-and-ai/technology/research/male-fruit-fly-brain-map/" target="_blank" rel="noopener">Google Research (blog)</a> · <a href="https://flywire.ai" target="_blank" rel="noopener">flywire.ai</a> · <a href="https://codex.flywire.ai" target="_blank" rel="noopener">Codex (explorar os dados)</a></p>
+      </details>
+      <details><summary>Como este modelo foi construído</summary>
+        <p>A anatomia — regiões, proporções, contagem por neurópilo, tipos celulares e distribuição de neurotransmissores — segue o que o conectoma real descreve. As posições de cada neurônio e os parceiros sinápticos, porém, são <b>gerados proceduralmente</b> e de forma determinística: o mesmo neurônio terá sempre a mesma ficha.</p>
+        <p>Para ver posições reais, carregue abaixo um arquivo exportado do FlyWire/Codex.</p>
+      </details>
+      <hr>
+      <div class="importar"><b style="color:#fff">Carregar dados reais</b><br>Aceita CSV ou JSON com colunas <code>x</code>, <code>y</code>, <code>z</code> (posição, em nm ou µm) e, opcionalmente, <code>id</code> e <code>region</code>/<code>neuropil</code>.
+        <input type="file" id="arquivo" accept=".csv,.json,.txt,text/csv,application/json">
+        <span id="statusArquivo"></span></div>`;
+    document.getElementById('arquivo').addEventListener('change',carregarArquivo);
+  }else{
+    const f=fichaNeuronio(i);
+    const lista=ps.slice(0,14).map(p=>{const fp=fichaNeuronio(p.idx);return `<li data-idx="${p.idx}" title="${fp.regiao} · ${fp.tipo}"><span class="dir ${p.pre?'pre':''}">${p.pre?'pré':'pós'}</span><span class="pid">${fp.id}</span><span class="sin">${p.sin} sin.</span></li>`}).join('');
+    const nPre=ps.filter(p=>p.pre).length;
+    el.innerHTML=`<h2>Neurônio observado</h2>
+      <div class="id"><small>ID (formato FlyWire) · nº ${fmt(f.indice)}</small>${f.id}</div>
+      <div class="grade">
+        <div class="dado"><small>Região</small><b style="color:${REGIOES[reg[i]]?REGIOES[reg[i]].cor:'#fff'}">${f.regiao}</b><div class="sub">Hemisfério ${f.ladoTxt.toLowerCase()}</div></div>
+        <div class="dado"><small>Tipo celular</small><b>${f.tipo}</b><div class="sub">${f.classe}</div></div>
+        <div class="dado"><small>Neurotransmissor</small><b><span class="tag-nt" style="background:${f.nt.cor}"></span>${f.nt.nome}</b><div class="sub">confiança ${f.conf}</div></div>
+        <div class="dado"><small>Comprimento</small><b>${fmt(f.comp)} µm</b><div class="sub">cabo do neurito</div></div>
+        <div class="dado"><small>Sinapses de saída</small><b>${fmt(f.preSin)}</b><div class="sub">pré-sinápticas</div></div>
+        <div class="dado"><small>Sinapses de entrada</small><b>${fmt(f.posSin)}</b><div class="sub">pós-sinápticas</div></div>
+      </div>
+      <div class="linha" style="margin-top:12px"><label>Parceiros mais fortes</label><span style="font-family:var(--mono);font-size:11px;color:var(--mudo)">${ps.length} · ${nPre} pré / ${ps.length-nPre} pós</span></div>
+      <ul class="parceiros">${lista}</ul>
+      <small class="nota">Clique em um parceiro para saltar até ele e seguir o circuito.</small>
+      ${blocoHistorico()}
+      <div class="linha" style="margin-top:10px;justify-content:flex-start;gap:6px"><button class="botao fantasma" id="btnVoar">Aproximar</button><button class="botao fantasma" id="btnLimpar">Limpar (Esc)</button></div>`;
+    el.querySelectorAll('.parceiros li').forEach(li=>li.addEventListener('click',()=>selecionar(+li.dataset.idx,true)));
+    el.querySelector('#btnVoar').addEventListener('click',()=>{estado.alvoAlvo=[pos[i*3],pos[i*3+1],pos[i*3+2]];estado.distAlvo=0.9});
+    el.querySelector('#btnLimpar').addEventListener('click',limparSelecao);
+  }
+  el.querySelectorAll('.historico button').forEach(b=>b.addEventListener('click',()=>selecionar(+b.dataset.idx,true)));
+}
+function blocoHistorico(){
+  if(!estado.historico.length)return '';
+  return `<div class="linha" style="margin-top:12px"><label>Trilha observada</label></div><div class="historico">${estado.historico.map(k=>`<button data-idx="${k}" title="${fichaNeuronio(k).regiao}">…${idNeuronio(k).slice(-6)}</button>`).join('')}</div>`;
+}
+
+// ---------- importação de dados reais ----------
+function carregarArquivo(ev){
+  const arq=ev.target.files[0];if(!arq)return;
+  const st=document.getElementById('statusArquivo');st.textContent=' Lendo '+arq.name+'…';
+  const leitor=new FileReader();
+  leitor.onload=()=>{try{
+    let linhas=[];const txt=leitor.result;
+    if(/^\s*[\[{]/.test(txt)){let j=JSON.parse(txt);if(!Array.isArray(j))j=j.data||j.neurons||j.rows||Object.values(j).find(Array.isArray)||[];linhas=j}
+    else{const ls=txt.split(/\r?\n/).filter(l=>l.trim());const sep=ls[0].includes('\t')?'\t':ls[0].includes(';')?';':',';const cab=ls[0].split(sep).map(s=>s.trim().replace(/^"|"$/g,'').toLowerCase());
+      for(let k=1;k<ls.length;k++){const c=ls[k].split(sep);const o={};cab.forEach((h,q)=>o[h]=(c[q]||'').trim().replace(/^"|"$/g,''));linhas.push(o)}}
+    const pegar=(o,ns)=>{for(const n of ns){for(const k in o){if(k.toLowerCase()===n)return o[k]}}return undefined};
+    const pts=[];
+    for(const o of linhas){let x=pegar(o,['x','pos_x','soma_x','position_x']),y=pegar(o,['y','pos_y','soma_y','position_y']),z=pegar(o,['z','pos_z','soma_z','position_z']);
+      if(x===undefined&&typeof pegar(o,['position','pos','soma_position','soma'])==='string'){const m=pegar(o,['position','pos','soma_position','soma']).match(/-?\d+(\.\d+)?/g);if(m&&m.length>=3){[x,y,z]=m}}
+      x=parseFloat(x);y=parseFloat(y);z=parseFloat(z);if(!isFinite(x)||!isFinite(y)||!isFinite(z))continue;
+      pts.push({x,y,z,id:pegar(o,['id','root_id','pt_root_id','segment_id','neuron_id']),r:pegar(o,['region','neuropil','super_class','class','group','side'])||'Importado'})}
+    if(pts.length<10)throw new Error('não encontrei colunas x, y, z com números');
+    aplicarDadosReais(pts,arq.name);
+    st.textContent=' '+fmt(pts.length)+' neurônios carregados de '+arq.name+'.';
+  }catch(e){st.textContent=' Não deu para ler o arquivo: '+e.message}};
+  leitor.readAsText(arq);
+}
+function aplicarDadosReais(pts,nome){
+  // normaliza para caber no espaço do modelo (centro na origem, maior eixo = 1.3)
+  let mn=[Infinity,Infinity,Infinity],mx=[-Infinity,-Infinity,-Infinity];
+  for(const p of pts){mn[0]=Math.min(mn[0],p.x);mn[1]=Math.min(mn[1],p.y);mn[2]=Math.min(mn[2],p.z);mx[0]=Math.max(mx[0],p.x);mx[1]=Math.max(mx[1],p.y);mx[2]=Math.max(mx[2],p.z)}
+  const c=[(mn[0]+mx[0])/2,(mn[1]+mx[1])/2,(mn[2]+mx[2])/2];const esc=1.3/Math.max(mx[0]-mn[0],mx[1]-mn[1],mx[2]-mn[2],1e-9);
+  const grupos=[...new Set(pts.map(p=>String(p.r)))].slice(0,16);
+  const paleta=['#4fd1c5','#f2c14e','#7aa2ff','#ff7b7b','#ff9f43','#b48cff','#6ee7a8','#5fb3ff','#ff6fb1','#cbd5e1','#ffd166','#06d6a0','#c77dff','#f4a261','#ef476f','#94a3b8'];
+  REGIOES.length=0;grupos.forEach((g,k)=>REGIOES.push({nome:g,cor:paleta[k],qtd:0,bilateral:false,tipos:['—'],desc:''}));
+  // ordena por grupo para que os intervalos por região continuem contíguos
+  pts.sort((a,b)=>grupos.indexOf(String(a.r))-grupos.indexOf(String(b.r)));
+  N=pts.length;pos=new Float32Array(N*3);reg=new Uint8Array(N);nt=new Uint8Array(N);seed=new Float32Array(N);lado=new Int8Array(N);
+  regRanges=grupos.map(()=>[N,0]);centroides=grupos.map(()=>[0,0,0]);const rnd=mulberry32(7);idsReais=[];
+  pts.forEach((p,i)=>{
+    // FlyWire: x lateral, y dorsoventral (cresce para baixo), z anteroposterior → inverte y para o modelo
+    const x=(p.x-c[0])*esc,y=-(p.y-c[1])*esc,z=(p.z-c[2])*esc;
+    pos[i*3]=x;pos[i*3+1]=y;pos[i*3+2]=z;
+    const r=Math.max(0,grupos.indexOf(String(p.r)));reg[i]=r;lado[i]=x<-0.02?-1:x>0.02?1:0;seed[i]=rnd();
+    const pw=PESOS_NT[r%PESOS_NT.length];let u=rnd(),k=0;while(k<pw.length-1&&u>pw[k]){u-=pw[k];k++}nt[i]=k;
+    regRanges[r][0]=Math.min(regRanges[r][0],i);regRanges[r][1]=Math.max(regRanges[r][1],i+1);
+    centroides[r][0]+=x;centroides[r][1]+=y;centroides[r][2]+=z;
+    idsReais.push(p.id!==undefined?String(p.id):null);
+  });
+  regRanges.forEach((rr,k)=>{const n=Math.max(1,rr[1]-rr[0]);centroides[k]=centroides[k].map(v=>v/n)});
+  dadosReais=true;nomeArquivo=nome;
+  atualizarCores();enviarBuffers();estado.regMask.fill(1);estado.foco=-1;limparSelecao();montarLegendas();
+  document.getElementById('nTotal').textContent=fmt(N);document.getElementById('tituloLegenda').textContent='Grupos do arquivo';
+  agendarContagem();recentrar();
+}
+let idsReais=[];
+const _idOriginal=idNeuronio;
+idNeuronio=function(i){return (dadosReais&&idsReais[i])?idsReais[i]:_idOriginal(i)};
+
+// ---------- inicialização ----------
+function iniciar(){
+  gerarCerebro();atualizarCores();enviarBuffers();redimensionar();
+  document.getElementById('nTotal').textContent=fmt(N);
+  montarLegendas();renderDetalhes(-1,[]);contarVisiveis();
+  const c=document.getElementById('carregando');c.style.opacity='0';setTimeout(()=>c.style.display='none',450);
+  requestAnimationFrame(desenhar);
+}
+setTimeout(iniciar,30);
+</script>
+</body>
+</html>
