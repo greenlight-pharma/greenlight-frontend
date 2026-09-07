@@ -1,5 +1,6 @@
 import { useState } from "react";
 import MedicationForm from "./MedicationForm.jsx";
+import ReceitaFotoModal from "./ReceitaFotoModal.jsx";
 import AdherencePanel from "./AdherencePanel.jsx";
 import useMedicationClass from "./useMedicationClass.js";
 import ConfirmDialog from "../../components/ConfirmDialog.jsx";
@@ -30,6 +31,7 @@ export default function MedicacoesCard({
   abrirNovoAoMontar = false,
 }) {
   const [formAberto, setFormAberto] = useState(abrirNovoAoMontar);
+  const [fotoAberta, setFotoAberta] = useState(false);
   const [editando, setEditando] = useState(null);
   const [arquivando, setArquivando] = useState(null);
   const arquivar = useArchiveMedication(phone);
@@ -50,6 +52,9 @@ export default function MedicacoesCard({
           }}
         >
           ➕ Adicionar medicação
+        </button>
+        <button className="btn-secondary-outline btn-compacto" onClick={() => setFotoAberta(true)}>
+          📷 Pela foto da receita
         </button>
       </div>
 
@@ -75,6 +80,15 @@ export default function MedicacoesCard({
         falhas={falhas}
         evolucao={evolucao}
       />
+
+      {fotoAberta && (
+        <ReceitaFotoModal
+          open
+          phone={phone}
+          patientName={patientName}
+          onClose={() => setFotoAberta(false)}
+        />
+      )}
 
       {formAberto && (
         <MedicationForm
