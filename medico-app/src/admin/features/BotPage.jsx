@@ -30,7 +30,11 @@ export default function BotPage() {
 function ComportamentoDoBot() {
   const { data, isLoading } = useBotConfig();
   const salvar = useSalvarBotConfig();
-  const [cfg, setCfg] = useState({ schedulingEnabled: false, checkinEnabled: false });
+  const [cfg, setCfg] = useState({
+    schedulingEnabled: false,
+    checkinEnabled: false,
+    conversaIAEnabled: false,
+  });
   const [msg, setMsg] = useState(null);
 
   useEffect(() => {
@@ -38,6 +42,7 @@ function ComportamentoDoBot() {
       setCfg({
         schedulingEnabled: !!data.schedulingEnabled,
         checkinEnabled: !!data.checkinEnabled,
+        conversaIAEnabled: !!data.conversaIAEnabled,
       });
     }
   }, [data]);
@@ -58,9 +63,30 @@ function ComportamentoDoBot() {
     <div className="card">
       <h3>Comportamento do bot</h3>
       <div className="card-subtitle">
-        Mudanças valem para novas conversas. O bot continua tirando dúvidas e
-        orientando normalmente — estes controles afetam apenas as funções abaixo.
+        Mudanças valem para novas conversas.
       </div>
+
+      {/* [ESCOPO-MEDICACAO] Interruptor mestre. Vem primeiro na tela porque
+          é ele que define se os dois de baixo têm algum efeito — mostrar as
+          chaves na ordem errada faria alguém ligar o check-in e não entender
+          por que nada acontece. */}
+      <Chave
+        titulo="Conversa aberta com o paciente"
+        descricao={
+          cfg.conversaIAEnabled
+            ? "LIGADO: o bot conversa, tira dúvidas e pode agendar. Isso amplia a superfície clínica do serviço."
+            : "DESLIGADO: o canal serve só para lembrete de medicação e registro de adesão. Quem escrever outra coisa recebe orientação de procurar a unidade. Crise, PARAR e autorização por QR continuam funcionando."
+        }
+        valor={cfg.conversaIAEnabled}
+        onChange={(v) => setCfg((c) => ({ ...c, conversaIAEnabled: v }))}
+      />
+
+      {!cfg.conversaIAEnabled && (
+        <div className="modal-context">
+          💡 Com a conversa desligada, as duas opções abaixo <strong>não têm
+          efeito</strong> — elas só valem quando o bot conversa.
+        </div>
+      )}
 
       <Chave
         titulo="Agendamento de consultas"
