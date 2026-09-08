@@ -1,6 +1,11 @@
 import { useState, useEffect, useMemo } from "react";
 import QRCode from "qrcode";
 import PageHeader from "../../components/PageHeader.jsx";
+import {
+  montarCartazPdf,
+  nomeDoArquivo,
+  carregarLogoDataUrl,
+} from "./cartazPdf.js";
 
 // [QR-AUTORIZACAO] Gera o cartaz que fica no balcão da UBS.
 //
@@ -48,6 +53,7 @@ export default function QrAutorizacaoPage() {
   const [orientacao, setOrientacao] = useState("paisagem");
   const [svg, setSvg] = useState("");
   const [erro, setErro] = useState("");
+  const [baixando, setBaixando] = useState(false);
 
   // Enquanto ninguém editar o código à mão, ele acompanha o nome. Assim o
   // caso comum é zero digitação, e quem precisa de outro código ainda pode.
@@ -81,6 +87,39 @@ export default function QrAutorizacaoPage() {
   }, [link]);
 
   const numeroValido = String(numero).replace(/\D/g, "").length >= 12;
+
+  // [PDF-EM-VEZ-DE-IMPRIMIR] Baixar o PDF é o caminho principal, e não um
+  // extra: `window.print()` depende do diálogo do navegador, que ignora a
+  // orientação pedida (Safari) ou lembra a escolha anterior do usuário
+  // (Chrome). O cartaz saía em retrato e o layout paisagem era cortado.
+  // O PDF sai igual em qualquer máquina e é o arquivo que a gráfica pede.
+  async function baixarPdf() {
+    setBaixando(true);
+    setErro("");
+    try {
+      // jsPDF pesa ~390kB: só entra quando alguém pede o cartaz.
+      const { jsPDF } = await import("jspdf");
+      const qrDataUrl = await QRCode.toDataURL(link, {
+        width: 1400, // ~14 px/mm no tamanho impresso: nítido depois de plastificado
+        margin: 0,
+        errorCorrectionLevel: "H",
+      });
+      const doc = montarCartazPdf({
+        JsPDF: jsPDF,
+        qrDataUrl,
+        logoDataUrl: await carregarLogoDataUrl(
+          `${import.meta.env.BASE_URL}vytalsaude.png`
+        ),
+        unidade,
+        orientacao,
+      });
+      doc.save(nomeDoArquivo(unidade, orientacao));
+    } catch (e) {
+      setErro(e?.message || "não foi possível gerar o PDF");
+    } finally {
+      setBaixando(false);
+    }
+  }
 
   return (
     <>
@@ -148,11 +187,22 @@ export default function QrAutorizacaoPage() {
         <div className="modal-actions">
           <button
             className="primary"
+            disabled={!svg || !numeroValido || baixando}
+            onClick={baixarPdf}
+          >
+            {baixando ? "Gerando…" : "⬇️ Baixar cartaz em PDF"}
+          </button>
+          <button
             disabled={!svg || !numeroValido}
             onClick={() => window.print()}
           >
-            🖨️ Imprimir cartaz
+            🖨️ Imprimir direto
           </button>
+        </div>
+        <div className="small">
+          Prefira o PDF: o “imprimir direto” depende do diálogo do navegador,
+          que pode trocar a orientação da folha e cortar o cartaz. O PDF sai
+          igual em qualquer máquina — e é o arquivo para mandar à gráfica.
         </div>
 
         <div className="modal-context">
