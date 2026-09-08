@@ -582,6 +582,24 @@ button.btn-docs:hover { background: #0f766e; }
   .no-print { display: none !important; }
 }
 
+/* [IMPRESSAO-DEGRADA] Rede de segurança do botão "imprimir direto".
+   O Safari ignora `size` no @page e o Chrome deixa a orientação do diálogo
+   (lembrada da última impressão) sobrepor o CSS — então o cartaz paisagem
+   pode cair numa folha em pé. Antes, o layout largo simplesmente vazava e
+   o `overflow:hidden` comia a coluna das orientações: o cartaz saía sem o
+   texto do consentimento, que é justamente o que ele existe para dizer.
+   Aqui ele volta ao arranjo estreito e sai inteiro, só mais apertado.
+   Quem quer o cartaz certo baixa o PDF, que não passa por esse diálogo. */
+@media print and (max-width: 220mm) {
+  .cartaz-paisagem .cartaz-corpo { grid-template-columns: 300px 1fr; gap: 24px; }
+  .cartaz-paisagem .cartaz-info { columns: 1; align-self: start; }
+  .cartaz-paisagem .cartaz-topo h2 { font-size: 28px; }
+  .cartaz-paisagem .cartaz-topo p { font-size: 16px; }
+  .cartaz-paisagem .cartaz-info h3 { font-size: 16px; }
+  .cartaz-paisagem .cartaz-info p { font-size: 15px; margin-bottom: 14px; }
+  .cartaz-paisagem .cartaz-passos { font-size: 15px; }
+}
+
 /* ----- pressão e glicemia ----- */
 .medicoes-bloco { margin-top: 14px; padding-top: 12px; border-top: 1px solid var(--borda); }
 .medicoes-bloco > strong { display: block; margin-bottom: 6px; }
