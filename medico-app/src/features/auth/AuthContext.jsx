@@ -9,7 +9,10 @@ import {
   onSessionExpired,
 } from "../../lib/auth.js";
 
-const AuthContext = createContext(null);
+// Exportado para o painel do SAMU, que preenche o MESMO contrato com outro
+// login (registro + senha, contra /samu/auth/login). Assim o Layout, o
+// useAuth e o tratamento de sessão expirada valem para os dois sem cópia.
+export const AuthContext = createContext(null);
 
 export function AuthProvider({ children }) {
   const queryClient = useQueryClient();

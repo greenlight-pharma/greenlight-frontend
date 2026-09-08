@@ -26,7 +26,7 @@ rm -rf "$OUT/medico-app" "$OUT/docs" "$OUT/scripts" "$OUT/vercel.json"
 echo "==> Instalando dependências dos painéis"
 npm ci --prefix medico-app
 
-# Dois builds, um por painel, cada um autocontido na sua pasta. Os nomes
+# Um build por painel, cada um autocontido na sua pasta. Os nomes
 # evitam colisão de rota: já existem painel.html, medico.html e admin.html
 # na raiz, então /painel, /medico e /admin ficariam ambíguos.
 echo "==> Construindo o painel do médico"
@@ -41,14 +41,20 @@ echo "==> Construindo o painel da UBS"
 ( cd medico-app && VITE_BASE=/painel-ubs/ VITE_ENTRY=./ubs.html \
     VITE_OUT_DIR=dist-ubs npx vite build )
 
-echo "==> Publicando em /painel-medico, /painel-admin e /painel-ubs"
-mkdir -p "$OUT/painel-medico" "$OUT/painel-admin" "$OUT/painel-ubs"
+echo "==> Construindo o painel do SAMU"
+( cd medico-app && VITE_BASE=/painel-samu/ VITE_ENTRY=./samu.html \
+    VITE_OUT_DIR=dist-samu npx vite build )
+
+echo "==> Publicando em /painel-medico, /painel-admin, /painel-ubs e /painel-samu"
+mkdir -p "$OUT/painel-medico" "$OUT/painel-admin" "$OUT/painel-ubs" "$OUT/painel-samu"
 cp -R medico-app/dist-medico/* "$OUT/painel-medico"/
 cp -R medico-app/dist-admin/* "$OUT/painel-admin"/
 cp -R medico-app/dist-ubs/* "$OUT/painel-ubs"/
+cp -R medico-app/dist-samu/* "$OUT/painel-samu"/
 # O Vite nomeia a saída pelo arquivo de entrada; a pasta serve index.html.
 mv "$OUT/painel-admin/admin.html" "$OUT/painel-admin/index.html"
 mv "$OUT/painel-ubs/ubs.html" "$OUT/painel-ubs/index.html"
+mv "$OUT/painel-samu/samu.html" "$OUT/painel-samu/index.html"
 
 echo "==> Conteúdo publicado:"
 ls "$OUT" | head -30
@@ -58,3 +64,5 @@ echo "    /painel-admin ->"
 ls "$OUT/painel-admin"
 echo "    /painel-ubs ->"
 ls "$OUT/painel-ubs"
+echo "    /painel-samu ->"
+ls "$OUT/painel-samu"

@@ -9,6 +9,7 @@ import PlanosPage from "./features/PlanosPage.jsx";
 import BotPage from "./features/BotPage.jsx";
 import QrAutorizacaoPage from "./features/QrAutorizacaoPage.jsx";
 import UnidadesPage from "./features/UnidadesPage.jsx";
+import SamuCadastroPage from "./features/SamuCadastroPage.jsx";
 
 const NAV = [
   { to: "/", icon: "🏠", label: "Início", end: true },
@@ -18,6 +19,7 @@ const NAV = [
   { to: "/bot", icon: "🤖", label: "Bot & Mensagens" },
   { to: "/unidades", icon: "🏥", label: "Unidades" },
   { to: "/qr-autorizacao", icon: "📱", label: "QR de autorização" },
+  { to: "/samu", icon: "🚑", label: "SAMU — cadastros" },
 ];
 
 function Shell() {
@@ -89,6 +91,7 @@ function Shell() {
           <Route path="/bot" element={<BotPage />} />
           <Route path="/unidades" element={<UnidadesPage />} />
           <Route path="/qr-autorizacao" element={<QrAutorizacaoPage />} />
+          <Route path="/samu" element={<SamuCadastroPage />} />
           <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>
       </main>
