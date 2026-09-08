@@ -43,6 +43,9 @@ export default function QrAutorizacaoPage() {
   const [codigo, setCodigo] = useState("");
   const [codigoTocado, setCodigoTocado] = useState(false);
   const [numero, setNumero] = useState(NUMERO_PADRAO);
+  // Paisagem é o padrão porque é o formato de uso real: plastificado, em pé
+  // no balcão. Retrato serve para quem vai colar em mural estreito.
+  const [orientacao, setOrientacao] = useState("paisagem");
   const [svg, setSvg] = useState("");
   const [erro, setErro] = useState("");
 
@@ -132,6 +135,16 @@ export default function QrAutorizacaoPage() {
 
         {erro && <div className="small texto-erro">Falha ao gerar o código: {erro}</div>}
 
+        <label htmlFor="qrOrientacao">Formato da folha</label>
+        <select
+          id="qrOrientacao"
+          value={orientacao}
+          onChange={(e) => setOrientacao(e.target.value)}
+        >
+          <option value="paisagem">Paisagem — para plastificar e deixar no balcão</option>
+          <option value="retrato">Retrato — para mural ou parede estreita</option>
+        </select>
+
         <div className="modal-actions">
           <button
             className="primary"
@@ -148,7 +161,12 @@ export default function QrAutorizacaoPage() {
         </div>
       </div>
 
-      <Cartaz svg={svg} unidade={unidade} />
+      {/* @page não aceita seletor de classe, então a orientação da folha
+          precisa ser injetada como regra. Sem isso, o navegador imprime no
+          padrão do sistema e o cartaz paisagem sai cortado ao meio. */}
+      <style>{`@page { size: A4 ${orientacao}; margin: 10mm; }`}</style>
+
+      <Cartaz svg={svg} unidade={unidade} orientacao={orientacao} />
     </>
   );
 }
@@ -156,9 +174,9 @@ export default function QrAutorizacaoPage() {
 // O cartaz é o que sai na impressora. O texto NÃO é decoração: consentimento
 // só é válido se for informado, e "informado" quer dizer que a pessoa sabia
 // o que ia receber, com que frequência e como sair — antes de autorizar.
-function Cartaz({ svg, unidade }) {
+function Cartaz({ svg, unidade, orientacao = "retrato" }) {
   return (
-    <div className="cartaz">
+    <div className={orientacao === "paisagem" ? "cartaz cartaz-paisagem" : "cartaz"}>
       <div className="cartaz-topo">
         <img src={`${import.meta.env.BASE_URL}vytalsaude.png`} alt="Vytal Saúde" />
         <div>
@@ -175,34 +193,44 @@ function Cartaz({ svg, unidade }) {
             <div className="cartaz-qr-vazio">gerando…</div>
           )}
           <div className="cartaz-passos">
-            <div><strong>1.</strong> Aponte a câmera do celular para o código</div>
-            <div><strong>2.</strong> O WhatsApp abre com uma mensagem pronta</div>
-            <div><strong>3.</strong> Toque em <strong>enviar</strong> para autorizar</div>
+            <div><strong>1</strong> Aponte a câmera do celular para o código</div>
+            <div><strong>2</strong> O WhatsApp abre com uma mensagem pronta</div>
+            <div><strong>3</strong> Toque em <strong>enviar</strong> para autorizar</div>
           </div>
         </div>
 
         <div className="cartaz-info">
-          <h3>O que você vai receber</h3>
-          <p>
-            Uma mensagem no horário de cada medicação que seu médico cadastrar, com
-            o nome do remédio e a orientação dele. Você responde se tomou ou não —
-            e isso ajuda seu médico a acompanhar seu tratamento.
-          </p>
+          {/* Cada bloco é uma <section> para que, na coluna dupla do
+              paisagem, o título nunca fique órfão do seu parágrafo. */}
+          <section>
+            <h3>O que você vai receber</h3>
+            <p>
+              Uma mensagem no horário de cada medicação que seu médico cadastrar,
+              com o nome do remédio e a orientação dele. Você responde se tomou ou
+              não — e isso ajuda seu médico a acompanhar seu tratamento.
+            </p>
+          </section>
 
-          <h3>Quando</h3>
-          <p>Somente nos horários da sua receita. Nada de propaganda.</p>
+          <section>
+            <h3>Quando</h3>
+            <p>Somente nos horários da sua receita. Nada de propaganda.</p>
+          </section>
 
-          <h3>Para parar</h3>
-          <p>
-            Envie <strong>PARAR</strong> a qualquer momento. Você deixa de receber
-            na hora, sem precisar vir até a unidade.
-          </p>
+          <section>
+            <h3>Para parar</h3>
+            <p>
+              Envie <strong>PARAR</strong> a qualquer momento. Você deixa de
+              receber na hora, sem precisar vir até a unidade.
+            </p>
+          </section>
 
-          <h3>Seus dados</h3>
-          <p>
-            Suas respostas ficam no seu prontuário e são usadas pelo seu médico no
-            acompanhamento do tratamento.
-          </p>
+          <section>
+            <h3>Seus dados</h3>
+            <p>
+              Suas respostas ficam no seu prontuário e são usadas pelo seu médico
+              no acompanhamento do tratamento.
+            </p>
+          </section>
         </div>
       </div>
 
