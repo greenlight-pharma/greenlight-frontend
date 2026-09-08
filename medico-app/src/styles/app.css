@@ -508,29 +508,68 @@ button.btn-docs:hover { background: #0f766e; }
 .cartaz-corpo { display: grid; grid-template-columns: 260px 1fr; gap: 28px; margin-top: 22px; }
 .cartaz-qr svg { width: 100%; height: auto; display: block; }
 .cartaz-qr-vazio { aspect-ratio: 1; display: grid; place-items: center; border: 1px dashed var(--borda); color: #888; }
-.cartaz-passos { margin-top: 14px; font-size: 14px; line-height: 1.9; }
+/* Passos numerados em círculo: o número precisa se destacar do texto para
+   quem lê o cartaz de longe, e sobrevive à plastificação melhor que "1.". */
+.cartaz-passos { margin-top: 14px; font-size: 14px; line-height: 1.4; display: grid; gap: 8px; }
+.cartaz-passos > div { display: flex; gap: 9px; align-items: center; }
+.cartaz-passos strong:first-child {
+  flex: 0 0 24px; height: 24px; border-radius: 50%;
+  background: #1a1a1a; color: #fff; font-size: 13px;
+  display: inline-grid; place-items: center;
+}
 .cartaz-info h3 { margin: 0 0 4px; font-size: 15px; text-transform: uppercase; letter-spacing: .04em; }
-.cartaz-info h3 + p { margin: 0 0 14px; line-height: 1.5; }
+.cartaz-info p { margin: 0 0 14px; line-height: 1.5; }
+.cartaz-info section { break-inside: avoid; }
 .cartaz-rodape {
   display: flex; justify-content: space-between; align-items: baseline;
   border-top: 1px solid var(--borda); margin-top: 18px; padding-top: 12px;
   font-size: 13px; color: #555;
 }
 
+/* ----- variante paisagem -----
+   Cartaz para plastificar e deixar em pé no balcão da UBS: tudo em UMA folha,
+   lido de longe e por gente idosa. Daí a tipografia maior e o QR grande — um
+   QR plastificado é lido sob reflexo da luz do teto, não na mão. */
+.cartaz-paisagem { max-width: 1100px; }
+.cartaz-paisagem .cartaz-topo img { height: 74px; }
+.cartaz-paisagem .cartaz-topo h2 { font-size: 40px; }
+.cartaz-paisagem .cartaz-topo p { font-size: 21px; color: #333; }
+.cartaz-paisagem .cartaz-corpo { grid-template-columns: 400px 1fr; gap: 36px; }
+/* Os passos são o único texto que o paciente lê ANTES de escanear: caixa
+   destacada, número grande, uma linha cada. */
+.cartaz-paisagem .cartaz-passos { margin-top: 18px; font-size: 19px; line-height: 1.5; gap: 10px; }
+.cartaz-paisagem .cartaz-passos strong:first-child { flex-basis: 30px; height: 30px; font-size: 16px; }
+/* Duas colunas: é o que faz os quatro blocos de consentimento caberem ao lado
+   do QR sem virar uma segunda folha. */
+/* Centralizado no eixo do QR: o texto é mais curto que a coluna do código,
+   e alinhado ao topo ficava com um vazio grande embaixo. */
+.cartaz-paisagem .cartaz-info { columns: 2; column-gap: 34px; align-self: center; }
+.cartaz-paisagem .cartaz-info h3 { font-size: 19px; margin-bottom: 6px; }
+.cartaz-paisagem .cartaz-info p { font-size: 18px; line-height: 1.5; margin-bottom: 22px; }
+.cartaz-paisagem .cartaz-rodape { font-size: 15px; padding-top: 14px; }
+
 @media (max-width: 700px) {
   .cartaz-corpo { grid-template-columns: 1fr; }
+  .cartaz-paisagem .cartaz-corpo { grid-template-columns: 1fr; }
+  .cartaz-paisagem .cartaz-info { columns: 1; }
 }
 
 /* Na impressão sai SÓ o cartaz — sem menu, sem formulário, sem botão.
-   `visibility` em vez de `display:none` preserva o layout do cartaz. */
+   `visibility` em vez de `display:none` preserva o layout do cartaz.
+   A orientação da folha (@page size) é injetada pela página, porque @page
+   não aceita seletor de classe. */
 @media print {
-  @page { margin: 12mm; }
   body * { visibility: hidden; }
   .cartaz, .cartaz * { visibility: visible; }
   .cartaz {
-    position: absolute; left: 0; top: 0; width: 100%;
+    position: absolute; left: 0; top: 0; width: 100%; max-width: none;
     border: none; border-radius: 0; padding: 0; margin: 0;
   }
+  /* A4 paisagem (297x210mm) menos a margem de 10mm de cada lado. Altura fixa
+     para o rodapé assentar no pé da folha em vez de flutuar no meio. */
+  .cartaz-paisagem { height: 190mm; display: flex; flex-direction: column; }
+  .cartaz-paisagem .cartaz-corpo { flex: 1; align-content: start; }
+  .cartaz-paisagem .cartaz-rodape { margin-top: 0; }
   .no-print { display: none !important; }
 }
 
