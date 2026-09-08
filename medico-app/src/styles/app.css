@@ -663,3 +663,66 @@ button.btn-docs:hover { background: #0f766e; }
   border-radius: 6px; padding: 6px 9px; margin: 6px 0;
 }
 .texto-sucesso { color: #065f46; font-weight: 600; }
+
+/* ----- painel do SAMU (passagem de plantão) -----
+   Sem sidebar: o fluxo é linear e usado de pé, na troca de turno. Menu
+   lateral aqui só daria uma coisa a mais para errar com pressa. */
+.samu-app { max-width: 1000px; margin: 0 auto; padding: 0 16px 40px; }
+.samu-topo {
+  display: flex; align-items: center; justify-content: space-between; gap: 16px;
+  padding: 16px 0; border-bottom: 1px solid var(--borda); margin-bottom: 16px;
+  flex-wrap: wrap;
+}
+.samu-topo-acoes { display: flex; gap: 8px; }
+.samu-conteudo { display: flex; flex-direction: column; gap: 14px; }
+.samu-grupo { margin-top: 16px; }
+.samu-grupo-nome {
+  font-weight: 600; margin-bottom: 6px; padding-bottom: 4px;
+  border-bottom: 1px solid var(--borda);
+}
+.samu-tabela { width: 100%; border-collapse: collapse; }
+.samu-tabela th {
+  text-align: left; font-size: 12px; color: var(--texto-suave);
+  font-weight: 600; padding: 6px 8px 6px 0;
+}
+.samu-tabela td { padding: 4px 8px 4px 0; vertical-align: middle; }
+.samu-tabela input { margin: 0; width: 100%; }
+.samu-lista { margin: 8px 0 0; padding-left: 18px; line-height: 1.7; }
+.samu-linha { display: flex; gap: 8px; align-items: center; margin-top: 8px; }
+.samu-linha input { margin: 0; flex: 1; }
+.samu-faixa { display: flex; gap: 8px; align-items: center; margin-top: 12px; flex-wrap: wrap; }
+.samu-faixa input { margin: 0; width: 92px; }
+.samu-faixa label { margin: 0; }
+.samu-numeros { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 10px; }
+.samu-numero {
+  display: inline-flex; align-items: center; gap: 4px;
+  background: var(--fundo-suave, #f2f4f7); border: 1px solid var(--borda);
+  border-radius: 6px; padding: 3px 4px 3px 9px; font-variant-numeric: tabular-nums;
+}
+.samu-numero button {
+  border: none; background: none; cursor: pointer; padding: 0 4px;
+  font-size: 15px; line-height: 1; color: var(--texto-suave);
+}
+/* Crítica e atenção precisam ser distinguíveis sem depender só da cor:
+   a etiqueta traz a palavra, não só o tom. */
+.samu-tag {
+  display: inline-block; font-size: 11px; font-weight: 700; text-transform: uppercase;
+  letter-spacing: .04em; border-radius: 4px; padding: 2px 6px; white-space: nowrap;
+}
+.samu-tag.critica { background: var(--erro-fundo, #fdecea); color: #a1231a; }
+.samu-tag.atencao { background: #fff4e0; color: #8a5a00; }
+.samu-assinatura { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; margin-top: 12px; }
+.samu-assinatura fieldset {
+  border: 1px solid var(--borda); border-radius: 8px; padding: 12px 14px 16px; margin: 0;
+}
+.samu-assinatura legend { font-weight: 600; padding: 0 6px; }
+.samu-declaro {
+  display: flex; align-items: center; gap: 9px; margin-top: 16px; font-weight: 500;
+}
+.samu-declaro input { margin: 0; width: auto; }
+
+@media (max-width: 700px) {
+  .samu-assinatura { grid-template-columns: 1fr; }
+  .samu-tabela th, .samu-tabela td { padding-right: 4px; }
+  .samu-topo { padding: 12px 0; }
+}

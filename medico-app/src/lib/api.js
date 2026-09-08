@@ -104,7 +104,9 @@ export async function apiUpload(path, formData) {
   // errar a senha na tela de login dispararia "sua sessão expirou" — que
   // não faz sentido pra quem nem entrou ainda. Chamadas sem auth (login)
   // só devolvem o erro; as autenticadas é que derrubam a sessão.
-  if (response.status === 401 && auth) {
+  // Upload é sempre autenticado (não existe upload anônimo), então aqui o
+  // 401 é sempre sessão vencida.
+  if (response.status === 401) {
     emitSessionExpired();
     throw new ApiError("Sua sessão expirou. Entre novamente.", 401, null);
   }
