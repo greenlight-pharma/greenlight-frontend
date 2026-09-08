@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Vytal Saúde Tecnologia — Tecnologia que acompanha a medicina</title>
-<meta name="description" content="Tecnologia que acompanha a medicina — do estudante ao paciente. Conheça o Vytal Acadêmico, o aplicativo da Vytal Saúde Tecnologia para estudantes e faculdades de medicina, disponível para iOS e Android.">
+<title>Vytal Saúde Tecnologia — Software com IA para a medicina brasileira</title>
+<meta name="description" content="Vytal Saúde Tecnologia: software com inteligência artificial para a medicina brasileira. Formação clínica, adesão ao tratamento, acompanhamento de pacientes e rotina hospitalar. O Vytal Acadêmico está disponível para iOS, Android e web.">
 <link rel="icon" type="image/png" href="vytal-mark-navy.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -27,7 +27,7 @@ html, body { overflow-x: hidden; }
   header nav { gap: 7px !important; flex-wrap: nowrap !important; flex-shrink: 0 !important; }
   header nav a[href="#academico"],
   header nav a[href="#instituicoes"],
-  header nav a[href="#roadmap"],
+  header nav a[href="#produtos"],
   header nav a[href="#empresa"] { display: none !important; }
   header nav a { padding: 8px 11px !important; font-size: 12px !important; white-space: nowrap !important; }
 
@@ -53,11 +53,12 @@ html, body { overflow-x: hidden; }
   #instituicoes > div { border-right: none !important; border-bottom: 1px solid #E6E2D8; padding: 28px 24px !important; }
   #instituicoes > div:last-child { border-bottom: none; }
 
-  /* roadmap: cada linha vira pilha */
-  #roadmap { padding: 56px 24px 48px !important; }
-  #roadmap h2 { font-size: 28px !important; }
-  #roadmap > div > div { grid-template-columns: 1fr !important; gap: 6px !important; }
-  #roadmap > div > div > span:last-child { justify-self: start !important; }
+  /* produtos: uma coluna de cartões */
+  #produtos { padding: 56px 20px 48px !important; }
+  #produtos h2 { font-size: 28px !important; }
+  #produtos > div:last-child { grid-template-columns: 1fr !important; gap: 18px !important; }
+  #produtos article { padding: 26px 22px !important; }
+  #produtos article h3 { font-size: 22px !important; }
 
   /* empresa */
   #empresa { padding: 0 24px 56px !important; }
@@ -97,7 +98,7 @@ html, body { overflow-x: hidden; }
 <nav style="display:flex;align-items:center;gap:28px;font-size:14px;font-weight:500;flex-wrap:wrap">
 <a href="#academico" style="color:#B7C7D4">Vytal Acadêmico</a>
 <a href="#instituicoes" style="color:#B7C7D4">Para instituições</a>
-<a href="#roadmap" style="color:#B7C7D4">Roadmap</a>
+<a href="#produtos" style="color:#B7C7D4">Produtos</a>
 <a href="#empresa" style="color:#B7C7D4">A empresa</a>
 <a href="https://app.vytalsaude.com.br" style="border:1px solid rgba(255,255,255,.3);color:#fff;padding:10px 20px;border-radius:6px;font-weight:600">Acessar plataforma</a>
 <a href="#baixar" style="background:#fff;color:#0E2233;padding:10px 20px;border-radius:6px;font-weight:600">Baixar o app</a>
@@ -109,10 +110,10 @@ html, body { overflow-x: hidden; }
 <div style="padding-bottom:96px">
 <span style="font:500 12px 'IBM Plex Mono',monospace;letter-spacing:.16em;color:#7FA3BF">VYTAL SAÚDE TECNOLOGIA</span>
 <h1 style="font:500 60px/1.1 'Lora',serif;margin:22px 0 26px;text-wrap:pretty">Tecnologia que acompanha a medicina.</h1>
-<p style="font-size:19px;line-height:1.6;color:#B7C7D4;margin:0 0 40px;max-width:46ch">Do estudante ao paciente: soluções de inteligência artificial para a formação e a prática médica, desenvolvidas dentro da realidade brasileira.</p>
+<p style="font-size:19px;line-height:1.6;color:#B7C7D4;margin:0 0 40px;max-width:48ch">Construímos software com inteligência artificial para a medicina brasileira — da formação do estudante ao acompanhamento do paciente crônico e à rotina de quem trabalha no serviço.</p>
 <div style="display:flex;align-items:center;gap:18px;flex-wrap:wrap">
-<a href="#academico" style="background:#fff;color:#0E2233;padding:16px 30px;border-radius:6px;font-weight:600;font-size:15px">Conheça o Vytal Acadêmico →</a>
-<a href="#instituicoes" style="color:#9FC2DC;font-weight:500;font-size:15px">Para faculdades →</a>
+<a href="#produtos" style="background:#fff;color:#0E2233;padding:16px 30px;border-radius:6px;font-weight:600;font-size:15px">O que construímos →</a>
+<a href="#academico" style="color:#9FC2DC;font-weight:500;font-size:15px">Baixar o Vytal Acadêmico →</a>
 </div>
 <div style="display:flex;gap:32px;margin-top:56px;padding-top:28px;border-top:1px solid rgba(255,255,255,.14);font-size:13px;color:#7FA3BF;flex-wrap:wrap">
 <span>LGPD desde a concepção</span><span>·</span><span>Supervisão docente sempre</span><span>·</span><span>Dados anonimizados</span>
@@ -126,10 +127,55 @@ html, body { overflow-x: hidden; }
 <div class="selo-mobile" style="display:none;grid-column:1/-1;align-items:center;justify-content:center;gap:8px;padding:13px 0 16px;border-top:1px solid rgba(255,255,255,.14);font-size:10.5px;color:#7FA3BF;white-space:nowrap"><span>LGPD</span><span>·</span><span>Supervisão docente</span><span>·</span><span>Dados anonimizados</span></div>
 </section>
 
-<!-- produto -->
+<!-- produtos -->
+<section id="produtos" style="padding:88px 64px 72px">
+<span style="font:500 12px 'IBM Plex Mono',monospace;letter-spacing:.14em;color:#2B6FA8">PORTFÓLIO</span>
+<h2 style="font:500 36px 'Lora',serif;color:#14304A;margin:14px 0 14px">O que construímos</h2>
+<p style="font-size:16.5px;line-height:1.65;color:#55616D;max-width:70ch;margin:0 0 44px">Quatro frentes, o mesmo método: começar por um problema concreto de quem trabalha na saúde no Brasil e usar inteligência artificial onde ela resolve — não como enfeite. Todos são ferramentas de apoio e de educação; nenhum diagnostica, trata ou substitui a decisão do profissional.</p>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:24px">
+<article style="background:#fff;border:1px solid #E6E2D8;border-radius:14px;padding:34px 32px;display:flex;flex-direction:column">
+<div style="display:flex;align-items:baseline;justify-content:space-between;gap:16px;margin-bottom:14px;flex-wrap:wrap">
+<span style="font:500 11.5px 'IBM Plex Mono',monospace;letter-spacing:.14em;color:#2B6FA8">FORMAÇÃO CLÍNICA</span>
+<span style="font:600 10.5px 'IBM Plex Mono',monospace;letter-spacing:.08em;color:#14304A">● DISPONÍVEL</span>
+</div>
+<h3 style="font:500 26px/1.25 'Lora',serif;color:#14304A;margin:0 0 12px">Vytal Acadêmico</h3>
+<p style="font-size:15.5px;line-height:1.65;color:#55616D;margin:0 0 18px;flex:1">Estudantes de medicina no ciclo clínico registram casos — por texto ou por voz — e recebem feedback educacional por IA para discutir com o preceptor. A coordenação acompanha a evolução da turma.</p>
+<div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap"><a href="https://apps.apple.com/app/id6787093758"><img src="https://tools.applemediaservices.com/api/badges/download-on-the-app-store/black/pt-br?size=250x83" alt="Baixar na App Store" style="height:42px;display:block"></a><a href="https://play.google.com/store/apps/details?id=br.com.vytalsaude.academico"><img src="https://play.google.com/intl/pt-BR/badges/static/images/badges/pt-br_badge_web_generic.png" alt="Disponível no Google Play" style="height:63px;display:block;margin:-10px"></a><a href="https://app.vytalsaude.com.br" style="color:#2B6FA8;font-weight:500;font-size:14px;margin-left:8px">ou use na web →</a></div>
+</article>
+<article style="background:#fff;border:1px solid #E6E2D8;border-radius:14px;padding:34px 32px;display:flex;flex-direction:column">
+<div style="display:flex;align-items:baseline;justify-content:space-between;gap:16px;margin-bottom:14px;flex-wrap:wrap">
+<span style="font:500 11.5px 'IBM Plex Mono',monospace;letter-spacing:.14em;color:#2B6FA8">ATENÇÃO BÁSICA</span>
+<span style="font:600 10.5px 'IBM Plex Mono',monospace;letter-spacing:.08em;color:#2B6FA8">◐ PRONTO PARA PILOTO</span>
+</div>
+<h3 style="font:500 26px/1.25 'Lora',serif;color:#14304A;margin:0 0 12px">Adesão ao tratamento</h3>
+<p style="font-size:15.5px;line-height:1.65;color:#55616D;margin:0 0 18px;flex:1">Lembretes de medicação por WhatsApp para pacientes crônicos, com painel de adesão para a equipe de saúde. A medicação pode ser cadastrada fotografando a prescrição impressa, que a IA lê e transcreve. O paciente autoriza pelo próprio WhatsApp e sai quando quiser.</p>
+<a href="mailto:contato@vytalsaude.com.br" style="color:#2B6FA8;font-weight:600;font-size:14.5px">Falar com a gente →</a>
+</article>
+<article style="background:#fff;border:1px solid #E6E2D8;border-radius:14px;padding:34px 32px;display:flex;flex-direction:column">
+<div style="display:flex;align-items:baseline;justify-content:space-between;gap:16px;margin-bottom:14px;flex-wrap:wrap">
+<span style="font:500 11.5px 'IBM Plex Mono',monospace;letter-spacing:.14em;color:#2B6FA8">CONSULTÓRIO</span>
+<span style="font:600 10.5px 'IBM Plex Mono',monospace;letter-spacing:.08em;color:#2B6FA8">◐ EM DESENVOLVIMENTO</span>
+</div>
+<h3 style="font:500 26px/1.25 'Lora',serif;color:#14304A;margin:0 0 12px">Acompanhamento entre consultas</h3>
+<p style="font-size:15.5px;line-height:1.65;color:#55616D;margin:0 0 18px;flex:1">O médico cadastra seus pacientes e acompanha, entre uma consulta e outra, quem está tomando a medicação e quem parou — sem depender de o paciente lembrar de contar.</p>
+<a href="mailto:contato@vytalsaude.com.br" style="color:#2B6FA8;font-weight:600;font-size:14.5px">Falar com a gente →</a>
+</article>
+<article style="background:#fff;border:1px solid #E6E2D8;border-radius:14px;padding:34px 32px;display:flex;flex-direction:column">
+<div style="display:flex;align-items:baseline;justify-content:space-between;gap:16px;margin-bottom:14px;flex-wrap:wrap">
+<span style="font:500 11.5px 'IBM Plex Mono',monospace;letter-spacing:.14em;color:#2B6FA8">ROTINA DO SERVIÇO</span>
+<span style="font:600 10.5px 'IBM Plex Mono',monospace;letter-spacing:.08em;color:#2B6FA8">◐ EM DESENVOLVIMENTO</span>
+</div>
+<h3 style="font:500 26px/1.25 'Lora',serif;color:#14304A;margin:0 0 12px">Passagem de plantão</h3>
+<p style="font-size:15.5px;line-height:1.65;color:#55616D;margin:0 0 18px;flex:1">Conferência de materiais e documentos na troca de turno em serviços de urgência. O sistema detecta sozinho o que está faltando, o que vence e a numeração que não fecha, e guarda o histórico assinado pelas duas partes.</p>
+<a href="mailto:contato@vytalsaude.com.br" style="color:#2B6FA8;font-weight:600;font-size:14.5px">Falar com a gente →</a>
+</article>
+</div>
+</section>
+
+<!-- produto em destaque -->
 <section id="academico" style="padding:88px 64px;display:grid;grid-template-columns:.9fr 1.1fr;gap:64px">
 <div>
-<span style="font:500 12px 'IBM Plex Mono',monospace;letter-spacing:.14em;color:#2B6FA8">PRODUTO 01 — DISPONÍVEL</span>
+<span style="font:500 12px 'IBM Plex Mono',monospace;letter-spacing:.14em;color:#2B6FA8">EM DESTAQUE — DISPONÍVEL NAS LOJAS</span>
 <h2 style="font:500 40px/1.15 'Lora',serif;color:#14304A;margin:16px 0 18px">Vytal Acadêmico</h2>
 <p style="font-size:17px;line-height:1.65;color:#55616D;margin:0 0 32px">Ferramenta educacional para estudantes de medicina no ciclo clínico: registre casos, receba feedback formativo e acompanhe sua evolução ao longo da graduação.</p>
 <div id="baixar" style="display:flex;align-items:center;gap:14px;flex-wrap:wrap">
@@ -176,28 +222,6 @@ html, body { overflow-x: hidden; }
 <div style="padding:40px">
 <div style="font:600 15px 'Lora',serif;color:#14304A;margin-bottom:8px">Implantação acompanhada</div>
 <div style="font-size:14px;color:#6B7682;line-height:1.6">Onboarding com a coordenação e materiais de apoio para preceptores e alunos.</div>
-</div>
-</section>
-
-<!-- roadmap -->
-<section id="roadmap" style="padding:88px 64px 72px">
-<h2 style="font:500 36px 'Lora',serif;color:#14304A;margin:0 0 44px">O que estamos construindo</h2>
-<div style="display:flex;flex-direction:column">
-<div style="display:grid;grid-template-columns:200px 1fr 220px;gap:32px;align-items:baseline;padding:24px 0;border-top:1px solid #E6E2D8">
-<span style="font:600 22px 'Lora',serif;color:#14304A">Estudantes</span>
-<span style="font-size:15px;color:#55616D;line-height:1.6">Vytal Acadêmico — registro de casos com feedback educacional e acompanhamento institucional.</span>
-<span style="font:600 11px 'IBM Plex Mono',monospace;letter-spacing:.08em;color:#14304A;justify-self:end">● DISPONÍVEL</span>
-</div>
-<div style="display:grid;grid-template-columns:200px 1fr 220px;gap:32px;align-items:baseline;padding:24px 0;border-top:1px solid #E6E2D8">
-<span style="font:600 22px 'Lora',serif;color:#14304A">Médicos</span>
-<span style="font-size:15px;color:#55616D;line-height:1.6">Educação continuada e organização do conhecimento clínico para a prática.</span>
-<span style="font:600 11px 'IBM Plex Mono',monospace;letter-spacing:.08em;color:#2B6FA8;justify-self:end">◐ EM DESENVOLVIMENTO</span>
-</div>
-<div style="display:grid;grid-template-columns:200px 1fr 220px;gap:32px;align-items:baseline;padding:24px 0;border-top:1px solid #E6E2D8;border-bottom:1px solid #E6E2D8">
-<span style="font:600 22px 'Lora',serif;color:#14304A">Pacientes</span>
-<span style="font-size:15px;color:#55616D;line-height:1.6">Acompanhamento e educação em saúde que aproximam pacientes de seus cuidados.</span>
-<span style="font:600 11px 'IBM Plex Mono',monospace;letter-spacing:.08em;color:#6B7682;justify-self:end">○ EM ESTUDO</span>
-</div>
 </div>
 </section>
 
@@ -252,8 +276,9 @@ html, body { overflow-x: hidden; }
 
 <!-- cta + footer -->
 <footer style="background:#0E2233;color:#fff;padding:88px 64px;text-align:center">
-<h2 style="font:500 42px/1.2 'Lora',serif;margin:0 0 16px">Comece a evoluir seu raciocínio clínico.</h2>
-<p style="font-size:17px;color:#B7C7D4;margin:0 0 36px">Baixe o Vytal Acadêmico e transforme cada caso que você acompanha em aprendizado.</p>
+<h2 style="font:500 42px/1.2 'Lora',serif;margin:0 0 16px">Vamos construir junto.</h2>
+<p style="font-size:17px;color:#B7C7D4;margin:0 0 32px;max-width:60ch;margin-left:auto;margin-right:auto">O Vytal Acadêmico está nas lojas. Para as demais frentes — atenção básica, consultório e rotina do serviço — fale com a gente: elas nascem de conversas com quem trabalha na ponta.</p>
+<div style="margin:0 0 30px"><a href="mailto:contato@vytalsaude.com.br" style="display:inline-block;border:1px solid rgba(255,255,255,.35);color:#fff;padding:14px 28px;border-radius:6px;font-weight:600;font-size:15px">Falar com a gente →</a></div>
 <div style="display:flex;align-items:center;gap:14px;justify-content:center;margin-bottom:56px;flex-wrap:wrap">
 <a href="https://apps.apple.com/app/id6787093758"><img src="https://tools.applemediaservices.com/api/badges/download-on-the-app-store/black/pt-br?size=250x83" alt="Baixar na App Store" style="height:56px;display:block"></a>
 <a href="https://play.google.com/store/apps/details?id=br.com.vytalsaude.academico"><img src="https://play.google.com/intl/pt-BR/badges/static/images/badges/pt-br_badge_web_generic.png" alt="Disponível no Google Play" style="height:84px;display:block;margin:-14px"></a>
@@ -261,6 +286,7 @@ html, body { overflow-x: hidden; }
 <div style="border-top:1px solid rgba(255,255,255,.12);padding-top:32px;font-size:13px;color:#7FA3BF;line-height:1.7;max-width:90ch;margin:0 auto">
 <div style="display:flex;align-items:center;gap:26px;justify-content:center;font-weight:500;margin-bottom:18px;flex-wrap:wrap">
 <span style="display:flex;align-items:center;gap:9px"><img src="vytal-mark-navy.png" alt="Vytal" style="width:26px;height:26px;border-radius:6px;display:block;object-fit:contain"> <span style="font:600 16px 'Lora',serif;color:#B7C7D4;letter-spacing:-.01em">vytal</span></span>
+<a href="#produtos" style="color:#B7C7D4">Produtos</a>
 <a href="#academico" style="color:#B7C7D4">Vytal Acadêmico</a>
 <a href="#empresa" style="color:#B7C7D4">A empresa</a>
 <a href="mailto:contato@vytalsaude.com.br" style="color:#B7C7D4">Contato</a>
@@ -269,7 +295,7 @@ html, body { overflow-x: hidden; }
 </div>
 <strong style="color:#B7C7D4">Vytal Saúde Tecnologia LTDA</strong> · CNPJ 67.051.119/0001-64<br>
     São José dos Campos/SP · <a href="tel:+5512988613127" style="color:#B7C7D4">(12) 98861-3127</a> · <a href="mailto:contato@vytalsaude.com.br" style="color:#B7C7D4">contato@vytalsaude.com.br</a><br>
-    O Vytal Acadêmico é uma ferramenta educacional. Não é um dispositivo médico e não diagnostica, trata, cura ou previne nenhuma condição médica.<br>
+    Nossos produtos são ferramentas de educação e de apoio à organização do cuidado. Não são dispositivos médicos: não diagnosticam, não tratam, não curam nem previnem nenhuma condição médica, e não substituem a decisão do profissional de saúde.<br>
     © 2026 Vytal Saúde Tecnologia LTDA. Todos os direitos reservados.
 </div>
 </footer>
