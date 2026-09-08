@@ -4,7 +4,11 @@ import Message from "../../components/Message.jsx";
 import TimesEditor from "../../components/TimesEditor.jsx";
 import { Loading } from "../../components/Loading.jsx";
 import { api } from "../../lib/api.js";
-import { expandPosologia, serializeScheduleTimes } from "../../lib/schedule.js";
+import {
+  expandPosologia,
+  serializeScheduleTimes,
+  endDateFromDuration,
+} from "../../lib/schedule.js";
 import { useCreateMedication } from "./api.js";
 
 // [RECEITA-FOTO] Fotografa a receita, confere, salva.
@@ -21,6 +25,11 @@ import { useCreateMedication } from "./api.js";
 // "importar todas" faz a pessoa clicar sem ler, e o erro que passa vira
 // lembrete diário instruindo alguém a tomar a dose errada. O ganho da foto
 // é não digitar; conferir continua sendo humano.
+function formatarDataBR(iso) {
+  const m = String(iso || "").match(/^(\d{4})-(\d{2})-(\d{2})$/);
+  return m ? `${m[3]}/${m[2]}/${m[1]}` : iso;
+}
+
 export default function ReceitaFotoModal({ open, onClose, phone, patientName }) {
   const [etapa, setEtapa] = useState("foto"); // foto | lendo | conferir
   const [itens, setItens] = useState([]);
@@ -54,6 +63,12 @@ export default function ReceitaFotoModal({ open, onClose, phone, patientName }) 
           ...i,
           incluir: !i.usoCondicional, // condicional entra desmarcado
           times: i.presetSugerido ? expandPosologia("08:00", i.presetSugerido) : [""],
+          // [DURACAO] Vem preenchida quando a receita diz; fica em branco
+          // quando não diz, e aí é obrigatório escolher. Nenhum default é
+          // seguro: assumir contínuo faz o antibiótico lembrar para sempre;
+          // assumir um prazo cala em silêncio o remédio de pressão.
+          duracaoModo: i.usoContinuo ? "continuo" : i.duracaoDias ? "dias" : "",
+          duracaoDias: i.duracaoDias ? String(i.duracaoDias) : "",
           salvo: false,
           erroSalvar: "",
         }))
@@ -93,14 +108,24 @@ export default function ReceitaFotoModal({ open, onClose, phone, patientName }) 
         atualiza(idx, "erroSalvar", "Preencha nome, dose e ao menos um horário.");
         continue;
       }
+      // Sem duração o lembrete não sabe parar. Bloquear aqui é o que evita
+      // um antibiótico de 7 dias tocando pelo resto do ano.
+      const dias = Number(it.duracaoDias);
+      if (it.duracaoModo !== "continuo" && !(dias > 0)) {
+        atualiza(idx, "erroSalvar", "Informe por quantos dias, ou marque uso contínuo.");
+        continue;
+      }
+      const inicio = new Date().toISOString().slice(0, 10);
       try {
         await criar.mutateAsync({
           patientName,
           medicationName: it.medicationName,
           dose: it.dose,
           times: it.times,
-          startDate: new Date().toISOString().slice(0, 10),
-          endDate: "",
+          startDate: inicio,
+          // Uso contínuo é ausência de fim — é o que o banco e o cron
+          // entendem por "não para".
+          endDate: it.duracaoModo === "continuo" ? "" : endDateFromDuration(inicio, dias),
           instructions: it.instructions,
         });
         atualiza(idx, "salvo", true);
@@ -220,6 +245,65 @@ export default function ReceitaFotoModal({ open, onClose, phone, patientName }) 
 
                   <label>Horários</label>
                   <TimesEditor times={it.times} onChange={(t) => atualiza(idx, "times", t)} />
+
+                  <label>Duração do tratamento</label>
+                  {it.duracaoTexto && (
+                    <div className="small">
+                      Na receita: <strong>“{it.duracaoTexto}”</strong>
+                    </div>
+                  )}
+                  <div className="duracao-linha">
+                    <label className="duracao-opcao">
+                      <input
+                        type="radio"
+                        name={`duracao-${idx}`}
+                        checked={it.duracaoModo === "continuo"}
+                        onChange={() => atualiza(idx, "duracaoModo", "continuo")}
+                      />
+                      Uso contínuo
+                    </label>
+                    <label className="duracao-opcao">
+                      <input
+                        type="radio"
+                        name={`duracao-${idx}`}
+                        checked={it.duracaoModo === "dias"}
+                        onChange={() => atualiza(idx, "duracaoModo", "dias")}
+                      />
+                      Por
+                    </label>
+                    <input
+                      type="number"
+                      min="1"
+                      className="duracao-dias"
+                      aria-label="Quantidade de dias"
+                      value={it.duracaoDias}
+                      onChange={(e) => {
+                        atualiza(idx, "duracaoDias", e.target.value);
+                        if (e.target.value) atualiza(idx, "duracaoModo", "dias");
+                      }}
+                    />
+                    <span>dias</span>
+                  </div>
+                  {!it.duracaoModo && (
+                    <div className="small texto-alerta">
+                      A receita não diz por quanto tempo. Escolha uma das duas — sem isso
+                      o lembrete não sabe quando parar.
+                    </div>
+                  )}
+                  {it.duracaoModo === "dias" && Number(it.duracaoDias) > 0 && (
+                    <div className="small">
+                      Os lembretes terminam em{" "}
+                      <strong>
+                        {formatarDataBR(
+                          endDateFromDuration(
+                            new Date().toISOString().slice(0, 10),
+                            Number(it.duracaoDias)
+                          )
+                        )}
+                      </strong>
+                      .
+                    </div>
+                  )}
 
                   <label>Orientações ao paciente</label>
                   <textarea
