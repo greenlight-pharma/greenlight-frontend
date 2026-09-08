@@ -726,3 +726,12 @@ button.btn-docs:hover { background: #0f766e; }
   .samu-tabela th, .samu-tabela td { padding-right: 4px; }
   .samu-topo { padding: 12px 0; }
 }
+
+/* Duração do tratamento na leitura da receita. Contínuo e "por N dias" ficam
+   na mesma linha porque são a MESMA decisão — separá-los em dois controles
+   deixaria possível marcar os dois, ou nenhum. */
+.duracao-linha { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; margin: 6px 0 4px; }
+.duracao-opcao { display: flex; align-items: center; gap: 6px; margin: 0; font-weight: 500; }
+.duracao-opcao input { margin: 0; width: auto; }
+.duracao-dias { margin: 0 !important; width: 80px; }
+@media (max-width: 700px) { .duracao-linha { gap: 8px; } }
