@@ -21,9 +21,10 @@ export default function SamuCadastroPage() {
       setBases(b.bases || []);
       setViaturas(v.viaturas || []);
     } catch (e) {
-      // As listagens exigem token com role "samu"; o admin cadastra mas não
-      // lê. Não é erro de verdade — não vale assustar quem está cadastrando.
-      if (e.status !== 403) setErro(e.message);
+      // Engolir o erro aqui foi o que fez a base cadastrada simplesmente não
+      // aparecer no seletor, sem nada na tela explicando por quê. Quem
+      // cadastrou ficou achando que o cadastro não tinha funcionado.
+      setErro(`Não foi possível listar os cadastros: ${e.message}`);
     }
   }
   useEffect(() => { recarregar(); }, []);
@@ -75,6 +76,9 @@ export default function SamuCadastroPage() {
           <option value="">Selecione…</option>
           {bases.map((b) => <option key={b.id} value={b.id}>{b.nome}</option>)}
         </select>
+        {bases.length === 0 && (
+          <div className="small">Cadastre uma base acima antes de cadastrar a viatura.</div>
+        )}
         <label htmlFor="vPrefixo">Prefixo</label>
         <input id="vPrefixo" placeholder="USB-01" value={viatura.prefixo}
                onChange={(e) => setViatura({ ...viatura, prefixo: e.target.value })} />
@@ -109,6 +113,9 @@ export default function SamuCadastroPage() {
           <option value="">Selecione…</option>
           {bases.map((b) => <option key={b.id} value={b.id}>{b.nome}</option>)}
         </select>
+        {bases.length === 0 && (
+          <div className="small">Cadastre uma base acima antes de cadastrar o profissional.</div>
+        )}
         <label htmlFor="pNome">Nome</label>
         <input id="pNome" value={prof.nome} onChange={(e) => setProf({ ...prof, nome: e.target.value })} />
         <label htmlFor="pRegistro">Registro do conselho</label>
