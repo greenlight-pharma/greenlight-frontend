@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
 import Modal from "../../components/Modal.jsx";
 import Message from "../../components/Message.jsx";
 import TimesEditor from "../../components/TimesEditor.jsx";
@@ -10,6 +10,7 @@ import {
   endDateFromDuration,
 } from "../../lib/schedule.js";
 import { useCreateMedication } from "./api.js";
+import CameraReceita from "./CameraReceita.jsx";
 
 // [RECEITA-FOTO] Fotografa a receita, confere, salva.
 //
@@ -31,22 +32,34 @@ function formatarDataBR(iso) {
 }
 
 export default function ReceitaFotoModal({ open, onClose, phone, patientName }) {
-  const [etapa, setEtapa] = useState("foto"); // foto | lendo | conferir
+  const [etapa, setEtapa] = useState("foto"); // foto | camera | lendo | conferir
   const [itens, setItens] = useState([]);
   const [erro, setErro] = useState("");
   // Recusa por manuscrita não é erro de uso — é o sistema funcionando. Ela
   // aparece diferente de "a foto ficou ruim", porque a ação é outra: numa
   // vale tentar de novo, na outra vale digitar.
   const [recusadaManuscrita, setRecusadaManuscrita] = useState(false);
+  const galeriaRef = useRef(null);
+  const pdfRef = useRef(null);
   const criar = useCreateMedication(phone);
 
-  async function aoEscolherArquivo(e) {
+  function aoEscolherArquivo(e) {
     const file = e.target.files?.[0];
-    if (!file) return;
+    // Limpa o valor: escolher o MESMO arquivo duas vezes seguidas não
+    // dispara change de novo, e a tela ficaria parada sem explicação.
+    e.target.value = "";
+    if (file) lerArquivo(file);
+  }
+
+  async function lerArquivo(file) {
     setErro("");
 
-    if (!["image/jpeg", "image/png", "image/webp"].includes(file.type)) {
-      setErro("Use uma foto JPG, PNG ou WEBP.");
+    // PDF entra porque receita eletrônica chega assim, por e-mail, e nunca é
+    // impressa. Fotografar a tela do computador é o que se fazia antes — e é
+    // a pior foto possível: reflexo, moiré, foco no vidro.
+    const ACEITOS = ["image/jpeg", "image/png", "image/webp", "application/pdf"];
+    if (!ACEITOS.includes(file.type)) {
+      setErro("Envie uma foto (JPG, PNG, WEBP) ou um PDF da receita.");
       return;
     }
 
@@ -153,14 +166,40 @@ export default function ReceitaFotoModal({ open, onClose, phone, patientName }) 
             📷 Fotografe a receita inteira, com boa luz e sem sombra. A leitura{" "}
             <strong>preenche o formulário</strong> — nada é salvo antes de você conferir.
           </div>
-          {/* capture="environment" abre a câmera traseira no celular, que é
-              onde isso vai ser usado de verdade: no balcão, com o papel na mão. */}
+          {/* Três caminhos explícitos, no lugar de um seletor de arquivo
+              cru. O "Escolher Arquivo / nenhum arquivo selecionado" do
+              navegador não diz que aceita PDF, não abre a câmera com guia, e
+              no celular fica com cara de formulário quebrado. */}
+          <div className="receita-acoes">
+            <button type="button" className="primary" onClick={() => setEtapa("camera")}>
+              Fotografar receita
+            </button>
+            <button type="button" onClick={() => galeriaRef.current?.click()}>
+              Escolher da galeria
+            </button>
+            <button type="button" onClick={() => pdfRef.current?.click()}>
+              Enviar PDF
+            </button>
+          </div>
+
+          {/* Dois inputs escondidos: a galeria filtra imagem, o outro filtra
+              PDF. Um só, aceitando tudo, faria o seletor do celular abrir na
+              aba errada. */}
           <input
+            ref={galeriaRef}
             type="file"
             accept="image/jpeg,image/png,image/webp"
-            capture="environment"
+            style={{ display: "none" }}
             onChange={aoEscolherArquivo}
           />
+          <input
+            ref={pdfRef}
+            type="file"
+            accept="application/pdf"
+            style={{ display: "none" }}
+            onChange={aoEscolherArquivo}
+          />
+
           <div className="small">
             A foto não é armazenada. Ela é usada para ler e descartada em seguida.
           </div>
@@ -181,6 +220,13 @@ export default function ReceitaFotoModal({ open, onClose, phone, patientName }) 
             <Message type="error">{erro}</Message>
           )}
         </>
+      )}
+
+      {etapa === "camera" && (
+        <CameraReceita
+          aoCancelar={() => setEtapa("foto")}
+          aoCapturar={(arquivo) => lerArquivo(arquivo)}
+        />
       )}
 
       {etapa === "lendo" && <Loading label="Lendo a receita..." />}
