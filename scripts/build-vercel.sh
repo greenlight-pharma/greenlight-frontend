@@ -37,23 +37,27 @@ echo "==> Construindo o painel administrativo"
 ( cd medico-app && VITE_BASE=/painel-admin/ VITE_ENTRY=./admin.html \
     VITE_OUT_DIR=dist-admin npx vite build )
 
-echo "==> Construindo o painel da UBS"
-( cd medico-app && VITE_BASE=/painel-ubs/ VITE_ENTRY=./ubs.html \
+# [ROTA-MEDICACOES] O painel da UBS é servido em /medicacoes, e não em
+# /painel-ubs. É o endereço que a Secretaria de Saúde vê e digita: "painel"
+# e "ubs" são vocabulário nosso, "medicações" é o que o serviço faz.
+# O caminho antigo continua funcionando por redirect no vercel.json.
+echo "==> Construindo o painel da UBS (publicado em /medicacoes)"
+( cd medico-app && VITE_BASE=/medicacoes/ VITE_ENTRY=./ubs.html \
     VITE_OUT_DIR=dist-ubs npx vite build )
 
 echo "==> Construindo o painel do SAMU"
 ( cd medico-app && VITE_BASE=/painel-samu/ VITE_ENTRY=./samu.html \
     VITE_OUT_DIR=dist-samu npx vite build )
 
-echo "==> Publicando em /painel-medico, /painel-admin, /painel-ubs e /painel-samu"
-mkdir -p "$OUT/painel-medico" "$OUT/painel-admin" "$OUT/painel-ubs" "$OUT/painel-samu"
+echo "==> Publicando em /painel-medico, /painel-admin, /medicacoes e /painel-samu"
+mkdir -p "$OUT/painel-medico" "$OUT/painel-admin" "$OUT/medicacoes" "$OUT/painel-samu"
 cp -R medico-app/dist-medico/* "$OUT/painel-medico"/
 cp -R medico-app/dist-admin/* "$OUT/painel-admin"/
-cp -R medico-app/dist-ubs/* "$OUT/painel-ubs"/
+cp -R medico-app/dist-ubs/* "$OUT/medicacoes"/
 cp -R medico-app/dist-samu/* "$OUT/painel-samu"/
 # O Vite nomeia a saída pelo arquivo de entrada; a pasta serve index.html.
 mv "$OUT/painel-admin/admin.html" "$OUT/painel-admin/index.html"
-mv "$OUT/painel-ubs/ubs.html" "$OUT/painel-ubs/index.html"
+mv "$OUT/medicacoes/ubs.html" "$OUT/medicacoes/index.html"
 mv "$OUT/painel-samu/samu.html" "$OUT/painel-samu/index.html"
 
 echo "==> Conteúdo publicado:"
@@ -62,7 +66,7 @@ echo "    /painel-medico ->"
 ls "$OUT/painel-medico"
 echo "    /painel-admin ->"
 ls "$OUT/painel-admin"
-echo "    /painel-ubs ->"
-ls "$OUT/painel-ubs"
+echo "    /medicacoes ->"
+ls "$OUT/medicacoes"
 echo "    /painel-samu ->"
 ls "$OUT/painel-samu"
