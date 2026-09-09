@@ -26,12 +26,12 @@ import MedicoesPacientePage from "../features/medicoes/MedicoesPacientePage.jsx"
 // O que ele NÃO é: uma cópia. As telas são as mesmas do painel médico,
 // importadas daqui — corrigir a adesão conserta os dois.
 const NAV = [
-  { to: "/pacientes", icon: "💊", label: "Medicações" },
+  { to: "/pacientes", icon: "medicacoes", label: "Medicações" },
   // Item próprio, e não um card dentro de Medicações: prescrever remédio e
   // aferir pressão são rotinas diferentes, de pessoas diferentes, em
   // momentos diferentes.
-  { to: "/medicoes", icon: "🩺", label: "Pressão e glicemia" },
-  { to: "/agenda-unidade", icon: "🏥", label: "Agenda da unidade" },
+  { to: "/medicoes", icon: "medicoes", label: "Pressão e glicemia" },
+  { to: "/agenda-unidade", icon: "unidade", label: "Agenda da unidade" },
 ];
 
 function Shell() {

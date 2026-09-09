@@ -8,7 +8,8 @@
 .sidebar {
   width: 240px;
   background: var(--sidebar-bg);
-  color: white;
+  color: var(--sidebar-divisor);
+  border-right: 1px solid var(--sidebar-borda);
   display: flex;
   flex-direction: column;
   position: fixed;
@@ -88,20 +89,23 @@
 
 .sidebar-nav button:hover,
 .sidebar-nav .nav-btn:hover {
-  background: var(--sidebar-borda);
-  color: white;
+  background: var(--fundo-cinza);
+  color: var(--texto);
 }
 
 .sidebar-nav button.active,
 .sidebar-nav .nav-btn.active {
-  background: var(--azul);
-  color: white;
+  background: var(--azul-claro);
+  color: var(--azul);
+  font-weight: 600;
 }
 
 .sidebar-nav .nav-icon {
-  font-size: 18px;
   width: 22px;
-  text-align: center;
+  height: 19px;
+  flex-shrink: 0;
+  /* stroke herda currentColor: o ícone do item ativo fica azul junto com
+     o texto, sem precisar de regra própria. */
 }
 
 .sidebar-footer {
@@ -112,7 +116,7 @@
 .sidebar-footer .doctor-name {
   font-size: 14px;
   font-weight: 600;
-  color: white;
+  color: var(--texto);
   margin-bottom: 2px;
 }
 
@@ -128,8 +132,8 @@
 .sidebar-footer button {
   width: 100%;
   background: transparent;
-  color: var(--sidebar-divisor);
-  border: 1px solid #475569;
+  color: var(--texto-forte);
+  border: 1px solid var(--borda);
   padding: 8px 12px;
   border-radius: 6px;
   cursor: pointer;
@@ -139,12 +143,16 @@
 
 .sidebar-footer button:hover {
   background: var(--sidebar-borda);
-  color: white;
+  color: var(--texto);
 }
 
 /* Área de conteúdo principal */
 .content {
   flex: 1;
+  /* [COLUNA] Conteúdo com largura máxima. Espalhado na tela inteira o
+     painel lê como planilha; numa coluna lê como aplicativo — e é o que
+     mantém a linha de texto num comprimento confortável. */
+  max-width: 1080px;
   margin-left: 240px;
   padding: 32px 40px;
   max-width: 1300px;
@@ -179,7 +187,8 @@
   display: none;
   align-items: center;
   background: var(--sidebar-bg);
-  color: white;
+  color: var(--texto);
+  border-bottom: 1px solid var(--borda);
   padding: 12px 16px;
   position: sticky;
   top: 0;
@@ -190,7 +199,7 @@
 .hamburger-btn {
   background: transparent;
   border: none;
-  color: white;
+  color: var(--texto);
   font-size: 24px;
   cursor: pointer;
   padding: 4px 8px;

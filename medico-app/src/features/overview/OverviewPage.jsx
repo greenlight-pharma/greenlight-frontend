@@ -62,7 +62,7 @@ export default function OverviewPage() {
       <div className="card">
         <input
           className="busca"
-          placeholder="🔍 Buscar paciente por nome ou telefone…"
+          placeholder="Buscar paciente por nome ou telefone…"
           value={busca}
           onChange={(e) => setBusca(e.target.value)}
         />

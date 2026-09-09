@@ -7,43 +7,59 @@
    ============================================================ */
 
 :root {
-  /* Marca */
-  --azul: #1d4ed8;
-  --azul-escuro: #1e40af;
-  --azul-medio: #2563eb;
-  --azul-claro: #eff6ff;
-  --azul-borda: #93c5fd;
+  /* ============================================================
+     Paleta adotada do APP (vytal-app/lib/tema.ts), em 09/09/2026.
+     Antes eram duas identidades: o app claro com azul vivo, e este
+     painel com azul-marinho e barra lateral escura. Lado a lado
+     pareciam produtos de empresas diferentes.
 
-  /* Neutros */
-  --texto: #1f2933;
-  --texto-forte: #374151;
-  --texto-suave: #6b7280;
-  --texto-fraco: #9ca3af;
-  --borda: #e5e7eb;
-  --borda-forte: #d1d5db;
-  --fundo: #f3f5f7;
-  --fundo-suave: #f9fafb;
-  --fundo-cinza: #f3f4f6;
+     Os NOMES ficaram: 250 pontos do CSS leem estas variáveis, e
+     renomear obrigaria a tocar todos para não ganhar nada. O nome
+     aqui é o PAPEL na tela, não a cor literal.
+     ============================================================ */
+
+  /* Marca — azul de ação do app (era #1d4ed8) */
+  --azul: #1264C4;
+  --azul-escuro: #0f4f9c;
+  --azul-medio: #1264C4;
+  --azul-claro: #eef3fa;
+  --azul-borda: #d7e3f6;
+
+  /* Neutros — texto forte quase-preto, que é o que dá cara de app
+     nativo; o azul-marinho de antes pesava em bloco de texto. */
+  --texto: #101828;
+  --texto-forte: #344054;
+  --texto-suave: #667085;
+  --texto-fraco: #98a2b3;
+  --borda: #e6eaef;
+  --borda-forte: #d0d7e0;
+  --fundo: #fafbfc;
+  --fundo-suave: #f7f9fb;
+  --fundo-cinza: #f2f4f7;
   --branco: #ffffff;
 
-  /* Sidebar (escala escura) */
-  --sidebar-bg: #1e293b;
-  --sidebar-borda: #334155;
-  --sidebar-texto: #94a3b8;
-  --sidebar-divisor: #cbd5e1;
+  /* Barra lateral: deixa de ser escura. O app não tem barra escura em
+     lugar nenhum, e era ela que fazia o painel parecer outro produto.
+     Agora é branca com divisória, como navegação de app nativo. */
+  --sidebar-bg: #ffffff;
+  --sidebar-borda: #e6eaef;
+  --sidebar-texto: #667085;
+  --sidebar-divisor: #344054;
+  --sidebar-marca: #101828;
 
-  /* Estados */
-  --sucesso: #059669;
-  --sucesso-fundo: #d1fae5;
-  --alerta: #f59e0b;
-  --alerta-fundo: #fef3c7;
-  --erro: #dc2626;
-  --erro-forte: #991b1b;
-  --erro-fundo: #fee2e2;
+  /* Estados — pares fundo + tinta do app */
+  --sucesso: #2E9E63;
+  --sucesso-fundo: #e7f4ec;
+  --alerta: #B26A00;
+  --alerta-fundo: #fff4e0;
+  --erro: #C93A3A;
+  --erro-forte: #9b2c2c;
+  --erro-fundo: #fdf1f1;
 
-  /* Forma */
-  --raio: 8px;
+  /* Forma — degraus do app (raio.botao 10, raio.cartao 12) */
+  --raio: 10px;
   --raio-g: 12px;
-  --sombra: 0 1px 3px rgba(0, 0, 0, 0.08);
-  --sombra-g: 0 4px 20px rgba(0, 0, 0, 0.08);
+  --sombra: 0 1px 2px rgba(16, 24, 40, 0.05);
+  --sombra-g: 0 8px 24px rgba(16, 24, 40, 0.10);
 }
+

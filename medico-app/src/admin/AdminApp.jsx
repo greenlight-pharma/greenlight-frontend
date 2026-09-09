@@ -10,16 +10,17 @@ import BotPage from "./features/BotPage.jsx";
 import QrAutorizacaoPage from "./features/QrAutorizacaoPage.jsx";
 import UnidadesPage from "./features/UnidadesPage.jsx";
 import SamuCadastroPage from "./features/SamuCadastroPage.jsx";
+import Icone from "../components/Icone.jsx";
 
 const NAV = [
-  { to: "/", icon: "🏠", label: "Início", end: true },
-  { to: "/agendamentos", icon: "📋", label: "Agendamentos" },
-  { to: "/medicos", icon: "👨‍⚕️", label: "Médicos" },
-  { to: "/planos", icon: "💳", label: "Planos" },
-  { to: "/bot", icon: "🤖", label: "Bot & Mensagens" },
-  { to: "/unidades", icon: "🏥", label: "Unidades" },
-  { to: "/qr-autorizacao", icon: "📱", label: "QR de autorização" },
-  { to: "/samu", icon: "🚑", label: "SAMU — cadastros" },
+  { to: "/", icon: "inicio", label: "Início", end: true },
+  { to: "/agendamentos", icon: "lista", label: "Agendamentos" },
+  { to: "/medicos", icon: "pacientes", label: "Médicos" },
+  { to: "/planos", icon: "plano", label: "Planos" },
+  { to: "/bot", icon: "bot", label: "Bot & Mensagens" },
+  { to: "/unidades", icon: "unidade", label: "Unidades" },
+  { to: "/qr-autorizacao", icon: "qr", label: "QR de autorização" },
+  { to: "/samu", icon: "ambulancia", label: "SAMU — cadastros" },
 ];
 
 function Shell() {
@@ -69,7 +70,7 @@ function Shell() {
               end={i.end}
               className={({ isActive }) => (isActive ? "nav-btn active" : "nav-btn")}
             >
-              <span className="nav-icon">{i.icon}</span>
+              <Icone nome={i.icon} />
               <span>{i.label}</span>
             </NavLink>
           ))}
