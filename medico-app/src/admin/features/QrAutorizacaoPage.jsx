@@ -59,8 +59,24 @@ export default function QrAutorizacaoPage() {
   // caso comum é zero digitação, e quem precisa de outro código ainda pode.
   const codigoEfetivo = codigoTocado ? normalizaCodigo(codigo) : codigoDoNome(unidade);
 
+  // [TEXTO-JURIDICO] Redação do advogado (Anexo II-B dos Termos), VERBATIM.
+  // Não parafrasear: é a mensagem que o paciente envia do próprio número, e
+  // é ela que serve de prova do consentimento informado.
+  //
+  // O código entre colchetes é NOSSO e continua obrigatório — é como a
+  // coordenação sabe de qual unidade veio cada adesão. O backend o lê do
+  // texto cru (extraiCodigoUnidade).
+  //
+  // ATENÇÃO: esta frase não contém a palavra "autorizo". O backend só a
+  // reconhece porque "quero receber lembretes" foi acrescentada à lista de
+  // AUTORIZACAO_FRASES. Mudar uma ponta sem a outra faz o sistema parar de
+  // registrar autorizações em silêncio.
   const texto = useMemo(() => {
-    const base = "Autorizo receber os lembretes de medicações da Vytal Saúde";
+    const base =
+      "Quero receber lembretes de medicação pelo WhatsApp. " +
+      "Li o aviso de privacidade e segurança do serviço. " +
+      "Sei que os lembretes são complementares, não substituem orientação " +
+      "do profissional de saúde e posso interromper o recebimento enviando PARAR.";
     return codigoEfetivo ? `${base} [${codigoEfetivo}]` : base;
   }, [codigoEfetivo]);
 
@@ -230,8 +246,8 @@ function Cartaz({ svg, unidade, orientacao = "retrato" }) {
       <div className="cartaz-topo">
         <img src={`${import.meta.env.BASE_URL}vytalsaude.png`} alt="Vytal Saúde" />
         <div>
-          <h2>Lembretes de medicação no WhatsApp</h2>
-          <p>Um serviço gratuito para você não esquecer seus remédios</p>
+          <h2>Lembretes de medicação pelo WhatsApp</h2>
+          <p>Ao continuar, você confirma que leu este aviso e deseja receber lembretes no WhatsApp.</p>
         </div>
       </div>
 
@@ -250,35 +266,48 @@ function Cartaz({ svg, unidade, orientacao = "retrato" }) {
         </div>
 
         <div className="cartaz-info">
-          {/* Cada bloco é uma <section> para que, na coluna dupla do
-              paisagem, o título nunca fique órfão do seu parágrafo. */}
+          {/* [TEXTO-JURIDICO] Anexo II-A dos Termos, VERBATIM. Este é o texto
+              que o paciente lê ANTES de autorizar — é ele que torna o
+              consentimento informado. Não reescrever para "caber melhor";
+              se faltar espaço, diminua o QR. */}
           <section>
-            <h3>O que você vai receber</h3>
+            <h3>O que é este serviço</h3>
             <p>
-              Uma mensagem no horário de cada medicação que seu médico cadastrar,
-              com o nome do remédio e a orientação dele. Você responde se tomou ou
-              não — e isso ajuda seu médico a acompanhar seu tratamento.
+              Este serviço envia pelo WhatsApp lembretes sobre medicamentos, horários e
+              orientações previamente definidos pelo seu profissional ou unidade de saúde.
+              Ele é uma ferramenta complementar de organização da rotina e não substitui
+              consulta, receita, orientação médica ou acompanhamento assistencial.
             </p>
           </section>
 
           <section>
-            <h3>Quando</h3>
-            <p>Somente nos horários da sua receita. Nada de propaganda.</p>
+            <h3>Não altere seu tratamento</h3>
+            <p>
+              Não inicie, interrompa, aumente, reduza ou altere medicamentos com base em
+              uma mensagem, em um lembrete não recebido ou em informações do sistema. Em
+              caso de dúvida sobre o seu tratamento, procure o profissional de saúde
+              responsável. Em urgência ou emergência, procure imediatamente o serviço de
+              saúde adequado.
+            </p>
           </section>
 
           <section>
-            <h3>Para parar</h3>
+            <h3>Como parar</h3>
             <p>
-              Envie <strong>PARAR</strong> a qualquer momento. Você deixa de
-              receber na hora, sem precisar vir até a unidade.
+              Ao enviar a mensagem de autorização, você escolhe receber lembretes pelo
+              WhatsApp. Você pode parar de recebê-los a qualquer momento, enviando
+              <strong> PARAR</strong>. O envio de novos lembretes por esse canal será
+              bloqueado após o processamento da solicitação.
             </p>
           </section>
 
           <section>
             <h3>Seus dados</h3>
             <p>
-              Suas respostas ficam no seu prontuário e são usadas pelo seu médico
-              no acompanhamento do tratamento.
+              Os dados necessários à assistência são tratados pelo seu profissional ou
+              unidade de saúde, conforme a legislação aplicável. A Vytal presta a
+              tecnologia utilizada para organização e comunicação. Leia a Política de
+              Privacidade em vytalsaude.com.br/privacidade-lembretes.
             </p>
           </section>
         </div>
