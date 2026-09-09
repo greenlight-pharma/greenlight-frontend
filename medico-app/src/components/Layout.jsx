@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { NavLink, useLocation } from "react-router-dom";
 import { useAuth } from "../features/auth/AuthContext.jsx";
 import Icone from "./Icone.jsx";
+import AvisoEmail from "../features/auth/AvisoEmail.jsx";
 
 const NAV = [
   { to: "/", icon: "inicio", label: "Início", end: true },
@@ -82,7 +83,10 @@ export default function Layout({ children, nav = NAV, brandSub = "Painel Médico
         </div>
       </aside>
 
-      <main className="content">{children}</main>
+      <main className="content">
+        <AvisoEmail />
+        {children}
+      </main>
     </div>
   );
 }

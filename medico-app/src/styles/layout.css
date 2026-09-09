@@ -497,3 +497,62 @@
     min-height: 42px;
   }
 }
+
+/* ============================================================
+   AVISO DE CONFIRMACAO DE E-MAIL
+
+   Tom de alerta, não de erro: nada quebrou, falta um passo. Vermelho aqui
+   faria o médico achar que a conta está com problema.
+   ============================================================ */
+.aviso-email {
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  background: var(--alerta-fundo);
+  border: 1px solid #f0d9b0;
+  border-radius: var(--raio);
+  padding: 14px 16px;
+  margin-bottom: 20px;
+  color: #7a4a00;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.aviso-email strong { color: #6b4100; }
+
+.aviso-email-recado {
+  margin-top: 8px;
+  font-size: 13px;
+  color: #6b4100;
+}
+
+.aviso-email-acoes {
+  display: flex;
+  gap: 8px;
+  flex-shrink: 0;
+}
+
+.aviso-email-botao {
+  background: var(--branco);
+  border: 1px solid #e0c48c;
+  color: #7a4a00;
+  border-radius: 8px;
+  padding: 8px 14px;
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.aviso-email-botao:hover:not(:disabled) { background: #fffaf0; }
+.aviso-email-botao:disabled { opacity: .55; cursor: default; }
+
+/* No celular a faixa vira bloco: os botões lado a lado espremiam o texto
+   em uma coluna de duas palavras. */
+@media (max-width: 640px) {
+  .aviso-email { flex-direction: column; gap: 12px; }
+  .aviso-email-acoes { width: 100%; }
+  .aviso-email-botao { flex: 1; }
+}
