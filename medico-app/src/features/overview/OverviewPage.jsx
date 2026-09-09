@@ -154,6 +154,15 @@ function Stat({ valor, rotulo, para }) {
   return para ? <Link to={para}>{conteudo}</Link> : conteudo;
 }
 
-function primeiroNome(nome) {
-  return String(nome || "doutor(a)").trim().split(/\s+/)[0];
+// "Dr. Dilson Panisio" virava "Olá, Dr." — a saudação pegava o título em vez
+// do nome. Médico cadastra o próprio nome COM título com frequência, e o
+// resultado é o painel chamando todo mundo de "Dr.".
+const TITULOS = new Set(["dr", "dra", "drº", "drª", "doutor", "doutora"]);
+
+export function primeiroNome(nome) {
+  const partes = String(nome || "").trim().split(/\s+/).filter(Boolean);
+  const semTitulo = partes.filter(
+    (p) => !TITULOS.has(p.toLowerCase().replace(/\.$/, ""))
+  );
+  return semTitulo[0] || partes[0] || "doutor(a)";
 }
