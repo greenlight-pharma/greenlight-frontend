@@ -1,18 +1,19 @@
 import { useState, useEffect } from "react";
 import { NavLink, useLocation } from "react-router-dom";
 import { useAuth } from "../features/auth/AuthContext.jsx";
+import Icone from "./Icone.jsx";
 
 const NAV = [
-  { to: "/", icon: "🏠", label: "Início", end: true },
-  { to: "/pacientes", icon: "👥", label: "Meus Pacientes" },
-  { to: "/medicoes", icon: "🩺", label: "Pressão e glicemia" },
-  { to: "/agenda", icon: "📅", label: "Agenda" },
-  { to: "/agenda-unidade", icon: "🏥", label: "Agenda da unidade" },
-  { to: "/consultas", icon: "🩺", label: "Consultas" },
-  { to: "/assistente", icon: "💬", label: "Assistente" },
-  { to: "/calculadoras", icon: "🧮", label: "Calculadoras" },
-  { to: "/assinatura", icon: "💳", label: "Meu plano" },
-  { to: "/conta", icon: "🔐", label: "Alterar Senha" },
+  { to: "/", icon: "inicio", label: "Início", end: true },
+  { to: "/pacientes", icon: "pacientes", label: "Meus Pacientes" },
+  { to: "/medicoes", icon: "medicoes", label: "Pressão e glicemia" },
+  { to: "/agenda", icon: "agenda", label: "Agenda" },
+  { to: "/agenda-unidade", icon: "unidade", label: "Agenda da unidade" },
+  { to: "/consultas", icon: "consultas", label: "Consultas" },
+  { to: "/assistente", icon: "assistente", label: "Assistente" },
+  { to: "/calculadoras", icon: "calculadoras", label: "Calculadoras" },
+  { to: "/assinatura", icon: "plano", label: "Meu plano" },
+  { to: "/conta", icon: "senha", label: "Alterar Senha" },
 ];
 
 // [TRES-PAINEIS] O menu e o subtítulo são parâmetros porque o painel UBS
@@ -67,7 +68,7 @@ export default function Layout({ children, nav = NAV, brandSub = "Painel Médico
               end={item.end}
               className={({ isActive }) => (isActive ? "nav-btn active" : "nav-btn")}
             >
-              <span className="nav-icon">{item.icon}</span>
+              <Icone nome={item.icon} />
               <span>{item.label}</span>
               {item.previa && <span className="nav-previa">prévia</span>}
             </NavLink>
