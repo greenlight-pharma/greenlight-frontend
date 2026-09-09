@@ -30,6 +30,9 @@ button.primary:disabled {
 }
 
 .btn-icon {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
   background: transparent;
   border: 1px solid var(--borda-forte);
   color: var(--texto-forte);
