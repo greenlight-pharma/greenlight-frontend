@@ -36,10 +36,10 @@ const NAV = [
 
 function Shell() {
   const { isLoggedIn } = useAuth();
-  if (!isLoggedIn) return <LoginPage subtitle="Adesão e Agenda — UBS" />;
+  if (!isLoggedIn) return <LoginPage subtitle="Infraestrutura de Saúde Contínua" />;
 
   return (
-    <Layout nav={NAV} brandSub="Adesão e Agenda">
+    <Layout nav={NAV} brandSub="Infraestrutura de Saúde Contínua">
       <Routes>
         <Route
           path="/pacientes"
