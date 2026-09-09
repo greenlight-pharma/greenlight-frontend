@@ -8,7 +8,13 @@ label {
   color: var(--texto-forte);
 }
 
-input, textarea, select {
+/* [CHECKBOX] Caixa e rádio ficam de FORA desta regra.
+   Com `width: 100%` o checkbox virava uma caixa de 244px no meio da linha,
+   empurrava o rótulo para fora e a frase "Avisar paciente por WhatsApp"
+   simplesmente não aparecia na tela do cadastro. Medido antes de corrigir.
+   Vários lugares vinham compensando isso com `width: auto` local — o
+   conserto aqui torna essas compensações desnecessárias. */
+input:not([type="checkbox"]):not([type="radio"]), textarea, select {
   width: 100%;
   padding: 10px 12px;
   margin-top: 6px;
