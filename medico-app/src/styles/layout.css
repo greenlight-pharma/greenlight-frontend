@@ -427,6 +427,26 @@
     flex: 1 1 auto;
     min-width: 120px;
   }
+  /* [BOTAO-DE-ICONE] A regra acima existe para linhas com VÁRIOS botões
+     dividirem a largura. Com um só, ela o estica de ponta a ponta e o que
+     sobra é uma caixa vazia com um ícone perdido no meio — foi o que
+     apareceu na lista de pacientes no celular. Botão de ícone não cresce. */
+  table td:has(button) button.btn-icon {
+    flex: 0 0 auto;
+    min-width: 0;
+    padding: 8px 12px;
+  }
+  /* A ação fica à direita, longe do nome, que é o alvo principal do toque. */
+  table td.col-acoes {
+    justify-content: flex-end;
+    margin-top: 2px;
+  }
+  /* Nome do paciente é o que se toca: alvo maior e peso de título. */
+  table td .link-forte {
+    font-size: 17px;
+    display: inline-block;
+    padding: 2px 0;
+  }
 
   /* Textarea do resumo do caso tinha white-space:pre (não quebra
      linha) → forçava scroll horizontal. No celular, deixa quebrar. */

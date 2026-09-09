@@ -6,6 +6,7 @@ import ConfirmDialog from "../../components/ConfirmDialog.jsx";
 import ManualPatientModal from "./ManualPatientModal.jsx";
 import { usePatients, useUnlinkPatient } from "./api.js";
 import { formatBRPhone } from "../../lib/phone.js";
+import Icone from "../../components/Icone.jsx";
 
 // Os títulos são parâmetros porque o painel UBS mostra esta mesma lista
 // com outro enquadramento ("Medicações"), mas o comportamento é idêntico:
@@ -91,12 +92,15 @@ export default function PatientsPage({
                   </td>
                   <td>{formatBRPhone(p.patientPhone)}</td>
                   <td className="col-acoes">
+                    {/* Rótulo junto do ícone: no celular a célula vira uma
+                        faixa larga, e um emoji sozinho no meio dela não diz
+                        o que o botão faz — nem que é um botão. */}
                     <button
                       className="btn-icon btn-archive"
-                      title="Remover vínculo"
                       onClick={() => setRemovendo(p)}
                     >
-                      🗑️
+                      <Icone nome="lixeira" tamanho={15} />
+                      <span>Remover</span>
                     </button>
                   </td>
                 </tr>
