@@ -16,46 +16,56 @@
 // parâmetro. É o que torna o layout testável sem navegador.
 
 export const TEXTO_CARTAZ = {
-  titulo: "Lembretes de medicação no WhatsApp",
-  subtitulo: "Um serviço gratuito para você não esquecer seus remédios",
+  titulo: "Lembretes de medicação pelo WhatsApp",
+  subtitulo:
+    "Ao continuar, você confirma que leu este aviso e deseja receber lembretes no WhatsApp.",
   passos: [
     "Aponte a câmera do celular para o código",
     "O WhatsApp abre com uma mensagem pronta",
     "Toque em enviar para autorizar",
   ],
-  // [CONSENTIMENTO] Este texto é o que sustenta a autorização informada:
-  // o que a pessoa vai receber, quando, como sair e o que é feito com o
-  // dado (LGPD art. 8º §5º — sair tem que ser tão fácil quanto entrar).
-  // Não é decoração de cartaz. Não encurte para "caber".
+  // [TEXTO-JURIDICO] Anexo II-A dos Termos de Uso, VERBATIM.
+  //
+  // Antes este texto era meu. Agora é do advogado, e a diferença não é de
+  // estilo: é ele que sustenta o consentimento informado. NÃO parafraseie,
+  // não encurte "para caber" e não troque a ordem. Se faltar espaço no
+  // cartaz, diminua o QR — o texto não é o ajustável aqui.
   blocos: [
     {
-      titulo: "O que você vai receber",
+      titulo: "O que é este serviço",
       texto:
-        "Uma mensagem no horário de cada medicação que seu médico cadastrar, " +
-        "com o nome do remédio e a orientação dele. Você responde se tomou ou " +
-        "não — e isso ajuda seu médico a acompanhar seu tratamento.",
+        "Este serviço envia pelo WhatsApp lembretes sobre medicamentos, horários e " +
+        "orientações previamente definidos pelo seu profissional ou unidade de saúde. " +
+        "Ele é uma ferramenta complementar de organização da rotina e não substitui " +
+        "consulta, receita, orientação médica ou acompanhamento assistencial.",
     },
     {
-      titulo: "Quando",
-      texto: "Somente nos horários da sua receita. Nada de propaganda.",
-    },
-    {
-      titulo: "Para parar",
-      // [SAIDA-VISIVEL] Sai da coluna e vira faixa destacada no pé do cartaz.
-      // A LGPD (art. 8º §5º) exige que revogar seja tão fácil quanto
-      // autorizar: se a palavra PARAR estiver do mesmo tamanho do resto,
-      // "fácil" é só o que a gente diz, não o que o cartaz mostra.
-      destaque: true,
-      palavra: "PARAR",
+      titulo: "Não altere seu tratamento",
       texto:
-        "Envie essa palavra a qualquer momento. Você deixa de receber na " +
-        "hora, sem precisar vir até a unidade.",
+        "Não inicie, interrompa, aumente, reduza ou altere medicamentos com base em uma " +
+        "mensagem, em um lembrete não recebido ou em informações do sistema. Em caso de " +
+        "dúvida sobre o seu tratamento, procure o profissional de saúde responsável. Em " +
+        "urgência ou emergência, procure imediatamente o serviço de saúde adequado.",
     },
     {
       titulo: "Seus dados",
       texto:
-        "Suas respostas ficam no seu prontuário e são usadas pelo seu médico " +
-        "no acompanhamento do tratamento.",
+        "Os dados necessários à assistência são tratados pelo seu profissional ou unidade " +
+        "de saúde, conforme a legislação aplicável. A Vytal presta a tecnologia utilizada " +
+        "para organização e comunicação. Leia a Política de Privacidade em " +
+        "vytalsaude.com.br/privacidade-lembretes.",
+    },
+    {
+      titulo: "Como parar",
+      // [SAIDA-VISIVEL] Continua na faixa destacada, com a pastilha preta.
+      // A LGPD (art. 8º, §5º) exige que revogar seja tão fácil quanto
+      // autorizar; em corpo de texto no meio do cartaz, "fácil" era só o
+      // que a gente dizia.
+      destaque: true,
+      palavra: "PARAR",
+      texto:
+        "Envie essa palavra a qualquer momento. O envio de novos lembretes por esse " +
+        "canal será bloqueado após o processamento da solicitação.",
     },
   ],
   rodape: "Vytal Saúde · autorização registrada no seu WhatsApp",
@@ -65,26 +75,37 @@ export const TEXTO_CARTAZ = {
 // depender de medir a imagem em tempo de execução.
 const PROPORCAO_LOGO = 396 / 334;
 
+// [ESPACO] O texto do advogado é ~2,5x mais longo que o meu rascunho, e o
+// teste de geometria acusou a faixa do PARAR vazando a folha. A regra que eu
+// mesmo escrevi no TEXTO_CARTAZ vale aqui: o texto não é o ajustável — o QR
+// é. Ele encolheu de 96mm para 76mm e continua bem acima dos 50mm que um
+// celular lê a meio metro de distância.
+//
+// `colunas` são ÍNDICES de TEXTO_CARTAZ.blocos. Mexer na ordem dos blocos
+// sem mexer aqui faz o bloco em destaque aparecer DUAS vezes — na coluna e
+// na faixa. Aconteceu ao aplicar o texto novo.
 const MEDIDAS = {
   paisagem: {
     formato: [297, 210],
     margem: 12,
-    qr: 96,
-    tituloPt: 24,
-    subtituloPt: 12.5,
-    corpoPt: 13,
-    passoPt: 12.5,
-    colunas: [[0], [1, 3]], // índices de TEXTO_CARTAZ.blocos por coluna
+    qr: 76,
+    tituloPt: 20,
+    subtituloPt: 10.5,
+    corpoPt: 10,
+    passoPt: 10.5,
+    colunas: [[0], [1, 2]],
+    alturaFaixa: 26,
   },
   retrato: {
     formato: [210, 297],
     margem: 12,
-    qr: 86,
-    tituloPt: 18,
-    subtituloPt: 11,
-    corpoPt: 12.5,
-    passoPt: 12,
-    colunas: [[0, 1, 3]],
+    qr: 72,
+    tituloPt: 16,
+    subtituloPt: 10,
+    corpoPt: 10.5,
+    passoPt: 10.5,
+    colunas: [[0, 1, 2]],
+    alturaFaixa: 30,
   },
 };
 
@@ -201,7 +222,7 @@ export function montarCartazPdf({
     const larga = nCols === 1;
     const xFaixa = larga ? esq : inicioTexto;
     const wFaixa = larga ? dir - esq : larguraTotal;
-    const hFaixa = 30;
+    const hFaixa = m.alturaFaixa || 30;
     const pisoTexto = larga
       ? Math.max(fimDosPassos, baseDasColunas) + 6
       : baseDasColunas + 4;

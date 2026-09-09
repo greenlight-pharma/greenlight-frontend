@@ -61,18 +61,21 @@ describe("cartaz em PDF", () => {
       expect(bruto).toContain(bloco.titulo.toUpperCase().slice(0, 8));
     }
     expect(TEXTO_CARTAZ.passos).toHaveLength(3);
+    // Títulos do Anexo II-A dos Termos. Se alguém mexer aqui, é porque mexeu
+    // no texto jurídico — e aí o teste deve mesmo quebrar para forçar a
+    // pergunta "o advogado aprovou esta redação?".
     expect(TEXTO_CARTAZ.blocos.map((b) => b.titulo)).toEqual([
-      "O que você vai receber",
-      "Quando",
-      "Para parar",
+      "O que é este serviço",
+      "Não altere seu tratamento",
       "Seus dados",
+      "Como parar",
     ]);
     // A saída precisa estar escrita no papel, e em destaque: é o bloco que
     // torna a revogação tão fácil quanto a autorização (LGPD art. 8º §5º).
     const saida = TEXTO_CARTAZ.blocos.find((b) => b.destaque);
     expect(saida).toBeDefined();
     expect(saida.palavra).toBe("PARAR");
-    expect(saida.titulo).toBe("Para parar");
+    expect(saida.titulo).toBe("Como parar");
   });
 
   // O retrato quebrou exatamente aqui na primeira versão: a faixa do PARAR
@@ -97,9 +100,17 @@ describe("cartaz em PDF", () => {
     expect(() => montarCartazPdf({ qrDataUrl: "x" })).toThrow(/JsPDF/);
   });
 
-  it("o QR ocupa pelo menos 80mm — é lido de longe e plastificado", () => {
-    expect(medidasDoCartaz("paisagem").qr).toBeGreaterThanOrEqual(80);
-    expect(medidasDoCartaz("retrato").qr).toBeGreaterThanOrEqual(80);
+  it("o QR continua legível à distância de um balcão", () => {
+    // O piso era 80mm e caiu para 70 quando o texto do advogado entrou —
+    // 2,5x mais longo que o meu rascunho. A troca é deliberada: o texto do
+    // consentimento não é ajustável, o QR é.
+    //
+    // 70mm ainda é folgado. A regra prática de leitura de QR é distância
+    // útil ≈ 10x a largura do código: 76mm lê a ~76cm, mais que o vão de um
+    // balcão. Abaixo de 70mm começa a apertar para quem lê em pé.
+    for (const o of ["paisagem", "retrato"]) {
+      expect(medidasDoCartaz(o).qr).toBeGreaterThanOrEqual(70);
+    }
   });
 
   it("nomeia o arquivo pela unidade, sem acento nem espaço", () => {
