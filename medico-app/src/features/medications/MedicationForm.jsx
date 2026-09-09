@@ -31,7 +31,24 @@ export default function MedicationForm({ open, onClose, phone, patientName, medi
   const [times, setTimes] = useState(() =>
     parsed.ok && parsed.times.length ? parsed.times : [""]
   );
-  const [duracao, setDuracao] = useState("");
+  // [DURACAO-EXPLICITA] Porte do app: a duração deixa de ser um <select> cujo
+  // valor vazio significava "contínuo" e vira uma ESCOLHA de duas opções.
+  //
+  // Não é preferência de estilo. O padrão anterior era inseguro: quem não
+  // mexia no campo cadastrava uso contínuo sem saber, e um antibiótico de 7
+  // dias virava lembrete eterno. Nenhum default é seguro aqui — assumir
+  // contínuo faz o antibiótico tocar para sempre; assumir um prazo cala em
+  // silêncio o remédio de pressão. Por isso o formulário cobra a escolha.
+  //
+  // Ao EDITAR, o modo vem do que está gravado: com endDate é prazo, sem é
+  // contínuo — quem já cadastrou não precisa reescolher.
+  const [duracaoModo, setDuracaoModo] = useState(() => {
+    if (!medication) return "";
+    return (medication.endDate || "").slice(0, 10) ? "dias" : "continuo";
+  });
+  const [duracaoDias, setDuracaoDias] = useState(() =>
+    diasEntre(medication?.startDate, medication?.endDate)
+  );
   const [erro, setErro] = useState("");
 
   const criar = useCreateMedication(phone);
@@ -46,14 +63,15 @@ export default function MedicationForm({ open, onClose, phone, patientName, medi
     setForm((f) => ({ ...f, [campo]: valor }));
   }
 
-  // [FIM-TRATAMENTO] "por 7 dias" é como o médico pensa; endDate é como o
-  // banco guarda. Traduzimos aqui pra ele não ter que contar no calendário —
-  // e pra que tratamento curto não vire lembrete eterno por esquecimento.
-  function aplicarDuracao(dias) {
-    setDuracao(dias);
-    const fim = endDateFromDuration(form.startDate, dias);
-    if (fim) set("endDate", fim);
-  }
+  // "por 7 dias" é como o médico pensa; endDate é como o banco guarda. A
+  // tradução acontece aqui, e não na cabeça dele com um calendário aberto.
+  const fimCalculado = useMemo(
+    () =>
+      duracaoModo === "dias" && Number(duracaoDias) > 0
+        ? endDateFromDuration(form.startDate, Number(duracaoDias))
+        : "",
+    [duracaoModo, duracaoDias, form.startDate]
+  );
 
   async function salvar(e) {
     e.preventDefault();
@@ -64,12 +82,19 @@ export default function MedicationForm({ open, onClose, phone, patientName, medi
       setErro("Medicação, dose e pelo menos um horário válido são obrigatórios.");
       return;
     }
-    if (form.endDate && form.endDate < form.startDate) {
+    if (duracaoModo !== "continuo" && !(Number(duracaoDias) > 0)) {
+      setErro("Informe por quantos dias, ou marque uso contínuo.");
+      return;
+    }
+
+    // Contínuo é ausência de fim — é assim que o cron entende "não para".
+    const endDate = duracaoModo === "continuo" ? "" : fimCalculado;
+    if (endDate && endDate < form.startDate) {
       setErro("A data de término não pode ser anterior à data de início.");
       return;
     }
 
-    const payload = { ...form, patientName, times };
+    const payload = { ...form, endDate, patientName, times };
     try {
       if (editando) {
         await atualizar.mutateAsync({ id: medication.id, ...payload });
@@ -146,46 +171,80 @@ export default function MedicationForm({ open, onClose, phone, patientName, medi
           legacyValue={!parsed.ok ? medication?.scheduleTimes : ""}
         />
 
-        <div className="grid-2">
-          <div>
-            <label htmlFor="medStart">Data de início</label>
-            <input
-              id="medStart"
-              type="date"
-              value={form.startDate}
-              onChange={(e) => set("startDate", e.target.value)}
-            />
-          </div>
-          <div>
-            <label htmlFor="medDuration">Duração</label>
-            <select
-              id="medDuration"
-              value={duracao}
-              onChange={(e) => aplicarDuracao(e.target.value)}
-            >
-              <option value="">Contínuo / definir data</option>
-              <option value="5">5 dias</option>
-              <option value="7">7 dias</option>
-              <option value="10">10 dias</option>
-              <option value="14">14 dias</option>
-              <option value="30">30 dias</option>
-            </select>
-          </div>
+        <label>Duração do tratamento</label>
+        <div className="duracao-escolha">
+          <button
+            type="button"
+            className={duracaoModo === "continuo" ? "duracao-opcao ativa" : "duracao-opcao"}
+            aria-pressed={duracaoModo === "continuo"}
+            onClick={() => {
+              setDuracaoModo("continuo");
+              setDuracaoDias("");
+            }}
+          >
+            Uso contínuo
+          </button>
+          <button
+            type="button"
+            className={duracaoModo === "dias" ? "duracao-opcao ativa" : "duracao-opcao"}
+            aria-pressed={duracaoModo === "dias"}
+            onClick={() => setDuracaoModo("dias")}
+          >
+            Por alguns dias
+          </button>
         </div>
 
-        <label htmlFor="medEnd">Data de término (opcional)</label>
-        <input
-          id="medEnd"
-          type="date"
-          value={form.endDate}
-          onChange={(e) => {
-            setDuracao("");
-            set("endDate", e.target.value);
-          }}
-        />
-        <div className="small">
-          Sem data de término, o lembrete continua indefinidamente.
-        </div>
+        {duracaoModo === "dias" && (
+          <div className="duracao-dias-linha">
+            <input
+              type="number"
+              min="1"
+              inputMode="numeric"
+              aria-label="Quantidade de dias"
+              value={duracaoDias}
+              onChange={(e) => setDuracaoDias(e.target.value.replace(/\D/g, "").slice(0, 3))}
+            />
+            <span>dias</span>
+            {[5, 7, 10, 14, 30].map((n) => (
+              <button
+                type="button"
+                key={n}
+                className="duracao-atalho"
+                onClick={() => setDuracaoDias(String(n))}
+              >
+                {n}
+              </button>
+            ))}
+          </div>
+        )}
+
+        {!duracaoModo && (
+          <div className="small texto-alerta">
+            Escolha uma das duas — sem isso o lembrete não sabe quando parar.
+          </div>
+        )}
+        {!!fimCalculado && (
+          <div className="small">
+            Os lembretes terminam em <strong>{formatarDataBR(fimCalculado)}</strong>.
+          </div>
+        )}
+        {duracaoModo === "continuo" && (
+          <div className="small">Os lembretes seguem até alguém encerrar.</div>
+        )}
+
+        <details className="avancado">
+          <summary>Ajustar data de início</summary>
+          <label htmlFor="medStart">Data de início</label>
+          <input
+            id="medStart"
+            type="date"
+            value={form.startDate}
+            onChange={(e) => set("startDate", e.target.value)}
+          />
+          <div className="small">
+            Por padrão é hoje. Mude só se a prescrição começar em outro dia.
+          </div>
+        </details>
 
         {editando && (
           <>
@@ -229,6 +288,21 @@ export default function MedicationForm({ open, onClose, phone, patientName, medi
       </form>
     </Modal>
   );
+}
+
+function formatarDataBR(iso) {
+  const m = String(iso || "").match(/^(\d{4})-(\d{2})-(\d{2})$/);
+  return m ? `${m[3]}/${m[2]}/${m[1]}` : iso;
+}
+
+// Quantos dias o tratamento gravado tem, para reabrir a edição já no modo
+// certo. Inclusivo: 08 a 14 são 7 dias, não 6.
+function diasEntre(inicio, fim) {
+  const a = String(inicio || "").slice(0, 10);
+  const b = String(fim || "").slice(0, 10);
+  if (!a || !b) return "";
+  const d = Math.round((new Date(`${b}T12:00:00`) - new Date(`${a}T12:00:00`)) / 86400000) + 1;
+  return d > 0 ? String(d) : "";
 }
 
 function hoje() {

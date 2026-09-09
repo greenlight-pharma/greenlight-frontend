@@ -74,7 +74,7 @@ export default function QrAutorizacaoPage() {
   const texto = useMemo(() => {
     const base =
       "Quero receber lembretes de medicação pelo WhatsApp. " +
-      "Li o aviso de privacidade e segurança do serviço. " +
+      "Estou ciente sobre o aviso de privacidade e segurança do serviço. " +
       "Sei que os lembretes são complementares, não substituem orientação " +
       "do profissional de saúde e posso interromper o recebimento enviando PARAR.";
     return codigoEfetivo ? `${base} [${codigoEfetivo}]` : base;
