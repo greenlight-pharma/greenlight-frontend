@@ -46,7 +46,7 @@ export default function LoginPage({ subtitle = "Painel Médico", permiteCadastro
           id="loginEmail"
           type="email"
           autoComplete="username"
-          placeholder="Email cadastrado pelo administrador"
+          placeholder="voce@exemplo.com"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
         />
@@ -56,7 +56,7 @@ export default function LoginPage({ subtitle = "Painel Médico", permiteCadastro
           id="loginPassword"
           type="password"
           autoComplete="current-password"
-          placeholder="Senha cadastrada pelo administrador"
+          placeholder="Sua senha"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
         />
