@@ -36,7 +36,22 @@ const NAV = [
 
 function Shell() {
   const { isLoggedIn } = useAuth();
-  if (!isLoggedIn) return <LoginPage subtitle="Infraestrutura de Saúde Contínua" />;
+  // [CADASTRO-NA-UBS] Aberto em 10/09/2026 para a demonstração ao Secretário
+  // de Saúde: sem isto, não dá para mostrar o fluxo do começo.
+  //
+  // Não é a configuração final. Falta o papel `ubs` de verdade — hoje quem
+  // opera a recepção usa conta de MÉDICO, e o backend grava
+  // `prescribedBy || req.user.name`, ou seja, a medicação fica atribuída a
+  // quem está logado. Num contrato com a Secretaria, "quem prescreveu" tem de
+  // ser o médico, não quem digitou. Trocar papel depois, com contas em uso, é
+  // caro — então isto é dívida assumida com data, não descuido.
+  //
+  // O que impede abuso hoje NÃO é este botão: é o portão de confirmação de
+  // e-mail em POST /patients/manual. Conta sem e-mail confirmado não cadastra
+  // paciente, e é ali que a mensagem de WhatsApp sairia.
+  if (!isLoggedIn) {
+    return <LoginPage subtitle="Infraestrutura de Saúde Contínua" permiteCadastro />;
+  }
 
   return (
     <Layout nav={NAV} brandSub="Infraestrutura de Saúde Contínua">
