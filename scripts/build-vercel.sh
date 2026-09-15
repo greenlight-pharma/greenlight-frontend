@@ -23,6 +23,18 @@ cp -R ./* "$OUT"/
 echo "==> Removendo do publicado o que é fonte, não site"
 rm -rf "$OUT/medico-app" "$OUT/docs" "$OUT/scripts" "$OUT/vercel.json"
 
+# [PREVIEW-CLINICAS] Os sites gerados em clinicas/sites/<slug>/ são
+# publicados em /preview/<slug>/ — é o link que se manda no WhatsApp do
+# consultório antes de qualquer proposta. O resto de clinicas/ (template,
+# scripts, playbook, briefings) é fonte e não vai para o ar.
+if [ -d clinicas/sites ] && [ -n "$(ls -A clinicas/sites 2>/dev/null)" ]; then
+  echo "==> Publicando previews de clínicas em /preview"
+  mkdir -p "$OUT/preview"
+  cp -R clinicas/sites/* "$OUT/preview"/
+  ls "$OUT/preview"
+fi
+rm -rf "$OUT/clinicas"
+
 echo "==> Instalando dependências dos painéis"
 npm ci --prefix medico-app
 

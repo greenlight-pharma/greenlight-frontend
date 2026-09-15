@@ -1,0 +1,677 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Clínica Cardio Jardins — Jardim Paulista, São Paulo</title>
+<meta name="description" content="Clínica de cardiologia nos Jardins, São Paulo. Consulta cardiológica, eletrocardiograma, MAPA e Holter. Atendimento particular e convênios. Agende pelo WhatsApp.">
+<meta name="robots" content="index, follow">
+
+<meta property="og:type" content="website">
+<meta property="og:title" content="Clínica Cardio Jardins">
+<meta property="og:description" content="Clínica de cardiologia nos Jardins, São Paulo. Consulta cardiológica, eletrocardiograma, MAPA e Holter. Atendimento particular e convênios. Agende pelo WhatsApp.">
+<meta property="og:locale" content="pt_BR">
+
+<meta name="theme-color" content="#14596b">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<!-- Busca local: é isto que faz a clínica aparecer no Google com endereço,
+     horário e telefone. Gerado a partir do briefing, sem nota nem avaliação
+     (ver COMPLIANCE.md). -->
+<script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "MedicalClinic",
+  "name": "Clínica Cardio Jardins",
+  "description": "Clínica de cardiologia nos Jardins, São Paulo. Consulta cardiológica, eletrocardiograma, MAPA e Holter. Atendimento particular e convênios. Agende pelo WhatsApp.",
+  "telephone": "(11) 3333-4444",
+  "email": "contato@exemplo.com.br",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Rua Exemplo das Acácias, 1200, conjunto 82, 8º andar",
+    "addressLocality": "São Paulo",
+    "addressRegion": "SP",
+    "postalCode": "01415-002",
+    "addressCountry": "BR"
+  },
+  "openingHours": [
+    "Mo-Fr 08:00-19:00",
+    "Sa 08:00-13:00"
+  ],
+  "medicalSpecialty": [
+    "Consulta cardiológica",
+    "Eletrocardiograma",
+    "MAPA e Holter 24h",
+    "Avaliação pré-operatória",
+    "Acompanhamento de hipertensão",
+    "Check-up cardiológico"
+  ],
+  "availableService": [
+    {
+      "@type": "MedicalProcedure",
+      "name": "Consulta cardiológica"
+    },
+    {
+      "@type": "MedicalProcedure",
+      "name": "Eletrocardiograma"
+    },
+    {
+      "@type": "MedicalProcedure",
+      "name": "MAPA e Holter 24h"
+    },
+    {
+      "@type": "MedicalProcedure",
+      "name": "Avaliação pré-operatória"
+    },
+    {
+      "@type": "MedicalProcedure",
+      "name": "Acompanhamento de hipertensão"
+    },
+    {
+      "@type": "MedicalProcedure",
+      "name": "Check-up cardiológico"
+    }
+  ],
+  "paymentAccepted": "Particular, Unimed, Bradesco Saúde, SulAmérica, Amil, Porto Seguro Saúde, Omint"
+}</script>
+
+<style>
+:root{
+  --principal:#14596b;
+  --principal-escuro:#0e3d49;
+  --destaque:#d98f3f;
+  --tinta:#1b2733;
+  --tinta-suave:#54626f;
+  --fundo:#ffffff;
+  --fundo-2:#f4f8f8;
+  --borda:#e4eaef;
+  --zap:#25d366;
+  --sombra:0 18px 40px -24px rgba(16,42,67,.28);
+  --raio:16px;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{font-family:'Inter',system-ui,-apple-system,Segoe UI,sans-serif;
+  background:var(--fundo);color:var(--tinta);line-height:1.65;font-size:17px;overflow-x:hidden}
+img{max-width:100%;display:block;height:auto}
+h1,h2,h3{font-family:'Newsreader',Georgia,serif;line-height:1.15;font-weight:600;color:var(--principal-escuro)}
+a{color:inherit;text-decoration:none}
+:focus-visible{outline:3px solid var(--destaque);outline-offset:3px;border-radius:4px}
+.wrap{max-width:1140px;margin:0 auto;padding:0 20px}
+section{padding:clamp(3.2rem,7vw,5.6rem) 0}
+.kicker{font-size:.76rem;letter-spacing:.2em;text-transform:uppercase;font-weight:700;color:var(--destaque);margin-bottom:.7rem}
+.titulo{font-size:clamp(1.65rem,3.6vw,2.5rem);margin-bottom:.9rem;max-width:22ch}
+.lead{color:var(--tinta-suave);max-width:62ch;font-size:1.02rem}
+
+/* ---------------- NAV ---------------- */
+header.topo{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.93);
+  backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-bottom:1px solid var(--borda)}
+.topo-inner{display:flex;align-items:center;justify-content:space-between;gap:1rem;
+  max-width:1140px;margin:0 auto;padding:.7rem 20px}
+.marca{display:flex;align-items:center;gap:.6rem;font-family:'Newsreader',serif;
+  font-weight:600;font-size:1.06rem;color:var(--principal-escuro);line-height:1.2}
+.marca .sigla{width:36px;height:36px;flex:0 0 36px;border-radius:10px;background:var(--principal);
+  color:#fff;display:grid;place-items:center;font-size:.9rem;font-weight:700;letter-spacing:.02em}
+.menu{display:flex;align-items:center;gap:1.6rem;list-style:none}
+.menu a{font-size:.93rem;font-weight:500;color:var(--tinta-suave)}
+.menu a:hover{color:var(--principal)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:.55rem;
+  padding:.8rem 1.4rem;border-radius:99px;font-weight:600;font-size:.97rem;border:0;cursor:pointer;
+  transition:transform .2s,box-shadow .2s,background .2s;white-space:nowrap}
+.btn:hover{transform:translateY(-2px)}
+.btn svg{width:19px;height:19px;flex:0 0 19px}
+.btn-zap{background:var(--zap);color:#07331d}
+.btn-zap:hover{box-shadow:0 12px 24px -10px rgba(37,211,102,.7)}
+.btn-linha{border:1.5px solid rgba(255,255,255,.55);color:#fff}
+.btn-linha:hover{background:rgba(255,255,255,.14)}
+.btn-escuro{background:var(--principal);color:#fff}
+.btn-escuro:hover{box-shadow:0 12px 26px -12px var(--principal)}
+.topo .btn{padding:.6rem 1.15rem;font-size:.9rem}
+.abre-menu{display:none;background:none;border:0;width:42px;height:42px;cursor:pointer}
+.abre-menu span{display:block;height:2px;background:var(--principal-escuro);margin:5px 8px;transition:.25s}
+
+/* ---------------- HERO ---------------- */
+.hero{position:relative;color:#fff;
+  background:linear-gradient(150deg,var(--principal-escuro) 0%,var(--principal) 62%,var(--principal) 100%);
+  padding:clamp(3rem,7vw,5.5rem) 0 clamp(3rem,6vw,4.5rem);overflow:hidden}
+
+.hero::after{content:'';position:absolute;width:560px;height:560px;right:-190px;top:-230px;
+  border-radius:50%;background:radial-gradient(circle,rgba(255,255,255,.14),transparent 68%)}
+.hero-inner{position:relative;z-index:2;display:grid;grid-template-columns:1.15fr .85fr;
+  gap:clamp(1.6rem,4vw,3.4rem);align-items:center}
+.hero .selo{display:inline-flex;align-items:center;gap:.5rem;font-size:.8rem;font-weight:600;
+  letter-spacing:.04em;background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.28);
+  padding:.4rem .9rem;border-radius:99px;margin-bottom:1.2rem}
+.hero .selo svg{width:15px;height:15px}
+.hero h1{color:#fff;font-size:clamp(2rem,4.8vw,3.3rem);max-width:19ch}
+.hero h1 em{font-style:normal;color:var(--destaque)}
+.hero p.sub{margin:1.1rem 0 1.8rem;font-size:clamp(1rem,1.6vw,1.15rem);max-width:48ch;
+  color:rgba(255,255,255,.92);font-weight:300}
+.hero-acoes{display:flex;gap:.8rem;flex-wrap:wrap}
+.hero-nota{margin-top:1.4rem;font-size:.87rem;color:rgba(255,255,255,.75);display:flex;
+  align-items:center;gap:.45rem;flex-wrap:wrap}
+
+/* cartão de atendimento */
+.cartao{background:#fff;color:var(--tinta);border-radius:var(--raio);padding:1.5rem;
+  box-shadow:0 26px 60px -30px rgba(0,0,0,.5)}
+.cartao h2{font-size:1.06rem;margin-bottom:.9rem;font-family:'Inter',sans-serif;
+  font-weight:700;color:var(--principal-escuro)}
+.cartao dl{display:grid;gap:.75rem;margin:0}
+.cartao .item{display:flex;gap:.7rem;align-items:flex-start;font-size:.94rem}
+.cartao .item svg{width:18px;height:18px;flex:0 0 18px;margin-top:.22rem;color:var(--principal);
+  stroke:currentColor;fill:none;stroke-width:1.8}
+.cartao .item strong{display:block;font-weight:600;color:var(--tinta)}
+.cartao .item span{color:var(--tinta-suave);font-size:.9rem}
+.cartao .btn{width:100%;margin-top:1.15rem}
+
+/* ---------------- FAIXA ---------------- */
+.faixa{background:var(--fundo-2);border-bottom:1px solid var(--borda);padding:1.4rem 0}
+.faixa-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(215px,1fr));gap:1.1rem}
+.faixa-item{display:flex;gap:.7rem;align-items:flex-start}
+.faixa-item svg{width:21px;height:21px;flex:0 0 21px;margin-top:.2rem;color:var(--principal);
+  stroke:currentColor;fill:none;stroke-width:1.7}
+.faixa-item b{display:block;font-size:.95rem}
+.faixa-item span{font-size:.87rem;color:var(--tinta-suave)}
+
+/* ---------------- SERVIÇOS ---------------- */
+.servicos-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(265px,1fr));
+  gap:1.1rem;margin-top:2.2rem}
+.servico{border:1px solid var(--borda);border-radius:var(--raio);padding:1.5rem;background:#fff;
+  transition:border-color .25s,transform .25s,box-shadow .25s}
+.servico:hover{border-color:var(--principal);transform:translateY(-3px);box-shadow:var(--sombra)}
+.servico .ico{width:44px;height:44px;border-radius:12px;background:var(--fundo-2);
+  display:grid;place-items:center;margin-bottom:1rem}
+.servico .ico svg{width:23px;height:23px;stroke:var(--principal);fill:none;stroke-width:1.7;
+  stroke-linecap:round;stroke-linejoin:round}
+.servico h3{font-size:1.1rem;margin-bottom:.45rem}
+.servico p{font-size:.93rem;color:var(--tinta-suave)}
+
+/* ---------------- EQUIPE ---------------- */
+.sobre{background:var(--fundo-2)}
+.equipe-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(275px,1fr));
+  gap:1.2rem;margin-top:2.2rem}
+.pessoa{background:#fff;border:1px solid var(--borda);border-radius:var(--raio);overflow:hidden;
+  display:flex;flex-direction:column}
+.pessoa .foto{aspect-ratio:4/3;background:linear-gradient(135deg,var(--principal),var(--principal-escuro));
+  display:grid;place-items:center;color:rgba(255,255,255,.35);font-size:2.4rem;
+  font-family:'Newsreader',serif}
+.pessoa .foto img{width:100%;height:100%;object-fit:cover}
+.pessoa .corpo{padding:1.3rem;flex:1}
+.pessoa h3{font-size:1.14rem;margin-bottom:.2rem}
+/* [CONFORMIDADE] registro sempre visível junto do nome, nunca escondido. */
+.pessoa .registro{font-size:.84rem;font-weight:600;color:var(--principal);
+  letter-spacing:.02em;margin-bottom:.7rem}
+.pessoa .atuacao{font-size:.93rem;color:var(--tinta-suave);margin-bottom:.8rem}
+.pessoa ul{list-style:none;display:grid;gap:.4rem}
+.pessoa li{font-size:.87rem;color:var(--tinta-suave);display:flex;gap:.5rem}
+.pessoa li::before{content:'';width:5px;height:5px;border-radius:50%;background:var(--destaque);
+  flex:0 0 5px;margin-top:.55rem}
+
+/* ---------------- ESTRUTURA / CONVÊNIOS ---------------- */
+.duas{display:grid;grid-template-columns:1fr 1fr;gap:clamp(1.6rem,4vw,3.2rem);align-items:start}
+.lista-check{list-style:none;display:grid;gap:.7rem;margin-top:1.5rem}
+.lista-check li{display:flex;gap:.7rem;font-size:.96rem}
+.lista-check svg{width:19px;height:19px;flex:0 0 19px;margin-top:.24rem;color:var(--principal);
+  stroke:currentColor;fill:none;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+.convenios{display:flex;flex-wrap:wrap;gap:.6rem;margin-top:1.5rem}
+.convenio{border:1px solid var(--borda);background:#fff;border-radius:10px;padding:.6rem 1rem;
+  font-size:.9rem;font-weight:600;color:var(--tinta-suave)}
+.nota-convenio{font-size:.84rem;color:var(--tinta-suave);margin-top:1rem;font-style:italic}
+
+/* ---------------- LOCALIZAÇÃO ---------------- */
+.local{background:var(--fundo-2)}
+.mapa{border:1px solid var(--borda);border-radius:var(--raio);overflow:hidden;background:#fff;
+  min-height:330px;box-shadow:var(--sombra)}
+.mapa iframe{width:100%;height:100%;min-height:330px;border:0;display:block}
+.horarios{list-style:none;display:grid;gap:0;margin-top:1.4rem;border:1px solid var(--borda);
+  border-radius:12px;overflow:hidden;background:#fff}
+.horarios li{display:flex;justify-content:space-between;gap:1rem;padding:.8rem 1.1rem;font-size:.94rem}
+.horarios li+li{border-top:1px solid var(--borda)}
+.horarios b{font-weight:600}
+.horarios span{color:var(--tinta-suave);text-align:right}
+
+/* ---------------- FAQ ---------------- */
+.faq{max-width:820px;margin:2.2rem auto 0}
+details{border:1px solid var(--borda);border-radius:12px;background:#fff;margin-bottom:.7rem;
+  overflow:hidden}
+details[open]{border-color:var(--principal)}
+summary{padding:1.05rem 1.3rem;font-weight:600;cursor:pointer;display:flex;
+  justify-content:space-between;gap:1rem;align-items:center;font-size:1rem;list-style:none}
+summary::-webkit-details-marker{display:none}
+summary::after{content:'+';font-size:1.35rem;color:var(--principal);font-weight:400;line-height:1}
+details[open] summary::after{content:'−'}
+details p{padding:0 1.3rem 1.2rem;color:var(--tinta-suave);font-size:.95rem}
+
+/* ---------------- CTA FINAL ---------------- */
+.cta{background:linear-gradient(150deg,var(--principal-escuro),var(--principal));color:#fff;
+  text-align:center}
+.cta h2{color:#fff;font-size:clamp(1.6rem,3.4vw,2.35rem);max-width:24ch;margin:0 auto .9rem}
+.cta p{color:rgba(255,255,255,.88);max-width:52ch;margin:0 auto 2rem}
+.cta .hero-acoes{justify-content:center}
+
+/* ---------------- RODAPÉ ---------------- */
+footer{background:#0f1a24;color:#9fb0c0;padding:3rem 0 6rem;font-size:.9rem}
+footer .grid{display:grid;grid-template-columns:1.3fr 1fr 1fr;gap:2rem}
+footer h4{color:#fff;font-size:.95rem;margin-bottom:.8rem;font-family:'Inter',sans-serif;
+  font-weight:600}
+footer a:hover{color:#fff}
+footer .fim{border-top:1px solid rgba(255,255,255,.1);margin-top:2.4rem;padding-top:1.4rem;
+  display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap;font-size:.82rem}
+/* [CONFORMIDADE] responsável técnico + registro no rodapé, em todo site. */
+.responsavel-tecnico{color:#cdd9e4;font-weight:600}
+.aviso-medico{font-size:.8rem;color:#7d8fa0;margin-top:.9rem;max-width:70ch;line-height:1.55}
+
+/* ---------------- BARRA FIXA (celular) ---------------- */
+.barra{position:fixed;left:0;right:0;bottom:0;z-index:60;display:none;gap:.55rem;
+  padding:.6rem .8rem calc(.6rem + env(safe-area-inset-bottom,0px));
+  background:rgba(255,255,255,.96);backdrop-filter:blur(10px);border-top:1px solid var(--borda)}
+.barra .btn{flex:1;padding:.85rem .6rem;font-size:.95rem}
+
+@media (max-width:900px){
+  .hero-inner,.duas{grid-template-columns:1fr}
+  footer .grid{grid-template-columns:1fr 1fr}
+}
+@media (max-width:760px){
+  body{font-size:16px}
+  .menu{position:fixed;inset:60px 0 auto;flex-direction:column;background:#fff;gap:0;
+    padding:.5rem 20px 1.2rem;border-bottom:1px solid var(--borda);display:none}
+  .menu.aberto{display:flex}
+  .menu li{width:100%}
+  .menu a{display:block;padding:.85rem 0;border-bottom:1px solid var(--borda);font-size:1rem}
+  .abre-menu{display:block}
+  .topo .btn{display:none}
+  .barra{display:flex}
+  footer{padding-bottom:7rem}
+  footer .grid{grid-template-columns:1fr}
+  .hero{padding-top:2.4rem}
+}
+@media (prefers-reduced-motion:reduce){
+  *{animation:none!important;transition:none!important}
+  html{scroll-behavior:auto}
+}
+@media print{.topo,.barra,.cta,.mapa{display:none}}
+</style>
+</head>
+<body>
+
+<header class="topo">
+  <div class="topo-inner">
+    <a class="marca" href="#inicio">
+      <span class="sigla">CJ</span>
+      <span>Clínica Cardio Jardins</span>
+    </a>
+    <ul class="menu" id="menu">
+      <li><a href="#servicos">Atendimento</a></li>
+      <li><a href="#equipe">Quem atende</a></li>
+      <li><a href="#convenios">Convênios</a></li>
+      <li><a href="#local">Onde ficamos</a></li>
+      <li><a href="#faq">Dúvidas</a></li>
+    </ul>
+    <a class="btn btn-zap" href="https://wa.me/5511999998888?text=Ol%C3%A1!%20Vi%20o%20site%20e%20gostaria%20de%20agendar%20uma%20consulta%20na%20Cl%C3%ADnica%20Cardio%20Jardins." target="_blank" rel="noopener">
+      <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.5 14.4c-.3-.2-1.8-.9-2-1-.3-.1-.5-.2-.7.1l-.6.8c-.1.2-.3.2-.5.1-.8-.3-1.5-.7-2.1-1.4-.5-.6-.9-1.2-1.2-1.9-.1-.2 0-.4.1-.5l.7-.7c.2-.2.1-.4 0-.6l-1-2.1c-.2-.4-.4-.4-.6-.4h-.6c-.2 0-.5.2-.6.3-.6.6-.9 1.3-.9 2.1 0 1.3.6 2.5 1.4 3.5 1 1.4 2.3 2.5 3.9 3.1.7.3 1.4.4 2.1.4.6 0 1.2-.2 1.7-.6.3-.2.5-.5.6-.9.1-.3.1-.6 0-.8l-.2-.1ZM12 2a10 10 0 0 0-8.5 15.2L2 22l4.9-1.4A10 10 0 1 0 12 2Zm0 18.2c-1.5 0-3-.4-4.3-1.2l-.3-.2-3 .9.9-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Z"/></svg>
+      Agendar
+    </a>
+    <button class="abre-menu" id="abre" aria-label="Abrir menu" aria-expanded="false" aria-controls="menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<main id="inicio">
+
+<section class="hero">
+  <div class="wrap hero-inner">
+    <div>
+      
+      <span class="selo">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>
+        Atendimento de segunda a sábado
+      </span>
+      
+      <h1>Cardiologia nos Jardins, <em>com hora marcada de verdade</em></h1>
+      <p class="sub">Consulta, eletrocardiograma e exames de rotina no mesmo endereço. Agendamento direto pelo WhatsApp, sem fila de espera na linha.</p>
+      <div class="hero-acoes">
+        <a class="btn btn-zap" href="https://wa.me/5511999998888?text=Ol%C3%A1!%20Vi%20o%20site%20e%20gostaria%20de%20agendar%20uma%20consulta%20na%20Cl%C3%ADnica%20Cardio%20Jardins." target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.5 15.2L2 22l4.9-1.4A10 10 0 1 0 12 2Zm0 18.2c-1.5 0-3-.4-4.3-1.2l-.3-.2-3 .9.9-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm5.5-5.8c-.3-.2-1.8-.9-2-1-.3-.1-.5-.2-.7.1l-.6.8c-.1.2-.3.2-.5.1-.8-.3-1.5-.7-2.1-1.4-.5-.6-.9-1.2-1.2-1.9-.1-.2 0-.4.1-.5l.7-.7c.2-.2.1-.4 0-.6l-1-2.1c-.2-.4-.4-.4-.6-.4h-.6c-.2 0-.5.2-.6.3-.6.6-.9 1.3-.9 2.1 0 1.3.6 2.5 1.4 3.5 1 1.4 2.3 2.5 3.9 3.1.7.3 1.4.4 2.1.4.6 0 1.2-.2 1.7-.6.3-.2.5-.5.6-.9.1-.3.1-.6 0-.8l-.2-.1Z"/></svg>
+          Agendar pelo WhatsApp
+        </a>
+        
+        <a class="btn btn-linha" href="tel:+551133334444">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" aria-hidden="true"><path d="M5 3h3l2 5-2.5 1.5a11 11 0 0 0 5 5L14 12l5 2v3a2 2 0 0 1-2.2 2A16 16 0 0 1 3 5.2 2 2 0 0 1 5 3Z"/></svg>
+          (11) 3333-4444
+        </a>
+        
+      </div>
+      
+      <p class="hero-nota">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" width="15" height="15" aria-hidden="true"><path d="M12 21s7-6.2 7-11a7 7 0 1 0-14 0c0 4.8 7 11 7 11Z"/><circle cx="12" cy="10" r="2.6"/></svg>
+        Rua Exemplo das Acácias, 1200, conjunto 82, 8º andar — Jardim Paulista, São Paulo - SP — 01415-002
+      </p>
+      
+    </div>
+
+    <aside class="cartao">
+      <h2>Como funciona o atendimento</h2>
+      <dl>
+        
+        <div class="item">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7.5V12l3.2 2"/></svg>
+          <div>
+            <strong>Horário</strong>
+            <span>Segunda a sexta: 08h às 19h</span><br><span>Sábado: 08h às 13h</span><br>
+          </div>
+        </div>
+        
+        <div class="item">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16v12H4zM8 7V5h8v2"/><path d="M4 12h16"/></svg>
+          <div>
+            <strong>Formas de atendimento</strong>
+            <span>Particular e convênios — cartão, Pix e boleto</span>
+          </div>
+        </div>
+        
+        <div class="item">
+          <svg viewBox="0 0 24 24" aria-hidden="true" stroke-linejoin="round" stroke-linecap="round"><path d="M3 16v-3.2l1.8-4.2A2 2 0 0 1 6.6 7.4h10.8a2 2 0 0 1 1.8 1.2L21 12.8V16H3Z"/><path d="M3.6 12.8h16.8"/><circle cx="7.2" cy="17.6" r="1.5"/><circle cx="16.8" cy="17.6" r="1.5"/></svg>
+          <div><strong>Estacionamento</strong><span>Estacionamento no prédio, com desconto para pacientes</span></div>
+        </div>
+        
+        
+        <div class="item">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="5" r="2"/><path d="M12 8v5h4M12 13l-2 7M16 13l2 6"/></svg>
+          <div><strong>Acessibilidade</strong><span>Prédio com elevador e acesso sem escadas</span></div>
+        </div>
+        
+      </dl>
+      <a class="btn btn-escuro" href="https://wa.me/5511999998888?text=Ol%C3%A1!%20Vi%20o%20site%20e%20gostaria%20de%20agendar%20uma%20consulta%20na%20Cl%C3%ADnica%20Cardio%20Jardins." target="_blank" rel="noopener">Ver horários disponíveis</a>
+    </aside>
+  </div>
+</section>
+
+
+<div class="faixa">
+  <div class="wrap faixa-grid">
+    
+    <div class="faixa-item">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>
+      <div><b>Agenda que respeita o horário</b><span>Consultas espaçadas para não acumular espera na recepção.</span></div>
+    </div>
+    
+    <div class="faixa-item">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>
+      <div><b>Exames no mesmo endereço</b><span>Eletrocardiograma, MAPA e Holter feitos na própria clínica.</span></div>
+    </div>
+    
+    <div class="faixa-item">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>
+      <div><b>Receita e laudo digitais</b><span>Assinados e enviados por WhatsApp ou e-mail no mesmo dia.</span></div>
+    </div>
+    
+  </div>
+</div>
+
+
+
+<section id="servicos">
+  <div class="wrap">
+    <p class="kicker">Atendimento</p>
+    <h2 class="titulo">O que atendemos</h2>
+    <p class="lead"></p>
+    <div class="servicos-grid">
+      
+      <article class="servico">
+        <div class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-7.5-4.6-9.3-9A5.3 5.3 0 0 1 12 6.6a5.3 5.3 0 0 1 9.3 5.4C19.5 16.4 12 21 12 21Z"/></svg></div>
+        <h3>Consulta cardiológica</h3>
+        <p>Avaliação clínica completa, com revisão de exames e histórico. Primeira consulta com 40 minutos reservados.</p>
+      </article>
+      
+      <article class="servico">
+        <div class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 3h8v4l-2 2v8a2 2 0 0 1-4 0V9L8 7Z"/></svg></div>
+        <h3>Eletrocardiograma</h3>
+        <p>Realizado e laudado na própria clínica, no mesmo dia da consulta quando indicado.</p>
+      </article>
+      
+      <article class="servico">
+        <div class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3v6a6 6 0 0 0 12 0V3"/><circle cx="18" cy="16" r="3"/></svg></div>
+        <h3>MAPA e Holter 24h</h3>
+        <p>Monitorização da pressão e do ritmo cardíaco por 24 horas, com instalação na clínica e retirada no dia seguinte.</p>
+      </article>
+      
+      <article class="servico">
+        <div class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 8v8M8 12h8"/></svg></div>
+        <h3>Avaliação pré-operatória</h3>
+        <p>Risco cirúrgico para cirurgias eletivas, com emissão de parecer para a equipe cirúrgica.</p>
+      </article>
+      
+      <article class="servico">
+        <div class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 8v8M8 12h8"/></svg></div>
+        <h3>Acompanhamento de hipertensão</h3>
+        <p>Seguimento de pressão alta, colesterol e diabetes, com ajuste de medicação e retornos programados.</p>
+      </article>
+      
+      <article class="servico">
+        <div class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 3h8v4l-2 2v8a2 2 0 0 1-4 0V9L8 7Z"/></svg></div>
+        <h3>Check-up cardiológico</h3>
+        <p>Conjunto de exames de rotina definido conforme idade, histórico familiar e fatores de risco.</p>
+      </article>
+      
+    </div>
+  </div>
+</section>
+
+
+<section id="equipe" class="sobre">
+  <div class="wrap">
+    <p class="kicker">Quem atende</p>
+    <h2 class="titulo">Quem vai te atender</h2>
+    <p class="lead"></p>
+    <div class="equipe-grid">
+      
+      <article class="pessoa">
+        <div class="foto">H</div>
+        <div class="corpo">
+          <h3>Dra. Helena Marques</h3>
+          <p class="registro">CRM-SP 123456 · RQE 54321</p>
+          <p class="atuacao">Cardiologia</p>
+          
+          
+          <ul><li>Graduação em Medicina pela Faculdade de Medicina da USP</li><li>Residência em Clínica Médica e em Cardiologia pelo InCor</li><li>Título de especialista pela Sociedade Brasileira de Cardiologia</li></ul>
+          
+        </div>
+      </article>
+      
+      <article class="pessoa">
+        <div class="foto">R</div>
+        <div class="corpo">
+          <h3>Dr. Rafael Nogueira</h3>
+          <p class="registro">CRM-SP 234567 · RQE 65432</p>
+          <p class="atuacao">Cardiologia e ecocardiografia</p>
+          
+          
+          <ul><li>Graduação em Medicina pela Unifesp</li><li>Residência em Cardiologia pelo Hospital das Clínicas</li></ul>
+          
+        </div>
+      </article>
+      
+    </div>
+  </div>
+</section>
+
+
+<section id="estrutura">
+  <div class="wrap duas">
+    <div>
+      <p class="kicker">A clínica</p>
+      <h2 class="titulo">A estrutura</h2>
+      <p class="lead"></p>
+      <ul class="lista-check">
+        
+        <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span>Consultórios climatizados e recepção com espera curta</span></li>
+        
+        <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span>Eletrocardiógrafo e aparelhos de MAPA e Holter no local</span></li>
+        
+        <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span>Prontuário eletrônico e receita digital assinada</span></li>
+        
+        <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span>Emissão de nota fiscal e recibo para reembolso de plano</span></li>
+        
+      </ul>
+    </div>
+    <div id="convenios">
+      
+      <p class="kicker">Convênios</p>
+      <h2 class="titulo" style="font-size:clamp(1.3rem,2.4vw,1.7rem)">Planos atendidos</h2>
+      <div class="convenios">
+        <span class="convenio">Unimed</span><span class="convenio">Bradesco Saúde</span><span class="convenio">SulAmérica</span><span class="convenio">Amil</span><span class="convenio">Porto Seguro Saúde</span><span class="convenio">Omint</span>
+      </div>
+      <p class="nota-convenio">A cobertura varia conforme o plano e o procedimento. Confirme pelo WhatsApp antes de agendar.</p>
+      
+      
+      <p class="nota-convenio" style="font-style:normal">Atendimento particular com emissão de nota fiscal e recibo para reembolso.</p>
+      
+    </div>
+  </div>
+</section>
+
+
+<section id="local" class="local">
+  <div class="wrap duas">
+    <div>
+      <p class="kicker">Onde ficamos</p>
+      <h2 class="titulo">Como chegar</h2>
+      <p class="lead">Rua Exemplo das Acácias, 1200, conjunto 82, 8º andar — Jardim Paulista, São Paulo - SP — 01415-002</p>
+      <p class="lead" style="margin-top:.6rem">A duas quadras da estação Consolação do metrô, no mesmo prédio da agência bancária.</p>
+      
+      <ul class="horarios">
+        <li><b>Segunda a sexta</b><span>08h às 19h</span></li><li><b>Sábado</b><span>08h às 13h</span></li>
+      </ul>
+      
+      <div class="hero-acoes" style="margin-top:1.5rem">
+        <a class="btn btn-escuro" href="https://www.google.com/maps/search/?api=1&amp;query=Cl%C3%ADnica%20Cardio%20Jardins%20Rua%20Exemplo%20das%20Ac%C3%A1cias%2C%201200%2C%20conjunto%2082%2C%208%C2%BA%20andar%20%E2%80%94%20Jardim%20Paulista%2C%20S%C3%A3o%20Paulo%20-%20SP%20%E2%80%94%2001415-002" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M12 21s7-6.2 7-11a7 7 0 1 0-14 0c0 4.8 7 11 7 11Z"/><circle cx="12" cy="10" r="2.6"/></svg>
+          Abrir no Google Maps
+        </a>
+      </div>
+    </div>
+    
+    <div class="mapa">
+      <iframe src="https://www.google.com/maps?q=Av.%20Paulista%201000%20S%C3%A3o%20Paulo&amp;output=embed" title="Mapa — Clínica Cardio Jardins" loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
+    </div>
+    
+  </div>
+</section>
+
+
+<section id="faq">
+  <div class="wrap">
+    <p class="kicker">Dúvidas frequentes</p>
+    <h2 class="titulo" style="margin:0 auto;text-align:center;max-width:26ch">Perguntas que mais chegam na recepção</h2>
+    <div class="faq">
+      
+      <details open>
+        <summary>Preciso de pedido médico para fazer o eletrocardiograma?</summary>
+        <p>Se o exame for solicitado na consulta, não. Se você já tem o pedido de outro médico, traga junto e podemos realizar no mesmo dia, conforme a agenda.</p>
+      </details>
+      
+      <details>
+        <summary>Quanto tempo dura a primeira consulta?</summary>
+        <p>Reservamos cerca de 40 minutos para a primeira consulta, para revisar exames anteriores e o histórico com calma.</p>
+      </details>
+      
+      <details>
+        <summary>Atendem por convênio?</summary>
+        <p>Sim, para os planos listados nesta página. A cobertura varia conforme o contrato e o procedimento, então confirme pelo WhatsApp antes de agendar.</p>
+      </details>
+      
+      <details>
+        <summary>Como recebo a receita e os laudos?</summary>
+        <p>Receita digital assinada e laudos chegam por WhatsApp ou e-mail, e ficam disponíveis para reenvio quando você precisar.</p>
+      </details>
+      
+      <details>
+        <summary>O que levar na consulta?</summary>
+        <p>Documento, carteirinha do convênio se for usar, lista das medicações em uso e exames dos últimos 12 meses.</p>
+      </details>
+      
+    </div>
+  </div>
+</section>
+
+
+<section class="cta">
+  <div class="wrap">
+    <h2>Vamos marcar sua consulta?</h2>
+    <p>Mande uma mensagem no WhatsApp e a recepção responde com os horários disponíveis.</p>
+    <div class="hero-acoes">
+      <a class="btn btn-zap" href="https://wa.me/5511999998888?text=Ol%C3%A1!%20Vi%20o%20site%20e%20gostaria%20de%20agendar%20uma%20consulta%20na%20Cl%C3%ADnica%20Cardio%20Jardins." target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.5 15.2L2 22l4.9-1.4A10 10 0 1 0 12 2Zm0 18.2c-1.5 0-3-.4-4.3-1.2l-.3-.2-3 .9.9-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Z"/></svg>
+        Agendar pelo WhatsApp
+      </a>
+      
+      <a class="btn btn-linha" href="tel:+551133334444">Ligar para (11) 3333-4444</a>
+      
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="grid">
+      <div>
+        <h4>Clínica Cardio Jardins</h4>
+        <p>Rua Exemplo das Acácias, 1200, conjunto 82, 8º andar — Jardim Paulista, São Paulo - SP — 01415-002</p>
+        <p style="margin-top:.5rem"><a href="tel:+551133334444">(11) 3333-4444</a></p>
+        <p><a href="mailto:contato@exemplo.com.br">contato@exemplo.com.br</a></p>
+        <p><a href="https://instagram.com/exemplo" target="_blank" rel="noopener">@exemplo</a></p>
+      </div>
+      
+      <div>
+        <h4>Horário</h4>
+        <p>Segunda a sexta<br>08h às 19h</p><p>Sábado<br>08h às 13h</p>
+      </div>
+      
+      <div>
+        <h4>Responsável técnico</h4>
+        <p class="responsavel-tecnico">Dra. Helena Marques — CRM-SP 123456 — RQE 54321</p>
+        <p style="margin-top:.9rem"><a href="#faq">Privacidade</a></p>
+      </div>
+    </div>
+    <p class="aviso-medico">
+      As informações deste site têm caráter informativo e não substituem a consulta,
+      o diagnóstico ou o tratamento por profissional habilitado. Em caso de emergência,
+      procure o serviço de urgência mais próximo ou ligue 192 (SAMU).
+    </p>
+    <div class="fim">
+      <span>© 2026 Clínica Cardio Jardins. Todos os direitos reservados.</span>
+      <span>Dra. Helena Marques — CRM-SP 123456 — RQE 54321</span>
+    </div>
+  </div>
+</footer>
+
+<nav class="barra" aria-label="Ações rápidas">
+  <a class="btn btn-zap" href="https://wa.me/5511999998888?text=Ol%C3%A1!%20Vi%20o%20site%20e%20gostaria%20de%20agendar%20uma%20consulta%20na%20Cl%C3%ADnica%20Cardio%20Jardins." target="_blank" rel="noopener">
+    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.5 15.2L2 22l4.9-1.4A10 10 0 1 0 12 2Z"/></svg>
+    Agendar
+  </a>
+  <a class="btn btn-escuro" href="tel:+551133334444">Ligar</a>
+</nav>
+
+<script>
+// Menu do celular. Sem framework: o site precisa abrir rápido em 4G ruim,
+// que é como a maioria dos pacientes vai chegar nele.
+(function(){
+  var b=document.getElementById('abre'), m=document.getElementById('menu');
+  if(!b||!m) return;
+  b.addEventListener('click',function(){
+    var aberto=m.classList.toggle('aberto');
+    b.setAttribute('aria-expanded',aberto?'true':'false');
+  });
+  m.addEventListener('click',function(e){
+    if(e.target.tagName==='A'){m.classList.remove('aberto');b.setAttribute('aria-expanded','false');}
+  });
+})();
+</script>
+</body>
+</html>

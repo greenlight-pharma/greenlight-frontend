@@ -1,0 +1,166 @@
+{
+  "_aviso": "Briefing de exemplo, dados fictícios. Registros no padrão do conselho apenas para demonstrar o formato — não correspondem a profissional real.",
+  "slug": "cardio-jardins",
+  "tipo": "clinica",
+  "conselho": "CFM",
+  "nome": "Clínica Cardio Jardins",
+  "descricao": "Clínica de cardiologia nos Jardins, São Paulo. Consulta cardiológica, eletrocardiograma, MAPA e Holter. Atendimento particular e convênios. Agende pelo WhatsApp.",
+  "chamada": "Cardiologia nos Jardins, <em>com hora marcada de verdade</em>",
+  "subchamada": "Consulta, eletrocardiograma e exames de rotina no mesmo endereço. Agendamento direto pelo WhatsApp, sem fila de espera na linha.",
+  "hero": {
+    "selo": "Atendimento de segunda a sábado"
+  },
+  "responsavel": {
+    "nome": "Dra. Helena Marques",
+    "registro": "CRM-SP 123456",
+    "rqe": "RQE 54321",
+    "especialidade": "Cardiologia",
+    "formacao": [
+      "Graduação em Medicina pela Faculdade de Medicina da USP",
+      "Residência em Clínica Médica e em Cardiologia pelo InCor",
+      "Título de especialista pela Sociedade Brasileira de Cardiologia"
+    ]
+  },
+  "equipe": [
+    {
+      "nome": "Dr. Rafael Nogueira",
+      "registro": "CRM-SP 234567",
+      "rqe": "RQE 65432",
+      "especialidade": "Cardiologia e ecocardiografia",
+      "formacao": [
+        "Graduação em Medicina pela Unifesp",
+        "Residência em Cardiologia pelo Hospital das Clínicas"
+      ]
+    }
+  ],
+  "especialidades": [
+    {
+      "nome": "Consulta cardiológica",
+      "icone": "coracao",
+      "descricao": "Avaliação clínica completa, com revisão de exames e histórico. Primeira consulta com 40 minutos reservados."
+    },
+    {
+      "nome": "Eletrocardiograma",
+      "icone": "exame",
+      "descricao": "Realizado e laudado na própria clínica, no mesmo dia da consulta quando indicado."
+    },
+    {
+      "nome": "MAPA e Holter 24h",
+      "icone": "estetoscopio",
+      "descricao": "Monitorização da pressão e do ritmo cardíaco por 24 horas, com instalação na clínica e retirada no dia seguinte."
+    },
+    {
+      "nome": "Avaliação pré-operatória",
+      "icone": "padrao",
+      "descricao": "Risco cirúrgico para cirurgias eletivas, com emissão de parecer para a equipe cirúrgica."
+    },
+    {
+      "nome": "Acompanhamento de hipertensão",
+      "icone": "padrao",
+      "descricao": "Seguimento de pressão alta, colesterol e diabetes, com ajuste de medicação e retornos programados."
+    },
+    {
+      "nome": "Check-up cardiológico",
+      "icone": "exame",
+      "descricao": "Conjunto de exames de rotina definido conforme idade, histórico familiar e fatores de risco."
+    }
+  ],
+  "estrutura": [
+    "Consultórios climatizados e recepção com espera curta",
+    "Eletrocardiógrafo e aparelhos de MAPA e Holter no local",
+    "Prontuário eletrônico e receita digital assinada",
+    "Emissão de nota fiscal e recibo para reembolso de plano"
+  ],
+  "convenios": [
+    "Unimed",
+    "Bradesco Saúde",
+    "SulAmérica",
+    "Amil",
+    "Porto Seguro Saúde",
+    "Omint"
+  ],
+  "pagamento": {
+    "particular": true,
+    "observacao": "cartão, Pix e boleto"
+  },
+  "endereco": {
+    "logradouro": "Rua Exemplo das Acácias, 1200",
+    "complemento": "conjunto 82, 8º andar",
+    "bairro": "Jardim Paulista",
+    "cidade": "São Paulo",
+    "uf": "SP",
+    "cep": "01415-002",
+    "referencia": "A duas quadras da estação Consolação do metrô, no mesmo prédio da agência bancária.",
+    "estacionamento": "Estacionamento no prédio, com desconto para pacientes",
+    "acessibilidade": "Prédio com elevador e acesso sem escadas",
+    "mapsEmbed": "https://www.google.com/maps?q=Av.%20Paulista%201000%20S%C3%A3o%20Paulo&output=embed"
+  },
+  "horarios": [
+    {
+      "dias": "Segunda a sexta",
+      "horario": "08h às 19h"
+    },
+    {
+      "dias": "Sábado",
+      "horario": "08h às 13h"
+    }
+  ],
+  "contato": {
+    "whatsapp": "5511999998888",
+    "mensagemWhatsapp": "Olá! Vi o site e gostaria de agendar uma consulta na Clínica Cardio Jardins.",
+    "telefone": "(11) 3333-4444",
+    "email": "contato@exemplo.com.br",
+    "instagram": "exemplo"
+  },
+  "faq": [
+    {
+      "pergunta": "Preciso de pedido médico para fazer o eletrocardiograma?",
+      "resposta": "Se o exame for solicitado na consulta, não. Se você já tem o pedido de outro médico, traga junto e podemos realizar no mesmo dia, conforme a agenda.",
+      "aberta": true
+    },
+    {
+      "pergunta": "Quanto tempo dura a primeira consulta?",
+      "resposta": "Reservamos cerca de 40 minutos para a primeira consulta, para revisar exames anteriores e o histórico com calma."
+    },
+    {
+      "pergunta": "Atendem por convênio?",
+      "resposta": "Sim, para os planos listados nesta página. A cobertura varia conforme o contrato e o procedimento, então confirme pelo WhatsApp antes de agendar."
+    },
+    {
+      "pergunta": "Como recebo a receita e os laudos?",
+      "resposta": "Receita digital assinada e laudos chegam por WhatsApp ou e-mail, e ficam disponíveis para reenvio quando você precisar."
+    },
+    {
+      "pergunta": "O que levar na consulta?",
+      "resposta": "Documento, carteirinha do convênio se for usar, lista das medicações em uso e exames dos últimos 12 meses."
+    }
+  ],
+  "marca": {
+    "corPrincipal": "#14596b",
+    "corDestaque": "#d98f3f",
+    "fonteTitulo": "Newsreader",
+    "fonteTexto": "Inter"
+  },
+  "politicaPrivacidade": true,
+  "_prospeccao": {
+    "origem": "Google Places API, busca 'cardiologista Jardim Paulista SP'",
+    "tinhaSite": false,
+    "notaGoogle": 4.9,
+    "avaliacoesGoogle": 143,
+    "_nota": "Nota e avaliações ficam AQUI, no briefing, para a conversa de venda. Não vão para o site: prefixo _ é ignorado pelo validador e nenhum campo _ é renderizado."
+  },
+  "faixa": [
+    {
+      "titulo": "Agenda que respeita o horário",
+      "texto": "Consultas espaçadas para não acumular espera na recepção."
+    },
+    {
+      "titulo": "Exames no mesmo endereço",
+      "texto": "Eletrocardiograma, MAPA e Holter feitos na própria clínica."
+    },
+    {
+      "titulo": "Receita e laudo digitais",
+      "texto": "Assinados e enviados por WhatsApp ou e-mail no mesmo dia."
+    }
+  ]
+}
