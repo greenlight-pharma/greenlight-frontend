@@ -7,12 +7,16 @@ saúde dentro do código.
 ```
 clinicas/
   prospectar.mjs      lista clínicas SEM SITE via Google Places API → CSV
+  briefar.mjs         CSV + modelo de nicho → rascunhos de briefing → sites
   validar.mjs         conformidade de publicidade médica (CFM/CFO/CFP/LGPD)
   gerar.mjs           briefing JSON → site HTML de arquivo único
+  testar.mjs          42 casos: conformidade, renderização, prospecção
   template/index.html o site
+  modelos/            bases por nicho e praça (odonto, fisio e derma em Angra)
   exemplos/           um briefing completo e um propositalmente irregular
-  sites/<slug>/       saída, publicada em /preview/<slug>/
-  prospectos/         seus CSVs (fora do git — são dados de terceiros)
+  sites/<slug>/       saída dos modelos, publicada em /preview/<slug>/
+  prospectos/         seus CSVs, rascunhos e sites de prospecto real
+                      (fora do git — levam dados de terceiros)
 
   PLAYBOOK.md         prospecção, abordagem, preço, os 30 primeiros dias
   COMPLIANCE.md       o que pode e o que não pode num site de saúde
@@ -28,8 +32,14 @@ node clinicas/prospectar.mjs --cidade "Campinas" --uf SP \
      --nichos cardiologista,ortopedista --saida clinicas/prospectos/campinas.csv
 node clinicas/prospectar.mjs --simular --cidade X   # testa sem chave e sem custo
 
-# 2. briefing: copie o exemplo e troque os dados
-cp clinicas/exemplos/cardio-jardins.json clinicas/exemplos/minha-clinica.json
+# 2. três rascunhos prontos a partir das melhores linhas do CSV
+node clinicas/briefar.mjs --csv clinicas/prospectos/campinas.csv \
+     --modelo derma-angra --top 3
+#   → clinicas/prospectos/briefings/<slug>.json  (confira _confirmarNaLigacao)
+#   → clinicas/prospectos/sites/<slug>/index.html
+
+# ou à mão: copie um modelo e troque os dados
+cp clinicas/modelos/derma-angra.json clinicas/prospectos/minha-clinica.json
 
 # 3. conferir e gerar
 node clinicas/validar.mjs clinicas/exemplos/minha-clinica.json
@@ -37,6 +47,24 @@ node clinicas/gerar.mjs   clinicas/exemplos/minha-clinica.json
 #   → clinicas/sites/minha-clinica/index.html
 #   → publicado em /preview/minha-clinica/ depois do deploy
 ```
+
+## Modo rascunho
+
+`"preview": true` no briefing é o estado "ainda não falei com a clínica":
+
+- a página leva `noindex, nofollow` — nunca compete no Google com o site
+  real da clínica nem é confundida com ele
+- ganha uma tarja dizendo que é demonstração feita com dados públicos
+- **registro e RQE que faltam saem como "a confirmar", marcados em
+  amarelo** — nunca inventados. É a primeira pergunta da ligação, e você
+  pode consultar o portal público do conselho antes
+- todas as outras vedações continuam sendo erro: mostrar um rascunho com
+  depoimento ou "melhor da cidade" é o mesmo desastre
+
+Sem `preview`, publicar exige o registro real. `briefar.mjs` nunca herda do
+modelo o registro nem o nome do responsável fictício, e limpa referência,
+estacionamento e acessibilidade — são afirmações de fato sobre um endereço
+que o modelo não conhece.
 
 ## As três decisões de projeto
 

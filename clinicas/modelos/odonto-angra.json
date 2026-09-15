@@ -1,0 +1,74 @@
+{
+  "_aviso": "MODELO para Angra dos Reis - RJ, odontologia. Clínica fictícia. Troque nome, slug, endereço, telefones e responsável pelos dados reais do prospecto (use briefar.mjs). Registro no formato do CRO apenas para demonstrar o campo.",
+  "slug": "odonto-angra-modelo",
+  "tipo": "odontologia",
+  "conselho": "CFO",
+  "preview": true,
+  "nome": "Odontologia Modelo Angra",
+  "descricao": "Consultório odontológico no Centro de Angra dos Reis. Clínica geral, urgência para dor de dente, prótese, implante e ortodontia. Atendimento aos sábados. Agende pelo WhatsApp.",
+  "chamada": "Dentista no Centro de Angra, <em>inclusive no sábado</em>",
+  "subchamada": "Consulta, urgência para dor de dente e tratamento completo no mesmo lugar. Quem trabalha em turno no estaleiro ou na usina não precisa faltar para cuidar dos dentes.",
+  "hero": { "selo": "Urgência para dor de dente no mesmo dia" },
+  "responsavel": {
+    "nome": "Dra. Modelo Sobrenome",
+    "registro": "CRO-RJ 45678",
+    "especialidade": "Odontologia clínica e prótese dentária",
+    "formacao": [
+      "Graduação em Odontologia",
+      "Especialização em Prótese Dentária",
+      "Atualização em Odontologia Restauradora"
+    ]
+  },
+  "especialidades": [
+    { "nome": "Urgência: dor de dente", "icone": "dente", "descricao": "Encaixe no mesmo dia para dor, dente quebrado ou restauração que caiu. Ligue pela manhã e a recepção encontra o horário." },
+    { "nome": "Clínica geral e restauração", "icone": "dente", "descricao": "Limpeza, restauração e tratamento de cárie, com plano de tratamento explicado e orçado antes de começar." },
+    { "nome": "Prótese e implante", "icone": "padrao", "descricao": "Prótese fixa, removível e implante, com etapas e prazos combinados na primeira consulta." },
+    { "nome": "Ortodontia", "icone": "padrao", "descricao": "Aparelho fixo e alinhador, com manutenção mensal e agenda que acompanha quem trabalha em escala." },
+    { "nome": "Odontopediatria", "icone": "crianca", "descricao": "Primeira consulta da criança, prevenção e acompanhamento do nascimento dos dentes." },
+    { "nome": "Periodontia e gengiva", "icone": "exame", "descricao": "Tratamento de gengiva que sangra ou retrai, raspagem e acompanhamento periódico." }
+  ],
+  "faixa": [
+    { "titulo": "Sábado pela manhã", "texto": "Para quem trabalha em turno no estaleiro, na usina ou no terminal." },
+    { "titulo": "Urgência no mesmo dia", "texto": "Dor de dente entra na agenda do dia, morador ou visitante." },
+    { "titulo": "Orçamento antes de começar", "texto": "Plano de tratamento por escrito, com etapas e formas de pagamento." }
+  ],
+  "estrutura": [
+    "Consultório no Centro, a pé do terminal de ônibus e do cais",
+    "Raio-X odontológico digital no local",
+    "Esterilização com autoclave e controle de ciclo",
+    "Emissão de nota fiscal e recibo para reembolso de plano"
+  ],
+  "convenios": ["Uniodonto", "Bradesco Dental", "Amil Dental", "SulAmérica Odonto", "Odontoprev", "AMS Petrobras"],
+  "pagamento": { "particular": true, "observacao": "cartão em até 12x, Pix e boleto" },
+  "endereco": {
+    "logradouro": "Rua do Comércio, 000",
+    "complemento": "sala 00",
+    "bairro": "Centro",
+    "cidade": "Angra dos Reis",
+    "uf": "RJ",
+    "cep": "23900-000",
+    "referencia": "No Centro histórico, a poucos minutos a pé do cais de Santa Luzia e do terminal rodoviário.",
+    "estacionamento": "Estacionamento rotativo na rua e estacionamento pago a uma quadra",
+    "acessibilidade": "Acesso pelo térreo, sem escadas"
+  },
+  "horarios": [
+    { "dias": "Segunda a quinta", "horario": "08h às 19h" },
+    { "dias": "Sexta", "horario": "08h às 17h" },
+    { "dias": "Sábado", "horario": "08h às 13h" }
+  ],
+  "contato": {
+    "whatsapp": "5524000000000",
+    "mensagemWhatsapp": "Olá! Vi o site e gostaria de marcar uma avaliação odontológica.",
+    "telefone": "(24) 0000-0000"
+  },
+  "faq": [
+    { "pergunta": "Estou com dor de dente agora. Vocês atendem hoje?", "resposta": "Mande mensagem no WhatsApp descrevendo a dor. Guardamos horários de urgência todos os dias e a recepção confirma na hora se conseguimos encaixar você hoje.", "aberta": true },
+    { "pergunta": "Trabalho em escala e não consigo vir em dia de semana.", "resposta": "Atendemos sábado das 8h às 13h, e é o horário mais procurado por quem trabalha em turno. Vale reservar com alguns dias de antecedência." },
+    { "pergunta": "Estou de férias em Angra e quebrei um dente. Atendem visitante?", "resposta": "Sim. Resolvemos a urgência e entregamos um relatório do que foi feito, para você continuar o tratamento com o seu dentista quando voltar." },
+    { "pergunta": "Vocês atendem convênio odontológico?", "resposta": "Atendemos os planos listados nesta página. A cobertura varia conforme o contrato e o procedimento, então confirme pelo WhatsApp antes de agendar." },
+    { "pergunta": "Como funciona o orçamento?", "resposta": "Na primeira consulta fazemos o exame e o raio-X, e você sai com o plano de tratamento por escrito: o que precisa ser feito, em quantas sessões e quanto custa. Você decide depois, sem compromisso." },
+    { "pergunta": "O que levar na primeira consulta?", "resposta": "Documento, carteirinha do plano se for usar, e radiografias ou orçamentos anteriores que você tenha." }
+  ],
+  "marca": { "corPrincipal": "#0f5f8a", "corDestaque": "#e0a33c", "fonteTitulo": "Newsreader", "fonteTexto": "Inter" },
+  "politicaPrivacidade": true
+}

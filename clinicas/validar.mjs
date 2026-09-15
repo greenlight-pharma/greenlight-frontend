@@ -132,6 +132,14 @@ export function validar(b) {
   const erro = (regra, msg, onde) => erros.push({ regra, msg, onde });
   const aviso = (regra, msg, onde) => avisos.push({ regra, msg, onde });
 
+  // [PREVIEW] Rascunho de prospecção, feito antes de falar com a clínica.
+  // Registro e RQE viram AVISO: você não tem esse dado ainda e não deve
+  // inventá-lo — o site sai com "a confirmar" visível e com noindex.
+  // Todas as outras vedações continuam sendo ERRO: mostrar ao cliente um
+  // rascunho com depoimento ou "melhor da cidade" é o mesmo desastre.
+  // Sem `preview`, publicar exige o registro real.
+  const faltaRegistro = b.preview ? aviso : erro;
+
   /* --- estrutura mínima --------------------------------------------- */
 
   if (!b.slug || !/^[a-z0-9-]+$/.test(b.slug))
@@ -159,7 +167,7 @@ export function validar(b) {
     if (!r?.nome)
       erro("responsavel", "responsável técnico é obrigatório: o site precisa dizer quem responde por ele.", "responsavel.nome");
     if (!r?.registro) {
-      erro("registro", `número de registro no conselho (${conselho}) é obrigatório na publicidade.`, "responsavel.registro");
+      faltaRegistro("registro", `número de registro no conselho (${conselho}) é obrigatório na publicidade.${b.preview ? " No rascunho sai como \"a confirmar\" — pergunte na ligação, ou consulte o portal público do conselho. Nunca invente." : ""}`, "responsavel.registro");
     } else if (REGISTRO[conselho] && !REGISTRO[conselho].test(r.registro.trim())) {
       erro("registro-formato", `"${r.registro}" não parece um registro ${conselho} válido. Ex.: ${
         { CFM: "CRM-SP 123456", CFO: "CRO-RJ 45678", CFP: "CRP 06/123456",
@@ -167,13 +175,13 @@ export function validar(b) {
       }`, "responsavel.registro");
     }
     if (conselho === "CFM" && r?.especialidade && !r?.rqe)
-      erro("rqe", `para anunciar "${r.especialidade}" o CFM exige o RQE (Registro de Qualificação de Especialista) junto do CRM. Sem RQE, o site descreve a atuação sem chamar de especialidade.`, "responsavel.rqe");
+      faltaRegistro("rqe", `para anunciar "${r.especialidade}" o CFM exige o RQE (Registro de Qualificação de Especialista) junto do CRM. Sem RQE, o site descreve a atuação sem chamar de especialidade.`, "responsavel.rqe");
 
     for (const [i, m] of (b.equipe || []).entries()) {
       if (!m.registro)
-        erro("registro-equipe", `${m.nome || `membro ${i + 1}`} aparece na equipe sem registro no conselho.`, `equipe[${i}].registro`);
+        faltaRegistro("registro-equipe", `${m.nome || `membro ${i + 1}`} aparece na equipe sem registro no conselho.`, `equipe[${i}].registro`);
       if (conselho === "CFM" && m.especialidade && !m.rqe)
-        erro("rqe-equipe", `${m.nome || `membro ${i + 1}`} anuncia especialidade sem RQE.`, `equipe[${i}].rqe`);
+        faltaRegistro("rqe-equipe", `${m.nome || `membro ${i + 1}`} anuncia especialidade sem RQE.`, `equipe[${i}].rqe`);
     }
   }
 

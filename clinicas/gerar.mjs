@@ -312,7 +312,12 @@ function preparar(b) {
   // site, então é o primeiro nome que o paciente lê.
   const equipe = [b.responsavel, ...(b.equipe || [])]
     .filter(Boolean)
-    .map((p) => ({ ...p, inicial: p.foto ? "" : (p.nome || "").replace(/^dr[ao]?[ªº.]*\s*/i, "").charAt(0).toUpperCase() }));
+    .map((p) => ({
+      ...p,
+      registro: p.registro || (b.preview ? "registro a confirmar" : ""),
+      registroOk: p.registro || "",
+      registroPendente: !p.registro && b.preview ? "registro a confirmar" : "",
+      inicial: p.foto ? "" : (p.nome || "").replace(/^dr[ao]?[ªº.]*\s*/i, "").charAt(0).toUpperCase() }));
 
   return {
     ...b,
@@ -337,13 +342,19 @@ function preparar(b) {
       ...s,
       svg: ICONES[s.icone] || ICONES.padrao,
     })),
+    // [PREVIEW] Rascunho de prospecção: a página pode ser mostrada, não
+    // publicada. Leva noindex (para nunca competir no Google com o site
+    // real da clínica, nem ser confundida com ele) e uma tarja visível.
+    // O registro que falta aparece como "a confirmar" — nunca inventado.
+    registroPendente: !b.responsavel?.registro,
+
     // [CONFORMIDADE] a linha de rodapé com registro do responsável técnico
     // é obrigatória em publicidade de serviço de saúde. Montada aqui para
     // que nenhum site saia sem ela.
     linhaResponsavel: b.responsavel
       ? [
           b.responsavel.nome,
-          b.responsavel.registro,
+          b.responsavel.registro || (b.preview ? "registro a confirmar" : ""),
           b.responsavel.rqe,
         ].filter(Boolean).join(" — ")
       : "",
@@ -373,7 +384,13 @@ function principal() {
   const modelo = readFileSync(join(AQUI, "template", "index.html"), "utf8");
   const html = renderizar(modelo, { dados: preparar(briefing) });
 
-  const destino = join(AQUI, "sites", briefing.slug);
+  // Sites de prospecto real saem para clinicas/prospectos/ (fora do git):
+  // levam nome, telefone e endereço de terceiros. Só os modelos ficam
+  // versionados, pela mesma razão que os CSVs de prospecção não ficam.
+  const i = process.argv.indexOf("--saida");
+  const destino = i >= 0 && process.argv[i + 1]
+    ? resolve(process.argv[i + 1], briefing.slug)
+    : join(AQUI, "sites", briefing.slug);
   mkdirSync(destino, { recursive: true });
   const caminho = join(destino, "index.html");
   writeFileSync(caminho, html, "utf8");

@@ -62,6 +62,8 @@ ok("blocos aninhados renderizam (convênios dentro de estrutura)",
 ok("link do WhatsApp com mensagem pré-escrita",
    html.includes(`wa.me/${bom.contato.whatsapp}?text=`));
 ok("registro do responsável visível", html.includes(bom.responsavel.registro));
+ok("registro aparece no cartão da equipe, não só no rodapé",
+   new RegExp(`class="registro">\\s*${bom.responsavel.registro}`).test(html));
 ok("RQE visível", html.includes(bom.responsavel.rqe));
 ok("aviso de que não substitui consulta", html.includes("não substituem a consulta"));
 ok("sem aggregateRating no JSON-LD", !html.includes("aggregateRating"));
@@ -86,6 +88,78 @@ ok("chamada renderiza <em> sem escapar (destaque do hero)", h1.includes("<em>"))
 ok("inicial do avatar ignora o título (Dra. Helena → H)",
    /class="foto">H/.test(html));
 ok("cor escura derivada da cor principal", /--principal-escuro:#0e3d49/.test(html));
+
+console.log("\nModo rascunho (preview de prospecção)");
+{
+  const rascunho = JSON.parse(JSON.stringify(bom));
+  rascunho.slug = "teste-preview";
+  rascunho.preview = true;
+  delete rascunho.responsavel.registro;
+  delete rascunho.responsavel.rqe;
+  delete rascunho.equipe[0].registro;
+  delete rascunho.equipe[0].rqe;
+
+  const r = validar(rascunho);
+  ok("rascunho sem registro não é erro, é aviso",
+     r.erros.length === 0 && r.avisos.some((a) => a.regra === "registro"),
+     JSON.stringify(r.erros.map((e) => e.regra)));
+  ok("rascunho ainda barra vedação de conteúdo",
+     validar({ ...rascunho, chamada: "A melhor clínica da cidade" }).erros
+       .some((e) => e.regra === "autopromocao-superlativo"));
+
+  writeFileSync("/tmp/briefing-preview.json", JSON.stringify(rascunho));
+  execFileSync("node", ["clinicas/gerar.mjs", "/tmp/briefing-preview.json"], { stdio: "pipe" });
+  const h = readFileSync("clinicas/sites/teste-preview/index.html", "utf8");
+  ok("rascunho leva noindex", /noindex, nofollow/.test(h));
+  ok("rascunho mostra tarja de prévia", /class="tarja"/.test(h));
+  ok("rascunho marca o registro como a confirmar, sem inventar número",
+     /class="pendente">registro a confirmar/.test(h) && !/CRM-\w\w \d/.test(h));
+  rmSync("clinicas/sites/teste-preview", { recursive: true, force: true });
+}
+
+// Publicar exige o registro real: sem `preview`, falta de registro bloqueia.
+ok("site publicável não sai sem registro real",
+   validar({ ...bom, responsavel: { ...bom.responsavel, registro: undefined } })
+     .erros.some((e) => e.regra === "registro"));
+ok("site publicável não leva noindex", !/noindex/.test(html));
+
+console.log("\nBriefar (CSV → rascunho)");
+{
+  const csv = [
+    "qualificado,nicho,nome,categoria,telefone,nota,avaliacoes,endereco,maps,placeId,site",
+    'sim,fisioterapeuta,Fisio Teste,Fisioterapeuta,(24) 98800-0001,4.9,96,"R. Japoranga, 320 - Japuiba, Angra dos Reis - RJ, 23934-055, Brazil",,px1,',
+    'sim,fisioterapeuta,Fixo Teste,Fisioterapeuta,(24) 3365-0002,4.8,54,"Rua do Comercio, 220 - Centro, Angra dos Reis - RJ, 23900-565, Brazil",,px2,',
+    'nao,fisioterapeuta,Nao Qualificado,Fisioterapeuta,,3.1,4,"Rua X, 1 - Centro, Angra dos Reis - RJ, Brazil",,px3,',
+  ].join("\n");
+  writeFileSync("/tmp/csv-teste.csv", "\uFEFF" + csv);
+  const saida = execFileSync("node", ["clinicas/briefar.mjs", "--csv", "/tmp/csv-teste.csv",
+    "--modelo", "fisio-angra", "--top", "3", "--destino", "/tmp/prospectos-teste"],
+    { encoding: "utf8" });
+
+  ok("só linhas qualificadas entram", /2 rascunho\(s\)/.test(saida));
+  ok("avisa quando o telefone é fixo (não recebe WhatsApp)",
+     /parece fixo/.test(saida));
+
+  const b = JSON.parse(readFileSync("/tmp/prospectos-teste/briefings/fisio-teste.json", "utf8"));
+  ok("endereço do Places é decomposto, UF incluída",
+     b.endereco.logradouro === "R. Japoranga, 320" && b.endereco.bairro === "Japuiba" &&
+     b.endereco.cidade === "Angra dos Reis" && b.endereco.uf === "RJ" &&
+     b.endereco.cep === "23934-055",
+     JSON.stringify(b.endereco));
+  ok("celular vira link de WhatsApp com 55 e DDD", b.contato.whatsapp === "5524988000001");
+  ok("registro de demonstração do modelo NÃO é herdado",
+     !b.responsavel.registro && !b.responsavel.rqe && !JSON.stringify(b).includes("CREFITO-"));
+  ok("nome do responsável fictício NÃO é herdado",
+     !JSON.stringify(b).includes("Modelo Sobrenome"));
+  ok("afirmação física sobre o endereço não é inventada",
+     !b.endereco.referencia && !b.endereco.estacionamento && !b.endereco.acessibilidade);
+  ok("rascunho marcado como preview", b.preview === true);
+  ok("nota do Google guardada em _prospeccao, fora da página",
+     b._prospeccao.notaGoogle === "4.9" &&
+     !readFileSync("/tmp/prospectos-teste/sites/fisio-teste/index.html", "utf8")
+        .includes("96 avalia"));
+  rmSync("/tmp/prospectos-teste", { recursive: true, force: true });
+}
 
 console.log("\nProspecção");
 const saida = execFileSync("node",

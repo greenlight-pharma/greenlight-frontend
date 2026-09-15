@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>{{ nome }}{{#se endereco.bairro}} — {{ endereco.bairro }}{{/se}}{{#se endereco.cidade}}, {{ endereco.cidade }}{{/se}}</title>
 <meta name="description" content="{{ descricao }}">
-<meta name="robots" content="index, follow">
+{{#se preview}}<meta name="robots" content="noindex, nofollow">{{/se}}{{#se site.url}}<meta name="robots" content="index, follow">{{/se}}
 {{#se site.url}}<link rel="canonical" href="{{ site.url }}">{{/se}}
 <meta property="og:type" content="website">
 <meta property="og:title" content="{{ nome }}">
@@ -211,6 +211,15 @@ footer .fim{border-top:1px solid rgba(255,255,255,.1);margin-top:2.4rem;padding-
 .responsavel-tecnico{color:#cdd9e4;font-weight:600}
 .aviso-medico{font-size:.8rem;color:#7d8fa0;margin-top:.9rem;max-width:70ch;line-height:1.55}
 
+/* ---------------- TARJA DE RASCUNHO ---------------- */
+/* Só aparece em preview de prospecção. Deixa explícito, para quem abrir o
+   link, que esta é uma proposta e não o site oficial da clínica. */
+.tarja{background:#3b2c05;color:#ffd98a;font-size:.84rem;padding:.6rem 20px;
+  text-align:center;line-height:1.45;border-bottom:1px solid #6b5313}
+.tarja b{color:#ffe9b8}
+.pendente{display:inline-block;background:#fff4d6;color:#7a5600;border:1px dashed #c99a2e;
+  border-radius:6px;padding:.05rem .45rem;font-size:.8rem;font-weight:600}
+
 /* ---------------- BARRA FIXA (celular) ---------------- */
 .barra{position:fixed;left:0;right:0;bottom:0;z-index:60;display:none;gap:.55rem;
   padding:.6rem .8rem calc(.6rem + env(safe-area-inset-bottom,0px));
@@ -243,6 +252,14 @@ footer .fim{border-top:1px solid rgba(255,255,255,.1);margin-top:2.4rem;padding-
 </style>
 </head>
 <body>
+
+{{#se preview}}
+<div class="tarja">
+  <b>Prévia</b> — página de demonstração feita para a {{ nome }} a partir de
+  informações públicas. Não é o site oficial da clínica e não está indexada.
+  {{#se registroPendente}}Os campos marcados como <span class="pendente">a confirmar</span> precisam ser preenchidos pela clínica.{{/se}}
+</div>
+{{/se}}
 
 <header class="topo">
   <div class="topo-inner">
@@ -380,7 +397,7 @@ footer .fim{border-top:1px solid rgba(255,255,255,.1);margin-top:2.4rem;padding-
         <div class="foto">{{#se .foto}}<img src="{{ .foto }}" alt="{{ .nome }}" loading="lazy">{{/se}}{{#se .inicial}}{{ .inicial }}{{/se}}</div>
         <div class="corpo">
           <h3>{{ .nome }}</h3>
-          <p class="registro">{{ .registro }}{{#se .rqe}} · {{ .rqe }}{{/se}}</p>
+          <p class="registro">{{#se .registroOk}}{{ .registroOk }}{{/se}}{{#se .registroPendente}}<span class="pendente">{{ .registroPendente }}</span>{{/se}}{{#se .rqe}} · {{ .rqe }}{{/se}}</p>
           {{#se .especialidade}}<p class="atuacao">{{ .especialidade }}</p>{{/se}}
           {{#se .atuacao}}<p class="atuacao">{{ .atuacao }}</p>{{/se}}
           {{#se .formacao}}
