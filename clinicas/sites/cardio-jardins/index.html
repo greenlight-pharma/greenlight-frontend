@@ -15,7 +15,7 @@
 <meta name="theme-color" content="#14596b">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Newsreader:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:wght@300;400;500;600&amp;family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet">
 
 <!-- Busca local: é isto que faz a clínica aparecer no Google com endereço,
      horário e telefone. Gerado a partir do briefing, sem nota nem avaliação
@@ -81,11 +81,12 @@
   --principal:#14596b;
   --principal-escuro:#0e3d49;
   --destaque:#d98f3f;
+  --destaque-hero:#e1a565;
   --tinta:#1b2733;
   --tinta-suave:#54626f;
   --fundo:#ffffff;
-  --fundo-2:#f4f8f8;
-  --borda:#e4eaef;
+  --fundo-2:#f1f7f8;
+  --borda:#dde8ea;
   --zap:#25d366;
   --sombra:0 18px 40px -24px rgba(16,42,67,.28);
   --raio:16px;
@@ -145,7 +146,9 @@ header.topo{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.93);
   padding:.4rem .9rem;border-radius:99px;margin-bottom:1.2rem}
 .hero .selo svg{width:15px;height:15px}
 .hero h1{color:#fff;font-size:clamp(2rem,4.8vw,3.3rem);max-width:19ch}
-.hero h1 em{font-style:normal;color:var(--destaque)}
+/* Tom clareado: o destaque da paleta não passa de 3:1 sobre o hero em
+   paleta quente. Calculado no gerador, não escolhido a olho. */
+.hero h1 em{font-style:normal;color:var(--destaque-hero)}
 .hero p.sub{margin:1.1rem 0 1.8rem;font-size:clamp(1rem,1.6vw,1.15rem);max-width:48ch;
   color:rgba(255,255,255,.92);font-weight:300}
 .hero-acoes{display:flex;gap:.8rem;flex-wrap:wrap}

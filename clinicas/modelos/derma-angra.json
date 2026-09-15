@@ -1,42 +1,69 @@
 {
-  "_aviso": "MODELO para Angra dos Reis - RJ, dermatologia. Clínica fictícia. Registro e RQE no formato do CFM apenas para demonstrar os campos — nunca invente esses números para um prospecto real; consulte o portal público do conselho ou pergunte na ligação.",
+  "_aviso": "MODELO para Angra dos Reis - RJ, dermatologia. Layout editorial + paleta nude: consultório de profissional único, o caso em que o site vende a pessoa. Profissional fictícia; registro e RQE no formato do CFM só para demonstrar os campos. SEM RETRATO de propósito — veja o painel tipográfico no lugar da foto: é o estado do rascunho antes de a médica te mandar a imagem dela.",
   "slug": "derma-angra-modelo",
   "tipo": "clinica",
   "conselho": "CFM",
   "preview": true,
-  "nome": "Dermatologia Modelo Angra",
-  "descricao": "Dermatologia no Centro de Angra dos Reis. Consulta, mapeamento de pintas com dermatoscopia, prevenção de câncer de pele, acne e queda de cabelo. Agende pelo WhatsApp.",
-  "chamada": "Dermatologia em Angra, <em>para quem vive no sol todos os dias</em>",
-  "subchamada": "Mapeamento de pintas com dermatoscopia, avaliação de manchas e acompanhamento de pele. Morar na Costa Verde significa exposição ao sol o ano inteiro — a pele precisa ser olhada.",
-  "hero": { "selo": "Dermatoscopia digital na consulta" },
+  "layout": "editorial",
+  "paleta": "nude",
+  "nome": "Dra. Modelo Sobrenome",
+  "monograma": "MS",
+  "descricao": "Dermatologia em Angra dos Reis. Consulta dermatológica, mapeamento de pintas com dermatoscopia digital, prevenção de câncer de pele, acne e queda de cabelo. Agende pelo WhatsApp.",
+  "chamada": "Dra. Modelo Sobrenome",
+  "subchamada": "Dermatologia clínica com tempo de consulta para <b>olhar a pele inteira</b> — não só a queixa do dia.",
+  "hero": { "selo": "Atendimento em Angra dos Reis / RJ" },
+  "credencial": { "numero": "+12", "texto": "anos de atuação em dermatologia clínica" },
   "responsavel": {
     "nome": "Dra. Modelo Sobrenome",
     "registro": "CRM-RJ 123456",
     "rqe": "RQE 54321",
-    "especialidade": "Dermatologia",
+    "especialidade": "Médica Dermatologista",
     "formacao": [
       "Graduação em Medicina",
       "Residência médica em Dermatologia",
-      "Título de especialista pela Sociedade Brasileira de Dermatologia"
+      "Título de especialista pela Sociedade Brasileira de Dermatologia",
+      "Membro titular da Sociedade Brasileira de Dermatologia"
     ]
   },
+  "sobre": {
+    "texto": "Moro e atendo no litoral, onde a pele recebe sol o ano inteiro. Isso muda a dermatologia que se pratica aqui: o mapeamento de pintas deixa de ser exame de rotina e passa a ser o centro do acompanhamento.",
+    "complemento": "A consulta é agendada com tempo para o exame de corpo inteiro, a revisão do seu histórico e a explicação do que foi encontrado — com o registro das lesões guardado para comparar na próxima visita."
+  },
   "especialidades": [
-    { "nome": "Mapeamento de pintas", "icone": "olho", "descricao": "Exame de corpo inteiro com dermatoscopia, registrando as lesões para comparar na revisão seguinte. É o exame central em cidade de sol e mar." },
-    { "nome": "Prevenção de câncer de pele", "icone": "pele", "descricao": "Avaliação de manchas e feridas que não cicatrizam, com biópsia e remoção de lesão quando indicado." },
-    { "nome": "Acne e cicatriz de acne", "icone": "pele", "descricao": "Tratamento clínico de acne no adolescente e no adulto, com acompanhamento até o controle do quadro." },
-    { "nome": "Queda de cabelo", "icone": "padrao", "descricao": "Investigação de queda e rarefação, incluindo exame do couro cabeludo e pedido dos exames de sangue necessários." },
-    { "nome": "Micoses e dermatites", "icone": "exame", "descricao": "Micose de pele e unha, dermatite, eczema e alergia — queixas que o clima úmido do litoral agrava." },
-    { "nome": "Pequenos procedimentos", "icone": "estetoscopio", "descricao": "Remoção de verruga e lesão benigna, crioterapia e cauterização, feitos no próprio consultório." }
+    { "nome": "Mapeamento de pintas", "descricao": "Exame de corpo inteiro com dermatoscopia digital, com registro das lesões para comparação nas revisões seguintes." },
+    { "nome": "Prevenção de câncer de pele", "descricao": "Avaliação de manchas, lesões que crescem e feridas que não cicatrizam, com biópsia quando indicado." },
+    { "nome": "Dermatologia clínica", "descricao": "Acne, dermatite, psoríase, micoses, urticária e as queixas que o clima úmido do litoral agrava." },
+    { "nome": "Cabelo e unhas", "descricao": "Investigação de queda e rarefação capilar, com exame do couro cabeludo e solicitação dos exames necessários." },
+    { "nome": "Dermatologia da criança", "descricao": "Manchas de nascimento, dermatite atópica e as dúvidas de pele mais comuns na primeira infância." }
   ],
-  "faixa": [
-    { "titulo": "Dermatoscopia na própria consulta", "texto": "As pintas são examinadas e registradas no mesmo atendimento." },
-    { "titulo": "Retorno programado", "texto": "A revisão do mapeamento fica marcada antes de você sair." },
-    { "titulo": "Laudo digital", "texto": "Resultado e orientação enviados por WhatsApp ou e-mail." }
+  "procedimentos": [
+    { "nome": "Dermatoscopia digital", "nota": "na consulta" },
+    { "nome": "Biópsia de pele", "nota": "com encaminhamento do material" },
+    { "nome": "Exérese de lesão benigna" },
+    { "nome": "Crioterapia" },
+    { "nome": "Cauterização química" },
+    { "nome": "Drenagem de abscesso simples" },
+    { "nome": "Curetagem de molusco contagioso" },
+    { "nome": "Infiltração de lesão inflamatória" }
   ],
+  "secaoExtra": {
+    "menu": "Sua pele",
+    "olho": "Orientação",
+    "titulo": "Morar no litoral pede um cuidado diferente",
+    "texto": "Quem vive na Costa Verde acumula exposição solar todos os dias do ano, não só nas férias. O efeito é somado ao longo da vida, e a maior parte do dano acontece sem queimadura visível. Algumas coisas valem para praticamente todo mundo aqui:",
+    "itens": [
+      "Protetor solar todos os dias, inclusive nublado e dentro do carro",
+      "Reaplicação a cada duas horas quando há exposição direta",
+      "Camiseta com proteção UV para quem trabalha embarcado ou ao ar livre",
+      "Uma revisão anual das pintas, ou intervalo menor se há histórico na família",
+      "Atenção a pinta que mudou de cor, cresceu, coça ou sangra — isso não espera a revisão"
+    ]
+  },
   "estrutura": [
-    "Dermatoscópio digital com registro de imagem para comparação",
+    "Dermatoscópio digital com registro de imagem para comparação entre consultas",
     "Sala para pequenos procedimentos no próprio consultório",
     "Prontuário eletrônico e receita digital assinada",
+    "Laudos e orientações enviados por WhatsApp ou e-mail",
     "Emissão de nota fiscal e recibo para reembolso de plano"
   ],
   "convenios": ["Unimed", "AMS Petrobras", "Bradesco Saúde", "SulAmérica", "Amil", "CASSI", "GEAP"],
@@ -50,7 +77,8 @@
     "cep": "23900-000",
     "referencia": "No Centro, próximo ao cais de Santa Luzia — acessível para quem vem das ilhas pela barca e para quem chega pela Rio-Santos.",
     "estacionamento": "Estacionamento rotativo na rua e estacionamento pago a uma quadra",
-    "acessibilidade": "Prédio com elevador"
+    "acessibilidade": "Prédio com elevador",
+    "mapsEmbed": "https://www.google.com/maps?q=Centro,+Angra+dos+Reis+-+RJ&output=embed"
   },
   "horarios": [
     { "dias": "Segunda, quarta e quinta", "horario": "09h às 18h" },
@@ -61,13 +89,20 @@
     "mensagemWhatsapp": "Olá! Vi o site e gostaria de agendar uma consulta dermatológica.",
     "telefone": "(24) 0000-0000"
   },
+  "textos": {
+    "tituloServicos": "O que eu atendo",
+    "tituloEstrutura": "O consultório",
+    "tituloLocal": "Onde e como atendo",
+    "tituloFaq": "O que mais me perguntam",
+    "tituloCta": "Vamos olhar a sua pele com calma?",
+    "leadCta": "Mande uma mensagem no WhatsApp e a recepção responde com os horários disponíveis."
+  },
   "faq": [
-    { "pergunta": "Com que frequência devo mapear as pintas?", "resposta": "Para a maioria das pessoas, uma vez por ano. Quem tem muitas pintas, pele clara, histórico familiar de câncer de pele ou trabalha exposto ao sol pode precisar de intervalo menor — isso é definido na consulta.", "aberta": true },
-    { "pergunta": "Apareceu uma mancha nova. É urgente?", "resposta": "Mancha ou pinta que mudou de cor, cresceu, começou a coçar ou sangrar, e ferida que não cicatriza em algumas semanas, merecem avaliação sem esperar a revisão anual. Mande mensagem e a recepção procura um horário próximo." },
-    { "pergunta": "Moro em uma das ilhas. Como funciona o acompanhamento?", "resposta": "Concentramos o que for possível em um único atendimento: consulta, dermatoscopia e procedimento simples no mesmo dia, para você não precisar voltar por causa da barca. Combine pelo WhatsApp antes de vir." },
-    { "pergunta": "Atendem convênio?", "resposta": "Atendemos os planos listados nesta página. A cobertura varia conforme o contrato e o procedimento, então confirme pelo WhatsApp antes de agendar." },
-    { "pergunta": "O que levar na consulta?", "resposta": "Documento, carteirinha do convênio se for usar, lista das medicações em uso e, se já fez, os laudos ou fotos de mapeamentos anteriores." }
+    { "pergunta": "Com que frequência devo mapear as pintas?", "resposta": "Para a maioria das pessoas, uma vez por ano. Quem tem muitas pintas, pele clara, histórico familiar de câncer de pele ou trabalha exposto ao sol pode precisar de intervalo menor — definimos isso na consulta.", "aberta": true },
+    { "pergunta": "Apareceu uma mancha nova. É urgente?", "resposta": "Pinta que mudou de cor, cresceu, começou a coçar ou sangrar, e ferida que não cicatriza em algumas semanas, merecem avaliação sem esperar a revisão anual. Mande mensagem e a recepção procura um horário próximo." },
+    { "pergunta": "Moro em uma das ilhas. Como funciona o acompanhamento?", "resposta": "Concentramos o que for possível num único atendimento: consulta, dermatoscopia e procedimento simples no mesmo dia, para você não precisar voltar por causa da barca. Combine pelo WhatsApp antes de vir." },
+    { "pergunta": "Atende convênio?", "resposta": "Atendo os planos listados nesta página. A cobertura varia conforme o contrato e o procedimento, então confirme pelo WhatsApp antes de agendar." },
+    { "pergunta": "O que levar na consulta?", "resposta": "Documento, carteirinha do convênio se for usar, lista das medicações em uso e, se já fez, os laudos ou as imagens de mapeamentos anteriores." }
   ],
-  "marca": { "corPrincipal": "#1c5a7a", "corDestaque": "#d98f3f", "fonteTitulo": "Newsreader", "fonteTexto": "Inter" },
   "politicaPrivacidade": true
 }

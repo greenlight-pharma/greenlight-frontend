@@ -217,6 +217,35 @@ export function validar(b) {
   if (!(b.faq || []).length)
     aviso("faq", "3 a 6 perguntas frequentes reduzem ligação repetida na recepção — é um argumento de venda por si só.", "faq");
 
+  /* --- Imagens -------------------------------------------------------- */
+  // [FOTOS] O retrato é o que faz um site de consultório parecer bom, e é
+  // também a peça com dono: o fotógrafo tem o direito autoral e a pessoa
+  // tem direito de imagem. Baixar do Instagram e publicar não é atalho, é
+  // uso indevido de obra e de imagem. Então o gerador exige que esteja
+  // escrito de onde veio e quem autorizou — não para enfeitar, mas porque
+  // sem isso a foto não deveria estar na página.
+  const m = b.midia || {};
+  if (m.retrato) {
+    if (!m.origem)
+      erro("foto-origem", "midia.retrato está preenchido mas midia.origem não diz de onde a foto veio. Registre: \"enviada pela clínica no WhatsApp em 14/09/2026\", \"fotógrafo X, contratado pela clínica\", \"banco de imagens Y, licença Z\".", "midia.origem");
+    if (!m.autorizacao)
+      erro("foto-autorizacao", "midia.retrato exige midia.autorizacao: quem autorizou o uso da imagem no site e quando. Foto de pessoa tem direito de imagem, e foto feita por terceiro tem direito autoral do fotógrafo — nem o print do Instagram nem o resultado de busca no Google servem.", "midia.autorizacao");
+    if (!m.retratoAlt)
+      aviso("foto-alt", "midia.retratoAlt descreve a imagem para quem usa leitor de tela e para o Google. Uma linha basta.", "midia.retratoAlt");
+  }
+  for (const [i, g] of (m.galeria || []).entries()) {
+    if (!g.tipo)
+      erro("foto-tipo", `galeria[${i}] precisa de tipo: "propria" (foto do próprio consultório) ou "ilustrativa" (banco de imagens). Imagem que não é do lugar aparece rotulada na página — apresentar foto de outro consultório como se fosse o dele é publicidade enganosa.`, `midia.galeria[${i}].tipo`);
+    if (g.tipo && !["propria", "ilustrativa"].includes(g.tipo))
+      erro("foto-tipo", `galeria[${i}].tipo = "${g.tipo}" não existe. Use "propria" ou "ilustrativa".`, `midia.galeria[${i}].tipo`);
+    if (g.tipo === "propria" && !m.origem)
+      erro("foto-origem", `galeria[${i}] é foto própria do consultório mas midia.origem não registra de onde ela veio nem quem a enviou.`, "midia.origem");
+    if (/paciente/i.test(`${g.alt || ""} ${g.legenda || ""}`))
+      erro("foto-paciente", `galeria[${i}] menciona paciente. Imagem de paciente em publicidade exige autorização específica por escrito e ainda assim é vedada em boa parte dos casos. Fotografe a estrutura, a recepção e a equipe.`, `midia.galeria[${i}].alt`);
+  }
+  if ((m.galeria || []).some((g) => g.tipo === "ilustrativa") && !m.creditos)
+    aviso("foto-creditos", "há imagem ilustrativa na galeria: registre o crédito e a licença em midia.creditos. Unsplash e Pexels permitem uso comercial, mas o crédito é boa prática e prova a procedência se alguém perguntar.", "midia.creditos");
+
   /* --- LGPD ---------------------------------------------------------- */
   // O template não tem formulário de propósito: agendamento é por WhatsApp
   // e telefone. Sem coleta, a superfície de LGPD do site é quase zero.

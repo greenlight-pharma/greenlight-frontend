@@ -18,6 +18,7 @@ import { readFileSync, writeFileSync, mkdirSync } from "node:fs";
 import { dirname, join, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 import { validar, formatarRelatorio } from "./validar.mjs";
+import { resolverEstilo } from "./estilos.mjs";
 
 const AQUI = dirname(fileURLToPath(import.meta.url));
 
@@ -277,20 +278,67 @@ function sigla(nome = "") {
   return base.slice(0, 2).map((p) => p[0].toUpperCase()).join("") || "C";
 }
 
-function marcaCompleta(m = {}) {
-  const principal = m.corPrincipal || "#12626e";
-  return {
-    corPrincipal: principal,
-    corPrincipalEscuro: m.corPrincipalEscuro || escurecer(principal),
-    corDestaque: m.corDestaque || "#d99b3f",
-    corFundoSuave: m.corFundoSuave || lavar(principal),
-    fonteTitulo: m.fonteTitulo || "Newsreader",
-    fonteTexto: m.fonteTexto || "Inter",
-    sigla: m.sigla || "",
-  };
+// Uma única URL do Google Fonts para os dois tipos da paleta. Nome com
+// espaço vira "+", como a API exige — errar isso derruba a fonte inteira
+// e o site fica com a serifa do sistema.
+function urlFontes(cores) {
+  const familia = (nome, pesos) =>
+    `family=${String(nome).trim().replace(/\s+/g, "+")}:wght@${pesos}`;
+  const partes = [familia(cores.fonteTitulo, "300;400;500;600")];
+  if (cores.fonteTexto !== cores.fonteTitulo) {
+    partes.push(familia(cores.fonteTexto, "300;400;500;600;700"));
+  }
+  return `https://fonts.googleapis.com/css2?${partes.join("&")}&display=swap`;
+}
+
+/* ------------------------------------------------------------------ *
+ * Contraste
+ *
+ * O layout clinico usa o hero escuro, com o destaque do título por cima da
+ * cor principal. Em paleta quente (rose, oceano) esse par cai para 2 ou 3
+ * de contraste — legível num monitor bom, ilegível no celular no sol, que
+ * é onde o paciente lê. Então o tom do destaque no hero não é o da paleta:
+ * é clareado até passar de 3.5:1, que é a folga confortável sobre o mínimo
+ * de 3:1 da WCAG para texto grande.
+ * ------------------------------------------------------------------ */
+
+const paraLinear = (c) => {
+  const v = c / 255;
+  return v <= 0.03928 ? v / 12.92 : Math.pow((v + 0.055) / 1.055, 2.4);
+};
+
+function luminancia(hex) {
+  const [r, g, b] = hexParaRgb(hex);
+  return 0.2126 * paraLinear(r) + 0.7152 * paraLinear(g) + 0.0722 * paraLinear(b);
+}
+
+export function contraste(a, b) {
+  const l1 = luminancia(a);
+  const l2 = luminancia(b);
+  return (Math.max(l1, l2) + 0.05) / (Math.min(l1, l2) + 0.05);
+}
+
+// Clareia `cor` em passos até atingir o contraste pedido contra `fundo`.
+// Preserva o matiz (é a mesma cor, mais clara), então a paleta continua
+// reconhecível — não troca por um amarelo genérico.
+function clarearAte(cor, fundo, alvo = 3.5) {
+  for (let passo = 0; passo <= 20; passo++) {
+    const tentativa = lavar(cor, passo * 0.05);
+    if (contraste(tentativa, fundo) >= alvo) return tentativa;
+  }
+  return "#ffffff";
 }
 
 const TEXTOS_PADRAO = {
+  olhoSobre: "Sobre",
+  olhoAtuacao: "Atuação",
+  olhoProcedimentos: "Procedimentos",
+  olhoClinica: "A clínica",
+  olhoAtendimento: "Atendimento",
+  olhoFaq: "Dúvidas frequentes",
+  tituloProcedimentos: "O que é feito no consultório",
+  leadProcedimentos: "",
+  notaProcedimentos: "A indicação de cada procedimento é individual e definida em consulta. Esta lista descreve o que é realizado, não uma recomendação.",
   tituloServicos: "O que atendemos",
   leadServicos: "",
   tituloEquipe: "Quem vai te atender",
@@ -305,8 +353,13 @@ const TEXTOS_PADRAO = {
 
 function preparar(b) {
   const conselho = (b.conselho || "CFM").toUpperCase();
-  const marca = marcaCompleta(b.marca);
-  marca.sigla = marca.sigla || sigla(b.nome || "");
+  const estilo = resolverEstilo(b);
+  const cores = {
+    ...estilo.cores,
+    // destaque legível sobre o hero escuro do layout clinico
+    destaqueHero: clarearAte(estilo.cores.destaque, estilo.cores.principal, 3.5),
+  };
+  const monograma = b.monograma || (b.marca && b.marca.sigla) || sigla(b.nome || "");
 
   // O responsável técnico abre a seção de equipe: é ele que responde pelo
   // site, então é o primeiro nome que o paciente lê.
@@ -319,10 +372,34 @@ function preparar(b) {
       registroPendente: !p.registro && b.preview ? "registro a confirmar" : "",
       inicial: p.foto ? "" : (p.nome || "").replace(/^dr[ao]?[ªº.]*\s*/i, "").charAt(0).toUpperCase() }));
 
+  const midia = b.midia || {};
+
   return {
     ...b,
     conselho,
-    marca,
+    cores,
+    monograma,
+    fontesUrl: urlFontes(cores),
+    layout: estilo.layout,
+    paleta: estilo.nomePaleta,
+    midia,
+    // [FOTOS] O layout editorial precisa saber se existe retrato para
+    // escolher entre o hero com foto e o hero tipográfico. Sem retrato a
+    // página não fica quebrada: ela fica deliberadamente sem foto.
+    temRetrato: !!midia.retrato,
+    // O motor de template não tem "senão": os dois estados são campos.
+    semRetrato: midia.retrato ? "" : "sem-retrato",
+    registroPresente: b.responsavel && b.responsavel.registro ? "sim" : "",
+    credencial: b.credencial || null,
+    sobre: b.sobre || null,
+    procedimentos: (b.procedimentos || []).map((x) =>
+      typeof x === "string" ? { nome: x } : x),
+    galeria: (midia.galeria || []).map((g) => ({
+      ...g,
+      // Imagem de banco ou de outro lugar aparece rotulada. Foto que não
+      // é do consultório não pode ser apresentada como se fosse.
+      ilustrativa: g.tipo === "ilustrativa" ? "Imagem ilustrativa" : "",
+    })),
     equipe,
     textos: { ...TEXTOS_PADRAO, ...(b.textos || {}) },
     pagamento: { particular: true, ...(b.pagamento || {}) },
@@ -338,9 +415,10 @@ function preparar(b) {
       : "",
     jsonLd: jsonLd(b),
     ano: new Date().getFullYear(),
-    especialidades: (b.especialidades || []).map((s) => ({
+    especialidades: (b.especialidades || []).map((s, i) => ({
       ...s,
       svg: ICONES[s.icone] || ICONES.padrao,
+      ordem: String(i + 1).padStart(2, "0"),
     })),
     // [PREVIEW] Rascunho de prospecção: a página pode ser mostrada, não
     // publicada. Leva noindex (para nunca competir no Google com o site
@@ -381,7 +459,8 @@ function principal() {
     process.exit(1);
   }
 
-  const modelo = readFileSync(join(AQUI, "template", "index.html"), "utf8");
+  const estilo = resolverEstilo(briefing);
+  const modelo = readFileSync(join(AQUI, "template", estilo.arquivo), "utf8");
   const html = renderizar(modelo, { dados: preparar(briefing) });
 
   // Sites de prospecto real saem para clinicas/prospectos/ (fora do git):
@@ -396,8 +475,10 @@ function principal() {
   writeFileSync(caminho, html, "utf8");
 
   const kb = (Buffer.byteLength(html) / 1024).toFixed(0);
-  console.log(`\n→ ${caminho} (${kb} KB, arquivo único, zero dependências)`);
+  console.log(`\n→ ${caminho} (${kb} KB, layout ${estilo.layout}, paleta ${estilo.nomePaleta})`);
   console.log(`→ preview depois do deploy: /preview/${briefing.slug}/`);
 }
 
-principal();
+// Só executa quando chamado direto, para o validador de contraste poder
+// ser importado pelos testes.
+if (process.argv[1] && process.argv[1].endsWith("gerar.mjs")) principal();

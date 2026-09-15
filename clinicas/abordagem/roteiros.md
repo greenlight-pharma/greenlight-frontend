@@ -124,7 +124,32 @@ não volta, e você vai precisar dele por anos.
 
 ---
 
-## 5. Na entrega — o passo que a maioria esquece
+## 5. O pedido da foto — onde o preview vira "o meu site"
+
+Faça isso no fim da primeira conversa boa, sempre. É o movimento de maior
+retorno de todo o roteiro.
+
+> "Doutora, ficou com o monograma no lugar da foto porque eu não tenho
+> nenhuma sua. Se a senhora me mandar uma aqui no WhatsApp, eu coloco e te
+> reenvio o link em dez minutos."
+
+Três coisas acontecem de uma vez:
+
+1. Você ganha **autorização explícita** de uso de imagem, por escrito, no
+   WhatsApp. Sem isso a foto não pode entrar (ver `FOTOS.md`).
+2. Ela passa a ser **coautora** do preview. Quem mandou a própria foto já
+   está tratando o site como dele.
+3. Você cria um **segundo contato natural** — e o segundo contato é onde
+   fecha, não o primeiro.
+
+Nunca pegue a foto do Instagram ou do Google por conta própria. Além de ser
+uso indevido de imagem e de obra do fotógrafo, joga fora exatamente essa
+jogada. E se a foto que ela mandar for ruim, isso é venda: meia diária de
+um fotógrafo local, R$ 600–1.200 no pacote.
+
+---
+
+## 6. Na entrega — o passo que a maioria esquece
 
 Quando o site entra no ar, você pede:
 

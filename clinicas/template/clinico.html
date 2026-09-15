@@ -12,10 +12,10 @@
 <meta property="og:description" content="{{ descricao }}">
 <meta property="og:locale" content="pt_BR">
 {{#se site.imagem}}<meta property="og:image" content="{{ site.imagem }}">{{/se}}
-<meta name="theme-color" content="{{ marca.corPrincipal }}">
+<meta name="theme-color" content="{{ cores.principal }}">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family={{ marca.fonteTitulo }}:wght@400;500;600;700&family={{ marca.fonteTexto }}:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link href="{{ fontesUrl }}" rel="stylesheet">
 
 <!-- Busca local: é isto que faz a clínica aparecer no Google com endereço,
      horário e telefone. Gerado a partir do briefing, sem nota nem avaliação
@@ -24,24 +24,25 @@
 
 <style>
 :root{
-  --principal:{{ marca.corPrincipal }};
-  --principal-escuro:{{ marca.corPrincipalEscuro }};
-  --destaque:{{ marca.corDestaque }};
-  --tinta:#1b2733;
-  --tinta-suave:#54626f;
-  --fundo:#ffffff;
-  --fundo-2:{{ marca.corFundoSuave }};
-  --borda:#e4eaef;
+  --principal:{{ cores.principal }};
+  --principal-escuro:{{ cores.principalEscuro }};
+  --destaque:{{ cores.destaque }};
+  --destaque-hero:{{ cores.destaqueHero }};
+  --tinta:{{ cores.tinta }};
+  --tinta-suave:{{ cores.tintaSuave }};
+  --fundo:{{ cores.fundo }};
+  --fundo-2:{{ cores.fundoSuave }};
+  --borda:{{ cores.borda }};
   --zap:#25d366;
   --sombra:0 18px 40px -24px rgba(16,42,67,.28);
   --raio:16px;
 }
 *{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
-body{font-family:'{{ marca.fonteTexto }}',system-ui,-apple-system,Segoe UI,sans-serif;
+body{font-family:'{{ cores.fonteTexto }}',system-ui,-apple-system,Segoe UI,sans-serif;
   background:var(--fundo);color:var(--tinta);line-height:1.65;font-size:17px;overflow-x:hidden}
 img{max-width:100%;display:block;height:auto}
-h1,h2,h3{font-family:'{{ marca.fonteTitulo }}',Georgia,serif;line-height:1.15;font-weight:600;color:var(--principal-escuro)}
+h1,h2,h3{font-family:'{{ cores.fonteTitulo }}',Georgia,serif;line-height:1.15;font-weight:600;color:var(--principal-escuro)}
 a{color:inherit;text-decoration:none}
 :focus-visible{outline:3px solid var(--destaque);outline-offset:3px;border-radius:4px}
 .wrap{max-width:1140px;margin:0 auto;padding:0 20px}
@@ -55,7 +56,7 @@ header.topo{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.93);
   backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-bottom:1px solid var(--borda)}
 .topo-inner{display:flex;align-items:center;justify-content:space-between;gap:1rem;
   max-width:1140px;margin:0 auto;padding:.7rem 20px}
-.marca{display:flex;align-items:center;gap:.6rem;font-family:'{{ marca.fonteTitulo }}',serif;
+.marca{display:flex;align-items:center;gap:.6rem;font-family:'{{ cores.fonteTitulo }}',serif;
   font-weight:600;font-size:1.06rem;color:var(--principal-escuro);line-height:1.2}
 .marca .sigla{width:36px;height:36px;flex:0 0 36px;border-radius:10px;background:var(--principal);
   color:#fff;display:grid;place-items:center;font-size:.9rem;font-weight:700;letter-spacing:.02em}
@@ -94,7 +95,9 @@ header.topo{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.93);
   padding:.4rem .9rem;border-radius:99px;margin-bottom:1.2rem}
 .hero .selo svg{width:15px;height:15px}
 .hero h1{color:#fff;font-size:clamp(2rem,4.8vw,3.3rem);max-width:19ch}
-.hero h1 em{font-style:normal;color:var(--destaque)}
+/* Tom clareado: o destaque da paleta não passa de 3:1 sobre o hero em
+   paleta quente. Calculado no gerador, não escolhido a olho. */
+.hero h1 em{font-style:normal;color:var(--destaque-hero)}
 .hero p.sub{margin:1.1rem 0 1.8rem;font-size:clamp(1rem,1.6vw,1.15rem);max-width:48ch;
   color:rgba(255,255,255,.92);font-weight:300}
 .hero-acoes{display:flex;gap:.8rem;flex-wrap:wrap}
@@ -104,7 +107,7 @@ header.topo{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.93);
 /* cartão de atendimento */
 .cartao{background:#fff;color:var(--tinta);border-radius:var(--raio);padding:1.5rem;
   box-shadow:0 26px 60px -30px rgba(0,0,0,.5)}
-.cartao h2{font-size:1.06rem;margin-bottom:.9rem;font-family:'{{ marca.fonteTexto }}',sans-serif;
+.cartao h2{font-size:1.06rem;margin-bottom:.9rem;font-family:'{{ cores.fonteTexto }}',sans-serif;
   font-weight:700;color:var(--principal-escuro)}
 .cartao dl{display:grid;gap:.75rem;margin:0}
 .cartao .item{display:flex;gap:.7rem;align-items:flex-start;font-size:.94rem}
@@ -144,7 +147,7 @@ header.topo{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.93);
   display:flex;flex-direction:column}
 .pessoa .foto{aspect-ratio:4/3;background:linear-gradient(135deg,var(--principal),var(--principal-escuro));
   display:grid;place-items:center;color:rgba(255,255,255,.35);font-size:2.4rem;
-  font-family:'{{ marca.fonteTitulo }}',serif}
+  font-family:'{{ cores.fonteTitulo }}',serif}
 .pessoa .foto img{width:100%;height:100%;object-fit:cover}
 .pessoa .corpo{padding:1.3rem;flex:1}
 .pessoa h3{font-size:1.14rem;margin-bottom:.2rem}
@@ -202,7 +205,7 @@ details p{padding:0 1.3rem 1.2rem;color:var(--tinta-suave);font-size:.95rem}
 /* ---------------- RODAPÉ ---------------- */
 footer{background:#0f1a24;color:#9fb0c0;padding:3rem 0 6rem;font-size:.9rem}
 footer .grid{display:grid;grid-template-columns:1.3fr 1fr 1fr;gap:2rem}
-footer h4{color:#fff;font-size:.95rem;margin-bottom:.8rem;font-family:'{{ marca.fonteTexto }}',sans-serif;
+footer h4{color:#fff;font-size:.95rem;margin-bottom:.8rem;font-family:'{{ cores.fonteTexto }}',sans-serif;
   font-weight:600}
 footer a:hover{color:#fff}
 footer .fim{border-top:1px solid rgba(255,255,255,.1);margin-top:2.4rem;padding-top:1.4rem;
@@ -264,7 +267,7 @@ footer .fim{border-top:1px solid rgba(255,255,255,.1);margin-top:2.4rem;padding-
 <header class="topo">
   <div class="topo-inner">
     <a class="marca" href="#inicio">
-      <span class="sigla">{{ marca.sigla }}</span>
+      <span class="sigla">{{ monograma }}</span>
       <span>{{ nome }}</span>
     </a>
     <ul class="menu" id="menu">

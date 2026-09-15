@@ -3,82 +3,34 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Dra. Modelo Sobrenome — Médica Dermatologista em Angra dos Reis</title>
-<meta name="description" content="Dermatologia em Angra dos Reis. Consulta dermatológica, mapeamento de pintas com dermatoscopia digital, prevenção de câncer de pele, acne e queda de cabelo. Agende pelo WhatsApp.">
-<meta name="robots" content="noindex, nofollow">
-
+<title>{{ nome }}{{#se responsavel.especialidade}} — {{ responsavel.especialidade }}{{/se}}{{#se endereco.cidade}} em {{ endereco.cidade }}{{/se}}</title>
+<meta name="description" content="{{ descricao }}">
+{{#se preview}}<meta name="robots" content="noindex, nofollow">{{/se}}{{#se site.url}}<meta name="robots" content="index, follow">{{/se}}
+{{#se site.url}}<link rel="canonical" href="{{ site.url }}">{{/se}}
 <meta property="og:type" content="website">
-<meta property="og:title" content="Dra. Modelo Sobrenome">
-<meta property="og:description" content="Dermatologia em Angra dos Reis. Consulta dermatológica, mapeamento de pintas com dermatoscopia digital, prevenção de câncer de pele, acne e queda de cabelo. Agende pelo WhatsApp.">
+<meta property="og:title" content="{{ nome }}">
+<meta property="og:description" content="{{ descricao }}">
 <meta property="og:locale" content="pt_BR">
-
-<meta name="theme-color" content="#fbf8f6">
+{{#se site.imagem}}<meta property="og:image" content="{{ site.imagem }}">{{/se}}
+<meta name="theme-color" content="{{ cores.fundo }}">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&amp;family=Jost:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet">
-<script type="application/ld+json">{
-  "@context": "https://schema.org",
-  "@type": "MedicalClinic",
-  "name": "Dra. Modelo Sobrenome",
-  "description": "Dermatologia em Angra dos Reis. Consulta dermatológica, mapeamento de pintas com dermatoscopia digital, prevenção de câncer de pele, acne e queda de cabelo. Agende pelo WhatsApp.",
-  "telephone": "(24) 0000-0000",
-  "address": {
-    "@type": "PostalAddress",
-    "streetAddress": "Rua do Comércio, 000, sala 00",
-    "addressLocality": "Angra dos Reis",
-    "addressRegion": "RJ",
-    "postalCode": "23900-000",
-    "addressCountry": "BR"
-  },
-  "openingHours": [
-    "Mo-Th 09:00-18:00",
-    "Tu-Fr 09:00-14:00"
-  ],
-  "medicalSpecialty": [
-    "Mapeamento de pintas",
-    "Prevenção de câncer de pele",
-    "Dermatologia clínica",
-    "Cabelo e unhas",
-    "Dermatologia da criança"
-  ],
-  "availableService": [
-    {
-      "@type": "MedicalProcedure",
-      "name": "Mapeamento de pintas"
-    },
-    {
-      "@type": "MedicalProcedure",
-      "name": "Prevenção de câncer de pele"
-    },
-    {
-      "@type": "MedicalProcedure",
-      "name": "Dermatologia clínica"
-    },
-    {
-      "@type": "MedicalProcedure",
-      "name": "Cabelo e unhas"
-    },
-    {
-      "@type": "MedicalProcedure",
-      "name": "Dermatologia da criança"
-    }
-  ],
-  "paymentAccepted": "Particular, Unimed, AMS Petrobras, Bradesco Saúde, SulAmérica, Amil, CASSI, GEAP"
-}</script>
+<link href="{{ fontesUrl }}" rel="stylesheet">
+<script type="application/ld+json">{{{ jsonLd }}}</script>
 
 <style>
 :root{
-  --principal:#5c2033;
-  --escuro:#3d1522;
-  --destaque:#a67c5b;
-  --fundo:#fbf8f6;
-  --fundo-2:#f4ece6;
-  --tinta:#2a2422;
-  --tinta-2:#6b5e58;
-  --borda:#e8ddd5;
+  --principal:{{ cores.principal }};
+  --escuro:{{ cores.principalEscuro }};
+  --destaque:{{ cores.destaque }};
+  --fundo:{{ cores.fundo }};
+  --fundo-2:{{ cores.fundoSuave }};
+  --tinta:{{ cores.tinta }};
+  --tinta-2:{{ cores.tintaSuave }};
+  --borda:{{ cores.borda }};
   --zap:#25d366;
-  --serif:'Cormorant Garamond',Georgia,'Times New Roman',serif;
-  --sans:'Jost',system-ui,-apple-system,'Segoe UI',sans-serif;
+  --serif:'{{ cores.fonteTitulo }}',Georgia,'Times New Roman',serif;
+  --sans:'{{ cores.fonteTexto }}',system-ui,-apple-system,'Segoe UI',sans-serif;
 }
 *{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
@@ -317,32 +269,32 @@ footer a:hover{color:var(--principal)}
 </head>
 <body>
 
-
+{{#se preview}}
 <div class="tarja">
-  <b>Prévia</b> — página de demonstração feita para Dra. Modelo Sobrenome a partir de informações
+  <b>Prévia</b> — página de demonstração feita para {{ nome }} a partir de informações
   públicas. Não é o site oficial e não está indexada.
 </div>
-
+{{/se}}
 
 <header class="topo" id="topo">
   <div class="topo-inner">
     <a class="assinatura" href="#inicio">
-      <span class="mono">MS</span>
+      <span class="mono">{{ monograma }}</span>
       <span>
-        <span class="nome">Dra. Modelo Sobrenome</span>
-        <span class="papel">Médica Dermatologista</span>
-        
+        <span class="nome">{{ nome }}</span>
+        {{#se responsavel.especialidade}}<span class="papel">{{ responsavel.especialidade }}</span>{{/se}}
+        {{#se responsavel.atuacao}}<span class="papel">{{ responsavel.atuacao }}</span>{{/se}}
       </span>
     </a>
     <ul class="menu" id="menu">
       <li><a href="#sobre">Sobre</a></li>
-      <li><a href="#atuacao">Atuação</a></li>
-      <li><a href="#procedimentos">Procedimentos</a></li>
-      <li><a href="#clinica">A Clínica</a></li>
-      <li><a href="#extra">Sua pele</a></li>
+      {{#se especialidades}}<li><a href="#atuacao">Atuação</a></li>{{/se}}
+      {{#se procedimentos}}<li><a href="#procedimentos">Procedimentos</a></li>{{/se}}
+      {{#se estrutura}}<li><a href="#clinica">A Clínica</a></li>{{/se}}
+      {{#se secaoExtra}}<li><a href="#extra">{{ secaoExtra.menu }}</a></li>{{/se}}
       <li><a href="#atendimento">Atendimento</a></li>
     </ul>
-    <a class="btn btn-cheio" href="https://wa.me/5524000000000?text=Ol%C3%A1!%20Vi%20o%20site%20e%20gostaria%20de%20agendar%20uma%20consulta%20dermatol%C3%B3gica." target="_blank" rel="noopener">
+    <a class="btn btn-cheio" href="{{ whatsappLink }}" target="_blank" rel="noopener">
       Agendar consulta
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M4 12h15M13 6l6 6-6 6"/></svg>
     </a>
@@ -357,296 +309,233 @@ footer a:hover{color:var(--principal)}
 <section class="hero">
   <div class="wrap hero-grid">
     <div class="hero-texto">
-      <p class="olho">Atendimento em Angra dos Reis / RJ</p>
-      <h1>Dra. Modelo Sobrenome</h1>
-      <p class="papel-grande">Médica Dermatologista</p>
-      
-      <p class="promessa">Dermatologia clínica com tempo de consulta para <b>olhar a pele inteira</b> — não só a queixa do dia.</p>
+      {{#se hero.selo}}<p class="olho">{{ hero.selo }}</p>{{/se}}
+      <h1>{{{ chamada }}}</h1>
+      {{#se responsavel.especialidade}}<p class="papel-grande">{{ responsavel.especialidade }}</p>{{/se}}
+      {{#se responsavel.atuacao}}<p class="papel-grande">{{ responsavel.atuacao }}</p>{{/se}}
+      <p class="promessa">{{{ subchamada }}}</p>
       <div class="hero-acoes">
-        <a class="btn btn-cheio" href="https://wa.me/5524000000000?text=Ol%C3%A1!%20Vi%20o%20site%20e%20gostaria%20de%20agendar%20uma%20consulta%20dermatol%C3%B3gica." target="_blank" rel="noopener">
+        <a class="btn btn-cheio" href="{{ whatsappLink }}" target="_blank" rel="noopener">
           Agendar consulta
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M4 12h15M13 6l6 6-6 6"/></svg>
         </a>
-        
-        <a class="btn btn-vazio" href="tel:+552400000000">(24) 0000-0000</a>
-        
+        {{#se telefoneLink}}
+        <a class="btn btn-vazio" href="{{ telefoneLink }}">{{ contato.telefone }}</a>
+        {{/se}}
       </div>
       <!-- [CONFORMIDADE] registro do responsável já no primeiro quadro -->
-      <p class="hero-registro">Dra. Modelo Sobrenome — CRM-RJ 123456 — RQE 54321</p>
+      {{#se linhaResponsavel}}<p class="hero-registro">{{ linhaResponsavel }}</p>{{/se}}
     </div>
 
-    
+    {{#se temRetrato}}
+    <figure class="hero-figura">
+      <img src="{{ midia.retrato }}" alt="{{ midia.retratoAlt }}" fetchpriority="high">
+      {{#se credencial}}
+      <div class="credencial">
+        <span class="numero">{{ credencial.numero }}</span>
+        <span class="texto">{{ credencial.texto }}</span>
+      </div>
+      {{/se}}
+    </figure>
+    {{/se}}
 
-    
+    {{#se semRetrato}}
     <!-- [FOTOS] Sem retrato autorizado a página não finge ter um: o quadro
          vira tipográfico. É o estado normal de um rascunho de prospecção,
          e é a deixa para pedir a foto na ligação. -->
     <div class="hero-painel">
-      <span class="mono-grande">MS</span>
-      
+      <span class="mono-grande">{{ monograma }}</span>
+      {{#se credencial}}
       <div class="credencial">
-        <span class="numero">+12</span>
-        <span class="texto">anos de atuação em dermatologia clínica</span>
+        <span class="numero">{{ credencial.numero }}</span>
+        <span class="texto">{{ credencial.texto }}</span>
       </div>
-      
+      {{/se}}
     </div>
-    
+    {{/se}}
   </div>
 </section>
 
 <section id="sobre">
   <div class="wrap sobre-grid">
     <div>
-      <p class="olho">Sobre</p>
-      <p class="serif-lead">Moro e atendo no litoral, onde a pele recebe sol o ano inteiro. Isso muda a dermatologia que se pratica aqui: o mapeamento de pintas deixa de ser exame de rotina e passa a ser o centro do acompanhamento.</p>
-      <p class="lead" style="margin-top:1.6rem">A consulta é agendada com tempo para o exame de corpo inteiro, a revisão do seu histórico e a explicação do que foi encontrado — com o registro das lesões guardado para comparar na próxima visita.</p>
+      <p class="olho">{{ textos.olhoSobre }}</p>
+      <p class="serif-lead">{{{ sobre.texto }}}</p>
+      {{#se sobre.complemento}}<p class="lead" style="margin-top:1.6rem">{{ sobre.complemento }}</p>{{/se}}
     </div>
     <div>
-      
+      {{#se responsavel.formacao}}
       <ul class="credenciais">
-        
-        <li><span class="ord">1</span><span>Graduação em Medicina</span></li>
-        
-        <li><span class="ord">2</span><span>Residência médica em Dermatologia</span></li>
-        
-        <li><span class="ord">3</span><span>Título de especialista pela Sociedade Brasileira de Dermatologia</span></li>
-        
-        <li><span class="ord">4</span><span>Membro titular da Sociedade Brasileira de Dermatologia</span></li>
-        
+        {{#cada responsavel.formacao}}
+        <li><span class="ord">{{ @indice }}</span><span>{{ . }}</span></li>
+        {{/cada}}
       </ul>
-      
+      {{/se}}
       <div class="registro-caixa">
-        <b>Dra. Modelo Sobrenome</b>
-        
-        CRM-RJ 123456
-         · RQE 54321
+        <b>{{ responsavel.nome }}</b>
+        {{#se registroPendente}}<span class="pendente">{{ responsavel.registro }}</span>{{/se}}
+        {{#se registroPresente}}{{ responsavel.registro }}{{/se}}
+        {{#se responsavel.rqe}} · {{ responsavel.rqe }}{{/se}}
       </div>
     </div>
   </div>
 </section>
 
-
+{{#se especialidades}}
 <section id="atuacao" class="atuacao">
   <div class="wrap">
-    <p class="olho">Atuação</p>
-    <h2 class="titulo">O que eu atendo</h2>
-    
+    <p class="olho">{{ textos.olhoAtuacao }}</p>
+    <h2 class="titulo">{{ textos.tituloServicos }}</h2>
+    {{#se textos.leadServicos}}<p class="lead">{{ textos.leadServicos }}</p>{{/se}}
     <ul class="lista-num">
-      
+      {{#cada especialidades}}
       <li>
-        <span class="ord">01</span>
-        <h3>Mapeamento de pintas</h3>
-        <p>Exame de corpo inteiro com dermatoscopia digital, com registro das lesões para comparação nas revisões seguintes.</p>
+        <span class="ord">{{ .ordem }}</span>
+        <h3>{{ .nome }}</h3>
+        <p>{{ .descricao }}</p>
       </li>
-      
-      <li>
-        <span class="ord">02</span>
-        <h3>Prevenção de câncer de pele</h3>
-        <p>Avaliação de manchas, lesões que crescem e feridas que não cicatrizam, com biópsia quando indicado.</p>
-      </li>
-      
-      <li>
-        <span class="ord">03</span>
-        <h3>Dermatologia clínica</h3>
-        <p>Acne, dermatite, psoríase, micoses, urticária e as queixas que o clima úmido do litoral agrava.</p>
-      </li>
-      
-      <li>
-        <span class="ord">04</span>
-        <h3>Cabelo e unhas</h3>
-        <p>Investigação de queda e rarefação capilar, com exame do couro cabeludo e solicitação dos exames necessários.</p>
-      </li>
-      
-      <li>
-        <span class="ord">05</span>
-        <h3>Dermatologia da criança</h3>
-        <p>Manchas de nascimento, dermatite atópica e as dúvidas de pele mais comuns na primeira infância.</p>
-      </li>
-      
+      {{/cada}}
     </ul>
   </div>
 </section>
+{{/se}}
 
-
-
+{{#se procedimentos}}
 <section id="procedimentos">
   <div class="wrap">
-    <p class="olho">Procedimentos</p>
-    <h2 class="titulo">O que é feito no consultório</h2>
-    
+    <p class="olho">{{ textos.olhoProcedimentos }}</p>
+    <h2 class="titulo">{{ textos.tituloProcedimentos }}</h2>
+    {{#se textos.leadProcedimentos}}<p class="lead">{{ textos.leadProcedimentos }}</p>{{/se}}
     <ul class="proc">
-      
-      <li><span>Dermatoscopia digital</span><em>na consulta</em></li>
-      
-      <li><span>Biópsia de pele</span><em>com encaminhamento do material</em></li>
-      
-      <li><span>Exérese de lesão benigna</span></li>
-      
-      <li><span>Crioterapia</span></li>
-      
-      <li><span>Cauterização química</span></li>
-      
-      <li><span>Drenagem de abscesso simples</span></li>
-      
-      <li><span>Curetagem de molusco contagioso</span></li>
-      
-      <li><span>Infiltração de lesão inflamatória</span></li>
-      
+      {{#cada procedimentos}}
+      <li><span>{{ .nome }}</span>{{#se .nota}}<em>{{ .nota }}</em>{{/se}}</li>
+      {{/cada}}
     </ul>
-    <p class="nota-fina">A indicação de cada procedimento é individual e definida em consulta. Esta lista descreve o que é realizado, não uma recomendação.</p>
+    <p class="nota-fina">{{ textos.notaProcedimentos }}</p>
   </div>
 </section>
+{{/se}}
 
-
-
+{{#se estrutura}}
 <section id="clinica" class="atuacao">
   <div class="wrap">
-    <p class="olho">A clínica</p>
-    <h2 class="titulo">O consultório</h2>
-    
-    
+    <p class="olho">{{ textos.olhoClinica }}</p>
+    <h2 class="titulo">{{ textos.tituloEstrutura }}</h2>
+    {{#se textos.leadEstrutura}}<p class="lead">{{ textos.leadEstrutura }}</p>{{/se}}
+    {{#se galeria}}
+    <div class="galeria">
+      {{#cada galeria}}
+      <figure>
+        <img src="{{ .src }}" alt="{{ .alt }}" loading="lazy">
+        {{#se .ilustrativa}}<figcaption>{{ .ilustrativa }}</figcaption>{{/se}}
+      </figure>
+      {{/cada}}
+    </div>
+    {{/se}}
     <ul class="estrutura-lista">
-      
-      <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span>Dermatoscópio digital com registro de imagem para comparação entre consultas</span></li>
-      
-      <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span>Sala para pequenos procedimentos no próprio consultório</span></li>
-      
-      <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span>Prontuário eletrônico e receita digital assinada</span></li>
-      
-      <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span>Laudos e orientações enviados por WhatsApp ou e-mail</span></li>
-      
-      <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span>Emissão de nota fiscal e recibo para reembolso de plano</span></li>
-      
+      {{#cada estrutura}}
+      <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span>{{ . }}</span></li>
+      {{/cada}}
     </ul>
   </div>
 </section>
+{{/se}}
 
-
-
+{{#se secaoExtra}}
 <section id="extra">
   <div class="wrap sobre-grid">
     <div>
-      <p class="olho">Orientação</p>
-      <h2 class="titulo">Morar no litoral pede um cuidado diferente</h2>
-      <p class="lead">Quem vive na Costa Verde acumula exposição solar todos os dias do ano, não só nas férias. O efeito é somado ao longo da vida, e a maior parte do dano acontece sem queimadura visível. Algumas coisas valem para praticamente todo mundo aqui:</p>
+      <p class="olho">{{ secaoExtra.olho }}</p>
+      <h2 class="titulo">{{ secaoExtra.titulo }}</h2>
+      <p class="lead">{{ secaoExtra.texto }}</p>
     </div>
-    
+    {{#se secaoExtra.itens}}
     <ul class="credenciais">
-      
-      <li><span class="ord">1</span><span>Protetor solar todos os dias, inclusive nublado e dentro do carro</span></li>
-      
-      <li><span class="ord">2</span><span>Reaplicação a cada duas horas quando há exposição direta</span></li>
-      
-      <li><span class="ord">3</span><span>Camiseta com proteção UV para quem trabalha embarcado ou ao ar livre</span></li>
-      
-      <li><span class="ord">4</span><span>Uma revisão anual das pintas, ou intervalo menor se há histórico na família</span></li>
-      
-      <li><span class="ord">5</span><span>Atenção a pinta que mudou de cor, cresceu, coça ou sangra — isso não espera a revisão</span></li>
-      
+      {{#cada secaoExtra.itens}}
+      <li><span class="ord">{{ @indice }}</span><span>{{ . }}</span></li>
+      {{/cada}}
     </ul>
-    
+    {{/se}}
   </div>
 </section>
-
+{{/se}}
 
 <section id="atendimento" class="atendimento">
   <div class="wrap atend-grid">
     <div>
-      <p class="olho">Atendimento</p>
-      <h2 class="titulo">Onde e como atendo</h2>
+      <p class="olho">{{ textos.olhoAtendimento }}</p>
+      <h2 class="titulo">{{ textos.tituloLocal }}</h2>
       <ul class="dados">
-        
-        <li><span class="rot">Endereço</span><span>Rua do Comércio, 000, sala 00 — Centro, Angra dos Reis - RJ — 23900-000</span></li>
-        
-        
-        <li><span class="rot">Referência</span><span>No Centro, próximo ao cais de Santa Luzia — acessível para quem vem das ilhas pela barca e para quem chega pela Rio-Santos.</span></li>
-        
-        
-        <li><span class="rot">Segunda, quarta e quinta</span><span>09h às 18h</span></li>
-        
-        <li><span class="rot">Terça e sexta</span><span>09h às 14h</span></li>
-        
-        
-        <li><span class="rot">Telefone</span><span><a href="tel:+552400000000">(24) 0000-0000</a></span></li>
-        
-        
-        <li><span class="rot">Estacionamento</span><span>Estacionamento rotativo na rua e estacionamento pago a uma quadra</span></li>
-        
-        
-        <li><span class="rot">Acessibilidade</span><span>Prédio com elevador</span></li>
-        
-        <li><span class="rot">Pagamento</span><span>Particular e convênios — cartão, Pix e boleto</span></li>
+        {{#se enderecoLinha}}
+        <li><span class="rot">Endereço</span><span>{{ enderecoLinha }}</span></li>
+        {{/se}}
+        {{#se endereco.referencia}}
+        <li><span class="rot">Referência</span><span>{{ endereco.referencia }}</span></li>
+        {{/se}}
+        {{#cada horarios}}
+        <li><span class="rot">{{#se @indice}}{{/se}}{{ .dias }}</span><span>{{ .horario }}</span></li>
+        {{/cada}}
+        {{#se contato.telefone}}
+        <li><span class="rot">Telefone</span><span><a href="{{ telefoneLink }}">{{ contato.telefone }}</a></span></li>
+        {{/se}}
+        {{#se endereco.estacionamento}}
+        <li><span class="rot">Estacionamento</span><span>{{ endereco.estacionamento }}</span></li>
+        {{/se}}
+        {{#se endereco.acessibilidade}}
+        <li><span class="rot">Acessibilidade</span><span>{{ endereco.acessibilidade }}</span></li>
+        {{/se}}
+        <li><span class="rot">Pagamento</span><span>{{#se pagamento.particular}}Particular{{/se}}{{#se convenios}} e convênios{{/se}}{{#se pagamento.observacao}} — {{ pagamento.observacao }}{{/se}}</span></li>
       </ul>
-      
-      <div class="convenios"><span>Unimed</span><span>AMS Petrobras</span><span>Bradesco Saúde</span><span>SulAmérica</span><span>Amil</span><span>CASSI</span><span>GEAP</span></div>
+      {{#se convenios}}
+      <div class="convenios">{{#cada convenios}}<span>{{ . }}</span>{{/cada}}</div>
       <p class="nota-fina">A cobertura varia conforme o plano e o procedimento. Confirme pelo WhatsApp antes de agendar.</p>
-      
+      {{/se}}
       <div class="hero-acoes" style="margin-top:1.8rem">
-        <a class="btn btn-cheio" href="https://wa.me/5524000000000?text=Ol%C3%A1!%20Vi%20o%20site%20e%20gostaria%20de%20agendar%20uma%20consulta%20dermatol%C3%B3gica." target="_blank" rel="noopener">
+        <a class="btn btn-cheio" href="{{ whatsappLink }}" target="_blank" rel="noopener">
           <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.5 15.2L2 22l4.9-1.4A10 10 0 1 0 12 2Z"/></svg>
           Agendar pelo WhatsApp
         </a>
-        <a class="btn btn-vazio" href="https://www.google.com/maps/search/?api=1&amp;query=Dra.%20Modelo%20Sobrenome%20Rua%20do%20Com%C3%A9rcio%2C%20000%2C%20sala%2000%20%E2%80%94%20Centro%2C%20Angra%20dos%20Reis%20-%20RJ%20%E2%80%94%2023900-000" target="_blank" rel="noopener">Abrir no mapa</a>
+        <a class="btn btn-vazio" href="{{ enderecoMapsBusca }}" target="_blank" rel="noopener">Abrir no mapa</a>
       </div>
     </div>
-    
+    {{#se endereco.mapsEmbed}}
     <div class="mapa">
-      <iframe src="https://www.google.com/maps?q=Centro,+Angra+dos+Reis+-+RJ&amp;output=embed" title="Mapa — Dra. Modelo Sobrenome" loading="lazy"
+      <iframe src="{{ endereco.mapsEmbed }}" title="Mapa — {{ nome }}" loading="lazy"
               referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
     </div>
-    
+    {{/se}}
   </div>
 </section>
 
-
+{{#se faq}}
 <section id="faq">
   <div class="wrap">
-    <p class="olho">Dúvidas frequentes</p>
-    <h2 class="titulo">O que mais me perguntam</h2>
+    <p class="olho">{{ textos.olhoFaq }}</p>
+    <h2 class="titulo">{{ textos.tituloFaq }}</h2>
     <div class="faq-lista">
-      
-      <details open>
-        <summary>Com que frequência devo mapear as pintas?</summary>
-        <p>Para a maioria das pessoas, uma vez por ano. Quem tem muitas pintas, pele clara, histórico familiar de câncer de pele ou trabalha exposto ao sol pode precisar de intervalo menor — definimos isso na consulta.</p>
+      {{#cada faq}}
+      <details{{#se .aberta}} open{{/se}}>
+        <summary>{{ .pergunta }}</summary>
+        <p>{{ .resposta }}</p>
       </details>
-      
-      <details>
-        <summary>Apareceu uma mancha nova. É urgente?</summary>
-        <p>Pinta que mudou de cor, cresceu, começou a coçar ou sangrar, e ferida que não cicatriza em algumas semanas, merecem avaliação sem esperar a revisão anual. Mande mensagem e a recepção procura um horário próximo.</p>
-      </details>
-      
-      <details>
-        <summary>Moro em uma das ilhas. Como funciona o acompanhamento?</summary>
-        <p>Concentramos o que for possível num único atendimento: consulta, dermatoscopia e procedimento simples no mesmo dia, para você não precisar voltar por causa da barca. Combine pelo WhatsApp antes de vir.</p>
-      </details>
-      
-      <details>
-        <summary>Atende convênio?</summary>
-        <p>Atendo os planos listados nesta página. A cobertura varia conforme o contrato e o procedimento, então confirme pelo WhatsApp antes de agendar.</p>
-      </details>
-      
-      <details>
-        <summary>O que levar na consulta?</summary>
-        <p>Documento, carteirinha do convênio se for usar, lista das medicações em uso e, se já fez, os laudos ou as imagens de mapeamentos anteriores.</p>
-      </details>
-      
+      {{/cada}}
     </div>
   </div>
 </section>
-
+{{/se}}
 
 <section class="cta">
   <div class="wrap">
-    <h2>Vamos olhar a sua pele com calma?</h2>
-    <p class="lead">Mande uma mensagem no WhatsApp e a recepção responde com os horários disponíveis.</p>
+    <h2>{{ textos.tituloCta }}</h2>
+    <p class="lead">{{ textos.leadCta }}</p>
     <div class="hero-acoes">
-      <a class="btn btn-zap" href="https://wa.me/5524000000000?text=Ol%C3%A1!%20Vi%20o%20site%20e%20gostaria%20de%20agendar%20uma%20consulta%20dermatol%C3%B3gica." target="_blank" rel="noopener">
+      <a class="btn btn-zap" href="{{ whatsappLink }}" target="_blank" rel="noopener">
         <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.5 15.2L2 22l4.9-1.4A10 10 0 1 0 12 2Z"/></svg>
         Agendar pelo WhatsApp
       </a>
-      
-      <a class="btn btn-vazio" href="tel:+552400000000">Ligar para (24) 0000-0000</a>
-      
+      {{#se telefoneLink}}
+      <a class="btn btn-vazio" href="{{ telefoneLink }}">Ligar para {{ contato.telefone }}</a>
+      {{/se}}
     </div>
   </div>
 </section>
@@ -657,22 +546,22 @@ footer a:hover{color:var(--principal)}
   <div class="wrap">
     <div class="rodape-grid">
       <div>
-        <h4>Dra. Modelo Sobrenome</h4>
-        <p>Rua do Comércio, 000, sala 00 — Centro, Angra dos Reis - RJ — 23900-000</p>
-        <p style="margin-top:.5rem"><a href="tel:+552400000000">(24) 0000-0000</a></p>
-        
-        
+        <h4>{{ nome }}</h4>
+        <p>{{ enderecoLinha }}</p>
+        {{#se contato.telefone}}<p style="margin-top:.5rem"><a href="{{ telefoneLink }}">{{ contato.telefone }}</a></p>{{/se}}
+        {{#se contato.email}}<p><a href="mailto:{{ contato.email }}">{{ contato.email }}</a></p>{{/se}}
+        {{#se contato.instagram}}<p><a href="https://instagram.com/{{ contato.instagram }}" target="_blank" rel="noopener">@{{ contato.instagram }}</a></p>{{/se}}
       </div>
-      
+      {{#se horarios}}
       <div>
         <h4>Horário</h4>
-        <p>Segunda, quarta e quinta · 09h às 18h</p><p>Terça e sexta · 09h às 14h</p>
+        {{#cada horarios}}<p>{{ .dias }} · {{ .horario }}</p>{{/cada}}
       </div>
-      
+      {{/se}}
       <div>
         <h4>Responsável técnico</h4>
-        <p class="resp-tecnico">Dra. Modelo Sobrenome — CRM-RJ 123456 — RQE 54321</p>
-        
+        <p class="resp-tecnico">{{ linhaResponsavel }}</p>
+        {{#se midia.creditos}}<p style="margin-top:.9rem;font-size:.78rem">{{ midia.creditos }}</p>{{/se}}
       </div>
     </div>
     <p class="aviso">
@@ -681,18 +570,18 @@ footer a:hover{color:var(--principal)}
       procure o serviço de urgência mais próximo ou ligue 192 (SAMU).
     </p>
     <div class="fim">
-      <span>© 2026 Dra. Modelo Sobrenome</span>
-      <span>Dra. Modelo Sobrenome — CRM-RJ 123456 — RQE 54321</span>
+      <span>© {{ ano }} {{ nome }}</span>
+      <span>{{ linhaResponsavel }}</span>
     </div>
   </div>
 </footer>
 
 <nav class="barra" aria-label="Ações rápidas">
-  <a class="btn btn-zap" href="https://wa.me/5524000000000?text=Ol%C3%A1!%20Vi%20o%20site%20e%20gostaria%20de%20agendar%20uma%20consulta%20dermatol%C3%B3gica." target="_blank" rel="noopener">
+  <a class="btn btn-zap" href="{{ whatsappLink }}" target="_blank" rel="noopener">
     <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.5 15.2L2 22l4.9-1.4A10 10 0 1 0 12 2Z"/></svg>
     Agendar
   </a>
-  <a class="btn btn-vazio" href="tel:+552400000000">Ligar</a>
+  {{#se telefoneLink}}<a class="btn btn-vazio" href="{{ telefoneLink }}">Ligar</a>{{/se}}
 </nav>
 
 <script>

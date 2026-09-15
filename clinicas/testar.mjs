@@ -7,6 +7,8 @@
 import { readFileSync, writeFileSync, rmSync } from "node:fs";
 import { execFileSync } from "node:child_process";
 import { validar } from "./validar.mjs";
+import { PALETAS, LAYOUTS, resolverEstilo } from "./estilos.mjs";
+import { contraste } from "./gerar.mjs";
 
 let falhas = 0;
 const ok = (nome, cond, detalhe = "") => {
@@ -88,6 +90,102 @@ ok("chamada renderiza <em> sem escapar (destaque do hero)", h1.includes("<em>"))
 ok("inicial do avatar ignora o título (Dra. Helena → H)",
    /class="foto">H/.test(html));
 ok("cor escura derivada da cor principal", /--principal-escuro:#0e3d49/.test(html));
+
+console.log("\nEstilos: paletas e layouts");
+for (const [nome, p] of Object.entries(PALETAS)) {
+  const faltando = ["principal","principalEscuro","destaque","fundo","fundoSuave","tinta",
+                    "tintaSuave","borda","fonteTitulo","fonteTexto"].filter((k) => !p[k]);
+  ok(`paleta ${nome} está completa`, faltando.length === 0, faltando.join(","));
+}
+// Contraste: o celular no sol é o dispositivo real, não o monitor.
+for (const [nome, p] of Object.entries(PALETAS)) {
+  ok(`paleta ${nome}: texto sobre fundo passa de 4.5:1`,
+     contraste(p.tinta, p.fundo) >= 4.5, contraste(p.tinta, p.fundo).toFixed(2));
+  ok(`paleta ${nome}: branco sobre principal passa de 4.5:1`,
+     contraste("#ffffff", p.principal) >= 4.5, contraste("#ffffff", p.principal).toFixed(2));
+  ok(`paleta ${nome}: texto suave sobre fundo passa de 4.5:1`,
+     contraste(p.tintaSuave, p.fundo) >= 4.5, contraste(p.tintaSuave, p.fundo).toFixed(2));
+}
+{
+  // O destaque do hero é calculado, não escolhido: confere no HTML gerado.
+  const h = readFileSync("clinicas/sites/odonto-angra-modelo/index.html", "utf8");
+  const heroTom = (h.match(/--destaque-hero:(#[0-9a-f]{6})/i) || [])[1];
+  const principal = (h.match(/--principal:(#[0-9a-f]{6})/i) || [])[1];
+  ok("destaque do hero é clareado até 3.5:1 sobre o principal",
+     heroTom && principal && contraste(heroTom, principal) >= 3.5,
+     `${heroTom} sobre ${principal} = ${heroTom && principal ? contraste(heroTom, principal).toFixed(2) : "?"}`);
+  ok("paleta rose precisava do ajuste (o tom cru reprovava)",
+     contraste(PALETAS.rose.destaque, PALETAS.rose.principal) < 3);
+}
+
+ok("paleta inexistente falha claramente",
+   (() => { try { resolverEstilo({ paleta: "roxo-neon" }); return false; }
+            catch (e) { return /não existe/.test(e.message); } })());
+ok("layout inexistente falha claramente",
+   (() => { try { resolverEstilo({ layout: "revista" }); return false; }
+            catch (e) { return /não existe/.test(e.message); } })());
+ok("marca do briefing sobrescreve a paleta ponto a ponto",
+   resolverEstilo({ paleta: "nude", marca: { principal: "#123456" } }).cores.principal === "#123456");
+ok("chave antiga marca.corPrincipal ainda é respeitada (não some em silêncio)",
+   resolverEstilo({ paleta: "nude", marca: { corPrincipal: "#123456", corDestaque: "#abcdef" } })
+     .cores.principal === "#123456" &&
+   resolverEstilo({ paleta: "nude", marca: { corDestaque: "#abcdef" } }).cores.destaque === "#abcdef");
+ok("marca.sigla não vaza para dentro das cores",
+   !("sigla" in resolverEstilo({ marca: { sigla: "AB" } }).cores));
+
+// A URL do Google Fonts é o ponto onde um espaço não escapado derruba a
+// tipografia inteira do site sem erro nenhum.
+{
+  const b = { ...bom, slug: "teste-fontes", layout: "editorial", paleta: "nude" };
+  delete b.marca;   // sem sobrescrita: quem manda é a paleta
+  writeFileSync("/tmp/b-fontes.json", JSON.stringify(b));
+  execFileSync("node", ["clinicas/gerar.mjs", "/tmp/b-fontes.json"], { stdio: "pipe" });
+  const h = readFileSync("clinicas/sites/teste-fontes/index.html", "utf8");
+  ok("nome de fonte com espaço vira + na URL",
+     h.includes("family=Cormorant+Garamond") && !/family=Cormorant Garamond/.test(h));
+  ok("layout editorial usa o arquivo editorial", h.includes("hero-grid"));
+  ok("paleta nude aplicada", h.includes("--principal:#5c2033"));
+  ok("os dois layouts geram HTML diferente",
+     !h.includes('class="servicos-grid"'));
+  rmSync("clinicas/sites/teste-fontes", { recursive: true, force: true });
+}
+
+console.log("\nFotos: origem e autorização");
+{
+  const comFoto = { ...bom, midia: { retrato: "foto.jpg" } };
+  const r = validar(comFoto);
+  ok("retrato sem origem é erro", r.erros.some((e) => e.regra === "foto-origem"));
+  ok("retrato sem autorização é erro", r.erros.some((e) => e.regra === "foto-autorizacao"));
+  ok("retrato com origem e autorização passa",
+     validar({ ...bom, midia: { retrato: "f.jpg", retratoAlt: "Dra. X no consultório",
+       origem: "enviada pela clínica no WhatsApp em 14/09/2026",
+       autorizacao: "Dra. X autorizou o uso no site em 14/09/2026" } }).erros.length === 0);
+  ok("imagem de galeria sem tipo é erro",
+     validar({ ...bom, midia: { galeria: [{ src: "a.jpg", alt: "recepção" }] } })
+       .erros.some((e) => e.regra === "foto-tipo"));
+  ok("tipo de galeria inválido é erro",
+     validar({ ...bom, midia: { galeria: [{ src: "a.jpg", tipo: "banco" }] } })
+       .erros.some((e) => e.regra === "foto-tipo"));
+  ok("foto de paciente na galeria é erro",
+     validar({ ...bom, midia: { galeria: [{ src: "a.jpg", tipo: "propria", alt: "paciente antes do tratamento" }] } })
+       .erros.some((e) => e.regra === "foto-paciente"));
+
+  // Imagem de banco não pode ser apresentada como o consultório do cliente.
+  const ilustra = { ...bom, slug: "teste-ilustrativa", layout: "editorial",
+    midia: { galeria: [{ src: "a.jpg", tipo: "ilustrativa", alt: "ambiente" }],
+             creditos: "Unsplash, licença de uso comercial" } };
+  writeFileSync("/tmp/b-ilustra.json", JSON.stringify(ilustra));
+  execFileSync("node", ["clinicas/gerar.mjs", "/tmp/b-ilustra.json"], { stdio: "pipe" });
+  const h = readFileSync("clinicas/sites/teste-ilustrativa/index.html", "utf8");
+  ok("imagem ilustrativa sai rotulada na página", h.includes("Imagem ilustrativa"));
+  ok("crédito da imagem aparece no rodapé", h.includes("Unsplash"));
+  rmSync("clinicas/sites/teste-ilustrativa", { recursive: true, force: true });
+
+  // Sem retrato o editorial não finge ter foto: mostra o painel tipográfico.
+  const semFoto = readFileSync("clinicas/sites/derma-angra-modelo/index.html", "utf8");
+  ok("editorial sem retrato usa painel tipográfico, não <img> vazia",
+     semFoto.includes("hero-painel") && !semFoto.includes('class="hero-figura"'));
+}
 
 console.log("\nModo rascunho (preview de prospecção)");
 {

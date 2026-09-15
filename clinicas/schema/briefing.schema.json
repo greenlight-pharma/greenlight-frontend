@@ -3,64 +3,189 @@
   "title": "Briefing de site de clínica ou consultório",
   "description": "Campos com prefixo _ são internos (prospecção, anotações) e nunca são renderizados nem validados.",
   "type": "object",
-  "required": ["slug", "nome", "contato"],
+  "required": [
+    "slug",
+    "nome",
+    "contato"
+  ],
   "properties": {
-    "slug": { "type": "string", "pattern": "^[a-z0-9-]+$", "description": "vira a URL: /preview/<slug>/" },
-    "tipo": { "enum": ["clinica", "consultorio", "odontologia", "fisioterapia", "psicologia", "nutricao", "estetica", "veterinaria"] },
+    "slug": {
+      "type": "string",
+      "pattern": "^[a-z0-9-]+$",
+      "description": "vira a URL: /preview/<slug>/"
+    },
+    "tipo": {
+      "enum": [
+        "clinica",
+        "consultorio",
+        "odontologia",
+        "fisioterapia",
+        "psicologia",
+        "nutricao",
+        "estetica",
+        "veterinaria"
+      ]
+    },
     "conselho": {
-      "enum": ["CFM", "CFO", "CFP", "CREFITO", "CRN", "CFMV", "NENHUM"],
+      "enum": [
+        "CFM",
+        "CFO",
+        "CFP",
+        "CREFITO",
+        "CRN",
+        "CFMV",
+        "NENHUM"
+      ],
       "default": "CFM",
       "description": "Define quais vedações se aplicam. Na dúvida, use o mais restritivo."
     },
-    "nome": { "type": "string" },
-    "descricao": { "type": "string", "description": "meta description, 140-160 caracteres" },
-    "chamada": { "type": "string", "description": "H1 do hero; aceita <em> para destacar" },
-    "subchamada": { "type": "string" },
-    "hero": { "type": "object", "properties": { "selo": { "type": "string" } } },
-    "responsavel": { "$ref": "#/definitions/profissional" },
-    "equipe": { "type": "array", "items": { "$ref": "#/definitions/profissional" } },
+    "nome": {
+      "type": "string"
+    },
+    "descricao": {
+      "type": "string",
+      "description": "meta description, 140-160 caracteres"
+    },
+    "chamada": {
+      "type": "string",
+      "description": "H1 do hero; aceita <em> para destacar"
+    },
+    "subchamada": {
+      "type": "string"
+    },
+    "hero": {
+      "type": "object",
+      "properties": {
+        "selo": {
+          "type": "string"
+        }
+      }
+    },
+    "responsavel": {
+      "$ref": "#/definitions/profissional"
+    },
+    "equipe": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/profissional"
+      }
+    },
     "especialidades": {
       "type": "array",
       "items": {
         "type": "object",
-        "required": ["nome"],
+        "required": [
+          "nome"
+        ],
         "properties": {
-          "nome": { "type": "string" },
-          "descricao": { "type": "string" },
-          "icone": { "enum": ["coracao", "estetoscopio", "dente", "crianca", "olho", "osso", "cerebro", "pele", "exame", "padrao"] }
+          "nome": {
+            "type": "string"
+          },
+          "descricao": {
+            "type": "string"
+          },
+          "icone": {
+            "enum": [
+              "coracao",
+              "estetoscopio",
+              "dente",
+              "crianca",
+              "olho",
+              "osso",
+              "cerebro",
+              "pele",
+              "exame",
+              "padrao"
+            ]
+          }
         }
       }
     },
     "faixa": {
       "type": "array",
       "description": "3 diferenciais objetivos sob o hero. Fato, não adjetivo.",
-      "items": { "type": "object", "properties": { "titulo": { "type": "string" }, "texto": { "type": "string" } } }
+      "items": {
+        "type": "object",
+        "properties": {
+          "titulo": {
+            "type": "string"
+          },
+          "texto": {
+            "type": "string"
+          }
+        }
+      }
     },
-    "estrutura": { "type": "array", "items": { "type": "string" } },
-    "convenios": { "type": "array", "items": { "type": "string" } },
+    "estrutura": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "convenios": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
     "pagamento": {
       "type": "object",
       "properties": {
-        "particular": { "type": "boolean", "default": true },
-        "observacao": { "type": "string", "description": "formas de pagamento; não coloque valores" }
+        "particular": {
+          "type": "boolean",
+          "default": true
+        },
+        "observacao": {
+          "type": "string",
+          "description": "formas de pagamento; não coloque valores"
+        }
       }
     },
     "endereco": {
       "type": "object",
       "properties": {
-        "logradouro": { "type": "string" },
-        "complemento": { "type": "string" },
-        "bairro": { "type": "string" },
-        "cidade": { "type": "string" },
-        "uf": { "type": "string", "maxLength": 2 },
-        "cep": { "type": "string" },
-        "referencia": { "type": "string", "description": "ponto de referência; é o que o paciente realmente usa" },
-        "estacionamento": { "type": "string" },
-        "acessibilidade": { "type": "string" },
-        "latitude": { "type": "number" },
-        "longitude": { "type": "number" },
-        "mapsUrl": { "type": "string" },
-        "mapsEmbed": { "type": "string", "description": "URL de embed do Maps; sem ela a seção sai sem o mapa" }
+        "logradouro": {
+          "type": "string"
+        },
+        "complemento": {
+          "type": "string"
+        },
+        "bairro": {
+          "type": "string"
+        },
+        "cidade": {
+          "type": "string"
+        },
+        "uf": {
+          "type": "string",
+          "maxLength": 2
+        },
+        "cep": {
+          "type": "string"
+        },
+        "referencia": {
+          "type": "string",
+          "description": "ponto de referência; é o que o paciente realmente usa"
+        },
+        "estacionamento": {
+          "type": "string"
+        },
+        "acessibilidade": {
+          "type": "string"
+        },
+        "latitude": {
+          "type": "number"
+        },
+        "longitude": {
+          "type": "number"
+        },
+        "mapsUrl": {
+          "type": "string"
+        },
+        "mapsEmbed": {
+          "type": "string",
+          "description": "URL de embed do Maps; sem ela a seção sai sem o mapa"
+        }
       }
     },
     "horarios": {
@@ -68,20 +193,46 @@
       "items": {
         "type": "object",
         "properties": {
-          "dias": { "type": "string", "examples": ["Segunda a sexta", "Sábado"] },
-          "horario": { "type": "string", "examples": ["08h às 19h"] }
+          "dias": {
+            "type": "string",
+            "examples": [
+              "Segunda a sexta",
+              "Sábado"
+            ]
+          },
+          "horario": {
+            "type": "string",
+            "examples": [
+              "08h às 19h"
+            ]
+          }
         }
       }
     },
     "contato": {
       "type": "object",
-      "required": ["whatsapp"],
+      "required": [
+        "whatsapp"
+      ],
       "properties": {
-        "whatsapp": { "type": "string", "description": "com 55 e DDD, só dígitos: 5511999998888" },
-        "mensagemWhatsapp": { "type": "string", "description": "mensagem que já vem escrita ao abrir a conversa" },
-        "telefone": { "type": "string" },
-        "email": { "type": "string" },
-        "instagram": { "type": "string", "description": "sem @" }
+        "whatsapp": {
+          "type": "string",
+          "description": "com 55 e DDD, só dígitos: 5511999998888"
+        },
+        "mensagemWhatsapp": {
+          "type": "string",
+          "description": "mensagem que já vem escrita ao abrir a conversa"
+        },
+        "telefone": {
+          "type": "string"
+        },
+        "email": {
+          "type": "string"
+        },
+        "instagram": {
+          "type": "string",
+          "description": "sem @"
+        }
       }
     },
     "faq": {
@@ -89,9 +240,15 @@
       "items": {
         "type": "object",
         "properties": {
-          "pergunta": { "type": "string" },
-          "resposta": { "type": "string" },
-          "aberta": { "type": "boolean" }
+          "pergunta": {
+            "type": "string"
+          },
+          "resposta": {
+            "type": "string"
+          },
+          "aberta": {
+            "type": "boolean"
+          }
         }
       }
     },
@@ -99,51 +256,300 @@
       "type": "object",
       "description": "sobrescreve os títulos de seção; tudo tem padrão",
       "properties": {
-        "tituloServicos": { "type": "string" }, "leadServicos": { "type": "string" },
-        "tituloEquipe": { "type": "string" }, "leadEquipe": { "type": "string" },
-        "tituloEstrutura": { "type": "string" }, "leadEstrutura": { "type": "string" },
-        "tituloLocal": { "type": "string" }, "tituloFaq": { "type": "string" },
-        "tituloCta": { "type": "string" }, "leadCta": { "type": "string" }
+        "tituloServicos": {
+          "type": "string"
+        },
+        "leadServicos": {
+          "type": "string"
+        },
+        "tituloEquipe": {
+          "type": "string"
+        },
+        "leadEquipe": {
+          "type": "string"
+        },
+        "tituloEstrutura": {
+          "type": "string"
+        },
+        "leadEstrutura": {
+          "type": "string"
+        },
+        "tituloLocal": {
+          "type": "string"
+        },
+        "tituloFaq": {
+          "type": "string"
+        },
+        "tituloCta": {
+          "type": "string"
+        },
+        "leadCta": {
+          "type": "string"
+        }
       }
     },
     "marca": {
       "type": "object",
+      "description": "Sobrescreve a paleta ponto a ponto, para cliente que já tem identidade visual. Aceita os nomes novos (principal, destaque, fundoSuave...) e os antigos (corPrincipal, corDestaque...).",
       "properties": {
-        "corPrincipal": { "type": "string", "default": "#12626e", "description": "as variantes são calculadas a partir dela" },
-        "corDestaque": { "type": "string", "default": "#d99b3f" },
-        "fonteTitulo": { "type": "string", "default": "Newsreader", "description": "nome exato no Google Fonts" },
-        "fonteTexto": { "type": "string", "default": "Inter" },
-        "sigla": { "type": "string", "description": "2 letras do logo; derivada do nome se ausente" }
+        "principal": {
+          "type": "string"
+        },
+        "principalEscuro": {
+          "type": "string"
+        },
+        "destaque": {
+          "type": "string"
+        },
+        "fundo": {
+          "type": "string"
+        },
+        "fundoSuave": {
+          "type": "string"
+        },
+        "tinta": {
+          "type": "string"
+        },
+        "tintaSuave": {
+          "type": "string"
+        },
+        "borda": {
+          "type": "string"
+        },
+        "fonteTitulo": {
+          "type": "string"
+        },
+        "fonteTexto": {
+          "type": "string"
+        },
+        "sigla": {
+          "type": "string"
+        }
       }
     },
     "site": {
       "type": "object",
       "properties": {
-        "url": { "type": "string" },
-        "imagem": { "type": "string", "description": "og:image" },
-        "imagemHero": { "type": "string", "description": "foto de fundo do hero, aplicada com transparência" }
+        "url": {
+          "type": "string"
+        },
+        "imagem": {
+          "type": "string",
+          "description": "og:image"
+        },
+        "imagemHero": {
+          "type": "string",
+          "description": "foto de fundo do hero, aplicada com transparência"
+        }
       }
     },
-    "politicaPrivacidade": { "type": "boolean" },
+    "politicaPrivacidade": {
+      "type": "boolean"
+    },
     "depoimentos": {
       "type": "array",
       "description": "SÓ com conselho NENHUM. Sob qualquer conselho de saúde o validador reprova — ver COMPLIANCE.md.",
-      "items": { "type": "object", "properties": { "nome": { "type": "string" }, "texto": { "type": "string" } } }
+      "items": {
+        "type": "object",
+        "properties": {
+          "nome": {
+            "type": "string"
+          },
+          "texto": {
+            "type": "string"
+          }
+        }
+      }
     },
-    "formulario": { "type": "object", "description": "não recomendado: coleta dado sensível de saúde (LGPD art. 11)" }
+    "formulario": {
+      "type": "object",
+      "description": "não recomendado: coleta dado sensível de saúde (LGPD art. 11)"
+    },
+    "layout": {
+      "enum": [
+        "editorial",
+        "clinico"
+      ],
+      "default": "clinico",
+      "description": "editorial: profissional único, hero claro com retrato, serifa grande. clinico: clínica multiespecialidade, hero escuro, grade de serviços e convênios."
+    },
+    "paleta": {
+      "enum": [
+        "nude",
+        "oceano",
+        "salvia",
+        "grafite",
+        "clinico",
+        "rose"
+      ],
+      "default": "oceano",
+      "description": "Paleta nomeada com par tipográfico. O tom do destaque no hero escuro é recalculado para passar de 3.5:1 de contraste."
+    },
+    "monograma": {
+      "type": "string",
+      "maxLength": 3,
+      "description": "2 ou 3 letras do logo; derivado do nome se ausente"
+    },
+    "credencial": {
+      "type": "object",
+      "description": "Selo flutuante sobre o retrato (layout editorial). Fato verificável, nunca superlativo: '+12 anos de atuação' sim, 'o melhor da região' não.",
+      "properties": {
+        "numero": {
+          "type": "string"
+        },
+        "texto": {
+          "type": "string"
+        }
+      }
+    },
+    "sobre": {
+      "type": "object",
+      "description": "Texto de abertura do layout editorial, na voz do profissional.",
+      "properties": {
+        "texto": {
+          "type": "string"
+        },
+        "complemento": {
+          "type": "string"
+        }
+      }
+    },
+    "procedimentos": {
+      "type": "array",
+      "description": "Lista em duas colunas (layout editorial). O que é realizado, sem preço e sem promessa de resultado.",
+      "items": {
+        "type": "object",
+        "properties": {
+          "nome": {
+            "type": "string"
+          },
+          "nota": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "secaoExtra": {
+      "type": "object",
+      "description": "Bloco de orientação ao paciente (layout editorial). Conteúdo informativo, que é o que o Google premia e o que diferencia do site de concorrente.",
+      "properties": {
+        "menu": {
+          "type": "string"
+        },
+        "olho": {
+          "type": "string"
+        },
+        "titulo": {
+          "type": "string"
+        },
+        "texto": {
+          "type": "string"
+        },
+        "itens": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "midia": {
+      "type": "object",
+      "description": "Imagens. Ver FOTOS.md: retrato exige origem E autorizacao, senão o site não é gerado. Nunca use foto tirada do Instagram ou do Google.",
+      "properties": {
+        "retrato": {
+          "type": "string",
+          "description": "retrato do profissional; ~1200px de largura"
+        },
+        "retratoAlt": {
+          "type": "string",
+          "description": "descrição para leitor de tela e para o Google"
+        },
+        "origem": {
+          "type": "string",
+          "description": "OBRIGATÓRIO com retrato: de onde a imagem veio"
+        },
+        "autorizacao": {
+          "type": "string",
+          "description": "OBRIGATÓRIO com retrato: quem autorizou o uso e quando"
+        },
+        "logo": {
+          "type": "string"
+        },
+        "creditos": {
+          "type": "string",
+          "description": "crédito do fotógrafo ou do banco de imagens; sai no rodapé"
+        },
+        "galeria": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "src",
+              "tipo"
+            ],
+            "properties": {
+              "src": {
+                "type": "string"
+              },
+              "alt": {
+                "type": "string"
+              },
+              "tipo": {
+                "enum": [
+                  "propria",
+                  "ilustrativa"
+                ],
+                "description": "ilustrativa sai rotulada na página: foto de banco não pode ser apresentada como o consultório do cliente"
+              }
+            }
+          }
+        }
+      }
+    },
+    "preview": {
+      "type": "boolean",
+      "description": "Rascunho de prospecção: noindex, tarja de prévia, e registro/RQE ausentes saem como 'a confirmar' em vez de bloquear."
+    }
   },
   "definitions": {
     "profissional": {
       "type": "object",
-      "required": ["nome"],
+      "required": [
+        "nome"
+      ],
       "properties": {
-        "nome": { "type": "string" },
-        "registro": { "type": "string", "examples": ["CRM-SP 123456", "CRO-RJ 45678", "CRP 06/123456"] },
-        "rqe": { "type": "string", "description": "obrigatório junto do CRM quando anuncia especialidade médica" },
-        "especialidade": { "type": "string" },
-        "atuacao": { "type": "string", "description": "use quando não há RQE: descreve a atuação sem chamar de especialidade" },
-        "formacao": { "type": "array", "items": { "type": "string" } },
-        "foto": { "type": "string" }
+        "nome": {
+          "type": "string"
+        },
+        "registro": {
+          "type": "string",
+          "examples": [
+            "CRM-SP 123456",
+            "CRO-RJ 45678",
+            "CRP 06/123456"
+          ]
+        },
+        "rqe": {
+          "type": "string",
+          "description": "obrigatório junto do CRM quando anuncia especialidade médica"
+        },
+        "especialidade": {
+          "type": "string"
+        },
+        "atuacao": {
+          "type": "string",
+          "description": "use quando não há RQE: descreve a atuação sem chamar de especialidade"
+        },
+        "formacao": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "foto": {
+          "type": "string"
+        }
       }
     }
   }

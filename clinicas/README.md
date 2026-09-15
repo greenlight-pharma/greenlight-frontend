@@ -9,9 +9,12 @@ clinicas/
   prospectar.mjs      lista clínicas SEM SITE via Google Places API → CSV
   briefar.mjs         CSV + modelo de nicho → rascunhos de briefing → sites
   validar.mjs         conformidade de publicidade médica (CFM/CFO/CFP/LGPD)
+  estilos.mjs         6 paletas e 2 layouts nomeados
   gerar.mjs           briefing JSON → site HTML de arquivo único
-  testar.mjs          42 casos: conformidade, renderização, prospecção
-  template/index.html o site
+  testar.mjs          74 casos: conformidade, estilos, fotos, renderização
+  template/
+    editorial.html    profissional único: hero claro, retrato, serifa grande
+    clinico.html      clínica multiespecialidade: hero escuro, grade, convênios
   modelos/            bases por nicho e praça (odonto, fisio e derma em Angra)
   exemplos/           um briefing completo e um propositalmente irregular
   sites/<slug>/       saída dos modelos, publicada em /preview/<slug>/
@@ -20,6 +23,7 @@ clinicas/
 
   PLAYBOOK.md         prospecção, abordagem, preço, os 30 primeiros dias
   COMPLIANCE.md       o que pode e o que não pode num site de saúde
+  FOTOS.md            por que não se pega foto do Instagram, e o que fazer
   abordagem/          roteiros de ligação, WhatsApp, e-mail e indicação
 ```
 
@@ -47,6 +51,47 @@ node clinicas/gerar.mjs   clinicas/exemplos/minha-clinica.json
 #   → clinicas/sites/minha-clinica/index.html
 #   → publicado em /preview/minha-clinica/ depois do deploy
 ```
+
+## Dois layouts, seis paletas
+
+Para os sites não parecerem o mesmo site com a cor trocada, **layout e
+paleta mudam junto** — e o briefing pede um nome, não seis hexadecimais:
+
+```json
+{ "layout": "editorial", "paleta": "nude" }
+```
+
+| Layout | Para quem | Como é |
+|---|---|---|
+| `editorial` | profissional único, consultório particular, dermatologia e estética | hero claro dividido, retrato à direita, serifa grande, muito branco, lista numerada em vez de cartões |
+| `clinico` | clínica com várias especialidades e convênios | hero escuro, cartão de atendimento, grade de serviços, informação densa |
+
+Paletas: `nude` (off-white e bordô, serifa de alto contraste), `oceano`
+(litoral), `salvia` (pediatria, nutrição, psicologia), `grafite` (ortopedia,
+fisioterapia, medicina do trabalho), `clinico` (azul institucional), `rose`
+(odontologia e estética). Cada uma já vem com o par tipográfico.
+
+`marca` no briefing sobrescreve ponto a ponto, para quando o cliente já tem
+identidade visual.
+
+## Fotos
+
+O retrato é metade do produto num site de profissional único — e é a peça
+que tem dono. **Não se pega do Instagram nem do Google**: ver `FOTOS.md`
+para o porquê (direito autoral do fotógrafo, direito de imagem da pessoa,
+Súmula 403 do STJ) e para o que funciona no lugar.
+
+O que o código garante:
+
+- `midia.retrato` só é aceito com `midia.origem` **e** `midia.autorizacao`
+  preenchidos — de onde a foto veio e quem autorizou. Sem isso o site não
+  é gerado
+- cada item da galeria declara `"tipo": "propria"` ou `"ilustrativa"`;
+  imagem de banco sai **rotulada** na página e pede crédito no rodapé
+- menção a paciente em legenda ou alt é erro
+- sem retrato, o `editorial` troca o quadro da foto por um painel
+  tipográfico com o monograma — não fica buraco, fica escolha. É o estado
+  do rascunho, e a deixa para pedir a foto na ligação
 
 ## Modo rascunho
 
