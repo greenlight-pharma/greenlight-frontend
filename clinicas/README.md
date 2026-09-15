@@ -9,12 +9,16 @@ clinicas/
   prospectar.mjs      lista clínicas SEM SITE via Google Places API → CSV
   briefar.mjs         CSV + modelo de nicho → rascunhos de briefing → sites
   validar.mjs         conformidade de publicidade médica (CFM/CFO/CFP/LGPD)
-  estilos.mjs         6 paletas e 2 layouts nomeados
+  arte.mjs            motor de direção de arte: desenho derivado do cliente
+  auditar.mjs         renderiza N desenhos e MEDE contraste, transbordo e
+                      sobreposição (precisa de playwright, só para auditar)
+  estilos.mjs         6 paletas e 2 layouts de catálogo
   gerar.mjs           briefing JSON → site HTML de arquivo único
-  testar.mjs          74 casos: conformidade, estilos, fotos, renderização
+  testar.mjs          131 casos: conformidade, arte, estilos, fotos, render
   template/
     editorial.html    profissional único: hero claro, retrato, serifa grande
     clinico.html      clínica multiespecialidade: hero escuro, grade, convênios
+    sob-medida.html   esqueleto do desenho gerado (CSS vem do arte.mjs)
   modelos/            bases por nicho e praça (odonto, fisio e derma em Angra)
   exemplos/           um briefing completo e um propositalmente irregular
   sites/<slug>/       saída dos modelos, publicada em /preview/<slug>/
@@ -52,7 +56,89 @@ node clinicas/gerar.mjs   clinicas/exemplos/minha-clinica.json
 #   → publicado em /preview/minha-clinica/ depois do deploy
 ```
 
-## Dois layouts, seis paletas
+## Sob medida: um desenho por cliente, nunca repetido
+
+`"layout": "sob-medida"` é o padrão para prospecção. O desenho **não é
+escolhido de catálogo — é derivado do cliente**: a semente é o `place_id`
+do Google (ou o slug), e dela saem oito eixos independentes.
+
+```json
+{ "layout": "sob-medida", "_prospeccao": { "placeId": "ChIJ..." } }
+```
+
+| Eixo | Opções |
+|---|---|
+| composição do 1º quadro | `divisao` `deslocado` `coluna` `centro` `moldura` `faixa` |
+| par tipográfico | 7, cada um com peso, entreletra e escala próprios |
+| paleta | gerada: 8 famílias de matiz curadas × 4 esquemas de destaque × luminosidade contínua |
+| ornamento | `nenhum` `fios` `arco` `trama` `pontos` `moldura` |
+| ritmo | `compacto` `normal` `arejado` |
+| forma | `pilula` `suave` `reto` |
+| estilo da lista | `numerada` `fios` `cartoes` |
+| tratamento de imagem | `limpa` `mascara` `moldura` `duotone` |
+| tom do hero | claro ou escuro |
+
+São 5.832 estruturas distintas antes da paleta, que é contínua. Na prática:
+**400 clientes de teste geraram 400 desenhos diferentes.**
+
+Cada site sai com a assinatura da combinação no comentário do CSS, para
+você poder comparar dois e provar que são desenhos diferentes:
+
+```
+/* Direção de arte gerada — assinatura:
+   vinho/terroso/ebgaramond-outfit/divisao/fios/normal/suave/cartoes/moldura/escuro */
+```
+
+**Determinístico de propósito.** O mesmo cliente gera sempre o mesmo site:
+o link do preview não muda quando você roda de novo, e ninguém abre amanhã
+um design diferente do que aprovou ontem. A ordem dos sorteios em
+`arte.mjs` é parte do contrato — mexer nela muda o desenho de todos os
+clientes já aprovados. Eixo novo entra no fim.
+
+**A foto que chega depois não muda o desenho.** `temRetrato` só ajusta a
+altura do quadro; os eixos sorteados não dependem dela.
+
+### Restrições, que é o que separa generativo de aleatório
+
+Design generativo sem restrição gera o improvável, não o bonito. As que
+existem hoje:
+
+- matiz sorteado dentro de **8 famílias curadas** (petróleo, azul, ardósia,
+  verde, sálvia, vinho, terra, grafite). Matiz livre de 0 a 359 produz
+  oliva e magenta — legível e errado para saúde
+- saturação com teto por família, e o esquema de destaque pesado para o
+  âmbar/terra, que é o que dá o ar de consultório caro
+- composição `moldura` nunca sai com ornamento `moldura` (dois fios de
+  contorno no mesmo quadro)
+- composição `faixa` nunca sai com ornamento de fundo (sangra de ponta a
+  ponta; o ornamento só apareceria como ruído nas beiradas)
+- **toda paleta gerada é ajustada em laço até passar no contraste**, medido
+  contra o fundo das seções alternadas, que é o mais escuro dos dois
+
+### Auditoria: como confiar em milhares de desenhos
+
+Você aprova seis; o sétimo cliente recebe o que ninguém viu. Então o
+auditor renderiza de verdade e mede:
+
+```bash
+npm i -D playwright                 # uma vez; o site não depende disso
+node clinicas/auditar.mjs --sementes 48
+```
+
+- contraste **computado** de 31 alvos de texto, em 3 larguras de tela
+- transbordo horizontal
+- sobreposição indevida do texto do hero com o cabeçalho
+- presença dos elementos de conformidade em toda combinação
+
+Falha citando a assinatura, que reproduz o caso. Foi o auditor que
+encontrou dois defeitos que a conta no papel não pegava: o negrito da
+promessa saindo em tinta escura sobre hero escuro (ordem da cascata), e
+texto validado contra o fundo claro mas exibido sobre o fundo suave.
+
+## Catálogo: dois layouts, seis paletas
+
+Alternativa ao sob medida, para quando o cliente já tem identidade visual
+fechada e você quer controle direto.
 
 Para os sites não parecerem o mesmo site com a cor trocada, **layout e
 paleta mudam junto** — e o briefing pede um nome, não seis hexadecimais:

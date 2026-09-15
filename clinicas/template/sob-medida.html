@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>{{ nome }}{{#se responsavel.especialidade}} — {{ responsavel.especialidade }}{{/se}}{{#se endereco.cidade}} em {{ endereco.cidade }}{{/se}}</title>
+<meta name="description" content="{{ descricao }}">
+{{#se preview}}<meta name="robots" content="noindex, nofollow">{{/se}}{{#se site.url}}<meta name="robots" content="index, follow">{{/se}}
+{{#se site.url}}<link rel="canonical" href="{{ site.url }}">{{/se}}
+<meta property="og:type" content="website">
+<meta property="og:title" content="{{ nome }}">
+<meta property="og:description" content="{{ descricao }}">
+<meta property="og:locale" content="pt_BR">
+{{#se site.imagem}}<meta property="og:image" content="{{ site.imagem }}">{{/se}}
+<meta name="theme-color" content="{{ cores.fundo }}">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="{{ fontesUrl }}" rel="stylesheet">
+<script type="application/ld+json">{{{ jsonLd }}}</script>
+<style>{{{ cssArte }}}</style>
+</head>
+<body>
+
+{{#se preview}}
+<div class="tarja">
+  <b>Prévia</b> — página de demonstração feita para {{ nome }} a partir de informações
+  públicas. Não é o site oficial e não está indexada.
+</div>
+{{/se}}
+
+<header class="topo" id="topo">
+  <div class="topo-in">
+    <a class="assin" href="#inicio">
+      <span class="mono">{{ monograma }}</span>
+      <span>
+        <span class="n">{{ nome }}</span>
+        {{#se responsavel.especialidade}}<span class="p">{{ responsavel.especialidade }}</span>{{/se}}
+        {{#se responsavel.atuacao}}<span class="p">{{ responsavel.atuacao }}</span>{{/se}}
+      </span>
+    </a>
+    <ul class="menu" id="menu">
+      <li><a href="#sobre">{{ textos.olhoSobre }}</a></li>
+      {{#se especialidades}}<li><a href="#atuacao">{{ textos.olhoAtuacao }}</a></li>{{/se}}
+      {{#se procedimentos}}<li><a href="#procedimentos">{{ textos.olhoProcedimentos }}</a></li>{{/se}}
+      {{#se estrutura}}<li><a href="#clinica">{{ textos.olhoClinica }}</a></li>{{/se}}
+      {{#se secaoExtra}}<li><a href="#extra">{{ secaoExtra.menu }}</a></li>{{/se}}
+      <li><a href="#atendimento">{{ textos.olhoAtendimento }}</a></li>
+    </ul>
+    <a class="btn btn-1" href="{{ whatsappLink }}" target="_blank" rel="noopener">
+      Agendar consulta
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M4 12h15M13 6l6 6-6 6"/></svg>
+    </a>
+    <button class="abre" id="abre" aria-label="Abrir menu" aria-expanded="false" aria-controls="menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<main id="inicio">
+
+<section class="hero">
+  <span class="orn" aria-hidden="true"></span>
+  <div class="hero-in">
+    <div class="hero-txt">
+      {{#se hero.selo}}<p class="olho">{{ hero.selo }}</p>{{/se}}
+      <h1>{{{ chamada }}}</h1>
+      {{#se responsavel.especialidade}}<p class="papel">{{ responsavel.especialidade }}</p>{{/se}}
+      {{#se responsavel.atuacao}}<p class="papel">{{ responsavel.atuacao }}</p>{{/se}}
+      <p class="promessa">{{{ subchamada }}}</p>
+      <div class="acoes">
+        <a class="btn btn-1" href="{{ whatsappLink }}" target="_blank" rel="noopener">
+          Agendar consulta
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M4 12h15M13 6l6 6-6 6"/></svg>
+        </a>
+        {{#se telefoneLink}}<a class="btn btn-2" href="{{ telefoneLink }}">{{ contato.telefone }}</a>{{/se}}
+      </div>
+      <!-- [CONFORMIDADE] registro do responsável já no primeiro quadro -->
+      {{#se linhaResponsavel}}<p class="reg">{{ linhaResponsavel }}</p>{{/se}}
+    </div>
+
+    <div class="hero-vis">
+      {{#se temRetrato}}
+      <figure>
+        <img src="{{ midia.retrato }}" alt="{{ midia.retratoAlt }}" fetchpriority="high">
+      </figure>
+      {{/se}}
+      {{#se semRetrato}}
+      <!-- [FOTOS] Sem retrato autorizado, o quadro é tipográfico. Ver FOTOS.md:
+           não se publica foto de banco no lugar do rosto de quem assina o site. -->
+      <div class="painel">
+        <span class="mg">{{ monograma }}</span>
+        {{#se painelLegenda}}<span class="fio"></span><span class="cap">{{ painelLegenda }}</span>{{/se}}
+      </div>
+      {{/se}}
+      {{#se credencial}}
+      <div class="selo">
+        <span class="num">{{ credencial.numero }}</span>
+        <span class="txt">{{ credencial.texto }}</span>
+      </div>
+      {{/se}}
+    </div>
+  </div>
+</section>
+
+<section id="sobre">
+  <div class="env duas">
+    <div>
+      <p class="olho">{{ textos.olhoSobre }}</p>
+      {{#se sobre.texto}}<p class="serif-lead">{{{ sobre.texto }}}</p>{{/se}}
+      {{#se sobre.complemento}}<p class="lead" style="margin-top:1.5rem">{{ sobre.complemento }}</p>{{/se}}
+    </div>
+    <div>
+      {{#se responsavel.formacao}}
+      <ul class="cred">
+        {{#cada responsavel.formacao}}<li><span class="o">{{ @indice }}</span><span>{{ . }}</span></li>{{/cada}}
+      </ul>
+      {{/se}}
+      <div class="caixa-reg">
+        <b>{{ responsavel.nome }}</b>
+        {{#se registroPendente}}<span class="pend">{{ responsavel.registro }}</span>{{/se}}
+        {{#se registroPresente}}{{ responsavel.registro }}{{/se}}
+        {{#se responsavel.rqe}} · {{ responsavel.rqe }}{{/se}}
+      </div>
+    </div>
+  </div>
+</section>
+
+{{#se especialidades}}
+<section id="atuacao" class="alt">
+  <div class="env">
+    <p class="olho">{{ textos.olhoAtuacao }}</p>
+    <h2 class="tit">{{ textos.tituloServicos }}</h2>
+    {{#se textos.leadServicos}}<p class="lead">{{ textos.leadServicos }}</p>{{/se}}
+    <ul class="atu">
+      {{#cada especialidades}}
+      <li><span class="o">{{ .ordem }}</span><h3>{{ .nome }}</h3><p>{{ .descricao }}</p></li>
+      {{/cada}}
+    </ul>
+  </div>
+</section>
+{{/se}}
+
+{{#se procedimentos}}
+<section id="procedimentos">
+  <div class="env">
+    <p class="olho">{{ textos.olhoProcedimentos }}</p>
+    <h2 class="tit">{{ textos.tituloProcedimentos }}</h2>
+    <ul class="proc">
+      {{#cada procedimentos}}<li><span>{{ .nome }}</span>{{#se .nota}}<em>{{ .nota }}</em>{{/se}}</li>{{/cada}}
+    </ul>
+    <p class="fina">{{ textos.notaProcedimentos }}</p>
+  </div>
+</section>
+{{/se}}
+
+{{#se estrutura}}
+<section id="clinica" class="alt">
+  <div class="env">
+    <p class="olho">{{ textos.olhoClinica }}</p>
+    <h2 class="tit">{{ textos.tituloEstrutura }}</h2>
+    {{#se galeria}}
+    <div class="gal">
+      {{#cada galeria}}
+      <figure>
+        <img src="{{ .src }}" alt="{{ .alt }}" loading="lazy">
+        {{#se .ilustrativa}}<figcaption>{{ .ilustrativa }}</figcaption>{{/se}}
+      </figure>
+      {{/cada}}
+    </div>
+    {{/se}}
+    <ul class="estr">
+      {{#cada estrutura}}
+      <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span>{{ . }}</span></li>
+      {{/cada}}
+    </ul>
+  </div>
+</section>
+{{/se}}
+
+{{#se secaoExtra}}
+<section id="extra">
+  <div class="env duas">
+    <div>
+      <p class="olho">{{ secaoExtra.olho }}</p>
+      <h2 class="tit">{{ secaoExtra.titulo }}</h2>
+      <p class="lead">{{ secaoExtra.texto }}</p>
+    </div>
+    {{#se secaoExtra.itens}}
+    <ul class="cred">
+      {{#cada secaoExtra.itens}}<li><span class="o">{{ @indice }}</span><span>{{ . }}</span></li>{{/cada}}
+    </ul>
+    {{/se}}
+  </div>
+</section>
+{{/se}}
+
+<section id="atendimento" class="alt">
+  <div class="env duas">
+    <div>
+      <p class="olho">{{ textos.olhoAtendimento }}</p>
+      <h2 class="tit">{{ textos.tituloLocal }}</h2>
+      <ul class="dados">
+        {{#se enderecoLinha}}<li><span class="rot">Endereço</span><span>{{ enderecoLinha }}</span></li>{{/se}}
+        {{#se endereco.referencia}}<li><span class="rot">Referência</span><span>{{ endereco.referencia }}</span></li>{{/se}}
+        {{#cada horarios}}<li><span class="rot">{{ .dias }}</span><span>{{ .horario }}</span></li>{{/cada}}
+        {{#se contato.telefone}}<li><span class="rot">Telefone</span><span><a href="{{ telefoneLink }}">{{ contato.telefone }}</a></span></li>{{/se}}
+        {{#se endereco.estacionamento}}<li><span class="rot">Estacionamento</span><span>{{ endereco.estacionamento }}</span></li>{{/se}}
+        {{#se endereco.acessibilidade}}<li><span class="rot">Acessibilidade</span><span>{{ endereco.acessibilidade }}</span></li>{{/se}}
+        <li><span class="rot">Pagamento</span><span>{{#se pagamento.particular}}Particular{{/se}}{{#se convenios}} e convênios{{/se}}{{#se pagamento.observacao}} — {{ pagamento.observacao }}{{/se}}</span></li>
+      </ul>
+      {{#se convenios}}
+      <div class="conv">{{#cada convenios}}<span>{{ . }}</span>{{/cada}}</div>
+      <p class="fina">A cobertura varia conforme o plano e o procedimento. Confirme pelo WhatsApp antes de agendar.</p>
+      {{/se}}
+      <div class="acoes" style="margin-top:1.7rem">
+        <a class="btn btn-1" href="{{ whatsappLink }}" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.5 15.2L2 22l4.9-1.4A10 10 0 1 0 12 2Z"/></svg>
+          Agendar pelo WhatsApp
+        </a>
+        <a class="btn btn-2" href="{{ enderecoMapsBusca }}" target="_blank" rel="noopener">Abrir no mapa</a>
+      </div>
+    </div>
+    {{#se endereco.mapsEmbed}}
+    <div class="mapa">
+      <iframe src="{{ endereco.mapsEmbed }}" title="Mapa — {{ nome }}" loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
+    </div>
+    {{/se}}
+  </div>
+</section>
+
+{{#se faq}}
+<section id="faq">
+  <div class="env">
+    <p class="olho">{{ textos.olhoFaq }}</p>
+    <h2 class="tit">{{ textos.tituloFaq }}</h2>
+    <div class="faq">
+      {{#cada faq}}
+      <details{{#se .aberta}} open{{/se}}>
+        <summary>{{ .pergunta }}</summary>
+        <p>{{ .resposta }}</p>
+      </details>
+      {{/cada}}
+    </div>
+  </div>
+</section>
+{{/se}}
+
+<section class="cta">
+  <div class="env">
+    <h2>{{ textos.tituloCta }}</h2>
+    <p class="lead">{{ textos.leadCta }}</p>
+    <div class="acoes">
+      <a class="btn btn-zap" href="{{ whatsappLink }}" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.5 15.2L2 22l4.9-1.4A10 10 0 1 0 12 2Z"/></svg>
+        Agendar pelo WhatsApp
+      </a>
+      {{#se telefoneLink}}<a class="btn btn-2" href="{{ telefoneLink }}">Ligar para {{ contato.telefone }}</a>{{/se}}
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="env">
+    <div class="rod">
+      <div>
+        <h4>{{ nome }}</h4>
+        <p>{{ enderecoLinha }}</p>
+        {{#se contato.telefone}}<p style="margin-top:.5rem"><a href="{{ telefoneLink }}">{{ contato.telefone }}</a></p>{{/se}}
+        {{#se contato.email}}<p><a href="mailto:{{ contato.email }}">{{ contato.email }}</a></p>{{/se}}
+        {{#se contato.instagram}}<p><a href="https://instagram.com/{{ contato.instagram }}" target="_blank" rel="noopener">@{{ contato.instagram }}</a></p>{{/se}}
+      </div>
+      {{#se horarios}}
+      <div>
+        <h4>Horário</h4>
+        {{#cada horarios}}<p>{{ .dias }} · {{ .horario }}</p>{{/cada}}
+      </div>
+      {{/se}}
+      <div>
+        <h4>Responsável técnico</h4>
+        <p class="resp">{{ linhaResponsavel }}</p>
+        {{#se midia.creditos}}<p style="margin-top:.8rem;font-size:.82em">{{ midia.creditos }}</p>{{/se}}
+      </div>
+    </div>
+    <p class="aviso">
+      As informações deste site têm caráter informativo e não substituem a consulta,
+      o diagnóstico ou o tratamento por profissional habilitado. Em caso de emergência,
+      procure o serviço de urgência mais próximo ou ligue 192 (SAMU).
+    </p>
+    <div class="fim">
+      <span>© {{ ano }} {{ nome }}</span>
+      <span>{{ linhaResponsavel }}</span>
+    </div>
+  </div>
+</footer>
+
+<nav class="barra" aria-label="Ações rápidas">
+  <a class="btn btn-zap" href="{{ whatsappLink }}" target="_blank" rel="noopener">
+    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.5 15.2L2 22l4.9-1.4A10 10 0 1 0 12 2Z"/></svg>
+    Agendar
+  </a>
+  {{#se telefoneLink}}<a class="btn btn-2" href="{{ telefoneLink }}">Ligar</a>{{/se}}
+</nav>
+
+<script>
+(function(){
+  var b=document.getElementById('abre'),m=document.getElementById('menu'),t=document.getElementById('topo');
+  if(b&&m){
+    b.addEventListener('click',function(){
+      var a=m.classList.toggle('aberto');b.setAttribute('aria-expanded',a?'true':'false');
+    });
+    m.addEventListener('click',function(e){
+      if(e.target.tagName==='A'){m.classList.remove('aberto');b.setAttribute('aria-expanded','false');}
+    });
+  }
+  if(t){var f=function(){t.classList.toggle('rolou',window.scrollY>12)};f();
+    window.addEventListener('scroll',f,{passive:true});}
+})();
+</script>
+</body>
+</html>

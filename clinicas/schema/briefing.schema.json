@@ -367,11 +367,12 @@
     },
     "layout": {
       "enum": [
+        "sob-medida",
         "editorial",
         "clinico"
       ],
-      "default": "clinico",
-      "description": "editorial: profissional único, hero claro com retrato, serifa grande. clinico: clínica multiespecialidade, hero escuro, grade de serviços e convênios."
+      "default": "sob-medida",
+      "description": "sob-medida: desenho derivado do cliente pela semente (place_id) — padrão para prospecção, nunca repete entre clientes. editorial/clinico: layouts de catálogo, para quem já tem identidade visual fechada."
     },
     "paleta": {
       "enum": [
@@ -383,7 +384,7 @@
         "rose"
       ],
       "default": "oceano",
-      "description": "Paleta nomeada com par tipográfico. O tom do destaque no hero escuro é recalculado para passar de 3.5:1 de contraste."
+      "description": "Paleta nomeada com par tipográfico. O tom do destaque no hero escuro é recalculado para passar de 3.5:1 de contraste. Ignorada no layout sob-medida, onde a paleta é gerada."
     },
     "monograma": {
       "type": "string",
@@ -510,6 +511,15 @@
     "preview": {
       "type": "boolean",
       "description": "Rascunho de prospecção: noindex, tarja de prévia, e registro/RQE ausentes saem como 'a confirmar' em vez de bloquear."
+    },
+    "arte": {
+      "type": "object",
+      "description": "Só para o layout sob-medida. `semente` força a chave do sorteio; por padrão usa _prospeccao.placeId e, na falta, o slug. Trocar a semente troca o desenho inteiro.",
+      "properties": {
+        "semente": {
+          "type": "string"
+        }
+      }
     }
   },
   "definitions": {

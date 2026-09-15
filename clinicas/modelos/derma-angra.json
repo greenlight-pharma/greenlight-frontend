@@ -1,18 +1,22 @@
 {
-  "_aviso": "MODELO para Angra dos Reis - RJ, dermatologia. Layout editorial + paleta nude: consultório de profissional único, o caso em que o site vende a pessoa. Profissional fictícia; registro e RQE no formato do CFM só para demonstrar os campos. SEM RETRATO de propósito — veja o painel tipográfico no lugar da foto: é o estado do rascunho antes de a médica te mandar a imagem dela.",
+  "_aviso": "MODELO para Angra dos Reis - RJ, dermatologia, layout sob medida. Profissional fictícia; registro e RQE no formato do CFM só para demonstrar os campos. SEM RETRATO de propósito: veja o painel tipográfico no lugar da foto — é o estado do rascunho antes de a médica te mandar a imagem dela. A direção de arte é derivada da semente (_prospeccao.placeId, ou o slug): outro cliente gera outro desenho.",
   "slug": "derma-angra-modelo",
   "tipo": "clinica",
   "conselho": "CFM",
   "preview": true,
-  "layout": "editorial",
-  "paleta": "nude",
+  "layout": "sob-medida",
   "nome": "Dra. Modelo Sobrenome",
   "monograma": "MS",
   "descricao": "Dermatologia em Angra dos Reis. Consulta dermatológica, mapeamento de pintas com dermatoscopia digital, prevenção de câncer de pele, acne e queda de cabelo. Agende pelo WhatsApp.",
   "chamada": "Dra. Modelo Sobrenome",
   "subchamada": "Dermatologia clínica com tempo de consulta para <b>olhar a pele inteira</b> — não só a queixa do dia.",
-  "hero": { "selo": "Atendimento em Angra dos Reis / RJ" },
-  "credencial": { "numero": "+12", "texto": "anos de atuação em dermatologia clínica" },
+  "hero": {
+    "selo": "Atendimento em Angra dos Reis / RJ"
+  },
+  "credencial": {
+    "numero": "+12",
+    "texto": "anos de atuação em dermatologia clínica"
+  },
   "responsavel": {
     "nome": "Dra. Modelo Sobrenome",
     "registro": "CRM-RJ 123456",
@@ -30,21 +34,54 @@
     "complemento": "A consulta é agendada com tempo para o exame de corpo inteiro, a revisão do seu histórico e a explicação do que foi encontrado — com o registro das lesões guardado para comparar na próxima visita."
   },
   "especialidades": [
-    { "nome": "Mapeamento de pintas", "descricao": "Exame de corpo inteiro com dermatoscopia digital, com registro das lesões para comparação nas revisões seguintes." },
-    { "nome": "Prevenção de câncer de pele", "descricao": "Avaliação de manchas, lesões que crescem e feridas que não cicatrizam, com biópsia quando indicado." },
-    { "nome": "Dermatologia clínica", "descricao": "Acne, dermatite, psoríase, micoses, urticária e as queixas que o clima úmido do litoral agrava." },
-    { "nome": "Cabelo e unhas", "descricao": "Investigação de queda e rarefação capilar, com exame do couro cabeludo e solicitação dos exames necessários." },
-    { "nome": "Dermatologia da criança", "descricao": "Manchas de nascimento, dermatite atópica e as dúvidas de pele mais comuns na primeira infância." }
+    {
+      "nome": "Mapeamento de pintas",
+      "descricao": "Exame de corpo inteiro com dermatoscopia digital, com registro das lesões para comparação nas revisões seguintes."
+    },
+    {
+      "nome": "Prevenção de câncer de pele",
+      "descricao": "Avaliação de manchas, lesões que crescem e feridas que não cicatrizam, com biópsia quando indicado."
+    },
+    {
+      "nome": "Dermatologia clínica",
+      "descricao": "Acne, dermatite, psoríase, micoses, urticária e as queixas que o clima úmido do litoral agrava."
+    },
+    {
+      "nome": "Cabelo e unhas",
+      "descricao": "Investigação de queda e rarefação capilar, com exame do couro cabeludo e solicitação dos exames necessários."
+    },
+    {
+      "nome": "Dermatologia da criança",
+      "descricao": "Manchas de nascimento, dermatite atópica e as dúvidas de pele mais comuns na primeira infância."
+    }
   ],
   "procedimentos": [
-    { "nome": "Dermatoscopia digital", "nota": "na consulta" },
-    { "nome": "Biópsia de pele", "nota": "com encaminhamento do material" },
-    { "nome": "Exérese de lesão benigna" },
-    { "nome": "Crioterapia" },
-    { "nome": "Cauterização química" },
-    { "nome": "Drenagem de abscesso simples" },
-    { "nome": "Curetagem de molusco contagioso" },
-    { "nome": "Infiltração de lesão inflamatória" }
+    {
+      "nome": "Dermatoscopia digital",
+      "nota": "na consulta"
+    },
+    {
+      "nome": "Biópsia de pele",
+      "nota": "com encaminhamento do material"
+    },
+    {
+      "nome": "Exérese de lesão benigna"
+    },
+    {
+      "nome": "Crioterapia"
+    },
+    {
+      "nome": "Cauterização química"
+    },
+    {
+      "nome": "Drenagem de abscesso simples"
+    },
+    {
+      "nome": "Curetagem de molusco contagioso"
+    },
+    {
+      "nome": "Infiltração de lesão inflamatória"
+    }
   ],
   "secaoExtra": {
     "menu": "Sua pele",
@@ -66,8 +103,19 @@
     "Laudos e orientações enviados por WhatsApp ou e-mail",
     "Emissão de nota fiscal e recibo para reembolso de plano"
   ],
-  "convenios": ["Unimed", "AMS Petrobras", "Bradesco Saúde", "SulAmérica", "Amil", "CASSI", "GEAP"],
-  "pagamento": { "particular": true, "observacao": "cartão, Pix e boleto" },
+  "convenios": [
+    "Unimed",
+    "AMS Petrobras",
+    "Bradesco Saúde",
+    "SulAmérica",
+    "Amil",
+    "CASSI",
+    "GEAP"
+  ],
+  "pagamento": {
+    "particular": true,
+    "observacao": "cartão, Pix e boleto"
+  },
   "endereco": {
     "logradouro": "Rua do Comércio, 000",
     "complemento": "sala 00",
@@ -81,8 +129,14 @@
     "mapsEmbed": "https://www.google.com/maps?q=Centro,+Angra+dos+Reis+-+RJ&output=embed"
   },
   "horarios": [
-    { "dias": "Segunda, quarta e quinta", "horario": "09h às 18h" },
-    { "dias": "Terça e sexta", "horario": "09h às 14h" }
+    {
+      "dias": "Segunda, quarta e quinta",
+      "horario": "09h às 18h"
+    },
+    {
+      "dias": "Terça e sexta",
+      "horario": "09h às 14h"
+    }
   ],
   "contato": {
     "whatsapp": "5524000000000",
@@ -98,11 +152,30 @@
     "leadCta": "Mande uma mensagem no WhatsApp e a recepção responde com os horários disponíveis."
   },
   "faq": [
-    { "pergunta": "Com que frequência devo mapear as pintas?", "resposta": "Para a maioria das pessoas, uma vez por ano. Quem tem muitas pintas, pele clara, histórico familiar de câncer de pele ou trabalha exposto ao sol pode precisar de intervalo menor — definimos isso na consulta.", "aberta": true },
-    { "pergunta": "Apareceu uma mancha nova. É urgente?", "resposta": "Pinta que mudou de cor, cresceu, começou a coçar ou sangrar, e ferida que não cicatriza em algumas semanas, merecem avaliação sem esperar a revisão anual. Mande mensagem e a recepção procura um horário próximo." },
-    { "pergunta": "Moro em uma das ilhas. Como funciona o acompanhamento?", "resposta": "Concentramos o que for possível num único atendimento: consulta, dermatoscopia e procedimento simples no mesmo dia, para você não precisar voltar por causa da barca. Combine pelo WhatsApp antes de vir." },
-    { "pergunta": "Atende convênio?", "resposta": "Atendo os planos listados nesta página. A cobertura varia conforme o contrato e o procedimento, então confirme pelo WhatsApp antes de agendar." },
-    { "pergunta": "O que levar na consulta?", "resposta": "Documento, carteirinha do convênio se for usar, lista das medicações em uso e, se já fez, os laudos ou as imagens de mapeamentos anteriores." }
+    {
+      "pergunta": "Com que frequência devo mapear as pintas?",
+      "resposta": "Para a maioria das pessoas, uma vez por ano. Quem tem muitas pintas, pele clara, histórico familiar de câncer de pele ou trabalha exposto ao sol pode precisar de intervalo menor — definimos isso na consulta.",
+      "aberta": true
+    },
+    {
+      "pergunta": "Apareceu uma mancha nova. É urgente?",
+      "resposta": "Pinta que mudou de cor, cresceu, começou a coçar ou sangrar, e ferida que não cicatriza em algumas semanas, merecem avaliação sem esperar a revisão anual. Mande mensagem e a recepção procura um horário próximo."
+    },
+    {
+      "pergunta": "Moro em uma das ilhas. Como funciona o acompanhamento?",
+      "resposta": "Concentramos o que for possível num único atendimento: consulta, dermatoscopia e procedimento simples no mesmo dia, para você não precisar voltar por causa da barca. Combine pelo WhatsApp antes de vir."
+    },
+    {
+      "pergunta": "Atende convênio?",
+      "resposta": "Atendo os planos listados nesta página. A cobertura varia conforme o contrato e o procedimento, então confirme pelo WhatsApp antes de agendar."
+    },
+    {
+      "pergunta": "O que levar na consulta?",
+      "resposta": "Documento, carteirinha do convênio se for usar, lista das medicações em uso e, se já fez, os laudos ou as imagens de mapeamentos anteriores."
+    }
   ],
-  "politicaPrivacidade": true
+  "politicaPrivacidade": true,
+  "_prospeccao": {
+    "placeId": "ChIJ-modelo-derma-angra"
+  }
 }

@@ -1,0 +1,109 @@
+{
+  "_aviso": "MODELO para Angra dos Reis - RJ, oftalmologia, layout sob medida. Profissional fictícia; registro e RQE no formato do CFM só para demonstrar os campos. A direção de arte sai da semente — este modelo e o de dermatologia não se parecem, e nenhum dos dois se parecerá com o do próximo cliente.",
+  "slug": "oftalmo-angra-modelo",
+  "tipo": "clinica",
+  "conselho": "CFM",
+  "preview": true,
+  "layout": "sob-medida",
+  "nome": "Dr. Modelo Oftalmologista",
+  "monograma": "MO",
+  "descricao": "Oftalmologia em Angra dos Reis. Consulta, exame de vista, catarata, pterígio, glaucoma e retina. Atendimento particular e convênios. Agende pelo WhatsApp.",
+  "chamada": "Oftalmologia em Angra",
+  "subchamada": "Consulta completa com os exames de imagem no mesmo atendimento — <b>quem vem da ilha ou do Frade resolve numa viagem só</b>.",
+  "hero": { "selo": "Exames no mesmo dia da consulta" },
+  "credencial": { "numero": "+15", "texto": "anos de atuação em oftalmologia clínica e cirúrgica" },
+  "responsavel": {
+    "nome": "Dr. Modelo Oftalmologista",
+    "registro": "CRM-RJ 234567",
+    "rqe": "RQE 65432",
+    "especialidade": "Médico Oftalmologista",
+    "formacao": [
+      "Graduação em Medicina",
+      "Residência médica em Oftalmologia",
+      "Título de especialista pelo Conselho Brasileiro de Oftalmologia",
+      "Membro da Sociedade Brasileira de Oftalmologia"
+    ]
+  },
+  "sobre": {
+    "texto": "Atender no litoral muda o que mais aparece no consultório: sol forte, vento e reflexo da água o ano inteiro cobram da superfície do olho de quem trabalha embarcado, na obra ou na rua.",
+    "complemento": "Por isso a consulta já inclui o exame da superfície ocular e a avaliação de pterígio, além da refração. E, porque boa parte dos pacientes vem de longe, os exames de imagem são feitos no mesmo atendimento sempre que a agenda permite — a ideia é você não precisar voltar por causa da barca ou da Rio-Santos."
+  },
+  "especialidades": [
+    { "nome": "Consulta e exame de vista", "descricao": "Refração completa, receita de óculos e avaliação da saúde do olho, com tempo para explicar o que foi encontrado." },
+    { "nome": "Pterígio", "descricao": "A chamada carne crescida no olho, comum em quem passa o dia exposto ao sol e ao vento. Avaliação clínica, orientação de proteção e indicação cirúrgica quando é o caso." },
+    { "nome": "Catarata", "descricao": "Diagnóstico, acompanhamento da evolução e preparo para a cirurgia, com os exames pré-operatórios solicitados e revisados aqui." },
+    { "nome": "Glaucoma", "descricao": "Medida da pressão ocular, exame do nervo óptico e campo visual, com seguimento programado — é doença silenciosa e o controle depende da regularidade." },
+    { "nome": "Retina e diabetes", "descricao": "Mapeamento de retina para quem tem diabetes ou pressão alta, que é o exame que detecta a alteração antes de a visão cair." },
+    { "nome": "Olho seco e alergia", "descricao": "Ardência, vermelhidão e sensação de areia nos olhos, queixas que o ar salino e o ar-condicionado agravam." },
+    { "nome": "Oftalmologia da criança", "descricao": "Primeiro exame de vista, estrabismo e o encaminhamento da escola quando a criança não vê o quadro." }
+  ],
+  "procedimentos": [
+    { "nome": "Refração computadorizada", "nota": "na consulta" },
+    { "nome": "Tonometria", "nota": "pressão ocular" },
+    { "nome": "Mapeamento de retina" },
+    { "nome": "Biomicroscopia" },
+    { "nome": "Campo visual computadorizado" },
+    { "nome": "Retinografia" },
+    { "nome": "Teste de olho seco" },
+    { "nome": "Remoção de corpo estranho da córnea" }
+  ],
+  "secaoExtra": {
+    "menu": "Seus olhos",
+    "olho": "Orientação",
+    "titulo": "Sol e vento cobram do olho, não só da pele",
+    "texto": "Quem trabalha embarcado, na pesca, na obra ou dirigindo o dia inteiro acumula exposição que a maioria das pessoas nem associa aos olhos. O que mais faz diferença:",
+    "itens": [
+      "Óculos de sol com proteção UV de verdade, não só lente escura",
+      "Boné ou chapéu junto do óculos: parte da radiação chega por cima e pelos lados",
+      "Exame de vista a cada dois anos, e anual depois dos 60",
+      "Quem tem diabetes precisa de mapeamento de retina uma vez por ano, mesmo vendo bem",
+      "Vermelhidão que não passa, vista embaçada de um lado só ou dor no olho não esperam a próxima consulta"
+    ]
+  },
+  "estrutura": [
+    "Refrator, lâmpada de fenda e tonômetro no próprio consultório",
+    "Campo visual e retinografia no mesmo endereço",
+    "Atendimento concentrado num dia para quem vem das ilhas ou do 2º distrito",
+    "Prontuário eletrônico, receita de óculos e laudos digitais",
+    "Emissão de nota fiscal e recibo para reembolso de plano"
+  ],
+  "convenios": ["Unimed", "AMS Petrobras", "Bradesco Saúde", "SulAmérica", "Amil", "CASSI", "GEAP"],
+  "pagamento": { "particular": true, "observacao": "cartão, Pix e boleto" },
+  "endereco": {
+    "logradouro": "Rua do Comércio, 000",
+    "complemento": "sala 00",
+    "bairro": "Centro",
+    "cidade": "Angra dos Reis",
+    "uf": "RJ",
+    "cep": "23900-000",
+    "referencia": "No Centro, a poucos minutos do cais de Santa Luzia e do terminal rodoviário.",
+    "estacionamento": "Estacionamento rotativo na rua e estacionamento pago a uma quadra",
+    "acessibilidade": "Prédio com elevador",
+    "mapsEmbed": "https://www.google.com/maps?q=Centro,+Angra+dos+Reis+-+RJ&output=embed"
+  },
+  "horarios": [
+    { "dias": "Segunda a quinta", "horario": "08h às 18h" },
+    { "dias": "Sexta", "horario": "08h às 13h" }
+  ],
+  "contato": {
+    "whatsapp": "5524000000000",
+    "mensagemWhatsapp": "Olá! Vi o site e gostaria de agendar uma consulta oftalmológica.",
+    "telefone": "(24) 0000-0000"
+  },
+  "textos": {
+    "tituloServicos": "O que eu atendo",
+    "tituloEstrutura": "O consultório",
+    "tituloLocal": "Onde e como atendo",
+    "tituloFaq": "O que mais me perguntam",
+    "tituloCta": "Vamos examinar a sua visão?",
+    "leadCta": "Mande uma mensagem no WhatsApp e a recepção responde com os horários disponíveis."
+  },
+  "faq": [
+    { "pergunta": "Preciso fazer exame de vista de quanto em quanto tempo?", "resposta": "A cada dois anos para adulto sem queixa, e anual depois dos 60 ou se você tem diabetes, pressão alta ou histórico de glaucoma na família.", "aberta": true },
+    { "pergunta": "Essa carne crescida no olho precisa operar?", "resposta": "Nem sempre. O pterígio só tem indicação cirúrgica quando cresce em direção à pupila, causa sintoma que não melhora ou incomoda muito. Na consulta a gente mede e acompanha — e a proteção contra sol e vento é o que segura a evolução." },
+    { "pergunta": "Moro na ilha. Consigo resolver tudo numa viagem?", "resposta": "É o que tentamos sempre: consulta, refração e os exames de imagem no mesmo atendimento. Avise pelo WhatsApp que você vem de fora e a recepção reserva o horário com folga." },
+    { "pergunta": "Já saio com a receita dos óculos?", "resposta": "Sim, na própria consulta, e você leva para a ótica que preferir. A receita também vai por WhatsApp se quiser." },
+    { "pergunta": "Atende convênio?", "resposta": "Atendo os planos listados nesta página. A cobertura varia conforme o contrato e o exame, então confirme pelo WhatsApp antes de agendar." }
+  ],
+  "politicaPrivacidade": true
+}

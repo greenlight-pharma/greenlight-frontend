@@ -19,6 +19,7 @@ import { dirname, join, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 import { validar, formatarRelatorio } from "./validar.mjs";
 import { resolverEstilo } from "./estilos.mjs";
+import { direcaoDeArte, gerarCss, urlFontes as urlFontesArte } from "./arte.mjs";
 
 const AQUI = dirname(fileURLToPath(import.meta.url));
 
@@ -329,6 +330,29 @@ function clarearAte(cor, fundo, alvo = 3.5) {
   return "#ffffff";
 }
 
+// `marca` no briefing sobrescreve a cor gerada, para cliente que já tem
+// identidade visual. Aceita os nomes curtos da direção de arte e os longos
+// do sistema de paletas.
+function marcaSobrescrita(marca = {}, cores) {
+  const mapa = {
+    principal: "principal", corPrincipal: "principal",
+    principalEscuro: "principalEscuro", corPrincipalEscuro: "principalEscuro",
+    destaque: "destaque", corDestaque: "destaque",
+    fundo: "fundo", corFundo: "fundo",
+    fundoSuave: "fundoSuave", corFundoSuave: "fundoSuave",
+    tinta: "tinta", tintaSuave: "tintaSuave", borda: "borda",
+  };
+  const saida = {};
+  for (const [k, v] of Object.entries(marca)) if (mapa[k]) saida[mapa[k]] = v;
+  // Trocar o principal exige recalcular o destaque do hero, senão a
+  // sobrescrita reintroduz o problema de contraste que o gerador resolve.
+  if (saida.principal || saida.destaque) {
+    const princ = saida.principal || cores.principal;
+    saida.destaqueHero = clarearAte(saida.destaque || cores.destaque, princ, 3.5);
+  }
+  return saida;
+}
+
 const TEXTOS_PADRAO = {
   olhoSobre: "Sobre",
   olhoAtuacao: "Atuação",
@@ -354,11 +378,21 @@ const TEXTOS_PADRAO = {
 function preparar(b) {
   const conselho = (b.conselho || "CFM").toUpperCase();
   const estilo = resolverEstilo(b);
-  const cores = {
-    ...estilo.cores,
-    // destaque legível sobre o hero escuro do layout clinico
-    destaqueHero: clarearAte(estilo.cores.destaque, estilo.cores.principal, 3.5),
-  };
+  const sobMedida = estilo.layout === "sob-medida";
+
+  // No layout sob-medida a paleta não vem de catálogo: é gerada a partir do
+  // cliente, junto com tipografia, composição e ornamento. `marca` continua
+  // valendo por cima, para quem já tem identidade visual.
+  const arte = sobMedida ? direcaoDeArte(b) : null;
+  if (arte && b.marca) Object.assign(arte.cores, marcaSobrescrita(b.marca, arte.cores));
+
+  const cores = sobMedida
+    ? arte.cores
+    : {
+        ...estilo.cores,
+        // destaque legível sobre o hero escuro do layout clinico
+        destaqueHero: clarearAte(estilo.cores.destaque, estilo.cores.principal, 3.5),
+      };
   const monograma = b.monograma || (b.marca && b.marca.sigla) || sigla(b.nome || "");
 
   // O responsável técnico abre a seção de equipe: é ele que responde pelo
@@ -379,7 +413,9 @@ function preparar(b) {
     conselho,
     cores,
     monograma,
-    fontesUrl: urlFontes(cores),
+    fontesUrl: sobMedida ? urlFontesArte(arte.tipo) : urlFontes(cores),
+    cssArte: sobMedida ? gerarCss(arte, { temRetrato: !!midia.retrato }) : "",
+    arteAssinatura: sobMedida ? arte.assinatura : "",
     layout: estilo.layout,
     paleta: estilo.nomePaleta,
     midia,
@@ -389,6 +425,10 @@ function preparar(b) {
     temRetrato: !!midia.retrato,
     // O motor de template não tem "senão": os dois estados são campos.
     semRetrato: midia.retrato ? "" : "sem-retrato",
+    painelLegenda: [
+      b.responsavel?.especialidade || b.responsavel?.atuacao,
+      b.endereco?.cidade && b.endereco?.uf ? `${b.endereco.cidade} · ${b.endereco.uf}` : "",
+    ].filter(Boolean).join(" — "),
     registroPresente: b.responsavel && b.responsavel.registro ? "sim" : "",
     credencial: b.credencial || null,
     sobre: b.sobre || null,
@@ -461,7 +501,8 @@ function principal() {
 
   const estilo = resolverEstilo(briefing);
   const modelo = readFileSync(join(AQUI, "template", estilo.arquivo), "utf8");
-  const html = renderizar(modelo, { dados: preparar(briefing) });
+  const preparado = preparar(briefing);
+  const html = renderizar(modelo, { dados: preparado });
 
   // Sites de prospecto real saem para clinicas/prospectos/ (fora do git):
   // levam nome, telefone e endereço de terceiros. Só os modelos ficam
@@ -475,7 +516,10 @@ function principal() {
   writeFileSync(caminho, html, "utf8");
 
   const kb = (Buffer.byteLength(html) / 1024).toFixed(0);
-  console.log(`\n→ ${caminho} (${kb} KB, layout ${estilo.layout}, paleta ${estilo.nomePaleta})`);
+  const comoSaiu = estilo.layout === "sob-medida"
+    ? `sob medida — ${preparado.arteAssinatura}`
+    : `layout ${estilo.layout}, paleta ${estilo.nomePaleta}`;
+  console.log(`\n→ ${caminho} (${kb} KB, ${comoSaiu})`);
   console.log(`→ preview depois do deploy: /preview/${briefing.slug}/`);
 }
 

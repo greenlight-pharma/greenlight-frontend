@@ -99,6 +99,10 @@ export const LAYOUTS = {
   // Clínica com várias especialidades e convênios. Hero escuro, cartão de
   // atendimento, grade de serviços. Vende praticidade e informação.
   clinico: "clinico.html",
+  // Desenho derivado do cliente: paleta, tipografia, composição do primeiro
+  // quadro, ornamento, ritmo, forma e estilo de lista saem todos da semente
+  // (place_id do Google). Nenhum eixo é escolhido de catálogo. Ver arte.mjs.
+  "sob-medida": "sob-medida.html",
 };
 
 export function resolverEstilo(b = {}) {

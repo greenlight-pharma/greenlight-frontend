@@ -9,6 +9,7 @@ import { execFileSync } from "node:child_process";
 import { validar } from "./validar.mjs";
 import { PALETAS, LAYOUTS, resolverEstilo } from "./estilos.mjs";
 import { contraste } from "./gerar.mjs";
+import { semear, gerarPaleta, direcaoDeArte, gerarCss, EIXOS } from "./arte.mjs";
 
 let falhas = 0;
 const ok = (nome, cond, detalhe = "") => {
@@ -150,6 +151,106 @@ ok("marca.sigla não vaza para dentro das cores",
   rmSync("clinicas/sites/teste-fontes", { recursive: true, force: true });
 }
 
+console.log("\nDireção de arte sob medida");
+{
+  // Determinismo: o cliente não pode abrir amanhã um desenho diferente do
+  // que aprovou hoje.
+  const a = direcaoDeArte({ slug: "clinica-x", _prospeccao: { placeId: "ChIJ-X-1" } });
+  const b = direcaoDeArte({ slug: "clinica-x", _prospeccao: { placeId: "ChIJ-X-1" } });
+  ok("mesma semente gera a mesma direção de arte", a.assinatura === b.assinatura);
+  ok("mesma semente gera o mesmo CSS", gerarCss(a) === gerarCss(b));
+  ok("place_id manda mais que o slug",
+     direcaoDeArte({ slug: "igual", _prospeccao: { placeId: "A" } }).assinatura !==
+     direcaoDeArte({ slug: "igual", _prospeccao: { placeId: "B" } }).assinatura);
+
+  // A foto que chega depois não pode mudar o desenho aprovado.
+  ok("retrato não altera os eixos sorteados",
+     gerarCss(a, { temRetrato: true }).includes(`composição: ${a.composicao}`) &&
+     gerarCss(a, { temRetrato: false }).includes(`composição: ${a.composicao}`));
+
+  // Variedade: 400 clientes, quantos desenhos repetidos?
+  const assinaturas = [];
+  for (let i = 0; i < 400; i++) assinaturas.push(direcaoDeArte({ slug: `cliente-${i}` }).assinatura);
+  const unicas = new Set(assinaturas).size;
+  ok(`400 clientes geram pelo menos 380 desenhos distintos (deu ${unicas})`, unicas >= 380);
+
+  // Cobertura: nenhum eixo pode estar morto (sorteio que nunca escolhe uma
+  // opção é um bug silencioso — a opção existe no código e nunca aparece).
+  const vistos = { comp: new Set(), orn: new Set(), lista: new Set(), img: new Set(), tipo: new Set() };
+  for (let i = 0; i < 600; i++) {
+    const d = direcaoDeArte({ slug: `cob-${i}` });
+    vistos.comp.add(d.composicao); vistos.orn.add(d.ornamento);
+    vistos.lista.add(d.lista); vistos.img.add(d.imagem); vistos.tipo.add(d.tipo.nome);
+  }
+  ok("todas as composições aparecem", vistos.comp.size === EIXOS.composicoes.length,
+     [...vistos.comp].join(","));
+  ok("todos os ornamentos aparecem", vistos.orn.size === EIXOS.ornamentos.length, [...vistos.orn].join(","));
+  ok("todos os estilos de lista aparecem", vistos.lista.size === EIXOS.listas.length);
+  ok("todos os tratamentos de imagem aparecem", vistos.img.size === EIXOS.imagens.length);
+  ok("todas as tipografias aparecem", vistos.tipo.size === EIXOS.tipografias.length);
+
+  // Restrições: combinações que não funcionam não podem sair.
+  let moldurados = 0, faixaOrnada = 0;
+  for (let i = 0; i < 800; i++) {
+    const d = direcaoDeArte({ slug: `restr-${i}` });
+    if (d.composicao === "moldura" && d.ornamento === "moldura") moldurados++;
+    if (d.composicao === "faixa" && d.ornamento !== "nenhum") faixaOrnada++;
+  }
+  ok("composição moldura nunca sai com ornamento moldura", moldurados === 0);
+  ok("composição faixa nunca sai com ornamento de fundo", faixaOrnada === 0);
+
+  // Contraste de TODA paleta gerada, no pior fundo (o suave das seções .alt).
+  let piorTinta = 99, piorSuave = 99, piorBranco = 99, piorDest = 99;
+  for (let i = 0; i < 500; i++) {
+    const p = gerarPaleta(semear(`pal-${i}`));
+    piorTinta = Math.min(piorTinta, contraste(p.tinta, p.fundoSuave));
+    piorSuave = Math.min(piorSuave, contraste(p.tintaSuave, p.fundoSuave));
+    piorBranco = Math.min(piorBranco, contraste("#ffffff", p.principal));
+    piorDest = Math.min(piorDest, contraste(p.destaqueHero, p.principalEscuro));
+  }
+  ok(`500 paletas: tinta sobre fundo suave nunca abaixo de 8 (pior ${piorTinta.toFixed(2)})`, piorTinta >= 8);
+  ok(`500 paletas: tinta suave nunca abaixo de 4.8 (pior ${piorSuave.toFixed(2)})`, piorSuave >= 4.8);
+  ok(`500 paletas: branco sobre principal nunca abaixo de 5 (pior ${piorBranco.toFixed(2)})`, piorBranco >= 5);
+  ok(`500 paletas: destaque do hero nunca abaixo de 4.5 (pior ${piorDest.toFixed(2)})`, piorDest >= 4.5);
+
+  // O bloco de hero escuro precisa vir DEPOIS das regras gerais: com a
+  // mesma especificidade, quem vem antes perde — e o negrito da promessa
+  // saía em tinta escura sobre fundo escuro, invisível.
+  let escurosConferidos = 0;
+  for (let i = 0; i < 200 && escurosConferidos < 12; i++) {
+    const d = direcaoDeArte({ slug: `ordem-${i}` });
+    if (!d.heroEscuro) continue;
+    escurosConferidos++;
+    const css = gerarCss(d);
+    const geral = css.indexOf(".hero .promessa b{font-weight:600");
+    const escuro = css.indexOf(".hero .promessa b{color:#fff}");
+    ok(`hero escuro: override da promessa vem depois da regra geral (${d.assinatura.split("/")[0]})`,
+       geral !== -1 && escuro !== -1 && escuro > geral);
+  }
+
+  // Sob medida não deve herdar nada do catálogo de paletas.
+  const sm = { ...bom, slug: "teste-sm", layout: "sob-medida", paleta: "nude" };
+  delete sm.marca;
+  writeFileSync("/tmp/b-sm.json", JSON.stringify(sm));
+  execFileSync("node", ["clinicas/gerar.mjs", "/tmp/b-sm.json"], { stdio: "pipe" });
+  const h = readFileSync("clinicas/sites/teste-sm/index.html", "utf8");
+  ok("sob medida ignora a paleta de catálogo", !h.includes("#5c2033"));
+  ok("sob medida grava a assinatura no CSS", /assinatura: [a-z]+\/[a-z]+/i.test(h));
+  ok("sob medida embute o CSS gerado, sem folha externa",
+     h.includes("<style>/* Direção de arte gerada") && !/<link[^>]*\.css/.test(h));
+  ok("sob medida mantém o registro do responsável", h.includes(bom.responsavel.registro));
+  ok("sob medida mantém o aviso de consulta", h.includes("não substituem a consulta"));
+  ok("marca do briefing ainda sobrescreve a cor gerada", (() => {
+    const m = { ...sm, slug: "teste-sm2", marca: { principal: "#123456" } };
+    writeFileSync("/tmp/b-sm2.json", JSON.stringify(m));
+    execFileSync("node", ["clinicas/gerar.mjs", "/tmp/b-sm2.json"], { stdio: "pipe" });
+    const h2 = readFileSync("clinicas/sites/teste-sm2/index.html", "utf8");
+    rmSync("clinicas/sites/teste-sm2", { recursive: true, force: true });
+    return h2.includes("--princ:#123456");
+  })());
+  rmSync("clinicas/sites/teste-sm", { recursive: true, force: true });
+}
+
 console.log("\nFotos: origem e autorização");
 {
   const comFoto = { ...bom, midia: { retrato: "foto.jpg" } };
@@ -181,10 +282,23 @@ console.log("\nFotos: origem e autorização");
   ok("crédito da imagem aparece no rodapé", h.includes("Unsplash"));
   rmSync("clinicas/sites/teste-ilustrativa", { recursive: true, force: true });
 
-  // Sem retrato o editorial não finge ter foto: mostra o painel tipográfico.
-  const semFoto = readFileSync("clinicas/sites/derma-angra-modelo/index.html", "utf8");
-  ok("editorial sem retrato usa painel tipográfico, não <img> vazia",
-     semFoto.includes("hero-painel") && !semFoto.includes('class="hero-figura"'));
+  // Sem retrato, nenhum layout finge ter foto: entra o painel tipográfico.
+  // Vale para os dois layouts que têm quadro de imagem.
+  for (const [layout, classePainel, classeFoto] of [
+    ["editorial", "hero-painel", 'class="hero-figura"'],
+    ["sob-medida", 'class="painel"', "<figure>"],
+  ]) {
+    const b = { ...bom, slug: `teste-sem-foto-${layout}`, layout };
+    delete b.marca;
+    delete b.midia;
+    writeFileSync("/tmp/b-sf.json", JSON.stringify(b));
+    execFileSync("node", ["clinicas/gerar.mjs", "/tmp/b-sf.json"], { stdio: "pipe" });
+    const h = readFileSync(`clinicas/sites/teste-sem-foto-${layout}/index.html`, "utf8");
+    ok(`${layout} sem retrato usa painel tipográfico, não <img> vazia`,
+       h.includes(classePainel) && !h.includes(classeFoto));
+    ok(`${layout} sem retrato não traz <img> de hero`, !/<img[^>]*fetchpriority/.test(h));
+    rmSync(`clinicas/sites/teste-sem-foto-${layout}`, { recursive: true, force: true });
+  }
 }
 
 console.log("\nModo rascunho (preview de prospecção)");
