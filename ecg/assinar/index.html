@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Assinar o Vytal ECG</title>
+<meta name="description" content="Assine o Vytal ECG: leitor de eletrocardiograma por foto. Plano mensal ou anual.">
+<meta name="robots" content="noindex">
+<link rel="icon" type="image/png" href="/ecg/vytal-ecg-logo.png">
+<meta name="theme-color" content="#111726">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --navy:#111726; --navy-2:#1f2740; --rose:#A9525A; --rose-deep:#8a3e46;
+  --pink:#F3E6E2; --bg:#FAFBFC; --ink:#1a1f2e; --mute:#5c6274; --line:#e3e6ec;
+  --ok:#136F52; --ok-bg:#ECF7F1; --erro:#A12C2C; --erro-bg:#FBE9E9;
+}
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"Instrument Sans",-apple-system,"Segoe UI",Helvetica,Arial,sans-serif;font-size:16px;line-height:1.5;-webkit-font-smoothing:antialiased}
+a{color:inherit}
+h1,h2{margin:0;line-height:1.1;letter-spacing:-.02em}
+h1{font-size:clamp(1.9rem,5vw,2.6rem)}
+h2{font-size:1.2rem}
+p{margin:0}
+header{border-bottom:1px solid var(--line);background:#fff}
+.nav{width:min(760px,calc(100% - 32px));margin:0 auto;height:64px;display:flex;align-items:center;justify-content:space-between}
+.brand{display:flex;align-items:center;gap:.55rem;text-decoration:none;font-weight:700;color:var(--navy)}
+.brand img{height:30px;width:auto}
+main{width:min(760px,calc(100% - 32px));margin:0 auto;padding-block:40px 72px}
+.sub{color:var(--mute);margin-top:10px;max-width:56ch}
+.passo{margin-top:32px;background:#fff;border:1px solid var(--line);border-radius:18px;padding:24px}
+.passo[aria-disabled="true"]{opacity:.45;pointer-events:none}
+.passo h2{display:flex;align-items:center;gap:10px}
+.num{display:inline-grid;place-items:center;width:28px;height:28px;border-radius:50%;background:var(--navy);color:#fff;font-size:.85rem;font-weight:700;flex:none}
+.planos{display:grid;gap:12px;margin-top:18px}
+@media(min-width:600px){.planos{grid-template-columns:1fr 1fr}}
+.plano{position:relative;border:2px solid var(--line);border-radius:14px;padding:18px;cursor:pointer;display:block}
+.plano input{position:absolute;opacity:0;pointer-events:none}
+.plano:has(input:checked){border-color:var(--rose);background:var(--pink)}
+.plano:has(input:focus-visible){outline:3px solid var(--rose);outline-offset:2px}
+.plano b{display:block;font-size:1.05rem}
+.preco{font-size:1.7rem;font-weight:700;margin-top:6px;font-variant-numeric:tabular-nums}
+.preco small{font-size:.9rem;font-weight:500;color:var(--mute)}
+.selo{position:absolute;top:-11px;right:14px;background:var(--rose);color:#fff;font-size:.72rem;font-weight:700;padding:3px 9px;border-radius:999px;letter-spacing:.03em}
+.nota{color:var(--mute);font-size:.88rem;margin-top:6px}
+.abas{display:flex;gap:6px;margin-top:16px;background:var(--bg);border:1px solid var(--line);border-radius:12px;padding:4px;width:max-content;max-width:100%}
+.abas button{border:0;background:transparent;padding:.5rem 1rem;border-radius:9px;font:inherit;font-weight:600;color:var(--mute);cursor:pointer}
+.abas button[aria-selected="true"]{background:#fff;color:var(--navy);box-shadow:0 1px 3px rgba(17,23,38,.12)}
+.grade{display:grid;gap:12px;margin-top:16px}
+@media(min-width:600px){.g2{grid-template-columns:1fr 1fr}.g3{grid-template-columns:2fr 1fr 1fr}.g-cep{grid-template-columns:1fr 2fr}}
+label.campo{display:flex;flex-direction:column;gap:5px;font-size:.88rem;font-weight:600;color:var(--navy)}
+input[type=text],input[type=email],input[type=password],input[type=tel],select{font:inherit;font-weight:400;color:var(--ink);padding:.7rem .8rem;border:1px solid #cfd4dd;border-radius:10px;background:#fff;width:100%}
+input:focus-visible,select:focus-visible,button:focus-visible{outline:3px solid var(--rose);outline-offset:1px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:.5rem;padding:.9rem 1.4rem;border-radius:12px;font:inherit;font-weight:700;border:0;cursor:pointer;background:var(--navy);color:#fff;margin-top:18px}
+.btn:hover{background:var(--navy-2)}
+.btn[disabled]{opacity:.55;cursor:progress}
+.btn-rose{background:var(--rose)}
+.btn-rose:hover{background:var(--rose-deep)}
+.btn-link{background:none;color:var(--rose-deep);padding:0;margin-top:12px;text-decoration:underline;font-weight:600}
+.btn-link:hover{background:none}
+.msg{margin-top:14px;padding:12px 14px;border-radius:10px;font-size:.94rem}
+.msg.erro{background:var(--erro-bg);color:var(--erro)}
+.msg.ok{background:var(--ok-bg);color:var(--ok)}
+.conta{margin-top:14px;display:flex;flex-wrap:wrap;gap:8px 16px;align-items:center;color:var(--mute)}
+.conta b{color:var(--ink)}
+.resumo{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;border-top:1px solid var(--line);margin-top:20px;padding-top:16px;font-weight:600}
+.seguro{color:var(--mute);font-size:.85rem;margin-top:10px}
+footer{color:var(--mute);font-size:.82rem;text-align:center;padding:24px 16px 40px}
+</style>
+</head>
+<body>
+<header>
+  <div class="nav">
+    <a class="brand" href="/ecg"><img src="/ecg/vytal-ecg-logo.png" alt=""> Vytal ECG</a>
+    <a href="/ecg" style="color:var(--mute);text-decoration:none;font-size:.92rem">Conhecer o app</a>
+  </div>
+</header>
+
+<main>
+  <h1>Assinar o Vytal ECG</h1>
+  <p class="sub">Leia o ECG por foto, com as 12 derivações e as medidas. A assinatura vale no app, com a mesma conta.</p>
+
+  <div id="ja-assinante" class="msg ok" hidden></div>
+
+  <section class="passo" id="p1">
+    <h2><span class="num">1</span> Escolha o plano</h2>
+    <div class="planos">
+      <label class="plano"><input type="radio" name="plano" id="plano-mensal" value="mensal" checked>
+        <b>Mensal</b><div class="preco" id="preco-mensal">R$ 79,90 <small>/mês</small></div>
+        <p class="nota">Cancele quando quiser.</p></label>
+      <label class="plano"><span class="selo">Economize 10%</span><input type="radio" name="plano" id="plano-anual" value="anual">
+        <b>Anual</b><div class="preco" id="preco-anual">R$ 859,90 <small>/ano</small></div>
+        <p class="nota">Equivale a R$ 71,66 por mês.</p></label>
+    </div>
+  </section>
+
+  <section class="passo" id="p2">
+    <h2><span class="num">2</span> Sua conta Vytal</h2>
+    <div id="conta-form">
+      <div class="abas" role="tablist">
+        <button type="button" role="tab" id="aba-entrar" aria-selected="true">Já tenho conta</button>
+        <button type="button" role="tab" id="aba-criar" aria-selected="false">Criar conta</button>
+      </div>
+      <form id="form-conta" class="grade" novalidate>
+        <label class="campo" id="campo-nome-conta" hidden>Nome<input type="text" id="conta-nome" autocomplete="name"></label>
+        <label class="campo">E-mail<input type="email" id="conta-email" autocomplete="username" required></label>
+        <label class="campo">Senha<input type="password" id="conta-senha" autocomplete="current-password" minlength="8" required></label>
+        <div><button class="btn" type="submit" id="btn-conta">Entrar</button></div>
+      </form>
+      <p class="nota" id="nota-conta">É a mesma conta do app Vytal ECG e do Vytal Acadêmico.</p>
+    </div>
+    <div class="conta" id="conta-logada" hidden>
+      <span>Entrou como <b id="conta-quem"></b></span>
+      <button type="button" class="btn btn-link" id="btn-sair" style="margin:0">Trocar de conta</button>
+    </div>
+    <div id="msg-conta" class="msg erro" hidden role="alert"></div>
+  </section>
+
+  <section class="passo" id="p3" aria-disabled="true">
+    <h2><span class="num">3</span> Dados e cartão</h2>
+    <form id="form-pagto" novalidate>
+      <div class="grade g2">
+        <label class="campo">Nome completo<input type="text" id="nome" autocomplete="name" required></label>
+        <label class="campo">CPF<input type="text" id="cpf" inputmode="numeric" autocomplete="off" placeholder="000.000.000-00" required></label>
+      </div>
+      <div class="grade g2">
+        <label class="campo">Celular com DDD<input type="tel" id="celular" autocomplete="tel-national" placeholder="(12) 99999-9999" required></label>
+      </div>
+      <div class="grade g-cep">
+        <label class="campo">CEP<input type="text" id="cep" inputmode="numeric" autocomplete="postal-code" placeholder="00000-000" required></label>
+        <label class="campo">Rua<input type="text" id="rua" autocomplete="address-line1" required></label>
+      </div>
+      <div class="grade g3">
+        <label class="campo">Bairro<input type="text" id="bairro" required></label>
+        <label class="campo">Número<input type="text" id="numero" required></label>
+        <label class="campo">Complemento<input type="text" id="complemento"></label>
+      </div>
+      <div class="grade g2">
+        <label class="campo">Cidade<input type="text" id="cidade" autocomplete="address-level2" required></label>
+        <label class="campo">UF<input type="text" id="uf" maxlength="2" autocomplete="address-level1" required></label>
+      </div>
+
+      <div class="grade" style="margin-top:22px">
+        <label class="campo">Número do cartão<input type="text" id="cartao-numero" inputmode="numeric" autocomplete="cc-number" placeholder="0000 0000 0000 0000" required></label>
+      </div>
+      <div class="grade g3">
+        <label class="campo">Nome impresso no cartão<input type="text" id="cartao-nome" autocomplete="cc-name" required></label>
+        <label class="campo">Validade<input type="text" id="cartao-validade" inputmode="numeric" autocomplete="cc-exp" placeholder="MM/AA" required></label>
+        <label class="campo">CVV<input type="text" id="cartao-cvv" inputmode="numeric" autocomplete="cc-csc" maxlength="4" required></label>
+      </div>
+
+      <div class="resumo"><span id="resumo-plano">Plano mensal</span><span id="resumo-valor">R$ 79,90 por mês</span></div>
+      <button class="btn btn-rose" type="submit" id="btn-pagar">Assinar</button>
+      <p class="seguro">Os dados do cartão vão direto para o Pagar.me (Stone). A Vytal não recebe nem guarda o número do cartão.</p>
+      <div id="msg-pagto" class="msg erro" hidden role="alert"></div>
+    </form>
+  </section>
+
+  <section class="passo" id="p-fim" hidden>
+    <h2>Assinatura ativa</h2>
+    <p class="sub" id="fim-texto">Abra o app Vytal ECG e entre com o seu e-mail.</p>
+  </section>
+</main>
+
+<footer>Vytal Saúde Tecnologia LTDA · CNPJ 67.051.119/0001-64 · <a href="/privacidade">Privacidade</a> · <a href="/termos">Termos</a></footer>
+
+<script>
+(() => {
+  const API = "https://vytal-api-production.up.railway.app";
+  const $ = (id) => document.getElementById(id);
+  const so = (v) => (v || "").replace(/\D/g, "");
+  const PRECOS = { mensal: ["Plano mensal", "R$ 79,90 por mês"], anual: ["Plano anual", "R$ 859,90 por ano"] };
+  let token = null, config = null, modoCriar = false;
+  try { token = sessionStorage.getItem("vytal_ecg_token"); } catch (e) {}
+
+  function mostrarErro(el, texto) { el.textContent = texto; el.hidden = !texto; }
+
+  async function api(caminho, opcoes = {}) {
+    const r = await fetch(API + caminho, {
+      ...opcoes,
+      headers: { "Content-Type": "application/json", ...(token ? { Authorization: "Bearer " + token } : {}), ...(opcoes.headers || {}) },
+    });
+    let corpo = null;
+    try { corpo = await r.json(); } catch (e) {}
+    if (!r.ok) {
+      const m = corpo && (Array.isArray(corpo.message) ? corpo.message[0] : corpo.message);
+      const erro = new Error(r.status === 401 ? "Sessão expirada. Entre de novo." : (m || "Não deu certo. Tente de novo."));
+      erro.status = r.status; throw erro;
+    }
+    return corpo;
+  }
+
+  // ---------- plano ----------
+  function planoAtual() { return document.querySelector('input[name="plano"]:checked').value; }
+  function atualizarResumo() {
+    const [n, v] = PRECOS[planoAtual()];
+    $("resumo-plano").textContent = n; $("resumo-valor").textContent = v;
+  }
+  document.querySelectorAll('input[name="plano"]').forEach((i) => i.addEventListener("change", atualizarResumo));
+
+  // ---------- conta ----------
+  function modo(criar) {
+    modoCriar = criar;
+    $("aba-entrar").setAttribute("aria-selected", String(!criar));
+    $("aba-criar").setAttribute("aria-selected", String(criar));
+    $("campo-nome-conta").hidden = !criar;
+    $("btn-conta").textContent = criar ? "Criar conta" : "Entrar";
+    $("conta-senha").setAttribute("autocomplete", criar ? "new-password" : "current-password");
+    $("nota-conta").textContent = criar ? "Senha com pelo menos 8 caracteres." : "É a mesma conta do app Vytal ECG e do Vytal Acadêmico.";
+    mostrarErro($("msg-conta"), "");
+  }
+  $("aba-entrar").onclick = () => modo(false);
+  $("aba-criar").onclick = () => modo(true);
+
+  $("form-conta").addEventListener("submit", async (ev) => {
+    ev.preventDefault();
+    const email = $("conta-email").value.trim(), senha = $("conta-senha").value;
+    if (!email || senha.length < 8) return mostrarErro($("msg-conta"), "Informe o e-mail e a senha (8 caracteres ou mais).");
+    $("btn-conta").disabled = true;
+    try {
+      token = null;
+      const corpo = { email, password: senha };
+      if (modoCriar && $("conta-nome").value.trim()) corpo.nome = $("conta-nome").value.trim();
+      const s = await api(modoCriar ? "/estudante/auth/cadastro" : "/estudante/auth/login", { method: "POST", body: JSON.stringify(corpo) });
+      token = s.token;
+      try { sessionStorage.setItem("vytal_ecg_token", token); sessionStorage.setItem("vytal_ecg_email", s.user.email); } catch (e) {}
+      if (s.user.nome && !$("nome").value) $("nome").value = s.user.nome;
+      await entrou(s.user.email);
+    } catch (e) {
+      mostrarErro($("msg-conta"), e.status === 401 ? "E-mail ou senha incorretos." : e.message);
+    } finally { $("btn-conta").disabled = false; $("conta-senha").value = ""; }
+  });
+
+  $("btn-sair").onclick = () => {
+    token = null;
+    try { sessionStorage.removeItem("vytal_ecg_token"); sessionStorage.removeItem("vytal_ecg_email"); } catch (e) {}
+    $("conta-form").hidden = false; $("conta-logada").hidden = true;
+    $("p3").setAttribute("aria-disabled", "true"); $("ja-assinante").hidden = true;
+  };
+
+  async function entrou(email) {
+    $("conta-form").hidden = true; $("conta-logada").hidden = false; $("conta-quem").textContent = email;
+    mostrarErro($("msg-conta"), "");
+    config = await api("/estudante/assinatura/config");
+    const r = await api("/estudante/assinatura");
+    if (r.assinatura && ["ativa", "em_atraso"].includes(r.assinatura.status)) {
+      const ate = r.assinatura.expiraEm ? new Date(r.assinatura.expiraEm).toLocaleDateString("pt-BR") : "";
+      mostrarErro($("ja-assinante"), `Você já assina o plano ${r.assinatura.plano}${ate ? `, com acesso até ${ate}` : ""}. Não precisa assinar de novo.`);
+      $("p3").setAttribute("aria-disabled", "true");
+      return;
+    }
+    if (!config.pagarme || !config.pagarme.disponivel || !config.pagarme.chavePublica) {
+      mostrarErro($("msg-pagto"), "A assinatura pelo site ainda não está disponível. Tente mais tarde.");
+    }
+    $("p3").removeAttribute("aria-disabled");
+    $("nome").focus();
+  }
+
+  // ---------- CEP ----------
+  $("cep").addEventListener("blur", async () => {
+    const cep = so($("cep").value);
+    if (cep.length !== 8) return;
+    try {
+      const r = await fetch(`https://viacep.com.br/ws/${cep}/json/`);
+      const d = await r.json();
+      if (d.erro) return;
+      if (!$("rua").value) $("rua").value = d.logradouro || "";
+      if (!$("bairro").value) $("bairro").value = d.bairro || "";
+      if (!$("cidade").value) $("cidade").value = d.localidade || "";
+      if (!$("uf").value) $("uf").value = d.uf || "";
+      if (d.logradouro) $("numero").focus();
+    } catch (e) { /* o preenchimento é só ajuda */ }
+  });
+
+  // ---------- pagamento ----------
+  function cpfValido(c) {
+    c = so(c);
+    if (c.length !== 11 || /^(\d)\1+$/.test(c)) return false;
+    for (const t of [9, 10]) {
+      let s = 0;
+      for (let i = 0; i < t; i++) s += Number(c[i]) * (t + 1 - i);
+      if (((s * 10) % 11) % 10 !== Number(c[t])) return false;
+    }
+    return true;
+  }
+
+  $("form-pagto").addEventListener("submit", async (ev) => {
+    ev.preventDefault();
+    const msg = $("msg-pagto");
+    const v = (id) => $(id).value.trim();
+    const faltando = ["nome", "cpf", "celular", "cep", "rua", "numero", "bairro", "cidade", "uf", "cartao-numero", "cartao-nome", "cartao-validade", "cartao-cvv"].find((id) => !v(id));
+    if (faltando) { $(faltando).focus(); return mostrarErro(msg, "Preencha todos os campos."); }
+    if (!cpfValido(v("cpf"))) { $("cpf").focus(); return mostrarErro(msg, "Confira o CPF."); }
+    if (so(v("celular")).length < 10) { $("celular").focus(); return mostrarErro(msg, "Informe o celular com DDD."); }
+    const val = so(v("cartao-validade"));
+    if (val.length !== 4 && val.length !== 6) { $("cartao-validade").focus(); return mostrarErro(msg, "Validade no formato MM/AA."); }
+    const mes = Number(val.slice(0, 2)), ano = Number(val.length === 4 ? "20" + val.slice(2) : val.slice(2));
+    if (!config || !config.pagarme || !config.pagarme.chavePublica) return mostrarErro(msg, "A assinatura pelo site ainda não está disponível.");
+
+    $("btn-pagar").disabled = true; $("btn-pagar").textContent = "Processando…";
+    mostrarErro(msg, "");
+    try {
+      // 1) cartão -> token, direto no Pagar.me (chave pública)
+      const rt = await fetch(`https://api.pagar.me/core/v5/tokens?appId=${encodeURIComponent(config.pagarme.chavePublica)}`, {
+        method: "POST", headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ type: "card", card: { number: so(v("cartao-numero")), holder_name: v("cartao-nome"), exp_month: mes, exp_year: ano, cvv: so(v("cartao-cvv")) } }),
+      });
+      const tk = await rt.json().catch(() => ({}));
+      if (!rt.ok || !tk.id) throw new Error("Confira os dados do cartão.");
+      // 2) assinatura na API da Vytal (só o token do cartão)
+      const r = await api("/estudante/assinatura/pagarme", {
+        method: "POST",
+        body: JSON.stringify({
+          plano: planoAtual(), cardToken: tk.id, nome: v("nome"), cpf: v("cpf"), celular: v("celular"),
+          endereco: { cep: v("cep"), rua: v("rua"), numero: v("numero"), complemento: v("complemento") || undefined, bairro: v("bairro"), cidade: v("cidade"), uf: v("uf") },
+        }),
+      });
+      ["cartao-numero", "cartao-nome", "cartao-validade", "cartao-cvv"].forEach((id) => ($(id).value = ""));
+      const a = r.assinatura;
+      if (a && ["ativa", "em_atraso"].includes(a.status)) {
+        const ate = a.expiraEm ? new Date(a.expiraEm).toLocaleDateString("pt-BR") : "";
+        $("fim-texto").textContent = `Pronto. Seu acesso vai até ${ate} e renova sozinho. Abra o app Vytal ECG e entre com ${$("conta-quem").textContent}.`;
+        ["p1", "p2", "p3"].forEach((id) => ($(id).hidden = true));
+        $("p-fim").hidden = false;
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      } else {
+        throw new Error("O pagamento não foi aprovado. Confira os dados ou use outro cartão.");
+      }
+    } catch (e) {
+      mostrarErro(msg, e.message);
+    } finally {
+      $("btn-pagar").disabled = false; $("btn-pagar").textContent = "Assinar";
+    }
+  });
+
+  // ---------- início ----------
+  const params = new URLSearchParams(location.search);
+  if (params.get("plano") === "anual") $("plano-anual").checked = true;
+  atualizarResumo();
+  if (token) {
+    let email = "";
+    try { email = sessionStorage.getItem("vytal_ecg_email") || ""; } catch (e) {}
+    entrou(email).catch(() => $("btn-sair").onclick());
+  }
+})();
+</script>
+</body>
+</html>
