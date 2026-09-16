@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Vytal Acadêmico — A prática clínica do aluno vira estudo</title>
+<meta name="description" content="O Vytal Acadêmico transforma a prática clínica do estudante de medicina em estudo estruturado, no formato do ENAMED, e dá à coordenação uma visão real do aprendizado da turma. Publicado para iOS e Android.">
+<link rel="canonical" href="https://www.vytalsaude.com.br/academico">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://www.vytalsaude.com.br/academico">
+<meta property="og:title" content="Vytal Acadêmico — A prática clínica do aluno vira estudo">
+<meta property="og:description" content="Educação médica que transforma casos reais em raciocínio clínico, e dá à coordenação a visão do aprendizado da turma.">
+<meta name="theme-color" content="#0F1F3A">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+:root{
+  --navy:#0F1F3A;--navy-2:#16294a;--aco:#1E6091;--aco-2:#17557f;
+  --ice:#C7D8EA;--frio:#EEF4FB;--bg:#FAFBFC;--ink:#1a1f2e;--mute:#5c6274;
+  --line:#e3e6ec;--gold:#C9A227;--radius:22px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"Instrument Sans",-apple-system,"Segoe UI",Helvetica,Arial,sans-serif;font-size:17px;line-height:1.55;-webkit-font-smoothing:antialiased}
+img{max-width:100%;display:block}
+a{color:inherit}
+h1,h2,h3{margin:0;line-height:1.1;letter-spacing:-.02em;font-weight:700}
+h1{font-size:clamp(2.2rem,6vw,3.8rem)}
+h2{font-size:clamp(1.7rem,4vw,2.5rem)}
+h3{font-size:1.2rem}
+p{margin:0}
+.wrap{width:min(1120px,calc(100% - 40px));margin:0 auto}
+.lead{font-size:1.2rem;color:var(--mute)}
+.btn{display:inline-flex;align-items:center;gap:.5rem;padding:.95rem 1.5rem;border-radius:14px;font-weight:600;text-decoration:none;font-size:1rem;border:2px solid transparent;transition:transform .15s,background .15s}
+.btn:active{transform:scale(.98)}
+.btn-navy{background:var(--navy);color:#fff}
+.btn-navy:hover{background:var(--navy-2)}
+.btn-light{background:#fff;color:var(--navy)}
+.btn-light:hover{background:var(--frio)}
+.btn-ghost{background:transparent;color:#fff;border-color:rgba(255,255,255,.4)}
+:focus-visible{outline:3px solid var(--aco);outline-offset:3px;border-radius:8px}
+header{position:sticky;top:0;z-index:10;background:rgba(250,251,252,.85);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.nav{display:flex;align-items:center;justify-content:space-between;height:68px}
+.brand{display:flex;align-items:center;gap:.6rem;text-decoration:none;font-weight:700;color:var(--navy)}
+.brand img{height:34px}
+.nav ul{display:none;list-style:none;gap:1.6rem;margin:0;padding:0}
+.nav ul a{text-decoration:none;font-weight:500;color:var(--mute)}
+.nav ul a:hover{color:var(--navy)}
+@media(min-width:880px){.nav ul{display:flex}}
+.crumb{color:var(--mute);font-size:.9rem}
+.crumb a{color:var(--aco);text-decoration:none}
+.hero{background:var(--navy);color:#fff;padding:44px 0 80px;position:relative;overflow:hidden}
+.hero::after{content:"";position:absolute;right:-160px;top:60%;width:480px;height:480px;border-radius:50%;background:radial-gradient(circle,rgba(30,96,145,.5),transparent 68%)}
+.hero .wrap{position:relative;z-index:1}
+.hero .tagline{color:var(--ice);font-weight:600;letter-spacing:.04em;text-transform:uppercase;font-size:.85rem;margin-bottom:16px}
+.hero h1{max-width:20ch}
+.hero h1 span{color:var(--ice)}
+.hero .lead{color:var(--ice);max-width:48ch;margin-top:22px;font-size:1.25rem}
+.hero .cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:32px}
+.tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:30px;padding:0}
+.tags li{list-style:none;font-size:.9rem;color:var(--ice);border:1px solid rgba(199,216,234,.3);padding:.35rem .8rem;border-radius:999px}
+section{padding:76px 0}
+.section-head{max-width:56ch;margin-bottom:40px}
+.section-head p{color:var(--mute);margin-top:12px;font-size:1.1rem}
+/* audiences */
+.aud{display:grid;gap:20px}
+@media(min-width:820px){.aud{grid-template-columns:repeat(3,1fr)}}
+.acard{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:30px 26px}
+.acard .ic{width:46px;height:46px;border-radius:12px;background:var(--frio);display:grid;place-items:center;margin-bottom:18px;color:var(--aco);font-weight:700;font-size:1.2rem}
+.acard h3{color:var(--navy)}
+.acard p{color:var(--mute);margin-top:10px}
+/* features */
+.feat{background:var(--frio)}
+.fgrid{display:grid;gap:18px}
+@media(min-width:760px){.fgrid{grid-template-columns:1fr 1fr;gap:20px 40px}}
+.fitem{padding-left:30px;position:relative}
+.fitem::before{content:"";position:absolute;left:0;top:.45em;width:14px;height:14px;border-radius:50%;background:var(--aco)}
+.fitem b{color:var(--navy);font-size:1.1rem}
+.fitem p{color:var(--mute);margin-top:4px}
+/* enamed highlight */
+.enamed{background:var(--navy);color:#fff;text-align:center}
+.enamed h2{max-width:24ch;margin:0 auto}
+.enamed p{color:var(--ice);max-width:56ch;margin:18px auto 0;font-size:1.15rem}
+.chain{display:flex;flex-wrap:wrap;justify-content:center;gap:10px;margin-top:34px}
+.chain span{background:rgba(199,216,234,.12);border:1px solid rgba(199,216,234,.28);color:#fff;padding:.6rem 1.1rem;border-radius:999px;font-weight:500}
+.chain .arrow{background:none;border:none;color:var(--ice);align-self:center}
+/* band */
+.band{text-align:center}
+.band h2{max-width:22ch;margin:0 auto}
+.band p{color:var(--mute);margin-top:14px;font-size:1.1rem}
+.band .cta{display:flex;gap:12px;justify-content:center;margin-top:30px;flex-wrap:wrap}
+footer{background:#0b1626;color:#9aa3b5;padding:52px 0 40px;font-size:.92rem}
+footer nav{display:flex;flex-wrap:wrap;gap:18px 28px;margin-bottom:24px}
+footer nav a{color:var(--ice);text-decoration:none}
+footer nav a:hover{color:#fff}
+footer .fnote{border-top:1px solid rgba(255,255,255,.1);padding-top:22px;line-height:1.6}
+footer strong{color:#cfd6e4}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap nav">
+    <a class="brand" href="/"><img src="/vytal-mark-aco.png" alt="Vytal Saúde"> Vytal Saúde</a>
+    <ul>
+      <li><a href="/">A empresa</a></li>
+      <li><a href="#recursos">Recursos</a></li>
+      <li><a href="#enamed">ENAMED</a></li>
+      <li><a href="#contato">Contato</a></li>
+    </ul>
+    <a class="btn btn-navy" href="#contato">Falar com a equipe</a>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap">
+    <p class="crumb"><a href="/">Vytal Saúde</a> › Vytal Acadêmico</p>
+    <p class="tagline" style="margin-top:18px">Vytal Acadêmico</p>
+    <h1>A prática clínica do aluno <span>vira estudo.</span></h1>
+    <p class="lead">Cada caso que o estudante de medicina atende vira aprendizado organizado, no formato que o ENAMED e as provas de residência cobram. E a coordenação enxerga, pela primeira vez, como a turma realmente aprende.</p>
+    <div class="cta">
+      <a class="btn btn-light" href="#recursos">Ver o que faz</a>
+      <a class="btn btn-ghost" href="#contato">Apresentar à minha instituição</a>
+    </div>
+    <ul class="tags">
+      <li>Publicado para iOS e Android</li>
+      <li>Para faculdades de medicina</li>
+      <li>Foco no ENAMED</li>
+    </ul>
+  </div>
+</section>
+
+<!-- AUDIÊNCIAS -->
+<section id="valor">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>Valor para os dois lados da sala</h2>
+      <p>O aluno estuda a partir da própria prática. A coordenação acompanha a evolução real da turma.</p>
+    </div>
+    <div class="aud">
+      <div class="acard">
+        <div class="ic">A</div>
+        <h3>Para o aluno</h3>
+        <p>Transforma cada caso atendido em aprendizado organizado, treina o raciocínio clínico do jeito que as provas cobram, e acompanha a própria evolução ao longo do curso.</p>
+      </div>
+      <div class="acard">
+        <div class="ic">C</div>
+        <h3>Para a coordenação</h3>
+        <p>Uma visão clara de como a turma aprende: quais temas e habilidades domina e onde precisa de reforço, com relatórios prontos para a avaliação do curso.</p>
+      </div>
+      <div class="acard">
+        <div class="ic">P</div>
+        <h3>Para o preceptor</h3>
+        <p>Acompanha os casos registrados e a qualidade do raciocínio dos alunos sob sua supervisão, com foco pedagógico e sem burocracia.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- RECURSOS -->
+<section class="feat" id="recursos">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>O que já está pronto e funcionando</h2>
+      <p>Um produto real, publicado nas lojas e em uso, feito no Brasil para o contexto da formação médica brasileira.</p>
+    </div>
+    <div class="fgrid">
+      <div class="fitem"><b>Estudo a partir da prática</b><p>O aluno registra o caso que atendeu e recebe um retorno que organiza o raciocínio clínico, da hipótese à conduta.</p></div>
+      <div class="fitem"><b>Conexão com o ENAMED</b><p>Cada caso é ligado aos eixos temáticos da prova, transformando a vivência em preparação estruturada.</p></div>
+      <div class="fitem"><b>Painel da coordenação</b><p>Indicadores da turma, mapa de cobertura de temas e relatório executivo em PDF para o colegiado.</p></div>
+      <div class="fitem"><b>Assistente de estudos com IA</b><p>Um tutor que aceita imagens e documentos para tirar dúvidas e aprofundar temas.</p></div>
+      <div class="fitem"><b>Atlas de anatomia em 3D</b><p>Modelos anatômicos interativos ligados aos temas de estudo.</p></div>
+      <div class="fitem"><b>Biblioteca e simulados</b><p>Condições, medicações e um banco de questões validadas para revisão e prática.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ENAMED -->
+<section class="enamed" id="enamed">
+  <div class="wrap">
+    <h2>Feito para desenvolver o raciocínio clínico</h2>
+    <p>Mais que um banco de questões, o Vytal Acadêmico treina exatamente a cadeia de raciocínio que a medicina e as provas cobram — a partir dos casos reais que o aluno já vive.</p>
+    <div class="chain">
+      <span>Construir a hipótese</span>
+      <span class="arrow">→</span>
+      <span>Interpretar anamnese e exame</span>
+      <span class="arrow">→</span>
+      <span>Chegar ao diagnóstico</span>
+      <span class="arrow">→</span>
+      <span>Definir a conduta</span>
+    </div>
+  </div>
+</section>
+
+<!-- BAND -->
+<section class="band" id="contato">
+  <div class="wrap">
+    <h2>Leve o Vytal Acadêmico para a sua instituição.</h2>
+    <p>Coordenações e faculdades de medicina interessadas em conhecer a plataforma, falem com a equipe.</p>
+    <div class="cta">
+      <a class="btn btn-navy" href="mailto:contato@vytalsaude.com.br?subject=Vytal%20Acad%C3%AAmico%20-%20apresenta%C3%A7%C3%A3o">Falar com a equipe</a>
+      <a class="btn btn-light" href="/" style="border:2px solid var(--line)">Conhecer a Vytal</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <nav>
+      <a href="/">Vytal Saúde</a>
+      <a href="/academico">Vytal Acadêmico</a>
+      <a href="/vytal-medicacoes">Vytal Medicações</a>
+      <a href="/ecg">Vytal ECG</a>
+      <a href="mailto:contato@vytalsaude.com.br">Contato</a>
+      <a href="/privacidade">Política de Privacidade</a>
+      <a href="/exclusao-de-conta.html">Exclusão de conta</a>
+    </nav>
+    <p class="fnote"><strong>Vytal Saúde Tecnologia LTDA</strong> · CNPJ 67.051.119/0001-64 · São José dos Campos/SP · contato@vytalsaude.com.br<br>
+    O Vytal Acadêmico é uma ferramenta de apoio à educação médica. Não substitui a avaliação institucional nem o julgamento clínico.</p>
+  </div>
+</footer>
+
+</body>
+</html>

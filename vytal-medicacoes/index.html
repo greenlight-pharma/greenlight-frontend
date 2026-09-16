@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Vytal Medicações — Continuidade do cuidado entre as consultas</title>
+<meta name="description" content="O Vytal Medicações mantém o paciente conectado à rede de saúde entre uma consulta e outra: cadastro da prescrição, lembretes de medicação por WhatsApp, confirmação das tomadas e um painel de adesão para a equipe de saúde.">
+<link rel="canonical" href="https://www.vytalsaude.com.br/vytal-medicacoes">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://www.vytalsaude.com.br/vytal-medicacoes">
+<meta property="og:title" content="Vytal Medicações — Continuidade do cuidado entre as consultas">
+<meta property="og:description" content="Adesão ao tratamento por WhatsApp, com painel de acompanhamento para a equipe de saúde.">
+<meta name="theme-color" content="#0F1F3A">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+:root{
+  --navy:#0F1F3A;--navy-2:#16294a;--aco:#1E6091;--aco-2:#17557f;
+  --ice:#C7D8EA;--frio:#EEF4FB;--bg:#FAFBFC;--ink:#1a1f2e;--mute:#5c6274;
+  --line:#e3e6ec;--mint:#1F8A6D;--mint-bg:#ECF7F1;--radius:22px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"Instrument Sans",-apple-system,"Segoe UI",Helvetica,Arial,sans-serif;font-size:17px;line-height:1.55;-webkit-font-smoothing:antialiased}
+img{max-width:100%;display:block}
+a{color:inherit}
+h1,h2,h3{margin:0;line-height:1.1;letter-spacing:-.02em;font-weight:700}
+h1{font-size:clamp(2.2rem,6vw,3.8rem)}
+h2{font-size:clamp(1.7rem,4vw,2.5rem)}
+h3{font-size:1.2rem}
+p{margin:0}
+.wrap{width:min(1120px,calc(100% - 40px));margin:0 auto}
+.lead{font-size:1.2rem;color:var(--mute)}
+.btn{display:inline-flex;align-items:center;gap:.5rem;padding:.95rem 1.5rem;border-radius:14px;font-weight:600;text-decoration:none;font-size:1rem;border:2px solid transparent;transition:transform .15s,background .15s}
+.btn:active{transform:scale(.98)}
+.btn-navy{background:var(--navy);color:#fff}
+.btn-navy:hover{background:var(--navy-2)}
+.btn-light{background:#fff;color:var(--navy)}
+.btn-light:hover{background:var(--frio)}
+.btn-ghost{background:transparent;color:#fff;border-color:rgba(255,255,255,.4)}
+:focus-visible{outline:3px solid var(--aco);outline-offset:3px;border-radius:8px}
+header{position:sticky;top:0;z-index:10;background:rgba(250,251,252,.85);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.nav{display:flex;align-items:center;justify-content:space-between;height:68px}
+.brand{display:flex;align-items:center;gap:.6rem;text-decoration:none;font-weight:700;color:var(--navy)}
+.brand img{height:34px}
+.nav ul{display:none;list-style:none;gap:1.6rem;margin:0;padding:0}
+.nav ul a{text-decoration:none;font-weight:500;color:var(--mute)}
+.nav ul a:hover{color:var(--navy)}
+@media(min-width:880px){.nav ul{display:flex}}
+.crumb{color:var(--mute);font-size:.9rem}
+.crumb a{color:var(--aco);text-decoration:none}
+.hero{background:var(--navy);color:#fff;padding:44px 0 80px;position:relative;overflow:hidden}
+.hero::after{content:"";position:absolute;right:-160px;top:60%;width:480px;height:480px;border-radius:50%;background:radial-gradient(circle,rgba(31,138,109,.4),transparent 68%)}
+.hero .wrap{position:relative;z-index:1}
+.hero .tagline{color:var(--ice);font-weight:600;letter-spacing:.04em;text-transform:uppercase;font-size:.85rem;margin-bottom:16px}
+.hero h1{max-width:20ch}
+.hero h1 span{color:var(--ice)}
+.hero .lead{color:var(--ice);max-width:50ch;margin-top:22px;font-size:1.25rem}
+.hero .cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:32px}
+.tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:30px;padding:0}
+.tags li{list-style:none;font-size:.9rem;color:var(--ice);border:1px solid rgba(199,216,234,.3);padding:.35rem .8rem;border-radius:999px}
+section{padding:76px 0}
+.section-head{max-width:56ch;margin-bottom:40px}
+.section-head p{color:var(--mute);margin-top:12px;font-size:1.1rem}
+/* problem */
+.problem{background:var(--navy);color:#fff}
+.problem h2{max-width:24ch}
+.problem .lead{color:var(--ice);max-width:54ch;margin-top:16px}
+.problem .pull{margin-top:26px;font-size:1.25rem;max-width:44ch;color:#fff}
+/* steps */
+.steps{display:grid;gap:16px;counter-reset:s}
+@media(min-width:760px){.steps{grid-template-columns:repeat(4,1fr)}}
+.step{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:26px 22px}
+.step .n{display:inline-grid;place-items:center;width:38px;height:38px;border-radius:12px;background:var(--mint-bg);color:var(--mint);font-weight:700;margin-bottom:14px}
+.step b{color:var(--navy)}
+.step p{color:var(--mute);margin-top:6px;font-size:.98rem}
+/* benefits */
+.ben{background:var(--frio)}
+.bgrid{display:grid;gap:20px}
+@media(min-width:820px){.bgrid{grid-template-columns:repeat(3,1fr)}}
+.bcard{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:30px 26px}
+.bcard h3{color:var(--navy)}
+.bcard p{color:var(--mute);margin-top:10px}
+/* panel */
+.panel{display:grid;gap:40px}
+@media(min-width:860px){.panel{grid-template-columns:1fr 1fr;gap:60px;align-items:center}}
+.panel h2{max-width:16ch}
+.panel .plist{margin-top:20px;display:grid;gap:14px}
+.pl{padding-left:28px;position:relative}
+.pl::before{content:"";position:absolute;left:0;top:.45em;width:14px;height:14px;border-radius:50%;background:var(--mint)}
+.pl b{color:var(--navy)}
+.pl p{color:var(--mute);margin-top:2px;font-size:.98rem}
+.safe{background:var(--mint-bg);border:1px solid #A9D9C4;border-radius:16px;padding:24px 26px}
+.safe h3{color:#136F52}
+.safe p{color:#1B4B3A;margin-top:8px}
+/* band */
+.band{text-align:center}
+.band h2{max-width:22ch;margin:0 auto}
+.band p{color:var(--mute);margin-top:14px;font-size:1.1rem}
+.band .cta{display:flex;gap:12px;justify-content:center;margin-top:30px;flex-wrap:wrap}
+footer{background:#0b1626;color:#9aa3b5;padding:52px 0 40px;font-size:.92rem}
+footer nav{display:flex;flex-wrap:wrap;gap:18px 28px;margin-bottom:24px}
+footer nav a{color:var(--ice);text-decoration:none}
+footer nav a:hover{color:#fff}
+footer .fnote{border-top:1px solid rgba(255,255,255,.1);padding-top:22px;line-height:1.6}
+footer strong{color:#cfd6e4}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap nav">
+    <a class="brand" href="/"><img src="/vytal-mark-aco.png" alt="Vytal Saúde"> Vytal Saúde</a>
+    <ul>
+      <li><a href="/">A empresa</a></li>
+      <li><a href="#como">Como funciona</a></li>
+      <li><a href="#painel">Painel</a></li>
+      <li><a href="#contato">Contato</a></li>
+    </ul>
+    <a class="btn btn-navy" href="#contato">Falar com a equipe</a>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap">
+    <p class="crumb"><a href="/">Vytal Saúde</a> › Vytal Medicações</p>
+    <p class="tagline" style="margin-top:18px">Vytal Medicações</p>
+    <h1>O cuidado que continua <span>entre as consultas.</span></h1>
+    <p class="lead">A maior parte do tratamento acontece longe do consultório. O Vytal Medicações mantém o paciente acompanhado nesse intervalo — com lembretes de medicação por WhatsApp e um painel de adesão para a equipe de saúde agir antes do agravamento.</p>
+    <div class="cta">
+      <a class="btn btn-light" href="#como">Ver como funciona</a>
+      <a class="btn btn-ghost" href="#contato">Levar para a minha rede</a>
+    </div>
+    <ul class="tags">
+      <li>Comunicação por WhatsApp</li>
+      <li>Adesão ao tratamento</li>
+      <li>Painel para a equipe de saúde</li>
+    </ul>
+  </div>
+</section>
+
+<!-- PROBLEMA -->
+<section class="problem">
+  <div class="wrap">
+    <h2>A não adesão transforma doenças gerenciáveis em emergências evitáveis.</h2>
+    <p class="lead">Entre uma consulta e outra, o paciente crônico esquece a medicação, interrompe o uso por conta própria ou perde o vínculo com a unidade. O que era um quadro controlável termina em descompensação, pronto-socorro e internação.</p>
+    <p class="pull">O problema não é falta de recurso clínico. É falta de um fio que mantenha o paciente conectado ao cuidado.</p>
+  </div>
+</section>
+
+<!-- COMO FUNCIONA -->
+<section id="como">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>Como funciona</h2>
+      <p>Sobre o WhatsApp, o canal que o paciente já usa. Sem instalar nada, sem equipamento novo.</p>
+    </div>
+    <div class="steps">
+      <div class="step">
+        <div class="n">1</div>
+        <b>Cadastra a prescrição</b>
+        <p>A equipe registra os medicamentos, doses e horários do paciente na plataforma.</p>
+      </div>
+      <div class="step">
+        <div class="n">2</div>
+        <b>Lembra na hora certa</b>
+        <p>O paciente recebe, pelo WhatsApp, o lembrete de cada medicação no horário combinado.</p>
+      </div>
+      <div class="step">
+        <div class="n">3</div>
+        <b>Confirma a tomada</b>
+        <p>O paciente confirma que tomou, e a plataforma acompanha a adesão ao longo do tempo.</p>
+      </div>
+      <div class="step">
+        <div class="n">4</div>
+        <b>Alerta a equipe</b>
+        <p>Quando a adesão falha, a equipe vê no painel e age antes do quadro se agravar.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BENEFÍCIOS -->
+<section class="ben">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>Quem ganha</h2>
+      <p>Continuidade do cuidado que beneficia o paciente, a equipe e a gestão ao mesmo tempo.</p>
+    </div>
+    <div class="bgrid">
+      <div class="bcard">
+        <h3>O paciente</h3>
+        <p>Sente-se acompanhado entre as consultas, segue melhor o tratamento e controla melhor a própria doença.</p>
+      </div>
+      <div class="bcard">
+        <h3>A equipe de saúde</h3>
+        <p>Age de forma proativa sobre quem está deixando de aderir, em vez de descobrir tarde demais.</p>
+      </div>
+      <div class="bcard">
+        <h3>A gestão</h3>
+        <p>Enxerga a adesão da população acompanhada e previne complicações caras e evitáveis.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PAINEL -->
+<section id="painel">
+  <div class="wrap panel">
+    <div>
+      <h2>Um painel que mostra o que acontece longe do consultório.</h2>
+      <div class="plist">
+        <div class="pl"><b>Comportamento de adesão</b><p>Acompanhe, de forma agregada, como a população segue o tratamento.</p></div>
+        <div class="pl"><b>Pacientes em risco de abandono</b><p>A lista de quem precisa de atenção, para a equipe agir a tempo.</p></div>
+        <div class="pl"><b>Apoiado por inteligência artificial</b><p>A IA prioriza os contatos e reduz o trabalho manual da equipe.</p></div>
+      </div>
+    </div>
+    <div class="safe">
+      <h3>Apoio ao cuidado, não substituição</h3>
+      <p>O Vytal Medicações organiza a comunicação e o acompanhamento. Ele não prescreve, não altera tratamento e não substitui o julgamento do profissional de saúde. A decisão clínica é sempre da equipe. O tratamento de dados segue a LGPD.</p>
+    </div>
+  </div>
+</section>
+
+<!-- BAND -->
+<section class="band" id="contato">
+  <div class="wrap">
+    <h2>Leve a continuidade do cuidado para a sua rede.</h2>
+    <p>Secretarias de saúde, clínicas e operadoras interessadas em melhorar a adesão ao tratamento, falem com a equipe.</p>
+    <div class="cta">
+      <a class="btn btn-navy" href="mailto:contato@vytalsaude.com.br?subject=Vytal%20Medica%C3%A7%C3%B5es">Falar com a equipe</a>
+      <a class="btn btn-light" href="/" style="border:2px solid var(--line)">Conhecer a Vytal</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <nav>
+      <a href="/">Vytal Saúde</a>
+      <a href="/academico">Vytal Acadêmico</a>
+      <a href="/vytal-medicacoes">Vytal Medicações</a>
+      <a href="/ecg">Vytal ECG</a>
+      <a href="mailto:contato@vytalsaude.com.br">Contato</a>
+      <a href="/privacidade">Política de Privacidade</a>
+    </nav>
+    <p class="fnote"><strong>Vytal Saúde Tecnologia LTDA</strong> · CNPJ 67.051.119/0001-64 · São José dos Campos/SP · contato@vytalsaude.com.br<br>
+    O Vytal Medicações é uma ferramenta de apoio à adesão ao tratamento. Não substitui o julgamento clínico do profissional de saúde. Tratamento de dados conforme a LGPD.</p>
+  </div>
+</footer>
+
+</body>
+</html>
