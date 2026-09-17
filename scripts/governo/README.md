@@ -19,7 +19,13 @@ semente.py  ──────────────────────�
  Lei 14.600/2023)                        ├──> montar_grafo.py ──> governo/dados/governo-federal.json
 baixar_siorg.py     -> .cache/siorg.json │
 baixar_congresso.py -> .cache/congresso.json
+ler_dou.py          -> .cache/dou.md   (relatório para revisão humana; não altera o grafo)
 ```
+
+Tudo isso roda sozinho toda segunda-feira em
+`.github/workflows/grafo-governo.yml`, que abre um PR na branch
+`bot/grafo-governo` com o JSON remontado e o relatório do DOU no corpo.
+Também pode ser disparado à mão em Actions, "Run workflow".
 
 1. `python3 scripts/governo/semente.py` gera o JSON só com a semente. É o que
    está versionado hoje.
@@ -52,6 +58,7 @@ ajuste na primeira execução. Cada um tem o ponto de ajuste marcado.
       "quantidade": 11,               // membros (tribunal, Casa) ou entidades (grupo)
       "cargo": {                      // cargo de comando, se houver
         "titulo": "Diretor(a)-Presidente",
+        "situacao": "nao_verificado", // titular | interino | vago | nao_verificado
         "ocupante": null,             // null = não verificado
         "desde": "2025-02-01", "mandato_ate": "2027-01-31",
         "verificado_em": "2025-02", "fonte": "https://..."
@@ -71,11 +78,32 @@ Tipos de aresta não hierárquica em uso: `nomeia`, `aprova`, `fiscaliza`,
 
 ## Regra editorial sobre pessoas
 
-Estrutura sim, pessoas quase nunca. A semente só nomeia ocupantes com mandato
-fixo e público (Presidente, Vice, presidências das Casas e do STF). Todo o
-resto fica `null` até a ingestão preencher com fonte e data. Um campo vazio é
-melhor que um nome errado, e 2026 é ano eleitoral: boa parte dos ministros
+Estrutura sim, pessoas só com fonte. A semente só nomeia ocupantes com
+mandato fixo confirmado em fonte oficial e com `verificado_em` (Presidente,
+Vice, Casas do Congresso, STF, STJ, TSE, TCU, PGR, Banco Central). Todo o
+resto fica `null` até a ingestão preencher com fonte e data. Um campo vazio
+é melhor que um nome errado, e 2026 é ano eleitoral: boa parte dos ministros
 deixou o cargo em abril.
+
+Situação do cargo:
+
+| `situacao` | Significa | Regra |
+|---|---|---|
+| `titular` | ocupante efetivo | exige `ocupante` |
+| `interino` | interino ou substituto | exige `ocupante`; o SIORG completo sinaliza substitutos |
+| `vago` | cargo sem ocupante | é uma afirmação: exige `fonte` e `verificado_em` |
+| `nao_verificado` | ainda não olhamos | padrão quando `ocupante` é `null` |
+
+O `ler_dou.py` produz um relatório dos atos de pessoal da semana (seção 2
+do DOU) por órgão, mas não altera o grafo: quem decide é quem revisa o PR.
+
+## Segundo nível
+
+A semente traz à mão as secretarias finalísticas da Saúde (Decreto
+11.798/2023), da Educação (Decreto 11.342/2023) e da Justiça (Decreto
+11.348/2023). O `montar_grafo.py` adiciona as dos demais ministérios a partir
+do SIORG (unidades do tipo "Secretaria" diretamente abaixo do ministério),
+sem duplicar as curadas.
 
 ## Fontes
 

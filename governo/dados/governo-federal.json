@@ -49,6 +49,12 @@
    "legislativo": "Legislativo",
    "judiciario": "Judiciário",
    "essencial": "Funções essenciais à Justiça"
+  },
+  "situacoes": {
+   "titular": "Titular",
+   "interino": "Interino(a) ou substituto(a)",
+   "vago": "Vago",
+   "nao_verificado": "Não verificado"
   }
  },
  "nos": [
@@ -109,6 +115,7 @@
    "descricao": "Chefe de Estado e de Governo. Mandato de quatro anos, eleição direta em dois turnos.",
    "cargo": {
     "titulo": "Presidente da República",
+    "situacao": "titular",
     "ocupante": "Luiz Inácio Lula da Silva",
     "desde": "2023-01-01",
     "mandato_ate": "2026-12-31",
@@ -126,6 +133,7 @@
    "descricao": "Substitui o Presidente nos impedimentos e o sucede na vaga (CF, art. 79).",
    "cargo": {
     "titulo": "Vice-Presidente da República",
+    "situacao": "titular",
     "ocupante": "Geraldo Alckmin",
     "desde": "2023-01-01",
     "mandato_ate": "2026-12-31",
@@ -144,6 +152,7 @@
    "descricao": "Coordena e integra as ações do governo; analisa a constitucionalidade e o mérito dos atos presidenciais.",
    "cargo": {
     "titulo": "Ministro(a) de Estado Chefe",
+    "situacao": "nao_verificado",
     "ocupante": null,
     "desde": null,
     "mandato_ate": null,
@@ -162,6 +171,7 @@
    "descricao": "Relação com a sociedade civil e movimentos sociais; participação social.",
    "cargo": {
     "titulo": "Ministro(a) de Estado Chefe",
+    "situacao": "nao_verificado",
     "ocupante": null,
     "desde": null,
     "mandato_ate": null,
@@ -180,6 +190,7 @@
    "descricao": "Articulação política com o Congresso, partidos, estados e municípios.",
    "cargo": {
     "titulo": "Ministro(a) de Estado Chefe",
+    "situacao": "nao_verificado",
     "ocupante": null,
     "desde": null,
     "mandato_ate": null,
@@ -198,6 +209,7 @@
    "descricao": "Comunicação e publicidade do governo federal.",
    "cargo": {
     "titulo": "Ministro(a) de Estado Chefe",
+    "situacao": "nao_verificado",
     "ocupante": null,
     "desde": null,
     "mandato_ate": null,
@@ -216,6 +228,7 @@
    "descricao": "Segurança pessoal do Presidente e das instalações; segurança da informação.",
    "cargo": {
     "titulo": "Ministro(a) de Estado Chefe",
+    "situacao": "nao_verificado",
     "ocupante": null,
     "desde": null,
     "mandato_ate": null,
@@ -235,6 +248,7 @@
    "descricao": "Representa a União judicial e extrajudicialmente e presta consultoria ao Executivo. Constitucionalmente é função essencial à Justiça; o cargo tem status de Ministro de Estado.",
    "cargo": {
     "titulo": "Advogado(a)-Geral da União",
+    "situacao": "nao_verificado",
     "ocupante": null,
     "desde": null,
     "mandato_ate": null,
@@ -254,6 +268,7 @@
    "descricao": "Controle interno, auditoria, correição, ouvidoria, transparência e combate à corrupção.",
    "cargo": {
     "titulo": "Ministro(a) de Estado",
+    "situacao": "nao_verificado",
     "ocupante": null,
     "desde": null,
     "mandato_ate": null,
@@ -271,6 +286,7 @@
    "descricao": "Autoridade Certificadora Raiz da ICP-Brasil.",
    "cargo": {
     "titulo": "Diretor(a)-Presidente",
+    "situacao": "nao_verificado",
     "ocupante": null,
     "desde": null,
     "mandato_ate": null,
@@ -289,6 +305,7 @@
    "descricao": "Órgão central do Sistema Brasileiro de Inteligência. Transferida do GSI para a Casa Civil em 2023.",
    "cargo": {
     "titulo": "Diretor(a)-Geral",
+    "situacao": "nao_verificado",
     "ocupante": null,
     "desde": null,
     "mandato_ate": null,
@@ -306,6 +323,7 @@
    "descricao": "TV Brasil, Rádio Nacional, Agência Brasil.",
    "cargo": {
     "titulo": "Presidente",
+    "situacao": "nao_verificado",
     "ocupante": null,
     "desde": null,
     "mandato_ate": null,
@@ -323,6 +341,7 @@
    "lei": "Lei 14.600/2023, art. 20",
    "cargo": {
     "titulo": "Ministro(a) de Estado",
+    "situacao": "nao_verificado",
     "ocupante": null,
     "desde": null,
     "mandato_ate": null,
@@ -340,6 +359,7 @@
    "lei": "Lei 14.600/2023, art. 20",
    "cargo": {
     "titulo": "Ministro(a) de Estado",
+    "situacao": "nao_verificado",
     "ocupante": null,
     "desde": null,
     "mandato_ate": null,
@@ -357,6 +377,7 @@
    "lei": "Lei 14.600/2023, art. 20",
    "cargo": {
     "titulo": "Ministro(a) de Estado",
+    "situacao": "nao_verificado",
     "ocupante": null,
     "desde": null,
     "mandato_ate": null,
@@ -374,6 +395,7 @@
    "lei": "Lei 14.600/2023, art. 20",
    "cargo": {
     "titulo": "Ministro(a) de Estado",
+    "situacao": "nao_verificado",
     "ocupante": null,
     "desde": null,
     "mandato_ate": null,
@@ -391,6 +413,7 @@
    "lei": "Lei 14.600/2023, art. 20",
    "cargo": {
     "titulo": "Ministro(a) de Estado",
+    "situacao": "nao_verificado",
     "ocupante": null,
     "desde": null,
     "mandato_ate": null,
@@ -408,6 +431,7 @@
    "lei": "Lei 14.600/2023, art. 20",
    "cargo": {
     "titulo": "Ministro(a) de Estado",
+    "situacao": "nao_verificado",
     "ocupante": null,
     "desde": null,
     "mandato_ate": null,
@@ -425,6 +449,7 @@
    "lei": "Lei 14.600/2023, art. 20",
    "cargo": {
     "titulo": "Ministro(a) de Estado",
+    "situacao": "nao_verificado",
     "ocupante": null,
     "desde": null,
     "mandato_ate": null,
@@ -442,6 +467,7 @@
    "lei": "Lei 14.600/2023, art. 20",
    "cargo": {
     "titulo": "Ministro(a) de Estado",
+    "situacao": "nao_verificado",
     "ocupante": null,
     "desde": null,
     "mandato_ate": null,
@@ -459,6 +485,7 @@
    "lei": "Lei 14.600/2023, art. 20",
    "cargo": {
     "titulo": "Ministro(a) de Estado",
+    "situacao": "nao_verificado",
     "ocupante": null,
     "desde": null,
     "mandato_ate": null,
@@ -476,6 +503,7 @@
    "lei": "Lei 14.600/2023, art. 20",
    "cargo": {
     "titulo": "Ministro(a) de Estado",
+    "situacao": "nao_verificado",
     "ocupante": null,
     "desde": null,
     "mandato_ate": null,
@@ -493,6 +521,7 @@
    "lei": "Lei 14.600/2023, art. 20",
    "cargo": {
     "titulo": "Ministro(a) de Estado",
+    "situacao": "nao_verificado",
     "ocupante": null,
     "desde": null,
     "mandato_ate": null,
@@ -510,6 +539,7 @@
    "lei": "Lei 14.720/2023",
    "cargo": {
     "titulo": "Ministro(a) de Estado",
+    "situacao": "nao_verificado",
     "ocupante": null,
     "desde": null,
     "mandato_ate": null,
@@ -527,6 +557,7 @@
    "lei": "Lei 14.600/2023, art. 20",
    "cargo": {
     "titulo": "Ministro(a) de Estado",
+    "situacao": "nao_verificado",
     "ocupante": null,
     "desde": null,
     "mandato_ate": null,
@@ -544,6 +575,7 @@
    "lei": "Lei 14.600/2023, art. 20",
    "cargo": {
     "titulo": "Ministro(a) de Estado",
+    "situacao": "nao_verificado",
     "ocupante": null,
     "desde": null,
     "mandato_ate": null,
@@ -561,6 +593,7 @@
    "lei": "Lei 14.600/2023, art. 20",
    "cargo": {
     "titulo": "Ministro(a) de Estado",
+    "situacao": "nao_verificado",
     "ocupante": null,
     "desde": null,
     "mandato_ate": null,
@@ -578,6 +611,7 @@
    "lei": "Lei 14.600/2023, art. 20",
    "cargo": {
     "titulo": "Ministro(a) de Estado",
+    "situacao": "nao_verificado",
     "ocupante": null,
     "desde": null,
     "mandato_ate": null,
@@ -595,6 +629,7 @@
    "lei": "Lei 14.600/2023, art. 20",
    "cargo": {
     "titulo": "Ministro(a) de Estado",
+    "situacao": "nao_verificado",
     "ocupante": null,
     "desde": null,
     "mandato_ate": null,
@@ -612,6 +647,7 @@
    "lei": "Lei 14.600/2023, art. 20",
    "cargo": {
     "titulo": "Ministro(a) de Estado",
+    "situacao": "nao_verificado",
     "ocupante": null,
     "desde": null,
     "mandato_ate": null,
@@ -629,6 +665,7 @@
    "lei": "Lei 14.600/2023, art. 20",
    "cargo": {
     "titulo": "Ministro(a) de Estado",
+    "situacao": "nao_verificado",
     "ocupante": null,
     "desde": null,
     "mandato_ate": null,
@@ -646,6 +683,7 @@
    "lei": "Lei 14.600/2023, art. 20",
    "cargo": {
     "titulo": "Ministro(a) de Estado",
+    "situacao": "nao_verificado",
     "ocupante": null,
     "desde": null,
     "mandato_ate": null,
@@ -663,6 +701,7 @@
    "lei": "Lei 14.600/2023, art. 20",
    "cargo": {
     "titulo": "Ministro(a) de Estado",
+    "situacao": "nao_verificado",
     "ocupante": null,
     "desde": null,
     "mandato_ate": null,
@@ -680,6 +719,7 @@
    "lei": "Lei 14.600/2023, art. 20",
    "cargo": {
     "titulo": "Ministro(a) de Estado",
+    "situacao": "nao_verificado",
     "ocupante": null,
     "desde": null,
     "mandato_ate": null,
@@ -697,6 +737,7 @@
    "lei": "Lei 14.600/2023, art. 20",
    "cargo": {
     "titulo": "Ministro(a) de Estado",
+    "situacao": "nao_verificado",
     "ocupante": null,
     "desde": null,
     "mandato_ate": null,
@@ -714,6 +755,7 @@
    "lei": "Lei 14.600/2023, art. 20",
    "cargo": {
     "titulo": "Ministro(a) de Estado",
+    "situacao": "nao_verificado",
     "ocupante": null,
     "desde": null,
     "mandato_ate": null,
@@ -731,6 +773,7 @@
    "lei": "Lei 14.600/2023, art. 20",
    "cargo": {
     "titulo": "Ministro(a) de Estado",
+    "situacao": "nao_verificado",
     "ocupante": null,
     "desde": null,
     "mandato_ate": null,
@@ -748,6 +791,7 @@
    "lei": "Lei 14.600/2023, art. 20",
    "cargo": {
     "titulo": "Ministro(a) de Estado",
+    "situacao": "nao_verificado",
     "ocupante": null,
     "desde": null,
     "mandato_ate": null,
@@ -765,6 +809,7 @@
    "lei": "Lei 14.600/2023, art. 20",
    "cargo": {
     "titulo": "Ministro(a) de Estado",
+    "situacao": "nao_verificado",
     "ocupante": null,
     "desde": null,
     "mandato_ate": null,
@@ -782,6 +827,7 @@
    "lei": "Lei 14.600/2023, art. 20",
    "cargo": {
     "titulo": "Ministro(a) de Estado",
+    "situacao": "nao_verificado",
     "ocupante": null,
     "desde": null,
     "mandato_ate": null,
@@ -799,6 +845,7 @@
    "lei": "Lei 14.600/2023, art. 20",
    "cargo": {
     "titulo": "Ministro(a) de Estado",
+    "situacao": "nao_verificado",
     "ocupante": null,
     "desde": null,
     "mandato_ate": null,
@@ -816,6 +863,7 @@
    "lei": "Lei 14.600/2023, art. 20",
    "cargo": {
     "titulo": "Ministro(a) de Estado",
+    "situacao": "nao_verificado",
     "ocupante": null,
     "desde": null,
     "mandato_ate": null,
@@ -833,6 +881,7 @@
    "lei": "Lei 14.600/2023, art. 20",
    "cargo": {
     "titulo": "Ministro(a) de Estado",
+    "situacao": "nao_verificado",
     "ocupante": null,
     "desde": null,
     "mandato_ate": null,
@@ -849,6 +898,7 @@
    "pai": "mapa",
    "cargo": {
     "titulo": "Presidente",
+    "situacao": "nao_verificado",
     "ocupante": null,
     "desde": null,
     "mandato_ate": null,
@@ -865,6 +915,7 @@
    "pai": "mapa",
    "cargo": {
     "titulo": "Diretor(a)",
+    "situacao": "nao_verificado",
     "ocupante": null,
     "desde": null,
     "mandato_ate": null,
@@ -881,6 +932,7 @@
    "pai": "mcid",
    "cargo": {
     "titulo": "Presidente",
+    "situacao": "nao_verificado",
     "ocupante": null,
     "desde": null,
     "mandato_ate": null,
@@ -897,6 +949,7 @@
    "pai": "mcid",
    "cargo": {
     "titulo": "Presidente",
+    "situacao": "nao_verificado",
     "ocupante": null,
     "desde": null,
     "mandato_ate": null,
@@ -913,6 +966,7 @@
    "pai": "mcti",
    "cargo": {
     "titulo": "Presidente",
+    "situacao": "nao_verificado",
     "ocupante": null,
     "desde": null,
     "mandato_ate": null,
@@ -929,6 +983,7 @@
    "pai": "mcti",
    "cargo": {
     "titulo": "Presidente",
+    "situacao": "nao_verificado",
     "ocupante": null,
     "desde": null,
     "mandato_ate": null,
@@ -945,6 +1000,7 @@
    "pai": "mcti",
    "cargo": {
     "titulo": "Presidente",
+    "situacao": "nao_verificado",
     "ocupante": null,
     "desde": null,
     "mandato_ate": null,
@@ -961,6 +1017,7 @@
    "pai": "mcti",
    "cargo": {
     "titulo": "Presidente",
+    "situacao": "nao_verificado",
     "ocupante": null,
     "desde": null,
     "mandato_ate": null,
@@ -977,6 +1034,7 @@
    "pai": "mcti",
    "cargo": {
     "titulo": "Diretor(a)",
+    "situacao": "nao_verificado",
     "ocupante": null,
     "desde": null,
     "mandato_ate": null,
@@ -994,6 +1052,7 @@
    "lei": "Lei 9.472/1997",
    "cargo": {
     "titulo": "Presidente",
+    "situacao": "nao_verificado",
     "ocupante": null,
     "desde": null,
     "mandato_ate": null,
@@ -1010,6 +1069,7 @@
    "pai": "mcom",
    "cargo": {
     "titulo": "Presidente",
+    "situacao": "nao_verificado",
     "ocupante": null,
     "desde": null,
     "mandato_ate": null,
@@ -1026,6 +1086,7 @@
    "pai": "mcom",
    "cargo": {
     "titulo": "Presidente",
+    "situacao": "nao_verificado",
     "ocupante": null,
     "desde": null,
     "mandato_ate": null,
@@ -1043,6 +1104,7 @@
    "lei": "MP 2.228-1/2001",
    "cargo": {
     "titulo": "Diretor(a)-Presidente",
+    "situacao": "nao_verificado",
     "ocupante": null,
     "desde": null,
     "mandato_ate": null,
@@ -1059,6 +1121,7 @@
    "pai": "minc",
    "cargo": {
     "titulo": "Presidente",
+    "situacao": "nao_verificado",
     "ocupante": null,
     "desde": null,
     "mandato_ate": null,
@@ -1075,6 +1138,7 @@
    "pai": "minc",
    "cargo": {
     "titulo": "Presidente",
+    "situacao": "nao_verificado",
     "ocupante": null,
     "desde": null,
     "mandato_ate": null,
@@ -1091,6 +1155,7 @@
    "pai": "minc",
    "cargo": {
     "titulo": "Presidente",
+    "situacao": "nao_verificado",
     "ocupante": null,
     "desde": null,
     "mandato_ate": null,
@@ -1107,6 +1172,7 @@
    "pai": "minc",
    "cargo": {
     "titulo": "Presidente",
+    "situacao": "nao_verificado",
     "ocupante": null,
     "desde": null,
     "mandato_ate": null,
@@ -1123,6 +1189,7 @@
    "pai": "minc",
    "cargo": {
     "titulo": "Presidente",
+    "situacao": "nao_verificado",
     "ocupante": null,
     "desde": null,
     "mandato_ate": null,
@@ -1140,6 +1207,7 @@
    "lei": "CF, art. 142; LC 97/1999",
    "cargo": {
     "titulo": "Comandante da Marinha",
+    "situacao": "nao_verificado",
     "ocupante": null,
     "desde": null,
     "mandato_ate": null,
@@ -1157,6 +1225,7 @@
    "lei": "CF, art. 142; LC 97/1999",
    "cargo": {
     "titulo": "Comandante do Exército",
+    "situacao": "nao_verificado",
     "ocupante": null,
     "desde": null,
     "mandato_ate": null,
@@ -1174,6 +1243,7 @@
    "lei": "CF, art. 142; LC 97/1999",
    "cargo": {
     "titulo": "Comandante da Aeronáutica",
+    "situacao": "nao_verificado",
     "ocupante": null,
     "desde": null,
     "mandato_ate": null,
@@ -1190,6 +1260,7 @@
    "pai": "md",
    "cargo": {
     "titulo": "Presidente",
+    "situacao": "nao_verificado",
     "ocupante": null,
     "desde": null,
     "mandato_ate": null,
@@ -1206,6 +1277,7 @@
    "pai": "md",
    "cargo": {
     "titulo": "Presidente",
+    "situacao": "nao_verificado",
     "ocupante": null,
     "desde": null,
     "mandato_ate": null,
@@ -1222,6 +1294,7 @@
    "pai": "md",
    "cargo": {
     "titulo": "Presidente",
+    "situacao": "nao_verificado",
     "ocupante": null,
     "desde": null,
     "mandato_ate": null,
@@ -1238,6 +1311,7 @@
    "pai": "mda",
    "cargo": {
     "titulo": "Presidente",
+    "situacao": "nao_verificado",
     "ocupante": null,
     "desde": null,
     "mandato_ate": null,
@@ -1254,6 +1328,7 @@
    "pai": "mda",
    "cargo": {
     "titulo": "Presidente",
+    "situacao": "nao_verificado",
     "ocupante": null,
     "desde": null,
     "mandato_ate": null,
@@ -1270,6 +1345,7 @@
    "pai": "mdic",
    "cargo": {
     "titulo": "Presidente",
+    "situacao": "nao_verificado",
     "ocupante": null,
     "desde": null,
     "mandato_ate": null,
@@ -1286,6 +1362,7 @@
    "pai": "mdic",
    "cargo": {
     "titulo": "Presidente",
+    "situacao": "nao_verificado",
     "ocupante": null,
     "desde": null,
     "mandato_ate": null,
@@ -1302,6 +1379,7 @@
    "pai": "mdic",
    "cargo": {
     "titulo": "Superintendente",
+    "situacao": "nao_verificado",
     "ocupante": null,
     "desde": null,
     "mandato_ate": null,
@@ -1319,6 +1397,7 @@
    "site": "https://www.bndes.gov.br",
    "cargo": {
     "titulo": "Presidente",
+    "situacao": "nao_verificado",
     "ocupante": null,
     "desde": null,
     "mandato_ate": null,
@@ -1335,6 +1414,7 @@
    "pai": "mdic",
    "cargo": {
     "titulo": "Presidente",
+    "situacao": "nao_verificado",
     "ocupante": null,
     "desde": null,
     "mandato_ate": null,
@@ -1351,6 +1431,7 @@
    "pai": "mec",
    "cargo": {
     "titulo": "Presidente",
+    "situacao": "nao_verificado",
     "ocupante": null,
     "desde": null,
     "mandato_ate": null,
@@ -1367,6 +1448,7 @@
    "pai": "mec",
    "cargo": {
     "titulo": "Presidente",
+    "situacao": "nao_verificado",
     "ocupante": null,
     "desde": null,
     "mandato_ate": null,
@@ -1383,6 +1465,7 @@
    "pai": "mec",
    "cargo": {
     "titulo": "Presidente",
+    "situacao": "nao_verificado",
     "ocupante": null,
     "desde": null,
     "mandato_ate": null,
@@ -1399,6 +1482,7 @@
    "pai": "mec",
    "cargo": {
     "titulo": "Presidente",
+    "situacao": "nao_verificado",
     "ocupante": null,
     "desde": null,
     "mandato_ate": null,
@@ -1434,6 +1518,7 @@
    "pai": "mf",
    "cargo": {
     "titulo": "Secretário(a) Especial",
+    "situacao": "nao_verificado",
     "ocupante": null,
     "desde": null,
     "mandato_ate": null,
@@ -1450,6 +1535,7 @@
    "pai": "mf",
    "cargo": {
     "titulo": "Secretário(a)",
+    "situacao": "nao_verificado",
     "ocupante": null,
     "desde": null,
     "mandato_ate": null,
@@ -1466,6 +1552,7 @@
    "pai": "mf",
    "cargo": {
     "titulo": "Procurador(a)-Geral",
+    "situacao": "nao_verificado",
     "ocupante": null,
     "desde": null,
     "mandato_ate": null,
@@ -1494,11 +1581,12 @@
    "descricao": "Autarquia de natureza especial com autonomia técnica, operacional e financeira. Presidente e diretores têm mandatos fixos, aprovados pelo Senado.",
    "cargo": {
     "titulo": "Presidente",
-    "ocupante": null,
-    "desde": null,
-    "mandato_ate": null,
-    "verificado_em": null,
-    "fonte": null
+    "situacao": "titular",
+    "ocupante": "Gabriel Galípolo",
+    "desde": "2025-01-01",
+    "mandato_ate": "2028-12-31",
+    "verificado_em": "2025-01",
+    "fonte": "https://www12.senado.leg.br/noticias/materias/2024/10/08/senado-aprova-gabriel-galipolo-para-presidir-banco-central"
    }
   },
   {
@@ -1511,6 +1599,7 @@
    "lei": "Lei 6.385/1976",
    "cargo": {
     "titulo": "Presidente",
+    "situacao": "nao_verificado",
     "ocupante": null,
     "desde": null,
     "mandato_ate": null,
@@ -1527,6 +1616,7 @@
    "pai": "mf",
    "cargo": {
     "titulo": "Superintendente",
+    "situacao": "nao_verificado",
     "ocupante": null,
     "desde": null,
     "mandato_ate": null,
@@ -1543,6 +1633,7 @@
    "pai": "mf",
    "cargo": {
     "titulo": "Presidente",
+    "situacao": "nao_verificado",
     "ocupante": null,
     "desde": null,
     "mandato_ate": null,
@@ -1559,6 +1650,7 @@
    "pai": "mf",
    "cargo": {
     "titulo": "Presidente",
+    "situacao": "nao_verificado",
     "ocupante": null,
     "desde": null,
     "mandato_ate": null,
@@ -1575,6 +1667,7 @@
    "pai": "mf",
    "cargo": {
     "titulo": "Presidente",
+    "situacao": "nao_verificado",
     "ocupante": null,
     "desde": null,
     "mandato_ate": null,
@@ -1591,6 +1684,7 @@
    "pai": "mf",
    "cargo": {
     "titulo": "Presidente",
+    "situacao": "nao_verificado",
     "ocupante": null,
     "desde": null,
     "mandato_ate": null,
@@ -1607,6 +1701,7 @@
    "pai": "mf",
    "cargo": {
     "titulo": "Presidente",
+    "situacao": "nao_verificado",
     "ocupante": null,
     "desde": null,
     "mandato_ate": null,
@@ -1623,6 +1718,7 @@
    "pai": "mgi",
    "cargo": {
     "titulo": "Presidente",
+    "situacao": "nao_verificado",
     "ocupante": null,
     "desde": null,
     "mandato_ate": null,
@@ -1639,6 +1735,7 @@
    "pai": "mgi",
    "cargo": {
     "titulo": "Presidente",
+    "situacao": "nao_verificado",
     "ocupante": null,
     "desde": null,
     "mandato_ate": null,
@@ -1655,6 +1752,7 @@
    "pai": "mgi",
    "cargo": {
     "titulo": "Presidente",
+    "situacao": "nao_verificado",
     "ocupante": null,
     "desde": null,
     "mandato_ate": null,
@@ -1672,6 +1770,7 @@
    "lei": "Lei 9.984/2000",
    "cargo": {
     "titulo": "Diretor(a)-Presidente",
+    "situacao": "nao_verificado",
     "ocupante": null,
     "desde": null,
     "mandato_ate": null,
@@ -1688,6 +1787,7 @@
    "pai": "midr",
    "cargo": {
     "titulo": "Diretor(a)-Geral",
+    "situacao": "nao_verificado",
     "ocupante": null,
     "desde": null,
     "mandato_ate": null,
@@ -1704,6 +1804,7 @@
    "pai": "midr",
    "cargo": {
     "titulo": "Presidente",
+    "situacao": "nao_verificado",
     "ocupante": null,
     "desde": null,
     "mandato_ate": null,
@@ -1720,6 +1821,7 @@
    "pai": "midr",
    "cargo": {
     "titulo": "Superintendente",
+    "situacao": "nao_verificado",
     "ocupante": null,
     "desde": null,
     "mandato_ate": null,
@@ -1736,6 +1838,7 @@
    "pai": "midr",
    "cargo": {
     "titulo": "Superintendente",
+    "situacao": "nao_verificado",
     "ocupante": null,
     "desde": null,
     "mandato_ate": null,
@@ -1752,6 +1855,7 @@
    "pai": "midr",
    "cargo": {
     "titulo": "Superintendente",
+    "situacao": "nao_verificado",
     "ocupante": null,
     "desde": null,
     "mandato_ate": null,
@@ -1769,6 +1873,7 @@
    "lei": "CF, art. 144, I",
    "cargo": {
     "titulo": "Diretor(a)-Geral",
+    "situacao": "nao_verificado",
     "ocupante": null,
     "desde": null,
     "mandato_ate": null,
@@ -1786,6 +1891,7 @@
    "lei": "CF, art. 144, II",
    "cargo": {
     "titulo": "Diretor(a)-Geral",
+    "situacao": "nao_verificado",
     "ocupante": null,
     "desde": null,
     "mandato_ate": null,
@@ -1802,6 +1908,7 @@
    "pai": "mjsp",
    "cargo": {
     "titulo": "Secretário(a) Nacional",
+    "situacao": "nao_verificado",
     "ocupante": null,
     "desde": null,
     "mandato_ate": null,
@@ -1819,6 +1926,7 @@
    "lei": "Lei 12.529/2011",
    "cargo": {
     "titulo": "Presidente",
+    "situacao": "nao_verificado",
     "ocupante": null,
     "desde": null,
     "mandato_ate": null,
@@ -1835,6 +1943,7 @@
    "pai": "mma",
    "cargo": {
     "titulo": "Presidente",
+    "situacao": "nao_verificado",
     "ocupante": null,
     "desde": null,
     "mandato_ate": null,
@@ -1851,6 +1960,7 @@
    "pai": "mma",
    "cargo": {
     "titulo": "Presidente",
+    "situacao": "nao_verificado",
     "ocupante": null,
     "desde": null,
     "mandato_ate": null,
@@ -1867,6 +1977,7 @@
    "pai": "mma",
    "cargo": {
     "titulo": "Presidente",
+    "situacao": "nao_verificado",
     "ocupante": null,
     "desde": null,
     "mandato_ate": null,
@@ -1883,6 +1994,7 @@
    "pai": "mma",
    "cargo": {
     "titulo": "Diretor(a)-Geral",
+    "situacao": "nao_verificado",
     "ocupante": null,
     "desde": null,
     "mandato_ate": null,
@@ -1900,6 +2012,7 @@
    "lei": "Lei 9.478/1997",
    "cargo": {
     "titulo": "Diretor(a)-Geral",
+    "situacao": "nao_verificado",
     "ocupante": null,
     "desde": null,
     "mandato_ate": null,
@@ -1917,6 +2030,7 @@
    "lei": "Lei 9.427/1996",
    "cargo": {
     "titulo": "Diretor(a)-Geral",
+    "situacao": "nao_verificado",
     "ocupante": null,
     "desde": null,
     "mandato_ate": null,
@@ -1934,6 +2048,7 @@
    "lei": "Lei 13.575/2017",
    "cargo": {
     "titulo": "Diretor(a)-Geral",
+    "situacao": "nao_verificado",
     "ocupante": null,
     "desde": null,
     "mandato_ate": null,
@@ -1950,6 +2065,7 @@
    "pai": "mme",
    "cargo": {
     "titulo": "Presidente",
+    "situacao": "nao_verificado",
     "ocupante": null,
     "desde": null,
     "mandato_ate": null,
@@ -1966,6 +2082,7 @@
    "pai": "mme",
    "cargo": {
     "titulo": "Presidente",
+    "situacao": "nao_verificado",
     "ocupante": null,
     "desde": null,
     "mandato_ate": null,
@@ -1982,6 +2099,7 @@
    "pai": "mme",
    "cargo": {
     "titulo": "Presidente",
+    "situacao": "nao_verificado",
     "ocupante": null,
     "desde": null,
     "mandato_ate": null,
@@ -1998,6 +2116,7 @@
    "pai": "mme",
    "cargo": {
     "titulo": "Presidente",
+    "situacao": "nao_verificado",
     "ocupante": null,
     "desde": null,
     "mandato_ate": null,
@@ -2015,6 +2134,7 @@
    "descricao": "Controla a Eletronuclear e a participação brasileira em Itaipu após a privatização da Eletrobras (2022).",
    "cargo": {
     "titulo": "Presidente",
+    "situacao": "nao_verificado",
     "ocupante": null,
     "desde": null,
     "mandato_ate": null,
@@ -2032,6 +2152,7 @@
    "site": "https://www.ibge.gov.br",
    "cargo": {
     "titulo": "Presidente",
+    "situacao": "nao_verificado",
     "ocupante": null,
     "desde": null,
     "mandato_ate": null,
@@ -2048,6 +2169,7 @@
    "pai": "mpo",
    "cargo": {
     "titulo": "Presidente",
+    "situacao": "nao_verificado",
     "ocupante": null,
     "desde": null,
     "mandato_ate": null,
@@ -2065,6 +2187,7 @@
    "lei": "Lei 10.233/2001",
    "cargo": {
     "titulo": "Diretor(a)-Geral",
+    "situacao": "nao_verificado",
     "ocupante": null,
     "desde": null,
     "mandato_ate": null,
@@ -2082,6 +2205,7 @@
    "lei": "Lei 11.182/2005",
    "cargo": {
     "titulo": "Diretor(a)-Presidente",
+    "situacao": "nao_verificado",
     "ocupante": null,
     "desde": null,
     "mandato_ate": null,
@@ -2098,6 +2222,7 @@
    "pai": "mpor",
    "cargo": {
     "titulo": "Presidente",
+    "situacao": "nao_verificado",
     "ocupante": null,
     "desde": null,
     "mandato_ate": null,
@@ -2124,6 +2249,7 @@
    "site": "https://www.gov.br/inss",
    "cargo": {
     "titulo": "Presidente",
+    "situacao": "nao_verificado",
     "ocupante": null,
     "desde": null,
     "mandato_ate": null,
@@ -2140,6 +2266,7 @@
    "pai": "mps",
    "cargo": {
     "titulo": "Diretor(a)-Superintendente",
+    "situacao": "nao_verificado",
     "ocupante": null,
     "desde": null,
     "mandato_ate": null,
@@ -2156,6 +2283,7 @@
    "pai": "mre",
    "cargo": {
     "titulo": "Presidente",
+    "situacao": "nao_verificado",
     "ocupante": null,
     "desde": null,
     "mandato_ate": null,
@@ -2174,6 +2302,7 @@
    "site": "https://www.gov.br/anvisa",
    "cargo": {
     "titulo": "Diretor(a)-Presidente",
+    "situacao": "nao_verificado",
     "ocupante": null,
     "desde": null,
     "mandato_ate": null,
@@ -2191,6 +2320,7 @@
    "lei": "Lei 9.961/2000",
    "cargo": {
     "titulo": "Diretor(a)-Presidente",
+    "situacao": "nao_verificado",
     "ocupante": null,
     "desde": null,
     "mandato_ate": null,
@@ -2208,6 +2338,7 @@
    "site": "https://portal.fiocruz.br",
    "cargo": {
     "titulo": "Presidente",
+    "situacao": "nao_verificado",
     "ocupante": null,
     "desde": null,
     "mandato_ate": null,
@@ -2224,6 +2355,7 @@
    "pai": "ms",
    "cargo": {
     "titulo": "Presidente",
+    "situacao": "nao_verificado",
     "ocupante": null,
     "desde": null,
     "mandato_ate": null,
@@ -2240,6 +2372,7 @@
    "pai": "ms",
    "cargo": {
     "titulo": "Presidente",
+    "situacao": "nao_verificado",
     "ocupante": null,
     "desde": null,
     "mandato_ate": null,
@@ -2256,6 +2389,7 @@
    "pai": "ms",
    "cargo": {
     "titulo": "Presidente",
+    "situacao": "nao_verificado",
     "ocupante": null,
     "desde": null,
     "mandato_ate": null,
@@ -2272,6 +2406,7 @@
    "pai": "ms",
    "cargo": {
     "titulo": "Diretor(a)-Geral",
+    "situacao": "nao_verificado",
     "ocupante": null,
     "desde": null,
     "mandato_ate": null,
@@ -2288,6 +2423,7 @@
    "pai": "mte",
    "cargo": {
     "titulo": "Presidente",
+    "situacao": "nao_verificado",
     "ocupante": null,
     "desde": null,
     "mandato_ate": null,
@@ -2305,6 +2441,7 @@
    "lei": "Lei 10.233/2001",
    "cargo": {
     "titulo": "Diretor(a)-Geral",
+    "situacao": "nao_verificado",
     "ocupante": null,
     "desde": null,
     "mandato_ate": null,
@@ -2321,6 +2458,7 @@
    "pai": "mt",
    "cargo": {
     "titulo": "Diretor(a)-Geral",
+    "situacao": "nao_verificado",
     "ocupante": null,
     "desde": null,
     "mandato_ate": null,
@@ -2338,6 +2476,7 @@
    "descricao": "Resultado da incorporação da EPL pela Valec (2022). Planejamento e infraestrutura ferroviária.",
    "cargo": {
     "titulo": "Presidente",
+    "situacao": "nao_verificado",
     "ocupante": null,
     "desde": null,
     "mandato_ate": null,
@@ -2354,6 +2493,7 @@
    "pai": "mtur",
    "cargo": {
     "titulo": "Presidente",
+    "situacao": "nao_verificado",
     "ocupante": null,
     "desde": null,
     "mandato_ate": null,
@@ -2370,6 +2510,7 @@
    "pai": "mpi",
    "cargo": {
     "titulo": "Presidente",
+    "situacao": "nao_verificado",
     "ocupante": null,
     "desde": null,
     "mandato_ate": null,
@@ -2377,6 +2518,330 @@
     "fonte": null
    },
    "descricao": "Transferida do MJSP para o Ministério dos Povos Indígenas em 2023 (Lei 14.600/2023)."
+  },
+  {
+   "id": "saps",
+   "nome": "Secretaria de Atenção Primária à Saúde",
+   "tipo": "orgao",
+   "poder": "executivo",
+   "sigla": "SAPS",
+   "pai": "ms",
+   "lei": "Decreto 11.798/2023",
+   "cargo": {
+    "titulo": "Secretário(a)",
+    "situacao": "nao_verificado",
+    "ocupante": null,
+    "desde": null,
+    "mandato_ate": null,
+    "verificado_em": null,
+    "fonte": null
+   }
+  },
+  {
+   "id": "saes",
+   "nome": "Secretaria de Atenção Especializada à Saúde",
+   "tipo": "orgao",
+   "poder": "executivo",
+   "sigla": "SAES",
+   "pai": "ms",
+   "lei": "Decreto 11.798/2023",
+   "cargo": {
+    "titulo": "Secretário(a)",
+    "situacao": "nao_verificado",
+    "ocupante": null,
+    "desde": null,
+    "mandato_ate": null,
+    "verificado_em": null,
+    "fonte": null
+   }
+  },
+  {
+   "id": "svsa",
+   "nome": "Secretaria de Vigilância em Saúde e Ambiente",
+   "tipo": "orgao",
+   "poder": "executivo",
+   "sigla": "SVSA",
+   "pai": "ms",
+   "lei": "Decreto 11.798/2023",
+   "cargo": {
+    "titulo": "Secretário(a)",
+    "situacao": "nao_verificado",
+    "ocupante": null,
+    "desde": null,
+    "mandato_ate": null,
+    "verificado_em": null,
+    "fonte": null
+   }
+  },
+  {
+   "id": "sgtes",
+   "nome": "Secretaria de Gestão do Trabalho e da Educação na Saúde",
+   "tipo": "orgao",
+   "poder": "executivo",
+   "sigla": "SGTES",
+   "pai": "ms",
+   "lei": "Decreto 11.798/2023",
+   "cargo": {
+    "titulo": "Secretário(a)",
+    "situacao": "nao_verificado",
+    "ocupante": null,
+    "desde": null,
+    "mandato_ate": null,
+    "verificado_em": null,
+    "fonte": null
+   }
+  },
+  {
+   "id": "sectics",
+   "nome": "Secretaria de Ciência, Tecnologia, Inovação e Complexo Econômico-Industrial da Saúde",
+   "tipo": "orgao",
+   "poder": "executivo",
+   "sigla": "SECTICS",
+   "pai": "ms",
+   "lei": "Decreto 11.798/2023",
+   "cargo": {
+    "titulo": "Secretário(a)",
+    "situacao": "nao_verificado",
+    "ocupante": null,
+    "desde": null,
+    "mandato_ate": null,
+    "verificado_em": null,
+    "fonte": null
+   }
+  },
+  {
+   "id": "seidigi",
+   "nome": "Secretaria de Informação e Saúde Digital",
+   "tipo": "orgao",
+   "poder": "executivo",
+   "sigla": "SEIDIGI",
+   "pai": "ms",
+   "lei": "Decreto 11.798/2023",
+   "cargo": {
+    "titulo": "Secretário(a)",
+    "situacao": "nao_verificado",
+    "ocupante": null,
+    "desde": null,
+    "mandato_ate": null,
+    "verificado_em": null,
+    "fonte": null
+   }
+  },
+  {
+   "id": "sesai",
+   "nome": "Secretaria de Saúde Indígena",
+   "tipo": "orgao",
+   "poder": "executivo",
+   "sigla": "SESAI",
+   "pai": "ms",
+   "lei": "Decreto 11.798/2023",
+   "cargo": {
+    "titulo": "Secretário(a)",
+    "situacao": "nao_verificado",
+    "ocupante": null,
+    "desde": null,
+    "mandato_ate": null,
+    "verificado_em": null,
+    "fonte": null
+   }
+  },
+  {
+   "id": "seb",
+   "nome": "Secretaria de Educação Básica",
+   "tipo": "orgao",
+   "poder": "executivo",
+   "sigla": "SEB",
+   "pai": "mec",
+   "lei": "Decreto 11.342/2023",
+   "cargo": {
+    "titulo": "Secretário(a)",
+    "situacao": "nao_verificado",
+    "ocupante": null,
+    "desde": null,
+    "mandato_ate": null,
+    "verificado_em": null,
+    "fonte": null
+   }
+  },
+  {
+   "id": "sesu",
+   "nome": "Secretaria de Educação Superior",
+   "tipo": "orgao",
+   "poder": "executivo",
+   "sigla": "SESu",
+   "pai": "mec",
+   "lei": "Decreto 11.342/2023",
+   "cargo": {
+    "titulo": "Secretário(a)",
+    "situacao": "nao_verificado",
+    "ocupante": null,
+    "desde": null,
+    "mandato_ate": null,
+    "verificado_em": null,
+    "fonte": null
+   }
+  },
+  {
+   "id": "setec",
+   "nome": "Secretaria de Educação Profissional e Tecnológica",
+   "tipo": "orgao",
+   "poder": "executivo",
+   "sigla": "SETEC",
+   "pai": "mec",
+   "lei": "Decreto 11.342/2023",
+   "cargo": {
+    "titulo": "Secretário(a)",
+    "situacao": "nao_verificado",
+    "ocupante": null,
+    "desde": null,
+    "mandato_ate": null,
+    "verificado_em": null,
+    "fonte": null
+   }
+  },
+  {
+   "id": "secadi",
+   "nome": "Secretaria de Educação Continuada, Alfabetização de Jovens e Adultos, Diversidade e Inclusão",
+   "tipo": "orgao",
+   "poder": "executivo",
+   "sigla": "SECADI",
+   "pai": "mec",
+   "lei": "Decreto 11.342/2023",
+   "cargo": {
+    "titulo": "Secretário(a)",
+    "situacao": "nao_verificado",
+    "ocupante": null,
+    "desde": null,
+    "mandato_ate": null,
+    "verificado_em": null,
+    "fonte": null
+   }
+  },
+  {
+   "id": "seres",
+   "nome": "Secretaria de Regulação e Supervisão da Educação Superior",
+   "tipo": "orgao",
+   "poder": "executivo",
+   "sigla": "SERES",
+   "pai": "mec",
+   "lei": "Decreto 11.342/2023",
+   "cargo": {
+    "titulo": "Secretário(a)",
+    "situacao": "nao_verificado",
+    "ocupante": null,
+    "desde": null,
+    "mandato_ate": null,
+    "verificado_em": null,
+    "fonte": null
+   }
+  },
+  {
+   "id": "sase",
+   "nome": "Secretaria de Articulação Intersetorial e com os Sistemas de Ensino",
+   "tipo": "orgao",
+   "poder": "executivo",
+   "sigla": "SASE",
+   "pai": "mec",
+   "lei": "Decreto 11.342/2023",
+   "cargo": {
+    "titulo": "Secretário(a)",
+    "situacao": "nao_verificado",
+    "ocupante": null,
+    "desde": null,
+    "mandato_ate": null,
+    "verificado_em": null,
+    "fonte": null
+   }
+  },
+  {
+   "id": "senasp",
+   "nome": "Secretaria Nacional de Segurança Pública",
+   "tipo": "orgao",
+   "poder": "executivo",
+   "sigla": "Senasp",
+   "pai": "mjsp",
+   "lei": "Decreto 11.348/2023",
+   "cargo": {
+    "titulo": "Secretário(a)",
+    "situacao": "nao_verificado",
+    "ocupante": null,
+    "desde": null,
+    "mandato_ate": null,
+    "verificado_em": null,
+    "fonte": null
+   }
+  },
+  {
+   "id": "senad",
+   "nome": "Secretaria Nacional de Políticas sobre Drogas e Ativos",
+   "tipo": "orgao",
+   "poder": "executivo",
+   "sigla": "Senad",
+   "pai": "mjsp",
+   "lei": "Decreto 11.348/2023",
+   "cargo": {
+    "titulo": "Secretário(a)",
+    "situacao": "nao_verificado",
+    "ocupante": null,
+    "desde": null,
+    "mandato_ate": null,
+    "verificado_em": null,
+    "fonte": null
+   }
+  },
+  {
+   "id": "senacon",
+   "nome": "Secretaria Nacional do Consumidor",
+   "tipo": "orgao",
+   "poder": "executivo",
+   "sigla": "Senacon",
+   "pai": "mjsp",
+   "lei": "Decreto 11.348/2023",
+   "cargo": {
+    "titulo": "Secretário(a)",
+    "situacao": "nao_verificado",
+    "ocupante": null,
+    "desde": null,
+    "mandato_ate": null,
+    "verificado_em": null,
+    "fonte": null
+   }
+  },
+  {
+   "id": "senajus",
+   "nome": "Secretaria Nacional de Justiça",
+   "tipo": "orgao",
+   "poder": "executivo",
+   "sigla": "Senajus",
+   "pai": "mjsp",
+   "lei": "Decreto 11.348/2023",
+   "cargo": {
+    "titulo": "Secretário(a)",
+    "situacao": "nao_verificado",
+    "ocupante": null,
+    "desde": null,
+    "mandato_ate": null,
+    "verificado_em": null,
+    "fonte": null
+   }
+  },
+  {
+   "id": "sal",
+   "nome": "Secretaria de Assuntos Legislativos",
+   "tipo": "orgao",
+   "poder": "executivo",
+   "sigla": "SAL",
+   "pai": "mjsp",
+   "lei": "Decreto 11.348/2023",
+   "cargo": {
+    "titulo": "Secretário(a)",
+    "situacao": "nao_verificado",
+    "ocupante": null,
+    "desde": null,
+    "mandato_ate": null,
+    "verificado_em": null,
+    "fonte": null
+   }
   },
   {
    "id": "congresso",
@@ -2390,6 +2855,7 @@
    "descricao": "Sistema bicameral. A Mesa do Congresso é presidida pelo Presidente do Senado (CF, art. 57, § 5º).",
    "cargo": {
     "titulo": "Presidente do Congresso Nacional",
+    "situacao": "titular",
     "ocupante": "Davi Alcolumbre",
     "desde": "2025-02-01",
     "mandato_ate": "2027-01-31",
@@ -2409,6 +2875,7 @@
    "quantidade": 513,
    "cargo": {
     "titulo": "Presidente da Câmara dos Deputados",
+    "situacao": "titular",
     "ocupante": "Hugo Motta",
     "desde": "2025-02-01",
     "mandato_ate": "2027-01-31",
@@ -2428,6 +2895,7 @@
    "quantidade": 81,
    "cargo": {
     "titulo": "Presidente do Senado Federal",
+    "situacao": "titular",
     "ocupante": "Davi Alcolumbre",
     "desde": "2025-02-01",
     "mandato_ate": "2027-01-31",
@@ -2448,11 +2916,12 @@
    "quantidade": 9,
    "cargo": {
     "titulo": "Presidente",
-    "ocupante": null,
-    "desde": null,
-    "mandato_ate": null,
-    "verificado_em": null,
-    "fonte": null
+    "situacao": "titular",
+    "ocupante": "Vital do Rêgo",
+    "desde": "2025-01-01",
+    "mandato_ate": "2026-12-31",
+    "verificado_em": "2025-12",
+    "fonte": "https://portal.tcu.gov.br/imprensa/noticias/vital-do-rego-e-jorge-oliveira-sao-reeleitos-presidente-e-vice-presidente-do-tcu"
    }
   },
   {
@@ -2468,6 +2937,7 @@
    "quantidade": 11,
    "cargo": {
     "titulo": "Presidente",
+    "situacao": "titular",
     "ocupante": "Edson Fachin",
     "desde": "2025-09-29",
     "mandato_ate": "2027-09",
@@ -2487,12 +2957,13 @@
    "descricao": "Controle da atuação administrativa e financeira do Judiciário. Presidido pelo Presidente do STF (CF, art. 103-B).",
    "quantidade": 15,
    "cargo": {
-    "titulo": "Presidente",
-    "ocupante": null,
-    "desde": null,
-    "mandato_ate": null,
-    "verificado_em": null,
-    "fonte": null
+    "titulo": "Presidente (o Presidente do STF)",
+    "situacao": "titular",
+    "ocupante": "Edson Fachin",
+    "desde": "2025-09-29",
+    "mandato_ate": "2027-09",
+    "verificado_em": "2025-09",
+    "fonte": "https://www.cnj.jus.br"
    }
   },
   {
@@ -2508,11 +2979,12 @@
    "quantidade": 33,
    "cargo": {
     "titulo": "Presidente",
-    "ocupante": null,
-    "desde": null,
-    "mandato_ate": null,
-    "verificado_em": null,
-    "fonte": "https://www.stj.jus.br"
+    "situacao": "titular",
+    "ocupante": "Luis Felipe Salomão",
+    "desde": "2026-08-19",
+    "mandato_ate": "2028-08",
+    "verificado_em": "2026-08",
+    "fonte": "https://www.stj.jus.br/sites/portalp/Paginas/Comunicacao/Noticias/2026/19082026-Luis-Felipe-Salomao-assume-presidencia-do-STJ-com-foco-em-retomada-da-vocacao-da-corte.aspx"
    }
   },
   {
@@ -2522,7 +2994,16 @@
    "poder": "judiciario",
    "sigla": "CJF",
    "pai": "stj",
-   "descricao": "Supervisão administrativa e orçamentária da Justiça Federal de primeiro e segundo graus. Funciona junto ao STJ (CF, art. 105, parágrafo único)."
+   "descricao": "Supervisão administrativa e orçamentária da Justiça Federal de primeiro e segundo graus. Funciona junto ao STJ (CF, art. 105, parágrafo único).",
+   "cargo": {
+    "titulo": "Presidente (o Presidente do STJ)",
+    "situacao": "titular",
+    "ocupante": "Luis Felipe Salomão",
+    "desde": "2026-08-19",
+    "mandato_ate": "2028-08",
+    "verificado_em": "2026-08",
+    "fonte": "https://www.stj.jus.br"
+   }
   },
   {
    "id": "trfs",
@@ -2547,6 +3028,7 @@
    "quantidade": 27,
    "cargo": {
     "titulo": "Presidente",
+    "situacao": "nao_verificado",
     "ocupante": null,
     "desde": null,
     "mandato_ate": null,
@@ -2585,11 +3067,12 @@
    "quantidade": 7,
    "cargo": {
     "titulo": "Presidente",
-    "ocupante": null,
-    "desde": null,
-    "mandato_ate": null,
-    "verificado_em": null,
-    "fonte": "https://www.tse.jus.br"
+    "situacao": "titular",
+    "ocupante": "Nunes Marques",
+    "desde": "2026-05-12",
+    "mandato_ate": "2027-05",
+    "verificado_em": "2026-05",
+    "fonte": "https://www.tse.jus.br/comunicacao/noticias/2026/Maio/ao-tomar-posse-na-presidencia-do-tse-nunes-marques-defende-a-vontade-soberana-do-povo-nas-urnas"
    }
   },
   {
@@ -2614,6 +3097,7 @@
    "quantidade": 15,
    "cargo": {
     "titulo": "Presidente",
+    "situacao": "nao_verificado",
     "ocupante": null,
     "desde": null,
     "mandato_ate": null,
@@ -2632,11 +3116,12 @@
    "descricao": "Chefiado pelo Procurador-Geral da República, nomeado pelo Presidente entre integrantes da carreira, após aprovação do Senado, para mandato de dois anos (CF, art. 128).",
    "cargo": {
     "titulo": "Procurador(a)-Geral da República",
-    "ocupante": null,
-    "desde": null,
-    "mandato_ate": null,
-    "verificado_em": null,
-    "fonte": "https://www.mpf.mp.br"
+    "situacao": "titular",
+    "ocupante": "Paulo Gonet",
+    "desde": "2023-12-18",
+    "mandato_ate": "2027-12",
+    "verificado_em": "2025-11",
+    "fonte": "https://www12.senado.leg.br/noticias/materias/2025/11/12/por-45-votos-a-26-senado-aprova-reconducao-de-gonet"
    }
   },
   {
@@ -2657,6 +3142,7 @@
    "pai": "mpu",
    "cargo": {
     "titulo": "Procurador(a)-Geral do Trabalho",
+    "situacao": "nao_verificado",
     "ocupante": null,
     "desde": null,
     "mandato_ate": null,
@@ -2673,6 +3159,7 @@
    "pai": "mpu",
    "cargo": {
     "titulo": "Procurador(a)-Geral de Justiça Militar",
+    "situacao": "nao_verificado",
     "ocupante": null,
     "desde": null,
     "mandato_ate": null,
@@ -2689,6 +3176,7 @@
    "pai": "mpu",
    "cargo": {
     "titulo": "Procurador(a)-Geral de Justiça",
+    "situacao": "nao_verificado",
     "ocupante": null,
     "desde": null,
     "mandato_ate": null,
@@ -2705,7 +3193,16 @@
    "pai": "fej",
    "lei": "CF, art. 130-A",
    "descricao": "Controle administrativo e financeiro do Ministério Público. Presidido pelo Procurador-Geral da República (CF, art. 130-A).",
-   "quantidade": 14
+   "quantidade": 14,
+   "cargo": {
+    "titulo": "Presidente (o Procurador-Geral da República)",
+    "situacao": "titular",
+    "ocupante": "Paulo Gonet",
+    "desde": "2023-12-18",
+    "mandato_ate": "2027-12",
+    "verificado_em": "2025-11",
+    "fonte": "https://www.cnmp.mp.br"
+   }
   },
   {
    "id": "dpu",
@@ -2719,6 +3216,7 @@
    "descricao": "Assistência jurídica integral e gratuita aos necessitados na esfera federal (CF, art. 134).",
    "cargo": {
     "titulo": "Defensor(a) Público-Geral Federal",
+    "situacao": "nao_verificado",
     "ocupante": null,
     "desde": null,
     "mandato_ate": null,
@@ -3584,6 +4082,114 @@
    "de": "mpi",
    "para": "funai",
    "tipo": "vinculada a",
+   "hierarquica": true
+  },
+  {
+   "de": "ms",
+   "para": "saps",
+   "tipo": "integra",
+   "hierarquica": true
+  },
+  {
+   "de": "ms",
+   "para": "saes",
+   "tipo": "integra",
+   "hierarquica": true
+  },
+  {
+   "de": "ms",
+   "para": "svsa",
+   "tipo": "integra",
+   "hierarquica": true
+  },
+  {
+   "de": "ms",
+   "para": "sgtes",
+   "tipo": "integra",
+   "hierarquica": true
+  },
+  {
+   "de": "ms",
+   "para": "sectics",
+   "tipo": "integra",
+   "hierarquica": true
+  },
+  {
+   "de": "ms",
+   "para": "seidigi",
+   "tipo": "integra",
+   "hierarquica": true
+  },
+  {
+   "de": "ms",
+   "para": "sesai",
+   "tipo": "integra",
+   "hierarquica": true
+  },
+  {
+   "de": "mec",
+   "para": "seb",
+   "tipo": "integra",
+   "hierarquica": true
+  },
+  {
+   "de": "mec",
+   "para": "sesu",
+   "tipo": "integra",
+   "hierarquica": true
+  },
+  {
+   "de": "mec",
+   "para": "setec",
+   "tipo": "integra",
+   "hierarquica": true
+  },
+  {
+   "de": "mec",
+   "para": "secadi",
+   "tipo": "integra",
+   "hierarquica": true
+  },
+  {
+   "de": "mec",
+   "para": "seres",
+   "tipo": "integra",
+   "hierarquica": true
+  },
+  {
+   "de": "mec",
+   "para": "sase",
+   "tipo": "integra",
+   "hierarquica": true
+  },
+  {
+   "de": "mjsp",
+   "para": "senasp",
+   "tipo": "integra",
+   "hierarquica": true
+  },
+  {
+   "de": "mjsp",
+   "para": "senad",
+   "tipo": "integra",
+   "hierarquica": true
+  },
+  {
+   "de": "mjsp",
+   "para": "senacon",
+   "tipo": "integra",
+   "hierarquica": true
+  },
+  {
+   "de": "mjsp",
+   "para": "senajus",
+   "tipo": "integra",
+   "hierarquica": true
+  },
+  {
+   "de": "mjsp",
+   "para": "sal",
+   "tipo": "integra",
    "hierarquica": true
   },
   {

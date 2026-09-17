@@ -101,6 +101,11 @@ button,input{font-family:inherit;font-size:inherit}
 .cargo .n{font-weight:600;font-size:15px}
 .cargo .vago{color:var(--ink-2);font-style:italic}
 .cargo .m{font-size:12px;color:var(--mute);margin-top:4px}
+.sit{display:inline-flex;align-items:center;gap:5px;font-size:11px;font-weight:600;letter-spacing:.03em;text-transform:uppercase;border:1px solid var(--border);border-radius:999px;padding:2px 8px;margin-left:6px;vertical-align:middle;color:var(--ink-2)}
+.sit.vago{border-color:#d03b3b;color:#d03b3b}
+.sit.interino{border-color:#c98500;color:#8a5a00}
+:root[data-theme="dark"] .sit.interino{color:#fab219}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .sit.interino{color:#fab219}}
 .lista-nos{display:grid;gap:2px}
 .lista-nos button{display:flex;align-items:center;gap:8px;width:100%;text-align:left;border:0;background:none;color:var(--ink);padding:6px 8px;border-radius:8px;cursor:pointer;font-size:14px}
 .lista-nos button:hover{background:var(--plane)}
@@ -203,7 +208,7 @@ tbody tr:hover{background:var(--plane)}
     <h1 id="t-titulo">Todos os nós</h1>
     <p>A mesma informação do grafo, em tabela. Clique em uma linha para abrir o nó no mapa.</p>
     <div style="overflow:auto;max-height:calc(100vh - 180px);border:1px solid var(--border);border-radius:12px">
-    <table id="tabela"><thead><tr><th>Nome</th><th>Sigla</th><th>Tipo</th><th>Poder</th><th>Vinculado a</th><th>Cargo</th><th>Ocupante</th></tr></thead><tbody></tbody></table>
+    <table id="tabela"><thead><tr><th>Nome</th><th>Sigla</th><th>Tipo</th><th>Poder</th><th>Vinculado a</th><th>Cargo</th><th>Ocupante</th><th>Situação</th></tr></thead><tbody></tbody></table>
     </div>
   </div>
 </section>
@@ -215,14 +220,14 @@ tbody tr:hover{background:var(--plane)}
     <p>Este é um mapa da estrutura da União: os três Poderes, as funções essenciais à Justiça, os ministérios, as entidades da administração indireta, os tribunais, os cargos de comando e as relações constitucionais entre eles (quem nomeia, quem aprova, quem fiscaliza). Inspirado no <em>Gov Graph</em> da CivLab para os Estados Unidos.</p>
     <div class="kpis" id="kpis"></div>
     <h2>Regra sobre pessoas</h2>
-    <p>Estrutura sim, pessoas quase nunca. Nesta versão só aparecem ocupantes com mandato fixo e público (Presidência, Vice-Presidência, presidências das Casas do Congresso e do STF). Todos os demais cargos estão marcados como “não verificado” até que a ingestão a partir das fontes oficiais os preencha. Um campo vazio é melhor que um nome errado.</p>
+    <p>Estrutura sim, pessoas só com fonte. Só aparecem ocupantes com mandato fixo, confirmados em fonte oficial e com data de verificação (Presidência, Vice, Casas do Congresso, STF, STJ, TSE, TCU, PGR e Banco Central). Cada cargo tem uma situação explícita: titular, interino ou substituto, vago, ou não verificado. “Vago” é uma afirmação e exige fonte e data; “não verificado” é ausência de dado. Um campo vazio é melhor que um nome errado.</p>
+    <p>Toda segunda-feira, um fluxo automático baixa o SIORG, a Câmara e o Senado, remonta este arquivo, lê a seção 2 do Diário Oficial da União e abre um PR para revisão. Nenhum nome entra sem uma pessoa aprovar.</p>
     <h2>Fontes</h2>
     <ul id="fontes"></ul>
     <h2>O que ainda falta</h2>
     <ul>
-      <li>Ocupantes de todos os cargos, com data de posse e fonte (SIORG, Diário Oficial, Câmara e Senado).</li>
-      <li>Vacâncias e interinidades marcadas explicitamente, como faz o grafo americano.</li>
-      <li>Segundo nível dos ministérios (secretarias) e as demais entidades da administração indireta.</li>
+      <li>Ocupantes dos cargos ainda não verificados, a partir da primeira rodada do fluxo semanal.</li>
+      <li>Segundo nível dos demais ministérios (hoje: Saúde, Educação e Justiça à mão; os outros vêm do SIORG).</li>
       <li>Esfera estadual e municipal.</li>
       <li>Orçamento por órgão (Portal da Transparência e SIOP).</li>
     </ul>
@@ -493,7 +498,7 @@ $('#z-menos').onclick = () => zoomEm(W/2, H/2, 1/1.3);
 $('#z-fit').onclick = () => verTudo();
 function mostrarDica(n, x, y){
   const c = n.cargo;
-  dica.innerHTML = `<b>${esc(n.nome)}</b><span>${esc(TIPOS[n.tipo])} · ${esc(PODERES[n.poder])}${c ? ' · ' + esc(c.titulo) + (c.ocupante ? ': ' + esc(c.ocupante) : '') : ''}</span>`;
+  dica.innerHTML = `<b>${esc(n.nome)}</b><span>${esc(TIPOS[n.tipo])} · ${esc(PODERES[n.poder])}${c ? ' · ' + esc(c.titulo) + (c.situacao === 'vago' ? ': vago' : c.ocupante ? ': ' + esc(c.ocupante) + (c.situacao === 'interino' ? ' (interino)' : '') : '') : ''}</span>`;
   dica.style.display = 'block';
   const dw = dica.offsetWidth, dh = dica.offsetHeight;
   dica.style.left = Math.min(x+14, W-dw-8) + 'px';
@@ -517,10 +522,15 @@ function selecionar(id, centrar){
   if (n.descricao) html += `<div class="bloco"><p>${esc(n.descricao)}</p></div>`;
   if (n.cargo) {
     const c = n.cargo;
-    html += `<div class="bloco"><h3>Cargo de comando</h3><div class="cargo"><div class="t">${esc(c.titulo)}</div>` +
-      (c.ocupante ? `<div class="n">${esc(c.ocupante)}</div><div class="m">${c.desde ? 'Desde ' + fmtData(c.desde) : ''}${c.mandato_ate ? ' · mandato até ' + fmtData(c.mandato_ate) : ''}${c.verificado_em ? ' · verificado em ' + fmtData(c.verificado_em) : ''}</div>`
-                 : `<div class="n vago">Ocupante não verificado nesta versão</div><div class="m">Preenchido pela ingestão a partir das fontes oficiais.${c.fonte ? ` <a href="${esc(c.fonte)}" target="_blank" rel="noopener">Conferir na fonte</a>` : ''}</div>`) +
-      `</div></div>`;
+    const sit = c.situacao || (c.ocupante ? 'titular' : 'nao_verificado');
+    const badge = sit === 'vago' ? '<span class="sit vago">⚠ Vago</span>' : sit === 'interino' ? '<span class="sit interino">◔ Interino</span>' : '';
+    const meta = [c.desde ? 'Desde ' + fmtData(c.desde) : '', c.mandato_ate ? 'mandato até ' + fmtData(c.mandato_ate) : '', c.verificado_em ? 'verificado em ' + fmtData(c.verificado_em) : ''].filter(Boolean).join(' · ');
+    const fonte = c.fonte ? ` <a href="${esc(c.fonte)}" target="_blank" rel="noopener">Fonte</a>` : '';
+    let corpo;
+    if (sit === 'vago') corpo = `<div class="n">Cargo vago${badge}</div><div class="m">${esc(meta)}${fonte}</div>`;
+    else if (c.ocupante) corpo = `<div class="n">${esc(c.ocupante)}${badge}</div><div class="m">${esc(meta)}${fonte}</div>`;
+    else corpo = `<div class="n vago">Ocupante não verificado nesta versão</div><div class="m">Preenchido pela ingestão a partir das fontes oficiais.${c.fonte ? ` <a href="${esc(c.fonte)}" target="_blank" rel="noopener">Conferir na fonte</a>` : ''}</div>`;
+    html += `<div class="bloco"><h3>Cargo de comando</h3><div class="cargo"><div class="t">${esc(c.titulo)}</div>${corpo}</div></div>`;
   }
   const rels = [...relEntrada.get(id).map(a => ({a, outro: porId.get(a.de), dir:'in'})), ...relSaida.get(id).map(a => ({a, outro: porId.get(a.para), dir:'out'}))];
   if (rels.length) {
@@ -590,7 +600,7 @@ $('#filtros').addEventListener('click', e => {
 // ------------------------------------------------------------ tabela e sobre
 const tbody = $('#tabela tbody');
 tbody.innerHTML = [...dados.nos].sort((a,b)=>pos.get(a.id).depth-pos.get(b.id).depth || a.nome.localeCompare(b.nome,'pt')).map(n =>
-  `<tr data-id="${n.id}" tabindex="0" style="cursor:pointer"><td>${esc(n.nome)}</td><td>${esc(n.sigla||'')}</td><td>${esc(TIPOS[n.tipo])}</td><td>${esc(PODERES[n.poder])}</td><td>${n.pai ? esc(porId.get(n.pai).sigla || porId.get(n.pai).nome) : ''}</td><td>${n.cargo ? esc(n.cargo.titulo) : ''}</td><td>${n.cargo ? (n.cargo.ocupante ? esc(n.cargo.ocupante) : '<span style="color:var(--mute)">não verificado</span>') : ''}</td></tr>`).join('');
+  `<tr data-id="${n.id}" tabindex="0" style="cursor:pointer"><td>${esc(n.nome)}</td><td>${esc(n.sigla||'')}</td><td>${esc(TIPOS[n.tipo])}</td><td>${esc(PODERES[n.poder])}</td><td>${n.pai ? esc(porId.get(n.pai).sigla || porId.get(n.pai).nome) : ''}</td><td>${n.cargo ? esc(n.cargo.titulo) : ''}</td><td>${n.cargo ? (n.cargo.ocupante ? esc(n.cargo.ocupante) : n.cargo.situacao === 'vago' ? '<span style="color:#d03b3b">vago</span>' : '<span style="color:var(--mute)">não verificado</span>') : ''}</td><td>${n.cargo ? esc((dados.meta.situacoes||{})[n.cargo.situacao] || n.cargo.situacao || '') : ''}</td></tr>`).join('');
 tbody.addEventListener('click', e => { const tr = e.target.closest('tr'); if (tr) { $('#folha-tabela').classList.remove('aberta'); selecionar(tr.dataset.id, true); } });
 tbody.addEventListener('keydown', e => { if (e.key === 'Enter') { const tr = e.target.closest('tr'); if (tr) { $('#folha-tabela').classList.remove('aberta'); selecionar(tr.dataset.id, true); } } });
 $('#btn-tabela').onclick = () => $('#folha-tabela').classList.add('aberta');
@@ -598,10 +608,11 @@ $('#btn-sobre').onclick = () => $('#folha-sobre').classList.add('aberta');
 document.querySelectorAll('[data-fecha]').forEach(b => b.onclick = () => $('#'+b.dataset.fecha).classList.remove('aberta'));
 const cont = {}; for (const n of dados.nos) cont[n.poder] = (cont[n.poder]||0)+1;
 const comCargo = dados.nos.filter(n=>n.cargo).length, verificados = dados.nos.filter(n=>n.cargo&&n.cargo.ocupante).length;
+const vagos = dados.nos.filter(n=>n.cargo&&n.cargo.situacao==='vago').length, interinos = dados.nos.filter(n=>n.cargo&&n.cargo.situacao==='interino').length;
 $('#kpis').innerHTML = [
   [dados.nos.length, 'nós no grafo'], [dados.arestas.filter(a=>!a.hierarquica).length, 'relações constitucionais'],
   [cont.executivo||0, 'no Executivo'], [(cont.judiciario||0), 'no Judiciário'], [(cont.legislativo||0), 'no Legislativo'],
-  [`${verificados}/${comCargo}`, 'cargos com ocupante verificado'],
+  [`${verificados}/${comCargo}`, 'cargos com ocupante verificado'], [vagos, 'cargos vagos (com fonte)'], [interinos, 'interinos ou substitutos'],
 ].map(([v,l]) => `<div class="kpi"><b>${v}</b><span>${l}</span></div>`).join('');
 $('#fontes').innerHTML = (dados.meta.fontes||[]).map(f => `<li><a href="${esc(f.url)}" target="_blank" rel="noopener">${esc(f.nome)}</a></li>`).join('');
 $('#versao').textContent = `Versão dos dados ${dados.meta.versao}, gerada por ${dados.meta.gerado_por}. ${dados.meta.aviso}`;
@@ -610,8 +621,9 @@ $('#versao').textContent = `Versão dos dados ${dados.meta.versao}, gerada por $
 window.addEventListener('resize', redimensionar);
 redimensionar();
 verTudo(false);
-const hash = decodeURIComponent(location.hash.slice(1));
-if (hash && porId.has(hash)) selecionar(hash, true);
+function doHash(){ const h = decodeURIComponent(location.hash.slice(1)); if (h && porId.has(h) && h !== selecionado) selecionar(h, true); else if (!h && selecionado) selecionar(null); }
+window.addEventListener('hashchange', doHash);
+doHash();
 })();
 </script>
 </body>

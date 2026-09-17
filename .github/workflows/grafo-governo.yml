@@ -1,0 +1,63 @@
+name: Grafo do Governo, atualização semanal
+
+# Toda segunda-feira às 6h (Brasília) baixa as fontes oficiais, remonta o
+# JSON do grafo, lê a seção 2 do DOU da semana e abre um PR com o que mudou.
+# Ninguém vira ocupante de cargo sem um humano aprovar o PR.
+on:
+  schedule:
+    - cron: "0 9 * * 1"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  atualizar:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Baixar SIORG (estrutura do Executivo, com titulares)
+        continue-on-error: true
+        run: python3 scripts/governo/baixar_siorg.py --completa
+
+      - name: Baixar Câmara e Senado (Mesas e totais)
+        continue-on-error: true
+        run: python3 scripts/governo/baixar_congresso.py
+
+      - name: Montar o grafo
+        run: python3 scripts/governo/montar_grafo.py
+
+      - name: Ler a seção 2 do DOU da semana
+        continue-on-error: true
+        run: python3 scripts/governo/ler_dou.py --dias 8 --saida scripts/governo/.cache/dou.md
+
+      - name: Preparar corpo do PR
+        run: |
+          mkdir -p scripts/governo/.cache
+          {
+            echo "Atualização automática do grafo do governo a partir do SIORG, da Câmara e do Senado."
+            echo
+            echo "Revise antes de aprovar: ocupantes só entram no grafo com esta aprovação."
+            echo
+            if [ -f scripts/governo/.cache/dou.md ]; then cat scripts/governo/.cache/dou.md; else echo "_A leitura do DOU falhou nesta execução._"; fi
+            echo
+            echo "---"
+            echo "_Gerado por .github/workflows/grafo-governo.yml_"
+          } > scripts/governo/.cache/corpo-pr.md
+
+      - name: Abrir ou atualizar o PR
+        uses: peter-evans/create-pull-request@v7
+        with:
+          branch: bot/grafo-governo
+          delete-branch: true
+          add-paths: governo/dados/governo-federal.json
+          commit-message: "chore(governo): atualização semanal do grafo a partir das fontes oficiais"
+          title: "Grafo do Governo: atualização semanal"
+          body-path: scripts/governo/.cache/corpo-pr.md
+          labels: grafo-governo, dados

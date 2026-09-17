@@ -28,10 +28,23 @@ arestas = []
 _ids = set()
 
 
+SITUACOES = {
+    "titular": "Titular",
+    "interino": "Interino(a) ou substituto(a)",
+    "vago": "Vago",
+    "nao_verificado": "Não verificado",
+}
+
+
 def no(id, nome, tipo, poder, pai=None, sigla=None, cargo=None, ocupante=None,
        desde=None, mandato_ate=None, lei=None, site=None, descricao=None,
-       relacao=None, verificado_em=None, fonte=None, quantidade=None):
-    """Registra um nó. `relacao` é o rótulo da aresta pai->filho."""
+       relacao=None, verificado_em=None, fonte=None, quantidade=None, situacao=None):
+    """Registra um nó. `relacao` é o rótulo da aresta pai->filho.
+
+    `situacao` do cargo: titular | interino | vago | nao_verificado. Quando não
+    informada, é "titular" se há ocupante e "nao_verificado" se não há. "vago"
+    só deve ser usado com fonte e data: vacância é uma afirmação, não ausência
+    de dado."""
     if id in _ids:
         raise SystemExit(f"id duplicado: {id}")
     _ids.add(id)
@@ -43,8 +56,14 @@ def no(id, nome, tipo, poder, pai=None, sigla=None, cargo=None, ocupante=None,
     if descricao: n["descricao"] = descricao
     if quantidade: n["quantidade"] = quantidade
     if cargo:
+        if situacao is None:
+            situacao = "titular" if ocupante else "nao_verificado"
+        assert situacao in SITUACOES, (id, situacao)
+        if situacao == "vago":
+            assert fonte and verificado_em, f"{id}: vacância exige fonte e data"
         n["cargo"] = {
             "titulo": cargo,
+            "situacao": situacao,
             "ocupante": ocupante,
             "desde": desde,
             "mandato_ate": mandato_ate,
@@ -232,6 +251,8 @@ no("pgfn", "Procuradoria-Geral da Fazenda Nacional", "orgao", "executivo", pai="
 no("cmn", "Conselho Monetário Nacional", "orgao", "executivo", pai="mf", sigla="CMN", relacao="integra",
    descricao="Órgão superior do Sistema Financeiro Nacional, presidido pelo Ministro da Fazenda (Lei 4.595/1964).")
 no("bcb", "Banco Central do Brasil", "autarquia", "executivo", pai="mf", sigla="BCB", cargo="Presidente",
+   ocupante="Gabriel Galípolo", desde="2025-01-01", mandato_ate="2028-12-31", verificado_em="2025-01",
+   fonte="https://www12.senado.leg.br/noticias/materias/2024/10/08/senado-aprova-gabriel-galipolo-para-presidir-banco-central",
    lei="Lei 4.595/1964; LC 179/2021",
    descricao="Autarquia de natureza especial com autonomia técnica, operacional e financeira. Presidente e diretores têm mandatos fixos, aprovados pelo Senado.",
    site="https://www.bcb.gov.br")
@@ -307,6 +328,40 @@ no("embratur", "Agência Brasileira de Promoção Internacional do Turismo", "se
 # Povos Indígenas
 no("funai", "Fundação Nacional dos Povos Indígenas", "fundacao", "executivo", pai="mpi", sigla="Funai", cargo="Presidente")
 
+# Segundo nível: secretarias finalísticas de alguns ministérios, conforme os
+# decretos de estrutura regimental. O montar_grafo.py completa os demais a
+# partir do SIORG quando o cache existir.
+SECRETARIAS = {
+    "ms": ("Decreto 11.798/2023", [
+        ("saps", "Secretaria de Atenção Primária à Saúde", "SAPS"),
+        ("saes", "Secretaria de Atenção Especializada à Saúde", "SAES"),
+        ("svsa", "Secretaria de Vigilância em Saúde e Ambiente", "SVSA"),
+        ("sgtes", "Secretaria de Gestão do Trabalho e da Educação na Saúde", "SGTES"),
+        ("sectics", "Secretaria de Ciência, Tecnologia, Inovação e Complexo Econômico-Industrial da Saúde", "SECTICS"),
+        ("seidigi", "Secretaria de Informação e Saúde Digital", "SEIDIGI"),
+        ("sesai", "Secretaria de Saúde Indígena", "SESAI"),
+    ]),
+    "mec": ("Decreto 11.342/2023", [
+        ("seb", "Secretaria de Educação Básica", "SEB"),
+        ("sesu", "Secretaria de Educação Superior", "SESu"),
+        ("setec", "Secretaria de Educação Profissional e Tecnológica", "SETEC"),
+        ("secadi", "Secretaria de Educação Continuada, Alfabetização de Jovens e Adultos, Diversidade e Inclusão", "SECADI"),
+        ("seres", "Secretaria de Regulação e Supervisão da Educação Superior", "SERES"),
+        ("sase", "Secretaria de Articulação Intersetorial e com os Sistemas de Ensino", "SASE"),
+    ]),
+    "mjsp": ("Decreto 11.348/2023", [
+        ("senasp", "Secretaria Nacional de Segurança Pública", "Senasp"),
+        ("senad", "Secretaria Nacional de Políticas sobre Drogas e Ativos", "Senad"),
+        ("senacon", "Secretaria Nacional do Consumidor", "Senacon"),
+        ("senajus", "Secretaria Nacional de Justiça", "Senajus"),
+        ("sal", "Secretaria de Assuntos Legislativos", "SAL"),
+    ]),
+}
+for pai, (decreto, lista) in SECRETARIAS.items():
+    for id, nome, sigla in lista:
+        no(id, nome, "orgao", "executivo", pai=pai, sigla=sigla, cargo="Secretário(a)",
+           lei=decreto, relacao="integra")
+
 # ---------------------------------------------------------------- Legislativo
 no("congresso", "Congresso Nacional", "casa_legislativa", "legislativo", pai="leg", sigla="CN",
    cargo="Presidente do Congresso Nacional", ocupante="Davi Alcolumbre",
@@ -328,6 +383,8 @@ no("senado", "Senado Federal", "casa_legislativa", "legislativo", pai="congresso
    site="https://www.senado.leg.br")
 no("tcu", "Tribunal de Contas da União", "tribunal", "legislativo", pai="congresso", sigla="TCU",
    cargo="Presidente", quantidade=9, relacao="auxiliado por",
+   ocupante="Vital do Rêgo", desde="2025-01-01", mandato_ate="2026-12-31", verificado_em="2025-12",
+   fonte="https://portal.tcu.gov.br/imprensa/noticias/vital-do-rego-e-jorge-oliveira-sao-reeleitos-presidente-e-vice-presidente-do-tcu",
    descricao="Controle externo da administração federal, em auxílio ao Congresso. Nove ministros: um terço escolhido pelo Presidente da República (com aprovação do Senado), dois terços pelo Congresso (CF, arts. 71 a 73).",
    lei="CF, arts. 70 a 75; Lei 8.443/1992", site="https://portal.tcu.gov.br")
 
@@ -338,14 +395,18 @@ no("stf", "Supremo Tribunal Federal", "tribunal", "judiciario", pai="jud", sigla
    descricao="Guarda da Constituição. Onze ministros nomeados pelo Presidente da República após aprovação do Senado (CF, arts. 101 a 103).",
    lei="CF, arts. 101 a 103", site="https://portal.stf.jus.br")
 no("cnj", "Conselho Nacional de Justiça", "orgao", "judiciario", pai="jud", sigla="CNJ",
-   cargo="Presidente", quantidade=15,
+   cargo="Presidente (o Presidente do STF)", ocupante="Edson Fachin", desde="2025-09-29", mandato_ate="2027-09",
+   verificado_em="2025-09", fonte="https://www.cnj.jus.br", quantidade=15,
    descricao="Controle da atuação administrativa e financeira do Judiciário. Presidido pelo Presidente do STF (CF, art. 103-B).",
    lei="CF, art. 103-B", site="https://www.cnj.jus.br")
 no("stj", "Superior Tribunal de Justiça", "tribunal", "judiciario", pai="jud", sigla="STJ",
-   cargo="Presidente", quantidade=33, fonte="https://www.stj.jus.br",
+   cargo="Presidente", quantidade=33, ocupante="Luis Felipe Salomão", desde="2026-08-19", mandato_ate="2028-08",
+   verificado_em="2026-08", fonte="https://www.stj.jus.br/sites/portalp/Paginas/Comunicacao/Noticias/2026/19082026-Luis-Felipe-Salomao-assume-presidencia-do-STJ-com-foco-em-retomada-da-vocacao-da-corte.aspx",
    descricao="Uniformiza a interpretação da lei federal. Trinta e três ministros (CF, arts. 104 e 105).",
    lei="CF, arts. 104 e 105", site="https://www.stj.jus.br")
 no("cjf", "Conselho da Justiça Federal", "orgao", "judiciario", pai="stj", sigla="CJF",
+   cargo="Presidente (o Presidente do STJ)", ocupante="Luis Felipe Salomão", desde="2026-08-19", mandato_ate="2028-08",
+   verificado_em="2026-08", fonte="https://www.stj.jus.br",
    descricao="Supervisão administrativa e orçamentária da Justiça Federal de primeiro e segundo graus. Funciona junto ao STJ (CF, art. 105, parágrafo único).")
 no("trfs", "Tribunais Regionais Federais", "grupo", "judiciario", pai="cjf", quantidade=6,
    descricao="TRF1 (Brasília), TRF2 (Rio de Janeiro), TRF3 (São Paulo), TRF4 (Porto Alegre), TRF5 (Recife) e TRF6 (Belo Horizonte), com as seções judiciárias federais em cada estado.",
@@ -359,7 +420,8 @@ no("csjt", "Conselho Superior da Justiça do Trabalho", "orgao", "judiciario", p
 no("trts", "Tribunais Regionais do Trabalho", "grupo", "judiciario", pai="csjt", quantidade=24,
    descricao="Vinte e quatro TRTs e as varas do trabalho.")
 no("tse", "Tribunal Superior Eleitoral", "tribunal", "judiciario", pai="jud", sigla="TSE",
-   cargo="Presidente", quantidade=7, fonte="https://www.tse.jus.br",
+   cargo="Presidente", quantidade=7, ocupante="Nunes Marques", desde="2026-05-12", mandato_ate="2027-05",
+   verificado_em="2026-05", fonte="https://www.tse.jus.br/comunicacao/noticias/2026/Maio/ao-tomar-posse-na-presidencia-do-tse-nunes-marques-defende-a-vontade-soberana-do-povo-nas-urnas",
    descricao="Sete ministros: três do STF, dois do STJ e dois advogados nomeados pelo Presidente da República (CF, art. 119).",
    lei="CF, arts. 118 a 121", site="https://www.tse.jus.br")
 no("tres", "Tribunais Regionais Eleitorais", "grupo", "judiciario", pai="tse", quantidade=27,
@@ -371,7 +433,9 @@ no("stm", "Superior Tribunal Militar", "tribunal", "judiciario", pai="jud", sigl
 
 # ---------------------------------------------------------------- Funções essenciais
 no("mpu", "Ministério Público da União", "orgao", "essencial", pai="fej", sigla="MPU",
-   cargo="Procurador(a)-Geral da República", fonte="https://www.mpf.mp.br",
+   cargo="Procurador(a)-Geral da República", ocupante="Paulo Gonet", desde="2023-12-18", mandato_ate="2027-12",
+   verificado_em="2025-11",
+   fonte="https://www12.senado.leg.br/noticias/materias/2025/11/12/por-45-votos-a-26-senado-aprova-reconducao-de-gonet",
    descricao="Chefiado pelo Procurador-Geral da República, nomeado pelo Presidente entre integrantes da carreira, após aprovação do Senado, para mandato de dois anos (CF, art. 128).",
    lei="CF, arts. 127 a 130-A; LC 75/1993")
 no("mpf", "Ministério Público Federal", "orgao", "essencial", pai="mpu", sigla="MPF", site="https://www.mpf.mp.br")
@@ -379,7 +443,8 @@ no("mpt", "Ministério Público do Trabalho", "orgao", "essencial", pai="mpu", s
 no("mpm", "Ministério Público Militar", "orgao", "essencial", pai="mpu", sigla="MPM", cargo="Procurador(a)-Geral de Justiça Militar")
 no("mpdft", "Ministério Público do Distrito Federal e Territórios", "orgao", "essencial", pai="mpu", sigla="MPDFT", cargo="Procurador(a)-Geral de Justiça")
 no("cnmp", "Conselho Nacional do Ministério Público", "orgao", "essencial", pai="fej", sigla="CNMP",
-   quantidade=14, descricao="Controle administrativo e financeiro do Ministério Público. Presidido pelo Procurador-Geral da República (CF, art. 130-A).",
+   cargo="Presidente (o Procurador-Geral da República)", ocupante="Paulo Gonet", desde="2023-12-18", mandato_ate="2027-12",
+   verificado_em="2025-11", fonte="https://www.cnmp.mp.br", quantidade=14, descricao="Controle administrativo e financeiro do Ministério Público. Presidido pelo Procurador-Geral da República (CF, art. 130-A).",
    lei="CF, art. 130-A")
 no("dpu", "Defensoria Pública da União", "orgao", "essencial", pai="fej", sigla="DPU",
    cargo="Defensor(a) Público-Geral Federal", fonte="https://www.dpu.def.br",
@@ -467,6 +532,7 @@ dados = {
         ],
         "tipos": TIPOS,
         "poderes": PODERES,
+        "situacoes": SITUACOES,
     },
     "nos": nos,
     "arestas": arestas,
