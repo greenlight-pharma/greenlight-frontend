@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Assinar o Vytal ECG</title>
-<meta name="description" content="Assine o Vytal ECG: leitor de eletrocardiograma por foto. Plano mensal ou anual.">
+<meta name="description" content="Assine o Vytal ECG: leitor de eletrocardiograma por foto. Plano mensal ou anual, no cartão ou no Pix.">
 <meta name="robots" content="noindex">
 <link rel="icon" type="image/png" href="/ecg/vytal-ecg-logo.png">
 <meta name="theme-color" content="#111726">
@@ -68,6 +68,14 @@ input:focus-visible,select:focus-visible,button:focus-visible{outline:3px solid 
 .conta b{color:var(--ink)}
 .resumo{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;border-top:1px solid var(--line);margin-top:20px;padding-top:16px;font-weight:600}
 .seguro{color:var(--mute);font-size:.85rem;margin-top:10px}
+.pix{display:grid;gap:18px;margin-top:18px;align-items:start}
+@media(min-width:600px){.pix{grid-template-columns:220px 1fr}}
+.pix img{width:220px;height:220px;max-width:100%;border:1px solid var(--line);border-radius:12px;background:#fff;image-rendering:pixelated}
+.pix textarea{font:inherit;font-size:.8rem;width:100%;min-height:92px;padding:.6rem;border:1px solid #cfd4dd;border-radius:10px;resize:none;color:var(--ink);background:var(--bg);word-break:break-all}
+.pix .estado{display:flex;align-items:center;gap:8px;font-weight:600;color:var(--navy)}
+.pulso{width:10px;height:10px;border-radius:50%;background:var(--rose);animation:pulso 1.4s ease-in-out infinite}
+@keyframes pulso{50%{opacity:.25}}
+@media (prefers-reduced-motion:reduce){.pulso{animation:none}}
 footer{color:var(--mute);font-size:.82rem;text-align:center;padding:24px 16px 40px}
 </style>
 </head>
@@ -121,7 +129,12 @@ footer{color:var(--mute);font-size:.82rem;text-align:center;padding:24px 16px 40
   </section>
 
   <section class="passo" id="p3" aria-disabled="true">
-    <h2><span class="num">3</span> Dados e cartão</h2>
+    <h2><span class="num">3</span> Pagamento</h2>
+    <div class="abas" id="abas-metodo" role="tablist" aria-label="Forma de pagamento">
+      <button type="button" role="tab" id="aba-cartao" aria-selected="true">Cartão de crédito</button>
+      <button type="button" role="tab" id="aba-pix" aria-selected="false">Pix</button>
+    </div>
+    <p class="nota" id="nota-metodo">No cartão, a assinatura renova sozinha e você cancela quando quiser.</p>
     <form id="form-pagto" novalidate>
       <div class="grade g2">
         <label class="campo">Nome completo<input type="text" id="nome" autocomplete="name" required></label>
@@ -130,6 +143,7 @@ footer{color:var(--mute);font-size:.82rem;text-align:center;padding:24px 16px 40
       <div class="grade g2">
         <label class="campo">Celular com DDD<input type="tel" id="celular" autocomplete="tel-national" placeholder="(12) 99999-9999" required></label>
       </div>
+      <div id="so-cartao">
       <div class="grade g-cep">
         <label class="campo">CEP<input type="text" id="cep" inputmode="numeric" autocomplete="postal-code" placeholder="00000-000" required></label>
         <label class="campo">Rua<input type="text" id="rua" autocomplete="address-line1" required></label>
@@ -152,12 +166,26 @@ footer{color:var(--mute);font-size:.82rem;text-align:center;padding:24px 16px 40
         <label class="campo">Validade<input type="text" id="cartao-validade" inputmode="numeric" autocomplete="cc-exp" placeholder="MM/AA" required></label>
         <label class="campo">CVV<input type="text" id="cartao-cvv" inputmode="numeric" autocomplete="cc-csc" maxlength="4" required></label>
       </div>
+      </div>
 
       <div class="resumo"><span id="resumo-plano">Plano mensal</span><span id="resumo-valor">R$ 79,90 por mês</span></div>
       <button class="btn btn-rose" type="submit" id="btn-pagar">Assinar</button>
-      <p class="seguro">Os dados do cartão vão direto para o Pagar.me (Stone). A Vytal não recebe nem guarda o número do cartão.</p>
+      <p class="seguro" id="nota-seguro">Os dados do cartão vão direto para o Pagar.me (Stone). A Vytal não recebe nem guarda o número do cartão.</p>
       <div id="msg-pagto" class="msg erro" hidden role="alert"></div>
     </form>
+    <div id="pix-painel" hidden>
+      <div class="pix">
+        <img id="pix-qr" alt="QR Code do Pix">
+        <div>
+          <p class="estado"><span class="pulso" aria-hidden="true"></span><span id="pix-estado">Aguardando o pagamento…</span></p>
+          <p class="nota">Abra o app do seu banco, escolha pagar com Pix e leia o QR Code, ou copie o código abaixo.</p>
+          <label class="campo" style="margin-top:12px">Pix copia e cola<textarea id="pix-codigo" readonly></textarea></label>
+          <button type="button" class="btn" id="btn-copiar">Copiar código</button>
+          <p class="nota" id="pix-validade"></p>
+          <button type="button" class="btn btn-link" id="btn-pix-voltar">Voltar e mudar os dados</button>
+        </div>
+      </div>
+    </div>
   </section>
 
   <section class="passo" id="p-fim" hidden>
@@ -174,7 +202,8 @@ footer{color:var(--mute);font-size:.82rem;text-align:center;padding:24px 16px 40
   const $ = (id) => document.getElementById(id);
   const so = (v) => (v || "").replace(/\D/g, "");
   const PRECOS = { mensal: ["Plano mensal", "R$ 79,90 por mês"], anual: ["Plano anual", "R$ 859,90 por ano"] };
-  let token = null, config = null, modoCriar = false;
+  const PRECOS_PIX = { mensal: ["Pix · 30 dias de acesso", "R$ 79,90 à vista"], anual: ["Pix · 12 meses de acesso", "R$ 859,90 à vista"] };
+  let token = null, config = null, modoCriar = false, metodo = "cartao", consulta = null;
   try { token = sessionStorage.getItem("vytal_ecg_token"); } catch (e) {}
 
   function mostrarErro(el, texto) { el.textContent = texto; el.hidden = !texto; }
@@ -197,9 +226,28 @@ footer{color:var(--mute);font-size:.82rem;text-align:center;padding:24px 16px 40
   // ---------- plano ----------
   function planoAtual() { return document.querySelector('input[name="plano"]:checked').value; }
   function atualizarResumo() {
-    const [n, v] = PRECOS[planoAtual()];
+    const [n, v] = (metodo === "pix" ? PRECOS_PIX : PRECOS)[planoAtual()];
     $("resumo-plano").textContent = n; $("resumo-valor").textContent = v;
   }
+
+  // ---------- forma de pagamento ----------
+  function escolherMetodo(m) {
+    metodo = m;
+    $("aba-cartao").setAttribute("aria-selected", String(m === "cartao"));
+    $("aba-pix").setAttribute("aria-selected", String(m === "pix"));
+    $("so-cartao").hidden = m === "pix";
+    $("btn-pagar").textContent = m === "pix" ? "Gerar Pix" : "Assinar";
+    $("nota-metodo").textContent = m === "pix"
+      ? "No Pix, você paga uma vez e tem acesso pelo período escolhido, sem renovação automática."
+      : "No cartão, a assinatura renova sozinha e você cancela quando quiser.";
+    $("nota-seguro").textContent = m === "pix"
+      ? "O Pix é gerado pelo Pagar.me (Stone). O acesso libera assim que o pagamento é confirmado."
+      : "Os dados do cartão vão direto para o Pagar.me (Stone). A Vytal não recebe nem guarda o número do cartão.";
+    mostrarErro($("msg-pagto"), "");
+    atualizarResumo();
+  }
+  $("aba-cartao").onclick = () => escolherMetodo("cartao");
+  $("aba-pix").onclick = () => escolherMetodo("pix");
   document.querySelectorAll('input[name="plano"]').forEach((i) => i.addEventListener("change", atualizarResumo));
 
   // ---------- conta ----------
@@ -247,13 +295,21 @@ footer{color:var(--mute);font-size:.82rem;text-align:center;padding:24px 16px 40
     mostrarErro($("msg-conta"), "");
     config = await api("/estudante/assinatura/config");
     const r = await api("/estudante/assinatura");
+    $("aba-pix").hidden = !(config.pix && config.pix.disponivel);
     if (r.assinatura && ["ativa", "em_atraso"].includes(r.assinatura.status)) {
       const ate = r.assinatura.expiraEm ? new Date(r.assinatura.expiraEm).toLocaleDateString("pt-BR") : "";
-      mostrarErro($("ja-assinante"), `Você já assina o plano ${r.assinatura.plano}${ate ? `, com acesso até ${ate}` : ""}. Não precisa assinar de novo.`);
-      $("p3").setAttribute("aria-disabled", "true");
-      return;
+      if (r.assinatura.origem === "pix" && config.pix && config.pix.disponivel) {
+        // acesso comprado por Pix: pode somar mais tempo (começa quando o atual acabar)
+        mostrarErro($("ja-assinante"), `Seu acesso vai até ${ate}. Se quiser, adicione mais tempo com Pix: o novo período começa quando o atual acabar.`);
+        $("aba-cartao").hidden = true;
+        escolherMetodo("pix");
+      } else {
+        mostrarErro($("ja-assinante"), `Você já assina o plano ${r.assinatura.plano}${ate ? `, com acesso até ${ate}` : ""}. Não precisa assinar de novo.`);
+        $("p3").setAttribute("aria-disabled", "true");
+        return;
+      }
     }
-    if (!config.pagarme || !config.pagarme.disponivel || !config.pagarme.chavePublica) {
+    if (metodo === "cartao" && (!config.pagarme || !config.pagarme.disponivel || !config.pagarme.chavePublica)) {
       mostrarErro($("msg-pagto"), "A assinatura pelo site ainda não está disponível. Tente mais tarde.");
     }
     $("p3").removeAttribute("aria-disabled");
@@ -292,6 +348,7 @@ footer{color:var(--mute);font-size:.82rem;text-align:center;padding:24px 16px 40
     ev.preventDefault();
     const msg = $("msg-pagto");
     const v = (id) => $(id).value.trim();
+    if (metodo === "pix") return gerarPix();
     const faltando = ["nome", "cpf", "celular", "cep", "rua", "numero", "bairro", "cidade", "uf", "cartao-numero", "cartao-nome", "cartao-validade", "cartao-cvv"].find((id) => !v(id));
     if (faltando) { $(faltando).focus(); return mostrarErro(msg, "Preencha todos os campos."); }
     if (!cpfValido(v("cpf"))) { $("cpf").focus(); return mostrarErro(msg, "Confira o CPF."); }
@@ -337,9 +394,86 @@ footer{color:var(--mute);font-size:.82rem;text-align:center;padding:24px 16px 40
     }
   });
 
+  // ---------- Pix ----------
+  async function gerarPix() {
+    const msg = $("msg-pagto");
+    const v = (id) => $(id).value.trim();
+    const faltando = ["nome", "cpf", "celular"].find((id) => !v(id));
+    if (faltando) { $(faltando).focus(); return mostrarErro(msg, "Preencha nome, CPF e celular."); }
+    if (!cpfValido(v("cpf"))) { $("cpf").focus(); return mostrarErro(msg, "Confira o CPF."); }
+    if (so(v("celular")).length < 10) { $("celular").focus(); return mostrarErro(msg, "Informe o celular com DDD."); }
+    $("btn-pagar").disabled = true; $("btn-pagar").textContent = "Gerando…";
+    mostrarErro(msg, "");
+    try {
+      const px = await api("/estudante/assinatura/pix", {
+        method: "POST",
+        body: JSON.stringify({ plano: planoAtual(), nome: v("nome"), cpf: v("cpf"), celular: v("celular") }),
+      });
+      $("pix-codigo").value = px.qrCode;
+      if (px.qrCodeUrl) { $("pix-qr").src = px.qrCodeUrl; $("pix-qr").hidden = false; } else { $("pix-qr").hidden = true; }
+      $("pix-validade").textContent = px.pixExpiraEm
+        ? `Este código vale até ${new Date(px.pixExpiraEm).toLocaleTimeString("pt-BR", { hour: "2-digit", minute: "2-digit" })}.`
+        : "Este código vale por 30 minutos.";
+      $("pix-estado").textContent = "Aguardando o pagamento…";
+      $("form-pagto").hidden = true; $("pix-painel").hidden = false; $("abas-metodo").hidden = true;
+      document.querySelectorAll('input[name="plano"]').forEach((i) => (i.disabled = true));
+      acompanhar(px.id, px.pixExpiraEm ? new Date(px.pixExpiraEm).getTime() : Date.now() + 30 * 60 * 1000);
+    } catch (e) {
+      mostrarErro(msg, e.message);
+    } finally {
+      $("btn-pagar").disabled = false; $("btn-pagar").textContent = "Gerar Pix";
+    }
+  }
+
+  function pararConsulta() { if (consulta) { clearTimeout(consulta); consulta = null; } }
+
+  function acompanhar(id, validade) {
+    pararConsulta();
+    const passo = async () => {
+      try {
+        const r = await api(`/estudante/assinatura/pix/${encodeURIComponent(id)}`);
+        if (r.status === "ativa") {
+          const ate = r.expiraEm ? new Date(r.expiraEm).toLocaleDateString("pt-BR") : "";
+          $("fim-texto").textContent = `Pagamento confirmado. Seu acesso vai até ${ate}. Abra o app Vytal ECG e entre com ${$("conta-quem").textContent}.`;
+          $("p-fim").querySelector("h2").textContent = "Acesso liberado";
+          ["p1", "p2", "p3"].forEach((x) => ($(x).hidden = true));
+          $("p-fim").hidden = false;
+          window.scrollTo({ top: 0, behavior: "smooth" });
+          return;
+        }
+        if (r.status !== "pendente" || Date.now() > validade + 60 * 1000) {
+          $("pix-estado").textContent = "O código expirou. Gere um novo Pix.";
+          return;
+        }
+      } catch (e) {
+        if (e.status === 401) { $("pix-estado").textContent = e.message; return; }
+      }
+      consulta = setTimeout(passo, 4000);
+    };
+    consulta = setTimeout(passo, 4000);
+  }
+
+  $("btn-copiar").onclick = async () => {
+    try {
+      await navigator.clipboard.writeText($("pix-codigo").value);
+      $("btn-copiar").textContent = "Código copiado";
+    } catch (e) {
+      $("pix-codigo").select();
+      $("btn-copiar").textContent = "Selecionado: copie com Ctrl+C";
+    }
+    setTimeout(() => ($("btn-copiar").textContent = "Copiar código"), 2500);
+  };
+
+  $("btn-pix-voltar").onclick = () => {
+    pararConsulta();
+    $("pix-painel").hidden = true; $("form-pagto").hidden = false; $("abas-metodo").hidden = false;
+    document.querySelectorAll('input[name="plano"]').forEach((i) => (i.disabled = false));
+  };
+
   // ---------- início ----------
   const params = new URLSearchParams(location.search);
   if (params.get("plano") === "anual") $("plano-anual").checked = true;
+  if (params.get("pagamento") === "pix") escolherMetodo("pix");
   atualizarResumo();
   if (token) {
     let email = "";
