@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Semente curada do Grafo do Governo Brasileiro (esfera federal).
+Semente curada do Mapa do Governo (mapadogoverno.com.br), esfera federal.
 
 Gera governo/dados/governo-federal.json a partir de uma lista escrita à mão,
 baseada na Constituição de 1988 (arts. 76 a 135) e na Lei 14.600/2023
@@ -516,7 +516,8 @@ for n in nos:
 
 dados = {
     "meta": {
-        "titulo": "Grafo do Governo Brasileiro",
+        "titulo": "Mapa do Governo",
+        "site": "https://mapadogoverno.com.br",
         "esfera": "federal",
         "versao": "0.1.0",
         "gerado_por": "scripts/governo/semente.py",

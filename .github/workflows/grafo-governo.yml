@@ -1,4 +1,4 @@
-name: Grafo do Governo, atualização semanal
+name: Mapa do Governo, atualização semanal
 
 # Toda segunda-feira às 6h (Brasília) baixa as fontes oficiais, remonta o
 # JSON do grafo, lê a seção 2 do DOU da semana e abre um PR com o que mudou.
@@ -58,6 +58,6 @@ jobs:
           delete-branch: true
           add-paths: governo/dados/governo-federal.json
           commit-message: "chore(governo): atualização semanal do grafo a partir das fontes oficiais"
-          title: "Grafo do Governo: atualização semanal"
+          title: "Mapa do Governo: atualização semanal"
           body-path: scripts/governo/.cache/corpo-pr.md
           labels: grafo-governo, dados

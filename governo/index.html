@@ -3,12 +3,15 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Grafo do Governo Brasileiro</title>
-<meta name="description" content="Mapa navegável da estrutura do governo federal brasileiro: Poderes, ministérios, autarquias, agências, tribunais, cargos e as relações entre eles. Quem nomeia quem, quem fiscaliza quem.">
+<title>Mapa do Governo</title>
+<meta name="description" content="Mapa navegável da estrutura do governo federal brasileiro, os três Poderes em um só grafo: Poderes, ministérios, autarquias, agências, tribunais, cargos e as relações entre eles. Quem nomeia quem, quem fiscaliza quem.">
 <meta name="theme-color" content="#0F1F3A">
-<link rel="icon" href="data:,">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230F1F3A'/%3E%3Cpath d='M32 32 L16 18 M32 32 L48 18 M32 32 L32 50' stroke='%23C7D8EA' stroke-width='4' stroke-linecap='round'/%3E%3Ccircle cx='32' cy='32' r='7' fill='%23fff'/%3E%3Ccircle cx='16' cy='18' r='5' fill='%232a78d6'/%3E%3Ccircle cx='48' cy='18' r='5' fill='%23eb6834'/%3E%3Ccircle cx='32' cy='50' r='5' fill='%231baf7a'/%3E%3C/svg%3E">
+<link rel="canonical" href="https://mapadogoverno.com.br/">
+<meta property="og:url" content="https://mapadogoverno.com.br/">
+<meta property="og:site_name" content="Mapa do Governo">
 <meta property="og:type" content="website">
-<meta property="og:title" content="Grafo do Governo Brasileiro">
+<meta property="og:title" content="Mapa do Governo · quem é quem na União, e quem nomeia quem">
 <meta property="og:description" content="Poderes, órgãos, entidades e cargos da União, e as relações entre eles, em um só mapa.">
 <style>
 :root{
@@ -152,8 +155,8 @@ tbody tr:hover{background:var(--plane)}
 
 <div class="top" id="top">
   <div class="brand">
-    <b>Grafo do Governo Brasileiro</b>
-    <small>União · Poderes, órgãos, entidades, cargos e relações</small>
+    <b>Mapa do Governo</b>
+    <small>Brasil · Poderes, órgãos, entidades, cargos e relações</small>
   </div>
   <div class="search">
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
@@ -172,7 +175,7 @@ tbody tr:hover{background:var(--plane)}
   </div>
 </div>
 
-<canvas id="palco" role="img" aria-label="Grafo radial do governo federal. Use a busca ou a tabela para navegar sem o mouse."></canvas>
+<canvas id="palco" role="img" aria-label="Mapa radial do governo federal. Use a busca ou a tabela para navegar sem o mouse."></canvas>
 <div class="dica" id="dica" role="tooltip"></div>
 <div class="status" id="status"></div>
 
@@ -231,6 +234,8 @@ tbody tr:hover{background:var(--plane)}
       <li>Esfera estadual e municipal.</li>
       <li>Orçamento por órgão (Portal da Transparência e SIOP).</li>
     </ul>
+    <h2>Contato e código</h2>
+    <p>O mapa é um projeto aberto. Erros de estrutura, cargos desatualizados e sugestões de fontes são bem-vindos; a forma de contribuir está descrita junto com os dados. Endereço: <a href="https://mapadogoverno.com.br">mapadogoverno.com.br</a>.</p>
     <p id="versao"></p>
   </div>
 </section>

@@ -1,4 +1,6 @@
-# Grafo do Governo Brasileiro
+# Mapa do Governo
+
+No ar em [mapadogoverno.com.br](https://mapadogoverno.com.br) (e em `/governo` no site da Vytal).
 
 Um mapa navegável da estrutura da União, inspirado no
 [US Gov Graph da CivLab](https://graph.civlab.org/us): Poderes, órgãos,
@@ -7,7 +9,9 @@ relações constitucionais entre eles (quem nomeia, quem aprova, quem
 fiscaliza).
 
 * Página: `governo/index.html`, servida em `/governo` (estática, sem
-  dependências externas, canvas próprio).
+  dependências externas, canvas próprio). O domínio `mapadogoverno.com.br`
+  é o mesmo projeto na Vercel: um rewrite por host no `vercel.json` serve
+  `/governo/*` na raiz, e `www` redireciona para o apex.
 * Dados: `governo/dados/governo-federal.json`.
 * Fonte dos dados: os scripts desta pasta.
 
