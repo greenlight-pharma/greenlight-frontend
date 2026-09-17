@@ -56,7 +56,7 @@ jobs:
         with:
           branch: bot/grafo-governo
           delete-branch: true
-          add-paths: governo/dados/governo-federal.json
+          add-paths: governo/dados/**
           commit-message: "chore(governo): atualização semanal do grafo a partir das fontes oficiais"
           title: "Mapa do Governo: atualização semanal"
           body-path: scripts/governo/.cache/corpo-pr.md

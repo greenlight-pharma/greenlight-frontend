@@ -21,6 +21,8 @@ import sys
 from pathlib import Path
 
 RAIZ = Path(__file__).resolve().parents[2]
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+from ufs import por_sigla  # noqa: E402
 SAIDA = RAIZ / "governo" / "dados" / "governo-federal.json"
 
 nos = []
@@ -38,7 +40,7 @@ SITUACOES = {
 
 def no(id, nome, tipo, poder, pai=None, sigla=None, cargo=None, ocupante=None,
        desde=None, mandato_ate=None, lei=None, site=None, descricao=None,
-       relacao=None, verificado_em=None, fonte=None, quantidade=None, situacao=None):
+       relacao=None, verificado_em=None, fonte=None, quantidade=None, situacao=None, vista=None):
     """Registra um nó. `relacao` é o rótulo da aresta pai->filho.
 
     `situacao` do cargo: titular | interino | vago | nao_verificado. Quando não
@@ -55,6 +57,7 @@ def no(id, nome, tipo, poder, pai=None, sigla=None, cargo=None, ocupante=None,
     if site: n["site"] = site
     if descricao: n["descricao"] = descricao
     if quantidade: n["quantidade"] = quantidade
+    if vista: n["vista"] = vista
     if cargo:
         if situacao is None:
             situacao = "titular" if ocupante else "nao_verificado"
@@ -451,6 +454,16 @@ no("dpu", "Defensoria Pública da União", "orgao", "essencial", pai="fej", sigl
    descricao="Assistência jurídica integral e gratuita aos necessitados na esfera federal (CF, art. 134).",
    lei="CF, art. 134; LC 80/1994", site="https://www.dpu.def.br")
 
+# ---------------------------------------------------------------- Federação
+no("estados", "Estados e Distrito Federal", "grupo", "uniao", pai="uniao", quantidade=27, relacao="compõe",
+   descricao="As 26 unidades federadas e o Distrito Federal, autônomas, com Poderes próprios (CF, arts. 18 e 25). "
+             "Cada estado abre o seu próprio mapa, com governo, assembleia, tribunais e municípios.",
+   lei="CF, arts. 18 a 32")
+for sig, uf in sorted(por_sigla().items(), key=lambda kv: kv[1]["nome"]):
+    no(f"uf-{sig}", uf["nome"], "estado", "uniao", pai="estados", sigla=sig, relacao="integra",
+       quantidade=uf["deputados_federais"], vista=f"estados/{sig}.json",
+       descricao=f"Região {uf['regiao']}. Capital: {uf['capital']}. {uf['deputados_federais']} deputados federais e 3 senadores.")
+
 # ---------------------------------------------------------------- relações não hierárquicas
 liga("pr", "stf", "nomeia", "Nomeia os ministros do STF, após aprovação do Senado (CF, art. 101).")
 liga("senado", "stf", "aprova", "Aprova por maioria absoluta a indicação dos ministros do STF (CF, art. 52, III, a).")
@@ -478,6 +491,9 @@ liga("pr", "bcb", "nomeia", "Nomeia presidente e diretores para mandatos fixos d
 liga("senado", "bcb", "aprova", "Aprova a indicação do presidente e dos diretores do Banco Central (CF, art. 52, III, d).")
 liga("cgu", "exec", "controla", "Controle interno do Poder Executivo federal (CF, art. 74).")
 liga("agu", "uniao", "representa", "Representa a União judicial e extrajudicialmente (CF, art. 131).")
+liga("senado", "estados", "representa", "Os senadores representam os estados e o DF: três por unidade (CF, art. 46).")
+liga("stf", "estados", "julga", "Julga conflitos entre a União e os estados, e entre estados (CF, art. 102, I, f).")
+liga("tcu", "estados", "fiscaliza", "Fiscaliza a aplicação de recursos repassados pela União a estados e municípios (CF, art. 71, VI).")
 liga("agu", "fej", "integra", "Constitucionalmente, a Advocacia Pública é função essencial à Justiça (CF, arts. 131 e 132).")
 liga("cmn", "bcb", "orienta", "O CMN fixa as diretrizes da política monetária, executadas pelo Banco Central.")
 liga("mf", "cmn", "preside", "O Ministro da Fazenda preside o CMN (Lei 4.595/1964).")
@@ -505,6 +521,7 @@ TIPOS = {
     "empresa_publica": "Empresa pública", "sociedade_economia_mista": "Sociedade de economia mista",
     "servico_social_autonomo": "Serviço social autônomo", "forca_armada": "Força Armada",
     "tribunal": "Tribunal", "casa_legislativa": "Casa legislativa", "grupo": "Conjunto de entidades",
+    "estado": "Unidade da Federação", "municipio": "Município",
 }
 PODERES = {
     "uniao": "União", "executivo": "Executivo", "legislativo": "Legislativo",

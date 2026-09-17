@@ -42,7 +42,9 @@
    "forca_armada": "Força Armada",
    "tribunal": "Tribunal",
    "casa_legislativa": "Casa legislativa",
-   "grupo": "Conjunto de entidades"
+   "grupo": "Conjunto de entidades",
+   "estado": "Unidade da Federação",
+   "municipio": "Município"
   },
   "poderes": {
    "uniao": "União",
@@ -3224,6 +3226,313 @@
     "verificado_em": null,
     "fonte": "https://www.dpu.def.br"
    }
+  },
+  {
+   "id": "estados",
+   "nome": "Estados e Distrito Federal",
+   "tipo": "grupo",
+   "poder": "uniao",
+   "pai": "uniao",
+   "lei": "CF, arts. 18 a 32",
+   "descricao": "As 26 unidades federadas e o Distrito Federal, autônomas, com Poderes próprios (CF, arts. 18 e 25). Cada estado abre o seu próprio mapa, com governo, assembleia, tribunais e municípios.",
+   "quantidade": 27
+  },
+  {
+   "id": "uf-AC",
+   "nome": "Acre",
+   "tipo": "estado",
+   "poder": "uniao",
+   "sigla": "AC",
+   "pai": "estados",
+   "descricao": "Região Norte. Capital: Rio Branco. 8 deputados federais e 3 senadores.",
+   "quantidade": 8,
+   "vista": "estados/AC.json"
+  },
+  {
+   "id": "uf-AL",
+   "nome": "Alagoas",
+   "tipo": "estado",
+   "poder": "uniao",
+   "sigla": "AL",
+   "pai": "estados",
+   "descricao": "Região Nordeste. Capital: Maceió. 9 deputados federais e 3 senadores.",
+   "quantidade": 9,
+   "vista": "estados/AL.json"
+  },
+  {
+   "id": "uf-AP",
+   "nome": "Amapá",
+   "tipo": "estado",
+   "poder": "uniao",
+   "sigla": "AP",
+   "pai": "estados",
+   "descricao": "Região Norte. Capital: Macapá. 8 deputados federais e 3 senadores.",
+   "quantidade": 8,
+   "vista": "estados/AP.json"
+  },
+  {
+   "id": "uf-AM",
+   "nome": "Amazonas",
+   "tipo": "estado",
+   "poder": "uniao",
+   "sigla": "AM",
+   "pai": "estados",
+   "descricao": "Região Norte. Capital: Manaus. 8 deputados federais e 3 senadores.",
+   "quantidade": 8,
+   "vista": "estados/AM.json"
+  },
+  {
+   "id": "uf-BA",
+   "nome": "Bahia",
+   "tipo": "estado",
+   "poder": "uniao",
+   "sigla": "BA",
+   "pai": "estados",
+   "descricao": "Região Nordeste. Capital: Salvador. 39 deputados federais e 3 senadores.",
+   "quantidade": 39,
+   "vista": "estados/BA.json"
+  },
+  {
+   "id": "uf-CE",
+   "nome": "Ceará",
+   "tipo": "estado",
+   "poder": "uniao",
+   "sigla": "CE",
+   "pai": "estados",
+   "descricao": "Região Nordeste. Capital: Fortaleza. 22 deputados federais e 3 senadores.",
+   "quantidade": 22,
+   "vista": "estados/CE.json"
+  },
+  {
+   "id": "uf-DF",
+   "nome": "Distrito Federal",
+   "tipo": "estado",
+   "poder": "uniao",
+   "sigla": "DF",
+   "pai": "estados",
+   "descricao": "Região Centro-Oeste. Capital: Brasília. 8 deputados federais e 3 senadores.",
+   "quantidade": 8,
+   "vista": "estados/DF.json"
+  },
+  {
+   "id": "uf-ES",
+   "nome": "Espírito Santo",
+   "tipo": "estado",
+   "poder": "uniao",
+   "sigla": "ES",
+   "pai": "estados",
+   "descricao": "Região Sudeste. Capital: Vitória. 10 deputados federais e 3 senadores.",
+   "quantidade": 10,
+   "vista": "estados/ES.json"
+  },
+  {
+   "id": "uf-GO",
+   "nome": "Goiás",
+   "tipo": "estado",
+   "poder": "uniao",
+   "sigla": "GO",
+   "pai": "estados",
+   "descricao": "Região Centro-Oeste. Capital: Goiânia. 17 deputados federais e 3 senadores.",
+   "quantidade": 17,
+   "vista": "estados/GO.json"
+  },
+  {
+   "id": "uf-MA",
+   "nome": "Maranhão",
+   "tipo": "estado",
+   "poder": "uniao",
+   "sigla": "MA",
+   "pai": "estados",
+   "descricao": "Região Nordeste. Capital: São Luís. 18 deputados federais e 3 senadores.",
+   "quantidade": 18,
+   "vista": "estados/MA.json"
+  },
+  {
+   "id": "uf-MT",
+   "nome": "Mato Grosso",
+   "tipo": "estado",
+   "poder": "uniao",
+   "sigla": "MT",
+   "pai": "estados",
+   "descricao": "Região Centro-Oeste. Capital: Cuiabá. 8 deputados federais e 3 senadores.",
+   "quantidade": 8,
+   "vista": "estados/MT.json"
+  },
+  {
+   "id": "uf-MS",
+   "nome": "Mato Grosso do Sul",
+   "tipo": "estado",
+   "poder": "uniao",
+   "sigla": "MS",
+   "pai": "estados",
+   "descricao": "Região Centro-Oeste. Capital: Campo Grande. 8 deputados federais e 3 senadores.",
+   "quantidade": 8,
+   "vista": "estados/MS.json"
+  },
+  {
+   "id": "uf-MG",
+   "nome": "Minas Gerais",
+   "tipo": "estado",
+   "poder": "uniao",
+   "sigla": "MG",
+   "pai": "estados",
+   "descricao": "Região Sudeste. Capital: Belo Horizonte. 53 deputados federais e 3 senadores.",
+   "quantidade": 53,
+   "vista": "estados/MG.json"
+  },
+  {
+   "id": "uf-PR",
+   "nome": "Paraná",
+   "tipo": "estado",
+   "poder": "uniao",
+   "sigla": "PR",
+   "pai": "estados",
+   "descricao": "Região Sul. Capital: Curitiba. 30 deputados federais e 3 senadores.",
+   "quantidade": 30,
+   "vista": "estados/PR.json"
+  },
+  {
+   "id": "uf-PB",
+   "nome": "Paraíba",
+   "tipo": "estado",
+   "poder": "uniao",
+   "sigla": "PB",
+   "pai": "estados",
+   "descricao": "Região Nordeste. Capital: João Pessoa. 12 deputados federais e 3 senadores.",
+   "quantidade": 12,
+   "vista": "estados/PB.json"
+  },
+  {
+   "id": "uf-PA",
+   "nome": "Pará",
+   "tipo": "estado",
+   "poder": "uniao",
+   "sigla": "PA",
+   "pai": "estados",
+   "descricao": "Região Norte. Capital: Belém. 17 deputados federais e 3 senadores.",
+   "quantidade": 17,
+   "vista": "estados/PA.json"
+  },
+  {
+   "id": "uf-PE",
+   "nome": "Pernambuco",
+   "tipo": "estado",
+   "poder": "uniao",
+   "sigla": "PE",
+   "pai": "estados",
+   "descricao": "Região Nordeste. Capital: Recife. 25 deputados federais e 3 senadores.",
+   "quantidade": 25,
+   "vista": "estados/PE.json"
+  },
+  {
+   "id": "uf-PI",
+   "nome": "Piauí",
+   "tipo": "estado",
+   "poder": "uniao",
+   "sigla": "PI",
+   "pai": "estados",
+   "descricao": "Região Nordeste. Capital: Teresina. 10 deputados federais e 3 senadores.",
+   "quantidade": 10,
+   "vista": "estados/PI.json"
+  },
+  {
+   "id": "uf-RN",
+   "nome": "Rio Grande do Norte",
+   "tipo": "estado",
+   "poder": "uniao",
+   "sigla": "RN",
+   "pai": "estados",
+   "descricao": "Região Nordeste. Capital: Natal. 8 deputados federais e 3 senadores.",
+   "quantidade": 8,
+   "vista": "estados/RN.json"
+  },
+  {
+   "id": "uf-RS",
+   "nome": "Rio Grande do Sul",
+   "tipo": "estado",
+   "poder": "uniao",
+   "sigla": "RS",
+   "pai": "estados",
+   "descricao": "Região Sul. Capital: Porto Alegre. 31 deputados federais e 3 senadores.",
+   "quantidade": 31,
+   "vista": "estados/RS.json"
+  },
+  {
+   "id": "uf-RJ",
+   "nome": "Rio de Janeiro",
+   "tipo": "estado",
+   "poder": "uniao",
+   "sigla": "RJ",
+   "pai": "estados",
+   "descricao": "Região Sudeste. Capital: Rio de Janeiro. 46 deputados federais e 3 senadores.",
+   "quantidade": 46,
+   "vista": "estados/RJ.json"
+  },
+  {
+   "id": "uf-RO",
+   "nome": "Rondônia",
+   "tipo": "estado",
+   "poder": "uniao",
+   "sigla": "RO",
+   "pai": "estados",
+   "descricao": "Região Norte. Capital: Porto Velho. 8 deputados federais e 3 senadores.",
+   "quantidade": 8,
+   "vista": "estados/RO.json"
+  },
+  {
+   "id": "uf-RR",
+   "nome": "Roraima",
+   "tipo": "estado",
+   "poder": "uniao",
+   "sigla": "RR",
+   "pai": "estados",
+   "descricao": "Região Norte. Capital: Boa Vista. 8 deputados federais e 3 senadores.",
+   "quantidade": 8,
+   "vista": "estados/RR.json"
+  },
+  {
+   "id": "uf-SC",
+   "nome": "Santa Catarina",
+   "tipo": "estado",
+   "poder": "uniao",
+   "sigla": "SC",
+   "pai": "estados",
+   "descricao": "Região Sul. Capital: Florianópolis. 16 deputados federais e 3 senadores.",
+   "quantidade": 16,
+   "vista": "estados/SC.json"
+  },
+  {
+   "id": "uf-SE",
+   "nome": "Sergipe",
+   "tipo": "estado",
+   "poder": "uniao",
+   "sigla": "SE",
+   "pai": "estados",
+   "descricao": "Região Nordeste. Capital: Aracaju. 8 deputados federais e 3 senadores.",
+   "quantidade": 8,
+   "vista": "estados/SE.json"
+  },
+  {
+   "id": "uf-SP",
+   "nome": "São Paulo",
+   "tipo": "estado",
+   "poder": "uniao",
+   "sigla": "SP",
+   "pai": "estados",
+   "descricao": "Região Sudeste. Capital: São Paulo. 70 deputados federais e 3 senadores.",
+   "quantidade": 70,
+   "vista": "estados/SP.json"
+  },
+  {
+   "id": "uf-TO",
+   "nome": "Tocantins",
+   "tipo": "estado",
+   "poder": "uniao",
+   "sigla": "TO",
+   "pai": "estados",
+   "descricao": "Região Norte. Capital: Palmas. 8 deputados federais e 3 senadores.",
+   "quantidade": 8,
+   "vista": "estados/TO.json"
   }
  ],
  "arestas": [
@@ -4326,6 +4635,174 @@
    "hierarquica": true
   },
   {
+   "de": "uniao",
+   "para": "estados",
+   "tipo": "compõe",
+   "hierarquica": true
+  },
+  {
+   "de": "estados",
+   "para": "uf-AC",
+   "tipo": "integra",
+   "hierarquica": true
+  },
+  {
+   "de": "estados",
+   "para": "uf-AL",
+   "tipo": "integra",
+   "hierarquica": true
+  },
+  {
+   "de": "estados",
+   "para": "uf-AP",
+   "tipo": "integra",
+   "hierarquica": true
+  },
+  {
+   "de": "estados",
+   "para": "uf-AM",
+   "tipo": "integra",
+   "hierarquica": true
+  },
+  {
+   "de": "estados",
+   "para": "uf-BA",
+   "tipo": "integra",
+   "hierarquica": true
+  },
+  {
+   "de": "estados",
+   "para": "uf-CE",
+   "tipo": "integra",
+   "hierarquica": true
+  },
+  {
+   "de": "estados",
+   "para": "uf-DF",
+   "tipo": "integra",
+   "hierarquica": true
+  },
+  {
+   "de": "estados",
+   "para": "uf-ES",
+   "tipo": "integra",
+   "hierarquica": true
+  },
+  {
+   "de": "estados",
+   "para": "uf-GO",
+   "tipo": "integra",
+   "hierarquica": true
+  },
+  {
+   "de": "estados",
+   "para": "uf-MA",
+   "tipo": "integra",
+   "hierarquica": true
+  },
+  {
+   "de": "estados",
+   "para": "uf-MT",
+   "tipo": "integra",
+   "hierarquica": true
+  },
+  {
+   "de": "estados",
+   "para": "uf-MS",
+   "tipo": "integra",
+   "hierarquica": true
+  },
+  {
+   "de": "estados",
+   "para": "uf-MG",
+   "tipo": "integra",
+   "hierarquica": true
+  },
+  {
+   "de": "estados",
+   "para": "uf-PR",
+   "tipo": "integra",
+   "hierarquica": true
+  },
+  {
+   "de": "estados",
+   "para": "uf-PB",
+   "tipo": "integra",
+   "hierarquica": true
+  },
+  {
+   "de": "estados",
+   "para": "uf-PA",
+   "tipo": "integra",
+   "hierarquica": true
+  },
+  {
+   "de": "estados",
+   "para": "uf-PE",
+   "tipo": "integra",
+   "hierarquica": true
+  },
+  {
+   "de": "estados",
+   "para": "uf-PI",
+   "tipo": "integra",
+   "hierarquica": true
+  },
+  {
+   "de": "estados",
+   "para": "uf-RN",
+   "tipo": "integra",
+   "hierarquica": true
+  },
+  {
+   "de": "estados",
+   "para": "uf-RS",
+   "tipo": "integra",
+   "hierarquica": true
+  },
+  {
+   "de": "estados",
+   "para": "uf-RJ",
+   "tipo": "integra",
+   "hierarquica": true
+  },
+  {
+   "de": "estados",
+   "para": "uf-RO",
+   "tipo": "integra",
+   "hierarquica": true
+  },
+  {
+   "de": "estados",
+   "para": "uf-RR",
+   "tipo": "integra",
+   "hierarquica": true
+  },
+  {
+   "de": "estados",
+   "para": "uf-SC",
+   "tipo": "integra",
+   "hierarquica": true
+  },
+  {
+   "de": "estados",
+   "para": "uf-SE",
+   "tipo": "integra",
+   "hierarquica": true
+  },
+  {
+   "de": "estados",
+   "para": "uf-SP",
+   "tipo": "integra",
+   "hierarquica": true
+  },
+  {
+   "de": "estados",
+   "para": "uf-TO",
+   "tipo": "integra",
+   "hierarquica": true
+  },
+  {
    "de": "pr",
    "para": "stf",
    "tipo": "nomeia",
@@ -4506,6 +4983,27 @@
    "tipo": "representa",
    "hierarquica": false,
    "descricao": "Representa a União judicial e extrajudicialmente (CF, art. 131)."
+  },
+  {
+   "de": "senado",
+   "para": "estados",
+   "tipo": "representa",
+   "hierarquica": false,
+   "descricao": "Os senadores representam os estados e o DF: três por unidade (CF, art. 46)."
+  },
+  {
+   "de": "stf",
+   "para": "estados",
+   "tipo": "julga",
+   "hierarquica": false,
+   "descricao": "Julga conflitos entre a União e os estados, e entre estados (CF, art. 102, I, f)."
+  },
+  {
+   "de": "tcu",
+   "para": "estados",
+   "tipo": "fiscaliza",
+   "hierarquica": false,
+   "descricao": "Fiscaliza a aplicação de recursos repassados pela União a estados e municípios (CF, art. 71, VI)."
   },
   {
    "de": "agu",

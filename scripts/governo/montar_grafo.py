@@ -162,6 +162,8 @@ def main():
         dados["meta"]["gerado_por"] = "scripts/governo/montar_grafo.py"
     semente.SAIDA.write_text(json.dumps(dados, ensure_ascii=False, indent=1) + "\n", encoding="utf-8")
     print(f"{len(dados['nos'])} nós, {len(dados['arestas'])} arestas -> {semente.SAIDA.relative_to(semente.RAIZ)}")
+    import gerar_estados
+    gerar_estados.main()
 
 
 if __name__ == "__main__":

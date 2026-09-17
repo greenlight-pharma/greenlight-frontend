@@ -12,7 +12,9 @@ fiscaliza).
   dependências externas, canvas próprio). O domínio `mapadogoverno.com.br`
   é o mesmo projeto na Vercel: um rewrite por host no `vercel.json` serve
   `/governo/*` na raiz, e `www` redireciona para o apex.
-* Dados: `governo/dados/governo-federal.json`.
+* Dados: `governo/dados/governo-federal.json` (União), `governo/dados/estados/<UF>.json`
+  (um por estado, com governo, assembleia, tribunais, MP, defensoria, TRE e
+  municípios) e `governo/dados/indice-municipios.json` (busca nacional).
 * Fonte dos dados: os scripts desta pasta.
 
 ## Como o dado é produzido
@@ -24,7 +26,25 @@ semente.py  ──────────────────────�
 baixar_siorg.py     -> .cache/siorg.json │
 baixar_congresso.py -> .cache/congresso.json
 ler_dou.py          -> .cache/dou.md   (relatório para revisão humana; não altera o grafo)
+gerar_estados.py    -> governo/dados/estados/*.json + indice-municipios.json
+                       (a partir de ufs.py e dados/municipios.csv; chamado pelo montar_grafo.py)
 ```
+
+## Três camadas
+
+1. **União** (`governo-federal.json`): o grafo federal, mais o nó "Estados e
+   Distrito Federal" com as 27 UFs. Cada UF traz `vista: "estados/UF.json"`.
+2. **Estado** (`estados/UF.json`): raiz é a UF; abaixo, Governo (com
+   Vice, Secretaria de Saúde, PM, PC e o conjunto das demais secretarias),
+   Assembleia (com o TCE e, onde existe, o TCM), TJ (com comarcas), TRE, MP,
+   Defensoria e o conjunto de municípios. Relações: Assembleia fiscaliza o
+   Governo, Governo e Assembleia escolhem o TCE, TCE (ou TCM) fiscaliza os
+   municípios, TRE organiza as eleições municipais, SES coordena o SUS,
+   MP e TJ atuam sobre os municípios. Nós com `ligacoes_externas` apontam
+   de volta para a União (TRE → TSE, SES → Ministério da Saúde, TJ → STJ).
+3. **Município**: um nó por município (`m-<código IBGE>`), com os três
+   cargos de comando (prefeito, presidente da Câmara, secretário de saúde)
+   descritos uma vez em `meta.cargos_municipio`. Endereço: `#SP/m-3509502`.
 
 Tudo isso roda sozinho toda segunda-feira em
 `.github/workflows/grafo-governo.yml`, que abre um PR na branch

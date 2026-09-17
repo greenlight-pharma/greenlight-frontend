@@ -82,6 +82,16 @@ button,input{font-family:inherit;font-size:inherit}
 .legenda i.q{border-radius:3px}
 .legenda i.d{transform:rotate(45deg) scale(.85);border-radius:2px}
 .status{position:absolute;left:16px;top:70px;z-index:4;font-size:12px;color:var(--mute);pointer-events:none}
+.vista{position:absolute;left:16px;top:calc(var(--altura-top,60px) + 10px);z-index:5;display:flex;align-items:center;gap:6px;font-size:13px;color:var(--ink-2);background:color-mix(in srgb,var(--panel) 92%,transparent);border:1px solid var(--border);border-radius:999px;padding:5px 10px 5px 6px}
+.vista button{border:0;background:var(--plane);color:var(--ink);border-radius:999px;padding:4px 10px;cursor:pointer;font-size:13px}
+.vista button:hover{background:var(--grid)}
+.vista b{color:var(--ink)}
+.status{top:calc(var(--altura-top,60px) + 48px)}
+.btn-vista{display:inline-flex;align-items:center;gap:8px;width:100%;justify-content:center;padding:10px 12px;border-radius:10px;border:0;background:var(--focus);color:#fff;font-weight:600;cursor:pointer;font-size:14px}
+.btn-vista:hover{filter:brightness(1.08)}
+.ext button{display:flex;align-items:center;gap:8px;width:100%;text-align:left;border:1px solid var(--border);background:var(--plane);color:var(--ink);padding:7px 10px;border-radius:8px;cursor:pointer;font-size:13px;margin-bottom:4px}
+.ext button:hover{background:var(--grid)}
+.ext small{color:var(--mute)}
 
 /* ---------- painel de detalhe ---------- */
 .painel{position:absolute;z-index:7;top:70px;right:16px;bottom:16px;width:min(400px,calc(100% - 32px));background:var(--panel);border:1px solid var(--border);border-radius:16px;box-shadow:0 16px 48px rgba(0,0,0,.18);display:none;flex-direction:column;overflow:hidden}
@@ -142,6 +152,7 @@ tbody tr:hover{background:var(--plane)}
 
 @media (max-width:720px){
   .top{gap:8px;padding:8px 12px}
+  .vista{top:calc(var(--altura-top,120px) + 8px);left:64px;max-width:calc(100% - 80px)}
   .brand small{display:none}
   .chips{order:3;width:100%}
   .painel{top:auto;left:8px;right:8px;bottom:8px;width:auto;max-height:62vh}
@@ -160,7 +171,7 @@ tbody tr:hover{background:var(--plane)}
   </div>
   <div class="search">
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
-    <input id="busca" type="search" placeholder="Buscar órgão, sigla ou cargo (ex.: Anvisa, STF, Receita)" autocomplete="off" aria-label="Buscar no grafo" aria-controls="resultados" aria-expanded="false">
+    <input id="busca" type="search" placeholder="Buscar órgão, cargo, estado ou município (ex.: Anvisa, STF, Campinas)" autocomplete="off" aria-label="Buscar no grafo" aria-controls="resultados" aria-expanded="false">
     <div class="lista" id="resultados" role="listbox"></div>
   </div>
   <div class="chips" id="filtros" role="group" aria-label="Filtrar por Poder">
@@ -178,6 +189,7 @@ tbody tr:hover{background:var(--plane)}
 <canvas id="palco" role="img" aria-label="Mapa radial do governo federal. Use a busca ou a tabela para navegar sem o mouse."></canvas>
 <div class="dica" id="dica" role="tooltip"></div>
 <div class="status" id="status"></div>
+<nav class="vista" id="vista" aria-label="Nível do mapa"><button id="btn-brasil" hidden>‹ Brasil</button><span id="vista-nome"><b>Brasil</b> · União</span></nav>
 
 <div class="zoom" aria-label="Zoom">
   <button id="z-mais" title="Aproximar" aria-label="Aproximar">+</button>
@@ -189,6 +201,7 @@ tbody tr:hover{background:var(--plane)}
   <div class="l"><i class="c"></i>Administração direta (órgão, ministério, tribunal, Casa)</div>
   <div class="l"><i class="q"></i>Administração indireta (autarquia, agência, fundação, empresa)</div>
   <div class="l"><i class="d"></i>Conjunto de entidades (por exemplo, 69 universidades)</div>
+  <div class="l"><i class="c" style="border-color:var(--ink);background:var(--ink)"></i>União, estados e municípios (clique em um estado para abrir o mapa dele)</div>
   <div class="l" style="margin-top:2px">Cor = Poder. Clique em um nó para ver cargo, base legal e quem nomeia, aprova ou fiscaliza.</div>
 </div>
 
@@ -220,7 +233,7 @@ tbody tr:hover{background:var(--plane)}
   <div class="conteudo">
     <button class="ghost fechar" data-fecha="folha-sobre">Voltar ao grafo</button>
     <h1 id="s-titulo">Sobre os dados</h1>
-    <p>Este é um mapa da estrutura da União: os três Poderes, as funções essenciais à Justiça, os ministérios, as entidades da administração indireta, os tribunais, os cargos de comando e as relações constitucionais entre eles (quem nomeia, quem aprova, quem fiscaliza). Inspirado no <em>Gov Graph</em> da CivLab para os Estados Unidos.</p>
+    <p>Este é um mapa da estrutura do Estado brasileiro em três camadas. A União: os três Poderes, as funções essenciais à Justiça, os ministérios, as entidades da administração indireta, os tribunais, os cargos de comando e as relações constitucionais entre eles (quem nomeia, quem aprova, quem fiscaliza). Os 26 estados e o Distrito Federal, cada um com governo, assembleia, tribunal de justiça, tribunal de contas, ministério público, defensoria e tribunal eleitoral. E os 5.570 municípios, com prefeitura, câmara e secretaria de saúde, ligados a quem os fiscaliza, julga e coordena. Inspirado no <em>Gov Graph</em> da CivLab para os Estados Unidos.</p>
     <div class="kpis" id="kpis"></div>
     <h2>Regra sobre pessoas</h2>
     <p>Estrutura sim, pessoas só com fonte. Só aparecem ocupantes com mandato fixo, confirmados em fonte oficial e com data de verificação (Presidência, Vice, Casas do Congresso, STF, STJ, TSE, TCU, PGR e Banco Central). Cada cargo tem uma situação explícita: titular, interino ou substituto, vago, ou não verificado. “Vago” é uma afirmação e exige fonte e data; “não verificado” é ausência de dado. Um campo vazio é melhor que um nome errado.</p>
@@ -231,7 +244,8 @@ tbody tr:hover{background:var(--plane)}
     <ul>
       <li>Ocupantes dos cargos ainda não verificados, a partir da primeira rodada do fluxo semanal.</li>
       <li>Segundo nível dos demais ministérios (hoje: Saúde, Educação e Justiça à mão; os outros vêm do SIORG).</li>
-      <li>Esfera estadual e municipal.</li>
+      <li>Prefeitos, presidentes de câmara e governadores a partir dos dados abertos do TSE; secretários de saúde a partir do CNES.</li>
+      <li>Secretarias estaduais e comarcas, hoje representadas como conjuntos.</li>
       <li>Orçamento por órgão (Portal da Transparência e SIOP).</li>
     </ul>
     <h2>Contato e código</h2>
@@ -246,65 +260,108 @@ tbody tr:hover{background:var(--plane)}
 const $ = s => document.querySelector(s);
 const canvas = $('#palco'), ctx = canvas.getContext('2d');
 const dica = $('#dica'), painel = $('#painel'), status = $('#status');
-
-// ------------------------------------------------------------ dados
-let dados;
-try {
-  const r = await fetch('dados/governo-federal.json', {cache:'no-cache'});
-  dados = await r.json();
-} catch (e) {
-  status.textContent = 'Não foi possível carregar dados/governo-federal.json.';
-  return;
-}
-const TIPOS = dados.meta.tipos, PODERES = dados.meta.poderes;
-const porId = new Map(dados.nos.map(n => [n.id, n]));
-const filhos = new Map(dados.nos.map(n => [n.id, []]));
-const relEntrada = new Map(dados.nos.map(n => [n.id, []]));
-const relSaida = new Map(dados.nos.map(n => [n.id, []]));
-for (const a of dados.arestas) {
-  if (a.hierarquica) filhos.get(a.de).push(a.para);
-  else { relSaida.get(a.de).push(a); relEntrada.get(a.para).push(a); }
-}
-const raiz = dados.nos.find(n => n.tipo === 'raiz');
+const UFS = ['AC','AL','AP','AM','BA','CE','DF','ES','GO','MA','MT','MS','MG','PA','PB','PR','PE','PI','RJ','RN','RS','RO','RR','SC','SP','SE','TO'];
 const INDIRETA = new Set(['autarquia','agencia_reguladora','fundacao','empresa_publica','sociedade_economia_mista','servico_social_autonomo']);
 const forma = n => n.tipo === 'grupo' ? 'd' : INDIRETA.has(n.tipo) ? 'q' : 'c';
 const css = v => getComputedStyle(document.documentElement).getPropertyValue(v).trim();
+const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const norm = s => String(s||'').normalize('NFD').replace(/[̀-ͯ]/g,'').toLowerCase();
 let cores = {};
 function lerCores(){ cores = {executivo:css('--exec'),legislativo:css('--leg'),judiciario:css('--jud'),essencial:css('--ess'),uniao:css('--uniao'),edge:css('--edge'),edgeRel:css('--edge-rel'),ink:css('--ink'),ink2:css('--ink-2'),mute:css('--mute'),surface:css('--surface')}; }
 lerCores();
 matchMedia('(prefers-color-scheme: dark)').addEventListener('change', () => { lerCores(); desenhar(); });
 
-// ------------------------------------------------------------ layout radial
-// Cada Poder recebe uma fatia fixa do círculo; dentro dela, os filhos dividem o
-// ângulo proporcionalmente ao número de folhas (mínimo 1 por nó).
-const FATIAS = {executivo:.60, judiciario:.17, essencial:.11, legislativo:.12};
-const RAIO = [0, 150, 300, 470, 680, 800];
-const folhas = new Map();
-function contar(id){ const f = filhos.get(id); const v = f.length ? f.reduce((s,c)=>s+contar(c),0) : 1; folhas.set(id, v); return v; }
-contar(raiz.id);
-const pos = new Map();
-function distribuir(id, a0, a1, depth){
-  const n = porId.get(id);
-  const ang = (a0 + a1) / 2, r = RAIO[Math.min(depth, RAIO.length-1)];
-  pos.set(id, {x: r*Math.cos(ang), y: r*Math.sin(ang), ang, depth, a0, a1});
-  const f = filhos.get(id); if (!f.length) return;
-  let pesos, total;
-  if (depth === 0) { pesos = f.map(c => FATIAS[porId.get(c).poder] || .1); }
-  else { pesos = f.map(c => Math.max(1, folhas.get(c))); }
-  total = pesos.reduce((s,p)=>s+p,0);
-  let a = a0;
-  f.forEach((c,i) => { const w = (a1-a0) * pesos[i] / total; distribuir(c, a, a+w, depth+1); a += w; });
-}
-distribuir(raiz.id, -Math.PI/2, 3*Math.PI/2, 0);
-// Ordena nós por profundidade para desenhar as camadas de fora para dentro.
-const ordem = [...dados.nos].sort((a,b)=>pos.get(b.id).depth - pos.get(a.id).depth);
-const raioNo = n => [14, 11, 9, 6.5, 5, 4.5][Math.min(pos.get(n.id).depth, 5)];
+// ------------------------------------------------------------ vistas (Brasil e estados)
+const cacheVistas = new Map();
+let V = null;              // vista atual: dados + índices + layout
+let vistaAtual = 'federal';
+let selecionado = null, pairado = null;
+const poderesAtivos = new Set(['executivo','legislativo','judiciario','essencial']);
 
-// ------------------------------------------------------------ estado de vista
+async function carregarDados(nome){
+  if (cacheVistas.has(nome)) return cacheVistas.get(nome);
+  const url = nome === 'federal' ? 'dados/governo-federal.json' : `dados/estados/${nome}.json`;
+  const r = await fetch(url, {cache:'no-cache'});
+  if (!r.ok) throw new Error(url);
+  const d = await r.json(); cacheVistas.set(nome, d); return d;
+}
+function montarVista(dados){
+  const porId = new Map(dados.nos.map(n => [n.id, n]));
+  const filhos = new Map(dados.nos.map(n => [n.id, []]));
+  const relIn = new Map(dados.nos.map(n => [n.id, []]));
+  const relOut = new Map(dados.nos.map(n => [n.id, []]));
+  for (const a of dados.arestas) {
+    if (a.hierarquica) filhos.get(a.de).push(a.para);
+    else { relOut.get(a.de).push(a); relIn.get(a.para).push(a); }
+  }
+  const raiz = dados.nos.find(n => !n.pai);
+  const v = {dados, porId, filhos, relIn, relOut, raiz, TIPOS: dados.meta.tipos, PODERES: dados.meta.poderes, pos: new Map(), maxR: 0};
+  layout(v);
+  v.ordem = [...dados.nos].sort((a,b) => v.pos.get(b.id).depth - v.pos.get(a.id).depth);
+  return v;
+}
+// Layout radial. Cada filho da raiz recebe uma fatia fixa; abaixo disso, o
+// ângulo é proporcional ao número de folhas. O raio de cada anel cresce
+// quando há nós demais para o arco disponível (os 645 municípios de SP).
+const FATIAS_FEDERAL = {exec:.46, jud:.15, fej:.09, leg:.10, estados:.20};
+const RAIO = [0, 150, 300, 470, 680, 800];
+const ESPACO = 10;
+function layout(v){
+  const folhas = new Map();
+  const contar = id => { const f = v.filhos.get(id); const n = f.length ? f.reduce((s,c)=>s+contar(c),0) : 1; folhas.set(id, n); return n; };
+  contar(v.raiz.id);
+  const pesosRaiz = f => {
+    if (v.dados.meta.vista === 'estado') {
+      const mun = f.findIndex(c => c.startsWith('municipios-'));
+      if (mun < 0) return f.map(() => 1);
+      return f.map(c => c.startsWith('municipios-') ? .6 : .4/(f.length-1));
+    }
+    return f.map(c => FATIAS_FEDERAL[c] ?? .05);
+  };
+  const distribuir = (id, a0, a1, depth, rPai) => {
+    const f = v.filhos.get(id);
+    const nIrmaos = id === v.raiz.id ? 1 : v.filhos.get(v.porId.get(id).pai).length;
+    let r = depth === 0 ? 0 : Math.max(RAIO[Math.min(depth, RAIO.length-1)], rPai + 120);
+    if (depth > 0) { // densidade do anel dos irmãos: arco do pai / número de irmãos
+      const pai = v.pos.get(v.porId.get(id).pai);
+      const arcoPai = pai.a1 - pai.a0;
+      r = Math.max(r, nIrmaos * ESPACO / Math.max(arcoPai, 1e-6));
+    }
+    const ang = (a0+a1)/2;
+    v.pos.set(id, {x: r*Math.cos(ang), y: r*Math.sin(ang), ang, depth, a0, a1, r, irmaos: nIrmaos});
+    v.maxR = Math.max(v.maxR, r);
+    if (!f.length) return;
+    const pesos = depth === 0 ? pesosRaiz(f) : f.map(c => Math.max(1, folhas.get(c)));
+    const total = pesos.reduce((s,p)=>s+p,0);
+    let a = a0;
+    f.forEach((c,i) => { const w = (a1-a0)*pesos[i]/total; distribuir(c, a, a+w, depth+1, r); a += w; });
+  };
+  distribuir(v.raiz.id, -Math.PI/2, 3*Math.PI/2, 0, 0);
+}
+const raioNo = n => {
+  const p = V.pos.get(n.id);
+  if (n.tipo === 'municipio') return n.capital ? 6 : 3.2;
+  if (n.tipo === 'estado' && n.vista) return 5;
+  return [14, 11, 9, 6.5, 5, 4.5][Math.min(p.depth, 5)];
+};
+async function abrirVista(nome, selecionarId, animar=true){
+  let dados;
+  try { dados = await carregarDados(nome); } catch (e) { status.textContent = 'Não foi possível carregar o mapa de ' + nome + '.'; return; }
+  const trocou = nome !== vistaAtual || !V;
+  vistaAtual = nome; V = montarVista(dados); selecionado = null; pairado = null;
+  $('#btn-brasil').hidden = nome === 'federal';
+  $('#vista-nome').innerHTML = nome === 'federal' ? '<b>Brasil</b> · União' : `<b>${esc(dados.meta.nome)}</b> · ${esc(nome)}`;
+  document.title = nome === 'federal' ? 'Mapa do Governo' : `${dados.meta.nome} · Mapa do Governo`;
+  montarTabela(); montarIndiceBusca();
+  if (trocou) verTudo(false);
+  if (selecionarId && V.porId.has(selecionarId)) selecionar(selecionarId, selecionarId !== V.raiz.id);
+  else { painel.classList.remove('aberto'); escreverHash(); desenhar(); }
+}
+$('#btn-brasil').onclick = () => abrirVista('federal', null);
+
+// ------------------------------------------------------------ vista (zoom e pan)
 let W=0, H=0, dpr=1;
 const vista = {x:0, y:0, k:1};
-let selecionado = null, pairado = null;
-const poderesAtivos = new Set(Object.keys(FATIAS));
 function redimensionar(){
   dpr = Math.min(window.devicePixelRatio || 1, 2);
   W = window.innerWidth; H = window.innerHeight;
@@ -313,11 +370,14 @@ function redimensionar(){
   document.documentElement.style.setProperty('--altura-top', $('#top').offsetHeight + 'px');
   desenhar();
 }
-function verTudo(anim=true){
+function verTudo(animado=true){
+  if (!V) return;
   const topo = $('#top').offsetHeight;
-  const raioTotal = RAIO[RAIO.length-1] + 60;
+  // Num estado, enquadra as instituições; o anel de municípios fica além da borda, à mão.
+  const limite = V.dados.meta.vista === 'estado' ? 560 : Infinity;
+  const raioTotal = Math.min(V.maxR, limite) + 60;
   const k = Math.min((W-40)/(2*raioTotal), (H-topo-40)/(2*raioTotal));
-  irPara({x: W/2, y: topo + (H-topo)/2, k}, anim);
+  irPara({x: W/2, y: topo + (H-topo)/2, k}, animado);
 }
 let anim = null;
 function irPara(alvo, animado=true){
@@ -330,8 +390,8 @@ function irPara(alvo, animado=true){
   anim = requestAnimationFrame(passo);
 }
 function centrarEm(id, k){
-  const p = pos.get(id); const topo = $('#top').offsetHeight;
-  const kk = k || Math.max(vista.k, 1.4);
+  const p = V.pos.get(id), n = V.porId.get(id); const topo = $('#top').offsetHeight;
+  const kk = k || Math.max(vista.k, n.tipo === 'municipio' ? 2.2 : 1.4);
   const largPainel = painel.classList.contains('aberto') && W > 720 ? 420 : 0;
   irPara({k: kk, x: (W-largPainel)/2 - p.x*kk, y: topo + (H-topo)/2 - p.y*kk});
 }
@@ -339,53 +399,47 @@ const tela = p => ({x: vista.x + p.x*vista.k, y: vista.y + p.y*vista.k});
 
 // ------------------------------------------------------------ desenho
 function vizinhos(id){
-  const s = new Set([id]); const n = porId.get(id);
+  const s = new Set([id]); const n = V.porId.get(id);
   if (n.pai) s.add(n.pai);
-  for (const c of filhos.get(id)) s.add(c);
-  for (const a of relSaida.get(id)) s.add(a.para);
-  for (const a of relEntrada.get(id)) s.add(a.de);
+  for (const c of V.filhos.get(id)) s.add(c);
+  for (const a of V.relOut.get(id)) s.add(a.para);
+  for (const a of V.relIn.get(id)) s.add(a.de);
   return s;
 }
-function corDe(n){ return cores[n.poder] || cores.ink; }
-function visivelPorFiltro(n){ return n.poder === 'uniao' || poderesAtivos.has(n.poder); }
+const corDe = n => n.tipo === 'municipio' ? cores.ink2 : (cores[n.poder] || cores.ink);
+const visivelPorFiltro = n => n.poder === 'uniao' || poderesAtivos.has(n.poder);
 function desenhar(){
   ctx.setTransform(dpr,0,0,dpr,0,0);
   ctx.clearRect(0,0,W,H);
+  if (!V) return;
   const k = vista.k;
   const foco = selecionado || pairado;
   const viz = foco ? vizinhos(foco) : null;
-  const alfa = n => {
-    let a = visivelPorFiltro(n) ? 1 : .12;
-    if (viz && !viz.has(n.id)) a *= .22;
-    return a;
-  };
+  const alfa = n => { let a = visivelPorFiltro(n) ? 1 : .12; if (viz && !viz.has(n.id)) a *= .22; return a; };
   // arestas hierárquicas
-  ctx.lineWidth = 1;
-  for (const n of dados.nos) {
+  for (const n of V.dados.nos) {
     if (!n.pai) continue;
-    const a = pos.get(n.id), b = pos.get(n.pai);
+    const a = V.pos.get(n.id), b = V.pos.get(n.pai);
     const pa = tela(a), pb = tela(b);
+    if (Math.max(pa.x,pb.x) < -50 || Math.max(pa.y,pb.y) < -50 || Math.min(pa.x,pb.x) > W+50 || Math.min(pa.y,pb.y) > H+50) continue;
     const dentro = viz && viz.has(n.id) && viz.has(n.pai);
-    ctx.globalAlpha = Math.min(alfa(n), alfa(porId.get(n.pai))) * (dentro ? 1 : .8);
+    ctx.globalAlpha = Math.min(alfa(n), alfa(V.porId.get(n.pai))) * (dentro ? 1 : (n.tipo === 'municipio' ? .5 : .8));
     ctx.strokeStyle = dentro ? cores.edgeRel : cores.edge;
     ctx.lineWidth = dentro ? 1.5 : 1;
-    // curva que sai radialmente do pai e chega radialmente ao filho
-    const rm = (RAIO[Math.min(a.depth, RAIO.length-1)] + RAIO[Math.min(b.depth, RAIO.length-1)]) / 2;
+    const rm = (a.r + b.r) / 2;
     const c1 = tela({x: rm*Math.cos(b.ang), y: rm*Math.sin(b.ang)});
     const c2 = tela({x: rm*Math.cos(a.ang), y: rm*Math.sin(a.ang)});
     ctx.beginPath(); ctx.moveTo(pb.x,pb.y); ctx.bezierCurveTo(c1.x,c1.y,c2.x,c2.y,pa.x,pa.y); ctx.stroke();
   }
-  // relações não hierárquicas do nó em foco
+  // relações do nó em foco
   if (foco) {
     ctx.setLineDash([5,4]); ctx.lineWidth = 1.8; ctx.strokeStyle = cores.edgeRel; ctx.globalAlpha = .9;
-    for (const a of [...relSaida.get(foco), ...relEntrada.get(foco)]) {
-      const p1 = tela(pos.get(a.de)), p2 = tela(pos.get(a.para));
-      const mx = (p1.x+p2.x)/2, my = (p1.y+p2.y)/2;
-      const cx = vista.x, cy = vista.y; // curva puxada para o centro
+    for (const a of [...V.relOut.get(foco), ...V.relIn.get(foco)]) {
+      const p1 = tela(V.pos.get(a.de)), p2 = tela(V.pos.get(a.para));
+      const mx = (p1.x+p2.x)/2, my = (p1.y+p2.y)/2, cx = vista.x, cy = vista.y;
       ctx.beginPath(); ctx.moveTo(p1.x,p1.y); ctx.quadraticCurveTo((mx+cx)/2,(my+cy)/2,p2.x,p2.y); ctx.stroke();
-      // ponta
       const ang = Math.atan2(p2.y-(my+cy)/2, p2.x-(mx+cx)/2);
-      const rr = raioNo(porId.get(a.para))*Math.max(.8,Math.min(k,1.6)) + 3;
+      const rr = raioNo(V.porId.get(a.para))*Math.max(.8,Math.min(k,1.6)) + 3;
       const tx = p2.x - Math.cos(ang)*rr, ty = p2.y - Math.sin(ang)*rr;
       ctx.setLineDash([]); ctx.beginPath(); ctx.moveTo(tx,ty);
       ctx.lineTo(tx-7*Math.cos(ang-.45), ty-7*Math.sin(ang-.45)); ctx.moveTo(tx,ty);
@@ -395,65 +449,64 @@ function desenhar(){
   }
   // nós
   const escala = Math.max(.8, Math.min(k, 1.6));
-  for (const n of ordem) {
-    const p = pos.get(n.id), s = tela(p);
+  for (const n of V.ordem) {
+    const p = V.pos.get(n.id), s = tela(p);
     if (s.x < -30 || s.y < -30 || s.x > W+30 || s.y > H+30) continue;
     const r = raioNo(n) * escala;
     ctx.globalAlpha = alfa(n);
     ctx.fillStyle = corDe(n);
-    ctx.strokeStyle = cores.surface; ctx.lineWidth = 2;
+    ctx.strokeStyle = cores.surface; ctx.lineWidth = n.tipo === 'municipio' ? 1 : 2;
     const f = forma(n);
     ctx.beginPath();
     if (f === 'c') ctx.arc(s.x, s.y, r, 0, Math.PI*2);
     else if (f === 'q') { const w = r*1.8; roundRect(s.x-w/2, s.y-w/2, w, w, 2.5); }
     else { ctx.moveTo(s.x, s.y-r*1.25); ctx.lineTo(s.x+r*1.25, s.y); ctx.lineTo(s.x, s.y+r*1.25); ctx.lineTo(s.x-r*1.25, s.y); ctx.closePath(); }
     ctx.fill(); ctx.stroke();
-    if (n.id === selecionado || n.id === pairado) {
-      ctx.strokeStyle = cores.ink; ctx.lineWidth = 2; ctx.beginPath(); ctx.arc(s.x, s.y, r+4, 0, Math.PI*2); ctx.stroke();
-    }
+    if (n.id === selecionado || n.id === pairado) { ctx.strokeStyle = cores.ink; ctx.lineWidth = 2; ctx.beginPath(); ctx.arc(s.x, s.y, r+4, 0, Math.PI*2); ctx.stroke(); }
   }
-  // rótulos
-  for (const n of ordem) {
-    const p = pos.get(n.id), s = tela(p);
+  // rótulos: aparecem quando o arco disponível para o nó, na tela, comporta o texto
+  for (const n of V.ordem) {
+    const p = V.pos.get(n.id), s = tela(p);
     if (s.x < -200 || s.y < -60 || s.x > W+200 || s.y > H+60) continue;
     const emFoco = viz && viz.has(n.id);
     const d = p.depth;
-    const mostra = d <= 2 || (d === 3 && k >= .75) || (d >= 4 && k >= 1.15) || emFoco || n.id === pairado;
+    const arcoTela = (p.a1 - p.a0) * p.r * k;
+    const mostra = d <= 1 || emFoco || n.id === pairado || arcoTela >= 13 || (n.tipo === 'municipio' && n.capital && k >= .5);
     if (!mostra) continue;
-    const texto = (d >= 3 || (d === 2 && k < .9)) ? (n.sigla || n.nome) : n.nome;
+    const texto = (d >= 3 || (d === 2 && k < .9) || (n.tipo !== 'municipio' && n.tipo !== 'estado' && ((arcoTela < 60 && d >= 2) || (d === 1 && arcoTela < 110)))) ? (n.sigla || n.nome) : n.nome;
     const fontePx = d <= 1 ? Math.max(12, Math.min(15, 13*escala)) : d === 2 ? Math.max(11, Math.min(14, 12*escala)) : Math.max(10, Math.min(13, 11*escala));
-    ctx.font = `${d <= 2 ? 600 : 500} ${fontePx}px ${css('--font')}`;
+    ctx.font = `${d <= 2 && n.tipo !== 'municipio' ? 600 : 500} ${fontePx}px ${css('--font')}`;
     ctx.fillStyle = emFoco || d <= 2 ? cores.ink : cores.ink2;
     ctx.globalAlpha = alfa(n);
     const r = raioNo(n)*escala + 5;
     ctx.save();
-    if (d <= 1) { // horizontal, abaixo do nó
+    if (d <= 1 && p.irmaos <= 12) {
       ctx.textAlign = 'center'; ctx.textBaseline = 'top';
-      halo(texto, s.x, s.y + r);
-      ctx.fillText(texto, s.x, s.y + r);
-    } else { // radial, apontando para fora
+      halo(texto, s.x, s.y + r); ctx.fillText(texto, s.x, s.y + r);
+    } else {
       const esq = Math.cos(p.ang) < 0;
       ctx.translate(s.x, s.y); ctx.rotate(p.ang + (esq ? Math.PI : 0));
       ctx.textAlign = esq ? 'right' : 'left'; ctx.textBaseline = 'middle';
       const dx = esq ? -r : r;
-      halo(texto, dx, 0);
-      ctx.fillText(texto, dx, 0);
+      halo(texto, dx, 0); ctx.fillText(texto, dx, 0);
     }
     ctx.restore();
   }
   ctx.globalAlpha = 1;
-  status.textContent = `${dados.nos.length} nós · ${dados.arestas.length} relações · zoom ${Math.round(k*100)}%`;
+  const mun = V.dados.meta.vista === 'estado' ? V.dados.nos.filter(n => n.tipo === 'municipio').length : 0;
+  status.textContent = `${V.dados.nos.length} nós · ${V.dados.arestas.length} relações · zoom ${Math.round(k*100)}%` + (mun ? ` · ${mun} municípios no anel externo (afaste o zoom ou busque pelo nome)` : '');
 }
 function halo(t, x, y){ ctx.save(); ctx.lineWidth = 3; ctx.strokeStyle = cores.surface; ctx.lineJoin = 'round'; ctx.globalAlpha *= .85; ctx.strokeText(t, x, y); ctx.restore(); }
 function roundRect(x,y,w,h,r){ ctx.moveTo(x+r,y); ctx.arcTo(x+w,y,x+w,y+h,r); ctx.arcTo(x+w,y+h,x,y+h,r); ctx.arcTo(x,y+h,x,y,r); ctx.arcTo(x,y,x+w,y,r); ctx.closePath(); }
 
 // ------------------------------------------------------------ interação no palco
 function acertar(px, py){
+  if (!V) return null;
   let melhor = null, dist = 1e9;
-  for (const n of dados.nos) {
-    const s = tela(pos.get(n.id));
+  for (const n of V.dados.nos) {
+    const s = tela(V.pos.get(n.id));
     const d = Math.hypot(s.x-px, s.y-py);
-    const alcance = Math.max(raioNo(n)*Math.max(.8,Math.min(vista.k,1.6)), 9) + 4;
+    const alcance = Math.max(raioNo(n)*Math.max(.8,Math.min(vista.k,1.6)), 8) + 4;
     if (d < alcance && d < dist) { dist = d; melhor = n; }
   }
   return melhor;
@@ -470,7 +523,7 @@ canvas.addEventListener('pointermove', e => {
   if (ponteiros.has(e.pointerId)) ponteiros.set(e.pointerId, {x:e.clientX, y:e.clientY});
   if (ponteiros.size === 2) {
     const [a,b] = [...ponteiros.values()]; const d = Math.hypot(a.x-b.x, a.y-b.y);
-    if (distPinca) { const cx=(a.x+b.x)/2, cy=(a.y+b.y)/2; zoomEm(cx, cy, d/distPinca); }
+    if (distPinca) zoomEm((a.x+b.x)/2, (a.y+b.y)/2, d/distPinca);
     distPinca = d; moveu = true; return;
   }
   if (arrasto) {
@@ -483,11 +536,19 @@ canvas.addEventListener('pointermove', e => {
   canvas.style.cursor = n ? 'pointer' : 'grab';
   if (n) mostrarDica(n, e.clientX, e.clientY); else esconderDica();
 });
+let ultimoClique = {id:null, t:0};
 function soltar(e){
   ponteiros.delete(e.pointerId);
   if (ponteiros.size === 0) {
     canvas.classList.remove('arrastando');
-    if (arrasto && !moveu) { const n = acertar(e.clientX, e.clientY); if (n) selecionar(n.id, true); else if (selecionado) selecionar(null); }
+    if (arrasto && !moveu) {
+      const n = acertar(e.clientX, e.clientY);
+      if (n) {
+        const agora = performance.now();
+        if (n.vista && ultimoClique.id === n.id && agora - ultimoClique.t < 450) { abrirVista(n.sigla, `uf-${n.sigla}`); ultimoClique = {id:null,t:0}; }
+        else { selecionar(n.id, true); ultimoClique = {id:n.id, t:agora}; }
+      } else if (selecionado) selecionar(null);
+    }
     arrasto = null; distPinca = 0;
   }
 }
@@ -495,7 +556,7 @@ canvas.addEventListener('pointerup', soltar); canvas.addEventListener('pointerca
 canvas.addEventListener('pointerleave', () => { pairado = null; esconderDica(); desenhar(); });
 canvas.addEventListener('wheel', e => { e.preventDefault(); zoomEm(e.clientX, e.clientY, Math.exp(-e.deltaY*0.0016)); }, {passive:false});
 function zoomEm(cx, cy, fator){
-  const k = Math.max(.15, Math.min(6, vista.k*fator)); fator = k/vista.k;
+  const k = Math.max(.05, Math.min(8, vista.k*fator)); fator = k/vista.k;
   vista.x = cx - (cx-vista.x)*fator; vista.y = cy - (cy-vista.y)*fator; vista.k = k; desenhar();
 }
 $('#z-mais').onclick = () => zoomEm(W/2, H/2, 1.3);
@@ -503,92 +564,149 @@ $('#z-menos').onclick = () => zoomEm(W/2, H/2, 1/1.3);
 $('#z-fit').onclick = () => verTudo();
 function mostrarDica(n, x, y){
   const c = n.cargo;
-  dica.innerHTML = `<b>${esc(n.nome)}</b><span>${esc(TIPOS[n.tipo])} · ${esc(PODERES[n.poder])}${c ? ' · ' + esc(c.titulo) + (c.situacao === 'vago' ? ': vago' : c.ocupante ? ': ' + esc(c.ocupante) + (c.situacao === 'interino' ? ' (interino)' : '') : '') : ''}</span>`;
+  let sub = `${esc(V.TIPOS[n.tipo] || n.tipo)} · ${esc(V.PODERES[n.poder])}`;
+  if (n.tipo === 'municipio') sub = `Município · ${esc(V.dados.meta.uf)}${n.capital ? ' · capital' : ''}`;
+  else if (n.tipo === 'estado' && n.vista) sub += ' · clique duas vezes para abrir';
+  else if (c) sub += ' · ' + esc(c.titulo) + (c.situacao === 'vago' ? ': vago' : c.ocupante ? ': ' + esc(c.ocupante) + (c.situacao === 'interino' ? ' (interino)' : '') : '');
+  dica.innerHTML = `<b>${esc(n.nome)}</b><span>${sub}</span>`;
   dica.style.display = 'block';
   const dw = dica.offsetWidth, dh = dica.offsetHeight;
   dica.style.left = Math.min(x+14, W-dw-8) + 'px';
   dica.style.top = (y+14+dh > H ? y-14-dh : y+14) + 'px';
 }
 function esconderDica(){ dica.style.display = 'none'; }
-function esc(s){ return String(s ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c])); }
 
 // ------------------------------------------------------------ painel de detalhe
+function fmtData(s){ if (!s) return ''; const [a,m,d] = s.split('-'); const meses = ['jan','fev','mar','abr','mai','jun','jul','ago','set','out','nov','dez']; return d ? `${+d} ${meses[+m-1]} ${a}` : m ? `${meses[+m-1]} ${a}` : a; }
+function verbo(t){ return ({nomeia:'nomeia', aprova:'aprova a indicação de', fiscaliza:'fiscaliza', controla:'controla', preside:'preside', elege:'elege membros de', escolhe:'escolhe membros de', orcamento:'aprova o orçamento de', representa:'representa', integra:'integra', orienta:'orienta', julga:'julga', coordena:'coordena', 'organiza eleições':'organiza as eleições de', 'vinculada a':'vincula'})[t] || t; }
+const cap = s => s.charAt(0).toUpperCase() + s.slice(1);
+function blocoCargo(c, titulo){
+  const sit = c.situacao || (c.ocupante ? 'titular' : 'nao_verificado');
+  const badge = sit === 'vago' ? '<span class="sit vago">⚠ Vago</span>' : sit === 'interino' ? '<span class="sit interino">◔ Interino</span>' : '';
+  const meta = [c.desde ? 'Desde ' + fmtData(c.desde) : '', c.mandato_ate ? 'mandato até ' + fmtData(c.mandato_ate) : '', c.verificado_em ? 'verificado em ' + fmtData(c.verificado_em) : ''].filter(Boolean).join(' · ');
+  const fonte = c.fonte ? ` <a href="${esc(c.fonte)}" target="_blank" rel="noopener">Fonte</a>` : '';
+  let corpo;
+  if (sit === 'vago') corpo = `<div class="n">Cargo vago${badge}</div><div class="m">${esc(meta)}${fonte}</div>`;
+  else if (c.ocupante) corpo = `<div class="n">${esc(c.ocupante)}${badge}</div><div class="m">${esc(meta)}${fonte}</div>`;
+  else corpo = `<div class="n vago">Ocupante não verificado nesta versão</div><div class="m">Preenchido pela ingestão a partir das fontes oficiais.${c.fonte ? ` <a href="${esc(c.fonte)}" target="_blank" rel="noopener">Conferir na fonte</a>` : ''}</div>`;
+  return `<div class="cargo"><div class="t">${esc(c.orgao ? c.orgao + ' · ' : '')}${esc(c.titulo)}</div>${corpo}</div>`;
+}
+const itemNo = (n, extra='') => `<button data-id="${n.id}"><i class="marca ${forma(n)}" style="--c:${corDe(n)}"></i>${esc(n.nome)}<span class="sig">${esc(extra || n.sigla || '')}</span></button>`;
 function selecionar(id, centrar){
   selecionado = id;
-  if (!id) { painel.classList.remove('aberto'); history.replaceState(null,'',location.pathname); desenhar(); return; }
-  const n = porId.get(id);
-  history.replaceState(null, '', '#' + id);
-  // trilha
-  const trilha = []; let p = n.pai; while (p) { trilha.unshift(porId.get(p)); p = porId.get(p).pai; }
-  $('#trilha').innerHTML = trilha.map(t => `<button data-id="${t.id}">${esc(t.sigla || t.nome)}</button>`).join('<span aria-hidden="true">›</span>');
-  $('#p-nome').textContent = n.nome + (n.sigla && n.sigla !== n.nome ? ` (${n.sigla})` : '');
-  $('#p-tags').innerHTML = `<span class="tag" style="--c:${corDe(n)}"><i class="dot"></i>${esc(PODERES[n.poder])}</span><span class="tag">${esc(TIPOS[n.tipo])}</span>${n.quantidade ? `<span class="tag">${n.quantidade} ${n.tipo==='grupo' ? 'entidades' : 'membros'}</span>` : ''}`;
+  if (!id) { painel.classList.remove('aberto'); escreverHash(); desenhar(); return; }
+  const n = V.porId.get(id);
+  escreverHash();
+  const trilha = []; let p = n.pai; while (p) { trilha.unshift(V.porId.get(p)); p = V.porId.get(p).pai; }
+  $('#trilha').innerHTML = (vistaAtual !== 'federal' ? '<button data-brasil="1">Brasil</button><span aria-hidden="true">›</span>' : '') + trilha.map(t => `<button data-id="${t.id}">${esc(t.sigla || t.nome)}</button>`).join('<span aria-hidden="true">›</span>');
+  $('#p-nome').textContent = n.nome + (n.sigla && n.sigla !== n.nome && n.tipo !== 'estado' ? ` (${n.sigla})` : '');
+  const tipoRot = V.TIPOS[n.tipo] || n.tipo;
+  $('#p-tags').innerHTML = `<span class="tag" style="--c:${corDe(n)}"><i class="dot"></i>${esc(n.tipo === 'municipio' ? V.dados.meta.uf : V.PODERES[n.poder])}</span><span class="tag">${esc(tipoRot)}</span>${n.capital && n.tipo === 'municipio' ? '<span class="tag">Capital</span>' : ''}${n.quantidade ? `<span class="tag">${n.quantidade} ${n.tipo==='grupo' ? 'entidades' : n.tipo==='estado' ? (vistaAtual==='federal' ? 'deputados federais' : 'municípios') : 'membros'}</span>` : ''}`;
   let html = '';
-  if (n.descricao) html += `<div class="bloco"><p>${esc(n.descricao)}</p></div>`;
-  if (n.cargo) {
-    const c = n.cargo;
-    const sit = c.situacao || (c.ocupante ? 'titular' : 'nao_verificado');
-    const badge = sit === 'vago' ? '<span class="sit vago">⚠ Vago</span>' : sit === 'interino' ? '<span class="sit interino">◔ Interino</span>' : '';
-    const meta = [c.desde ? 'Desde ' + fmtData(c.desde) : '', c.mandato_ate ? 'mandato até ' + fmtData(c.mandato_ate) : '', c.verificado_em ? 'verificado em ' + fmtData(c.verificado_em) : ''].filter(Boolean).join(' · ');
-    const fonte = c.fonte ? ` <a href="${esc(c.fonte)}" target="_blank" rel="noopener">Fonte</a>` : '';
-    let corpo;
-    if (sit === 'vago') corpo = `<div class="n">Cargo vago${badge}</div><div class="m">${esc(meta)}${fonte}</div>`;
-    else if (c.ocupante) corpo = `<div class="n">${esc(c.ocupante)}${badge}</div><div class="m">${esc(meta)}${fonte}</div>`;
-    else corpo = `<div class="n vago">Ocupante não verificado nesta versão</div><div class="m">Preenchido pela ingestão a partir das fontes oficiais.${c.fonte ? ` <a href="${esc(c.fonte)}" target="_blank" rel="noopener">Conferir na fonte</a>` : ''}</div>`;
-    html += `<div class="bloco"><h3>Cargo de comando</h3><div class="cargo"><div class="t">${esc(c.titulo)}</div>${corpo}</div></div>`;
+  if (n.tipo === 'municipio') {
+    html += `<div class="bloco"><p>Município ${esc(V.dados.meta.uf === 'SP' || true ? 'de' : 'de')} ${esc(V.dados.meta.nome)}${n.capital ? ', capital do estado' : ''}. Código IBGE ${esc(n.codigo_ibge)}${n.ddd ? ', DDD ' + esc(n.ddd) : ''}. Tem Prefeitura e Câmara Municipal próprias, e é gestor municipal do SUS (CF, arts. 29 a 31; Lei 8.080/1990).</p></div>`;
+    html += `<div class="bloco"><h3>Cargos de comando</h3>` + (V.dados.meta.cargos_municipio || []).map(c => blocoCargo(c)).join('') + `</div>`;
+  } else {
+    if (n.descricao) html += `<div class="bloco"><p>${esc(n.descricao)}</p></div>`;
+    if (n.vista) html += `<div class="bloco"><button class="btn-vista" data-vista="${esc(n.sigla)}">Abrir o mapa de ${esc(n.nome)} ›</button></div>`;
+    if (n.cargo) html += `<div class="bloco"><h3>Cargo de comando</h3>${blocoCargo(n.cargo)}</div>`;
   }
-  const rels = [...relEntrada.get(id).map(a => ({a, outro: porId.get(a.de), dir:'in'})), ...relSaida.get(id).map(a => ({a, outro: porId.get(a.para), dir:'out'}))];
+  const alvoRel = n.tipo === 'municipio' ? n.pai : id;
+  const rels = [...V.relIn.get(alvoRel).map(a => ({a, outro: V.porId.get(a.de), dir:'in'})), ...V.relOut.get(alvoRel).map(a => ({a, outro: V.porId.get(a.para), dir:'out'}))];
   if (rels.length) {
-    html += `<div class="bloco"><h3>Relações</h3><div class="lista-nos">` + rels.map(({a, outro, dir}) =>
+    html += `<div class="bloco"><h3>${n.tipo === 'municipio' ? 'Quem fiscaliza, julga e coordena os municípios' : 'Relações'}</h3><div class="lista-nos">` + rels.map(({a, outro, dir}) =>
       `<div class="rel-item"><button data-id="${outro.id}"><i class="marca ${forma(outro)}" style="--c:${corDe(outro)}"></i><span><span class="rel">${dir==='in' ? esc(outro.sigla||outro.nome) + ' ' + esc(verbo(a.tipo)) + ' ' : esc(verbo(a.tipo)) + ' '}</span>${dir==='in' ? '' : esc(outro.sigla||outro.nome)}</span></button>${a.descricao ? `<small>${esc(a.descricao)}</small>` : ''}</div>`).join('') + `</div></div>`;
   }
-  if (n.pai) {
-    const pai = porId.get(n.pai); const ar = dados.arestas.find(a => a.hierarquica && a.para === id);
-    html += `<div class="bloco"><h3>${esc(cap(ar.tipo))}</h3><div class="lista-nos"><button data-id="${pai.id}"><i class="marca ${forma(pai)}" style="--c:${corDe(pai)}"></i>${esc(pai.nome)}<span class="sig">${esc(pai.sigla||'')}</span></button></div></div>`;
+  if (n.ligacoes_externas && n.ligacoes_externas.length) {
+    html += `<div class="bloco ext"><h3>Ligações com a União</h3>` + n.ligacoes_externas.map(l => `<button data-ext-vista="${esc(l.vista)}" data-ext-id="${esc(l.id)}">↗ ${esc(l.rotulo)}<small style="margin-left:auto">Brasil</small></button>`).join('') + `</div>`;
   }
-  const fs = filhos.get(id);
+  if (n.pai) {
+    const pai = V.porId.get(n.pai); const ar = V.dados.arestas.find(a => a.hierarquica && a.para === id);
+    html += `<div class="bloco"><h3>${esc(cap(ar.tipo))}</h3><div class="lista-nos">${itemNo(pai)}</div></div>`;
+  }
+  const fs = V.filhos.get(id);
   if (fs.length) {
-    html += `<div class="bloco"><h3>${fs.length === 1 ? '1 subordinado ou vinculado' : fs.length + ' subordinados ou vinculados'}</h3><div class="lista-nos">` +
-      fs.map(c => porId.get(c)).map(c => `<button data-id="${c.id}"><i class="marca ${forma(c)}" style="--c:${corDe(c)}"></i>${esc(c.nome)}<span class="sig">${esc(c.sigla||'')}</span></button>`).join('') + `</div></div>`;
+    const lista = fs.map(c => V.porId.get(c));
+    const muitos = lista.length > 60;
+    html += `<div class="bloco"><h3>${lista.length === 1 ? '1 subordinado ou vinculado' : lista.length + ' subordinados ou vinculados'}</h3><div class="lista-nos">` +
+      (muitos ? lista.slice(0, 40).map(c => itemNo(c)).join('') + `<p style="padding:6px 8px;color:var(--mute);font-size:12px">… e mais ${lista.length-40}. Use a busca ou aproxime o mapa.</p>` : lista.map(c => itemNo(c)).join('')) + `</div></div>`;
   }
   $('#p-corpo').innerHTML = html;
-  $('#p-rodape').innerHTML = [n.lei ? 'Base legal: ' + esc(n.lei) : '', n.site ? `<a href="${esc(n.site)}" target="_blank" rel="noopener">Site oficial</a>` : ''].filter(Boolean).join(' · ') || 'Fonte: semente curada (ver “Sobre os dados”).';
+  $('#p-rodape').innerHTML = [n.lei ? 'Base legal: ' + esc(n.lei) : '', n.site ? `<a href="${esc(n.site)}" target="_blank" rel="noopener">Site oficial</a>` : '', n.tipo === 'municipio' ? '<a href="https://cidades.ibge.gov.br/brasil/' + esc(V.dados.meta.uf.toLowerCase()) + '/' + esc(norm(n.nome).replace(/[^a-z0-9]+/g,'-')) + '/panorama" target="_blank" rel="noopener">IBGE Cidades</a>' : ''].filter(Boolean).join(' · ') || 'Fonte: semente curada (ver “Sobre os dados”).';
   painel.classList.add('aberto');
   $('#p-corpo').scrollTop = 0;
   if (centrar) centrarEm(id);
   desenhar();
 }
-function verbo(t){ return ({nomeia:'nomeia', aprova:'aprova a indicação de', fiscaliza:'fiscaliza', controla:'controla', preside:'preside', elege:'elege membros de', escolhe:'escolhe membros de', orcamento:'aprova o orçamento de', representa:'representa', integra:'integra', orienta:'orienta', 'vinculada a':'vincula'})[t] || t; }
-function cap(s){ return s.charAt(0).toUpperCase() + s.slice(1); }
-function fmtData(s){ if (!s) return ''; const [a,m,d] = s.split('-'); const meses = ['jan','fev','mar','abr','mai','jun','jul','ago','set','out','nov','dez']; return d ? `${+d} ${meses[+m-1]} ${a}` : m ? `${meses[+m-1]} ${a}` : a; }
-painel.addEventListener('click', e => { const b = e.target.closest('button[data-id]'); if (b) selecionar(b.dataset.id, true); });
+painel.addEventListener('click', e => {
+  const v = e.target.closest('button[data-vista]'); if (v) { abrirVista(v.dataset.vista, `uf-${v.dataset.vista}`); return; }
+  const x = e.target.closest('button[data-ext-vista]'); if (x) { abrirVista(x.dataset.extVista, x.dataset.extId); return; }
+  const br = e.target.closest('button[data-brasil]'); if (br) { abrirVista('federal', null); return; }
+  const b = e.target.closest('button[data-id]'); if (b) selecionar(b.dataset.id, true);
+});
 $('#p-fechar').onclick = () => selecionar(null);
 
-// ------------------------------------------------------------ busca
+// ------------------------------------------------------------ URL (#id, #SP, #SP/m-3509502)
+let lendoHash = false;
+function escreverHash(){
+  const h = vistaAtual === 'federal' ? (selecionado || '') : vistaAtual + (selecionado && selecionado !== `uf-${vistaAtual}` ? '/' + selecionado : '');
+  lendoHash = true; history.replaceState(null, '', h ? '#' + h : location.pathname); lendoHash = false;
+}
+async function lerHash(){
+  if (lendoHash) return;
+  const h = decodeURIComponent(location.hash.slice(1));
+  const [a, b] = h.split('/');
+  if (UFS.includes(a)) { if (vistaAtual !== a || (b && b !== selecionado)) await abrirVista(a, b || `uf-${a}`); return; }
+  if (vistaAtual !== 'federal') { await abrirVista('federal', a || null); return; }
+  if (a && V.porId.has(a) && a !== selecionado) selecionar(a, true); else if (!a && selecionado) selecionar(null);
+}
+window.addEventListener('hashchange', lerHash);
+
+// ------------------------------------------------------------ busca (vista atual + índice nacional de municípios)
 const busca = $('#busca'), resultados = $('#resultados');
-const norm = s => String(s||'').normalize('NFD').replace(/[̀-ͯ]/g,'').toLowerCase();
-const indice = dados.nos.map(n => ({n, chave: norm([n.nome, n.sigla, n.cargo && n.cargo.titulo, n.cargo && n.cargo.ocupante, TIPOS[n.tipo]].filter(Boolean).join(' '))}));
+let indice = [], indiceMunicipios = null, carregandoIndice = null;
+function montarIndiceBusca(){
+  indice = V.dados.nos.map(n => ({n, chave: norm([n.nome, n.sigla, n.cargo && n.cargo.titulo, n.cargo && n.cargo.ocupante, V.TIPOS[n.tipo]].filter(Boolean).join(' '))}));
+}
+async function carregarIndiceMunicipios(){
+  if (indiceMunicipios) return indiceMunicipios;
+  if (!carregandoIndice) carregandoIndice = fetch('dados/indice-municipios.json').then(r => r.json()).then(d => (indiceMunicipios = d.map(([nome, uf, cod]) => ({nome, uf, cod, chave: norm(nome)}))));
+  return carregandoIndice;
+}
 let ativo = -1;
-function buscar(){
+async function buscar(){
   const q = norm(busca.value.trim());
   if (!q) { fecharBusca(); return; }
   const termos = q.split(/\s+/);
-  const achados = indice.filter(i => termos.every(t => i.chave.includes(t)))
-    .sort((a,b) => (norm(a.n.sigla)===q?0:1) - (norm(b.n.sigla)===q?0:1) || pos.get(a.n.id).depth - pos.get(b.n.id).depth).slice(0,12);
-  if (!achados.length) { resultados.innerHTML = '<div style="padding:10px;color:var(--mute)">Nada encontrado.</div>'; }
-  else resultados.innerHTML = achados.map(({n}) => `<button role="option" data-id="${n.id}"><i class="marca ${forma(n)}" style="--c:${corDe(n)}"></i><span>${esc(n.nome)}</span><span class="meta">${esc(n.sigla||TIPOS[n.tipo])}</span></button>`).join('');
+  const locais = indice.filter(i => termos.every(t => i.chave.includes(t)))
+    .sort((a,b) => (norm(a.n.sigla)===q?0:1) - (norm(b.n.sigla)===q?0:1) || V.pos.get(a.n.id).depth - V.pos.get(b.n.id).depth).slice(0, 10);
+  let nacionais = [];
+  if (q.length >= 3) {
+    const idx = await carregarIndiceMunicipios();
+    const ufAtual = vistaAtual;
+    nacionais = idx.filter(m => m.uf !== ufAtual && termos.every(t => m.chave.includes(t) || t === norm(m.uf))).sort((a,b) => (a.chave.startsWith(q)?0:1) - (b.chave.startsWith(q)?0:1) || a.nome.localeCompare(b.nome,'pt')).slice(0, 8);
+  }
+  if (norm(busca.value.trim()) !== q) return; // resposta atrasada
+  const html = locais.map(({n}) => `<button role="option" data-id="${n.id}"><i class="marca ${forma(n)}" style="--c:${corDe(n)}"></i><span>${esc(n.nome)}</span><span class="meta">${esc(n.tipo === 'municipio' ? 'Município · ' + V.dados.meta.uf : n.sigla || V.TIPOS[n.tipo])}</span></button>`).join('')
+    + nacionais.map(m => `<button role="option" data-uf="${m.uf}" data-cod="${m.cod}"><i class="marca c" style="--c:var(--ink-2)"></i><span>${esc(m.nome)}</span><span class="meta">Município · ${m.uf}</span></button>`).join('');
+  resultados.innerHTML = html || '<div style="padding:10px;color:var(--mute)">Nada encontrado.</div>';
   resultados.classList.add('aberta'); busca.setAttribute('aria-expanded','true'); ativo = -1;
 }
 function fecharBusca(){ resultados.classList.remove('aberta'); busca.setAttribute('aria-expanded','false'); }
+function escolher(b){
+  if (!b) return;
+  if (b.dataset.uf) abrirVista(b.dataset.uf, `m-${b.dataset.cod}`); else selecionar(b.dataset.id, true);
+  fecharBusca(); busca.value = ''; busca.blur();
+}
 busca.addEventListener('input', buscar);
 busca.addEventListener('focus', buscar);
 busca.addEventListener('keydown', e => {
   const itens = [...resultados.querySelectorAll('button')];
   if (e.key === 'ArrowDown' || e.key === 'ArrowUp') { e.preventDefault(); ativo = (ativo + (e.key==='ArrowDown'?1:-1) + itens.length) % itens.length; itens.forEach((b,i)=>b.classList.toggle('ativo', i===ativo)); }
-  else if (e.key === 'Enter') { const b = itens[ativo] || itens[0]; if (b) { selecionar(b.dataset.id, true); fecharBusca(); busca.blur(); } }
+  else if (e.key === 'Enter') escolher(itens[ativo] || itens[0]);
   else if (e.key === 'Escape') { fecharBusca(); busca.blur(); }
 });
-resultados.addEventListener('click', e => { const b = e.target.closest('button'); if (b) { selecionar(b.dataset.id, true); fecharBusca(); busca.value=''; } });
+resultados.addEventListener('click', e => escolher(e.target.closest('button')));
 document.addEventListener('click', e => { if (!e.target.closest('.search')) fecharBusca(); });
 document.addEventListener('keydown', e => { if (e.key === '/' && document.activeElement !== busca) { e.preventDefault(); busca.focus(); } if (e.key === 'Escape' && !resultados.classList.contains('aberta')) { document.querySelectorAll('.folha.aberta').forEach(f=>f.classList.remove('aberta')); if (selecionado) selecionar(null); } });
 
@@ -596,7 +714,7 @@ document.addEventListener('keydown', e => { if (e.key === '/' && document.active
 $('#filtros').addEventListener('click', e => {
   const b = e.target.closest('.chip'); if (!b) return;
   const p = b.dataset.poder, ligado = b.getAttribute('aria-pressed') === 'true';
-  if (ligado && poderesAtivos.size === 1) return; // nunca esconde tudo
+  if (ligado && poderesAtivos.size === 1) return;
   b.setAttribute('aria-pressed', String(!ligado));
   if (ligado) poderesAtivos.delete(p); else poderesAtivos.add(p);
   desenhar();
@@ -604,31 +722,42 @@ $('#filtros').addEventListener('click', e => {
 
 // ------------------------------------------------------------ tabela e sobre
 const tbody = $('#tabela tbody');
-tbody.innerHTML = [...dados.nos].sort((a,b)=>pos.get(a.id).depth-pos.get(b.id).depth || a.nome.localeCompare(b.nome,'pt')).map(n =>
-  `<tr data-id="${n.id}" tabindex="0" style="cursor:pointer"><td>${esc(n.nome)}</td><td>${esc(n.sigla||'')}</td><td>${esc(TIPOS[n.tipo])}</td><td>${esc(PODERES[n.poder])}</td><td>${n.pai ? esc(porId.get(n.pai).sigla || porId.get(n.pai).nome) : ''}</td><td>${n.cargo ? esc(n.cargo.titulo) : ''}</td><td>${n.cargo ? (n.cargo.ocupante ? esc(n.cargo.ocupante) : n.cargo.situacao === 'vago' ? '<span style="color:#d03b3b">vago</span>' : '<span style="color:var(--mute)">não verificado</span>') : ''}</td><td>${n.cargo ? esc((dados.meta.situacoes||{})[n.cargo.situacao] || n.cargo.situacao || '') : ''}</td></tr>`).join('');
+function montarTabela(){
+  $('#t-titulo').textContent = vistaAtual === 'federal' ? 'Todos os nós · Brasil' : `Todos os nós · ${V.dados.meta.nome}`;
+  tbody.innerHTML = [...V.dados.nos].sort((a,b)=>V.pos.get(a.id).depth-V.pos.get(b.id).depth || a.nome.localeCompare(b.nome,'pt')).map(n => {
+    const c = n.cargo;
+    return `<tr data-id="${n.id}" tabindex="0" style="cursor:pointer"><td>${esc(n.nome)}</td><td>${esc(n.sigla||'')}</td><td>${esc(V.TIPOS[n.tipo]||n.tipo)}</td><td>${esc(n.tipo==='municipio' ? V.dados.meta.uf : V.PODERES[n.poder])}</td><td>${n.pai ? esc(V.porId.get(n.pai).sigla || V.porId.get(n.pai).nome) : ''}</td><td>${c ? esc(c.titulo) : n.tipo==='municipio' ? 'Prefeito(a)' : ''}</td><td>${c ? (c.ocupante ? esc(c.ocupante) : c.situacao === 'vago' ? '<span style="color:#d03b3b">vago</span>' : '<span style="color:var(--mute)">não verificado</span>') : n.tipo==='municipio' ? '<span style="color:var(--mute)">não verificado</span>' : ''}</td><td>${c ? esc((V.dados.meta.situacoes||{})[c.situacao] || c.situacao || '') : ''}</td></tr>`; }).join('');
+}
 tbody.addEventListener('click', e => { const tr = e.target.closest('tr'); if (tr) { $('#folha-tabela').classList.remove('aberta'); selecionar(tr.dataset.id, true); } });
 tbody.addEventListener('keydown', e => { if (e.key === 'Enter') { const tr = e.target.closest('tr'); if (tr) { $('#folha-tabela').classList.remove('aberta'); selecionar(tr.dataset.id, true); } } });
 $('#btn-tabela').onclick = () => $('#folha-tabela').classList.add('aberta');
 $('#btn-sobre').onclick = () => $('#folha-sobre').classList.add('aberta');
 document.querySelectorAll('[data-fecha]').forEach(b => b.onclick = () => $('#'+b.dataset.fecha).classList.remove('aberta'));
-const cont = {}; for (const n of dados.nos) cont[n.poder] = (cont[n.poder]||0)+1;
-const comCargo = dados.nos.filter(n=>n.cargo).length, verificados = dados.nos.filter(n=>n.cargo&&n.cargo.ocupante).length;
-const vagos = dados.nos.filter(n=>n.cargo&&n.cargo.situacao==='vago').length, interinos = dados.nos.filter(n=>n.cargo&&n.cargo.situacao==='interino').length;
-$('#kpis').innerHTML = [
-  [dados.nos.length, 'nós no grafo'], [dados.arestas.filter(a=>!a.hierarquica).length, 'relações constitucionais'],
-  [cont.executivo||0, 'no Executivo'], [(cont.judiciario||0), 'no Judiciário'], [(cont.legislativo||0), 'no Legislativo'],
-  [`${verificados}/${comCargo}`, 'cargos com ocupante verificado'], [vagos, 'cargos vagos (com fonte)'], [interinos, 'interinos ou substitutos'],
-].map(([v,l]) => `<div class="kpi"><b>${v}</b><span>${l}</span></div>`).join('');
-$('#fontes').innerHTML = (dados.meta.fontes||[]).map(f => `<li><a href="${esc(f.url)}" target="_blank" rel="noopener">${esc(f.nome)}</a></li>`).join('');
-$('#versao').textContent = `Versão dos dados ${dados.meta.versao}, gerada por ${dados.meta.gerado_por}. ${dados.meta.aviso}`;
+function montarSobre(d){
+  const cont = {}; for (const n of d.nos) cont[n.poder] = (cont[n.poder]||0)+1;
+  const comCargo = d.nos.filter(n=>n.cargo).length, verificados = d.nos.filter(n=>n.cargo&&n.cargo.ocupante).length;
+  const vagos = d.nos.filter(n=>n.cargo&&n.cargo.situacao==='vago').length, interinos = d.nos.filter(n=>n.cargo&&n.cargo.situacao==='interino').length;
+  $('#kpis').innerHTML = [
+    [d.nos.length, 'nós na camada federal'], [d.arestas.filter(a=>!a.hierarquica).length, 'relações constitucionais'],
+    [27, 'estados e DF, cada um com o seu mapa'], ['5.570', 'municípios (IBGE)'],
+    [`${verificados}/${comCargo}`, 'cargos federais com ocupante verificado'], [vagos, 'cargos vagos (com fonte)'], [interinos, 'interinos ou substitutos'],
+  ].map(([v,l]) => `<div class="kpi"><b>${v}</b><span>${l}</span></div>`).join('');
+  $('#fontes').innerHTML = (d.meta.fontes||[]).map(f => `<li><a href="${esc(f.url)}" target="_blank" rel="noopener">${esc(f.nome)}</a></li>`).join('') + '<li><a href="https://servicodados.ibge.gov.br/api/docs/localidades" target="_blank" rel="noopener">IBGE, localidades (municípios e códigos)</a></li>';
+  $('#versao').textContent = `Versão dos dados ${d.meta.versao}, gerada por ${d.meta.gerado_por}. ${d.meta.aviso}`;
+}
 
 // ------------------------------------------------------------ início
 window.addEventListener('resize', redimensionar);
 redimensionar();
-verTudo(false);
-function doHash(){ const h = decodeURIComponent(location.hash.slice(1)); if (h && porId.has(h) && h !== selecionado) selecionar(h, true); else if (!h && selecionado) selecionar(null); }
-window.addEventListener('hashchange', doHash);
-doHash();
+try {
+  const federal = await carregarDados('federal');
+  montarSobre(federal);
+  const h = decodeURIComponent(location.hash.slice(1)); const [a, b] = h.split('/');
+  if (UFS.includes(a)) await abrirVista(a, b || `uf-${a}`, false);
+  else { await abrirVista('federal', null, false); if (a && V.porId.has(a)) selecionar(a, true); }
+} catch (e) {
+  status.textContent = 'Não foi possível carregar os dados do mapa.'; console.error(e);
+}
 })();
 </script>
 </body>
