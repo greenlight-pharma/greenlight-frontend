@@ -1,0 +1,618 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Grafo do Governo Brasileiro</title>
+<meta name="description" content="Mapa navegável da estrutura do governo federal brasileiro: Poderes, ministérios, autarquias, agências, tribunais, cargos e as relações entre eles. Quem nomeia quem, quem fiscaliza quem.">
+<meta name="theme-color" content="#0F1F3A">
+<link rel="icon" href="data:,">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Grafo do Governo Brasileiro">
+<meta property="og:description" content="Poderes, órgãos, entidades e cargos da União, e as relações entre eles, em um só mapa.">
+<style>
+:root{
+  color-scheme:light;
+  --surface:#fcfcfb;--plane:#f9f9f7;--ink:#0b0b0b;--ink-2:#52514e;--mute:#898781;
+  --grid:#e1e0d9;--axis:#c3c2b7;--border:rgba(11,11,11,.10);--panel:#ffffff;
+  --exec:#2a78d6;--leg:#eb6834;--jud:#1baf7a;--ess:#898781;--uniao:#0b0b0b;
+  --focus:#2a78d6;--edge:#c3c2b7;--edge-rel:#52514e;
+  --radius:14px;--font:system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    color-scheme:dark;
+    --surface:#1a1a19;--plane:#0d0d0d;--ink:#ffffff;--ink-2:#c3c2b7;--mute:#898781;
+    --grid:#2c2c2a;--axis:#383835;--border:rgba(255,255,255,.10);--panel:#222220;
+    --exec:#3987e5;--leg:#d95926;--jud:#199e70;--ess:#898781;--uniao:#ffffff;
+    --focus:#3987e5;--edge:#383835;--edge-rel:#c3c2b7;
+  }
+}
+:root[data-theme="dark"]{
+  color-scheme:dark;
+  --surface:#1a1a19;--plane:#0d0d0d;--ink:#ffffff;--ink-2:#c3c2b7;--mute:#898781;
+  --grid:#2c2c2a;--axis:#383835;--border:rgba(255,255,255,.10);--panel:#222220;
+  --exec:#3987e5;--leg:#d95926;--jud:#199e70;--ess:#898781;--uniao:#ffffff;
+  --focus:#3987e5;--edge:#383835;--edge-rel:#c3c2b7;
+}
+*{box-sizing:border-box}
+html,body{height:100%}
+body{margin:0;background:var(--surface);color:var(--ink);font-family:var(--font);font-size:15px;line-height:1.45;-webkit-font-smoothing:antialiased;overflow:hidden}
+a{color:inherit}
+button,input{font-family:inherit;font-size:inherit}
+:focus-visible{outline:3px solid var(--focus);outline-offset:2px;border-radius:6px}
+
+/* ---------- barra superior ---------- */
+.top{position:absolute;inset:0 0 auto 0;z-index:5;display:flex;align-items:center;gap:10px;padding:10px 16px;background:color-mix(in srgb,var(--surface) 88%,transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--border);flex-wrap:wrap}
+.brand{display:flex;flex-direction:column;gap:1px;min-width:0}
+.brand b{font-size:16px;letter-spacing:-.01em;white-space:nowrap}
+.brand small{color:var(--ink-2);font-size:12px;white-space:nowrap}
+.search{position:relative;flex:1 1 220px;max-width:460px}
+.search input{width:100%;padding:9px 12px 9px 36px;border:1px solid var(--axis);border-radius:10px;background:var(--panel);color:var(--ink)}
+.search svg{position:absolute;left:11px;top:50%;transform:translateY(-50%);width:16px;height:16px;color:var(--mute);pointer-events:none}
+.search .lista{position:absolute;top:calc(100% + 6px);left:0;right:0;background:var(--panel);border:1px solid var(--border);border-radius:12px;box-shadow:0 12px 32px rgba(0,0,0,.14);max-height:min(60vh,380px);overflow:auto;display:none;padding:6px}
+.search .lista.aberta{display:block}
+.search .lista button{display:flex;gap:10px;align-items:center;width:100%;text-align:left;border:0;background:none;color:var(--ink);padding:8px 10px;border-radius:8px;cursor:pointer}
+.search .lista button:hover,.search .lista button.ativo{background:var(--plane)}
+.search .lista .meta{color:var(--mute);font-size:12px;margin-left:auto;white-space:nowrap}
+.chips{display:flex;gap:6px;flex-wrap:wrap}
+.chip{display:inline-flex;align-items:center;gap:6px;padding:6px 10px;border-radius:999px;border:1px solid var(--axis);background:var(--panel);color:var(--ink);cursor:pointer;font-size:13px}
+.chip[aria-pressed="false"]{opacity:.45}
+.chip .dot{width:10px;height:10px;border-radius:50%;background:var(--c)}
+.chip .sq{width:10px;height:10px;border-radius:2px;background:var(--c)}
+.ghost{padding:7px 11px;border-radius:10px;border:1px solid var(--axis);background:var(--panel);color:var(--ink);cursor:pointer;font-size:13px}
+.ghost:hover{background:var(--plane)}
+.top .acoes{display:flex;gap:6px;margin-left:auto}
+
+/* ---------- palco ---------- */
+#palco{position:absolute;inset:0;touch-action:none;cursor:grab;display:block}
+#palco.arrastando{cursor:grabbing}
+.dica{position:absolute;z-index:6;pointer-events:none;background:var(--panel);color:var(--ink);border:1px solid var(--border);border-radius:10px;padding:8px 10px;font-size:13px;box-shadow:0 8px 24px rgba(0,0,0,.14);max-width:280px;display:none}
+.dica b{display:block}
+.dica span{color:var(--ink-2);font-size:12px}
+.zoom{position:absolute;left:16px;bottom:16px;z-index:5;display:flex;flex-direction:column;gap:4px}
+.zoom button{width:36px;height:36px;border-radius:9px;border:1px solid var(--axis);background:var(--panel);color:var(--ink);cursor:pointer;font-size:18px;line-height:1}
+.legenda{position:absolute;right:16px;bottom:16px;z-index:5;background:color-mix(in srgb,var(--panel) 92%,transparent);border:1px solid var(--border);border-radius:12px;padding:10px 12px;font-size:12px;color:var(--ink-2);display:grid;gap:5px;max-width:260px}
+.legenda .l{display:flex;align-items:center;gap:8px}
+.legenda i{display:inline-block;width:12px;height:12px;border:2px solid var(--ink-2);flex:none}
+.legenda i.c{border-radius:50%}
+.legenda i.q{border-radius:3px}
+.legenda i.d{transform:rotate(45deg) scale(.85);border-radius:2px}
+.status{position:absolute;left:16px;top:70px;z-index:4;font-size:12px;color:var(--mute);pointer-events:none}
+
+/* ---------- painel de detalhe ---------- */
+.painel{position:absolute;z-index:7;top:70px;right:16px;bottom:16px;width:min(400px,calc(100% - 32px));background:var(--panel);border:1px solid var(--border);border-radius:16px;box-shadow:0 16px 48px rgba(0,0,0,.18);display:none;flex-direction:column;overflow:hidden}
+.painel.aberto{display:flex}
+.painel header{display:flex;align-items:flex-start;gap:10px;padding:14px 16px 10px;border-bottom:1px solid var(--border)}
+.painel header .titulo{min-width:0;flex:1}
+.painel header .fechar{border:0;background:none;color:var(--mute);font-size:22px;line-height:1;cursor:pointer;padding:2px 6px;border-radius:6px}
+.painel header .fechar:hover{color:var(--ink);background:var(--plane)}
+.tag{display:inline-flex;align-items:center;gap:6px;font-size:12px;color:var(--ink-2);border:1px solid var(--border);border-radius:999px;padding:2px 8px;margin:0 4px 4px 0}
+.tag .dot{width:8px;height:8px;border-radius:50%;background:var(--c)}
+.painel h2{margin:4px 0 6px;font-size:18px;line-height:1.2;letter-spacing:-.01em}
+.trilha{display:flex;flex-wrap:wrap;gap:4px;font-size:12px;color:var(--ink-2);margin-bottom:4px}
+.trilha button{border:0;background:none;color:var(--ink-2);padding:0;cursor:pointer;text-decoration:underline;text-underline-offset:2px}
+.trilha button:hover{color:var(--ink)}
+.painel .corpo{overflow:auto;padding:12px 16px 16px;display:grid;gap:14px}
+.bloco h3{margin:0 0 6px;font-size:11px;text-transform:uppercase;letter-spacing:.06em;color:var(--mute);font-weight:600}
+.bloco p{margin:0;color:var(--ink-2)}
+.cargo{border:1px solid var(--border);border-radius:12px;padding:10px 12px;background:var(--plane)}
+.cargo .t{font-size:12px;color:var(--mute)}
+.cargo .n{font-weight:600;font-size:15px}
+.cargo .vago{color:var(--ink-2);font-style:italic}
+.cargo .m{font-size:12px;color:var(--mute);margin-top:4px}
+.lista-nos{display:grid;gap:2px}
+.lista-nos button{display:flex;align-items:center;gap:8px;width:100%;text-align:left;border:0;background:none;color:var(--ink);padding:6px 8px;border-radius:8px;cursor:pointer;font-size:14px}
+.lista-nos button:hover{background:var(--plane)}
+.lista-nos .sig{color:var(--mute);font-size:12px;margin-left:auto;white-space:nowrap}
+.lista-nos .rel{color:var(--mute);font-size:12px}
+.marca{width:10px;height:10px;flex:none;background:var(--c);border-radius:50%}
+.marca.q{border-radius:2px}
+.marca.d{transform:rotate(45deg) scale(.85);border-radius:1px}
+.rel-item{padding:6px 8px;border-radius:8px}
+.rel-item small{display:block;color:var(--mute);font-size:12px;margin-left:18px}
+.painel .rodape{font-size:12px;color:var(--mute);padding:10px 16px;border-top:1px solid var(--border)}
+.painel .rodape a{color:var(--ink-2)}
+
+/* ---------- sobre / tabela ---------- */
+.folha{position:absolute;inset:0;z-index:8;background:var(--surface);overflow:auto;display:none}
+.folha.aberta{display:block}
+.folha .conteudo{width:min(1040px,calc(100% - 32px));margin:0 auto;padding:24px 0 60px}
+.folha h1{font-size:26px;letter-spacing:-.02em;margin:0 0 6px}
+.folha h2{font-size:18px;margin:26px 0 8px}
+.folha p,.folha li{color:var(--ink-2);max-width:70ch}
+.folha .fechar{position:sticky;top:12px;float:right;margin-left:12px}
+table{border-collapse:collapse;width:100%;font-size:13px;font-variant-numeric:tabular-nums}
+th,td{text-align:left;padding:7px 8px;border-bottom:1px solid var(--grid);vertical-align:top}
+th{position:sticky;top:0;background:var(--surface);color:var(--mute);font-weight:600;font-size:11px;text-transform:uppercase;letter-spacing:.05em}
+tbody tr:hover{background:var(--plane)}
+.kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;margin:14px 0 6px}
+.kpi{border:1px solid var(--border);border-radius:12px;padding:10px 12px;background:var(--panel)}
+.kpi b{display:block;font-size:22px;letter-spacing:-.02em}
+.kpi span{font-size:12px;color:var(--mute)}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+
+@media (max-width:720px){
+  .top{gap:8px;padding:8px 12px}
+  .brand small{display:none}
+  .chips{order:3;width:100%}
+  .painel{top:auto;left:8px;right:8px;bottom:8px;width:auto;max-height:62vh}
+  .legenda{display:none}
+  .status{display:none}
+  .zoom{bottom:auto;top:calc(var(--altura-top,120px) + 8px)}
+}
+</style>
+</head>
+<body>
+
+<div class="top" id="top">
+  <div class="brand">
+    <b>Grafo do Governo Brasileiro</b>
+    <small>União · Poderes, órgãos, entidades, cargos e relações</small>
+  </div>
+  <div class="search">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+    <input id="busca" type="search" placeholder="Buscar órgão, sigla ou cargo (ex.: Anvisa, STF, Receita)" autocomplete="off" aria-label="Buscar no grafo" aria-controls="resultados" aria-expanded="false">
+    <div class="lista" id="resultados" role="listbox"></div>
+  </div>
+  <div class="chips" id="filtros" role="group" aria-label="Filtrar por Poder">
+    <button class="chip" data-poder="executivo" aria-pressed="true" style="--c:var(--exec)"><i class="dot"></i>Executivo</button>
+    <button class="chip" data-poder="legislativo" aria-pressed="true" style="--c:var(--leg)"><i class="dot"></i>Legislativo</button>
+    <button class="chip" data-poder="judiciario" aria-pressed="true" style="--c:var(--jud)"><i class="dot"></i>Judiciário</button>
+    <button class="chip" data-poder="essencial" aria-pressed="true" style="--c:var(--ess)"><i class="dot"></i>Funções essenciais</button>
+  </div>
+  <div class="acoes">
+    <button class="ghost" id="btn-tabela">Tabela</button>
+    <button class="ghost" id="btn-sobre">Sobre os dados</button>
+  </div>
+</div>
+
+<canvas id="palco" role="img" aria-label="Grafo radial do governo federal. Use a busca ou a tabela para navegar sem o mouse."></canvas>
+<div class="dica" id="dica" role="tooltip"></div>
+<div class="status" id="status"></div>
+
+<div class="zoom" aria-label="Zoom">
+  <button id="z-mais" title="Aproximar" aria-label="Aproximar">+</button>
+  <button id="z-menos" title="Afastar" aria-label="Afastar">−</button>
+  <button id="z-fit" title="Ver tudo" aria-label="Ver tudo">⤢</button>
+</div>
+
+<div class="legenda" aria-label="Legenda">
+  <div class="l"><i class="c"></i>Administração direta (órgão, ministério, tribunal, Casa)</div>
+  <div class="l"><i class="q"></i>Administração indireta (autarquia, agência, fundação, empresa)</div>
+  <div class="l"><i class="d"></i>Conjunto de entidades (por exemplo, 69 universidades)</div>
+  <div class="l" style="margin-top:2px">Cor = Poder. Clique em um nó para ver cargo, base legal e quem nomeia, aprova ou fiscaliza.</div>
+</div>
+
+<aside class="painel" id="painel" aria-live="polite">
+  <header>
+    <div class="titulo">
+      <div class="trilha" id="trilha"></div>
+      <h2 id="p-nome"></h2>
+      <div id="p-tags"></div>
+    </div>
+    <button class="fechar" id="p-fechar" aria-label="Fechar painel">×</button>
+  </header>
+  <div class="corpo" id="p-corpo"></div>
+  <div class="rodape" id="p-rodape"></div>
+</aside>
+
+<section class="folha" id="folha-tabela" aria-labelledby="t-titulo">
+  <div class="conteudo">
+    <button class="ghost fechar" data-fecha="folha-tabela">Voltar ao grafo</button>
+    <h1 id="t-titulo">Todos os nós</h1>
+    <p>A mesma informação do grafo, em tabela. Clique em uma linha para abrir o nó no mapa.</p>
+    <div style="overflow:auto;max-height:calc(100vh - 180px);border:1px solid var(--border);border-radius:12px">
+    <table id="tabela"><thead><tr><th>Nome</th><th>Sigla</th><th>Tipo</th><th>Poder</th><th>Vinculado a</th><th>Cargo</th><th>Ocupante</th></tr></thead><tbody></tbody></table>
+    </div>
+  </div>
+</section>
+
+<section class="folha" id="folha-sobre" aria-labelledby="s-titulo">
+  <div class="conteudo">
+    <button class="ghost fechar" data-fecha="folha-sobre">Voltar ao grafo</button>
+    <h1 id="s-titulo">Sobre os dados</h1>
+    <p>Este é um mapa da estrutura da União: os três Poderes, as funções essenciais à Justiça, os ministérios, as entidades da administração indireta, os tribunais, os cargos de comando e as relações constitucionais entre eles (quem nomeia, quem aprova, quem fiscaliza). Inspirado no <em>Gov Graph</em> da CivLab para os Estados Unidos.</p>
+    <div class="kpis" id="kpis"></div>
+    <h2>Regra sobre pessoas</h2>
+    <p>Estrutura sim, pessoas quase nunca. Nesta versão só aparecem ocupantes com mandato fixo e público (Presidência, Vice-Presidência, presidências das Casas do Congresso e do STF). Todos os demais cargos estão marcados como “não verificado” até que a ingestão a partir das fontes oficiais os preencha. Um campo vazio é melhor que um nome errado.</p>
+    <h2>Fontes</h2>
+    <ul id="fontes"></ul>
+    <h2>O que ainda falta</h2>
+    <ul>
+      <li>Ocupantes de todos os cargos, com data de posse e fonte (SIORG, Diário Oficial, Câmara e Senado).</li>
+      <li>Vacâncias e interinidades marcadas explicitamente, como faz o grafo americano.</li>
+      <li>Segundo nível dos ministérios (secretarias) e as demais entidades da administração indireta.</li>
+      <li>Esfera estadual e municipal.</li>
+      <li>Orçamento por órgão (Portal da Transparência e SIOP).</li>
+    </ul>
+    <p id="versao"></p>
+  </div>
+</section>
+
+<script>
+(async function(){
+'use strict';
+const $ = s => document.querySelector(s);
+const canvas = $('#palco'), ctx = canvas.getContext('2d');
+const dica = $('#dica'), painel = $('#painel'), status = $('#status');
+
+// ------------------------------------------------------------ dados
+let dados;
+try {
+  const r = await fetch('dados/governo-federal.json', {cache:'no-cache'});
+  dados = await r.json();
+} catch (e) {
+  status.textContent = 'Não foi possível carregar dados/governo-federal.json.';
+  return;
+}
+const TIPOS = dados.meta.tipos, PODERES = dados.meta.poderes;
+const porId = new Map(dados.nos.map(n => [n.id, n]));
+const filhos = new Map(dados.nos.map(n => [n.id, []]));
+const relEntrada = new Map(dados.nos.map(n => [n.id, []]));
+const relSaida = new Map(dados.nos.map(n => [n.id, []]));
+for (const a of dados.arestas) {
+  if (a.hierarquica) filhos.get(a.de).push(a.para);
+  else { relSaida.get(a.de).push(a); relEntrada.get(a.para).push(a); }
+}
+const raiz = dados.nos.find(n => n.tipo === 'raiz');
+const INDIRETA = new Set(['autarquia','agencia_reguladora','fundacao','empresa_publica','sociedade_economia_mista','servico_social_autonomo']);
+const forma = n => n.tipo === 'grupo' ? 'd' : INDIRETA.has(n.tipo) ? 'q' : 'c';
+const css = v => getComputedStyle(document.documentElement).getPropertyValue(v).trim();
+let cores = {};
+function lerCores(){ cores = {executivo:css('--exec'),legislativo:css('--leg'),judiciario:css('--jud'),essencial:css('--ess'),uniao:css('--uniao'),edge:css('--edge'),edgeRel:css('--edge-rel'),ink:css('--ink'),ink2:css('--ink-2'),mute:css('--mute'),surface:css('--surface')}; }
+lerCores();
+matchMedia('(prefers-color-scheme: dark)').addEventListener('change', () => { lerCores(); desenhar(); });
+
+// ------------------------------------------------------------ layout radial
+// Cada Poder recebe uma fatia fixa do círculo; dentro dela, os filhos dividem o
+// ângulo proporcionalmente ao número de folhas (mínimo 1 por nó).
+const FATIAS = {executivo:.60, judiciario:.17, essencial:.11, legislativo:.12};
+const RAIO = [0, 150, 300, 470, 680, 800];
+const folhas = new Map();
+function contar(id){ const f = filhos.get(id); const v = f.length ? f.reduce((s,c)=>s+contar(c),0) : 1; folhas.set(id, v); return v; }
+contar(raiz.id);
+const pos = new Map();
+function distribuir(id, a0, a1, depth){
+  const n = porId.get(id);
+  const ang = (a0 + a1) / 2, r = RAIO[Math.min(depth, RAIO.length-1)];
+  pos.set(id, {x: r*Math.cos(ang), y: r*Math.sin(ang), ang, depth, a0, a1});
+  const f = filhos.get(id); if (!f.length) return;
+  let pesos, total;
+  if (depth === 0) { pesos = f.map(c => FATIAS[porId.get(c).poder] || .1); }
+  else { pesos = f.map(c => Math.max(1, folhas.get(c))); }
+  total = pesos.reduce((s,p)=>s+p,0);
+  let a = a0;
+  f.forEach((c,i) => { const w = (a1-a0) * pesos[i] / total; distribuir(c, a, a+w, depth+1); a += w; });
+}
+distribuir(raiz.id, -Math.PI/2, 3*Math.PI/2, 0);
+// Ordena nós por profundidade para desenhar as camadas de fora para dentro.
+const ordem = [...dados.nos].sort((a,b)=>pos.get(b.id).depth - pos.get(a.id).depth);
+const raioNo = n => [14, 11, 9, 6.5, 5, 4.5][Math.min(pos.get(n.id).depth, 5)];
+
+// ------------------------------------------------------------ estado de vista
+let W=0, H=0, dpr=1;
+const vista = {x:0, y:0, k:1};
+let selecionado = null, pairado = null;
+const poderesAtivos = new Set(Object.keys(FATIAS));
+function redimensionar(){
+  dpr = Math.min(window.devicePixelRatio || 1, 2);
+  W = window.innerWidth; H = window.innerHeight;
+  canvas.style.width = W + 'px'; canvas.style.height = H + 'px';
+  canvas.width = W*dpr; canvas.height = H*dpr;
+  document.documentElement.style.setProperty('--altura-top', $('#top').offsetHeight + 'px');
+  desenhar();
+}
+function verTudo(anim=true){
+  const topo = $('#top').offsetHeight;
+  const raioTotal = RAIO[RAIO.length-1] + 60;
+  const k = Math.min((W-40)/(2*raioTotal), (H-topo-40)/(2*raioTotal));
+  irPara({x: W/2, y: topo + (H-topo)/2, k}, anim);
+}
+let anim = null;
+function irPara(alvo, animado=true){
+  if (!animado) { Object.assign(vista, alvo); desenhar(); return; }
+  const de = {...vista}, t0 = performance.now(), dur = 420;
+  cancelAnimationFrame(anim);
+  const passo = t => { const p = Math.min(1,(t-t0)/dur), e = 1-Math.pow(1-p,3);
+    vista.x = de.x+(alvo.x-de.x)*e; vista.y = de.y+(alvo.y-de.y)*e; vista.k = de.k+(alvo.k-de.k)*e;
+    desenhar(); if (p<1) anim = requestAnimationFrame(passo); };
+  anim = requestAnimationFrame(passo);
+}
+function centrarEm(id, k){
+  const p = pos.get(id); const topo = $('#top').offsetHeight;
+  const kk = k || Math.max(vista.k, 1.4);
+  const largPainel = painel.classList.contains('aberto') && W > 720 ? 420 : 0;
+  irPara({k: kk, x: (W-largPainel)/2 - p.x*kk, y: topo + (H-topo)/2 - p.y*kk});
+}
+const tela = p => ({x: vista.x + p.x*vista.k, y: vista.y + p.y*vista.k});
+
+// ------------------------------------------------------------ desenho
+function vizinhos(id){
+  const s = new Set([id]); const n = porId.get(id);
+  if (n.pai) s.add(n.pai);
+  for (const c of filhos.get(id)) s.add(c);
+  for (const a of relSaida.get(id)) s.add(a.para);
+  for (const a of relEntrada.get(id)) s.add(a.de);
+  return s;
+}
+function corDe(n){ return cores[n.poder] || cores.ink; }
+function visivelPorFiltro(n){ return n.poder === 'uniao' || poderesAtivos.has(n.poder); }
+function desenhar(){
+  ctx.setTransform(dpr,0,0,dpr,0,0);
+  ctx.clearRect(0,0,W,H);
+  const k = vista.k;
+  const foco = selecionado || pairado;
+  const viz = foco ? vizinhos(foco) : null;
+  const alfa = n => {
+    let a = visivelPorFiltro(n) ? 1 : .12;
+    if (viz && !viz.has(n.id)) a *= .22;
+    return a;
+  };
+  // arestas hierárquicas
+  ctx.lineWidth = 1;
+  for (const n of dados.nos) {
+    if (!n.pai) continue;
+    const a = pos.get(n.id), b = pos.get(n.pai);
+    const pa = tela(a), pb = tela(b);
+    const dentro = viz && viz.has(n.id) && viz.has(n.pai);
+    ctx.globalAlpha = Math.min(alfa(n), alfa(porId.get(n.pai))) * (dentro ? 1 : .8);
+    ctx.strokeStyle = dentro ? cores.edgeRel : cores.edge;
+    ctx.lineWidth = dentro ? 1.5 : 1;
+    // curva que sai radialmente do pai e chega radialmente ao filho
+    const rm = (RAIO[Math.min(a.depth, RAIO.length-1)] + RAIO[Math.min(b.depth, RAIO.length-1)]) / 2;
+    const c1 = tela({x: rm*Math.cos(b.ang), y: rm*Math.sin(b.ang)});
+    const c2 = tela({x: rm*Math.cos(a.ang), y: rm*Math.sin(a.ang)});
+    ctx.beginPath(); ctx.moveTo(pb.x,pb.y); ctx.bezierCurveTo(c1.x,c1.y,c2.x,c2.y,pa.x,pa.y); ctx.stroke();
+  }
+  // relações não hierárquicas do nó em foco
+  if (foco) {
+    ctx.setLineDash([5,4]); ctx.lineWidth = 1.8; ctx.strokeStyle = cores.edgeRel; ctx.globalAlpha = .9;
+    for (const a of [...relSaida.get(foco), ...relEntrada.get(foco)]) {
+      const p1 = tela(pos.get(a.de)), p2 = tela(pos.get(a.para));
+      const mx = (p1.x+p2.x)/2, my = (p1.y+p2.y)/2;
+      const cx = vista.x, cy = vista.y; // curva puxada para o centro
+      ctx.beginPath(); ctx.moveTo(p1.x,p1.y); ctx.quadraticCurveTo((mx+cx)/2,(my+cy)/2,p2.x,p2.y); ctx.stroke();
+      // ponta
+      const ang = Math.atan2(p2.y-(my+cy)/2, p2.x-(mx+cx)/2);
+      const rr = raioNo(porId.get(a.para))*Math.max(.8,Math.min(k,1.6)) + 3;
+      const tx = p2.x - Math.cos(ang)*rr, ty = p2.y - Math.sin(ang)*rr;
+      ctx.setLineDash([]); ctx.beginPath(); ctx.moveTo(tx,ty);
+      ctx.lineTo(tx-7*Math.cos(ang-.45), ty-7*Math.sin(ang-.45)); ctx.moveTo(tx,ty);
+      ctx.lineTo(tx-7*Math.cos(ang+.45), ty-7*Math.sin(ang+.45)); ctx.stroke(); ctx.setLineDash([5,4]);
+    }
+    ctx.setLineDash([]);
+  }
+  // nós
+  const escala = Math.max(.8, Math.min(k, 1.6));
+  for (const n of ordem) {
+    const p = pos.get(n.id), s = tela(p);
+    if (s.x < -30 || s.y < -30 || s.x > W+30 || s.y > H+30) continue;
+    const r = raioNo(n) * escala;
+    ctx.globalAlpha = alfa(n);
+    ctx.fillStyle = corDe(n);
+    ctx.strokeStyle = cores.surface; ctx.lineWidth = 2;
+    const f = forma(n);
+    ctx.beginPath();
+    if (f === 'c') ctx.arc(s.x, s.y, r, 0, Math.PI*2);
+    else if (f === 'q') { const w = r*1.8; roundRect(s.x-w/2, s.y-w/2, w, w, 2.5); }
+    else { ctx.moveTo(s.x, s.y-r*1.25); ctx.lineTo(s.x+r*1.25, s.y); ctx.lineTo(s.x, s.y+r*1.25); ctx.lineTo(s.x-r*1.25, s.y); ctx.closePath(); }
+    ctx.fill(); ctx.stroke();
+    if (n.id === selecionado || n.id === pairado) {
+      ctx.strokeStyle = cores.ink; ctx.lineWidth = 2; ctx.beginPath(); ctx.arc(s.x, s.y, r+4, 0, Math.PI*2); ctx.stroke();
+    }
+  }
+  // rótulos
+  for (const n of ordem) {
+    const p = pos.get(n.id), s = tela(p);
+    if (s.x < -200 || s.y < -60 || s.x > W+200 || s.y > H+60) continue;
+    const emFoco = viz && viz.has(n.id);
+    const d = p.depth;
+    const mostra = d <= 2 || (d === 3 && k >= .75) || (d >= 4 && k >= 1.15) || emFoco || n.id === pairado;
+    if (!mostra) continue;
+    const texto = (d >= 3 || (d === 2 && k < .9)) ? (n.sigla || n.nome) : n.nome;
+    const fontePx = d <= 1 ? Math.max(12, Math.min(15, 13*escala)) : d === 2 ? Math.max(11, Math.min(14, 12*escala)) : Math.max(10, Math.min(13, 11*escala));
+    ctx.font = `${d <= 2 ? 600 : 500} ${fontePx}px ${css('--font')}`;
+    ctx.fillStyle = emFoco || d <= 2 ? cores.ink : cores.ink2;
+    ctx.globalAlpha = alfa(n);
+    const r = raioNo(n)*escala + 5;
+    ctx.save();
+    if (d <= 1) { // horizontal, abaixo do nó
+      ctx.textAlign = 'center'; ctx.textBaseline = 'top';
+      halo(texto, s.x, s.y + r);
+      ctx.fillText(texto, s.x, s.y + r);
+    } else { // radial, apontando para fora
+      const esq = Math.cos(p.ang) < 0;
+      ctx.translate(s.x, s.y); ctx.rotate(p.ang + (esq ? Math.PI : 0));
+      ctx.textAlign = esq ? 'right' : 'left'; ctx.textBaseline = 'middle';
+      const dx = esq ? -r : r;
+      halo(texto, dx, 0);
+      ctx.fillText(texto, dx, 0);
+    }
+    ctx.restore();
+  }
+  ctx.globalAlpha = 1;
+  status.textContent = `${dados.nos.length} nós · ${dados.arestas.length} relações · zoom ${Math.round(k*100)}%`;
+}
+function halo(t, x, y){ ctx.save(); ctx.lineWidth = 3; ctx.strokeStyle = cores.surface; ctx.lineJoin = 'round'; ctx.globalAlpha *= .85; ctx.strokeText(t, x, y); ctx.restore(); }
+function roundRect(x,y,w,h,r){ ctx.moveTo(x+r,y); ctx.arcTo(x+w,y,x+w,y+h,r); ctx.arcTo(x+w,y+h,x,y+h,r); ctx.arcTo(x,y+h,x,y,r); ctx.arcTo(x,y,x+w,y,r); ctx.closePath(); }
+
+// ------------------------------------------------------------ interação no palco
+function acertar(px, py){
+  let melhor = null, dist = 1e9;
+  for (const n of dados.nos) {
+    const s = tela(pos.get(n.id));
+    const d = Math.hypot(s.x-px, s.y-py);
+    const alcance = Math.max(raioNo(n)*Math.max(.8,Math.min(vista.k,1.6)), 9) + 4;
+    if (d < alcance && d < dist) { dist = d; melhor = n; }
+  }
+  return melhor;
+}
+const ponteiros = new Map(); let arrasto = null, moveu = false, distPinca = 0;
+canvas.addEventListener('pointerdown', e => {
+  canvas.setPointerCapture(e.pointerId);
+  ponteiros.set(e.pointerId, {x:e.clientX, y:e.clientY});
+  if (ponteiros.size === 1) { arrasto = {x:e.clientX, y:e.clientY, vx:vista.x, vy:vista.y}; moveu = false; }
+  if (ponteiros.size === 2) { const [a,b] = [...ponteiros.values()]; distPinca = Math.hypot(a.x-b.x, a.y-b.y); arrasto = null; }
+  canvas.classList.add('arrastando');
+});
+canvas.addEventListener('pointermove', e => {
+  if (ponteiros.has(e.pointerId)) ponteiros.set(e.pointerId, {x:e.clientX, y:e.clientY});
+  if (ponteiros.size === 2) {
+    const [a,b] = [...ponteiros.values()]; const d = Math.hypot(a.x-b.x, a.y-b.y);
+    if (distPinca) { const cx=(a.x+b.x)/2, cy=(a.y+b.y)/2; zoomEm(cx, cy, d/distPinca); }
+    distPinca = d; moveu = true; return;
+  }
+  if (arrasto) {
+    const dx = e.clientX-arrasto.x, dy = e.clientY-arrasto.y;
+    if (Math.hypot(dx,dy) > 3) moveu = true;
+    vista.x = arrasto.vx+dx; vista.y = arrasto.vy+dy; desenhar(); esconderDica(); return;
+  }
+  const n = acertar(e.clientX, e.clientY);
+  if ((n && n.id) !== pairado) { pairado = n ? n.id : null; desenhar(); }
+  canvas.style.cursor = n ? 'pointer' : 'grab';
+  if (n) mostrarDica(n, e.clientX, e.clientY); else esconderDica();
+});
+function soltar(e){
+  ponteiros.delete(e.pointerId);
+  if (ponteiros.size === 0) {
+    canvas.classList.remove('arrastando');
+    if (arrasto && !moveu) { const n = acertar(e.clientX, e.clientY); if (n) selecionar(n.id, true); else if (selecionado) selecionar(null); }
+    arrasto = null; distPinca = 0;
+  }
+}
+canvas.addEventListener('pointerup', soltar); canvas.addEventListener('pointercancel', soltar);
+canvas.addEventListener('pointerleave', () => { pairado = null; esconderDica(); desenhar(); });
+canvas.addEventListener('wheel', e => { e.preventDefault(); zoomEm(e.clientX, e.clientY, Math.exp(-e.deltaY*0.0016)); }, {passive:false});
+function zoomEm(cx, cy, fator){
+  const k = Math.max(.15, Math.min(6, vista.k*fator)); fator = k/vista.k;
+  vista.x = cx - (cx-vista.x)*fator; vista.y = cy - (cy-vista.y)*fator; vista.k = k; desenhar();
+}
+$('#z-mais').onclick = () => zoomEm(W/2, H/2, 1.3);
+$('#z-menos').onclick = () => zoomEm(W/2, H/2, 1/1.3);
+$('#z-fit').onclick = () => verTudo();
+function mostrarDica(n, x, y){
+  const c = n.cargo;
+  dica.innerHTML = `<b>${esc(n.nome)}</b><span>${esc(TIPOS[n.tipo])} · ${esc(PODERES[n.poder])}${c ? ' · ' + esc(c.titulo) + (c.ocupante ? ': ' + esc(c.ocupante) : '') : ''}</span>`;
+  dica.style.display = 'block';
+  const dw = dica.offsetWidth, dh = dica.offsetHeight;
+  dica.style.left = Math.min(x+14, W-dw-8) + 'px';
+  dica.style.top = (y+14+dh > H ? y-14-dh : y+14) + 'px';
+}
+function esconderDica(){ dica.style.display = 'none'; }
+function esc(s){ return String(s ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c])); }
+
+// ------------------------------------------------------------ painel de detalhe
+function selecionar(id, centrar){
+  selecionado = id;
+  if (!id) { painel.classList.remove('aberto'); history.replaceState(null,'',location.pathname); desenhar(); return; }
+  const n = porId.get(id);
+  history.replaceState(null, '', '#' + id);
+  // trilha
+  const trilha = []; let p = n.pai; while (p) { trilha.unshift(porId.get(p)); p = porId.get(p).pai; }
+  $('#trilha').innerHTML = trilha.map(t => `<button data-id="${t.id}">${esc(t.sigla || t.nome)}</button>`).join('<span aria-hidden="true">›</span>');
+  $('#p-nome').textContent = n.nome + (n.sigla && n.sigla !== n.nome ? ` (${n.sigla})` : '');
+  $('#p-tags').innerHTML = `<span class="tag" style="--c:${corDe(n)}"><i class="dot"></i>${esc(PODERES[n.poder])}</span><span class="tag">${esc(TIPOS[n.tipo])}</span>${n.quantidade ? `<span class="tag">${n.quantidade} ${n.tipo==='grupo' ? 'entidades' : 'membros'}</span>` : ''}`;
+  let html = '';
+  if (n.descricao) html += `<div class="bloco"><p>${esc(n.descricao)}</p></div>`;
+  if (n.cargo) {
+    const c = n.cargo;
+    html += `<div class="bloco"><h3>Cargo de comando</h3><div class="cargo"><div class="t">${esc(c.titulo)}</div>` +
+      (c.ocupante ? `<div class="n">${esc(c.ocupante)}</div><div class="m">${c.desde ? 'Desde ' + fmtData(c.desde) : ''}${c.mandato_ate ? ' · mandato até ' + fmtData(c.mandato_ate) : ''}${c.verificado_em ? ' · verificado em ' + fmtData(c.verificado_em) : ''}</div>`
+                 : `<div class="n vago">Ocupante não verificado nesta versão</div><div class="m">Preenchido pela ingestão a partir das fontes oficiais.${c.fonte ? ` <a href="${esc(c.fonte)}" target="_blank" rel="noopener">Conferir na fonte</a>` : ''}</div>`) +
+      `</div></div>`;
+  }
+  const rels = [...relEntrada.get(id).map(a => ({a, outro: porId.get(a.de), dir:'in'})), ...relSaida.get(id).map(a => ({a, outro: porId.get(a.para), dir:'out'}))];
+  if (rels.length) {
+    html += `<div class="bloco"><h3>Relações</h3><div class="lista-nos">` + rels.map(({a, outro, dir}) =>
+      `<div class="rel-item"><button data-id="${outro.id}"><i class="marca ${forma(outro)}" style="--c:${corDe(outro)}"></i><span><span class="rel">${dir==='in' ? esc(outro.sigla||outro.nome) + ' ' + esc(verbo(a.tipo)) + ' ' : esc(verbo(a.tipo)) + ' '}</span>${dir==='in' ? '' : esc(outro.sigla||outro.nome)}</span></button>${a.descricao ? `<small>${esc(a.descricao)}</small>` : ''}</div>`).join('') + `</div></div>`;
+  }
+  if (n.pai) {
+    const pai = porId.get(n.pai); const ar = dados.arestas.find(a => a.hierarquica && a.para === id);
+    html += `<div class="bloco"><h3>${esc(cap(ar.tipo))}</h3><div class="lista-nos"><button data-id="${pai.id}"><i class="marca ${forma(pai)}" style="--c:${corDe(pai)}"></i>${esc(pai.nome)}<span class="sig">${esc(pai.sigla||'')}</span></button></div></div>`;
+  }
+  const fs = filhos.get(id);
+  if (fs.length) {
+    html += `<div class="bloco"><h3>${fs.length === 1 ? '1 subordinado ou vinculado' : fs.length + ' subordinados ou vinculados'}</h3><div class="lista-nos">` +
+      fs.map(c => porId.get(c)).map(c => `<button data-id="${c.id}"><i class="marca ${forma(c)}" style="--c:${corDe(c)}"></i>${esc(c.nome)}<span class="sig">${esc(c.sigla||'')}</span></button>`).join('') + `</div></div>`;
+  }
+  $('#p-corpo').innerHTML = html;
+  $('#p-rodape').innerHTML = [n.lei ? 'Base legal: ' + esc(n.lei) : '', n.site ? `<a href="${esc(n.site)}" target="_blank" rel="noopener">Site oficial</a>` : ''].filter(Boolean).join(' · ') || 'Fonte: semente curada (ver “Sobre os dados”).';
+  painel.classList.add('aberto');
+  $('#p-corpo').scrollTop = 0;
+  if (centrar) centrarEm(id);
+  desenhar();
+}
+function verbo(t){ return ({nomeia:'nomeia', aprova:'aprova a indicação de', fiscaliza:'fiscaliza', controla:'controla', preside:'preside', elege:'elege membros de', escolhe:'escolhe membros de', orcamento:'aprova o orçamento de', representa:'representa', integra:'integra', orienta:'orienta', 'vinculada a':'vincula'})[t] || t; }
+function cap(s){ return s.charAt(0).toUpperCase() + s.slice(1); }
+function fmtData(s){ if (!s) return ''; const [a,m,d] = s.split('-'); const meses = ['jan','fev','mar','abr','mai','jun','jul','ago','set','out','nov','dez']; return d ? `${+d} ${meses[+m-1]} ${a}` : m ? `${meses[+m-1]} ${a}` : a; }
+painel.addEventListener('click', e => { const b = e.target.closest('button[data-id]'); if (b) selecionar(b.dataset.id, true); });
+$('#p-fechar').onclick = () => selecionar(null);
+
+// ------------------------------------------------------------ busca
+const busca = $('#busca'), resultados = $('#resultados');
+const norm = s => String(s||'').normalize('NFD').replace(/[̀-ͯ]/g,'').toLowerCase();
+const indice = dados.nos.map(n => ({n, chave: norm([n.nome, n.sigla, n.cargo && n.cargo.titulo, n.cargo && n.cargo.ocupante, TIPOS[n.tipo]].filter(Boolean).join(' '))}));
+let ativo = -1;
+function buscar(){
+  const q = norm(busca.value.trim());
+  if (!q) { fecharBusca(); return; }
+  const termos = q.split(/\s+/);
+  const achados = indice.filter(i => termos.every(t => i.chave.includes(t)))
+    .sort((a,b) => (norm(a.n.sigla)===q?0:1) - (norm(b.n.sigla)===q?0:1) || pos.get(a.n.id).depth - pos.get(b.n.id).depth).slice(0,12);
+  if (!achados.length) { resultados.innerHTML = '<div style="padding:10px;color:var(--mute)">Nada encontrado.</div>'; }
+  else resultados.innerHTML = achados.map(({n}) => `<button role="option" data-id="${n.id}"><i class="marca ${forma(n)}" style="--c:${corDe(n)}"></i><span>${esc(n.nome)}</span><span class="meta">${esc(n.sigla||TIPOS[n.tipo])}</span></button>`).join('');
+  resultados.classList.add('aberta'); busca.setAttribute('aria-expanded','true'); ativo = -1;
+}
+function fecharBusca(){ resultados.classList.remove('aberta'); busca.setAttribute('aria-expanded','false'); }
+busca.addEventListener('input', buscar);
+busca.addEventListener('focus', buscar);
+busca.addEventListener('keydown', e => {
+  const itens = [...resultados.querySelectorAll('button')];
+  if (e.key === 'ArrowDown' || e.key === 'ArrowUp') { e.preventDefault(); ativo = (ativo + (e.key==='ArrowDown'?1:-1) + itens.length) % itens.length; itens.forEach((b,i)=>b.classList.toggle('ativo', i===ativo)); }
+  else if (e.key === 'Enter') { const b = itens[ativo] || itens[0]; if (b) { selecionar(b.dataset.id, true); fecharBusca(); busca.blur(); } }
+  else if (e.key === 'Escape') { fecharBusca(); busca.blur(); }
+});
+resultados.addEventListener('click', e => { const b = e.target.closest('button'); if (b) { selecionar(b.dataset.id, true); fecharBusca(); busca.value=''; } });
+document.addEventListener('click', e => { if (!e.target.closest('.search')) fecharBusca(); });
+document.addEventListener('keydown', e => { if (e.key === '/' && document.activeElement !== busca) { e.preventDefault(); busca.focus(); } if (e.key === 'Escape' && !resultados.classList.contains('aberta')) { document.querySelectorAll('.folha.aberta').forEach(f=>f.classList.remove('aberta')); if (selecionado) selecionar(null); } });
+
+// ------------------------------------------------------------ filtros
+$('#filtros').addEventListener('click', e => {
+  const b = e.target.closest('.chip'); if (!b) return;
+  const p = b.dataset.poder, ligado = b.getAttribute('aria-pressed') === 'true';
+  if (ligado && poderesAtivos.size === 1) return; // nunca esconde tudo
+  b.setAttribute('aria-pressed', String(!ligado));
+  if (ligado) poderesAtivos.delete(p); else poderesAtivos.add(p);
+  desenhar();
+});
+
+// ------------------------------------------------------------ tabela e sobre
+const tbody = $('#tabela tbody');
+tbody.innerHTML = [...dados.nos].sort((a,b)=>pos.get(a.id).depth-pos.get(b.id).depth || a.nome.localeCompare(b.nome,'pt')).map(n =>
+  `<tr data-id="${n.id}" tabindex="0" style="cursor:pointer"><td>${esc(n.nome)}</td><td>${esc(n.sigla||'')}</td><td>${esc(TIPOS[n.tipo])}</td><td>${esc(PODERES[n.poder])}</td><td>${n.pai ? esc(porId.get(n.pai).sigla || porId.get(n.pai).nome) : ''}</td><td>${n.cargo ? esc(n.cargo.titulo) : ''}</td><td>${n.cargo ? (n.cargo.ocupante ? esc(n.cargo.ocupante) : '<span style="color:var(--mute)">não verificado</span>') : ''}</td></tr>`).join('');
+tbody.addEventListener('click', e => { const tr = e.target.closest('tr'); if (tr) { $('#folha-tabela').classList.remove('aberta'); selecionar(tr.dataset.id, true); } });
+tbody.addEventListener('keydown', e => { if (e.key === 'Enter') { const tr = e.target.closest('tr'); if (tr) { $('#folha-tabela').classList.remove('aberta'); selecionar(tr.dataset.id, true); } } });
+$('#btn-tabela').onclick = () => $('#folha-tabela').classList.add('aberta');
+$('#btn-sobre').onclick = () => $('#folha-sobre').classList.add('aberta');
+document.querySelectorAll('[data-fecha]').forEach(b => b.onclick = () => $('#'+b.dataset.fecha).classList.remove('aberta'));
+const cont = {}; for (const n of dados.nos) cont[n.poder] = (cont[n.poder]||0)+1;
+const comCargo = dados.nos.filter(n=>n.cargo).length, verificados = dados.nos.filter(n=>n.cargo&&n.cargo.ocupante).length;
+$('#kpis').innerHTML = [
+  [dados.nos.length, 'nós no grafo'], [dados.arestas.filter(a=>!a.hierarquica).length, 'relações constitucionais'],
+  [cont.executivo||0, 'no Executivo'], [(cont.judiciario||0), 'no Judiciário'], [(cont.legislativo||0), 'no Legislativo'],
+  [`${verificados}/${comCargo}`, 'cargos com ocupante verificado'],
+].map(([v,l]) => `<div class="kpi"><b>${v}</b><span>${l}</span></div>`).join('');
+$('#fontes').innerHTML = (dados.meta.fontes||[]).map(f => `<li><a href="${esc(f.url)}" target="_blank" rel="noopener">${esc(f.nome)}</a></li>`).join('');
+$('#versao').textContent = `Versão dos dados ${dados.meta.versao}, gerada por ${dados.meta.gerado_por}. ${dados.meta.aviso}`;
+
+// ------------------------------------------------------------ início
+window.addEventListener('resize', redimensionar);
+redimensionar();
+verTudo(false);
+const hash = decodeURIComponent(location.hash.slice(1));
+if (hash && porId.has(hash)) selecionar(hash, true);
+})();
+</script>
+</body>
+</html>
