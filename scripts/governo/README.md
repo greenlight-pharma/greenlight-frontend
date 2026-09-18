@@ -30,6 +30,39 @@ gerar_estados.py    -> governo/dados/estados/*.json + indice-municipios.json
                        (a partir de ufs.py e dados/municipios.csv; chamado pelo montar_grafo.py)
 ```
 
+## Agentes diários (notícias, mudanças e estrutura)
+
+Como o "Latest Changes" e o "Power map" da CivLab. Três scripts em
+`agentes/` rodam todo dia às 7h (Brasília) em
+`.github/workflows/agentes-governo.yml` e gravam feeds que o site mostra no
+botão **Novidades** e no **Mapa do poder**:
+
+| Agente | Fonte | Grava | O que faz |
+|---|---|---|---|
+| `agente_dou.py` | DOU seção 2, busca pública filtrada por "Atos do Poder Executivo" (decretos do Presidente) e "Presidência da República" (portarias da Casa Civil, Decreto 9.794/2019) | `governo/dados/mudancas.json` | Baixa cada ato, separa os itens (NOMEAR, EXONERAR, DESIGNAR, DISPENSAR, RECONDUZIR), casa o cargo com um nó do grafo, classifica o nível (`comando`, `alta`, `outra`) e junta saída e entrada do mesmo cargo num registro só |
+| `agente_estrutura.py` | SIORG, `orgao-entidade/resumida` (265 órgãos e entidades; a estrutura completa passa de 80 MB) | `mudancas.json` (tipo `estrutura`) e a foto em `dados/siorg-foto.json` | Compara a foto de hoje com a anterior: órgão criado, extinto, renomeado ou transferido de pai |
+| `agente_noticias.py` | RSS da Agência Brasil, Agência Câmara, Agência Senado, Notícias do STF e Planalto | `governo/dados/noticias.json` | Liga cada matéria aos órgãos e pessoas do grafo, monta o ranking "quem está no noticiário" (90 dias) e um resumo em quatro frases |
+
+Com o secret `ANTHROPIC_API_KEY`, a Claude (`claude-opus-5`, saída em JSON
+com esquema) escreve o resumo das notícias e confirma o órgão e o nível dos
+atos que as regras não casaram. Sem a chave, tudo sai só pelas regras:
+manchetes no lugar do resumo, e casamento por nome e sigla. Nenhum agente
+altera `cargo.ocupante` no grafo; isso continua no PR semanal, com revisão.
+
+Rodar à mão:
+
+```
+python3 scripts/governo/agentes/agente_dou.py --dias 45 --sem-claude
+python3 scripts/governo/agentes/agente_estrutura.py
+python3 scripts/governo/agentes/agente_noticias.py --sem-claude
+```
+
+Detalhes que custaram para descobrir: a busca do DOU é por palavras soltas
+(aspas não fazem frase) e devolve 403 para clientes sem User-Agent de
+navegador; os resultados vêm num `<script type="application/json">` com
+`jsonArray`; o filtro que importa é `orgPrin`. O SIORG exige
+`Accept: application/json`.
+
 ## Três camadas
 
 1. **União** (`governo-federal.json`): o grafo federal, mais o nó "Estados e

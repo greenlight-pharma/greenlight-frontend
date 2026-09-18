@@ -50,7 +50,7 @@ button,input{font-family:inherit;font-size:inherit}
 .brand{display:flex;flex-direction:column;gap:1px;min-width:0}
 .brand b{font-size:16px;letter-spacing:-.01em;white-space:nowrap}
 .brand small{color:var(--ink-2);font-size:12px;white-space:nowrap}
-.search{position:relative;flex:1 1 220px;max-width:460px}
+.search{position:relative;flex:1 1 200px;max-width:360px}
 .search input{width:100%;padding:9px 12px 9px 36px;border:1px solid var(--axis);border-radius:10px;background:var(--panel);color:var(--ink)}
 .search svg{position:absolute;left:11px;top:50%;transform:translateY(-50%);width:16px;height:16px;color:var(--mute);pointer-events:none}
 .search .lista{position:absolute;top:calc(100% + 6px);left:0;right:0;background:var(--panel);border:1px solid var(--border);border-radius:12px;box-shadow:0 12px 32px rgba(0,0,0,.14);max-height:min(60vh,380px);overflow:auto;display:none;padding:6px}
@@ -59,7 +59,7 @@ button,input{font-family:inherit;font-size:inherit}
 .search .lista button:hover,.search .lista button.ativo{background:var(--plane)}
 .search .lista .meta{color:var(--mute);font-size:12px;margin-left:auto;white-space:nowrap}
 .chips{display:flex;gap:6px;flex-wrap:wrap}
-.chip{display:inline-flex;align-items:center;gap:6px;padding:6px 10px;border-radius:999px;border:1px solid var(--axis);background:var(--panel);color:var(--ink);cursor:pointer;font-size:13px}
+.chip{display:inline-flex;align-items:center;gap:6px;padding:6px 9px;border-radius:999px;border:1px solid var(--axis);background:var(--panel);color:var(--ink);cursor:pointer;font-size:13px}
 .chip[aria-pressed="false"]{opacity:.45}
 .chip .dot{width:10px;height:10px;border-radius:50%;background:var(--c)}
 .chip .sq{width:10px;height:10px;border-radius:2px;background:var(--c)}
@@ -144,6 +144,90 @@ button,input{font-family:inherit;font-size:inherit}
 .painel .rodape{font-size:12px;color:var(--mute);padding:10px 16px;border-top:1px solid var(--border)}
 .painel .rodape a{color:var(--ink-2)}
 .painel.inicio h2{font-size:20px}
+
+/* ---------- novidades (notícias e mudanças) ---------- */
+.novidades{position:absolute;z-index:7;top:calc(var(--altura-top,60px) + 10px);left:16px;bottom:16px;width:min(440px,calc(100% - 32px));background:var(--panel);border:1px solid var(--border);border-radius:16px;box-shadow:0 16px 48px rgba(0,0,0,.18);display:none;flex-direction:column;overflow:hidden}
+.novidades.aberta{display:flex}
+.novidades header{display:flex;align-items:center;gap:10px;padding:12px 16px;border-bottom:1px solid var(--border)}
+.novidades header h2{margin:0;font-size:17px;flex:1}
+.novidades .corpo{overflow:auto;padding:4px 16px 16px;display:grid;gap:18px;align-content:start}
+.secao h3{margin:14px 0 8px;font-size:15px;display:flex;align-items:center;gap:8px}
+.secao h3 small{font-weight:400;color:var(--mute);font-size:12px;margin-left:auto}
+.secao .desc{margin:0 0 10px;color:var(--ink-2);font-size:13px}
+.frases{margin:0;padding:0;list-style:none;display:grid;gap:8px}
+.frases li{font-size:14px;line-height:1.45;color:var(--ink)}
+.frases .chip-no{display:inline-flex;align-items:center;gap:5px;border:0;background:var(--plane);color:var(--ink);border-radius:999px;padding:1px 8px 1px 3px;cursor:pointer;font-size:13px;vertical-align:middle}
+.frases .chip-no:hover{background:var(--grid)}
+.frases .chip-no .tile.p{width:16px;height:16px}
+.frases .chip-no .tile.p svg{width:11px;height:11px}
+.frases .ref{color:var(--mute);font-size:11px;text-decoration:none;vertical-align:super;margin-left:2px}
+.frases .ref:hover{color:var(--ink)}
+.no-noticiario{display:flex;gap:6px;flex-wrap:wrap;align-items:center}
+.no-noticiario button{display:inline-flex;align-items:center;gap:6px;border:1px solid var(--border);background:var(--plane);color:var(--ink);border-radius:999px;padding:3px 10px 3px 4px;cursor:pointer;font-size:13px}
+.no-noticiario button:hover{background:var(--grid)}
+.no-noticiario button b{font-weight:600}
+.no-noticiario button small{color:var(--mute)}
+.link-poder{margin-left:auto;border:0;background:none;color:var(--ink);cursor:pointer;font-size:13px;text-decoration:underline;text-underline-offset:3px;padding:4px 0}
+.abas{display:inline-flex;border:1px solid var(--axis);border-radius:8px;overflow:hidden;margin-left:auto}
+.abas button{border:0;background:var(--panel);color:var(--ink-2);padding:3px 9px;cursor:pointer;font-size:12px}
+.abas button[aria-pressed="true"]{background:var(--ink);color:var(--surface)}
+.kpis-m{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:10px 0}
+.kpi-m{border:1px solid var(--border);border-radius:10px;padding:8px 10px;background:var(--plane)}
+.kpi-m small{display:block;font-size:10px;text-transform:uppercase;letter-spacing:.06em;color:var(--mute)}
+.kpi-m b{display:block;font-size:20px;letter-spacing:-.02em;margin:2px 0}
+.kpi-m span{font-size:11px;color:var(--ink-2)}
+.kpi-m.alerta b{color:#d03b3b}
+.linha{margin:6px 0 14px}
+.linha .barras{display:flex;align-items:flex-end;gap:2px;height:44px;border-bottom:1px solid var(--grid)}
+.linha .barras i{flex:1;background:var(--exec);border-radius:2px 2px 0 0;opacity:.85;min-height:0;position:relative}
+.linha .barras i[data-n="0"]{background:var(--grid);opacity:1}
+.linha .barras i:hover::after{content:attr(title);position:absolute;bottom:100%;left:50%;transform:translateX(-50%);background:var(--panel);border:1px solid var(--border);border-radius:6px;padding:2px 6px;font-size:11px;white-space:nowrap;color:var(--ink);font-style:normal;margin-bottom:3px}
+.linha .eixo{display:flex;justify-content:space-between;font-size:10px;color:var(--mute);margin-top:3px;font-variant-numeric:tabular-nums}
+.mudancas{display:grid;gap:8px;margin:0;padding:0;list-style:none}
+.mud{border:1px solid var(--border);border-radius:12px;padding:10px 12px;background:var(--plane);display:grid;gap:6px}
+.mud .topo{display:flex;align-items:center;gap:8px;font-size:11px}
+.mud .badge{font-weight:700;letter-spacing:.06em;text-transform:uppercase;border-radius:6px;padding:2px 6px;font-size:10px;background:var(--grid);color:var(--ink-2)}
+.mud .badge.entra{background:color-mix(in srgb,var(--jud) 18%,transparent);color:var(--jud)}
+.mud .badge.sai{background:color-mix(in srgb,#d03b3b 16%,transparent);color:#d03b3b}
+.mud .badge.troca{background:color-mix(in srgb,var(--exec) 18%,transparent);color:var(--exec)}
+.mud .badge.estrutura{background:color-mix(in srgb,var(--leg) 18%,transparent);color:var(--leg)}
+.mud .badge.interino{background:color-mix(in srgb,#c98500 20%,transparent);color:#8a5a00}
+:root[data-theme="dark"] .mud .badge.interino{color:#fab219}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .mud .badge.interino{color:#fab219}}
+.mud .topo a{margin-left:auto;color:var(--mute);text-decoration:none;font-size:11px}
+.mud .topo a:hover{color:var(--ink);text-decoration:underline}
+.mud .cargo{font-size:14px;font-weight:600;line-height:1.3}
+.mud .quem{display:grid;grid-template-columns:auto 1fr;gap:2px 10px;font-size:13px;background:var(--panel);border:1px solid var(--border);border-radius:8px;padding:6px 10px}
+.mud .quem small{font-size:10px;text-transform:uppercase;letter-spacing:.06em;color:var(--mute);padding-top:3px}
+.mud .quem i{color:var(--mute)}
+.mud .orgao{display:inline-flex;align-items:center;gap:6px;border:0;background:none;color:var(--ink-2);padding:0;cursor:pointer;font-size:12px;text-align:left}
+.mud .orgao:hover{color:var(--ink)}
+.mud .orgao .tile.p{width:16px;height:16px}
+.mud .orgao .tile.p svg{width:11px;height:11px}
+.mostrar-todas{display:flex;align-items:center;gap:8px;font-size:12px;color:var(--ink-2);margin:6px 0 0}
+.fontes-lista{font-size:12px;color:var(--mute);margin:0;padding-left:16px}
+.fontes-lista a{color:var(--ink-2)}
+.vazio{color:var(--mute);font-size:13px;padding:8px 0}
+
+/* ---------- mapa do poder ---------- */
+.poder-cab{display:flex;align-items:flex-end;gap:16px;flex-wrap:wrap;margin-bottom:18px}
+.poder-cab p{margin:0}
+.poder-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:24px}
+.poder-lista{display:grid;gap:6px;margin:0;padding:0;list-style:none}
+.poder-lista li{display:grid;grid-template-columns:28px 34px 1fr auto;gap:10px;align-items:center;border:1px solid var(--border);border-radius:12px;padding:8px 12px;background:var(--panel);cursor:pointer}
+.poder-lista li:hover{background:var(--plane)}
+.poder-lista .pos{font-size:12px;color:var(--mute);font-variant-numeric:tabular-nums;text-align:right}
+.poder-lista .avatar{width:34px;height:34px;border-radius:50%;background:var(--ink);color:var(--surface);display:inline-flex;align-items:center;justify-content:center;font-weight:700;font-size:13px}
+.poder-lista .tile{width:34px;height:34px}
+.poder-lista .tile svg{width:20px;height:20px}
+.poder-lista .nome{min-width:0}
+.poder-lista .nome b{display:block;font-size:14px;line-height:1.25}
+.poder-lista .nome small{color:var(--mute);font-size:12px}
+.poder-lista .barra{height:4px;background:var(--grid);border-radius:2px;margin-top:5px;overflow:hidden}
+.poder-lista .barra i{display:block;height:100%;background:var(--c,var(--exec))}
+.poder-lista .n{text-align:right;font-size:12px;color:var(--ink-2);white-space:nowrap}
+.poder-lista .n b{display:block;font-size:16px;color:var(--ink)}
+
 .atalhos{display:grid;grid-template-columns:1fr 1fr;gap:6px}
 .atalhos button{display:flex;align-items:center;gap:9px;text-align:left;border:1px solid var(--border);background:var(--plane);color:var(--ink);padding:9px 10px;border-radius:10px;cursor:pointer;font-size:13px;line-height:1.2;min-height:46px}
 .atalhos button:hover{background:var(--grid)}
@@ -181,6 +265,9 @@ tbody tr:hover{background:var(--plane)}
   .legenda{bottom:56px;left:12px}
   .btn-legenda{bottom:12px;left:12px;padding:7px 10px}
   .atalhos{grid-template-columns:1fr}
+  .novidades{top:auto;left:8px;right:8px;bottom:8px;width:auto;max-height:70vh}
+  .kpis-m{grid-template-columns:1fr 1fr 1fr;gap:6px}
+  .kpi-m b{font-size:17px}
   .status{display:none}
   .zoom{bottom:auto;top:calc(var(--altura-top,120px) + 8px)}
 }
@@ -205,9 +292,10 @@ tbody tr:hover{background:var(--plane)}
     <button class="chip" data-poder="essencial" aria-pressed="true" style="--c:var(--ess)"><i class="dot"></i>Funções essenciais</button>
   </div>
   <div class="acoes">
-    <button class="ghost" id="btn-ajuda" title="Como usar o mapa">Como usar</button>
+    <button class="ghost" id="btn-novidades" title="Últimas notícias e mudanças">Novidades</button>
     <button class="ghost" id="btn-tabela">Tabela</button>
-    <button class="ghost" id="btn-sobre">Sobre os dados</button>
+    <button class="ghost" id="btn-sobre" title="Sobre os dados">Sobre</button>
+    <button class="ghost" id="btn-ajuda" title="Como usar o mapa" aria-label="Como usar o mapa">?</button>
     <button class="ghost" id="btn-tema" title="Alternar tema claro ou escuro" aria-label="Alternar tema claro ou escuro">◐</button>
   </div>
 </div>
@@ -225,6 +313,23 @@ tbody tr:hover{background:var(--plane)}
 
 <button class="btn-legenda" id="btn-legenda" aria-expanded="false" aria-controls="legenda">Legenda <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="m6 15 6-6 6 6"/></svg></button>
 <div class="legenda" id="legenda" aria-label="Legenda"></div>
+
+<aside class="novidades" id="novidades" aria-label="Novidades">
+  <header>
+    <h2>Novidades</h2>
+    <button class="ghost" id="btn-poder">Mapa do poder</button>
+    <button class="fechar" id="n-fechar" aria-label="Fechar" style="border:0;background:none;color:var(--mute);font-size:22px;line-height:1;cursor:pointer">×</button>
+  </header>
+  <div class="corpo" id="n-corpo"></div>
+</aside>
+
+<section class="folha" id="folha-poder" aria-labelledby="poder-titulo">
+  <div class="conteudo">
+    <button class="ghost fechar" data-fecha="folha-poder">Voltar ao grafo</button>
+    <h1 id="poder-titulo">Mapa do poder: quem está no noticiário</h1>
+    <div id="poder-corpo"></div>
+  </div>
+</section>
 
 <aside class="painel" id="painel" aria-live="polite">
   <header>
@@ -259,6 +364,8 @@ tbody tr:hover{background:var(--plane)}
     <h2>Regra sobre pessoas</h2>
     <p>Estrutura sim, pessoas só com fonte. Só aparecem ocupantes com mandato fixo, confirmados em fonte oficial e com data de verificação (Presidência, Vice, Casas do Congresso, STF, STJ, TSE, TCU, PGR e Banco Central). Cada cargo tem uma situação explícita: titular, interino ou substituto, vago, ou não verificado. “Vago” é uma afirmação e exige fonte e data; “não verificado” é ausência de dado. Um campo vazio é melhor que um nome errado.</p>
     <p>Toda segunda-feira, um fluxo automático baixa o SIORG, a Câmara e o Senado, remonta este arquivo, lê a seção 2 do Diário Oficial da União e abre um PR para revisão. Nenhum nome entra sem uma pessoa aprovar.</p>
+    <h2>Agentes diários</h2>
+    <p>Todo dia às 7h, três agentes leem as fontes oficiais e alimentam o botão “Novidades”: o do Diário Oficial registra cada nomeação, exoneração e designação assinada pelo Presidente ou pela Casa Civil (seção 2), com link para o ato; o de estrutura compara a foto do SIORG com a do dia anterior e anota órgãos criados, extintos ou renomeados; o de notícias lê a Agência Brasil, a Agência Câmara, a Agência Senado, as notícias do STF e o Planalto, liga cada matéria aos órgãos do mapa e monta o “Mapa do poder”, quem mais aparece no noticiário. Os feeds registram o que as fontes publicaram; o ocupante de um cargo no mapa só muda depois da revisão do PR semanal.</p>
     <h2>Fontes</h2>
     <ul id="fontes"></ul>
     <h2>O que ainda falta</h2>
@@ -755,6 +862,14 @@ function selecionar(id, centrar){
   if (n.ligacoes_externas && n.ligacoes_externas.length) {
     html += `<div class="bloco ext"><h3>Ligações com a União</h3>` + n.ligacoes_externas.map(l => `<button data-ext-vista="${esc(l.vista)}" data-ext-id="${esc(l.id)}">↗ ${esc(l.rotulo)}<small style="margin-left:auto">Brasil</small></button>`).join('') + `</div>`;
   }
+  if (vistaAtual === 'federal' && FEED.mudancas) {
+    const minhas = (FEED.mudancas.mudancas || []).filter(m => m.no_id === id && (diasAtras(m.data || m.publicado_em) ?? 999) <= 120).slice(0, 8);
+    if (minhas.length) html += `<div class="bloco"><h3>Mudanças recentes (DOU e SIORG)</h3><ul class="mudancas">${minhas.map(cartaoMudanca).join('')}</ul></div>`;
+  }
+  if (vistaAtual === 'federal' && FEED.noticias) {
+    const arts = (FEED.noticias.artigos || []).filter(a => (a.nos || []).includes(id)).slice(0, 5);
+    if (arts.length) html += `<div class="bloco"><h3>No noticiário</h3><div class="lista-nos">${arts.map(a => `<a href="${esc(a.url)}" target="_blank" rel="noopener" style="display:block;padding:6px 8px;border-radius:8px;text-decoration:none;color:var(--ink);font-size:13px;line-height:1.35">${esc(a.titulo)}<small style="display:block;color:var(--mute);font-size:11px">${esc(FONTES_NOME[a.fonte] || a.fonte)} · ${esc(relTempo(a.data))}</small></a>`).join('')}</div></div>`;
+  }
   if (n.pai) {
     const pai = V.porId.get(n.pai); const ar = V.dados.arestas.find(a => a.hierarquica && a.para === id);
     html += `<div class="bloco"><h3>${esc(cap(ar.tipo))}</h3><div class="lista-nos">${itemNo(pai)}</div></div>`;
@@ -777,9 +892,126 @@ painel.addEventListener('click', e => {
   const v = e.target.closest('button[data-vista]'); if (v) { abrirVista(v.dataset.vista, `uf-${v.dataset.vista}`); return; }
   const x = e.target.closest('button[data-ext-vista]'); if (x) { abrirVista(x.dataset.extVista, x.dataset.extId); return; }
   const br = e.target.closest('button[data-brasil]'); if (br) { abrirVista('federal', null); return; }
-  const b = e.target.closest('button[data-id]'); if (b) selecionar(b.dataset.id, true);
+  const b = e.target.closest('button[data-id]'); if (b) { selecionar(b.dataset.id, true); return; }
+  const o = e.target.closest('[data-no]'); if (o) selecionar(o.dataset.no, true);
 });
 $('#p-fechar').onclick = () => selecionar(null);
+
+// ------------------------------------------------------------ novidades: feeds dos agentes
+// mudancas.json (DOU e SIORG) e noticias.json (agências públicas) são gravados
+// todo dia por scripts/governo/agentes/ via GitHub Actions. Podem não existir.
+let FEED = {mudancas: null, noticias: null};
+async function carregarFeeds(){
+  const pega = async u => { try { const r = await fetch(u, {cache:'no-cache'}); return r.ok ? await r.json() : null; } catch (e) { return null; } };
+  [FEED.mudancas, FEED.noticias] = await Promise.all([pega('dados/mudancas.json'), pega('dados/noticias.json')]);
+}
+const diasAtras = iso => { if (!iso) return null; const d = new Date(iso.length === 10 ? iso + 'T12:00:00' : iso); return Math.max(0, Math.round((Date.now() - d.getTime()) / 864e5)); };
+const fmtDia = iso => iso ? `${iso.slice(8,10)}/${iso.slice(5,7)}` : '';
+const relTempo = iso => { const d = diasAtras(iso); if (d === null) return ''; if (d === 0) { const h = Math.max(1, Math.round((Date.now() - new Date(iso).getTime())/36e5)); return h < 24 ? `há ${h} h` : 'hoje'; } return d === 1 ? 'ontem' : `há ${d} dias`; };
+const federalNo = id => id && cacheVistas.get('federal') && cacheVistas.get('federal').nos.find(n => n.id === id);
+const chipNo = (id, extra='') => { const n = federalNo(id); if (!n) return ''; return `<button class="chip-no" data-no="${esc(id)}" ${extra}>${tile(n,'p')}${esc(n.sigla || n.nome)}</button>`; };
+const FONTES_NOME = {agenciabrasil:'Agência Brasil', camara:'Agência Câmara', senado:'Agência Senado', stf:'Notícias do STF', planalto:'Planalto'};
+let janelaMud = 30, mostrarTodas = false;
+
+function mudancasNaJanela(dias){
+  const lista = (FEED.mudancas && FEED.mudancas.mudancas) || [];
+  return lista.filter(m => { const d = diasAtras(m.data || m.publicado_em); return d !== null && d <= dias; });
+}
+function cartaoMudanca(m){
+  const badge = m.tipo === 'estrutura' ? '<span class="badge estrutura">Estrutura</span>'
+    : m.tipo === 'troca' ? '<span class="badge troca">Troca</span>'
+    : m.tipo === 'nomeacao' ? '<span class="badge entra">Nomeado</span>' : '<span class="badge sai">Saiu</span>';
+  const interino = m.interino ? '<span class="badge interino">Interino</span>' : '';
+  const n = federalNo(m.no_id);
+  const orgao = n ? `<button class="orgao" data-no="${esc(n.id)}">${tile(n,'p')}${esc(n.nome)}</button>` : (m.orgao ? `<span class="orgao">${esc(m.orgao)}</span>` : '');
+  let quem = '';
+  if (m.tipo === 'estrutura') quem = `<div style="font-size:13px;color:var(--ink-2)">${esc(m.resumo || '')}</div>`;
+  else quem = `<div class="quem"><small>Sai</small><span>${m.sai ? esc(m.sai) : '<i>sem registro do antecessor</i>'}</span><small>Entra</small><span>${m.entra ? esc(m.entra) + (m.interino ? ' <i>(interino)</i>' : '') : '<i>cargo fica vago</i>'}</span></div>`;
+  return `<li class="mud"><div class="topo">${badge}${interino}<span style="color:var(--mute)">${esc(fmtDia(m.data))}${m.a_pedido ? ' · a pedido' : ''}</span><a href="${esc(m.fonte)}" target="_blank" rel="noopener" title="${esc(m.ato || m.fonte_nome || '')}">${esc(m.fonte_nome || 'fonte')} ↗</a></div>` +
+    (m.tipo === 'estrutura' ? `<div class="cargo">${esc(m.orgao || '')}</div>` : `<div class="cargo">${esc(m.cargo || '')}</div>`) + quem + (orgao ? `<div>${orgao}</div>` : '') + `</li>`;
+}
+function montarNovidades(){
+  const corpo = $('#n-corpo');
+  const N = FEED.noticias, M = FEED.mudancas;
+  let html = '';
+  // ---- últimas notícias
+  html += `<section class="secao"><h3>Últimas notícias<small>${N ? 'atualizado ' + esc(relTempo(N.meta.gerado_em)) : ''}</small></h3>`;
+  if (N && N.resumo && N.resumo.length) {
+    const art = id => (N.artigos || []).find(a => a.id === id);
+    html += `<ul class="frases">` + N.resumo.map((f, i) => { const a = art(f.artigo_id); return `<li>${f.no_id ? chipNo(f.no_id) + ' ' : ''}${esc(f.texto)}${a ? `<a class="ref" href="${esc(a.url)}" target="_blank" rel="noopener" title="${esc(FONTES_NOME[a.fonte] || a.fonte)}">${i+1}</a>` : ''}</li>`; }).join('') + `</ul>`;
+    const top = (N.ranking && N.ranking.orgaos || []).filter(r => federalNo(r.id)).slice(0, 6);
+    if (top.length) html += `<h3 style="font-size:13px;margin-top:12px">Quem está no noticiário<button class="link-poder" id="link-poder">Mapa do poder ›</button></h3><div class="no-noticiario">` + top.map(r => { const n = federalNo(r.id); return `<button data-no="${esc(r.id)}">${tile(n,'p')}<b>${esc(n.sigla || n.nome)}</b><small>${r.artigos}</small></button>`; }).join('') + `</div>`;
+    if (N.meta.resumo_por === 'manchetes') html += `<p class="desc" style="margin-top:8px">Manchetes das agências públicas que citam órgãos do mapa. O resumo em frases entra quando o agente roda com a Claude.</p>`;
+  } else {
+    html += `<p class="vazio">O agente de notícias ainda não rodou. Ele lê a Agência Brasil, a Agência Câmara, a Agência Senado, as notícias do STF e o Planalto todo dia às 7h.</p>`;
+  }
+  html += `</section>`;
+  // ---- últimas mudanças
+  const fed = cacheVistas.get('federal');
+  const vagos = fed ? fed.nos.filter(n => n.cargo && n.cargo.situacao === 'vago').length : 0;
+  const interinos = fed ? fed.nos.filter(n => n.cargo && n.cargo.situacao === 'interino').length : 0;
+  const todas = mudancasNaJanela(janelaMud);
+  const relevantes = todas.filter(m => m.nivel === 'comando' || m.nivel === 'alta' || m.tipo === 'estrutura');
+  const lista = mostrarTodas ? todas : relevantes;
+  const ultima = (M && M.mudancas && M.mudancas[0]) ? M.mudancas[0].data : null;
+  html += `<section class="secao"><h3>Últimas mudanças<span class="abas" role="group" aria-label="Janela">${[7,30,90].map(d => `<button data-janela="${d}" aria-pressed="${d===janelaMud}">${d}D</button>`).join('')}</span></h3>`;
+  html += `<p class="desc">Agentes leem todo dia o Diário Oficial (decretos do Presidente e portarias da Casa Civil) e o SIORG para registrar cada nomeação, saída e mudança de estrutura, com link para o ato.</p>`;
+  html += `<div class="kpis-m"><div class="kpi-m${vagos ? ' alerta' : ''}"><small>Cargos vagos</small><b>${vagos}</b><span>sem ocupante, com fonte</span></div><div class="kpi-m"><small>Interinos</small><b>${interinos}</b><span>respondendo pelo cargo</span></div><div class="kpi-m"><small>Última mudança</small><b>${ultima ? (diasAtras(ultima) === 0 ? 'hoje' : diasAtras(ultima) + ' d') : '–'}</b><span>${ultima ? 'atrás, em ' + fmtDia(ultima) : 'sem registro'}</span></div></div>`;
+  // linha do tempo: uma barra por dia
+  const porDia = new Map();
+  for (const m of lista) { const d = diasAtras(m.data || m.publicado_em); porDia.set(d, (porDia.get(d) || 0) + 1); }
+  const max = Math.max(1, ...porDia.values());
+  let barras = '';
+  for (let d = janelaMud; d >= 0; d--) { const n = porDia.get(d) || 0; barras += `<i data-n="${n}" style="height:${n ? Math.max(12, Math.round(n/max*100)) : 3}%" title="${n} ${n === 1 ? 'mudança' : 'mudanças'} ${d === 0 ? 'hoje' : d === 1 ? 'ontem' : 'há ' + d + ' dias'}"></i>`; }
+  html += `<div class="linha"><div style="display:flex;justify-content:space-between;font-size:10px;text-transform:uppercase;letter-spacing:.06em;color:var(--mute);margin-bottom:4px"><span>Linha do tempo</span><span>${lista.length} ${lista.length === 1 ? 'mudança' : 'mudanças'} na janela</span></div><div class="barras">${barras}</div><div class="eixo"><span>${janelaMud} d atrás</span><span>hoje</span></div></div>`;
+  if (!M) html += `<p class="vazio">O agente do Diário Oficial ainda não rodou.</p>`;
+  else if (!lista.length) html += `<p class="vazio">Nenhuma mudança ${mostrarTodas ? '' : 'de nível alto '}nos últimos ${janelaMud} dias.</p>`;
+  else html += `<ul class="mudancas">` + lista.slice(0, 60).map(cartaoMudanca).join('') + (lista.length > 60 ? `<li class="vazio">… e mais ${lista.length - 60}. Reduza a janela.</li>` : '') + `</ul>`;
+  html += `<label class="mostrar-todas"><input type="checkbox" id="chk-todas" ${mostrarTodas ? 'checked' : ''}> Mostrar todas, inclusive diretores de departamento e coordenadores (${todas.length})</label>`;
+  html += `</section>`;
+  // ---- fontes
+  html += `<section class="secao"><h3>Fontes dos agentes</h3><ul class="fontes-lista">` +
+    (M ? `<li><a href="${esc(M.meta.fonte ? M.meta.fonte.url : '#')}" target="_blank" rel="noopener">${esc(M.meta.fonte ? M.meta.fonte.nome : 'DOU')}</a> · ${esc(relTempo(M.meta.gerado_em))}${M.meta.estrutura_verificada_em ? ' · SIORG conferido em ' + esc(fmtDia(M.meta.estrutura_verificada_em)) : ''}</li>` : '') +
+    (N ? (N.meta.fontes || []).map(f => `<li><a href="${esc(f.url)}" target="_blank" rel="noopener">${esc(f.nome)}</a></li>`).join('') : '') +
+    `<li>Regra: o feed registra o que as fontes publicaram; ocupantes no mapa só mudam com revisão humana. <a href="#" data-sobre="1">Sobre os dados</a></li></ul></section>`;
+  corpo.innerHTML = html;
+}
+const novidades = $('#novidades');
+function abrirNovidades(aberto){
+  novidades.classList.toggle('aberta', aberto);
+  if (aberto) { montarNovidades(); $('#n-corpo').scrollTop = 0; }
+}
+$('#btn-novidades').onclick = () => abrirNovidades(!novidades.classList.contains('aberta'));
+$('#n-fechar').onclick = () => abrirNovidades(false);
+novidades.addEventListener('click', e => {
+  const j = e.target.closest('button[data-janela]'); if (j) { janelaMud = +j.dataset.janela; montarNovidades(); return; }
+  const n = e.target.closest('[data-no]'); if (n) { if (vistaAtual !== 'federal') abrirVista('federal', n.dataset.no); else selecionar(n.dataset.no, true); if (W <= 720) abrirNovidades(false); return; }
+  if (e.target.closest('#link-poder') || e.target.closest('#btn-poder')) { abrirPoder(); return; }
+  const a = e.target.closest('a[data-sobre]'); if (a) { e.preventDefault(); $('#folha-sobre').classList.add('aberta'); }
+});
+novidades.addEventListener('change', e => { if (e.target.id === 'chk-todas') { mostrarTodas = e.target.checked; montarNovidades(); } });
+
+// ------------------------------------------------------------ mapa do poder: quem está no noticiário
+const iniciais = nome => nome.split(/\s+/).filter(p => p.length > 2 || /^[A-Z]/.test(p)).map(p => p[0]).filter(Boolean).slice(0, 2).join('').toUpperCase();
+function abrirPoder(){
+  const N = FEED.noticias; const corpo = $('#poder-corpo');
+  if (!N) { corpo.innerHTML = '<p class="vazio">O agente de notícias ainda não rodou.</p>'; $('#folha-poder').classList.add('aberta'); return; }
+  const orgaos = (N.ranking.orgaos || []).filter(r => federalNo(r.id)).slice(0, 20);
+  const pessoas = (N.ranking.pessoas || []).slice(0, 20);
+  const maxO = Math.max(1, ...orgaos.map(r => r.artigos)), maxP = Math.max(1, ...pessoas.map(r => r.artigos));
+  const fontes = (N.meta.fontes || []).length;
+  let html = `<div class="poder-cab"><p>Os órgãos e as pessoas mais citados em <b>${N.meta.total_artigos}</b> matérias de <b>${fontes}</b> ${fontes === 1 ? 'fonte pública' : 'fontes públicas'} nos últimos ${N.meta.janela_dias} dias. Contagem por matéria que cita o nome ou a sigla; a fonte institucional não conta a si mesma.</p></div>`;
+  html += `<div class="poder-grid"><div><h2 style="margin:0 0 10px">Órgãos</h2>`;
+  html += orgaos.length ? `<ol class="poder-lista">` + orgaos.map((r, i) => { const n = federalNo(r.id); return `<li data-no="${esc(r.id)}"><span class="pos">${i+1}</span>${tile(n)}<span class="nome"><b>${esc(n.nome)}</b><small>${esc(V ? (V.PODERES[n.poder] || '') : '')}${r.ultima ? ' · no noticiário ' + esc(relTempo(r.ultima)) : ''}</small><span class="barra" style="--c:${corDe(n)}"><i style="width:${Math.round(r.artigos/maxO*100)}%"></i></span></span><span class="n"><b>${r.artigos}</b>${r.artigos === 1 ? 'matéria' : 'matérias'}</span></li>`; }).join('') + `</ol>` : `<p class="vazio">Nenhum órgão citado ainda.</p>`;
+  html += `</div><div><h2 style="margin:0 0 10px">Pessoas</h2>`;
+  html += pessoas.length ? `<ol class="poder-lista">` + pessoas.map((r, i) => `<li ${r.no_id ? `data-no="${esc(r.no_id)}"` : ''}><span class="pos">${i+1}</span><span class="avatar">${esc(iniciais(r.nome))}</span><span class="nome"><b>${esc(r.nome)}</b><small>${esc(r.cargo || '')}${r.ultima ? ' · no noticiário ' + esc(relTempo(r.ultima)) : ''}</small><span class="barra"><i style="width:${Math.round(r.artigos/maxP*100)}%"></i></span></span><span class="n"><b>${r.artigos}</b>${r.artigos === 1 ? 'matéria' : 'matérias'}</span></li>`).join('') + `</ol>`
+    : `<p class="vazio">Só contamos pessoas cujo cargo está verificado no mapa (hoje: ${cacheVistas.get('federal') ? cacheVistas.get('federal').nos.filter(n => n.cargo && n.cargo.ocupante).length : 0} ocupantes). Nenhuma delas foi citada no período.</p>`;
+  html += `</div></div>`;
+  corpo.innerHTML = html;
+  $('#folha-poder').classList.add('aberta');
+}
+$('#poder-corpo').addEventListener('click', e => { const li = e.target.closest('li[data-no]'); if (li) { $('#folha-poder').classList.remove('aberta'); if (vistaAtual !== 'federal') abrirVista('federal', li.dataset.no); else selecionar(li.dataset.no, true); } });
+$('#btn-poder').onclick = () => abrirPoder();
 
 // ------------------------------------------------------------ painel “Comece por aqui”
 function mostrarInicio(){
@@ -799,6 +1031,7 @@ function mostrarInicio(){
     <div class="bloco"><h3>Comece por aqui</h3><div class="atalhos">${botoes}
       <label class="estado">${federal ? '<i class="tile" style="--c:var(--uniao);color:var(--surface)">' + svgIcone('pino') + '</i>Meu estado' : '<i class="tile" style="--c:var(--uniao);color:var(--surface)">' + svgIcone('mapa') + '</i>Outro estado'}<select id="sel-uf" aria-label="Escolher um estado"><option value="">escolher…</option>${ufs}</select></label>
     </div></div>
+    <div class="bloco"><button class="btn-vista" data-novidades="1">Ver últimas notícias e mudanças ›</button></div>
     <div class="bloco"><h3>Como ler o mapa</h3><ul class="como">
       <li><i class="tile" style="--c:var(--exec);color:#fff">${svgIcone('bandeira')}</i><span><b>Cor é o Poder.</b> Azul Executivo, laranja Legislativo, verde Judiciário, cinza funções essenciais à Justiça.</span></li>
       <li><i class="tile q" style="--c:var(--ink-2);color:var(--surface)">${svgIcone('escudo_check')}</i><span><b>Ícone é o tipo.</b> Colunas para ministério, balança para tribunal, escudo com visto para agência reguladora. A legenda fica no canto inferior esquerdo, ao lado do zoom.</span></li>
@@ -810,6 +1043,7 @@ function mostrarInicio(){
   desenhar();
 }
 painel.addEventListener('change', e => { if (e.target.id === 'sel-uf' && e.target.value) abrirVista(e.target.value, `uf-${e.target.value}`); });
+painel.addEventListener('click', e => { if (e.target.closest('button[data-novidades]')) { abrirNovidades(true); if (W <= 720) selecionar(null); } });
 painel.addEventListener('click', e => { const a = e.target.closest('a[data-sobre]'); if (a) { e.preventDefault(); $('#folha-sobre').classList.add('aberta'); } });
 $('#btn-ajuda').onclick = () => mostrarInicio();
 
@@ -911,7 +1145,7 @@ busca.addEventListener('keydown', e => {
 });
 resultados.addEventListener('click', e => escolher(e.target.closest('button')));
 document.addEventListener('click', e => { if (!e.target.closest('.search')) fecharBusca(); });
-document.addEventListener('keydown', e => { if (e.key === '/' && document.activeElement !== busca) { e.preventDefault(); busca.focus(); } if (e.key === 'Escape' && !resultados.classList.contains('aberta')) { document.querySelectorAll('.folha.aberta').forEach(f=>f.classList.remove('aberta')); if (selecionado) selecionar(null); } });
+document.addEventListener('keydown', e => { if (e.key === '/' && document.activeElement !== busca) { e.preventDefault(); busca.focus(); } if (e.key === 'Escape' && !resultados.classList.contains('aberta')) { document.querySelectorAll('.folha.aberta').forEach(f=>f.classList.remove('aberta')); if (novidades.classList.contains('aberta')) abrirNovidades(false); else if (selecionado) selecionar(null); } });
 
 // ------------------------------------------------------------ filtros
 $('#filtros').addEventListener('click', e => {
@@ -953,7 +1187,7 @@ function montarSobre(d){
 window.addEventListener('resize', redimensionar);
 redimensionar();
 try {
-  const federal = await carregarDados('federal');
+  const [federal] = await Promise.all([carregarDados('federal'), carregarFeeds()]);
   montarSobre(federal);
   const h = decodeURIComponent(location.hash.slice(1)); const [a, b] = h.split('/');
   if (UFS.includes(a)) await abrirVista(a, b || `uf-${a}`, false);

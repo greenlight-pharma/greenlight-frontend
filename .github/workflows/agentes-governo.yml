@@ -1,0 +1,72 @@
+name: Mapa do Governo, agentes diários
+
+# Todo dia às 7h (Brasília) os três agentes leem as fontes oficiais e
+# regravam os feeds que o site mostra em "Novidades":
+#   agente_dou.py        -> governo/dados/mudancas.json  (nomeações, exonerações)
+#   agente_estrutura.py  -> governo/dados/mudancas.json  (órgãos criados, extintos, renomeados)
+#   agente_noticias.py   -> governo/dados/noticias.json  (últimas notícias e quem está no noticiário)
+#
+# Os feeds são registros do que as fontes publicaram, cada um com link para
+# a fonte, e entram direto na branch. Ocupantes de cargo no grafo continuam
+# mudando só pelo PR semanal (grafo-governo.yml), com revisão humana.
+#
+# ANTHROPIC_API_KEY (secret opcional): com ela, a Claude escreve o resumo
+# das notícias e confirma o órgão dos atos de nível alto. Sem ela, tudo sai
+# só pelas regras: manchetes no lugar do resumo, e casamento por nome.
+on:
+  schedule:
+    - cron: "0 10 * * *"
+  workflow_dispatch:
+    inputs:
+      dias:
+        description: "Dias do DOU para trás"
+        default: "3"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: agentes-governo
+  cancel-in-progress: false
+
+jobs:
+  agentes:
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Instalar o SDK da Anthropic (só usado se houver chave)
+        run: pip install --quiet anthropic
+
+      - name: Diário Oficial (seção 2, decretos e portarias da Casa Civil)
+        continue-on-error: true
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+        run: python3 scripts/governo/agentes/agente_dou.py --dias "${{ github.event.inputs.dias || '3' }}"
+
+      - name: Estrutura (SIORG, órgãos criados, extintos e renomeados)
+        continue-on-error: true
+        run: python3 scripts/governo/agentes/agente_estrutura.py
+
+      - name: Notícias (Agência Brasil, Câmara, Senado, STF, Planalto)
+        continue-on-error: true
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+        run: python3 scripts/governo/agentes/agente_noticias.py
+
+      - name: Gravar os feeds
+        run: |
+          git config user.name "agentes do Mapa do Governo"
+          git config user.email "bot@mapadogoverno.com.br"
+          git add governo/dados/mudancas.json governo/dados/noticias.json scripts/governo/dados/siorg-foto.json
+          if git diff --cached --quiet; then
+            echo "nada mudou"
+          else
+            git commit -m "chore(governo): feeds diários (DOU, SIORG, notícias) de $(date -u +%Y-%m-%d)"
+            git push
+          fi
