@@ -16,6 +16,17 @@
       "permanent": true
     },
     {
+      "source": "/",
+      "has": [
+        {
+          "type": "host",
+          "value": "mapadogoverno.com.br"
+        }
+      ],
+      "destination": "/governo/",
+      "permanent": false
+    },
+    {
       "source": "/painel-ubs",
       "destination": "/medicacoes",
       "permanent": false

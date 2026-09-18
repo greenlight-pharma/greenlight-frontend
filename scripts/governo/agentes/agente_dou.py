@@ -291,7 +291,7 @@ def refinar_com_claude(registros, grafo):
                 "type": "object",
                 "properties": {
                     "id": {"type": "string"},
-                    "no_id": {"type": ["string", "null"]},
+                    "no_id": {"anyOf": [{"type": "string"}, {"type": "null"}]},
                     "nivel": {"type": "string", "enum": ["comando", "alta", "outra"]},
                     "resumo": {"type": "string"},
                 },
@@ -309,7 +309,9 @@ def refinar_com_claude(registros, grafo):
         "'Fulano assume a Secretaria X do Ministério Y' ou 'Beltrano deixa o cargo de ...; assume Sicrano'. "
         "Não invente nomes nem cargos: use só o que está no ato."
     )
-    client = anthropic.Anthropic()
+    # Chave no nível da organização exige o workspace no cabeçalho (variável do repositório).
+    ws = os.environ.get("ANTHROPIC_WORKSPACE_ID")
+    client = anthropic.Anthropic(default_headers={"anthropic-workspace-id": ws} if ws else None)
     pedido = {"orgaos": candidatos, "atos": [{k: r[k] for k in ("id", "cargo", "entra", "sai", "interino", "a_pedido", "no_id", "nivel")} for r in alvo]}
     try:
         resposta = client.beta.messages.create(
@@ -322,7 +324,7 @@ def refinar_com_claude(registros, grafo):
             output_config={"format": {"type": "json_schema", "schema": esquema}},
         )
     except anthropic.APIStatusError as e:
-        print(f"  Claude respondeu erro {e.status_code}; feed segue só com as regras", file=sys.stderr)
+        print(f"  Claude respondeu erro {e.status_code}; feed segue só com as regras: {getattr(e, 'message', e)}", file=sys.stderr)
         return 0
     except anthropic.APIConnectionError as e:
         print(f"  sem conexão com a API da Claude ({e}); feed segue só com as regras", file=sys.stderr)

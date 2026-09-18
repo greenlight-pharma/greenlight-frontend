@@ -135,7 +135,7 @@ def resumo_com_claude(artigos, grafo):
         "type": "object",
         "properties": {"frases": {"type": "array", "items": {
             "type": "object",
-            "properties": {"texto": {"type": "string"}, "artigo": {"type": "integer"}, "no_id": {"type": ["string", "null"]}},
+            "properties": {"texto": {"type": "string"}, "artigo": {"type": "integer"}, "no_id": {"anyOf": [{"type": "string"}, {"type": "null"}]}},
             "required": ["texto", "artigo", "no_id"], "additionalProperties": False}}},
         "required": ["frases"], "additionalProperties": False,
     }
@@ -145,7 +145,9 @@ def resumo_com_claude(artigos, grafo):
                  "mais relevantes sobre estrutura, cargos, nomeações, decisões dos Poderes ou políticas públicas e escreva "
                  "uma frase curta e factual para cada, em português direto, sem adjetivos, citando o órgão pelo nome. "
                  "Em 'artigo' devolva o índice i da matéria; em 'no_id' o id do órgão principal citado (da lista 'nos'), ou null.")
-    client = anthropic.Anthropic()
+    # Chave no nível da organização exige o workspace no cabeçalho (variável do repositório).
+    ws = os.environ.get("ANTHROPIC_WORKSPACE_ID")
+    client = anthropic.Anthropic(default_headers={"anthropic-workspace-id": ws} if ws else None)
     try:
         resposta = client.beta.messages.create(
             model="claude-opus-5", max_tokens=4000,
@@ -155,7 +157,7 @@ def resumo_com_claude(artigos, grafo):
             output_config={"format": {"type": "json_schema", "schema": esquema}},
         )
     except anthropic.APIStatusError as e:
-        print(f"  Claude respondeu erro {e.status_code}; resumo sai pelas manchetes", file=sys.stderr)
+        print(f"  Claude respondeu erro {e.status_code}; resumo sai pelas manchetes: {getattr(e, 'message', e)}", file=sys.stderr)
         return None
     except anthropic.APIConnectionError as e:
         print(f"  sem conexão com a API da Claude ({e})", file=sys.stderr)
