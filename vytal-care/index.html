@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Vytal Care — Continuidade do cuidado entre as consultas</title>
-<meta name="description" content="Já disponível. O Vytal Care mantém o paciente conectado à rede de saúde entre uma consulta e outra: cadastro da prescrição, lembretes de medicação por WhatsApp, confirmação das tomadas e um painel de adesão para a equipe de saúde.">
+<meta name="description" content="Já disponível para médicos de todas as especialidades e outros profissionais de saúde. O Vytal Care mantém o paciente acompanhado entre uma consulta e outra: cadastro da prescrição, lembretes de medicação por WhatsApp, confirmação das tomadas e um painel de adesão para a equipe de saúde.">
 <link rel="canonical" href="https://www.vytalsaude.com.br/vytal-care">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://www.vytalsaude.com.br/vytal-care">
@@ -126,6 +126,23 @@ section{padding:76px 0;scroll-margin-top:68px}
 .incl li{list-style:none;padding-left:26px;position:relative;color:var(--ink)}
 .incl li::before{content:"✓";position:absolute;left:0;color:var(--mint);font-weight:700}
 .pfoot{margin-top:24px;color:var(--mute);font-size:.95rem}
+/* para quem */
+.who .group{margin-top:44px}
+.who .group:first-of-type{margin-top:0}
+.who .ghead{display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:8px 24px;margin-bottom:18px}
+.who .ghead h3{font-size:1.35rem;color:var(--navy)}
+.who .ghead p{color:var(--mute);max-width:52ch}
+.wgrid{display:grid;gap:14px}
+@media(min-width:640px){.wgrid{grid-template-columns:repeat(2,1fr)}}
+@media(min-width:1000px){.wgrid{grid-template-columns:repeat(3,1fr)}}
+.wcard{background:#fff;border:1px solid var(--line);border-radius:18px;padding:22px 20px;display:flex;flex-direction:column;gap:8px}
+.wcard b{color:var(--navy);font-size:1.05rem}
+.wcard p{color:var(--mute);font-size:.96rem}
+.wcard .ex{margin-top:auto;padding-top:8px;display:flex;flex-wrap:wrap;gap:6px}
+.wcard .ex span{font-size:.8rem;background:var(--mint-bg);color:#136F52;padding:.25rem .6rem;border-radius:999px}
+.who .more{margin-top:28px;background:var(--navy);color:#fff;border-radius:var(--radius);padding:26px 28px;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:16px}
+.who .more p{color:var(--ice);max-width:60ch}
+.who .more b{color:#fff}
 footer{background:#0b1626;color:#9aa3b5;padding:52px 0 40px;font-size:.92rem}
 footer nav{display:flex;flex-wrap:wrap;gap:18px 28px;margin-bottom:24px}
 footer nav a{color:var(--ice);text-decoration:none}
@@ -142,6 +159,7 @@ footer strong{color:#cfd6e4}
     <ul>
       <li><a href="/">A empresa</a></li>
       <li><a href="#como">Como funciona</a></li>
+      <li><a href="#para-quem">Para quem</a></li>
       <li><a href="#painel">Painel</a></li>
       <li><a href="#planos">Planos</a></li>
       <li><a href="#contato">Contato</a></li>
@@ -207,6 +225,42 @@ footer strong{color:#cfd6e4}
         <b>Alerta a equipe</b>
         <p>Quando a adesão falha, a equipe vê no painel e age antes do quadro se agravar.</p>
       </div>
+    </div>
+  </div>
+</section>
+
+<!-- PARA QUEM -->
+<section class="who" id="para-quem">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>Não é só para doença crônica.</h2>
+      <p>Todo tratamento continua em casa: o remédio de 90 dias, o cuidado depois do procedimento, o exercício da semana. O Vytal Care serve para qualquer profissional de saúde com registro no conselho.</p>
+    </div>
+    <div class="group">
+      <div class="ghead"><h3>Médicos de todas as especialidades</h3><p>Além de hipertensão e diabetes, tratamentos com começo, meio e fim.</p></div>
+      <div class="wgrid">
+        <div class="wcard"><b>Dermatologia e tricologia</b><p>Tratamentos de alopecia, acne e manchas duram meses, e o resultado depende de usar todo dia. O lembrete sai no horário e para sozinho no fim do tratamento.</p><div class="ex"><span>Minoxidil por 90 dias</span><span>Isotretinoína</span><span>Rotina de skincare</span></div></div>
+        <div class="wcard"><b>Estética e procedimentos</b><p>O resultado do procedimento também depende do que o paciente faz em casa. Monte o protocolo de cuidados uma vez e use em todos.</p><div class="ex"><span>Pós-procedimento</span><span>Protetor solar</span><span>Home care</span></div></div>
+        <div class="wcard"><b>Cirurgia e pós-operatório</b><p>Nos primeiros dias, horário de remédio e cuidado com a ferida fazem diferença. O paciente conta se teve alguma reação, e você vê no painel.</p><div class="ex"><span>Analgésico e antibiótico</span><span>Curativo</span><span>Repouso e retorno</span></div></div>
+        <div class="wcard"><b>Tratamentos curtos</b><p>Antibiótico de 7 dias, corticoide em desmame, dose que muda ao longo da semana. O paciente não precisa lembrar do fim do tratamento.</p><div class="ex"><span>Antibiótico</span><span>Desmame</span><span>Dose semanal</span></div></div>
+        <div class="wcard"><b>Saúde da mulher e da gestante</b><p>Uso contínuo que não pode falhar e suplementação na gestação, com pressão e glicemia quando fizer sentido.</p><div class="ex"><span>Anticoncepcional</span><span>Suplementos na gestação</span><span>Pressão</span></div></div>
+        <div class="wcard"><b>Psiquiatria</b><p>As primeiras semanas decidem se o paciente segue o tratamento. Você sabe quem parou antes do retorno.</p><div class="ex"><span>Início de antidepressivo</span><span>Uso diário</span><span>Reações relatadas</span></div></div>
+      </div>
+    </div>
+    <div class="group">
+      <div class="ghead"><h3>Outros profissionais de saúde</h3><p>A mensagem sai com o seu nome e a sua profissão, do jeito que o paciente conhece você.</p></div>
+      <div class="wgrid">
+        <div class="wcard"><b>Nutricionistas</b><p>Suplementação, hidratação e as metas combinadas na consulta, lembradas no dia a dia.</p><div class="ex"><span>Suplementos</span><span>Hidratação</span><span>Rotina alimentar</span></div></div>
+        <div class="wcard"><b>Fisioterapeutas, terapeutas ocupacionais e educadores físicos</b><p>Os exercícios de casa viram um protocolo com etapas e dias da semana. Você vê quem fez e quem deixou de fazer.</p><div class="ex"><span>Exercícios em casa</span><span>Seg, qua e sex</span><span>Alongamento</span></div></div>
+        <div class="wcard"><b>Enfermagem</b><p>Curativos, feridas, pressão e glicemia de quem precisa de acompanhamento contínuo.</p><div class="ex"><span>Curativo</span><span>Pressão</span><span>Glicemia</span></div></div>
+        <div class="wcard"><b>Dentistas</b><p>Pós-cirúrgico, ortodontia e higiene, sem depender da memória do paciente.</p><div class="ex"><span>Pós-extração</span><span>Elásticos</span><span>Bochecho</span></div></div>
+        <div class="wcard"><b>Farmacêuticos</b><p>Acompanhamento de quem usa muitos medicamentos, com a adesão por medicação num só lugar.</p><div class="ex"><span>Muitos medicamentos</span><span>Revisão de uso</span><span>Adesão</span></div></div>
+        <div class="wcard"><b>Fonoaudiólogos, psicólogos e biomédicos</b><p>Exercícios, tarefas combinadas na sessão e cuidados depois de procedimentos, com a mensagem saindo em seu nome.</p><div class="ex"><span>Exercícios</span><span>Tarefas entre sessões</span><span>Pós-procedimento</span></div></div>
+      </div>
+    </div>
+    <div class="more">
+      <p><b>Sua área não está aqui?</b> Se o paciente precisa fazer alguma coisa em casa entre um atendimento e outro, o Vytal Care lembra e mostra para você se ele fez.</p>
+      <a class="btn btn-mint" href="https://care.vytalsaude.com.br">Começar grátis</a>
     </div>
   </div>
 </section>
