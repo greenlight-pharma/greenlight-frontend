@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Vytal Care — Continuidade do cuidado entre as consultas</title>
-<meta name="description" content="O Vytal Care mantém o paciente conectado à rede de saúde entre uma consulta e outra: cadastro da prescrição, lembretes de medicação por WhatsApp, confirmação das tomadas e um painel de adesão para a equipe de saúde.">
+<meta name="description" content="Já disponível. O Vytal Care mantém o paciente conectado à rede de saúde entre uma consulta e outra: cadastro da prescrição, lembretes de medicação por WhatsApp, confirmação das tomadas e um painel de adesão para a equipe de saúde.">
 <link rel="canonical" href="https://www.vytalsaude.com.br/vytal-care">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://www.vytalsaude.com.br/vytal-care">
@@ -62,7 +62,7 @@ header{position:sticky;top:0;z-index:10;background:rgba(250,251,252,.85);backdro
 .hero .cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:32px}
 .tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:30px;padding:0}
 .tags li{list-style:none;font-size:.9rem;color:var(--ice);border:1px solid rgba(199,216,234,.3);padding:.35rem .8rem;border-radius:999px}
-section{padding:76px 0}
+section{padding:76px 0;scroll-margin-top:68px}
 .section-head{max-width:56ch;margin-bottom:40px}
 .section-head p{color:var(--mute);margin-top:12px;font-size:1.1rem}
 /* problem */
@@ -101,6 +101,31 @@ section{padding:76px 0}
 .band h2{max-width:22ch;margin:0 auto}
 .band p{color:var(--mute);margin-top:14px;font-size:1.1rem}
 .band .cta{display:flex;gap:12px;justify-content:center;margin-top:30px;flex-wrap:wrap}
+/* disponível + planos */
+.live{display:inline-flex;align-items:center;gap:8px;background:rgba(31,138,109,.18);color:#BFEBDD;border:1px solid rgba(95,211,160,.35);padding:.4rem .85rem;border-radius:999px;font-size:.9rem;font-weight:600;margin-top:22px}
+.live::before{content:"";width:8px;height:8px;border-radius:50%;background:#5FD3A0;box-shadow:0 0 0 4px rgba(95,211,160,.18)}
+.btn-mint{background:var(--mint);color:#fff}
+.btn-mint:hover{background:#18745b}
+.hero .note{color:var(--ice);font-size:.95rem;margin-top:14px;opacity:.9}
+.plans{background:var(--frio)}
+.pgrid{display:grid;gap:16px}
+@media(min-width:640px){.pgrid{grid-template-columns:repeat(2,1fr)}}
+@media(min-width:1000px){.pgrid{grid-template-columns:repeat(4,1fr)}}
+.plan{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:26px 22px;display:flex;flex-direction:column;gap:6px}
+.plan.hl{border:2px solid var(--aco);box-shadow:0 18px 40px rgba(15,31,58,.10)}
+.plan .pn{font-weight:700;color:var(--navy);font-size:1.15rem;display:flex;justify-content:space-between;align-items:center;gap:8px}
+.plan .badge{font-size:.72rem;font-weight:600;text-transform:uppercase;letter-spacing:.06em;color:var(--aco);background:var(--frio);padding:.2rem .55rem;border-radius:999px}
+.plan .pp{font-size:2rem;font-weight:700;color:var(--navy);letter-spacing:-.02em;margin-top:6px;font-variant-numeric:tabular-nums}
+.plan .pp small{font-size:.95rem;font-weight:500;color:var(--mute)}
+.plan .pa{color:var(--mute);font-size:.9rem;min-height:1.4em}
+.plan .pq{color:var(--ink);font-weight:600;margin-top:8px}
+.plan .pd{color:var(--mute);font-size:.95rem;flex-grow:1}
+.plan .btn{justify-content:center;margin-top:14px}
+.incl{margin-top:34px;display:grid;gap:10px 28px;padding:0}
+@media(min-width:760px){.incl{grid-template-columns:repeat(3,1fr)}}
+.incl li{list-style:none;padding-left:26px;position:relative;color:var(--ink)}
+.incl li::before{content:"✓";position:absolute;left:0;color:var(--mint);font-weight:700}
+.pfoot{margin-top:24px;color:var(--mute);font-size:.95rem}
 footer{background:#0b1626;color:#9aa3b5;padding:52px 0 40px;font-size:.92rem}
 footer nav{display:flex;flex-wrap:wrap;gap:18px 28px;margin-bottom:24px}
 footer nav a{color:var(--ice);text-decoration:none}
@@ -118,9 +143,10 @@ footer strong{color:#cfd6e4}
       <li><a href="/">A empresa</a></li>
       <li><a href="#como">Como funciona</a></li>
       <li><a href="#painel">Painel</a></li>
+      <li><a href="#planos">Planos</a></li>
       <li><a href="#contato">Contato</a></li>
     </ul>
-    <a class="btn btn-navy" href="#contato">Falar com a equipe</a>
+    <a class="btn btn-navy" href="https://care.vytalsaude.com.br">Acessar</a>
   </div>
 </header>
 
@@ -129,11 +155,13 @@ footer strong{color:#cfd6e4}
     <p class="crumb"><a href="/">Vytal Saúde</a> › Vytal Care</p>
     <p class="tagline" style="margin-top:18px;display:flex;align-items:center;gap:12px"><img src="/vytal-care-logo.png" alt="" width="44" height="44" style="background:#fff;border-radius:12px;padding:5px"> Vytal Care</p>
     <h1>O cuidado que continua <span>entre as consultas.</span></h1>
+    <p class="live">Já disponível para profissionais de saúde</p>
     <p class="lead">A maior parte do tratamento acontece longe do consultório. O Vytal Care mantém o paciente acompanhado nesse intervalo — com lembretes de medicação por WhatsApp e um painel de adesão para a equipe de saúde agir antes do agravamento.</p>
     <div class="cta">
-      <a class="btn btn-light" href="#como">Ver como funciona</a>
-      <a class="btn btn-ghost" href="#contato">Levar para a minha rede</a>
+      <a class="btn btn-mint" href="https://care.vytalsaude.com.br">Começar grátis</a>
+      <a class="btn btn-ghost" href="#planos">Ver planos</a>
     </div>
+    <p class="note">Crie a conta em care.vytalsaude.com.br e acompanhe até 2 pacientes sem pagar nada. Funciona no computador e no celular.</p>
     <ul class="tags">
       <li>Comunicação por WhatsApp</li>
       <li>Adesão ao tratamento</li>
@@ -225,14 +253,67 @@ footer strong{color:#cfd6e4}
   </div>
 </section>
 
+<!-- PLANOS -->
+<section class="plans" id="planos">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>Assine o Vytal Care</h2>
+      <p>Comece grátis e mude de plano quando quiser. Todos os planos têm os mesmos recursos; o que muda é quantos pacientes você acompanha.</p>
+    </div>
+    <div class="pgrid">
+      <div class="plan">
+        <div class="pn">Gratuito</div>
+        <div class="pp">R$ 0</div>
+        <div class="pa">para sempre</div>
+        <div class="pq">Até 2 pacientes</div>
+        <p class="pd">Para conhecer o sistema com você mesmo e mais um paciente.</p>
+        <a class="btn btn-light" style="border:2px solid var(--line)" href="https://care.vytalsaude.com.br">Criar conta grátis</a>
+      </div>
+      <div class="plan hl">
+        <div class="pn">Essencial <span class="badge">Mais escolhido</span></div>
+        <div class="pp">R$ 199,90<small>/mês</small></div>
+        <div class="pa">ou R$ 2.038,98 por ano (15% off)</div>
+        <div class="pq">Até 20 pacientes</div>
+        <p class="pd">Consultório começando o acompanhamento entre consultas.</p>
+        <a class="btn btn-navy" href="https://care.vytalsaude.com.br">Assinar o Essencial</a>
+      </div>
+      <div class="plan">
+        <div class="pn">Clínica</div>
+        <div class="pp">R$ 529,90<small>/mês</small></div>
+        <div class="pa">ou R$ 5.404,98 por ano (15% off)</div>
+        <div class="pq">Até 60 pacientes</div>
+        <p class="pd">Acompanhamento de rotina de uma agenda cheia.</p>
+        <a class="btn btn-navy" href="https://care.vytalsaude.com.br">Assinar o Clínica</a>
+      </div>
+      <div class="plan">
+        <div class="pn">Rede</div>
+        <div class="pp">R$ 1.299,90<small>/mês</small></div>
+        <div class="pa">ou R$ 13.258,98 por ano (15% off)</div>
+        <div class="pq">Até 150 pacientes</div>
+        <p class="pd">Vários profissionais ou alto volume de pacientes crônicos.</p>
+        <a class="btn btn-navy" href="https://care.vytalsaude.com.br">Assinar o Rede</a>
+      </div>
+    </div>
+    <ul class="incl">
+      <li>Lembretes de medicação pelo WhatsApp do paciente</li>
+      <li>Receita lida por foto, conferida por você</li>
+      <li>Pedidos de pressão e glicemia, com alerta de valores fora da faixa</li>
+      <li>Protocolos de cuidados com as etapas que você define</li>
+      <li>Adesão por medicação e reações relatadas pelo paciente</li>
+      <li>Pelo computador ou celular, sem instalar nada</li>
+    </ul>
+    <p class="pfoot">Pagamento por cartão de crédito ou Pix, pelo Pagar.me. Cancele quando quiser. Mais de 150 pacientes, secretarias de saúde e operadoras: <a href="#contato" style="color:var(--aco)">fale com a equipe</a> para um plano sob medida.</p>
+  </div>
+</section>
+
 <!-- BAND -->
 <section class="band" id="contato">
   <div class="wrap">
-    <h2>Leve a continuidade do cuidado para a sua rede.</h2>
-    <p>Secretarias de saúde, clínicas e operadoras interessadas em melhorar a adesão ao tratamento, falem com a equipe.</p>
+    <h2>Seus pacientes acompanhados a partir de hoje.</h2>
+    <p>Crie sua conta em poucos minutos e cadastre o primeiro paciente. Secretarias de saúde, clínicas e operadoras podem falar direto com a equipe.</p>
     <div class="cta">
-      <a class="btn btn-navy" href="mailto:contato@vytalsaude.com.br?subject=Vytal%20Medica%C3%A7%C3%B5es">Falar com a equipe</a>
-      <a class="btn btn-light" href="/" style="border:2px solid var(--line)">Conhecer a Vytal</a>
+      <a class="btn btn-navy" href="https://care.vytalsaude.com.br">Acessar o Vytal Care</a>
+      <a class="btn btn-light" href="mailto:contato@vytalsaude.com.br?subject=Vytal%20Care" style="border:2px solid var(--line)">Falar com a equipe</a>
     </div>
   </div>
 </section>
@@ -243,6 +324,7 @@ footer strong{color:#cfd6e4}
       <a href="/">Vytal Saúde</a>
       <a href="/academico">Vytal Acadêmico</a>
       <a href="/vytal-care">Vytal Care</a>
+      <a href="https://care.vytalsaude.com.br">Acessar o Vytal Care</a>
       <a href="/ecg">Vytal ECG</a>
       <a href="mailto:contato@vytalsaude.com.br">Contato</a>
       <a href="/privacidade">Política de Privacidade</a>
