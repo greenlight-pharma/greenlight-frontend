@@ -135,7 +135,7 @@ def resumo_com_claude(artigos, grafo):
         "type": "object",
         "properties": {"frases": {"type": "array", "items": {
             "type": "object",
-            "properties": {"texto": {"type": "string"}, "artigo": {"type": "integer"}, "no_id": {"type": ["string", "null"]}},
+            "properties": {"texto": {"type": "string"}, "artigo": {"type": "integer"}, "no_id": {"anyOf": [{"type": "string"}, {"type": "null"}]}},
             "required": ["texto", "artigo", "no_id"], "additionalProperties": False}}},
         "required": ["frases"], "additionalProperties": False,
     }
@@ -155,7 +155,7 @@ def resumo_com_claude(artigos, grafo):
             output_config={"format": {"type": "json_schema", "schema": esquema}},
         )
     except anthropic.APIStatusError as e:
-        print(f"  Claude respondeu erro {e.status_code}; resumo sai pelas manchetes", file=sys.stderr)
+        print(f"  Claude respondeu erro {e.status_code}; resumo sai pelas manchetes: {getattr(e, 'message', e)}", file=sys.stderr)
         return None
     except anthropic.APIConnectionError as e:
         print(f"  sem conexão com a API da Claude ({e})", file=sys.stderr)

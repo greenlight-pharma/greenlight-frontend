@@ -291,7 +291,7 @@ def refinar_com_claude(registros, grafo):
                 "type": "object",
                 "properties": {
                     "id": {"type": "string"},
-                    "no_id": {"type": ["string", "null"]},
+                    "no_id": {"anyOf": [{"type": "string"}, {"type": "null"}]},
                     "nivel": {"type": "string", "enum": ["comando", "alta", "outra"]},
                     "resumo": {"type": "string"},
                 },
@@ -322,7 +322,7 @@ def refinar_com_claude(registros, grafo):
             output_config={"format": {"type": "json_schema", "schema": esquema}},
         )
     except anthropic.APIStatusError as e:
-        print(f"  Claude respondeu erro {e.status_code}; feed segue só com as regras", file=sys.stderr)
+        print(f"  Claude respondeu erro {e.status_code}; feed segue só com as regras: {getattr(e, 'message', e)}", file=sys.stderr)
         return 0
     except anthropic.APIConnectionError as e:
         print(f"  sem conexão com a API da Claude ({e}); feed segue só com as regras", file=sys.stderr)
