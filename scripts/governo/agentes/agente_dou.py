@@ -68,10 +68,15 @@ ALTA = re.compile(r"^(secretari[oa][- ]executiv|secretari[oa] (nacional|especial
 ORGAOS_BUSCA = ["Atos do Poder Executivo", "Presidência da República"]
 
 
-def buscar_atos(de, ate, verbo, org_prin):
-    """Resultados da busca do DOU (seção 2) para um verbo, um órgão e um período."""
+# "do2" é a seção 2 regular; "doe" são as edições extras, onde saem as levas de
+# exoneração de ministros (em abril de 2026, quatro extras num só dia).
+SECOES = ["do2", "doe"]
+
+
+def buscar_atos(de, ate, verbo, org_prin, secao="do2"):
+    """Resultados da busca do DOU para um verbo, um órgão, uma seção e um período."""
     pagina = baixar(BUSCA, params={
-        "q": verbo, "s": "do2", "exactDate": "personalizado", "sortType": "0",
+        "q": verbo, "s": secao, "exactDate": "personalizado", "sortType": "0",
         "publishFrom": de.strftime("%d-%m-%Y"), "publishTo": ate.strftime("%d-%m-%Y"),
         "delta": "50", "orgPrin": org_prin,
     })
@@ -85,6 +90,8 @@ def buscar_atos(de, ate, verbo, org_prin):
     saida = []
     for it in itens:
         hier = it.get("hierarchyStr") or ""
+        if not str(it.get("pubName") or "DO2").startswith("DO2"):
+            continue        # extras da seção 1 (normas) não interessam aqui
         # Só os atos de pessoal assinados pelo Presidente ou pela Casa Civil.
         if not (hier.startswith("Presidência da República/Casa Civil") or "Atos do Poder Executivo" in hier
                 or hier == "Presidência da República"):
@@ -364,6 +371,8 @@ def main():
     ap.add_argument("--sem-claude", action="store_true")
     ap.add_argument("--saida", default=str(SAIDA))
     ap.add_argument("--janela", type=int, default=JANELA_DIAS, help="quantos dias o feed guarda")
+    ap.add_argument("--secoes", default=",".join(SECOES), help="do2 (regular) e/ou doe (edições extras)")
+    ap.add_argument("--passo", type=int, default=3, help="dias por consulta (a busca devolve até 50 atos)")
     args = ap.parse_args()
 
     grafo = Grafo()
@@ -372,15 +381,16 @@ def main():
     print(f"==> DOU seção 2, decretos do Presidente e portarias da Casa Civil, {de} a {ate}")
 
     atos = {}
-    passo = dt.timedelta(days=3)
+    passo = dt.timedelta(days=args.passo)
     ini = de
     while ini <= ate:
         fim = min(ini + passo - dt.timedelta(days=1), ate)
-        for org in ORGAOS_BUSCA:
-            for verbo in VERBOS:
-                for a in buscar_atos(ini, fim, verbo, org):
-                    atos.setdefault(a["url_titulo"], a)
-                time.sleep(args.pausa)
+        for secao in args.secoes.split(","):
+            for org in ORGAOS_BUSCA:
+                for verbo in VERBOS:
+                    for a in buscar_atos(ini, fim, verbo, org, secao):
+                        atos.setdefault(a["url_titulo"], a)
+                    time.sleep(args.pausa)
         ini = fim + dt.timedelta(days=1)
     print(f"    {len(atos)} atos da Presidência ou da Casa Civil")
 

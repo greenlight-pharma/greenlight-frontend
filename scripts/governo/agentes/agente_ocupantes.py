@@ -163,22 +163,48 @@ def _carregar_saidas():
     if _saidas is not None:
         return _saidas
     regs = {}
-    for f in (DADOS / "mudancas.json", CACHE / "dou-historico.json"):
+    for f in [DADOS / "mudancas.json", *sorted(CACHE.glob("dou-historico*.json"))]:
         for m in (ler_json(f, {}) or {}).get("mudancas", []):
             regs[m["id"]] = m
-    _saidas = [m for m in regs.values() if m.get("sai")]
+    _saidas = [m for m in regs.values() if m.get("sai") or m.get("entra")]
     return _saidas
 
 
-def saiu_no_dou(nome, desde, pausa=0):
-    """(data, url) da exoneração ou dispensa de `nome` publicada depois de `desde`, ou None."""
-    alvo = norm(nome)
+def mesmo_cargo(a, b):
+    """'Ministro de Estado da Saúde' x 'MINISTRO(A) DE ESTADO DA SAÚDE': sim.
+    'Ministra da Casa Civil' x 'membro suplente do Comitê ... Clima': não."""
+    wa = set(palavras(a)) - {"estado", "cargo"}
+    wb = set(palavras(b)) - {"estado", "cargo"}
+    if not wa or not wb:
+        return False
+    return len(wa & wb) / min(len(wa), len(wb)) >= 0.6
+
+
+def saiu_no_dou(nome, desde, cargo=None, pausa=0):
+    """Último ato do DOU sobre `nome` no mesmo cargo, depois de `desde`.
+    Devolve (data, url) se o último ato for saída; None se não houver ou se
+    ele tiver voltado ao cargo (exonerado em abril e renomeado em maio)."""
+    eventos = []
     for m in _carregar_saidas():
-        if norm(m["sai"]) == alvo or mesma_pessoa(m["sai"], nome):
-            data = m.get("publicado_em") or m.get("data")
-            if not desde or (data and data > desde):
-                return (data, m.get("fonte"))
-    return None
+        for papel in ("sai", "entra"):
+            if m.get(papel) and (norm(m[papel]) == norm(nome) or mesma_pessoa(m[papel], nome)):
+                if cargo and not mesmo_cargo(m.get("cargo") or "", cargo):
+                    continue
+                data = m.get("publicado_em") or m.get("data")
+                if not desde or (data and data > desde):
+                    eventos.append((data or "", papel, m.get("fonte")))
+    if not eventos:
+        return None
+    data, papel, fonte = max(eventos)
+    return (data, fonte) if papel == "sai" else None
+
+
+def posse_no_dou(nome, cargo):
+    """Data da nomeação mais recente de `nome` para o mesmo cargo, se o DOU tiver."""
+    datas = [m.get("publicado_em") for m in _carregar_saidas()
+             if m.get("entra") and (norm(m["entra"]) == norm(nome) or mesma_pessoa(m["entra"], nome))
+             and mesmo_cargo(m.get("cargo") or "", cargo)]
+    return max((d for d in datas if d), default=None)
 
 
 def cobertura_dou():
@@ -270,12 +296,13 @@ def main():
     anterior = ler_json(SAIDA, {"ocupantes": {}})
     resultado, relatorio = {}, {"confirmados": [], "descartados_dou": [], "sem_candidato": [], "divergencias": []}
     for n in alvos:
-        semente_ok = bool(n["cargo"].get("ocupante"))
+        # preenchido pela semente (curado à mão), não por uma rodada anterior deste agente
+        semente_ok = bool(n["cargo"].get("ocupante")) and not n["cargo"].get("fonte_agente")
         cands, org = candidatos(n, grafo, orgao_do_no, listas)
         escolhido = None
         for a in cands[:3]:
             desde = data_iso(a["inicio"])
-            saida = None if args.sem_dou else saiu_no_dou(a["nome"], desde, args.pausa)
+            saida = None if args.sem_dou else saiu_no_dou(a["nome"], desde, a["cargo"])
             if saida:
                 relatorio["descartados_dou"].append({"no": n["id"], "nome": nome_proprio(a["nome"]), "cargo": a["cargo"], "exonerado_em": saida[0], "ato": saida[1]})
                 continue
@@ -291,10 +318,14 @@ def main():
                 relatorio["divergencias"].append({"no": n["id"], "semente": n["cargo"]["ocupante"], "eagendas": nome, "cargo": escolhido["cargo"]})
             continue
         interino = bool(re.search(r"interin|substitut", (escolhido["exercicio"] or "") + " " + escolhido["cargo"], re.I))
+        desde = data_iso(escolhido["inicio"])
+        posse = None if args.sem_dou else posse_no_dou(escolhido["nome"], escolhido["cargo"])
+        if posse and (not desde or posse > desde):
+            desde = posse      # o DOU sabe de uma nomeação mais nova que a do e-Agendas
         resultado[n["id"]] = {
             "ocupante": nome,
             "situacao": "interino" if interino else "titular",
-            "desde": data_iso(escolhido["inicio"]),
+            "desde": desde,
             "cargo_na_fonte": escolhido["cargo"].capitalize(),
             "verificado_em": hoje().isoformat(),
             "fonte": ROTA.format(id=org),
