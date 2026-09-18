@@ -610,9 +610,12 @@ function desenhar(){
     ctx.globalAlpha = alfa(n);
     const r = raioNo(n)*escala + 6;
     ctx.save();
-    if (d === 1 && V.dados.meta.vista !== 'estado') { // os Poderes: nome logo abaixo do ícone, sem girar
-      ctx.textAlign = 'center'; ctx.textBaseline = 'top';
-      halo(texto, s.x, s.y + r); ctx.fillText(texto, s.x, s.y + r);
+    if (d === 1 && V.dados.meta.vista !== 'estado') { // os Poderes: nome sem girar, do lado oposto ao centro
+      const cx = Math.cos(p.ang), sy = Math.sin(p.ang);
+      const x = s.x + cx*(r+2), y = s.y + sy*(r+2);
+      ctx.textAlign = cx > .35 ? 'left' : cx < -.35 ? 'right' : 'center';
+      ctx.textBaseline = sy > .35 ? 'top' : sy < -.35 ? 'bottom' : 'middle';
+      halo(texto, x, y); ctx.fillText(texto, x, y);
     } else {
       const esq = Math.cos(p.ang) < 0;
       ctx.translate(s.x, s.y); ctx.rotate(p.ang + (esq ? Math.PI : 0));
@@ -798,7 +801,7 @@ function mostrarInicio(){
     </div></div>
     <div class="bloco"><h3>Como ler o mapa</h3><ul class="como">
       <li><i class="tile" style="--c:var(--exec);color:#fff">${svgIcone('bandeira')}</i><span><b>Cor é o Poder.</b> Azul Executivo, laranja Legislativo, verde Judiciário, cinza funções essenciais à Justiça.</span></li>
-      <li><i class="tile q" style="--c:var(--ink-2);color:var(--surface)">${svgIcone('escudo_check')}</i><span><b>Ícone é o tipo.</b> Colunas para ministério, balança para tribunal, escudo com visto para agência reguladora. A legenda fica no canto inferior direito.</span></li>
+      <li><i class="tile q" style="--c:var(--ink-2);color:var(--surface)">${svgIcone('escudo_check')}</i><span><b>Ícone é o tipo.</b> Colunas para ministério, balança para tribunal, escudo com visto para agência reguladora. A legenda fica no canto inferior esquerdo, ao lado do zoom.</span></li>
       <li><i class="tile" style="--c:var(--uniao);color:var(--surface)">${svgIcone('pino')}</i><span><b>Clique para abrir.</b> Um clique mostra o cargo, quem ocupa e as relações. Dois cliques em um estado abrem o mapa dele. Role para aproximar.</span></li>
     </ul></div>`;
   $('#p-rodape').innerHTML = 'Dados oficiais (SIORG, Câmara, Senado, tribunais), revisados toda semana. <a href="#" data-sobre="1">Sobre os dados</a>';
@@ -838,7 +841,7 @@ montarLegenda();
 const btnLegenda = $('#btn-legenda');
 function legenda(aberta){ $('#legenda').classList.toggle('aberta', aberta); btnLegenda.setAttribute('aria-expanded', String(aberta)); }
 btnLegenda.onclick = () => legenda(!$('#legenda').classList.contains('aberta'));
-legenda(window.innerWidth >= 1100);
+legenda(false);
 
 // ------------------------------------------------------------ tema claro ou escuro
 function temaAtual(){ const t = document.documentElement.dataset.theme; return t || (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'); }
