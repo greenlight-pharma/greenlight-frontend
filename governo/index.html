@@ -75,12 +75,22 @@ button,input{font-family:inherit;font-size:inherit}
 .dica span{color:var(--ink-2);font-size:12px}
 .zoom{position:absolute;left:16px;bottom:16px;z-index:5;display:flex;flex-direction:column;gap:4px}
 .zoom button{width:36px;height:36px;border-radius:9px;border:1px solid var(--axis);background:var(--panel);color:var(--ink);cursor:pointer;font-size:18px;line-height:1}
-.legenda{position:absolute;right:16px;bottom:16px;z-index:5;background:color-mix(in srgb,var(--panel) 92%,transparent);border:1px solid var(--border);border-radius:12px;padding:10px 12px;font-size:12px;color:var(--ink-2);display:grid;gap:5px;max-width:260px}
-.legenda .l{display:flex;align-items:center;gap:8px}
-.legenda i{display:inline-block;width:12px;height:12px;border:2px solid var(--ink-2);flex:none}
-.legenda i.c{border-radius:50%}
-.legenda i.q{border-radius:3px}
-.legenda i.d{transform:rotate(45deg) scale(.85);border-radius:2px}
+.btn-legenda{position:absolute;left:60px;bottom:16px;z-index:6;display:inline-flex;align-items:center;gap:6px;padding:8px 12px;border-radius:10px;border:1px solid var(--axis);background:var(--panel);color:var(--ink);cursor:pointer;font-size:13px;box-shadow:0 4px 14px rgba(0,0,0,.10)}
+.btn-legenda svg{width:14px;height:14px;transition:transform .2s}
+.btn-legenda[aria-expanded="true"] svg{transform:rotate(180deg)}
+.legenda{position:absolute;left:16px;bottom:60px;z-index:5;background:color-mix(in srgb,var(--panel) 94%,transparent);backdrop-filter:blur(8px);border:1px solid var(--border);border-radius:12px;padding:10px 12px;font-size:12px;color:var(--ink-2);display:none;gap:4px;width:min(300px,calc(100% - 32px));max-height:calc(100vh - 140px);overflow:auto}
+.legenda.aberta{display:grid}
+.legenda h4{margin:4px 0 2px;font-size:10px;text-transform:uppercase;letter-spacing:.08em;color:var(--mute);font-weight:600}
+.legenda .l{display:flex;align-items:center;gap:9px;min-height:22px}
+.legenda .l b{font-weight:600;color:var(--ink)}
+.legenda .cores{display:flex;flex-wrap:wrap;gap:4px 12px;margin-top:2px}
+.legenda .cores span{display:inline-flex;align-items:center;gap:5px}
+.legenda .cores i{width:10px;height:10px;border-radius:50%;background:var(--c);display:inline-block}
+.tile{width:22px;height:22px;flex:none;display:inline-flex;align-items:center;justify-content:center;background:var(--c,var(--ink-2));color:var(--surface);border-radius:50%}
+.tile.q{border-radius:6px}
+.tile svg{width:15px;height:15px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.tile.p{width:18px;height:18px}
+.tile.p svg{width:12px;height:12px;stroke-width:2.2}
 .status{position:absolute;left:16px;top:70px;z-index:4;font-size:12px;color:var(--mute);pointer-events:none}
 .vista{position:absolute;left:16px;top:calc(var(--altura-top,60px) + 10px);z-index:5;display:flex;align-items:center;gap:6px;font-size:13px;color:var(--ink-2);background:color-mix(in srgb,var(--panel) 92%,transparent);border:1px solid var(--border);border-radius:999px;padding:5px 10px 5px 6px}
 .vista button{border:0;background:var(--plane);color:var(--ink);border-radius:999px;padding:4px 10px;cursor:pointer;font-size:13px}
@@ -102,6 +112,8 @@ button,input{font-family:inherit;font-size:inherit}
 .painel header .fechar:hover{color:var(--ink);background:var(--plane)}
 .tag{display:inline-flex;align-items:center;gap:6px;font-size:12px;color:var(--ink-2);border:1px solid var(--border);border-radius:999px;padding:2px 8px;margin:0 4px 4px 0}
 .tag .dot{width:8px;height:8px;border-radius:50%;background:var(--c)}
+.tag .tile.p{width:16px;height:16px}
+.tag .tile.p svg{width:11px;height:11px}
 .painel h2{margin:4px 0 6px;font-size:18px;line-height:1.2;letter-spacing:-.01em}
 .trilha{display:flex;flex-wrap:wrap;gap:4px;font-size:12px;color:var(--ink-2);margin-bottom:4px}
 .trilha button{border:0;background:none;color:var(--ink-2);padding:0;cursor:pointer;text-decoration:underline;text-underline-offset:2px}
@@ -131,6 +143,16 @@ button,input{font-family:inherit;font-size:inherit}
 .rel-item small{display:block;color:var(--mute);font-size:12px;margin-left:18px}
 .painel .rodape{font-size:12px;color:var(--mute);padding:10px 16px;border-top:1px solid var(--border)}
 .painel .rodape a{color:var(--ink-2)}
+.painel.inicio h2{font-size:20px}
+.atalhos{display:grid;grid-template-columns:1fr 1fr;gap:6px}
+.atalhos button{display:flex;align-items:center;gap:9px;text-align:left;border:1px solid var(--border);background:var(--plane);color:var(--ink);padding:9px 10px;border-radius:10px;cursor:pointer;font-size:13px;line-height:1.2;min-height:46px}
+.atalhos button:hover{background:var(--grid)}
+.atalhos button small{display:block;color:var(--mute);font-size:11px;margin-top:1px}
+.atalhos .estado{grid-column:1 / -1;display:flex;align-items:center;gap:9px;border:1px solid var(--border);background:var(--plane);padding:6px 10px;border-radius:10px;font-size:13px}
+.atalhos .estado select{flex:1;padding:6px 8px;border-radius:8px;border:1px solid var(--axis);background:var(--panel);color:var(--ink)}
+.como{display:grid;gap:8px;margin:0;padding:0;list-style:none}
+.como li{display:flex;gap:10px;align-items:flex-start;color:var(--ink-2);font-size:13px}
+.como li .tile{margin-top:1px}
 
 /* ---------- sobre / tabela ---------- */
 .folha{position:absolute;inset:0;z-index:8;background:var(--surface);overflow:auto;display:none}
@@ -156,7 +178,9 @@ tbody tr:hover{background:var(--plane)}
   .brand small{display:none}
   .chips{order:3;width:100%}
   .painel{top:auto;left:8px;right:8px;bottom:8px;width:auto;max-height:62vh}
-  .legenda{display:none}
+  .legenda{bottom:56px;left:12px}
+  .btn-legenda{bottom:12px;left:12px;padding:7px 10px}
+  .atalhos{grid-template-columns:1fr}
   .status{display:none}
   .zoom{bottom:auto;top:calc(var(--altura-top,120px) + 8px)}
 }
@@ -181,8 +205,10 @@ tbody tr:hover{background:var(--plane)}
     <button class="chip" data-poder="essencial" aria-pressed="true" style="--c:var(--ess)"><i class="dot"></i>Funções essenciais</button>
   </div>
   <div class="acoes">
+    <button class="ghost" id="btn-ajuda" title="Como usar o mapa">Como usar</button>
     <button class="ghost" id="btn-tabela">Tabela</button>
     <button class="ghost" id="btn-sobre">Sobre os dados</button>
+    <button class="ghost" id="btn-tema" title="Alternar tema claro ou escuro" aria-label="Alternar tema claro ou escuro">◐</button>
   </div>
 </div>
 
@@ -197,13 +223,8 @@ tbody tr:hover{background:var(--plane)}
   <button id="z-fit" title="Ver tudo" aria-label="Ver tudo">⤢</button>
 </div>
 
-<div class="legenda" aria-label="Legenda">
-  <div class="l"><i class="c"></i>Administração direta (órgão, ministério, tribunal, Casa)</div>
-  <div class="l"><i class="q"></i>Administração indireta (autarquia, agência, fundação, empresa)</div>
-  <div class="l"><i class="d"></i>Conjunto de entidades (por exemplo, 69 universidades)</div>
-  <div class="l"><i class="c" style="border-color:var(--ink);background:var(--ink)"></i>União, estados e municípios (clique em um estado para abrir o mapa dele)</div>
-  <div class="l" style="margin-top:2px">Cor = Poder. Clique em um nó para ver cargo, base legal e quem nomeia, aprova ou fiscaliza.</div>
-</div>
+<button class="btn-legenda" id="btn-legenda" aria-expanded="false" aria-controls="legenda">Legenda <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="m6 15 6-6 6 6"/></svg></button>
+<div class="legenda" id="legenda" aria-label="Legenda"></div>
 
 <aside class="painel" id="painel" aria-live="polite">
   <header>
@@ -262,7 +283,40 @@ const canvas = $('#palco'), ctx = canvas.getContext('2d');
 const dica = $('#dica'), painel = $('#painel'), status = $('#status');
 const UFS = ['AC','AL','AP','AM','BA','CE','DF','ES','GO','MA','MT','MS','MG','PA','PB','PR','PE','PI','RJ','RN','RS','RO','RR','SC','SP','SE','TO'];
 const INDIRETA = new Set(['autarquia','agencia_reguladora','fundacao','empresa_publica','sociedade_economia_mista','servico_social_autonomo']);
-const forma = n => n.tipo === 'grupo' ? 'd' : INDIRETA.has(n.tipo) ? 'q' : 'c';
+const forma = n => INDIRETA.has(n.tipo) ? 'q' : 'c';
+// Ícones (caixa 24x24, traço 2), um por tipo de instituição. O mesmo desenho vai
+// para o canvas (Path2D) e para a legenda e o painel (SVG inline).
+const ICONES = {
+  bandeira: 'M5 21V3M5 4h11l-2.5 3.5L16 11H5',
+  cupula: 'M3 21h18M5 21v-7h14v7M6 14a6 6 0 0 1 12 0M12 5v3M10 8h4M9 17v4M15 17v4',
+  balanca: 'M12 3v18M8 21h8M4 7h16M6 7l-3 7a3.2 3.2 0 0 0 6 0L6 7M18 7l-3 7a3.2 3.2 0 0 0 6 0l-3-7',
+  escudo: 'M12 3l8 3v6c0 5-3.5 8.3-8 9.5C7.5 20.3 4 17 4 12V6z',
+  escudo_check: 'M12 3l8 3v6c0 5-3.5 8.3-8 9.5C7.5 20.3 4 17 4 12V6zM9 12l2 2 4-4',
+  colunas: 'M3 21h18M5 21v-9M9.5 21v-9M14.5 21v-9M19 21v-9M3 12h18M2 9l10-6 10 6z',
+  predio: 'M5 21V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v16M3 21h18M9 7h2M13 7h2M9 11h2M13 11h2M9 15h2M13 15h2M10.5 21v-3h3v3',
+  medalha: 'M12 15a6 6 0 1 0 0-12 6 6 0 0 0 0 12zM8.5 14L7 22l5-3 5 3-1.5-8',
+  broto: 'M12 21v-9M12 12C12 8 9 5 5 5c0 4 3 7 7 7zM12 12c0-4 3-7 7-7 0 4-3 7-7 7z',
+  maleta: 'M3 8h18v12H3zM9 8V5h6v3M3 13h18M11 12v3h2v-3',
+  pessoas: 'M9 11a3 3 0 1 0 0-6 3 3 0 0 0 0 6zM3 20a6 6 0 0 1 12 0M16 11a3 3 0 1 0-1.5-5.6M21 20a6 6 0 0 0-4.5-5.8',
+  estrela: 'M12 3l2.7 5.7 6.3.8-4.6 4.3 1.2 6.2L12 17l-5.6 3 1.2-6.2L3 9.5l6.3-.8z',
+  camadas: 'M12 3l9 5-9 5-9-5zM3 13l9 5 9-5M3 17l9 5 9-5',
+  pino: 'M12 22s7-6.6 7-12a7 7 0 0 0-14 0c0 5.4 7 12 7 12zM12 13a3 3 0 1 0 0-6 3 3 0 0 0 0 6z',
+  casa: 'M3 11l9-8 9 8M5 10v11h14V10M10 21v-6h4v6',
+  mapa: 'M3 6l6-3 6 3 6-3v15l-6 3-6-3-6 3zM9 3v15M15 6v15',
+};
+const ICONE_TIPO = {poder:'bandeira', ministerio:'colunas', orgao:'predio', autarquia:'medalha', agencia_reguladora:'escudo_check', fundacao:'broto', empresa_publica:'maleta', sociedade_economia_mista:'maleta', servico_social_autonomo:'pessoas', forca_armada:'estrela', tribunal:'balanca', casa_legislativa:'cupula', grupo:'camadas', estado:'pino', municipio:'casa'};
+const ICONE_ID = {exec:'bandeira', leg:'cupula', jud:'balanca', fej:'escudo', estados:'mapa', pr:'bandeira', mpu:'escudo', cnmp:'escudo', dpu:'escudo', cnj:'balanca'};
+function iconeDe(n){
+  if (ICONE_ID[n.id]) return ICONE_ID[n.id];
+  if (n.id.startsWith('gov-')) return 'bandeira';
+  if (n.id.startsWith('mp-') || n.id.startsWith('dpe-')) return 'escudo';
+  if (n.id.startsWith('municipios-')) return 'mapa';
+  return ICONE_TIPO[n.tipo] || 'predio';
+}
+const caminhos = new Map();
+const caminho = nome => { if (!caminhos.has(nome)) caminhos.set(nome, new Path2D(ICONES[nome])); return caminhos.get(nome); };
+const svgIcone = nome => `<svg viewBox="0 0 24 24" aria-hidden="true"><path d="${ICONES[nome]}"/></svg>`;
+const tile = (n, extra='') => `<i class="tile ${forma(n)} ${extra}" style="--c:${corDe(n)}">${svgIcone(iconeDe(n))}</i>`;
 const css = v => getComputedStyle(document.documentElement).getPropertyValue(v).trim();
 const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const norm = s => String(s||'').normalize('NFD').replace(/[̀-ͯ]/g,'').toLowerCase();
@@ -304,8 +358,10 @@ function montarVista(dados){
 // ângulo é proporcional ao número de folhas. O raio de cada anel cresce
 // quando há nós demais para o arco disponível (os 645 municípios de SP).
 const FATIAS_FEDERAL = {exec:.46, jud:.15, fej:.09, leg:.10, estados:.20};
-const RAIO = [0, 150, 300, 470, 680, 800];
-const ESPACO = 10;
+const RAIO = [0, 230, 380, 520, 700, 820];
+// Espaço mínimo entre irmãos no anel: os nós com ícone (anel 2) precisam de mais
+// arco que os pequenos; os municípios são pontos e cabem apertados.
+const espacoDe = (tipo, depth) => tipo === 'municipio' ? 9 : depth === 2 ? 40 : 12;
 function layout(v){
   const folhas = new Map();
   const contar = id => { const f = v.filhos.get(id); const n = f.length ? f.reduce((s,c)=>s+contar(c),0) : 1; folhas.set(id, n); return n; };
@@ -325,7 +381,7 @@ function layout(v){
     if (depth > 0) { // densidade do anel dos irmãos: arco do pai / número de irmãos
       const pai = v.pos.get(v.porId.get(id).pai);
       const arcoPai = pai.a1 - pai.a0;
-      r = Math.max(r, nIrmaos * ESPACO / Math.max(arcoPai, 1e-6));
+      r = Math.max(r, nIrmaos * espacoDe(v.porId.get(id).tipo, depth) / Math.max(arcoPai, 1e-6));
     }
     const ang = (a0+a1)/2;
     v.pos.set(id, {x: r*Math.cos(ang), y: r*Math.sin(ang), ang, depth, a0, a1, r, irmaos: nIrmaos});
@@ -341,9 +397,10 @@ function layout(v){
 const raioNo = n => {
   const p = V.pos.get(n.id);
   if (n.tipo === 'municipio') return n.capital ? 6 : 3.2;
-  if (n.tipo === 'estado' && n.vista) return 5;
-  return [14, 11, 9, 6.5, 5, 4.5][Math.min(p.depth, 5)];
+  if (n.tipo === 'estado' && n.vista) return 7;
+  return [36, 20, 13, 8, 7, 6.5][Math.min(p.depth, 5)];
 };
+const escalaNo = k => Math.max(.75, Math.min(k, 1.8));
 async function abrirVista(nome, selecionarId, animar=true){
   let dados;
   try { dados = await carregarDados(nome); } catch (e) { status.textContent = 'Não foi possível carregar o mapa de ' + nome + '.'; return; }
@@ -368,15 +425,17 @@ function redimensionar(){
   canvas.style.width = W + 'px'; canvas.style.height = H + 'px';
   canvas.width = W*dpr; canvas.height = H*dpr;
   document.documentElement.style.setProperty('--altura-top', $('#top').offsetHeight + 'px');
-  desenhar();
+  if (V && !usuarioMexeu) verTudo(false); else desenhar();
 }
+let usuarioMexeu = false; // enquanto o usuário não mexer, o enquadramento acompanha a janela
 function verTudo(animado=true){
   if (!V) return;
   const topo = $('#top').offsetHeight;
   // Num estado, enquadra as instituições; o anel de municípios fica além da borda, à mão.
   const limite = V.dados.meta.vista === 'estado' ? 560 : Infinity;
-  const raioTotal = Math.min(V.maxR, limite) + 60;
-  const k = Math.min((W-40)/(2*raioTotal), (H-topo-40)/(2*raioTotal));
+  const raioTotal = Math.min(V.maxR, limite) + 90;
+  const k = Math.max(.05, Math.min((W-40)/(2*raioTotal), (H-topo-40)/(2*raioTotal)));
+  usuarioMexeu = false;
   irPara({x: W/2, y: topo + (H-topo)/2, k}, animado);
 }
 let anim = null;
@@ -393,6 +452,7 @@ function centrarEm(id, k){
   const p = V.pos.get(id), n = V.porId.get(id); const topo = $('#top').offsetHeight;
   const kk = k || Math.max(vista.k, n.tipo === 'municipio' ? 2.2 : 1.4);
   const largPainel = painel.classList.contains('aberto') && W > 720 ? 420 : 0;
+  usuarioMexeu = true;
   irPara({k: kk, x: (W-largPainel)/2 - p.x*kk, y: topo + (H-topo)/2 - p.y*kk});
 }
 const tela = p => ({x: vista.x + p.x*vista.k, y: vista.y + p.y*vista.k});
@@ -408,6 +468,61 @@ function vizinhos(id){
 }
 const corDe = n => n.tipo === 'municipio' ? cores.ink2 : (cores[n.poder] || cores.ink);
 const visivelPorFiltro = n => n.poder === 'uniao' || poderesAtivos.has(n.poder);
+// Setores: um por Poder, do centro até o anel mais externo daquele ramo, com o
+// nome escrito em arco. É o que dá orientação de longe: azul é Executivo, etc.
+const ROTULO_SETOR = {executivo:['Poder Executivo','Executivo'], legislativo:['Poder Legislativo','Legislativo'], judiciario:['Poder Judiciário','Judiciário'], essencial:['Funções essenciais à Justiça','Funções essenciais','Essenciais']};
+function setores(v){
+  if (v.setores) return v.setores;
+  const filhos = v.filhos.get(v.raiz.id).map(id => v.porId.get(id)).sort((a,b) => v.pos.get(a.id).a0 - v.pos.get(b.id).a0);
+  const maxRamo = id => { let m = v.pos.get(id).r; for (const c of v.filhos.get(id)) m = Math.max(m, maxRamo(c)); return m; };
+  const lista = [];
+  for (const f of filhos) {
+    const p = v.pos.get(f.id);
+    const ult = lista[lista.length-1];
+    const rMax = f.tipo === 'grupo' && f.id.startsWith('municipios-') ? p.r : maxRamo(f.id);
+    if (ult && ult.poder === f.poder && f.poder !== 'uniao') { ult.a1 = p.a1; ult.r = Math.max(ult.r, rMax); continue; }
+    const rotulos = f.poder === 'uniao' ? [f.nome, f.sigla || f.nome] : ROTULO_SETOR[f.poder] || [f.nome];
+    lista.push({poder: f.poder, a0: p.a0, a1: p.a1, r: rMax, rotulos, filtro: f.poder});
+  }
+  return v.setores = lista;
+}
+function textoArco(txt, R, angC){
+  const chars = [...txt.toUpperCase()], esp = 1.8;
+  const larguras = chars.map(c => ctx.measureText(c).width + esp);
+  const total = larguras.reduce((s,w) => s+w, 0);
+  const baixo = Math.sin(angC) > 0, dir = baixo ? -1 : 1;
+  let a = angC - dir*(total/2)/R;
+  for (let i = 0; i < chars.length; i++) {
+    const am = a + dir*(larguras[i]/2)/R;
+    ctx.save(); ctx.translate(vista.x + R*Math.cos(am), vista.y + R*Math.sin(am)); ctx.rotate(am + (baixo ? -Math.PI/2 : Math.PI/2));
+    ctx.fillText(chars[i], 0, 0); ctx.restore();
+    a += dir*larguras[i]/R;
+  }
+  return total;
+}
+function desenharSetores(k){
+  const escuro = matchMedia('(prefers-color-scheme: dark)').matches ? document.documentElement.dataset.theme !== 'light' : document.documentElement.dataset.theme === 'dark';
+  const rIn = 76*k;
+  ctx.font = `600 11px ${css('--font')}`; ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+  for (const st of setores(V)) {
+    const cor = cores[st.poder] || cores.ink2;
+    const ativo = st.poder === 'uniao' || poderesAtivos.has(st.poder);
+    const rOut = st.r*k + 56;
+    const folga = Math.min(.012, (st.a1-st.a0)*.06);
+    ctx.beginPath(); ctx.arc(vista.x, vista.y, rOut, st.a0+folga, st.a1-folga); ctx.arc(vista.x, vista.y, rIn, st.a1-folga, st.a0+folga, true); ctx.closePath();
+    const neutro = st.poder === 'uniao' ? .45 : 1; // o setor dos estados é cinza, mais discreto
+    ctx.globalAlpha = (escuro ? .13 : .07) * (ativo ? 1 : .35) * neutro; ctx.fillStyle = cor; ctx.fill();
+    ctx.globalAlpha = (escuro ? .35 : .22) * (ativo ? 1 : .35) * neutro; ctx.strokeStyle = cor; ctx.lineWidth = 1; ctx.stroke();
+    // rótulo em arco, fora da borda, na primeira forma que couber
+    const R = rOut + 12, arco = (st.a1 - st.a0 - 2*folga) * R;
+    ctx.globalAlpha = ativo ? .95 : .45; ctx.fillStyle = cor;
+    for (const rot of st.rotulos) {
+      const larg = [...rot].reduce((s,c) => s + ctx.measureText(c.toUpperCase()).width + 1.8, 0);
+      if (larg <= arco*.92) { textoArco(rot, R, (st.a0+st.a1)/2); break; }
+    }
+  }
+  ctx.globalAlpha = 1;
+}
 function desenhar(){
   ctx.setTransform(dpr,0,0,dpr,0,0);
   ctx.clearRect(0,0,W,H);
@@ -416,6 +531,7 @@ function desenhar(){
   const foco = selecionado || pairado;
   const viz = foco ? vizinhos(foco) : null;
   const alfa = n => { let a = visivelPorFiltro(n) ? 1 : .12; if (viz && !viz.has(n.id)) a *= .22; return a; };
+  desenharSetores(k);
   // arestas hierárquicas
   for (const n of V.dados.nos) {
     if (!n.pai) continue;
@@ -439,7 +555,7 @@ function desenhar(){
       const mx = (p1.x+p2.x)/2, my = (p1.y+p2.y)/2, cx = vista.x, cy = vista.y;
       ctx.beginPath(); ctx.moveTo(p1.x,p1.y); ctx.quadraticCurveTo((mx+cx)/2,(my+cy)/2,p2.x,p2.y); ctx.stroke();
       const ang = Math.atan2(p2.y-(my+cy)/2, p2.x-(mx+cx)/2);
-      const rr = raioNo(V.porId.get(a.para))*Math.max(.8,Math.min(k,1.6)) + 3;
+      const rr = raioNo(V.porId.get(a.para))*escalaNo(k) + 3;
       const tx = p2.x - Math.cos(ang)*rr, ty = p2.y - Math.sin(ang)*rr;
       ctx.setLineDash([]); ctx.beginPath(); ctx.moveTo(tx,ty);
       ctx.lineTo(tx-7*Math.cos(ang-.45), ty-7*Math.sin(ang-.45)); ctx.moveTo(tx,ty);
@@ -447,22 +563,35 @@ function desenhar(){
     }
     ctx.setLineDash([]);
   }
-  // nós
-  const escala = Math.max(.8, Math.min(k, 1.6));
+  // nós: forma preenchida na cor do Poder, com o ícone do tipo quando há espaço
+  const escala = escalaNo(k);
   for (const n of V.ordem) {
     const p = V.pos.get(n.id), s = tela(p);
-    if (s.x < -30 || s.y < -30 || s.x > W+30 || s.y > H+30) continue;
-    const r = raioNo(n) * escala;
+    if (s.x < -40 || s.y < -40 || s.x > W+40 || s.y > H+40) continue;
+    const raiz = n.id === V.raiz.id;
+    let r = raioNo(n) * escala;
+    if (n.id === pairado && !raiz) r *= 1.15;
     ctx.globalAlpha = alfa(n);
     ctx.fillStyle = corDe(n);
     ctx.strokeStyle = cores.surface; ctx.lineWidth = n.tipo === 'municipio' ? 1 : 2;
     const f = forma(n);
     ctx.beginPath();
     if (f === 'c') ctx.arc(s.x, s.y, r, 0, Math.PI*2);
-    else if (f === 'q') { const w = r*1.8; roundRect(s.x-w/2, s.y-w/2, w, w, 2.5); }
-    else { ctx.moveTo(s.x, s.y-r*1.25); ctx.lineTo(s.x+r*1.25, s.y); ctx.lineTo(s.x, s.y+r*1.25); ctx.lineTo(s.x-r*1.25, s.y); ctx.closePath(); }
+    else { const w = r*1.9; roundRect(s.x-w/2, s.y-w/2, w, w, Math.max(2.5, r*.3)); }
     ctx.fill(); ctx.stroke();
     if (n.id === selecionado || n.id === pairado) { ctx.strokeStyle = cores.ink; ctx.lineWidth = 2; ctx.beginPath(); ctx.arc(s.x, s.y, r+4, 0, Math.PI*2); ctx.stroke(); }
+    const corGlifo = n.poder === 'uniao' ? cores.surface : '#fff';
+    if (raiz) { // centro: nome dentro do círculo, como “o povo” no mapa da CivLab
+      const t = V.dados.meta.vista === 'estado' ? (n.sigla || n.nome) : n.nome;
+      ctx.fillStyle = corGlifo; ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+      ctx.font = `700 ${Math.max(11, Math.round(r*.42))}px ${css('--font')}`; ctx.fillText(t, s.x, s.y);
+    } else if (n.tipo !== 'municipio' && r >= 8.5) {
+      const g = r*.95/12;
+      ctx.save(); ctx.translate(s.x, s.y); ctx.scale(g, g); ctx.translate(-12, -12);
+      ctx.strokeStyle = corGlifo; ctx.lineWidth = r >= 12 ? 2 : 2.4; ctx.lineCap = 'round'; ctx.lineJoin = 'round';
+      ctx.stroke(caminho(iconeDe(n)));
+      ctx.restore();
+    }
   }
   // rótulos: aparecem quando o arco disponível para o nó, na tela, comporta o texto
   for (const n of V.ordem) {
@@ -471,16 +600,17 @@ function desenhar(){
     const emFoco = viz && viz.has(n.id);
     const d = p.depth;
     const arcoTela = (p.a1 - p.a0) * p.r * k;
-    const mostra = d <= 1 || emFoco || n.id === pairado || arcoTela >= 13 || (n.tipo === 'municipio' && n.capital && k >= .5);
-    if (!mostra) continue;
-    const texto = (d >= 3 || (d === 2 && k < .9) || (n.tipo !== 'municipio' && n.tipo !== 'estado' && ((arcoTela < 60 && d >= 2) || (d === 1 && arcoTela < 110)))) ? (n.sigla || n.nome) : n.nome;
+    const mostra = (d <= 1 && d > 0) || emFoco || n.id === pairado || arcoTela >= 13 || (n.tipo === 'municipio' && n.capital && k >= .5);
+    if (!mostra || d === 0) continue;
+    let texto = (d >= 3 || (d === 2 && k < .9) || (n.tipo !== 'municipio' && n.tipo !== 'estado' && ((arcoTela < 60 && d >= 2) || (d === 1 && arcoTela < 110)))) ? (n.sigla || n.nome) : n.nome;
+    if (d === 1 && n.tipo === 'poder') texto = n.nome.replace(/^Poder /, '').replace(' à Justiça', '');
     const fontePx = d <= 1 ? Math.max(12, Math.min(15, 13*escala)) : d === 2 ? Math.max(11, Math.min(14, 12*escala)) : Math.max(10, Math.min(13, 11*escala));
     ctx.font = `${d <= 2 && n.tipo !== 'municipio' ? 600 : 500} ${fontePx}px ${css('--font')}`;
     ctx.fillStyle = emFoco || d <= 2 ? cores.ink : cores.ink2;
     ctx.globalAlpha = alfa(n);
-    const r = raioNo(n)*escala + 5;
+    const r = raioNo(n)*escala + 6;
     ctx.save();
-    if (d <= 1 && p.irmaos <= 12) {
+    if (d === 1 && V.dados.meta.vista !== 'estado') { // os Poderes: nome logo abaixo do ícone, sem girar
       ctx.textAlign = 'center'; ctx.textBaseline = 'top';
       halo(texto, s.x, s.y + r); ctx.fillText(texto, s.x, s.y + r);
     } else {
@@ -506,7 +636,7 @@ function acertar(px, py){
   for (const n of V.dados.nos) {
     const s = tela(V.pos.get(n.id));
     const d = Math.hypot(s.x-px, s.y-py);
-    const alcance = Math.max(raioNo(n)*Math.max(.8,Math.min(vista.k,1.6)), 8) + 4;
+    const alcance = Math.max(raioNo(n)*escalaNo(vista.k), 10) + 6;
     if (d < alcance && d < dist) { dist = d; melhor = n; }
   }
   return melhor;
@@ -528,7 +658,7 @@ canvas.addEventListener('pointermove', e => {
   }
   if (arrasto) {
     const dx = e.clientX-arrasto.x, dy = e.clientY-arrasto.y;
-    if (Math.hypot(dx,dy) > 3) moveu = true;
+    if (Math.hypot(dx,dy) > 3) { moveu = true; usuarioMexeu = true; }
     vista.x = arrasto.vx+dx; vista.y = arrasto.vy+dy; desenhar(); esconderDica(); return;
   }
   const n = acertar(e.clientX, e.clientY);
@@ -556,6 +686,7 @@ canvas.addEventListener('pointerup', soltar); canvas.addEventListener('pointerca
 canvas.addEventListener('pointerleave', () => { pairado = null; esconderDica(); desenhar(); });
 canvas.addEventListener('wheel', e => { e.preventDefault(); zoomEm(e.clientX, e.clientY, Math.exp(-e.deltaY*0.0016)); }, {passive:false});
 function zoomEm(cx, cy, fator){
+  usuarioMexeu = true;
   const k = Math.max(.05, Math.min(8, vista.k*fator)); fator = k/vista.k;
   vista.x = cx - (cx-vista.x)*fator; vista.y = cy - (cy-vista.y)*fator; vista.k = k; desenhar();
 }
@@ -568,7 +699,7 @@ function mostrarDica(n, x, y){
   if (n.tipo === 'municipio') sub = `Município · ${esc(V.dados.meta.uf)}${n.capital ? ' · capital' : ''}`;
   else if (n.tipo === 'estado' && n.vista) sub += ' · clique duas vezes para abrir';
   else if (c) sub += ' · ' + esc(c.titulo) + (c.situacao === 'vago' ? ': vago' : c.ocupante ? ': ' + esc(c.ocupante) + (c.situacao === 'interino' ? ' (interino)' : '') : '');
-  dica.innerHTML = `<b>${esc(n.nome)}</b><span>${sub}</span>`;
+  dica.innerHTML = `<div style="display:flex;gap:8px;align-items:flex-start">${tile(n)}<div><b>${esc(n.nome)}</b><span>${sub}</span></div></div>`;
   dica.style.display = 'block';
   const dw = dica.offsetWidth, dh = dica.offsetHeight;
   dica.style.left = Math.min(x+14, W-dw-8) + 'px';
@@ -591,9 +722,10 @@ function blocoCargo(c, titulo){
   else corpo = `<div class="n vago">Ocupante não verificado nesta versão</div><div class="m">Preenchido pela ingestão a partir das fontes oficiais.${c.fonte ? ` <a href="${esc(c.fonte)}" target="_blank" rel="noopener">Conferir na fonte</a>` : ''}</div>`;
   return `<div class="cargo"><div class="t">${esc(c.orgao ? c.orgao + ' · ' : '')}${esc(c.titulo)}</div>${corpo}</div>`;
 }
-const itemNo = (n, extra='') => `<button data-id="${n.id}"><i class="marca ${forma(n)}" style="--c:${corDe(n)}"></i>${esc(n.nome)}<span class="sig">${esc(extra || n.sigla || '')}</span></button>`;
+const itemNo = (n, extra='') => `<button data-id="${n.id}">${tile(n, 'p')}${esc(n.nome)}<span class="sig">${esc(extra || n.sigla || '')}</span></button>`;
 function selecionar(id, centrar){
   selecionado = id;
+  painel.classList.remove('inicio');
   if (!id) { painel.classList.remove('aberto'); escreverHash(); desenhar(); return; }
   const n = V.porId.get(id);
   escreverHash();
@@ -601,7 +733,7 @@ function selecionar(id, centrar){
   $('#trilha').innerHTML = (vistaAtual !== 'federal' ? '<button data-brasil="1">Brasil</button><span aria-hidden="true">›</span>' : '') + trilha.map(t => `<button data-id="${t.id}">${esc(t.sigla || t.nome)}</button>`).join('<span aria-hidden="true">›</span>');
   $('#p-nome').textContent = n.nome + (n.sigla && n.sigla !== n.nome && n.tipo !== 'estado' ? ` (${n.sigla})` : '');
   const tipoRot = V.TIPOS[n.tipo] || n.tipo;
-  $('#p-tags').innerHTML = `<span class="tag" style="--c:${corDe(n)}"><i class="dot"></i>${esc(n.tipo === 'municipio' ? V.dados.meta.uf : V.PODERES[n.poder])}</span><span class="tag">${esc(tipoRot)}</span>${n.capital && n.tipo === 'municipio' ? '<span class="tag">Capital</span>' : ''}${n.quantidade ? `<span class="tag">${n.quantidade} ${n.tipo==='grupo' ? 'entidades' : n.tipo==='estado' ? (vistaAtual==='federal' ? 'deputados federais' : 'municípios') : 'membros'}</span>` : ''}`;
+  $('#p-tags').innerHTML = `<span class="tag" style="--c:${corDe(n)}"><i class="dot"></i>${esc(n.tipo === 'municipio' ? V.dados.meta.uf : V.PODERES[n.poder])}</span><span class="tag">${tile(n, 'p')}${esc(tipoRot)}</span>${n.capital && n.tipo === 'municipio' ? '<span class="tag">Capital</span>' : ''}${n.quantidade ? `<span class="tag">${n.quantidade} ${n.tipo==='grupo' ? 'entidades' : n.tipo==='estado' ? (vistaAtual==='federal' ? 'deputados federais' : 'municípios') : 'membros'}</span>` : ''}`;
   let html = '';
   if (n.tipo === 'municipio') {
     html += `<div class="bloco"><p>Município ${esc(V.dados.meta.uf === 'SP' || true ? 'de' : 'de')} ${esc(V.dados.meta.nome)}${n.capital ? ', capital do estado' : ''}. Código IBGE ${esc(n.codigo_ibge)}${n.ddd ? ', DDD ' + esc(n.ddd) : ''}. Tem Prefeitura e Câmara Municipal próprias, e é gestor municipal do SUS (CF, arts. 29 a 31; Lei 8.080/1990).</p></div>`;
@@ -615,7 +747,7 @@ function selecionar(id, centrar){
   const rels = [...V.relIn.get(alvoRel).map(a => ({a, outro: V.porId.get(a.de), dir:'in'})), ...V.relOut.get(alvoRel).map(a => ({a, outro: V.porId.get(a.para), dir:'out'}))];
   if (rels.length) {
     html += `<div class="bloco"><h3>${n.tipo === 'municipio' ? 'Quem fiscaliza, julga e coordena os municípios' : 'Relações'}</h3><div class="lista-nos">` + rels.map(({a, outro, dir}) =>
-      `<div class="rel-item"><button data-id="${outro.id}"><i class="marca ${forma(outro)}" style="--c:${corDe(outro)}"></i><span><span class="rel">${dir==='in' ? esc(outro.sigla||outro.nome) + ' ' + esc(verbo(a.tipo)) + ' ' : esc(verbo(a.tipo)) + ' '}</span>${dir==='in' ? '' : esc(outro.sigla||outro.nome)}</span></button>${a.descricao ? `<small>${esc(a.descricao)}</small>` : ''}</div>`).join('') + `</div></div>`;
+      `<div class="rel-item"><button data-id="${outro.id}">${tile(outro, 'p')}<span><span class="rel">${dir==='in' ? esc(outro.sigla||outro.nome) + ' ' + esc(verbo(a.tipo)) + ' ' : esc(verbo(a.tipo)) + ' '}</span>${dir==='in' ? '' : esc(outro.sigla||outro.nome)}</span></button>${a.descricao ? `<small>${esc(a.descricao)}</small>` : ''}</div>`).join('') + `</div></div>`;
   }
   if (n.ligacoes_externas && n.ligacoes_externas.length) {
     html += `<div class="bloco ext"><h3>Ligações com a União</h3>` + n.ligacoes_externas.map(l => `<button data-ext-vista="${esc(l.vista)}" data-ext-id="${esc(l.id)}">↗ ${esc(l.rotulo)}<small style="margin-left:auto">Brasil</small></button>`).join('') + `</div>`;
@@ -645,6 +777,74 @@ painel.addEventListener('click', e => {
   const b = e.target.closest('button[data-id]'); if (b) selecionar(b.dataset.id, true);
 });
 $('#p-fechar').onclick = () => selecionar(null);
+
+// ------------------------------------------------------------ painel “Comece por aqui”
+function mostrarInicio(){
+  if (!V) return;
+  selecionado = null; escreverHash();
+  const federal = vistaAtual === 'federal';
+  const atalhos = federal
+    ? [['pr','Presidência da República','quem governa'], ['congresso','Congresso Nacional','quem faz as leis'], ['stf','Supremo Tribunal Federal','quem guarda a Constituição'], ['mpu','Ministério Público da União','quem fiscaliza'], ['ms','Ministério da Saúde','SUS, Anvisa, Fiocruz'], ['mec','Ministério da Educação','universidades, Capes, FNDE']]
+    : [[`gov-${vistaAtual}`,'Governo do Estado','quem governa'], [`ale-${vistaAtual}`,'Assembleia Legislativa','quem faz as leis'], [`tj-${vistaAtual}`,'Tribunal de Justiça','quem julga'], [`mp-${vistaAtual}`,'Ministério Público','quem fiscaliza']];
+  const botoes = atalhos.filter(([id]) => V.porId.has(id)).map(([id, nome, sub]) => { const n = V.porId.get(id); return `<button data-id="${id}">${tile(n)}<span>${esc(nome)}<small>${esc(sub)}</small></span></button>`; }).join('');
+  const ufs = UFS.map(u => `<option value="${u}">${u}</option>`).join('');
+  $('#trilha').innerHTML = '';
+  $('#p-nome').textContent = federal ? 'Quem é quem no governo do Brasil' : `Quem é quem em ${V.dados.meta.nome}`;
+  $('#p-tags').innerHTML = '';
+  $('#p-corpo').innerHTML = `
+    <div class="bloco"><p>${federal ? 'Os três Poderes, os ministérios, as agências, os tribunais e os cargos de comando da União, com quem nomeia, aprova e fiscaliza quem.' : 'Governo, Assembleia, tribunais, Ministério Público, Defensoria e os municípios do estado, com quem fiscaliza e julga quem.'}</p></div>
+    <div class="bloco"><h3>Comece por aqui</h3><div class="atalhos">${botoes}
+      <label class="estado">${federal ? '<i class="tile" style="--c:var(--uniao);color:var(--surface)">' + svgIcone('pino') + '</i>Meu estado' : '<i class="tile" style="--c:var(--uniao);color:var(--surface)">' + svgIcone('mapa') + '</i>Outro estado'}<select id="sel-uf" aria-label="Escolher um estado"><option value="">escolher…</option>${ufs}</select></label>
+    </div></div>
+    <div class="bloco"><h3>Como ler o mapa</h3><ul class="como">
+      <li><i class="tile" style="--c:var(--exec);color:#fff">${svgIcone('bandeira')}</i><span><b>Cor é o Poder.</b> Azul Executivo, laranja Legislativo, verde Judiciário, cinza funções essenciais à Justiça.</span></li>
+      <li><i class="tile q" style="--c:var(--ink-2);color:var(--surface)">${svgIcone('escudo_check')}</i><span><b>Ícone é o tipo.</b> Colunas para ministério, balança para tribunal, escudo com visto para agência reguladora. A legenda fica no canto inferior direito.</span></li>
+      <li><i class="tile" style="--c:var(--uniao);color:var(--surface)">${svgIcone('pino')}</i><span><b>Clique para abrir.</b> Um clique mostra o cargo, quem ocupa e as relações. Dois cliques em um estado abrem o mapa dele. Role para aproximar.</span></li>
+    </ul></div>`;
+  $('#p-rodape').innerHTML = 'Dados oficiais (SIORG, Câmara, Senado, tribunais), revisados toda semana. <a href="#" data-sobre="1">Sobre os dados</a>';
+  painel.classList.add('aberto', 'inicio');
+  $('#p-corpo').scrollTop = 0;
+  desenhar();
+}
+painel.addEventListener('change', e => { if (e.target.id === 'sel-uf' && e.target.value) abrirVista(e.target.value, `uf-${e.target.value}`); });
+painel.addEventListener('click', e => { const a = e.target.closest('a[data-sobre]'); if (a) { e.preventDefault(); $('#folha-sobre').classList.add('aberta'); } });
+$('#btn-ajuda').onclick = () => mostrarInicio();
+
+// ------------------------------------------------------------ legenda com ícones
+const LEGENDA = [
+  ['bandeira','c','Presidência e governos','chefia do Executivo'],
+  ['colunas','c','Ministério',''],
+  ['predio','c','Órgão','secretaria, comando, conselho'],
+  ['cupula','c','Casa legislativa','Congresso, Câmara, Senado, Assembleia'],
+  ['balanca','c','Tribunal','STF, STJ, TSE, TCU, tribunais de justiça'],
+  ['escudo','c','Ministério Público e Defensoria',''],
+  ['escudo_check','q','Agência reguladora','Anvisa, Anatel, ANS, Aneel'],
+  ['medalha','q','Autarquia','INSS, Ibama, Banco Central, universidades'],
+  ['broto','q','Fundação pública','Fiocruz, Funai, Capes, IBGE'],
+  ['maleta','q','Empresa estatal','Correios, Petrobras, Caixa, Embrapa'],
+  ['estrela','c','Força Armada','Marinha, Exército, Aeronáutica'],
+  ['camadas','c','Conjunto de entidades','por exemplo, as 69 universidades'],
+  ['pino','c','Estado','dois cliques abrem o mapa dele'],
+  ['casa','c','Município',''],
+];
+function montarLegenda(){
+  $('#legenda').innerHTML = '<h4>Cor é o Poder</h4><div class="cores">' +
+    [['exec','Executivo'],['leg','Legislativo'],['jud','Judiciário'],['ess','Funções essenciais']].map(([v,t]) => `<span><i style="--c:var(--${v})"></i>${t}</span>`).join('') +
+    '</div><h4>Ícone é o tipo</h4>' +
+    LEGENDA.map(([ic, f, t, sub]) => `<div class="l"><i class="tile ${f}" style="--c:var(--ink-2)">${svgIcone(ic)}</i><span><b>${t}</b>${sub ? ' · ' + sub : ''}</span></div>`).join('') +
+    '<div class="l" style="margin-top:4px">Quadrado é administração indireta (entidade com personalidade própria); círculo é administração direta.</div>';
+}
+montarLegenda();
+const btnLegenda = $('#btn-legenda');
+function legenda(aberta){ $('#legenda').classList.toggle('aberta', aberta); btnLegenda.setAttribute('aria-expanded', String(aberta)); }
+btnLegenda.onclick = () => legenda(!$('#legenda').classList.contains('aberta'));
+legenda(window.innerWidth >= 1100);
+
+// ------------------------------------------------------------ tema claro ou escuro
+function temaAtual(){ const t = document.documentElement.dataset.theme; return t || (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'); }
+function aplicarTema(t){ document.documentElement.dataset.theme = t; try { localStorage.setItem('mapa-tema', t); } catch (e) {} lerCores(); desenhar(); }
+try { const t = localStorage.getItem('mapa-tema'); if (t === 'dark' || t === 'light') { document.documentElement.dataset.theme = t; lerCores(); } } catch (e) {}
+$('#btn-tema').onclick = () => aplicarTema(temaAtual() === 'dark' ? 'light' : 'dark');
 
 // ------------------------------------------------------------ URL (#id, #SP, #SP/m-3509502)
 let lendoHash = false;
@@ -687,8 +887,8 @@ async function buscar(){
     nacionais = idx.filter(m => m.uf !== ufAtual && termos.every(t => m.chave.includes(t) || t === norm(m.uf))).sort((a,b) => (a.chave.startsWith(q)?0:1) - (b.chave.startsWith(q)?0:1) || a.nome.localeCompare(b.nome,'pt')).slice(0, 8);
   }
   if (norm(busca.value.trim()) !== q) return; // resposta atrasada
-  const html = locais.map(({n}) => `<button role="option" data-id="${n.id}"><i class="marca ${forma(n)}" style="--c:${corDe(n)}"></i><span>${esc(n.nome)}</span><span class="meta">${esc(n.tipo === 'municipio' ? 'Município · ' + V.dados.meta.uf : n.sigla || V.TIPOS[n.tipo])}</span></button>`).join('')
-    + nacionais.map(m => `<button role="option" data-uf="${m.uf}" data-cod="${m.cod}"><i class="marca c" style="--c:var(--ink-2)"></i><span>${esc(m.nome)}</span><span class="meta">Município · ${m.uf}</span></button>`).join('');
+  const html = locais.map(({n}) => `<button role="option" data-id="${n.id}">${tile(n, 'p')}<span>${esc(n.nome)}</span><span class="meta">${esc(n.tipo === 'municipio' ? 'Município · ' + V.dados.meta.uf : n.sigla || V.TIPOS[n.tipo])}</span></button>`).join('')
+    + nacionais.map(m => `<button role="option" data-uf="${m.uf}" data-cod="${m.cod}"><i class="tile p" style="--c:var(--ink-2)">${svgIcone('casa')}</i><span>${esc(m.nome)}</span><span class="meta">Município · ${m.uf}</span></button>`).join('');
   resultados.innerHTML = html || '<div style="padding:10px;color:var(--mute)">Nada encontrado.</div>';
   resultados.classList.add('aberta'); busca.setAttribute('aria-expanded','true'); ativo = -1;
 }
@@ -754,7 +954,7 @@ try {
   montarSobre(federal);
   const h = decodeURIComponent(location.hash.slice(1)); const [a, b] = h.split('/');
   if (UFS.includes(a)) await abrirVista(a, b || `uf-${a}`, false);
-  else { await abrirVista('federal', null, false); if (a && V.porId.has(a)) selecionar(a, true); }
+  else { await abrirVista('federal', null, false); if (a && V.porId.has(a)) selecionar(a, true); else mostrarInicio(); }
 } catch (e) {
   status.textContent = 'Não foi possível carregar os dados do mapa.'; console.error(e);
 }
