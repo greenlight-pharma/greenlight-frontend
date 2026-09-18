@@ -1,0 +1,1861 @@
+{
+ "data": "2026-09-18",
+ "fonte": "https://estruturaorganizacional.dados.gov.br/doc",
+ "unidades": {
+  "1": {
+   "nome": "Financiadora de Estudos e Projetos",
+   "sigla": "FINEP",
+   "tipo": "entidade",
+   "natureza": "1",
+   "pai": "267175"
+  },
+  "2": {
+   "nome": "Banco Nacional de Desenvolvimento Econômico e Social",
+   "sigla": "BNDES",
+   "tipo": "entidade",
+   "natureza": "1",
+   "pai": "308814"
+  },
+  "3": {
+   "nome": "Fundação Instituto Brasileiro de Geografia e Estatística",
+   "sigla": "IBGE",
+   "tipo": "entidade",
+   "natureza": "2",
+   "pai": "308804"
+  },
+  "7": {
+   "nome": "Instituto de Pesquisa Econômica Aplicada",
+   "sigla": "IPEA",
+   "tipo": "entidade",
+   "natureza": "2",
+   "pai": "308804"
+  },
+  "8": {
+   "nome": "Conselho Nacional de Desenvolvimento Científico e Tecnológico",
+   "sigla": "CNPq",
+   "tipo": "entidade",
+   "natureza": "2",
+   "pai": "267175"
+  },
+  "25": {
+   "nome": "Empresa Brasileira de Pesquisa Agropecuária",
+   "sigla": "EMBRAPA",
+   "tipo": "entidade",
+   "natureza": "1",
+   "pai": "308793"
+  },
+  "26": {
+   "nome": "Presidência da República",
+   "sigla": "PR",
+   "tipo": "orgao",
+   "natureza": "3",
+   "pai": "208613"
+  },
+  "27": {
+   "nome": "Gabinete de Segurança Institucional da Presidência da República",
+   "sigla": "GSI/PR",
+   "tipo": "orgao",
+   "natureza": "3",
+   "pai": "26"
+  },
+  "46": {
+   "nome": "Advocacia-Geral da União",
+   "sigla": "AGU",
+   "tipo": "orgao",
+   "natureza": "3",
+   "pai": "26"
+  },
+  "73": {
+   "nome": "Empresa Brasileira de Infraestrutura Aeroportuária",
+   "sigla": "INFRAERO",
+   "tipo": "entidade",
+   "natureza": "1",
+   "pai": "308817"
+  },
+  "74": {
+   "nome": "Empresa Brasileira de Correios e Telégrafos",
+   "sigla": "ECT",
+   "tipo": "entidade",
+   "natureza": "1",
+   "pai": "264359"
+  },
+  "75": {
+   "nome": "Telecomunicações Brasileiras S.A.",
+   "sigla": "TELEBRÁS",
+   "tipo": "entidade",
+   "natureza": "6",
+   "pai": "264359"
+  },
+  "89": {
+   "nome": "Banco Central do Brasil",
+   "sigla": "BCB",
+   "tipo": "entidade",
+   "natureza": "4",
+   "pai": "26"
+  },
+  "90": {
+   "nome": "Serviço Federal de Processamento de Dados",
+   "sigla": "SERPRO",
+   "tipo": "entidade",
+   "natureza": "1",
+   "pai": "308800"
+  },
+  "91": {
+   "nome": "Caixa Econômica Federal",
+   "sigla": "CAIXA",
+   "tipo": "entidade",
+   "natureza": "1",
+   "pai": "308800"
+  },
+  "92": {
+   "nome": "Casa da Moeda do Brasil",
+   "sigla": "CMB",
+   "tipo": "entidade",
+   "natureza": "1",
+   "pai": "308800"
+  },
+  "93": {
+   "nome": "Banco do Brasil S.A.",
+   "sigla": "BB",
+   "tipo": "entidade",
+   "natureza": "6",
+   "pai": "308800"
+  },
+  "240": {
+   "nome": "Instituto Nacional de Metrologia, Qualidade e Tecnologia",
+   "sigla": "INMETRO",
+   "tipo": "entidade",
+   "natureza": "4",
+   "pai": "308814"
+  },
+  "244": {
+   "nome": "Ministério da Educação",
+   "sigla": "MEC",
+   "tipo": "orgao",
+   "natureza": "3",
+   "pai": "26"
+  },
+  "249": {
+   "nome": "Instituto Nacional de Estudos e Pesquisas Educacionais Anísio Teixeira",
+   "sigla": "INEP",
+   "tipo": "entidade",
+   "natureza": "4",
+   "pai": "244"
+  },
+  "250": {
+   "nome": "Fundação Coordenação de Aperfeiçoamento de Pessoal de Nível Superior",
+   "sigla": "CAPES",
+   "tipo": "entidade",
+   "natureza": "2",
+   "pai": "244"
+  },
+  "253": {
+   "nome": "Fundo Nacional de Desenvolvimento da Educação",
+   "sigla": "FNDE",
+   "tipo": "entidade",
+   "natureza": "4",
+   "pai": "244"
+  },
+  "256": {
+   "nome": "Colégio Pedro II",
+   "sigla": "CP II",
+   "tipo": "entidade",
+   "natureza": "4",
+   "pai": "244"
+  },
+  "257": {
+   "nome": "Fundação Joaquim Nabuco",
+   "sigla": "FUNDAJ",
+   "tipo": "entidade",
+   "natureza": "2",
+   "pai": "244"
+  },
+  "258": {
+   "nome": "Hospital de Clínicas de Porto Alegre",
+   "sigla": "HCPA",
+   "tipo": "entidade",
+   "natureza": "1",
+   "pai": "244"
+  },
+  "260": {
+   "nome": "Universidade Federal do Estado do Rio de Janeiro",
+   "sigla": "UNIRIO",
+   "tipo": "entidade",
+   "natureza": "2",
+   "pai": "244"
+  },
+  "261": {
+   "nome": "Fundação Casa de Rui Barbosa",
+   "sigla": "FCRB",
+   "tipo": "entidade",
+   "natureza": "2",
+   "pai": "308821"
+  },
+  "263": {
+   "nome": "Ministério das Relações Exteriores",
+   "sigla": "MRE",
+   "tipo": "orgao",
+   "natureza": "3",
+   "pai": "26"
+  },
+  "134": {
+   "nome": "Indústria de Material Bélico do Brasil",
+   "sigla": "IMBEL",
+   "tipo": "entidade",
+   "natureza": "1",
+   "pai": "94"
+  },
+  "166": {
+   "nome": "Superintendência da Zona Franca de Manaus",
+   "sigla": "SUFRAMA",
+   "tipo": "entidade",
+   "natureza": "4",
+   "pai": "308814"
+  },
+  "169": {
+   "nome": "Companhia de Desenvolvimento dos Vales do São Francisco e do Parnaíba",
+   "sigla": "CODEVASF",
+   "tipo": "entidade",
+   "natureza": "1",
+   "pai": "308799"
+  },
+  "171": {
+   "nome": "Banco da Amazônia S.A.",
+   "sigla": "BASA",
+   "tipo": "entidade",
+   "natureza": "6",
+   "pai": "308800"
+  },
+  "172": {
+   "nome": "Banco do Nordeste do Brasil S.A.",
+   "sigla": "BNB",
+   "tipo": "entidade",
+   "natureza": "6",
+   "pai": "308800"
+  },
+  "173": {
+   "nome": "Fundação Nacional dos Povos Indígenas",
+   "sigla": "FUNAI",
+   "tipo": "entidade",
+   "natureza": "2",
+   "pai": "308824"
+  },
+  "180": {
+   "nome": "Companhia Docas do Rio de Janeiro",
+   "sigla": "CDRJ",
+   "tipo": "entidade",
+   "natureza": "6",
+   "pai": "308817"
+  },
+  "182": {
+   "nome": "Companhia Docas do Pará",
+   "sigla": "CDP",
+   "tipo": "entidade",
+   "natureza": "6",
+   "pai": "308817"
+  },
+  "183": {
+   "nome": "Companhia Docas do Rio Grande do Norte",
+   "sigla": "CODERN",
+   "tipo": "entidade",
+   "natureza": "6",
+   "pai": "308817"
+  },
+  "208": {
+   "nome": "Caixa de Construções de Casas para o Pessoal da Marinha",
+   "sigla": "CCCPCM",
+   "tipo": "entidade",
+   "natureza": "4",
+   "pai": "185"
+  },
+  "221": {
+   "nome": "Fundação Jorge Duprat Figueiredo, de Segurança e Medicina do Trabalho",
+   "sigla": "FUNDACENTRO",
+   "tipo": "entidade",
+   "natureza": "2",
+   "pai": "308820"
+  },
+  "223": {
+   "nome": "Comissão Nacional de Energia Nuclear",
+   "sigla": "CNEN",
+   "tipo": "entidade",
+   "natureza": "4",
+   "pai": "267175"
+  },
+  "224": {
+   "nome": "Petróleo Brasileiro S.A.",
+   "sigla": "PETROBRAS",
+   "tipo": "entidade",
+   "natureza": "6",
+   "pai": "2852"
+  },
+  "227": {
+   "nome": "Companhia de Pesquisa de Recursos Minerais",
+   "sigla": "CPRM",
+   "tipo": "entidade",
+   "natureza": "1",
+   "pai": "2852"
+  },
+  "228": {
+   "nome": "Indústrias Nucleares do Brasil S/A",
+   "sigla": "INB",
+   "tipo": "entidade",
+   "natureza": "6",
+   "pai": "2852"
+  },
+  "235": {
+   "nome": "Superintendência de Seguros Privados",
+   "sigla": "SUSEP",
+   "tipo": "entidade",
+   "natureza": "4",
+   "pai": "308800"
+  },
+  "299": {
+   "nome": "Fundação Alexandre de Gusmão",
+   "sigla": "FUNAG",
+   "tipo": "entidade",
+   "natureza": "2",
+   "pai": "263"
+  },
+  "303": {
+   "nome": "Empresa de Tecnologia e Informações da Previdência ",
+   "sigla": "DATAPREV",
+   "tipo": "entidade",
+   "natureza": "1",
+   "pai": "308803"
+  },
+  "304": {
+   "nome": "Ministério da Saúde",
+   "sigla": "MS",
+   "tipo": "orgao",
+   "natureza": "3",
+   "pai": "26"
+  },
+  "315": {
+   "nome": "Fundação Oswaldo Cruz",
+   "sigla": "FIOCRUZ",
+   "tipo": "entidade",
+   "natureza": "2",
+   "pai": "304"
+  },
+  "322": {
+   "nome": "Conselho Administrativo de Defesa Econômica",
+   "sigla": "CADE",
+   "tipo": "entidade",
+   "natureza": "4",
+   "pai": "235881"
+  },
+  "86567": {
+   "nome": "Empresa Brasil de Comunicação S.A.",
+   "sigla": "EBC",
+   "tipo": "entidade",
+   "natureza": "1",
+   "pai": "308822"
+  },
+  "72080": {
+   "nome": "Assessoria Especial do Presidente da República",
+   "sigla": "AEPR",
+   "tipo": "orgao",
+   "natureza": "3",
+   "pai": "26"
+  },
+  "367": {
+   "nome": "Departamento Nacional de Obras Contra as Secas",
+   "sigla": "DNOCS",
+   "tipo": "entidade",
+   "natureza": "4",
+   "pai": "308799"
+  },
+  "372": {
+   "nome": "Companhia Brasileira de Trens Urbanos ",
+   "sigla": "CBTU",
+   "tipo": "entidade",
+   "natureza": "1",
+   "pai": "308798"
+  },
+  "382": {
+   "nome": "Instituto Nacional da Propriedade Industrial",
+   "sigla": "INPI",
+   "tipo": "entidade",
+   "natureza": "4",
+   "pai": "308814"
+  },
+  "415": {
+   "nome": "Universidade Federal do Pará",
+   "sigla": "UFPA",
+   "tipo": "entidade",
+   "natureza": "4",
+   "pai": "244"
+  },
+  "416": {
+   "nome": "Universidade Federal do Ceará",
+   "sigla": "UFC",
+   "tipo": "entidade",
+   "natureza": "4",
+   "pai": "244"
+  },
+  "417": {
+   "nome": "Universidade Federal do Rio Grande do Norte",
+   "sigla": "UFRN",
+   "tipo": "entidade",
+   "natureza": "4",
+   "pai": "244"
+  },
+  "418": {
+   "nome": "Universidade Federal de Pernambuco",
+   "sigla": "UFPE",
+   "tipo": "entidade",
+   "natureza": "4",
+   "pai": "244"
+  },
+  "419": {
+   "nome": "Universidade Federal da Paraíba",
+   "sigla": "UFPB",
+   "tipo": "entidade",
+   "natureza": "4",
+   "pai": "244"
+  },
+  "420": {
+   "nome": "Universidade Federal de Alagoas",
+   "sigla": "UFAL",
+   "tipo": "entidade",
+   "natureza": "4",
+   "pai": "244"
+  },
+  "421": {
+   "nome": "Universidade Federal da Bahia",
+   "sigla": "UFBA",
+   "tipo": "entidade",
+   "natureza": "4",
+   "pai": "244"
+  },
+  "422": {
+   "nome": "Universidade Federal de Goiás",
+   "sigla": "UFG",
+   "tipo": "entidade",
+   "natureza": "4",
+   "pai": "244"
+  },
+  "423": {
+   "nome": "Universidade Federal de Minas Gerais",
+   "sigla": "UFMG",
+   "tipo": "entidade",
+   "natureza": "4",
+   "pai": "244"
+  },
+  "424": {
+   "nome": "Universidade Federal de Juiz de Fora",
+   "sigla": "UFJF",
+   "tipo": "entidade",
+   "natureza": "4",
+   "pai": "244"
+  },
+  "425": {
+   "nome": "Universidade Federal do Espírito Santo",
+   "sigla": "UFES",
+   "tipo": "entidade",
+   "natureza": "4",
+   "pai": "244"
+  },
+  "426": {
+   "nome": "Universidade Federal do Rio de Janeiro",
+   "sigla": "UFRJ",
+   "tipo": "entidade",
+   "natureza": "4",
+   "pai": "244"
+  },
+  "427": {
+   "nome": "Universidade Federal Fluminense",
+   "sigla": "UFF",
+   "tipo": "entidade",
+   "natureza": "4",
+   "pai": "244"
+  },
+  "428": {
+   "nome": "Universidade Federal do Paraná",
+   "sigla": "UFPR",
+   "tipo": "entidade",
+   "natureza": "4",
+   "pai": "244"
+  },
+  "429": {
+   "nome": "Universidade Federal de Santa Catarina",
+   "sigla": "UFSC",
+   "tipo": "entidade",
+   "natureza": "4",
+   "pai": "244"
+  },
+  "430": {
+   "nome": "Universidade Federal do Rio Grande do Sul",
+   "sigla": "UFRGS",
+   "tipo": "entidade",
+   "natureza": "4",
+   "pai": "244"
+  },
+  "431": {
+   "nome": "Universidade Federal de Santa Maria",
+   "sigla": "UFSM",
+   "tipo": "entidade",
+   "natureza": "4",
+   "pai": "244"
+  },
+  "432": {
+   "nome": "Universidade Federal Rural do Rio de Janeiro",
+   "sigla": "UFRRJ",
+   "tipo": "entidade",
+   "natureza": "4",
+   "pai": "244"
+  },
+  "433": {
+   "nome": "Universidade Federal Rural de Pernambuco",
+   "sigla": "UFRPE",
+   "tipo": "entidade",
+   "natureza": "4",
+   "pai": "244"
+  },
+  "434": {
+   "nome": "Instituto Federal de Educação, Ciência e Tecnologia do Piauí",
+   "sigla": "IFPI",
+   "tipo": "entidade",
+   "natureza": "4",
+   "pai": "244"
+  },
+  "439": {
+   "nome": "Instituto Federal de Educação, Ciência e Tecnologia do Rio Grande do Norte",
+   "sigla": "IFRN",
+   "tipo": "entidade",
+   "natureza": "4",
+   "pai": "244"
+  },
+  "444": {
+   "nome": "Instituto Federal de Educação, Ciência e Tecnologia da Bahia",
+   "sigla": "IFBA",
+   "tipo": "entidade",
+   "natureza": "4",
+   "pai": "244"
+  },
+  "445": {
+   "nome": "Centro Federal de Educação Tecnológica de Minas Gerais",
+   "sigla": "CEFET-MG",
+   "tipo": "entidade",
+   "natureza": "4",
+   "pai": "244"
+  },
+  "448": {
+   "nome": "Centro Federal de Educação Tecnológica - Celso Suckow da Fonseca",
+   "sigla": "CEFET-RJ",
+   "tipo": "entidade",
+   "natureza": "4",
+   "pai": "244"
+  },
+  "451": {
+   "nome": "Instituto Federal de Educação, Ciência e Tecnologia de Goiás",
+   "sigla": "IFG",
+   "tipo": "entidade",
+   "natureza": "4",
+   "pai": "244"
+  },
+  "453": {
+   "nome": "Instituto Federal de Educação, Ciência e Tecnologia de São Paulo",
+   "sigla": "IFSP",
+   "tipo": "entidade",
+   "natureza": "4",
+   "pai": "244"
+  },
+  "454": {
+   "nome": "Universidade Tecnológica Federal do Paraná",
+   "sigla": "UTFPR",
+   "tipo": "entidade",
+   "natureza": "4",
+   "pai": "244"
+  },
+  "455": {
+   "nome": "Instituto Federal de Educação, Ciência e Tecnologia de Santa Catarina",
+   "sigla": "IFSC",
+   "tipo": "entidade",
+   "natureza": "4",
+   "pai": "244"
+  },
+  "456": {
+   "nome": "Instituto Federal de Educação, Ciência e Tecnologia Sul-Rio-Grandense",
+   "sigla": "IFSul",
+   "tipo": "entidade",
+   "natureza": "4",
+   "pai": "244"
+  },
+  "457": {
+   "nome": "Universidade Federal Rural da Amazônia",
+   "sigla": "UFRA",
+   "tipo": "entidade",
+   "natureza": "4",
+   "pai": "244"
+  },
+  "458": {
+   "nome": "Universidade Federal Rural do Semi-Árido",
+   "sigla": "UFERSA-RN",
+   "tipo": "entidade",
+   "natureza": "4",
+   "pai": "244"
+  },
+  "459": {
+   "nome": "Universidade Federal do Triângulo Mineiro",
+   "sigla": "UFTM",
+   "tipo": "entidade",
+   "natureza": "4",
+   "pai": "244"
+  },
+  "460": {
+   "nome": "Universidade Federal dos Vales do Jequitinhonha e Mucuri",
+   "sigla": "UFVJM",
+   "tipo": "entidade",
+   "natureza": "4",
+   "pai": "244"
+  },
+  "461": {
+   "nome": "Universidade Federal de Alfenas",
+   "sigla": "UNIFAL-MG",
+   "tipo": "entidade",
+   "natureza": "4",
+   "pai": "244"
+  },
+  "462": {
+   "nome": "Universidade Federal de Itajubá",
+   "sigla": "UNIFEI",
+   "tipo": "entidade",
+   "natureza": "4",
+   "pai": "244"
+  },
+  "463": {
+   "nome": "Universidade Federal de Lavras",
+   "sigla": "UFLA",
+   "tipo": "entidade",
+   "natureza": "4",
+   "pai": "244"
+  },
+  "464": {
+   "nome": "Universidade Federal de São Paulo",
+   "sigla": "UNIFESP",
+   "tipo": "entidade",
+   "natureza": "4",
+   "pai": "244"
+  },
+  "465": {
+   "nome": "Fundação Universidade do Amazonas",
+   "sigla": "UFAM",
+   "tipo": "entidade",
+   "natureza": "2",
+   "pai": "244"
+  },
+  "466": {
+   "nome": "Fundação Universidade Federal do Acre",
+   "sigla": "UFAC",
+   "tipo": "entidade",
+   "natureza": "2",
+   "pai": "244"
+  },
+  "467": {
+   "nome": "Fundação Universidade Federal do Maranhão",
+   "sigla": "UFMA",
+   "tipo": "entidade",
+   "natureza": "2",
+   "pai": "244"
+  },
+  "468": {
+   "nome": "Fundação Universidade Federal do Piauí",
+   "sigla": "UFPI",
+   "tipo": "entidade",
+   "natureza": "2",
+   "pai": "244"
+  },
+  "469": {
+   "nome": "Fundação Universidade Federal de Sergipe",
+   "sigla": "UFS",
+   "tipo": "entidade",
+   "natureza": "2",
+   "pai": "244"
+  },
+  "470": {
+   "nome": "Fundação Universidade de Brasília",
+   "sigla": "UNB",
+   "tipo": "entidade",
+   "natureza": "2",
+   "pai": "244"
+  },
+  "471": {
+   "nome": "Fundação Universidade Federal de Mato Grosso",
+   "sigla": "UFMT",
+   "tipo": "entidade",
+   "natureza": "2",
+   "pai": "244"
+  },
+  "472": {
+   "nome": "Universidade Federal de Uberlândia",
+   "sigla": "UFU",
+   "tipo": "entidade",
+   "natureza": "2",
+   "pai": "244"
+  },
+  "473": {
+   "nome": "Fundação Universidade Federal de Ouro Preto",
+   "sigla": "FUFOP",
+   "tipo": "entidade",
+   "natureza": "2",
+   "pai": "244"
+  },
+  "474": {
+   "nome": "Fundação Universidade Federal de Viçosa",
+   "sigla": "UFV",
+   "tipo": "entidade",
+   "natureza": "2",
+   "pai": "244"
+  },
+  "475": {
+   "nome": "Fundação Universidade Federal de São Carlos",
+   "sigla": "UFSCar",
+   "tipo": "entidade",
+   "natureza": "2",
+   "pai": "244"
+  },
+  "476": {
+   "nome": "Fundação Universidade Federal do Rio Grande",
+   "sigla": "FURG",
+   "tipo": "entidade",
+   "natureza": "2",
+   "pai": "244"
+  },
+  "477": {
+   "nome": "Fundação Universidade Federal de Pelotas",
+   "sigla": "UFPel",
+   "tipo": "entidade",
+   "natureza": "2",
+   "pai": "244"
+  },
+  "478": {
+   "nome": "Comissão de Valores Mobiliários",
+   "sigla": "CVM",
+   "tipo": "entidade",
+   "natureza": "4",
+   "pai": "308800"
+  },
+  "702": {
+   "nome": "Companhia das Docas do Estado da Bahia",
+   "sigla": "CODEBA",
+   "tipo": "entidade",
+   "natureza": "6",
+   "pai": "308817"
+  },
+  "758": {
+   "nome": "Companhia Docas do Ceará",
+   "sigla": "CDC",
+   "tipo": "entidade",
+   "natureza": "6",
+   "pai": "308817"
+  },
+  "827": {
+   "nome": "Fundação Universidade Federal de Mato Grosso do Sul",
+   "sigla": "UFMS",
+   "tipo": "entidade",
+   "natureza": "2",
+   "pai": "244"
+  },
+  "956": {
+   "nome": "Fundação Escola Nacional de Administração Pública",
+   "sigla": "Enap",
+   "tipo": "entidade",
+   "natureza": "2",
+   "pai": "308803"
+  },
+  "957": {
+   "nome": "Fundação Habitacional do Exército",
+   "sigla": "FHE",
+   "tipo": "entidade",
+   "natureza": "2",
+   "pai": "94"
+  },
+  "958": {
+   "nome": "Empresa de Trens Urbanos de Porto Alegre S.A",
+   "sigla": "TRENSURB",
+   "tipo": "entidade",
+   "natureza": "1",
+   "pai": "308798"
+  },
+  "959": {
+   "nome": "Autoridade Portuária de Santos S.A.",
+   "sigla": "APS S.A.",
+   "tipo": "entidade",
+   "natureza": "1",
+   "pai": "308817"
+  },
+  "970": {
+   "nome": "Fundação Universidade Federal de Ciências da Saúde de Porto Alegre",
+   "sigla": "UFCSPA",
+   "tipo": "entidade",
+   "natureza": "2",
+   "pai": "244"
+  },
+  "984": {
+   "nome": "Fundação Biblioteca Nacional",
+   "sigla": "FBN",
+   "tipo": "entidade",
+   "natureza": "2",
+   "pai": "308821"
+  },
+  "1013": {
+   "nome": "Empresa Gerencial de Projetos Navais",
+   "sigla": "EMGEPRON",
+   "tipo": "entidade",
+   "natureza": "1",
+   "pai": "185"
+  },
+  "1209": {
+   "nome": "Fundação Universidade Federal de Rondônia",
+   "sigla": "UNIR",
+   "tipo": "entidade",
+   "natureza": "2",
+   "pai": "244"
+  },
+  "1408": {
+   "nome": "Vice-Presidência da República",
+   "sigla": "VPR",
+   "tipo": "orgao",
+   "natureza": "3",
+   "pai": "26"
+  },
+  "930": {
+   "nome": "Caixa de Financiamento Imobiliário da Aeronáutica",
+   "sigla": "CFIAE",
+   "tipo": "entidade",
+   "natureza": "4",
+   "pai": "48"
+  },
+  "1782": {
+   "nome": "Fundação Cultural Palmares",
+   "sigla": "FCP",
+   "tipo": "entidade",
+   "natureza": "2",
+   "pai": "308821"
+  },
+  "1799": {
+   "nome": "Instituto Nacional de Colonização e Reforma Agrária",
+   "sigla": "INCRA",
+   "tipo": "entidade",
+   "natureza": "4",
+   "pai": "308794"
+  },
+  "1800": {
+   "nome": "VALEC - Engenharia, Construções e Ferrovias S.A. ",
+   "sigla": "VALEC",
+   "tipo": "entidade",
+   "natureza": "1",
+   "pai": "308818"
+  },
+  "1812": {
+   "nome": "Instituto Brasileiro do Meio Ambiente e dos Recursos Naturais Renováveis",
+   "sigla": "IBAMA",
+   "tipo": "entidade",
+   "natureza": "4",
+   "pai": "1927"
+  },
+  "1913": {
+   "nome": "Instituto de Pesquisas Jardim Botânico do Rio de Janeiro",
+   "sigla": "JBRJ",
+   "tipo": "entidade",
+   "natureza": "4",
+   "pai": "1927"
+  },
+  "1927": {
+   "nome": "Ministério do Meio Ambiente e Mudança do Clima",
+   "sigla": "MMA",
+   "tipo": "orgao",
+   "natureza": "3",
+   "pai": "26"
+  },
+  "1934": {
+   "nome": "Instituto Nacional do Seguro Social",
+   "sigla": "INSS",
+   "tipo": "entidade",
+   "natureza": "4",
+   "pai": "308819"
+  },
+  "1949": {
+   "nome": "Gabinete Pessoal do Presidente da República",
+   "sigla": "GPPR",
+   "tipo": "orgao",
+   "natureza": "3",
+   "pai": "26"
+  },
+  "2026": {
+   "nome": "Grupo Hospitalar Conceição S.A",
+   "sigla": "HNSC",
+   "tipo": "entidade",
+   "natureza": "6",
+   "pai": "304"
+  },
+  "2045": {
+   "nome": "Instituto do Patrimônio Histórico e Artístico Nacional",
+   "sigla": "IPHAN",
+   "tipo": "entidade",
+   "natureza": "4",
+   "pai": "308821"
+  },
+  "84710": {
+   "nome": "Universidade Federal do Recôncavo da Bahia",
+   "sigla": "UFRB",
+   "tipo": "entidade",
+   "natureza": "4",
+   "pai": "244"
+  },
+  "1605": {
+   "nome": "Fundação Universidade Federal de Roraima",
+   "sigla": "UFRR",
+   "tipo": "entidade",
+   "natureza": "2",
+   "pai": "244"
+  },
+  "1710": {
+   "nome": "Fundação Universidade Federal do Amapá",
+   "sigla": "UNIFAP",
+   "tipo": "entidade",
+   "natureza": "2",
+   "pai": "244"
+  },
+  "1734": {
+   "nome": "Fundação Universidade Federal de São João Del Rei",
+   "sigla": "FUNRei",
+   "tipo": "entidade",
+   "natureza": "2",
+   "pai": "244"
+  },
+  "2114": {
+   "nome": "Companhia Nacional de Abastecimento",
+   "sigla": "CONAB",
+   "tipo": "entidade",
+   "natureza": "1",
+   "pai": "308794"
+  },
+  "2330": {
+   "nome": "Fundação Nacional de Artes",
+   "sigla": "FUNARTE",
+   "tipo": "entidade",
+   "natureza": "2",
+   "pai": "308821"
+  },
+  "2207": {
+   "nome": "Fundação Nacional de Saúde",
+   "sigla": "FUNASA",
+   "tipo": "entidade",
+   "natureza": "2",
+   "pai": "304"
+  },
+  "91144": {
+   "nome": "Superintendência do Desenvolvimento do Nordeste",
+   "sigla": "SUDENE",
+   "tipo": "entidade",
+   "natureza": "4",
+   "pai": "308799"
+  },
+  "2837": {
+   "nome": "Casa Civil da Presidência da República",
+   "sigla": "CC-PR",
+   "tipo": "orgao",
+   "natureza": "3",
+   "pai": "26"
+  },
+  "2852": {
+   "nome": "Ministério de Minas e Energia",
+   "sigla": "MME",
+   "tipo": "orgao",
+   "natureza": "3",
+   "pai": "26"
+  },
+  "3561": {
+   "nome": "Instituto Federal de Educação, Ciência e Tecnologia de Roraima",
+   "sigla": "IFRR",
+   "tipo": "entidade",
+   "natureza": "4",
+   "pai": "244"
+  },
+  "4243": {
+   "nome": "Agência Espacial Brasileira",
+   "sigla": "AEB",
+   "tipo": "entidade",
+   "natureza": "4",
+   "pai": "267175"
+  },
+  "84712": {
+   "nome": "Fundação Universidade Federal da Grande Dourados",
+   "sigla": "UFGD",
+   "tipo": "entidade",
+   "natureza": "2",
+   "pai": "244"
+  },
+  "8406": {
+   "nome": "Fundação Osório",
+   "sigla": "FOSORIO",
+   "tipo": "entidade",
+   "natureza": "2",
+   "pai": "94"
+  },
+  "100900": {
+   "nome": "Instituto Federal de Educação, Ciência e Tecnologia de Alagoas",
+   "sigla": "IFAL",
+   "tipo": "entidade",
+   "natureza": "4",
+   "pai": "244"
+  },
+  "100904": {
+   "nome": "Instituto Federal de Educação, Ciência e Tecnologia de Mato Grosso do Sul",
+   "sigla": "IFMS",
+   "tipo": "entidade",
+   "natureza": "4",
+   "pai": "244"
+  },
+  "100909": {
+   "nome": "Instituto Federal de Educação, Ciência e Tecnologia de Sergipe",
+   "sigla": "IFS",
+   "tipo": "entidade",
+   "natureza": "4",
+   "pai": "244"
+  },
+  "100913": {
+   "nome": "Instituto Federal de Educação, Ciência e Tecnologia Goiano",
+   "sigla": "IF-GOIANO",
+   "tipo": "entidade",
+   "natureza": "4",
+   "pai": "244"
+  },
+  "100930": {
+   "nome": "Instituto Federal de Educação, Ciência e Tecnologia do Rio de Janeiro",
+   "sigla": "IFRJ",
+   "tipo": "entidade",
+   "natureza": "4",
+   "pai": "244"
+  },
+  "83815": {
+   "nome": "Empresa Brasileira de Hemoderivados e Biotecnologia",
+   "sigla": "HEMOBRÁS",
+   "tipo": "entidade",
+   "natureza": "1",
+   "pai": "304"
+  },
+  "100113": {
+   "nome": "Superintendência do Desenvolvimento do Centro-Oeste",
+   "sigla": "SUDECO",
+   "tipo": "entidade",
+   "natureza": "4",
+   "pai": "308799"
+  },
+  "100916": {
+   "nome": "Instituto Federal de Educação, Ciência e Tecnologia de Mato Grosso",
+   "sigla": "IFMT",
+   "tipo": "entidade",
+   "natureza": "4",
+   "pai": "244"
+  },
+  "100921": {
+   "nome": "Instituto Federal de Educação, Ciência e Tecnologia do Maranhão",
+   "sigla": "IFMA",
+   "tipo": "entidade",
+   "natureza": "4",
+   "pai": "244"
+  },
+  "25064": {
+   "nome": "Agência Nacional de Telecomunicações",
+   "sigla": "ANATEL",
+   "tipo": "entidade",
+   "natureza": "4",
+   "pai": "264359"
+  },
+  "25281": {
+   "nome": "Agência Nacional do Petróleo, Gás Natural e Biocombustíveis",
+   "sigla": "ANP",
+   "tipo": "entidade",
+   "natureza": "4",
+   "pai": "2852"
+  },
+  "76608": {
+   "nome": "Empresa de Pesquisa Energética",
+   "sigla": "EPE",
+   "tipo": "entidade",
+   "natureza": "1",
+   "pai": "2852"
+  },
+  "21089": {
+   "nome": "Agência Nacional de Energia Elétrica",
+   "sigla": "ANEEL",
+   "tipo": "entidade",
+   "natureza": "4",
+   "pai": "2852"
+  },
+  "100901": {
+   "nome": "Instituto Federal de Educação, Ciência e Tecnologia do Norte de Minas Gerais",
+   "sigla": "IFNMG",
+   "tipo": "entidade",
+   "natureza": "4",
+   "pai": "244"
+  },
+  "100584": {
+   "nome": "Instituto Brasileiro de Museus",
+   "sigla": "IBRAM",
+   "tipo": "entidade",
+   "natureza": "4",
+   "pai": "308821"
+  },
+  "36687": {
+   "nome": "Agência Nacional de Vigilância Sanitária",
+   "sigla": "ANVISA",
+   "tipo": "entidade",
+   "natureza": "4",
+   "pai": "304"
+  },
+  "100902": {
+   "nome": "Instituto Federal de Educação, Ciência e Tecnologia do Sudeste de Minas Gerais",
+   "sigla": "IFSUDMG",
+   "tipo": "entidade",
+   "natureza": "4",
+   "pai": "244"
+  },
+  "98519": {
+   "nome": "Centro Nacional de Tecnologia Eletrônica Avançada S. A",
+   "sigla": "CEITEC/S.A.",
+   "tipo": "entidade",
+   "natureza": "1",
+   "pai": "267175"
+  },
+  "100903": {
+   "nome": "Instituto Federal de Educação, Ciência e Tecnologia do Triângulo Mineiro",
+   "sigla": "IFTM",
+   "tipo": "entidade",
+   "natureza": "4",
+   "pai": "244"
+  },
+  "100908": {
+   "nome": "Instituto Federal de Educação, Ciência e Tecnologia do Tocantins",
+   "sigla": "IFTO",
+   "tipo": "entidade",
+   "natureza": "4",
+   "pai": "244"
+  },
+  "100912": {
+   "nome": "Instituto Federal de Educação, Ciência e Tecnologia do Espírito Santo",
+   "sigla": "IFES",
+   "tipo": "entidade",
+   "natureza": "4",
+   "pai": "244"
+  },
+  "100915": {
+   "nome": "Instituto Federal de Educação, Ciência e Tecnologia do Sul de Minas Gerais",
+   "sigla": "IFSULMG",
+   "tipo": "entidade",
+   "natureza": "4",
+   "pai": "244"
+  },
+  "100920": {
+   "nome": "Instituto Federal de Educação, Ciência e Tecnologia Baiano",
+   "sigla": "IF BAIANO",
+   "tipo": "entidade",
+   "natureza": "4",
+   "pai": "244"
+  },
+  "29415": {
+   "nome": "Companhia de Entrepostos e Armazéns Gerais de São Paulo ",
+   "sigla": "CEAGESP",
+   "tipo": "entidade",
+   "natureza": "6",
+   "pai": "308794"
+  },
+  "118698": {
+   "nome": "Agência Brasileira Gestora de Fundos Garantidores e Garantias S.A.",
+   "sigla": "ABGF",
+   "tipo": "entidade",
+   "natureza": "1",
+   "pai": "308800"
+  },
+  "46784": {
+   "nome": "Instituto Federal de Educação, Ciência e Tecnologia do Sertão Pernambucano",
+   "sigla": "IFSertaoPE",
+   "tipo": "entidade",
+   "natureza": "4",
+   "pai": "244"
+  },
+  "45013": {
+   "nome": "Agência Nacional de Saúde Suplementar",
+   "sigla": "ANS",
+   "tipo": "entidade",
+   "natureza": "4",
+   "pai": "304"
+  },
+  "46876": {
+   "nome": "Agência Nacional de Águas e Saneamento Básico",
+   "sigla": "ANA",
+   "tipo": "entidade",
+   "natureza": "4",
+   "pai": "308799"
+  },
+  "100922": {
+   "nome": "Instituto Federal de Educação, Ciência e Tecnologia de Pernambuco",
+   "sigla": "IFPE",
+   "tipo": "entidade",
+   "natureza": "4",
+   "pai": "244"
+  },
+  "41066": {
+   "nome": "Ministério da Defesa",
+   "sigla": "MD",
+   "tipo": "orgao",
+   "natureza": "3",
+   "pai": "26"
+  },
+  "42673": {
+   "nome": "Secretaria de Relações Institucionais da Presidência da República",
+   "sigla": "SRI/PR",
+   "tipo": "orgao",
+   "natureza": "3",
+   "pai": "26"
+  },
+  "109913": {
+   "nome": "Empresa Brasileira de Administração de Petróleo e Gás Natural S.A.- Pré-Sal Petróleo S.A",
+   "sigla": "PPSA",
+   "tipo": "entidade",
+   "natureza": "1",
+   "pai": "2852"
+  },
+  "100905": {
+   "nome": "Instituto Federal de Educação, Ciência e Tecnologia da Paraíba",
+   "sigla": "IFPB",
+   "tipo": "entidade",
+   "natureza": "4",
+   "pai": "244"
+  },
+  "100906": {
+   "nome": "Instituto Federal de Educação, Ciência e Tecnologia Farroupilha",
+   "sigla": "IFFAR",
+   "tipo": "entidade",
+   "natureza": "4",
+   "pai": "244"
+  },
+  "100907": {
+   "nome": "Instituto Federal de Educação, Ciência e Tecnologia de Rondônia",
+   "sigla": "IFRO",
+   "tipo": "entidade",
+   "natureza": "4",
+   "pai": "244"
+  },
+  "100910": {
+   "nome": "Instituto Federal de Educação, Ciência e Tecnologia do Amazonas",
+   "sigla": "IFAM",
+   "tipo": "entidade",
+   "natureza": "4",
+   "pai": "244"
+  },
+  "100911": {
+   "nome": "Instituto Federal de Educação, Ciência e Tecnologia do Ceará",
+   "sigla": "IFCE",
+   "tipo": "entidade",
+   "natureza": "4",
+   "pai": "244"
+  },
+  "100914": {
+   "nome": "Instituto Federal de Educação, Ciência e Tecnologia de Minas Gerais",
+   "sigla": "IFMG",
+   "tipo": "entidade",
+   "natureza": "4",
+   "pai": "244"
+  },
+  "100917": {
+   "nome": "Instituto Federal de Educação, Ciência e Tecnologia do Pará",
+   "sigla": "IFPA",
+   "tipo": "entidade",
+   "natureza": "4",
+   "pai": "244"
+  },
+  "100918": {
+   "nome": "Instituto Federal de Educação, Ciência e Tecnologia do Rio Grande do Sul",
+   "sigla": "IFRS",
+   "tipo": "entidade",
+   "natureza": "4",
+   "pai": "244"
+  },
+  "100919": {
+   "nome": "Instituto Federal de Educação, Ciência e Tecnologia Catarinense",
+   "sigla": "IFC",
+   "tipo": "entidade",
+   "natureza": "4",
+   "pai": "244"
+  },
+  "84703": {
+   "nome": "Fundação Universidade Federal do ABC",
+   "sigla": "UFABC",
+   "tipo": "entidade",
+   "natureza": "2",
+   "pai": "244"
+  },
+  "52702": {
+   "nome": "Fundação Universidade Federal do Tocantins",
+   "sigla": "UFT",
+   "tipo": "entidade",
+   "natureza": "2",
+   "pai": "244"
+  },
+  "47838": {
+   "nome": "Centrais de Abastecimento de Minas Gerais S.A.",
+   "sigla": "CEASA-MG",
+   "tipo": "entidade",
+   "natureza": "6",
+   "pai": "308794"
+  },
+  "120397": {
+   "nome": "Fundação de Previdência Complementar do Servidor Público Federal do Poder Executivo",
+   "sigla": "Funpresp-Exe",
+   "tipo": "entidade",
+   "natureza": "2",
+   "pai": "308803"
+  },
+  "48739": {
+   "nome": "Nuclebrás Equipamentos Pesados S/A",
+   "sigla": "NUCLEP",
+   "tipo": "entidade",
+   "natureza": "6",
+   "pai": "2852"
+  },
+  "49103": {
+   "nome": "Instituto Federal de Educação, Ciência e Tecnologia do Paraná",
+   "sigla": "IFPR",
+   "tipo": "entidade",
+   "natureza": "4",
+   "pai": "244"
+  },
+  "47388": {
+   "nome": "Instituto Nacional de Tecnologia da Informação",
+   "sigla": "ITI",
+   "tipo": "entidade",
+   "natureza": "4",
+   "pai": "308803"
+  },
+  "57682": {
+   "nome": "Agência Nacional do Cinema",
+   "sigla": "ANCINE",
+   "tipo": "entidade",
+   "natureza": "4",
+   "pai": "308821"
+  },
+  "104667": {
+   "nome": "Universidade Federal do Oeste do Pará",
+   "sigla": "UFOPA",
+   "tipo": "entidade",
+   "natureza": "4",
+   "pai": "244"
+  },
+  "100931": {
+   "nome": "Instituto Federal de Educação, Ciência e Tecnologia Fluminense",
+   "sigla": "IFF",
+   "tipo": "entidade",
+   "natureza": "4",
+   "pai": "244"
+  },
+  "105915": {
+   "nome": "Superintendência Nacional de Previdência Complementar",
+   "sigla": "PREVIC",
+   "tipo": "entidade",
+   "natureza": "4",
+   "pai": "308819"
+  },
+  "55962": {
+   "nome": "Empresa Gestora de Ativos",
+   "sigla": "EMGEA",
+   "tipo": "entidade",
+   "natureza": "1",
+   "pai": "308800"
+  },
+  "91842": {
+   "nome": "Instituto Chico Mendes de Conservação da Biodiversidade",
+   "sigla": "ICMBio",
+   "tipo": "entidade",
+   "natureza": "4",
+   "pai": "1927"
+  },
+  "94739": {
+   "nome": "Fundação Universidade Federal do Pampa",
+   "sigla": "UNIPAMPA",
+   "tipo": "entidade",
+   "natureza": "2",
+   "pai": "244"
+  },
+  "54793": {
+   "nome": "Agência Nacional de Transportes Terrestres",
+   "sigla": "ANTT",
+   "tipo": "entidade",
+   "natureza": "4",
+   "pai": "308818"
+  },
+  "54843": {
+   "nome": "Agência Nacional de Transportes Aquaviários",
+   "sigla": "ANTAQ",
+   "tipo": "entidade",
+   "natureza": "4",
+   "pai": "308817"
+  },
+  "54844": {
+   "nome": "Departamento Nacional de Infraestrutura de Transportes",
+   "sigla": "DNIT",
+   "tipo": "entidade",
+   "natureza": "4",
+   "pai": "308818"
+  },
+  "86144": {
+   "nome": "Agência Nacional de Aviação Civil",
+   "sigla": "ANAC",
+   "tipo": "entidade",
+   "natureza": "4",
+   "pai": "308817"
+  },
+  "117267": {
+   "nome": "Empresa Brasileira de Serviços Hospitalares",
+   "sigla": "EBSERH",
+   "tipo": "entidade",
+   "natureza": "1",
+   "pai": "244"
+  },
+  "67671": {
+   "nome": "Universidade Federal de Campina Grande",
+   "sigla": "UFCG",
+   "tipo": "entidade",
+   "natureza": "4",
+   "pai": "244"
+  },
+  "60609": {
+   "nome": "Eletronuclear S.A",
+   "sigla": "ELETRONUCLEAR",
+   "tipo": "entidade",
+   "natureza": "6",
+   "pai": "300037"
+  },
+  "94427": {
+   "nome": "Instituto Federal de Educação, Ciência e Tecnologia do Acre",
+   "sigla": "IFAC",
+   "tipo": "entidade",
+   "natureza": "4",
+   "pai": "244"
+  },
+  "94428": {
+   "nome": "Instituto Federal de Educação, Ciência e Tecnologia do Amapá",
+   "sigla": "IFAP",
+   "tipo": "entidade",
+   "natureza": "4",
+   "pai": "244"
+  },
+  "94430": {
+   "nome": "Instituto Federal de Educação, Ciência e Tecnologia de Brasília",
+   "sigla": "IFB",
+   "tipo": "entidade",
+   "natureza": "4",
+   "pai": "244"
+  },
+  "105793": {
+   "nome": "Universidade Federal da Integração Latino-Americana",
+   "sigla": "UNILA",
+   "tipo": "entidade",
+   "natureza": "4",
+   "pai": "244"
+  },
+  "122378": {
+   "nome": "Universidade Federal do Sul da Bahia",
+   "sigla": "UFSB",
+   "tipo": "entidade",
+   "natureza": "4",
+   "pai": "244"
+  },
+  "122381": {
+   "nome": "Universidade Federal do Sul e Sudeste do Pará",
+   "sigla": "Unifesspa",
+   "tipo": "entidade",
+   "natureza": "4",
+   "pai": "244"
+  },
+  "122386": {
+   "nome": "Universidade Federal do Oeste da Bahia",
+   "sigla": "UFOB",
+   "tipo": "entidade",
+   "natureza": "4",
+   "pai": "244"
+  },
+  "122391": {
+   "nome": "Universidade Federal do Cariri ",
+   "sigla": "UFCA",
+   "tipo": "entidade",
+   "natureza": "4",
+   "pai": "244"
+  },
+  "103730": {
+   "nome": "Universidade Federal da Fronteira Sul",
+   "sigla": "UFFS",
+   "tipo": "entidade",
+   "natureza": "4",
+   "pai": "244"
+  },
+  "69624": {
+   "nome": "Fundação Universidade Federal do Vale do São Francisco",
+   "sigla": "UNIVASF",
+   "tipo": "entidade",
+   "natureza": "2",
+   "pai": "244"
+  },
+  "72084": {
+   "nome": "Ministério do Turismo",
+   "sigla": "MTur",
+   "tipo": "orgao",
+   "natureza": "3",
+   "pai": "26"
+  },
+  "91138": {
+   "nome": "Superintendência do Desenvolvimento da Amazônia",
+   "sigla": "SUDAM",
+   "tipo": "entidade",
+   "natureza": "4",
+   "pai": "308799"
+  },
+  "109912": {
+   "nome": "Universidade da Integração Internacional da Lusofonia Afro-Brasileira",
+   "sigla": "UNILAB",
+   "tipo": "entidade",
+   "natureza": "4",
+   "pai": "244"
+  },
+  "200949": {
+   "nome": "Amazônia Azul Tecnologias de Defesa S.A.",
+   "sigla": "AMAZUL",
+   "tipo": "entidade",
+   "natureza": "1",
+   "pai": "185"
+  },
+  "214460": {
+   "nome": "Controladoria-Geral da União",
+   "sigla": "CGU",
+   "tipo": "orgao",
+   "natureza": "3",
+   "pai": "26"
+  },
+  "219924": {
+   "nome": "Secretaria-Geral da Presidência da República",
+   "sigla": "SG",
+   "tipo": "orgao",
+   "natureza": "3",
+   "pai": "26"
+  },
+  "222120": {
+   "nome": "Agência Nacional de Mineração",
+   "sigla": "ANM",
+   "tipo": "entidade",
+   "natureza": "4",
+   "pai": "2852"
+  },
+  "226371": {
+   "nome": "Universidade Federal de Catalão",
+   "sigla": "UFCAT",
+   "tipo": "entidade",
+   "natureza": "4",
+   "pai": "244"
+  },
+  "226372": {
+   "nome": "Universidade Federal de Jataí",
+   "sigla": "UFJ",
+   "tipo": "entidade",
+   "natureza": "4",
+   "pai": "244"
+  },
+  "226373": {
+   "nome": "Universidade Federal de Rondonópolis",
+   "sigla": "UFR",
+   "tipo": "entidade",
+   "natureza": "4",
+   "pai": "244"
+  },
+  "227867": {
+   "nome": "Universidade Federal do Delta do Parnaíba",
+   "sigla": "UFDPar",
+   "tipo": "entidade",
+   "natureza": "4",
+   "pai": "244"
+  },
+  "227868": {
+   "nome": "Universidade Federal do Agreste de Pernambuco",
+   "sigla": "UFAPE",
+   "tipo": "entidade",
+   "natureza": "4",
+   "pai": "244"
+  },
+  "235881": {
+   "nome": "Ministério da Justiça e Segurança Pública",
+   "sigla": "MJSP",
+   "tipo": "orgao",
+   "natureza": "3",
+   "pai": "26"
+  },
+  "235884": {
+   "nome": "Agência Nacional de Proteção de Dados",
+   "sigla": "ANPD",
+   "tipo": "entidade",
+   "natureza": "4",
+   "pai": "235881"
+  },
+  "241361": {
+   "nome": "Universidade Federal do Norte do Tocantins",
+   "sigla": "UFNT",
+   "tipo": "entidade",
+   "natureza": "4",
+   "pai": "244"
+  },
+  "260668": {
+   "nome": "Defensoria Pública da União",
+   "sigla": "DPU",
+   "tipo": "orgao",
+   "natureza": "7",
+   "pai": "244322"
+  },
+  "264359": {
+   "nome": "Ministério das Comunicações",
+   "sigla": "MCOM",
+   "tipo": "orgao",
+   "natureza": "3",
+   "pai": "26"
+  },
+  "267175": {
+   "nome": "Ministério da Ciência, Tecnologia e Inovação",
+   "sigla": "MCTI",
+   "tipo": "orgao",
+   "natureza": "3",
+   "pai": "26"
+  },
+  "273855": {
+   "nome": "Autoridade Nacional de Segurança Nuclear",
+   "sigla": "ANSN",
+   "tipo": "entidade",
+   "natureza": "4",
+   "pai": "2852"
+  },
+  "292009": {
+   "nome": "NAV Brasil Serviços de Navegação Aérea S.A",
+   "sigla": "NAV Brasil",
+   "tipo": "entidade",
+   "natureza": "1",
+   "pai": "48"
+  },
+  "300037": {
+   "nome": " Empresa Brasileira de Participações em Energia Nuclear e Binacional S.A.",
+   "sigla": "ENBpar",
+   "tipo": "entidade",
+   "natureza": "6",
+   "pai": "2852"
+  },
+  "308793": {
+   "nome": "Ministério da Agricultura e Pecuária",
+   "sigla": "MAPA",
+   "tipo": "orgao",
+   "natureza": "3",
+   "pai": "26"
+  },
+  "308794": {
+   "nome": "Ministério do Desenvolvimento Agrário e Agricultura Familiar",
+   "sigla": "MDA",
+   "tipo": "orgao",
+   "natureza": "3",
+   "pai": "26"
+  },
+  "308795": {
+   "nome": "Ministério da Pesca e Aquicultura",
+   "sigla": "MPA",
+   "tipo": "orgao",
+   "natureza": "3",
+   "pai": "26"
+  },
+  "308796": {
+   "nome": "Ministério do Desenvolvimento e Assistência Social, Família e Combate à Fome",
+   "sigla": "MDS",
+   "tipo": "orgao",
+   "natureza": "3",
+   "pai": "26"
+  },
+  "308797": {
+   "nome": "Ministério do Esporte",
+   "sigla": "MESP",
+   "tipo": "orgao",
+   "natureza": "3",
+   "pai": "26"
+  },
+  "308798": {
+   "nome": "Ministério das Cidades",
+   "sigla": "MCID",
+   "tipo": "orgao",
+   "natureza": "3",
+   "pai": "26"
+  },
+  "308799": {
+   "nome": "Ministério da Integração e do Desenvolvimento Regional",
+   "sigla": "MIDR",
+   "tipo": "orgao",
+   "natureza": "3",
+   "pai": "26"
+  },
+  "308800": {
+   "nome": "Ministério da Fazenda",
+   "sigla": "MF",
+   "tipo": "orgao",
+   "natureza": "3",
+   "pai": "26"
+  },
+  "308803": {
+   "nome": "Ministério da Gestão e da Inovação em Serviços Públicos",
+   "sigla": "MGI",
+   "tipo": "orgao",
+   "natureza": "3",
+   "pai": "26"
+  },
+  "308804": {
+   "nome": "Ministério do Planejamento e Orçamento",
+   "sigla": "MPO",
+   "tipo": "orgao",
+   "natureza": "3",
+   "pai": "26"
+  },
+  "308814": {
+   "nome": "Ministério do Desenvolvimento, Indústria, Comércio e Serviços",
+   "sigla": "MDIC",
+   "tipo": "orgao",
+   "natureza": "3",
+   "pai": "26"
+  },
+  "308815": {
+   "nome": "Ministério das Mulheres",
+   "sigla": "MMULHERES",
+   "tipo": "orgao",
+   "natureza": "3",
+   "pai": "26"
+  },
+  "308816": {
+   "nome": "Ministério dos Direitos Humanos e da Cidadania",
+   "sigla": "MDHC",
+   "tipo": "orgao",
+   "natureza": "3",
+   "pai": "26"
+  },
+  "308817": {
+   "nome": "Ministério de Portos e Aeroportos",
+   "sigla": "MPOR",
+   "tipo": "orgao",
+   "natureza": "3",
+   "pai": "26"
+  },
+  "308818": {
+   "nome": "Ministério dos Transportes",
+   "sigla": "MT",
+   "tipo": "orgao",
+   "natureza": "3",
+   "pai": "26"
+  },
+  "308819": {
+   "nome": "Ministério da Previdência Social",
+   "sigla": "MPS",
+   "tipo": "orgao",
+   "natureza": "3",
+   "pai": "26"
+  },
+  "308820": {
+   "nome": "Ministério do Trabalho e Emprego",
+   "sigla": "MTE",
+   "tipo": "orgao",
+   "natureza": "3",
+   "pai": "26"
+  },
+  "308821": {
+   "nome": "Ministério da Cultura",
+   "sigla": "MinC",
+   "tipo": "orgao",
+   "natureza": "3",
+   "pai": "26"
+  },
+  "308822": {
+   "nome": "Secretaria de Comunicação Social da Presidência da República",
+   "sigla": "SECOM",
+   "tipo": "orgao",
+   "natureza": "3",
+   "pai": "26"
+  },
+  "308823": {
+   "nome": "Ministério da Igualdade Racial",
+   "sigla": "MIR",
+   "tipo": "orgao",
+   "natureza": "3",
+   "pai": "26"
+  },
+  "308824": {
+   "nome": "Ministério dos Povos Indígenas",
+   "sigla": "MPI",
+   "tipo": "orgao",
+   "natureza": "3",
+   "pai": "26"
+  },
+  "314990": {
+   "nome": "Veículo de Desestatização MG Investimentos S.A.",
+   "sigla": "VDMG Investimentos",
+   "tipo": "entidade",
+   "natureza": "1",
+   "pai": "308798"
+  },
+  "330683": {
+   "nome": "Ministério do Empreendedorismo, da Microempresa e da Empresa de Pequeno Porte",
+   "sigla": "MEMP",
+   "tipo": "orgao",
+   "natureza": "3",
+   "pai": "26"
+  },
+  "628352": {
+   "nome": "Instituto Federal de Educação, Ciência e Tecnologia do Sertão Paraibano",
+   "sigla": "IFSertãoPB",
+   "tipo": "entidade",
+   "natureza": "4",
+   "pai": "244"
+  },
+  "633271": {
+   "nome": "Universidade Federal Indígena",
+   "sigla": "Unind",
+   "tipo": "entidade",
+   "natureza": "4",
+   "pai": "244"
+  },
+  "638051": {
+   "nome": "Caixa Seguridade Participações S.A.",
+   "sigla": "Caixa Seguridade",
+   "tipo": "entidade",
+   "natureza": "6",
+   "pai": "91"
+  },
+  "638052": {
+   "nome": "CAIXA Cartões Holding S.A.",
+   "sigla": "CAIXA Cartões",
+   "tipo": "entidade",
+   "natureza": "1",
+   "pai": "91"
+  },
+  "638011": {
+   "nome": "CAIXA Loterias S.A.",
+   "sigla": "CAIXA Loterias",
+   "tipo": "entidade",
+   "natureza": "1",
+   "pai": "91"
+  },
+  "638071": {
+   "nome": "CAIXA Distribuidora de Títulos e Valores Mobiliários S/A",
+   "sigla": "CAIXA DTVM",
+   "tipo": "entidade",
+   "natureza": "1",
+   "pai": "91"
+  },
+  "645131": {
+   "nome": "Universidade Federal do Esporte",
+   "sigla": "UFEsporte",
+   "tipo": "entidade",
+   "natureza": "4",
+   "pai": "244"
+  }
+ }
+}

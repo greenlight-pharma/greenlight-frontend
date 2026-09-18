@@ -5,6 +5,17 @@
   "installCommand": "echo 'sem dependências na raiz — o painel instala as suas no build'",
   "redirects": [
     {
+      "source": "/:caminho*",
+      "has": [
+        {
+          "type": "host",
+          "value": "www.mapadogoverno.com.br"
+        }
+      ],
+      "destination": "https://mapadogoverno.com.br/:caminho*",
+      "permanent": true
+    },
+    {
       "source": "/painel-ubs",
       "destination": "/medicacoes",
       "permanent": false
@@ -13,6 +24,18 @@
       "source": "/painel-ubs/:caminho*",
       "destination": "/medicacoes/:caminho*",
       "permanent": false
+    }
+  ],
+  "rewrites": [
+    {
+      "source": "/:caminho*",
+      "has": [
+        {
+          "type": "host",
+          "value": "mapadogoverno.com.br"
+        }
+      ],
+      "destination": "/governo/:caminho*"
     }
   ]
 }

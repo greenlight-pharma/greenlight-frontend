@@ -1,0 +1,1350 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mapa do Governo</title>
+<meta name="description" content="Mapa navegável da estrutura do governo federal brasileiro, os três Poderes em um só grafo: Poderes, ministérios, autarquias, agências, tribunais, cargos e as relações entre eles. Quem nomeia quem, quem fiscaliza quem.">
+<meta name="theme-color" content="#0F1F3A">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230F1F3A'/%3E%3Cpath d='M32 32 L16 18 M32 32 L48 18 M32 32 L32 50' stroke='%23C7D8EA' stroke-width='4' stroke-linecap='round'/%3E%3Ccircle cx='32' cy='32' r='7' fill='%23fff'/%3E%3Ccircle cx='16' cy='18' r='5' fill='%232a78d6'/%3E%3Ccircle cx='48' cy='18' r='5' fill='%23eb6834'/%3E%3Ccircle cx='32' cy='50' r='5' fill='%231baf7a'/%3E%3C/svg%3E">
+<link rel="canonical" href="https://mapadogoverno.com.br/">
+<meta property="og:url" content="https://mapadogoverno.com.br/">
+<meta property="og:site_name" content="Mapa do Governo">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Mapa do Governo · quem é quem na União, e quem nomeia quem">
+<meta property="og:description" content="Poderes, órgãos, entidades e cargos da União, e as relações entre eles, em um só mapa.">
+<style>
+:root{
+  color-scheme:light;
+  --surface:#fcfcfb;--plane:#f9f9f7;--ink:#0b0b0b;--ink-2:#52514e;--mute:#898781;
+  --grid:#e1e0d9;--axis:#c3c2b7;--border:rgba(11,11,11,.10);--panel:#ffffff;
+  --exec:#2a78d6;--leg:#eb6834;--jud:#1baf7a;--ess:#898781;--uniao:#0b0b0b;
+  --focus:#2a78d6;--edge:#c3c2b7;--edge-rel:#52514e;
+  --radius:14px;--font:system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    color-scheme:dark;
+    --surface:#1a1a19;--plane:#0d0d0d;--ink:#ffffff;--ink-2:#c3c2b7;--mute:#898781;
+    --grid:#2c2c2a;--axis:#383835;--border:rgba(255,255,255,.10);--panel:#222220;
+    --exec:#3987e5;--leg:#d95926;--jud:#199e70;--ess:#898781;--uniao:#ffffff;
+    --focus:#3987e5;--edge:#383835;--edge-rel:#c3c2b7;
+  }
+}
+:root[data-theme="dark"]{
+  color-scheme:dark;
+  --surface:#1a1a19;--plane:#0d0d0d;--ink:#ffffff;--ink-2:#c3c2b7;--mute:#898781;
+  --grid:#2c2c2a;--axis:#383835;--border:rgba(255,255,255,.10);--panel:#222220;
+  --exec:#3987e5;--leg:#d95926;--jud:#199e70;--ess:#898781;--uniao:#ffffff;
+  --focus:#3987e5;--edge:#383835;--edge-rel:#c3c2b7;
+}
+*{box-sizing:border-box}
+html,body{height:100%}
+body{margin:0;background:var(--surface);color:var(--ink);font-family:var(--font);font-size:15px;line-height:1.45;-webkit-font-smoothing:antialiased;overflow:hidden}
+a{color:inherit}
+button,input{font-family:inherit;font-size:inherit}
+:focus-visible{outline:3px solid var(--focus);outline-offset:2px;border-radius:6px}
+
+/* ---------- barra superior ---------- */
+.top{position:absolute;inset:0 0 auto 0;z-index:5;display:flex;align-items:center;gap:10px;padding:10px 16px;background:color-mix(in srgb,var(--surface) 88%,transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--border);flex-wrap:wrap}
+.brand{display:flex;flex-direction:column;gap:1px;min-width:0}
+.brand b{font-size:16px;letter-spacing:-.01em;white-space:nowrap}
+.brand small{color:var(--ink-2);font-size:12px;white-space:nowrap}
+.search{position:relative;flex:1 1 200px;max-width:360px}
+.search input{width:100%;padding:9px 12px 9px 36px;border:1px solid var(--axis);border-radius:10px;background:var(--panel);color:var(--ink)}
+.search svg{position:absolute;left:11px;top:50%;transform:translateY(-50%);width:16px;height:16px;color:var(--mute);pointer-events:none}
+.search .lista{position:absolute;top:calc(100% + 6px);left:0;right:0;background:var(--panel);border:1px solid var(--border);border-radius:12px;box-shadow:0 12px 32px rgba(0,0,0,.14);max-height:min(60vh,380px);overflow:auto;display:none;padding:6px}
+.search .lista.aberta{display:block}
+.search .lista button{display:flex;gap:10px;align-items:center;width:100%;text-align:left;border:0;background:none;color:var(--ink);padding:8px 10px;border-radius:8px;cursor:pointer}
+.search .lista button:hover,.search .lista button.ativo{background:var(--plane)}
+.search .lista .meta{color:var(--mute);font-size:12px;margin-left:auto;white-space:nowrap}
+.chips{display:flex;gap:6px;flex-wrap:wrap}
+.chip{display:inline-flex;align-items:center;gap:6px;padding:6px 9px;border-radius:999px;border:1px solid var(--axis);background:var(--panel);color:var(--ink);cursor:pointer;font-size:13px}
+.chip[aria-pressed="false"]{opacity:.45}
+.chip .dot{width:10px;height:10px;border-radius:50%;background:var(--c)}
+.chip .sq{width:10px;height:10px;border-radius:2px;background:var(--c)}
+.ghost{padding:7px 11px;border-radius:10px;border:1px solid var(--axis);background:var(--panel);color:var(--ink);cursor:pointer;font-size:13px}
+.ghost:hover{background:var(--plane)}
+.top .acoes{display:flex;gap:6px;margin-left:auto}
+
+/* ---------- palco ---------- */
+#palco{position:absolute;inset:0;touch-action:none;cursor:grab;display:block}
+#palco.arrastando{cursor:grabbing}
+.dica{position:absolute;z-index:6;pointer-events:none;background:var(--panel);color:var(--ink);border:1px solid var(--border);border-radius:10px;padding:8px 10px;font-size:13px;box-shadow:0 8px 24px rgba(0,0,0,.14);max-width:280px;display:none}
+.dica b{display:block}
+.dica span{color:var(--ink-2);font-size:12px}
+.zoom{position:absolute;left:16px;bottom:16px;z-index:5;display:flex;flex-direction:column;gap:4px}
+.zoom button{width:36px;height:36px;border-radius:9px;border:1px solid var(--axis);background:var(--panel);color:var(--ink);cursor:pointer;font-size:18px;line-height:1}
+.btn-legenda{position:absolute;left:60px;bottom:16px;z-index:6;display:inline-flex;align-items:center;gap:6px;padding:8px 12px;border-radius:10px;border:1px solid var(--axis);background:var(--panel);color:var(--ink);cursor:pointer;font-size:13px;box-shadow:0 4px 14px rgba(0,0,0,.10)}
+.btn-legenda svg{width:14px;height:14px;transition:transform .2s}
+.btn-legenda[aria-expanded="true"] svg{transform:rotate(180deg)}
+.legenda{position:absolute;left:16px;bottom:60px;z-index:5;background:color-mix(in srgb,var(--panel) 94%,transparent);backdrop-filter:blur(8px);border:1px solid var(--border);border-radius:12px;padding:10px 12px;font-size:12px;color:var(--ink-2);display:none;gap:4px;width:min(300px,calc(100% - 32px));max-height:calc(100vh - 140px);overflow:auto}
+.legenda.aberta{display:grid}
+.legenda h4{margin:4px 0 2px;font-size:10px;text-transform:uppercase;letter-spacing:.08em;color:var(--mute);font-weight:600}
+.legenda .l{display:flex;align-items:center;gap:9px;min-height:22px}
+.legenda .l b{font-weight:600;color:var(--ink)}
+.legenda .cores{display:flex;flex-wrap:wrap;gap:4px 12px;margin-top:2px}
+.legenda .cores span{display:inline-flex;align-items:center;gap:5px}
+.legenda .cores i{width:10px;height:10px;border-radius:50%;background:var(--c);display:inline-block}
+.tile{width:22px;height:22px;flex:none;display:inline-flex;align-items:center;justify-content:center;background:var(--c,var(--ink-2));color:var(--surface);border-radius:50%}
+.tile.q{border-radius:6px}
+.tile svg{width:15px;height:15px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.tile.p{width:18px;height:18px}
+.tile.p svg{width:12px;height:12px;stroke-width:2.2}
+.status{position:absolute;left:16px;top:70px;z-index:4;font-size:12px;color:var(--mute);pointer-events:none}
+.vista{position:absolute;left:16px;top:calc(var(--altura-top,60px) + 10px);z-index:5;display:flex;align-items:center;gap:6px;font-size:13px;color:var(--ink-2);background:color-mix(in srgb,var(--panel) 92%,transparent);border:1px solid var(--border);border-radius:999px;padding:5px 10px 5px 6px}
+.vista button{border:0;background:var(--plane);color:var(--ink);border-radius:999px;padding:4px 10px;cursor:pointer;font-size:13px}
+.vista button:hover{background:var(--grid)}
+.vista b{color:var(--ink)}
+.status{top:calc(var(--altura-top,60px) + 48px)}
+.btn-vista{display:inline-flex;align-items:center;gap:8px;width:100%;justify-content:center;padding:10px 12px;border-radius:10px;border:0;background:var(--focus);color:#fff;font-weight:600;cursor:pointer;font-size:14px}
+.btn-vista:hover{filter:brightness(1.08)}
+.ext button{display:flex;align-items:center;gap:8px;width:100%;text-align:left;border:1px solid var(--border);background:var(--plane);color:var(--ink);padding:7px 10px;border-radius:8px;cursor:pointer;font-size:13px;margin-bottom:4px}
+.ext button:hover{background:var(--grid)}
+.ext small{color:var(--mute)}
+
+/* ---------- painel de detalhe ---------- */
+.painel{position:absolute;z-index:7;top:70px;right:16px;bottom:16px;width:min(400px,calc(100% - 32px));background:var(--panel);border:1px solid var(--border);border-radius:16px;box-shadow:0 16px 48px rgba(0,0,0,.18);display:none;flex-direction:column;overflow:hidden}
+.painel.aberto{display:flex}
+.painel header{display:flex;align-items:flex-start;gap:10px;padding:14px 16px 10px;border-bottom:1px solid var(--border)}
+.painel header .titulo{min-width:0;flex:1}
+.painel header .fechar{border:0;background:none;color:var(--mute);font-size:22px;line-height:1;cursor:pointer;padding:2px 6px;border-radius:6px}
+.painel header .fechar:hover{color:var(--ink);background:var(--plane)}
+.tag{display:inline-flex;align-items:center;gap:6px;font-size:12px;color:var(--ink-2);border:1px solid var(--border);border-radius:999px;padding:2px 8px;margin:0 4px 4px 0}
+.tag .dot{width:8px;height:8px;border-radius:50%;background:var(--c)}
+.tag .tile.p{width:16px;height:16px}
+.tag .tile.p svg{width:11px;height:11px}
+.painel h2{margin:4px 0 6px;font-size:18px;line-height:1.2;letter-spacing:-.01em}
+.trilha{display:flex;flex-wrap:wrap;gap:4px;font-size:12px;color:var(--ink-2);margin-bottom:4px}
+.trilha button{border:0;background:none;color:var(--ink-2);padding:0;cursor:pointer;text-decoration:underline;text-underline-offset:2px}
+.trilha button:hover{color:var(--ink)}
+.painel .corpo{overflow:auto;padding:12px 16px 16px;display:grid;gap:14px}
+.bloco h3{margin:0 0 6px;font-size:11px;text-transform:uppercase;letter-spacing:.06em;color:var(--mute);font-weight:600}
+.bloco p{margin:0;color:var(--ink-2)}
+.cargo{border:1px solid var(--border);border-radius:12px;padding:10px 12px;background:var(--plane)}
+.cargo .t{font-size:12px;color:var(--mute)}
+.cargo .n{font-weight:600;font-size:15px}
+.cargo .vago{color:var(--ink-2);font-style:italic}
+.cargo .m{font-size:12px;color:var(--mute);margin-top:4px}
+.sit{display:inline-flex;align-items:center;gap:5px;font-size:11px;font-weight:600;letter-spacing:.03em;text-transform:uppercase;border:1px solid var(--border);border-radius:999px;padding:2px 8px;margin-left:6px;vertical-align:middle;color:var(--ink-2)}
+.sit.vago{border-color:#d03b3b;color:#d03b3b}
+.sit.interino{border-color:#c98500;color:#8a5a00}
+:root[data-theme="dark"] .sit.interino{color:#fab219}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .sit.interino{color:#fab219}}
+.lista-nos{display:grid;gap:2px}
+.lista-nos button{display:flex;align-items:center;gap:8px;width:100%;text-align:left;border:0;background:none;color:var(--ink);padding:6px 8px;border-radius:8px;cursor:pointer;font-size:14px}
+.lista-nos button:hover{background:var(--plane)}
+.lista-nos .sig{color:var(--mute);font-size:12px;margin-left:auto;white-space:nowrap}
+.lista-nos .rel{color:var(--mute);font-size:12px}
+.marca{width:10px;height:10px;flex:none;background:var(--c);border-radius:50%}
+.marca.q{border-radius:2px}
+.marca.d{transform:rotate(45deg) scale(.85);border-radius:1px}
+.rel-item{padding:6px 8px;border-radius:8px}
+.rel-item small{display:block;color:var(--mute);font-size:12px;margin-left:18px}
+.painel .rodape{font-size:12px;color:var(--mute);padding:10px 16px;border-top:1px solid var(--border)}
+.painel .rodape a{color:var(--ink-2)}
+.painel.inicio h2{font-size:20px}
+
+/* ---------- novidades (notícias e mudanças) ---------- */
+.novidades{position:absolute;z-index:7;top:calc(var(--altura-top,60px) + 10px);left:16px;bottom:16px;width:min(440px,calc(100% - 32px));background:var(--panel);border:1px solid var(--border);border-radius:16px;box-shadow:0 16px 48px rgba(0,0,0,.18);display:none;flex-direction:column;overflow:hidden}
+.novidades.aberta{display:flex}
+.novidades header{display:flex;align-items:center;gap:10px;padding:12px 16px;border-bottom:1px solid var(--border)}
+.novidades header h2{margin:0;font-size:17px;flex:1}
+.novidades .corpo{overflow:auto;padding:4px 16px 16px;display:grid;gap:18px;align-content:start}
+.secao h3{margin:14px 0 8px;font-size:15px;display:flex;align-items:center;gap:8px}
+.secao h3 small{font-weight:400;color:var(--mute);font-size:12px;margin-left:auto}
+.secao .desc{margin:0 0 10px;color:var(--ink-2);font-size:13px}
+.frases{margin:0;padding:0;list-style:none;display:grid;gap:8px}
+.frases li{font-size:14px;line-height:1.45;color:var(--ink)}
+.frases .chip-no{display:inline-flex;align-items:center;gap:5px;border:0;background:var(--plane);color:var(--ink);border-radius:999px;padding:1px 8px 1px 3px;cursor:pointer;font-size:13px;vertical-align:middle}
+.frases .chip-no:hover{background:var(--grid)}
+.frases .chip-no .tile.p{width:16px;height:16px}
+.frases .chip-no .tile.p svg{width:11px;height:11px}
+.frases .ref{color:var(--mute);font-size:11px;text-decoration:none;vertical-align:super;margin-left:2px}
+.frases .ref:hover{color:var(--ink)}
+.no-noticiario{display:flex;gap:6px;flex-wrap:wrap;align-items:center}
+.no-noticiario button{display:inline-flex;align-items:center;gap:6px;border:1px solid var(--border);background:var(--plane);color:var(--ink);border-radius:999px;padding:3px 10px 3px 4px;cursor:pointer;font-size:13px}
+.no-noticiario button:hover{background:var(--grid)}
+.no-noticiario button b{font-weight:600}
+.no-noticiario button small{color:var(--mute)}
+.link-poder{margin-left:auto;border:0;background:none;color:var(--ink);cursor:pointer;font-size:13px;text-decoration:underline;text-underline-offset:3px;padding:4px 0}
+.abas{display:inline-flex;border:1px solid var(--axis);border-radius:8px;overflow:hidden;margin-left:auto}
+.abas button{border:0;background:var(--panel);color:var(--ink-2);padding:3px 9px;cursor:pointer;font-size:12px}
+.abas button[aria-pressed="true"]{background:var(--ink);color:var(--surface)}
+.kpis-m{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:10px 0}
+.kpi-m{border:1px solid var(--border);border-radius:10px;padding:8px 10px;background:var(--plane)}
+.kpi-m small{display:block;font-size:10px;text-transform:uppercase;letter-spacing:.06em;color:var(--mute)}
+.kpi-m b{display:block;font-size:20px;letter-spacing:-.02em;margin:2px 0}
+.kpi-m span{font-size:11px;color:var(--ink-2)}
+.kpi-m.alerta b{color:#d03b3b}
+.linha{margin:6px 0 14px}
+.linha .barras{display:flex;align-items:flex-end;gap:2px;height:44px;border-bottom:1px solid var(--grid)}
+.linha .barras i{flex:1;background:var(--exec);border-radius:2px 2px 0 0;opacity:.85;min-height:0;position:relative}
+.linha .barras i[data-n="0"]{background:var(--grid);opacity:1}
+.linha .barras i:hover::after{content:attr(title);position:absolute;bottom:100%;left:50%;transform:translateX(-50%);background:var(--panel);border:1px solid var(--border);border-radius:6px;padding:2px 6px;font-size:11px;white-space:nowrap;color:var(--ink);font-style:normal;margin-bottom:3px}
+.linha .eixo{display:flex;justify-content:space-between;font-size:10px;color:var(--mute);margin-top:3px;font-variant-numeric:tabular-nums}
+.mudancas{display:grid;gap:8px;margin:0;padding:0;list-style:none}
+.mud{border:1px solid var(--border);border-radius:12px;padding:10px 12px;background:var(--plane);display:grid;gap:6px}
+.mud .topo{display:flex;align-items:center;gap:8px;font-size:11px}
+.mud .badge{font-weight:700;letter-spacing:.06em;text-transform:uppercase;border-radius:6px;padding:2px 6px;font-size:10px;background:var(--grid);color:var(--ink-2)}
+.mud .badge.entra{background:color-mix(in srgb,var(--jud) 18%,transparent);color:var(--jud)}
+.mud .badge.sai{background:color-mix(in srgb,#d03b3b 16%,transparent);color:#d03b3b}
+.mud .badge.troca{background:color-mix(in srgb,var(--exec) 18%,transparent);color:var(--exec)}
+.mud .badge.estrutura{background:color-mix(in srgb,var(--leg) 18%,transparent);color:var(--leg)}
+.mud .badge.interino{background:color-mix(in srgb,#c98500 20%,transparent);color:#8a5a00}
+:root[data-theme="dark"] .mud .badge.interino{color:#fab219}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .mud .badge.interino{color:#fab219}}
+.mud .topo a{margin-left:auto;color:var(--mute);text-decoration:none;font-size:11px}
+.mud .topo a:hover{color:var(--ink);text-decoration:underline}
+.mud .cargo{font-size:14px;font-weight:600;line-height:1.3}
+.mud .quem{display:grid;grid-template-columns:auto 1fr;gap:2px 10px;font-size:13px;background:var(--panel);border:1px solid var(--border);border-radius:8px;padding:6px 10px}
+.mud .quem small{font-size:10px;text-transform:uppercase;letter-spacing:.06em;color:var(--mute);padding-top:3px}
+.mud .quem i{color:var(--mute)}
+.mud .orgao{display:inline-flex;align-items:center;gap:6px;border:0;background:none;color:var(--ink-2);padding:0;cursor:pointer;font-size:12px;text-align:left}
+.mud .orgao:hover{color:var(--ink)}
+.mud .orgao .tile.p{width:16px;height:16px}
+.mud .orgao .tile.p svg{width:11px;height:11px}
+.mostrar-todas{display:flex;align-items:center;gap:8px;font-size:12px;color:var(--ink-2);margin:6px 0 0}
+.fontes-lista{font-size:12px;color:var(--mute);margin:0;padding-left:16px}
+.fontes-lista a{color:var(--ink-2)}
+.vazio{color:var(--mute);font-size:13px;padding:8px 0}
+
+/* ---------- mapa do poder ---------- */
+#folha-poder{background:var(--surface)}
+#folha-poder .conteudo{width:min(1280px,calc(100% - 32px))}
+.poder-titulo{text-align:center;margin:4px 0 18px}
+.poder-titulo h1{font-size:13px;letter-spacing:.28em;text-transform:uppercase;font-weight:600;margin:0 0 6px}
+.poder-titulo p{margin:0 auto;color:var(--ink-2);font-size:14px;max-width:none}
+.poder-abas{display:flex;justify-content:center;margin:0 0 10px}
+.poder-abas .abas{margin:0}
+.poder-abas .abas button{padding:6px 14px;font-size:13px}
+#grafo-poder{display:block;width:100%;overflow:visible}
+#grafo-poder .aresta{stroke:var(--axis);stroke-width:1.2;fill:none}
+#grafo-poder .aresta.ativa{stroke:var(--ink-2);stroke-width:1.8}
+#grafo-poder .seta{fill:var(--axis)}
+#grafo-poder .pessoa{cursor:pointer}
+#grafo-poder .pessoa .anel{fill:none;stroke-width:2.5}
+#grafo-poder .pessoa .brilho{fill:none;stroke:#e5484d;stroke-width:6;opacity:.28}
+#grafo-poder .pessoa .fundo{fill:var(--plane)}
+#grafo-poder .pessoa .ini{font-weight:700;fill:var(--ink-2);text-anchor:middle;dominant-baseline:central}
+#grafo-poder .pessoa text{text-anchor:middle}
+#grafo-poder .pessoa .nome{font-size:15px;font-weight:650;fill:var(--ink)}
+#grafo-poder .pessoa .sub{font-size:12.5px;fill:var(--ink-2)}
+#grafo-poder .pessoa .n{font-size:12.5px;fill:var(--ink)}
+#grafo-poder .pessoa .quente{font-size:12.5px;fill:#e5484d}
+#grafo-poder .pessoa:hover .anel,#grafo-poder .pessoa.foco .anel{stroke-width:4}
+#grafo-poder .pessoa.apagada{opacity:.28}
+.poder-nota{color:var(--mute);font-size:12px;text-align:center;margin:14px auto 0;max-width:720px}
+.rosto-pilha{display:flex;align-items:center;gap:10px;margin:4px 0 0}
+.rosto-pilha .rostos{display:flex}
+.rosto-pilha .rostos span{width:30px;height:30px;border-radius:50%;border:2px solid var(--panel);margin-left:-8px;background:var(--plane) center/cover no-repeat;display:inline-flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;color:var(--ink-2)}
+.rosto-pilha .rostos span:first-child{margin-left:0}
+.rosto-pilha button{border:0;background:none;color:var(--ink);font-size:13px;cursor:pointer;padding:0}
+.rosto-pilha .link-poder{margin-left:auto}
+.poder-cab{display:flex;align-items:flex-end;gap:16px;flex-wrap:wrap;margin-bottom:18px}
+.poder-cab p{margin:0}
+.poder-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:24px}
+.poder-lista{display:grid;gap:6px;margin:0;padding:0;list-style:none}
+.poder-lista li{display:grid;grid-template-columns:28px 34px 1fr auto;gap:10px;align-items:center;border:1px solid var(--border);border-radius:12px;padding:8px 12px;background:var(--panel);cursor:pointer}
+.poder-lista li:hover{background:var(--plane)}
+.poder-lista .pos{font-size:12px;color:var(--mute);font-variant-numeric:tabular-nums;text-align:right}
+.poder-lista .avatar{width:34px;height:34px;border-radius:50%;background:var(--ink);color:var(--surface);display:inline-flex;align-items:center;justify-content:center;font-weight:700;font-size:13px}
+.poder-lista .tile{width:34px;height:34px}
+.poder-lista .tile svg{width:20px;height:20px}
+.poder-lista .nome{min-width:0}
+.poder-lista .nome b{display:block;font-size:14px;line-height:1.25}
+.poder-lista .nome small{color:var(--mute);font-size:12px}
+.poder-lista .barra{height:4px;background:var(--grid);border-radius:2px;margin-top:5px;overflow:hidden}
+.poder-lista .barra i{display:block;height:100%;background:var(--c,var(--exec))}
+.poder-lista .n{text-align:right;font-size:12px;color:var(--ink-2);white-space:nowrap}
+.poder-lista .n b{display:block;font-size:16px;color:var(--ink)}
+
+.atalhos{display:grid;grid-template-columns:1fr 1fr;gap:6px}
+.atalhos button{display:flex;align-items:center;gap:9px;text-align:left;border:1px solid var(--border);background:var(--plane);color:var(--ink);padding:9px 10px;border-radius:10px;cursor:pointer;font-size:13px;line-height:1.2;min-height:46px}
+.atalhos button:hover{background:var(--grid)}
+.atalhos button small{display:block;color:var(--mute);font-size:11px;margin-top:1px}
+.atalhos .estado{grid-column:1 / -1;display:flex;align-items:center;gap:9px;border:1px solid var(--border);background:var(--plane);padding:6px 10px;border-radius:10px;font-size:13px}
+.atalhos .estado select{flex:1;padding:6px 8px;border-radius:8px;border:1px solid var(--axis);background:var(--panel);color:var(--ink)}
+.como{display:grid;gap:8px;margin:0;padding:0;list-style:none}
+.como li{display:flex;gap:10px;align-items:flex-start;color:var(--ink-2);font-size:13px}
+.como li .tile{margin-top:1px}
+
+/* ---------- sobre / tabela ---------- */
+.folha{position:absolute;inset:0;z-index:8;background:var(--surface);overflow:auto;display:none}
+.folha.aberta{display:block}
+.folha .conteudo{width:min(1040px,calc(100% - 32px));margin:0 auto;padding:24px 0 60px}
+.folha h1{font-size:26px;letter-spacing:-.02em;margin:0 0 6px}
+.folha h2{font-size:18px;margin:26px 0 8px}
+.folha p,.folha li{color:var(--ink-2);max-width:70ch}
+.folha .fechar{position:sticky;top:12px;float:right;margin-left:12px}
+table{border-collapse:collapse;width:100%;font-size:13px;font-variant-numeric:tabular-nums}
+th,td{text-align:left;padding:7px 8px;border-bottom:1px solid var(--grid);vertical-align:top}
+th{position:sticky;top:0;background:var(--surface);color:var(--mute);font-weight:600;font-size:11px;text-transform:uppercase;letter-spacing:.05em}
+tbody tr:hover{background:var(--plane)}
+.kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;margin:14px 0 6px}
+.kpi{border:1px solid var(--border);border-radius:12px;padding:10px 12px;background:var(--panel)}
+.kpi b{display:block;font-size:22px;letter-spacing:-.02em}
+.kpi span{font-size:12px;color:var(--mute)}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+
+@media (max-width:720px){
+  .top{gap:8px;padding:8px 12px}
+  .vista{top:calc(var(--altura-top,120px) + 8px);left:64px;max-width:calc(100% - 80px)}
+  .brand small{display:none}
+  .chips{order:3;width:100%}
+  .painel{top:auto;left:8px;right:8px;bottom:8px;width:auto;max-height:62vh}
+  .legenda{bottom:56px;left:12px}
+  .btn-legenda{bottom:12px;left:12px;padding:7px 10px}
+  .atalhos{grid-template-columns:1fr}
+  .novidades{top:auto;left:8px;right:8px;bottom:8px;width:auto;max-height:70vh}
+  .kpis-m{grid-template-columns:1fr 1fr 1fr;gap:6px}
+  .kpi-m b{font-size:17px}
+  .status{display:none}
+  .zoom{bottom:auto;top:calc(var(--altura-top,120px) + 8px)}
+}
+</style>
+</head>
+<body>
+
+<div class="top" id="top">
+  <div class="brand">
+    <b>Mapa do Governo</b>
+    <small>Brasil · Poderes, órgãos, entidades, cargos e relações</small>
+  </div>
+  <div class="search">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+    <input id="busca" type="search" placeholder="Buscar órgão, cargo, estado ou município (ex.: Anvisa, STF, Campinas)" autocomplete="off" aria-label="Buscar no grafo" aria-controls="resultados" aria-expanded="false">
+    <div class="lista" id="resultados" role="listbox"></div>
+  </div>
+  <div class="chips" id="filtros" role="group" aria-label="Filtrar por Poder">
+    <button class="chip" data-poder="executivo" aria-pressed="true" style="--c:var(--exec)"><i class="dot"></i>Executivo</button>
+    <button class="chip" data-poder="legislativo" aria-pressed="true" style="--c:var(--leg)"><i class="dot"></i>Legislativo</button>
+    <button class="chip" data-poder="judiciario" aria-pressed="true" style="--c:var(--jud)"><i class="dot"></i>Judiciário</button>
+    <button class="chip" data-poder="essencial" aria-pressed="true" style="--c:var(--ess)"><i class="dot"></i>Funções essenciais</button>
+  </div>
+  <div class="acoes">
+    <button class="ghost" id="btn-novidades" title="Últimas notícias e mudanças">Novidades</button>
+    <button class="ghost" id="btn-tabela">Tabela</button>
+    <button class="ghost" id="btn-sobre" title="Sobre os dados">Sobre</button>
+    <button class="ghost" id="btn-ajuda" title="Como usar o mapa" aria-label="Como usar o mapa">?</button>
+    <button class="ghost" id="btn-tema" title="Alternar tema claro ou escuro" aria-label="Alternar tema claro ou escuro">◐</button>
+  </div>
+</div>
+
+<canvas id="palco" role="img" aria-label="Mapa radial do governo federal. Use a busca ou a tabela para navegar sem o mouse."></canvas>
+<div class="dica" id="dica" role="tooltip"></div>
+<div class="status" id="status"></div>
+<nav class="vista" id="vista" aria-label="Nível do mapa"><button id="btn-brasil" hidden>‹ Brasil</button><span id="vista-nome"><b>Brasil</b> · União</span></nav>
+
+<div class="zoom" aria-label="Zoom">
+  <button id="z-mais" title="Aproximar" aria-label="Aproximar">+</button>
+  <button id="z-menos" title="Afastar" aria-label="Afastar">−</button>
+  <button id="z-fit" title="Ver tudo" aria-label="Ver tudo">⤢</button>
+</div>
+
+<button class="btn-legenda" id="btn-legenda" aria-expanded="false" aria-controls="legenda">Legenda <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="m6 15 6-6 6 6"/></svg></button>
+<div class="legenda" id="legenda" aria-label="Legenda"></div>
+
+<aside class="novidades" id="novidades" aria-label="Novidades">
+  <header>
+    <h2>Novidades</h2>
+    <button class="ghost" id="btn-poder">Mapa do poder</button>
+    <button class="fechar" id="n-fechar" aria-label="Fechar" style="border:0;background:none;color:var(--mute);font-size:22px;line-height:1;cursor:pointer">×</button>
+  </header>
+  <div class="corpo" id="n-corpo"></div>
+</aside>
+
+<section class="folha" id="folha-poder" aria-labelledby="poder-titulo">
+  <div class="conteudo">
+    <button class="ghost fechar" data-fecha="folha-poder">Voltar ao grafo</button>
+    <div class="poder-titulo"><h1 id="poder-titulo">Mapa do poder: quem está no noticiário</h1><p id="poder-sub"></p></div>
+    <div class="poder-abas"><span class="abas" role="group" aria-label="Ver"><button data-poder-aba="pessoas" aria-pressed="true">Pessoas</button><button data-poder-aba="orgaos" aria-pressed="false">Órgãos</button></span></div>
+    <div id="poder-corpo"></div>
+  </div>
+</section>
+
+<aside class="painel" id="painel" aria-live="polite">
+  <header>
+    <div class="titulo">
+      <div class="trilha" id="trilha"></div>
+      <h2 id="p-nome"></h2>
+      <div id="p-tags"></div>
+    </div>
+    <button class="fechar" id="p-fechar" aria-label="Fechar painel">×</button>
+  </header>
+  <div class="corpo" id="p-corpo"></div>
+  <div class="rodape" id="p-rodape"></div>
+</aside>
+
+<section class="folha" id="folha-tabela" aria-labelledby="t-titulo">
+  <div class="conteudo">
+    <button class="ghost fechar" data-fecha="folha-tabela">Voltar ao grafo</button>
+    <h1 id="t-titulo">Todos os nós</h1>
+    <p>A mesma informação do grafo, em tabela. Clique em uma linha para abrir o nó no mapa.</p>
+    <div style="overflow:auto;max-height:calc(100vh - 180px);border:1px solid var(--border);border-radius:12px">
+    <table id="tabela"><thead><tr><th>Nome</th><th>Sigla</th><th>Tipo</th><th>Poder</th><th>Vinculado a</th><th>Cargo</th><th>Ocupante</th><th>Situação</th></tr></thead><tbody></tbody></table>
+    </div>
+  </div>
+</section>
+
+<section class="folha" id="folha-sobre" aria-labelledby="s-titulo">
+  <div class="conteudo">
+    <button class="ghost fechar" data-fecha="folha-sobre">Voltar ao grafo</button>
+    <h1 id="s-titulo">Sobre os dados</h1>
+    <p>Este é um mapa da estrutura do Estado brasileiro em três camadas. A União: os três Poderes, as funções essenciais à Justiça, os ministérios, as entidades da administração indireta, os tribunais, os cargos de comando e as relações constitucionais entre eles (quem nomeia, quem aprova, quem fiscaliza). Os 26 estados e o Distrito Federal, cada um com governo, assembleia, tribunal de justiça, tribunal de contas, ministério público, defensoria e tribunal eleitoral. E os 5.570 municípios, com prefeitura, câmara e secretaria de saúde, ligados a quem os fiscaliza, julga e coordena. Inspirado no <em>Gov Graph</em> da CivLab para os Estados Unidos.</p>
+    <div class="kpis" id="kpis"></div>
+    <h2>Regra sobre pessoas</h2>
+    <p>Estrutura sim, pessoas só com fonte. Todo ocupante tem fonte oficial e data de verificação. No Executivo, o nome vem do e-Agendas da CGU, onde toda autoridade federal é obrigada a publicar agenda, e é conferido contra o Diário Oficial: se houve exoneração depois da posse, o nome é descartado. Estatais, tribunais, Ministério Público e Defensoria foram conferidos um a um no site oficial de cada órgão, com o endereço exato onde o nome aparece. Cada cargo tem uma situação explícita: titular, interino ou substituto, vago, ou não verificado. “Vago” é uma afirmação e exige fonte e data. Um campo vazio é melhor que um nome errado.</p>
+    <p>Toda segunda-feira, um fluxo automático baixa o SIORG, a Câmara e o Senado, remonta este arquivo, lê a seção 2 do Diário Oficial da União e abre um PR para revisão. Nenhum nome entra sem uma pessoa aprovar.</p>
+    <h2>Agentes diários</h2>
+    <p>Todo dia às 7h, três agentes leem as fontes oficiais e alimentam o botão “Novidades”: o do Diário Oficial registra cada nomeação, exoneração e designação assinada pelo Presidente ou pela Casa Civil (seção 2), com link para o ato; o de estrutura compara a foto do SIORG com a do dia anterior e anota órgãos criados, extintos ou renomeados; o de notícias lê a Agência Brasil, a Agência Câmara, a Agência Senado, as notícias do STF e o Planalto, liga cada matéria aos órgãos do mapa e monta o “Mapa do poder”, quem mais aparece no noticiário. Os feeds registram o que as fontes publicaram; o ocupante de um cargo no mapa só muda depois da revisão do PR semanal.</p>
+    <h2>Fontes</h2>
+    <ul id="fontes"></ul>
+    <h2>O que ainda falta</h2>
+    <ul>
+      <li>Ocupantes dos cargos ainda não verificados, a partir da primeira rodada do fluxo semanal.</li>
+      <li>Segundo nível dos demais ministérios (hoje: Saúde, Educação e Justiça à mão; os outros vêm do SIORG).</li>
+      <li>Prefeitos, presidentes de câmara e governadores a partir dos dados abertos do TSE; secretários de saúde a partir do CNES.</li>
+      <li>Secretarias estaduais e comarcas, hoje representadas como conjuntos.</li>
+      <li>Orçamento por órgão (Portal da Transparência e SIOP).</li>
+    </ul>
+    <h2>Contato e código</h2>
+    <p>O mapa é um projeto aberto. Erros de estrutura, cargos desatualizados e sugestões de fontes são bem-vindos; a forma de contribuir está descrita junto com os dados. Endereço: <a href="https://mapadogoverno.com.br">mapadogoverno.com.br</a>.</p>
+    <p id="versao"></p>
+  </div>
+</section>
+
+<script>
+(async function(){
+'use strict';
+const $ = s => document.querySelector(s);
+const canvas = $('#palco'), ctx = canvas.getContext('2d');
+const dica = $('#dica'), painel = $('#painel'), status = $('#status');
+const UFS = ['AC','AL','AP','AM','BA','CE','DF','ES','GO','MA','MT','MS','MG','PA','PB','PR','PE','PI','RJ','RN','RS','RO','RR','SC','SP','SE','TO'];
+const INDIRETA = new Set(['autarquia','agencia_reguladora','fundacao','empresa_publica','sociedade_economia_mista','servico_social_autonomo']);
+const forma = n => INDIRETA.has(n.tipo) ? 'q' : 'c';
+// Ícones (caixa 24x24, traço 2), um por tipo de instituição. O mesmo desenho vai
+// para o canvas (Path2D) e para a legenda e o painel (SVG inline).
+const ICONES = {
+  bandeira: 'M5 21V3M5 4h11l-2.5 3.5L16 11H5',
+  cupula: 'M3 21h18M5 21v-7h14v7M6 14a6 6 0 0 1 12 0M12 5v3M10 8h4M9 17v4M15 17v4',
+  balanca: 'M12 3v18M8 21h8M4 7h16M6 7l-3 7a3.2 3.2 0 0 0 6 0L6 7M18 7l-3 7a3.2 3.2 0 0 0 6 0l-3-7',
+  escudo: 'M12 3l8 3v6c0 5-3.5 8.3-8 9.5C7.5 20.3 4 17 4 12V6z',
+  escudo_check: 'M12 3l8 3v6c0 5-3.5 8.3-8 9.5C7.5 20.3 4 17 4 12V6zM9 12l2 2 4-4',
+  colunas: 'M3 21h18M5 21v-9M9.5 21v-9M14.5 21v-9M19 21v-9M3 12h18M2 9l10-6 10 6z',
+  predio: 'M5 21V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v16M3 21h18M9 7h2M13 7h2M9 11h2M13 11h2M9 15h2M13 15h2M10.5 21v-3h3v3',
+  medalha: 'M12 15a6 6 0 1 0 0-12 6 6 0 0 0 0 12zM8.5 14L7 22l5-3 5 3-1.5-8',
+  broto: 'M12 21v-9M12 12C12 8 9 5 5 5c0 4 3 7 7 7zM12 12c0-4 3-7 7-7 0 4-3 7-7 7z',
+  maleta: 'M3 8h18v12H3zM9 8V5h6v3M3 13h18M11 12v3h2v-3',
+  pessoas: 'M9 11a3 3 0 1 0 0-6 3 3 0 0 0 0 6zM3 20a6 6 0 0 1 12 0M16 11a3 3 0 1 0-1.5-5.6M21 20a6 6 0 0 0-4.5-5.8',
+  estrela: 'M12 3l2.7 5.7 6.3.8-4.6 4.3 1.2 6.2L12 17l-5.6 3 1.2-6.2L3 9.5l6.3-.8z',
+  camadas: 'M12 3l9 5-9 5-9-5zM3 13l9 5 9-5M3 17l9 5 9-5',
+  pino: 'M12 22s7-6.6 7-12a7 7 0 0 0-14 0c0 5.4 7 12 7 12zM12 13a3 3 0 1 0 0-6 3 3 0 0 0 0 6z',
+  casa: 'M3 11l9-8 9 8M5 10v11h14V10M10 21v-6h4v6',
+  mapa: 'M3 6l6-3 6 3 6-3v15l-6 3-6-3-6 3zM9 3v15M15 6v15',
+};
+const ICONE_TIPO = {poder:'bandeira', ministerio:'colunas', orgao:'predio', autarquia:'medalha', agencia_reguladora:'escudo_check', fundacao:'broto', empresa_publica:'maleta', sociedade_economia_mista:'maleta', servico_social_autonomo:'pessoas', forca_armada:'estrela', tribunal:'balanca', casa_legislativa:'cupula', grupo:'camadas', estado:'pino', municipio:'casa'};
+const ICONE_ID = {exec:'bandeira', leg:'cupula', jud:'balanca', fej:'escudo', estados:'mapa', pr:'bandeira', mpu:'escudo', cnmp:'escudo', dpu:'escudo', cnj:'balanca'};
+function iconeDe(n){
+  if (ICONE_ID[n.id]) return ICONE_ID[n.id];
+  if (n.id.startsWith('gov-')) return 'bandeira';
+  if (n.id.startsWith('mp-') || n.id.startsWith('dpe-')) return 'escudo';
+  if (n.id.startsWith('municipios-')) return 'mapa';
+  return ICONE_TIPO[n.tipo] || 'predio';
+}
+const caminhos = new Map();
+const caminho = nome => { if (!caminhos.has(nome)) caminhos.set(nome, new Path2D(ICONES[nome])); return caminhos.get(nome); };
+const svgIcone = nome => `<svg viewBox="0 0 24 24" aria-hidden="true"><path d="${ICONES[nome]}"/></svg>`;
+const tile = (n, extra='') => `<i class="tile ${forma(n)} ${extra}" style="--c:${corDe(n)}">${svgIcone(iconeDe(n))}</i>`;
+const css = v => getComputedStyle(document.documentElement).getPropertyValue(v).trim();
+const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const norm = s => String(s||'').normalize('NFD').replace(/[̀-ͯ]/g,'').toLowerCase();
+let cores = {};
+function lerCores(){ cores = {executivo:css('--exec'),legislativo:css('--leg'),judiciario:css('--jud'),essencial:css('--ess'),uniao:css('--uniao'),edge:css('--edge'),edgeRel:css('--edge-rel'),ink:css('--ink'),ink2:css('--ink-2'),mute:css('--mute'),surface:css('--surface')}; }
+lerCores();
+matchMedia('(prefers-color-scheme: dark)').addEventListener('change', () => { lerCores(); desenhar(); });
+
+// ------------------------------------------------------------ vistas (Brasil e estados)
+const cacheVistas = new Map();
+let V = null;              // vista atual: dados + índices + layout
+let vistaAtual = 'federal';
+let selecionado = null, pairado = null;
+const poderesAtivos = new Set(['executivo','legislativo','judiciario','essencial']);
+
+async function carregarDados(nome){
+  if (cacheVistas.has(nome)) return cacheVistas.get(nome);
+  const url = nome === 'federal' ? 'dados/governo-federal.json' : `dados/estados/${nome}.json`;
+  const r = await fetch(url, {cache:'no-cache'});
+  if (!r.ok) throw new Error(url);
+  const d = await r.json(); cacheVistas.set(nome, d); return d;
+}
+function montarVista(dados){
+  const porId = new Map(dados.nos.map(n => [n.id, n]));
+  const filhos = new Map(dados.nos.map(n => [n.id, []]));
+  const relIn = new Map(dados.nos.map(n => [n.id, []]));
+  const relOut = new Map(dados.nos.map(n => [n.id, []]));
+  for (const a of dados.arestas) {
+    if (a.hierarquica) filhos.get(a.de).push(a.para);
+    else { relOut.get(a.de).push(a); relIn.get(a.para).push(a); }
+  }
+  const raiz = dados.nos.find(n => !n.pai);
+  const v = {dados, porId, filhos, relIn, relOut, raiz, TIPOS: dados.meta.tipos, PODERES: dados.meta.poderes, pos: new Map(), maxR: 0};
+  layout(v);
+  v.ordem = [...dados.nos].sort((a,b) => v.pos.get(b.id).depth - v.pos.get(a.id).depth);
+  return v;
+}
+// Layout radial. Cada filho da raiz recebe uma fatia fixa; abaixo disso, o
+// ângulo é proporcional ao número de folhas. O raio de cada anel cresce
+// quando há nós demais para o arco disponível (os 645 municípios de SP).
+const FATIAS_FEDERAL = {exec:.46, jud:.15, fej:.09, leg:.10, estados:.20};
+const RAIO = [0, 230, 380, 520, 700, 820];
+// Espaço mínimo entre irmãos no anel: os nós com ícone (anel 2) precisam de mais
+// arco que os pequenos; os municípios são pontos e cabem apertados.
+const espacoDe = (tipo, depth) => tipo === 'municipio' ? 9 : depth === 2 ? 40 : 12;
+function layout(v){
+  const folhas = new Map();
+  const contar = id => { const f = v.filhos.get(id); const n = f.length ? f.reduce((s,c)=>s+contar(c),0) : 1; folhas.set(id, n); return n; };
+  contar(v.raiz.id);
+  const pesosRaiz = f => {
+    if (v.dados.meta.vista === 'estado') {
+      const mun = f.findIndex(c => c.startsWith('municipios-'));
+      if (mun < 0) return f.map(() => 1);
+      return f.map(c => c.startsWith('municipios-') ? .6 : .4/(f.length-1));
+    }
+    return f.map(c => FATIAS_FEDERAL[c] ?? .05);
+  };
+  const distribuir = (id, a0, a1, depth, rPai) => {
+    const f = v.filhos.get(id);
+    const nIrmaos = id === v.raiz.id ? 1 : v.filhos.get(v.porId.get(id).pai).length;
+    let r = depth === 0 ? 0 : Math.max(RAIO[Math.min(depth, RAIO.length-1)], rPai + 120);
+    if (depth > 0) { // densidade do anel dos irmãos: arco do pai / número de irmãos
+      const pai = v.pos.get(v.porId.get(id).pai);
+      const arcoPai = pai.a1 - pai.a0;
+      r = Math.max(r, nIrmaos * espacoDe(v.porId.get(id).tipo, depth) / Math.max(arcoPai, 1e-6));
+    }
+    const ang = (a0+a1)/2;
+    v.pos.set(id, {x: r*Math.cos(ang), y: r*Math.sin(ang), ang, depth, a0, a1, r, irmaos: nIrmaos});
+    v.maxR = Math.max(v.maxR, r);
+    if (!f.length) return;
+    const pesos = depth === 0 ? pesosRaiz(f) : f.map(c => Math.max(1, folhas.get(c)));
+    const total = pesos.reduce((s,p)=>s+p,0);
+    let a = a0;
+    f.forEach((c,i) => { const w = (a1-a0)*pesos[i]/total; distribuir(c, a, a+w, depth+1, r); a += w; });
+  };
+  distribuir(v.raiz.id, -Math.PI/2, 3*Math.PI/2, 0, 0);
+}
+const raioNo = n => {
+  const p = V.pos.get(n.id);
+  if (n.tipo === 'municipio') return n.capital ? 6 : 3.2;
+  if (n.tipo === 'estado' && n.vista) return 7;
+  return [36, 20, 13, 8, 7, 6.5][Math.min(p.depth, 5)];
+};
+const escalaNo = k => Math.max(.75, Math.min(k, 1.8));
+async function abrirVista(nome, selecionarId, animar=true){
+  let dados;
+  try { dados = await carregarDados(nome); } catch (e) { status.textContent = 'Não foi possível carregar o mapa de ' + nome + '.'; return; }
+  const trocou = nome !== vistaAtual || !V;
+  vistaAtual = nome; V = montarVista(dados); selecionado = null; pairado = null;
+  $('#btn-brasil').hidden = nome === 'federal';
+  $('#vista-nome').innerHTML = nome === 'federal' ? '<b>Brasil</b> · União' : `<b>${esc(dados.meta.nome)}</b> · ${esc(nome)}`;
+  document.title = nome === 'federal' ? 'Mapa do Governo' : `${dados.meta.nome} · Mapa do Governo`;
+  montarTabela(); montarIndiceBusca();
+  if (trocou) verTudo(false);
+  if (selecionarId && V.porId.has(selecionarId)) selecionar(selecionarId, selecionarId !== V.raiz.id);
+  else { painel.classList.remove('aberto'); escreverHash(); desenhar(); }
+}
+$('#btn-brasil').onclick = () => abrirVista('federal', null);
+
+// ------------------------------------------------------------ vista (zoom e pan)
+let W=0, H=0, dpr=1;
+const vista = {x:0, y:0, k:1};
+function redimensionar(){
+  dpr = Math.min(window.devicePixelRatio || 1, 2);
+  W = window.innerWidth; H = window.innerHeight;
+  canvas.style.width = W + 'px'; canvas.style.height = H + 'px';
+  canvas.width = W*dpr; canvas.height = H*dpr;
+  document.documentElement.style.setProperty('--altura-top', $('#top').offsetHeight + 'px');
+  if (V && !usuarioMexeu) verTudo(false); else desenhar();
+}
+let usuarioMexeu = false; // enquanto o usuário não mexer, o enquadramento acompanha a janela
+function verTudo(animado=true){
+  if (!V) return;
+  const topo = $('#top').offsetHeight;
+  // Num estado, enquadra as instituições; o anel de municípios fica além da borda, à mão.
+  const limite = V.dados.meta.vista === 'estado' ? 560 : Infinity;
+  const raioTotal = Math.min(V.maxR, limite) + 90;
+  const k = Math.max(.05, Math.min((W-40)/(2*raioTotal), (H-topo-40)/(2*raioTotal)));
+  usuarioMexeu = false;
+  irPara({x: W/2, y: topo + (H-topo)/2, k}, animado);
+}
+let anim = null;
+function irPara(alvo, animado=true){
+  if (!animado) { Object.assign(vista, alvo); desenhar(); return; }
+  const de = {...vista}, t0 = performance.now(), dur = 420;
+  cancelAnimationFrame(anim);
+  const passo = t => { const p = Math.min(1,(t-t0)/dur), e = 1-Math.pow(1-p,3);
+    vista.x = de.x+(alvo.x-de.x)*e; vista.y = de.y+(alvo.y-de.y)*e; vista.k = de.k+(alvo.k-de.k)*e;
+    desenhar(); if (p<1) anim = requestAnimationFrame(passo); };
+  anim = requestAnimationFrame(passo);
+}
+function centrarEm(id, k){
+  const p = V.pos.get(id), n = V.porId.get(id); const topo = $('#top').offsetHeight;
+  const kk = k || Math.max(vista.k, n.tipo === 'municipio' ? 2.2 : 1.4);
+  const largPainel = painel.classList.contains('aberto') && W > 720 ? 420 : 0;
+  usuarioMexeu = true;
+  irPara({k: kk, x: (W-largPainel)/2 - p.x*kk, y: topo + (H-topo)/2 - p.y*kk});
+}
+const tela = p => ({x: vista.x + p.x*vista.k, y: vista.y + p.y*vista.k});
+
+// ------------------------------------------------------------ desenho
+function vizinhos(id){
+  const s = new Set([id]); const n = V.porId.get(id);
+  if (n.pai) s.add(n.pai);
+  for (const c of V.filhos.get(id)) s.add(c);
+  for (const a of V.relOut.get(id)) s.add(a.para);
+  for (const a of V.relIn.get(id)) s.add(a.de);
+  return s;
+}
+const corDe = n => n.tipo === 'municipio' ? cores.ink2 : (cores[n.poder] || cores.ink);
+const visivelPorFiltro = n => n.poder === 'uniao' || poderesAtivos.has(n.poder);
+// Setores: um por Poder, do centro até o anel mais externo daquele ramo, com o
+// nome escrito em arco. É o que dá orientação de longe: azul é Executivo, etc.
+const ROTULO_SETOR = {executivo:['Poder Executivo','Executivo'], legislativo:['Poder Legislativo','Legislativo'], judiciario:['Poder Judiciário','Judiciário'], essencial:['Funções essenciais à Justiça','Funções essenciais','Essenciais']};
+function setores(v){
+  if (v.setores) return v.setores;
+  const filhos = v.filhos.get(v.raiz.id).map(id => v.porId.get(id)).sort((a,b) => v.pos.get(a.id).a0 - v.pos.get(b.id).a0);
+  const maxRamo = id => { let m = v.pos.get(id).r; for (const c of v.filhos.get(id)) m = Math.max(m, maxRamo(c)); return m; };
+  const lista = [];
+  for (const f of filhos) {
+    const p = v.pos.get(f.id);
+    const ult = lista[lista.length-1];
+    const rMax = f.tipo === 'grupo' && f.id.startsWith('municipios-') ? p.r : maxRamo(f.id);
+    if (ult && ult.poder === f.poder && f.poder !== 'uniao') { ult.a1 = p.a1; ult.r = Math.max(ult.r, rMax); continue; }
+    const rotulos = f.poder === 'uniao' ? [f.nome, f.sigla || f.nome] : ROTULO_SETOR[f.poder] || [f.nome];
+    lista.push({poder: f.poder, a0: p.a0, a1: p.a1, r: rMax, rotulos, filtro: f.poder});
+  }
+  return v.setores = lista;
+}
+function textoArco(txt, R, angC){
+  const chars = [...txt.toUpperCase()], esp = 1.8;
+  const larguras = chars.map(c => ctx.measureText(c).width + esp);
+  const total = larguras.reduce((s,w) => s+w, 0);
+  const baixo = Math.sin(angC) > 0, dir = baixo ? -1 : 1;
+  let a = angC - dir*(total/2)/R;
+  for (let i = 0; i < chars.length; i++) {
+    const am = a + dir*(larguras[i]/2)/R;
+    ctx.save(); ctx.translate(vista.x + R*Math.cos(am), vista.y + R*Math.sin(am)); ctx.rotate(am + (baixo ? -Math.PI/2 : Math.PI/2));
+    ctx.fillText(chars[i], 0, 0); ctx.restore();
+    a += dir*larguras[i]/R;
+  }
+  return total;
+}
+function desenharSetores(k){
+  const escuro = matchMedia('(prefers-color-scheme: dark)').matches ? document.documentElement.dataset.theme !== 'light' : document.documentElement.dataset.theme === 'dark';
+  const rIn = 76*k;
+  ctx.font = `600 11px ${css('--font')}`; ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+  for (const st of setores(V)) {
+    const cor = cores[st.poder] || cores.ink2;
+    const ativo = st.poder === 'uniao' || poderesAtivos.has(st.poder);
+    const rOut = st.r*k + 56;
+    const folga = Math.min(.012, (st.a1-st.a0)*.06);
+    ctx.beginPath(); ctx.arc(vista.x, vista.y, rOut, st.a0+folga, st.a1-folga); ctx.arc(vista.x, vista.y, rIn, st.a1-folga, st.a0+folga, true); ctx.closePath();
+    const neutro = st.poder === 'uniao' ? .45 : 1; // o setor dos estados é cinza, mais discreto
+    ctx.globalAlpha = (escuro ? .13 : .07) * (ativo ? 1 : .35) * neutro; ctx.fillStyle = cor; ctx.fill();
+    ctx.globalAlpha = (escuro ? .35 : .22) * (ativo ? 1 : .35) * neutro; ctx.strokeStyle = cor; ctx.lineWidth = 1; ctx.stroke();
+    // rótulo em arco, fora da borda, na primeira forma que couber
+    const R = rOut + 12, arco = (st.a1 - st.a0 - 2*folga) * R;
+    ctx.globalAlpha = ativo ? .95 : .45; ctx.fillStyle = cor;
+    for (const rot of st.rotulos) {
+      const larg = [...rot].reduce((s,c) => s + ctx.measureText(c.toUpperCase()).width + 1.8, 0);
+      if (larg <= arco*.92) { textoArco(rot, R, (st.a0+st.a1)/2); break; }
+    }
+  }
+  ctx.globalAlpha = 1;
+}
+function desenhar(){
+  ctx.setTransform(dpr,0,0,dpr,0,0);
+  ctx.clearRect(0,0,W,H);
+  if (!V) return;
+  const k = vista.k;
+  const foco = selecionado || pairado;
+  const viz = foco ? vizinhos(foco) : null;
+  const alfa = n => { let a = visivelPorFiltro(n) ? 1 : .12; if (viz && !viz.has(n.id)) a *= .22; return a; };
+  desenharSetores(k);
+  // arestas hierárquicas
+  for (const n of V.dados.nos) {
+    if (!n.pai) continue;
+    const a = V.pos.get(n.id), b = V.pos.get(n.pai);
+    const pa = tela(a), pb = tela(b);
+    if (Math.max(pa.x,pb.x) < -50 || Math.max(pa.y,pb.y) < -50 || Math.min(pa.x,pb.x) > W+50 || Math.min(pa.y,pb.y) > H+50) continue;
+    const dentro = viz && viz.has(n.id) && viz.has(n.pai);
+    ctx.globalAlpha = Math.min(alfa(n), alfa(V.porId.get(n.pai))) * (dentro ? 1 : (n.tipo === 'municipio' ? .5 : .8));
+    ctx.strokeStyle = dentro ? cores.edgeRel : cores.edge;
+    ctx.lineWidth = dentro ? 1.5 : 1;
+    const rm = (a.r + b.r) / 2;
+    const c1 = tela({x: rm*Math.cos(b.ang), y: rm*Math.sin(b.ang)});
+    const c2 = tela({x: rm*Math.cos(a.ang), y: rm*Math.sin(a.ang)});
+    ctx.beginPath(); ctx.moveTo(pb.x,pb.y); ctx.bezierCurveTo(c1.x,c1.y,c2.x,c2.y,pa.x,pa.y); ctx.stroke();
+  }
+  // relações do nó em foco
+  if (foco) {
+    ctx.setLineDash([5,4]); ctx.lineWidth = 1.8; ctx.strokeStyle = cores.edgeRel; ctx.globalAlpha = .9;
+    for (const a of [...V.relOut.get(foco), ...V.relIn.get(foco)]) {
+      const p1 = tela(V.pos.get(a.de)), p2 = tela(V.pos.get(a.para));
+      const mx = (p1.x+p2.x)/2, my = (p1.y+p2.y)/2, cx = vista.x, cy = vista.y;
+      ctx.beginPath(); ctx.moveTo(p1.x,p1.y); ctx.quadraticCurveTo((mx+cx)/2,(my+cy)/2,p2.x,p2.y); ctx.stroke();
+      const ang = Math.atan2(p2.y-(my+cy)/2, p2.x-(mx+cx)/2);
+      const rr = raioNo(V.porId.get(a.para))*escalaNo(k) + 3;
+      const tx = p2.x - Math.cos(ang)*rr, ty = p2.y - Math.sin(ang)*rr;
+      ctx.setLineDash([]); ctx.beginPath(); ctx.moveTo(tx,ty);
+      ctx.lineTo(tx-7*Math.cos(ang-.45), ty-7*Math.sin(ang-.45)); ctx.moveTo(tx,ty);
+      ctx.lineTo(tx-7*Math.cos(ang+.45), ty-7*Math.sin(ang+.45)); ctx.stroke(); ctx.setLineDash([5,4]);
+    }
+    ctx.setLineDash([]);
+  }
+  // nós: forma preenchida na cor do Poder, com o ícone do tipo quando há espaço
+  const escala = escalaNo(k);
+  for (const n of V.ordem) {
+    const p = V.pos.get(n.id), s = tela(p);
+    if (s.x < -40 || s.y < -40 || s.x > W+40 || s.y > H+40) continue;
+    const raiz = n.id === V.raiz.id;
+    let r = raioNo(n) * escala;
+    if (n.id === pairado && !raiz) r *= 1.15;
+    ctx.globalAlpha = alfa(n);
+    ctx.fillStyle = corDe(n);
+    ctx.strokeStyle = cores.surface; ctx.lineWidth = n.tipo === 'municipio' ? 1 : 2;
+    const f = forma(n);
+    ctx.beginPath();
+    if (f === 'c') ctx.arc(s.x, s.y, r, 0, Math.PI*2);
+    else { const w = r*1.9; roundRect(s.x-w/2, s.y-w/2, w, w, Math.max(2.5, r*.3)); }
+    ctx.fill(); ctx.stroke();
+    if (n.id === selecionado || n.id === pairado) { ctx.strokeStyle = cores.ink; ctx.lineWidth = 2; ctx.beginPath(); ctx.arc(s.x, s.y, r+4, 0, Math.PI*2); ctx.stroke(); }
+    const corGlifo = n.poder === 'uniao' ? cores.surface : '#fff';
+    if (raiz) { // centro: nome dentro do círculo, como “o povo” no mapa da CivLab
+      const t = V.dados.meta.vista === 'estado' ? (n.sigla || n.nome) : n.nome;
+      ctx.fillStyle = corGlifo; ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+      ctx.font = `700 ${Math.max(11, Math.round(r*.42))}px ${css('--font')}`; ctx.fillText(t, s.x, s.y);
+    } else if (n.tipo !== 'municipio' && r >= 8.5) {
+      const g = r*.95/12;
+      ctx.save(); ctx.translate(s.x, s.y); ctx.scale(g, g); ctx.translate(-12, -12);
+      ctx.strokeStyle = corGlifo; ctx.lineWidth = r >= 12 ? 2 : 2.4; ctx.lineCap = 'round'; ctx.lineJoin = 'round';
+      ctx.stroke(caminho(iconeDe(n)));
+      ctx.restore();
+    }
+  }
+  // rótulos: aparecem quando o arco disponível para o nó, na tela, comporta o texto
+  for (const n of V.ordem) {
+    const p = V.pos.get(n.id), s = tela(p);
+    if (s.x < -200 || s.y < -60 || s.x > W+200 || s.y > H+60) continue;
+    const emFoco = viz && viz.has(n.id);
+    const d = p.depth;
+    const arcoTela = (p.a1 - p.a0) * p.r * k;
+    const mostra = (d <= 1 && d > 0) || emFoco || n.id === pairado || arcoTela >= 13 || (n.tipo === 'municipio' && n.capital && k >= .5);
+    if (!mostra || d === 0) continue;
+    let texto = (d >= 3 || (d === 2 && k < .9) || (n.tipo !== 'municipio' && n.tipo !== 'estado' && ((arcoTela < 60 && d >= 2) || (d === 1 && arcoTela < 110)))) ? (n.sigla || n.nome) : n.nome;
+    if (d === 1 && n.tipo === 'poder') texto = n.nome.replace(/^Poder /, '').replace(' à Justiça', '');
+    const fontePx = d <= 1 ? Math.max(12, Math.min(15, 13*escala)) : d === 2 ? Math.max(11, Math.min(14, 12*escala)) : Math.max(10, Math.min(13, 11*escala));
+    ctx.font = `${d <= 2 && n.tipo !== 'municipio' ? 600 : 500} ${fontePx}px ${css('--font')}`;
+    ctx.fillStyle = emFoco || d <= 2 ? cores.ink : cores.ink2;
+    ctx.globalAlpha = alfa(n);
+    const r = raioNo(n)*escala + 6;
+    ctx.save();
+    if (d === 1 && V.dados.meta.vista !== 'estado') { // os Poderes: nome sem girar, do lado oposto ao centro
+      const cx = Math.cos(p.ang), sy = Math.sin(p.ang);
+      const x = s.x + cx*(r+2), y = s.y + sy*(r+2);
+      ctx.textAlign = cx > .35 ? 'left' : cx < -.35 ? 'right' : 'center';
+      ctx.textBaseline = sy > .35 ? 'top' : sy < -.35 ? 'bottom' : 'middle';
+      halo(texto, x, y); ctx.fillText(texto, x, y);
+    } else {
+      const esq = Math.cos(p.ang) < 0;
+      ctx.translate(s.x, s.y); ctx.rotate(p.ang + (esq ? Math.PI : 0));
+      ctx.textAlign = esq ? 'right' : 'left'; ctx.textBaseline = 'middle';
+      const dx = esq ? -r : r;
+      halo(texto, dx, 0); ctx.fillText(texto, dx, 0);
+    }
+    ctx.restore();
+  }
+  ctx.globalAlpha = 1;
+  const mun = V.dados.meta.vista === 'estado' ? V.dados.nos.filter(n => n.tipo === 'municipio').length : 0;
+  status.textContent = `${V.dados.nos.length} nós · ${V.dados.arestas.length} relações · zoom ${Math.round(k*100)}%` + (mun ? ` · ${mun} municípios no anel externo (afaste o zoom ou busque pelo nome)` : '');
+}
+function halo(t, x, y){ ctx.save(); ctx.lineWidth = 3; ctx.strokeStyle = cores.surface; ctx.lineJoin = 'round'; ctx.globalAlpha *= .85; ctx.strokeText(t, x, y); ctx.restore(); }
+function roundRect(x,y,w,h,r){ ctx.moveTo(x+r,y); ctx.arcTo(x+w,y,x+w,y+h,r); ctx.arcTo(x+w,y+h,x,y+h,r); ctx.arcTo(x,y+h,x,y,r); ctx.arcTo(x,y,x+w,y,r); ctx.closePath(); }
+
+// ------------------------------------------------------------ interação no palco
+function acertar(px, py){
+  if (!V) return null;
+  let melhor = null, dist = 1e9;
+  for (const n of V.dados.nos) {
+    const s = tela(V.pos.get(n.id));
+    const d = Math.hypot(s.x-px, s.y-py);
+    const alcance = Math.max(raioNo(n)*escalaNo(vista.k), 10) + 6;
+    if (d < alcance && d < dist) { dist = d; melhor = n; }
+  }
+  return melhor;
+}
+const ponteiros = new Map(); let arrasto = null, moveu = false, distPinca = 0;
+canvas.addEventListener('pointerdown', e => {
+  canvas.setPointerCapture(e.pointerId);
+  ponteiros.set(e.pointerId, {x:e.clientX, y:e.clientY});
+  if (ponteiros.size === 1) { arrasto = {x:e.clientX, y:e.clientY, vx:vista.x, vy:vista.y}; moveu = false; }
+  if (ponteiros.size === 2) { const [a,b] = [...ponteiros.values()]; distPinca = Math.hypot(a.x-b.x, a.y-b.y); arrasto = null; }
+  canvas.classList.add('arrastando');
+});
+canvas.addEventListener('pointermove', e => {
+  if (ponteiros.has(e.pointerId)) ponteiros.set(e.pointerId, {x:e.clientX, y:e.clientY});
+  if (ponteiros.size === 2) {
+    const [a,b] = [...ponteiros.values()]; const d = Math.hypot(a.x-b.x, a.y-b.y);
+    if (distPinca) zoomEm((a.x+b.x)/2, (a.y+b.y)/2, d/distPinca);
+    distPinca = d; moveu = true; return;
+  }
+  if (arrasto) {
+    const dx = e.clientX-arrasto.x, dy = e.clientY-arrasto.y;
+    if (Math.hypot(dx,dy) > 3) { moveu = true; usuarioMexeu = true; }
+    vista.x = arrasto.vx+dx; vista.y = arrasto.vy+dy; desenhar(); esconderDica(); return;
+  }
+  const n = acertar(e.clientX, e.clientY);
+  if ((n && n.id) !== pairado) { pairado = n ? n.id : null; desenhar(); }
+  canvas.style.cursor = n ? 'pointer' : 'grab';
+  if (n) mostrarDica(n, e.clientX, e.clientY); else esconderDica();
+});
+let ultimoClique = {id:null, t:0};
+function soltar(e){
+  ponteiros.delete(e.pointerId);
+  if (ponteiros.size === 0) {
+    canvas.classList.remove('arrastando');
+    if (arrasto && !moveu) {
+      const n = acertar(e.clientX, e.clientY);
+      if (n) {
+        const agora = performance.now();
+        if (n.vista && ultimoClique.id === n.id && agora - ultimoClique.t < 450) { abrirVista(n.sigla, `uf-${n.sigla}`); ultimoClique = {id:null,t:0}; }
+        else { selecionar(n.id, true); ultimoClique = {id:n.id, t:agora}; }
+      } else if (selecionado) selecionar(null);
+    }
+    arrasto = null; distPinca = 0;
+  }
+}
+canvas.addEventListener('pointerup', soltar); canvas.addEventListener('pointercancel', soltar);
+canvas.addEventListener('pointerleave', () => { pairado = null; esconderDica(); desenhar(); });
+canvas.addEventListener('wheel', e => { e.preventDefault(); zoomEm(e.clientX, e.clientY, Math.exp(-e.deltaY*0.0016)); }, {passive:false});
+function zoomEm(cx, cy, fator){
+  usuarioMexeu = true;
+  const k = Math.max(.05, Math.min(8, vista.k*fator)); fator = k/vista.k;
+  vista.x = cx - (cx-vista.x)*fator; vista.y = cy - (cy-vista.y)*fator; vista.k = k; desenhar();
+}
+$('#z-mais').onclick = () => zoomEm(W/2, H/2, 1.3);
+$('#z-menos').onclick = () => zoomEm(W/2, H/2, 1/1.3);
+$('#z-fit').onclick = () => verTudo();
+function mostrarDica(n, x, y){
+  const c = n.cargo;
+  let sub = `${esc(V.TIPOS[n.tipo] || n.tipo)} · ${esc(V.PODERES[n.poder])}`;
+  if (n.tipo === 'municipio') sub = `Município · ${esc(V.dados.meta.uf)}${n.capital ? ' · capital' : ''}`;
+  else if (n.tipo === 'estado' && n.vista) sub += ' · clique duas vezes para abrir';
+  else if (c) sub += ' · ' + esc(c.titulo) + (c.situacao === 'vago' ? ': vago' : c.ocupante ? ': ' + esc(c.ocupante) + (c.situacao === 'interino' ? ' (interino)' : '') : '');
+  dica.innerHTML = `<div style="display:flex;gap:8px;align-items:flex-start">${tile(n)}<div><b>${esc(n.nome)}</b><span>${sub}</span></div></div>`;
+  dica.style.display = 'block';
+  const dw = dica.offsetWidth, dh = dica.offsetHeight;
+  dica.style.left = Math.min(x+14, W-dw-8) + 'px';
+  dica.style.top = (y+14+dh > H ? y-14-dh : y+14) + 'px';
+}
+function esconderDica(){ dica.style.display = 'none'; }
+
+// ------------------------------------------------------------ painel de detalhe
+function fmtData(s){ if (!s) return ''; const [a,m,d] = s.split('-'); const meses = ['jan','fev','mar','abr','mai','jun','jul','ago','set','out','nov','dez']; return d ? `${+d} ${meses[+m-1]} ${a}` : m ? `${meses[+m-1]} ${a}` : a; }
+function verbo(t){ return ({nomeia:'nomeia', aprova:'aprova a indicação de', fiscaliza:'fiscaliza', controla:'controla', preside:'preside', elege:'elege membros de', escolhe:'escolhe membros de', orcamento:'aprova o orçamento de', representa:'representa', integra:'integra', orienta:'orienta', julga:'julga', coordena:'coordena', 'organiza eleições':'organiza as eleições de', 'vinculada a':'vincula'})[t] || t; }
+const cap = s => s.charAt(0).toUpperCase() + s.slice(1);
+function blocoCargo(c, titulo){
+  const sit = c.situacao || (c.ocupante ? 'titular' : 'nao_verificado');
+  const badge = sit === 'vago' ? '<span class="sit vago">⚠ Vago</span>' : sit === 'interino' ? '<span class="sit interino">◔ Interino</span>' : '';
+  const meta = [c.desde ? 'Desde ' + fmtData(c.desde) : '', c.mandato_ate ? 'mandato até ' + fmtData(c.mandato_ate) : '', c.verificado_em ? 'verificado em ' + fmtData(c.verificado_em) : ''].filter(Boolean).join(' · ');
+  const fonte = c.fonte ? ` · <a href="${esc(c.fonte)}" target="_blank" rel="noopener">${esc(c.fonte_nome ? 'Fonte: ' + c.fonte_nome.replace(/,.*$/, '') : 'Fonte')}</a>` : '';
+  let corpo;
+  if (sit === 'vago') corpo = `<div class="n">Cargo vago${badge}</div><div class="m">${esc(meta)}${fonte}</div>`;
+  else if (c.ocupante) corpo = `<div class="n">${esc(c.ocupante)}${badge}</div><div class="m">${esc(meta)}${fonte}</div>`;
+  else corpo = `<div class="n vago">Ocupante não verificado nesta versão</div><div class="m">Preenchido pela ingestão a partir das fontes oficiais.${c.fonte ? ` <a href="${esc(c.fonte)}" target="_blank" rel="noopener">Conferir na fonte</a>` : ''}</div>`;
+  return `<div class="cargo"><div class="t">${esc(c.orgao ? c.orgao + ' · ' : '')}${esc(c.titulo)}</div>${corpo}</div>`;
+}
+const itemNo = (n, extra='') => `<button data-id="${n.id}">${tile(n, 'p')}${esc(n.nome)}<span class="sig">${esc(extra || n.sigla || '')}</span></button>`;
+function selecionar(id, centrar){
+  selecionado = id;
+  painel.classList.remove('inicio');
+  if (!id) { painel.classList.remove('aberto'); escreverHash(); desenhar(); return; }
+  const n = V.porId.get(id);
+  escreverHash();
+  const trilha = []; let p = n.pai; while (p) { trilha.unshift(V.porId.get(p)); p = V.porId.get(p).pai; }
+  $('#trilha').innerHTML = (vistaAtual !== 'federal' ? '<button data-brasil="1">Brasil</button><span aria-hidden="true">›</span>' : '') + trilha.map(t => `<button data-id="${t.id}">${esc(t.sigla || t.nome)}</button>`).join('<span aria-hidden="true">›</span>');
+  $('#p-nome').textContent = n.nome + (n.sigla && n.sigla !== n.nome && n.tipo !== 'estado' ? ` (${n.sigla})` : '');
+  const tipoRot = V.TIPOS[n.tipo] || n.tipo;
+  $('#p-tags').innerHTML = `<span class="tag" style="--c:${corDe(n)}"><i class="dot"></i>${esc(n.tipo === 'municipio' ? V.dados.meta.uf : V.PODERES[n.poder])}</span><span class="tag">${tile(n, 'p')}${esc(tipoRot)}</span>${n.capital && n.tipo === 'municipio' ? '<span class="tag">Capital</span>' : ''}${n.quantidade ? `<span class="tag">${n.quantidade} ${n.tipo==='grupo' ? 'entidades' : n.tipo==='estado' ? (vistaAtual==='federal' ? 'deputados federais' : 'municípios') : 'membros'}</span>` : ''}`;
+  let html = '';
+  if (n.tipo === 'municipio') {
+    html += `<div class="bloco"><p>Município ${esc(V.dados.meta.uf === 'SP' || true ? 'de' : 'de')} ${esc(V.dados.meta.nome)}${n.capital ? ', capital do estado' : ''}. Código IBGE ${esc(n.codigo_ibge)}${n.ddd ? ', DDD ' + esc(n.ddd) : ''}. Tem Prefeitura e Câmara Municipal próprias, e é gestor municipal do SUS (CF, arts. 29 a 31; Lei 8.080/1990).</p></div>`;
+    html += `<div class="bloco"><h3>Cargos de comando</h3>` + (V.dados.meta.cargos_municipio || []).map(c => blocoCargo(c)).join('') + `</div>`;
+  } else {
+    if (n.descricao) html += `<div class="bloco"><p>${esc(n.descricao)}</p></div>`;
+    if (n.vista) html += `<div class="bloco"><button class="btn-vista" data-vista="${esc(n.sigla)}">Abrir o mapa de ${esc(n.nome)} ›</button></div>`;
+    if (n.cargo) html += `<div class="bloco"><h3>Cargo de comando</h3>${blocoCargo(n.cargo)}</div>`;
+  }
+  const alvoRel = n.tipo === 'municipio' ? n.pai : id;
+  const rels = [...V.relIn.get(alvoRel).map(a => ({a, outro: V.porId.get(a.de), dir:'in'})), ...V.relOut.get(alvoRel).map(a => ({a, outro: V.porId.get(a.para), dir:'out'}))];
+  if (rels.length) {
+    html += `<div class="bloco"><h3>${n.tipo === 'municipio' ? 'Quem fiscaliza, julga e coordena os municípios' : 'Relações'}</h3><div class="lista-nos">` + rels.map(({a, outro, dir}) =>
+      `<div class="rel-item"><button data-id="${outro.id}">${tile(outro, 'p')}<span><span class="rel">${dir==='in' ? esc(outro.sigla||outro.nome) + ' ' + esc(verbo(a.tipo)) + ' ' : esc(verbo(a.tipo)) + ' '}</span>${dir==='in' ? '' : esc(outro.sigla||outro.nome)}</span></button>${a.descricao ? `<small>${esc(a.descricao)}</small>` : ''}</div>`).join('') + `</div></div>`;
+  }
+  if (n.ligacoes_externas && n.ligacoes_externas.length) {
+    html += `<div class="bloco ext"><h3>Ligações com a União</h3>` + n.ligacoes_externas.map(l => `<button data-ext-vista="${esc(l.vista)}" data-ext-id="${esc(l.id)}">↗ ${esc(l.rotulo)}<small style="margin-left:auto">Brasil</small></button>`).join('') + `</div>`;
+  }
+  if (vistaAtual === 'federal' && FEED.mudancas) {
+    const minhas = (FEED.mudancas.mudancas || []).filter(m => m.no_id === id && (diasAtras(m.data || m.publicado_em) ?? 999) <= 120).slice(0, 8);
+    if (minhas.length) html += `<div class="bloco"><h3>Mudanças recentes (DOU e SIORG)</h3><ul class="mudancas">${minhas.map(cartaoMudanca).join('')}</ul></div>`;
+  }
+  if (vistaAtual === 'federal' && FEED.noticias) {
+    const arts = (FEED.noticias.artigos || []).filter(a => (a.nos || []).includes(id)).slice(0, 5);
+    if (arts.length) html += `<div class="bloco"><h3>No noticiário</h3><div class="lista-nos">${arts.map(a => `<a href="${esc(a.url)}" target="_blank" rel="noopener" style="display:block;padding:6px 8px;border-radius:8px;text-decoration:none;color:var(--ink);font-size:13px;line-height:1.35">${esc(a.titulo)}<small style="display:block;color:var(--mute);font-size:11px">${esc(FONTES_NOME[a.fonte] || a.fonte)} · ${esc(relTempo(a.data))}</small></a>`).join('')}</div></div>`;
+  }
+  if (n.pai) {
+    const pai = V.porId.get(n.pai); const ar = V.dados.arestas.find(a => a.hierarquica && a.para === id);
+    html += `<div class="bloco"><h3>${esc(cap(ar.tipo))}</h3><div class="lista-nos">${itemNo(pai)}</div></div>`;
+  }
+  const fs = V.filhos.get(id);
+  if (fs.length) {
+    const lista = fs.map(c => V.porId.get(c));
+    const muitos = lista.length > 60;
+    html += `<div class="bloco"><h3>${lista.length === 1 ? '1 subordinado ou vinculado' : lista.length + ' subordinados ou vinculados'}</h3><div class="lista-nos">` +
+      (muitos ? lista.slice(0, 40).map(c => itemNo(c)).join('') + `<p style="padding:6px 8px;color:var(--mute);font-size:12px">… e mais ${lista.length-40}. Use a busca ou aproxime o mapa.</p>` : lista.map(c => itemNo(c)).join('')) + `</div></div>`;
+  }
+  $('#p-corpo').innerHTML = html;
+  $('#p-rodape').innerHTML = [n.lei ? 'Base legal: ' + esc(n.lei) : '', n.site ? `<a href="${esc(n.site)}" target="_blank" rel="noopener">Site oficial</a>` : '', n.tipo === 'municipio' ? '<a href="https://cidades.ibge.gov.br/brasil/' + esc(V.dados.meta.uf.toLowerCase()) + '/' + esc(norm(n.nome).replace(/[^a-z0-9]+/g,'-')) + '/panorama" target="_blank" rel="noopener">IBGE Cidades</a>' : ''].filter(Boolean).join(' · ') || 'Fonte: semente curada (ver “Sobre os dados”).';
+  painel.classList.add('aberto');
+  $('#p-corpo').scrollTop = 0;
+  if (centrar) centrarEm(id);
+  desenhar();
+}
+painel.addEventListener('click', e => {
+  const v = e.target.closest('button[data-vista]'); if (v) { abrirVista(v.dataset.vista, `uf-${v.dataset.vista}`); return; }
+  const x = e.target.closest('button[data-ext-vista]'); if (x) { abrirVista(x.dataset.extVista, x.dataset.extId); return; }
+  const br = e.target.closest('button[data-brasil]'); if (br) { abrirVista('federal', null); return; }
+  const b = e.target.closest('button[data-id]'); if (b) { selecionar(b.dataset.id, true); return; }
+  const o = e.target.closest('[data-no]'); if (o) selecionar(o.dataset.no, true);
+});
+$('#p-fechar').onclick = () => selecionar(null);
+
+// ------------------------------------------------------------ novidades: feeds dos agentes
+// mudancas.json (DOU e SIORG) e noticias.json (agências públicas) são gravados
+// todo dia por scripts/governo/agentes/ via GitHub Actions. Podem não existir.
+let FEED = {mudancas: null, noticias: null};
+async function carregarFeeds(){
+  const pega = async u => { try { const r = await fetch(u, {cache:'no-cache'}); return r.ok ? await r.json() : null; } catch (e) { return null; } };
+  [FEED.mudancas, FEED.noticias] = await Promise.all([pega('dados/mudancas.json'), pega('dados/noticias.json')]);
+}
+const diasAtras = iso => { if (!iso) return null; const d = new Date(iso.length === 10 ? iso + 'T12:00:00' : iso); return Math.max(0, Math.round((Date.now() - d.getTime()) / 864e5)); };
+const fmtDia = iso => iso ? `${iso.slice(8,10)}/${iso.slice(5,7)}` : '';
+const relTempo = iso => { const d = diasAtras(iso); if (d === null) return ''; if (d === 0) { const h = Math.max(1, Math.round((Date.now() - new Date(iso).getTime())/36e5)); return h < 24 ? `há ${h} h` : 'hoje'; } return d === 1 ? 'ontem' : `há ${d} dias`; };
+const federalNo = id => id && cacheVistas.get('federal') && cacheVistas.get('federal').nos.find(n => n.id === id);
+const chipNo = (id, extra='') => { const n = federalNo(id); if (!n) return ''; return `<button class="chip-no" data-no="${esc(id)}" ${extra}>${tile(n,'p')}${esc(n.sigla || n.nome)}</button>`; };
+const FONTES_NOME = {agenciabrasil:'Agência Brasil', camara:'Agência Câmara', senado:'Agência Senado', stf:'Notícias do STF', planalto:'Planalto'};
+let janelaMud = 30, mostrarTodas = false;
+
+function mudancasNaJanela(dias){
+  const lista = (FEED.mudancas && FEED.mudancas.mudancas) || [];
+  return lista.filter(m => { const d = diasAtras(m.data || m.publicado_em); return d !== null && d <= dias; });
+}
+function cartaoMudanca(m){
+  const badge = m.tipo === 'estrutura' ? '<span class="badge estrutura">Estrutura</span>'
+    : m.tipo === 'troca' ? '<span class="badge troca">Troca</span>'
+    : m.tipo === 'nomeacao' ? '<span class="badge entra">Nomeado</span>' : '<span class="badge sai">Saiu</span>';
+  const interino = m.interino ? '<span class="badge interino">Interino</span>' : '';
+  const n = federalNo(m.no_id);
+  const orgao = n ? `<button class="orgao" data-no="${esc(n.id)}">${tile(n,'p')}${esc(n.nome)}</button>` : (m.orgao ? `<span class="orgao">${esc(m.orgao)}</span>` : '');
+  let quem = '';
+  if (m.tipo === 'estrutura') quem = `<div style="font-size:13px;color:var(--ink-2)">${esc(m.resumo || '')}</div>`;
+  else quem = `<div class="quem"><small>Sai</small><span>${m.sai ? esc(m.sai) : '<i>sem registro do antecessor</i>'}</span><small>Entra</small><span>${m.entra ? esc(m.entra) + (m.interino ? ' <i>(interino)</i>' : '') : '<i>cargo fica vago</i>'}</span></div>`;
+  return `<li class="mud"><div class="topo">${badge}${interino}<span style="color:var(--mute)">${esc(fmtDia(m.data))}${m.a_pedido ? ' · a pedido' : ''}</span><a href="${esc(m.fonte)}" target="_blank" rel="noopener" title="${esc(m.ato || m.fonte_nome || '')}">${esc(m.fonte_nome || 'fonte')} ↗</a></div>` +
+    (m.tipo === 'estrutura' ? `<div class="cargo">${esc(m.orgao || '')}</div>` : `<div class="cargo">${esc(m.cargo || '')}</div>`) + quem + (orgao ? `<div>${orgao}</div>` : '') + `</li>`;
+}
+function montarNovidades(){
+  const corpo = $('#n-corpo');
+  const N = FEED.noticias, M = FEED.mudancas;
+  let html = '';
+  // ---- últimas notícias
+  html += `<section class="secao"><h3>Últimas notícias<small>${N ? 'atualizado ' + esc(relTempo(N.meta.gerado_em)) : ''}</small></h3>`;
+  if (N && N.resumo && N.resumo.length) {
+    const art = id => (N.artigos || []).find(a => a.id === id);
+    html += `<ul class="frases">` + N.resumo.map((f, i) => { const a = art(f.artigo_id); return `<li>${f.no_id ? chipNo(f.no_id) + ' ' : ''}${esc(f.texto)}${a ? `<a class="ref" href="${esc(a.url)}" target="_blank" rel="noopener" title="${esc(FONTES_NOME[a.fonte] || a.fonte)}">${i+1}</a>` : ''}</li>`; }).join('') + `</ul>`;
+    const topP = (N.ranking && N.ranking.pessoas || []).slice(0, 5);
+    if (topP.length) html += `<div class="rosto-pilha"><span class="rostos">${topP.map(r => `<span title="${esc(r.nome)}" style="${r.foto ? `background-image:url('${esc(r.foto)}')` : ''}">${r.foto ? '' : esc(iniciais(r.nome))}</span>`).join('')}</span><button id="link-poder-p">Quem está no noticiário</button><button class="link-poder" id="link-poder">Mapa do poder ›</button></div>`;
+    const top = (N.ranking && N.ranking.orgaos || []).filter(r => federalNo(r.id)).slice(0, 6);
+    if (top.length) html += `<h3 style="font-size:13px;margin-top:12px">Órgãos no noticiário</h3><div class="no-noticiario">` + top.map(r => { const n = federalNo(r.id); return `<button data-no="${esc(r.id)}">${tile(n,'p')}<b>${esc(n.sigla || n.nome)}</b><small>${r.artigos}</small></button>`; }).join('') + `</div>`;
+    if (N.meta.resumo_por === 'manchetes') html += `<p class="desc" style="margin-top:8px">Manchetes das agências públicas que citam órgãos do mapa. O resumo em frases entra quando o agente roda com a Claude.</p>`;
+  } else {
+    html += `<p class="vazio">O agente de notícias ainda não rodou. Ele lê a Agência Brasil, a Agência Câmara, a Agência Senado, as notícias do STF e o Planalto todo dia às 7h.</p>`;
+  }
+  html += `</section>`;
+  // ---- últimas mudanças
+  const fed = cacheVistas.get('federal');
+  const vagos = fed ? fed.nos.filter(n => n.cargo && n.cargo.situacao === 'vago').length : 0;
+  const interinos = fed ? fed.nos.filter(n => n.cargo && n.cargo.situacao === 'interino').length : 0;
+  const todas = mudancasNaJanela(janelaMud);
+  const relevantes = todas.filter(m => m.nivel === 'comando' || m.nivel === 'alta' || m.tipo === 'estrutura');
+  const lista = mostrarTodas ? todas : relevantes;
+  const ultima = (M && M.mudancas && M.mudancas[0]) ? M.mudancas[0].data : null;
+  html += `<section class="secao"><h3>Últimas mudanças<span class="abas" role="group" aria-label="Janela">${[7,30,90].map(d => `<button data-janela="${d}" aria-pressed="${d===janelaMud}">${d}D</button>`).join('')}</span></h3>`;
+  html += `<p class="desc">Agentes leem todo dia o Diário Oficial (decretos do Presidente e portarias da Casa Civil) e o SIORG para registrar cada nomeação, saída e mudança de estrutura, com link para o ato.</p>`;
+  html += `<div class="kpis-m"><div class="kpi-m${vagos ? ' alerta' : ''}"><small>Cargos vagos</small><b>${vagos}</b><span>sem ocupante, com fonte</span></div><div class="kpi-m"><small>Interinos</small><b>${interinos}</b><span>respondendo pelo cargo</span></div><div class="kpi-m"><small>Última mudança</small><b>${ultima ? (diasAtras(ultima) === 0 ? 'hoje' : diasAtras(ultima) + ' d') : '–'}</b><span>${ultima ? 'atrás, em ' + fmtDia(ultima) : 'sem registro'}</span></div></div>`;
+  // linha do tempo: uma barra por dia
+  const porDia = new Map();
+  for (const m of lista) { const d = diasAtras(m.data || m.publicado_em); porDia.set(d, (porDia.get(d) || 0) + 1); }
+  const max = Math.max(1, ...porDia.values());
+  let barras = '';
+  for (let d = janelaMud; d >= 0; d--) { const n = porDia.get(d) || 0; barras += `<i data-n="${n}" style="height:${n ? Math.max(12, Math.round(n/max*100)) : 3}%" title="${n} ${n === 1 ? 'mudança' : 'mudanças'} ${d === 0 ? 'hoje' : d === 1 ? 'ontem' : 'há ' + d + ' dias'}"></i>`; }
+  html += `<div class="linha"><div style="display:flex;justify-content:space-between;font-size:10px;text-transform:uppercase;letter-spacing:.06em;color:var(--mute);margin-bottom:4px"><span>Linha do tempo</span><span>${lista.length} ${lista.length === 1 ? 'mudança' : 'mudanças'} na janela</span></div><div class="barras">${barras}</div><div class="eixo"><span>${janelaMud} d atrás</span><span>hoje</span></div></div>`;
+  if (!M) html += `<p class="vazio">O agente do Diário Oficial ainda não rodou.</p>`;
+  else if (!lista.length) html += `<p class="vazio">Nenhuma mudança ${mostrarTodas ? '' : 'de nível alto '}nos últimos ${janelaMud} dias.</p>`;
+  else html += `<ul class="mudancas">` + lista.slice(0, 60).map(cartaoMudanca).join('') + (lista.length > 60 ? `<li class="vazio">… e mais ${lista.length - 60}. Reduza a janela.</li>` : '') + `</ul>`;
+  html += `<label class="mostrar-todas"><input type="checkbox" id="chk-todas" ${mostrarTodas ? 'checked' : ''}> Mostrar todas, inclusive diretores de departamento e coordenadores (${todas.length})</label>`;
+  html += `</section>`;
+  // ---- fontes
+  html += `<section class="secao"><h3>Fontes dos agentes</h3><ul class="fontes-lista">` +
+    (M ? `<li><a href="${esc(M.meta.fonte ? M.meta.fonte.url : '#')}" target="_blank" rel="noopener">${esc(M.meta.fonte ? M.meta.fonte.nome : 'DOU')}</a> · ${esc(relTempo(M.meta.gerado_em))}${M.meta.estrutura_verificada_em ? ' · SIORG conferido em ' + esc(fmtDia(M.meta.estrutura_verificada_em)) : ''}</li>` : '') +
+    (N ? (N.meta.fontes || []).map(f => `<li><a href="${esc(f.url)}" target="_blank" rel="noopener">${esc(f.nome)}</a></li>`).join('') : '') +
+    `<li>Regra: o feed registra o que as fontes publicaram; ocupantes no mapa só mudam com revisão humana. <a href="#" data-sobre="1">Sobre os dados</a></li></ul></section>`;
+  corpo.innerHTML = html;
+}
+const novidades = $('#novidades');
+function abrirNovidades(aberto){
+  novidades.classList.toggle('aberta', aberto);
+  if (aberto) { montarNovidades(); $('#n-corpo').scrollTop = 0; }
+}
+$('#btn-novidades').onclick = () => abrirNovidades(!novidades.classList.contains('aberta'));
+$('#n-fechar').onclick = () => abrirNovidades(false);
+novidades.addEventListener('click', e => {
+  const j = e.target.closest('button[data-janela]'); if (j) { janelaMud = +j.dataset.janela; montarNovidades(); return; }
+  const n = e.target.closest('[data-no]'); if (n) { if (vistaAtual !== 'federal') abrirVista('federal', n.dataset.no); else selecionar(n.dataset.no, true); if (W <= 720) abrirNovidades(false); return; }
+  if (e.target.closest('#link-poder') || e.target.closest('#link-poder-p') || e.target.closest('#btn-poder')) { abrirPoder('pessoas'); return; }
+  const a = e.target.closest('a[data-sobre]'); if (a) { e.preventDefault(); $('#folha-sobre').classList.add('aberta'); }
+});
+novidades.addEventListener('change', e => { if (e.target.id === 'chk-todas') { mostrarTodas = e.target.checked; montarNovidades(); } });
+
+// ------------------------------------------------------------ mapa do poder: quem está no noticiário
+// Grafo de pessoas: tamanho pela quantidade de matérias, anel na cor do Poder,
+// brilho vermelho para quem saiu no noticiário nas últimas 48 h, linhas entre
+// pessoas ligadas no mapa (quem nomeia quem, presidente da Casa e parlamentares).
+const iniciais = nome => nome.split(/\s+/).filter(p => p.length > 2).map(p => p[0]).slice(0, 2).join('').toUpperCase() || nome.slice(0, 2).toUpperCase();
+const ehParlamentar = r => /^(Deputad|Senador)/.test(r.cargo || '');
+let abaPoder = 'pessoas';
+function horasAtras(iso){ return iso ? (Date.now() - new Date(iso).getTime()) / 36e5 : Infinity; }
+function quenteTexto(iso){ const h = horasAtras(iso); if (h > 48) return ''; return h < 1 ? 'No noticiário agora' : h < 24 ? `No noticiário há ${Math.round(h)} h` : 'No noticiário ontem'; }
+function ancestrais(id){ const fed = cacheVistas.get('federal'); if (!fed) return []; const por = new Map(fed.nos.map(n => [n.id, n])); const out = []; let n = por.get(id); while (n && n.pai) { out.push(n.pai); n = por.get(n.pai); } return out; }
+function ligacoesPessoas(lista){
+  const fed = cacheVistas.get('federal'); const arestas = fed ? fed.arestas.filter(a => !a.hierarquica) : [];
+  // todos os cargos da pessoa no mapa (Alcolumbre preside o Congresso e o Senado)
+  const chave = s => norm(s || '').split(' ').filter(Boolean);
+  const nosDe = r => { const t = chave(r.nome_completo || r.nome); return fed ? fed.nos.filter(n => n.cargo && n.cargo.ocupante && (() => { const u = chave(n.cargo.ocupante); return u[0] === t[0] && u[u.length-1] === t[t.length-1]; })()).map(n => n.id) : [r.no_id]; };
+  const cargos = lista.map(r => ehParlamentar(r) ? [r.no_id] : [...new Set([r.no_id, ...nosDe(r)])]);
+  const ls = [];
+  for (let i = 0; i < lista.length; i++) for (let j = 0; j < lista.length; j++) {
+    if (i === j) continue;
+    const a = lista[i], b = lista[j];
+    if (!a.no_id || !b.no_id) continue;
+    const pa = ehParlamentar(a), pb = ehParlamentar(b);
+    if (pa && pb) continue;
+    if (pb && !pa && cargos[i].includes(b.no_id)) { ls.push([i, j]); continue; }      // presidente da Casa -> membro
+    if (pa || pb) continue;
+    const anc = ancestrais(b.no_id);
+    const k = anc.indexOf(a.no_id);
+    if (k >= 0 && k <= 2 && !lista.some((c, m) => m !== i && m !== j && !ehParlamentar(c) && anc.indexOf(c.no_id) >= 0 && anc.indexOf(c.no_id) < k)) { ls.push([i, j]); continue; }
+    if (arestas.some(e => e.de === a.no_id && e.para === b.no_id && ['nomeia','aprova','preside','escolhe'].includes(e.tipo))) ls.push([i, j]);
+  }
+  return ls;
+}
+function layoutPoder(lista, W){
+  const max = Math.max(1, ...lista.map(r => r.artigos));
+  const nos = lista.map((r, i) => ({r, raio: Math.round(26 + 16 * Math.sqrt(r.artigos / max)), i}));
+  const col = Math.max(2, Math.floor(W / 190));
+  const passoX = W / col, passoY = 190;
+  nos.forEach((n, i) => {
+    if (i === 0) { n.x = W / 2; n.y = 70; return; }
+    const k = i - 1, linha = Math.floor(k / col), c = k % col;
+    const h = ((i * 2654435761) % 1000) / 1000;                       // desvio fixo, sem aleatoriedade
+    n.x = (c + .5) * passoX + (linha % 2 ? passoX * .22 : -passoX * .12) + (h - .5) * passoX * .25;
+    n.y = 70 + 150 + linha * passoY + (h - .5) * 70 + (c % 2 ? 40 : 0);
+  });
+  // afasta caixas que se sobrepõem (círculo + três linhas de texto)
+  const caixa = n => ({l: n.x - 85, r: n.x + 85, t: n.y - n.raio - 8, b: n.y + n.raio + 72});
+  for (let it = 0; it < 160; it++) {
+    let mexeu = false;
+    for (let a = 0; a < nos.length; a++) for (let b = a + 1; b < nos.length; b++) {
+      const A = caixa(nos[a]), B = caixa(nos[b]);
+      const ox = Math.min(A.r, B.r) - Math.max(A.l, B.l), oy = Math.min(A.b, B.b) - Math.max(A.t, B.t);
+      if (ox > 0 && oy > 0) {
+        mexeu = true;
+        if (ox < oy) { const d = (ox / 2 + 1) * (nos[a].x < nos[b].x ? -1 : 1); if (a) nos[a].x += d; nos[b].x -= d; }
+        else { const d = (oy / 2 + 1) * (nos[a].y < nos[b].y ? -1 : 1); if (a) nos[a].y += d; nos[b].y -= d; }
+      }
+    }
+    for (const n of nos) n.x = Math.max(90, Math.min(W - 90, n.x));
+    if (!mexeu) break;
+  }
+  return nos;
+}
+function svgPoder(lista){
+  const W = Math.min(1240, $('#folha-poder .conteudo').clientWidth || 1000);
+  const nos = layoutPoder(lista, W);
+  const ls = ligacoesPessoas(lista);
+  const H = Math.max(...nos.map(n => n.y + n.raio + 80)) + 10;
+  const cor = r => ({executivo: 'var(--exec)', legislativo: 'var(--leg)', judiciario: 'var(--jud)', essencial: 'var(--ess)'})[r.poder] || 'var(--ink-2)';
+  let svg = `<svg id="grafo-poder" viewBox="0 0 ${W} ${H}" height="${H}" role="img" aria-label="Mapa do poder: pessoas mais citadas">`;
+  svg += `<defs>${nos.map(n => `<clipPath id="cp${n.i}"><circle cx="${n.x.toFixed(1)}" cy="${n.y.toFixed(1)}" r="${n.raio - 3}"/></clipPath>`).join('')}</defs>`;
+  svg += ls.map(([a, b]) => { const A = nos[a], B = nos[b]; const ang = Math.atan2(B.y - A.y, B.x - A.x);
+    const x1 = A.x + Math.cos(ang) * (A.raio + 3), y1 = A.y + Math.sin(ang) * (A.raio + 3), x2 = B.x - Math.cos(ang) * (B.raio + 5), y2 = B.y - Math.sin(ang) * (B.raio + 5);
+    const mx = (x1 + x2) / 2, my = (y1 + y2) / 2;
+    return `<g data-l="${a}-${b}"><line class="aresta" x1="${x1.toFixed(1)}" y1="${y1.toFixed(1)}" x2="${x2.toFixed(1)}" y2="${y2.toFixed(1)}"/><path class="seta" d="M${(mx + Math.cos(ang) * 5).toFixed(1)},${(my + Math.sin(ang) * 5).toFixed(1)} L${(mx + Math.cos(ang + 2.5) * 5).toFixed(1)},${(my + Math.sin(ang + 2.5) * 5).toFixed(1)} L${(mx + Math.cos(ang - 2.5) * 5).toFixed(1)},${(my + Math.sin(ang - 2.5) * 5).toFixed(1)}Z"/></g>`; }).join('');
+  svg += nos.map(n => {
+    const r = n.r, q = quenteTexto(r.ultima);
+    const sub = ehParlamentar(r) ? `${r.partido ? r.partido + ' · ' : ''}${r.cargo}` : (r.cargo || '');
+    const partes = sub.length > 34 ? [sub.slice(0, sub.lastIndexOf(' ', 34)), sub.slice(sub.lastIndexOf(' ', 34) + 1)] : [sub];
+    if (partes[1] && partes[1].length > 34) partes[1] = partes[1].slice(0, 33) + '…';
+    let y = n.y + n.raio + 20;
+    let txt = `<text class="nome" x="${n.x.toFixed(1)}" y="${y}">${esc(r.nome)}</text>`;
+    for (const p of partes) { y += 17; txt += `<text class="sub" x="${n.x.toFixed(1)}" y="${y}">${esc(p)}</text>`; }
+    y += 17; txt += `<text class="n" x="${n.x.toFixed(1)}" y="${y}">${r.artigos} ${r.artigos === 1 ? 'matéria' : 'matérias'}</text>`;
+    if (q) { y += 17; txt += `<text class="quente" x="${n.x.toFixed(1)}" y="${y}">${q}</text>`; }
+    const foto = r.foto ? `<image href="${esc(r.foto)}" x="${(n.x - n.raio).toFixed(1)}" y="${(n.y - n.raio).toFixed(1)}" width="${n.raio * 2}" height="${n.raio * 2}" preserveAspectRatio="xMidYMin slice" clip-path="url(#cp${n.i})"/>` : `<text class="ini" x="${n.x.toFixed(1)}" y="${n.y.toFixed(1)}" style="font-size:${Math.round(n.raio * .55)}px">${esc(iniciais(r.nome))}</text>`;
+    return `<g class="pessoa" data-i="${n.i}" tabindex="0" role="button" aria-label="${esc(r.nome)}, ${r.artigos} matérias">
+      ${q ? `<circle class="brilho" cx="${n.x.toFixed(1)}" cy="${n.y.toFixed(1)}" r="${n.raio + 3}"/>` : ''}
+      <circle class="fundo" cx="${n.x.toFixed(1)}" cy="${n.y.toFixed(1)}" r="${n.raio - 2}"/>${foto}
+      <circle class="anel" cx="${n.x.toFixed(1)}" cy="${n.y.toFixed(1)}" r="${n.raio}" style="stroke:${q ? '#e5484d' : cor(r)}"/>
+      <title>${esc(r.nome_completo || r.nome)}</title>${txt}</g>`;
+  }).join('');
+  return svg + '</svg>';
+}
+function listaOrgaosPoder(N){
+  const orgaos = (N.ranking.orgaos || []).filter(r => federalNo(r.id)).slice(0, 24);
+  const maxO = Math.max(1, ...orgaos.map(r => r.artigos));
+  return orgaos.length ? `<ol class="poder-lista" style="max-width:760px;margin:0 auto">` + orgaos.map((r, i) => { const n = federalNo(r.id); return `<li data-no="${esc(r.id)}"><span class="pos">${i+1}</span>${tile(n)}<span class="nome"><b>${esc(n.nome)}</b><small>${esc(V ? (V.PODERES[n.poder] || '') : '')}${r.ultima ? ' · no noticiário ' + esc(relTempo(r.ultima)) : ''}</small><span class="barra" style="--c:${corDe(n)}"><i style="width:${Math.round(r.artigos/maxO*100)}%"></i></span></span><span class="n"><b>${r.artigos}</b>${r.artigos === 1 ? 'matéria' : 'matérias'}</span></li>`; }).join('') + `</ol>` : `<p class="vazio">Nenhum órgão citado ainda.</p>`;
+}
+function abrirPoder(aba){
+  if (aba) abaPoder = aba;
+  const N = FEED.noticias; const corpo = $('#poder-corpo');
+  $('#folha-poder').classList.add('aberta');
+  document.querySelectorAll('[data-poder-aba]').forEach(b => b.setAttribute('aria-pressed', String(b.dataset.poderAba === abaPoder)));
+  if (!N) { $('#poder-sub').textContent = ''; corpo.innerHTML = '<p class="vazio">O agente de notícias ainda não rodou.</p>'; return; }
+  const fontes = (N.meta.fontes || []).length;
+  const pessoas = (N.ranking.pessoas || []).slice(0, 20);
+  $('#poder-sub').textContent = abaPoder === 'pessoas'
+    ? `As ${pessoas.length} pessoas mais citadas em ${N.meta.total_artigos} matérias de ${fontes} ${fontes === 1 ? 'fonte pública' : 'fontes públicas'} nos últimos ${N.meta.janela_dias} dias`
+    : `Os órgãos mais citados em ${N.meta.total_artigos} matérias de ${fontes} ${fontes === 1 ? 'fonte pública' : 'fontes públicas'} nos últimos ${N.meta.janela_dias} dias`;
+  if (abaPoder === 'orgaos') { corpo.innerHTML = listaOrgaosPoder(N); return; }
+  if (!pessoas.length) { corpo.innerHTML = '<p class="vazio">Ninguém do mapa, da Câmara ou do Senado foi citado ainda no período.</p>'; return; }
+  corpo.innerHTML = svgPoder(pessoas) + `<p class="poder-nota">Contagem por matéria da Agência Brasil, Agência Câmara, Agência Senado, Notícias do STF e Planalto que cita o nome. Fotos oficiais da Câmara e do Senado; para as demais, Wikimedia Commons. Linhas ligam quem nomeia ou preside a quem, segundo o mapa. Clique numa pessoa para abrir o cargo no mapa.</p>`;
+  corpo._pessoas = pessoas;
+}
+document.querySelectorAll('[data-poder-aba]').forEach(b => b.onclick = () => abrirPoder(b.dataset.poderAba));
+function abrirPessoa(r){
+  if (!r) return;
+  if (ehParlamentar(r) || !r.no_id) { if (r.foto_fonte) window.open(r.foto_fonte, '_blank', 'noopener'); return; }
+  $('#folha-poder').classList.remove('aberta');
+  if (vistaAtual !== 'federal') abrirVista('federal', r.no_id); else selecionar(r.no_id, true);
+}
+$('#poder-corpo').addEventListener('click', e => {
+  const li = e.target.closest('li[data-no]'); if (li) { $('#folha-poder').classList.remove('aberta'); if (vistaAtual !== 'federal') abrirVista('federal', li.dataset.no); else selecionar(li.dataset.no, true); return; }
+  const g = e.target.closest('g.pessoa'); if (g) abrirPessoa($('#poder-corpo')._pessoas[+g.dataset.i]);
+});
+$('#poder-corpo').addEventListener('keydown', e => { const g = e.target.closest('g.pessoa'); if (g && (e.key === 'Enter' || e.key === ' ')) { e.preventDefault(); abrirPessoa($('#poder-corpo')._pessoas[+g.dataset.i]); } });
+$('#poder-corpo').addEventListener('mouseover', e => {
+  const g = e.target.closest('g.pessoa'); const svg = $('#grafo-poder'); if (!svg) return;
+  const i = g ? g.dataset.i : null;
+  svg.querySelectorAll('g[data-l]').forEach(l => { const [a, b] = l.dataset.l.split('-'); l.querySelector('line').classList.toggle('ativa', i !== null && (a === i || b === i)); });
+  const viz = new Set(i === null ? [] : [i, ...[...svg.querySelectorAll('g[data-l]')].flatMap(l => { const [a, b] = l.dataset.l.split('-'); return a === i ? [b] : b === i ? [a] : []; })]);
+  svg.querySelectorAll('g.pessoa').forEach(p => p.classList.toggle('apagada', i !== null && !viz.has(p.dataset.i)));
+});
+$('#poder-corpo').addEventListener('mouseleave', () => { const svg = $('#grafo-poder'); if (svg) { svg.querySelectorAll('g.pessoa').forEach(p => p.classList.remove('apagada')); svg.querySelectorAll('line.ativa').forEach(l => l.classList.remove('ativa')); } });
+window.addEventListener('resize', () => { if ($('#folha-poder').classList.contains('aberta') && abaPoder === 'pessoas') abrirPoder(); });
+$('#btn-poder').onclick = () => abrirPoder();
+
+// ------------------------------------------------------------ painel “Comece por aqui”
+function mostrarInicio(){
+  if (!V) return;
+  selecionado = null; escreverHash();
+  const federal = vistaAtual === 'federal';
+  const atalhos = federal
+    ? [['pr','Presidência da República','quem governa'], ['congresso','Congresso Nacional','quem faz as leis'], ['stf','Supremo Tribunal Federal','quem guarda a Constituição'], ['mpu','Ministério Público da União','quem fiscaliza'], ['ms','Ministério da Saúde','SUS, Anvisa, Fiocruz'], ['mec','Ministério da Educação','universidades, Capes, FNDE']]
+    : [[`gov-${vistaAtual}`,'Governo do Estado','quem governa'], [`ale-${vistaAtual}`,'Assembleia Legislativa','quem faz as leis'], [`tj-${vistaAtual}`,'Tribunal de Justiça','quem julga'], [`mp-${vistaAtual}`,'Ministério Público','quem fiscaliza']];
+  const botoes = atalhos.filter(([id]) => V.porId.has(id)).map(([id, nome, sub]) => { const n = V.porId.get(id); return `<button data-id="${id}">${tile(n)}<span>${esc(nome)}<small>${esc(sub)}</small></span></button>`; }).join('');
+  const ufs = UFS.map(u => `<option value="${u}">${u}</option>`).join('');
+  $('#trilha').innerHTML = '';
+  $('#p-nome').textContent = federal ? 'Quem é quem no governo do Brasil' : `Quem é quem em ${V.dados.meta.nome}`;
+  $('#p-tags').innerHTML = '';
+  $('#p-corpo').innerHTML = `
+    <div class="bloco"><p>${federal ? 'Os três Poderes, os ministérios, as agências, os tribunais e os cargos de comando da União, com quem nomeia, aprova e fiscaliza quem.' : 'Governo, Assembleia, tribunais, Ministério Público, Defensoria e os municípios do estado, com quem fiscaliza e julga quem.'}</p></div>
+    <div class="bloco"><h3>Comece por aqui</h3><div class="atalhos">${botoes}
+      <label class="estado">${federal ? '<i class="tile" style="--c:var(--uniao);color:var(--surface)">' + svgIcone('pino') + '</i>Meu estado' : '<i class="tile" style="--c:var(--uniao);color:var(--surface)">' + svgIcone('mapa') + '</i>Outro estado'}<select id="sel-uf" aria-label="Escolher um estado"><option value="">escolher…</option>${ufs}</select></label>
+    </div></div>
+    <div class="bloco"><button class="btn-vista" data-novidades="1">Ver últimas notícias e mudanças ›</button></div>
+    <div class="bloco"><h3>Como ler o mapa</h3><ul class="como">
+      <li><i class="tile" style="--c:var(--exec);color:#fff">${svgIcone('bandeira')}</i><span><b>Cor é o Poder.</b> Azul Executivo, laranja Legislativo, verde Judiciário, cinza funções essenciais à Justiça.</span></li>
+      <li><i class="tile q" style="--c:var(--ink-2);color:var(--surface)">${svgIcone('escudo_check')}</i><span><b>Ícone é o tipo.</b> Colunas para ministério, balança para tribunal, escudo com visto para agência reguladora. A legenda fica no canto inferior esquerdo, ao lado do zoom.</span></li>
+      <li><i class="tile" style="--c:var(--uniao);color:var(--surface)">${svgIcone('pino')}</i><span><b>Clique para abrir.</b> Um clique mostra o cargo, quem ocupa e as relações. Dois cliques em um estado abrem o mapa dele. Role para aproximar.</span></li>
+    </ul></div>`;
+  $('#p-rodape').innerHTML = 'Dados oficiais (SIORG, Câmara, Senado, tribunais), revisados toda semana. <a href="#" data-sobre="1">Sobre os dados</a>';
+  painel.classList.add('aberto', 'inicio');
+  $('#p-corpo').scrollTop = 0;
+  desenhar();
+}
+painel.addEventListener('change', e => { if (e.target.id === 'sel-uf' && e.target.value) abrirVista(e.target.value, `uf-${e.target.value}`); });
+painel.addEventListener('click', e => { if (e.target.closest('button[data-novidades]')) { abrirNovidades(true); if (W <= 720) selecionar(null); } });
+painel.addEventListener('click', e => { const a = e.target.closest('a[data-sobre]'); if (a) { e.preventDefault(); $('#folha-sobre').classList.add('aberta'); } });
+$('#btn-ajuda').onclick = () => mostrarInicio();
+
+// ------------------------------------------------------------ legenda com ícones
+const LEGENDA = [
+  ['bandeira','c','Presidência e governos','chefia do Executivo'],
+  ['colunas','c','Ministério',''],
+  ['predio','c','Órgão','secretaria, comando, conselho'],
+  ['cupula','c','Casa legislativa','Congresso, Câmara, Senado, Assembleia'],
+  ['balanca','c','Tribunal','STF, STJ, TSE, TCU, tribunais de justiça'],
+  ['escudo','c','Ministério Público e Defensoria',''],
+  ['escudo_check','q','Agência reguladora','Anvisa, Anatel, ANS, Aneel'],
+  ['medalha','q','Autarquia','INSS, Ibama, Banco Central, universidades'],
+  ['broto','q','Fundação pública','Fiocruz, Funai, Capes, IBGE'],
+  ['maleta','q','Empresa estatal','Correios, Petrobras, Caixa, Embrapa'],
+  ['estrela','c','Força Armada','Marinha, Exército, Aeronáutica'],
+  ['camadas','c','Conjunto de entidades','por exemplo, as 69 universidades'],
+  ['pino','c','Estado','dois cliques abrem o mapa dele'],
+  ['casa','c','Município',''],
+];
+function montarLegenda(){
+  $('#legenda').innerHTML = '<h4>Cor é o Poder</h4><div class="cores">' +
+    [['exec','Executivo'],['leg','Legislativo'],['jud','Judiciário'],['ess','Funções essenciais']].map(([v,t]) => `<span><i style="--c:var(--${v})"></i>${t}</span>`).join('') +
+    '</div><h4>Ícone é o tipo</h4>' +
+    LEGENDA.map(([ic, f, t, sub]) => `<div class="l"><i class="tile ${f}" style="--c:var(--ink-2)">${svgIcone(ic)}</i><span><b>${t}</b>${sub ? ' · ' + sub : ''}</span></div>`).join('') +
+    '<div class="l" style="margin-top:4px">Quadrado é administração indireta (entidade com personalidade própria); círculo é administração direta.</div>';
+}
+montarLegenda();
+const btnLegenda = $('#btn-legenda');
+function legenda(aberta){ $('#legenda').classList.toggle('aberta', aberta); btnLegenda.setAttribute('aria-expanded', String(aberta)); }
+btnLegenda.onclick = () => legenda(!$('#legenda').classList.contains('aberta'));
+legenda(false);
+
+// ------------------------------------------------------------ tema claro ou escuro
+function temaAtual(){ const t = document.documentElement.dataset.theme; return t || (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'); }
+function aplicarTema(t){ document.documentElement.dataset.theme = t; try { localStorage.setItem('mapa-tema', t); } catch (e) {} lerCores(); desenhar(); }
+try { const t = localStorage.getItem('mapa-tema'); if (t === 'dark' || t === 'light') { document.documentElement.dataset.theme = t; lerCores(); } } catch (e) {}
+$('#btn-tema').onclick = () => aplicarTema(temaAtual() === 'dark' ? 'light' : 'dark');
+
+// ------------------------------------------------------------ URL (#id, #SP, #SP/m-3509502)
+let lendoHash = false;
+function escreverHash(){
+  const h = vistaAtual === 'federal' ? (selecionado || '') : vistaAtual + (selecionado && selecionado !== `uf-${vistaAtual}` ? '/' + selecionado : '');
+  lendoHash = true; history.replaceState(null, '', h ? '#' + h : location.pathname); lendoHash = false;
+}
+async function lerHash(){
+  if (lendoHash) return;
+  const h = decodeURIComponent(location.hash.slice(1));
+  const [a, b] = h.split('/');
+  if (UFS.includes(a)) { if (vistaAtual !== a || (b && b !== selecionado)) await abrirVista(a, b || `uf-${a}`); return; }
+  if (vistaAtual !== 'federal') { await abrirVista('federal', a || null); return; }
+  if (a && V.porId.has(a) && a !== selecionado) selecionar(a, true); else if (!a && selecionado) selecionar(null);
+}
+window.addEventListener('hashchange', lerHash);
+
+// ------------------------------------------------------------ busca (vista atual + índice nacional de municípios)
+const busca = $('#busca'), resultados = $('#resultados');
+let indice = [], indiceMunicipios = null, carregandoIndice = null;
+function montarIndiceBusca(){
+  indice = V.dados.nos.map(n => ({n, chave: norm([n.nome, n.sigla, n.cargo && n.cargo.titulo, n.cargo && n.cargo.ocupante, V.TIPOS[n.tipo]].filter(Boolean).join(' '))}));
+}
+async function carregarIndiceMunicipios(){
+  if (indiceMunicipios) return indiceMunicipios;
+  if (!carregandoIndice) carregandoIndice = fetch('dados/indice-municipios.json').then(r => r.json()).then(d => (indiceMunicipios = d.map(([nome, uf, cod]) => ({nome, uf, cod, chave: norm(nome)}))));
+  return carregandoIndice;
+}
+let ativo = -1;
+async function buscar(){
+  const q = norm(busca.value.trim());
+  if (!q) { fecharBusca(); return; }
+  const termos = q.split(/\s+/);
+  const locais = indice.filter(i => termos.every(t => i.chave.includes(t)))
+    .sort((a,b) => (norm(a.n.sigla)===q?0:1) - (norm(b.n.sigla)===q?0:1) || V.pos.get(a.n.id).depth - V.pos.get(b.n.id).depth).slice(0, 10);
+  let nacionais = [];
+  if (q.length >= 3) {
+    const idx = await carregarIndiceMunicipios();
+    const ufAtual = vistaAtual;
+    nacionais = idx.filter(m => m.uf !== ufAtual && termos.every(t => m.chave.includes(t) || t === norm(m.uf))).sort((a,b) => (a.chave.startsWith(q)?0:1) - (b.chave.startsWith(q)?0:1) || a.nome.localeCompare(b.nome,'pt')).slice(0, 8);
+  }
+  if (norm(busca.value.trim()) !== q) return; // resposta atrasada
+  const html = locais.map(({n}) => `<button role="option" data-id="${n.id}">${tile(n, 'p')}<span>${esc(n.nome)}</span><span class="meta">${esc(n.tipo === 'municipio' ? 'Município · ' + V.dados.meta.uf : n.sigla || V.TIPOS[n.tipo])}</span></button>`).join('')
+    + nacionais.map(m => `<button role="option" data-uf="${m.uf}" data-cod="${m.cod}"><i class="tile p" style="--c:var(--ink-2)">${svgIcone('casa')}</i><span>${esc(m.nome)}</span><span class="meta">Município · ${m.uf}</span></button>`).join('');
+  resultados.innerHTML = html || '<div style="padding:10px;color:var(--mute)">Nada encontrado.</div>';
+  resultados.classList.add('aberta'); busca.setAttribute('aria-expanded','true'); ativo = -1;
+}
+function fecharBusca(){ resultados.classList.remove('aberta'); busca.setAttribute('aria-expanded','false'); }
+function escolher(b){
+  if (!b) return;
+  if (b.dataset.uf) abrirVista(b.dataset.uf, `m-${b.dataset.cod}`); else selecionar(b.dataset.id, true);
+  fecharBusca(); busca.value = ''; busca.blur();
+}
+busca.addEventListener('input', buscar);
+busca.addEventListener('focus', buscar);
+busca.addEventListener('keydown', e => {
+  const itens = [...resultados.querySelectorAll('button')];
+  if (e.key === 'ArrowDown' || e.key === 'ArrowUp') { e.preventDefault(); ativo = (ativo + (e.key==='ArrowDown'?1:-1) + itens.length) % itens.length; itens.forEach((b,i)=>b.classList.toggle('ativo', i===ativo)); }
+  else if (e.key === 'Enter') escolher(itens[ativo] || itens[0]);
+  else if (e.key === 'Escape') { fecharBusca(); busca.blur(); }
+});
+resultados.addEventListener('click', e => escolher(e.target.closest('button')));
+document.addEventListener('click', e => { if (!e.target.closest('.search')) fecharBusca(); });
+document.addEventListener('keydown', e => { if (e.key === '/' && document.activeElement !== busca) { e.preventDefault(); busca.focus(); } if (e.key === 'Escape' && !resultados.classList.contains('aberta')) { document.querySelectorAll('.folha.aberta').forEach(f=>f.classList.remove('aberta')); if (novidades.classList.contains('aberta')) abrirNovidades(false); else if (selecionado) selecionar(null); } });
+
+// ------------------------------------------------------------ filtros
+$('#filtros').addEventListener('click', e => {
+  const b = e.target.closest('.chip'); if (!b) return;
+  const p = b.dataset.poder, ligado = b.getAttribute('aria-pressed') === 'true';
+  if (ligado && poderesAtivos.size === 1) return;
+  b.setAttribute('aria-pressed', String(!ligado));
+  if (ligado) poderesAtivos.delete(p); else poderesAtivos.add(p);
+  desenhar();
+});
+
+// ------------------------------------------------------------ tabela e sobre
+const tbody = $('#tabela tbody');
+function montarTabela(){
+  $('#t-titulo').textContent = vistaAtual === 'federal' ? 'Todos os nós · Brasil' : `Todos os nós · ${V.dados.meta.nome}`;
+  tbody.innerHTML = [...V.dados.nos].sort((a,b)=>V.pos.get(a.id).depth-V.pos.get(b.id).depth || a.nome.localeCompare(b.nome,'pt')).map(n => {
+    const c = n.cargo;
+    return `<tr data-id="${n.id}" tabindex="0" style="cursor:pointer"><td>${esc(n.nome)}</td><td>${esc(n.sigla||'')}</td><td>${esc(V.TIPOS[n.tipo]||n.tipo)}</td><td>${esc(n.tipo==='municipio' ? V.dados.meta.uf : V.PODERES[n.poder])}</td><td>${n.pai ? esc(V.porId.get(n.pai).sigla || V.porId.get(n.pai).nome) : ''}</td><td>${c ? esc(c.titulo) : n.tipo==='municipio' ? 'Prefeito(a)' : ''}</td><td>${c ? (c.ocupante ? esc(c.ocupante) : c.situacao === 'vago' ? '<span style="color:#d03b3b">vago</span>' : '<span style="color:var(--mute)">não verificado</span>') : n.tipo==='municipio' ? '<span style="color:var(--mute)">não verificado</span>' : ''}</td><td>${c ? esc((V.dados.meta.situacoes||{})[c.situacao] || c.situacao || '') : ''}</td></tr>`; }).join('');
+}
+tbody.addEventListener('click', e => { const tr = e.target.closest('tr'); if (tr) { $('#folha-tabela').classList.remove('aberta'); selecionar(tr.dataset.id, true); } });
+tbody.addEventListener('keydown', e => { if (e.key === 'Enter') { const tr = e.target.closest('tr'); if (tr) { $('#folha-tabela').classList.remove('aberta'); selecionar(tr.dataset.id, true); } } });
+$('#btn-tabela').onclick = () => $('#folha-tabela').classList.add('aberta');
+$('#btn-sobre').onclick = () => $('#folha-sobre').classList.add('aberta');
+document.querySelectorAll('[data-fecha]').forEach(b => b.onclick = () => $('#'+b.dataset.fecha).classList.remove('aberta'));
+function montarSobre(d){
+  const cont = {}; for (const n of d.nos) cont[n.poder] = (cont[n.poder]||0)+1;
+  const comCargo = d.nos.filter(n=>n.cargo).length, verificados = d.nos.filter(n=>n.cargo&&n.cargo.ocupante).length;
+  const vagos = d.nos.filter(n=>n.cargo&&n.cargo.situacao==='vago').length, interinos = d.nos.filter(n=>n.cargo&&n.cargo.situacao==='interino').length;
+  $('#kpis').innerHTML = [
+    [d.nos.length, 'nós na camada federal'], [d.arestas.filter(a=>!a.hierarquica).length, 'relações constitucionais'],
+    [27, 'estados e DF, cada um com o seu mapa'], ['5.570', 'municípios (IBGE)'],
+    [`${verificados}/${comCargo}`, 'cargos federais com ocupante verificado'], [vagos, 'cargos vagos (com fonte)'], [interinos, 'interinos ou substitutos'],
+  ].map(([v,l]) => `<div class="kpi"><b>${v}</b><span>${l}</span></div>`).join('');
+  $('#fontes').innerHTML = (d.meta.fontes||[]).map(f => `<li><a href="${esc(f.url)}" target="_blank" rel="noopener">${esc(f.nome)}</a></li>`).join('') + '<li><a href="https://servicodados.ibge.gov.br/api/docs/localidades" target="_blank" rel="noopener">IBGE, localidades (municípios e códigos)</a></li>';
+  $('#versao').textContent = `Versão dos dados ${d.meta.versao}, gerada por ${d.meta.gerado_por}. ${d.meta.aviso}`;
+}
+
+// ------------------------------------------------------------ início
+window.addEventListener('resize', redimensionar);
+redimensionar();
+try {
+  const [federal] = await Promise.all([carregarDados('federal'), carregarFeeds()]);
+  montarSobre(federal);
+  const h = decodeURIComponent(location.hash.slice(1)); const [a, b] = h.split('/');
+  if (UFS.includes(a)) await abrirVista(a, b || `uf-${a}`, false);
+  else { await abrirVista('federal', null, false); if (a && V.porId.has(a)) selecionar(a, true); else mostrarInicio(); }
+} catch (e) {
+  status.textContent = 'Não foi possível carregar os dados do mapa.'; console.error(e);
+}
+})();
+</script>
+</body>
+</html>

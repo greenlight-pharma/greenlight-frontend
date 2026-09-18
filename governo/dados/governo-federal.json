@@ -1,0 +1,5496 @@
+{
+ "meta": {
+  "titulo": "Mapa do Governo",
+  "site": "https://mapadogoverno.com.br",
+  "esfera": "federal",
+  "versao": "0.1.0",
+  "gerado_por": "scripts/governo/montar_grafo.py",
+  "aviso": "Semente curada à mão. Estrutura conforme CF/1988 e Lei 14.600/2023. Ocupantes de cargo só quando o mandato é fixo e público; os demais ficam nulos até a ingestão a partir das fontes oficiais.",
+  "fontes": [
+   {
+    "nome": "Constituição Federal de 1988",
+    "url": "https://www.planalto.gov.br/ccivil_03/constituicao/constituicao.htm"
+   },
+   {
+    "nome": "Lei 14.600/2023 (organização básica dos órgãos da Presidência e dos Ministérios)",
+    "url": "https://www.planalto.gov.br/ccivil_03/_ato2023-2026/2023/lei/L14600.htm"
+   },
+   {
+    "nome": "SIORG, Sistema de Informações Organizacionais do Governo Federal",
+    "url": "https://estruturaorganizacional.dados.gov.br"
+   },
+   {
+    "nome": "Dados Abertos da Câmara dos Deputados",
+    "url": "https://dadosabertos.camara.leg.br"
+   },
+   {
+    "nome": "Dados Abertos do Senado Federal",
+    "url": "https://www12.senado.leg.br/dados-abertos"
+   }
+  ],
+  "tipos": {
+   "raiz": "União",
+   "poder": "Poder",
+   "orgao": "Órgão",
+   "ministerio": "Ministério",
+   "autarquia": "Autarquia",
+   "agencia_reguladora": "Agência reguladora",
+   "fundacao": "Fundação pública",
+   "empresa_publica": "Empresa pública",
+   "sociedade_economia_mista": "Sociedade de economia mista",
+   "servico_social_autonomo": "Serviço social autônomo",
+   "forca_armada": "Força Armada",
+   "tribunal": "Tribunal",
+   "casa_legislativa": "Casa legislativa",
+   "grupo": "Conjunto de entidades",
+   "estado": "Unidade da Federação",
+   "municipio": "Município"
+  },
+  "poderes": {
+   "uniao": "União",
+   "executivo": "Executivo",
+   "legislativo": "Legislativo",
+   "judiciario": "Judiciário",
+   "essencial": "Funções essenciais à Justiça"
+  },
+  "situacoes": {
+   "titular": "Titular",
+   "interino": "Interino(a) ou substituto(a)",
+   "vago": "Vago",
+   "nao_verificado": "Não verificado"
+  }
+ },
+ "nos": [
+  {
+   "id": "uniao",
+   "nome": "União",
+   "tipo": "raiz",
+   "poder": "uniao",
+   "sigla": "BR",
+   "lei": "Constituição Federal de 1988",
+   "descricao": "A República Federativa do Brasil na esfera federal. Os três Poderes são independentes e harmônicos entre si (CF, art. 2º)."
+  },
+  {
+   "id": "exec",
+   "nome": "Poder Executivo",
+   "tipo": "poder",
+   "poder": "executivo",
+   "pai": "uniao",
+   "lei": "CF, arts. 76 a 91",
+   "descricao": "Exercido pelo Presidente da República, auxiliado pelos Ministros de Estado (CF, art. 76)."
+  },
+  {
+   "id": "leg",
+   "nome": "Poder Legislativo",
+   "tipo": "poder",
+   "poder": "legislativo",
+   "pai": "uniao",
+   "lei": "CF, arts. 44 a 75",
+   "descricao": "Exercido pelo Congresso Nacional, composto pela Câmara dos Deputados e pelo Senado Federal (CF, art. 44)."
+  },
+  {
+   "id": "jud",
+   "nome": "Poder Judiciário",
+   "tipo": "poder",
+   "poder": "judiciario",
+   "pai": "uniao",
+   "lei": "CF, arts. 92 a 126",
+   "descricao": "STF, CNJ, STJ, tribunais superiores, Justiça Federal, do Trabalho, Eleitoral e Militar (CF, art. 92)."
+  },
+  {
+   "id": "fej",
+   "nome": "Funções essenciais à Justiça",
+   "tipo": "poder",
+   "poder": "essencial",
+   "pai": "uniao",
+   "lei": "CF, arts. 127 a 135",
+   "descricao": "Ministério Público, Advocacia Pública e Defensoria Pública. Não pertencem a nenhum dos três Poderes (CF, arts. 127 a 135)."
+  },
+  {
+   "id": "pr",
+   "nome": "Presidência da República",
+   "tipo": "orgao",
+   "poder": "executivo",
+   "sigla": "PR",
+   "pai": "exec",
+   "lei": "CF, art. 76; Lei 14.600/2023",
+   "site": "https://www.gov.br/planalto",
+   "descricao": "Chefe de Estado e de Governo. Mandato de quatro anos, eleição direta em dois turnos.",
+   "cargo": {
+    "titulo": "Presidente da República",
+    "situacao": "titular",
+    "ocupante": "Luiz Inácio Lula da Silva",
+    "desde": "2023-01-01",
+    "mandato_ate": "2026-12-31",
+    "verificado_em": "2026-09",
+    "fonte": "https://www.gov.br/planalto"
+   }
+  },
+  {
+   "id": "vpr",
+   "nome": "Vice-Presidência da República",
+   "tipo": "orgao",
+   "poder": "executivo",
+   "sigla": "VPR",
+   "pai": "pr",
+   "descricao": "Substitui o Presidente nos impedimentos e o sucede na vaga (CF, art. 79).",
+   "cargo": {
+    "titulo": "Vice-Presidente da República",
+    "situacao": "titular",
+    "ocupante": "Geraldo Alckmin",
+    "desde": "2023-01-01",
+    "mandato_ate": "2026-12-31",
+    "verificado_em": "2026-09",
+    "fonte": "https://www.gov.br/planalto"
+   }
+  },
+  {
+   "id": "casa-civil",
+   "nome": "Casa Civil da Presidência da República",
+   "tipo": "ministerio",
+   "poder": "executivo",
+   "sigla": "Casa Civil",
+   "pai": "pr",
+   "lei": "Lei 14.600/2023, art. 3º",
+   "descricao": "Coordena e integra as ações do governo; analisa a constitucionalidade e o mérito dos atos presidenciais.",
+   "cargo": {
+    "titulo": "Ministro(a) de Estado Chefe",
+    "situacao": "titular",
+    "ocupante": "Miriam Belchior",
+    "desde": "2026-04-02",
+    "mandato_ate": null,
+    "verificado_em": "2026-09",
+    "fonte": "https://eagendas.cgu.gov.br/pesquisa/agentes-publicos-obrigados-por-orgao/orgao/659/ativo/true",
+    "fonte_nome": "e-Agendas (CGU), Casa Civil da Presidência da República",
+    "fonte_agente": true
+   }
+  },
+  {
+   "id": "seg-geral",
+   "nome": "Secretaria-Geral da Presidência da República",
+   "tipo": "ministerio",
+   "poder": "executivo",
+   "sigla": "SG/PR",
+   "pai": "pr",
+   "lei": "Lei 14.600/2023, art. 4º",
+   "descricao": "Relação com a sociedade civil e movimentos sociais; participação social.",
+   "cargo": {
+    "titulo": "Ministro(a) de Estado Chefe",
+    "situacao": "titular",
+    "ocupante": "Guilherme Castro Boulos",
+    "desde": "2025-10-29",
+    "mandato_ate": null,
+    "verificado_em": "2026-09",
+    "fonte": "https://eagendas.cgu.gov.br/pesquisa/agentes-publicos-obrigados-por-orgao/orgao/1372/ativo/true",
+    "fonte_nome": "e-Agendas (CGU), Secretaria-Geral da Presidência da República",
+    "fonte_agente": true
+   }
+  },
+  {
+   "id": "sri",
+   "nome": "Secretaria de Relações Institucionais",
+   "tipo": "ministerio",
+   "poder": "executivo",
+   "sigla": "SRI",
+   "pai": "pr",
+   "lei": "Lei 14.600/2023, art. 5º",
+   "descricao": "Articulação política com o Congresso, partidos, estados e municípios.",
+   "cargo": {
+    "titulo": "Ministro(a) de Estado Chefe",
+    "situacao": "titular",
+    "ocupante": "Jose Nobre Guimaraes",
+    "desde": "2026-04-13",
+    "mandato_ate": null,
+    "verificado_em": "2026-09",
+    "fonte": "https://eagendas.cgu.gov.br/pesquisa/agentes-publicos-obrigados-por-orgao/orgao/1387/ativo/true",
+    "fonte_nome": "e-Agendas (CGU), Secretaria de Relações Institucionais da Presidência da República",
+    "fonte_agente": true
+   }
+  },
+  {
+   "id": "secom",
+   "nome": "Secretaria de Comunicação Social",
+   "tipo": "ministerio",
+   "poder": "executivo",
+   "sigla": "Secom",
+   "pai": "pr",
+   "lei": "Lei 14.600/2023, art. 6º",
+   "descricao": "Comunicação e publicidade do governo federal.",
+   "cargo": {
+    "titulo": "Ministro(a) de Estado Chefe",
+    "situacao": "titular",
+    "ocupante": "Sidonio Cardoso Palmeira",
+    "desde": "2025-01-14",
+    "mandato_ate": null,
+    "verificado_em": "2026-09",
+    "fonte": "https://eagendas.cgu.gov.br/pesquisa/agentes-publicos-obrigados-por-orgao/orgao/1381/ativo/true",
+    "fonte_nome": "e-Agendas (CGU), Secretaria de Comunicação Social da Presidência da República",
+    "fonte_agente": true
+   }
+  },
+  {
+   "id": "gsi",
+   "nome": "Gabinete de Segurança Institucional",
+   "tipo": "ministerio",
+   "poder": "executivo",
+   "sigla": "GSI",
+   "pai": "pr",
+   "lei": "Lei 14.600/2023, art. 7º",
+   "descricao": "Segurança pessoal do Presidente e das instalações; segurança da informação.",
+   "cargo": {
+    "titulo": "Ministro(a) de Estado Chefe",
+    "situacao": "titular",
+    "ocupante": "Marcos Antonio Amaro dos Santos",
+    "desde": "2023-05-04",
+    "mandato_ate": null,
+    "verificado_em": "2026-09",
+    "fonte": "https://eagendas.cgu.gov.br/pesquisa/agentes-publicos-obrigados-por-orgao/orgao/512/ativo/true",
+    "fonte_nome": "e-Agendas (CGU), Gabinete de Segurança Institucional da Presidência da República",
+    "fonte_agente": true
+   }
+  },
+  {
+   "id": "agu",
+   "nome": "Advocacia-Geral da União",
+   "tipo": "ministerio",
+   "poder": "executivo",
+   "sigla": "AGU",
+   "pai": "pr",
+   "lei": "CF, art. 131; LC 73/1993",
+   "site": "https://www.gov.br/agu",
+   "descricao": "Representa a União judicial e extrajudicialmente e presta consultoria ao Executivo. Constitucionalmente é função essencial à Justiça; o cargo tem status de Ministro de Estado.",
+   "cargo": {
+    "titulo": "Advogado(a)-Geral da União",
+    "situacao": "titular",
+    "ocupante": "Jorge Rodrigo Araújo Messias",
+    "desde": null,
+    "mandato_ate": null,
+    "verificado_em": "2026-09",
+    "fonte": "https://www.gov.br/agu/pt-br/composicao/advogado-geral-da-uniao-1",
+    "fonte_nome": "Site oficial da Advocacia-Geral da União (gov.br/agu)",
+    "fonte_agente": true
+   }
+  },
+  {
+   "id": "cgu",
+   "nome": "Controladoria-Geral da União",
+   "tipo": "ministerio",
+   "poder": "executivo",
+   "sigla": "CGU",
+   "pai": "pr",
+   "lei": "Lei 14.600/2023, art. 9º",
+   "site": "https://www.gov.br/cgu",
+   "descricao": "Controle interno, auditoria, correição, ouvidoria, transparência e combate à corrupção.",
+   "cargo": {
+    "titulo": "Ministro(a) de Estado",
+    "situacao": "titular",
+    "ocupante": "Vinicius Marques de Carvalho",
+    "desde": "2023-01-01",
+    "mandato_ate": null,
+    "verificado_em": "2026-09",
+    "fonte": "https://eagendas.cgu.gov.br/pesquisa/agentes-publicos-obrigados-por-orgao/orgao/832/ativo/true",
+    "fonte_nome": "e-Agendas (CGU), Controladoria-Geral da União",
+    "fonte_agente": true
+   }
+  },
+  {
+   "id": "iti",
+   "nome": "Instituto Nacional de Tecnologia da Informação",
+   "tipo": "autarquia",
+   "poder": "executivo",
+   "sigla": "ITI",
+   "pai": "casa-civil",
+   "descricao": "Autoridade Certificadora Raiz da ICP-Brasil.",
+   "cargo": {
+    "titulo": "Diretor(a)-Presidente",
+    "situacao": "titular",
+    "ocupante": "Enylson Flavio Martinez Camolesi",
+    "desde": "2023-12-12",
+    "mandato_ate": null,
+    "verificado_em": "2026-09",
+    "fonte": "https://eagendas.cgu.gov.br/pesquisa/agentes-publicos-obrigados-por-orgao/orgao/1184/ativo/true",
+    "fonte_nome": "e-Agendas (CGU), Instituto Nacional de Tecnologia da Informação",
+    "fonte_agente": true
+   }
+  },
+  {
+   "id": "abin",
+   "nome": "Agência Brasileira de Inteligência",
+   "tipo": "orgao",
+   "poder": "executivo",
+   "sigla": "ABIN",
+   "pai": "casa-civil",
+   "lei": "Lei 9.883/1999; Lei 14.600/2023",
+   "descricao": "Órgão central do Sistema Brasileiro de Inteligência. Transferida do GSI para a Casa Civil em 2023.",
+   "cargo": {
+    "titulo": "Diretor(a)-Geral",
+    "situacao": "titular",
+    "ocupante": "Luiz Fernando Corrêa",
+    "desde": "2023-05-30",
+    "mandato_ate": null,
+    "verificado_em": "2026-09",
+    "fonte": "https://www.gov.br/abin/pt-br/composicao/direcao-geral/diretor-geral-ABIN",
+    "fonte_nome": "Site oficial da ABIN (gov.br/abin)",
+    "fonte_agente": true
+   }
+  },
+  {
+   "id": "ebc",
+   "nome": "Empresa Brasil de Comunicação",
+   "tipo": "empresa_publica",
+   "poder": "executivo",
+   "sigla": "EBC",
+   "pai": "secom",
+   "descricao": "TV Brasil, Rádio Nacional, Agência Brasil.",
+   "cargo": {
+    "titulo": "Presidente",
+    "situacao": "titular",
+    "ocupante": "Antonia Pellegrino",
+    "desde": "2026-04-10",
+    "mandato_ate": null,
+    "verificado_em": "2026-09",
+    "fonte": "https://acessoainformacao.ebc.com.br/institucional/estrutura-organizacional/diretoria-executiva",
+    "fonte_nome": "Site oficial da EBC (Acesso à Informação, Diretoria Executiva)",
+    "fonte_agente": true
+   }
+  },
+  {
+   "id": "mapa",
+   "nome": "Ministério da Agricultura e Pecuária",
+   "tipo": "ministerio",
+   "poder": "executivo",
+   "sigla": "MAPA",
+   "pai": "pr",
+   "lei": "Lei 14.600/2023, art. 20",
+   "cargo": {
+    "titulo": "Ministro(a) de Estado",
+    "situacao": "titular",
+    "ocupante": "Andre Carlos Alves de Paula Filho",
+    "desde": "2026-04-01",
+    "mandato_ate": null,
+    "verificado_em": "2026-09",
+    "fonte": "https://eagendas.cgu.gov.br/pesquisa/agentes-publicos-obrigados-por-orgao/orgao/1419/ativo/true",
+    "fonte_nome": "e-Agendas (CGU), Ministério da Agricultura e Pecuária",
+    "fonte_agente": true
+   }
+  },
+  {
+   "id": "mcid",
+   "nome": "Ministério das Cidades",
+   "tipo": "ministerio",
+   "poder": "executivo",
+   "sigla": "MCid",
+   "pai": "pr",
+   "lei": "Lei 14.600/2023, art. 20",
+   "cargo": {
+    "titulo": "Ministro(a) de Estado",
+    "situacao": "titular",
+    "ocupante": "Antonio Vladimir Moura Lima",
+    "desde": "2026-04-02",
+    "mandato_ate": null,
+    "verificado_em": "2026-09",
+    "fonte": "https://eagendas.cgu.gov.br/pesquisa/agentes-publicos-obrigados-por-orgao/orgao/1395/ativo/true",
+    "fonte_nome": "e-Agendas (CGU), Ministério das Cidades",
+    "fonte_agente": true
+   }
+  },
+  {
+   "id": "mcti",
+   "nome": "Ministério da Ciência, Tecnologia e Inovação",
+   "tipo": "ministerio",
+   "poder": "executivo",
+   "sigla": "MCTI",
+   "pai": "pr",
+   "lei": "Lei 14.600/2023, art. 20",
+   "cargo": {
+    "titulo": "Ministro(a) de Estado",
+    "situacao": "titular",
+    "ocupante": "Luciana Barbosa de Oliveira Santos",
+    "desde": "2023-01-01",
+    "mandato_ate": null,
+    "verificado_em": "2026-09",
+    "fonte": "https://eagendas.cgu.gov.br/pesquisa/agentes-publicos-obrigados-por-orgao/orgao/862/ativo/true",
+    "fonte_nome": "e-Agendas (CGU), Ministério da Ciência, Tecnologia e Inovação",
+    "fonte_agente": true
+   }
+  },
+  {
+   "id": "mcom",
+   "nome": "Ministério das Comunicações",
+   "tipo": "ministerio",
+   "poder": "executivo",
+   "sigla": "MCom",
+   "pai": "pr",
+   "lei": "Lei 14.600/2023, art. 20",
+   "cargo": {
+    "titulo": "Ministro(a) de Estado",
+    "situacao": "titular",
+    "ocupante": "Frederico de Siqueira Filho",
+    "desde": "2025-04-24",
+    "mandato_ate": null,
+    "verificado_em": "2026-09",
+    "fonte": "https://eagendas.cgu.gov.br/pesquisa/agentes-publicos-obrigados-por-orgao/orgao/860/ativo/true",
+    "fonte_nome": "e-Agendas (CGU), Ministério das Comunicações",
+    "fonte_agente": true
+   }
+  },
+  {
+   "id": "minc",
+   "nome": "Ministério da Cultura",
+   "tipo": "ministerio",
+   "poder": "executivo",
+   "sigla": "MinC",
+   "pai": "pr",
+   "lei": "Lei 14.600/2023, art. 20",
+   "cargo": {
+    "titulo": "Ministro(a) de Estado",
+    "situacao": "titular",
+    "ocupante": "Margareth Menezes da Purificacao",
+    "desde": "2023-01-01",
+    "mandato_ate": null,
+    "verificado_em": "2026-09",
+    "fonte": "https://eagendas.cgu.gov.br/pesquisa/agentes-publicos-obrigados-por-orgao/orgao/1409/ativo/true",
+    "fonte_nome": "e-Agendas (CGU), Ministério da Cultura",
+    "fonte_agente": true
+   }
+  },
+  {
+   "id": "md",
+   "nome": "Ministério da Defesa",
+   "tipo": "ministerio",
+   "poder": "executivo",
+   "sigla": "MD",
+   "pai": "pr",
+   "lei": "Lei 14.600/2023, art. 20",
+   "cargo": {
+    "titulo": "Ministro(a) de Estado",
+    "situacao": "titular",
+    "ocupante": "Jose Mucio Monteiro Filho",
+    "desde": "2023-01-02",
+    "mandato_ate": null,
+    "verificado_em": "2026-09",
+    "fonte": "https://eagendas.cgu.gov.br/pesquisa/agentes-publicos-obrigados-por-orgao/orgao/679/ativo/true",
+    "fonte_nome": "e-Agendas (CGU), Ministério da Defesa",
+    "fonte_agente": true
+   }
+  },
+  {
+   "id": "mda",
+   "nome": "Ministério do Desenvolvimento Agrário e Agricultura Familiar",
+   "tipo": "ministerio",
+   "poder": "executivo",
+   "sigla": "MDA",
+   "pai": "pr",
+   "lei": "Lei 14.600/2023, art. 20",
+   "cargo": {
+    "titulo": "Ministro(a) de Estado",
+    "situacao": "titular",
+    "ocupante": "Fernanda Machiaveli Morao de Oliveira",
+    "desde": "2026-03-31",
+    "mandato_ate": null,
+    "verificado_em": "2026-09",
+    "fonte": "https://eagendas.cgu.gov.br/pesquisa/agentes-publicos-obrigados-por-orgao/orgao/1407/ativo/true",
+    "fonte_nome": "e-Agendas (CGU), Ministério do Desenvolvimento Agrário e Agricultura Familiar",
+    "fonte_agente": true
+   }
+  },
+  {
+   "id": "mds",
+   "nome": "Ministério do Desenvolvimento e Assistência Social, Família e Combate à Fome",
+   "tipo": "ministerio",
+   "poder": "executivo",
+   "sigla": "MDS",
+   "pai": "pr",
+   "lei": "Lei 14.600/2023, art. 20",
+   "cargo": {
+    "titulo": "Ministro(a) de Estado",
+    "situacao": "titular",
+    "ocupante": "Jose Wellington Barroso de Araujo Dias",
+    "desde": "2026-05-06",
+    "mandato_ate": null,
+    "verificado_em": "2026-09",
+    "fonte": "https://eagendas.cgu.gov.br/pesquisa/agentes-publicos-obrigados-por-orgao/orgao/1389/ativo/true",
+    "fonte_nome": "e-Agendas (CGU), Ministério do Desenvolvimento e Assistência Social, Família e Combate à Fome",
+    "fonte_agente": true
+   }
+  },
+  {
+   "id": "mdic",
+   "nome": "Ministério do Desenvolvimento, Indústria, Comércio e Serviços",
+   "tipo": "ministerio",
+   "poder": "executivo",
+   "sigla": "MDIC",
+   "pai": "pr",
+   "lei": "Lei 14.600/2023, art. 20",
+   "cargo": {
+    "titulo": "Ministro(a) de Estado",
+    "situacao": "titular",
+    "ocupante": "Marcio Fernando Elias Rosa",
+    "desde": "2026-04-03",
+    "mandato_ate": null,
+    "verificado_em": "2026-09",
+    "fonte": "https://eagendas.cgu.gov.br/pesquisa/agentes-publicos-obrigados-por-orgao/orgao/1399/ativo/true",
+    "fonte_nome": "e-Agendas (CGU), Ministério do Desenvolvimento, Indústria, Comércio e Serviços",
+    "fonte_agente": true
+   }
+  },
+  {
+   "id": "mdhc",
+   "nome": "Ministério dos Direitos Humanos e da Cidadania",
+   "tipo": "ministerio",
+   "poder": "executivo",
+   "sigla": "MDHC",
+   "pai": "pr",
+   "lei": "Lei 14.600/2023, art. 20",
+   "cargo": {
+    "titulo": "Ministro(a) de Estado",
+    "situacao": "titular",
+    "ocupante": "Janine Mello dos Santos",
+    "desde": "2026-03-31",
+    "mandato_ate": null,
+    "verificado_em": "2026-09",
+    "fonte": "https://eagendas.cgu.gov.br/pesquisa/agentes-publicos-obrigados-por-orgao/orgao/1386/ativo/true",
+    "fonte_nome": "e-Agendas (CGU), Ministério dos Direitos Humanos e da Cidadania",
+    "fonte_agente": true
+   }
+  },
+  {
+   "id": "mec",
+   "nome": "Ministério da Educação",
+   "tipo": "ministerio",
+   "poder": "executivo",
+   "sigla": "MEC",
+   "pai": "pr",
+   "lei": "Lei 14.600/2023, art. 20",
+   "cargo": {
+    "titulo": "Ministro(a) de Estado",
+    "situacao": "titular",
+    "ocupante": "Leonardo Osvaldo Barchini Rosa",
+    "desde": "2026-04-02",
+    "mandato_ate": null,
+    "verificado_em": "2026-09",
+    "fonte": "https://eagendas.cgu.gov.br/pesquisa/agentes-publicos-obrigados-por-orgao/orgao/549/ativo/true",
+    "fonte_nome": "e-Agendas (CGU), Ministério da Educação",
+    "fonte_agente": true
+   }
+  },
+  {
+   "id": "memp",
+   "nome": "Ministério do Empreendedorismo, da Microempresa e da Empresa de Pequeno Porte",
+   "tipo": "ministerio",
+   "poder": "executivo",
+   "sigla": "MEMP",
+   "pai": "pr",
+   "lei": "Lei 14.720/2023",
+   "cargo": {
+    "titulo": "Ministro(a) de Estado",
+    "situacao": "titular",
+    "ocupante": "Paulo Henrique Rodrigues Pereira",
+    "desde": "2026-04-22",
+    "mandato_ate": null,
+    "verificado_em": "2026-09",
+    "fonte": "https://eagendas.cgu.gov.br/pesquisa/agentes-publicos-obrigados-por-orgao/orgao/1429/ativo/true",
+    "fonte_nome": "e-Agendas (CGU), Ministério do Empreendedorismo, da Microempresa e da Empresa de Pequeno Porte",
+    "fonte_agente": true
+   }
+  },
+  {
+   "id": "mesp",
+   "nome": "Ministério do Esporte",
+   "tipo": "ministerio",
+   "poder": "executivo",
+   "sigla": "MEsp",
+   "pai": "pr",
+   "lei": "Lei 14.600/2023, art. 20",
+   "cargo": {
+    "titulo": "Ministro(a) de Estado",
+    "situacao": "titular",
+    "ocupante": "Paulo Henrique Perna Cordeiro",
+    "desde": "2026-03-31",
+    "mandato_ate": null,
+    "verificado_em": "2026-09",
+    "fonte": "https://eagendas.cgu.gov.br/pesquisa/agentes-publicos-obrigados-por-orgao/orgao/1403/ativo/true",
+    "fonte_nome": "e-Agendas (CGU), Ministério do Esporte",
+    "fonte_agente": true
+   }
+  },
+  {
+   "id": "mf",
+   "nome": "Ministério da Fazenda",
+   "tipo": "ministerio",
+   "poder": "executivo",
+   "sigla": "MF",
+   "pai": "pr",
+   "lei": "Lei 14.600/2023, art. 20",
+   "cargo": {
+    "titulo": "Ministro(a) de Estado",
+    "situacao": "titular",
+    "ocupante": "Dario Carnevalli Durigan",
+    "desde": "2026-03-20",
+    "mandato_ate": null,
+    "verificado_em": "2026-09",
+    "fonte": "https://eagendas.cgu.gov.br/pesquisa/agentes-publicos-obrigados-por-orgao/orgao/1384/ativo/true",
+    "fonte_nome": "e-Agendas (CGU), Ministério da Fazenda",
+    "fonte_agente": true
+   }
+  },
+  {
+   "id": "mgi",
+   "nome": "Ministério da Gestão e da Inovação em Serviços Públicos",
+   "tipo": "ministerio",
+   "poder": "executivo",
+   "sigla": "MGI",
+   "pai": "pr",
+   "lei": "Lei 14.600/2023, art. 20",
+   "cargo": {
+    "titulo": "Ministro(a) de Estado",
+    "situacao": "titular",
+    "ocupante": "Esther Dweck",
+    "desde": "2023-01-01",
+    "mandato_ate": null,
+    "verificado_em": "2026-09",
+    "fonte": "https://eagendas.cgu.gov.br/pesquisa/agentes-publicos-obrigados-por-orgao/orgao/1391/ativo/true",
+    "fonte_nome": "e-Agendas (CGU), Ministério da Gestão e da Inovação em Serviços Públicos",
+    "fonte_agente": true
+   }
+  },
+  {
+   "id": "mir",
+   "nome": "Ministério da Igualdade Racial",
+   "tipo": "ministerio",
+   "poder": "executivo",
+   "sigla": "MIR",
+   "pai": "pr",
+   "lei": "Lei 14.600/2023, art. 20",
+   "cargo": {
+    "titulo": "Ministro(a) de Estado",
+    "situacao": "titular",
+    "ocupante": "Rachel Barros de Oliveira",
+    "desde": "2026-03-31",
+    "mandato_ate": null,
+    "verificado_em": "2026-09",
+    "fonte": "https://eagendas.cgu.gov.br/pesquisa/agentes-publicos-obrigados-por-orgao/orgao/1405/ativo/true",
+    "fonte_nome": "e-Agendas (CGU), Ministério da Igualdade Racial",
+    "fonte_agente": true
+   }
+  },
+  {
+   "id": "midr",
+   "nome": "Ministério da Integração e do Desenvolvimento Regional",
+   "tipo": "ministerio",
+   "poder": "executivo",
+   "sigla": "MIDR",
+   "pai": "pr",
+   "lei": "Lei 14.600/2023, art. 20",
+   "cargo": {
+    "titulo": "Ministro(a) de Estado",
+    "situacao": "titular",
+    "ocupante": "Antonio Waldez Goes da Silva",
+    "desde": "2023-01-01",
+    "mandato_ate": null,
+    "verificado_em": "2026-09",
+    "fonte": "https://eagendas.cgu.gov.br/pesquisa/agentes-publicos-obrigados-por-orgao/orgao/1393/ativo/true",
+    "fonte_nome": "e-Agendas (CGU), Ministério da Integração e do Desenvolvimento Regional",
+    "fonte_agente": true
+   }
+  },
+  {
+   "id": "mjsp",
+   "nome": "Ministério da Justiça e Segurança Pública",
+   "tipo": "ministerio",
+   "poder": "executivo",
+   "sigla": "MJSP",
+   "pai": "pr",
+   "lei": "Lei 14.600/2023, art. 20",
+   "cargo": {
+    "titulo": "Ministro(a) de Estado",
+    "situacao": "titular",
+    "ocupante": "Wellington César Lima e Silva",
+    "desde": "2026-01-15",
+    "mandato_ate": null,
+    "verificado_em": "2026-09",
+    "fonte": "https://eagendas.cgu.gov.br/pesquisa/agentes-publicos-obrigados-por-orgao/orgao/856/ativo/true",
+    "fonte_nome": "e-Agendas (CGU), Ministério da Justiça e Segurança Pública",
+    "fonte_agente": true
+   }
+  },
+  {
+   "id": "mma",
+   "nome": "Ministério do Meio Ambiente e Mudança do Clima",
+   "tipo": "ministerio",
+   "poder": "executivo",
+   "sigla": "MMA",
+   "pai": "pr",
+   "lei": "Lei 14.600/2023, art. 20",
+   "cargo": {
+    "titulo": "Ministro(a) de Estado",
+    "situacao": "titular",
+    "ocupante": "Joao Paulo Ribeiro Capobianco",
+    "desde": "2026-04-01",
+    "mandato_ate": null,
+    "verificado_em": "2026-09",
+    "fonte": "https://eagendas.cgu.gov.br/pesquisa/agentes-publicos-obrigados-por-orgao/orgao/647/ativo/true",
+    "fonte_nome": "e-Agendas (CGU), Ministério do Meio Ambiente",
+    "fonte_agente": true
+   }
+  },
+  {
+   "id": "mme",
+   "nome": "Ministério de Minas e Energia",
+   "tipo": "ministerio",
+   "poder": "executivo",
+   "sigla": "MME",
+   "pai": "pr",
+   "lei": "Lei 14.600/2023, art. 20",
+   "cargo": {
+    "titulo": "Ministro(a) de Estado",
+    "situacao": "titular",
+    "ocupante": "Alexandre Silveira de Oliveira",
+    "desde": "2023-01-01",
+    "mandato_ate": null,
+    "verificado_em": "2026-09",
+    "fonte": "https://eagendas.cgu.gov.br/pesquisa/agentes-publicos-obrigados-por-orgao/orgao/661/ativo/true",
+    "fonte_nome": "e-Agendas (CGU), Ministério de Minas e Energia",
+    "fonte_agente": true
+   }
+  },
+  {
+   "id": "mmulheres",
+   "nome": "Ministério das Mulheres",
+   "tipo": "ministerio",
+   "poder": "executivo",
+   "sigla": "MMulheres",
+   "pai": "pr",
+   "lei": "Lei 14.600/2023, art. 20",
+   "cargo": {
+    "titulo": "Ministro(a) de Estado",
+    "situacao": "titular",
+    "ocupante": "Marcia Helena Carvalho Lopes",
+    "desde": "2025-05-05",
+    "mandato_ate": null,
+    "verificado_em": "2026-09",
+    "fonte": "https://eagendas.cgu.gov.br/pesquisa/agentes-publicos-obrigados-por-orgao/orgao/1424/ativo/true",
+    "fonte_nome": "e-Agendas (CGU), Ministério das Mulheres",
+    "fonte_agente": true
+   }
+  },
+  {
+   "id": "mpa",
+   "nome": "Ministério da Pesca e Aquicultura",
+   "tipo": "ministerio",
+   "poder": "executivo",
+   "sigla": "MPA",
+   "pai": "pr",
+   "lei": "Lei 14.600/2023, art. 20",
+   "cargo": {
+    "titulo": "Ministro(a) de Estado",
+    "situacao": "titular",
+    "ocupante": "Rivetla Edipo Araujo Cruz",
+    "desde": "2026-03-31",
+    "mandato_ate": null,
+    "verificado_em": "2026-09",
+    "fonte": "https://eagendas.cgu.gov.br/pesquisa/agentes-publicos-obrigados-por-orgao/orgao/1413/ativo/true",
+    "fonte_nome": "e-Agendas (CGU), Ministério da Pesca e Aquicultura",
+    "fonte_agente": true
+   }
+  },
+  {
+   "id": "mpo",
+   "nome": "Ministério do Planejamento e Orçamento",
+   "tipo": "ministerio",
+   "poder": "executivo",
+   "sigla": "MPO",
+   "pai": "pr",
+   "lei": "Lei 14.600/2023, art. 20",
+   "cargo": {
+    "titulo": "Ministro(a) de Estado",
+    "situacao": "titular",
+    "ocupante": "Bruno Moretti",
+    "desde": "2026-03-31",
+    "mandato_ate": null,
+    "verificado_em": "2026-09",
+    "fonte": "https://eagendas.cgu.gov.br/pesquisa/agentes-publicos-obrigados-por-orgao/orgao/1401/ativo/true",
+    "fonte_nome": "e-Agendas (CGU), Ministério do Planejamento e Orçamento",
+    "fonte_agente": true
+   }
+  },
+  {
+   "id": "mpor",
+   "nome": "Ministério de Portos e Aeroportos",
+   "tipo": "ministerio",
+   "poder": "executivo",
+   "sigla": "MPor",
+   "pai": "pr",
+   "lei": "Lei 14.600/2023, art. 20",
+   "cargo": {
+    "titulo": "Ministro(a) de Estado",
+    "situacao": "titular",
+    "ocupante": "Tome Barros Monteiro da Franca",
+    "desde": "2026-03-31",
+    "mandato_ate": null,
+    "verificado_em": "2026-09",
+    "fonte": "https://eagendas.cgu.gov.br/pesquisa/agentes-publicos-obrigados-por-orgao/orgao/1415/ativo/true",
+    "fonte_nome": "e-Agendas (CGU), Ministério de Portos e Aeroportos",
+    "fonte_agente": true
+   }
+  },
+  {
+   "id": "mps",
+   "nome": "Ministério da Previdência Social",
+   "tipo": "ministerio",
+   "poder": "executivo",
+   "sigla": "MPS",
+   "pai": "pr",
+   "lei": "Lei 14.600/2023, art. 20",
+   "cargo": {
+    "titulo": "Ministro(a) de Estado",
+    "situacao": "titular",
+    "ocupante": "Wolney Queiroz Maciel",
+    "desde": "2025-05-02",
+    "mandato_ate": null,
+    "verificado_em": "2026-09",
+    "fonte": "https://eagendas.cgu.gov.br/pesquisa/agentes-publicos-obrigados-por-orgao/orgao/1417/ativo/true",
+    "fonte_nome": "e-Agendas (CGU), Ministério da Previdência Social",
+    "fonte_agente": true
+   }
+  },
+  {
+   "id": "mre",
+   "nome": "Ministério das Relações Exteriores",
+   "tipo": "ministerio",
+   "poder": "executivo",
+   "sigla": "MRE",
+   "pai": "pr",
+   "lei": "Lei 14.600/2023, art. 20",
+   "cargo": {
+    "titulo": "Ministro(a) de Estado",
+    "situacao": "titular",
+    "ocupante": "Mauro Luiz Iecker Vieira",
+    "desde": "2023-01-01",
+    "mandato_ate": null,
+    "verificado_em": "2026-09",
+    "fonte": "https://eagendas.cgu.gov.br/pesquisa/agentes-publicos-obrigados-por-orgao/orgao/560/ativo/true",
+    "fonte_nome": "e-Agendas (CGU), Ministério das Relações Exteriores",
+    "fonte_agente": true
+   }
+  },
+  {
+   "id": "ms",
+   "nome": "Ministério da Saúde",
+   "tipo": "ministerio",
+   "poder": "executivo",
+   "sigla": "MS",
+   "pai": "pr",
+   "lei": "Lei 14.600/2023, art. 20",
+   "cargo": {
+    "titulo": "Ministro(a) de Estado",
+    "situacao": "titular",
+    "ocupante": "Alexandre Rocha Santos Padilha",
+    "desde": "2025-03-10",
+    "mandato_ate": null,
+    "verificado_em": "2026-09",
+    "fonte": "https://eagendas.cgu.gov.br/pesquisa/agentes-publicos-obrigados-por-orgao/orgao/563/ativo/true",
+    "fonte_nome": "e-Agendas (CGU), Ministério da Saúde",
+    "fonte_agente": true
+   }
+  },
+  {
+   "id": "mte",
+   "nome": "Ministério do Trabalho e Emprego",
+   "tipo": "ministerio",
+   "poder": "executivo",
+   "sigla": "MTE",
+   "pai": "pr",
+   "lei": "Lei 14.600/2023, art. 20",
+   "cargo": {
+    "titulo": "Ministro(a) de Estado",
+    "situacao": "titular",
+    "ocupante": "Luiz Marinho",
+    "desde": "2023-01-01",
+    "mandato_ate": null,
+    "verificado_em": "2026-09",
+    "fonte": "https://eagendas.cgu.gov.br/pesquisa/agentes-publicos-obrigados-por-orgao/orgao/1421/ativo/true",
+    "fonte_nome": "e-Agendas (CGU), Ministério do Trabalho e Emprego",
+    "fonte_agente": true
+   }
+  },
+  {
+   "id": "mt",
+   "nome": "Ministério dos Transportes",
+   "tipo": "ministerio",
+   "poder": "executivo",
+   "sigla": "MT",
+   "pai": "pr",
+   "lei": "Lei 14.600/2023, art. 20",
+   "cargo": {
+    "titulo": "Ministro(a) de Estado",
+    "situacao": "titular",
+    "ocupante": "George Andre Palermo Santoro",
+    "desde": "2026-04-01",
+    "mandato_ate": null,
+    "verificado_em": "2026-09",
+    "fonte": "https://eagendas.cgu.gov.br/pesquisa/agentes-publicos-obrigados-por-orgao/orgao/1411/ativo/true",
+    "fonte_nome": "e-Agendas (CGU), Ministério dos Transportes",
+    "fonte_agente": true
+   }
+  },
+  {
+   "id": "mtur",
+   "nome": "Ministério do Turismo",
+   "tipo": "ministerio",
+   "poder": "executivo",
+   "sigla": "MTur",
+   "pai": "pr",
+   "lei": "Lei 14.600/2023, art. 20",
+   "cargo": {
+    "titulo": "Ministro(a) de Estado",
+    "situacao": "titular",
+    "ocupante": "Gustavo Costa Feliciano",
+    "desde": "2025-12-23",
+    "mandato_ate": null,
+    "verificado_em": "2026-09",
+    "fonte": "https://eagendas.cgu.gov.br/pesquisa/agentes-publicos-obrigados-por-orgao/orgao/714/ativo/true",
+    "fonte_nome": "e-Agendas (CGU), Ministério do Turismo",
+    "fonte_agente": true
+   }
+  },
+  {
+   "id": "mpi",
+   "nome": "Ministério dos Povos Indígenas",
+   "tipo": "ministerio",
+   "poder": "executivo",
+   "sigla": "MPI",
+   "pai": "pr",
+   "lei": "Lei 14.600/2023, art. 20",
+   "cargo": {
+    "titulo": "Ministro(a) de Estado",
+    "situacao": "titular",
+    "ocupante": "Luiz Henrique Eloy Amado",
+    "desde": "2026-03-31",
+    "mandato_ate": null,
+    "verificado_em": "2026-09",
+    "fonte": "https://eagendas.cgu.gov.br/pesquisa/agentes-publicos-obrigados-por-orgao/orgao/1397/ativo/true",
+    "fonte_nome": "e-Agendas (CGU), Ministério dos Povos Indígenas",
+    "fonte_agente": true
+   }
+  },
+  {
+   "id": "embrapa",
+   "nome": "Empresa Brasileira de Pesquisa Agropecuária",
+   "tipo": "empresa_publica",
+   "poder": "executivo",
+   "sigla": "Embrapa",
+   "pai": "mapa",
+   "cargo": {
+    "titulo": "Presidente",
+    "situacao": "titular",
+    "ocupante": "Silvia Maria Fonseca Silveira Massruhá",
+    "desde": null,
+    "mandato_ate": null,
+    "verificado_em": "2026-09",
+    "fonte": "https://www.embrapa.br/dirigentes",
+    "fonte_nome": "Portal Embrapa (Diretoria-Executiva)",
+    "fonte_agente": true
+   }
+  },
+  {
+   "id": "inmet",
+   "nome": "Instituto Nacional de Meteorologia",
+   "tipo": "orgao",
+   "poder": "executivo",
+   "sigla": "INMET",
+   "pai": "mapa",
+   "cargo": {
+    "titulo": "Diretor(a)",
+    "situacao": "titular",
+    "ocupante": "Carlos Alberto Andrade e Jurgielewicz",
+    "desde": "2025-11-04",
+    "mandato_ate": null,
+    "verificado_em": "2026-09",
+    "fonte": "https://eagendas.cgu.gov.br/pesquisa/agentes-publicos-obrigados-por-orgao/orgao/1419/ativo/true",
+    "fonte_nome": "e-Agendas (CGU), Ministério da Agricultura e Pecuária",
+    "fonte_agente": true
+   }
+  },
+  {
+   "id": "cbtu",
+   "nome": "Companhia Brasileira de Trens Urbanos",
+   "tipo": "empresa_publica",
+   "poder": "executivo",
+   "sigla": "CBTU",
+   "pai": "mcid",
+   "cargo": {
+    "titulo": "Presidente",
+    "situacao": "titular",
+    "ocupante": "José Marques de Lima",
+    "desde": null,
+    "mandato_ate": null,
+    "verificado_em": "2026-09",
+    "fonte": "https://www.gov.br/cbtu/pt-br/acesso-a-informacao/institucional/quem-e-quem",
+    "fonte_nome": "Site oficial da CBTU (gov.br, Quem é quem)",
+    "fonte_agente": true
+   }
+  },
+  {
+   "id": "trensurb",
+   "nome": "Empresa de Trens Urbanos de Porto Alegre",
+   "tipo": "empresa_publica",
+   "poder": "executivo",
+   "sigla": "Trensurb",
+   "pai": "mcid",
+   "cargo": {
+    "titulo": "Presidente",
+    "situacao": "titular",
+    "ocupante": "Nazur Telles Garcia",
+    "desde": null,
+    "mandato_ate": null,
+    "verificado_em": "2026-09",
+    "fonte": "https://www.gov.br/trensurb/pt-br/composicao/diretoria-executiva/nazur-telles-garcia",
+    "fonte_nome": "Site oficial da Trensurb (gov.br, Diretoria Executiva)",
+    "fonte_agente": true
+   }
+  },
+  {
+   "id": "cnpq",
+   "nome": "Conselho Nacional de Desenvolvimento Científico e Tecnológico",
+   "tipo": "fundacao",
+   "poder": "executivo",
+   "sigla": "CNPq",
+   "pai": "mcti",
+   "cargo": {
+    "titulo": "Presidente",
+    "situacao": "titular",
+    "ocupante": "Olival Freire Junior",
+    "desde": "2025-12-18",
+    "mandato_ate": null,
+    "verificado_em": "2026-09",
+    "fonte": "https://eagendas.cgu.gov.br/pesquisa/agentes-publicos-obrigados-por-orgao/orgao/1005/ativo/true",
+    "fonte_nome": "e-Agendas (CGU), Conselho Nacional de Desenvolvimento Científico e Tecnológico",
+    "fonte_agente": true
+   }
+  },
+  {
+   "id": "finep",
+   "nome": "Financiadora de Estudos e Projetos",
+   "tipo": "empresa_publica",
+   "poder": "executivo",
+   "sigla": "Finep",
+   "pai": "mcti",
+   "cargo": {
+    "titulo": "Presidente",
+    "situacao": "titular",
+    "ocupante": "Luiz Antonio Rodrigues Elias",
+    "desde": "2025-06-27",
+    "mandato_ate": null,
+    "verificado_em": "2026-09",
+    "fonte": "https://legacy.finep.gov.br/a-finep-externo/governanca/diretoria-executiva",
+    "fonte_nome": "Site oficial da Finep (Governança, Diretoria Executiva)",
+    "fonte_agente": true
+   }
+  },
+  {
+   "id": "aeb",
+   "nome": "Agência Espacial Brasileira",
+   "tipo": "autarquia",
+   "poder": "executivo",
+   "sigla": "AEB",
+   "pai": "mcti",
+   "cargo": {
+    "titulo": "Presidente",
+    "situacao": "titular",
+    "ocupante": "Marco Antonio Chamon",
+    "desde": "2023-06-30",
+    "mandato_ate": null,
+    "verificado_em": "2026-09",
+    "fonte": "https://eagendas.cgu.gov.br/pesquisa/agentes-publicos-obrigados-por-orgao/orgao/1163/ativo/true",
+    "fonte_nome": "e-Agendas (CGU), Agência Espacial Brasileira",
+    "fonte_agente": true
+   }
+  },
+  {
+   "id": "cnen",
+   "nome": "Comissão Nacional de Energia Nuclear",
+   "tipo": "autarquia",
+   "poder": "executivo",
+   "sigla": "CNEN",
+   "pai": "mcti",
+   "cargo": {
+    "titulo": "Presidente",
+    "situacao": "titular",
+    "ocupante": "Francisco Rondinelli Junior",
+    "desde": "2023-03-21",
+    "mandato_ate": null,
+    "verificado_em": "2026-09",
+    "fonte": "https://eagendas.cgu.gov.br/pesquisa/agentes-publicos-obrigados-por-orgao/orgao/1040/ativo/true",
+    "fonte_nome": "e-Agendas (CGU), Comissão Nacional de Energia Nuclear",
+    "fonte_agente": true
+   }
+  },
+  {
+   "id": "inpe",
+   "nome": "Instituto Nacional de Pesquisas Espaciais",
+   "tipo": "orgao",
+   "poder": "executivo",
+   "sigla": "INPE",
+   "pai": "mcti",
+   "cargo": {
+    "titulo": "Diretor(a)",
+    "situacao": "titular",
+    "ocupante": "Antonio Miguel Vieira Monteiro",
+    "desde": "2025-02-20",
+    "mandato_ate": null,
+    "verificado_em": "2026-09",
+    "fonte": "https://eagendas.cgu.gov.br/pesquisa/agentes-publicos-obrigados-por-orgao/orgao/862/ativo/true",
+    "fonte_nome": "e-Agendas (CGU), Ministério da Ciência, Tecnologia e Inovação",
+    "fonte_agente": true
+   }
+  },
+  {
+   "id": "anatel",
+   "nome": "Agência Nacional de Telecomunicações",
+   "tipo": "agencia_reguladora",
+   "poder": "executivo",
+   "sigla": "Anatel",
+   "pai": "mcom",
+   "lei": "Lei 9.472/1997",
+   "cargo": {
+    "titulo": "Presidente",
+    "situacao": "titular",
+    "ocupante": "Carlos Manuel Baigorri",
+    "desde": "2022-04-14",
+    "mandato_ate": null,
+    "verificado_em": "2026-09",
+    "fonte": "https://eagendas.cgu.gov.br/pesquisa/agentes-publicos-obrigados-por-orgao/orgao/1175/ativo/true",
+    "fonte_nome": "e-Agendas (CGU), Agência Nacional de Telecomunicações",
+    "fonte_agente": true
+   }
+  },
+  {
+   "id": "correios",
+   "nome": "Empresa Brasileira de Correios e Telégrafos",
+   "tipo": "empresa_publica",
+   "poder": "executivo",
+   "sigla": "Correios",
+   "pai": "mcom",
+   "cargo": {
+    "titulo": "Presidente",
+    "situacao": "titular",
+    "ocupante": "Emmanoel Schmidt Rondon",
+    "desde": "2025-09-29",
+    "mandato_ate": null,
+    "verificado_em": "2026-09",
+    "fonte": "https://eagendas.cgu.gov.br/pesquisa/agentes-publicos-obrigados-por-orgao/orgao/1380/ativo/true",
+    "fonte_nome": "e-Agendas (CGU), Empresa Brasileira de Correios e Telégrafos",
+    "fonte_agente": true
+   }
+  },
+  {
+   "id": "telebras",
+   "nome": "Telecomunicações Brasileiras S.A.",
+   "tipo": "sociedade_economia_mista",
+   "poder": "executivo",
+   "sigla": "Telebras",
+   "pai": "mcom",
+   "cargo": {
+    "titulo": "Presidente",
+    "situacao": "titular",
+    "ocupante": "Hermano Studart Lins de Albuquerque",
+    "desde": "2026-04-16",
+    "mandato_ate": null,
+    "verificado_em": "2026-09",
+    "fonte": "https://www.telebras.com.br/acesso-a-informacao/institucional/quem-e-quem/",
+    "fonte_nome": "Site oficial da Telebras (Quem é quem)",
+    "fonte_agente": true
+   }
+  },
+  {
+   "id": "ancine",
+   "nome": "Agência Nacional do Cinema",
+   "tipo": "agencia_reguladora",
+   "poder": "executivo",
+   "sigla": "Ancine",
+   "pai": "minc",
+   "lei": "MP 2.228-1/2001",
+   "cargo": {
+    "titulo": "Diretor(a)-Presidente",
+    "situacao": "titular",
+    "ocupante": "Alex Braga Muniz",
+    "desde": "2021-10-21",
+    "mandato_ate": null,
+    "verificado_em": "2026-09",
+    "fonte": "https://eagendas.cgu.gov.br/pesquisa/agentes-publicos-obrigados-por-orgao/orgao/1194/ativo/true",
+    "fonte_nome": "e-Agendas (CGU), Agência Nacional do Cinema",
+    "fonte_agente": true
+   }
+  },
+  {
+   "id": "iphan",
+   "nome": "Instituto do Patrimônio Histórico e Artístico Nacional",
+   "tipo": "autarquia",
+   "poder": "executivo",
+   "sigla": "Iphan",
+   "pai": "minc",
+   "cargo": {
+    "titulo": "Presidente",
+    "situacao": "titular",
+    "ocupante": "Deyvesson Israel Alves Gusmao",
+    "desde": "2026-06-12",
+    "mandato_ate": null,
+    "verificado_em": "2026-09",
+    "fonte": "https://eagendas.cgu.gov.br/pesquisa/agentes-publicos-obrigados-por-orgao/orgao/1154/ativo/true",
+    "fonte_nome": "e-Agendas (CGU), Instituto do Patrimônio Histórico e Artístico Nacional",
+    "fonte_agente": true
+   }
+  },
+  {
+   "id": "funarte",
+   "nome": "Fundação Nacional de Artes",
+   "tipo": "fundacao",
+   "poder": "executivo",
+   "sigla": "Funarte",
+   "pai": "minc",
+   "cargo": {
+    "titulo": "Presidente",
+    "situacao": "titular",
+    "ocupante": "Leonardo Lessa de Mendonca",
+    "desde": "2026-04-16",
+    "mandato_ate": null,
+    "verificado_em": "2026-09",
+    "fonte": "https://eagendas.cgu.gov.br/pesquisa/agentes-publicos-obrigados-por-orgao/orgao/1157/ativo/true",
+    "fonte_nome": "e-Agendas (CGU), Fundação Nacional de Artes",
+    "fonte_agente": true
+   }
+  },
+  {
+   "id": "fbn",
+   "nome": "Fundação Biblioteca Nacional",
+   "tipo": "fundacao",
+   "poder": "executivo",
+   "sigla": "FBN",
+   "pai": "minc",
+   "cargo": {
+    "titulo": "Presidente",
+    "situacao": "titular",
+    "ocupante": "Marco Americo Lucchesi",
+    "desde": "2023-02-06",
+    "mandato_ate": null,
+    "verificado_em": "2026-09",
+    "fonte": "https://eagendas.cgu.gov.br/pesquisa/agentes-publicos-obrigados-por-orgao/orgao/1135/ativo/true",
+    "fonte_nome": "e-Agendas (CGU), Fundação Biblioteca Nacional",
+    "fonte_agente": true
+   }
+  },
+  {
+   "id": "fcrb",
+   "nome": "Fundação Casa de Rui Barbosa",
+   "tipo": "fundacao",
+   "poder": "executivo",
+   "sigla": "FCRB",
+   "pai": "minc",
+   "cargo": {
+    "titulo": "Presidente",
+    "situacao": "titular",
+    "ocupante": "Alexandre de Souza Santini Rodrigues",
+    "desde": "2023-02-03",
+    "mandato_ate": null,
+    "verificado_em": "2026-09",
+    "fonte": "https://eagendas.cgu.gov.br/pesquisa/agentes-publicos-obrigados-por-orgao/orgao/1059/ativo/true",
+    "fonte_nome": "e-Agendas (CGU), Fundação Casa de Rui Barbosa",
+    "fonte_agente": true
+   }
+  },
+  {
+   "id": "palmares",
+   "nome": "Fundação Cultural Palmares",
+   "tipo": "fundacao",
+   "poder": "executivo",
+   "sigla": "FCP",
+   "pai": "minc",
+   "cargo": {
+    "titulo": "Presidente",
+    "situacao": "titular",
+    "ocupante": "Joao Jorge Santos Rodrigues",
+    "desde": "2023-03-20",
+    "mandato_ate": null,
+    "verificado_em": "2026-09",
+    "fonte": "https://eagendas.cgu.gov.br/pesquisa/agentes-publicos-obrigados-por-orgao/orgao/1142/ativo/true",
+    "fonte_nome": "e-Agendas (CGU), Fundação Cultural Palmares",
+    "fonte_agente": true
+   }
+  },
+  {
+   "id": "marinha",
+   "nome": "Comando da Marinha",
+   "tipo": "forca_armada",
+   "poder": "executivo",
+   "sigla": "MB",
+   "pai": "md",
+   "lei": "CF, art. 142; LC 97/1999",
+   "cargo": {
+    "titulo": "Comandante da Marinha",
+    "situacao": "titular",
+    "ocupante": "Marcos Sampaio Olsen",
+    "desde": "2023-01-01",
+    "mandato_ate": null,
+    "verificado_em": "2026-09",
+    "fonte": "https://eagendas.cgu.gov.br/pesquisa/agentes-publicos-obrigados-por-orgao/orgao/1037/ativo/true",
+    "fonte_nome": "e-Agendas (CGU), Comando da Marinha",
+    "fonte_agente": true
+   }
+  },
+  {
+   "id": "exercito",
+   "nome": "Comando do Exército",
+   "tipo": "forca_armada",
+   "poder": "executivo",
+   "sigla": "EB",
+   "pai": "md",
+   "lei": "CF, art. 142; LC 97/1999",
+   "cargo": {
+    "titulo": "Comandante do Exército",
+    "situacao": "titular",
+    "ocupante": "Tomas Miguel Mine Ribeiro Paiva",
+    "desde": "2023-01-21",
+    "mandato_ate": null,
+    "verificado_em": "2026-09",
+    "fonte": "https://eagendas.cgu.gov.br/pesquisa/agentes-publicos-obrigados-por-orgao/orgao/1026/ativo/true",
+    "fonte_nome": "e-Agendas (CGU), Comando do Exército",
+    "fonte_agente": true
+   }
+  },
+  {
+   "id": "aeronautica",
+   "nome": "Comando da Aeronáutica",
+   "tipo": "forca_armada",
+   "poder": "executivo",
+   "sigla": "FAB",
+   "pai": "md",
+   "lei": "CF, art. 142; LC 97/1999",
+   "cargo": {
+    "titulo": "Comandante da Aeronáutica",
+    "situacao": "titular",
+    "ocupante": "Marcelo Kanitz Damasceno",
+    "desde": "2023-01-02",
+    "mandato_ate": null,
+    "verificado_em": "2026-09",
+    "fonte": "https://eagendas.cgu.gov.br/pesquisa/agentes-publicos-obrigados-por-orgao/orgao/1015/ativo/true",
+    "fonte_nome": "e-Agendas (CGU), Comando da Aeronáutica",
+    "fonte_agente": true
+   }
+  },
+  {
+   "id": "amazul",
+   "nome": "Amazônia Azul Tecnologias de Defesa",
+   "tipo": "empresa_publica",
+   "poder": "executivo",
+   "sigla": "Amazul",
+   "pai": "md",
+   "cargo": {
+    "titulo": "Presidente",
+    "situacao": "titular",
+    "ocupante": "Newton de Almeida Costa Neto",
+    "desde": "2022-06",
+    "mandato_ate": null,
+    "verificado_em": "2026-09",
+    "fonte": "https://amazul.mar.mil.br/acesso-a-informacao/institucional",
+    "fonte_nome": "Site oficial da Amazul (Institucional)",
+    "fonte_agente": true
+   }
+  },
+  {
+   "id": "imbel",
+   "nome": "Indústria de Material Bélico do Brasil",
+   "tipo": "empresa_publica",
+   "poder": "executivo",
+   "sigla": "Imbel",
+   "pai": "md",
+   "cargo": {
+    "titulo": "Presidente",
+    "situacao": "titular",
+    "ocupante": "Flávio Mayon Ferreira Neiva",
+    "desde": "2026-07-01",
+    "mandato_ate": null,
+    "verificado_em": "2026-09",
+    "fonte": "https://www.imbel.gov.br/noticias/imbel-tem-novo-diretor-presidente-e-vice-presidente-executivo",
+    "fonte_nome": "Site oficial da IMBEL (notícia de 02/07/2026)",
+    "fonte_agente": true
+   }
+  },
+  {
+   "id": "emgepron",
+   "nome": "Empresa Gerencial de Projetos Navais",
+   "tipo": "empresa_publica",
+   "poder": "executivo",
+   "sigla": "Emgepron",
+   "pai": "md",
+   "cargo": {
+    "titulo": "Presidente",
+    "situacao": "titular",
+    "ocupante": "Amaury Calheiros Boite Junior",
+    "desde": "2024-08-15",
+    "mandato_ate": null,
+    "verificado_em": "2026-09",
+    "fonte": "https://www.emgepron.gov.br/pt-br/acessoainformacao/institucional",
+    "fonte_nome": "Site oficial da EMGEPRON (Acesso à Informação, Quem é quem)",
+    "fonte_agente": true
+   }
+  },
+  {
+   "id": "incra",
+   "nome": "Instituto Nacional de Colonização e Reforma Agrária",
+   "tipo": "autarquia",
+   "poder": "executivo",
+   "sigla": "Incra",
+   "pai": "mda",
+   "cargo": {
+    "titulo": "Presidente",
+    "situacao": "titular",
+    "ocupante": "Cesar Fernando Schiavon Aldrighi",
+    "desde": "2023-03-23",
+    "mandato_ate": null,
+    "verificado_em": "2026-09",
+    "fonte": "https://eagendas.cgu.gov.br/pesquisa/agentes-publicos-obrigados-por-orgao/orgao/1143/ativo/true",
+    "fonte_nome": "e-Agendas (CGU), Instituto Nacional de Colonização e Reforma Agrária",
+    "fonte_agente": true
+   }
+  },
+  {
+   "id": "conab",
+   "nome": "Companhia Nacional de Abastecimento",
+   "tipo": "empresa_publica",
+   "poder": "executivo",
+   "sigla": "Conab",
+   "pai": "mda",
+   "cargo": {
+    "titulo": "Presidente",
+    "situacao": "titular",
+    "ocupante": "Silvio Isoppo Porto",
+    "desde": "2026-04-17",
+    "mandato_ate": null,
+    "verificado_em": "2026-09",
+    "fonte": "https://eagendas.cgu.gov.br/pesquisa/agentes-publicos-obrigados-por-orgao/orgao/1437/ativo/true",
+    "fonte_nome": "e-Agendas (CGU), Companhia Nacional de Abastecimento",
+    "fonte_agente": true
+   }
+  },
+  {
+   "id": "inmetro",
+   "nome": "Instituto Nacional de Metrologia, Qualidade e Tecnologia",
+   "tipo": "autarquia",
+   "poder": "executivo",
+   "sigla": "Inmetro",
+   "pai": "mdic",
+   "cargo": {
+    "titulo": "Presidente",
+    "situacao": "titular",
+    "ocupante": "Marcio Andre Oliveira Brito",
+    "desde": "2024-02-27",
+    "mandato_ate": null,
+    "verificado_em": "2026-09",
+    "fonte": "https://eagendas.cgu.gov.br/pesquisa/agentes-publicos-obrigados-por-orgao/orgao/1047/ativo/true",
+    "fonte_nome": "e-Agendas (CGU), Instituto Nacional de Metrologia, Qualidade e Tecnologia",
+    "fonte_agente": true
+   }
+  },
+  {
+   "id": "inpi",
+   "nome": "Instituto Nacional da Propriedade Industrial",
+   "tipo": "autarquia",
+   "poder": "executivo",
+   "sigla": "INPI",
+   "pai": "mdic",
+   "cargo": {
+    "titulo": "Presidente",
+    "situacao": "titular",
+    "ocupante": "Julio Cesar Castelo Branco Reis Moreira",
+    "desde": "2023-07-20",
+    "mandato_ate": null,
+    "verificado_em": "2026-09",
+    "fonte": "https://eagendas.cgu.gov.br/pesquisa/agentes-publicos-obrigados-por-orgao/orgao/1071/ativo/true",
+    "fonte_nome": "e-Agendas (CGU), Instituto Nacional da Propriedade Industrial",
+    "fonte_agente": true
+   }
+  },
+  {
+   "id": "suframa",
+   "nome": "Superintendência da Zona Franca de Manaus",
+   "tipo": "autarquia",
+   "poder": "executivo",
+   "sigla": "Suframa",
+   "pai": "mdic",
+   "cargo": {
+    "titulo": "Superintendente",
+    "situacao": "titular",
+    "ocupante": "Leopoldo Augusto Melo Montenegro Junior",
+    "desde": "2026-03-20",
+    "mandato_ate": null,
+    "verificado_em": "2026-09",
+    "fonte": "https://eagendas.cgu.gov.br/pesquisa/agentes-publicos-obrigados-por-orgao/orgao/1028/ativo/true",
+    "fonte_nome": "e-Agendas (CGU), Superintendência da Zona Franca de Manaus",
+    "fonte_agente": true
+   }
+  },
+  {
+   "id": "bndes",
+   "nome": "Banco Nacional de Desenvolvimento Econômico e Social",
+   "tipo": "empresa_publica",
+   "poder": "executivo",
+   "sigla": "BNDES",
+   "pai": "mdic",
+   "site": "https://www.bndes.gov.br",
+   "cargo": {
+    "titulo": "Presidente",
+    "situacao": "titular",
+    "ocupante": "Aloizio Mercadante Oliva",
+    "desde": null,
+    "mandato_ate": null,
+    "verificado_em": "2026-09",
+    "fonte": "https://www.bndes.gov.br/wps/portal/site/home/quem-somos/quem-e-quem",
+    "fonte_nome": "Site oficial do BNDES (Quem é quem)",
+    "fonte_agente": true
+   }
+  },
+  {
+   "id": "apex",
+   "nome": "Agência Brasileira de Promoção de Exportações e Investimentos",
+   "tipo": "servico_social_autonomo",
+   "poder": "executivo",
+   "sigla": "ApexBrasil",
+   "pai": "mdic",
+   "cargo": {
+    "titulo": "Presidente",
+    "situacao": "titular",
+    "ocupante": "Laudemir André Müller",
+    "desde": "2026-04",
+    "mandato_ate": null,
+    "verificado_em": "2026-09",
+    "fonte": "https://www.in.gov.br/web/dou/-/despacho-do-presidente-da-republica-702067133",
+    "fonte_nome": "Diário Oficial da União (in.gov.br)",
+    "fonte_agente": true
+   }
+  },
+  {
+   "id": "inep",
+   "nome": "Instituto Nacional de Estudos e Pesquisas Educacionais Anísio Teixeira",
+   "tipo": "autarquia",
+   "poder": "executivo",
+   "sigla": "Inep",
+   "pai": "mec",
+   "cargo": {
+    "titulo": "Presidente",
+    "situacao": "titular",
+    "ocupante": "Manuel Fernando Palacios da Cunha e Melo",
+    "desde": "2023-02-01",
+    "mandato_ate": null,
+    "verificado_em": "2026-09",
+    "fonte": "https://eagendas.cgu.gov.br/pesquisa/agentes-publicos-obrigados-por-orgao/orgao/1050/ativo/true",
+    "fonte_nome": "e-Agendas (CGU), Instituto Nacional de Estudos e Pesquisas Educacionais Anísio Teixeira",
+    "fonte_agente": true
+   }
+  },
+  {
+   "id": "capes",
+   "nome": "Coordenação de Aperfeiçoamento de Pessoal de Nível Superior",
+   "tipo": "fundacao",
+   "poder": "executivo",
+   "sigla": "Capes",
+   "pai": "mec",
+   "cargo": {
+    "titulo": "Presidente",
+    "situacao": "titular",
+    "ocupante": "Denise Pires de Carvalho",
+    "desde": "2024-02-19",
+    "mandato_ate": null,
+    "verificado_em": "2026-09",
+    "fonte": "https://eagendas.cgu.gov.br/pesquisa/agentes-publicos-obrigados-por-orgao/orgao/1051/ativo/true",
+    "fonte_nome": "e-Agendas (CGU), Fundação Coordenação de Aperfeiçoamento de Pessoal de Nível superior",
+    "fonte_agente": true
+   }
+  },
+  {
+   "id": "fnde",
+   "nome": "Fundo Nacional de Desenvolvimento da Educação",
+   "tipo": "autarquia",
+   "poder": "executivo",
+   "sigla": "FNDE",
+   "pai": "mec",
+   "cargo": {
+    "titulo": "Presidente",
+    "situacao": "titular",
+    "ocupante": "Fernanda Mara de Oliveira Macedo Carneiro Pacobahyba",
+    "desde": "2023-01-02",
+    "mandato_ate": null,
+    "verificado_em": "2026-09",
+    "fonte": "https://eagendas.cgu.gov.br/pesquisa/agentes-publicos-obrigados-por-orgao/orgao/1054/ativo/true",
+    "fonte_nome": "e-Agendas (CGU), Fundo Nacional de Desenvolvimento da Educação",
+    "fonte_agente": true
+   }
+  },
+  {
+   "id": "ebserh",
+   "nome": "Empresa Brasileira de Serviços Hospitalares",
+   "tipo": "empresa_publica",
+   "poder": "executivo",
+   "sigla": "Ebserh",
+   "pai": "mec",
+   "cargo": {
+    "titulo": "Presidente",
+    "situacao": "titular",
+    "ocupante": "Arthur Chioro",
+    "desde": null,
+    "mandato_ate": null,
+    "verificado_em": "2026-09",
+    "fonte": "https://www.gov.br/ebserh/pt-br/acesso-a-informacao/institucional/quem-e-quem",
+    "fonte_nome": "Site oficial da Ebserh (gov.br, Quem é quem)",
+    "fonte_agente": true
+   }
+  },
+  {
+   "id": "universidades",
+   "nome": "Universidades federais",
+   "tipo": "grupo",
+   "poder": "executivo",
+   "pai": "mec",
+   "descricao": "Autarquias e fundações de ensino superior vinculadas ao MEC. Cada uma tem reitor(a) escolhido por lista tríplice e nomeado pelo Presidente da República.",
+   "quantidade": 69
+  },
+  {
+   "id": "institutos-federais",
+   "nome": "Rede Federal de Educação Profissional, Científica e Tecnológica",
+   "tipo": "grupo",
+   "poder": "executivo",
+   "pai": "mec",
+   "lei": "Lei 11.892/2008",
+   "descricao": "Institutos Federais, Cefets e Colégio Pedro II (Lei 11.892/2008).",
+   "quantidade": 41
+  },
+  {
+   "id": "rfb",
+   "nome": "Secretaria Especial da Receita Federal do Brasil",
+   "tipo": "orgao",
+   "poder": "executivo",
+   "sigla": "RFB",
+   "pai": "mf",
+   "cargo": {
+    "titulo": "Secretário(a) Especial",
+    "situacao": "titular",
+    "ocupante": "Robinson Sakiyama Barreirinhas",
+    "desde": "2023-01-01",
+    "mandato_ate": null,
+    "verificado_em": "2026-09",
+    "fonte": "https://eagendas.cgu.gov.br/pesquisa/agentes-publicos-obrigados-por-orgao/orgao/1384/ativo/true",
+    "fonte_nome": "e-Agendas (CGU), Ministério da Fazenda",
+    "fonte_agente": true
+   }
+  },
+  {
+   "id": "stn",
+   "nome": "Secretaria do Tesouro Nacional",
+   "tipo": "orgao",
+   "poder": "executivo",
+   "sigla": "STN",
+   "pai": "mf",
+   "cargo": {
+    "titulo": "Secretário(a)",
+    "situacao": "titular",
+    "ocupante": "Daniel Cardoso Leal",
+    "desde": "2026-03-24",
+    "mandato_ate": null,
+    "verificado_em": "2026-09",
+    "fonte": "https://eagendas.cgu.gov.br/pesquisa/agentes-publicos-obrigados-por-orgao/orgao/1384/ativo/true",
+    "fonte_nome": "e-Agendas (CGU), Ministério da Fazenda",
+    "fonte_agente": true
+   }
+  },
+  {
+   "id": "pgfn",
+   "nome": "Procuradoria-Geral da Fazenda Nacional",
+   "tipo": "orgao",
+   "poder": "executivo",
+   "sigla": "PGFN",
+   "pai": "mf",
+   "cargo": {
+    "titulo": "Procurador(a)-Geral",
+    "situacao": "titular",
+    "ocupante": "Anelize Lenzi Ruas de Almeida",
+    "desde": null,
+    "mandato_ate": null,
+    "verificado_em": "2026-09",
+    "fonte": "https://www.gov.br/pgfn/pt-br/composicao/quem-e-quem/gabinete",
+    "fonte_nome": "Site oficial da PGFN (gov.br/pgfn)",
+    "fonte_agente": true
+   }
+  },
+  {
+   "id": "cmn",
+   "nome": "Conselho Monetário Nacional",
+   "tipo": "orgao",
+   "poder": "executivo",
+   "sigla": "CMN",
+   "pai": "mf",
+   "descricao": "Órgão superior do Sistema Financeiro Nacional, presidido pelo Ministro da Fazenda (Lei 4.595/1964)."
+  },
+  {
+   "id": "bcb",
+   "nome": "Banco Central do Brasil",
+   "tipo": "autarquia",
+   "poder": "executivo",
+   "sigla": "BCB",
+   "pai": "mf",
+   "lei": "Lei 4.595/1964; LC 179/2021",
+   "site": "https://www.bcb.gov.br",
+   "descricao": "Autarquia de natureza especial com autonomia técnica, operacional e financeira. Presidente e diretores têm mandatos fixos, aprovados pelo Senado.",
+   "cargo": {
+    "titulo": "Presidente",
+    "situacao": "titular",
+    "ocupante": "Gabriel Galípolo",
+    "desde": "2025-01-01",
+    "mandato_ate": "2028-12-31",
+    "verificado_em": "2025-01",
+    "fonte": "https://www12.senado.leg.br/noticias/materias/2024/10/08/senado-aprova-gabriel-galipolo-para-presidir-banco-central"
+   }
+  },
+  {
+   "id": "cvm",
+   "nome": "Comissão de Valores Mobiliários",
+   "tipo": "autarquia",
+   "poder": "executivo",
+   "sigla": "CVM",
+   "pai": "mf",
+   "lei": "Lei 6.385/1976",
+   "cargo": {
+    "titulo": "Presidente",
+    "situacao": "titular",
+    "ocupante": "Otto Eduardo Fonseca de Albuquerque Lobo",
+    "desde": "2026-06-05",
+    "mandato_ate": null,
+    "verificado_em": "2026-09",
+    "fonte": "https://eagendas.cgu.gov.br/pesquisa/agentes-publicos-obrigados-por-orgao/orgao/1122/ativo/true",
+    "fonte_nome": "e-Agendas (CGU), Comissão de Valores Mobiliários",
+    "fonte_agente": true
+   }
+  },
+  {
+   "id": "susep",
+   "nome": "Superintendência de Seguros Privados",
+   "tipo": "autarquia",
+   "poder": "executivo",
+   "sigla": "Susep",
+   "pai": "mf",
+   "cargo": {
+    "titulo": "Superintendente",
+    "situacao": "titular",
+    "ocupante": "Alessandro Serafin Octaviani Luis",
+    "desde": "2023-04-06",
+    "mandato_ate": null,
+    "verificado_em": "2026-09",
+    "fonte": "https://eagendas.cgu.gov.br/pesquisa/agentes-publicos-obrigados-por-orgao/orgao/1376/ativo/true",
+    "fonte_nome": "e-Agendas (CGU), Superintendência de Seguros Privados",
+    "fonte_agente": true
+   }
+  },
+  {
+   "id": "bb",
+   "nome": "Banco do Brasil S.A.",
+   "tipo": "sociedade_economia_mista",
+   "poder": "executivo",
+   "sigla": "BB",
+   "pai": "mf",
+   "cargo": {
+    "titulo": "Presidente",
+    "situacao": "titular",
+    "ocupante": "Tarciana Paula Gomes Medeiros",
+    "desde": "2023-01",
+    "mandato_ate": null,
+    "verificado_em": "2026-09",
+    "fonte": "https://ri.bb.com.br/en/corporate-governance-and-sustainability/board-of-officers/",
+    "fonte_nome": "Site de Relações com Investidores do Banco do Brasil (Board of Officers)",
+    "fonte_agente": true
+   }
+  },
+  {
+   "id": "caixa",
+   "nome": "Caixa Econômica Federal",
+   "tipo": "empresa_publica",
+   "poder": "executivo",
+   "sigla": "Caixa",
+   "pai": "mf",
+   "cargo": {
+    "titulo": "Presidente",
+    "situacao": "titular",
+    "ocupante": "Carlos Antônio Vieira Fernandes",
+    "desde": "2023-11-07",
+    "mandato_ate": null,
+    "verificado_em": "2026-09",
+    "fonte": "https://www.caixa.gov.br/sobre-a-caixa/governanca-corporativa/diretoria-executiva/presidencia/Paginas/default.aspx",
+    "fonte_nome": "Site oficial da CAIXA (Governança Corporativa, Presidência)",
+    "fonte_agente": true
+   }
+  },
+  {
+   "id": "bnb",
+   "nome": "Banco do Nordeste do Brasil S.A.",
+   "tipo": "sociedade_economia_mista",
+   "poder": "executivo",
+   "sigla": "BNB",
+   "pai": "mf",
+   "cargo": {
+    "titulo": "Presidente",
+    "situacao": "titular",
+    "ocupante": "Paulo Henrique Saraiva Câmara",
+    "desde": "2026-03",
+    "mandato_ate": null,
+    "verificado_em": "2026-09",
+    "fonte": "https://www.bnb.gov.br/acesso-a-informacao/institucional",
+    "fonte_nome": "Portal do Banco do Nordeste (Informações Institucionais, Quem é Quem)",
+    "fonte_agente": true
+   }
+  },
+  {
+   "id": "basa",
+   "nome": "Banco da Amazônia S.A.",
+   "tipo": "sociedade_economia_mista",
+   "poder": "executivo",
+   "sigla": "Basa",
+   "pai": "mf",
+   "cargo": {
+    "titulo": "Presidente",
+    "situacao": "titular",
+    "ocupante": "Luiz Claudio Moreira Lessa",
+    "desde": null,
+    "mandato_ate": null,
+    "verificado_em": "2026-09",
+    "fonte": "https://ri.bancoamazonia.com.br/en/governance-and-sustainability/governance-structure-committees-and-boards/",
+    "fonte_nome": "Site de Relações com Investidores do Banco da Amazônia (Governance Structure)",
+    "fonte_agente": true
+   }
+  },
+  {
+   "id": "cmb",
+   "nome": "Casa da Moeda do Brasil",
+   "tipo": "empresa_publica",
+   "poder": "executivo",
+   "sigla": "CMB",
+   "pai": "mf",
+   "cargo": {
+    "titulo": "Presidente",
+    "situacao": "titular",
+    "ocupante": "Sérgio Perini Rodrigues",
+    "desde": "2023-04-10",
+    "mandato_ate": null,
+    "verificado_em": "2026-09",
+    "fonte": "https://www.casadamoeda.gov.br/portal/acesso-a-informacao/institucional/quem-e-quem.html",
+    "fonte_nome": "Site oficial da Casa da Moeda do Brasil (Quem é Quem)",
+    "fonte_agente": true
+   }
+  },
+  {
+   "id": "enap",
+   "nome": "Fundação Escola Nacional de Administração Pública",
+   "tipo": "fundacao",
+   "poder": "executivo",
+   "sigla": "Enap",
+   "pai": "mgi",
+   "cargo": {
+    "titulo": "Presidente",
+    "situacao": "titular",
+    "ocupante": "Betania Peixoto Lemos",
+    "desde": "2023-02-28",
+    "mandato_ate": null,
+    "verificado_em": "2026-09",
+    "fonte": "https://eagendas.cgu.gov.br/pesquisa/agentes-publicos-obrigados-por-orgao/orgao/1129/ativo/true",
+    "fonte_nome": "e-Agendas (CGU), Fundação Escola Nacional de Administração Pública",
+    "fonte_agente": true
+   }
+  },
+  {
+   "id": "serpro",
+   "nome": "Serviço Federal de Processamento de Dados",
+   "tipo": "empresa_publica",
+   "poder": "executivo",
+   "sigla": "Serpro",
+   "pai": "mgi",
+   "cargo": {
+    "titulo": "Presidente",
+    "situacao": "titular",
+    "ocupante": "Wilton Itaiguara Gonçalves Mota",
+    "desde": "2025-11-18",
+    "mandato_ate": null,
+    "verificado_em": "2026-09",
+    "fonte": "https://www.transparencia.serpro.gov.br/acesso-a-informacao/institucional/quem-e-quem",
+    "fonte_nome": "Portal da Transparência e Governança do Serpro (Quem é quem)",
+    "fonte_agente": true
+   }
+  },
+  {
+   "id": "dataprev",
+   "nome": "Empresa de Tecnologia e Informações da Previdência",
+   "tipo": "empresa_publica",
+   "poder": "executivo",
+   "sigla": "Dataprev",
+   "pai": "mgi",
+   "cargo": {
+    "titulo": "Presidente",
+    "situacao": "titular",
+    "ocupante": "Rodrigo Ortiz D'Avila Assumpção",
+    "desde": "2023-04-03",
+    "mandato_ate": null,
+    "verificado_em": "2026-09",
+    "fonte": "https://www.dataprev.gov.br/conheca-dataprev-quem-e-quem/presidencia-e-diretorias",
+    "fonte_nome": "Site oficial da Dataprev (Quem é quem, Presidência e Diretorias)",
+    "fonte_agente": true
+   }
+  },
+  {
+   "id": "ana",
+   "nome": "Agência Nacional de Águas e Saneamento Básico",
+   "tipo": "agencia_reguladora",
+   "poder": "executivo",
+   "sigla": "ANA",
+   "pai": "midr",
+   "lei": "Lei 9.984/2000",
+   "cargo": {
+    "titulo": "Diretor(a)-Presidente",
+    "situacao": "titular",
+    "ocupante": "Leonardo Goes Silva",
+    "desde": "2026-01-26",
+    "mandato_ate": null,
+    "verificado_em": "2026-09",
+    "fonte": "https://eagendas.cgu.gov.br/pesquisa/agentes-publicos-obrigados-por-orgao/orgao/1183/ativo/true",
+    "fonte_nome": "e-Agendas (CGU), Agência Nacional de Águas e Saneamento Básico",
+    "fonte_agente": true
+   }
+  },
+  {
+   "id": "dnocs",
+   "nome": "Departamento Nacional de Obras Contra as Secas",
+   "tipo": "autarquia",
+   "poder": "executivo",
+   "sigla": "DNOCS",
+   "pai": "midr",
+   "cargo": {
+    "titulo": "Diretor(a)-Geral",
+    "situacao": "titular",
+    "ocupante": "Fernando Marcondes de Araujo Leao",
+    "desde": "2023-04-17",
+    "mandato_ate": null,
+    "verificado_em": "2026-09",
+    "fonte": "https://eagendas.cgu.gov.br/pesquisa/agentes-publicos-obrigados-por-orgao/orgao/1069/ativo/true",
+    "fonte_nome": "e-Agendas (CGU), Departamento Nacional de Obras Contra as Secas",
+    "fonte_agente": true
+   }
+  },
+  {
+   "id": "codevasf",
+   "nome": "Companhia de Desenvolvimento dos Vales do São Francisco e do Parnaíba",
+   "tipo": "empresa_publica",
+   "poder": "executivo",
+   "sigla": "Codevasf",
+   "pai": "midr",
+   "cargo": {
+    "titulo": "Presidente",
+    "situacao": "titular",
+    "ocupante": "Lucas Felipe de Oliveira",
+    "desde": "2025-06-17",
+    "mandato_ate": null,
+    "verificado_em": "2026-09",
+    "fonte": "https://eagendas.cgu.gov.br/pesquisa/agentes-publicos-obrigados-por-orgao/orgao/1438/ativo/true",
+    "fonte_nome": "e-Agendas (CGU), Companhia de Desenvolvimento dos Vales do São Francisco e do Parnaíba",
+    "fonte_agente": true
+   }
+  },
+  {
+   "id": "sudam",
+   "nome": "Superintendência do Desenvolvimento da Amazônia",
+   "tipo": "autarquia",
+   "poder": "executivo",
+   "sigla": "Sudam",
+   "pai": "midr",
+   "cargo": {
+    "titulo": "Superintendente",
+    "situacao": "titular",
+    "ocupante": "Paulo Roberto Galvao da Rocha",
+    "desde": "2023-05-10",
+    "mandato_ate": null,
+    "verificado_em": "2026-09",
+    "fonte": "https://eagendas.cgu.gov.br/pesquisa/agentes-publicos-obrigados-por-orgao/orgao/1230/ativo/true",
+    "fonte_nome": "e-Agendas (CGU), Superintendência do Desenvolvimento da Amazônia",
+    "fonte_agente": true
+   }
+  },
+  {
+   "id": "sudene",
+   "nome": "Superintendência do Desenvolvimento do Nordeste",
+   "tipo": "autarquia",
+   "poder": "executivo",
+   "sigla": "Sudene",
+   "pai": "midr",
+   "cargo": {
+    "titulo": "Superintendente",
+    "situacao": "titular",
+    "ocupante": "Francisco Ferreira Alexandre",
+    "desde": "2025-08-15",
+    "mandato_ate": null,
+    "verificado_em": "2026-09",
+    "fonte": "https://eagendas.cgu.gov.br/pesquisa/agentes-publicos-obrigados-por-orgao/orgao/1231/ativo/true",
+    "fonte_nome": "e-Agendas (CGU), Superintendência do Desenvolvimento do Nordeste",
+    "fonte_agente": true
+   }
+  },
+  {
+   "id": "sudeco",
+   "nome": "Superintendência do Desenvolvimento do Centro-Oeste",
+   "tipo": "autarquia",
+   "poder": "executivo",
+   "sigla": "Sudeco",
+   "pai": "midr",
+   "cargo": {
+    "titulo": "Superintendente",
+    "situacao": "titular",
+    "ocupante": "Luciana de Sousa Barros",
+    "desde": "2024-05-22",
+    "mandato_ate": null,
+    "verificado_em": "2026-09",
+    "fonte": "https://eagendas.cgu.gov.br/pesquisa/agentes-publicos-obrigados-por-orgao/orgao/1241/ativo/true",
+    "fonte_nome": "e-Agendas (CGU), Superintendência do Desenvolvimento do Centro-Oeste",
+    "fonte_agente": true
+   }
+  },
+  {
+   "id": "pf",
+   "nome": "Polícia Federal",
+   "tipo": "orgao",
+   "poder": "executivo",
+   "sigla": "PF",
+   "pai": "mjsp",
+   "lei": "CF, art. 144, I",
+   "cargo": {
+    "titulo": "Diretor(a)-Geral",
+    "situacao": "titular",
+    "ocupante": "Andrei Augusto Passos Rodrigues",
+    "desde": "2023-01-02",
+    "mandato_ate": null,
+    "verificado_em": "2026-09",
+    "fonte": "https://eagendas.cgu.gov.br/pesquisa/agentes-publicos-obrigados-por-orgao/orgao/1066/ativo/true",
+    "fonte_nome": "e-Agendas (CGU), Polícia Federal",
+    "fonte_agente": true
+   }
+  },
+  {
+   "id": "prf",
+   "nome": "Polícia Rodoviária Federal",
+   "tipo": "orgao",
+   "poder": "executivo",
+   "sigla": "PRF",
+   "pai": "mjsp",
+   "lei": "CF, art. 144, II",
+   "cargo": {
+    "titulo": "Diretor(a)-Geral",
+    "situacao": "titular",
+    "ocupante": "Antonio Fernando Souza Oliveira",
+    "desde": "2023-01-02",
+    "mandato_ate": null,
+    "verificado_em": "2026-09",
+    "fonte": "https://eagendas.cgu.gov.br/pesquisa/agentes-publicos-obrigados-por-orgao/orgao/1125/ativo/true",
+    "fonte_nome": "e-Agendas (CGU), Polícia Rodoviária Federal",
+    "fonte_agente": true
+   }
+  },
+  {
+   "id": "senappen",
+   "nome": "Secretaria Nacional de Políticas Penais",
+   "tipo": "orgao",
+   "poder": "executivo",
+   "sigla": "Senappen",
+   "pai": "mjsp",
+   "cargo": {
+    "titulo": "Secretário(a) Nacional",
+    "situacao": "titular",
+    "ocupante": "Andre de Albuquerque Garcia",
+    "desde": "2024-02-08",
+    "mandato_ate": null,
+    "verificado_em": "2026-09",
+    "fonte": "https://eagendas.cgu.gov.br/pesquisa/agentes-publicos-obrigados-por-orgao/orgao/856/ativo/true",
+    "fonte_nome": "e-Agendas (CGU), Ministério da Justiça e Segurança Pública",
+    "fonte_agente": true
+   }
+  },
+  {
+   "id": "cade",
+   "nome": "Conselho Administrativo de Defesa Econômica",
+   "tipo": "autarquia",
+   "poder": "executivo",
+   "sigla": "CADE",
+   "pai": "mjsp",
+   "lei": "Lei 12.529/2011",
+   "cargo": {
+    "titulo": "Presidente",
+    "situacao": "interino",
+    "ocupante": "Diogo Thomson de Andrade",
+    "desde": "2026-04-12",
+    "mandato_ate": null,
+    "verificado_em": "2026-09",
+    "fonte": "https://www.gov.br/cade/pt-br/composicao/presidencia",
+    "fonte_nome": "Site oficial do Cade (gov.br/cade)",
+    "fonte_agente": true
+   }
+  },
+  {
+   "id": "ibama",
+   "nome": "Instituto Brasileiro do Meio Ambiente e dos Recursos Naturais Renováveis",
+   "tipo": "autarquia",
+   "poder": "executivo",
+   "sigla": "Ibama",
+   "pai": "mma",
+   "cargo": {
+    "titulo": "Presidente",
+    "situacao": "titular",
+    "ocupante": "Jair Schmitt",
+    "desde": "2026-06-16",
+    "mandato_ate": null,
+    "verificado_em": "2026-09",
+    "fonte": "https://eagendas.cgu.gov.br/pesquisa/agentes-publicos-obrigados-por-orgao/orgao/1145/ativo/true",
+    "fonte_nome": "e-Agendas (CGU), Instituto Brasileiro do Meio Ambiente e dos Recursos Naturais Renováveis",
+    "fonte_agente": true
+   }
+  },
+  {
+   "id": "icmbio",
+   "nome": "Instituto Chico Mendes de Conservação da Biodiversidade",
+   "tipo": "autarquia",
+   "poder": "executivo",
+   "sigla": "ICMBio",
+   "pai": "mma",
+   "cargo": {
+    "titulo": "Presidente",
+    "situacao": "titular",
+    "ocupante": "Mauro Oliveira Pires",
+    "desde": "2023-05-17",
+    "mandato_ate": null,
+    "verificado_em": "2026-09",
+    "fonte": "https://eagendas.cgu.gov.br/pesquisa/agentes-publicos-obrigados-por-orgao/orgao/1232/ativo/true",
+    "fonte_nome": "e-Agendas (CGU), Instituto Chico Mendes de Conservação da Biodiversidade",
+    "fonte_agente": true
+   }
+  },
+  {
+   "id": "jbrj",
+   "nome": "Instituto de Pesquisas Jardim Botânico do Rio de Janeiro",
+   "tipo": "autarquia",
+   "poder": "executivo",
+   "sigla": "JBRJ",
+   "pai": "mma",
+   "cargo": {
+    "titulo": "Presidente",
+    "situacao": "titular",
+    "ocupante": "Sergio Besserman Vianna",
+    "desde": "2023-08-03",
+    "mandato_ate": null,
+    "verificado_em": "2026-09",
+    "fonte": "https://eagendas.cgu.gov.br/pesquisa/agentes-publicos-obrigados-por-orgao/orgao/1146/ativo/true",
+    "fonte_nome": "e-Agendas (CGU), Instituto de Pesquisas Jardim Botânico do Rio de Janeiro",
+    "fonte_agente": true
+   }
+  },
+  {
+   "id": "sfb",
+   "nome": "Serviço Florestal Brasileiro",
+   "tipo": "orgao",
+   "poder": "executivo",
+   "sigla": "SFB",
+   "pai": "mma",
+   "cargo": {
+    "titulo": "Diretor(a)-Geral",
+    "situacao": "titular",
+    "ocupante": "Garo Joseph Batmanian",
+    "desde": "2023-03-22",
+    "mandato_ate": null,
+    "verificado_em": "2026-09",
+    "fonte": "https://eagendas.cgu.gov.br/pesquisa/agentes-publicos-obrigados-por-orgao/orgao/647/ativo/true",
+    "fonte_nome": "e-Agendas (CGU), Ministério do Meio Ambiente",
+    "fonte_agente": true
+   }
+  },
+  {
+   "id": "anp",
+   "nome": "Agência Nacional do Petróleo, Gás Natural e Biocombustíveis",
+   "tipo": "agencia_reguladora",
+   "poder": "executivo",
+   "sigla": "ANP",
+   "pai": "mme",
+   "lei": "Lei 9.478/1997",
+   "cargo": {
+    "titulo": "Diretor(a)-Geral",
+    "situacao": "titular",
+    "ocupante": "Artur Watt Neto",
+    "desde": "2026-08-03",
+    "mandato_ate": null,
+    "verificado_em": "2026-09",
+    "fonte": "https://eagendas.cgu.gov.br/pesquisa/agentes-publicos-obrigados-por-orgao/orgao/1176/ativo/true",
+    "fonte_nome": "e-Agendas (CGU), Agência Nacional do Petróleo, Gás Natural e Biocombustíveis",
+    "fonte_agente": true
+   }
+  },
+  {
+   "id": "aneel",
+   "nome": "Agência Nacional de Energia Elétrica",
+   "tipo": "agencia_reguladora",
+   "poder": "executivo",
+   "sigla": "Aneel",
+   "pai": "mme",
+   "lei": "Lei 9.427/1996",
+   "cargo": {
+    "titulo": "Diretor(a)-Geral",
+    "situacao": "titular",
+    "ocupante": "Sandoval de Araujo Feitosa Neto",
+    "desde": "2026-07-01",
+    "mandato_ate": null,
+    "verificado_em": "2026-09",
+    "fonte": "https://eagendas.cgu.gov.br/pesquisa/agentes-publicos-obrigados-por-orgao/orgao/1169/ativo/true",
+    "fonte_nome": "e-Agendas (CGU), Agência Nacional de Energia Elétrica",
+    "fonte_agente": true
+   }
+  },
+  {
+   "id": "anm",
+   "nome": "Agência Nacional de Mineração",
+   "tipo": "agencia_reguladora",
+   "poder": "executivo",
+   "sigla": "ANM",
+   "pai": "mme",
+   "lei": "Lei 13.575/2017",
+   "cargo": {
+    "titulo": "Diretor(a)-Geral",
+    "situacao": "titular",
+    "ocupante": "Mauro Henrique Moreira Sousa",
+    "desde": "2025-08-12",
+    "mandato_ate": null,
+    "verificado_em": "2026-09",
+    "fonte": "https://eagendas.cgu.gov.br/pesquisa/agentes-publicos-obrigados-por-orgao/orgao/1337/ativo/true",
+    "fonte_nome": "e-Agendas (CGU), Agência Nacional de Mineração",
+    "fonte_agente": true
+   }
+  },
+  {
+   "id": "epe",
+   "nome": "Empresa de Pesquisa Energética",
+   "tipo": "empresa_publica",
+   "poder": "executivo",
+   "sigla": "EPE",
+   "pai": "mme",
+   "cargo": {
+    "titulo": "Presidente",
+    "situacao": "titular",
+    "ocupante": "Thiago Guilherme Ferreira Prado",
+    "desde": "2023-09-29",
+    "mandato_ate": null,
+    "verificado_em": "2026-09",
+    "fonte": "https://www.epe.gov.br/pt/a-epe/nossa-equipe/presidencia",
+    "fonte_nome": "Site oficial da EPE (Nossa Equipe, Presidência)",
+    "fonte_agente": true
+   }
+  },
+  {
+   "id": "petrobras",
+   "nome": "Petróleo Brasileiro S.A.",
+   "tipo": "sociedade_economia_mista",
+   "poder": "executivo",
+   "sigla": "Petrobras",
+   "pai": "mme",
+   "cargo": {
+    "titulo": "Presidente",
+    "situacao": "titular",
+    "ocupante": "Magda Chambriard",
+    "desde": "2024-05-24",
+    "mandato_ate": null,
+    "verificado_em": "2026-09",
+    "fonte": "https://www.investidorpetrobras.com.br/governanca-corporativa/administracao/",
+    "fonte_nome": "Site de Relações com Investidores da Petrobras (Administração)",
+    "fonte_agente": true
+   }
+  },
+  {
+   "id": "ppsa",
+   "nome": "Pré-Sal Petróleo S.A.",
+   "tipo": "empresa_publica",
+   "poder": "executivo",
+   "sigla": "PPSA",
+   "pai": "mme",
+   "cargo": {
+    "titulo": "Presidente",
+    "situacao": "titular",
+    "ocupante": "Luis Fernando Paroli",
+    "desde": null,
+    "mandato_ate": null,
+    "verificado_em": "2026-09",
+    "fonte": "https://www.presalpetroleo.gov.br/diretoria-executiva/",
+    "fonte_nome": "Site oficial da Pré-Sal Petróleo (Diretoria Executiva)",
+    "fonte_agente": true
+   }
+  },
+  {
+   "id": "sgb",
+   "nome": "Serviço Geológico do Brasil",
+   "tipo": "empresa_publica",
+   "poder": "executivo",
+   "sigla": "SGB-CPRM",
+   "pai": "mme",
+   "cargo": {
+    "titulo": "Presidente",
+    "situacao": "titular",
+    "ocupante": "Vilmar Medeiros Simões",
+    "desde": "2025-12",
+    "mandato_ate": null,
+    "verificado_em": "2026-09",
+    "fonte": "https://www.sgb.gov.br/diretor-presidente",
+    "fonte_nome": "Site oficial do Serviço Geológico do Brasil (Diretor Presidente)",
+    "fonte_agente": true
+   }
+  },
+  {
+   "id": "enbpar",
+   "nome": "Empresa Brasileira de Participações em Energia Nuclear e Binacional",
+   "tipo": "empresa_publica",
+   "poder": "executivo",
+   "sigla": "ENBPar",
+   "pai": "mme",
+   "descricao": "Controla a Eletronuclear e a participação brasileira em Itaipu após a privatização da Eletrobras (2022).",
+   "cargo": {
+    "titulo": "Presidente",
+    "situacao": "titular",
+    "ocupante": "Marlos Costa de Andrade",
+    "desde": null,
+    "mandato_ate": null,
+    "verificado_em": "2026-09",
+    "fonte": "https://enbpar.gov.br/governanca/diretoria-executiva/quem-e-quem/",
+    "fonte_nome": "Site oficial da ENBPar (Quem é quem)",
+    "fonte_agente": true
+   }
+  },
+  {
+   "id": "ibge",
+   "nome": "Fundação Instituto Brasileiro de Geografia e Estatística",
+   "tipo": "fundacao",
+   "poder": "executivo",
+   "sigla": "IBGE",
+   "pai": "mpo",
+   "site": "https://www.ibge.gov.br",
+   "cargo": {
+    "titulo": "Presidente",
+    "situacao": "titular",
+    "ocupante": "Marcio Pochmann",
+    "desde": "2023-08-18",
+    "mandato_ate": null,
+    "verificado_em": "2026-09",
+    "fonte": "https://eagendas.cgu.gov.br/pesquisa/agentes-publicos-obrigados-por-orgao/orgao/1003/ativo/true",
+    "fonte_nome": "e-Agendas (CGU), Fundação Instituto Brasileiro de Geografia e Estatística",
+    "fonte_agente": true
+   }
+  },
+  {
+   "id": "ipea",
+   "nome": "Fundação Instituto de Pesquisa Econômica Aplicada",
+   "tipo": "fundacao",
+   "poder": "executivo",
+   "sigla": "Ipea",
+   "pai": "mpo",
+   "cargo": {
+    "titulo": "Presidente",
+    "situacao": "titular",
+    "ocupante": "Luciana Mendes Santos Servo",
+    "desde": "2023-02-15",
+    "mandato_ate": null,
+    "verificado_em": "2026-09",
+    "fonte": "https://eagendas.cgu.gov.br/pesquisa/agentes-publicos-obrigados-por-orgao/orgao/1004/ativo/true",
+    "fonte_nome": "e-Agendas (CGU), Instituto de Pesquisa Econômica Aplicada",
+    "fonte_agente": true
+   }
+  },
+  {
+   "id": "antaq",
+   "nome": "Agência Nacional de Transportes Aquaviários",
+   "tipo": "agencia_reguladora",
+   "poder": "executivo",
+   "sigla": "Antaq",
+   "pai": "mpor",
+   "lei": "Lei 10.233/2001",
+   "cargo": {
+    "titulo": "Diretor(a)-Geral",
+    "situacao": "titular",
+    "ocupante": "Frederico Carvalho Dias",
+    "desde": "2025-08-28",
+    "mandato_ate": null,
+    "verificado_em": "2026-09",
+    "fonte": "https://eagendas.cgu.gov.br/pesquisa/agentes-publicos-obrigados-por-orgao/orgao/1191/ativo/true",
+    "fonte_nome": "e-Agendas (CGU), Agência Nacional de Transportes Aquaviários",
+    "fonte_agente": true
+   }
+  },
+  {
+   "id": "anac",
+   "nome": "Agência Nacional de Aviação Civil",
+   "tipo": "agencia_reguladora",
+   "poder": "executivo",
+   "sigla": "Anac",
+   "pai": "mpor",
+   "lei": "Lei 11.182/2005",
+   "cargo": {
+    "titulo": "Diretor(a)-Presidente",
+    "situacao": "titular",
+    "ocupante": "Tiago Chagas Faierstein",
+    "desde": "2026-08-03",
+    "mandato_ate": null,
+    "verificado_em": "2026-09",
+    "fonte": "https://eagendas.cgu.gov.br/pesquisa/agentes-publicos-obrigados-por-orgao/orgao/1223/ativo/true",
+    "fonte_nome": "e-Agendas (CGU), Agência Nacional de Aviação Civil",
+    "fonte_agente": true
+   }
+  },
+  {
+   "id": "infraero",
+   "nome": "Empresa Brasileira de Infraestrutura Aeroportuária",
+   "tipo": "empresa_publica",
+   "poder": "executivo",
+   "sigla": "Infraero",
+   "pai": "mpor",
+   "cargo": {
+    "titulo": "Presidente",
+    "situacao": "titular",
+    "ocupante": "Rogerio Amado Barzellay",
+    "desde": "2023-02-02",
+    "mandato_ate": null,
+    "verificado_em": "2026-09",
+    "fonte": "https://eagendas.cgu.gov.br/pesquisa/agentes-publicos-obrigados-por-orgao/orgao/1432/ativo/true",
+    "fonte_nome": "e-Agendas (CGU), Empresa Brasileira de Infraestrutura Aeroportuária",
+    "fonte_agente": true
+   }
+  },
+  {
+   "id": "docas",
+   "nome": "Companhias Docas",
+   "tipo": "grupo",
+   "poder": "executivo",
+   "pai": "mpor",
+   "descricao": "Autoridades portuárias federais (sociedades de economia mista): Santos, Rio de Janeiro, Espírito Santo, Bahia, Ceará, Pará e Rio Grande do Norte.",
+   "quantidade": 7
+  },
+  {
+   "id": "inss",
+   "nome": "Instituto Nacional do Seguro Social",
+   "tipo": "autarquia",
+   "poder": "executivo",
+   "sigla": "INSS",
+   "pai": "mps",
+   "site": "https://www.gov.br/inss",
+   "cargo": {
+    "titulo": "Presidente",
+    "situacao": "titular",
+    "ocupante": "Ana Cristina Viana Silveira",
+    "desde": "2026-04-13",
+    "mandato_ate": null,
+    "verificado_em": "2026-09",
+    "fonte": "https://eagendas.cgu.gov.br/pesquisa/agentes-publicos-obrigados-por-orgao/orgao/1149/ativo/true",
+    "fonte_nome": "e-Agendas (CGU), Instituto Nacional do Seguro Social",
+    "fonte_agente": true
+   }
+  },
+  {
+   "id": "previc",
+   "nome": "Superintendência Nacional de Previdência Complementar",
+   "tipo": "autarquia",
+   "poder": "executivo",
+   "sigla": "Previc",
+   "pai": "mps",
+   "cargo": {
+    "titulo": "Diretor(a)-Superintendente",
+    "situacao": "titular",
+    "ocupante": "Ricardo Pena Pinheiro",
+    "desde": "2023-02-17",
+    "mandato_ate": null,
+    "verificado_em": "2026-09",
+    "fonte": "https://eagendas.cgu.gov.br/pesquisa/agentes-publicos-obrigados-por-orgao/orgao/1272/ativo/true",
+    "fonte_nome": "e-Agendas (CGU), Superintendência Nacional de Previdência Complementar",
+    "fonte_agente": true
+   }
+  },
+  {
+   "id": "funag",
+   "nome": "Fundação Alexandre de Gusmão",
+   "tipo": "fundacao",
+   "poder": "executivo",
+   "sigla": "Funag",
+   "pai": "mre",
+   "cargo": {
+    "titulo": "Presidente",
+    "situacao": "titular",
+    "ocupante": "Jose Raphael Lopes Mendes de Azeredo",
+    "desde": "2024-09-13",
+    "mandato_ate": null,
+    "verificado_em": "2026-09",
+    "fonte": "https://eagendas.cgu.gov.br/pesquisa/agentes-publicos-obrigados-por-orgao/orgao/1061/ativo/true",
+    "fonte_nome": "e-Agendas (CGU), Fundação Alexandre de Gusmão",
+    "fonte_agente": true
+   }
+  },
+  {
+   "id": "anvisa",
+   "nome": "Agência Nacional de Vigilância Sanitária",
+   "tipo": "agencia_reguladora",
+   "poder": "executivo",
+   "sigla": "Anvisa",
+   "pai": "ms",
+   "lei": "Lei 9.782/1999",
+   "site": "https://www.gov.br/anvisa",
+   "cargo": {
+    "titulo": "Diretor(a)-Presidente",
+    "situacao": "titular",
+    "ocupante": "Leandro Pinheiro Safatle",
+    "desde": "2025-08-29",
+    "mandato_ate": null,
+    "verificado_em": "2026-09",
+    "fonte": "https://eagendas.cgu.gov.br/pesquisa/agentes-publicos-obrigados-por-orgao/orgao/1178/ativo/true",
+    "fonte_nome": "e-Agendas (CGU), Agência Nacional de Vigilância Sanitária",
+    "fonte_agente": true
+   }
+  },
+  {
+   "id": "ans",
+   "nome": "Agência Nacional de Saúde Suplementar",
+   "tipo": "agencia_reguladora",
+   "poder": "executivo",
+   "sigla": "ANS",
+   "pai": "ms",
+   "lei": "Lei 9.961/2000",
+   "cargo": {
+    "titulo": "Diretor(a)-Presidente",
+    "situacao": "titular",
+    "ocupante": "Wadih Nemer Damous Filho",
+    "desde": "2026-06-15",
+    "mandato_ate": null,
+    "verificado_em": "2026-09",
+    "fonte": "https://eagendas.cgu.gov.br/pesquisa/agentes-publicos-obrigados-por-orgao/orgao/1181/ativo/true",
+    "fonte_nome": "e-Agendas (CGU), Agência Nacional de Saúde Suplementar",
+    "fonte_agente": true
+   }
+  },
+  {
+   "id": "fiocruz",
+   "nome": "Fundação Oswaldo Cruz",
+   "tipo": "fundacao",
+   "poder": "executivo",
+   "sigla": "Fiocruz",
+   "pai": "ms",
+   "site": "https://portal.fiocruz.br",
+   "cargo": {
+    "titulo": "Presidente",
+    "situacao": "titular",
+    "ocupante": "Mario Santos Moreira",
+    "desde": "2023-04-13",
+    "mandato_ate": null,
+    "verificado_em": "2026-09",
+    "fonte": "https://eagendas.cgu.gov.br/pesquisa/agentes-publicos-obrigados-por-orgao/orgao/1064/ativo/true",
+    "fonte_nome": "e-Agendas (CGU), Fundação Oswaldo Cruz",
+    "fonte_agente": true
+   }
+  },
+  {
+   "id": "funasa",
+   "nome": "Fundação Nacional de Saúde",
+   "tipo": "fundacao",
+   "poder": "executivo",
+   "sigla": "Funasa",
+   "pai": "ms",
+   "cargo": {
+    "titulo": "Presidente",
+    "situacao": "titular",
+    "ocupante": "Lenildo Dias de Morais",
+    "desde": "2026-05-11",
+    "mandato_ate": null,
+    "verificado_em": "2026-09",
+    "fonte": "https://eagendas.cgu.gov.br/pesquisa/agentes-publicos-obrigados-por-orgao/orgao/1156/ativo/true",
+    "fonte_nome": "e-Agendas (CGU), Fundação Nacional de Saúde",
+    "fonte_agente": true
+   }
+  },
+  {
+   "id": "hemobras",
+   "nome": "Empresa Brasileira de Hemoderivados e Biotecnologia",
+   "tipo": "empresa_publica",
+   "poder": "executivo",
+   "sigla": "Hemobrás",
+   "pai": "ms",
+   "cargo": {
+    "titulo": "Presidente",
+    "situacao": "titular",
+    "ocupante": "Ana Paula do Rego Menezes",
+    "desde": "2024-03-15",
+    "mandato_ate": null,
+    "verificado_em": "2026-09",
+    "fonte": "https://eagendas.cgu.gov.br/pesquisa/agentes-publicos-obrigados-por-orgao/orgao/1430/ativo/true",
+    "fonte_nome": "e-Agendas (CGU), Empresa Brasileira de Hemoderivados e Biotecnologia",
+    "fonte_agente": true
+   }
+  },
+  {
+   "id": "ghc",
+   "nome": "Grupo Hospitalar Conceição",
+   "tipo": "sociedade_economia_mista",
+   "poder": "executivo",
+   "sigla": "GHC",
+   "pai": "ms",
+   "cargo": {
+    "titulo": "Presidente",
+    "situacao": "titular",
+    "ocupante": "Gilberto Barichello",
+    "desde": null,
+    "mandato_ate": null,
+    "verificado_em": "2026-09",
+    "fonte": "https://www.ghc.com.br/default.asp?idMenu=institucional&idSubMenu=2",
+    "fonte_nome": "Site oficial do Grupo Hospitalar Conceição (Institucional, Diretoria)",
+    "fonte_agente": true
+   }
+  },
+  {
+   "id": "inca",
+   "nome": "Instituto Nacional de Câncer",
+   "tipo": "orgao",
+   "poder": "executivo",
+   "sigla": "INCA",
+   "pai": "ms",
+   "cargo": {
+    "titulo": "Diretor(a)-Geral",
+    "situacao": "titular",
+    "ocupante": "Roberto de Almeida Gil",
+    "desde": "2023-02-13",
+    "mandato_ate": null,
+    "verificado_em": "2026-09",
+    "fonte": "https://eagendas.cgu.gov.br/pesquisa/agentes-publicos-obrigados-por-orgao/orgao/563/ativo/true",
+    "fonte_nome": "e-Agendas (CGU), Ministério da Saúde",
+    "fonte_agente": true
+   }
+  },
+  {
+   "id": "fundacentro",
+   "nome": "Fundação Jorge Duprat Figueiredo de Segurança e Medicina do Trabalho",
+   "tipo": "fundacao",
+   "poder": "executivo",
+   "sigla": "Fundacentro",
+   "pai": "mte",
+   "cargo": {
+    "titulo": "Presidente",
+    "situacao": "titular",
+    "ocupante": "Jose Cloves da Silva",
+    "desde": "2026-04-27",
+    "mandato_ate": null,
+    "verificado_em": "2026-09",
+    "fonte": "https://eagendas.cgu.gov.br/pesquisa/agentes-publicos-obrigados-por-orgao/orgao/1039/ativo/true",
+    "fonte_nome": "e-Agendas (CGU), Fundação Jorge Duprat Figueiredo, de Segurança e Medicina do Trabalho",
+    "fonte_agente": true
+   }
+  },
+  {
+   "id": "antt",
+   "nome": "Agência Nacional de Transportes Terrestres",
+   "tipo": "agencia_reguladora",
+   "poder": "executivo",
+   "sigla": "ANTT",
+   "pai": "mt",
+   "lei": "Lei 10.233/2001",
+   "cargo": {
+    "titulo": "Diretor(a)-Geral",
+    "situacao": "titular",
+    "ocupante": "Guilherme Theo Rodrigues da Rocha Sampaio",
+    "desde": "2026-09-01",
+    "mandato_ate": null,
+    "verificado_em": "2026-09",
+    "fonte": "https://eagendas.cgu.gov.br/pesquisa/agentes-publicos-obrigados-por-orgao/orgao/1190/ativo/true",
+    "fonte_nome": "e-Agendas (CGU), Agência Nacional de Transportes Terrestres",
+    "fonte_agente": true
+   }
+  },
+  {
+   "id": "dnit",
+   "nome": "Departamento Nacional de Infraestrutura de Transportes",
+   "tipo": "autarquia",
+   "poder": "executivo",
+   "sigla": "DNIT",
+   "pai": "mt",
+   "cargo": {
+    "titulo": "Diretor(a)-Geral",
+    "situacao": "titular",
+    "ocupante": "Fabricio de Oliveira Galvao",
+    "desde": "2023-02-22",
+    "mandato_ate": null,
+    "verificado_em": "2026-09",
+    "fonte": "https://eagendas.cgu.gov.br/pesquisa/agentes-publicos-obrigados-por-orgao/orgao/1192/ativo/true",
+    "fonte_nome": "e-Agendas (CGU), Departamento Nacional de Infraestrutura de Transportes",
+    "fonte_agente": true
+   }
+  },
+  {
+   "id": "infra-sa",
+   "nome": "Infra S.A.",
+   "tipo": "empresa_publica",
+   "poder": "executivo",
+   "sigla": "Infra S.A.",
+   "pai": "mt",
+   "descricao": "Resultado da incorporação da EPL pela Valec (2022). Planejamento e infraestrutura ferroviária.",
+   "cargo": {
+    "titulo": "Presidente",
+    "situacao": "titular",
+    "ocupante": "Jorge Luiz Macedo Bastos",
+    "desde": "2023-11-10",
+    "mandato_ate": null,
+    "verificado_em": "2026-09",
+    "fonte": "https://eagendas.cgu.gov.br/pesquisa/agentes-publicos-obrigados-por-orgao/orgao/1427/ativo/true",
+    "fonte_nome": "e-Agendas (CGU), Infra S/A",
+    "fonte_agente": true
+   }
+  },
+  {
+   "id": "embratur",
+   "nome": "Agência Brasileira de Promoção Internacional do Turismo",
+   "tipo": "servico_social_autonomo",
+   "poder": "executivo",
+   "sigla": "Embratur",
+   "pai": "mtur",
+   "cargo": {
+    "titulo": "Presidente",
+    "situacao": "titular",
+    "ocupante": "Bruno Giovanni dos Reis",
+    "desde": "2026-04-17",
+    "mandato_ate": null,
+    "verificado_em": "2026-09",
+    "fonte": "https://www.in.gov.br/web/dou/-/decretos-de-17-de-abril-de-2026-700544642",
+    "fonte_nome": "Diário Oficial da União (in.gov.br)",
+    "fonte_agente": true
+   }
+  },
+  {
+   "id": "funai",
+   "nome": "Fundação Nacional dos Povos Indígenas",
+   "tipo": "fundacao",
+   "poder": "executivo",
+   "sigla": "Funai",
+   "pai": "mpi",
+   "cargo": {
+    "titulo": "Presidente",
+    "situacao": "titular",
+    "ocupante": "Lucia Alberta Andrade de Oliveira",
+    "desde": "2026-04-09",
+    "mandato_ate": null,
+    "verificado_em": "2026-09",
+    "fonte": "https://eagendas.cgu.gov.br/pesquisa/agentes-publicos-obrigados-por-orgao/orgao/1032/ativo/true",
+    "fonte_nome": "e-Agendas (CGU), Fundação Nacional do Índio",
+    "fonte_agente": true
+   },
+   "descricao": "Transferida do MJSP para o Ministério dos Povos Indígenas em 2023 (Lei 14.600/2023)."
+  },
+  {
+   "id": "saps",
+   "nome": "Secretaria de Atenção Primária à Saúde",
+   "tipo": "orgao",
+   "poder": "executivo",
+   "sigla": "SAPS",
+   "pai": "ms",
+   "lei": "Decreto 11.798/2023",
+   "cargo": {
+    "titulo": "Secretário(a)",
+    "situacao": "titular",
+    "ocupante": "Ana Luiza Ferreira Rodrigues Caldas",
+    "desde": "2025-03-18",
+    "mandato_ate": null,
+    "verificado_em": "2026-09",
+    "fonte": "https://eagendas.cgu.gov.br/pesquisa/agentes-publicos-obrigados-por-orgao/orgao/563/ativo/true",
+    "fonte_nome": "e-Agendas (CGU), Ministério da Saúde",
+    "fonte_agente": true
+   }
+  },
+  {
+   "id": "saes",
+   "nome": "Secretaria de Atenção Especializada à Saúde",
+   "tipo": "orgao",
+   "poder": "executivo",
+   "sigla": "SAES",
+   "pai": "ms",
+   "lei": "Decreto 11.798/2023",
+   "cargo": {
+    "titulo": "Secretário(a)",
+    "situacao": "titular",
+    "ocupante": "Mozart Julio Tabosa Sales",
+    "desde": "2025-03-12",
+    "mandato_ate": null,
+    "verificado_em": "2026-09",
+    "fonte": "https://eagendas.cgu.gov.br/pesquisa/agentes-publicos-obrigados-por-orgao/orgao/563/ativo/true",
+    "fonte_nome": "e-Agendas (CGU), Ministério da Saúde",
+    "fonte_agente": true
+   }
+  },
+  {
+   "id": "svsa",
+   "nome": "Secretaria de Vigilância em Saúde e Ambiente",
+   "tipo": "orgao",
+   "poder": "executivo",
+   "sigla": "SVSA",
+   "pai": "ms",
+   "lei": "Decreto 11.798/2023",
+   "cargo": {
+    "titulo": "Secretário(a)",
+    "situacao": "titular",
+    "ocupante": "Fabiano Geraldo Pimenta Junior",
+    "desde": "2026-07-31",
+    "mandato_ate": null,
+    "verificado_em": "2026-09",
+    "fonte": "https://eagendas.cgu.gov.br/pesquisa/agentes-publicos-obrigados-por-orgao/orgao/563/ativo/true",
+    "fonte_nome": "e-Agendas (CGU), Ministério da Saúde",
+    "fonte_agente": true
+   }
+  },
+  {
+   "id": "sgtes",
+   "nome": "Secretaria de Gestão do Trabalho e da Educação na Saúde",
+   "tipo": "orgao",
+   "poder": "executivo",
+   "sigla": "SGTES",
+   "pai": "ms",
+   "lei": "Decreto 11.798/2023",
+   "cargo": {
+    "titulo": "Secretário(a)",
+    "situacao": "titular",
+    "ocupante": "Felipe Proenço de Oliveira",
+    "desde": "2025-03-18",
+    "mandato_ate": null,
+    "verificado_em": "2026-09",
+    "fonte": "https://eagendas.cgu.gov.br/pesquisa/agentes-publicos-obrigados-por-orgao/orgao/563/ativo/true",
+    "fonte_nome": "e-Agendas (CGU), Ministério da Saúde",
+    "fonte_agente": true
+   }
+  },
+  {
+   "id": "sectics",
+   "nome": "Secretaria de Ciência, Tecnologia, Inovação e Complexo Econômico-Industrial da Saúde",
+   "tipo": "orgao",
+   "poder": "executivo",
+   "sigla": "SECTICS",
+   "pai": "ms",
+   "lei": "Decreto 11.798/2023",
+   "cargo": {
+    "titulo": "Secretário(a)",
+    "situacao": "titular",
+    "ocupante": "Fernanda De Negri",
+    "desde": "2025-03",
+    "mandato_ate": null,
+    "verificado_em": "2026-09",
+    "fonte": "https://www.gov.br/saude/pt-br/composicao/secretaria-de-ciencia-tecnologia-e-inovacao-em-saude-sctie",
+    "fonte_nome": "Site oficial do Ministério da Saúde (gov.br/saude)",
+    "fonte_agente": true
+   }
+  },
+  {
+   "id": "seidigi",
+   "nome": "Secretaria de Informação e Saúde Digital",
+   "tipo": "orgao",
+   "poder": "executivo",
+   "sigla": "SEIDIGI",
+   "pai": "ms",
+   "lei": "Decreto 11.798/2023",
+   "cargo": {
+    "titulo": "Secretário(a)",
+    "situacao": "titular",
+    "ocupante": "Maria Aparecida Cina da Silva",
+    "desde": "2026-08-19",
+    "mandato_ate": null,
+    "verificado_em": "2026-09",
+    "fonte": "https://eagendas.cgu.gov.br/pesquisa/agentes-publicos-obrigados-por-orgao/orgao/563/ativo/true",
+    "fonte_nome": "e-Agendas (CGU), Ministério da Saúde",
+    "fonte_agente": true
+   }
+  },
+  {
+   "id": "sesai",
+   "nome": "Secretaria de Saúde Indígena",
+   "tipo": "orgao",
+   "poder": "executivo",
+   "sigla": "SESAI",
+   "pai": "ms",
+   "lei": "Decreto 11.798/2023",
+   "cargo": {
+    "titulo": "Secretário(a)",
+    "situacao": "titular",
+    "ocupante": "Maria Lucilene Martins Santos",
+    "desde": "2026-04-07",
+    "mandato_ate": null,
+    "verificado_em": "2026-09",
+    "fonte": "https://eagendas.cgu.gov.br/pesquisa/agentes-publicos-obrigados-por-orgao/orgao/563/ativo/true",
+    "fonte_nome": "e-Agendas (CGU), Ministério da Saúde",
+    "fonte_agente": true
+   }
+  },
+  {
+   "id": "seb",
+   "nome": "Secretaria de Educação Básica",
+   "tipo": "orgao",
+   "poder": "executivo",
+   "sigla": "SEB",
+   "pai": "mec",
+   "lei": "Decreto 11.342/2023",
+   "cargo": {
+    "titulo": "Secretário(a)",
+    "situacao": "titular",
+    "ocupante": "Katia Helena Serafina Cruz Schweickardt",
+    "desde": "2023-01-24",
+    "mandato_ate": null,
+    "verificado_em": "2026-09",
+    "fonte": "https://eagendas.cgu.gov.br/pesquisa/agentes-publicos-obrigados-por-orgao/orgao/549/ativo/true",
+    "fonte_nome": "e-Agendas (CGU), Ministério da Educação",
+    "fonte_agente": true
+   }
+  },
+  {
+   "id": "sesu",
+   "nome": "Secretaria de Educação Superior",
+   "tipo": "orgao",
+   "poder": "executivo",
+   "sigla": "SESu",
+   "pai": "mec",
+   "lei": "Decreto 11.342/2023",
+   "cargo": {
+    "titulo": "Secretário(a)",
+    "situacao": "titular",
+    "ocupante": "Marcus Vinicius David",
+    "desde": "2025-02-24",
+    "mandato_ate": null,
+    "verificado_em": "2026-09",
+    "fonte": "https://eagendas.cgu.gov.br/pesquisa/agentes-publicos-obrigados-por-orgao/orgao/549/ativo/true",
+    "fonte_nome": "e-Agendas (CGU), Ministério da Educação",
+    "fonte_agente": true
+   }
+  },
+  {
+   "id": "setec",
+   "nome": "Secretaria de Educação Profissional e Tecnológica",
+   "tipo": "orgao",
+   "poder": "executivo",
+   "sigla": "SETEC",
+   "pai": "mec",
+   "lei": "Decreto 11.342/2023",
+   "cargo": {
+    "titulo": "Secretário(a)",
+    "situacao": "titular",
+    "ocupante": "Marcelo Bregagnoli",
+    "desde": "2024-04-29",
+    "mandato_ate": null,
+    "verificado_em": "2026-09",
+    "fonte": "https://eagendas.cgu.gov.br/pesquisa/agentes-publicos-obrigados-por-orgao/orgao/549/ativo/true",
+    "fonte_nome": "e-Agendas (CGU), Ministério da Educação",
+    "fonte_agente": true
+   }
+  },
+  {
+   "id": "secadi",
+   "nome": "Secretaria de Educação Continuada, Alfabetização de Jovens e Adultos, Diversidade e Inclusão",
+   "tipo": "orgao",
+   "poder": "executivo",
+   "sigla": "SECADI",
+   "pai": "mec",
+   "lei": "Decreto 11.342/2023",
+   "cargo": {
+    "titulo": "Secretário(a)",
+    "situacao": "titular",
+    "ocupante": "Maria do Rosario Figueiredo Tripodi",
+    "desde": "2023-01-24",
+    "mandato_ate": null,
+    "verificado_em": "2026-09",
+    "fonte": "https://eagendas.cgu.gov.br/pesquisa/agentes-publicos-obrigados-por-orgao/orgao/549/ativo/true",
+    "fonte_nome": "e-Agendas (CGU), Ministério da Educação",
+    "fonte_agente": true
+   }
+  },
+  {
+   "id": "seres",
+   "nome": "Secretaria de Regulação e Supervisão da Educação Superior",
+   "tipo": "orgao",
+   "poder": "executivo",
+   "sigla": "SERES",
+   "pai": "mec",
+   "lei": "Decreto 11.342/2023",
+   "cargo": {
+    "titulo": "Secretário(a)",
+    "situacao": "titular",
+    "ocupante": "Marta Wendel Abramo",
+    "desde": "2024-02-15",
+    "mandato_ate": null,
+    "verificado_em": "2026-09",
+    "fonte": "https://eagendas.cgu.gov.br/pesquisa/agentes-publicos-obrigados-por-orgao/orgao/549/ativo/true",
+    "fonte_nome": "e-Agendas (CGU), Ministério da Educação",
+    "fonte_agente": true
+   }
+  },
+  {
+   "id": "sase",
+   "nome": "Secretaria de Articulação Intersetorial e com os Sistemas de Ensino",
+   "tipo": "orgao",
+   "poder": "executivo",
+   "sigla": "SASE",
+   "pai": "mec",
+   "lei": "Decreto 11.342/2023",
+   "cargo": {
+    "titulo": "Secretário(a)",
+    "situacao": "titular",
+    "ocupante": "Gregório Durlo Grisa",
+    "desde": "2025-06-23",
+    "mandato_ate": null,
+    "verificado_em": "2026-09",
+    "fonte": "https://eagendas.cgu.gov.br/pesquisa/agentes-publicos-obrigados-por-orgao/orgao/549/ativo/true",
+    "fonte_nome": "e-Agendas (CGU), Ministério da Educação",
+    "fonte_agente": true
+   }
+  },
+  {
+   "id": "senasp",
+   "nome": "Secretaria Nacional de Segurança Pública",
+   "tipo": "orgao",
+   "poder": "executivo",
+   "sigla": "Senasp",
+   "pai": "mjsp",
+   "lei": "Decreto 11.348/2023",
+   "cargo": {
+    "titulo": "Secretário(a)",
+    "situacao": "titular",
+    "ocupante": "Francisco Lucas Costa Veloso",
+    "desde": "2026-02-02",
+    "mandato_ate": null,
+    "verificado_em": "2026-09",
+    "fonte": "https://eagendas.cgu.gov.br/pesquisa/agentes-publicos-obrigados-por-orgao/orgao/856/ativo/true",
+    "fonte_nome": "e-Agendas (CGU), Ministério da Justiça e Segurança Pública",
+    "fonte_agente": true
+   }
+  },
+  {
+   "id": "senad",
+   "nome": "Secretaria Nacional de Políticas sobre Drogas e Ativos",
+   "tipo": "orgao",
+   "poder": "executivo",
+   "sigla": "Senad",
+   "pai": "mjsp",
+   "lei": "Decreto 11.348/2023",
+   "cargo": {
+    "titulo": "Secretário(a)",
+    "situacao": "titular",
+    "ocupante": "Marta Rodriguez de Assis Machado",
+    "desde": "2023-01-09",
+    "mandato_ate": null,
+    "verificado_em": "2026-09",
+    "fonte": "https://eagendas.cgu.gov.br/pesquisa/agentes-publicos-obrigados-por-orgao/orgao/856/ativo/true",
+    "fonte_nome": "e-Agendas (CGU), Ministério da Justiça e Segurança Pública",
+    "fonte_agente": true
+   }
+  },
+  {
+   "id": "senacon",
+   "nome": "Secretaria Nacional do Consumidor",
+   "tipo": "orgao",
+   "poder": "executivo",
+   "sigla": "Senacon",
+   "pai": "mjsp",
+   "lei": "Decreto 11.348/2023",
+   "cargo": {
+    "titulo": "Secretário(a)",
+    "situacao": "titular",
+    "ocupante": "Ricardo Morishita Wada",
+    "desde": "2026-02-24",
+    "mandato_ate": null,
+    "verificado_em": "2026-09",
+    "fonte": "https://eagendas.cgu.gov.br/pesquisa/agentes-publicos-obrigados-por-orgao/orgao/856/ativo/true",
+    "fonte_nome": "e-Agendas (CGU), Ministério da Justiça e Segurança Pública",
+    "fonte_agente": true
+   }
+  },
+  {
+   "id": "senajus",
+   "nome": "Secretaria Nacional de Justiça",
+   "tipo": "orgao",
+   "poder": "executivo",
+   "sigla": "Senajus",
+   "pai": "mjsp",
+   "lei": "Decreto 11.348/2023",
+   "cargo": {
+    "titulo": "Secretário(a)",
+    "situacao": "titular",
+    "ocupante": "Maria Rosa Guimaraes Loula",
+    "desde": "2026-02-18",
+    "mandato_ate": null,
+    "verificado_em": "2026-09",
+    "fonte": "https://eagendas.cgu.gov.br/pesquisa/agentes-publicos-obrigados-por-orgao/orgao/856/ativo/true",
+    "fonte_nome": "e-Agendas (CGU), Ministério da Justiça e Segurança Pública",
+    "fonte_agente": true
+   }
+  },
+  {
+   "id": "sal",
+   "nome": "Secretaria de Assuntos Legislativos",
+   "tipo": "orgao",
+   "poder": "executivo",
+   "sigla": "SAL",
+   "pai": "mjsp",
+   "lei": "Decreto 11.348/2023",
+   "cargo": {
+    "titulo": "Secretário(a)",
+    "situacao": "titular",
+    "ocupante": "Paulo Eduardo Garrido Modesto",
+    "desde": "2026-02-10",
+    "mandato_ate": null,
+    "verificado_em": "2026-09",
+    "fonte": "https://eagendas.cgu.gov.br/pesquisa/agentes-publicos-obrigados-por-orgao/orgao/856/ativo/true",
+    "fonte_nome": "e-Agendas (CGU), Ministério da Justiça e Segurança Pública",
+    "fonte_agente": true
+   }
+  },
+  {
+   "id": "congresso",
+   "nome": "Congresso Nacional",
+   "tipo": "casa_legislativa",
+   "poder": "legislativo",
+   "sigla": "CN",
+   "pai": "leg",
+   "lei": "CF, arts. 44 a 75",
+   "site": "https://www.congressonacional.leg.br",
+   "descricao": "Sistema bicameral. A Mesa do Congresso é presidida pelo Presidente do Senado (CF, art. 57, § 5º).",
+   "cargo": {
+    "titulo": "Presidente do Congresso Nacional",
+    "situacao": "titular",
+    "ocupante": "Davi Alcolumbre",
+    "desde": "2025-02-01",
+    "mandato_ate": "2027-01-31",
+    "verificado_em": "2025-02",
+    "fonte": "https://www.congressonacional.leg.br"
+   }
+  },
+  {
+   "id": "camara",
+   "nome": "Câmara dos Deputados",
+   "tipo": "casa_legislativa",
+   "poder": "legislativo",
+   "sigla": "CD",
+   "pai": "congresso",
+   "site": "https://www.camara.leg.br",
+   "descricao": "513 deputados federais, representantes do povo, mandato de quatro anos (CF, art. 45).",
+   "quantidade": 513,
+   "cargo": {
+    "titulo": "Presidente da Câmara dos Deputados",
+    "situacao": "titular",
+    "ocupante": "Hugo Motta",
+    "desde": "2025-02-01",
+    "mandato_ate": "2027-01-31",
+    "verificado_em": "2025-02",
+    "fonte": "https://www.camara.leg.br"
+   }
+  },
+  {
+   "id": "senado",
+   "nome": "Senado Federal",
+   "tipo": "casa_legislativa",
+   "poder": "legislativo",
+   "sigla": "SF",
+   "pai": "congresso",
+   "site": "https://www.senado.leg.br",
+   "descricao": "81 senadores, três por estado e pelo DF, mandato de oito anos (CF, art. 46).",
+   "quantidade": 81,
+   "cargo": {
+    "titulo": "Presidente do Senado Federal",
+    "situacao": "titular",
+    "ocupante": "Davi Alcolumbre",
+    "desde": "2025-02-01",
+    "mandato_ate": "2027-01-31",
+    "verificado_em": "2025-02",
+    "fonte": "https://www.senado.leg.br"
+   }
+  },
+  {
+   "id": "tcu",
+   "nome": "Tribunal de Contas da União",
+   "tipo": "tribunal",
+   "poder": "legislativo",
+   "sigla": "TCU",
+   "pai": "congresso",
+   "lei": "CF, arts. 70 a 75; Lei 8.443/1992",
+   "site": "https://portal.tcu.gov.br",
+   "descricao": "Controle externo da administração federal, em auxílio ao Congresso. Nove ministros: um terço escolhido pelo Presidente da República (com aprovação do Senado), dois terços pelo Congresso (CF, arts. 71 a 73).",
+   "quantidade": 9,
+   "cargo": {
+    "titulo": "Presidente",
+    "situacao": "titular",
+    "ocupante": "Vital do Rêgo",
+    "desde": "2025-01-01",
+    "mandato_ate": "2026-12-31",
+    "verificado_em": "2025-12",
+    "fonte": "https://portal.tcu.gov.br/imprensa/noticias/vital-do-rego-e-jorge-oliveira-sao-reeleitos-presidente-e-vice-presidente-do-tcu"
+   }
+  },
+  {
+   "id": "stf",
+   "nome": "Supremo Tribunal Federal",
+   "tipo": "tribunal",
+   "poder": "judiciario",
+   "sigla": "STF",
+   "pai": "jud",
+   "lei": "CF, arts. 101 a 103",
+   "site": "https://portal.stf.jus.br",
+   "descricao": "Guarda da Constituição. Onze ministros nomeados pelo Presidente da República após aprovação do Senado (CF, arts. 101 a 103).",
+   "quantidade": 11,
+   "cargo": {
+    "titulo": "Presidente",
+    "situacao": "titular",
+    "ocupante": "Edson Fachin",
+    "desde": "2025-09-29",
+    "mandato_ate": "2027-09",
+    "verificado_em": "2025-09",
+    "fonte": "https://portal.stf.jus.br"
+   }
+  },
+  {
+   "id": "cnj",
+   "nome": "Conselho Nacional de Justiça",
+   "tipo": "orgao",
+   "poder": "judiciario",
+   "sigla": "CNJ",
+   "pai": "jud",
+   "lei": "CF, art. 103-B",
+   "site": "https://www.cnj.jus.br",
+   "descricao": "Controle da atuação administrativa e financeira do Judiciário. Presidido pelo Presidente do STF (CF, art. 103-B).",
+   "quantidade": 15,
+   "cargo": {
+    "titulo": "Presidente (o Presidente do STF)",
+    "situacao": "titular",
+    "ocupante": "Edson Fachin",
+    "desde": "2025-09-29",
+    "mandato_ate": "2027-09",
+    "verificado_em": "2025-09",
+    "fonte": "https://www.cnj.jus.br"
+   }
+  },
+  {
+   "id": "stj",
+   "nome": "Superior Tribunal de Justiça",
+   "tipo": "tribunal",
+   "poder": "judiciario",
+   "sigla": "STJ",
+   "pai": "jud",
+   "lei": "CF, arts. 104 e 105",
+   "site": "https://www.stj.jus.br",
+   "descricao": "Uniformiza a interpretação da lei federal. Trinta e três ministros (CF, arts. 104 e 105).",
+   "quantidade": 33,
+   "cargo": {
+    "titulo": "Presidente",
+    "situacao": "titular",
+    "ocupante": "Luis Felipe Salomão",
+    "desde": "2026-08-19",
+    "mandato_ate": "2028-08",
+    "verificado_em": "2026-08",
+    "fonte": "https://www.stj.jus.br/sites/portalp/Paginas/Comunicacao/Noticias/2026/19082026-Luis-Felipe-Salomao-assume-presidencia-do-STJ-com-foco-em-retomada-da-vocacao-da-corte.aspx"
+   }
+  },
+  {
+   "id": "cjf",
+   "nome": "Conselho da Justiça Federal",
+   "tipo": "orgao",
+   "poder": "judiciario",
+   "sigla": "CJF",
+   "pai": "stj",
+   "descricao": "Supervisão administrativa e orçamentária da Justiça Federal de primeiro e segundo graus. Funciona junto ao STJ (CF, art. 105, parágrafo único).",
+   "cargo": {
+    "titulo": "Presidente (o Presidente do STJ)",
+    "situacao": "titular",
+    "ocupante": "Luis Felipe Salomão",
+    "desde": "2026-08-19",
+    "mandato_ate": "2028-08",
+    "verificado_em": "2026-08",
+    "fonte": "https://www.stj.jus.br"
+   }
+  },
+  {
+   "id": "trfs",
+   "nome": "Tribunais Regionais Federais",
+   "tipo": "grupo",
+   "poder": "judiciario",
+   "pai": "cjf",
+   "lei": "CF, arts. 106 a 110",
+   "descricao": "TRF1 (Brasília), TRF2 (Rio de Janeiro), TRF3 (São Paulo), TRF4 (Porto Alegre), TRF5 (Recife) e TRF6 (Belo Horizonte), com as seções judiciárias federais em cada estado.",
+   "quantidade": 6
+  },
+  {
+   "id": "tst",
+   "nome": "Tribunal Superior do Trabalho",
+   "tipo": "tribunal",
+   "poder": "judiciario",
+   "sigla": "TST",
+   "pai": "jud",
+   "lei": "CF, arts. 111 a 116",
+   "site": "https://www.tst.jus.br",
+   "descricao": "Cúpula da Justiça do Trabalho. Vinte e sete ministros (CF, art. 111-A).",
+   "quantidade": 27,
+   "cargo": {
+    "titulo": "Presidente",
+    "situacao": "titular",
+    "ocupante": "Luiz Philippe Vieira de Mello Filho",
+    "desde": "2025-09-25",
+    "mandato_ate": null,
+    "verificado_em": "2026-09",
+    "fonte": "https://www.tst.jus.br/presidencia-organograma",
+    "fonte_nome": "Portal do TST",
+    "fonte_agente": true
+   }
+  },
+  {
+   "id": "csjt",
+   "nome": "Conselho Superior da Justiça do Trabalho",
+   "tipo": "orgao",
+   "poder": "judiciario",
+   "sigla": "CSJT",
+   "pai": "tst",
+   "descricao": "Supervisão administrativa e orçamentária da Justiça do Trabalho de primeiro e segundo graus (CF, art. 111-A, § 2º, II)."
+  },
+  {
+   "id": "trts",
+   "nome": "Tribunais Regionais do Trabalho",
+   "tipo": "grupo",
+   "poder": "judiciario",
+   "pai": "csjt",
+   "descricao": "Vinte e quatro TRTs e as varas do trabalho.",
+   "quantidade": 24
+  },
+  {
+   "id": "tse",
+   "nome": "Tribunal Superior Eleitoral",
+   "tipo": "tribunal",
+   "poder": "judiciario",
+   "sigla": "TSE",
+   "pai": "jud",
+   "lei": "CF, arts. 118 a 121",
+   "site": "https://www.tse.jus.br",
+   "descricao": "Sete ministros: três do STF, dois do STJ e dois advogados nomeados pelo Presidente da República (CF, art. 119).",
+   "quantidade": 7,
+   "cargo": {
+    "titulo": "Presidente",
+    "situacao": "titular",
+    "ocupante": "Nunes Marques",
+    "desde": "2026-05-12",
+    "mandato_ate": "2027-05",
+    "verificado_em": "2026-05",
+    "fonte": "https://www.tse.jus.br/comunicacao/noticias/2026/Maio/ao-tomar-posse-na-presidencia-do-tse-nunes-marques-defende-a-vontade-soberana-do-povo-nas-urnas"
+   }
+  },
+  {
+   "id": "tres",
+   "nome": "Tribunais Regionais Eleitorais",
+   "tipo": "grupo",
+   "poder": "judiciario",
+   "pai": "tse",
+   "descricao": "Um TRE em cada estado e no Distrito Federal (CF, art. 120).",
+   "quantidade": 27
+  },
+  {
+   "id": "stm",
+   "nome": "Superior Tribunal Militar",
+   "tipo": "tribunal",
+   "poder": "judiciario",
+   "sigla": "STM",
+   "pai": "jud",
+   "lei": "CF, arts. 122 a 124",
+   "site": "https://www.stm.jus.br",
+   "descricao": "Quinze ministros vitalícios nomeados pelo Presidente da República após aprovação do Senado (CF, art. 123).",
+   "quantidade": 15,
+   "cargo": {
+    "titulo": "Presidente",
+    "situacao": "titular",
+    "ocupante": "Maria Elizabeth Guimarães Teixeira Rocha",
+    "desde": "2025-03-12",
+    "mandato_ate": null,
+    "verificado_em": "2026-09",
+    "fonte": "https://www.stm.jus.br/institucional/conheca-o-superior-tribunal-militar/composicao-da-corte",
+    "fonte_nome": "Portal do STM",
+    "fonte_agente": true
+   }
+  },
+  {
+   "id": "mpu",
+   "nome": "Ministério Público da União",
+   "tipo": "orgao",
+   "poder": "essencial",
+   "sigla": "MPU",
+   "pai": "fej",
+   "lei": "CF, arts. 127 a 130-A; LC 75/1993",
+   "descricao": "Chefiado pelo Procurador-Geral da República, nomeado pelo Presidente entre integrantes da carreira, após aprovação do Senado, para mandato de dois anos (CF, art. 128).",
+   "cargo": {
+    "titulo": "Procurador(a)-Geral da República",
+    "situacao": "titular",
+    "ocupante": "Paulo Gonet",
+    "desde": "2023-12-18",
+    "mandato_ate": "2027-12",
+    "verificado_em": "2025-11",
+    "fonte": "https://www12.senado.leg.br/noticias/materias/2025/11/12/por-45-votos-a-26-senado-aprova-reconducao-de-gonet"
+   }
+  },
+  {
+   "id": "mpf",
+   "nome": "Ministério Público Federal",
+   "tipo": "orgao",
+   "poder": "essencial",
+   "sigla": "MPF",
+   "pai": "mpu",
+   "site": "https://www.mpf.mp.br"
+  },
+  {
+   "id": "mpt",
+   "nome": "Ministério Público do Trabalho",
+   "tipo": "orgao",
+   "poder": "essencial",
+   "sigla": "MPT",
+   "pai": "mpu",
+   "cargo": {
+    "titulo": "Procurador(a)-Geral do Trabalho",
+    "situacao": "titular",
+    "ocupante": "Gláucio Araújo de Oliveira",
+    "desde": "2025-08-07",
+    "mandato_ate": null,
+    "verificado_em": "2026-09",
+    "fonte": "https://www.prt3.mpt.mp.br/procuradorias/prt-belohorizonte/3696-novo-procurador-geral-do-trabalho-e-empossado",
+    "fonte_nome": "Site oficial do Ministério Público do Trabalho (PRT-3)",
+    "fonte_agente": true
+   }
+  },
+  {
+   "id": "mpm",
+   "nome": "Ministério Público Militar",
+   "tipo": "orgao",
+   "poder": "essencial",
+   "sigla": "MPM",
+   "pai": "mpu",
+   "cargo": {
+    "titulo": "Procurador(a)-Geral de Justiça Militar",
+    "situacao": "titular",
+    "ocupante": "Clauro Roberto de Bortolli",
+    "desde": "2026-04-17",
+    "mandato_ate": null,
+    "verificado_em": "2026-09",
+    "fonte": "https://www.mpm.mp.br/arquivos/72322",
+    "fonte_nome": "Site oficial do Ministério Público Militar",
+    "fonte_agente": true
+   }
+  },
+  {
+   "id": "mpdft",
+   "nome": "Ministério Público do Distrito Federal e Territórios",
+   "tipo": "orgao",
+   "poder": "essencial",
+   "sigla": "MPDFT",
+   "pai": "mpu",
+   "cargo": {
+    "titulo": "Procurador(a)-Geral de Justiça",
+    "situacao": "titular",
+    "ocupante": "Georges Carlos Fredderico Moreira Seigneur",
+    "desde": "2022",
+    "mandato_ate": null,
+    "verificado_em": "2026-09",
+    "fonte": "https://www.mpdft.mp.br/portal/index.php/pgj",
+    "fonte_nome": "Portal do MPDFT",
+    "fonte_agente": true
+   }
+  },
+  {
+   "id": "cnmp",
+   "nome": "Conselho Nacional do Ministério Público",
+   "tipo": "orgao",
+   "poder": "essencial",
+   "sigla": "CNMP",
+   "pai": "fej",
+   "lei": "CF, art. 130-A",
+   "descricao": "Controle administrativo e financeiro do Ministério Público. Presidido pelo Procurador-Geral da República (CF, art. 130-A).",
+   "quantidade": 14,
+   "cargo": {
+    "titulo": "Presidente (o Procurador-Geral da República)",
+    "situacao": "titular",
+    "ocupante": "Paulo Gonet",
+    "desde": "2023-12-18",
+    "mandato_ate": "2027-12",
+    "verificado_em": "2025-11",
+    "fonte": "https://www.cnmp.mp.br"
+   }
+  },
+  {
+   "id": "dpu",
+   "nome": "Defensoria Pública da União",
+   "tipo": "orgao",
+   "poder": "essencial",
+   "sigla": "DPU",
+   "pai": "fej",
+   "lei": "CF, art. 134; LC 80/1994",
+   "site": "https://www.dpu.def.br",
+   "descricao": "Assistência jurídica integral e gratuita aos necessitados na esfera federal (CF, art. 134).",
+   "cargo": {
+    "titulo": "Defensor(a) Público-Geral Federal",
+    "situacao": "titular",
+    "ocupante": "Tarcijany Linhares Aguiar Machado",
+    "desde": "2026-05-28",
+    "mandato_ate": null,
+    "verificado_em": "2026-09",
+    "fonte": "https://quem-e-quem.dpu.def.br/",
+    "fonte_nome": "Site oficial da Defensoria Pública da União",
+    "fonte_agente": true
+   }
+  },
+  {
+   "id": "estados",
+   "nome": "Estados e Distrito Federal",
+   "tipo": "grupo",
+   "poder": "uniao",
+   "pai": "uniao",
+   "lei": "CF, arts. 18 a 32",
+   "descricao": "As 26 unidades federadas e o Distrito Federal, autônomas, com Poderes próprios (CF, arts. 18 e 25). Cada estado abre o seu próprio mapa, com governo, assembleia, tribunais e municípios.",
+   "quantidade": 27
+  },
+  {
+   "id": "uf-AC",
+   "nome": "Acre",
+   "tipo": "estado",
+   "poder": "uniao",
+   "sigla": "AC",
+   "pai": "estados",
+   "descricao": "Região Norte. Capital: Rio Branco. 8 deputados federais e 3 senadores.",
+   "quantidade": 8,
+   "vista": "estados/AC.json"
+  },
+  {
+   "id": "uf-AL",
+   "nome": "Alagoas",
+   "tipo": "estado",
+   "poder": "uniao",
+   "sigla": "AL",
+   "pai": "estados",
+   "descricao": "Região Nordeste. Capital: Maceió. 9 deputados federais e 3 senadores.",
+   "quantidade": 9,
+   "vista": "estados/AL.json"
+  },
+  {
+   "id": "uf-AP",
+   "nome": "Amapá",
+   "tipo": "estado",
+   "poder": "uniao",
+   "sigla": "AP",
+   "pai": "estados",
+   "descricao": "Região Norte. Capital: Macapá. 8 deputados federais e 3 senadores.",
+   "quantidade": 8,
+   "vista": "estados/AP.json"
+  },
+  {
+   "id": "uf-AM",
+   "nome": "Amazonas",
+   "tipo": "estado",
+   "poder": "uniao",
+   "sigla": "AM",
+   "pai": "estados",
+   "descricao": "Região Norte. Capital: Manaus. 8 deputados federais e 3 senadores.",
+   "quantidade": 8,
+   "vista": "estados/AM.json"
+  },
+  {
+   "id": "uf-BA",
+   "nome": "Bahia",
+   "tipo": "estado",
+   "poder": "uniao",
+   "sigla": "BA",
+   "pai": "estados",
+   "descricao": "Região Nordeste. Capital: Salvador. 39 deputados federais e 3 senadores.",
+   "quantidade": 39,
+   "vista": "estados/BA.json"
+  },
+  {
+   "id": "uf-CE",
+   "nome": "Ceará",
+   "tipo": "estado",
+   "poder": "uniao",
+   "sigla": "CE",
+   "pai": "estados",
+   "descricao": "Região Nordeste. Capital: Fortaleza. 22 deputados federais e 3 senadores.",
+   "quantidade": 22,
+   "vista": "estados/CE.json"
+  },
+  {
+   "id": "uf-DF",
+   "nome": "Distrito Federal",
+   "tipo": "estado",
+   "poder": "uniao",
+   "sigla": "DF",
+   "pai": "estados",
+   "descricao": "Região Centro-Oeste. Capital: Brasília. 8 deputados federais e 3 senadores.",
+   "quantidade": 8,
+   "vista": "estados/DF.json"
+  },
+  {
+   "id": "uf-ES",
+   "nome": "Espírito Santo",
+   "tipo": "estado",
+   "poder": "uniao",
+   "sigla": "ES",
+   "pai": "estados",
+   "descricao": "Região Sudeste. Capital: Vitória. 10 deputados federais e 3 senadores.",
+   "quantidade": 10,
+   "vista": "estados/ES.json"
+  },
+  {
+   "id": "uf-GO",
+   "nome": "Goiás",
+   "tipo": "estado",
+   "poder": "uniao",
+   "sigla": "GO",
+   "pai": "estados",
+   "descricao": "Região Centro-Oeste. Capital: Goiânia. 17 deputados federais e 3 senadores.",
+   "quantidade": 17,
+   "vista": "estados/GO.json"
+  },
+  {
+   "id": "uf-MA",
+   "nome": "Maranhão",
+   "tipo": "estado",
+   "poder": "uniao",
+   "sigla": "MA",
+   "pai": "estados",
+   "descricao": "Região Nordeste. Capital: São Luís. 18 deputados federais e 3 senadores.",
+   "quantidade": 18,
+   "vista": "estados/MA.json"
+  },
+  {
+   "id": "uf-MT",
+   "nome": "Mato Grosso",
+   "tipo": "estado",
+   "poder": "uniao",
+   "sigla": "MT",
+   "pai": "estados",
+   "descricao": "Região Centro-Oeste. Capital: Cuiabá. 8 deputados federais e 3 senadores.",
+   "quantidade": 8,
+   "vista": "estados/MT.json"
+  },
+  {
+   "id": "uf-MS",
+   "nome": "Mato Grosso do Sul",
+   "tipo": "estado",
+   "poder": "uniao",
+   "sigla": "MS",
+   "pai": "estados",
+   "descricao": "Região Centro-Oeste. Capital: Campo Grande. 8 deputados federais e 3 senadores.",
+   "quantidade": 8,
+   "vista": "estados/MS.json"
+  },
+  {
+   "id": "uf-MG",
+   "nome": "Minas Gerais",
+   "tipo": "estado",
+   "poder": "uniao",
+   "sigla": "MG",
+   "pai": "estados",
+   "descricao": "Região Sudeste. Capital: Belo Horizonte. 53 deputados federais e 3 senadores.",
+   "quantidade": 53,
+   "vista": "estados/MG.json"
+  },
+  {
+   "id": "uf-PR",
+   "nome": "Paraná",
+   "tipo": "estado",
+   "poder": "uniao",
+   "sigla": "PR",
+   "pai": "estados",
+   "descricao": "Região Sul. Capital: Curitiba. 30 deputados federais e 3 senadores.",
+   "quantidade": 30,
+   "vista": "estados/PR.json"
+  },
+  {
+   "id": "uf-PB",
+   "nome": "Paraíba",
+   "tipo": "estado",
+   "poder": "uniao",
+   "sigla": "PB",
+   "pai": "estados",
+   "descricao": "Região Nordeste. Capital: João Pessoa. 12 deputados federais e 3 senadores.",
+   "quantidade": 12,
+   "vista": "estados/PB.json"
+  },
+  {
+   "id": "uf-PA",
+   "nome": "Pará",
+   "tipo": "estado",
+   "poder": "uniao",
+   "sigla": "PA",
+   "pai": "estados",
+   "descricao": "Região Norte. Capital: Belém. 17 deputados federais e 3 senadores.",
+   "quantidade": 17,
+   "vista": "estados/PA.json"
+  },
+  {
+   "id": "uf-PE",
+   "nome": "Pernambuco",
+   "tipo": "estado",
+   "poder": "uniao",
+   "sigla": "PE",
+   "pai": "estados",
+   "descricao": "Região Nordeste. Capital: Recife. 25 deputados federais e 3 senadores.",
+   "quantidade": 25,
+   "vista": "estados/PE.json"
+  },
+  {
+   "id": "uf-PI",
+   "nome": "Piauí",
+   "tipo": "estado",
+   "poder": "uniao",
+   "sigla": "PI",
+   "pai": "estados",
+   "descricao": "Região Nordeste. Capital: Teresina. 10 deputados federais e 3 senadores.",
+   "quantidade": 10,
+   "vista": "estados/PI.json"
+  },
+  {
+   "id": "uf-RN",
+   "nome": "Rio Grande do Norte",
+   "tipo": "estado",
+   "poder": "uniao",
+   "sigla": "RN",
+   "pai": "estados",
+   "descricao": "Região Nordeste. Capital: Natal. 8 deputados federais e 3 senadores.",
+   "quantidade": 8,
+   "vista": "estados/RN.json"
+  },
+  {
+   "id": "uf-RS",
+   "nome": "Rio Grande do Sul",
+   "tipo": "estado",
+   "poder": "uniao",
+   "sigla": "RS",
+   "pai": "estados",
+   "descricao": "Região Sul. Capital: Porto Alegre. 31 deputados federais e 3 senadores.",
+   "quantidade": 31,
+   "vista": "estados/RS.json"
+  },
+  {
+   "id": "uf-RJ",
+   "nome": "Rio de Janeiro",
+   "tipo": "estado",
+   "poder": "uniao",
+   "sigla": "RJ",
+   "pai": "estados",
+   "descricao": "Região Sudeste. Capital: Rio de Janeiro. 46 deputados federais e 3 senadores.",
+   "quantidade": 46,
+   "vista": "estados/RJ.json"
+  },
+  {
+   "id": "uf-RO",
+   "nome": "Rondônia",
+   "tipo": "estado",
+   "poder": "uniao",
+   "sigla": "RO",
+   "pai": "estados",
+   "descricao": "Região Norte. Capital: Porto Velho. 8 deputados federais e 3 senadores.",
+   "quantidade": 8,
+   "vista": "estados/RO.json"
+  },
+  {
+   "id": "uf-RR",
+   "nome": "Roraima",
+   "tipo": "estado",
+   "poder": "uniao",
+   "sigla": "RR",
+   "pai": "estados",
+   "descricao": "Região Norte. Capital: Boa Vista. 8 deputados federais e 3 senadores.",
+   "quantidade": 8,
+   "vista": "estados/RR.json"
+  },
+  {
+   "id": "uf-SC",
+   "nome": "Santa Catarina",
+   "tipo": "estado",
+   "poder": "uniao",
+   "sigla": "SC",
+   "pai": "estados",
+   "descricao": "Região Sul. Capital: Florianópolis. 16 deputados federais e 3 senadores.",
+   "quantidade": 16,
+   "vista": "estados/SC.json"
+  },
+  {
+   "id": "uf-SE",
+   "nome": "Sergipe",
+   "tipo": "estado",
+   "poder": "uniao",
+   "sigla": "SE",
+   "pai": "estados",
+   "descricao": "Região Nordeste. Capital: Aracaju. 8 deputados federais e 3 senadores.",
+   "quantidade": 8,
+   "vista": "estados/SE.json"
+  },
+  {
+   "id": "uf-SP",
+   "nome": "São Paulo",
+   "tipo": "estado",
+   "poder": "uniao",
+   "sigla": "SP",
+   "pai": "estados",
+   "descricao": "Região Sudeste. Capital: São Paulo. 70 deputados federais e 3 senadores.",
+   "quantidade": 70,
+   "vista": "estados/SP.json"
+  },
+  {
+   "id": "uf-TO",
+   "nome": "Tocantins",
+   "tipo": "estado",
+   "poder": "uniao",
+   "sigla": "TO",
+   "pai": "estados",
+   "descricao": "Região Norte. Capital: Palmas. 8 deputados federais e 3 senadores.",
+   "quantidade": 8,
+   "vista": "estados/TO.json"
+  }
+ ],
+ "arestas": [
+  {
+   "de": "uniao",
+   "para": "exec",
+   "tipo": "compõe",
+   "hierarquica": true
+  },
+  {
+   "de": "uniao",
+   "para": "leg",
+   "tipo": "compõe",
+   "hierarquica": true
+  },
+  {
+   "de": "uniao",
+   "para": "jud",
+   "tipo": "compõe",
+   "hierarquica": true
+  },
+  {
+   "de": "uniao",
+   "para": "fej",
+   "tipo": "compõe",
+   "hierarquica": true
+  },
+  {
+   "de": "exec",
+   "para": "pr",
+   "tipo": "integra",
+   "hierarquica": true
+  },
+  {
+   "de": "pr",
+   "para": "vpr",
+   "tipo": "integra",
+   "hierarquica": true
+  },
+  {
+   "de": "pr",
+   "para": "casa-civil",
+   "tipo": "integra",
+   "hierarquica": true
+  },
+  {
+   "de": "pr",
+   "para": "seg-geral",
+   "tipo": "integra",
+   "hierarquica": true
+  },
+  {
+   "de": "pr",
+   "para": "sri",
+   "tipo": "integra",
+   "hierarquica": true
+  },
+  {
+   "de": "pr",
+   "para": "secom",
+   "tipo": "integra",
+   "hierarquica": true
+  },
+  {
+   "de": "pr",
+   "para": "gsi",
+   "tipo": "integra",
+   "hierarquica": true
+  },
+  {
+   "de": "pr",
+   "para": "agu",
+   "tipo": "integra",
+   "hierarquica": true
+  },
+  {
+   "de": "pr",
+   "para": "cgu",
+   "tipo": "integra",
+   "hierarquica": true
+  },
+  {
+   "de": "casa-civil",
+   "para": "iti",
+   "tipo": "vinculada a",
+   "hierarquica": true
+  },
+  {
+   "de": "casa-civil",
+   "para": "abin",
+   "tipo": "integra",
+   "hierarquica": true
+  },
+  {
+   "de": "secom",
+   "para": "ebc",
+   "tipo": "vinculada a",
+   "hierarquica": true
+  },
+  {
+   "de": "pr",
+   "para": "mapa",
+   "tipo": "integra",
+   "hierarquica": true
+  },
+  {
+   "de": "pr",
+   "para": "mcid",
+   "tipo": "integra",
+   "hierarquica": true
+  },
+  {
+   "de": "pr",
+   "para": "mcti",
+   "tipo": "integra",
+   "hierarquica": true
+  },
+  {
+   "de": "pr",
+   "para": "mcom",
+   "tipo": "integra",
+   "hierarquica": true
+  },
+  {
+   "de": "pr",
+   "para": "minc",
+   "tipo": "integra",
+   "hierarquica": true
+  },
+  {
+   "de": "pr",
+   "para": "md",
+   "tipo": "integra",
+   "hierarquica": true
+  },
+  {
+   "de": "pr",
+   "para": "mda",
+   "tipo": "integra",
+   "hierarquica": true
+  },
+  {
+   "de": "pr",
+   "para": "mds",
+   "tipo": "integra",
+   "hierarquica": true
+  },
+  {
+   "de": "pr",
+   "para": "mdic",
+   "tipo": "integra",
+   "hierarquica": true
+  },
+  {
+   "de": "pr",
+   "para": "mdhc",
+   "tipo": "integra",
+   "hierarquica": true
+  },
+  {
+   "de": "pr",
+   "para": "mec",
+   "tipo": "integra",
+   "hierarquica": true
+  },
+  {
+   "de": "pr",
+   "para": "memp",
+   "tipo": "integra",
+   "hierarquica": true
+  },
+  {
+   "de": "pr",
+   "para": "mesp",
+   "tipo": "integra",
+   "hierarquica": true
+  },
+  {
+   "de": "pr",
+   "para": "mf",
+   "tipo": "integra",
+   "hierarquica": true
+  },
+  {
+   "de": "pr",
+   "para": "mgi",
+   "tipo": "integra",
+   "hierarquica": true
+  },
+  {
+   "de": "pr",
+   "para": "mir",
+   "tipo": "integra",
+   "hierarquica": true
+  },
+  {
+   "de": "pr",
+   "para": "midr",
+   "tipo": "integra",
+   "hierarquica": true
+  },
+  {
+   "de": "pr",
+   "para": "mjsp",
+   "tipo": "integra",
+   "hierarquica": true
+  },
+  {
+   "de": "pr",
+   "para": "mma",
+   "tipo": "integra",
+   "hierarquica": true
+  },
+  {
+   "de": "pr",
+   "para": "mme",
+   "tipo": "integra",
+   "hierarquica": true
+  },
+  {
+   "de": "pr",
+   "para": "mmulheres",
+   "tipo": "integra",
+   "hierarquica": true
+  },
+  {
+   "de": "pr",
+   "para": "mpa",
+   "tipo": "integra",
+   "hierarquica": true
+  },
+  {
+   "de": "pr",
+   "para": "mpo",
+   "tipo": "integra",
+   "hierarquica": true
+  },
+  {
+   "de": "pr",
+   "para": "mpor",
+   "tipo": "integra",
+   "hierarquica": true
+  },
+  {
+   "de": "pr",
+   "para": "mps",
+   "tipo": "integra",
+   "hierarquica": true
+  },
+  {
+   "de": "pr",
+   "para": "mre",
+   "tipo": "integra",
+   "hierarquica": true
+  },
+  {
+   "de": "pr",
+   "para": "ms",
+   "tipo": "integra",
+   "hierarquica": true
+  },
+  {
+   "de": "pr",
+   "para": "mte",
+   "tipo": "integra",
+   "hierarquica": true
+  },
+  {
+   "de": "pr",
+   "para": "mt",
+   "tipo": "integra",
+   "hierarquica": true
+  },
+  {
+   "de": "pr",
+   "para": "mtur",
+   "tipo": "integra",
+   "hierarquica": true
+  },
+  {
+   "de": "pr",
+   "para": "mpi",
+   "tipo": "integra",
+   "hierarquica": true
+  },
+  {
+   "de": "mapa",
+   "para": "embrapa",
+   "tipo": "vinculada a",
+   "hierarquica": true
+  },
+  {
+   "de": "mapa",
+   "para": "inmet",
+   "tipo": "integra",
+   "hierarquica": true
+  },
+  {
+   "de": "mcid",
+   "para": "cbtu",
+   "tipo": "vinculada a",
+   "hierarquica": true
+  },
+  {
+   "de": "mcid",
+   "para": "trensurb",
+   "tipo": "vinculada a",
+   "hierarquica": true
+  },
+  {
+   "de": "mcti",
+   "para": "cnpq",
+   "tipo": "vinculada a",
+   "hierarquica": true
+  },
+  {
+   "de": "mcti",
+   "para": "finep",
+   "tipo": "vinculada a",
+   "hierarquica": true
+  },
+  {
+   "de": "mcti",
+   "para": "aeb",
+   "tipo": "vinculada a",
+   "hierarquica": true
+  },
+  {
+   "de": "mcti",
+   "para": "cnen",
+   "tipo": "vinculada a",
+   "hierarquica": true
+  },
+  {
+   "de": "mcti",
+   "para": "inpe",
+   "tipo": "integra",
+   "hierarquica": true
+  },
+  {
+   "de": "mcom",
+   "para": "anatel",
+   "tipo": "vinculada a",
+   "hierarquica": true
+  },
+  {
+   "de": "mcom",
+   "para": "correios",
+   "tipo": "vinculada a",
+   "hierarquica": true
+  },
+  {
+   "de": "mcom",
+   "para": "telebras",
+   "tipo": "vinculada a",
+   "hierarquica": true
+  },
+  {
+   "de": "minc",
+   "para": "ancine",
+   "tipo": "vinculada a",
+   "hierarquica": true
+  },
+  {
+   "de": "minc",
+   "para": "iphan",
+   "tipo": "vinculada a",
+   "hierarquica": true
+  },
+  {
+   "de": "minc",
+   "para": "funarte",
+   "tipo": "vinculada a",
+   "hierarquica": true
+  },
+  {
+   "de": "minc",
+   "para": "fbn",
+   "tipo": "vinculada a",
+   "hierarquica": true
+  },
+  {
+   "de": "minc",
+   "para": "fcrb",
+   "tipo": "vinculada a",
+   "hierarquica": true
+  },
+  {
+   "de": "minc",
+   "para": "palmares",
+   "tipo": "vinculada a",
+   "hierarquica": true
+  },
+  {
+   "de": "md",
+   "para": "marinha",
+   "tipo": "integra",
+   "hierarquica": true
+  },
+  {
+   "de": "md",
+   "para": "exercito",
+   "tipo": "integra",
+   "hierarquica": true
+  },
+  {
+   "de": "md",
+   "para": "aeronautica",
+   "tipo": "integra",
+   "hierarquica": true
+  },
+  {
+   "de": "md",
+   "para": "amazul",
+   "tipo": "vinculada a",
+   "hierarquica": true
+  },
+  {
+   "de": "md",
+   "para": "imbel",
+   "tipo": "vinculada a",
+   "hierarquica": true
+  },
+  {
+   "de": "md",
+   "para": "emgepron",
+   "tipo": "vinculada a",
+   "hierarquica": true
+  },
+  {
+   "de": "mda",
+   "para": "incra",
+   "tipo": "vinculada a",
+   "hierarquica": true
+  },
+  {
+   "de": "mda",
+   "para": "conab",
+   "tipo": "vinculada a",
+   "hierarquica": true
+  },
+  {
+   "de": "mdic",
+   "para": "inmetro",
+   "tipo": "vinculada a",
+   "hierarquica": true
+  },
+  {
+   "de": "mdic",
+   "para": "inpi",
+   "tipo": "vinculada a",
+   "hierarquica": true
+  },
+  {
+   "de": "mdic",
+   "para": "suframa",
+   "tipo": "vinculada a",
+   "hierarquica": true
+  },
+  {
+   "de": "mdic",
+   "para": "bndes",
+   "tipo": "vinculada a",
+   "hierarquica": true
+  },
+  {
+   "de": "mdic",
+   "para": "apex",
+   "tipo": "supervisionada por",
+   "hierarquica": true
+  },
+  {
+   "de": "mec",
+   "para": "inep",
+   "tipo": "vinculada a",
+   "hierarquica": true
+  },
+  {
+   "de": "mec",
+   "para": "capes",
+   "tipo": "vinculada a",
+   "hierarquica": true
+  },
+  {
+   "de": "mec",
+   "para": "fnde",
+   "tipo": "vinculada a",
+   "hierarquica": true
+  },
+  {
+   "de": "mec",
+   "para": "ebserh",
+   "tipo": "vinculada a",
+   "hierarquica": true
+  },
+  {
+   "de": "mec",
+   "para": "universidades",
+   "tipo": "integra",
+   "hierarquica": true
+  },
+  {
+   "de": "mec",
+   "para": "institutos-federais",
+   "tipo": "integra",
+   "hierarquica": true
+  },
+  {
+   "de": "mf",
+   "para": "rfb",
+   "tipo": "integra",
+   "hierarquica": true
+  },
+  {
+   "de": "mf",
+   "para": "stn",
+   "tipo": "integra",
+   "hierarquica": true
+  },
+  {
+   "de": "mf",
+   "para": "pgfn",
+   "tipo": "integra",
+   "hierarquica": true
+  },
+  {
+   "de": "mf",
+   "para": "cmn",
+   "tipo": "integra",
+   "hierarquica": true
+  },
+  {
+   "de": "mf",
+   "para": "bcb",
+   "tipo": "vinculada a",
+   "hierarquica": true
+  },
+  {
+   "de": "mf",
+   "para": "cvm",
+   "tipo": "vinculada a",
+   "hierarquica": true
+  },
+  {
+   "de": "mf",
+   "para": "susep",
+   "tipo": "vinculada a",
+   "hierarquica": true
+  },
+  {
+   "de": "mf",
+   "para": "bb",
+   "tipo": "vinculada a",
+   "hierarquica": true
+  },
+  {
+   "de": "mf",
+   "para": "caixa",
+   "tipo": "vinculada a",
+   "hierarquica": true
+  },
+  {
+   "de": "mf",
+   "para": "bnb",
+   "tipo": "vinculada a",
+   "hierarquica": true
+  },
+  {
+   "de": "mf",
+   "para": "basa",
+   "tipo": "vinculada a",
+   "hierarquica": true
+  },
+  {
+   "de": "mf",
+   "para": "cmb",
+   "tipo": "vinculada a",
+   "hierarquica": true
+  },
+  {
+   "de": "mgi",
+   "para": "enap",
+   "tipo": "vinculada a",
+   "hierarquica": true
+  },
+  {
+   "de": "mgi",
+   "para": "serpro",
+   "tipo": "vinculada a",
+   "hierarquica": true
+  },
+  {
+   "de": "mgi",
+   "para": "dataprev",
+   "tipo": "vinculada a",
+   "hierarquica": true
+  },
+  {
+   "de": "midr",
+   "para": "ana",
+   "tipo": "vinculada a",
+   "hierarquica": true
+  },
+  {
+   "de": "midr",
+   "para": "dnocs",
+   "tipo": "vinculada a",
+   "hierarquica": true
+  },
+  {
+   "de": "midr",
+   "para": "codevasf",
+   "tipo": "vinculada a",
+   "hierarquica": true
+  },
+  {
+   "de": "midr",
+   "para": "sudam",
+   "tipo": "vinculada a",
+   "hierarquica": true
+  },
+  {
+   "de": "midr",
+   "para": "sudene",
+   "tipo": "vinculada a",
+   "hierarquica": true
+  },
+  {
+   "de": "midr",
+   "para": "sudeco",
+   "tipo": "vinculada a",
+   "hierarquica": true
+  },
+  {
+   "de": "mjsp",
+   "para": "pf",
+   "tipo": "integra",
+   "hierarquica": true
+  },
+  {
+   "de": "mjsp",
+   "para": "prf",
+   "tipo": "integra",
+   "hierarquica": true
+  },
+  {
+   "de": "mjsp",
+   "para": "senappen",
+   "tipo": "integra",
+   "hierarquica": true
+  },
+  {
+   "de": "mjsp",
+   "para": "cade",
+   "tipo": "vinculada a",
+   "hierarquica": true
+  },
+  {
+   "de": "mma",
+   "para": "ibama",
+   "tipo": "vinculada a",
+   "hierarquica": true
+  },
+  {
+   "de": "mma",
+   "para": "icmbio",
+   "tipo": "vinculada a",
+   "hierarquica": true
+  },
+  {
+   "de": "mma",
+   "para": "jbrj",
+   "tipo": "vinculada a",
+   "hierarquica": true
+  },
+  {
+   "de": "mma",
+   "para": "sfb",
+   "tipo": "integra",
+   "hierarquica": true
+  },
+  {
+   "de": "mme",
+   "para": "anp",
+   "tipo": "vinculada a",
+   "hierarquica": true
+  },
+  {
+   "de": "mme",
+   "para": "aneel",
+   "tipo": "vinculada a",
+   "hierarquica": true
+  },
+  {
+   "de": "mme",
+   "para": "anm",
+   "tipo": "vinculada a",
+   "hierarquica": true
+  },
+  {
+   "de": "mme",
+   "para": "epe",
+   "tipo": "vinculada a",
+   "hierarquica": true
+  },
+  {
+   "de": "mme",
+   "para": "petrobras",
+   "tipo": "vinculada a",
+   "hierarquica": true
+  },
+  {
+   "de": "mme",
+   "para": "ppsa",
+   "tipo": "vinculada a",
+   "hierarquica": true
+  },
+  {
+   "de": "mme",
+   "para": "sgb",
+   "tipo": "vinculada a",
+   "hierarquica": true
+  },
+  {
+   "de": "mme",
+   "para": "enbpar",
+   "tipo": "vinculada a",
+   "hierarquica": true
+  },
+  {
+   "de": "mpo",
+   "para": "ibge",
+   "tipo": "vinculada a",
+   "hierarquica": true
+  },
+  {
+   "de": "mpo",
+   "para": "ipea",
+   "tipo": "vinculada a",
+   "hierarquica": true
+  },
+  {
+   "de": "mpor",
+   "para": "antaq",
+   "tipo": "vinculada a",
+   "hierarquica": true
+  },
+  {
+   "de": "mpor",
+   "para": "anac",
+   "tipo": "vinculada a",
+   "hierarquica": true
+  },
+  {
+   "de": "mpor",
+   "para": "infraero",
+   "tipo": "vinculada a",
+   "hierarquica": true
+  },
+  {
+   "de": "mpor",
+   "para": "docas",
+   "tipo": "integra",
+   "hierarquica": true
+  },
+  {
+   "de": "mps",
+   "para": "inss",
+   "tipo": "vinculada a",
+   "hierarquica": true
+  },
+  {
+   "de": "mps",
+   "para": "previc",
+   "tipo": "vinculada a",
+   "hierarquica": true
+  },
+  {
+   "de": "mre",
+   "para": "funag",
+   "tipo": "vinculada a",
+   "hierarquica": true
+  },
+  {
+   "de": "ms",
+   "para": "anvisa",
+   "tipo": "vinculada a",
+   "hierarquica": true
+  },
+  {
+   "de": "ms",
+   "para": "ans",
+   "tipo": "vinculada a",
+   "hierarquica": true
+  },
+  {
+   "de": "ms",
+   "para": "fiocruz",
+   "tipo": "vinculada a",
+   "hierarquica": true
+  },
+  {
+   "de": "ms",
+   "para": "funasa",
+   "tipo": "vinculada a",
+   "hierarquica": true
+  },
+  {
+   "de": "ms",
+   "para": "hemobras",
+   "tipo": "vinculada a",
+   "hierarquica": true
+  },
+  {
+   "de": "ms",
+   "para": "ghc",
+   "tipo": "vinculada a",
+   "hierarquica": true
+  },
+  {
+   "de": "ms",
+   "para": "inca",
+   "tipo": "integra",
+   "hierarquica": true
+  },
+  {
+   "de": "mte",
+   "para": "fundacentro",
+   "tipo": "vinculada a",
+   "hierarquica": true
+  },
+  {
+   "de": "mt",
+   "para": "antt",
+   "tipo": "vinculada a",
+   "hierarquica": true
+  },
+  {
+   "de": "mt",
+   "para": "dnit",
+   "tipo": "vinculada a",
+   "hierarquica": true
+  },
+  {
+   "de": "mt",
+   "para": "infra-sa",
+   "tipo": "vinculada a",
+   "hierarquica": true
+  },
+  {
+   "de": "mtur",
+   "para": "embratur",
+   "tipo": "supervisionada por",
+   "hierarquica": true
+  },
+  {
+   "de": "mpi",
+   "para": "funai",
+   "tipo": "vinculada a",
+   "hierarquica": true
+  },
+  {
+   "de": "ms",
+   "para": "saps",
+   "tipo": "integra",
+   "hierarquica": true
+  },
+  {
+   "de": "ms",
+   "para": "saes",
+   "tipo": "integra",
+   "hierarquica": true
+  },
+  {
+   "de": "ms",
+   "para": "svsa",
+   "tipo": "integra",
+   "hierarquica": true
+  },
+  {
+   "de": "ms",
+   "para": "sgtes",
+   "tipo": "integra",
+   "hierarquica": true
+  },
+  {
+   "de": "ms",
+   "para": "sectics",
+   "tipo": "integra",
+   "hierarquica": true
+  },
+  {
+   "de": "ms",
+   "para": "seidigi",
+   "tipo": "integra",
+   "hierarquica": true
+  },
+  {
+   "de": "ms",
+   "para": "sesai",
+   "tipo": "integra",
+   "hierarquica": true
+  },
+  {
+   "de": "mec",
+   "para": "seb",
+   "tipo": "integra",
+   "hierarquica": true
+  },
+  {
+   "de": "mec",
+   "para": "sesu",
+   "tipo": "integra",
+   "hierarquica": true
+  },
+  {
+   "de": "mec",
+   "para": "setec",
+   "tipo": "integra",
+   "hierarquica": true
+  },
+  {
+   "de": "mec",
+   "para": "secadi",
+   "tipo": "integra",
+   "hierarquica": true
+  },
+  {
+   "de": "mec",
+   "para": "seres",
+   "tipo": "integra",
+   "hierarquica": true
+  },
+  {
+   "de": "mec",
+   "para": "sase",
+   "tipo": "integra",
+   "hierarquica": true
+  },
+  {
+   "de": "mjsp",
+   "para": "senasp",
+   "tipo": "integra",
+   "hierarquica": true
+  },
+  {
+   "de": "mjsp",
+   "para": "senad",
+   "tipo": "integra",
+   "hierarquica": true
+  },
+  {
+   "de": "mjsp",
+   "para": "senacon",
+   "tipo": "integra",
+   "hierarquica": true
+  },
+  {
+   "de": "mjsp",
+   "para": "senajus",
+   "tipo": "integra",
+   "hierarquica": true
+  },
+  {
+   "de": "mjsp",
+   "para": "sal",
+   "tipo": "integra",
+   "hierarquica": true
+  },
+  {
+   "de": "leg",
+   "para": "congresso",
+   "tipo": "integra",
+   "hierarquica": true
+  },
+  {
+   "de": "congresso",
+   "para": "camara",
+   "tipo": "integra",
+   "hierarquica": true
+  },
+  {
+   "de": "congresso",
+   "para": "senado",
+   "tipo": "integra",
+   "hierarquica": true
+  },
+  {
+   "de": "congresso",
+   "para": "tcu",
+   "tipo": "auxiliado por",
+   "hierarquica": true
+  },
+  {
+   "de": "jud",
+   "para": "stf",
+   "tipo": "integra",
+   "hierarquica": true
+  },
+  {
+   "de": "jud",
+   "para": "cnj",
+   "tipo": "integra",
+   "hierarquica": true
+  },
+  {
+   "de": "jud",
+   "para": "stj",
+   "tipo": "integra",
+   "hierarquica": true
+  },
+  {
+   "de": "stj",
+   "para": "cjf",
+   "tipo": "integra",
+   "hierarquica": true
+  },
+  {
+   "de": "cjf",
+   "para": "trfs",
+   "tipo": "integra",
+   "hierarquica": true
+  },
+  {
+   "de": "jud",
+   "para": "tst",
+   "tipo": "integra",
+   "hierarquica": true
+  },
+  {
+   "de": "tst",
+   "para": "csjt",
+   "tipo": "integra",
+   "hierarquica": true
+  },
+  {
+   "de": "csjt",
+   "para": "trts",
+   "tipo": "integra",
+   "hierarquica": true
+  },
+  {
+   "de": "jud",
+   "para": "tse",
+   "tipo": "integra",
+   "hierarquica": true
+  },
+  {
+   "de": "tse",
+   "para": "tres",
+   "tipo": "integra",
+   "hierarquica": true
+  },
+  {
+   "de": "jud",
+   "para": "stm",
+   "tipo": "integra",
+   "hierarquica": true
+  },
+  {
+   "de": "fej",
+   "para": "mpu",
+   "tipo": "integra",
+   "hierarquica": true
+  },
+  {
+   "de": "mpu",
+   "para": "mpf",
+   "tipo": "integra",
+   "hierarquica": true
+  },
+  {
+   "de": "mpu",
+   "para": "mpt",
+   "tipo": "integra",
+   "hierarquica": true
+  },
+  {
+   "de": "mpu",
+   "para": "mpm",
+   "tipo": "integra",
+   "hierarquica": true
+  },
+  {
+   "de": "mpu",
+   "para": "mpdft",
+   "tipo": "integra",
+   "hierarquica": true
+  },
+  {
+   "de": "fej",
+   "para": "cnmp",
+   "tipo": "integra",
+   "hierarquica": true
+  },
+  {
+   "de": "fej",
+   "para": "dpu",
+   "tipo": "integra",
+   "hierarquica": true
+  },
+  {
+   "de": "uniao",
+   "para": "estados",
+   "tipo": "compõe",
+   "hierarquica": true
+  },
+  {
+   "de": "estados",
+   "para": "uf-AC",
+   "tipo": "integra",
+   "hierarquica": true
+  },
+  {
+   "de": "estados",
+   "para": "uf-AL",
+   "tipo": "integra",
+   "hierarquica": true
+  },
+  {
+   "de": "estados",
+   "para": "uf-AP",
+   "tipo": "integra",
+   "hierarquica": true
+  },
+  {
+   "de": "estados",
+   "para": "uf-AM",
+   "tipo": "integra",
+   "hierarquica": true
+  },
+  {
+   "de": "estados",
+   "para": "uf-BA",
+   "tipo": "integra",
+   "hierarquica": true
+  },
+  {
+   "de": "estados",
+   "para": "uf-CE",
+   "tipo": "integra",
+   "hierarquica": true
+  },
+  {
+   "de": "estados",
+   "para": "uf-DF",
+   "tipo": "integra",
+   "hierarquica": true
+  },
+  {
+   "de": "estados",
+   "para": "uf-ES",
+   "tipo": "integra",
+   "hierarquica": true
+  },
+  {
+   "de": "estados",
+   "para": "uf-GO",
+   "tipo": "integra",
+   "hierarquica": true
+  },
+  {
+   "de": "estados",
+   "para": "uf-MA",
+   "tipo": "integra",
+   "hierarquica": true
+  },
+  {
+   "de": "estados",
+   "para": "uf-MT",
+   "tipo": "integra",
+   "hierarquica": true
+  },
+  {
+   "de": "estados",
+   "para": "uf-MS",
+   "tipo": "integra",
+   "hierarquica": true
+  },
+  {
+   "de": "estados",
+   "para": "uf-MG",
+   "tipo": "integra",
+   "hierarquica": true
+  },
+  {
+   "de": "estados",
+   "para": "uf-PR",
+   "tipo": "integra",
+   "hierarquica": true
+  },
+  {
+   "de": "estados",
+   "para": "uf-PB",
+   "tipo": "integra",
+   "hierarquica": true
+  },
+  {
+   "de": "estados",
+   "para": "uf-PA",
+   "tipo": "integra",
+   "hierarquica": true
+  },
+  {
+   "de": "estados",
+   "para": "uf-PE",
+   "tipo": "integra",
+   "hierarquica": true
+  },
+  {
+   "de": "estados",
+   "para": "uf-PI",
+   "tipo": "integra",
+   "hierarquica": true
+  },
+  {
+   "de": "estados",
+   "para": "uf-RN",
+   "tipo": "integra",
+   "hierarquica": true
+  },
+  {
+   "de": "estados",
+   "para": "uf-RS",
+   "tipo": "integra",
+   "hierarquica": true
+  },
+  {
+   "de": "estados",
+   "para": "uf-RJ",
+   "tipo": "integra",
+   "hierarquica": true
+  },
+  {
+   "de": "estados",
+   "para": "uf-RO",
+   "tipo": "integra",
+   "hierarquica": true
+  },
+  {
+   "de": "estados",
+   "para": "uf-RR",
+   "tipo": "integra",
+   "hierarquica": true
+  },
+  {
+   "de": "estados",
+   "para": "uf-SC",
+   "tipo": "integra",
+   "hierarquica": true
+  },
+  {
+   "de": "estados",
+   "para": "uf-SE",
+   "tipo": "integra",
+   "hierarquica": true
+  },
+  {
+   "de": "estados",
+   "para": "uf-SP",
+   "tipo": "integra",
+   "hierarquica": true
+  },
+  {
+   "de": "estados",
+   "para": "uf-TO",
+   "tipo": "integra",
+   "hierarquica": true
+  },
+  {
+   "de": "pr",
+   "para": "stf",
+   "tipo": "nomeia",
+   "hierarquica": false,
+   "descricao": "Nomeia os ministros do STF, após aprovação do Senado (CF, art. 101)."
+  },
+  {
+   "de": "senado",
+   "para": "stf",
+   "tipo": "aprova",
+   "hierarquica": false,
+   "descricao": "Aprova por maioria absoluta a indicação dos ministros do STF (CF, art. 52, III, a)."
+  },
+  {
+   "de": "pr",
+   "para": "stj",
+   "tipo": "nomeia",
+   "hierarquica": false,
+   "descricao": "Nomeia os ministros do STJ, após aprovação do Senado (CF, art. 104)."
+  },
+  {
+   "de": "senado",
+   "para": "stj",
+   "tipo": "aprova",
+   "hierarquica": false,
+   "descricao": "Aprova a indicação dos ministros do STJ (CF, art. 104)."
+  },
+  {
+   "de": "pr",
+   "para": "tst",
+   "tipo": "nomeia",
+   "hierarquica": false,
+   "descricao": "Nomeia os ministros do TST, após aprovação do Senado (CF, art. 111-A)."
+  },
+  {
+   "de": "pr",
+   "para": "stm",
+   "tipo": "nomeia",
+   "hierarquica": false,
+   "descricao": "Nomeia os ministros do STM, após aprovação do Senado (CF, art. 123)."
+  },
+  {
+   "de": "pr",
+   "para": "tse",
+   "tipo": "nomeia",
+   "hierarquica": false,
+   "descricao": "Nomeia dois ministros advogados, indicados pelo STF (CF, art. 119, II)."
+  },
+  {
+   "de": "stf",
+   "para": "tse",
+   "tipo": "elege",
+   "hierarquica": false,
+   "descricao": "Elege três de seus ministros para o TSE (CF, art. 119, I, a)."
+  },
+  {
+   "de": "stj",
+   "para": "tse",
+   "tipo": "elege",
+   "hierarquica": false,
+   "descricao": "Elege dois de seus ministros para o TSE (CF, art. 119, I, b)."
+  },
+  {
+   "de": "stf",
+   "para": "cnj",
+   "tipo": "preside",
+   "hierarquica": false,
+   "descricao": "O Presidente do STF preside o CNJ (CF, art. 103-B, § 1º)."
+  },
+  {
+   "de": "cnj",
+   "para": "jud",
+   "tipo": "controla",
+   "hierarquica": false,
+   "descricao": "Controle administrativo e financeiro do Judiciário e do cumprimento dos deveres dos juízes."
+  },
+  {
+   "de": "pr",
+   "para": "mpu",
+   "tipo": "nomeia",
+   "hierarquica": false,
+   "descricao": "Nomeia o Procurador-Geral da República, após aprovação do Senado (CF, art. 128, § 1º)."
+  },
+  {
+   "de": "senado",
+   "para": "mpu",
+   "tipo": "aprova",
+   "hierarquica": false,
+   "descricao": "Aprova a indicação do Procurador-Geral da República (CF, art. 52, III, e)."
+  },
+  {
+   "de": "mpu",
+   "para": "cnmp",
+   "tipo": "preside",
+   "hierarquica": false,
+   "descricao": "O Procurador-Geral da República preside o CNMP (CF, art. 130-A, I)."
+  },
+  {
+   "de": "cnmp",
+   "para": "mpu",
+   "tipo": "controla",
+   "hierarquica": false,
+   "descricao": "Controle administrativo e financeiro do Ministério Público."
+  },
+  {
+   "de": "pr",
+   "para": "tcu",
+   "tipo": "nomeia",
+   "hierarquica": false,
+   "descricao": "Escolhe um terço dos ministros do TCU, com aprovação do Senado (CF, art. 73, § 2º, I)."
+  },
+  {
+   "de": "congresso",
+   "para": "tcu",
+   "tipo": "escolhe",
+   "hierarquica": false,
+   "descricao": "Escolhe dois terços dos ministros do TCU (CF, art. 73, § 2º, II)."
+  },
+  {
+   "de": "tcu",
+   "para": "exec",
+   "tipo": "fiscaliza",
+   "hierarquica": false,
+   "descricao": "Controle externo: julga contas, aprecia a legalidade de admissões e aposentadorias, fiscaliza contratos (CF, art. 71)."
+  },
+  {
+   "de": "tcu",
+   "para": "jud",
+   "tipo": "fiscaliza",
+   "hierarquica": false,
+   "descricao": "O controle externo alcança todos os Poderes e entidades da administração federal (CF, art. 70)."
+  },
+  {
+   "de": "tcu",
+   "para": "leg",
+   "tipo": "fiscaliza",
+   "hierarquica": false,
+   "descricao": "Inclusive as Casas do Congresso."
+  },
+  {
+   "de": "congresso",
+   "para": "pr",
+   "tipo": "fiscaliza",
+   "hierarquica": false,
+   "descricao": "Fiscalização e controle dos atos do Executivo, inclusive da administração indireta (CF, art. 49, X)."
+  },
+  {
+   "de": "congresso",
+   "para": "exec",
+   "tipo": "orcamento",
+   "hierarquica": false,
+   "descricao": "Aprova o PPA, a LDO e a LOA enviados pelo Presidente (CF, art. 166)."
+  },
+  {
+   "de": "pr",
+   "para": "bcb",
+   "tipo": "nomeia",
+   "hierarquica": false,
+   "descricao": "Nomeia presidente e diretores para mandatos fixos de quatro anos, após aprovação do Senado (LC 179/2021)."
+  },
+  {
+   "de": "senado",
+   "para": "bcb",
+   "tipo": "aprova",
+   "hierarquica": false,
+   "descricao": "Aprova a indicação do presidente e dos diretores do Banco Central (CF, art. 52, III, d)."
+  },
+  {
+   "de": "cgu",
+   "para": "exec",
+   "tipo": "controla",
+   "hierarquica": false,
+   "descricao": "Controle interno do Poder Executivo federal (CF, art. 74)."
+  },
+  {
+   "de": "agu",
+   "para": "uniao",
+   "tipo": "representa",
+   "hierarquica": false,
+   "descricao": "Representa a União judicial e extrajudicialmente (CF, art. 131)."
+  },
+  {
+   "de": "senado",
+   "para": "estados",
+   "tipo": "representa",
+   "hierarquica": false,
+   "descricao": "Os senadores representam os estados e o DF: três por unidade (CF, art. 46)."
+  },
+  {
+   "de": "stf",
+   "para": "estados",
+   "tipo": "julga",
+   "hierarquica": false,
+   "descricao": "Julga conflitos entre a União e os estados, e entre estados (CF, art. 102, I, f)."
+  },
+  {
+   "de": "tcu",
+   "para": "estados",
+   "tipo": "fiscaliza",
+   "hierarquica": false,
+   "descricao": "Fiscaliza a aplicação de recursos repassados pela União a estados e municípios (CF, art. 71, VI)."
+  },
+  {
+   "de": "agu",
+   "para": "fej",
+   "tipo": "integra",
+   "hierarquica": false,
+   "descricao": "Constitucionalmente, a Advocacia Pública é função essencial à Justiça (CF, arts. 131 e 132)."
+  },
+  {
+   "de": "cmn",
+   "para": "bcb",
+   "tipo": "orienta",
+   "hierarquica": false,
+   "descricao": "O CMN fixa as diretrizes da política monetária, executadas pelo Banco Central."
+  },
+  {
+   "de": "mf",
+   "para": "cmn",
+   "tipo": "preside",
+   "hierarquica": false,
+   "descricao": "O Ministro da Fazenda preside o CMN (Lei 4.595/1964)."
+  },
+  {
+   "de": "senado",
+   "para": "anatel",
+   "tipo": "aprova",
+   "hierarquica": false,
+   "descricao": "Aprova a indicação dos dirigentes das agências reguladoras (CF, art. 52, III, f; Lei 13.848/2019)."
+  },
+  {
+   "de": "pr",
+   "para": "anatel",
+   "tipo": "nomeia",
+   "hierarquica": false,
+   "descricao": "Nomeia os dirigentes para mandatos fixos de cinco anos (Lei 13.848/2019)."
+  },
+  {
+   "de": "senado",
+   "para": "ancine",
+   "tipo": "aprova",
+   "hierarquica": false,
+   "descricao": "Aprova a indicação dos dirigentes das agências reguladoras (CF, art. 52, III, f; Lei 13.848/2019)."
+  },
+  {
+   "de": "pr",
+   "para": "ancine",
+   "tipo": "nomeia",
+   "hierarquica": false,
+   "descricao": "Nomeia os dirigentes para mandatos fixos de cinco anos (Lei 13.848/2019)."
+  },
+  {
+   "de": "senado",
+   "para": "ana",
+   "tipo": "aprova",
+   "hierarquica": false,
+   "descricao": "Aprova a indicação dos dirigentes das agências reguladoras (CF, art. 52, III, f; Lei 13.848/2019)."
+  },
+  {
+   "de": "pr",
+   "para": "ana",
+   "tipo": "nomeia",
+   "hierarquica": false,
+   "descricao": "Nomeia os dirigentes para mandatos fixos de cinco anos (Lei 13.848/2019)."
+  },
+  {
+   "de": "senado",
+   "para": "anp",
+   "tipo": "aprova",
+   "hierarquica": false,
+   "descricao": "Aprova a indicação dos dirigentes das agências reguladoras (CF, art. 52, III, f; Lei 13.848/2019)."
+  },
+  {
+   "de": "pr",
+   "para": "anp",
+   "tipo": "nomeia",
+   "hierarquica": false,
+   "descricao": "Nomeia os dirigentes para mandatos fixos de cinco anos (Lei 13.848/2019)."
+  },
+  {
+   "de": "senado",
+   "para": "aneel",
+   "tipo": "aprova",
+   "hierarquica": false,
+   "descricao": "Aprova a indicação dos dirigentes das agências reguladoras (CF, art. 52, III, f; Lei 13.848/2019)."
+  },
+  {
+   "de": "pr",
+   "para": "aneel",
+   "tipo": "nomeia",
+   "hierarquica": false,
+   "descricao": "Nomeia os dirigentes para mandatos fixos de cinco anos (Lei 13.848/2019)."
+  },
+  {
+   "de": "senado",
+   "para": "anm",
+   "tipo": "aprova",
+   "hierarquica": false,
+   "descricao": "Aprova a indicação dos dirigentes das agências reguladoras (CF, art. 52, III, f; Lei 13.848/2019)."
+  },
+  {
+   "de": "pr",
+   "para": "anm",
+   "tipo": "nomeia",
+   "hierarquica": false,
+   "descricao": "Nomeia os dirigentes para mandatos fixos de cinco anos (Lei 13.848/2019)."
+  },
+  {
+   "de": "senado",
+   "para": "antaq",
+   "tipo": "aprova",
+   "hierarquica": false,
+   "descricao": "Aprova a indicação dos dirigentes das agências reguladoras (CF, art. 52, III, f; Lei 13.848/2019)."
+  },
+  {
+   "de": "pr",
+   "para": "antaq",
+   "tipo": "nomeia",
+   "hierarquica": false,
+   "descricao": "Nomeia os dirigentes para mandatos fixos de cinco anos (Lei 13.848/2019)."
+  },
+  {
+   "de": "senado",
+   "para": "anac",
+   "tipo": "aprova",
+   "hierarquica": false,
+   "descricao": "Aprova a indicação dos dirigentes das agências reguladoras (CF, art. 52, III, f; Lei 13.848/2019)."
+  },
+  {
+   "de": "pr",
+   "para": "anac",
+   "tipo": "nomeia",
+   "hierarquica": false,
+   "descricao": "Nomeia os dirigentes para mandatos fixos de cinco anos (Lei 13.848/2019)."
+  },
+  {
+   "de": "senado",
+   "para": "antt",
+   "tipo": "aprova",
+   "hierarquica": false,
+   "descricao": "Aprova a indicação dos dirigentes das agências reguladoras (CF, art. 52, III, f; Lei 13.848/2019)."
+  },
+  {
+   "de": "pr",
+   "para": "antt",
+   "tipo": "nomeia",
+   "hierarquica": false,
+   "descricao": "Nomeia os dirigentes para mandatos fixos de cinco anos (Lei 13.848/2019)."
+  },
+  {
+   "de": "senado",
+   "para": "anvisa",
+   "tipo": "aprova",
+   "hierarquica": false,
+   "descricao": "Aprova a indicação dos dirigentes das agências reguladoras (CF, art. 52, III, f; Lei 13.848/2019)."
+  },
+  {
+   "de": "pr",
+   "para": "anvisa",
+   "tipo": "nomeia",
+   "hierarquica": false,
+   "descricao": "Nomeia os dirigentes para mandatos fixos de cinco anos (Lei 13.848/2019)."
+  },
+  {
+   "de": "senado",
+   "para": "ans",
+   "tipo": "aprova",
+   "hierarquica": false,
+   "descricao": "Aprova a indicação dos dirigentes das agências reguladoras (CF, art. 52, III, f; Lei 13.848/2019)."
+  },
+  {
+   "de": "pr",
+   "para": "ans",
+   "tipo": "nomeia",
+   "hierarquica": false,
+   "descricao": "Nomeia os dirigentes para mandatos fixos de cinco anos (Lei 13.848/2019)."
+  }
+ ]
+}
