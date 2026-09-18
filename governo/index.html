@@ -210,6 +210,37 @@ button,input{font-family:inherit;font-size:inherit}
 .vazio{color:var(--mute);font-size:13px;padding:8px 0}
 
 /* ---------- mapa do poder ---------- */
+#folha-poder{background:var(--surface)}
+#folha-poder .conteudo{width:min(1280px,calc(100% - 32px))}
+.poder-titulo{text-align:center;margin:4px 0 18px}
+.poder-titulo h1{font-size:13px;letter-spacing:.28em;text-transform:uppercase;font-weight:600;margin:0 0 6px}
+.poder-titulo p{margin:0 auto;color:var(--ink-2);font-size:14px;max-width:none}
+.poder-abas{display:flex;justify-content:center;margin:0 0 10px}
+.poder-abas .abas{margin:0}
+.poder-abas .abas button{padding:6px 14px;font-size:13px}
+#grafo-poder{display:block;width:100%;overflow:visible}
+#grafo-poder .aresta{stroke:var(--axis);stroke-width:1.2;fill:none}
+#grafo-poder .aresta.ativa{stroke:var(--ink-2);stroke-width:1.8}
+#grafo-poder .seta{fill:var(--axis)}
+#grafo-poder .pessoa{cursor:pointer}
+#grafo-poder .pessoa .anel{fill:none;stroke-width:2.5}
+#grafo-poder .pessoa .brilho{fill:none;stroke:#e5484d;stroke-width:6;opacity:.28}
+#grafo-poder .pessoa .fundo{fill:var(--plane)}
+#grafo-poder .pessoa .ini{font-weight:700;fill:var(--ink-2);text-anchor:middle;dominant-baseline:central}
+#grafo-poder .pessoa text{text-anchor:middle}
+#grafo-poder .pessoa .nome{font-size:15px;font-weight:650;fill:var(--ink)}
+#grafo-poder .pessoa .sub{font-size:12.5px;fill:var(--ink-2)}
+#grafo-poder .pessoa .n{font-size:12.5px;fill:var(--ink)}
+#grafo-poder .pessoa .quente{font-size:12.5px;fill:#e5484d}
+#grafo-poder .pessoa:hover .anel,#grafo-poder .pessoa.foco .anel{stroke-width:4}
+#grafo-poder .pessoa.apagada{opacity:.28}
+.poder-nota{color:var(--mute);font-size:12px;text-align:center;margin:14px auto 0;max-width:720px}
+.rosto-pilha{display:flex;align-items:center;gap:10px;margin:4px 0 0}
+.rosto-pilha .rostos{display:flex}
+.rosto-pilha .rostos span{width:30px;height:30px;border-radius:50%;border:2px solid var(--panel);margin-left:-8px;background:var(--plane) center/cover no-repeat;display:inline-flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;color:var(--ink-2)}
+.rosto-pilha .rostos span:first-child{margin-left:0}
+.rosto-pilha button{border:0;background:none;color:var(--ink);font-size:13px;cursor:pointer;padding:0}
+.rosto-pilha .link-poder{margin-left:auto}
 .poder-cab{display:flex;align-items:flex-end;gap:16px;flex-wrap:wrap;margin-bottom:18px}
 .poder-cab p{margin:0}
 .poder-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:24px}
@@ -326,7 +357,8 @@ tbody tr:hover{background:var(--plane)}
 <section class="folha" id="folha-poder" aria-labelledby="poder-titulo">
   <div class="conteudo">
     <button class="ghost fechar" data-fecha="folha-poder">Voltar ao grafo</button>
-    <h1 id="poder-titulo">Mapa do poder: quem está no noticiário</h1>
+    <div class="poder-titulo"><h1 id="poder-titulo">Mapa do poder: quem está no noticiário</h1><p id="poder-sub"></p></div>
+    <div class="poder-abas"><span class="abas" role="group" aria-label="Ver"><button data-poder-aba="pessoas" aria-pressed="true">Pessoas</button><button data-poder-aba="orgaos" aria-pressed="false">Órgãos</button></span></div>
     <div id="poder-corpo"></div>
   </div>
 </section>
@@ -362,7 +394,7 @@ tbody tr:hover{background:var(--plane)}
     <p>Este é um mapa da estrutura do Estado brasileiro em três camadas. A União: os três Poderes, as funções essenciais à Justiça, os ministérios, as entidades da administração indireta, os tribunais, os cargos de comando e as relações constitucionais entre eles (quem nomeia, quem aprova, quem fiscaliza). Os 26 estados e o Distrito Federal, cada um com governo, assembleia, tribunal de justiça, tribunal de contas, ministério público, defensoria e tribunal eleitoral. E os 5.570 municípios, com prefeitura, câmara e secretaria de saúde, ligados a quem os fiscaliza, julga e coordena. Inspirado no <em>Gov Graph</em> da CivLab para os Estados Unidos.</p>
     <div class="kpis" id="kpis"></div>
     <h2>Regra sobre pessoas</h2>
-    <p>Estrutura sim, pessoas só com fonte. Só aparecem ocupantes com mandato fixo, confirmados em fonte oficial e com data de verificação (Presidência, Vice, Casas do Congresso, STF, STJ, TSE, TCU, PGR e Banco Central). Cada cargo tem uma situação explícita: titular, interino ou substituto, vago, ou não verificado. “Vago” é uma afirmação e exige fonte e data; “não verificado” é ausência de dado. Um campo vazio é melhor que um nome errado.</p>
+    <p>Estrutura sim, pessoas só com fonte. Todo ocupante tem fonte oficial e data de verificação. No Executivo, o nome vem do e-Agendas da CGU, onde toda autoridade federal é obrigada a publicar agenda, e é conferido contra o Diário Oficial: se houve exoneração depois da posse, o nome é descartado. Estatais, tribunais, Ministério Público e Defensoria foram conferidos um a um no site oficial de cada órgão, com o endereço exato onde o nome aparece. Cada cargo tem uma situação explícita: titular, interino ou substituto, vago, ou não verificado. “Vago” é uma afirmação e exige fonte e data. Um campo vazio é melhor que um nome errado.</p>
     <p>Toda segunda-feira, um fluxo automático baixa o SIORG, a Câmara e o Senado, remonta este arquivo, lê a seção 2 do Diário Oficial da União e abre um PR para revisão. Nenhum nome entra sem uma pessoa aprovar.</p>
     <h2>Agentes diários</h2>
     <p>Todo dia às 7h, três agentes leem as fontes oficiais e alimentam o botão “Novidades”: o do Diário Oficial registra cada nomeação, exoneração e designação assinada pelo Presidente ou pela Casa Civil (seção 2), com link para o ato; o de estrutura compara a foto do SIORG com a do dia anterior e anota órgãos criados, extintos ou renomeados; o de notícias lê a Agência Brasil, a Agência Câmara, a Agência Senado, as notícias do STF e o Planalto, liga cada matéria aos órgãos do mapa e monta o “Mapa do poder”, quem mais aparece no noticiário. Os feeds registram o que as fontes publicaram; o ocupante de um cargo no mapa só muda depois da revisão do PR semanal.</p>
@@ -825,7 +857,7 @@ function blocoCargo(c, titulo){
   const sit = c.situacao || (c.ocupante ? 'titular' : 'nao_verificado');
   const badge = sit === 'vago' ? '<span class="sit vago">⚠ Vago</span>' : sit === 'interino' ? '<span class="sit interino">◔ Interino</span>' : '';
   const meta = [c.desde ? 'Desde ' + fmtData(c.desde) : '', c.mandato_ate ? 'mandato até ' + fmtData(c.mandato_ate) : '', c.verificado_em ? 'verificado em ' + fmtData(c.verificado_em) : ''].filter(Boolean).join(' · ');
-  const fonte = c.fonte ? ` <a href="${esc(c.fonte)}" target="_blank" rel="noopener">Fonte</a>` : '';
+  const fonte = c.fonte ? ` · <a href="${esc(c.fonte)}" target="_blank" rel="noopener">${esc(c.fonte_nome ? 'Fonte: ' + c.fonte_nome.replace(/,.*$/, '') : 'Fonte')}</a>` : '';
   let corpo;
   if (sit === 'vago') corpo = `<div class="n">Cargo vago${badge}</div><div class="m">${esc(meta)}${fonte}</div>`;
   else if (c.ocupante) corpo = `<div class="n">${esc(c.ocupante)}${badge}</div><div class="m">${esc(meta)}${fonte}</div>`;
@@ -939,8 +971,10 @@ function montarNovidades(){
   if (N && N.resumo && N.resumo.length) {
     const art = id => (N.artigos || []).find(a => a.id === id);
     html += `<ul class="frases">` + N.resumo.map((f, i) => { const a = art(f.artigo_id); return `<li>${f.no_id ? chipNo(f.no_id) + ' ' : ''}${esc(f.texto)}${a ? `<a class="ref" href="${esc(a.url)}" target="_blank" rel="noopener" title="${esc(FONTES_NOME[a.fonte] || a.fonte)}">${i+1}</a>` : ''}</li>`; }).join('') + `</ul>`;
+    const topP = (N.ranking && N.ranking.pessoas || []).slice(0, 5);
+    if (topP.length) html += `<div class="rosto-pilha"><span class="rostos">${topP.map(r => `<span title="${esc(r.nome)}" style="${r.foto ? `background-image:url('${esc(r.foto)}')` : ''}">${r.foto ? '' : esc(iniciais(r.nome))}</span>`).join('')}</span><button id="link-poder-p">Quem está no noticiário</button><button class="link-poder" id="link-poder">Mapa do poder ›</button></div>`;
     const top = (N.ranking && N.ranking.orgaos || []).filter(r => federalNo(r.id)).slice(0, 6);
-    if (top.length) html += `<h3 style="font-size:13px;margin-top:12px">Quem está no noticiário<button class="link-poder" id="link-poder">Mapa do poder ›</button></h3><div class="no-noticiario">` + top.map(r => { const n = federalNo(r.id); return `<button data-no="${esc(r.id)}">${tile(n,'p')}<b>${esc(n.sigla || n.nome)}</b><small>${r.artigos}</small></button>`; }).join('') + `</div>`;
+    if (top.length) html += `<h3 style="font-size:13px;margin-top:12px">Órgãos no noticiário</h3><div class="no-noticiario">` + top.map(r => { const n = federalNo(r.id); return `<button data-no="${esc(r.id)}">${tile(n,'p')}<b>${esc(n.sigla || n.nome)}</b><small>${r.artigos}</small></button>`; }).join('') + `</div>`;
     if (N.meta.resumo_por === 'manchetes') html += `<p class="desc" style="margin-top:8px">Manchetes das agências públicas que citam órgãos do mapa. O resumo em frases entra quando o agente roda com a Claude.</p>`;
   } else {
     html += `<p class="vazio">O agente de notícias ainda não rodou. Ele lê a Agência Brasil, a Agência Câmara, a Agência Senado, as notícias do STF e o Planalto todo dia às 7h.</p>`;
@@ -986,31 +1020,146 @@ $('#n-fechar').onclick = () => abrirNovidades(false);
 novidades.addEventListener('click', e => {
   const j = e.target.closest('button[data-janela]'); if (j) { janelaMud = +j.dataset.janela; montarNovidades(); return; }
   const n = e.target.closest('[data-no]'); if (n) { if (vistaAtual !== 'federal') abrirVista('federal', n.dataset.no); else selecionar(n.dataset.no, true); if (W <= 720) abrirNovidades(false); return; }
-  if (e.target.closest('#link-poder') || e.target.closest('#btn-poder')) { abrirPoder(); return; }
+  if (e.target.closest('#link-poder') || e.target.closest('#link-poder-p') || e.target.closest('#btn-poder')) { abrirPoder('pessoas'); return; }
   const a = e.target.closest('a[data-sobre]'); if (a) { e.preventDefault(); $('#folha-sobre').classList.add('aberta'); }
 });
 novidades.addEventListener('change', e => { if (e.target.id === 'chk-todas') { mostrarTodas = e.target.checked; montarNovidades(); } });
 
 // ------------------------------------------------------------ mapa do poder: quem está no noticiário
-const iniciais = nome => nome.split(/\s+/).filter(p => p.length > 2 || /^[A-Z]/.test(p)).map(p => p[0]).filter(Boolean).slice(0, 2).join('').toUpperCase();
-function abrirPoder(){
-  const N = FEED.noticias; const corpo = $('#poder-corpo');
-  if (!N) { corpo.innerHTML = '<p class="vazio">O agente de notícias ainda não rodou.</p>'; $('#folha-poder').classList.add('aberta'); return; }
-  const orgaos = (N.ranking.orgaos || []).filter(r => federalNo(r.id)).slice(0, 20);
-  const pessoas = (N.ranking.pessoas || []).slice(0, 20);
-  const maxO = Math.max(1, ...orgaos.map(r => r.artigos)), maxP = Math.max(1, ...pessoas.map(r => r.artigos));
-  const fontes = (N.meta.fontes || []).length;
-  let html = `<div class="poder-cab"><p>Os órgãos e as pessoas mais citados em <b>${N.meta.total_artigos}</b> matérias de <b>${fontes}</b> ${fontes === 1 ? 'fonte pública' : 'fontes públicas'} nos últimos ${N.meta.janela_dias} dias. Contagem por matéria que cita o nome ou a sigla; a fonte institucional não conta a si mesma.</p></div>`;
-  html += `<div class="poder-grid"><div><h2 style="margin:0 0 10px">Órgãos</h2>`;
-  html += orgaos.length ? `<ol class="poder-lista">` + orgaos.map((r, i) => { const n = federalNo(r.id); return `<li data-no="${esc(r.id)}"><span class="pos">${i+1}</span>${tile(n)}<span class="nome"><b>${esc(n.nome)}</b><small>${esc(V ? (V.PODERES[n.poder] || '') : '')}${r.ultima ? ' · no noticiário ' + esc(relTempo(r.ultima)) : ''}</small><span class="barra" style="--c:${corDe(n)}"><i style="width:${Math.round(r.artigos/maxO*100)}%"></i></span></span><span class="n"><b>${r.artigos}</b>${r.artigos === 1 ? 'matéria' : 'matérias'}</span></li>`; }).join('') + `</ol>` : `<p class="vazio">Nenhum órgão citado ainda.</p>`;
-  html += `</div><div><h2 style="margin:0 0 10px">Pessoas</h2>`;
-  html += pessoas.length ? `<ol class="poder-lista">` + pessoas.map((r, i) => `<li ${r.no_id ? `data-no="${esc(r.no_id)}"` : ''}><span class="pos">${i+1}</span><span class="avatar">${esc(iniciais(r.nome))}</span><span class="nome"><b>${esc(r.nome)}</b><small>${esc(r.cargo || '')}${r.ultima ? ' · no noticiário ' + esc(relTempo(r.ultima)) : ''}</small><span class="barra"><i style="width:${Math.round(r.artigos/maxP*100)}%"></i></span></span><span class="n"><b>${r.artigos}</b>${r.artigos === 1 ? 'matéria' : 'matérias'}</span></li>`).join('') + `</ol>`
-    : `<p class="vazio">Só contamos pessoas cujo cargo está verificado no mapa (hoje: ${cacheVistas.get('federal') ? cacheVistas.get('federal').nos.filter(n => n.cargo && n.cargo.ocupante).length : 0} ocupantes). Nenhuma delas foi citada no período.</p>`;
-  html += `</div></div>`;
-  corpo.innerHTML = html;
-  $('#folha-poder').classList.add('aberta');
+// Grafo de pessoas: tamanho pela quantidade de matérias, anel na cor do Poder,
+// brilho vermelho para quem saiu no noticiário nas últimas 48 h, linhas entre
+// pessoas ligadas no mapa (quem nomeia quem, presidente da Casa e parlamentares).
+const iniciais = nome => nome.split(/\s+/).filter(p => p.length > 2).map(p => p[0]).slice(0, 2).join('').toUpperCase() || nome.slice(0, 2).toUpperCase();
+const ehParlamentar = r => /^(Deputad|Senador)/.test(r.cargo || '');
+let abaPoder = 'pessoas';
+function horasAtras(iso){ return iso ? (Date.now() - new Date(iso).getTime()) / 36e5 : Infinity; }
+function quenteTexto(iso){ const h = horasAtras(iso); if (h > 48) return ''; return h < 1 ? 'No noticiário agora' : h < 24 ? `No noticiário há ${Math.round(h)} h` : 'No noticiário ontem'; }
+function ancestrais(id){ const fed = cacheVistas.get('federal'); if (!fed) return []; const por = new Map(fed.nos.map(n => [n.id, n])); const out = []; let n = por.get(id); while (n && n.pai) { out.push(n.pai); n = por.get(n.pai); } return out; }
+function ligacoesPessoas(lista){
+  const fed = cacheVistas.get('federal'); const arestas = fed ? fed.arestas.filter(a => !a.hierarquica) : [];
+  // todos os cargos da pessoa no mapa (Alcolumbre preside o Congresso e o Senado)
+  const chave = s => norm(s || '').split(' ').filter(Boolean);
+  const nosDe = r => { const t = chave(r.nome_completo || r.nome); return fed ? fed.nos.filter(n => n.cargo && n.cargo.ocupante && (() => { const u = chave(n.cargo.ocupante); return u[0] === t[0] && u[u.length-1] === t[t.length-1]; })()).map(n => n.id) : [r.no_id]; };
+  const cargos = lista.map(r => ehParlamentar(r) ? [r.no_id] : [...new Set([r.no_id, ...nosDe(r)])]);
+  const ls = [];
+  for (let i = 0; i < lista.length; i++) for (let j = 0; j < lista.length; j++) {
+    if (i === j) continue;
+    const a = lista[i], b = lista[j];
+    if (!a.no_id || !b.no_id) continue;
+    const pa = ehParlamentar(a), pb = ehParlamentar(b);
+    if (pa && pb) continue;
+    if (pb && !pa && cargos[i].includes(b.no_id)) { ls.push([i, j]); continue; }      // presidente da Casa -> membro
+    if (pa || pb) continue;
+    const anc = ancestrais(b.no_id);
+    const k = anc.indexOf(a.no_id);
+    if (k >= 0 && k <= 2 && !lista.some((c, m) => m !== i && m !== j && !ehParlamentar(c) && anc.indexOf(c.no_id) >= 0 && anc.indexOf(c.no_id) < k)) { ls.push([i, j]); continue; }
+    if (arestas.some(e => e.de === a.no_id && e.para === b.no_id && ['nomeia','aprova','preside','escolhe'].includes(e.tipo))) ls.push([i, j]);
+  }
+  return ls;
 }
-$('#poder-corpo').addEventListener('click', e => { const li = e.target.closest('li[data-no]'); if (li) { $('#folha-poder').classList.remove('aberta'); if (vistaAtual !== 'federal') abrirVista('federal', li.dataset.no); else selecionar(li.dataset.no, true); } });
+function layoutPoder(lista, W){
+  const max = Math.max(1, ...lista.map(r => r.artigos));
+  const nos = lista.map((r, i) => ({r, raio: Math.round(26 + 16 * Math.sqrt(r.artigos / max)), i}));
+  const col = Math.max(2, Math.floor(W / 190));
+  const passoX = W / col, passoY = 190;
+  nos.forEach((n, i) => {
+    if (i === 0) { n.x = W / 2; n.y = 70; return; }
+    const k = i - 1, linha = Math.floor(k / col), c = k % col;
+    const h = ((i * 2654435761) % 1000) / 1000;                       // desvio fixo, sem aleatoriedade
+    n.x = (c + .5) * passoX + (linha % 2 ? passoX * .22 : -passoX * .12) + (h - .5) * passoX * .25;
+    n.y = 70 + 150 + linha * passoY + (h - .5) * 70 + (c % 2 ? 40 : 0);
+  });
+  // afasta caixas que se sobrepõem (círculo + três linhas de texto)
+  const caixa = n => ({l: n.x - 85, r: n.x + 85, t: n.y - n.raio - 8, b: n.y + n.raio + 72});
+  for (let it = 0; it < 160; it++) {
+    let mexeu = false;
+    for (let a = 0; a < nos.length; a++) for (let b = a + 1; b < nos.length; b++) {
+      const A = caixa(nos[a]), B = caixa(nos[b]);
+      const ox = Math.min(A.r, B.r) - Math.max(A.l, B.l), oy = Math.min(A.b, B.b) - Math.max(A.t, B.t);
+      if (ox > 0 && oy > 0) {
+        mexeu = true;
+        if (ox < oy) { const d = (ox / 2 + 1) * (nos[a].x < nos[b].x ? -1 : 1); if (a) nos[a].x += d; nos[b].x -= d; }
+        else { const d = (oy / 2 + 1) * (nos[a].y < nos[b].y ? -1 : 1); if (a) nos[a].y += d; nos[b].y -= d; }
+      }
+    }
+    for (const n of nos) n.x = Math.max(90, Math.min(W - 90, n.x));
+    if (!mexeu) break;
+  }
+  return nos;
+}
+function svgPoder(lista){
+  const W = Math.min(1240, $('#folha-poder .conteudo').clientWidth || 1000);
+  const nos = layoutPoder(lista, W);
+  const ls = ligacoesPessoas(lista);
+  const H = Math.max(...nos.map(n => n.y + n.raio + 80)) + 10;
+  const cor = r => ({executivo: 'var(--exec)', legislativo: 'var(--leg)', judiciario: 'var(--jud)', essencial: 'var(--ess)'})[r.poder] || 'var(--ink-2)';
+  let svg = `<svg id="grafo-poder" viewBox="0 0 ${W} ${H}" height="${H}" role="img" aria-label="Mapa do poder: pessoas mais citadas">`;
+  svg += `<defs>${nos.map(n => `<clipPath id="cp${n.i}"><circle cx="${n.x.toFixed(1)}" cy="${n.y.toFixed(1)}" r="${n.raio - 3}"/></clipPath>`).join('')}</defs>`;
+  svg += ls.map(([a, b]) => { const A = nos[a], B = nos[b]; const ang = Math.atan2(B.y - A.y, B.x - A.x);
+    const x1 = A.x + Math.cos(ang) * (A.raio + 3), y1 = A.y + Math.sin(ang) * (A.raio + 3), x2 = B.x - Math.cos(ang) * (B.raio + 5), y2 = B.y - Math.sin(ang) * (B.raio + 5);
+    const mx = (x1 + x2) / 2, my = (y1 + y2) / 2;
+    return `<g data-l="${a}-${b}"><line class="aresta" x1="${x1.toFixed(1)}" y1="${y1.toFixed(1)}" x2="${x2.toFixed(1)}" y2="${y2.toFixed(1)}"/><path class="seta" d="M${(mx + Math.cos(ang) * 5).toFixed(1)},${(my + Math.sin(ang) * 5).toFixed(1)} L${(mx + Math.cos(ang + 2.5) * 5).toFixed(1)},${(my + Math.sin(ang + 2.5) * 5).toFixed(1)} L${(mx + Math.cos(ang - 2.5) * 5).toFixed(1)},${(my + Math.sin(ang - 2.5) * 5).toFixed(1)}Z"/></g>`; }).join('');
+  svg += nos.map(n => {
+    const r = n.r, q = quenteTexto(r.ultima);
+    const sub = ehParlamentar(r) ? `${r.partido ? r.partido + ' · ' : ''}${r.cargo}` : (r.cargo || '');
+    const partes = sub.length > 34 ? [sub.slice(0, sub.lastIndexOf(' ', 34)), sub.slice(sub.lastIndexOf(' ', 34) + 1)] : [sub];
+    if (partes[1] && partes[1].length > 34) partes[1] = partes[1].slice(0, 33) + '…';
+    let y = n.y + n.raio + 20;
+    let txt = `<text class="nome" x="${n.x.toFixed(1)}" y="${y}">${esc(r.nome)}</text>`;
+    for (const p of partes) { y += 17; txt += `<text class="sub" x="${n.x.toFixed(1)}" y="${y}">${esc(p)}</text>`; }
+    y += 17; txt += `<text class="n" x="${n.x.toFixed(1)}" y="${y}">${r.artigos} ${r.artigos === 1 ? 'matéria' : 'matérias'}</text>`;
+    if (q) { y += 17; txt += `<text class="quente" x="${n.x.toFixed(1)}" y="${y}">${q}</text>`; }
+    const foto = r.foto ? `<image href="${esc(r.foto)}" x="${(n.x - n.raio).toFixed(1)}" y="${(n.y - n.raio).toFixed(1)}" width="${n.raio * 2}" height="${n.raio * 2}" preserveAspectRatio="xMidYMin slice" clip-path="url(#cp${n.i})"/>` : `<text class="ini" x="${n.x.toFixed(1)}" y="${n.y.toFixed(1)}" style="font-size:${Math.round(n.raio * .55)}px">${esc(iniciais(r.nome))}</text>`;
+    return `<g class="pessoa" data-i="${n.i}" tabindex="0" role="button" aria-label="${esc(r.nome)}, ${r.artigos} matérias">
+      ${q ? `<circle class="brilho" cx="${n.x.toFixed(1)}" cy="${n.y.toFixed(1)}" r="${n.raio + 3}"/>` : ''}
+      <circle class="fundo" cx="${n.x.toFixed(1)}" cy="${n.y.toFixed(1)}" r="${n.raio - 2}"/>${foto}
+      <circle class="anel" cx="${n.x.toFixed(1)}" cy="${n.y.toFixed(1)}" r="${n.raio}" style="stroke:${q ? '#e5484d' : cor(r)}"/>
+      <title>${esc(r.nome_completo || r.nome)}</title>${txt}</g>`;
+  }).join('');
+  return svg + '</svg>';
+}
+function listaOrgaosPoder(N){
+  const orgaos = (N.ranking.orgaos || []).filter(r => federalNo(r.id)).slice(0, 24);
+  const maxO = Math.max(1, ...orgaos.map(r => r.artigos));
+  return orgaos.length ? `<ol class="poder-lista" style="max-width:760px;margin:0 auto">` + orgaos.map((r, i) => { const n = federalNo(r.id); return `<li data-no="${esc(r.id)}"><span class="pos">${i+1}</span>${tile(n)}<span class="nome"><b>${esc(n.nome)}</b><small>${esc(V ? (V.PODERES[n.poder] || '') : '')}${r.ultima ? ' · no noticiário ' + esc(relTempo(r.ultima)) : ''}</small><span class="barra" style="--c:${corDe(n)}"><i style="width:${Math.round(r.artigos/maxO*100)}%"></i></span></span><span class="n"><b>${r.artigos}</b>${r.artigos === 1 ? 'matéria' : 'matérias'}</span></li>`; }).join('') + `</ol>` : `<p class="vazio">Nenhum órgão citado ainda.</p>`;
+}
+function abrirPoder(aba){
+  if (aba) abaPoder = aba;
+  const N = FEED.noticias; const corpo = $('#poder-corpo');
+  $('#folha-poder').classList.add('aberta');
+  document.querySelectorAll('[data-poder-aba]').forEach(b => b.setAttribute('aria-pressed', String(b.dataset.poderAba === abaPoder)));
+  if (!N) { $('#poder-sub').textContent = ''; corpo.innerHTML = '<p class="vazio">O agente de notícias ainda não rodou.</p>'; return; }
+  const fontes = (N.meta.fontes || []).length;
+  const pessoas = (N.ranking.pessoas || []).slice(0, 20);
+  $('#poder-sub').textContent = abaPoder === 'pessoas'
+    ? `As ${pessoas.length} pessoas mais citadas em ${N.meta.total_artigos} matérias de ${fontes} ${fontes === 1 ? 'fonte pública' : 'fontes públicas'} nos últimos ${N.meta.janela_dias} dias`
+    : `Os órgãos mais citados em ${N.meta.total_artigos} matérias de ${fontes} ${fontes === 1 ? 'fonte pública' : 'fontes públicas'} nos últimos ${N.meta.janela_dias} dias`;
+  if (abaPoder === 'orgaos') { corpo.innerHTML = listaOrgaosPoder(N); return; }
+  if (!pessoas.length) { corpo.innerHTML = '<p class="vazio">Ninguém do mapa, da Câmara ou do Senado foi citado ainda no período.</p>'; return; }
+  corpo.innerHTML = svgPoder(pessoas) + `<p class="poder-nota">Contagem por matéria da Agência Brasil, Agência Câmara, Agência Senado, Notícias do STF e Planalto que cita o nome. Fotos oficiais da Câmara e do Senado; para as demais, Wikimedia Commons. Linhas ligam quem nomeia ou preside a quem, segundo o mapa. Clique numa pessoa para abrir o cargo no mapa.</p>`;
+  corpo._pessoas = pessoas;
+}
+document.querySelectorAll('[data-poder-aba]').forEach(b => b.onclick = () => abrirPoder(b.dataset.poderAba));
+function abrirPessoa(r){
+  if (!r) return;
+  if (ehParlamentar(r) || !r.no_id) { if (r.foto_fonte) window.open(r.foto_fonte, '_blank', 'noopener'); return; }
+  $('#folha-poder').classList.remove('aberta');
+  if (vistaAtual !== 'federal') abrirVista('federal', r.no_id); else selecionar(r.no_id, true);
+}
+$('#poder-corpo').addEventListener('click', e => {
+  const li = e.target.closest('li[data-no]'); if (li) { $('#folha-poder').classList.remove('aberta'); if (vistaAtual !== 'federal') abrirVista('federal', li.dataset.no); else selecionar(li.dataset.no, true); return; }
+  const g = e.target.closest('g.pessoa'); if (g) abrirPessoa($('#poder-corpo')._pessoas[+g.dataset.i]);
+});
+$('#poder-corpo').addEventListener('keydown', e => { const g = e.target.closest('g.pessoa'); if (g && (e.key === 'Enter' || e.key === ' ')) { e.preventDefault(); abrirPessoa($('#poder-corpo')._pessoas[+g.dataset.i]); } });
+$('#poder-corpo').addEventListener('mouseover', e => {
+  const g = e.target.closest('g.pessoa'); const svg = $('#grafo-poder'); if (!svg) return;
+  const i = g ? g.dataset.i : null;
+  svg.querySelectorAll('g[data-l]').forEach(l => { const [a, b] = l.dataset.l.split('-'); l.querySelector('line').classList.toggle('ativa', i !== null && (a === i || b === i)); });
+  const viz = new Set(i === null ? [] : [i, ...[...svg.querySelectorAll('g[data-l]')].flatMap(l => { const [a, b] = l.dataset.l.split('-'); return a === i ? [b] : b === i ? [a] : []; })]);
+  svg.querySelectorAll('g.pessoa').forEach(p => p.classList.toggle('apagada', i !== null && !viz.has(p.dataset.i)));
+});
+$('#poder-corpo').addEventListener('mouseleave', () => { const svg = $('#grafo-poder'); if (svg) { svg.querySelectorAll('g.pessoa').forEach(p => p.classList.remove('apagada')); svg.querySelectorAll('line.ativa').forEach(l => l.classList.remove('ativa')); } });
+window.addEventListener('resize', () => { if ($('#folha-poder').classList.contains('aberta') && abaPoder === 'pessoas') abrirPoder(); });
 $('#btn-poder').onclick = () => abrirPoder();
 
 // ------------------------------------------------------------ painel “Comece por aqui”

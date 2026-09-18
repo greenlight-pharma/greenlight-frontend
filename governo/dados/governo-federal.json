@@ -4,7 +4,7 @@
   "site": "https://mapadogoverno.com.br",
   "esfera": "federal",
   "versao": "0.1.0",
-  "gerado_por": "scripts/governo/semente.py",
+  "gerado_por": "scripts/governo/montar_grafo.py",
   "aviso": "Semente curada à mão. Estrutura conforme CF/1988 e Lei 14.600/2023. Ocupantes de cargo só quando o mandato é fixo e público; os demais ficam nulos até a ingestão a partir das fontes oficiais.",
   "fontes": [
    {
@@ -155,12 +155,14 @@
    "descricao": "Coordena e integra as ações do governo; analisa a constitucionalidade e o mérito dos atos presidenciais.",
    "cargo": {
     "titulo": "Ministro(a) de Estado Chefe",
-    "situacao": "nao_verificado",
-    "ocupante": null,
-    "desde": null,
+    "situacao": "titular",
+    "ocupante": "Miriam Belchior",
+    "desde": "2026-04-02",
     "mandato_ate": null,
-    "verificado_em": null,
-    "fonte": null
+    "verificado_em": "2026-09",
+    "fonte": "https://eagendas.cgu.gov.br/pesquisa/agentes-publicos-obrigados-por-orgao/orgao/659/ativo/true",
+    "fonte_nome": "e-Agendas (CGU), Casa Civil da Presidência da República",
+    "fonte_agente": true
    }
   },
   {
@@ -174,12 +176,14 @@
    "descricao": "Relação com a sociedade civil e movimentos sociais; participação social.",
    "cargo": {
     "titulo": "Ministro(a) de Estado Chefe",
-    "situacao": "nao_verificado",
-    "ocupante": null,
-    "desde": null,
+    "situacao": "titular",
+    "ocupante": "Guilherme Castro Boulos",
+    "desde": "2025-10-29",
     "mandato_ate": null,
-    "verificado_em": null,
-    "fonte": null
+    "verificado_em": "2026-09",
+    "fonte": "https://eagendas.cgu.gov.br/pesquisa/agentes-publicos-obrigados-por-orgao/orgao/1372/ativo/true",
+    "fonte_nome": "e-Agendas (CGU), Secretaria-Geral da Presidência da República",
+    "fonte_agente": true
    }
   },
   {
@@ -193,12 +197,14 @@
    "descricao": "Articulação política com o Congresso, partidos, estados e municípios.",
    "cargo": {
     "titulo": "Ministro(a) de Estado Chefe",
-    "situacao": "nao_verificado",
-    "ocupante": null,
-    "desde": null,
+    "situacao": "titular",
+    "ocupante": "Jose Nobre Guimaraes",
+    "desde": "2026-04-13",
     "mandato_ate": null,
-    "verificado_em": null,
-    "fonte": null
+    "verificado_em": "2026-09",
+    "fonte": "https://eagendas.cgu.gov.br/pesquisa/agentes-publicos-obrigados-por-orgao/orgao/1387/ativo/true",
+    "fonte_nome": "e-Agendas (CGU), Secretaria de Relações Institucionais da Presidência da República",
+    "fonte_agente": true
    }
   },
   {
@@ -212,12 +218,14 @@
    "descricao": "Comunicação e publicidade do governo federal.",
    "cargo": {
     "titulo": "Ministro(a) de Estado Chefe",
-    "situacao": "nao_verificado",
-    "ocupante": null,
-    "desde": null,
+    "situacao": "titular",
+    "ocupante": "Sidonio Cardoso Palmeira",
+    "desde": "2025-01-14",
     "mandato_ate": null,
-    "verificado_em": null,
-    "fonte": null
+    "verificado_em": "2026-09",
+    "fonte": "https://eagendas.cgu.gov.br/pesquisa/agentes-publicos-obrigados-por-orgao/orgao/1381/ativo/true",
+    "fonte_nome": "e-Agendas (CGU), Secretaria de Comunicação Social da Presidência da República",
+    "fonte_agente": true
    }
   },
   {
@@ -231,12 +239,14 @@
    "descricao": "Segurança pessoal do Presidente e das instalações; segurança da informação.",
    "cargo": {
     "titulo": "Ministro(a) de Estado Chefe",
-    "situacao": "nao_verificado",
-    "ocupante": null,
-    "desde": null,
+    "situacao": "titular",
+    "ocupante": "Marcos Antonio Amaro dos Santos",
+    "desde": "2023-05-04",
     "mandato_ate": null,
-    "verificado_em": null,
-    "fonte": null
+    "verificado_em": "2026-09",
+    "fonte": "https://eagendas.cgu.gov.br/pesquisa/agentes-publicos-obrigados-por-orgao/orgao/512/ativo/true",
+    "fonte_nome": "e-Agendas (CGU), Gabinete de Segurança Institucional da Presidência da República",
+    "fonte_agente": true
    }
   },
   {
@@ -251,12 +261,14 @@
    "descricao": "Representa a União judicial e extrajudicialmente e presta consultoria ao Executivo. Constitucionalmente é função essencial à Justiça; o cargo tem status de Ministro de Estado.",
    "cargo": {
     "titulo": "Advogado(a)-Geral da União",
-    "situacao": "nao_verificado",
-    "ocupante": null,
+    "situacao": "titular",
+    "ocupante": "Jorge Rodrigo Araújo Messias",
     "desde": null,
     "mandato_ate": null,
-    "verificado_em": null,
-    "fonte": null
+    "verificado_em": "2026-09",
+    "fonte": "https://www.gov.br/agu/pt-br/composicao/advogado-geral-da-uniao-1",
+    "fonte_nome": "Site oficial da Advocacia-Geral da União (gov.br/agu)",
+    "fonte_agente": true
    }
   },
   {
@@ -271,12 +283,14 @@
    "descricao": "Controle interno, auditoria, correição, ouvidoria, transparência e combate à corrupção.",
    "cargo": {
     "titulo": "Ministro(a) de Estado",
-    "situacao": "nao_verificado",
-    "ocupante": null,
-    "desde": null,
+    "situacao": "titular",
+    "ocupante": "Vinicius Marques de Carvalho",
+    "desde": "2023-01-01",
     "mandato_ate": null,
-    "verificado_em": null,
-    "fonte": null
+    "verificado_em": "2026-09",
+    "fonte": "https://eagendas.cgu.gov.br/pesquisa/agentes-publicos-obrigados-por-orgao/orgao/832/ativo/true",
+    "fonte_nome": "e-Agendas (CGU), Controladoria-Geral da União",
+    "fonte_agente": true
    }
   },
   {
@@ -289,12 +303,14 @@
    "descricao": "Autoridade Certificadora Raiz da ICP-Brasil.",
    "cargo": {
     "titulo": "Diretor(a)-Presidente",
-    "situacao": "nao_verificado",
-    "ocupante": null,
-    "desde": null,
+    "situacao": "titular",
+    "ocupante": "Enylson Flavio Martinez Camolesi",
+    "desde": "2023-12-12",
     "mandato_ate": null,
-    "verificado_em": null,
-    "fonte": null
+    "verificado_em": "2026-09",
+    "fonte": "https://eagendas.cgu.gov.br/pesquisa/agentes-publicos-obrigados-por-orgao/orgao/1184/ativo/true",
+    "fonte_nome": "e-Agendas (CGU), Instituto Nacional de Tecnologia da Informação",
+    "fonte_agente": true
    }
   },
   {
@@ -308,12 +324,14 @@
    "descricao": "Órgão central do Sistema Brasileiro de Inteligência. Transferida do GSI para a Casa Civil em 2023.",
    "cargo": {
     "titulo": "Diretor(a)-Geral",
-    "situacao": "nao_verificado",
-    "ocupante": null,
-    "desde": null,
+    "situacao": "titular",
+    "ocupante": "Luiz Fernando Corrêa",
+    "desde": "2023-05-30",
     "mandato_ate": null,
-    "verificado_em": null,
-    "fonte": null
+    "verificado_em": "2026-09",
+    "fonte": "https://www.gov.br/abin/pt-br/composicao/direcao-geral/diretor-geral-ABIN",
+    "fonte_nome": "Site oficial da ABIN (gov.br/abin)",
+    "fonte_agente": true
    }
   },
   {
@@ -326,12 +344,14 @@
    "descricao": "TV Brasil, Rádio Nacional, Agência Brasil.",
    "cargo": {
     "titulo": "Presidente",
-    "situacao": "nao_verificado",
-    "ocupante": null,
-    "desde": null,
+    "situacao": "titular",
+    "ocupante": "Antonia Pellegrino",
+    "desde": "2026-04-10",
     "mandato_ate": null,
-    "verificado_em": null,
-    "fonte": null
+    "verificado_em": "2026-09",
+    "fonte": "https://acessoainformacao.ebc.com.br/institucional/estrutura-organizacional/diretoria-executiva",
+    "fonte_nome": "Site oficial da EBC (Acesso à Informação, Diretoria Executiva)",
+    "fonte_agente": true
    }
   },
   {
@@ -344,12 +364,14 @@
    "lei": "Lei 14.600/2023, art. 20",
    "cargo": {
     "titulo": "Ministro(a) de Estado",
-    "situacao": "nao_verificado",
-    "ocupante": null,
-    "desde": null,
+    "situacao": "titular",
+    "ocupante": "Andre Carlos Alves de Paula Filho",
+    "desde": "2026-04-01",
     "mandato_ate": null,
-    "verificado_em": null,
-    "fonte": "https://www.gov.br/planalto/pt-br/conheca-a-presidencia/ministros"
+    "verificado_em": "2026-09",
+    "fonte": "https://eagendas.cgu.gov.br/pesquisa/agentes-publicos-obrigados-por-orgao/orgao/1419/ativo/true",
+    "fonte_nome": "e-Agendas (CGU), Ministério da Agricultura e Pecuária",
+    "fonte_agente": true
    }
   },
   {
@@ -362,12 +384,14 @@
    "lei": "Lei 14.600/2023, art. 20",
    "cargo": {
     "titulo": "Ministro(a) de Estado",
-    "situacao": "nao_verificado",
-    "ocupante": null,
-    "desde": null,
+    "situacao": "titular",
+    "ocupante": "Antonio Vladimir Moura Lima",
+    "desde": "2026-04-02",
     "mandato_ate": null,
-    "verificado_em": null,
-    "fonte": "https://www.gov.br/planalto/pt-br/conheca-a-presidencia/ministros"
+    "verificado_em": "2026-09",
+    "fonte": "https://eagendas.cgu.gov.br/pesquisa/agentes-publicos-obrigados-por-orgao/orgao/1395/ativo/true",
+    "fonte_nome": "e-Agendas (CGU), Ministério das Cidades",
+    "fonte_agente": true
    }
   },
   {
@@ -380,12 +404,14 @@
    "lei": "Lei 14.600/2023, art. 20",
    "cargo": {
     "titulo": "Ministro(a) de Estado",
-    "situacao": "nao_verificado",
-    "ocupante": null,
-    "desde": null,
+    "situacao": "titular",
+    "ocupante": "Luciana Barbosa de Oliveira Santos",
+    "desde": "2023-01-01",
     "mandato_ate": null,
-    "verificado_em": null,
-    "fonte": "https://www.gov.br/planalto/pt-br/conheca-a-presidencia/ministros"
+    "verificado_em": "2026-09",
+    "fonte": "https://eagendas.cgu.gov.br/pesquisa/agentes-publicos-obrigados-por-orgao/orgao/862/ativo/true",
+    "fonte_nome": "e-Agendas (CGU), Ministério da Ciência, Tecnologia e Inovação",
+    "fonte_agente": true
    }
   },
   {
@@ -398,12 +424,14 @@
    "lei": "Lei 14.600/2023, art. 20",
    "cargo": {
     "titulo": "Ministro(a) de Estado",
-    "situacao": "nao_verificado",
-    "ocupante": null,
-    "desde": null,
+    "situacao": "titular",
+    "ocupante": "Frederico de Siqueira Filho",
+    "desde": "2025-04-24",
     "mandato_ate": null,
-    "verificado_em": null,
-    "fonte": "https://www.gov.br/planalto/pt-br/conheca-a-presidencia/ministros"
+    "verificado_em": "2026-09",
+    "fonte": "https://eagendas.cgu.gov.br/pesquisa/agentes-publicos-obrigados-por-orgao/orgao/860/ativo/true",
+    "fonte_nome": "e-Agendas (CGU), Ministério das Comunicações",
+    "fonte_agente": true
    }
   },
   {
@@ -416,12 +444,14 @@
    "lei": "Lei 14.600/2023, art. 20",
    "cargo": {
     "titulo": "Ministro(a) de Estado",
-    "situacao": "nao_verificado",
-    "ocupante": null,
-    "desde": null,
+    "situacao": "titular",
+    "ocupante": "Margareth Menezes da Purificacao",
+    "desde": "2023-01-01",
     "mandato_ate": null,
-    "verificado_em": null,
-    "fonte": "https://www.gov.br/planalto/pt-br/conheca-a-presidencia/ministros"
+    "verificado_em": "2026-09",
+    "fonte": "https://eagendas.cgu.gov.br/pesquisa/agentes-publicos-obrigados-por-orgao/orgao/1409/ativo/true",
+    "fonte_nome": "e-Agendas (CGU), Ministério da Cultura",
+    "fonte_agente": true
    }
   },
   {
@@ -434,12 +464,14 @@
    "lei": "Lei 14.600/2023, art. 20",
    "cargo": {
     "titulo": "Ministro(a) de Estado",
-    "situacao": "nao_verificado",
-    "ocupante": null,
-    "desde": null,
+    "situacao": "titular",
+    "ocupante": "Jose Mucio Monteiro Filho",
+    "desde": "2023-01-02",
     "mandato_ate": null,
-    "verificado_em": null,
-    "fonte": "https://www.gov.br/planalto/pt-br/conheca-a-presidencia/ministros"
+    "verificado_em": "2026-09",
+    "fonte": "https://eagendas.cgu.gov.br/pesquisa/agentes-publicos-obrigados-por-orgao/orgao/679/ativo/true",
+    "fonte_nome": "e-Agendas (CGU), Ministério da Defesa",
+    "fonte_agente": true
    }
   },
   {
@@ -452,12 +484,14 @@
    "lei": "Lei 14.600/2023, art. 20",
    "cargo": {
     "titulo": "Ministro(a) de Estado",
-    "situacao": "nao_verificado",
-    "ocupante": null,
-    "desde": null,
+    "situacao": "titular",
+    "ocupante": "Fernanda Machiaveli Morao de Oliveira",
+    "desde": "2026-03-31",
     "mandato_ate": null,
-    "verificado_em": null,
-    "fonte": "https://www.gov.br/planalto/pt-br/conheca-a-presidencia/ministros"
+    "verificado_em": "2026-09",
+    "fonte": "https://eagendas.cgu.gov.br/pesquisa/agentes-publicos-obrigados-por-orgao/orgao/1407/ativo/true",
+    "fonte_nome": "e-Agendas (CGU), Ministério do Desenvolvimento Agrário e Agricultura Familiar",
+    "fonte_agente": true
    }
   },
   {
@@ -470,12 +504,14 @@
    "lei": "Lei 14.600/2023, art. 20",
    "cargo": {
     "titulo": "Ministro(a) de Estado",
-    "situacao": "nao_verificado",
-    "ocupante": null,
-    "desde": null,
+    "situacao": "titular",
+    "ocupante": "Jose Wellington Barroso de Araujo Dias",
+    "desde": "2023-01-01",
     "mandato_ate": null,
-    "verificado_em": null,
-    "fonte": "https://www.gov.br/planalto/pt-br/conheca-a-presidencia/ministros"
+    "verificado_em": "2026-09",
+    "fonte": "https://eagendas.cgu.gov.br/pesquisa/agentes-publicos-obrigados-por-orgao/orgao/1389/ativo/true",
+    "fonte_nome": "e-Agendas (CGU), Ministério do Desenvolvimento e Assistência Social, Família e Combate à Fome",
+    "fonte_agente": true
    }
   },
   {
@@ -488,12 +524,14 @@
    "lei": "Lei 14.600/2023, art. 20",
    "cargo": {
     "titulo": "Ministro(a) de Estado",
-    "situacao": "nao_verificado",
-    "ocupante": null,
-    "desde": null,
+    "situacao": "titular",
+    "ocupante": "Marcio Fernando Elias Rosa",
+    "desde": "2026-04-03",
     "mandato_ate": null,
-    "verificado_em": null,
-    "fonte": "https://www.gov.br/planalto/pt-br/conheca-a-presidencia/ministros"
+    "verificado_em": "2026-09",
+    "fonte": "https://eagendas.cgu.gov.br/pesquisa/agentes-publicos-obrigados-por-orgao/orgao/1399/ativo/true",
+    "fonte_nome": "e-Agendas (CGU), Ministério do Desenvolvimento, Indústria, Comércio e Serviços",
+    "fonte_agente": true
    }
   },
   {
@@ -506,12 +544,14 @@
    "lei": "Lei 14.600/2023, art. 20",
    "cargo": {
     "titulo": "Ministro(a) de Estado",
-    "situacao": "nao_verificado",
-    "ocupante": null,
-    "desde": null,
+    "situacao": "titular",
+    "ocupante": "Janine Mello dos Santos",
+    "desde": "2026-03-31",
     "mandato_ate": null,
-    "verificado_em": null,
-    "fonte": "https://www.gov.br/planalto/pt-br/conheca-a-presidencia/ministros"
+    "verificado_em": "2026-09",
+    "fonte": "https://eagendas.cgu.gov.br/pesquisa/agentes-publicos-obrigados-por-orgao/orgao/1386/ativo/true",
+    "fonte_nome": "e-Agendas (CGU), Ministério dos Direitos Humanos e da Cidadania",
+    "fonte_agente": true
    }
   },
   {
@@ -524,12 +564,14 @@
    "lei": "Lei 14.600/2023, art. 20",
    "cargo": {
     "titulo": "Ministro(a) de Estado",
-    "situacao": "nao_verificado",
-    "ocupante": null,
-    "desde": null,
+    "situacao": "titular",
+    "ocupante": "Leonardo Osvaldo Barchini Rosa",
+    "desde": "2026-04-02",
     "mandato_ate": null,
-    "verificado_em": null,
-    "fonte": "https://www.gov.br/planalto/pt-br/conheca-a-presidencia/ministros"
+    "verificado_em": "2026-09",
+    "fonte": "https://eagendas.cgu.gov.br/pesquisa/agentes-publicos-obrigados-por-orgao/orgao/549/ativo/true",
+    "fonte_nome": "e-Agendas (CGU), Ministério da Educação",
+    "fonte_agente": true
    }
   },
   {
@@ -542,12 +584,14 @@
    "lei": "Lei 14.720/2023",
    "cargo": {
     "titulo": "Ministro(a) de Estado",
-    "situacao": "nao_verificado",
-    "ocupante": null,
-    "desde": null,
+    "situacao": "titular",
+    "ocupante": "Paulo Henrique Rodrigues Pereira",
+    "desde": "2026-04-17",
     "mandato_ate": null,
-    "verificado_em": null,
-    "fonte": "https://www.gov.br/planalto/pt-br/conheca-a-presidencia/ministros"
+    "verificado_em": "2026-09",
+    "fonte": "https://eagendas.cgu.gov.br/pesquisa/agentes-publicos-obrigados-por-orgao/orgao/1429/ativo/true",
+    "fonte_nome": "e-Agendas (CGU), Ministério do Empreendedorismo, da Microempresa e da Empresa de Pequeno Porte",
+    "fonte_agente": true
    }
   },
   {
@@ -560,12 +604,14 @@
    "lei": "Lei 14.600/2023, art. 20",
    "cargo": {
     "titulo": "Ministro(a) de Estado",
-    "situacao": "nao_verificado",
-    "ocupante": null,
-    "desde": null,
+    "situacao": "titular",
+    "ocupante": "Paulo Henrique Perna Cordeiro",
+    "desde": "2026-03-31",
     "mandato_ate": null,
-    "verificado_em": null,
-    "fonte": "https://www.gov.br/planalto/pt-br/conheca-a-presidencia/ministros"
+    "verificado_em": "2026-09",
+    "fonte": "https://eagendas.cgu.gov.br/pesquisa/agentes-publicos-obrigados-por-orgao/orgao/1403/ativo/true",
+    "fonte_nome": "e-Agendas (CGU), Ministério do Esporte",
+    "fonte_agente": true
    }
   },
   {
@@ -578,12 +624,14 @@
    "lei": "Lei 14.600/2023, art. 20",
    "cargo": {
     "titulo": "Ministro(a) de Estado",
-    "situacao": "nao_verificado",
-    "ocupante": null,
-    "desde": null,
+    "situacao": "titular",
+    "ocupante": "Dario Carnevalli Durigan",
+    "desde": "2026-03-19",
     "mandato_ate": null,
-    "verificado_em": null,
-    "fonte": "https://www.gov.br/planalto/pt-br/conheca-a-presidencia/ministros"
+    "verificado_em": "2026-09",
+    "fonte": "https://eagendas.cgu.gov.br/pesquisa/agentes-publicos-obrigados-por-orgao/orgao/1384/ativo/true",
+    "fonte_nome": "e-Agendas (CGU), Ministério da Fazenda",
+    "fonte_agente": true
    }
   },
   {
@@ -596,12 +644,14 @@
    "lei": "Lei 14.600/2023, art. 20",
    "cargo": {
     "titulo": "Ministro(a) de Estado",
-    "situacao": "nao_verificado",
-    "ocupante": null,
-    "desde": null,
+    "situacao": "titular",
+    "ocupante": "Esther Dweck",
+    "desde": "2023-01-01",
     "mandato_ate": null,
-    "verificado_em": null,
-    "fonte": "https://www.gov.br/planalto/pt-br/conheca-a-presidencia/ministros"
+    "verificado_em": "2026-09",
+    "fonte": "https://eagendas.cgu.gov.br/pesquisa/agentes-publicos-obrigados-por-orgao/orgao/1391/ativo/true",
+    "fonte_nome": "e-Agendas (CGU), Ministério da Gestão e da Inovação em Serviços Públicos",
+    "fonte_agente": true
    }
   },
   {
@@ -614,12 +664,14 @@
    "lei": "Lei 14.600/2023, art. 20",
    "cargo": {
     "titulo": "Ministro(a) de Estado",
-    "situacao": "nao_verificado",
-    "ocupante": null,
-    "desde": null,
+    "situacao": "titular",
+    "ocupante": "Rachel Barros de Oliveira",
+    "desde": "2026-03-31",
     "mandato_ate": null,
-    "verificado_em": null,
-    "fonte": "https://www.gov.br/planalto/pt-br/conheca-a-presidencia/ministros"
+    "verificado_em": "2026-09",
+    "fonte": "https://eagendas.cgu.gov.br/pesquisa/agentes-publicos-obrigados-por-orgao/orgao/1405/ativo/true",
+    "fonte_nome": "e-Agendas (CGU), Ministério da Igualdade Racial",
+    "fonte_agente": true
    }
   },
   {
@@ -632,12 +684,14 @@
    "lei": "Lei 14.600/2023, art. 20",
    "cargo": {
     "titulo": "Ministro(a) de Estado",
-    "situacao": "nao_verificado",
-    "ocupante": null,
-    "desde": null,
+    "situacao": "titular",
+    "ocupante": "Antonio Waldez Goes da Silva",
+    "desde": "2023-01-01",
     "mandato_ate": null,
-    "verificado_em": null,
-    "fonte": "https://www.gov.br/planalto/pt-br/conheca-a-presidencia/ministros"
+    "verificado_em": "2026-09",
+    "fonte": "https://eagendas.cgu.gov.br/pesquisa/agentes-publicos-obrigados-por-orgao/orgao/1393/ativo/true",
+    "fonte_nome": "e-Agendas (CGU), Ministério da Integração e do Desenvolvimento Regional",
+    "fonte_agente": true
    }
   },
   {
@@ -650,12 +704,14 @@
    "lei": "Lei 14.600/2023, art. 20",
    "cargo": {
     "titulo": "Ministro(a) de Estado",
-    "situacao": "nao_verificado",
-    "ocupante": null,
-    "desde": null,
+    "situacao": "titular",
+    "ocupante": "Wellington César Lima e Silva",
+    "desde": "2026-01-15",
     "mandato_ate": null,
-    "verificado_em": null,
-    "fonte": "https://www.gov.br/planalto/pt-br/conheca-a-presidencia/ministros"
+    "verificado_em": "2026-09",
+    "fonte": "https://eagendas.cgu.gov.br/pesquisa/agentes-publicos-obrigados-por-orgao/orgao/856/ativo/true",
+    "fonte_nome": "e-Agendas (CGU), Ministério da Justiça e Segurança Pública",
+    "fonte_agente": true
    }
   },
   {
@@ -668,12 +724,14 @@
    "lei": "Lei 14.600/2023, art. 20",
    "cargo": {
     "titulo": "Ministro(a) de Estado",
-    "situacao": "nao_verificado",
-    "ocupante": null,
-    "desde": null,
+    "situacao": "titular",
+    "ocupante": "Joao Paulo Ribeiro Capobianco",
+    "desde": "2026-04-01",
     "mandato_ate": null,
-    "verificado_em": null,
-    "fonte": "https://www.gov.br/planalto/pt-br/conheca-a-presidencia/ministros"
+    "verificado_em": "2026-09",
+    "fonte": "https://eagendas.cgu.gov.br/pesquisa/agentes-publicos-obrigados-por-orgao/orgao/647/ativo/true",
+    "fonte_nome": "e-Agendas (CGU), Ministério do Meio Ambiente",
+    "fonte_agente": true
    }
   },
   {
@@ -686,12 +744,14 @@
    "lei": "Lei 14.600/2023, art. 20",
    "cargo": {
     "titulo": "Ministro(a) de Estado",
-    "situacao": "nao_verificado",
-    "ocupante": null,
-    "desde": null,
+    "situacao": "titular",
+    "ocupante": "Alexandre Silveira de Oliveira",
+    "desde": "2023-01-01",
     "mandato_ate": null,
-    "verificado_em": null,
-    "fonte": "https://www.gov.br/planalto/pt-br/conheca-a-presidencia/ministros"
+    "verificado_em": "2026-09",
+    "fonte": "https://eagendas.cgu.gov.br/pesquisa/agentes-publicos-obrigados-por-orgao/orgao/661/ativo/true",
+    "fonte_nome": "e-Agendas (CGU), Ministério de Minas e Energia",
+    "fonte_agente": true
    }
   },
   {
@@ -704,12 +764,14 @@
    "lei": "Lei 14.600/2023, art. 20",
    "cargo": {
     "titulo": "Ministro(a) de Estado",
-    "situacao": "nao_verificado",
-    "ocupante": null,
-    "desde": null,
+    "situacao": "titular",
+    "ocupante": "Marcia Helena Carvalho Lopes",
+    "desde": "2025-05-05",
     "mandato_ate": null,
-    "verificado_em": null,
-    "fonte": "https://www.gov.br/planalto/pt-br/conheca-a-presidencia/ministros"
+    "verificado_em": "2026-09",
+    "fonte": "https://eagendas.cgu.gov.br/pesquisa/agentes-publicos-obrigados-por-orgao/orgao/1424/ativo/true",
+    "fonte_nome": "e-Agendas (CGU), Ministério das Mulheres",
+    "fonte_agente": true
    }
   },
   {
@@ -722,12 +784,14 @@
    "lei": "Lei 14.600/2023, art. 20",
    "cargo": {
     "titulo": "Ministro(a) de Estado",
-    "situacao": "nao_verificado",
-    "ocupante": null,
-    "desde": null,
+    "situacao": "titular",
+    "ocupante": "Rivetla Edipo Araujo Cruz",
+    "desde": "2026-03-31",
     "mandato_ate": null,
-    "verificado_em": null,
-    "fonte": "https://www.gov.br/planalto/pt-br/conheca-a-presidencia/ministros"
+    "verificado_em": "2026-09",
+    "fonte": "https://eagendas.cgu.gov.br/pesquisa/agentes-publicos-obrigados-por-orgao/orgao/1413/ativo/true",
+    "fonte_nome": "e-Agendas (CGU), Ministério da Pesca e Aquicultura",
+    "fonte_agente": true
    }
   },
   {
@@ -740,12 +804,14 @@
    "lei": "Lei 14.600/2023, art. 20",
    "cargo": {
     "titulo": "Ministro(a) de Estado",
-    "situacao": "nao_verificado",
-    "ocupante": null,
-    "desde": null,
+    "situacao": "titular",
+    "ocupante": "Bruno Moretti",
+    "desde": "2026-03-31",
     "mandato_ate": null,
-    "verificado_em": null,
-    "fonte": "https://www.gov.br/planalto/pt-br/conheca-a-presidencia/ministros"
+    "verificado_em": "2026-09",
+    "fonte": "https://eagendas.cgu.gov.br/pesquisa/agentes-publicos-obrigados-por-orgao/orgao/1401/ativo/true",
+    "fonte_nome": "e-Agendas (CGU), Ministério do Planejamento e Orçamento",
+    "fonte_agente": true
    }
   },
   {
@@ -758,12 +824,14 @@
    "lei": "Lei 14.600/2023, art. 20",
    "cargo": {
     "titulo": "Ministro(a) de Estado",
-    "situacao": "nao_verificado",
-    "ocupante": null,
-    "desde": null,
+    "situacao": "titular",
+    "ocupante": "Tome Barros Monteiro da Franca",
+    "desde": "2026-03-31",
     "mandato_ate": null,
-    "verificado_em": null,
-    "fonte": "https://www.gov.br/planalto/pt-br/conheca-a-presidencia/ministros"
+    "verificado_em": "2026-09",
+    "fonte": "https://eagendas.cgu.gov.br/pesquisa/agentes-publicos-obrigados-por-orgao/orgao/1415/ativo/true",
+    "fonte_nome": "e-Agendas (CGU), Ministério de Portos e Aeroportos",
+    "fonte_agente": true
    }
   },
   {
@@ -776,12 +844,14 @@
    "lei": "Lei 14.600/2023, art. 20",
    "cargo": {
     "titulo": "Ministro(a) de Estado",
-    "situacao": "nao_verificado",
-    "ocupante": null,
-    "desde": null,
+    "situacao": "titular",
+    "ocupante": "Wolney Queiroz Maciel",
+    "desde": "2025-05-02",
     "mandato_ate": null,
-    "verificado_em": null,
-    "fonte": "https://www.gov.br/planalto/pt-br/conheca-a-presidencia/ministros"
+    "verificado_em": "2026-09",
+    "fonte": "https://eagendas.cgu.gov.br/pesquisa/agentes-publicos-obrigados-por-orgao/orgao/1417/ativo/true",
+    "fonte_nome": "e-Agendas (CGU), Ministério da Previdência Social",
+    "fonte_agente": true
    }
   },
   {
@@ -794,12 +864,14 @@
    "lei": "Lei 14.600/2023, art. 20",
    "cargo": {
     "titulo": "Ministro(a) de Estado",
-    "situacao": "nao_verificado",
-    "ocupante": null,
-    "desde": null,
+    "situacao": "titular",
+    "ocupante": "Mauro Luiz Iecker Vieira",
+    "desde": "2023-01-01",
     "mandato_ate": null,
-    "verificado_em": null,
-    "fonte": "https://www.gov.br/planalto/pt-br/conheca-a-presidencia/ministros"
+    "verificado_em": "2026-09",
+    "fonte": "https://eagendas.cgu.gov.br/pesquisa/agentes-publicos-obrigados-por-orgao/orgao/560/ativo/true",
+    "fonte_nome": "e-Agendas (CGU), Ministério das Relações Exteriores",
+    "fonte_agente": true
    }
   },
   {
@@ -812,12 +884,14 @@
    "lei": "Lei 14.600/2023, art. 20",
    "cargo": {
     "titulo": "Ministro(a) de Estado",
-    "situacao": "nao_verificado",
-    "ocupante": null,
-    "desde": null,
+    "situacao": "titular",
+    "ocupante": "Alexandre Rocha Santos Padilha",
+    "desde": "2025-03-10",
     "mandato_ate": null,
-    "verificado_em": null,
-    "fonte": "https://www.gov.br/planalto/pt-br/conheca-a-presidencia/ministros"
+    "verificado_em": "2026-09",
+    "fonte": "https://eagendas.cgu.gov.br/pesquisa/agentes-publicos-obrigados-por-orgao/orgao/563/ativo/true",
+    "fonte_nome": "e-Agendas (CGU), Ministério da Saúde",
+    "fonte_agente": true
    }
   },
   {
@@ -830,12 +904,14 @@
    "lei": "Lei 14.600/2023, art. 20",
    "cargo": {
     "titulo": "Ministro(a) de Estado",
-    "situacao": "nao_verificado",
-    "ocupante": null,
-    "desde": null,
+    "situacao": "titular",
+    "ocupante": "Luiz Marinho",
+    "desde": "2023-01-01",
     "mandato_ate": null,
-    "verificado_em": null,
-    "fonte": "https://www.gov.br/planalto/pt-br/conheca-a-presidencia/ministros"
+    "verificado_em": "2026-09",
+    "fonte": "https://eagendas.cgu.gov.br/pesquisa/agentes-publicos-obrigados-por-orgao/orgao/1421/ativo/true",
+    "fonte_nome": "e-Agendas (CGU), Ministério do Trabalho e Emprego",
+    "fonte_agente": true
    }
   },
   {
@@ -848,12 +924,14 @@
    "lei": "Lei 14.600/2023, art. 20",
    "cargo": {
     "titulo": "Ministro(a) de Estado",
-    "situacao": "nao_verificado",
-    "ocupante": null,
-    "desde": null,
+    "situacao": "titular",
+    "ocupante": "George Andre Palermo Santoro",
+    "desde": "2026-04-01",
     "mandato_ate": null,
-    "verificado_em": null,
-    "fonte": "https://www.gov.br/planalto/pt-br/conheca-a-presidencia/ministros"
+    "verificado_em": "2026-09",
+    "fonte": "https://eagendas.cgu.gov.br/pesquisa/agentes-publicos-obrigados-por-orgao/orgao/1411/ativo/true",
+    "fonte_nome": "e-Agendas (CGU), Ministério dos Transportes",
+    "fonte_agente": true
    }
   },
   {
@@ -866,12 +944,14 @@
    "lei": "Lei 14.600/2023, art. 20",
    "cargo": {
     "titulo": "Ministro(a) de Estado",
-    "situacao": "nao_verificado",
-    "ocupante": null,
-    "desde": null,
+    "situacao": "titular",
+    "ocupante": "Gustavo Costa Feliciano",
+    "desde": "2025-12-23",
     "mandato_ate": null,
-    "verificado_em": null,
-    "fonte": "https://www.gov.br/planalto/pt-br/conheca-a-presidencia/ministros"
+    "verificado_em": "2026-09",
+    "fonte": "https://eagendas.cgu.gov.br/pesquisa/agentes-publicos-obrigados-por-orgao/orgao/714/ativo/true",
+    "fonte_nome": "e-Agendas (CGU), Ministério do Turismo",
+    "fonte_agente": true
    }
   },
   {
@@ -884,12 +964,14 @@
    "lei": "Lei 14.600/2023, art. 20",
    "cargo": {
     "titulo": "Ministro(a) de Estado",
-    "situacao": "nao_verificado",
-    "ocupante": null,
-    "desde": null,
+    "situacao": "titular",
+    "ocupante": "Luiz Henrique Eloy Amado",
+    "desde": "2026-03-31",
     "mandato_ate": null,
-    "verificado_em": null,
-    "fonte": "https://www.gov.br/planalto/pt-br/conheca-a-presidencia/ministros"
+    "verificado_em": "2026-09",
+    "fonte": "https://eagendas.cgu.gov.br/pesquisa/agentes-publicos-obrigados-por-orgao/orgao/1397/ativo/true",
+    "fonte_nome": "e-Agendas (CGU), Ministério dos Povos Indígenas",
+    "fonte_agente": true
    }
   },
   {
@@ -901,12 +983,14 @@
    "pai": "mapa",
    "cargo": {
     "titulo": "Presidente",
-    "situacao": "nao_verificado",
-    "ocupante": null,
+    "situacao": "titular",
+    "ocupante": "Silvia Maria Fonseca Silveira Massruhá",
     "desde": null,
     "mandato_ate": null,
-    "verificado_em": null,
-    "fonte": null
+    "verificado_em": "2026-09",
+    "fonte": "https://www.embrapa.br/dirigentes",
+    "fonte_nome": "Portal Embrapa (Diretoria-Executiva)",
+    "fonte_agente": true
    }
   },
   {
@@ -918,12 +1002,14 @@
    "pai": "mapa",
    "cargo": {
     "titulo": "Diretor(a)",
-    "situacao": "nao_verificado",
-    "ocupante": null,
-    "desde": null,
+    "situacao": "titular",
+    "ocupante": "Carlos Alberto Andrade e Jurgielewicz",
+    "desde": "2025-11-04",
     "mandato_ate": null,
-    "verificado_em": null,
-    "fonte": null
+    "verificado_em": "2026-09",
+    "fonte": "https://eagendas.cgu.gov.br/pesquisa/agentes-publicos-obrigados-por-orgao/orgao/1419/ativo/true",
+    "fonte_nome": "e-Agendas (CGU), Ministério da Agricultura e Pecuária",
+    "fonte_agente": true
    }
   },
   {
@@ -935,12 +1021,14 @@
    "pai": "mcid",
    "cargo": {
     "titulo": "Presidente",
-    "situacao": "nao_verificado",
-    "ocupante": null,
+    "situacao": "titular",
+    "ocupante": "José Marques de Lima",
     "desde": null,
     "mandato_ate": null,
-    "verificado_em": null,
-    "fonte": null
+    "verificado_em": "2026-09",
+    "fonte": "https://www.gov.br/cbtu/pt-br/acesso-a-informacao/institucional/quem-e-quem",
+    "fonte_nome": "Site oficial da CBTU (gov.br, Quem é quem)",
+    "fonte_agente": true
    }
   },
   {
@@ -952,12 +1040,14 @@
    "pai": "mcid",
    "cargo": {
     "titulo": "Presidente",
-    "situacao": "nao_verificado",
-    "ocupante": null,
+    "situacao": "titular",
+    "ocupante": "Nazur Telles Garcia",
     "desde": null,
     "mandato_ate": null,
-    "verificado_em": null,
-    "fonte": null
+    "verificado_em": "2026-09",
+    "fonte": "https://www.gov.br/trensurb/pt-br/composicao/diretoria-executiva/nazur-telles-garcia",
+    "fonte_nome": "Site oficial da Trensurb (gov.br, Diretoria Executiva)",
+    "fonte_agente": true
    }
   },
   {
@@ -969,12 +1059,14 @@
    "pai": "mcti",
    "cargo": {
     "titulo": "Presidente",
-    "situacao": "nao_verificado",
-    "ocupante": null,
-    "desde": null,
+    "situacao": "titular",
+    "ocupante": "Olival Freire Junior",
+    "desde": "2025-12-18",
     "mandato_ate": null,
-    "verificado_em": null,
-    "fonte": null
+    "verificado_em": "2026-09",
+    "fonte": "https://eagendas.cgu.gov.br/pesquisa/agentes-publicos-obrigados-por-orgao/orgao/1005/ativo/true",
+    "fonte_nome": "e-Agendas (CGU), Conselho Nacional de Desenvolvimento Científico e Tecnológico",
+    "fonte_agente": true
    }
   },
   {
@@ -986,12 +1078,14 @@
    "pai": "mcti",
    "cargo": {
     "titulo": "Presidente",
-    "situacao": "nao_verificado",
-    "ocupante": null,
-    "desde": null,
+    "situacao": "titular",
+    "ocupante": "Luiz Antonio Rodrigues Elias",
+    "desde": "2025-06-27",
     "mandato_ate": null,
-    "verificado_em": null,
-    "fonte": null
+    "verificado_em": "2026-09",
+    "fonte": "https://legacy.finep.gov.br/a-finep-externo/governanca/diretoria-executiva",
+    "fonte_nome": "Site oficial da Finep (Governança, Diretoria Executiva)",
+    "fonte_agente": true
    }
   },
   {
@@ -1003,12 +1097,14 @@
    "pai": "mcti",
    "cargo": {
     "titulo": "Presidente",
-    "situacao": "nao_verificado",
-    "ocupante": null,
-    "desde": null,
+    "situacao": "titular",
+    "ocupante": "Marco Antonio Chamon",
+    "desde": "2023-06-30",
     "mandato_ate": null,
-    "verificado_em": null,
-    "fonte": null
+    "verificado_em": "2026-09",
+    "fonte": "https://eagendas.cgu.gov.br/pesquisa/agentes-publicos-obrigados-por-orgao/orgao/1163/ativo/true",
+    "fonte_nome": "e-Agendas (CGU), Agência Espacial Brasileira",
+    "fonte_agente": true
    }
   },
   {
@@ -1020,12 +1116,14 @@
    "pai": "mcti",
    "cargo": {
     "titulo": "Presidente",
-    "situacao": "nao_verificado",
-    "ocupante": null,
-    "desde": null,
+    "situacao": "titular",
+    "ocupante": "Francisco Rondinelli Junior",
+    "desde": "2023-03-21",
     "mandato_ate": null,
-    "verificado_em": null,
-    "fonte": null
+    "verificado_em": "2026-09",
+    "fonte": "https://eagendas.cgu.gov.br/pesquisa/agentes-publicos-obrigados-por-orgao/orgao/1040/ativo/true",
+    "fonte_nome": "e-Agendas (CGU), Comissão Nacional de Energia Nuclear",
+    "fonte_agente": true
    }
   },
   {
@@ -1037,12 +1135,14 @@
    "pai": "mcti",
    "cargo": {
     "titulo": "Diretor(a)",
-    "situacao": "nao_verificado",
-    "ocupante": null,
-    "desde": null,
+    "situacao": "titular",
+    "ocupante": "Antonio Miguel Vieira Monteiro",
+    "desde": "2025-02-20",
     "mandato_ate": null,
-    "verificado_em": null,
-    "fonte": null
+    "verificado_em": "2026-09",
+    "fonte": "https://eagendas.cgu.gov.br/pesquisa/agentes-publicos-obrigados-por-orgao/orgao/862/ativo/true",
+    "fonte_nome": "e-Agendas (CGU), Ministério da Ciência, Tecnologia e Inovação",
+    "fonte_agente": true
    }
   },
   {
@@ -1055,12 +1155,14 @@
    "lei": "Lei 9.472/1997",
    "cargo": {
     "titulo": "Presidente",
-    "situacao": "nao_verificado",
-    "ocupante": null,
-    "desde": null,
+    "situacao": "titular",
+    "ocupante": "Carlos Manuel Baigorri",
+    "desde": "2022-04-14",
     "mandato_ate": null,
-    "verificado_em": null,
-    "fonte": null
+    "verificado_em": "2026-09",
+    "fonte": "https://eagendas.cgu.gov.br/pesquisa/agentes-publicos-obrigados-por-orgao/orgao/1175/ativo/true",
+    "fonte_nome": "e-Agendas (CGU), Agência Nacional de Telecomunicações",
+    "fonte_agente": true
    }
   },
   {
@@ -1072,12 +1174,14 @@
    "pai": "mcom",
    "cargo": {
     "titulo": "Presidente",
-    "situacao": "nao_verificado",
-    "ocupante": null,
-    "desde": null,
+    "situacao": "titular",
+    "ocupante": "Emmanoel Schmidt Rondon",
+    "desde": "2025-09-29",
     "mandato_ate": null,
-    "verificado_em": null,
-    "fonte": null
+    "verificado_em": "2026-09",
+    "fonte": "https://eagendas.cgu.gov.br/pesquisa/agentes-publicos-obrigados-por-orgao/orgao/1380/ativo/true",
+    "fonte_nome": "e-Agendas (CGU), Empresa Brasileira de Correios e Telégrafos",
+    "fonte_agente": true
    }
   },
   {
@@ -1089,12 +1193,14 @@
    "pai": "mcom",
    "cargo": {
     "titulo": "Presidente",
-    "situacao": "nao_verificado",
-    "ocupante": null,
-    "desde": null,
+    "situacao": "titular",
+    "ocupante": "Hermano Studart Lins de Albuquerque",
+    "desde": "2026-04-16",
     "mandato_ate": null,
-    "verificado_em": null,
-    "fonte": null
+    "verificado_em": "2026-09",
+    "fonte": "https://www.telebras.com.br/acesso-a-informacao/institucional/quem-e-quem/",
+    "fonte_nome": "Site oficial da Telebras (Quem é quem)",
+    "fonte_agente": true
    }
   },
   {
@@ -1107,12 +1213,14 @@
    "lei": "MP 2.228-1/2001",
    "cargo": {
     "titulo": "Diretor(a)-Presidente",
-    "situacao": "nao_verificado",
-    "ocupante": null,
-    "desde": null,
+    "situacao": "titular",
+    "ocupante": "Alex Braga Muniz",
+    "desde": "2021-10-21",
     "mandato_ate": null,
-    "verificado_em": null,
-    "fonte": null
+    "verificado_em": "2026-09",
+    "fonte": "https://eagendas.cgu.gov.br/pesquisa/agentes-publicos-obrigados-por-orgao/orgao/1194/ativo/true",
+    "fonte_nome": "e-Agendas (CGU), Agência Nacional do Cinema",
+    "fonte_agente": true
    }
   },
   {
@@ -1124,12 +1232,14 @@
    "pai": "minc",
    "cargo": {
     "titulo": "Presidente",
-    "situacao": "nao_verificado",
-    "ocupante": null,
-    "desde": null,
+    "situacao": "titular",
+    "ocupante": "Deyvesson Israel Alves Gusmao",
+    "desde": "2026-06-12",
     "mandato_ate": null,
-    "verificado_em": null,
-    "fonte": null
+    "verificado_em": "2026-09",
+    "fonte": "https://eagendas.cgu.gov.br/pesquisa/agentes-publicos-obrigados-por-orgao/orgao/1154/ativo/true",
+    "fonte_nome": "e-Agendas (CGU), Instituto do Patrimônio Histórico e Artístico Nacional",
+    "fonte_agente": true
    }
   },
   {
@@ -1141,12 +1251,14 @@
    "pai": "minc",
    "cargo": {
     "titulo": "Presidente",
-    "situacao": "nao_verificado",
-    "ocupante": null,
-    "desde": null,
+    "situacao": "titular",
+    "ocupante": "Leonardo Lessa de Mendonca",
+    "desde": "2026-04-16",
     "mandato_ate": null,
-    "verificado_em": null,
-    "fonte": null
+    "verificado_em": "2026-09",
+    "fonte": "https://eagendas.cgu.gov.br/pesquisa/agentes-publicos-obrigados-por-orgao/orgao/1157/ativo/true",
+    "fonte_nome": "e-Agendas (CGU), Fundação Nacional de Artes",
+    "fonte_agente": true
    }
   },
   {
@@ -1158,12 +1270,14 @@
    "pai": "minc",
    "cargo": {
     "titulo": "Presidente",
-    "situacao": "nao_verificado",
-    "ocupante": null,
-    "desde": null,
+    "situacao": "titular",
+    "ocupante": "Marco Americo Lucchesi",
+    "desde": "2023-02-06",
     "mandato_ate": null,
-    "verificado_em": null,
-    "fonte": null
+    "verificado_em": "2026-09",
+    "fonte": "https://eagendas.cgu.gov.br/pesquisa/agentes-publicos-obrigados-por-orgao/orgao/1135/ativo/true",
+    "fonte_nome": "e-Agendas (CGU), Fundação Biblioteca Nacional",
+    "fonte_agente": true
    }
   },
   {
@@ -1175,12 +1289,14 @@
    "pai": "minc",
    "cargo": {
     "titulo": "Presidente",
-    "situacao": "nao_verificado",
-    "ocupante": null,
-    "desde": null,
+    "situacao": "titular",
+    "ocupante": "Alexandre de Souza Santini Rodrigues",
+    "desde": "2023-02-03",
     "mandato_ate": null,
-    "verificado_em": null,
-    "fonte": null
+    "verificado_em": "2026-09",
+    "fonte": "https://eagendas.cgu.gov.br/pesquisa/agentes-publicos-obrigados-por-orgao/orgao/1059/ativo/true",
+    "fonte_nome": "e-Agendas (CGU), Fundação Casa de Rui Barbosa",
+    "fonte_agente": true
    }
   },
   {
@@ -1192,12 +1308,14 @@
    "pai": "minc",
    "cargo": {
     "titulo": "Presidente",
-    "situacao": "nao_verificado",
-    "ocupante": null,
-    "desde": null,
+    "situacao": "titular",
+    "ocupante": "Joao Jorge Santos Rodrigues",
+    "desde": "2023-03-20",
     "mandato_ate": null,
-    "verificado_em": null,
-    "fonte": null
+    "verificado_em": "2026-09",
+    "fonte": "https://eagendas.cgu.gov.br/pesquisa/agentes-publicos-obrigados-por-orgao/orgao/1142/ativo/true",
+    "fonte_nome": "e-Agendas (CGU), Fundação Cultural Palmares",
+    "fonte_agente": true
    }
   },
   {
@@ -1210,12 +1328,14 @@
    "lei": "CF, art. 142; LC 97/1999",
    "cargo": {
     "titulo": "Comandante da Marinha",
-    "situacao": "nao_verificado",
-    "ocupante": null,
-    "desde": null,
+    "situacao": "titular",
+    "ocupante": "Marcos Sampaio Olsen",
+    "desde": "2023-01-01",
     "mandato_ate": null,
-    "verificado_em": null,
-    "fonte": null
+    "verificado_em": "2026-09",
+    "fonte": "https://eagendas.cgu.gov.br/pesquisa/agentes-publicos-obrigados-por-orgao/orgao/1037/ativo/true",
+    "fonte_nome": "e-Agendas (CGU), Comando da Marinha",
+    "fonte_agente": true
    }
   },
   {
@@ -1228,12 +1348,14 @@
    "lei": "CF, art. 142; LC 97/1999",
    "cargo": {
     "titulo": "Comandante do Exército",
-    "situacao": "nao_verificado",
-    "ocupante": null,
-    "desde": null,
+    "situacao": "titular",
+    "ocupante": "Tomas Miguel Mine Ribeiro Paiva",
+    "desde": "2023-01-21",
     "mandato_ate": null,
-    "verificado_em": null,
-    "fonte": null
+    "verificado_em": "2026-09",
+    "fonte": "https://eagendas.cgu.gov.br/pesquisa/agentes-publicos-obrigados-por-orgao/orgao/1026/ativo/true",
+    "fonte_nome": "e-Agendas (CGU), Comando do Exército",
+    "fonte_agente": true
    }
   },
   {
@@ -1246,12 +1368,14 @@
    "lei": "CF, art. 142; LC 97/1999",
    "cargo": {
     "titulo": "Comandante da Aeronáutica",
-    "situacao": "nao_verificado",
-    "ocupante": null,
-    "desde": null,
+    "situacao": "titular",
+    "ocupante": "Marcelo Kanitz Damasceno",
+    "desde": "2023-01-02",
     "mandato_ate": null,
-    "verificado_em": null,
-    "fonte": null
+    "verificado_em": "2026-09",
+    "fonte": "https://eagendas.cgu.gov.br/pesquisa/agentes-publicos-obrigados-por-orgao/orgao/1015/ativo/true",
+    "fonte_nome": "e-Agendas (CGU), Comando da Aeronáutica",
+    "fonte_agente": true
    }
   },
   {
@@ -1263,12 +1387,14 @@
    "pai": "md",
    "cargo": {
     "titulo": "Presidente",
-    "situacao": "nao_verificado",
-    "ocupante": null,
-    "desde": null,
+    "situacao": "titular",
+    "ocupante": "Newton de Almeida Costa Neto",
+    "desde": "2022-06",
     "mandato_ate": null,
-    "verificado_em": null,
-    "fonte": null
+    "verificado_em": "2026-09",
+    "fonte": "https://amazul.mar.mil.br/acesso-a-informacao/institucional",
+    "fonte_nome": "Site oficial da Amazul (Institucional)",
+    "fonte_agente": true
    }
   },
   {
@@ -1280,12 +1406,14 @@
    "pai": "md",
    "cargo": {
     "titulo": "Presidente",
-    "situacao": "nao_verificado",
-    "ocupante": null,
-    "desde": null,
+    "situacao": "titular",
+    "ocupante": "Flávio Mayon Ferreira Neiva",
+    "desde": "2026-07-01",
     "mandato_ate": null,
-    "verificado_em": null,
-    "fonte": null
+    "verificado_em": "2026-09",
+    "fonte": "https://www.imbel.gov.br/noticias/imbel-tem-novo-diretor-presidente-e-vice-presidente-executivo",
+    "fonte_nome": "Site oficial da IMBEL (notícia de 02/07/2026)",
+    "fonte_agente": true
    }
   },
   {
@@ -1297,12 +1425,14 @@
    "pai": "md",
    "cargo": {
     "titulo": "Presidente",
-    "situacao": "nao_verificado",
-    "ocupante": null,
-    "desde": null,
+    "situacao": "titular",
+    "ocupante": "Amaury Calheiros Boite Junior",
+    "desde": "2024-08-15",
     "mandato_ate": null,
-    "verificado_em": null,
-    "fonte": null
+    "verificado_em": "2026-09",
+    "fonte": "https://www.emgepron.gov.br/pt-br/acessoainformacao/institucional",
+    "fonte_nome": "Site oficial da EMGEPRON (Acesso à Informação, Quem é quem)",
+    "fonte_agente": true
    }
   },
   {
@@ -1314,12 +1444,14 @@
    "pai": "mda",
    "cargo": {
     "titulo": "Presidente",
-    "situacao": "nao_verificado",
-    "ocupante": null,
-    "desde": null,
+    "situacao": "titular",
+    "ocupante": "Cesar Fernando Schiavon Aldrighi",
+    "desde": "2023-03-23",
     "mandato_ate": null,
-    "verificado_em": null,
-    "fonte": null
+    "verificado_em": "2026-09",
+    "fonte": "https://eagendas.cgu.gov.br/pesquisa/agentes-publicos-obrigados-por-orgao/orgao/1143/ativo/true",
+    "fonte_nome": "e-Agendas (CGU), Instituto Nacional de Colonização e Reforma Agrária",
+    "fonte_agente": true
    }
   },
   {
@@ -1331,12 +1463,14 @@
    "pai": "mda",
    "cargo": {
     "titulo": "Presidente",
-    "situacao": "nao_verificado",
-    "ocupante": null,
-    "desde": null,
+    "situacao": "titular",
+    "ocupante": "Silvio Isoppo Porto",
+    "desde": "2026-04-17",
     "mandato_ate": null,
-    "verificado_em": null,
-    "fonte": null
+    "verificado_em": "2026-09",
+    "fonte": "https://eagendas.cgu.gov.br/pesquisa/agentes-publicos-obrigados-por-orgao/orgao/1437/ativo/true",
+    "fonte_nome": "e-Agendas (CGU), Companhia Nacional de Abastecimento",
+    "fonte_agente": true
    }
   },
   {
@@ -1348,12 +1482,14 @@
    "pai": "mdic",
    "cargo": {
     "titulo": "Presidente",
-    "situacao": "nao_verificado",
-    "ocupante": null,
-    "desde": null,
+    "situacao": "titular",
+    "ocupante": "Marcio Andre Oliveira Brito",
+    "desde": "2024-02-27",
     "mandato_ate": null,
-    "verificado_em": null,
-    "fonte": null
+    "verificado_em": "2026-09",
+    "fonte": "https://eagendas.cgu.gov.br/pesquisa/agentes-publicos-obrigados-por-orgao/orgao/1047/ativo/true",
+    "fonte_nome": "e-Agendas (CGU), Instituto Nacional de Metrologia, Qualidade e Tecnologia",
+    "fonte_agente": true
    }
   },
   {
@@ -1365,12 +1501,14 @@
    "pai": "mdic",
    "cargo": {
     "titulo": "Presidente",
-    "situacao": "nao_verificado",
-    "ocupante": null,
-    "desde": null,
+    "situacao": "titular",
+    "ocupante": "Julio Cesar Castelo Branco Reis Moreira",
+    "desde": "2023-07-20",
     "mandato_ate": null,
-    "verificado_em": null,
-    "fonte": null
+    "verificado_em": "2026-09",
+    "fonte": "https://eagendas.cgu.gov.br/pesquisa/agentes-publicos-obrigados-por-orgao/orgao/1071/ativo/true",
+    "fonte_nome": "e-Agendas (CGU), Instituto Nacional da Propriedade Industrial",
+    "fonte_agente": true
    }
   },
   {
@@ -1382,12 +1520,14 @@
    "pai": "mdic",
    "cargo": {
     "titulo": "Superintendente",
-    "situacao": "nao_verificado",
-    "ocupante": null,
-    "desde": null,
+    "situacao": "titular",
+    "ocupante": "Leopoldo Augusto Melo Montenegro Junior",
+    "desde": "2026-03-20",
     "mandato_ate": null,
-    "verificado_em": null,
-    "fonte": null
+    "verificado_em": "2026-09",
+    "fonte": "https://eagendas.cgu.gov.br/pesquisa/agentes-publicos-obrigados-por-orgao/orgao/1028/ativo/true",
+    "fonte_nome": "e-Agendas (CGU), Superintendência da Zona Franca de Manaus",
+    "fonte_agente": true
    }
   },
   {
@@ -1400,12 +1540,14 @@
    "site": "https://www.bndes.gov.br",
    "cargo": {
     "titulo": "Presidente",
-    "situacao": "nao_verificado",
-    "ocupante": null,
+    "situacao": "titular",
+    "ocupante": "Aloizio Mercadante Oliva",
     "desde": null,
     "mandato_ate": null,
-    "verificado_em": null,
-    "fonte": null
+    "verificado_em": "2026-09",
+    "fonte": "https://www.bndes.gov.br/wps/portal/site/home/quem-somos/quem-e-quem",
+    "fonte_nome": "Site oficial do BNDES (Quem é quem)",
+    "fonte_agente": true
    }
   },
   {
@@ -1417,12 +1559,14 @@
    "pai": "mdic",
    "cargo": {
     "titulo": "Presidente",
-    "situacao": "nao_verificado",
-    "ocupante": null,
-    "desde": null,
+    "situacao": "titular",
+    "ocupante": "Laudemir André Müller",
+    "desde": "2026-04",
     "mandato_ate": null,
-    "verificado_em": null,
-    "fonte": null
+    "verificado_em": "2026-09",
+    "fonte": "https://www.in.gov.br/web/dou/-/despacho-do-presidente-da-republica-702067133",
+    "fonte_nome": "Diário Oficial da União (in.gov.br)",
+    "fonte_agente": true
    }
   },
   {
@@ -1434,12 +1578,14 @@
    "pai": "mec",
    "cargo": {
     "titulo": "Presidente",
-    "situacao": "nao_verificado",
-    "ocupante": null,
-    "desde": null,
+    "situacao": "titular",
+    "ocupante": "Manuel Fernando Palacios da Cunha e Melo",
+    "desde": "2023-02-01",
     "mandato_ate": null,
-    "verificado_em": null,
-    "fonte": null
+    "verificado_em": "2026-09",
+    "fonte": "https://eagendas.cgu.gov.br/pesquisa/agentes-publicos-obrigados-por-orgao/orgao/1050/ativo/true",
+    "fonte_nome": "e-Agendas (CGU), Instituto Nacional de Estudos e Pesquisas Educacionais Anísio Teixeira",
+    "fonte_agente": true
    }
   },
   {
@@ -1451,12 +1597,14 @@
    "pai": "mec",
    "cargo": {
     "titulo": "Presidente",
-    "situacao": "nao_verificado",
-    "ocupante": null,
-    "desde": null,
+    "situacao": "titular",
+    "ocupante": "Denise Pires de Carvalho",
+    "desde": "2024-02-19",
     "mandato_ate": null,
-    "verificado_em": null,
-    "fonte": null
+    "verificado_em": "2026-09",
+    "fonte": "https://eagendas.cgu.gov.br/pesquisa/agentes-publicos-obrigados-por-orgao/orgao/1051/ativo/true",
+    "fonte_nome": "e-Agendas (CGU), Fundação Coordenação de Aperfeiçoamento de Pessoal de Nível superior",
+    "fonte_agente": true
    }
   },
   {
@@ -1468,12 +1616,14 @@
    "pai": "mec",
    "cargo": {
     "titulo": "Presidente",
-    "situacao": "nao_verificado",
-    "ocupante": null,
-    "desde": null,
+    "situacao": "titular",
+    "ocupante": "Fernanda Mara de Oliveira Macedo Carneiro Pacobahyba",
+    "desde": "2023-01-02",
     "mandato_ate": null,
-    "verificado_em": null,
-    "fonte": null
+    "verificado_em": "2026-09",
+    "fonte": "https://eagendas.cgu.gov.br/pesquisa/agentes-publicos-obrigados-por-orgao/orgao/1054/ativo/true",
+    "fonte_nome": "e-Agendas (CGU), Fundo Nacional de Desenvolvimento da Educação",
+    "fonte_agente": true
    }
   },
   {
@@ -1485,12 +1635,14 @@
    "pai": "mec",
    "cargo": {
     "titulo": "Presidente",
-    "situacao": "nao_verificado",
-    "ocupante": null,
+    "situacao": "titular",
+    "ocupante": "Arthur Chioro",
     "desde": null,
     "mandato_ate": null,
-    "verificado_em": null,
-    "fonte": null
+    "verificado_em": "2026-09",
+    "fonte": "https://www.gov.br/ebserh/pt-br/acesso-a-informacao/institucional/quem-e-quem",
+    "fonte_nome": "Site oficial da Ebserh (gov.br, Quem é quem)",
+    "fonte_agente": true
    }
   },
   {
@@ -1521,12 +1673,14 @@
    "pai": "mf",
    "cargo": {
     "titulo": "Secretário(a) Especial",
-    "situacao": "nao_verificado",
-    "ocupante": null,
-    "desde": null,
+    "situacao": "titular",
+    "ocupante": "Robinson Sakiyama Barreirinhas",
+    "desde": "2023-01-01",
     "mandato_ate": null,
-    "verificado_em": null,
-    "fonte": null
+    "verificado_em": "2026-09",
+    "fonte": "https://eagendas.cgu.gov.br/pesquisa/agentes-publicos-obrigados-por-orgao/orgao/1384/ativo/true",
+    "fonte_nome": "e-Agendas (CGU), Ministério da Fazenda",
+    "fonte_agente": true
    }
   },
   {
@@ -1538,12 +1692,14 @@
    "pai": "mf",
    "cargo": {
     "titulo": "Secretário(a)",
-    "situacao": "nao_verificado",
-    "ocupante": null,
-    "desde": null,
+    "situacao": "titular",
+    "ocupante": "Daniel Cardoso Leal",
+    "desde": "2026-03-24",
     "mandato_ate": null,
-    "verificado_em": null,
-    "fonte": null
+    "verificado_em": "2026-09",
+    "fonte": "https://eagendas.cgu.gov.br/pesquisa/agentes-publicos-obrigados-por-orgao/orgao/1384/ativo/true",
+    "fonte_nome": "e-Agendas (CGU), Ministério da Fazenda",
+    "fonte_agente": true
    }
   },
   {
@@ -1555,12 +1711,14 @@
    "pai": "mf",
    "cargo": {
     "titulo": "Procurador(a)-Geral",
-    "situacao": "nao_verificado",
-    "ocupante": null,
+    "situacao": "titular",
+    "ocupante": "Anelize Lenzi Ruas de Almeida",
     "desde": null,
     "mandato_ate": null,
-    "verificado_em": null,
-    "fonte": null
+    "verificado_em": "2026-09",
+    "fonte": "https://www.gov.br/pgfn/pt-br/composicao/quem-e-quem/gabinete",
+    "fonte_nome": "Site oficial da PGFN (gov.br/pgfn)",
+    "fonte_agente": true
    }
   },
   {
@@ -1602,12 +1760,14 @@
    "lei": "Lei 6.385/1976",
    "cargo": {
     "titulo": "Presidente",
-    "situacao": "nao_verificado",
-    "ocupante": null,
-    "desde": null,
+    "situacao": "titular",
+    "ocupante": "Otto Eduardo Fonseca de Albuquerque Lobo",
+    "desde": "2026-06-05",
     "mandato_ate": null,
-    "verificado_em": null,
-    "fonte": null
+    "verificado_em": "2026-09",
+    "fonte": "https://eagendas.cgu.gov.br/pesquisa/agentes-publicos-obrigados-por-orgao/orgao/1122/ativo/true",
+    "fonte_nome": "e-Agendas (CGU), Comissão de Valores Mobiliários",
+    "fonte_agente": true
    }
   },
   {
@@ -1619,12 +1779,14 @@
    "pai": "mf",
    "cargo": {
     "titulo": "Superintendente",
-    "situacao": "nao_verificado",
-    "ocupante": null,
-    "desde": null,
+    "situacao": "titular",
+    "ocupante": "Alessandro Serafin Octaviani Luis",
+    "desde": "2023-04-06",
     "mandato_ate": null,
-    "verificado_em": null,
-    "fonte": null
+    "verificado_em": "2026-09",
+    "fonte": "https://eagendas.cgu.gov.br/pesquisa/agentes-publicos-obrigados-por-orgao/orgao/1376/ativo/true",
+    "fonte_nome": "e-Agendas (CGU), Superintendência de Seguros Privados",
+    "fonte_agente": true
    }
   },
   {
@@ -1636,12 +1798,14 @@
    "pai": "mf",
    "cargo": {
     "titulo": "Presidente",
-    "situacao": "nao_verificado",
-    "ocupante": null,
-    "desde": null,
+    "situacao": "titular",
+    "ocupante": "Tarciana Paula Gomes Medeiros",
+    "desde": "2023-01",
     "mandato_ate": null,
-    "verificado_em": null,
-    "fonte": null
+    "verificado_em": "2026-09",
+    "fonte": "https://ri.bb.com.br/en/corporate-governance-and-sustainability/board-of-officers/",
+    "fonte_nome": "Site de Relações com Investidores do Banco do Brasil (Board of Officers)",
+    "fonte_agente": true
    }
   },
   {
@@ -1653,12 +1817,14 @@
    "pai": "mf",
    "cargo": {
     "titulo": "Presidente",
-    "situacao": "nao_verificado",
-    "ocupante": null,
-    "desde": null,
+    "situacao": "titular",
+    "ocupante": "Carlos Antônio Vieira Fernandes",
+    "desde": "2023-11-07",
     "mandato_ate": null,
-    "verificado_em": null,
-    "fonte": null
+    "verificado_em": "2026-09",
+    "fonte": "https://www.caixa.gov.br/sobre-a-caixa/governanca-corporativa/diretoria-executiva/presidencia/Paginas/default.aspx",
+    "fonte_nome": "Site oficial da CAIXA (Governança Corporativa, Presidência)",
+    "fonte_agente": true
    }
   },
   {
@@ -1670,12 +1836,14 @@
    "pai": "mf",
    "cargo": {
     "titulo": "Presidente",
-    "situacao": "nao_verificado",
-    "ocupante": null,
-    "desde": null,
+    "situacao": "titular",
+    "ocupante": "Paulo Henrique Saraiva Câmara",
+    "desde": "2026-03",
     "mandato_ate": null,
-    "verificado_em": null,
-    "fonte": null
+    "verificado_em": "2026-09",
+    "fonte": "https://www.bnb.gov.br/acesso-a-informacao/institucional",
+    "fonte_nome": "Portal do Banco do Nordeste (Informações Institucionais, Quem é Quem)",
+    "fonte_agente": true
    }
   },
   {
@@ -1687,12 +1855,14 @@
    "pai": "mf",
    "cargo": {
     "titulo": "Presidente",
-    "situacao": "nao_verificado",
-    "ocupante": null,
+    "situacao": "titular",
+    "ocupante": "Luiz Claudio Moreira Lessa",
     "desde": null,
     "mandato_ate": null,
-    "verificado_em": null,
-    "fonte": null
+    "verificado_em": "2026-09",
+    "fonte": "https://ri.bancoamazonia.com.br/en/governance-and-sustainability/governance-structure-committees-and-boards/",
+    "fonte_nome": "Site de Relações com Investidores do Banco da Amazônia (Governance Structure)",
+    "fonte_agente": true
    }
   },
   {
@@ -1704,12 +1874,14 @@
    "pai": "mf",
    "cargo": {
     "titulo": "Presidente",
-    "situacao": "nao_verificado",
-    "ocupante": null,
-    "desde": null,
+    "situacao": "titular",
+    "ocupante": "Sérgio Perini Rodrigues",
+    "desde": "2023-04-10",
     "mandato_ate": null,
-    "verificado_em": null,
-    "fonte": null
+    "verificado_em": "2026-09",
+    "fonte": "https://www.casadamoeda.gov.br/portal/acesso-a-informacao/institucional/quem-e-quem.html",
+    "fonte_nome": "Site oficial da Casa da Moeda do Brasil (Quem é Quem)",
+    "fonte_agente": true
    }
   },
   {
@@ -1721,12 +1893,14 @@
    "pai": "mgi",
    "cargo": {
     "titulo": "Presidente",
-    "situacao": "nao_verificado",
-    "ocupante": null,
-    "desde": null,
+    "situacao": "titular",
+    "ocupante": "Betania Peixoto Lemos",
+    "desde": "2023-02-28",
     "mandato_ate": null,
-    "verificado_em": null,
-    "fonte": null
+    "verificado_em": "2026-09",
+    "fonte": "https://eagendas.cgu.gov.br/pesquisa/agentes-publicos-obrigados-por-orgao/orgao/1129/ativo/true",
+    "fonte_nome": "e-Agendas (CGU), Fundação Escola Nacional de Administração Pública",
+    "fonte_agente": true
    }
   },
   {
@@ -1738,12 +1912,14 @@
    "pai": "mgi",
    "cargo": {
     "titulo": "Presidente",
-    "situacao": "nao_verificado",
-    "ocupante": null,
-    "desde": null,
+    "situacao": "titular",
+    "ocupante": "Wilton Itaiguara Gonçalves Mota",
+    "desde": "2025-11-18",
     "mandato_ate": null,
-    "verificado_em": null,
-    "fonte": null
+    "verificado_em": "2026-09",
+    "fonte": "https://www.transparencia.serpro.gov.br/acesso-a-informacao/institucional/quem-e-quem",
+    "fonte_nome": "Portal da Transparência e Governança do Serpro (Quem é quem)",
+    "fonte_agente": true
    }
   },
   {
@@ -1755,12 +1931,14 @@
    "pai": "mgi",
    "cargo": {
     "titulo": "Presidente",
-    "situacao": "nao_verificado",
-    "ocupante": null,
-    "desde": null,
+    "situacao": "titular",
+    "ocupante": "Rodrigo Ortiz D'Avila Assumpção",
+    "desde": "2023-04-03",
     "mandato_ate": null,
-    "verificado_em": null,
-    "fonte": null
+    "verificado_em": "2026-09",
+    "fonte": "https://www.dataprev.gov.br/conheca-dataprev-quem-e-quem/presidencia-e-diretorias",
+    "fonte_nome": "Site oficial da Dataprev (Quem é quem, Presidência e Diretorias)",
+    "fonte_agente": true
    }
   },
   {
@@ -1773,12 +1951,14 @@
    "lei": "Lei 9.984/2000",
    "cargo": {
     "titulo": "Diretor(a)-Presidente",
-    "situacao": "nao_verificado",
-    "ocupante": null,
-    "desde": null,
+    "situacao": "titular",
+    "ocupante": "Leonardo Goes Silva",
+    "desde": "2026-01-26",
     "mandato_ate": null,
-    "verificado_em": null,
-    "fonte": null
+    "verificado_em": "2026-09",
+    "fonte": "https://eagendas.cgu.gov.br/pesquisa/agentes-publicos-obrigados-por-orgao/orgao/1183/ativo/true",
+    "fonte_nome": "e-Agendas (CGU), Agência Nacional de Águas e Saneamento Básico",
+    "fonte_agente": true
    }
   },
   {
@@ -1790,12 +1970,14 @@
    "pai": "midr",
    "cargo": {
     "titulo": "Diretor(a)-Geral",
-    "situacao": "nao_verificado",
-    "ocupante": null,
-    "desde": null,
+    "situacao": "titular",
+    "ocupante": "Fernando Marcondes de Araujo Leao",
+    "desde": "2023-04-17",
     "mandato_ate": null,
-    "verificado_em": null,
-    "fonte": null
+    "verificado_em": "2026-09",
+    "fonte": "https://eagendas.cgu.gov.br/pesquisa/agentes-publicos-obrigados-por-orgao/orgao/1069/ativo/true",
+    "fonte_nome": "e-Agendas (CGU), Departamento Nacional de Obras Contra as Secas",
+    "fonte_agente": true
    }
   },
   {
@@ -1807,12 +1989,14 @@
    "pai": "midr",
    "cargo": {
     "titulo": "Presidente",
-    "situacao": "nao_verificado",
-    "ocupante": null,
-    "desde": null,
+    "situacao": "titular",
+    "ocupante": "Lucas Felipe de Oliveira",
+    "desde": "2025-06-17",
     "mandato_ate": null,
-    "verificado_em": null,
-    "fonte": null
+    "verificado_em": "2026-09",
+    "fonte": "https://eagendas.cgu.gov.br/pesquisa/agentes-publicos-obrigados-por-orgao/orgao/1438/ativo/true",
+    "fonte_nome": "e-Agendas (CGU), Companhia de Desenvolvimento dos Vales do São Francisco e do Parnaíba",
+    "fonte_agente": true
    }
   },
   {
@@ -1824,12 +2008,14 @@
    "pai": "midr",
    "cargo": {
     "titulo": "Superintendente",
-    "situacao": "nao_verificado",
-    "ocupante": null,
-    "desde": null,
+    "situacao": "titular",
+    "ocupante": "Paulo Roberto Galvao da Rocha",
+    "desde": "2023-05-10",
     "mandato_ate": null,
-    "verificado_em": null,
-    "fonte": null
+    "verificado_em": "2026-09",
+    "fonte": "https://eagendas.cgu.gov.br/pesquisa/agentes-publicos-obrigados-por-orgao/orgao/1230/ativo/true",
+    "fonte_nome": "e-Agendas (CGU), Superintendência do Desenvolvimento da Amazônia",
+    "fonte_agente": true
    }
   },
   {
@@ -1841,12 +2027,14 @@
    "pai": "midr",
    "cargo": {
     "titulo": "Superintendente",
-    "situacao": "nao_verificado",
-    "ocupante": null,
-    "desde": null,
+    "situacao": "titular",
+    "ocupante": "Francisco Ferreira Alexandre",
+    "desde": "2025-08-15",
     "mandato_ate": null,
-    "verificado_em": null,
-    "fonte": null
+    "verificado_em": "2026-09",
+    "fonte": "https://eagendas.cgu.gov.br/pesquisa/agentes-publicos-obrigados-por-orgao/orgao/1231/ativo/true",
+    "fonte_nome": "e-Agendas (CGU), Superintendência do Desenvolvimento do Nordeste",
+    "fonte_agente": true
    }
   },
   {
@@ -1858,12 +2046,14 @@
    "pai": "midr",
    "cargo": {
     "titulo": "Superintendente",
-    "situacao": "nao_verificado",
-    "ocupante": null,
-    "desde": null,
+    "situacao": "titular",
+    "ocupante": "Luciana de Sousa Barros",
+    "desde": "2024-05-22",
     "mandato_ate": null,
-    "verificado_em": null,
-    "fonte": null
+    "verificado_em": "2026-09",
+    "fonte": "https://eagendas.cgu.gov.br/pesquisa/agentes-publicos-obrigados-por-orgao/orgao/1241/ativo/true",
+    "fonte_nome": "e-Agendas (CGU), Superintendência do Desenvolvimento do Centro-Oeste",
+    "fonte_agente": true
    }
   },
   {
@@ -1876,12 +2066,14 @@
    "lei": "CF, art. 144, I",
    "cargo": {
     "titulo": "Diretor(a)-Geral",
-    "situacao": "nao_verificado",
-    "ocupante": null,
-    "desde": null,
+    "situacao": "titular",
+    "ocupante": "Andrei Augusto Passos Rodrigues",
+    "desde": "2023-01-02",
     "mandato_ate": null,
-    "verificado_em": null,
-    "fonte": null
+    "verificado_em": "2026-09",
+    "fonte": "https://eagendas.cgu.gov.br/pesquisa/agentes-publicos-obrigados-por-orgao/orgao/1066/ativo/true",
+    "fonte_nome": "e-Agendas (CGU), Polícia Federal",
+    "fonte_agente": true
    }
   },
   {
@@ -1894,12 +2086,14 @@
    "lei": "CF, art. 144, II",
    "cargo": {
     "titulo": "Diretor(a)-Geral",
-    "situacao": "nao_verificado",
-    "ocupante": null,
-    "desde": null,
+    "situacao": "titular",
+    "ocupante": "Antonio Fernando Souza Oliveira",
+    "desde": "2023-01-02",
     "mandato_ate": null,
-    "verificado_em": null,
-    "fonte": null
+    "verificado_em": "2026-09",
+    "fonte": "https://eagendas.cgu.gov.br/pesquisa/agentes-publicos-obrigados-por-orgao/orgao/1125/ativo/true",
+    "fonte_nome": "e-Agendas (CGU), Polícia Rodoviária Federal",
+    "fonte_agente": true
    }
   },
   {
@@ -1911,12 +2105,14 @@
    "pai": "mjsp",
    "cargo": {
     "titulo": "Secretário(a) Nacional",
-    "situacao": "nao_verificado",
-    "ocupante": null,
-    "desde": null,
+    "situacao": "titular",
+    "ocupante": "Andre de Albuquerque Garcia",
+    "desde": "2024-02-08",
     "mandato_ate": null,
-    "verificado_em": null,
-    "fonte": null
+    "verificado_em": "2026-09",
+    "fonte": "https://eagendas.cgu.gov.br/pesquisa/agentes-publicos-obrigados-por-orgao/orgao/856/ativo/true",
+    "fonte_nome": "e-Agendas (CGU), Ministério da Justiça e Segurança Pública",
+    "fonte_agente": true
    }
   },
   {
@@ -1929,12 +2125,14 @@
    "lei": "Lei 12.529/2011",
    "cargo": {
     "titulo": "Presidente",
-    "situacao": "nao_verificado",
-    "ocupante": null,
-    "desde": null,
+    "situacao": "interino",
+    "ocupante": "Diogo Thomson de Andrade",
+    "desde": "2026-04-12",
     "mandato_ate": null,
-    "verificado_em": null,
-    "fonte": null
+    "verificado_em": "2026-09",
+    "fonte": "https://www.gov.br/cade/pt-br/composicao/presidencia",
+    "fonte_nome": "Site oficial do Cade (gov.br/cade)",
+    "fonte_agente": true
    }
   },
   {
@@ -1946,12 +2144,14 @@
    "pai": "mma",
    "cargo": {
     "titulo": "Presidente",
-    "situacao": "nao_verificado",
-    "ocupante": null,
-    "desde": null,
+    "situacao": "titular",
+    "ocupante": "Jair Schmitt",
+    "desde": "2026-06-15",
     "mandato_ate": null,
-    "verificado_em": null,
-    "fonte": null
+    "verificado_em": "2026-09",
+    "fonte": "https://eagendas.cgu.gov.br/pesquisa/agentes-publicos-obrigados-por-orgao/orgao/1145/ativo/true",
+    "fonte_nome": "e-Agendas (CGU), Instituto Brasileiro do Meio Ambiente e dos Recursos Naturais Renováveis",
+    "fonte_agente": true
    }
   },
   {
@@ -1963,12 +2163,14 @@
    "pai": "mma",
    "cargo": {
     "titulo": "Presidente",
-    "situacao": "nao_verificado",
-    "ocupante": null,
-    "desde": null,
+    "situacao": "titular",
+    "ocupante": "Mauro Oliveira Pires",
+    "desde": "2023-05-17",
     "mandato_ate": null,
-    "verificado_em": null,
-    "fonte": null
+    "verificado_em": "2026-09",
+    "fonte": "https://eagendas.cgu.gov.br/pesquisa/agentes-publicos-obrigados-por-orgao/orgao/1232/ativo/true",
+    "fonte_nome": "e-Agendas (CGU), Instituto Chico Mendes de Conservação da Biodiversidade",
+    "fonte_agente": true
    }
   },
   {
@@ -1980,12 +2182,14 @@
    "pai": "mma",
    "cargo": {
     "titulo": "Presidente",
-    "situacao": "nao_verificado",
-    "ocupante": null,
-    "desde": null,
+    "situacao": "titular",
+    "ocupante": "Sergio Besserman Vianna",
+    "desde": "2023-08-03",
     "mandato_ate": null,
-    "verificado_em": null,
-    "fonte": null
+    "verificado_em": "2026-09",
+    "fonte": "https://eagendas.cgu.gov.br/pesquisa/agentes-publicos-obrigados-por-orgao/orgao/1146/ativo/true",
+    "fonte_nome": "e-Agendas (CGU), Instituto de Pesquisas Jardim Botânico do Rio de Janeiro",
+    "fonte_agente": true
    }
   },
   {
@@ -1997,12 +2201,14 @@
    "pai": "mma",
    "cargo": {
     "titulo": "Diretor(a)-Geral",
-    "situacao": "nao_verificado",
-    "ocupante": null,
-    "desde": null,
+    "situacao": "titular",
+    "ocupante": "Garo Joseph Batmanian",
+    "desde": "2023-03-22",
     "mandato_ate": null,
-    "verificado_em": null,
-    "fonte": null
+    "verificado_em": "2026-09",
+    "fonte": "https://eagendas.cgu.gov.br/pesquisa/agentes-publicos-obrigados-por-orgao/orgao/647/ativo/true",
+    "fonte_nome": "e-Agendas (CGU), Ministério do Meio Ambiente",
+    "fonte_agente": true
    }
   },
   {
@@ -2015,12 +2221,14 @@
    "lei": "Lei 9.478/1997",
    "cargo": {
     "titulo": "Diretor(a)-Geral",
-    "situacao": "nao_verificado",
-    "ocupante": null,
-    "desde": null,
+    "situacao": "titular",
+    "ocupante": "Artur Watt Neto",
+    "desde": "2026-08-03",
     "mandato_ate": null,
-    "verificado_em": null,
-    "fonte": null
+    "verificado_em": "2026-09",
+    "fonte": "https://eagendas.cgu.gov.br/pesquisa/agentes-publicos-obrigados-por-orgao/orgao/1176/ativo/true",
+    "fonte_nome": "e-Agendas (CGU), Agência Nacional do Petróleo, Gás Natural e Biocombustíveis",
+    "fonte_agente": true
    }
   },
   {
@@ -2033,12 +2241,14 @@
    "lei": "Lei 9.427/1996",
    "cargo": {
     "titulo": "Diretor(a)-Geral",
-    "situacao": "nao_verificado",
-    "ocupante": null,
-    "desde": null,
+    "situacao": "titular",
+    "ocupante": "Sandoval de Araujo Feitosa Neto",
+    "desde": "2026-07-01",
     "mandato_ate": null,
-    "verificado_em": null,
-    "fonte": null
+    "verificado_em": "2026-09",
+    "fonte": "https://eagendas.cgu.gov.br/pesquisa/agentes-publicos-obrigados-por-orgao/orgao/1169/ativo/true",
+    "fonte_nome": "e-Agendas (CGU), Agência Nacional de Energia Elétrica",
+    "fonte_agente": true
    }
   },
   {
@@ -2051,12 +2261,14 @@
    "lei": "Lei 13.575/2017",
    "cargo": {
     "titulo": "Diretor(a)-Geral",
-    "situacao": "nao_verificado",
-    "ocupante": null,
-    "desde": null,
+    "situacao": "titular",
+    "ocupante": "Mauro Henrique Moreira Sousa",
+    "desde": "2025-08-12",
     "mandato_ate": null,
-    "verificado_em": null,
-    "fonte": null
+    "verificado_em": "2026-09",
+    "fonte": "https://eagendas.cgu.gov.br/pesquisa/agentes-publicos-obrigados-por-orgao/orgao/1337/ativo/true",
+    "fonte_nome": "e-Agendas (CGU), Agência Nacional de Mineração",
+    "fonte_agente": true
    }
   },
   {
@@ -2068,12 +2280,14 @@
    "pai": "mme",
    "cargo": {
     "titulo": "Presidente",
-    "situacao": "nao_verificado",
-    "ocupante": null,
-    "desde": null,
+    "situacao": "titular",
+    "ocupante": "Thiago Guilherme Ferreira Prado",
+    "desde": "2023-09-29",
     "mandato_ate": null,
-    "verificado_em": null,
-    "fonte": null
+    "verificado_em": "2026-09",
+    "fonte": "https://www.epe.gov.br/pt/a-epe/nossa-equipe/presidencia",
+    "fonte_nome": "Site oficial da EPE (Nossa Equipe, Presidência)",
+    "fonte_agente": true
    }
   },
   {
@@ -2085,12 +2299,14 @@
    "pai": "mme",
    "cargo": {
     "titulo": "Presidente",
-    "situacao": "nao_verificado",
-    "ocupante": null,
-    "desde": null,
+    "situacao": "titular",
+    "ocupante": "Magda Chambriard",
+    "desde": "2024-05-24",
     "mandato_ate": null,
-    "verificado_em": null,
-    "fonte": null
+    "verificado_em": "2026-09",
+    "fonte": "https://www.investidorpetrobras.com.br/governanca-corporativa/administracao/",
+    "fonte_nome": "Site de Relações com Investidores da Petrobras (Administração)",
+    "fonte_agente": true
    }
   },
   {
@@ -2102,12 +2318,14 @@
    "pai": "mme",
    "cargo": {
     "titulo": "Presidente",
-    "situacao": "nao_verificado",
-    "ocupante": null,
+    "situacao": "titular",
+    "ocupante": "Luis Fernando Paroli",
     "desde": null,
     "mandato_ate": null,
-    "verificado_em": null,
-    "fonte": null
+    "verificado_em": "2026-09",
+    "fonte": "https://www.presalpetroleo.gov.br/diretoria-executiva/",
+    "fonte_nome": "Site oficial da Pré-Sal Petróleo (Diretoria Executiva)",
+    "fonte_agente": true
    }
   },
   {
@@ -2119,12 +2337,14 @@
    "pai": "mme",
    "cargo": {
     "titulo": "Presidente",
-    "situacao": "nao_verificado",
-    "ocupante": null,
-    "desde": null,
+    "situacao": "titular",
+    "ocupante": "Vilmar Medeiros Simões",
+    "desde": "2025-12",
     "mandato_ate": null,
-    "verificado_em": null,
-    "fonte": null
+    "verificado_em": "2026-09",
+    "fonte": "https://www.sgb.gov.br/diretor-presidente",
+    "fonte_nome": "Site oficial do Serviço Geológico do Brasil (Diretor Presidente)",
+    "fonte_agente": true
    }
   },
   {
@@ -2137,12 +2357,14 @@
    "descricao": "Controla a Eletronuclear e a participação brasileira em Itaipu após a privatização da Eletrobras (2022).",
    "cargo": {
     "titulo": "Presidente",
-    "situacao": "nao_verificado",
-    "ocupante": null,
+    "situacao": "titular",
+    "ocupante": "Marlos Costa de Andrade",
     "desde": null,
     "mandato_ate": null,
-    "verificado_em": null,
-    "fonte": null
+    "verificado_em": "2026-09",
+    "fonte": "https://enbpar.gov.br/governanca/diretoria-executiva/quem-e-quem/",
+    "fonte_nome": "Site oficial da ENBPar (Quem é quem)",
+    "fonte_agente": true
    }
   },
   {
@@ -2155,12 +2377,14 @@
    "site": "https://www.ibge.gov.br",
    "cargo": {
     "titulo": "Presidente",
-    "situacao": "nao_verificado",
-    "ocupante": null,
-    "desde": null,
+    "situacao": "titular",
+    "ocupante": "Marcio Pochmann",
+    "desde": "2023-08-18",
     "mandato_ate": null,
-    "verificado_em": null,
-    "fonte": null
+    "verificado_em": "2026-09",
+    "fonte": "https://eagendas.cgu.gov.br/pesquisa/agentes-publicos-obrigados-por-orgao/orgao/1003/ativo/true",
+    "fonte_nome": "e-Agendas (CGU), Fundação Instituto Brasileiro de Geografia e Estatística",
+    "fonte_agente": true
    }
   },
   {
@@ -2172,12 +2396,14 @@
    "pai": "mpo",
    "cargo": {
     "titulo": "Presidente",
-    "situacao": "nao_verificado",
-    "ocupante": null,
-    "desde": null,
+    "situacao": "titular",
+    "ocupante": "Luciana Mendes Santos Servo",
+    "desde": "2023-02-15",
     "mandato_ate": null,
-    "verificado_em": null,
-    "fonte": null
+    "verificado_em": "2026-09",
+    "fonte": "https://eagendas.cgu.gov.br/pesquisa/agentes-publicos-obrigados-por-orgao/orgao/1004/ativo/true",
+    "fonte_nome": "e-Agendas (CGU), Instituto de Pesquisa Econômica Aplicada",
+    "fonte_agente": true
    }
   },
   {
@@ -2190,12 +2416,14 @@
    "lei": "Lei 10.233/2001",
    "cargo": {
     "titulo": "Diretor(a)-Geral",
-    "situacao": "nao_verificado",
-    "ocupante": null,
-    "desde": null,
+    "situacao": "titular",
+    "ocupante": "Frederico Carvalho Dias",
+    "desde": "2025-08-28",
     "mandato_ate": null,
-    "verificado_em": null,
-    "fonte": null
+    "verificado_em": "2026-09",
+    "fonte": "https://eagendas.cgu.gov.br/pesquisa/agentes-publicos-obrigados-por-orgao/orgao/1191/ativo/true",
+    "fonte_nome": "e-Agendas (CGU), Agência Nacional de Transportes Aquaviários",
+    "fonte_agente": true
    }
   },
   {
@@ -2208,12 +2436,14 @@
    "lei": "Lei 11.182/2005",
    "cargo": {
     "titulo": "Diretor(a)-Presidente",
-    "situacao": "nao_verificado",
-    "ocupante": null,
-    "desde": null,
+    "situacao": "titular",
+    "ocupante": "Tiago Chagas Faierstein",
+    "desde": "2026-08-03",
     "mandato_ate": null,
-    "verificado_em": null,
-    "fonte": null
+    "verificado_em": "2026-09",
+    "fonte": "https://eagendas.cgu.gov.br/pesquisa/agentes-publicos-obrigados-por-orgao/orgao/1223/ativo/true",
+    "fonte_nome": "e-Agendas (CGU), Agência Nacional de Aviação Civil",
+    "fonte_agente": true
    }
   },
   {
@@ -2225,12 +2455,14 @@
    "pai": "mpor",
    "cargo": {
     "titulo": "Presidente",
-    "situacao": "nao_verificado",
-    "ocupante": null,
-    "desde": null,
+    "situacao": "titular",
+    "ocupante": "Rogerio Amado Barzellay",
+    "desde": "2023-02-02",
     "mandato_ate": null,
-    "verificado_em": null,
-    "fonte": null
+    "verificado_em": "2026-09",
+    "fonte": "https://eagendas.cgu.gov.br/pesquisa/agentes-publicos-obrigados-por-orgao/orgao/1432/ativo/true",
+    "fonte_nome": "e-Agendas (CGU), Empresa Brasileira de Infraestrutura Aeroportuária",
+    "fonte_agente": true
    }
   },
   {
@@ -2252,12 +2484,14 @@
    "site": "https://www.gov.br/inss",
    "cargo": {
     "titulo": "Presidente",
-    "situacao": "nao_verificado",
-    "ocupante": null,
-    "desde": null,
+    "situacao": "titular",
+    "ocupante": "Ana Cristina Viana Silveira",
+    "desde": "2026-04-13",
     "mandato_ate": null,
-    "verificado_em": null,
-    "fonte": null
+    "verificado_em": "2026-09",
+    "fonte": "https://eagendas.cgu.gov.br/pesquisa/agentes-publicos-obrigados-por-orgao/orgao/1149/ativo/true",
+    "fonte_nome": "e-Agendas (CGU), Instituto Nacional do Seguro Social",
+    "fonte_agente": true
    }
   },
   {
@@ -2269,12 +2503,14 @@
    "pai": "mps",
    "cargo": {
     "titulo": "Diretor(a)-Superintendente",
-    "situacao": "nao_verificado",
-    "ocupante": null,
-    "desde": null,
+    "situacao": "titular",
+    "ocupante": "Ricardo Pena Pinheiro",
+    "desde": "2023-02-17",
     "mandato_ate": null,
-    "verificado_em": null,
-    "fonte": null
+    "verificado_em": "2026-09",
+    "fonte": "https://eagendas.cgu.gov.br/pesquisa/agentes-publicos-obrigados-por-orgao/orgao/1272/ativo/true",
+    "fonte_nome": "e-Agendas (CGU), Superintendência Nacional de Previdência Complementar",
+    "fonte_agente": true
    }
   },
   {
@@ -2286,12 +2522,14 @@
    "pai": "mre",
    "cargo": {
     "titulo": "Presidente",
-    "situacao": "nao_verificado",
-    "ocupante": null,
-    "desde": null,
+    "situacao": "titular",
+    "ocupante": "Jose Raphael Lopes Mendes de Azeredo",
+    "desde": "2024-09-13",
     "mandato_ate": null,
-    "verificado_em": null,
-    "fonte": null
+    "verificado_em": "2026-09",
+    "fonte": "https://eagendas.cgu.gov.br/pesquisa/agentes-publicos-obrigados-por-orgao/orgao/1061/ativo/true",
+    "fonte_nome": "e-Agendas (CGU), Fundação Alexandre de Gusmão",
+    "fonte_agente": true
    }
   },
   {
@@ -2305,12 +2543,14 @@
    "site": "https://www.gov.br/anvisa",
    "cargo": {
     "titulo": "Diretor(a)-Presidente",
-    "situacao": "nao_verificado",
-    "ocupante": null,
-    "desde": null,
+    "situacao": "titular",
+    "ocupante": "Leandro Pinheiro Safatle",
+    "desde": "2025-08-29",
     "mandato_ate": null,
-    "verificado_em": null,
-    "fonte": null
+    "verificado_em": "2026-09",
+    "fonte": "https://eagendas.cgu.gov.br/pesquisa/agentes-publicos-obrigados-por-orgao/orgao/1178/ativo/true",
+    "fonte_nome": "e-Agendas (CGU), Agência Nacional de Vigilância Sanitária",
+    "fonte_agente": true
    }
   },
   {
@@ -2323,12 +2563,14 @@
    "lei": "Lei 9.961/2000",
    "cargo": {
     "titulo": "Diretor(a)-Presidente",
-    "situacao": "nao_verificado",
-    "ocupante": null,
-    "desde": null,
+    "situacao": "titular",
+    "ocupante": "Wadih Nemer Damous Filho",
+    "desde": "2026-06-15",
     "mandato_ate": null,
-    "verificado_em": null,
-    "fonte": null
+    "verificado_em": "2026-09",
+    "fonte": "https://eagendas.cgu.gov.br/pesquisa/agentes-publicos-obrigados-por-orgao/orgao/1181/ativo/true",
+    "fonte_nome": "e-Agendas (CGU), Agência Nacional de Saúde Suplementar",
+    "fonte_agente": true
    }
   },
   {
@@ -2341,12 +2583,14 @@
    "site": "https://portal.fiocruz.br",
    "cargo": {
     "titulo": "Presidente",
-    "situacao": "nao_verificado",
-    "ocupante": null,
-    "desde": null,
+    "situacao": "titular",
+    "ocupante": "Mario Santos Moreira",
+    "desde": "2023-04-13",
     "mandato_ate": null,
-    "verificado_em": null,
-    "fonte": null
+    "verificado_em": "2026-09",
+    "fonte": "https://eagendas.cgu.gov.br/pesquisa/agentes-publicos-obrigados-por-orgao/orgao/1064/ativo/true",
+    "fonte_nome": "e-Agendas (CGU), Fundação Oswaldo Cruz",
+    "fonte_agente": true
    }
   },
   {
@@ -2358,12 +2602,14 @@
    "pai": "ms",
    "cargo": {
     "titulo": "Presidente",
-    "situacao": "nao_verificado",
-    "ocupante": null,
-    "desde": null,
+    "situacao": "titular",
+    "ocupante": "Lenildo Dias de Morais",
+    "desde": "2026-05-11",
     "mandato_ate": null,
-    "verificado_em": null,
-    "fonte": null
+    "verificado_em": "2026-09",
+    "fonte": "https://eagendas.cgu.gov.br/pesquisa/agentes-publicos-obrigados-por-orgao/orgao/1156/ativo/true",
+    "fonte_nome": "e-Agendas (CGU), Fundação Nacional de Saúde",
+    "fonte_agente": true
    }
   },
   {
@@ -2375,12 +2621,14 @@
    "pai": "ms",
    "cargo": {
     "titulo": "Presidente",
-    "situacao": "nao_verificado",
-    "ocupante": null,
-    "desde": null,
+    "situacao": "titular",
+    "ocupante": "Ana Paula do Rego Menezes",
+    "desde": "2024-03-15",
     "mandato_ate": null,
-    "verificado_em": null,
-    "fonte": null
+    "verificado_em": "2026-09",
+    "fonte": "https://eagendas.cgu.gov.br/pesquisa/agentes-publicos-obrigados-por-orgao/orgao/1430/ativo/true",
+    "fonte_nome": "e-Agendas (CGU), Empresa Brasileira de Hemoderivados e Biotecnologia",
+    "fonte_agente": true
    }
   },
   {
@@ -2392,12 +2640,14 @@
    "pai": "ms",
    "cargo": {
     "titulo": "Presidente",
-    "situacao": "nao_verificado",
-    "ocupante": null,
+    "situacao": "titular",
+    "ocupante": "Gilberto Barichello",
     "desde": null,
     "mandato_ate": null,
-    "verificado_em": null,
-    "fonte": null
+    "verificado_em": "2026-09",
+    "fonte": "https://www.ghc.com.br/default.asp?idMenu=institucional&idSubMenu=2",
+    "fonte_nome": "Site oficial do Grupo Hospitalar Conceição (Institucional, Diretoria)",
+    "fonte_agente": true
    }
   },
   {
@@ -2409,12 +2659,14 @@
    "pai": "ms",
    "cargo": {
     "titulo": "Diretor(a)-Geral",
-    "situacao": "nao_verificado",
-    "ocupante": null,
-    "desde": null,
+    "situacao": "titular",
+    "ocupante": "Roberto de Almeida Gil",
+    "desde": "2023-02-13",
     "mandato_ate": null,
-    "verificado_em": null,
-    "fonte": null
+    "verificado_em": "2026-09",
+    "fonte": "https://eagendas.cgu.gov.br/pesquisa/agentes-publicos-obrigados-por-orgao/orgao/563/ativo/true",
+    "fonte_nome": "e-Agendas (CGU), Ministério da Saúde",
+    "fonte_agente": true
    }
   },
   {
@@ -2426,12 +2678,14 @@
    "pai": "mte",
    "cargo": {
     "titulo": "Presidente",
-    "situacao": "nao_verificado",
-    "ocupante": null,
-    "desde": null,
+    "situacao": "titular",
+    "ocupante": "Jose Cloves da Silva",
+    "desde": "2026-04-24",
     "mandato_ate": null,
-    "verificado_em": null,
-    "fonte": null
+    "verificado_em": "2026-09",
+    "fonte": "https://eagendas.cgu.gov.br/pesquisa/agentes-publicos-obrigados-por-orgao/orgao/1039/ativo/true",
+    "fonte_nome": "e-Agendas (CGU), Fundação Jorge Duprat Figueiredo, de Segurança e Medicina do Trabalho",
+    "fonte_agente": true
    }
   },
   {
@@ -2444,12 +2698,14 @@
    "lei": "Lei 10.233/2001",
    "cargo": {
     "titulo": "Diretor(a)-Geral",
-    "situacao": "nao_verificado",
-    "ocupante": null,
-    "desde": null,
+    "situacao": "titular",
+    "ocupante": "Guilherme Theo Rodrigues da Rocha Sampaio",
+    "desde": "2026-09-01",
     "mandato_ate": null,
-    "verificado_em": null,
-    "fonte": null
+    "verificado_em": "2026-09",
+    "fonte": "https://eagendas.cgu.gov.br/pesquisa/agentes-publicos-obrigados-por-orgao/orgao/1190/ativo/true",
+    "fonte_nome": "e-Agendas (CGU), Agência Nacional de Transportes Terrestres",
+    "fonte_agente": true
    }
   },
   {
@@ -2461,12 +2717,14 @@
    "pai": "mt",
    "cargo": {
     "titulo": "Diretor(a)-Geral",
-    "situacao": "nao_verificado",
-    "ocupante": null,
-    "desde": null,
+    "situacao": "titular",
+    "ocupante": "Fabricio de Oliveira Galvao",
+    "desde": "2023-02-22",
     "mandato_ate": null,
-    "verificado_em": null,
-    "fonte": null
+    "verificado_em": "2026-09",
+    "fonte": "https://eagendas.cgu.gov.br/pesquisa/agentes-publicos-obrigados-por-orgao/orgao/1192/ativo/true",
+    "fonte_nome": "e-Agendas (CGU), Departamento Nacional de Infraestrutura de Transportes",
+    "fonte_agente": true
    }
   },
   {
@@ -2479,12 +2737,14 @@
    "descricao": "Resultado da incorporação da EPL pela Valec (2022). Planejamento e infraestrutura ferroviária.",
    "cargo": {
     "titulo": "Presidente",
-    "situacao": "nao_verificado",
-    "ocupante": null,
-    "desde": null,
+    "situacao": "titular",
+    "ocupante": "Jorge Luiz Macedo Bastos",
+    "desde": "2023-11-10",
     "mandato_ate": null,
-    "verificado_em": null,
-    "fonte": null
+    "verificado_em": "2026-09",
+    "fonte": "https://eagendas.cgu.gov.br/pesquisa/agentes-publicos-obrigados-por-orgao/orgao/1427/ativo/true",
+    "fonte_nome": "e-Agendas (CGU), Infra S/A",
+    "fonte_agente": true
    }
   },
   {
@@ -2496,12 +2756,14 @@
    "pai": "mtur",
    "cargo": {
     "titulo": "Presidente",
-    "situacao": "nao_verificado",
-    "ocupante": null,
-    "desde": null,
+    "situacao": "titular",
+    "ocupante": "Bruno Giovanni dos Reis",
+    "desde": "2026-04-17",
     "mandato_ate": null,
-    "verificado_em": null,
-    "fonte": null
+    "verificado_em": "2026-09",
+    "fonte": "https://www.in.gov.br/web/dou/-/decretos-de-17-de-abril-de-2026-700544642",
+    "fonte_nome": "Diário Oficial da União (in.gov.br)",
+    "fonte_agente": true
    }
   },
   {
@@ -2513,12 +2775,14 @@
    "pai": "mpi",
    "cargo": {
     "titulo": "Presidente",
-    "situacao": "nao_verificado",
-    "ocupante": null,
-    "desde": null,
+    "situacao": "titular",
+    "ocupante": "Lucia Alberta Andrade de Oliveira",
+    "desde": "2026-04-09",
     "mandato_ate": null,
-    "verificado_em": null,
-    "fonte": null
+    "verificado_em": "2026-09",
+    "fonte": "https://eagendas.cgu.gov.br/pesquisa/agentes-publicos-obrigados-por-orgao/orgao/1032/ativo/true",
+    "fonte_nome": "e-Agendas (CGU), Fundação Nacional do Índio",
+    "fonte_agente": true
    },
    "descricao": "Transferida do MJSP para o Ministério dos Povos Indígenas em 2023 (Lei 14.600/2023)."
   },
@@ -2532,12 +2796,14 @@
    "lei": "Decreto 11.798/2023",
    "cargo": {
     "titulo": "Secretário(a)",
-    "situacao": "nao_verificado",
-    "ocupante": null,
-    "desde": null,
+    "situacao": "titular",
+    "ocupante": "Ana Luiza Ferreira Rodrigues Caldas",
+    "desde": "2025-03-18",
     "mandato_ate": null,
-    "verificado_em": null,
-    "fonte": null
+    "verificado_em": "2026-09",
+    "fonte": "https://eagendas.cgu.gov.br/pesquisa/agentes-publicos-obrigados-por-orgao/orgao/563/ativo/true",
+    "fonte_nome": "e-Agendas (CGU), Ministério da Saúde",
+    "fonte_agente": true
    }
   },
   {
@@ -2550,12 +2816,14 @@
    "lei": "Decreto 11.798/2023",
    "cargo": {
     "titulo": "Secretário(a)",
-    "situacao": "nao_verificado",
-    "ocupante": null,
-    "desde": null,
+    "situacao": "titular",
+    "ocupante": "Mozart Julio Tabosa Sales",
+    "desde": "2025-03-12",
     "mandato_ate": null,
-    "verificado_em": null,
-    "fonte": null
+    "verificado_em": "2026-09",
+    "fonte": "https://eagendas.cgu.gov.br/pesquisa/agentes-publicos-obrigados-por-orgao/orgao/563/ativo/true",
+    "fonte_nome": "e-Agendas (CGU), Ministério da Saúde",
+    "fonte_agente": true
    }
   },
   {
@@ -2568,12 +2836,14 @@
    "lei": "Decreto 11.798/2023",
    "cargo": {
     "titulo": "Secretário(a)",
-    "situacao": "nao_verificado",
-    "ocupante": null,
-    "desde": null,
+    "situacao": "titular",
+    "ocupante": "Fabiano Geraldo Pimenta Junior",
+    "desde": "2026-07-31",
     "mandato_ate": null,
-    "verificado_em": null,
-    "fonte": null
+    "verificado_em": "2026-09",
+    "fonte": "https://eagendas.cgu.gov.br/pesquisa/agentes-publicos-obrigados-por-orgao/orgao/563/ativo/true",
+    "fonte_nome": "e-Agendas (CGU), Ministério da Saúde",
+    "fonte_agente": true
    }
   },
   {
@@ -2586,12 +2856,14 @@
    "lei": "Decreto 11.798/2023",
    "cargo": {
     "titulo": "Secretário(a)",
-    "situacao": "nao_verificado",
-    "ocupante": null,
-    "desde": null,
+    "situacao": "titular",
+    "ocupante": "Felipe Proenço de Oliveira",
+    "desde": "2025-03-18",
     "mandato_ate": null,
-    "verificado_em": null,
-    "fonte": null
+    "verificado_em": "2026-09",
+    "fonte": "https://eagendas.cgu.gov.br/pesquisa/agentes-publicos-obrigados-por-orgao/orgao/563/ativo/true",
+    "fonte_nome": "e-Agendas (CGU), Ministério da Saúde",
+    "fonte_agente": true
    }
   },
   {
@@ -2604,12 +2876,14 @@
    "lei": "Decreto 11.798/2023",
    "cargo": {
     "titulo": "Secretário(a)",
-    "situacao": "nao_verificado",
-    "ocupante": null,
-    "desde": null,
+    "situacao": "titular",
+    "ocupante": "Fernanda De Negri",
+    "desde": "2025-03",
     "mandato_ate": null,
-    "verificado_em": null,
-    "fonte": null
+    "verificado_em": "2026-09",
+    "fonte": "https://www.gov.br/saude/pt-br/composicao/secretaria-de-ciencia-tecnologia-e-inovacao-em-saude-sctie",
+    "fonte_nome": "Site oficial do Ministério da Saúde (gov.br/saude)",
+    "fonte_agente": true
    }
   },
   {
@@ -2622,12 +2896,14 @@
    "lei": "Decreto 11.798/2023",
    "cargo": {
     "titulo": "Secretário(a)",
-    "situacao": "nao_verificado",
-    "ocupante": null,
-    "desde": null,
+    "situacao": "titular",
+    "ocupante": "Maria Aparecida Cina da Silva",
+    "desde": "2026-08-19",
     "mandato_ate": null,
-    "verificado_em": null,
-    "fonte": null
+    "verificado_em": "2026-09",
+    "fonte": "https://eagendas.cgu.gov.br/pesquisa/agentes-publicos-obrigados-por-orgao/orgao/563/ativo/true",
+    "fonte_nome": "e-Agendas (CGU), Ministério da Saúde",
+    "fonte_agente": true
    }
   },
   {
@@ -2640,12 +2916,14 @@
    "lei": "Decreto 11.798/2023",
    "cargo": {
     "titulo": "Secretário(a)",
-    "situacao": "nao_verificado",
-    "ocupante": null,
-    "desde": null,
+    "situacao": "titular",
+    "ocupante": "Maria Lucilene Martins Santos",
+    "desde": "2026-04-07",
     "mandato_ate": null,
-    "verificado_em": null,
-    "fonte": null
+    "verificado_em": "2026-09",
+    "fonte": "https://eagendas.cgu.gov.br/pesquisa/agentes-publicos-obrigados-por-orgao/orgao/563/ativo/true",
+    "fonte_nome": "e-Agendas (CGU), Ministério da Saúde",
+    "fonte_agente": true
    }
   },
   {
@@ -2658,12 +2936,14 @@
    "lei": "Decreto 11.342/2023",
    "cargo": {
     "titulo": "Secretário(a)",
-    "situacao": "nao_verificado",
-    "ocupante": null,
-    "desde": null,
+    "situacao": "titular",
+    "ocupante": "Katia Helena Serafina Cruz Schweickardt",
+    "desde": "2023-01-24",
     "mandato_ate": null,
-    "verificado_em": null,
-    "fonte": null
+    "verificado_em": "2026-09",
+    "fonte": "https://eagendas.cgu.gov.br/pesquisa/agentes-publicos-obrigados-por-orgao/orgao/549/ativo/true",
+    "fonte_nome": "e-Agendas (CGU), Ministério da Educação",
+    "fonte_agente": true
    }
   },
   {
@@ -2676,12 +2956,14 @@
    "lei": "Decreto 11.342/2023",
    "cargo": {
     "titulo": "Secretário(a)",
-    "situacao": "nao_verificado",
-    "ocupante": null,
-    "desde": null,
+    "situacao": "titular",
+    "ocupante": "Marcus Vinicius David",
+    "desde": "2025-02-24",
     "mandato_ate": null,
-    "verificado_em": null,
-    "fonte": null
+    "verificado_em": "2026-09",
+    "fonte": "https://eagendas.cgu.gov.br/pesquisa/agentes-publicos-obrigados-por-orgao/orgao/549/ativo/true",
+    "fonte_nome": "e-Agendas (CGU), Ministério da Educação",
+    "fonte_agente": true
    }
   },
   {
@@ -2694,12 +2976,14 @@
    "lei": "Decreto 11.342/2023",
    "cargo": {
     "titulo": "Secretário(a)",
-    "situacao": "nao_verificado",
-    "ocupante": null,
-    "desde": null,
+    "situacao": "titular",
+    "ocupante": "Marcelo Bregagnoli",
+    "desde": "2024-04-29",
     "mandato_ate": null,
-    "verificado_em": null,
-    "fonte": null
+    "verificado_em": "2026-09",
+    "fonte": "https://eagendas.cgu.gov.br/pesquisa/agentes-publicos-obrigados-por-orgao/orgao/549/ativo/true",
+    "fonte_nome": "e-Agendas (CGU), Ministério da Educação",
+    "fonte_agente": true
    }
   },
   {
@@ -2712,12 +2996,14 @@
    "lei": "Decreto 11.342/2023",
    "cargo": {
     "titulo": "Secretário(a)",
-    "situacao": "nao_verificado",
-    "ocupante": null,
-    "desde": null,
+    "situacao": "titular",
+    "ocupante": "Maria do Rosario Figueiredo Tripodi",
+    "desde": "2023-01-24",
     "mandato_ate": null,
-    "verificado_em": null,
-    "fonte": null
+    "verificado_em": "2026-09",
+    "fonte": "https://eagendas.cgu.gov.br/pesquisa/agentes-publicos-obrigados-por-orgao/orgao/549/ativo/true",
+    "fonte_nome": "e-Agendas (CGU), Ministério da Educação",
+    "fonte_agente": true
    }
   },
   {
@@ -2730,12 +3016,14 @@
    "lei": "Decreto 11.342/2023",
    "cargo": {
     "titulo": "Secretário(a)",
-    "situacao": "nao_verificado",
-    "ocupante": null,
-    "desde": null,
+    "situacao": "titular",
+    "ocupante": "Marta Wendel Abramo",
+    "desde": "2024-02-15",
     "mandato_ate": null,
-    "verificado_em": null,
-    "fonte": null
+    "verificado_em": "2026-09",
+    "fonte": "https://eagendas.cgu.gov.br/pesquisa/agentes-publicos-obrigados-por-orgao/orgao/549/ativo/true",
+    "fonte_nome": "e-Agendas (CGU), Ministério da Educação",
+    "fonte_agente": true
    }
   },
   {
@@ -2748,12 +3036,14 @@
    "lei": "Decreto 11.342/2023",
    "cargo": {
     "titulo": "Secretário(a)",
-    "situacao": "nao_verificado",
-    "ocupante": null,
-    "desde": null,
+    "situacao": "titular",
+    "ocupante": "Gregório Durlo Grisa",
+    "desde": "2025-06-23",
     "mandato_ate": null,
-    "verificado_em": null,
-    "fonte": null
+    "verificado_em": "2026-09",
+    "fonte": "https://eagendas.cgu.gov.br/pesquisa/agentes-publicos-obrigados-por-orgao/orgao/549/ativo/true",
+    "fonte_nome": "e-Agendas (CGU), Ministério da Educação",
+    "fonte_agente": true
    }
   },
   {
@@ -2766,12 +3056,14 @@
    "lei": "Decreto 11.348/2023",
    "cargo": {
     "titulo": "Secretário(a)",
-    "situacao": "nao_verificado",
-    "ocupante": null,
-    "desde": null,
+    "situacao": "titular",
+    "ocupante": "Francisco Lucas Costa Veloso",
+    "desde": "2026-02-02",
     "mandato_ate": null,
-    "verificado_em": null,
-    "fonte": null
+    "verificado_em": "2026-09",
+    "fonte": "https://eagendas.cgu.gov.br/pesquisa/agentes-publicos-obrigados-por-orgao/orgao/856/ativo/true",
+    "fonte_nome": "e-Agendas (CGU), Ministério da Justiça e Segurança Pública",
+    "fonte_agente": true
    }
   },
   {
@@ -2784,12 +3076,14 @@
    "lei": "Decreto 11.348/2023",
    "cargo": {
     "titulo": "Secretário(a)",
-    "situacao": "nao_verificado",
-    "ocupante": null,
-    "desde": null,
+    "situacao": "titular",
+    "ocupante": "Marta Rodriguez de Assis Machado",
+    "desde": "2023-01-09",
     "mandato_ate": null,
-    "verificado_em": null,
-    "fonte": null
+    "verificado_em": "2026-09",
+    "fonte": "https://eagendas.cgu.gov.br/pesquisa/agentes-publicos-obrigados-por-orgao/orgao/856/ativo/true",
+    "fonte_nome": "e-Agendas (CGU), Ministério da Justiça e Segurança Pública",
+    "fonte_agente": true
    }
   },
   {
@@ -2802,12 +3096,14 @@
    "lei": "Decreto 11.348/2023",
    "cargo": {
     "titulo": "Secretário(a)",
-    "situacao": "nao_verificado",
-    "ocupante": null,
-    "desde": null,
+    "situacao": "titular",
+    "ocupante": "Ricardo Morishita Wada",
+    "desde": "2026-02-04",
     "mandato_ate": null,
-    "verificado_em": null,
-    "fonte": null
+    "verificado_em": "2026-09",
+    "fonte": "https://eagendas.cgu.gov.br/pesquisa/agentes-publicos-obrigados-por-orgao/orgao/856/ativo/true",
+    "fonte_nome": "e-Agendas (CGU), Ministério da Justiça e Segurança Pública",
+    "fonte_agente": true
    }
   },
   {
@@ -2820,12 +3116,14 @@
    "lei": "Decreto 11.348/2023",
    "cargo": {
     "titulo": "Secretário(a)",
-    "situacao": "nao_verificado",
-    "ocupante": null,
-    "desde": null,
+    "situacao": "titular",
+    "ocupante": "Maria Rosa Guimaraes Loula",
+    "desde": "2026-02-13",
     "mandato_ate": null,
-    "verificado_em": null,
-    "fonte": null
+    "verificado_em": "2026-09",
+    "fonte": "https://eagendas.cgu.gov.br/pesquisa/agentes-publicos-obrigados-por-orgao/orgao/856/ativo/true",
+    "fonte_nome": "e-Agendas (CGU), Ministério da Justiça e Segurança Pública",
+    "fonte_agente": true
    }
   },
   {
@@ -2838,12 +3136,14 @@
    "lei": "Decreto 11.348/2023",
    "cargo": {
     "titulo": "Secretário(a)",
-    "situacao": "nao_verificado",
-    "ocupante": null,
-    "desde": null,
+    "situacao": "titular",
+    "ocupante": "Paulo Eduardo Garrido Modesto",
+    "desde": "2026-02-10",
     "mandato_ate": null,
-    "verificado_em": null,
-    "fonte": null
+    "verificado_em": "2026-09",
+    "fonte": "https://eagendas.cgu.gov.br/pesquisa/agentes-publicos-obrigados-por-orgao/orgao/856/ativo/true",
+    "fonte_nome": "e-Agendas (CGU), Ministério da Justiça e Segurança Pública",
+    "fonte_agente": true
    }
   },
   {
@@ -3031,12 +3331,14 @@
    "quantidade": 27,
    "cargo": {
     "titulo": "Presidente",
-    "situacao": "nao_verificado",
-    "ocupante": null,
-    "desde": null,
+    "situacao": "titular",
+    "ocupante": "Luiz Philippe Vieira de Mello Filho",
+    "desde": "2025-09-25",
     "mandato_ate": null,
-    "verificado_em": null,
-    "fonte": "https://www.tst.jus.br"
+    "verificado_em": "2026-09",
+    "fonte": "https://www.tst.jus.br/presidencia-organograma",
+    "fonte_nome": "Portal do TST",
+    "fonte_agente": true
    }
   },
   {
@@ -3100,12 +3402,14 @@
    "quantidade": 15,
    "cargo": {
     "titulo": "Presidente",
-    "situacao": "nao_verificado",
-    "ocupante": null,
-    "desde": null,
+    "situacao": "titular",
+    "ocupante": "Maria Elizabeth Guimarães Teixeira Rocha",
+    "desde": "2025-03-12",
     "mandato_ate": null,
-    "verificado_em": null,
-    "fonte": "https://www.stm.jus.br"
+    "verificado_em": "2026-09",
+    "fonte": "https://www.stm.jus.br/institucional/conheca-o-superior-tribunal-militar/composicao-da-corte",
+    "fonte_nome": "Portal do STM",
+    "fonte_agente": true
    }
   },
   {
@@ -3145,12 +3449,14 @@
    "pai": "mpu",
    "cargo": {
     "titulo": "Procurador(a)-Geral do Trabalho",
-    "situacao": "nao_verificado",
-    "ocupante": null,
-    "desde": null,
+    "situacao": "titular",
+    "ocupante": "Gláucio Araújo de Oliveira",
+    "desde": "2025-08-07",
     "mandato_ate": null,
-    "verificado_em": null,
-    "fonte": null
+    "verificado_em": "2026-09",
+    "fonte": "https://www.prt3.mpt.mp.br/procuradorias/prt-belohorizonte/3696-novo-procurador-geral-do-trabalho-e-empossado",
+    "fonte_nome": "Site oficial do Ministério Público do Trabalho (PRT-3)",
+    "fonte_agente": true
    }
   },
   {
@@ -3162,12 +3468,14 @@
    "pai": "mpu",
    "cargo": {
     "titulo": "Procurador(a)-Geral de Justiça Militar",
-    "situacao": "nao_verificado",
-    "ocupante": null,
-    "desde": null,
+    "situacao": "titular",
+    "ocupante": "Clauro Roberto de Bortolli",
+    "desde": "2026-04-17",
     "mandato_ate": null,
-    "verificado_em": null,
-    "fonte": null
+    "verificado_em": "2026-09",
+    "fonte": "https://www.mpm.mp.br/arquivos/72322",
+    "fonte_nome": "Site oficial do Ministério Público Militar",
+    "fonte_agente": true
    }
   },
   {
@@ -3179,12 +3487,14 @@
    "pai": "mpu",
    "cargo": {
     "titulo": "Procurador(a)-Geral de Justiça",
-    "situacao": "nao_verificado",
-    "ocupante": null,
-    "desde": null,
+    "situacao": "titular",
+    "ocupante": "Georges Carlos Fredderico Moreira Seigneur",
+    "desde": "2022",
     "mandato_ate": null,
-    "verificado_em": null,
-    "fonte": null
+    "verificado_em": "2026-09",
+    "fonte": "https://www.mpdft.mp.br/portal/index.php/pgj",
+    "fonte_nome": "Portal do MPDFT",
+    "fonte_agente": true
    }
   },
   {
@@ -3219,12 +3529,14 @@
    "descricao": "Assistência jurídica integral e gratuita aos necessitados na esfera federal (CF, art. 134).",
    "cargo": {
     "titulo": "Defensor(a) Público-Geral Federal",
-    "situacao": "nao_verificado",
-    "ocupante": null,
-    "desde": null,
+    "situacao": "titular",
+    "ocupante": "Tarcijany Linhares Aguiar Machado",
+    "desde": "2026-05-28",
     "mandato_ate": null,
-    "verificado_em": null,
-    "fonte": "https://www.dpu.def.br"
+    "verificado_em": "2026-09",
+    "fonte": "https://quem-e-quem.dpu.def.br/",
+    "fonte_nome": "Site oficial da Defensoria Pública da União",
+    "fonte_agente": true
    }
   },
   {

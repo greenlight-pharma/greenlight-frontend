@@ -30,6 +30,10 @@ jobs:
         continue-on-error: true
         run: python3 scripts/governo/baixar_congresso.py
 
+      - name: Conferir ocupantes (e-Agendas da CGU contra o DOU)
+        continue-on-error: true
+        run: python3 scripts/governo/agentes/agente_ocupantes.py
+
       - name: Montar o grafo
         run: python3 scripts/governo/montar_grafo.py
 
@@ -56,7 +60,9 @@ jobs:
         with:
           branch: bot/grafo-governo
           delete-branch: true
-          add-paths: governo/dados/**
+          add-paths: |
+            governo/dados/**
+            scripts/governo/dados/ocupantes.json
           commit-message: "chore(governo): atualização semanal do grafo a partir das fontes oficiais"
           title: "Mapa do Governo: atualização semanal"
           body-path: scripts/governo/.cache/corpo-pr.md

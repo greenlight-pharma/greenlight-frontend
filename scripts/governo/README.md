@@ -43,6 +43,28 @@ botão **Novidades** e no **Mapa do poder**:
 | `agente_estrutura.py` | SIORG, `orgao-entidade/resumida` (265 órgãos e entidades; a estrutura completa passa de 80 MB) | `mudancas.json` (tipo `estrutura`) e a foto em `dados/siorg-foto.json` | Compara a foto de hoje com a anterior: órgão criado, extinto, renomeado ou transferido de pai |
 | `agente_noticias.py` | RSS da Agência Brasil, Agência Câmara, Agência Senado, Notícias do STF e Planalto | `governo/dados/noticias.json` | Liga cada matéria aos órgãos e pessoas do grafo, monta o ranking "quem está no noticiário" (90 dias) e um resumo em quatro frases |
 
+### Ocupantes dos cargos
+
+`agente_ocupantes.py` preenche quem ocupa cada cargo de comando do Executivo e
+grava `scripts/governo/dados/ocupantes.json`, que o `montar_grafo.py` aplica
+sobre a semente (roda no PR semanal, com revisão):
+
+1. **e-Agendas (CGU)**: a rota pública
+   `eagendas.cgu.gov.br/pesquisa/agentes-publicos-obrigados-por-orgao/orgao/<id>/ativo/true`
+   lista, por órgão, cada autoridade ativa com nome, cargo, data de início e a
+   marca `autoridade_maxima_orgao`. A lista de órgãos vem do `ng-init="orgaos=..."`
+   da página inicial. Chefes de órgãos internos (secretarias, Receita, Tesouro,
+   INPE) são procurados na lista do ministério-pai: o cargo tem de ser do mesmo
+   tipo (secretário para secretaria) e começar pelo nome do órgão.
+2. **DOU**: o e-Agendas atrasa (em setembro de 2026 ainda listava como ativa uma
+   secretária exonerada em agosto). Cada nome é conferido contra as exonerações
+   lidas pelo `agente_dou.py` (feed de 120 dias e, se existir,
+   `.cache/dou-historico.json`). A busca pública do DOU não serve para isso: ela
+   não ordena por relevância.
+3. **`ocupantes-manual.json`**: estatais (eleitas pelo conselho, fora do DOU e do
+   e-Agendas), tribunais, Ministério Público, Defensoria e órgãos sem cadastro,
+   conferidos no site oficial com a URL exata onde o nome aparece.
+
 Com o secret `ANTHROPIC_API_KEY`, a Claude (`claude-opus-5`, saída em JSON
 com esquema) escreve o resumo das notícias e confirma o órgão e o nível dos
 atos que as regras não casaram. Sem a chave, tudo sai só pelas regras:

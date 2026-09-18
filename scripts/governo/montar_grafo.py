@@ -158,7 +158,13 @@ def main():
     if siorg:
         aplicar_siorg(dados, siorg)
         gerar_segundo_nivel(dados, siorg)
-    if cong or siorg:
+    # ocupantes conferidos pelo agente_ocupantes.py (e-Agendas + DOU) e à mão
+    sys.path.insert(0, str(AQUI / "agentes"))
+    import agente_ocupantes
+    n_ocup = agente_ocupantes.aplicar(dados)
+    if n_ocup:
+        print(f"{n_ocup} ocupantes aplicados de scripts/governo/dados/ocupantes.json")
+    if cong or siorg or n_ocup:
         dados["meta"]["gerado_por"] = "scripts/governo/montar_grafo.py"
     semente.SAIDA.write_text(json.dumps(dados, ensure_ascii=False, indent=1) + "\n", encoding="utf-8")
     print(f"{len(dados['nos'])} nós, {len(dados['arestas'])} arestas -> {semente.SAIDA.relative_to(semente.RAIZ)}")

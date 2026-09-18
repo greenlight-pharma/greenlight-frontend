@@ -33,21 +33,27 @@ import json
 import os
 import re
 import sys
+import time
 import xml.etree.ElementTree as ET
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 from comum import DADOS, Grafo, baixar, gravar_json, hoje, ler_json, norm  # noqa: E402
+import pessoas as P  # noqa: E402
 
 SAIDA = DADOS / "noticias.json"
 JANELA_DIAS = 90
 FONTES = [
-    {"id": "agenciabrasil", "nome": "Agência Brasil", "url": "https://agenciabrasil.ebc.com.br/rss/ultimasnoticias/feed.xml"},
-    {"id": "camara", "nome": "Agência Câmara", "url": "https://www.camara.leg.br/noticias/rss/ultimas-noticias"},
-    {"id": "senado", "nome": "Agência Senado", "url": "https://www12.senado.leg.br/noticias/rss"},
-    {"id": "stf", "nome": "Notícias do STF", "url": "https://noticias.stf.jus.br/rss"},
-    {"id": "planalto", "nome": "Planalto", "url": "https://www.gov.br/planalto/pt-br/acompanhe-o-planalto/noticias/RSS"},
+    {"id": "agenciabrasil", "nome": "Agência Brasil", "url": "https://agenciabrasil.ebc.com.br/rss/ultimasnoticias/feed.xml",
+     # o feed geral só traz as 10 últimas; as editorias somam cobertura do Executivo
+     "extras": [f"https://agenciabrasil.ebc.com.br/rss/{e}/feed.xml" for e in
+                ("politica", "economia", "justica", "saude", "educacao", "geral", "direitos-humanos")]},
+    {"id": "camara", "nome": "Agência Câmara", "url": "https://www.camara.leg.br/noticias/rss/ultimas-noticias", "paginar": ("pagina", 1, 1)},
+    {"id": "senado", "nome": "Agência Senado", "url": "https://www12.senado.leg.br/noticias/rss", "paginar": ("b_start:int", 15, 0)},
+    {"id": "stf", "nome": "Notícias do STF", "url": "https://noticias.stf.jus.br/rss", "paginar": ("paged", 1, 1)},
+    {"id": "planalto", "nome": "Planalto", "url": "https://www.gov.br/planalto/pt-br/acompanhe-o-planalto/noticias/RSS", "paginar": ("b_start:int", 20, 0)},
 ]
+# (parâmetro, passo, início): paginação do feed, usada só no modo --historico
 NS = {"content": "http://purl.org/rss/1.0/modules/content/", "dc": "http://purl.org/dc/elements/1.1/",
       "rss1": "http://purl.org/rss/1.0/", "atom": "http://www.w3.org/2005/Atom"}
 
@@ -72,8 +78,12 @@ def data_iso(s):
     return f"{m.group(1)}T{m.group(2)}:00+00:00" if m else None
 
 
-def ler_feed(fonte):
-    xml = baixar(fonte["url"])
+def ler_feed(fonte, pagina=None):
+    url = fonte["url"]
+    if pagina is not None:
+        par, _, _ = fonte["paginar"]
+        url += ("&" if "?" in url else "?") + f"{par}={pagina}"
+    xml = baixar(url)
     if not xml:
         return []
     try:
@@ -100,13 +110,16 @@ def ler_feed(fonte):
     return saida
 
 
+INDICE = []
+
+
 def ligar(grafo, artigo):
     texto = artigo["titulo"] + ". " + artigo["resumo"]
     nos = [i for i in grafo.nos_citados(texto) if i not in IGNORAR_NOS]
     # a fonte institucional não conta como citação (toda notícia do STF "cita" o STF)
     proprio = {"stf": "stf", "camara": "camara", "senado": "senado", "planalto": "pr"}.get(artigo["fonte"])
     nos = [i for i in nos if i != proprio]
-    pessoas = [p for p, _ in grafo.casar_pessoas(texto)]
+    pessoas = P.casar(texto, INDICE)
     return nos, pessoas
 
 
@@ -177,15 +190,42 @@ def resumo_por_manchetes(artigos):
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--sem-claude", action="store_true")
+    ap.add_argument("--historico", action="store_true", help="pagina os feeds até cobrir a janela de 90 dias")
     ap.add_argument("--saida", default=str(SAIDA))
     args = ap.parse_args()
 
     grafo = Grafo()
+    print("==> pessoas: ocupantes do grafo, deputados e senadores")
+    novos_wd = P.preparar_grafo(grafo)
+    INDICE.extend(P.indice(grafo))
+    print(f"    {len(INDICE)} pessoas no índice ({novos_wd} consultas novas ao Wikidata)")
+    por_pessoa = {p["id"]: p for p in INDICE}
     existente = ler_json(args.saida, {"artigos": []})
     por_url = {a["url"]: a for a in existente.get("artigos", [])}
     novos = 0
+    limite_hist = (hoje() - dt.timedelta(days=JANELA_DIAS)).isoformat()
+    corte_hist = {}
     for fonte in FONTES:
         itens = ler_feed(fonte)
+        for extra in fonte.get("extras", []):
+            ja = {i["url"] for i in itens}
+            itens += [m for m in ler_feed({**fonte, "url": extra}) if m["url"] not in ja]
+        if args.historico and fonte.get("paginar"):
+            _, passo, ini = fonte["paginar"]
+            pag, vazias = ini + passo, 0
+            for _ in range(150):
+                mais = ler_feed(fonte, pag)
+                novos_pag = [m for m in mais if m["url"] not in {i["url"] for i in itens}]
+                itens += novos_pag
+                datas = [m["data"][:10] for m in mais if m.get("data")]
+                vazias = vazias + 1 if not novos_pag else 0
+                if not mais or vazias >= 2 or (datas and max(datas) < limite_hist):
+                    break
+                pag += passo
+                time.sleep(.4)
+            datas = [m["data"][:10] for m in itens if m.get("data")]
+            if datas:
+                corte_hist[fonte["id"]] = min(datas)
         print(f"==> {fonte['nome']}: {len(itens)} matérias no feed")
         for it in itens:
             if it["url"] in por_url:
@@ -198,30 +238,48 @@ def main():
             novos += 1
 
     limite = (hoje() - dt.timedelta(days=JANELA_DIAS)).isoformat()
+    if corte_hist:
+        # No histórico, cada fonte pagina até um ponto diferente (o Senado volta 90 dias,
+        # a Câmara umas três semanas, a Agência Brasil nem pagina). Para o ranking não
+        # medir só quem pagina mais, todas começam na mesma data; a coleta diária enche
+        # a janela de forma igual daí para frente.
+        limite = max(limite, max(corte_hist.values()))
+        print(f"    histórico cortado em {limite} (janela comum às fontes paginadas)")
     artigos = [a for a in por_url.values() if (a.get("data") or a.get("visto_em") or "")[:10] >= limite]
     # religa tudo a cada rodada: o grafo e as regras de casamento mudam com o tempo
     for a in artigos:
         a["nos"], a["pessoas"] = ligar(grafo, a)
     artigos.sort(key=lambda a: a.get("data") or a.get("visto_em") or "", reverse=True)
 
-    # ranking: órgãos e pessoas mais citados, com a última citação
+    # ranking: órgãos e pessoas mais citados, com a última citação. A ordem usa peso
+    # igual por fonte (a Agência Senado publica sete vezes mais que a Agência Brasil e
+    # cita senadores em quase toda matéria); a contagem mostrada é a real.
+    por_fonte = {}
+    for a in artigos:
+        por_fonte[a["fonte"]] = por_fonte.get(a["fonte"], 0) + 1
+    media = sum(por_fonte.values()) / max(1, len(por_fonte))
+    peso = {f: media / n for f, n in por_fonte.items()}
     rank_nos, rank_pessoas = {}, {}
     for a in artigos:
+        w = peso.get(a["fonte"], 1)
         for i in a["nos"]:
-            r = rank_nos.setdefault(i, {"id": i, "artigos": 0, "ultima": None})
+            r = rank_nos.setdefault(i, {"id": i, "artigos": 0, "peso": 0, "ultima": None})
             r["artigos"] += 1
+            r["peso"] += w
             r["ultima"] = max(r["ultima"] or "", a.get("data") or "")
-        for p in a["pessoas"]:
-            r = rank_pessoas.setdefault(p, {"nome": p, "artigos": 0, "ultima": None})
+        for pid in a["pessoas"]:
+            base = por_pessoa.get(pid)
+            if not base:
+                continue
+            r = rank_pessoas.setdefault(pid, {k: base.get(k) for k in ("id", "nome", "nome_completo", "cargo", "no_id", "poder", "partido", "uf", "foto", "foto_fonte")} | {"artigos": 0, "peso": 0, "ultima": None})
             r["artigos"] += 1
+            r["peso"] += w
             r["ultima"] = max(r["ultima"] or "", a.get("data") or "")
-    for p, r in rank_pessoas.items():
-        no = next((i for nome, i in grafo.pessoas if nome == p), None)
-        r["no_id"] = no
-        r["cargo"] = (grafo.por_id[no]["cargo"]["titulo"] + " · " + (grafo.por_id[no].get("sigla") or grafo.por_id[no]["nome"])) if no else None
+    top_pessoas = sorted(rank_pessoas.values(), key=lambda r: (-r["peso"], -r["artigos"]))[:24]
+    P.completar_fotos(top_pessoas)
     ranking = {
-        "orgaos": sorted(rank_nos.values(), key=lambda r: (-r["artigos"], r["ultima"] or ""))[:30],
-        "pessoas": sorted(rank_pessoas.values(), key=lambda r: (-r["artigos"], r["ultima"] or ""))[:20],
+        "orgaos": sorted(rank_nos.values(), key=lambda r: (-r["peso"], -r["artigos"]))[:30],
+        "pessoas": top_pessoas,
     }
 
     com_no = [a for a in artigos if a["nos"]]
@@ -234,6 +292,7 @@ def main():
             "janela_dias": JANELA_DIAS,
             "fontes": [{k: f[k] for k in ("id", "nome", "url")} for f in FONTES if f["id"] in fontes_usadas],
             "total_artigos": len(artigos), "artigos_com_no": len(com_no), "novos_nesta_rodada": novos,
+            "artigos_por_fonte": por_fonte, "ordem": "peso igual por fonte; contagem real de matérias",
             "resumo_por": "claude" if resumo else "manchetes",
         },
         "resumo": resumo or resumo_por_manchetes(com_no),

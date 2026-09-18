@@ -363,6 +363,7 @@ def main():
     ap.add_argument("--pausa", type=float, default=1.0)
     ap.add_argument("--sem-claude", action="store_true")
     ap.add_argument("--saida", default=str(SAIDA))
+    ap.add_argument("--janela", type=int, default=JANELA_DIAS, help="quantos dias o feed guarda")
     args = ap.parse_args()
 
     grafo = Grafo()
@@ -404,7 +405,7 @@ def main():
                 r["no_id"] = antigo["no_id"]
         por_id[r["id"]] = r
     todos = list(por_id.values())
-    limite = (ate - dt.timedelta(days=JANELA_DIAS)).isoformat()
+    limite = (ate - dt.timedelta(days=args.janela)).isoformat()
     todos = [m for m in todos if (m.get("data") or m.get("publicado_em") or "") >= limite]
 
     refinados = 0 if args.sem_claude else refinar_com_claude(todos, grafo)
@@ -420,7 +421,7 @@ def main():
         "meta": {
             "gerado_em": dt.datetime.now(dt.timezone.utc).isoformat(timespec="minutes"),
             "gerado_por": "scripts/governo/agentes/agente_dou.py",
-            "janela_dias": JANELA_DIAS,
+            "janela_dias": args.janela,
             "fonte": {"nome": "Diário Oficial da União, seção 2 (atos da Presidência da República e da Casa Civil)",
                       "url": "https://www.in.gov.br/consulta/-/buscar/dou"},
             "regra": "O feed registra o que o DOU publicou, com link para cada ato. Ocupantes no grafo só mudam com revisão humana.",
