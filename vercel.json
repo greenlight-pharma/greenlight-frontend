@@ -35,6 +35,16 @@
       "source": "/painel-ubs/:caminho*",
       "destination": "/medicacoes/:caminho*",
       "permanent": false
+    },
+    {
+      "source": "/vytal-medicacoes",
+      "destination": "/vytal-care",
+      "permanent": true
+    },
+    {
+      "source": "/vytal-medicacoes/:caminho*",
+      "destination": "/vytal-care/:caminho*",
+      "permanent": true
     }
   ],
   "rewrites": [
