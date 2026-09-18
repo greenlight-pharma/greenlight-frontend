@@ -1,6 +1,6 @@
 {
  "meta": {
-  "gerado_em": "2026-09-18T10:22+00:00",
+  "gerado_em": "2026-09-18T10:25+00:00",
   "gerado_por": "scripts/governo/agentes/agente_noticias.py",
   "janela_dias": 90,
   "fontes": [
@@ -32,7 +32,7 @@
   ],
   "total_artigos": 996,
   "artigos_com_no": 239,
-  "novos_nesta_rodada": 8,
+  "novos_nesta_rodada": 7,
   "artigos_por_fonte": {
    "agenciabrasil": 77,
    "camara": 317,
@@ -41,28 +41,28 @@
    "stf": 3
   },
   "ordem": "peso igual por fonte; contagem real de matérias",
-  "resumo_por": "manchetes"
+  "resumo_por": "claude"
  },
  "resumo": [
   {
-   "texto": "Publicações históricas são devolvidas à Biblioteca Nacional",
-   "artigo_id": "n-7d546e7f62",
-   "no_id": "pf"
-  },
-  {
-   "texto": "Projeto isenta de carência a concessão de salário-maternidade pelo INSS",
-   "artigo_id": "n-09c1045a7f",
+   "texto": "O presidente do Supremo Tribunal Federal, Edson Fachin, retirou da pauta do plenário de 23 de setembro o julgamento do pedido de investigação sobre a atuação do ministro André Mendonça como relator do caso Master.",
+   "artigo_id": "n-ee197503f5",
    "no_id": "stf"
   },
   {
-   "texto": "Senado leva ao ComPública debate sobre combate à desinformação",
-   "artigo_id": "n-37f8c90ecf",
-   "no_id": "camara"
+   "texto": "O Superior Tribunal de Justiça suspendeu em todo o país os processos que discutem a exigência de proibição expressa em convenção de condomínio para vetar locação de curta temporada por plataformas digitais.",
+   "artigo_id": "n-9f9ead9541",
+   "no_id": "stj"
   },
   {
-   "texto": "Presidente da República acompanha as Ações Integradas para o Enfrentamento ao Crime Organizado no Rio de Janeiro",
-   "artigo_id": "n-74fd5746f0",
-   "no_id": "prf"
+   "texto": "Segundo o sistema de candidaturas do Tribunal Superior Eleitoral, cerca de 1,2 mil registros para as eleições de outubro foram indeferidos, sendo 335 de forma definitiva e 869 ainda sujeitos a recurso.",
+   "artigo_id": "n-658b8f6ea9",
+   "no_id": "tse"
+  },
+  {
+   "texto": "O Banco Nacional de Desenvolvimento Econômico e Social abriu o protocolo de pedidos de empréstimo da terceira fase do Plano Brasil Soberano, que oferece R$ 22,6 bilhões em crédito a empresas afetadas pelo tarifaço dos Estados Unidos.",
+   "artigo_id": "n-6ae9cc3751",
+   "no_id": "bndes"
   }
  ],
  "ranking": {
