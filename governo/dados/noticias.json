@@ -1,6 +1,6 @@
 {
  "meta": {
-  "gerado_em": "2026-09-18T10:25+00:00",
+  "gerado_em": "2026-09-18T11:40+00:00",
   "gerado_por": "scripts/governo/agentes/agente_noticias.py",
   "janela_dias": 90,
   "fontes": [
@@ -30,39 +30,39 @@
     "url": "https://www.gov.br/planalto/pt-br/acompanhe-o-planalto/noticias/RSS"
    }
   ],
-  "total_artigos": 996,
+  "total_artigos": 1001,
   "artigos_com_no": 239,
-  "novos_nesta_rodada": 7,
+  "novos_nesta_rodada": 12,
   "artigos_por_fonte": {
-   "agenciabrasil": 77,
-   "camara": 317,
+   "camara": 318,
+   "agenciabrasil": 81,
    "senado": 573,
    "planalto": 26,
    "stf": 3
   },
   "ordem": "peso igual por fonte; contagem real de matérias",
-  "resumo_por": "claude"
+  "resumo_por": "manchetes"
  },
  "resumo": [
   {
-   "texto": "O presidente do Supremo Tribunal Federal, Edson Fachin, retirou da pauta do plenário de 23 de setembro o julgamento do pedido de investigação sobre a atuação do ministro André Mendonça como relator do caso Master.",
-   "artigo_id": "n-ee197503f5",
+   "texto": "Publicações históricas são devolvidas à Biblioteca Nacional",
+   "artigo_id": "n-7d546e7f62",
+   "no_id": "pf"
+  },
+  {
+   "texto": "Projeto isenta de carência a concessão de salário-maternidade pelo INSS",
+   "artigo_id": "n-09c1045a7f",
    "no_id": "stf"
   },
   {
-   "texto": "O Superior Tribunal de Justiça suspendeu em todo o país os processos que discutem a exigência de proibição expressa em convenção de condomínio para vetar locação de curta temporada por plataformas digitais.",
-   "artigo_id": "n-9f9ead9541",
-   "no_id": "stj"
+   "texto": "Senado leva ao ComPública debate sobre combate à desinformação",
+   "artigo_id": "n-37f8c90ecf",
+   "no_id": "camara"
   },
   {
-   "texto": "Segundo o sistema de candidaturas do Tribunal Superior Eleitoral, cerca de 1,2 mil registros para as eleições de outubro foram indeferidos, sendo 335 de forma definitiva e 869 ainda sujeitos a recurso.",
-   "artigo_id": "n-658b8f6ea9",
-   "no_id": "tse"
-  },
-  {
-   "texto": "O Banco Nacional de Desenvolvimento Econômico e Social abriu o protocolo de pedidos de empréstimo da terceira fase do Plano Brasil Soberano, que oferece R$ 22,6 bilhões em crédito a empresas afetadas pelo tarifaço dos Estados Unidos.",
-   "artigo_id": "n-6ae9cc3751",
-   "no_id": "bndes"
+   "texto": "Presidente da República acompanha as Ações Integradas para o Enfrentamento ao Crime Organizado no Rio de Janeiro",
+   "artigo_id": "n-74fd5746f0",
+   "no_id": "prf"
   }
  ],
  "ranking": {
@@ -70,181 +70,181 @@
    {
     "id": "tse",
     "artigos": 28,
-    "peso": 30.730594049615615,
+    "peso": 29.72335056581822,
     "ultima": "2026-09-17T22:16+00:00"
    },
    {
     "id": "stf",
     "artigos": 33,
-    "peso": 29.667950560678488,
+    "peso": 28.787739568736644,
     "ultima": "2026-09-17T20:39+00:00"
    },
    {
     "id": "prf",
     "artigos": 7,
-    "peso": 20.944247375660986,
+    "peso": 20.407413871113697,
     "ultima": "2026-09-17T13:36+00:00"
    },
    {
     "id": "congresso",
     "artigos": 38,
-    "peso": 18.53145078450379,
+    "peso": 18.361732053763408,
     "ultima": "2026-09-17T20:01+00:00"
    },
    {
     "id": "camara",
     "artigos": 49,
-    "peso": 17.034554973822,
+    "peso": 17.120069808027928,
     "ultima": "2026-09-17T16:12:00+00:00"
    },
    {
     "id": "caixa",
     "artigos": 5,
-    "peso": 12.935064935064934,
+    "peso": 12.358024691358025,
     "ultima": "2026-09-17T19:25+00:00"
    },
    {
     "id": "inep",
     "artigos": 5,
-    "peso": 12.935064935064934,
+    "peso": 12.358024691358025,
     "ultima": "2026-09-16T16:08+00:00"
    },
    {
     "id": "pf",
     "artigos": 10,
-    "peso": 12.4339158223975,
+    "peso": 11.982754831620452,
     "ultima": "2026-09-17T23:41+00:00"
    },
    {
     "id": "anvisa",
     "artigos": 6,
-    "peso": 9.084718086346575,
+    "peso": 8.743152922753831,
     "ultima": "2026-09-17T13:20+00:00"
    },
    {
     "id": "mte",
     "artigos": 1,
-    "peso": 7.661538461538461,
+    "peso": 7.699999999999999,
     "ultima": "2026-08-12T21:09:00+00:00"
    },
    {
     "id": "inpe",
     "artigos": 1,
-    "peso": 7.661538461538461,
+    "peso": 7.699999999999999,
     "ultima": "2026-08-06T22:13:00+00:00"
    },
    {
     "id": "inss",
     "artigos": 13,
-    "peso": 6.484602044692554,
+    "peso": 6.503253317527744,
     "ultima": "2026-09-17T20:39+00:00"
    },
    {
     "id": "mec",
     "artigos": 5,
-    "peso": 6.216957911198749,
+    "peso": 5.991377415810226,
     "ultima": "2026-09-17T15:48+00:00"
    },
    {
     "id": "petrobras",
     "artigos": 5,
-    "peso": 6.216957911198749,
+    "peso": 5.991377415810226,
     "ultima": "2026-09-17T13:35+00:00"
    },
    {
     "id": "stj",
     "artigos": 4,
-    "peso": 4.1914393004554364,
+    "peso": 4.080113614882623,
     "ultima": "2026-09-17T21:28+00:00"
    },
    {
     "id": "tcu",
     "artigos": 10,
-    "peso": 4.037934166845591,
+    "peso": 4.054232934900722,
     "ultima": "2026-09-04T14:56:00+00:00"
    },
    {
     "id": "ms",
     "artigos": 5,
-    "peso": 3.9775889032433533,
+    "peso": 3.8691616572942933,
     "ultima": "2026-09-17T12:44+00:00"
    },
    {
     "id": "bndes",
     "artigos": 4,
-    "peso": 3.910692112320599,
+    "peso": 3.799943046210622,
     "ultima": "2026-09-17T17:19+00:00"
    },
    {
     "id": "cvm",
     "artigos": 2,
-    "peso": 3.215404154205416,
+    "peso": 3.1011646866992777,
     "ultima": "2026-09-17T18:45+00:00"
    },
    {
     "id": "embrapa",
     "artigos": 2,
-    "peso": 3.215404154205416,
+    "peso": 3.1011646866992777,
     "ultima": "2026-09-17T13:01+00:00"
    },
    {
     "id": "secom",
     "artigos": 2,
-    "peso": 2.9346569660705786,
+    "peso": 2.820994118027277,
     "ultima": "2026-09-17T16:12:00+00:00"
    },
    {
     "id": "mpf",
     "artigos": 2,
-    "peso": 2.9346569660705786,
+    "peso": 2.820994118027277,
     "ultima": "2026-09-17T14:37+00:00"
    },
    {
     "id": "mt",
     "artigos": 1,
-    "peso": 2.587012987012987,
+    "peso": 2.471604938271605,
     "ultima": "2026-09-17T16:52+00:00"
    },
    {
     "id": "fiocruz",
     "artigos": 1,
-    "peso": 2.587012987012987,
+    "peso": 2.471604938271605,
     "ultima": "2026-09-17T14:05+00:00"
    },
    {
     "id": "inmet",
     "artigos": 1,
-    "peso": 2.587012987012987,
+    "peso": 2.471604938271605,
     "ultima": "2026-09-17T11:22+00:00"
    },
    {
     "id": "stm",
     "artigos": 1,
-    "peso": 2.587012987012987,
+    "peso": 2.471604938271605,
     "ultima": "2026-09-16T18:06+00:00"
    },
    {
     "id": "mmulheres",
     "artigos": 1,
-    "peso": 2.587012987012987,
+    "peso": 2.471604938271605,
     "ultima": "2026-09-12T00:22+00:00"
    },
    {
     "id": "ibge",
     "artigos": 1,
-    "peso": 2.587012987012987,
+    "peso": 2.471604938271605,
     "ultima": "2026-09-10T22:23+00:00"
    },
    {
     "id": "anp",
     "artigos": 5,
-    "peso": 2.0189670834227953,
+    "peso": 2.0271164674503606,
     "ultima": "2026-09-10T18:13+00:00"
    },
    {
     "id": "anac",
     "artigos": 4,
-    "peso": 1.6713231043652037,
+    "peso": 1.6777272876946887,
     "ultima": "2026-09-08T17:30:00+00:00"
    }
   ],
@@ -260,9 +260,9 @@
     "uf": null,
     "foto": "https://commons.wikimedia.org/wiki/Special:FilePath/Foto_oficial_de_Luiz_In%C3%A1cio_Lula_da_Silva_%28estreita%29.jpg?width=160",
     "foto_fonte": "https://www.wikidata.org/wiki/Q37181",
-    "artigos": 14,
-    "peso": 14.701026385377387,
-    "ultima": "2026-09-17T19:43+00:00"
+    "artigos": 15,
+    "peso": 17.116050602283273,
+    "ultima": "2026-09-18T11:00+00:00"
    },
    {
     "id": "damares-alves",
@@ -276,7 +276,7 @@
     "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador6335.jpg",
     "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/6335",
     "artigos": 21,
-    "peso": 7.300523560209427,
+    "peso": 7.337172774869113,
     "ultima": "2026-09-16T13:54:00+00:00"
    },
    {
@@ -291,7 +291,7 @@
     "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador3830.jpg",
     "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/3830",
     "artigos": 18,
-    "peso": 6.257591623036651,
+    "peso": 6.2890052356020965,
     "ultima": "2026-09-08T14:44:00+00:00"
    },
    {
@@ -306,7 +306,7 @@
     "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador5894.jpg",
     "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/5894",
     "artigos": 5,
-    "peso": 6.216957911198749,
+    "peso": 5.991377415810226,
     "ultima": "2026-09-18T10:15+00:00"
    },
    {
@@ -321,7 +321,7 @@
     "foto": "https://www.camara.leg.br/internet/deputado/bandep/160674.jpg",
     "foto_fonte": "https://www.camara.leg.br/deputados/160674",
     "artigos": 11,
-    "peso": 4.947072522172856,
+    "peso": 4.963963252000396,
     "ultima": "2026-09-08T14:44:00+00:00"
    },
    {
@@ -336,7 +336,7 @@
     "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador825.jpg",
     "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/825",
     "artigos": 11,
-    "peso": 3.8240837696335075,
+    "peso": 3.843280977312392,
     "ultima": "2026-09-17T20:27:00+00:00"
    },
    {
@@ -351,7 +351,7 @@
     "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador5525.jpg",
     "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/5525",
     "artigos": 11,
-    "peso": 3.8240837696335075,
+    "peso": 3.843280977312392,
     "ultima": "2026-09-02T23:20:00+00:00"
    },
    {
@@ -366,7 +366,7 @@
     "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador5352.jpg",
     "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/5352",
     "artigos": 10,
-    "peso": 3.476439790575916,
+    "peso": 3.49389179755672,
     "ultima": "2026-09-14T16:27:00+00:00"
    },
    {
@@ -381,7 +381,7 @@
     "foto": "https://commons.wikimedia.org/wiki/Special:FilePath/Luiz_Edson_Fachin-12-05.2015.jpg?width=160",
     "foto_fonte": "https://www.wikidata.org/wiki/Q10320705",
     "artigos": 3,
-    "peso": 3.28230094512817,
+    "peso": 3.170383297782949,
     "ultima": "2026-09-17T16:26+00:00"
    },
    {
@@ -396,7 +396,7 @@
     "foto": null,
     "foto_fonte": null,
     "artigos": 3,
-    "peso": 3.28230094512817,
+    "peso": 3.170383297782949,
     "ultima": "2026-09-17T14:37+00:00"
    },
    {
@@ -411,7 +411,7 @@
     "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador5979.jpg",
     "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/5979",
     "artigos": 9,
-    "peso": 3.1287958115183243,
+    "peso": 3.144502617801048,
     "ultima": "2026-09-10T18:45:00+00:00"
    },
    {
@@ -426,7 +426,7 @@
     "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador5990.jpg",
     "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/5990",
     "artigos": 9,
-    "peso": 3.1287958115183243,
+    "peso": 3.144502617801048,
     "ultima": "2026-09-04T21:56:00+00:00"
    },
    {
@@ -441,7 +441,7 @@
     "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador345.jpg",
     "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/345",
     "artigos": 9,
-    "peso": 3.1287958115183243,
+    "peso": 3.144502617801048,
     "ultima": "2026-09-03T23:38:00+00:00"
    },
    {
@@ -456,7 +456,7 @@
     "foto": "https://commons.wikimedia.org/wiki/Special:FilePath/Nunes_Marques%2C_February_2025_%28cropped%29.jpg?width=160",
     "foto_fonte": "https://www.wikidata.org/wiki/Q99831978",
     "artigos": 2,
-    "peso": 2.9346569660705786,
+    "peso": 2.820994118027277,
     "ultima": "2026-09-12T20:44+00:00"
    },
    {
@@ -471,22 +471,22 @@
     "foto": "https://www.camara.leg.br/internet/deputado/bandep/220558.jpg",
     "foto_fonte": "https://www.camara.leg.br/deputados/220558",
     "artigos": 1,
-    "peso": 2.587012987012987,
+    "peso": 2.471604938271605,
     "ultima": "2026-09-17T22:04+00:00"
    },
    {
     "id": "andrei-augusto-passos-rodrigues",
-    "nome": "Andrei Augusto Passos Rodrigues",
+    "nome": "Augusto Coutinho",
     "nome_completo": "Andrei Augusto Passos Rodrigues",
     "cargo": "Diretor(a)-Geral · PF",
     "no_id": "pf",
     "poder": "executivo",
-    "partido": null,
-    "uf": null,
-    "foto": null,
-    "foto_fonte": null,
+    "partido": "REPUBLICANOS",
+    "uf": "PE",
+    "foto": "https://www.camara.leg.br/internet/deputado/bandep/160665.jpg",
+    "foto_fonte": "https://www.camara.leg.br/deputados/160665",
     "artigos": 1,
-    "peso": 2.587012987012987,
+    "peso": 2.471604938271605,
     "ultima": "2026-09-17T13:19+00:00"
    },
    {
@@ -501,7 +501,7 @@
     "foto": "https://commons.wikimedia.org/wiki/Special:FilePath/01.01.2023_-_Posse_de_Alexandre_Padilha%2C_Ministro_de_Estado_de_Rela%C3%A7%C3%B5es_Institucionais_%2852625761867%29_%28cropped%29.jpg?width=160",
     "foto_fonte": "https://www.wikidata.org/wiki/Q4163528",
     "artigos": 1,
-    "peso": 2.587012987012987,
+    "peso": 2.471604938271605,
     "ultima": "2026-09-16T19:44+00:00"
    },
    {
@@ -516,7 +516,7 @@
     "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador6009.jpg",
     "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/6009",
     "artigos": 7,
-    "peso": 2.433507853403141,
+    "peso": 2.4457242582897036,
     "ultima": "2026-09-08T15:37:00+00:00"
    },
    {
@@ -531,7 +531,7 @@
     "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador5376.jpg",
     "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/5376",
     "artigos": 7,
-    "peso": 2.433507853403141,
+    "peso": 2.4457242582897036,
     "ultima": "2026-09-04T00:40:00+00:00"
    },
    {
@@ -546,7 +546,7 @@
     "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador5917.jpg",
     "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/5917",
     "artigos": 7,
-    "peso": 2.433507853403141,
+    "peso": 2.4457242582897036,
     "ultima": "2026-09-02T19:51:00+00:00"
    },
    {
@@ -561,7 +561,7 @@
     "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador5732.jpg",
     "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/5732",
     "artigos": 5,
-    "peso": 2.2997142715576326,
+    "peso": 2.3072870361223616,
     "ultima": "2026-09-02T16:46:00+00:00"
    },
    {
@@ -576,7 +576,7 @@
     "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador4770.jpg",
     "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/4770",
     "artigos": 6,
-    "peso": 2.0858638743455495,
+    "peso": 2.0963350785340316,
     "ultima": "2026-09-17T21:37:00+00:00"
    },
    {
@@ -591,7 +591,7 @@
     "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador6338.jpg",
     "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/6338",
     "artigos": 6,
-    "peso": 2.0858638743455495,
+    "peso": 2.0963350785340316,
     "ultima": "2026-09-10T18:45:00+00:00"
    },
    {
@@ -606,12 +606,64 @@
     "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador475.jpg",
     "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/475",
     "artigos": 6,
-    "peso": 2.0858638743455495,
+    "peso": 2.0963350785340316,
     "ultima": "2026-09-01T22:31:00+00:00"
    }
   ]
  },
  "artigos": [
+  {
+   "id": "n-db86e5df5f",
+   "titulo": "Projeto cria incentivos para a abate de gado jovem de alta qualidade",
+   "url": "https://www.camara.leg.br/noticias/1303237-projeto-cria-incentivos-para-a-abate-de-gado-jovem-de-alta-qualidade",
+   "data": "2026-09-18T11:35+00:00",
+   "fonte": "camara",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "Segundo o autor, objetivo é incentivar a produção eficiente e com menor impacto ecológico"
+  },
+  {
+   "id": "n-8ada3037b7",
+   "titulo": "Lula propõe criar Ministério da Segurança e aumento real do mínimo",
+   "url": "https://agenciabrasil.ebc.com.br/politica/noticia/2026-09/lula-propoe-criar-ministerio-da-seguranca-e-aumento-real-do-minimo",
+   "data": "2026-09-18T11:00+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [],
+   "pessoas": [
+    "luiz-inacio-lula-da-silva"
+   ],
+   "resumo": "Na busca pela reeleição, o candidato do PT à Presidência da República, Luiz Inácio Lula da Silva, baseia parte de seu plano de governo nos feitos da gestão atual. Muitas propostas visam dar continuidade a políticas adotadas nos últimos quatro anos ou aprofundá-las, com mais investimentos ou alcance . >> Veja a íntegra do documento: Plano de governo Luiz Inácio Lula da Silva Notícias relacionadas: Pelo PT, Lula busca reeleição com foco em pautas sociais. A Agência Brasil publica até domingo (20) matérias com os programas de governo de todos os candidatos à Presidência nas eleições deste ano. Os"
+  },
+  {
+   "id": "n-7070eb1574",
+   "titulo": "Leonardo Avalanche quer reduzir impostos e zerar fila do SUS",
+   "url": "https://agenciabrasil.ebc.com.br/politica/noticia/2026-09/leonardo-avalanche-quer-reduzir-impostos-e-zerar-fila-do-sus",
+   "data": "2026-09-18T10:45+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "O programa de Leonardo Avalanche, do PRTB, para o cargo de presidente da República propõe o que chama de reconstrução nacional, com a promessa de transformar o Brasil em uma “economia mais dinâmica, produtiva e voltada ao empreendedorismo.” O plano propõe, entre outros pontos, reduzir impostos e zerar a fila do Sistema Único de Saúde. >> Veja a íntegra do documento: Plano de governo Leonardo Avalanche Notícias relacionadas: PRTB troca Marçal por Leonardo Avalanche na disputa à presidência. A Agência Brasil publica até domingo (20) matérias com os programas de governo de todos os candidatos à P"
+  },
+  {
+   "id": "n-74f518d829",
+   "titulo": "Fim da escala 6x1 e de privatizações é prioridade de Hertz Dias",
+   "url": "https://agenciabrasil.ebc.com.br/politica/noticia/2026-09/fim-da-escala-6x1-e-de-privatizacoes-e-prioridade-de-hertz-dias",
+   "data": "2026-09-18T10:30+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "O enfrentamento à dominação do país por grandes monopólios capitalistas, assim como o fim da escala 6X1 – sem redução de salários, jornada de trabalho de 36 horas –, e a revogação das reformas trabalhista e da Previdência estão entre os principais pontos defendidos pelo professor, integrante do movimento hip-hop , de movimentos sociais e candidato do PSTU à Presidência da República, Hertz Dias. >> Veja a íntegra do documento: Plano de governo Hertz Dias Notícias relacionadas: PSTU tem o professor de história Hertz Dias como presidenciável. A Agência Brasil publica até domingo (20) matérias com"
+  },
+  {
+   "id": "n-c5244b98b4",
+   "titulo": "Pela quinta vez, Brasil põe \"trinca\" nas semifinais da Libertadores",
+   "url": "https://agenciabrasil.ebc.com.br/esportes/noticia/2026-09/pela-quinta-vez-brasil-poe-trinca-nas-semifinais-da-libertadores",
+   "data": "2026-09-18T10:19+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "Pela quinta vez na história, sendo a quarta no atual formato e envolvendo brasileiros, a Libertadores chega às semifinais com três clubes do mesmo país na briga pelo título. A classificação do Flamengo diante do Independiente del Valle (Equador) confirmou a \"trinca\" ao lado de Fluminense e Palmeiras. O \"intruso\" é o Estudiantes (Argentina). Cinco anos atrás, Flamengo, Palmeiras e Atlético-MG tiveram a companhia do Barcelona de Guayaquil entre os semifinalistas, na primeira \"trinca\" brasileira da história. O Rubro-Negro despachou os equatorianos e o Verdão eliminou o Galo. Na final, os paulista"
+  },
   {
    "id": "n-25a8c2175e",
    "titulo": "Flávio Bolsonaro propõe enxugar Estado e endurecer ações de segurança",

@@ -121,7 +121,12 @@ button,input{font-family:inherit;font-size:inherit}
 .painel .corpo{overflow:auto;padding:12px 16px 16px;display:grid;gap:14px}
 .bloco h3{margin:0 0 6px;font-size:11px;text-transform:uppercase;letter-spacing:.06em;color:var(--mute);font-weight:600}
 .bloco p{margin:0;color:var(--ink-2)}
-.cargo{border:1px solid var(--border);border-radius:12px;padding:10px 12px;background:var(--plane)}
+.cargo{border:1px solid var(--border);border-radius:12px;padding:10px 12px;background:var(--plane);display:flex;gap:12px;align-items:flex-start}
+.cargo .txt{min-width:0;flex:1}
+.rosto{width:52px;height:52px;border-radius:50%;flex:none;background:var(--grid) center 18%/cover no-repeat;border:2.5px solid var(--c,var(--axis));display:inline-flex;align-items:center;justify-content:center;font-weight:700;font-size:16px;color:var(--ink-2)}
+.rosto.p{width:38px;height:38px;font-size:13px;border-width:2px}
+.rosto.g{width:64px;height:64px;font-size:20px;border-width:3px}
+.cargo + .cargo{margin-top:8px}
 .cargo .t{font-size:12px;color:var(--mute)}
 .cargo .n{font-weight:600;font-size:15px}
 .cargo .vago{color:var(--ink-2);font-style:italic}
@@ -209,6 +214,32 @@ button,input{font-family:inherit;font-size:inherit}
 .fontes-lista a{color:var(--ink-2)}
 .vazio{color:var(--mute);font-size:13px;padding:8px 0}
 
+/* ---------- quem manda em quem ---------- */
+.hier-poderes{display:flex;gap:6px;flex-wrap:wrap;justify-content:center;margin:0 0 16px}
+.hier-poderes button{display:inline-flex;align-items:center;gap:6px;padding:6px 12px;border-radius:999px;border:1px solid var(--axis);background:var(--panel);color:var(--ink);cursor:pointer;font-size:13px}
+.hier-poderes button[aria-pressed="true"]{background:var(--ink);color:var(--surface);border-color:var(--ink)}
+.hier-poderes i{width:9px;height:9px;border-radius:50%;background:var(--c)}
+.arvore{max-width:880px;margin:0 auto}
+.arvore ul{list-style:none;margin:0;padding:0 0 0 22px;position:relative}
+.arvore > ul{padding-left:0}
+.arvore li{position:relative;padding:6px 0 0 18px}
+.arvore > ul > li{padding-left:0}
+.arvore ul ul li::before{content:"";position:absolute;left:0;top:0;bottom:0;border-left:1.5px solid var(--axis)}
+.arvore ul ul li:last-child::before{bottom:auto;height:34px}
+.arvore ul ul li::after{content:"";position:absolute;left:0;top:34px;width:14px;border-top:1.5px solid var(--axis)}
+.pessoa-c{display:flex;align-items:center;gap:12px;border:1px solid var(--border);border-radius:14px;padding:8px 12px;background:var(--panel);cursor:pointer;text-align:left;width:100%;color:var(--ink)}
+.pessoa-c:hover{background:var(--plane)}
+.pessoa-c .txt{min-width:0;flex:1}
+.pessoa-c b{display:block;font-size:15px;line-height:1.25}
+.pessoa-c .quem{display:block;font-size:12.5px;color:var(--ink-2);line-height:1.3}
+.pessoa-c .quem.nv{font-style:italic;color:var(--mute)}
+.pessoa-c .sit{margin-left:0}
+.pessoa-c .abre{flex:none;border:1px solid var(--axis);background:var(--plane);color:var(--ink);border-radius:999px;padding:3px 10px;font-size:12px;cursor:pointer;white-space:nowrap}
+.pessoa-c .abre:hover{background:var(--grid)}
+.arvore li.raiz > .pessoa-c{padding:12px 14px;border-width:1.5px}
+.arvore li.raiz > .pessoa-c b{font-size:17px}
+.hier-nota{color:var(--mute);font-size:12px;text-align:center;margin:18px auto 0;max-width:720px}
+
 /* ---------- mapa do poder ---------- */
 #folha-poder{background:var(--surface)}
 #folha-poder .conteudo{width:min(1280px,calc(100% - 32px))}
@@ -292,6 +323,9 @@ tbody tr:hover{background:var(--plane)}
   .vista{top:calc(var(--altura-top,120px) + 8px);left:64px;max-width:calc(100% - 80px)}
   .brand small{display:none}
   .chips{order:3;width:100%}
+  .top .acoes{order:2;width:100%;margin-left:0;overflow-x:auto;flex-wrap:nowrap;scrollbar-width:none;-webkit-overflow-scrolling:touch}
+  .top .acoes::-webkit-scrollbar{display:none}
+  .top .acoes .ghost{white-space:nowrap;flex:none}
   .painel{top:auto;left:8px;right:8px;bottom:8px;width:auto;max-height:62vh}
   .legenda{bottom:56px;left:12px}
   .btn-legenda{bottom:12px;left:12px;padding:7px 10px}
@@ -323,6 +357,7 @@ tbody tr:hover{background:var(--plane)}
     <button class="chip" data-poder="essencial" aria-pressed="true" style="--c:var(--ess)"><i class="dot"></i>Funções essenciais</button>
   </div>
   <div class="acoes">
+    <button class="ghost" id="btn-hier" title="Quem manda em quem">Quem manda</button>
     <button class="ghost" id="btn-novidades" title="Últimas notícias e mudanças">Novidades</button>
     <button class="ghost" id="btn-tabela">Tabela</button>
     <button class="ghost" id="btn-sobre" title="Sobre os dados">Sobre</button>
@@ -357,8 +392,8 @@ tbody tr:hover{background:var(--plane)}
 <section class="folha" id="folha-poder" aria-labelledby="poder-titulo">
   <div class="conteudo">
     <button class="ghost fechar" data-fecha="folha-poder">Voltar ao grafo</button>
-    <div class="poder-titulo"><h1 id="poder-titulo">Mapa do poder: quem está no noticiário</h1><p id="poder-sub"></p></div>
-    <div class="poder-abas"><span class="abas" role="group" aria-label="Ver"><button data-poder-aba="pessoas" aria-pressed="true">Pessoas</button><button data-poder-aba="orgaos" aria-pressed="false">Órgãos</button></span></div>
+    <div class="poder-titulo"><h1 id="poder-titulo">Mapa do poder</h1><p id="poder-sub"></p></div>
+    <div class="poder-abas"><span class="abas" role="group" aria-label="Ver"><button data-poder-aba="hierarquia" aria-pressed="true">Quem manda em quem</button><button data-poder-aba="pessoas" aria-pressed="false">No noticiário</button><button data-poder-aba="orgaos" aria-pressed="false">Órgãos</button></span></div>
     <div id="poder-corpo"></div>
   </div>
 </section>
@@ -732,7 +767,11 @@ function desenhar(){
       ctx.restore();
     }
   }
-  // rótulos: aparecem quando o arco disponível para o nó, na tela, comporta o texto
+  // rótulos: candidatos são os nós cujo arco na tela comporta o texto; depois, em ordem de
+  // prioridade, cada rótulo só é desenhado se o seu retângulo (girado) não bater em outro
+  // rótulo já desenhado nem no ícone de um nó importante. Assim nada fica sobreposto; o
+  // que sobra aparece ao aproximar o zoom.
+  const cands = [];
   for (const n of V.ordem) {
     const p = V.pos.get(n.id), s = tela(p);
     if (s.x < -200 || s.y < -60 || s.x > W+200 || s.y > H+60) continue;
@@ -743,18 +782,35 @@ function desenhar(){
     if (!mostra || d === 0) continue;
     let texto = (d >= 3 || (d === 2 && k < .9) || (n.tipo !== 'municipio' && n.tipo !== 'estado' && ((arcoTela < 60 && d >= 2) || (d === 1 && arcoTela < 110)))) ? (n.sigla || n.nome) : n.nome;
     if (d === 1 && n.tipo === 'poder') texto = n.nome.replace(/^Poder /, '').replace(' à Justiça', '');
+    const prio = (n.id === selecionado || n.id === pairado) ? 0 : emFoco ? 1 : 2 + d;
+    cands.push({n, p, s, d, texto, emFoco, prio, arco: arcoTela});
+  }
+  cands.sort((a, b) => a.prio - b.prio || b.arco - a.arco);
+  // obstáculos: os ícones da raiz, dos Poderes e do segundo anel
+  const ocupados = [];
+  const caixa = (cx, cy, w, h, ang) => { const c = Math.cos(ang), sn = Math.sin(ang); return {cx, cy, hw: w/2, hh: h/2, ux: [c, sn], uy: [-sn, c]}; };
+  for (const n of V.ordem) { const p = V.pos.get(n.id); if (p.depth > 2) continue; const s = tela(p); const r = raioNo(n) * escala; ocupados.push(caixa(s.x, s.y, 2*r, 2*r, 0)); }
+  const projeta = (b, ax) => Math.abs(b.ux[0]*ax[0] + b.ux[1]*ax[1]) * b.hw + Math.abs(b.uy[0]*ax[0] + b.uy[1]*ax[1]) * b.hh;
+  const bate = (a, b) => { const dx = b.cx - a.cx, dy = b.cy - a.cy; for (const ax of [a.ux, a.uy, b.ux, b.uy]) { if (Math.abs(dx*ax[0] + dy*ax[1]) > projeta(a, ax) + projeta(b, ax) - 1) return false; } return true; };
+  for (const c of cands) {
+    const {n, p, s, d, texto, emFoco} = c;
     const fontePx = d <= 1 ? Math.max(12, Math.min(15, 13*escala)) : d === 2 ? Math.max(11, Math.min(14, 12*escala)) : Math.max(10, Math.min(13, 11*escala));
     ctx.font = `${d <= 2 && n.tipo !== 'municipio' ? 600 : 500} ${fontePx}px ${css('--font')}`;
+    const larg = ctx.measureText(texto).width + 4, alt = fontePx + 3;
+    const r = raioNo(n)*escala + 6;
+    const poder = d === 1 && V.dados.meta.vista !== 'estado';
+    let bx;
+    if (poder) bx = caixa(s.x, s.y + r + alt/2, larg, alt, 0);                // abaixo do ícone
+    else { const esq = Math.cos(p.ang) < 0; const meio = r + larg/2; bx = caixa(s.x + Math.cos(p.ang)*meio, s.y + Math.sin(p.ang)*meio, larg, alt, p.ang); }
+    const proprio = ocupados.findIndex(o => Math.abs(o.cx - s.x) < .5 && Math.abs(o.cy - s.y) < .5);
+    if (ocupados.some((o, i) => i !== proprio && bate(o, bx)) && c.prio > 1) continue;
+    ocupados.push(bx);
     ctx.fillStyle = emFoco || d <= 2 ? cores.ink : cores.ink2;
     ctx.globalAlpha = alfa(n);
-    const r = raioNo(n)*escala + 6;
     ctx.save();
-    if (d === 1 && V.dados.meta.vista !== 'estado') { // os Poderes: nome sem girar, do lado oposto ao centro
-      const cx = Math.cos(p.ang), sy = Math.sin(p.ang);
-      const x = s.x + cx*(r+2), y = s.y + sy*(r+2);
-      ctx.textAlign = cx > .35 ? 'left' : cx < -.35 ? 'right' : 'center';
-      ctx.textBaseline = sy > .35 ? 'top' : sy < -.35 ? 'bottom' : 'middle';
-      halo(texto, x, y); ctx.fillText(texto, x, y);
+    if (poder) {
+      ctx.textAlign = 'center'; ctx.textBaseline = 'top';
+      halo(texto, s.x, s.y + r); ctx.fillText(texto, s.x, s.y + r);
     } else {
       const esq = Math.cos(p.ang) < 0;
       ctx.translate(s.x, s.y); ctx.rotate(p.ang + (esq ? Math.PI : 0));
@@ -853,7 +909,13 @@ function esconderDica(){ dica.style.display = 'none'; }
 function fmtData(s){ if (!s) return ''; const [a,m,d] = s.split('-'); const meses = ['jan','fev','mar','abr','mai','jun','jul','ago','set','out','nov','dez']; return d ? `${+d} ${meses[+m-1]} ${a}` : m ? `${meses[+m-1]} ${a}` : a; }
 function verbo(t){ return ({nomeia:'nomeia', aprova:'aprova a indicação de', fiscaliza:'fiscaliza', controla:'controla', preside:'preside', elege:'elege membros de', escolhe:'escolhe membros de', orcamento:'aprova o orçamento de', representa:'representa', integra:'integra', orienta:'orienta', julga:'julga', coordena:'coordena', 'organiza eleições':'organiza as eleições de', 'vinculada a':'vincula'})[t] || t; }
 const cap = s => s.charAt(0).toUpperCase() + s.slice(1);
-function blocoCargo(c, titulo){
+const corPoder = poder => ({executivo:'var(--exec)', legislativo:'var(--leg)', judiciario:'var(--jud)', essencial:'var(--ess)'})[poder] || 'var(--axis)';
+const iniciaisNome = nome => String(nome || '').split(/\s+/).filter(p => p.length > 2 && !/^(dos?|das?|de)$/i.test(p)).map(p => p[0]).slice(0, 2).join('').toUpperCase() || '·';
+function rosto(foto, nome, poder, tam = ''){
+  const estilo = `--c:${corPoder(poder)};` + (foto ? `background-image:url('${esc(foto)}')` : '');
+  return `<span class="rosto ${tam}" style="${estilo}" role="img" aria-label="${esc(nome || 'sem foto')}">${foto ? '' : esc(nome ? iniciaisNome(nome) : '?')}</span>`;
+}
+function blocoCargo(c, titulo, poder){
   const sit = c.situacao || (c.ocupante ? 'titular' : 'nao_verificado');
   const badge = sit === 'vago' ? '<span class="sit vago">⚠ Vago</span>' : sit === 'interino' ? '<span class="sit interino">◔ Interino</span>' : '';
   const meta = [c.desde ? 'Desde ' + fmtData(c.desde) : '', c.mandato_ate ? 'mandato até ' + fmtData(c.mandato_ate) : '', c.verificado_em ? 'verificado em ' + fmtData(c.verificado_em) : ''].filter(Boolean).join(' · ');
@@ -862,7 +924,7 @@ function blocoCargo(c, titulo){
   if (sit === 'vago') corpo = `<div class="n">Cargo vago${badge}</div><div class="m">${esc(meta)}${fonte}</div>`;
   else if (c.ocupante) corpo = `<div class="n">${esc(c.ocupante)}${badge}</div><div class="m">${esc(meta)}${fonte}</div>`;
   else corpo = `<div class="n vago">Ocupante não verificado nesta versão</div><div class="m">Preenchido pela ingestão a partir das fontes oficiais.${c.fonte ? ` <a href="${esc(c.fonte)}" target="_blank" rel="noopener">Conferir na fonte</a>` : ''}</div>`;
-  return `<div class="cargo"><div class="t">${esc(c.orgao ? c.orgao + ' · ' : '')}${esc(c.titulo)}</div>${corpo}</div>`;
+  return `<div class="cargo">${rosto(c.foto, c.ocupante, poder)}<div class="txt"><div class="t">${esc(c.orgao ? c.orgao + ' · ' : '')}${esc(c.titulo)}</div>${corpo}</div></div>`;
 }
 const itemNo = (n, extra='') => `<button data-id="${n.id}">${tile(n, 'p')}${esc(n.nome)}<span class="sig">${esc(extra || n.sigla || '')}</span></button>`;
 function selecionar(id, centrar){
@@ -879,11 +941,19 @@ function selecionar(id, centrar){
   let html = '';
   if (n.tipo === 'municipio') {
     html += `<div class="bloco"><p>Município ${esc(V.dados.meta.uf === 'SP' || true ? 'de' : 'de')} ${esc(V.dados.meta.nome)}${n.capital ? ', capital do estado' : ''}. Código IBGE ${esc(n.codigo_ibge)}${n.ddd ? ', DDD ' + esc(n.ddd) : ''}. Tem Prefeitura e Câmara Municipal próprias, e é gestor municipal do SUS (CF, arts. 29 a 31; Lei 8.080/1990).</p></div>`;
-    html += `<div class="bloco"><h3>Cargos de comando</h3>` + (V.dados.meta.cargos_municipio || []).map(c => blocoCargo(c)).join('') + `</div>`;
+    const pf = n.prefeito;
+    if (pf) {
+      const cargoPref = (titulo, nome, urna, partido, extra) => ({titulo, orgao: 'Prefeitura Municipal', ocupante: nome + (urna && urna !== nome ? ` (${urna})` : '') + (partido ? `, ${partido}` : ''), situacao: 'titular', desde: '2025-01-01', mandato_ate: '2028-12-31', fonte: pf.fonte, fonte_nome: 'TSE, resultado de 2024' + (extra || '')});
+      html += `<div class="bloco"><h3>Prefeitura</h3>${blocoCargo(cargoPref('Prefeito(a)', pf.prefeito, pf.nome_urna, pf.partido, pf.turno === 2 ? ', 2º turno' : ''), null, 'executivo')}` +
+        (pf.vice ? blocoCargo(cargoPref('Vice-Prefeito(a)', pf.vice, pf.vice_urna, pf.vice_partido), null, 'executivo') : '') +
+        `<p style="font-size:12px;color:var(--mute);margin:8px 0 0">Eleitos em 2024 segundo o TSE. Cassações e renúncias posteriores não são acompanhadas.</p></div>`;
+    }
+    else html += `<div class="bloco"><h3>Prefeitura</h3><p style="font-size:13px">O resultado oficial do TSE de 2024 não traz eleito definido para este município (candidatura sub judice ou eleição suplementar posterior).</p></div>`;
+    html += `<div class="bloco"><h3>Outros cargos</h3><p style="font-size:13px">Presidente da Câmara Municipal e Secretário(a) Municipal de Saúde ainda não têm fonte nacional confiável; entram quando houver.</p></div>`;
   } else {
     if (n.descricao) html += `<div class="bloco"><p>${esc(n.descricao)}</p></div>`;
     if (n.vista) html += `<div class="bloco"><button class="btn-vista" data-vista="${esc(n.sigla)}">Abrir o mapa de ${esc(n.nome)} ›</button></div>`;
-    if (n.cargo) html += `<div class="bloco"><h3>Cargo de comando</h3>${blocoCargo(n.cargo)}</div>`;
+    if (n.cargo) html += `<div class="bloco"><h3>Cargo de comando</h3>${blocoCargo(n.cargo, null, n.poder)}</div>`;
   }
   const alvoRel = n.tipo === 'municipio' ? n.pai : id;
   const rels = [...V.relIn.get(alvoRel).map(a => ({a, outro: V.porId.get(a.de), dir:'in'})), ...V.relOut.get(alvoRel).map(a => ({a, outro: V.porId.get(a.para), dir:'out'}))];
@@ -1020,7 +1090,8 @@ $('#n-fechar').onclick = () => abrirNovidades(false);
 novidades.addEventListener('click', e => {
   const j = e.target.closest('button[data-janela]'); if (j) { janelaMud = +j.dataset.janela; montarNovidades(); return; }
   const n = e.target.closest('[data-no]'); if (n) { if (vistaAtual !== 'federal') abrirVista('federal', n.dataset.no); else selecionar(n.dataset.no, true); if (W <= 720) abrirNovidades(false); return; }
-  if (e.target.closest('#link-poder') || e.target.closest('#link-poder-p') || e.target.closest('#btn-poder')) { abrirPoder('pessoas'); return; }
+  if (e.target.closest('#link-poder') || e.target.closest('#link-poder-p')) { abrirPoder('pessoas'); return; }
+  if (e.target.closest('#btn-poder')) { abrirPoder('hierarquia'); return; }
   const a = e.target.closest('a[data-sobre]'); if (a) { e.preventDefault(); $('#folha-sobre').classList.add('aberta'); }
 });
 novidades.addEventListener('change', e => { if (e.target.id === 'chk-todas') { mostrarTodas = e.target.checked; montarNovidades(); } });
@@ -1031,7 +1102,45 @@ novidades.addEventListener('change', e => { if (e.target.id === 'chk-todas') { m
 // pessoas ligadas no mapa (quem nomeia quem, presidente da Casa e parlamentares).
 const iniciais = nome => nome.split(/\s+/).filter(p => p.length > 2).map(p => p[0]).slice(0, 2).join('').toUpperCase() || nome.slice(0, 2).toUpperCase();
 const ehParlamentar = r => /^(Deputad|Senador)/.test(r.cargo || '');
-let abaPoder = 'pessoas';
+let abaPoder = 'hierarquia', poderHier = 'executivo';
+const ORDEM_TIPO = ['orgao','ministerio','casa_legislativa','tribunal','forca_armada','agencia_reguladora','autarquia','fundacao','empresa_publica','sociedade_economia_mista','servico_social_autonomo'];
+function arvoreDados(){
+  const dados = V ? V.dados : cacheVistas.get('federal');
+  const por = new Map(dados.nos.map(n => [n.id, n]));
+  const chefe = id => { let n = por.get(id); while (n && n.pai) { const p = por.get(n.pai); if (p && p.cargo) return p.id; n = p; } return null; };
+  const filhos = new Map();
+  const raizes = [];
+  for (const n of dados.nos) {
+    if (!n.cargo || n.tipo === 'municipio') continue;
+    const c = chefe(n.id);
+    if (c && por.get(c).poder === n.poder) { if (!filhos.has(c)) filhos.set(c, []); filhos.get(c).push(n); }
+    else raizes.push(n);
+  }
+  const ordem = (a, b) => (ORDEM_TIPO.indexOf(a.tipo) - ORDEM_TIPO.indexOf(b.tipo)) || a.nome.localeCompare(b.nome, 'pt');
+  for (const l of filhos.values()) l.sort(ordem);
+  raizes.sort((a, b) => (a.id === 'pr' ? -1 : b.id === 'pr' ? 1 : 0) || ordem(a, b));
+  return {raizes, filhos, dados};
+}
+function cartaoPessoa(n, filhos, nivel){
+  const c = n.cargo, fs = filhos.get(n.id) || [];
+  const nome = c.ocupante || (c.situacao === 'vago' ? 'Cargo vago' : 'Ocupante não verificado');
+  const sit = c.situacao === 'interino' ? ' <span class="sit interino">Interino</span>' : c.situacao === 'vago' ? ' <span class="sit vago">Vago</span>' : '';
+  const titulo = c.titulo.replace(/\s*\((o|a)\s[^)]*\)/, '');
+  const aberto = nivel === 0 || fs.length <= 3;
+  return `<li class="${nivel === 0 ? 'raiz' : ''}"><div class="pessoa-c" data-no="${esc(n.id)}" tabindex="0" role="button">${rosto(c.foto, c.ocupante, n.poder, nivel === 0 ? 'g' : 'p')}<span class="txt"><b>${esc(nome)}${sit}</b><span class="quem${c.ocupante ? '' : ' nv'}">${esc(titulo)} · ${esc(n.sigla && n.sigla !== n.nome ? n.sigla : n.nome)}</span></span>` +
+    (fs.length ? `<button class="abre" data-abre="${esc(n.id)}" aria-expanded="${aberto}">${aberto ? '▾' : '▸'} ${fs.length}</button>` : '') + `</div>` +
+    (fs.length ? `<ul data-de="${esc(n.id)}" ${aberto ? '' : 'hidden'}>${fs.map(f => cartaoPessoa(f, filhos, nivel + 1)).join('')}</ul>` : '') + `</li>`;
+}
+function montarHierarquia(){
+  const {raizes, filhos, dados} = arvoreDados();
+  const poderes = [['executivo','Executivo','exec'],['legislativo','Legislativo','leg'],['judiciario','Judiciário','jud'],['essencial','Funções essenciais','ess']].filter(([p]) => raizes.some(r => r.poder === p));
+  if (!poderes.some(([p]) => p === poderHier)) poderHier = poderes[0][0];
+  const lista = raizes.filter(r => r.poder === poderHier);
+  const ocup = dados.nos.filter(n => n.cargo && n.cargo.ocupante).length, total = dados.nos.filter(n => n.cargo).length;
+  return `<div class="hier-poderes" role="group" aria-label="Poder">${poderes.map(([p, t, v]) => `<button data-hier="${p}" aria-pressed="${p === poderHier}" style="--c:var(--${v})"><i></i>${t}</button>`).join('')}</div>` +
+    `<div class="arvore"><ul>${lista.map(r => cartaoPessoa(r, filhos, 0)).join('')}</ul></div>` +
+    `<p class="hier-nota">Cada cargo aparece abaixo de quem está acima dele na estrutura (${dados.meta.vista === 'estado' ? esc(dados.meta.nome) : 'União'}): ${ocup} de ${total} cargos com ocupante e fonte. Clique numa pessoa para abrir o cargo no mapa; no número, para abrir ou fechar os subordinados.</p>`;
+}
 function horasAtras(iso){ return iso ? (Date.now() - new Date(iso).getTime()) / 36e5 : Infinity; }
 function quenteTexto(iso){ const h = horasAtras(iso); if (h > 48) return ''; return h < 1 ? 'No noticiário agora' : h < 24 ? `No noticiário há ${Math.round(h)} h` : 'No noticiário ontem'; }
 function ancestrais(id){ const fed = cacheVistas.get('federal'); if (!fed) return []; const por = new Map(fed.nos.map(n => [n.id, n])); const out = []; let n = por.get(id); while (n && n.pai) { out.push(n.pai); n = por.get(n.pai); } return out; }
@@ -1128,6 +1237,7 @@ function abrirPoder(aba){
   const N = FEED.noticias; const corpo = $('#poder-corpo');
   $('#folha-poder').classList.add('aberta');
   document.querySelectorAll('[data-poder-aba]').forEach(b => b.setAttribute('aria-pressed', String(b.dataset.poderAba === abaPoder)));
+  if (abaPoder === 'hierarquia') { $('#poder-sub').textContent = 'Quem manda em quem: a cadeia de comando, com quem ocupa cada cargo hoje'; corpo.innerHTML = montarHierarquia(); return; }
   if (!N) { $('#poder-sub').textContent = ''; corpo.innerHTML = '<p class="vazio">O agente de notícias ainda não rodou.</p>'; return; }
   const fontes = (N.meta.fontes || []).length;
   const pessoas = (N.ranking.pessoas || []).slice(0, 20);
@@ -1147,10 +1257,14 @@ function abrirPessoa(r){
   if (vistaAtual !== 'federal') abrirVista('federal', r.no_id); else selecionar(r.no_id, true);
 }
 $('#poder-corpo').addEventListener('click', e => {
+  const h = e.target.closest('button[data-hier]'); if (h) { poderHier = h.dataset.hier; abrirPoder(); return; }
+  const ab = e.target.closest('button[data-abre]');
+  if (ab) { const ul = $('#poder-corpo').querySelector(`ul[data-de="${CSS.escape(ab.dataset.abre)}"]`); const abrir = ul.hidden; ul.hidden = !abrir; ab.setAttribute('aria-expanded', String(abrir)); ab.textContent = (abrir ? '▾ ' : '▸ ') + ab.textContent.replace(/^[▾▸]\s*/, ''); return; }
+  const pc = e.target.closest('.pessoa-c[data-no]'); if (pc) { $('#folha-poder').classList.remove('aberta'); selecionar(pc.dataset.no, true); return; }
   const li = e.target.closest('li[data-no]'); if (li) { $('#folha-poder').classList.remove('aberta'); if (vistaAtual !== 'federal') abrirVista('federal', li.dataset.no); else selecionar(li.dataset.no, true); return; }
   const g = e.target.closest('g.pessoa'); if (g) abrirPessoa($('#poder-corpo')._pessoas[+g.dataset.i]);
 });
-$('#poder-corpo').addEventListener('keydown', e => { const g = e.target.closest('g.pessoa'); if (g && (e.key === 'Enter' || e.key === ' ')) { e.preventDefault(); abrirPessoa($('#poder-corpo')._pessoas[+g.dataset.i]); } });
+$('#poder-corpo').addEventListener('keydown', e => { const pc = e.target.closest('.pessoa-c[data-no]'); if (pc && (e.key === 'Enter' || e.key === ' ') && !e.target.closest('button')) { e.preventDefault(); $('#folha-poder').classList.remove('aberta'); selecionar(pc.dataset.no, true); return; } const g = e.target.closest('g.pessoa'); if (g && (e.key === 'Enter' || e.key === ' ')) { e.preventDefault(); abrirPessoa($('#poder-corpo')._pessoas[+g.dataset.i]); } });
 $('#poder-corpo').addEventListener('mouseover', e => {
   const g = e.target.closest('g.pessoa'); const svg = $('#grafo-poder'); if (!svg) return;
   const i = g ? g.dataset.i : null;
@@ -1160,7 +1274,8 @@ $('#poder-corpo').addEventListener('mouseover', e => {
 });
 $('#poder-corpo').addEventListener('mouseleave', () => { const svg = $('#grafo-poder'); if (svg) { svg.querySelectorAll('g.pessoa').forEach(p => p.classList.remove('apagada')); svg.querySelectorAll('line.ativa').forEach(l => l.classList.remove('ativa')); } });
 window.addEventListener('resize', () => { if ($('#folha-poder').classList.contains('aberta') && abaPoder === 'pessoas') abrirPoder(); });
-$('#btn-poder').onclick = () => abrirPoder();
+$('#btn-poder').onclick = () => abrirPoder('hierarquia');
+$('#btn-hier').onclick = () => { abrirNovidades(false); abrirPoder('hierarquia'); };
 
 // ------------------------------------------------------------ painel “Comece por aqui”
 function mostrarInicio(){
@@ -1180,7 +1295,7 @@ function mostrarInicio(){
     <div class="bloco"><h3>Comece por aqui</h3><div class="atalhos">${botoes}
       <label class="estado">${federal ? '<i class="tile" style="--c:var(--uniao);color:var(--surface)">' + svgIcone('pino') + '</i>Meu estado' : '<i class="tile" style="--c:var(--uniao);color:var(--surface)">' + svgIcone('mapa') + '</i>Outro estado'}<select id="sel-uf" aria-label="Escolher um estado"><option value="">escolher…</option>${ufs}</select></label>
     </div></div>
-    <div class="bloco"><button class="btn-vista" data-novidades="1">Ver últimas notícias e mudanças ›</button></div>
+    <div class="bloco" style="display:grid;gap:6px"><button class="btn-vista" data-hierarquia="1">Quem manda em quem ›</button><button class="btn-vista" data-novidades="1" style="background:var(--plane);color:var(--ink);border:1px solid var(--border)">Últimas notícias e mudanças ›</button></div>
     <div class="bloco"><h3>Como ler o mapa</h3><ul class="como">
       <li><i class="tile" style="--c:var(--exec);color:#fff">${svgIcone('bandeira')}</i><span><b>Cor é o Poder.</b> Azul Executivo, laranja Legislativo, verde Judiciário, cinza funções essenciais à Justiça.</span></li>
       <li><i class="tile q" style="--c:var(--ink-2);color:var(--surface)">${svgIcone('escudo_check')}</i><span><b>Ícone é o tipo.</b> Colunas para ministério, balança para tribunal, escudo com visto para agência reguladora. A legenda fica no canto inferior esquerdo, ao lado do zoom.</span></li>
@@ -1192,7 +1307,7 @@ function mostrarInicio(){
   desenhar();
 }
 painel.addEventListener('change', e => { if (e.target.id === 'sel-uf' && e.target.value) abrirVista(e.target.value, `uf-${e.target.value}`); });
-painel.addEventListener('click', e => { if (e.target.closest('button[data-novidades]')) { abrirNovidades(true); if (W <= 720) selecionar(null); } });
+painel.addEventListener('click', e => { if (e.target.closest('button[data-novidades]')) { abrirNovidades(true); if (W <= 720) selecionar(null); } if (e.target.closest('button[data-hierarquia]')) abrirPoder('hierarquia'); });
 painel.addEventListener('click', e => { const a = e.target.closest('a[data-sobre]'); if (a) { e.preventDefault(); $('#folha-sobre').classList.add('aberta'); } });
 $('#btn-ajuda').onclick = () => mostrarInicio();
 

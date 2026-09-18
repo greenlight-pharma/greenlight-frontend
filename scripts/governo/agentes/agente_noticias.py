@@ -200,6 +200,7 @@ def main():
     print("==> pessoas: ocupantes do grafo, deputados e senadores")
     novos_wd = P.preparar_grafo(grafo)
     INDICE.extend(P.indice(grafo))
+    P.sincronizar_fotos_oficiais()
     print(f"    {len(INDICE)} pessoas no índice ({novos_wd} consultas novas ao Wikidata)")
     por_pessoa = {p["id"]: p for p in INDICE}
     existente = ler_json(args.saida, {"artigos": []})

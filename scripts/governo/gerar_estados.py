@@ -35,6 +35,16 @@ from semente import TIPOS, PODERES, SITUACOES  # noqa: E402
 RAIZ = AQUI.parents[1]
 SAIDA = RAIZ / "governo" / "dados" / "estados"
 CSV = AQUI / "dados" / "municipios.csv"
+PREFEITOS = AQUI / "dados" / "prefeitos.json"               # agentes/prefeitos.py (TSE 2024)
+OCUPANTES_ESTADUAIS = AQUI / "dados" / "ocupantes-estaduais.json"   # conferidos em fonte oficial
+
+
+def _ler(p, padrao):
+    return json.loads(p.read_text(encoding="utf-8")) if p.exists() else padrao
+
+
+PREF = _ler(PREFEITOS, {"prefeitos": {}})["prefeitos"]
+OCUP_UF = _ler(OCUPANTES_ESTADUAIS, {"ocupantes": {}})["ocupantes"]
 
 TIPOS = dict(TIPOS, estado="Unidade da Federação", municipio="Município")
 
@@ -175,9 +185,11 @@ def gerar_estado(uf, municipios):
                        descricao=f"{len(municipios)} municípios, cada um com Prefeitura e Câmara Municipal próprias (CF, arts. 29 a 31).",
                        lei="CF, arts. 29 a 31")
         for m in municipios:
+            p = PREF.get(m["codigo_ibge"])
+            prefeito = {k: p.get(k) for k in ("prefeito", "nome_urna", "partido", "vice", "vice_urna", "vice_partido", "turno", "fonte")} if p else None
             no(f"m-{m['codigo_ibge']}", m["nome"], "municipio", "uniao", grupo_mun, "integra",
                codigo_ibge=m["codigo_ibge"], capital=True if m["capital"] == "1" else None,
-               ddd=m["ddd"] or None)
+               ddd=m["ddd"] or None, prefeito=prefeito)
         if sig in TCM_CAPITAL:
             nome_tcm, cod = TCM_CAPITAL[sig]
             no(f"tcm-{sig}", nome_tcm, "tribunal", "legislativo", f"m-{cod}", "auxiliado por", sigla=f"TCM-{sig}",
@@ -198,12 +210,21 @@ def gerar_estado(uf, municipios):
         liga(mp, grupo_mun, "fiscaliza", "Promotorias de Justiça atuam em cada comarca, inclusive sobre os atos municipais.")
         liga(tj, grupo_mun, "julga", "Comarcas da Justiça estadual atendem os municípios.")
 
+    # ocupantes estaduais conferidos em fonte oficial (ver ocupantes-estaduais.json)
+    for n in nos:
+        o = OCUP_UF.get(n["id"])
+        if o and n.get("cargo") and (o.get("ocupante") or o.get("situacao") == "vago"):
+            n["cargo"].update({k: o.get(k) for k in ("ocupante", "situacao", "desde", "mandato_ate", "verificado_em", "fonte", "fonte_nome") if o.get(k) is not None})
+            if o.get("foto"):
+                n["cargo"]["foto"] = o["foto"]
+
     return {
         "meta": {
             "titulo": f"Mapa do Governo · {nome}", "vista": "estado", "uf": sig, "nome": nome,
             "versao": "0.1.0", "gerado_por": "scripts/governo/gerar_estados.py",
             "tipos": TIPOS, "poderes": PODERES, "situacoes": SITUACOES, "cargos_municipio": CARGOS_MUNICIPIO,
-            "aviso": "Instituições conforme a Constituição; ocupantes ainda não verificados. Municípios conforme o IBGE (ver scripts/governo/dados/FONTES.md).",
+            "aviso": "Instituições conforme a Constituição. Ocupantes estaduais conferidos em fonte oficial; prefeitos e vices eleitos em 2024 segundo o TSE. Municípios conforme o IBGE (ver scripts/governo/dados/FONTES.md).",
+            "prefeitos": {"fonte": "TSE, resultados das eleições municipais de 2024", "mandato": "2025 a 2028"},
         },
         "nos": nos, "arestas": arestas,
     }
