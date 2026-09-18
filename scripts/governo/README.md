@@ -65,6 +65,17 @@ sobre a semente (roda no PR semanal, com revisão):
    e-Agendas), tribunais, Ministério Público, Defensoria e órgãos sem cadastro,
    conferidos no site oficial com a URL exata onde o nome aparece.
 
+### Estados e municípios
+
+* `agentes/prefeitos.py`: prefeito e vice eleitos em 2024 nos 5.570 municípios,
+  lidos do site oficial de resultados do TSE (`resultados.tse.jus.br`; o
+  download de dados abertos do TSE devolve 403 para acesso automatizado).
+  Grava `dados/prefeitos.json`, aplicado pelo `gerar_estados.py`.
+* `agentes/juntar_estaduais.py`: junta os ocupantes dos 302 cargos estaduais
+  (governador, vice, Saúde, PM, Polícia Civil, Assembleia, TCE/TCM, TJ, TRE, MP,
+  Defensoria), conferidos um a um no site oficial ou no Diário Oficial de cada
+  estado, em `dados/ocupantes-estaduais.json`. Só entra nome com URL de fonte.
+
 Com o secret `ANTHROPIC_API_KEY`, a Claude (`claude-opus-5`, saída em JSON
 com esquema) escreve o resumo das notícias e confirma o órgão e o nível dos
 atos que as regras não casaram. Sem a chave, tudo sai só pelas regras:
