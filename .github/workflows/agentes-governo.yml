@@ -47,6 +47,7 @@ jobs:
         continue-on-error: true
         env:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          ANTHROPIC_WORKSPACE_ID: ${{ vars.ANTHROPIC_WORKSPACE_ID }}
         run: python3 scripts/governo/agentes/agente_dou.py --dias "${{ github.event.inputs.dias || '3' }}"
 
       - name: Estrutura (SIORG, órgãos criados, extintos e renomeados)
@@ -57,6 +58,7 @@ jobs:
         continue-on-error: true
         env:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          ANTHROPIC_WORKSPACE_ID: ${{ vars.ANTHROPIC_WORKSPACE_ID }}
         run: python3 scripts/governo/agentes/agente_noticias.py
 
       - name: Gravar os feeds

@@ -145,7 +145,9 @@ def resumo_com_claude(artigos, grafo):
                  "mais relevantes sobre estrutura, cargos, nomeações, decisões dos Poderes ou políticas públicas e escreva "
                  "uma frase curta e factual para cada, em português direto, sem adjetivos, citando o órgão pelo nome. "
                  "Em 'artigo' devolva o índice i da matéria; em 'no_id' o id do órgão principal citado (da lista 'nos'), ou null.")
-    client = anthropic.Anthropic()
+    # Chave no nível da organização exige o workspace no cabeçalho (variável do repositório).
+    ws = os.environ.get("ANTHROPIC_WORKSPACE_ID")
+    client = anthropic.Anthropic(default_headers={"anthropic-workspace-id": ws} if ws else None)
     try:
         resposta = client.beta.messages.create(
             model="claude-opus-5", max_tokens=4000,

@@ -309,7 +309,9 @@ def refinar_com_claude(registros, grafo):
         "'Fulano assume a Secretaria X do Ministério Y' ou 'Beltrano deixa o cargo de ...; assume Sicrano'. "
         "Não invente nomes nem cargos: use só o que está no ato."
     )
-    client = anthropic.Anthropic()
+    # Chave no nível da organização exige o workspace no cabeçalho (variável do repositório).
+    ws = os.environ.get("ANTHROPIC_WORKSPACE_ID")
+    client = anthropic.Anthropic(default_headers={"anthropic-workspace-id": ws} if ws else None)
     pedido = {"orgaos": candidatos, "atos": [{k: r[k] for k in ("id", "cargo", "entra", "sai", "interino", "a_pedido", "no_id", "nivel")} for r in alvo]}
     try:
         resposta = client.beta.messages.create(
