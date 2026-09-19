@@ -358,7 +358,7 @@ tbody tr:hover{background:var(--plane)}
   </div>
   <div class="acoes">
     <button class="ghost" id="btn-hier" title="Quem manda em quem">Quem manda</button>
-    <button class="ghost" id="btn-novidades" title="Últimas notícias e mudanças">Novidades</button>
+    <button class="ghost" id="btn-novidades" title="Últimas notícias e mudanças">Últimas notícias</button>
     <button class="ghost" id="btn-tabela">Tabela</button>
     <button class="ghost" id="btn-sobre" title="Sobre os dados">Sobre</button>
     <button class="ghost" id="btn-ajuda" title="Como usar o mapa" aria-label="Como usar o mapa">?</button>
@@ -380,9 +380,9 @@ tbody tr:hover{background:var(--plane)}
 <button class="btn-legenda" id="btn-legenda" aria-expanded="false" aria-controls="legenda">Legenda <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="m6 15 6-6 6 6"/></svg></button>
 <div class="legenda" id="legenda" aria-label="Legenda"></div>
 
-<aside class="novidades" id="novidades" aria-label="Novidades">
+<aside class="novidades" id="novidades" aria-label="Últimas notícias">
   <header>
-    <h2>Novidades</h2>
+    <h2>Últimas notícias</h2>
     <button class="ghost" id="btn-poder">Mapa do poder</button>
     <button class="fechar" id="n-fechar" aria-label="Fechar" style="border:0;background:none;color:var(--mute);font-size:22px;line-height:1;cursor:pointer">×</button>
   </header>
@@ -432,7 +432,7 @@ tbody tr:hover{background:var(--plane)}
     <p>Estrutura sim, pessoas só com fonte. Todo ocupante tem fonte oficial e data de verificação. No Executivo, o nome vem do e-Agendas da CGU, onde toda autoridade federal é obrigada a publicar agenda, e é conferido contra o Diário Oficial: se houve exoneração depois da posse, o nome é descartado. Estatais, tribunais, Ministério Público e Defensoria foram conferidos um a um no site oficial de cada órgão, com o endereço exato onde o nome aparece. Cada cargo tem uma situação explícita: titular, interino ou substituto, vago, ou não verificado. “Vago” é uma afirmação e exige fonte e data. Um campo vazio é melhor que um nome errado.</p>
     <p>Toda segunda-feira, um fluxo automático baixa o SIORG, a Câmara e o Senado, remonta este arquivo, lê a seção 2 do Diário Oficial da União e abre um PR para revisão. Nenhum nome entra sem uma pessoa aprovar.</p>
     <h2>Agentes diários</h2>
-    <p>Todo dia às 7h, três agentes leem as fontes oficiais e alimentam o botão “Novidades”: o do Diário Oficial registra cada nomeação, exoneração e designação assinada pelo Presidente ou pela Casa Civil (seção 2), com link para o ato; o de estrutura compara a foto do SIORG com a do dia anterior e anota órgãos criados, extintos ou renomeados; o de notícias lê a Agência Brasil, a Agência Câmara, a Agência Senado, as notícias do STF e o Planalto, liga cada matéria aos órgãos do mapa e monta o “Mapa do poder”, quem mais aparece no noticiário. Os feeds registram o que as fontes publicaram; o ocupante de um cargo no mapa só muda depois da revisão do PR semanal.</p>
+    <p>Todo dia às 7h, três agentes leem as fontes oficiais e alimentam o botão “Últimas notícias”: o do Diário Oficial registra cada nomeação, exoneração e designação assinada pelo Presidente ou pela Casa Civil (seção 2), com link para o ato; o de estrutura compara a foto do SIORG com a do dia anterior e anota órgãos criados, extintos ou renomeados; o de notícias lê a Agência Brasil, a Agência Câmara, a Agência Senado, as notícias do STF e o Planalto, liga cada matéria aos órgãos do mapa e monta o “Mapa do poder”, quem mais aparece no noticiário. Os feeds registram o que as fontes publicaram; o ocupante de um cargo no mapa só muda depois da revisão do PR semanal.</p>
     <h2>Fontes</h2>
     <ul id="fontes"></ul>
     <h2>O que ainda falta</h2>
@@ -986,6 +986,7 @@ function selecionar(id, centrar){
   $('#p-corpo').innerHTML = html;
   $('#p-rodape').innerHTML = [n.lei ? 'Base legal: ' + esc(n.lei) : '', n.site ? `<a href="${esc(n.site)}" target="_blank" rel="noopener">Site oficial</a>` : '', n.tipo === 'municipio' ? '<a href="https://cidades.ibge.gov.br/brasil/' + esc(V.dados.meta.uf.toLowerCase()) + '/' + esc(norm(n.nome).replace(/[^a-z0-9]+/g,'-')) + '/panorama" target="_blank" rel="noopener">IBGE Cidades</a>' : ''].filter(Boolean).join(' · ') || 'Fonte: semente curada (ver “Sobre os dados”).';
   painel.classList.add('aberto');
+  if (W <= 720) novidades.classList.remove('aberta');   // no celular, um painel de cada vez
   $('#p-corpo').scrollTop = 0;
   if (centrar) centrarEm(id);
   desenhar();
@@ -1037,7 +1038,7 @@ function montarNovidades(){
   const N = FEED.noticias, M = FEED.mudancas;
   let html = '';
   // ---- últimas notícias
-  html += `<section class="secao"><h3>Últimas notícias<small>${N ? 'atualizado ' + esc(relTempo(N.meta.gerado_em)) : ''}</small></h3>`;
+  html += `<section class="secao"><h3>Resumo<small>${N ? 'atualizado ' + esc(relTempo(N.meta.gerado_em)) : ''}</small></h3>`;
   if (N && N.resumo && N.resumo.length) {
     const art = id => (N.artigos || []).find(a => a.id === id);
     html += `<ul class="frases">` + N.resumo.map((f, i) => { const a = art(f.artigo_id); return `<li>${f.no_id ? chipNo(f.no_id) + ' ' : ''}${esc(f.texto)}${a ? `<a class="ref" href="${esc(a.url)}" target="_blank" rel="noopener" title="${esc(FONTES_NOME[a.fonte] || a.fonte)}">${i+1}</a>` : ''}</li>`; }).join('') + `</ul>`;
@@ -1083,7 +1084,7 @@ function montarNovidades(){
 const novidades = $('#novidades');
 function abrirNovidades(aberto){
   novidades.classList.toggle('aberta', aberto);
-  if (aberto) { montarNovidades(); $('#n-corpo').scrollTop = 0; }
+  if (aberto) { montarNovidades(); $('#n-corpo').scrollTop = 0; if (W <= 720 && painel.classList.contains('aberto')) { painel.classList.remove('aberto', 'inicio'); selecionado = null; escreverHash(); desenhar(); } }
 }
 $('#btn-novidades').onclick = () => abrirNovidades(!novidades.classList.contains('aberta'));
 $('#n-fechar').onclick = () => abrirNovidades(false);
