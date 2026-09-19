@@ -620,6 +620,7 @@ function redimensionar(){
 }
 let usuarioMexeu = false; // enquanto o usuário não mexer, o enquadramento acompanha a janela
 const MODO_CARTAO = location.search.includes('cartao');
+const ABRIR = new URLSearchParams(location.search).get('abrir');   // links diretos: quem-manda | noticias | noticiario
 if (MODO_CARTAO) document.body.classList.add('cartao');
 function verTudo(animado=true){
   if (!V) return;
@@ -1372,7 +1373,7 @@ $('#btn-tema').onclick = () => aplicarTema(temaAtual() === 'dark' ? 'light' : 'd
 let lendoHash = false;
 function escreverHash(){
   const h = vistaAtual === 'federal' ? (selecionado || '') : vistaAtual + (selecionado && selecionado !== `uf-${vistaAtual}` ? '/' + selecionado : '');
-  lendoHash = true; history.replaceState(null, '', h ? '#' + h : location.pathname); lendoHash = false;
+  lendoHash = true; history.replaceState(null, '', location.pathname + location.search + (h ? '#' + h : '')); lendoHash = false;
 }
 async function lerHash(){
   if (lendoHash) return;
@@ -1477,6 +1478,11 @@ try {
   const h = decodeURIComponent(location.hash.slice(1)); const [a, b] = h.split('/');
   if (UFS.includes(a)) await abrirVista(a, b || `uf-${a}`, false);
   else { await abrirVista('federal', null, false); if (a && V.porId.has(a)) selecionar(a, true); else if (!MODO_CARTAO) mostrarInicio(); }
+  // links diretos para divulgação: ?abrir=quem-manda | noticias | noticiario
+  const abrir = ABRIR;
+  if (abrir === 'quem-manda') abrirPoder('hierarquia');
+  else if (abrir === 'noticiario') abrirPoder('pessoas');
+  else if (abrir === 'noticias') { painel.classList.remove('aberto', 'inicio'); abrirNovidades(true); }
 } catch (e) {
   status.textContent = 'Não foi possível carregar os dados do mapa.'; console.error(e);
 }
