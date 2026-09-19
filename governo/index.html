@@ -4,15 +4,24 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Mapa do Governo</title>
-<meta name="description" content="Mapa navegável da estrutura do governo federal brasileiro, os três Poderes em um só grafo: Poderes, ministérios, autarquias, agências, tribunais, cargos e as relações entre eles. Quem nomeia quem, quem fiscaliza quem.">
+<meta name="description" content="Quem manda em quem no Brasil: os três Poderes, ministérios, agências, tribunais, os 27 estados e as 5.570 prefeituras em um só mapa, com quem ocupa cada cargo hoje e a fonte oficial. Atualizado todo dia com o Diário Oficial.">
 <meta name="theme-color" content="#0F1F3A">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230F1F3A'/%3E%3Cpath d='M32 32 L16 18 M32 32 L48 18 M32 32 L32 50' stroke='%23C7D8EA' stroke-width='4' stroke-linecap='round'/%3E%3Ccircle cx='32' cy='32' r='7' fill='%23fff'/%3E%3Ccircle cx='16' cy='18' r='5' fill='%232a78d6'/%3E%3Ccircle cx='48' cy='18' r='5' fill='%23eb6834'/%3E%3Ccircle cx='32' cy='50' r='5' fill='%231baf7a'/%3E%3C/svg%3E">
-<link rel="canonical" href="https://mapadogoverno.com.br/">
-<meta property="og:url" content="https://mapadogoverno.com.br/">
+<link rel="canonical" href="https://mapadogoverno.com.br/governo/">
+<meta property="og:url" content="https://mapadogoverno.com.br/governo/">
 <meta property="og:site_name" content="Mapa do Governo">
 <meta property="og:type" content="website">
-<meta property="og:title" content="Mapa do Governo · quem é quem na União, e quem nomeia quem">
-<meta property="og:description" content="Poderes, órgãos, entidades e cargos da União, e as relações entre eles, em um só mapa.">
+<meta property="og:title" content="Mapa do Governo · quem manda em quem no Brasil">
+<meta property="og:description" content="Os três Poderes, os 27 estados e as 5.570 prefeituras em um só mapa, com quem ocupa cada cargo hoje e a fonte oficial. Atualizado todo dia com o Diário Oficial.">
+<meta property="og:locale" content="pt_BR">
+<meta property="og:image" content="https://mapadogoverno.com.br/governo/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Mapa radial do governo brasileiro, com os três Poderes em cores">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Mapa do Governo · quem manda em quem no Brasil">
+<meta name="twitter:description" content="Os três Poderes, os 27 estados e as 5.570 prefeituras em um só mapa, com a fonte oficial de cada cargo.">
+<meta name="twitter:image" content="https://mapadogoverno.com.br/governo/og.png">
 <style>
 :root{
   color-scheme:light;
@@ -317,6 +326,13 @@ tbody tr:hover{background:var(--plane)}
 .kpi b{display:block;font-size:22px;letter-spacing:-.02em}
 .kpi span{font-size:12px;color:var(--mute)}
 .sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+/* ?cartao: modo usado só para gerar og.png (1200x630) */
+body.cartao .top,body.cartao .painel,body.cartao .zoom,body.cartao .btn-legenda,body.cartao .legenda,body.cartao .vista,body.cartao .status,body.cartao .novidades{display:none!important}
+.cartao-titulo{display:none}
+body.cartao .cartao-titulo{display:flex;position:absolute;z-index:9;left:56px;top:0;bottom:0;width:470px;flex-direction:column;justify-content:center;gap:18px}
+.cartao-titulo b{font-size:64px;line-height:1.02;letter-spacing:-.03em}
+.cartao-titulo p{margin:0;font-size:24px;line-height:1.35;color:var(--ink-2)}
+.cartao-titulo span{font-size:22px;font-weight:600;color:var(--exec)}
 
 @media (max-width:720px){
   .top{gap:8px;padding:8px 12px}
@@ -366,6 +382,7 @@ tbody tr:hover{background:var(--plane)}
   </div>
 </div>
 
+<div class="cartao-titulo" aria-hidden="true"><b>Mapa do<br>Governo</b><p>Quem manda em quem no Brasil. Os três Poderes, os 27 estados e as 5.570 prefeituras, com quem ocupa cada cargo e a fonte oficial.</p><span>mapadogoverno.com.br</span></div>
 <canvas id="palco" role="img" aria-label="Mapa radial do governo federal. Use a busca ou a tabela para navegar sem o mouse."></canvas>
 <div class="dica" id="dica" role="tooltip"></div>
 <div class="status" id="status"></div>
@@ -602,8 +619,12 @@ function redimensionar(){
   if (V && !usuarioMexeu) verTudo(false); else desenhar();
 }
 let usuarioMexeu = false; // enquanto o usuário não mexer, o enquadramento acompanha a janela
+const MODO_CARTAO = location.search.includes('cartao');
+const ABRIR = new URLSearchParams(location.search).get('abrir');   // links diretos: quem-manda | noticias | noticiario
+if (MODO_CARTAO) document.body.classList.add('cartao');
 function verTudo(animado=true){
   if (!V) return;
+  if (MODO_CARTAO) { const k = Math.min(W, H) / (2 * (V.maxR + 70)) * 1.08; irPara({x: W - H/2 - 20, y: H/2, k}, false); return; }
   const topo = $('#top').offsetHeight;
   // Num estado, enquadra as instituições; o anel de municípios fica além da borda, à mão.
   const limite = V.dados.meta.vista === 'estado' ? 560 : Infinity;
@@ -1352,7 +1373,7 @@ $('#btn-tema').onclick = () => aplicarTema(temaAtual() === 'dark' ? 'light' : 'd
 let lendoHash = false;
 function escreverHash(){
   const h = vistaAtual === 'federal' ? (selecionado || '') : vistaAtual + (selecionado && selecionado !== `uf-${vistaAtual}` ? '/' + selecionado : '');
-  lendoHash = true; history.replaceState(null, '', h ? '#' + h : location.pathname); lendoHash = false;
+  lendoHash = true; history.replaceState(null, '', location.pathname + location.search + (h ? '#' + h : '')); lendoHash = false;
 }
 async function lerHash(){
   if (lendoHash) return;
@@ -1456,7 +1477,12 @@ try {
   montarSobre(federal);
   const h = decodeURIComponent(location.hash.slice(1)); const [a, b] = h.split('/');
   if (UFS.includes(a)) await abrirVista(a, b || `uf-${a}`, false);
-  else { await abrirVista('federal', null, false); if (a && V.porId.has(a)) selecionar(a, true); else mostrarInicio(); }
+  else { await abrirVista('federal', null, false); if (a && V.porId.has(a)) selecionar(a, true); else if (!MODO_CARTAO) mostrarInicio(); }
+  // links diretos para divulgação: ?abrir=quem-manda | noticias | noticiario
+  const abrir = ABRIR;
+  if (abrir === 'quem-manda') abrirPoder('hierarquia');
+  else if (abrir === 'noticiario') abrirPoder('pessoas');
+  else if (abrir === 'noticias') { painel.classList.remove('aberto', 'inicio'); abrirNovidades(true); }
 } catch (e) {
   status.textContent = 'Não foi possível carregar os dados do mapa.'; console.error(e);
 }
