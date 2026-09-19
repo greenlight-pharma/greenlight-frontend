@@ -1,6 +1,6 @@
 {
  "meta": {
-  "gerado_em": "2026-09-18T11:40+00:00",
+  "gerado_em": "2026-09-19T15:43+00:00",
   "gerado_por": "scripts/governo/agentes/agente_noticias.py",
   "janela_dias": 90,
   "fontes": [
@@ -30,34 +30,34 @@
     "url": "https://www.gov.br/planalto/pt-br/acompanhe-o-planalto/noticias/RSS"
    }
   ],
-  "total_artigos": 1001,
-  "artigos_com_no": 239,
-  "novos_nesta_rodada": 12,
+  "total_artigos": 1055,
+  "artigos_com_no": 262,
+  "novos_nesta_rodada": 10,
   "artigos_por_fonte": {
-   "camara": 318,
-   "agenciabrasil": 81,
-   "senado": 573,
-   "planalto": 26,
-   "stf": 3
+   "agenciabrasil": 116,
+   "stf": 4,
+   "camara": 326,
+   "senado": 583,
+   "planalto": 26
   },
   "ordem": "peso igual por fonte; contagem real de matérias",
   "resumo_por": "manchetes"
  },
  "resumo": [
   {
-   "texto": "Publicações históricas são devolvidas à Biblioteca Nacional",
-   "artigo_id": "n-7d546e7f62",
-   "no_id": "pf"
+   "texto": "Petrobras batiza primeiro navio a navegar com tripulação 100% feminina",
+   "artigo_id": "n-e46472b9fb",
+   "no_id": "petrobras"
   },
   {
-   "texto": "Projeto isenta de carência a concessão de salário-maternidade pelo INSS",
-   "artigo_id": "n-09c1045a7f",
-   "no_id": "stf"
+   "texto": "Projeto cria protocolo para atendimento de pessoas LGBTQIA+ no SUS",
+   "artigo_id": "n-837ac53bfa",
+   "no_id": "ms"
   },
   {
-   "texto": "Senado leva ao ComPública debate sobre combate à desinformação",
-   "artigo_id": "n-37f8c90ecf",
-   "no_id": "camara"
+   "texto": "Áudio: Justiça Eleitoral prepara urnas para eleições de 2026",
+   "artigo_id": "n-aadd9165a4",
+   "no_id": "tse"
   },
   {
    "texto": "Presidente da República acompanha as Ações Integradas para o Enfrentamento ao Crime Organizado no Rio de Janeiro",
@@ -68,184 +68,184 @@
  "ranking": {
   "orgaos": [
    {
-    "id": "tse",
-    "artigos": 28,
-    "peso": 29.72335056581822,
-    "ultima": "2026-09-17T22:16+00:00"
+    "id": "stf",
+    "artigos": 37,
+    "peso": 31.16093181718392,
+    "ultima": "2026-09-18T22:21+00:00"
    },
    {
-    "id": "stf",
-    "artigos": 33,
-    "peso": 28.787739568736644,
-    "ultima": "2026-09-17T20:39+00:00"
+    "id": "tse",
+    "artigos": 31,
+    "peso": 28.102997143158824,
+    "ultima": "2026-09-18T22:21+00:00"
+   },
+   {
+    "id": "camara",
+    "artigos": 49,
+    "peso": 17.73413379073754,
+    "ultima": "2026-09-17T16:12:00+00:00"
    },
    {
     "id": "prf",
     "artigos": 7,
-    "peso": 20.407413871113697,
+    "peso": 17.572133299361663,
     "ultima": "2026-09-17T13:36+00:00"
    },
    {
     "id": "congresso",
     "artigos": 38,
-    "peso": 18.361732053763408,
+    "peso": 17.523045052308873,
     "ultima": "2026-09-17T20:01+00:00"
    },
    {
-    "id": "camara",
-    "artigos": 49,
-    "peso": 17.120069808027928,
-    "ultima": "2026-09-17T16:12:00+00:00"
-   },
-   {
     "id": "caixa",
-    "artigos": 5,
-    "peso": 12.358024691358025,
-    "ultima": "2026-09-17T19:25+00:00"
+    "artigos": 7,
+    "peso": 12.732758620689655,
+    "ultima": "2026-09-19T14:00+00:00"
    },
    {
     "id": "inep",
-    "artigos": 5,
-    "peso": 12.358024691358025,
-    "ultima": "2026-09-16T16:08+00:00"
+    "artigos": 6,
+    "peso": 10.913793103448276,
+    "ultima": "2026-09-18T21:09+00:00"
    },
    {
     "id": "pf",
     "artigos": 10,
-    "peso": 11.982754831620452,
+    "peso": 9.44738865558644,
     "ultima": "2026-09-17T23:41+00:00"
    },
    {
-    "id": "anvisa",
-    "artigos": 6,
-    "peso": 8.743152922753831,
-    "ultima": "2026-09-17T13:20+00:00"
+    "id": "inss",
+    "artigos": 14,
+    "peso": 8.521166950488073,
+    "ultima": "2026-09-18T20:16+00:00"
    },
    {
     "id": "mte",
     "artigos": 1,
-    "peso": 7.699999999999999,
+    "peso": 8.115384615384615,
     "ultima": "2026-08-12T21:09:00+00:00"
    },
    {
     "id": "inpe",
     "artigos": 1,
-    "peso": 7.699999999999999,
+    "peso": 8.115384615384615,
     "ultima": "2026-08-06T22:13:00+00:00"
    },
    {
-    "id": "inss",
-    "artigos": 13,
-    "peso": 6.503253317527744,
-    "ultima": "2026-09-17T20:39+00:00"
+    "id": "ms",
+    "artigos": 8,
+    "peso": 7.5518202066084354,
+    "ultima": "2026-09-18T21:15+00:00"
+   },
+   {
+    "id": "ibge",
+    "artigos": 4,
+    "peso": 7.275862068965517,
+    "ultima": "2026-09-18T15:33+00:00"
+   },
+   {
+    "id": "stj",
+    "artigos": 6,
+    "peso": 7.113296177101654,
+    "ultima": "2026-09-19T12:52+00:00"
+   },
+   {
+    "id": "anvisa",
+    "artigos": 6,
+    "peso": 6.827978011068128,
+    "ultima": "2026-09-17T13:20+00:00"
+   },
+   {
+    "id": "petrobras",
+    "artigos": 6,
+    "peso": 6.542659845034601,
+    "ultima": "2026-09-19T15:37+00:00"
+   },
+   {
+    "id": "mpf",
+    "artigos": 4,
+    "peso": 5.818817649494292,
+    "ultima": "2026-09-18T19:33+00:00"
    },
    {
     "id": "mec",
     "artigos": 5,
-    "peso": 5.991377415810226,
+    "peso": 4.723694327793221,
     "ultima": "2026-09-17T15:48+00:00"
-   },
-   {
-    "id": "petrobras",
-    "artigos": 5,
-    "peso": 5.991377415810226,
-    "ultima": "2026-09-17T13:35+00:00"
-   },
-   {
-    "id": "stj",
-    "artigos": 4,
-    "peso": 4.080113614882623,
-    "ultima": "2026-09-17T21:28+00:00"
    },
    {
     "id": "tcu",
     "artigos": 10,
-    "peso": 4.054232934900722,
+    "peso": 4.189847309768597,
     "ultima": "2026-09-04T14:56:00+00:00"
    },
    {
-    "id": "ms",
-    "artigos": 5,
-    "peso": 3.8691616572942933,
-    "ultima": "2026-09-17T12:44+00:00"
+    "id": "agu",
+    "artigos": 3,
+    "peso": 3.999852132252913,
+    "ultima": "2026-09-18T22:00+00:00"
+   },
+   {
+    "id": "tst",
+    "artigos": 6,
+    "peso": 3.9138891721256774,
+    "ultima": "2026-09-18T20:08+00:00"
    },
    {
     "id": "bndes",
     "artigos": 4,
-    "peso": 3.799943046210622,
+    "peso": 3.1900469765853687,
     "ultima": "2026-09-17T17:19+00:00"
    },
    {
     "id": "cvm",
     "artigos": 2,
-    "peso": 3.1011646866992777,
+    "peso": 2.46620478104506,
     "ultima": "2026-09-17T18:45+00:00"
    },
    {
     "id": "embrapa",
     "artigos": 2,
-    "peso": 3.1011646866992777,
+    "peso": 2.46620478104506,
     "ultima": "2026-09-17T13:01+00:00"
    },
    {
     "id": "secom",
     "artigos": 2,
-    "peso": 2.820994118027277,
+    "peso": 2.1808866150115334,
     "ultima": "2026-09-17T16:12:00+00:00"
-   },
-   {
-    "id": "mpf",
-    "artigos": 2,
-    "peso": 2.820994118027277,
-    "ultima": "2026-09-17T14:37+00:00"
-   },
-   {
-    "id": "mt",
-    "artigos": 1,
-    "peso": 2.471604938271605,
-    "ultima": "2026-09-17T16:52+00:00"
-   },
-   {
-    "id": "fiocruz",
-    "artigos": 1,
-    "peso": 2.471604938271605,
-    "ultima": "2026-09-17T14:05+00:00"
-   },
-   {
-    "id": "inmet",
-    "artigos": 1,
-    "peso": 2.471604938271605,
-    "ultima": "2026-09-17T11:22+00:00"
-   },
-   {
-    "id": "stm",
-    "artigos": 1,
-    "peso": 2.471604938271605,
-    "ultima": "2026-09-16T18:06+00:00"
-   },
-   {
-    "id": "mmulheres",
-    "artigos": 1,
-    "peso": 2.471604938271605,
-    "ultima": "2026-09-12T00:22+00:00"
-   },
-   {
-    "id": "ibge",
-    "artigos": 1,
-    "peso": 2.471604938271605,
-    "ultima": "2026-09-10T22:23+00:00"
    },
    {
     "id": "anp",
     "artigos": 5,
-    "peso": 2.0271164674503606,
+    "peso": 2.0949236548842984,
     "ultima": "2026-09-10T18:13+00:00"
    },
    {
-    "id": "anac",
-    "artigos": 4,
-    "peso": 1.6777272876946887,
-    "ultima": "2026-09-08T17:30:00+00:00"
+    "id": "mps",
+    "artigos": 1,
+    "peso": 1.8189655172413792,
+    "ultima": "2026-09-18T20:16+00:00"
+   },
+   {
+    "id": "ghc",
+    "artigos": 1,
+    "peso": 1.8189655172413792,
+    "ultima": "2026-09-18T12:36+00:00"
+   },
+   {
+    "id": "correios",
+    "artigos": 1,
+    "peso": 1.8189655172413792,
+    "ultima": "2026-09-18T12:15+00:00"
+   },
+   {
+    "id": "mt",
+    "artigos": 1,
+    "peso": 1.8189655172413792,
+    "ultima": "2026-09-17T16:52+00:00"
    }
   ],
   "pessoas": [
@@ -260,9 +260,9 @@
     "uf": null,
     "foto": "https://commons.wikimedia.org/wiki/Special:FilePath/Foto_oficial_de_Luiz_In%C3%A1cio_Lula_da_Silva_%28estreita%29.jpg?width=160",
     "foto_fonte": "https://www.wikidata.org/wiki/Q37181",
-    "artigos": 15,
-    "peso": 17.116050602283273,
-    "ultima": "2026-09-18T11:00+00:00"
+    "artigos": 16,
+    "peso": 18.20065250638413,
+    "ultima": "2026-09-18T19:33+00:00"
    },
    {
     "id": "damares-alves",
@@ -276,8 +276,23 @@
     "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador6335.jpg",
     "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/6335",
     "artigos": 21,
-    "peso": 7.337172774869113,
+    "peso": 7.600343053173241,
     "ultima": "2026-09-16T13:54:00+00:00"
+   },
+   {
+    "id": "flavio-bolsonaro",
+    "nome": "Flávio Bolsonaro",
+    "nome_completo": "Flávio Nantes Bolsonaro",
+    "cargo": "Senador, RJ",
+    "no_id": "senado",
+    "poder": "legislativo",
+    "partido": "PL",
+    "uf": "RJ",
+    "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador5894.jpg",
+    "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/5894",
+    "artigos": 6,
+    "peso": 6.542659845034601,
+    "ultima": "2026-09-19T13:01+00:00"
    },
    {
     "id": "davi-alcolumbre",
@@ -291,23 +306,8 @@
     "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador3830.jpg",
     "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/3830",
     "artigos": 18,
-    "peso": 6.2890052356020965,
+    "peso": 6.514579759862778,
     "ultima": "2026-09-08T14:44:00+00:00"
-   },
-   {
-    "id": "flavio-bolsonaro",
-    "nome": "Flávio Bolsonaro",
-    "nome_completo": "Flávio Nantes Bolsonaro",
-    "cargo": "Senador, RJ",
-    "no_id": "senado",
-    "poder": "legislativo",
-    "partido": "PL",
-    "uf": "RJ",
-    "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador5894.jpg",
-    "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/5894",
-    "artigos": 5,
-    "peso": 5.991377415810226,
-    "ultima": "2026-09-18T10:15+00:00"
    },
    {
     "id": "hugo-motta",
@@ -321,8 +321,23 @@
     "foto": "https://www.camara.leg.br/internet/deputado/bandep/160674.jpg",
     "foto_fonte": "https://www.camara.leg.br/deputados/160674",
     "artigos": 11,
-    "peso": 4.963963252000396,
+    "peso": 5.122404739605805,
     "ultima": "2026-09-08T14:44:00+00:00"
+   },
+   {
+    "id": "edson-fachin",
+    "nome": "Luiz Edson Fachin",
+    "nome_completo": "Edson Fachin",
+    "cargo": "Presidente · STF",
+    "no_id": "stf",
+    "poder": "judiciario",
+    "partido": null,
+    "uf": null,
+    "foto": "https://commons.wikimedia.org/wiki/Special:FilePath/Luiz_Edson_Fachin-12-05.2015.jpg?width=160",
+    "foto_fonte": "https://www.wikidata.org/wiki/Q10320705",
+    "artigos": 4,
+    "peso": 4.361773230023067,
+    "ultima": "2026-09-18T15:06+00:00"
    },
    {
     "id": "paulo-paim",
@@ -336,7 +351,7 @@
     "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador825.jpg",
     "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/825",
     "artigos": 11,
-    "peso": 3.843280977312392,
+    "peso": 3.981132075471698,
     "ultima": "2026-09-17T20:27:00+00:00"
    },
    {
@@ -351,7 +366,7 @@
     "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador5525.jpg",
     "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/5525",
     "artigos": 11,
-    "peso": 3.843280977312392,
+    "peso": 3.981132075471698,
     "ultima": "2026-09-02T23:20:00+00:00"
    },
    {
@@ -366,38 +381,8 @@
     "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador5352.jpg",
     "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/5352",
     "artigos": 10,
-    "peso": 3.49389179755672,
+    "peso": 3.6192109777015435,
     "ultima": "2026-09-14T16:27:00+00:00"
-   },
-   {
-    "id": "edson-fachin",
-    "nome": "Luiz Edson Fachin",
-    "nome_completo": "Edson Fachin",
-    "cargo": "Presidente · STF",
-    "no_id": "stf",
-    "poder": "judiciario",
-    "partido": null,
-    "uf": null,
-    "foto": "https://commons.wikimedia.org/wiki/Special:FilePath/Luiz_Edson_Fachin-12-05.2015.jpg?width=160",
-    "foto_fonte": "https://www.wikidata.org/wiki/Q10320705",
-    "artigos": 3,
-    "peso": 3.170383297782949,
-    "ultima": "2026-09-17T16:26+00:00"
-   },
-   {
-    "id": "paulo-gonet",
-    "nome": "Paulo Gonet",
-    "nome_completo": "Paulo Gonet",
-    "cargo": "Procurador(a)-Geral da República · MPU",
-    "no_id": "mpu",
-    "poder": "essencial",
-    "partido": null,
-    "uf": null,
-    "foto": null,
-    "foto_fonte": null,
-    "artigos": 3,
-    "peso": 3.170383297782949,
-    "ultima": "2026-09-17T14:37+00:00"
    },
    {
     "id": "leila-barros",
@@ -411,7 +396,7 @@
     "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador5979.jpg",
     "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/5979",
     "artigos": 9,
-    "peso": 3.144502617801048,
+    "peso": 3.257289879931389,
     "ultima": "2026-09-10T18:45:00+00:00"
    },
    {
@@ -426,7 +411,7 @@
     "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador5990.jpg",
     "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/5990",
     "artigos": 9,
-    "peso": 3.144502617801048,
+    "peso": 3.257289879931389,
     "ultima": "2026-09-04T21:56:00+00:00"
    },
    {
@@ -441,68 +426,23 @@
     "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador345.jpg",
     "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/345",
     "artigos": 9,
-    "peso": 3.144502617801048,
+    "peso": 3.257289879931389,
     "ultima": "2026-09-03T23:38:00+00:00"
    },
    {
-    "id": "nunes-marques",
-    "nome": "Nunes Marques",
-    "nome_completo": "Nunes Marques",
-    "cargo": "Presidente · TSE",
-    "no_id": "tse",
-    "poder": "judiciario",
+    "id": "paulo-gonet",
+    "nome": "Paulo Gonet",
+    "nome_completo": "Paulo Gonet",
+    "cargo": "Procurador(a)-Geral da República · MPU",
+    "no_id": "mpu",
+    "poder": "essencial",
     "partido": null,
     "uf": null,
-    "foto": "https://commons.wikimedia.org/wiki/Special:FilePath/Nunes_Marques%2C_February_2025_%28cropped%29.jpg?width=160",
-    "foto_fonte": "https://www.wikidata.org/wiki/Q99831978",
-    "artigos": 2,
-    "peso": 2.820994118027277,
-    "ultima": "2026-09-12T20:44+00:00"
-   },
-   {
-    "id": "ze-trovao",
-    "nome": "Zé Trovão",
-    "nome_completo": "Zé Trovão",
-    "cargo": "Deputado(a) federal, SC",
-    "no_id": "camara",
-    "poder": "legislativo",
-    "partido": "PL",
-    "uf": "SC",
-    "foto": "https://www.camara.leg.br/internet/deputado/bandep/220558.jpg",
-    "foto_fonte": "https://www.camara.leg.br/deputados/220558",
-    "artigos": 1,
-    "peso": 2.471604938271605,
-    "ultima": "2026-09-17T22:04+00:00"
-   },
-   {
-    "id": "andrei-augusto-passos-rodrigues",
-    "nome": "Augusto Coutinho",
-    "nome_completo": "Andrei Augusto Passos Rodrigues",
-    "cargo": "Diretor(a)-Geral · PF",
-    "no_id": "pf",
-    "poder": "executivo",
-    "partido": "REPUBLICANOS",
-    "uf": "PE",
-    "foto": "https://www.camara.leg.br/internet/deputado/bandep/160665.jpg",
-    "foto_fonte": "https://www.camara.leg.br/deputados/160665",
-    "artigos": 1,
-    "peso": 2.471604938271605,
-    "ultima": "2026-09-17T13:19+00:00"
-   },
-   {
-    "id": "alexandre-rocha-santos-padilha",
-    "nome": "Alexandre Padilha",
-    "nome_completo": "Alexandre Rocha Santos Padilha",
-    "cargo": "Ministro(a) de Estado · MS",
-    "no_id": "ms",
-    "poder": "executivo",
-    "partido": null,
-    "uf": null,
-    "foto": "https://commons.wikimedia.org/wiki/Special:FilePath/01.01.2023_-_Posse_de_Alexandre_Padilha%2C_Ministro_de_Estado_de_Rela%C3%A7%C3%B5es_Institucionais_%2852625761867%29_%28cropped%29.jpg?width=160",
-    "foto_fonte": "https://www.wikidata.org/wiki/Q4163528",
-    "artigos": 1,
-    "peso": 2.471604938271605,
-    "ultima": "2026-09-16T19:44+00:00"
+    "foto": null,
+    "foto_fonte": null,
+    "artigos": 3,
+    "peso": 2.5428077127816877,
+    "ultima": "2026-09-17T14:37+00:00"
    },
    {
     "id": "astronauta-marcos-pontes",
@@ -516,7 +456,7 @@
     "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador6009.jpg",
     "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/6009",
     "artigos": 7,
-    "peso": 2.4457242582897036,
+    "peso": 2.5334476843910805,
     "ultima": "2026-09-08T15:37:00+00:00"
    },
    {
@@ -531,7 +471,7 @@
     "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador5376.jpg",
     "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/5376",
     "artigos": 7,
-    "peso": 2.4457242582897036,
+    "peso": 2.5334476843910805,
     "ultima": "2026-09-04T00:40:00+00:00"
    },
    {
@@ -546,7 +486,7 @@
     "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador5917.jpg",
     "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/5917",
     "artigos": 7,
-    "peso": 2.4457242582897036,
+    "peso": 2.5334476843910805,
     "ultima": "2026-09-02T19:51:00+00:00"
    },
    {
@@ -561,8 +501,23 @@
     "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador5732.jpg",
     "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/5732",
     "artigos": 5,
-    "peso": 2.3072870361223616,
+    "peso": 2.380241820917825,
     "ultima": "2026-09-02T16:46:00+00:00"
+   },
+   {
+    "id": "nunes-marques",
+    "nome": "Nunes Marques",
+    "nome_completo": "Nunes Marques",
+    "cargo": "Presidente · TSE",
+    "no_id": "tse",
+    "poder": "judiciario",
+    "partido": null,
+    "uf": null,
+    "foto": "https://commons.wikimedia.org/wiki/Special:FilePath/Nunes_Marques%2C_February_2025_%28cropped%29.jpg?width=160",
+    "foto_fonte": "https://www.wikidata.org/wiki/Q99831978",
+    "artigos": 2,
+    "peso": 2.1808866150115334,
+    "ultima": "2026-09-12T20:44+00:00"
    },
    {
     "id": "izalci-lucas",
@@ -576,7 +531,7 @@
     "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador4770.jpg",
     "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/4770",
     "artigos": 6,
-    "peso": 2.0963350785340316,
+    "peso": 2.171526586620926,
     "ultima": "2026-09-17T21:37:00+00:00"
    },
    {
@@ -591,7 +546,7 @@
     "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador6338.jpg",
     "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/6338",
     "artigos": 6,
-    "peso": 2.0963350785340316,
+    "peso": 2.171526586620926,
     "ultima": "2026-09-10T18:45:00+00:00"
    },
    {
@@ -606,12 +561,665 @@
     "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador475.jpg",
     "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/475",
     "artigos": 6,
-    "peso": 2.0963350785340316,
+    "peso": 2.171526586620926,
     "ultima": "2026-09-01T22:31:00+00:00"
+   },
+   {
+    "id": "reginaldo-lopes",
+    "nome": "Reginaldo Lopes",
+    "nome_completo": "Reginaldo Lopes",
+    "cargo": "Deputado(a) federal, MG",
+    "no_id": "camara",
+    "poder": "legislativo",
+    "partido": "PT",
+    "uf": "MG",
+    "foto": "https://www.camara.leg.br/internet/deputado/bandep/74161.jpg",
+    "foto_fonte": "https://www.camara.leg.br/deputados/74161",
+    "artigos": 5,
+    "peso": 2.0949236548842984,
+    "ultima": "2026-09-01T19:56:00+00:00"
+   },
+   {
+    "id": "ze-trovao",
+    "nome": "Zé Trovão",
+    "nome_completo": "Zé Trovão",
+    "cargo": "Deputado(a) federal, SC",
+    "no_id": "camara",
+    "poder": "legislativo",
+    "partido": "PL",
+    "uf": "SC",
+    "foto": "https://www.camara.leg.br/internet/deputado/bandep/220558.jpg",
+    "foto_fonte": "https://www.camara.leg.br/deputados/220558",
+    "artigos": 1,
+    "peso": 1.8189655172413792,
+    "ultima": "2026-09-17T22:04+00:00"
+   },
+   {
+    "id": "andrei-augusto-passos-rodrigues",
+    "nome": "Augusto Coutinho",
+    "nome_completo": "Andrei Augusto Passos Rodrigues",
+    "cargo": "Diretor(a)-Geral · PF",
+    "no_id": "pf",
+    "poder": "executivo",
+    "partido": "REPUBLICANOS",
+    "uf": "PE",
+    "foto": "https://www.camara.leg.br/internet/deputado/bandep/160665.jpg",
+    "foto_fonte": "https://www.camara.leg.br/deputados/160665",
+    "artigos": 1,
+    "peso": 1.8189655172413792,
+    "ultima": "2026-09-17T13:19+00:00"
    }
   ]
  },
  "artigos": [
+  {
+   "id": "n-e46472b9fb",
+   "titulo": "Petrobras batiza primeiro navio a navegar com tripulação 100% feminina",
+   "url": "https://agenciabrasil.ebc.com.br/economia/noticia/2026-09/petrobras-batiza-primeiro-navio-navegar-com-tripulacao-100-feminina",
+   "data": "2026-09-19T15:37+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [
+    "petrobras"
+   ],
+   "pessoas": [],
+   "resumo": "A Petrobras batizou, no Píer Mauá, a embarcação Starnav Elektra, primeira entrega do Programa Mar Aberto, iniciativa voltada para renovação e ampliação da frota da companhia. A embarcação foi construída no Estaleiro Detroit, em Itajaí (SC), e agora segue para operar nas plataformas das bacias petrolíferas brasileiras. Investimento foi de R$ 450 milhões. Notícias relacionadas: Plataforma reúne 228 indicadores para comparar estados brasileiros. Brasil Soberano 3 começa a receber pedidos de empréstimos de empresas. Pix terá novas regras para fraudes, cobrança híbrida e contas-salário. O Starnav é"
+  },
+  {
+   "id": "n-041c553384",
+   "titulo": "Apostas em bets avançam entre jovens e ampliam risco de dependência",
+   "url": "https://agenciabrasil.ebc.com.br/saude/noticia/2026-09/apostas-em-bets-avancam-entre-jovens-e-ampliam-risco-de-dependencia",
+   "data": "2026-09-19T15:21+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "Cada vez mais jovens têm buscado ajuda para largar a dependência de bets, avalia Luiz Carlos*, integrante de um grupo de apoio para pessoas com problemas de jogo, a irmandade Jogadores Anônimos . Segundo ele, já é comum encontrar adolescentes na faixa de 14 anos procurando ajuda para conter o vício. “Hoje quem chega à irmandade é muito jovem. Já chegou até de 14 anos acompanhado pelo psiquiatra. Mas chegam jovens de 15, 16, 19, 20 anos, até 30, 35 anos\", conta ele. Notícias relacionadas: Bets: quatro em cada dez mulheres apostam ou já apostaram online. Prevenção ao suicídio: profissionais de s"
+  },
+  {
+   "id": "n-e2cfedb9d8",
+   "titulo": "Mega-Sena sorteia prêmio de R$ 28 milhões neste domingo",
+   "url": "https://agenciabrasil.ebc.com.br/geral/noticia/2026-09/mega-sena-sorteia-premio-de-r-28-milhoes-neste-domingo",
+   "data": "2026-09-19T14:00+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [
+    "caixa"
+   ],
+   "pessoas": [],
+   "resumo": "A Mega-Sena sorteia neste domingo (20) prêmio estimado em R$ 28 milhões. As seis dezenas do concurso 3.060 serão sorteadas a partir das 11h (horário de Brasília) no Espaço da Sorte, em São Paulo. As apostas podem ser feitas até às 22h (horário de Brasília) de sábado (19) em casas lotéricas credenciadas pela Caixa em todo o país ou pela internet . A aposta simples, com seis dezenas, custa R$ 6. Notícias relacionadas: Bolão de Presidente Venceslau (SP) leva R$ 101 milhões na Mega-Sena. No último concurso, foram sorteados os números 01 - 02 - 07 - 18 - 33 - 35 e u m bolão feito em Presidente Venc"
+  },
+  {
+   "id": "n-72a7541258",
+   "titulo": "Apostas online podem levar ao endividamento rápido, diz pesquisa",
+   "url": "https://agenciabrasil.ebc.com.br/direitos-humanos/noticia/2026-09/apostas-online-podem-levar-ao-endividamento-rapido-diz-pesquisa",
+   "data": "2026-09-19T13:57+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "As apostas online têm gastos anuais de R$ 2,2 bilhões e equivalem a mais de três vezes a movimentação financeira estimada para as compras de Natal. A falsa impressão de ganho rápido de dinheiro pode causar efeitos colaterais aos apostadore, como é o caso do endividamento. O hábito pode acarretar perda de controle, conflitos pessoais e impacto sobre a saúde mental. É o que indica pesquisa do Instituto Fecomércio de Pesquisas e Análises (IFec RJ), feita nos dias 22 a 25 de junho, com 1.024 moradores da Região Metropolitana do Rio de Janeiro. Notícias relacionadas: Cargos de liderança são só 1,5%"
+  },
+  {
+   "id": "n-a23f25f302",
+   "titulo": "Cargos de liderança são só 1,5% das vagas para pessoas com deficiência",
+   "url": "https://agenciabrasil.ebc.com.br/direitos-humanos/noticia/2026-09/cargos-de-lideranca-sao-so-15-das-vagas-para-pessoas-com-deficiencia",
+   "data": "2026-09-19T13:23+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "Apenas 1,5% das vagas destinadas a pessoas com deficiência (PcDs) ofertam posições técnicas e gerenciais, aponta levantamento inédito da startup Egalite. O levantamento considera dados de 116 mil profissionais cadastrados e mais de 19 mil vagas ativas no portal Inclui PcD, da própria startup , especializada em projetos para empregabilidade de pessoas com deficiência. As empresas destinam grande parte das vagas para posições operacionais, que representam 98,5% dos postos de trabalho. Por outro lado, o levantamento aponta que 31% de todas as candidaturas espontâneas desses profissionais são dire"
+  },
+  {
+   "id": "n-8e2b4057ef",
+   "titulo": "Confira a agenda dos presidenciáveis neste fim de semana (19 e 20)",
+   "url": "https://agenciabrasil.ebc.com.br/politica/noticia/2026-09/confira-agenda-dos-presidenciaveis-nesta-fim-de-semana-19-e-20",
+   "data": "2026-09-19T13:01+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [],
+   "pessoas": [
+    "flavio-bolsonaro"
+   ],
+   "resumo": "A agenda dos candidatos à Presidência neste fim de semana inclui sabatinas, atos políticos, caminhadas e panfletagens. Também estão previstas visitas a municípios, participação em eventos e manifestações culturais, além de encontros com empresários e apoiadores e atividades de campanha em diferentes cidades. Augusto Cury (Avante) Participa de sabatina do Jornal da Record, em São Paulo (SP), sábado. Notícias relacionadas: Aposentado ou pensionista que votar não precisará fazer Prova de Vida. Candidatos não poderão ser presos a partir deste sábado. Flávio Bolsonaro (PL) No sábado, faz comícios e"
+  },
+  {
+   "id": "n-4d523b3042",
+   "titulo": "Condenados por violência doméstica terão de passar por reabilitação",
+   "url": "https://agenciabrasil.ebc.com.br/justica/noticia/2026-09/condenados-por-violencia-domestica-terao-de-passar-por-reabilitacao",
+   "data": "2026-09-19T12:52+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [
+    "stj"
+   ],
+   "pessoas": [],
+   "resumo": "O Ministério Público do Estado do Rio de Janeiro (MPRJ) obteve, no Superior Tribunal de Justiça (STJ), decisão favorável que restabelece a obrigatoriedade de participação de condenados por violência doméstica em grupos reflexivos de reeducação. A decisão da 6ª Turma do STJ consolida o entendimento de que a resposta penal nos crimes de violência de gênero deve contemplar não apenas o aspecto punitivo, mas também medidas educativas e preventivas. \"A medida visa transcender o caráter meramente retributivo da sanção e promover espaços de diálogo e reflexão que conduzam à responsabilização do agres"
+  },
+  {
+   "id": "n-88775f48d8",
+   "titulo": "Gabi Terra é destaque do reality Duelo de Guitarras na TV Brasil",
+   "url": "https://agenciabrasil.ebc.com.br/cultura/noticia/2026-09/gabi-terra-e-destaque-do-reality-duelo-de-guitarras-na-tv-brasil",
+   "data": "2026-09-19T12:05+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "A TV Brasil exibe neste sábado (19), às 13h30, episódio inédito do reality musical Duelo de Guitarras, que apresenta o perfil da guitarrista capixaba Gabi Terra e acompanha sua participação nas disputas do programa. Considerada um dos maiores nomes do indie psicodélico no país, a musicista revela criatividade e mostra seu talento ao misturar ritmos e efeitos para expressar o que sente em contato com o som. O projeto autoral My Magical Glowing Lens une psicodelia, rock progressivo e doses de pop-lisérgico. \"É uma magia. As pessoas se entregam muito na performance. É uma catarse junto com a band"
+  },
+  {
+   "id": "n-927ec65fff",
+   "titulo": "Praias de cinco estados vão receber mutirões de limpeza em setembro",
+   "url": "https://agenciabrasil.ebc.com.br/meio-ambiente/noticia/2026-09/praias-de-cinco-estados-vao-receber-mutiroes-de-limpeza-em-setembro",
+   "data": "2026-09-19T11:45+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "Mutirões de limpeza de praias em diferentes pontos do litoral brasileiro estão programados para este mês de setembro. A população poderá participar das ações, que contam com a colaboração de escolas, comunidades, organizações locais, gestores públicos e voluntários. Na manhã deste sábado (19), há ações planejadas em Porto Seguro, Arraial d’Ajuda, Cumuruxatiba e Prado – todos na Bahia –, além de Macaé (RJ) e Maceió. A Praia de Copacabana, no Rio, também vai receber um mutirão. Notícias relacionadas: Comunidade na orla baiana sofre há 100 dias com contaminação da praia. A iniciativa é da Rede de"
+  },
+  {
+   "id": "n-df4f4be1c4",
+   "titulo": "Rui Costa Pimenta quer ampliar direitos trabalhistas e verbas da saúde",
+   "url": "https://agenciabrasil.ebc.com.br/politica/noticia/2026-09/rui-costa-pimenta-quer-ampliar-direitos-trabalhistas-e-verbas-da-saude",
+   "data": "2026-09-19T11:30+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "As propostas de governo do candidato à Presidência da República pelo PCO, Rui Costa Pimenta, dividem-se em 15 temas, com planos em áreas como mercado de trabalho, reforma agrária, habitação e saúde . Na área de saúde, por exemplo, a proposta é garantir mais verbas para a saúde pública, um plano de emergência para construir hospitais e postos de saúde em todo o país e a contratação de profissionais por meio do programa Mais Médicos. >> Veja a íntegra do documento: Plano de governo Rui Costa Pimenta Notícias relacionadas: Sindicalista Rui Costa Pimenta concorrerá à Presidência pelo PCO. A Agênci"
+  },
+  {
+   "id": "n-f4d8f7788d",
+   "titulo": "Caiado promete governo \"transformador\" e reformas estruturais",
+   "url": "https://agenciabrasil.ebc.com.br/politica/noticia/2026-09/caiado-promete-governo-transformador-e-reformas-estruturais",
+   "data": "2026-09-19T11:15+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "O candidato do PSD à Presidência da República, Ronaldo Caiado, promete que, se eleito, implementará um governo e um programa político “transformadores”. Médico e produtor rural, ele foi eleito cinco vezes deputado federal e uma vez senador por Goiás, estado que governou entre 2018 e março de 2026, quando passou a disputar a Presidência. >> Veja a íntegra do documento: Plano de governo Ronaldo Caiado Notícias relacionadas: Ronaldo Caiado é o candidato do PSD à Presidência. A Agência Brasil publica até domingo (20) matérias com os programas de governo de todos os candidatos à Presidência nas ele"
+  },
+  {
+   "id": "n-8bbfd68e59",
+   "titulo": "Renan propõe cortes na Previdência e alterar pisos da saúde e educação",
+   "url": "https://agenciabrasil.ebc.com.br/politica/noticia/2026-09/renan-propoe-cortes-na-previdencia-e-alterar-pisos-da-saude-e-educacao",
+   "data": "2026-09-19T11:00+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "O candidato à Presidência da República do partido Missão, o empresário Renan Santos, apresentou um plano de governo de 51 páginas com propostas que vão desde o fim do Bolsa Família até a tutela federal de municípios considerados “ineficientes”. >> Veja a íntegra do documento: Plano de governo Renan Santos Notícias relacionadas: Renan Santos é candidato do Missão à Presidência da República. A Agência Brasil publica até domingo (20) matérias com os programas de governo de todos os candidatos à Presidência nas eleições deste ano. Os textos serão liberados seguindo a ordem alfabética do nome do ca"
+  },
+  {
+   "id": "n-27b884fbe0",
+   "titulo": "Pesquisa identifica oito planetas candidatos a ter vida extraterrestre",
+   "url": "https://agenciabrasil.ebc.com.br/educacao/noticia/2026-09/pesquisa-identifica-oito-planetas-candidatos-ter-vida-extraterrestre",
+   "data": "2026-09-19T10:00+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "Um pesquisador brasileiro identificou oito planetas localizados fora do Sistema Solar, os chamados exoplanetas, que têm uma possibilidade maior de ter água em estado líquido e, consequentemente, permitir o desenvolvimento de vida. O levantamento foi feito pelo cientista Fábio Calabrio Evangelista da Silva, sob a orientação do professor Marcelo Borges Fernandes, do Observatório Nacional. Silva analisou as informações de mais de 6 mil exoplanetas já descobertos até agora, a partir de um banco de dados da Nasa, a agência espacial estadunidense. Ele examinou informações como raio, densidade e dist"
+  },
+  {
+   "id": "n-95ebba360d",
+   "titulo": "Veja como foi a sexta-feira (18) dos candidatos a presidente",
+   "url": "https://agenciabrasil.ebc.com.br/politica/noticia/2026-09/veja-como-foi-sexta-feira-18-dos-candidatos-presidente",
+   "data": "2026-09-19T01:00+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "A agenda dos presidenciáveis nesta sexta-feira (18) incluiu debates ao vivo, sabatinas e entrevistas para veículos de comunicação, além de visitas a feiras, projeto social e encontro com representantes do setor industrial. >> Veja como foi o dia dos candidatos a presidente Wilson Grassi (Democrata) O candidato Wilson Grassi concedeu entrevista ao jornal O Tempo (MG). Notícias relacionadas: Aposentado ou pensionista que votar não precisará fazer Prova de Vida. Candidatos não poderão ser presos a partir deste sábado. Augusto Cury (Avante) O candidato Augusto Cury participou de debate de presiden"
+  },
+  {
+   "id": "n-ff37bbcbbc",
+   "titulo": "Audiência pública – Responsabilidade na destinação e aplicação de emendas parlamentares",
+   "url": "https://noticias.stf.jus.br/audiencia-publica-responsabilidade-na-fiscalizacao-e-destinacao-de-emendas-parlamentares/",
+   "data": "2026-09-18T22:26+00:00",
+   "fonte": "stf",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "https://portal.stf.jus.br/audienciaPublica/audienciaPublica.asp?tipo=prevista"
+  },
+  {
+   "id": "n-4eea0f167a",
+   "titulo": "Primeira Turma do STF mantém condenação de Eduardo Bolsonaro",
+   "url": "https://agenciabrasil.ebc.com.br/justica/noticia/2026-09/primeira-turma-do-stf-mantem-condenacao-de-eduardo-bolsonaro",
+   "data": "2026-09-18T22:21+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [
+    "stf",
+    "tse"
+   ],
+   "pessoas": [],
+   "resumo": "A Primeira Turma do Supremo Tribunal Federal (STF) rejeitou por unanimidade o recurso do ex-deputado Eduardo Bolsonaro contra a condenação a quatro anos e dois meses anos de prisão no processo do tarifaço. O placar da votação foi de 4 votos a 0. Os votos foram proferidos pelos ministros Flávio Dino, Cristiano Zanin e Cármen Lúcia, além do relator, Alexandre de Moraes. Notícias relacionadas: STF condena Eduardo Bolsonaro a inelegibilidade e a 4 anos de prisão. TSE manda Eduardo Bolsonaro retirar posts de desinformação sobre urnas. O julgamento virtual do caso começou na semana passada e foi fin"
+  },
+  {
+   "id": "n-5f4700cc68",
+   "titulo": "Justiça aumenta indenização a estudantes vítimas de racismo na Uerj",
+   "url": "https://agenciabrasil.ebc.com.br/justica/noticia/2026-09/justica-aumenta-indenizacao-estudantes-vitimas-de-racismo-na-uerj",
+   "data": "2026-09-18T22:08+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "A Justiça do Rio de Janeiro aumentou para R$ 35 mil o valor que a Uerj, a Universidade do Estado do Rio de Janeiro, terá que pagar de indenização individual a três estudantes, por danos morais decorrentes de discriminação racial. De acordo com elas, o crime foi praticado por fiscais em um processo seletivo para o programa de Serviço Social da Residência em Saúde da instituição de ensino. Notícias relacionadas: Luta contra o racismo marca a 12ª Marcha das Mulheres Negras no Rio. “Racismo foi reduzido a chamar alguém de macaco”, critica escritora . O caso aconteceu há dois anos. Na época a Justi"
+  },
+  {
+   "id": "n-546cb774f3",
+   "titulo": "Gilmar Mendes valida reajuste do Bolsa Família",
+   "url": "https://agenciabrasil.ebc.com.br/justica/noticia/2026-09/gilmar-mendes-atende-ao-pedido-da-agu-e-valida-reajuste-do-bolsa-familia",
+   "data": "2026-09-18T22:00+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [
+    "agu",
+    "stf"
+   ],
+   "pessoas": [],
+   "resumo": "O ministro Gilmar Mendes, do Supremo Tribunal Federal (STF), decidiu nesta sexta-feira (18) reconhecer a validade do decreto que permite o reajuste para os benefícios do programa Bolsa Família. Mendes atendeu ao pedido da Advocacia-Geral da União (AGU). Notícias relacionadas: AGU pede que STF reconheça validade do reajuste do Bolsa Família. Para o ministro, o reajuste não afronta as regras eleitorais e representa medida legal para atualizar o piso familiar do programa. “A medida não importa criação de novo benefício, alteração dos critérios de elegibilidade ou ampliação do universo de benefici"
+  },
+  {
+   "id": "n-b080464fcf",
+   "titulo": "AGU pede que STF reconheça validade do reajuste do Bolsa Família",
+   "url": "https://agenciabrasil.ebc.com.br/justica/noticia/2026-09/agu-pede-que-stf-reconheca-validade-do-reajuste-do-bolsa-familia",
+   "data": "2026-09-18T21:32+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [
+    "agu",
+    "stf"
+   ],
+   "pessoas": [],
+   "resumo": "A Advocacia-Geral da União (AGU) pediu ao Supremo Tribunal Federal (STF) o reconhecimento da legalidade do decreto que permite o reajuste para os benefícios do programa Bolsa Família. O reajuste foi anunciado nesta quinta-feira (17) pelo governo federal. O benefício pago pelo programa Bolsa Família será reajustado em 15%, a partir de 1° de outubro. Notícias relacionadas: Bolsa Família é reajustado em 15%; medida vale a partir de outubro. Mendonça rejeita ação contra reajuste do Bolsa Família . O valor mínimo do benefício ficará em R$ 691. Já o valor médio pago chegará a R$ 777. A atualização d"
+  },
+  {
+   "id": "n-eeb2c9b2ea",
+   "titulo": "Ex-vereador Milton Leite se entrega à polícia após operação contra PCC",
+   "url": "https://agenciabrasil.ebc.com.br/politica/noticia/2026-09/ex-vereador-milton-leite-se-entrega-policia-apos-operacao-contra-pcc",
+   "data": "2026-09-18T21:29+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "O ex-vereador e ex-presidente da Câmara Municipal de São Paulo, Milton Leite, do União Brasil, se entregou à polícia na tarde desta sexta-feira (18). Ele compareceu à Delegacia de Investigações Sobre Entorpecentes na cidade de Mogi das Cruzes, Região Metropolitana de São Paulo, acompanhado de um advogado. Leite foi um dos alvos, nesta quinta-feira (18), de uma operação da Polícia Civil e do Ministério Público de São Paulo que investigava a atuação do Primeiro Comando da Capital (PCC) no transporte coletivo paulistano. Ele teve sua prisão temporária decretada. Notícias relacionadas: Candidatos "
+  },
+  {
+   "id": "n-837ac53bfa",
+   "titulo": "Projeto cria protocolo para atendimento de pessoas LGBTQIA+ no SUS",
+   "url": "https://www.camara.leg.br/noticias/1303854-projeto-cria-protocolo-para-atendimento-de-pessoas-lgbtqia-no-sus",
+   "data": "2026-09-18T21:15+00:00",
+   "fonte": "camara",
+   "nos": [
+    "ms"
+   ],
+   "pessoas": [],
+   "resumo": "Geovana Albuquerque/Arquivo Agência Saúde. Projeto tem orientações específicas para o atendimento de pessoas trans, como respeito ao nome social O Projeto de Lei (PL) 3337/26 cria protocolo nacional para orientar o atendimento da população LGBTQIA+ no Sistema Único de Saúde (SUS). O objetivo do documento, a ser elaborado pelo Ministério da Saúde, é padronizar os fluxos de atendimento, incluindo a transferência entre a atenção primária, os serviços especializados e as unidades de referência. A proposta está em análise na Câmara dos Deputados. Alguns pontos do protocolo incluem: respeito à digni"
+  },
+  {
+   "id": "n-afeb8686f9",
+   "titulo": "Cartilha reúne orientações para a redação do Enem 2026",
+   "url": "https://agenciabrasil.ebc.com.br/educacao/noticia/2026-09/cartilha-reune-orientacoes-para-redacao-do-enem-2026",
+   "data": "2026-09-18T21:09+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [
+    "inep"
+   ],
+   "pessoas": [],
+   "resumo": "Os inscritos no Exame Nacional do Ensino Médio (Enem) 2026 já podem consultar a nova edição da cartilha A Redação do Enem 2026 – Cartilha do Participante , que foi disponibilizada nesta sexta-feira (18) para download, no site do Instituto Nacional de Estudos e Pesquisas Educacionais Anísio Teixeira (Inep). Os participantes surdos ou com deficiência auditiva, com Transtorno do Espectro Autista (TEA) ou com dislexia também contam com versões do documento que trazem orientações específicas a estes públicos, no mesmo endereço eletrônico. Notícias relacionadas: Enem 2026: candidatos terão transport"
+  },
+  {
+   "id": "n-396221ae78",
+   "titulo": "Aposentado ou pensionista que votar não precisará fazer Prova de Vida",
+   "url": "https://agenciabrasil.ebc.com.br/geral/noticia/2026-09/aposentado-ou-pensionista-que-votar-nao-precisara-fazer-prova-de-vida",
+   "data": "2026-09-18T20:16+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [
+    "inss",
+    "mps"
+   ],
+   "pessoas": [],
+   "resumo": "Aposentados e pensionistas do Instituto Nacional do Seguro Social (INSS) que comparecerem para votar nas eleições de outubro não precisarão fazer a verificação da Prova de Vida neste ano. De acordo com o Ministério da Previdência Social, a verificação vai ocorrer de forma automática a partir do cruzamento das informações da Justiça Eleitoral com a base de dados do INSS. Notícias relacionadas: Teto de pensionista e aposentado do INSS sobe para R$ 8.475,55 em 2026. Aposentados e pensionistas do INSS podem consultar antecipação do 13º. A Prova de Vida é um procedimento anual cujo objetivo é ident"
+  },
+  {
+   "id": "n-297697308f",
+   "titulo": "Projeto cria quarentena de dez anos para tribunais e agências reguladoras",
+   "url": "https://www.camara.leg.br/noticias/1301324-projeto-cria-quarentena-de-dez-anos-para-tribunais-e-agencias-reguladoras",
+   "data": "2026-09-18T20:08+00:00",
+   "fonte": "camara",
+   "nos": [
+    "tst"
+   ],
+   "pessoas": [],
+   "resumo": "Divulgação/TST Quarentena afeta autoridades que tenham assumido cargos políticos ou decisórios O Projeto de Lei (PL) 2999/26 prevê quarentena de dez anos para a nomeação em tribunais superiores e em agências reguladoras, no caso de autoridades que tenham assumido cargos políticos ou decisórios. A proposta está em análise na Câmara dos Deputados. Nos tribunais, a medida atinge quem exerceu mandato eletivo, cargo de ministro de Estado, secretário estadual ou municipal, dirigente partidário ou cargo comissionado de direção superior. A restrição também alcança funções de assessoramento e coordenaç"
+  },
+  {
+   "id": "n-cc8dcc2664",
+   "titulo": "Lula rebate Trump ao falar sobre retomada de territórios no Rio",
+   "url": "https://agenciabrasil.ebc.com.br/justica/noticia/2026-09/lula-rebate-trump-ao-falar-sobre-retomada-de-territorios-no-rio",
+   "data": "2026-09-18T19:33+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [
+    "mpf"
+   ],
+   "pessoas": [
+    "luiz-inacio-lula-da-silva"
+   ],
+   "resumo": "O presidente da República, Luiz Inácio Lula da Silva, rebateu nesta sexta-feira (18) o presidente dos Estados Unidos (EUA), Donald Trump , que classificou organizações criminosas brasileiras como terroristas e disse que o Brasil não consegue enfrentar as facções. A declaração de Lula ocorreu durante evento oficial no Rio de Janeiro, que reuniu a cúpula da segurança pública nas esferas federal, estadual e municipal. Notícias relacionadas: Rio: MPF vai à Justiça cobrar plano de redução da letalidade policial. Trump cita PCC e CV e diz que Brasil não conseguiu enfrentar facções. Operação combate "
+  },
+  {
+   "id": "n-e98ad925ef",
+   "titulo": "Rio: MPF vai à Justiça cobrar plano de redução da letalidade policial",
+   "url": "https://agenciabrasil.ebc.com.br/direitos-humanos/noticia/2026-09/rio-mpf-vai-justica-cobrar-plano-de-reducao-da-letalidade-policial",
+   "data": "2026-09-18T19:22+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [
+    "mpf"
+   ],
+   "pessoas": [],
+   "resumo": "O Ministério Público Federal (MPF) solicitou à Justiça Federal a concretização do plano para reduzir as mortes por intervenção policial no estado do Rio de Janeiro. O plano é uma determinação da Corte Interamericana de Direitos Humanos (CIDH) de 2017 e cabe ao governo e à União. Na ação, que tramita na 26ª Vara Federal Cível, o MPF pede que os órgãos comprovem de forma detalhada quais são as metas e as políticas de redução da letalidade policial implementadas. Na avaliação do MPF, diante do número recorde de pessoas mortas em ações policiais recentes, como a Operação Contenção, em outubro de 2"
+  },
+  {
+   "id": "n-660514b78b",
+   "titulo": "Nova Constituição e nova gestão: Senado moderno nasceu há 40 anos",
+   "url": "https://www12.senado.leg.br/noticias/infomaterias/2026/09/nova-constituicao-e-nova-gestao-senado-moderno-nasceu-ha-40-anos",
+   "data": "2026-09-18T19:06:00+00:00",
+   "fonte": "senado",
+   "nos": [],
+   "pessoas": [],
+   "resumo": ""
+  },
+  {
+   "id": "n-415c410c80",
+   "titulo": "Eleições: Quem fica e quem sai do Senado",
+   "url": "https://www12.senado.leg.br/noticias/infomaterias/2026/09/eleicoes-quem-fica-e-quem-sai-do-senado",
+   "data": "2026-09-18T19:05:00+00:00",
+   "fonte": "senado",
+   "nos": [],
+   "pessoas": [],
+   "resumo": ""
+  },
+  {
+   "id": "n-356807e016",
+   "titulo": "Projeto prevê ações para combate à evasão de mães do ensino superior",
+   "url": "https://www.camara.leg.br/noticias/1303518-projeto-preve-acoes-para-combate-a-evasao-de-maes-do-ensino-superior",
+   "data": "2026-09-18T18:44+00:00",
+   "fonte": "camara",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "O texto determina que as instituições de ensino superior assegurem flexibilização da jornada acadêmica"
+  },
+  {
+   "id": "n-88c8249c0b",
+   "titulo": "Lei proíbe prisão de candidatos e eleitores durante período de votação",
+   "url": "https://www12.senado.leg.br/noticias/materias/2026/09/18/lei-proibe-prisao-de-candidatos-e-eleitores-durante-periodo-eleitoral",
+   "data": "2026-09-18T18:01:00+00:00",
+   "fonte": "senado",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "A legislação oferece uma espécie de \"imunidade\" para candidatos e eleitores, para que não sejam presos durante as votações. Mas há exceções. Veja a seguir como isso funciona. Os candidatos que concorrem nas eleições de 4 de outubro (1º turno) não podem ser detidos ou presos a partir deste sábado (19). Isso vale até 6 de outubro. A prisão nesse período só pode acontecer em caso de flagrante delito. A proteção está prevista no artigo 236 do Código Eleitoral: os candidatos não podem ser presos a partir de 15 dias antes da eleição até 48 horas depois da votação. A medida também vale para o segundo"
+  },
+  {
+   "id": "n-805fb8465d",
+   "titulo": "Projeto cria regras para gratuidade de justiça a produtores rurais",
+   "url": "https://www.camara.leg.br/noticias/1303762-projeto-cria-regras-para-gratuidade-de-justica-a-produtores-rurais",
+   "data": "2026-09-18T17:34+00:00",
+   "fonte": "camara",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "Depositphotos Medida valerá para demandas relacionadas a crédito O Projeto de Lei 1917/26 estabelece critérios específicos para a concessão do benefício da gratuidade da justiça a produtores rurais. A medida valerá para demandas judiciais sobre prorrogação de crédito rural, renegociação de dívidas, revisão de contratos e financiamentos agropecuários. Conforme o texto em análise na Câmara dos Deputados, as dívidas podem ter sido contraídas com bancos, fornecedores, cooperativas, concessionárias e outros agentes da cadeia produtiva, incluindo as Cédulas de Produto Rural (CPR). Autor da proposta,"
+  },
+  {
+   "id": "n-c94ac50451",
+   "titulo": "STJ mantém condenação da ex-deputada Flordelis a 50 anos de prisão",
+   "url": "https://agenciabrasil.ebc.com.br/justica/noticia/2026-09/stj-mantem-condenacao-da-ex-deputada-flordelis-50-anos-de-prisao",
+   "data": "2026-09-18T17:02+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [
+    "stj"
+   ],
+   "pessoas": [],
+   "resumo": "A Sexta Turma do Superior Tribunal de Justiça (STJ) manteve, por unanimidade, a condenação da ex-deputada Flordelis a 50 anos de prisão pela morte do pastor Anderson do Carmo de Souza, em 2019, quando ele era seu marido. A Corte concordou com decisão do Tribunal de Justiça do Rio de Janeiro , que, em 2022, já havia mantido a condenação da ex-deputada a 50 anos de prisão. Notícias relacionadas: Justiça mantém condenação de 50 anos a ex-deputada Flordelis. Em 2022, Flordelis dos Santos de Souza foi condenada pelo Tribunal do Júri pelos crimes de homicídio triplamente qualificado consumado, homic"
+  },
+  {
+   "id": "n-98128e8f8d",
+   "titulo": "Projeto institui programa de combate ao desperdício de medicamentos no SUS",
+   "url": "https://www.camara.leg.br/noticias/1304303-projeto-institui-programa-de-combate-ao-desperdicio-de-medicamentos-no-sus",
+   "data": "2026-09-18T16:50+00:00",
+   "fonte": "camara",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "Texto está em análise na Câmara dos Deputados"
+  },
+  {
+   "id": "n-ebce963e84",
+   "titulo": "Projeto define critérios para a limpeza de pastagens em áreas rurais consolidadas",
+   "url": "https://www.camara.leg.br/noticias/1302729-projeto-define-criterios-para-a-limpeza-de-pastagens-em-areas-rurais-consolidadas",
+   "data": "2026-09-18T16:15+00:00",
+   "fonte": "camara",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "Jaelson Lucas/Agência de Notícias do Paraná Limpeza para pasto poderá ser feita por autodeclaração O Projeto de Lei 3002/26 estabelece regras para a limpeza de pastagens em áreas rurais consolidadas, disciplina a autodeclaração ambiental de produtores rurais e fixa limites para a atuação de órgãos ambientais. O projeto define limpeza de pastagem como o manejo da vegetação secundária em área previamente ocupada por atividades agrícolas, ou seja, sem desmatamento nem supressão de vegetação nativa. A limpeza de pastagens poderá ser realizada sem autorização ambiental prévia nas seguintes situaçõe"
+  },
+  {
+   "id": "n-4500ada8f9",
+   "titulo": "Projeto anistia famílias que não vacinaram crianças contra Covid-19",
+   "url": "https://www.camara.leg.br/noticias/1303510-projeto-anistia-familias-que-nao-vacinaram-criancas-contra-covid-19",
+   "data": "2026-09-18T16:07+00:00",
+   "fonte": "camara",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "Texto está em análise na Câmara dos Deputados"
+  },
+  {
+   "id": "n-6f5de63367",
+   "titulo": "Áudio: Há 80 anos, Constituição de 1946 marcou retomada democrática no Brasil",
+   "url": "https://www12.senado.leg.br/noticias/audios/2026/09/ha-80-anos-constituicao-de-1946-marcou-retomada-democratica-no-brasil",
+   "data": "2026-09-18T15:44:00+00:00",
+   "fonte": "senado",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "A Constituição de 1946 completa 80 anos de promulgação nesta sexta-feira (18). Elaborada após o fim do Estado Novo, ela marcou a retomada democrática no país — que seria interrompida com o golpe de 1964. Ouça o áudio com a entrevista do consultor legislativo do Senado Gilberto Guerzoni."
+  },
+  {
+   "id": "n-013aac1306",
+   "titulo": "Pessoas com deficiência vivem em piores condições de moradia, diz IBGE",
+   "url": "https://agenciabrasil.ebc.com.br/direitos-humanos/noticia/2026-09/pessoas-com-deficiencia-vivem-em-piores-condicoes-de-moradia-diz-ibge",
+   "data": "2026-09-18T15:33+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [
+    "ibge"
+   ],
+   "pessoas": [],
+   "resumo": "Dados do Censo 2022, divulgados nesta sexta-feira (18) pelo Instituto Brasileiro de Geografia e Estatística (IBGE), mostram que as pessoas com deficiência vivem em moradias com menos estrutura do que aquelas sem deficiência. Um dos aspectos relevantes é o acesso ao esgotamento sanitário. Apenas 59,8% das pessoas com deficiência vivem em residências com fossas ou ligação à rede coletora de esgoto. Entre aqueles que não têm deficiência, o índice é de 63,1%. Notícias relacionadas: Analfabetismo entre jovens e adultos com deficiência é 12 vezes maior. Renda de PCDs equivale a 70% do rendimento de "
+  },
+  {
+   "id": "n-1fab7c87df",
+   "titulo": "Saúde qualifica assistência para prevenir progressão de doença renal",
+   "url": "https://agenciabrasil.ebc.com.br/saude/noticia/2026-09/saude-qualifica-assistencia-para-prevenir-progressao-de-doenca-renal",
+   "data": "2026-09-18T15:26+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [
+    "ms"
+   ],
+   "pessoas": [],
+   "resumo": "O Ministério da Saúde ampliou e qualificou o cuidado especializado a pessoas com doença renal crônica via Sistema Único de Saúde (SUS) , com o objetivo de garantir assistência em tempo adequado, evitar a progressão da doença e reduzir casos graves. Em nota, a pasta informou ter criado, no âmbito do programa Agora Tem Especialistas , uma nova organização do cuidado, que reúne consultas, exames e procedimentos em conjuntos integrados, com valores até 360% superiores aos pagos anteriormente. Notícias relacionadas: Estudo alerta para subdiagnóstico da doença renal crônica no Brasil. Na preparação "
+  },
+  {
+   "id": "n-f24c8ccf18",
+   "titulo": "Áudio: CAS vota projeto da vacina contra herpes-zóster em turno suplementar",
+   "url": "https://www12.senado.leg.br/noticias/audios/2026/09/cas-vota-projeto-da-vacina-contra-herpes-zoster-em-turno-suplementar",
+   "data": "2026-09-18T15:15:00+00:00",
+   "fonte": "senado",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "A Comissão de Assuntos Sociais do Senado aprovou, em 1º de setembro, mudanças no PL 4.426/2025, que prevê a inclusão da vacina contra o herpes-zóster no calendário do SUS. O texto amplia a vacinação gratuita para pessoas a partir dos 50 anos e para maiores de 18 anos com imunossupressão ou outra condição que comprometa o sistema imunológico. Como a proposta foi alterada, o texto ainda terá que passar por uma nova votação na Comissão de Assuntos Sociais antes de seguir para as próximas etapas."
+  },
+  {
+   "id": "n-1ffded0b32",
+   "titulo": "Renda de PCDs equivale a 70% do rendimento de pessoas sem deficiência",
+   "url": "https://agenciabrasil.ebc.com.br/saude/noticia/2026-09/renda-de-pcds-equivale-70-do-rendimento-de-pessoas-sem-deficiencia",
+   "data": "2026-09-18T15:15+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [
+    "ibge"
+   ],
+   "pessoas": [],
+   "resumo": "O rendimento médio do trabalhador com deficiência (R$ 2.053) representava cerca de 70% do rendimento médio daqueles sem deficiência (R$ 2.890), segundo dados do Censo 2022, do Instituto Brasileiro de Geografia e Estatística (IBGE), divulgados nesta sexta-feira (18). “Em todos os grupos de atividades econômicas, as pessoas com deficiência recebiam menos do que as pessoas sem deficiência. Além disso elas também estavam mais concentradas nas atividades que remuneravam menos, que são serviços domésticos, agropecuária e alojamento e alimentação”, explica o pesquisador do IBGE João Hallak Neto. Notí"
+  },
+  {
+   "id": "n-8747908870",
+   "titulo": "Áudio: Urna eletrônica registra cada voto de forma individual",
+   "url": "https://www12.senado.leg.br/noticias/audios/2026/09/urna-eletronica-registra-cada-voto-de-forma-individual",
+   "data": "2026-09-18T15:11:00+00:00",
+   "fonte": "senado",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "As urnas eletrônicas registram cada voto de forma individual. Ou seja, a decisão para algum cargo, como de deputado ou deputada federal, não influencia o voto para presidente da República, por exemplo, já que são todos contabilizados de maneira independente. Neste ano, os cidadãos vão escolher presidente, governadores, senadores e deputados federais, estaduais ou distritais."
+  },
+  {
+   "id": "n-718b0be103",
+   "titulo": "Candidatos não poderão ser presos a partir deste sábado",
+   "url": "https://agenciabrasil.ebc.com.br/politica/noticia/2026-09/candidatos-nao-poderao-ser-presos-partir-deste-sabado",
+   "data": "2026-09-18T15:10+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [
+    "tse"
+   ],
+   "pessoas": [],
+   "resumo": "Candidatas e candidatos que disputam as eleições 2026 não poderão ser presos ou detidos a partir deste sábado (19). A medida é prevista pelo Código Eleitoral, para os 15 dias que antecedem o primeiro turno, marcado para 4 de outubro. Ela valerá até 48 horas após o encerramento da votação. Notícias relacionadas: Justiça Eleitoral rejeita cerca de 1,2 mil registros de candidatura. TRE-RJ distribui mais de 1 milhão de colas eleitorais para dia do voto. TSE vai enviar alertas no e-Título com orientações para eleições. Durante o período de vigência da regra, prisões ou detenções só poderão ocorrer "
+  },
+  {
+   "id": "n-4a506c90d9",
+   "titulo": "Áudio: Parlamentares apresentam 37 emendas à medida provisória que barateia diesel",
+   "url": "https://www12.senado.leg.br/noticias/audios/2026/09/parlamentares-apresentam-37-emendas-a-medida-provisoria-que-barateia-diesel",
+   "data": "2026-09-18T15:07:00+00:00",
+   "fonte": "senado",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "Senadores e deputados federais apresentaram 37 emendas à nova medida provisória que estende subsídio para baratear o óleo diesel de caminhões e outros veículos rodoviários (MP 1.391/2026). Ouça o áudio."
+  },
+  {
+   "id": "n-3415a0f509",
+   "titulo": "Áudio: Presos provisórios votam pela última vez em 2026",
+   "url": "https://www12.senado.leg.br/noticias/audios/2026/09/presos-provisorios-votam-pela-ultima-vez-em-2026",
+   "data": "2026-09-18T15:06:00+00:00",
+   "fonte": "senado",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "Presos que ainda não foram condenados poderão votar pela última vez nas eleições de 2026. A partir das próximas eleições, passará a valer a mudança no Código Eleitoral feita pela Lei Antifacção, que entre outras medidas proíbe o alistamento tanto de presos condenados quanto de provisórios. Mas, na prática, o exercício da cidadania dos presos temporários, que representam quase 50% da população carcerária no Brasil, nunca foi simples."
+  },
+  {
+   "id": "n-e83f149d3e",
+   "titulo": "Defesa de Daniel Vorcaro pede revogação de prisão preventiva a Fachin",
+   "url": "https://agenciabrasil.ebc.com.br/justica/noticia/2026-09/defesa-de-daniel-vorcaro-pede-revogacao-de-prisao-preventiva-fachin",
+   "data": "2026-09-18T15:06+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [
+    "stf"
+   ],
+   "pessoas": [
+    "edson-fachin"
+   ],
+   "resumo": "A defesa do ex-banqueiro Daniel Vorcaro pediu ao presidente do Supremo Tribunal Federal (STF), Edson Fachin, a revogacão da prisão preventiva do dono do antigo banco Master, que é investigado por corrupção de agentes públicos e fraudes financeiras bilionárias. No pedido, a defesa argumenta que as investigações do caso Master foram paralisadas devido ao pedido de vista do ministro Flávio Dino na sessão plenária da última terça-feira (15), quando os ministros deveriam ter analisado a eventual abertura de investigação contra o também ministro Alexandre de Moraes. Notícias relacionadas: Dino manda"
+  },
+  {
+   "id": "n-aadd9165a4",
+   "titulo": "Áudio: Justiça Eleitoral prepara urnas para eleições de 2026",
+   "url": "https://www12.senado.leg.br/noticias/audios/2026/09/justica-eleitoral-prepara-urnas-para-eleicoes-de-2026",
+   "data": "2026-09-18T15:05:00+00:00",
+   "fonte": "senado",
+   "nos": [
+    "tse"
+   ],
+   "pessoas": [],
+   "resumo": "Com mais de 99% dos pedidos de candidatura julgados pela Justiça Eleitoral, os tribunais regionais já podem lacrar o sistema das urnas eletrônicas. O TSE realizou cerimônia para carregar os dados dos 13 candidatos à Presidência, com a presença das entidades fiscalizadoras. Os TREs também deverão, na sequência, realizar cerimônias similares para todos os cargos que serão disputados nas eleições de 2026."
+  },
+  {
+   "id": "n-8feb8396a7",
+   "titulo": "Analfabetismo entre jovens e adultos com deficiência é 12 vezes maior",
+   "url": "https://agenciabrasil.ebc.com.br/educacao/noticia/2026-09/analfabetismo-entre-jovens-e-adultos-com-deficiencia-e-12-vezes-maior",
+   "data": "2026-09-18T15:03+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [
+    "ibge"
+   ],
+   "pessoas": [],
+   "resumo": "A taxa de analfabetismo entre as pessoas com deficiência, de 15 a 29 anos, era 12,2% em 2022, ou seja, 12 vezes maior do que aquela registrada entre os sem deficiência nesta faixa etária (1%). Os dados, do Censo Demográfico de 2022, foram divulgados nesta sexta-feira (18), pelo Instituto Brasileiro de Geografia e Estatística (IBGE). “Sabe-se que, historicamente, elas têm uma taxa de analfabetismo mais elevada do que as pessoas sem deficiência. Parte dessa diferença decorre da maior concentração de pessoas com deficiência entre os idosos, gerações menos escolarizadas do que as gerações atuais. "
+  },
+  {
+   "id": "n-8861083c9a",
+   "titulo": "Estudo aponta esgotamento emocional e burnout de médicos de UTI",
+   "url": "https://agenciabrasil.ebc.com.br/saude/noticia/2026-09/estudo-aponta-esgotamento-emocional-e-burnout-de-medicos-de-uti",
+   "data": "2026-09-18T14:49+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "Quase metade (48,5%) dos médicos que trabalham em unidades de terapia intensiva (UTIs) no Brasil apresenta nível elevado de esgotamento mental e emocional. Além disso, 46,4% desses profissionais relatam baixo grau de satisfação com suas atividades. Os dados fazem parte do Inquérito Nacional sobre a Força de Trabalho Médica das UTIs Brasileiras , conduzido pela Associação de Medicina Intensiva Brasileira (Amib) em parceria com o Conselho Federal de Medicina (CFM). Notícias relacionadas: Saúde estende atuação de 676 médicos especialistas no SUS. Governo identifica 97 médicos falsos de IA no Yout"
+  },
+  {
+   "id": "n-e43672c36a",
+   "titulo": "Pix terá novas regras para fraudes, cobrança híbrida e contas-salário",
+   "url": "https://agenciabrasil.ebc.com.br/economia/noticia/2026-09/pix-tera-novas-regras-para-fraudes-cobranca-hibrida-e-contas-salario",
+   "data": "2026-09-18T14:47+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [
+    "caixa"
+   ],
+   "pessoas": [],
+   "resumo": "O Banco Central anunciou mudanças no regulamento do Pix para ampliar funcionalidades, reforçar a segurança e aperfeiçoar a participação de instituições no sistema. Entre as principais novidades, está a autorização para que o Pix Automático seja usado em contas-salário a partir de julho de 2027. O BC também regulamentou a chamada cobrança híbrida, que reúne boleto e QR Code do Pix no mesmo documento. A finalidade é evitar pagamentos indevidos ou em duplicidade. As regras passam a valer em fevereiro do ano que vem. Notícias relacionadas: Caixa passa a oferecer modalidade de Pix parcelado. BC pro"
+  },
+  {
+   "id": "n-ccdd59e147",
+   "titulo": "Eleições 2026: especialistas analisam desafios em educação, segurança, saúde mental, agronegócio e meio ambiente",
+   "url": "https://www.camara.leg.br/noticias/1305384-eleicoes-2026-especialistas-analisam-desafios-em-educacao-seguranca-saude-mental-agronegocio-e-meio-ambiente",
+   "data": "2026-09-18T13:45+00:00",
+   "fonte": "camara",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "Série da Rádio Câmara reúne entrevistas sobre políticas públicas prioritárias para os próximos anos"
+  },
+  {
+   "id": "n-a9b5343933",
+   "titulo": "SUS vai ofertar canetas emagrecedoras para pacientes com obesidade",
+   "url": "https://agenciabrasil.ebc.com.br/saude/noticia/2026-09/sus-vai-ofertar-canetas-emagrecedoras-para-pacientes-com-obesidade",
+   "data": "2026-09-18T12:36+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [
+    "ghc",
+    "ms"
+   ],
+   "pessoas": [],
+   "resumo": "Medicamentos da classe dos agonistas do receptor GLP 1, popularmente conhecidos como canetas emagrecedoras, serão distribuídos via Sistema Único de Saúde (SUS) para pacientes com obesidade. A oferta, de acordo com o Ministério da Saúde, será feita com base em estudos e na definição de um protocolo clínico. Em nota, a pasta avaliou como positivos os primeiros resultados observados em pacientes com obesidade do Grupo Hospitalar Conceição, da rede pública de Porto Alegre, selecionados desde junho para fazer uso da semaglutida, um dos princípios ativos das canetas emagrecedoras. Notícias relaciona"
+  },
+  {
+   "id": "n-21f66329a2",
+   "titulo": "Confira a agenda dos presidenciáveis nesta sexta-feira (18)",
+   "url": "https://agenciabrasil.ebc.com.br/politica/noticia/2026-09/confira-agenda-dos-presidenciaveis-nesta-sexta-feira-18",
+   "data": "2026-09-18T12:29+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "A agenda dos presidenciáveis nesta sexta-feira (18) inclui debates ao vivo, sabatinas e entrevistas para veículos de comunicação. Também estão previstas visitas a feira e bairro, além de encontro com representantes do setor industrial e em projeto social. Augusto Cury (Avante) Participa de debate ao vivo no YouTube do Metrópoles Notícias relacionadas: Justiça Eleitoral rejeita cerca de 1,2 mil registros de candidatura. TRE-RJ distribui mais de 1 milhão de colas eleitorais para dia do voto. Clariana Barão (DC) Em Caruaru (PE), participa da feira de artesanato e visita o bairro Alto do Moura Edm"
+  },
+  {
+   "id": "n-e32fba36df",
+   "titulo": "Após semana em greve, empregados dos Correios têm dissídio na segunda",
+   "url": "https://agenciabrasil.ebc.com.br/geral/noticia/2026-09/apos-semana-em-greve-empregados-dos-correios-tem-dissidio-na-segunda",
+   "data": "2026-09-18T12:15+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [
+    "correios",
+    "tst"
+   ],
+   "pessoas": [],
+   "resumo": "A greve dos funcionários dos Correios ultrapassou uma semana em todo o país. O julgamento do dissídio coletivo está marcado para segunda-feira (21), às 13h30. O principal impasse está na mudança do plano de saúde. Os trabalhadores contestam a intenção da empresa de migrar sua condição de mantenedora para patrocinadora do CorreiosSaúde. Notícias relacionadas: Greve nos Correios: TST determina manutenção de 80% do efetivo. Trabalhadores dos Correios estão em greve por tempo indeterminado. De acordo com a categoria, essa alteração pode elevar de forma abusiva custos e mensalidades cobrados de fun"
+  },
+  {
+   "id": "n-253095df49",
+   "titulo": "Vídeo: Instituição Fiscal estima déficit em 2027",
+   "url": "https://www12.senado.leg.br/noticias/videos/2026/09/instituicao-fiscal-estima-deficit-em-2027",
+   "data": "2026-09-18T11:56:00+00:00",
+   "fonte": "senado",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "Instituição Fiscal Independente (IFI) do Senado estima déficit nas contas públicas de 2027."
+  },
+  {
+   "id": "n-7fc1cb9f8e",
+   "titulo": "RJ vai criar 5 mil vagas no sistema penitenciário em três anos",
+   "url": "https://agenciabrasil.ebc.com.br/geral/noticia/2026-09/rj-vai-criar-5-mil-vagas-no-sistema-penitenciario-em-tres-anos",
+   "data": "2026-09-18T11:46+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "Acordo entre as áreas de Justiça e segurança pública do Rio pretende criar, em três anos, 5.180 vagas no sistema penitenciário do estado do Rio. Com o pacto, que tem vigência de 11 anos, o Estado ficará encarregado de executar um plano estruturado para criação de, no mínimo, 5.180 novas vagas no sistema prisional ao longo de três anos, de 2026 a 2028. Serão 2.180 vagas em 2026, com acréscimo de módulos em unidades já existentes, 1.500 vagas em 2027 e 1.500 vagas em 2028. Notícias relacionadas: PF faz ação para combater entrada clandestina de eletrônicos no Brasil. Operação combate infiltração "
+  },
   {
    "id": "n-db86e5df5f",
    "titulo": "Projeto cria incentivos para a abate de gado jovem de alta qualidade",
@@ -645,26 +1253,6 @@
    "resumo": "O programa de Leonardo Avalanche, do PRTB, para o cargo de presidente da República propõe o que chama de reconstrução nacional, com a promessa de transformar o Brasil em uma “economia mais dinâmica, produtiva e voltada ao empreendedorismo.” O plano propõe, entre outros pontos, reduzir impostos e zerar a fila do Sistema Único de Saúde. >> Veja a íntegra do documento: Plano de governo Leonardo Avalanche Notícias relacionadas: PRTB troca Marçal por Leonardo Avalanche na disputa à presidência. A Agência Brasil publica até domingo (20) matérias com os programas de governo de todos os candidatos à P"
   },
   {
-   "id": "n-74f518d829",
-   "titulo": "Fim da escala 6x1 e de privatizações é prioridade de Hertz Dias",
-   "url": "https://agenciabrasil.ebc.com.br/politica/noticia/2026-09/fim-da-escala-6x1-e-de-privatizacoes-e-prioridade-de-hertz-dias",
-   "data": "2026-09-18T10:30+00:00",
-   "fonte": "agenciabrasil",
-   "nos": [],
-   "pessoas": [],
-   "resumo": "O enfrentamento à dominação do país por grandes monopólios capitalistas, assim como o fim da escala 6X1 – sem redução de salários, jornada de trabalho de 36 horas –, e a revogação das reformas trabalhista e da Previdência estão entre os principais pontos defendidos pelo professor, integrante do movimento hip-hop , de movimentos sociais e candidato do PSTU à Presidência da República, Hertz Dias. >> Veja a íntegra do documento: Plano de governo Hertz Dias Notícias relacionadas: PSTU tem o professor de história Hertz Dias como presidenciável. A Agência Brasil publica até domingo (20) matérias com"
-  },
-  {
-   "id": "n-c5244b98b4",
-   "titulo": "Pela quinta vez, Brasil põe \"trinca\" nas semifinais da Libertadores",
-   "url": "https://agenciabrasil.ebc.com.br/esportes/noticia/2026-09/pela-quinta-vez-brasil-poe-trinca-nas-semifinais-da-libertadores",
-   "data": "2026-09-18T10:19+00:00",
-   "fonte": "agenciabrasil",
-   "nos": [],
-   "pessoas": [],
-   "resumo": "Pela quinta vez na história, sendo a quarta no atual formato e envolvendo brasileiros, a Libertadores chega às semifinais com três clubes do mesmo país na briga pelo título. A classificação do Flamengo diante do Independiente del Valle (Equador) confirmou a \"trinca\" ao lado de Fluminense e Palmeiras. O \"intruso\" é o Estudiantes (Argentina). Cinco anos atrás, Flamengo, Palmeiras e Atlético-MG tiveram a companhia do Barcelona de Guayaquil entre os semifinalistas, na primeira \"trinca\" brasileira da história. O Rubro-Negro despachou os equatorianos e o Verdão eliminou o Galo. Na final, os paulista"
-  },
-  {
    "id": "n-25a8c2175e",
    "titulo": "Flávio Bolsonaro propõe enxugar Estado e endurecer ações de segurança",
    "url": "https://agenciabrasil.ebc.com.br/politica/noticia/2026-09/flavio-bolsonaro-propoe-enxugar-estado-e-endurecer-acoes-de-seguranca",
@@ -690,6 +1278,16 @@
    "id": "n-23f1ad6b4f",
    "titulo": "Instituto faz comparativo de 228 indicadores dos estados brasileiros",
    "url": "https://agenciabrasil.ebc.com.br/economia/noticia/2026-09/instituto-faz-comparativo-de-228-indicadores-dos-estados-brasileiros",
+   "data": "2026-09-18T02:05+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "Uma iniciativa do Instituto Mobilidade e Desenvolvimento Social (IMDS), lançada nesta quinta-feira (17), reúne dados comparativos de todas as 27 unidades da federação brasileira baseados em 228 indicadores. Os dados são distribuídos em 12 temas: ambiente de negócios; assistência social; atividade econômica; distribuição de renda e pobreza; educação; situação fiscal; habitação; meio ambiente; mercado de trabalho; mobilidade social; saúde e segurança. Em educação, a iniciativa, chamada IMDS – Eleições: Panorama Estadual , por exemplo, mostra que no estado do Ceará, o percentual de alunos do 2º a"
+  },
+  {
+   "id": "n-4568674209",
+   "titulo": "Plataforma reúne 228 indicadores para comparar estados brasileiros",
+   "url": "https://agenciabrasil.ebc.com.br/economia/noticia/2026-09/plataforma-reune-228-indicadores-para-comparar-estados-brasileiros",
    "data": "2026-09-18T02:05+00:00",
    "fonte": "agenciabrasil",
    "nos": [],
