@@ -29,6 +29,7 @@ AQUI = Path(__file__).resolve().parent
 FOTOS = AQUI.parent / "dados" / "fotos.json"
 SUFIXOS = {"filho", "junior", "neto", "sobrinho", "segundo", "terceiro"}
 APELIDOS = {"luiz inacio lula da silva": ["Lula"]}   # apelidos de uma palavra só entram à mão
+FOTOS_OFICIAIS = {}   # pessoa do grafo que também é parlamentar -> (foto oficial, página)
 
 
 def slug(nome):
@@ -125,6 +126,8 @@ def indice(grafo):
             dono = next((q for q in pessoas.values() if mesma_pessoa(q["nome_completo"], p.get("nome_completo") or p["nome"]) or mesma_pessoa(q["nome"], p["nome"])), None)
             if dono:   # já está no grafo (presidente da Casa): herda partido, UF e a foto oficial
                 dono.update(partido=p["partido"], uf=p["uf"], foto=p["foto"] or dono["foto"], foto_fonte=p["fonte"])
+                if p["foto"]:
+                    FOTOS_OFICIAIS[dono["id"]] = (p["foto"], p["fonte"])
                 dono["variantes"] = sorted(set(dono["variantes"]) | set(variantes(p["nome"])))
                 continue
             pid = slug(p["nome"])
@@ -157,7 +160,9 @@ def foto_wikidata(nome, pausa=0.4):
     while ult > 1 and norm(t[ult]) in SUFIXOS:
         ult -= 1
     curto = f"{t[0]} {t[ult]}" if len(t) >= 3 else nome
-    for termo in dict.fromkeys([nome, curto]):
+    # "José Wellington Barroso de Araújo Dias" é conhecido como "Wellington Dias"
+    segundo = f"{t[1]} {t[ult]}" if len(t) >= 3 and norm(t[1]) not in ("de", "da", "do", "dos", "das") else None
+    for termo in [x for x in dict.fromkeys([nome, curto, segundo]) if x]:
         frouxa = termo != nome
         busca = _json("https://www.wikidata.org/w/api.php?" + urllib.parse.urlencode(
             {"action": "wbsearchentities", "search": termo, "language": "pt", "uselang": "pt", "format": "json", "limit": 5}), pausa)
@@ -218,3 +223,14 @@ def completar_fotos(pessoas_rank, limite=30):
     if novos:
         gravar_json(FOTOS, dict(sorted(fotos.items())))
     return novos
+
+
+def sincronizar_fotos_oficiais():
+    """Grava em fotos.json a foto oficial (Câmara/Senado) de quem está no grafo e é parlamentar."""
+    if not FOTOS_OFICIAIS:
+        return 0
+    fotos = ler_json(FOTOS, {})
+    for pid, (url, fonte) in FOTOS_OFICIAIS.items():
+        fotos.setdefault(pid, {}).update(foto_oficial=url, fonte_oficial=fonte)
+    gravar_json(FOTOS, dict(sorted(fotos.items())))
+    return len(FOTOS_OFICIAIS)

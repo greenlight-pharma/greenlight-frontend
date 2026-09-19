@@ -360,6 +360,28 @@ def main():
         aplicar_no_grafo(DADOS / "governo-federal.json")
 
 
+FOTOS = AQUI.parent / "dados" / "fotos.json"
+
+
+def _slug(nome):
+    return re.sub(r"[^a-z0-9]+", "-", norm(nome)).strip("-")
+
+
+def aplicar_fotos(dados):
+    """Foto de cada ocupante: a oficial (Câmara/Senado) se houver, senão a do Wikimedia Commons."""
+    fotos = ler_json(FOTOS, {})
+    n = 0
+    for no in dados["nos"]:
+        c = no.get("cargo") or {}
+        f = fotos.get(_slug(c.get("ocupante") or "")) if c.get("ocupante") else None
+        url = f and (f.get("foto_oficial") or f.get("foto"))
+        if url:
+            c["foto"] = url
+            c["foto_fonte"] = f.get("fonte_oficial") if f.get("foto_oficial") else f.get("fonte")
+            n += 1
+    return n
+
+
 def aplicar(dados, ocupantes=None):
     """Aplica ocupantes.json sobre o grafo (usado pelo montar_grafo.py). Não sobrescreve a semente."""
     ocupantes = ocupantes if ocupantes is not None else ler_json(SAIDA, {"ocupantes": {}}).get("ocupantes", {})
@@ -373,6 +395,7 @@ def aplicar(dados, ocupantes=None):
                  verificado_em=o["verificado_em"][:7], fonte=o["fonte"], fonte_nome=o.get("fonte_nome"),
                  fonte_agente=True)
         n_aplicados += 1
+    aplicar_fotos(dados)
     return n_aplicados
 
 
