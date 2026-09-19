@@ -35,7 +35,7 @@ gerar_estados.py    -> governo/dados/estados/*.json + indice-municipios.json
 Como o "Latest Changes" e o "Power map" da CivLab. Três scripts em
 `agentes/` rodam todo dia às 7h (Brasília) em
 `.github/workflows/agentes-governo.yml` e gravam feeds que o site mostra no
-botão **Novidades** e no **Mapa do poder**:
+botão **Últimas notícias** e no **Mapa do poder**:
 
 | Agente | Fonte | Grava | O que faz |
 |---|---|---|---|
