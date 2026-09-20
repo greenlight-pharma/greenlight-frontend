@@ -1,3 +1,4 @@
+import Whatsapp from '../programas/Whatsapp';
 import { useCallback, useContext, useEffect, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { AppContext } from '../App';
@@ -39,6 +40,7 @@ export default function GestacaoPage() {
     {!r&&!error&&<p>Carregando seu programa…</p>}{!r&&error&&<Button onClick={load}>Tentar novamente</Button>}
     {r&&!g&&<Surface><h2>Vamos começar?</h2><p>Use a data provável do parto ou a idade gestacional que a equipe informou. Você poderá ajustar depois.</p><Button icon="heart" onClick={()=>setEditing(true)}>Ativar programa Gestação</Button><p className="muted small">O programa não altera medicamentos ou envia novas mensagens ao ser ativado.</p></Surface>}
     {g&&<>
+      <Whatsapp phone={phone} id="gestacao" active={g.status==='ativa'}/>
       <div className="row between wrap no-print"><Button className="plain" icon="edit" disabled={busy} onClick={()=>setEditing(true)}>Dados da gestação</Button><Button className="plain" icon="upload" onClick={()=>window.print()}>Resumo para a consulta</Button></div>
       {g.status==='encerrada'&&<Notice tone="info">Programa encerrado. Histórico preservado. Os lembretes dos medicamentos continuam independentes; confira-os na ficha.</Notice>}
       {g.status==='ativa'&&soon.length>0&&<Notice tone="info">{soon.map(c=>`${c.data===hoje()?'Hoje':'Amanhã'} às ${c.hora}: ${c.titulo}`).join('\n')}</Notice>}

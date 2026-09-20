@@ -1,3 +1,6 @@
+import perguntasWhatsapp from './programas/whatsapp-perguntas.json';
+import type {WhatsappState,WhatsappConfig} from './programas/Whatsapp';
+const whatsappDemo=new Map<string,WhatsappState>();
 import type { RegistroPrograma, Programa } from "./programas/model";
 const programasDemo = new Map<string, RegistroPrograma>();
 import type { Registro, Gestacao } from "./gestacao/model";
@@ -8,6 +11,14 @@ const today = new Intl.DateTimeFormat("en-CA", { timeZone: "America/Sao_Paulo" }
 const day = (n: number) => { const d = new Date(today + "T12:00:00Z"); d.setUTCDate(d.getUTCDate() - n); return d.toISOString().slice(0, 10); };
 const family = new URLSearchParams(location.search).get("previa") === "familia";
 export function demoResponse(path: string, method: string, body?: unknown): unknown {
+  if(path.startsWith('/care2/pessoas/')&&path.includes('/whatsapp/')){
+    const id=path.split('/').pop()!;
+    const current=whatsappDemo.get(path)??{data:null,version:0,available:false,questions:(perguntasWhatsapp as Record<string,string[]>)[id],history:[]};
+    if(method==='GET')return current;
+    const input=body as {version:number;data:WhatsappConfig};
+    if(input.version!==current.version)throw new Error('Atualize a prévia antes de salvar.');
+    const next={...current,data:input.data,version:current.version+1};whatsappDemo.set(path,next);return next;
+  }
   if (path.startsWith("/care2/pessoas/") && path.includes("/programas")) {
     if(path.endsWith('/programas')) return {programas:[...programasDemo.entries()].filter(([key])=>key.startsWith(path+'/')).map(([key,r])=>({programa:key.split('/').pop(),status:r.data?.status,objetivo:r.data?.objetivo}))};
     const current=programasDemo.get(path)??{data:null,version:0};
