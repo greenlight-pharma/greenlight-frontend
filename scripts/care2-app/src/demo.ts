@@ -1,3 +1,5 @@
+import type {DailyState} from './programas/Checkin';
+const dailyDemo=new Map<string,DailyState>();
 const measurementDemo=new Map<string, {id:number;tipo:string;scheduleTimes:string;startDate?:string;endDate?:string}[]>();
 import perguntasWhatsapp from './programas/whatsapp-perguntas.json';
 import type {WhatsappState,WhatsappConfig} from './programas/Whatsapp';
@@ -14,6 +16,12 @@ const family = new URLSearchParams(location.search).get("previa") === "familia";
 const initialSetup=new URLSearchParams(location.search).get('inicio')==='1';
 const initialPeople:{id:number;patientPhone:string;patientName:string;activeMedications:number}[]=[];
 export function demoResponse(path: string, method: string, body?: unknown): unknown {
+  if(path.startsWith('/care2/pessoas/')&&path.endsWith('/checkin')){
+    const current=dailyDemo.get(path)??{data:null,version:0,available:false,history:[]};
+    if(method==='GET')return current;
+    const input=body as {version:number;data:NonNullable<DailyState['data']>};
+    const next={...current,data:input.data,version:current.version+1};dailyDemo.set(path,next);return next;
+  }
   if(family&&initialSetup&&path==='/my-patients'&&method==='GET')return initialPeople;
   if(family&&initialSetup&&path==='/patients/manual'&&method==='POST'){
     const d=body as {name:string;phone:string};

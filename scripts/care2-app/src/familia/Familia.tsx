@@ -1,6 +1,6 @@
 import PrimeiroCuidado from './PrimeiroCuidado';
 import { createContext, useCallback, useContext, useEffect, useState } from "react";
-import { NavLink, Route, Routes, useLocation } from "react-router-dom";
+import { NavLink, Route, Routes, useLocation, useNavigate } from "react-router-dom";
 import { api, errorText, session } from "../api";
 import { AppContext, type AppCtx } from "../App";
 import { initials, readPatient, type Patient, type Session, type SubscriptionStatus } from "../models";
@@ -14,7 +14,7 @@ import Conta from "./Conta";
 import NovaPessoa from "./NovaPessoa";
 import Programas from "../programas/Programas";
 import ProgramaRoute from "../programas/Programa";
-import GestacaoPage, { GestacaoHub } from "../gestacao/Gestacao";
+
 
 // ============================================================
 // [PESSOAL] Vytal Care para você e sua família. Mesma conta e mesmo
@@ -34,7 +34,7 @@ export const useFamilia = () => useContext(FamiliaContext);
 export const diasRestantes = (iso: string) => Math.max(0, Math.ceil((new Date(iso).getTime() - Date.now()) / 86400000));
 
 export default function FamilyWorkspace({ session: current }: { session: Session }) {
-  const location=useLocation();
+  const location=useLocation(),navigate=useNavigate();
   const [patients, setPatients] = useState<Patient[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
@@ -70,8 +70,8 @@ export default function FamilyWorkspace({ session: current }: { session: Session
           <Route path="/programas" element={<Programas />} />
           <Route path="/programas/:phone" element={<Programas />} />
           <Route path="/programas/:phone/:programa" element={<ProgramaRoute />} />
-          <Route path="/gestacao" element={<GestacaoHub />} />
-          <Route path="/p/:phone/gestacao" element={<GestacaoPage />} />
+          <Route path="/gestacao" element={<Programas />} />
+          <Route path="/p/:phone/gestacao" element={<ProgramaRoute />} />
           <Route path="/p/:phone" element={<PessoaPage />} />
           <Route path="/p/:phone/receita" element={<Recipe />} />
           <Route path="/p/:phone/resumo" element={<Resumo />} />
@@ -87,7 +87,7 @@ export default function FamilyWorkspace({ session: current }: { session: Session
         <NavLink to="/conta"><Icon name="user" />Conta</NavLink>
       </nav>
     </div>
-    {adding && <NovaPessoa onClose={() => { setAdding(false); void reload(); }} />}
+    {adding && <NovaPessoa onClose={() => { setAdding(false); void reload(); }} onSaved={async phone=>{setAdding(false);await reload();navigate(`/programas/${phone}?inicio=1`);}} />}
   </FamiliaContext.Provider></AppContext.Provider>;
 }
 
@@ -120,5 +120,5 @@ function useApp(): AppCtx {
 
 function ProgramasNav() {
   const {pathname}=useLocation();
-  return <NavLink to="/programas" className={({isActive})=>isActive||pathname.endsWith("/gestacao")?"active":""}><Icon name="list" />Programas</NavLink>;
+  return <NavLink to="/programas" className={({isActive})=>isActive||pathname.endsWith("/gestacao")?"active":""}><Icon name="heart" />Saúde</NavLink>;
 }
