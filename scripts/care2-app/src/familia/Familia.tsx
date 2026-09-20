@@ -1,5 +1,5 @@
 import { createContext, useCallback, useContext, useEffect, useState } from "react";
-import { NavLink, Route, Routes } from "react-router-dom";
+import { NavLink, Route, Routes, useLocation } from "react-router-dom";
 import { api, errorText, session } from "../api";
 import { AppContext, type AppCtx } from "../App";
 import { initials, readPatient, type Patient, type Session, type SubscriptionStatus } from "../models";
@@ -11,6 +11,8 @@ import Resumo from "./Resumo";
 import Avisos from "./Avisos";
 import Conta from "./Conta";
 import NovaPessoa from "./NovaPessoa";
+import Programas from "../programas/Programas";
+import ProgramaRoute from "../programas/Programa";
 import GestacaoPage, { GestacaoHub } from "../gestacao/Gestacao";
 
 // ============================================================
@@ -63,6 +65,9 @@ export default function FamilyWorkspace({ session: current }: { session: Session
         <header className="care2-topbar"><Brand /><p>O cuidado continua. Mesmo em casa.</p><a href="/vytal-care2/">Conhecer o Care ↗</a></header>
         <Routes>
           <Route path="/" element={<Inicio />} />
+          <Route path="/programas" element={<Programas />} />
+          <Route path="/programas/:phone" element={<Programas />} />
+          <Route path="/programas/:phone/:programa" element={<ProgramaRoute />} />
           <Route path="/gestacao" element={<GestacaoHub />} />
           <Route path="/p/:phone/gestacao" element={<GestacaoPage />} />
           <Route path="/p/:phone" element={<PessoaPage />} />
@@ -75,6 +80,7 @@ export default function FamilyWorkspace({ session: current }: { session: Session
       </main>
       <nav className="tabbar" aria-label="Principal">
         <NavLink to="/" end><Icon name="home" />Início</NavLink>
+        <ProgramasNav />
         <NavLink to="/avisos"><span style={{ position: "relative" }}><Icon name="alert" />{naoLidos > 0 && <span className="badge-dot" aria-label={`${naoLidos} avisos novos`} />}</span>Avisos</NavLink>
         <NavLink to="/conta"><Icon name="user" />Conta</NavLink>
       </nav>
@@ -91,6 +97,7 @@ function Lateral() {
     <Brand />
     <nav className="nav" aria-label="Principal">
       <NavLink to="/" end><Icon name="home" />Início</NavLink>
+      <ProgramasNav />
       <NavLink to="/avisos"><Icon name="alert" />Avisos{naoLidos > 0 && <span className="chip bad" style={{ marginLeft: "auto" }}>{naoLidos}</span>}</NavLink>
       <NavLink to="/conta"><Icon name="user" />Conta</NavLink>
     </nav>
@@ -107,4 +114,9 @@ function useApp(): AppCtx {
   const c = useContext(AppContext);
   if (!c) throw new Error("fora do app");
   return c;
+}
+
+function ProgramasNav() {
+  const {pathname}=useLocation();
+  return <NavLink to="/programas" className={({isActive})=>isActive||pathname.endsWith("/gestacao")?"active":""}><Icon name="list" />Programas</NavLink>;
 }

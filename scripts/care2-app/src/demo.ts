@@ -1,3 +1,5 @@
+import type { RegistroPrograma, Programa } from "./programas/model";
+const programasDemo = new Map<string, RegistroPrograma>();
 import type { Registro, Gestacao } from "./gestacao/model";
 const gestacoes = new Map<string, Registro>();
 // Dados sintéticos para ver o desenho sem conta. Só existe em desenvolvimento
@@ -6,6 +8,14 @@ const today = new Intl.DateTimeFormat("en-CA", { timeZone: "America/Sao_Paulo" }
 const day = (n: number) => { const d = new Date(today + "T12:00:00Z"); d.setUTCDate(d.getUTCDate() - n); return d.toISOString().slice(0, 10); };
 const family = new URLSearchParams(location.search).get("previa") === "familia";
 export function demoResponse(path: string, method: string, body?: unknown): unknown {
+  if (path.startsWith("/care2/pessoas/") && path.includes("/programas")) {
+    if(path.endsWith('/programas')) return {programas:[...programasDemo.entries()].filter(([key])=>key.startsWith(path+'/')).map(([key,r])=>({programa:key.split('/').pop(),status:r.data?.status,objetivo:r.data?.objetivo}))};
+    const current=programasDemo.get(path)??{data:null,version:0};
+    if(method==='GET')return current;
+    const input=body as {version:number;data:Programa};
+    if(input.version!==current.version)throw new Error('Prévia atualizada em outra tela. Recarregue.');
+    const next={data:input.data,version:current.version+1};programasDemo.set(path,next);return next;
+  }
   if (path.startsWith("/care2/pessoas/") && path.endsWith("/gestacao")) {
     const current = gestacoes.get(path) ?? { data: null, version: 0 };
     if (method === "GET") return current;

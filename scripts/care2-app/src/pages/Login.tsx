@@ -18,7 +18,7 @@ const BENEFITS_FAMILIA = [
   ["wa", "O lembrete chega no WhatsApp", "Sem instalar nada. É só tocar em “Já tomei”."],
   ["alert", "Você fica sabendo", "Se uma dose não for confirmada ou a pressão sair da faixa, você recebe um aviso."],
 ];
-const abrirComoFamilia = () => (location.pathname.endsWith("/familia") || location.pathname.endsWith("/gestacao")) || new URLSearchParams(location.search).get("para") === "familia";
+const abrirComoFamilia = () => (location.pathname.endsWith("/familia") || location.pathname.endsWith("/gestacao") || location.pathname.includes("/programas")) || new URLSearchParams(location.search).get("para") === "familia";
 
 export default function Login({ message }: { message?: string }) {
   const [familia, setFamilia] = useState(true);
