@@ -9,6 +9,7 @@ import MedicationEditor from "../pages/MedicationEditor";
 import MeasurementEditor from "../pages/MeasurementEditor";
 import { useFamilia } from "./Familia";
 import { AvisoLinha } from "./Avisos";
+import { GestacaoEntry } from "../gestacao/Gestacao";
 
 export type Faixa = { pressaoSistolica: number; pressaoDiastolica: number; glicemiaAlta: number; glicemiaBaixa: number };
 export type Medicao = { id: number; tipo: "pressao" | "glicemia"; sistolica?: number | null; diastolica?: number | null; valor?: number | string | null; medidoEm: string };
@@ -67,6 +68,7 @@ function Detalhe({ pessoa }: { pessoa: Patient }) {
         {menu && <Menu onClose={() => setMenu(false)} items={[{ label: "Resumo para a consulta", onSelect: () => navigate(`/p/${pessoa.phone}/resumo`) }, { label: `Remover ${primeiro}`, danger: true, onSelect: () => setRemover(true) }]} />}
       </div>
     </div>
+    <GestacaoEntry phone={pessoa.phone} />
     {pessoa.optOut && <Notice tone="warn"><b>{primeiro} pediu para não receber mensagens.</b>{"\n"}Os lembretes ficam salvos, mas nada é enviado até {primeiro} pedir para voltar pelo WhatsApp.</Notice>}
     {pessoa.remindersPaused && !pessoa.optOut && <Notice tone="error"><b>Lembretes pausados.</b>{"\n"}O plano venceu. Nada foi apagado: ao assinar em Conta, tudo volta sozinho.</Notice>}
     {resumo?.receitasTerminando.map((t) => <Notice key={t} tone="info">{t}</Notice>)}

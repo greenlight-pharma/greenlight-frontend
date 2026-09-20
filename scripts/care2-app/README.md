@@ -23,3 +23,11 @@ O build principal `scripts/build-vercel.sh` compila este projeto e publica apena
 ## Validação
 
 23 testes de modelos e contrato de sessão/API, compilação TypeScript/Vite e build completo do site. A validação visual local cobre landing, login/cadastro, painel família, avisos e checkout com fixtures locais. Não foram criadas assinaturas, enviados lembretes ou feitas cobranças reais durante a implementação. Validação final autenticada e cobrança homologada dependem de conta de teste.
+
+## Programa Gestação
+
+Rota `/gestacao` escolhe pessoa; `/p/:phone/gestacao` ativa por DPP/idade confirmada. Agenda editável, dúvidas, resumo imprimível, encerramento com histórico, doses do dia e resumo nos cartões. A API aditiva `/care2/pessoas/:phone/gestacao` persiste por conta+pessoa, exige vínculo/conta pessoal e versionamento para evitar sobrescritas. Backend deve ser publicado primeiro (greenlight-backend, CARE2-GESTACAO.md).
+
+Compromissos avisam dentro do programa hoje/amanhã; exportação ICS usa horário de Brasília e alarmes1dia/1hora. O usuário precisa importar no calendário e permitir alertas. Não há novo envio WhatsApp/e-mail dos compromissos; medicamentos continuam com seu fluxo existente. Não há conteúdo clínico semanal gerado, avaliação de risco ou ajuste de doses. Conta compartilhada mantém acesso às informações; não há convite automático a familiar.
+
+QA:29testes frontend e build; ativação por24semanas, dúvida e compromisso testados via CUA com fixturesDEV, inclusive390px. Banco e autorização testados no backend com PostgreSQL efêmero. Teste autenticado em produção ainda depende da conta de teste do usuário.
