@@ -18,6 +18,8 @@ export function readPatient(raw: any): Patient {
 }
 /** "(12) 98830-3722": o 55 fica no servidor, o profissional só vê DDD e número. */
 export function formatPhone(raw: string): string {
+  const international = raw.replace(/\D/g, "");
+  if (!international.startsWith("55")) return international ? "+" + international : raw;
   let d = raw.replace(/\D/g, "");
   if ((d.length === 12 || d.length === 13) && d.startsWith("55")) d = d.slice(2);
   if (d.length !== 10 && d.length !== 11) return raw;
