@@ -1,9 +1,10 @@
+import { personalizacao, type Acompanhamento } from "./personalizacao";
 import catalogo from './catalogo.json';
 import type { Compromisso, Duvida } from '../gestacao/model';
-export type Programa = {status:'ativo'|'arquivado';consentimento:boolean;objetivo:string;orientacoes:string;compromissos:Compromisso[];duvidas:Duvida[];cuidados:{id:string;texto:string;feitoEm:string}[];anotacoes:{id:string;texto:string;data:string}[]};
+export type Programa = {acompanhamento?:Acompanhamento;status:'ativo'|'arquivado';consentimento:boolean;objetivo:string;orientacoes:string;compromissos:Compromisso[];duvidas:Duvida[];cuidados:{id:string;texto:string;feitoEm:string}[];anotacoes:{id:string;texto:string;data:string}[]};
 export type RegistroPrograma = {data:Programa|null;version:number};
 export type ResumoPrograma = {programa:string;status:Programa['status'];objetivo:string};
-export const programas = [...catalogo, {id:'gestacao',title:'Gestação',category:'Gestação e família',icon:'heart',description:'Semana gestacional, consultas e dúvidas para o pré-natal.',keywords:'gestante grávida gravidez prenatal',prompt:'',questions:[]}];
+export const programas = [...catalogo.map(p=>({...p,description:personalizacao[p.id].subtitle})), {id:'gestacao',title:'Gestação',category:'Gestação e família',icon:'heart',description:'Semana gestacional, consultas e dúvidas para o pré-natal.',keywords:'gestante grávida gravidez prenatal',prompt:'',questions:[]}];
 export const categorias = [...new Set(programas.map(p=>p.category))];
 export const normalizar = (s:string) => s.normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase().trim();
 export const buscarProgramas = (texto:string,categoria='Todos') => programas.filter(p=>(categoria==='Todos'||p.category===categoria)&&normalizar(`${p.title} ${p.description} ${p.keywords}`).includes(normalizar(texto)));
