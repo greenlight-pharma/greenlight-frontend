@@ -5,11 +5,12 @@ Projeto independente do Care atual, originado do `vytal-care-web` commit `deaca6
 - Página pública: `/vytal-care2/`.
 - Aplicativo conectado: `/vytal-care2/app/`.
 - Cadastro família: `/vytal-care2/app/familia`.
+- Override opcional exclusivo: `VITE_CARE2_API_URL`; não herda configuração de outros painéis.
 - Mesma API, autenticação e integração Pagar.me do Care atual. Nenhuma chave secreta no frontend. Configuração pública do checkout vem da API autenticada. Cartão tokenizado diretamente no Pagar.me; Pix e cupons passam pelo servidor existente.
 - Dados e assinaturas reais compartilhados. A interface/código são independentes; não se trata de uma cópia dos dados.
 - Sessão local usa `vytal-care2.sessao` para não colidir com outros apps no domínio.
 - Recuperação de senha e confirmação de e-mail permanecem com os links emitidos pelo backend atual, que podem abrir o Care original; depois basta retornar ao Care2.
-- Login Google só aparece com `VITE_GOOGLE_CLIENT_ID` explicitamente configurado para este domínio. E-mail/senha são a entrada padrão.
+- Login Google só aparece com `VITE_CARE2_GOOGLE_CLIENT_ID` explicitamente configurado para este domínio. E-mail/senha são a entrada padrão.
 
 ## Desenvolvimento
 

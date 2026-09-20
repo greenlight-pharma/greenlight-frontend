@@ -1,7 +1,7 @@
 import type { Doctor, Session } from "./models";
 
 // Mesmo servidor do app iOS e Android (greenlight-backend).
-export const BASE_URL = (import.meta.env.VITE_API_URL as string | undefined) ?? "https://greenlight-backend-production-35c8.up.railway.app";
+export const BASE_URL = (import.meta.env.VITE_CARE2_API_URL as string | undefined) ?? "https://greenlight-backend-production-35c8.up.railway.app";
 const KEY = "vytal-care2.sessao";
 
 export class ServiceError extends Error {

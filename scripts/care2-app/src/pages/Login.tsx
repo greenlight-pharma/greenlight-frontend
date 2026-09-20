@@ -5,7 +5,7 @@ import { Button, Field, Icon, Logo, Notice, RegistrationFields, Segmented, Surfa
 import { ForgotPassword } from "./ResetPassword";
 
 type LoginResponse = { token: string; doctor?: Doctor; name?: string };
-const GOOGLE_ID = import.meta.env.VITE_GOOGLE_CLIENT_ID as string | undefined;
+const GOOGLE_ID = import.meta.env.VITE_CARE2_GOOGLE_CLIENT_ID as string | undefined;
 const BENEFITS = [
   ["user", "Cadastre o paciente pelo WhatsApp", "Nome e número. Ele recebe o aviso de que os lembretes chegam por ali."],
   ["camera", "Uma foto, e a receita vira lembrete", "Você confere cada item antes de salvar."],

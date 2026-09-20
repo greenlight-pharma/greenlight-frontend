@@ -72,7 +72,7 @@ function CartaoPessoa({ pessoa: p }: { pessoa: Patient }) {
       : <div className="row wrap" style={{ gap: 8 }}>
         <Chip tone={tom as "ok" | "bad" | "warn" | "info"}>{passadas.length ? `Hoje: ${tomadas} de ${passadas.length} confirmadas` : "Hoje: doses mais tarde"}</Chip>
         {!!seq && <Chip tone="ok">{seq === 1 ? "1 dia seguido" : `${seq} dias seguidos`}</Chip>}
-        
+
       </div>}
     {grade && passadas.length > 0 && <div className="care2-progress" role="img" aria-label={`${tomadas} de ${passadas.length} doses passadas confirmadas`}><span style={{ width: `${100 * tomadas / passadas.length}%` }} /></div>}
     {proxima && <div className="care2-next"><Icon name="clock" size={18} /><span>Próximo às <b>{proxima.time}</b><br />{proxima.medicationName}</span></div>}
