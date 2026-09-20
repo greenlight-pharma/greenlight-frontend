@@ -12,8 +12,7 @@ export default function NovaPessoa({ onClose, paraMim: inicial, onboarding=false
   const meuFone = (eu?.phone ?? "").replace(/^55/, "");
   const [paraMim, setParaMim] = useState<boolean | null>(inicial ?? null);
   const [name, setName] = useState(inicial ? eu?.name ?? "" : ""), [phone, setPhone] = useState(inicial ? meuFone : "");
-  const [gestacao, setGestacao] = useState(false);
-  const concluir = async () => { if(onSaved){await onSaved(withCountry(phone));return;} onClose(); if (gestacao) navigate(`/p/${withCountry(phone)}/gestacao`); };
+  const concluir = async () => { if(onSaved){await onSaved(withCountry(phone));return;} onClose(); };
   const [consent, setConsent] = useState(false), [notify, setNotify] = useState(true);
   const [busy, setBusy] = useState(false), [error, setError] = useState<string | null>(null), [limit, setLimit] = useState(false), [done, setDone] = useState<string | null>(null);
   const navigate = useNavigate();
@@ -42,7 +41,6 @@ export default function NovaPessoa({ onClose, paraMim: inicial, onboarding=false
         <span><span style={{ fontWeight: 500 }}>{name.trim().split(/\s+/)[0] || "A pessoa"} sabe e concorda em receber os lembretes</span><br /><span className="muted small">Para sair, basta responder PARAR.</span></span></label>}
       {!paraMim && <label className="row" style={{ alignItems: "flex-start" }}><input type="checkbox" checked={notify} onChange={(e) => setNotify(e.target.checked)} style={{ width: 20, height: 20, accentColor: "var(--blue)", flexShrink: 0, marginTop: 2 }} />
         <span><span style={{ fontWeight: 500 }}>Enviar boas-vindas</span><br /><span className="muted small">Avisa sobre os lembretes no WhatsApp.</span></span></label>}
-      {!onboarding&&<label className="row"><input type="checkbox" checked={gestacao} onChange={e=>setGestacao(e.target.checked)}/><span>Configurar o programa Gestação depois do cadastro</span></label>}
       <div className="row muted small"><Icon name="shield" size={16} />Confira o número antes de salvar.</div>
     </>}
     <Notice>{error}</Notice>
