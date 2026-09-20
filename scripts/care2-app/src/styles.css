@@ -1,0 +1,149 @@
+/* Mesma identidade do app SwiftUI (native/ios/Vytal/DesignSystem.swift):
+   azul 0.07/0.39/0.77, verde-água 0.10/0.46/0.44, fundo agrupado, cartões de raio 24. */
+:root {
+  --blue: #1263C4; --blue-ink: #0D4C99; --blue-soft: rgba(18,99,196,0.09);
+  --teal: #1A7570; --teal-soft: rgba(26,117,112,0.10);
+  --bg: #F2F2F7; --surface: #FFFFFF; --ink: #1C1C1E; --muted: #636368; --line: rgba(0,0,0,0.06); --fill: rgba(0,0,0,0.05);
+  --ok: #1B6E3F; --ok-soft: rgba(30,122,70,0.10); --bad: #B3261E; --bad-soft: rgba(196,49,43,0.09); --warn: #8A4B00; --warn-soft: rgba(200,120,0,0.12);
+  --round: ui-rounded, "SF Pro Rounded", "Nunito", system-ui, sans-serif;
+  --shadow: 0 24px 60px rgba(0,0,0,0.25);
+}
+@media (prefers-color-scheme: dark) {
+  :root { --blue: #4C9BF5; --blue-ink: #7DB6F8; --blue-soft: rgba(76,155,245,0.16); --teal: #4FC3BA; --teal-soft: rgba(79,195,186,0.14);
+    --bg: #000000; --surface: #1C1C1E; --ink: #F2F2F7; --muted: #A1A1A8; --line: rgba(255,255,255,0.08); --fill: rgba(255,255,255,0.08);
+    --ok: #5FD38D; --ok-soft: rgba(95,211,141,0.14); --bad: #FF7B72; --bad-soft: rgba(255,123,114,0.14); --warn: #F5B14C; --warn-soft: rgba(245,177,76,0.14); }
+}
+* { box-sizing: border-box; }
+html, body, #root { height: 100%; }
+/* iPhone: sem isto o Safari infla textos ao girar a tela. */
+html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
+body { margin: 0; background: var(--bg); color: var(--ink); font: 15px/1.4 -apple-system, "SF Pro Text", system-ui, "Segoe UI", sans-serif; -webkit-font-smoothing: antialiased; }
+h1, h2, h3, p { margin: 0; }
+h1, h2, .round { font-family: var(--round); font-weight: 700; text-wrap: balance; }
+h1 { font-size: 30px; line-height: 1.15; } h2 { font-size: 20px; }
+a { color: var(--blue); text-decoration: none; } a:hover { color: var(--blue-ink); }
+button { font: inherit; color: inherit; cursor: pointer; }
+button:disabled { opacity: 0.5; cursor: default; }
+:focus-visible { outline: 3px solid rgba(18,99,196,0.45); outline-offset: 2px; }
+.sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; }
+.muted { color: var(--muted); } .small { font-size: 13px; } .tnum { font-variant-numeric: tabular-nums; }
+.stack { display: flex; flex-direction: column; gap: 16px; } .row { display: flex; align-items: center; gap: 12px; } .grow { flex: 1 1 0; min-width: 0; } .wrap { flex-wrap: wrap; }
+.between { justify-content: space-between; }
+
+/* Estrutura: barra lateral, coluna de pacientes, conteúdo */
+.shell { display: flex; height: 100%; }
+.sidebar { width: 232px; flex-shrink: 0; padding: 24px 16px; display: flex; flex-direction: column; gap: 24px; border-right: 1px solid var(--line); overflow-y: auto; }
+.brand { display: flex; align-items: center; gap: 10px; font-family: var(--round); font-weight: 700; font-size: 18px; color: var(--ink); }
+.brand b { color: var(--blue); font-weight: 700; }
+.nav { display: flex; flex-direction: column; gap: 4px; }
+.nav a { display: flex; align-items: center; gap: 12px; min-height: 44px; padding: 0 14px; border-radius: 14px; color: var(--ink); }
+.nav a.active { background: var(--blue-soft); color: var(--blue); font-weight: 600; }
+.plan-card { background: var(--surface); border: 1px solid var(--line); border-radius: 18px; padding: 14px; display: flex; flex-direction: column; gap: 6px; color: var(--ink); }
+.meter { height: 6px; border-radius: 3px; background: var(--fill); overflow: hidden; } .meter > div { height: 6px; background: var(--blue); border-radius: 3px; }
+.listcol { width: 288px; flex-shrink: 0; padding: 24px 12px; display: flex; flex-direction: column; gap: 12px; border-right: 1px solid var(--line); overflow-y: auto; }
+.content { flex: 1 1 0; min-width: 0; overflow-y: auto; padding: 28px 32px 48px; }
+.page { display: flex; flex-direction: column; gap: 18px; max-width: 1100px; margin: 0 auto; }
+.page.narrow { max-width: 680px; }
+.tabbar { display: none; }
+
+.surface { background: var(--surface); border: 1px solid var(--line); border-radius: 24px; padding: 20px; display: flex; flex-direction: column; gap: 14px; }
+.eyebrow { font-size: 11px; font-weight: 700; letter-spacing: 2px; color: var(--muted); text-transform: uppercase; }
+.avatar { border-radius: 34%; background: var(--blue-soft); color: var(--blue); font-family: var(--round); font-weight: 600; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+.chip { font-size: 12px; font-weight: 600; padding: 4px 10px; border-radius: 999px; white-space: nowrap; color: var(--muted); background: var(--fill); }
+.chip.ok { color: var(--ok); background: var(--ok-soft); } .chip.bad { color: var(--bad); background: var(--bad-soft); } .chip.warn { color: var(--warn); background: var(--warn-soft); } .chip.info { color: var(--blue); background: var(--blue-soft); }
+.btn { border: 0; background: var(--blue); color: #fff; font-weight: 600; min-height: 46px; padding: 0 18px; border-radius: 15px; display: inline-flex; align-items: center; justify-content: center; gap: 8px; }
+.btn:hover:not(:disabled) { background: var(--blue-ink); color: #fff; }
+.btn.big { width: 100%; min-height: 54px; border-radius: 17px; font-size: 16px; }
+.btn.plain { background: var(--surface); color: var(--ink); border: 1px solid var(--line); } .btn.plain:hover:not(:disabled) { background: var(--fill); color: var(--ink); }
+.btn.danger { background: var(--bad); } .btn.danger:hover:not(:disabled) { background: var(--bad); filter: brightness(0.92); }
+.btn.dark { background: #000; } .btn.icon { width: 46px; padding: 0; }
+.link { border: 0; background: none; padding: 0; min-height: 44px; color: var(--blue); font-weight: 600; } .link.danger { color: var(--bad); }
+.field { display: flex; flex-direction: column; gap: 6px; font-size: 14px; font-weight: 500; }
+/* [ZOOM-NO-IPHONE] Campo com letra menor que 16px faz o Safari do iPhone aproximar a
+   tela ao tocar nele, e ela fica deslocada para o lado depois. Todo campo usa 16px. */
+.field input, .field select, .field textarea, .input { border: 0; background: var(--bg); color: var(--ink); border-radius: 14px; padding: 14px; font: 16px system-ui; width: 100%; min-height: 48px; }
+input, select, textarea { font-size: 16px; }
+.surface.inset .field input { background: var(--bg); }
+.field textarea { resize: vertical; min-height: 80px; }
+.search { display: flex; align-items: center; gap: 8px; background: var(--fill); border-radius: 12px; padding: 0 12px; min-height: 40px; color: var(--muted); }
+.search input { border: 0; background: transparent; font: 16px system-ui; outline: none; width: 100%; color: var(--ink); }
+.notice { display: flex; gap: 10px; align-items: flex-start; border-radius: 16px; padding: 14px; font-size: 14px; }
+.notice.error { color: var(--bad); background: var(--bad-soft); } .notice.warn { color: var(--warn); background: var(--warn-soft); } .notice.info { color: var(--blue); background: var(--blue-soft); } .notice.ok { color: var(--ok); background: var(--ok-soft); }
+.segmented { display: flex; gap: 4px; padding: 4px; background: var(--fill); border-radius: 16px; }
+.segmented > * { flex: 1 1 0; display: flex; align-items: center; justify-content: center; gap: 8px; min-height: 44px; border-radius: 12px; border: 0; background: transparent; color: var(--muted); font-size: 14px; padding: 0 8px; }
+.segmented > .on { background: var(--surface); color: var(--blue); font-weight: 600; box-shadow: 0 1px 3px rgba(0,0,0,0.10); }
+.prow { display: flex; align-items: center; gap: 12px; padding: 10px 12px; border-radius: 16px; color: var(--ink); }
+.prow:hover { background: var(--fill); color: var(--ink); } .prow.active { background: var(--blue-soft); }
+.tile { flex: 1 1 140px; background: var(--surface); border: 1px solid var(--line); border-radius: 20px; padding: 16px 18px; display: flex; flex-direction: column; gap: 2px; }
+.tile b { font-family: var(--round); font-size: 30px; font-variant-numeric: tabular-nums; }
+.option { flex: 1 1 0; border: 1.5px solid transparent; background: var(--bg); color: var(--muted); border-radius: 16px; min-height: 76px; padding: 8px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px; font-size: 14px; font-weight: 500; text-align: center; }
+.option.on { border-color: var(--blue); background: var(--blue-soft); color: var(--blue); }
+.pill { border: 1px solid var(--line); background: var(--surface); color: var(--muted); border-radius: 999px; padding: 6px 12px; font-size: 13px; font-weight: 600; min-height: 36px; } .pill.on { color: var(--blue); border-color: var(--blue); background: var(--blue-soft); }
+.time { font-size: 13px; font-weight: 600; font-variant-numeric: tabular-nums; background: var(--bg); padding: 5px 10px; border-radius: 10px; }
+.dose { display: flex; align-items: center; gap: 14px; padding: 10px 0; border-bottom: 1px solid var(--line); } .dose:last-child { border-bottom: 0; }
+.grid2 { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
+.split { display: flex; gap: 18px; align-items: flex-start; } .split > .side { width: 340px; flex-shrink: 0; }
+.action { display: flex; align-items: center; gap: 14px; padding: 14px; border-radius: 18px; background: var(--bg); border: 0; width: 100%; text-align: left; color: var(--ink); }
+.action:hover { background: var(--fill); }
+.action .ico { width: 48px; height: 48px; border-radius: 16px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; background: var(--blue-soft); color: var(--blue); } .action .ico.teal { background: var(--teal-soft); color: var(--teal); }
+.backdrop { position: fixed; inset: 0; background: rgba(0,0,0,0.32); display: flex; align-items: center; justify-content: center; padding: 16px; z-index: 50; }
+.dialog { width: 100%; max-width: 480px; max-height: 92vh; overflow-y: auto; background: var(--surface); border-radius: 28px; padding: 24px; display: flex; flex-direction: column; gap: 14px; box-shadow: var(--shadow); }
+.dialog.wide { max-width: 640px; }
+.menu { position: absolute; right: 0; top: 52px; background: var(--surface); border: 1px solid var(--line); border-radius: 16px; padding: 6px; box-shadow: 0 12px 32px rgba(0,0,0,0.18); z-index: 20; min-width: 220px; }
+.menu button { width: 100%; text-align: left; border: 0; background: none; padding: 12px; border-radius: 10px; min-height: 44px; } .menu button:hover { background: var(--fill); }
+.drop { border: 2px dashed rgba(18,99,196,0.35); background: var(--blue-soft); border-radius: 24px; min-height: 280px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 10px; color: var(--blue); text-align: center; padding: 24px; cursor: pointer; }
+.drop.over { border-color: var(--blue); }
+.bar { height: 10px; border-radius: 5px; background: var(--fill); overflow: hidden; } .bar > div { height: 10px; border-radius: 5px; }
+.login { display: flex; min-height: 100%; }
+.login .hero { width: 42%; max-width: 560px; padding: 56px; background: #1263C4; color: #fff; display: flex; flex-direction: column; gap: 36px; justify-content: center; }
+.login .form { flex: 1 1 0; display: flex; align-items: center; justify-content: center; padding: 32px 16px; }
+.spinner { width: 18px; height: 18px; border-radius: 50%; border: 2.5px solid currentColor; border-right-color: transparent; animation: spin 0.8s linear infinite; }
+@keyframes spin { to { transform: rotate(360deg); } }
+@media (prefers-reduced-motion: reduce) { .spinner { animation-duration: 2.4s; } }
+
+/* Tela estreita: mesma página com cara de app. Uma coluna, abas embaixo. */
+@media (max-width: 1100px) { .listcol { display: none; } }
+@media (max-width: 820px) {
+  .sidebar { display: none; }
+  .content { padding: 20px 16px calc(96px + env(safe-area-inset-bottom, 0px)); }
+  .tabbar { display: flex; position: fixed; left: 0; right: 0; bottom: 0; background: var(--surface); border-top: 1px solid var(--line); padding: 6px 16px calc(6px + env(safe-area-inset-bottom, 0px)); z-index: 30; }
+  .tabbar a { flex: 1 1 0; display: flex; flex-direction: column; align-items: center; gap: 2px; min-height: 48px; justify-content: center; font-size: 11px; font-weight: 600; color: var(--muted); } .tabbar a.active { color: var(--blue); }
+  .split { flex-direction: column; } .split > .side { width: 100%; }
+  .grid2 { grid-template-columns: minmax(0, 1fr); }
+  .login { flex-direction: column; } .login .hero { width: 100%; max-width: none; padding: 28px 20px; gap: 16px; } .login .hero .benefits { display: none; } .login .hero h1 { font-size: 24px; }
+  .segmented.icons > * { flex-direction: column; gap: 3px; font-size: 11px; min-height: 52px; }
+  h1 { font-size: 26px; }
+  .backdrop { align-items: flex-end; padding: 0; } .dialog { border-radius: 28px 28px 0 0; max-width: none; padding-bottom: calc(24px + env(safe-area-inset-bottom, 0px)); }
+}
+
+/* [ADMIN] Tabelas do painel: rolam de lado dentro do cartão, nunca a página. */
+.table-wrap { overflow-x: auto; margin: 0 -4px; }
+.table { width: 100%; border-collapse: collapse; font-size: 14px; }
+.table th { text-align: left; font-size: 12px; font-weight: 600; letter-spacing: 0.04em; text-transform: uppercase; color: var(--muted); padding: 8px 10px; border-bottom: 1px solid var(--line); white-space: nowrap; }
+.table td { padding: 12px 10px; border-bottom: 1px solid var(--line); vertical-align: top; }
+.table tr:last-child td { border-bottom: 0; }
+.table .chip { display: inline-block; margin-top: 2px; }
+.split.wrap { flex-wrap: wrap; }
+.tiles { display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); gap: 12px; }
+@media (max-width: 420px) { .tiles { grid-template-columns: 1fr 1fr; } .tiles .tile b { font-size: 24px; } }
+.admin-bar { display: none; margin-bottom: 16px; }
+@media (max-width: 820px) { .admin-bar { display: flex; } }
+/* [PESSOAL] Ponto de aviso novo no menu de baixo. */
+.badge-dot { position: absolute; top: -2px; right: -6px; width: 10px; height: 10px; border-radius: 5px; background: var(--bad); border: 2px solid var(--surface); }
+/* [PESSOAL] Tabelas do resumo para a consulta. */
+.tabela { width: 100%; border-collapse: collapse; font-size: 14px; }
+.tabela th { text-align: left; font-size: 12px; text-transform: uppercase; letter-spacing: .04em; color: var(--muted); padding: 6px 8px; border-bottom: 1px solid var(--line); }
+.tabela td { padding: 8px; border-bottom: 1px solid var(--line); vertical-align: top; }
+.resumo section { break-inside: avoid; }
+@media print {
+  .sidebar, .tabbar, .no-print { display: none !important; }
+  .shell { display: block; height: auto; }
+  .content { padding: 0; overflow: visible; }
+  body, html, #root { background: #fff; color: #000; height: auto; }
+  .resumo { max-width: none !important; }
+}
+/* Escolha de pagamento: dois botões grandes com ícone (cartão ou Pix). */
+.pay-options { align-items: stretch; }
+.option.pay { min-height: 116px; gap: 6px; color: var(--ink); }
+.option.pay svg { color: var(--blue); }
+.option.pay.on { color: var(--blue); }
