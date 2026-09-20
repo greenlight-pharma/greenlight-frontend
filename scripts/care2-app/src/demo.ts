@@ -1,6 +1,7 @@
 const paidIndividualPreview=new URLSearchParams(location.search).get('pago')==='individual';
 import type {DailyState} from './programas/Checkin';
 const dailyDemo=new Map<string,DailyState>();
+const clinicalPreview=new URLSearchParams(location.search).get('checkin')==='clinico';
 const measurementDemo=new Map<string, {id:number;tipo:string;scheduleTimes:string;startDate?:string;endDate?:string}[]>();
 import perguntasWhatsapp from './programas/whatsapp-perguntas.json';
 import type {WhatsappState,WhatsappConfig} from './programas/Whatsapp';
@@ -18,7 +19,7 @@ const initialSetup=new URLSearchParams(location.search).get('inicio')==='1';
 const initialPeople:{id:number;patientPhone:string;patientName:string;activeMedications:number}[]=[];
 export function demoResponse(path: string, method: string, body?: unknown): unknown {
   if(path.startsWith('/care2/pessoas/')&&path.endsWith('/checkin')){
-    const current=dailyDemo.get(path)??{data:null,version:0,available:false,history:[]};
+    const current:DailyState=dailyDemo.get(path)??(clinicalPreview?{data:{conditions:['diabetes','hipertensao','insuficiencia-cardiaca','gestacao'],time:'20:00',enabled:true,consent:true},version:1,available:false,history:[{id:1,slot:today,status:'sent',snapshot:[{conditions:['diabetes'],question:'Diabetes · O que sentiu hoje?',options:[{id:'sede',title:'Mais sede que o normal'}]}],answers:[['sede']],details:{version:2,urgent:false,measurements:{glucose:140,glucose_time:'08:30',glucose_context:'jejum',systolic:120,diastolic:80,pressure_time:'09:00',weight:72.5,weight_time:'07:00'}}},{id:2,slot:day(1),status:'sent',snapshot:[{conditions:['gestacao'],question:'Gravidez'}],answers:[['nao_avaliado']],details:{version:2,urgent:true,measurements:{}}}]}:{data:null,version:0,available:false,history:[]});
     if(method==='GET')return current;
     const input=body as {version:number;data:NonNullable<DailyState['data']>};
     const next={...current,data:input.data,version:current.version+1};dailyDemo.set(path,next);return next;
