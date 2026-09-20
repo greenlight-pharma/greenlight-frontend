@@ -3,7 +3,7 @@ import { createContext, useCallback, useContext, useEffect, useState } from "rea
 import { NavLink, Route, Routes, useLocation, useNavigate } from "react-router-dom";
 import { api, errorText, session } from "../api";
 import { AppContext, type AppCtx } from "../App";
-import { initials, readPatient, type Patient, type Session, type SubscriptionStatus } from "../models";
+import { subscriptionDisplay, initials, readPatient, type Patient, type Session, type SubscriptionStatus } from "../models";
 import { Avatar, Brand, Eyebrow, Icon } from "../ui";
 import Recipe from "../pages/Recipe";
 import Inicio from "./Inicio";
@@ -94,6 +94,7 @@ export default function FamilyWorkspace({ session: current }: { session: Session
 function Lateral() {
   const { session: s, plan, patients } = useApp();
   const { naoLidos } = useFamilia();
+  const display=plan?subscriptionDisplay(plan):null;
   const limite = plan?.limite ?? plan?.plano.limitePacientes ?? 0;
   return <aside className="sidebar">
     <Brand />
@@ -104,9 +105,9 @@ function Lateral() {
       <NavLink to="/conta"><Icon name="user" />Conta</NavLink>
     </nav>
     <div style={{ flexGrow: 1 }} />
-    {plan && <NavLink to="/conta" className="plan-card"><Eyebrow>{plan.teste?.ativo ? "Teste grátis" : "Seu plano"}</Eyebrow>
-      <b>{plan.teste?.ativo ? `${diasRestantes(plan.teste.ate)} ${diasRestantes(plan.teste.ate) === 1 ? "dia" : "dias"} restantes` : plan.plano.nome}</b>
-      <span className="muted small">{patients.length} de {limite} {limite === 1 ? "pessoa" : "pessoas"}</span></NavLink>}
+    {plan && <NavLink to="/conta" className="plan-card"><Eyebrow>{display?.showTrialOffer ? "Teste grátis" : "Seu plano"}</Eyebrow>
+      <b>{display?.showTrialOffer && plan.teste ? `${diasRestantes(plan.teste.ate)} ${diasRestantes(plan.teste.ate) === 1 ? "dia" : "dias"} restantes` : display?.displayPlan.nome}</b>
+      <span className="muted small">{display?.trialBonus?"Durante o teste: ":""}{patients.length} de {limite} {limite === 1 ? "pessoa" : "pessoas"}</span></NavLink>}
     <div className="row" style={{ gap: 10 }}><Avatar text={initials(s.doctor.name ?? "") || "VC"} size={38} /><div className="grow"><div style={{ fontWeight: 600, fontSize: 14 }}>{s.doctor.name || "Sua conta"}</div><div className="muted" style={{ fontSize: 12 }}>{s.doctor.email}</div></div></div>
     <button type="button" className="link row" style={{ gap: 8, color: "var(--muted)", fontWeight: 500 }} onClick={() => session.logout()}><Icon name="logout" size={18} />Sair</button>
   </aside>;

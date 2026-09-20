@@ -2,7 +2,7 @@ import { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import { api } from "../api";
 import { AppContext } from "../App";
-import { formatPhone, initials, type DayGrid, type Patient } from "../models";
+import { subscriptionDisplay, formatPhone, initials, type DayGrid, type Patient } from "../models";
 import { Avatar, Button, Chip, Eyebrow, Icon, Notice, Option, Spinner, Surface, useLoad } from "../ui";
 import { ExpiryNotice } from "../pages/Plans";
 import { diasRestantes, useFamilia } from "./Familia";
@@ -28,10 +28,10 @@ export default function Inicio() {
     </div>
 
     <Link to="/programas" className="surface gestacao-entry"><Icon name="heart" size={28}/><div className="grow"><b>Saúde e acompanhamento</b><p className="muted small">Condições de saúde e check-in diário no WhatsApp.</p></div><Icon name="chev"/></Link>
-    {plan?.teste?.ativo && !plan.vencimento && <Surface className="row wrap" style={{ flexDirection: "row", alignItems: "center", background: "var(--blue-soft)", borderColor: "transparent" }}>
+    {plan?.teste && subscriptionDisplay(plan).showTrialOffer && !plan.vencimento && <Surface className="row wrap" style={{ flexDirection: "row", alignItems: "center", background: "var(--blue-soft)", borderColor: "transparent" }}>
       <div className="grow" style={{ minWidth: 220 }}><b>{`Teste grátis: ${diasRestantes(plan.teste.ate)} ${diasRestantes(plan.teste.ate) === 1 ? "dia restante" : "dias restantes"}`}</b><div className="muted small">Tudo liberado até lá, com até 3 pessoas. Assine para os lembretes continuarem.</div></div>
       <Link to="/conta" className="btn" style={{ textDecoration: "none", color: "#fff" }}>Ver planos</Link></Surface>}
-    {plan?.vencimento && <Link to="/conta" style={{ color: "inherit", textDecoration: "none" }}><ExpiryNotice expiry={plan.vencimento} used={plan.usados ?? patients.length} pessoal teste={Boolean(plan.teste)} /></Link>}
+    {plan?.vencimento && <Link to="/conta" style={{ color: "inherit", textDecoration: "none" }}><ExpiryNotice expiry={plan.vencimento} used={plan.usados ?? patients.length} pessoal teste={subscriptionDisplay(plan).trialExpiry} paidPlan={subscriptionDisplay(plan).paidPlan?.nome} /></Link>}
     {semPlano && <Notice tone="warn">Seu teste terminou. Assine em Conta para voltar a cadastrar pessoas e enviar lembretes.</Notice>}
     <Notice>{error}</Notice>
 
