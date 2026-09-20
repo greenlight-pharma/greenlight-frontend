@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { api, errorText } from "../api";
-import { Schedule, UFS, type Expiry, type Plan, type Quota, type SubscriptionStatus } from "../models";
+import { subscriptionDisplay, Schedule, UFS, type Expiry, type Plan, type Quota, type SubscriptionStatus } from "../models";
 import { Button, Chip, Confirm, Dialog, Eyebrow, Field, Icon, Notice, Segmented, Surface, useLoad } from "../ui";
 
 // [VENDA-NA-WEB] Cartão (assinatura que renova) ou Pix (período de 30 ou 365
@@ -27,16 +27,19 @@ export function PlanCard({ plan, onChanged }: { plan: SubscriptionStatus; onChan
   const used = plan.usados ?? 0, limit = plan.limite ?? plan.plano.limitePacientes;
   const pessoal = plan.tipoConta === "pessoal";
   const web = plan.web, apple = plan.assinatura;
+  const {displayPlan,paidPlan,showTrialOffer,trialBonus,trialExpiry}=subscriptionDisplay(plan);
   // Assinatura de cartão em curso: não se assina outra por cima. Pix não renova, então pode pagar de novo.
   const webRunning = web && web.tipo !== "pix" && ["ativa", "em_atraso"].includes(web.status);
   const pixDays = web?.tipo === "pix" && web.acesso && web.expiraEm ? Math.ceil((new Date(web.expiraEm).getTime() - Date.now()) / 86400000) : null;
   async function cancel() { setBusy(true); try { await api("/assinatura/web", { method: "DELETE" }); setCanceling(false); onChanged(); } catch (e) { setError(errorText(e)); setCanceling(false); } setBusy(false); }
-  return <Surface><Eyebrow>Seu plano</Eyebrow>
-    <div className="row between wrap"><h2>{plan.plano.nome}</h2>{(web?.acesso || apple?.acesso) && <Chip tone={web?.status === "cancelada" ? "" : "ok"}>{web?.status === "cancelada" ? "Cancelada" : web?.tipo === "pix" ? "Pago por Pix" : "Assinatura ativa"}</Chip>}</div>
-    {pessoal && plan.teste?.ativo && <Notice tone="info">{`Teste grátis até ${Schedule.dateTime(plan.teste.ate).slice(0, 10)}. Assine abaixo para os lembretes continuarem depois do teste.`}</Notice>}
+  return <Surface><Eyebrow>{pessoal&&paidPlan?"Plano contratado":"Seu plano"}</Eyebrow>
+    <div className="row between wrap"><h2>{displayPlan.nome}</h2>{(web?.acesso || apple?.acesso) && <Chip tone={web?.status === "cancelada" ? "" : "ok"}>{web?.status === "cancelada" ? "Cancelada" : web?.tipo === "pix" ? "Pago por Pix" : "Assinatura ativa"}</Chip>}</div>
+    {showTrialOffer && plan.teste && <Notice tone="info">{`Teste grátis até ${Schedule.dateTime(plan.teste.ate).slice(0, 10)}. Assine abaixo para os lembretes continuarem depois do teste.`}</Notice>}
+    {pessoal&&paidPlan&&<p className="muted small">{`Seu plano pago acompanha ${unidade(paidPlan.limitePacientes,true)}.`}</p>}
+    {trialBonus&&plan.teste&&<Notice tone="info">{`Benefício grátis: até ${plan.plano.limitePacientes} pessoas até ${Schedule.dateTime(plan.teste.ate).slice(0,10)}. Depois, vale o limite do plano ${paidPlan!.nome}.`}</Notice>}
     <div className="muted">{pessoal ? `${used} de ${unidade(limit, true)}` : `${used} de ${limit} pacientes`}</div><div className="meter"><div style={{ width: `${limit ? Math.min(100, (used / limit) * 100) : 0}%` }} /></div>
     {plan.franquia && <QuotaLine quota={plan.franquia} />}
-    {plan.vencimento && <ExpiryNotice expiry={plan.vencimento} used={used} pessoal={pessoal} teste={Boolean(plan.teste)} />}
+    {plan.vencimento && <ExpiryNotice expiry={plan.vencimento} used={used} pessoal={pessoal} teste={trialExpiry} paidPlan={paidPlan?.nome} />}
     {web?.acesso && web.expiraEm && web.tipo !== "pix" && <div className="muted small">{web.status === "cancelada" ? "Cancelada. Acesso até" : web.status === "em_atraso" ? "Pagamento pendente. Acesso até" : "Renova até"} {Schedule.dateTime(web.expiraEm).slice(0, 10)}{web.cartaoFinal ? ` · cartão final ${web.cartaoFinal}` : ""}.</div>}
     {pixDays != null && web?.expiraEm && (pixDays <= 5
       ? <Notice tone="warn">{`O período pago por Pix vence em ${Schedule.dateTime(web.expiraEm).slice(0, 10)}. Pague de novo por Pix ou assine no cartão, que renova sozinho. Depois do vencimento há 7 dias de carência; em seguida, ${pessoal ? "os lembretes param" : "os lembretes dos pacientes acima do plano gratuito param"} até um novo pagamento.`}</Notice>
@@ -47,7 +50,7 @@ export function PlanCard({ plan, onChanged }: { plan: SubscriptionStatus; onChan
       <Segmented label="Forma de pagamento" value={cycle} onChange={setCycle} options={[{ value: "mensal", label: "Mensal" }, { value: "anual", label: "Anual, 15% de desconto" }]} />
       {config.planos.filter((p) => pessoal || p.limitePacientes > plan.plano.limitePacientes || (web?.tipo === "pix" && web.acesso && p.id === plan.plano.id)).map((p) => <div key={p.id} className="row between wrap" style={{ background: "var(--bg)", borderRadius: 18, padding: 14 }}>
         <div className="grow" style={{ minWidth: 180 }}><b>{p.nome}</b><div className="muted small">{pessoal ? `${p.limitePacientes === 1 ? "1 pessoa" : `Até ${p.limitePacientes} pessoas`}. ` : `Até ${p.limitePacientes} pacientes. `}{p.descricao}</div></div>
-        <div className="row"><span className="round tnum" style={{ fontSize: 18 }}>{cycle === "anual" ? p.precoAnual : p.preco}<span className="muted small" style={{ fontFamily: "inherit", fontWeight: 400 }}>{cycle === "anual" ? " /ano" : " /mês"}</span></span><Button onClick={() => setBuying(p)}>{p.id === plan.plano.id ? "Renovar" : "Assinar"}</Button></div></div>)}
+        <div className="row"><span className="round tnum" style={{ fontSize: 18 }}>{cycle === "anual" ? p.precoAnual : p.preco}<span className="muted small" style={{ fontFamily: "inherit", fontWeight: 400 }}>{cycle === "anual" ? " /ano" : " /mês"}</span></span><Button onClick={() => setBuying(p)}>{p.id === displayPlan.id ? "Renovar" : "Assinar"}</Button></div></div>)}
       {!pessoal && <p className="muted small">Mais de 150 pacientes? <a href={CONTATO} target="_blank" rel="noreferrer">Fale com a Vytal</a> para um plano sob medida.</p>}
     </div>}
     {webRunning && <button className="link danger" style={{ alignSelf: "flex-start" }} onClick={() => setCanceling(true)}>Cancelar assinatura</button>}
@@ -172,12 +175,13 @@ function PixPayment({ order, planName, price, onPaid, onClose, onRetry }: { orde
 }
 
 /** [VENCIMENTO] Aviso de plano vencendo, em carência ou com lembretes pausados. */
-export function ExpiryNotice({ expiry: v, used, pessoal = false, teste = false }: { expiry: Expiry; used: number; pessoal?: boolean; teste?: boolean }) {
+export function ExpiryNotice({ expiry: v, used, pessoal = false, teste = false, paidPlan }: { expiry: Expiry; used: number; pessoal?: boolean; teste?: boolean; paidPlan?: string }) {
   const day = (iso: string) => Schedule.dateTime(iso).slice(0, 10);
   const over = v.fase === "pausado" ? v.pausados : Math.max(0, used - v.limite);
   const who = unidade(over, pessoal);
   // [PESSOAL] Sem plano pessoal ninguém continua; no profissional, os mais antigos seguem.
   const kept = v.limite === 0 ? "" : `; ${v.limite === 1 ? `${pessoal ? "a pessoa" : "o paciente"} mais antigo continua` : `os ${v.limite} mais antigos continuam`}`;
+  if(teste&&paidPlan) return <Notice tone={v.fase==='pausado'?'error':'warn'}>{v.fase==='vence_em_breve'?`O benefício extra do teste termina em ${day(v.venceEm)}. Seu plano ${paidPlan} continua válido. Após ${day(v.corteEm)}, os lembretes de ${who} acima do limite ficam pausados.`:v.fase==='carencia'?`O benefício extra do teste terminou. Seu plano ${paidPlan} continua válido. Após ${day(v.corteEm)}, os lembretes de ${who} acima do limite ficam pausados.`:`Seu plano ${paidPlan} continua válido. Os lembretes de ${who} acima do limite estão pausados. Nada foi apagado.`}</Notice>;
   const text = v.fase === "vence_em_breve"
     ? `${teste ? `Seu teste grátis termina em ${day(v.venceEm)}.` : `Seu plano vence em ${day(v.venceEm)} e ainda não foi renovado.`} Sem assinar, depois de 7 dias de carência (${day(v.corteEm)}) os lembretes de ${who} param${kept}.`
     : v.fase === "carencia"

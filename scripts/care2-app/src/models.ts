@@ -59,6 +59,22 @@ export type Quota = { mes: string; mensagens: number; limite: number; percentual
 /** [VENCIMENTO] Plano pago que vence ou venceu. Ver vencimento.js no servidor. */
 export type Expiry = { fase: "vence_em_breve" | "carencia" | "pausado"; venceEm: string; corteEm: string; limite: number; pausados: number };
 export type SubscriptionStatus = { plano: Plan; tipoConta?: "profissional" | "pessoal"; teste?: { ate: string; ativo: boolean } | null; motivo?: string | null; franquia?: Quota | null; vencimento?: Expiry | null; limite?: number; usados?: number; restantes?: number; catalogo?: Plan[]; assinatura?: { origem?: string; planoId?: string; status?: string; expiraEm?: string; acesso?: boolean } | null; web?: { planoId?: string; status: string; expiraEm?: string; acesso?: boolean; cartaoFinal?: string | null; bandeira?: string | null; ciclo?: string; tipo?: "pix" | "cartao" } | null };
+/** A cortesia pode ampliar o acesso, mas nunca representa o produto comprado. */
+export function subscriptionDisplay(s: SubscriptionStatus) {
+  const paidIds = [s.web, s.assinatura].filter(x => x?.acesso).map(x => x!.planoId);
+  const hasPaidAccess = paidIds.length > 0;
+  const candidates = [...(s.catalogo ?? []), s.plano].filter(p => paidIds.includes(p.id));
+  const paidPlan = candidates.sort((a,b) => b.limitePacientes-a.limitePacientes)[0] ?? null;
+  const personal = s.tipoConta === "pessoal";
+  return {
+    hasPaidAccess,
+    paidPlan,
+    displayPlan: personal && paidPlan ? paidPlan : s.plano,
+    showTrialOffer: personal && Boolean(s.teste?.ativo) && !hasPaidAccess,
+    trialExpiry: Boolean(s.teste && s.vencimento && new Date(s.teste.ate).getTime() === new Date(s.vencimento.venceEm).getTime()),
+    trialBonus: personal && Boolean(s.teste?.ativo) && Boolean(paidPlan && s.plano.limitePacientes > paidPlan.limitePacientes),
+  };
+}
 export type PatientLookup = { exists: boolean; linkedToMe?: boolean; otherDoctorName?: string; patient?: { name?: string } };
 export type PatientRegistration = { notificationSent?: boolean; notificationStatus?: string; alreadyLinked?: boolean };
 export function registrationNotice(r: PatientRegistration): string | null {

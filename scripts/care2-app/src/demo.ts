@@ -1,3 +1,4 @@
+const paidIndividualPreview=new URLSearchParams(location.search).get('pago')==='individual';
 import type {DailyState} from './programas/Checkin';
 const dailyDemo=new Map<string,DailyState>();
 const measurementDemo=new Map<string, {id:number;tipo:string;scheduleTimes:string;startDate?:string;endDate?:string}[]>();
@@ -60,8 +61,12 @@ export function demoResponse(path: string, method: string, body?: unknown): unkn
   }
   if (family && method === "GET") {
     if (path === "/my-patients") return [{ id: 1, patientPhone: "5500000000001", patientName: "Maria — exemplo", activeMedications: 2 }, { id: 2, patientPhone: "5500000000002", patientName: "João — exemplo", activeMedications: 1 }];
-    if (path === "/minha-assinatura") return { tipoConta: "pessoal", plano: { id: "pessoal_familia", publico: "pessoal", nome: "Família", limitePacientes: 3 }, usados: 2, limite: 3, teste: { ativo: true, ate: new Date(Date.now()+5*86400000).toISOString() }, assinatura: null };
-    if (path === "/assinatura/web/config") return { disponivel: true, publicKey: "pk_test_previa", planos: [{ id: "pessoal_individual", publico: "pessoal", nome: "Individual", limitePacientes: 1, preco: "R$ 14,90", precoAnual: "R$ 151,98", precoAnualCentavos: 15198, descricao: "Para uma pessoa." }, { id: "pessoal_familia", publico: "pessoal", nome: "Família", limitePacientes: 3, preco: "R$ 29,90", precoAnual: "R$ 304,98", precoAnualCentavos: 30498, descricao: "Até três pessoas." }] };
+    if (path === "/minha-assinatura") {
+      const paid=paidIndividualPreview;
+      const individual={id:'individual',nome:'Individual',limitePacientes:1,publico:'pessoal'},familia={id:'familia',nome:'Família',limitePacientes:3,publico:'pessoal'};
+      return {tipoConta:'pessoal',plano:familia,catalogo:[individual,familia],usados:2,limite:3,teste:{ativo:true,ate:new Date(Date.now()+5*86400000).toISOString()},assinatura:null,...(paid?{web:{planoId:'individual',status:'ativa',tipo:'pix',acesso:true,expiraEm:new Date(Date.now()+30*86400000).toISOString()}}:{})};
+    }
+    if (path === "/assinatura/web/config") return { disponivel: true, publicKey: "pk_test_previa", planos: [{ id: "individual", publico: "pessoal", nome: "Individual", limitePacientes: 1, preco: "R$ 14,90", precoAnual: "R$ 151,98", precoAnualCentavos: 15198, descricao: "Para uma pessoa." }, { id: "familia", publico: "pessoal", nome: "Família", limitePacientes: 3, preco: "R$ 29,90", precoAnual: "R$ 304,98", precoAnualCentavos: 30498, descricao: "Até três pessoas." }] };
     if (path === "/familia/avisos") return { naoLidos: 1, avisos: [{ id: "exemplo", phone: "5500000000001", pessoa: "Maria — exemplo", tipo: "dose", texto: "Horário das 14:00 sem confirmação.", criadoEm: new Date().toISOString(), lidoEm: null }] };
     if (path === "/familia/config") return { config: { naoConfirmou: true, esperaMin: 60, tomou: false, medicao: true, receita: true, email: true }, phone: null, emailAtivo: true, whatsappAtivo: false };
     if (path.includes("/familia/pessoas/") && path.endsWith("/resumo")) return { pessoa: "Maria — exemplo", hoje: today, sequencia: 2, dias: [], medicacoes: [{id:1,medicationName:"Remédio de exemplo A",dose:"1 comprimido",scheduleTimes:"08:00",status:"ativo"},{id:2,medicationName:"Remédio de exemplo B",dose:"1 comprimido",scheduleTimes:"20:00",status:"ativo"}], medicoes: [{id:1,tipo:"glicemia",valor:112,medidoEm:day(2)+"T10:00:00-03:00"},{id:2,tipo:"glicemia",valor:104,medidoEm:today+"T08:00:00-03:00"},{id:3,tipo:"pressao",sistolica:125,diastolica:82,medidoEm:day(1)+"T09:00:00-03:00"}], faixa: { pressaoSistolica: 140, pressaoDiastolica: 90, glicemiaAlta: 180, glicemiaBaixa: 70 }, faixaCombinada: false, receitasTerminando: [] };
