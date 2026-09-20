@@ -11,7 +11,15 @@ const gestacoes = new Map<string, Registro>();
 const today = new Intl.DateTimeFormat("en-CA", { timeZone: "America/Sao_Paulo" }).format(new Date());
 const day = (n: number) => { const d = new Date(today + "T12:00:00Z"); d.setUTCDate(d.getUTCDate() - n); return d.toISOString().slice(0, 10); };
 const family = new URLSearchParams(location.search).get("previa") === "familia";
+const initialSetup=new URLSearchParams(location.search).get('inicio')==='1';
+const initialPeople:{id:number;patientPhone:string;patientName:string;activeMedications:number}[]=[];
 export function demoResponse(path: string, method: string, body?: unknown): unknown {
+  if(family&&initialSetup&&path==='/my-patients'&&method==='GET')return initialPeople;
+  if(family&&initialSetup&&path==='/patients/manual'&&method==='POST'){
+    const d=body as {name:string;phone:string};
+    if(!initialPeople.some(p=>p.patientPhone===d.phone))initialPeople.push({id:initialPeople.length+1,patientPhone:d.phone,patientName:d.name,activeMedications:0});
+    return {notificationSent:false,notificationStatus:'nao_solicitado'};
+  }
   if(path.startsWith('/care2/pessoas/')&&path.includes('/whatsapp/')){
     const start=path.endsWith('/ativar');const target=start?path.slice(0,-7):path;
     const id=target.split('/').pop()!;
