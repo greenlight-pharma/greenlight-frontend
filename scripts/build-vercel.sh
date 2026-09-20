@@ -70,3 +70,9 @@ echo "    /medicacoes ->"
 ls "$OUT/medicacoes"
 echo "    /painel-samu ->"
 ls "$OUT/painel-samu"
+
+# Care2: projeto isolado, mantendo o Care atual sem alterações.
+npm ci --prefix scripts/care2-app
+npm run build --prefix scripts/care2-app
+mkdir -p "$OUT/vytal-care2/app"
+cp -R scripts/care2-app/dist/* "$OUT/vytal-care2/app"/
