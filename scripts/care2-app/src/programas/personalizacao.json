@@ -1,0 +1,1284 @@
+{
+  "diabetes": {
+    "title": "Meu açúcar no sangue",
+    "subtitle": "Veja a glicemia registrada no Care e conte o que aconteceu no seu dia.",
+    "action": "Registrar meu dia",
+    "profileFields": [
+      {
+        "id": "tipo",
+        "label": "Tipo informado pela equipe",
+        "type": "select",
+        "options": [
+          "Tipo 1",
+          "Tipo 2",
+          "Outro",
+          "Ainda não sei"
+        ]
+      },
+      {
+        "id": "medicoes",
+        "label": "Quando a equipe pediu para medir?",
+        "type": "text"
+      },
+      {
+        "id": "plano",
+        "label": "Orientação recebida para valores fora da faixa",
+        "type": "text"
+      },
+      {
+        "id": "contato",
+        "label": "Equipe ou contato de referência",
+        "type": "text"
+      }
+    ],
+    "fields": [
+      {
+        "id": "momento",
+        "label": "Momento do registro",
+        "type": "select",
+        "options": [
+          "Ao acordar",
+          "Antes de comer",
+          "Depois de comer",
+          "Antes de dormir",
+          "Outro"
+        ]
+      },
+      {
+        "id": "alimentacao",
+        "label": "Algo diferente na alimentação ou atividade?",
+        "type": "text"
+      },
+      {
+        "id": "dificuldade",
+        "label": "Dificuldade para medir ou usar o medicamento?",
+        "type": "text"
+      },
+      {
+        "id": "observacao",
+        "label": "O que mais quer registrar?",
+        "type": "text"
+      }
+    ],
+    "measurement": "glicemia",
+    "accent": "blue",
+    "agenda": "Consultas e exames do diabetes"
+  },
+  "hipertensao": {
+    "title": "Minha pressão",
+    "subtitle": "As medidas do Care aparecem aqui, com a data de cada registro.",
+    "action": "Registrar contexto da pressão",
+    "profileFields": [
+      {
+        "id": "medicoes",
+        "label": "Como e quando a equipe pediu para medir?",
+        "type": "text"
+      },
+      {
+        "id": "plano",
+        "label": "Orientação recebida para medidas fora da faixa",
+        "type": "text"
+      },
+      {
+        "id": "contato",
+        "label": "Equipe ou contato de referência",
+        "type": "text"
+      }
+    ],
+    "fields": [
+      {
+        "id": "momento",
+        "label": "Em que situação estava?",
+        "type": "select",
+        "options": [
+          "Em repouso",
+          "Após atividade",
+          "Após estresse",
+          "Outra"
+        ]
+      },
+      {
+        "id": "senti",
+        "label": "O que estava sentindo?",
+        "type": "text"
+      },
+      {
+        "id": "observacao",
+        "label": "O que mais quer registrar?",
+        "type": "text"
+      }
+    ],
+    "measurement": "pressao",
+    "accent": "rose",
+    "agenda": "Retornos e exames da pressão"
+  },
+  "insuficiencia-cardiaca": {
+    "title": "Meu peso e meu dia",
+    "subtitle": "Compare seus registros de peso e anote cansaço, respiração e inchaço.",
+    "action": "Registrar peso e como estou",
+    "profileFields": [
+      {
+        "id": "liquidos",
+        "label": "Orientação individual sobre líquidos",
+        "type": "text"
+      },
+      {
+        "id": "alimentacao",
+        "label": "Orientação individual sobre alimentação",
+        "type": "text"
+      },
+      {
+        "id": "plano",
+        "label": "Plano recebido para mudanças nos sintomas",
+        "type": "text"
+      },
+      {
+        "id": "contato",
+        "label": "Equipe ou contato de referência",
+        "type": "text"
+      }
+    ],
+    "fields": [
+      {
+        "id": "peso",
+        "label": "Peso",
+        "type": "number",
+        "unit": "kg",
+        "min": 0.1,
+        "max": 500
+      },
+      {
+        "id": "falta_ar",
+        "label": "Falta de ar percebida",
+        "type": "select",
+        "options": [
+          "Não percebi",
+          "Leve",
+          "Moderado",
+          "Intenso"
+        ]
+      },
+      {
+        "id": "inchaco",
+        "label": "Inchaço percebido",
+        "type": "select",
+        "options": [
+          "Não percebi",
+          "Leve",
+          "Moderado",
+          "Intenso"
+        ]
+      },
+      {
+        "id": "atividade",
+        "label": "Que atividade ficou difícil?",
+        "type": "text"
+      },
+      {
+        "id": "observacao",
+        "label": "O que mais quer registrar?",
+        "type": "text"
+      }
+    ],
+    "metric": "peso",
+    "accent": "rose",
+    "agenda": "Retornos do coração"
+  },
+  "coronaria": {
+    "title": "Minha recuperação do coração",
+    "subtitle": "Registre sua reabilitação e o que mudou na rotina desde o atendimento.",
+    "action": "Registrar recuperação",
+    "profileFields": [
+      {
+        "id": "evento",
+        "label": "Data do atendimento ou procedimento",
+        "type": "date"
+      },
+      {
+        "id": "procedimento",
+        "label": "Qual atendimento ou procedimento?",
+        "type": "text"
+      },
+      {
+        "id": "atividades",
+        "label": "Atividades liberadas pela equipe",
+        "type": "text"
+      },
+      {
+        "id": "contato",
+        "label": "Equipe ou contato de referência",
+        "type": "text"
+      }
+    ],
+    "fields": [
+      {
+        "id": "atividade",
+        "label": "Atividade ou sessão realizada",
+        "type": "text"
+      },
+      {
+        "id": "disposicao",
+        "label": "Como ficou sua disposição?",
+        "type": "select",
+        "options": [
+          "Melhor",
+          "Igual",
+          "Pior",
+          "Não sei comparar"
+        ]
+      },
+      {
+        "id": "dificuldade",
+        "label": "O que dificultou a atividade?",
+        "type": "text"
+      },
+      {
+        "id": "observacao",
+        "label": "O que mais quer registrar?",
+        "type": "text"
+      }
+    ],
+    "accent": "rose",
+    "agenda": "Reabilitação e retornos"
+  },
+  "arritmia": {
+    "title": "Meu diário do ritmo do coração",
+    "subtitle": "Anote o horário dos episódios e leve o registro à consulta.",
+    "action": "Registrar episódio",
+    "profileFields": [
+      {
+        "id": "tipo",
+        "label": "Nome informado pela equipe",
+        "type": "text"
+      },
+      {
+        "id": "plano",
+        "label": "Orientações recebidas para os episódios",
+        "type": "text"
+      },
+      {
+        "id": "contato",
+        "label": "Equipe ou contato de referência",
+        "type": "text"
+      }
+    ],
+    "fields": [
+      {
+        "id": "duracao",
+        "label": "Duração aproximada",
+        "type": "number",
+        "unit": "min",
+        "min": 0,
+        "max": 1440
+      },
+      {
+        "id": "pulso",
+        "label": "Pulso medido, se disponível",
+        "type": "number",
+        "unit": "bpm",
+        "min": 1,
+        "max": 400
+      },
+      {
+        "id": "senti",
+        "label": "O que sentiu durante o episódio?",
+        "type": "text"
+      },
+      {
+        "id": "atividade",
+        "label": "O que estava fazendo?",
+        "type": "text"
+      },
+      {
+        "id": "observacao",
+        "label": "O que mais quer registrar?",
+        "type": "text"
+      }
+    ],
+    "accent": "rose",
+    "agenda": "Consultas e exames do ritmo"
+  },
+  "renal": {
+    "title": "Meus exames dos rins",
+    "subtitle": "Guarde resultados como aparecem no laudo e as orientações da sua equipe.",
+    "action": "Registrar resultado ou cuidado",
+    "profileFields": [
+      {
+        "id": "cuidado",
+        "label": "Acompanhamento atual",
+        "type": "select",
+        "options": [
+          "Sem diálise",
+          "Em preparação para diálise",
+          "Em diálise",
+          "Após transplante",
+          "Não sei informar"
+        ]
+      },
+      {
+        "id": "liquidos",
+        "label": "Orientação individual sobre líquidos",
+        "type": "text"
+      },
+      {
+        "id": "alimentacao",
+        "label": "Orientação individual sobre alimentação",
+        "type": "text"
+      },
+      {
+        "id": "contato",
+        "label": "Equipe ou contato de referência",
+        "type": "text"
+      }
+    ],
+    "fields": [
+      {
+        "id": "creatinina",
+        "label": "Creatinina do laudo",
+        "type": "number",
+        "unit": "mg/dL",
+        "min": 0,
+        "max": 100
+      },
+      {
+        "id": "tfg",
+        "label": "Filtração informada no laudo (TFG)",
+        "type": "number",
+        "unit": "mL/min/1,73 m²",
+        "min": 0,
+        "max": 300
+      },
+      {
+        "id": "potassio",
+        "label": "Potássio do laudo",
+        "type": "number",
+        "unit": "mEq/L",
+        "min": 0,
+        "max": 20
+      },
+      {
+        "id": "observacao",
+        "label": "O que mais quer registrar?",
+        "type": "text"
+      }
+    ],
+    "accent": "blue",
+    "agenda": "Exames e consultas dos rins"
+  },
+  "dialise": {
+    "title": "Minhas sessões de diálise",
+    "subtitle": "Registre as sessões e mantenha à mão o contato do seu serviço.",
+    "action": "Registrar sessão",
+    "profileFields": [
+      {
+        "id": "modalidade",
+        "label": "Tipo de diálise",
+        "type": "select",
+        "options": [
+          "Hemodiálise",
+          "Diálise peritoneal",
+          "Outro"
+        ]
+      },
+      {
+        "id": "servico",
+        "label": "Serviço onde faz o tratamento",
+        "type": "text"
+      },
+      {
+        "id": "horarios",
+        "label": "Dias e horários combinados",
+        "type": "text"
+      },
+      {
+        "id": "contato",
+        "label": "Equipe ou contato de referência",
+        "type": "text"
+      }
+    ],
+    "fields": [
+      {
+        "id": "sessao",
+        "label": "Como ficou a sessão?",
+        "type": "select",
+        "options": [
+          "Realizada",
+          "Remarcada",
+          "Não realizada"
+        ]
+      },
+      {
+        "id": "peso_antes",
+        "label": "Peso antes, se medido",
+        "type": "number",
+        "unit": "kg",
+        "min": 0.1,
+        "max": 500
+      },
+      {
+        "id": "peso_depois",
+        "label": "Peso depois, se medido",
+        "type": "number",
+        "unit": "kg",
+        "min": 0.1,
+        "max": 500
+      },
+      {
+        "id": "acesso",
+        "label": "O que observou no acesso ou cateter?",
+        "type": "text"
+      },
+      {
+        "id": "observacao",
+        "label": "O que mais quer registrar?",
+        "type": "text"
+      }
+    ],
+    "accent": "blue",
+    "agenda": "Sessões e retornos"
+  },
+  "asma": {
+    "title": "Minha respiração com asma",
+    "subtitle": "Registre sintomas, noites interrompidas e dificuldades com o inalador.",
+    "action": "Registrar respiração",
+    "profileFields": [
+      {
+        "id": "plano",
+        "label": "Plano de ação recebido da equipe",
+        "type": "text"
+      },
+      {
+        "id": "tecnica",
+        "label": "Última conferência do uso do inalador com a equipe",
+        "type": "date"
+      },
+      {
+        "id": "contato",
+        "label": "Equipe ou contato de referência",
+        "type": "text"
+      }
+    ],
+    "fields": [
+      {
+        "id": "sintomas",
+        "label": "Sintomas respiratórios percebidos",
+        "type": "select",
+        "options": [
+          "Não percebi",
+          "Leve",
+          "Moderado",
+          "Intenso"
+        ]
+      },
+      {
+        "id": "noite",
+        "label": "A respiração interrompeu o sono?",
+        "type": "select",
+        "options": [
+          "Não",
+          "Sim",
+          "Não se aplica"
+        ]
+      },
+      {
+        "id": "gatilho",
+        "label": "Algo pareceu piorar a respiração?",
+        "type": "text"
+      },
+      {
+        "id": "inalador",
+        "label": "Dificuldade com o inalador ou relato de uso?",
+        "type": "text"
+      },
+      {
+        "id": "observacao",
+        "label": "O que mais quer registrar?",
+        "type": "text"
+      }
+    ],
+    "accent": "blue",
+    "agenda": "Revisões da respiração"
+  },
+  "dpoc": {
+    "title": "Minha respiração e minhas atividades",
+    "subtitle": "Anote o que consegue fazer e o que mudou na respiração.",
+    "action": "Registrar meu dia",
+    "profileFields": [
+      {
+        "id": "inalador",
+        "label": "Orientações recebidas sobre os inaladores",
+        "type": "text"
+      },
+      {
+        "id": "oxigenio",
+        "label": "Orientação da equipe sobre oxigênio, se usa",
+        "type": "text"
+      },
+      {
+        "id": "contato",
+        "label": "Equipe ou contato de referência",
+        "type": "text"
+      }
+    ],
+    "fields": [
+      {
+        "id": "falta_ar",
+        "label": "Falta de ar percebida",
+        "type": "select",
+        "options": [
+          "Não percebi",
+          "Leve",
+          "Moderado",
+          "Intenso"
+        ]
+      },
+      {
+        "id": "atividade",
+        "label": "Atividade que conseguiu fazer",
+        "type": "text"
+      },
+      {
+        "id": "mudanca",
+        "label": "Mudança percebida na tosse ou secreção",
+        "type": "text"
+      },
+      {
+        "id": "observacao",
+        "label": "O que mais quer registrar?",
+        "type": "text"
+      }
+    ],
+    "accent": "blue",
+    "agenda": "Respiração e reabilitação"
+  },
+  "polifarmacia": {
+    "title": "Minha lista de remédios, conferida",
+    "subtitle": "Revise cada medicamento da ficha e registre o que está difícil de seguir.",
+    "action": "Conferir um medicamento",
+    "profileFields": [
+      {
+        "id": "responsavel",
+        "label": "Quem ajuda a organizar os remédios?",
+        "type": "text"
+      },
+      {
+        "id": "revisao",
+        "label": "Data da última revisão com a equipe",
+        "type": "date"
+      },
+      {
+        "id": "extras",
+        "label": "Vitaminas, chás e outros produtos que usa",
+        "type": "text"
+      },
+      {
+        "id": "contato",
+        "label": "Equipe ou contato de referência",
+        "type": "text"
+      }
+    ],
+    "fields": [
+      {
+        "id": "medicamento",
+        "label": "Medicamento da ficha",
+        "type": "medication"
+      },
+      {
+        "id": "dificuldade",
+        "label": "O que precisa ser conversado?",
+        "type": "select",
+        "options": [
+          "Lista conferida, sem dúvida no momento",
+          "Horário difícil de seguir",
+          "Dificuldade para engolir",
+          "Dificuldade para conseguir o remédio",
+          "Dúvida sobre a receita",
+          "Outra dificuldade"
+        ]
+      },
+      {
+        "id": "observacao",
+        "label": "O que mais quer registrar?",
+        "type": "text"
+      }
+    ],
+    "workflow": "medications",
+    "accent": "amber",
+    "agenda": "Revisão dos medicamentos"
+  },
+  "idoso": {
+    "title": "Minha autonomia no dia a dia",
+    "subtitle": "Registre a ajuda necessária, mudanças na rotina e quem acompanha o cuidado.",
+    "action": "Registrar rotina",
+    "profileFields": [
+      {
+        "id": "apoio",
+        "label": "Quem ajuda no dia a dia?",
+        "type": "text"
+      },
+      {
+        "id": "mobilidade",
+        "label": "Apoio usado para caminhar, se houver",
+        "type": "text"
+      },
+      {
+        "id": "contato",
+        "label": "Equipe ou contato de referência",
+        "type": "text"
+      }
+    ],
+    "fields": [
+      {
+        "id": "ajuda",
+        "label": "Quanto apoio precisou hoje?",
+        "type": "select",
+        "options": [
+          "Fiz minhas tarefas sozinho",
+          "Precisei de alguma ajuda",
+          "Precisei de ajuda na maior parte do dia"
+        ]
+      },
+      {
+        "id": "queda",
+        "label": "Houve queda hoje?",
+        "type": "select",
+        "options": [
+          "Não",
+          "Sim"
+        ]
+      },
+      {
+        "id": "atividade",
+        "label": "Qual tarefa ficou mais difícil?",
+        "type": "text"
+      },
+      {
+        "id": "observacao",
+        "label": "O que mais quer registrar?",
+        "type": "text"
+      }
+    ],
+    "accent": "amber",
+    "agenda": "Consultas e apoio ao cuidado"
+  },
+  "memoria": {
+    "title": "Rotina e apoio de quem cuida",
+    "subtitle": "Registre sono, mudanças percebidas e a participação dos cuidadores.",
+    "action": "Registrar rotina de cuidado",
+    "profileFields": [
+      {
+        "id": "cuidador",
+        "label": "Quem acompanha a pessoa?",
+        "type": "text"
+      },
+      {
+        "id": "rotina",
+        "label": "Rotina que costuma ajudar",
+        "type": "text"
+      },
+      {
+        "id": "contato",
+        "label": "Equipe ou contato de referência",
+        "type": "text"
+      }
+    ],
+    "fields": [
+      {
+        "id": "sono",
+        "label": "Como foi a noite?",
+        "type": "select",
+        "options": [
+          "Sem interrupções percebidas",
+          "Com interrupções",
+          "Não sei informar"
+        ]
+      },
+      {
+        "id": "mudanca",
+        "label": "Mudança percebida no comportamento ou na memória",
+        "type": "text"
+      },
+      {
+        "id": "apoio",
+        "label": "Quem ajudou hoje?",
+        "type": "text"
+      },
+      {
+        "id": "descanso",
+        "label": "Como foi o descanso de quem cuida?",
+        "type": "text"
+      },
+      {
+        "id": "observacao",
+        "label": "O que mais quer registrar?",
+        "type": "text"
+      }
+    ],
+    "accent": "amber",
+    "agenda": "Apoio à memória e ao cuidador"
+  },
+  "parkinson": {
+    "title": "Movimento ao longo do dia",
+    "subtitle": "Anote quando o movimento ficou mais fácil ou difícil e o contexto dos remédios.",
+    "action": "Registrar momento do dia",
+    "profileFields": [
+      {
+        "id": "apoio",
+        "label": "Quem ajuda na rotina?",
+        "type": "text"
+      },
+      {
+        "id": "orientacao",
+        "label": "Orientações recebidas sobre horários e alimentação",
+        "type": "text"
+      },
+      {
+        "id": "contato",
+        "label": "Equipe ou contato de referência",
+        "type": "text"
+      }
+    ],
+    "fields": [
+      {
+        "id": "movimento",
+        "label": "Como estava o movimento?",
+        "type": "select",
+        "options": [
+          "Mais fácil que o habitual",
+          "Como de costume",
+          "Mais difícil que o habitual"
+        ]
+      },
+      {
+        "id": "remedio",
+        "label": "Horário do último remédio, se souber",
+        "type": "text"
+      },
+      {
+        "id": "atividade",
+        "label": "Atividade que estava fazendo",
+        "type": "text"
+      },
+      {
+        "id": "dificuldade",
+        "label": "Dificuldade percebida para caminhar, falar ou engolir",
+        "type": "text"
+      },
+      {
+        "id": "observacao",
+        "label": "O que mais quer registrar?",
+        "type": "text"
+      }
+    ],
+    "accent": "amber",
+    "agenda": "Consultas e reabilitação"
+  },
+  "pos-operatorio": {
+    "title": "Minha recuperação da cirurgia",
+    "subtitle": "Veja o tempo desde a cirurgia e registre a evolução conforme as orientações de alta.",
+    "action": "Registrar recuperação",
+    "profileFields": [
+      {
+        "id": "cirurgia",
+        "label": "Nome da cirurgia",
+        "type": "text"
+      },
+      {
+        "id": "cirurgia_data",
+        "label": "Data da cirurgia",
+        "type": "date"
+      },
+      {
+        "id": "curativo",
+        "label": "Orientação recebida para o curativo",
+        "type": "text"
+      },
+      {
+        "id": "restricoes",
+        "label": "Atividades e restrições informadas na alta",
+        "type": "text"
+      },
+      {
+        "id": "contato",
+        "label": "Equipe ou contato de referência",
+        "type": "text"
+      }
+    ],
+    "fields": [
+      {
+        "id": "dor",
+        "label": "Dor percebida: 0 sem dor, 10 a maior que imagina",
+        "type": "number",
+        "unit": "de 0 a 10",
+        "min": 0,
+        "max": 10
+      },
+      {
+        "id": "ferida",
+        "label": "O que observou no local da cirurgia?",
+        "type": "text"
+      },
+      {
+        "id": "curativo",
+        "label": "Cuidado do curativo orientado para hoje",
+        "type": "select",
+        "options": [
+          "Realizado",
+          "Ainda não realizado",
+          "Não se aplica"
+        ]
+      },
+      {
+        "id": "atividade",
+        "label": "O que conseguiu fazer hoje?",
+        "type": "text"
+      },
+      {
+        "id": "observacao",
+        "label": "O que mais quer registrar?",
+        "type": "text"
+      }
+    ],
+    "workflow": "surgery",
+    "metric": "dor",
+    "accent": "teal",
+    "agenda": "Retorno e cuidados após cirurgia"
+  },
+  "pos-avc": {
+    "title": "Minha reabilitação após o AVC",
+    "subtitle": "Registre sessões e pequenas conquistas nas atividades do dia a dia.",
+    "action": "Registrar reabilitação",
+    "profileFields": [
+      {
+        "id": "evento",
+        "label": "Data do AVC, se souber",
+        "type": "date"
+      },
+      {
+        "id": "equipe",
+        "label": "Profissionais que acompanham a reabilitação",
+        "type": "text"
+      },
+      {
+        "id": "orientacao",
+        "label": "Orientações sobre alimentação e atividades",
+        "type": "text"
+      },
+      {
+        "id": "contato",
+        "label": "Equipe ou contato de referência",
+        "type": "text"
+      }
+    ],
+    "fields": [
+      {
+        "id": "sessao",
+        "label": "Tipo de atividade",
+        "type": "select",
+        "options": [
+          "Fisioterapia",
+          "Fonoaudiologia",
+          "Terapia ocupacional",
+          "Atividade combinada em casa",
+          "Outra"
+        ]
+      },
+      {
+        "id": "conquista",
+        "label": "O que conseguiu fazer?",
+        "type": "text"
+      },
+      {
+        "id": "dificuldade",
+        "label": "Em que precisou de ajuda?",
+        "type": "text"
+      },
+      {
+        "id": "observacao",
+        "label": "O que mais quer registrar?",
+        "type": "text"
+      }
+    ],
+    "accent": "teal",
+    "agenda": "Sessões de reabilitação"
+  },
+  "dor-cronica": {
+    "title": "Minha dor e o que consigo fazer",
+    "subtitle": "Acompanhe sua percepção da dor junto das atividades e do sono.",
+    "action": "Registrar dor e rotina",
+    "profileFields": [
+      {
+        "id": "local",
+        "label": "Onde costuma sentir dor?",
+        "type": "text"
+      },
+      {
+        "id": "objetivo",
+        "label": "Atividade que gostaria de retomar",
+        "type": "text"
+      },
+      {
+        "id": "contato",
+        "label": "Equipe ou contato de referência",
+        "type": "text"
+      }
+    ],
+    "fields": [
+      {
+        "id": "dor",
+        "label": "Dor percebida: 0 sem dor, 10 a maior que imagina",
+        "type": "number",
+        "unit": "de 0 a 10",
+        "min": 0,
+        "max": 10
+      },
+      {
+        "id": "atividade",
+        "label": "Como a dor afetou suas atividades?",
+        "type": "text"
+      },
+      {
+        "id": "sono",
+        "label": "A dor atrapalhou o sono?",
+        "type": "select",
+        "options": [
+          "Não",
+          "Sim",
+          "Não se aplica"
+        ]
+      },
+      {
+        "id": "observacao",
+        "label": "O que mais quer registrar?",
+        "type": "text"
+      }
+    ],
+    "metric": "dor",
+    "accent": "teal",
+    "agenda": "Acompanhamento da dor"
+  },
+  "articulacoes": {
+    "title": "Minhas articulações e movimentos",
+    "subtitle": "Registre quais movimentos ficaram difíceis e como isso afetou sua rotina.",
+    "action": "Registrar movimentos",
+    "profileFields": [
+      {
+        "id": "articulacoes",
+        "label": "Quais articulações acompanha?",
+        "type": "text"
+      },
+      {
+        "id": "atividades",
+        "label": "Atividades orientadas pela equipe",
+        "type": "text"
+      },
+      {
+        "id": "contato",
+        "label": "Equipe ou contato de referência",
+        "type": "text"
+      }
+    ],
+    "fields": [
+      {
+        "id": "local",
+        "label": "Articulação ou região",
+        "type": "text"
+      },
+      {
+        "id": "dor",
+        "label": "Dor percebida: 0 sem dor, 10 a maior que imagina",
+        "type": "number",
+        "unit": "de 0 a 10",
+        "min": 0,
+        "max": 10
+      },
+      {
+        "id": "rigidez",
+        "label": "Rigidez ou dificuldade percebida",
+        "type": "text"
+      },
+      {
+        "id": "atividade",
+        "label": "Atividade afetada",
+        "type": "text"
+      },
+      {
+        "id": "observacao",
+        "label": "O que mais quer registrar?",
+        "type": "text"
+      }
+    ],
+    "metric": "dor",
+    "accent": "teal",
+    "agenda": "Articulações e reabilitação"
+  },
+  "osteoporose": {
+    "title": "Meus ossos e a segurança em casa",
+    "subtitle": "Reúna o acompanhamento do tratamento e registros sobre quedas e equilíbrio.",
+    "action": "Registrar cuidado ou ocorrência",
+    "profileFields": [
+      {
+        "id": "orientacao",
+        "label": "Orientações recebidas para o tratamento",
+        "type": "text"
+      },
+      {
+        "id": "seguranca",
+        "label": "Mudanças combinadas para a segurança em casa",
+        "type": "text"
+      },
+      {
+        "id": "contato",
+        "label": "Equipe ou contato de referência",
+        "type": "text"
+      }
+    ],
+    "fields": [
+      {
+        "id": "ocorrencia",
+        "label": "O que aconteceu?",
+        "type": "select",
+        "options": [
+          "Cuidado de rotina",
+          "Quase caí",
+          "Houve queda",
+          "Outro"
+        ]
+      },
+      {
+        "id": "local",
+        "label": "Onde e em que situação?",
+        "type": "text"
+      },
+      {
+        "id": "apoio",
+        "label": "Apoio recebido ou medida combinada",
+        "type": "text"
+      },
+      {
+        "id": "observacao",
+        "label": "O que mais quer registrar?",
+        "type": "text"
+      }
+    ],
+    "accent": "teal",
+    "agenda": "Revisões e exames dos ossos"
+  },
+  "tireoide": {
+    "title": "Meus exames da tireoide",
+    "subtitle": "Guarde os resultados e as orientações sobre os horários do tratamento.",
+    "action": "Registrar exame ou mudança",
+    "profileFields": [
+      {
+        "id": "tipo",
+        "label": "Condição informada",
+        "type": "select",
+        "options": [
+          "Hipotireoidismo",
+          "Hipertireoidismo",
+          "Outra",
+          "Não sei informar"
+        ]
+      },
+      {
+        "id": "horario",
+        "label": "Orientação recebida sobre horários",
+        "type": "text"
+      },
+      {
+        "id": "contato",
+        "label": "Equipe ou contato de referência",
+        "type": "text"
+      }
+    ],
+    "fields": [
+      {
+        "id": "tsh",
+        "label": "TSH do laudo",
+        "type": "number",
+        "unit": "mUI/L",
+        "min": 0,
+        "max": 1000
+      },
+      {
+        "id": "t4",
+        "label": "T4 livre do laudo",
+        "type": "number",
+        "unit": "ng/dL",
+        "min": 0,
+        "max": 100
+      },
+      {
+        "id": "mudanca",
+        "label": "Mudança que gostaria de conversar",
+        "type": "text"
+      },
+      {
+        "id": "observacao",
+        "label": "O que mais quer registrar?",
+        "type": "text"
+      }
+    ],
+    "accent": "blue",
+    "agenda": "Exames e retornos da tireoide"
+  },
+  "saude-mental": {
+    "title": "Como estou e minha rede de apoio",
+    "subtitle": "Um diário pessoal de humor, sono e rotina para conversar no atendimento.",
+    "action": "Registrar como estou",
+    "profileFields": [
+      {
+        "id": "apoio",
+        "label": "Pessoas ou serviços que posso procurar",
+        "type": "text"
+      },
+      {
+        "id": "plano",
+        "label": "Plano de apoio combinado com a equipe",
+        "type": "text"
+      },
+      {
+        "id": "contato",
+        "label": "Equipe ou contato de referência",
+        "type": "text"
+      }
+    ],
+    "fields": [
+      {
+        "id": "humor",
+        "label": "Como descreveria seu dia?",
+        "type": "select",
+        "options": [
+          "Muito difícil",
+          "Difícil",
+          "Regular",
+          "Bom",
+          "Muito bom"
+        ]
+      },
+      {
+        "id": "sono",
+        "label": "Tempo aproximado de sono",
+        "type": "number",
+        "unit": "horas",
+        "min": 0,
+        "max": 24
+      },
+      {
+        "id": "rotina",
+        "label": "O que ajudou ou dificultou o dia?",
+        "type": "text"
+      },
+      {
+        "id": "observacao",
+        "label": "O que mais quer registrar?",
+        "type": "text"
+      }
+    ],
+    "accent": "teal",
+    "agenda": "Consultas e encontros de cuidado"
+  },
+  "oncologia": {
+    "title": "Meu tratamento e as próximas etapas",
+    "subtitle": "Organize as etapas informadas pela equipe e registre o que quer relatar.",
+    "action": "Registrar etapa ou como estou",
+    "profileFields": [
+      {
+        "id": "tratamento",
+        "label": "Tratamento informado pela equipe",
+        "type": "text"
+      },
+      {
+        "id": "servico",
+        "label": "Serviço onde faz o tratamento",
+        "type": "text"
+      },
+      {
+        "id": "plano",
+        "label": "Orientações recebidas para intercorrências",
+        "type": "text"
+      },
+      {
+        "id": "contato",
+        "label": "Equipe ou contato de referência",
+        "type": "text"
+      }
+    ],
+    "fields": [
+      {
+        "id": "etapa",
+        "label": "Sessão, ciclo ou etapa do tratamento",
+        "type": "text"
+      },
+      {
+        "id": "situacao",
+        "label": "Situação da etapa",
+        "type": "select",
+        "options": [
+          "Realizada",
+          "Programada",
+          "Remarcada",
+          "Não se aplica"
+        ]
+      },
+      {
+        "id": "senti",
+        "label": "O que sentiu e quer relatar à equipe?",
+        "type": "text"
+      },
+      {
+        "id": "alimentacao",
+        "label": "Como foi a alimentação neste dia?",
+        "type": "text"
+      },
+      {
+        "id": "observacao",
+        "label": "O que mais quer registrar?",
+        "type": "text"
+      }
+    ],
+    "accent": "rose",
+    "agenda": "Sessões, exames e retornos"
+  },
+  "outros": {
+    "title": "Meu acompanhamento personalizado",
+    "subtitle": "Dê um nome ao cuidado e acompanhe os pontos combinados com sua equipe.",
+    "action": "Registrar acompanhamento",
+    "profileFields": [
+      {
+        "id": "nome",
+        "label": "Nome do cuidado ou condição",
+        "type": "text"
+      },
+      {
+        "id": "acompanhar",
+        "label": "O que a equipe pediu para acompanhar?",
+        "type": "text"
+      },
+      {
+        "id": "contato",
+        "label": "Equipe ou contato de referência",
+        "type": "text"
+      }
+    ],
+    "fields": [
+      {
+        "id": "aspecto",
+        "label": "Qual aspecto está acompanhando?",
+        "type": "text"
+      },
+      {
+        "id": "resultado",
+        "label": "O que observou ou mediu?",
+        "type": "text"
+      },
+      {
+        "id": "observacao",
+        "label": "O que mais quer registrar?",
+        "type": "text"
+      }
+    ],
+    "accent": "teal",
+    "agenda": "Agenda do meu cuidado"
+  }
+}

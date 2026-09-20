@@ -41,3 +41,17 @@ Dados por conta+pessoa+programa: ativação autorizada, cuidados diários defini
 API care-programas.js no greenlight-backend: lista e GET/PUT versionado, auth+vínculo de conta pessoal, CAS409. Publicar backend antes do frontend. DEMO somente DEV, sintético e em memória. Fontes editoriais consultadas em20/09/2026: Ministério da Saúde, Diabetes (https://www.gov.br/saude/pt-br/assuntos/saude-de-a-a-z/d/diabetes), Hipertensão (https://www.gov.br/saude/pt-br/assuntos/saude-de-a-a-z/h/hipertensao), DRC (https://www.gov.br/saude/pt-br/assuntos/saude-de-a-a-z/d/drc), Uso Seguro de Medicamentos (https://www.gov.br/saude/pt-br/assuntos/saude-de-a-a-z/s/saude-da-pessoa-idosa/uso-seguro-de-medicamentos). Perguntas não definem frequências, restrições ou condutas.
 
 Validação:35testes frontend e build TS/Vite PASS. QA local com Maria fictícia: ativaDiabetes+Pressão alta, cria cuidado/anotação/dúvida/plano/consulta, aviso amanhã, menu móvel390px sem overflow. Backend462testes comPG sintético. Não rodaram jornada autenticada remota nem entrega real deWhatsApp/calendário. Site Care original e Pagar.me inalterados.
+
+## Acompanhamento específico por programa — 20/09/2026
+
+A aba Meu cuidado muda conforme a condição, com 22 definições em programas/personalizacao.json. Diabetes e hipertensão leem apenas o tipo correspondente de medição do resumo familiar autorizado (30 dias, gráfico dos 12 últimos registros). O diário registra contexto; não duplica medições na ficha. IC tem peso/sintomas; DRC tem resultados de laudo e unidades; diálise tem sessões; polifarmácia confere os medicamentos reais ativos e preserva nome/dose no histórico; pós-operatório tem cirurgia/data/alta, dias decorridos, dor e curativo. Asma/DPOC, memória, Parkinson, pós-AVC, dor, ossos, tireoide, saúde mental e oncologia têm campos próprios. Gestação mantém a jornada anterior.
+
+Persistência: acompanhamento opcional em Programa, contendo perfil e registros datados (máximo 365). Campos validados na API pelo ID do programa; contrato antigo permanece válido. Backend preserva atomicamente a extensão existente quando cliente antigo a omite; CAS protege edições. Campos vazios não viram zero. Dor usa gráfico fixo de 0 a 10; outras medidas têm escala explícita. Gráficos não classificam melhora ou risco. Conferência de medicamentos não calcula interações, não altera doses e não prescreve. Novos registros não disparam alertas nem mensagens. Impressão inclui os registros exibidos; Ver mais expande o histórico.
+
+Validação: 468 testes backend com PostgreSQL sintético e 42 frontend; build passou. QA fictício via CUA: diabetes mostra glicemias 104/112; conferência de medicamento com dificuldade de horário; pós-operatório com cirurgia em 15/09 mostra 5 dias em 20/09; registro de dor zero e curativo; 390px sem overflow. Os esquemas dos 22 programas têm testes, mas não houve revisão manual de cada fluxo. Não foram testados login remoto real ou envios reais.
+
+Referências editoriais oficiais, sem gerar protocolos automáticos:
+- https://linhasdecuidado.saude.gov.br/portal/insuficiencia-cardiaca-%28IC%29-no-adulto/sou-paciente
+- https://linhasdecuidado.saude.gov.br/portal/asma/sou-paciente/
+- https://linhasdecuidado.saude.gov.br/portal/doenca-renal-cronica-%28DRC%29-em-adultos/sou-paciente
+- Referências de diabetes, hipertensão e pessoa idosa na seção anterior.
