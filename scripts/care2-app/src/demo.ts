@@ -1,9 +1,18 @@
+import type { Registro, Gestacao } from "./gestacao/model";
+const gestacoes = new Map<string, Registro>();
 // Dados sintéticos para ver o desenho sem conta. Só existe em desenvolvimento
 // (import.meta.env.DEV): o build de produção não carrega este arquivo.
 const today = new Intl.DateTimeFormat("en-CA", { timeZone: "America/Sao_Paulo" }).format(new Date());
 const day = (n: number) => { const d = new Date(today + "T12:00:00Z"); d.setUTCDate(d.getUTCDate() - n); return d.toISOString().slice(0, 10); };
 const family = new URLSearchParams(location.search).get("previa") === "familia";
-export function demoResponse(path: string, method: string): unknown {
+export function demoResponse(path: string, method: string, body?: unknown): unknown {
+  if (path.startsWith("/care2/pessoas/") && path.endsWith("/gestacao")) {
+    const current = gestacoes.get(path) ?? { data: null, version: 0 };
+    if (method === "GET") return current;
+    const input = body as { version: number; data: Gestacao };
+    if (input.version !== current.version) throw new Error("Prévia atualizada em outra tela. Recarregue.");
+    const next = { data: input.data, version: current.version + 1 }; gestacoes.set(path, next); return next;
+  }
   if (family && method === "GET") {
     if (path === "/my-patients") return [{ id: 1, patientPhone: "5500000000001", patientName: "Maria — exemplo", activeMedications: 2 }, { id: 2, patientPhone: "5500000000002", patientName: "João — exemplo", activeMedications: 1 }];
     if (path === "/minha-assinatura") return { tipoConta: "pessoal", plano: { id: "pessoal_familia", publico: "pessoal", nome: "Família", limitePacientes: 3 }, usados: 2, limite: 3, teste: { ativo: true, ate: new Date(Date.now()+5*86400000).toISOString() }, assinatura: null };

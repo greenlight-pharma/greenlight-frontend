@@ -11,6 +11,7 @@ import Resumo from "./Resumo";
 import Avisos from "./Avisos";
 import Conta from "./Conta";
 import NovaPessoa from "./NovaPessoa";
+import GestacaoPage, { GestacaoHub } from "../gestacao/Gestacao";
 
 // ============================================================
 // [PESSOAL] Vytal Care para você e sua família. Mesma conta e mesmo
@@ -62,6 +63,8 @@ export default function FamilyWorkspace({ session: current }: { session: Session
         <header className="care2-topbar"><Brand /><p>O cuidado continua. Mesmo em casa.</p><a href="/vytal-care2/">Conhecer o Care ↗</a></header>
         <Routes>
           <Route path="/" element={<Inicio />} />
+          <Route path="/gestacao" element={<GestacaoHub />} />
+          <Route path="/p/:phone/gestacao" element={<GestacaoPage />} />
           <Route path="/p/:phone" element={<PessoaPage />} />
           <Route path="/p/:phone/receita" element={<Recipe />} />
           <Route path="/p/:phone/resumo" element={<Resumo />} />

@@ -33,7 +33,7 @@ export const session = {
 
 export async function api<T = unknown>(path: string, options: { method?: string; body?: unknown; authenticated?: boolean } = {}): Promise<T> {
   const { method = "GET", body, authenticated = true } = options;
-  if (DEMO) { const { demoResponse } = await import("./demo"); try { return demoResponse(path, method) as T; } catch (e) { throw new ServiceError(errorText(e)); } }
+  if (DEMO) { const { demoResponse } = await import("./demo"); try { return demoResponse(path, method, body) as T; } catch (e) { throw new ServiceError(errorText(e)); } }
   const token = authenticated ? current?.token : undefined;
   let response: Response;
   try {
