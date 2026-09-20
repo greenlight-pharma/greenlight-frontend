@@ -1,3 +1,4 @@
+const measurementDemo=new Map<string, {id:number;tipo:string;scheduleTimes:string;startDate?:string;endDate?:string}[]>();
 import perguntasWhatsapp from './programas/whatsapp-perguntas.json';
 import type {WhatsappState,WhatsappConfig} from './programas/Whatsapp';
 const whatsappDemo=new Map<string,WhatsappState>();
@@ -12,7 +13,14 @@ const day = (n: number) => { const d = new Date(today + "T12:00:00Z"); d.setUTCD
 const family = new URLSearchParams(location.search).get("previa") === "familia";
 export function demoResponse(path: string, method: string, body?: unknown): unknown {
   if(path.startsWith('/care2/pessoas/')&&path.includes('/whatsapp/')){
-    const id=path.split('/').pop()!;
+    const start=path.endsWith('/ativar');const target=start?path.slice(0,-7):path;
+    const id=target.split('/').pop()!;
+    if(start){
+      const prev=whatsappDemo.get(target);const next={data:{...prev?.data,mode:'programa' as const,enabled:true,consent:true,question:(perguntasWhatsapp as Record<string,string[]>)[id][0],time:prev?.data?.time??'18:00',days:prev?.data?.days??[1,3,5]},version:(prev?.version??0)+1,available:false,questions:(perguntasWhatsapp as Record<string,string[]>)[id],history:prev?.history??[]};
+      whatsappDemo.set(target,next);
+      if(id!=='gestacao'){const key=target.replace('/whatsapp/','/programas/');const old=programasDemo.get(key);programasDemo.set(key,{data:{...old?.data??{consentimento:true,objetivo:'',orientacoes:'',compromissos:[],duvidas:[],cuidados:[],anotacoes:[]},status:'ativo'},version:(old?.version??0)+1});}
+      return next;
+    }
     const current=whatsappDemo.get(path)??{data:null,version:0,available:false,questions:(perguntasWhatsapp as Record<string,string[]>)[id],history:[]};
     if(method==='GET')return current;
     const input=body as {version:number;data:WhatsappConfig};
@@ -44,6 +52,11 @@ export function demoResponse(path: string, method: string, body?: unknown): unkn
   }
   // Prévia do Pix: um pedido de mentira, que nunca é pago.
   if (method === "POST" && path === "/assinatura/web/pix") return { id: "or_previa", qrCode: "00020101021226870014br.gov.bcb.pix2565previa.exemplo/qr/v2/cobv/0000000000000000000000000005204000053039865406199.905802BR5925VYTAL SAUDE TECNOLOGIA LT6009SAO PAULO62070503***6304ABCD", qrCodeUrl: null, expiraEm: new Date(Date.now() + 30 * 60e3).toISOString(), dias: 30 };
+  if(path.endsWith('/medicoes-agendadas')){
+    const rows=measurementDemo.get(path)??[{id:1,tipo:'pressao',scheduleTimes:'07:00,19:00'}];
+    if(method==='POST'){const next={...(body as {tipo:string;scheduleTimes:string;startDate?:string;endDate?:string}),id:rows.length+1};measurementDemo.set(path,[...rows,next]);return next;}
+    return rows;
+  }
   if (method !== "GET") throw new Error("Prévia: nenhuma alteração é enviada ao servidor.");
   if (path === "/my-patients") return [{ id: 1, patientPhone: "5541998761020", patientName: "Marina Oliveira", activeMedications: 4, pendingReactions: 1 }, { id: 2, patientPhone: "5541991234410", patientName: "João Santos", activeMedications: 2 }, { id: 3, patientPhone: "5511988127733", patientName: "Ana Carvalho", activeMedications: 6 }, { id: 4, patientPhone: "5541997002218", patientName: "Roberto Pereira", activeMedications: 1, optOut: true }, { id: 5, patientPhone: "5543996540091", patientName: "Luiza Ferraz", activeMedications: 3 }];
   if (path === "/hoje") return { data: today, reacoesAAvaliar: 1, semRespostaOntem: 2, pacientes: 5, afericoesAlteradas: [{ phone: "5541991234410", patientName: "João Santos", tipo: "pressao", valor: "158/96 mmHg", medidoEm: new Date(Date.now() - 18 * 3600e3).toISOString(), nivel: "alterada", motivo: "acima de 140/90" }] };
@@ -57,7 +70,7 @@ export function demoResponse(path: string, method: string, body?: unknown): unkn
   if (path === "/minha-assinatura") return { plano: { id: "essencial", nome: "Essencial", limitePacientes: 20 }, franquia: { mes: today.slice(0, 7), mensagens: 1980, limite: 2400, percentual: 83, aviso: "perto" }, usados: 5, limite: 20, restantes: 15, catalogo: [{ id: "gratuito", nome: "Gratuito", limitePacientes: 2 }, { id: "essencial", nome: "Essencial", limitePacientes: 20 }, { id: "clinica", nome: "Clínica", limitePacientes: 60 }, { id: "rede", nome: "Rede", limitePacientes: 150 }], assinatura: null };
   if (path.endsWith("/summary")) return { medications: [{ id: 1, isMine: true, medicationName: "Medicação exemplo A", dose: "1 comprimido", scheduleTimes: "08:00", status: "ativo", startDate: day(20) }, { id: 2, isMine: true, medicationName: "Medicação exemplo B", dose: "1 comprimido", scheduleTimes: "08:00,14:00,20:00", status: "ativo", startDate: day(20), instructions: "Após as refeições" }, { id: 3, isMine: true, medicationName: "Medicação exemplo C", dose: "1 cápsula", scheduleTimes: "22:00", status: "ativo", startDate: day(40), endDate: day(3) }, { id: 4, isMine: true, medicationName: "Medicação exemplo semanal", dose: "1 comprimido", scheduleTimes: "08:00", status: "ativo", startDate: day(20), weekdays: "1" }] };
   if (path.endsWith("/shared-medications")) return { items: [{ medicationName: "Medicação exemplo D", dose: "1 comprimido em jejum", scheduleTimes: "06:30", doctorName: "Dr(a). Profissional exemplo" }] };
-  if (path.endsWith("/medicoes-agendadas")) return [{ id: 1, tipo: "pressao", scheduleTimes: "07:00,19:00" }];
+
   if (path.endsWith("/hoje")) return { data: today, totalMedicacoes: 3, totalDoses: 4, horarios: [{ time: "06:30", itens: [{ medicationName: "Medicação exemplo D", dose: "1 comprimido em jejum", doctorName: "Dr(a). Profissional exemplo", mine: false }] }, { time: "08:00", itens: [{ medicationId: 1, medicationName: "Medicação exemplo A", dose: "1 comprimido", mine: true, status: "efeito_colateral" }, { medicationId: 2, medicationName: "Medicação exemplo B", dose: "1 comprimido", mine: true, status: "tomou" }] }, { time: "14:00", itens: [{ medicationId: 2, medicationName: "Medicação exemplo B", dose: "1 comprimido", mine: true, status: "sem_resposta" }] }, { time: "20:00", itens: [{ medicationId: 2, medicationName: "Medicação exemplo B", dose: "1 comprimido", mine: true, status: "futuro" }] }] };
   if (path.includes("/adesao?")) return { resumo: [{ medicationId: 1, medicationName: "Medicação exemplo A", esperadas: 30, tomou: 24, nao_tomou: 2, semResposta: 4, efeito_colateral: 1, ultima: { createdAt: new Date().toISOString(), resposta: "efeito_colateral" } }, { medicationId: 2, medicationName: "Medicação exemplo B", esperadas: 90, tomou: 71, nao_tomou: 6, semResposta: 13, efeito_colateral: 0 }] };
   if (path.includes("/acompanhamento?")) {
