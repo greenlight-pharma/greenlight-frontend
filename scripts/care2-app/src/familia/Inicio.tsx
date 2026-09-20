@@ -27,7 +27,7 @@ export default function Inicio() {
       {patients.length > 0 && patients.length < Math.max(limite, 1) && <Button icon="plus" onClick={() => setNova(false)}>Adicionar pessoa</Button>}
     </div>
 
-    <Link to="/gestacao" className="surface gestacao-entry"><Icon name="heart" size={28}/><div className="grow"><b>Care Gestação</b><p className="muted small">Semana gestacional, agenda e dúvidas para o pré-natal.</p></div><Icon name="chev"/></Link>
+    <Link to="/programas" className="surface gestacao-entry"><Icon name="heart" size={28}/><div className="grow"><b>Programas de cuidado</b><p className="muted small">Diabetes, pressão alta, gestação e outros cuidados para sua família.</p></div><Icon name="chev"/></Link>
     {plan?.teste?.ativo && !plan.vencimento && <Surface className="row wrap" style={{ flexDirection: "row", alignItems: "center", background: "var(--blue-soft)", borderColor: "transparent" }}>
       <div className="grow" style={{ minWidth: 220 }}><b>{`Teste grátis: ${diasRestantes(plan.teste.ate)} ${diasRestantes(plan.teste.ate) === 1 ? "dia restante" : "dias restantes"}`}</b><div className="muted small">Tudo liberado até lá, com até 3 pessoas. Assine para os lembretes continuarem.</div></div>
       <Link to="/conta" className="btn" style={{ textDecoration: "none", color: "#fff" }}>Ver planos</Link></Surface>}

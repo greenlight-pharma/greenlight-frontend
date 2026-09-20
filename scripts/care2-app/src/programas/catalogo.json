@@ -1,0 +1,288 @@
+[
+  {
+    "id": "diabetes",
+    "title": "Diabetes",
+    "category": "Pressão, açúcar e coração",
+    "icon": "drop",
+    "description": "Organize os remédios, as medições de açúcar e suas consultas.",
+    "keywords": "diabético glicemia insulina tipo 1 tipo 2",
+    "prompt": "O que combinar sobre as medições de açúcar?",
+    "questions": [
+      "Quando medir e onde anotar os valores?",
+      "Como agir se o açúcar sair da faixa combinada?"
+    ]
+  },
+  {
+    "id": "hipertensao",
+    "title": "Pressão alta",
+    "category": "Pressão, açúcar e coração",
+    "icon": "gauge",
+    "description": "Acompanhe os horários dos remédios e os registros da pressão.",
+    "keywords": "hipertensão hipertenso",
+    "prompt": "O que combinar sobre as medições de pressão?",
+    "questions": [
+      "Qual é minha faixa de pressão combinada?",
+      "Quando devo procurar atendimento?"
+    ]
+  },
+  {
+    "id": "insuficiencia-cardiaca",
+    "title": "Insuficiência cardíaca",
+    "category": "Pressão, açúcar e coração",
+    "icon": "heart",
+    "description": "Guarde o plano de cuidado do coração e os próximos retornos.",
+    "keywords": "cardiopata coração fraco",
+    "prompt": "Quais mudanças a equipe pediu para acompanhar?",
+    "questions": [
+      "Preciso acompanhar o peso? Com qual frequência?",
+      "Qual orientação devo seguir sobre líquidos e sal?"
+    ]
+  },
+  {
+    "id": "coronaria",
+    "title": "Cuidado após infarto e angina",
+    "category": "Pressão, açúcar e coração",
+    "icon": "heart",
+    "description": "Tenha os remédios, a reabilitação e os retornos no mesmo lugar.",
+    "keywords": "cardiopatia coronariana stent",
+    "prompt": "O que ficou combinado para a recuperação?",
+    "questions": [
+      "Quais atividades estão liberadas para mim?",
+      "Quando devo retornar e revisar os remédios?"
+    ]
+  },
+  {
+    "id": "arritmia",
+    "title": "Arritmia",
+    "category": "Pressão, açúcar e coração",
+    "icon": "heart",
+    "description": "Organize consultas, exames e dúvidas sobre o ritmo do coração.",
+    "keywords": "fibrilação atrial anticoagulante",
+    "prompt": "O que preciso lembrar na próxima consulta?",
+    "questions": [
+      "Como registrar os episódios que percebo?",
+      "Meu tratamento precisa de exames de acompanhamento?"
+    ]
+  },
+  {
+    "id": "renal",
+    "title": "Doença renal crônica",
+    "category": "Rins e tratamentos",
+    "icon": "drop",
+    "description": "Reúna exames, orientações e remédios do cuidado com os rins.",
+    "keywords": "renais nefrologia",
+    "prompt": "Quais orientações recebi para cuidar dos rins?",
+    "questions": [
+      "Qual orientação sobre líquidos e alimentação vale para mim?",
+      "Quais exames devo levar no próximo retorno?"
+    ]
+  },
+  {
+    "id": "dialise",
+    "title": "Diálise",
+    "category": "Rins e tratamentos",
+    "icon": "calendar",
+    "description": "Organize suas sessões e as orientações da equipe de diálise.",
+    "keywords": "hemodiálise peritoneal renal",
+    "prompt": "O que a equipe orientou entre as sessões?",
+    "questions": [
+      "Como falar com a equipe se eu não puder ir à sessão?",
+      "Quais cuidados devo seguir com meu acesso ou cateter?"
+    ]
+  },
+  {
+    "id": "asma",
+    "title": "Asma",
+    "category": "Respiração",
+    "icon": "sun",
+    "description": "Guarde o plano combinado, os horários e as dúvidas sobre os inaladores.",
+    "keywords": "bombinha respiração",
+    "prompt": "Onde está meu plano de cuidado da asma?",
+    "questions": [
+      "Estou usando meu inalador do jeito certo?",
+      "Qual é meu plano de ação quando a respiração piorar?"
+    ]
+  },
+  {
+    "id": "dpoc",
+    "title": "DPOC — cuidado com a respiração",
+    "category": "Respiração",
+    "icon": "sun",
+    "description": "Organize o tratamento da bronquite crônica ou do enfisema.",
+    "keywords": "pulmão bronquite enfisema",
+    "prompt": "O que ficou combinado para minha rotina?",
+    "questions": [
+      "Como conferir o uso dos inaladores com a equipe?",
+      "Quais atividades e cuidados foram orientados para mim?"
+    ]
+  },
+  {
+    "id": "polifarmacia",
+    "title": "Vários remédios",
+    "category": "Envelhecimento e memória",
+    "icon": "pill",
+    "description": "Uma rotina mais clara para quem usa muitos medicamentos.",
+    "keywords": "idoso idosa polifarmácia",
+    "prompt": "O que quero revisar sobre meus remédios?",
+    "questions": [
+      "Minha lista inclui vitaminas, chás e remédios sem receita?",
+      "Algum horário está difícil de seguir?"
+    ]
+  },
+  {
+    "id": "idoso",
+    "title": "Cuidado da pessoa idosa",
+    "category": "Envelhecimento e memória",
+    "icon": "user",
+    "description": "Organize consultas, apoio no dia a dia e dúvidas de quem cuida.",
+    "keywords": "idosos envelhecimento quedas",
+    "prompt": "Em quais tarefas preciso de ajuda?",
+    "questions": [
+      "Como deixar minha rotina mais segura?",
+      "Quem pode ajudar com consultas e remédios?"
+    ]
+  },
+  {
+    "id": "memoria",
+    "title": "Memória e demência",
+    "category": "Envelhecimento e memória",
+    "icon": "user",
+    "description": "Apoie a rotina da pessoa e de quem cuida dela.",
+    "keywords": "alzheimer cuidador demências",
+    "prompt": "Como está a rotina de cuidado em casa?",
+    "questions": [
+      "Quais mudanças devo levar à consulta?",
+      "Como dividir o cuidado e o descanso entre os familiares?"
+    ]
+  },
+  {
+    "id": "parkinson",
+    "title": "Parkinson",
+    "category": "Envelhecimento e memória",
+    "icon": "clock",
+    "description": "Organize os horários prescritos, consultas e atividades combinadas.",
+    "keywords": "tremor neurologia",
+    "prompt": "Quais horários precisam de atenção na minha rotina?",
+    "questions": [
+      "Como registrar dificuldades de movimento para conversar?",
+      "Preciso de alguma orientação para alimentação e remédios?"
+    ]
+  },
+  {
+    "id": "pos-operatorio",
+    "title": "Depois da cirurgia",
+    "category": "Recuperação e movimento",
+    "icon": "shield",
+    "description": "Tenha as orientações de alta e o retorno sempre à mão.",
+    "keywords": "pós-operatório pos operatorio cirurgia curativo",
+    "prompt": "Quais orientações recebi na alta?",
+    "questions": [
+      "Como devo cuidar do curativo conforme minha alta?",
+      "Quais atividades estão liberadas e quando será o retorno?"
+    ]
+  },
+  {
+    "id": "pos-avc",
+    "title": "Depois do AVC",
+    "category": "Recuperação e movimento",
+    "icon": "heart",
+    "description": "Organize a reabilitação, os remédios e o apoio em casa.",
+    "keywords": "derrame pós avc",
+    "prompt": "O que foi combinado para a reabilitação?",
+    "questions": [
+      "Como organizar as sessões e o transporte?",
+      "Quais orientações recebi para alimentação e atividades?"
+    ]
+  },
+  {
+    "id": "dor-cronica",
+    "title": "Dor persistente",
+    "category": "Recuperação e movimento",
+    "icon": "sun",
+    "description": "Anote como a dor afeta seu dia e organize o cuidado combinado.",
+    "keywords": "dor crônica fibromialgia",
+    "prompt": "O que ficou mais difícil no meu dia?",
+    "questions": [
+      "Que informações sobre a dor devo levar à consulta?",
+      "Como acompanhar se o plano está ajudando minha rotina?"
+    ]
+  },
+  {
+    "id": "articulacoes",
+    "title": "Artrite e artrose",
+    "category": "Recuperação e movimento",
+    "icon": "user",
+    "description": "Organize consultas e anote dificuldades com movimento e atividades.",
+    "keywords": "reumatismo articulações reumatoide",
+    "prompt": "Quais atividades ficaram mais difíceis?",
+    "questions": [
+      "Quais exercícios foram orientados para mim?",
+      "Meus remédios precisam de exames de acompanhamento?"
+    ]
+  },
+  {
+    "id": "osteoporose",
+    "title": "Saúde dos ossos",
+    "category": "Recuperação e movimento",
+    "icon": "shield",
+    "description": "Organize o cuidado da osteoporose e as revisões do tratamento.",
+    "keywords": "osteoporose fratura",
+    "prompt": "O que foi combinado para cuidar dos meus ossos?",
+    "questions": [
+      "Como posso reduzir o risco de quedas na minha casa?",
+      "Como seguir corretamente os horários do meu tratamento?"
+    ]
+  },
+  {
+    "id": "tireoide",
+    "title": "Tireoide",
+    "category": "Outros cuidados contínuos",
+    "icon": "clock",
+    "description": "Reúna horários, exames e dúvidas sobre o tratamento.",
+    "keywords": "hipotireoidismo hipertireoidismo",
+    "prompt": "Quais orientações recebi sobre o uso dos remédios?",
+    "questions": [
+      "Como organizar os horários junto dos outros medicamentos?",
+      "Quando devo repetir os exames conforme a equipe?"
+    ]
+  },
+  {
+    "id": "saude-mental",
+    "title": "Saúde mental",
+    "category": "Outros cuidados contínuos",
+    "icon": "heart",
+    "description": "Organize consultas e anote o que gostaria de conversar com a equipe.",
+    "keywords": "depressão ansiedade bipolar",
+    "prompt": "O que quero levar à próxima conversa?",
+    "questions": [
+      "Como está meu sono e minha rotina?",
+      "Quem posso procurar quando precisar de apoio?"
+    ]
+  },
+  {
+    "id": "oncologia",
+    "title": "Durante o tratamento do câncer",
+    "category": "Outros cuidados contínuos",
+    "icon": "calendar",
+    "description": "Organize sessões, exames, retornos e contatos da sua equipe.",
+    "keywords": "oncologia quimioterapia radioterapia",
+    "prompt": "Quais orientações recebi da minha equipe?",
+    "questions": [
+      "Com quem falar sobre mudanças que eu perceber?",
+      "O que preciso levar para a próxima sessão?"
+    ]
+  },
+  {
+    "id": "outros",
+    "title": "Outros cuidados",
+    "category": "Outros cuidados contínuos",
+    "icon": "list",
+    "description": "Monte um espaço para outra condição ou necessidade de cuidado.",
+    "keywords": "personalizado doença rara crônica",
+    "prompt": "Que cuidado quero organizar?",
+    "questions": [
+      "O que ficou combinado com a equipe?",
+      "Quando será meu próximo retorno?"
+    ]
+  }
+]
