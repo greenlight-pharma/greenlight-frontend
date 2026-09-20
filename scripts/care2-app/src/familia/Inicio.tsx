@@ -8,7 +8,7 @@ import { ExpiryNotice } from "../pages/Plans";
 import { diasRestantes, useFamilia } from "./Familia";
 import { AvisoLinha } from "./Avisos";
 import NovaPessoa from "./NovaPessoa";
-import { GestacaoResumo } from "../gestacao/Gestacao";
+
 
 const saudacao = () => { const h = Number(new Intl.DateTimeFormat("pt-BR", { timeZone: "America/Sao_Paulo", hour: "2-digit", hour12: false }).format(new Date())); return h < 12 ? "Bom dia" : h < 18 ? "Boa tarde" : "Boa noite"; };
 const hojeTexto = () => { const t = new Intl.DateTimeFormat("pt-BR", { timeZone: "America/Sao_Paulo", weekday: "long", day: "numeric", month: "long" }).format(new Date()); return t[0].toUpperCase() + t.slice(1); };
@@ -27,7 +27,7 @@ export default function Inicio() {
       {patients.length > 0 && patients.length < Math.max(limite, 1) && <Button icon="plus" onClick={() => setNova(false)}>Adicionar pessoa</Button>}
     </div>
 
-    <Link to="/programas" className="surface gestacao-entry"><Icon name="heart" size={28}/><div className="grow"><b>Programas de cuidado</b><p className="muted small">Diabetes, pressão alta, gestação e outros cuidados para sua família.</p></div><Icon name="chev"/></Link>
+    <Link to="/programas" className="surface gestacao-entry"><Icon name="heart" size={28}/><div className="grow"><b>Saúde e acompanhamento</b><p className="muted small">Condições de saúde e check-in diário no WhatsApp.</p></div><Icon name="chev"/></Link>
     {plan?.teste?.ativo && !plan.vencimento && <Surface className="row wrap" style={{ flexDirection: "row", alignItems: "center", background: "var(--blue-soft)", borderColor: "transparent" }}>
       <div className="grow" style={{ minWidth: 220 }}><b>{`Teste grátis: ${diasRestantes(plan.teste.ate)} ${diasRestantes(plan.teste.ate) === 1 ? "dia restante" : "dias restantes"}`}</b><div className="muted small">Tudo liberado até lá, com até 3 pessoas. Assine para os lembretes continuarem.</div></div>
       <Link to="/conta" className="btn" style={{ textDecoration: "none", color: "#fff" }}>Ver planos</Link></Surface>}
@@ -68,7 +68,7 @@ function CartaoPessoa({ pessoa: p }: { pessoa: Patient }) {
   const tom = !passadas.length ? "info" : tomadas === passadas.length ? "ok" : tomadas === 0 ? "bad" : "warn";
   return <Link to={`/p/${p.phone}`} className="surface care2-person" style={{ color: "var(--ink)", gap: 12 }}>
     <div className="row"><Avatar text={initials(p.name)} size={48} /><div className="grow"><div style={{ fontWeight: 600, fontSize: 17 }}>{p.name}</div><div className="muted small">{formatPhone(p.phone)}</div></div><span className="muted"><Icon name="chev" size={16} /></span></div>
-    <GestacaoResumo phone={p.phone} />
+
     {p.optOut ? <Chip>Pediu para não receber mensagens</Chip> : p.remindersPaused ? <Chip tone="bad">Lembretes pausados</Chip>
       : !grade ? <span className="muted small">Carregando o dia…</span>
       : !itens.length ? <span className="muted small">Nenhum remédio hoje. Abra para fotografar a receita.</span>
