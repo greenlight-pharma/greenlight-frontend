@@ -1,3 +1,4 @@
+import PrimeiroCuidado from './PrimeiroCuidado';
 import { createContext, useCallback, useContext, useEffect, useState } from "react";
 import { NavLink, Route, Routes, useLocation } from "react-router-dom";
 import { api, errorText, session } from "../api";
@@ -33,6 +34,7 @@ export const useFamilia = () => useContext(FamiliaContext);
 export const diasRestantes = (iso: string) => Math.max(0, Math.ceil((new Date(iso).getTime() - Date.now()) / 86400000));
 
 export default function FamilyWorkspace({ session: current }: { session: Session }) {
+  const location=useLocation();
   const [patients, setPatients] = useState<Patient[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
@@ -63,7 +65,7 @@ export default function FamilyWorkspace({ session: current }: { session: Session
       <Lateral />
       <main className="content">
         <header className="care2-topbar"><Brand /><p>O cuidado continua. Mesmo em casa.</p><a href="/vytal-care2/">Conhecer o Care ↗</a></header>
-        <Routes>
+        {!loading&&!error&&patients.length===0&&location.pathname!=='/conta'?<PrimeiroCuidado/>:<Routes>
           <Route path="/" element={<Inicio />} />
           <Route path="/programas" element={<Programas />} />
           <Route path="/programas/:phone" element={<Programas />} />
@@ -76,7 +78,7 @@ export default function FamilyWorkspace({ session: current }: { session: Session
           <Route path="/avisos" element={<Avisos />} />
           <Route path="/conta" element={<Conta />} />
           <Route path="*" element={<Inicio />} />
-        </Routes>
+        </Routes>}
       </main>
       <nav className="tabbar" aria-label="Principal">
         <NavLink to="/" end><Icon name="home" />Início</NavLink>
