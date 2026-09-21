@@ -13,6 +13,7 @@ import { ProfileDialog } from "./pages/Profile";
 import NewPatient from "./pages/NewPatient";
 import Onboarding, { onboardingSeen } from "./pages/Onboarding";
 import ResetPassword from "./pages/ResetPassword";
+import PaymentLink from "./pages/PaymentLink";
 import FamilyWorkspace from "./familia/Familia";
 import EmailGate from "./pages/ConfirmEmail";
 import { lazy, Suspense } from "react";
@@ -29,6 +30,7 @@ export default function App() {
   const [message, setMessage] = useState<string | undefined>();
   useEffect(() => session.subscribe((s, m) => { setCurrent(s); setMessage(m); }), []);
   // O link do e-mail abre esta página mesmo com alguém logado neste navegador.
+  if (location.pathname.startsWith("/vytal-care2/app/pagar/")) return <PaymentLink />;
   if (location.pathname === "/vytal-care2/app/redefinir-senha") return <ResetPassword />;
   if (location.pathname === "/vytal-care2/app/admin" || location.pathname.startsWith("/vytal-care2/app/admin/")) return <Suspense fallback={null}><Admin /></Suspense>;
   if (!current) return <Login message={message} />;
