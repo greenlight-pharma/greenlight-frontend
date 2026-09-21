@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Vytal ECG — Do papel ao sinal, por uma foto</title>
+<meta name="description" content="Tecnologia brasileira de inteligência artificial que reconstrói o sinal do eletrocardiograma a partir de uma foto e organiza a leitura. Em desenvolvimento, com validação clínica em andamento, a caminho do registro na Anvisa.">
+<link rel="canonical" href="https://www.vytalsaude.com.br/ecg">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://www.vytalsaude.com.br/ecg">
+<meta property="og:title" content="Vytal ECG — Do papel ao sinal, por uma foto">
+<meta property="og:description" content="Da foto ao sinal de 12 derivações e às medidas, por inteligência artificial proprietária. Uma tecnologia em desenvolvimento, com validação clínica em andamento.">
+<meta property="og:image" content="https://www.vytalsaude.com.br/ecg/vytal-ecg-logo.png">
+<link rel="icon" type="image/png" href="/ecg/vytal-ecg-logo.png">
+<meta name="theme-color" content="#111726">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+:root{
+  --navy:#111726;
+  --navy-2:#1f2740;
+  --rose:#A9525A;
+  --rose-deep:#8a3e46;
+  --pink:#F3E6E2;
+  --pink-2:#EAD6D1;
+  --bg:#FAFBFC;
+  --ink:#1a1f2e;
+  --mute:#5c6274;
+  --line:#e3e6ec;
+  --radius:22px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+body{
+  margin:0;background:var(--bg);color:var(--ink);
+  font-family:"Instrument Sans",-apple-system,"Segoe UI",Helvetica,Arial,sans-serif;
+  font-size:17px;line-height:1.55;-webkit-font-smoothing:antialiased;
+}
+img{max-width:100%;display:block}
+a{color:inherit}
+h1,h2,h3{margin:0;line-height:1.08;letter-spacing:-.02em;font-weight:700}
+h1{font-size:clamp(2.4rem,7vw,4.4rem)}
+h2{font-size:clamp(1.8rem,4.5vw,2.8rem)}
+h3{font-size:1.15rem;letter-spacing:-.01em}
+p{margin:0}
+.wrap{width:min(1120px,calc(100% - 40px));margin:0 auto}
+.lead{font-size:1.15rem;color:var(--mute);max-width:34ch}
+.btn{
+  display:inline-flex;align-items:center;gap:.5rem;
+  padding:.95rem 1.5rem;border-radius:14px;font-weight:600;text-decoration:none;
+  font-size:1rem;border:2px solid transparent;transition:transform .15s,background .15s;
+}
+.btn:active{transform:scale(.98)}
+.btn-navy{background:var(--navy);color:#fff}
+.btn-navy:hover{background:var(--navy-2)}
+.btn-ghost{background:#fff;color:var(--navy);border-color:var(--line)}
+.btn-ghost:hover{border-color:var(--navy)}
+.btn-rose{background:var(--rose);color:#fff}
+.btn-rose:hover{background:var(--rose-deep)}
+:focus-visible{outline:3px solid var(--rose);outline-offset:3px;border-radius:8px}
+
+/* header */
+header{position:sticky;top:0;z-index:10;background:rgba(250,251,252,.85);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.nav{display:flex;align-items:center;justify-content:space-between;height:66px}
+.brand{display:flex;align-items:center;gap:.6rem;text-decoration:none;font-weight:700;letter-spacing:-.01em}
+.brand img{height:30px;width:auto}
+.brand span{color:var(--rose)}
+.nav ul{display:none;list-style:none;gap:1.6rem;margin:0;padding:0}
+.nav ul a{text-decoration:none;font-weight:500;color:var(--mute)}
+.nav ul a:hover{color:var(--navy)}
+@media(min-width:860px){.nav ul{display:flex}}
+
+/* hero */
+.hero{padding:56px 0 40px}
+.hero-grid{display:grid;gap:36px;align-items:center}
+@media(min-width:900px){.hero-grid{grid-template-columns:1.15fr .85fr;gap:56px}}
+.hero h1 span{color:var(--rose)}
+.hero .cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:28px}
+.tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:22px}
+.tags li{list-style:none;font-size:.9rem;color:var(--mute);background:#fff;border:1px solid var(--line);padding:.35rem .75rem;border-radius:999px}
+.tags{padding:0;margin-bottom:0}
+.phone{
+  position:relative;border-radius:var(--radius);background:var(--pink);
+  padding:28px 28px 0;overflow:hidden;
+  background-image:
+    linear-gradient(rgba(169,82,90,.10) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(169,82,90,.10) 1px,transparent 1px),
+    linear-gradient(rgba(169,82,90,.05) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(169,82,90,.05) 1px,transparent 1px);
+  background-size:40px 40px,40px 40px,8px 8px,8px 8px;
+}
+.phone img{border-radius:28px 28px 0 0;box-shadow:0 30px 60px -20px rgba(17,23,38,.35);margin:0 auto;max-width:320px}
+
+/* pain */
+.pain{background:var(--navy);color:#fff;padding:72px 0;overflow:hidden;position:relative}
+.pain h2{max-width:22ch}
+.pain .lead{color:#b9bfd0}
+.stats{display:grid;gap:18px;margin-top:40px}
+@media(min-width:760px){.stats{grid-template-columns:repeat(3,1fr)}}
+.stat{border-top:2px solid var(--rose);padding-top:16px}
+.stat b{display:block;font-size:clamp(2.2rem,5vw,3.4rem);line-height:1;letter-spacing:-.03em;font-weight:700}
+.stat span{display:block;margin-top:8px;color:#b9bfd0}
+.stat small{display:block;margin-top:6px;color:#7f8699;font-size:.85rem}
+.ecg-line{margin-top:48px;width:100%;height:auto}
+.ecg-line path{fill:none;stroke:var(--rose);stroke-width:3;stroke-linejoin:round;stroke-linecap:round;
+  stroke-dasharray:2400;stroke-dashoffset:2400;animation:draw 3.2s ease-out .3s forwards}
+@keyframes draw{to{stroke-dashoffset:0}}
+@media (prefers-reduced-motion:reduce){.ecg-line path{animation:none;stroke-dashoffset:0}}
+.pain .pull{margin-top:28px;font-size:1.25rem;max-width:40ch}
+
+/* sections */
+section{padding:72px 0}
+.section-head{max-width:56ch;margin-bottom:36px}
+.section-head p{margin-top:12px;color:var(--mute);font-size:1.1rem}
+
+/* steps */
+.steps{display:grid;gap:16px}
+@media(min-width:760px){.steps{grid-template-columns:repeat(3,1fr)}}
+.step{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:26px}
+.step .n{display:inline-grid;place-items:center;width:38px;height:38px;border-radius:12px;background:var(--pink);color:var(--rose-deep);font-weight:700;margin-bottom:16px}
+.step p{margin-top:8px;color:var(--mute)}
+
+/* delivers */
+.deliver{background:var(--pink);border-radius:var(--radius);padding:36px 28px}
+@media(min-width:760px){.deliver{padding:48px}}
+.deliver ul{list-style:none;padding:0;margin:0;display:grid;gap:14px}
+@media(min-width:760px){.deliver ul{grid-template-columns:1fr 1fr;gap:18px 40px}}
+.deliver li{padding-left:28px;position:relative;font-size:1.05rem}
+.deliver li::before{content:"";position:absolute;left:0;top:.5em;width:14px;height:14px;border-radius:50%;background:var(--rose)}
+.deliver li span{display:block;color:var(--mute);font-size:.95rem;margin-top:2px}
+.measure{margin-top:32px;background:#fff;border-radius:16px;padding:22px;display:grid;grid-template-columns:repeat(3,1fr);gap:14px;text-align:center}
+@media(min-width:760px){.measure{grid-template-columns:repeat(6,1fr)}}
+.measure b{display:block;font-size:1.6rem;letter-spacing:-.02em}
+.measure small{color:var(--mute)}
+.measure-note{margin-top:10px;font-size:.85rem;color:var(--mute)}
+
+/* honesty */
+.honest{display:grid;gap:18px}
+@media(min-width:860px){.honest{grid-template-columns:1fr 1fr;gap:48px;align-items:start}}
+.honest ul{margin:0;padding:0;list-style:none}
+.honest li{padding:16px 0;border-top:1px solid var(--line);display:flex;gap:14px}
+.honest li:last-child{border-bottom:1px solid var(--line)}
+.honest li svg{flex:none;margin-top:3px}
+
+/* path */
+.path{background:#fff;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.timeline{display:grid;gap:22px;margin-top:8px}
+@media(min-width:860px){.timeline{grid-template-columns:repeat(3,1fr);gap:28px}}
+.tl{position:relative;padding-top:22px}
+.tl::before{content:"";position:absolute;left:0;top:0;height:6px;width:100%;border-radius:3px;background:var(--line)}
+.tl.now::before{background:var(--rose)}
+.tl.next::before{background:linear-gradient(90deg,var(--rose) 0,var(--rose) 35%,var(--line) 35%)}
+.tl em{font-style:normal;color:var(--rose-deep);font-weight:600;font-size:.95rem}
+.tl h3{margin-top:6px}
+.tl p{margin-top:8px;color:var(--mute)}
+
+/* who */
+.who{display:grid;gap:16px}
+@media(min-width:760px){.who{grid-template-columns:repeat(3,1fr)}}
+.who div{padding:24px;border-radius:var(--radius);background:#fff;border:1px solid var(--line)}
+.who p{margin-top:8px;color:var(--mute)}
+
+/* faq */
+details{border-top:1px solid var(--line)}
+details:last-of-type{border-bottom:1px solid var(--line)}
+summary{cursor:pointer;padding:18px 0;font-weight:600;font-size:1.05rem;list-style:none;display:flex;justify-content:space-between;gap:16px}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"+";color:var(--rose);font-size:1.4rem;line-height:1}
+details[open] summary::after{content:"–"}
+details p{padding:0 0 18px;color:var(--mute);max-width:64ch}
+
+/* final cta */
+.final{background:var(--navy);color:#fff;text-align:center;padding:80px 0}
+.final h2{max-width:20ch;margin:0 auto}
+.final p{color:#b9bfd0;margin:16px auto 0;max-width:40ch}
+.final .cta{display:flex;justify-content:center;flex-wrap:wrap;gap:12px;margin-top:28px}
+
+footer{padding:36px 0;font-size:.9rem;color:var(--mute)}
+footer nav{display:flex;flex-wrap:wrap;gap:8px 20px;margin-bottom:18px}
+footer nav a{text-decoration:none}
+footer nav a:hover{color:var(--navy)}
+footer p{max-width:70ch;line-height:1.6}
+</style>
+<meta name="robots" content="noindex,nofollow"><link rel="stylesheet" href="/vytal2/ecg/design.css"></head>
+<body><div class="review-band"><a href="/vytal2/">← Vytal Saúde · nova apresentação</a><span>PRÉVIA PARA APROVAÇÃO</span></div>
+
+<header>
+  <div class="wrap nav">
+    <a class="brand" href="https://www.vytalsaude.com.br">
+      <img src="https://www.vytalsaude.com.br/ecg/vytal-ecg-logo.png" alt="Vytal">
+      vytal <span>ECG</span>
+    </a>
+    <ul>
+      <li><a href="#como-funciona">Como funciona</a></li>
+      <li><a href="#entrega">O que entrega</a></li>
+      <li><a href="#caminho">Pra onde vai</a></li>
+      <li><a href="#perguntas">Perguntas</a></li>
+    </ul>
+    <a class="btn btn-navy" href="#contato">Acompanhar o projeto</a>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <h1>Do papel ao sinal,<br>por <span>uma foto.</span></h1>
+      <p class="lead" style="margin-top:22px">Uma tecnologia brasileira de inteligência artificial que reconstrói o sinal do eletrocardiograma a partir de uma foto, calcula as medidas e organiza a leitura. Em desenvolvimento, com validação clínica em andamento.</p>
+      <div class="cta">
+        <a class="btn btn-navy" href="#como-funciona">Como funciona</a>
+        <a class="btn btn-ghost" href="#caminho">O caminho até a Anvisa</a>
+      </div>
+      <ul class="tags">
+        <li>Inteligência artificial proprietária</li>
+        <li>Validação com cardiologistas</li>
+        <li>Em desenvolvimento</li>
+        <li>Rumo ao registro na Anvisa</li>
+      </ul>
+    </div>
+    <div class="phone">
+      <img src="https://www.vytalsaude.com.br/ecg/app-inicio.png" alt="Tela inicial do Vytal ECG com o botão Fotografar ECG">
+    </div>
+  </div>
+</section>
+
+<!-- DOR -->
+<section class="pain" id="dor">
+  <div class="wrap">
+    <h2>Doença do coração é o que mais mata no Brasil.</h2>
+    <p class="lead" style="margin-top:16px">O ECG mostra o problema. Mas alguém precisa ler. E ler rápido.</p>
+    <div class="stats">
+      <div class="stat"><b>400 mil</b><span>mortes por ano no Brasil</span><small>Sociedade Brasileira de Cardiologia</small></div>
+      <div class="stat"><b>1 a cada 90 s</b><span>uma pessoa morre do coração</span><small>Cardiômetro da SBC</small></div>
+      <div class="stat"><b>Minutos</b><span>é o que separa um infarto tratado de um infarto perdido</span></div>
+    </div>
+    <p class="pull">Na UBS, no plantão, na ambulância: o ECG sai da máquina e fica esperando um olho treinado. O Vytal ECG põe esse olho no bolso do médico.</p>
+    <svg class="ecg-line" viewBox="0 0 1200 120" aria-hidden="true">
+      <path d="M0 70 H140 l14 -10 l14 10 H240 l10 -6 l10 6 h40 l6 -40 l10 90 l8 -70 l6 26 H400 l16 -14 l16 14 H560 l14 -10 l14 10 H660 l10 -6 l10 6 h40 l6 -40 l10 90 l8 -70 l6 26 H820 l16 -14 l16 14 H980 l14 -10 l14 10 H1080 l10 -6 l10 6 h40 l6 -40 l10 90 l8 -70 l6 26 H1200"/>
+    </svg>
+  </div>
+</section>
+
+<!-- COMO FUNCIONA -->
+<section id="como-funciona">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>Três passos. Sem cabo, sem integração.</h2>
+      <p>A mesma foto que você já tira no plantão vira um traçado que dá pra ampliar, medir e discutir.</p>
+    </div>
+    <div class="steps">
+      <div class="step"><div class="n">1</div><h3>Fotografe</h3><p>Câmera, galeria ou scanner. Folha inteira, de frente, luz uniforme. Serve papel impresso e tela do aparelho.</p></div>
+      <div class="step"><div class="n">2</div><h3>Confira</h3><p>O app acha a grade, calibra tempo e amplitude e redesenha as 12 derivações. Você compara com a foto, lado a lado.</p></div>
+      <div class="step"><div class="n">3</div><h3>Decida</h3><p>Frequência, intervalos, eixo e hipóteses com a evidência apontada no traçado. Gere o PDF pro prontuário ou pra discutir o caso.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- O QUE ENTREGA -->
+<section id="entrega" style="padding-top:0">
+  <div class="wrap">
+    <div class="deliver">
+      <div class="section-head" style="margin-bottom:28px">
+        <h2>Medida que sai do sinal, não do chute.</h2>
+        <p>O traçado vira sinal. As medidas são calculadas em cima dele, com regra clara.</p>
+      </div>
+      <ul>
+        <li>12 derivações redesenhadas<span>Amplie e percorra cada uma. Se a foto falhar em algum trecho, o app completa o desenho e avisa.</span></li>
+        <li>FC, PR, QRS, QT, QTc e eixo<span>Com nível de confiança por medida e de qual derivação saiu.</span></li>
+        <li>Papel e tela<span>Folhas 3×4, 6×2 e 12×1. Impressas, escaneadas ou fotografadas no monitor.</span></li>
+        <li>Calibração explícita<span>25 mm/s e 10 mm/mV por padrão. Se o exame foi em outra escala, você ajusta.</span></li>
+        <li>Hipóteses com evidência<span>Ritmo, condução, sobrecargas e repolarização, apontadas no traçado, com as limitações da foto declaradas.</span></li>
+        <li>PDF e histórico<span>Relatório com foto, traçado e medidas. Histórico fica só no aparelho, sem dado do paciente.</span></li>
+      </ul>
+      <div class="measure">
+        <div><b>58</b><small>bpm</small></div>
+        <div><b>142</b><small>PR, ms</small></div>
+        <div><b>98</b><small>QRS, ms</small></div>
+        <div><b>387</b><small>QT, ms</small></div>
+        <div><b>423</b><small>QTc, ms</small></div>
+        <div><b>+45°</b><small>eixo</small></div>
+      </div>
+      <p class="measure-note">Valores de exemplo. Cada leitura depende da foto: o app diz a confiança e o que não conseguiu medir.</p>
+    </div>
+  </div>
+</section>
+
+<!-- NÃO INVENTA -->
+<section id="rigor" style="padding-top:0">
+  <div class="wrap honest">
+    <div class="section-head" style="margin-bottom:0">
+      <h2>Feito para não inventar.</h2>
+      <p>Foto ruim? Ele pede outra. Nada entra no app sem passar pela bancada de teste. O que piora, sai.</p>
+    </div>
+    <ul>
+      <li><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#A9525A" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg><span>Fotos reais de papel e de tela, de vários celulares e luzes, com o exame original como verdade.</span></li>
+      <li><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#A9525A" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg><span>Centenas de traçados com laudo de cardiologista pra medir acerto, citação e recusa.</span></li>
+      <li><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#A9525A" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg><span>Recusa honesta: se não dá pra ler as 12 derivações com segurança, ele não entrega meia leitura.</span></li>
+      <li><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#A9525A" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg><span>Toda mudança é testada com e sem, no mesmo conjunto de fotos, antes de virar padrão.</span></li>
+    </ul>
+  </div>
+</section>
+
+<!-- CAMINHO -->
+<section class="path" id="caminho">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>Feito pra virar dispositivo médico.</h2>
+      <p>Hoje é apoio à leitura. O caminho até o registro é público e a gente mostra onde está.</p>
+    </div>
+    <div class="timeline">
+      <div class="tl now"><em>Agora</em><h3>Tecnologia em desenvolvimento</h3><p>O motor de leitura já funciona: reconstrói o sinal, mede e organiza a interpretação. Uso ainda restrito a desenvolvimento e estudo, não à rotina clínica.</p></div>
+      <div class="tl next"><em>Em andamento</em><h3>Validação clínica</h3><p>Cardiologistas parceiros laudando ECGs brasileiros pra medir sensibilidade e especificidade de verdade.</p></div>
+      <div class="tl"><em>Próximo</em><h3>Registro na Anvisa</h3><p>Dossiê técnico de software como dispositivo médico. Aí o Vytal ECG pode entrar na rotina de hospitais e serviços.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- PRA QUEM -->
+<section id="pra-quem">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>Pra quem decide com o ECG na mão.</h2>
+      <p>A decisão continua sendo do médico. O que muda é o tempo até ela.</p>
+    </div>
+    <div class="who">
+      <div><h3>Urgência e emergência</h3><p>Segunda leitura em segundos, antes de ligar pro cardiologista.</p></div>
+      <div><h3>UBS e consultório</h3><p>Onde não tem cardiologista por perto: medidas com confiança e PDF pro encaminhamento.</p></div>
+      <div><h3>Ensino</h3><p>Estudantes e residentes treinam o olhar com exame real, sem dado de paciente.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- PERGUNTAS -->
+<section id="perguntas" style="padding-top:0">
+  <div class="wrap">
+    <div class="section-head"><h2>Perguntas frequentes</h2></div>
+    <details><summary>Funciona a partir de foto da tela do monitor?</summary><p>É um dos cenários em desenvolvimento. A foto de papel impresso é a mais madura hoje; a leitura a partir de tela é um dos focos de aprimoramento e validação.</p></details>
+    <details><summary>Que formatos de folha ele lê?</summary><p>3×4 com uma ou três tiras de ritmo, 6×2 com ou sem tira e 12×1, em 25 mm/s e 10 mm/mV. Outras escalas você informa na calibração. Formato que ele não reconhece, ele recusa e avisa.</p></details>
+    <details><summary>O app dá o laudo?</summary><p>Não. Ele entrega o sinal, as medidas e hipóteses com a evidência apontada no traçado. O laudo e a conduta são do médico, com o exame original como referência.</p></details>
+    <details><summary>É registrado na Anvisa?</summary><p>Ainda não. A tecnologia está em desenvolvimento e o desenho segue as exigências de software como dispositivo médico, com a validação clínica em andamento. O uso na rotina de atendimento depende da conclusão dessa etapa e do registro.</p></details>
+    <details><summary>Como acompanho ou participo da validação?</summary><p>Cardiologistas e instituições interessadas em colaborar com a validação clínica podem falar com a equipe pelo <a href="mailto:contato@vytalsaude.com.br?subject=Vytal%20ECG%20-%20validacao%20clinica">contato@vytalsaude.com.br</a>.</p></details>
+    <details><summary>O app dá o diagnóstico?</summary><p>Não. A proposta é reconstruir o sinal, calcular as medidas e organizar hipóteses com a evidência apontada no traçado. A interpretação final e a conduta são sempre do médico. É uma ferramenta de apoio, não de diagnóstico automático.</p></details>
+  </div>
+</section>
+
+<!-- CTA FINAL -->
+<section class="final" id="contato">
+  <div class="wrap">
+    <h2>Uma tecnologia brasileira em construção.</h2>
+    <p>Cardiologistas e instituições que queiram colaborar com a validação clínica, ou acompanhar o desenvolvimento, podem falar com a equipe.</p>
+    <div class="cta">
+      <a class="btn btn-rose" href="mailto:contato@vytalsaude.com.br?subject=Vytal%20ECG%20-%20validacao%20clinica">Falar com a equipe</a>
+      <a class="btn btn-ghost" href="https://www.vytalsaude.com.br">Conhecer a Vytal</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <nav>
+      <a href="https://www.vytalsaude.com.br">Vytal Saúde Tecnologia</a>
+      <a href="https://www.vytalsaude.com.br/#academico">Vytal Acadêmico</a>
+      <a href="https://www.vytalsaude.com.br/#produtos">Produtos</a>
+      <a href="mailto:contato@vytalsaude.com.br">Contato</a>
+      <a href="https://www.vytalsaude.com.br/privacidade">Política de Privacidade</a>
+      <a href="https://www.vytalsaude.com.br/exclusao-de-conta.html">Exclusão de conta</a>
+    </nav>
+    <p><strong>Vytal Saúde Tecnologia LTDA</strong> · CNPJ 67.051.119/0001-64 · São José dos Campos/SP · contato@vytalsaude.com.br<br>
+    O Vytal ECG é uma tecnologia em desenvolvimento, com validação clínica em andamento. Não é, no momento, um dispositivo médico registrado na Anvisa, e não se destina à rotina de diagnóstico. A interpretação e a conduta são sempre do médico.</p>
+  </div>
+</footer>
+
+<nav class="review-links" aria-label="Outras prévias"><a href="/vytal2/">Vytal Saúde</a><a href="/vytal2/care/">Care</a><a href="/vytal2/academico/">Acadêmico</a><a href="/vytal2/ecg/">ECG</a></nav></body>
+</html>
