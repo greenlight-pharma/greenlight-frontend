@@ -34,3 +34,28 @@
 .v-skip{position:absolute;top:-80px;left:20px;z-index:10;background:white;color:#102d56;padding:12px}.v-skip:focus{top:12px}
 @media(max-width:720px){#vytal-blue-proposal .v-hero{gap:32px;padding-top:38px;padding-bottom:36px}#vytal-blue-proposal .v-hero h1{font-size:clamp(42px,10vw,56px)}#vytal-blue-proposal .v-portrait>img{height:320px}#vytal-blue-proposal .v-navlinks{display:flex;order:3;flex-basis:100%;justify-content:space-between;gap:12px}#vytal-blue-proposal .v-nav{gap:10px;padding-bottom:12px}#vytal-blue-proposal .v-outline{font-size:11px;padding:10px 12px}#vytal-blue-proposal .v-logo{font-size:22px}#vytal-blue-proposal .v-logo small{font-size:11px}#vytal-blue-proposal .v-contact h3{font-size:26px}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+
+/* White institutional surface; product accents match their dedicated sites. */
+body{background:#fff}
+#vytal-blue-proposal{--v-paper:#fff;--v-surface:#fff;--v-ink:#0F1F3A;--v-muted:#5c6274;--v-line:#e3e6ec;--v-soft:#EEF4FB;--v-accent:#1E6091;--v-on:#fff;background:#fff}
+#vytal-blue-proposal .v-top,#vytal-blue-proposal .v-nav,#vytal-blue-proposal .v-hero,#vytal-blue-proposal .v-contact,#vytal-blue-proposal .v-product{background:#fff;color:var(--v-ink)}
+#vytal-blue-proposal .v-top{border-bottom:1px solid var(--v-line)}
+#vytal-blue-proposal .v-hero:before{display:none}
+#vytal-blue-proposal .v-hero h1{color:#0F1F3A}
+#vytal-blue-proposal .v-hero h1 em,#vytal-blue-proposal .v-hero>div:first-child>.v-label{color:#1E6091}
+#vytal-blue-proposal .v-hero .v-intro,#vytal-blue-proposal .v-hero .v-smallnote{color:#5c6274}
+#vytal-blue-proposal .v-hero .v-primary{background:#1E6091;color:#fff}
+#vytal-blue-proposal .v-path{border-top:3px solid transparent}
+#vytal-blue-proposal .v-path[aria-pressed=true]{background:#fff;box-shadow:none;border-top-color:var(--v-accent)}
+#vytal-blue-proposal .v-path[data-product="care"]{--v-accent:#166a56}
+#vytal-blue-proposal .v-path[data-product="academico"]{--v-accent:#1E6091}
+#vytal-blue-proposal .v-path[data-product="ecg"]{--v-accent:#A9525A}
+#vytal-blue-proposal .v-product{border-top:3px solid var(--v-accent)}
+#vytal-blue-proposal .v-product[data-product="care"]{--v-accent:#166a56;--v-soft:#edf6f2}
+#vytal-blue-proposal .v-product[data-product="academico"]{--v-accent:#1E6091;--v-soft:#EEF4FB}
+#vytal-blue-proposal .v-product[data-product="ecg"]{--v-accent:#A9525A;--v-soft:#F3E6E2}
+#vytal-blue-proposal .v-next article:first-child{border-top:3px solid #1E6091}
+#vytal-blue-proposal .v-next article:last-child{border-top:3px solid #A9525A;--v-accent:#A9525A}
+#vytal-blue-proposal .v-next article:last-child .v-label{color:#A9525A}
+#vytal-blue-proposal .v-contact{border-top:1px solid var(--v-line);border-bottom:1px solid var(--v-line)}
+#vytal-blue-proposal .v-contact a{color:#1E6091}
