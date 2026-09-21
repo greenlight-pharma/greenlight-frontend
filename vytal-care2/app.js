@@ -1,6 +1,6 @@
 (() => {
   const panel = document.getElementById('demo-panel');
-  const signup = '/vytal-care2/app/familia';
+  const signup = 'https://care.vytalsaude.com.br/familia';
   const note = '<p class="info-note">Exemplo ilustrativo. Ausência de confirmação não significa que a medicação não foi tomada.</p>';
   function show(view, person) {
     document.querySelectorAll('[data-view]').forEach(b => b.setAttribute('aria-pressed', String(b.dataset.view === view)));
