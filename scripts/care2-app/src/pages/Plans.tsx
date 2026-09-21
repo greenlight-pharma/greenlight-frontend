@@ -7,23 +7,25 @@ import { Button, Chip, Confirm, Dialog, Eyebrow, Field, Icon, Notice, Segmented,
 // dias, sem renovação), pelo Pagar.me. O cartão vai DIRETO ao Pagar.me e vira
 // um token; o servidor da Vytal só recebe o token. Só existe na web: o app iOS
 // vende pela App Store e não cita este canal.
-type SalePlan = Plan & { preco: string; precoCentavos?: number; precoAnual: string; precoAnualCentavos: number };
-type Config = { disponivel: boolean; publicKey: string | null; planos: SalePlan[]; franquiaMensagensPorPaciente?: number };
-type Cycle = "mensal" | "anual";
+export type SalePlan = Plan & { preco: string; precoCentavos?: number; precoAnual: string; precoAnualCentavos: number };
+export type PaymentConfig = { disponivel: boolean; publicKey: string | null; planos: SalePlan[]; franquiaMensagensPorPaciente?: number };
+export type Cycle = "mensal" | "anual";
 type Method = "cartao" | "pix";
 type Coupon = { codigo: string; resumo: string; precoFinalTexto: string; precoOriginalTexto: string; cobrancas: number | null };
 type PixOrder = { id: string; qrCode: string; qrCodeUrl?: string | null; expiraEm?: string | null; dias: number; valorCentavos?: number; teste?: boolean };
 const CONTATO = "https://www.vytalsaude.com.br/vytal-care#contato";
 const digits = (s: string) => s.replace(/\D/g, "");
+export type CheckoutRoutes = { coupon: string; card: string; pix: string; pixStatus: (id: string) => string };
+const WEB_ROUTES: CheckoutRoutes = { coupon: "/assinatura/web/cupom", card: "/assinatura/web", pix: "/assinatura/web/pix", pixStatus: (id) => `/assinatura/web/pix/${encodeURIComponent(id)}` };
 /** [PESSOAL] Conta de família conta pessoas; a do profissional, pacientes. */
 export const unidade = (n: number, pessoal?: boolean) => (pessoal ? (n === 1 ? "1 pessoa" : `${n} pessoas`) : n === 1 ? "1 paciente" : `${n} pacientes`);
 
 export function PlanCard({ plan, onChanged }: { plan: SubscriptionStatus; onChanged: () => void }) {
-  const [config, setConfig] = useState<Config | null>(null);
+  const [config, setConfig] = useState<PaymentConfig | null>(null);
   const [buying, setBuying] = useState<SalePlan | null>(null);
   const [cycle, setCycle] = useState<Cycle>("mensal");
   const [canceling, setCanceling] = useState(false), [busy, setBusy] = useState(false), [error, setError] = useState<string | null>(null);
-  useLoad(async (alive) => { try { const c = await api<Config>("/assinatura/web/config"); if (alive()) setConfig(c); } catch { /* sem venda: só mostra o plano */ } }, []);
+  useLoad(async (alive) => { try { const c = await api<PaymentConfig>("/assinatura/web/config"); if (alive()) setConfig(c); } catch { /* sem venda: só mostra o plano */ } }, []);
   const used = plan.usados ?? 0, limit = plan.limite ?? plan.plano.limitePacientes;
   const pessoal = plan.tipoConta === "pessoal";
   const web = plan.web, apple = plan.assinatura;
@@ -60,7 +62,7 @@ export function PlanCard({ plan, onChanged }: { plan: SubscriptionStatus; onChan
   </Surface>;
 }
 
-function Checkout({ plan, cycle, publicKey, onClose }: { plan: SalePlan; cycle: Cycle; publicKey: string; onClose: (done: boolean) => void }) {
+export function Checkout({ plan, cycle, publicKey, onClose, routes = WEB_ROUTES, authenticated = true }: { plan: SalePlan; cycle: Cycle; publicKey: string; onClose: (done: boolean) => void; routes?: CheckoutRoutes; authenticated?: boolean }) {
   const fullPrice = cycle === "anual" ? plan.precoAnual : plan.preco, per = cycle === "anual" ? "por ano" : "por mês";
   const [f, setF] = useState({ nome: "", cpf: "", celular: "", cep: "", rua: "", numero: "", complemento: "", bairro: "", cidade: "", uf: "", cartao: "", titular: "", validade: "", cvv: "" });
   const [busy, setBusy] = useState(false), [error, setError] = useState<string | null>(null), [done, setDone] = useState(false);
@@ -73,7 +75,7 @@ function Checkout({ plan, cycle, publicKey, onClose }: { plan: SalePlan; cycle: 
   async function checkCoupon(codigo = code, metodo = method) {
     if (!codigo.trim()) return;
     setChecking(true); setCouponError(null);
-    try { setCoupon(await api<Coupon>("/assinatura/web/cupom", { method: "POST", body: { cupom: codigo, planoId: plan.id, ciclo: cycle, metodo } })); }
+    try { setCoupon(await api<Coupon>(routes.coupon, { method: "POST", authenticated, body: { cupom: codigo, planoId: plan.id, ciclo: cycle, metodo } })); }
     catch (err) { setCoupon(null); setCouponError(errorText(err)); } finally { setChecking(false); }
   }
   const price = coupon?.precoFinalTexto ?? fullPrice;
@@ -81,10 +83,10 @@ function Checkout({ plan, cycle, publicKey, onClose }: { plan: SalePlan; cycle: 
   const later = coupon && method === "cartao" && coupon.cobrancas ? ` ${coupon.cobrancas === 1 ? "Na primeira cobrança" : `Nas ${coupon.cobrancas} primeiras cobranças`}; depois, ${fullPrice} ${per}.` : "";
   const set = (k: keyof typeof f) => (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => setF({ ...f, [k]: e.target.value });
   // CEP completo preenche rua, bairro, cidade e UF. É só ajuda: os campos continuam editáveis.
-  async function cepBlur() { const cep = digits(f.cep); if (cep.length !== 8) return; try { const r = await (await fetch(`https://viacep.com.br/ws/${cep}/json/`)).json(); if (!r.erro) setF((x) => ({ ...x, rua: x.rua || r.logradouro || "", bairro: x.bairro || r.bairro || "", cidade: x.cidade || r.localidade || "", uf: x.uf || r.uf || "" })); } catch { /* preenche à mão */ } }
+  async function cepBlur() { const cep = digits(f.cep); if (cep.length !== 8) return; try { const r = await (await fetch(`https://viacep.com.br/ws/${cep}/json/`, { referrerPolicy: "no-referrer" })).json(); if (!r.erro) setF((x) => ({ ...x, rua: x.rua || r.logradouro || "", bairro: x.bairro || r.bairro || "", cidade: x.cidade || r.localidade || "", uf: x.uf || r.uf || "" })); } catch { /* preenche à mão */ } }
   async function payPix() {
     setBusy(true); setError(null);
-    try { setPix(await api<PixOrder>("/assinatura/web/pix", { method: "POST", body: { planoId: plan.id, ciclo: cycle, nome: f.nome, cpf: f.cpf, celular: f.celular, cupom: coupon?.codigo, metodo: "pix" } })); }
+    try { setPix(await api<PixOrder>(routes.pix, { method: "POST", authenticated, body: { planoId: plan.id, ciclo: cycle, nome: f.nome, cpf: f.cpf, celular: f.celular, cupom: coupon?.codigo, metodo: "pix" } })); }
     catch (err) { setError(errorText(err)); } finally { setBusy(false); }
   }
   async function pay(e: React.FormEvent) {
@@ -97,16 +99,16 @@ function Checkout({ plan, cycle, publicKey, onClose }: { plan: SalePlan; cycle: 
     setBusy(true); setError(null);
     try {
       // 1) cartão -> token, direto no Pagar.me (chave pública). O número nunca chega ao servidor da Vytal.
-      const rt = await fetch(`https://api.pagar.me/core/v5/tokens?appId=${encodeURIComponent(publicKey)}`, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ type: "card", card: { number: digits(f.cartao), holder_name: f.titular.trim(), exp_month: month, exp_year: year, cvv: digits(f.cvv) } }) });
+      const rt = await fetch(`https://api.pagar.me/core/v5/tokens?appId=${encodeURIComponent(publicKey)}`, { method: "POST", referrerPolicy: "no-referrer", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ type: "card", card: { number: digits(f.cartao), holder_name: f.titular.trim(), exp_month: month, exp_year: year, cvv: digits(f.cvv) } }) });
       const token = await rt.json().catch(() => ({}));
       if (!rt.ok || !token.id) throw new Error("Confira os dados do cartão.");
       // 2) assinatura no servidor da Vytal, só com o token.
-      await api("/assinatura/web", { method: "POST", body: { planoId: plan.id, ciclo: cycle, cupom: coupon?.codigo, metodo: "cartao", cardToken: token.id, nome: f.nome, cpf: f.cpf, celular: f.celular, endereco: { cep: f.cep, rua: f.rua, numero: f.numero, complemento: f.complemento || undefined, bairro: f.bairro, cidade: f.cidade, uf: f.uf } } });
+      await api(routes.card, { method: "POST", authenticated, body: { planoId: plan.id, ciclo: cycle, cupom: coupon?.codigo, metodo: "cartao", cardToken: token.id, nome: f.nome, cpf: f.cpf, celular: f.celular, endereco: { cep: f.cep, rua: f.rua, numero: f.numero, complemento: f.complemento || undefined, bairro: f.bairro, cidade: f.cidade, uf: f.uf } } });
       setF((x) => ({ ...x, cartao: "", titular: "", validade: "", cvv: "" })); setDone(true);
     } catch (err) { setError(errorText(err)); } finally { setBusy(false); }
   }
   if (done) return <Dialog title={until ? "Pagamento confirmado" : "Assinatura confirmada"} onClose={() => onClose(true)}><Notice tone="ok">{`Plano ${plan.nome} ativo${until ? ` até ${Schedule.dateTime(until).slice(0, 10)}` : ""}. ${plan.publico === "pessoal" ? `Os lembretes de ${unidade(plan.limitePacientes, true)} estão garantidos.` : `Você já pode acompanhar até ${plan.limitePacientes} pacientes.`}`}</Notice><Button className="big" icon="check" onClick={() => onClose(true)}>Concluir</Button></Dialog>;
-  if (pix) return <PixPayment order={pix} planName={plan.nome} price={price} onPaid={(ate) => { setUntil(ate); setDone(true); }} onClose={() => onClose(false)} onRetry={() => setPix(null)} />;
+  if (pix) return <PixPayment order={pix} planName={plan.nome} price={price} routes={routes} authenticated={authenticated} onPaid={(ate) => { setUntil(ate); setDone(true); }} onClose={() => onClose(false)} onRetry={() => setPix(null)} />;
   return <Dialog wide title={`Assinar ${plan.nome}`} eyebrow={`${price} ${per} · ${plan.publico === "pessoal" ? unidade(plan.limitePacientes, true) : `até ${plan.limitePacientes} pacientes`}`} onClose={() => onClose(false)} locked={busy}>
     <form className="stack" onSubmit={pay} autoComplete="on">
       <b>Como você quer pagar?</b>
@@ -144,12 +146,12 @@ function Checkout({ plan, cycle, publicKey, onClose }: { plan: SalePlan; cycle: 
 }
 
 /** QR Code e "copia e cola". Pergunta ao servidor a cada 4 s até o pagamento cair. */
-function PixPayment({ order, planName, price, onPaid, onClose, onRetry }: { order: PixOrder; planName: string; price: string; onPaid: (until: string | null) => void; onClose: () => void; onRetry: () => void }) {
+function PixPayment({ order, planName, price, routes, authenticated, onPaid, onClose, onRetry }: { order: PixOrder; planName: string; price: string; routes: CheckoutRoutes; authenticated: boolean; onPaid: (until: string | null) => void; onClose: () => void; onRetry: () => void }) {
   const [status, setStatus] = useState("pendente"), [copied, setCopied] = useState(false), [now, setNow] = useState(Date.now());
   useEffect(() => {
     let on = true;
     const tick = async () => {
-      try { const r = await api<{ status: string; acessoAte?: string | null }>(`/assinatura/web/pix/${encodeURIComponent(order.id)}`); if (!on) return; setStatus(r.status); if (r.status === "ativa") onPaid(r.acessoAte ?? null); }
+      try { const r = await api<{ status: string; acessoAte?: string | null }>(routes.pixStatus(order.id), { authenticated }); if (!on) return; setStatus(r.status); if (r.status === "ativa") onPaid(r.acessoAte ?? null); }
       catch { /* tenta de novo no próximo ciclo */ }
     };
     const poll = setInterval(tick, 4000), clock = setInterval(() => setNow(Date.now()), 1000);
