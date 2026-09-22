@@ -1,0 +1,19 @@
+.hero h1{max-width:650px;font-size:clamp(3rem,5.4vw,5rem);line-height:1.04}
+.hero .lead{max-width:610px;font-size:1.2rem;line-height:1.5}
+.hero .micro{margin-top:12px}
+.hero-benefits{font-size:.9rem}
+.hero-art{padding-bottom:24px}
+.care-purpose{padding:34px 0;background:#d7ede1;text-align:center}
+.care-purpose .wrap{max-width:760px}
+.care-purpose h2{font-size:clamp(1.4rem,2.5vw,2rem);line-height:1.2}
+.care-purpose p{margin:12px 0 0;font-size:1.08rem;line-height:1.5}
+.pricing{padding:64px 0}
+.pricing .section-heading{margin-bottom:30px}
+.plan{display:flex;flex-direction:column;gap:18px}
+.plan h3,.plan p{margin:0}
+.plan .price{margin:0}
+.plan .button{margin-top:auto}
+.payment-note{max-width:620px;margin:24px auto 0;text-align:center}
+.faq-section{padding-block:64px}
+.faq-section .text-link{display:inline-block;margin-top:16px}
+@media(max-width:760px){.hero h1{font-size:clamp(2.7rem,11vw,4rem)}.hero .lead{font-size:1.1rem}.hero-art{padding-bottom:18px}.care-purpose{padding:30px 0}.care-purpose p{font-size:1rem}.pricing{padding:52px 0}}
