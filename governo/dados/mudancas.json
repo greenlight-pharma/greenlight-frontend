@@ -1,6 +1,6 @@
 {
  "meta": {
-  "gerado_em": "2026-09-20T14:05+00:00",
+  "gerado_em": "2026-09-22T14:36+00:00",
   "gerado_por": "scripts/governo/agentes/agente_dou.py",
   "janela_dias": 120,
   "fonte": {
@@ -9,13 +9,34 @@
   },
   "regra": "O feed registra o que o DOU publicou, com link para cada ato. Ocupantes no grafo só mudam com revisão humana.",
   "contagem": {
-   "comando": 3,
+   "comando": 4,
    "alta": 43,
    "outra": 404
   },
-  "refinados_por_claude": 0
+  "refinados_por_claude": 1
  },
  "mudancas": [
+  {
+   "id": "dou-f11e2c73e518",
+   "data": "2026-09-21",
+   "publicado_em": "2026-09-22",
+   "tipo": "saida",
+   "cargo": "Reitor da Universidade Federal Fluminense",
+   "codigo": null,
+   "entra": null,
+   "sai": "Antônio Cláudio Lucas da Nóbrega",
+   "interino": false,
+   "a_pedido": false,
+   "desde": "2026-09-14",
+   "no_id": "universidades",
+   "nivel": "comando",
+   "ato": "Decreto, de 21/09/2026",
+   "assinante": "Presidência da República",
+   "fonte": "https://www.in.gov.br/web/dou/-/decreto-de-21-de-setembro-de-2026-733250855",
+   "fonte_nome": "DOU, seção 2",
+   "origem": "dou",
+   "resumo": "Antônio Cláudio Lucas da Nóbrega deixa o cargo de Reitor da Universidade Federal Fluminense."
+  },
   {
    "id": "dou-97d0078090c8",
    "data": "2026-09-17",

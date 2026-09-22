@@ -1,6 +1,6 @@
 {
  "meta": {
-  "gerado_em": "2026-09-20T14:23+00:00",
+  "gerado_em": "2026-09-22T14:55+00:00",
   "gerado_por": "scripts/governo/agentes/agente_noticias.py",
   "janela_dias": 90,
   "fontes": [
@@ -30,14 +30,14 @@
     "url": "https://www.gov.br/planalto/pt-br/acompanhe-o-planalto/noticias/RSS"
    }
   ],
-  "total_artigos": 1074,
-  "artigos_com_no": 267,
-  "novos_nesta_rodada": 25,
+  "total_artigos": 1136,
+  "artigos_com_no": 294,
+  "novos_nesta_rodada": 68,
   "artigos_por_fonte": {
-   "agenciabrasil": 135,
+   "agenciabrasil": 184,
+   "senado": 596,
    "stf": 4,
    "camara": 326,
-   "senado": 583,
    "planalto": 26
   },
   "ordem": "peso igual por fonte; contagem real de matérias",
@@ -45,207 +45,207 @@
  },
  "resumo": [
   {
-   "texto": "O ministro Floriano de Azevedo Marques, do Tribunal Superior Eleitoral, concedeu liminar que suspende os atos de campanha do candidato ao Senado pelo Paraná Deltan Dallagnol até decisão final do tribunal.",
-   "artigo_id": "n-48d7a05953",
-   "no_id": "tse"
+   "texto": "O Ministério da Justiça e Segurança Pública demitiu Eduardo Bolsonaro do cargo de escrivão da Polícia Federal por abandono de cargo, com base em processo administrativo disciplinar publicado no Diário Oficial da União.",
+   "artigo_id": "n-8c490a9530",
+   "no_id": "mjsp"
   },
   {
-   "texto": "A Primeira Turma do Supremo Tribunal Federal rejeitou por unanimidade, com placar de 4 a 0, o recurso do ex-deputado Eduardo Bolsonaro contra a condenação a quatro anos e dois meses de prisão no processo do tarifaço.",
-   "artigo_id": "n-4eea0f167a",
-   "no_id": "stf"
+   "texto": "A Advocacia-Geral da União pediu ao Supremo Tribunal Federal a perda definitiva do cargo do ministro do Superior Tribunal de Justiça Marco Buzzi, condenado pelo STJ em processo por assédio sexual.",
+   "artigo_id": "n-f90fb913be",
+   "no_id": "agu"
   },
   {
-   "texto": "O ministro Gilmar Mendes, do Supremo Tribunal Federal, reconheceu a validade do decreto que autoriza o reajuste dos benefícios do Bolsa Família, atendendo a pedido da Advocacia-Geral da União.",
-   "artigo_id": "n-546cb774f3",
-   "no_id": "stf"
+   "texto": "O ministro Flávio Dino, do Supremo Tribunal Federal, determinou que o governo federal faça avaliação técnica e reapreciação das regras normativas da Comissão de Valores Mobiliários.",
+   "artigo_id": "n-4a69bd3199",
+   "no_id": "cvm"
   },
   {
-   "texto": "O Banco Central anunciou mudanças no regulamento do Pix, incluindo regras contra fraudes, cobrança híbrida e uso do Pix Automático em contas-salário a partir de julho de 2027.",
-   "artigo_id": "n-e43672c36a",
-   "no_id": null
+   "texto": "O Poder Executivo publicou medida provisória que abre crédito extraordinário de R$ 64,3 milhões ao Ministério do Desenvolvimento e Assistência Social e ao Ministério dos Povos Indígenas.",
+   "artigo_id": "n-0f16add689",
+   "no_id": "mds"
   }
  ],
  "ranking": {
   "orgaos": [
    {
-    "id": "tse",
-    "artigos": 33,
-    "peso": 28.92459639805862,
-    "ultima": "2026-09-20T13:45+00:00"
+    "id": "stf",
+    "artigos": 42,
+    "peso": 30.837230151754106,
+    "ultima": "2026-09-22T00:00+00:00"
    },
    {
-    "id": "stf",
-    "artigos": 37,
-    "peso": 28.59476763233681,
-    "ultima": "2026-09-18T22:21+00:00"
+    "id": "tse",
+    "artigos": 36,
+    "peso": 28.327856197894377,
+    "ultima": "2026-09-22T13:43+00:00"
    },
    {
     "id": "camara",
     "artigos": 49,
-    "peso": 18.05351629502574,
+    "peso": 18.679194630872466,
     "ultima": "2026-09-17T16:12:00+00:00"
    },
    {
     "id": "congresso",
     "artigos": 38,
-    "peso": 17.317399904824384,
+    "peso": 17.14022853521564,
     "ultima": "2026-09-17T20:01+00:00"
    },
    {
     "id": "prf",
     "artigos": 7,
-    "peso": 16.58553312515577,
+    "peso": 15.293582635631072,
     "ultima": "2026-09-17T13:36+00:00"
+   },
+   {
+    "id": "caixa",
+    "artigos": 10,
+    "peso": 12.347826086956523,
+    "ultima": "2026-09-22T10:02+00:00"
    },
    {
     "id": "inep",
     "artigos": 8,
-    "peso": 12.72888888888889,
+    "peso": 9.878260869565217,
     "ultima": "2026-09-20T11:06+00:00"
-   },
-   {
-    "id": "caixa",
-    "artigos": 7,
-    "peso": 11.137777777777778,
-    "ultima": "2026-09-19T14:00+00:00"
-   },
-   {
-    "id": "pf",
-    "artigos": 10,
-    "peso": 8.575079092814942,
-    "ultima": "2026-09-17T23:41+00:00"
-   },
-   {
-    "id": "inss",
-    "artigos": 14,
-    "peso": 8.414015698131916,
-    "ultima": "2026-09-18T20:16+00:00"
    },
    {
     "id": "mte",
     "artigos": 1,
-    "peso": 8.261538461538462,
+    "peso": 8.738461538461538,
     "ultima": "2026-08-12T21:09:00+00:00"
    },
    {
     "id": "inpe",
     "artigos": 1,
-    "peso": 8.261538461538462,
+    "peso": 8.738461538461538,
     "ultima": "2026-08-06T22:13:00+00:00"
    },
    {
-    "id": "petrobras",
-    "artigos": 7,
-    "peso": 7.469761768629692,
-    "ultima": "2026-09-19T20:55+00:00"
+    "id": "pf",
+    "artigos": 11,
+    "peso": 8.461161365625912,
+    "ultima": "2026-09-21T13:27+00:00"
    },
    {
-    "id": "ms",
-    "artigos": 8,
-    "peso": 6.905985471101803,
-    "ultima": "2026-09-18T21:15+00:00"
-   },
-   {
-    "id": "stj",
-    "artigos": 6,
-    "peso": 6.459563852438028,
-    "ultima": "2026-09-19T12:52+00:00"
+    "id": "inss",
+    "artigos": 14,
+    "peso": 8.400558538205267,
+    "ultima": "2026-09-18T20:16+00:00"
    },
    {
     "id": "ibge",
-    "artigos": 4,
-    "peso": 6.364444444444445,
-    "ultima": "2026-09-18T15:33+00:00"
+    "artigos": 7,
+    "peso": 7.789903705865188,
+    "ultima": "2026-09-21T17:14:00+00:00"
+   },
+   {
+    "id": "petrobras",
+    "artigos": 8,
+    "peso": 7.317537204552087,
+    "ultima": "2026-09-21T14:36+00:00"
+   },
+   {
+    "id": "ms",
+    "artigos": 9,
+    "peso": 7.160895164885134,
+    "ultima": "2026-09-21T17:18+00:00"
+   },
+   {
+    "id": "stj",
+    "artigos": 7,
+    "peso": 6.714203519148731,
+    "ultima": "2026-09-22T00:00+00:00"
+   },
+   {
+    "id": "agu",
+    "artigos": 6,
+    "peso": 6.555121097169536,
+    "ultima": "2026-09-22T13:43+00:00"
    },
    {
     "id": "anvisa",
-    "artigos": 6,
-    "peso": 6.169107254978305,
-    "ultima": "2026-09-17T13:20+00:00"
+    "artigos": 7,
+    "peso": 6.398479057502582,
+    "ultima": "2026-09-21T18:27+00:00"
    },
    {
     "id": "mpf",
-    "artigos": 4,
-    "peso": 5.141772441395083,
-    "ultima": "2026-09-18T19:33+00:00"
+    "artigos": 5,
+    "peso": 5.320338488473884,
+    "ultima": "2026-09-21T23:03+00:00"
    },
    {
     "id": "mec",
-    "artigos": 5,
-    "peso": 4.287539546407471,
-    "ultima": "2026-09-17T15:48+00:00"
+    "artigos": 6,
+    "peso": 4.847971987160783,
+    "ultima": "2026-09-21T16:01+00:00"
+   },
+   {
+    "id": "tst",
+    "artigos": 7,
+    "peso": 4.691329947493828,
+    "ultima": "2026-09-21T18:35+00:00"
    },
    {
     "id": "tcu",
     "artigos": 10,
-    "peso": 4.265304275536942,
+    "peso": 4.443529460205047,
     "ultima": "2026-09-04T14:56:00+00:00"
    },
    {
-    "id": "tst",
-    "artigos": 6,
-    "peso": 3.7237632488795827,
-    "ultima": "2026-09-18T20:08+00:00"
+    "id": "cvm",
+    "artigos": 4,
+    "peso": 4.40128034142438,
+    "ultima": "2026-09-20T17:04+00:00"
    },
    {
-    "id": "agu",
+    "id": "aeronautica",
     "artigos": 3,
-    "peso": 3.550661330283972,
-    "ultima": "2026-09-18T22:00+00:00"
+    "peso": 3.7043478260869565,
+    "ultima": "2026-09-22T13:30+00:00"
+   },
+   {
+    "id": "anp",
+    "artigos": 6,
+    "peso": 3.4565473387981753,
+    "ultima": "2026-09-21T23:32+00:00"
    },
    {
     "id": "bndes",
     "artigos": 4,
-    "peso": 2.9868850327560827,
+    "peso": 2.6941312314156254,
     "ultima": "2026-09-17T17:19+00:00"
    },
    {
-    "id": "cvm",
+    "id": "mjsp",
     "artigos": 2,
-    "peso": 2.2500068166325837,
-    "ultima": "2026-09-17T18:45+00:00"
+    "peso": 2.4695652173913043,
+    "ultima": "2026-09-21T23:32+00:00"
+   },
+   {
+    "id": "correios",
+    "artigos": 2,
+    "peso": 2.4695652173913043,
+    "ultima": "2026-09-21T18:35+00:00"
    },
    {
     "id": "embrapa",
     "artigos": 2,
-    "peso": 2.2500068166325837,
+    "peso": 1.9317151240330754,
     "ultima": "2026-09-17T13:01+00:00"
-   },
-   {
-    "id": "anp",
-    "artigos": 5,
-    "peso": 2.1326521377684706,
-    "ultima": "2026-09-10T18:13+00:00"
-   },
-   {
-    "id": "secom",
-    "artigos": 2,
-    "peso": 1.9595502191728607,
-    "ultima": "2026-09-17T16:12:00+00:00"
    },
    {
     "id": "anac",
     "artigos": 4,
-    "peso": 1.7642130297067211,
+    "peso": 1.8405566764112489,
     "ultima": "2026-09-08T17:30:00+00:00"
    },
    {
-    "id": "mps",
-    "artigos": 1,
-    "peso": 1.5911111111111111,
-    "ultima": "2026-09-18T20:16+00:00"
-   },
-   {
-    "id": "ghc",
-    "artigos": 1,
-    "peso": 1.5911111111111111,
-    "ultima": "2026-09-18T12:36+00:00"
-   },
-   {
-    "id": "correios",
-    "artigos": 1,
-    "peso": 1.5911111111111111,
-    "ultima": "2026-09-18T12:15+00:00"
+    "id": "mds",
+    "artigos": 2,
+    "peso": 1.6159906623869273,
+    "ultima": "2026-09-22T14:03:00+00:00"
    }
   ],
   "pessoas": [
@@ -260,9 +260,9 @@
     "uf": null,
     "foto": "https://commons.wikimedia.org/wiki/Special:FilePath/Foto_oficial_de_Luiz_In%C3%A1cio_Lula_da_Silva_%28estreita%29.jpg?width=160",
     "foto_fonte": "https://www.wikidata.org/wiki/Q37181",
-    "artigos": 17,
-    "peso": 19.337708800183627,
-    "ultima": "2026-09-20T11:50+00:00"
+    "artigos": 19,
+    "peso": 21.037378296576897,
+    "ultima": "2026-09-22T13:57+00:00"
    },
    {
     "id": "damares-alves",
@@ -275,9 +275,9 @@
     "uf": "DF",
     "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador6335.jpg",
     "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/6335",
-    "artigos": 21,
-    "peso": 7.737221269296739,
-    "ultima": "2026-09-16T13:54:00+00:00"
+    "artigos": 23,
+    "peso": 8.767785234899328,
+    "ultima": "2026-09-21T19:30:00+00:00"
    },
    {
     "id": "davi-alcolumbre",
@@ -291,7 +291,7 @@
     "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador3830.jpg",
     "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/3830",
     "artigos": 18,
-    "peso": 6.631903945111491,
+    "peso": 6.861744966442954,
     "ultima": "2026-09-08T14:44:00+00:00"
    },
    {
@@ -305,9 +305,9 @@
     "uf": "RJ",
     "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador5894.jpg",
     "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/5894",
-    "artigos": 6,
-    "peso": 5.878650657518581,
-    "ultima": "2026-09-19T13:01+00:00"
+    "artigos": 7,
+    "peso": 6.082754595856435,
+    "ultima": "2026-09-21T12:40+00:00"
    },
    {
     "id": "hugo-motta",
@@ -321,7 +321,7 @@
     "foto": "https://commons.wikimedia.org/wiki/Special:FilePath/11%C2%BA_F%C3%B3rum_Parlamentar_do_Brics_-_Brasil_2025_-_Entrevista_Coletiva_%2854569126271%29.jpg?width=160",
     "foto_fonte": "https://www.wikidata.org/wiki/Q10298778",
     "artigos": 11,
-    "peso": 5.214656578518137,
+    "peso": 5.456186437188618,
     "ultima": "2026-09-08T14:44:00+00:00"
    },
    {
@@ -335,9 +335,9 @@
     "uf": "RS",
     "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador825.jpg",
     "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/825",
-    "artigos": 11,
-    "peso": 4.052830188679246,
-    "ultima": "2026-09-17T20:27:00+00:00"
+    "artigos": 12,
+    "peso": 4.5744966442953015,
+    "ultima": "2026-09-21T19:30:00+00:00"
    },
    {
     "id": "omar-aziz",
@@ -351,23 +351,8 @@
     "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador5525.jpg",
     "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/5525",
     "artigos": 11,
-    "peso": 4.052830188679246,
+    "peso": 4.193288590604026,
     "ultima": "2026-09-02T23:20:00+00:00"
-   },
-   {
-    "id": "edson-fachin",
-    "nome": "Luiz Edson Fachin",
-    "nome_completo": "Edson Fachin",
-    "cargo": "Presidente · STF",
-    "no_id": "stf",
-    "poder": "judiciario",
-    "partido": null,
-    "uf": null,
-    "foto": "https://commons.wikimedia.org/wiki/Special:FilePath/Luiz_Edson_Fachin-12-05.2015.jpg?width=160",
-    "foto_fonte": "https://www.wikidata.org/wiki/Q10320705",
-    "artigos": 4,
-    "peso": 3.9191004383457217,
-    "ultima": "2026-09-18T15:06+00:00"
    },
    {
     "id": "rogerio-carvalho",
@@ -381,8 +366,23 @@
     "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador5352.jpg",
     "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/5352",
     "artigos": 10,
-    "peso": 3.6843910806174964,
+    "peso": 3.8120805369127506,
     "ultima": "2026-09-14T16:27:00+00:00"
+   },
+   {
+    "id": "mara-gabrilli",
+    "nome": "Mara Gabrilli",
+    "nome_completo": "Mara Cristina Gabrilli",
+    "cargo": "Senadora, SP",
+    "no_id": "senado",
+    "poder": "legislativo",
+    "partido": "PSD",
+    "uf": "SP",
+    "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador5376.jpg",
+    "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/5376",
+    "artigos": 9,
+    "peso": 3.4308724832214756,
+    "ultima": "2026-09-22T13:31:00+00:00"
    },
    {
     "id": "leila-barros",
@@ -396,7 +396,7 @@
     "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador5979.jpg",
     "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/5979",
     "artigos": 9,
-    "peso": 3.3159519725557467,
+    "peso": 3.4308724832214756,
     "ultima": "2026-09-10T18:45:00+00:00"
    },
    {
@@ -411,7 +411,7 @@
     "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador5990.jpg",
     "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/5990",
     "artigos": 9,
-    "peso": 3.3159519725557467,
+    "peso": 3.4308724832214756,
     "ultima": "2026-09-04T21:56:00+00:00"
    },
    {
@@ -426,8 +426,23 @@
     "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador345.jpg",
     "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/345",
     "artigos": 9,
-    "peso": 3.3159519725557467,
+    "peso": 3.4308724832214756,
     "ultima": "2026-09-03T23:38:00+00:00"
+   },
+   {
+    "id": "edson-fachin",
+    "nome": "Luiz Edson Fachin",
+    "nome_completo": "Edson Fachin",
+    "cargo": "Presidente · STF",
+    "no_id": "stf",
+    "poder": "judiciario",
+    "partido": null,
+    "uf": null,
+    "foto": "https://commons.wikimedia.org/wiki/Special:FilePath/Luiz_Edson_Fachin-12-05.2015.jpg?width=160",
+    "foto_fonte": "https://www.wikidata.org/wiki/Q10320705",
+    "artigos": 4,
+    "peso": 3.2319813247738542,
+    "ultima": "2026-09-18T15:06+00:00"
    },
    {
     "id": "astronauta-marcos-pontes",
@@ -441,23 +456,8 @@
     "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador6009.jpg",
     "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/6009",
     "artigos": 7,
-    "peso": 2.5790737564322472,
+    "peso": 2.6684563758389257,
     "ultima": "2026-09-08T15:37:00+00:00"
-   },
-   {
-    "id": "mara-gabrilli",
-    "nome": "Mara Gabrilli",
-    "nome_completo": "Mara Cristina Gabrilli",
-    "cargo": "Senadora, SP",
-    "no_id": "senado",
-    "poder": "legislativo",
-    "partido": "PSD",
-    "uf": "SP",
-    "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador5376.jpg",
-    "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/5376",
-    "artigos": 7,
-    "peso": 2.5790737564322472,
-    "ultima": "2026-09-04T00:40:00+00:00"
    },
    {
     "id": "fernando-dueire",
@@ -471,7 +471,7 @@
     "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador5917.jpg",
     "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/5917",
     "artigos": 7,
-    "peso": 2.5790737564322472,
+    "peso": 2.6684563758389257,
     "ultima": "2026-09-02T19:51:00+00:00"
    },
    {
@@ -486,23 +486,8 @@
     "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador5732.jpg",
     "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/5732",
     "artigos": 5,
-    "peso": 2.423108735228194,
+    "peso": 2.537489191748672,
     "ultima": "2026-09-02T16:46:00+00:00"
-   },
-   {
-    "id": "paulo-gonet",
-    "nome": "Paulo Gonet",
-    "nome_completo": "Paulo Gonet",
-    "cargo": "Procurador(a)-Geral da República · MPU",
-    "no_id": "mpu",
-    "poder": "essencial",
-    "partido": null,
-    "uf": null,
-    "foto": null,
-    "foto_fonte": null,
-    "artigos": 3,
-    "peso": 2.32798932723461,
-    "ultima": "2026-09-17T14:37+00:00"
    },
    {
     "id": "izalci-lucas",
@@ -516,7 +501,7 @@
     "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador4770.jpg",
     "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/4770",
     "artigos": 6,
-    "peso": 2.2106346483704975,
+    "peso": 2.2872483221476507,
     "ultima": "2026-09-17T21:37:00+00:00"
    },
    {
@@ -531,7 +516,7 @@
     "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador6338.jpg",
     "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/6338",
     "artigos": 6,
-    "peso": 2.2106346483704975,
+    "peso": 2.2872483221476507,
     "ultima": "2026-09-10T18:45:00+00:00"
    },
    {
@@ -546,23 +531,38 @@
     "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador475.jpg",
     "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/475",
     "artigos": 6,
-    "peso": 2.2106346483704975,
+    "peso": 2.2872483221476507,
     "ultima": "2026-09-01T22:31:00+00:00"
    },
    {
-    "id": "nunes-marques",
-    "nome": "Nunes Marques",
-    "nome_completo": "Nunes Marques",
-    "cargo": "Presidente · TSE",
-    "no_id": "tse",
-    "poder": "judiciario",
+    "id": "paulo-gonet",
+    "nome": "Paulo Gonet",
+    "nome_completo": "Paulo Gonet",
+    "cargo": "Procurador(a)-Geral da República · MPU",
+    "no_id": "mpu",
+    "poder": "essencial",
     "partido": null,
     "uf": null,
-    "foto": "https://commons.wikimedia.org/wiki/Special:FilePath/Nunes_Marques%2C_February_2025_%28cropped%29.jpg?width=160",
-    "foto_fonte": "https://www.wikidata.org/wiki/Q99831978",
-    "artigos": 2,
-    "peso": 1.9595502191728607,
-    "ultima": "2026-09-12T20:44+00:00"
+    "foto": null,
+    "foto_fonte": null,
+    "artigos": 3,
+    "peso": 1.9971987160782025,
+    "ultima": "2026-09-17T14:37+00:00"
+   },
+   {
+    "id": "nelsinho-trad",
+    "nome": "Nelsinho Trad",
+    "nome_completo": "Nelson Trad Filho",
+    "cargo": "Senador, MS",
+    "no_id": "senado",
+    "poder": "legislativo",
+    "partido": "PSD",
+    "uf": "MS",
+    "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador5985.jpg",
+    "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/5985",
+    "artigos": 5,
+    "peso": 1.9060402684563758,
+    "ultima": "2026-09-22T14:16:00+00:00"
    },
    {
     "id": "esperidiao-amin",
@@ -576,7 +576,7 @@
     "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador22.jpg",
     "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/22",
     "artigos": 5,
-    "peso": 1.8421955403087478,
+    "peso": 1.9060402684563758,
     "ultima": "2026-09-11T19:48:00+00:00"
    },
    {
@@ -591,27 +591,722 @@
     "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador3806.jpg",
     "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/3806",
     "artigos": 5,
-    "peso": 1.8421955403087478,
+    "peso": 1.9060402684563758,
     "ultima": "2026-09-08T17:35:00+00:00"
    },
    {
-    "id": "andrei-augusto-passos-rodrigues",
-    "nome": "Augusto Coutinho",
-    "nome_completo": "Andrei Augusto Passos Rodrigues",
-    "cargo": "Diretor(a)-Geral · PF",
-    "no_id": "pf",
-    "poder": "executivo",
+    "id": "luiz-philippe-vieira-de-mello-filho",
+    "nome": "Vieira de Mello Filho",
+    "nome_completo": "Luiz Philippe Vieira de Mello Filho",
+    "cargo": "Presidente · TST",
+    "no_id": "tst",
+    "poder": "judiciario",
     "partido": null,
     "uf": null,
-    "foto": "https://commons.wikimedia.org/wiki/Special:FilePath/Augusto_Coutinho_%28cropped%29.png?width=160",
-    "foto_fonte": "https://www.wikidata.org/wiki/Q21019922",
-    "artigos": 1,
-    "peso": 1.5911111111111111,
-    "ultima": "2026-09-17T13:19+00:00"
+    "foto": "https://commons.wikimedia.org/wiki/Special:FilePath/Plen%C3%A1rio_do_Senado_-_54820218794.jpg?width=160",
+    "foto_fonte": "https://www.wikidata.org/wiki/Q137460034",
+    "artigos": 2,
+    "peso": 1.6159906623869273,
+    "ultima": "2026-09-21T18:35+00:00"
    }
   ]
  },
  "artigos": [
+  {
+   "id": "n-baeb2b413a",
+   "titulo": "Arrecadação federal ultrapassa R$ 2 trilhões em oito meses",
+   "url": "https://agenciabrasil.ebc.com.br/economia/noticia/2026-09/arrecadacao-federal-ultrapassa-r-2-trilhoes-em-oito-meses",
+   "data": "2026-09-22T14:41+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "O governo federal acumula arrecadação de R$ 2,019 trilhões, de janeiro a agosto de 2026, segundo dados divulgados nesta terça-feira (22) pela Receita Federal . Além da inflação medida pelo IPCA , para o período, o valor representa crescimento de 7,12% na comparação com os mesmos oito meses de 2025. Em agosto, a arrecadação federal alcançou R$ 235,5 bilhões. O valor representa alta acima de inflação de 8,25% em relação a agosto do último ano. Desse total, R$227,8 bilhões arrecadados são administrados pela Receita Federal, excluídos os fatores não recorrentes e de alterações na legislação. Notíc"
+  },
+  {
+   "id": "n-49ffa3ac6c",
+   "titulo": "Ponte sobre o Rio Paraguai recebe nome de ex-prefeito de Porto Murtinho",
+   "url": "https://www12.senado.leg.br/noticias/materias/2026/09/22/ponte-sobre-o-rio-paraguai-recebe-nome-de-ex-prefeito-de-porto-murtinho",
+   "data": "2026-09-22T14:16:00+00:00",
+   "fonte": "senado",
+   "nos": [],
+   "pessoas": [
+    "nelsinho-trad"
+   ],
+   "resumo": "O trecho brasileiro da ponte sobre o Rio Paraguai, que liga Porto Murtinho (MS) a Carmelo Peralta, no Paraguai, passa a se chamar Ponte Heitor Miranda dos Santos. A denominação homenageia o ex-prefeito de Porto Murtinho, que morreu em 2022, aos 69 anos. A denominação foi estabelecida pela Lei 15.507, de 2026, publicada no Diário Oficial da União nesta terça-feira (22). A ponte integra a Rota Bioceânica e amplia a circulação de pessoas, bens e serviços entre Brasil e Paraguai. Durante a tramitação da proposta, o senador Nelsinho Trad (PSD-MS), relator do projeto que deu origem à lei (PL 780/202"
+  },
+  {
+   "id": "n-0f16add689",
+   "titulo": "MP destina R$ 64,3 milhões para segurança alimentar e povos indígenas",
+   "url": "https://www12.senado.leg.br/noticias/materias/2026/09/22/mp-destina-r-64-3-milhoes-para-seguranca-alimentar-e-povos-indigenas",
+   "data": "2026-09-22T14:03:00+00:00",
+   "fonte": "senado",
+   "nos": [
+    "mds",
+    "mpi"
+   ],
+   "pessoas": [],
+   "resumo": "O Poder Executivo abriu crédito extraordinário de R$ 64,3 milhões para ações de segurança alimentar e de atendimento aos povos indígenas. Os recursos estão previstos em medida provisória publicada nesta terça-feira (22) no Diário Oficial da União (DOU). Do total previsto na MP 1.392/2026, cerca de R$ 40,3 milhões vão para o Ministério do Desenvolvimento e Assistência Social, Família e Combate à Fome e R$ 24 milhões para o Ministério dos Povos Indígenas. A maior parcela, cerca de R$ 40,26 milhões, será aplicada na aquisição e distribuição de alimentos da agricultura familiar para promoção da se"
+  },
+  {
+   "id": "n-957b1f054c",
+   "titulo": "Temporais provocam duas mortes e afetam mais de 527 mil pessoas no RS",
+   "url": "https://agenciabrasil.ebc.com.br/meio-ambiente/noticia/2026-09/temporais-provocam-duas-mortes-e-afetam-mais-de-527-mil-pessoas-no-rs",
+   "data": "2026-09-22T14:02+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "A Defesa Civil do Rio Grande do Sul confirmou a segunda morte decorrente do forte temporal que atingiu o estado nessa segunda-feira (21). A vítima é uma adolescente que estava desaparecida no município de Caxias do Sul. Outras três pessoas estão desaparecidas no município, que chegou a registrar 159,4 milímetros de chuva ontem. Notícias relacionadas: Defesa Civil alerta para risco muito alto de inundação do Taquari. Sob El Niño, primavera deve ter calor, seca e tempestades severas. Morador de Pelotas mostra nas redes estragos causados por tempestade. A primeira morte confirmada no estado foi a"
+  },
+  {
+   "id": "n-15e1610179",
+   "titulo": "Secretário-geral da ONU alerta para avanço de guerras e riscos da IA",
+   "url": "https://agenciabrasil.ebc.com.br/internacional/noticia/2026-09/secretario-geral-da-onu-alerta-para-avanco-de-guerras-e-riscos-da-ia",
+   "data": "2026-09-22T13:57+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [],
+   "pessoas": [
+    "luiz-inacio-lula-da-silva"
+   ],
+   "resumo": "O secretário-geral da Organização das Nações Unidas (ONU), António Guterres, abriu a 81ª assembleia geral da entidade nesta terça-feira (22) alertando para o avanço de conflitos e guerras, para ataques contra civis e trabalhadores humanitários e para o aprofundamento de divisões geopolíticas. “Nosso futuro será moldado pela forma como enfrentarmos quatro grandes testes de poder”, disse, citando conflitos armados e guerras, desigualdade, mudanças climáticas e inteligência artificial. Notícias relacionadas: ONU: Lula defende multilateralismo e reforma do Conselho de Segurança. IA pode representa"
+  },
+  {
+   "id": "n-d9d7338526",
+   "titulo": "Jornalista Zuenir Ventura morre aos 95 anos",
+   "url": "https://agenciabrasil.ebc.com.br/geral/noticia/2026-09/jornalista-zuenir-ventura-morre-aos-95-anos",
+   "data": "2026-09-22T13:49+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "O jornalista Zuenir Ventura, de 95 anos, morreu na manhã desta terça-feira (22), em casa, em decorrência de uma pneumonia. A informação foi divulgada pela Academia Brasileira de Letras (ABL). Ventura era acadêmico da ABL desde 2015, como sucessor do escritor Ariano Suassuna. Nascido em 1931, em Além Paraíba (MG), ele era bacharel e licenciado em letras neolatinas e foi professor da Universidade Federal do Rio de Janeiro (UFRJ) e da Universidade do Estado do Rio de Janeiro (Uerj). Começou no jornalismo em 1956, como arquivista. Atuou como repórter, colunista, editor, chefe de reportagem e diret"
+  },
+  {
+   "id": "n-da5096cbaf",
+   "titulo": "União Europeia multa Google por uso indevido de dados de localização",
+   "url": "https://agenciabrasil.ebc.com.br/internacional/noticia/2026-09/uniao-europeia-multa-google-em-403-milhoes-de-euros",
+   "data": "2026-09-22T13:43+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [
+    "agu",
+    "tse"
+   ],
+   "pessoas": [],
+   "resumo": "A principal autoridade reguladora de proteção de dados da União Europeia (UE) multou o Google em 403 milhões de euros, após uma investigação sobre o tratamento de dados de localização. A empresa alega que suas políticas já foram atualizadas. Notícias relacionadas: AGU notifica Google para remover perfis que promovem apostas ilegais. Governo identifica 97 médicos falsos de IA no Youtube e aciona Google. TSE e Google lançam ferramenta para proteger candidatos de deepfakes. A Comissão de Proteção de Dados da Irlanda (DPC, na sigla em inglês) informou ter constatado que o Google havia infringido a"
+  },
+  {
+   "id": "n-7c6d6b37b6",
+   "titulo": "CDH divulga nesta quarta dados de violência contra a mulher com deficiência",
+   "url": "https://www12.senado.leg.br/noticias/materias/2026/09/22/cdh-divulga-nesta-quarta-dados-de-violencia-contra-a-mulher-com-deficiencia",
+   "data": "2026-09-22T13:31:00+00:00",
+   "fonte": "senado",
+   "nos": [],
+   "pessoas": [
+    "mara-gabrilli"
+   ],
+   "resumo": "Mulheres com deficiência estão expostas a maiores riscos de sofrer violência, agressões, abusos e outros tipos de negligência e maus-tratos, tanto no âmbito doméstico como fora dele. É o que aponta levantamento do DataSenado e do Observatório da Mulher contra a Violência que será apresentado nesta quarta-feira (23), a partir de 10h, em audiência pública na Comissão de Direitos Humanos (CDH). A audiência foi sugerida pela vice-presidente da comissão (REQ 128/2026 - CDH), senadora Mara Gabrilli (PSD-SP). No pedido, ela destaca que as mulheres com deficiência estão particularmente suscetíveis a d"
+  },
+  {
+   "id": "n-60a7aab2d0",
+   "titulo": "Renner pede orações para que parceiro Rick seja localizado",
+   "url": "https://agenciabrasil.ebc.com.br/geral/noticia/2026-09/renner-pede-oracoes-para-que-parceiro-rick-seja-localizado",
+   "data": "2026-09-22T13:30+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [
+    "aeronautica"
+   ],
+   "pessoas": [],
+   "resumo": "O cantor Renner usou das redes sociais nesta manhã de terça-feira (21) para pedir orações ao parceiro, Rick. O helicóptero em que Rick embarcou, com outras três pessoas, está desaparecido desde a tarde dessa segunda-feira (21). A aeronave fazia o percurso entre as cidades de Porto Belo (região litorânea) e de São Joaquim, ambas em Santa Catarina. Notícias relacionadas: FAB e bombeiros buscam helicóptero com cantor Rick, desaparecido em SC. “Neste momento de angústia e incerteza, nos unimos em pensamentos positivos e orações pela busca do helicóptero que estava transportando o Rick.” Ele pede q"
+  },
+  {
+   "id": "n-4986f811f4",
+   "titulo": "Ata do Copom atribui corte da Selic à desaceleração da economia",
+   "url": "https://agenciabrasil.ebc.com.br/economia/noticia/2026-09/ata-do-copom-atribui-corte-da-selic-desaceleracao-da-economia",
+   "data": "2026-09-22T13:05+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "A desaceleração da atividade econômica, da inflação e os efeitos dos juros elevados sobre o crédito e a demanda levaram o Comitê de Política Monetária (Copom) do Banco Central a reduzir a taxa Selic em 0,25 ponto percentual, de 14% para 13,75% ao ano . As justificativas constam da ata da reunião divulgada nesta terça-feira (22). O documento ressalta que os indicadores divulgados desde o encontro anterior mostram moderação gradual da atividade econômica, sobretudo nos setores mais sensíveis ao ciclo econômico, embora a economia continue resiliente e o mercado de trabalho permaneça aquecido. Not"
+  },
+  {
+   "id": "n-e34fd73a11",
+   "titulo": "Defesa Civil alerta para risco muito alto de inundação do Taquari",
+   "url": "https://agenciabrasil.ebc.com.br/meio-ambiente/noticia/2026-09/defesa-civil-alerta-para-risco-muito-alto-de-inundacao-do-taquari",
+   "data": "2026-09-22T12:40+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "A Defesa Civil do Rio Grande do Sul anunciou alerta de risco muito alto, com vigência até as 6h40 desta quarta-feira (23), para inundação no Rio Taquari, entre Venâncio Aires e General Câmara. Nesse grau de severidade de alerta, o órgão orienta que a população busque abrigo ou permaneça em locais de segurança até cessarem as fontes de risco. Notícias relacionadas: Sob El Niño, primavera deve ter calor, seca e tempestades severas. Temporais provocam morte, desaparecimentos e atingem 119 cidades no RS. Além disso, não se deve voltar para áreas que foram evacuadas até que os órgãos oficiais confi"
+  },
+  {
+   "id": "n-7852359791",
+   "titulo": "Estudante abre fogo do lado de fora de escola na Turquia",
+   "url": "https://agenciabrasil.ebc.com.br/internacional/noticia/2026-09/estudante-abre-fogo-do-lado-de-fora-de-escola-na-turquia",
+   "data": "2026-09-22T12:37+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "Um estudante abriu fogo em frente à sua escola de ensino médio na província de Manisa, no oeste da Turquia, na madrugada desta terça-feira (22), ferindo pelo menos 11 alunos, informou o ministro da Justiça, Akin Gurlek. Dois dos feridos estavam em estado crítico, disse Gurlek. O agressor foi capturado e sua mãe, seu pai e seu avô — dono da arma usada no ataque — foram detidos, acrescentou o ministro. Notícias relacionadas: Estudante mata 9 pessoas no segundo ataque a escola da Turquia . “Quando se trata da segurança de nossas crianças, não é possível ignorar qualquer negligência ou irresponsab"
+  },
+  {
+   "id": "n-fba6cb570c",
+   "titulo": "Confira a agenda dos presidenciáveis nesta terça-feira (22)",
+   "url": "https://agenciabrasil.ebc.com.br/politica/noticia/2026-09/confira-agenda-dos-presidenciaveis-nesta-terca-feira-22",
+   "data": "2026-09-22T12:08+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [
+    "tse"
+   ],
+   "pessoas": [],
+   "resumo": "A agenda dos presidenciáveis nesta terça-feira (22) inclui caminhadas, carreatas e atos de campanha, além de entrevistas e participação em podcasts e sabatina. Também estão previstas visita a igreja, inauguração de comitê, plenária de mobilização e reunião com lideranças políticas. Augusto Cury (Avante) Participa de visita à Igreja Casa de Oração do Brás, em São Paulo (SP), e faz caminhada pelo bairro. À noite, participa de sabatina da Revista Veja. Notícias relacionadas: Maioria do TSE mantém suspensão da campanha de Deltan ao Senado. Escolas privadas fora de locais de votação terão aulas nor"
+  },
+  {
+   "id": "n-35838c0efb",
+   "titulo": "Maior violonista brasileiro, Dilermando Reis influenciou gerações",
+   "url": "https://agenciabrasil.ebc.com.br/cultura/noticia/2026-09/maior-violonista-brasileiro-dilermando-reis-influenciou-geracoes",
+   "data": "2026-09-22T12:02+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "Violonista, compositor e arranjador, Dilermando Reis nasceu na cidade paulista de Guaratinguetá em 22 de setembro de 1916. Filho de violonista, aprendeu tocar ainda criança. Aos 18 anos se mudou para o Rio de Janeiro, onde iniciou a vida profissional como professor em lojas de instrumentos. Em 1935, Dilermando começou a trabalhar no rádio, primeiro na Rádio Guanabara e, logo depois, na Rádio Transmissora, onde tinha um programa de violão solo, uma novidade na época. Em 1940, foi contratado pela Rádio Clube do Brasil e criou a primeira orquestra de violões de que se tem notícia no país. Rádio N"
+  },
+  {
+   "id": "n-78371d67fc",
+   "titulo": "Vídeo: Eleições 2026: lei impede prisão de candidatos e eleitores",
+   "url": "https://www12.senado.leg.br/noticias/videos/2026/09/eleicoes-2026-lei-impede-prisao-de-candidatos-e-eleitores",
+   "data": "2026-09-22T11:52:00+00:00",
+   "fonte": "senado",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "Durante o período eleitoral, a legislação impõe limites para prisão de candidatos e eleitores. O objetivo é impedir que essa medida seja usada de forma arbitrária para interferir na votação. Conheça as regras sobre o tema nesta reportagem especial."
+  },
+  {
+   "id": "n-146b4df8f2",
+   "titulo": "Segurança alimentar e povos indígenas têm R$ 64,3 milhões em crédito",
+   "url": "https://agenciabrasil.ebc.com.br/economia/noticia/2026-09/seguranca-alimentar-e-povos-indigenas-tem-r-643-milhoes-em-credito",
+   "data": "2026-09-22T11:41+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [
+    "mds"
+   ],
+   "pessoas": [],
+   "resumo": "O governo federal publicou nesta segunda-feira (21) medida provisória que abre crédito extraordinário de R$ 64,3 milhões ao Ministério do Desenvolvimento e Assistência Social, Família e Combate à Fome (MDS) e ao dos Povos Indígenas. Do total autorizado, R$ 40,26 milhões serão destinados à aquisição e distribuição de alimentos da agricultura familiar para promover a segurança alimentar e nutricional. A medida prevê o atendimento de cerca de 4 mil famílias agricultoras, por meio da ampliação das ações do programa de combate à fome. Notícias relacionadas: Combustíveis e agricultura familiar receb"
+  },
+  {
+   "id": "n-81317b0183",
+   "titulo": "TRE-RJ fará auditoria para definir urnas que serão fiscalizadas",
+   "url": "https://agenciabrasil.ebc.com.br/justica/noticia/2026-09/tre-rj-fara-auditoria-para-definir-urnas-que-serao-fiscalizadas",
+   "data": "2026-09-22T11:28+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "O Tribunal Regional Eleitoral do Rio de Janeiro (TRE-RJ) realiza, na véspera do primeiro turno das eleições, no dia 3 de outubro, às 8h, audiência pública que definirá as 43 seções cujas urnas eletrônicas passarão por um dos tipos de auditoria previstos no primeiro turno. As seções poderão ser sorteadas ou indicadas por partidos políticos e outras entidades fiscalizadoras. A cerimônia é pública e será realizada no TRE, no centro do Rio. Notícias relacionadas: Eleições 2026: saiba o que é permitido e proibido no dia da votação. Eleições 2026: candidaturas de autistas aumentam mais de cinco veze"
+  },
+  {
+   "id": "n-ad389b19f6",
+   "titulo": "Lula discursa nesta terça-feira na Assembleia Geral da ONU",
+   "url": "https://agenciabrasil.ebc.com.br/politica/noticia/2026-09/lula-discursa-nesta-terca-feira-na-assembleia-geral-da-onu",
+   "data": "2026-09-22T11:15+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [],
+   "pessoas": [
+    "luiz-inacio-lula-da-silva"
+   ],
+   "resumo": "O presidente Luiz Inácio Lula da Silva Lula discursa nesta terça-feira (22) na 81ª Assembleia Geral da Organização das Nações Unidas (ONU), em Nova York, nos Estados Unidos (EUA) a partir das 10h (horário de Brasília). No tradicional discurso de abertura na sessão de alto nível da assembleia, o presidente deve ressaltar a importância do multilateralismo, uma das linhas centrais da política externa, o respeito ao direito internacional humanitário e a não interferência em assuntos internos de outros países, em cenário marcado pela multiplicação de conflitos internacionais. Notícias relacionadas:"
+  },
+  {
+   "id": "n-39d2c700f9",
+   "titulo": "Polícia Civil faz operação contra facção criminosa em quatro estados",
+   "url": "https://agenciabrasil.ebc.com.br/geral/noticia/2026-09/policia-civil-faz-operacao-contra-faccao-criminosa-em-quatro-estados",
+   "data": "2026-09-22T10:55+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "Policiais civis fazem, nesta terça-feira (22), uma operação contra o fornecimento de drogas ilícitas para uma das principais facções criminosas do Rio de Janeiro. A operação Icarus está cumprindo mandados de prisão e de busca e apreensão contra acusados de abastecer pontos de revenda de cocaína e maconha. A Polícia Civil do Rio de Janeiro conta com a participação das polícias civis de São Paulo, Minas Gerais e Alagoas para cumprir os mandados nesses estados. Também apoiam a operação, no Rio de Janeiro, as corregedorias da Polícia Militar e da Polícia Penal fluminenses . Notícias relacionadas: "
+  },
+  {
+   "id": "n-56b11665eb",
+   "titulo": "Mega-Sena sorteia prêmio de R$ 32 milhões nesta terça-feira",
+   "url": "https://agenciabrasil.ebc.com.br/geral/noticia/2026-09/mega-sena-sorteia-premio-de-r-32-milhoes-nesta-terca-feira",
+   "data": "2026-09-22T10:02+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [
+    "caixa"
+   ],
+   "pessoas": [],
+   "resumo": "A Mega-Sena sorteia nesta terça-feira (22) prêmio estimado em R$ 32 milhões. As seis dezenas do concurso 3.061 serão sorteadas a partir das 21h (horário de Brasília) no Espaço da Sorte, em São Paulo. As apostas podem ser feitas até às 20h (horário de Brasília) em casas lotéricas credenciadas pela Caixa em todo o país ou pela internet, no site ou aplicativo da Caixa. A aposta simples, com seis dezenas, custa R$ 6. Notícias relacionadas: Mega-Sena acumula e pagará R$ 32 milhões na terça; confira dezenas. No último concurso, foram sorteados os números 06 - 15 - 23 - 36 - 37 - 38 e nenhum apostado"
+  },
+  {
+   "id": "n-f90fb913be",
+   "titulo": "AGU pede ao STF perda do cargo de ministro acusado de assédio",
+   "url": "https://agenciabrasil.ebc.com.br/justica/noticia/2026-09/agu-pede-ao-stf-perda-do-cargo-de-ministro-acusado-de-assedio",
+   "data": "2026-09-22T00:00+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [
+    "stj",
+    "agu",
+    "stf"
+   ],
+   "pessoas": [],
+   "resumo": "A Advocacia-Geral da União (AGU) informou nesta segunda-feira (21) que solicitou ao Supremo Tribunal Federal (STF) a perda definitiva do cargo do ministro Superior Tribunal de Justiça (STJ) Marco Buzzi, acusado de assédio sexual. Em agosto, o STJ decidiu condenar o ministro após julgar o processo disciplinar aberto para analisar as acusações. Notícias relacionadas: STJ condena ministro Marco Buzzi a perda de cargo por crimes sexuais . Na petição apresentada ao STF, a AGU pede que o salário de Buzzi seja suspenso até o julgamento definitivo da ação. A medida representa a primeira ação para perd"
+  },
+  {
+   "id": "n-ab877eb6b8",
+   "titulo": "Veja como foi a segunda-feira (21) dos candidatos a presidente",
+   "url": "https://agenciabrasil.ebc.com.br/politica/noticia/2026-09/veja-como-foi-segunda-feira-21-dos-candidatos-presidente",
+   "data": "2026-09-21T23:57+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "A agenda dos candidatos à Presidência nesta segunda-feira (21) incluiu sabatina, atos políticos, encontros com apoiadores e atividades de campanha em diferentes cidades. >> Veja como foi o dia dos presidenciáveis: Augusto Cury (Avante) Em São Paulo, o candidato Augusto Cury participou de um encontro com influenciadores digitais. Notícias relacionadas: Escolas privadas fora de locais de votação terão aulas normais no DF. Eleitores de religiões afro se sentem invisíveis em campanha eleitoral. Em conversa com a imprensa, Cury disse que há atualmente uma indústria que promove o ódio entre eleitore"
+  },
+  {
+   "id": "n-c09fa065b4",
+   "titulo": "Senacon vai investigar 70 postos por aumento abusivo de preços",
+   "url": "https://agenciabrasil.ebc.com.br/economia/noticia/2026-09/senacon-vai-investigar-70-postos-por-aumento-abusivo-de-precos",
+   "data": "2026-09-21T23:32+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [
+    "mjsp",
+    "senacon",
+    "anp"
+   ],
+   "pessoas": [],
+   "resumo": "A Secretaria Nacional do Consumidor (Senacon), órgão do Ministério da Justiça e Segurança Pública, instaurou nesta segunda-feira (21), 70 processos administrativos sancionadores contra postos de combustíveis por indícios de aumento abusivo de preços. Os estabelecimentos podem ser multados em até R$ 14 milhões, com base no Código de Defesa do Consumidor (CDC). Os atos de fiscalização encaminhados pela ANP registraram aumentos de margem superiores a 70% em postos localizados no Rio de Janeiro, Espírito Santo, São Paulo e Paraná. Os postos terão 20 dias para apresentar defesa. Notícias relacionad"
+  },
+  {
+   "id": "n-096ee873ec",
+   "titulo": "Mãe pede justiça por jovem encontrada morta em condomínio no Ceará",
+   "url": "https://agenciabrasil.ebc.com.br/direitos-humanos/noticia/2026-09/mae-pede-justica-por-jovem-encontrada-morta-em-condominio-no-ceara",
+   "data": "2026-09-21T23:09+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "A família da universitária Isabelle Caracristi, de 22 anos, busca respostas e justiça pela morte da jovem. Isabelle foi encontrada morta no pátio do condomínio onde morava com o namorado e familiares dele, em Fortaleza, no Ceará, no dia 13 de setembro. \"Eu não estou chorando apenas a dor da perda, mas porque não tenho RESPOSTAS. Eu não sei o que aconteceu com minha filha\", disse a mãe Isabelle, Isorlanda Caracristi, em vídeo nas redes sociais. Em nota, a defesa da família disse que está “integralmente dedicada e imbuída no acompanhamento presencial” de oitivas realizadas pela Polícia Civil nes"
+  },
+  {
+   "id": "n-b53eb4fd58",
+   "titulo": "FAB e bombeiros buscam helicóptero com cantor Rick, desaparecido em SC",
+   "url": "https://agenciabrasil.ebc.com.br/geral/noticia/2026-09/fab-e-bombeiros-buscam-helicoptero-com-cantor-rick-desaparecido-em-sc",
+   "data": "2026-09-21T23:03+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [
+    "aeronautica",
+    "mpf"
+   ],
+   "pessoas": [],
+   "resumo": "A Força Aérea Brasileira (FAB) e o corpo de bombeiros de Santa Catarina realizam buscas por um helicóptero de matrícula PP-MGR, desaparecido na tarde desta segunda-feira (21), próximo à cidade de São Joaquim (SC). Entre os desaparecidos está o cantor sertanejo Rick, da dupla Rick e Renner. Segundo os bombeiros, a aeronave decolou de Porto Belo (SC) e seguia para a região de São Joaquim. Além do cantor, estava na aeronave o empresário Bruno Avelar. O último contato foi feito por volta das 16h. Notícias relacionadas: MPF pede ações de segurança para voos de helicóptero no Rio de Janeiro. O Centr"
+  },
+  {
+   "id": "n-15fdeaf1bc",
+   "titulo": "Empregados da Caixa rejeitam proposta da empresa e greve continua",
+   "url": "https://agenciabrasil.ebc.com.br/economia/noticia/2026-09/empregados-da-caixa-rejeitam-proposta-da-empresa-e-greve-continua",
+   "data": "2026-09-21T22:33+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [
+    "caixa"
+   ],
+   "pessoas": [],
+   "resumo": "Empregados da Caixa Econômica Federal decidiram manter a greve nacional iniciada no dia 10 de setembro. A proposta da empresa foi rejeitada em assembleia virtual realizada nesta segunda-feira (21) à tarde. O comando da greve deverá anunciar os próximos passos do movimento em breve. A greve teve início após os empregados rejeitarem a proposta de renovação do Acordo Coletivo de Trabalho (ACT) e decidirem pela greve nacional. Segundo a Comissão Executiva dos Empregados (CEE), mais de 90% das bases sindicais rejeitaram a proposta apresentada pela instituição. Notícias relacionadas: Bancários rejei"
+  },
+  {
+   "id": "n-0ab694ab0c",
+   "titulo": "Rio confirma caso de raiva em cão que teve contato com morcego",
+   "url": "https://agenciabrasil.ebc.com.br/saude/noticia/2026-09/rio-confirma-caso-de-raiva-em-cao-que-teve-contato-com-morcego",
+   "data": "2026-09-21T22:12+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "Um cão que vivia em uma área urbana na Zona Oeste do Rio de Janeiro teve diagnóstico confirmado de raiva em agosto e precisou ser sacrificado. De acordo com um alerta da Secretaria de Estado de Saúde fluminense (SES-RJ), divulgado em 18 de setembro, o animal tinha histórico de contato com morcegos. Segundo a Secretaria Municipal de Saúde do Rio de Janeiro, foi realizada uma pesquisa epidemiológica depois que a Secretaria Municipal de Proteção e Defesa dos Animais confirmou o caso no bairro de Santa Cruz. Notícias relacionadas: Saúde qualifica assistência para prevenir progressão de doença rena"
+  },
+  {
+   "id": "n-f0cf150462",
+   "titulo": "Moraes se declara impedido em ação sobre ida de sua esposa ao Senado",
+   "url": "https://agenciabrasil.ebc.com.br/justica/noticia/2026-09/moraes-se-declara-impedido-em-acao-sobre-ida-de-sua-esposa-ao-senado",
+   "data": "2026-09-21T22:06+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [
+    "stf"
+   ],
+   "pessoas": [],
+   "resumo": "O ministro Alexandre de Moraes, do Supremo Tribunal Federal (STF), se declarou impedido de analisar um mandado de segurança que pede acesso a registros de entrada e saída da advogada Viviane Barci, sua esposa, e do ex-banqueiro Daniel Vorcaro no Senado. Na decisão, o ministro citou a regra do Código de Processo Civil (CPC) que proíbe um magistrado de analisar um caso quando há um parente como parte. Notícias relacionadas: Mulher de Moraes nega vínculo pessoal com Vorcaro em viagem de jatinho. \"Com fundamento no art. 144, IV, do CPC, declaro-me impedido de atuar no presente feito\", decidiu o mi"
+  },
+  {
+   "id": "n-09136e4efd",
+   "titulo": "Áudio: Para usar o e-Título, eleitor deve fazer primeiro acesso até 3 de outubro",
+   "url": "https://www12.senado.leg.br/noticias/audios/2026/09/para-usar-o-e-titulo-eleitor-deve-fazer-primeiro-acesso-ate-3-de-outubro",
+   "data": "2026-09-21T21:28:00+00:00",
+   "fonte": "senado",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "Quem pretende usar o e-Título (o aplicativo oficial da Justiça Eleitoral) para se identificar no dia da votação deve fazer o primeiro acesso ao aplicativo até 3 de outubro, véspera do primeiro turno. No dia da eleição, o download e o primeiro acesso serão interrompidos para evitar sobrecarga no sistema. Para usar a versão com foto, é preciso apresentar o aplicativo diretamente na tela do celular ou tablet ao mesário. Capturas de tela não serão aceitas."
+  },
+  {
+   "id": "n-6381d4f630",
+   "titulo": "Escolas privadas fora de locais de votação terão aulas normais no DF",
+   "url": "https://agenciabrasil.ebc.com.br/politica/noticia/2026-09/escolas-privadas-fora-de-locais-de-votacao-terao-aula-no-df",
+   "data": "2026-09-21T21:10+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "O governo do Distrito Federal (GDF) alterou o decreto publicado no dia 11 de setembro sobre a suspensão das aulas nas duas sextas-feiras que antecedem o primeiro e o segundo turno das eleições deste ano, dias 2 e 23 de outubro. Com a mudança, as escolas privadas que não forem requisitadas como locais de votação devem permanecer em funcionamento regular, com a manutenção integral das atividades escolares e das aulas. A alteração foi publicada no Diário Oficial do DF desta segunda-feira (21). Notícias relacionadas: Caminhos da Reportagem: importância do voto para jovens e idosos. Aposentado ou p"
+  },
+  {
+   "id": "n-197ab8c662",
+   "titulo": "Maioria do TSE mantém suspensão da campanha de Deltan ao Senado",
+   "url": "https://agenciabrasil.ebc.com.br/justica/noticia/2026-09/maioria-do-tse-mantem-suspensao-da-campanha-de-deltan-ao-senado",
+   "data": "2026-09-21T20:36+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [
+    "tse"
+   ],
+   "pessoas": [],
+   "resumo": "O Tribunal Superior Eleitoral (TSE) formou maioria de votos, nesta segunda-feira (21), para manter a suspensão da campanha eleitoral do candidato ao Senado pelo Paraná Deltan Dallagnol (Novo). Os votos foram proferidos durante o julgamento virtual que delibera sobre a manutenção da decisão individual do ministro Floriano de Azevedo Marques, que suspendeu a campanha . Notícias relacionadas: TSE suspende campanha de Deltan ao Senado pelo Paraná . TSE vai enviar alertas no e-Título com orientações para eleições. TSE rejeita por unanimidade o registro de candidatura de Pablo Marçal. Até o momento,"
+  },
+  {
+   "id": "n-a1c7cf18b0",
+   "titulo": "Pé-de-Meia começa a pagar sexta parcela a estudantes nesta segunda",
+   "url": "https://agenciabrasil.ebc.com.br/educacao/noticia/2026-09/pe-de-meia-comeca-pagar-sexta-parcela-estudantes-nesta-segunda",
+   "data": "2026-09-21T19:38+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "Os beneficiários do programa Pé-de-Meia do ensino médio regular começaram a receber nesta segunda-feira (21) a sexta parcela do incentivo à frequência. O pagamento é feito a quem assistiu a pelo menos 80% das aulas de julho deste ano . Os beneficiários que cursam a educação de jovens e adultos (EJA) também recebem agora a parcela de aprovação no segundo semestre do ciclo EJA. Notícias relacionadas: Escolas da Bahia e do Pará vencem prêmio nacional de sustentabilidade. Educação é prioridade para moradores de favelas do Rio nas eleições . Conheça projetos finalistas do prêmio Educador Nota 10. O"
+  },
+  {
+   "id": "n-ddf45514c9",
+   "titulo": "Áudio: Especialistas pedem mais políticas inclusivas para pessoas com deficiência",
+   "url": "https://www12.senado.leg.br/noticias/audios/2026/09/especialistas-pedem-mais-politicas-inclusivas-para-pessoas-com-deficiencia",
+   "data": "2026-09-21T19:30:00+00:00",
+   "fonte": "senado",
+   "nos": [],
+   "pessoas": [
+    "damares-alves",
+    "paulo-paim"
+   ],
+   "resumo": "A importância da participação plena das pessoas com deficiência nas atividades sociais precisa ser ressaltada todos os dias, segundo especialistas que participaram da sessão especial no Plenário do Senado nesta segunda-feira (21), Dia Nacional de Luta da Pessoa Com Deficiência. A senadora Damares Alves (Republicanos-DF) presidiu a sessão, que foi requerida pelo senador Paulo Paim (PT-RS), autor do projeto de lei que deu origem à data."
+  },
+  {
+   "id": "n-421547c392",
+   "titulo": "EBC tem três finalistas no prêmio de jornalismo Vladimir Herzog",
+   "url": "https://agenciabrasil.ebc.com.br/direitos-humanos/noticia/2026-09/ebc-tem-tres-finalistas-do-premio-de-jornalismo-vladimir-herzog",
+   "data": "2026-09-21T19:00+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [
+    "ebc"
+   ],
+   "pessoas": [],
+   "resumo": "Os veículos da Empresa Brasil de Comunicação (EBC) têm três representantes entre os finalistas do Prêmio Jornalístico Vladimir Herzog de Anistia e Direitos Humanos. São duas produções da TV Brasil e uma fotografia da Agência Brasil. A relação dos indicados foi divulgada nesta segunda-feira (21) pelo Instituto Prêmio Vladimir Herzog, organizador da premiação. Notícias relacionadas: USP confirma título Doutor Honoris Causa ao jornalista Vladimir Herzog. Programa Caminhos da Reportagem é finalista do Prêmio Vladimir Herzog. A 48ª edição do prêmio teve 346 produções inscritas. Foram selecionados t"
+  },
+  {
+   "id": "n-6626dbc67a",
+   "titulo": "AGU reitera ação para obrigar Discord a proteger usuários",
+   "url": "https://agenciabrasil.ebc.com.br/justica/noticia/2026-09/agu-reitera-acao-para-obrigar-discord-proteger-usuarios",
+   "data": "2026-09-21T18:35+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [
+    "agu"
+   ],
+   "pessoas": [],
+   "resumo": "A Advocacia-Geral da União (AGU) apresentou nesta segunda-feira (21) novo pedido à Justiça Federal, em Brasília, para que a plataforma Discord seja obrigada a efetivar medidas para proteger mulheres, crianças e adolescentes na internet. Na petição, a AGU diz que a empresa apresentou uma proposta de conciliação genérica e insuficiente para resolver as falhas apontadas pelo governo federal . Notícias relacionadas: Discord terá dez dias para apresentar proposta de proteção a usuários. Entidades publicam carta em defesa da suspensão de lives no Discord. Discord suspende lives para atender medidas "
+  },
+  {
+   "id": "n-2f40e9a722",
+   "titulo": "TST suspende julgamento de dissídio da greve dos Correios",
+   "url": "https://agenciabrasil.ebc.com.br/geral/noticia/2026-09/tst-suspende-julgamento-de-dissidio-da-greve-dos-correios",
+   "data": "2026-09-21T18:35+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [
+    "tst",
+    "correios"
+   ],
+   "pessoas": [
+    "luiz-philippe-vieira-de-mello-filho"
+   ],
+   "resumo": "O Tribunal Superior do Trabalho (TST) suspendeu nesta segunda-feira (21) o julgamento do dissídio coletivo da greve dos Correios. A análise do caso será retomada na próxima quinta-feira (24), às 15h30. Os ministros acataram questão de ordem formulada pelo ministro Vieira de Mello Filho, presidente do TST, para que os sindicatos que representam os trabalhadores possam se manifestar, no prazo de 48 horas, sobre novos documentos que pedem o reconhecimento da abusividade da greve. Notícias relacionadas: Após semana em greve, empregados dos Correios têm dissídio na segunda. Trabalhadores dos Correi"
+  },
+  {
+   "id": "n-bf0b3be0f1",
+   "titulo": "Anvisa manda apreender medicamento falsificado para câncer de mama",
+   "url": "https://agenciabrasil.ebc.com.br/saude/noticia/2026-09/anvisa-manda-apreender-medicamento-falsificado-para-cancer-de-mama",
+   "data": "2026-09-21T18:27+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [
+    "anvisa"
+   ],
+   "pessoas": [],
+   "resumo": "A Agência Nacional de Vigilância Sanitária (Anvisa) determinou a apreensão de um lote falsificado do medicamento Phesgo, usado no tratamento de câncer de mama, e de três lotes falsificados da toxina botulínica Dysport. As medidas foram publicadas nesta segunda-feira (21) e incluem ainda a suspensão de propagandas irregulares de medicamentos manipulados e a proibição da divulgação de produtos à base de cannabis sem autorização sanitária. Falsificações Notícias relacionadas: Anvisa vai abrir consultas públicas sobre imagens de alerta em cigarro. Anvisa determina recolhimento do produto NotShake "
+  },
+  {
+   "id": "n-8ad5028b91",
+   "titulo": "Quatro pessoas estão desaparecidas no RS após temporal",
+   "url": "https://agenciabrasil.ebc.com.br/geral/noticia/2026-09/quatro-pessoas-estao-desaparecidas-no-rs-apos-temporal",
+   "data": "2026-09-21T18:19+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "O temporal que atingiu o Rio Grande do Sul durante esta madrugada, com fortes chuvas e ventos, deixou ao menos quatro pessoas desaparecidas, quatro desabrigadas e outras 624 desalojadas, informou a Defesa Civil. Os quatro desaparecidos são da cidade de Caxias do Sul, na Serra gaúcha. Três dessas pessoas, informou a Defesa Civil, estavam em um veículo que foi arrastado pela enxurrada. Notícias relacionadas: Tempestade, ventos fortes e granizo deixam Região Sul em alerta. Um homem foi resgatado, mas um adolescente de 13 anos, uma criança de 4 anos e uma mulher de 43 anos seguem desaparecidos. Em"
+  },
+  {
+   "id": "n-757f5a49f1",
+   "titulo": "Destaques da semana (14 a 18 de setembro)",
+   "url": "https://www12.senado.leg.br/noticias/infomaterias/2026/09/destaques-da-semana-14-a-18-de-setembro",
+   "data": "2026-09-21T18:03:00+00:00",
+   "fonte": "senado",
+   "nos": [],
+   "pessoas": [],
+   "resumo": ""
+  },
+  {
+   "id": "n-0148a431b3",
+   "titulo": "Santo André, no ABC Paulista, começa a vacinar bebês contra o sarampo",
+   "url": "https://agenciabrasil.ebc.com.br/saude/noticia/2026-09/santo-andre-no-abc-paulista-comeca-vacinar-bebes-contra-o-sarampo",
+   "data": "2026-09-21T17:18+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [
+    "ms"
+   ],
+   "pessoas": [],
+   "resumo": "Bebês de 6 a 11 meses e 29 dias que vivem em Santo André, no ABC Paulista, passam a receber a dose zero da vacina tríplice viral, que protege contra sarampo, caxumba e rubéola. A estratégia foi adotada visando expandir a imunização dos bebês em meio ao risco de contágio. A medida foi implementada logo após o registro de um caso de sarampo na cidade. Notícias relacionadas: São Paulo tem quatro novos casos de sarampo; total chega a 36 este ano. Amazonas confirma três casos de sarampo; outros dois são investigados. Ministério da Saúde reforça chamamento para vacina contra o sarampo. A vacina refo"
+  },
+  {
+   "id": "n-673c7ad7b1",
+   "titulo": "Participantes de sessão cobram avaliação biopsicossocial de PCDs",
+   "url": "https://www12.senado.leg.br/noticias/materias/2026/09/21/participantes-de-sessao-cobram-avaliacao-biopsicossocial-de-pcds",
+   "data": "2026-09-21T17:14:00+00:00",
+   "fonte": "senado",
+   "nos": [
+    "ibge"
+   ],
+   "pessoas": [
+    "damares-alves"
+   ],
+   "resumo": "Em sessão especial do Senado para celebrar o Dia Nacional de Luta da Pessoa com Deficiência, nesta segunda-feira (21), especialistas cobraram a implementação da avaliação biopsicossocial unificada, prevista no Estatuto da Pessoa com Deficiência, para facilitar o acesso a políticas de inclusão. Também defenderam a matrícula de crianças com deficiência em escolas comuns. O Censo 2022 do IBGE identificou 14,4 milhões de pessoas com deficiência no Brasil, o equivalente a 7,3% da população com 2 anos ou mais. A senadora Damares Alves (Republicanos-DF), que presidiu a sessão, afirmou que a Convenção"
+  },
+  {
+   "id": "n-36e5ea8992",
+   "titulo": "Áudio: CAS: projeto traz regras para uso da inteligência artificial na saúde pública",
+   "url": "https://www12.senado.leg.br/noticias/audios/2026/09/cas-projeto-traz-regras-para-uso-da-inteligencia-artificial-na-saude-publica",
+   "data": "2026-09-21T16:49:00+00:00",
+   "fonte": "senado",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "Está pronto para votação na Comissão de Assuntos Sociais do Senado (CAS) um projeto de lei que prevê a utilização da inteligência artificial (IA) na saúde pública, com regras de transparência, responsabilidade e supervisão humana. O projeto (PL 931/2026) já conta com relatório favorável nesse colegiado. Ouça o áudio."
+  },
+  {
+   "id": "n-0d3dc54be8",
+   "titulo": "Convocação da lista de espera do Fies no 2º semestre termina na quinta",
+   "url": "https://agenciabrasil.ebc.com.br/educacao/noticia/2026-09/convocacao-da-lista-de-espera-do-fies-no-2o-semestre-termina-na-quinta",
+   "data": "2026-09-21T16:01+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [
+    "mec"
+   ],
+   "pessoas": [],
+   "resumo": "O prazo de convocação dos pré-selecionados na lista de espera do Fundo de Financiamento Estudantil (Fies) para o segundo semestre termina nesta quinta-feira (24). O Ministério da Educação (MEC) orienta que os inscritos nesta edição acompanhem a própria classificação, por curso e turno de cada local de oferta do ensino, no endereço eletrônico do Fies Seleção . Para o acesso, deve ser usada a conta do portal Gov.br. Notícias relacionadas: Andes lança documentário sobre a importância da educação e ciência . Cartilha reúne orientações para a redação do Enem 2026. Enem PPL abre inscrições em 5 de o"
+  },
+  {
+   "id": "n-e11a10bbbe",
+   "titulo": "Áudio: 32 senadores tentam a reeleição neste ano",
+   "url": "https://www12.senado.leg.br/noticias/audios/2026/09/32-senadores-tentam-a-reeleicao-neste-ano",
+   "data": "2026-09-21T15:59:00+00:00",
+   "fonte": "senado",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "No dia 4 de outubro, 32 senadores em fim de mandato tentarão a reeleição (veja a lista aqui). Ouça o áudio."
+  },
+  {
+   "id": "n-b448f37091",
+   "titulo": "Feira em Fortaleza defende políticas sobre drogas com justiça social",
+   "url": "https://agenciabrasil.ebc.com.br/saude/noticia/2026-09/feira-em-fortaleza-defende-politicas-sobre-drogas-com-justica-social",
+   "data": "2026-09-21T15:56+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "Palestrantes da 2ª edição da feira Febre de Arte , em Fortaleza, convocaram o público a eleger, neste ano, políticos dedicados ao desenvolvimento de políticas sobre drogas em harmonia com a justiça social. Todos os participantes que subiram ao palco do Anfiteatro Sérgio Motta, do Centro Dragão do Mar de Arte e Cultura , defenderam que o voto deve ir para quem tem clareza sobre a questão para que seja possível construir propostas pertinentes e viáveis que, efetivamente, atendam à população. Notícias relacionadas: Para associações, normas ainda deixam pontos em aberto sobre cannabis. Marcha em S"
+  },
+  {
+   "id": "n-4a2478e630",
+   "titulo": "Mercado reduz projeção da Selic para 13,50%",
+   "url": "https://agenciabrasil.ebc.com.br/economia/noticia/2026-09/mercado-reduz-projecao-da-selic-para-1350",
+   "data": "2026-09-21T14:36+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [
+    "petrobras"
+   ],
+   "pessoas": [],
+   "resumo": "O mercado financeiro reduziu de 13,75% para 13,50% a expectativa para a taxa básica de juros Selic ao fim de 2026. A projeção, apresentada pelo Boletim Focus divulgado nesta segunda-feira (21) pelo Banco Central, indica que o mercado trabalha com a expectativa de novo corte de juros ainda no ano corrente. A revisão para baixo ocorre cinco dias depois de o Comitê de Política Monetária (Copom) ter reduzido em 0,25 ponto percentual a Selic, que está agora em 13,75%. A taxa Selic é o principal instrumento do Banco Central para alcançar a meta de inflação. Notícias relacionadas: Petrobras aprova ad"
+  },
+  {
+   "id": "n-dd89e99e0d",
+   "titulo": "Caminhos da Reportagem: importância do voto para jovens e idosos",
+   "url": "https://agenciabrasil.ebc.com.br/politica/noticia/2026-09/caminhos-da-reportagem-importancia-do-voto-para-jovens-e-idosos",
+   "data": "2026-09-21T13:55+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "Intitulado Do primeiro ao último voto , o próximo episódio do programa Caminhos da Reportagem , que será exibido nesta segunda (21), às 23h30, na TV Brasil , dá voz à parcela dos eleitores brasileiros para quem votar é facultativo e não obrigatório. Jovens com 16 e 17 anos e idosos com 70 anos ou mais estão entre os quase 159 milhões de cidadãos aptos a votar nas eleições de 2026, marcadas para os dias 4 e 25 de outubro. O programa busca entender por que a maioria dessas pessoas faz questão de ir às urnas para exercer o direito reconquistado após o fim da ditadura militar e a volta da democrac"
+  },
+  {
+   "id": "n-8c490a9530",
+   "titulo": "Ministério da Justiça demite Eduardo Bolsonaro por abandono de cargo",
+   "url": "https://agenciabrasil.ebc.com.br/politica/noticia/2026-09/ministerio-da-justica-demite-eduardo-bolsonaro-por-abandono-de-cargo",
+   "data": "2026-09-21T13:27+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [
+    "mjsp",
+    "pf",
+    "stf"
+   ],
+   "pessoas": [],
+   "resumo": "O Ministério da Justiça e Segurança Pública demitiu o ex-deputado federal Eduardo Bolsonaro do cargo de escrivão da Polícia Federal, por abandono de cargo. A decisão , publicada na edição desta segunda-feira (21) do Diário Oficial da União , tem como base processo administrativo disciplinar que concluiu pela ocorrência de faltas injustificadas por período superior a 30 dias consecutivos. Notícias relacionadas: Primeira Turma do STF mantém condenação de Eduardo Bolsonaro . Segundo a portaria, a demissão teve por base a Lei nº 15.047, de 2024, que prevê a penalidade para casos de abandono de car"
+  },
+  {
+   "id": "n-f07631ed7b",
+   "titulo": "Vídeo: Senado celebra o Dia Nacional de Luta da Pessoa com Deficiência – 21/9/26",
+   "url": "https://www12.senado.leg.br/noticias/videos/2026/09/ao-vivo-senado-celebra-o-dia-nacional-de-luta-da-pessoa-com-deficiencia-2013-21-9-26",
+   "data": "2026-09-21T13:22:00+00:00",
+   "fonte": "senado",
+   "nos": [],
+   "pessoas": [],
+   "resumo": ""
+  },
+  {
+   "id": "n-9d7414c1a0",
+   "titulo": "Confira a agenda dos presidenciáveis nesta segunda-feira (21)",
+   "url": "https://agenciabrasil.ebc.com.br/politica/noticia/2026-09/confira-agenda-dos-presidenciaveis-nesta-segunda-feira-21",
+   "data": "2026-09-21T12:40+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [],
+   "pessoas": [
+    "flavio-bolsonaro"
+   ],
+   "resumo": "A agenda dos candidatos à Presidência nesta segunda-feira (21) inclui sabatina e atos políticos. Também estão previstos encontros com apoiadores e atividades de campanha em diferentes cidades. Clariana Barão (DC) Em Imperatriz (MA), faz adesivaço na Maçonaria da Rua Alagoas. Notícias relacionadas: Aposentado ou pensionista que votar não precisará fazer Prova de Vida. Edmilson Costa (PCB) Às 19h, Participa, junto com Cleusa Santos, candidata à Vice-Presidência, de conversa sobre educação, trabalho, cultura, lazer e os direitos da juventude brasileira, no YouTube. Flávio Bolsonaro (PL) Participa"
+  },
+  {
+   "id": "n-bcf29f0cef",
+   "titulo": "Áudio: Lei garante avaliação anual da saúde da mulher pelo SUS",
+   "url": "https://www12.senado.leg.br/noticias/audios/2026/09/lei-garante-avaliacao-anual-da-saude-da-mulher-pelo-sus",
+   "data": "2026-09-21T12:33:00+00:00",
+   "fonte": "senado",
+   "nos": [],
+   "pessoas": [
+    "mara-gabrilli"
+   ],
+   "resumo": "Foi publicada no Diário Oficial da União em 3 de setembro a lei que prevê a avaliação anual da saúde da mulher pelo Sistema Único de Saúde (SUS). A Lei 15.493, de 2026, prevê exames de rotina e ações de prevenção, levando em conta fatores como idade, raça, deficiência e condição socioeconômica. A norma tem origem no PL 1.799/2023, aprovado no Plenário do Senado em maio, com relatoria da senadora Mara Gabrilli (PSD-SP). O texto foi sancionado sem vetos e entra em vigor daqui a 180 dias."
+  },
+  {
+   "id": "n-161b1ab96b",
+   "titulo": "Eleitores de religiões afro se sentem invisíveis em campanha eleitoral",
+   "url": "https://agenciabrasil.ebc.com.br/politica/noticia/2026-09/eleitores-de-religioes-afro-se-sentem-invisiveis-em-campanha-eleitoral",
+   "data": "2026-09-21T12:27+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [
+    "ibge"
+   ],
+   "pessoas": [],
+   "resumo": "Os brasileiros adeptos de religiões de matriz africana e afro-brasileira não se sentem representados nas campanhas políticas de 2026, avaliam praticantes, religiosos e estudiosos. O número de brasileiros que afirmou seguir uma fé afro-brasileira triplicou entre 2010 e 2022, de acordo com o último censo demográfico do Instituto Brasileiro de Geografia e Estatística (IBGE) . O número chegou a 1,8 milhão de pessoas. Notícias relacionadas: Eventos em Porto Alegre se manifestam contra a intolerância religiosa. Uber terá que indenizar passageira vítima de intolerância religiosa. X retira postagem de"
+  },
+  {
+   "id": "n-a5eca20c8e",
+   "titulo": "Exposição em SP homenageia padre Júlio e pessoas em situação de rua",
+   "url": "https://agenciabrasil.ebc.com.br/direitos-humanos/noticia/2026-09/exposicao-em-sp-homenageia-padre-julio-e-pessoas-em-situacao-de-rua",
+   "data": "2026-09-21T12:10+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "Muitas vezes, a relação que a sociedade estabelece com a população em situação de rua é de distanciamento. As pessoas fingem que a população de rua não existe, desviam o olhar, correm ou atravessam a rua. Foi a partir dessa perspectiva que o artista plástico Geraldo Lacerdine montou a exposição “A alfabetização do Olhar - um ato de amor e responsabilidade”. Além de homenagear o padre Júlio Lancellotti e a atuação da Pastoral do Povo da Rua, a mostra busca aproximar as pessoas em situação de rua do restante da sociedade. Notícias relacionadas: Saúde anuncia ampliação do atendimento à população "
+  },
+  {
+   "id": "n-9800e61229",
+   "titulo": "Preso há 30 anos, Marcinho VP permanece em presídio federal fora do RJ",
+   "url": "https://agenciabrasil.ebc.com.br/justica/noticia/2026-09/preso-ha-30-anos-marcinho-vp-permanece-em-presidio-federal-fora-do-rj",
+   "data": "2026-09-21T11:01+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "Marcinho VP , um dos líderes do Comando Vermelho , permanece recluso em presídio federal fora do Rio. A confirmação unânime da 8ª Câmara Criminal do Tribunal de Justiça ocorreu após serem extintas, em abril, penas que ele cumpria. No entanto, dois mandados de prisão preventiva expedidos pela Justiça estadual permanecem em vigor. Diante desse cenário, o Ministério Público do Rio de Janeiro requereu a manutenção cautelar no sistema federal até a conclusão do procedimento que decidirá definitivamente sobre a medida. Notícias relacionadas: Operação da PF combate núcleo financeiro do Comando Vermel"
+  },
+  {
+   "id": "n-bffa718def",
+   "titulo": "Dia da pessoa com deficiência: arte e movimento desafiam capacitismo",
+   "url": "https://agenciabrasil.ebc.com.br/direitos-humanos/noticia/2026-09/dia-da-pessoa-com-deficiencia-arte-e-movimento-desafiam-capacitismo",
+   "data": "2026-09-21T10:30+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [
+    "ibge"
+   ],
+   "pessoas": [],
+   "resumo": "“Quando sinto o calor do sol da manhã na pele, me dá vontade de fotografar. Gosto das frestas de luz que se formam aqui em casa”. O calor do dia ilumina o fotógrafo mineiro Luciano Ambrósio, de 57 anos, morador da Ceilândia (DF), para cada detalhe. Luciano resolveu captar a rotina de forma especial em imagens e palavras depois que perdeu a visão, aos 24 anos. Notícias relacionadas: Pessoas com deficiência vivem em piores condições de moradia, diz IBGE. Renda de PCDs equivale a 70% do rendimento de pessoas sem deficiência. A vida que chega com calor descortina a visibilidade que devem ter os di"
+  },
+  {
+   "id": "n-d2a75d23c9",
+   "titulo": "Exército brasileiro promove exercício de defesa cibernética",
+   "url": "https://agenciabrasil.ebc.com.br/geral/noticia/2026-09/exercito-brasileiro-promove-exercicio-de-defesa-cibernetica",
+   "data": "2026-09-21T10:23+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [
+    "aeronautica"
+   ],
+   "pessoas": [],
+   "resumo": "O Exército brasileiro coordena, esta semana, exercício, com o objetivo de preparar o país para o enfrentamento de ataques cibernéticos . O simulado é promovido pelo Comando de Defesa Cibernética da força, em parceria com a Marinha e a Força Aérea Brasileira (FAB) . A ação ocorre, entre esta segunda (21) e sexta-feira (25), simultaneamente em Brasília e em outras seis cidades: Rio de Janeiro; Manaus; Belém; Recife; São Paulo; Curitiba. Notícias relacionadas: Rússia relata ataques cibernéticos ao sistema eleitoral. Analistas veem risco de ação cibernética de EUA e bigtechs em eleições. É a oitav"
+  },
+  {
+   "id": "n-9a1ee09883",
+   "titulo": "Veja como foi o fim de semana dos candidatos a presidente",
+   "url": "https://agenciabrasil.ebc.com.br/politica/noticia/2026-09/veja-como-foi-o-fim-de-semana-dos-candidatos-presidente-0",
+   "data": "2026-09-20T21:15+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "Neste final de semana, os candidatos à Presidência da República visitaram os estados de São Paulo, Minas Gerais, Rio de Janeiro e Santa Catarina, onde participaram de atos de campanha, caminhadas e entrevistas. Entre os temas abordados estiveram as prioridades para a saúde, mudanças no sistema prisional, o combate ao crime organizado, direitos do trabalhador, empreendedorismo e a proibição das bets. >> Veja como foi o fim de semana dos presidenciáveis: Augusto Cury (Avante) Notícias relacionadas: Candidatos não poderão ser presos a partir deste sábado. Justiça Eleitoral rejeita cerca de 1,2 mi"
+  },
+  {
+   "id": "n-02a1d33c7c",
+   "titulo": "Mulher de Moraes nega vínculo pessoal com Vorcaro em viagem de jatinho",
+   "url": "https://agenciabrasil.ebc.com.br/justica/noticia/2026-09/mulher-de-moraes-nega-vinculo-em-viagem-de-jatinho-ligado-vorcaro",
+   "data": "2026-09-20T17:04+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [
+    "stf",
+    "cvm"
+   ],
+   "pessoas": [],
+   "resumo": "O escritório de advocacia Barci de Moraes afirmou neste domingo (20) que não há vínculos pessoais nas contratações de viagens de táxi aéreo para os profissionais da banca. A manifestação foi divulgada após a coluna do jornalista Lauro Jardim, de O Globo , publicar um vídeo que mostra o desembarque do ministro do Supremo Tribunal Federal (STF) Alexandre de Moares e sua esposa, Viviane Barci, sócia do escritório, no aeroporto Santos Dumond, no Rio de Janeiro, em 22 de agosto de 2025. Notícias relacionadas: Dino cita Master e determina revisão de regras da CVM. Defesa de Daniel Vorcaro pede revog"
+  },
+  {
+   "id": "n-0f491ffad1",
+   "titulo": "Fragmentação de dados dificulta prevenção de feminicídios",
+   "url": "https://agenciabrasil.ebc.com.br/justica/noticia/2026-09/fragmentacao-de-dados-dificulta-prevencao-de-feminicidios",
+   "data": "2026-09-20T15:10+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "Ameaças, agressões e descumprimentos de medidas protetivas frequentemente aparecem antes de um feminicídio. No entanto, especialistas avaliam que a fragmentação dos serviços de atendimento a vítimas de violência faz com que oportunidades de intervenção sejam perdidas e que sinais conhecidos pelo Estado acabem, em muitos casos, em mortes que poderiam ter sido evitadas. Para a promotora Silvia Chakian, do Ministério Público de São Paulo (MP-SP), as diferentes instituições que trabalham no combate à violência e no atendimento às vítimas precisam atuar de forma integrada, como acontece, por exempl"
+  },
+  {
+   "id": "n-63248a47e9",
+   "titulo": "Mega-Sena acumula e pagará R$ 32 milhões na terça; confira dezenas",
+   "url": "https://agenciabrasil.ebc.com.br/geral/noticia/2026-09/mega-sena-acumula-e-pagara-r-32-milhoes-na-terca-confira-dezenas",
+   "data": "2026-09-20T14:55+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [
+    "caixa"
+   ],
+   "pessoas": [],
+   "resumo": "Ninguém acertou as seis dezenas da Mega-Sena do Concurso 3060 que foram sorteadas na manhã de hoje (20) no Espaço da Sorte, na capital paulista. Os números foram: 06-15-23-36-37-38. Segundo a Caixa, 54 apostas acertaram cinco dezenas e devem receber um prêmio de R$ 32.111,66. Outras 3.075 apostas acertaram quatro números e vão receber R$ 929,52. Como não houve ganhador, o prêmio ficou acumulado para o próximo sorteio, que ocorrerá na próxima terça-feira (22). A estimativa da Caixa é de que o próximo sorteio pague um prêmio de R$ 32 milhões."
+  },
+  {
+   "id": "n-4a69bd3199",
+   "titulo": "Dino cita Master e determina revisão de regras da CVM",
+   "url": "https://agenciabrasil.ebc.com.br/justica/noticia/2026-09/dino-cita-master-e-determina-revisao-de-regras-da-cvm",
+   "data": "2026-09-20T14:35+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [
+    "cvm",
+    "stf"
+   ],
+   "pessoas": [],
+   "resumo": "O ministro Flávio Dino, do Supremo Tribunal Federal (STF), determinou neste domingo (20) que o governo federal promova a avaliação técnica e reapreciação das regras normativas da Comissão de Valores Mobiliários (CVM), órgão responsável pela fiscalização do mercado de capitais. O prazo para cumprimento da decisão é de 90 dias. A CVM é uma autarquia federal que regula, fiscaliza e desenvolve o mercado de capitais no país. Notícias relacionadas: CVM multa Vorcaro em R$ 20 milhões por fraude em fundo imobiliário. Dino determina plano emergencial de reestruturação da CVM. Senadores cobram CVM por s"
+  },
   {
    "id": "n-f471410548",
    "titulo": "Cinco pessoas morrem em acidente com ônibus no interior de SP",
@@ -1110,6 +1805,16 @@
    "id": "n-660514b78b",
    "titulo": "Nova Constituição e nova gestão: Senado moderno nasceu há 40 anos",
    "url": "https://www12.senado.leg.br/noticias/infomaterias/2026/09/nova-constituicao-e-nova-gestao-senado-moderno-nasceu-ha-40-anos",
+   "data": "2026-09-18T19:06:00+00:00",
+   "fonte": "senado",
+   "nos": [],
+   "pessoas": [],
+   "resumo": ""
+  },
+  {
+   "id": "n-c939d3b78a",
+   "titulo": "Nova Constituição e nova gestão: Senado moderno nasceu há 80 anos",
+   "url": "https://www12.senado.leg.br/noticias/infomaterias/2026/09/nova-constituicao-e-nova-gestao-senado-moderno-nasceu-ha-80-anos",
    "data": "2026-09-18T19:06:00+00:00",
    "fonte": "senado",
    "nos": [],
