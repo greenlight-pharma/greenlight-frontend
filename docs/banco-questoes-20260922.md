@@ -9,3 +9,6 @@ Versão anterior em `/bancodequestoes/classico/` (mesmo armazenamento de respost
 Build: no worktree de vytal-web, `npx vite build --config vite.questions.config.ts`, seguido de `node scripts/export-question-bank.mjs /caminho/do/worktree/deste/site`.
 
 Validação antes do PR: 47 testes acadêmicos e builds web/standalone passaram; QA desktop e viewport390, importação de arquivo de teste, comentário e alternativa E verificados. Acervo JSON comparado integralmente com questoes.js original. Não houve revisão clínica do acervo, teste em aparelho físico, mudança na API nem sincronização em nuvem.
+
+## Segunda rodada: enquadramento da janela
+O banco agora abre diretamente em filtros e lista, com resumo e ação de simulado compactos. A quantidade de linhas por página acompanha a altura disponível. No desktop, enunciado e alternativas/comentário ficam lado a lado; confirmar e navegação permanecem no rodapé do leitor. Em telas estreitas a leitura volta a uma coluna. Os textos longos continuam roláveis sem reduzir fonte ou omitir conteúdo. Corrigido resultado de simulado anterior aparecendo na leitura comum. Mesma persistência e acervo, backup clássico intacto. Fonte: branch `codex/academico-usabilidade-20260922` do vytal-web. 47 testes e builds web/standalone passaram; QA de 1280×720, 1024×640 e 390×844 no navegador. Não validado Windows nativo nem aparelho físico.
