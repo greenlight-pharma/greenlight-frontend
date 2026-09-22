@@ -3,13 +3,13 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Vytal ECG — Do papel ao sinal, por uma foto</title>
-<meta name="description" content="Tecnologia brasileira de inteligência artificial que reconstrói o sinal do eletrocardiograma a partir de uma foto e organiza a leitura. Em desenvolvimento, com validação clínica em andamento, a caminho do registro na Anvisa.">
+<title>Vytal ECG — Uma foto do exame para estudar o traçado</title>
+<meta name="description" content="Pesquisa brasileira para transformar a foto de um ECG em um traçado que possa ser ampliado e conferido. Em testes; não serve para diagnóstico.">
 <link rel="canonical" href="https://www.vytalsaude.com.br/ecg">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://www.vytalsaude.com.br/ecg">
-<meta property="og:title" content="Vytal ECG — Do papel ao sinal, por uma foto">
-<meta property="og:description" content="Da foto ao sinal de 12 derivações e às medidas, por inteligência artificial proprietária. Uma tecnologia em desenvolvimento, com validação clínica em andamento.">
+<meta property="og:title" content="Vytal ECG — Uma foto do exame para estudar o traçado">
+<meta property="og:description" content="Pesquisa em desenvolvimento sobre como ampliar e conferir um ECG a partir de uma foto. Não serve para diagnóstico.">
 <meta property="og:image" content="https://www.vytalsaude.com.br/ecg/vytal-ecg-logo.png">
 <link rel="icon" type="image/png" href="/ecg/vytal-ecg-logo.png">
 <meta name="theme-color" content="#111726">
@@ -185,192 +185,37 @@ footer p{max-width:70ch;line-height:1.6}
 </style>
 <meta name="robots" content="index,follow"><link rel="stylesheet" href="/ecg/design.css"></head>
 <body>
-
-<header>
-  <div class="wrap nav">
-    <a class="brand" href="https://www.vytalsaude.com.br">
-      <img src="https://www.vytalsaude.com.br/ecg/vytal-ecg-logo.png" alt="Vytal">
-      vytal <span>ECG</span>
-    </a>
-    <ul>
-      <li><a href="#como-funciona">Como funciona</a></li>
-      <li><a href="#entrega">O que entrega</a></li>
-      <li><a href="#caminho">Pra onde vai</a></li>
-      <li><a href="#perguntas">Perguntas</a></li>
-    </ul>
-    <a class="btn btn-navy" href="#contato">Acompanhar o projeto</a>
-  </div>
-</header>
-
-<!-- HERO -->
-<section class="hero">
-  <div class="wrap hero-grid">
-    <div>
-      <h1>Do papel ao sinal,<br>por <span>uma foto.</span></h1>
-      <p class="lead" style="margin-top:22px">Uma tecnologia brasileira de inteligência artificial que reconstrói o sinal do eletrocardiograma a partir de uma foto, calcula as medidas e organiza a leitura. Em desenvolvimento, com validação clínica em andamento.</p>
-      <div class="cta">
-        <a class="btn btn-navy" href="#como-funciona">Como funciona</a>
-        <a class="btn btn-ghost" href="#caminho">O caminho até a Anvisa</a>
-      </div>
-      <ul class="tags">
-        <li>Inteligência artificial proprietária</li>
-        <li>Validação com cardiologistas</li>
-        <li>Em desenvolvimento</li>
-        <li>Rumo ao registro na Anvisa</li>
-      </ul>
-    </div>
-    <div class="phone">
-      <img src="https://www.vytalsaude.com.br/ecg/app-inicio.png" alt="Tela inicial do Vytal ECG com o botão Fotografar ECG">
-    </div>
-  </div>
-</section>
-
-<!-- DOR -->
-<section class="pain" id="dor">
-  <div class="wrap">
-    <h2>Doença do coração é o que mais mata no Brasil.</h2>
-    <p class="lead" style="margin-top:16px">O ECG mostra o problema. Mas alguém precisa ler. E ler rápido.</p>
-    <div class="stats">
-      <div class="stat"><b>400 mil</b><span>mortes por ano no Brasil</span><small>Sociedade Brasileira de Cardiologia</small></div>
-      <div class="stat"><b>1 a cada 90 s</b><span>uma pessoa morre do coração</span><small>Cardiômetro da SBC</small></div>
-      <div class="stat"><b>Minutos</b><span>é o que separa um infarto tratado de um infarto perdido</span></div>
-    </div>
-    <p class="pull">Na UBS, no plantão, na ambulância: o ECG sai da máquina e fica esperando um olho treinado. O Vytal ECG põe esse olho no bolso do médico.</p>
-    <svg class="ecg-line" viewBox="0 0 1200 120" aria-hidden="true">
-      <path d="M0 70 H140 l14 -10 l14 10 H240 l10 -6 l10 6 h40 l6 -40 l10 90 l8 -70 l6 26 H400 l16 -14 l16 14 H560 l14 -10 l14 10 H660 l10 -6 l10 6 h40 l6 -40 l10 90 l8 -70 l6 26 H820 l16 -14 l16 14 H980 l14 -10 l14 10 H1080 l10 -6 l10 6 h40 l6 -40 l10 90 l8 -70 l6 26 H1200"/>
-    </svg>
-  </div>
-</section>
-
-<!-- COMO FUNCIONA -->
-<section id="como-funciona">
-  <div class="wrap">
-    <div class="section-head">
-      <h2>Três passos. Sem cabo, sem integração.</h2>
-      <p>A mesma foto que você já tira no plantão vira um traçado que dá pra ampliar, medir e discutir.</p>
-    </div>
-    <div class="steps">
-      <div class="step"><div class="n">1</div><h3>Fotografe</h3><p>Câmera, galeria ou scanner. Folha inteira, de frente, luz uniforme. Serve papel impresso e tela do aparelho.</p></div>
-      <div class="step"><div class="n">2</div><h3>Confira</h3><p>O app acha a grade, calibra tempo e amplitude e redesenha as 12 derivações. Você compara com a foto, lado a lado.</p></div>
-      <div class="step"><div class="n">3</div><h3>Decida</h3><p>Frequência, intervalos, eixo e hipóteses com a evidência apontada no traçado. Gere o PDF pro prontuário ou pra discutir o caso.</p></div>
-    </div>
-  </div>
-</section>
-
-<!-- O QUE ENTREGA -->
-<section id="entrega" style="padding-top:0">
-  <div class="wrap">
-    <div class="deliver">
-      <div class="section-head" style="margin-bottom:28px">
-        <h2>Medida que sai do sinal, não do chute.</h2>
-        <p>O traçado vira sinal. As medidas são calculadas em cima dele, com regra clara.</p>
-      </div>
-      <ul>
-        <li>12 derivações redesenhadas<span>Amplie e percorra cada uma. Se a foto falhar em algum trecho, o app completa o desenho e avisa.</span></li>
-        <li>FC, PR, QRS, QT, QTc e eixo<span>Com nível de confiança por medida e de qual derivação saiu.</span></li>
-        <li>Papel e tela<span>Folhas 3×4, 6×2 e 12×1. Impressas, escaneadas ou fotografadas no monitor.</span></li>
-        <li>Calibração explícita<span>25 mm/s e 10 mm/mV por padrão. Se o exame foi em outra escala, você ajusta.</span></li>
-        <li>Hipóteses com evidência<span>Ritmo, condução, sobrecargas e repolarização, apontadas no traçado, com as limitações da foto declaradas.</span></li>
-        <li>PDF e histórico<span>Relatório com foto, traçado e medidas. Histórico fica só no aparelho, sem dado do paciente.</span></li>
-      </ul>
-      <div class="measure">
-        <div><b>58</b><small>bpm</small></div>
-        <div><b>142</b><small>PR, ms</small></div>
-        <div><b>98</b><small>QRS, ms</small></div>
-        <div><b>387</b><small>QT, ms</small></div>
-        <div><b>423</b><small>QTc, ms</small></div>
-        <div><b>+45°</b><small>eixo</small></div>
-      </div>
-      <p class="measure-note">Valores de exemplo. Cada leitura depende da foto: o app diz a confiança e o que não conseguiu medir.</p>
-    </div>
-  </div>
-</section>
-
-<!-- NÃO INVENTA -->
-<section id="rigor" style="padding-top:0">
-  <div class="wrap honest">
-    <div class="section-head" style="margin-bottom:0">
-      <h2>Feito para não inventar.</h2>
-      <p>Foto ruim? Ele pede outra. Nada entra no app sem passar pela bancada de teste. O que piora, sai.</p>
-    </div>
-    <ul>
-      <li><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#A9525A" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg><span>Fotos reais de papel e de tela, de vários celulares e luzes, com o exame original como verdade.</span></li>
-      <li><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#A9525A" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg><span>Centenas de traçados com laudo de cardiologista pra medir acerto, citação e recusa.</span></li>
-      <li><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#A9525A" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg><span>Recusa honesta: se não dá pra ler as 12 derivações com segurança, ele não entrega meia leitura.</span></li>
-      <li><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#A9525A" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg><span>Toda mudança é testada com e sem, no mesmo conjunto de fotos, antes de virar padrão.</span></li>
-    </ul>
-  </div>
-</section>
-
-<!-- CAMINHO -->
-<section class="path" id="caminho">
-  <div class="wrap">
-    <div class="section-head">
-      <h2>Feito pra virar dispositivo médico.</h2>
-      <p>Hoje é apoio à leitura. O caminho até o registro é público e a gente mostra onde está.</p>
-    </div>
-    <div class="timeline">
-      <div class="tl now"><em>Agora</em><h3>Tecnologia em desenvolvimento</h3><p>O motor de leitura já funciona: reconstrói o sinal, mede e organiza a interpretação. Uso ainda restrito a desenvolvimento e estudo, não à rotina clínica.</p></div>
-      <div class="tl next"><em>Em andamento</em><h3>Validação clínica</h3><p>Cardiologistas parceiros laudando ECGs brasileiros pra medir sensibilidade e especificidade de verdade.</p></div>
-      <div class="tl"><em>Próximo</em><h3>Registro na Anvisa</h3><p>Dossiê técnico de software como dispositivo médico. Aí o Vytal ECG pode entrar na rotina de hospitais e serviços.</p></div>
-    </div>
-  </div>
-</section>
-
-<!-- PRA QUEM -->
-<section id="pra-quem">
-  <div class="wrap">
-    <div class="section-head">
-      <h2>Pra quem decide com o ECG na mão.</h2>
-      <p>A decisão continua sendo do médico. O que muda é o tempo até ela.</p>
-    </div>
-    <div class="who">
-      <div><h3>Urgência e emergência</h3><p>Segunda leitura em segundos, antes de ligar pro cardiologista.</p></div>
-      <div><h3>UBS e consultório</h3><p>Onde não tem cardiologista por perto: medidas com confiança e PDF pro encaminhamento.</p></div>
-      <div><h3>Ensino</h3><p>Estudantes e residentes treinam o olhar com exame real, sem dado de paciente.</p></div>
-    </div>
-  </div>
-</section>
-
-<!-- PERGUNTAS -->
-<section id="perguntas" style="padding-top:0">
-  <div class="wrap">
-    <div class="section-head"><h2>Perguntas frequentes</h2></div>
-    <details><summary>Funciona a partir de foto da tela do monitor?</summary><p>É um dos cenários em desenvolvimento. A foto de papel impresso é a mais madura hoje; a leitura a partir de tela é um dos focos de aprimoramento e validação.</p></details>
-    <details><summary>Que formatos de folha ele lê?</summary><p>3×4 com uma ou três tiras de ritmo, 6×2 com ou sem tira e 12×1, em 25 mm/s e 10 mm/mV. Outras escalas você informa na calibração. Formato que ele não reconhece, ele recusa e avisa.</p></details>
-    <details><summary>O app dá o laudo?</summary><p>Não. Ele entrega o sinal, as medidas e hipóteses com a evidência apontada no traçado. O laudo e a conduta são do médico, com o exame original como referência.</p></details>
-    <details><summary>É registrado na Anvisa?</summary><p>Ainda não. A tecnologia está em desenvolvimento e o desenho segue as exigências de software como dispositivo médico, com a validação clínica em andamento. O uso na rotina de atendimento depende da conclusão dessa etapa e do registro.</p></details>
-    <details><summary>Como acompanho ou participo da validação?</summary><p>Cardiologistas e instituições interessadas em colaborar com a validação clínica podem falar com a equipe pelo <a href="mailto:contato@vytalsaude.com.br?subject=Vytal%20ECG%20-%20validacao%20clinica">contato@vytalsaude.com.br</a>.</p></details>
-    <details><summary>O app dá o diagnóstico?</summary><p>Não. A proposta é reconstruir o sinal, calcular as medidas e organizar hipóteses com a evidência apontada no traçado. A interpretação final e a conduta são sempre do médico. É uma ferramenta de apoio, não de diagnóstico automático.</p></details>
-  </div>
-</section>
-
-<!-- CTA FINAL -->
-<section class="final" id="contato">
-  <div class="wrap">
-    <h2>Uma tecnologia brasileira em construção.</h2>
-    <p>Cardiologistas e instituições que queiram colaborar com a validação clínica, ou acompanhar o desenvolvimento, podem falar com a equipe.</p>
-    <div class="cta">
-      <a class="btn btn-rose" href="mailto:contato@vytalsaude.com.br?subject=Vytal%20ECG%20-%20validacao%20clinica">Falar com a equipe</a>
-      <a class="btn btn-ghost" href="https://www.vytalsaude.com.br">Conhecer a Vytal</a>
-    </div>
-  </div>
-</section>
-
-<footer>
-  <div class="wrap">
-    <nav>
-      <a href="https://www.vytalsaude.com.br">Vytal Saúde Tecnologia</a>
-      <a href="https://www.vytalsaude.com.br/#academico">Vytal Acadêmico</a>
-      <a href="https://www.vytalsaude.com.br/#produtos">Produtos</a>
-      <a href="mailto:contato@vytalsaude.com.br">Contato</a>
-      <a href="https://www.vytalsaude.com.br/privacidade">Política de Privacidade</a>
-      <a href="https://www.vytalsaude.com.br/exclusao-de-conta.html">Exclusão de conta</a>
-    </nav>
-    <p><strong>Vytal Saúde Tecnologia LTDA</strong> · CNPJ 67.051.119/0001-64 · São José dos Campos/SP · contato@vytalsaude.com.br<br>
-    O Vytal ECG é uma tecnologia em desenvolvimento, com validação clínica em andamento. Não é, no momento, um dispositivo médico registrado na Anvisa, e não se destina à rotina de diagnóstico. A interpretação e a conduta são sempre do médico.</p>
-  </div>
-</footer>
-
+<header><div class="wrap nav">
+  <a class="brand" href="https://www.vytalsaude.com.br"><img src="/ecg/vytal-ecg-logo.png" alt="">vytal <span>ECG</span></a>
+  <ul><li><a href="#como-funciona">Como funciona</a></li><li><a href="#entrega">O que queremos mostrar</a></li><li><a href="#situacao">Etapa atual</a></li><li><a href="#perguntas">Dúvidas</a></li></ul>
+  <a class="btn btn-navy" href="#contato">Falar com a equipe</a>
+</div></header>
+<main>
+  <section class="hero"><div class="wrap hero-grid"><div>
+    <h1>Uma foto do ECG.<br><span>Um traçado para conferir.</span></h1>
+    <p class="lead" style="margin-top:22px">O ECG é o exame que registra a atividade elétrica do coração. Estamos criando uma ferramenta para ampliar o traçado a partir de uma foto. Ainda está em testes.</p>
+    <div class="cta"><a class="btn btn-navy" href="#como-funciona">Veja como funciona</a><a class="btn btn-ghost" href="#situacao">Em que etapa está?</a></div>
+    <ul class="tags"><li>Pesquisa em desenvolvimento</li><li>Não usar para diagnóstico</li></ul>
+  </div><div class="phone"><img src="/ecg/app-inicio.png" alt="Tela ilustrativa do projeto Vytal ECG"></div></div></section>
+  <section class="pain"><div class="wrap"><h2>Por que estudar o ECG por foto?</h2><p class="lead" style="margin-top:16px">O exame muitas vezes está no papel ou na tela de um aparelho. Queremos facilitar a ampliação e a conferência do traçado, sempre ao lado da imagem original.</p></div></section>
+  <section id="como-funciona"><div class="wrap"><div class="section-head"><h2>Como a pesquisa funciona</h2></div><div class="steps">
+    <div class="step"><div class="n">1</div><h3>Fotografe o exame</h3><p>A imagem precisa mostrar o ECG inteiro com boa nitidez.</p></div>
+    <div class="step"><div class="n">2</div><h3>Veja o traçado ampliado</h3><p>A tecnologia tenta redesenhar as linhas e calcular medidas.</p></div>
+    <div class="step"><div class="n">3</div><h3>Confira com o original</h3><p>O médico compara o resultado com a foto. Se a leitura falhar, ela deve ser recusada.</p></div>
+  </div></div></section>
+  <section id="entrega" style="padding-top:0"><div class="wrap"><div class="deliver"><div class="section-head"><h2>O que queremos mostrar</h2><p>Uma tela para estudar o exame com mais clareza.</p></div><ul>
+    <li>Traçado ampliado<span>Para olhar de perto e comparar com a foto.</span></li>
+    <li>Medidas para conferência<span>Com avisos quando a imagem não permitir uma medida segura.</span></li>
+    <li>Limites da leitura<span>Uma foto ruim pode impedir o resultado.</span></li>
+  </ul></div></div></section>
+  <section class="path" id="situacao"><div class="wrap"><div class="section-head"><h2>Ainda não é para atendimento</h2><p>O Vytal ECG está em desenvolvimento e não é registrado na Anvisa. Seus resultados não devem ser usados para diagnosticar, dar laudos ou decidir tratamentos. A equipe continua testando a tecnologia.</p></div></div></section>
+  <section id="perguntas"><div class="wrap"><div class="section-head"><h2>Dúvidas rápidas</h2></div>
+    <details><summary>O aplicativo já dá diagnósticos?</summary><p>Não. Ele está em testes. A leitura do exame e as decisões sobre o paciente são do médico.</p></details>
+    <details><summary>Funciona com uma foto da tela?</summary><p>Esse tipo de foto ainda está sendo estudado. A qualidade da imagem pode impedir a leitura.</p></details>
+    <details><summary>Sou médico. Posso participar dos testes?</summary><p>Escreva para <a href="mailto:contato@vytalsaude.com.br?subject=Vytal%20ECG%20-%20validacao">contato@vytalsaude.com.br</a>.</p></details>
+  </div></section>
+  <section class="final" id="contato"><div class="wrap"><h2>Quer acompanhar o projeto?</h2><p>Médicos e instituições interessados na pesquisa podem conversar com a equipe.</p><div class="cta"><a class="btn btn-rose" href="mailto:contato@vytalsaude.com.br?subject=Vytal%20ECG%20-%20pesquisa">Falar com a equipe</a><a class="btn btn-ghost" href="https://www.vytalsaude.com.br">Conhecer a Vytal</a></div></div></section>
+</main>
+<footer><div class="wrap"><nav><a href="https://www.vytalsaude.com.br">Vytal Saúde</a><a href="https://www.vytalsaude.com.br/privacidade">Privacidade</a><a href="mailto:contato@vytalsaude.com.br">Contato</a></nav><p><strong>Vytal Saúde Tecnologia LTDA</strong> · CNPJ 67.051.119/0001-64 · São José dos Campos/SP<br>Vytal ECG em desenvolvimento, sem registro na Anvisa. Não usar na rotina de diagnóstico. A decisão clínica é sempre do médico.</p></div></footer>
 </body>
 </html>
