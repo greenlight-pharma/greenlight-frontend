@@ -1,0 +1,858 @@
+[
+  {
+    "id": "e-coli",
+    "title": "Escherichia coli",
+    "group": "bacterias",
+    "shape": "bacillus",
+    "summary": "Bacilo Gram-negativo. O modelo representa uma variante com fímbrias e flagelos; essas estruturas variam entre linhagens.",
+    "focus": "Compare a membrana externa com a fina camada de peptidoglicano.",
+    "parts": [
+      {
+        "id": "externa",
+        "title": "Membrana externa",
+        "colorHex": "#568f92",
+        "function": "Barreira adicional das bactérias Gram-negativas; contém lipopolissacarídeo.",
+        "appearance": "Selecione para destacar esta estrutura no modelo."
+      },
+      {
+        "id": "parede",
+        "title": "Parede celular",
+        "colorHex": "#638eb6",
+        "function": "Camada fina de peptidoglicano situada entre as membranas interna e externa.",
+        "appearance": "Selecione para destacar esta estrutura no modelo."
+      },
+      {
+        "id": "membrana",
+        "title": "Membrana plasmática",
+        "colorHex": "#b9a77c",
+        "function": "Delimita a célula e participa do transporte de substâncias.",
+        "appearance": "Selecione para destacar esta estrutura no modelo."
+      },
+      {
+        "id": "citoplasma",
+        "title": "Citoplasma",
+        "colorHex": "#ddbaa3",
+        "function": "Compartimento onde ocorrem numerosas reações metabólicas.",
+        "appearance": "Selecione para destacar esta estrutura no modelo."
+      },
+      {
+        "id": "nucleoide",
+        "title": "Nucleoide",
+        "colorHex": "#d89b52",
+        "function": "Região do cromossomo bacteriano, sem membrana nuclear.",
+        "appearance": "Selecione para destacar esta estrutura no modelo."
+      },
+      {
+        "id": "ribossomos",
+        "title": "Ribossomos",
+        "colorHex": "#eee0c4",
+        "function": "Estruturas responsáveis pela síntese de proteínas.",
+        "appearance": "Selecione para destacar esta estrutura no modelo."
+      },
+      {
+        "id": "flagelo",
+        "title": "Flagelo",
+        "colorHex": "#d4b979",
+        "function": "Estrutura associada à motilidade. Distribuição e presença podem variar entre organismos.",
+        "appearance": "Selecione para destacar esta estrutura no modelo."
+      },
+      {
+        "id": "pili",
+        "title": "Fímbrias de adesão",
+        "colorHex": "#9fc9cb",
+        "function": "Apêndices que podem participar da aderência a superfícies; variam entre linhagens.",
+        "appearance": "Selecione para destacar esta estrutura no modelo."
+      }
+    ],
+    "sources": [
+      "https://www.ncbi.nlm.nih.gov/books/NBK8477/"
+    ],
+    "cutaway": true,
+    "baseUrl": "/wmed/microbiology/e-coli",
+    "status": "Modelo didático original do Blender. Cores, tamanhos relativos e número de estruturas são ilustrativos; não é reconstrução microscópica nem identificação diagnóstica."
+  },
+  {
+    "id": "staphylococcus",
+    "title": "Staphylococcus aureus",
+    "group": "bacterias",
+    "shape": "cluster",
+    "summary": "Cocos Gram-positivos que podem formar agrupamentos. O arranjo não permite identificação da espécie isoladamente.",
+    "focus": "Veja o agrupamento em cachos e a parede espessa.",
+    "parts": [
+      {
+        "id": "parede",
+        "title": "Parede celular",
+        "colorHex": "#638eb6",
+        "function": "Camada espessa de peptidoglicano, característica do envoltório Gram-positivo.",
+        "appearance": "Selecione para destacar esta estrutura no modelo."
+      },
+      {
+        "id": "membrana",
+        "title": "Membrana plasmática",
+        "colorHex": "#b9a77c",
+        "function": "Delimita a célula e participa do transporte de substâncias.",
+        "appearance": "Selecione para destacar esta estrutura no modelo."
+      },
+      {
+        "id": "citoplasma",
+        "title": "Citoplasma",
+        "colorHex": "#ddbaa3",
+        "function": "Compartimento onde ocorrem numerosas reações metabólicas.",
+        "appearance": "Selecione para destacar esta estrutura no modelo."
+      },
+      {
+        "id": "nucleoide",
+        "title": "Nucleoide",
+        "colorHex": "#d89b52",
+        "function": "Região do cromossomo bacteriano, sem membrana nuclear.",
+        "appearance": "Selecione para destacar esta estrutura no modelo."
+      },
+      {
+        "id": "ribossomos",
+        "title": "Ribossomos",
+        "colorHex": "#eee0c4",
+        "function": "Estruturas responsáveis pela síntese de proteínas.",
+        "appearance": "Selecione para destacar esta estrutura no modelo."
+      }
+    ],
+    "sources": [
+      "https://www.ncbi.nlm.nih.gov/books/NBK8477/"
+    ],
+    "cutaway": true,
+    "baseUrl": "/wmed/microbiology/staphylococcus",
+    "status": "Modelo didático original do Blender. Cores, tamanhos relativos e número de estruturas são ilustrativos; não é reconstrução microscópica nem identificação diagnóstica."
+  },
+  {
+    "id": "streptococcus",
+    "title": "Streptococcus pyogenes",
+    "group": "bacterias",
+    "shape": "chain",
+    "summary": "Cocos Gram-positivos frequentemente organizados em cadeias. A representação enfatiza arranjo e envoltório.",
+    "focus": "Compare cadeias com os cachos de estafilococos.",
+    "parts": [
+      {
+        "id": "parede",
+        "title": "Parede celular",
+        "colorHex": "#638eb6",
+        "function": "Envoltório que ajuda a manter a forma e a resistir à pressão osmótica.",
+        "appearance": "Selecione para destacar esta estrutura no modelo."
+      },
+      {
+        "id": "membrana",
+        "title": "Membrana plasmática",
+        "colorHex": "#b9a77c",
+        "function": "Delimita a célula e participa do transporte de substâncias.",
+        "appearance": "Selecione para destacar esta estrutura no modelo."
+      },
+      {
+        "id": "citoplasma",
+        "title": "Citoplasma",
+        "colorHex": "#ddbaa3",
+        "function": "Compartimento onde ocorrem numerosas reações metabólicas.",
+        "appearance": "Selecione para destacar esta estrutura no modelo."
+      },
+      {
+        "id": "nucleoide",
+        "title": "Nucleoide",
+        "colorHex": "#d89b52",
+        "function": "Região do cromossomo bacteriano, sem membrana nuclear.",
+        "appearance": "Selecione para destacar esta estrutura no modelo."
+      },
+      {
+        "id": "ribossomos",
+        "title": "Ribossomos",
+        "colorHex": "#eee0c4",
+        "function": "Estruturas responsáveis pela síntese de proteínas.",
+        "appearance": "Selecione para destacar esta estrutura no modelo."
+      }
+    ],
+    "sources": [
+      "https://www.ncbi.nlm.nih.gov/books/NBK8477/"
+    ],
+    "cutaway": true,
+    "baseUrl": "/wmed/microbiology/streptococcus",
+    "status": "Modelo didático original do Blender. Cores, tamanhos relativos e número de estruturas são ilustrativos; não é reconstrução microscópica nem identificação diagnóstica."
+  },
+  {
+    "id": "vibrio",
+    "title": "Vibrio cholerae",
+    "group": "bacterias",
+    "shape": "vibrio",
+    "summary": "Bacilo Gram-negativo curvo com flagelo polar. A curvatura é apresentada como característica morfológica didática.",
+    "focus": "Observe o corpo curvo e a origem polar do flagelo.",
+    "parts": [
+      {
+        "id": "externa",
+        "title": "Membrana externa",
+        "colorHex": "#568f92",
+        "function": "Barreira adicional das bactérias Gram-negativas; contém lipopolissacarídeo.",
+        "appearance": "Selecione para destacar esta estrutura no modelo."
+      },
+      {
+        "id": "parede",
+        "title": "Parede celular",
+        "colorHex": "#638eb6",
+        "function": "Envoltório que ajuda a manter a forma e a resistir à pressão osmótica.",
+        "appearance": "Selecione para destacar esta estrutura no modelo."
+      },
+      {
+        "id": "membrana",
+        "title": "Membrana plasmática",
+        "colorHex": "#b9a77c",
+        "function": "Delimita a célula e participa do transporte de substâncias.",
+        "appearance": "Selecione para destacar esta estrutura no modelo."
+      },
+      {
+        "id": "citoplasma",
+        "title": "Citoplasma",
+        "colorHex": "#ddbaa3",
+        "function": "Compartimento onde ocorrem numerosas reações metabólicas.",
+        "appearance": "Selecione para destacar esta estrutura no modelo."
+      },
+      {
+        "id": "nucleoide",
+        "title": "Nucleoide",
+        "colorHex": "#d89b52",
+        "function": "Região do cromossomo bacteriano, sem membrana nuclear.",
+        "appearance": "Selecione para destacar esta estrutura no modelo."
+      },
+      {
+        "id": "ribossomos",
+        "title": "Ribossomos",
+        "colorHex": "#eee0c4",
+        "function": "Estruturas responsáveis pela síntese de proteínas.",
+        "appearance": "Selecione para destacar esta estrutura no modelo."
+      },
+      {
+        "id": "flagelo",
+        "title": "Flagelo",
+        "colorHex": "#d4b979",
+        "function": "Estrutura associada à motilidade. Distribuição e presença podem variar entre organismos.",
+        "appearance": "Selecione para destacar esta estrutura no modelo."
+      }
+    ],
+    "sources": [
+      "https://www.ncbi.nlm.nih.gov/books/NBK8477/"
+    ],
+    "cutaway": true,
+    "baseUrl": "/wmed/microbiology/vibrio",
+    "status": "Modelo didático original do Blender. Cores, tamanhos relativos e número de estruturas são ilustrativos; não é reconstrução microscópica nem identificação diagnóstica."
+  },
+  {
+    "id": "coronavirus",
+    "title": "SARS-CoV-2",
+    "group": "virus",
+    "shape": "corona",
+    "summary": "Vírus envelopado com RNA de fita simples de sentido positivo. Modelo estrutural simplificado, sem resolução molecular.",
+    "focus": "Abra o envelope e localize o RNA associado à proteína N.",
+    "parts": [
+      {
+        "id": "envelope",
+        "title": "Envelope lipídico",
+        "colorHex": "#778db7",
+        "function": "Camada lipídica derivada de membranas da célula hospedeira.",
+        "appearance": "Selecione para destacar esta estrutura no modelo."
+      },
+      {
+        "id": "espiculas",
+        "title": "Proteína S · espícula",
+        "colorHex": "#db806e",
+        "function": "Glicoproteína de superfície que participa da ligação e da entrada na célula hospedeira.",
+        "appearance": "Selecione para destacar esta estrutura no modelo."
+      },
+      {
+        "id": "nucleocapsideo",
+        "title": "Ribonucleoproteína",
+        "colorHex": "#d0af68",
+        "function": "RNA associado a proteínas virais; o traçado é ilustrativo, não uma estrutura atômica.",
+        "appearance": "Selecione para destacar esta estrutura no modelo."
+      }
+    ],
+    "sources": [
+      "https://www.ncbi.nlm.nih.gov/Structure/SARS-CoV-2.html",
+      "https://www.ncbi.nlm.nih.gov/books/NBK8174/"
+    ],
+    "cutaway": true,
+    "baseUrl": "/wmed/microbiology/coronavirus",
+    "status": "Modelo didático original do Blender. Cores, tamanhos relativos e número de estruturas são ilustrativos; não é reconstrução microscópica nem identificação diagnóstica."
+  },
+  {
+    "id": "influenza",
+    "title": "Influenza A",
+    "group": "virus",
+    "shape": "influenza",
+    "summary": "Vírus envelopado cujo genoma possui oito segmentos de RNA. Hemaglutinina e neuraminidase estão representadas na superfície.",
+    "focus": "Conte os oito segmentos de ribonucleoproteína no corte.",
+    "parts": [
+      {
+        "id": "envelope",
+        "title": "Envelope lipídico",
+        "colorHex": "#778db7",
+        "function": "Camada lipídica derivada de membranas da célula hospedeira.",
+        "appearance": "Selecione para destacar esta estrutura no modelo."
+      },
+      {
+        "id": "espiculas",
+        "title": "HA e NA · superfície",
+        "colorHex": "#db806e",
+        "function": "A hemaglutinina participa da ligação e fusão; a neuraminidase contribui para a liberação de partículas. As projeções representam essas proteínas de forma simplificada, sem escala molecular.",
+        "appearance": "Selecione para destacar esta estrutura no modelo."
+      },
+      {
+        "id": "matriz",
+        "title": "Camada de matriz",
+        "colorHex": "#87a7a2",
+        "function": "Proteínas que ajudam a organizar a partícula viral junto ao envelope.",
+        "appearance": "Selecione para destacar esta estrutura no modelo."
+      },
+      {
+        "id": "nucleocapsideo",
+        "title": "Ribonucleoproteína",
+        "colorHex": "#d0af68",
+        "function": "RNA associado a proteínas virais; o traçado é ilustrativo, não uma estrutura atômica.",
+        "appearance": "Selecione para destacar esta estrutura no modelo."
+      }
+    ],
+    "sources": [
+      "https://www.ncbi.nlm.nih.gov/books/NBK8174/",
+      "https://pubmed.ncbi.nlm.nih.gov/34578369/"
+    ],
+    "cutaway": true,
+    "baseUrl": "/wmed/microbiology/influenza",
+    "status": "Modelo didático original do Blender. Cores, tamanhos relativos e número de estruturas são ilustrativos; não é reconstrução microscópica nem identificação diagnóstica."
+  },
+  {
+    "id": "hiv",
+    "title": "HIV-1",
+    "group": "virus",
+    "shape": "hiv",
+    "summary": "Retrovírus envelopado com capsídeo cônico e duas cópias de RNA. O desenho destaca sua organização estrutural.",
+    "focus": "Reconheça o capsídeo cônico dentro do envelope.",
+    "parts": [
+      {
+        "id": "envelope",
+        "title": "Envelope lipídico",
+        "colorHex": "#778db7",
+        "function": "Camada lipídica derivada de membranas da célula hospedeira.",
+        "appearance": "Selecione para destacar esta estrutura no modelo."
+      },
+      {
+        "id": "espiculas",
+        "title": "Glicoproteínas de superfície",
+        "colorHex": "#db806e",
+        "function": "Participam do reconhecimento e da entrada na célula hospedeira.",
+        "appearance": "Selecione para destacar esta estrutura no modelo."
+      },
+      {
+        "id": "capsideo",
+        "title": "Capsídeo",
+        "colorHex": "#b7a3d1",
+        "function": "Estrutura proteica que protege o genoma viral.",
+        "appearance": "Selecione para destacar esta estrutura no modelo."
+      },
+      {
+        "id": "genoma",
+        "title": "Genoma viral",
+        "colorHex": "#e8ba58",
+        "function": "Duas cópias de RNA de fita simples. Trajetórias e organização interna são ilustrativas.",
+        "appearance": "Selecione para destacar esta estrutura no modelo."
+      }
+    ],
+    "sources": [
+      "https://www.ncbi.nlm.nih.gov/books/NBK8174/",
+      "https://pmc.ncbi.nlm.nih.gov/articles/PMC8307803/"
+    ],
+    "cutaway": true,
+    "baseUrl": "/wmed/microbiology/hiv",
+    "status": "Modelo didático original do Blender. Cores, tamanhos relativos e número de estruturas são ilustrativos; não é reconstrução microscópica nem identificação diagnóstica."
+  },
+  {
+    "id": "adenovirus",
+    "title": "Adenovírus",
+    "group": "virus",
+    "shape": "adeno",
+    "summary": "Vírus não envelopado com capsídeo icosaédrico e DNA de dupla fita. Possui fibras projetadas dos vértices.",
+    "focus": "Compare a ausência de envelope com os outros vírus do acervo.",
+    "parts": [
+      {
+        "id": "capsideo",
+        "title": "Capsídeo",
+        "colorHex": "#b7a3d1",
+        "function": "Estrutura proteica que protege o genoma viral.",
+        "appearance": "Selecione para destacar esta estrutura no modelo."
+      },
+      {
+        "id": "fibras",
+        "title": "Fibras do capsídeo",
+        "colorHex": "#9da2db",
+        "function": "Projeções nos vértices que participam da ligação a receptores celulares.",
+        "appearance": "Selecione para destacar esta estrutura no modelo."
+      },
+      {
+        "id": "genoma",
+        "title": "Genoma viral",
+        "colorHex": "#e8ba58",
+        "function": "DNA de dupla fita contido no capsídeo; a disposição representada não é uma reconstrução molecular.",
+        "appearance": "Selecione para destacar esta estrutura no modelo."
+      }
+    ],
+    "sources": [
+      "https://www.ncbi.nlm.nih.gov/books/NBK8174/"
+    ],
+    "cutaway": true,
+    "baseUrl": "/wmed/microbiology/adenovirus",
+    "status": "Modelo didático original do Blender. Cores, tamanhos relativos e número de estruturas são ilustrativos; não é reconstrução microscópica nem identificação diagnóstica."
+  },
+  {
+    "id": "candida",
+    "title": "Candida albicans",
+    "group": "fungos",
+    "shape": "candida",
+    "summary": "Levedura representada em brotamento. A espécie também pode apresentar pseudohifas e hifas, não incluídas nesta vista.",
+    "focus": "Identifique parede, núcleo, vacúolo e broto.",
+    "parts": [
+      {
+        "id": "parede",
+        "title": "Parede celular",
+        "colorHex": "#638eb6",
+        "function": "Envoltório que ajuda a manter a forma e a resistir à pressão osmótica.",
+        "appearance": "Selecione para destacar esta estrutura no modelo."
+      },
+      {
+        "id": "membrana",
+        "title": "Membrana plasmática",
+        "colorHex": "#b9a77c",
+        "function": "Delimita a célula e participa do transporte de substâncias.",
+        "appearance": "Selecione para destacar esta estrutura no modelo."
+      },
+      {
+        "id": "citoplasma",
+        "title": "Citoplasma",
+        "colorHex": "#ddbaa3",
+        "function": "Compartimento onde ocorrem numerosas reações metabólicas.",
+        "appearance": "Selecione para destacar esta estrutura no modelo."
+      },
+      {
+        "id": "nucleo",
+        "title": "Núcleo",
+        "colorHex": "#8c76af",
+        "function": "Compartimento que contém a maior parte do material genético da célula eucariótica.",
+        "appearance": "Selecione para destacar esta estrutura no modelo."
+      },
+      {
+        "id": "vacuolo",
+        "title": "Vacúolo",
+        "colorHex": "#6aaba9",
+        "function": "Compartimento envolvido em armazenamento, degradação e equilíbrio celular.",
+        "appearance": "Selecione para destacar esta estrutura no modelo."
+      },
+      {
+        "id": "mitocondrias",
+        "title": "Mitocôndrias",
+        "colorHex": "#d79764",
+        "function": "Organelas envolvidas no metabolismo energético.",
+        "appearance": "Selecione para destacar esta estrutura no modelo."
+      },
+      {
+        "id": "broto",
+        "title": "Brotamento",
+        "colorHex": "#c799b8",
+        "function": "Formação de uma célula-filha por brotamento.",
+        "appearance": "Selecione para destacar esta estrutura no modelo."
+      }
+    ],
+    "sources": [
+      "https://pmc.ncbi.nlm.nih.gov/articles/PMC6962315/"
+    ],
+    "cutaway": true,
+    "baseUrl": "/wmed/microbiology/candida",
+    "status": "Modelo didático original do Blender. Cores, tamanhos relativos e número de estruturas são ilustrativos; não é reconstrução microscópica nem identificação diagnóstica."
+  },
+  {
+    "id": "cryptococcus",
+    "title": "Cryptococcus neoformans",
+    "group": "fungos",
+    "shape": "crypto",
+    "summary": "Levedura encapsulada. O modelo destaca a cápsula polissacarídica e o brotamento de base estreita.",
+    "focus": "Compare a cápsula externa com a parede celular.",
+    "parts": [
+      {
+        "id": "capsula",
+        "title": "Cápsula polissacarídica",
+        "colorHex": "#99b8ca",
+        "function": "Camada externa característica de Cryptococcus; participa da interação com o hospedeiro.",
+        "appearance": "Selecione para destacar esta estrutura no modelo."
+      },
+      {
+        "id": "parede",
+        "title": "Parede celular",
+        "colorHex": "#638eb6",
+        "function": "Envoltório que ajuda a manter a forma e a resistir à pressão osmótica.",
+        "appearance": "Selecione para destacar esta estrutura no modelo."
+      },
+      {
+        "id": "membrana",
+        "title": "Membrana plasmática",
+        "colorHex": "#b9a77c",
+        "function": "Delimita a célula e participa do transporte de substâncias.",
+        "appearance": "Selecione para destacar esta estrutura no modelo."
+      },
+      {
+        "id": "citoplasma",
+        "title": "Citoplasma",
+        "colorHex": "#ddbaa3",
+        "function": "Compartimento onde ocorrem numerosas reações metabólicas.",
+        "appearance": "Selecione para destacar esta estrutura no modelo."
+      },
+      {
+        "id": "nucleo",
+        "title": "Núcleo",
+        "colorHex": "#8c76af",
+        "function": "Compartimento que contém a maior parte do material genético da célula eucariótica.",
+        "appearance": "Selecione para destacar esta estrutura no modelo."
+      },
+      {
+        "id": "vacuolo",
+        "title": "Vacúolo",
+        "colorHex": "#6aaba9",
+        "function": "Compartimento envolvido em armazenamento, degradação e equilíbrio celular.",
+        "appearance": "Selecione para destacar esta estrutura no modelo."
+      },
+      {
+        "id": "broto",
+        "title": "Brotamento",
+        "colorHex": "#c799b8",
+        "function": "Formação de uma célula-filha por brotamento.",
+        "appearance": "Selecione para destacar esta estrutura no modelo."
+      }
+    ],
+    "sources": [
+      "https://pmc.ncbi.nlm.nih.gov/articles/PMC6962315/"
+    ],
+    "cutaway": true,
+    "baseUrl": "/wmed/microbiology/cryptococcus",
+    "status": "Modelo didático original do Blender. Cores, tamanhos relativos e número de estruturas são ilustrativos; não é reconstrução microscópica nem identificação diagnóstica."
+  },
+  {
+    "id": "aspergillus",
+    "title": "Aspergillus · cabeça conidial",
+    "group": "fungos",
+    "shape": "aspergillus",
+    "summary": "Representação genérica de estrutura reprodutiva em cultura, com vesícula, fiálides e conídios. A organização varia por espécie.",
+    "focus": "Siga a sequência conidióforo → vesícula → fiálides → conídios.",
+    "parts": [
+      {
+        "id": "hifas",
+        "title": "Hifas",
+        "colorHex": "#caa886",
+        "function": "Filamentos que formam o micélio. Espessura e septação são características de estudo.",
+        "appearance": "Selecione para destacar esta estrutura no modelo."
+      },
+      {
+        "id": "septos",
+        "title": "Septos",
+        "colorHex": "#967d9f",
+        "function": "Divisões transversais presentes nas hifas septadas.",
+        "appearance": "Selecione para destacar esta estrutura no modelo."
+      },
+      {
+        "id": "conidioforo",
+        "title": "Conidióforo",
+        "colorHex": "#aca18a",
+        "function": "Estrutura aérea que sustenta a cabeça conidial.",
+        "appearance": "Selecione para destacar esta estrutura no modelo."
+      },
+      {
+        "id": "vesicula",
+        "title": "Vesícula terminal",
+        "colorHex": "#90a7a1",
+        "function": "Dilatação terminal que sustenta as células produtoras de conídios.",
+        "appearance": "Selecione para destacar esta estrutura no modelo."
+      },
+      {
+        "id": "fialides",
+        "title": "Fiálides",
+        "colorHex": "#809787",
+        "function": "Células conidiogênicas que produzem cadeias de conídios.",
+        "appearance": "Selecione para destacar esta estrutura no modelo."
+      },
+      {
+        "id": "conidios",
+        "title": "Conídios",
+        "colorHex": "#6c9b92",
+        "function": "Propágulos assexuados. O arranjo mostrado é uma representação de cultura, não de tecido humano.",
+        "appearance": "Selecione para destacar esta estrutura no modelo."
+      }
+    ],
+    "sources": [
+      "https://pmc.ncbi.nlm.nih.gov/articles/PMC6962315/",
+      "https://www.cdc.gov/aspergillosis/hcp/clinical-overview/"
+    ],
+    "cutaway": false,
+    "baseUrl": "/wmed/microbiology/aspergillus",
+    "status": "Modelo didático original do Blender. Cores, tamanhos relativos e número de estruturas são ilustrativos; não é reconstrução microscópica nem identificação diagnóstica."
+  },
+  {
+    "id": "rhizopus",
+    "title": "Rhizopus · esporângio",
+    "group": "fungos",
+    "shape": "rhizopus",
+    "summary": "Representação de estrutura de cultura: hifa, rizoides e esporângio. Não corresponde à apresentação em tecido humano.",
+    "focus": "Abra o esporângio para localizar os esporos e a columela.",
+    "parts": [
+      {
+        "id": "hifas",
+        "title": "Hifas",
+        "colorHex": "#caa886",
+        "function": "Filamentos que formam o micélio. Espessura e septação são características de estudo.",
+        "appearance": "Selecione para destacar esta estrutura no modelo."
+      },
+      {
+        "id": "rizoides",
+        "title": "Rizoides",
+        "colorHex": "#a99579",
+        "function": "Filamentos de fixação presentes no gênero Rhizopus.",
+        "appearance": "Selecione para destacar esta estrutura no modelo."
+      },
+      {
+        "id": "conidioforo",
+        "title": "Esporangióforo",
+        "colorHex": "#aca18a",
+        "function": "Haste que sustenta o esporângio; não produz conídios externos.",
+        "appearance": "Selecione para destacar esta estrutura no modelo."
+      },
+      {
+        "id": "esporangio",
+        "title": "Esporângio",
+        "colorHex": "#798487",
+        "function": "Estrutura que abriga esporangiósporos.",
+        "appearance": "Selecione para destacar esta estrutura no modelo."
+      },
+      {
+        "id": "columela",
+        "title": "Columela",
+        "colorHex": "#c1a887",
+        "function": "Porção dilatada no interior do esporângio.",
+        "appearance": "Selecione para destacar esta estrutura no modelo."
+      },
+      {
+        "id": "esporos",
+        "title": "Esporangiósporos",
+        "colorHex": "#b0a790",
+        "function": "Propágulos formados dentro do esporângio.",
+        "appearance": "Selecione para destacar esta estrutura no modelo."
+      }
+    ],
+    "sources": [
+      "https://wwwn.cdc.gov/phil/Details.aspx?pid=26741",
+      "https://wwwnc.cdc.gov/eid/article/29/7/22-1491-t1"
+    ],
+    "cutaway": true,
+    "baseUrl": "/wmed/microbiology/rhizopus",
+    "status": "Modelo didático original do Blender. Cores, tamanhos relativos e número de estruturas são ilustrativos; não é reconstrução microscópica nem identificação diagnóstica."
+  },
+  {
+    "id": "giardia",
+    "title": "Giardia duodenalis · trofozoíto",
+    "group": "protozoarios",
+    "shape": "giardia",
+    "summary": "Forma flagelada com simetria bilateral, dois núcleos e disco adesivo ventral. Não representa o cisto.",
+    "focus": "Localize os dois núcleos e os quatro pares de flagelos.",
+    "parts": [
+      {
+        "id": "membrana",
+        "title": "Membrana plasmática",
+        "colorHex": "#b9a77c",
+        "function": "Delimita a célula e participa do transporte de substâncias.",
+        "appearance": "Selecione para destacar esta estrutura no modelo."
+      },
+      {
+        "id": "citoplasma",
+        "title": "Citoplasma",
+        "colorHex": "#ddbaa3",
+        "function": "Compartimento onde ocorrem numerosas reações metabólicas.",
+        "appearance": "Selecione para destacar esta estrutura no modelo."
+      },
+      {
+        "id": "nucleo",
+        "title": "Núcleo",
+        "colorHex": "#8c76af",
+        "function": "Compartimento que contém a maior parte do material genético da célula eucariótica.",
+        "appearance": "Selecione para destacar esta estrutura no modelo."
+      },
+      {
+        "id": "disco",
+        "title": "Disco adesivo ventral",
+        "colorHex": "#7facc3",
+        "function": "Estrutura associada à adesão do trofozoíto de Giardia ao epitélio intestinal.",
+        "appearance": "Selecione para destacar esta estrutura no modelo."
+      },
+      {
+        "id": "axonemas",
+        "title": "Axonemas",
+        "colorHex": "#dfbb77",
+        "function": "Estruturas de microtúbulos associadas aos flagelos.",
+        "appearance": "Selecione para destacar esta estrutura no modelo."
+      },
+      {
+        "id": "flagelo",
+        "title": "Flagelo",
+        "colorHex": "#d4b979",
+        "function": "Estrutura associada à motilidade. Distribuição e presença podem variar entre organismos.",
+        "appearance": "Selecione para destacar esta estrutura no modelo."
+      }
+    ],
+    "sources": [
+      "https://www.cdc.gov/dpdx/giardiasis/"
+    ],
+    "cutaway": true,
+    "baseUrl": "/wmed/microbiology/giardia",
+    "status": "Modelo didático original do Blender. Cores, tamanhos relativos e número de estruturas são ilustrativos; não é reconstrução microscópica nem identificação diagnóstica."
+  },
+  {
+    "id": "toxoplasma",
+    "title": "Toxoplasma gondii · taquizoíto",
+    "group": "protozoarios",
+    "shape": "toxo",
+    "summary": "Forma alongada e arqueada com uma extremidade apical afilada. As organelas apicais são simplificadas no modelo.",
+    "focus": "Localize o polo apical e o núcleo no corpo arqueado.",
+    "parts": [
+      {
+        "id": "membrana",
+        "title": "Membrana plasmática",
+        "colorHex": "#b9a77c",
+        "function": "Delimita a célula e participa do transporte de substâncias.",
+        "appearance": "Selecione para destacar esta estrutura no modelo."
+      },
+      {
+        "id": "citoplasma",
+        "title": "Citoplasma",
+        "colorHex": "#ddbaa3",
+        "function": "Compartimento onde ocorrem numerosas reações metabólicas.",
+        "appearance": "Selecione para destacar esta estrutura no modelo."
+      },
+      {
+        "id": "nucleo",
+        "title": "Núcleo",
+        "colorHex": "#8c76af",
+        "function": "Compartimento que contém a maior parte do material genético da célula eucariótica.",
+        "appearance": "Selecione para destacar esta estrutura no modelo."
+      },
+      {
+        "id": "apical",
+        "title": "Complexo apical",
+        "colorHex": "#d7ad6d",
+        "function": "Conjunto de estruturas associadas à invasão celular nos apicomplexos; representação simplificada.",
+        "appearance": "Selecione para destacar esta estrutura no modelo."
+      }
+    ],
+    "sources": [
+      "https://www.cdc.gov/dpdx/toxoplasmosis/index.html"
+    ],
+    "cutaway": true,
+    "baseUrl": "/wmed/microbiology/toxoplasma",
+    "status": "Modelo didático original do Blender. Cores, tamanhos relativos e número de estruturas são ilustrativos; não é reconstrução microscópica nem identificação diagnóstica."
+  },
+  {
+    "id": "trypanosoma",
+    "title": "Trypanosoma cruzi · tripomastigota",
+    "group": "protozoarios",
+    "shape": "tryp",
+    "summary": "Forma alongada com núcleo, cinetoplasto, membrana ondulante e flagelo. Não representa o amastigota intracelular.",
+    "focus": "Diferencie núcleo de cinetoplasto.",
+    "parts": [
+      {
+        "id": "membrana",
+        "title": "Membrana plasmática",
+        "colorHex": "#b9a77c",
+        "function": "Delimita a célula e participa do transporte de substâncias.",
+        "appearance": "Selecione para destacar esta estrutura no modelo."
+      },
+      {
+        "id": "citoplasma",
+        "title": "Citoplasma",
+        "colorHex": "#ddbaa3",
+        "function": "Compartimento onde ocorrem numerosas reações metabólicas.",
+        "appearance": "Selecione para destacar esta estrutura no modelo."
+      },
+      {
+        "id": "nucleo",
+        "title": "Núcleo",
+        "colorHex": "#8c76af",
+        "function": "Compartimento que contém a maior parte do material genético da célula eucariótica.",
+        "appearance": "Selecione para destacar esta estrutura no modelo."
+      },
+      {
+        "id": "cinetoplasto",
+        "title": "Cinetoplasto",
+        "colorHex": "#d8b969",
+        "function": "Região com DNA mitocondrial condensado, característica dos cinetoplastídeos.",
+        "appearance": "Selecione para destacar esta estrutura no modelo."
+      },
+      {
+        "id": "ondulante",
+        "title": "Membrana ondulante",
+        "colorHex": "#87b5bc",
+        "function": "Prega associada ao trajeto do flagelo no corpo do tripomastigota.",
+        "appearance": "Selecione para destacar esta estrutura no modelo."
+      },
+      {
+        "id": "flagelo",
+        "title": "Flagelo",
+        "colorHex": "#d4b979",
+        "function": "Estrutura associada à motilidade. Distribuição e presença podem variar entre organismos.",
+        "appearance": "Selecione para destacar esta estrutura no modelo."
+      }
+    ],
+    "sources": [
+      "https://www.cdc.gov/dpdx/trypanosomiasisamerican/"
+    ],
+    "cutaway": true,
+    "baseUrl": "/wmed/microbiology/trypanosoma",
+    "status": "Modelo didático original do Blender. Cores, tamanhos relativos e número de estruturas são ilustrativos; não é reconstrução microscópica nem identificação diagnóstica."
+  },
+  {
+    "id": "entamoeba",
+    "title": "Entamoeba histolytica · trofozoíto",
+    "group": "protozoarios",
+    "shape": "amoeba",
+    "summary": "Forma ameboide com pseudópodes, núcleo e vacúolos. A morfologia isolada não diferencia todas as espécies semelhantes.",
+    "focus": "Observe o contorno irregular e as estruturas internas.",
+    "parts": [
+      {
+        "id": "membrana",
+        "title": "Membrana plasmática",
+        "colorHex": "#b9a77c",
+        "function": "Delimita a célula e participa do transporte de substâncias.",
+        "appearance": "Selecione para destacar esta estrutura no modelo."
+      },
+      {
+        "id": "citoplasma",
+        "title": "Citoplasma",
+        "colorHex": "#ddbaa3",
+        "function": "Compartimento onde ocorrem numerosas reações metabólicas.",
+        "appearance": "Selecione para destacar esta estrutura no modelo."
+      },
+      {
+        "id": "nucleo",
+        "title": "Núcleo",
+        "colorHex": "#8c76af",
+        "function": "Compartimento que contém a maior parte do material genético da célula eucariótica.",
+        "appearance": "Selecione para destacar esta estrutura no modelo."
+      },
+      {
+        "id": "vacdigestivo",
+        "title": "Vacúolos digestivos",
+        "colorHex": "#c99b72",
+        "function": "Compartimentos associados à digestão intracelular.",
+        "appearance": "Selecione para destacar esta estrutura no modelo."
+      }
+    ],
+    "sources": [
+      "https://www.cdc.gov/dpdx/amebiasis/"
+    ],
+    "cutaway": true,
+    "baseUrl": "/wmed/microbiology/entamoeba",
+    "status": "Modelo didático original do Blender. Cores, tamanhos relativos e número de estruturas são ilustrativos; não é reconstrução microscópica nem identificação diagnóstica."
+  }
+]

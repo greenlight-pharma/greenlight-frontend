@@ -1,0 +1,560 @@
+{
+  "blender": "4.5.13 LTS",
+  "generatorSHA256": "67cd0b0a79a2812df4be264da14636c77f12636b707f6636ad6ba43277c42bf4",
+  "models": [
+    {
+      "id": "e-coli",
+      "variants": {
+        "complete": {
+          "bytes": 1731304,
+          "sha256": "f7e8657abb4f6dd1c188e37f3073fc12cafb3467bdda63772bcbe5ac313b8bbe",
+          "meshes": 8,
+          "triangles": 25168,
+          "parts": [
+            "citoplasma",
+            "externa",
+            "flagelo",
+            "membrana",
+            "nucleoide",
+            "parede",
+            "pili",
+            "ribossomos"
+          ],
+          "embeddedImages": 16,
+          "allResourcesEmbedded": true
+        },
+        "cutaway": {
+          "bytes": 1892596,
+          "sha256": "911ba1472a80fd132e484cc413ac1eaa81cd33e9a1b42a197608a8037224bdc7",
+          "meshes": 8,
+          "triangles": 34384,
+          "parts": [
+            "citoplasma",
+            "externa",
+            "flagelo",
+            "membrana",
+            "nucleoide",
+            "parede",
+            "pili",
+            "ribossomos"
+          ],
+          "embeddedImages": 16,
+          "allResourcesEmbedded": true
+        }
+      }
+    },
+    {
+      "id": "staphylococcus",
+      "variants": {
+        "complete": {
+          "bytes": 1241184,
+          "sha256": "054b440d9d0742275a65456c5f4e44f9bd4b8a32a65bb23c98192bba274a7f06",
+          "meshes": 5,
+          "triangles": 22140,
+          "parts": [
+            "citoplasma",
+            "membrana",
+            "nucleoide",
+            "parede",
+            "ribossomos"
+          ],
+          "embeddedImages": 10,
+          "allResourcesEmbedded": true
+        },
+        "cutaway": {
+          "bytes": 1379432,
+          "sha256": "9302607bd45ac8d2c0b1331bb6f35ee2b5e2cb36abd0703706522b18f31bf147",
+          "meshes": 5,
+          "triangles": 29052,
+          "parts": [
+            "citoplasma",
+            "membrana",
+            "nucleoide",
+            "parede",
+            "ribossomos"
+          ],
+          "embeddedImages": 10,
+          "allResourcesEmbedded": true
+        }
+      }
+    },
+    {
+      "id": "streptococcus",
+      "variants": {
+        "complete": {
+          "bytes": 1213992,
+          "sha256": "ffa67a6979575f972b78f490bed59f409164df1b049c8d3d099bd901db74b54d",
+          "meshes": 5,
+          "triangles": 20916,
+          "parts": [
+            "citoplasma",
+            "membrana",
+            "nucleoide",
+            "parede",
+            "ribossomos"
+          ],
+          "embeddedImages": 10,
+          "allResourcesEmbedded": true
+        },
+        "cutaway": {
+          "bytes": 1352240,
+          "sha256": "bee335d52c58e19bb921d13e1fc424a757d44886453db6400f78f0500b1c8334",
+          "meshes": 5,
+          "triangles": 27828,
+          "parts": [
+            "citoplasma",
+            "membrana",
+            "nucleoide",
+            "parede",
+            "ribossomos"
+          ],
+          "embeddedImages": 10,
+          "allResourcesEmbedded": true
+        }
+      }
+    },
+    {
+      "id": "vibrio",
+      "variants": {
+        "complete": {
+          "bytes": 1475532,
+          "sha256": "d0964cc9dd3fff75f1126d629726cc545b2a22b1265b4094327dfa624b13644e",
+          "meshes": 7,
+          "triangles": 19924,
+          "parts": [
+            "citoplasma",
+            "externa",
+            "flagelo",
+            "membrana",
+            "nucleoide",
+            "parede",
+            "ribossomos"
+          ],
+          "embeddedImages": 14,
+          "allResourcesEmbedded": true
+        },
+        "cutaway": {
+          "bytes": 1623436,
+          "sha256": "0a017e8af182f21809ef020c5c464ab6ea8cfc523dd9b7f97c6235050b808cd8",
+          "meshes": 7,
+          "triangles": 29140,
+          "parts": [
+            "citoplasma",
+            "externa",
+            "flagelo",
+            "membrana",
+            "nucleoide",
+            "parede",
+            "ribossomos"
+          ],
+          "embeddedImages": 14,
+          "allResourcesEmbedded": true
+        }
+      }
+    },
+    {
+      "id": "coronavirus",
+      "variants": {
+        "complete": {
+          "bytes": 892920,
+          "sha256": "49ae7469a4f7d9e87639a3cb5f0463a28405b4310580430991492bcc8efc34f3",
+          "meshes": 3,
+          "triangles": 19504,
+          "parts": [
+            "envelope",
+            "espiculas",
+            "nucleocapsideo"
+          ],
+          "embeddedImages": 6,
+          "allResourcesEmbedded": true
+        },
+        "cutaway": {
+          "bytes": 907556,
+          "sha256": "bb67a72aa088878e16c304dfbb4f4afc96c6e97754359bcf5a4f0ef6b8d7b65b",
+          "meshes": 3,
+          "triangles": 20268,
+          "parts": [
+            "envelope",
+            "espiculas",
+            "nucleocapsideo"
+          ],
+          "embeddedImages": 6,
+          "allResourcesEmbedded": true
+        }
+      }
+    },
+    {
+      "id": "influenza",
+      "variants": {
+        "complete": {
+          "bytes": 1722540,
+          "sha256": "4489c486d294109cd175ec4d8e35479c6fe2a5462b896ca30875c6cc8caad77d",
+          "meshes": 4,
+          "triangles": 50104,
+          "parts": [
+            "envelope",
+            "espiculas",
+            "matriz",
+            "nucleocapsideo"
+          ],
+          "embeddedImages": 8,
+          "allResourcesEmbedded": true
+        },
+        "cutaway": {
+          "bytes": 1730144,
+          "sha256": "eaf38537675c5fa037cb7125ecdbe5cf212f0948d539415bf07a07fd09302a1b",
+          "meshes": 4,
+          "triangles": 50624,
+          "parts": [
+            "envelope",
+            "espiculas",
+            "matriz",
+            "nucleocapsideo"
+          ],
+          "embeddedImages": 8,
+          "allResourcesEmbedded": true
+        }
+      }
+    },
+    {
+      "id": "hiv",
+      "variants": {
+        "complete": {
+          "bytes": 956208,
+          "sha256": "8b42b07329614cd6942ff7daea066a42c08308a54023d9c726dbcea853b6c07e",
+          "meshes": 4,
+          "triangles": 15576,
+          "parts": [
+            "capsideo",
+            "envelope",
+            "espiculas",
+            "genoma"
+          ],
+          "embeddedImages": 8,
+          "allResourcesEmbedded": true
+        },
+        "cutaway": {
+          "bytes": 1029360,
+          "sha256": "1e2cbb8a547656f877a17ebf3ee90d548324c2d59edc23e2ca2b52458d37c0cb",
+          "meshes": 4,
+          "triangles": 18888,
+          "parts": [
+            "capsideo",
+            "envelope",
+            "espiculas",
+            "genoma"
+          ],
+          "embeddedImages": 8,
+          "allResourcesEmbedded": true
+        }
+      }
+    },
+    {
+      "id": "adenovirus",
+      "variants": {
+        "complete": {
+          "bytes": 635692,
+          "sha256": "f265b1ce469402b9a055c095225938894e78100115fac7139f8fc79ee3e50cb3",
+          "meshes": 3,
+          "triangles": 8060,
+          "parts": [
+            "capsideo",
+            "fibras",
+            "genoma"
+          ],
+          "embeddedImages": 6,
+          "allResourcesEmbedded": true
+        },
+        "cutaway": {
+          "bytes": 617184,
+          "sha256": "0c511aa6d386c59679581aeb4706b1c8dd13ee7673fc5b3c12b9e7ecba8592e9",
+          "meshes": 3,
+          "triangles": 7238,
+          "parts": [
+            "capsideo",
+            "fibras",
+            "genoma"
+          ],
+          "embeddedImages": 6,
+          "allResourcesEmbedded": true
+        }
+      }
+    },
+    {
+      "id": "candida",
+      "variants": {
+        "complete": {
+          "bytes": 1340368,
+          "sha256": "b3f941b60ab4726b1233845c75af1a31edf004c110f48023115cdd66ed4c2a51",
+          "meshes": 7,
+          "triangles": 14868,
+          "parts": [
+            "broto",
+            "citoplasma",
+            "membrana",
+            "mitocondrias",
+            "nucleo",
+            "parede",
+            "vacuolo"
+          ],
+          "embeddedImages": 14,
+          "allResourcesEmbedded": true
+        },
+        "cutaway": {
+          "bytes": 1464796,
+          "sha256": "67b5bb044eb5d733f2d8bf1bfb070cf4635a6dab0a4cc2d68b3100bbcf7554b9",
+          "meshes": 7,
+          "triangles": 21780,
+          "parts": [
+            "broto",
+            "citoplasma",
+            "membrana",
+            "mitocondrias",
+            "nucleo",
+            "parede",
+            "vacuolo"
+          ],
+          "embeddedImages": 14,
+          "allResourcesEmbedded": true
+        }
+      }
+    },
+    {
+      "id": "cryptococcus",
+      "variants": {
+        "complete": {
+          "bytes": 1344116,
+          "sha256": "04b73eab4757c3c6d399ef75dbc56fb8a8ff943684544c4f1b98d8daccc1584b",
+          "meshes": 7,
+          "triangles": 15492,
+          "parts": [
+            "broto",
+            "capsula",
+            "citoplasma",
+            "membrana",
+            "nucleo",
+            "parede",
+            "vacuolo"
+          ],
+          "embeddedImages": 14,
+          "allResourcesEmbedded": true
+        },
+        "cutaway": {
+          "bytes": 1505408,
+          "sha256": "aed7a58424fe068f0cded4b90a98bebe5d955e09eb5335f53723170d5d4d54fb",
+          "meshes": 7,
+          "triangles": 24708,
+          "parts": [
+            "broto",
+            "capsula",
+            "citoplasma",
+            "membrana",
+            "nucleo",
+            "parede",
+            "vacuolo"
+          ],
+          "embeddedImages": 14,
+          "allResourcesEmbedded": true
+        }
+      }
+    },
+    {
+      "id": "aspergillus",
+      "variants": {
+        "complete": {
+          "bytes": 2000444,
+          "sha256": "182eff1c4bb04b769395640d240d9b2713764ae78e941984e7f713778429173f",
+          "meshes": 6,
+          "triangles": 49128,
+          "parts": [
+            "conidioforo",
+            "conidios",
+            "fialides",
+            "hifas",
+            "septos",
+            "vesicula"
+          ],
+          "embeddedImages": 12,
+          "allResourcesEmbedded": true
+        }
+      }
+    },
+    {
+      "id": "rhizopus",
+      "variants": {
+        "complete": {
+          "bytes": 1266164,
+          "sha256": "5dd2fa5378a15d717a01089165a3dfce30ea0dc642910d471e428891f9744523",
+          "meshes": 6,
+          "triangles": 17032,
+          "parts": [
+            "columela",
+            "conidioforo",
+            "esporangio",
+            "esporos",
+            "hifas",
+            "rizoides"
+          ],
+          "embeddedImages": 12,
+          "allResourcesEmbedded": true
+        },
+        "cutaway": {
+          "bytes": 1330240,
+          "sha256": "f353901d345df0a93dbf559a2c58a14741e75998edcaeb2d46b363244449e5dd",
+          "meshes": 6,
+          "triangles": 19336,
+          "parts": [
+            "columela",
+            "conidioforo",
+            "esporangio",
+            "esporos",
+            "hifas",
+            "rizoides"
+          ],
+          "embeddedImages": 12,
+          "allResourcesEmbedded": true
+        }
+      }
+    },
+    {
+      "id": "giardia",
+      "variants": {
+        "complete": {
+          "bytes": 1417524,
+          "sha256": "deccc8e656975949975ad257b0f4a47b5a20dd507ebacd7b2556984d44ab6807",
+          "meshes": 6,
+          "triangles": 23824,
+          "parts": [
+            "axonemas",
+            "citoplasma",
+            "disco",
+            "flagelo",
+            "membrana",
+            "nucleo"
+          ],
+          "embeddedImages": 12,
+          "allResourcesEmbedded": true
+        },
+        "cutaway": {
+          "bytes": 1573180,
+          "sha256": "6a80ad108636f0c7203b7fb09d00fe4dabefe23be1a4a3ebf707f601f16f8748",
+          "meshes": 6,
+          "triangles": 32016,
+          "parts": [
+            "axonemas",
+            "citoplasma",
+            "disco",
+            "flagelo",
+            "membrana",
+            "nucleo"
+          ],
+          "embeddedImages": 12,
+          "allResourcesEmbedded": true
+        }
+      }
+    },
+    {
+      "id": "toxoplasma",
+      "variants": {
+        "complete": {
+          "bytes": 839484,
+          "sha256": "1658388319c5ae009e0dc0c476ddf40b245035b9084f5cd298dd36e9a591e94d",
+          "meshes": 4,
+          "triangles": 10432,
+          "parts": [
+            "apical",
+            "citoplasma",
+            "membrana",
+            "nucleo"
+          ],
+          "embeddedImages": 8,
+          "allResourcesEmbedded": true
+        },
+        "cutaway": {
+          "bytes": 971192,
+          "sha256": "a095e57933660e3929774f2ed9fa57a0b8bb348ab6cbcb2723d70de7ef00b3a7",
+          "meshes": 4,
+          "triangles": 18624,
+          "parts": [
+            "apical",
+            "citoplasma",
+            "membrana",
+            "nucleo"
+          ],
+          "embeddedImages": 8,
+          "allResourcesEmbedded": true
+        }
+      }
+    },
+    {
+      "id": "trypanosoma",
+      "variants": {
+        "complete": {
+          "bytes": 1237148,
+          "sha256": "bf63a7dea143951f543e5d6bb56da54531d9e53cdbd34d242c9fc0743a183f81",
+          "meshes": 6,
+          "triangles": 14586,
+          "parts": [
+            "cinetoplasto",
+            "citoplasma",
+            "flagelo",
+            "membrana",
+            "nucleo",
+            "ondulante"
+          ],
+          "embeddedImages": 12,
+          "allResourcesEmbedded": true
+        },
+        "cutaway": {
+          "bytes": 1368860,
+          "sha256": "dd28b83ff8d909125340b7e3fb1aed6d8e14c50d610c1dba30fd94f4025d3c19",
+          "meshes": 6,
+          "triangles": 22778,
+          "parts": [
+            "cinetoplasto",
+            "citoplasma",
+            "flagelo",
+            "membrana",
+            "nucleo",
+            "ondulante"
+          ],
+          "embeddedImages": 12,
+          "allResourcesEmbedded": true
+        }
+      }
+    },
+    {
+      "id": "entamoeba",
+      "variants": {
+        "complete": {
+          "bytes": 825868,
+          "sha256": "e41023c48a5d822f97349a8dc34ff5a87348eb8fdb9aba3e9c87bfeed206cddd",
+          "meshes": 4,
+          "triangles": 10984,
+          "parts": [
+            "citoplasma",
+            "membrana",
+            "nucleo",
+            "vacdigestivo"
+          ],
+          "embeddedImages": 8,
+          "allResourcesEmbedded": true
+        },
+        "cutaway": {
+          "bytes": 981516,
+          "sha256": "7d4a3e696ce6b6b00b4079fa0cc48b8466dc0d5596dcf5463da3933e3df35882",
+          "meshes": 4,
+          "triangles": 19176,
+          "parts": [
+            "citoplasma",
+            "membrana",
+            "nucleo",
+            "vacdigestivo"
+          ],
+          "embeddedImages": 8,
+          "allResourcesEmbedded": true
+        }
+      }
+    }
+  ]
+}

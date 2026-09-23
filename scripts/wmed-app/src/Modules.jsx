@@ -4,6 +4,7 @@ import {
   FileText,
   Box,
   Microscope,
+  Bug,
   ScanLine,
   Calculator,
   Image,
@@ -20,6 +21,7 @@ const Histology = lazy(() =>
 const Radiology = lazy(() =>
   import("./academic/Experience").then((m) => ({ default: m.Radiology })),
 );
+const Microbiology = lazy(() => import("./Microbiology"));
 const ClinicalCase = lazy(() => import("./ClinicalCase"));
 const Scores = lazy(() =>
   import("./Libraries").then((m) => ({ default: m.Scores })),
@@ -55,6 +57,7 @@ export const moduleItems = [
     description: "Células, cortes e organelas",
     icon: Microscope,
   },
+  {id:"microbiologia",label:"Microbiologia",description:"Bactérias, vírus, fungos e protozoários",icon:Bug},
   {
     id: "radiologia",
     label: "Radiologia",
@@ -144,6 +147,8 @@ export default function Modules({
                 <Anatomy />
               ) : active === "histologia" ? (
                 <Histology />
+              ) : active === "microbiologia" ? (
+                <Microbiology />
               ) : active === "radiologia" ? (
                 <Radiology />
               ) : active === "scores" ? (

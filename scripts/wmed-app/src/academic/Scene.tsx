@@ -20,6 +20,7 @@ type Props = {
   onSelect?: (name: string) => void;
   onReady?: () => void;
   minimal?: boolean;
+  anatomyMaterials?: boolean;
 };
 function release(object: THREE.Object3D) {
   object.traverse((o) => {
@@ -207,7 +208,7 @@ export default function Scene(props: Props) {
         root.add(plane);
       } else {
         const loader = new GLTFLoader().setMeshoptDecoder(MeshoptDecoder);
-        const atlas = await fetch("/wmed/acervo/atlas-catalog.json").then(
+        const atlas = props.anatomyMaterials === false ? [] : await fetch("/wmed/acervo/atlas-catalog.json").then(
           (r) => r.json(),
         );
         const names = new Map<string, { name: string; color: string }>(
