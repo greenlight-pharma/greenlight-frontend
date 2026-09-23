@@ -1,6 +1,6 @@
 # Publicação da prévia no site Vytal
 
-Rota: https://www.vytalsaude.com.br/wmed/. Fonte canônica desta publicação: scripts/wmed-app no repositório greenlight-frontend. O build usa VITE_BASE=/wmed/ e VITE_PUBLIC_PREVIEW=true. A API pública em /api/wmed usa apenas Europe PMC, sem chave e sem chamadas a modelos pagos, mesmo se o ambiente tiver credenciais Vytal. Login e síntese continuam pendentes. Prévia pública sem dados de contas e sem histórico persistente. Não indexar.
+Rota: https://www.vytalsaude.com.br/wmed/. Fonte canônica desta publicação: scripts/wmed-app no repositório greenlight-frontend. O build usa VITE_BASE=/wmed/ e VITE_PUBLIC_PREVIEW=true. Artigos usa Europe PMC sem login ou modelo pago. Chat com IA usa o assistente Vytal existente, mediante login e permissões institucionais atuais. JWT fica em cookie HttpOnly/Secure de uma hora, nunca no JavaScript. Histórico em memória da aba; não indexar. Nenhuma chave de provedor foi copiada.
 
 Testes: npm test --prefix scripts/wmed-app. Publicação: build normal scripts/build-vercel.sh. Rollback: reverter somente o commit WMed; as páginas existentes não são substituídas. Modelos de células originais com procedência/hashes em docs/MODEL-ASSETS.json. Os limites de requisição são por instância e não equivalem a uma quota distribuída de produção.
 
@@ -25,7 +25,7 @@ Node 22.18+ (flag `--env-file-if-exists`), npm. `npm ci`; em dois terminais `npm
 Copie `.env.example` para `.env.local`, arquivo ignorado no Git. Defina TYPESAFE_API_KEY quando houver acesso e ANTHROPIC_API_KEY/ANTHROPIC_MODEL para síntese. Nenhuma chave foi copiada da Vytal ou criada. Não use VITE_ para segredos. Não envie chaves por chat. Alterar variáveis exige reiniciar o servidor.
 
 ## Estado comprovado
-13 testes automatizados de contrato, erros, validação, fontes, Jev e parsing/streaming passaram; build de produção passou. Busca Europe PMC e UI verificados ao vivo. Jev e síntese só testados com respostas simuladas, pois não estão configurados. Desktop 1280x720 e largura móvel 390 testados no navegador; isso não substitui teste em dispositivo físico. Login Vytal, histórico persistente, pagamentos e publicação NÃO implementados.
+29 testes automatizados de contrato, erros, validação, fontes, Jev e parsing/streaming passaram; build de produção passou. Busca Europe PMC e UI verificados ao vivo. Jev e conectores locais só testados com respostas simuladas. O chat publicado usa a API Vytal, mantendo seus limites e permissões. Desktop 1280x720 e largura móvel 390 testados no navegador; isso não substitui teste em dispositivo físico. Login Vytal e publicação implementados; histórico persistente e pagamentos não implementados. O chat autenticado foi testado com mocks e interface móvel com fixture sintética; geração com conta real ainda pendente.
 
 ## Próximos passos
 1. Conectar credencial de síntese em ambiente seguro; validar respostas e referências com corpus médico revisado.

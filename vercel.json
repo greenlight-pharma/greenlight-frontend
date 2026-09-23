@@ -86,6 +86,12 @@
   "functions": {
     "api/wmed/research.js": {
       "maxDuration": 30
+    },
+    "api/wmed/chat.js": {
+      "maxDuration": 60
+    },
+    "api/wmed/auth.js": {
+      "maxDuration": 30
     }
   },
   "headers": [
