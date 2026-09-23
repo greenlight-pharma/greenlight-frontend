@@ -1,5 +1,6 @@
 import React, { lazy, Suspense, Component, useState } from "react";
 import {
+  Atom,
   MessageCircle,
   FileText,
   Box,
@@ -23,6 +24,7 @@ const Histology = lazy(() =>
 const Radiology = lazy(() =>
   import("./academic/Experience").then((m) => ({ default: m.Radiology })),
 );
+const Molecular = lazy(() => import("./Molecular"));
 const Microbiology = lazy(() => import("./Microbiology"));
 const XrayLab = lazy(() => import("./XrayLab"));
 const Questions = lazy(() => import("./Questions"));
@@ -61,6 +63,7 @@ export const moduleItems = [
     description: "Células, cortes e organelas",
     icon: Microscope,
   },
+  {id:"molecular",label:"Biblioteca molecular",description:"Moléculas, proteínas e enzimas em 3D",icon:Atom},
   {id:"microbiologia",label:"Microbiologia",description:"Bactérias, vírus, fungos e protozoários",icon:Bug},
   {
     id: "radiologia",
@@ -153,6 +156,8 @@ export default function Modules({
                 <Anatomy />
               ) : active === "histologia" ? (
                 <Histology />
+              ) : active === "molecular" ? (
+                <Molecular />
               ) : active === "microbiologia" ? (
                 <Microbiology />
               ) : active === "radiologia" ? (
