@@ -21,3 +21,8 @@ Busca: https://www.ebi.ac.uk/europepmc/webservices/rest/search, parâmetros quer
 
 ## Avaliação antes do lançamento
 Definir corpus fixo de perguntas PT/EN e revisão por médicos: cobertura de fontes, suporte das afirmações, contradições/atualidade, abstinência quando não há evidência, qualidade da busca contextual, erros clínicos, latência p50/p95 e custo por pergunta. Avaliar Jev em ablação sem presumir números de marketing. Nenhuma promessa de equivalência com OpenEvidence/MediSearch.
+
+## Caso clínico e bibliotecas —23/09/2026
+Proxy fechado academic: structure→scribe/estruturar; transcribe→scribe/transcrever; feedback→case-feedback; quality→tutor/chat; images→estudante/imagens. Todas exigem cookie e origem, sem encaminhar URL fornecida pelo cliente. Relato validado por detector original antes das chamadas textuais. Qualidade avalia relato original revisado, não texto reorganizado pela IA; valida critérios/evidências e calcula total no servidor. É rubrica experimental, sem ranking. Notas/datas persistem localmente sob SHA256 do identificador de conta; dados clínicos permanecem apenas em memória da aba.
+
+Visualizadores/dados versionados em src/academic com procedência do commit original. Acervo público servido em /wmed/acervo pelo rewrite fixo; banco de imagens usa exclusivamente API autenticada de imagens aprovadas. Não copiar capturas privadas para assets. APIs Vytal/ECG e contratos institucionais preservados.

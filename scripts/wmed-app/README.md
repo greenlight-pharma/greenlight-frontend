@@ -1,8 +1,26 @@
-# Publicação da prévia no site Vytal
+# WMed — caso clínico e acervo Acadêmico
 
-Rota: https://www.vytalsaude.com.br/wmed/. Fonte canônica desta publicação: scripts/wmed-app no repositório greenlight-frontend. O build usa VITE_BASE=/wmed/ e VITE_PUBLIC_PREVIEW=true. Artigos usa Europe PMC sem login ou modelo pago. Chat com IA usa o assistente Vytal existente, mediante login e permissões institucionais atuais. JWT fica em cookie HttpOnly/Secure de uma hora, nunca no JavaScript. Histórico em memória da aba; não indexar. Nenhuma chave de provedor foi copiada.
+Fonte canônica: `scripts/wmed-app` no repositório greenlight-frontend. Publicação em https://www.vytalsaude.com.br/wmed/.
 
-Testes: npm test --prefix scripts/wmed-app. Publicação: build normal scripts/build-vercel.sh. Rollback: reverter somente o commit WMed; as páginas existentes não são substituídas. Modelos de células originais com procedência/hashes em docs/MODEL-ASSETS.json. Os limites de requisição são por instância e não equivalem a uma quota distribuída de produção.
+## Módulos
+- Chat e pesquisa bibliográfica existentes preservados.
+- Caso clínico: texto livre, gravação MediaRecorder/arquivo de áudio (até 2,9 MB), transcrição e estruturação pelos serviços Vytal, revisão compacta, feedback original em quatro abas. Todos os campos retornados são exibidos, inclusive campos adicionais.
+- Pontuação documental experimental, independente do feedback: cinco critérios, níveis0–4 ponderados em0–100, validação de esquema/limites e trechos literais. Pontuação inválida não vira zero nem bloqueia o feedback. Sem ranking público; sem alegação de validade clínica/calibração.
+- Evolução pessoal: somente notas/datas em localStorage, vinculadas a escopo SHA256 do ID da conta. Relatos/áudios/feedback não são persistidos pelo WMed. Não há sincronização entre aparelhos; até200 registros locais. Conquistas de primeiro/cinco relatos.
+- Anatomia13 agrupamentos, histologia48 células e radiologia3 recortes do exame de origem: visualizadores originais portados com painéis recolhidos, cores/destaques e cortes preservados. Assets por rewrite fixo `/wmed/acervo/*` para o acervo público de app.vytalsaude.com.br. Dependência externa explícita, atribuições preservadas.
+- Scores/calculadoras:28 instrumentos do catálogo original, sem alteração de critérios/faixas; cada item exige resposta explícita antes do resultado.
+- Medicações214 e condições2045: dados originais, busca, filtros e fichas. Sem nova curadoria médica nesta entrega.
+- Banco de imagens: endpoint autenticado de imagens aprovadas; paginação e atribuição. Nunca lista rascunhos/capturas privadas.
+
+## API e proteção
+`api/wmed/academic.js` → proxy com operações fechadas (structure,transcribe,feedback,quality,images). Destino Vytal fixo, cookie HttpOnly/Secure existente, guardas institucionais preservadas, limite por sessão/instância adicional. Limite do feedback clínico original:5.000 caracteres de história/contexto; UI informa limite, sem truncar silenciosamente. Detecção de identificadores copiada do Vytal e revisão humana antes do envio; detector não garante anonimização perfeita. A transcrição recebe áudio explicitamente enviado pelo usuário; não grava consultas/pacientes automaticamente.
+
+Timeout270s/function300s. Nenhuma alteração no backend Vytal, banco institucional, modelos clínicos ou ECG. Geração real depende de uma conta Vytal autorizada. Sem chave de provedor no frontend.
+
+## Validação e limites
+39 testes; build WMed e site completo. UI desktop1280x720 e móvel390x844:3D/catálogos reais, seleção de estrutura, corte celular, radiologia, Glasgow15, busca de medicação/condição; caso/feedback/nota/imagens autenticadas com fixture sintética. Sem teste de geração real autenticada, gravação em iPhone físico, calibração clínica ou Jev. Não confundir testes de contrato com avaliação médica.
+
+`npm test --prefix scripts/wmed-app`; build completo `bash scripts/build-vercel.sh`. O servidor local original research-only não hospeda os novos proxies; para integração usar deployment autenticado Vercel. Não publicar uma fixture como serviço real. Rollback: reverter o PR deste conjunto; páginas Vytal existentes preservadas.
 
 ---
 

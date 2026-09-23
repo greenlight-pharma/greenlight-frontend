@@ -1,3 +1,4 @@
+import {createHash} from 'node:crypto';
 import { validateRequest, parseSSE } from './research.mjs';
 const API='https://vytal-api-production.up.railway.app';
 const COOKIE='__Secure-wmed_vytal';
@@ -17,7 +18,7 @@ export function allowWrite(req,res){
  return true;
 }
 async function body(req,max=48000){let data=req.body;if(data==null){data='';for await(const c of req){data+=c;if(Buffer.byteLength(data)>max)throw Error('BODY');}}if(typeof data==='string'||Buffer.isBuffer(data)){if(Buffer.byteLength(data)>max)throw Error('BODY');data=JSON.parse(String(data));}else if(Buffer.byteLength(JSON.stringify(data))>max)throw Error('BODY');return data;}
-function userInfo(user){return {nome:typeof user?.nome==='string'?user.nome.split(' ')[0].slice(0,60):''};}
+function userInfo(user){return {...(typeof user?.id==='string'?{progressScope:createHash('sha256').update('wmed-progress:'+user.id).digest('hex')} : {}),nome:typeof user?.nome==='string'?user.nome.split(' ')[0].slice(0,60):''};}
 async function upstreamError(r,fallback){if(r.status>=500)return fallback;try{const j=await r.json();const msg=j.message||j.error;return typeof msg==='string'&&msg.length<500?msg:Array.isArray(msg)?msg.filter(v=>typeof v==='string').join(' ').slice(0,400):fallback;}catch{return fallback;}}
 export async function auth(req,res,{fetchImpl=fetch,now=Date.now}={}){
  headers(res);
