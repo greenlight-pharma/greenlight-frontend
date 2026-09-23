@@ -14,16 +14,16 @@ import remarkGfm from "remark-gfm";
 import { academicRequest } from "./Libraries";
 import PrivacyReview from "./PrivacyReview";
 import { detectAcademicPII } from "../shared/pii.mjs";
-import { fields, rubric, feedbackPayload } from "../shared/case-contract.mjs";
+import { fields, feedbackPayload, guidanceFeedback } from "../shared/case-contract.mjs";
 const empty = () => Object.fromEntries(fields.map(([k]) => [k, ""]));
 const labels = {
   resumo_caso: "Resumo do caso",
   red_flags_educacionais: "Sinais de alerta",
   pontos_de_atencao: "Pontos de atenção",
-  hipoteses_para_discussao: "Hipóteses para discussão",
+  hipoteses_para_discussao: "Hipóteses diagnósticas",
   comparacao_hipoteses_aluno: "Suas hipóteses em discussão",
   alinhamento_hipoteses_didatico: "Alinhamento das hipóteses",
-  elementos_de_manejo_academico: "Manejo para discussão",
+  elementos_de_manejo_academico: "Condutas a considerar",
   comparacao_conduta_aluno: "Sua conduta em discussão",
   alinhamento_conduta_didatico: "Alinhamento da conduta",
   pontos_fortes: "Pontos fortes",
@@ -66,10 +66,6 @@ const groups = [
     [
       "pontos_fortes",
       "pontos_a_aprofundar",
-      "comparacao_hipoteses_aluno",
-      "alinhamento_hipoteses_didatico",
-      "comparacao_conduta_aluno",
-      "alinhamento_conduta_didatico",
       "perguntas_ao_preceptor",
     ],
   ],
@@ -311,7 +307,7 @@ export default function ClinicalCase({ session, onLogin, onProgress, active, ini
       )
         throw Error("O serviço não retornou um feedback completo.");
       if (d.feedback.erro_pii) throw Error(d.feedback.erro_pii);
-      setFeedback(d.feedback);
+      setFeedback(guidanceFeedback(d.feedback));
       setStage("feedback");
       setTab(0);
       setBusy("Avaliando a qualidade do relato…");
@@ -337,8 +333,7 @@ export default function ClinicalCase({ session, onLogin, onProgress, active, ini
         <span className="eyebrow blue">PRÁTICA CLÍNICA</span>
         <h1>Caso clínico</h1>
         <p>
-          Conte com suas palavras. Entenda seu raciocínio. Aprenda com o
-          feedback.
+          Conte o caso. Veja hipóteses, exames e condutas a considerar.
         </p>
       </header>
       <nav className="case-steps" aria-label="Etapas do caso">
@@ -367,7 +362,7 @@ export default function ClinicalCase({ session, onLogin, onProgress, active, ini
               value={relato}
               disabled={!!busy || recording}
               onChange={(e) => {setRelato(e.target.value);setConfirmed(false)}}
-              placeholder="Descreva o contexto, a história, o exame, suas hipóteses e o que faria. Não inclua nome, CPF, telefone ou endereço do paciente."
+              placeholder="Descreva a queixa, a evolução, os antecedentes, os medicamentos e os achados disponíveis. Não inclua nome, CPF, telefone ou endereço do paciente."
             />
             <div className="voice-actions">
               <button
@@ -424,13 +419,13 @@ export default function ClinicalCase({ session, onLogin, onProgress, active, ini
             <FileText size={27} />
             <h2>Do relato ao aprendizado</h2>
             <p>
-              Você não precisa preencher tudo de início. A IA organiza o que foi
-              informado.
+              Você traz o relato. O WMed organiza os dados e apresenta hipóteses
+              e opções de conduta, com justificativas.
             </p>
             <ol>
               <li>Conte o caso por texto ou voz.</li>
               <li>Confira os campos e corrija o que precisar.</li>
-              <li>Veja o feedback e a qualidade do relato.</li>
+              <li>Veja hipóteses, exames e condutas a considerar.</li>
             </ol>
             <p className="module-note">
               A nota é experimental e avalia o relato, não sua competência
@@ -488,8 +483,7 @@ export default function ClinicalCase({ session, onLogin, onProgress, active, ini
               checked={confirmed}
               onChange={(e) => setConfirmed(e.target.checked)}
             />
-            Conferi os campos. Eles representam meu relato e meu próprio
-            raciocínio.
+            Conferi os campos. Eles representam os dados que relatei.
           </label>
           <p className="module-note">
             História e contexto para análise: {feedbackLength}/5.000 caracteres.
@@ -578,8 +572,8 @@ export default function ClinicalCase({ session, onLogin, onProgress, active, ini
               <summary>Entender minha pontuação</summary>
               <p className="module-note">
                 Avalia o relato original revisado. Os campos reorganizados
-                apoiam o feedback clínico. Critérios não aplicáveis não reduzem
-                a nota.
+                apoiam o feedback clínico. Não é preciso apresentar hipóteses ou condutas para pontuar.
+                Critérios não aplicáveis não reduzem a nota.
               </p>
               {quality.criteria.map((c) => (
                 <article className="rubric-row" key={c.id}>
@@ -632,8 +626,8 @@ export default function ClinicalCase({ session, onLogin, onProgress, active, ini
               ))}
           </div>
           <p className="module-note">
-            Feedback formativo do Vytal Acadêmico. Discuta dúvidas com seu
-            preceptor. O caso fica somente nesta aba; não é publicado nem
+            Análise educacional: hipóteses e condutas precisam ser conferidas
+            no contexto clínico. O caso fica somente nesta aba; não é publicado nem
             enviado ao ranking.
           </p>
         </>
