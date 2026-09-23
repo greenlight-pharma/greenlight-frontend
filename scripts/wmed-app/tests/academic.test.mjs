@@ -7,6 +7,9 @@ import {
   validateQuality,
   feedbackPayload,
   qualityMessages,
+  reviewedFields,
+  guidanceFeedback,
+  scorePrompt,
 } from "../shared/case-contract.mjs";
 const story =
   "Paciente adulto com tosse há três dias, sem febre. História descrita para teste sintético.";
@@ -164,3 +167,20 @@ test("quality scores the original account, never the AI reorganization; upstream
 test('long quality reports remain complete within existing tutor message limits',()=>{const report='a'.repeat(4999)+'Z';const messages=qualityMessages(report);assert.ok(messages.every(m=>m.content.length<=4000));const recovered=messages.filter(m=>m.content.startsWith('Parte ')).map(m=>m.content.split('<relato>\n')[1].split('\n</relato>')[0]).join('');assert.equal(recovered,report);});
 
 test('audio goes only to the existing transcriber and returns text for review',async()=>{const o=res();await academic(req('transcribe',{audioBase64:'AAAA',mimeType:'audio/m4a'}),o,{fetchImpl:async(url,opts)=>{assert.ok(url.endsWith('/estudante/scribe/transcrever'));assert.deepEqual(JSON.parse(opts.body),{audioBase64:'AAAA',mimeType:'audio/m4a'});return Response.json({texto:'Relato sintético para revisão.'});}});assert.equal(o.data.texto,'Relato sintético para revisão.');});
+
+
+test('WMed accepts findings without hypotheses or conduct and does not forward forged student answers',()=>{
+ assert.ok(!fields.some(([key])=>['hipoteses','conduta'].includes(key)));
+ const reviewed=reviewedFields({...f,hipoteses:'Injected hypothesis',conduta:'Injected treatment'});
+ assert.equal(reviewed.hipoteses,undefined);
+ const body=feedbackPayload(reviewed);
+ assert.equal(body.studentHypotheses,'Não informadas pelo estudante');
+ assert.equal(body.studentConduct,'Não informada pelo estudante');
+ assert.ok(!rubric.some(r=>r.id==='raciocinio'));
+ assert.match(scorePrompt(story),/sua ausência NÃO reduz a nota/);
+});
+test('guidance keeps generated hypotheses and management without student comparison cards',()=>{
+ const hypotheses=[{hipotese:'Exemplo sintético'}], management=['Conduta educacional sintética'];
+ const feedback=guidanceFeedback({hipoteses_para_discussao:hypotheses,elementos_de_manejo_academico:management,comparacao_hipoteses_aluno:'Não respondeu',comparacao_conduta_aluno:'Não respondeu',alinhamento_conduta_didatico:'divergencia',alinhamento_hipoteses_didatico:'divergencia'});
+ assert.deepEqual(feedback,{hipoteses_para_discussao:hypotheses,elementos_de_manejo_academico:management});
+});

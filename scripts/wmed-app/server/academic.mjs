@@ -3,6 +3,7 @@ import { sessionToken, allowWrite } from "./vytal-assistant.mjs";
 import {
   reviewedFields,
   feedbackPayload,
+  guidanceFeedback,
   qualityMessages,
   validateQuality,
   fields,
@@ -167,6 +168,8 @@ export async function academic(
         });
       }
     }
+    if (action === "feedback" && data.feedback && typeof data.feedback === "object")
+      return send(res, 200, { ...data, feedback: guidanceFeedback(data.feedback) });
     return send(res, 200, data);
   } catch {
     return send(res, 503, {
