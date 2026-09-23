@@ -18,7 +18,7 @@ Fonte canônica: `scripts/wmed-app` no repositório greenlight-frontend. Publica
 Timeout270s/function300s. Nenhuma alteração no backend Vytal, banco institucional, modelos clínicos ou ECG. Geração real depende de uma conta Vytal autorizada. Sem chave de provedor no frontend.
 
 ## Validação e limites
-39 testes; build WMed e site completo. UI desktop1280x720 e móvel390x844:3D/catálogos reais, seleção de estrutura, corte celular, radiologia, Glasgow15, busca de medicação/condição; caso/feedback/nota/imagens autenticadas com fixture sintética. Sem teste de geração real autenticada, gravação em iPhone físico, calibração clínica ou Jev. Não confundir testes de contrato com avaliação médica.
+41 testes; build WMed e site completo. UI desktop1280x720 e móvel390x844:3D/catálogos reais, seleção de estrutura, corte celular, radiologia, Glasgow15, busca de medicação/condição; caso/feedback/nota/imagens autenticadas com fixture sintética. Sem teste de geração real autenticada, gravação em iPhone físico, calibração clínica ou Jev. Não confundir testes de contrato com avaliação médica.
 
 `npm test --prefix scripts/wmed-app`; build completo `bash scripts/build-vercel.sh`. O servidor local original research-only não hospeda os novos proxies; para integração usar deployment autenticado Vercel. Não publicar uma fixture como serviço real. Rollback: reverter o PR deste conjunto; páginas Vytal existentes preservadas.
 

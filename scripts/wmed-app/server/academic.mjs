@@ -3,7 +3,7 @@ import { sessionToken, allowWrite } from "./vytal-assistant.mjs";
 import {
   reviewedFields,
   feedbackPayload,
-  scorePrompt,
+  qualityMessages,
   validateQuality,
   fields,
 } from "../shared/case-contract.mjs";
@@ -102,7 +102,7 @@ export async function academic(
         report = p.relato;
         if (report.length > 12000) throw Error();
         path = "/estudante/tutor/chat";
-        body = { historico: [{ role: "user", content: scorePrompt(report) }] };
+        body = { historico: qualityMessages(report) };
       }
     } else return send(res, 400, { error: "Operação não permitida." });
   } catch (e) {

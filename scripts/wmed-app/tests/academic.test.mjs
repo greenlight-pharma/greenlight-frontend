@@ -6,6 +6,7 @@ import {
   rubric,
   validateQuality,
   feedbackPayload,
+  qualityMessages,
 } from "../shared/case-contract.mjs";
 const story =
   "Paciente adulto com tosse há três dias, sem febre. História descrita para teste sintético.";
@@ -145,7 +146,7 @@ test("quality scores the original account, never the AI reorganization; upstream
   await academic(req("quality", { fields: f, relato: story }), o, {
     fetchImpl: async (url, opts) => {
       assert.ok(url.endsWith("/tutor/chat"));
-      const prompt = JSON.parse(opts.body).historico[0].content;
+      const prompt = JSON.parse(opts.body).historico.map(m=>m.content).join("\n");
       assert.ok(prompt.includes("<relato>\n" + story + "\n</relato>"));
       return Response.json({ resposta: JSON.stringify(result()) });
     },
@@ -159,3 +160,7 @@ test("quality scores the original account, never the AI reorganization; upstream
     assert.equal(output.statusCode, status === 500 ? 502 : status);
   }
 });
+
+test('long quality reports remain complete within existing tutor message limits',()=>{const report='a'.repeat(4999)+'Z';const messages=qualityMessages(report);assert.ok(messages.every(m=>m.content.length<=4000));const recovered=messages.filter(m=>m.content.startsWith('Parte ')).map(m=>m.content.split('<relato>\n')[1].split('\n</relato>')[0]).join('');assert.equal(recovered,report);});
+
+test('audio goes only to the existing transcriber and returns text for review',async()=>{const o=res();await academic(req('transcribe',{audioBase64:'AAAA',mimeType:'audio/m4a'}),o,{fetchImpl:async(url,opts)=>{assert.ok(url.endsWith('/estudante/scribe/transcrever'));assert.deepEqual(JSON.parse(opts.body),{audioBase64:'AAAA',mimeType:'audio/m4a'});return Response.json({texto:'Relato sintético para revisão.'});}});assert.equal(o.data.texto,'Relato sintético para revisão.');});
