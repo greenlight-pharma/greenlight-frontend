@@ -26,3 +26,24 @@ test('RAS orientation and overlapping projected selections remain explicit',()=>
  assert.equal(matchingStructures(0,data.parts).length,0);
  assert.deepEqual(matchingStructures(5,data.parts).map(p=>p.id),['hip_left','sacrum']);
 });
+
+import {ncc,bestProjection,isBoundary,detectorPoint,tone} from '../src/xray/imaging.mjs';
+test('source-detector rays use calibrated detector coordinates for every view',()=>{
+ for(const v of data.views)for(const [u,w] of [[0,0],[1,0],[0,1],[1,1],[.25,.7]]){
+  const pixel=projectRAS(detectorPoint(v,u,w),v,data);
+  assert.ok(Math.abs(pixel[0]-u*(data.size-1))<.001);
+  assert.ok(Math.abs(pixel[1]-w*(data.size-1))<.001);
+ }
+});
+test('NCC finds the corresponding incidence and tolerates linear intensity changes',()=>{
+ const a=[1,4,2,8,3],b=a.map(v=>v*3+40),c=[8,2,4,1,9];
+ assert.ok(Math.abs(ncc(a,b)-1)<1e-12);assert.ok(ncc(a,c)<0);
+ assert.equal(bestProjection(a,[c,b]).index,1);assert.equal(ncc([4,4],[4,4]),0);
+ assert.throws(()=>ncc([1],[1,2]));assert.throws(()=>bestProjection(a,[]));
+});
+test('contours preserve overlapping structures and exclude their interior',()=>{
+ const bits=new Uint8ClampedArray(5*5*4);for(let y=1;y<4;y++)for(let x=1;x<4;x++)bits[(y*5+x)*4]=5;
+ assert.equal(isBoundary(bits,2,2,5,5,1),false);assert.equal(isBoundary(bits,1,2,5,5,1),true);
+ assert.equal(isBoundary(bits,1,2,5,5,4),true);assert.equal(isBoundary(bits,1,2,5,5,2),false);
+ assert.equal(tone(0),0);assert.equal(tone(255),255);assert.ok(tone(150)<150);
+});
