@@ -47,3 +47,20 @@ test('contours preserve overlapping structures and exclude their interior',()=>{
  assert.equal(isBoundary(bits,1,2,5,5,4),true);assert.equal(isBoundary(bits,1,2,5,5,2),false);
  assert.equal(tone(0),0);assert.equal(tone(255),255);assert.ok(tone(150)<150);
 });
+
+test('thorax abdomen and lumbar libraries have intact paired projections and calibrated geometry',()=>{
+ const generator=createHash('sha256').update(readFileSync(new URL('../tools/xray/build-regions.py',import.meta.url))).digest('hex');
+ for(const region of ['torax','abdome','lombar']){
+  const root=new URL(`../public/xray/${region}/`,import.meta.url),d=JSON.parse(readFileSync(new URL('catalog.json',root)));
+  assert.equal(d.generatorSHA256,generator);assert.equal(d.license,'CC BY 4.0');assert.equal(d.views.length,7);
+  assert.ok(d.parts.some(p=>p.id===d.challenge));assert.ok(d.parts.length<=8);
+  assert.equal(new Set(d.parts.map(p=>p.bit)).size,d.parts.length);
+  for(const p of d.parts){assert.ok(p.sourceLabels.length);assert.equal(p.bit,1<<(p.label-1));}
+  for(const [file,hash]of Object.entries(d.files))assert.equal(createHash('sha256').update(readFileSync(new URL(file,root))).digest('hex'),hash,region+'/'+file);
+  const raw=readFileSync(new URL(d.model,root)),gltf=JSON.parse(raw.subarray(20,20+raw.readUInt32LE(12)).toString());assert.ok(raw.length<5_000_000);
+  for(const p of d.parts)assert.ok(gltf.nodes.some(n=>n.name===p.id));
+  for(const v of d.views)for(const [u,w]of[[0,0],[1,0],[0,1],[1,1],[.5,.5]]){
+   const p=projectRAS(detectorPoint(v,u,w),v,d);assert.ok(Math.abs(p[0]-u*(d.size-1))<.001);assert.ok(Math.abs(p[1]-w*(d.size-1))<.001);
+  }
+ }
+});

@@ -1,0 +1,588 @@
+{
+  "version": 1,
+  "title": "Coluna lombar · radiografia em 3D",
+  "regionTitle": "Coluna lombar",
+  "model": "anatomy.glb",
+  "displayZoom": 1.15,
+  "challenge": "vertebrae_L3",
+  "kind": "DRR simulada a partir de TC",
+  "renderer": "DiffDRR 0.6.0 / Siddon / CPU",
+  "size": 384,
+  "sdd": 1100.0,
+  "sid": 720.0,
+  "pixelSpacing": 1.9,
+  "coordinateSystem": "RAS, centralizado; Three.js=(R,S,-A)",
+  "affineRAS": [
+    [
+      3.0,
+      0.0,
+      0.0,
+      -220.5
+    ],
+    [
+      0.0,
+      3.0,
+      0.0,
+      -157.5
+    ],
+    [
+      0.0,
+      0.0,
+      3.0054945054945055,
+      -156.28571428571428
+    ],
+    [
+      0.0,
+      0.0,
+      0.0,
+      1.0
+    ]
+  ],
+  "sourceCropStart": [
+    7,
+    19,
+    0
+  ],
+  "cropShape": [
+    148,
+    106,
+    105
+  ],
+  "spacing": [
+    3.0,
+    3.0,
+    3.0054945054945055
+  ],
+  "source": "TotalSegmentator v2.0.1 · s1397 · reamostrado pelo PyVista",
+  "license": "CC BY 4.0",
+  "sourceUrl": "https://zenodo.org/records/10047292",
+  "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+  "citation": "Wasserthal et al. TotalSegmentator: Robust Segmentation of 104 Anatomic Structures in CT Images. 2023. doi:10.1148/ryai.230024",
+  "limitations": "Recorte regional de TC reamostrada em cerca de 3 mm; estruturas podem terminar nos limites do recorte. As máscaras dos órgãos são derivadas da TC e não indicam que cada órgão seja distinguível no RX simples. Segmentações de referência, sem revisão anatômica independente nesta demonstração. Projeção de atenuação simplificada; não reproduz todos os efeitos de uma radiografia adquirida.",
+  "parts": [
+    {
+      "id": "vertebrae_L1",
+      "label": 1,
+      "bit": 1,
+      "name": "Vértebra L1",
+      "hint": "Compare o corpo vertebral de L1 na incidência frontal e no perfil.",
+      "color": "#d7c8aa",
+      "vertices": 2786,
+      "triangles": 5576,
+      "opacity": 1,
+      "sourceLabels": [
+        "vertebrae_L1"
+      ]
+    },
+    {
+      "id": "vertebrae_L2",
+      "label": 2,
+      "bit": 2,
+      "name": "Vértebra L2",
+      "hint": "Compare o corpo vertebral de L2 na incidência frontal e no perfil.",
+      "color": "#d7c8aa",
+      "vertices": 2908,
+      "triangles": 5816,
+      "opacity": 1,
+      "sourceLabels": [
+        "vertebrae_L2"
+      ]
+    },
+    {
+      "id": "vertebrae_L3",
+      "label": 3,
+      "bit": 4,
+      "name": "Vértebra L3",
+      "hint": "Compare o corpo vertebral de L3 na incidência frontal e no perfil.",
+      "color": "#d7c8aa",
+      "vertices": 2806,
+      "triangles": 5612,
+      "opacity": 1,
+      "sourceLabels": [
+        "vertebrae_L3"
+      ]
+    },
+    {
+      "id": "vertebrae_L4",
+      "label": 4,
+      "bit": 8,
+      "name": "Vértebra L4",
+      "hint": "Compare o corpo vertebral de L4 na incidência frontal e no perfil.",
+      "color": "#d7c8aa",
+      "vertices": 2726,
+      "triangles": 5452,
+      "opacity": 1,
+      "sourceLabels": [
+        "vertebrae_L4"
+      ]
+    },
+    {
+      "id": "vertebrae_L5",
+      "label": 5,
+      "bit": 16,
+      "name": "Vértebra L5",
+      "hint": "Compare o corpo vertebral de L5 na incidência frontal e no perfil.",
+      "color": "#d7c8aa",
+      "vertices": 2650,
+      "triangles": 5308,
+      "opacity": 1,
+      "sourceLabels": [
+        "vertebrae_L5"
+      ]
+    },
+    {
+      "id": "sacrum",
+      "label": 6,
+      "bit": 32,
+      "name": "Sacro",
+      "hint": "Observe a relação do sacro com a vértebra L5.",
+      "color": "#b9ab93",
+      "vertices": 8339,
+      "triangles": 16686,
+      "opacity": 1,
+      "sourceLabels": [
+        "sacrum"
+      ]
+    }
+  ],
+  "views": [
+    {
+      "angle": 0,
+      "image": "rx-000.webp",
+      "mask": "mask-000.png",
+      "sourceRAS": [
+        -0.0,
+        720.0,
+        -0.0
+      ],
+      "detectorCornersRAS": [
+        [
+          363.8500061035156,
+          -380.0,
+          363.8500061035156
+        ],
+        [
+          -363.8500061035156,
+          -380.0,
+          363.8500061035156
+        ],
+        [
+          363.8500061035156,
+          -380.0,
+          -363.8500061035156
+        ],
+        [
+          -363.8500061035156,
+          -380.0,
+          -363.8500061035156
+        ]
+      ],
+      "pose": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          -0.0
+        ],
+        [
+          0.0,
+          0.0,
+          -1.0,
+          720.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          -0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "seconds": 0.8,
+      "projectionMax": 93.89624786376953
+    },
+    {
+      "angle": 15,
+      "image": "rx-015.webp",
+      "mask": "mask-015.png",
+      "sourceRAS": [
+        -186.34971247381492,
+        695.4665949281292,
+        -0.0
+      ],
+      "detectorCornersRAS": [
+        [
+          449.8033447265625,
+          -272.8804931640625,
+          363.8500061035156
+        ],
+        [
+          -253.10089111328125,
+          -461.22308349609375,
+          363.8500061035156
+        ],
+        [
+          449.8033447265625,
+          -272.8804931640625,
+          -363.8500061035156
+        ],
+        [
+          -253.10089111328125,
+          -461.22308349609375,
+          -363.8500061035156
+        ]
+      ],
+      "pose": [
+        [
+          0.9659258127212524,
+          0.0,
+          0.258819043636322,
+          -186.34971618652344
+        ],
+        [
+          0.258819043636322,
+          0.0,
+          -0.9659258127212524,
+          695.4666137695312
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          -0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "seconds": 0.755,
+      "projectionMax": 92.84907531738281
+    },
+    {
+      "angle": 30,
+      "image": "rx-030.webp",
+      "mask": "mask-030.png",
+      "sourceRAS": [
+        -359.99999999999994,
+        623.5382907247958,
+        -0.0
+      ],
+      "detectorCornersRAS": [
+        [
+          505.10333251953125,
+          -147.1646728515625,
+          363.8500061035156
+        ],
+        [
+          -125.10333251953125,
+          -511.01470947265625,
+          363.8500061035156
+        ],
+        [
+          505.10333251953125,
+          -147.1646728515625,
+          -363.8500061035156
+        ],
+        [
+          -125.10333251953125,
+          -511.01470947265625,
+          -363.8500061035156
+        ]
+      ],
+      "pose": [
+        [
+          0.8660253882408142,
+          0.0,
+          0.5,
+          -360.0
+        ],
+        [
+          0.5,
+          0.0,
+          -0.8660253882408142,
+          623.5382690429688
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          -0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "seconds": 0.777,
+      "projectionMax": 95.67161560058594
+    },
+    {
+      "angle": 45,
+      "image": "rx-045.webp",
+      "mask": "mask-045.png",
+      "sourceRAS": [
+        -509.1168824543142,
+        509.11688245431424,
+        -0.0
+      ],
+      "detectorCornersRAS": [
+        [
+          525.9813842773438,
+          -11.4197998046875,
+          363.8500061035156
+        ],
+        [
+          11.4197998046875,
+          -525.9813842773438,
+          363.8500061035156
+        ],
+        [
+          525.9813842773438,
+          -11.4197998046875,
+          -363.8500061035156
+        ],
+        [
+          11.4197998046875,
+          -525.9813842773438,
+          -363.8500061035156
+        ]
+      ],
+      "pose": [
+        [
+          0.7071067690849304,
+          0.0,
+          0.7071067690849304,
+          -509.11688232421875
+        ],
+        [
+          0.7071067690849304,
+          0.0,
+          -0.7071067690849304,
+          509.11688232421875
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          -0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "seconds": 0.768,
+      "projectionMax": 100.06844329833984
+    },
+    {
+      "angle": 60,
+      "image": "rx-060.webp",
+      "mask": "mask-060.png",
+      "sourceRAS": [
+        -623.5382907247958,
+        360.00000000000006,
+        -0.0
+      ],
+      "detectorCornersRAS": [
+        [
+          511.01470947265625,
+          125.10333251953125,
+          363.8500061035156
+        ],
+        [
+          147.1646728515625,
+          -505.10333251953125,
+          363.8500061035156
+        ],
+        [
+          511.01470947265625,
+          125.10333251953125,
+          -363.8500061035156
+        ],
+        [
+          147.1646728515625,
+          -505.10333251953125,
+          -363.8500061035156
+        ]
+      ],
+      "pose": [
+        [
+          0.5,
+          0.0,
+          0.8660253882408142,
+          -623.5382690429688
+        ],
+        [
+          0.8660253882408142,
+          0.0,
+          -0.5,
+          360.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          -0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "seconds": 0.772,
+      "projectionMax": 107.2152328491211
+    },
+    {
+      "angle": 75,
+      "image": "rx-075.webp",
+      "mask": "mask-075.png",
+      "sourceRAS": [
+        -695.4665949281292,
+        186.34971247381492,
+        -0.0
+      ],
+      "detectorCornersRAS": [
+        [
+          461.22308349609375,
+          253.10089111328125,
+          363.8500061035156
+        ],
+        [
+          272.8804931640625,
+          -449.8033447265625,
+          363.8500061035156
+        ],
+        [
+          461.22308349609375,
+          253.10089111328125,
+          -363.8500061035156
+        ],
+        [
+          272.8804931640625,
+          -449.8033447265625,
+          -363.8500061035156
+        ]
+      ],
+      "pose": [
+        [
+          0.258819043636322,
+          0.0,
+          0.9659258127212524,
+          -695.4666137695312
+        ],
+        [
+          0.9659258127212524,
+          0.0,
+          -0.258819043636322,
+          186.34971618652344
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          -0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "seconds": 0.761,
+      "projectionMax": 119.24263763427734
+    },
+    {
+      "angle": 90,
+      "image": "rx-090.webp",
+      "mask": "mask-090.png",
+      "sourceRAS": [
+        -720.0,
+        4.4087284769304716e-14,
+        -0.0
+      ],
+      "detectorCornersRAS": [
+        [
+          380.0,
+          363.8500061035156,
+          363.8500061035156
+        ],
+        [
+          380.0,
+          -363.8500061035156,
+          363.8500061035156
+        ],
+        [
+          380.0,
+          363.8500061035156,
+          -363.8500061035156
+        ],
+        [
+          380.0,
+          -363.8500061035156,
+          -363.8500061035156
+        ]
+      ],
+      "pose": [
+        [
+          6.123234262925839e-17,
+          0.0,
+          1.0,
+          -720.0
+        ],
+        [
+          1.0,
+          0.0,
+          -6.123234262925839e-17,
+          4.408728563427486e-14
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          -0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "seconds": 0.77,
+      "projectionMax": 132.73989868164062
+    }
+  ],
+  "generatorSHA256": "832a0f069a1d0fb303c57e6581086d3be495916f271546a3d0ef6b68c233db3c",
+  "files": {
+    "anatomy.glb": "346359774594080b97a3934fb2e91fda2902f7f27bb22bf2c041284a37c859de",
+    "mask-030.png": "f07a3d6b6e332a2f615ab776bbb743c63ab98b1f3750dd9de0b2637d314cf168",
+    "rx-030.webp": "380236d3339d5a7c295d8e1fb5f5fe44f33c87964e1a06c0d06c4ce22cfbc949",
+    "rx-060.webp": "54e2748e2001630d11d9943142783ac95bf7ebe71eb31fd7622f396b307fe128",
+    "mask-090.png": "86f496d53b64b6b1a8aa0bf3226bd0070a9a7882a7f76cbc89b5562e780aa3fd",
+    "mask-045.png": "89085ed5f6cf5136ce32cb18ccfebb133c322fbe52464e039d6a4c6e379a90d0",
+    "rx-000.webp": "9582e65b51d10eed2db795432f68f9814c5b748fdd5dd687ce2b7ecd78417773",
+    "mask-075.png": "4d8a556d9763245f04369902a2f1521aed726f4136989f47d484610ceaed8a0c",
+    "rx-015.webp": "5bbe1ba8fe11c6efeb877300ffe5cdac3b8793a539b1cfe20286c2a29a867449",
+    "mask-060.png": "86f5f7be55c6b70b9d3b09d6f13bed88a8335bd9cf617bc69ca5306840871548",
+    "rx-075.webp": "9836ffab0795a167426d05ae970f4e4ed32a9f0617b978f2378ad9ac1830ba87",
+    "mask-015.png": "330cd92e621f3791f99a8587ee1d38229a231e16b470c985c566f39c3f31e1c2",
+    "mask-000.png": "17960a91b54b882c9c5aa828d22419f52a84a68c77879d524859aa0ec8654bc8",
+    "rx-045.webp": "f6e047c51f476885e7c562d905224a2dbff443066bda60f94bb19ecbd326c26c",
+    "rx-090.webp": "ae7fdda268045d1817f2997dd590ecb86930842e3a1fb38b2d94b7a2ad8d26c6"
+  }
+}

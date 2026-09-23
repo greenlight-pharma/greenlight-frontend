@@ -1,0 +1,639 @@
+{
+  "version": 1,
+  "title": "Tórax · radiografia em 3D",
+  "regionTitle": "Tórax",
+  "model": "anatomy.glb",
+  "displayZoom": 1.15,
+  "challenge": "heart",
+  "kind": "DRR simulada a partir de TC",
+  "renderer": "DiffDRR 0.6.0 / Siddon / CPU",
+  "size": 384,
+  "sdd": 1100.0,
+  "sid": 720.0,
+  "pixelSpacing": 1.9,
+  "coordinateSystem": "RAS, centralizado; Three.js=(R,S,-A)",
+  "affineRAS": [
+    [
+      3.0,
+      0.0,
+      0.0,
+      -210.0
+    ],
+    [
+      0.0,
+      3.0,
+      0.0,
+      -156.0
+    ],
+    [
+      0.0,
+      0.0,
+      3.0054945054945055,
+      -153.28021978021977
+    ],
+    [
+      0.0,
+      0.0,
+      0.0,
+      1.0
+    ]
+  ],
+  "sourceCropStart": [
+    9,
+    19,
+    85
+  ],
+  "cropShape": [
+    141,
+    105,
+    103
+  ],
+  "spacing": [
+    3.0,
+    3.0,
+    3.0054945054945055
+  ],
+  "source": "TotalSegmentator v2.0.1 · s1397 · reamostrado pelo PyVista",
+  "license": "CC BY 4.0",
+  "sourceUrl": "https://zenodo.org/records/10047292",
+  "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+  "citation": "Wasserthal et al. TotalSegmentator: Robust Segmentation of 104 Anatomic Structures in CT Images. 2023. doi:10.1148/ryai.230024",
+  "limitations": "Recorte regional de TC reamostrada em cerca de 3 mm; estruturas podem terminar nos limites do recorte. As máscaras dos órgãos são derivadas da TC e não indicam que cada órgão seja distinguível no RX simples. Segmentações de referência, sem revisão anatômica independente nesta demonstração. Projeção de atenuação simplificada; não reproduz todos os efeitos de uma radiografia adquirida.",
+  "parts": [
+    {
+      "id": "lung_left",
+      "label": 1,
+      "bit": 1,
+      "name": "Pulmão esquerdo",
+      "hint": "Observe a projeção do pulmão esquerdo e sua sobreposição ao coração.",
+      "color": "#78a6b5",
+      "vertices": 17966,
+      "triangles": 35936,
+      "opacity": 0.28,
+      "sourceLabels": [
+        "lung_upper_lobe_left",
+        "lung_lower_lobe_left"
+      ]
+    },
+    {
+      "id": "lung_right",
+      "label": 2,
+      "bit": 2,
+      "name": "Pulmão direito",
+      "hint": "Compare a extensão dos campos pulmonares entre incidências.",
+      "color": "#819bb7",
+      "vertices": 27226,
+      "triangles": 54448,
+      "opacity": 0.28,
+      "sourceLabels": [
+        "lung_upper_lobe_right",
+        "lung_middle_lobe_right",
+        "lung_lower_lobe_right"
+      ]
+    },
+    {
+      "id": "heart",
+      "label": 3,
+      "bit": 4,
+      "name": "Coração",
+      "hint": "Observe como a projeção cardíaca muda com o ângulo. Não use esta simulação para medir cardiomegalia.",
+      "color": "#b05e63",
+      "vertices": 9458,
+      "triangles": 18916,
+      "opacity": 1,
+      "sourceLabels": [
+        "heart"
+      ]
+    },
+    {
+      "id": "ribs",
+      "label": 4,
+      "bit": 8,
+      "name": "Costelas",
+      "hint": "A projeção sobrepõe arcos costais anteriores e posteriores.",
+      "color": "#d9d0bc",
+      "vertices": 34158,
+      "triangles": 68264,
+      "opacity": 1,
+      "sourceLabels": [
+        "rib_left_1",
+        "rib_left_2",
+        "rib_left_3",
+        "rib_left_4",
+        "rib_left_5",
+        "rib_left_6",
+        "rib_left_7",
+        "rib_left_8",
+        "rib_left_9",
+        "rib_left_10",
+        "rib_left_11",
+        "rib_left_12",
+        "rib_right_1",
+        "rib_right_2",
+        "rib_right_3",
+        "rib_right_4",
+        "rib_right_5",
+        "rib_right_6",
+        "rib_right_7",
+        "rib_right_8",
+        "rib_right_9",
+        "rib_right_10",
+        "rib_right_11",
+        "rib_right_12"
+      ]
+    },
+    {
+      "id": "thoracic_spine",
+      "label": 5,
+      "bit": 16,
+      "name": "Coluna torácica",
+      "hint": "No perfil, compare os corpos vertebrais com a projeção frontal.",
+      "color": "#dfd4b9",
+      "vertices": 19796,
+      "triangles": 39940,
+      "opacity": 1,
+      "sourceLabels": [
+        "vertebrae_T1",
+        "vertebrae_T2",
+        "vertebrae_T3",
+        "vertebrae_T4",
+        "vertebrae_T5",
+        "vertebrae_T6",
+        "vertebrae_T7",
+        "vertebrae_T8",
+        "vertebrae_T9",
+        "vertebrae_T10",
+        "vertebrae_T11",
+        "vertebrae_T12"
+      ]
+    },
+    {
+      "id": "sternum",
+      "label": 6,
+      "bit": 32,
+      "name": "Esterno",
+      "hint": "Observe sua posição anterior na vista de perfil.",
+      "color": "#e6d9be",
+      "vertices": 2776,
+      "triangles": 5548,
+      "opacity": 1,
+      "sourceLabels": [
+        "sternum"
+      ]
+    },
+    {
+      "id": "trachea",
+      "label": 7,
+      "bit": 64,
+      "name": "Traqueia",
+      "hint": "O destaque vem da segmentação da TC, não de uma detecção na radiografia.",
+      "color": "#b4c9bb",
+      "vertices": 1658,
+      "triangles": 3312,
+      "opacity": 1,
+      "sourceLabels": [
+        "trachea"
+      ]
+    }
+  ],
+  "views": [
+    {
+      "angle": 0,
+      "image": "rx-000.webp",
+      "mask": "mask-000.png",
+      "sourceRAS": [
+        -0.0,
+        720.0,
+        -0.0
+      ],
+      "detectorCornersRAS": [
+        [
+          363.8500061035156,
+          -380.0,
+          363.8500061035156
+        ],
+        [
+          -363.8500061035156,
+          -380.0,
+          363.8500061035156
+        ],
+        [
+          363.8500061035156,
+          -380.0,
+          -363.8500061035156
+        ],
+        [
+          -363.8500061035156,
+          -380.0,
+          -363.8500061035156
+        ]
+      ],
+      "pose": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          -0.0
+        ],
+        [
+          0.0,
+          0.0,
+          -1.0,
+          720.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          -0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "seconds": 0.774,
+      "projectionMax": 98.63644409179688
+    },
+    {
+      "angle": 15,
+      "image": "rx-015.webp",
+      "mask": "mask-015.png",
+      "sourceRAS": [
+        -186.34971247381492,
+        695.4665949281292,
+        -0.0
+      ],
+      "detectorCornersRAS": [
+        [
+          449.8033447265625,
+          -272.8804931640625,
+          363.8500061035156
+        ],
+        [
+          -253.10089111328125,
+          -461.22308349609375,
+          363.8500061035156
+        ],
+        [
+          449.8033447265625,
+          -272.8804931640625,
+          -363.8500061035156
+        ],
+        [
+          -253.10089111328125,
+          -461.22308349609375,
+          -363.8500061035156
+        ]
+      ],
+      "pose": [
+        [
+          0.9659258127212524,
+          0.0,
+          0.258819043636322,
+          -186.34971618652344
+        ],
+        [
+          0.258819043636322,
+          0.0,
+          -0.9659258127212524,
+          695.4666137695312
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          -0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "seconds": 0.74,
+      "projectionMax": 98.01338958740234
+    },
+    {
+      "angle": 30,
+      "image": "rx-030.webp",
+      "mask": "mask-030.png",
+      "sourceRAS": [
+        -359.99999999999994,
+        623.5382907247958,
+        -0.0
+      ],
+      "detectorCornersRAS": [
+        [
+          505.10333251953125,
+          -147.1646728515625,
+          363.8500061035156
+        ],
+        [
+          -125.10333251953125,
+          -511.01470947265625,
+          363.8500061035156
+        ],
+        [
+          505.10333251953125,
+          -147.1646728515625,
+          -363.8500061035156
+        ],
+        [
+          -125.10333251953125,
+          -511.01470947265625,
+          -363.8500061035156
+        ]
+      ],
+      "pose": [
+        [
+          0.8660253882408142,
+          0.0,
+          0.5,
+          -360.0
+        ],
+        [
+          0.5,
+          0.0,
+          -0.8660253882408142,
+          623.5382690429688
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          -0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "seconds": 0.739,
+      "projectionMax": 98.96034240722656
+    },
+    {
+      "angle": 45,
+      "image": "rx-045.webp",
+      "mask": "mask-045.png",
+      "sourceRAS": [
+        -509.1168824543142,
+        509.11688245431424,
+        -0.0
+      ],
+      "detectorCornersRAS": [
+        [
+          525.9813842773438,
+          -11.4197998046875,
+          363.8500061035156
+        ],
+        [
+          11.4197998046875,
+          -525.9813842773438,
+          363.8500061035156
+        ],
+        [
+          525.9813842773438,
+          -11.4197998046875,
+          -363.8500061035156
+        ],
+        [
+          11.4197998046875,
+          -525.9813842773438,
+          -363.8500061035156
+        ]
+      ],
+      "pose": [
+        [
+          0.7071067690849304,
+          0.0,
+          0.7071067690849304,
+          -509.11688232421875
+        ],
+        [
+          0.7071067690849304,
+          0.0,
+          -0.7071067690849304,
+          509.11688232421875
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          -0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "seconds": 0.743,
+      "projectionMax": 105.20259857177734
+    },
+    {
+      "angle": 60,
+      "image": "rx-060.webp",
+      "mask": "mask-060.png",
+      "sourceRAS": [
+        -623.5382907247958,
+        360.00000000000006,
+        -0.0
+      ],
+      "detectorCornersRAS": [
+        [
+          511.01470947265625,
+          125.10333251953125,
+          363.8500061035156
+        ],
+        [
+          147.1646728515625,
+          -505.10333251953125,
+          363.8500061035156
+        ],
+        [
+          511.01470947265625,
+          125.10333251953125,
+          -363.8500061035156
+        ],
+        [
+          147.1646728515625,
+          -505.10333251953125,
+          -363.8500061035156
+        ]
+      ],
+      "pose": [
+        [
+          0.5,
+          0.0,
+          0.8660253882408142,
+          -623.5382690429688
+        ],
+        [
+          0.8660253882408142,
+          0.0,
+          -0.5,
+          360.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          -0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "seconds": 0.74,
+      "projectionMax": 108.70048522949219
+    },
+    {
+      "angle": 75,
+      "image": "rx-075.webp",
+      "mask": "mask-075.png",
+      "sourceRAS": [
+        -695.4665949281292,
+        186.34971247381492,
+        -0.0
+      ],
+      "detectorCornersRAS": [
+        [
+          461.22308349609375,
+          253.10089111328125,
+          363.8500061035156
+        ],
+        [
+          272.8804931640625,
+          -449.8033447265625,
+          363.8500061035156
+        ],
+        [
+          461.22308349609375,
+          253.10089111328125,
+          -363.8500061035156
+        ],
+        [
+          272.8804931640625,
+          -449.8033447265625,
+          -363.8500061035156
+        ]
+      ],
+      "pose": [
+        [
+          0.258819043636322,
+          0.0,
+          0.9659258127212524,
+          -695.4666137695312
+        ],
+        [
+          0.9659258127212524,
+          0.0,
+          -0.258819043636322,
+          186.34971618652344
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          -0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "seconds": 0.739,
+      "projectionMax": 110.80622863769531
+    },
+    {
+      "angle": 90,
+      "image": "rx-090.webp",
+      "mask": "mask-090.png",
+      "sourceRAS": [
+        -720.0,
+        4.4087284769304716e-14,
+        -0.0
+      ],
+      "detectorCornersRAS": [
+        [
+          380.0,
+          363.8500061035156,
+          363.8500061035156
+        ],
+        [
+          380.0,
+          -363.8500061035156,
+          363.8500061035156
+        ],
+        [
+          380.0,
+          363.8500061035156,
+          -363.8500061035156
+        ],
+        [
+          380.0,
+          -363.8500061035156,
+          -363.8500061035156
+        ]
+      ],
+      "pose": [
+        [
+          6.123234262925839e-17,
+          0.0,
+          1.0,
+          -720.0
+        ],
+        [
+          1.0,
+          0.0,
+          -6.123234262925839e-17,
+          4.408728563427486e-14
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          -0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "seconds": 0.739,
+      "projectionMax": 115.52767181396484
+    }
+  ],
+  "generatorSHA256": "832a0f069a1d0fb303c57e6581086d3be495916f271546a3d0ef6b68c233db3c",
+  "files": {
+    "anatomy.glb": "f5ce4eba53b994429b0169679b4ebbf530119a9fd0a92239e897b8a368bb42fc",
+    "mask-030.png": "714ac87bd045d4077c79f772d23c26fbc2bb547030bbd994b5a1b78a012d367f",
+    "rx-030.webp": "8c3da5de4451db1a1f97672067a7f848bd4b34748c93901ca64b090a36a7f536",
+    "rx-060.webp": "f1646ae7cebe0a80027ffd6570dd8d123a4fa5b4cd7ecd02baecf08d11935d89",
+    "mask-090.png": "9bb1c91179f0cec4052ae7677f7e2668e15978d2eb6ac538249bd082f6b39554",
+    "mask-045.png": "7a6e3db02e706735ddf188bcb9fe61cf0ade014c23af66060c9b416faa54c145",
+    "rx-000.webp": "087d45705a6171f95272bd4bbe2928096c04f21c8674491d0ae37e07b5b23888",
+    "mask-075.png": "6958abd8d9f29f1973a01610f57d9f6169219b55df12c33c7bc81ddf2e919275",
+    "rx-015.webp": "7d896175eaa7ef8dd63b866bce188658861cfe89f39f312a6de0ea041e2201d1",
+    "mask-060.png": "ecf58aeb6e99ff5a220f9e868fddc37e20821b935a6b7326e75153f792da4f9e",
+    "rx-075.webp": "35d252df1b5eed91671f3eecb4dd388f308f5ff382846f65768dfbb7e0ed56db",
+    "mask-015.png": "4abdc7fc2f69dba027e3b6bcb369de83837a99196c0d1efe85917f45181cddf9",
+    "mask-000.png": "5a31878a087e945fbcfe9ea57c948a33369aa44800ec2ce751cda93832d3ca8f",
+    "rx-045.webp": "23e3b7cb1faf48bb7f23f8f31b2067af397ca6d132765d3449c496cb3fa477fc",
+    "rx-090.webp": "398e81ec7726ab967d91b560d291b25a6a04beec6f362e36fa393d3e9502ba59"
+  }
+}
