@@ -9,7 +9,7 @@ import ChatHistory,{useChatHistory} from './ChatHistory';
 import {reviewPrivacy} from '../shared/privacy-review.mjs';
 import {contextTools} from '../shared/context-tools.mjs';
 const ClinicalCase=lazy(()=>import('./ClinicalCase'));
-import AuthDialog from './AuthDialog';import './styles.css';import './chat-design.css';
+import AuthDialog from './AuthDialog';import './styles.css';import './chat-design.css';import './theme-system.css';
 const BASE=import.meta.env.BASE_URL;const PUBLIC=import.meta.env.VITE_PUBLIC_PREVIEW==='true';const API=PUBLIC?'/api/wmed':'/api';
 const prompts=['Explique a insuficiência mitral','Compare asma e DPOC','Como interpretar o escore de Wells?'];
 async function readEvents(body,handler){const reader=body.getReader(),decoder=new TextDecoder();let buffer='';while(true){const {done,value}=await reader.read();if(done)break;buffer+=decoder.decode(value,{stream:true});let end;while((end=buffer.indexOf('\n\n'))>=0){const b=buffer.slice(0,end);buffer=buffer.slice(end+2);const event=b.split('\n').find(s=>s.startsWith('event:'))?.slice(6).trim();const d=b.split('\n').filter(s=>s.startsWith('data:')).map(s=>s.slice(5)).join('\n');if(d)handler(event,JSON.parse(d));}}}
