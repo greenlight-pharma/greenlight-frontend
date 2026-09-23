@@ -12,6 +12,7 @@ import {
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import { academicRequest } from "./Libraries";
+import PrivacyReview from "./PrivacyReview";
 import { detectAcademicPII } from "../shared/pii.mjs";
 import { fields, rubric, feedbackPayload } from "../shared/case-contract.mjs";
 const empty = () => Object.fromEntries(fields.map(([k]) => [k, ""]));
@@ -123,9 +124,9 @@ function Value({ value }) {
     </ReactMarkdown>
   );
 }
-export default function ClinicalCase({ session, onLogin, onProgress, active }) {
+export default function ClinicalCase({ session, onLogin, onProgress, active, initialStory = "" }) {
   const [stage, setStage] = useState("relato"),
-    [relato, setRelato] = useState(""),
+    [relato, setRelato] = useState(initialStory),
     [form, setForm] = useState(empty),
     [confirmed, setConfirmed] = useState(false),
     [busy, setBusy] = useState(""),
@@ -136,6 +137,7 @@ export default function ClinicalCase({ session, onLogin, onProgress, active }) {
     [tab, setTab] = useState(0),
     [recording, setRecording] = useState(false),
     [seconds, setSeconds] = useState(0);
+  const [privacyOpen,setPrivacyOpen]=useState(false);
   const recorder = useRef(null),
     stream = useRef(null),
     cancel = useRef(null),
@@ -330,6 +332,7 @@ export default function ClinicalCase({ session, onLogin, onProgress, active }) {
     : [];
   return (
     <section className="module-page case-page">
+      {privacyOpen&&<PrivacyReview text={relato} onCancel={()=>setPrivacyOpen(false)} onApply={text=>{setRelato(text);setConfirmed(false);setPrivacyOpen(false)}}/>}
       <header className="module-heading">
         <span className="eyebrow blue">PRÁTICA CLÍNICA</span>
         <h1>Caso clínico</h1>
@@ -363,7 +366,7 @@ export default function ClinicalCase({ session, onLogin, onProgress, active }) {
               maxLength={5000}
               value={relato}
               disabled={!!busy || recording}
-              onChange={(e) => setRelato(e.target.value)}
+              onChange={(e) => {setRelato(e.target.value);setConfirmed(false)}}
               placeholder="Descreva o contexto, a história, o exame, suas hipóteses e o que faria. Não inclua nome, CPF, telefone ou endereço do paciente."
             />
             <div className="voice-actions">
@@ -394,6 +397,7 @@ export default function ClinicalCase({ session, onLogin, onProgress, active }) {
               Áudio de até 3 minutos ou 2,9 MB. Revise a transcrição antes de
               continuar. Não grave a voz do paciente.
             </p>
+            <button disabled={!!busy||recording||!relato.trim()} onClick={()=>setPrivacyOpen(true)}>Revisar dados pessoais</button>
             <label className="confirm-row">
               <input
                 type="checkbox"
