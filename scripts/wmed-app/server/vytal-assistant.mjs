@@ -1,4 +1,5 @@
 import {createHash} from 'node:crypto';
+import {validateAttachments,assistantPayload} from '../shared/chat-attachments.mjs';
 import { validateRequest, parseSSE } from './research.mjs';
 const API='https://vytal-api-production.up.railway.app';
 const COOKIE='__Secure-wmed_vytal';
@@ -50,10 +51,10 @@ export async function auth(req,res,{fetchImpl=fetch,now=Date.now}={}){
 export async function chat(req,res,{fetchImpl=fetch}={}){
  headers(res);if(req.method!=='POST')return json(res,405,{error:'Método não permitido.'});if(!allowWrite(req,res))return;
  const token=sessionToken(req);if(!token)return json(res,401,{error:'Entre com sua conta Vytal Acadêmico para conversar.',code:'AUTH_REQUIRED'});
- let input;try{input=validateRequest(await body(req));}catch{return json(res,400,{error:'Mensagem ou histórico inválido.'});}
+ let input,attachments;try{const raw=await body(req,4400000);input=validateRequest(raw);attachments=validateAttachments(raw.attachments);}catch(e){return json(res,400,{error:e.message==='BODY'?'Arquivos muito grandes. Envie até 3 MB.':e.message||'Mensagem ou arquivos inválidos.'});}
  const abort=new AbortController();res.on('close',()=>abort.abort());
  let upstream;
- try{upstream=await fetchImpl(`${API}/estudante/tutor/chat-stream`,{method:'POST',headers:{'Content-Type':'application/json',Authorization:`Bearer ${token}`},body:JSON.stringify({historico:[...input.history,{role:'user',content:input.question}]}),signal:AbortSignal.any([abort.signal,AbortSignal.timeout(55000)]),redirect:'error'});}
+ try{upstream=await fetchImpl(`${API}/estudante/tutor/chat-stream`,{method:'POST',headers:{'Content-Type':'application/json',Authorization:`Bearer ${token}`},body:JSON.stringify(attachments.length?assistantPayload(input,attachments):{historico:[...input.history,{role:'user',content:input.question}]}),signal:AbortSignal.any([abort.signal,AbortSignal.timeout(attachments.length?270000:55000)]),redirect:'error'});}
  catch{if(!res.destroyed)return json(res,503,{error:'O assistente não respondeu. Tente novamente.'});return;}
  if(!upstream.ok){if(upstream.status===401)clear(res);return json(res,[400,401,403,429].includes(upstream.status)?upstream.status:502,{error:await upstreamError(upstream,'Não foi possível conversar agora.'),code:upstream.status===401?'AUTH_REQUIRED':'ASSISTANT_UNAVAILABLE'});}
  if(!upstream.headers.get('content-type')?.includes('text/event-stream'))return json(res,502,{error:'O assistente retornou uma resposta inválida.'});
