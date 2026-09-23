@@ -1,0 +1,29 @@
+{
+  "synthetic": true,
+  "cases": 100,
+  "model": "OpenMed/OpenMed-PII-Portuguese-BioClinicalBERT-Base-110M-v1",
+  "revision": "3252a8885fefc2490a124c2be7ed7bce40088326",
+  "categories": {
+    "nome": {
+      "expected": 100,
+      "fullyCovered": 92
+    },
+    "cpf": {
+      "expected": 100,
+      "fullyCovered": 100
+    },
+    "telefone": {
+      "expected": 100,
+      "fullyCovered": 100
+    },
+    "email": {
+      "expected": 100,
+      "fullyCovered": 100
+    }
+  },
+  "casesWithClinicalSpanFlagged": 0,
+  "firstCallSeconds": 2.125255333026871,
+  "warmP50Seconds": 0.07392045890446752,
+  "warmP95Seconds": 0.0759201250039041,
+  "limitations": "Synthetic templated smoke test only. Same narrow templates; not independently adjudicated, not evidence of production privacy or clinical performance."
+}

@@ -1,0 +1,11 @@
+import test from 'node:test';import assert from 'node:assert/strict';
+import {privacy} from '../server/privacy.mjs';
+function res(){return {headers:{},setHeader(k,v){this.headers[k]=v},end(t){this.data=JSON.parse(t)}}}
+function req(text='Caso fictício com nome para teste.'){return {method:'POST',headers:{origin:'https://www.vytalsaude.com.br',host:'www.vytalsaude.com.br','x-wmed-request':'1',cookie:'__Secure-wmed_vytal=aa.bb.cc'},body:{text}}}
+const settings={endpoint:'https://openmed.internal',key:'test-only-token-not-a-secret'};
+test('pilot inactive fails explicitly without calls',async()=>{const r=res();await privacy(req(),r,{endpoint:'',key:'',fetchImpl:()=>{throw Error('must not call')}});assert.equal(r.statusCode,503);assert.match(r.data.error,/não está ativo/)});
+test('auth required and invalid session never reaches model',async()=>{let n=0;const r=res();await privacy(req(),r,{...settings,fetchImpl:async()=>{n++;return {ok:false,status:401}}});assert.equal(n,1);assert.equal(r.statusCode,401)});
+test('cross-origin write rejected before upstream',async()=>{const q=req();q.headers.origin='https://evil.example';const r=res();await privacy(q,r,{...settings,fetchImpl:()=>{throw Error('must not call')}});assert.equal(r.statusCode,403)});
+test('authorized model preview returns spans only, not raw text',async()=>{const q=req(),r=res();let n=0;await privacy(q,r,{...settings,fetchImpl:async(url,opts)=>{if(++n===1)return{ok:true};assert.equal(JSON.parse(opts.body).text,q.body.text);return{ok:true,json:async()=>({engine:'openmed',findings:[{start:0,end:4,label:'NAME',confidence:.9}],originalText:'must not return'})}}});assert.equal(n,2);assert.deepEqual(r.data,{engine:'openmed',findings:[{start:0,end:4,label:'NAME'}],reviewRequired:true})});
+test('bad model offsets fail closed',async()=>{let n=0;const r=res();await privacy(req(),r,{...settings,fetchImpl:async()=>++n===1?{ok:true}:{ok:true,json:async()=>({engine:'openmed',findings:[{start:0,end:99999,label:'NAME'}]})}});assert.equal(r.statusCode,503)});
+test('oversize input never sent',async()=>{const r=res();await privacy(req('x'.repeat(6001)),r,{...settings,fetchImpl:()=>{throw Error('must not call')}});assert.equal(r.statusCode,400)});
