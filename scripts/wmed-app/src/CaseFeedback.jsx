@@ -70,7 +70,7 @@ export function Value({ value }) {
     );
   if (typeof value === "object")
     return (
-      <dl>
+      <dl className="case-definition">
         {Object.entries(value).map(([k, v]) => (
           <div key={k}>
             <dt>{labels[k] || k.replaceAll("_", " ")}</dt>
@@ -107,6 +107,15 @@ export function Value({ value }) {
   );
 }
 
+function AlertList({value}) {
+ const items=Array.isArray(value)?value:[value];
+ return <ol className="case-alert-list">{items.map((item,index)=>{
+  const object=item&&typeof item==='object'&&!Array.isArray(item);
+  const title=object&&typeof item.sinal==='string'?item.sinal:null;
+  const rest=title?Object.fromEntries(Object.entries(item).filter(([key])=>key!=='sinal')):item;
+  return <li key={index}><span className="case-alert-number" aria-hidden="true">{index+1}</span><div>{title&&<h5>{title}</h5>}<Value value={rest}/></div></li>;
+ })}</ol>;
+}
 function hasContent(value){return value!=null&&value!==''&&(!Array.isArray(value)||value.length>0);}
 function DetailsValue({value}) {
  if(!Array.isArray(value)||!value.some(v=>v&&typeof v==='object'&&!Array.isArray(v)))return <Value value={value}/>;
@@ -134,11 +143,11 @@ export default function CaseFeedback({feedback,quality,qualityError,relato,form,
   <div className="case-category-tabs" role="tablist" aria-label="Seções do feedback">{groups.map(([label],index)=><button key={label} id={uid+'-tab-'+index} role="tab" aria-selected={tab===index} onClick={()=>chooseTab(index)}>{label}</button>)}</div>
   <div className="case-feedback-layout">
    <nav className="case-topic-list" aria-label="Tópicos do feedback">{keys.map(key=><button key={key} aria-current={current===key?'true':undefined} onClick={()=>setSelected(key)}><span>{labels[key]||({pontuacao:'Minha pontuação',relato_original:'Relato registrado'})[key]||key.replaceAll('_',' ')}</span>{key==='red_flags_educacionais'?<ShieldAlert size={16}/>:<ArrowRight size={15}/>}</button>)}</nav>
-   <label className="case-topic-mobile">Explorar<select aria-label="Tópico do feedback" value={current||''} onChange={e=>setSelected(e.target.value)}>{keys.map(key=><option key={key} value={key}>{labels[key]||({pontuacao:'Minha pontuação',relato_original:'Relato registrado'})[key]||key.replaceAll('_',' ')}</option>)}</select></label>
+
    <article key={current} className="case-topic-content markdown" role="tabpanel" aria-labelledby={uid+'-tab-'+tab}>
     <h3>{labels[current]||({pontuacao:'Qualidade do relato',relato_original:'Relato registrado'})[current]||current?.replaceAll('_',' ')}</h3>
-    {current==='pontuacao'?<><p className="module-note">A pontuação avalia a documentação, não sua competência médica. Não é necessário propor hipóteses ou condutas.</p>{quality?quality.criteria.map(c=><details className="case-item" key={c.id}><summary><strong>{c.label}</strong><span>{c.aplicavel?`${c.points}/${c.max}`:'Não aplicável'}</span><ChevronDown size={16}/></summary><div className="case-item-body"><p>{c.justificativa}</p>{c.evidencia&&<blockquote>{c.evidencia}</blockquote>}<p><b>Próximo passo:</b> {c.melhoria}</p></div></details>):<p>{qualityError||(busy?'Avaliando a qualidade do relato…':'Pontuação indisponível para este caso.')}</p>}{onGrade&&qualityError&&<button disabled={busy} onClick={onGrade}>Tentar pontuação novamente</button>}</>:current==='relato_original'?<div className="case-original">{relato}</div>:current?<DetailsValue value={feedback[current]}/>:<p>Não há conteúdo nesta seção.</p>}
-    {current==='resumo_caso'&&alerts&&<aside className="case-alert-summary"><h4><ShieldAlert size={18}/> Sinais de alerta</h4><Value value={feedback.red_flags_educacionais}/></aside>}
+    {current==='pontuacao'?<><p className="module-note">A pontuação avalia a documentação, não sua competência médica. Não é necessário propor hipóteses ou condutas.</p>{quality?quality.criteria.map(c=><details className="case-item" key={c.id}><summary><strong>{c.label}</strong><span>{c.aplicavel?`${c.points}/${c.max}`:'Não aplicável'}</span><ChevronDown size={16}/></summary><div className="case-item-body"><p>{c.justificativa}</p>{c.evidencia&&<blockquote>{c.evidencia}</blockquote>}<p><b>Próximo passo:</b> {c.melhoria}</p></div></details>):<p>{qualityError||(busy?'Avaliando a qualidade do relato…':'Pontuação indisponível para este caso.')}</p>}{onGrade&&qualityError&&<button disabled={busy} onClick={onGrade}>Tentar pontuação novamente</button>}</>:current==='relato_original'?<div className="case-original">{relato}</div>:current==='red_flags_educacionais'?<AlertList value={feedback[current]}/>:current?<DetailsValue value={feedback[current]}/>:<p>Não há conteúdo nesta seção.</p>}
+    {current==='resumo_caso'&&alerts&&<aside className="case-alert-summary"><h4><ShieldAlert size={18}/> Sinais de alerta</h4><AlertList value={feedback.red_flags_educacionais}/></aside>}
    </article>
   </div>
   <p className="case-feedback-note">Hipóteses e condutas precisam ser conferidas no contexto clínico.</p>
