@@ -1,6 +1,7 @@
 import React, { lazy, Suspense, Component, useState } from "react";
 import {
   Atom,
+  Layers3,
   HeartPulse,
   MessageCircle,
   FileText,
@@ -25,6 +26,7 @@ const Histology = lazy(() =>
 const Radiology = lazy(() =>
   import("./academic/Experience").then((m) => ({ default: m.Radiology })),
 );
+const Enamed = lazy(() => import("./Enamed"));
 const EcgCourse = lazy(() => import("./EcgCourse"));
 const Molecular = lazy(() => import("./Molecular"));
 const Microbiology = lazy(() => import("./Microbiology"));
@@ -74,6 +76,8 @@ export const moduleItems = [
     icon: ScanLine,
   },
   {id:"curso-ecg",label:"ECG em 10 passos",description:"Curso, traçados e exercícios",icon:HeartPulse},
+  {id:"enamed",label:"Resumos ENAMED",description:"Temas organizados por área",icon:BookOpen},
+  {id:"flashcards",label:"Flashcards",description:"Revisão ativa e repetição espaçada",icon:Layers3},
   {id:"questoes",label:"Banco de questões",description:"Provas, comentários e simulados",icon:ClipboardList},
   {
     id: "scores",
@@ -171,6 +175,8 @@ export default function Modules({
                 <Questions session={session} />
               ) : active === "curso-ecg" ? (
                 <EcgCourse key={session?.user?.progressScope||"guest"} scope={session?.authenticated?session.user?.progressScope||"guest":"guest"}/>
+              ) : active === "enamed" || active === "flashcards" ? (
+                <Enamed key={`${active}:${session?.authenticated?session.user?.progressScope||"guest":"guest"}`} initialMode={active==="flashcards"?"cards":"summaries"} scope={session?.authenticated?session.user?.progressScope||"guest":"guest"}/>
               ) : active === "scores" ? (
                 <Scores />
               ) : active === "medicacoes" || active === "condicoes" ? (
