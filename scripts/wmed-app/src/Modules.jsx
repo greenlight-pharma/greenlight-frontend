@@ -1,6 +1,7 @@
 import React, { lazy, Suspense, Component, useState } from "react";
 import {
   Atom,
+  Dna,
   Layers3,
   HeartPulse,
   MessageCircle,
@@ -28,6 +29,7 @@ const Radiology = lazy(() =>
 );
 const Enamed = lazy(() => import("./Enamed"));
 const EcgCourse = lazy(() => import("./EcgCourse"));
+const Genetics = lazy(() => import("./Genetics"));
 const Molecular = lazy(() => import("./Molecular"));
 const Microbiology = lazy(() => import("./Microbiology"));
 const XrayLab = lazy(() => import("./XrayLab"));
@@ -67,6 +69,7 @@ export const moduleItems = [
     description: "Células, cortes e organelas",
     icon: Microscope,
   },
+  {id:"genetica",label:"Genética",description:"Da célula à dupla hélice",icon:Dna},
   {id:"molecular",label:"Biblioteca molecular",description:"Moléculas, proteínas e enzimas em 3D",icon:Atom},
   {id:"microbiologia",label:"Microbiologia",description:"Bactérias, vírus, fungos e protozoários",icon:Bug},
   {
@@ -165,6 +168,8 @@ export default function Modules({
                 <Anatomy />
               ) : active === "histologia" ? (
                 <Histology />
+              ) : active === "genetica" ? (
+                <Genetics />
               ) : active === "molecular" ? (
                 <Molecular />
               ) : active === "microbiologia" ? (
