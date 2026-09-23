@@ -15,7 +15,9 @@ Busca: https://www.ebi.ac.uk/europepmc/webservices/rest/search, parâmetros quer
 - Servidor de desenvolvimento apenas 127.0.0.1, origem restringida, payload/consulta/histórico limitados, 10 requisições/minuto locais. Isso NÃO substitui segurança de produção.
 - Cancelamento propaga para os serviços; timeout por etapa, erro visível e nenhuma falha mascarada.
 - Markdown sem HTML bruto, imagens externas desativadas e links permitidos apenas para URLs das fontes recuperadas.
-- Não há autenticação implementada. Integração Vytal deve respeitar permissões e segregação por produto; compartilhar login não concede acesso institucional.
+- Publicação /wmed: POST /api/wmed/auth autentica no Vytal existente; JWT em cookie HttpOnly/Secure/SameSite=Strict, Path=/api/wmed, uma hora. Chat transmite histórico para /estudante/tutor/chat-stream, preservando autorização e limites do backend. Nenhum acesso institucional adicional é concedido. Pesquisa pública permanece separada.
+- Chat converte SSE {t}/{done} em delta/done. Falha ou stream truncado gera erro. Timeout de 55 segundos; abortar o proxy não garante cancelamento da geração interna do Vytal.
+- Chat permite links HTTPS fornecidos pelo tutor, sem atribuir verificação bibliográfica; modo Artigos mantém referências vinculadas somente às fontes recuperadas.
 
 ## Avaliação antes do lançamento
 Definir corpus fixo de perguntas PT/EN e revisão por médicos: cobertura de fontes, suporte das afirmações, contradições/atualidade, abstinência quando não há evidência, qualidade da busca contextual, erros clínicos, latência p50/p95 e custo por pergunta. Avaliar Jev em ablação sem presumir números de marketing. Nenhuma promessa de equivalência com OpenEvidence/MediSearch.

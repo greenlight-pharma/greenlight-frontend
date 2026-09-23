@@ -1,7 +1,7 @@
 {
   "date": "2026-09-23",
   "unit_tests": {
-    "passed": 13,
+    "passed": 29,
     "failed": 0
   },
   "build": "passed",
@@ -20,12 +20,16 @@
     "390x844: composer bottom 728.5 < nav top 783; no horizontal overflow"
   ],
   "not_run": [
-    "Live Jev API (user does not have access)",
-    "Live generative API (no project key/model configured)",
-    "Vytal shared login (not implemented)",
+    "Live Jev API (no access)",
+    "Authenticated real Vytal generation (requires user login)",
     "Clinical/editorial quality benchmark",
-    "Physical mobile devices",
-    "Production deployment"
+    "Physical mobile devices"
   ],
-  "note": "Mock provider tests prove contracts and failure handling only; no claim of clinical validation or medical foundation model training."
+  "note": "Mock provider tests prove contracts and failure handling only; no claim of clinical validation or medical foundation model training.",
+  "vytal_chat": {
+    "contract": "29 total tests passed; mocked login, authorization, history, SSE and failure handling",
+    "mobile_fixture": "390x844: login, pending question, immediate display, streaming, markdown table, history length 2 verified",
+    "live_upstream": "Unauthenticated request rejected with HTTP 401",
+    "authenticated_live": "Not run: requires user login"
+  }
 }
