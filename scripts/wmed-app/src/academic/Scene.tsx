@@ -3,7 +3,7 @@ import * as THREE from "three";
 import { MeshoptDecoder } from "three/addons/libs/meshopt_decoder.module.js";
 import { GLTFLoader } from "three/addons/loaders/GLTFLoader.js";
 import { OrbitControls } from "three/addons/controls/OrbitControls.js";
-import { RotateCcw, Download, Move3D } from "lucide-react";
+import { RotateCcw, Download, Move3D, Plus, Minus } from "lucide-react";
 import { drawSlice, type Volume } from "./volume";
 import { prepareSelection } from "./selection";
 import {applyAtlasMaterial,findAtlasPart} from "./atlasMaterials";
@@ -11,6 +11,7 @@ import {applyAtlasMaterial,findAtlasPart} from "./atlasMaterials";
 type Props = {
   urls?: string[];
   volume?: Volume;
+  surfaceUrl?: string;
   slice?: number;
   window?: string;
   opacity?: number;
@@ -41,6 +42,7 @@ export default function Scene(props: Props) {
   const host = useRef<HTMLDivElement>(null);
   const api = useRef<{
     reset: () => void;
+    zoom: (factor: number) => void;
     snapshot: () => void;
     focus: (selected: string) => void;
     root: THREE.Group;
@@ -72,10 +74,11 @@ export default function Scene(props: Props) {
       setFailed(true);
       return;
     }
+    renderer.localClippingEnabled = true;
     renderer.setPixelRatio(Math.min(devicePixelRatio, 2));
     renderer.outputColorSpace = THREE.SRGBColorSpace;
     renderer.toneMapping = THREE.ACESFilmicToneMapping;
-    renderer.toneMappingExposure = 1;
+    renderer.toneMappingExposure = props.volume ? .85 : 1;
     el.appendChild(renderer.domElement);
     renderer.domElement.setAttribute(
       "aria-label",
@@ -148,48 +151,22 @@ export default function Scene(props: Props) {
         const v = props.volume;
         const [nx, ny, nz] = v.meta.dims;
         const [sx, sy, sz] = v.meta.spacing;
-        const positions: number[] = [];
-        const colors: number[] = [];
-        const palette = new Map(
-          v.meta.estruturas.map((e) => [e.id, new THREE.Color(e.cor)]),
-        );
-        for (let z = 1; z < nz - 1; z++)
-          for (let y = 1; y < ny - 1; y++)
-            for (let x = 1; x < nx - 1; x++) {
-              const i = x + nx * (y + ny * z);
-              const id = v.labels[i];
-              if (!id) continue;
-              if (
-                v.labels[i - 1] === id &&
-                v.labels[i + 1] === id &&
-                v.labels[i - nx] === id &&
-                v.labels[i + nx] === id &&
-                v.labels[i - nx * ny] === id &&
-                v.labels[i + nx * ny] === id
-              )
-                continue;
-              const c = palette.get(id) || new THREE.Color("#a5cbe5");
-              positions.push(
-                (x - (nx - 1) / 2) * sx,
-                (z - (nz - 1) / 2) * sz,
-                -(y - (ny - 1) / 2) * sy,
-              );
-              colors.push(c.r, c.g, c.b);
-            }
-        const geo = new THREE.BufferGeometry();
-        geo.setAttribute(
-          "position",
-          new THREE.Float32BufferAttribute(positions, 3),
-        );
-        geo.setAttribute("color", new THREE.Float32BufferAttribute(colors, 3));
-        const mat = new THREE.PointsMaterial({
-          size: 2.6,
-          vertexColors: true,
-          transparent: true,
-          opacity: 0.34,
-          depthWrite: false,
+        const model=await new GLTFLoader().loadAsync(props.surfaceUrl!);
+        if(disposed){release(model.scene);return;}
+        const surfaces:THREE.Mesh[]=[];model.scene.traverse(o=>{if(o instanceof THREE.Mesh)surfaces.push(o);});
+        surfaces.forEach(o=>{
+          const original=o.material as THREE.MeshStandardMaterial;
+          o.material=original.clone();original.dispose();
+          const below=o.material as THREE.MeshStandardMaterial;
+          below.side=THREE.DoubleSide;below.roughness=.8;below.metalness=0;
+          below.clippingPlanes=[new THREE.Plane(new THREE.Vector3(0,-1,0),0)];
+          const above=new THREE.Mesh(o.geometry,below.clone());
+          above.name=o.name;above.material.transparent=true;above.material.opacity=.18;above.material.depthWrite=false;
+          above.material.clippingPlanes=[new THREE.Plane(new THREE.Vector3(0,1,0),0)];
+          above.userData.volumeSide='above';o.userData.volumeSide='below';
+          o.add(above);highlights.set(o,prepareSelection(o));highlights.set(above,prepareSelection(above));
         });
-        root.add(new THREE.Points(geo, mat));
+        root.add(model.scene);
         const canvas = document.createElement("canvas");
         drawSlice(
           canvas,
@@ -284,6 +261,11 @@ export default function Scene(props: Props) {
           controls.target.copy(center);camera.position.copy(center).addScaledVector(direction,distance);
           controls.minDistance=distance*.15;controls.maxDistance=Math.max(distance*3,initial.length()*3);controls.update();
         },
+        zoom: (factor) => {
+          const offset=camera.position.clone().sub(controls.target);
+          const distance=THREE.MathUtils.clamp(offset.length()*factor,controls.minDistance,controls.maxDistance);
+          camera.position.copy(controls.target).add(offset.setLength(distance));controls.update();
+        },
         reset: () => {
           controls.minDistance=initial.length()*.15;controls.maxDistance=initial.length()*3;
           camera.position.copy(initial);
@@ -346,6 +328,13 @@ export default function Scene(props: Props) {
           return;
         }
         if (!(o instanceof THREE.Mesh) || o === plane) return;
+        if(props.volume && o.userData.volumeSide){
+          const y=(Math.round((p.slice??.5)*(props.volume.meta.dims[2]-1))-(props.volume.meta.dims[2]-1)/2)*props.volume.meta.spacing[2]+root.position.y;
+          const m=o.material as THREE.MeshStandardMaterial;
+          const above=o.userData.volumeSide==='above';
+          m.clippingPlanes![0].constant=above?-y:y;
+          if(above)m.opacity=p.opacity??.18;
+        }
         o.visible = !p.isolate || !p.selected || o.name === p.selected;
         highlights.get(o)?.(!!p.selected && o.name === p.selected);
       });
@@ -355,6 +344,7 @@ export default function Scene(props: Props) {
           (Math.round((p.slice ?? 0.5) * (nz - 1)) - (nz - 1) / 2) *
           props.volume.meta.spacing[2];
       }
+      if(props.volume)root.traverse(o=>{if(o instanceof THREE.Mesh && o.userData.volumeSide==='above'){const m=o.material as THREE.MeshStandardMaterial;m.transparent=true;m.depthWrite=false;m.opacity=p.opacity??.18;}});
       renderer.render(scene, camera);
     };
     render();
@@ -402,6 +392,8 @@ export default function Scene(props: Props) {
             <Move3D size={14} /> Arraste para girar · role para aproximar
           </div>
           <div className="va-scene-tools">
+            <button disabled={!!status} aria-label="Aproximar modelo" title="Aproximar" onClick={()=>api.current?.zoom(.8)}><Plus size={18}/></button>
+            <button disabled={!!status} aria-label="Afastar modelo" title="Afastar" onClick={()=>api.current?.zoom(1.25)}><Minus size={18}/></button>
             <button
               aria-label="Restaurar câmera"
               title="Restaurar câmera"

@@ -2232,3 +2232,4 @@
  .va-nav-scrim{display: block;position: fixed;inset: 0;z-index: 29;border: 0;background: transparent;cursor: pointer}
 }
 @media(max-width:900px){.va-focus-studio .va-library{height: min(400px,55dvh)}.va-studio-tools .va-button{display: inline-flex;gap: 7px}}
+.va-region-label{position:absolute;top:64px;left:18px;z-index:2;background:#102131bd;color:#eaf1f6;padding:7px 12px;border-radius:20px;font-size:12px;pointer-events:none}.va-volume-panel{position:relative}.va-scene-tools button{min-width:38px;min-height:38px}.va-scene-tools button:disabled{opacity:.4}

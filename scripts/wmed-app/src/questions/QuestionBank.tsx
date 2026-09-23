@@ -23,6 +23,7 @@ export default function QuestionBank({storageKey,standalone=false}:{storageKey:s
  const [examSize,setExamSize]=useState(20);
  const [confirmFinish,setConfirmFinish]=useState(false);
  const [notice,setNotice]=useState('');
+ const [bankSearch,setBankSearch]=useState('');
  const [saveError,setSaveError]=useState(false);
  const importRef=useRef<HTMLInputElement>(null);
  const heading=useRef<HTMLHeadingElement>(null);
@@ -58,12 +59,13 @@ export default function QuestionBank({storageKey,standalone=false}:{storageKey:s
  return <div ref={workspace} className={'qb-root qb-workspace '+(standalone?'qb-standalone':'')+' qb-mode-'+mode}>
  {standalone&&<header className="qb-public-nav"><a className="qb-brand" href="https://www.vytalsaude.com.br/"><img src="/bancodequestoes/vytal-logo.png" alt="Vytal"/><span>ACADÊMICO</span></a><span className="qb-nav-label">UM ESPAÇO PARA APRENDER</span><a className="qb-button" href="https://app.vytalsaude.com.br/estudante/questoes">Entrar no Acadêmico <ArrowUpRight size={17}/></a></header>}
  <Main className="qb-main">
- <div className="qb-page-title"><div><span className="qb-eyebrow">770 QUESTÕES · 7 PROVAS</span><h1>Banco de questões<span>.</span></h1></div><div className="qb-backups"><button onClick={exportProgress}><ArrowDownToLine size={16}/>Salvar progresso</button><button onClick={()=>importRef.current?.click()}><FileUp size={16}/>Importar</button><input ref={importRef} type="file" accept=".json,application/json" hidden onChange={e=>void importProgress(e.target.files?.[0])}/></div></div>
+ <div className="qb-page-title"><div><span className="qb-eyebrow">{questions.length} QUESTÕES · {banks.length} PROVAS</span><h1>Banco de questões<span>.</span></h1></div><div className="qb-backups"><button onClick={exportProgress}><ArrowDownToLine size={16}/>Salvar progresso</button><button onClick={()=>importRef.current?.click()}><FileUp size={16}/>Importar</button><input ref={importRef} type="file" accept=".json,application/json" hidden onChange={e=>void importProgress(e.target.files?.[0])}/></div></div>
  {saveError&&<p role="alert" className="qb-notice">O navegador não permitiu salvar seu progresso. Use “Salvar progresso” antes de sair.</p>}
  {notice&&<div role="status" className="qb-notice">{notice}<button aria-label="Fechar aviso" onClick={()=>setNotice('')}><X size={16}/></button></div>}
  {mode==='banks'?<section className="qb-exam-library">
-   <div className="qb-library-heading"><div><h2>Escolha uma prova</h2><p>Primeiro escolha a prova. Depois, filtre as questões por área ou tema.</p></div><button className="qb-button" onClick={()=>{setFilters(emptyFilters);setMode('library');}}>Ver todas as questões <ArrowRight size={16}/></button></div>
-   <div className="qb-exam-catalog">{banks.map(bank=>{
+   <div className="qb-home-actions"><button onClick={()=>{setFilters(emptyFilters);setMode('library')}}><BookOpen size={19}/><span><strong>Estudar por tema</strong><small>Busque em todas as provas</small></span><ArrowRight size={16}/></button><button disabled={!review} onClick={()=>{setFilters({...emptyFilters,status:'review'});setMode('library')}}><Target size={19}/><span><strong>Revisar erros</strong><small>{review} para revisar</small></span><ArrowRight size={16}/></button><button disabled={!bookmarks.length} onClick={()=>{setFilters({...emptyFilters,status:'saved'});setMode('library')}}><Bookmark size={19}/><span><strong>Questões salvas</strong><small>{bookmarks.length} favoritas</small></span><ArrowRight size={16}/></button></div>
+   <div className="qb-library-heading"><div><h2>Escolha uma prova</h2><p>Abra uma prova ou use os atalhos para estudar por tema.</p></div><button className="qb-button" onClick={()=>{setFilters(emptyFilters);setMode('library');}}>Ver todas as questões <ArrowRight size={16}/></button></div>
+   <label className="qb-search qb-bank-search"><Search size={17}/><input aria-label="Buscar prova cadastrada" placeholder="Buscar uma prova" value={bankSearch} onChange={e=>setBankSearch(e.target.value)}/></label><div className="qb-exam-catalog">{banks.filter(b=>b.toLocaleLowerCase().includes(bankSearch.toLocaleLowerCase())).map(bank=>{
      const items=questions.filter(q=>q.banca===bank);
      const done=items.filter(q=>progress[q.n]).length;
      return <button key={bank} className="qb-exam-card" onClick={()=>{setFilters({...emptyFilters,bank});setPage(0);setMode('library');}}>
@@ -73,6 +75,7 @@ export default function QuestionBank({storageKey,standalone=false}:{storageKey:s
        <small>Abrir prova →</small>
      </button>;
    })}</div>
+   {bankSearch&&!banks.some(b=>b.toLocaleLowerCase().includes(bankSearch.toLocaleLowerCase()))&&<p>Nenhuma prova com esse nome.</p>}
    {session&&!session.finished&&<button className="qb-button" onClick={()=>{setMode('exam');focusQuestion();}}>Retomar meu simulado <ArrowRight size={16}/></button>}
  </section>:mode==='library'?<>
  <section className="qb-quickstart"><div className="qb-quick-stats"><span><strong>{totalDone}</strong> respondidas</span><span><strong>{review}</strong> para revisar</span><span><strong>{bookmarks.length}</strong> salvas</span></div><button className="qb-button qb-primary" disabled={!filtered.length} onClick={()=>study(filtered.map(q=>q.n),Math.max(0,filtered.findIndex(q=>!progress[q.n])))}>{totalDone?'Continuar estudando':'Começar a estudar'} <ArrowRight size={16}/></button><div className="qb-quick-sim">{session&&!session.finished?<button className="qb-button" onClick={()=>{setMode('exam');focusQuestion();}}>Retomar simulado <ArrowRight size={16}/></button>:<><select aria-label="Quantidade de questões no simulado" value={examSize} onChange={e=>setExamSize(Number(e.target.value))}>{[10,20,40].map(n=><option key={n} value={n}>{n} questões</option>)}</select><button className="qb-button" disabled={!filtered.length} onClick={startExam}>Iniciar simulado</button></>}</div></section>

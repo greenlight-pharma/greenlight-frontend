@@ -1,0 +1,189 @@
+{
+  "source": "https://app.vytalsaude.com.br/academico-assets/torax.vytalvol",
+  "sourceSHA256": "8f0a7d7359f930a3fd107994f36dc476a43bb2ab47293ad2cdedfba592d2446d",
+  "license": "CC BY 4.0",
+  "structures": [
+    {
+      "id": 1,
+      "name": "Fígado",
+      "triangles": 8844
+    },
+    {
+      "id": 2,
+      "name": "Vesícula biliar",
+      "triangles": 1200
+    },
+    {
+      "id": 3,
+      "name": "Baço",
+      "triangles": 2314
+    },
+    {
+      "id": 4,
+      "name": "Estômago",
+      "triangles": 3550
+    },
+    {
+      "id": 5,
+      "name": "Pâncreas",
+      "triangles": 1200
+    },
+    {
+      "id": 6,
+      "name": "Duodeno",
+      "triangles": 1200
+    },
+    {
+      "id": 7,
+      "name": "Intestino delgado",
+      "triangles": 4354
+    },
+    {
+      "id": 8,
+      "name": "Cólon",
+      "triangles": 3886
+    },
+    {
+      "id": 9,
+      "name": "Rim direito",
+      "triangles": 1324
+    },
+    {
+      "id": 10,
+      "name": "Rim esquerdo",
+      "triangles": 2324
+    },
+    {
+      "id": 11,
+      "name": "Adrenais",
+      "triangles": 448
+    },
+    {
+      "id": 14,
+      "name": "Pulmão direito",
+      "triangles": 18982
+    },
+    {
+      "id": 15,
+      "name": "Pulmão esquerdo",
+      "triangles": 12120
+    },
+    {
+      "id": 16,
+      "name": "Traqueia e brônquios",
+      "triangles": 1200
+    },
+    {
+      "id": 17,
+      "name": "Esôfago",
+      "triangles": 1698
+    },
+    {
+      "id": 18,
+      "name": "Tireoide",
+      "triangles": 1120
+    },
+    {
+      "id": 19,
+      "name": "Coração",
+      "triangles": 6720
+    },
+    {
+      "id": 20,
+      "name": "Aorta",
+      "triangles": 5044
+    },
+    {
+      "id": 21,
+      "name": "Ramos do arco aórtico",
+      "triangles": 2346
+    },
+    {
+      "id": 22,
+      "name": "Veias braquiocefálicas e cava superior",
+      "triangles": 1562
+    },
+    {
+      "id": 23,
+      "name": "Veias pulmonares",
+      "triangles": 1200
+    },
+    {
+      "id": 24,
+      "name": "Veia cava inferior",
+      "triangles": 1200
+    },
+    {
+      "id": 25,
+      "name": "Veia porta e esplênica",
+      "triangles": 1200
+    },
+    {
+      "id": 28,
+      "name": "Coluna cervical",
+      "triangles": 2786
+    },
+    {
+      "id": 29,
+      "name": "Coluna torácica",
+      "triangles": 13100
+    },
+    {
+      "id": 30,
+      "name": "Coluna lombar",
+      "triangles": 1804
+    },
+    {
+      "id": 32,
+      "name": "Medula espinhal",
+      "triangles": 1730
+    },
+    {
+      "id": 33,
+      "name": "Costelas",
+      "triangles": 22278
+    },
+    {
+      "id": 34,
+      "name": "Cartilagens costais",
+      "triangles": 7810
+    },
+    {
+      "id": 35,
+      "name": "Esterno",
+      "triangles": 1884
+    },
+    {
+      "id": 36,
+      "name": "Clavículas",
+      "triangles": 2306
+    },
+    {
+      "id": 37,
+      "name": "Escápulas",
+      "triangles": 10544
+    },
+    {
+      "id": 38,
+      "name": "Úmeros",
+      "triangles": 4108
+    },
+    {
+      "id": 41,
+      "name": "Musculatura paravertebral",
+      "triangles": 9656
+    },
+    {
+      "id": 42,
+      "name": "Iliopsoas",
+      "triangles": 1164
+    },
+    {
+      "id": 45,
+      "name": "Crânio",
+      "triangles": 2674
+    }
+  ],
+  "sha256": "0235c77eb1472e924d2a00bdaf510f9b7719dc9d4a845d6f054b5cd94ab25df0",
+  "method": "Gaussian sigma .65 voxels + marching cubes .5, quadric decimation 35%; linear RGB materials; surfaces aligned to source grid, no atlas registration"
+}

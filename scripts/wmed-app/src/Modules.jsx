@@ -1,6 +1,7 @@
 import React, { lazy, Suspense, Component, useState } from "react";
 import {
   Atom,
+  HeartPulse,
   MessageCircle,
   FileText,
   Box,
@@ -24,6 +25,7 @@ const Histology = lazy(() =>
 const Radiology = lazy(() =>
   import("./academic/Experience").then((m) => ({ default: m.Radiology })),
 );
+const EcgCourse = lazy(() => import("./EcgCourse"));
 const Molecular = lazy(() => import("./Molecular"));
 const Microbiology = lazy(() => import("./Microbiology"));
 const XrayLab = lazy(() => import("./XrayLab"));
@@ -41,7 +43,7 @@ const Images = lazy(() =>
 export const moduleItems = [
   {
     id: "chat",
-    label: "Chat com IA",
+    label: "Chat",
     description: "Converse e pesquise",
     icon: MessageCircle,
   },
@@ -71,6 +73,7 @@ export const moduleItems = [
     description: "Tomografia conectada ao 3D",
     icon: ScanLine,
   },
+  {id:"curso-ecg",label:"ECG em 10 passos",description:"Curso, traçados e exercícios",icon:HeartPulse},
   {id:"questoes",label:"Banco de questões",description:"Provas, comentários e simulados",icon:ClipboardList},
   {
     id: "scores",
@@ -166,6 +169,8 @@ export default function Modules({
                 <Radiology />
               ) : active === "questoes" ? (
                 <Questions session={session} />
+              ) : active === "curso-ecg" ? (
+                <EcgCourse key={session?.user?.progressScope||"guest"} scope={session?.authenticated?session.user?.progressScope||"guest":"guest"}/>
               ) : active === "scores" ? (
                 <Scores />
               ) : active === "medicacoes" || active === "condicoes" ? (

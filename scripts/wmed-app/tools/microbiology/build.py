@@ -60,9 +60,12 @@ class Model:
     if sum(x*x for x in p)<.82:break
    self.ell(part,tuple(center[j]+p[j]*radii[j] for j in range(3)),(size,size*.85,size),detail=6)
  def bacteria(self):
-  shape=self.c['shape'];rod=shape in ['bacillus','vibrio'];r=(.55,.55,1.15) if rod else (.72,.72,.72);sh='curve' if shape=='vibrio' else 'rod' if rod else None
+  shape=self.c['shape'];rod=shape in ['bacillus','vibrio','polar-rod'];r=(.55,.55,1.15) if rod else (.72,.72,.72);sh='curve' if shape=='vibrio' else 'rod' if rod else None
   layers=['externa','parede','membrana','citoplasma'] if 'externa'in self.ids else ['parede','membrana','citoplasma']
   for i,p in enumerate(layers):self.ell(p,r=tuple(v*(1-([0,.15,.21][i] if len(layers)==3 else i*.06)) for v in r),shape=sh,cut=self.cut)
+  if shape=='diplococcus':
+   self.ell('capsula-bacteriana',r=(.83,.83,.83),cut=self.cut);self.ell('parede',(0,0,1.35),(.65,.65,.72));self.ell('capsula-bacteriana',(0,0,1.35),(.75,.75,.83))
+  if shape=='polar-rod':self.tube('flagelo',[(.12+.19*math.sin(i/9),.12*math.cos(i/9),1.10+i/40)for i in range(85)],.018)
   self.coil('nucleoide',(.16 if sh=='curve' else 0,0,0),r=.20,length=1.25 if rod else .7,turns=4,radius=.03)
   self.dots('ribossomos',55,(.36,.36,.76) if rod else (.5,.5,.5),size=.026)
   if shape=='bacillus':
@@ -92,6 +95,14 @@ class Model:
    for phase in [0,math.pi]:self.coil('genoma',(0,0,0),r=.37,length=1.3,turns=5,phase=phase,radius=.025)
    return
   self.ell('envelope',cut=self.cut,detail=32);self.spikes('espiculas',16 if sh=='hiv' else 65 if sh=='corona' else 110)
+  if sh in ['herpes','hbv']:
+   if sh=='herpes':self.ell('tegumento',r=(.9,.9,.9),cut=self.cut)
+   bpy.ops.mesh.primitive_ico_sphere_add(subdivisions=1,radius=.76);obj=bpy.context.object;verts=[v.co.copy()for v in obj.data.vertices];faces=[tuple(p.vertices)for p in obj.data.polygons];bpy.data.objects.remove(obj,do_unlink=True)
+   self.k.mesh('capsideo',verts,[f for f in faces if not self.cut or sum(verts[i].y for i in f)/3>-.2])
+   if sh=='herpes':
+    for phase in [0,math.pi]:self.coil('genoma',(0,0,0),r=.28,length=.9,turns=5,phase=phase,radius=.023)
+   else:
+    for phase,end in [(0,TAU),(.09,TAU*.7)]:self.tube('genoma',[((.40+phase)*math.cos(t),(.40+phase)*math.sin(t),.05*math.sin(t*4))for t in [end*i/99 for i in range(100)]],.026)
   if sh=='corona':
    self.coil('nucleocapsideo',(0,0,0),r=.48,length=1.25,turns=6,radius=.055)
   if sh=='influenza':
@@ -112,7 +123,11 @@ class Model:
   layers=['capsula','parede','membrana','citoplasma']if sh=='crypto'else['parede','membrana','citoplasma']
   for i,p in enumerate(layers):self.ell(p,r=tuple(v*(1.15 if p=='capsula'else 1-(i-(1 if sh=='crypto' else 0))*.065)for v in r),cut=self.cut)
   self.ell('nucleo',(-.27,-.11,.22),(.25,.24,.28));self.ell('vacuolo',(.26,-.13,-.2),(.29,.30,.32))
-  self.ell('broto',(.70,0,.86),(.38,.34,.43));self.tube('broto',[(.47,0,.66),(.72,0,.90)],.12 if sh=='crypto'else.20)
+  if sh=='para':
+   for n in range(7):
+    a=n*TAU/7;self.ell('broto',(1.05*math.cos(a),.15,1.18*math.sin(a)),(.28,.26,.30));self.tube('broto',[(.73*math.cos(a),.15,.88*math.sin(a)),(1.05*math.cos(a),.15,1.18*math.sin(a))],.09)
+  else:
+   self.ell('broto',(.70,0,.86),(.22,.20,.25)if sh=='histo'else(.38,.34,.43));self.tube('broto',[(.47,0,.66),(.72,0,.90)],.075 if sh=='histo'else .12 if sh=='crypto'else.20)
   if 'mitocondrias'in self.ids:
    for x,y,z in [(-.3,0,-.55),(.26,.1,.5),(0,-.26,-.1)]:self.ell('mitocondrias',(x,y,z),(.10,.08,.21),detail=12)
  def mold(self):
@@ -132,7 +147,22 @@ class Model:
    for n in range(8):
     a=TAU*n/8;self.tube('rizoides',[(0,0,-1.05),(.35*math.cos(a),.35*math.sin(a),-1.43),(.65*math.cos(a),.65*math.sin(a),-1.60)],.025)
  def proto(self):
-  sh=self.c['shape'];r={'giardia':(.85,.42,1.15),'toxo':(.42,.38,1.22),'tryp':(.25,.28,1.5),'amoeba':(1,.75,.85)}[sh];shape={'giardia':'pear','toxo':'curve','tryp':'tryp','amoeba':'amoeba'}[sh]
+  sh=self.c['shape']
+  if sh in ['leish','tricho']:
+   r=(.36,.32,1.2)if sh=='leish'else(.68,.46,1.05)
+   for n,p in enumerate(['membrana','citoplasma']):self.ell(p,r=tuple(v*(1-.07*n)for v in r),cut=self.cut,shape='pear'if sh=='tricho'else None)
+   self.ell('nucleo',(0,-.10,.25),(.21,.18,.28))
+   if sh=='leish':
+    self.ell('cinetoplasto',(0,-.13,.82),(.09,.06,.10));self.tube('flagelo',[(.12*math.sin(t*4),.06*math.cos(t*3),1+t)for t in[i/40 for i in range(65)]],.02)
+   else:
+    for n in range(4):self.tube('flagelo',[(.08*n+t*(n-1.5)*.24,.09*math.sin(t*5+n),.92+t)for t in[i/40 for i in range(48)]],.018)
+    self.tube('axostilo',[(.02,0,.8),(.03,0,-1.42)],.036);self.dots('hidrogenossomos',12,(.45,.28,.7),size=.065)
+    edge=[(.48+.1*math.sin(t*15),0,.85-t*1.2)for t in[i/49 for i in range(50)]];self.tube('flagelo',edge,.018)
+    verts=[]
+    for x,y,z in edge:verts.extend([(.38,0,z),(x,y,z)])
+    self.k.mesh('ondulante',verts,[(2*i,2*i+1,2*i+3,2*i+2)for i in range(49)])
+   return
+  r={'giardia':(.85,.42,1.15),'toxo':(.42,.38,1.22),'tryp':(.25,.28,1.5),'amoeba':(1,.75,.85)}[sh];shape={'giardia':'pear','toxo':'curve','tryp':'tryp','amoeba':'amoeba'}[sh]
   for i,p in enumerate(['membrana','citoplasma']):self.ell(p,r=tuple(v*(1-.055*i)for v in r),shape=shape,cut=self.cut,detail=32)
   if sh=='giardia':
    for x in [-.26,.26]:self.ell('nucleo',(x,-.12,.40),(.19,.18,.24))
@@ -159,7 +189,11 @@ class Model:
   {'bacterias':self.bacteria,'virus':self.virus,'fungos':self.mold if self.c['shape']in['aspergillus','rhizopus']else self.yeast,'protozoarios':self.proto}[self.c['group']]();return self.k.merged()
 
 manifest=[]
+only=set(sys.argv[sys.argv.index("--")+1:]) if "--" in sys.argv else set()
+previous=json.loads((OUT/"manifest.json").read_text()) if (OUT/"manifest.json").exists() else {"models":[]}
 for cell in CAT:
+ if only and cell['id'] not in only:
+  manifest.append(next(m for m in previous['models'] if m['id']==cell['id']));continue
  target=OUT/cell['id'];target.mkdir(exist_ok=True);receipt={'id':cell['id'],'variants':{}}
  for variant,cut in [('complete',False),('cutaway',True)] if cell['cutaway'] else [('complete',False)]:
   clear();model=Model(cell,cut,target);objects=model.build();bpy.ops.object.select_all(action='DESELECT')
