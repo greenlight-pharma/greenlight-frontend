@@ -11,6 +11,7 @@ import {
   Pill,
   BookOpen,
   TrendingUp,
+  ClipboardList,
 } from "lucide-react";
 const Anatomy = lazy(() =>
   import("./academic/Experience").then((m) => ({ default: m.Anatomy })),
@@ -22,6 +23,7 @@ const Radiology = lazy(() =>
   import("./academic/Experience").then((m) => ({ default: m.Radiology })),
 );
 const Microbiology = lazy(() => import("./Microbiology"));
+const Questions = lazy(() => import("./Questions"));
 const ClinicalCase = lazy(() => import("./ClinicalCase"));
 const Scores = lazy(() =>
   import("./Libraries").then((m) => ({ default: m.Scores })),
@@ -64,6 +66,7 @@ export const moduleItems = [
     description: "Tomografia conectada ao 3D",
     icon: ScanLine,
   },
+  {id:"questoes",label:"Banco de questões",description:"Provas, comentários e simulados",icon:ClipboardList},
   {
     id: "scores",
     label: "Scores e calculadoras",
@@ -151,6 +154,8 @@ export default function Modules({
                 <Microbiology />
               ) : active === "radiologia" ? (
                 <Radiology />
+              ) : active === "questoes" ? (
+                <Questions session={session} />
               ) : active === "scores" ? (
                 <Scores />
               ) : active === "medicacoes" || active === "condicoes" ? (

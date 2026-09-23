@@ -1,0 +1,98 @@
+import {useEffect,useMemo,useRef,useState} from 'react';
+import {ArrowDownToLine,ArrowLeft,ArrowRight,ArrowUpRight,Bookmark,BookOpen,Check,CheckCheck,ChevronLeft,ChevronRight,ClipboardList,FileUp,Filter,GraduationCap,Search,Target,X} from 'lucide-react';
+import {areas,areaOf,byId,cleanBookmarks,cleanProgress,cleanSession,emptyFilters,filterQuestions,parseBackup,questions,sessionResult,type Filters,type Progress,type Session} from './model';
+import './questions.css';
+import {useWorkspaceHeight} from '../academic/useWorkspaceHeight';
+const banks=[...new Set(questions.map(q=>q.banca))];
+function readStored(key:string) {try{return JSON.parse(localStorage.getItem(key)||'null');}catch{return null;}}
+export default function QuestionBank({storageKey,standalone=false}:{storageKey:string;standalone?:boolean}) {
+ const Main=standalone?'main':'div';
+ const workspace=useWorkspaceHeight();
+ const listRef=useRef<HTMLDivElement>(null);
+ const [pageSize,setPageSize]=useState(6);
+ const [progress,setProgress]=useState<Progress>(()=>cleanProgress(readStored(storageKey)));
+ const [bookmarks,setBookmarks]=useState<number[]>(()=>cleanBookmarks(readStored(storageKey+':bookmarks')));
+ const [session,setSession]=useState<Session|null>(()=>cleanSession(readStored(storageKey+':session')));
+ const [filters,setFilters]=useState<Filters>(emptyFilters);
+ const [page,setPage]=useState(0);
+ const [mode,setMode]=useState<'banks'|'library'|'study'|'exam'>('banks');
+ const [queue,setQueue]=useState<number[]>([]);
+ const [index,setIndex]=useState(0);
+ const [picked,setPicked]=useState('');
+ const [confirmed,setConfirmed]=useState('');
+ const [examSize,setExamSize]=useState(20);
+ const [confirmFinish,setConfirmFinish]=useState(false);
+ const [notice,setNotice]=useState('');
+ const [saveError,setSaveError]=useState(false);
+ const importRef=useRef<HTMLInputElement>(null);
+ const heading=useRef<HTMLHeadingElement>(null);
+ const filtered=useMemo(()=>filterQuestions(filters,progress,bookmarks),[filters,progress,bookmarks]);
+ const totalDone=Object.keys(progress).length, correct=Object.values(progress).filter(p=>p.correct).length, review=totalDone-correct;
+ const visibleIds=mode==='exam'?session?.ids||[]:queue;
+ const position=mode==='exam'?session?.index||0:index;
+ const current=byId.get(visibleIds[position]);
+ const answer=mode==='exam'?session?.answers[current?.n||0]||'':confirmed;
+ const revealed=mode==='exam'?!!session?.finished:!!confirmed;
+ const outcome=mode==='exam'&&session?.finished?sessionResult(session):null;
+ useEffect(()=>{
+   try {localStorage.setItem(storageKey,JSON.stringify(progress));localStorage.setItem(storageKey+':bookmarks',JSON.stringify(bookmarks));localStorage.setItem(storageKey+':session',JSON.stringify(session));setSaveError(false);}catch{setSaveError(true);}
+ },[storageKey,progress,bookmarks,session]);
+ useEffect(()=>{setPage(0);},[filters]);
+ useEffect(()=>{setPage(p=>Math.min(p,Math.max(0,Math.ceil(filtered.length/pageSize)-1)));},[filtered.length,pageSize]);
+ useEffect(()=>{
+  const el=listRef.current;if(!el||mode!=='library')return;
+  const observer=new ResizeObserver(([entry])=>{setPageSize(window.innerWidth>900?Math.max(2,Math.min(12,Math.floor(entry.contentRect.height/68))):6);});
+  observer.observe(el);return()=>observer.disconnect();
+ },[mode]);
+ function focusQuestion(){requestAnimationFrame(()=>{heading.current?.focus({preventScroll:true});document.querySelectorAll('.qb-question-reading,.qb-answer-reading').forEach(el=>el.scrollTo({top:0}));if(window.innerWidth<=900)heading.current?.scrollIntoView({block:'start',behavior:'smooth'});});}
+ function study(ids:number[],at=0) {setQueue(ids);setIndex(at);setMode('study');const previous=progress[ids[at]]?.answer||'';setPicked(previous);setConfirmed(previous);focusQuestion();}
+ function navigate(to:number) {setPicked('');if(mode==='exam')setSession(s=>s?{...s,index:to}:s);else{setIndex(to);const previous=progress[queue[to]]?.answer||'';setPicked(previous);setConfirmed(previous);}focusQuestion();}
+ function choose(value:string){if(revealed)return;if(mode==='exam'&&current)setSession(s=>s?{...s,answers:{...s.answers,[current.n]:value}}:s);else setPicked(value);}
+ function confirm(){if(!current||!picked)return;setConfirmed(picked);setProgress(p=>({...p,[current.n]:{answer:picked,correct:picked===current.gabarito}}));requestAnimationFrame(()=>workspace.current?.querySelector('.qb-explanation')?.scrollIntoView({block:'nearest',behavior:'smooth'}));}
+ function startExam(){const ids=filtered.slice(0,examSize).map(q=>q.n);if(!ids.length)return;setSession({ids,index:0,answers:{},finished:false});setMode('exam');setPicked('');setConfirmFinish(false);focusQuestion();}
+ function finish(){if(!session)return;const next=cleanProgress(Object.fromEntries(Object.entries(session.answers).map(([id,answer])=>[id,{answer}])));setProgress(p=>({...p,...next}));setSession({...session,finished:true});setConfirmFinish(false);focusQuestion();}
+ function toggleBookmark(id:number){setBookmarks(b=>b.includes(id)?b.filter(v=>v!==id):[...b,id]);}
+ function exportProgress(){const blob=new Blob([JSON.stringify({format:'vytal-questions',version:1,progress,bookmarks},null,2)],{type:'application/json'});const url=URL.createObjectURL(blob);const a=document.createElement('a');a.href=url;a.download='wmed-meu-progresso.json';a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);setNotice('Arquivo de progresso preparado. Guarde para continuar em outro navegador.');}
+ async function importProgress(file?:File){if(!file)return;try{if(file.size>2_000_000)throw Error('Escolha um arquivo de progresso de até 2 MB.');const data=parseBackup(await file.text());setProgress(p=>({...data.progress,...p}));setBookmarks(b=>[...new Set([...b,...data.bookmarks])]);setNotice('Progresso importado. Suas respostas atuais foram preservadas.');}catch(e){setNotice(e instanceof Error?e.message:'Não foi possível importar esse arquivo.');}if(importRef.current)importRef.current.value='';}
+ function resetFilters(){setFilters({...emptyFilters,bank:filters.bank});setPage(0);}
+ return <div ref={workspace} className={'qb-root qb-workspace '+(standalone?'qb-standalone':'')+' qb-mode-'+mode}>
+ {standalone&&<header className="qb-public-nav"><a className="qb-brand" href="https://www.vytalsaude.com.br/"><img src="/bancodequestoes/vytal-logo.png" alt="Vytal"/><span>ACADÊMICO</span></a><span className="qb-nav-label">UM ESPAÇO PARA APRENDER</span><a className="qb-button" href="https://app.vytalsaude.com.br/estudante/questoes">Entrar no Acadêmico <ArrowUpRight size={17}/></a></header>}
+ <Main className="qb-main">
+ <div className="qb-page-title"><div><span className="qb-eyebrow">770 QUESTÕES · 7 PROVAS</span><h1>Banco de questões<span>.</span></h1></div><div className="qb-backups"><button onClick={exportProgress}><ArrowDownToLine size={16}/>Salvar progresso</button><button onClick={()=>importRef.current?.click()}><FileUp size={16}/>Importar</button><input ref={importRef} type="file" accept=".json,application/json" hidden onChange={e=>void importProgress(e.target.files?.[0])}/></div></div>
+ {saveError&&<p role="alert" className="qb-notice">O navegador não permitiu salvar seu progresso. Use “Salvar progresso” antes de sair.</p>}
+ {notice&&<div role="status" className="qb-notice">{notice}<button aria-label="Fechar aviso" onClick={()=>setNotice('')}><X size={16}/></button></div>}
+ {mode==='banks'?<section className="qb-exam-library">
+   <div className="qb-library-heading"><div><h2>Escolha uma prova</h2><p>Primeiro escolha a prova. Depois, filtre as questões por área ou tema.</p></div><button className="qb-button" onClick={()=>{setFilters(emptyFilters);setMode('library');}}>Ver todas as questões <ArrowRight size={16}/></button></div>
+   <div className="qb-exam-catalog">{banks.map(bank=>{
+     const items=questions.filter(q=>q.banca===bank);
+     const done=items.filter(q=>progress[q.n]).length;
+     return <button key={bank} className="qb-exam-card" onClick={()=>{setFilters({...emptyFilters,bank});setPage(0);setMode('library');}}>
+       <span className="qb-exam-card-icon"><ClipboardList size={22}/><ArrowUpRight size={18}/></span>
+       <strong>{bank}</strong><span>{items.length} questões · {done} respondidas</span>
+       <span className="qb-exam-card-progress" aria-label={`${done} de ${items.length} respondidas`}><i style={{width:`${done/items.length*100}%`}}/></span>
+       <small>Abrir prova →</small>
+     </button>;
+   })}</div>
+   {session&&!session.finished&&<button className="qb-button" onClick={()=>{setMode('exam');focusQuestion();}}>Retomar meu simulado <ArrowRight size={16}/></button>}
+ </section>:mode==='library'?<>
+ <section className="qb-quickstart"><div className="qb-quick-stats"><span><strong>{totalDone}</strong> respondidas</span><span><strong>{review}</strong> para revisar</span><span><strong>{bookmarks.length}</strong> salvas</span></div><button className="qb-button qb-primary" disabled={!filtered.length} onClick={()=>study(filtered.map(q=>q.n),Math.max(0,filtered.findIndex(q=>!progress[q.n])))}>{totalDone?'Continuar estudando':'Começar a estudar'} <ArrowRight size={16}/></button><div className="qb-quick-sim">{session&&!session.finished?<button className="qb-button" onClick={()=>{setMode('exam');focusQuestion();}}>Retomar simulado <ArrowRight size={16}/></button>:<><select aria-label="Quantidade de questões no simulado" value={examSize} onChange={e=>setExamSize(Number(e.target.value))}>{[10,20,40].map(n=><option key={n} value={n}>{n} questões</option>)}</select><button className="qb-button" disabled={!filtered.length} onClick={startExam}>Iniciar simulado</button></>}</div></section>
+ <section className="qb-library" id="qb-library"><div className="qb-library-heading"><div><button className="qb-back-to-exams" onClick={()=>setMode('banks')}>← Provas cadastradas</button><h2>{filters.bank || 'Todas as questões'}</h2><p>{filtered.length} questões · escolha uma para responder</p></div><div className="qb-list-tabs" aria-label="Filtrar por progresso">{[['','Todas'],['new','Não respondidas'],['review','Revisar'],['saved','Salvas']].map(([value,label])=><button key={value} aria-pressed={filters.status===value} className={filters.status===value?'is-active':''} onClick={()=>setFilters(f=>({...f,status:value}))}>{label}{value==='saved'&&<Bookmark size={13}/>}</button>)}</div></div>
+ <div className="qb-filters"><select aria-label="Área de estudo" value={filters.area} onChange={e=>setFilters(f=>({...f,area:e.target.value}))}><option value="">Todas as áreas</option>{areas.map(area=><option key={area}>{area}</option>)}</select><label className="qb-search"><Search size={18}/><input aria-label="Buscar questões" placeholder="Busque um tema ou uma palavra" value={filters.search} onChange={e=>setFilters(f=>({...f,search:e.target.value}))}/></label><select aria-label="Prova" value={filters.bank} onChange={e=>setFilters(f=>({...f,bank:e.target.value}))}><option value="">Todas as provas</option>{banks.map(bank=><option key={bank}>{bank}</option>)}</select><details className="qb-filter-more"><summary><Filter size={16}/>Filtros</summary><div><label>Dificuldade<select value={filters.difficulty} onChange={e=>setFilters(f=>({...f,difficulty:e.target.value}))}><option value="">Todas</option>{['Fácil','Médio','Difícil'].map(d=><option key={d}>{d}</option>)}</select></label><label><input type="checkbox" checked={filters.imageOnly} onChange={e=>setFilters(f=>({...f,imageOnly:e.target.checked}))}/>Com imagem descrita</label></div></details></div>
+ {Object.values(filters).some(Boolean)&&<div className="qb-active-filters"><span>{filters.area||'Todas as áreas'}{filters.difficulty?' · '+filters.difficulty:''}{filters.imageOnly?' · Imagem descrita':''}</span><button onClick={resetFilters}>Limpar filtros <X size={13}/></button></div>}
+ <div ref={listRef} className="qb-question-list">{filtered.slice(page*pageSize,(page+1)*pageSize).map(q=><article className="qb-row" key={q.n}><span className={'qb-row-state '+(progress[q.n]?.correct?'is-done':progress[q.n]?'is-review':'')} aria-label={progress[q.n]?(progress[q.n].correct?'Respondida conforme o gabarito':'Para revisar'):'Não respondida'}>{progress[q.n]?.correct?<Check size={17}/>:<BookOpen size={17}/>}</span><button className="qb-row-main" title={`${q.tema} · ${q.banca}`} onClick={()=>study(filtered.map(v=>v.n),filtered.indexOf(q))}><span>{q.banca}<span> · Nº {q.n}</span></span><strong>{q.tema}</strong><small>{areaOf(q)}<i/> {q.dificuldade}{q.temImagem&&<><i/>Imagem descrita</>}</small></button><button className={'qb-bookmark '+(bookmarks.includes(q.n)?'is-active':'')} aria-label={(bookmarks.includes(q.n)?'Remover dos salvos':'Salvar questão')+' '+q.n} aria-pressed={bookmarks.includes(q.n)} onClick={()=>toggleBookmark(q.n)}><Bookmark size={18}/></button><button className="qb-open" aria-label={'Abrir questão '+q.n} onClick={()=>study(filtered.map(v=>v.n),filtered.indexOf(q))}><ArrowUpRight size={19}/></button></article>)}</div>
+ {!filtered.length&&<div className="qb-empty"><Search size={28}/><h3>Nenhuma questão por aqui.</h3><p>Tente outro tema ou remova um filtro.</p><button className="qb-button" onClick={resetFilters}>Ver todas as questões</button></div>}
+ {filtered.length>0&&<div className="qb-pagination"><span>{page*pageSize+1}–{Math.min((page+1)*pageSize,filtered.length)} de {filtered.length}</span><div><button aria-label="Página anterior" disabled={page===0} onClick={()=>setPage(p=>p-1)}><ChevronLeft size={18}/></button><span>Página {page+1} de {Math.ceil(filtered.length/pageSize)}</span><button aria-label="Próxima página" disabled={(page+1)*pageSize>=filtered.length} onClick={()=>setPage(p=>p+1)}><ChevronRight size={18}/></button></div></div>}
+ </section>
+ </>:current?<section className="qb-study">
+ <div className="qb-study-toolbar"><button onClick={()=>{setMode('library');setConfirmFinish(false);}}><ArrowLeft size={17}/>{mode==='exam'&&!session?.finished?'Pausar e voltar':'Voltar às questões'}</button><span>{mode==='exam'?'SIMULADO':'ESTUDO COMENTADO'} · {position+1} / {visibleIds.length}</span><button className={bookmarks.includes(current.n)?'is-active':''} aria-pressed={bookmarks.includes(current.n)} onClick={()=>toggleBookmark(current.n)}><Bookmark size={17}/>{bookmarks.includes(current.n)?'Salva':'Salvar'}</button></div>
+ {outcome&&<div className="qb-result" role="status"><div><CheckCheck size={25}/><h2>Simulado concluído.</h2><p>Revise os comentários de cada questão abaixo.</p></div><div><strong>{outcome.correct}</strong><span>Conforme o gabarito</span></div><div><strong>{outcome.review}</strong><span>Para revisar</span></div><div><strong>{outcome.unanswered}</strong><span>Não respondidas</span></div></div>}
+ <div className={"qb-study-grid "+(mode==='exam'?'has-exam-nav':'')}><article className="qb-question-card"><div className="qb-question-reading"><div className="qb-question-meta"><span>{current.banca}</span><span>QUESTÃO {current.n}</span></div><h2 ref={heading} tabIndex={-1}>{current.tema}</h2><div className="qb-question-tags"><span>{areaOf(current)}</span><span>{current.dificuldade}</span></div>{current.temImagem&&<p className="qb-image-note">Enunciado adaptado: a imagem da prova original está descrita no texto.</p>}<p className="qb-stem">{current.enunciado}</p></div><div className="qb-answer-reading"><fieldset className="qb-alternatives"><legend>Escolha uma alternativa</legend>{Object.entries(current.alternativas).map(([letter,text])=><label key={letter} className={(revealed?(letter===current.gabarito?'is-correct':letter===answer?'is-review':''):(mode==='exam'?answer:picked)===letter?'is-picked':'')}><input type="radio" name={'question-'+current.n} value={letter} checked={(mode==='exam'?answer:picked)===letter} disabled={revealed} onChange={()=>choose(letter)}/><span className="qb-letter">{letter}</span><span>{text}</span>{revealed&&letter===current.gabarito&&<Check size={19}/>}</label>)}</fieldset>
+
+ {revealed&&<section className="qb-explanation" aria-live="polite"><span className="qb-eyebrow">ENTENDA O RACIOCÍNIO</span><h3>{answer===current.gabarito?'Você conectou os pontos.':answer?'Vamos rever juntos.':'Vale revisar este tema.'}</h3><strong>Gabarito: alternativa {current.gabarito}{answer&&answer!==current.gabarito?' · Sua resposta: '+answer:''}</strong><p>{current.explicacao}</p><small>Comentário do acervo de estudo. Confira a prova e as referências atuais ao aprofundar o tema.</small>{mode==='study'&&<button className="qb-retry" onClick={()=>{setPicked('');setConfirmed('');focusQuestion();}}>Responder novamente</button>}</section>}
+ </div><div className="qb-study-bottom"><button className="qb-button" disabled={position===0} onClick={()=>navigate(position-1)}><ChevronLeft size={16}/>Anterior</button><span>{mode==='study'&&!confirmed?<button className="qb-button qb-primary" aria-label="Confirmar resposta" disabled={!picked} onClick={confirm}>Confirmar <Check size={16}/></button>:<>{position+1} de {visibleIds.length}</>}</span>{position<visibleIds.length-1?<button className="qb-button qb-primary" onClick={()=>navigate(position+1)}>Próxima <ChevronRight size={16}/></button>:mode==='exam'&&!session?.finished?<button className="qb-button qb-primary" onClick={()=>setConfirmFinish(true)}>Concluir simulado <Check size={16}/></button>:<button className="qb-button qb-primary" onClick={()=>setMode('library')}>Voltar ao banco</button>}</div></article>
+ <aside className="qb-study-aside" hidden={mode!=='exam'}><span className="qb-eyebrow">{mode==='exam'?'SUA SESSÃO':'APRENDER COM CADA RESPOSTA'}</span><BookOpen size={28}/><h3>{mode==='exam'?'Concentre-se no raciocínio.':'A resposta é só o começo.'}</h3><p>{mode==='exam'?'Você pode ir e voltar entre as questões. Os comentários aparecem ao concluir.':'Leia o caso, escolha uma alternativa e confira a explicação.'}</p>{mode==='exam'&&session&&<><div className="qb-exam-nav">{session.ids.map((id,i)=><button key={id} aria-label={'Ir para questão '+(i+1)} aria-current={i===position?'step':undefined} className={(session.answers[id]?'is-answered ':'')+(i===position?'is-current':'')} onClick={()=>navigate(i)}>{i+1}</button>)}</div>{!session.finished&&<button className="qb-button" onClick={()=>setConfirmFinish(true)}>Concluir simulado</button>}</>}<div className="qb-local-note">Progresso salvo neste navegador.{mode==='exam'&&!session?.finished?' Você pode pausar e continuar depois.':''}</div></aside></div>
+ {confirmFinish&&session&&<div className="qb-modal-backdrop"><section className="qb-modal" role="dialog" aria-modal="true" aria-labelledby="qb-finish-title" onKeyDown={e=>{if(e.key==='Escape')setConfirmFinish(false);if(e.key==='Tab'){const buttons=e.currentTarget.querySelectorAll('button');if(e.shiftKey&&document.activeElement===buttons[0]){e.preventDefault();buttons[buttons.length-1].focus();}else if(!e.shiftKey&&document.activeElement===buttons[buttons.length-1]){e.preventDefault();buttons[0].focus();}}}}><h2 id="qb-finish-title">Concluir este simulado?</h2><p>{session.ids.length-Object.keys(session.answers).length} questões sem resposta. Depois de concluir, você poderá ler todos os comentários.</p><div><button autoFocus className="qb-button" onClick={()=>setConfirmFinish(false)}>Continuar respondendo</button><button className="qb-button qb-primary" onClick={finish}>Concluir e revisar</button></div></section></div>}
+ </section>:null}
+ <footer className="qb-footer"><div><GraduationCap size={17}/><span>WMed · Banco de questões</span></div><p>Salvo neste navegador. Use Salvar progresso e Importar para transferir.</p>{standalone&&<a href="/bancodequestoes/classico/">Acessar versão anterior <ArrowUpRight size={13}/></a>}</footer>
+ </Main></div>;
+}
