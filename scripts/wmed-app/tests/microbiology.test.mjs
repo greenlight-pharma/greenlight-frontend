@@ -6,8 +6,8 @@ const root=new URL('../public/microbiology/',import.meta.url);
 const catalog=JSON.parse(readFileSync(new URL('catalog.json',root)));
 const manifest=JSON.parse(readFileSync(new URL('manifest.json',root)));
 test('microbiology includes four groups, unique entries and sources',()=>{
- assert.equal(catalog.length,16);assert.equal(new Set(catalog.map(c=>c.id)).size,16);
- for(const group of ['bacterias','virus','fungos','protozoarios'])assert.equal(catalog.filter(c=>c.group===group).length,4);
+ assert.equal(catalog.length,24);assert.equal(new Set(catalog.map(c=>c.id)).size,24);
+ for(const group of ['bacterias','virus','fungos','protozoarios'])assert.equal(catalog.filter(c=>c.group===group).length,6);
  for(const cell of catalog){assert.ok(cell.sources.every(s=>s.startsWith('https://')));assert.ok(cell.summary&&cell.focus);assert.equal(new Set(cell.parts.map(p=>p.id)).size,cell.parts.length)}
 });
 test('all authored GLBs have embedded resources, selectable parts and bounded complexity',()=>{

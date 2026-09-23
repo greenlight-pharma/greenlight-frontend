@@ -1,0 +1,104 @@
+{
+  "source": "https://app.vytalsaude.com.br/academico-assets/cabeca.vytalvol",
+  "sourceSHA256": "580d708e50b77aaf06697cb0306d146d917f946c4bf40b2758ac328600d0fea0",
+  "license": "CC BY 4.0",
+  "structures": [
+    {
+      "id": 44,
+      "name": "Encéfalo",
+      "triangles": 7958
+    },
+    {
+      "id": 45,
+      "name": "Crânio",
+      "triangles": 24494
+    },
+    {
+      "id": 28,
+      "name": "Coluna cervical",
+      "triangles": 4306
+    },
+    {
+      "id": 32,
+      "name": "Medula espinhal",
+      "triangles": 1200
+    },
+    {
+      "id": 36,
+      "name": "Clavículas",
+      "triangles": 2150
+    },
+    {
+      "id": 41,
+      "name": "Musculatura paravertebral",
+      "triangles": 2790
+    },
+    {
+      "id": 21,
+      "name": "Ramos do arco aórtico",
+      "triangles": 2316
+    },
+    {
+      "id": 33,
+      "name": "Costelas",
+      "triangles": 3702
+    },
+    {
+      "id": 37,
+      "name": "Escápulas",
+      "triangles": 1268
+    },
+    {
+      "id": 29,
+      "name": "Coluna torácica",
+      "triangles": 3258
+    },
+    {
+      "id": 18,
+      "name": "Tireoide",
+      "triangles": 1120
+    },
+    {
+      "id": 14,
+      "name": "Pulmão direito",
+      "triangles": 2990
+    },
+    {
+      "id": 15,
+      "name": "Pulmão esquerdo",
+      "triangles": 3060
+    },
+    {
+      "id": 17,
+      "name": "Esôfago",
+      "triangles": 832
+    },
+    {
+      "id": 16,
+      "name": "Traqueia e brônquios",
+      "triangles": 1156
+    },
+    {
+      "id": 22,
+      "name": "Veias braquiocefálicas e cava superior",
+      "triangles": 1200
+    },
+    {
+      "id": 35,
+      "name": "Esterno",
+      "triangles": 1200
+    },
+    {
+      "id": 34,
+      "name": "Cartilagens costais",
+      "triangles": 852
+    },
+    {
+      "id": 20,
+      "name": "Aorta",
+      "triangles": 724
+    }
+  ],
+  "sha256": "4c95a9c84d1d8e0191f62b8864198728249e4222cfec876965893f1427a47338",
+  "method": "Gaussian sigma .65 voxels + marching cubes .5, quadric decimation 35%; linear RGB materials; surfaces aligned to source grid, no atlas registration"
+}

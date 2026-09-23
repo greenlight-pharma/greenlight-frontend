@@ -453,7 +453,7 @@ export function Radiology() {
   const [error, setError] = useState("");
   const [fraction, setFraction] = useState(0.52);
   const [window, setWindow] = useState("moles");
-  const [opacity, setOpacity] = useState(0.26);
+  const [opacity, setOpacity] = useState(0.18);
   const [selected, setSelected] = useState(0);
   const [rotate, setRotate] = useState(false);
   const [play, setPlay] = useState(false);
@@ -554,6 +554,8 @@ export function Radiology() {
               <Suspense fallback={<p>Preparando a reconstrução…</p>}>
                 <Scene
                   volume={volume}
+                  surfaceUrl={`${import.meta.env.BASE_URL}radiology/${region}.glb`}
+                  selected={selected?`structure_${selected}`:""}
                   slice={fraction}
                   window={window}
                   opacity={opacity}
@@ -566,12 +568,13 @@ export function Radiology() {
               </div>
             )}
           </div>
+          <div className="va-region-label">{region==="torax"?"Tórax":region==="abdome"?"Abdome e pelve":"Cabeça e pescoço"}</div>
           <div className="va-volume-legend">
             <span />
             <p>
-              Reconstrução das segmentações do próprio exame.
+              Superfícies dos órgãos da própria TC.
               <br />
-              Superfícies amostradas · protótipo de visualização.
+              Acima do corte: transparente · abaixo: anatomia visível.
             </p>
           </div>
         </section>
@@ -663,13 +666,13 @@ export function Radiology() {
           </select>
         </label>
         <label className="va-opacity">
-          Contexto 3D
+          Acima do corte
           <input
             type="range"
             min=".04"
             max=".85"
             step=".01"
-            aria-label="Opacidade da reconstrução"
+            aria-label="Transparência da anatomia acima do corte"
             value={opacity}
             onChange={(e) => setOpacity(+e.target.value)}
           />

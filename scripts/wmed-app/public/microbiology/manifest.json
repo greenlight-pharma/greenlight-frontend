@@ -1,6 +1,6 @@
 {
   "blender": "4.5.13 LTS",
-  "generatorSHA256": "67cd0b0a79a2812df4be264da14636c77f12636b707f6636ad6ba43277c42bf4",
+  "generatorSHA256": "c814a6ab0ec8e37091939ec3b0f526badcdbe44103cdc90f24f7307139605108",
   "models": [
     {
       "id": "e-coli",
@@ -552,6 +552,302 @@
             "vacdigestivo"
           ],
           "embeddedImages": 8,
+          "allResourcesEmbedded": true
+        }
+      }
+    },
+    {
+      "id": "pneumococcus",
+      "variants": {
+        "complete": {
+          "bytes": 1380996,
+          "sha256": "4436b7e37492875be714aac1b739baacb59d42e8e3c01860e0c132f97e74a644",
+          "meshes": 6,
+          "triangles": 22644,
+          "parts": [
+            "capsula-bacteriana",
+            "citoplasma",
+            "membrana",
+            "nucleoide",
+            "parede",
+            "ribossomos"
+          ],
+          "embeddedImages": 12,
+          "allResourcesEmbedded": true
+        },
+        "cutaway": {
+          "bytes": 1556096,
+          "sha256": "73cf49d6775390d7b5edb8dd82e83cc06f1c8e5c80c3a183dc96332a6f87e102",
+          "meshes": 6,
+          "triangles": 31860,
+          "parts": [
+            "capsula-bacteriana",
+            "citoplasma",
+            "membrana",
+            "nucleoide",
+            "parede",
+            "ribossomos"
+          ],
+          "embeddedImages": 12,
+          "allResourcesEmbedded": true
+        }
+      }
+    },
+    {
+      "id": "pseudomonas",
+      "variants": {
+        "complete": {
+          "bytes": 1462280,
+          "sha256": "5a4d8441be4e0091d1e0d0bc981c968863a5db14700dd77bdbde0b77824419bc",
+          "meshes": 7,
+          "triangles": 19924,
+          "parts": [
+            "citoplasma",
+            "externa",
+            "flagelo",
+            "membrana",
+            "nucleoide",
+            "parede",
+            "ribossomos"
+          ],
+          "embeddedImages": 14,
+          "allResourcesEmbedded": true
+        },
+        "cutaway": {
+          "bytes": 1623572,
+          "sha256": "d6ab8b3096ae271da062155c38fdb399c7feeeae887058cfca9de3e5ec22309f",
+          "meshes": 7,
+          "triangles": 29140,
+          "parts": [
+            "citoplasma",
+            "externa",
+            "flagelo",
+            "membrana",
+            "nucleoide",
+            "parede",
+            "ribossomos"
+          ],
+          "embeddedImages": 14,
+          "allResourcesEmbedded": true
+        }
+      }
+    },
+    {
+      "id": "herpes",
+      "variants": {
+        "complete": {
+          "bytes": 1509620,
+          "sha256": "23a3c084d60ddbb70251459a963a51cc1065e8ae2446357cca6c3b09c41bf501",
+          "meshes": 5,
+          "triangles": 33348,
+          "parts": [
+            "capsideo",
+            "envelope",
+            "espiculas",
+            "genoma",
+            "tegumento"
+          ],
+          "embeddedImages": 10,
+          "allResourcesEmbedded": true
+        },
+        "cutaway": {
+          "bytes": 1517108,
+          "sha256": "307ebaf02e6851ed88a7ddaa611ab6671c9a12a9efccdbae66ae0ae01f67781f",
+          "meshes": 5,
+          "triangles": 33860,
+          "parts": [
+            "capsideo",
+            "envelope",
+            "espiculas",
+            "genoma",
+            "tegumento"
+          ],
+          "embeddedImages": 10,
+          "allResourcesEmbedded": true
+        }
+      }
+    },
+    {
+      "id": "hepatite-b",
+      "variants": {
+        "complete": {
+          "bytes": 1274924,
+          "sha256": "0a04997d3606423e0416282706bdfd982e11bddbdc785a6c4f4e4c82cdc56c90",
+          "meshes": 4,
+          "triangles": 29540,
+          "parts": [
+            "capsideo",
+            "envelope",
+            "espiculas",
+            "genoma"
+          ],
+          "embeddedImages": 8,
+          "allResourcesEmbedded": true
+        },
+        "cutaway": {
+          "bytes": 1231720,
+          "sha256": "661d57c9beafb04f6045a090327688c71bf200ac5ddaf6a58015c136da3cd5f7",
+          "meshes": 4,
+          "triangles": 27748,
+          "parts": [
+            "capsideo",
+            "envelope",
+            "espiculas",
+            "genoma"
+          ],
+          "embeddedImages": 8,
+          "allResourcesEmbedded": true
+        }
+      }
+    },
+    {
+      "id": "histoplasma",
+      "variants": {
+        "complete": {
+          "bytes": 1343028,
+          "sha256": "54644a3f8e1043900d8ed03cfd3df0017ec0c965cc924d8d1e7e1381c2b4d30b",
+          "meshes": 7,
+          "triangles": 14868,
+          "parts": [
+            "broto",
+            "citoplasma",
+            "membrana",
+            "mitocondrias",
+            "nucleo",
+            "parede",
+            "vacuolo"
+          ],
+          "embeddedImages": 14,
+          "allResourcesEmbedded": true
+        },
+        "cutaway": {
+          "bytes": 1467456,
+          "sha256": "bde31cee504b3437b2b14937589bd6cc5960d53f23e3d94b0e8d39d84d8536a9",
+          "meshes": 7,
+          "triangles": 21780,
+          "parts": [
+            "broto",
+            "citoplasma",
+            "membrana",
+            "mitocondrias",
+            "nucleo",
+            "parede",
+            "vacuolo"
+          ],
+          "embeddedImages": 14,
+          "allResourcesEmbedded": true
+        }
+      }
+    },
+    {
+      "id": "paracoccidioides",
+      "variants": {
+        "complete": {
+          "bytes": 1637152,
+          "sha256": "897fab1d8a7644d6158f791b8e81dbaa0c5906d4b62d211d1d8d178a29b6b0e7",
+          "meshes": 7,
+          "triangles": 28332,
+          "parts": [
+            "broto",
+            "citoplasma",
+            "membrana",
+            "mitocondrias",
+            "nucleo",
+            "parede",
+            "vacuolo"
+          ],
+          "embeddedImages": 14,
+          "allResourcesEmbedded": true
+        },
+        "cutaway": {
+          "bytes": 1761576,
+          "sha256": "da7cf670f37412093adeb36ba2289d6417b89ea3d52b40298c00792b5da1bc65",
+          "meshes": 7,
+          "triangles": 35244,
+          "parts": [
+            "broto",
+            "citoplasma",
+            "membrana",
+            "mitocondrias",
+            "nucleo",
+            "parede",
+            "vacuolo"
+          ],
+          "embeddedImages": 14,
+          "allResourcesEmbedded": true
+        }
+      }
+    },
+    {
+      "id": "leishmania",
+      "variants": {
+        "complete": {
+          "bytes": 958060,
+          "sha256": "049afc7da387cc58a239665888ca202e4f700dfa9a76a60ab7d2079db4d4adc2",
+          "meshes": 5,
+          "triangles": 10128,
+          "parts": [
+            "cinetoplasto",
+            "citoplasma",
+            "flagelo",
+            "membrana",
+            "nucleo"
+          ],
+          "embeddedImages": 10,
+          "allResourcesEmbedded": true
+        },
+        "cutaway": {
+          "bytes": 1045616,
+          "sha256": "b98d09a3e736d0fc25321328f2a12026e208eb6d8031297c3af90374689e78b2",
+          "meshes": 5,
+          "triangles": 14736,
+          "parts": [
+            "cinetoplasto",
+            "citoplasma",
+            "flagelo",
+            "membrana",
+            "nucleo"
+          ],
+          "embeddedImages": 10,
+          "allResourcesEmbedded": true
+        }
+      }
+    },
+    {
+      "id": "trichomonas",
+      "variants": {
+        "complete": {
+          "bytes": 1337772,
+          "sha256": "dd3edca89a09ce178e4dd22edb6e7bec05e00f5e4fc385e8d7bb5ec2be655df4",
+          "meshes": 7,
+          "triangles": 13018,
+          "parts": [
+            "axostilo",
+            "citoplasma",
+            "flagelo",
+            "hidrogenossomos",
+            "membrana",
+            "nucleo",
+            "ondulante"
+          ],
+          "embeddedImages": 14,
+          "allResourcesEmbedded": true
+        },
+        "cutaway": {
+          "bytes": 1425328,
+          "sha256": "14b07a4ab4e57e8d476a5fc0523a15dec39c9133747ba7d20de57bd76016ba3f",
+          "meshes": 7,
+          "triangles": 17626,
+          "parts": [
+            "axostilo",
+            "citoplasma",
+            "flagelo",
+            "hidrogenossomos",
+            "membrana",
+            "nucleo",
+            "ondulante"
+          ],
+          "embeddedImages": 14,
           "allResourcesEmbedded": true
         }
       }

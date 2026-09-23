@@ -8,7 +8,11 @@ import {
   BookOpen,
   Image as ImageIcon,
 } from "lucide-react";
-import { SCORES } from "./academic/scores";
+import { SCORES as ORIGINAL_SCORES } from "./academic/scores";
+import { EXTRA_SCORES } from "./academic/extra-scores";
+import Calculators from "./Calculators";
+import { calculators } from "../shared/calculators.mjs";
+const SCORES=[...ORIGINAL_SCORES,...EXTRA_SCORES];
 export async function academicRequest(action, payload, signal) {
   const r = await fetch("/api/wmed/academic", {
     method: "POST",
@@ -49,12 +53,15 @@ export function Scores() {
       (!area || s.especialidade === area) &&
       norm(s.nome + " " + s.sigla).includes(norm(q)),
   );
+  const [calculator,setCalculator]=useState(null);
+  const formulaList=calculators.filter(c=>(!area||c.area===area)&&norm(c.name).includes(norm(q)));
   const complete = score?.criterios.every((c) => answers[c.id] !== undefined);
   const total =
     score?.criterios.reduce((sum, c) => sum + (answers[c.id] || 0), 0) || 0;
   const band = complete
     ? score.faixas.find((f) => total >= f.min && total <= f.max)
     : null;
+  if(calculator)return <Calculators key={calculator} id={calculator} onBack={()=>setCalculator(null)}/>;
   if (score)
     return (
       <section className="module-page">
@@ -119,7 +126,7 @@ export function Scores() {
     <section className="module-page">
       <LibraryHead
         title="Scores e calculadoras"
-        subtitle={`${SCORES.length} instrumentos do acervo Vytal. Escolha, preencha e confira os critérios.`}
+        subtitle={`${SCORES.length} scores e ${calculators.length} calculadoras. Busque pelo nome ou pela especialidade.`}
       />
       <div className="library-filters">
         <label>
@@ -137,11 +144,13 @@ export function Scores() {
           onChange={(e) => setArea(e.target.value)}
         >
           <option value="">Todas as especialidades</option>
-          {[...new Set(SCORES.map((s) => s.especialidade))].map((a) => (
+          {[...new Set([...SCORES.map((s) => s.especialidade),...calculators.map(c=>c.area)])].map((a) => (
             <option key={a}>{a}</option>
           ))}
         </select>
       </div>
+      {formulaList.length>0&&<><h2 className="library-section-title">Calculadoras por fórmula <small>{formulaList.length}</small></h2><div className="resource-grid">{formulaList.map(c=><button className="resource-card" key={c.id} onClick={()=>setCalculator(c.id)}><Calculator size={22}/><small>{c.area}</small><h3>{c.name}</h3><p>{c.summary}</p><span>Calcular ↗</span></button>)}</div></>}
+      <h2 className="library-section-title">Scores por critérios <small>{list.length}</small></h2>
       <div className="resource-grid">
         {list.map((s) => (
           <button
@@ -162,7 +171,7 @@ export function Scores() {
           </button>
         ))}
       </div>
-      {!list.length && <p>Nenhum score encontrado.</p>}
+      {!list.length&&!formulaList.length && <p>Nenhum instrumento encontrado.</p>}
     </section>
   );
 }
@@ -355,134 +364,4 @@ export function ReferenceLibrary({ kind }) {
     </section>
   );
 }
-export function Images({ session, onLogin }) {
-  const [data, setData] = useState(null),
-    [page, setPage] = useState(1),
-    [error, setError] = useState(""),
-    [busy, setBusy] = useState(false),
-    [selected, setSelected] = useState(null),
-    [retry, setRetry] = useState(0);
-  useEffect(() => {
-    if (!session?.authenticated) {
-      setData(null);
-      return;
-    }
-    const c = new AbortController();
-    setBusy(true);
-    setError("");
-    academicRequest("images", { page }, c.signal)
-      .then(setData)
-      .catch((e) => {
-        if (e.name !== "AbortError") setError(e.message);
-      })
-      .finally(() => {
-        if (!c.signal.aborted) setBusy(false);
-      });
-    return () => c.abort();
-  }, [session, page, retry]);
-  const safe = (u) =>
-    typeof u === "string"
-      ? u.startsWith("/")
-        ? "https://vytal-api-production.up.railway.app" + u
-        : /^https:\/\//.test(u)
-          ? u
-          : undefined
-      : undefined;
-  return (
-    <section className="module-page">
-      <LibraryHead
-        title="Banco de imagens"
-        subtitle="Exames aprovados pela curadoria do Vytal Acadêmico."
-      />
-      {!session?.authenticated ? (
-        <div className="resource-card">
-          <p>Entre com sua conta para acessar as imagens.</p>
-          <button className="module-primary" onClick={onLogin}>
-            Entrar com Vytal
-          </button>
-        </div>
-      ) : error ? (
-        <p role="alert">
-          {error}{" "}
-          <button onClick={() => setRetry((n) => n + 1)}>
-            Tentar novamente
-          </button>
-        </p>
-      ) : busy ? (
-        <p>Carregando imagens…</p>
-      ) : selected ? (
-        <>
-          <button className="back-button" onClick={() => setSelected(null)}>
-            ← Voltar às imagens
-          </button>
-          <article className="image-detail">
-            <img src={safe(selected.urlImagem)} alt={selected.achado} />
-            <div>
-              <h2>{selected.achado}</h2>
-              <p>{selected.descricaoDidatica}</p>
-              {selected.explicacaoProcurar && (
-                <>
-                  <h3>O que observar</h3>
-                  <p>{selected.explicacaoProcurar}</p>
-                </>
-              )}
-              {selected.explicacaoImporta && (
-                <p>{selected.explicacaoImporta}</p>
-              )}
-              <p>
-                {selected.creditoAutor} · {selected.fonte} · {selected.licenca}
-              </p>
-              {safe(selected.urlOriginal) && (
-                <a href={selected.urlOriginal} target="_blank" rel="noreferrer">
-                  Fonte original ↗
-                </a>
-              )}
-              {safe(selected.licencaUrl) && (
-                <a href={selected.licencaUrl} target="_blank" rel="noreferrer">
-                  {" "}
-                  Licença ↗
-                </a>
-              )}
-            </div>
-          </article>
-        </>
-      ) : (
-        <>
-          <div className="resource-grid image-grid">
-            {data?.imagens?.map((i) => (
-              <button
-                className="resource-card"
-                key={i.id}
-                onClick={() => setSelected(i)}
-              >
-                <img loading="lazy" src={safe(i.urlImagem)} alt={i.achado} />
-                <small>
-                  {i.modalidade} · {i.regiao}
-                </small>
-                <h3>{i.achado}</h3>
-                <small>
-                  {i.creditoAutor} {i.licenca}
-                </small>
-              </button>
-            ))}
-          </div>
-          {data && !data.imagens?.length && (
-            <p>Nenhuma imagem aprovada disponível nesta página.</p>
-          )}
-          <div className="pagination">
-            <button disabled={page === 1} onClick={() => setPage((n) => n - 1)}>
-              Anterior
-            </button>
-            <span>Página {page}</span>
-            <button
-              disabled={!data || page * 12 >= data.total}
-              onClick={() => setPage((n) => n + 1)}
-            >
-              Próxima
-            </button>
-          </div>
-        </>
-      )}
-    </section>
-  );
-}
+export {default as Images} from "./ImageLibrary";

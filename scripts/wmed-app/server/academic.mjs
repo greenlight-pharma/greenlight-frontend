@@ -1,3 +1,4 @@
+import {imageQuery} from "../shared/image-filters.mjs";
 import { detectAcademicPII } from "../shared/pii.mjs";
 import { sessionToken, allowWrite } from "./vytal-assistant.mjs";
 import {
@@ -50,13 +51,7 @@ export async function academic(
   let path, body, report;
   try {
     if (action === "images") {
-      const page = Number(p?.page || 1);
-      if (!Number.isInteger(page) || page < 1 || page > 10000) throw Error();
-      const q = new URLSearchParams({ page: String(page), pageSize: "12" });
-      if (p?.tema) {
-        if (typeof p.tema !== "string" || p.tema.length > 120) throw Error();
-        q.set("tema", p.tema);
-      }
+      const q=imageQuery(p);
       path = "/estudante/imagens?" + q;
     } else if (action === "structure") {
       if (

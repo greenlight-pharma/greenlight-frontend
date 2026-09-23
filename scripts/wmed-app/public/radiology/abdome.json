@@ -1,0 +1,184 @@
+{
+  "source": "https://app.vytalsaude.com.br/academico-assets/abdome.vytalvol",
+  "sourceSHA256": "56862d35ba8cb3cdf5acd5f0d8b302e9ec75287515f8c65af1b9de1f4625f8ca",
+  "license": "CC BY 4.0",
+  "structures": [
+    {
+      "id": 1,
+      "name": "Fígado",
+      "triangles": 11402
+    },
+    {
+      "id": 2,
+      "name": "Vesícula biliar",
+      "triangles": 1200
+    },
+    {
+      "id": 3,
+      "name": "Baço",
+      "triangles": 1200
+    },
+    {
+      "id": 4,
+      "name": "Estômago",
+      "triangles": 4150
+    },
+    {
+      "id": 5,
+      "name": "Pâncreas",
+      "triangles": 1200
+    },
+    {
+      "id": 6,
+      "name": "Duodeno",
+      "triangles": 1428
+    },
+    {
+      "id": 7,
+      "name": "Intestino delgado",
+      "triangles": 18572
+    },
+    {
+      "id": 8,
+      "name": "Cólon",
+      "triangles": 13308
+    },
+    {
+      "id": 9,
+      "name": "Rim direito",
+      "triangles": 2454
+    },
+    {
+      "id": 10,
+      "name": "Rim esquerdo",
+      "triangles": 2324
+    },
+    {
+      "id": 11,
+      "name": "Adrenais",
+      "triangles": 448
+    },
+    {
+      "id": 12,
+      "name": "Bexiga",
+      "triangles": 2802
+    },
+    {
+      "id": 13,
+      "name": "Próstata",
+      "triangles": 1200
+    },
+    {
+      "id": 14,
+      "name": "Pulmão direito",
+      "triangles": 8484
+    },
+    {
+      "id": 15,
+      "name": "Pulmão esquerdo",
+      "triangles": 1200
+    },
+    {
+      "id": 17,
+      "name": "Esôfago",
+      "triangles": 1200
+    },
+    {
+      "id": 19,
+      "name": "Coração",
+      "triangles": 3140
+    },
+    {
+      "id": 20,
+      "name": "Aorta",
+      "triangles": 1722
+    },
+    {
+      "id": 23,
+      "name": "Veias pulmonares",
+      "triangles": 112
+    },
+    {
+      "id": 24,
+      "name": "Veia cava inferior",
+      "triangles": 1814
+    },
+    {
+      "id": 25,
+      "name": "Veia porta e esplênica",
+      "triangles": 1200
+    },
+    {
+      "id": 26,
+      "name": "Artérias ilíacas",
+      "triangles": 2138
+    },
+    {
+      "id": 27,
+      "name": "Veias ilíacas",
+      "triangles": 2042
+    },
+    {
+      "id": 29,
+      "name": "Coluna torácica",
+      "triangles": 4298
+    },
+    {
+      "id": 30,
+      "name": "Coluna lombar",
+      "triangles": 8356
+    },
+    {
+      "id": 31,
+      "name": "Sacro",
+      "triangles": 5530
+    },
+    {
+      "id": 32,
+      "name": "Medula espinhal",
+      "triangles": 1200
+    },
+    {
+      "id": 33,
+      "name": "Costelas",
+      "triangles": 7044
+    },
+    {
+      "id": 34,
+      "name": "Cartilagens costais",
+      "triangles": 5756
+    },
+    {
+      "id": 35,
+      "name": "Esterno",
+      "triangles": 400
+    },
+    {
+      "id": 39,
+      "name": "Ossos do quadril",
+      "triangles": 15120
+    },
+    {
+      "id": 40,
+      "name": "Fêmures",
+      "triangles": 4336
+    },
+    {
+      "id": 41,
+      "name": "Musculatura paravertebral",
+      "triangles": 8378
+    },
+    {
+      "id": 42,
+      "name": "Iliopsoas",
+      "triangles": 10676
+    },
+    {
+      "id": 43,
+      "name": "Glúteos",
+      "triangles": 19076
+    }
+  ],
+  "sha256": "3d18daf4be12ff63535c543dbc477be9da7603f337d221f2399005d83ecc38bf",
+  "method": "Gaussian sigma .65 voxels + marching cubes .5, quadric decimation 35%; linear RGB materials; surfaces aligned to source grid, no atlas registration"
+}
