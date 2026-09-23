@@ -330,22 +330,13 @@ function ClinicalCaseBody({ session, onLogin, onProgress, onPendingChange, activ
               continuar. Não grave a voz do paciente.
             </p>
             <button disabled={!!busy||recording||!relato.trim()} onClick={()=>setPrivacyOpen(true)}>Revisar dados pessoais</button>
-            <label className="confirm-row">
-              <input
-                type="checkbox"
-                checked={confirmed}
-                onChange={(e) => setConfirmed(e.target.checked)}
-              />
-              Revisei o texto e removi os dados que identificam o paciente.
-            </label>
             <button
               className="module-primary"
               disabled={
                 !!busy ||
                 recording ||
                 relato.trim().length < 20 ||
-                relato.length > 5000 ||
-                !confirmed
+                relato.length > 5000
               }
               onClick={structure}
             >
