@@ -2,7 +2,7 @@
   "$schema": "https://openapi.vercel.sh/vercel.json",
   "buildCommand": "bash scripts/build-vercel.sh",
   "outputDirectory": ".vercel-out",
-  "installCommand": "echo 'sem depend\u00eancias na raiz \u2014 o painel instala as suas no build'",
+  "installCommand": "echo 'sem dependências na raiz — o painel instala as suas no build'",
   "redirects": [
     {
       "source": "/care-whatsapp",
@@ -60,6 +60,11 @@
       "source": "/vytal-medicacoes/:caminho*",
       "destination": "/vytal-care/:caminho*",
       "permanent": true
+    },
+    {
+      "source": "/wmed",
+      "destination": "/wmed/",
+      "permanent": false
     }
   ],
   "rewrites": [
@@ -76,6 +81,26 @@
     {
       "source": "/vytal-care2/app/:path*",
       "destination": "/vytal-care2/app/index.html"
+    }
+  ],
+  "functions": {
+    "api/wmed/research.js": {
+      "maxDuration": 30
+    }
+  },
+  "headers": [
+    {
+      "source": "/wmed/:path*",
+      "headers": [
+        {
+          "key": "X-Robots-Tag",
+          "value": "noindex, nofollow"
+        },
+        {
+          "key": "X-Content-Type-Options",
+          "value": "nosniff"
+        }
+      ]
     }
   ]
 }

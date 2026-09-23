@@ -1,0 +1,2 @@
+# WMed — prévia no site Vytal
+Responder em português. Manter WMed em /wmed/, sem substituir páginas existentes. Chaves nunca em VITE_, frontend, logs ou Git. A API pública só busca bibliografia; não ativar modelos pagos sem autenticação/quota e configuração específica. Não chamar testes simulados de validação clínica. Rodar os testes WMed e o build do site antes de publicar. Preservar a API de produção e o trabalho existente. Estado/diário canônicos ficam em /Users/dilson/Vytal-Migracao-20260911/dev/vytal-api/docs/codex/.

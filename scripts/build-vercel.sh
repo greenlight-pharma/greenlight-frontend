@@ -21,7 +21,7 @@ echo "==> Copiando o site estático (raiz do repo)"
 cp -R ./* "$OUT"/
 
 echo "==> Removendo do publicado o que é fonte, não site"
-rm -rf "$OUT/medico-app" "$OUT/docs" "$OUT/scripts" "$OUT/vercel.json"
+rm -rf "$OUT/medico-app" "$OUT/docs" "$OUT/scripts" "$OUT/vercel.json" "$OUT/api"
 
 echo "==> Instalando dependências dos painéis"
 npm ci --prefix medico-app
@@ -76,3 +76,10 @@ npm ci --prefix scripts/care2-app
 npm run build --prefix scripts/care2-app
 mkdir -p "$OUT/vytal-care2/app"
 cp -R scripts/care2-app/dist/* "$OUT/vytal-care2/app"/
+
+# WMed: prévia independente em subdiretório; funções públicas não usam IA paga.
+npm ci --prefix scripts/wmed-app
+npm test --prefix scripts/wmed-app
+VITE_BASE=/wmed/ VITE_PUBLIC_PREVIEW=true npm run build --prefix scripts/wmed-app
+mkdir -p "$OUT/wmed"
+cp -R scripts/wmed-app/dist/* "$OUT/wmed"/

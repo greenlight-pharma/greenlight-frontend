@@ -1,0 +1,27 @@
+import {useEffect,useRef,useState} from 'react';
+import * as THREE from 'three';
+import {GLTFLoader} from 'three/addons/loaders/GLTFLoader.js';
+import {OrbitControls} from 'three/addons/controls/OrbitControls.js';
+import {RotateCcw,Play,Pause,Scan,Maximize2} from 'lucide-react';
+export const models=[{id:'cardiomiocito',name:'Cardiomiócito',system:'Cardiovascular',description:'Célula muscular cardíaca. Explore sua organização interna e as estruturas relacionadas à contração.'},{id:'neuronio',name:'Neurônio multipolar',system:'Nervoso',description:'Explore o corpo celular, os prolongamentos e a organização interna deste modelo didático.'},{id:'ciliada',name:'Célula ciliada',system:'Respiratório',description:'Observe os cílios e as estruturas internas de uma célula do epitélio das vias aéreas.'}];
+export default function Viewer({model,setModel}){
+ const host=useRef(null),api=useRef(null),panel=useRef(null);const [cut,setCut]=useState(true),[rotating,setRotating]=useState(false),[state,setState]=useState('loading'),[retry,setRetry]=useState(0);
+ useEffect(()=>{
+  const el=host.current;let cancelled=false,raf=0,object;
+  let renderer;try{renderer=new THREE.WebGLRenderer({antialias:true,alpha:true});}catch{setState('error');return;}
+  renderer.setPixelRatio(Math.min(devicePixelRatio,2));renderer.outputColorSpace=THREE.SRGBColorSpace;renderer.toneMapping=THREE.ACESFilmicToneMapping;renderer.toneMappingExposure=1.05;el.appendChild(renderer.domElement);
+  const scene=new THREE.Scene(),camera=new THREE.PerspectiveCamera(38,1,.01,5000);const controls=new OrbitControls(camera,renderer.domElement);controls.enableDamping=true;controls.enablePan=false;controls.autoRotateSpeed=.55;
+  scene.add(new THREE.HemisphereLight(0xe0f4ff,0x334255,2.5));const key=new THREE.DirectionalLight(0xffffff,3);key.position.set(4,6,8);scene.add(key);const rim=new THREE.DirectionalLight(0x8cdbff,1.3);rim.position.set(-5,1,-3);scene.add(rim);
+  let radius=1;function fit(){const d=radius/Math.sin(THREE.MathUtils.degToRad(camera.fov/2))*Math.max(1,1/camera.aspect)*1.10;camera.position.set(d*.12,d*.1,d);camera.near=d/100;camera.far=d*100;camera.updateProjectionMatrix();controls.target.set(0,0,0);controls.minDistance=radius*.5;controls.maxDistance=d*3;controls.update();}
+  const resize=()=>{const {width,height}=el.getBoundingClientRect();if(!width||!height)return;renderer.setSize(width,height,false);camera.aspect=width/height;camera.updateProjectionMatrix();if(object)fit();};const obs=new ResizeObserver(resize);obs.observe(el);resize();
+  setState('loading');new GLTFLoader().load(`${import.meta.env.BASE_URL}models/${model}-${cut?'cutaway':'complete'}.glb`,g=>{
+   if(cancelled){dispose(g.scene);return;}object=g.scene;const box=new THREE.Box3().setFromObject(object);radius=box.getBoundingSphere(new THREE.Sphere()).radius;object.position.sub(box.getCenter(new THREE.Vector3()));scene.add(object);fit();setState('ready');
+  },undefined,()=>{if(!cancelled)setState('error');});
+  api.current={reset:fit,controls};function frame(){raf=requestAnimationFrame(frame);controls.update();renderer.render(scene,camera);}frame();
+  function dispose(o){o.traverse(c=>{if(c.isMesh){c.geometry.dispose();for(const m of Array.isArray(c.material)?c.material:[c.material]){for(const v of Object.values(m))if(v?.isTexture)v.dispose();m.dispose();}}});}
+  return()=>{cancelled=true;cancelAnimationFrame(raf);obs.disconnect();controls.dispose();if(object)dispose(object);renderer.dispose();renderer.forceContextLoss();el.replaceChildren();api.current=null;};
+ },[model,cut,retry]);
+ useEffect(()=>{if(api.current)api.current.controls.autoRotate=rotating;},[rotating,model,cut,retry,state]);
+ const m=models.find(m=>m.id===model);
+ return <section className="visual-panel" ref={panel} aria-label="Explorador de modelos 3D"><div className="visual-heading"><span className="eyebrow"><span className="dot"/>EXPLORAR EM 3D</span><button className="icon-btn" title="Expandir explorador" aria-label="Expandir explorador" onClick={()=>document.fullscreenElement?document.exitFullscreen():panel.current.requestFullscreen?.()}><Maximize2 size={17}/></button></div><div className="model-heading"><span className="system-label">{m.system}</span><h2>{m.name}</h2><p>Conhecimento em outra dimensão.</p></div><div className="canvas-host" ref={host} aria-label={`Modelo tridimensional: ${m.name}`}/>{state==='loading'&&<div className="model-state"><span className="spinner"/>Preparando modelo 3D…</div>}{state==='error'&&<div className="model-state">O modelo não carregou.<button onClick={()=>setRetry(v=>v+1)}>Tentar novamente</button></div>}<div className="model-toolbar"><button aria-pressed={cut} onClick={()=>setCut(v=>!v)}><Scan size={17}/>{cut?'Fechar corte':'Abrir corte'}</button><button aria-pressed={rotating} onClick={()=>setRotating(v=>!v)}>{rotating?<Pause size={17}/>:<Play size={17}/>}Girar</button><button className="icon-btn" aria-label="Reenquadrar modelo" title="Reenquadrar modelo" onClick={()=>api.current?.reset()}><RotateCcw size={17}/></button></div><div className="model-bottom"><label htmlFor="model-choice">Biblioteca celular</label><select id="model-choice" value={model} onChange={e=>setModel(e.target.value)}>{models.map(m=><option key={m.id} value={m.id}>{m.name}</option>)}</select><p>{m.description}</p><small>Modelo didático original · Arraste para girar · Role para aproximar</small></div></section>;
+}
