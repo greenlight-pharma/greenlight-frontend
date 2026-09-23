@@ -1,8 +1,8 @@
 import React,{useEffect,useRef,useState} from 'react';
 import {RotateCcw,ScanLine,ArrowRight} from 'lucide-react';
 import {bestProjection,ncc,tone} from './imaging.mjs';
-const BASE=`${import.meta.env.BASE_URL}xray/pelvis/`;
 export default function RegistrationPractice({data}){
+ const BASE=data.baseUrl;
  const [images,setImages]=useState(null),[error,setError]=useState(false),[retry,setRetry]=useState(0),[target,setTarget]=useState(3),[candidate,setCandidate]=useState(0),[mode,setMode]=useState('fusion'),[reveal,setReveal]=useState(false),[search,setSearch]=useState(null);
  const canvas=useRef(null),refcanvas=useRef(null);
  useEffect(()=>{let stop=false;setImages(null);setError(false);Promise.all(data.views.map(v=>new Promise((resolve,reject)=>{const image=new Image();image.onload=()=>{const c=document.createElement('canvas');c.width=c.height=data.size;const ctx=c.getContext('2d');ctx.drawImage(image,0,0);const rgba=ctx.getImageData(0,0,c.width,c.height).data;resolve(Uint8Array.from({length:data.size**2},(_,i)=>rgba[i*4]))};image.onerror=reject;image.src=BASE+v.image}))).then(x=>{if(!stop)setImages(x)}).catch(()=>{if(!stop)setError(true)});return()=>{stop=true}},[data,retry]);

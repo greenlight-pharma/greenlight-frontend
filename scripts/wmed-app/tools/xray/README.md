@@ -29,3 +29,9 @@ Verificação: testes Node de integridade, nomes de estruturas, orientação e c
 - Fundamentação: https://github.com/eigenvivek/xvr e https://xvr.csail.mit.edu/ consultados em 23/09/2026. Código de registro neural não incorporado; nenhuma nova dependência ou GPU.
 
 Testes adicionais verificam raios por projeção independente, contornos com bits sobrepostos e NCC com brilho/escala conhecidos. A revisão clínica e ensaios com radiografias adquiridas não foram executados.
+
+## Regiões adicionais — 23/09/2026
+
+Tórax, abdome e coluna lombar gerados por `build-regions.py` a partir da mesma TC pública s1397. Com pelve, são quatro regiões e 28 projeções, todas simuladas. Para reproduzir, use o mesmo ambiente e fonte, com `--region torax`, `--region abdome` ou `--region lombar`. Script registra corte de origem, affine, estruturas agrupadas, calibração do detector e hashes. Máscaras mantêm no máximo sete bits por região. Malhas suavizadas com sigma .55 voxels; sem registro entre pacientes.
+
+No tórax: pulmões, coração, costelas, coluna torácica, esterno e traqueia. Abdome: fígado, baço, rins, coluna lombar, pelve e aorta no recorte. Lombar: L1–L5 e sacro. Limites do recorte podem truncar estruturas; máscara de órgão derivada da TC não significa visibilidade isolada no RX simples. Não há validação clínica ou radiografia adquirida neste conjunto.

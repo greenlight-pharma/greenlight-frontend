@@ -1,0 +1,608 @@
+{
+  "version": 1,
+  "title": "Abdome · radiografia em 3D",
+  "regionTitle": "Abdome",
+  "model": "anatomy.glb",
+  "displayZoom": 1,
+  "challenge": "kidney_right",
+  "kind": "DRR simulada a partir de TC",
+  "renderer": "DiffDRR 0.6.0 / Siddon / CPU",
+  "size": 384,
+  "sdd": 1100.0,
+  "sid": 720.0,
+  "pixelSpacing": 2.2,
+  "coordinateSystem": "RAS, centralizado; Three.js=(R,S,-A)",
+  "affineRAS": [
+    [
+      3.0,
+      0.0,
+      0.0,
+      -220.5
+    ],
+    [
+      0.0,
+      3.0,
+      0.0,
+      -157.5
+    ],
+    [
+      0.0,
+      0.0,
+      3.0054945054945055,
+      -217.89835164835165
+    ],
+    [
+      0.0,
+      0.0,
+      0.0,
+      1.0
+    ]
+  ],
+  "sourceCropStart": [
+    7,
+    19,
+    0
+  ],
+  "cropShape": [
+    148,
+    106,
+    146
+  ],
+  "spacing": [
+    3.0,
+    3.0,
+    3.0054945054945055
+  ],
+  "source": "TotalSegmentator v2.0.1 · s1397 · reamostrado pelo PyVista",
+  "license": "CC BY 4.0",
+  "sourceUrl": "https://zenodo.org/records/10047292",
+  "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+  "citation": "Wasserthal et al. TotalSegmentator: Robust Segmentation of 104 Anatomic Structures in CT Images. 2023. doi:10.1148/ryai.230024",
+  "limitations": "Recorte regional de TC reamostrada em cerca de 3 mm; estruturas podem terminar nos limites do recorte. As máscaras dos órgãos são derivadas da TC e não indicam que cada órgão seja distinguível no RX simples. Segmentações de referência, sem revisão anatômica independente nesta demonstração. Projeção de atenuação simplificada; não reproduz todos os efeitos de uma radiografia adquirida.",
+  "parts": [
+    {
+      "id": "liver",
+      "label": 1,
+      "bit": 1,
+      "name": "Fígado",
+      "hint": "Compare a projeção do fígado com a do rim direito. O contorno é fornecido pela TC.",
+      "color": "#a76950",
+      "vertices": 16424,
+      "triangles": 32848,
+      "opacity": 0.6,
+      "sourceLabels": [
+        "liver"
+      ]
+    },
+    {
+      "id": "spleen",
+      "label": 2,
+      "bit": 2,
+      "name": "Baço",
+      "hint": "Localize o baço à esquerda. Seu destaque não significa que seja distinguível isoladamente no RX.",
+      "color": "#96718a",
+      "vertices": 3356,
+      "triangles": 6708,
+      "opacity": 1,
+      "sourceLabels": [
+        "spleen"
+      ]
+    },
+    {
+      "id": "kidney_left",
+      "label": 3,
+      "bit": 4,
+      "name": "Rim esquerdo",
+      "hint": "Compare a posição dos rins nesta aquisição. Os contornos vêm da TC.",
+      "color": "#b86360",
+      "vertices": 3356,
+      "triangles": 6708,
+      "opacity": 1,
+      "sourceLabels": [
+        "kidney_left"
+      ]
+    },
+    {
+      "id": "kidney_right",
+      "label": 4,
+      "bit": 8,
+      "name": "Rim direito",
+      "hint": "Observe sua sobreposição ao fígado na projeção frontal.",
+      "color": "#b86360",
+      "vertices": 3580,
+      "triangles": 7152,
+      "opacity": 1,
+      "sourceLabels": [
+        "kidney_right"
+      ]
+    },
+    {
+      "id": "lumbar_spine",
+      "label": 5,
+      "bit": 16,
+      "name": "Coluna lombar",
+      "hint": "Identifique a projeção dos corpos vertebrais lombares.",
+      "color": "#dfd4b9",
+      "vertices": 12594,
+      "triangles": 25280,
+      "opacity": 1,
+      "sourceLabels": [
+        "vertebrae_L1",
+        "vertebrae_L2",
+        "vertebrae_L3",
+        "vertebrae_L4",
+        "vertebrae_L5"
+      ]
+    },
+    {
+      "id": "pelvis",
+      "label": 6,
+      "bit": 32,
+      "name": "Ossos da pelve",
+      "hint": "Observe a pelve na parte inferior deste recorte.",
+      "color": "#d9d0bc",
+      "vertices": 30030,
+      "triangles": 60076,
+      "opacity": 1,
+      "sourceLabels": [
+        "hip_left",
+        "hip_right",
+        "sacrum"
+      ]
+    },
+    {
+      "id": "aorta",
+      "label": 7,
+      "bit": 64,
+      "name": "Aorta no recorte",
+      "hint": "A máscara delimita a segmentação da TC; não implica visibilidade da aorta no RX simples.",
+      "color": "#b55d5b",
+      "vertices": 5632,
+      "triangles": 11256,
+      "opacity": 1,
+      "sourceLabels": [
+        "aorta"
+      ]
+    }
+  ],
+  "views": [
+    {
+      "angle": 0,
+      "image": "rx-000.webp",
+      "mask": "mask-000.png",
+      "sourceRAS": [
+        -0.0,
+        720.0,
+        -0.0
+      ],
+      "detectorCornersRAS": [
+        [
+          421.3000183105469,
+          -380.0,
+          421.3000183105469
+        ],
+        [
+          -421.3000183105469,
+          -380.0,
+          421.3000183105469
+        ],
+        [
+          421.3000183105469,
+          -380.0,
+          -421.3000183105469
+        ],
+        [
+          -421.3000183105469,
+          -380.0,
+          -421.3000183105469
+        ]
+      ],
+      "pose": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          -0.0
+        ],
+        [
+          0.0,
+          0.0,
+          -1.0,
+          720.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          -0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "seconds": 0.916,
+      "projectionMax": 92.95905303955078
+    },
+    {
+      "angle": 15,
+      "image": "rx-015.webp",
+      "mask": "mask-015.png",
+      "sourceRAS": [
+        -186.34971247381492,
+        695.4665949281292,
+        -0.0
+      ],
+      "detectorCornersRAS": [
+        [
+          505.2957763671875,
+          -258.01129150390625,
+          421.3000183105469
+        ],
+        [
+          -308.59332275390625,
+          -476.09222412109375,
+          421.3000183105469
+        ],
+        [
+          505.2957763671875,
+          -258.01129150390625,
+          -421.3000183105469
+        ],
+        [
+          -308.59332275390625,
+          -476.09222412109375,
+          -421.3000183105469
+        ]
+      ],
+      "pose": [
+        [
+          0.9659258127212524,
+          0.0,
+          0.258819043636322,
+          -186.34971618652344
+        ],
+        [
+          0.258819043636322,
+          0.0,
+          -0.9659258127212524,
+          695.4666137695312
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          -0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "seconds": 0.881,
+      "projectionMax": 93.37110137939453
+    },
+    {
+      "angle": 30,
+      "image": "rx-030.webp",
+      "mask": "mask-030.png",
+      "sourceRAS": [
+        -359.99999999999994,
+        623.5382907247958,
+        -0.0
+      ],
+      "detectorCornersRAS": [
+        [
+          554.8565063476562,
+          -118.43963623046875,
+          421.3000183105469
+        ],
+        [
+          -174.85650634765625,
+          -539.7396850585938,
+          421.3000183105469
+        ],
+        [
+          554.8565063476562,
+          -118.43963623046875,
+          -421.3000183105469
+        ],
+        [
+          -174.85650634765625,
+          -539.7396850585938,
+          -421.3000183105469
+        ]
+      ],
+      "pose": [
+        [
+          0.8660253882408142,
+          0.0,
+          0.5,
+          -360.0
+        ],
+        [
+          0.5,
+          0.0,
+          -0.8660253882408142,
+          623.5382690429688
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          -0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "seconds": 0.887,
+      "projectionMax": 96.09628295898438
+    },
+    {
+      "angle": 45,
+      "image": "rx-045.webp",
+      "mask": "mask-045.png",
+      "sourceRAS": [
+        -509.1168824543142,
+        509.11688245431424,
+        -0.0
+      ],
+      "detectorCornersRAS": [
+        [
+          566.6046752929688,
+          29.203521728515625,
+          421.3000183105469
+        ],
+        [
+          -29.203521728515625,
+          -566.6046752929688,
+          421.3000183105469
+        ],
+        [
+          566.6046752929688,
+          29.203521728515625,
+          -421.3000183105469
+        ],
+        [
+          -29.203521728515625,
+          -566.6046752929688,
+          -421.3000183105469
+        ]
+      ],
+      "pose": [
+        [
+          0.7071067690849304,
+          0.0,
+          0.7071067690849304,
+          -509.11688232421875
+        ],
+        [
+          0.7071067690849304,
+          0.0,
+          -0.7071067690849304,
+          509.11688232421875
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          -0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "seconds": 0.903,
+      "projectionMax": 101.59269714355469
+    },
+    {
+      "angle": 60,
+      "image": "rx-060.webp",
+      "mask": "mask-060.png",
+      "sourceRAS": [
+        -623.5382907247958,
+        360.00000000000006,
+        -0.0
+      ],
+      "detectorCornersRAS": [
+        [
+          539.7396850585938,
+          174.85650634765625,
+          421.3000183105469
+        ],
+        [
+          118.43963623046875,
+          -554.8565063476562,
+          421.3000183105469
+        ],
+        [
+          539.7396850585938,
+          174.85650634765625,
+          -421.3000183105469
+        ],
+        [
+          118.43963623046875,
+          -554.8565063476562,
+          -421.3000183105469
+        ]
+      ],
+      "pose": [
+        [
+          0.5,
+          0.0,
+          0.8660253882408142,
+          -623.5382690429688
+        ],
+        [
+          0.8660253882408142,
+          0.0,
+          -0.5,
+          360.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          -0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "seconds": 0.886,
+      "projectionMax": 108.51786804199219
+    },
+    {
+      "angle": 75,
+      "image": "rx-075.webp",
+      "mask": "mask-075.png",
+      "sourceRAS": [
+        -695.4665949281292,
+        186.34971247381492,
+        -0.0
+      ],
+      "detectorCornersRAS": [
+        [
+          476.09222412109375,
+          308.59332275390625,
+          421.3000183105469
+        ],
+        [
+          258.01129150390625,
+          -505.2957763671875,
+          421.3000183105469
+        ],
+        [
+          476.09222412109375,
+          308.59332275390625,
+          -421.3000183105469
+        ],
+        [
+          258.01129150390625,
+          -505.2957763671875,
+          -421.3000183105469
+        ]
+      ],
+      "pose": [
+        [
+          0.258819043636322,
+          0.0,
+          0.9659258127212524,
+          -695.4666137695312
+        ],
+        [
+          0.9659258127212524,
+          0.0,
+          -0.258819043636322,
+          186.34971618652344
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          -0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "seconds": 0.946,
+      "projectionMax": 119.19501495361328
+    },
+    {
+      "angle": 90,
+      "image": "rx-090.webp",
+      "mask": "mask-090.png",
+      "sourceRAS": [
+        -720.0,
+        4.4087284769304716e-14,
+        -0.0
+      ],
+      "detectorCornersRAS": [
+        [
+          380.0,
+          421.3000183105469,
+          421.3000183105469
+        ],
+        [
+          380.0,
+          -421.3000183105469,
+          421.3000183105469
+        ],
+        [
+          380.0,
+          421.3000183105469,
+          -421.3000183105469
+        ],
+        [
+          380.0,
+          -421.3000183105469,
+          -421.3000183105469
+        ]
+      ],
+      "pose": [
+        [
+          6.123234262925839e-17,
+          0.0,
+          1.0,
+          -720.0
+        ],
+        [
+          1.0,
+          0.0,
+          -6.123234262925839e-17,
+          4.408728563427486e-14
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          -0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "seconds": 0.974,
+      "projectionMax": 133.45973205566406
+    }
+  ],
+  "generatorSHA256": "832a0f069a1d0fb303c57e6581086d3be495916f271546a3d0ef6b68c233db3c",
+  "files": {
+    "anatomy.glb": "db973259094a2337f5b7a05c809b334655cc6ba8a2d4adb52298374704bf63ba",
+    "mask-030.png": "8f540b487b75fc7ac54c90d7dbc82e63e3549e0a883e1f3c48a625d8d8530d15",
+    "rx-030.webp": "45f4d23b095af6af00ca24279799433c657332410e5b6094f691b65343f82baa",
+    "rx-060.webp": "06bc41d9b1c469f38e7de9cf18f2a90d2d638505599ff523cb53065f97437b17",
+    "mask-090.png": "bb6ba998785b05a4f33428ac4b8d6aaa7c96efcb3946126e40f49c3bf2914ac3",
+    "mask-045.png": "5d04eb0a91c77c3b619bfca8fa77d051fe6291bdbba0f0241ed3a063a33bb6dc",
+    "rx-000.webp": "83976e93381e3f175529e1ba173d342b2ff02d90eefc5a15c54c9eef9e469d06",
+    "mask-075.png": "ba04bd69e87f8cad7c98f8c2eca668970bce02972d8adc1b4c0a1dc8650ad97c",
+    "rx-015.webp": "e6f2e103ca4212e31b0394f2120f02d94aa746c765a381c7a6243420a1142296",
+    "mask-060.png": "0a77630fa7c19d32b42b822f56663ac2ff669ed42b1ff5b5628ca3cb7ea02627",
+    "rx-075.webp": "baf904a3de9c1f63fd5694187de957cdefcb75993cd7972c4dc570c6f12bbae6",
+    "mask-015.png": "8b4841aeac62c4ab752ab07ae05d157ecff58ef19d2a3c6800a2a2ba913cfdeb",
+    "mask-000.png": "89db772cfb2481a8dbee22e8092724364f3a4babfe5cabeb8ee8c40857e23d89",
+    "rx-045.webp": "76e9444df16ca66a8cfb039ef39cc23078916b2418835f5884753fcd08c9e683",
+    "rx-090.webp": "f3e7fa2e7ccb28280428b3686449a4dfa0cb4ea3726d781c0a518bdb56b24a5c"
+  }
+}
