@@ -1,0 +1,31 @@
+{
+  "date": "2026-09-23",
+  "unit_tests": {
+    "passed": 13,
+    "failed": 0
+  },
+  "build": "passed",
+  "live_research": {
+    "provider": "Europe PMC",
+    "ui_query": "Como os cílios protegem as vias aéreas?",
+    "sources": 8,
+    "jev": "not configured",
+    "synthesis": "not configured"
+  },
+  "ui": [
+    "desktop 1280x720: model and controls fit",
+    "immediate user message and progress visible",
+    "cut toggles and rotation button verified",
+    "three selectable models",
+    "390x844: composer bottom 728.5 < nav top 783; no horizontal overflow"
+  ],
+  "not_run": [
+    "Live Jev API (user does not have access)",
+    "Live generative API (no project key/model configured)",
+    "Vytal shared login (not implemented)",
+    "Clinical/editorial quality benchmark",
+    "Physical mobile devices",
+    "Production deployment"
+  ],
+  "note": "Mock provider tests prove contracts and failure handling only; no claim of clinical validation or medical foundation model training."
+}
