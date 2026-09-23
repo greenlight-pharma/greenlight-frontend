@@ -1,7 +1,7 @@
 {
   "date": "2026-09-23",
   "unit_tests": {
-    "passed": 29,
+    "passed": 41,
     "failed": 0
   },
   "build": "passed",
@@ -20,10 +20,11 @@
     "390x844: composer bottom 728.5 < nav top 783; no horizontal overflow"
   ],
   "not_run": [
-    "Live Jev API (no access)",
-    "Authenticated real Vytal generation (requires user login)",
-    "Clinical/editorial quality benchmark",
-    "Physical mobile devices"
+    "Authenticated real Vytal case generation and quality scoring",
+    "Real audio recording/transcription and physical iPhone",
+    "Medical calibration or clinical benchmark",
+    "Live Jev API",
+    "Public ranking (intentionally deferred)"
   ],
   "note": "Mock provider tests prove contracts and failure handling only; no claim of clinical validation or medical foundation model training.",
   "vytal_chat": {
@@ -31,5 +32,17 @@
     "mobile_fixture": "390x844: login, pending question, immediate display, streaming, markdown table, history length 2 verified",
     "live_upstream": "Unauthenticated request rejected with HTTP 401",
     "authenticated_live": "Not run: requires user login"
+  },
+  "modules": {
+    "anatomy_groups": 13,
+    "histology_cells": 48,
+    "scores": 28,
+    "medications": 214,
+    "conditions": 2045,
+    "radiology_regions": 3,
+    "ui": "1280x720 and390x844; real local models/catalogs, organ selection, complete/cutaway cell, CT regions, Glasgow15, medication/condition search",
+    "case_fixture": "anonymous gate, login, text structure, compact review, all feedback tabs including unknown field preservation, score75, evolution, image bank",
+    "progress": "account-scoped numeric-only local history, validated with isolated storage tests",
+    "upstream": "existing Vytal endpoints unchanged; no authenticated live generation"
   }
 }

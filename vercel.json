@@ -69,6 +69,10 @@
   ],
   "rewrites": [
     {
+      "source": "/wmed/acervo/:path*",
+      "destination": "https://app.vytalsaude.com.br/academico-assets/:path*"
+    },
+    {
       "source": "/:caminho*",
       "has": [
         {
@@ -92,6 +96,9 @@
     },
     "api/wmed/auth.js": {
       "maxDuration": 30
+    },
+    "api/wmed/academic.js": {
+      "maxDuration": 300
     }
   },
   "headers": [
