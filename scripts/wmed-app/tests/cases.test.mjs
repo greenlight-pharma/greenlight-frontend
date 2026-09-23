@@ -26,3 +26,18 @@ test('history paginates and minimizes listing; opening delegates account ownersh
 test('upstream save failure is explicit, never a false saved confirmation',async()=>{
  const o=response();await cases(request({action:'save',snapshot:snapshot()}),o,{fetchImpl:async(url,opts)=>opts.method==='GET'?Response.json({casos:[]}):Response.json({}, {status:500})});assert.equal(o.statusCode,503);assert.ok(o.data.error);assert.equal(o.data.caso,undefined);
 });
+
+// PostgreSQL JSONB returns alphabetical keys; re-opening must still read S → B → A → R.
+import {orderedSbar,guidanceFeedback} from '../shared/case-contract.mjs';
+test('SBAR preserves the presentation sequence after JSON key reordering and keeps additional content',()=>{
+ const input={A:['avaliação'],B:['contexto'],R:['recomendação'],S:['situação'],nota:'adicional'};
+ const result=orderedSbar(input);
+ assert.deepEqual(result.steps.map(step=>step.letter),['S','B','A','R']);
+ assert.deepEqual(result.steps.map(step=>step.value),[['situação'],['contexto'],['avaliação'],['recomendação']]);
+ assert.deepEqual(result.extras,{nota:'adicional'});
+ assert.equal(orderedSbar('texto legado'),null);
+});
+test('WMed removes both remaining didactic alignments while preserving the analysis and SBAR',()=>{
+ const input={alinhamento_anamnese_didatico:'alta_concordancia',alinhamento_exame_fisico_didatico:'divergencia',analise_anamnese:{texto:'anamnese'},analise_exame_fisico:{texto:'exame'},como_apresentar_caso:{S:['situação']}};
+ assert.deepEqual(guidanceFeedback(input),{analise_anamnese:input.analise_anamnese,analise_exame_fisico:input.analise_exame_fisico,como_apresentar_caso:input.como_apresentar_caso});
+});

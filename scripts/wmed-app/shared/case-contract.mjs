@@ -105,7 +105,22 @@ export function qualityMessages(report) {
 export const studentComparisonKeys = new Set([
  "comparacao_hipoteses_aluno", "alinhamento_hipoteses_didatico",
  "comparacao_conduta_aluno", "alinhamento_conduta_didatico",
+ "alinhamento_anamnese_didatico", "alinhamento_exame_fisico_didatico",
 ]);
 export function guidanceFeedback(feedback) {
  return Object.fromEntries(Object.entries(feedback).filter(([key])=>!studentComparisonKeys.has(key)));
+}
+
+// JSON storage may reorder object keys. SBAR order is semantic, never alphabetical.
+export const sbarSteps = [['S','Situação'],['B','Contexto'],['A','Avaliação'],['R','Recomendação']];
+export function orderedSbar(value) {
+ if(!value||typeof value!=='object'||Array.isArray(value))return null;
+ const keys=Object.keys(value);
+ const steps=sbarSteps.map(([letter,label])=>{
+  const key=keys.find(key=>key.toUpperCase()===letter);
+  return {letter,label,value:key?value[key]:null,key};
+ });
+ if(!steps.some(step=>step.key))return null;
+ const extras=Object.fromEntries(Object.entries(value).filter(([key])=>!steps.some(step=>step.key===key)));
+ return {steps,extras};
 }
