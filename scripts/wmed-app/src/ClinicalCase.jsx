@@ -7,120 +7,25 @@ import {
   ArrowLeft,
   CheckCircle2,
   FileText,
-  TrendingUp,
+  History,
+  Check,
 } from "lucide-react";
-import ReactMarkdown from "react-markdown";
-import remarkGfm from "remark-gfm";
+import CaseFeedback from "./CaseFeedback";
+import CaseHistory, {caseRequest} from "./CaseHistory";
+import {restoreCase} from "../shared/case-storage.mjs";
+import "./case-feedback.css";
 import { academicRequest } from "./Libraries";
 import PrivacyReview from "./PrivacyReview";
 import { detectAcademicPII } from "../shared/pii.mjs";
 import { fields, feedbackPayload, guidanceFeedback } from "../shared/case-contract.mjs";
 const empty = () => Object.fromEntries(fields.map(([k]) => [k, ""]));
-const labels = {
-  resumo_caso: "Resumo do caso",
-  red_flags_educacionais: "Sinais de alerta",
-  pontos_de_atencao: "Pontos de atenção",
-  hipoteses_para_discussao: "Hipóteses diagnósticas",
-  comparacao_hipoteses_aluno: "Suas hipóteses em discussão",
-  alinhamento_hipoteses_didatico: "Alinhamento das hipóteses",
-  elementos_de_manejo_academico: "Condutas a considerar",
-  comparacao_conduta_aluno: "Sua conduta em discussão",
-  alinhamento_conduta_didatico: "Alinhamento da conduta",
-  pontos_fortes: "Pontos fortes",
-  pontos_a_aprofundar: "Seu aprendizado",
-  analise_anamnese: "Anamnese",
-  analise_exame_fisico: "Exame físico",
-  conexao_enamed: "Conexão ENAMED",
-  exames_para_discussao_academica: "Exames para discussão",
-  temas_de_estudo: "Temas para estudar",
-  perguntas_ao_preceptor: "Perguntas ao preceptor",
-  referencias: "Referências",
-  hipotese: "Hipótese",
-  justificativa: "Justificativa",
-  probabilidade_didatica: "Probabilidade",
-  sinal: "Sinal",
-  justificativa_didatica: "Por que observar",
-  exame: "Exame",
-  aspectos_bem_explorados: "Bem explorado",
-  temas_a_aprofundar: "Para aprofundar",
-  eixos_tematicos: "Eixos temáticos",
-  como_e_cobrado: "Como é cobrado",
-  foco_para_prova: "Foco para a prova",
-};
-const groups = [
-  [
-    "Raciocínio",
-    [
-      "resumo_caso",
-      "red_flags_educacionais",
-      "pontos_de_atencao",
-      "hipoteses_para_discussao",
-      "exames_para_discussao_academica",
-      "elementos_de_manejo_academico",
-    ],
-  ],
-  ["Semiologia", ["analise_anamnese", "analise_exame_fisico"]],
-  ["Estudo", ["conexao_enamed", "temas_de_estudo", "referencias"]],
-  [
-    "Seu aprendizado",
-    [
-      "pontos_fortes",
-      "pontos_a_aprofundar",
-      "perguntas_ao_preceptor",
-    ],
-  ],
-];
-function Value({ value }) {
-  if (value == null || value === "") return <p>Não informado.</p>;
-  if (Array.isArray(value))
-    return (
-      <div className="feedback-items">
-        {value.map((v, i) => (
-          <div key={i}>
-            <Value value={v} />
-          </div>
-        ))}
-      </div>
-    );
-  if (typeof value === "object")
-    return (
-      <dl>
-        {Object.entries(value).map(([k, v]) => (
-          <div key={k}>
-            <dt>{labels[k] || k.replaceAll("_", " ")}</dt>
-            <dd>
-              {k === "probabilidade_didatica" ? (
-                <span className={"probability " + String(v).toLowerCase()}>
-                  {String(v)}
-                </span>
-              ) : (
-                <Value value={v} />
-              )}
-            </dd>
-          </div>
-        ))}
-      </dl>
-    );
-  return (
-    <ReactMarkdown
-      remarkPlugins={[remarkGfm]}
-      components={{
-        img: () => null,
-        a: ({ href, children }) =>
-          /^https:\/\//.test(href || "") ? (
-            <a href={href} target="_blank" rel="noreferrer">
-              {children}
-            </a>
-          ) : (
-            <span>{children}</span>
-          ),
-      }}
-    >
-      {String(value)}
-    </ReactMarkdown>
-  );
+export default function ClinicalCase(props) {
+  const scope=props.session?.user?.progressScope||null;
+  const [identity,setIdentity]=useState({scope,generation:0});
+  if(scope!==identity.scope)setIdentity({scope,generation:identity.scope?identity.generation+1:identity.generation});
+  return <ClinicalCaseBody key={identity.generation} {...props}/>;
 }
-export default function ClinicalCase({ session, onLogin, onProgress, active, initialStory = "" }) {
+function ClinicalCaseBody({ session, onLogin, onProgress, onPendingChange, active, initialStory = "" }) {
   const [stage, setStage] = useState("relato"),
     [relato, setRelato] = useState(initialStory),
     [form, setForm] = useState(empty),
@@ -130,10 +35,12 @@ export default function ClinicalCase({ session, onLogin, onProgress, active, ini
     [feedback, setFeedback] = useState(null),
     [quality, setQuality] = useState(null),
     [qualityError, setQualityError] = useState(""),
-    [tab, setTab] = useState(0),
     [recording, setRecording] = useState(false),
     [seconds, setSeconds] = useState(0);
   const [privacyOpen,setPrivacyOpen]=useState(false);
+  const [historyOpen,setHistoryOpen]=useState(false),[saveStatus,setSaveStatus]=useState(""),[saveError,setSaveError]=useState("");
+  const pendingSave=useRef(null),saving=useRef(null),pageRef=useRef(null);
+  useEffect(()=>{if(active)pageRef.current?.scrollIntoView({block:"start",behavior:"instant"});},[stage,active]);
   const recorder = useRef(null),
     stream = useRef(null),
     cancel = useRef(null),
@@ -155,6 +62,7 @@ export default function ClinicalCase({ session, onLogin, onProgress, active, ini
     if (!active && recorder.current?.state === "recording")
       recorder.current.stop();
   }, [active]);
+  useEffect(()=>{onPendingChange?.(Boolean(busy||recording||saveStatus==='saving'||saveStatus==='error'));},[busy,recording,saveStatus,onPendingChange]);
   const requireLogin = () => {
     if (session?.authenticated) return true;
     onLogin();
@@ -287,8 +195,10 @@ export default function ClinicalCase({ session, onLogin, onProgress, active, ini
           onProgress(d.score);
         }
       }
+      return d;
     } catch (e) {
       if (alive.current) setQualityError(e.message);
+      return null;
     }
   }
   async function evaluate() {
@@ -307,36 +217,63 @@ export default function ClinicalCase({ session, onLogin, onProgress, active, ini
       )
         throw Error("O serviço não retornou um feedback completo.");
       if (d.feedback.erro_pii) throw Error(d.feedback.erro_pii);
+      if(!alive.current)return;
       setFeedback(guidanceFeedback(d.feedback));
       setStage("feedback");
-      setTab(0);
       setBusy("Avaliando a qualidade do relato…");
-      await grade();
+      const score = await grade();
+      if(!alive.current)return;
+      pendingSave.current={requestId:crypto.randomUUID(),relato,fields:form,feedback:guidanceFeedback(d.feedback),quality:score};
+      setBusy("Salvando caso…");
+      await persist();
     } catch (e) {
       if (e.name !== "AbortError") setError(e.message);
     } finally {
       setBusy("");
     }
   }
+  async function persist() {
+    if(saving.current)return saving.current;
+    if(!pendingSave.current)return true;
+    setSaveStatus('saving');setSaveError('');
+    const snapshot=pendingSave.current;
+    const promise=(async()=>{try{
+      const result=await caseRequest({action:'save',snapshot});
+      if(!result.caso?.id)throw Error('O servidor não confirmou o salvamento.');
+      if(alive.current){pendingSave.current=null;setSaveStatus('saved');}
+      return true;
+    }catch(e){if(alive.current){setSaveStatus('error');setSaveError(e.message);}return false;
+    }finally{saving.current=null;}})();saving.current=promise;return promise;
+  }
+  useEffect(()=>{const warn=e=>{if(pendingSave.current||busy){e.preventDefault();e.returnValue='';}};window.addEventListener('beforeunload',warn);return()=>window.removeEventListener('beforeunload',warn);},[busy]);
+  async function openSaved(id){
+    if(pendingSave.current&&!await persist())throw Error('Salve o caso atual antes de abrir outro.');
+    const data=await caseRequest({action:'open',id});
+    const saved=restoreCase(data.caso);
+    if(!alive.current)return;
+    setRelato(saved.relato);setForm(saved.form);setFeedback(saved.feedback);setQuality(saved.quality);setQualityError('');setStage('feedback');setSaveStatus('saved');setSaveError('');setError('');setHistoryOpen(false);reported.current=true;
+  }
+  async function fresh(){
+    if(pendingSave.current&&!await persist())return;
+    setRelato('');setForm(empty());setFeedback(null);setQuality(null);setConfirmed(false);setError('');setQualityError('');setSaveStatus('');setSaveError('');reported.current=false;setStage('relato');
+  }
   const feedbackLength =
     feedbackPayload(form).clinicalHistory.length +
     "\nRelato original para contexto: ".length +
     relato.length;
-  const known = new Set(groups.flatMap((g) => g[1]));
-  const extras = feedback
-    ? Object.keys(feedback).filter((k) => !known.has(k) && k !== "erro_pii")
-    : [];
   return (
-    <section className="module-page case-page">
+    <section ref={pageRef} className={"module-page case-page"+(stage==="feedback"?" has-feedback":"")}>
+      {historyOpen&&<CaseHistory onClose={()=>setHistoryOpen(false)} onSelect={openSaved}/>}
       {privacyOpen&&<PrivacyReview text={relato} onCancel={()=>setPrivacyOpen(false)} onApply={text=>{setRelato(text);setConfirmed(false);setPrivacyOpen(false)}}/>}
-      <header className="module-heading">
+      <header className="module-heading case-heading">
+        <button className="case-history-button" disabled={!!busy||saveStatus==="saving"} onClick={()=>{if(requireLogin())setHistoryOpen(true)}}><History size={17}/> Meus casos</button>
         <span className="eyebrow blue">PRÁTICA CLÍNICA</span>
         <h1>Caso clínico</h1>
         <p>
           Conte o caso. Veja hipóteses, exames e condutas a considerar.
         </p>
       </header>
-      <nav className="case-steps" aria-label="Etapas do caso">
+      {stage!=="feedback"&&<nav className="case-steps" aria-label="Etapas do caso">
         {["Seu relato", "Revisão", "Feedback"].map((s, i) => (
           <span
             className={
@@ -348,7 +285,7 @@ export default function ClinicalCase({ session, onLogin, onProgress, active, ini
             {s}
           </span>
         ))}
-      </nav>
+      </nav>}
       {stage === "relato" && (
         <div className="case-entry">
           <div className="resource-card">
@@ -506,132 +443,11 @@ export default function ClinicalCase({ session, onLogin, onProgress, active, ini
           </button>
         </>
       )}
-      {stage === "feedback" && feedback && (
-        <>
-          <div className="feedback-top">
-            <div className="quality-card">
-              <div>
-                <span className="eyebrow">
-                  QUALIDADE DO RELATO · EXPERIMENTAL
-                </span>
-                <strong>
-                  {quality ? quality.score : "—"}
-                  <small>/100</small>
-                </strong>
-                <p>
-                  {quality
-                    ? "Uma orientação para melhorar o registro. Não é uma avaliação acadêmica."
-                    : qualityError || "Avaliando a qualidade do relato…"}
-                </p>
-              </div>
-              <TrendingUp size={35} />
-              {qualityError && (
-                <button
-                  disabled={!!busy}
-                  onClick={async () => {
-                    setBusy("Avaliando a qualidade…");
-                    await grade();
-                    setBusy("");
-                  }}
-                >
-                  Tentar pontuação novamente
-                </button>
-              )}
-            </div>
-            <div>
-              <button
-                disabled={!!busy}
-                className="back-button"
-                onClick={() => {
-                  setStage("relato");
-                  setConfirmed(false);
-                }}
-              >
-                Complementar relato
-              </button>{" "}
-              <button
-                disabled={!!busy}
-                className="back-button"
-                onClick={() => {
-                  setRelato("");
-                  setForm(empty());
-                  setFeedback(null);
-                  setQuality(null);
-                  setConfirmed(false);
-                  setError("");
-                  reported.current = false;
-                  setStage("relato");
-                }}
-              >
-                Novo caso
-              </button>
-            </div>
-          </div>
-          {quality && (
-            <details className="resource-card">
-              <summary>Entender minha pontuação</summary>
-              <p className="module-note">
-                Avalia o relato original revisado. Os campos reorganizados
-                apoiam o feedback clínico. Não é preciso apresentar hipóteses ou condutas para pontuar.
-                Critérios não aplicáveis não reduzem a nota.
-              </p>
-              {quality.criteria.map((c) => (
-                <article className="rubric-row" key={c.id}>
-                  <h3>
-                    {c.label}{" "}
-                    <small>
-                      {c.aplicavel ? `${c.points}/${c.max}` : "Não aplicável"}
-                    </small>
-                  </h3>
-                  <p>{c.justificativa}</p>
-                  {c.evidencia && <blockquote>{c.evidencia}</blockquote>}
-                  <p>
-                    <b>Próximo passo:</b> {c.melhoria}
-                  </p>
-                </article>
-              ))}
-            </details>
-          )}
-          <div
-            className="feedback-tabs"
-            role="tablist"
-            aria-label="Seções do feedback"
-          >
-            {groups.map(([name], i) => (
-              <button
-                role="tab"
-                aria-selected={tab === i}
-                key={name}
-                onClick={() => setTab(i)}
-              >
-                {name}
-              </button>
-            ))}
-          </div>
-          <div className="feedback-sections" role="tabpanel">
-            {groups[tab][1]
-              .filter((k) => feedback[k] != null)
-              .map((k) => (
-                <article className="resource-card markdown" key={k}>
-                  <h2>{labels[k]}</h2>
-                  <Value value={feedback[k]} />
-                </article>
-              ))}
-            {tab === 3 &&
-              extras.map((k) => (
-                <article className="resource-card" key={k}>
-                  <h2>{labels[k] || k.replaceAll("_", " ")}</h2>
-                  <Value value={feedback[k]} />
-                </article>
-              ))}
-          </div>
-          <p className="module-note">
-            Análise educacional: hipóteses e condutas precisam ser conferidas
-            no contexto clínico. O caso fica somente nesta aba; não é publicado nem
-            enviado ao ranking.
-          </p>
-        </>
-      )}
+      {stage === "feedback" && feedback && <>
+        <div className="case-result-actions"><div role="status" className={'case-save-state '+saveStatus}>{saveStatus==='saved'?<><Check size={15}/> Salvo na sua conta</>:saveStatus==='saving'?'Salvando caso…':saveStatus==='error'?'Caso ainda não salvo':'Preparando para salvar…'}</div><button disabled={!!busy||saveStatus==='saving'} onClick={async()=>{if(pendingSave.current&&!await persist())return;setStage('relato');setConfirmed(false);setSaveStatus('');}}>Complementar relato</button><button disabled={!!busy||saveStatus==='saving'} onClick={fresh}>Novo caso</button></div>
+        {saveError&&<div className="error" role="alert">{saveError} Mantenha esta tela aberta.<button disabled={saveStatus==='saving'} onClick={persist}>Tentar salvar novamente</button></div>}
+        <CaseFeedback key={feedback?JSON.stringify(form):'empty'} feedback={feedback} quality={quality} qualityError={qualityError} relato={relato} form={form} busy={!!busy}/>
+      </>}
       {busy && (
         <p role="status" className="progress">
           <span className="spinner" />

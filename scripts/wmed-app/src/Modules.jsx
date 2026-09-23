@@ -127,6 +127,7 @@ export default function Modules({
   progress,
   caseKey,
   onProgress,
+  onCasePending,
 }) {
   const [openedCase, setOpenedCase] = useState(false);
   if (active === "caso" && !openedCase) setOpenedCase(true);
@@ -141,6 +142,7 @@ export default function Modules({
                 session={session}
                 onLogin={onLogin}
                 onProgress={onProgress}
+                onPendingChange={onCasePending}
               />
             </Suspense>
           </Boundary>

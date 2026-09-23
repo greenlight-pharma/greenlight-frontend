@@ -2,7 +2,7 @@
   "$schema": "https://openapi.vercel.sh/vercel.json",
   "buildCommand": "bash scripts/build-vercel.sh",
   "outputDirectory": ".vercel-out",
-  "installCommand": "echo 'sem dependências na raiz — o painel instala as suas no build'",
+  "installCommand": "echo 'sem depend\u00eancias na raiz \u2014 o painel instala as suas no build'",
   "redirects": [
     {
       "source": "/care-whatsapp",
@@ -99,6 +99,9 @@
     },
     "api/wmed/academic.js": {
       "maxDuration": 300
+    },
+    "api/wmed/cases.js": {
+      "maxDuration": 120
     }
   },
   "headers": [
