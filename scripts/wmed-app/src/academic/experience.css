@@ -1,18 +1,17 @@
 /* Shared academic visual language; scoped to avoid changing ECG/admin products. */
 .va-app,
 .va-connected {
-  --va-ink: #132d46;
-  --va-muted: #6d7f91;
-  --va-line: #dde6ec;
-  --va-blue: #2275b3;
-  font-family:
-    Inter,
+  --va-ink: var(--ink);
+  --va-muted: var(--muted);
+  --va-line: var(--line);
+  --va-blue: var(--accent);
+  font-family: Inter,
     -apple-system,
     BlinkMacSystemFont,
     "Segoe UI",
     sans-serif;
   color: var(--va-ink);
-  background: #f3f6f8;
+  background: var(--raised);
 }
 .va-app {
   display: flex;
@@ -25,8 +24,8 @@
 .va-sidebar {
   width: 236px;
   min-width: 236px;
-  background: #0d2238;
-  color: #b2c3d3;
+  background: var(--surface);
+  color: var(--muted);
   display: flex;
   flex-direction: column;
   height: 100dvh;
@@ -41,14 +40,14 @@
   align-items: center;
   gap: 11px;
   text-decoration: none;
-  color: #fff;
+  color: var(--ink);
   padding: 0 12px 34px;
 }
 .va-brand > img {
   width: 43px;
   height: 43px;
   object-fit: contain;
-  background: #e7f1f7;
+  background: var(--surface);
   border-radius: 10px;
   padding: 5px;
 }
@@ -64,12 +63,12 @@
   letter-spacing: 3.1px;
   font-weight: 500;
   margin-top: 8px;
-  color: #a2c5df;
+  color: var(--muted);
 }
 .va-nav-label {
   font-size: 8px;
   letter-spacing: 1.45px;
-  color: #7f9bb4;
+  color: var(--muted);
   margin: 12px 10px 14px;
 }
 .va-sidebar nav {
@@ -88,27 +87,26 @@
   align-items: center;
   gap: 12px;
   border-radius: 8px;
-  color: #a9bfd2;
+  color: var(--muted);
   text-decoration: none;
   font-size: 12px;
-  transition:
-    background 0.2s,
+  transition: background 0.2s,
     color 0.2s;
 }
 .va-sidebar nav a:hover {
-  background: #17334d;
-  color: white;
+  background: var(--surface);
+  color: var(--ink);
 }
 .va-sidebar nav a.active {
-  background: #1d3d58;
-  color: #e7f6ff;
-  box-shadow: inset 2px 0 #7ebde2;
+  background: var(--surface);
+  color: var(--ink);
+  box-shadow: inset 2px 0 #00000018;
 }
 .va-sidebar nav small {
   font-size: 8px;
   margin-left: auto;
-  color: #86cde2;
-  border: 1px solid #31566c;
+  color: var(--muted);
+  border: 1px solid var(--line);
   padding: 1px 4px;
   border-radius: 3px;
 }
@@ -119,16 +117,16 @@
 .va-course {
   display: flex;
   gap: 12px;
-  color: #a9c8db;
+  color: var(--muted);
   font-size: 11px;
   line-height: 1.5;
   padding: 17px 8px;
-  border-top: 1px solid #233b50;
+  border-top: 1px solid var(--line);
 }
 .va-course small,
 .va-account small {
   display: block;
-  color: #859cb0;
+  color: var(--muted);
   font-size: 10px;
   margin-top: 3px;
 }
@@ -136,7 +134,7 @@
   display: flex;
   align-items: center;
   gap: 10px;
-  border-top: 1px solid #233b50;
+  border-top: 1px solid var(--line);
   padding-top: 18px;
   font-size: 11px;
 }
@@ -145,7 +143,7 @@
   place-items: center;
   min-width: 32px;
   height: 32px;
-  background: #25435c;
+  background: var(--surface);
   border-radius: 50%;
 }
 .va-account button {
@@ -161,11 +159,11 @@
   justify-content: space-between;
   gap: 12px;
   font-size: 10px;
-  color: #78899b;
-  background: #edf3f6;
+  color: var(--muted);
+  background: var(--surface);
 }
 .va-preview-bar > span:first-child {
-  color: #326a85;
+  color: var(--muted);
   font-weight: 600;
   letter-spacing: 1px;
 }
@@ -173,7 +171,7 @@
   display: flex;
   align-items: center;
   gap: 5px;
-  color: #286384;
+  color: var(--muted);
 }
 .va-preview-bar i,
 .va-radiology-toolbar i,
@@ -182,7 +180,7 @@
   width: 5px;
   height: 5px;
   border-radius: 50%;
-  background: #65bdbf;
+  background: var(--surface);
   margin-right: 8px;
 }
 .va-page {
@@ -201,7 +199,7 @@
   font-size: 9px;
   letter-spacing: 2px;
   font-weight: 650;
-  color: #6892a7;
+  color: var(--muted);
   margin: 0 0 11px;
 }
 .va-heading h1 {
@@ -217,10 +215,10 @@
   margin: 0;
 }
 .va-button {
-  border: 1px solid #d1dfe7;
+  border: 1px solid var(--line);
   border-radius: 7px;
-  background: white;
-  color: #23516e;
+  background: var(--raised);
+  color: var(--ink);
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -233,15 +231,15 @@
   text-decoration: none;
 }
 .va-primary {
-  background: #173e5e;
-  color: white;
-  border-color: #173e5e;
-  box-shadow: 0 4px 12px #153b5e16;
+  background: var(--surface);
+  color: var(--ink);
+  border-color: var(--line);
+  box-shadow: 0 4px 12px #00000016;
 }
 .va-bright {
-  background: #e7f1f8;
-  color: #163c59;
-  border-color: #e7f1f8;
+  background: var(--surface);
+  color: var(--ink);
+  border-color: var(--line);
 }
 .va-button:hover {
   filter: brightness(0.96);
@@ -249,18 +247,18 @@
 .va-hero {
   background: radial-gradient(
     ellipse at 74% 40%,
-    #184265 0%,
-    #102d4c 36%,
-    #0e2440 70%
+    var(--surface) 0%,
+    var(--surface) 36%,
+    var(--surface) 70%
   );
   border-radius: 15px;
-  color: white;
+  color: var(--ink);
   display: grid;
   grid-template-columns: 1.13fr 1fr;
   position: relative;
   overflow: hidden;
   min-height: 370px;
-  box-shadow: 0 20px 45px -30px #092b57;
+  box-shadow: 0 20px 45px -30px #00000018;
 }
 .va-hero-copy {
   position: relative;
@@ -278,14 +276,14 @@
   display: flex;
   align-items: center;
   gap: 9px;
-  color: #a0d0e5;
+  color: var(--muted);
 }
 .va-kicker > span {
   width: 5px;
   height: 5px;
   border-radius: 50%;
-  background: #81d3d8;
-  box-shadow: 0 0 12px #88d3de;
+  background: var(--surface);
+  box-shadow: 0 0 12px #00000018;
 }
 .va-hero h2 {
   font-size: 36px;
@@ -296,20 +294,20 @@
 }
 .va-hero h2 em {
   font-style: normal;
-  color: #95c5e1;
+  color: var(--muted);
 }
 .va-hero p {
   font-size: 12px;
   line-height: 1.8;
   max-width: 345px;
-  color: #a5bdd0;
+  color: var(--muted);
   margin-bottom: 24px;
 }
 .va-hero-caption {
   display: block;
   font-size: 7px;
   letter-spacing: 1.5px;
-  color: #92acc1;
+  color: var(--muted);
   margin-top: 23px;
 }
 .va-hero-model {
@@ -322,22 +320,21 @@
   bottom: 32px;
   left: 20%;
   font-size: 10px;
-  color: #d5e8f3;
-  border-left: 1px solid #7292ab;
+  color: var(--ink);
+  border-left: 1px solid var(--line);
   padding-left: 12px;
 }
 .va-model-label small {
   display: block;
   font-size: 8px;
-  color: #97adbf;
+  color: var(--muted);
   margin-top: 4px;
 }
 .va-hero-grid {
   position: absolute;
   inset: 0;
-  background-image:
-    linear-gradient(#8fafca08 1px, transparent 1px),
-    linear-gradient(90deg, #8fafca08 1px, transparent 1px);
+  background-image: linear-gradient(transparent 1px, transparent 1px),
+    linear-gradient(90deg, transparent 1px, transparent 1px);
   background-size: 44px 44px;
   pointer-events: none;
   mask-image: linear-gradient(90deg, transparent, #000);
@@ -359,7 +356,7 @@
   margin-bottom: 7px;
 }
 .va-section-title > span {
-  color: #8a9baa;
+  color: var(--muted);
   font-size: 10px;
 }
 .va-explore-grid {
@@ -369,30 +366,29 @@
 }
 .va-explore-card {
   border: 1px solid var(--va-line);
-  background: white;
+  background: var(--raised);
   border-radius: 12px;
   overflow: hidden;
   text-decoration: none;
   color: inherit;
-  transition:
-    transform 0.25s,
+  transition: transform 0.25s,
     box-shadow 0.25s;
 }
 .va-explore-card:hover {
   transform: translateY(-4px);
-  box-shadow: 0 14px 30px #163c5a12;
+  box-shadow: 0 14px 30px #00000012;
 }
 .va-card-visual {
   height: 172px;
   position: relative;
   overflow: hidden;
-  background: radial-gradient(ellipse, #2e5366, #122e45);
+  background: radial-gradient(ellipse, var(--surface), var(--surface));
 }
 .histology .va-card-visual {
-  background: radial-gradient(ellipse, #42486c, #202e46);
+  background: radial-gradient(ellipse, var(--surface), var(--surface));
 }
 .radiology .va-card-visual {
-  background: radial-gradient(ellipse at 60%, #2c5c66, #112d42);
+  background: radial-gradient(ellipse at 60%, var(--surface), var(--surface));
 }
 .va-card-visual > img {
   width: 100%;
@@ -412,7 +408,7 @@
   gap: 7px;
   font-size: 7px;
   letter-spacing: 1.3px;
-  color: #c4dbe5;
+  color: var(--ink);
 }
 .va-card-copy {
   padding: 20px;
@@ -420,7 +416,7 @@
 .va-card-copy > span {
   font-size: 7px;
   letter-spacing: 1.6px;
-  color: #7b93a5;
+  color: var(--muted);
 }
 .va-card-copy h3 {
   display: flex;
@@ -431,11 +427,11 @@
   margin: 8px 0;
 }
 .va-card-copy h3 svg {
-  color: #7e9eb2;
+  color: var(--muted);
 }
 .va-card-copy p {
   font-size: 10px;
-  color: #75899b;
+  color: var(--muted);
   margin: 0;
 }
 .va-scan-art {
@@ -448,10 +444,10 @@
   position: absolute;
   width: 135px;
   height: 85px;
-  border: 1px solid #64b9d5;
+  border: 1px solid var(--line);
   border-radius: 48%;
   transform: rotateX(55deg);
-  box-shadow: 0 0 30px #6fceec16;
+  box-shadow: 0 0 30px #00000016;
 }
 .va-scan-art span:nth-child(1) {
   margin-top: -65px;
@@ -460,7 +456,7 @@
   margin-top: 55px;
 }
 .va-scan-art svg {
-  color: #c1eff0;
+  color: var(--ink);
   opacity: 0.8;
 }
 .va-workflows {
@@ -473,20 +469,20 @@
   align-items: center;
   gap: 14px;
   border: 1px solid var(--va-line);
-  background: white;
+  background: var(--raised);
   border-radius: 10px;
   padding: 21px 17px;
-  color: #4c7d9b;
+  color: var(--muted);
   text-decoration: none;
 }
 .va-workflows h3 {
   font-size: 12px;
-  color: #244560;
+  color: var(--ink);
   margin: 0 0 7px;
 }
 .va-workflows p {
   font-size: 10px;
-  color: #788b9c;
+  color: var(--muted);
   line-height: 1.5;
   margin: 0;
 }
@@ -499,22 +495,22 @@
   align-items: center;
   gap: 22px;
   margin-top: 30px;
-  background: #e8eef2;
-  border: 1px solid #dae4eb;
+  background: var(--surface);
+  border: 1px solid var(--line);
   border-radius: 10px;
   padding: 24px;
-  color: #466a85;
+  color: var(--muted);
   text-decoration: none;
 }
 .va-lab-banner h3 {
   font-size: 14px;
   font-weight: 550;
-  color: #1b3c56;
+  color: var(--ink);
   margin: 0 0 6px;
 }
 .va-lab-banner p:last-child {
   font-size: 11px;
-  color: #758c9d;
+  color: var(--muted);
   margin: 0;
 }
 .va-lab-banner .va-eyebrow {
@@ -532,7 +528,7 @@
 .va-footer {
   display: flex;
   justify-content: space-between;
-  color: #90a0ad;
+  color: var(--muted);
   font-size: 9px;
   padding: 28px 0 8px;
 }
@@ -559,7 +555,7 @@
   align-items: center;
   justify-content: center;
   gap: 15px;
-  color: #a6c6d7;
+  color: var(--muted);
   font-size: 12px;
   padding: 25px;
   text-align: center;
@@ -568,7 +564,7 @@
   height: 16px;
   width: 16px;
   flex-shrink: 0;
-  border: 1px solid #6f97b6;
+  border: 1px solid var(--line);
   border-top-color: transparent;
   border-radius: 50%;
   animation: va-spin 1s linear infinite;
@@ -581,7 +577,7 @@
   left: 20px;
   bottom: 16px;
   font-size: 9px;
-  color: #91aebf;
+  color: var(--muted);
   display: flex;
   align-items: center;
   gap: 7px;
@@ -597,9 +593,9 @@
 .va-scene-tools button {
   display: grid;
   place-items: center;
-  background: #ffffff10;
-  border: 1px solid #ffffff20;
-  color: #c7e1ef;
+  background: transparent;
+  border: 1px solid var(--line);
+  color: var(--ink);
   width: 35px;
   height: 35px;
   border-radius: 7px;
@@ -616,7 +612,7 @@
 .va-library {
   border: 1px solid var(--va-line);
   border-radius: 11px;
-  background: white;
+  background: var(--raised);
   padding: 17px 12px;
   min-width: 0;
   display: flex;
@@ -627,29 +623,29 @@
   display: flex;
   align-items: center;
   gap: 8px;
-  color: #507d96;
+  color: var(--muted);
   margin: 0 5px 20px;
 }
 .va-library-head b {
   font-size: 11px;
-  color: #314c60;
+  color: var(--ink);
 }
 .va-library-head small {
   font-size: 9px;
   margin-left: auto;
   padding: 2px 5px;
-  background: #eff4f7;
+  background: var(--surface);
   border-radius: 4px;
 }
 .va-search {
   display: flex;
   align-items: center;
   gap: 7px;
-  background: #f0f4f7;
-  border: 1px solid #e2e9ee;
+  background: var(--surface);
+  border: 1px solid var(--line);
   padding: 10px;
   border-radius: 6px;
-  color: #8095a5;
+  color: var(--muted);
 }
 .va-search input {
   border: 0;
@@ -658,16 +654,16 @@
   min-width: 0;
   font-size: 11px;
   outline: none;
-  color: #173952;
+  color: var(--ink);
 }
 .va-library select {
   font-size: 10px;
-  border: 1px solid #e2e9ee;
+  border: 1px solid var(--line);
   border-radius: 6px;
   padding: 10px 7px;
   margin: 9px 0;
-  color: #557083;
-  background: white;
+  color: var(--muted);
+  background: var(--raised);
   width: 100%;
 }
 .va-library-list {
@@ -688,36 +684,36 @@
   border-radius: 6px;
   font-size: 11px;
   line-height: 1.5;
-  color: #4d6578;
+  color: var(--muted);
   cursor: pointer;
 }
 .va-library-list button small {
   display: block;
   font-size: 8px;
-  color: #8d9daa;
+  color: var(--muted);
   margin-top: 3px;
 }
 .va-library-list button.active {
-  background: #eaf3f8;
-  color: #195b86;
+  background: var(--surface);
+  color: var(--ink);
 }
 .va-library-list button:hover {
-  background: #f1f5f7;
+  background: var(--surface);
 }
 .va-cell-dot {
   width: 7px;
   height: 7px;
   flex-shrink: 0;
   border-radius: 50%;
-  background: #91a8b7;
+  background: var(--surface);
 }
 .va-library-list button.active .va-cell-dot {
-  background: #338abb;
+  background: var(--surface);
 }
 .va-viewer {
-  background: radial-gradient(ellipse at 55% 46%, #24435c, #10283e 70%);
+  background: radial-gradient(ellipse at 55% 46%, var(--surface), var(--surface) 70%);
   border-radius: 12px;
-  color: #d5e5ef;
+  color: var(--ink);
   overflow: hidden;
   position: relative;
   display: flex;
@@ -732,8 +728,8 @@
   padding: 18px 21px;
   font-size: 8px;
   letter-spacing: 1.5px;
-  color: #91acbd;
-  border-bottom: 1px solid #ffffff0b;
+  color: var(--muted);
+  border-bottom: 1px solid var(--line);
 }
 .va-viewer-top button,
 .va-viewer-bottom button {
@@ -749,8 +745,8 @@
 }
 .va-segments {
   display: flex;
-  background: #ffffff0c;
-  border: 1px solid #ffffff13;
+  background: transparent;
+  border: 1px solid var(--line);
   border-radius: 7px;
   padding: 3px;
   gap: 2px;
@@ -760,13 +756,13 @@
   background: none;
   border: 0;
   border-radius: 4px;
-  color: #93aebe;
+  color: var(--muted);
   font-size: 10px;
   cursor: pointer;
 }
 .va-segments button.active {
-  background: #e7f3fa;
-  color: #23455c;
+  background: var(--surface);
+  color: var(--ink);
 }
 .va-viewer-title {
   padding: 24px 25px 0;
@@ -780,7 +776,7 @@
   font-size: 8px;
   letter-spacing: 1.3px;
   text-transform: uppercase;
-  color: #96bdcf;
+  color: var(--muted);
 }
 .va-viewer-title h2 {
   font-size: 23px;
@@ -798,12 +794,12 @@
   justify-content: space-between;
   gap: 10px;
   font-size: 8px;
-  color: #97b2c4;
+  color: var(--muted);
   padding: 16px 21px;
-  border-top: 1px solid #ffffff0c;
+  border-top: 1px solid var(--line);
 }
 .va-inspector {
-  background: white;
+  background: var(--raised);
   border: 1px solid var(--va-line);
   border-radius: 11px;
   padding: 23px 18px;
@@ -821,7 +817,7 @@
 .va-part-detail p {
   font-size: 11px;
   line-height: 1.8;
-  color: #6f8292;
+  color: var(--muted);
 }
 .va-divider {
   height: 1px;
@@ -842,7 +838,7 @@
   align-items: center;
   gap: 8px;
   text-align: left;
-  color: #547184;
+  color: var(--muted);
   background: transparent;
   border: 0;
   padding: 10px 7px;
@@ -853,7 +849,7 @@
 .va-structure-list button > span {
   width: 4px;
   height: 4px;
-  background: #9ab2c1;
+  background: var(--surface);
   border-radius: 50%;
   flex-shrink: 0;
 }
@@ -861,8 +857,8 @@
   margin-left: auto;
 }
 .va-structure-list button.active {
-  background: #eaf3f8;
-  color: #195b86;
+  background: var(--surface);
+  color: var(--ink);
 }
 .va-part-detail {
   padding-top: 18px;
@@ -875,12 +871,12 @@
   margin-top: 10px;
 }
 .va-part-appearance {
-  color: #8497a6 !important;
+  color: var(--muted) !important;
 }
 .va-provenance {
   font-size: 9px;
   line-height: 1.7;
-  color: #8b9aa7;
+  color: var(--muted);
   margin-top: 18px;
 }
 .va-provenance summary {
@@ -889,7 +885,7 @@
 .va-empty {
   font-size: 11px;
   padding: 15px;
-  color: #7a8e9e;
+  color: var(--muted);
 }
 .va-radiology-toolbar {
   display: flex;
@@ -898,21 +894,21 @@
   margin: 0 0 15px;
 }
 .va-radiology-toolbar > .va-segments {
-  background: #e6edf2;
-  border-color: #dae4eb;
+  background: var(--surface);
+  border-color: var(--line);
 }
 .va-radiology-toolbar .va-segments button {
-  color: #627d92;
+  color: var(--muted);
 }
 .va-radiology-toolbar .va-segments button.active {
-  background: white;
-  color: #204761;
-  box-shadow: 0 1px 4px #28476110;
+  background: var(--raised);
+  color: var(--ink);
+  box-shadow: 0 1px 4px #00000010;
 }
 .va-radiology-toolbar > span {
   font-size: 8px;
   letter-spacing: 1.6px;
-  color: #648a9d;
+  color: var(--muted);
 }
 .va-radiology-grid {
   display: grid;
@@ -921,10 +917,10 @@
   min-height: 570px;
 }
 .va-volume-panel {
-  background: radial-gradient(ellipse at 55% 50%, #264a62, #102b43 72%);
+  background: radial-gradient(ellipse at 55% 50%, var(--surface), var(--surface) 72%);
   border-radius: 12px;
   position: relative;
-  color: #ddeefa;
+  color: var(--ink);
   display: flex;
   flex-direction: column;
   overflow: hidden;
@@ -944,7 +940,7 @@
 }
 .va-volume-title p {
   font-size: 10px;
-  color: #94b4c7;
+  color: var(--muted);
 }
 .va-volume-canvas {
   flex: 1;
@@ -955,43 +951,43 @@
   display: flex;
   gap: 9px;
   align-items: start;
-  color: #90afc2;
+  color: var(--muted);
   font-size: 8px;
   padding: 13px 25px;
   line-height: 1.8;
-  border-top: 1px solid #ffffff0b;
+  border-top: 1px solid var(--line);
 }
 .va-volume-legend > span {
   width: 5px;
   height: 5px;
   border-radius: 50%;
-  background: #7acbd0;
+  background: var(--surface);
   margin-top: 5px;
 }
 .va-slice-panel {
-  background: #fff;
+  background: var(--raised);
   border-radius: 12px;
   border: 1px solid var(--va-line);
   overflow: hidden;
   min-width: 0;
 }
 .va-slice-panel .va-viewer-top {
-  color: #526e83;
+  color: var(--muted);
   border-bottom: 1px solid var(--va-line);
 }
 .va-slice-panel b {
-  color: #1e506f;
+  color: var(--ink);
   font-size: 13px;
   letter-spacing: 0;
 }
 .va-slice-panel b small {
   font-weight: 400;
   font-size: 10px;
-  color: #8ba0af;
+  color: var(--muted);
 }
 .va-slice-image {
   position: relative;
-  background: #020508;
+  background: var(--surface);
   min-height: 330px;
   height: 360px;
   display: flex;
@@ -1009,7 +1005,7 @@
 }
 .va-direction {
   position: absolute;
-  color: #88b6bd;
+  color: var(--muted);
   font-size: 10px;
 }
 .va-direction.anterior {
@@ -1034,7 +1030,7 @@
 .va-slice-caption > span {
   font-size: 8px;
   letter-spacing: 1.4px;
-  color: #6a95a8;
+  color: var(--muted);
 }
 .va-slice-caption h3 {
   font-size: 17px;
@@ -1043,13 +1039,13 @@
 }
 .va-slice-caption p {
   font-size: 11px;
-  color: #8194a3;
+  color: var(--muted);
 }
 .va-timeline {
   display: flex;
   align-items: center;
   gap: 24px;
-  background: white;
+  background: var(--raised);
   border: 1px solid var(--va-line);
   border-radius: 11px;
   padding: 20px 24px;
@@ -1058,10 +1054,10 @@
 .va-timeline > button {
   display: grid;
   place-items: center;
-  background: #193f5b;
+  background: var(--surface);
   border: 0;
   border-radius: 50%;
-  color: #e4f3fc;
+  color: var(--ink);
   width: 38px;
   height: 38px;
   flex-shrink: 0;
@@ -1076,16 +1072,16 @@
 .va-timeline label {
   font-size: 10px;
   display: block;
-  color: #486780;
+  color: var(--muted);
 }
 .va-timeline label span {
   float: right;
-  color: #8199aa;
+  color: var(--muted);
   font-size: 9px;
 }
 .va-timeline input[type="range"] {
   width: 100%;
-  accent-color: #418cb1;
+  accent-color: var(--accent);
   display: block;
   margin-top: 12px;
   height: 4px;
@@ -1093,11 +1089,11 @@
 .va-timeline select {
   display: block;
   margin-top: 8px;
-  border: 1px solid #dae4eb;
+  border: 1px solid var(--line);
   border-radius: 5px;
   padding: 7px 12px;
-  color: #58768b;
-  background: white;
+  color: var(--muted);
+  background: var(--raised);
   font-size: 10px;
 }
 .va-opacity {
@@ -1107,7 +1103,7 @@
   display: flex;
   align-items: center;
   gap: 9px;
-  color: #7d91a1;
+  color: var(--muted);
   font-size: 9px;
   margin-top: 18px;
   line-height: 1.6;
@@ -1119,7 +1115,7 @@
   position: fixed;
   inset: 0;
   z-index: 100;
-  background: #edf3f6;
+  background: var(--surface);
   max-width: none;
   overflow: auto;
 }
@@ -1136,8 +1132,8 @@
   gap: 22px;
 }
 .va-lab-card {
-  background: linear-gradient(145deg, #163952, #112840);
-  color: #e3eff5;
+  background: linear-gradient(145deg, var(--surface), var(--surface));
+  color: var(--ink);
   border-radius: 14px;
   padding: 33px;
   display: flex;
@@ -1145,13 +1141,13 @@
   min-height: 320px;
 }
 .va-lab-card > svg {
-  color: #82becf;
+  color: var(--muted);
   margin-bottom: 33px;
 }
 .va-lab-card > span {
   font-size: 8px;
   letter-spacing: 1.5px;
-  color: #8fb7c8;
+  color: var(--muted);
 }
 .va-lab-card h2 {
   font-size: 23px;
@@ -1161,7 +1157,7 @@
 .va-lab-card p {
   font-size: 12px;
   line-height: 1.8;
-  color: #a0b8c9;
+  color: var(--muted);
   margin: 0 0 25px;
 }
 .va-lab-card b {
@@ -1186,10 +1182,10 @@
   gap: 18px;
 }
 .va-future article {
-  border: 1px dashed #c1d2de;
+  border: 1px dashed var(--line);
   border-radius: 10px;
   padding: 25px;
-  color: #4d7792;
+  color: var(--muted);
 }
 .va-future h3 {
   font-size: 15px;
@@ -1199,7 +1195,7 @@
 .va-future article span,
 .va-future > p:last-child {
   font-size: 10px;
-  color: #7a93a5;
+  color: var(--muted);
 }
 .va-future > p:last-child {
   margin-top: 22px;
@@ -1212,15 +1208,15 @@
 .va-app input:focus-visible,
 .va-app select:focus-visible,
 .va-connected button:focus-visible {
-  outline: 3px solid #58a8ce;
+  outline: 3px solid var(--accent);
   outline-offset: 3px;
 }
 .va-connected main {
-  background: #f3f6f8;
+  background: var(--raised);
 }
 .va-connected main .bg-white {
   border-radius: 12px;
-  box-shadow: 0 5px 20px #13385604;
+  box-shadow: 0 5px 20px #00000004;
 }
 .va-connected main h1 {
   letter-spacing: -0.65px;
@@ -1416,7 +1412,7 @@
     height: 100dvh;
     transform: translateX(-100%);
     transition: transform 0.2s;
-    box-shadow: 20px 0 100px #001c3e50;
+    box-shadow: 20px 0 100px #00000050;
   }
   .va-sidebar.is-open {
     transform: translateX(0);
@@ -1428,9 +1424,9 @@
     right: 14px;
     top: 10px;
     z-index: 60;
-    background: #e6eff4;
-    color: #234b67;
-    border: 1px solid #cadce7;
+    background: var(--surface);
+    color: var(--ink);
+    border: 1px solid var(--line);
     border-radius: 7px;
     height: 33px;
     width: 36px;
@@ -1659,7 +1655,7 @@
 .va-connected main :is(h1.text-xl, h1.text-lg) {
   font-size: 28px;
   font-weight: 550;
-  color: #173954;
+  color: var(--ink);
   margin-bottom: 10px;
 }
 .va-connected
@@ -1667,24 +1663,24 @@
   input:not([type="range"]):not([type="checkbox"]):not([type="radio"]),
 .va-connected main textarea,
 .va-connected main select {
-  background: #fff;
-  border-color: #d5e1e9;
-  color: #25445d;
-  box-shadow: 0 1px 3px #203e5803;
+  background: var(--raised);
+  border-color: var(--line);
+  color: var(--ink);
+  box-shadow: 0 1px 3px #00000003;
 }
 .va-connected main .bg-aco {
-  background-color: #1c547a;
+  background-color: var(--surface);
 }
 .va-connected main .border-linha {
-  border-color: #dce6ed;
+  border-color: var(--line);
 }
 .va-connected main table {
   border-collapse: separate;
   border-spacing: 0;
 }
 .va-connected main table thead {
-  background: #173e5c;
-  color: white;
+  background: var(--surface);
+  color: var(--ink);
 }
 .va-connected main table th {
   padding: 14px 17px;
@@ -1696,7 +1692,7 @@
   line-height: 1.7;
 }
 .va-connected main table tbody tr:nth-child(even) {
-  background: #f2f6f9;
+  background: var(--raised);
 }
 .va-connected main .rounded-2xl {
   border-radius: 14px;
@@ -1706,10 +1702,10 @@
 }
 .va-connected main input::placeholder,
 .va-connected main textarea::placeholder {
-  color: #96a7b5;
+  color: var(--muted);
 }
 .va-connected main .text-aco {
-  color: #286d9a;
+  color: var(--muted);
 }
 .va-auth {
   min-height: 100dvh;
@@ -1717,11 +1713,11 @@
   grid-template-columns: 1.05fr 1fr;
 }
 .va-auth-story {
-  background: radial-gradient(ellipse at 30% 40%, #224767, #10283f 65%);
+  background: radial-gradient(ellipse at 30% 40%, var(--surface), var(--surface) 65%);
   padding: 48px 10%;
   display: flex;
   flex-direction: column;
-  color: #d7e8f1;
+  color: var(--ink);
 }
 .va-auth-story .va-brand {
   padding-left: 0;
@@ -1739,19 +1735,19 @@
 .va-auth-story > div > p:not(.va-eyebrow) {
   font-size: 15px;
   line-height: 1.9;
-  color: #a8c2d4;
+  color: var(--muted);
   max-width: 380px;
 }
 .va-auth-story > div > a {
   display: inline-block;
   margin-top: 28px;
   padding: 12px 0;
-  border-bottom: 1px solid #7198b2;
+  border-bottom: 1px solid var(--line);
   font-size: 13px;
 }
 .va-auth-story > small {
   font-size: 10px;
-  color: #7c9eb6;
+  color: var(--muted);
   margin-top: 50px;
 }
 .va-auth-form {
@@ -1774,11 +1770,11 @@
 }
 .va-auth-form input {
   padding: 13px !important;
-  background: white;
-  border-color: #d4e0e8;
+  background: var(--raised);
+  border-color: var(--line);
 }
 .va-auth-form button.bg-aco {
-  background: #1b4c6e;
+  background: var(--surface);
   height: 48px;
   border-radius: 7px;
 }
@@ -1791,7 +1787,7 @@
 }
 .va-auth-form label {
   font-size: 12px;
-  color: #526f85;
+  color: var(--muted);
 }
 @media (max-width: 800px) {
   .va-auth {
@@ -1834,27 +1830,27 @@
 }
 
 .va-explore-card.histology .va-card-visual {
-  background: #dce6ed;
+  background: var(--surface);
 }
 .va-explore-card.histology .va-card-visual img {
   mix-blend-mode: multiply;
 }
 .va-explore-card.histology .va-visual-tag {
-  color: #34536b;
+  color: var(--ink);
 }
 .va-classic-link {
   display: flex;
   align-items: center;
   gap: 8px;
   font-size: 12px;
-  color: #286d9a;
+  color: var(--muted);
   margin-top: 24px;
 }
 
 .va-nav-group {
   font-size: 8px;
   letter-spacing: 1.3px;
-  color: #829db3;
+  color: var(--muted);
   padding: 17px 12px 5px;
 }
 .va-chat-welcome {
@@ -1868,10 +1864,10 @@
   width: 70px;
   height: 70px;
   border-radius: 22px;
-  background: radial-gradient(ellipse, #2e698e, #163753);
-  color: #cce9f2;
+  background: radial-gradient(ellipse, var(--surface), var(--surface));
+  color: var(--ink);
   font-size: 30px;
-  box-shadow: 0 15px 40px #1b456620;
+  box-shadow: 0 15px 40px #00000020;
   margin: 0 auto 25px;
 }
 .va-chat-welcome h2 {
@@ -1882,7 +1878,7 @@
 }
 .va-chat-welcome > p:not(.va-eyebrow) {
   font-size: 13px;
-  color: #718798;
+  color: var(--muted);
 }
 .va-chat-welcome > div {
   display: grid;
@@ -1896,17 +1892,17 @@
   align-items: center;
   text-align: left;
   gap: 12px;
-  border: 1px solid #dbe5ec;
+  border: 1px solid var(--line);
   border-radius: 10px;
-  background: white;
+  background: var(--raised);
   padding: 19px;
-  color: #4b6980;
+  color: var(--muted);
   font-size: 12px;
   line-height: 1.7;
 }
 .va-chat-welcome button:hover {
-  border-color: #82afc9;
-  background: #f4f9fc;
+  border-color: var(--line);
+  background: var(--raised);
 }
 .va-chat-welcome button span {
   margin-left: auto;
@@ -1915,14 +1911,14 @@
   max-width: 730px;
 }
 .va-tutor .bg-navy {
-  background: #214c6b;
+  background: var(--surface);
 }
 .va-tutor textarea {
   border-radius: 12px !important;
 }
 .va-tutor > div:first-child {
   padding-bottom: 10px;
-  border-bottom: 1px solid #e0e8ed;
+  border-bottom: 1px solid var(--line);
   margin-bottom: 12px;
 }
 @media (min-width: 901px) {
@@ -2015,7 +2011,7 @@
     height: 100dvh;
     transform: translateX(-100%);
     transition: transform 0.2s;
-    box-shadow: 20px 0 100px #001c3e50;
+    box-shadow: 20px 0 100px #00000050;
   }
   .va-sidebar.is-open {
     transform: translateX(0);
@@ -2027,9 +2023,9 @@
     right: 14px;
     top: 10px;
     z-index: 60;
-    background: #e6eff4;
-    color: #234b67;
-    border: 1px solid #cadce7;
+    background: var(--surface);
+    color: var(--ink);
+    border: 1px solid var(--line);
     border-radius: 7px;
     height: 33px;
     width: 36px;
@@ -2045,11 +2041,11 @@
   }
 }
 .va-connected main table th {
-  background: #173e5c !important;
-  color: #fff !important;
+  background: var(--surface) !important;
+  color: var(--ink) !important;
 }
 .va-connected main table tbody tr:nth-child(even) td:first-child {
-  background: #f2f6f9;
+  background: var(--raised);
 }
 .va-study-links {
   margin: 18px 0;
@@ -2060,41 +2056,41 @@
   justify-content: space-between;
   gap: 6px;
   padding: 10px;
-  border: 1px solid #dbe6ed;
+  border: 1px solid var(--line);
   border-radius: 7px;
   font-size: 12px;
-  color: #245c7f;
+  color: var(--ink);
   margin-bottom: 6px;
 }
 .va-study-links > a:hover {
-  background: #eaf3f8;
+  background: var(--surface);
 }
 
-.va-sidebar nav::-webkit-scrollbar,.va-library-list::-webkit-scrollbar,.va-structure-list::-webkit-scrollbar{width:5px}.va-sidebar nav::-webkit-scrollbar-track{background:#0d2238}.va-sidebar nav::-webkit-scrollbar-thumb{background:#34536b;border-radius:5px}.va-library-list::-webkit-scrollbar-thumb,.va-structure-list::-webkit-scrollbar-thumb{background:#c0ced9;border-radius:5px}
+.va-sidebar nav::-webkit-scrollbar,.va-library-list::-webkit-scrollbar,.va-structure-list::-webkit-scrollbar{width: 5px}.va-sidebar nav::-webkit-scrollbar-track{background: var(--surface)}.va-sidebar nav::-webkit-scrollbar-thumb{background: var(--surface);border-radius: 5px}.va-library-list::-webkit-scrollbar-thumb,.va-structure-list::-webkit-scrollbar-thumb{background: var(--surface);border-radius: 5px}
 
 /* Document flow: the academic notice and navigation scroll with the page. */
-.va-navigation {position:relative;flex-shrink:0;background:#0d2238;align-self:stretch}
-.va-navigation .va-sidebar {position:static;height:auto;min-height:100dvh}
-.va-navigation .va-sidebar nav {overflow:visible}
-.va-collapse-menu {position:absolute;right:8px;top:8px;z-index:31;display:grid;place-items:center;width:30px;height:30px;border:1px solid #34536b;border-radius:8px;background:#17354d;color:#cde6f6;cursor:pointer}
-.va-collapse-menu:focus-visible,.va-account-menu summary:focus-visible {outline:2px solid #65d8ed;outline-offset:3px}
-.va-account-menu {position:relative;flex:1;min-width:0}
-.va-account-menu summary {display:flex;align-items:center;gap:10px;cursor:pointer;list-style:none}
-.va-account-menu summary::-webkit-details-marker {display:none}
-.va-account-options {position:absolute;bottom:calc(100% + 12px);left:0;right:0;padding:6px;background:#17354d;border:1px solid #34536b;border-radius:10px;box-shadow:0 8px 30px #0003;z-index:32}
-.va-account-options a {display:flex;align-items:center;gap:8px;padding:12px;color:#eef7ff;border-radius:6px}
-.va-account-options a:hover {background:#25435c}
-.va-selection-key {display:inline-flex;align-items:center;gap:7px;font-size:12px;color:#785014;margin-bottom:14px}
-.va-selection-key i {width:10px;height:10px;border-radius:50%;background:#ffb020;box-shadow:0 0 0 3px #ffb02022}
-.va-chat-main {height:100dvh}
+.va-navigation {position: relative;flex-shrink: 0;background: var(--surface);align-self: stretch}
+.va-navigation .va-sidebar {position: static;height: auto;min-height: 100dvh}
+.va-navigation .va-sidebar nav {overflow: visible}
+.va-collapse-menu {position: absolute;right: 8px;top: 8px;z-index: 31;display: grid;place-items: center;width: 30px;height: 30px;border: 1px solid var(--line);border-radius: 8px;background: var(--surface);color: var(--ink);cursor: pointer}
+.va-collapse-menu:focus-visible,.va-account-menu summary:focus-visible {outline: 2px solid var(--accent);outline-offset: 3px}
+.va-account-menu {position: relative;flex: 1;min-width: 0}
+.va-account-menu summary {display: flex;align-items: center;gap: 10px;cursor: pointer;list-style: none}
+.va-account-menu summary::-webkit-details-marker {display: none}
+.va-account-options {position: absolute;bottom: calc(100% + 12px);left: 0;right: 0;padding: 6px;background: var(--surface);border: 1px solid var(--line);border-radius: 10px;box-shadow: 0 8px 30px #00000033;z-index: 32}
+.va-account-options a {display: flex;align-items: center;gap: 8px;padding: 12px;color: var(--ink);border-radius: 6px}
+.va-account-options a:hover {background: var(--surface)}
+.va-selection-key {display: inline-flex;align-items: center;gap: 7px;font-size: 12px;color: #785014;margin-bottom: 14px}
+.va-selection-key i {width: 10px;height: 10px;border-radius: 50%;background: #ffb020;box-shadow: 0 0 0 3px #ffb02022}
+.va-chat-main {height: 100dvh}
 @media(min-width:768px) {
-  .va-navigation.is-collapsed {width:48px}
-  .va-navigation.is-collapsed .va-sidebar {display:none}
+  .va-navigation.is-collapsed {width: 48px}
+  .va-navigation.is-collapsed .va-sidebar {display: none}
 }
 @media(max-width:767px) {
-  .va-navigation {width:0;min-height:0}
-  .va-collapse-menu {display:none}
-  .va-navigation .va-sidebar {position:fixed;height:100dvh;min-height:0;overflow-y:auto}
+  .va-navigation {width: 0;min-height: 0}
+  .va-collapse-menu {display: none}
+  .va-navigation .va-sidebar {position: fixed;height: 100dvh;min-height: 0;overflow-y: auto}
 }
 
 /* Radiology is a work surface: both images and the slice controls must fit
@@ -2170,69 +2166,69 @@
   :is(.va-anatomy,.va-radiology) .va-scene { min-height: 0; }
 }
 
-.va-question-entry{display:flex;align-items:center;gap:16px;padding:17px 22px;margin:0 0 20px;border:1px solid #cfdee8;border-radius:12px;background:#e8f1f6;color:#245573}.va-question-entry>span{flex:1;display:flex;flex-direction:column;gap:3px}.va-question-entry strong{font-size:14px}.va-question-entry small{font-size:11px;color:#68879a}.va-question-entry:hover{background:#dcebf3}
+.va-question-entry{display: flex;align-items: center;gap: 16px;padding: 17px 22px;margin: 0 0 20px;border: 1px solid var(--line);border-radius: 12px;background: var(--surface);color: var(--ink)}.va-question-entry>span{flex: 1;display: flex;flex-direction: column;gap: 3px}.va-question-entry strong{font-size: 14px}.va-question-entry small{font-size: 11px;color: var(--muted)}.va-question-entry:hover{background: var(--surface)}
 
 /* Exploration first: a single optional reading panel, never two sidebars. */
-.va-focus-studio [hidden]{display:none!important}
-.va-studio-tools{display:flex;gap:8px;flex-wrap:wrap}
-.va-studio-tools .va-button{font-size:12px;padding:10px 14px;min-height:40px}
-.va-studio-tools button[aria-expanded=true]{background:#dceef5;border-color:#6c9fb6}
-.va-focus-studio .va-studio-grid{grid-template-columns:minmax(0,1fr);min-height:0;gap:12px}
-.va-focus-studio .va-viewer{grid-column:1;grid-row:1}
-.va-focus-studio :is(.va-library,.va-inspector){position:relative;grid-column:auto;grid-row:auto;max-height:none;padding:20px;min-height:0;border-radius:12px}
-.va-focus-studio .va-panel-close{float:right;display:grid;place-items:center;width:32px;height:32px;border:1px solid #dce6ec;background:#f4f8fa;border-radius:7px;color:#50758a;cursor:pointer;position:relative;z-index:1;margin:-6px -5px 8px 10px}
-.va-focus-studio .va-library-head{min-height:30px;margin:0 0 12px;flex-shrink:0}
-.va-focus-studio .va-library-head b{font-size:14px}
-.va-focus-studio .va-library-list button{font-size:14px;padding:13px 10px}
-.va-focus-studio .va-library-list button small{font-size:11px}
-.va-focus-studio .va-search input,.va-focus-studio .va-library select{font-size:13px}
-.va-focus-studio .va-inspector h3{font-size:20px;line-height:1.4;margin-bottom:12px;clear:both}
-.va-focus-studio .va-inspector>p:not(.va-eyebrow),.va-focus-studio .va-part-detail p{font-size:14px;line-height:1.8;color:#4a6577}
-.va-focus-studio .va-structure-list{display:flex;max-height:none;overflow:visible}
-.va-focus-studio .va-structure-list button{font-size:13px;min-height:42px}
-.va-focus-studio .va-inspector{overflow-y:auto;overscroll-behavior:contain;scrollbar-gutter:stable}
-.va-focus-studio .va-inspector>.va-eyebrow:first-of-type{padding-top:3px;margin-bottom:16px}
-.va-focus-studio .va-part-detail{background:#edf5f8;padding:16px;border-radius:9px;margin:16px 0}
-.va-focus-studio .va-viewer-title{position:static;top:auto;left:auto;padding:8px 20px 0;flex-shrink:0}
-.va-focus-studio .va-viewer-title h2{font-size:20px;line-height:1.4;margin:0}
-.va-focus-studio .va-viewer-title>span{display:none}
-.va-focus-studio .va-3d-area{padding-top:0;min-height:300px}
-.va-focus-studio .va-scene{min-height:0}
+.va-focus-studio [hidden]{display: none!important}
+.va-studio-tools{display: flex;gap: 8px;flex-wrap: wrap}
+.va-studio-tools .va-button{font-size: 12px;padding: 10px 14px;min-height: 40px}
+.va-studio-tools button[aria-expanded=true]{background: var(--surface);border-color: var(--line)}
+.va-focus-studio .va-studio-grid{grid-template-columns: minmax(0,1fr);min-height: 0;gap: 12px}
+.va-focus-studio .va-viewer{grid-column: 1;grid-row: 1}
+.va-focus-studio :is(.va-library,.va-inspector){position: relative;grid-column: auto;grid-row: auto;max-height: none;padding: 20px;min-height: 0;border-radius: 12px}
+.va-focus-studio .va-panel-close{float: right;display: grid;place-items: center;width: 32px;height: 32px;border: 1px solid var(--line);background: var(--raised);border-radius: 7px;color: var(--muted);cursor: pointer;position: relative;z-index: 1;margin: -6px -5px 8px 10px}
+.va-focus-studio .va-library-head{min-height: 30px;margin: 0 0 12px;flex-shrink: 0}
+.va-focus-studio .va-library-head b{font-size: 14px}
+.va-focus-studio .va-library-list button{font-size: 14px;padding: 13px 10px}
+.va-focus-studio .va-library-list button small{font-size: 11px}
+.va-focus-studio .va-search input,.va-focus-studio .va-library select{font-size: 13px}
+.va-focus-studio .va-inspector h3{font-size: 20px;line-height: 1.4;margin-bottom: 12px;clear: both}
+.va-focus-studio .va-inspector>p:not(.va-eyebrow),.va-focus-studio .va-part-detail p{font-size: 14px;line-height: 1.8;color: var(--muted)}
+.va-focus-studio .va-structure-list{display: flex;max-height: none;overflow: visible}
+.va-focus-studio .va-structure-list button{font-size: 13px;min-height: 42px}
+.va-focus-studio .va-inspector{overflow-y: auto;overscroll-behavior: contain;scrollbar-gutter: stable}
+.va-focus-studio .va-inspector>.va-eyebrow:first-of-type{padding-top: 3px;margin-bottom: 16px}
+.va-focus-studio .va-part-detail{background: var(--surface);padding: 16px;border-radius: 9px;margin: 16px 0}
+.va-focus-studio .va-viewer-title{position: static;top: auto;left: auto;padding: 8px 20px 0;flex-shrink: 0}
+.va-focus-studio .va-viewer-title h2{font-size: 20px;line-height: 1.4;margin: 0}
+.va-focus-studio .va-viewer-title>span{display: none}
+.va-focus-studio .va-3d-area{padding-top: 0;min-height: 300px}
+.va-focus-studio .va-scene{min-height: 0}
 @media(min-width:901px){
- .va-focus-studio.va-page{height:var(--va-workspace-height,calc(100dvh - 55px));min-height:480px;max-width:none;width:100%;margin:0;padding:12px 18px;display:grid;grid-template-rows:auto minmax(0,1fr);gap:10px}
- .va-focus-studio .va-heading{margin:0;gap:15px}
- .va-focus-studio .va-heading .va-eyebrow{display:none}
- .va-focus-studio .va-heading h1{font-size:23px!important;margin:0 0 4px}
- .va-focus-studio .va-heading>div>p:last-child{font-size:12px}
- .va-focus-studio .va-studio-grid{height:100%;min-height:0}
- .va-focus-studio .va-studio-grid.has-panel{grid-template-columns:minmax(0,1fr) clamp(285px,27vw,360px)}
- .va-focus-studio :is(.va-library,.va-inspector){grid-column:2;grid-row:1;height:100%}
- .va-focus-studio .va-library-list{overflow-y:auto;min-height:0;overscroll-behavior:contain}
- .va-focus-studio .va-3d-area{min-height:0;flex:1}
- .va-focus-studio .va-viewer-top{padding:9px 20px;min-height:43px;flex-shrink:0}
- .va-focus-studio .va-viewer-bottom{padding:8px 16px;flex-shrink:0}
+ .va-focus-studio.va-page{height: var(--va-workspace-height,calc(100dvh - 55px));min-height: 480px;max-width: none;width: 100%;margin: 0;padding: 12px 18px;display: grid;grid-template-rows: auto minmax(0,1fr);gap: 10px}
+ .va-focus-studio .va-heading{margin: 0;gap: 15px}
+ .va-focus-studio .va-heading .va-eyebrow{display: none}
+ .va-focus-studio .va-heading h1{font-size: 23px!important;margin: 0 0 4px}
+ .va-focus-studio .va-heading>div>p:last-child{font-size: 12px}
+ .va-focus-studio .va-studio-grid{height: 100%;min-height: 0}
+ .va-focus-studio .va-studio-grid.has-panel{grid-template-columns: minmax(0,1fr) clamp(285px,27vw,360px)}
+ .va-focus-studio :is(.va-library,.va-inspector){grid-column: 2;grid-row: 1;height: 100%}
+ .va-focus-studio .va-library-list{overflow-y: auto;min-height: 0;overscroll-behavior: contain}
+ .va-focus-studio .va-3d-area{min-height: 0;flex: 1}
+ .va-focus-studio .va-viewer-top{padding: 9px 20px;min-height: 43px;flex-shrink: 0}
+ .va-focus-studio .va-viewer-bottom{padding: 8px 16px;flex-shrink: 0}
 }
 @media(max-width:900px){
- .va-focus-studio.va-page{padding:18px 14px;width:100%}
- .va-focus-studio .va-heading{align-items:start;flex-direction:column;gap:12px;margin-bottom:14px}
- .va-focus-studio .va-heading h1{font-size:23px!important}
- .va-focus-studio .va-heading .va-eyebrow,.va-focus-studio .va-heading>div>p:last-child{display:none}
- .va-focus-studio .va-studio-grid.has-panel{grid-template-columns:1fr}
- .va-focus-studio .va-viewer{height:62dvh;min-height:350px}
- .va-focus-studio .va-3d-area{min-height:0}
- .va-focus-studio .va-library{display:flex;max-height:55dvh;overflow:hidden}
- .va-focus-studio .va-library-list{display:flex;flex-direction:column;overflow-y:auto;min-height:0}
- .va-focus-studio .va-inspector{max-height:65dvh}
- .va-focus-studio .va-viewer-top{padding:9px 12px;gap:6px;flex-wrap:wrap}
- .va-focus-studio .va-viewer-top>span{display:none}
- .va-focus-studio .va-viewer-title{padding:8px 14px 0}
- .va-focus-studio .va-viewer-bottom{padding:8px 12px;font-size:9px}
+ .va-focus-studio.va-page{padding: 18px 14px;width: 100%}
+ .va-focus-studio .va-heading{align-items: start;flex-direction: column;gap: 12px;margin-bottom: 14px}
+ .va-focus-studio .va-heading h1{font-size: 23px!important}
+ .va-focus-studio .va-heading .va-eyebrow,.va-focus-studio .va-heading>div>p:last-child{display: none}
+ .va-focus-studio .va-studio-grid.has-panel{grid-template-columns: 1fr}
+ .va-focus-studio .va-viewer{height: 62dvh;min-height: 350px}
+ .va-focus-studio .va-3d-area{min-height: 0}
+ .va-focus-studio .va-library{display: flex;max-height: 55dvh;overflow: hidden}
+ .va-focus-studio .va-library-list{display: flex;flex-direction: column;overflow-y: auto;min-height: 0}
+ .va-focus-studio .va-inspector{max-height: 65dvh}
+ .va-focus-studio .va-viewer-top{padding: 9px 12px;gap: 6px;flex-wrap: wrap}
+ .va-focus-studio .va-viewer-top>span{display: none}
+ .va-focus-studio .va-viewer-title{padding: 8px 14px 0}
+ .va-focus-studio .va-viewer-bottom{padding: 8px 12px;font-size: 9px}
 }
-.va-nav-scrim{display:none}
+.va-nav-scrim{display: none}
 @media(min-width:768px){
- .va-navigation:not(.is-collapsed){width:48px}
- .va-navigation:not(.is-collapsed) .va-sidebar{position:absolute;left:0;top:0;z-index:30;height:100dvh;min-height:0;overflow-y:auto;box-shadow:15px 0 40px #071b342b}
- .va-navigation .va-sidebar nav{min-height:0;overflow-y:auto;overscroll-behavior:contain}
- .va-nav-scrim{display:block;position:fixed;inset:0;z-index:29;border:0;background:#0b233328;cursor:pointer}
+ .va-navigation:not(.is-collapsed){width: 48px}
+ .va-navigation:not(.is-collapsed) .va-sidebar{position: absolute;left: 0;top: 0;z-index: 30;height: 100dvh;min-height: 0;overflow-y: auto;box-shadow: 15px 0 40px #0000002b}
+ .va-navigation .va-sidebar nav{min-height: 0;overflow-y: auto;overscroll-behavior: contain}
+ .va-nav-scrim{display: block;position: fixed;inset: 0;z-index: 29;border: 0;background: transparent;cursor: pointer}
 }
-@media(max-width:900px){.va-focus-studio .va-library{height:min(400px,55dvh)}.va-studio-tools .va-button{display:inline-flex;gap:7px}}
+@media(max-width:900px){.va-focus-studio .va-library{height: min(400px,55dvh)}.va-studio-tools .va-button{display: inline-flex;gap: 7px}}
