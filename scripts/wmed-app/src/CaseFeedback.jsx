@@ -2,8 +2,10 @@ import React,{useState,useId} from 'react';
 import {ChevronDown,ArrowRight,ShieldAlert,FileText} from 'lucide-react';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
+import {orderedSbar,studentComparisonKeys} from '../shared/case-contract.mjs';
 const labels = {
   resumo_caso: "Resumo do caso",
+  como_apresentar_caso: "Como apresentar o caso · SBAR",
   red_flags_educacionais: "Sinais de alerta",
   pontos_de_atencao: "Pontos de atenção",
   hipoteses_para_discussao: "Hipóteses diagnósticas",
@@ -43,6 +45,7 @@ const groups = [
       "hipoteses_para_discussao",
       "exames_para_discussao_academica",
       "elementos_de_manejo_academico",
+      "como_apresentar_caso",
     ],
   ],
   ["Semiologia", ["analise_anamnese", "analise_exame_fisico"]],
@@ -107,6 +110,11 @@ export function Value({ value }) {
   );
 }
 
+function Sbar({value}) {
+ const data=orderedSbar(value);
+ if(!data)return <Value value={value}/>;
+ return <><ol className="case-sbar">{data.steps.map(({letter,label,value})=><li key={letter}><span className="case-sbar-letter" aria-hidden="true">{letter}</span><div><h4>{letter} · {label}</h4><Value value={value}/></div></li>)}</ol>{Object.keys(data.extras).length>0&&<Value value={data.extras}/>}</>;
+}
 function AlertList({value}) {
  const items=Array.isArray(value)?value:[value];
  return <ol className="case-alert-list">{items.map((item,index)=>{
@@ -131,7 +139,7 @@ export default function CaseFeedback({feedback,quality,qualityError,relato,form,
  const uid=useId();
  const [tab,setTab]=useState(0),[selected,setSelected]=useState('resumo_caso');
  const known=new Set(groups.flatMap(group=>group[1]));
- const extras=Object.keys(feedback).filter(key=>!known.has(key)&&key!=='erro_pii');
+ const extras=Object.keys(feedback).filter(key=>!known.has(key)&&!studentComparisonKeys.has(key)&&key!=='erro_pii');
  const keys=[...groups[tab][1],...(tab===3?extras:[])].filter(key=>hasContent(feedback[key]));
  if(tab===3)keys.unshift('pontuacao');
  if(tab===0)keys.push('relato_original');
@@ -146,7 +154,7 @@ export default function CaseFeedback({feedback,quality,qualityError,relato,form,
 
    <article key={current} className="case-topic-content markdown" role="tabpanel" aria-labelledby={uid+'-tab-'+tab}>
     <h3>{labels[current]||({pontuacao:'Qualidade do relato',relato_original:'Relato registrado'})[current]||current?.replaceAll('_',' ')}</h3>
-    {current==='pontuacao'?<><p className="module-note">A pontuação avalia a documentação, não sua competência médica. Não é necessário propor hipóteses ou condutas.</p>{quality?quality.criteria.map(c=><details className="case-item" key={c.id}><summary><strong>{c.label}</strong><span>{c.aplicavel?`${c.points}/${c.max}`:'Não aplicável'}</span><ChevronDown size={16}/></summary><div className="case-item-body"><p>{c.justificativa}</p>{c.evidencia&&<blockquote>{c.evidencia}</blockquote>}<p><b>Próximo passo:</b> {c.melhoria}</p></div></details>):<p>{qualityError||(busy?'Avaliando a qualidade do relato…':'Pontuação indisponível para este caso.')}</p>}{onGrade&&qualityError&&<button disabled={busy} onClick={onGrade}>Tentar pontuação novamente</button>}</>:current==='relato_original'?<div className="case-original">{relato}</div>:current==='red_flags_educacionais'?<AlertList value={feedback[current]}/>:current?<DetailsValue value={feedback[current]}/>:<p>Não há conteúdo nesta seção.</p>}
+    {current==='pontuacao'?<><p className="module-note">A pontuação avalia a documentação, não sua competência médica. Não é necessário propor hipóteses ou condutas.</p>{quality?quality.criteria.map(c=><details className="case-item" key={c.id}><summary><strong>{c.label}</strong><span>{c.aplicavel?`${c.points}/${c.max}`:'Não aplicável'}</span><ChevronDown size={16}/></summary><div className="case-item-body"><p>{c.justificativa}</p>{c.evidencia&&<blockquote>{c.evidencia}</blockquote>}<p><b>Próximo passo:</b> {c.melhoria}</p></div></details>):<p>{qualityError||(busy?'Avaliando a qualidade do relato…':'Pontuação indisponível para este caso.')}</p>}{onGrade&&qualityError&&<button disabled={busy} onClick={onGrade}>Tentar pontuação novamente</button>}</>:current==='relato_original'?<div className="case-original">{relato}</div>:current==='como_apresentar_caso'?<Sbar value={feedback[current]}/>:current==='red_flags_educacionais'?<AlertList value={feedback[current]}/>:current?<DetailsValue value={feedback[current]}/>:<p>Não há conteúdo nesta seção.</p>}
     {current==='resumo_caso'&&alerts&&<aside className="case-alert-summary"><h4><ShieldAlert size={18}/> Sinais de alerta</h4><AlertList value={feedback.red_flags_educacionais}/></aside>}
    </article>
   </div>
