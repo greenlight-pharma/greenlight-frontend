@@ -12,6 +12,7 @@ import {
   BookOpen,
   TrendingUp,
   ClipboardList,
+  FlaskConical,
 } from "lucide-react";
 const Anatomy = lazy(() =>
   import("./academic/Experience").then((m) => ({ default: m.Anatomy })),
@@ -23,6 +24,7 @@ const Radiology = lazy(() =>
   import("./academic/Experience").then((m) => ({ default: m.Radiology })),
 );
 const Microbiology = lazy(() => import("./Microbiology"));
+const XrayLab = lazy(() => import("./XrayLab"));
 const Questions = lazy(() => import("./Questions"));
 const ClinicalCase = lazy(() => import("./ClinicalCase"));
 const Scores = lazy(() =>
@@ -91,6 +93,7 @@ export const moduleItems = [
     description: "Biblioteca clínica e CID-10",
     icon: BookOpen,
   },
+  {id:"laboratorio",label:"Laboratório de ideias",description:"Radiografia em 3D · protótipo",icon:FlaskConical},
   {
     id: "evolucao",
     label: "Minha evolução",
@@ -162,6 +165,8 @@ export default function Modules({
                 <ReferenceLibrary kind={active} />
               ) : active === "imagens" ? (
                 <Images session={session} onLogin={onLogin} />
+              ) : active === "laboratorio" ? (
+                <XrayLab />
               ) : active === "evolucao" ? (
                 <section className="module-page">
                   <header className="module-heading">
