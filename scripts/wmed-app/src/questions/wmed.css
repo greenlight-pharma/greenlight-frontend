@@ -1,0 +1,9 @@
+.wmed-questions .qb-root{--qb-ink:#163a50;--qb-muted:#668094;--qb-line:#dbe5ed;font-family:inherit;background:#edf3f8}
+.wmed-questions .qb-page-title h1{font-family:inherit;font-weight:600;letter-spacing:-1px}
+.wmed-questions .qb-main{max-width:none}
+.wmed-questions .qb-exam-card{box-shadow:0 3px 14px #13395805;transition:border-color .15s,background .15s}
+.wmed-questions .qb-exam-card-icon{color:#347d94}
+.wmed-questions .qb-exam-card-progress i{background:linear-gradient(90deg,#24618b,#4ea99f)}
+.wmed-questions .qb-study-bottom{border-radius:0 0 12px 12px}
+@media(max-width:900px){.va-connected .wmed-questions .qb-workspace .qb-study-bottom{bottom:65px}.wmed-questions .qb-footer{padding-bottom:20px}}
+@media(min-width:1150px){.wmed-questions .qb-exam-catalog{grid-template-columns:repeat(4,minmax(0,1fr))}}
