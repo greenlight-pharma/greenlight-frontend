@@ -20,3 +20,12 @@ python build.py --source /caminho/s1397_resampled.vtm
 Saída em public/xray/pelvis. catalog.json registra calibração, hashes dos arquivos e do gerador. A UI oferece zoom visual comum de 1,35, seleção pareada, incidências discretas e exercício de identificação. Nenhuma GPU ou serviço remoto é necessário na navegação.
 
 Verificação: testes Node de integridade, nomes de estruturas, orientação e calibração independente dos cantos do detector. Inspeção visual em navegador desktop e móvel. Isso não equivale a validação clínica nem valida o registro XVR.
+
+## Expansão 23/09/2026
+
+- Modo de geometria: fonte, detector texturizado e raios nas coordenadas reais do catálogo; toque na projeção produz raio até o centro do pixel. Órbita livre apenas da câmera de observação, sem alterar a aquisição.
+- Sobreposição: contornos ou preenchimento das máscaras projetadas; bits preservam sobreposições.
+- Alinhamento educacional: comparação vermelho/ciano e diferença absoluta (ganho visual 2x); desafio em sete incidências e busca exaustiva NCC sobre pixels originais das sete DRRs. Referência é uma projeção do próprio conjunto, portanto coincidência perfeita é esperada. Sem ruído, domínio clínico, avaliação externa, erro em milímetros ou registro 6DoF. Não executa rede XVR.
+- Fundamentação: https://github.com/eigenvivek/xvr e https://xvr.csail.mit.edu/ consultados em 23/09/2026. Código de registro neural não incorporado; nenhuma nova dependência ou GPU.
+
+Testes adicionais verificam raios por projeção independente, contornos com bits sobrepostos e NCC com brilho/escala conhecidos. A revisão clínica e ensaios com radiografias adquiridas não foram executados.
