@@ -19,6 +19,13 @@ Fonte canônica: `scripts/wmed-app` no repositório greenlight-frontend. Publica
 - **Offline (PWA)**: `public/manifest.webmanifest`, `public/sw.js` e `precache.json` gerado no build (núcleo de ~5 MB: interface, dados, scores, resumos). Modelos 3D entram no cache quando abertos; a API nunca é guardada. Em wmed.ai o service worker é `/sw.js` (reescrito para `/wmed/sw.js`).
 - Testes: `tests/clinical-tools.test.mjs` (faixas cobrem toda soma possível, fórmulas contra exemplos à mão, tetos de dose) e favoritos em `tests/accounts.test.mjs`.
 
+## Protocolos e guias (item 2, 24/09/2026)
+
+- Módulo `#protocolos` (`src/Guides.jsx`) com conteúdo próprio em Markdown: 10 protocolos de emergência (`src/guides/emergencia.ts`: PCR, sepse, anafilaxia, AVC, asma, CAD, hipercalemia, intubação em sequência rápida, drogas vasoativas, SCA) e 9 guias de antimicrobianos (`src/guides/antimicrobianos.ts`: PAC, ITU, pele e partes moles, meningite, sepse sem foco, intra-abdominal, sífilis/IST, profilaxia cirúrgica, espectro das classes).
+- Cada guia cita as diretrizes-fonte, abre por link (`#protocolos?guia=iot`), aceita favorito e anotação (tipo `guide`) e liga direto aos scores e calculadoras (`#scores?id=…`).
+- `tests/guides.test.mjs` garante ids únicos, fontes https, aviso final e que todo link interno abre um score, calculadora ou guia existente.
+- **Rascunho escrito com apoio de IA: exige revisão médica antes da liberação ampla.** Doses para adultos com função renal normal; esquemas empíricos devem seguir a CCIH local.
+
 ## Contas WMed (fase A)
 
 A WMed usa contas próprias; o login Vytal Acadêmico foi removido.
