@@ -215,7 +215,9 @@ function frame(ctx, t) {
 }
 // barra superior (como no app) e progresso por seções
 function chrome(t) {
-  const a = expoOut(seg(t, .2, 1)) * (1 - ease(seg(t, VIDEO.dur - 2.6, VIDEO.dur - 2)));
+  // VIDEO.chrome = [início, fim] limita quando a barra aparece (padrão: o vídeo todo)
+  const [c0, c1] = VIDEO.chrome || [0, VIDEO.dur - 2];
+  const a = expoOut(seg(t, c0 + .2, c0 + 1)) * (1 - ease(seg(t, c1 - .6, c1)));
   if (a <= .005) return;
   logo(72, 44, 56, { alpha: a });
   wordmark(142, 73, 36, { alpha: a });
@@ -251,8 +253,28 @@ window.renderSheet = async (times, cols = 3, w = 640) => {
   }
   return { url: sc.toDataURL('image/jpeg', .9), ms };
 };
+// imagens do tema: VIDEO.images = { nome: 'caminho' | ['caminho', ...] } → IMG.nome (Image ou lista de Image)
+const IMG = {};
+const loadImg = src => new Promise((ok, bad) => { const i = new Image(); i.onload = () => ok(i); i.onerror = () => bad(new Error('imagem não encontrada: ' + src)); i.src = src; });
+// desenha a imagem cobrindo o retângulo (como object-fit: cover); src = recorte opcional [sx, sy, sw, sh] em frações
+function cover(img, x, y, w, h, o = {}) {
+  const [fx, fy, fw, fh] = o.src || [0, 0, 1, 1], sw = img.width * fw, sh = img.height * fh, z = o.zoom || 1;
+  const k = Math.max(w / sw, h / sh) * z, dw = sw * k, dh = sh * k;
+  X.save(); rr(x, y, w, h, o.r ?? 0); X.clip(); X.globalAlpha *= o.alpha ?? 1;
+  X.drawImage(img, img.width * fx, img.height * fy, sw, sh, x + (w - dw) / 2 + (o.dx || 0), y + (h - dh) / 2 + (o.dy || 0), dw, dh);
+  X.restore();
+}
+// sequência de quadros (giro 3D capturado): p = 0..1 ao longo da lista, com fusão entre quadros vizinhos
+function turntable(list, p, x, y, w, h, o = {}) {
+  const f = clamp(p) * (list.length - 1), i = Math.floor(f), k = f - i;
+  cover(list[i], x, y, w, h, o);
+  if (k > .02 && i + 1 < list.length) cover(list[i + 1], x, y, w, h, { ...o, alpha: (o.alpha ?? 1) * k });
+}
 (async () => {
+  // o arquivo do tema é carregado depois deste; espere o documento terminar antes de ler VIDEO
+  if (document.readyState === 'loading') await new Promise(r => addEventListener('DOMContentLoaded', r));
   await Promise.all([document.fonts.load('400 40px Jakarta'), document.fonts.load('600 40px Jakarta'), document.fonts.load(`500 20px ${F.mono}`)]);
+  for (const [k, v] of Object.entries(VIDEO.images || {})) IMG[k] = Array.isArray(v) ? await Promise.all(v.map(loadImg)) : await loadImg(v);
   window.ready = true;
   if (!location.search.includes('render')) {
     const s = document.getElementById('scrub'), lab = document.getElementById('tt'); s.max = VIDEO.dur;
