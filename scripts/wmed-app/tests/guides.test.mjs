@@ -1,12 +1,15 @@
 // Guias com conteúdo próprio: estrutura, fontes e links internos que precisam abrir algo que existe.
 import test from 'node:test';import assert from 'node:assert/strict';import {build} from 'esbuild';
 import {calculators} from '../shared/calculators.mjs';
+import {readdirSync} from 'node:fs';
+// todo arquivo de src/guides (menos types.ts) exporta uma lista de guias
+const FILES=readdirSync(new URL('../src/guides/',import.meta.url)).filter(f=>f.endsWith('.ts')&&f!=='types.ts').map(f=>'src/guides/'+f);
+const loadAll=async()=>(await Promise.all(FILES.map(load))).flatMap(m=>Object.values(m).flat());
 async function load(path){const r=await build({entryPoints:[path],bundle:true,write:false,format:'esm',platform:'node'});return import(`data:text/javascript;base64,${Buffer.from(r.outputFiles[0].text).toString('base64')}`)}
 
 test('guias: ids únicos, fontes https e aviso final',async()=>{
- const [{EMERGENCIA},{ANTIMICROBIANOS}]=await Promise.all(['src/guides/emergencia.ts','src/guides/antimicrobianos.ts'].map(load));
- const all=[...EMERGENCIA,...ANTIMICROBIANOS];
- assert.ok(EMERGENCIA.length>=10&&ANTIMICROBIANOS.length>=9);
+ const all=await loadAll();
+ assert.ok(all.length>=19,`${all.length} guias`);
  assert.equal(new Set(all.map(g=>g.id)).size,all.length);
  for(const g of all){
   assert.match(g.id,/^[a-z0-9-]+$/,g.id);
@@ -18,9 +21,8 @@ test('guias: ids únicos, fontes https e aviso final',async()=>{
  for(const need of ['iot','drogas-vasoativas','sepse','sepse-foco','pac','meningite','profilaxia-cirurgica'])assert.ok(all.some(g=>g.id===need),need);
 });
 test('guias: todo link interno aponta para score, calculadora ou guia existente',async()=>{
- const [{EMERGENCIA},{ANTIMICROBIANOS}]=await Promise.all(['src/guides/emergencia.ts','src/guides/antimicrobianos.ts'].map(load));
+ const all=await loadAll();
  const [{SCORES},{EXTRA_SCORES},{MORE_SCORES}]=await Promise.all(['src/academic/scores.ts','src/academic/extra-scores.ts','src/academic/more-scores.ts'].map(load));
- const all=[...EMERGENCIA,...ANTIMICROBIANOS];
  const tools=new Set([...SCORES,...EXTRA_SCORES,...MORE_SCORES,...calculators].map(s=>s.id).concat('doses-pediatricas'));
  const guides=new Set(all.map(g=>g.id));
  let links=0;
