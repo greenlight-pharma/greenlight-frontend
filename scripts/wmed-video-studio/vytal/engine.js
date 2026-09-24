@@ -193,6 +193,45 @@ function phone(img, cx, cy, h, o = {}) {
   X.restore();
 }
 
+// ---------- capturas reais ----------
+// recorte [sx, sy, sw, sh] (px da imagem) desenhado cobrindo a caixa, com cantos arredondados
+function shot(img, src, x, y, w, h, o = {}) {
+  const a = o.alpha ?? 1; if (!img || a <= .005) return;
+  const [sx, sy, sw, sh] = src || [0, 0, img.width, img.height], k = Math.max(w / sw, h / sh) * (o.zoom || 1), dw = sw * k, dh = sh * k;
+  X.save(); X.globalAlpha *= a; rr(x, y, w, h, o.r ?? 0); X.clip();
+  X.drawImage(img, sx, sy, sw, sh, x + (w - dw) / 2 + (o.dx || 0), y + (h - dh) / 2 + (o.dy || 0), dw, dh);
+  X.restore();
+}
+// sequência de quadros de um giro 3D: p = 0..1, com fusão entre quadros vizinhos
+function turntable(list, p, x, y, w, h, o = {}) {
+  if (!list || !list.length) return;
+  const f = clamp(p) * (list.length - 1), i = Math.floor(f), k = f - i;
+  shot(list[i], o.src, x, y, w, h, o);
+  if (k > .02 && i + 1 < list.length) shot(list[i + 1], o.src, x, y, w, h, { ...o, alpha: (o.alpha ?? 1) * k });
+}
+// janela de navegador em vidro com a tela real; scroll 0..1 percorre o recorte vertical
+function browser(img, src, x, y, w, h, o = {}) {
+  const a = o.alpha ?? 1; if (a <= .005) return;
+  X.save(); X.globalAlpha *= a;
+  const bar = 58, r = 26;
+  rr(x, y, w, h, r); X.shadowColor = 'rgba(0,0,0,.5)'; X.shadowBlur = 80; X.shadowOffsetY = 34; X.fillStyle = '#0B1830'; X.fill(); X.shadowColor = 'transparent';
+  X.lineWidth = 2; X.strokeStyle = rgba(C.pale, .25); X.stroke();
+  ['#FF5F57', '#FEBC2E', '#28C840'].forEach((c, i) => { X.beginPath(); X.arc(x + 34 + i * 26, y + bar / 2, 7.5, 0, TAU); X.fillStyle = rgba(c, .9); X.fill(); });
+  rr(x + 130, y + 14, w - 170, bar - 28, 15); X.fillStyle = rgba('#FFFFFF', .07); X.fill();
+  X.font = `500 22px ${F.sans}`; X.fillStyle = C.muted; X.textBaseline = 'middle'; X.fillText(o.url || 'app.vytalsaude.com.br', x + 152, y + bar / 2 + 1);
+  X.restore();
+  const [sx, sy, sw, sh] = src, viewH = sw * (h - bar) / w, top = sy + (sh - viewH) * clamp(o.scroll || 0);
+  X.save(); X.globalAlpha *= a; X.beginPath(); X.roundRect(x, y + bar, w, h - bar, [0, 0, r, r]); X.clip();
+  X.drawImage(img, sx, top, sw, viewH, x, y + bar, w, h - bar);
+  X.restore();
+}
+// número que conta até o valor
+function counter(v, p, x, y, o = {}) {
+  const n = Math.round(v * easeOutQ(p));
+  return text((o.prefix || '') + n.toLocaleString('pt-BR') + (o.suffix || ''), x, y, { weight: 700, ...o });
+}
+const easeOutQ = x => 1 - Math.pow(1 - clamp(x), 4);
+
 // ---------- vídeo: cenas e transições ----------
 let VIDEO = null;
 function video(v) { VIDEO = { tr: .7, ...v }; }
@@ -234,7 +273,7 @@ const loadImg = src => new Promise((ok, bad) => { const i = new Image(); i.onloa
 (async () => {
   if (document.readyState === 'loading') await new Promise(r => addEventListener('DOMContentLoaded', r));
   await Promise.all(['500 40px "Instrument Sans"', '600 40px "Instrument Sans"', '700 40px "Instrument Sans"', 'italic 400 40px "Instrument Serif"'].map(f => document.fonts.load(f)));
-  for (const [k, v] of Object.entries(VIDEO.images || {})) IMG[k] = await loadImg(v);
+  for (const [k, v] of Object.entries(VIDEO.images || {})) IMG[k] = Array.isArray(v) ? await Promise.all(v.map(loadImg)) : await loadImg(v);
   if (IMG.mark) MARK = prepareMark(IMG.mark);
   window.ready = true;
   if (!location.search.includes('render')) {
