@@ -17,15 +17,19 @@ export type LumenQuality = "high" | "low";
 
 const params = () => { try { return new URLSearchParams(location.search); } catch { return new URLSearchParams(); } };
 
-/** Protótipo: ?visual=lumen liga (e lembra), ?visual=classic desliga. */
+/** Padrão desde 24/09/2026. ?visual=classic volta ao visual antigo (e lembra); ?visual=lumen reativa. */
 export function lumenEnabled(): boolean {
   const q = params().get("visual");
   try {
-    if (q === "lumen") localStorage.setItem("wmed-visual", "lumen");
-    if (q === "classic") localStorage.removeItem("wmed-visual");
-    return q === "lumen" || (q !== "classic" && localStorage.getItem("wmed-visual") === "lumen");
-  } catch { return q === "lumen"; }
+    if (q === "classic") localStorage.setItem("wmed-visual", "classic");
+    if (q === "lumen") localStorage.removeItem("wmed-visual");
+    return q !== "classic" && (q === "lumen" || localStorage.getItem("wmed-visual") !== "classic");
+  } catch { return q !== "classic"; }
 }
+
+// Palcos ativos por canvas, para o modo apresentação encontrar o palco da cena que está na tela.
+const stages = new WeakMap<HTMLCanvasElement, LumenStage>();
+export const stageFor = (canvas: HTMLCanvasElement | null | undefined) => (canvas ? stages.get(canvas) : undefined);
 /** Escuro do app → holográfico; demais temas → clínico claro. ?lumen=holo|clinical força. */
 export function lumenTheme(): LumenTheme {
   const q = params().get("lumen");
@@ -41,9 +45,9 @@ export function lumenQuality(): LumenQuality {
 
 export const THEMES = {
   clinical: { bg: ["#ffffff", "#eef2f7", "#d9e1ea"], rim: "#8fc2ff", rimStrength: 0.28, rimPower: 3.2, env: 0.95, exposure: 1.0,
-    shadow: 0.62, outline: "#2f7cff", outlineGlow: 0.2, bloom: 0.14, key: "#ffffff", fill: "#e2edff", back: "#a9ccff", particles: 0, rings: 0 },
+    shadow: 0.62, outline: "#2f7cff", outlineGlow: 0.2, bloom: 0.2, key: "#ffffff", fill: "#e2edff", back: "#a9ccff", particles: 0, rings: 0 },
   holo: { bg: ["#12294a", "#08121f", "#02050a"], rim: "#46b4ff", rimStrength: 0.95, rimPower: 2.3, env: 0.5, exposure: 1.08,
-    shadow: 0.4, outline: "#79dcff", outlineGlow: 1.2, bloom: 0.55, key: "#dcecff", fill: "#2f64a8", back: "#58ccff", particles: 650, rings: 1 },
+    shadow: 0.4, outline: "#79dcff", outlineGlow: 1.2, bloom: 0.8, key: "#dcecff", fill: "#2f64a8", back: "#58ccff", particles: 650, rings: 1 },
 };
 
 // ---------- Materiais ----------
@@ -190,7 +194,7 @@ class LayerPass extends Pass { constructor(private fn: () => void) { super(); th
 
 // ---------- Palco ----------
 export type LumenStage = ReturnType<typeof createStage>;
-export function createStage(renderer: THREE.WebGLRenderer, scene: THREE.Scene, camera: THREE.PerspectiveCamera, options: { theme?: LumenTheme; quality?: LumenQuality; controls?: any } = {}) {
+export function createStage(renderer: THREE.WebGLRenderer, scene: THREE.Scene, camera: THREE.PerspectiveCamera, options: { theme?: LumenTheme; quality?: LumenQuality; controls?: any; ao?: boolean } = {}) {
   let theme = options.theme || lumenTheme();
   const quality = options.quality || lumenQuality(), T = () => THEMES[theme];
   renderer.toneMapping = THREE.NeutralToneMapping; renderer.outputColorSpace = THREE.SRGBColorSpace;
@@ -208,12 +212,15 @@ export function createStage(renderer: THREE.WebGLRenderer, scene: THREE.Scene, c
     composer.addPass(new RenderPass(scene, camera));
     const fx: THREE.Object3D[] = [rings, dust, shadow.group];
     composer.addPass(new LayerPass(() => fx.forEach((o) => (o.userData.v = o.visible, o.visible = false))));
-    gtao = new GTAOPass(scene, camera, 1, 1); gtao.blendIntensity = 0.85; composer.addPass(gtao);
+    // imagens médicas (corte de TC) não recebem oclusão ambiente: o pixel exibido precisa ser o do exame
+    if (options.ao !== false) { gtao = new GTAOPass(scene, camera, 1, 1); gtao.blendIntensity = 0.85; composer.addPass(gtao); }
     outline = new OutlinePass(new THREE.Vector2(1, 1), scene, camera); outline.edgeThickness = 1.4; outline.pulsePeriod = 0; composer.addPass(outline);
     composer.addPass(new LayerPass(() => fx.forEach((o) => (o.visible = o.userData.v))));
-    bloom = new UnrealBloomPass(new THREE.Vector2(1, 1), 0.3, 0.55, 0.85); composer.addPass(bloom);
+    // limiar acima de 1: só brilhos HDR (bordas luminosas) florescem; branco de imagem (TC, raio X) não
+    bloom = new UnrealBloomPass(new THREE.Vector2(1, 1), 0.3, 0.55, 1.02); composer.addPass(bloom);
     composer.addPass(new OutputPass());
   }
+  let cinematic = false, lastTick = 0, recording = false;
   let radius = 1, lastSig = "", hover: THREE.Object3D[] = [], selected: THREE.Object3D[] = [], anim: null | { t0: number; from: [THREE.Vector3, THREE.Vector3]; to: [THREE.Vector3, THREE.Vector3] } = null, subject: THREE.Object3D | null = null;
   function applyTheme() {
     const t = T();
@@ -259,8 +266,15 @@ export function createStage(renderer: THREE.WebGLRenderer, scene: THREE.Scene, c
         camera.position.lerpVectors(anim.from[0], anim.to[0], e); options.controls.target.lerpVectors(anim.from[1], anim.to[1], e); options.controls.update();
         if (k >= 1) anim = null;
       }
+      // Órbita cinematográfica (modo apresentação): giro por tempo, independente da taxa de quadros.
+      const dt = Math.min(0.05, (now - (lastTick || now)) / 1000); lastTick = now;
+      if (cinematic && options.controls && !anim) {
+        const c = options.controls, offset = camera.position.clone().sub(c.target);
+        offset.applyAxisAngle(new THREE.Vector3(0, 1, 0), dt * (Math.PI * 2) / 14);
+        camera.position.copy(c.target).add(offset); camera.lookAt(c.target); c.update();
+      }
       const sig = camera.matrixWorld.elements.map((n) => n.toFixed(4)).join() + extraKey;
-      if (!always && !anim && sig === lastSig) return false;
+      if (!always && !anim && !recording && sig === lastSig) return false;
       lastSig = sig;
       if (dust.visible) dust.rotation.y = now * 0.00002;
       (rings.material as THREE.ShaderMaterial).uniforms.time.value = now / 1000;
@@ -268,7 +282,34 @@ export function createStage(renderer: THREE.WebGLRenderer, scene: THREE.Scene, c
       if (composer) composer.render(); else renderer.render(scene, camera);
       return true;
     },
+    get cinematic() { return cinematic; },
+    setCinematic(on: boolean) { cinematic = on; lastSig = ""; },
+    /** Imagem com 3840 px de largura (ou a largura pedida), renderizada na hora e baixada como PNG. */
+    capture(width = 3840, name = "wmed-3d") {
+      const size = renderer.getSize(new THREE.Vector2()), ratio = renderer.getPixelRatio(), scale = Math.min(width / size.x, 4096 / size.y, 6);
+      renderer.setPixelRatio(scale); composer?.setPixelRatio(scale); composer?.setSize(size.x, size.y);
+      api.render("", true); const url = renderer.domElement.toDataURL("image/png");
+      renderer.setPixelRatio(ratio); composer?.setPixelRatio(ratio); composer?.setSize(size.x, size.y); lastSig = ""; api.render("", true);
+      const a = document.createElement("a"); a.href = url; a.download = `${name}.png`; a.click();
+    },
+    /** Grava um giro completo do canvas (MP4 quando o navegador aceita, senão WebM). */
+    async record(seconds = 14, name = "wmed-3d", onProgress?: (fraction: number) => void) {
+      const canvas = renderer.domElement as HTMLCanvasElement;
+      if (!("captureStream" in canvas) || typeof MediaRecorder === "undefined") throw Error("Seu navegador não permite gravar vídeo desta cena.");
+      const type = ["video/mp4;codecs=avc1.640028", "video/mp4", "video/webm;codecs=vp9", "video/webm"].find((t) => MediaRecorder.isTypeSupported(t)) || "";
+      const stream = (canvas as any).captureStream(60), rec = new MediaRecorder(stream, { mimeType: type, videoBitsPerSecond: 16_000_000 }), chunks: Blob[] = [];
+      rec.ondataavailable = (e) => e.data.size && chunks.push(e.data);
+      const done = new Promise<void>((resolve) => (rec.onstop = () => resolve()));
+      const was = cinematic; cinematic = true; recording = true; rec.start(250);
+      const t0 = performance.now();
+      await new Promise<void>((resolve) => { const tick = () => { const f = (performance.now() - t0) / (seconds * 1000); onProgress?.(Math.min(1, f)); if (f >= 1) resolve(); else setTimeout(tick, 100); }; tick(); });
+      rec.stop(); await done; recording = false; cinematic = was; stream.getTracks().forEach((t: MediaStreamTrack) => t.stop());
+      const blob = new Blob(chunks, { type: type.split(";")[0] || "video/webm" }), a = document.createElement("a");
+      a.href = URL.createObjectURL(blob); a.download = `${name}.${blob.type.includes("mp4") ? "mp4" : "webm"}`; a.click();
+      setTimeout(() => URL.revokeObjectURL(a.href), 5000);
+    },
     dispose() {
+      stages.delete(renderer.domElement);
       composer?.dispose(); gtao?.dispose(); outline?.dispose(); bloom?.dispose(); shadow.dispose(); env.dispose();
       (scene.background as THREE.Texture | null)?.dispose?.();
       rings.geometry.dispose(); (rings.material as THREE.Material).dispose(); dust.geometry.dispose(); (dust.material as THREE.PointsMaterial).map?.dispose(); (dust.material as THREE.Material).dispose();
@@ -276,5 +317,6 @@ export function createStage(renderer: THREE.WebGLRenderer, scene: THREE.Scene, c
     },
   };
   applyTheme();
+  stages.set(renderer.domElement, api as LumenStage);
   return api;
 }

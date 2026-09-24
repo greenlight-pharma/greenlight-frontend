@@ -13,3 +13,14 @@ html[data-visual=lumen] .gene-viewport:before{display:none}
 html[data-visual=lumen][data-theme=dark] :is(.micro-caption,.mol-title,.gene-scene-top,.va-scene-hint){color:#e6f2ff}
 html[data-visual=lumen][data-theme=dark] :is(.micro-caption span,.mol-title span,.mol-title p){color:#8fb4d9}
 html[data-visual=lumen] :is(.micro-stage,.mol-stage,.gene-viewport) canvas{outline:none}
+.lumen-spectrum{display:inline-block;width:46px!important;height:6px!important;border-radius:3px!important;margin-right:6px;vertical-align:middle;background:linear-gradient(90deg,#3b6cff,#22b8e0,#4fd39a,#f2c14e,#ff7a59)!important}
+/* Modo apresentação */
+.lumen-present{width:100vw!important;height:100vh!important;max-height:none!important;border-radius:0!important;background:#02050a;position:relative}
+.lumen-present-fixed{position:fixed!important;inset:0;z-index:1000}
+.lumen-present>:not(.lumen-present-bar):not(:has(>canvas)){display:none!important}
+.lumen-present>:has(>canvas){position:absolute!important;inset:0!important;width:100%!important;height:100%!important;border-radius:0!important}
+.lumen-present-bar{position:absolute;left:50%;bottom:28px;transform:translateX(-50%);display:flex;gap:8px;padding:8px;border-radius:18px;z-index:5;background:rgba(10,22,40,.55);-webkit-backdrop-filter:blur(18px) saturate(1.5);backdrop-filter:blur(18px) saturate(1.5);border:1px solid rgba(121,220,255,.22);box-shadow:0 20px 60px -20px #000;opacity:.25;transition:opacity .3s}
+.lumen-present-bar:hover,.lumen-present-bar:focus-within{opacity:1}
+.lumen-present-bar button{display:inline-flex;align-items:center;gap:7px;padding:10px 14px;border-radius:12px;border:0;background:transparent;color:#e6f2ff;font:inherit;font-size:13px;cursor:pointer}
+.lumen-present-bar button:hover{background:rgba(121,220,255,.14)}
+.lumen-present-bar span{color:#ffb4a8;font-size:12px;align-self:center;padding:0 8px}

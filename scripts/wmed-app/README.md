@@ -34,13 +34,15 @@ Fonte canônica: `scripts/wmed-app` no repositório greenlight-frontend. Publica
 - **Registros da Anvisa** (`tools/anvisa/medicamentos.mjs`): lê o CSV de dados abertos da Anvisa (medicamentos com registro válido), casa o princípio ativo com o acervo ignorando sal e hidrato e gera `public/dados/anvisa.json` com nomes comerciais, categoria (referência, genérico, similar) e empresa. A ficha da medicação mostra a lista quando o arquivo existe. Rodar fora deste ambiente (o domínio da Anvisa é bloqueado aqui): `node tools/anvisa/medicamentos.mjs` (baixa da URL oficial) ou `node tools/anvisa/medicamentos.mjs arquivo.csv`. O script recusa arquivos com menos de 1.000 registros válidos.
 - Testes: `tests/interactions.test.mjs` (pares clássicos, prioridade do par específico, triplo golpe, sem falso positivo) e `tests/anvisa.test.mjs` (Latin-1, aspas, sal e hidrato, só registros válidos).
 
-## WMed Lumen: nova camada visual 3D (protótipo, 24/09/2026)
+## WMed Lumen: camada visual 3D (padrão desde 24/09/2026)
 
-- Liga com `?visual=lumen` (fica lembrado no navegador) e desliga com `?visual=classic`. Sem o parâmetro, o app segue com o visual atual.
+- É o visual padrão. `?visual=classic` volta ao visual antigo (fica lembrado no navegador) e `?visual=lumen` reativa.
 - `src/lumen/lumen.ts`: palco compartilhado com iluminação de ambiente (RoomEnvironment), sombra de contato, oclusão ambiente (GTAO), brilho suave (bloom), contorno luminoso em seleção e hover (OutlinePass), câmera com voo suave e materiais físicos com borda luminosa (`LumenMaterial`); membranas ficam translúcidas.
 - Dois visuais: **clínico claro** (temas claros do app) e **holográfico** (tema escuro: fundo azul-marinho, partículas e anéis). `?lumen=holo|clinical` força um deles.
 - Qualidade automática: aparelhos de toque ou com até 4 núcleos usam a versão leve (sem pós-processamento). `?lumenq=high|low` força.
-- Aplicado em `academic/Scene.tsx` (Microbiologia, Anatomia, Histologia, Radiologia), Genética (injetado por `Genetics.jsx`) e Biblioteca molecular (`src/lumen/molecule.ts`: SDF e PDB próprios, esferas e ligações instanciadas, molécula orientada pelos eixos principais; as fitas de proteína seguem no 3Dmol).
+- Aplicado em `academic/Scene.tsx` (Microbiologia, Anatomia, Histologia, Radiologia), Genética (injetado por `Genetics.jsx`), Radiografia em 3D (`XrayLab.jsx`) e Biblioteca molecular (`src/lumen/molecule.ts`: SDF e PDB próprios, esferas e ligações instanciadas, fitas de proteína com hélices e folhas do próprio arquivo, cor do início ao fim da cadeia e ligantes em esferas; molécula orientada pelos eixos principais). O 3Dmol fica só no visual clássico.
+- Imagens médicas preservadas: cortes de TC não recebem oclusão ambiente e o brilho (bloom) só atua acima do branco, então o pixel do exame não muda.
+- **Modo apresentação** (`src/lumen/Present.jsx`, botão em cada palco 3D): tela cheia sem interface, órbita cinematográfica, **Imagem 4K** (PNG com 3840 px) e **Gravar giro** (14 s, MP4 quando o navegador aceita, senão WebM).
 - Moldura em vidro fosco e cantos arredondados em `src/lumen/lumen.css`. Testes em `tests/lumen.test.mjs`.
 
 ## Contas WMed (fase A)

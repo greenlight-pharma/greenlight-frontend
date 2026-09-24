@@ -18,3 +18,16 @@ test('PDB: ignora água, liga átomos pela distância e não liga metais',async(
  const perAtom=mol.bonds.length/mol.atoms.length;assert.ok(perAtom>0.9&&perAtom<1.3,`ligações por átomo ${perAtom.toFixed(2)}`);
  const fe=mol.atoms.findIndex(a=>a.elem==='Fe');assert.ok(fe>=0);assert.ok(!mol.bonds.some(([a,b])=>a===fe||b===fe));
 });
+test('fitas de proteína: hélices e folhas do arquivo, uma malha por trecho contínuo e ligantes à parte',async()=>{
+ const {parsePDB,buildCartoon}=await load('src/lumen/molecule.ts');const THREE=await import('three');
+ const mol=parsePDB(file('1HHO.pdb'));
+ assert.ok([...mol.ss.values()].filter(v=>v==='helix').length>100,'hemoglobina é rica em hélices');
+ const c=buildCartoon(mol,{theme:'holo'});
+ const ribbons=c.group.children.filter(o=>o.userData.ribbon);
+ assert.ok(ribbons.length>=2&&ribbons.length<=8,`${ribbons.length} trechos`);
+ assert.ok(ribbons.every(m=>m.geometry.attributes.color&&m.geometry.index.count>1000));
+ const size=new THREE.Box3().setFromObject(c.group).getSize(new THREE.Vector3());
+ assert.ok(size.x>=size.y&&size.x<120,`tamanho ${size.x.toFixed(0)} Å`);
+ // o heme (HETATM) aparece como ligante em esferas e ligações
+ assert.ok(c.group.children.some(o=>o.isGroup));
+});

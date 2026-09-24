@@ -8,6 +8,7 @@ import { drawSlice, type Volume } from "./volume";
 import { prepareSelection } from "./selection";
 import {applyAtlasMaterial,findAtlasPart} from "./atlasMaterials";
 import {createStage,lumenEnabled,lumenize,lumenSelection,lumenTheme,type LumenStage} from "../lumen/lumen";
+import Present from "../lumen/Present";
 
 type Props = {
   urls?: string[];
@@ -41,6 +42,7 @@ function release(object: THREE.Object3D) {
 }
 export default function Scene(props: Props) {
   const host = useRef<HTMLDivElement>(null);
+  const shell = useRef<HTMLDivElement>(null);
   const api = useRef<{
     reset: () => void;
     zoom: (factor: number) => void;
@@ -96,7 +98,7 @@ export default function Scene(props: Props) {
     controls.enableDamping = true;
     controls.dampingFactor = 0.065;
     controls.autoRotateSpeed = 0.7;
-    if (lumen) stage = createStage(renderer, scene, camera, { controls });
+    if (lumen) stage = createStage(renderer, scene, camera, { controls, ao: !props.volume });
     else scene.add(new THREE.HemisphereLight(0xe9f6ff, 0x677a98, 1.7));
     if (!lumen) for (const [x, y, z, power] of [
       [3, 5, 4, 2],
@@ -420,7 +422,7 @@ export default function Scene(props: Props) {
     }
   }, [props.slice, props.window, props.volume, status]);
   return (
-    <div className={"va-scene " + (props.minimal ? "minimal" : "")}>
+    <div ref={shell} className={"va-scene " + (props.minimal ? "minimal" : "")}>
       <div ref={host} className="va-canvas" />
       {status && (
         <div className={"va-loading " + (failed ? "error" : "")} role="status">
@@ -434,6 +436,7 @@ export default function Scene(props: Props) {
             <Move3D size={14} /> Arraste para girar · role para aproximar
           </div>
           <div className="va-scene-tools">
+            <Present stageRef={shell} name="wmed-3d" />
             <button disabled={!!status} aria-label="Aproximar modelo" title="Aproximar" onClick={()=>api.current?.zoom(.8)}><Plus size={18}/></button>
             <button disabled={!!status} aria-label="Afastar modelo" title="Afastar" onClick={()=>api.current?.zoom(1.25)}><Minus size={18}/></button>
             <button
