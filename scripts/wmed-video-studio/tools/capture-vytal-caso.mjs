@@ -62,8 +62,22 @@ if (want('caso')) {
   await p.waitForFunction(() => /fez bem|PARA LEVAR|Pontos fortes/i.test(document.body.innerText), { timeout: 30000 }).catch(() => console.log('feedback não apareceu'));
   await wait(800);
   R.fase('feedback'); await R.hold(6);
+  // rola até as hipóteses para discussão e abre a seção (ela vem recolhida)
+  const hipY = await p.evaluate(() => { const s = [...document.querySelectorAll('summary')].find(x => /Hipóteses para discussão/.test(x.textContent)); return s.getBoundingClientRect().top + scrollY - 220; });
+  for (let i = 1; i <= 20; i++) { await p.evaluate(y => scrollTo(0, y), Math.round(hipY * i / 20)); await R.hold(1, 60); }
+  R.fase('hipoteses'); await p.evaluate(() => [...document.querySelectorAll('summary')].find(x => /Hipóteses para discussão/.test(x.textContent)).click()); await R.hold(14);
   const H = await p.evaluate(() => document.documentElement.scrollHeight - innerHeight);
-  for (let i = 1; i <= 50; i++) { await p.evaluate(y => scrollTo(0, y), Math.round(H * i / 50)); await R.hold(1, 60); }
+  R.fase('discussao');
+  for (let i = 1; i <= 30; i++) { await p.evaluate((a, b, k) => scrollTo(0, a + (b - a) * k), hipY, H, i / 30); await R.hold(1, 60); }
+  await R.hold(4);
+  // recortes em alta: a seção de hipóteses aberta e a comparação do raciocínio do aluno
+  const el = await p.evaluateHandle(() => [...document.querySelectorAll('summary')].find(x => /Hipóteses para discussão/.test(x.textContent)).parentElement);
+  await el.scrollIntoView(); await wait(300); await el.screenshot({ path: `${OUT}/caso/hipoteses.png` });
+  const disc = await p.evaluateHandle(() => { const t = [...document.querySelectorAll('*')].find(x => x.children.length < 3 && /^Seu raciocínio em discussão/.test(x.textContent.trim())); let n = t; while (n && n.getBoundingClientRect().height < 200) n = n.parentElement; return n; });
+  await disc.scrollIntoView(); await wait(300); await disc.screenshot({ path: `${OUT}/caso/discussao.png` });
+  // tela do feedback com o cartão "Para levar deste caso" a 505 px do topo (base dos recortes ampliados do vídeo)
+  await p.evaluate(() => { const c = [...document.querySelectorAll('*')].find(x => x.children.length === 0 && /PARA LEVAR DESTE CASO/i.test(x.textContent)); let n = c; while (n && getComputedStyle(n).borderRadius === '0px') n = n.parentElement; scrollTo(0, n.getBoundingClientRect().top + scrollY - 505); });
+  await wait(300); await p.screenshot({ path: `${OUT}/caso/zoom.jpg`, type: 'jpeg', quality: 95 });
   R.done(); await p.close();
 }
 if (want('ia')) {

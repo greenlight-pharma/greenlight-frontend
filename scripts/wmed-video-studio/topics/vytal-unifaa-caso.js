@@ -4,8 +4,8 @@
 // e os giros 3D como bônus. Áreas seguras do Instagram: topo (~220 px) e base (~330 px) livres.
 (() => {
   const CAP = 'out/vytal-captures/', seq = (m, n) => Array.from({ length: n }, (_, i) => `${CAP}${m}/f${String(i).padStart(3, '0')}.jpg`);
-  const CASO = { contexto: 0, descricao: 8, avaliacao: 75, gerando: 116, feedback: 146, total: 202 }, IA = { inicio: 0, resposta: 25, total: 86 };
-  const S = { intro: 0, partner: 3.2, caso: 7.2, fb: 15.4, zoom: 22.6, ia: 27, quest: 32.8, bonus: 36.4, outro: 41, end: 45 };
+  const CASO = { contexto: 0, descricao: 8, avaliacao: 75, gerando: 116, feedback: 146, hipoteses: 172, discussao: 186, total: 220 }, IA = { inicio: 0, resposta: 25, total: 86 };
+  const S = { intro: 0, partner: 3.2, caso: 7.2, fb: 15.4, zoom: 23.2, hip: 27.6, ia: 33.6, quest: 39.4, bonus: 43, outro: 47.6, end: 51.6 };
   const PARTNER = { title: 'Diretório Acadêmico', name: 'UniFAA', place: 'Valença · RJ' };
   const BW = 900, BH = 58 + Math.round(900 * 1267 / 1082), BX = (W - BW) / 2, BY = 470; // janela do navegador no tamanho da captura
 
@@ -70,29 +70,49 @@
   function fb(t, lt, dur) {
     title(lt, 'Passo 2 · Feedback do caso', 'E receba o feedback\n*na hora.*', { dot: C.gold });
     const g = seg(lt, .3, 2.2), f = seg(lt, 2.2, dur - .3);
-    const img = lt < 2.2 ? at(IMG.caso, CASO.gerando, CASO.feedback - 1, g) : at(IMG.caso, CASO.feedback, CASO.total - 1, f);
+    const img = lt < 2.2 ? at(IMG.caso, CASO.gerando, CASO.feedback - 1, g) : at(IMG.caso, CASO.feedback, CASO.discussao - 1, f);
     win(img, lt);
   }
   // ---------- 04 · o que o feedback entrega (recortes ampliados da tela real) ----------
-  const FB = { key: [96, 505, 953, 240], bem: [96, 775, 470, 205], mais: [581, 775, 468, 205], alerta: [96, 1012, 953, 98] };
+  const FB = { key: [96, 667, 953, 240], bem: [96, 937, 470, 205], mais: [581, 937, 468, 205], alerta: [96, 160, 953, 98] };
   function zoom(t, lt) {
     title(lt, 'O seu raciocínio, comentado', 'Aprenda com o\n*seu próprio caso.*');
-    const src = IMG.caso[160], pieces = [
+    const src = IMG.zoom, pieces = [
       [FB.key, 60, 560, 960, 244, 'Para levar deste caso', C.sky],
       [FB.bem, 60, 870, 470, 205, 'Pontos fortes', C.teal],
       [FB.mais, 550, 870, 470, 205, 'O que aprofundar', C.sky],
-      [FB.alerta, 60, 1140, 960, 99, 'Sinais de alerta', '#FF6B6B']
+      [FB.alerta, 60, 1140, 960, 99, 'Sinais de alerta', '#FF6B6B', IMG.caso[182]]
     ];
-    pieces.forEach(([s, x, y, w, h, label, col], i) => {
+    pieces.forEach(([s, x, y, w, h, label, col, from], i) => {
       const a = .4 + i * .45, k = backOut(seg(lt, a, a + .55)); if (k <= .005) return;
       X.save(); X.globalAlpha = clamp(k); const sc = lerp(.92, 1, clamp(k)); X.translate(x + w / 2, y + h / 2); X.scale(sc, sc); X.translate(-(x + w / 2), -(y + h / 2));
       rr(x, y, w, h, 22); X.shadowColor = 'rgba(0,0,0,.45)'; X.shadowBlur = 50; X.shadowOffsetY = 20; X.fillStyle = '#F2F6FB'; X.fill(); X.shadowColor = 'transparent';
       X.restore();
-      shot(src, s, x, y, w, h, { r: 22, alpha: clamp(k) });
+      shot(from || src, s, x, y, w, h, { r: 22, alpha: clamp(k) });
       X.save(); X.globalAlpha = clamp(k); rr(x, y, w, h, 22); X.lineWidth = 3; X.strokeStyle = rgba(col, .9); X.shadowColor = col; X.shadowBlur = 24; X.stroke(); X.restore();
       pill(x + 16, y - 26, label, { size: 24, alpha: clamp(k), dot: col, fill: 'rgba(8,30,61,.95)', stroke: rgba(col, .7) });
     });
     text('Com hipóteses e conduta comparadas\nao gabarito comentado.', W / 2, 1340, { size: 36, color: C.pale, align: 'center', alpha: expoOut(seg(lt, 2.4, 3)), weight: 500, lh: 1.3 });
+  }
+
+  // ---------- 04b · hipóteses para discussão (ênfase) ----------
+  function hip(t, lt, dur) {
+    title(lt, 'Raciocínio diagnóstico', 'Hipóteses\n*para discussão.*', { dot: C.gold });
+    const H1 = IMG.hip, sc = 960 / H1.width, h1 = H1.height * sc, y1 = 540, e = expoOut(seg(lt, .3, 1));
+    X.save(); X.globalAlpha = e; rr(60, y1 + (1 - e) * 60, 960, h1, 22); X.shadowColor = 'rgba(0,0,0,.45)'; X.shadowBlur = 50; X.shadowOffsetY = 20; X.fillStyle = '#fff'; X.fill(); X.restore();
+    shot(H1, null, 60, y1 + (1 - e) * 60, 960, h1, { r: 22, alpha: e });
+    // cada hipótese acende em sequência, com a probabilidade em destaque
+    [[95, 141, 'Probabilidade alta', C.sky], [248, 141, 'Diferencial grave', '#FF6B6B']].forEach(([ry, rh, label, col], i) => {
+      const a = 1 + i * .9, k = expoOut(seg(lt, a, a + .5)); if (k <= .005) return;
+      const x = 60 + 22 * sc, y = y1 + ry * sc, w = 960 - 44 * sc, hh = rh * sc;
+      X.save(); X.globalAlpha = k; rr(x, y, w, hh, 16); X.lineWidth = 3.5; X.strokeStyle = col; X.shadowColor = col; X.shadowBlur = 28; X.stroke(); X.restore();
+      pill(W - 70, y - 4, label, { size: 24, alpha: k, dot: col, align: 'right', fill: 'rgba(8,30,61,.95)', stroke: rgba(col, .7) });
+    });
+    // o raciocínio do aluno comparado à discussão
+    const D = IMG.disc, h2 = D.height * 960 / D.width, y2 = y1 + h1 + 70, k2 = expoOut(seg(lt, 2.8, 3.5));
+    X.save(); X.globalAlpha = k2; rr(60, y2 + (1 - k2) * 60, 960, h2, 22); X.shadowColor = 'rgba(0,0,0,.45)'; X.shadowBlur = 50; X.shadowOffsetY = 20; X.fillStyle = '#fff'; X.fill(); X.restore();
+    shot(D, null, 60, y2 + (1 - k2) * 60, 960, h2, { r: 22, alpha: k2 });
+    pill(76, y2 - 26 + (1 - k2) * 60, 'Suas hipóteses × gabarito', { size: 24, alpha: k2, dot: C.teal, fill: 'rgba(8,30,61,.95)', stroke: rgba(C.teal, .7) });
   }
 
   // ---------- 05 · IA ilimitada ----------
@@ -148,9 +168,10 @@
     dur: S.end, tr: .7,
     images: {
       mark: '../../vytal-mark-navy-transparent.png', caso: seq('caso', CASO.total), ia: seq('ia', IA.total),
-      atlas: seq('atlas', 90), histo: seq('histologia', 90), radio: seq('radiologia', 90), quest: `${CAP}telas/questoes.png`
+      atlas: seq('atlas', 90), histo: seq('histologia', 90), radio: seq('radiologia', 90), quest: `${CAP}telas/questoes.png`,
+      zoom: `${CAP}caso/zoom.jpg`, hip: `${CAP}caso/hipoteses.png`, disc: `${CAP}caso/discussao.png`
     },
-    scenes: [[S.intro, intro], [S.partner, partner], [S.caso, caso], [S.fb, fb], [S.zoom, zoom], [S.ia, ia], [S.quest, quest], [S.bonus, bonus], [S.outro, outro]],
+    scenes: [[S.intro, intro], [S.partner, partner], [S.caso, caso], [S.fb, fb], [S.zoom, zoom], [S.hip, hip], [S.ia, ia], [S.quest, quest], [S.bonus, bonus], [S.outro, outro]],
     chrome(t) {
       const a = expoOut(seg(t, S.partner + .4, S.partner + 1.2)) * (1 - ease(seg(t, S.outro - .4, S.outro + .2)));
       if (a <= .005) return;
