@@ -1,4 +1,5 @@
-export const progressKey=scope=>`wmed:enamed:v1:${scope||'guest'}`;
+// Um espaço de progresso por acervo; 'enamed' mantém a chave original.
+export const progressKey=(scope,pack='enamed')=>`wmed:${pack}:v1:${scope||'guest'}`;
 export function readProgress(storage,key){try{const d=JSON.parse(storage.getItem(key)||'{}');return {checks:d.checks&&typeof d.checks==='object'&&!Array.isArray(d.checks)?d.checks:{},cards:d.cards&&typeof d.cards==='object'&&!Array.isArray(d.cards)?Object.fromEntries(Object.entries(d.cards).filter(([k,v])=>v&&v.cardKey===k&&Number.isFinite(v.ease)&&v.ease>=1.3&&v.ease<=3.5&&Number.isInteger(v.reps)&&v.reps>=0&&Number.isFinite(v.intervalo)&&v.intervalo>=0&&Number.isFinite(v.lapses)&&v.lapses>=0&&(!v.due||Number.isFinite(Date.parse(v.due))))):{}}}catch{return {checks:{},cards:{}}}}
 export function gradeQueue(queue,index,requeue){const next=queue.slice();if(requeue!==null)next.splice(Math.min(next.length,index+1+requeue),0,queue[index]);return next}
 export const normalize=value=>String(value).normalize('NFD').replace(/\p{Diacritic}/gu,'').toLowerCase();

@@ -18,6 +18,7 @@ import {
   TrendingUp,
   ClipboardList,
   FlaskConical,
+  GraduationCap,
 } from "lucide-react";
 const Anatomy = lazy(() =>
   import("./academic/Experience").then((m) => ({ default: m.Anatomy })),
@@ -29,6 +30,7 @@ const Radiology = lazy(() =>
   import("./academic/Experience").then((m) => ({ default: m.Radiology })),
 );
 const Enamed = lazy(() => import("./Enamed"));
+const Usmle = lazy(() => import("./Usmle"));
 const EcgCourse = lazy(() => import("./EcgCourse"));
 const Genetics = lazy(() => import("./Genetics"));
 const Molecular = lazy(() => import("./Molecular"));
@@ -81,6 +83,7 @@ export const moduleItems = [
   },
   {id:"curso-ecg",label: msg("ECG em 10 passos"),description: msg("Curso, traçados e exercícios"),icon:HeartPulse},
   {id:"enamed",label: msg("Resumos ENAMED"),description: msg("Temas organizados por área"),icon:BookOpen},
+  {id:"usmle",label: msg("Revisão USMLE"),description: msg("Resumos e flashcards em inglês"),icon:GraduationCap},
   {id:"flashcards",label: msg("Flashcards"),description: msg("Revisão ativa e repetição espaçada"),icon:Layers3},
   {id:"questoes",label: msg("Banco de questões"),description: msg("Provas, comentários e simulados"),icon:ClipboardList},
   {
@@ -183,6 +186,8 @@ export default function Modules({
                 <EcgCourse key={session?.user?.progressScope||"guest"} scope={session?.authenticated?session.user?.progressScope||"guest":"guest"}/>
               ) : active === "enamed" || active === "flashcards" ? (
                 <Enamed key={`${active}:${session?.authenticated?session.user?.progressScope||"guest":"guest"}`} initialMode={active==="flashcards"?"cards":"summaries"} scope={session?.authenticated?session.user?.progressScope||"guest":"guest"}/>
+              ) : active === "usmle" ? (
+                <Usmle key={`usmle:${session?.authenticated?session.user?.progressScope||"guest":"guest"}`} scope={session?.authenticated?session.user?.progressScope||"guest":"guest"}/>
               ) : active === "scores" ? (
                 <Scores />
               ) : active === "medicacoes" || active === "condicoes" ? (
