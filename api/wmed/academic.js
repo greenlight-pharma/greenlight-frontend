@@ -1,4 +1,4 @@
 module.exports = async function handler(req,res) {
- const {academic}=await import('../../scripts/wmed-app/server/academic.mjs');
- return academic(req,res);
+ const {migrating}=await import('../../scripts/wmed-app/server/migrating.mjs');
+ return migrating(req,res);
 };

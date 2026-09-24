@@ -48,12 +48,10 @@ export async function auth(req,res,{fetchImpl=fetch,now=Date.now}={}){
   return json(res,200,{authenticated:true,user:userInfo(data.user)});
  }catch{return json(res,503,{error:'O acesso ao Vytal está indisponível no momento. Tente novamente.'});}
 }
-// Interface em inglês (wmed.ai): o assistente Vytal segue instruções do próprio pedido; o histórico exibido não muda.
-export function withLanguage(input,lang){return lang==='en'?{...input,question:`${input.question}\n\n[Please answer in English.]`}:input;}
 export async function chat(req,res,{fetchImpl=fetch}={}){
  headers(res);if(req.method!=='POST')return json(res,405,{error:'Método não permitido.'});if(!allowWrite(req,res))return;
  const token=sessionToken(req);if(!token)return json(res,401,{error:'Entre com sua conta Vytal Acadêmico para conversar.',code:'AUTH_REQUIRED'});
- let input,attachments;try{const raw=await body(req,4400000);input=withLanguage(validateRequest(raw),raw.lang);attachments=validateAttachments(raw.attachments);}catch(e){return json(res,400,{error:e.message==='BODY'?'Arquivos muito grandes. Envie até 3 MB.':e.message||'Mensagem ou arquivos inválidos.'});}
+ let input,attachments;try{const raw=await body(req,4400000);input=validateRequest(raw);attachments=validateAttachments(raw.attachments);}catch(e){return json(res,400,{error:e.message==='BODY'?'Arquivos muito grandes. Envie até 3 MB.':e.message||'Mensagem ou arquivos inválidos.'});}
  const abort=new AbortController();res.on('close',()=>abort.abort());
  let upstream;
  try{upstream=await fetchImpl(`${API}/estudante/tutor/chat-stream`,{method:'POST',headers:{'Content-Type':'application/json',Authorization:`Bearer ${token}`},body:JSON.stringify(attachments.length?assistantPayload(input,attachments):{historico:[...input.history,{role:'user',content:input.question}]}),signal:AbortSignal.any([abort.signal,AbortSignal.timeout(attachments.length?270000:55000)]),redirect:'error'});}

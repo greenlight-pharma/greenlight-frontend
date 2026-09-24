@@ -12,6 +12,19 @@ Fonte canônica: `scripts/wmed-app` no repositório greenlight-frontend. Publica
 - Medicações214 e condições2045: dados originais, busca, filtros e fichas. Sem nova curadoria médica nesta entrega.
 - Banco de imagens: endpoint autenticado de imagens aprovadas; paginação e atribuição. Nunca lista rascunhos/capturas privadas.
 
+## Contas WMed (fase A)
+
+A WMed usa contas próprias; o login Vytal Acadêmico foi removido.
+
+- **Banco:** Postgres no Railway (`DATABASE_URL`). Tabelas em `server/migrations/` (usuários, sessões, tentativas de login, uso diário, conversas, assinaturas); aplique com `npm run migrate`.
+- **Contas:** `server/accounts.mjs` → `/api/wmed/auth` (GET sessão, POST `signup`/`login`, DELETE sair). Senha com scrypt; sessão de 30 dias em cookie `__Host-wmed_session` (HttpOnly, Secure, SameSite=Lax), guardada no banco só como hash. Limite de tentativas no banco (vale entre instâncias). Cadastro registra o aceite dos termos.
+- **Chat:** `server/wmed-chat.mjs` → `/api/wmed/chat`, API da Claude via SDK oficial (`ANTHROPIC_API_KEY`, modelo `claude-opus-5` salvo `ANTHROPIC_MODEL`), streaming, prompt fixo por idioma em cache, fallback do servidor em recusas. Cota: `WMED_FREE_DAILY_CHATS` (padrão 10) no gratuito; Pro "ilimitado" com teto antiabuso `WMED_PRO_DAILY_CHATS` (300). Falhas e recusas antes da resposta não consomem cota.
+- **Histórico:** `server/wmed-history.mjs` → `/api/wmed/history`, mesmo contrato de antes, isolado por conta.
+- **Plano:** `users.plan` ('free'|'pro') ou assinatura ativa em `subscriptions` (preenchida pelos webhooks de Stripe/Pagar.me na fase C).
+- **Em migração (fase B):** caso clínico, transcrição de áudio e análise OpenMed respondem 503 com aviso (`server/migrating.mjs`). Os módulos antigos que usavam o backend Vytal continuam no repositório como referência.
+- **Testes:** `tests/accounts.test.mjs` roda contra Postgres real quando `WMED_TEST_DATABASE_URL` está definida; sem ela, só os testes sem banco rodam.
+- **Pendências:** e-mail (verificação e recuperação de senha), termos de uso e política de privacidade da WMed, entrar com Google/Apple.
+
 ## Idiomas e domínio wmed.ai
 
 - Interface em português e inglês (`src/i18n.js`, `src/i18n/en.js`). O texto-fonte continua em português dentro de `t('…')`; `msg('…')` marca textos de listas exibidos depois com `t()`.

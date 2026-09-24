@@ -6,7 +6,8 @@ import EN from '../src/i18n/en.js';
 // Telas já traduzidas. Ao traduzir um novo módulo, acrescente o arquivo aqui.
 export const TRANSLATED=['src/main.jsx','src/Modules.jsx','src/AuthDialog.jsx','src/PrivacyReview.jsx','src/ChatHistory.jsx','src/ChatAttachments.jsx','src/study/StudyDeck.jsx','src/Enamed.jsx','src/Usmle.jsx'];
 // Mensagens que o servidor e os validadores compartilhados devolvem para essas telas (traduzidas no navegador).
-export const MESSAGES=['server/vytal-assistant.mjs','server/history.mjs','server/research.mjs','server/public-research.mjs','shared/chat-attachments.mjs','shared/history.mjs'];
+// (accounts, wmed-chat e wmed-history já respondem no idioma do pedido via L(lang,pt,en).)
+export const MESSAGES=['server/research.mjs','server/public-research.mjs','shared/chat-attachments.mjs','shared/history.mjs'];
 const url=f=>new URL('../'+f,import.meta.url);
 export function keys(){
  const out=new Set();
@@ -24,11 +25,4 @@ test('as traduções preservam as variáveis {nome}',()=>{
   const vars=s=>[...s.matchAll(/\{(\w+)\}/g)].map(m=>m[1]).sort().join();
   assert.equal(vars(en),vars(pt),`variáveis diferentes em: ${pt}`);
  }
-});
-test('o pedido em inglês instrui o assistente sem mudar o texto exibido',async()=>{
- const {withLanguage}=await import('../server/vytal-assistant.mjs');
- const input={question:'What is heart failure?',history:[]};
- assert.match(withLanguage(input,'en').question,/Please answer in English/);
- assert.equal(withLanguage(input,'pt'),input);
- assert.equal(withLanguage(input,undefined),input);
 });

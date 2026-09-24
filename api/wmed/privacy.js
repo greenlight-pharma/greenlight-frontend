@@ -1,1 +1,4 @@
-module.exports=async function(req,res){const {privacy}=await import('../../scripts/wmed-app/server/privacy.mjs');return privacy(req,res)};
+module.exports = async function handler(req,res) {
+ const {migrating}=await import('../../scripts/wmed-app/server/migrating.mjs');
+ return migrating(req,res);
+};
