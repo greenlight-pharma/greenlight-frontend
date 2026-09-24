@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<title>Vytal Acadêmico · estúdio vertical</title>
+<style>
+  @font-face { font-family: "Instrument Sans"; font-weight: 500; src: url(node_modules/@fontsource/instrument-sans/files/instrument-sans-latin-500-normal.woff2) format("woff2"); font-display: block; }
+  @font-face { font-family: "Instrument Sans"; font-weight: 600; src: url(node_modules/@fontsource/instrument-sans/files/instrument-sans-latin-600-normal.woff2) format("woff2"); font-display: block; }
+  @font-face { font-family: "Instrument Sans"; font-weight: 700; src: url(node_modules/@fontsource/instrument-sans/files/instrument-sans-latin-700-normal.woff2) format("woff2"); font-display: block; }
+  @font-face { font-family: "Instrument Serif"; font-style: italic; font-weight: 400; src: url(node_modules/@fontsource/instrument-serif/files/instrument-serif-latin-400-italic.woff2) format("woff2"); font-display: block; }
+  html, body { margin: 0; background: #111; color: #eee; font: 13px system-ui, sans-serif; }
+  main { padding: 12px; display: grid; gap: 8px; justify-items: start; }
+  #out { height: min(88vh, 1920px); width: auto; background: #0F1F3A; }
+  .bar { display: flex; gap: 10px; align-items: center; width: 480px; }
+  #scrub { flex: 1; }
+</style>
+</head>
+<body>
+<main>
+  <canvas id="out" width="1080" height="1920"></canvas>
+  <div class="bar"><input id="scrub" type="range" min="0" max="30" step="0.0333" value="0"><span id="tt">carregando…</span></div>
+</main>
+<script src="vytal/engine.js"></script>
+<script>
+  // ?topic=<arquivo em topics/, sem .js>  ·  ?fmt=reel|feed
+  const TOPIC = new URLSearchParams(location.search).get('topic') || 'vytal-unifaa';
+  if (!/^[a-z0-9-]+$/.test(TOPIC)) throw new Error('tema inválido');
+  document.write('<script src="topics/' + TOPIC + '.js"><\/script>');
+</script>
+</body>
+</html>

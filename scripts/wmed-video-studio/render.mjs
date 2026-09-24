@@ -17,9 +17,11 @@ const args = Object.fromEntries(process.argv.slice(2).map(a => { const [k, ...v]
 const TOPIC = args.topic || 'insuficiencia-cardiaca';
 if (!/^[a-z0-9-]+$/.test(TOPIC)) throw new Error('--topic inválido');
 const CHROME = args.chrome || process.env.CHROME || '/opt/pw-browsers/chromium';
-// --studio=tech usa o motor Canvas 2D (studio-tech.html, 30 fps); o padrão é o de aquarela (studio.html, 24 fps)
-const STUDIO = args.studio === 'tech' ? 'studio-tech.html' : 'studio.html';
-const FPS = args.studio === 'tech' ? 30 : 24, FRAMES = `out/${TOPIC}/frames`, PUBLISH = resolve(HERE, '../../wmed-videos/resumos-enamed');
+// --studio=tech usa o motor Canvas 2D (studio-tech.html, 30 fps); --studio=vytal, o vertical 9:16 do Vytal Acadêmico
+// (studio-vytal.html, 30 fps, --fmt=reel|feed); o padrão é o de aquarela (studio.html, 24 fps)
+const STUDIO = { tech: 'studio-tech.html', vytal: 'studio-vytal.html' }[args.studio] || 'studio.html';
+const FMT = args.fmt && /^[a-z]+$/.test(args.fmt) ? args.fmt : '';
+const FPS = args.studio === 'tech' || args.studio === 'vytal' ? 30 : 24, FRAMES = `out/${TOPIC}${FMT ? '-' + FMT : ''}/frames`, PUBLISH = resolve(HERE, '../../wmed-videos/resumos-enamed');
 const run = (cmd, a) => new Promise((ok, bad) => { const p = spawn(cmd, a, { stdio: 'inherit' }); p.on('close', c => c ? bad(new Error(cmd + ' saiu com ' + c)) : ok()); });
 const times = s => String(s).split(',').map(Number);
 
@@ -29,10 +31,12 @@ if (args.encode) {
   console.log(`codificando ${n} quadros → ${out}`);
   const a = ['-y', '-loglevel', 'error', '-stats', '-framerate', String(FPS), '-i', `${FRAMES}/f%05d.jpg`];
   if (args.audio) a.push('-i', args.audio, '-map', '0:v', '-map', '1:a', '-c:a', 'aac', '-b:a', '160k', '-shortest');
-  a.push('-vf', 'hqdn3d=1.5:1.5:4:4', '-c:v', 'libx264', '-preset', 'slow', '-crf', '23', '-maxrate', '1800k', '-bufsize', '3600k', '-tune', 'animation', '-pix_fmt', 'yuv420p', '-movflags', '+faststart', out);
+  // vertical para Instagram: mais bitrate (o Reels recomprime) e sem teto baixo
+  const vq = args.studio === 'vytal' ? ['-crf', '18', '-maxrate', '8000k', '-bufsize', '16000k'] : ['-crf', '23', '-maxrate', '1800k', '-bufsize', '3600k'];
+  a.push('-vf', 'hqdn3d=1.5:1.5:4:4', '-c:v', 'libx264', '-preset', 'slow', ...vq, '-tune', 'animation', '-pix_fmt', 'yuv420p', '-movflags', '+faststart', out);
   await run(ffmpegPath, a);
   const pf = String(Math.round(+(args.poster || 4) * FPS)).padStart(5, '0'), poster = out.replace(/\.mp4$/, '-poster.jpg');
-  await run(ffmpegPath, ['-y', '-loglevel', 'error', '-i', `${FRAMES}/f${pf}.jpg`, '-vf', 'scale=1280:-2', '-q:v', '4', poster]);
+  await run(ffmpegPath, ['-y', '-loglevel', 'error', '-i', `${FRAMES}/f${pf}.jpg`, '-vf', args.studio === 'vytal' ? 'scale=1080:-2' : 'scale=1280:-2', '-q:v', '4', poster]);
   console.log('gravado ' + out + ' e ' + poster);
   process.exit(0);
 }
@@ -41,7 +45,7 @@ if (args.encode) {
 const launch = () => puppeteer.launch({
   executablePath: CHROME, headless: true, protocolTimeout: 0,
   args: ['--allow-file-access-from-files', '--no-sandbox', '--ignore-gpu-blocklist', '--enable-unsafe-swiftshader', '--use-angle=swiftshader',
-    '--window-size=1920,1080', '--disable-renderer-backgrounding', '--disable-background-timer-throttling']
+    args.studio === 'vytal' ? '--window-size=1080,1920' : '--window-size=1920,1080', '--disable-renderer-backgrounding', '--disable-background-timer-throttling']
 });
 const browsers = [await launch()], browser = browsers[0];
 // sprites de aquarela: pintados uma vez e guardados em out/<tema>/sprites (refeitos só quando a definição muda)
@@ -68,7 +72,7 @@ async function openPage(tag = '', extra = '', br = browser) {
   await page.evaluateOnNewDocument(u => { window.SPRITE_URLS = u; }, spriteUrls);
   page.on('console', m => { if (['error', 'warn'].includes(m.type())) console.log(`[página${tag}]`, m.text()); });
   page.on('pageerror', e => console.log(`[erro na página${tag}]`, e.message));
-  await page.goto(pathToFileURL(resolve(STUDIO)).href + `?render&topic=${TOPIC}${extra ? '&' + extra : ''}`, { waitUntil: 'load' });
+  await page.goto(pathToFileURL(resolve(STUDIO)).href + `?render&topic=${TOPIC}${FMT ? '&fmt=' + FMT : ''}${extra ? '&' + extra : ''}`, { waitUntil: 'load' });
   await page.waitForFunction('window.ready === true', { timeout: 0 });
   return page;
 }
