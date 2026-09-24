@@ -4,7 +4,7 @@ import {readFileSync} from 'node:fs';
 import EN from '../src/i18n/en.js';
 
 // Telas já traduzidas. Ao traduzir um novo módulo, acrescente o arquivo aqui.
-export const TRANSLATED=['src/main.jsx','src/Modules.jsx','src/AuthDialog.jsx','src/PrivacyReview.jsx','src/ChatHistory.jsx','src/ChatAttachments.jsx','src/study/StudyDeck.jsx','src/Enamed.jsx','src/Usmle.jsx','src/SaveTools.jsx','src/Favorites.jsx','src/PediatricDoses.jsx','src/Guides.jsx'];
+export const TRANSLATED=['src/main.jsx','src/Modules.jsx','src/AuthDialog.jsx','src/PrivacyReview.jsx','src/ChatHistory.jsx','src/ChatAttachments.jsx','src/study/StudyDeck.jsx','src/Enamed.jsx','src/Usmle.jsx','src/SaveTools.jsx','src/Favorites.jsx','src/PediatricDoses.jsx','src/Guides.jsx','src/Interactions.jsx'];
 // Mensagens que o servidor e os validadores compartilhados devolvem para essas telas (traduzidas no navegador).
 // (accounts, wmed-chat e wmed-history já respondem no idioma do pedido via L(lang,pt,en).)
 export const MESSAGES=['server/research.mjs','server/public-research.mjs','shared/chat-attachments.mjs','shared/history.mjs'];

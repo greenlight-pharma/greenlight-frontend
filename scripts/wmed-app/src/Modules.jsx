@@ -21,6 +21,7 @@ import {
   GraduationCap,
   Star,
   Siren,
+  ShieldAlert,
 } from "lucide-react";
 const Anatomy = lazy(() =>
   import("./academic/Experience").then((m) => ({ default: m.Anatomy })),
@@ -35,6 +36,7 @@ const Enamed = lazy(() => import("./Enamed"));
 const Usmle = lazy(() => import("./Usmle"));
 const Favorites = lazy(() => import("./Favorites"));
 const Guides = lazy(() => import("./Guides"));
+const Interactions = lazy(() => import("./Interactions"));
 const EcgCourse = lazy(() => import("./EcgCourse"));
 const Genetics = lazy(() => import("./Genetics"));
 const Molecular = lazy(() => import("./Molecular"));
@@ -89,6 +91,7 @@ export const moduleItems = [
   {id:"enamed",label: msg("Resumos ENAMED"),description: msg("Temas organizados por área"),icon:BookOpen},
   {id:"usmle",label: msg("Revisão USMLE"),description: msg("Resumos e flashcards em inglês"),icon:GraduationCap},
   {id:"protocolos",label: msg("Protocolos e guias"),description: msg("Emergência, exames, condutas e mais"),icon:Siren},
+  {id:"interacoes",label: msg("Interações medicamentosas"),description: msg("Verifique combinações de medicamentos"),icon:ShieldAlert},
   {id:"favoritos",label: msg("Favoritos e anotações"),description: msg("Seus itens salvos na conta"),icon:Star},
   {id:"flashcards",label: msg("Flashcards"),description: msg("Revisão ativa e repetição espaçada"),icon:Layers3},
   {id:"questoes",label: msg("Banco de questões"),description: msg("Provas, comentários e simulados"),icon:ClipboardList},
@@ -196,6 +199,8 @@ export default function Modules({
                 <Enamed key={`${active}:${session?.authenticated?session.user?.progressScope||"guest":"guest"}`} initialMode={active==="flashcards"?"cards":"summaries"} scope={session?.authenticated?session.user?.progressScope||"guest":"guest"}/>
               ) : active === "protocolos" ? (
                 <Guides />
+              ) : active === "interacoes" ? (
+                <Interactions />
               ) : active === "favoritos" ? (
                 <Favorites onLogin={onLogin} />
               ) : active === "usmle" ? (

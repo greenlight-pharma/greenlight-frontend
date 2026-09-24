@@ -27,6 +27,13 @@ Fonte canônica: `scripts/wmed-app` no repositório greenlight-frontend. Publica
 - `tests/guides.test.mjs` garante ids únicos, fontes https, aviso final e que todo link interno abre um score, calculadora ou guia existente.
 - **Rascunho escrito com apoio de IA: exige revisão médica antes da liberação ampla.** Doses para adultos com função renal normal; esquemas empíricos devem seguir a CCIH local.
 
+## Interações e dados da Anvisa (item 3, 24/09/2026)
+
+- **Interações medicamentosas** (`#interacoes`, `src/Interactions.jsx`, regras em `shared/interactions.mjs`): de 2 a 12 medicamentos, com gravidade (contraindicada, grave, moderada), mecanismo e conduta. Regras próprias por mecanismo (QT, serotonina, IMAO, potássio, sangramento, CYP3A4, indução enzimática, sedação, nó AV, nefrotoxicidade, quelação) e pares específicos (varfarina, lítio, digoxina, estatinas, metotrexato, alopurinol, valproato). Inclui o "triplo golpe" renal. A lista fica no link (`#interacoes?med=varfarina,amiodarona`), e a ficha de cada medicação leva ao verificador.
+- Não é base licenciada: cobre as interações de maior impacto, não todas. Para cobertura completa, contratar uma base (Micromedex, Lexicomp, Medscape) e trocar a fonte em `checkInteractions`. **Rascunho para revisão farmacêutica e médica.**
+- **Registros da Anvisa** (`tools/anvisa/medicamentos.mjs`): lê o CSV de dados abertos da Anvisa (medicamentos com registro válido), casa o princípio ativo com o acervo ignorando sal e hidrato e gera `public/dados/anvisa.json` com nomes comerciais, categoria (referência, genérico, similar) e empresa. A ficha da medicação mostra a lista quando o arquivo existe. Rodar fora deste ambiente (o domínio da Anvisa é bloqueado aqui): `node tools/anvisa/medicamentos.mjs` (baixa da URL oficial) ou `node tools/anvisa/medicamentos.mjs arquivo.csv`. O script recusa arquivos com menos de 1.000 registros válidos.
+- Testes: `tests/interactions.test.mjs` (pares clássicos, prioridade do par específico, triplo golpe, sem falso positivo) e `tests/anvisa.test.mjs` (Latin-1, aspas, sal e hidrato, só registros válidos).
+
 ## Contas WMed (fase A)
 
 A WMed usa contas próprias; o login Vytal Acadêmico foi removido.

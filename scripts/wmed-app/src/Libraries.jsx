@@ -18,6 +18,7 @@ import PediatricDoses from "./PediatricDoses";
 const SPECIAL=[{id:"doses-pediatricas",name:"Doses pediátricas",area:"Pediatria",summary:"Dose por tomada e volume por apresentação a partir do peso, com teto pela dose máxima."}];
 import { hashParam } from "./favorites";
 import { calculators } from "../shared/calculators.mjs";
+import { INTERACTION_DRUGS } from "../shared/interactions.mjs";
 const SCORES=[...ORIGINAL_SCORES,...EXTRA_SCORES,...MORE_SCORES];
 export async function academicRequest(action, payload, signal) {
   const r = await fetch("/api/wmed/academic", {
@@ -191,8 +192,19 @@ export function ReferenceLibrary({ kind }) {
     [group, setGroup] = useState(""),
     [wanted] = useState(() => hashParam("item")),
     [limit, setLimit] = useState(30),
-    [retry, setRetry] = useState(0);
+    [retry, setRetry] = useState(0),
+    [anvisa, setAnvisa] = useState(null);
   const meds = kind === "medicacoes";
+  // Registros da Anvisa (tools/anvisa/medicamentos.mjs). Opcional: sem o arquivo, a seção não aparece.
+  useEffect(() => {
+    if (!meds) return;
+    const c = new AbortController();
+    fetch(`${import.meta.env.BASE_URL}dados/anvisa.json`, { signal: c.signal })
+      .then((r) => (r.ok ? r.json() : null))
+      .then((d) => d?.meds && setAnvisa(d))
+      .catch(() => {});
+    return () => c.abort();
+  }, [meds]);
   useEffect(() => {
     setSelected(null);
     setQ("");
@@ -259,6 +271,28 @@ export function ReferenceLibrary({ kind }) {
                     </li>
                   ))}
                 </ul>
+                {anvisa?.meds[selected.n] && (
+                  <>
+                    <h3>Registros válidos na Anvisa</h3>
+                    <ul className="anvisa-list">
+                      {anvisa.meds[selected.n].produtos.map((p) => (
+                        <li key={p.registro + p.nome}>
+                          <strong>{p.nome}</strong> · {p.categoria} · {p.empresa}
+                        </li>
+                      ))}
+                    </ul>
+                    <p className="module-note">
+                      {anvisa.meds[selected.n].total > anvisa.meds[selected.n].produtos.length && `Mostrando ${anvisa.meds[selected.n].produtos.length} de ${anvisa.meds[selected.n].total}. `}
+                      Fonte: {anvisa.fonte}, atualizado em {new Date(anvisa.geradoEm + "T12:00:00").toLocaleDateString("pt-BR")}. Bulas no{" "}
+                      <a href="https://consultas.anvisa.gov.br/#/bulario/" target="_blank" rel="noopener noreferrer">Bulário Eletrônico da Anvisa</a>.
+                    </p>
+                  </>
+                )}
+                {INTERACTION_DRUGS.includes(selected.n) && (
+                  <p>
+                    <a className="inline-link" href={`#interacoes?med=${encodeURIComponent(selected.n)}`}>Verificar interações de {selected.n} ↗</a>
+                  </p>
+                )}
                 <p className="module-note">
                   Material de estudo. Não inclui doses ou prescrição.
                 </p>
