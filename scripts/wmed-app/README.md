@@ -12,6 +12,14 @@ Fonte canônica: `scripts/wmed-app` no repositório greenlight-frontend. Publica
 - Medicações214 e condições2045: dados originais, busca, filtros e fichas. Sem nova curadoria médica nesta entrega.
 - Banco de imagens: endpoint autenticado de imagens aprovadas; paginação e atribuição. Nunca lista rascunhos/capturas privadas.
 
+## Idiomas e domínio wmed.ai
+
+- Interface em português e inglês (`src/i18n.js`, `src/i18n/en.js`). O texto-fonte continua em português dentro de `t('…')`; `msg('…')` marca textos de listas exibidos depois com `t()`.
+- Escolha do idioma: `?lang=en|pt` → escolha salva (`wmed-lang`) → domínio. Em wmed.ai vale o idioma do navegador (português só se o navegador preferir pt); no site Vytal, português.
+- Já traduzidos: casca do app, chat, entrada, revisão de privacidade, histórico, anexos, menu de módulos e Minha evolução. A lista fica em `tests/i18n.test.mjs` (`TRANSLATED`); o teste falha se faltar tradução. Os módulos de conteúdo (casos, anatomia, bibliotecas, ECG, questões, ENAMED) ainda estão só em português.
+- Chat em inglês: o pedido leva `lang: 'en'` e o servidor acrescenta a instrução de responder em inglês (`withLanguage`), sem mudar a pergunta exibida.
+- wmed.ai: `vercel.json` reescreve a raiz de wmed.ai para `/wmed/` (os assets e `/api/*` seguem direto) e redireciona www.wmed.ai. `/wmed/` no site Vytal continua igual. Falta apontar o DNS e adicionar o domínio no projeto Vercel.
+
 ## API e proteção
 `api/wmed/academic.js` → proxy com operações fechadas (structure,transcribe,feedback,quality,images). Destino Vytal fixo, cookie HttpOnly/Secure existente, guardas institucionais preservadas, limite por sessão/instância adicional. Limite do feedback clínico original:5.000 caracteres de história/contexto; UI informa limite, sem truncar silenciosamente. Detecção de identificadores copiada do Vytal e revisão humana antes do envio; detector não garante anonimização perfeita. A transcrição recebe áudio explicitamente enviado pelo usuário; não grava consultas/pacientes automaticamente.
 
