@@ -6,7 +6,12 @@ import SaveTools from './SaveTools';
 import {hashParam} from './favorites';
 import {EMERGENCIA} from './guides/emergencia';
 import {ANTIMICROBIANOS} from './guides/antimicrobianos';
-export const GUIDES=[...EMERGENCIA,...ANTIMICROBIANOS];
+import {LABORATORIO} from './guides/laboratorio';
+import {TOXICOLOGIA} from './guides/toxicologia';
+import {VACINACAO} from './guides/vacinacao';
+import {SEMIOLOGIA} from './guides/semiologia';
+import {CONDUTAS} from './guides/condutas';
+export const GUIDES=[...EMERGENCIA,...ANTIMICROBIANOS,...CONDUTAS,...LABORATORIO,...TOXICOLOGIA,...VACINACAO,...SEMIOLOGIA];
 const norm=s=>s.normalize('NFD').replace(/[̀-ͯ]/g,'').toLowerCase();
 // Links internos (#modulo?…) abrem no próprio app; externos, em nova aba. Imagens não são renderizadas.
 const md={a:({href='',children})=>href.startsWith('#')?<a href={href}>{children}</a>:/^https:\/\//.test(href)?<a href={href} target="_blank" rel="noopener noreferrer">{children}</a>:<span>{children}</span>,img:()=>null};
@@ -28,7 +33,7 @@ export default function Guides(){
   {note}
  </section>;
  return <section className="module-page">
-  <header className="module-heading"><span className="eyebrow blue">{t('CONTEÚDO ORIGINAL WMED')}</span><h1>{t('Protocolos e guias')}</h1><p>{t('{n} guias de emergência e antimicrobianos, com doses, tabelas e atalhos para os scores.',{n:GUIDES.length})}</p></header>
+  <header className="module-heading"><span className="eyebrow blue">{t('CONTEÚDO ORIGINAL WMED')}</span><h1>{t('Protocolos e guias')}</h1><p>{t('{n} guias de emergência, antimicrobianos, exames, toxicologia, vacinação, semiologia e condutas, com tabelas e atalhos para os scores.',{n:GUIDES.length})}</p></header>
   <div className="library-filters"><label><Search size={18}/><input aria-label={t('Buscar guia')} placeholder={t('Sepse, intubação, meningite…')} value={q} onChange={e=>setQ(e.target.value)}/></label>
    <select aria-label={t('Área')} value={area} onChange={e=>setArea(e.target.value)}><option value="">{t('Todas as áreas')}</option>{[...new Set(GUIDES.map(g=>g.area))].map(a=><option key={a} value={a}>{t(a)}</option>)}</select></div>
   <div className="resource-grid">{list.map(g=><button className="resource-card" key={g.id} onClick={()=>open(g.id)}><BookOpenCheck size={22}/><small>{t(g.area)}</small><h3>{g.title}</h3><p>{g.summary}</p><span>{t('Abrir guia')} <ArrowUpRight size={16}/></span></button>)}</div>

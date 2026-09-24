@@ -88,7 +88,7 @@ export const moduleItems = [
   {id:"curso-ecg",label: msg("ECG em 10 passos"),description: msg("Curso, traçados e exercícios"),icon:HeartPulse},
   {id:"enamed",label: msg("Resumos ENAMED"),description: msg("Temas organizados por área"),icon:BookOpen},
   {id:"usmle",label: msg("Revisão USMLE"),description: msg("Resumos e flashcards em inglês"),icon:GraduationCap},
-  {id:"protocolos",label: msg("Protocolos e guias"),description: msg("Emergência e antimicrobianos"),icon:Siren},
+  {id:"protocolos",label: msg("Protocolos e guias"),description: msg("Emergência, exames, condutas e mais"),icon:Siren},
   {id:"favoritos",label: msg("Favoritos e anotações"),description: msg("Seus itens salvos na conta"),icon:Star},
   {id:"flashcards",label: msg("Flashcards"),description: msg("Revisão ativa e repetição espaçada"),icon:Layers3},
   {id:"questoes",label: msg("Banco de questões"),description: msg("Provas, comentários e simulados"),icon:ClipboardList},

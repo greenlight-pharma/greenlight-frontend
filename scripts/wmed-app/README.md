@@ -22,6 +22,7 @@ Fonte canônica: `scripts/wmed-app` no repositório greenlight-frontend. Publica
 ## Protocolos e guias (item 2, 24/09/2026)
 
 - Módulo `#protocolos` (`src/Guides.jsx`) com conteúdo próprio em Markdown: 10 protocolos de emergência (`src/guides/emergencia.ts`: PCR, sepse, anafilaxia, AVC, asma, CAD, hipercalemia, intubação em sequência rápida, drogas vasoativas, SCA) e 9 guias de antimicrobianos (`src/guides/antimicrobianos.ts`: PAC, ITU, pele e partes moles, meningite, sepse sem foco, intra-abdominal, sífilis/IST, profilaxia cirúrgica, espectro das classes).
+- Ampliação (mesmo dia): 8 condutas clínicas com modelo de prescrição de estudo (`condutas.ts`), 7 guias de exames laboratoriais (`laboratorio.ts`), 7 de toxicologia com CIATox e soros antipeçonhentos (`toxicologia.ts`), 6 de vacinação pelo PNI/SBIm (`vacinacao.ts`) e 7 de semiologia (`semiologia.ts`). Total: 54 guias.
 - Cada guia cita as diretrizes-fonte, abre por link (`#protocolos?guia=iot`), aceita favorito e anotação (tipo `guide`) e liga direto aos scores e calculadoras (`#scores?id=…`).
 - `tests/guides.test.mjs` garante ids únicos, fontes https, aviso final e que todo link interno abre um score, calculadora ou guia existente.
 - **Rascunho escrito com apoio de IA: exige revisão médica antes da liberação ampla.** Doses para adultos com função renal normal; esquemas empíricos devem seguir a CCIH local.
