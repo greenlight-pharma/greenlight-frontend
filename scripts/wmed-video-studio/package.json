@@ -1,0 +1,17 @@
+{
+  "name": "wmed-video-studio",
+  "private": true,
+  "type": "module",
+  "description": "Resumos ENAMED em vídeo (aquarela p5.brush) para a WMed",
+  "scripts": {
+    "render": "node render.mjs"
+  },
+  "dependencies": {
+    "@fontsource/permanent-marker": "^5.0.0",
+    "@fontsource/shantell-sans": "^5.0.0",
+    "ffmpeg-static": "^5.2.0",
+    "p5": "^2.3.3",
+    "p5.brush": "^2.2.3",
+    "puppeteer-core": "^25.11.0"
+  }
+}
