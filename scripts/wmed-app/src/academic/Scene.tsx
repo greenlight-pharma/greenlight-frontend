@@ -7,6 +7,7 @@ import { RotateCcw, Download, Move3D, Plus, Minus } from "lucide-react";
 import { drawSlice, type Volume } from "./volume";
 import { prepareSelection } from "./selection";
 import {applyAtlasMaterial,findAtlasPart} from "./atlasMaterials";
+import {createStage,lumenEnabled,lumenize,lumenSelection,lumenTheme,type LumenStage} from "../lumen/lumen";
 
 type Props = {
   urls?: string[];
@@ -59,12 +60,14 @@ export default function Scene(props: Props) {
     const el = host.current!;
     let disposed = false;
     let renderer: THREE.WebGLRenderer;
+    const lumen = lumenEnabled();
+    let stage: LumenStage | undefined;
     setFailed(false);
     setStatus("Abrindo cena 3D…");
     try {
       renderer = new THREE.WebGLRenderer({
         antialias: true,
-        alpha: true,
+        alpha: !lumen,
         preserveDrawingBuffer: true,
       });
     } catch {
@@ -93,8 +96,9 @@ export default function Scene(props: Props) {
     controls.enableDamping = true;
     controls.dampingFactor = 0.065;
     controls.autoRotateSpeed = 0.7;
-    scene.add(new THREE.HemisphereLight(0xe9f6ff, 0x677a98, 1.7));
-    for (const [x, y, z, power] of [
+    if (lumen) stage = createStage(renderer, scene, camera, { controls });
+    else scene.add(new THREE.HemisphereLight(0xe9f6ff, 0x677a98, 1.7));
+    if (!lumen) for (const [x, y, z, power] of [
       [3, 5, 4, 2],
       [-4, 1, 2, 1],
       [0, 3, -4, 1.8],
@@ -117,6 +121,7 @@ export default function Scene(props: Props) {
         controls.update();
       }
       renderer.setSize(width, height, false);
+      stage?.setSize(width, height);
       camera.aspect = nextAspect;
       camera.updateProjectionMatrix();
     });
@@ -144,6 +149,7 @@ export default function Scene(props: Props) {
       controls.update();
     };
     const highlights = new Map<THREE.Mesh, (selected: boolean) => void>();
+    const select = (mesh: THREE.Mesh) => lumen ? lumenSelection(mesh, stage!.theme) : prepareSelection(mesh);
     let plane: THREE.Mesh | undefined;
     let texture: THREE.CanvasTexture | undefined;
     const load = async () => {
@@ -164,7 +170,7 @@ export default function Scene(props: Props) {
           above.name=o.name;above.material.transparent=true;above.material.opacity=.18;above.material.depthWrite=false;
           above.material.clippingPlanes=[new THREE.Plane(new THREE.Vector3(0,1,0),0)];
           above.userData.volumeSide='above';o.userData.volumeSide='below';
-          o.add(above);highlights.set(o,prepareSelection(o));highlights.set(above,prepareSelection(above));
+          o.add(above);highlights.set(o,select(o));highlights.set(above,select(above));
         });
         root.add(model.scene);
         const canvas = document.createElement("canvas");
@@ -240,12 +246,14 @@ export default function Scene(props: Props) {
                   }
               }
             });
-            file.value.scene.traverse(o => { if (o instanceof THREE.Mesh) highlights.set(o, prepareSelection(o)); });
+            if (lumen) lumenize(file.value.scene);
+            file.value.scene.traverse(o => { if (o instanceof THREE.Mesh) highlights.set(o, select(o)); });
             root.add(file.value.scene);
           }
       }
       if (disposed) return;
       fit();
+      stage?.setSubject(root);
       api.current = {
         root,
         plane,
@@ -258,8 +266,9 @@ export default function Scene(props: Props) {
           const size=box.getSize(new THREE.Vector3()),center=box.getCenter(new THREE.Vector3());
           const distance=Math.max(size.y,size.x/Math.max(camera.aspect,.1),size.z)*2.2;
           const direction=camera.position.clone().sub(controls.target).normalize();
-          controls.target.copy(center);camera.position.copy(center).addScaledVector(direction,distance);
-          controls.minDistance=distance*.15;controls.maxDistance=Math.max(distance*3,initial.length()*3);controls.update();
+          controls.minDistance=distance*.15;controls.maxDistance=Math.max(distance*3,initial.length()*3);
+          if(stage){stage.flyTo(center.clone().addScaledVector(direction,distance),center);return;}
+          controls.target.copy(center);camera.position.copy(center).addScaledVector(direction,distance);controls.update();
         },
         zoom: (factor) => {
           const offset=camera.position.clone().sub(controls.target);
@@ -268,12 +277,13 @@ export default function Scene(props: Props) {
         },
         reset: () => {
           controls.minDistance=initial.length()*.15;controls.maxDistance=initial.length()*3;
+          if(stage){stage.flyTo(initial,new THREE.Vector3());return;}
           camera.position.copy(initial);
           controls.target.set(0, 0, 0);
           controls.update();
         },
         snapshot: () => {
-          renderer.render(scene, camera);
+          if (stage) stage.render("", true); else renderer.render(scene, camera);
           const a = document.createElement("a");
           a.href = renderer.domElement.toDataURL("image/png");
           a.download = "vytal-academico-cena.png";
@@ -314,6 +324,24 @@ export default function Scene(props: Props) {
     };
     renderer.domElement.addEventListener("pointerdown", pointerDown);
     renderer.domElement.addEventListener("pointerup", click);
+    // Lumen: contorno luminoso ao passar o mouse sobre uma estrutura selecionável.
+    let lastMove = 0;
+    const move = (e: PointerEvent) => {
+      if (!stage || !latest.current.onSelect || e.buttons || e.timeStamp - lastMove < 60) return;
+      lastMove = e.timeStamp;
+      const box = el.getBoundingClientRect();
+      pointer.set(((e.clientX - box.left) / box.width) * 2 - 1, 1 - ((e.clientY - box.top) / box.height) * 2);
+      ray.setFromCamera(pointer, camera);
+      const hit = ray.intersectObjects(root.children, true).find((h) => h.object.visible && (h.object as THREE.Mesh).isMesh);
+      stage.setHover(hit ? [hit.object] : []);
+      renderer.domElement.style.cursor = hit ? "pointer" : "";
+    };
+    const leave = () => stage?.setHover([]);
+    renderer.domElement.addEventListener("pointermove", move);
+    renderer.domElement.addEventListener("pointerleave", leave);
+    const themeWatch = new MutationObserver(() => stage?.setTheme(lumenTheme()));
+    themeWatch.observe(document.documentElement, { attributes: true, attributeFilter: ["data-theme"] });
+    let lastKey = "";
     const motion = matchMedia("(prefers-reduced-motion: reduce)");
     let frame = 0;
     const render = () => {
@@ -345,7 +373,17 @@ export default function Scene(props: Props) {
           props.volume.meta.spacing[2];
       }
       if(props.volume)root.traverse(o=>{if(o instanceof THREE.Mesh && o.userData.volumeSide==='above'){const m=o.material as THREE.MeshStandardMaterial;m.transparent=true;m.depthWrite=false;m.opacity=p.opacity??.18;}});
-      renderer.render(scene, camera);
+      if (stage) {
+        const key = `${p.selected}|${p.isolate}|${p.opacity}|${p.slice}|${p.window}|${root.children.length}`;
+        if (key !== lastKey) {
+          lastKey = key;
+          const picked: THREE.Object3D[] = [];
+          root.traverse((o) => { if ((o as THREE.Mesh).isMesh && p.selected && o.name === p.selected) picked.push(o); });
+          stage.setSelected(picked);
+          stage.refreshShadow();
+        }
+        stage.render(key);
+      } else renderer.render(scene, camera);
     };
     render();
     return () => {
@@ -353,6 +391,10 @@ export default function Scene(props: Props) {
       api.current = undefined;
       cancelAnimationFrame(frame);
       resize.disconnect();
+      themeWatch.disconnect();
+      renderer.domElement.removeEventListener("pointermove", move);
+      renderer.domElement.removeEventListener("pointerleave", leave);
+      stage?.dispose();
       controls.dispose();
       release(root);
       renderer.dispose();

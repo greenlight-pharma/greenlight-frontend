@@ -2,11 +2,13 @@ import React,{useEffect,useRef,useState} from 'react';
 import {Dna,ArrowRight,ChevronLeft,ChevronRight,Play,Pause,Plus,Minus,RotateCcw,BookOpen,X,Check,MoveUpRight} from 'lucide-react';
 import {stages} from './genetics/catalog.mjs';
 import {createGeneticScene} from './genetics/scene';
+import * as lumenApi from './lumen/lumen';
+const LUMEN=lumenApi.lumenEnabled()?lumenApi:null;
 import {useWorkspaceHeight} from './academic/useWorkspaceHeight';
 import './genetics/genetics.css';
 function Scene({id,selected,onSelect,spin,handle,retry,onError}){
  const node=useRef(null),selectRef=useRef(onSelect);selectRef.current=onSelect;
- useEffect(()=>{const api=createGeneticScene(node.current,id,p=>selectRef.current(p),onError);handle.current=api;return()=>{api.dispose();handle.current=null}},[id,retry]);
+ useEffect(()=>{const api=createGeneticScene(node.current,id,p=>selectRef.current(p),onError,LUMEN);handle.current=api;return()=>{api.dispose();handle.current=null}},[id,retry]);
  useEffect(()=>handle.current?.select?.(selected),[id,selected,retry]);
  useEffect(()=>handle.current?.spin?.(spin),[id,spin,retry]);
  return <div className="gene-canvas" ref={node} role="img" aria-label={`Modelo 3D didático: ${stages.find(s=>s.id===id).name}. Arraste para girar; selecione estruturas pelos botões abaixo.`}/>;

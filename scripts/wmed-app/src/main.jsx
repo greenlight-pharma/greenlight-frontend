@@ -12,12 +12,13 @@ const ClinicalCase=lazy(()=>import('./ClinicalCase'));
 import ChatAttachments from './ChatAttachments';
 import {chatContent} from '../shared/chat-content.mjs';
 import './chat-attachments.css';
-import AuthDialog from './AuthDialog';import {t,msg,lang,setLang,LANGS} from './i18n';import {favorites} from './favorites';import './styles.css';import './chat-design.css';import './theme-system.css';
+import AuthDialog from './AuthDialog';import {t,msg,lang,setLang,LANGS} from './i18n';import {favorites} from './favorites';import './styles.css';import './chat-design.css';import './theme-system.css';import './lumen/lumen.css';import {lumenEnabled} from './lumen/lumen';
 const BASE=import.meta.env.BASE_URL;const PUBLIC=import.meta.env.VITE_PUBLIC_PREVIEW==='true';const API=PUBLIC?'/api/wmed':'/api';
 const prompts=[msg('Explique a insuficiência mitral'),msg('Compare asma e DPOC'),msg('Como interpretar o escore de Wells?')];
 async function readEvents(body,handler){const reader=body.getReader(),decoder=new TextDecoder();let buffer='';while(true){const {done,value}=await reader.read();if(done)break;buffer+=decoder.decode(value,{stream:true});let end;while((end=buffer.indexOf('\n\n'))>=0){const b=buffer.slice(0,end);buffer=buffer.slice(end+2);const event=b.split('\n').find(s=>s.startsWith('event:'))?.slice(6).trim();const d=b.split('\n').filter(s=>s.startsWith('data:')).map(s=>s.slice(5)).join('\n');if(d)handler(event,JSON.parse(d));}}}
 function CitationText({text,sources,mode}){const prepared=mode==='chat'?chatContent(text).text:text.replace(/\[(\d+)\](?!\()/g,(match,n)=>sources[n-1]?`[${n}](${sources[n-1].url})`:t('[referência indisponível]'));const urls=new Set(sources.map(s=>s.url));return <ReactMarkdown remarkPlugins={[remarkGfm]} components={{a:({href,children})=>(urls.has(href)||(mode==='chat'&&/^https:\/\//.test(href||'')))?<a href={href} target="_blank" rel="noopener noreferrer">{children}</a>:<span>{children}</span>,img:()=>null}}>{prepared}</ReactMarkdown>;}
 function Source({s,i}){return <a className="source" href={s.url} target="_blank" rel="noopener noreferrer"><span className="source-index">{String(i+1).padStart(2,'0')}</span><div><div className="source-meta">{s.year} <span>·</span> {s.journal||'Europe PMC'}</div><h4>{s.title}</h4><span className="source-authors">{s.authors}</span></div><ArrowUpRight size={17}/></a>;}
+if(lumenEnabled())document.documentElement.dataset.visual='lumen';
 const themes=[['white',msg('Branco')],['dark',msg('Escuro')],['blue',msg('Azul')],['green',msg('Verde')]];
 function App(){
  const [theme,setTheme]=useState(()=>{try{const saved=localStorage.getItem('wmed-theme');return themes.some(([id])=>id===saved)?saved:'white';}catch{return 'white';}});

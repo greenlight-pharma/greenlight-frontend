@@ -62,25 +62,30 @@ function makeDNA(g){
 export function buildGeneticModel(id){
  const group=new T.Group();const builder=({cell:makeCell,nucleus:makeNucleus,chromosome:makeChromosome,nucleosome:makeNucleosome,dna:makeDNA})[id];if(!builder)throw new Error("Modelo genético desconhecido");builder(group);return group;
 }
-export function createGeneticScene(node,id,onSelect,onError){
+// lumen: camada visual opcional (src/lumen), injetada pela tela para manter este arquivo testável no Node.
+export function createGeneticScene(node,id,onSelect,onError,lumenApi=null){
+ const {createStage,lumenize,lumenTheme}=lumenApi||{};
  const scene=new T.Scene(),camera=new T.PerspectiveCamera(36,1,.1,100);let renderer;
- try{renderer=new T.WebGLRenderer({antialias:true,alpha:true,powerPreference:'low-power'});}catch{onError();return {dispose(){}}}
+ const lumen=!!lumenApi;let stage=null;
+ try{renderer=new T.WebGLRenderer({antialias:true,alpha:!lumen,powerPreference:lumen?'high-performance':'low-power'});}catch{onError();return {dispose(){}}}
  renderer.setPixelRatio(Math.min(devicePixelRatio,1.8));renderer.setClearColor(0,0);renderer.outputColorSpace=T.SRGBColorSpace;renderer.toneMapping=T.ACESFilmicToneMapping;renderer.toneMappingExposure=1.05;node.appendChild(renderer.domElement);
- scene.add(new T.HemisphereLight('#e5f5f1','#302439',2));
- for(const [pos,color,power]of [[[4,5,6],'#fff0dd',3],[[-4,0,3],'#9edbd4',2],[[0,3,-5],'#b2a7ee',3]]){const l=new T.DirectionalLight(color,power);l.position.set(...pos);scene.add(l)}
- const model=buildGeneticModel(id);scene.add(model);
+ if(!lumen){scene.add(new T.HemisphereLight('#e5f5f1','#302439',2));
+ for(const [pos,color,power]of [[[4,5,6],'#fff0dd',3],[[-4,0,3],'#9edbd4',2],[[0,3,-5],'#b2a7ee',3]]){const l=new T.DirectionalLight(color,power);l.position.set(...pos);scene.add(l)}}
+ const model=buildGeneticModel(id);if(lumen)lumenize(model);scene.add(model);
  const box=new T.Box3().setFromObject(model),size=box.getSize(new T.Vector3()),sphere=box.getBoundingSphere(new T.Sphere());model.position.sub(sphere.center);
- const controls=new OrbitControls(camera,renderer.domElement);controls.enableDamping=true;controls.enablePan=false;controls.minDistance=sphere.radius*1.25;controls.maxDistance=sphere.radius*12;controls.autoRotateSpeed=.65;
+ const controls=new OrbitControls(camera,renderer.domElement);
+ if(lumen){stage=createStage(renderer,scene,camera,{controls});stage.setSubject(model);}controls.enableDamping=true;controls.enablePan=false;controls.minDistance=sphere.radius*1.25;controls.maxDistance=sphere.radius*12;controls.autoRotateSpeed=.65;
+ const themeWatch=new MutationObserver(()=>{stage?.setTheme(lumenTheme());dirty=true});themeWatch.observe(document.documentElement,{attributes:true,attributeFilter:['data-theme']});
  const reduced=matchMedia('(prefers-reduced-motion: reduce)');let spin=false,frame,disposed=false,dirty=true,last=0,selected=null;
  const fit=()=>{const aspect=node.clientWidth/Math.max(1,node.clientHeight);camera.aspect=aspect;camera.updateProjectionMatrix();const tangent=Math.tan(T.MathUtils.degToRad(36)/2);const distance=(Math.max(size.y/2/tangent,size.x/2/(tangent*aspect))+size.z/2)*1.08;camera.position.set(0,0,distance);controls.target.set(0,0,0);controls.update();dirty=true};
- const resize=()=>{renderer.setSize(node.clientWidth,node.clientHeight);fit()};const observer=new ResizeObserver(resize);observer.observe(node);resize();
+ const resize=()=>{renderer.setSize(node.clientWidth,node.clientHeight);stage?.setSize(node.clientWidth,node.clientHeight);fit()};const observer=new ResizeObserver(resize);observer.observe(node);resize();
  const originals=new Map();model.traverse(o=>{if(o.isMesh){o.material=o.material.clone();originals.set(o,{color:o.material.color.clone(),emissive:o.material.emissive.clone()})}});
- function select(part){selected=part;originals.forEach((v,o)=>{o.material.color.copy(v.color);o.material.emissive.copy(v.emissive);o.material.emissiveIntensity=0;if(part&&o.userData.part===part){o.material.emissive.set('#fff0c7');o.material.emissiveIntensity=.32}else if(part){o.material.color.multiplyScalar(.4)}});dirty=true}
+ function select(part){selected=part;if(stage){const picked=[];model.traverse(o=>{if(o.isMesh&&part&&o.userData.part===part)picked.push(o)});stage.setSelected(picked)}originals.forEach((v,o)=>{o.material.color.copy(v.color);o.material.emissive.copy(v.emissive);o.material.emissiveIntensity=0;if(part&&o.userData.part===part){o.material.emissive.set('#fff0c7');o.material.emissiveIntensity=.32}else if(part){o.material.color.multiplyScalar(.4)}});dirty=true}
  const ray=new T.Raycaster();let down;
  const start=e=>{down=[e.clientX,e.clientY]};
  const click=e=>{if(!down||Math.hypot(e.clientX-down[0],e.clientY-down[1])>5)return;const rect=renderer.domElement.getBoundingClientRect();ray.setFromCamera(new T.Vector2((e.clientX-rect.left)/rect.width*2-1,-(e.clientY-rect.top)/rect.height*2+1),camera);const hit=ray.intersectObjects(model.children,true).find(h=>h.object.userData.part);if(hit)onSelect(hit.object.userData.part)};
  renderer.domElement.addEventListener('pointerdown',start);renderer.domElement.addEventListener('pointerup',click);controls.addEventListener('change',()=>{dirty=true});
  const contextLost=e=>{e.preventDefault();onError()};renderer.domElement.addEventListener('webglcontextlost',contextLost);
- function animate(t){if(disposed)return;frame=requestAnimationFrame(animate);if(document.hidden)return;controls.autoRotate=spin&&!reduced.matches;const moving=controls.update();if((dirty||moving||controls.autoRotate)&&t-last>1000/40){renderer.render(scene,camera);last=t;dirty=false}}frame=requestAnimationFrame(animate);
- return {fit,select,spin(v){spin=v;dirty=true},zoom(f){camera.position.multiplyScalar(f);controls.update();dirty=true},dispose(){disposed=true;cancelAnimationFrame(frame);observer.disconnect();controls.dispose();renderer.domElement.removeEventListener('pointerdown',start);renderer.domElement.removeEventListener('pointerup',click);renderer.domElement.removeEventListener('webglcontextlost',contextLost);const geometries=new Set(),materials=new Set();model.traverse(o=>{if(o.geometry)geometries.add(o.geometry);if(o.material)materials.add(o.material)});geometries.forEach(g=>g.dispose());materials.forEach(m=>m.dispose());renderer.dispose();renderer.domElement.remove()}};
+ function animate(t){if(disposed)return;frame=requestAnimationFrame(animate);if(document.hidden)return;controls.autoRotate=spin&&!reduced.matches;const moving=controls.update();if(stage){if(stage.render(String(selected),dirty))dirty=false;return}if((dirty||moving||controls.autoRotate)&&t-last>1000/40){renderer.render(scene,camera);last=t;dirty=false}}frame=requestAnimationFrame(animate);
+ return {fit,select,spin(v){spin=v;dirty=true},zoom(f){camera.position.multiplyScalar(f);controls.update();dirty=true},dispose(){disposed=true;cancelAnimationFrame(frame);observer.disconnect();themeWatch.disconnect();stage?.dispose();controls.dispose();renderer.domElement.removeEventListener('pointerdown',start);renderer.domElement.removeEventListener('pointerup',click);renderer.domElement.removeEventListener('webglcontextlost',contextLost);const geometries=new Set(),materials=new Set();model.traverse(o=>{if(o.geometry)geometries.add(o.geometry);if(o.material)materials.add(o.material)});geometries.forEach(g=>g.dispose());materials.forEach(m=>m.dispose());renderer.dispose();renderer.domElement.remove()}};
 }
