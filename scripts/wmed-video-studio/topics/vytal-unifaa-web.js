@@ -6,7 +6,7 @@
   const CAP = 'out/vytal-captures/', seq = (m, n = 90) => Array.from({ length: n }, (_, i) => `${CAP}${m}/f${String(i).padStart(3, '0')}.jpg`);
   const S = { intro: 0, partner: 3.8, atlas: 8.5, histo: 14, radio: 18.6, feedback: 23.6, quest: 28.4, coord: 31.8, outro: 35.6, end: 40 };
   const PARTNER = { title: 'Diretório Acadêmico', name: 'UniFAA', place: 'Valença · RJ' };
-  const FRAME = { x: 60, y: 560, w: 960, h: 980 }; // palco dos giros 3D
+  const FRAME = { x: 150, y: 540, w: 780, h: 1000 }; // palco dos giros 3D
 
   // ---------- peças reutilizáveis ----------
   function title(lt, eb, t, o = {}) {
@@ -77,12 +77,12 @@
   // ---------- 02 · anatomia 3D ----------
   function atlas(t, lt, dur) {
     title(lt, 'Anatomia 3D', 'Mais do que observar.\n*Entender por dentro.*');
-    stage3d(IMG.atlas, lt, dur, [['Sistema respiratório', C.sky], ['Atlas por sistemas do corpo', C.teal]], { src: [0, 60, 996, 1170] });
+    stage3d(IMG.atlas, lt, dur, [['Sistema respiratório', C.sky], ['Atlas por sistemas do corpo', C.teal]], { src: [0, 0, 996, 1270] });
   }
   // ---------- 03 · histologia 3D ----------
   function histo(t, lt, dur) {
     title(lt, 'Histologia 3D', 'Abra a célula.\n*Descubra cada organela.*');
-    stage3d(IMG.histo, lt, dur, [['Neurônio multipolar · corte aberto', '#B79CFF'], ['Função de cada estrutura', C.teal]], { src: [0, 80, 996, 1150] });
+    stage3d(IMG.histo, lt, dur, [['Neurônio multipolar · corte aberto', '#B79CFF'], ['Função de cada estrutura', C.teal]], { src: [0, 0, 996, 1252] });
   }
   // ---------- 04 · radiologia ----------
   function radio(t, lt, dur) {
@@ -90,23 +90,22 @@
     const e = expoOut(seg(lt, .1, .9)), R = RADIO;
     // 3D com o plano do corte (em cima) e a tomografia axial (embaixo), do mesmo quadro capturado
     const p = seg(lt, .3, dur - .2);
-    glass(60, 540 + (1 - e) * 60, 960, 1000, { alpha: e, r: 40, fillA: .05 });
-    turntable(IMG.radio, p, 80, 560 + (1 - e) * 60, 920, 470, { r: 28, alpha: e, src: R.d3 });
-    turntable(IMG.radio, p, 80, 1050 + (1 - e) * 60, 920, 470, { r: 28, alpha: e, src: R.ct });
+    glass(60, 540 + (1 - e) * 60, 960, 1010, { alpha: e, r: 40, fillA: .05 });
+    turntable(IMG.radio, p, 80, 560 + (1 - e) * 60, 920, 440, { r: 28, alpha: e, src: R.d3 });
+    // tomografia axial do mesmo instante, com moldura escura
+    X.save(); X.globalAlpha = e; rr(200, 1030 + (1 - e) * 60, 680, 500, 28); X.fillStyle = '#000'; X.fill(); X.restore();
+    turntable(IMG.radio, p, 200, 1030 + (1 - e) * 60, 680, 500, { r: 28, alpha: e, src: R.ct });
     const lab = [['Tomografia real do acervo', C.sky], ['O corte percorre o tórax', C.teal]];
-    lab.forEach(([l, c], i) => { const k = backOut(seg(lt, 1 + i * .4, 1.5 + i * .4)); pill(i ? W - 100 : 100, 1010 + i * 80, l, { size: 26, alpha: clamp(k), dot: c, align: i ? 'right' : 'left', fill: 'rgba(8,30,61,.9)', stroke: rgba(c, .6) }); });
+    lab.forEach(([l, c], i) => { const k = backOut(seg(lt, 1 + i * .4, 1.5 + i * .4)); pill(i ? W - 90 : 90, i ? 1575 : 985, l, { size: 26, alpha: clamp(k), dot: c, align: i ? 'right' : 'left', fill: 'rgba(8,30,61,.9)', stroke: rgba(c, .6) }); });
   }
-  const RADIO = { d3: [16, 150, 1048, 560], ct: [16, 760, 1048, 560] }; // ajustado ao layout capturado (1080×1700)
+  const RADIO = { d3: [72, 690, 539, 330], ct: [638, 680, 410, 330] }; // recortes do quadro capturado (1080×1700): 3D à esquerda, TC à direita
 
   // ---------- 05 · feedback do caso ----------
   function feedback(t, lt, dur) {
     title(lt, 'Aprender com cada caso', 'Do caso ao\n*raciocínio clínico.*');
     const e = expoOut(seg(lt, .1, 1));
-    browser(IMG.feedback, [400, 120, 2080, 2360], 60, 560 + (1 - e) * 120, 960, 980, { alpha: e, scroll: ease(seg(lt, 1.2, dur - .3)) });
-    [['O que você fez bem', C.teal], ['O que pode aprofundar', C.sky], ['Sinais de alerta', '#FF6B6B']].forEach(([l, c], i) => {
-      const a = 1.1 + i * .5, k = backOut(seg(lt, a, a + .5)); if (k <= .005) return;
-      pill(i % 2 ? W - 70 : 70, 820 + i * 230, l, { size: 30, alpha: clamp(k), dot: c, align: i % 2 ? 'right' : 'left', fill: 'rgba(8,30,61,.95)', stroke: rgba(c, .7) });
-    });
+    browser(IMG.feedback, [410, 100, 2160, 2392], 60, 560 + (1 - e) * 120, 960, 980, { alpha: e, scroll: ease(seg(lt, 1.2, dur - .3)) });
+    text('Acertos, pontos a aprofundar e sinais de alerta.', W / 2, 1578, { size: 28, color: C.pale, align: 'center', alpha: expoOut(seg(lt, 1, 1.6)), weight: 500 });
   }
 
   // ---------- 06 · banco de questões ----------
