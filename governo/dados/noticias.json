@@ -1,6 +1,6 @@
 {
  "meta": {
-  "gerado_em": "2026-09-22T14:55+00:00",
+  "gerado_em": "2026-09-24T15:09+00:00",
   "gerado_por": "scripts/governo/agentes/agente_noticias.py",
   "janela_dias": 90,
   "fontes": [
@@ -30,222 +30,222 @@
     "url": "https://www.gov.br/planalto/pt-br/acompanhe-o-planalto/noticias/RSS"
    }
   ],
-  "total_artigos": 1136,
-  "artigos_com_no": 294,
-  "novos_nesta_rodada": 68,
+  "total_artigos": 1211,
+  "artigos_com_no": 332,
+  "novos_nesta_rodada": 82,
   "artigos_por_fonte": {
-   "agenciabrasil": 184,
-   "senado": 596,
+   "agenciabrasil": 243,
+   "senado": 611,
+   "planalto": 27,
    "stf": 4,
-   "camara": 326,
-   "planalto": 26
+   "camara": 326
   },
   "ordem": "peso igual por fonte; contagem real de matérias",
   "resumo_por": "claude"
  },
  "resumo": [
   {
-   "texto": "O Ministério da Justiça e Segurança Pública demitiu Eduardo Bolsonaro do cargo de escrivão da Polícia Federal por abandono de cargo, com base em processo administrativo disciplinar publicado no Diário Oficial da União.",
-   "artigo_id": "n-8c490a9530",
-   "no_id": "mjsp"
+   "texto": "O Supremo Tribunal Federal decidiu, por unanimidade, unificar os prazos de licença-maternidade e licença-adotante, atendendo a ação da Procuradoria-Geral da República.",
+   "artigo_id": "n-12d9b0243e",
+   "no_id": "stf"
   },
   {
-   "texto": "A Advocacia-Geral da União pediu ao Supremo Tribunal Federal a perda definitiva do cargo do ministro do Superior Tribunal de Justiça Marco Buzzi, condenado pelo STJ em processo por assédio sexual.",
-   "artigo_id": "n-f90fb913be",
-   "no_id": "agu"
+   "texto": "O Conselho Nacional de Justiça determinou o cancelamento de R$ 4,7 bilhões em precatórios de usinas negociados com o Banco Master, após ação da Advocacia-Geral da União.",
+   "artigo_id": "n-5c4e69ed70",
+   "no_id": "cnj"
   },
   {
-   "texto": "O ministro Flávio Dino, do Supremo Tribunal Federal, determinou que o governo federal faça avaliação técnica e reapreciação das regras normativas da Comissão de Valores Mobiliários.",
-   "artigo_id": "n-4a69bd3199",
-   "no_id": "cvm"
+   "texto": "O Tribunal de Contas da União recomendou que o Ministério de Minas e Energia e a Aneel estudem alternativas à caducidade da concessão da Enel São Paulo.",
+   "artigo_id": "n-638375fd0c",
+   "no_id": "tcu"
   },
   {
-   "texto": "O Poder Executivo publicou medida provisória que abre crédito extraordinário de R$ 64,3 milhões ao Ministério do Desenvolvimento e Assistência Social e ao Ministério dos Povos Indígenas.",
-   "artigo_id": "n-0f16add689",
-   "no_id": "mds"
+   "texto": "O Ministério da Previdência Social passará a aceitar o comparecimento às urnas em outubro como prova de vida de aposentados e pensionistas do INSS.",
+   "artigo_id": "n-ade172a94a",
+   "no_id": "inss"
   }
  ],
  "ranking": {
   "orgaos": [
    {
     "id": "stf",
-    "artigos": 42,
-    "peso": 30.837230151754106,
-    "ultima": "2026-09-22T00:00+00:00"
+    "artigos": 47,
+    "peso": 32.18410108978939,
+    "ultima": "2026-09-23T18:50+00:00"
    },
    {
     "id": "tse",
-    "artigos": 36,
-    "peso": 28.327856197894377,
-    "ultima": "2026-09-22T13:43+00:00"
+    "artigos": 40,
+    "peso": 28.301471131538307,
+    "ultima": "2026-09-24T12:03+00:00"
    },
    {
     "id": "camara",
     "artigos": 49,
-    "peso": 18.679194630872466,
+    "peso": 19.423567921440274,
     "ultima": "2026-09-17T16:12:00+00:00"
    },
    {
     "id": "congresso",
-    "artigos": 38,
-    "peso": 17.14022853521564,
-    "ultima": "2026-09-17T20:01+00:00"
+    "artigos": 39,
+    "peso": 17.699827735095838,
+    "ultima": "2026-09-24T12:01:00+00:00"
    },
    {
     "id": "prf",
     "artigos": 7,
-    "peso": 15.293582635631072,
+    "peso": 14.350308810356092,
     "ultima": "2026-09-17T13:36+00:00"
    },
    {
     "id": "caixa",
-    "artigos": 10,
-    "peso": 12.347826086956523,
-    "ultima": "2026-09-22T10:02+00:00"
+    "artigos": 13,
+    "peso": 12.957201646090533,
+    "ultima": "2026-09-24T10:30+00:00"
    },
    {
-    "id": "inep",
-    "artigos": 8,
-    "peso": 9.878260869565217,
-    "ultima": "2026-09-20T11:06+00:00"
+    "id": "pf",
+    "artigos": 15,
+    "peso": 11.348766442383463,
+    "ultima": "2026-09-24T12:47+00:00"
+   },
+   {
+    "id": "inss",
+    "artigos": 15,
+    "peso": 8.972116733211163,
+    "ultima": "2026-09-24T11:52:00+00:00"
    },
    {
     "id": "mte",
     "artigos": 1,
-    "peso": 8.738461538461538,
+    "peso": 8.97037037037037,
     "ultima": "2026-08-12T21:09:00+00:00"
    },
    {
     "id": "inpe",
     "artigos": 1,
-    "peso": 8.738461538461538,
+    "peso": 8.97037037037037,
     "ultima": "2026-08-06T22:13:00+00:00"
    },
    {
-    "id": "pf",
-    "artigos": 11,
-    "peso": 8.461161365625912,
-    "ultima": "2026-09-21T13:27+00:00"
-   },
-   {
-    "id": "inss",
-    "artigos": 14,
-    "peso": 8.400558538205267,
-    "ultima": "2026-09-18T20:16+00:00"
-   },
-   {
     "id": "ibge",
-    "artigos": 7,
-    "peso": 7.789903705865188,
-    "ultima": "2026-09-21T17:14:00+00:00"
+    "artigos": 9,
+    "peso": 8.370061896775844,
+    "ultima": "2026-09-24T13:01+00:00"
    },
    {
-    "id": "petrobras",
+    "id": "inep",
     "artigos": 8,
-    "peso": 7.317537204552087,
-    "ultima": "2026-09-21T14:36+00:00"
+    "peso": 7.973662551440328,
+    "ultima": "2026-09-20T11:06+00:00"
+   },
+   {
+    "id": "anvisa",
+    "artigos": 9,
+    "peso": 7.515990389527351,
+    "ultima": "2026-09-23T21:49+00:00"
    },
    {
     "id": "ms",
+    "artigos": 10,
+    "peso": 7.31208126126834,
+    "ultima": "2026-09-23T13:10+00:00"
+   },
+   {
+    "id": "petrobras",
     "artigos": 9,
-    "peso": 7.160895164885134,
-    "ultima": "2026-09-21T17:18+00:00"
+    "peso": 7.169444949586793,
+    "ultima": "2026-09-23T14:38+00:00"
+   },
+   {
+    "id": "mec",
+    "artigos": 9,
+    "peso": 6.569136475992267,
+    "ultima": "2026-09-23T15:17:00+00:00"
+   },
+   {
+    "id": "agu",
+    "artigos": 7,
+    "peso": 6.376646258915762,
+    "ultima": "2026-09-23T20:26+00:00"
+   },
+   {
+    "id": "anp",
+    "artigos": 9,
+    "peso": 6.3153734423383,
+    "ultima": "2026-09-24T13:51+00:00"
    },
    {
     "id": "stj",
     "artigos": 7,
-    "peso": 6.714203519148731,
+    "peso": 5.869120191607827,
     "ultima": "2026-09-22T00:00+00:00"
    },
    {
-    "id": "agu",
-    "artigos": 6,
-    "peso": 6.555121097169536,
-    "ultima": "2026-09-22T13:43+00:00"
-   },
-   {
-    "id": "anvisa",
-    "artigos": 7,
-    "peso": 6.398479057502582,
-    "ultima": "2026-09-21T18:27+00:00"
+    "id": "tcu",
+    "artigos": 11,
+    "peso": 5.653792152166313,
+    "ultima": "2026-09-23T21:51+00:00"
    },
    {
     "id": "mpf",
     "artigos": 5,
-    "peso": 5.320338488473884,
+    "peso": 4.38323062105568,
     "ultima": "2026-09-21T23:03+00:00"
-   },
-   {
-    "id": "mec",
-    "artigos": 6,
-    "peso": 4.847971987160783,
-    "ultima": "2026-09-21T16:01+00:00"
    },
    {
     "id": "tst",
     "artigos": 7,
-    "peso": 4.691329947493828,
+    "peso": 4.321957804478218,
     "ultima": "2026-09-21T18:35+00:00"
    },
    {
-    "id": "tcu",
-    "artigos": 10,
-    "peso": 4.443529460205047,
-    "ultima": "2026-09-04T14:56:00+00:00"
+    "id": "aeronautica",
+    "artigos": 4,
+    "peso": 3.9868312757201645,
+    "ultima": "2026-09-24T00:19+00:00"
+   },
+   {
+    "id": "senacon",
+    "artigos": 4,
+    "peso": 3.9868312757201645,
+    "ultima": "2026-09-23T17:35+00:00"
    },
    {
     "id": "cvm",
     "artigos": 4,
-    "peso": 4.40128034142438,
+    "peso": 3.733068242066197,
     "ultima": "2026-09-20T17:04+00:00"
    },
    {
-    "id": "aeronautica",
-    "artigos": 3,
-    "peso": 3.7043478260869565,
-    "ultima": "2026-09-22T13:30+00:00"
+    "id": "cnj",
+    "artigos": 4,
+    "peso": 3.386522802125639,
+    "ultima": "2026-09-24T12:42+00:00"
    },
    {
-    "id": "anp",
-    "artigos": 6,
-    "peso": 3.4565473387981753,
-    "ultima": "2026-09-21T23:32+00:00"
+    "id": "anac",
+    "artigos": 5,
+    "peso": 2.9288506402126613,
+    "ultima": "2026-09-23T14:04+00:00"
    },
    {
     "id": "bndes",
     "artigos": 4,
-    "peso": 2.6941312314156254,
+    "peso": 2.532451294877146,
     "ultima": "2026-09-17T17:19+00:00"
    },
    {
-    "id": "mjsp",
+    "id": "cgu",
     "artigos": 2,
-    "peso": 2.4695652173913043,
-    "ultima": "2026-09-21T23:32+00:00"
+    "peso": 1.9934156378600822,
+    "ultima": "2026-09-24T12:47+00:00"
    },
    {
-    "id": "correios",
+    "id": "inmet",
     "artigos": 2,
-    "peso": 2.4695652173913043,
-    "ultima": "2026-09-21T18:35+00:00"
-   },
-   {
-    "id": "embrapa",
-    "artigos": 2,
-    "peso": 1.9317151240330754,
-    "ultima": "2026-09-17T13:01+00:00"
-   },
-   {
-    "id": "anac",
-    "artigos": 4,
-    "peso": 1.8405566764112489,
-    "ultima": "2026-09-08T17:30:00+00:00"
-   },
-   {
-    "id": "mds",
-    "artigos": 2,
-    "peso": 1.6159906623869273,
-    "ultima": "2026-09-22T14:03:00+00:00"
+    "peso": 1.9934156378600822,
+    "ultima": "2026-09-24T11:56+00:00"
    }
   ],
   "pessoas": [
@@ -260,9 +260,24 @@
     "uf": null,
     "foto": "https://commons.wikimedia.org/wiki/Special:FilePath/Foto_oficial_de_Luiz_In%C3%A1cio_Lula_da_Silva_%28estreita%29.jpg?width=160",
     "foto_fonte": "https://www.wikidata.org/wiki/Q37181",
-    "artigos": 19,
-    "peso": 21.037378296576897,
-    "ultima": "2026-09-22T13:57+00:00"
+    "artigos": 20,
+    "peso": 21.050662686847403,
+    "ultima": "2026-09-24T12:03+00:00"
+   },
+   {
+    "id": "davi-alcolumbre",
+    "nome": "Davi Alcolumbre",
+    "nome_completo": "Davi Alcolumbre",
+    "cargo": "Presidente do Congresso Nacional · CN",
+    "no_id": "congresso",
+    "poder": "legislativo",
+    "partido": "UNIÃO",
+    "uf": "AP",
+    "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador3830.jpg",
+    "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/3830",
+    "artigos": 20,
+    "peso": 9.128603853899362,
+    "ultima": "2026-09-23T18:08+00:00"
    },
    {
     "id": "damares-alves",
@@ -276,22 +291,22 @@
     "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador6335.jpg",
     "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/6335",
     "artigos": 23,
-    "peso": 8.767785234899328,
+    "peso": 9.117184942716857,
     "ultima": "2026-09-21T19:30:00+00:00"
    },
    {
-    "id": "davi-alcolumbre",
-    "nome": "Davi Alcolumbre",
-    "nome_completo": "Davi Alcolumbre",
-    "cargo": "Presidente do Congresso Nacional · CN",
-    "no_id": "congresso",
+    "id": "hugo-motta",
+    "nome": "Hugo Motta",
+    "nome_completo": "Hugo Motta",
+    "cargo": "Presidente da Câmara dos Deputados · CD",
+    "no_id": "camara",
     "poder": "legislativo",
-    "partido": "UNIÃO",
-    "uf": "AP",
-    "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador3830.jpg",
-    "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/3830",
-    "artigos": 18,
-    "peso": 6.861744966442954,
+    "partido": null,
+    "uf": null,
+    "foto": "https://commons.wikimedia.org/wiki/Special:FilePath/11%C2%BA_F%C3%B3rum_Parlamentar_do_Brics_-_Brasil_2025_-_Entrevista_Coletiva_%2854569126271%29.jpg?width=160",
+    "foto_fonte": "https://www.wikidata.org/wiki/Q10298778",
+    "artigos": 11,
+    "peso": 5.746574558452902,
     "ultima": "2026-09-08T14:44:00+00:00"
    },
    {
@@ -306,23 +321,8 @@
     "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador5894.jpg",
     "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/5894",
     "artigos": 7,
-    "peso": 6.082754595856435,
+    "peso": 5.176029311726711,
     "ultima": "2026-09-21T12:40+00:00"
-   },
-   {
-    "id": "hugo-motta",
-    "nome": "Hugo Motta",
-    "nome_completo": "Hugo Motta",
-    "cargo": "Presidente da Câmara dos Deputados · CD",
-    "no_id": "camara",
-    "poder": "legislativo",
-    "partido": null,
-    "uf": null,
-    "foto": "https://commons.wikimedia.org/wiki/Special:FilePath/11%C2%BA_F%C3%B3rum_Parlamentar_do_Brics_-_Brasil_2025_-_Entrevista_Coletiva_%2854569126271%29.jpg?width=160",
-    "foto_fonte": "https://www.wikidata.org/wiki/Q10298778",
-    "artigos": 11,
-    "peso": 5.456186437188618,
-    "ultima": "2026-09-08T14:44:00+00:00"
    },
    {
     "id": "paulo-paim",
@@ -336,7 +336,7 @@
     "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador825.jpg",
     "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/825",
     "artigos": 12,
-    "peso": 4.5744966442953015,
+    "peso": 4.756792144026186,
     "ultima": "2026-09-21T19:30:00+00:00"
    },
    {
@@ -351,8 +351,23 @@
     "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador5525.jpg",
     "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/5525",
     "artigos": 11,
-    "peso": 4.193288590604026,
+    "peso": 4.360392798690671,
     "ultima": "2026-09-02T23:20:00+00:00"
+   },
+   {
+    "id": "mara-gabrilli",
+    "nome": "Mara Gabrilli",
+    "nome_completo": "Mara Cristina Gabrilli",
+    "cargo": "Senadora, SP",
+    "no_id": "senado",
+    "poder": "legislativo",
+    "partido": "PSD",
+    "uf": "SP",
+    "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador5376.jpg",
+    "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/5376",
+    "artigos": 10,
+    "peso": 3.963993453355155,
+    "ultima": "2026-09-23T18:20:00+00:00"
    },
    {
     "id": "rogerio-carvalho",
@@ -366,23 +381,8 @@
     "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador5352.jpg",
     "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/5352",
     "artigos": 10,
-    "peso": 3.8120805369127506,
+    "peso": 3.963993453355155,
     "ultima": "2026-09-14T16:27:00+00:00"
-   },
-   {
-    "id": "mara-gabrilli",
-    "nome": "Mara Gabrilli",
-    "nome_completo": "Mara Cristina Gabrilli",
-    "cargo": "Senadora, SP",
-    "no_id": "senado",
-    "poder": "legislativo",
-    "partido": "PSD",
-    "uf": "SP",
-    "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador5376.jpg",
-    "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/5376",
-    "artigos": 9,
-    "peso": 3.4308724832214756,
-    "ultima": "2026-09-22T13:31:00+00:00"
    },
    {
     "id": "leila-barros",
@@ -396,7 +396,7 @@
     "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador5979.jpg",
     "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/5979",
     "artigos": 9,
-    "peso": 3.4308724832214756,
+    "peso": 3.5675941080196396,
     "ultima": "2026-09-10T18:45:00+00:00"
    },
    {
@@ -411,7 +411,7 @@
     "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador5990.jpg",
     "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/5990",
     "artigos": 9,
-    "peso": 3.4308724832214756,
+    "peso": 3.5675941080196396,
     "ultima": "2026-09-04T21:56:00+00:00"
    },
    {
@@ -426,8 +426,23 @@
     "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador345.jpg",
     "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/345",
     "artigos": 9,
-    "peso": 3.4308724832214756,
+    "peso": 3.5675941080196396,
     "ultima": "2026-09-03T23:38:00+00:00"
+   },
+   {
+    "id": "astronauta-marcos-pontes",
+    "nome": "Astronauta Marcos Pontes",
+    "nome_completo": "Marcos Cesar Pontes",
+    "cargo": "Senador, SP",
+    "no_id": "senado",
+    "poder": "legislativo",
+    "partido": "PL",
+    "uf": "SP",
+    "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador6009.jpg",
+    "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/6009",
+    "artigos": 8,
+    "peso": 3.171194762684124,
+    "ultima": "2026-09-23T18:51:00+00:00"
    },
    {
     "id": "edson-fachin",
@@ -441,23 +456,8 @@
     "foto": "https://commons.wikimedia.org/wiki/Special:FilePath/Luiz_Edson_Fachin-12-05.2015.jpg?width=160",
     "foto_fonte": "https://www.wikidata.org/wiki/Q10320705",
     "artigos": 4,
-    "peso": 3.2319813247738542,
+    "peso": 2.786214328531113,
     "ultima": "2026-09-18T15:06+00:00"
-   },
-   {
-    "id": "astronauta-marcos-pontes",
-    "nome": "Astronauta Marcos Pontes",
-    "nome_completo": "Marcos Cesar Pontes",
-    "cargo": "Senador, SP",
-    "no_id": "senado",
-    "poder": "legislativo",
-    "partido": "PL",
-    "uf": "SP",
-    "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador6009.jpg",
-    "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/6009",
-    "artigos": 7,
-    "peso": 2.6684563758389257,
-    "ultima": "2026-09-08T15:37:00+00:00"
    },
    {
     "id": "fernando-dueire",
@@ -471,7 +471,7 @@
     "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador5917.jpg",
     "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/5917",
     "artigos": 7,
-    "peso": 2.6684563758389257,
+    "peso": 2.7747954173486087,
     "ultima": "2026-09-02T19:51:00+00:00"
    },
    {
@@ -486,7 +486,7 @@
     "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador5732.jpg",
     "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/5732",
     "artigos": 5,
-    "peso": 2.537489191748672,
+    "peso": 2.6750876065586935,
     "ultima": "2026-09-02T16:46:00+00:00"
    },
    {
@@ -501,7 +501,7 @@
     "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador4770.jpg",
     "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/4770",
     "artigos": 6,
-    "peso": 2.2872483221476507,
+    "peso": 2.378396072013093,
     "ultima": "2026-09-17T21:37:00+00:00"
    },
    {
@@ -516,7 +516,7 @@
     "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador6338.jpg",
     "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/6338",
     "artigos": 6,
-    "peso": 2.2872483221476507,
+    "peso": 2.378396072013093,
     "ultima": "2026-09-10T18:45:00+00:00"
    },
    {
@@ -531,23 +531,8 @@
     "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador475.jpg",
     "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/475",
     "artigos": 6,
-    "peso": 2.2872483221476507,
+    "peso": 2.378396072013093,
     "ultima": "2026-09-01T22:31:00+00:00"
-   },
-   {
-    "id": "paulo-gonet",
-    "nome": "Paulo Gonet",
-    "nome_completo": "Paulo Gonet",
-    "cargo": "Procurador(a)-Geral da República · MPU",
-    "no_id": "mpu",
-    "poder": "essencial",
-    "partido": null,
-    "uf": null,
-    "foto": null,
-    "foto_fonte": null,
-    "artigos": 3,
-    "peso": 1.9971987160782025,
-    "ultima": "2026-09-17T14:37+00:00"
    },
    {
     "id": "nelsinho-trad",
@@ -561,7 +546,7 @@
     "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador5985.jpg",
     "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/5985",
     "artigos": 5,
-    "peso": 1.9060402684563758,
+    "peso": 1.9819967266775775,
     "ultima": "2026-09-22T14:16:00+00:00"
    },
    {
@@ -576,7 +561,7 @@
     "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador22.jpg",
     "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/22",
     "artigos": 5,
-    "peso": 1.9060402684563758,
+    "peso": 1.9819967266775775,
     "ultima": "2026-09-11T19:48:00+00:00"
    },
    {
@@ -591,27 +576,892 @@
     "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador3806.jpg",
     "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/3806",
     "artigos": 5,
-    "peso": 1.9060402684563758,
+    "peso": 1.9819967266775775,
     "ultima": "2026-09-08T17:35:00+00:00"
    },
    {
-    "id": "luiz-philippe-vieira-de-mello-filho",
-    "nome": "Vieira de Mello Filho",
-    "nome_completo": "Luiz Philippe Vieira de Mello Filho",
-    "cargo": "Presidente · TST",
-    "no_id": "tst",
-    "poder": "judiciario",
+    "id": "paulo-gonet",
+    "nome": "Paulo Gonet",
+    "nome_completo": "Paulo Gonet",
+    "cargo": "Procurador(a)-Geral da República · MPU",
+    "no_id": "mpu",
+    "poder": "essencial",
     "partido": null,
     "uf": null,
-    "foto": "https://commons.wikimedia.org/wiki/Special:FilePath/Plen%C3%A1rio_do_Senado_-_54820218794.jpg?width=160",
-    "foto_fonte": "https://www.wikidata.org/wiki/Q137460034",
-    "artigos": 2,
-    "peso": 1.6159906623869273,
-    "ultima": "2026-09-21T18:35+00:00"
+    "foto": null,
+    "foto_fonte": null,
+    "artigos": 3,
+    "peso": 1.789506509601072,
+    "ultima": "2026-09-17T14:37+00:00"
+   },
+   {
+    "id": "randolfe-rodrigues",
+    "nome": "Randolfe Rodrigues",
+    "nome_completo": "Randolph Frederich Rodrigues Alves",
+    "cargo": "Senador, AP",
+    "no_id": "senado",
+    "poder": "legislativo",
+    "partido": "PT",
+    "uf": "AP",
+    "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador5012.jpg",
+    "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/5012",
+    "artigos": 4,
+    "peso": 1.585597381342062,
+    "ultima": "2026-09-04T11:42:00+00:00"
    }
   ]
  },
  "artigos": [
+  {
+   "id": "n-e9ccb294e9",
+   "titulo": "BC reduz projeção de crescimento da economia para 1,8%",
+   "url": "https://agenciabrasil.ebc.com.br/economia/noticia/2026-09/bc-reduz-projecao-de-crescimento-da-economia-para-18",
+   "data": "2026-09-24T13:51+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [
+    "anp"
+   ],
+   "pessoas": [],
+   "resumo": "O Banco Central (BC) reduziu de 2% para 1,8% a projeção de crescimento da economia brasileira em 2026 e manteve em 5,2% a estimativa de inflação para o fim do ano. De acordo com o Relatório de Política Monetária (RPM) divulgado nesta quinta-feira (24), a inflação tende a ficar acima da meta, apesar da desaceleração observada nos últimos meses. Notícias relacionadas: BC amplia controle sobre criptomoedas e mira carteiras próprias. Produção florestal no país alcança recorde de R$ 47,9 bilhões em 2025. ANP aplicou R$ 200 milhões em multas por alta abusiva de combustíveis. O Índice Nacional de Pre"
+  },
+  {
+   "id": "n-2d542487bd",
+   "titulo": "Bancos centrais do Brasil e da Europa avaliam interligar Pix com Tips",
+   "url": "https://agenciabrasil.ebc.com.br/internacional/noticia/2026-09/bancos-centrais-do-brasil-e-da-europa-avaliam-interligar-pix-com-tips",
+   "data": "2026-09-24T13:31+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [
+    "bcb"
+   ],
+   "pessoas": [],
+   "resumo": "O Banco Central do Brasil e o Banco Central Europeu (BCE) iniciam nesta quinta-feira (24) estudo de viabilidade para interligar o Pix , sistema de pagamentos instantâneos brasileiro, com o Target Instant Payment Settlement (Tips), serviço de liquidação de pagamentos instantâneos do Eurosistema . Em nota, o Banco Central do Brasil informou que serão avaliados aspectos técnicos, operacionais, jurídicos e de negócio relacionados ao processo. Notícias relacionadas: Pix terá novas regras para fraudes, cobrança híbrida e contas-salário. BC proíbe publicidade em comprovantes do Pix a partir de março "
+  },
+  {
+   "id": "n-619917b126",
+   "titulo": "Áudio: Sancionado aumento de penas por furto e roubo de combustíveis",
+   "url": "https://www12.senado.leg.br/noticias/audios/2026/09/sancionado-aumento-de-penas-por-furto-e-roubo-de-combustiveis",
+   "data": "2026-09-24T13:04:00+00:00",
+   "fonte": "senado",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "A Presidência da República sancionou a Lei 15.517, de 2026, que altera a Lei de Crimes Econômicos e o Código Penal, para prever novos crimes no setor de combustíveis e aumentar as penas para furto e roubo relacionados a produtos como petróleo e derivados, combustíveis e óleo lubrificante. A norma tem objetivo de aumentar a segurança da infraestrutura do setor, combater crimes contra a ordem econômica e proteger o meio ambiente."
+  },
+  {
+   "id": "n-27d7996aa8",
+   "titulo": "Produção florestal no país alcança recorde de R$ 47,9 bilhões em 2025",
+   "url": "https://agenciabrasil.ebc.com.br/economia/noticia/2026-09/producao-florestal-no-pais-alcanca-recorde-de-r-479-bilhoes-em-2025",
+   "data": "2026-09-24T13:01+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [
+    "ibge"
+   ],
+   "pessoas": [],
+   "resumo": "As florestas brasileiras renderam ao país uma produção econômica avaliada em R$ 47,9 bilhões em 2025. Esse é o maior valor já alcançado no Brasil e representa alta de 6,7% em relação ao ano anterior. Os dados se referem a florestas naturais ou plantadas e fazem parte da pesquisa Produção da Extração Vegetal e da Silvicultura, divulgada nesta quinta-feira (24) pelo Instituto Brasileiro de Geografia e Estatística (IBGE). Notícias relacionadas: Pesquisadores descrevem nova espécie de rã-de-vidro no Cerrado. Agricultura avança 11 milhões de hectares em 41 anos na Mata Atlântica. Pesquisa mostra pr"
+  },
+  {
+   "id": "n-91b111f341",
+   "titulo": "Polícia e MP deflagram nova fase da Operação Carbono Oculto em SP",
+   "url": "https://agenciabrasil.ebc.com.br/geral/noticia/2026-09/policia-e-mp-deflagram-nova-fase-da-operacao-carbono-oculto-em-sp",
+   "data": "2026-09-24T12:47+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [
+    "pf",
+    "cgu"
+   ],
+   "pessoas": [],
+   "resumo": "O Grupo de Atuação Especial de Combate ao Crime Organizado (Gaeco), ligado ao Ministério Público de São Paulo, e a Receita Federal fazem nesta manhã de quinta-feira (24) a terceira fase da Operação Carbono Oculto. Os órgãos investigam, com apoio da Polícia Federal e Receita Federal, estrutura complexa de lavagem de dinheiro para viabilizar a compra de uma das maiores distribuidoras de combustíveis do país. Notícias relacionadas: Ação em 5 estados investiga ligação do PCC com setor de combustíveis. Polícia Federal deflagra ação contra grupo do setor de combustíveis. PF e CGU apuram fraudes em c"
+  },
+  {
+   "id": "n-b8d7b3ba1e",
+   "titulo": "Caso Master: TCDF bloqueia até R$ 2,7 bi de ex-dirigentes do BRB",
+   "url": "https://agenciabrasil.ebc.com.br/justica/noticia/2026-09/caso-master-tcdf-bloqueia-ate-r-27-bi-de-ex-dirigentes-do-brb",
+   "data": "2026-09-24T12:42+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [
+    "cnj"
+   ],
+   "pessoas": [],
+   "resumo": "O Tribunal de Contas do Distrito Federal (TCDF) decidiu, nessa quarta-feira (23), de forma unânime, em sessão fechada, bloquear até R$ 2,7 bilhões em contas e bens de cinco ex-dirigentes do Banco Regional de Brasília (BRB), instituição pública controlada pelo governo do Distrito Federal. A medida foi tomada em face da crise provocada por negócios do BRB com o Banco Master, liquidado em novembro do ano passado pelo Banco Central por indícios de gestão fraudulenta. Notícias relacionadas: CNJ cancela R$ 4,7 bilhões em precatórios ligados ao Master. Zanin nega liminar para obrigar Senado a instala"
+  },
+  {
+   "id": "n-c7d1c5d131",
+   "titulo": "Confira a agenda dos presidenciáveis nesta quinta-feira (24)",
+   "url": "https://agenciabrasil.ebc.com.br/politica/noticia/2026-09/confira-agenda-dos-presidenciaveis-nesta-quinta-feira-24",
+   "data": "2026-09-24T12:03+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [
+    "tse"
+   ],
+   "pessoas": [
+    "luiz-inacio-lula-da-silva"
+   ],
+   "resumo": "A agenda dos presidenciáveis nesta quinta-feira (24) inclui entrevistas, debates, atos e encontros com apoiadores. Também estão previstas visitas a instituições e espaços comerciais, carreata, coletiva de imprensa e panfletagens em diferentes cidades. Notícias relacionadas: Comunidade científica alerta para risco de interferência nas eleições. TSE cria ferramenta de IA para acesso a informações sobre eleições. Luiz Inácio Lula da Silva (PT) Participa do ato Brasil Pronto pra Mais na Praça Marechal Deodoro, no centro de Maceió (AL). Renan Santos (Missão) Participa de encontro com apoiadores em "
+  },
+  {
+   "id": "n-a39fe03c6e",
+   "titulo": "Áudio: Lei regulamenta exercício da psicopedagogia",
+   "url": "https://www12.senado.leg.br/noticias/audios/2026/09/lei-regulamenta-exercicio-da-psicopedagogia",
+   "data": "2026-09-24T12:01:00+00:00",
+   "fonte": "senado",
+   "nos": [
+    "congresso"
+   ],
+   "pessoas": [],
+   "resumo": "Foi publicada no Diário Oficial da União de quarta-feira (23) a lei que regulamenta a atividade de psicopedagogia. De acordo com a Lei 15.519, de 2026, é papel do profissional identificar, compreender e analisar os problemas no processo de aprendizagem. Também está entre suas funções fazer pesquisa, prevenção, avaliação e intervenção, utilizando métodos e técnicas próprias da profissão. O Poder Executivo vetou o trecho que exigia formação específica, e a decisão final caberá ao Congresso Nacional. O projeto que deu origem à norma (PL 1.675/2023) foi aprovado em votação final pela Comissão de A"
+  },
+  {
+   "id": "n-ce6cabd403",
+   "titulo": "Chuvas avançam pelo Norte e Nordeste do país nesta quinta-feira",
+   "url": "https://agenciabrasil.ebc.com.br/meio-ambiente/noticia/2026-09/chuvas-avancam-pelo-norte-e-nordeste-do-pais-nesta-quinta-feira",
+   "data": "2026-09-24T11:56+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [
+    "inmet"
+   ],
+   "pessoas": [],
+   "resumo": "Chuvas atingem o oeste e sul da Região Norte e o extremo oeste da Região Nordeste nesta quinta-feira (24), após o avanço das áreas de instabilidade que atuavam no Sudeste do país. A região agrícola entre o Maranhão, Tocantins, Piauí e Bahia (Matopiba) terá um alívio nos baixos índices de umidade relativa do ar, informa o Instituto Nacional de Meteorologia (Inmet) . Notícias relacionadas: Cidade do Rio vive o setembro mais chuvoso em quase 30 anos. Na Região Norte, a previsão é de chuva com trovoadas no centro e norte de Roraima, no Amazonas, no centro e sul do Pará, no norte de Rondônia e no s"
+  },
+  {
+   "id": "n-ade172a94a",
+   "titulo": "Comparecimento às urnas é usado como prova de vida do INSS",
+   "url": "https://www12.senado.leg.br/noticias/materias/2026/09/24/comparecimento-as-urnas-e-usado-como-prova-de-vida-do-inss",
+   "data": "2026-09-24T11:52:00+00:00",
+   "fonte": "senado",
+   "nos": [
+    "inss",
+    "mps",
+    "tse"
+   ],
+   "pessoas": [],
+   "resumo": "Aposentados e pensionistas do Instituto Nacional do Seguro Social (INSS) que comparecerem às urnas nas eleições de outubro terão o registro da votação utilizado como uma das formas de comprovação de vida. Segundo o Ministério da Previdência Social, as informações sobre o comparecimento serão repassadas pela Justiça Eleitoral ao INSS e serão utilizadas no processo de prova de vida dos beneficiários. A informação foi confirmada pelo Tribunal Superior Eleitoral (TSE) na terça-feira (22). O registro do comparecimento poderá ser usado sem a necessidade de o beneficiário procurar uma agência bancári"
+  },
+  {
+   "id": "n-4c2c0c7614",
+   "titulo": "PF e CGU apuram fraudes em contratações e desvios de recursos federais",
+   "url": "https://agenciabrasil.ebc.com.br/geral/noticia/2026-09/pf-e-cgu-apuram-fraudes-em-contratacoes-e-desvios-de-recursos-federais",
+   "data": "2026-09-24T11:33+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [
+    "cgu",
+    "pf"
+   ],
+   "pessoas": [],
+   "resumo": "A Polícia Federal (PF) e a Controladoria-Geral da União (CGU) deflagraram nesta quinta-feira (24) a Operação Legado. O objetivo é apurar suspeitas de fraudes em licitações e contratações diretas, sobretudo na área da saúde, feitas por municípios na Bahia, no Piauí e Espírito Santo. Em nota, a corporação informou que estão sendo cumpridos 44 mandados de busca e apreensão em 22 municípios de seis unidades da Federação: Bahia; Piauí; Espírito Santo; Minas Gerais; Sergipe; Distrito Federal. Notícias relacionadas: PF faz operação contra fraudes no registro de armas de colecionadores. As ordens fora"
+  },
+  {
+   "id": "n-5ef0f0fecd",
+   "titulo": "ONU lança propostas para proteção das mulheres",
+   "url": "https://agenciabrasil.ebc.com.br/direitos-humanos/noticia/2026-09/onu-lanca-propostas-para-protecao-das-mulheres",
+   "data": "2026-09-24T11:20+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "A poucos dias das eleições, a Organização das Nações Unidas (ONU) Mulheres lançou um documento com propostas voltadas para a proteção e maior protagonismo das mulheres. O objetivo é incentivar partidos e candidatos a se comprometerem com temas importantes para a população feminina. O documento traz dez propostas que incluem paridade entre homens e mulheres nos espaços de poder, fim da violência política de gênero e raça, combate ao machismo e a violência contra mulheres, políticas de cuidados e renda e justiça climática. Notícias relacionadas: Entidades denunciam agressões às mulheres que disp"
+  },
+  {
+   "id": "n-c749b8afcb",
+   "titulo": "Conheça os candidatos a governador do Tocantins nas eleições deste ano",
+   "url": "https://agenciabrasil.ebc.com.br/politica/noticia/2026-09/conheca-os-candidatos-governador-do-tocantins-nas-eleicoes-deste-ano",
+   "data": "2026-09-24T11:05+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "Sete candidatos concorrem ao governo de Tocantins nas eleições de 2026. No estado, 1.182.307 eleitores estão aptos a votar. Desse total, 51% são mulheres e 49%, homens. Entre os eleitores que declararam cor/raça, 64,96% são pessoas pardas; 17,79%, brancas; 14,87%, pretas; 1,63%, indígenas; e 0,75%, amarelas. Notícias relacionadas: Saiba quais são as atribuições dos governadores e vice-governadores. O primeiro turno das eleições ocorre no dia 4 de outubro. Em eventual segundo turno, os eleitores voltam às urnas em 25 de outubro. Serão escolhidos os chefes do Poder Executivo - presidente da Repú"
+  },
+  {
+   "id": "n-35b0176d07",
+   "titulo": "Conheça os recursos de acessibilidade que ampliam autonomia na votação",
+   "url": "https://agenciabrasil.ebc.com.br/politica/noticia/2026-09/conheca-os-recursos-de-acessibilidade-que-ampliam-autonomia-na-votacao",
+   "data": "2026-09-24T11:01+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [
+    "tse"
+   ],
+   "pessoas": [],
+   "resumo": "Cerca de 1,97 milhão de eleitoras e eleitores com deficiência estão aptos a votar nas eleições de outubro, segundo dados do Tribunal Superior Eleitoral (TSE). O número representa crescimento de 42% em relação às eleições gerais de 2022, quando 1,38 milhão de pessoas com deficiência estavam inscritas para votar. Entre esse eleitorado, 319.489 pessoas declararam ter deficiência visual. Em 2022, eram 214.088, aumento de aproximadamente 49%. Notícias relacionadas: TRE-RJ fará auditoria para definir urnas que serão fiscalizadas. Para acompanhar o crescimento do eleitorado com deficiência, a Justiça"
+  },
+  {
+   "id": "n-d0207b5500",
+   "titulo": "Saiba quais são os candidatos na disputa ao governo de Roraima",
+   "url": "https://agenciabrasil.ebc.com.br/politica/noticia/2026-09/saiba-quais-sao-os-candidatos-na-disputa-ao-governo-de-roraima",
+   "data": "2026-09-24T10:55+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "Cinco candidatos concorrem ao governo de Roraima nas eleições de 2026. No estado, 401.496 eleitores estão aptos a votar. Desse total, 51% são mulheres e 49%, homens. Entre os eleitores que declararam cor/raça, 62,91% são pessoas pardas; 15,71%, indígenas; 14,67%, brancas; 6,27%, pretas; e 0,43%, amarelas. Notícias relacionadas: Saiba quais são as atribuições dos governadores e vice-governadores. O primeiro turno das eleições está marcado para 4 de outubro. Se houver segundo turno, será no dia 25 de outubro. Serão escolhidos os chefes do Poder Executivo - presidente da República e governadores "
+  },
+  {
+   "id": "n-fbab97188a",
+   "titulo": "Eleições 2026: veja quem são os candidatos ao governo de Rondônia",
+   "url": "https://agenciabrasil.ebc.com.br/politica/noticia/2026-09/eleicoes-2026-veja-quem-sao-os-candidatos-ao-governo-de-rondonia",
+   "data": "2026-09-24T10:45+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "Seis candidatos concorrem ao governo de Rondônia nas eleições de 2026. No estado, 1.267.105 eleitores estão aptos a votar. Desse total, 52% são mulheres e 48%, homens . Entre os eleitores que declararam cor/raça, 65,3% são pessoas pardas; 23,79%, brancas; 8,44%, pretas; 1,85%, indígenas; e 0,62%, amarelas. Notícias relacionadas: Saiba quais são as atribuições dos governadores e vice-governadores. O primeiro turno das eleições ocorre no dia 4 de outubro. Em eventual segundo turno, os eleitores voltam às urnas em 25 de outubro. Serão escolhidos os chefes do Poder Executivo - presidente da Repúbl"
+  },
+  {
+   "id": "n-ad9fc601c1",
+   "titulo": "Conheça os candidatos a governador do Pará nas eleições de 2026",
+   "url": "https://agenciabrasil.ebc.com.br/politica/noticia/2026-09/conheca-os-candidatos-ao-governo-do-para-eleicoes-2026",
+   "data": "2026-09-24T10:35+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "Seis candidatos concorrem ao governo do Pará nas eleições de 2026. No estado, 6.265.355 eleitores estão aptos a votar. Desse total, 51% são mulheres e 49%, homens. Entre os eleitores que declararam cor/raça, 76,59% são pessoas pardas; 12,79%, brancas; 9,29%, pretas; 0,89%, indígenas; e 0,44%, amarelas. Notícias relacionadas: Saiba quais são as atribuições dos governadores e vice-governadores. O primeiro turno das eleições está marcado para o dia 4 de outubro. Se houver segundo turno, será em 25 de outubro. Serão escolhidos os chefes do Poder Executivo - presidente da República e governadores -"
+  },
+  {
+   "id": "n-629ac11914",
+   "titulo": "Pais veem palmada como disciplina e não como violência, alerta Unicef",
+   "url": "https://agenciabrasil.ebc.com.br/direitos-humanos/noticia/2026-09/pais-veem-palmada-como-disciplina-e-nao-como-violencia-alerta-unicef",
+   "data": "2026-09-24T10:35+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "Enquanto espera o ônibus em uma avenida no centro de Brasília, Andrea*, de 32 anos, segura firme a mão do filho, de 6, que está com os olhos vermelhos de chorar. “Ele queria ter ficado mais tempo com os amiguinhos para brincar e eu não deixei. Ainda vamos para Samambaia (a 30 minutos de distância, na periferia do Distrito Federal)”. Mãe solo, ela diz que conta “até mil” para ter paciência diante das birras. “Já conversei. Não vou bater nunca. Ele tem que me respeitar”. Andrea*, que trabalha como autônoma, recorda que, na infância, chegou a levar tapas, desde criança até a adolescência em casa "
+  },
+  {
+   "id": "n-9a09c370e1",
+   "titulo": "Beneficiários com NIS de final 6 recebem Bolsa Família de setembro",
+   "url": "https://agenciabrasil.ebc.com.br/economia/noticia/2026-09/beneficiarios-com-nis-de-final-6-recebem-bolsa-familia-de-setembro",
+   "data": "2026-09-24T10:30+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [
+    "caixa"
+   ],
+   "pessoas": [],
+   "resumo": "A Caixa Econômica Federal paga nesta quinta-feira (24) a parcela de setembro do Bolsa Família aos beneficiários com Número de Inscrição Social (NIS) de final 6. Neste mês, 19,29 milhões de famílias serão beneficiadas, com o valor médio de R$ 678,18. Notícias relacionadas: Programa de bolsas vai incentivar formação para a educação básica. Beneficiários com NIS de final 5 recebem Bolsa Família de setembro. Gilmar Mendes valida reajuste do Bolsa Família. Os moradores de 179 municípios de sete estados receberam o crédito na quinta-feira (17), independentemente do número final do NIS. O pagamento u"
+  },
+  {
+   "id": "n-ac1c1a17e4",
+   "titulo": "Sete candidatos concorrem ao governo do Amazonas; veja quem são",
+   "url": "https://agenciabrasil.ebc.com.br/politica/noticia/2026-09/sete-candidatos-concorrem-ao-governo-do-amazonas-veja-quem-sao",
+   "data": "2026-09-24T10:25+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "Sete candidatos concorrem ao governo do Amazonas nas eleições de 2026. No estado, 2.801.182 eleitores estão aptos a votar. Desse total, 51% são mulheres e 49% homens . Entre os eleitores que declararam cor/raça, 75,93% são pessoas pardas; 10,53%, brancas; 9,27%, indígenas; 3,81%, pretas; e 0,46%, amarelas. Notícias relacionadas: Saiba quais são as atribuições dos governadores e vice-governadores. O primeiro turno das eleições ocorre no dia 4 de outubro. Em eventual segundo turno, os eleitores voltam às urnas em 25 de outubro. Serão escolhidos os chefes do Poder Executivo - presidente da Repúbl"
+  },
+  {
+   "id": "n-fda67a5377",
+   "titulo": "Conheça os candidatos ao governo do Amapá nas eleições deste ano",
+   "url": "https://agenciabrasil.ebc.com.br/politica/noticia/2026-09/conheca-os-candidatos-ao-governo-do-amapa-nas-eleicoes-deste-ano",
+   "data": "2026-09-24T10:15+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "Cinco candidatos concorrem ao governo do Amapá nas eleições de 2026. No estado, 577.534 eleitores estão aptos a votar. Desse total, 51% são mulheres e 49%, homens. Entre os eleitores que declararam cor/raça, 72,15% são pessoas pardas; 13,91%, brancas; 11,53%, pretas; 1,93%,indígenas; e 0,47%, amarelas. Notícias relacionadas: Saiba quais são as atribuições dos governadores e vice-governadores. O primeiro turno das eleições ocorre no dia 4 de outubro. Em eventual segundo turno, os eleitores voltam às urnas em 25 de outubro. Serão escolhidos os chefes do Poder Executivo - presidente da República "
+  },
+  {
+   "id": "n-217584b0ba",
+   "titulo": "Eleições 2026: saiba quem são os candidatos ao governo do Acre",
+   "url": "https://agenciabrasil.ebc.com.br/politica/noticia/2026-09/eleicoes-2026-saiba-quem-sao-os-candidatos-ao-governo-do-acre",
+   "data": "2026-09-24T10:05+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "Seis candidatos concorrem ao governo do Acre nas eleições de 2026. No estado, 614.375 eleitores estão aptos a votar. Desse total, 52% são mulheres e 48%, homens . Entre os eleitores que declararam cor/raça, 72,28% são pessoas pardas; 14,53%, brancas; 8,29%, pretas; 4,34%, indígenas; e 0,89%, amarelas. Notícias relacionadas: Saiba quais são as atribuições dos governadores e vice-governadores. O primeiro turno das eleições ocorre no dia 4 de outubro. Em eventual segundo turno, os eleitores voltam às urnas em 25 de outubro. Serão escolhidos os chefes do Poder Executivo - presidente da República e"
+  },
+  {
+   "id": "n-e202c095c2",
+   "titulo": "Mega-Sena sorteia prêmio acumulado de R$ 38 milhões nesta quinta-feira",
+   "url": "https://agenciabrasil.ebc.com.br/geral/noticia/2026-09/mega-sena-sorteia-premio-acumulado-de-r-38-milhoes-nesta-quinta-feira",
+   "data": "2026-09-24T09:45+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [
+    "caixa"
+   ],
+   "pessoas": [],
+   "resumo": "A Mega-Sena sorteia nesta quinta-feira (24) prêmio estimado em R$ 38 milhões . As seis dezenas do concurso 3.062 serão sorteadas a partir das 21h (horário de Brasília) no Espaço da Sorte, em São Paulo. As apostas podem ser feitas até às 20h (horário de Brasília) de hoje em casas lotéricas credenciadas pela Caixa em todo o país ou pela internet, no site ou aplicativo da Caixa. A aposta simples, com seis dezenas, custa R$ 6. Notícias relacionadas: Mega-Sena acumula para R$ 38 milhões; confira os números sorteados. No último concurso, foram sorteados os números 24 - 25 - 28 - 37 - 47 - 55 e nenhu"
+  },
+  {
+   "id": "n-7ff7244437",
+   "titulo": "Cenipa recupera caixa-preta de helicóptero que levava cantor Rick",
+   "url": "https://agenciabrasil.ebc.com.br/geral/noticia/2026-09/cenipa-recupera-caixa-preta-de-helicoptero-que-levava-cantor-rick",
+   "data": "2026-09-24T00:19+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [
+    "aeronautica"
+   ],
+   "pessoas": [],
+   "resumo": "O Centro de Investigação e Prevenção de Acidentes Aeronáuticos (Cenipa) informou ter recuperado a caixa-preta do helicóptero modelo Bell 430, que caiu na serra de Santa Catarina, na região do município de Urubici, no último domingo (20). O cantor Rick, da dupla sertaneja Rick e Renner, estava a bordo da aeronave . Além dele, outras quatro pessoas viajavam no helicóptero. Nenhuma delas sobreviveu à queda. Notícias relacionadas: Bombeiros encontram helicóptero com corpo do cantor Rick. FAB e bombeiros buscam helicóptero com cantor Rick, desaparecido em SC. A caixa-preta se refere ao gravador cuj"
+  },
+  {
+   "id": "n-b1c14b9937",
+   "titulo": "Veja como foi a quarta-feira (23) dos presidenciáveis",
+   "url": "https://agenciabrasil.ebc.com.br/politica/noticia/2026-09/veja-como-foi-quarta-feira-23-dos-presidenciaveis",
+   "data": "2026-09-24T00:16+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "A agenda dos presidenciáveis nesta quarta-feira (23) incluiu debates, entrevistas e encontros com apoiadores, além de visitas a instituições e atividades de campanha. >> Veja como foi o dia dos candidatos a presidente Edmilson Costa (PCB) O candidato Edmilson Costa participou do ato do comando de greve dos bancários, em Belo Horizonte, manifestando apoio aos grevistas. Notícias relacionadas: Maior colégio eleitoral do país, SP terá mais de 114 mil urnas . Eleições 2026: confira 6 dicas para ajudar a escolher seus candidatos. Casos de violência política de gênero crescem 11 vezes em 4 anos. Ele"
+  },
+  {
+   "id": "n-f54532ef81",
+   "titulo": "BC amplia controle sobre criptomoedas e mira carteiras próprias",
+   "url": "https://agenciabrasil.ebc.com.br/economia/noticia/2026-09/bc-amplia-controle-sobre-criptomoedas-e-mira-carteiras-proprias",
+   "data": "2026-09-23T23:35+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "O Banco Central (BC) ampliou as regras de controle sobre operações com ativos virtuais. O órgão determinou que transferências de criptomoedas de valor igual ou superior a US$ 10 mil, feitas de ou para carteiras autocustodiadas, sejam comunicadas ao Conselho de Controle de Atividades Financeiras (Coaf). As novas regras entram em vigor em 1º de outubro de 2026 e também estabelecem novas exigências para empresas que atuam no mercado de ativos virtuais. A medida faz parte do conjunto de mecanismos de prevenção à lavagem de dinheiro e ao financiamento do terrorismo. Principais mudanças Notícias rel"
+  },
+  {
+   "id": "n-00fcd1055b",
+   "titulo": "Lei institui atendimento a vítimas de violência física e sexual",
+   "url": "https://agenciabrasil.ebc.com.br/direitos-humanos/noticia/2026-09/lei-institui-atendimento-vitimas-de-violencia-fisica-e-sexual",
+   "data": "2026-09-23T23:17+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "Foi sancionada nesta quarta-feira (23) lei que institui protocolo de atendimento a mulheres, crianças e pessoas vítimas de violência física e sexual. Entre outros pontos, o protocolo determina que o primeiro atendimento à vítima de violência seja realizado por um profissional de segurança pública e que este deve garantir o encaminhamento imediato da vítima à unidade pública de saúde , assim como realizar o registro da ocorrência. Notícias relacionadas: Casos de violência política de gênero crescem 11 vezes em 4 anos. Condenados por violência doméstica terão de passar por reabilitação. A inicia"
+  },
+  {
+   "id": "n-23ee01b534",
+   "titulo": "Dólar aproxima-se de R$ 5,17, com notícias do exterior e eleições",
+   "url": "https://agenciabrasil.ebc.com.br/economia/noticia/2026-09/dolar-aproxima-se-de-r-517-com-noticias-do-exterior-e-eleicoes",
+   "data": "2026-09-23T22:37+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "O dólar fechou em forte alta nesta quarta-feira (23), pressionado pela valorização da moeda estadunidense no exterior, pelo cenário eleitoral no Brasil e pela alta do petróleo. A divisa subiu mais de 1%, aproximando-se de R$ 5,17. A bolsa recuou quase 1%, voltando a ficar abaixo dos 186 mil pontos. Em Nova York, os principais índices também terminaram o dia em baixa, diante da alta dos juros dos Treasuries (títulos públicos estadunidenses) e das tensões no Oriente Médio. O petróleo subiu quase 3%, voltando a encostar nos US$ 100. Principais números Dólar comercial: R$ 5,169 (+1,27%); Ibovespa:"
+  },
+  {
+   "id": "n-638375fd0c",
+   "titulo": "TCU recomenda análise de alternativas à caducidade da Enel em SP",
+   "url": "https://agenciabrasil.ebc.com.br/economia/noticia/2026-09/tcu-recomenda-analise-de-alternativas-caducidade-da-enel-em-sp",
+   "data": "2026-09-23T21:51+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [
+    "aneel",
+    "mme",
+    "tcu"
+   ],
+   "pessoas": [],
+   "resumo": "O plenário do Tribunal de Contas da União (TCU) recomendou nesta quarta-feira (23) que o Ministério de Minas e Energia (MME) e a Agência Nacional de Energia Elétrica (Aneel) estudem alternativas à caducidade da concessão da Enel São Paulo antes de uma eventual decisão pela extinção do contrato. A recomendação determina que sejam avaliados os efeitos da medida para os consumidores e para o sistema de distribuição de energia . O processo foi relatado pelo ministro Augusto Nardes. Notícias relacionadas: Justiça reconhece falhas da Enel em apagão de dezembro de 2025 em SP. Falhas na prestação de s"
+  },
+  {
+   "id": "n-858b68eb3e",
+   "titulo": "Anvisa alerta para venda irregular de tirzepatida em pó na internet",
+   "url": "https://agenciabrasil.ebc.com.br/saude/noticia/2026-09/anvisa-alerta-para-venda-irregular-de-tirzepatida-em-po-na-internet",
+   "data": "2026-09-23T21:49+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [
+    "anvisa"
+   ],
+   "pessoas": [],
+   "resumo": "A Agência Nacional de Vigilância Sanitária (Anvisa) divulgou um alerta, nesta quarta-feira (23), sobre a oferta irregular nas redes sociais de tirzepatida em pó. A substância é um medicamento injetável que ativa o receptor de GLP-1, presente nas chamadas canetas emagrecedoras. No Brasil, a tirzepatida regulamentada pela Anvisa é vendida em farmácias, sendo o princípio ativo presente no Mounjaro. Também pode ser encontrada em farmácias de manipulação, desde que o paciente tenha indicação e prescrição médica. Notícias relacionadas: Em 30 anos, obesidade triplica e atinge 1/4 da população adulta."
+  },
+  {
+   "id": "n-f3290fc220",
+   "titulo": "Lei regulamenta atividade de psicopedagogia",
+   "url": "https://www12.senado.leg.br/noticias/materias/2026/09/23/lei-regulamenta-atividade-de-psicopedagogia",
+   "data": "2026-09-23T20:55:00+00:00",
+   "fonte": "senado",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "Já está em vigor a lei que regulamenta o livre exercício da atividade de psicopedagogia — que une conhecimentos da psicologia e da pedagogia para a atuação nos processos de aprendizagem. A norma em questão é a Lei 15.519, de 2026, sancionada pela Presidência da República com um veto parcial. O texto foi publicado no Diário Oficial da União desta quarta-feira (23). O veto excluiu o dispositivo que, entre outras medidas, exigia a graduação em psicopedagogia para o exercício da atividade (ou outro curso superior combinado com experiência na área). O projeto que deu origem a essa norma é o PL 1.67"
+  },
+  {
+   "id": "n-8f3029c2a1",
+   "titulo": "Áudio: Lei dá nome de ex-prefeito a nova ponte entre Brasil e Paraguai",
+   "url": "https://www12.senado.leg.br/noticias/audios/2026/09/nova-lei-da-nome-de-ex-prefeito-a-nova-ponte-entre-brasil-e-paraguai",
+   "data": "2026-09-23T20:43:00+00:00",
+   "fonte": "senado",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "A Lei 15.507/2026, sancionada na segunda-feira (21), dá o nome de Heitor Miranda dos Santos ao trecho brasileiro da ponte sobre o rio Paraguai que liga Porto Murtinho (MS) a Carmelo Peralta, no Paraguai. A estrutura, que está em fase final de construção, integra a Rota Bioceânica, corredor rodoviário que conecta Brasil, Paraguai, Argentina e Chile. O nome é uma homenagem a um ex-prefeito de Porto Murtinho, que morreu em 2022, aos 69 anos. A lei teve origem no PL 780/2023, aprovado pelo Senado no início de setembro."
+  },
+  {
+   "id": "n-5c4e69ed70",
+   "titulo": "CNJ cancela R$ 4,7 bilhões em precatórios ligados ao Master",
+   "url": "https://agenciabrasil.ebc.com.br/justica/noticia/2026-09/cnj-cancela-r-47-bilhoes-em-precatorios-ligados-ao-master",
+   "data": "2026-09-23T20:26+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [
+    "agu",
+    "senad",
+    "cnj"
+   ],
+   "pessoas": [],
+   "resumo": "O corregedor nacional de Justiça, Benedito Gonçalves, determinou nesta quarta-feira (23) o cancelamento de precatórios de usinas do setor sucroalcooleiro que negociaram os créditos com o Banco Master. Os títulos são avaliados em R$ 4,7 bilhões. A medida foi motivada por uma ação da Advocacia-Geral da União (AGU) para cancelar decisões do Tribunal Regional Federal (TRF) da 1ª Região, sediado em Brasília, que determinaram o depósito do valor de 16 precatórios em uma conta judicial, sem o trânsito em julgado dos processos que reconheceram a dívida da União. Notícias relacionadas: Fux pede a Senad"
+  },
+  {
+   "id": "n-9141366ee5",
+   "titulo": "Polícia investiga indução ao suicídio na morte de Isabelle no Ceará",
+   "url": "https://agenciabrasil.ebc.com.br/direitos-humanos/noticia/2026-09/policia-investiga-inducao-ao-suicidio-na-morte-de-isabelle-no-ceara",
+   "data": "2026-09-23T20:13+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "A Perícia Forense do Ceará (Pefoce) informou nesta quarta-feira (23) que as análises periciais preliminares apontam que Isabelle Caracristi, de 22 anos, se jogou do prédio. As investigações continuam para esclarecer o caso. O namorado João Munhoz Neto está preso sob suspeita de violência psicológica contra a namorada e de indução ao suicídio. A universitária foi encontrada morta no último dia 13 de setembro, no pátio de um edifício residencial, onde morava com o namorado e familiares dele, localizado no bairro Aldeota, em Fortaleza. Notícias relacionadas: Polícia do Ceará prende João Munhoz, n"
+  },
+  {
+   "id": "n-eb588cf86b",
+   "titulo": "Franca (SP) passa a ser, por lei, Capital Nacional do Basquete",
+   "url": "https://www12.senado.leg.br/noticias/materias/2026/09/23/franca-sp-passa-a-ser-por-lei-capital-nacional-do-basquete",
+   "data": "2026-09-23T18:51:00+00:00",
+   "fonte": "senado",
+   "nos": [],
+   "pessoas": [
+    "astronauta-marcos-pontes"
+   ],
+   "resumo": "A partir desta quarta-feira (23), o município de Franca (SP) é oficialmente a Capital Nacional do Basquete. A lei que confere o título à cidade de 365 mil habitantes está em vigor após ser publicada no Diário Oficial da União (Lei 15.514). A nova lei tem origem em projeto de lei da deputada Renata Abreu (Podemos-SP). O relator do PL 127/2019 no Senado foi o senador Astronauta Marcos Pontes (PL-SP). Em seu relatório na Comissão de Educação (CE), Pontes apontou que Franca é reconhecida pela relação histórica com o basquete desde a década de 1940, quando a modalidade passou a fazer parte da ident"
+  },
+  {
+   "id": "n-68afd10b90",
+   "titulo": "Piranguinho (MG) recebe título de Capital Nacional do Pé de Moleque",
+   "url": "https://www12.senado.leg.br/noticias/materias/2026/09/23/piranguinho-mg-recebe-titulo-de-capital-nacional-do-pe-de-moleque",
+   "data": "2026-09-23T18:50:00+00:00",
+   "fonte": "senado",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "A cidade de Piranguinho, no sul de Minas Gerais, recebeu o título de Capital Nacional do Pé de Moleque. A homenagem foi oficializada pela Lei 15.515, sancionada sem vetos e publicada no Diário Oficial da União desta quarta-feira (23). O reconhecimento valoriza a tradição centenária de produção artesanal do doce no município. A história começou em 1911, quando uma doceira passou a fabricar e vender pé de moleque na estação ferroviária da antiga linha Sapucahy. Com o tempo, a atividade se tornou um símbolo da identidade cultural e da economia local. A norma tem origem no PL 2.362/2022, apresenta"
+  },
+  {
+   "id": "n-12d9b0243e",
+   "titulo": "Por unanimidade, STF iguala tempo de licença-maternidade e adotante",
+   "url": "https://agenciabrasil.ebc.com.br/justica/noticia/2026-09/por-unanimidade-stf-iguala-tempo-de-licencas-maternidade-e-adotante",
+   "data": "2026-09-23T18:50+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [
+    "stf"
+   ],
+   "pessoas": [],
+   "resumo": "O Supremo Tribunal Federal (STF) decidiu nesta quarta-feira (23) unificar os prazos de licença-maternidade e licença-adotante para mulheres. Por unanimidade, os ministros julgaram procedente uma ação da Procuradoria-Geral da República (PGR) para igualar o tempo dos benefícios . Notícias relacionadas: Iniciativas tentam facilitar acesso e permanência de mães na ciência. Adoção: novo aplicativo amplia busca ativa de crianças e adolescentes. Pelo entendimento firmado pela Corte, mães genitoras e adotantes têm direito a 180 dias de licença remunerada, sendo 120 dias de licença e outros 60 dias de "
+  },
+  {
+   "id": "n-b704d7a30d",
+   "titulo": "Furto ou roubo de combustíveis passa a ser punido com penas maiores",
+   "url": "https://www12.senado.leg.br/noticias/materias/2026/09/23/furto-ou-roubo-de-combustiveis-passa-a-ser-punido-com-penas-maiores",
+   "data": "2026-09-23T18:35:00+00:00",
+   "fonte": "senado",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "Foi sancionada nessa terça-feira (22), a Lei 15.517, que aumenta as penas para furto ou roubo de petróleo, gás, etanol, gasolina, diesel, biocombustíveis ou lubrificantes. A lei decorre do PL 1.482/2019, do deputado Juninho do Pneu (PSDB-RJ). O projeto foi aprovado no Senado no último dia 2 de setembro. Para o furto de combustíveis, o projeto prevê pena de 4 a 10 anos de reclusão e multa. Pela lei até então em vigor, a mesma dos furtos simples, a pena ia de 1 a 6 anos de reclusão, ou 2 a 8 anos em caso de furto qualificado (como ações em grupo), além da multa. No caso do roubo, que envolve vio"
+  },
+  {
+   "id": "n-01ae3e1aa7",
+   "titulo": "Transporte e insegurança fazem 40% das mulheres desistirem de emprego",
+   "url": "https://agenciabrasil.ebc.com.br/direitos-humanos/noticia/2026-09/transporte-e-inseguranca-fazem-40-das%20mulheres-desistirem-de-emprego",
+   "data": "2026-09-23T18:23+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "No Brasil, quatro em cada dez mulheres (39%) já abriram mão de uma vaga de emprego ou oportunidade profissional em virtude de dificuldades de deslocamento . Os fatores desfavoráveis são falta de segurança, custo com os quais teriam de arcar para cobrir o serviço, tempo e território, conforme aponta a pesquisa O Direito de Ir, Vir e Viver , da Indique, consultoria de diversidade e inclusão racial, em parceria com a organização feminista Think Eva e a 99. Mais da metade (54%) também deixou de comparecer a um compromisso de trabalho ou recusou um convite desse tipo pelos mesmos motivos. E um quin"
+  },
+  {
+   "id": "n-c46909f509",
+   "titulo": "Áudio: Violência contra mulher com deficiência é disseminada, dizem debatedores",
+   "url": "https://www12.senado.leg.br/noticias/audios/2026/09/violencia-contra-mulher-com-deficiencia-e-disseminada-dizem-debatedores",
+   "data": "2026-09-23T18:20:00+00:00",
+   "fonte": "senado",
+   "nos": [],
+   "pessoas": [
+    "mara-gabrilli"
+   ],
+   "resumo": "A Comissão de Direitos Humanos (CDH) promoveu audiência pública nesta quarta-feira (23) para apresentar e avaliar os resultados de pesquisa inédita sobre a violência contra a mulher com deficiência. O levantamento foi feito pelo Instituto de Pesquisa DataSenado, em parceria com o Observatório da Mulher contra a Violência (OMV). Pela pesquisa, 38% das mulheres com deficiência já sofreram algum tipo de violência. O debate foi requerido pela senadora Mara Gabrilli (PSD-SP)."
+  },
+  {
+   "id": "n-492021ca63",
+   "titulo": "Fux pede a Senado posição sobre acessos de Vorcaro e esposa de Moraes",
+   "url": "https://agenciabrasil.ebc.com.br/justica/noticia/2026-09/fux-pede-senado-posicao-sobre-acesso-de-vorcaro-e-esposa-de-moraes",
+   "data": "2026-09-23T18:08+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [
+    "stf"
+   ],
+   "pessoas": [
+    "davi-alcolumbre"
+   ],
+   "resumo": "O ministro Luiz Fux, do Supremo Tribunal Federal (STF), deu prazo de dez dias para o presidente do Senado, Davi Alcolumbre, se manifestar sobre o pedido de acesso a eventuais registros de entrada e saída da advogada Viviane Barci, esposa do ministro Alexandre de Moraes, e do ex-banqueiro Daniel Vorcaro no Senado. Fux é o relator do mandado de segurança no qual o vereador de Curitiba Guilherme Kilter (Novo) pede que a Corte obrigue o Senado a fornecer eventuais registros de entrada e saída de Viviane, Vorcaro e outros citados. Notícias relacionadas: Fux vai relatar ação sobre idas da esposa de "
+  },
+  {
+   "id": "n-cced077582",
+   "titulo": "ANP aplicou R$ 200 milhões em multas por alta abusiva de combustíveis",
+   "url": "https://agenciabrasil.ebc.com.br/economia/noticia/2026-09/anp-aplicou-r-200-milhoes-em-multas-por-alta-abusiva-de-combustiveis",
+   "data": "2026-09-23T17:35+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [
+    "anp",
+    "senacon"
+   ],
+   "pessoas": [],
+   "resumo": "A Agência Nacional do Petróleo, Gás Natural e Biocombustíveis (ANP) aplicou mais de R$ 200 milhões em multas a distribuidoras de combustíveis por aumento abusivo de preços. Segundo a agência, alguns dos casos resultaram em elevação superior a 1.350% nas margens brutas das empresas, indicando a dimensão das variações identificadas nas investigações. Notícias relacionadas: Senacon inicia operação para apurar abusos nos preços de combustíveis. Novas medidas para combustíveis terão impacto de R$ 7 bilhões por mês. As penalidades decorrem de decisões de primeira instância administrativa em autos de"
+  },
+  {
+   "id": "n-1af10a229d",
+   "titulo": "Pesquisa do DataSenado revela violência contra 38% das mulheres com deficiência",
+   "url": "https://www12.senado.leg.br/noticias/materias/2026/09/23/pesquisa-do-datasenado-revela-violencia-contra-38-das-mulheres-com-deficiencia",
+   "data": "2026-09-23T17:32:00+00:00",
+   "fonte": "senado",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "Mais de 4,4 milhões de brasileiras com deficiência já sofreram violência doméstica ou familiar praticada por um homem. O número corresponde a 38% das mulheres com deficiência no país, percentual superior aos 25% registrados entre aquelas sem deficiência. Os dados foram apresentados nesta quarta-feira (23), em audiência pública na Comissão de Direitos Humanos (CDH), que marcou o lançamento de pesquisa inédita do DataSenado e do Observatório da Mulher contra a Violência (OMV). Participantes da audiência defenderam que os resultados sejam utilizados pelos órgãos e gestores responsáveis pelas polí"
+  },
+  {
+   "id": "n-f29f1ce506",
+   "titulo": "Zambelli pede ao STF salvo-conduto para vir ao Brasil votar na mãe",
+   "url": "https://agenciabrasil.ebc.com.br/justica/noticia/2026-09/zambelli-pede-ao-stf-salvo-conduto-para-vir-ao-brasil-votar-na-mae",
+   "data": "2026-09-23T17:29+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [
+    "stf",
+    "iphan"
+   ],
+   "pessoas": [],
+   "resumo": "A ex-deputada Carla Zambelli pediu ao Supremo Tribunal Federal (STF) um salvo-conduto para que possa retornar ao Brasil com o objetivo de votar em sua mãe, Rita Luzia Zambelli Salgado, candidata a deputada federal pelo PL de São Paulo. Na peça protocolada na segunda-feira (22), a defesa afirma haver mandados de prisão em aberto contra a Zambelli e que a Justiça italiana negou a extradição dela para o Brasil, tendo considerado duvidosa a imparcialidade da Primeira Turma do STF, colegiado responsável por duas condenações contra a ex-deputada. Notícias relacionadas: Iphan tomba primeiro quilombo "
+  },
+  {
+   "id": "n-cab76ce3e7",
+   "titulo": "Saiba como dar entrada em inventário extrajudicial",
+   "url": "https://agenciabrasil.ebc.com.br/economia/noticia/2026-09/saiba-como-dar-entrada-em-inventario-extrajudicial",
+   "data": "2026-09-23T17:02+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "A morte de um ente querido é um momento de dor, adaptação e reorganização da vida familiar. Em meio ao luto, os familiares também precisam lidar com questões práticas, como documentos, patrimônio, eventuais dívidas e a própria organização da sucessão. O inventário extrajudicial, realizado por escritura pública em cartório, pode ser uma alternativa mais célere e menos burocrática quando estão presentes os requisitos legais. Se houver consenso entre os herdeiros e com a documentação organizada, o procedimento pode ser conduzido com maior agilidade e menor desgaste para as famílias . Notícias rel"
+  },
+  {
+   "id": "n-a915323fd5",
+   "titulo": "Iphan tomba primeiro quilombo do RJ e revalida registros de patrimônio",
+   "url": "https://agenciabrasil.ebc.com.br/justica/noticia/2026-09/iphan-tomba-primeiro-quilombo-do-RJ-e-revalida-registros-de-patrimonio",
+   "data": "2026-09-23T16:39+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [
+    "iphan"
+   ],
+   "pessoas": [],
+   "resumo": "O Instituto do Patrimônio Histórico e Artístico Nacional (Iphan) reconheceu novos bens e revalidou patrimônios culturais brasileiros. Entre eles, o Quilombo Ferreira Diniz – o primeiro quilombo urbano tombado pelo Iphan no Rio de Janeiro. A decisão foi tomada na terça-feira (22), durante a 114ª reunião do Conselho Consultivo do instituto. Notícias relacionadas: Instalação no Sesc Pompeia denuncia marcas do tráfico de escravizados. Primavera dos Museus busca ampliar acesso à cultura em todo o país. Conceição Evaristo é homenageada do CineBH. Localizado na Glória, bairro do Rio de Janeiro, o Qui"
+  },
+  {
+   "id": "n-7e5e1df2a0",
+   "titulo": "Em 30 anos, obesidade triplica e atinge 1/4 da população adulta",
+   "url": "https://agenciabrasil.ebc.com.br/saude/noticia/2026-09/em-30-anos-obesidade-triplica-no-pais-e-atinge-14-da-populacao",
+   "data": "2026-09-23T16:01+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "Um estudo publicado neste mês no site da revista Lancet mostra que a prevalência de obesidade no país em adultos mais do que triplicou no período de 1990 a 2023. A pesquisa é parte da série de estudos Carga Global de Doenças (GBD, do inglês Global Burden of Disease ) e mostra que, entre os adultos com 25 anos ou mais de idade, a prevalência passou de 7,8% para 27,7% no período de três décadas. O Brasil foi o país que apresentou maior crescimento entre os 17 países latino-americanos pesquisados. Notícias relacionadas: SUS vai ofertar canetas emagrecedoras para pacientes com obesidade. Uma em ca"
+  },
+  {
+   "id": "n-3c1a7ee79a",
+   "titulo": "Flagrante por drogas gera mais prisão preventiva do que outros crimes",
+   "url": "https://agenciabrasil.ebc.com.br/justica/noticia/2026-09/flagrante-por-drogas-gera-mais-prisao-preventiva-do-que-outros-crimes",
+   "data": "2026-09-23T15:52+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [
+    "cnj"
+   ],
+   "pessoas": [],
+   "resumo": "As prisões em flagrante por crimes relacionados a drogas resultam em prisões provisórias mais frequentemente do que os flagrantes de outros delitos. É o que aponta uma pesquisa realizada pelo Conselho Nacional de Justiça (CNJ). Seis em cada dez pessoas (60%) flagradas com entorpecentes tiveram a prisão preventiva decretada após serem apresentadas pela autoridade policial ao juiz responsável pela audiência de custódia, segundo dados do boletim Audiências de Custódia de Crimes Relacionados a Drogas , ao qual a Agência Brasil teve acesso em primeira mão. Notícias relacionadas: Comissão Global sob"
+  },
+  {
+   "id": "n-8738ddf0f8",
+   "titulo": "Bolsa de Iniciação à Docência passa a ter regras definidas em lei",
+   "url": "https://www12.senado.leg.br/noticias/materias/2026/09/23/pibid-passa-a-ter-regras-definidas-em-lei",
+   "data": "2026-09-23T15:17:00+00:00",
+   "fonte": "senado",
+   "nos": [
+    "capes",
+    "mec"
+   ],
+   "pessoas": [],
+   "resumo": "Nova lei institui o Programa Institucional de Bolsa de Iniciação à Docência (Pibid), que oferece bolsas a estudantes de licenciatura para atividades de formação em escolas públicas. A Lei 15.518/2026 define os objetivos, os princípios, as modalidades de bolsas, a participação das instituições de ensino superior e das redes públicas de educação básica e a avaliação do programa. A nova regra estabelece que o Pibid será desenvolvido no âmbito do Ministério da Educação (MEC) e da Coordenação de Aperfeiçoamento de Pessoal de Nível Superior (Capes), em parceria com instituições de ensino superior e "
+  },
+  {
+   "id": "n-e95f918811",
+   "titulo": "Atendimento a vítima de estupro e outras violências ganha protocolo unificado",
+   "url": "https://www12.senado.leg.br/noticias/materias/2026/09/23/atendimento-a-vitima-de-estupro-e-outras-violencias-ganha-protocolo-unificado",
+   "data": "2026-09-23T14:55:00+00:00",
+   "fonte": "senado",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "Mulheres, crianças, adolescentes e pessoas em situação de vulnerabilidade vítimas de estupro ou de outras formas de violência física agora contam com um protocolo integrado para orientar o atendimento por órgãos de saúde e segurança pública. A Lei 15.516, publicada no Diário Oficial da União (DOU) desta quarta-feira (23), estabelece regras para o acolhimento, atendimento médico, preservação de provas e realização de perícias, além de medidas para evitar a revitimização (quando a vítima é exposta a novo sofrimento ou constrangimento ao buscar ajuda na saúde, polícia ou Justiça). Pela nova lei, "
+  },
+  {
+   "id": "n-fde04c7440",
+   "titulo": "Petrobras fecha acordo de cooperação na área de petróleo em Moçambique",
+   "url": "https://agenciabrasil.ebc.com.br/economia/noticia/2026-09/petrobras-fecha-acordo-para-cooperar-na-area-de-petroleo-em-mocambique",
+   "data": "2026-09-23T14:38+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [
+    "petrobras"
+   ],
+   "pessoas": [],
+   "resumo": "A Petrobras anunciou nesta quarta-feira (23) a assinatura de um memorando de entendimento (MoU, na sigla em inglês) para cooperação estratégica na área de petróleo e gás em Moçambique, país da costa sudeste da África. O acordo foi firmado na terça-feira (22) com a Empresa Nacional de Hidrocarbonetos (ENH), braço comercial do Estado moçambicano para a pesquisa, produção, processamento, comercialização e distribuição de petróleo e gás. Notícias relacionadas: Nova lei aumenta penas para furto e roubo de combustíveis. Brasil chega a 35% dos empreendedores com CNPJ. Petrobras aprova adesão à subven"
+  },
+  {
+   "id": "n-2f71e26018",
+   "titulo": "Planos de saúde terão que cobrir DIU hormonal em casos de endometriose",
+   "url": "https://agenciabrasil.ebc.com.br/saude/noticia/2026-09/planos-de-saude-terao-que-cobrir-diu-hormonal-em-casos-de-endometriose",
+   "data": "2026-09-23T14:17+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [
+    "ans"
+   ],
+   "pessoas": [],
+   "resumo": "A Agência Nacional de Saúde Suplementar (ANS) aprovou a inclusão, na lista de cobertura obrigatória por operadoras de planos de saúde, do dispositivo intrauterino (DIU) hormonal para pacientes com endometriose. Em nota, a ANS informou que a decisão vale para casos onde há contraindicação ou não adesão a contraceptivos orais combinados. A regra inclui tanto o dispositivo quanto o processo de inserção e passa a valer a partir do dia 1º de outubro. Notícias relacionadas: Saúde qualifica assistência para prevenir progressão de doença renal. Plano de saúde terá que cobrir mamografia digital para to"
+  },
+  {
+   "id": "n-14ac72b4f6",
+   "titulo": "TSE cria ferramenta de IA para acesso a informações sobre eleições",
+   "url": "https://agenciabrasil.ebc.com.br/justica/noticia/2026-09/tse-cria-ferramenta-de-ia-para-acesso-informacoes-sobre-eleicoes",
+   "data": "2026-09-23T14:13+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [
+    "tse"
+   ],
+   "pessoas": [],
+   "resumo": "Um assistente virtual, criado pelo Tribunal Superior Eleitoral (TSE), ajudará os eleitores brasileiros a acessarem informações e esclarecerem dúvidas sobre o pleito que elegerá, em 2026, presidente e governadores, além dos representantes da população nos legislativos federal, estadual e distrital. Tudo de forma rápida e com linguagem acessível. Tendo como base a Inteligência Artificial (IA), o ChatVote pode ser acessado por meio de um ícone localizado no canto inferior direito do portal do TSE ou pelo aplicativo e-Título. Notícias relacionadas: TSE vai enviar alertas no e-Título com orientaçõe"
+  },
+  {
+   "id": "n-33dfbe8b74",
+   "titulo": "Anac muda regras em caso de atrasos e cancelamentos de voos",
+   "url": "https://agenciabrasil.ebc.com.br/geral/noticia/2026-09/anac-muda-regras-em-caso-de-atrasos-e-cancelamentos-de-voos",
+   "data": "2026-09-23T14:04+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [
+    "anac",
+    "senacon"
+   ],
+   "pessoas": [],
+   "resumo": "A Agência Nacional de Aviação Civil (Anac) aprovou mudanças nas regras do transporte aéreo de passageiros que ampliam as obrigações das companhias aéreas de informar clientes sobre atrasos, cancelamentos e interrupções de voos. As alterações entram em vigor 30 dias após a publicação da resolução no Diário Oficial da União . Entre as principais novidades, as empresas deverão informar, no momento da compra da passagem, que a operação aérea pode sofrer mudanças por motivos como condições meteorológicas e exigências de segurança. Notícias relacionadas: Senacon inicia operação para apurar abusos no"
+  },
+  {
+   "id": "n-cab4f67129",
+   "titulo": "Programa de bolsas vai incentivar formação para a educação básica",
+   "url": "https://agenciabrasil.ebc.com.br/educacao/noticia/2026-09/programa-de-bolsas-vai-incentivar-formacao-para-educacao-basica",
+   "data": "2026-09-23T13:48+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [
+    "mec"
+   ],
+   "pessoas": [],
+   "resumo": "O Programa Institucional de Bolsa de Iniciação à Docência (Pibid) passa a integrar, nesta quarta-Feira (23), as ações de incentivo à educação básica brasileira . O objetivo é fortalecer e valorizar a formação de professores para atuar na etapa inicial do ensino. De acordo com a Lei nº 15.518/2026 , estudantes de cursos de licenciatura poderão receber bolsas de iniciação à docência para participar de atividades de formação em escolas públicas. Notícias relacionadas: MEC lança diretrizes para ensino de arte na educação básica. Ideb mostra avanço da educação básica no país. As ações serão desenvo"
+  },
+  {
+   "id": "n-0bda338229",
+   "titulo": "Senacon inicia operação para apurar abusos nos preços de combustíveis",
+   "url": "https://agenciabrasil.ebc.com.br/geral/noticia/2026-09/senacon-faz-operacao-para-apurar-abusos-nos-precos-de-combustiveis",
+   "data": "2026-09-23T13:48+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [
+    "anp",
+    "senacon"
+   ],
+   "pessoas": [],
+   "resumo": "A Secretaria Nacional do Consumidor (Senacon) iniciou, nesta quarta-feira (23), operação nacional para apurar possíveis aumentos abusivos nas margens de lucro de postos de combustíveis. A medida ocorre após a Agência Nacional do Petróleo, Gás Natural e Biocombustíveis (ANP) receber cerca de 330 denúncias sobre suspeitas de altas indevidas nos preços. Com base em autos de fiscalização encaminhados pela ANP, a Senacon instaurou 70 processos administrativos sancionadores contra postos de combustíveis. Os estabelecimentos terão 20 dias para apresentar defesa. Margens de lucro abusivas Notícias rel"
+  },
+  {
+   "id": "n-8dbd0652a1",
+   "titulo": "Vídeo: Eleições 2026: veja o significado de cada dígito do número dos candidatos",
+   "url": "https://www12.senado.leg.br/noticias/videos/2026/09/eleicoes-2026-veja-o-significado-de-cada-digito-do-numero-dos-candidatos",
+   "data": "2026-09-23T13:45:00+00:00",
+   "fonte": "senado",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "O 1º turno da eleição está marcado para 4 de outubro, e os números dos candidatos já estão espalhados pelas ruas. Mas você conhece o significado por trás de cada dígito do seu voto? Os dois primeiros números representam os partidos políticos, que no Brasil chegam a 30 — número considerado alto em comparação com outros países democráticos. (Com ilustrações animadas da Justiça Eleitoral)"
+  },
+  {
+   "id": "n-6fa7e715e9",
+   "titulo": "Áudio: Faltas disciplinares em cartórios passam a prescrever em 5 anos",
+   "url": "https://www12.senado.leg.br/noticias/audios/2026/09/faltas-disciplinares-em-cartorios-passam-a-prescrever-em-5-anos",
+   "data": "2026-09-23T13:40:00+00:00",
+   "fonte": "senado",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "Notários e registradores, que são os responsáveis por serviços prestados em cartórios, agora têm prazo de cinco anos para responder por faltas disciplinares em todo o Brasil. É o que determina a Lei 15.509/2026, publicada no Diário Oficial da União nesta terça-feira (22). Antes, cada estado, além do DF, determinava um prazo diferente. A nova norma é derivada de um projeto (PL 3.453/2024) aprovado no Plenário do Senado em 1º de setembro com relatoria da senadora Dra. Eudócia (PSDB-AL)."
+  },
+  {
+   "id": "n-1634ffca2e",
+   "titulo": "Vídeo: CDH debate violência contra a mulher com deficiência - 23/9/26",
+   "url": "https://www12.senado.leg.br/noticias/videos/2026/09/ao-vivo-cdh-debate-violencia-contra-a-mulher-com-deficiencia-23-9-26",
+   "data": "2026-09-23T13:29:00+00:00",
+   "fonte": "senado",
+   "nos": [],
+   "pessoas": [],
+   "resumo": ""
+  },
+  {
+   "id": "n-0f8ee6df68",
+   "titulo": "Corpos de vítimas de queda de helicóptero em SC são liberados",
+   "url": "https://agenciabrasil.ebc.com.br/geral/noticia/2026-09/corpos-de-vitimas-de-queda-de-helicoptero-em-sc-sao-liberados",
+   "data": "2026-09-23T13:24+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "Os corpos dos cinco ocupantes do helicóptero que caiu na serra de Santa Catarina foram liberados para as famílias pelo Instituto Médico Legal (IML) de Florianópolis. As vítimas, entre elas o cantor sertanejo Rick Sollo, da dupla Rick & Renner, passaram por processo de reconhecimento por papiloscopia, exame feito por meio das impressões digitais. A queda da aeronave modelo Bell 430 ocorreu no último domingo (20), e os destroços foram encontrados ao meio-dia dessa terça-feira (22) na região de Urubici. Além de Rick, estavam a bordo também o piloto Antônio Roberto Nóbrega de Araújo, o copiloto Le"
+  },
+  {
+   "id": "n-8ae054a92c",
+   "titulo": "Expedição do SUS vai atender indígenas Yanomami em Roraima",
+   "url": "https://agenciabrasil.ebc.com.br/saude/noticia/2026-09/expedicao-do-sus-vai-atender-indigenas-yanomami-em-roraima",
+   "data": "2026-09-23T13:10+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [
+    "ms"
+   ],
+   "pessoas": [],
+   "resumo": "O Ministério da Saúde inicia nesta quarta-feira (23) nova expedição de atenção especializada à saúde indígena no território Yanomami, em Roraima. A ação segue até o próximo dia 30 e será concentrada no Polo Base Surucucu. Em nota, a pasta informou que tem como previsão realizar 750 procedimentos, incluindo consultas nas áreas de pediatria, clínica médica e saúde da mulher, além de exames laboratoriais e ultrassonografias. Notícias relacionadas: Óbitos por malária na terra Yanomami caíram 80% em 2025, diz governo. Segurança alimentar e povos indígenas têm R$ 64,3 milhões em crédito. Os serviços"
+  },
+  {
+   "id": "n-14efecd118",
+   "titulo": "Brasil chega a 35% dos empreendedores com CNPJ",
+   "url": "https://agenciabrasil.ebc.com.br/economia/noticia/2026-09/brasil-chega-a-35-dos-empreendedores-com-registro-no-cnpj",
+   "data": "2026-09-23T13:02+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [
+    "ibge"
+   ],
+   "pessoas": [],
+   "resumo": "De cada 100 empreendedores no Brasil no ano passado, 35 tinham registro no Cadastro Nacional da Pessoa Jurídica (CNPJ), o que equivale a 10,7 milhões de pessoas nessa condição . Essa é a maior proporção já registrada pelo Instituto Brasileiro de Geografia e Estatística ( IBGE ). Em 2025, o país tinha 103 milhões de pessoas ocupadas, sendo 30,6 milhões consideradas empreendedoras, o que inclui empregadores e trabalhadores por conta própria. Quase 20 milhões (65% deles) não tinham CNPJ. Notícias relacionadas: Governo reduz projeção do PIB para 2% em 2026 e 2,3% em 2027. Arrecadação federal ultra"
+  },
+  {
+   "id": "n-1c45d3bd19",
+   "titulo": "Anvisa publica registro de medicação para hipoparatireoidismo crônico",
+   "url": "https://agenciabrasil.ebc.com.br/saude/noticia/2026-09/anvisa-publica-registro-de-medicacao-para-hipoparatireoidismo-cronico",
+   "data": "2026-09-23T12:48+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [
+    "anvisa"
+   ],
+   "pessoas": [],
+   "resumo": "A Agência Nacional de Vigilância Sanitária (Anvisa) publicou o registro do medicamento Yorvipath (palopegteriparatida), terapia de reposição do hormônio da paratireoide indicada para o tratamento de adultos com hipoparatireoidismo crônico. Em nota, a agência destacou que a condição é rara, mas tratável, causa baixos níveis de cálcio no sangue e geralmente é causada por danos às glândulas paratireoides durante cirurgias, mas também pode ser provocada por doenças genéticas e autoimunes. Notícias relacionadas: Nova diretriz muda tratamento da tireoide na gestação. Segundo a Anvisa, a palopegterip"
+  },
+  {
+   "id": "n-ef2e46d428",
+   "titulo": "Zanin nega liminar para obrigar Senado a instalar CPI sobre Master",
+   "url": "https://agenciabrasil.ebc.com.br/justica/noticia/2026-09/zanin-nega-liminar-para-obrigar-senado-instalar-cpi-sobre-master",
+   "data": "2026-09-23T12:47+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [
+    "stf"
+   ],
+   "pessoas": [
+    "davi-alcolumbre"
+   ],
+   "resumo": "O ministro Cristiano Zanin, do Supremo Tribunal Federal (STF), negou pedido de liminar (decisão provisória) para determinar a instalação de uma Comissão Parlamentar de Inquérito (CPI) sobre o caso Master no Senado. O pedido foi feito pelo senador Alessandro Viana (MDB-SE), em mandado de segurança. Na decisão assinada nessa terça-feira (22), Zanin entendeu não ter ficado comprovada a omissão do presidente do Senado, Davi Alcolumbre (União-AP), ao não instalar a CPI. Notícias relacionadas: Mendonça acusa Moraes de direcionar investigação no STF. Zanin: não dá para investigar Moraes sem julgar at"
+  },
+  {
+   "id": "n-eb2199fa9a",
+   "titulo": "Presidente da República visita obras da BR-116 em Nova Iguaçu (RJ)",
+   "url": "https://www.gov.br/planalto/pt-br/acompanhe-o-planalto/noticias/presidente-da-republica-visita-obras-da-br-116-em-nova-iguacu-rj",
+   "data": "2026-09-23T12:39:00+00:00",
+   "fonte": "planalto",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "Agenda será às 9h de quinta-feira, 24, no Sesc Nova Iguaçu"
+  },
+  {
+   "id": "n-52c5c167e0",
+   "titulo": "PF faz operação contra entrada ilegal de eletrônicos no país",
+   "url": "https://agenciabrasil.ebc.com.br/geral/noticia/2026-09/pf-faz-operacao-contra-entrada-ilegal-de-eletronicos-no-pais",
+   "data": "2026-09-23T11:14+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [
+    "pf"
+   ],
+   "pessoas": [],
+   "resumo": "A Polícia Federal (PF) faz operação, nesta quarta-feira (23), contra a entrada ilegal de produtos eletrônicos no país. De acordo com a PF, o esquema fazia declarações falsas de suas remessas postais à Receita Federal, com o objetivo de não pagar o valor devido de importação dos itens. A operação Tegmen cumpre quatro mandados de busca e apreensão em endereços residenciais e estabelecimentos comerciais nos bairros da Barra da Tijuca e do Recreio dos Bandeirantes, na zona sudoeste do Rio de Janeiro. Notícias relacionadas: PF faz ação para combater entrada clandestina de eletrônicos no Brasil. Pol"
+  },
+  {
+   "id": "n-c47f778560",
+   "titulo": "Dermatite atópica impacta pele, sono e autoestima: saiba como tratar",
+   "url": "https://agenciabrasil.ebc.com.br/saude/noticia/2026-09/dermatite-atopica-impacta-pele-sono-e-autoestima-saiba-como-tratar",
+   "data": "2026-09-23T10:30+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "Uma doença de pele que atinge não só a pele. Mas o sono, a saúde mental e até a autoestima dos pacientes. Em manifestações crônicas, a coceira gera feridas que deixam a pele sensível ao menor toque. De tecido a água, tudo dói. Essa é a realidade de muitos pacientes que convivem com a dermatite atópica - uma doença inflamatória e crônica cujo principal sintoma é a coceira, muitas vezes, extrema. A estudante de medicina Clara Emery, 23 anos, conta que já teve de tomar antibiótico para evitar que as feridas na pele - que ficava em carne viva - infeccionassem. Nas manifestações mais severas, as do"
+  },
+  {
+   "id": "n-6f36eb1519",
+   "titulo": "Líder índígena pede na ONU retirada de invasores de sua Terra",
+   "url": "https://agenciabrasil.ebc.com.br/direitos-humanos/noticia/2026-09/lider-indigena-pede-na-onu-retirada-de-invasores-de-sua-terra",
+   "data": "2026-09-23T10:27+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "As violações enfrentadas pelos povos da Terra Indígena Uru Eu Wau Wau, em Rondônia, que vêm sofrendo com a invasão de seu território por não indígenas, serão denunciadas nesta quarta-feira (23) pelo líder indígena Bitaté. O discurso, previsto para as 16h, será feito no Conselho de Direitos Humanos da Organização das Nações Unidas (ONU), durante o Diálogo Interativo com o Mecanismo de Especialistas sobre os Direitos dos Povos Indígenas. Representando a Associação Jupau, a Conectas Direitos Humanos e a Associação Kanindé, Bitaté mostrará que, apesar dessa terra indígena já ter sido homologada no"
+  },
+  {
+   "id": "n-d64a4d8569",
+   "titulo": "Mega-Sena acumula para R$ 38 milhões; confira os números sorteados",
+   "url": "https://agenciabrasil.ebc.com.br/geral/noticia/2026-09/mega-sena-acumula-para-r-38-milhoes-confira-os-numeros-sorteados",
+   "data": "2026-09-23T00:30+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [
+    "caixa"
+   ],
+   "pessoas": [],
+   "resumo": "Nenhum apostador acertou as seis dezenas do Concurso 3.061 da Mega-Sena, realizado nesta terça-feira (22). O prêmio acumulou e está estimado em R$ 38 milhões para o próximo sorteio. Os números sorteados foram: 24 - 25 - 28 - 37 - 47 - 55 39 apostas acertaram cinco dezenas e irão receber R$ 42.199,06 cada 2.148 apostas acertaram quatro dezenas e irão receber R$ 1.262,94 cada Apostas Para o próximo concurso, as apostas podem ser feitas até as 20h (horário de Brasília) de quinta-feira (24), em qualquer lotérica do país ou pela internet, no site ou aplicativo da Caixa. A aposta simples, com seis d"
+  },
+  {
+   "id": "n-91ba913e59",
+   "titulo": "IA e vídeos falsos superam fake news como maior ameaça à democracia",
+   "url": "https://agenciabrasil.ebc.com.br/geral/noticia/2026-09/ia-e-videos-falsos-superam-fake-news-como-maior-ameaca-democracia",
+   "data": "2026-09-22T23:56+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "Vídeos falsos criados por inteligência artificial e a informação de baixa qualidade substituíram as tradicionais fake news e passaram a ser a principal ameaça digital às eleições e à democracia. É o que mostra o Guia Internet, Democracia e Eleições, publicado nesta terça-feira (22) pelo Comitê Gestor da Internet no Brasil (CGI.br). O Guia considera a mudança abrupta entre 2018, ano da primeira edição, e este ciclo eleitoral. Se lá atrás os meios prioritários de circulação eram as redes abertas, como o Facebook, atualmente redes mais restritas, como o Whatsapp, são a principal via de difusão. N"
+  },
+  {
+   "id": "n-02396870ce",
+   "titulo": "Olimpíada de Astronomia no Vietnã tem cinco estudantes brasileiros",
+   "url": "https://agenciabrasil.ebc.com.br/educacao/noticia/2026-09/olimpiada-de-astronomia-no-vietna-tem-cinco-estudantes-brasileiros",
+   "data": "2026-09-22T21:00+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "No sofá, a cearense Biatriz Silva assistia admirada na TV ao lançamento de foguetes. Os olhos brilhavam mais ainda ao observar, ao lado dela, os olhos do pai, Carlos, vendedor de móveis, também fascinado por filmes como Interestelar. Foi com ele e com a mãe, Leidiana, dona de casa, que a menina aprendeu a olhar as estrelas. Ensinaram que estudar ampliaria o seu espaço no mundo. Nesta quarta-feira (23), aos 17 anos, Biatriz fará uma viagem sem a família em busca das estrelas. Vai para Hanói, no Vietnã, para ser a única menina dos cinco estudantes brasileiros a participar da 19ª Olimpíada Intern"
+  },
+  {
+   "id": "n-f2bfd08be6",
+   "titulo": "Plano Nacional de Promoção da Igualdade Racial recebe contribuições",
+   "url": "https://agenciabrasil.ebc.com.br/direitos-humanos/noticia/2026-09/plano-nacional-de-promocao-da-igualdade-racial-recebe-contribuicoes",
+   "data": "2026-09-22T20:53+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "A consulta pública para colaborar com os objetivos estratégicos do 2º Plano Nacional de Promoção da Igualdade Racial (Planapir) está aberta até o dia 16 de outubro, por meio da plataforma digital Brasil Participativo . O objetivo do plano é orientar a atuação do Estado brasileiro no enfrentamento do racismo estrutural, na reparação histórica, na redução das desigualdades e na efetivação de direitos. Notícias relacionadas: Morre Zélia Amador de Deus, referência da luta antirracista no Pará. Brasil reduz pobreza, mas amplia desigualdades, mostra estudo. O 2º Planapir conta com 16 eixos, e cada u"
+  },
+  {
+   "id": "n-4805ff92a0",
+   "titulo": "Polícia do Ceará prende João Munhoz, namorado de Isabelle Caracristi",
+   "url": "https://agenciabrasil.ebc.com.br/direitos-humanos/noticia/2026-09/policia-do-ceara-prende-joao-munhoz-namorado-de-isabelle-caracristi",
+   "data": "2026-09-22T18:45+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "A Polícia Civil do Ceará (PCCE) prendeu nesta terça-feira (22) João Munhoz Neto, namorado da estudante Isabelle Caracristi, encontrada morta em 13 de setembro, no condomínio onde morava com o namorado, no bairro Aldeota, em Fortaleza. O pedido de prisão preventiva foi expedido pelo Tribunal de Justiça do Ceará (TJCE), que mantém o caso em sigilo e não informou a motivação . Já a Secretaria de Segurança Pública e Defesa Social (SSPDS) confirmou a prisão e informou que deve divulgar uma nota sobre o caso ainda nesta terça-feira. Notícias relacionadas: Mãe pede justiça por jovem encontrada morta "
+  },
+  {
+   "id": "n-a44304abc9",
+   "titulo": "Mendonça acusa Moraes de direcionar investigação no STF",
+   "url": "https://agenciabrasil.ebc.com.br/justica/noticia/2026-09/mendonca-acusa-moraes-de-direcionar-investigacao-no-stf",
+   "data": "2026-09-22T18:38+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [
+    "stf",
+    "pf"
+   ],
+   "pessoas": [],
+   "resumo": "O ministro André Mendonça, do Supremo Tribunal Federal (STF), acusou o também ministro do STF Alexandre de Moraes de cometer ilegalidades ao requisitar relatórios de inteligência da Polícia Federal (PF) com o objetivo de atingi-lo e acusá-lo de abuso de autoridade e crime de responsabilidade. Mendonça acusou Moraes de praticar ele próprio abuso de autoridade e direcionamento de investigação, ao ter solicitado à Polícia Federal, de ofício, ou seja, sem provocação, uma série de relatórios de inteligência contra o relator do caso Master. Notícias relacionadas: Moraes defende que seu julgamento se"
+  },
+  {
+   "id": "n-b31974920c",
+   "titulo": "Guia do Enem reúne orientações e métodos de estudo para provas",
+   "url": "https://agenciabrasil.ebc.com.br/educacao/noticia/2026-09/guia-do-enem-traz-orientacoes-e-metodos-de-estudo-para-provas",
+   "data": "2026-09-22T16:37+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [
+    "mec"
+   ],
+   "pessoas": [],
+   "resumo": "A 47 dias para aplicação das provas do primeiro dia do Exame Nacional do Ensino Médio (Enem) 2026, em 8 de novembro, os inscritos podem conferir orientações oficiais sobre as provas, tutoriais de preparação para o exame e cronogramas de todo o processo em um único site - o Guia do Enem - lançado pelo Ministério da Educação (MEC) nesta segunda-feira (21). Na ferramenta, o material pedagógico produzido pelo MEC estão no formato de textos e de vídeos. Notícias relacionadas: Pé-de-Meia começa a pagar sexta parcela a estudantes nesta segunda. Cartilha reúne orientações para a redação do Enem 2026. "
+  },
   {
    "id": "n-baeb2b413a",
    "titulo": "Arrecadação federal ultrapassa R$ 2 trilhões em oito meses",
