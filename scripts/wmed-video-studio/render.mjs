@@ -27,7 +27,7 @@ if (args.encode) {
   console.log(`codificando ${n} quadros → ${out}`);
   const a = ['-y', '-loglevel', 'error', '-stats', '-framerate', String(FPS), '-i', `${FRAMES}/f%05d.jpg`];
   if (args.audio) a.push('-i', args.audio, '-map', '0:v', '-map', '1:a', '-c:a', 'aac', '-b:a', '160k', '-shortest');
-  a.push('-c:v', 'libx264', '-preset', 'slow', '-crf', '20', '-pix_fmt', 'yuv420p', '-movflags', '+faststart', out);
+  a.push('-vf', 'hqdn3d=1.5:1.5:4:4', '-c:v', 'libx264', '-preset', 'slow', '-crf', '23', '-maxrate', '1800k', '-bufsize', '3600k', '-tune', 'animation', '-pix_fmt', 'yuv420p', '-movflags', '+faststart', out);
   await run(ffmpegPath, a);
   const pf = String(Math.round(+(args.poster || 4) * FPS)).padStart(5, '0'), poster = out.replace(/\.mp4$/, '-poster.jpg');
   await run(ffmpegPath, ['-y', '-loglevel', 'error', '-i', `${FRAMES}/f${pf}.jpg`, '-vf', 'scale=1280:-2', '-q:v', '4', poster]);
@@ -35,11 +35,13 @@ if (args.encode) {
   process.exit(0);
 }
 
-const browser = await puppeteer.launch({
+// um navegador por aba de trabalho: sem GPU, abas do mesmo navegador dividem um único processo de GPU (SwiftShader) e não paralelizam
+const launch = () => puppeteer.launch({
   executablePath: CHROME, headless: true, protocolTimeout: 0,
   args: ['--allow-file-access-from-files', '--no-sandbox', '--ignore-gpu-blocklist', '--enable-unsafe-swiftshader', '--use-angle=swiftshader',
     '--window-size=1920,1080', '--disable-renderer-backgrounding', '--disable-background-timer-throttling']
 });
+const browsers = [await launch()], browser = browsers[0];
 // sprites de aquarela: pintados uma vez e guardados em out/<tema>/sprites (refeitos só quando a definição muda)
 const SPR = `out/${TOPIC}/sprites`;
 let spriteUrls = {};
@@ -59,8 +61,8 @@ async function ensureSprites() {
   }
   await page.close();
 }
-async function openPage(tag = '', extra = '') {
-  const page = await browser.newPage();
+async function openPage(tag = '', extra = '', br = browser) {
+  const page = await br.newPage();
   await page.evaluateOnNewDocument(u => { window.SPRITE_URLS = u; }, spriteUrls);
   page.on('console', m => { if (['error', 'warn'].includes(m.type())) console.log(`[página${tag}]`, m.text()); });
   page.on('pageerror', e => console.log(`[erro na página${tag}]`, e.message));
@@ -96,7 +98,8 @@ if (args.sheet) {
   console.log(`${todo.length} quadros a pintar (${last - first + 1 - todo.length} prontos), ${workers} abas`);
   let next = 0, done = 0; const start = Date.now();
   await Promise.all(Array.from({ length: workers }, async (_, w) => {
-    const page = await openPage('#' + w);
+    const br = w ? await launch() : browser; if (w) browsers.push(br);
+    const page = await openPage('#' + w, '', br);
     while (next < todo.length) {
       const i = todo[next++], f = `${FRAMES}/f${String(i).padStart(5, '0')}.jpg`;
       const buf = await frameOf(page, i / FPS, 'image/jpeg', .93);
@@ -110,4 +113,4 @@ if (args.sheet) {
 } else {
   console.log('use --sheet, --stills, --frames ou --encode (veja o topo do arquivo)');
 }
-await browser.close();
+for (const b of browsers) await b.close();

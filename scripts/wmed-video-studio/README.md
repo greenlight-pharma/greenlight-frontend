@@ -21,8 +21,8 @@ node render.mjs --topic=insuficiencia-cardiaca --encode --poster=4        # MP4 
 - ffmpeg vem do pacote `ffmpeg-static`. Para incluir narração ou trilha: `--encode --audio=voz.mp3`.
 - Para abrir o estúdio no navegador e percorrer o vídeo com a barra: sirva esta pasta (`npx serve .`) e abra
   `studio.html?topic=insuficiencia-cardiaca`.
-- Sem GPU (servidor), cada quadro leva uns 3 s por aba; com 4 abas, um vídeo de 90 s sai em cerca de 1 h.
-  Com GPU é bem mais rápido.
+- Sem GPU (servidor de 4 núcleos, um Chrome por aba), sai cerca de 45 quadros por minuto: um vídeo de 90 s
+  (2.160 quadros a 24 fps) leva uns 45 min. Com GPU é bem mais rápido.
 
 ## Como criar um tema novo
 
