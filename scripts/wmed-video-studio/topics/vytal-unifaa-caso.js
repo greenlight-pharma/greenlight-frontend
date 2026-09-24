@@ -1,11 +1,12 @@
-// Reels · Vytal Acadêmico × DA UniFAA — foco no feedback do caso clínico · ~54 s, 1080×1920 · motor vertical.
+// Reels · Vytal Acadêmico × DA UniFAA — foco no feedback do caso clínico · ~61 s, 1080×1920 · motor vertical.
 // Capturas reais da versão web (tools/capture-vytal-caso.mjs e tools/capture-vytal-web.mjs → out/vytal-captures/):
 // o aluno preenchendo um caso, a geração e o feedback (caso fictício do próprio app), o Assistente respondendo,
 // e os giros 3D como bônus. Áreas seguras do Instagram: topo (~220 px) e base (~330 px) livres.
 (() => {
   const CAP = 'out/vytal-captures/', seq = (m, n) => Array.from({ length: n }, (_, i) => `${CAP}${m}/f${String(i).padStart(3, '0')}.jpg`);
   const CASO = { contexto: 0, descricao: 8, avaliacao: 75, gerando: 116, feedback: 146, hipoteses: 172, cards: 189, entender: 237, resposta: 271, total: 303 }, IA = { inicio: 0, resposta: 25, total: 86 };
-  const S = { intro: 0, partner: 3.2, caso: 7.2, fb: 15.4, zoom: 21.4, hip: 25.8, ia: 36.3, quest: 42.1, bonus: 45.7, outro: 50.3, end: 54.3 };
+  // cortes alinhados à locução gravada (narracao.wav: parte 1 até o feedback, parte 2 dos destaques ao final)
+  const S = { intro: 0, partner: 4.3, caso: 8.1, fb: 19.5, zoom: 24.2, hip: 29.2, ia: 42.3, quest: 47.9, bonus: 51, outro: 56, end: 61.3 };
   const PARTNER = { title: 'Diretório Acadêmico', name: 'UniFAA', place: 'Valença · RJ' };
   const BW = 900, BH = 58 + Math.round(900 * 1267 / 1082), BX = (W - BW) / 2, BY = 470; // janela do navegador no tamanho da captura
 
@@ -98,7 +99,7 @@
   function hip(t, lt, dur) {
     title(lt, 'Raciocínio diagnóstico', 'Hipóteses\n*para discussão.*', { dot: C.gold });
     // ritmo: abrir e percorrer os cartões ocupa a maior parte; a resposta do Assistente fecha a cena
-    const k = seg(lt, .5, dur - .5), mid = .62;
+    const k = seg(lt, .5, dur - .5), mid = .66;
     const img = k < mid ? at(IMG.caso, CASO.hipoteses, CASO.entender - 1, k / mid) : at(IMG.caso, CASO.entender, CASO.total - 1, (k - mid) / (1 - mid));
     win(img, lt);
     const e = backOut(seg(lt, .5 + mid * (dur - 1) + .3, .5 + mid * (dur - 1) + .8));
