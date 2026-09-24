@@ -10,9 +10,15 @@ import {
 } from "lucide-react";
 import { SCORES as ORIGINAL_SCORES } from "./academic/scores";
 import { EXTRA_SCORES } from "./academic/extra-scores";
+import { MORE_SCORES } from "./academic/more-scores";
 import Calculators from "./Calculators";
+import SaveTools from "./SaveTools";
+import PediatricDoses from "./PediatricDoses";
+// Calculadoras com tela própria (não são fórmula de um resultado só)
+const SPECIAL=[{id:"doses-pediatricas",name:"Doses pediátricas",area:"Pediatria",summary:"Dose por tomada e volume por apresentação a partir do peso, com teto pela dose máxima."}];
+import { hashParam } from "./favorites";
 import { calculators } from "../shared/calculators.mjs";
-const SCORES=[...ORIGINAL_SCORES,...EXTRA_SCORES];
+const SCORES=[...ORIGINAL_SCORES,...EXTRA_SCORES,...MORE_SCORES];
 export async function academicRequest(action, payload, signal) {
   const r = await fetch("/api/wmed/academic", {
     method: "POST",
@@ -46,21 +52,22 @@ function LibraryHead({ title, subtitle, children }) {
 export function Scores() {
   const [q, setQ] = useState(""),
     [area, setArea] = useState(""),
-    [score, setScore] = useState(null),
+    [score, setScore] = useState(() => SCORES.find((s) => s.id === hashParam("id")) || null),
     [answers, setAnswers] = useState({});
   const list = SCORES.filter(
     (s) =>
       (!area || s.especialidade === area) &&
       norm(s.nome + " " + s.sigla).includes(norm(q)),
   );
-  const [calculator,setCalculator]=useState(null);
-  const formulaList=calculators.filter(c=>(!area||c.area===area)&&norm(c.name).includes(norm(q)));
+  const [calculator,setCalculator]=useState(()=>[...SPECIAL,...calculators].some(c=>c.id===hashParam("id"))?hashParam("id"):null);
+  const formulaList=[...SPECIAL,...calculators].filter(c=>(!area||c.area===area)&&norm(c.name).includes(norm(q)));
   const complete = score?.criterios.every((c) => answers[c.id] !== undefined);
   const total =
     score?.criterios.reduce((sum, c) => sum + (answers[c.id] || 0), 0) || 0;
   const band = complete
     ? score.faixas.find((f) => total >= f.min && total <= f.max)
     : null;
+  if(calculator==="doses-pediatricas")return <PediatricDoses onBack={()=>setCalculator(null)}/>;
   if(calculator)return <Calculators key={calculator} id={calculator} onBack={()=>setCalculator(null)}/>;
   if (score)
     return (
@@ -70,6 +77,7 @@ export function Scores() {
           Scores e calculadoras
         </button>
         <LibraryHead title={score.nome} subtitle={score.descricao} />
+        <SaveTools item={{ kind: "score", ref: score.id, title: score.nome, href: `#scores?id=${score.id}` }} />
         <div className="calculator-layout">
           <div className="criteria-list">
             {score.criterios.map((c) => (
@@ -126,7 +134,7 @@ export function Scores() {
     <section className="module-page">
       <LibraryHead
         title="Scores e calculadoras"
-        subtitle={`${SCORES.length} scores e ${calculators.length} calculadoras. Busque pelo nome ou pela especialidade.`}
+        subtitle={`${SCORES.length} scores e ${calculators.length+SPECIAL.length} calculadoras. Busque pelo nome ou pela especialidade.`}
       />
       <div className="library-filters">
         <label>
@@ -144,7 +152,7 @@ export function Scores() {
           onChange={(e) => setArea(e.target.value)}
         >
           <option value="">Todas as especialidades</option>
-          {[...new Set([...SCORES.map((s) => s.especialidade),...calculators.map(c=>c.area)])].map((a) => (
+          {[...new Set([...SCORES.map((s) => s.especialidade),...calculators.map(c=>c.area),...SPECIAL.map(c=>c.area)])].map((a) => (
             <option key={a}>{a}</option>
           ))}
         </select>
@@ -181,6 +189,7 @@ export function ReferenceLibrary({ kind }) {
     [q, setQ] = useState(""),
     [selected, setSelected] = useState(null),
     [group, setGroup] = useState(""),
+    [wanted] = useState(() => hashParam("item")),
     [limit, setLimit] = useState(30),
     [retry, setRetry] = useState(0);
   const meds = kind === "medicacoes";
@@ -203,9 +212,10 @@ export function ReferenceLibrary({ kind }) {
         }),
       ),
     )
-      .then(([conditions, rich, medications]) =>
-        setData({ conditions, rich, medications }),
-      )
+      .then(([conditions, rich, medications]) => {
+        setData({ conditions, rich, medications });
+        if (wanted) setSelected((meds ? medications : conditions).find((r) => (meds ? r.n : r.c) === wanted) || null);
+      })
       .catch((e) => {
         if (e.name !== "AbortError") setError(e.message);
       });
@@ -235,6 +245,7 @@ export function ReferenceLibrary({ kind }) {
             title={selected.n}
             subtitle={meds ? selected.cl : `CID-10 · ${selected.c}`}
           />
+          <SaveTools item={meds ? { kind: "med", ref: selected.n, title: selected.n, href: `#medicacoes?item=${encodeURIComponent(selected.n)}` } : { kind: "cid", ref: selected.c, title: `${selected.c} · ${selected.n}`.slice(0, 200), href: `#condicoes?item=${selected.c}` }} />
           <article className="resource-card reading-card">
             {meds ? (
               <>

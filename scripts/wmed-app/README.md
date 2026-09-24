@@ -12,6 +12,13 @@ Fonte canônica: `scripts/wmed-app` no repositório greenlight-frontend. Publica
 - Medicações214 e condições2045: dados originais, busca, filtros e fichas. Sem nova curadoria médica nesta entrega.
 - Banco de imagens: endpoint autenticado de imagens aprovadas; paginação e atribuição. Nunca lista rascunhos/capturas privadas.
 
+## Paridade com apps de consulta clínica (item 1, 24/09/2026)
+
+- **Favoritos e anotações** na conta WMed (`server/favorites.mjs`, migração `002_favorites.sql`, `/api/wmed/favorites`): estrela e nota em scores, calculadoras, medicações, condições e resumos ENAMED/USMLE; tela "Favoritos e anotações"; links internos (`#scores?id=…`, `#medicacoes?item=…`, `#condicoes?item=…`, `#usmle?topic=…`) reabrem o item.
+- **100 ferramentas**: 74 scores (44 novos em `src/academic/more-scores.ts`) e 26 calculadoras (20 fórmulas novas em `shared/calculators.mjs`, incluindo Holliday-Segar, infusão de drogas vasoativas, dose por peso, QTc, Cockcroft-Gault, gradiente A-a, P/F, Parkland) + **doses pediátricas** por medicamento (`shared/pediatric-doses.mjs`, `src/PediatricDoses.jsx`). Só instrumentos de domínio público ou uso clínico livre. Conteúdo clínico novo é rascunho para revisão médica.
+- **Offline (PWA)**: `public/manifest.webmanifest`, `public/sw.js` e `precache.json` gerado no build (núcleo de ~5 MB: interface, dados, scores, resumos). Modelos 3D entram no cache quando abertos; a API nunca é guardada. Em wmed.ai o service worker é `/sw.js` (reescrito para `/wmed/sw.js`).
+- Testes: `tests/clinical-tools.test.mjs` (faixas cobrem toda soma possível, fórmulas contra exemplos à mão, tetos de dose) e favoritos em `tests/accounts.test.mjs`.
+
 ## Contas WMed (fase A)
 
 A WMed usa contas próprias; o login Vytal Acadêmico foi removido.

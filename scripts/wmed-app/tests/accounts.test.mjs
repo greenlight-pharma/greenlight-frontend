@@ -45,6 +45,7 @@ test('contas, chat e histórico com Postgres',{skip},async t=>{
  const {auth}=await import('../server/accounts.mjs');
  const {chat}=await import('../server/wmed-chat.mjs');
  const {history}=await import('../server/wmed-history.mjs');
+ const {favorites}=await import('../server/favorites.mjs');
  await migrate(()=>{});
  await query('truncate users, auth_attempts cascade');
  const email=`ana${Date.now()}@exemplo.com`;
@@ -115,6 +116,18 @@ test('contas, chat e histórico com Postgres',{skip},async t=>{
   assert.equal((await call(history,{cookie:other.cookie,body:{action:'open',id}})).status,404);
   assert.equal((await call(history,{cookie:other.cookie,body:{action:'list'}})).json.length,0);
   assert.equal((await call(history,{body:{action:'list'}})).status,401);
+ });
+ await t.test('favoritos e anotações por conta',async()=>{
+  const item={kind:'score',ref:'glasgow',title:'Escala de Coma de Glasgow',href:'#scores?id=glasgow'};
+  assert.equal((await call(favorites,{body:{action:'list'}})).status,401);
+  assert.equal((await call(favorites,{cookie,body:{action:'save',...item,favorite:true,note:''}})).json.saved,true);
+  await call(favorites,{cookie,body:{action:'save',...item,favorite:true,note:'Rever resposta motora'}});
+  let list=(await call(favorites,{cookie,body:{action:'list'}})).json;
+  assert.equal(list.length,1);assert.equal(list[0].note,'Rever resposta motora');assert.equal(list[0].favorite,true);
+  assert.equal((await call(favorites,{cookie,body:{action:'save',...item,href:'javascript:alert(1)',favorite:true,note:''}})).status,400);
+  assert.equal((await call(favorites,{cookie,body:{action:'save',...item,favorite:false,note:'x'.repeat(5001)}})).status,400);
+  await call(favorites,{cookie,body:{action:'save',...item,favorite:false,note:'  '}});
+  assert.equal((await call(favorites,{cookie,body:{action:'list'}})).json.length,0,'sem favorito e sem nota, o item some');
  });
  await resetPool();
 });
