@@ -24,6 +24,24 @@ node render.mjs --topic=insuficiencia-cardiaca --encode --poster=4        # MP4 
 - Sem GPU (servidor de 4 núcleos, um Chrome por aba), sai cerca de 45 quadros por minuto: um vídeo de 90 s
   (2.160 quadros a 24 fps) leva uns 45 min. Com GPU é bem mais rápido.
 
+## Dois visuais
+
+| Visual | Página | Motor | Exemplo |
+|---|---|---|---|
+| Aquarela (padrão) | `studio.html` | p5.brush + WebGL, 24 fps, ~45 quadros/min sem GPU | `topics/insuficiencia-cardiaca.js` |
+| Tech (visual do app WMed) | `studio-tech.html` | Canvas 2D puro, 30 fps, ~160 quadros/min | `topics/insuficiencia-cardiaca-tech.js` |
+
+O visual tech usa os tokens do app (`scripts/wmed-app/src/*.css`), a fonte Plus Jakarta Sans do app, o símbolo da
+marca (`tech/brand.js`, gerado de `scripts/wmed-app/public/brand/logo.svg`) e JetBrains Mono nos rótulos. Peças em
+`tech/engine.js`: `panel`, `text` (com revelação por linha), `pill`, `eyebrow`, `header`, `icon`/`badge` (ícones de
+linha), `strokePath`, `logo`. Renderize com `--studio=tech`:
+
+```bash
+node render.mjs --studio=tech --topic=insuficiencia-cardiaca-tech --sheet=4,10,40
+node render.mjs --studio=tech --topic=insuficiencia-cardiaca-tech --frames --workers=4
+node render.mjs --studio=tech --topic=insuficiencia-cardiaca-tech --encode --poster=4.5
+```
+
 ## Como criar um tema novo
 
 1. Copie `topics/insuficiencia-cardiaca.js` para `topics/<slug>.js`. O slug usa só letras minúsculas, números e hífen.

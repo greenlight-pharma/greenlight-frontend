@@ -17,7 +17,9 @@ const args = Object.fromEntries(process.argv.slice(2).map(a => { const [k, ...v]
 const TOPIC = args.topic || 'insuficiencia-cardiaca';
 if (!/^[a-z0-9-]+$/.test(TOPIC)) throw new Error('--topic inválido');
 const CHROME = args.chrome || process.env.CHROME || '/opt/pw-browsers/chromium';
-const FPS = 24, FRAMES = `out/${TOPIC}/frames`, PUBLISH = resolve(HERE, '../../wmed-videos/resumos-enamed');
+// --studio=tech usa o motor Canvas 2D (studio-tech.html, 30 fps); o padrão é o de aquarela (studio.html, 24 fps)
+const STUDIO = args.studio === 'tech' ? 'studio-tech.html' : 'studio.html';
+const FPS = args.studio === 'tech' ? 30 : 24, FRAMES = `out/${TOPIC}/frames`, PUBLISH = resolve(HERE, '../../wmed-videos/resumos-enamed');
 const run = (cmd, a) => new Promise((ok, bad) => { const p = spawn(cmd, a, { stdio: 'inherit' }); p.on('close', c => c ? bad(new Error(cmd + ' saiu com ' + c)) : ok()); });
 const times = s => String(s).split(',').map(Number);
 
@@ -66,7 +68,7 @@ async function openPage(tag = '', extra = '', br = browser) {
   await page.evaluateOnNewDocument(u => { window.SPRITE_URLS = u; }, spriteUrls);
   page.on('console', m => { if (['error', 'warn'].includes(m.type())) console.log(`[página${tag}]`, m.text()); });
   page.on('pageerror', e => console.log(`[erro na página${tag}]`, e.message));
-  await page.goto(pathToFileURL(resolve('studio.html')).href + `?render&topic=${TOPIC}${extra ? '&' + extra : ''}`, { waitUntil: 'load' });
+  await page.goto(pathToFileURL(resolve(STUDIO)).href + `?render&topic=${TOPIC}${extra ? '&' + extra : ''}`, { waitUntil: 'load' });
   await page.waitForFunction('window.ready === true', { timeout: 0 });
   return page;
 }
