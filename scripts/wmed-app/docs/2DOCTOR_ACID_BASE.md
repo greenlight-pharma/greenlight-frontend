@@ -36,3 +36,7 @@ Critérios de liberação futura: fixtures autorais revisadas com alterações s
 Não testados iPhone/Safari/VoiceOver físicos, auth/chat/anexos reais, uso com pacientes ou revisão médica independente. Esta rodada não corrige/audita as versões conceituais de outros scores existentes.
 
 Próximo executável: corpus offline autoral de gasometria para revisão, cobrindo domínio/amostra/unidades e resultados aritméticos; manter interpretação automática desligada. Rollback98dfccb no diretório scripts/wmed-app. Publicação somente2doctor-web apósSUCCESS/health/asset/UI.
+
+## Publicação verificada
+
+Fonte df4dcb2; Railway8b5a138f-d11c-4ab8-a179-5ca4876dfa36 SUCCESS somente2doctor-web. Health200, página200 e assetindex-DFucSo4o.js idêntico ao build local/HTTP200. CUA público390: Winter12→24–28/centro26, expoente rejeitado e resultado removido, aria-invalid=true, limpar, semoverflow/consoleerros. Viewport restaurado; aba43 mantida. Servidor local5211 encerrado. Limites de avaliação acima permanecem.
