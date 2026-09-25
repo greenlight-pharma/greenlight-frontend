@@ -1,5 +1,17 @@
 # Domínio 2Doctor
 
+## 25/09/2026 — 2Doctor online em https://www.2doctor.ai
+
+Domínio configurado e verificado após usuário concluir login na GoDaddy. Endereço de entrada: https://2doctor.ai → 301 https://www.2doctor.ai/ → 302 /2doctor/. HTTPS válido nos dois hosts. CNAME www aponta i6c1llix.up.railway.app; TXT Railway aplicado. Encaminhamento GoDaddy permanente sem máscara. NS, DMARC e domainconnect preservados; backup em scripts/wmed-app/docs/dns-backups/2doctor-ai-before-20260925.txt. Não houve compra, novo provedor ou alteração de outros produtos.
+
+Código 6987f17 publicado isoladamente no projeto2doctor/serviço2doctor-web. Deployment de código fe34b97c-bf60-43eb-8d38-4b2172490fad SUCCESS. PUBLIC_ORIGIN alterado somente nesse serviço para https://www.2doctor.ai; deployment subsequente f04c1e86-cd75-45c1-b4c2-7e0826c71979 SUCCESS. Healthz200/product2doctor, HTML200, asset index-DBus8Rye.js idêntico ao build local e HTTP200. Certificado Railway VALID, propriedade verificada. Estado DNS do CLI chegou a ficar desatualizado, mas DNS autoritativo e resolvers1.1.1.1/8.8.8.8 já confirmavam CNAME correto.
+
+Link público antigo Railway redireciona GET/HEAD de páginas para www; APIs no host antigo recusadas400. No host novo auth anônimo200, chat sem sessão401, origem alheia403. Não foram copiados tokens/cookies: usuário precisa entrar novamente no domínio novo. Fluxo autenticado com credenciais reais, envio de mensagens e histórico NÃO foram exercitados. Interface de login aberta e conferida, sem submissão.
+
+180 testes passaram; builds2Doctor/site completo passaram (aviso conhecido de chunks grandes). Scribe agora tem atalhos SOAP/SBAR/revisão e prévia recolhível. CUA público390px: chat, menuPlantão, Scribe, organização, salto/foco revisão sem overflow (375=375), sem erros de console. Local: SOAP ES320px, PT desktop, SBAR PT/EN. Scribe continua demonstração fictícia sem IA/gravação/persistência. Clipboard nativo não inspecionado; UI reportou cópia e prévia correta, ferramenta usa clipboard virtual separado. Corrida assíncrona e permissão negada não induzidas; aparelho físico não testado. Viewport restaurado; aba47 domínio oficial mantida como entrega.
+
+Próximo executável: continuar fila de utilidade internacional no domínio novo; melhorar descoberta das ferramentas existentes e validar sessão real quando usuário entrar. Não recriar desafios. Para rollback de domínio, restaurar PUBLIC_ORIGIN anterior e DNS conforme backup; código6987f17 funciona com origem anterior e não redireciona para www nessa configuração. Futuras publicações continuam estritamente da pasta scripts/wmed-app com --path-as-root; nunca raiz/API.
+
 ## 25/09/2026 — Domínio 2doctor.ai: preparação, login GoDaddy pendente
 
 Solicitação direta do usuário: configurar domínio liberado via Chrome/GoDaddy e colocar online. Chrome aberto no portfólio redirecionou ao login (aba1509158570, marcada handoff); sessão não estava ativa. Pergunta assíncrona enviada para usuário entrar, sem senha porchat. DNS público atual: NSns09/ns10.domaincontrol.com, apexA3.33.130.190/15.197.148.33, wwwCNAME2doctor.ai. Nenhum registro GoDaddy alterado, nenhum nameserver/email modificado.
