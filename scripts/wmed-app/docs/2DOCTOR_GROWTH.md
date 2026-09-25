@@ -40,6 +40,10 @@ Fonte primáriaMDH para estruturaSOAP, casos/textos autorais sem mídia externa.
 
 Ver [2DOCTOR_FLEXRAY.md](2DOCTOR_FLEXRAY.md). PesosNC: não integrar ao produto comercial sem licença/autorização; nenhuma inferência liberada. Não substitui a filaScribe.
 
+## 25/09/2026 — Radar web e pesquisa no X
+
+Entrega e fontes em [2DOCTOR_RADAR.md](2DOCTOR_RADAR.md). Destaque FleXray com demo externa e prévia do acervo licenciado; oportunidades MedASR/EVEE. Nenhum modelo novo integrado. Preserva prioridade Scribe e bloqueio comercial dos pesos FleXray. Publicação será registrada no documento.
+
 ## Histórico arquivado — não executar as filas abaixo
 
 # Produto internacional e crescimento por utilidade — 25/09/2026

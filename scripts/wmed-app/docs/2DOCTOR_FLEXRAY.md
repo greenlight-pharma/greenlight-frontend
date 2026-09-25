@@ -1,6 +1,6 @@
 # FleXray — avaliação de viabilidade, 25/09/2026
 
-Status: análise documental; não instalado, não executado, não integrado. Prioridade proposta: pesquisa visual no Laboratório de IA. O desenvolvimento do Scribe continua na fila; esta análise não ativa outro modelo clínico.
+Status: avaliação documental; entrada editorial web e prévia do acervo 2Doctor desenvolvidas em25/09 (ver 2DOCTOR_RADAR.md). Modelo não instalado, não executado, não integrado. Prioridade proposta: pesquisa visual no Laboratório de IA. O desenvolvimento do Scribe continua na fila; esta análise não ativa outro modelo clínico.
 
 ## Conclusão
 

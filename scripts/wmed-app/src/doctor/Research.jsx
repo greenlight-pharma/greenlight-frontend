@@ -1,16 +1,8 @@
 import React,{useState,useRef,useEffect} from 'react';
-import {Search,ArrowUpRight,BookOpen,FlaskConical,Copy,Check,Mic,ScanLine,Network,Dna,Atom} from 'lucide-react';
+import {Search,ArrowUpRight,BookOpen,FlaskConical,Copy,Check} from 'lucide-react';
 import {useI18n} from './I18n';
 import './research.css';
-const innovations=[
- {id:'alphagenome',icon:Dna,title:'Genética e variantes',name:'AlphaGenome Atlas · 2026',description:'Explorar explicações sobre variantes genéticas. O uso comercial dos dados e modelos depende dos termos e do canal de acesso; ainda não integrado.',url:'https://deepmind.google/blog/alphagenome-atlas-a-predictive-map-of-every-possible-dna-letter-change-in-the-human-genome/'},
- {id:'bioemu',icon:Atom,title:'Proteínas em movimento',name:'BioEmu',description:'Avaliar conjuntos de conformações proteicas para a biblioteca molecular 3D. São previsões de pesquisa, não prova de eficácia de medicamentos.',url:'https://github.com/microsoft/bioemu'},
- {id:'pubtator',icon:BookOpen,title:'Pesquisa por conceitos',name:'PubTator 3.0 · NCBI',description:'Conectar doenças, genes e medicamentos às publicações. As relações extraídas dos textos precisam ser conferidas no artigo.',url:'https://pmc.ncbi.nlm.nih.gov/articles/PMC11223843/'},
- {id:'medgemma',icon:ScanLine,title:'Leitura de imagens e documentos',name:'MedGemma 1.5',description:'Avaliar MedGemma para ensino com tomografias, histologia e exames. Exige testes próprios antes de qualquer uso clínico.',url:'https://developers.google.com/health-ai-developer-foundations/medgemma/model-card'},
- {id:'medasr',icon:Mic,title:'Ditado médico',name:'MedASR',description:'Avaliar MedASR para transcrição revisável. Desempenho em português e espanhol ainda precisa ser medido.',url:'https://developers.google.com/health-ai-developer-foundations/medasr/model-card'},
- {id:'smart',icon:Network,title:'Diretrizes com contexto local',name:'WHO SMART Guidelines',description:'Estudar WHO SMART Guidelines para organizar recomendações com fonte, versão e adaptação por país.',url:'https://www.who.int/teams/digital-health-and-innovation/smart-guidelines'}
-];
-export function InnovationRadar(){const{t}=useI18n();return <section className="doctor-research"><header><span className="doctor-eyebrow">2DOCTOR · LAB</span><h1>{t('Radar de inovação')}</h1><p>{t('Uma seleção de projetos com potencial para a 2Doctor. Estes recursos ainda não fazem parte do assistente.')}</p></header><div className="doctor-radar-grid">{innovations.map(item=><article key={item.id}><item.icon size={27}/><span className="doctor-research-tag">{t('Em avaliação · não integrado')}</span><h2>{t(item.title)}</h2><strong>{item.name}</strong><p>{t(item.description)}</p><a href={item.url} target="_blank" rel="noopener noreferrer">{t('Fonte oficial')}<ArrowUpRight size={16}/></a></article>)}</div><p className="doctor-research-note">{t('Verificado em 25/09/2026')}</p></section>}
+export {default as InnovationRadar} from './InnovationRadar';
 const statusLabels={RECRUITING:'Recrutando',COMPLETED:'Concluído',ACTIVE_NOT_RECRUITING:'Ativo, sem recrutamento',NOT_YET_RECRUITING:'Ainda não recrutando'};
 export default function Research(){
  const{t,locale}=useI18n();const[query,setQuery]=useState(''),[kind,setKind]=useState('articles'),[busy,setBusy]=useState(false),[error,setError]=useState(''),[result,setResult]=useState(null),[copied,setCopied]=useState('');const request=useRef(null);
