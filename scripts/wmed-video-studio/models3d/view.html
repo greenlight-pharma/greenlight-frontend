@@ -1,0 +1,18 @@
+<!doctype html>
+<meta charset="utf-8">
+<title>2Doctor · modelos 3D</title>
+<style>html,body{margin:0;background:#0a141d}canvas{display:block;width:100vw;height:auto;max-width:540px;margin:0 auto}</style>
+<canvas id="c"></canvas>
+<script type="importmap">{"imports":{"three":"/wmed-app/node_modules/three/build/three.module.js","three/addons/":"/wmed-app/node_modules/three/examples/jsm/"}}</script>
+<script type="module">
+import { createStage } from './stage.js';
+const q = new URLSearchParams(location.search);
+const scene = q.get('scene') || 'lungs';
+const stage = createStage(document.getElementById('c'), { width: +(q.get('w') || 1080), height: +(q.get('h') || 1920) });
+const mod = await import(`./scene-${scene}.js`);
+const api = await mod.default(stage, q);
+window.renderAt = (t) => { api.update(t); stage.render(); };
+window.DUR = api.dur || 10;
+window.renderAt(+(q.get('t') || 0));
+window.READY = true;
+</script>
