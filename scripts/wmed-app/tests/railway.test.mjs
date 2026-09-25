@@ -51,3 +51,18 @@ test('Streaming handlers remain unbuffered through the Railway adapter',async t=
  const {url}=await fixture(t,{handlers:{chat:async(req,res)=>{res.writeHead(200,{'Content-Type':'text/event-stream'});res.flushHeaders();res.write('event: delta\ndata: {"text":"fixture"}\n\n');res.end('event: done\ndata: {}\n\n');}}});
  const r=await fetch(url+'/api/wmed/chat',{method:'POST'});assert.equal(r.headers.get('content-type'),'text/event-stream');assert.match(await r.text(),/event: delta[\s\S]*event: done/);
 });
+
+test('Custom domain redirects only legacy public pages and retains host/origin restrictions',async t=>{
+ const {url}=await fixture(t,{publicOrigin:'https://www.2doctor.ai'});
+ async function request(path,method='GET',host='2doctor-web-production.up.railway.app'){
+  return new Promise((resolve,reject)=>{const req=http.request(url+path,{method,headers:{Host:host}},res=>{res.resume();res.on('end',()=>resolve({status:res.statusCode,location:res.headers.location,cache:res.headers['cache-control']}));});req.on('error',reject);req.end();});
+ }
+ for(const method of ['GET','HEAD']){const result=await request('/2doctor/?lang=en',method);assert.equal(result.status,302);assert.equal(result.location,'https://www.2doctor.ai/2doctor/?lang=en');assert.equal(result.cache,'no-store');}
+ assert.equal((await request('/')).location,'https://www.2doctor.ai/');
+ assert.equal((await request('/2doctor/','POST')).status,400);
+ assert.equal((await request('/api/wmed/auth')).status,400);
+ assert.equal((await request('/api/wmed/chat','POST')).status,400);
+ assert.equal((await request('/2doctor/','GET','unrelated.example')).status,400);
+ assert.equal((await request('/2doctor/','GET','www.2doctor.ai')).status,200);
+ assert.equal((await request('/healthz')).status,200);
+});

@@ -41,6 +41,11 @@ export function createApp({root=ROOT,publicOrigin=process.env.PUBLIC_ORIGIN,fetc
    try{path=decodeURIComponent((req.url||'/').split('?')[0]);}catch{return json(res,400,{error:'Endereço inválido.'});}
    if(path.includes('\\')||path.includes('\0')||path.split('/').some(part=>part==='..'||part==='.'))return json(res,400,{error:'Endereço inválido.'});
    if(path==='/healthz'&&req.method==='GET')return json(res,200,{ok:true,product:'2doctor'});
+   // Keep existing public links working after the custom-domain migration.
+   // Never redirect API requests, request bodies, or unrecognised hosts.
+   if(origin==='https://www.2doctor.ai'&&req.headers.host==='2doctor-web-production.up.railway.app'&&['GET','HEAD'].includes(req.method)&&(path==='/'||path==='/2doctor'||path.startsWith('/2doctor/'))){
+    res.writeHead(302,{Location:origin+req.url,'Cache-Control':'no-store'});return res.end();
+   }
    if(origin&&req.headers.host!==new URL(origin).host)return json(res,400,{error:'Endereço não permitido.'});
    if(path.startsWith('/api/')){
     if(!path.startsWith('/api/wmed/'))return json(res,404,{error:'Recurso não encontrado.'});

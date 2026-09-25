@@ -89,3 +89,9 @@ Fonte98bcbc6, deployment598e7fab-c587-4d5e-822f-ccf72e6b3dbf SUCCESS somente2doc
 
 148 testes, build2Doctor e sitecompleto aprovados. Não realizados aparelho físico, autenticação real, áudio, modelo, revisão clínica/terminológica externa. Demonstração fixa, não Scribe gerativo validado. API Vytal/ECG intactos. Rollback por reconstrução927fc73 no cwdapp. Buildcompleto gerou apenas saída não rastreada medico-app/dist-samu; nenhuma fonte desse produto alterada. Próximo executável: especificar atalhos contextuais chat→scores/bibliotecas/fontes com seleção explícita e testes de navegação; manter avaliação Scribe antes de geração livre. Desafios seguem abandonados.
 
+
+## 25/09/2026 — Scribe móvel revisado; domínio com DNS aplicado
+
+Scribe recebeu atalhos para cada seção SOAP/SBAR e revisão, estado de revisão e prévia de cópia recolhível. Nota vazia permite organizar o exemplo diretamente no celular. Edição invalida revisão/cópia; conclusão assíncrona obsoleta é ignorada. Continua demonstração fixa com relatos fictícios, sem IA, gravação ou persistência.
+
+Verificação: 179 testes e builds 2Doctor/site completo passaram; após adicionar redirecionamento do domínio, 180 testes passaram. CUA: SOAP espanhol em 320px sem overflow, salto com foco na seção sem acionar teclado, revisão habilita cópia, prévia recolhida abre texto correto; edição revoga revisão. Chrome: SOAP português e SBAR português/inglês, atalhos e recarga explícita de idioma corretos. Clipboard nativo não foi inspecionado: API reportou sucesso, mas ferramenta possui clipboard virtual distinto. Negação de permissão e corrida de cópia não foram induzidas; aparelhos físicos/login não testados. Fonte técnica MDN Clipboard.writeText, sem incorporar conteúdo protegido.
