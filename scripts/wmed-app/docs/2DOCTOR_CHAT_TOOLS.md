@@ -8,3 +8,10 @@ Novo painel recolhido por padrão junto ao compositor, exclusivo da 2Doctor e tr
 
 Referência de interação: https://www.w3.org/WAI/ARIA/apg/patterns/disclosure/ (consultada25/09/2026). Implementação autoral, sem copiar código/mídia externa; ícones Lucide já licenciados no projeto. Não houve novo conteúdo clínico/licença de acervo. Próximo: publicar só2doctor-web e exigir SUCCESS/health/asset/UI. Rollback reconstruindo53adf62. Após publicação: melhorar a recuperação de falhas de carregamento de módulos sem perder a conversa, investigando devcache separadamente.
 
+
+## 25/09/2026 — Ferramentas da conversa publicadas
+
+Fonte dca2009; deployment e42edefc-3463-4447-bf8f-41e88f35e25a SUCCESS, somente projeto2doctor/serviço2doctor-web, cwd scripts/wmed-app e --path-as-root. Health200/product2doctor, página200, assetindex-CLkV21hO.js igual ao local eHTTP200. CUA público390px confirmou painel recolhido, seis atalhos, abrir exames/voltar preservando rascunho fictício e atlas3D renderizado. Semoverflow(client/scroll375) e console semerros. Rascunho limpo, retornoaochat e viewport restaurados.
+
+160testes/build2Doctor/sitecompleto aprovados. Não testados aparelhos físicos, VoiceOver, chat autenticado/streaming/anexos reais. Falha de import dinâmico apenas no dev5206 não reproduzida no build local5211 nem público; não declarar conserto do dev. Sem novo modelo, conteúdo clínico, transmissão automática ou alteraçõesAPI/ECG. Rollback: reconstruir53adf62 somente no cwdapp. Próximo: recuperação de erro ao carregar módulos sem reiniciar/perder conversa e diagnóstico do cacheVite local em ambiente separado, preservando sessões abertas. Documentação2DOCTOR_CHAT_TOOLS.md.
+
