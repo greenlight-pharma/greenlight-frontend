@@ -1,6 +1,6 @@
 # Exames laboratoriais — protótipo educativo
 
-Entrega de 25/09/2026. Plantão → Exames laboratoriais, exclusivo da 2Doctor. Três fichas autorais em PT/EN/ES: hemoglobina, creatinina sanguínea e potássio sanguíneo. Não constitui biblioteca laboratorial completa nem interpretação clínica validada.
+Entrega de 25/09/2026. Plantão → Exames laboratoriais, exclusivo da 2Doctor. Quatro fichas autorais em PT/EN/ES: hemoglobina, creatinina sanguínea, potássio sanguíneo e sódio sanguíneo. Não constitui biblioteca laboratorial completa nem interpretação clínica validada.
 
 ## Funcionamento e limites
 
@@ -32,4 +32,14 @@ Preparado para publicação isolada em 2doctor-web. Rollback técnico: reconstru
 Fonte 53adf62; deployment fccabdf6-c0fb-4294-969b-4e2bbf99211c SUCCESS no projeto 2doctor, serviço 2doctor-web. Upload executado em scripts/wmed-app com --path-as-root. Healthz200/product2doctor; página200; asset index-BcTdScwQ.js idêntico ao build local eHTTP200. URL: https://2doctor-web-production.up.railway.app/2doctor/#exames-laboratoriais . CUA público390px: três fichas, exemplo fictício comparado, troca de unidade apagou três números e resultado; client/scroll375 semoverflow, console semerros. Valores limpos e viewport restaurado.
 
 160 testes e builds 2Doctor/site completo aprovados. Protótipo educativo com fonte/licença MedlinePlus documentada, sem revisão clínica independente, não diagnostica nem identifica valores críticos. API Vytal/ECG intactos. Não testados aparelhos físicos, auth/histórico ou pacientes reais. Rollback reconstruindo b18ea90 no diretório correto. Próximo executável: atalhos contextuais explícitos do chat às ferramentas existentes (Scribe, fontes, exames), sem transmitir relato ou inferir diagnóstico. Revisão clínica independente necessária antes de orientação clínica adicional.
+
+
+
+## 25/09/2026 — Ficha de sódio pronta
+
+Adicionada quarta ficha em Exames laboratoriais: sódio sanguíneo, autoral PT/EN/ES, conceito, contexto e limites. Unidades mmol/L e mEq/L, exemplo fictício140/135–145 com aviso de que não é faixa universal. Comparação usa somente intervalo informado; sem cálculo de reposição, urgência ou conduta. Fonte em espanhol quando UIes; fonte inglesa em PT/EN. Data e versão do acervo2026-09-25.2 visíveis; protótipo sem revisão clínica independente. Sem transmissão/persistência/modelos/alteraçõesAPI Vytal/ECG.
+
+Fonte primária conferida25/09/2026: https://medlineplus.gov/lab-tests/sodium-blood-test/ e https://medlineplus.gov/spanish/pruebas-de-laboratorio/prueba-de-sodio-en-la-sangre/ . Contexto de referências: https://medlineplus.gov/lab-tests/how-to-understand-your-lab-results/ . Licença: https://medlineplus.gov/about/using/usingcontent/ declara Medical Test information domínio público EN/ES; atribuiçãoMedlinePlus/NLM preservada. Textos/traduções curtos próprios, sem copiar mídia/enciclopédia/monografias farmacológicas.
+
+171 testes/build2Doctor/sitecompleto aprovados; aviso habitual chunksgrandes. Novo teste cobre limites inclusivos nas duas unidades, vírgula, faixa fornecida diferente, unidade inválida e limpeza. CUA local PT/EN/ES320/390/1280, claro/escuro, exemplo,134,999 abaixo, edição invalidaresultado, trocaunidade/exame limpa números; fonteES correta, semoverflow(305/305 em320), console semerro. Não testados aparelhosfísicos/Safari/VoiceOver, autenticação/chat/anexos ou revisão clínica/terminológica externa. Próximo: commit/publicar só2doctor-web pelo cwdapp/path-as-root; exigirSUCCESS/health/asset/UI. Rollbacke5aa755. Depois auditar calculadoras existentes de ânion gap e Winter e especificar fluxo educativo de gasometria, com domínios/limites/fontes/testes antes de liberar nova interpretação.
 

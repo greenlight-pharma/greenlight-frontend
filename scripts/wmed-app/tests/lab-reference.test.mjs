@@ -27,3 +27,14 @@ test('switching units clears all numbers; examples and sources remain explicit',
  assert.equal(changeLabUnit('hemoglobin','mmol/L'),null);
  for(const g of labGuides){assert.equal(compareLabReference(g.id,g.example).position,'within');assert.ok(new URL(g.source).pathname.startsWith('/lab-tests/'));for(const l of ['pt-BR','en','es'])for(const k of ['name','concept','context','limit'])assert.ok(labText(g[k],l));}
 });
+
+test('sodium comparison respects supplied bounds and selected unit without clinical inference',()=>{
+ for(const unit of ['mmol/L','mEq/L']){
+  for(const [value,position] of [['134,999','below'],['135','within'],['145','within'],['145.001','above']]){
+   assert.deepEqual(compareLabReference('sodium',{unit,value,lower:'135',upper:'145'}),{position,value:Number(value.replace(',','.')),lower:135,upper:145,unit});
+  }
+  assert.deepEqual(changeLabUnit('sodium',unit),{value:'',lower:'',upper:'',unit});
+ }
+ assert.equal(compareLabReference('sodium',{unit:'mmol/L',value:'140',lower:'141',upper:'146'}).position,'below');
+ assert.equal(compareLabReference('sodium',{unit:'mg/dL',value:'140',lower:'135',upper:'145'}).error,'unit');
+});
