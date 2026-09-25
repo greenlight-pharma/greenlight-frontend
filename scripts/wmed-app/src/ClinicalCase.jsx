@@ -1,3 +1,5 @@
+import {productConfig} from '../shared/product.mjs';
+const brandName=productConfig(import.meta.env.VITE_PRODUCT).name;
 import React, { useState, useEffect, useRef } from "react";
 import {
   Mic,
@@ -347,7 +349,7 @@ function ClinicalCaseBody({ session, onLogin, onProgress, onPendingChange, activ
             <FileText size={27} />
             <h2>Do relato ao aprendizado</h2>
             <p>
-              Você traz o relato. O WMed organiza os dados e apresenta hipóteses
+              Você traz o relato. {brandName==='WMed'?'O WMed':'A 2Doctor'} organiza os dados e apresenta hipóteses
               e opções de conduta, com justificativas.
             </p>
             <ol>
