@@ -40,3 +40,7 @@ Próximo executável: corpus offline autoral de gasometria para revisão, cobrin
 ## Publicação verificada
 
 Fonte df4dcb2; Railway8b5a138f-d11c-4ab8-a179-5ca4876dfa36 SUCCESS somente2doctor-web. Health200, página200 e assetindex-DFucSo4o.js idêntico ao build local/HTTP200. CUA público390: Winter12→24–28/centro26, expoente rejeitado e resultado removido, aria-invalid=true, limpar, semoverflow/consoleerros. Viewport restaurado; aba43 mantida. Servidor local5211 encerrado. Limites de avaliação acima permanecem.
+
+## Corpus offline v1
+
+38 exemplos sintéticos e executor separados do app: [avaliação e lista de revisão](2DOCTOR_ACID_BASE_EVALUATION.md). Contrato experimental de amostra, unidade, origem e coleta; constantes esperadas e teste contra interpretações inventadas. Nenhum modelo avaliado, revisão clínica pendente. A rodada não altera a interface nem o deployment público.
