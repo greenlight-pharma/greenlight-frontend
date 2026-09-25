@@ -1,3 +1,4 @@
+import { matchesInstrument } from '../shared/instrument-search.mjs';
 import {OfficialSourcesLink} from './doctor/OfficialSources';
 import React, { useEffect, useState, useMemo } from "react";
 import {
@@ -48,6 +49,7 @@ function LibraryHead({ title, subtitle, children }) {
 }
 export function Scores() {
   const {locale,t}=useI18n();
+  const compact = import.meta.env.VITE_PRODUCT === '2doctor';
   const [q, setQ] = useState(""),
     [area, setArea] = useState(""),
     [score, setScore] = useState(null),
@@ -55,10 +57,10 @@ export function Scores() {
   const list = SCORES.filter(
     (s) =>
       (!area || s.especialidade === area) &&
-      norm(s.nome + " " + s.sigla).includes(norm(q)),
+      (compact ? matchesInstrument(q, s.nome, s.sigla, s.especialidade, t(s.especialidade)) : norm(s.nome + " " + s.sigla).includes(norm(q))),
   );
   const [calculator,setCalculator]=useState(null);
-  const formulaList=localizedCalculators(locale).filter(c=>{const original=calculators.find(o=>o.id===c.id);return (!area||original.area===area)&&norm(c.name+" "+original.name+" "+c.id).includes(norm(q))});
+  const formulaList=localizedCalculators(locale).filter(c=>{const original=calculators.find(o=>o.id===c.id);return (!area||original.area===area)&&(compact ? matchesInstrument(q,c.name,original.name,c.id,c.area,original.area) : norm(c.name+" "+original.name+" "+c.id).includes(norm(q)))});
   const complete = score?.criterios.every((c) => answers[c.id] !== undefined);
   const total =
     score?.criterios.reduce((sum, c) => sum + (answers[c.id] || 0), 0) || 0;
@@ -128,7 +130,7 @@ export function Scores() {
       </section>
     );
   return (
-    <section className="module-page">
+    <section className={`module-page${compact ? " scores-directory" : ""}`}>
       <header className="module-heading"><h1>{t('Scores e calculadoras')}</h1><p>{t('Busque pelo nome ou pela especialidade.')}</p></header>
       <div className="library-filters">
         <label>
@@ -151,6 +153,7 @@ export function Scores() {
           ))}
         </select>
       </div>
+      {compact && (q || area) && <button className="back-button scores-reset" onClick={() => {setQ('');setArea('');}}>{t('Limpar filtros')}</button>}
       {formulaList.length>0&&<><h2 className="library-section-title">{t("Calculadoras por fórmula")} <small>{formulaList.length}</small></h2><div className="resource-grid">{formulaList.map(c=><button className="resource-card" key={c.id} onClick={()=>setCalculator(c.id)}><Calculator size={22}/><small>{c.area}</small><h3>{c.name}</h3><p>{c.summary}</p><span>{t("Calcular")} ↗</span></button>)}</div></>}
       <h2 className="library-section-title">{t("Scores por critérios")} <small>{list.length}</small></h2>
       {list.length>0&&<LibraryLanguageNotice />}

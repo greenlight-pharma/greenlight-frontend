@@ -1,5 +1,6 @@
 // Portuguese is the source language. Content libraries are translated separately.
 export const catalog={
+'Limpar filtros':['Clear filters','Limpiar filtros'],
 'Exames laboratoriais':['Laboratory tests','Pruebas de laboratorio'],
 'Leitura de laudos · protótipo':['Reading reports · prototype','Lectura de informes · prototipo'],
 'Fontes oficiais':['Official sources','Fuentes oficiales'],

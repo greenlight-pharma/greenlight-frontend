@@ -1,3 +1,9 @@
+## 25/09/2026 — Diretório de calculadoras: menos rolagem e busca coerente
+
+Implementação local: lista compacta em duas colunas no desktop e uma no celular, mantendo todas as descrições; busca 2Doctor por nome/sigla/especialidade traduzida, tolerante a acentos, subscritos e espaços; limpar filtros em uma ação. Fórmulas e conteúdo clínico não alterados. WMed conserva apresentação e busca anteriores.
+
+182 testes passaram, build2Doctor e build completo do site aprovados (aviso existente de chunks grandes). CUA local: 390 e 320px sem overflow horizontal; busca cardiologia+HEART retorna um item; abertura/volta preserva filtro; estado vazio e limpeza funcionam; busca em inglês neurology+glasgow confirmada; desktop1280 conferido. Sem erros de console. Não houve teste em aparelho físico, autenticação/envio real, validação clínica ou novo teste dos algoritmos além da suíte existente. Publicação pendente nesta entrada. Próximo: verificar deploy/health/asset/UI; depois revisar distinção dos exemplos conceituais já existentes, sem ampliar catálogo.
+
 ## 25/09/2026 — Simplificação publicada e verificada
 
 Fonte d5b220a; deployment8370a73b-ceb2-403e-9410-98234e49f70c SUCCESS no serviço isolado2doctor-web. https://www.2doctor.ai/healthz200/product2doctor, página200 e asset index-Cph0ep6r.js igual ao build local/HTTP200. CUA público390px: chat sem textos/menu redundantes, Plantão com caso/scores/medicações/condições/imagens/divisão de plantão; sem Exames, Scribe e fontes nessa categoria. Menu abre/fecha e devolve foco, width/scroll390, console semerros. Viewport restaurado e aba oficial47 mantida.
