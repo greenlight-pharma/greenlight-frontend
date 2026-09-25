@@ -1,6 +1,6 @@
 {
  "meta": {
-  "gerado_em": "2026-09-24T15:09+00:00",
+  "gerado_em": "2026-09-25T15:08+00:00",
   "gerado_por": "scripts/governo/agentes/agente_noticias.py",
   "janela_dias": 90,
   "fontes": [
@@ -30,222 +30,222 @@
     "url": "https://www.gov.br/planalto/pt-br/acompanhe-o-planalto/noticias/RSS"
    }
   ],
-  "total_artigos": 1211,
-  "artigos_com_no": 332,
-  "novos_nesta_rodada": 82,
+  "total_artigos": 1284,
+  "artigos_com_no": 360,
+  "novos_nesta_rodada": 80,
   "artigos_por_fonte": {
-   "agenciabrasil": 243,
-   "senado": 611,
+   "senado": 620,
+   "camara": 346,
+   "agenciabrasil": 287,
    "planalto": 27,
-   "stf": 4,
-   "camara": 326
+   "stf": 4
   },
   "ordem": "peso igual por fonte; contagem real de matérias",
   "resumo_por": "claude"
  },
  "resumo": [
   {
-   "texto": "O Supremo Tribunal Federal decidiu, por unanimidade, unificar os prazos de licença-maternidade e licença-adotante, atendendo a ação da Procuradoria-Geral da República.",
-   "artigo_id": "n-12d9b0243e",
-   "no_id": "stf"
+   "texto": "Lei 15.520/2026 cria a Universidade Federal da Fronteira Norte, com sede em Oiapoque (AP), por desmembramento da Universidade Federal do Amapá.",
+   "artigo_id": "n-389745979d",
+   "no_id": "mec"
   },
   {
-   "texto": "O Conselho Nacional de Justiça determinou o cancelamento de R$ 4,7 bilhões em precatórios de usinas negociados com o Banco Master, após ação da Advocacia-Geral da União.",
-   "artigo_id": "n-5c4e69ed70",
+   "texto": "O Conselho Superior do Ministério Público Federal se reúne para decidir se abre investigação contra o procurador-geral da República, Paulo Gonet, citado em conversas obtidas pela Polícia Federal.",
+   "artigo_id": "n-46e98896be",
+   "no_id": "mpf"
+  },
+  {
+   "texto": "O Conselho Nacional de Justiça fez operação no gabinete do desembargador Newton Ramos, do Tribunal Regional Federal da 1ª Região, alvo de investigação do órgão.",
+   "artigo_id": "n-4eabc11e50",
    "no_id": "cnj"
   },
   {
-   "texto": "O Tribunal de Contas da União recomendou que o Ministério de Minas e Energia e a Aneel estudem alternativas à caducidade da concessão da Enel São Paulo.",
-   "artigo_id": "n-638375fd0c",
-   "no_id": "tcu"
-  },
-  {
-   "texto": "O Ministério da Previdência Social passará a aceitar o comparecimento às urnas em outubro como prova de vida de aposentados e pensionistas do INSS.",
-   "artigo_id": "n-ade172a94a",
-   "no_id": "inss"
+   "texto": "O Supremo Tribunal Federal decidiu que estados não podem revogar unilateralmente benefícios fiscais de ICMS aprovados em convênios do Conselho Nacional de Política Fazendária.",
+   "artigo_id": "n-f84719eef7",
+   "no_id": "stf"
   }
  ],
  "ranking": {
   "orgaos": [
    {
     "id": "stf",
-    "artigos": 47,
-    "peso": 32.18410108978939,
-    "ultima": "2026-09-23T18:50+00:00"
+    "artigos": 52,
+    "peso": 34.841726710503835,
+    "ultima": "2026-09-25T13:46+00:00"
    },
    {
     "id": "tse",
-    "artigos": 40,
-    "peso": 28.301471131538307,
-    "ultima": "2026-09-24T12:03+00:00"
+    "artigos": 45,
+    "peso": 30.52348096812526,
+    "ultima": "2026-09-25T15:03:00+00:00"
    },
    {
     "id": "camara",
-    "artigos": 49,
-    "peso": 19.423567921440274,
-    "ultima": "2026-09-17T16:12:00+00:00"
+    "artigos": 50,
+    "peso": 20.709677419354836,
+    "ultima": "2026-09-25T12:23:00+00:00"
    },
    {
     "id": "congresso",
     "artigos": 39,
-    "peso": 17.699827735095838,
+    "peso": 18.098717278864534,
     "ultima": "2026-09-24T12:01:00+00:00"
    },
    {
     "id": "prf",
     "artigos": 7,
-    "peso": 14.350308810356092,
+    "peso": 14.399172255317023,
     "ultima": "2026-09-17T13:36+00:00"
    },
    {
     "id": "caixa",
-    "artigos": 13,
-    "peso": 12.957201646090533,
-    "ultima": "2026-09-24T10:30+00:00"
+    "artigos": 16,
+    "peso": 14.316376306620212,
+    "ultima": "2026-09-25T14:28+00:00"
    },
    {
     "id": "pf",
-    "artigos": 15,
-    "peso": 11.348766442383463,
-    "ultima": "2026-09-24T12:47+00:00"
+    "artigos": 17,
+    "peso": 12.327670001123975,
+    "ultima": "2026-09-25T09:45+00:00"
    },
    {
     "id": "inss",
-    "artigos": 15,
-    "peso": 8.972116733211163,
-    "ultima": "2026-09-24T11:52:00+00:00"
+    "artigos": 16,
+    "peso": 9.884277599580557,
+    "ultima": "2026-09-24T21:00+00:00"
+   },
+   {
+    "id": "anvisa",
+    "artigos": 12,
+    "peso": 9.62354530103997,
+    "ultima": "2026-09-25T13:16+00:00"
    },
    {
     "id": "mte",
     "artigos": 1,
-    "peso": 8.97037037037037,
+    "peso": 9.511111111111111,
     "ultima": "2026-08-12T21:09:00+00:00"
    },
    {
     "id": "inpe",
     "artigos": 1,
-    "peso": 8.97037037037037,
+    "peso": 9.511111111111111,
     "ultima": "2026-08-06T22:13:00+00:00"
    },
    {
     "id": "ibge",
-    "artigos": 9,
-    "peso": 8.370061896775844,
-    "ultima": "2026-09-24T13:01+00:00"
+    "artigos": 11,
+    "peso": 9.361928740024728,
+    "ultima": "2026-09-25T14:28+00:00"
    },
    {
     "id": "inep",
-    "artigos": 8,
-    "peso": 7.973662551440328,
-    "ultima": "2026-09-20T11:06+00:00"
-   },
-   {
-    "id": "anvisa",
-    "artigos": 9,
-    "peso": 7.515990389527351,
-    "ultima": "2026-09-23T21:49+00:00"
+    "artigos": 10,
+    "peso": 8.947735191637632,
+    "ultima": "2026-09-25T14:25+00:00"
    },
    {
     "id": "ms",
+    "artigos": 11,
+    "peso": 7.767611840322873,
+    "ultima": "2026-09-24T22:25+00:00"
+   },
+   {
+    "id": "mec",
+    "artigos": 11,
+    "peso": 6.959028886141397,
+    "ultima": "2026-09-25T14:49:00+00:00"
+   },
+   {
+    "id": "tst",
     "artigos": 10,
-    "peso": 7.31208126126834,
-    "ultima": "2026-09-23T13:10+00:00"
+    "peso": 6.87283832115911,
+    "ultima": "2026-09-25T14:28+00:00"
+   },
+   {
+    "id": "anp",
+    "artigos": 10,
+    "peso": 6.87283832115911,
+    "ultima": "2026-09-25T12:27+00:00"
+   },
+   {
+    "id": "agu",
+    "artigos": 8,
+    "peso": 6.677608182533439,
+    "ultima": "2026-09-24T23:21+00:00"
    },
    {
     "id": "petrobras",
     "artigos": 9,
-    "peso": 7.169444949586793,
+    "peso": 6.611221760143869,
     "ultima": "2026-09-23T14:38+00:00"
-   },
-   {
-    "id": "mec",
-    "artigos": 9,
-    "peso": 6.569136475992267,
-    "ultima": "2026-09-23T15:17:00+00:00"
-   },
-   {
-    "id": "agu",
-    "artigos": 7,
-    "peso": 6.376646258915762,
-    "ultima": "2026-09-23T20:26+00:00"
-   },
-   {
-    "id": "anp",
-    "artigos": 9,
-    "peso": 6.3153734423383,
-    "ultima": "2026-09-24T13:51+00:00"
-   },
-   {
-    "id": "stj",
-    "artigos": 7,
-    "peso": 5.869120191607827,
-    "ultima": "2026-09-22T00:00+00:00"
    },
    {
     "id": "tcu",
     "artigos": 11,
-    "peso": 5.653792152166313,
+    "peso": 5.692714969844352,
     "ultima": "2026-09-23T21:51+00:00"
    },
    {
-    "id": "mpf",
-    "artigos": 5,
-    "peso": 4.38323062105568,
-    "ultima": "2026-09-21T23:03+00:00"
+    "id": "stj",
+    "artigos": 7,
+    "peso": 5.477680688625964,
+    "ultima": "2026-09-22T00:00+00:00"
    },
    {
-    "id": "tst",
-    "artigos": 7,
-    "peso": 4.321957804478218,
-    "ultima": "2026-09-21T18:35+00:00"
+    "id": "mpf",
+    "artigos": 6,
+    "peso": 4.8880611442059125,
+    "ultima": "2026-09-25T09:45+00:00"
+   },
+   {
+    "id": "senacon",
+    "artigos": 5,
+    "peso": 4.473867595818816,
+    "ultima": "2026-09-25T12:27+00:00"
+   },
+   {
+    "id": "cvm",
+    "artigos": 5,
+    "peso": 4.32129060844696,
+    "ultima": "2026-09-25T09:45+00:00"
+   },
+   {
+    "id": "cnj",
+    "artigos": 5,
+    "peso": 3.993287625042149,
+    "ultima": "2026-09-24T21:12+00:00"
+   },
+   {
+    "id": "correios",
+    "artigos": 4,
+    "peso": 3.5790940766550525,
+    "ultima": "2026-09-25T00:35+00:00"
    },
    {
     "id": "aeronautica",
     "artigos": 4,
-    "peso": 3.9868312757201645,
+    "peso": 3.5790940766550525,
     "ultima": "2026-09-24T00:19+00:00"
-   },
-   {
-    "id": "senacon",
-    "artigos": 4,
-    "peso": 3.9868312757201645,
-    "ultima": "2026-09-23T17:35+00:00"
-   },
-   {
-    "id": "cvm",
-    "artigos": 4,
-    "peso": 3.733068242066197,
-    "ultima": "2026-09-20T17:04+00:00"
-   },
-   {
-    "id": "cnj",
-    "artigos": 4,
-    "peso": 3.386522802125639,
-    "ultima": "2026-09-24T12:42+00:00"
    },
    {
     "id": "anac",
     "artigos": 5,
-    "peso": 2.9288506402126613,
+    "peso": 2.879550696116961,
     "ultima": "2026-09-23T14:04+00:00"
    },
    {
     "id": "bndes",
     "artigos": 4,
-    "peso": 2.532451294877146,
+    "peso": 2.4653571477298644,
     "ultima": "2026-09-17T17:19+00:00"
    },
    {
-    "id": "cgu",
-    "artigos": 2,
-    "peso": 1.9934156378600822,
-    "ultima": "2026-09-24T12:47+00:00"
-   },
-   {
-    "id": "inmet",
-    "artigos": 2,
-    "peso": 1.9934156378600822,
-    "ultima": "2026-09-24T11:56+00:00"
+    "id": "senado",
+    "artigos": 3,
+    "peso": 2.2265895953757227,
+    "ultima": "2026-09-25T13:48+00:00"
    }
   ],
   "pessoas": [
@@ -261,23 +261,8 @@
     "foto": "https://commons.wikimedia.org/wiki/Special:FilePath/Foto_oficial_de_Luiz_In%C3%A1cio_Lula_da_Silva_%28estreita%29.jpg?width=160",
     "foto_fonte": "https://www.wikidata.org/wiki/Q37181",
     "artigos": 20,
-    "peso": 21.050662686847403,
+    "peso": 21.072851309307424,
     "ultima": "2026-09-24T12:03+00:00"
-   },
-   {
-    "id": "davi-alcolumbre",
-    "nome": "Davi Alcolumbre",
-    "nome_completo": "Davi Alcolumbre",
-    "cargo": "Presidente do Congresso Nacional · CN",
-    "no_id": "congresso",
-    "poder": "legislativo",
-    "partido": "UNIÃO",
-    "uf": "AP",
-    "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador3830.jpg",
-    "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/3830",
-    "artigos": 20,
-    "peso": 9.128603853899362,
-    "ultima": "2026-09-23T18:08+00:00"
    },
    {
     "id": "damares-alves",
@@ -291,8 +276,23 @@
     "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador6335.jpg",
     "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/6335",
     "artigos": 23,
-    "peso": 9.117184942716857,
+    "peso": 9.526451612903225,
     "ultima": "2026-09-21T19:30:00+00:00"
+   },
+   {
+    "id": "davi-alcolumbre",
+    "nome": "Davi Alcolumbre",
+    "nome_completo": "Davi Alcolumbre",
+    "cargo": "Presidente do Congresso Nacional · CN",
+    "no_id": "congresso",
+    "poder": "legislativo",
+    "partido": "UNIÃO",
+    "uf": "AP",
+    "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador3830.jpg",
+    "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/3830",
+    "artigos": 20,
+    "peso": 9.245030909295266,
+    "ultima": "2026-09-23T18:08+00:00"
    },
    {
     "id": "hugo-motta",
@@ -301,28 +301,13 @@
     "cargo": "Presidente da Câmara dos Deputados · CD",
     "no_id": "camara",
     "poder": "legislativo",
-    "partido": null,
-    "uf": null,
-    "foto": "https://commons.wikimedia.org/wiki/Special:FilePath/11%C2%BA_F%C3%B3rum_Parlamentar_do_Brics_-_Brasil_2025_-_Entrevista_Coletiva_%2854569126271%29.jpg?width=160",
-    "foto_fonte": "https://www.wikidata.org/wiki/Q10298778",
+    "partido": "REPUBLICANOS",
+    "uf": "PB",
+    "foto": "https://www.camara.leg.br/internet/deputado/bandep/160674.jpg",
+    "foto_fonte": "https://www.camara.leg.br/deputados/160674",
     "artigos": 11,
-    "peso": 5.746574558452902,
+    "peso": 5.868140965877307,
     "ultima": "2026-09-08T14:44:00+00:00"
-   },
-   {
-    "id": "flavio-bolsonaro",
-    "nome": "Flávio Bolsonaro",
-    "nome_completo": "Flávio Nantes Bolsonaro",
-    "cargo": "Senador, RJ",
-    "no_id": "senado",
-    "poder": "legislativo",
-    "partido": "PL",
-    "uf": "RJ",
-    "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador5894.jpg",
-    "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/5894",
-    "artigos": 7,
-    "peso": 5.176029311726711,
-    "ultima": "2026-09-21T12:40+00:00"
    },
    {
     "id": "paulo-paim",
@@ -336,8 +321,23 @@
     "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador825.jpg",
     "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/825",
     "artigos": 12,
-    "peso": 4.756792144026186,
+    "peso": 4.970322580645161,
     "ultima": "2026-09-21T19:30:00+00:00"
+   },
+   {
+    "id": "flavio-bolsonaro",
+    "nome": "Flávio Bolsonaro",
+    "nome_completo": "Flávio Nantes Bolsonaro",
+    "cargo": "Senador, RJ",
+    "no_id": "senado",
+    "poder": "legislativo",
+    "partido": "PL",
+    "uf": "RJ",
+    "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador5894.jpg",
+    "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/5894",
+    "artigos": 7,
+    "peso": 4.8216747218163425,
+    "ultima": "2026-09-21T12:40+00:00"
    },
    {
     "id": "omar-aziz",
@@ -351,8 +351,23 @@
     "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador5525.jpg",
     "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/5525",
     "artigos": 11,
-    "peso": 4.360392798690671,
+    "peso": 4.556129032258064,
     "ultima": "2026-09-02T23:20:00+00:00"
+   },
+   {
+    "id": "nunes-marques",
+    "nome": "Nunes Marques",
+    "nome_completo": "Nunes Marques",
+    "cargo": "Presidente · TSE",
+    "no_id": "tse",
+    "poder": "judiciario",
+    "partido": null,
+    "uf": null,
+    "foto": "https://commons.wikimedia.org/wiki/Special:FilePath/Nunes_Marques%2C_February_2025_%28cropped%29.jpg?width=160",
+    "foto_fonte": "https://www.wikidata.org/wiki/Q99831978",
+    "artigos": 6,
+    "peso": 4.407481173429247,
+    "ultima": "2026-09-25T15:03:00+00:00"
    },
    {
     "id": "mara-gabrilli",
@@ -366,7 +381,7 @@
     "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador5376.jpg",
     "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/5376",
     "artigos": 10,
-    "peso": 3.963993453355155,
+    "peso": 4.141935483870967,
     "ultima": "2026-09-23T18:20:00+00:00"
    },
    {
@@ -381,7 +396,7 @@
     "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador5352.jpg",
     "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/5352",
     "artigos": 10,
-    "peso": 3.963993453355155,
+    "peso": 4.141935483870967,
     "ultima": "2026-09-14T16:27:00+00:00"
    },
    {
@@ -396,7 +411,7 @@
     "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador5979.jpg",
     "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/5979",
     "artigos": 9,
-    "peso": 3.5675941080196396,
+    "peso": 3.7277419354838703,
     "ultima": "2026-09-10T18:45:00+00:00"
    },
    {
@@ -411,7 +426,7 @@
     "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador5990.jpg",
     "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/5990",
     "artigos": 9,
-    "peso": 3.5675941080196396,
+    "peso": 3.7277419354838703,
     "ultima": "2026-09-04T21:56:00+00:00"
    },
    {
@@ -426,7 +441,7 @@
     "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador345.jpg",
     "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/345",
     "artigos": 9,
-    "peso": 3.5675941080196396,
+    "peso": 3.7277419354838703,
     "ultima": "2026-09-03T23:38:00+00:00"
    },
    {
@@ -441,23 +456,8 @@
     "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador6009.jpg",
     "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/6009",
     "artigos": 8,
-    "peso": 3.171194762684124,
+    "peso": 3.3135483870967737,
     "ultima": "2026-09-23T18:51:00+00:00"
-   },
-   {
-    "id": "edson-fachin",
-    "nome": "Luiz Edson Fachin",
-    "nome_completo": "Edson Fachin",
-    "cargo": "Presidente · STF",
-    "no_id": "stf",
-    "poder": "judiciario",
-    "partido": null,
-    "uf": null,
-    "foto": "https://commons.wikimedia.org/wiki/Special:FilePath/Luiz_Edson_Fachin-12-05.2015.jpg?width=160",
-    "foto_fonte": "https://www.wikidata.org/wiki/Q10320705",
-    "artigos": 4,
-    "peso": 2.786214328531113,
-    "ultima": "2026-09-18T15:06+00:00"
    },
    {
     "id": "fernando-dueire",
@@ -471,7 +471,7 @@
     "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador5917.jpg",
     "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/5917",
     "artigos": 7,
-    "peso": 2.7747954173486087,
+    "peso": 2.899354838709677,
     "ultima": "2026-09-02T19:51:00+00:00"
    },
    {
@@ -486,8 +486,38 @@
     "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador5732.jpg",
     "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/5732",
     "artigos": 5,
-    "peso": 2.6750876065586935,
+    "peso": 2.7269737087451054,
     "ultima": "2026-09-02T16:46:00+00:00"
+   },
+   {
+    "id": "paulo-gonet",
+    "nome": "Paulo Gonet",
+    "nome_completo": "Paulo Gonet",
+    "cargo": "Procurador(a)-Geral da República · MPU",
+    "no_id": "mpu",
+    "poder": "essencial",
+    "partido": null,
+    "uf": null,
+    "foto": null,
+    "foto_fonte": null,
+    "artigos": 4,
+    "peso": 2.6179341351017196,
+    "ultima": "2026-09-25T09:45+00:00"
+   },
+   {
+    "id": "edson-fachin",
+    "nome": "Luiz Edson Fachin",
+    "nome_completo": "Edson Fachin",
+    "cargo": "Presidente · STF",
+    "no_id": "stf",
+    "poder": "judiciario",
+    "partido": null,
+    "uf": null,
+    "foto": "https://commons.wikimedia.org/wiki/Special:FilePath/Luiz_Edson_Fachin-12-05.2015.jpg?width=160",
+    "foto_fonte": "https://www.wikidata.org/wiki/Q10320705",
+    "artigos": 4,
+    "peso": 2.6179341351017196,
+    "ultima": "2026-09-18T15:06+00:00"
    },
    {
     "id": "izalci-lucas",
@@ -501,7 +531,7 @@
     "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador4770.jpg",
     "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/4770",
     "artigos": 6,
-    "peso": 2.378396072013093,
+    "peso": 2.4851612903225804,
     "ultima": "2026-09-17T21:37:00+00:00"
    },
    {
@@ -516,7 +546,7 @@
     "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador6338.jpg",
     "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/6338",
     "artigos": 6,
-    "peso": 2.378396072013093,
+    "peso": 2.4851612903225804,
     "ultima": "2026-09-10T18:45:00+00:00"
    },
    {
@@ -531,8 +561,23 @@
     "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador475.jpg",
     "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/475",
     "artigos": 6,
-    "peso": 2.378396072013093,
+    "peso": 2.4851612903225804,
     "ultima": "2026-09-01T22:31:00+00:00"
+   },
+   {
+    "id": "reginaldo-lopes",
+    "nome": "Reginaldo Lopes",
+    "nome_completo": "Reginaldo Lopes",
+    "cargo": "Deputado(a) federal, MG",
+    "no_id": "camara",
+    "poder": "legislativo",
+    "partido": "PT",
+    "uf": "MG",
+    "foto": "https://www.camara.leg.br/internet/deputado/bandep/74161.jpg",
+    "foto_fonte": "https://www.camara.leg.br/deputados/74161",
+    "artigos": 5,
+    "peso": 2.3989707253402948,
+    "ultima": "2026-09-01T19:56:00+00:00"
    },
    {
     "id": "nelsinho-trad",
@@ -546,7 +591,7 @@
     "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador5985.jpg",
     "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/5985",
     "artigos": 5,
-    "peso": 1.9819967266775775,
+    "peso": 2.0709677419354837,
     "ultima": "2026-09-22T14:16:00+00:00"
    },
    {
@@ -561,57 +606,766 @@
     "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador22.jpg",
     "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/22",
     "artigos": 5,
-    "peso": 1.9819967266775775,
+    "peso": 2.0709677419354837,
     "ultima": "2026-09-11T19:48:00+00:00"
-   },
-   {
-    "id": "zequinha-marinho",
-    "nome": "Zequinha Marinho",
-    "nome_completo": "José da Cruz Marinho",
-    "cargo": "Senador, PA",
-    "no_id": "senado",
-    "poder": "legislativo",
-    "partido": "PODE",
-    "uf": "PA",
-    "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador3806.jpg",
-    "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/3806",
-    "artigos": 5,
-    "peso": 1.9819967266775775,
-    "ultima": "2026-09-08T17:35:00+00:00"
-   },
-   {
-    "id": "paulo-gonet",
-    "nome": "Paulo Gonet",
-    "nome_completo": "Paulo Gonet",
-    "cargo": "Procurador(a)-Geral da República · MPU",
-    "no_id": "mpu",
-    "poder": "essencial",
-    "partido": null,
-    "uf": null,
-    "foto": null,
-    "foto_fonte": null,
-    "artigos": 3,
-    "peso": 1.789506509601072,
-    "ultima": "2026-09-17T14:37+00:00"
-   },
-   {
-    "id": "randolfe-rodrigues",
-    "nome": "Randolfe Rodrigues",
-    "nome_completo": "Randolph Frederich Rodrigues Alves",
-    "cargo": "Senador, AP",
-    "no_id": "senado",
-    "poder": "legislativo",
-    "partido": "PT",
-    "uf": "AP",
-    "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador5012.jpg",
-    "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/5012",
-    "artigos": 4,
-    "peso": 1.585597381342062,
-    "ultima": "2026-09-04T11:42:00+00:00"
    }
   ]
  },
  "artigos": [
+  {
+   "id": "n-73b71926ed",
+   "titulo": "TSE libera download e primeiro acesso ao e-Título no dia da eleição",
+   "url": "https://www12.senado.leg.br/noticias/materias/2026/09/25/tse-libera-download-e-primeiro-acesso-ao-e-titulo-no-dia-da-eleicao",
+   "data": "2026-09-25T15:03:00+00:00",
+   "fonte": "senado",
+   "nos": [
+    "tse"
+   ],
+   "pessoas": [
+    "nunes-marques"
+   ],
+   "resumo": "Nas eleições de 2026, o eleitor poderá baixar e ativar o e-Título no dia da votação, tanto no primeiro quanto no segundo turno. A mudança foi anunciada pelo presidente do Tribunal Superior Eleitoral (TSE), ministro Kassio Nunes Marques, na quinta-feira (24). Em eleições anteriores, o download e o primeiro acesso ao aplicativo eram interrompidos no dia do pleito como medida preventiva para reduzir a sobrecarga do sistema. Segundo o TSE, o aprimoramento da infraestrutura e o monitoramento do aplicativo permitirão manter o serviço disponível nos dias de votação. Antes, a interrupção permitia prio"
+  },
+  {
+   "id": "n-389745979d",
+   "titulo": "Lei cria a Universidade Federal da Fronteira do Norte",
+   "url": "https://www12.senado.leg.br/noticias/materias/2026/09/25/lei-cria-a-universidade-federal-da-fronteira-do-norte",
+   "data": "2026-09-25T14:49:00+00:00",
+   "fonte": "senado",
+   "nos": [
+    "mec"
+   ],
+   "pessoas": [],
+   "resumo": "Foi criada a Universidade Federal da Fronteira Norte (UFFN), com sede em Oiapoque (AP), por meio do desmembramento da Universidade Federal do Amapá (Unifap). É o que estabelece Lei 15.520, de 2026, sancionada pela Presidência da República e publicada no Diário Oficial da União (DOU) nesta sexta-feira (25). A nova universidade, vinculada ao Ministério da Educação, tem por objetivos: oferecer cursos de graduação e pós-graduação; desenvolver pesquisa, extensão e cultura e promover a inovação e o desenvolvimento regional. De autoria do Executivo, o Projeto de Lei (PL) 4.951/2026, que deu origem à "
+  },
+  {
+   "id": "n-aa07f9e0e7",
+   "titulo": "Lei transforma Cefets de Minas e do RJ em universidades federais",
+   "url": "https://www.camara.leg.br/noticias/1306756-lei-transforma-cefets-de-minas-e-do-rj-em-universidades-federais",
+   "data": "2026-09-25T14:42+00:00",
+   "fonte": "camara",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "Mudança preserva a oferta de educação técnica de nível médio e amplia a autonomia das instituições para atuação no ensino, na pesquisa e na extensão"
+  },
+  {
+   "id": "n-abc14e38b8",
+   "titulo": "TST: 60% dos empregados da Caixa devem permanecer em atividade",
+   "url": "https://agenciabrasil.ebc.com.br/economia/noticia/2026-09/tst-60-dos-empregados-da-caixa-devem-permanecer-em-atividade",
+   "data": "2026-09-25T14:28+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [
+    "tst",
+    "caixa",
+    "ibge"
+   ],
+   "pessoas": [],
+   "resumo": "Decisão liminar do ministro do Tribunal Superior do Trabalho (TST) Mauricio Godinho Delgado determinou a manutenção do percentual mínimo de 60% dos empregados da Caixa Econômica Federal em serviço, durante greve decretada no dia 10 de setembro. A medida ocorre após a Caixa Econômica Federal ajuizar dissídio coletivo de greve contra a Confederação Nacional dos Trabalhadores do Ramo Financeiro (Contraf) e a Confederação Nacional dos Trabalhadores nas Empresas de Crédito (Contec), na quinta-feira (24). Notícias relacionadas: Prévia da inflação oficial de setembro fica em 0,70%, mostra IBGE. Combu"
+  },
+  {
+   "id": "n-14fd8fe61c",
+   "titulo": "Plataforma Enem Libras ganha atualização com provas de 2017 a 2025",
+   "url": "https://agenciabrasil.ebc.com.br/educacao/noticia/2026-09/plataforma-enem-libras-ganha-atualizacao-com-provas-de-2017-2025",
+   "data": "2026-09-25T14:25+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [
+    "inep"
+   ],
+   "pessoas": [],
+   "resumo": "A plataforma Enem Libras está atualizada com as videoprovas de 2017 até 2025. O sistema disponibiliza conteúdos em Língua Brasileira de Sinais (Libras) do Exame Nacional do Ensino Médio (Enem) para pessoas surdas e com deficiência auditiva . Os conteúdos podem ser usados para estudo, prática e familiarização com o formato da videoprova em Libras, prova em vídeo traduzida em Libras executada em um computador disponibilizado pelo Instituto Nacional de Estudos e Pesquisas Educacionais Anísio Teixeira (Inep). Notícias relacionadas: Guia do Enem reúne orientações e métodos de estudo para provas. En"
+  },
+  {
+   "id": "n-55903c4b08",
+   "titulo": "Lei cria a Universidade Federal da Fronteira Norte, no Amapá",
+   "url": "https://www.camara.leg.br/noticias/1306749-lei-cria-a-universidade-federal-da-fronteira-norte-no-amapa",
+   "data": "2026-09-25T13:48+00:00",
+   "fonte": "camara",
+   "nos": [
+    "senado"
+   ],
+   "pessoas": [],
+   "resumo": "Norma surgiu de projeto aprovado pela Câmara dos Deputados e pelo Senado Federal"
+  },
+  {
+   "id": "n-8367e87811",
+   "titulo": "Mendonça volta a suspender multas sobre saúde mental no trabalho",
+   "url": "https://agenciabrasil.ebc.com.br/justica/noticia/2026-09/mendonca-volta-suspender-multas-sobre-saude-mental-no-trabalho",
+   "data": "2026-09-25T13:46+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [
+    "stf"
+   ],
+   "pessoas": [],
+   "resumo": "O ministro André Mendonça , do Supremo Tribunal Federal (STF), voltou a suspender por mais 90 dias a aplicação de multas e outras punições previstas na Norma Regulamentadora nº 1 (NR-1) , que trata da segurança dos trabalhadores formais, sobretudo em relação à saúde mental. O ministro decidiu dar mais tempo para que as empresas e o governo busquem conciliação sobre o tema. Notícias relacionadas: Assédio e sobrecarga ameaçam saúde mental de jornalistas, diz pesquisa. Mendonça suspende multas de norma sobre saúde mental no trabalho. Novas regras sobre saúde mental no trabalho entram em vigor. Me"
+  },
+  {
+   "id": "n-010f16093f",
+   "titulo": "Em 13 anos, doença inflamatória intestinal cresce 5 vezes no Brasil",
+   "url": "https://agenciabrasil.ebc.com.br/saude/noticia/2026-09/em-13-anos-doenca-inflamatoria-intestinal-cresce-5-vezes-no-brasil",
+   "data": "2026-09-25T13:31+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "O número de pessoas com doenças inflamatórias intestinais (DII) cresceu cinco vezes no Brasil, entre 2012 e 2025. A incidência dessas enfermidades – como a doença de Crohn e a retocolite ulcerativa – passou de 30 para 158 casos por 100 mil habitantes no período. O dado é de um estudo apresentado no 74º Congresso Brasileiro de Coloproctologia , que ocorre até este sábado (26), em Balneário Camboriú (SC). Notícias relacionadas: Diarreia e dor abdominal acendem alerta para doenças intestinais. Internações por inflamações intestinais cresceram 61% em dez anos. Campanha Maio Roxo alerta sobre doenç"
+  },
+  {
+   "id": "n-f2b3d1bf3f",
+   "titulo": "Projeto fixa piso salarial de R$ 3.624 para auxiliares médicos e odontológicos",
+   "url": "https://www.camara.leg.br/noticias/1306627-projeto-fixa-piso-salarial-de-r-3-624-para-auxiliares-medicos-e-odontologicos",
+   "data": "2026-09-25T13:24+00:00",
+   "fonte": "camara",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "A proposta está em análise na Câmara dos Deputados"
+  },
+  {
+   "id": "n-3b147dc999",
+   "titulo": "Prévia da inflação oficial de setembro fica em 0,70%, mostra IBGE",
+   "url": "https://agenciabrasil.ebc.com.br/economia/noticia/2026-09/previa-da-inflacao-oficial-de-setembro-fica-em-070-mostra-ibge",
+   "data": "2026-09-25T13:19+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [
+    "cmn",
+    "ibge"
+   ],
+   "pessoas": [],
+   "resumo": "A prévia da inflação oficial de setembro ficou em 0,70%, a maior desde abril (0,89%). O resultado é uma inversão da deflação (inflação negativa) de agosto, que ficou em -0,40%. A explicação principal da aceleração está na devolução do bônus de Itaipu, desconto que os consumidores tiveram na conta de luz do mês anterior. Notícias relacionadas: Combustíveis terão novos preços médios a partir de outubro. Economistas lançam iniciativa por economia focada na vida real. CMN endurece regras para fundos comprarem créditos judiciais. Os dados são do Índice Nacional de Preços ao Consumidor Amplo 15 (IPC"
+  },
+  {
+   "id": "n-6d12082b7b",
+   "titulo": "Anvisa proíbe lotes irregulares de medicamento para esclerose múltipla",
+   "url": "https://agenciabrasil.ebc.com.br/saude/noticia/2026-09/anvisa-proibe-lotes-irregulares-de-medicamento-para-esclerose-multipla",
+   "data": "2026-09-25T13:16+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [
+    "anvisa"
+   ],
+   "pessoas": [],
+   "resumo": "A Agência Nacional de Vigilância Sanitária (Anvisa) determinou a apreensão de dois lotes do medicamento Ocrevus (ocrelizumabe) 300 mg/10 ml. Os lotes são o H7953B14 e o H7953B06. A resolução foi publicada nesta sexta-feira (25) no Diário Oficial da União . O Ocrevus teve o registro aprovado pela Anvisa em 2022 e é indicado para tratamento de pacientes com as formas recorrentes de esclerose múltipla e esclerose múltipla progressiva primária. Notícias relacionadas: Anvisa proíbe propaganda de caneta emagrecedora Semavy. Anvisa alerta para venda irregular de tirzepatida em pó na internet . Anvisa"
+  },
+  {
+   "id": "n-560855c3f9",
+   "titulo": "Brasileirão Feminino: TV Brasil transmite Corinthians e São Paulo",
+   "url": "https://agenciabrasil.ebc.com.br/esportes/noticia/2026-09/brasileirao-feminino-tv-brasil-transmite-corinthians-e-sao-paulo",
+   "data": "2026-09-25T13:00+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "A TV Brasil transmite neste sábado (26) a partida de ida da grande final do Campeonato Brasileiro Feminino Série A1 entre Corinthians e São Paulo . A exibição do clássico Majestoso tem início a partir das 16h10 com bola rolando direto da Neo Química Arena, em São Paulo (SP), às 16h30. O Corinthians garantiu a vaga na decisão ao bater o Bahia nos dois confrontos, ambos por 1 a 0 - o primeiro na Arena Fonte Nova e o segundo na Neo Química Arena. Já o São Paulo carimbou o passaporte para a final ao eliminar o Flamengo com duas vitórias: 3 a 1 no jogo de ida, no estádio Luso-Brasileiro, e 1 a 0 na"
+  },
+  {
+   "id": "n-778a0c86e5",
+   "titulo": "Pobreza na Argentina volta a subir e atinge 32,3% da população",
+   "url": "https://agenciabrasil.ebc.com.br/internacional/noticia/2026-09/pobreza-na-argentina-volta-subir-e-atinge-323-da-populacao",
+   "data": "2026-09-25T13:00+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "A pobreza na Argentina voltou a subir e atingiu 32,3% da população do país no primeiro semestre de 2026, o que representa 9,7 milhões de pessoas, contra 28,2% registrados no semestre anterior. Os dados oficiais foram publicados, nessa quinta-feira (24), pelo Instituto Nacional de Dados Estatísticos (Indec) . Notícias relacionadas: Argentina sob Milei fecha 31 mil empresas e 245 mil empregos formais. No início do governo de Javier Milei, a pobreza cresceu de 41,7%, no 2º semestre de 2023, para 52,9% da população, no 2º semestre de 2024. Desde então, o indicador que mede a pobreza do país vizinh"
+  },
+  {
+   "id": "n-92d32821e0",
+   "titulo": "Polícia prende ex-vereadora Veronica Costa, condenada por tortura",
+   "url": "https://agenciabrasil.ebc.com.br/justica/noticia/2026-09/policia-prende-ex-vereadora-veronica-costa-condenada-por-tortura",
+   "data": "2026-09-25T12:47+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "A ex-vereadora do Rio de Janeiro Veronica Costa foi presa, na noite dessa quinta-feira (24), pela Polícia Civil fluminense. Ela foi condenada por torturar seu ex-marido Marcio Costa, junto com membros da família dela, em 2011. Mais três acusados foram presos. Os mandados de prisão foram expedidos pela Justiça do Rio de Janeiro, para cumprir as condenações criminais definitivas, após trânsito em julgado. Ela foi condenada a dez anos e oito meses de prisão. Notícias relacionadas: Justiça do Rio condena homem a 42 anos de prisão por feminicídio. Flagrante por drogas gera mais prisão preventiva do"
+  },
+  {
+   "id": "n-ea635c0f0d",
+   "titulo": "Brasil decepciona e empata com Austrália em amistoso",
+   "url": "https://agenciabrasil.ebc.com.br/esportes/noticia/2026-09/brasil-decepciona-e-empata-com-australia-em-amistoso",
+   "data": "2026-09-25T12:47+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "Seleção leva gol de falta, com falha do goleiro, e empata apenas no último lance do jogo, com Ryan de cabeça após escanteio cobrado por Raphinha. Equipe volta a enfrentar a Austrália na terça-feira (29). O Brasil empatou por 1 a 1 com a Austrália, na manhã desta sexta-feira (25), no Queensland Country Bank Stadium, em Townsville (Austrália). O gol da equipe da Oceania foi marcado por Irankunda, aos 22 minutos da segunda etapa, em cobrança de falta, com falha do goleiro Hugo Souza. E, no último lance da partida, a Seleção Brasileira empatou o amistoso com Rayan. O ex-atacante do Vasco deixou tu"
+  },
+  {
+   "id": "n-73a7399499",
+   "titulo": "Projeto institui política de proteção a mulheres ribeirinhas",
+   "url": "https://www.camara.leg.br/noticias/1304907-projeto-institui-politica-de-protecao-a-mulheres-ribeirinhas",
+   "data": "2026-09-25T12:38+00:00",
+   "fonte": "camara",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "Texto está em análise na Câmara dos Deputados"
+  },
+  {
+   "id": "n-e4c7ff1521",
+   "titulo": "Anvisa proíbe propaganda de caneta emagrecedora Semavy",
+   "url": "https://agenciabrasil.ebc.com.br/saude/noticia/2026-09/anvisa-proibe-propaganda-de-caneta-emagrecedora-semavy",
+   "data": "2026-09-25T12:37+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [
+    "anvisa"
+   ],
+   "pessoas": [],
+   "resumo": "A Agência Nacional de Vigilância Sanitária (Anvisa) proibiu a propaganda do medicamento Semavy (semaglutida). A resolução foi publicada nesta sexta-feira (25) no Diário Oficial da União . O medicamento do tipo GLP-1, popularmente conhecido como caneta emagrecedora, foi aprovado pela agência com indicação para tratar diabetes mellitus tipo 2 insuficientemente controlado. Trata-se de produto de tarja vermelha, sujeito à retenção de receita médica, assim como as demais canetas emagrecedoras. “A propaganda de medicamentos com tarja vermelha ou preta é proibida no Brasil”, reforçou a Anvisa. Em not"
+  },
+  {
+   "id": "n-f634226ce9",
+   "titulo": "Combustíveis terão novos preços médios a partir de outubro",
+   "url": "https://agenciabrasil.ebc.com.br/economia/noticia/2026-09/combustiveis-terao-novos-precos-medios-partir-de-outubro",
+   "data": "2026-09-25T12:27+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [
+    "anp",
+    "senacon"
+   ],
+   "pessoas": [],
+   "resumo": "Os estados e o Distrito Federal passarão a adotar, em 1º de outubro, novos valores do Preço Médio Ponderado ao Consumidor Final (PMPF) para combustíveis. O Conselho Nacional de Política Fazendária (Confaz) publicou a atualização no Diário Oficial da União desta sexta-feira (25). >> Veja aqui a tabela completa. Notícias relacionadas: ANP aplicou R$ 200 milhões em multas por alta abusiva de combustíveis. Senacon inicia operação para apurar abusos nos preços de combustíveis. Nova lei aumenta penas para furto e roubo de combustíveis. O preço médio ponderado serve de referência para a cobrança do I"
+  },
+  {
+   "id": "n-3cad0bd501",
+   "titulo": "Vídeo: Eleições 2026: partidos devem alcançar quociente eleitoral para eleger deputados",
+   "url": "https://www12.senado.leg.br/noticias/videos/2026/09/eleicoes-2026-partidos-devem-alcancar-quociente-eleitoral-para-eleger-deputados",
+   "data": "2026-09-25T12:23:00+00:00",
+   "fonte": "senado",
+   "nos": [
+    "camara"
+   ],
+   "pessoas": [],
+   "resumo": "Na disputa pela Câmara dos Deputados, o partido ou federação precisa alcançar o quociente eleitoral para conquistar vagas, e não o candidato individualmente. Esse cálculo é uma conta que considera a soma de todos os votos válidos (de legenda e dos candidatos) dividida pelo número de cadeiras disponíveis. Veja como funciona a distribuição das vagas e a exigência de votação mínima individual."
+  },
+  {
+   "id": "n-0544236e97",
+   "titulo": "Áudio: Congresso vai analisar ao menos 107 vetos presidenciais",
+   "url": "https://www12.senado.leg.br/noticias/audios/2026/09/congresso-vai-analisar-ao-menos-107-vetos-presidenciais",
+   "data": "2026-09-25T12:00:00+00:00",
+   "fonte": "senado",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "O Congresso tem que analisar ao menos 107 vetos presidenciais. As sessões conjuntas de votação devem ocorrer após o segundo turno das eleições, em 25 de outubro."
+  },
+  {
+   "id": "n-a566e60518",
+   "titulo": "Projeto tipifica terrorismo rural e sabotagem agropecuária",
+   "url": "https://www.camara.leg.br/noticias/1304192-projeto-tipifica-terrorismo-rural-e-sabotagem-agropecuaria",
+   "data": "2026-09-25T11:43+00:00",
+   "fonte": "camara",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "Texto está em análise na Câmara dos Deputados"
+  },
+  {
+   "id": "n-0df4550a52",
+   "titulo": "Brasil terá quase 2 milhões de mesários nas eleições de 2026",
+   "url": "https://www12.senado.leg.br/noticias/materias/2026/09/25/brasil-tera-quase-2-milhoes-de-mesarios-nas-eleicoes-de-2026",
+   "data": "2026-09-25T11:39:00+00:00",
+   "fonte": "senado",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "Localizar o nome do eleitor no caderno de votação, colher a assinatura e entregar o comprovante de votação estão entre as principais atribuições dos mesários. Responsáveis pelo funcionamento da seção eleitoral durante a votação, eles são \"agentes honoríficos\", categoria de agentes públicos que exercem temporariamente uma função pública em nome do Estado. A atuação do mesário é geralmente desempenhada de forma voluntária. Quando necessário, a Justiça Eleitoral convoca pessoas levando em consideração critérios como nível de escolaridade e atuação profissional, entre eles professores e servidores"
+  },
+  {
+   "id": "n-6b6c87245b",
+   "titulo": "Sarney é internado no Sírio-Libanês para tratar pneumonia",
+   "url": "https://agenciabrasil.ebc.com.br/politica/noticia/2026-09/sarney-e-internado-no-sirio-libanes-para-tratar-pneumonia",
+   "data": "2026-09-25T11:26+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "O ex-presidente da República José Sarney foi internado nessa quinta-feira (24) no Hospital Sírio-Libanês , em São Paulo, para tratar um quadro de pneumonia bacteriana. De acordo com boletim médico, Sarney passa por avaliação clínica e continuidade do tratamento para pneumonia, já que o quadro vinha sendo acompanhado em São Luís . Notícias relacionadas: Ex-presidente José Sarney é internado com quadro de pneumonia. O quadro clínico do ex-presidente, de acordo com o hospital, é considerado estável. Os cuidados são coordenados pelo médico Roberto Kalil Filho. Escritor e político, José Sarney foi "
+  },
+  {
+   "id": "n-86fbb4dd6f",
+   "titulo": "Veja quem está na disputa pelo governo do estado em Sergipe",
+   "url": "https://agenciabrasil.ebc.com.br/politica/noticia/2026-09/veja-quem-esta-na-disputa-pelo-governo-do-estado-em-sergipe",
+   "data": "2026-09-25T11:25+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "Seis candidatos concorrem ao governo de Sergipe nas eleições deste ano. No estado, 1.740.124 eleitores estão aptos a votar. Desse total, 53% são mulheres e 47% homens. Entre os eleitores que declararam cor/raça, 66,75% são pardos, 19,66% são brancos e 12,76%, pretos. Amarelos e indígenas não somam 1%. Notícias relacionadas: Saiba quais são as atribuições dos governadores e vice-governadores. O primeiro turno será realizado no dia 4 de outubro , quando serão votados candidatos a deputado federal, estadual, dois senadores, governador e presidente da República, esses dois últimos incluindo seus v"
+  },
+  {
+   "id": "n-b4f1df476d",
+   "titulo": "Rio Grande do Norte tem oito candidatos a governador; conheça",
+   "url": "https://agenciabrasil.ebc.com.br/politica/noticia/2026-09/rio-grande-do-norte-tem-oito-candidatos-governador-conheca",
+   "data": "2026-09-25T11:15+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "Oito candidatos concorrem ao governo do Rio Grande do Norte nas eleições deste ano. No estado, 2.660.565 eleitores estão aptos a votar. Desse total, 53% são mulheres e 47% homens. Entre os eleitores que declararam cor/raça, 58,2% são pardos, 32,53% são brancos e 8,43%, pretos. Amarelos e indígenas não chegam a 1%. Notícias relacionadas: Saiba quais são as atribuições dos governadores e vice-governadores. O primeiro turno será realizado no dia 4 de outubro , quando serão votados candidatos a deputado federal, estadual, dois senadores, governador e presidente da República, esses dois últimos inc"
+  },
+  {
+   "id": "n-229b704e86",
+   "titulo": "Confira a agenda dos presidenciáveis nesta sexta-feira (25)",
+   "url": "https://agenciabrasil.ebc.com.br/politica/noticia/2026-09/confira-agenda-dos-presidenciaveis-nesta-sexta-feira-25",
+   "data": "2026-09-25T11:11+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [
+    "tse"
+   ],
+   "pessoas": [],
+   "resumo": "A agenda dos presidenciáveis nesta sexta-feira (25) inclui caminhadas, carreatas, panfletagens e encontros com apoiadores. Também estão previstos debates, roda de conversa com trabalhadores, evento cultural, culto religioso e jantar com empresários. Renan Santos (Missão) Participa de encontro com apoiadores em cidades de São Paulo e Minas Gerais: Franca (SP), Uberaba (MG) e Uberlândia (MG). Notícias relacionadas: Eleitor poderá baixar e-Título no dia da votação, anuncia TSE. TSE cria ferramenta de IA para acesso a informações sobre eleições. Romeu Zema (Novo) Às 9h,participa de entrevista ao v"
+  },
+  {
+   "id": "n-8c0a5b069f",
+   "titulo": "Projeto proíbe demissão por doença crônica e garante adaptações temporárias no trabalho",
+   "url": "https://www.camara.leg.br/noticias/1304446-projeto-proibe-demissao-por-doenca-cronica-e-garante-adaptacoes-temporarias-no-trabalho",
+   "data": "2026-09-25T11:08+00:00",
+   "fonte": "camara",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "Texto está em análise na Câmara dos Deputados"
+  },
+  {
+   "id": "n-d663c9314b",
+   "titulo": "Veja quem irá concorrer ao governo do estado no Piauí",
+   "url": "https://agenciabrasil.ebc.com.br/politica/noticia/2026-09/veja-quem-ira-concorrer-ao-governo-do-estado-no-piaui",
+   "data": "2026-09-25T11:05+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "Dez candidatos concorrem ao governo do Piauí nas eleições deste ano. No estado, 2.708.160 eleitores estão aptos a votar. Desse total, 52% são mulheres e 48% homens. Entre os eleitores que declararam cor/raça, 69,86% são pardos, 17,47% são brancos, 11,64% são pretos, 0,88% é amarelo e 0,14%, indígena. O primeiro turno será realizado no dia 4 de outubro , quando serão votados candidatos a deputado federal, estadual, dois senadores, governador e presidente da República, esses dois últimos incluindo seus vices. A chapa de senador é composta por um titular e dois suplentes. O segundo turno está mar"
+  },
+  {
+   "id": "n-895efefb57",
+   "titulo": "Saiba quem disputa o governo estadual em Pernambuco",
+   "url": "https://agenciabrasil.ebc.com.br/politica/noticia/2026-09/saiba-quem-disputa-o-governo-estadual-em-pernambuco",
+   "data": "2026-09-25T10:55+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "Sete candidatos concorrem ao governo de Pernambuco nas eleições deste ano. No estado, 7.225.744 eleitores estão aptos a votar. Desse total, 54% são mulheres e 46% homens. Entre os eleitores que declararam cor/raça, 62,34% são pardos, 26,28% são brancos, 9,27% são pretos, 1,69% é indígena e 0,41%, amarelo. Notícias relacionadas: Saiba quais são as atribuições dos governadores e vice-governadores. O primeiro turno será realizado no dia 4 de outubro , quando serão votados candidatos a deputado federal, estadual, dois senadores, governador e presidente da República, esses dois últimos incluindo se"
+  },
+  {
+   "id": "n-9b434471a5",
+   "titulo": "Confira quem são os seis candidatos a governador da Paraíba",
+   "url": "https://agenciabrasil.ebc.com.br/politica/noticia/2026-09/confira-quem-sao-os-seis-candidatos-governador-da-paraiba",
+   "data": "2026-09-25T10:45+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "Seis candidatos concorrem ao governo da Paraíba nas eleições deste ano. No estado, 3.247.397 eleitores estão aptos a votar. Desse total, 53% são mulheres e 47% homens. Entre os eleitores que declararam cor/raça, 62,05% são pardos, 29,15% são brancos, 7,6% são pretos, 0,68% é indígena e 0,52%, amarelo. Notícias relacionadas: Saiba quais são as atribuições dos governadores e vice-governadores. O primeiro turno será realizado no dia 4 de outubro, quando serão votados candidatos a deputado federal, estadual, dois senadores, governador e presidente da República, esses dois últimos incluindo seus vi"
+  },
+  {
+   "id": "n-8642785669",
+   "titulo": "Eleitores do Maranhão têm oito candidatos a governador; conheça",
+   "url": "https://agenciabrasil.ebc.com.br/politica/noticia/2026-09/eleitores-do-maranhao-tem-oito-candidatos-governador-conheca",
+   "data": "2026-09-25T10:35+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "Oito candidatos concorrem ao governo de Maranhão nas eleições deste ano. No estado, 5.186.562 eleitores estão aptos a votar. Desse total, 52% são mulheres e 48% homens. Entre os eleitores que declararam cor/raça, 74,61% são pardos, 13,13% são brancos, 10,88% são pretos, 0,88% é indígena e 0,5%, amarelo. Notícias relacionadas: Saiba quais são as atribuições dos governadores e vice-governadores. O primeiro turno será realizado no dia 4 de outubro, quando serão votados candidatos a deputado federal, estadual, dois senadores, governador e presidente da República, esses dois últimos incluindo seus "
+  },
+  {
+   "id": "n-aad42f3584",
+   "titulo": "Ceará tem oito candidatos a governador, veja quais são",
+   "url": "https://agenciabrasil.ebc.com.br/politica/noticia/2026-09/ceara-tem-oito-candidatos-governador-veja-quais-sao",
+   "data": "2026-09-25T10:25+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "Oito candidatos concorrem ao governo do Ceará nas eleições deste ano. No estado, 6.998.494 eleitores estão aptos a votar. Desse total, 53% são mulheres e 47% homens. Entre os eleitores que declararam cor/raça, 69,53% são pardos, 22,94% são brancos, 6,65% pretos, 0,5% é amarelo e 0,38%, indígena. Notícias relacionadas: Saiba quais são as atribuições dos governadores e vice-governadores. O primeiro turno será realizado no dia 4 de outubro , quando serão votados candidatos a deputado federal, estadual, dois senadores, governador e presidente da República, esses dois últimos incluindo seus vices. "
+  },
+  {
+   "id": "n-7364c40655",
+   "titulo": "Conheça os seis candidatos a governador da Bahia",
+   "url": "https://agenciabrasil.ebc.com.br/politica/noticia/2026-09/conheca-os-seis-candidatos-governador-da-bahia",
+   "data": "2026-09-25T10:15+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "Seis candidatos concorrem ao governo da Bahia nas eleições deste ano. No estado, 11.321.005 eleitores estão aptos a votar. Desse total, 53% são mulheres e 47% homens. Entre os eleitores que declararam cor/raça, 59,61% são pardos, 23,47% são pretos, 15,9% são brancos, 0,52% é indígena e 0,5%, amarelo. Notícias relacionadas: Saiba quais são as atribuições dos governadores e vice-governadores. O primeiro turno será realizado no dia 4 de outubro , quando serão votados candidatos a deputado federal, estadual, dois senadores, governador e presidente da República, esses dois últimos incluindo seus vi"
+  },
+  {
+   "id": "n-46e98896be",
+   "titulo": "Conselho do MPF decide se abre investigação contra Gonet",
+   "url": "https://agenciabrasil.ebc.com.br/justica/noticia/2026-09/conselho-do-mpf-decide-se-abre-investigacao-contra-gonet",
+   "data": "2026-09-25T09:45+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [
+    "mpf",
+    "pf",
+    "cvm",
+    "stf"
+   ],
+   "pessoas": [
+    "paulo-gonet"
+   ],
+   "resumo": "O Conselho Superior do Ministério Público Federal (CSMPF) vai ser reunir nesta sexta-feira (25) para decidir se o procurador-geral da República, Paulo Gonet, será investigado pelas citações ao nome dele nas conversas encontradas pela Polícia Federal (PF) no celular do ex-banqueiro Daniel Vorcaro. A análise do caso está prevista para começar às 10h e será transmitida pelo canal do MPF no Youtube . Notícias relacionadas: Paulo Gonet nega proximidade com Daniel Vorcaro. STF: Gilmar critica exposição de Gonet no caso Master por Mendonça. Dino manda Polícia Federal investigar atuação da CVM no caso"
+  },
+  {
+   "id": "n-c1ed383097",
+   "titulo": "Beneficiários com NIS de final 7 recebem Bolsa Família de setembro",
+   "url": "https://agenciabrasil.ebc.com.br/economia/noticia/2026-09/beneficiarios-com-nis-de-final-7-recebem-bolsa-familia-de-setembro",
+   "data": "2026-09-25T09:31+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [
+    "caixa"
+   ],
+   "pessoas": [],
+   "resumo": "A Caixa Econômica Federal paga nesta sexta-feira (25) a parcela de setembro do Bolsa Família aos beneficiários com Número de Inscrição Social (NIS) de final 7. Neste mês, 19,29 milhões de família serão beneficiadas, com o valor médio do benefício em R$ 678,18. Os moradores de 179 municípios de sete estados receberam o crédito no último dia 17, independentemente do número final do NIS. O pagamento unificado beneficiou localidades em situação de emergência ou em estado de calamidade pública nos seguintes estados: Acre (todos os 22 municípios), Amazonas (três municípios), Paraíba (31), Rio Grande"
+  },
+  {
+   "id": "n-f84719eef7",
+   "titulo": "STF veta revogação unilateral de ICMS aprovado pelo Confaz",
+   "url": "https://agenciabrasil.ebc.com.br/justica/noticia/2026-09/stf-veta-revogacao-unilateral-de-icms-aprovado-pelo-confaz",
+   "data": "2026-09-25T00:35+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [
+    "stf",
+    "correios",
+    "tst"
+   ],
+   "pessoas": [],
+   "resumo": "O Supremo Tribunal Federal (STF) decidiu nesta quinta-feira (24) que os estados não podem revogar unilateralmente benefícios fiscais do Imposto sobre Circulação de Mercadorias e Serviços (ICMS) que foram aprovados em convênios do Conselho Nacional de Política Fazendária (Confaz). Pela decisão da Corte, as deliberações do Confaz não implementam as alterações fiscais automaticamente nas legislações estaduais. Contudo, após a incorporação das regras, as revogações só podem ocorrer conforme as diretrizes do conselho. Notícias relacionadas: TST diz que greve dos Correios não é abusiva . O conselho "
+  },
+  {
+   "id": "n-abd5aba484",
+   "titulo": "Mega-Sena acumula para R$ 45 milhões; confira os números sorteados",
+   "url": "https://agenciabrasil.ebc.com.br/geral/noticia/2026-09/mega-sena-acumula-para-r-45-milhoes-confira-os-numeros-sorteados",
+   "data": "2026-09-25T00:33+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [
+    "caixa"
+   ],
+   "pessoas": [],
+   "resumo": "Nenhum apostador acertou as seis dezenas do Concurso 3.062 da Mega-Sena, realizado nesta quinta-feira (24). O prêmio acumulou e está estimado em R$ 45 milhões para o próximo sorteio. Os números sorteados são: 05 - 09 - 11- 17 - 18 - 38 86 apostas acertaram cinco dezenas e irão receber R$ 19.736,75 cada 5.065 apostas acertaram quatro dezenas e irão receber R$ 552,38 cada Apostas O próximo concurso acontece domingo (27), às 11h. As apostas podem ser feitas até as 22h (horário de Brasília) de sábado (26), em qualquer lotérica do país ou pela internet, no site ou aplicativo da Caixa. A aposta simp"
+  },
+  {
+   "id": "n-6ab04097df",
+   "titulo": "Economistas lançam iniciativa por economia focada na vida real",
+   "url": "https://agenciabrasil.ebc.com.br/economia/noticia/2026-09/economistas-lancam-iniciativa-por-economia-focada-na-vida-real",
+   "data": "2026-09-24T23:39+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "Mais de 100 economistas e 60 organizações da sociedade civil lançaram nesta semana a Vida em Conta, uma iniciativa para aproximar o debate econômico das condições concretas de vida da população brasileira. A ação é articulada pela Plataforma Cipó e pela organização Transforma. A iniciativa destaca que o Brasil alcançou avanços importantes nos últimos anos e retomou, desde 2023, políticas públicas, investimentos e instrumentos de planejamento, com resultados relevantes no combate à fome e à pobreza, na geração de trabalho e renda, na redução do desemprego e da inflação, na proteção ambiental e "
+  },
+  {
+   "id": "n-873b37f6f6",
+   "titulo": "Zanin pede manifestação da Anatel sobre acesso à internet nas eleições",
+   "url": "https://agenciabrasil.ebc.com.br/justica/noticia/2026-09/zanin-pede-manifestacao-da-anatel-sobre-acesso-internet-nas-eleicoes",
+   "data": "2026-09-24T23:21+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [
+    "anatel",
+    "agu",
+    "stf",
+    "tse"
+   ],
+   "pessoas": [
+    "nunes-marques"
+   ],
+   "resumo": "O ministro Cristiano Zanin, do Supremo Tribunal Federal (STF), deu prazo de 48 horas para a Agência Nacional de Telecomunicações (Anatel) se manifestar sobre um pedido para garantir acesso de todos os brasileiros à internet móvel nas eleições. Pela decisão, a Advocacia-Geral da União (AGU) e a Procuradoria-Geral da República (PGR) também deverão opinar sobre a questão. Notícias relacionadas: Nunes Marques diz que e-Título poderá ser baixado em dia de votação. Entidades pedem livre acesso à internet nas 72h anteriores às eleições. TSE cria ferramenta de IA para acesso a informações sobre eleiçõ"
+  },
+  {
+   "id": "n-77d9d3869f",
+   "titulo": "Com pessimismo externo, dólar sobe 0,47% e aproxima-se de R$ 5,20",
+   "url": "https://agenciabrasil.ebc.com.br/economia/noticia/2026-09/com-pessimismo-externo-dolar-sobe-047-e-aproxima-se-de-r-520",
+   "data": "2026-09-24T23:05+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "Em dia de nervosismo no mercado doméstico e externo, o dólar aproximou-se de R$ 5,20, e fechou no maior nível desde o fim de agosto. A bolsa caiu quase 1% e terminou o dia abaixo dos 184 mil pontos. O movimento ocorreu em um dia de maior aversão a risco nos mercados internacionais, com alta dos juros dos títulos do Tesouro dos Estados Unidos e avanço do petróleo em meio às incertezas sobre as negociações entre Estados Unidos e Irã. No Brasil, investidores também acompanharam as novas projeções econômicas do Banco Central e o cenário fiscal. Principais números Dólar à vista: R$ 5,1931 (+0,47%);"
+  },
+  {
+   "id": "n-c0ce7acce7",
+   "titulo": "TST diz que greve dos Correios não é abusiva",
+   "url": "https://agenciabrasil.ebc.com.br/justica/noticia/2026-09/tst-greve-dos-correios-nao-e-abusiva-e-ordena-volta-ao-trabalho",
+   "data": "2026-09-24T22:29+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [
+    "tst",
+    "correios"
+   ],
+   "pessoas": [],
+   "resumo": "O Tribunal Superior do Trabalho (TST) decidiu nesta quinta-feira (24) que a greve dos trabalhadores dos Correios não é abusiva, mas determinou que a categoria volte ao trabalho a partir desta sexta-feira (25). A decisão foi proferida durante o julgamento dissídio coletivo da greve da categoria, que havia sido suspenso na segunda-feira (21). Além de determinar o retorno imediato, a Seção de Dissídios Coletivos negou pedido da estatal para reconhecer abusividade da greve e autorizou a compensação dos dias parados. Dessa forma, não haverá desconto dos dias não trabalhados, mas os trabalhadores te"
+  },
+  {
+   "id": "n-93ffc355e6",
+   "titulo": "Governo pede à Conitec incorporação de canetas emagrecedoras no SUS",
+   "url": "https://agenciabrasil.ebc.com.br/saude/noticia/2026-09/governo-pede-conitec-incorporacao-de-canetas-emagrecedoras-no-sus",
+   "data": "2026-09-24T22:25+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [
+    "ms"
+   ],
+   "pessoas": [],
+   "resumo": "O Ministério da Saúde (MS) protocolou nesta quinta-feira (24) o pedido à Comissão Nacional de Incorporação de Tecnologias no Sistema Único de Saúde (Conitec) de inclusão das canetas emagrecedoras (GLP-1) no rol de medicamentos ofertados pelo Sistema Único de Saúde (SUS) . A pasta argumentou que o número de pacientes com obesidade cresceu de 11,8%, em 2006, para 25,7%, em 2024. Esse aumento demandaria uma necessidade de acompanhamento e tratamento por longos períodos, com impactos na redução da mortalidade, qualidade de vida dos pacientes e também nos gastos do sistema de saúde. Notícias relaci"
+  },
+  {
+   "id": "n-c35001c4ba",
+   "titulo": "CMN endurece regras para fundos comprarem créditos judiciais",
+   "url": "https://agenciabrasil.ebc.com.br/economia/noticia/2026-09/cmn-endurece-regras-para-fundos-comprarem-creditos-judiciais",
+   "data": "2026-09-24T22:20+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [
+    "cmn"
+   ],
+   "pessoas": [],
+   "resumo": "Os Fundos de Investimento em Direitos Creditórios (FIDCs) terão regras mais rígidas para investir em créditos de ações judiciais e de procedimentos arbitrais. O Conselho Monetário Nacional (CMN) alterou nesta quinta-feira (24) normas que estavam em vigor desde 2001. A principal mudança consiste na proibição de que os FIDCs comprem créditos ou expectativas de direitos originados de processos judiciais ou arbitragens enquanto esses valores ainda não tiverem liquidez (capacidade de venda imediata), fontes certas de recursos e exigibilidade (capacidade de cobrança na Justiça pelo credor). Notícias"
+  },
+  {
+   "id": "n-06cc093c5d",
+   "titulo": "Nunes Marques diz que e-Título poderá ser baixado em dia de votação",
+   "url": "https://agenciabrasil.ebc.com.br/justica/noticia/2026-09/nunes-marques-diz-que-e-titulo-podera-ser-baixado-em-dia-de-votacao",
+   "data": "2026-09-24T22:17+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [
+    "tse"
+   ],
+   "pessoas": [
+    "nunes-marques"
+   ],
+   "resumo": "O presidente do Tribunal Superior Eleitoral (TSE), Kássio Nunes Marques, informou nesta quinta-feira (24) que o aplicativo e-Título poderá ser baixado e ativado no dia da votação, tanto no 1º quanto no 2º turno. O tribunal disse que haverá concentração de esforços para garantir o funcionamento estável do aplicativo. Em eleições anteriores, o download e o primeiro acesso ao e-Título eram interrompidos no dia da votação como medida preventiva para reduzir a sobrecarga do sistema. A Corte eleitoral disse que considerou o aumento expressivo dos acessos ao aplicativo nos dias de votação para libera"
+  },
+  {
+   "id": "n-9d3f9a6aa5",
+   "titulo": "Especialista resume alertas sobre El Niño e cobra ações urgentes do poder público",
+   "url": "https://www.camara.leg.br/noticias/1306704-especialista-resume-alertas-sobre-el-nino-e-cobra-acoes-urgentes-do-poder-publico",
+   "data": "2026-09-24T22:10+00:00",
+   "fonte": "camara",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "Em audiência na Câmara, ele apontou riscos de secas, enchentes e prejuízos na agricultura e na pesca; consultora da Câmara afirmou que existem leis, mas não são aplicadas"
+  },
+  {
+   "id": "n-1eca0590fd",
+   "titulo": "MPSP recomenda intervenção na Feira do Brás por causa de dívida",
+   "url": "https://agenciabrasil.ebc.com.br/economia/noticia/2026-09/mpsp-recomenda-intervencao-na-feira-do-bras-por-causa-de-divida",
+   "data": "2026-09-24T22:06+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "O Ministério Público de São Paulo (MPSP) recomendou à prefeitura da capital paulista a intervenção na administração da Feira da Madrugada do Brás, concedida à empresa Circuito de Compras. A feira reúne milhares de pequenos comerciantes de produtos populares, roupas e eletrônicos e onde circulam cerca de 15 mil pessoas por dia. Segundo o MP, a empresa cometeu uma série de irregularidades e acumula dívida de R$ 163 milhões, o que inviabiliza a continuidade da gestão. O MP pede que a prefeitura e a agência reguladora, a SP Regula, decretem a intervenção na concessão no prazo de 15 dias, além de a"
+  },
+  {
+   "id": "n-4eabc11e50",
+   "titulo": "CNJ faz operação em gabinete de desembargador ligado a Nunes Marques",
+   "url": "https://agenciabrasil.ebc.com.br/justica/noticia/2026-09/cnj-faz-operacao-em-gabinete-de-desembargador-ligado-nunes-marques",
+   "data": "2026-09-24T21:12+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [
+    "cnj",
+    "pf"
+   ],
+   "pessoas": [
+    "nunes-marques"
+   ],
+   "resumo": "O Conselho Nacional de Justiça (CNJ) realizou nesta quarta-feira (24) uma operação no gabinete do desembargador Newton Ramos, do Tribunal Regional Federal (TRF) da 1ª Região, sediado em Brasília. O magistrado passou a ser alvo de investigação do CNJ após ser citado em conversas encontradas no celular do ex-banqueiro Daniel Vorcaro. Notícias relacionadas: CNJ cancela R$ 4,7 bilhões em precatórios ligados ao Master. As buscas foram determinadas pelo corregedor nacional de Justiça, Benedito Gonçalves, e cumpridas pela Polícia Federal (PF). A operação ocorreu um dia após o CNJ determinar o cancela"
+  },
+  {
+   "id": "n-6c5ba4326a",
+   "titulo": "Projeto amplia reserva de vagas para mulheres em contratos públicos",
+   "url": "https://www.camara.leg.br/noticias/1304195-projeto-amplia-reserva-de-vagas-para-mulheres-em-contratos-publicos",
+   "data": "2026-09-24T21:09+00:00",
+   "fonte": "camara",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "Arquivo /Câmara dos Deputados Funcionários do serviço de limpeza realizam faxina na Câmara dos Deputados O Projeto de Lei 3361/26 prevê que pelo menos 30% das vagas de trabalho em contratos de serviços contínuos da administração pública sejam destinadas a mulheres. Esses serviços são necessários, de forma permanente ou prolongada, para manter atividades como limpeza, vigilância e outros serviços de apoio. A proposta está em análise na Câmara dos Deputados. Dentro da reserva de vagas, o projeto dá prioridade a mulheres em situação de vulnerabilidade econômica decorrente de violência doméstica e"
+  },
+  {
+   "id": "n-3dca5f9619",
+   "titulo": "Carteira de Identidade Nacional possibilita ter conta ouro no GOV.BR",
+   "url": "https://agenciabrasil.ebc.com.br/geral/noticia/2026-09/carteira-de-identidade-nacional-possibilita-ter-conta-ouro-no-govbr",
+   "data": "2026-09-24T21:00+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [
+    "mgi",
+    "inss"
+   ],
+   "pessoas": [],
+   "resumo": "O Ministério da Gestão e da Inovação em Serviços Públicos (MGI) informou nesta quinta-feira (24) que, dos 64 milhões de pessoas que já emitiram a Carteira de Identidade Nacional (CIN), 22 milhões ainda não utilizaram o documento para aumentar o nível de segurança da conta GOV.BR para ouro. A medida amplia a segurança no uso da plataforma, dificultando golpes, além de permitir o acesso aos mais de 5 mil serviços digitais do governo federal . Notícias relacionadas: Saiba usar a versão digital da Carteira de Identidade Nacional. INSS não deixará de pagar aposentadoria a quem não tem nova identida"
+  },
+  {
+   "id": "n-6edf5dbcb3",
+   "titulo": "Organização cria comunidades alternativas para questionar big techs",
+   "url": "https://agenciabrasil.ebc.com.br/geral/noticia/2026-09/organizacao-cria-comunidades-alternativas-para-questionar-big-techs",
+   "data": "2026-09-24T20:57+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "“As grandes empresas do Vale do Silício concentram muito poder e estão numa batalha para impedir que países como o Brasil tenham sua própria soberania digital. Querem que seus termos estejam acima das nossas leis.” Essa é a avaliação que o jornalista Henrique Sampaio faz sobre a concentração de poder nas mãos das grandes empresas de tecnologia, as chamadas big techs, cujas sedes estão na região conhecida como Vale do Silício, na Califórnia (EUA). Ele é coordenador de redes sociais da organização social Ctrl+Z , que se propõe a enfrentar o modelo de operação das big techs. Notícias relacionadas"
+  },
+  {
+   "id": "n-0f8a7bb8ad",
+   "titulo": "Brasileiros se sentem mais saudáveis do que são, diz pesquisa",
+   "url": "https://agenciabrasil.ebc.com.br/saude/noticia/2026-09/brasileiros-se-sentem-mais-saudaveis-do-que-sao-diz-pesquisa",
+   "data": "2026-09-24T20:52+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [
+    "anvisa"
+   ],
+   "pessoas": [],
+   "resumo": "Seis em cada dez brasileiros avaliam a própria saúde como ótima ou boa, mas 63% estão acima do peso e 42% não fazem atividade física, reunindo dois dos principais fatores de risco para o câncer, aponta uma pesquisa feita pelo A.C.Camargo Cancer Center e a Nexus Pesquisa e Inteligência de Dados. A pesquisa A saúde do brasileiro, hábitos de vida e o uso de tecnologia em diagnósticos médicos mostra ainda 26% dos entrevistados com obesidade, segundo os critérios da Organização Mundial da Saúde. Notícias relacionadas: Anvisa alerta para venda irregular de tirzepatida em pó na internet . Em 30 anos,"
+  },
+  {
+   "id": "n-2cdcedb96b",
+   "titulo": "Projeto cria medidas para proteger crianças e adolescentes contra publicidades de apostas",
+   "url": "https://www.camara.leg.br/noticias/1306587-projeto-cria-medidas-para-proteger-criancas-e-adolescentes-contra-publicidades-de-apostas",
+   "data": "2026-09-24T20:03+00:00",
+   "fonte": "camara",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "O projeto está em análise na Câmara dos Deputados"
+  },
+  {
+   "id": "n-31cb017a17",
+   "titulo": "PND 2026: gabaritos preliminares já estão disponíveis",
+   "url": "https://agenciabrasil.ebc.com.br/educacao/noticia/2026-09/pnd-2026-gabaritos-preliminares-estao-disponiveis",
+   "data": "2026-09-24T20:01+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [
+    "inep"
+   ],
+   "pessoas": [],
+   "resumo": "O Instituto Nacional de Estudos e Pesquisas Educacionais Anísio Teixeira (Inep) divulgou nesta quinta-feira (24) os gabaritos preliminares das questões objetivas e da expectativa de resposta da questão discursiva da segunda edição da Prova Nacional Docente (PND) , realizada no último domingo (20). Também foram publicados os cadernos de prova e a grade de correção da questão discursiva. Este é o documento oficial e detalhado que a banca examinadora do Inep adota para atribuir a pontuação à resposta discursiva de um candidato do exame. Notícias relacionadas: PND 2026 tem adesão de 2.007 municípi"
+  },
+  {
+   "id": "n-cb74012c2f",
+   "titulo": "Áudio: Programa de bolsas de iniciação à docência agora é lei",
+   "url": "https://www12.senado.leg.br/noticias/audios/2026/09/programa-de-bolsas-de-iniciacao-a-docencia-agora-e-lei",
+   "data": "2026-09-24T20:00:00+00:00",
+   "fonte": "senado",
+   "nos": [
+    "mec",
+    "capes"
+   ],
+   "pessoas": [],
+   "resumo": "Foi sancionada nesta semana a lei do Programa Institucional de Bolsa de Iniciação à Docência (Pibid), que oferece bolsas a estudantes de licenciatura para atividades de formação em escolas públicas. A Lei 15.518 define objetivos, princípios, modalidades de bolsas e a participação das instituições de ensino superior e redes públicas de educação básica, além da forma de avaliação da política. Até então, o programa não tinha lei própria e funcionava com base em portarias e decretos. A nova lei estabelece que o Pibid continuará a ser desenvolvido pelo Ministério da Educação e pela Capes, em parcer"
+  },
+  {
+   "id": "n-b196ab14eb",
+   "titulo": "Áudio: Quase 40% das brasileiras com deficiência já sofreram violência doméstica",
+   "url": "https://www12.senado.leg.br/noticias/audios/2026/09/quase-40-das-brasileiras-com-deficiencia-ja-sofreram-violencia-domestica",
+   "data": "2026-09-24T19:49:00+00:00",
+   "fonte": "senado",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "Pesquisa do Senado divulgada nesta semana estima que 38% das mulheres com deficiência no país (cerca de 4 milhões de pessoas) já sofreram algum tipo de violência doméstica, mas mais de 80% delas não denunciam os ataques. Ouça o áudio."
+  },
+  {
+   "id": "n-b4680ea91b",
+   "titulo": "Entidades pedem livre acesso à internet nas 72h anteriores às eleições",
+   "url": "https://agenciabrasil.ebc.com.br/justica/noticia/2026-09/entidades-pedem-livre-acesso-internet-nas-72h-anteriores-eleicoes",
+   "data": "2026-09-24T19:36+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [
+    "stf"
+   ],
+   "pessoas": [],
+   "resumo": "A Confederação Nacional dos Trabalhadores em Educação (CNTE) e o Partido Verde (PV) entraram com uma ação no Supremo Tribunal Federal (STF) para garantir acesso à internet móvel para todos os brasileiros, independente do limite da franquia de dados, nas 72 horas que antecedem as eleições. A ação foi remetida ao ministro Cristiano Zanin, na terça-feira (22). O objetivo é assegurar o acesso de todos à informação divulgada pela imprensa profissional e aos mecanismos de busca. Notícias relacionadas: TRE-SP alerta: derramamento de santinhos é crime eleitoral. Trama golpista: defesa de Bolsonaro des"
+  },
+  {
+   "id": "n-0d210efd97",
+   "titulo": "Ampliação da Via Dutra no Grande Rio deve ser concluída em um ano",
+   "url": "https://agenciabrasil.ebc.com.br/geral/noticia/2026-09/ampliacao-da-dutra-no-grande-rio-deve-ser-concluida-em-um-ano",
+   "data": "2026-09-24T18:31+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "As obras de ampliação e modernização do trecho da Rodovia Presidente Dutra (BR-116), no Grande Rio, serão concluídas até setembro do ano que vem. A informação foi divulgada pela concessionária Ecovias Rio Minas. As obras, que já estão 70% concluídas, são no trecho entre Seropédica, na Baixada Fluminense, e a cidade do Rio de Janeiro . Os trabalhos incluem: implantação de 35,24 quilômetros de vias marginais; 89,78 quilômetros de faixas adicionais; 20 passarelas para pedestres; 80 pontos de ônibus; 92 acessos; e quatro alças de conexão. Notícias relacionadas: DF promove mobilidade ativa na seman"
+  },
+  {
+   "id": "n-9fc465e8c4",
+   "titulo": "TRE-SP alerta: derramamento de santinhos é crime eleitoral",
+   "url": "https://agenciabrasil.ebc.com.br/justica/noticia/2026-09/tre-sp-alerta-derramamento-de-santinhos-e-crime-eleitoral",
+   "data": "2026-09-24T18:28+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "O derramamento de santinhos - prática de espalhar material impresso de propaganda eleitoral nas ruas - é ilegal, embora ainda seja comum na véspera da votação. De acordo com a Lei das Eleições, a conduta configura crime eleitoral com punições que podem provocar detenção e multa. Notícias relacionadas: Entidades denunciam agressões às mulheres que disputam cargos. Comunidade científica alerta para risco de interferência nas eleições. Maior colégio eleitoral do país, SP terá mais de 114 mil urnas . Segundo o vice-presidente do Tribunal Regional Eleitoral de São Paulo (TRE-SP) e corregedor region"
+  },
+  {
+   "id": "n-b1f6cdd283",
+   "titulo": "Projeto prevê parceria entre Detrans e estacionamentos para controlar uso de vagas reservadas",
+   "url": "https://www.camara.leg.br/noticias/1304190-projeto-preve-parceria-entre-detrans-e-estacionamentos-para-controlar-uso-de-vagas-reservadas",
+   "data": "2026-09-24T18:09+00:00",
+   "fonte": "camara",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "GettyImages Código de Trânsito considera infração gravíssima estacionar em vaga reservada sem credencial O Projeto de Lei 3327/26 prevê parcerias entre proprietários de estacionamentos privados e órgãos de trânsito para garantir o uso correto das vagas reservadas a pessoas com deficiência. O texto altera o Estatuto da Pessoa com Deficiência e está em análise na Câmara dos Deputados. Pela proposta, a parceria poderá incluir ações de orientação e conscientização, além da comunicação às autoridades de trânsito sobre possíveis casos de uso irregular das vagas. A adesão será voluntária. Os estabele"
+  },
+  {
+   "id": "n-a26f93ada3",
+   "titulo": "Proposta torna obrigatório indicar motivação em registro de crime contra pessoa com deficiência",
+   "url": "https://www.camara.leg.br/noticias/1304024-proposta-torna-obrigatorio-indicar-motivacao-em-registro-de-crime-contra-pessoa-com-deficiencia",
+   "data": "2026-09-24T17:31+00:00",
+   "fonte": "camara",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "Texto prevê que boletim de ocorrência informe quando houver indícios de que a deficiência da vítima motivou o crime"
+  },
+  {
+   "id": "n-6900993070",
+   "titulo": "Projeto proíbe propaganda e uso de exames de câncer sem comprovação científica",
+   "url": "https://www.camara.leg.br/noticias/1303905-projeto-proibe-propaganda-e-uso-de-exames-de-cancer-sem-comprovacao-cientifica",
+   "data": "2026-09-24T17:11+00:00",
+   "fonte": "camara",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "A medida visa garantir que os diagnósticos sigam critérios científicos e protejam a saúde da população"
+  },
+  {
+   "id": "n-2b4f627665",
+   "titulo": "Áudio: Lei estabelece protocolo nacional para atendimento a vítimas de estupro",
+   "url": "https://www12.senado.leg.br/noticias/audios/2026/09/lei-estabelece-protocolo-nacional-para-atendimento-a-vitimas-de-estupro",
+   "data": "2026-09-24T16:47:00+00:00",
+   "fonte": "senado",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "Foi publicada na quarta-feira (23) a Lei 15.516, de 2026, que institui um protocolo nacional para integrar o atendimento — por órgãos de saúde e segurança pública — a vítimas de estupro e outras violências físicas. A norma prevê atendimento médico imediato, apoio psicológico e social, preservação de vestígios e capacitação profissional para evitar a revitimização. Ouça o áudio."
+  },
+  {
+   "id": "n-176f51693d",
+   "titulo": "Áudio: Lei mantém incentivo fiscal para projetos sobre câncer e pessoas com deficiência",
+   "url": "https://www12.senado.leg.br/noticias/audios/2026/09/lei-mantem-incentivo-fiscal-para-projetos-sobre-cancer-e-pessoas-com-deficiencia",
+   "data": "2026-09-24T16:15:00+00:00",
+   "fonte": "senado",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "Foi publicada na quarta-feira (23) a Lei 15.513, de 2026, que prorroga até 2031 a possibilidade de empresas deduzirem do Imposto de Renda doações e patrocínios destinados ao Programa Nacional de Apoio à Atenção Oncológica e ao Programa Nacional de Apoio à Atenção da Saúde da Pessoa com Deficiência. Sem a nova lei, esse incentivo fiscal acabaria no final do ano. Ouça o áudio."
+  },
+  {
+   "id": "n-68c33f67f0",
+   "titulo": "Subsídio de R$ 2,12 ao diesel deve ser mantido por 30 dias",
+   "url": "https://agenciabrasil.ebc.com.br/economia/noticia/2026-09/subsidio-de-r-212-ao-diesel-deve-ser-mantido-por-30-dias",
+   "data": "2026-09-24T16:15+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [],
+   "pessoas": [
+    "bruno-moretti"
+   ],
+   "resumo": "O governo federal deve manter por mais 30 dias a subvenção de R$ 2,12 por litro de diesel, disse nesta quinta-feira (24) o ministro do Planejamento e Orçamento, Bruno Moretti. A prorrogação deverá ser anunciada ainda nesta semana . Atualmente, o benefício é resultado da combinação de duas medidas: uma subvenção de R$ 1,12 por litro, cuja validade termina neste sábado (26) , e outra de R$ 1 por litro, anunciada pelo governo no início de setembro . Notícias relacionadas: Subsídios à gasolina e ao diesel são ampliados após alta do petróleo. Gasolina chega a preços recordes nos Estados Unidos. Pet"
+  },
+  {
+   "id": "n-131e175ecc",
+   "titulo": "Contenção no Orçamento é reduzida de R$ 17,9 bi para R$ 16,1 bi",
+   "url": "https://agenciabrasil.ebc.com.br/economia/noticia/2026-09/contencao-no-orcamento-e-reduzida-de-r-179-bi-para-r-161-bi",
+   "data": "2026-09-24T16:13+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "O governo federal reduziu de R$ 17,9 bilhões para R$ 16,1 bilhões o total de despesas contidas no Orçamento de 2026, ao mesmo tempo em que abriu espaço para acomodar o reajuste do Bolsa Família. A mudança foi apresentada nesta quinta-feira (24), no Relatório de Avaliação de Receitas e Despesas Primárias do quarto bimestre. O novo montante é composto por R$ 2,4 bilhões em bloqueios e R$ 13,6 bilhões em contingenciamento . No relatório anterior, divulgado em julho, havia R$ 17,9 bilhões bloqueados e nenhum valor contingenciado. Notícias relacionadas: Gilmar Mendes valida reajuste do Bolsa Famíli"
+  },
+  {
+   "id": "n-f5edb4c128",
+   "titulo": "Eleições 2026: saiba a ordem dos votos na urna eletrônica",
+   "url": "https://www.camara.leg.br/noticias/1306560-eleicoes-2026-saiba-a-ordem-dos-votos-na-urna-eletronica",
+   "data": "2026-09-24T14:27+00:00",
+   "fonte": "camara",
+   "nos": [
+    "tse"
+   ],
+   "pessoas": [],
+   "resumo": "A sequência de votação é determinada pelo Tribunal Superior Eleitoral (TSE) e apresentada automaticamente pela urna"
+  },
+  {
+   "id": "n-f2a251d024",
+   "titulo": "Eleições 2026: especialistas apontam desafios em políticas de inclusão, diplomacia e inovação",
+   "url": "https://www.camara.leg.br/noticias/1306521-eleicoes-2026-especialistas-apontam-desafios-em-politicas-de-inclusao-diplomacia-e-inovacao",
+   "data": "2026-09-24T14:06+00:00",
+   "fonte": "camara",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "Série de entrevistas das Rádio Câmara reúne análises sobre prioridades para as áreas de direitos de pessoas com deficiência, relações internacionais e ciência e tecnologia"
+  },
   {
    "id": "n-e9ccb294e9",
    "titulo": "BC reduz projeção de crescimento da economia para 1,8%",
@@ -657,6 +1411,16 @@
    ],
    "pessoas": [],
    "resumo": "As florestas brasileiras renderam ao país uma produção econômica avaliada em R$ 47,9 bilhões em 2025. Esse é o maior valor já alcançado no Brasil e representa alta de 6,7% em relação ao ano anterior. Os dados se referem a florestas naturais ou plantadas e fazem parte da pesquisa Produção da Extração Vegetal e da Silvicultura, divulgada nesta quinta-feira (24) pelo Instituto Brasileiro de Geografia e Estatística (IBGE). Notícias relacionadas: Pesquisadores descrevem nova espécie de rã-de-vidro no Cerrado. Agricultura avança 11 milhões de hectares em 41 anos na Mata Atlântica. Pesquisa mostra pr"
+  },
+  {
+   "id": "n-4e6e7fca9b",
+   "titulo": "Projeto aumenta pena para motorista que matar pedestre ou ciclista",
+   "url": "https://www.camara.leg.br/noticias/1305730-projeto-aumenta-pena-para-motorista-que-matar-pedestre-ou-ciclista",
+   "data": "2026-09-24T13:00+00:00",
+   "fonte": "camara",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "Texto está em análise na Câmara dos Deputados"
   },
   {
    "id": "n-91b111f341",
@@ -734,6 +1498,16 @@
    ],
    "pessoas": [],
    "resumo": "Aposentados e pensionistas do Instituto Nacional do Seguro Social (INSS) que comparecerem às urnas nas eleições de outubro terão o registro da votação utilizado como uma das formas de comprovação de vida. Segundo o Ministério da Previdência Social, as informações sobre o comparecimento serão repassadas pela Justiça Eleitoral ao INSS e serão utilizadas no processo de prova de vida dos beneficiários. A informação foi confirmada pelo Tribunal Superior Eleitoral (TSE) na terça-feira (22). O registro do comparecimento poderá ser usado sem a necessidade de o beneficiário procurar uma agência bancári"
+  },
+  {
+   "id": "n-e05a981c30",
+   "titulo": "Comissão de Meio Ambiente debate fenômeno El Niño nesta quinta-feira; participe",
+   "url": "https://www.camara.leg.br/noticias/1306494-comissao-de-meio-ambiente-debate-fenomeno-el-nino-nesta-quinta-feira-participe",
+   "data": "2026-09-24T11:50+00:00",
+   "fonte": "camara",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "Audiência será interativa; envie suas perguntas"
   },
   {
    "id": "n-4c2c0c7614",
@@ -927,6 +1701,16 @@
    "resumo": "O dólar fechou em forte alta nesta quarta-feira (23), pressionado pela valorização da moeda estadunidense no exterior, pelo cenário eleitoral no Brasil e pela alta do petróleo. A divisa subiu mais de 1%, aproximando-se de R$ 5,17. A bolsa recuou quase 1%, voltando a ficar abaixo dos 186 mil pontos. Em Nova York, os principais índices também terminaram o dia em baixa, diante da alta dos juros dos Treasuries (títulos públicos estadunidenses) e das tensões no Oriente Médio. O petróleo subiu quase 3%, voltando a encostar nos US$ 100. Principais números Dólar comercial: R$ 5,169 (+1,27%); Ibovespa:"
   },
   {
+   "id": "n-569bb8099a",
+   "titulo": "Projeto incentiva criação de pistas de skate, ciclismo e esportes sobre rodas",
+   "url": "https://www.camara.leg.br/noticias/1304238-projeto-incentiva-criacao-de-pistas-de-skate-ciclismo-e-esportes-sobre-rodas",
+   "data": "2026-09-23T22:09+00:00",
+   "fonte": "camara",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "Acácio Pinheiro/Agência Brasília Skate é um dos esportes que poderá ser incentivado caso o projeto seja aprovado O Projeto de Lei 3199/26 define regras nacionais para ampliar o acesso da população a modalidades como ciclismo, skate, patins, patinete e uso de cadeiras de rodas esportivas. A proposta cria a Política Nacional de Incentivo à Implantação de Pump Tracks e Espaços Multifuncionais para Esportes sobre Rodas. O texto prevê que o governo federal poderá oferecer apoio técnico e institucional aos estados, ao Distrito Federal e aos municípios interessados na criação das pistas. O auxílio ab"
+  },
+  {
    "id": "n-638375fd0c",
    "titulo": "TCU recomenda análise de alternativas à caducidade da Enel em SP",
    "url": "https://agenciabrasil.ebc.com.br/economia/noticia/2026-09/tcu-recomenda-analise-de-alternativas-caducidade-da-enel-em-sp",
@@ -951,6 +1735,26 @@
    ],
    "pessoas": [],
    "resumo": "A Agência Nacional de Vigilância Sanitária (Anvisa) divulgou um alerta, nesta quarta-feira (23), sobre a oferta irregular nas redes sociais de tirzepatida em pó. A substância é um medicamento injetável que ativa o receptor de GLP-1, presente nas chamadas canetas emagrecedoras. No Brasil, a tirzepatida regulamentada pela Anvisa é vendida em farmácias, sendo o princípio ativo presente no Mounjaro. Também pode ser encontrada em farmácias de manipulação, desde que o paciente tenha indicação e prescrição médica. Notícias relacionadas: Em 30 anos, obesidade triplica e atinge 1/4 da população adulta."
+  },
+  {
+   "id": "n-b422747e27",
+   "titulo": "Projeto isenta veículos oficiais de saúde de infrações de trânsito em urgências",
+   "url": "https://www.camara.leg.br/noticias/1304172-projeto-isenta-veiculos-oficiais-de-saude-de-infracoes-de-transito-em-urgencias",
+   "data": "2026-09-23T21:41+00:00",
+   "fonte": "camara",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "Albari Rosa/AEN Paraná Carro do sistema de transplantes do Paraná utilizado para o transporte de órgãos O Projeto de Lei 3292/26 altera o Código de Trânsito Brasileiro (CTB) para garantir que veículos oficiais de saúde em serviço de urgência, emergência ou atendimento sanitário tenham livre circulação, parada e estacionamento, sem a aplicação de infrações de trânsito. Atualmente, a legislação confere essa prioridade apenas a ambulâncias, veículos de polícia, fiscalização de trânsito e socorro de incêndio. A proposta estende o benefício a carros oficiais utilizados no transporte de equipes médi"
+  },
+  {
+   "id": "n-99d5d3186f",
+   "titulo": "Projeto proíbe exportação de animais silvestres nativos do Brasil",
+   "url": "https://www.camara.leg.br/noticias/1306099-projeto-proibe-exportacao-de-animais-silvestres-nativos-do-brasil",
+   "data": "2026-09-23T21:13+00:00",
+   "fonte": "camara",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "Proposta está em análise na Câmara dos Deputados"
   },
   {
    "id": "n-f3290fc220",
@@ -997,6 +1801,16 @@
    "resumo": "A Perícia Forense do Ceará (Pefoce) informou nesta quarta-feira (23) que as análises periciais preliminares apontam que Isabelle Caracristi, de 22 anos, se jogou do prédio. As investigações continuam para esclarecer o caso. O namorado João Munhoz Neto está preso sob suspeita de violência psicológica contra a namorada e de indução ao suicídio. A universitária foi encontrada morta no último dia 13 de setembro, no pátio de um edifício residencial, onde morava com o namorado e familiares dele, localizado no bairro Aldeota, em Fortaleza. Notícias relacionadas: Polícia do Ceará prende João Munhoz, n"
   },
   {
+   "id": "n-aa14bba6ec",
+   "titulo": "Lei regulamenta exercício da psicopedagogia com veto a requisitos de formação",
+   "url": "https://www.camara.leg.br/noticias/1306247-lei-regulamenta-exercicio-da-psicopedagogia-com-veto-a-requisitos-de-formacao",
+   "data": "2026-09-23T20:10+00:00",
+   "fonte": "camara",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "Norma assegura continuidade do exercício para atuais psicopedagogos e define atribuições e regras de sigilo profissional"
+  },
+  {
    "id": "n-eb588cf86b",
    "titulo": "Franca (SP) passa a ser, por lei, Capital Nacional do Basquete",
    "url": "https://www12.senado.leg.br/noticias/materias/2026/09/23/franca-sp-passa-a-ser-por-lei-capital-nacional-do-basquete",
@@ -1037,7 +1851,9 @@
    "data": "2026-09-23T18:35:00+00:00",
    "fonte": "senado",
    "nos": [],
-   "pessoas": [],
+   "pessoas": [
+    "juninho-do-pneu"
+   ],
    "resumo": "Foi sancionada nessa terça-feira (22), a Lei 15.517, que aumenta as penas para furto ou roubo de petróleo, gás, etanol, gasolina, diesel, biocombustíveis ou lubrificantes. A lei decorre do PL 1.482/2019, do deputado Juninho do Pneu (PSDB-RJ). O projeto foi aprovado no Senado no último dia 2 de setembro. Para o furto de combustíveis, o projeto prevê pena de 4 a 10 anos de reclusão e multa. Pela lei até então em vigor, a mesma dos furtos simples, a pena ia de 1 a 6 anos de reclusão, ou 2 a 8 anos em caso de furto qualificado (como ações em grupo), além da multa. No caso do roubo, que envolve vio"
   },
   {
@@ -2272,7 +3088,9 @@
    "nos": [
     "inep"
    ],
-   "pessoas": [],
+   "pessoas": [
+    "da-vitoria"
+   ],
    "resumo": "Mais de 625 mil estudantes concluintes e formados em licenciatura de todo o país farão, neste domingo (20), a Prova Nacional Docente (PND). O resultado do exame pode ser usado em processos de seleção de professores por entes federativos que optarem por adotar a nota da PND. Para os alunos concluintes, a PND é considerada a avaliação teórica obrigatória do Exame Nacional de Desempenho dos Estudantes (Enade) das Licenciaturas, que, por sua vez, é um pré-requisito para a obtenção do diploma do curso de graduação. Notícias relacionadas: Inep muda locais de exame da PND em União da Vitória (PR). PN"
   },
   {
@@ -2324,7 +3142,9 @@
    "data": "2026-09-19T20:26+00:00",
    "fonte": "agenciabrasil",
    "nos": [],
-   "pessoas": [],
+   "pessoas": [
+    "paulo-teixeira"
+   ],
    "resumo": "Morreu neste sábado (19), aos 77 anos, o médico Paulo Roberto Teixeira, uma das referências em saúde pública no Brasil. Ele foi protagonista na criação da primeira resposta de governo à aids no Brasil, em 1983, época em que a doença era ainda pouco conhecida e marcada pelo estigma. Quando os primeiros casos da doença foram confirmados em São Paulo, Teixeira estava à frente do programa de hanseníase do estado. A experiência com uma doença que também era marcada pela exclusão, ajudou a desenhar para a aids uma política pautada no direito à saúde e ao respeito, que passava pela prevenção e assist"
   },
   {
@@ -2346,7 +3166,9 @@
    "nos": [
     "inep"
    ],
-   "pessoas": [],
+   "pessoas": [
+    "da-vitoria"
+   ],
    "resumo": "O Instituto Nacional de Estudos e Pesquisas Educacionais Anísio Teixeira (Inep) alterou os endereços de dois locais de aplicação da Prova Nacional Docente (PND), no município de União Vitória (PR). Os exames serão aplicados na tarde deste domingo (20), em 800 municípios brasileiros. Os docentes que fariam a prova no Colégio Estadual Astolpho Macedo de Souza, no bairro São Basílio Magno, agora terão que fazer o exame na Escola Municipal Hilda Romanzini de Melo, que fica na Praça Coronel Amazonas, 100, no Centro. Notícias relacionadas: PND 2026: candidato deve responder questionário até sábado. "
   },
   {
@@ -3144,7 +3966,9 @@
    "nos": [
     "tse"
    ],
-   "pessoas": [],
+   "pessoas": [
+    "ze-trovao"
+   ],
    "resumo": "O ministro André Mendonça, do Tribunal Superior Eleitoral (TSE), rejeitou nesta quinta-feira (17) ação protocolada pelo deputado Zé Trovão (PL-SC) questionando o reajuste para os benefícios do programa Bolsa Família. A ação foi rejeitada por motivos processuais. Desta forma, não foi analisado o mérito. Notícias relacionadas: Bolsa Família é reajustado em 15%; medida vale a partir de outubro. No entendimento do ministro, não é legítimo que um candidato a deputado federal apresente uma ação contra um candidato à Presidência da República, pois os dois cargos são disputados em circunscrições eleit"
   },
   {
@@ -3202,7 +4026,9 @@
     "stf",
     "inss"
    ],
-   "pessoas": [],
+   "pessoas": [
+    "laura-carneiro"
+   ],
    "resumo": "Depositphotos Projeto prevê o benefício a contribuintes individuais, facultativas e seguradas especiais O Projeto de Lei 1599/26 isenta de carência a concessão do salário-maternidade para todas as seguradas da Previdência Social. O texto em análise na Câmara dos Deputados prevê o benefício a contribuintes individuais, facultativas e seguradas especiais sem a exigência mínima de dez meses de contribuição prévia. Autora da proposta, a deputada Laura Carneiro (PSD-RJ) afirmou que a iniciativa visa consolidar entendimento firmado pelo Supremo Tribunal Federal (STF), que em 2024 considerou inconsti"
   },
   {
@@ -3304,7 +4130,9 @@
    "data": "2026-09-17T18:44+00:00",
    "fonte": "camara",
    "nos": [],
-   "pessoas": [],
+   "pessoas": [
+    "cezinha-de-madureira"
+   ],
    "resumo": "viperag/DepositPhotos Interferências de sinal podem acontecer de forma involuntária, como em casos de chuvas fortes ou descargas elétricas O projeto de lei 3145/26 isenta de punições administrativas, como multas ou perda da concessão, as estações de rádio que causarem interferências no sinal de outros serviços de comunicação. A medida abrange interferências que ocorram dentro de um raio de 100 km de da antena transmissora. A proposta está em análise na Câmara dos Deputados. O autor, deputado Cezinha de Madureira (PL-SP), argumenta que a legislação atual pune as rádios por problemas técnicos qu"
   },
   {
@@ -5513,6 +6341,7 @@
     "congresso"
    ],
    "pessoas": [
+    "daniel-agrobom",
     "damares-alves",
     "nelsinho-trad"
    ],
@@ -6272,7 +7101,7 @@
     "camara"
    ],
    "pessoas": [
-    "eduardo-gomes"
+    "carlos-gomes"
    ],
    "resumo": "A Presidência da República sancionou, na última sexta-feira (4), a Lei 15.498, que atualiza os valores das custas judiciais na Justiça Federal e no Superior Tribunal de Justiça (STJ) e cria fundos para financiar e modernizar o sistema judicial. A norma recebeu quatro vetos, que abrangem ao todo 17 dispositivos. Teve origem no Projeto de Lei (PL) 429/2024, apresentado pelo STJ em 2013. A proposta foi aprovada com alterações pela Câmara dos Deputados em dezembro de 2024 e encaminhada ao Senado. No Senado, o projeto foi aprovado em agosto, tendo como relator o senador Eduardo Gomes (PL-TO), e ret"
   },
@@ -6991,7 +7820,9 @@
    "data": "2026-09-04T14:07:00+00:00",
    "fonte": "senado",
    "nos": [],
-   "pessoas": [],
+   "pessoas": [
+    "flavia-morais"
+   ],
    "resumo": "O dia 6 de setembro passou a ser o Dia Nacional do Carreiro de Boi. A homenagem está prevista na Lei 15.495, de 2026, sancionada pelo presidente da República e publicada nesta sexta-feira (4) no Diário Oficial da União (DOU). No passado, o carro de boi era usado para transportar pessoas e mercadorias, principalmente na produção agrícola. A tradição dos carreiros, no entanto, permanece viva e hoje faz parte de manifestações culturais em diferentes regiões do país. A lei tem origem no Projeto de Lei (PL) 1.036/2024, da deputada Flávia Morais (PDT-GO). No Senado, a proposta foi aprovada em decisã"
   },
   {
@@ -7153,6 +7984,7 @@
    "fonte": "senado",
    "nos": [],
    "pessoas": [
+    "juninho-do-pneu",
     "randolfe-rodrigues"
    ],
    "resumo": "O roubo de petróleo, combustíveis e derivados pode ter penas mais duras. É o que prevê um projeto aprovado pelos senadores, na quinta (3). O PL 1.482/2019, do deputado Juninho do Pneu (PSDB-RJ), foi relatado pelo senador Randolfe Rodrigues (PT-AP) e agora segue para sanção."
@@ -7682,6 +8514,7 @@
    "fonte": "senado",
    "nos": [],
    "pessoas": [
+    "carlos-henrique-gaguim",
     "mara-gabrilli"
    ],
    "resumo": "A Comissão de Direitos Humanos (CDH) aprovou na quarta-feira (2) a regulamentação do chamado \"emprego apoiado\", voltado a pessoas com deficiência ou doença rara. O texto estabelece medidas para facilitar acesso, permanência e a progressão profissional de pessoas que necessitam de apoio individualizado. Aprovada na forma de um substitutivo da senadora Mara Gabrilli (PSD-SP), a matéria será alisada pelas comissões de Assuntos Econômicos (CAE) e de Assuntos Sociais (CAS). Mara Gabrilli apresentou uma versão alternativa ao Projeto de Lei (PL) 1.532/2023, do deputado Carlos Henrique Gaguim (União-T"
@@ -7877,6 +8710,7 @@
    "fonte": "senado",
    "nos": [],
    "pessoas": [
+    "juninho-do-pneu",
     "randolfe-rodrigues"
    ],
    "resumo": "O Plenário do Senado aprovou na noite desta quarta-feira (2) um projeto de lei que aumenta as penas para furto e roubo de petróleo, gás natural e outros combustíveis. O texto teve voto favorável do relator, senador Randolfe Rodrigues (PT-AP), e agora segue para sanção da Presidência da República. O PL 1.482/2019, do deputado Juninho do Pneu (PSDB-RJ), trata de petróleo e derivados, gás natural, combustíveis líquidos e biocombustíveis, além de óleos lubrificantes retirados de locais de produção, armazenamento ou transporte, incluindo dutos e unidades de transporte em qualquer modal. O texto def"
@@ -7889,6 +8723,7 @@
    "fonte": "senado",
    "nos": [],
    "pessoas": [
+    "laura-carneiro",
     "alessandro-vieira"
    ],
    "resumo": "Um projeto que estabelece princípios e diretrizes para garantir o direito da criança e do adolescente à natureza, “com absoluta prioridade”, foi aprovado no Plenário do Senado nesta quarta-feira (2). O PL 2.225/2024, da deputada federal Laura Carneiro (PSD-RJ), foi aprovado na forma do parecer favorável do senador Alessandro Vieira (MDB-SE) apresentado à Comissão de Meio Ambiente (CMA), e segue para sanção presidencial. A proposta estabelece prioridade no recebimento de amparo em situações de riscos socioambientais e climáticos, além de assegurar “o acesso a áreas naturais saudáveis”, o “brinc"
@@ -7945,7 +8780,9 @@
    "data": "2026-09-02T23:45:00+00:00",
    "fonte": "senado",
    "nos": [],
-   "pessoas": [],
+   "pessoas": [
+    "doutor-luizinho"
+   ],
    "resumo": "O Senado aprovou nesta quarta-feira (2), em regime de urgência (RQS 665/2026), o Projeto de Lei (PL) 1.743/2024, que faz alterações na estrutura do Conselho Federal da Ordem dos Advogados do Brasil (OAB), visando melhorar a organização interna da entidade. A proposta, do deputado Doutor Luizinho (PP-RJ), segue para sanção presidencial. O projeto altera o Estatuto da Advocacia (Lei 8.906, de 1994). Cria dois novos cargos na diretoria do Conselho Federal da OAB, de diretor administrativo e diretor executivo, no lugar do de secretário-geral adjunto; atualiza a função do corregedor-geral; e permit"
   },
   {
@@ -7956,6 +8793,7 @@
    "fonte": "senado",
    "nos": [],
    "pessoas": [
+    "coronel-fernanda",
     "jayme-campos"
    ],
    "resumo": "O Senado aprovou nesta quarta-feira (2) um projeto de lei que cria um protocolo unificado de atendimento, em unidades de saúde ou delegacias, para casos de estupro e outras formas de violência contra mulher, criança, adolescente e pessoa em situação de vulnerabilidade. O PL 2.525/2024, da deputada Coronel Fernanda (PL-MT), segue para sanção presidencial. O relator no Plenário foi o senador Jayme Campos (União-MT), que manteve o mesmo texto já aprovado pelos deputados federais. O texto permite configurar como violência institucional o descumprimento do protocolo, se isso resultar em revitimizaç"
@@ -7993,7 +8831,10 @@
    "nos": [
     "tcu"
    ],
-   "pessoas": [],
+   "pessoas": [
+    "julio-cesar-castelo-branco-reis-moreira",
+    "julio-cesar-ribeiro"
+   ],
    "resumo": "O Plenário aprovou nesta quarta-feira (2) um projeto de lei que transfere ao Comitê Brasileiro de Clubes (CBC) o percentual de 0,01% da arrecadação de jogos de loteria federal, montante hoje direcionado à Federação Nacional dos Clubes (Fenaclubes). O PL 2.584/2025 será encaminhado à sanção presidencial. O projeto do deputado Júlio Cesar Ribeiro (Republicanos-DF) altera a Lei das Loterias (Lei 13.756, de 2018) para garantir que o dinheiro seja aplicado na formação de gestores de clubes esportivos. O projeto também atualiza a lista de entidades fiscalizadas pelo Tribunal de Contas da União (TCU)"
   },
   {
@@ -8054,6 +8895,7 @@
    "fonte": "senado",
    "nos": [],
    "pessoas": [
+    "sergio-souza",
     "mara-gabrilli"
    ],
    "resumo": "Os incentivos fiscais para doações e patrocínios destinados ao Programa Nacional de Apoio à Atenção Oncológica (Pronon) e ao Programa Nacional de Apoio à Atenção da Saúde da Pessoa com Deficiência (Pronas/PCD) foram prorrogados até 2031 pelo Senado nesta quarta-feira (2). O Projeto de Lei (PL) 6.231/2019 segue para sanção presidencial. O texto de autoria do deputado Sergio Souza (MDB-PR) altera a Lei 12.715, de 2012, que instituiu os dois programas. A proposta recebeu parecer favorável da senadora Mara Gabrilli (PSD-SP). O Pronon e o Pronas/PCD permitem que pessoas físicas e jurídicas deduzam "
@@ -8284,6 +9126,7 @@
    "fonte": "senado",
    "nos": [],
    "pessoas": [
+    "juninho-do-pneu",
     "randolfe-rodrigues"
    ],
    "resumo": "A Comissão de Constituição, Justiça e Cidadania (CCJ) aprovou nesta quarta-feira (2) um projeto de lei que aumenta as penas para furto e roubo de petróleo, gás natural e outros combustíveis. O texto recebeu parecer favorável do senador Randolfe Rodrigues (PT-AP), com emendas, e agora segue para análise no Plenário em regime de urgência. O PL 1.482/2019, de autoria do deputado Juninho do Pneu (PSDB-RJ), altera o Código Penal e a Lei 8.176, de 1991. A proposta trata de petróleo e derivados, gás natural, combustíveis líquidos e biocombustíveis, além de óleos lubrificantes retirados de locais de p"
@@ -8339,6 +9182,7 @@
    "fonte": "senado",
    "nos": [],
    "pessoas": [
+    "geraldo-resende",
     "nelsinho-trad"
    ],
    "resumo": "O Plenário do Senado aprovou nesta quarta-feira (2) o projeto de lei que dá o nome de Ponte Heitor Miranda dos Santos a uma ponte que liga o Brasil ao Paraguai — mais especificamente, ao trecho brasileiro sobre o Rio Paraguai que liga as cidades de Porto Murtinho (MS) e Carmelo Peralta, no Paraguai. O projeto (PL 780/2023), de autoria do deputado federal Geraldo Resende (União-MS), teve como relator o senador Nelsinho Trad (PSD-MS). A matéria segue para a sanção da Presidência da República. A ponte está em fase final de construção e a previsão é que seja inaugurada até o próximo ano. Heitor Mi"
@@ -8365,6 +9209,7 @@
     "camara"
    ],
    "pessoas": [
+    "pompeo-de-mattos",
     "jussara-lima"
    ],
    "resumo": "O Senado aprovou nesta quarta-feira (2) projeto que permite a professores e outros estudantes ocupar vagas disponíveis em veículos do transporte escolar rural, desde que não seja prejudicado o atendimento aos alunos da educação básica pública que vivem no campo. A proposta, do deputado Pompeo de Mattos (PDT-RS), volta à Câmara dos Deputados, porque foi modificada pelos senadores. O Projeto de Lei (PL) 743/2023 foi aprovado na forma do substitutivo (texto alternativo) da relatora, senadora Jussara Lima (PSD-PI), que havia recebido o aval da Comissão de Educação (CE) em agosto. Pelo texto, o com"
@@ -8596,6 +9441,7 @@
     "congresso"
    ],
    "pessoas": [
+    "aecio-neves",
     "rodrigo-pacheco"
    ],
    "resumo": "O Plenário da Câmara dos Deputados aprovou nesta quarta-feira (2) o projeto de decreto legislativo, do Senado, que indica o senador Rodrigo Pacheco (PSB-MG) para vaga de ministro do Tribunal de Contas da União (TCU). O relator do PDL 995/2026 foi o deputado Aécio Neves (PSDB-MG), que recomendou a aprovação. Foram 404 votos a 61 e uma abstenção. Como já havia sido aprovada pelo Senado, a indicação vai à promulgação pelo Congresso Nacional. — Não temos dúvida do preparo técnico e político de Rodrigo Pacheco. Desejo que ele tenha no TCU o mesmo êxito obtido no Congresso — disse o presidente da Câ"
@@ -8922,7 +9768,9 @@
    "data": "2026-09-02T11:53+00:00",
    "fonte": "camara",
    "nos": [],
-   "pessoas": [],
+   "pessoas": [
+    "luizianne-lins"
+   ],
    "resumo": "Sejuf/PR Ligue 180, Central de Atendimento à Mulher do governo federal A Comissão Permanente Mista de Combate à Violência contra a Mulher promove audiência pública nesta quarta-feira (2) para discutir o uso de tecnologias como ferramentas de apoio no combate à violência contra mulheres. O debate foi proposto pela presidente da comissão, deputada Luizianne Lins (Rede-CE), e está marcado para as 14h30, no plenário 7 da ala Alexandre Costa, no Senado. A audiência será interativa; veja quem foi convidado e envie suas perguntas A deputada afirma que a violência contra a mulher continua sendo um gra"
   },
   {
@@ -8942,7 +9790,9 @@
    "data": "2026-09-02T11:49+00:00",
    "fonte": "camara",
    "nos": [],
-   "pessoas": [],
+   "pessoas": [
+    "aureo-ribeiro"
+   ],
    "resumo": "O relatório do deputado Aureo Ribeiro consolida 270 propostas de alteração na legislação de trânsito, incluindo a formação de condutores"
   },
   {
@@ -9128,7 +9978,9 @@
    "nos": [
     "camara"
    ],
-   "pessoas": [],
+   "pessoas": [
+    "felipe-carreras"
+   ],
    "resumo": "O Plenário do Senado aprovou nesta terça-feira (1°) o PL 3.453/2024, projeto de lei que estabelece prazo de cinco anos para a aplicação de sanções administrativas contra notários e registradores. A matéria segue para a sanção da Presidência da República. A proposta, de autoria do deputado federal Felipe Carreras (PSB-PE), foi aprovada pelo Senado sem alterações em relação ao texto que passou na Câmara dos Deputados no final de abril. Para determinar que a ação para a aplicação das sanções prescreva em cinco anos, contados da ocorrência do fato, o projeto altera a Lei dos Cartórios. No caso das"
   },
   {
@@ -9276,7 +10128,7 @@
    "fonte": "senado",
    "nos": [],
    "pessoas": [
-    "eduardo-gomes"
+    "carlos-gomes"
    ],
    "resumo": "A medida provisória que concede um adicional na remuneração para servidores que trabalham em localidades estratégicas de fronteira foi aprovada com alterações pela comissão mista que analisa a matéria (MP 1.375/2026). O projeto de lei de conversão (PLV) apresentado pelo relator, senador Eduardo Gomes (PL-TO), aumenta o valor da indenização, amplia as carreiras beneficiadas e permite a inclusão de municípios da Amazônia Legal entre as localidades estratégicas. A MP editada pelo governo federal previa o pagamento de R$ 91 por dia de trabalho. Pelo texto aprovado nesta terça-feira (1º), o valor p"
   },
@@ -9538,6 +10390,7 @@
    "fonte": "senado",
    "nos": [],
    "pessoas": [
+    "reginaldo-lopes",
     "leila-barros"
    ],
    "resumo": "A comissão mista que analisa a chamada “MP das blusinhas” volta a se reunir nesta quarta-feira (2), às 10h. A reunião marcada para a tarde desta terça-feira (1º) foi suspensa. O presidente da comissão, deputado Reginaldo Lopes (PT-MG), e a relatora da MP 1.357/2026, senadora Leila Barros (PDT-DF), ainda buscam um acordo sobre ajustes para o texto final da medida provisória, que tem validade apenas até o próximo dia 8. A MP zerou o Imposto de Importação sobre compras internacionais de até US$ 50 (cerca de R$ 260), a chamada “taxa das blusinhas”, e alterou a tributação de outras remessas. A medi"
@@ -9805,6 +10658,7 @@
    "fonte": "senado",
    "nos": [],
    "pessoas": [
+    "maria-rosas",
     "flavio-arns"
    ],
    "resumo": "A Comissão de Assuntos Sociais (CAS) aprovou, nesta terça-feira (1º), projeto que cria o Programa Empresa Rosa e o Selo Rosa, voltados à inclusão e à reinserção profissional de mulheres com diagnóstico, em tratamento ou em período de espera de remissão de câncer de mama. A proposta também estabelece medidas para melhorar as condições de trabalho dessas mulheres. O projeto segue para análise do Plenário. O PL 5.608/2023, da deputada Maria Rosas (Republicanos-SP), recebeu parecer favorável da senadora Dra. Eudócia (PSDB-AL), lido na comissão pelo senador Flávio Arns (PSB-PR). Segundo o relatório"
@@ -10102,6 +10956,7 @@
    "fonte": "senado",
    "nos": [],
    "pessoas": [
+    "tulio-gadelha",
     "fernando-dueire"
    ],
    "resumo": "A Poesia do Pajeú, tradição de poesia oral e escrita desenvolvida no sertão de Pernambuco, poderá ser reconhecida como manifestação da cultura nacional. A tradição reúne cantoria de viola, repente, cordel e outras formas de improviso e versificação. O Projeto de Lei (PL) 4.254/2025, do deputado Túlio Gadêlha (Rede-PE), foi aprovado nesta terça-feira (1º) pela Comissão de Educação e Cultura (CE). O texto recebeu parecer favorável do senador Fernando Dueire (PSD-PE) e segue para análise do Plenário, em regime de urgência. Segundo o relator, a Poesia do Pajeú contribui para preservar a memória co"
@@ -10164,6 +11019,8 @@
    "fonte": "senado",
    "nos": [],
    "pessoas": [
+    "julio-cesar-castelo-branco-reis-moreira",
+    "julio-cesar-ribeiro",
     "leila-barros"
    ],
    "resumo": "A Comissão de Assuntos Econômicos (CAE) aprovou nesta terça-feira (1º) a mudança do destino de 0,01% do valor arrecadado pelas loterias federais. Pelo texto, sai a Fenaclubes e entra em campo o Comitê Brasileiro de Clubes (CBC). Projeto nesse sentido recebeu parecer favorável da senadora Leila Barros (PDT-DF) e segue agora para análise do Plenário com pedido de votação em regime de urgência. O PL 2.584/2025, do deputado Júlio Cesar Ribeiro (Republicanos-DF), altera a Lei das Loterias (Lei 13.756, de 2018) para transferir ao CBC o percentual de 0,01% da arrecadação de jogos de loteria federal, "
@@ -10256,7 +11113,9 @@
    "data": "2026-09-01T13:39+00:00",
    "fonte": "camara",
    "nos": [],
-   "pessoas": [],
+   "pessoas": [
+    "laura-carneiro"
+   ],
    "resumo": "Joá Souza/GOVBA Jovens relatam dificuldade de acessar plataformas governamentais O projeto de lei 3160/26 permite acesso gratuito, pelo celular, a serviços públicos digitais mesmo quando a pessoa não tiver franquia de internet ou créditos em planos pré-pagos. A iniciativa abrange os serviços da plataforma Gov.br e de aplicativos da administração pública federal. A proposta está em análise na Câmara dos Deputados. Conforme a autora, deputada Laura Carneiro (PSD-RJ), o texto teve origem em demandas apresentadas em reuniões comunitárias promovidas pelo Fórum Estadual das Juventudes do Rio de Jane"
   },
   {
@@ -10409,7 +11268,9 @@
    "data": "2026-09-01T11:45+00:00",
    "fonte": "camara",
    "nos": [],
-   "pessoas": [],
+   "pessoas": [
+    "julio-lopes"
+   ],
    "resumo": "Renato Araújo / Câmara dos Deputados Reunião da Comissão Externa sobre Pirataria A Comissão Externa da Câmara dos Deputados sobre Pirataria reúne-se na próxima nesta terça-feira (1º) para analisar o relatório parcial do deputado Julio Lopes (PP-RJ), coordenador do colegiado. A reunião está marcada para as 15 horas, no plenário 8. Veja a pauta A comissão A comissão externa, criada em fevereiro, tem como objetivo reforçar o combate à pirataria e a outras ilegalidades que afetam a economia, a livre concorrência, a arrecadação tributária, a geração de empregos formais e a proteção do consumidor. O"
   },
   {
@@ -10453,7 +11314,10 @@
    "data": "2026-09-01T11:32+00:00",
    "fonte": "camara",
    "nos": [],
-   "pessoas": [],
+   "pessoas": [
+    "capitao-alden",
+    "taliria-petrone"
+   ],
    "resumo": "ARTE\\SECOM Comissão vai decidir sobre a realização de debates A comissão especial da Câmara dos Deputados que analisa a proposta de redução da maioridade civil e penal para 16 anos (PEC 32/15) reúne-se, nesta terça-feira (1º), para votar requerimentos que pedem a realização de debates relacionados ao tema. A reunião será realizada às 14 horas, no plenário 7. Veja a pauta da reunião Está prevista a votação de 16 requerimentos apresentados pelos deputados Talíria Petrone (Psol-RJ) e Capitão Alden (PL-BA). Entre os temas propostos para debate estão a redução a proteção de crianças e adolescentes,"
   },
   {
@@ -10475,7 +11339,9 @@
    "data": "2026-09-01T11:05+00:00",
    "fonte": "camara",
    "nos": [],
-   "pessoas": [],
+   "pessoas": [
+    "erika-kokay"
+   ],
    "resumo": "Depositphotos Menina com atrofia muscular espinhal, doença neuromuscular rara A Comissão de Direitos Humanos, Minorias e Igualdade Racial da Câmara dos Deputados realiza, na terça-feira (1º), audiência pública sobre o tratamento e a assistência a pessoas com doenças raras e condições crônicas. O debate será realizado às 10 horas, no plenário 9, e será interativo. Veja quem foi convidado e envie perguntas A audiência foi pedida pela Erika Kokay (PT-DF). Ela é autora do Projeto de Lei 2849/20, que garante prioridade de atendimento a quem tem Síndrome de Fibromialgia ou Fadiga Crônica. Essa propo"
   },
   {
@@ -10597,7 +11463,9 @@
    "data": "2026-08-31T21:16:00+00:00",
    "fonte": "senado",
    "nos": [],
-   "pessoas": [],
+   "pessoas": [
+    "reginaldo-lopes"
+   ],
    "resumo": "Inicialmente prevista para a segunda-feira (31), foi remarcada para a manhã desta terça-feira (1º), às 10h, a apresentação e votação do relatório da Medida Provisória (MPV) 1.357/2026, que zerou o Imposto de Importação sobre compras internacionais de até US$ 50 (cerca de R$ 260), a chamada “taxa das blusinhas”, e alterou a tributação de outras remessas. O deputado Reginaldo Lopes (PT-MG), presidente da comissão, atribuiu a suspensão da reunião à necessidade de fazer “os últimos ajustes no relatório”, citando o diálogo, “extremamente importante e característica do próprio Parlamento”, na busca "
   },
   {
@@ -10690,6 +11558,8 @@
    "fonte": "senado",
    "nos": [],
    "pessoas": [
+    "erika-hilton",
+    "reginaldo-lopes",
     "paulo-paim"
    ],
    "resumo": "Em pronunciamento nesta segunda-feira (31) no Plenário, o senador Paulo Paim (PT-RS) celebrou a inclusão da proposta de emenda à Constituição (PEC) 221/2019 no esforço concentrado desta semana no Senado. O texto que acaba com a escala 6x1 e reduz a jornada de trabalho está na pauta da Comissão de Constituição e Justiça (CCJ) da quarta-feira (2). Paim é autor da PEC 148/2015, que trata do mesmo tema e foi aprovada em dezembro passado pela CCJ. Ele também destacou que a PEC 8/2025, da deputada Erika Hilton (PSOL-SP), foi apensada à PEC 221, de autoria do deputado Reginaldo Lopes (PT-MG). — Essa "
@@ -11170,6 +12040,7 @@
    "fonte": "senado",
    "nos": [],
    "pessoas": [
+    "reginaldo-lopes",
     "leila-barros"
    ],
    "resumo": "A comissão mista da medida provisória que zerou o Imposto de Importação sobre compras internacionais de até US$ 50 (cerca de R$ 259) e alterou a tributação de outras remessas elegeu nesta sexta-feira (28) o deputado Reginaldo Lopes (PT-MG) como presidente. Designada relatora, a senadora Leila Barros (PDT-DF) afirmou que pretende apresentar o texto na segunda-feira (31). A MP 1.357/2026 trata da cobrança conhecida como “taxa das blusinhas”. A medida alterou regras do Regime de Tributação Simplificada e autorizou o ministro da Fazenda a modificar as alíquotas do Imposto de Importação, podendo re"
@@ -11181,7 +12052,9 @@
    "data": "2026-08-28T15:21:00+00:00",
    "fonte": "senado",
    "nos": [],
-   "pessoas": [],
+   "pessoas": [
+    "amanda-gentil"
+   ],
    "resumo": "A Comissão Mista da medida provisória que autoriza a União a destinar até R$ 30 bilhões ao financiamento de veículos novos para motoristas de transporte remunerado privado individual de passageiros, taxistas, cooperativas de taxistas e profissionais de transporte escolar aprovou nesta sexta-feira (28) o projeto de lei de conversão apresentado pela relatora, deputada Amanda Gentil (PP-MA). Em relação ao texto original da MP 1.366/2026, a versão aprovada ampliou as possibilidades de financiamento e incluiu novas regras para o Fundo de Investimento em Infraestrutura Social (FIIS), além de incorpo"
   },
   {
@@ -11284,7 +12157,9 @@
    "data": "2026-08-28T12:00+00:00",
    "fonte": "camara",
    "nos": [],
-   "pessoas": [],
+   "pessoas": [
+    "amanda-gentil"
+   ],
    "resumo": "Getty Images Operações têm juros de, no máximo, 12,5% ao ano A comissão mista que analisa a medida provisória que cria uma nova linha de financiamento para entregadores, motociclistas e ciclistas cadastrados em plataformas digitais ( MP 1366/26 ) reúne-se, nesta sexta-feira (28), para analisar o relatório que será apresentado pela deputada Amanda Gentil (PP-MA). A reunião será realizada às 10h30, no plenário 3 da Ala Alexandre Costa, no Senado. Veja a pauta A MP, editada em junho deste ano, beneficia profissionais inscritos nas plataformas há pelo menos seis meses e que tenham feito, no mínimo"
   },
   {
@@ -11305,7 +12180,8 @@
    "fonte": "camara",
    "nos": [],
    "pessoas": [
-    "hugo-motta"
+    "hugo-motta",
+    "reginaldo-lopes"
    ],
    "resumo": "O presidente da Câmara dos Deputados, Hugo Motta (Republicanos-PB), anunciou que vai indicar o deputado Reginaldo Lopes (PT-MG) para presidir a comissão mista"
   },
@@ -11368,7 +12244,9 @@
    "data": "2026-08-27T22:06+00:00",
    "fonte": "camara",
    "nos": [],
-   "pessoas": [],
+   "pessoas": [
+    "messias-donato"
+   ],
    "resumo": "Breno Esaki/Agência Saúde DF Proposta pretende ampliar a divulgação dos canais oficiais de denúncia O Projeto de Lei 3171/26 obriga fabricantes de produtos para alimentação animal a informar, nas embalagens, como denunciar casos de maus-tratos contra animais. A Câmara dos Deputados analisa a proposta, que pretende ampliar a divulgação dos canais oficiais de denúncia. O autor, deputado Messias Donato (União-ES), afirma que muitas pessoas presenciam situações de abandono, falta de alimento e condições precárias de higiene e deixam de denunciar por não saberem a qual órgão recorrer. “O projeto ut"
   },
   {
@@ -11380,7 +12258,9 @@
    "nos": [
     "camara"
    ],
-   "pessoas": [],
+   "pessoas": [
+    "amanda-gentil"
+   ],
    "resumo": "Deve ser votado nesta sexta-feira (28), a partir das 10h30, o relatório final da comissão mista que analisa a Medida Provisória (MP) 1.366/2026, que cria uma linha de financiamento para motociclistas profissionais. A medida é destinada a trabalhadores que atuam no transporte de passageiros ou em entregas por aplicativos, além daqueles com carteira assinada na atividade. Se o relatório, da deputada Amanda Gentil (PP-MA), for aprovado pela comissão, a MP seguirá para análise dos Plenários da Câmara dos Deputados e, depois, do Senado. A medida faz parte de um programa do governo federal que já pr"
   },
   {
@@ -12001,7 +12881,9 @@
    "data": "2026-08-25T20:38+00:00",
    "fonte": "camara",
    "nos": [],
-   "pessoas": [],
+   "pessoas": [
+    "pedro-campos"
+   ],
    "resumo": "Joá Souza/GOVBA Guia lançado hoje pretende apoiar a implementação do ECA Digital O Instituto de Estudos para Políticas de Saúde (Ieps), o Juntô – Iniciativa Brasileira de Saúde Mental de Crianças e Adolescentes – e a Frente Parlamentar Mista para Promoção da Saúde Mental lançaram o guia “A gente usa, a gente decide”. O guia pretende apoiar a implementação do ECA Digital a partir da experiência do usuário. Foram ouvidos jovens de várias regiões do país que construíram 14 recomendações para a regulamentação da lei, como explicou o presidente da frente parlamentar, deputado Pedro Campos (PSB-PE)."
   },
   {
@@ -13088,7 +13970,9 @@
    "data": "2026-08-21T13:39+00:00",
    "fonte": "camara",
    "nos": [],
-   "pessoas": [],
+   "pessoas": [
+    "arnaldo-jardim"
+   ],
    "resumo": "YouTube O deputado Arnaldo Jardim (Cidadania-SP) defendeu, em entrevista à Rádio Câmara nesta quinta-feira (20), o diálogo entre Brasil e Estados Unidos durante o processo brasileiro de avaliação de medidas de reciprocidade econômica. Ele foi relator do Projeto de Lei 2088/23, que deu origem à Lei da Reciprocidade . Ouça a íntegra da entrevista de Arnaldo Jardim à Rádio Câmara O governo brasileiro anunciou recentemente que iniciou o processo para aplicar ações de reciprocidade contra o governo dos Estados Unidos por conta do tarifaço. As medidas têm por base a Lei de Reciprocidade, em vigor de"
   },
   {
@@ -13271,7 +14155,9 @@
    "data": "2026-08-20T20:01+00:00",
    "fonte": "camara",
    "nos": [],
-   "pessoas": [],
+   "pessoas": [
+    "aureo-ribeiro"
+   ],
    "resumo": "Bruno Spada / Câmara dos Deputados Aureo Ribeiro, relator da proposta na CCJ A Comissão de Constituição e Justiça e de Cidadania (CCJ) da Câmara dos Deputados aprovou o Projeto de Lei 6897/17 , do Senado, que obriga as maternidades de referência em obstetrícia a manter banco de leite humano. O projeto altera o Estatuto da Criança e do Adolescente (ECA) Lei 8.069/90 . Conforme o texto, caberá ao governo definir em regulamento o que são serviços obstetrícios de referência, levando em conta a relevância regional da unidade hospitalar e o número de leitos obstétricos oferecidos. O relator na CCJ, "
   },
   {
@@ -13405,7 +14291,10 @@
    "data": "2026-08-20T16:27+00:00",
    "fonte": "camara",
    "nos": [],
-   "pessoas": [],
+   "pessoas": [
+    "general-pazuello",
+    "luiz-couto"
+   ],
    "resumo": "Michel Jesus / Câmara dos Deputados Pazuello recomendou a aprovação da proposta com emenda para descentralizar os recursos A Comissão de Segurança Pública da Câmara dos Deputados aprovou projeto de lei que destina 0,01% dos recursos federais recuperados de crimes de lavagem de dinheiro para os fundos estaduais, municipais e distrital da pessoa idosa. O texto aprovado é a versão do relator, deputado General Pazuello (PL-RJ), para o Projeto de Lei 4020/24 , do deputado Luiz Couto (PT-PB). Como o projeto original, o substitutivo inclui a regra na Lei de Lavagem de Dinheiro . Veja a íntegra do tex"
   },
   {
@@ -13593,7 +14482,9 @@
    "data": "2026-08-19T20:36+00:00",
    "fonte": "camara",
    "nos": [],
-   "pessoas": [],
+   "pessoas": [
+    "amom-mandel"
+   ],
    "resumo": "Bruno Spada/Câmara dos Deputados Amom Mandel recomendou a aprovação do projeto, com mudanças A Comissão de Saúde da Câmara dos Deputados aprovou projeto que permite ao paciente com câncer ser tratado em outro estado quando houver indicação clínica, falta de oferta do serviço ou impossibilidade de atendimento em tempo oportuno. A proposta altera a Política Nacional de Prevenção e Controle do Câncer . O atendimento deverá ser feito em unidade habilitada pelo Sistema Único de Saúde (SUS) e respeitar a regulação do acesso, os protocolos clínicos e os acordos entre os gestores de saúde. A comissão "
   },
   {
