@@ -1,3 +1,9 @@
+## 25/09/2026 — Recuperação de aba antiga, verificada localmente
+
+Fricção reproduzida: após publicação, aba aberta tenta baixar chunk removido e retry não resolve. Correção exclusiva da recuperação2Doctor: diante de falha de import, compara nome do entrypoint público atual com o carregado, GET sem credenciais/cache e timeout5s. Só quando diferença confirmada mostra Nova versão disponível e link explícito Nova aba para a mesma ferramenta, noopener/noreferrer. Não recarrega automaticamente, não copia nem persiste conversa/rascunhos; aba original permanece. Rede falha/página desconhecida/rendererror mantêm recuperação anterior, sem alegar atualização.
+
+186 testes passaram (4 novos de reconhecimento, troca/sameversion, erros/offline e requisição pública), build2Doctor e build completo do site aprovados; aviso existente de chunks grandes. Fixture descartável local copiou dist, abriu chat com rascunho fictício, rotacionou nomes de entrypoint/Libraries e retirou chunk velho. CUA390 confirmou aviso, clique abriu aba51 com35 instrumentos, voltar ao chat na aba50 preservou rascunho literal (limpo depois). Nenhum dado real enviado. Viewport restaurado. Não testados aparelho físico, consulta real, sessão autenticada entre abas nem atualização de código já aberto antes desta correção. Publicação pendente. Próximo executar deploy/health/asset/UI no domínio oficial; depois retomar fricções concretas existentes, sem ampliar catálogo.
+
 ## 25/09/2026 — Diretório compacto publicado
 
 Fonte cdecc7c; deployment a6ad2454-4c96-4c24-a7e6-e43933e19831 SUCCESS em 2doctor-web/projeto2doctor. healthz200 product2doctor, página200, asset index-DUyHWt5B.js200 igual ao build local. CUA público390: busca CHA2DS2 encontra CHA₂DS₂-VASc; limpar restaura catálogo35, layout branco conferido, largura/scroll375 (sem overflow), viewport restaurado. Testes182 e ambos builds aprovados, conforme entrada anterior. Nenhum módulo ou algoritmo médico adicionado.
