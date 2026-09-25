@@ -1,4 +1,5 @@
 import {productConfig} from '../shared/product.mjs';
+import {createMicrophoneRequest, stopMicrophone} from '../shared/microphone-request.mjs';
 import {caseAudioType} from '../shared/case-audio.mjs';
 const brandName=productConfig(import.meta.env.VITE_PRODUCT).name;
 const audioRecovery=import.meta.env.VITE_PRODUCT==='2doctor';
@@ -44,6 +45,9 @@ function ClinicalCaseBody({ session, onLogin, onProgress, onPendingChange, activ
   const [privacyOpen,setPrivacyOpen]=useState(false);
   const [retryAudio,setRetryAudio]=useState(null);
   const transcribing=useRef(false);
+  const [requestingMic,setRequestingMic]=useState(false);
+  const microphoneRequest=useRef(createMicrophoneRequest());
+  const activeRef=useRef(active);activeRef.current=active;
   const [historyOpen,setHistoryOpen]=useState(false),[saveStatus,setSaveStatus]=useState(""),[saveError,setSaveError]=useState("");
   const pendingSave=useRef(null),saving=useRef(null),pageRef=useRef(null);
   useEffect(()=>{if(active)pageRef.current?.scrollIntoView({block:"start",behavior:"instant"});},[stage,active]);
@@ -58,6 +62,7 @@ function ClinicalCaseBody({ session, onLogin, onProgress, onPendingChange, activ
     alive.current = true;
     return () => {
       alive.current = false;
+      microphoneRequest.current.cancel();
       cancel.current?.abort();
       clearInterval(recordTimer.current);
       if (recorder.current?.state === "recording") recorder.current.stop();
@@ -65,10 +70,11 @@ function ClinicalCaseBody({ session, onLogin, onProgress, onPendingChange, activ
     };
   }, []);
   useEffect(() => {
+    if (!active && audioRecovery) { microphoneRequest.current.cancel();setRequestingMic(false); }
     if (!active && recorder.current?.state === "recording")
       recorder.current.stop();
   }, [active]);
-  useEffect(()=>{onPendingChange?.(Boolean(busy||recording||retryAudio||saveStatus==='saving'||saveStatus==='error'));},[busy,recording,retryAudio,saveStatus,onPendingChange]);
+  useEffect(()=>{onPendingChange?.(Boolean(busy||recording||requestingMic||retryAudio||saveStatus==='saving'||saveStatus==='error'));},[busy,recording,requestingMic,retryAudio,saveStatus,onPendingChange]);
   const requireLogin = () => {
     if (session?.authenticated) return true;
     onLogin();
@@ -149,19 +155,25 @@ function ClinicalCaseBody({ session, onLogin, onProgress, onPendingChange, activ
   }
   async function record() {
     if (!requireLogin()) return;
+    if(audioRecovery && (!activeRef.current||busy||recording||retryAudio))return;
+    const ticket=audioRecovery?microphoneRequest.current.begin():null;
+    if(audioRecovery && ticket===null)return;
+    if(audioRecovery)setRequestingMic(true);
+    let acquiredStream;
     setError("");
     try {
       if (!navigator.mediaDevices?.getUserMedia || !globalThis.MediaRecorder)
         throw Error(
           "Gravação indisponível neste navegador. Envie um arquivo de áudio.",
         );
-      stream.current = await navigator.mediaDevices.getUserMedia({
+      acquiredStream = await navigator.mediaDevices.getUserMedia({
         audio: true,
       });
-      if (!alive.current) {
-        stream.current.getTracks().forEach((t) => t.stop());
+      if (!alive.current || audioRecovery && (!activeRef.current||!microphoneRequest.current.isCurrent(ticket))) {
+        stopMicrophone(acquiredStream);
         return;
       }
+      stream.current=acquiredStream;
       const mime = ["audio/mp4", "audio/webm;codecs=opus", "audio/webm"].find(
         (t) => MediaRecorder.isTypeSupported(t),
       );
@@ -176,7 +188,7 @@ function ClinicalCaseBody({ session, onLogin, onProgress, onPendingChange, activ
       };
       r.onstop = () => {
         clearInterval(recordTimer.current);
-        stream.current?.getTracks().forEach((t) => t.stop());
+        stopMicrophone(acquiredStream);
         if (alive.current) {
           setRecording(false);
           transcribe(new Blob(chunks.current, { type: r.mimeType }));
@@ -192,12 +204,15 @@ function ClinicalCaseBody({ session, onLogin, onProgress, onPendingChange, activ
         if (elapsed >= 180 && r.state === "recording") r.stop();
       }, 1000);
     } catch (e) {
-      stream.current?.getTracks().forEach((t) => t.stop());
+      stopMicrophone(acquiredStream);
+      if(!alive.current || audioRecovery && !microphoneRequest.current.isCurrent(ticket))return;
       setError(
         e.name === "NotAllowedError"
           ? "Microfone não autorizado. Você pode escrever ou enviar um áudio."
           : e.message,
       );
+    } finally {
+      if(audioRecovery && microphoneRequest.current.finish(ticket) && alive.current)setRequestingMic(false);
     }
   }
   async function grade() {
@@ -283,7 +298,7 @@ function ClinicalCaseBody({ session, onLogin, onProgress, onPendingChange, activ
       {historyOpen&&<CaseHistory onClose={()=>setHistoryOpen(false)} onSelect={openSaved}/>}
       {privacyOpen&&<PrivacyReview text={relato} onCancel={()=>setPrivacyOpen(false)} onApply={text=>{setRelato(text);setConfirmed(false);setPrivacyOpen(false)}}/>}
       <header className="module-heading case-heading">
-        <button className="case-history-button" disabled={!!busy||!!retryAudio||saveStatus==="saving"} onClick={()=>{if(requireLogin())setHistoryOpen(true)}}><History size={17}/> Meus casos</button>
+        <button className="case-history-button" disabled={!!busy||requestingMic||!!retryAudio||saveStatus==="saving"} onClick={()=>{if(requireLogin())setHistoryOpen(true)}}><History size={17}/> Meus casos</button>
         <span className="eyebrow blue">PRÁTICA CLÍNICA</span>
         <h1>Caso clínico</h1>
         <p>
@@ -320,11 +335,11 @@ function ClinicalCaseBody({ session, onLogin, onProgress, onPendingChange, activ
             />
             <div className="voice-actions">
               <button
-                disabled={!!busy||!!retryAudio}
+                disabled={!!busy||requestingMic||!!retryAudio}
                 onClick={recording ? () => recorder.current.stop() : record}
               >
                 {recording ? <Square size={17} /> : <Mic size={17} />}{" "}
-                {recording ? `Parar · ${seconds}s` : "Gravar relato"}
+                {requestingMic ? "Aguardando microfone…" : recording ? `Parar · ${seconds}s` : "Gravar relato"}
               </button>
               <label className="audio-upload">
                 <Upload size={17} />
@@ -332,7 +347,7 @@ function ClinicalCaseBody({ session, onLogin, onProgress, onPendingChange, activ
                 <input
                   type="file"
                   accept="audio/*,.m4a"
-                  disabled={!!busy || recording || !!retryAudio}
+                  disabled={!!busy || recording || requestingMic || !!retryAudio}
                   onChange={(e) => {
                     const f = e.target.files?.[0];
                     e.target.value = "";
@@ -342,6 +357,7 @@ function ClinicalCaseBody({ session, onLogin, onProgress, onPendingChange, activ
               </label>
               <small>{relato.length}/5.000</small>
             </div>
+            {requestingMic && <p className="module-note" role="status">Autorize o microfone no navegador. A gravação ainda não começou.</p>}
             {audioRecovery && retryAudio && !busy && <div className="case-audio-retry" role="status">
               <strong>Não foi possível transcrever</strong>
               <p>O áudio continua nesta aba. Tente novamente sem gravar ou selecionar o arquivo de novo.</p>
@@ -358,6 +374,7 @@ function ClinicalCaseBody({ session, onLogin, onProgress, onPendingChange, activ
               disabled={
                 !!busy ||
                 recording ||
+                requestingMic ||
                 !!retryAudio ||
                 relato.trim().length < 20 ||
                 relato.length > 5000
