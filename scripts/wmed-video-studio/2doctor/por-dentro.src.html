@@ -1,0 +1,167 @@
+<title>Por Dentro</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+:root{
+  --bg:#FFFFFF; --surface:#F5F8F7; --line:#E3EAE8; --ink:#1A2C3E; --muted:#64737B; --teal:#265B5A; --teal-soft:#E4EEEC; --teal-ink:#FFFFFF;
+  --ok:#2F7D5B; --ok-soft:#E2F1EA; --warn:#9A6412; --warn-soft:#F8EDD9; --bad:#A63D38; --bad-soft:#F6E3E1;
+  --film:#0B1117; --film-ink:#EDE6DA;
+  --sans:"Figtree",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif; --serif:"Cormorant Garamond",Georgia,"Times New Roman",serif; --mono:"IBM Plex Mono",ui-monospace,Menlo,monospace;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){color-scheme:dark;--bg:#0E1821;--surface:#15232F;--line:#243644;--ink:#E4ECEE;--muted:#97A7B0;--teal:#6FB3AE;--teal-soft:#193532;--teal-ink:#0E1821;--ok:#6CC49A;--ok-soft:#173327;--warn:#E3B065;--warn-soft:#382A14;--bad:#EE8E88;--bad-soft:#3A1E1C;--film:#070B0F}}
+:root[data-theme="dark"]{color-scheme:dark;--bg:#0E1821;--surface:#15232F;--line:#243644;--ink:#E4ECEE;--muted:#97A7B0;--teal:#6FB3AE;--teal-soft:#193532;--teal-ink:#0E1821;--ok:#6CC49A;--ok-soft:#173327;--warn:#E3B065;--warn-soft:#382A14;--bad:#EE8E88;--bad-soft:#3A1E1C;--film:#070B0F}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font:16px/1.55 var(--sans);margin:0}
+.wrap{max-width:1040px;margin:0 auto;padding-inline:20px;padding-block:28px 80px}
+h1,h2,h3{text-wrap:balance;margin:0;line-height:1.2}
+p{margin:0}
+.muted{color:var(--muted)}
+.mono{font-family:var(--mono);font-variant-numeric:tabular-nums}
+.eyebrow{font-size:12px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--teal)}
+a{color:var(--teal)}
+.hero{background:var(--film);color:var(--film-ink);border-radius:18px;padding:40px 28px;display:grid;gap:10px;margin-bottom:28px}
+.hero .series{font-family:var(--sans);font-size:12px;letter-spacing:.32em;text-transform:uppercase;opacity:.7}
+.hero h1{font-family:var(--serif);font-weight:500;font-size:clamp(40px,7vw,64px);letter-spacing:.06em;text-transform:uppercase}
+.hero .sub{font-family:var(--serif);font-style:italic;font-size:22px;opacity:.85}
+.hero .meta{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
+.hero .meta span{font-size:13px;border:1px solid rgba(237,230,218,.25);border-radius:999px;padding:4px 10px}
+.status{display:inline-block;font-size:13px;padding:5px 10px;border-radius:999px;background:var(--warn-soft);color:var(--warn);font-weight:600;margin-bottom:14px}
+section{padding-block:20px 30px;border-bottom:1px solid var(--line)}
+section:last-of-type{border-bottom:0}
+h2{font-size:24px;margin-bottom:8px}
+.lead{max-width:70ch;color:var(--muted);margin-bottom:16px}
+.host{display:grid;grid-template-columns:minmax(220px,300px) 1fr;gap:24px;align-items:start}
+@media (max-width:720px){.host{grid-template-columns:1fr}}
+.portrait{aspect-ratio:4/5;border-radius:16px;background:linear-gradient(160deg,#1d2f38,#0b1117);position:relative;overflow:hidden;max-width:100%}
+.portrait canvas{width:100%;height:100%;display:block}
+.portrait .cap{position:absolute;left:14px;bottom:12px;color:var(--film-ink)}
+.portrait .cap b{font-family:var(--serif);font-weight:500;font-size:22px;display:block}
+.portrait .cap span{font-size:10px;letter-spacing:.18em;text-transform:uppercase;opacity:.8}
+.kv{display:grid;grid-template-columns:130px 1fr;gap:8px 14px;font-size:15px}
+.kv dt{color:var(--muted)}
+.kv dd{margin:0}
+@media (max-width:520px){.kv{grid-template-columns:1fr}.kv dt{margin-top:6px}}
+.prompt{font-family:var(--mono);font-size:12.5px;line-height:1.5;background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:10px 12px;white-space:pre-wrap;word-break:break-word}
+.shots{display:grid;gap:12px}
+.shot{display:grid;grid-template-columns:120px 1fr;gap:16px;padding:14px;border:1px solid var(--line);border-radius:14px}
+.shot canvas{width:120px;height:213px;border-radius:10px;background:var(--film);display:block}
+@media (max-width:560px){.shot{grid-template-columns:1fr}.shot canvas{width:100%;max-width:200px;height:auto;aspect-ratio:9/16}}
+.shot .top{display:flex;flex-wrap:wrap;gap:6px 12px;align-items:baseline}
+.shot .src{font-size:12px;font-weight:600;padding:2px 8px;border-radius:999px}
+.src.gen{background:var(--warn-soft);color:var(--warn)}
+.src.own{background:var(--teal-soft);color:var(--teal)}
+.src.type{background:var(--surface);color:var(--muted);border:1px solid var(--line)}
+.shot .vo{font-size:16px;margin:6px 0}
+.shot .vo i{font-family:var(--serif);font-size:18px}
+.shot details{margin-top:6px}
+.shot summary{cursor:pointer;font-size:13px;color:var(--teal);font-weight:600}
+.cl{font-family:var(--mono);font-size:12px;padding:2px 7px;border-radius:6px;margin-right:4px}
+.cl.V{background:var(--ok-soft);color:var(--ok)} .cl.P{background:var(--warn-soft);color:var(--warn)} .cl.N{background:var(--bad-soft);color:var(--bad)}
+.eps{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--bg);display:flex;gap:4px;overflow-x:auto;border-bottom:1px solid var(--line);padding-block:8px;margin-bottom:8px}
+.eps a{white-space:nowrap;text-decoration:none;color:var(--muted);font-size:14px;font-weight:500;padding:6px 10px;border-radius:8px}
+.eps a:hover{background:var(--surface);color:var(--ink)}
+.ephead{display:grid;gap:6px;margin-bottom:14px}
+.ephead .t{font-family:var(--serif);font-size:30px;font-weight:600}
+.srclist{margin-top:14px;font-size:14px;display:grid;gap:4px}
+.cols{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px}
+.box{padding:16px;border-radius:12px;background:var(--surface);display:grid;gap:8px;align-content:start}
+.box ul,ol{margin:0;padding-left:20px;display:grid;gap:6px;font-size:15px}
+</style>
+
+<div class="wrap">
+  <span class="status">Três episódios · roteiros e storyboards para aprovação · nada gerado</span>
+  <div class="hero">
+    <span class="series">Série 2Doctor</span>
+    <h1>Por Dentro</h1>
+    <p class="sub">Documentários curtos sobre o que acontece no corpo</p>
+    <div class="meta"><span>60 a 90 s por episódio</span><span>Reels 9:16 · X 16:9</span><span>Apresentadora fictícia criada por IA</span><span>Mecanismo em 3D próprio</span></div>
+  </div>
+  <nav class="eps" aria-label="Episódios"><a href="#apresentadora">Apresentadora</a><a href="#ep-asma">Ep. 1 · Asma</a><a href="#ep-iam">Ep. 2 · Infarto</a><a href="#ep-cirrose">Ep. 3 · Cirrose</a><a href="#producao">Produção</a></nav>
+
+  <section id="apresentadora">
+    <h2>A apresentadora</h2>
+    <p class="lead">Personagem fixa da série, com rosto, figurino e voz iguais em todos os episódios. Criada do zero, sem se parecer com nenhuma pessoa real.</p>
+    <div class="host">
+      <div class="portrait"><canvas id="portrait" aria-label="Esboço de enquadramento da apresentadora"></canvas><div class="cap"><b>Dra. Helena Duarte</b><span>pneumologista · personagem</span></div></div>
+      <dl class="kv">
+        <dt>Quem é</dt><dd>Pneumologista fictícia, cerca de 42 anos, de São Paulo. Explica com calma e um humor seco, como quem conversa num café.</dd>
+        <dt>Aparência</dt><dd>Cabelo castanho-escuro na altura do ombro, levemente ondulado; pele morena clara; olhos castanhos; sem maquiagem marcada.</dd>
+        <dt>Figurino</dt><dd>Suéter de tricô verde-petróleo (a cor da 2Doctor) sobre camisa branca, relógio simples. Sem jaleco nas cenas de rua; jaleco só no hospital.</dd>
+        <dt>Cenários fixos</dt><dd>Av. Paulista de madrugada com chuva fina; corredor de hospital à noite; café antigo no centro de São Paulo.</dd>
+        <dt>Voz</dt><dd>Grave, pausada, pt-BR paulistano. Mesma voz em todos os episódios.</dd>
+        <dt>Na tela</dt><dd>Nome na tela: “Dra. Helena Duarte · pneumologista”. Legenda do post e selo discreto: “apresentadora criada por IA”.</dd>
+      </dl>
+    </div>
+    <h3 style="margin:18px 0 8px">Imagem de referência (gerada uma vez e reutilizada em todas as cenas)</h3>
+    <p class="prompt">Cinematic portrait of a fictional Brazilian pulmonologist in her early 40s, shoulder-length softly wavy dark brown hair, light olive skin, warm brown eyes, natural minimal makeup, wearing a deep teal knit sweater over a white collared shirt, calm confident half-smile. Night, São Paulo street, soft rain, bokeh of warm street lights and cool blue shadows, shallow depth of field, 50mm, Netflix documentary color grade, filmic grain. Original person, not resembling any real individual.</p>
+  </section>
+
+  <div id="episodes"></div>
+
+  <section id="producao">
+    <h2>Produção</h2>
+    <div class="cols">
+      <div class="box">
+        <h3>Ordem de trabalho</h3>
+        <ol>
+          <li>Você aprova roteiro e personagem.</li>
+          <li>Gero a imagem de referência da Dra. Helena e você aprova o rosto.</li>
+          <li>Gravo a narração com a voz escolhida.</li>
+          <li>Gero os planos da apresentadora com a boca sincronizada à narração, e os planos de ambiente.</li>
+          <li>Renderizo os planos 3D, os títulos e a trilha.</li>
+          <li>Monto, legendo e te mando para revisão médica antes de postar.</li>
+        </ol>
+      </div>
+      <div class="box">
+        <h3>O que falta para começar</h3>
+        <ul>
+          <li>Conta no Runway com chave de API e o conector MCP do Runway nesta sessão.</li>
+          <li>Liberar o domínio da API do Runway na rede do ambiente.</li>
+          <li>Escolher a voz da Dra. Helena: serviço de voz sintética ou uma atriz de voz.</li>
+          <li>Enquanto isso, sigo com os modelos 3D do pulmão e do brônquio, que independem do Runway.</li>
+        </ul>
+      </div>
+          </div>
+  </section>
+</div>
+
+<script>
+const SHOTS = [
+  {tc:"0:00–0:05",src:"gen",kind:"night",title:"Abertura fria",vo:"<i>(off)</i> Três da manhã. Um chiado no peito, e a sensação de respirar por um canudinho.",screen:"SÃO PAULO · 3h12",prompt:"Vertical 9:16. Dark São Paulo apartment at 3am, a young woman sits up in bed breathing with effort, hand on her chest, blue inhaler on the nightstand, city lights through rain-streaked window, cool blue moonlight and a warm lamp, slow push-in, shallow depth of field, Netflix documentary grade, filmic grain.",cl:[]},
+  {tc:"0:05–0:10",src:"type",kind:"title",title:"Título da série",vo:"<i>(trilha, sem fala)</i>",screen:"POR DENTRO · Asma: quando o ar fecha a porta",prompt:"Nossa tipografia serifada sobre os pulmões 3D girando devagar no escuro.",cl:[]},
+  {tc:"0:10–0:19",src:"gen",kind:"host",title:"Apresentadora na Paulista",vo:"Eu sou a Helena, pneumologista. Hoje a gente vai entrar num pulmão. Devagar, com imagens. Sem decoreba. Tá, quase nenhuma.",screen:"Dra. Helena Duarte · pneumologista",prompt:"Vertical 9:16. [reference: Dra. Helena] standing on Avenida Paulista at dawn in light rain, talking to camera with a dry half-smile, wet asphalt reflecting traffic lights, bokeh, medium shot slowly drifting, Netflix documentary grade. Lip-sync to provided narration.",cl:[]},
+  {tc:"0:19–0:30",src:"own",kind:"lungs",title:"Mergulho no pulmão",vo:"O ar desce pela traqueia e se divide em brônquios cada vez menores. São milhares de ramos, até os alvéolos.",screen:"Rótulos: traqueia · brônquios · bronquíolos",prompt:"Pulmões 3D próprios: câmera entra pela traqueia e percorre a árvore brônquica até os ramos finos.",cl:[["N1","N"]]},
+  {tc:"0:30–0:46",src:"own",kind:"bronchus",title:"A crise por dentro",vo:"Na asma, essa via é sensível. Um gatilho, como alérgeno, vírus ou exercício, liga a inflamação. O músculo em volta aperta, a parede incha, sobra muco. E o ar passa com dificuldade.",screen:"gatilho → inflamação → aperta · incha · muco",prompt:"Corte 3D do brônquio: eosinófilos chegam, músculo contrai, edema, muco; partículas de ar desaceleram.",cl:[["E1","V"],["F1","V"]]},
+  {tc:"0:46–0:53",src:"gen",kind:"corridor",title:"A virada",vo:"E aqui está o detalhe que muda tudo: na asma, isso vai e volta. Os sintomas variam com o tempo.",screen:"",prompt:"Vertical 9:16. [reference: Dra. Helena] in a white coat walking slowly down a quiet hospital corridor at night, turns to camera and speaks, soft practical lights, teal and warm tones, Netflix documentary grade. Lip-sync to provided narration.",cl:[["A","V"]]},
+  {tc:"0:53–1:03",src:"own",kind:"reopen",title:"A via reabre",vo:"Com o tratamento certo, a via reabre. Por isso, bombinha de alívio sozinha não é tratamento de asma: o tratamento inclui corticoide inalatório.",screen:"alívio sozinho não trata · corticoide inalatório",prompt:"Corte 3D: inflamação diminui, músculo relaxa, luz reabre, fluxo de ar volta.",cl:[["H1","V"],["H2","V"]]},
+  {tc:"1:03–1:11",src:"gen",kind:"cafe",title:"O que fazer",vo:"Chiado que vai e volta, falta de ar de madrugada, tosse no exercício? Procure um médico e faça a espirometria.",screen:"chiado · falta de ar à noite · tosse no exercício",prompt:"Vertical 9:16. [reference: Dra. Helena] seated in an old café in downtown São Paulo, warm brass lamps, green tiles, coffee cup, close-up, sincere tone, Netflix documentary grade. Lip-sync to provided narration.",cl:[["E1","V"],["D1","V"]]},
+  {tc:"1:11–1:15",src:"type",kind:"end",title:"Assinatura",vo:"<i>(trilha)</i> Por Dentro. Uma série 2Doctor.",screen:"2Doctor · Conteúdo educativo, não substitui consulta · Fontes na legenda",prompt:"Cartão final com a marca e as fontes.",cl:[]}
+];
+const LAB={gen:"Vídeo gerado (Runway)",own:"3D próprio",type:"Tipografia 2Doctor"};
+function draw(cv,kind){
+  const d=window.devicePixelRatio||1,W=120,H=213;cv.width=W*d;cv.height=H*d;const x=cv.getContext("2d");x.scale(d,d);
+  const g=x.createLinearGradient(0,0,0,H);g.addColorStop(0,"#16222c");g.addColorStop(1,"#070b0f");x.fillStyle=g;x.fillRect(0,0,W,H);
+  const cx=W/2,warm="#E9B872",cool="#5E8FA8",skin="#C9A184",teal="#2F6E6B",ink="#EDE6DA";
+  const bokeh=(n,c)=>{for(let i=0;i<n;i++){x.fillStyle=c;x.globalAlpha=.25+.3*((i*37)%10)/10;x.beginPath();x.arc((i*47)%W,20+(i*29)%70,2+(i%3),0,7);x.fill()}x.globalAlpha=1};
+  const person=(px,py,s,coat)=>{x.fillStyle=coat||teal;x.beginPath();x.ellipse(px,py+46*s,26*s,34*s,0,Math.PI,0);x.fill();x.fillRect(px-26*s,py+46*s,52*s,60*s);x.fillStyle=skin;x.beginPath();x.arc(px,py+20*s,13*s,0,7);x.fill();x.fillStyle="#3a2a22";x.beginPath();x.arc(px,py+15*s,14*s,Math.PI,0);x.fill();x.fillRect(px-14*s,py+15*s,4*s,16*s);x.fillRect(px+10*s,py+15*s,4*s,16*s)};
+  const serif=(s,y,sz,a=1)=>{x.globalAlpha=a;x.fillStyle=ink;x.font=`500 ${sz}px "Cormorant Garamond", Georgia, serif`;x.textAlign="center";x.fillText(s,cx,y);x.globalAlpha=1};
+  switch(kind){
+    case "night":bokeh(10,cool);x.fillStyle="#1f2d38";x.fillRect(10,30,48,60);x.fillStyle="rgba(94,143,168,.35)";x.fillRect(12,32,44,56);x.fillStyle="#2b3a46";x.fillRect(0,150,W,63);person(78,100,.8,"#384650");x.fillStyle=warm;x.globalAlpha=.6;x.beginPath();x.arc(24,150,9,0,7);x.fill();x.globalAlpha=1;x.fillStyle="#3E7CC9";x.fillRect(20,140,6,10);serif("3h12",196,12,.7);break;
+    case "title":for(const sd of[-1,1]){x.strokeStyle="rgba(111,179,174,.6)";x.beginPath();x.ellipse(cx+sd*20,110,17,34,sd*.12,0,7);x.stroke()}serif("POR DENTRO",70,15);serif("Asma",170,13,.8);break;
+    case "host":bokeh(14,warm);x.fillStyle="#1b2630";x.fillRect(0,160,W,53);person(cx,70,1.05);x.fillStyle="rgba(237,230,218,.8)";x.fillRect(10,186,40,1);x.font="500 8px Figtree, sans-serif";x.textAlign="left";x.fillText("Dra. Helena Duarte",10,197);break;
+    case "lungs":for(const sd of[-1,1]){x.fillStyle="rgba(111,179,174,.15)";x.strokeStyle="rgba(159,216,207,.8)";x.beginPath();x.ellipse(cx+sd*22,120,18,40,sd*.12,0,7);x.fill();x.stroke()}x.strokeStyle="#e6efed";x.lineWidth=2;x.beginPath();x.moveTo(cx,50);x.lineTo(cx,92);x.stroke();x.lineWidth=1;for(const sd of[-1,1])for(let k=0;k<4;k++){x.beginPath();x.moveTo(cx,92);x.lineTo(cx+sd*(10+k*5),110+k*12);x.stroke()}break;
+    case "bronchus":case "reopen":{const r=kind==="bronchus"?9:18;x.strokeStyle="#cfe3ea";x.lineWidth=4;for(let i=0;i<7;i++){x.beginPath();x.arc(cx,105,42,i*.9,i*.9+.5);x.stroke()}x.fillStyle="#c46a6e";x.beginPath();x.arc(cx,105,37,0,7);x.fill();x.strokeStyle="#8e2a36";x.lineWidth=kind==="bronchus"?6:3;x.beginPath();x.arc(cx,105,30,0,7);x.stroke();x.fillStyle="#e9a7a0";x.beginPath();x.arc(cx,105,r+5,0,7);x.fill();x.fillStyle="#070b0f";x.beginPath();x.arc(cx,105,r,0,7);x.fill();if(kind==="bronchus"){x.fillStyle="#f08a3c";for(let i=0;i<8;i++){x.beginPath();x.arc(cx+Math.cos(i)*24,105+Math.sin(i)*24,2.4,0,7);x.fill()}x.fillStyle="rgba(233,226,166,.9)";x.beginPath();x.arc(cx+4,103,5,0,7);x.fill()}serif(kind==="bronchus"?"aperta · incha · muco":"reabre",180,11,.85);break}
+    case "corridor":x.fillStyle="#1a2a2e";x.beginPath();x.moveTo(0,0);x.lineTo(cx-12,90);x.lineTo(cx+12,90);x.lineTo(W,0);x.fill();x.fillStyle="rgba(159,216,207,.25)";for(let i=0;i<4;i++)x.fillRect(cx-20+i*2,20+i*18,40-i*4,3);person(cx+8,82,.9,"#e8eeee");break;
+    case "cafe":bokeh(8,warm);x.fillStyle="#1f3a2f";x.fillRect(0,40,W,80);x.fillStyle="#3b2a1f";x.fillRect(0,150,W,63);person(cx,70,1.1);x.fillStyle="#e8e1d6";x.fillRect(cx+24,150,10,9);break;
+    case "end":serif("POR DENTRO",96,14);x.fillStyle="rgba(237,230,218,.7)";x.font="600 9px Figtree, sans-serif";x.textAlign="center";x.fillText("2Doctor",cx,118);x.font="500 7px Figtree, sans-serif";x.fillText("Conteúdo educativo",cx,180);break;
+  }
+}
+function portrait(){const cv=document.getElementById("portrait"),r=cv.getBoundingClientRect(),d=window.devicePixelRatio||1;cv.width=r.width*d;cv.height=r.height*d;const x=cv.getContext("2d");x.scale(d,d);const W=r.width,H=r.height;
+  for(let i=0;i<22;i++){x.fillStyle=i%3?"#E9B872":"#5E8FA8";x.globalAlpha=.12+.2*((i*13)%10)/10;x.beginPath();x.arc((i*71)%W,(i*43)%(H*.6),4+(i%4)*3,0,7);x.fill()}x.globalAlpha=1;
+  const cx=W/2,s=W/220;x.fillStyle="#2F6E6B";x.beginPath();x.ellipse(cx,H*.62,70*s,90*s,0,Math.PI,0);x.fill();x.fillRect(cx-70*s,H*.62,140*s,H);x.fillStyle="#f2f2ee";x.beginPath();x.moveTo(cx-16*s,H*.52);x.lineTo(cx,H*.6);x.lineTo(cx+16*s,H*.52);x.fill();
+  x.fillStyle="#C9A184";x.beginPath();x.ellipse(cx,H*.4,34*s,42*s,0,0,7);x.fill();x.fillStyle="#3a2a22";x.beginPath();x.ellipse(cx,H*.34,40*s,36*s,0,Math.PI,0);x.fill();x.beginPath();x.ellipse(cx-34*s,H*.44,10*s,34*s,.1,0,7);x.fill();x.beginPath();x.ellipse(cx+34*s,H*.44,10*s,34*s,-.1,0,7);x.fill()}
+const box=document.getElementById("shots");
+SHOTS.forEach((s,i)=>{const el=document.createElement("article");el.className="shot";el.innerHTML=`<canvas aria-label="Esboço do plano ${i+1}"></canvas><div><div class="top"><h3>${i+1}. ${s.title}</h3><span class="mono muted" style="font-size:13px">${s.tc}</span><span class="src ${s.src}">${LAB[s.src]}</span></div><p class="vo">${s.vo}</p>${s.screen?`<p class="muted" style="font-size:14px">Na tela: ${s.screen}</p>`:""}${s.cl.length?`<p style="margin-top:6px">${s.cl.map(([c,st])=>`<span class="cl ${st}">${c}</span>`).join("")}</p>`:""}<details><summary>${s.src==="gen"?"Prompt do Runway":"Descrição do plano"}</summary><p class="prompt" style="margin-top:6px">${s.prompt}</p></details></div>`;box.appendChild(el);draw(el.querySelector("canvas"),s.kind)});
+portrait();
+if(document.fonts&&document.fonts.ready)document.fonts.ready.then(()=>{document.querySelectorAll(".shot canvas").forEach((c,i)=>draw(c,SHOTS[i].kind));portrait()});
+</script>

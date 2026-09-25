@@ -1,0 +1,484 @@
+<title>Asma e DPOC em vídeo</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+:root{
+  --bg:#FFFFFF; --surface:#F5F8F7; --line:#E3EAE8; --ink:#1A2C3E; --muted:#64737B;
+  --teal:#265B5A; --teal-soft:#E4EEEC; --teal-ink:#FFFFFF;
+  --ok:#2F7D5B; --ok-soft:#E2F1EA; --warn:#9A6412; --warn-soft:#F8EDD9; --bad:#A63D38; --bad-soft:#F6E3E1;
+  --video:#12202E;
+  --sans:"Figtree",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+  --mono:"IBM Plex Mono",ui-monospace,SFMono-Regular,Menlo,monospace;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    color-scheme:dark;
+    --bg:#0E1821; --surface:#15232F; --line:#243644; --ink:#E4ECEE; --muted:#97A7B0;
+    --teal:#6FB3AE; --teal-soft:#193532; --teal-ink:#0E1821;
+    --ok:#6CC49A; --ok-soft:#173327; --warn:#E3B065; --warn-soft:#382A14; --bad:#EE8E88; --bad-soft:#3A1E1C;
+    --video:#0A141D;
+  }
+}
+:root[data-theme="dark"]{
+  color-scheme:dark;
+  --bg:#0E1821; --surface:#15232F; --line:#243644; --ink:#E4ECEE; --muted:#97A7B0;
+  --teal:#6FB3AE; --teal-soft:#193532; --teal-ink:#0E1821;
+  --ok:#6CC49A; --ok-soft:#173327; --warn:#E3B065; --warn-soft:#382A14; --bad:#EE8E88; --bad-soft:#3A1E1C;
+  --video:#0A141D;
+}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font:16px/1.55 var(--sans);margin:0}
+.wrap{max-width:1080px;margin:0 auto;padding-inline:20px;padding-block:28px 80px}
+h1,h2,h3{text-wrap:balance;line-height:1.2;margin:0}
+h1{font-size:clamp(28px,4.2vw,40px);font-weight:700;letter-spacing:-.01em}
+h2{font-size:24px;font-weight:700;margin-bottom:6px}
+h3{font-size:17px;font-weight:600}
+p{margin:0}
+.muted{color:var(--muted)}
+.mono{font-family:var(--mono);font-variant-numeric:tabular-nums}
+.eyebrow{font-size:12px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--teal)}
+a{color:var(--teal)}
+a:focus-visible,button:focus-visible{outline:2px solid var(--teal);outline-offset:2px;border-radius:4px}
+
+header.top{display:flex;align-items:center;gap:12px;margin-bottom:28px}
+header.top img{width:40px;height:auto}
+header.top .brand{font-weight:700;font-size:20px;letter-spacing:-.01em}
+header.top .status{margin-left:auto;font-size:13px;padding:5px 10px;border-radius:999px;background:var(--warn-soft);color:var(--warn);font-weight:600}
+
+.intro{display:grid;gap:14px;max-width:70ch;margin-bottom:26px}
+.facts{display:flex;flex-wrap:wrap;gap:8px;margin-top:4px}
+.chip{display:inline-flex;align-items:center;gap:6px;font-size:13px;padding:4px 10px;border-radius:999px;background:var(--surface);border:1px solid var(--line);color:var(--ink)}
+.chip b{font-weight:600}
+nav.toc{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--bg);border-bottom:1px solid var(--line);display:flex;gap:4px;overflow-x:auto;padding-block:8px;margin-bottom:24px}
+nav.toc a{white-space:nowrap;text-decoration:none;color:var(--muted);font-size:14px;font-weight:500;padding:6px 10px;border-radius:8px}
+nav.toc a:hover{background:var(--surface);color:var(--ink)}
+section{padding-block:18px 30px;border-bottom:1px solid var(--line)}
+section:last-of-type{border-bottom:0}
+.lead{max-width:70ch;margin-bottom:18px;color:var(--muted)}
+
+/* princípios visuais */
+.systems{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px}
+.sys{padding:14px;border-radius:12px;background:var(--surface);display:grid;gap:6px}
+.sys .tag{font-size:12px;font-weight:600;color:var(--teal)}
+.sys p{font-size:14px;color:var(--muted)}
+
+/* storyboard */
+.vhead{display:flex;flex-wrap:wrap;align-items:baseline;gap:10px 16px;margin-bottom:14px}
+.vhead .dur{font-size:14px}
+.dur.over{color:var(--bad);font-weight:600}
+.board{display:grid;gap:12px}
+.scene{display:grid;grid-template-columns:132px 1fr;gap:16px;padding:14px;border:1px solid var(--line);border-radius:14px;background:var(--bg)}
+.scene canvas{width:132px;height:235px;border-radius:10px;display:block;background:var(--video)}
+.scene .meta{display:grid;gap:8px;min-width:0}
+.scene .row1{display:flex;flex-wrap:wrap;gap:8px 12px;align-items:baseline}
+.scene .tc{font-size:13px;color:var(--muted)}
+.scene .vo{font-size:16px;line-height:1.5}
+.scene .vo::before{content:"Narração";display:block;font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-bottom:2px}
+.kv{display:grid;grid-template-columns:110px 1fr;gap:4px 12px;font-size:14px}
+.kv dt{color:var(--muted)}
+.kv dd{margin:0}
+.claims{display:flex;flex-wrap:wrap;gap:6px}
+.cl{font-family:var(--mono);font-size:12px;padding:2px 7px;border-radius:6px;border:1px solid transparent;text-decoration:none}
+.cl.V{background:var(--ok-soft);color:var(--ok)}
+.cl.P{background:var(--warn-soft);color:var(--warn)}
+.cl.N{background:var(--bad-soft);color:var(--bad)}
+@media (max-width:560px){
+  .scene{grid-template-columns:1fr}
+  .scene canvas{width:100%;max-width:220px;height:auto;aspect-ratio:9/16}
+  .kv{grid-template-columns:1fr}
+  .kv dt{margin-top:4px}
+}
+
+/* tabelas */
+.tbl{overflow-x:auto;border:1px solid var(--line);border-radius:12px}
+table{border-collapse:collapse;width:100%;font-size:14px;min-width:640px}
+th,td{text-align:left;vertical-align:top;padding:9px 12px;border-bottom:1px solid var(--line)}
+th{font-size:12px;font-weight:600;letter-spacing:.04em;text-transform:uppercase;color:var(--muted);background:var(--surface)}
+tr:last-child td{border-bottom:0}
+td .st{font-size:12px;font-weight:600;padding:2px 8px;border-radius:999px;white-space:nowrap}
+.st.V{background:var(--ok-soft);color:var(--ok)}
+.st.P{background:var(--warn-soft);color:var(--warn)}
+.st.N{background:var(--bad-soft);color:var(--bad)}
+.filters{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:10px}
+.filters button{font:inherit;font-size:13px;padding:5px 12px;border-radius:999px;border:1px solid var(--line);background:var(--bg);color:var(--ink);cursor:pointer}
+.filters button[aria-pressed="true"]{background:var(--teal);color:var(--teal-ink);border-color:var(--teal)}
+
+/* app mock */
+.appgrid{display:grid;grid-template-columns:minmax(260px,340px) 1fr;gap:24px;align-items:start}
+@media (max-width:760px){.appgrid{grid-template-columns:1fr}}
+.phone{border:1px solid var(--line);border-radius:28px;padding:18px 14px;background:var(--bg);display:grid;gap:12px;box-shadow:0 12px 32px rgba(26,44,62,.08)}
+.phone .ph-top{display:flex;align-items:center;gap:8px;font-weight:700}
+.phone .ph-top img{width:26px}
+.phone .ph-top .country{margin-left:auto;font-size:12px;font-weight:600;padding:4px 9px;border-radius:999px;background:var(--surface);border:1px solid var(--line)}
+.bubble{border-radius:14px;padding:10px 12px;font-size:14px;line-height:1.45}
+.bubble.q{background:var(--teal);color:var(--teal-ink);justify-self:end;max-width:85%}
+.bubble.a{background:var(--surface)}
+.bubble.a ul{margin:6px 0 0;padding-left:18px}
+.bubble.a .src{margin-top:8px;font-size:12px;color:var(--muted)}
+.vbtn{display:flex;align-items:center;gap:10px;border:1px solid var(--teal);border-radius:12px;padding:10px 12px;color:var(--teal);background:var(--bg)}
+.vbtn .play{width:28px;height:28px;border-radius:50%;background:var(--teal);display:grid;place-items:center;flex:none}
+.vbtn .play::after{content:"";border-left:9px solid var(--teal-ink);border-top:6px solid transparent;border-bottom:6px solid transparent;margin-left:2px}
+.vbtn b{font-weight:600;font-size:14px;display:block}
+.vbtn span{font-size:12px;color:var(--muted)}
+.steps{display:grid;gap:10px}
+.step{display:grid;grid-template-columns:28px 1fr;gap:10px}
+.step .n{width:24px;height:24px;border-radius:50%;background:var(--teal-soft);color:var(--teal);font-size:13px;font-weight:700;display:grid;place-items:center}
+.step p{font-size:15px}
+
+/* listas */
+.cols{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px}
+.box{padding:16px;border-radius:12px;background:var(--surface);display:grid;gap:8px;align-content:start}
+.box ul{margin:0;padding-left:18px;display:grid;gap:6px;font-size:15px}
+.note{font-size:14px;padding:10px 12px;border-radius:10px;background:var(--warn-soft);color:var(--ink)}
+.note b{color:var(--warn)}
+ol.decide{margin:0;padding-left:22px;display:grid;gap:10px;max-width:75ch}
+.srcs{display:grid;gap:8px;font-size:14px}
+.srcs div{display:grid;grid-template-columns:44px 1fr;gap:10px}
+.srcs .id{font-family:var(--mono);color:var(--teal);font-weight:500}
+.srcs a{word-break:break-word}
+@media (prefers-reduced-motion:reduce){*{scroll-behavior:auto!important}}
+</style>
+
+<div class="wrap">
+  <header class="top">
+    <img src="data:image/png;base64,__MARK__" alt="Monograma 2D da 2Doctor">
+    <span class="brand">2Doctor</span>
+    <span class="status">Roteiro v1 · para revisão · nada renderizado</span>
+  </header>
+
+  <div class="intro">
+    <p class="eyebrow">Protótipo · Explicar em vídeo</p>
+    <h1>Asma e DPOC: como diferenciar?</h1>
+    <p class="muted">Duas versões do mesmo tema, uma para estudante e outra para médico, em vídeo vertical de 60 a 90 segundos. Cada cena mostra o que acontece no organismo, e cada afirmação clínica aponta para uma fonte. O status da fonte aparece na própria etiqueta: verde verificado, âmbar parcial, vermelho ainda sem fonte.</p>
+    <div class="facts">
+      <span class="chip"><b>País:</b> Brasil (protocolos locais primeiro)</span>
+      <span class="chip"><b>Formato:</b> 1080×1920, legendado</span>
+      <span class="chip"><b>Fontes checadas em:</b> 25/09/2026</span>
+      <span class="chip"><b>Idioma:</b> pt-BR</span>
+    </div>
+  </div>
+
+  <nav class="toc" aria-label="Seções">
+    <a href="#visual">Linguagem visual</a>
+    <a href="#estudante">Estudante</a>
+    <a href="#medico">Médico</a>
+    <a href="#afirmacoes">Afirmações e fontes</a>
+    <a href="#doses">Doses e interações</a>
+    <a href="#app">No app</a>
+    <a href="#medicao">Medição</a>
+    <a href="#decisoes">Decisões</a>
+  </nav>
+
+  <section id="visual">
+    <h2>Linguagem visual</h2>
+    <p class="lead">A regra do template: texto na tela só para rótulos, números e o resumo final. O que explica é a imagem do organismo em movimento. São quatro sistemas visuais, todos com a identidade da 2Doctor sobre fundo escuro para o órgão ganhar contraste no celular.</p>
+    <div class="systems">
+      <div class="sys"><span class="tag">Anatomia 3D real</span><h3>Pulmões e árvore brônquica</h3><p>Modelo Z-Anatomy já no nosso acervo: traqueia, brônquios principais e lobares, cinco lobos, diafragma. Giro de 90 quadros já capturado; falta uma captura com os brônquios isolados.</p></div>
+      <div class="sys"><span class="tag">Novo, procedural</span><h3>Corte da via aérea</h3><p>Anel de epitélio, glândulas, músculo liso e cartilagem desenhado no motor. O calibre, o edema, o muco e as células inflamatórias são parâmetros animados, como a placa da artéria no vídeo de insuficiência cardíaca.</p></div>
+      <div class="sys"><span class="tag">Novo, procedural</span><h3>Alvéolos e enfisema</h3><p>Sacos alveolares que respiram; na DPOC as paredes se rompem, os sacos se fundem e o ar fica preso na expiração. Não existe esse modelo no acervo.</p></div>
+      <div class="sys"><span class="tag">Novo, com dados</span><h3>Espirometria animada</h3><p>Curva fluxo-volume e barras de VEF1 antes e depois do broncodilatador, desenhadas em escala. Sem copiar figuras da GINA ou do GOLD, que exigem autorização.</p></div>
+    </div>
+  </section>
+
+  <section id="estudante">
+    <div class="vhead"><h2>Versão estudante</h2><span class="dur mono" id="dur-est"></span></div>
+    <p class="lead">Objetivo: sair com o mecanismo na cabeça. Anatomia identificada, o que muda na parede e nos alvéolos, como a espirometria mostra isso e uma frase para lembrar.</p>
+    <div class="board" id="board-est"></div>
+  </section>
+
+  <section id="medico">
+    <div class="vhead"><h2>Versão médico</h2><span class="dur mono" id="dur-med"></span></div>
+    <p class="lead">Objetivo: decidir no plantão ou no ambulatório. Critérios objetivos, diferenciais, conduta com dose e disponibilidade no SUS, e as limitações na tela. O selo de país abre o vídeo e define quais protocolos entram.</p>
+    <div class="board" id="board-med"></div>
+  </section>
+
+  <section id="afirmacoes">
+    <h2>Afirmações e fontes</h2>
+    <p class="lead">Todas as afirmações clínicas das duas versões. As âmbar e vermelhas precisam de conferência na página exata do documento original antes de renderizar: o ambiente bloqueou a abertura dos PDFs, então a checagem desta rodada se apoiou nos trechos indexados das fontes.</p>
+    <div class="filters" role="group" aria-label="Filtrar por status">
+      <button type="button" data-f="all" aria-pressed="true">Todas</button>
+      <button type="button" data-f="V" aria-pressed="false">Verificadas</button>
+      <button type="button" data-f="P" aria-pressed="false">Parciais</button>
+      <button type="button" data-f="N" aria-pressed="false">Sem fonte</button>
+    </div>
+    <div class="tbl"><table>
+      <thead><tr><th style="width:56px">ID</th><th>Afirmação no vídeo</th><th style="width:170px">Fonte</th><th style="width:110px">Status</th><th>O que falta</th></tr></thead>
+      <tbody id="claims"></tbody>
+    </table></div>
+    <h3 style="margin:22px 0 10px">Documentos</h3>
+    <div class="srcs" id="srcs"></div>
+  </section>
+
+  <section id="doses">
+    <h2>Doses e interações</h2>
+    <p class="lead">Não existe validador de doses ou interações hoje. O verificador da WMed é um rascunho sem referência por regra e não cobre os inalatórios. Por isso a proposta é simples: dose só entra no vídeo se estiver numa tabela curada, com a bula da Anvisa, a diretriz e o revisor.</p>
+    <div class="tbl" style="margin-bottom:16px"><table>
+      <thead><tr><th>Dose no vídeo médico</th><th>Referência</th><th>SUS</th><th>Status</th></tr></thead>
+      <tbody>
+        <tr><td>Budesonida-formoterol 200/6 mcg (160/4,5 liberada), 1 inalação quando necessário, asma a partir de 12 anos</td><td>GINA 2026 (S1, S2); bula Symbicort Turbuhaler 05/08/2025 (S14)</td><td>CEAF, cápsulas 6/200 e 12/400 mcg (S8). A de 12/400 não serve para alívio.</td><td><span class="st P">Parcial</span></td></tr>
+        <tr><td>Limite no dia: “precisou de muitas inalações, reavalie”</td><td>GINA 2026 trocou “dose máxima” por um aviso; bula BR: reavaliar acima de 8 por dia, até 12 temporariamente (S14)</td><td>–</td><td><span class="st P">Parcial</span></td></tr>
+        <tr><td>Tiotrópio-olodaterol 2,5/2,5 mcg, 2 inalações 1 vez ao dia (DPOC, grupo B)</td><td>Bula Spiolto Respimat (S14), conferida em ficha técnica europeia e site Boehringer BR</td><td>Incorporado; acesso pelos critérios do PCDT DPOC 2025</td><td><span class="st P">Parcial</span></td></tr>
+        <tr><td>Alternativa na tela: umeclidínio-vilanterol 62,5/25 mcg, 1 inalação 1 vez ao dia</td><td>Bula Anoro Ellipta (S14)</td><td>Incorporado; mesmos critérios</td><td><span class="st V">Verificado</span></td></tr>
+      </tbody>
+    </table></div>
+    <div class="cols">
+      <div class="box">
+        <h3>Como as doses ficam confiáveis</h3>
+        <ul>
+          <li>Tabela própria, uma linha por fármaco e indicação: dose, intervalo, população, limite e ajuste.</li>
+          <li>Cada linha com link da bula Anvisa, data da versão, diretriz e ano.</li>
+          <li>Revisão por médico e farmacêutico, com data da próxima revisão.</li>
+          <li>A IA só cita linhas aprovadas. Nunca escreve dose livre.</li>
+        </ul>
+      </div>
+      <div class="box">
+        <h3>Interações: fonte licenciada</h3>
+        <ul>
+          <li>Não há base aberta com gravidade que permita uso comercial. DDInter, DrugBank acadêmico e ATC/DDD da OMS são não comerciais.</li>
+          <li>Cotar DrugBank (API, custo menor, em inglês), Micromedex ou Lexidrug (peso clínico, talvez em português) e Memed (nacional, checar a procedência dos dados).</li>
+          <li>Negociar: uso em vídeo e texto gerado por IA, uso como contexto de IA, tradução, território e responsabilidade.</li>
+          <li>Até lá, o vídeo não mostra interações.</li>
+        </ul>
+      </div>
+      <div class="box">
+        <h3>Lacunas já encontradas no rascunho atual</h3>
+        <ul>
+          <li>Propranolol com salbutamol não gera alerta.</li>
+          <li>Faltam teofilina com claritromicina e ciprofloxacino ampliado, corticoide inalatório com ritonavir, vilanterol ou salmeterol com inibidor forte de CYP3A4.</li>
+          <li>Nenhum inalatório está no verificador.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section id="app">
+    <h2>No app</h2>
+    <p class="lead">O texto da resposta aparece na hora. O vídeo é opcional e gerado sob demanda, porque nem sempre o médico pode assistir durante o atendimento.</p>
+    <div class="appgrid">
+      <div class="phone" aria-label="Esboço da tela de chat">
+        <div class="ph-top"><img src="data:image/png;base64,__MARK__" alt=""><span>2Doctor</span><span class="country">Brasil</span></div>
+        <div class="bubble q">Como diferenciar asma de DPOC?</div>
+        <div class="bubble a">
+          <b>Principais diferenças</b>
+          <ul>
+            <li>DPOC: VEF1/CVF pós-BD &lt; 0,70, exposição e idade acima de 40.</li>
+            <li>Asma: sintomas e fluxo variáveis, resposta ao broncodilatador.</li>
+            <li>Podem coexistir.</li>
+          </ul>
+          <p class="src">Fontes: GINA 2026 · GOLD 2026 · PCDT Asma 2026 · PCDT DPOC 2025</p>
+        </div>
+        <div class="vbtn"><span class="play" aria-hidden="true"></span><div><b>Explicar em vídeo</b><span>cerca de 80 s · estudante ou médico</span></div></div>
+      </div>
+      <div class="steps">
+        <div class="step"><span class="n">1</span><p><b>Resposta em texto imediata</b>, com as fontes. O botão fica embaixo, discreto.</p></div>
+        <div class="step"><span class="n">2</span><p><b>Ao tocar</b>, o app confirma o perfil (estudante ou médico) e o país. O país vem do cadastro e do idioma do aparelho, e pode ser trocado pelo selo.</p></div>
+        <div class="step"><span class="n">3</span><p><b>Se o tema já está no acervo revisado</b>, o vídeo abre na hora. Senão, a geração mostra as etapas (roteiro, checagem, voz, imagem) e oferece “avisar quando ficar pronto”.</p></div>
+        <div class="step"><span class="n">4</span><p><b>O vídeo sai com legenda</b>, selo do país, fontes e data. Tocar numa afirmação abre a fonte.</p></div>
+        <div class="step"><span class="n">5</span><p><b>Acervo compartilhado</b> só com temas gerais revisados, com revisor e data de atualização. Casos individuais nunca entram no acervo e expiram com a conversa.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="medicao">
+    <h2>Medição</h2>
+    <p class="lead">Dois objetivos: saber se o vídeo faz a pessoa entender, e quanto custa cada vídeo e cada visualização. Os números reais só existem depois da primeira renderização.</p>
+    <div class="tbl" style="margin-bottom:18px"><table>
+      <thead><tr><th>Etapa</th><th>O que medimos</th><th>Unidade de custo</th></tr></thead>
+      <tbody>
+        <tr><td>Roteiro</td><td>Tempo e tokens de entrada e saída da IA</td><td>Preço por milhão de tokens do provedor na data do teste</td></tr>
+        <tr><td>Checagem</td><td>Tempo, % de afirmações com fonte, minutos de revisão humana</td><td>Custo de revisão por tema (entra no acervo, não por vídeo)</td></tr>
+        <tr><td>Voz</td><td>Caracteres narrados, segundos de áudio, tempo de síntese</td><td>Preço por caractere ou minuto do serviço de voz escolhido</td></tr>
+        <tr><td>Imagem</td><td>Segundos de processamento por segundo de vídeo, servidor comparado com o navegador do usuário</td><td>Preço por hora da máquina</td></tr>
+        <tr><td>Codificação</td><td>Tempo e tamanho do arquivo por resolução</td><td>Incluído na máquina</td></tr>
+        <tr><td>Armazenamento</td><td>MB por vídeo e por quanto tempo fica guardado</td><td>GB por mês</td></tr>
+        <tr><td>Entrega</td><td>MB por visualização e tempo até começar a tocar no 4G</td><td>GB de saída da CDN</td></tr>
+      </tbody>
+    </table></div>
+    <div class="cols">
+      <div class="box">
+        <h3>Teste de compreensão no celular</h3>
+        <ul>
+          <li>8 a 12 estudantes e 8 a 12 médicos, cada grupo com a sua versão.</li>
+          <li>Metade lê só o texto primeiro, metade vê o vídeo primeiro; depois troca.</li>
+          <li>Cinco perguntas antes e depois, escala de 1 a 5 para “agora eu entendi” e legibilidade de cada cena.</li>
+          <li>Onde a pessoa para de assistir e se usaria no plantão.</li>
+        </ul>
+      </div>
+      <div class="box">
+        <h3>O que o teste não é</h3>
+        <ul>
+          <li>Não é validação clínica. É teste de compreensão com amostra pequena.</li>
+          <li>O conteúdo continua dependendo da revisão médica das afirmações parciais.</li>
+        </ul>
+        <p class="note"><b>Resultado esperado:</b> custo por vídeo gerado e por visualização, que vira a base dos créditos e do preço.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="decisoes">
+    <h2>Decisões para você</h2>
+    <ol class="decide">
+      <li><b>Roteiros:</b> aprovar ou ajustar o texto e as cenas das duas versões.</li>
+      <li><b>Revisor médico:</b> quem confere as doses e as afirmações parciais antes de renderizar.</li>
+      <li><b>Liberar domínios</b> para conferir as páginas exatas: ginasthma.org, goldcopd.org, gov.br, scielo.br, ncbi.nlm.nih.gov e consultas.anvisa.gov.br.</li>
+      <li><b>Voz:</b> escolher o serviço de voz em português, ou gravar uma voz humana para o protótipo.</li>
+      <li><b>Licença do modelo 3D:</b> o Z-Anatomy é CC BY-SA 4.0. Crédito no vídeo é obrigatório, e o “compartilha igual” pode alcançar o vídeo. Vale uma consulta jurídica; a alternativa é um modelo próprio.</li>
+      <li><b>MART na versão médico:</b> ficou fora por tempo e porque o texto de 2026 da GINA ainda não foi conferido. Entra numa segunda versão?</li>
+      <li><b>Logo:</b> mandar o arquivo em SVG. Neste esboço usei o monograma recortado do print.</li>
+    </ol>
+  </section>
+</div>
+
+<script>
+const CLAIMS = {
+  N1:{t:"Traqueia, brônquios principais e lobares, bronquíolos e alvéolos.",s:"A definir (anatomia)",st:"N",f:"Escolher fonte de anatomia citável; nomes seguem a Terminologia Anatômica do modelo."},
+  N2:{t:"Parede do brônquio: epitélio ciliado, glândulas de muco, músculo liso e cartilagem.",s:"A definir (histologia)",st:"N",f:"Escolher fonte de histologia citável."},
+  A:{t:"Asma: inflamação crônica, sintomas e limitação do fluxo expiratório variáveis.",s:"S1 · cap. 1",st:"V",f:""},
+  B:{t:"DPOC: alterações de vias aéreas ou alvéolos com obstrução persistente, muitas vezes progressiva.",s:"S4 · cap. 1",st:"V",f:""},
+  C:{t:"DPOC se confirma com VEF1/CVF pós-broncodilatador abaixo de 0,70.",s:"S4 · cap. 2",st:"V",f:""},
+  D1:{t:"Asma: VEF1 sobe mais de 12% e 200 mL após broncodilatador.",s:"S1 · critérios diagnósticos",st:"V",f:"Anotar número do quadro e página."},
+  D2:{t:"Resposta ao broncodilatador não exclui DPOC.",s:"S4",st:"P",f:"Frase confirmada no GOLD 2023; localizar no texto de 2026."},
+  E1:{t:"Asma costuma começar cedo, varia e tem gatilhos (alérgeno, vírus, exercício).",s:"S1; S4 tabela de diferenciais",st:"V",f:""},
+  E2:{t:"DPOC: acima de 40 anos, tabaco, biomassa ou poeira ocupacional, dispneia progressiva.",s:"S4 · indicadores-chave",st:"V",f:""},
+  F1:{t:"Asma: broncoconstrição, edema, muco e inflamação tipo 2 com eosinófilos.",s:"S12",st:"V",f:"Confirmar licença do StatPearls para citação."},
+  F2:{t:"DPOC: doença de pequenas vias e enfisema, com perda da retração elástica e ar preso.",s:"S4; S13",st:"P",f:"Localizar a frase no GOLD 2026."},
+  F3:{t:"Na DPOC predominam neutrófilos, macrófagos e linfócitos CD8.",s:"S13",st:"V",f:"Ressalva: parte dos pacientes com DPOC tem eosinofilia."},
+  G:{t:"Traços das duas: incluir corticoide inalatório; não usar LABA ou LAMA sem ele.",s:"S5 (2017); S1",st:"P",f:"Documento conjunto é de 2017; conferir a seção de 2026 da GINA."},
+  L:{t:"Antes de fechar DPOC, afastar insuficiência cardíaca, bronquiectasias e tuberculose.",s:"S4 · diagnóstico diferencial",st:"V",f:""},
+  H1:{t:"Asma: não tratar com SABA isolado.",s:"S1; S2; S10",st:"V",f:""},
+  H2:{t:"Alívio preferencial: budesonida-formoterol em dose baixa quando necessário.",s:"S1; S2 · Track 1",st:"V",f:""},
+  H3:{t:"Muitas inalações no dia: reavaliar.",s:"S1 (2026); S14 bula BR",st:"P",f:"Número exato do aviso de 2026 não conferido; vídeo usa a frase sem número."},
+  J5:{t:"Budesonida-formoterol 200/6 mcg, 1 inalação quando necessário (asma leve, 12 anos ou mais).",s:"S14 Symbicort",st:"V",f:"Conferir no Bulário Eletrônico da Anvisa."},
+  SUS1:{t:"SUS: budesonida-formoterol 6/200 e 12/400 mcg pelo CEAF.",s:"S8",st:"V",f:""},
+  K:{t:"DPOC: cessar tabagismo, vacinas, reabilitação e técnica inalatória.",s:"S4 · cap. 3",st:"V",f:"Vacinas disponíveis no SUS não foram checadas; vídeo não cita quais."},
+  I1:{t:"Grupo A: um broncodilatador. Grupo B: LAMA mais LABA.",s:"S4 · tratamento inicial",st:"V",f:""},
+  J2:{t:"Tiotrópio-olodaterol 2,5/2,5 mcg, 2 inalações 1 vez ao dia.",s:"S14 Spiolto",st:"P",f:"Conferido em ficha europeia e site do fabricante; falta a bula Anvisa."},
+  I2:{t:"Grupo E: considerar tripla se eosinófilos a partir de 300 por µL.",s:"S4",st:"V",f:""},
+  I4:{t:"DPOC: não usar corticoide inalatório isolado.",s:"S4; S15",st:"V",f:""},
+  SUS2:{t:"SUS: LAMA mais LABA e tripla com critérios do PCDT DPOC 2025.",s:"S7",st:"P",f:"Critérios exatos de acesso (VEF1, exacerbações) não conferidos."}
+};
+const SOURCES = [
+  ["S1","GINA 2026 Strategy Report (05/05/2026). Direitos reservados: citar e parafrasear; figuras exigem autorização.","https://ginasthma.org/2026-gina-strategy-report/"],
+  ["S2","GINA 2026 Summary Guide (julho de 2026).","https://ginasthma.org/wp-content/uploads/2026/07/GINA-Summary-Guide-2026-WEB-WMS.pdf"],
+  ["S4","GOLD 2026 Report, v1.3 (08/12/2025). Direitos reservados.","https://goldcopd.org/wp-content/uploads/2026/01/GOLD-REPORT-2026-v1.3-8Dec2025_WMV2.pdf"],
+  ["S5","GINA/GOLD, Diagnosis and initial treatment of Asthma, COPD and Asthma-COPD Overlap (2017).","https://ginasthma.org/wp-content/uploads/2022/05/GINA-GOLD-ACOS-2017-WMS.pdf"],
+  ["S6","PCDT Asma, Portaria Conjunta SAES/SCTIE nº 43, 24/03/2026.","https://www.gov.br/saude/pt-br/assuntos/pcdt/a/asma-portaria-conjunta-saes-sctie-no-43"],
+  ["S7","PCDT DPOC, Portaria Conjunta SAES/SCTIE nº 29, 27/11/2025.","https://www.gov.br/saude/pt-br/assuntos/pcdt/d/doenca-pulmonar-obstrutiva-cronica"],
+  ["S8","InfoSUS SES/SC, formoterol + budesonida (apresentações no SUS).","http://infosus.saude.sc.gov.br/index.php/Formoterol_+_budesonida"],
+  ["S10","SBPT, Recomendações para o manejo da asma 2020. J Bras Pneumol 2020;46(1):e20190307.","https://www.scielo.br/j/jbpneu/a/jbyyhBv98bWq3WksvBqnDBn/?lang=pt"],
+  ["S12","StatPearls, Pathophysiology of Asthma (NBK551579).","https://www.ncbi.nlm.nih.gov/books/NBK551579/"],
+  ["S13","Saetta et al., Comparison of the structural and inflammatory features of COPD and asthma.","https://pubmed.ncbi.nlm.nih.gov/10843939/"],
+  ["S14","Bulas: Symbicort Turbuhaler (05/08/2025), Spiolto Respimat, Anoro Ellipta. Conferir todas no Bulário Eletrônico da Anvisa.","https://www.astrazeneca.com.br/content/dam/az-br/Medicine/medicine-pdf/SymbicortTurbuhaler_Bula_Paciente.pdf"],
+  ["S15","Resumos secundários do GOLD 2026, só para conferência (Medscape, revisão em Drugs 2026).","https://pmc.ncbi.nlm.nih.gov/articles/PMC13109179/"]
+];
+
+const EST = [
+  {tc:"0:00–0:08",kind:"hook",vo:"Chiado, tosse e falta de ar. Asma ou DPOC? A resposta está no que acontece dentro das vias aéreas.",screen:"Asma ou DPOC?",asset:"Giro 3D do modelo respiratório (Z-Anatomy), já capturado",cl:["E1","E2"]},
+  {tc:"0:08–0:16",kind:"anatomy",vo:"O ar desce pela traqueia, passa pelos brônquios principais e lobares, chega aos bronquíolos e termina nos alvéolos.",screen:"Rótulos: Traqueia · Brônquio principal · Brônquio lobar · Bronquíolos · Alvéolos",asset:"Z-Anatomy com brônquios isolados (nova captura) e zoom procedural para bronquíolos e alvéolos, que não existem no modelo",cl:["N1"]},
+  {tc:"0:16–0:24",kind:"wall",vo:"Por dentro, a parede do brônquio tem epitélio com cílios, glândulas de muco, músculo liso e cartilagem.",screen:"Rótulos nas camadas do corte",asset:"Corte procedural novo; célula ciliada 3D do acervo Vytal como detalhe",cl:["N2"]},
+  {tc:"0:24–0:40",kind:"asthma",vo:"Na asma, um gatilho, como alérgeno, vírus ou exercício, ativa uma inflamação com eosinófilos. O músculo contrai, a parede incha e sobra muco: o ar passa com dificuldade. Com o tratamento, a via reabre. Por isso os sintomas vão e voltam.",screen:"Gatilho → eosinófilos → contração, edema, muco → reabre",asset:"Corte procedural animado: calibre, edema, muco e células como parâmetros",cl:["E1","F1","A"]},
+  {tc:"0:40–0:57",kind:"copd",vo:"Na DPOC, anos de fumaça de cigarro ou de fogão a lenha inflamam as pequenas vias aéreas e destroem as paredes dos alvéolos: é o enfisema. O pulmão perde a elasticidade e o ar fica preso. A obstrução persiste e costuma progredir.",screen:"Fumaça → neutrófilos e macrófagos → enfisema → ar preso",asset:"Alvéolos procedurais que se fundem; macrófago alveolar 3D opcional",cl:["E2","F2","F3","B"]},
+  {tc:"0:57–1:06",kind:"spiro",vo:"Na espirometria, a asma costuma melhorar com o broncodilatador. Na DPOC, a relação VEF1/CVF segue abaixo de 0,70 mesmo depois dele.",screen:"Asma: VEF1 sobe >12% e >200 mL · DPOC: VEF1/CVF pós-BD <0,70 · rodapé: resposta ao BD não exclui DPOC",asset:"Curva fluxo-volume e barras desenhadas em escala",cl:["D1","C","D2"]},
+  {tc:"1:06–1:16",kind:"compare",vo:"Em resumo: a asma costuma começar cedo e varia com gatilhos. A DPOC aparece depois dos 40, após exposição, e persiste. As duas podem coexistir.",screen:"Tabela: início · exposição · padrão · inflamação · espirometria",asset:"Comparação lado a lado com miniaturas das animações",cl:["E1","E2","F1","F3","G"]},
+  {tc:"1:16–1:21",kind:"summary",vo:"Para lembrar: asma varia. DPOC persiste.",screen:"Asma varia · DPOC persiste · fontes e data",asset:"Cartão final da marca",cl:["A","B"]}
+];
+const MED = [
+  {tc:"0:00–0:05",kind:"badge",vo:"Asma ou DPOC no adulto: diferenciar e tratar, com protocolos do Brasil.",screen:"Selo: Brasil · PCDT Asma 2026 · PCDT DPOC 2025 · GINA 2026 · GOLD 2026",asset:"Giro 3D curto do modelo respiratório",cl:[]},
+  {tc:"0:05–0:16",kind:"clues",vo:"Suspeite de DPOC acima dos 40 anos, com tabaco, biomassa ou poeira ocupacional e dispneia progressiva. Na asma: início precoce, sintomas variáveis, gatilhos e atopia.",screen:"Dois quadros de pistas clínicas",asset:"Ícones da marca sobre o modelo 3D esmaecido",cl:["E2","E1"]},
+  {tc:"0:16–0:30",kind:"spiro",vo:"Confirme com espirometria. DPOC: VEF1/CVF pós-broncodilatador abaixo de 0,70. Asma: VEF1 sobe mais de 12% e 200 mL, ou variabilidade documentada. Resposta ao broncodilatador não exclui DPOC.",screen:"Curvas pré e pós-BD com os limiares",asset:"Espirometria animada",cl:["C","D1","D2"]},
+  {tc:"0:30–0:37",kind:"split",vo:"O mecanismo explica: inflamação tipo 2 e broncoconstrição variável na asma; pequenas vias e enfisema na DPOC.",screen:"Tela dividida: corte da asma × alvéolos da DPOC",asset:"Reaproveita as animações da versão estudante, aceleradas",cl:["F1","F2"]},
+  {tc:"0:37–0:42",kind:"ddx",vo:"Antes de fechar DPOC, afaste insuficiência cardíaca, bronquiectasias e tuberculose.",screen:"Três diferenciais",asset:"Ícones; TB em destaque pela prevalência no Brasil",cl:["L"]},
+  {tc:"0:42–0:57",kind:"rxA",vo:"Asma, a partir de 12 anos: não use SABA isolado. Alívio preferencial: budesonida-formoterol 200/6, uma inalação quando necessário. Precisou de muitas inalações no dia? Reavalie.",screen:"Cartão de dose + SUS: 6/200 e 12/400 pelo CEAF; 12/400 não serve para alívio",asset:"Inalador e via aérea reabrindo",cl:["H1","H2","J5","H3","SUS1"]},
+  {tc:"0:57–1:14",kind:"rxC",vo:"DPOC: cessar tabagismo, vacinas, reabilitação e técnica inalatória. Grupo A: um broncodilatador. Grupo B: LAMA mais LABA, como tiotrópio-olodaterol 2,5/2,5, duas inalações uma vez ao dia. Grupo E: considere tripla se eosinófilos a partir de 300. Não use corticoide inalatório isolado.",screen:"Escada A · B · E com doses + SUS: critérios do PCDT DPOC 2025",asset:"Escada animada; alvéolos esvaziando melhor com broncodilatador",cl:["K","I1","J2","I2","I4","SUS2"]},
+  {tc:"1:14–1:21",kind:"overlap",vo:"Traços das duas? Inclua corticoide inalatório e não use LABA ou LAMA sem ele.",screen:"Sobreposição asma e DPOC",asset:"Dois círculos que se cruzam",cl:["G"]},
+  {tc:"1:21–1:27",kind:"sources",vo:"Doses para adultos. Confira a bula vigente. Conteúdo educacional, atualizado em setembro de 2026.",screen:"Limitações · fontes · data",asset:"Cartão final com fontes tocáveis no app",cl:[]}
+];
+
+/* ---------- miniaturas: esboço do quadro-chave de cada cena ---------- */
+const TEAL="#3E8A87",TEAL2="#6FB3AE",INK="#E4ECEE",MUTE="#8FA3AE",PINK="#D98C8C",AMBER="#E3B065",RED="#E07A74",BG="#12202E";
+function frame(cv,kind){
+  const d=window.devicePixelRatio||1, W=132, H=235; cv.width=W*d; cv.height=H*d;
+  const x=cv.getContext("2d"); x.scale(d,d); x.fillStyle=BG; x.fillRect(0,0,W,H);
+  const cx=W/2;
+  const txt=(s,y,sz=11,c=INK,w=600)=>{x.fillStyle=c;x.font=`${w} ${sz}px Figtree, system-ui, sans-serif`;x.textAlign="center";x.fillText(s,cx,y)};
+  const circ=(X,Y,r,fill,stroke,lw=1.5)=>{x.beginPath();x.arc(X,Y,r,0,Math.PI*2);if(fill){x.fillStyle=fill;x.fill()}if(stroke){x.strokeStyle=stroke;x.lineWidth=lw;x.stroke()}};
+  const lungs=(y0,s=1,a=1)=>{x.save();x.globalAlpha=a;x.fillStyle="rgba(111,179,174,.18)";x.strokeStyle=TEAL2;x.lineWidth=1.2;
+    for(const sd of[-1,1]){x.beginPath();x.ellipse(cx+sd*24*s,y0+46*s,20*s,42*s,sd*.12,0,Math.PI*2);x.fill();x.stroke()}
+    x.strokeStyle=INK;x.lineWidth=2.2*s;x.beginPath();x.moveTo(cx,y0);x.lineTo(cx,y0+22*s);x.stroke();
+    x.lineWidth=1.6*s;for(const sd of[-1,1]){x.beginPath();x.moveTo(cx,y0+22*s);x.quadraticCurveTo(cx+sd*10*s,y0+26*s,cx+sd*18*s,y0+38*s);x.stroke();
+      x.lineWidth=1*s;for(const k of[0,1]){x.beginPath();x.moveTo(cx+sd*18*s,y0+38*s);x.lineTo(cx+sd*(22+k*8)*s,y0+(52+k*14)*s);x.stroke()}x.lineWidth=1.6*s}x.restore()};
+  const wall=(X,Y,R,lumen,opt={})=>{ // corte da via aérea
+    for(let i=0;i<8;i++){const a0=i*Math.PI/4+.12;x.beginPath();x.arc(X,Y,R,a0,a0+.5);x.strokeStyle="#C9D6DC";x.lineWidth=4;x.stroke()} // cartilagem
+    circ(X,Y,R-5,opt.edema?"#3B3F55":"#2A3A4E");
+    circ(X,Y,R-8,null,PINK,opt.thick?5:2.4); // músculo liso
+    circ(X,Y,lumen+4,"#34506A"); // epitélio
+    circ(X,Y,lumen,"#0B1620");
+    if(opt.mucus){x.fillStyle="rgba(230,220,170,.85)";for(let i=0;i<5;i++){const a=i*1.3;circ(X+Math.cos(a)*(lumen-3),Y+Math.sin(a)*(lumen-3),2.4,"rgba(230,220,170,.9)")}}
+    if(opt.eos){for(let i=0;i<7;i++){const a=i*.9+.3;circ(X+Math.cos(a)*(R-12),Y+Math.sin(a)*(R-12),2.2,AMBER)}}
+    if(opt.air){for(let i=0;i<opt.air;i++){const a=i*2.4,r=(i%3)*lumen/4;circ(X+Math.cos(a)*r,Y+Math.sin(a)*r,1.3,INK)}}
+  };
+  const alv=(X,Y,broken)=>{x.strokeStyle=TEAL2;x.lineWidth=1.3;x.fillStyle="rgba(111,179,174,.14)";
+    if(!broken){for(const [dx,dy] of [[0,0],[-12,-8],[12,-8],[-12,8],[12,8],[0,-16],[0,16]]){circ(X+dx,Y+dy,8,"rgba(111,179,174,.14)",TEAL2,1.2)}}
+    else{x.beginPath();x.ellipse(X-6,Y,17,20,0,0,Math.PI*2);x.fill();x.stroke();x.beginPath();x.ellipse(X+14,Y+6,10,12,0,0,Math.PI*2);x.fill();x.stroke();
+      x.setLineDash([2,3]);x.strokeStyle=RED;x.beginPath();x.moveTo(X+4,Y-14);x.lineTo(X+8,Y+14);x.stroke();x.setLineDash([])}};
+  const spiro=(y0,copd)=>{const X0=18,X1=W-14,Y0=y0,Y1=y0+70;x.strokeStyle=MUTE;x.lineWidth=1;x.beginPath();x.moveTo(X0,Y0);x.lineTo(X0,Y1);x.lineTo(X1,Y1);x.stroke();
+    const curve=(k,c,dash)=>{x.setLineDash(dash||[]);x.strokeStyle=c;x.lineWidth=1.8;x.beginPath();for(let i=0;i<=40;i++){const u=i/40,v=u<.12?u/.12:Math.pow(1-(u-.12)/.88,k);x.lineTo(X0+u*(X1-X0),Y1-v*62)}x.stroke();x.setLineDash([])};
+    curve(1,MUTE,[3,3]); if(copd){curve(2.6,RED)}else{curve(1.9,AMBER);curve(1.15,TEAL2)}};
+  const card=(X,Y,w,h,c)=>{x.fillStyle=c||"rgba(255,255,255,.06)";x.beginPath();x.roundRect(X,Y,w,h,6);x.fill()};
+  const bar=(X,Y,w,c)=>{x.fillStyle=c;x.beginPath();x.roundRect(X,Y,w,4,2);x.fill()};
+
+  switch(kind){
+    case "hook": lungs(62,1.2); txt("Asma ou DPOC?",40,13,INK,700); break;
+    case "anatomy": lungs(40,.95,.9); circ(cx+30,176,26,"rgba(14,24,33,.9)",TEAL2,1.2); alv(cx+30,176,false); x.strokeStyle=TEAL2;x.setLineDash([2,2]);x.beginPath();x.moveTo(cx+22,108);x.lineTo(cx+22,150);x.stroke();x.setLineDash([]);
+      [[24,"Traqueia"],[62,"Brônquio"],[100,"Bronquíolo"]].forEach(([y,s])=>{x.fillStyle=INK;x.font="500 8px Figtree, sans-serif";x.textAlign="left";x.fillText(s,6,y)}); x.textAlign="center"; txt("Alvéolos",218,9,TEAL2,600); break;
+    case "wall": wall(cx,110,48,18,{air:8}); txt("Parede do brônquio",200,10,INK,600); break;
+    case "asthma": wall(cx,86,44,8,{thick:true,edema:true,mucus:true,eos:true,air:3}); x.fillStyle=AMBER;x.font="600 9px Figtree, sans-serif";x.fillText("eosinófilos",cx,150); wall(cx,196,26,11,{air:5}); x.fillStyle=TEAL2;x.fillText("reabre",cx,232); break;
+    case "copd": for(let i=0;i<9;i++){circ(18+i*12,26+(i%2)*6,3,"rgba(160,170,180,.45)")} alv(cx-8,98,false); x.fillStyle=MUTE;x.font="500 8px Figtree, sans-serif";x.fillText("normal",cx-8,130); alv(cx+4,176,true); x.fillStyle=RED;x.font="600 9px Figtree, sans-serif";x.fillText("enfisema",cx,218); break;
+    case "spiro": txt("Fluxo × volume",28,10,INK,600); spiro(44,false); x.fillStyle=AMBER;x.font="600 8px Figtree, sans-serif";x.textAlign="left";x.fillText("asma pré-BD",18,130);x.fillStyle=TEAL2;x.fillText("asma pós-BD",18,142); spiro(150,true); x.fillStyle=RED;x.fillText("DPOC pós-BD <0,70",18,232); x.textAlign="center"; break;
+    case "compare": txt("Asma",22,11,AMBER,700); x.fillStyle=RED;x.font="700 11px Figtree, sans-serif";x.fillText("",0,0); for(let i=0;i<5;i++){card(8,34+i*38,54,30);card(70,34+i*38,54,30)} x.fillStyle=AMBER;x.font="700 10px Figtree, sans-serif";x.fillText("Asma",35,26);x.fillStyle=RED;x.fillText("DPOC",97,26); for(let i=0;i<5;i++){bar(14,46+i*38,40,"rgba(227,176,101,.7)");bar(76,46+i*38,40,"rgba(224,122,116,.7)")} break;
+    case "summary": txt("Para lembrar",70,10,MUTE,600); txt("Asma varia.",104,15,AMBER,700); txt("DPOC persiste.",128,15,RED,700); bar(30,180,72,"rgba(255,255,255,.18)"); bar(40,190,52,"rgba(255,255,255,.12)"); break;
+    case "badge": lungs(78,1,.5); card(14,22,104,34,"rgba(62,138,135,.35)"); txt("Brasil",38,11,INK,700); txt("PCDT · GINA · GOLD",50,8,INK,500); break;
+    case "clues": card(8,26,116,86); card(8,122,116,86); txt("DPOC",42,11,RED,700); txt("Asma",138,11,AMBER,700); [58,72,86,100].forEach(y=>bar(18,y,96,"rgba(224,122,116,.5)")); [154,168,182,196].forEach(y=>bar(18,y,96,"rgba(227,176,101,.5)")); break;
+    case "split": x.fillStyle="rgba(255,255,255,.08)";x.fillRect(cx-.5,20,1,200); wall(cx-32,110,26,6,{thick:true,edema:true,eos:true}); alv(cx+32,110,true); txt("Asma  ·  DPOC",210,10,INK,600); break;
+    case "ddx": [[50,"IC"],[112,"Bronquiect."],[174,"Tuberculose"]].forEach(([y,s],i)=>{circ(cx,y,20,i==2?"rgba(224,122,116,.25)":"rgba(255,255,255,.07)",i==2?RED:MUTE,1.2);txt(s,y+34,9,INK,600)}); break;
+    case "rxA": x.fillStyle="#C9D6DC";x.beginPath();x.roundRect(cx-12,30,24,58,8);x.fill();x.fillStyle=TEAL;x.fillRect(cx-12,52,24,10); card(10,104,112,70,"rgba(62,138,135,.28)"); txt("Budesonida-formoterol",122,9,INK,700); txt("200/6 · 1 inalação SOS",140,9,INK,500); txt("reavaliar se muitas no dia",158,8,MUTE,500); txt("SUS: CEAF",200,9,TEAL2,600); break;
+    case "rxC": ["A","B","E"].forEach((g,i)=>{card(14+i*6,170-i*52,104-i*12,40,"rgba(62,138,135,"+(.18+i*.12)+")");txt("Grupo "+g,190-i*52,10,INK,700)}); txt("LAMA + LABA",36,9,TEAL2,600); break;
+    case "overlap": x.globalAlpha=.8;circ(cx-16,110,34,"rgba(227,176,101,.25)",AMBER);circ(cx+16,110,34,"rgba(224,122,116,.25)",RED);x.globalAlpha=1; txt("CI obrigatório",166,10,INK,700); break;
+    case "sources": txt("Fontes",36,11,INK,700); for(let i=0;i<6;i++)bar(18,52+i*16,96-(i%3)*14,"rgba(255,255,255,.18)"); card(12,160,108,44,"rgba(224,122,116,.18)"); txt("Doses para adultos",178,9,INK,600); txt("Conteúdo educacional",194,8,MUTE,500); break;
+  }
+  // monograma no canto (marca d'água do vídeo)
+  x.fillStyle="rgba(255,255,255,.55)";x.font="700 8px Figtree, sans-serif";x.textAlign="right";x.fillText("2Doctor",W-6,H-6);
+}
+
+function words(s){return s.trim().split(/\s+/).length}
+function board(id,list,durId){
+  const el=document.getElementById(id); let total=0;
+  list.forEach((sc,i)=>{
+    const [a,b]=sc.tc.split("–").map(t=>{const [m,s]=t.split(":").map(Number);return m*60+s}); total=Math.max(total,b);
+    const need=(words(sc.vo)/2.5).toFixed(1), slot=b-a, tight=need>slot+0.5;
+    const div=document.createElement("article"); div.className="scene";
+    div.innerHTML=`<canvas aria-label="Esboço da cena ${i+1}"></canvas>
+      <div class="meta">
+        <div class="row1"><h3>Cena ${i+1}</h3><span class="tc mono">${sc.tc} · ${slot} s · fala ≈ ${need} s${tight?" (apertado)":""}</span></div>
+        <p class="vo">${sc.vo}</p>
+        <dl class="kv"><dt>Na tela</dt><dd>${sc.screen}</dd><dt>Material</dt><dd>${sc.asset}</dd><dt>Fontes</dt><dd class="claims">${sc.cl.length?sc.cl.map(c=>`<a class="cl ${CLAIMS[c].st}" href="#c-${c}" title="${CLAIMS[c].t}">${c}</a>`).join(""):'<span class="muted">sem afirmação clínica</span>'}</dd></dl>
+      </div>`;
+    el.appendChild(div); frame(div.querySelector("canvas"),sc.kind);
+  });
+  const w=list.reduce((n,s)=>n+words(s.vo),0), sp=(w/2.5).toFixed(0);
+  const d=document.getElementById(durId); d.textContent=`${Math.floor(total/60)}:${String(total%60).padStart(2,"0")} de vídeo · ${w} palavras · fala ≈ ${sp} s a 2,5 palavras/s`;
+  if(total>90) d.classList.add("over");
+}
+function claimsTable(){
+  const tb=document.getElementById("claims"), lab={V:"Verificado",P:"Parcial",N:"Sem fonte"};
+  tb.innerHTML=Object.entries(CLAIMS).map(([id,c])=>`<tr id="c-${id}" data-st="${c.st}"><td class="mono">${id}</td><td>${c.t}</td><td>${c.s}</td><td><span class="st ${c.st}">${lab[c.st]}</span></td><td class="muted">${c.f||"–"}</td></tr>`).join("");
+  document.querySelectorAll(".filters button").forEach(b=>b.addEventListener("click",()=>{
+    document.querySelectorAll(".filters button").forEach(o=>o.setAttribute("aria-pressed",o===b));
+    const f=b.dataset.f; tb.querySelectorAll("tr").forEach(r=>r.hidden=!(f==="all"||r.dataset.st===f));
+  }));
+  document.getElementById("srcs").innerHTML=SOURCES.map(([id,t,u])=>`<div><span class="id">${id}</span><span>${t} <a href="${u}" target="_blank" rel="noopener">${u.replace(/^https?:\/\//,"").slice(0,64)}${u.length>72?"…":""}</a></span></div>`).join("");
+}
+function draw(){document.getElementById("board-est").innerHTML="";document.getElementById("board-med").innerHTML="";board("board-est",EST,"dur-est");board("board-med",MED,"dur-med")}
+claimsTable(); draw();
+if(document.fonts&&document.fonts.ready) document.fonts.ready.then(draw);
+</script>
