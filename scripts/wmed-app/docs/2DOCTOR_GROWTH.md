@@ -1,3 +1,9 @@
+## 25/09/2026 — Revisão de campos publicada
+
+Fonte a860a9f; deployment c0f02fee-f965-47fb-bb76-eca43e2f2536 SUCCESS em2doctor/2doctor-web. Raiz https://www.2doctor.ai/200, healthz200/product2doctor, asset/assets/index-Cpi41wxB.js200 coincide com dist local. CUA público390px abriu caso clínico, aguardou textarea e retornou ao chat; width=scroll390 e console sem erros. Viewport restaurado/aba47 preservada.200 testes e builds completos passaram. Fluxo privado de revisão testado com fixture local; sem sessão real/feedback clínico/Safari físico. API/ECG e demais serviços preservados.
+
+Próximo passo executável: observar continuidade ao voltar de Revisão ao Relato e editar texto, especialmente preservação/indicação de campos corrigidos, antes de alterar fluxo. Não ampliar catálogo nem habilitar consulta ambiente nesta automação. Worktree limpa salvo dist-samu preexistente.
+
 ## 25/09/2026 — Revisão: campos pendentes com acesso direto
 
 Fricção observada no código e reproduzida em fixture: Receber feedback desativado quando queixa<3 ou história<20 caracteres, sem explicar o motivo nos campos fechados.2Doctor agora mostra pendências reais com atalho que abre/foca campo, indicação acessível e limite já exigido pelo contrato; não cria requisitos novos nem inventa dados. Opcionais vazios continuam válidos. Edição após confirmação desmarca confirmação na2Doctor; checkbox indisponível enquanto processa. Não altera backend/prompt/modelo.
