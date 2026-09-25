@@ -1,3 +1,9 @@
+## 25/09/2026 — Diretório compacto publicado
+
+Fonte cdecc7c; deployment a6ad2454-4c96-4c24-a7e6-e43933e19831 SUCCESS em 2doctor-web/projeto2doctor. healthz200 product2doctor, página200, asset index-DUyHWt5B.js200 igual ao build local. CUA público390: busca CHA2DS2 encontra CHA₂DS₂-VASc; limpar restaura catálogo35, layout branco conferido, largura/scroll375 (sem overflow), viewport restaurado. Testes182 e ambos builds aprovados, conforme entrada anterior. Nenhum módulo ou algoritmo médico adicionado.
+
+Achado na conferência: aba pública aberta antes do deploy ainda executava index-Cph0ep6r.js; ao navegar por hash tentou baixar Libraries-D9gFa2hr.js removido e exibiu limite de erro. Reload carregou index-DUyHWt5B.js e resolveu. Não é falha do novo diretório; é uma fricção real de atualização de abas antigas. Próximo passo executável: melhorar recuperação de chunks obsoletos sem recarregar automaticamente nem perder rascunho/conversa. Separação dos scores conceituais permanece pendente, sem alegação de validação clínica. Não testados aparelho físico, auth/chat real ou precisão clínica nesta rodada. Scribe doc e dist-samu preexistentes preservados; servidor local encerrado.
+
 ## 25/09/2026 — Diretório de calculadoras: menos rolagem e busca coerente
 
 Implementação local: lista compacta em duas colunas no desktop e uma no celular, mantendo todas as descrições; busca 2Doctor por nome/sigla/especialidade traduzida, tolerante a acentos, subscritos e espaços; limpar filtros em uma ação. Fórmulas e conteúdo clínico não alterados. WMed conserva apresentação e busca anteriores.
