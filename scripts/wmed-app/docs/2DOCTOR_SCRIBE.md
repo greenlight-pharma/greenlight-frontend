@@ -68,3 +68,16 @@ Fonte ace3939, deployment a1ae3781-47cd-4341-a9fe-fbe43c7fdb82 SUCCESS exclusiva
 
 135testes + build2Doctor + sitecompleto aprovados; QA local PT/EN/ES,320/390/1280, claro/escuro e cópia selecionável. Não houve áudio, paciente real, API/modelo novo, persistência clínica ou treinamento. Não testados aparelhos físicos, auth/histórico real, eficácia/validação clínica. É demonstração determinística com2casos fictícios, não Scribe generativo. Próximo executável: contrato e conjunto sintético de avaliação de texto livre com trechos de origem e checagem de negações/doses/unidades/correções, offline e sem ativar fornecedor/modelo. Desafios continuam abandonados. Rollback reconstruindo958f12c comcwd scripts/wmed-app.
 
+
+
+## 25/09/2026 — passagem SBAR demonstrativa pronta
+
+Adicionados botões Nota SOAP / Passagem SBAR no mesmo módulo, mantendo o chat e menu. Três exemplos fictícios em PT/EN/ES, incluindo novo relato autoral de passagem de caso. Mapeamento SBAR explícito por trecho: situação, contexto, avaliação, recomendação/pedido. Campos ausentes continuam vazios; nenhuma hipótese ou conduta nova é gerada. Origem por seção, revisão antes de copiar e marca de exemplo fictício na exportação com formato. Troca de formato recarrega o exemplo original, com confirmação se houve edição; não converte as edições do usuário. Rascunho apenas em memória.
+
+Estrutura consultada na fonte primária AHRQ TeamSTEPPS: https://www.ahrq.gov/teamstepps-program/curriculum/communication/tools/sbar.html . Somente nomenclatura geral; exemplos/textos próprios, sem copiar mídia ou modelos proprietários.
+
+148 testes passaram; build 2Doctor e build completo do site aprovados. Primeiro teste detectou inclusão automática indevida do novo exemplo na avaliação offline: corrigida com allowlist explícita dos dois exemplos originais, preservando corpus v1 de 18 fixtures/72 mutações. O novo exemplo tem testes de UI/dados, não foi admitido automaticamente como avaliação clínica.
+
+CUA local: PT/EN/ES, 320/390/1280px, claro/escuro; ordem SBAR, origem, revisão/cópia, edição invalidando revisão, cancelar/confirmar substituição e SOAP preservado. 320px: scrollWidth=clientWidth305; campos sem rolagem interna; console sem erros. Sem teste em aparelho físico, login real, áudio, modelo gerativo ou revisão clínica/terminológica independente. Publicação ainda pendente no momento deste registro.
+
+Próximo: publicar serviço isolado e verificar SUCCESS/health/asset/UI. Depois especificar atalhos contextuais do chat para recursos existentes e manter avaliação Scribe antes de geração livre.

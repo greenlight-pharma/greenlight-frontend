@@ -1,8 +1,9 @@
 // Entirely original, fictional development fixtures. No patient material, no model training.
+// Keep the v1 corpus fixed; new UI demos need separate annotation before admission.
 import {demoCases} from '../../shared/scribe-demo.mjs';
 const tr=(pt,en,es)=>({'pt-BR':pt,en,es});
 const scenarios=[
- ...demoCases.map(c=>({id:c.id,tags:c.id==='history'?['negation','uncertainty','missing-plan']:['correction','dose','unknown-allergy','missing-frequency'],segments:c.segments})),
+ ...demoCases.filter(c=>['history','correction'].includes(c.id)).map(c=>({id:c.id,tags:c.id==='history'?['negation','uncertainty','missing-plan']:['correction','dose','unknown-allergy','missing-frequency'],segments:c.segments})),
  {id:'attribution',tags:['family-history','speaker','negation'],segments:[
   {section:'subjective',text:tr('A mãe teve diabetes; a pessoa atendida nega ter esse diagnóstico.','The mother had diabetes; the person attending denies having that diagnosis.','La madre tuvo diabetes; la persona atendida niega tener ese diagnóstico.')},
   {section:'subjective',text:tr('O acompanhante relata desmaio ontem. A pessoa atendida não lembra do episódio.','The companion reports a fainting episode yesterday. The person attending does not remember it.','El acompañante refiere un desmayo ayer. La persona atendida no recuerda el episodio.')},

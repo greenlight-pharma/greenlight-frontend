@@ -9,3 +9,5 @@
 
 .scribe-field textarea{overflow:hidden;resize:none;min-height:80px}
 @media(max-width:480px){.scribe-toolbar{flex-wrap:wrap}.scribe-toolbar label{flex-basis:100%}.scribe-toolbar>button{margin-left:auto}}
+
+.scribe-format{display:flex;gap:10px;margin-top:24px}.scribe-format>button{flex:1;max-width:240px;font-weight:600}.scribe-format>button[aria-pressed=true]{background:var(--hover);color:var(--accent);border-color:var(--accent)}.scribe-format-help{font-size:13px;line-height:1.6;color:var(--muted);max-width:680px}
