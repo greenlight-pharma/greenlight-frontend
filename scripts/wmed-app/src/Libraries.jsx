@@ -1,3 +1,4 @@
+import {OfficialSourcesLink} from './doctor/OfficialSources';
 import React, { useEffect, useState, useMemo } from "react";
 import {
   Search,
@@ -227,6 +228,7 @@ export function ReferenceLibrary({ kind }) {
   const title = meds ? "Medicações" : "Condições";
   return (
     <section className="module-page">
+      {import.meta.env.VITE_PRODUCT==='2doctor' && <OfficialSourcesLink/>}
       {selected ? (
         <>
           <button className="back-button" onClick={() => setSelected(null)}>

@@ -1,5 +1,7 @@
 // Portuguese is the source language. Content libraries are translated separately.
 export const catalog={
+'Fontes oficiais':['Official sources','Fuentes oficiales'],
+'Medicamentos e diretrizes por país':['Medicines and guidelines by country','Medicamentos y guías por país'],
 'Dividir plantão':['Split a shift','Dividir guardia'],
 'Horários distribuídos por pessoa':['Time allocation per person','Horarios distribuidos por persona'],
 'Scribe · demonstração':['Scribe · demo','Scribe · demostración'],
