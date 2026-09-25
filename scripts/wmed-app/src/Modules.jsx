@@ -1,4 +1,5 @@
-import React, { lazy, Suspense, Component, useState } from "react";
+import {recoverableLazy as lazy, RecoverableBoundary} from './doctor/ModuleRecovery';
+import React, { Suspense, Component, useState } from "react";
 import {
   Atom,
   Dna,
@@ -123,7 +124,7 @@ export const moduleItems = [
     icon: TrendingUp,
   },
 ];
-class Boundary extends Component {
+class LegacyBoundary extends Component {
   state = { error: false };
   static getDerivedStateFromError() {
     return { error: true };
@@ -139,6 +140,7 @@ class Boundary extends Component {
     );
   }
 }
+const Boundary = import.meta.env.VITE_PRODUCT === '2doctor' ? RecoverableBoundary : LegacyBoundary;
 export default function Modules({
   active,
   session,
@@ -154,7 +156,7 @@ export default function Modules({
     <>
       <div hidden={active !== "caso"} className="module-container">
         {openedCase && (
-          <Boundary key={caseKey}>
+          <Boundary key={caseKey} clinical>
             <Suspense fallback={<p>Preparando caso clínico…</p>}>
               <ClinicalCase
                 active={active === "caso"}
@@ -169,7 +171,7 @@ export default function Modules({
       </div>
       {active !== "chat" && active !== "caso" && (
         <div className="module-container va-connected">
-          <Boundary key={active}>
+          <Boundary key={active} clinical={active === 'scribe'}>
             <Suspense
               fallback={<p className="module-loading">Abrindo biblioteca…</p>}
             >

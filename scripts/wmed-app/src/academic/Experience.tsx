@@ -1,4 +1,5 @@
-import { useEffect, useRef, useState, lazy, Suspense, Fragment } from "react";
+import {recoverableLazy as lazy} from '../doctor/ModuleRecovery';
+import { useEffect, useRef, useState, Suspense, Fragment } from "react";
 
 import {
   ArrowUpRight,
