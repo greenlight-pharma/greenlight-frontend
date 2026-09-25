@@ -1,3 +1,9 @@
+## 25/09/2026 — Cancelar espera publicado
+
+Fonteb29ecba; deployment3d9654d5-9ea5-4b4b-8dca-9c7408ab0ffe SUCCESS no projeto2doctor/serviço2doctor-web. https://www.2doctor.ai/200, healthz200/product2doctor, asset/assets/index-CCxHXbkV.js200 idêntico ao build local. Conferência CUA pública390px abriu Caso clínico, formulário completo carregou e voltou à conversa, sem overflow390/390 nem erros de console. Viewport restaurado; aba47 preservada.197 testes/build2Doctor/build completo passaram. Autenticação real/transcrição real/Safari físico não testados; fluxo novo validado com sessão e áudio sintéticos locais. Sem mudanças de API, ECG, fornecedor ou gravação ambiente.
+
+Próximo passo executável: observar fricção na revisão dos campos após transcrição (texto/campos e navegação móvel), sem ampliar catálogo. Projeto de consulta assistida continua separado, aguardando escopo técnico próprio antes de habilitar áudio ambiente. Worktree limpa exceto dist-samu preexistente. Cancelamento interrompe somente a espera cliente, não garante interrupção do upstream; áudio recuperável apenas na aba atual.
+
 ## 25/09/2026 — Cancelar espera da transcrição
 
 Correção de fricção no ditado existente: botão Cancelar espera junto aos controles de áudio (2Doctor). Cancelamento libera formulário, mantém Blob apenas na aba para nova tentativa/descarte e preserva relato. Controller criado antes da leitura; cancelamento durante leitura não inicia envio, resposta tardia não é anexada, tentativa nova é independente. Cancela espera no navegador, sem garantir interrupção do processamento upstream; API/fornecedor inalterados. Não habilita gravação ambiente.
