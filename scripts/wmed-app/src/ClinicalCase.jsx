@@ -1,5 +1,7 @@
 import {productConfig} from '../shared/product.mjs';
+import {caseAudioType} from '../shared/case-audio.mjs';
 const brandName=productConfig(import.meta.env.VITE_PRODUCT).name;
+const audioRecovery=import.meta.env.VITE_PRODUCT==='2doctor';
 import React, { useState, useEffect, useRef } from "react";
 import {
   Mic,
@@ -40,6 +42,8 @@ function ClinicalCaseBody({ session, onLogin, onProgress, onPendingChange, activ
     [recording, setRecording] = useState(false),
     [seconds, setSeconds] = useState(0);
   const [privacyOpen,setPrivacyOpen]=useState(false);
+  const [retryAudio,setRetryAudio]=useState(null);
+  const transcribing=useRef(false);
   const [historyOpen,setHistoryOpen]=useState(false),[saveStatus,setSaveStatus]=useState(""),[saveError,setSaveError]=useState("");
   const pendingSave=useRef(null),saving=useRef(null),pageRef=useRef(null);
   useEffect(()=>{if(active)pageRef.current?.scrollIntoView({block:"start",behavior:"instant"});},[stage,active]);
@@ -64,7 +68,7 @@ function ClinicalCaseBody({ session, onLogin, onProgress, onPendingChange, activ
     if (!active && recorder.current?.state === "recording")
       recorder.current.stop();
   }, [active]);
-  useEffect(()=>{onPendingChange?.(Boolean(busy||recording||saveStatus==='saving'||saveStatus==='error'));},[busy,recording,saveStatus,onPendingChange]);
+  useEffect(()=>{onPendingChange?.(Boolean(busy||recording||retryAudio||saveStatus==='saving'||saveStatus==='error'));},[busy,recording,retryAudio,saveStatus,onPendingChange]);
   const requireLogin = () => {
     if (session?.authenticated) return true;
     onLogin();
@@ -104,12 +108,18 @@ function ClinicalCaseBody({ session, onLogin, onProgress, onPendingChange, activ
   }
   async function transcribe(blob) {
     if (!alive.current) return;
+    if (transcribing.current) return;
+    if (audioRecovery) {
+      try { caseAudioType(blob); } catch(e) { setError(e.message); return; }
+      setRetryAudio(blob);
+    }
     if (blob.size > 2900000) {
       setError("O áudio deve ter até 2,9 MB. Grave um trecho menor.");
       return;
     }
     setBusy("Transcrevendo áudio…");
     setError("");
+    transcribing.current=true;
     try {
       const base64 = await new Promise((resolve, reject) => {
         const r = new FileReader();
@@ -126,10 +136,14 @@ function ClinicalCaseBody({ session, onLogin, onProgress, onPendingChange, activ
       });
       if (!d.texto)
         throw Error("Não encontramos fala no áudio. Tente novamente.");
-      if (alive.current) setRelato((old) => (old ? old + "\n" : "") + d.texto);
+      if (alive.current) {
+        setRelato((old) => (old ? old + "\n" : "") + d.texto);
+        setRetryAudio(null);
+      }
     } catch (e) {
       if (alive.current && e.name !== "AbortError") setError(e.message);
     } finally {
+      transcribing.current=false;
       if (alive.current) setBusy("");
     }
   }
@@ -247,7 +261,7 @@ function ClinicalCaseBody({ session, onLogin, onProgress, onPendingChange, activ
     }catch(e){if(alive.current){setSaveStatus('error');setSaveError(e.message);}return false;
     }finally{saving.current=null;}})();saving.current=promise;return promise;
   }
-  useEffect(()=>{const warn=e=>{if(pendingSave.current||busy){e.preventDefault();e.returnValue='';}};window.addEventListener('beforeunload',warn);return()=>window.removeEventListener('beforeunload',warn);},[busy]);
+  useEffect(()=>{const warn=e=>{if(pendingSave.current||busy||retryAudio){e.preventDefault();e.returnValue='';}};window.addEventListener('beforeunload',warn);return()=>window.removeEventListener('beforeunload',warn);},[busy,retryAudio]);
   async function openSaved(id){
     if(pendingSave.current&&!await persist())throw Error('Salve o caso atual antes de abrir outro.');
     const data=await caseRequest({action:'open',id});
@@ -257,6 +271,7 @@ function ClinicalCaseBody({ session, onLogin, onProgress, onPendingChange, activ
   }
   async function fresh(){
     if(pendingSave.current&&!await persist())return;
+    setRetryAudio(null);
     setRelato('');setForm(empty());setFeedback(null);setQuality(null);setConfirmed(false);setError('');setQualityError('');setSaveStatus('');setSaveError('');reported.current=false;setStage('relato');
   }
   const feedbackLength =
@@ -268,7 +283,7 @@ function ClinicalCaseBody({ session, onLogin, onProgress, onPendingChange, activ
       {historyOpen&&<CaseHistory onClose={()=>setHistoryOpen(false)} onSelect={openSaved}/>}
       {privacyOpen&&<PrivacyReview text={relato} onCancel={()=>setPrivacyOpen(false)} onApply={text=>{setRelato(text);setConfirmed(false);setPrivacyOpen(false)}}/>}
       <header className="module-heading case-heading">
-        <button className="case-history-button" disabled={!!busy||saveStatus==="saving"} onClick={()=>{if(requireLogin())setHistoryOpen(true)}}><History size={17}/> Meus casos</button>
+        <button className="case-history-button" disabled={!!busy||!!retryAudio||saveStatus==="saving"} onClick={()=>{if(requireLogin())setHistoryOpen(true)}}><History size={17}/> Meus casos</button>
         <span className="eyebrow blue">PRÁTICA CLÍNICA</span>
         <h1>Caso clínico</h1>
         <p>
@@ -305,7 +320,7 @@ function ClinicalCaseBody({ session, onLogin, onProgress, onPendingChange, activ
             />
             <div className="voice-actions">
               <button
-                disabled={!!busy}
+                disabled={!!busy||!!retryAudio}
                 onClick={recording ? () => recorder.current.stop() : record}
               >
                 {recording ? <Square size={17} /> : <Mic size={17} />}{" "}
@@ -317,7 +332,7 @@ function ClinicalCaseBody({ session, onLogin, onProgress, onPendingChange, activ
                 <input
                   type="file"
                   accept="audio/*,.m4a"
-                  disabled={!!busy || recording}
+                  disabled={!!busy || recording || !!retryAudio}
                   onChange={(e) => {
                     const f = e.target.files?.[0];
                     e.target.value = "";
@@ -327,6 +342,12 @@ function ClinicalCaseBody({ session, onLogin, onProgress, onPendingChange, activ
               </label>
               <small>{relato.length}/5.000</small>
             </div>
+            {audioRecovery && retryAudio && !busy && <div className="case-audio-retry" role="status">
+              <strong>Não foi possível transcrever</strong>
+              <p>O áudio continua nesta aba. Tente novamente sem gravar ou selecionar o arquivo de novo.</p>
+              <div><button type="button" onClick={()=>{if(requireLogin())transcribe(retryAudio);}}>Tentar transcrição novamente</button><button type="button" onClick={()=>{setRetryAudio(null);setError('');}}>Descartar áudio</button></div>
+              <small>O áudio pendente não fica salvo no histórico. Ao fechar ou atualizar esta aba, ele será perdido.</small>
+            </div>}
             <p className="module-note">
               Áudio de até 3 minutos ou 2,9 MB. Revise a transcrição antes de
               continuar. Não grave a voz do paciente.
@@ -337,6 +358,7 @@ function ClinicalCaseBody({ session, onLogin, onProgress, onPendingChange, activ
               disabled={
                 !!busy ||
                 recording ||
+                !!retryAudio ||
                 relato.trim().length < 20 ||
                 relato.length > 5000
               }
