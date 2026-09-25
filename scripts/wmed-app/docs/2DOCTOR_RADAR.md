@@ -49,3 +49,10 @@ Arquivos já presentes em public/xray/{torax,pelvis}/rx-{000,045,090}.webp. Cat�
 ## Validação
 
 137 testes automatizados: conjunto existente + evidência/licença/tradução dos registros e existência/licença das seis projeções. Build 2Doctor e site completo aprovados. CUA local: PT/EN/ES,320/390/1280px, temas claro/escuro, seleção de região/ângulo com imagens carregadas, fontes expansíveis, atalhos Scribe e laboratório3D, menu e histórico. Correção do cabeçalho320px confirmada: scrollWidth=clientWidth305, sem overflow; console sem erros. Sem teste em aparelho físico, inferência/GPU, benchmark de modelos, paciente real, autenticação ou validação clínica. Deploy exclusivamente 2doctor-web a partir scripts/wmed-app com --path-as-root. Estado final de publicação será registrado abaixo.
+
+## 25/09/2026 — Radar 2Doctor publicado e verificado
+
+Fonte d502cbd; deployment3b94b127-d8cc-4afb-8e10-306eeaee937a SUCCESS exclusivamente2doctor-web. healthz200/product2doctor, assetindex-lHV5vGNd.js igual ao buildlocal eHTTP200. Público: https://2doctor-web-production.up.railway.app/2doctor/#inovacoes . CUA público390px: nova tela, imagem carregada, troca para pelve45°, licençaNC visível ao expandir; clientWidth=scrollWidth375, console semerros. Viewport restaurado. 137testes +buildapp/sitecompleto aprovados; QA localPT/EN/ES,320/390/1280 eclaro/escuro. Rollback: reconstruir03a5a6d pelo cwdapp+--path-as-root (último código anterior ao radar).
+
+Entrega é radar editorial e prévia do acervo, NÃO integração do modeloFleXray. Sem pesos/GPU/modelo novo/contato externo/API Vytal. Não executados aparelhos físicos/authreal/benchmark/inferência/validação clínica. Próximo executável: contrato+conjunto sintético de avaliaçãoScribe com rastreabilidade antes de liberar geração livre; FleXray requer autorização comercial eavaliação próprias. PesquisaMedASR/EVEE efontes registradas em2DOCTOR_RADAR.md. Desafios continuam abandonados.
+
