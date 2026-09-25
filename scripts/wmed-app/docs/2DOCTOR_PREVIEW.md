@@ -51,3 +51,9 @@ Rollback: usar a implantação anterior bem-sucedida no Railway; esta é a prime
 - Navegador em 390×844: menu pesquisável, modelo E. coli 3D carregado, retorno ao chat e modal de login conferidos.
 - Login com credencial real, geração/salvamento na conta, microfone físico e execução em iPhone real NÃO retestados.
 - O primeiro upload falhou por conexão TLS e gerou uma implantação FAILED; nova tentativa concluiu e está SUCCESS. Não foi relaxada a verificação TLS.
+
+## 25/09/2026 — internacionalização e pesquisa
+
+Commit de código `757a61a`, deployment Railway `fc4d81f1-bbad-4a5e-92fc-c55f3dc7c9c7` SUCCESS. URL permanece https://2doctor-web-production.up.railway.app/2doctor/ . 121 testes aprovados e builds completo/2Doctor aprovados. JS público `/2doctor/assets/index-DR2IO75l.js` corresponde ao build local. HTTP público: health200, auth200 anônimo, chat401 anônimo, discovery articles200/8 fontes e trials200/8 registros. UI pública EN em390x844 sem overflow, novo módulo carregado; inspeção local incluiu PT/EN/ES, login ES, tema escuro, persistência de preferência e resultados reais.
+
+Escopo e fila: `2DOCTOR_INTERNATIONAL.md`. Conteúdo clínico/3D majoritariamente PT; geração autenticada multilíngue, revisão por país e teste em iPhone físico ainda pendentes. Mantidos API e produtos Vytal. Automação de continuidade criada nesta conversa, id `evoluir-a-2doctor-internacional`, ativa a cada6h.
