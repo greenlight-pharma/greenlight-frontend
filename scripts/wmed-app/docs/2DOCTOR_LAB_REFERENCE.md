@@ -67,3 +67,10 @@ Referências desta ampliação:
 - https://medlineplus.gov/lab-tests/potassium-blood-test/
 - https://medlineplus.gov/spanish/pruebas-de-laboratorio/prueba-de-potasio-en-sangre/
 - https://medlineplus.gov/about/using/usingcontent/
+
+
+## 25/09/2026 — Glicose publicada e verificada
+
+Fonte ba68fe3; deployment12acd964-941b-4f84-a5cf-264b76f8341e SUCCESS exclusivamenteprojeto2doctor/serviço2doctor-web. Uploadcwdapp/path-as-root, Dockerfile/railway.json conferidos. Health200/product2doctor, página200 e assetindex-g3EE2-5s.js idêntico ao local/HTTP200. CUA público390px: quinta ficha glicose, exemplo90/75–105, comparação numérica e limpeza, client/scroll375, console semerro. Viewportrestaurado, aba45 mantida. ServidorQA5211 encerrado.
+
+179testes/build2Doctor/sitecompleto aprovados. Local PT390 EN1280 ES320escuro, mg/dL/mmol/L sem conversão, erro sem truncar entrada longa, trocaunidade/exame limpa; potássiofonteES confirmado. Não testados aparelhosfísicos/Safari/VoiceOver, autenticação/chat/anexos ou revisão clínica independente. Protótipo educativo, sem diagnóstico/urgência/condutaautomáticos. API Vytal/ECG intactos; saída preexistente medico-app/dist-samu não rastreada preservada. Próximo: revisar Scribe móvel e reduzir fricção na revisão/cópia SOAP/SBAR, preservando exemplos fictícios e geração livre desabilitada. Rollback26b6ec7.
