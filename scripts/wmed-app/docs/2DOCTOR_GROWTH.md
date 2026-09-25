@@ -1,3 +1,9 @@
+## 25/09/2026 — Revisão: campos pendentes com acesso direto
+
+Fricção observada no código e reproduzida em fixture: Receber feedback desativado quando queixa<3 ou história<20 caracteres, sem explicar o motivo nos campos fechados.2Doctor agora mostra pendências reais com atalho que abre/foca campo, indicação acessível e limite já exigido pelo contrato; não cria requisitos novos nem inventa dados. Opcionais vazios continuam válidos. Edição após confirmação desmarca confirmação na2Doctor; checkbox indisponível enquanto processa. Não altera backend/prompt/modelo.
+
+200 testes passaram (3 novos: opcionais, paridade de limites/espaços com contrato, ausência de mutação). Build2Doctor e site completo aprovados, avisos de bundles grandes preexistentes. Fixture local com sessão/estruturação sintéticas sem chamadas reais:390px, dois atalhos abrem/focam campos, correção remove pendência correspondente, preencher/conferir libera feedback, editar novamente desmarca e bloqueia até revisão. Mobile375/375 e desktop1265/1265 sem overflow; console vazio. Não enviamos feedback clínico, não testamos sessão real, iPhone físico/teclado Safari nem validação clínica. Fixture encerrada/aba57 fechada/viewport restaurado. Publicação pendente; próximo passo deploy isolado e checagens públicas.
+
 ## 25/09/2026 — Cancelar espera publicado
 
 Fonteb29ecba; deployment3d9654d5-9ea5-4b4b-8dca-9c7408ab0ffe SUCCESS no projeto2doctor/serviço2doctor-web. https://www.2doctor.ai/200, healthz200/product2doctor, asset/assets/index-CCxHXbkV.js200 idêntico ao build local. Conferência CUA pública390px abriu Caso clínico, formulário completo carregou e voltou à conversa, sem overflow390/390 nem erros de console. Viewport restaurado; aba47 preservada.197 testes/build2Doctor/build completo passaram. Autenticação real/transcrição real/Safari físico não testados; fluxo novo validado com sessão e áudio sintéticos locais. Sem mudanças de API, ECG, fornecedor ou gravação ambiente.

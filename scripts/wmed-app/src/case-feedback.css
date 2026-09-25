@@ -79,3 +79,9 @@
 .case-sbar-letter{display:flex;align-items:center;justify-content:center;width:32px;height:32px;flex-shrink:0;border-radius:10px;background:var(--hover);color:var(--ink);font-weight:750;font-size:17px}
 .case-topic-content .case-sbar h4{margin:3px 0 12px;font-size:14px}
 .case-sbar .feedback-items>div+div{padding-top:7px;margin-top:7px}
+
+.case-review-pending{border:1px solid var(--line);border-radius:14px;background:var(--surface);padding:16px;margin:16px 0;color:var(--ink)}
+.case-review-pending p{margin:6px 0 12px;color:var(--muted);font-size:14px}
+.case-review-pending>div{display:flex;flex-wrap:wrap;gap:8px}
+.case-review-pending button{display:flex;align-items:center;justify-content:space-between;gap:10px;min-height:44px;padding:10px 14px;border:1px solid var(--line);border-radius:10px;background:var(--raised);color:var(--ink);text-align:left;font:inherit;font-size:14px}
+@media(max-width:600px){.case-review-pending button{width:100%}}

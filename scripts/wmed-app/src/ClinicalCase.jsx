@@ -1,6 +1,7 @@
 import {productConfig} from '../shared/product.mjs';
 import {createMicrophoneRequest, stopMicrophone} from '../shared/microphone-request.mjs';
 import {transcribeCaseAudio} from '../shared/audio-transcription.mjs';
+import {caseReviewIssues} from '../shared/case-review.mjs';
 import {caseAudioType} from '../shared/case-audio.mjs';
 const brandName=productConfig(import.meta.env.VITE_PRODUCT).name;
 const audioRecovery=import.meta.env.VITE_PRODUCT==='2doctor';
@@ -296,6 +297,14 @@ function ClinicalCaseBody({ session, onLogin, onProgress, onPendingChange, activ
     setRetryAudio(null);
     setRelato('');setForm(empty());setFeedback(null);setQuality(null);setConfirmed(false);setError('');setQualityError('');setSaveStatus('');setSaveError('');reported.current=false;setStage('relato');
   }
+  const reviewIssues = audioRecovery ? caseReviewIssues(form) : [];
+  function focusReviewField(key) {
+    const input = pageRef.current?.querySelector("#review-" + key);
+    const section = input?.closest("details");
+    if(section) section.open=true;
+    input?.focus({preventScroll:true});
+    input?.scrollIntoView({block:"center",behavior:"instant"});
+  }
   const feedbackLength =
     feedbackPayload(form).clinicalHistory.length +
     "\nRelato original para contexto: ".length +
@@ -430,6 +439,11 @@ function ClinicalCaseBody({ session, onLogin, onProgress, onPendingChange, activ
             nomes de medicamentos e os valores transcritos. Campos vazios serão
             tratados como não informados.
           </p>
+          {reviewIssues.length > 0 && <div className="case-review-pending" aria-label="Campos pendentes">
+            <strong>Complete antes do feedback</strong>
+            <p>Use somente informações do relato.</p>
+            <div>{reviewIssues.map(issue=><button key={issue.key} type="button" disabled={!!busy} onClick={()=>focusReviewField(issue.key)}>Revisar {issue.label.toLowerCase()} <ArrowRight size={16}/></button>)}</div>
+          </div>}
           <div className="review-fields">
             {fields.map(([k, l]) => (
               <details key={k} className="resource-card review-field">
@@ -445,12 +459,16 @@ function ClinicalCaseBody({ session, onLogin, onProgress, onPendingChange, activ
                   rows={k === "hma" ? 5 : 3}
                   value={form[k]}
                   maxLength={5000}
+                  aria-invalid={reviewIssues.some(issue=>issue.key===k) || undefined}
+                  aria-describedby={reviewIssues.some(issue=>issue.key===k) ? "review-hint-"+k : undefined}
                   disabled={!!busy}
-                  onChange={(e) =>
-                    setForm((f) => ({ ...f, [k]: e.target.value }))
-                  }
+                  onChange={(e) => {
+                    setForm((f) => ({ ...f, [k]: e.target.value }));
+                    if(audioRecovery)setConfirmed(false);
+                  }}
                   placeholder="Não informado"
                 />
+                {reviewIssues.filter(issue=>issue.key===k).map(issue=><p key={k} id={"review-hint-"+k} className="module-note">{issue.message}</p>)}
               </details>
             ))}
           </div>
@@ -458,6 +476,7 @@ function ClinicalCaseBody({ session, onLogin, onProgress, onPendingChange, activ
             <input
               type="checkbox"
               checked={confirmed}
+              disabled={!!busy}
               onChange={(e) => setConfirmed(e.target.checked)}
             />
             Conferi os campos. Eles representam os dados que relatei.
