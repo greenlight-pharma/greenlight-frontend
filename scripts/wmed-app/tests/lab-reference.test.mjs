@@ -38,3 +38,14 @@ test('sodium comparison respects supplied bounds and selected unit without clini
  assert.equal(compareLabReference('sodium',{unit:'mmol/L',value:'140',lower:'141',upper:'146'}).position,'below');
  assert.equal(compareLabReference('sodium',{unit:'mg/dL',value:'140',lower:'135',upper:'145'}).error,'unit');
 });
+
+
+test('glucose uses the supplied interval in either unit and never silently converts',()=>{
+ for(const [unit,lower,upper,low,high] of [['mg/dL','75','105','74.999','105.001'],['mmol/L','4','6','3,999','6,001']]){
+  for(const [value,position] of [[low,'below'],[lower,'within'],[upper,'within'],[high,'above']])assert.equal(compareLabReference('glucose',{unit,lower,upper,value}).position,position);
+  assert.deepEqual(changeLabUnit('glucose',unit),{value:'',lower:'',upper:'',unit});
+ }
+ assert.equal(compareLabReference('glucose',{unit:'mg/dL',value:'90',lower:'95',upper:'110'}).position,'below');
+ assert.equal(compareLabReference('glucose',{unit:'mEq/L',value:'90',lower:'75',upper:'105'}).error,'unit');
+ for(const value of ['123456.7891','1e2','90.0001'])assert.equal(compareLabReference('glucose',{unit:'mg/dL',value,lower:'75',upper:'105'}).error,'number');
+});

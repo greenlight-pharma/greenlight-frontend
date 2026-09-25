@@ -51,3 +51,19 @@ Fontea91742a, deploymentb9f0c7b0-69df-40b8-9c21-9c3aa74f830a SUCCESS sóprojeto2
 
 171 testes ebuilds2Doctor/sitecompleto passaram. ConteúdoMedlinePlus e licençaMedicalTest conferidos; PT/EN/ES, fonteES localizada, versione data explícitas. Protótipo sem revisão clínica independente. Não testados aparelhosfísicos/Safari/VoiceOver, autenticação/chat/anexos ou uso real clínico. API Vytal/ECG intactos; sem novos modelos/persistência. Git apenas saída preexistente não rastreada medico-app/dist-samu. Rollbacke5aa755. Próximo: auditar ânion gap/Winter existentes e especificar fluxo educativo de gasometria com limites, fontes e testes antes de nova interpretação.
 
+
+
+## 25/09/2026 — Glicose e entrada sem truncamento, prontas
+
+Quinta ficha laboratorial: glicose, autoral PT/EN/ES, mg/dL e mmol/L; compara somente com intervalo digitado, sem limiar diagnóstico/conversão/urgência/tratamento. Exemplo fictício90/75–105explicitado como não universal. Acervo2026-09-25.3. Potássio reconferido na fonte institucional e link ES adicionado. Removido maxlength dos campos: sequência123456.7891 agora chega inteira à validação e é rejeitada, em vez de ser cortada para um número aceito.
+
+Fontes conferidas25/09/2026: MedlinePlus/NLM blood-glucose-test e potassium-blood-test, versões espanholas prueba-de-glucosa-en-la-sangre e prueba-de-potasio-en-sangre. Usingcontent confirma MedicalTest EN/ES em domínio público; textos curtos próprios e atribuição, sem mídia/enciclopédia/monografias incorporadas. Fontes detalhadas docs/2DOCTOR_LAB_REFERENCE.md.
+
+179testes/build2Doctor/sitecompleto/diffcheck aprovados, aviso habitual chunkgrande. CUA local PT390 EN1280 ES320escuro: exemplo, comparação90, vírgula5,2mmol/L, precisãoextra rejeitada sem truncar, trocaunidade/exame limpa, trocaidioma preserva valores, linkES eversão; client/scroll305, console semerro. Não testados aparelhosfísicos/Safari/VoiceOver, auth/chat/anexos ou revisão clínica independente. Nenhum dado/modelo/API Vytal/ECG alterado. Próximo: publicar só2doctor-web pelo cwdapp/path-as-root; exigirSUCCESS/health/asset/UI. Rollback26b6ec7. Depois revisar Scribe móvel e reduzir fricção de revisão/cópia SOAP/SBAR, mantendo exemplos fictícios e geração livre desabilitada.
+
+Referências desta ampliação:
+- https://medlineplus.gov/lab-tests/blood-glucose-test/
+- https://medlineplus.gov/spanish/pruebas-de-laboratorio/prueba-de-glucosa-en-la-sangre/
+- https://medlineplus.gov/lab-tests/potassium-blood-test/
+- https://medlineplus.gov/spanish/pruebas-de-laboratorio/prueba-de-potasio-en-sangre/
+- https://medlineplus.gov/about/using/usingcontent/
