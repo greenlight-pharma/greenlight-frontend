@@ -1,3 +1,11 @@
+## 25/09/2026 — Simplificação publicada e verificada
+
+Fonte d5b220a; deployment8370a73b-ceb2-403e-9410-98234e49f70c SUCCESS no serviço isolado2doctor-web. https://www.2doctor.ai/healthz200/product2doctor, página200 e asset index-Cph0ep6r.js igual ao build local/HTTP200. CUA público390px: chat sem textos/menu redundantes, Plantão com caso/scores/medicações/condições/imagens/divisão de plantão; sem Exames, Scribe e fontes nessa categoria. Menu abre/fecha e devolve foco, width/scroll390, console semerros. Viewport restaurado e aba oficial47 mantida.
+
+180 testes, build2Doctor e build completo aprovados. Exames retirado do catálogo e acesso antigo abre chat; Scribe demonstrativo em Laboratório, fontes oficiais em Pesquisa. País/idioma preservados nas preferências. Teste local confirma rascunho preservado ao sair para scores e voltar. API, autenticação, histórico, conteúdo médico e bibliotecas intactos. Não testados envio/autenticação real, dispositivos físicos ou precisão clínica dos acervos nesta mudança. Código anterior preservado no Git, rollback f6e11be se necessário.
+
+Decisão vigente: menos fricção, sem expansão automática de funcionalidades. Automação ACTIVE/30min atualizada e confirmada. Próximo executável: auditar utilidade e clareza de tarefas existentes, começando por separar exemplos conceituais de calculadoras completas; não apresentar protótipos como recursos clínicos validados e não acrescentar módulos sem direcionamento.
+
 ## 25/09/2026 — Direção corrigida: simplificar o trabalho do médico
 
 Usuário rejeitou excesso de features, especialmente Exames laboratoriais. Nova prioridade explícita substitui fila de expansão: reduzir etapas e melhorar tarefas existentes. Não recriar comparador de laudos, desafios ou novos módulos sem demanda. Chat central, caso clínico, calculadoras, medicações, condições, acervos e pesquisa continuam. Não confundir protótipo com ferramenta clínica pronta.
