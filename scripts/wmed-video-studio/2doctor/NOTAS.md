@@ -8,10 +8,10 @@
 1. **"Explicar em vídeo" dentro do app** (protótipo "Asma e DPOC: como diferenciar?", versões estudante e médico).
    Revisão em `revisao-asma-dpoc.src.html`: roteiro, storyboard, afirmações com status de fonte, doses, fluxo no app e plano de medição. Aguarda aprovação.
 2. **Série "Por Dentro" para Instagram e X**, no estilo de documentário da Netflix, feita por nós (não pelos usuários).
-   Rascunho em `por-dentro.src.html`, com o Ep. 1 Asma pronto. A página estava sendo reestruturada para três episódios e o render dos planos está quebrado: o elemento `#shots` saiu, falta `#episodes`.
-   - Decisão do usuário: médica fictícia e **cenário internacional** (não São Paulo), porque a empresa é internacional. Renomear a personagem (hoje "Dra. Helena Duarte") para um nome internacional e trocar os cenários (cidade genérica/internacional, hospital, café).
+   Página `por-dentro.src.html` com os três episódios (29 planos), afirmações com código e status, fontes por episódio e custo estimado do Runway. Aguarda aprovação.
+   - Apresentadora: **Dra. Iris Maren**, médica clínica fictícia (antes "Dra. Helena Duarte", São Paulo). Cenários sem marcos: rua de cidade portuária à noite, corredor de hospital, café de esquina. Buscar o nome antes de publicar.
    - Referência de estilo: piloto "The Last Invention" (apresentadora de IA consistente, fala sincronizada, noite com luz quente e azul, tipografia serifada, capítulos, cena de apoio com humor).
-   - Ep. 2 Infarto e Ep. 3 Cirrose: roteiros a escrever (esboço abaixo). A verificação das afirmações foi disparada, mas não concluída.
+   - Ep. 2 Infarto e Ep. 3 Cirrose: roteiros escritos. Fontes checadas em 25/09 só por extratos de busca (a rede bloqueou os sites), então todas estão como "parcial". Fontes novas: 5ª Definição Universal de IAM (2026) e Baveno VIII (2026). Reformulado: sem "tipo 1", sem limiar de 20 min na dor, sem a palavra "atípico".
    - Regra: vídeo gerado por IA (Runway) só em cenas sem afirmação clínica; mecanismo sempre nos nossos modelos 3D; rótulo "criado por IA" na legenda e em selo discreto (regra do Instagram e do X).
 
 ## Modelos 3D próprios (`../models3d/`)
@@ -38,4 +38,6 @@ Abertura fria (homem de ~55 anos para na escada, mão no peito) → título → 
 Abertura fria (exame de rotina, sem sintomas) → título → apresentadora: o fígado adoece em silêncio → 3D: agressão (álcool, hepatites B/C, gordura no fígado/MASLD) → inflamação → fibrose → nódulos → 3D: hipertensão porta (varizes, baço, ascite) → apresentadora: sinais de alerta (icterícia, barriga crescendo, vômito com sangue, confusão) → 3D: risco de câncer de fígado, ultrassom a cada 6 meses → tratar a causa pode frear (parar o álcool, curar a hepatite C, controlar a hepatite B, perder peso) → assinatura.
 
 ## Runway
-Configurar a chave de API (portal `dev.runwayml.com`) e o MCP/API do Runway. No Mac dá para usar o Chrome logado pela extensão.
+- SDK oficial `@runwayml/sdk` (4.20.1). Não há MCP oficial no npm; os que existem são de terceiros (não passar a chave para eles).
+- A API tem imagem (`gen4_image`), vídeo (`gen4_turbo`, `gen4.5`), atuação (`act_two`), avatar falante com áudio ou texto (`gwm1_avatars`) e voz (`eleven_multilingual_v2`).
+- Na nuvem: a rede bloqueia `api.dev.runwayml.com` e não há Chrome logado. Precisa liberar o domínio e guardar `RUNWAYML_API_SECRET` nas variáveis do ambiente.

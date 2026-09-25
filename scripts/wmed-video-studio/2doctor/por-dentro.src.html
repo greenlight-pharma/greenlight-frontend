@@ -66,102 +66,256 @@ h2{font-size:24px;margin-bottom:8px}
 .cols{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px}
 .box{padding:16px;border-radius:12px;background:var(--surface);display:grid;gap:8px;align-content:start}
 .box ul,ol{margin:0;padding-left:20px;display:grid;gap:6px;font-size:15px}
+.claims{margin-top:16px;display:grid;gap:6px;font-size:14px}
+.claims .row{display:grid;grid-template-columns:52px 1fr;gap:10px;align-items:start;padding:8px 10px;border-radius:10px;background:var(--surface)}
+.claims .row small{display:block;color:var(--muted);font-size:13px;margin-top:2px}
+.legend{display:flex;flex-wrap:wrap;gap:8px 14px;font-size:13px;color:var(--muted);margin-bottom:10px}
+.srclist li{word-break:break-word}
+.badge-ai{display:inline-flex;gap:6px;align-items:center;font-size:12px;border:1px solid var(--line);border-radius:999px;padding:3px 10px;color:var(--muted)}
+.tbl{overflow-x:auto}
+.tbl table{border-collapse:collapse;width:100%;font-size:14px;min-width:560px}
+.tbl th,.tbl td{text-align:left;padding:8px 10px;border-bottom:1px solid var(--line);vertical-align:top}
+.tbl th{font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);font-weight:600}
+.tbl td.n{font-family:var(--mono);font-variant-numeric:tabular-nums;white-space:nowrap}
+.note{font-size:14px;color:var(--muted);max-width:70ch}
+.ep{scroll-margin-top:60px}
 </style>
 
+
 <div class="wrap">
-  <span class="status">Três episódios · roteiros e storyboards para aprovação · nada gerado</span>
+  <span class="status">Três episódios · roteiros e storyboards para aprovação · nada gerado ainda</span>
   <div class="hero">
     <span class="series">Série 2Doctor</span>
     <h1>Por Dentro</h1>
     <p class="sub">Documentários curtos sobre o que acontece no corpo</p>
     <div class="meta"><span>60 a 90 s por episódio</span><span>Reels 9:16 · X 16:9</span><span>Apresentadora fictícia criada por IA</span><span>Mecanismo em 3D próprio</span></div>
   </div>
-  <nav class="eps" aria-label="Episódios"><a href="#apresentadora">Apresentadora</a><a href="#ep-asma">Ep. 1 · Asma</a><a href="#ep-iam">Ep. 2 · Infarto</a><a href="#ep-cirrose">Ep. 3 · Cirrose</a><a href="#producao">Produção</a></nav>
+  <nav class="eps" aria-label="Episódios"><a href="#apresentadora">Apresentadora</a><a href="#ep-asma">Ep. 1 · Asma</a><a href="#ep-iam">Ep. 2 · Infarto</a><a href="#ep-cirrose">Ep. 3 · Cirrose</a><a href="#producao">Produção e custos</a></nav>
 
   <section id="apresentadora">
     <h2>A apresentadora</h2>
-    <p class="lead">Personagem fixa da série, com rosto, figurino e voz iguais em todos os episódios. Criada do zero, sem se parecer com nenhuma pessoa real.</p>
+    <p class="lead">Personagem fixa da série, com rosto, figurino e voz iguais em todos os episódios. Criada do zero, sem se parecer com nenhuma pessoa real. Nome e cenários internacionais, sem marcos que identifiquem uma cidade.</p>
     <div class="host">
-      <div class="portrait"><canvas id="portrait" aria-label="Esboço de enquadramento da apresentadora"></canvas><div class="cap"><b>Dra. Helena Duarte</b><span>pneumologista · personagem</span></div></div>
+      <div class="portrait"><canvas id="portrait" aria-label="Esboço de enquadramento da apresentadora"></canvas><div class="cap"><b>Dra. Iris Maren</b><span>médica · personagem criada por IA</span></div></div>
       <dl class="kv">
-        <dt>Quem é</dt><dd>Pneumologista fictícia, cerca de 42 anos, de São Paulo. Explica com calma e um humor seco, como quem conversa num café.</dd>
-        <dt>Aparência</dt><dd>Cabelo castanho-escuro na altura do ombro, levemente ondulado; pele morena clara; olhos castanhos; sem maquiagem marcada.</dd>
-        <dt>Figurino</dt><dd>Suéter de tricô verde-petróleo (a cor da 2Doctor) sobre camisa branca, relógio simples. Sem jaleco nas cenas de rua; jaleco só no hospital.</dd>
-        <dt>Cenários fixos</dt><dd>Av. Paulista de madrugada com chuva fina; corredor de hospital à noite; café antigo no centro de São Paulo.</dd>
-        <dt>Voz</dt><dd>Grave, pausada, pt-BR paulistano. Mesma voz em todos os episódios.</dd>
-        <dt>Na tela</dt><dd>Nome na tela: “Dra. Helena Duarte · pneumologista”. Legenda do post e selo discreto: “apresentadora criada por IA”.</dd>
+        <dt>Quem é</dt><dd>Médica clínica fictícia, cerca de 42 anos. Clínica geral combina com os três temas (pulmão, coração, fígado). Explica com calma e um humor seco, como quem conversa num café tarde da noite.</dd>
+        <dt>Nome</dt><dd>“Iris Maren” se lê igual em português, inglês e espanhol. Antes de publicar, buscar o nome em registros médicos e redes para garantir que não coincide com uma médica real conhecida.</dd>
+        <dt>Aparência</dt><dd>Cabelo castanho-escuro na altura do ombro, levemente ondulado; pele morena clara; olhos castanhos; sem maquiagem marcada. Traços que não remetem a um país específico.</dd>
+        <dt>Figurino</dt><dd>Suéter de tricô verde-petróleo (a cor da 2Doctor) sobre camisa branca, relógio simples. Jaleco só nas cenas de hospital.</dd>
+        <dt>Cenários fixos</dt><dd>Rua molhada de uma cidade portuária à noite, com trilhos de bonde e letreiros desfocados; corredor de hospital de madrugada; café de esquina com lâmpadas de latão e azulejos verdes. Nenhum marco reconhecível, nenhuma placa legível.</dd>
+        <dt>Voz</dt><dd>Grave e pausada, em português do Brasil neutro para o lançamento. A mesma voz pode gerar as versões em inglês e espanhol depois.</dd>
+        <dt>Na tela</dt><dd>“Dra. Iris Maren · médica” no primeiro aparecimento. Selo discreto no canto em todos os planos gerados: “criado por IA”. Na legenda do post: “Apresentadora e cenas dramatizadas criadas por IA. Conteúdo educativo; não substitui consulta.”</dd>
       </dl>
     </div>
     <h3 style="margin:18px 0 8px">Imagem de referência (gerada uma vez e reutilizada em todas as cenas)</h3>
-    <p class="prompt">Cinematic portrait of a fictional Brazilian pulmonologist in her early 40s, shoulder-length softly wavy dark brown hair, light olive skin, warm brown eyes, natural minimal makeup, wearing a deep teal knit sweater over a white collared shirt, calm confident half-smile. Night, São Paulo street, soft rain, bokeh of warm street lights and cool blue shadows, shallow depth of field, 50mm, Netflix documentary color grade, filmic grain. Original person, not resembling any real individual.</p>
+    <p class="prompt">Cinematic portrait of an original fictional physician in her early 40s, shoulder-length softly wavy dark brown hair, light olive skin, warm brown eyes, natural minimal makeup, deep teal knit sweater over a white collared shirt, simple steel watch, calm confident half-smile. Night, wet street of an unnamed harbour city, tram rails, out-of-focus warm shop lights and cool blue shadows, no readable signs, no landmarks, shallow depth of field, 50mm, documentary color grade, fine film grain. Not resembling any real person or celebrity.</p>
+    <p class="note" style="margin-top:8px">Plano: 4 variações do rosto; você escolhe uma; a escolhida vira a referência de todas as cenas (frente, três-quartos e jaleco).</p>
   </section>
 
   <div id="episodes"></div>
 
   <section id="producao">
-    <h2>Produção</h2>
+    <h2>Produção e custos</h2>
     <div class="cols">
       <div class="box">
         <h3>Ordem de trabalho</h3>
         <ol>
-          <li>Você aprova roteiro e personagem.</li>
-          <li>Gero a imagem de referência da Dra. Helena e você aprova o rosto.</li>
+          <li>Você aprova os roteiros e a personagem.</li>
+          <li>Gero 4 rostos de referência e você escolhe um.</li>
           <li>Gravo a narração com a voz escolhida.</li>
-          <li>Gero os planos da apresentadora com a boca sincronizada à narração, e os planos de ambiente.</li>
+          <li>Gero os planos da apresentadora com a boca sincronizada e os planos de ambiente.</li>
           <li>Renderizo os planos 3D, os títulos e a trilha.</li>
-          <li>Monto, legendo e te mando para revisão médica antes de postar.</li>
+          <li>Monto, legendo e mando para revisão médica antes de postar.</li>
         </ol>
       </div>
       <div class="box">
-        <h3>O que falta para começar</h3>
+        <h3>Regras fixas da série</h3>
         <ul>
-          <li>Conta no Runway com chave de API e o conector MCP do Runway nesta sessão.</li>
-          <li>Liberar o domínio da API do Runway na rede do ambiente.</li>
-          <li>Escolher a voz da Dra. Helena: serviço de voz sintética ou uma atriz de voz.</li>
-          <li>Enquanto isso, sigo com os modelos 3D do pulmão e do brônquio, que independem do Runway.</li>
+          <li>Vídeo gerado só em planos sem conteúdo clínico na imagem: apresentadora, ambientes, pacientes dramatizados.</li>
+          <li>Todo mecanismo de doença sai dos nossos modelos 3D.</li>
+          <li>Títulos, capítulos e legendas na tipografia 2Doctor. Trilha original.</li>
+          <li>Cada afirmação clínica tem código e fonte na legenda do post.</li>
+          <li>Selo “criado por IA” nos planos gerados e aviso na legenda.</li>
         </ul>
       </div>
-          </div>
+    </div>
+    <h3 style="margin:22px 0 8px">Custo estimado por etapa (Runway)</h3>
+    <p class="note" style="margin-bottom:10px">Referência de preço: 1 crédito da API = US$ 0,01; imagem Gen-4 1080p ≈ 8 créditos; vídeo Gen-4 Turbo ≈ 5 créditos por segundo; atuação com fala (Act-Two) ≈ 5 créditos por segundo. São os valores que conheço; confiro a tabela atual no portal antes de qualquer gasto.</p>
+    <div class="tbl"><table>
+      <thead><tr><th>Etapa</th><th>Quantidade</th><th>Créditos</th><th>US$</th></tr></thead>
+      <tbody>
+        <tr><td>Teste: rostos de referência</td><td>4 imagens 1080p</td><td class="n">≈ 32</td><td class="n">≈ 0,32</td></tr>
+        <tr><td>Pacote de referência aprovada (ângulos, jaleco, cenários)</td><td>≈ 12 imagens</td><td class="n">≈ 100</td><td class="n">≈ 1</td></tr>
+        <tr><td>Planos de ambiente e pacientes, por episódio</td><td>≈ 15 s × 3 tentativas</td><td class="n">≈ 225</td><td class="n">≈ 2,25</td></tr>
+        <tr><td>Planos da apresentadora, por episódio</td><td>≈ 35 s × 3 tentativas</td><td class="n">≈ 525</td><td class="n">≈ 5,25</td></tr>
+        <tr><td>Fala sincronizada, por episódio</td><td>≈ 35 s × 2 tentativas</td><td class="n">≈ 350</td><td class="n">≈ 3,50</td></tr>
+        <tr><td><b>Por episódio (sem o teste)</b></td><td></td><td class="n"><b>≈ 1.100</b></td><td class="n"><b>≈ 11</b></td></tr>
+        <tr><td><b>Três episódios, com referências</b></td><td></td><td class="n"><b>≈ 3.400</b></td><td class="n"><b>≈ 34</b></td></tr>
+      </tbody>
+    </table></div>
+    <p class="note" style="margin-top:10px">Fora do Runway: voz sintética (≈ US$ 0,20 a 1 por episódio, conforme o serviço), render 3D, trilha e montagem rodam aqui, sem custo de API. O tempo de cada etapa entra na planilha de medição do piloto.</p>
   </section>
 </div>
 
 <script>
-const SHOTS = [
-  {tc:"0:00–0:05",src:"gen",kind:"night",title:"Abertura fria",vo:"<i>(off)</i> Três da manhã. Um chiado no peito, e a sensação de respirar por um canudinho.",screen:"SÃO PAULO · 3h12",prompt:"Vertical 9:16. Dark São Paulo apartment at 3am, a young woman sits up in bed breathing with effort, hand on her chest, blue inhaler on the nightstand, city lights through rain-streaked window, cool blue moonlight and a warm lamp, slow push-in, shallow depth of field, Netflix documentary grade, filmic grain.",cl:[]},
-  {tc:"0:05–0:10",src:"type",kind:"title",title:"Título da série",vo:"<i>(trilha, sem fala)</i>",screen:"POR DENTRO · Asma: quando o ar fecha a porta",prompt:"Nossa tipografia serifada sobre os pulmões 3D girando devagar no escuro.",cl:[]},
-  {tc:"0:10–0:19",src:"gen",kind:"host",title:"Apresentadora na Paulista",vo:"Eu sou a Helena, pneumologista. Hoje a gente vai entrar num pulmão. Devagar, com imagens. Sem decoreba. Tá, quase nenhuma.",screen:"Dra. Helena Duarte · pneumologista",prompt:"Vertical 9:16. [reference: Dra. Helena] standing on Avenida Paulista at dawn in light rain, talking to camera with a dry half-smile, wet asphalt reflecting traffic lights, bokeh, medium shot slowly drifting, Netflix documentary grade. Lip-sync to provided narration.",cl:[]},
-  {tc:"0:19–0:30",src:"own",kind:"lungs",title:"Mergulho no pulmão",vo:"O ar desce pela traqueia e se divide em brônquios cada vez menores. São milhares de ramos, até os alvéolos.",screen:"Rótulos: traqueia · brônquios · bronquíolos",prompt:"Pulmões 3D próprios: câmera entra pela traqueia e percorre a árvore brônquica até os ramos finos.",cl:[["N1","N"]]},
-  {tc:"0:30–0:46",src:"own",kind:"bronchus",title:"A crise por dentro",vo:"Na asma, essa via é sensível. Um gatilho, como alérgeno, vírus ou exercício, liga a inflamação. O músculo em volta aperta, a parede incha, sobra muco. E o ar passa com dificuldade.",screen:"gatilho → inflamação → aperta · incha · muco",prompt:"Corte 3D do brônquio: eosinófilos chegam, músculo contrai, edema, muco; partículas de ar desaceleram.",cl:[["E1","V"],["F1","V"]]},
-  {tc:"0:46–0:53",src:"gen",kind:"corridor",title:"A virada",vo:"E aqui está o detalhe que muda tudo: na asma, isso vai e volta. Os sintomas variam com o tempo.",screen:"",prompt:"Vertical 9:16. [reference: Dra. Helena] in a white coat walking slowly down a quiet hospital corridor at night, turns to camera and speaks, soft practical lights, teal and warm tones, Netflix documentary grade. Lip-sync to provided narration.",cl:[["A","V"]]},
-  {tc:"0:53–1:03",src:"own",kind:"reopen",title:"A via reabre",vo:"Com o tratamento certo, a via reabre. Por isso, bombinha de alívio sozinha não é tratamento de asma: o tratamento inclui corticoide inalatório.",screen:"alívio sozinho não trata · corticoide inalatório",prompt:"Corte 3D: inflamação diminui, músculo relaxa, luz reabre, fluxo de ar volta.",cl:[["H1","V"],["H2","V"]]},
-  {tc:"1:03–1:11",src:"gen",kind:"cafe",title:"O que fazer",vo:"Chiado que vai e volta, falta de ar de madrugada, tosse no exercício? Procure um médico e faça a espirometria.",screen:"chiado · falta de ar à noite · tosse no exercício",prompt:"Vertical 9:16. [reference: Dra. Helena] seated in an old café in downtown São Paulo, warm brass lamps, green tiles, coffee cup, close-up, sincere tone, Netflix documentary grade. Lip-sync to provided narration.",cl:[["E1","V"],["D1","V"]]},
-  {tc:"1:11–1:15",src:"type",kind:"end",title:"Assinatura",vo:"<i>(trilha)</i> Por Dentro. Uma série 2Doctor.",screen:"2Doctor · Conteúdo educativo, não substitui consulta · Fontes na legenda",prompt:"Cartão final com a marca e as fontes.",cl:[]}
+const ST={V:"Verificada",P:"Parcial",N:"Sem fonte"};
+const EPISODES=[
+{id:"ep-asma",n:1,title:"Asma",sub:"Quando o ar fecha a porta",dur:"1:15",
+ logline:"Uma crise de madrugada, e o que acontece dentro do brônquio. Mensagem central: a asma vai e volta, e bombinha de alívio sozinha não é tratamento.",
+ shots:[
+  {tc:"0:00–0:05",src:"gen",kind:"night",title:"Abertura fria",vo:"<i>(off)</i> Três da manhã. Um chiado no peito, e a sensação de respirar por um canudinho.",screen:"03:12",prompt:"Vertical 9:16. Dark apartment at 3am in an unnamed city, a young woman sits up in bed breathing with effort, hand on her chest, blue inhaler on the nightstand, city lights through a rain-streaked window, cool blue moonlight and a warm lamp, slow push-in, shallow depth of field, documentary grade, film grain. No readable signs.",cl:[]},
+  {tc:"0:05–0:10",src:"type",kind:"title",title:"Título",vo:"<i>(trilha, sem fala)</i>",screen:"POR DENTRO · Asma: quando o ar fecha a porta",prompt:"Tipografia serifada sobre os pulmões 3D girando devagar no escuro.",cl:[]},
+  {tc:"0:10–0:19",src:"gen",kind:"host",title:"Apresentadora na rua",vo:"Eu sou a Iris, médica. Hoje a gente vai entrar num pulmão. Devagar, com imagens. Sem decoreba. Tá, quase nenhuma.",screen:"Dra. Iris Maren · médica",prompt:"Vertical 9:16. [reference: Dr. Iris Maren] standing on a wet harbour-city street at night in light rain, talking to camera with a dry half-smile, tram rails reflecting warm lights, bokeh, medium shot slowly drifting, documentary grade. Lip-sync to provided narration.",cl:[]},
+  {tc:"0:19–0:30",src:"own",kind:"lungs",title:"Mergulho no pulmão",vo:"O ar desce pela traqueia e se divide em brônquios cada vez menores. São milhares de ramos, até os alvéolos.",screen:"traqueia · brônquios · bronquíolos",prompt:"Pulmões 3D próprios: a câmera entra pela traqueia e percorre a árvore brônquica até os ramos finos.",cl:["N1"]},
+  {tc:"0:30–0:46",src:"own",kind:"bronchus",title:"A crise por dentro",vo:"Na asma, essa via é sensível. Um gatilho, como alérgeno, vírus ou exercício, liga a inflamação. O músculo em volta aperta, a parede incha, sobra muco. E o ar passa com dificuldade.",screen:"gatilho → inflamação → aperta · incha · muco",prompt:"Corte 3D do brônquio: eosinófilos chegam, músculo contrai, edema, muco; partículas de ar desaceleram.",cl:["E1","F1"]},
+  {tc:"0:46–0:53",src:"gen",kind:"corridor",title:"A virada",vo:"E aqui está o detalhe que muda tudo: na asma, isso vai e volta. Os sintomas variam com o tempo.",screen:"",prompt:"Vertical 9:16. [reference: Dr. Iris Maren] in a white coat walking slowly down a quiet hospital corridor at night, turns to camera and speaks, soft practical lights, teal and warm tones, documentary grade. Lip-sync to provided narration.",cl:["A"]},
+  {tc:"0:53–1:03",src:"own",kind:"reopen",title:"A via reabre",vo:"Com o tratamento certo, a via reabre. Por isso, bombinha de alívio sozinha não é tratamento de asma: o tratamento inclui corticoide inalatório.",screen:"alívio sozinho não trata · corticoide inalatório",prompt:"Corte 3D: a inflamação diminui, o músculo relaxa, a luz reabre e o fluxo de ar volta.",cl:["H1","H2"]},
+  {tc:"1:03–1:11",src:"gen",kind:"cafe",title:"O que fazer",vo:"Chiado que vai e volta, falta de ar de madrugada, tosse no exercício? Procure um médico e faça a espirometria.",screen:"chiado · falta de ar à noite · tosse no exercício",prompt:"Vertical 9:16. [reference: Dr. Iris Maren] seated in an old corner café at night, warm brass lamps, green tiles, coffee cup, close-up, sincere tone, documentary grade. Lip-sync to provided narration.",cl:["E1","D1"]},
+  {tc:"1:11–1:15",src:"type",kind:"end",title:"Assinatura",vo:"<i>(trilha)</i> Por Dentro. Uma série 2Doctor.",screen:"2Doctor · Conteúdo educativo, não substitui consulta · Fontes na legenda",prompt:"Cartão final com a marca, o selo “criado por IA” e as fontes.",cl:[]}
+ ],
+ claims:{
+  N1:{t:"O ar passa pela traqueia, brônquios e bronquíolos até os alvéolos; a árvore tem milhares de ramos.",s:"S16",st:"P",f:"Fonte aberta de anatomia sugerida; a rede bloqueou a leitura da página."},
+  A:{t:"Asma: inflamação crônica com sintomas e limitação do fluxo expiratório que variam com o tempo.",s:"S1 · cap. 1",st:"V",f:""},
+  E1:{t:"Asma tem gatilhos (alérgeno, vírus, exercício) e sintomas variáveis, inclusive à noite.",s:"S1",st:"V",f:""},
+  F1:{t:"Na crise: broncoconstrição, edema, muco e inflamação tipo 2 com eosinófilos.",s:"S12",st:"V",f:"Confirmar licença do StatPearls para citação."},
+  H1:{t:"Asma não deve ser tratada só com broncodilatador de alívio (SABA isolado).",s:"S1; S10",st:"V",f:""},
+  H2:{t:"O tratamento inclui corticoide inalatório.",s:"S1; S2",st:"V",f:""},
+  D1:{t:"Espirometria com resposta ao broncodilatador ajuda a confirmar a asma.",s:"S1 · critérios diagnósticos",st:"V",f:"Anotar número do quadro e página."}
+ },
+ sources:[
+  ["S1","GINA 2026 Strategy Report (05/05/2026).","https://ginasthma.org/2026-gina-strategy-report/"],
+  ["S2","GINA 2026 Summary Guide (julho de 2026).","https://ginasthma.org/wp-content/uploads/2026/07/GINA-Summary-Guide-2026-WEB-WMS.pdf"],
+  ["S10","SBPT, Recomendações para o manejo da asma 2020. J Bras Pneumol 2020;46(1):e20190307.","https://www.scielo.br/j/jbpneu/a/jbyyhBv98bWq3WksvBqnDBn/?lang=pt"],
+  ["S12","StatPearls, Pathophysiology of Asthma (NBK551579).","https://www.ncbi.nlm.nih.gov/books/NBK551579/"],
+  ["S16","OpenStax, Anatomy and Physiology 2e, seção 22.1 (CC BY 4.0).","https://openstax.org/books/anatomy-and-physiology-2e/pages/22-1-organs-and-structures-of-the-respiratory-system"]
+ ]},
+{id:"ep-iam",n:2,title:"Infarto",sub:"Cada minuto conta",dur:"1:24",
+ logline:"Um aperto no peito numa escada, de manhã cedo. O que acontece na artéria, por que o tempo importa e o que fazer. Mensagem central: ligar para a emergência na hora.",
+ shots:[
+  {tc:"0:00–0:06",src:"gen",kind:"stairs",title:"Abertura fria",vo:"<i>(off)</i> Seis e quarenta da manhã. Um aperto no peito que não passa.",screen:"06:40",prompt:"Vertical 9:16. Early morning, a man in his mid-50s stops halfway up an apartment building staircase, one hand on the rail and the other on his chest, cold blue dawn light through a window, warm bulb above, handheld slow push-in, shallow depth of field, documentary grade, film grain. No readable signs.",cl:[]},
+  {tc:"0:06–0:10",src:"type",kind:"titleH",title:"Título",vo:"<i>(trilha, sem fala)</i>",screen:"POR DENTRO · Infarto: cada minuto conta",prompt:"Tipografia serifada sobre o coração 3D, batendo devagar no escuro.",cl:[]},
+  {tc:"0:10–0:19",src:"gen",kind:"host",title:"Tempo é músculo",vo:"No hospital, a gente repete uma frase: tempo é músculo. Hoje você vai entender por quê. E vai saber o que fazer.",screen:"Dra. Iris Maren · médica",prompt:"Vertical 9:16. [reference: Dr. Iris Maren] on the same wet harbour-city street at blue hour, walking then stopping to face camera, serious but warm, bokeh of tram lights, medium shot, documentary grade. Lip-sync to provided narration.",cl:[]},
+  {tc:"0:19–0:32",src:"own",kind:"plaque",title:"A placa se rompe",vo:"O coração se alimenta pelas coronárias. Com os anos, gordura se acumula na parede e forma uma placa. Um dia, a placa racha, um coágulo se forma em cima e o sangue quase não passa.",screen:"placa → rompe → coágulo",prompt:"Coração 3D próprio: câmera entra numa coronária; placa na parede; capa fibrosa rompe; plaquetas e fibrina formam o trombo; o fluxo cai.",cl:["I1"]},
+  {tc:"0:32–0:42",src:"own",kind:"necrosis",title:"O músculo sem sangue",vo:"Sem sangue, as células do músculo começam a morrer em cerca de vinte a quarenta minutos. E o dano avança de dentro para fora, nas horas seguintes.",screen:"20–40 min · a área cresce de dentro para fora",prompt:"Coração 3D em corte: área sem fluxo escurece do endocárdio para o epicárdio conforme um relógio avança.",cl:["I2"]},
+  {tc:"0:42–0:55",src:"gen",kind:"corridor",title:"Os sinais",vo:"O aviso: dor, pressão ou aperto no peito que dura mais que alguns minutos, ou vai e volta. Pode ir para o braço, a mandíbula, o pescoço ou as costas, com suor, enjoo ou falta de ar. Em mulheres, idosos e diabéticos, pode ser só falta de ar, enjoo ou cansaço.",screen:"peito · braço · mandíbula · costas · suor · enjoo · falta de ar",prompt:"Vertical 9:16. [reference: Dr. Iris Maren] in a white coat in a quiet hospital corridor at night, speaking to camera, soft practical lights, teal and warm tones, documentary grade. Lip-sync to provided narration.",cl:["I3","I4"]},
+  {tc:"0:55–1:02",src:"gen",kind:"cafe",title:"Cena de apoio",vo:"E não: não é hora de dirigir até o hospital, nem de esperar passar com um chá. Ligue para a emergência. No Brasil, 192.",screen:"Ligue para a emergência · Brasil 192 · EUA e Canadá 911 · Europa 112 · Reino Unido 999",prompt:"Vertical 9:16. [reference: Dr. Iris Maren] in the corner café, pushes a cup of tea away with a dry look, then leans to camera, warm brass lamps, green tiles, close-up, documentary grade. Lip-sync to provided narration.",cl:["I5","EM"]},
+  {tc:"1:02–1:14",src:"own",kind:"cath",title:"No hospital",vo:"No hospital, o eletrocardiograma sai em até dez minutos. Se a artéria está fechada, o cateterismo leva um balão até ela, reabre e deixa um stent. Quanto mais cedo, melhor: de preferência, em até duas horas.",screen:"ECG em 10 min · cateterismo · stent",prompt:"3D: traçado de ECG; cateter chega à coronária; balão abre; stent fica; o fluxo volta e a área escura para de crescer.",cl:["I6","I7"]},
+  {tc:"1:14–1:20",src:"gen",kind:"host",title:"Prevenção",vo:"E o melhor infarto é o que não acontece: pressão, glicose e colesterol controlados, e nada de cigarro.",screen:"pressão · glicose · colesterol · cigarro",prompt:"Vertical 9:16. [reference: Dr. Iris Maren] on the harbour street at dawn, light rain stopped, speaks to camera with a half-smile, documentary grade. Lip-sync to provided narration.",cl:["I8"]},
+  {tc:"1:20–1:24",src:"type",kind:"end",title:"Assinatura",vo:"<i>(trilha)</i> Por Dentro. Uma série 2Doctor.",screen:"2Doctor · Conteúdo educativo, não substitui consulta · Fontes na legenda",prompt:"Cartão final com a marca, o selo “criado por IA” e as fontes.",cl:[]}
+ ],
+ claims:{
+  I1:{t:"A maioria dos infartos acontece quando uma placa de gordura na coronária racha ou sofre erosão e um coágulo se forma sobre ela, estreitando ou fechando a artéria.",s:"R1; R2",st:"P",f:"Frase de trechos de busca; a rede bloqueou a leitura do texto. Evitar “tipo 1”: a 5ª Definição Universal (2026) mudou a classificação."},
+  I2:{t:"As células começam a morrer em cerca de 20 a 40 minutos sem sangue, e o dano avança do endocárdio para o epicárdio em horas.",s:"R2; R3",st:"P",f:"Reimer 1977 é estudo em cães; usar como mecanismo, sem prometer número exato para humanos."},
+  I3:{t:"Dor, pressão ou aperto no peito por mais que alguns minutos, ou que vai e volta; pode irradiar para braço, mandíbula, pescoço ou costas, com suor, náusea ou falta de ar.",s:"R4; R7",st:"P",f:"O limiar de “20 minutos” do esboço não foi encontrado nas fontes; saiu do roteiro."},
+  I4:{t:"Mulheres, idosos e pessoas com diabetes mais vezes têm sintomas menos óbvios, como falta de ar, náusea ou cansaço.",s:"R6",st:"P",f:"A diretriz desaconselha a palavra “atípico”; o roteiro não a usa."},
+  I5:{t:"Ligar para o número de emergência na hora; não ir dirigindo.",s:"R7",st:"P",f:""},
+  EM:{t:"Números de emergência: 192 (SAMU, Brasil), 911 (EUA e Canadá), 112 (União Europeia), 999 (Reino Unido).",s:"R20",st:"P",f:"Confirmar o 192 numa página do gov.br."},
+  I6:{t:"Eletrocardiograma feito e interpretado em até 10 minutos do primeiro contato médico.",s:"R4; R5",st:"P",f:""},
+  I7:{t:"A angioplastia primária reabre a artéria e é a estratégia preferida quando pode ser feita a tempo (cerca de 120 minutos).",s:"R4; R5",st:"P",f:""},
+  I8:{t:"Pressão alta, diabetes, colesterol alterado e tabagismo estão entre os principais fatores de risco modificáveis.",s:"R8",st:"P",f:"INTERHEART lista nove fatores; o vídeo cita quatro."}
+ },
+ sources:[
+  ["R1","Fifth Universal Definition of Myocardial Infarction (ESC/ACC/AHA/WHF, 2026). Circulation 2026.","https://doi.org/10.1161/CIR.0000000000001477"],
+  ["R2","Thygesen K et al. Fourth Universal Definition of Myocardial Infarction (2018). Eur Heart J 2019;40:237–269.","https://doi.org/10.1093/eurheartj/ehy462"],
+  ["R3","Reimer KA et al. The wavefront phenomenon of ischemic cell death. Circulation 1977;56:786–794.","https://doi.org/10.1161/01.CIR.56.5.786"],
+  ["R4","Byrne RA et al. 2023 ESC Guidelines for the management of acute coronary syndromes. Eur Heart J 2023;44:3720–3826.","https://doi.org/10.1093/eurheartj/ehad191"],
+  ["R5","Rao SV et al. 2025 ACC/AHA/ACEP/NAEMSP/SCAI Guideline for the Management of Patients With ACS. Circulation 2025.","https://doi.org/10.1161/CIR.0000000000001309"],
+  ["R6","Gulati M et al. 2021 AHA/ACC Guideline for the Evaluation and Diagnosis of Chest Pain. Circulation 2021.","https://doi.org/10.1161/CIR.0000000000001029"],
+  ["R7","American Heart Association, Warning Signs of a Heart Attack; NHS, Heart attack.","https://www.heart.org/en/health-topics/heart-attack/warning-signs-of-a-heart-attack"],
+  ["R8","Yusuf S et al. INTERHEART. Lancet 2004;364:937–952.","https://doi.org/10.1016/S0140-6736(04)17018-9"],
+  ["R20","Comissão Europeia, Your Europe: 112; EENA, What’s 112 all about.","https://europa.eu/youreurope/citizens/travel/security-and-emergencies/emergency/index_en.htm"]
+ ]},
+{id:"ep-cirrose",n:3,title:"Cirrose",sub:"O fígado que se cala",dur:"1:23",
+ logline:"Um exame de rotina numa pessoa que se sente bem. Como o fígado cicatriza até endurecer, o que a pressão no sistema porta faz, e por que tratar a causa ainda muda o caminho.",
+ shots:[
+  {tc:"0:00–0:06",src:"gen",kind:"clinic",title:"Abertura fria",vo:"<i>(off)</i> Ela se sentia bem. Era só um exame de rotina.",screen:"",prompt:"Vertical 9:16. A woman around 50 sits in a calm clinic waiting area in late afternoon light, reading a printed lab report, relaxed expression slowly turning thoughtful, warm window light and cool shadows, shallow depth of field, documentary grade, film grain. Text on the paper not readable.",cl:[]},
+  {tc:"0:06–0:10",src:"type",kind:"titleL",title:"Título",vo:"<i>(trilha, sem fala)</i>",screen:"POR DENTRO · Cirrose: o fígado que se cala",prompt:"Tipografia serifada sobre o fígado 3D girando devagar.",cl:[]},
+  {tc:"0:10–0:20",src:"gen",kind:"host",title:"O colega que não reclama",vo:"O fígado é aquele colega que nunca reclama. Trabalha calado por anos. A cirrose costuma ser assim: muito tempo sem sintomas.",screen:"Dra. Iris Maren · médica",prompt:"Vertical 9:16. [reference: Dr. Iris Maren] on the harbour street at night, leaning on a railing by the water, dry half-smile to camera, reflections of warm lights, documentary grade. Lip-sync to provided narration.",cl:["C1"]},
+  {tc:"0:20–0:30",src:"own",kind:"liverInj",title:"A agressão",vo:"A agressão pode vir do álcool, das hepatites B e C, ou da gordura no fígado ligada ao metabolismo. Essas são as causas mais comuns.",screen:"álcool · hepatite B · hepatite C · gordura no fígado (MASLD)",prompt:"Fígado 3D próprio: superfície lisa; três fontes de agressão entram como partículas sobre o lóbulo.",cl:["C2"]},
+  {tc:"0:30–0:42",src:"own",kind:"fibrosis",title:"Cicatriz sobre cicatriz",vo:"A cada agressão, o fígado inflama e cicatriza. Células chamadas estreladas produzem fibras. As cicatrizes se unem, e o tecido que sobra cresce em nódulos. O fígado endurece.",screen:"inflamação → fibrose → nódulos",prompt:"3D: lóbulo hepático; células estreladas ativam; septos de fibrose ligam os espaços porta; a superfície fica nodular.",cl:["C3"]},
+  {tc:"0:42–0:53",src:"own",kind:"portal",title:"A pressão sobe",vo:"O sangue que vem do intestino tem dificuldade de atravessar esse fígado duro. A pressão na veia porta sobe: aparecem varizes no esôfago, o baço cresce e a barriga acumula líquido.",screen:"hipertensão porta: varizes · baço · ascite",prompt:"3D: veia porta com fluxo desacelerando; colaterais no esôfago incham; baço aumenta; líquido no abdome.",cl:["C4"]},
+  {tc:"0:53–1:03",src:"gen",kind:"corridor",title:"Sinais de alerta",vo:"Sinais de alerta: pele ou olhos amarelados, barriga que cresce, vômito com sangue ou fezes pretas, confusão. Qualquer um deles: atendimento urgente.",screen:"amarelo · barriga crescendo · sangue · confusão",prompt:"Vertical 9:16. [reference: Dr. Iris Maren] in a white coat in the hospital corridor at night, stops and speaks to camera, firm and calm, documentary grade. Lip-sync to provided narration.",cl:["C5"]},
+  {tc:"1:03–1:10",src:"own",kind:"scan",title:"Vigiar",vo:"Quem tem cirrose tem mais risco de câncer de fígado. Por isso, o médico costuma pedir um ultrassom a cada seis meses, muitas vezes com um exame de sangue.",screen:"ultrassom a cada 6 meses",prompt:"3D: feixe de ultrassom varre o fígado; um nódulo pequeno aparece e é marcado.",cl:["C6"]},
+  {tc:"1:10–1:19",src:"gen",kind:"cafe",title:"A boa notícia",vo:"A boa notícia: tratar a causa pode frear a doença. Parar o álcool, curar a hepatite C, controlar a hepatite B, perder peso. Em algumas pessoas, o fígado até melhora em parte.",screen:"parar o álcool · curar a hepatite C · controlar a hepatite B · perder peso",prompt:"Vertical 9:16. [reference: Dr. Iris Maren] in the corner café, first light at the window, relaxed smile, close-up, documentary grade. Lip-sync to provided narration.",cl:["C7"]},
+  {tc:"1:19–1:23",src:"type",kind:"end",title:"Assinatura",vo:"<i>(trilha)</i> Por Dentro. Uma série 2Doctor.",screen:"2Doctor · Conteúdo educativo, não substitui consulta · Fontes na legenda",prompt:"Cartão final com a marca, o selo “criado por IA” e as fontes.",cl:[]}
+ ],
+ claims:{
+  C1:{t:"A cirrose tem uma fase compensada, sem sintomas, que pode durar anos; muitas vezes é achada em exames de rotina.",s:"R10; R9",st:"P",f:"Trecho do EASL 2018 visto só em extrato de busca."},
+  C2:{t:"As causas mais comuns são álcool, hepatites B e C crônicas e a doença hepática esteatótica associada à disfunção metabólica (MASLD).",s:"R11; R9",st:"P",f:"Existem outras causas (autoimunes, colestáticas, ferro, cobre); o roteiro diz “as mais comuns”."},
+  C3:{t:"Agressão repetida leva a inflamação, ativação das células estreladas, fibrose e nódulos de regeneração.",s:"R12; R9",st:"P",f:""},
+  C4:{t:"A cirrose causa hipertensão porta, que leva a varizes esofágicas, esplenomegalia e ascite.",s:"R13; R14; R15",st:"P",f:"Baveno VIII (2026) visto só como referência; esplenomegalia sem trecho citado."},
+  C5:{t:"Sinais de descompensação: icterícia, ascite, sangramento por varizes (vômito com sangue, fezes pretas) e encefalopatia (confusão).",s:"R10",st:"P",f:""},
+  C6:{t:"Pessoas com cirrose têm maior risco de carcinoma hepatocelular; recomenda-se ultrassom a cada 6 meses, muitas vezes com AFP.",s:"R16; R17",st:"P",f:"O EASL 2025 personaliza a vigilância pelo risco; o roteiro diz “costuma pedir”."},
+  C7:{t:"Tratar a causa (abstinência, cura da hepatite C, supressão da hepatite B, perda de peso) pode frear a progressão e, em parte das pessoas, levar a regressão parcial.",s:"R13; R18; R19",st:"P",f:"Não citar percentual de regressão sem ler o artigo."}
+ },
+ sources:[
+  ["R9","Ginès P et al. Liver cirrhosis. Lancet 2021;398:1359–1376.","https://doi.org/10.1016/S0140-6736(21)01374-X"],
+  ["R10","EASL Clinical Practice Guidelines for the management of patients with decompensated cirrhosis. J Hepatol 2018;69:406–460.","https://doi.org/10.1016/j.jhep.2018.03.024"],
+  ["R11","Rinella ME et al. Multisociety Delphi consensus on fatty liver disease nomenclature. J Hepatol 2023;79:1542–1556.","https://doi.org/10.1016/j.jhep.2023.06.003"],
+  ["R12","Tsuchida T, Friedman SL. Mechanisms of hepatic stellate cell activation. Nat Rev Gastroenterol Hepatol 2017;14:397–411.","https://doi.org/10.1038/nrgastro.2017.38"],
+  ["R13","de Franchis R et al. Baveno VII: Renewing consensus in portal hypertension. J Hepatol 2022;76:959–974.","https://doi.org/10.1016/j.jhep.2021.12.022"],
+  ["R14","Baveno VIII: Advancing consensus in portal hypertension. J Hepatol 2026.","https://doi.org/10.1016/j.jhep.2026.07.030"],
+  ["R15","Kaplan DE et al. AASLD Practice Guidance on portal hypertension and varices in cirrhosis. Hepatology 2024;79:1180–1211.","https://doi.org/10.1097/HEP.0000000000000647"],
+  ["R16","EASL Clinical Practice Guidelines on the management of hepatocellular carcinoma. J Hepatol 2025;82:315–374.","https://doi.org/10.1016/j.jhep.2024.08.028"],
+  ["R17","Singal AG et al. AASLD Practice Guidance on prevention, diagnosis and treatment of HCC. Hepatology 2023.","https://doi.org/10.1097/HEP.0000000000000466"],
+  ["R18","Marcellin P et al. Regression of cirrhosis during tenofovir treatment for chronic hepatitis B. Lancet 2013;381:468–475.","https://doi.org/10.1016/S0140-6736(12)61425-1"],
+  ["R19","EASL–EASD–EASO Clinical Practice Guidelines on MASLD. J Hepatol 2024;81:492–542.","https://doi.org/10.1016/j.jhep.2024.04.031"]
+ ]}
+
 ];
-const LAB={gen:"Vídeo gerado (Runway)",own:"3D próprio",type:"Tipografia 2Doctor"};
+const LAB={gen:"Vídeo gerado (Runway) · criado por IA",own:"3D próprio",type:"Tipografia 2Doctor"};
 function draw(cv,kind){
-  const d=window.devicePixelRatio||1,W=120,H=213;cv.width=W*d;cv.height=H*d;const x=cv.getContext("2d");x.scale(d,d);
+  const d=window.devicePixelRatio||1,W=120,H=213;cv.width=W*d;cv.height=H*d;const x=cv.getContext("2d");x.setTransform(d,0,0,d,0,0);
   const g=x.createLinearGradient(0,0,0,H);g.addColorStop(0,"#16222c");g.addColorStop(1,"#070b0f");x.fillStyle=g;x.fillRect(0,0,W,H);
-  const cx=W/2,warm="#E9B872",cool="#5E8FA8",skin="#C9A184",teal="#2F6E6B",ink="#EDE6DA";
+  const cx=W/2,warm="#E9B872",cool="#5E8FA8",skin="#C9A184",teal="#2F6E6B",ink="#EDE6DA",blood="#b8404a";
   const bokeh=(n,c)=>{for(let i=0;i<n;i++){x.fillStyle=c;x.globalAlpha=.25+.3*((i*37)%10)/10;x.beginPath();x.arc((i*47)%W,20+(i*29)%70,2+(i%3),0,7);x.fill()}x.globalAlpha=1};
-  const person=(px,py,s,coat)=>{x.fillStyle=coat||teal;x.beginPath();x.ellipse(px,py+46*s,26*s,34*s,0,Math.PI,0);x.fill();x.fillRect(px-26*s,py+46*s,52*s,60*s);x.fillStyle=skin;x.beginPath();x.arc(px,py+20*s,13*s,0,7);x.fill();x.fillStyle="#3a2a22";x.beginPath();x.arc(px,py+15*s,14*s,Math.PI,0);x.fill();x.fillRect(px-14*s,py+15*s,4*s,16*s);x.fillRect(px+10*s,py+15*s,4*s,16*s)};
+  const person=(px,py,s,coat,hair)=>{x.fillStyle=coat||teal;x.beginPath();x.ellipse(px,py+46*s,26*s,34*s,0,Math.PI,0);x.fill();x.fillRect(px-26*s,py+46*s,52*s,60*s);x.fillStyle=skin;x.beginPath();x.arc(px,py+20*s,13*s,0,7);x.fill();x.fillStyle=hair||"#3a2a22";x.beginPath();x.arc(px,py+15*s,14*s,Math.PI,0);x.fill();if(!hair){x.fillRect(px-14*s,py+15*s,4*s,16*s);x.fillRect(px+10*s,py+15*s,4*s,16*s)}};
   const serif=(s,y,sz,a=1)=>{x.globalAlpha=a;x.fillStyle=ink;x.font=`500 ${sz}px "Cormorant Garamond", Georgia, serif`;x.textAlign="center";x.fillText(s,cx,y);x.globalAlpha=1};
+  const badge=()=>{x.fillStyle="rgba(237,230,218,.55)";x.font="500 6px Figtree, sans-serif";x.textAlign="right";x.fillText("criado por IA",W-6,10)};
+  const heart=(cy,s)=>{x.fillStyle="#7a2a33";x.beginPath();x.moveTo(cx,cy+34*s);x.bezierCurveTo(cx-44*s,cy+4*s,cx-30*s,cy-30*s,cx,cy-12*s);x.bezierCurveTo(cx+30*s,cy-30*s,cx+44*s,cy+4*s,cx,cy+34*s);x.fill();x.strokeStyle="#e9b872";x.lineWidth=1.6;x.beginPath();x.moveTo(cx-2,cy-12*s);x.quadraticCurveTo(cx-24*s,cy,cx-14*s,cy+22*s);x.moveTo(cx+2,cy-12*s);x.quadraticCurveTo(cx+22*s,cy-2*s,cx+18*s,cy+16*s);x.stroke()};
+  const liver=(cy,col)=>{x.fillStyle=col;x.beginPath();x.moveTo(12,cy-10);x.quadraticCurveTo(60,cy-40,110,cy-22);x.quadraticCurveTo(104,cy+8,70,cy+22);x.quadraticCurveTo(30,cy+30,12,cy-10);x.fill()};
   switch(kind){
-    case "night":bokeh(10,cool);x.fillStyle="#1f2d38";x.fillRect(10,30,48,60);x.fillStyle="rgba(94,143,168,.35)";x.fillRect(12,32,44,56);x.fillStyle="#2b3a46";x.fillRect(0,150,W,63);person(78,100,.8,"#384650");x.fillStyle=warm;x.globalAlpha=.6;x.beginPath();x.arc(24,150,9,0,7);x.fill();x.globalAlpha=1;x.fillStyle="#3E7CC9";x.fillRect(20,140,6,10);serif("3h12",196,12,.7);break;
+    case "night":bokeh(10,cool);x.fillStyle="#1f2d38";x.fillRect(10,30,48,60);x.fillStyle="rgba(94,143,168,.35)";x.fillRect(12,32,44,56);x.fillStyle="#2b3a46";x.fillRect(0,150,W,63);person(78,100,.8,"#384650");x.fillStyle=warm;x.globalAlpha=.6;x.beginPath();x.arc(24,150,9,0,7);x.fill();x.globalAlpha=1;x.fillStyle="#3E7CC9";x.fillRect(20,140,6,10);serif("03:12",196,12,.7);badge();break;
+    case "stairs":bokeh(6,cool);x.strokeStyle="#34444f";x.lineWidth=3;for(let i=0;i<8;i++){x.beginPath();x.moveTo(0,200-i*16);x.lineTo(W,178-i*16);x.stroke()}person(64,70,.85,"#4a4f55","#5a5550");x.fillStyle=skin;x.beginPath();x.arc(60,122,5,0,7);x.fill();serif("06:40",200,12,.7);badge();break;
+    case "clinic":x.fillStyle="#1d2a30";x.fillRect(0,0,W,H);x.fillStyle="rgba(233,184,114,.25)";x.fillRect(70,20,40,70);person(48,74,.85,"#6b5a4e");x.fillStyle="#e8e1d6";x.fillRect(64,132,24,30);x.fillStyle="#9aa";for(let i=0;i<5;i++)x.fillRect(67,137+i*5,18,1);badge();break;
     case "title":for(const sd of[-1,1]){x.strokeStyle="rgba(111,179,174,.6)";x.beginPath();x.ellipse(cx+sd*20,110,17,34,sd*.12,0,7);x.stroke()}serif("POR DENTRO",70,15);serif("Asma",170,13,.8);break;
-    case "host":bokeh(14,warm);x.fillStyle="#1b2630";x.fillRect(0,160,W,53);person(cx,70,1.05);x.fillStyle="rgba(237,230,218,.8)";x.fillRect(10,186,40,1);x.font="500 8px Figtree, sans-serif";x.textAlign="left";x.fillText("Dra. Helena Duarte",10,197);break;
+    case "titleH":heart(112,1);serif("POR DENTRO",62,15);serif("Infarto",178,13,.8);break;
+    case "titleL":liver(116,"#6e3b2e");serif("POR DENTRO",62,15);serif("Cirrose",178,13,.8);break;
+    case "host":bokeh(14,warm);x.fillStyle="#1b2630";x.fillRect(0,160,W,53);x.strokeStyle="rgba(233,184,114,.5)";x.beginPath();x.moveTo(20,213);x.lineTo(50,160);x.moveTo(100,213);x.lineTo(70,160);x.stroke();person(cx,70,1.05);x.fillStyle="rgba(237,230,218,.8)";x.fillRect(10,186,40,1);x.font="500 8px Figtree, sans-serif";x.textAlign="left";x.fillText("Dra. Iris Maren",10,197);badge();break;
     case "lungs":for(const sd of[-1,1]){x.fillStyle="rgba(111,179,174,.15)";x.strokeStyle="rgba(159,216,207,.8)";x.beginPath();x.ellipse(cx+sd*22,120,18,40,sd*.12,0,7);x.fill();x.stroke()}x.strokeStyle="#e6efed";x.lineWidth=2;x.beginPath();x.moveTo(cx,50);x.lineTo(cx,92);x.stroke();x.lineWidth=1;for(const sd of[-1,1])for(let k=0;k<4;k++){x.beginPath();x.moveTo(cx,92);x.lineTo(cx+sd*(10+k*5),110+k*12);x.stroke()}break;
     case "bronchus":case "reopen":{const r=kind==="bronchus"?9:18;x.strokeStyle="#cfe3ea";x.lineWidth=4;for(let i=0;i<7;i++){x.beginPath();x.arc(cx,105,42,i*.9,i*.9+.5);x.stroke()}x.fillStyle="#c46a6e";x.beginPath();x.arc(cx,105,37,0,7);x.fill();x.strokeStyle="#8e2a36";x.lineWidth=kind==="bronchus"?6:3;x.beginPath();x.arc(cx,105,30,0,7);x.stroke();x.fillStyle="#e9a7a0";x.beginPath();x.arc(cx,105,r+5,0,7);x.fill();x.fillStyle="#070b0f";x.beginPath();x.arc(cx,105,r,0,7);x.fill();if(kind==="bronchus"){x.fillStyle="#f08a3c";for(let i=0;i<8;i++){x.beginPath();x.arc(cx+Math.cos(i)*24,105+Math.sin(i)*24,2.4,0,7);x.fill()}x.fillStyle="rgba(233,226,166,.9)";x.beginPath();x.arc(cx+4,103,5,0,7);x.fill()}serif(kind==="bronchus"?"aperta · incha · muco":"reabre",180,11,.85);break}
-    case "corridor":x.fillStyle="#1a2a2e";x.beginPath();x.moveTo(0,0);x.lineTo(cx-12,90);x.lineTo(cx+12,90);x.lineTo(W,0);x.fill();x.fillStyle="rgba(159,216,207,.25)";for(let i=0;i<4;i++)x.fillRect(cx-20+i*2,20+i*18,40-i*4,3);person(cx+8,82,.9,"#e8eeee");break;
-    case "cafe":bokeh(8,warm);x.fillStyle="#1f3a2f";x.fillRect(0,40,W,80);x.fillStyle="#3b2a1f";x.fillRect(0,150,W,63);person(cx,70,1.1);x.fillStyle="#e8e1d6";x.fillRect(cx+24,150,10,9);break;
-    case "end":serif("POR DENTRO",96,14);x.fillStyle="rgba(237,230,218,.7)";x.font="600 9px Figtree, sans-serif";x.textAlign="center";x.fillText("2Doctor",cx,118);x.font="500 7px Figtree, sans-serif";x.fillText("Conteúdo educativo",cx,180);break;
+    case "plaque":x.fillStyle="#5a1f27";x.fillRect(0,70,W,70);x.fillStyle="#b8404a";x.fillRect(0,84,W,42);x.fillStyle="#e7c77a";x.beginPath();x.ellipse(cx,86,26,14,0,0,Math.PI);x.fill();x.fillStyle="#6b0f1a";x.beginPath();x.ellipse(cx+2,100,20,12,0,0,7);x.fill();serif("placa · rompe · coágulo",180,11,.85);break;
+    case "necrosis":heart(104,1.25);x.fillStyle="rgba(40,30,32,.85)";x.beginPath();x.moveTo(cx+10,96);x.quadraticCurveTo(cx+34,108,cx+14,136);x.quadraticCurveTo(cx+4,118,cx+10,96);x.fill();serif("a área cresce com o tempo",186,10,.85);break;
+    case "cath":x.strokeStyle="#6b0f1a";x.lineWidth=16;x.beginPath();x.moveTo(0,110);x.bezierCurveTo(40,80,80,140,W,100);x.stroke();x.strokeStyle="#d86a72";x.lineWidth=10;x.stroke();x.strokeStyle="#cfe3ea";x.lineWidth=1.5;x.beginPath();x.moveTo(0,110);x.bezierCurveTo(30,90,50,110,62,110);x.stroke();for(let i=0;i<5;i++){x.beginPath();x.moveTo(52+i*4,103);x.lineTo(56+i*4,117);x.stroke()}x.strokeStyle="#9fd8cf";x.lineWidth=1;x.beginPath();for(let i=0;i<W;i+=2){const y=40+(i%30===10?-14:i%30===12?8:0);i?x.lineTo(i,y):x.moveTo(i,y)}x.stroke();serif("ECG · cateterismo · stent",186,10,.85);break;
+    case "liverInj":liver(110,"#8b4a38");x.fillStyle="#e9b872";for(let i=0;i<9;i++){x.beginPath();x.arc(20+i*10,70+((i*13)%20),1.8,0,7);x.fill()}serif("álcool · hepatites · gordura",180,10,.85);break;
+    case "fibrosis":liver(110,"#7a4a3a");x.strokeStyle="rgba(237,230,218,.6)";x.lineWidth=1;for(let i=0;i<7;i++){x.beginPath();x.moveTo(18+i*13,90);x.lineTo(26+i*11,130);x.stroke()}x.fillStyle="#a2644e";for(let i=0;i<10;i++){x.beginPath();x.arc(24+(i*9)%80,100+(i*7)%20,4,0,7);x.fill()}serif("fibrose → nódulos",180,11,.85);break;
+    case "portal":liver(80,"#6e3b2e");x.strokeStyle="#5E8FA8";x.lineWidth=5;x.beginPath();x.moveTo(cx,96);x.lineTo(cx,150);x.stroke();x.lineWidth=2;for(let i=0;i<4;i++){x.beginPath();x.moveTo(cx-4,120+i*6);x.quadraticCurveTo(cx-18,118+i*6,cx-24,128+i*6);x.stroke()}x.fillStyle="#6b2c3c";x.beginPath();x.ellipse(96,140,12,18,.3,0,7);x.fill();x.fillStyle="rgba(159,216,207,.25)";x.beginPath();x.ellipse(cx,178,40,12,0,0,7);x.fill();serif("varizes · baço · ascite",202,10,.85);break;
+    case "scan":liver(100,"#6e3b2e");x.strokeStyle="rgba(159,216,207,.8)";x.beginPath();x.moveTo(cx,40);x.arc(cx,40,110,Math.PI*.38,Math.PI*.62);x.closePath();x.stroke();x.fillStyle="#d9c18a";x.beginPath();x.arc(cx+14,104,5,0,7);x.fill();serif("ultrassom a cada 6 meses",184,10,.85);break;
+    case "corridor":x.fillStyle="#1a2a2e";x.beginPath();x.moveTo(0,0);x.lineTo(cx-12,90);x.lineTo(cx+12,90);x.lineTo(W,0);x.fill();x.fillStyle="rgba(159,216,207,.25)";for(let i=0;i<4;i++)x.fillRect(cx-20+i*2,20+i*18,40-i*4,3);person(cx+8,82,.9,"#e8eeee");badge();break;
+    case "cafe":bokeh(8,warm);x.fillStyle="#1f3a2f";x.fillRect(0,40,W,80);x.fillStyle="#3b2a1f";x.fillRect(0,150,W,63);person(cx,70,1.1);x.fillStyle="#e8e1d6";x.fillRect(cx+24,150,10,9);badge();break;
+    case "end":serif("POR DENTRO",96,14);x.fillStyle="rgba(237,230,218,.7)";x.font="600 9px Figtree, sans-serif";x.textAlign="center";x.fillText("2Doctor",cx,118);x.font="500 7px Figtree, sans-serif";x.fillText("Conteúdo educativo",cx,180);x.fillText("criado por IA · fontes na legenda",cx,191);break;
   }
 }
-function portrait(){const cv=document.getElementById("portrait"),r=cv.getBoundingClientRect(),d=window.devicePixelRatio||1;cv.width=r.width*d;cv.height=r.height*d;const x=cv.getContext("2d");x.scale(d,d);const W=r.width,H=r.height;
+function portrait(){const cv=document.getElementById("portrait"),r=cv.getBoundingClientRect(),d=window.devicePixelRatio||1;if(!r.width)return;cv.width=r.width*d;cv.height=r.height*d;const x=cv.getContext("2d");x.setTransform(d,0,0,d,0,0);const W=r.width,H=r.height;
   for(let i=0;i<22;i++){x.fillStyle=i%3?"#E9B872":"#5E8FA8";x.globalAlpha=.12+.2*((i*13)%10)/10;x.beginPath();x.arc((i*71)%W,(i*43)%(H*.6),4+(i%4)*3,0,7);x.fill()}x.globalAlpha=1;
   const cx=W/2,s=W/220;x.fillStyle="#2F6E6B";x.beginPath();x.ellipse(cx,H*.62,70*s,90*s,0,Math.PI,0);x.fill();x.fillRect(cx-70*s,H*.62,140*s,H);x.fillStyle="#f2f2ee";x.beginPath();x.moveTo(cx-16*s,H*.52);x.lineTo(cx,H*.6);x.lineTo(cx+16*s,H*.52);x.fill();
   x.fillStyle="#C9A184";x.beginPath();x.ellipse(cx,H*.4,34*s,42*s,0,0,7);x.fill();x.fillStyle="#3a2a22";x.beginPath();x.ellipse(cx,H*.34,40*s,36*s,0,Math.PI,0);x.fill();x.beginPath();x.ellipse(cx-34*s,H*.44,10*s,34*s,.1,0,7);x.fill();x.beginPath();x.ellipse(cx+34*s,H*.44,10*s,34*s,-.1,0,7);x.fill()}
-const box=document.getElementById("shots");
-SHOTS.forEach((s,i)=>{const el=document.createElement("article");el.className="shot";el.innerHTML=`<canvas aria-label="Esboço do plano ${i+1}"></canvas><div><div class="top"><h3>${i+1}. ${s.title}</h3><span class="mono muted" style="font-size:13px">${s.tc}</span><span class="src ${s.src}">${LAB[s.src]}</span></div><p class="vo">${s.vo}</p>${s.screen?`<p class="muted" style="font-size:14px">Na tela: ${s.screen}</p>`:""}${s.cl.length?`<p style="margin-top:6px">${s.cl.map(([c,st])=>`<span class="cl ${st}">${c}</span>`).join("")}</p>`:""}<details><summary>${s.src==="gen"?"Prompt do Runway":"Descrição do plano"}</summary><p class="prompt" style="margin-top:6px">${s.prompt}</p></details></div>`;box.appendChild(el);draw(el.querySelector("canvas"),s.kind)});
-portrait();
-if(document.fonts&&document.fonts.ready)document.fonts.ready.then(()=>{document.querySelectorAll(".shot canvas").forEach((c,i)=>draw(c,SHOTS[i].kind));portrait()});
+const root=document.getElementById("episodes"),canvases=[];
+for(const ep of EPISODES){
+  const sec=document.createElement("section");sec.id=ep.id;sec.className="ep";
+  const gen=ep.shots.filter(s=>s.src==="gen").length,own=ep.shots.filter(s=>s.src==="own").length;
+  const counts={V:0,P:0,N:0};Object.values(ep.claims).forEach(c=>counts[c.st]++);
+  sec.innerHTML=`<div class="ephead"><span class="eyebrow">Episódio ${ep.n} · ${ep.dur}</span><h2 class="t">${ep.title}: ${ep.sub.toLowerCase()}</h2><p class="lead" style="margin:0">${ep.logline}</p><p class="legend"><span>${ep.shots.length} planos</span><span>${gen} gerados</span><span>${own} em 3D próprio</span><span>Afirmações: ${counts.V} verificadas · ${counts.P} parciais · ${counts.N} sem fonte</span></p></div><div class="shots"></div><h3 style="margin-top:22px">Afirmações clínicas</h3><div class="claims"></div><h3 style="margin-top:18px">Fontes</h3><ol class="srclist"></ol>`;
+  const box=sec.querySelector(".shots");
+  ep.shots.forEach((s,i)=>{const el=document.createElement("article");el.className="shot";
+    el.innerHTML=`<canvas aria-label="Esboço do plano ${i+1}"></canvas><div><div class="top"><h3>${i+1}. ${s.title}</h3><span class="mono muted" style="font-size:13px">${s.tc}</span><span class="src ${s.src}">${LAB[s.src]}</span></div><p class="vo">${s.vo}</p>${s.screen?`<p class="muted" style="font-size:14px">Na tela: ${s.screen}</p>`:""}${s.cl.length?`<p style="margin-top:6px">${s.cl.map(c=>`<span class="cl ${ep.claims[c].st}" title="${ep.claims[c].t}">${c}</span>`).join("")}</p>`:""}<details><summary>${s.src==="gen"?"Prompt do Runway":"Descrição do plano"}</summary><p class="prompt" style="margin-top:6px">${s.prompt}</p></details></div>`;
+    box.appendChild(el);canvases.push([el.querySelector("canvas"),s.kind])});
+  sec.querySelector(".claims").innerHTML=Object.entries(ep.claims).map(([k,c])=>`<div class="row"><span class="cl ${c.st}">${k}</span><div>${c.t} <span class="muted">(${c.s})</span><small>${ST[c.st]}${c.f?" · "+c.f:""}</small></div></div>`).join("");
+  sec.querySelector(".srclist").innerHTML=ep.sources.map(([k,t,u])=>`<li><b class="mono">${k}</b> ${t} <a href="${u}" target="_blank" rel="noopener">link</a></li>`).join("");
+  root.appendChild(sec);
+}
+const redraw=()=>{canvases.forEach(([c,k])=>draw(c,k));portrait()};
+redraw();
+if(document.fonts&&document.fonts.ready)document.fonts.ready.then(redraw);
+addEventListener("resize",portrait);
 </script>
