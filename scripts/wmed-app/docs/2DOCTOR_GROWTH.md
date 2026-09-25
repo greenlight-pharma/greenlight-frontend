@@ -1,3 +1,9 @@
+## 25/09/2026 — Cancelar espera da transcrição
+
+Correção de fricção no ditado existente: botão Cancelar espera junto aos controles de áudio (2Doctor). Cancelamento libera formulário, mantém Blob apenas na aba para nova tentativa/descarte e preserva relato. Controller criado antes da leitura; cancelamento durante leitura não inicia envio, resposta tardia não é anexada, tentativa nova é independente. Cancela espera no navegador, sem garantir interrupção do processamento upstream; API/fornecedor inalterados. Não habilita gravação ambiente.
+
+197 testes passaram, incluindo quatro novos de cancelamento antes/durante leitura, resposta tardia/nova tentativa, sucesso/erro. Build2Doctor e build completo do site passaram. Fixture local com sessão sintética e WAV silencioso: primeira resposta atrasada25s, cancelar→repetir usa mesmo áudio e anexa somente resposta nova; texto prévio preservado após resposta antiga. Segunda conferência390px comprovou controle próximo ao áudio, cancelar→descartar e botões liberados. Sem overflow375/375. Sem teste de voz real, autenticação real, Safari/iPhone físico ou validação clínica. Fixture encerrada, abas55/56 fechadas, viewport restaurado. Publicação pendente; próximo passo deploy isolado, health/asset/interface públicos.
+
 ## 25/09/2026 — Correção de permissão publicada
 
 Fonte0d47b62; deployment9634ecde-c9ec-4e90-85ae-2a11556976c6 SUCCESS no projeto2doctor/serviço2doctor-web. https://www.2doctor.ai/200, healthz200/product2doctor, entrypoint/assets/index-FGrE3CYH.js200 idêntico ao build local. CUA público390 abriu caso clínico e voltou ao chat; width=scroll390, console semerros. Viewport restaurado/aba47 mantida. Nenhum microfone ou API de transcrição real acionado.

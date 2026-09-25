@@ -1,5 +1,6 @@
 import {productConfig} from '../shared/product.mjs';
 import {createMicrophoneRequest, stopMicrophone} from '../shared/microphone-request.mjs';
+import {transcribeCaseAudio} from '../shared/audio-transcription.mjs';
 import {caseAudioType} from '../shared/case-audio.mjs';
 const brandName=productConfig(import.meta.env.VITE_PRODUCT).name;
 const audioRecovery=import.meta.env.VITE_PRODUCT==='2doctor';
@@ -44,7 +45,8 @@ function ClinicalCaseBody({ session, onLogin, onProgress, onPendingChange, activ
     [seconds, setSeconds] = useState(0);
   const [privacyOpen,setPrivacyOpen]=useState(false);
   const [retryAudio,setRetryAudio]=useState(null);
-  const transcribing=useRef(false);
+  const transcribing=useRef(null);
+  const [audioCancelled,setAudioCancelled]=useState(false);
   const [requestingMic,setRequestingMic]=useState(false);
   const microphoneRequest=useRef(createMicrophoneRequest());
   const activeRef=useRef(active);activeRef.current=active;
@@ -125,9 +127,12 @@ function ClinicalCaseBody({ session, onLogin, onProgress, onPendingChange, activ
     }
     setBusy("Transcrevendo áudio…");
     setError("");
-    transcribing.current=true;
+    const controller=new AbortController();
+    transcribing.current=controller;
+    cancel.current=controller;
+    setAudioCancelled(false);
     try {
-      const base64 = await new Promise((resolve, reject) => {
+      const read = () => new Promise((resolve, reject) => {
         const r = new FileReader();
         r.onload = () => resolve(String(r.result).split(",")[1]);
         r.onerror = reject;
@@ -136,21 +141,23 @@ function ClinicalCaseBody({ session, onLogin, onProgress, onPendingChange, activ
       const rawType = (blob.type || "audio/mp4").split(";")[0];
       const type = ({"audio/x-m4a":"audio/m4a","audio/x-wav":"audio/wav"})[rawType] || rawType;
       if(!["audio/mp4","audio/m4a","audio/webm","audio/mpeg","audio/wav","audio/ogg"].includes(type))throw Error("Use áudio M4A, MP4, MP3, WAV, OGG ou WebM.");
-      const d = await request("transcribe", {
-        audioBase64: base64,
-        mimeType: type,
+      const d = await transcribeCaseAudio(blob, {
+        signal:controller.signal, read,
+        send:(audioBase64,signal)=>academicRequest("transcribe",{audioBase64,mimeType:type},signal),
       });
       if (!d.texto)
         throw Error("Não encontramos fala no áudio. Tente novamente.");
-      if (alive.current) {
+      if (alive.current && !controller.signal.aborted) {
         setRelato((old) => (old ? old + "\n" : "") + d.texto);
         setRetryAudio(null);
       }
     } catch (e) {
       if (alive.current && e.name !== "AbortError") setError(e.message);
     } finally {
-      transcribing.current=false;
-      if (alive.current) setBusy("");
+      if(transcribing.current===controller) {
+        transcribing.current=null;
+        if (alive.current) setBusy("");
+      }
     }
   }
   async function record() {
@@ -358,8 +365,9 @@ function ClinicalCaseBody({ session, onLogin, onProgress, onPendingChange, activ
               <small>{relato.length}/5.000</small>
             </div>
             {requestingMic && <p className="module-note" role="status">Autorize o microfone no navegador. A gravação ainda não começou.</p>}
+            {audioRecovery && busy && transcribing.current && <div className="case-audio-retry" role="status"><strong>Transcrevendo áudio…</strong><div><button type="button" onClick={()=>{setAudioCancelled(true);transcribing.current?.abort();}}>Cancelar espera</button></div></div>}
             {audioRecovery && retryAudio && !busy && <div className="case-audio-retry" role="status">
-              <strong>Não foi possível transcrever</strong>
+              <strong>{audioCancelled ? "Espera cancelada" : "Não foi possível transcrever"}</strong>
               <p>O áudio continua nesta aba. Tente novamente sem gravar ou selecionar o arquivo de novo.</p>
               <div><button type="button" onClick={()=>{if(requireLogin())transcribe(retryAudio);}}>Tentar transcrição novamente</button><button type="button" onClick={()=>{setRetryAudio(null);setError('');}}>Descartar áudio</button></div>
               <small>O áudio pendente não fica salvo no histórico. Ao fechar ou atualizar esta aba, ele será perdido.</small>
@@ -480,7 +488,7 @@ function ClinicalCaseBody({ session, onLogin, onProgress, onPendingChange, activ
         {saveError&&<div className="error" role="alert">{saveError} Mantenha esta tela aberta.<button disabled={saveStatus==='saving'} onClick={persist}>Tentar salvar novamente</button></div>}
         <CaseFeedback key={feedback?JSON.stringify(form):'empty'} feedback={feedback} quality={quality} qualityError={qualityError} relato={relato} form={form} busy={!!busy}/>
       </>}
-      {busy && (
+      {busy && !(audioRecovery && transcribing.current) && (
         <p role="status" className="progress">
           <span className="spinner" />
           {busy}
