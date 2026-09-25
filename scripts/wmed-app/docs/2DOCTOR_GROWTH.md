@@ -18,6 +18,9 @@ Removidos do catálogo de módulos, renderizador, home, menu e atalhos por país
 
 131 testes existentes passaram. Build 2Doctor e build completo do site aprovados (aviso pré-existente de chunks grandes). CUA local: link antigo de desafio abriu chat; home e menu Estudos sem desafios em390px, demais bibliotecas preservadas; país EUA mostra Interpretar um estudo e abre a ferramenta (NNT25 no exemplo fictício); tela320px sem overflow horizontal ou erros de console. Scribe não executado, áudio não gravado; login/histórico autenticados, aparelhos físicos e revisão clínica não testados nesta mudança. Publicação isolada pendente da confirmação final. Git anterior a21a90f preserva o estado de rollback, sem intenção de retomar desafios.
 
+
+Publicação da retirada confirmada em25/09/2026: fonte e756f10; deployment2d06df58-462e-4df7-9e3e-cfe39c3d3114 SUCCESS, health200/product2doctor, assetindex-DA-h0-HE.js idêntico ao local e HTTP200. CUA público: reload do link antigo abriu chat; home390px sem Desafio do dia, sem overflow horizontal/erros de console. Viewport restaurado. Nenhuma alteração emAPI/ECG/outrosprodutos. Próximo: protótipo Scribe com relatos fictícios conforme2DOCTOR_SCRIBE.md, sem desafios. Scribe ainda não implementado nem validado. Rollback técnico por reconstruçãoa21a90f, apenas se necessário para incidente; decisão de não retomar desafios permanece.
+
 ## Histórico arquivado — não executar as filas abaixo
 
 # Produto internacional e crescimento por utilidade — 25/09/2026
