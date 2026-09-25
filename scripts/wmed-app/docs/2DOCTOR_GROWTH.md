@@ -1,3 +1,9 @@
+## 25/09/2026 — Retomada de revisão publicada
+
+Fonte4f088d0; deployment edc83e01-f36c-4be2-8c54-2840c6ea01c3 SUCCESS em2doctor/2doctor-web. Raiz https://www.2doctor.ai/200; healthz200/product2doctor; asset/assets/index--U--TgXZ.js200 idêntico ao build local. CUA público390px carregou caso clínico e voltou à conversa, width=scroll390, console sem erros.200 testes existentes/build2Doctor/site completo passaram. Novo comportamento conferido em fixture local com casos fictícios, contagem de chamadas e falha simulada; não houve teste de sessão/casos reais, teclado Safari físico ou validade clínica. Viewport restaurado/aba47 preservada; cadastros sociais58/59 mantidos para continuidade, sem envio.
+
+Próximo executável: quando houver e-mail/público do marketing, continuar cadastro conforme pedido; no produto, verificar uma fricção observável de navegação/busca existente antes de novas mudanças, evitando expandir formulário sem demanda. Não habilitar gravação ambiente. Worktree limpa exceto dist-samu preexistente. Não há necessidade de novas chamadas de IA para validar esta mudança de interface.
+
 ## 25/09/2026 — Retomar revisão sem refazer campos
 
 Fricção comprovada: voltar ao Relato obrigava chamar structure novamente, sobrescrevendo correções manuais mesmo sem mudança no texto.2Doctor passa a guardar na memória do componente o relato da última organização bem-sucedida. Igualdade exata libera Continuar revisão sem nova requisição e preserva campos. Texto alterado mostra Reorganizar relato e aviso de substituição; só atualiza referência após sucesso. Falha não apaga campos anteriores. Novo caso zera referência; abrir caso salvo usa relato correspondente; troca de identidade já remonta componente. Sem persistência nova ou mudança de contrato/API.
