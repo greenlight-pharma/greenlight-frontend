@@ -1,3 +1,11 @@
+## 25/09/2026 — Direção corrigida: simplificar o trabalho do médico
+
+Usuário rejeitou excesso de features, especialmente Exames laboratoriais. Nova prioridade explícita substitui fila de expansão: reduzir etapas e melhorar tarefas existentes. Não recriar comparador de laudos, desafios ou novos módulos sem demanda. Chat central, caso clínico, calculadoras, medicações, condições, acervos e pesquisa continuam. Não confundir protótipo com ferramenta clínica pronta.
+
+Em implementação: retirar Exames laboratoriais do catálogo público (URL antiga retorna chat); retirar menu redundante Ferramentas da conversa, atalhos de país e sugestões da home, preservando três ações principais e preferências de país/idioma no menu; Plantão começa por caso/scores/medicações/condições/imagens, com divisão de plantão ao final; fontes oficiais em Pesquisa; Scribe demonstrativo apenas no Laboratório. Código anterior preservado no Git. API, conteúdo médico, modelos e dados intactos.
+
+Automação evoluir-a-2doctor-internacional atualizada mantendo ACTIVE/cadência30min/thread: corrigir fricção real, não criar features para preencher rodadas; novas features exigem direcionamento. 180 testes passaram. UI local PT/ES em390px e PT320px: menu reorganizado, link antigo Exames abre chat, score abre e retorna preservando rascunho, sem overflow/erro. Cabeçalho inicial encurtado: removidos slogan e texto genérico, marca menor no celular; em320×740 os três atalhos principais ficam inteiros acima da navegação. Build completo final em verificação antes de publicar. Próximo após publicação: auditar tarefas existentes, incluindo distinguir calculadoras completas de exemplos conceituais, sem anunciar estes como ferramentas prontas de plantão.
+
 # Direção atual — utilidade clínica, sem desafios — 25/09/2026
 
 Decisão explícita do usuário: abandonar completamente o formato de desafios. Esta decisão substitui TODAS as filas e sugestões históricas abaixo. Não retomar desafios diários, competições, rankings ou novos quizzes como estratégia de crescimento. Banco de questões e bibliotecas existentes preservados.

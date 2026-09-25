@@ -21,5 +21,5 @@ test('sources use a fixed HTTPS allowlist without dynamic search payloads',()=>{
  const allowed=new Set(['www.gov.br','wiki.datasus.gov.br','extranet.infarmed.pt','dailymed.nlm.nih.gov','products.mhra.gov.uk','cima.aemps.es','www.who.int']);
  assert.equal(new Set(officialSources.map(s=>s.id)).size,officialSources.length);
  for(const s of officialSources){const u=new URL(s.url);assert.equal(u.protocol,'https:');assert.ok(allowed.has(u.hostname));assert.equal(u.search,'');assert.equal(u.username,'');assert.ok(sourceCategories.includes(s.category));assert.equal(s.use,'external-link-only');assert.match(s.reviewedOn,/^\d{4}-\d{2}-\d{2}$/);for(const locale of ['pt-BR','en','es'])assert.ok(sourceText(s.description,locale).length>10);}
- assert.ok(navigationGroups.find(g=>g.id==='plantao').modules.includes('fontes-oficiais'));
+ assert.ok(navigationGroups.find(g=>g.id==='pesquisa').modules.includes('fontes-oficiais'));
 });
