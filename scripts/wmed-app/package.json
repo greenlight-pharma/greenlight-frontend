@@ -8,8 +8,8 @@
     "server": "node --env-file-if-exists=.env.local server/index.mjs",
     "build": "vite build",
     "test": "node --test tests/*.test.mjs",
-    "dev:2doctor": "VITE_PRODUCT=2doctor VITE_BASE=/2doctor/ VITE_PUBLIC_PREVIEW=true vite --host 127.0.0.1 --port 5206 --strictPort",
-    "build:2doctor": "VITE_PRODUCT=2doctor VITE_BASE=/2doctor/ VITE_PUBLIC_PREVIEW=true vite build --outDir dist-2doctor"
+    "dev:2doctor": "VITE_PRODUCT=2doctor VITE_BASE=/ VITE_PUBLIC_PREVIEW=true vite --host 127.0.0.1 --port 5206 --strictPort",
+    "build:2doctor": "VITE_PRODUCT=2doctor VITE_BASE=/ VITE_PUBLIC_PREVIEW=true vite build --outDir dist-2doctor"
   },
   "dependencies": {
     "3dmol": "^2.5.3",

@@ -1,3 +1,9 @@
+## 25/09/2026 — Migração da 2Doctor para a raiz, pronta para publicação
+
+Pedido explícito: remover /2doctor/ da URL e reforçar Scribe como consulta assistida. Build/dev2Doctor passam base /; servidor isolado serve index e assets na raiz. /2doctor, /2doctor/ e /2doctor/index.html redirecionam302 para / preservando query e fragmento pelo navegador. Aliases de assets anteriores preservados para arquivos ainda existentes, sem prometer preservar hashes antigos. API/auth/cookiePath/api/wmed e proxy/acervos inalterados. Recuperação de atualização reconhece entrypoints legados e da raiz, abre nova aba na raiz.
+
+186 testes passaram (rotas, redirects, range/HEAD, host/origin/auth e detecção de versão ajustados), build2Doctor e build completo do site passaram. CUA local: /2doctor/#scores virou /#scores; desktop e390px, menu→medicações carregou214itens, width=scroll375, console semerros. Testes reais de login, mensagens, todas as bibliotecas3D e aparelho físico não executados. Publicação ainda pendente nesta entrada. Scribe: escopo documentado em2DOCTOR_SCRIBE, sem gravação/IA nova habilitada; consulta inteira é prioridade de produto, não expandir catálogo sem demanda. Próximo publicar isoladamente e verificar raiz/domínio/asset/UI.
+
 ## 25/09/2026 — Recuperação após atualização publicada
 
 Fonte c18e4fc; Railway deployment21b216df-326d-4b95-9762-ae63f10b1c74 SUCCESS no projeto2doctor/serviço2doctor-web. healthz200/product2doctor, HTML200, entrypoint index-DpfvKWM2.js200 igual ao build local. CUA público390 confirmou entrypoint novo, scores/busca Glasgow/volta ao chat, width=scroll375, console semerros. Viewport restaurado, aba oficial47 mantida; fixture local encerrada e abas50/51 fechadas.

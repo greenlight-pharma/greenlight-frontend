@@ -58,7 +58,11 @@ export function createApp({root=ROOT,publicOrigin=process.env.PUBLIC_ORIGIN,fetc
     return await handler(req,res);
    }
    if(!['GET','HEAD'].includes(req.method))return json(res,405,{error:'Método não permitido.'});
-   if(path==='/'||path==='/2doctor'){res.writeHead(302,{Location:'/2doctor/','Cache-Control':'no-store'});return res.end();}
+   if(path==='/2doctor'||path==='/2doctor/'||path==='/2doctor/index.html'){
+    // Browsers retain the fragment (e.g. #scores); keep the query as well.
+    const query=(req.url||'').includes('?')?'?'+req.url.split('?').slice(1).join('?'):'';
+    res.writeHead(302,{Location:'/'+query,'Cache-Control':'no-store'});return res.end();
+   }
    if(path.startsWith('/wmed/acervo/')){
     const relative=path.slice('/wmed/acervo/'.length);
     if(!relative||relative.split('/').some(part=>!part||part.startsWith('.')))return json(res,400,{error:'Arquivo inválido.'});
@@ -73,11 +77,8 @@ export function createApp({root=ROOT,publicOrigin=process.env.PUBLIC_ORIGIN,fetc
     if(req.method==='HEAD'||!upstream.body)return res.end();
     await pipeline(Readable.fromWeb(upstream.body),res);return;
    }
-   let relative;
-   if(path.startsWith('/2doctor/'))relative=path.slice('/2doctor/'.length)||'index.html';
-   // Legacy font URLs inside the existing library styles.
-   else if(path.startsWith('/fonts/'))relative=path.slice(1);
-   else return json(res,404,{error:'Página não encontrada.'});
+   // Root build, with compatibility aliases for previously shared asset URLs.
+   const relative=path==='/'?'index.html':path.startsWith('/2doctor/')?path.slice('/2doctor/'.length):path.slice(1);
    if(relative.split('/').some(part=>part.startsWith('.')))return json(res,404,{error:'Arquivo não encontrado.'});
    const file=resolve(absoluteRoot,relative);
    if(!file.startsWith(absoluteRoot+sep))return json(res,404,{error:'Arquivo não encontrado.'});

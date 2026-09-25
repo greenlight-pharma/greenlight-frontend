@@ -14,16 +14,19 @@ async function fixture(t,options={}){
  t.after(async()=>{server.closeAllConnections();await new Promise(resolve=>server.close(resolve));await rm(root,{recursive:true,force:true});});
  return {server,url:`http://127.0.0.1:${server.address().port}`};
 }
-test('Railway serves built app and health, redirects root, never exposes source or env',async t=>{
+test('Railway serves root app and health, redirects legacy pages, never exposes source or env',async t=>{
  const {url}=await fixture(t);
  assert.equal((await fetch(url+'/healthz').then(r=>r.json())).product,'2doctor');
- const redirect=await fetch(url,{redirect:'manual'});assert.equal(redirect.status,302);assert.equal(redirect.headers.get('location'),'/2doctor/');
- const page=await fetch(url+'/2doctor/');assert.match(await page.text(),/2Doctor/);assert.equal(page.headers.get('cache-control'),'no-cache');
+ for(const path of ['/2doctor','/2doctor/','/2doctor/index.html']){
+  const redirect=await fetch(url+path+'?lang=en',{redirect:'manual'});assert.equal(redirect.status,302);assert.equal(redirect.headers.get('location'),'/?lang=en');
+ }
+ const page=await fetch(url);assert.equal(page.status,200);assert.match(await page.text(),/2Doctor/);assert.equal(page.headers.get('cache-control'),'no-cache');
  for(const path of ['/server/railway.mjs','/2doctor/.env','/api/arbitrary','/2doctor/missing.js'])assert.equal((await fetch(url+path)).status,404);
  assert.equal((await fetch(url+'/2doctor/%2e%2e%2fserver%2frailway.mjs')).status,400);
 });
 test('Railway GLB range and HEAD responses return correct bytes and metadata',async t=>{
- const {url}=await fixture(t);const path=url+'/2doctor/models/test.glb';
+ const {url}=await fixture(t);const path=url+'/models/test.glb';
+ assert.equal(await fetch(url+'/2doctor/models/test.glb').then(r=>r.text()),'0123456789');
  const range=await fetch(path,{headers:{Range:'bytes=2-5'}});assert.equal(range.status,206);assert.equal(range.headers.get('content-range'),'bytes 2-5/10');assert.equal(range.headers.get('content-type'),'model/gltf-binary');assert.equal(await range.text(),'2345');
  const head=await fetch(path,{method:'HEAD'});assert.equal(head.headers.get('content-length'),'10');assert.equal(await head.text(),'');
  assert.equal((await fetch(path,{headers:{Range:'bytes=99-100'}})).status,416);
@@ -63,6 +66,7 @@ test('Custom domain redirects only legacy public pages and retains host/origin r
  assert.equal((await request('/api/wmed/auth')).status,400);
  assert.equal((await request('/api/wmed/chat','POST')).status,400);
  assert.equal((await request('/2doctor/','GET','unrelated.example')).status,400);
- assert.equal((await request('/2doctor/','GET','www.2doctor.ai')).status,200);
+ assert.equal((await request('/2doctor/','GET','www.2doctor.ai')).location,'/');
+ assert.equal((await request('/','GET','www.2doctor.ai')).status,200);
  assert.equal((await request('/healthz')).status,200);
 });

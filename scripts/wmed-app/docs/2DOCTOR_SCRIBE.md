@@ -1,3 +1,31 @@
+## 25/09/2026 — Direção confirmada: consulta assistida como núcleo da 2Doctor
+
+O usuário reforçou: referência de experiência Dr Scriba e 2Doctor como apoio ao médico que ouve a consulta, transcreve automaticamente e apresenta hipóteses diagnósticas/condutas para revisão. Isso deve substituir a expansão de utilitários sem demanda como prioridade de produto.
+
+Fluxo alvo simples: Iniciar consulta → pausar/retomar → encerrar → revisar. Uma tela com transcrição progressiva; saída em Registro e Raciocínio. Registro contém somente fatos relatados e decisões efetivamente ditas pelo médico; Raciocínio separa hipóteses e sugestões da IA, com fatos que sustentam, lacunas e fontes verificadas quando houver. Nada sugerido entra como decisão tomada no prontuário. Correção da transcrição deve invalidar sugestões antigas e provocar revisão. Áudio só inicia por ação explícita, com consentimento; interrupção/microfone negado/conexão perdida precisam de estado claro. PT primeiro com arquitetura internacional; não prometer latência ou fidelidade antes de medir.
+
+Levantamento local: academic.mjs já encaminha transcribe ao endpoint existente, interface ClinicalCase limita áudio a3min/2,9MB. Isso não é pipeline de consulta contínua/diarização. Nenhuma gravação ambiente, provedor novo, armazenamento clínico ou chamada de modelo foi habilitada nesta rodada. Jev segue candidato para roteamento, não transcrição/geração clínica, sem acesso API confirmado. Próximo passo concreto: especificar/adaptar protótipo de uma consulta simulada com estados gravação/transcrição/revisão e resultados separados, depois avaliar duração, falantes, negações, doses, correções e falhas antes de dados reais. Não confundir protótipo determinístico já publicado com esse objetivo.
+
+## 25/09/2026 — Dr Scriba inspecionado no Chrome autenticado
+
+Usuário pediu observar Dr Scribe logado; aba identificada como Scriba em https://dash.drscriba.com/. Inspeção somente de interface, sem gravação, upload, submissão, paciente, conta/assinatura alterada ou extração de código. Nenhum registro existente, portanto saída final/precisão/latência/hipóteses não avaliadas.
+
+Observado: menu Novo Registro, Meus Registros, Personalização. Novo registro oferece microfone, telemedicina (áudio da tela e microfone), upload; campos nome, pronomes, modelo Primeira Consulta/Retorno, contexto e botão iniciar. Modelos personalizados: nome, cor, tópicos ordenáveis e instruções, sem salvar. Preferências: nível de detalhe, prosa/estrutura, vocabulário, citações do paciente, abreviações, janela flutuante PIP ao sair da aba. Aviso do próprio produto informa transcrição em blocos que pode levar até1min e alega melhora de precisão; não é resultado medido por nós. Não houve evidência suficiente para afirmar raciocínio diagnóstico integrado.
+
+Aplicação proposta para2Doctor: fluxo único Iniciar consulta → gravação/transcrição → finalizar → revisar/copiar registro. Preferências persistentes do profissional, poucos campos antes de iniciar. Diferencial proposto separado do registro: hipóteses principais, dados a favor/contra, lacunas relevantes e evidências; não inserir sugestões como condutas efetivamente realizadas. Gravação real/fornecedor e apoio clínico continuam dependentes de escopo, privacidade e avaliação. Jev ainda candidato de roteamento, não transcritor nem modelo gerador de hipóteses validado. Referência de experiência, sem copiar marca/layout ou conteúdo proprietário.
+
+Nenhum código deproduto/build/teste/deploy nesta inspeção. Próximo executável: especificar tela Nova consulta e saída única com Registro/Hipóteses, avaliar com áudio fictício antes de ativar dados reais. Estado público2Doctor permanece d5b220a/deployment8370a73b-ceb2-403e-9410-98234e49f70c.
+
+## 25/09/2026 — Conceito do Scribe esclarecido pelo usuário
+
+Usuário quer médico gravando a conversa da consulta e recebendo rapidamente relato organizado e principais hipóteses, com Jev para acelerar. Não é apenas formatador SOAP de exemplos. Registrar como direção de produto; nenhuma gravação real, integração nova ou uso clínico habilitado nesta conversa conceitual.
+
+Proposta: iniciar consulta com confirmação de ciência/consentimento, transcrição progressiva, finalizar, revisar resumo fiel e painel separado de hipóteses (elementos a favor/contra e informação faltante), depois copiar somente nota revisada. Distinguir sempre falas/achados do relato de sugestões da IA; estas não viram decisões do médico ou prescrição automaticamente. Primeira avaliação com consultas simuladas, inclusive negações, interrupções, diferentes falantes e correções de nomes/doses/unidades. Não prometer latência ou precisão antes de medir.
+
+Fontes primárias consultadas25/09: https://docs.typesafe.ai/introduction e https://docs.typesafe.ai/patterns descrevem Jev como decisões estruturadas Choice/Score/Noul, sem geração de texto. Não substitui transcritor, buscador bibliográfico ou modelo generativo de raciocínio. Possível papel a avaliar: roteamento e seleção de etapas; não usar confiança do Jev como probabilidade diagnóstica. https://typesafe.ai/legal/privacy-policy informa hospedagem nos EUA e não treinamento com Input; isso NÃO atende promessa de residência exclusivamente Brasil nem comprova adequação ao tratamento de dados de saúde. AUP também consultada, sem presumir autorização clínica/contratual. Sem credenciais/API Jev verificadas nesta etapa.
+
+Próximo executável após direcionamento: especificar fluxo único de consulta gravada, orçamento de latência, transcritor/diarização e avaliação offline com áudios fictícios. Antes de dados reais, verificar consentimento, retenção, contratos, processamento e residência dos fornecedores, além de avaliação do apoio clínico. Não comprar, enviar contatos ou habilitar pipeline automaticamente. Testes/build/deploy não rodaram: só pesquisa e registro de conceito; versão pública d5b220a permanece.
+
 # 2Doctor Scribe — proposta, 25/09/2026
 
 Status: protótipo determinístico implementado em 25/09/2026, publicado e verificado no serviço isolado2doctor-web. Não é IA ativa nem recurso validado para atendimento. Especificação de produto abaixo permanece como direção futura.
