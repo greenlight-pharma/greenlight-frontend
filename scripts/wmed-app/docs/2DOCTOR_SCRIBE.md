@@ -35,7 +35,11 @@ ClinicalCase.jsx já captura MediaRecorder, trata formatos, limita áudio a 3min
 
 O endpoint atual de feedback gera hipóteses/condutas e não deve ser reutilizado como gerador fiel de documentação. Implementar contrato separado para fatos documentados, trechos de origem, informações ausentes e edição. Não afirmar processamento local/no Brasil: localização, retenção e fornecedores ainda precisam ser mapeados antes de atendimento real.
 
-## Próximo passo executável
+## Contrato e avaliação offline v1 concluídos
+
+Ver [2DOCTOR_SCRIBE_EVALUATION.md](2DOCTOR_SCRIBE_EVALUATION.md).18fixtures/3idiomas, contratoextrativo, CLI e testes; nenhum modelo avaliado. Próxima entrega de produto: demonstraçãoSBAR com relato fictício e fontes, sem geração livre. Integração gerativa depende de escopo e avaliação próprios.
+
+## Plano de avaliação (base histórica, implementada na v1 offline)
 
 Após QA/publicação deste protótipo, preparar contrato e conjunto sintético de avaliação da organização de texto livre: trechos de origem obrigatórios, negações, doses/unidades, correções e dados ausentes. O protótipo atual não mede qualidade de transcrição/modelo. Implementar avaliação offline com respostas simuladas e documentação antes de qualquer ativação gerativa. Passagem SBAR pode ser demonstrada com fixtures próprias em etapa posterior, sem recomendações inventadas. Não mudar API Vytal nem habilitar atendimento real nesta trilha.
 
