@@ -26,3 +26,10 @@ Não testados: aparelhos físicos/Safari nativo, fluxos autenticados, avaliaçã
 ## Publicação e próximo passo
 
 Preparado para publicação isolada em 2doctor-web. Rollback técnico: reconstruir b18ea90 usando scripts/wmed-app e --path-as-root. Próximo: atalhos explícitos do chat às ferramentas existentes, sem enviar conteúdo clínico automaticamente; revisão clínica independente antes de ampliar a ficha para orientação clínica.
+
+## 25/09/2026 — Protótipo laboratorial publicado
+
+Fonte 53adf62; deployment fccabdf6-c0fb-4294-969b-4e2bbf99211c SUCCESS no projeto 2doctor, serviço 2doctor-web. Upload executado em scripts/wmed-app com --path-as-root. Healthz200/product2doctor; página200; asset index-BcTdScwQ.js idêntico ao build local eHTTP200. URL: https://2doctor-web-production.up.railway.app/2doctor/#exames-laboratoriais . CUA público390px: três fichas, exemplo fictício comparado, troca de unidade apagou três números e resultado; client/scroll375 semoverflow, console semerros. Valores limpos e viewport restaurado.
+
+160 testes e builds 2Doctor/site completo aprovados. Protótipo educativo com fonte/licença MedlinePlus documentada, sem revisão clínica independente, não diagnostica nem identifica valores críticos. API Vytal/ECG intactos. Não testados aparelhos físicos, auth/histórico ou pacientes reais. Rollback reconstruindo b18ea90 no diretório correto. Próximo executável: atalhos contextuais explícitos do chat às ferramentas existentes (Scribe, fontes, exames), sem transmitir relato ou inferir diagnóstico. Revisão clínica independente necessária antes de orientação clínica adicional.
+
