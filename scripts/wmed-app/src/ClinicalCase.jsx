@@ -45,6 +45,8 @@ function ClinicalCaseBody({ session, onLogin, onProgress, onPendingChange, activ
     [recording, setRecording] = useState(false),
     [seconds, setSeconds] = useState(0);
   const [privacyOpen,setPrivacyOpen]=useState(false);
+  const [organizedStory,setOrganizedStory]=useState(null);
+  const canResumeReview=audioRecovery && organizedStory!==null && organizedStory===relato;
   const [retryAudio,setRetryAudio]=useState(null);
   const transcribing=useRef(null);
   const [audioCancelled,setAudioCancelled]=useState(false);
@@ -96,6 +98,7 @@ function ClinicalCaseBody({ session, onLogin, onProgress, onPendingChange, activ
       return;
     }
     if (!requireLogin()) return;
+    if(canResumeReview){setError("");setStage("revisao");return;}
     setBusy("Organizando o relato…");
     setError("");
     try {
@@ -106,7 +109,9 @@ function ClinicalCaseBody({ session, onLogin, onProgress, onPendingChange, activ
       const values = empty();
       for (const [k] of fields)
         values[k] = typeof d.campos[k] === "string" ? d.campos[k] : "";
+      if(!alive.current)return;
       setForm(values);
+      setOrganizedStory(relato);
       setStage("revisao");
       setConfirmed(false);
     } catch (e) {
@@ -290,11 +295,13 @@ function ClinicalCaseBody({ session, onLogin, onProgress, onPendingChange, activ
     const data=await caseRequest({action:'open',id});
     const saved=restoreCase(data.caso);
     if(!alive.current)return;
+    setOrganizedStory(saved.relato);
     setRelato(saved.relato);setForm(saved.form);setFeedback(saved.feedback);setQuality(saved.quality);setQualityError('');setStage('feedback');setSaveStatus('saved');setSaveError('');setError('');setHistoryOpen(false);reported.current=true;
   }
   async function fresh(){
     if(pendingSave.current&&!await persist())return;
     setRetryAudio(null);
+    setOrganizedStory(null);
     setRelato('');setForm(empty());setFeedback(null);setQuality(null);setConfirmed(false);setError('');setQualityError('');setSaveStatus('');setSaveError('');reported.current=false;setStage('relato');
   }
   const reviewIssues = audioRecovery ? caseReviewIssues(form) : [];
@@ -386,6 +393,7 @@ function ClinicalCaseBody({ session, onLogin, onProgress, onPendingChange, activ
               continuar. Não grave a voz do paciente.
             </p>
             <button disabled={!!busy||recording||!relato.trim()} onClick={()=>setPrivacyOpen(true)}>Revisar dados pessoais</button>
+            {audioRecovery && organizedStory!==null && <p className="module-note" role="status">{canResumeReview ? "Suas correções nos campos foram mantidas nesta aba." : "O relato mudou. Ao reorganizar, os campos serão refeitos e substituirão as correções anteriores."}</p>}
             <button
               className="module-primary"
               disabled={
@@ -398,7 +406,7 @@ function ClinicalCaseBody({ session, onLogin, onProgress, onPendingChange, activ
               }
               onClick={structure}
             >
-              Organizar meu relato <ArrowRight size={17} />
+              {canResumeReview ? "Continuar revisão" : audioRecovery && organizedStory!==null ? "Reorganizar relato" : "Organizar meu relato"} <ArrowRight size={17} />
             </button>
           </div>
           <aside className="case-guide">
