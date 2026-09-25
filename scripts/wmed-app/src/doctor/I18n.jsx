@@ -1,12 +1,15 @@
+import {loadResponseStyle} from '../../shared/assistant-style.mjs';
 import React,{createContext,useContext,useState,useEffect,useMemo} from 'react';
 import {Globe2} from 'lucide-react';
 import {languages,countries,loadPreferences} from '../../shared/international.mjs';
 import {translate} from '../../shared/i18n/catalog.mjs';
 const Context=createContext({locale:'pt-BR',country:'global',t:text=>text});
 export function I18nProvider({enabled,children}){
+ const [responseStyle,setResponseStyle]=useState(()=>{try{return enabled?loadResponseStyle(window.localStorage):'auto';}catch{return 'auto';}});
+ useEffect(()=>{if(enabled)try{localStorage.setItem('2doctor-response-style',responseStyle);}catch{}},[responseStyle,enabled]);
  const [preferences,setPreferences]=useState(()=>{if(!enabled)return {locale:'pt-BR',country:'global'};try{return loadPreferences(window.localStorage,navigator.language);}catch{return loadPreferences(null,navigator.language);}});
  useEffect(()=>{if(!enabled)return;document.documentElement.lang=preferences.locale;try{localStorage.setItem('2doctor-international',JSON.stringify(preferences));}catch{}},[preferences,enabled]);
- const value=useMemo(()=>({...preferences,setPreferences,t:text=>translate(preferences.locale,text)}),[preferences]);
+ const value=useMemo(()=>({...preferences,setPreferences,responseStyle,setResponseStyle,t:text=>translate(preferences.locale,text)}),[preferences,responseStyle]);
  return <Context.Provider value={value}>{children}</Context.Provider>;
 }
 export const useI18n=()=>useContext(Context);

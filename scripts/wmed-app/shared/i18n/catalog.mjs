@@ -1,5 +1,7 @@
 // Portuguese is the source language. Content libraries are translated separately.
 export const catalog={
+'Dividir plantão':['Split a shift','Dividir guardia'],
+'Horários distribuídos por pessoa':['Time allocation per person','Horarios distribuidos por persona'],
 'Scribe · demonstração':['Scribe · demo','Scribe · demostración'],
 'Do relato à nota organizada':['From an account to a structured note','Del relato a la nota organizada'],
 'Tradução parcial':['Partially translated','Traducción parcial'],
