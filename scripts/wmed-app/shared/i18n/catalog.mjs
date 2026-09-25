@@ -183,6 +183,12 @@ export const catalog={
 'Avaliar MedASR para transcrição revisável. Desempenho em português e espanhol ainda precisa ser medido.':['Evaluate MedASR for reviewable transcription. Portuguese and Spanish performance still needs testing.','Evaluar MedASR para transcripción revisable. Aún debe medirse el rendimiento en portugués y español.'],
 'Diretrizes com contexto local':['Guidelines with local context','Guías con contexto local'],
 'Estudar WHO SMART Guidelines para organizar recomendações com fonte, versão e adaptação por país.':['Explore WHO SMART Guidelines to organize recommendations with sources, versions and country adaptation.','Estudiar WHO SMART Guidelines para organizar recomendaciones con fuentes, versiones y adaptación por país.'],
-'Uma seleção de projetos com potencial para a 2Doctor. Estes recursos ainda não fazem parte do assistente.':['Selected projects with potential for 2Doctor. These capabilities are not yet part of the assistant.','Proyectos seleccionados con potencial para 2Doctor. Estas funciones aún no forman parte del asistente.']
+'Uma seleção de projetos com potencial para a 2Doctor. Estes recursos ainda não fazem parte do assistente.':['Selected projects with potential for 2Doctor. These capabilities are not yet part of the assistant.','Proyectos seleccionados con potencial para 2Doctor. Estas funciones aún no forman parte del asistente.'],
+'Seu país':['Your country','Tu país'],
+'Fontes e caminhos de estudo':['Sources and study paths','Fuentes y caminos de estudio'],
+'Desafio do dia':['Daily challenge','Reto del día'],
+'Aprenda e desafie um colega':['Learn and challenge a colleague','Aprende y reta a un colega'],
+'Interpretar um estudo':['Interpret a study','Interpretar un estudio'],
+'Risco absoluto, relativo e NNT':['Absolute risk, relative risk and NNT','Riesgo absoluto, relativo y NNT']
 };
 export function translate(locale,text){if(locale==='pt-BR')return text;return catalog[text]?.[locale==='es'?1:0]??text;}

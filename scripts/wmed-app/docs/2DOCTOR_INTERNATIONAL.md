@@ -47,6 +47,10 @@ Fontes primárias verificadas:
 - BioEmu: https://github.com/microsoft/bioemu e https://www.microsoft.com/en-us/research/?p=1129428 . Ensembles conformacionais para pesquisa.
 - AlphaGenome Atlas: https://deepmind.google/blog/alphagenome-atlas-a-predictive-map-of-every-possible-dna-letter-change-in-the-human-genome/ ; https://github.com/google-deepmind/alphagenome . Verificar autorização comercial no canal específico, sem supor que licença de código autoriza os outputs/dados.
 
+## Produto e crescimento
+
+A fila mais recente de recursos por país e compartilhamento está em [2DOCTOR_GROWTH.md](2DOCTOR_GROWTH.md). Manter a usabilidade móvel como prioridade.
+
 ## Próxima fila executável
 
 1. Testar chat real PT/EN/ES com a conta de teste, com perguntas fictícias equivalentes; medir idioma, referências, latência, histórico e anexos. Não reutilizar conversas clínicas de usuários como treino por padrão.

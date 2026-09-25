@@ -10,8 +10,8 @@ export function productConfig(id = 'wmed', base = '/') {
 }
 export const navigationGroups = [
   {id:'plantao', label:'Plantão', description:'Apoio à consulta clínica', modules:['caso','scores','medicacoes','condicoes','imagens']},
-  {id:'estudos', label:'Estudos', description:'Do conceito à prática', modules:['questoes','enamed','flashcards','curso-ecg','anatomia','histologia','radiologia','microbiologia','genetica','molecular','evolucao']},
-  {id:'pesquisa', label:'Pesquisa', description:'Fontes e estudos', modules:['pesquisa']},
+  {id:'estudos', label:'Estudos', description:'Do conceito à prática', modules:['pais','desafio','questoes','enamed','flashcards','curso-ecg','anatomia','histologia','radiologia','microbiologia','genetica','molecular','evolucao']},
+  {id:'pesquisa', label:'Pesquisa', description:'Fontes e estudos', modules:['pesquisa','evidencias']},
   {id:'laboratorio', label:'Laboratório de IA', description:'Explore nossos protótipos', modules:['laboratorio','inovacoes']},
 ];
 export function searchNavigation(items, query = '', groups = navigationGroups) {

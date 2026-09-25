@@ -18,6 +18,9 @@ import {
   ClipboardList,
   FlaskConical,
 } from "lucide-react";
+const CountryHub = lazy(()=>import('./doctor/GlobalTools').then(m=>({default:m.CountryHub})));
+const Challenge = lazy(()=>import('./doctor/GlobalTools').then(m=>({default:m.Challenge})));
+const EvidenceLab = lazy(()=>import('./doctor/GlobalTools').then(m=>({default:m.EvidenceLab})));
 const Research = lazy(()=>import('./doctor/Research'));
 const InnovationRadar = lazy(()=>import('./doctor/Research').then(m=>({default:m.InnovationRadar})));
 const Anatomy = lazy(() =>
@@ -47,7 +50,7 @@ const Images = lazy(() =>
   import("./Libraries").then((m) => ({ default: m.Images })),
 );
 export const moduleItems = [
- ...(import.meta.env.VITE_PRODUCT==='2doctor'?[{id:'pesquisa',label:'Fontes e estudos',description:'Artigos e ensaios clínicos',icon:BookOpen},{id:'inovacoes',label:'Radar de inovação',description:'Tecnologias em avaliação',icon:FlaskConical}]:[]),
+ ...(import.meta.env.VITE_PRODUCT==='2doctor'?[{id:'pais',label:'Seu país',description:'Fontes e caminhos de estudo',icon:BookOpen},{id:'desafio',label:'Desafio do dia',description:'Aprenda e desafie um colega',icon:ClipboardList},{id:'evidencias',label:'Interpretar um estudo',description:'Risco absoluto, relativo e NNT',icon:Calculator},{id:'pesquisa',label:'Fontes e estudos',description:'Artigos e ensaios clínicos',icon:BookOpen},{id:'inovacoes',label:'Radar de inovação',description:'Tecnologias em avaliação',icon:FlaskConical}]:[]),
   {
     id: "chat",
     label: "Chat",
@@ -167,7 +170,7 @@ export default function Modules({
             <Suspense
               fallback={<p className="module-loading">Abrindo biblioteca…</p>}
             >
-              {active === "pesquisa" ? <Research/> : active === "inovacoes" ? <InnovationRadar/> : active === "anatomia" ? (
+              {active === "pais" ? <CountryHub/> : active === "desafio" ? <Challenge/> : active === "evidencias" ? <EvidenceLab/> : active === "pesquisa" ? <Research/> : active === "inovacoes" ? <InnovationRadar/> : active === "anatomia" ? (
                 <Anatomy />
               ) : active === "histologia" ? (
                 <Histology />
