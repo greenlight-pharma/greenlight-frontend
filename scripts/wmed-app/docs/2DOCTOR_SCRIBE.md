@@ -1,6 +1,6 @@
 # 2Doctor Scribe — proposta, 25/09/2026
 
-Status: protótipo determinístico implementado em 25/09/2026, publicação pendente. Não é IA ativa nem recurso validado para atendimento. Especificação de produto abaixo permanece como direção futura.
+Status: protótipo determinístico implementado em 25/09/2026, publicado e verificado no serviço isolado2doctor-web. Não é IA ativa nem recurso validado para atendimento. Especificação de produto abaixo permanece como direção futura.
 
 ## Entrega desta rodada
 
@@ -56,4 +56,11 @@ Entrega na worktree2doctor-preview: Plantão → Scribe · demonstração, exclu
 135testes passaram: preservação literal dos trechos, negações/incerteza/correção500→850mg e frequência ausente, ausência de exame/avaliação/plano, estados de revisão/exportação. Build2Doctor e sitecompleto aprovados, aviso pré-existente de chunks grandes. CUA local390/320/1280 PT/EN/ES: organizar, editar, reviewinvalidada, substituição cancelar/confirmar, cópia com texto selecionável, fontes abertas, dark/light, idioma com preservação de nota e recarga, menu Plantão; sem overflow/consoleerros. Camposautoheight corrigidos apósQA, sem rolagem interna dos exemplos. Não rodados aparelho físico, login/auth/fluxos clínicos reais, áudio, avaliação gerativa ou validação clínica externa.
 
 Fonte primáriaMDH para estruturaSOAP, casos/textos autorais sem mídia externa. Próximo: publicar somente2doctor-web a partirscripts/wmed-app comDockerfile/path-as-root; verificarSUCCESS/health/asset/UI. Depois contrato + conjunto sintético de avaliação de texto livre com trechos obrigatórios; NÃO habilitar IA clínica antes de avaliação própria. Rollback por reconstrução958f12c.
+
+
+## 25/09/2026 — Scribe demonstrativo publicado e verificado
+
+Fonte ace3939, deployment a1ae3781-47cd-4341-a9fe-fbe43c7fdb82 SUCCESS exclusivamente no serviço2doctor-web. Health200/product2doctor, assetindex-bsBTGXgA.js igual ao build local eHTTP200. Público: https://2doctor-web-production.up.railway.app/2doctor/#scribe . CUA público390px: organizaçãoSOAP, edição, revisão invalidada após editar, copiar desabilitado, reinício com confirmação; semoverflowhorizontal, campos sem rolagem interna nos exemplos e console semerros. Demo reiniciada e viewport restaurado.
+
+135testes + build2Doctor + sitecompleto aprovados; QA local PT/EN/ES,320/390/1280, claro/escuro e cópia selecionável. Não houve áudio, paciente real, API/modelo novo, persistência clínica ou treinamento. Não testados aparelhos físicos, auth/histórico real, eficácia/validação clínica. É demonstração determinística com2casos fictícios, não Scribe generativo. Próximo executável: contrato e conjunto sintético de avaliação de texto livre com trechos de origem e checagem de negações/doses/unidades/correções, offline e sem ativar fornecedor/modelo. Desafios continuam abandonados. Rollback reconstruindo958f12c comcwd scripts/wmed-app.
 

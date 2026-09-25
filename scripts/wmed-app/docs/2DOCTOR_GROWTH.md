@@ -21,6 +21,21 @@ Removidos do catálogo de módulos, renderizador, home, menu e atalhos por país
 
 Publicação da retirada confirmada em25/09/2026: fonte e756f10; deployment2d06df58-462e-4df7-9e3e-cfe39c3d3114 SUCCESS, health200/product2doctor, assetindex-DA-h0-HE.js idêntico ao local e HTTP200. CUA público: reload do link antigo abriu chat; home390px sem Desafio do dia, sem overflow horizontal/erros de console. Viewport restaurado. Nenhuma alteração emAPI/ECG/outrosprodutos. Próximo: protótipo Scribe com relatos fictícios conforme2DOCTOR_SCRIBE.md, sem desafios. Scribe ainda não implementado nem validado. Rollback técnico por reconstruçãoa21a90f, apenas se necessário para incidente; decisão de não retomar desafios permanece.
 
+## 25/09/2026 — Scribe demonstrativo publicado e verificado
+
+Fonte ace3939, deployment a1ae3781-47cd-4341-a9fe-fbe43c7fdb82 SUCCESS exclusivamente no serviço2doctor-web. Health200/product2doctor, assetindex-bsBTGXgA.js igual ao build local eHTTP200. Público: https://2doctor-web-production.up.railway.app/2doctor/#scribe . CUA público390px: organizaçãoSOAP, edição, revisão invalidada após editar, copiar desabilitado, reinício com confirmação; semoverflowhorizontal, campos sem rolagem interna nos exemplos e console semerros. Demo reiniciada e viewport restaurado.
+
+135testes + build2Doctor + sitecompleto aprovados; QA local PT/EN/ES,320/390/1280, claro/escuro e cópia selecionável. Não houve áudio, paciente real, API/modelo novo, persistência clínica ou treinamento. Não testados aparelhos físicos, auth/histórico real, eficácia/validação clínica. É demonstração determinística com2casos fictícios, não Scribe generativo. Próximo executável: contrato e conjunto sintético de avaliação de texto livre com trechos de origem e checagem de negações/doses/unidades/correções, offline e sem ativar fornecedor/modelo. Desafios continuam abandonados. Rollback reconstruindo958f12c comcwd scripts/wmed-app.
+
+## 25/09/2026 — Scribe demonstrativo pronto para publicação
+
+Entrega na worktree2doctor-preview: Plantão → Scribe · demonstração, exclusivo2Doctor. Dois relatos fictícios autorais PT/EN/ES, organizaçãoSOAP determinística, nota editável, trechos de origem, informação ausente vazia, revisão antes de exportar; edição invalida revisão; exportação marcada como exemplo fictício. Confirmação antes de substituir edições, idioma da nota preservado ao mudarUI e recarga explícita. Rascunho em memória apenas, descartado ao sair com aviso; nenhuma API/modelo/gravação/persistência clínica nova. Chat/banco de questões intactos; desafios continuam abandonados.
+
+135testes passaram: preservação literal dos trechos, negações/incerteza/correção500→850mg e frequência ausente, ausência de exame/avaliação/plano, estados de revisão/exportação. Build2Doctor e sitecompleto aprovados, aviso pré-existente de chunks grandes. CUA local390/320/1280 PT/EN/ES: organizar, editar, reviewinvalidada, substituição cancelar/confirmar, cópia com texto selecionável, fontes abertas, dark/light, idioma com preservação de nota e recarga, menu Plantão; sem overflow/consoleerros. Camposautoheight corrigidos apósQA, sem rolagem interna dos exemplos. Não rodados aparelho físico, login/auth/fluxos clínicos reais, áudio, avaliação gerativa ou validação clínica externa.
+
+Fonte primáriaMDH para estruturaSOAP, casos/textos autorais sem mídia externa. Próximo: publicar somente2doctor-web a partirscripts/wmed-app comDockerfile/path-as-root; verificarSUCCESS/health/asset/UI. Depois contrato + conjunto sintético de avaliação de texto livre com trechos obrigatórios; NÃO habilitar IA clínica antes de avaliação própria. Rollback por reconstrução958f12c.
+
+
 ## Histórico arquivado — não executar as filas abaixo
 
 # Produto internacional e crescimento por utilidade — 25/09/2026
@@ -114,12 +129,4 @@ Adicionados Continuar estudo (primeira questão não respondida), Revisar erros 
 131testes passaram; builds2Doctor e site completo aprovados. Testes de fila/registro original/corrupção/itens inválidos e reentrada após erro. CUA local390/320px e desktop1280: erroNNT, fila1, acertorevisão→fila0, reload mantendo marca e primeira resposta; Continuar levou à próxima inédita; revisão de erro em outra questão atravessou hash corretamente. ES/EN/PT exibiram ações traduzidas, console semerros. Sem aparelho físico, teste autenticado, revisão clínica externa, envio a terceiros ou teste de sincronização multicelular. Publicação pendente da checagem final.
 
 Publicação concluída: fonte7479428; deploymentfd8d3983-3229-4db8-9423-bdfda2111d7d SUCCESS, health200/product2doctor, assetindex-C5llT3fR.js igual ao local. CUA público390px confirmou link estávelNNT, Continuar estudo7, fila vazia desabilitada, sem overflow/consoleerros. Não alterado progresso público durante QA. Rollback por reconstruçãoGitdc4c0c1; usar cwd scripts/wmed-app. Próximo: ampliar desafios autorais por domínio com fontes primárias e revisão de traduções; não copiar exames nem inferir competência clínica das respostas.
-
-## 25/09/2026 — Scribe demonstrativo pronto para publicação
-
-Entrega na worktree2doctor-preview: Plantão → Scribe · demonstração, exclusivo2Doctor. Dois relatos fictícios autorais PT/EN/ES, organizaçãoSOAP determinística, nota editável, trechos de origem, informação ausente vazia, revisão antes de exportar; edição invalida revisão; exportação marcada como exemplo fictício. Confirmação antes de substituir edições, idioma da nota preservado ao mudarUI e recarga explícita. Rascunho em memória apenas, descartado ao sair com aviso; nenhuma API/modelo/gravação/persistência clínica nova. Chat/banco de questões intactos; desafios continuam abandonados.
-
-135testes passaram: preservação literal dos trechos, negações/incerteza/correção500→850mg e frequência ausente, ausência de exame/avaliação/plano, estados de revisão/exportação. Build2Doctor e sitecompleto aprovados, aviso pré-existente de chunks grandes. CUA local390/320/1280 PT/EN/ES: organizar, editar, reviewinvalidada, substituição cancelar/confirmar, cópia com texto selecionável, fontes abertas, dark/light, idioma com preservação de nota e recarga, menu Plantão; sem overflow/consoleerros. Camposautoheight corrigidos apósQA, sem rolagem interna dos exemplos. Não rodados aparelho físico, login/auth/fluxos clínicos reais, áudio, avaliação gerativa ou validação clínica externa.
-
-Fonte primáriaMDH para estruturaSOAP, casos/textos autorais sem mídia externa. Próximo: publicar somente2doctor-web a partirscripts/wmed-app comDockerfile/path-as-root; verificarSUCCESS/health/asset/UI. Depois contrato + conjunto sintético de avaliação de texto livre com trechos obrigatórios; NÃO habilitar IA clínica antes de avaliação própria. Rollback por reconstrução958f12c.
 
