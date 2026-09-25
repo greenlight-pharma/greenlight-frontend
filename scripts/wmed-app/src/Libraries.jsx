@@ -12,6 +12,8 @@ import { SCORES as ORIGINAL_SCORES } from "./academic/scores";
 import { EXTRA_SCORES } from "./academic/extra-scores";
 import Calculators from "./Calculators";
 import { calculators } from "../shared/calculators.mjs";
+import {localizedCalculators} from "../shared/i18n/calculators.mjs";
+import {useI18n, LibraryLanguageNotice} from "./doctor/I18n";
 const SCORES=[...ORIGINAL_SCORES,...EXTRA_SCORES];
 export async function academicRequest(action, payload, signal) {
   const r = await fetch("/api/wmed/academic", {
@@ -44,6 +46,7 @@ function LibraryHead({ title, subtitle, children }) {
   );
 }
 export function Scores() {
+  const {locale,t}=useI18n();
   const [q, setQ] = useState(""),
     [area, setArea] = useState(""),
     [score, setScore] = useState(null),
@@ -54,7 +57,7 @@ export function Scores() {
       norm(s.nome + " " + s.sigla).includes(norm(q)),
   );
   const [calculator,setCalculator]=useState(null);
-  const formulaList=calculators.filter(c=>(!area||c.area===area)&&norm(c.name).includes(norm(q)));
+  const formulaList=localizedCalculators(locale).filter(c=>{const original=calculators.find(o=>o.id===c.id);return (!area||original.area===area)&&norm(c.name+" "+original.name+" "+c.id).includes(norm(q))});
   const complete = score?.criterios.every((c) => answers[c.id] !== undefined);
   const total =
     score?.criterios.reduce((sum, c) => sum + (answers[c.id] || 0), 0) || 0;
@@ -69,6 +72,7 @@ export function Scores() {
           <ArrowLeft size={17} />
           Scores e calculadoras
         </button>
+        <LibraryLanguageNotice />
         <LibraryHead title={score.nome} subtitle={score.descricao} />
         <div className="calculator-layout">
           <div className="criteria-list">
@@ -124,33 +128,31 @@ export function Scores() {
     );
   return (
     <section className="module-page">
-      <LibraryHead
-        title="Scores e calculadoras"
-        subtitle={`${SCORES.length} scores e ${calculators.length} calculadoras. Busque pelo nome ou pela especialidade.`}
-      />
+      <header className="module-heading"><h1>{t('Scores e calculadoras')}</h1><p>{t('Busque pelo nome ou pela especialidade.')}</p></header>
       <div className="library-filters">
         <label>
           <Search size={18} />
           <input
-            aria-label="Buscar score"
+            aria-label={t("Buscar score")}
             placeholder="Glasgow, CHA₂DS₂-VASc…"
             value={q}
             onChange={(e) => setQ(e.target.value)}
           />
         </label>
         <select
-          aria-label="Especialidade"
+          aria-label={t("Especialidade")}
           value={area}
           onChange={(e) => setArea(e.target.value)}
         >
-          <option value="">Todas as especialidades</option>
+          <option value="">{t("Todas as especialidades")}</option>
           {[...new Set([...SCORES.map((s) => s.especialidade),...calculators.map(c=>c.area)])].map((a) => (
-            <option key={a}>{a}</option>
+            <option key={a} value={a}>{t(a)}</option>
           ))}
         </select>
       </div>
-      {formulaList.length>0&&<><h2 className="library-section-title">Calculadoras por fórmula <small>{formulaList.length}</small></h2><div className="resource-grid">{formulaList.map(c=><button className="resource-card" key={c.id} onClick={()=>setCalculator(c.id)}><Calculator size={22}/><small>{c.area}</small><h3>{c.name}</h3><p>{c.summary}</p><span>Calcular ↗</span></button>)}</div></>}
-      <h2 className="library-section-title">Scores por critérios <small>{list.length}</small></h2>
+      {formulaList.length>0&&<><h2 className="library-section-title">{t("Calculadoras por fórmula")} <small>{formulaList.length}</small></h2><div className="resource-grid">{formulaList.map(c=><button className="resource-card" key={c.id} onClick={()=>setCalculator(c.id)}><Calculator size={22}/><small>{c.area}</small><h3>{c.name}</h3><p>{c.summary}</p><span>{t("Calcular")} ↗</span></button>)}</div></>}
+      <h2 className="library-section-title">{t("Scores por critérios")} <small>{list.length}</small></h2>
+      {list.length>0&&<LibraryLanguageNotice />}
       <div className="resource-grid">
         {list.map((s) => (
           <button
@@ -171,7 +173,7 @@ export function Scores() {
           </button>
         ))}
       </div>
-      {!list.length&&!formulaList.length && <p>Nenhum instrumento encontrado.</p>}
+      {!list.length&&!formulaList.length && <p>{t("Nenhum instrumento encontrado.")}</p>}
     </section>
   );
 }

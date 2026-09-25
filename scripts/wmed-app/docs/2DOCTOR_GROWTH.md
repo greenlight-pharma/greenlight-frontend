@@ -46,7 +46,7 @@ Fontes das questões em `shared/challenges.mjs`: Oxford CEBM (NNT e medidas de e
 
 ## Continuidade e limites
 
-Rotina existente `evoluir-a-2doctor-internacional`, nesta conversa, a cada6horas. Atualizar escopo para esta fila sem duplicar tarefa nem prometer execução ininterrupta. Execução local depende de computador ligado/app em execução: https://learn.chatgpt.com/docs/automations?surface=app .
+Rotina existente `evoluir-a-2doctor-internacional`, nesta conversa, a cada30minutos (alterado a pedido do usuário em25/09/2026). Atualizar escopo para esta fila sem duplicar tarefa nem prometer execução ininterrupta. Execução local depende de computador ligado/app em execução: https://learn.chatgpt.com/docs/automations?surface=app .
 
 Publicar somente no projeto Railway2doctor/serviço2doctor-web. API Vytal, ECG, WMed e outros sites preservados. Segredos e dados identificáveis nunca em frontend/Git. Próximo passo desta rodada: QA final, testes/build completo, commit e deploy isolado; registrar resultado abaixo.
 
@@ -67,3 +67,11 @@ Fonte `3bc36ec`, branch `codex/2doctor-preview-20260925`. Deployment Railway `24
 CUA público em 390×844: atalhos na home, desafio carregado, copiar link exibiu URL pública estável da questão, navegação para leitura crítica mostrou NNT25 no exemplo12%→8%, retorno ao chat e diretório com12países. Sem erro de console; calculadora sem overflow horizontal. Não houve envio a destinatário real nem modificação de conta. Limites da seção anterior permanecem.
 
 Rollback por reconstrução do Git `6a80e88` (estado anterior); deployment anterior `bc224585-a083-4f87-85f0-fa8c924b35c8` está REMOVED após substituição, portanto não assumir instância ativa. Próximo passo: tradução e revisão das ferramentas de plantão, expansão de desafios autorais por área e preparação de cartões3D compartilháveis com licença conferida; regressões mobile continuam prioritárias.
+
+## Continuação — calculadoras internacionais e rotina30min
+
+A automação existente foi atualizada pelo app para ACTIVE a cada30minutos, sem duplicação; prompt e limites preservados.
+
+Cinco calculadoras agora têm títulos, campos, opções, resultados, validação, notas e fórmulas de exibição PT/EN/ES: IMC, superfície corporal Mosteller, CKD-EPI2021, ânion gap e Winter. Motor/fórmulas/unidades de entrada/limites intactos; não há conversão automática de unidades por país. Busca aceita nome traduzido, original e identificador; seletor de especialidade mantém valores estáveis. Aviso de português restrito aos scores ainda não traduzidos, menu indica tradução parcial.
+
+128testes passaram, incluindo preservação dos códigos/intervalos clínicos e erros traduzidos por campo. QA local em390/320px: buscaGFR, CKD-EPI60anos/Cr1/masculino=86.16, idade15 rejeitada; trocaEN→ES mantém valores e mostra86,16; Borrar limpa campos e resultado. Sem overflow ou erros de console. Não realizados aparelho físico, validação clínica externa ou fluxos autenticados. NIDDK e CDC consultados; nenhuma nova recomendação/limiar clínico. Build completo aprovado; publicação desta continuação pendente da validação final.
