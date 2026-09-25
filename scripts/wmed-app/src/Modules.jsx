@@ -18,6 +18,8 @@ import {
   ClipboardList,
   FlaskConical,
 } from "lucide-react";
+const Research = lazy(()=>import('./doctor/Research'));
+const InnovationRadar = lazy(()=>import('./doctor/Research').then(m=>({default:m.InnovationRadar})));
 const Anatomy = lazy(() =>
   import("./academic/Experience").then((m) => ({ default: m.Anatomy })),
 );
@@ -45,6 +47,7 @@ const Images = lazy(() =>
   import("./Libraries").then((m) => ({ default: m.Images })),
 );
 export const moduleItems = [
+ ...(import.meta.env.VITE_PRODUCT==='2doctor'?[{id:'pesquisa',label:'Fontes e estudos',description:'Artigos e ensaios clínicos',icon:BookOpen},{id:'inovacoes',label:'Radar de inovação',description:'Tecnologias em avaliação',icon:FlaskConical}]:[]),
   {
     id: "chat",
     label: "Chat",
@@ -164,7 +167,7 @@ export default function Modules({
             <Suspense
               fallback={<p className="module-loading">Abrindo biblioteca…</p>}
             >
-              {active === "anatomia" ? (
+              {active === "pesquisa" ? <Research/> : active === "inovacoes" ? <InnovationRadar/> : active === "anatomia" ? (
                 <Anatomy />
               ) : active === "histologia" ? (
                 <Histology />

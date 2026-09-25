@@ -10,11 +10,12 @@ import {academic} from './academic.mjs';
 import {cases} from './cases.mjs';
 import {history} from './history.mjs';
 import {privacy} from './privacy.mjs';
+import {discovery} from './discovery.mjs';
 import {publicResearch} from './public-research.mjs';
 
 const ROOT=fileURLToPath(new URL('../dist-2doctor/',import.meta.url));
 const MIME={'.html':'text/html; charset=utf-8','.js':'text/javascript; charset=utf-8','.css':'text/css; charset=utf-8','.json':'application/json; charset=utf-8','.svg':'image/svg+xml','.png':'image/png','.jpg':'image/jpeg','.jpeg':'image/jpeg','.webp':'image/webp','.ttf':'font/ttf','.woff2':'font/woff2','.glb':'model/gltf-binary','.gltf':'model/gltf+json','.bin':'application/octet-stream','.pdb':'chemical/x-pdb','.mp4':'video/mp4'};
-const routes={auth,chat,academic,cases,history,privacy,research:publicResearch};
+const routes={auth,chat,academic,cases,history,privacy,discovery,research:publicResearch};
 function json(res,status,value){res.writeHead(status,{'Content-Type':'application/json; charset=utf-8','Cache-Control':'no-store'});res.end(JSON.stringify(value));}
 export function byteRange(header,size){
  if(!header)return null;

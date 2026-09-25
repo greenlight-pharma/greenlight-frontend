@@ -11,10 +11,11 @@ export function productConfig(id = 'wmed', base = '/') {
 export const navigationGroups = [
   {id:'plantao', label:'Plantão', description:'Apoio à consulta clínica', modules:['caso','scores','medicacoes','condicoes','imagens']},
   {id:'estudos', label:'Estudos', description:'Do conceito à prática', modules:['questoes','enamed','flashcards','curso-ecg','anatomia','histologia','radiologia','microbiologia','genetica','molecular','evolucao']},
-  {id:'laboratorio', label:'Laboratório de IA', description:'Explore nossos protótipos', modules:['laboratorio']},
+  {id:'pesquisa', label:'Pesquisa', description:'Fontes e estudos', modules:['pesquisa']},
+  {id:'laboratorio', label:'Laboratório de IA', description:'Explore nossos protótipos', modules:['laboratorio','inovacoes']},
 ];
-export function searchNavigation(items, query = '') {
+export function searchNavigation(items, query = '', groups = navigationGroups) {
   const normalize = text => text.normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase();
   const value = normalize(query.trim());
-  return navigationGroups.map(group => ({...group, items:group.modules.map(id => items.find(item=>item.id===id)).filter(Boolean).filter(item=>!value||normalize(`${item.label} ${item.description} ${group.label}`).includes(value))})).filter(group=>group.items.length);
+  return groups.map(group => ({...group, items:group.modules.map(id => items.find(item=>item.id===id)).filter(Boolean).filter(item=>!value||normalize(`${item.label} ${item.description} ${group.label}`).includes(value))})).filter(group=>group.items.length);
 }
