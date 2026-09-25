@@ -36,6 +36,10 @@ Entrega na worktree2doctor-preview: Plantão → Scribe · demonstração, exclu
 Fonte primáriaMDH para estruturaSOAP, casos/textos autorais sem mídia externa. Próximo: publicar somente2doctor-web a partirscripts/wmed-app comDockerfile/path-as-root; verificarSUCCESS/health/asset/UI. Depois contrato + conjunto sintético de avaliação de texto livre com trechos obrigatórios; NÃO habilitar IA clínica antes de avaliação própria. Rollback por reconstrução958f12c.
 
 
+## Oportunidade em avaliação: FleXray
+
+Ver [2DOCTOR_FLEXRAY.md](2DOCTOR_FLEXRAY.md). PesosNC: não integrar ao produto comercial sem licença/autorização; nenhuma inferência liberada. Não substitui a filaScribe.
+
 ## Histórico arquivado — não executar as filas abaixo
 
 # Produto internacional e crescimento por utilidade — 25/09/2026
