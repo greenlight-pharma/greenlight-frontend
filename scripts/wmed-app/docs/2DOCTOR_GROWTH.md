@@ -1,3 +1,9 @@
+## 25/09/2026 — Recuperação após atualização publicada
+
+Fonte c18e4fc; Railway deployment21b216df-326d-4b95-9762-ae63f10b1c74 SUCCESS no projeto2doctor/serviço2doctor-web. healthz200/product2doctor, HTML200, entrypoint index-DpfvKWM2.js200 igual ao build local. CUA público390 confirmou entrypoint novo, scores/busca Glasgow/volta ao chat, width=scroll375, console semerros. Viewport restaurado, aba oficial47 mantida; fixture local encerrada e abas50/51 fechadas.
+
+186 testes + build2Doctor + build completo aprovados. Fluxo de erro reproduzido end-to-end só na fixture local (arquivos públicos rotacionados, nova aba funcional, rascunho original preservado), sem provocar erro em produção. Limites: não transfere conversas entre abas, não recupera campos de componente que já caiu, não corrige código de abas abertas antes deste deploy sem atualização inicial, não testado login real entre abas ou aparelho físico. Nenhuma nova persistência, fornecedor, modelo ou conteúdo clínico. Próximo executável: revisar duplicação e identificação dos scores conceituais versus instrumentos existentes, preservando acervo e sem alterar algoritmos sem fontes/validação. Scribe doc e dist-samu preexistentes preservados.
+
 ## 25/09/2026 — Recuperação de aba antiga, verificada localmente
 
 Fricção reproduzida: após publicação, aba aberta tenta baixar chunk removido e retry não resolve. Correção exclusiva da recuperação2Doctor: diante de falha de import, compara nome do entrypoint público atual com o carregado, GET sem credenciais/cache e timeout5s. Só quando diferença confirmada mostra Nova versão disponível e link explícito Nova aba para a mesma ferramenta, noopener/noreferrer. Não recarrega automaticamente, não copia nem persiste conversa/rascunhos; aba original permanece. Rede falha/página desconhecida/rendererror mantêm recuperação anterior, sem alegar atualização.
