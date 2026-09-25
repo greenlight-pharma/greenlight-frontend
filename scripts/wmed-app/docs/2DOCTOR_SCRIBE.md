@@ -81,3 +81,11 @@ Estrutura consultada na fonte primária AHRQ TeamSTEPPS: https://www.ahrq.gov/te
 CUA local: PT/EN/ES, 320/390/1280px, claro/escuro; ordem SBAR, origem, revisão/cópia, edição invalidando revisão, cancelar/confirmar substituição e SOAP preservado. 320px: scrollWidth=clientWidth305; campos sem rolagem interna; console sem erros. Sem teste em aparelho físico, login real, áudio, modelo gerativo ou revisão clínica/terminológica independente. Publicação ainda pendente no momento deste registro.
 
 Próximo: publicar serviço isolado e verificar SUCCESS/health/asset/UI. Depois especificar atalhos contextuais do chat para recursos existentes e manter avaliação Scribe antes de geração livre.
+
+
+## 25/09/2026 — SBAR publicado e verificado
+
+Fonte98bcbc6, deployment598e7fab-c587-4d5e-822f-ccf72e6b3dbf SUCCESS somente2doctor-web; deploy pelo cwd scripts/wmed-app com --path-as-root. healthz200/product2doctor, asset público index-L7VqVs4a.js HTTP200 idêntico ao buildlocal. https://2doctor-web-production.up.railway.app/2doctor/#scribe . CUA público390px confirmou botões SOAP/SBAR, terceiro exemplo, ordem S/B/A/R, texto preservado, cópia bloqueada até revisão; scrollWidth=clientWidth375, campos sem rolagem interna e console sem erros. Viewport restaurado.
+
+148 testes, build2Doctor e sitecompleto aprovados. Não realizados aparelho físico, autenticação real, áudio, modelo, revisão clínica/terminológica externa. Demonstração fixa, não Scribe gerativo validado. API Vytal/ECG intactos. Rollback por reconstrução927fc73 no cwdapp. Buildcompleto gerou apenas saída não rastreada medico-app/dist-samu; nenhuma fonte desse produto alterada. Próximo executável: especificar atalhos contextuais chat→scores/bibliotecas/fontes com seleção explícita e testes de navegação; manter avaliação Scribe antes de geração livre. Desafios seguem abandonados.
+
