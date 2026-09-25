@@ -1,3 +1,25 @@
+# Direção atual — utilidade clínica, sem desafios — 25/09/2026
+
+Decisão explícita do usuário: abandonar completamente o formato de desafios. Esta decisão substitui TODAS as filas e sugestões históricas abaixo. Não retomar desafios diários, competições, rankings ou novos quizzes como estratégia de crescimento. Banco de questões e bibliotecas existentes preservados.
+
+## Fila ativa
+
+1. Usabilidade móvel e regressões sempre primeiro.
+2. Scribe: especificação em [2DOCTOR_SCRIBE.md](2DOCTOR_SCRIBE.md). Próxima entrega: protótipo de documentação com relatos fictícios, texto/ditado após atendimento, nota editável e rastreabilidade ao relato. Não confundir com feedback educativo de casos.
+3. Passagem de plantão SBAR e encaminhamento derivados exclusivamente do relato e plano confirmados pelo profissional.
+4. Evidências relacionadas à dúvida, com fontes verificáveis; explicação visual 3D para ensino, selecionada pelo profissional.
+5. Tradução PT/EN/ES de ferramentas existentes, terminologia e modelos documentais por país. Medir utilidade por conclusão da tarefa e correções da nota, nunca inferir competência clínica.
+
+## Retirada dos desafios
+
+Removidos do catálogo de módulos, renderizador, home, menu e atalhos por país. Links antigos resolvem para o chat pelo fallback existente. Código e dados locais anteriores preservados apenas como histórico; não há entrada pública para o recurso. Automação existente permanece a cada 30 minutos, com esta decisão explícita. Scribe é proposta, não recurso clínico validado ou publicado.
+
+## Verificação da retirada
+
+131 testes existentes passaram. Build 2Doctor e build completo do site aprovados (aviso pré-existente de chunks grandes). CUA local: link antigo de desafio abriu chat; home e menu Estudos sem desafios em390px, demais bibliotecas preservadas; país EUA mostra Interpretar um estudo e abre a ferramenta (NNT25 no exemplo fictício); tela320px sem overflow horizontal ou erros de console. Scribe não executado, áudio não gravado; login/histórico autenticados, aparelhos físicos e revisão clínica não testados nesta mudança. Publicação isolada pendente da confirmação final. Git anterior a21a90f preserva o estado de rollback, sem intenção de retomar desafios.
+
+## Histórico arquivado — não executar as filas abaixo
+
 # Produto internacional e crescimento por utilidade — 25/09/2026
 
 ## Entrega desta rodada
