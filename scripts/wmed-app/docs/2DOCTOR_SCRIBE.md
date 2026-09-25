@@ -1,6 +1,16 @@
 # 2Doctor Scribe — proposta, 25/09/2026
 
-Status: especificação de produto. Não implementado, não validado para atendimento. Prioridade proposta após abandono completo dos desafios pelo usuário.
+Status: protótipo determinístico implementado em 25/09/2026, publicação pendente. Não é IA ativa nem recurso validado para atendimento. Especificação de produto abaixo permanece como direção futura.
+
+## Entrega desta rodada
+
+Entrada em Plantão → Scribe · demonstração, exclusiva do build 2Doctor. Dois relatos inteiramente fictícios/autoria própria em PT/EN/ES; organização SOAP predefinida preservando literalmente os trechos, nota editável, origem por seção, campos ausentes vazios, revisão obrigatória antes de copiar e exportação rotulada EXEMPLO FICTÍCIO. Qualquer edição revoga revisão; trocar/reiniciar exemplo protege alterações com confirmação. Trocar idioma da interface preserva a nota e oferece recarga explícita do exemplo.
+
+Desktop: relato e nota lado a lado. Celular: botões Relato/Nota, texto16px e campos com altura automática. Rascunho só em memória, descartado ao sair/recarregar e com aviso visível. Nenhum fetch do Scribe, banco, API, modelo, gravação, armazenamento local ou treinamento. Não processa relato livre por IA: os exemplos são demonstrações fixas; não anunciar transcrição automática ou qualidade clínica.
+
+Fonte primária para nomenclatura do formato, consultada em25/09/2026: Maryland Department of Health, https://health.maryland.gov/bacc/Pages/Professional-Documentation-(SOAP-Notes).aspx . Usada somente a estrutura geral SOAP, sem copiar notas, recomendar tratamento ou aplicar regras de faturamento daquele conselho a outros países. Casos fictícios originais, sem mídia/licença externa incorporada.
+
+Testes verificam fidelidade literal e preservação de negação/incerteza/correção de dose, ausência de exame e plano, exportação bloqueada antes da revisão e invalidação após edição. Esses testes são de integridade do protótipo, não avaliação de modelo clínico.
 
 ## Experiência recomendada
 
@@ -27,7 +37,7 @@ O endpoint atual de feedback gera hipóteses/condutas e não deve ser reutilizad
 
 ## Próximo passo executável
 
-Construir protótipo claramente identificado com relatos fictícios em PT/EN/ES e nota editável. Avaliar com conjunto sintético incluindo negações, medicamentos/doses, unidades, incerteza, correções verbais e dados ausentes. Primeiro validar fluxo móvel e documentação por regras/fixtures; integração gerativa exige avaliação própria, sem mudar a API Vytal nesta trilha.
+Após QA/publicação deste protótipo, preparar contrato e conjunto sintético de avaliação da organização de texto livre: trechos de origem obrigatórios, negações, doses/unidades, correções e dados ausentes. O protótipo atual não mede qualidade de transcrição/modelo. Implementar avaliação offline com respostas simuladas e documentação antes de qualquer ativação gerativa. Passagem SBAR pode ser demonstrada com fixtures próprias em etapa posterior, sem recomendações inventadas. Não mudar API Vytal nem habilitar atendimento real nesta trilha.
 
 Critérios antes de habilitar uso clínico: rastreabilidade de cada afirmação ao relato, taxa de omissões/invenções revisada por profissional, fidelidade de negações/doses e erros críticos, revisão por idioma, autorização/consentimento, retenção e controles de acesso definidos, comportamento em falhas e cancelamento, exportação só após revisão. Teste simulado não é validação clínica. Dados clínicos não serão usados para treinamento.
 
@@ -38,3 +48,12 @@ Critérios antes de habilitar uso clínico: rastreabilidade de cada afirmação 
 - Nabla, avaliação de documentação: https://nabla.com/whitepapers/ai-for-clinical-documentation
 
 São descrições dos fornecedores, não prova de desempenho da 2Doctor. Não foram copiados modelos proprietários, comprados serviços ou enviados contatos. A proposta combina documentação revisável, evidências e acervo 3D existente; utilidade e disposição a pagar ainda precisam ser testadas com usuários.
+
+## 25/09/2026 — Scribe demonstrativo pronto para publicação
+
+Entrega na worktree2doctor-preview: Plantão → Scribe · demonstração, exclusivo2Doctor. Dois relatos fictícios autorais PT/EN/ES, organizaçãoSOAP determinística, nota editável, trechos de origem, informação ausente vazia, revisão antes de exportar; edição invalida revisão; exportação marcada como exemplo fictício. Confirmação antes de substituir edições, idioma da nota preservado ao mudarUI e recarga explícita. Rascunho em memória apenas, descartado ao sair com aviso; nenhuma API/modelo/gravação/persistência clínica nova. Chat/banco de questões intactos; desafios continuam abandonados.
+
+135testes passaram: preservação literal dos trechos, negações/incerteza/correção500→850mg e frequência ausente, ausência de exame/avaliação/plano, estados de revisão/exportação. Build2Doctor e sitecompleto aprovados, aviso pré-existente de chunks grandes. CUA local390/320/1280 PT/EN/ES: organizar, editar, reviewinvalidada, substituição cancelar/confirmar, cópia com texto selecionável, fontes abertas, dark/light, idioma com preservação de nota e recarga, menu Plantão; sem overflow/consoleerros. Camposautoheight corrigidos apósQA, sem rolagem interna dos exemplos. Não rodados aparelho físico, login/auth/fluxos clínicos reais, áudio, avaliação gerativa ou validação clínica externa.
+
+Fonte primáriaMDH para estruturaSOAP, casos/textos autorais sem mídia externa. Próximo: publicar somente2doctor-web a partirscripts/wmed-app comDockerfile/path-as-root; verificarSUCCESS/health/asset/UI. Depois contrato + conjunto sintético de avaliação de texto livre com trechos obrigatórios; NÃO habilitar IA clínica antes de avaliação própria. Rollback por reconstrução958f12c.
+
