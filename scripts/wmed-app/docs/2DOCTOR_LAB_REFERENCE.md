@@ -43,3 +43,11 @@ Fonte primária conferida25/09/2026: https://medlineplus.gov/lab-tests/sodium-bl
 
 171 testes/build2Doctor/sitecompleto aprovados; aviso habitual chunksgrandes. Novo teste cobre limites inclusivos nas duas unidades, vírgula, faixa fornecida diferente, unidade inválida e limpeza. CUA local PT/EN/ES320/390/1280, claro/escuro, exemplo,134,999 abaixo, edição invalidaresultado, trocaunidade/exame limpa números; fonteES correta, semoverflow(305/305 em320), console semerro. Não testados aparelhosfísicos/Safari/VoiceOver, autenticação/chat/anexos ou revisão clínica/terminológica externa. Próximo: commit/publicar só2doctor-web pelo cwdapp/path-as-root; exigirSUCCESS/health/asset/UI. Rollbacke5aa755. Depois auditar calculadoras existentes de ânion gap e Winter e especificar fluxo educativo de gasometria, com domínios/limites/fontes/testes antes de liberar nova interpretação.
 
+
+
+## 25/09/2026 — Sódio publicado e conferido
+
+Fontea91742a, deploymentb9f0c7b0-69df-40b8-9c21-9c3aa74f830a SUCCESS sóprojeto2doctor/serviço2doctor-web, cwdapp/path-as-root eDockerfile. Health200/product2doctor, página200, assetindex-Cj1PIocF.js igual ao local/HTTP200. CUA público390px: quartaopção sódio, exemplo fictício140/135–145 comparado, limiteeducativo visível, client/scroll375, console semerro. Números limpos, viewportrestaurado eaba41 mantida. ServidorQA5211 encerrado.
+
+171 testes ebuilds2Doctor/sitecompleto passaram. ConteúdoMedlinePlus e licençaMedicalTest conferidos; PT/EN/ES, fonteES localizada, versione data explícitas. Protótipo sem revisão clínica independente. Não testados aparelhosfísicos/Safari/VoiceOver, autenticação/chat/anexos ou uso real clínico. API Vytal/ECG intactos; sem novos modelos/persistência. Git apenas saída preexistente não rastreada medico-app/dist-samu. Rollbacke5aa755. Próximo: auditar ânion gap/Winter existentes e especificar fluxo educativo de gasometria com limites, fontes e testes antes de nova interpretação.
+
