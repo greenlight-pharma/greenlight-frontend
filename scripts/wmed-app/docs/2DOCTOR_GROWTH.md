@@ -1,3 +1,9 @@
+## 25/09/2026 — Correção de permissão publicada
+
+Fonte0d47b62; deployment9634ecde-c9ec-4e90-85ae-2a11556976c6 SUCCESS no projeto2doctor/serviço2doctor-web. https://www.2doctor.ai/200, healthz200/product2doctor, entrypoint/assets/index-FGrE3CYH.js200 idêntico ao build local. CUA público390 abriu caso clínico e voltou ao chat; width=scroll390, console semerros. Viewport restaurado/aba47 mantida. Nenhum microfone ou API de transcrição real acionado.
+
+193 testes e builds2Doctor/site completo passaram. Corrida de permissão testada com dispositivos sintéticos locais: autorização após saída não inicia gravação e libera stream; recusa destrava controles; nova autorização inicia simulador e Parar libera tracks. Teste móvel de retorno/repetição foi limitado por sobreposição do painel da fixture, completado no desktop; não alegar validação em Safari/iPhone físico. Não testados sessão real, áudio/voz real, fidelidade clínica ou fornecedor. API/ECG/outrosprodutos intactos. Próximo passo executável: revisar a continuidade da transcrição quando usuário sai/volta ao caso e clareza de estados pendentes, ou protótipo de consulta assistida simulada segundo direção documentada; não habilitar gravação ambiente/modelos automaticamente. Worktree limpa exceto dist-samu preexistente.
+
 ## 25/09/2026 — Permissão do microfone: corrida corrigida
 
 Código permitia múltiplos getUserMedia enquanto aguardava permissão e verificava apenas montagem, não tela ativa, após resolução. Correção2Doctor: pedido único com ticket, estado Aguardando microfone e orientação de que ainda não grava; sair da tela/desmontar invalida ticket. Resposta tardia libera somente as tracks recebidas e não inicia MediaRecorder, não sobrescreve stream novo nem gera erro atrasado em nova tela. Conclusão antiga não destrava pedido mais recente. Stream capturado por cada gravação é encerrado pelo próprio onstop/catch. Não muda fornecedor/modelo/limite/gravação ambiente.
