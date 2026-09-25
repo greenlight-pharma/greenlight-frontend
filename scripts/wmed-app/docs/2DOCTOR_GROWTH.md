@@ -59,3 +59,11 @@ CUA local: 390×844 e320×568, diretório com seleçãoUS independente do idioma
 Não testados: iPhone/Android físicos, teclado nativo, WebShare enviado a destinatário real, login/chat/histórico autenticados (não mudaram), revisão clínica/terminológica externa ou métricas reais de crescimento.
 
 Heartbeat existente atualizado com esta fila; mantidoACTIVE a cada6horas, sem duplicação, após consulta à documentação oficial. Não é execução ininterrupta garantida.
+
+## Publicação verificada — 25/09/2026
+
+Fonte `3bc36ec`, branch `codex/2doctor-preview-20260925`. Deployment Railway `24d1e8cb-7d7e-467e-b915-f31267071ea5` SUCCESS, somente serviço `2doctor-web`. Público: https://2doctor-web-production.up.railway.app/2doctor/ . Health OK e HTML com `index-0F2UPUUc.js`, igual ao build aprovado.
+
+CUA público em 390×844: atalhos na home, desafio carregado, copiar link exibiu URL pública estável da questão, navegação para leitura crítica mostrou NNT25 no exemplo12%→8%, retorno ao chat e diretório com12países. Sem erro de console; calculadora sem overflow horizontal. Não houve envio a destinatário real nem modificação de conta. Limites da seção anterior permanecem.
+
+Rollback por reconstrução do Git `6a80e88` (estado anterior); deployment anterior `bc224585-a083-4f87-85f0-fa8c924b35c8` está REMOVED após substituição, portanto não assumir instância ativa. Próximo passo: tradução e revisão das ferramentas de plantão, expansão de desafios autorais por área e preparação de cartões3D compartilháveis com licença conferida; regressões mobile continuam prioritárias.
