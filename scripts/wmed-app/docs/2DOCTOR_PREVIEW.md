@@ -1,5 +1,7 @@
 # 2Doctor — prévia de identidade e navegação
 
+**Publicada em 25/09/2026:** https://2doctor-web-production.up.railway.app/2doctor/ . Deploy Railway `cfc2f7da-3688-412f-8bbd-e4d62eeea7ed` com status SUCCESS. O registro local abaixo descreve a etapa anterior; o Railway está detalhado no final.
+
 Branch isolada `codex/2doctor-preview-20260925`, criada de `origin/main` em `c932cce`. O checkout e a versão publicada de WMed foram preservados. O Git dessa base permite recuperar integralmente os arquivos anteriores.
 
 ## Executar
@@ -41,3 +43,11 @@ URL: https://2doctor-web-production.up.railway.app/2doctor/
 - A configuração railway.json é suportada atualmente; CLI avisa que deve migrar para Infrastructure as Code antes de 01/12/2026. Não confundir esse aviso com falha de build.
 
 Rollback: usar a implantação anterior bem-sucedida no Railway; esta é a primeira versão deste serviço. O WMed e a API Vytal não são alterados por esse deploy.
+
+### Verificação pública em 25/09/2026
+
+- HTTPS e healthcheck 200; página inicial, favicon, status, auth anônima e catálogo anatômico 200.
+- Chat e histórico sem sessão retornam 401 (sem consumir IA).
+- Navegador em 390×844: menu pesquisável, modelo E. coli 3D carregado, retorno ao chat e modal de login conferidos.
+- Login com credencial real, geração/salvamento na conta, microfone físico e execução em iPhone real NÃO retestados.
+- O primeiro upload falhou por conexão TLS e gerou uma implantação FAILED; nova tentativa concluiu e está SUCCESS. Não foi relaxada a verificação TLS.
