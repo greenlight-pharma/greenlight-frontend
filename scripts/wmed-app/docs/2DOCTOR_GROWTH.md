@@ -6,10 +6,11 @@ Decisão explícita do usuário: abandonar completamente o formato de desafios. 
 
 1. Usabilidade móvel e regressões sempre primeiro.
 2. Cobertura funcional WeMEDS solicitada pelo usuário: matriz completa em [2DOCTOR_WEMEDS.md](2DOCTOR_WEMEDS.md). Primeira entrega: estilos de resposta e divisão de plantão PT/EN/ES. Próximo: fontes regionais e fichas versionadas, seguindo a ordem e limites dessa matriz; não copiar acervo proprietário. As demais trilhas abaixo permanecem relevantes.
-2. Scribe: especificação em [2DOCTOR_SCRIBE.md](2DOCTOR_SCRIBE.md). Protótipo determinístico SOAP implementado; contrato extrativo e avaliação offline v1 concluídos (2DOCTOR_SCRIBE_EVALUATION.md). Demonstração SBAR com fatos/recomendações já informados implementada; geração livre segue não habilitada. Próximo: atalhos contextuais do chat para recursos existentes, com seleção explícita e sem inferir diagnóstico. Não confundir com feedback educativo de casos.
-3. Passagem de plantão SBAR e encaminhamento derivados exclusivamente do relato e plano confirmados pelo profissional.
-4. Evidências relacionadas à dúvida, com fontes verificáveis; explicação visual 3D para ensino, selecionada pelo profissional.
-5. Tradução PT/EN/ES de ferramentas existentes, terminologia e modelos documentais por país. Medir utilidade por conclusão da tarefa e correções da nota, nunca inferir competência clínica.
+3. Scribe: especificação em [2DOCTOR_SCRIBE.md](2DOCTOR_SCRIBE.md). Protótipo determinístico SOAP implementado; contrato extrativo e avaliação offline v1 concluídos (2DOCTOR_SCRIBE_EVALUATION.md). Demonstração SBAR com fatos/recomendações já informados implementada; geração livre segue não habilitada. Próximo: atalhos contextuais do chat para recursos existentes, com seleção explícita e sem inferir diagnóstico. Não confundir com feedback educativo de casos.
+4. Passagem de plantão SBAR e encaminhamento derivados exclusivamente do relato e plano confirmados pelo profissional.
+5. Evidências relacionadas à dúvida, com fontes verificáveis; explicação visual 3D para ensino, selecionada pelo profissional.
+6. Tradução PT/EN/ES de ferramentas existentes, terminologia e modelos documentais por país. Medir utilidade por conclusão da tarefa e correções da nota, nunca inferir competência clínica.
+
 
 ## Retirada dos desafios
 

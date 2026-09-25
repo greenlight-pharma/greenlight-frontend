@@ -72,3 +72,10 @@ Para contexto clínico próprio futuro, definir contrato isolado da 2Doctor, ava
 ## Verificação da primeira entrega
 
 153 testes, build2Doctor e build completo do site passaram. CUA em320/390/1280px, PT/EN/ES e claro/escuro: menu, persistência do estilo, divisão noturna/com resto de minuto, campos vazios, edição e cópia. Sem overflow horizontal ou erros de console. Não houve teste com aparelho físico nem avaliação de respostas reais: upstream mock comprova transporte e preservação do contrato, não qualidade clínica. Publicação ainda pendente nesta entrada.
+
+## 25/09/2026 — Primeira entrega WeMEDS publicada
+
+Fonte7695495, deploymentf278636f-0fb2-48c6-b92a-8555eabe95dc SUCCESS no serviço isolado2doctor-web, projeto2doctor. Cwd scripts/wmed-app, --path-as-root, Dockerfile confirmado. healthz200/product2doctor; página200; assetindex-B1yge6lO.js igual ao local e200. CUA público apósreload confirmou Automático/Consulta rápida/Estudar e Plantão→Dividir plantão; 19–07h dividido em3partes de4h, indicação de dia seguinte; sem overflow horizontal ou erros de console. Preferência pública restaurada paraAutomático e viewport restaurado. URL https://2doctor-web-production.up.railway.app/2doctor/ .
+
+153testes, build2Doctor e sitecompleto aprovados. Prompts testados comupstreammock; respostas reais/autenticação/aparelho físico/revisão clínica externa não testados. Não há paridade completaWeMEDS: matriz e fila em2DOCTOR_WEMEDS.md. Próximo: consulta a fontes regionais e fichas versionadas, com atalhos contextuais; plano clínico próprio deve ser contrato isolado/avaliado, sem alterar tutorVytal. Nenhum modelo novo nem alteraçãoAPI/ECG/outrosprodutos. Rollback reconstruindo98bcbc6 somente nocwdapp. Desafios continuam abandonados.
+
