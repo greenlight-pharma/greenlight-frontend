@@ -18,7 +18,7 @@ function request(body){return [{method:'POST',body,headers:{host:'2doctor.exampl
 test('Chosen presentation reaches the existing model with original question and history intact',async()=>{
  for(const responseStyle of ['auto','concise','study']){
   const [req,res]=request({question:'Compare two concepts',locale:'en',country:'US',responseStyle,history:[{role:'assistant',content:'Earlier reply'}]});
-  let called=false;await chat(req,res,{fetchImpl:async(url,opts)=>{called=true;assert.match(url,/tutor\/chat-stream$/);const h=JSON.parse(opts.body).historico;assert.equal(h[0].content,'Earlier reply');assert.match(h[1].content,/Answer in English/);assert.match(h[1].content,/Compare two concepts$/);assert.ok(h[1].content.includes(responseStylePrompt(responseStyle)));return new Response('data: {"t":"fixture"}\n\ndata: {"done":true}\n\n',{headers:{'Content-Type':'text/event-stream'}});}});
+  let called=false;await chat(req,res,{fetchImpl:async(url,opts)=>{called=true;assert.match(url,/tutor\/chat-stream$/);const h=JSON.parse(opts.body).historico;assert.equal(h[0].content,'Earlier reply');assert.match(h[1].content,/Answer in English/);assert.equal(h[2].content,'Compare two concepts');assert.ok(h[1].content.includes(responseStylePrompt(responseStyle)));return new Response('data: {"t":"fixture"}\n\ndata: {"done":true}\n\n',{headers:{'Content-Type':'text/event-stream'}});}});
   assert.ok(called);assert.equal(res.statusCode,200);assert.match(res.out,/event: done/);
  }
 });

@@ -1,3 +1,13 @@
+## 2026-09-26 08:33 BRT — Pergunta longa: correção do corte causado pelas preferências
+
+Rodada 11:30Z. Baseline 6b31b5a; Railway dad2025f-1941-400d-83f4-6fbc99fd9e23 SUCCESS, projeto2doctor conferido. Leitura do prompt mostrou que 2Doctor usa tutor Vytal educacional como sistema, preferências no conteúdo user; não revisado o escopo clínico, não criada IA independente.
+
+Bug reproduzido no contrato local: API TutorService.preparar conserva 4000 caracteres por mensagem. Pergunta permitida de2000 + prefixos PT/BR resulta em4284(auto)/4381(concise)/4382(study), cortando284/381/382 caracteres do fim. Proxy 2Doctor agora envia preferências como mensagem user separada antes da pergunta original; mantém os textos das instruções, modelo, autenticação e limites. Com anexos, janela já existente reserva mensagens e preserva preferências/documentos/pergunta. WMed sem contexto conserva contrato legado. Nenhuma edição na API Vytal/ECG ou novo fornecedor.
+
+207 testes passaram, incluindo regressão nas252 combinações idioma/país/estilo/com-sem arquivos, aplicando janela10 e corte4000 antes de verificar pergunta2000 inteira, fim do TXT12000 e imagem/PDF. Teste simula transporte, não valida resposta clínica. Primeiro teste novo corrigido por tamanho incorreto da própria fixture (2001→2000), depois suíte completa verde. Builds2doctor e site completo passaram; warning de bundle grande preexistente. CUA local390×844:2000/2000 visível, botão habilitado, modoEstudar selecionado, sem overflow; screenshot legível. Não enviado ao modelo, sem login real/iPhone/Safari. Dockerfile/railway.json conferidos.
+
+Próximo: publicar só2doctor-web com cwd correto/path-as-root, conferir SUCCESS/health200/asset/interface. Rollback6b31b5a. Pré-existente medico-app/dist-samu preservado. Logs /tmp/2doctor-question-budget-{tests,build,site}.log.
+
 ## 2026-09-26 08:02 BRT — Anexo preservado na navegação móvel, sem mudança de produto
 
 Rodada 11:00Z. Documentos de continuidade e quatro planos relidos; Git baseline 8689d6d com apenas medico-app/dist-samu/ preexistente não rastreado. Railway mantém dad2025f-1941-400d-83f4-6fbc99fd9e23 SUCCESS. Healthz 200/product 2doctor e /assets/index-0mWKEJXY.js público idêntico ao dist local, conferidos nesta rodada.
