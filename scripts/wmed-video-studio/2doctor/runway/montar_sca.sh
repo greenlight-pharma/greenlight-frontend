@@ -29,24 +29,40 @@ grafico_narrado() {  # grafico_narrado <grafico.mp4> <narração.mp3> <saída>
     -map 0:v -map "[a]" -shortest "${ENC[@]}" "seg/$3.mp4"
 }
 
+anim_narrada() {  # anim_narrada <saída> <narração.mp3|-> <duração> "<clip1> [clip2...]" "<png:entra:sai> ..."
+  local saida=$1 narr=$2 dur=$3 clips=($4) rot=($5) ins=() fc="" i=0 n=0
+  for c in "${clips[@]}"; do ins+=(-i "$c"); fc+="[$i:v]$G,setpts=PTS-STARTPTS[c$i];"; i=$((i+1)); done
+  n=$i; for ((k=0;k<n;k++)); do fc+="[c$k]"; done; fc+="concat=n=$n:v=1:a=0[b0];"
+  local j=0
+  for r in "${rot[@]}"; do IFS=: read -r png e s <<<"$r"
+    ins+=(-loop 1 -t "$dur" -i "$png")
+    fc+="[$i:v]format=rgba,fade=t=in:st=$e:d=0.5:alpha=1,fade=t=out:st=$s:d=0.5:alpha=1[o$j];[b$j][o$j]overlay[b$((j+1))];"
+    i=$((i+1)); j=$((j+1)); done
+  if [ "$narr" = "-" ]; then ins+=(-f lavfi -t "$dur" -i anullsrc=r=48000:cl=stereo); fc+="[$i:a]anull[a]"
+  else ins+=(-i "$narr"); fc+="[$i:a]adelay=150|150,apad[a]"; fi
+  ffmpeg -v error -y "${ins[@]}" -filter_complex "$fc" -map "[b$j]" -map "[a]" -t "$dur" "${ENC[@]}" "seg/$saida.mp4"
+}
+
 filmado a1.mp4 s01
 com_cartao h1-final.mp4 ov-nome-720.png 0.6 4.0 s02
 ffmpeg -v error -y -i g-titulo.mp4 "${ENC[@]}" seg/s03.mp4
 com_cartao h2-final.mp4 ov-termo-720.png 3.2 7.2 s04
-fala_sobre_grafico h3-final.mp4 4.5 g1.mp4 s05
-grafico_narrado g2.mp4 n1.mp3 s06
-grafico_narrado g3.mp4 n2.mp3 s07
+anim_narrada tmp-m1 - 3.5 "m1-wan.mp4" "r-coronarias.png:0.2:3.0"
+fala_sobre_grafico h3-final.mp4 4.5 seg/tmp-m1.mp4 s05
+anim_narrada s06 n1.mp3 11 "m2a-wan.mp4 m2b-wan.mp4" "r-placa.png:1.5:5.4 r-coagulo.png:6.3:10.5"
+# m3: no fim o coração inteiro acinzenta (errado: só a região da artéria bloqueada sofre);
+# usa só os 6 s iniciais, com o escurecimento concentrado embaixo, em câmera lenta 2x.
+ffmpeg -v error -y -i m3-wan.mp4 -vf "trim=0:6,setpts=2*(PTS-STARTPTS),minterpolate=fps=24:mi_mode=blend" -an seg/m3-lento.mp4
+anim_narrada s07 n2.mp3 12 "seg/m3-lento.mp4" "r-musculo.png:0.4:7.6 r-tempo.png:8.8:11.5"
 filmado h4-final.mp4 s08
-grafico_narrado g4.mp4 n3.mp3 s09
+anim_narrada s09 n3.mp3 14 "m4-wan.mp4 m4b-wan.mp4" "r-sintomas.png:0.4:7.4 r-sintomas2.png:8.2:13.5"
 fala_sobre_grafico h5-final.mp4 3.0 g5.mp4 s10
-# ambulância chegando + ECG e stent, com a narração n4 atravessando os dois
-ffmpeg -v error -y -i a2.mp4 -i g6.mp4 -i n4.mp3 -filter_complex \
-  "[0:v]$G,trim=0:5,setpts=PTS-STARTPTS[a];[1:v]fps=24,format=yuv420p,setpts=PTS-STARTPTS[b];[a][b]concat=n=2:v=1:a=0[v];[2:a]adelay=200|200,apad[n]" \
-  -map "[v]" -map "[n]" -t 14.0 "${ENC[@]}" seg/s11.mp4
+# ambulância chegando + monitor de ECG + balão e stent, com a narração n4 atravessando tudo
+anim_narrada s11 n4.mp3 15 "a2.mp4 m6a-wan.mp4 m6b-wan.mp4" "r-ecg.png:5.3:8.6 r-stent.png:9.6:14.5"
 filmado h6-final.mp4 s12
 ffmpeg -v error -y -i g-final.mp4 "${ENC[@]}" seg/s13.mp4
 
-(cd seg && ls s*.mp4 | sort | sed "s/^/file '/; s/$/'/") > seg/lista.txt
+(cd seg && ls s[0-9]*.mp4 | sort | sed "s/^/file '/; s/$/'/") > seg/lista.txt
 ffmpeg -v error -y -f concat -safe 0 -i seg/lista.txt -c copy seg/corte.mp4
 
 # Trilha em loop, baixa, com fade no fim; fala e narração por cima.

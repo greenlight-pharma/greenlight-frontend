@@ -49,6 +49,12 @@
   - Sincronia: cada trecho com `-shortest`, desvio acumulado ≤ 0,03 s.
   - Afirmações usadas: I1, I2 ("within minutes"), I3, I4, I5, EM, I6, I8 e uma nova, acesso pelo punho no cateterismo (conferir na ESC 2023, preferência pela via radial). Todas "parcial" até anotar as páginas.
   - Gasto do explicador: 886 créditos. Saldo: 1.220.
+- **Versão 2 do explicador (26/09): animação médica realista no lugar do grafismo.** Pedido do Dilson ("tem que ter realismo"). **Muda a regra da série**: o mecanismo agora é vídeo gerado por IA, conferido quadro a quadro aqui e com revisão médica obrigatória antes de publicar. Os textos continuam por cima (`rotulos()` em `graficos_sca.py`).
+  - Modelo: `wan3` texto para vídeo, 1280:720, sem áudio, **10 créditos por segundo** (o preço de 5/s é só em 480p). Veo 3.1 Fast barrou o coração na moderação e **cobrou 40 créditos**.
+  - Planos: m1 coronárias (4 s), m2a placa rachando (6 s), m2b coágulo fechando a artéria (6 s), m3 músculo escurecendo (8 s), m4 e m4b corpo translúcido com pontos de dor (8 + 6 s), m6a monitor de ECG (4 s), m6b fio-guia, balão e stent (6 s).
+  - Moderação do wan3: m3a barrado na entrada (**cobrou 60**), m3b barrado na saída (0); refeito como m3 com descrição neutra ("the light in that area is slowly fading"). No fim do m3 o coração inteiro acinzenta (errado: só a região da artéria bloqueada sofre), então a montagem usa só os 6 s iniciais em câmera lenta 2x.
+  - Revisão quadro a quadro: placa, coágulo, stent e ECG coerentes; sem texto legível.
+  - Gasto desta versão: 580 créditos (100 perdidos em moderação). Saldo: 640.
 
 ## Modelos 3D próprios (`../models3d/`)
 Tudo procedural, com código nosso. Visual de documentário no palco comum (`stage.js`, `look:'doc'`): luz quente de lado, contraluz azul, vinheta, grão por quadro, foco raso (`dof` + `stage.setFocus`), oclusão de ambiente (`ao`) e texturas de tecido (`tissueMaterial`). Cada cena exporta `stageOptions`.

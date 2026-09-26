@@ -243,3 +243,29 @@ def sobreposicoes():
 
 if __name__ == '__main__':
     sobreposicoes()
+
+
+def rotulos():
+    """Rótulos (PNG transparente) sobre as animações realistas: itálico serifado, canto superior esquerdo."""
+    itens = {
+        'r-coronarias': ('coronary arteries', None),
+        'r-placa': ('plaque cracks', None),
+        'r-coagulo': ('a clot forms on top', 'the artery narrows, or shuts'),
+        'r-musculo': ('heart muscle starts to starve', 'minutes, then hours'),
+        'r-tempo': ('time is muscle', None),
+        'r-sintomas': ('chest · arm · jaw · neck · back', 'sweating · nausea · breathlessness'),
+        'r-sintomas2': ('women · older people · diabetes', 'may be just breathlessness, nausea or exhaustion'),
+        'r-ecg': ('ECG within 10 minutes', None),
+        'r-stent': ('balloon · stent', 'the sooner, the better'),
+    }
+    for nome, (l1, l2) in itens.items():
+        im = Image.new('RGBA', (W, H), (0, 0, 0, 0)); d = ImageDraw.Draw(im)
+        # sombra suave para ler sobre imagem clara
+        sombra = Image.new('RGBA', (W, H), (0, 0, 0, 0)); ds = ImageDraw.Draw(sombra)
+        ds.text((62, 62), l1, font=fonte(40, True), fill=(0, 0, 0, 200))
+        if l2: ds.text((62, 118), l2, font=fonte(26), fill=(0, 0, 0, 200))
+        im = Image.alpha_composite(im, sombra.filter(ImageFilter.GaussianBlur(4))); d = ImageDraw.Draw(im)
+        d.text((60, 60), l1, font=fonte(40, True), fill=CREME + (255,))
+        if l2: d.text((60, 116), l2, font=fonte(26), fill=OURO + (255,))
+        im.save(SAIDA / f'{nome}.png')
+    print('ok rotulos')

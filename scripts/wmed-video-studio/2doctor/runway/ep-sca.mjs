@@ -69,6 +69,25 @@ const APOIO = {
   a2: 'Night, the ambulance bay of a hospital emergency entrance in the rain, sliding glass doors glowing, an empty stretcher waiting under the canopy, wide static shot, cinematic, muted colours, film grain. No readable text or logos.',
 };
 
+// Animação médica realista no lugar do grafismo esquemático (pedido do Dilson, 26/09:
+// "tem que ter realismo"). Muda a regra da série: mecanismo gerado por IA, revisado
+// quadro a quadro aqui e por médico antes de publicar. Textos continuam por cima na montagem.
+const ESTILO = 'Photorealistic medical 3D animation, cinematic like a high-end Netflix science documentary, dark background, soft volumetric light, shallow depth of field, anatomically accurate, slow and calm camera.';
+const NEGATIVO = 'text, labels, letters, numbers, watermark, logo, cartoon, drawing, diagram, people, faces, hands, surgery gore';
+const ANIM = {
+  m1: { dur: 4, txt: 'A living human heart beating slowly, seen from the front in darkness; the right and left coronary arteries and their branches run over the surface of the heart muscle, glistening; the camera glides slowly toward the left anterior descending artery.' },
+  m2a: { dur: 6, txt: 'Inside a human coronary artery, the camera moves slowly along the lumen with red blood cells flowing past; a yellowish fatty atherosclerotic plaque bulges from the artery wall under a thin fibrous cap; the cap tears open, exposing the soft fatty core.' },
+  m2b: { dur: 6, txt: 'Inside a human coronary artery at the site of a torn atherosclerotic plaque: platelets stick to the tear and clump together, strands of fibrin trap red blood cells, and a dark red blood clot grows until it almost completely blocks the artery; the flow of blood cells slows to a stop.' },
+  m3a: { dur: 6, txt: 'Close view of the surface of a beating human heart; beyond a blocked branch of a coronary artery, a region of heart muscle slowly loses its healthy red colour and turns pale and dusky while the rest stays red.' },
+  m3b: { dur: 6, txt: 'Cross-section through the thick muscular wall of the left ventricle of the human heart: a dark area of damaged muscle begins in the innermost layer and slowly spreads outward through the thickness of the wall.' },
+  // m3a/m3b foram barrados pela moderação do wan3 (26/09); versão com descrição neutra:
+  m3: { dur: 8, txt: 'A beating human heart in darkness, seen from the front, medical visualization; on the lower front wall, one patch of the heart muscle gradually changes from a healthy bright red to a darker, duller, greyish colour, as if the light in that area is slowly fading, while the rest of the heart stays bright red and keeps beating.' },
+  m4: { dur: 8, txt: 'A translucent glass-like 3D human figure standing in darkness, seen from the front, slowly turning a few degrees; soft red glowing areas light up one after another in the centre of the chest, the left arm, and the jaw and neck.' },
+  m4b: { dur: 6, txt: 'The same translucent glass-like 3D human figure seen from behind in darkness; a soft red glow lights up between the shoulder blades, then a faint glow spreads through the chest.' },
+  m6a: { dur: 4, txt: 'Close-up of a hospital heart monitor at night in a dim emergency room, a green electrocardiogram trace scrolling across the dark screen, no numbers, no text, shallow depth of field.' },
+  m6b: { dur: 6, txt: 'Inside a blocked human coronary artery: a thin guide wire passes through the clot, a small balloon inflates and presses the plaque against the wall, then a fine metal mesh stent expands and stays in place, holding the artery open as red blood cells rush through again.' },
+};
+
 const PRESETS_BRITANICOS = ['Eleanor', 'Serene', 'Mabel', 'Maggie', 'Paula'];
 
 if (!process.env.RUNWAYML_API_SECRET) {
@@ -141,6 +160,16 @@ if (modo === 'vozes') {
   await baixar(t.output[0], `${a1}-voz.mp3`);
   execFileSync('ffmpeg', ['-v', 'error', '-y', '-i', `${base}.mp4`, '-i', path.join(SAIDA, `${a1}-voz.mp3`),
     '-map', '0:v', '-map', '1:a', '-c:v', 'copy', '-c:a', 'aac', '-shortest', path.join(SAIDA, `${a1}-final.mp4`)]);
+} else if (modo === 'anim') {                 // anim <id> [veo|wan]
+  const A = ANIM[a1]; if (!A) throw new Error(`anim: ${Object.keys(ANIM).join(' | ')}`);
+  const wan = a2 === 'wan';
+  const t = await medir(`${wan ? 'wan3' : 'veo3.1_fast'} ${a1}`, () => client.textToVideo
+    .create(wan
+      ? { model: 'wan3', promptText: `${A.txt} ${ESTILO}`, ratio: '1280:720', duration: A.dur, audio: false }
+      : { model: 'veo3.1_fast', promptText: `${A.txt} ${ESTILO}`, negativePrompt: NEGATIVO, ratio: '1280:720',
+          duration: A.dur, audio: false, seed: 26090 + Object.keys(ANIM).indexOf(a1) })
+    .waitForTaskOutput());
+  await baixar(t.output[0], `${a1}${wan ? '-wan' : ''}.mp4`);
 } else if (modo === 'narracao') {
   const so = a2 ? { [a2]: NARRACAO[a2] } : NARRACAO;      // narracao <Preset> [id]
   for (const [id, texto] of Object.entries(so)) {
