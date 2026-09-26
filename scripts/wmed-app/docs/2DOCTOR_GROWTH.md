@@ -1,3 +1,7 @@
+## Correção de verificação — busca de medicações — 25/09/2026 21:40 BRT
+
+Código 8ab4666. A última invocação do build completo inicialmente usou cwd incorreto (scripts/wmed-app), falhando por ausência do lockfile relativo esperado. Upload interrompido; Railway registrou a9455d2c-576f-4320-94c7-f0ebeb26fcb2 FAILED, mantendo 37613971 SUCCESS. Diretório descartável .vercel-out criado dentro do app removido antes de novo envio. Build completo repetido na raiz da worktree terminou exit0; 200 testes e build2doctor também aprovados. QA local móvel/desktop concluído. Publicação da correção ainda pendente; próximo passo enviar somente scripts/wmed-app e verificar SUCCESS, health, asset e UI pública. Sem teste em aparelho físico, login real ou validação clínica.
+
 ## 25/09/2026 — Busca de medicações por termos
 
 Retomada da falha reproduzida em produção: “biguanida metformina” retornava0 pela exigência de ordem exata. Somente Medicações da2Doctor agora reutiliza matchesInstrument (normalização de acentos/caixa/espaços e todos os termos presentes em nome/classe/mecanismo em qualquer ordem). Filtro de grupo continua AND/exato. Botão Limpar busca e filtros restaura query/grupo/limite30, alvo mínimo44px; contagem acessível e singular; ausência de resultado orienta limpar. WMed/Condições/conteúdo clínico/fórmulas não alterados. Não cria sinônimos nem recomenda tratamento.
