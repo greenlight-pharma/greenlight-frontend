@@ -1,3 +1,11 @@
+## 2026-09-26 09:18 BRT — Loading do feedback e remoção do Scribe publicados
+
+Código 77cd829 publicado exclusivamente no 2doctor-web/projeto 2doctor. Deployment 26a1f830-1a05-4208-95b6-673f4556b077 SUCCESS; healthz público 200/product2doctor. Assets index-DKvjZs9w.js, ClinicalCase-DyE-0QJU.js e ClinicalCase-DXnPXreE.css públicos comparados byte a byte com build local: iguais. Deploy no cwd scripts/wmed-app com --path-as-root.
+
+CUA público 390×844: busca por Scribe retorna nenhuma ferramenta; #caso carrega relato, áudio, revisão e acessos móveis. Viewport restaurado. Loading/erro/retry verificados antes em fixture local isolada (entrada anterior); 210 testes e builds app/site passaram. Não realizado envio autenticado em produção, medição de latência real, avaliação clínica ou iPhone físico/Safari. A demora de geração da IA não foi reduzida nem medida; corrigida a confirmação visual imediata, recuperação de erro e prevenção de envio duplicado.
+
+Prompt dedicado preparado anteriormente permanece desativado (TWO_DOCTOR_CHAT_ENABLED não true), API Vytal/ECG intactos. Não recriar Scribe automaticamente. Próximo passo executável: em sessão de teste autenticada disponível, medir a duração de um feedback fictício antes de propor otimização do backend; preservar escopo da API e autorização pendente do prompt. Rollback de código 8be7c7a; pasta preexistente medico-app/dist-samu preservada.
+
 ## 2026-09-26 09:14 BRT — Feedback: tela de espera imediata e retirada do Scribe
 
 Pedido direto: feedback demora, exibir loading ao solicitar e remover Scribe pois não corresponde ao desejado. Implementado somente2Doctor: etapa aguardando substitui revisão imediatamente; título focado, animação com reduced-motion, tempo decorrido (sem percentual/etapas fictícias), aviso de demora após30s e instrução de não reenviar. Trava síncrona evita evaluate duplicado. Erro devolve revisão preservando campos/confirmação e recebe foco; feedback recebido substitui loading antes da pontuação/salvamento. Nenhuma alteração no conteúdo clínico/API.
