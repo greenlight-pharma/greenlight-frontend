@@ -1,3 +1,11 @@
+## 2026-09-26 02:33 BRT — Login: foco e retorno ao chat corrigidos
+
+Reprodução pública em 320×568: Minha conta pelo menu deixou foco em Abrir menu atrás do login; Escape não fechava. AuthDialog da 2Doctor agora foca Fechar após cleanup do drawer, bloqueia rolagem da página enquanto aberto e restaura estilos/foco sem reabrir teclado do compositor. Campo e-mail deixa de receber autofocus na 2Doctor. Durante envio, foco fica no diálogo enquanto controles estão desabilitados; após resposta recusada volta a Fechar. Tab/ShiftTab ficam nos controles disponíveis. Contrato HTTP, cookies, validação de formulário e callback de sucesso preservados; WMed conserva autofocus anterior.
+
+206 testes passaram; build 2Doctor e build completo do site aprovados, com warning preexistente de bundles grandes. CUA local em 320×568, 390×844 e 1280×800: entrada pelo menu/cabeçalho/envio, foco inicial, ciclo de Tab, Escape, rascunho preservado, retorno ao botão de origem. Fixture sem upstream/persistência recusou credenciais fictícias: estado ocupado impede fechar; erro devolve foco e Escape fecha normalmente. Sem credenciais reais nem alteração de autenticação. Não testados login bem-sucedido real, teclado iOS, Safari ou VoiceOver físicos. Fixture e aba74 encerradas. Patch beforeunload segue fora do runtime.
+
+Próximo: publicar somente serviço 2doctor-web, validar SUCCESS, health, asset e interface. Rollback por reconstrução b642595. Não ampliar catálogo.
+
 ## 2026-09-26 02:08 BRT — Conta: correção publicada na 2Doctor
 
 Fonte 90c97e9. Deployment 14754033-7159-43a7-878a-bf5f8debcfb3 confirmado SUCCESS no serviço 2doctor-web/projeto 2doctor. Health 200 e produto 2doctor; asset público /assets/index-DRNREAeO.js idêntico byte a byte ao build local. Os 206 testes e os builds da 2Doctor e do site completo passaram. Interface pública em 390×844: Minha conta exige login, fechar entrada retorna ao chat, largura 390 sem overflow horizontal e console sem erros. Sem login real; janela autenticada validada com fixture sintética conforme registro anterior. Fixture encerrada, aba 73 fechada, viewport restaurado. API Vytal/ECG intactos; candidato beforeunload não aplicado.
