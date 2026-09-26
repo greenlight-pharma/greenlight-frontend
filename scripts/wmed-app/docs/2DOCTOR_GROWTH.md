@@ -1,3 +1,19 @@
+## 2026-09-26 14:11 BRT — Notas do PDF publicadas
+
+Código6fcb133, deployment24e35b93-ac40-4ed8-a0e8-e4d3e11754b0 SUCCESS no2doctor-web. Railway demorou na preparação do snapshot, depois concluiu build/rollout. Healthz200/product2doctor; index-BH_QakA6.js e chat-pdf-B3hdYMSi.js públicos idênticos ao build. CUA público390×844 carregou chat/navegação, viewport restaurado. Verificação de assets durante BUILDING ainda mostrou versão antiga/404 do novo chunk; repetida somente apósSUCCESS e aprovada. Não foi falha da versão ativa.
+
+220 testes aprovados,8 integrações ignoradas por falta de TEST_DATABASE_URL, buildsapp/site aprovados. Referências em notas do PDF testadas com fonte fictícia e download real local; não é avaliação clínica. Sem API/modelo/login real/Safari/iPhone físico. Nenhuma configuração de contas/cobrança alterada. Próximo: avaliar chamadas internas de notas na tela do chat (atualmente filtro só permiteHTTPS, sem salto à nota), mantendo mudanças pequenas; sem criar funcionalidades. Rollback210693b, dist-samu preservado.
+
+## 2026-09-26 14:04 BRT — PDF: referências em notas de rodapé
+
+Retomada17:00Z: documentos antigos estavam atrás do Git. Worktree limpa salvo dist-samu, HEAD210693b; frente anterior já comitou simplificação, contas/cobrança, traduções e nome do PDF. Railway f7cc7d3b-ed3b-4932-9fdb-564f3b77071f SUCCESS, health200. Não desfazer esses trabalhos nem atribuí-los a esta rodada. Nenhuma configuração de modelo/contas/cobrança/API alterada aqui.
+
+Fricção reproduzida em chatPdfDefinition: Markdown com texto[^1] e definição da nota exportava só texto, perdendo tanto marcador quanto fonte. Correção no conversor: numera por primeira citação, preserva referências repetidas, inclui somente notas citadas, mantém formatação/URLs seguras e liga marcadores ao destino no PDF. Notas que citam notas incluídas sem duplicação cíclica. Dois testes de regressão cobrem notas/repetição/links por referência. Não inventa conteúdo nem busca fontes remotas.
+
+228 testes:220 passaram e8 de integração de contas ignorados por TEST_DATABASE_URL ausente. Build2doctor e build completo do site passaram; diffcheck limpo. PDF fictício renderizado e revisado; CUA390×844 local gerou e baixou 2doctor-notas-no-pdf.pdf com nota/URL presentes, foco em Baixar PDF e sem overflow. Arquivo baixado também renderizado/inspecionado. Fixture sem upstream e sem persistência encerrada, aba88 fechada, viewport restaurado. Sem testes clínicos, API real autenticada ou iPhone/Safari físico. Logs /tmp/2doctor-pdf-notes-tests.log, -build.log e -site.log.
+
+Código6fcb133; publicação solicitada apenas no2doctor-web com cwdapp/--path-as-root, aguardandoSUCCESS/health/asset/UI. Dockerfile agora inclui dependências de servidor de contas da frente anterior; conferido, sem editar. Rollback210693b. Observação para próxima revisão: chamadas internas de notas no chat são mostradas como texto (filtro de links), enquanto o PDF já mantém destino; avaliar como fricção separada, sem ampliar catálogo.
+
 ## 2026-09-26 09:36 BRT — Foco do PDF publicado
 
 Código 8af0d2e, deployment c7b3ab39-ea7d-4320-acf6-1506658cbf2b SUCCESS exclusivamente no 2doctor-web. Healthz 200/product2doctor; asset index-CSGWDSvt.js público idêntico ao build local. CUA público 390×844 confirmou chat e navegação íntegros, viewport restaurado. Teste funcional do foco ficou na fixture local: Enter mantém foco durante geração e em Baixar PDF; Tab segue para próxima opção. 214 testes e builds app/site passaram. Não realizado envio autenticado em produção, iPhone/Safari/VoiceOver físico; não alterada geração do documento, prompt/API ou modelo. Próximo: acompanhar eventual fricção real ao salvar/compartilhar PDF; sem nova demanda ou regressão observável, manter versão estável. Rollback f379800; dist-samu preservado.
