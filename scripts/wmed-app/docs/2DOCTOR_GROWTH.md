@@ -1,3 +1,9 @@
+## 2026-09-25 23:36 BRT — Recuperação de falha do chat publicada
+
+Fonte72fb5a1; deployment0037cfe9-6b4a-4e7f-acd3-b4ee7eabbbf8 SUCCESS no serviço2doctor-web/projeto2doctor. Health200/product2doctor; entradaindex-BMUAJ05S.js200 com bytes idênticos ao build local. CUA público390 conferiu chat, nova linha, largura390/scroll390 e console semerros; nenhum envio real efetuado. Campo limpo/viewportrestaurado.206testes e builds completos aprovados.
+
+ErroSSE+done,503, rascunho concorrente, cancelamento e sucesso seguinte verificados na fixture local com dados fictícios, não provocados em produção. Não testados login real, erro401 real, queda física de rede/Safari/VoiceOver. Anexos e rascunho recuperados continuam só na sessão em memória, sem armazenamento novo ou treinamento. Próximo executável: conferir o fluxo de abrir/fechar histórico no celular e retorno à conversa existente, antes de qualquer alteração; não adicionar catálogo. Rollback reconstruindo4489a16 com cwd scripts/wmed-app.
+
 ## 2026-09-25 23:33 BRT — Recuperar chat após falha
 
 Fixture local reproduziu errorSSE→done apagando anexo e deixando campo vazio. Somente2Doctor passa a rastrear falha no stream: done após error não limpa anexos nem marca resposta completa. FalhaSSE/HTTP/abort recupera pergunta enviada no campo apenas se vazio; preserva novo rascunho digitado.401 também evita sobrescrever novo texto. Usa pergunta efetivamente enviada/revisada, não original antes da revisão. Sem reenvio automático/persistência nova/API/modelo.
