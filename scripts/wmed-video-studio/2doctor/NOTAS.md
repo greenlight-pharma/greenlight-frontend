@@ -27,6 +27,10 @@
   - Imagens: 8 (2 por plano), 40 créditos. Escolhidas: ubs2-b, rua2-b, corredor2-b, cafe2-a.
   - Vídeos: 4 × 120 créditos + 3 trocas de voz (9). Saídas `out/ep2/{ubs2,rua2,corredor2,cafe2}-final.mp4`.
   - Saldo: 3.447 créditos.
+- **3ª versão (26/09)**, depois da crítica: aparelho de pressão duplicado na UBS; rio e café não combinam com ensino de medicina; câmera ainda perto. Correções: UBS começa com o aparelho já no braço e a técnica só com a pera ("only one cuff"); Iris em cenários médicos, pequena no quadro (≤ 1/4): anfiteatro vazio à noite (desafio), posto da emergência às 3 h (resposta), sala de descanso dos médicos (fora da prova). Cenários fixos da apresentadora passam a ser hospital e faculdade; porto e café saem.
+  - Imagens 40 créditos (ubs3-b, anfiteatro-a, posto-a, descanso-a); vídeos 4 × 120; troca de voz 9. Saídas `out/ep2/{ubs3,anfiteatro,posto,descanso}-final.mp4`.
+  - Leitura: UBS com um só aparelho; posto e descanso bons. No anfiteatro o residente vira e sorri para a câmera no meio do plano: usar só começo e fim ou refazer.
+  - Saldo: 2.918 créditos.
 
 ## Modelos 3D próprios (`../models3d/`)
 Tudo procedural, com código nosso. Visual de documentário no palco comum (`stage.js`, `look:'doc'`): luz quente de lado, contraluz azul, vinheta, grão por quadro, foco raso (`dof` + `stage.setFocus`), oclusão de ambiente (`ao`) e texturas de tecido (`tissueMaterial`). Cada cena exporta `stageOptions`.
