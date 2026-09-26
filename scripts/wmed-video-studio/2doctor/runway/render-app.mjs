@@ -9,11 +9,12 @@ import path from 'node:path';
 import { fileURLToPath, pathToFileURL } from 'node:url';
 
 const AQUI = path.dirname(fileURLToPath(import.meta.url));
-const PAGINA = pathToFileURL(path.join(AQUI, '..', 'app-motion', 'index.html')).href;
-const SAIDA = path.join(AQUI, '..', 'out', 'sca');
+const args = Object.fromEntries(process.argv.slice(2).map(a => a.replace(/^--/, '').split('=')));
+// --pagina=has.html --saida=has → outro episódio (ex.: hipertensão → ../out/has/app-motion.mp4)
+const PAGINA = pathToFileURL(path.join(AQUI, '..', 'app-motion', args.pagina || 'index.html')).href;
+const SAIDA = path.join(AQUI, '..', 'out', args.saida || 'sca');
 const CHROME = process.env.CHROME || '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome';
 const FPS = 30;
-const args = Object.fromEntries(process.argv.slice(2).map(a => a.replace(/^--/, '').split('=')));
 
 const browser = await puppeteer.launch({ executablePath: CHROME, headless: true, args: ['--allow-file-access-from-files'] });
 const page = await browser.newPage();

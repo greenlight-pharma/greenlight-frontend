@@ -1,0 +1,210 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>2Doctor · app motion</title>
+<style>
+  /* Reprodução do 2Doctor (scripts/wmed-app, branch codex/2doctor-preview-20260925):
+     tokens de src/doctor/doctor.css, fonte Manrope (OFL) e o monograma de Navigation.jsx. */
+  @font-face { font-family: 'Manrope'; src: url('fonts/Manrope.ttf'); font-weight: 200 800; }
+  :root { --ink: #142d40; --muted: #61747c; --accent: #005d5b; --surface: #f5f8f7; --line: #e2ebe8; --hover: #e9f3ef; --bubble: #edf4f2; }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { width: 1280px; height: 720px; overflow: hidden; background: #0B151B; font-family: Manrope, system-ui, sans-serif; color: var(--ink); }
+  #stage { position: absolute; inset: 0; background: radial-gradient(1100px 700px at 25% 15%, #17333b 0%, #0B151B 62%); }
+  #glow { position: absolute; width: 900px; height: 900px; border-radius: 50%; background: radial-gradient(circle, rgba(0,93,91,.42), rgba(0,93,91,0) 65%); }
+  #cam { position: absolute; inset: 0; transform-origin: 0 0; }
+  #app { position: absolute; left: 60px; top: 34px; width: 1160px; height: 652px; background: #fff; border-radius: 18px; overflow: hidden;
+         box-shadow: 0 40px 120px rgba(0,0,0,.55), 0 0 0 1px rgba(255,255,255,.07); }
+  svg.mark { fill: var(--accent); }
+  .rail { position: absolute; left: 0; top: 0; bottom: 0; width: 58px; border-right: 1px solid var(--line); display: flex; flex-direction: column; align-items: center; gap: 16px; padding-top: 16px; }
+  .rail svg.mark { width: 26px; margin-bottom: 8px; }
+  .rail i { width: 22px; height: 22px; display: grid; place-items: center; }
+  .rail i svg { width: 20px; height: 20px; stroke: var(--ink); fill: none; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+  .rail i.on { background: var(--hover); border-radius: 10px; width: 36px; height: 36px; }
+  .rail .rule { width: 26px; height: 1px; background: var(--line); }
+  .head { position: absolute; left: 58px; right: 0; top: 0; height: 56px; display: flex; align-items: center; gap: 12px; padding: 0 22px; }
+  .head svg.mark { width: 28px; }
+  .head b { font-weight: 700; font-size: 19px; letter-spacing: -.3px; }
+  .head .sep { width: 1px; height: 18px; background: var(--line); margin: 0 4px; }
+  .head small { font-size: 12.5px; color: var(--muted); }
+  .head .r { margin-left: auto; display: flex; gap: 16px; align-items: center; font-size: 12.5px; font-weight: 600; }
+  .head .btn { border: 1px solid var(--line); border-radius: 10px; padding: 8px 14px; }
+  #main { position: absolute; left: 58px; right: 0; top: 56px; bottom: 0; }
+  /* tela inicial */
+  #home { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; padding-top: 34px; }
+  #home svg.mark { width: 50px; }
+  #home h1 { font-size: 36px; font-weight: 600; letter-spacing: -.8px; margin: 12px 0 26px; }
+  .composer { width: 820px; border: 1.5px solid #9fc4bd; border-radius: 18px; padding: 12px 14px 12px; box-shadow: 0 0 0 4px rgba(0,93,91,.07); background: #fff; }
+  .tabs { display: grid; grid-template-columns: repeat(3, 1fr); gap: 6px; font-size: 13px; text-align: center; }
+  .tabs span { padding: 10px; border-radius: 10px; }
+  .tabs span.on { background: var(--bubble); font-weight: 600; }
+  .attach { display: inline-flex; align-items: center; gap: 6px; margin-top: 12px; border: 1px solid var(--line); border-radius: 9px; padding: 6px 10px; font-size: 12.5px; }
+  .attach + small { font-size: 11px; color: var(--muted); margin-left: 8px; }
+  .text { font-size: 17px; min-height: 52px; padding: 16px 4px 8px; }
+  .ph { color: #9aa9ae; }
+  .caret { display: inline-block; width: 2px; height: 20px; background: var(--accent); vertical-align: -3px; margin-left: 1px; }
+  .crow { display: flex; align-items: center; justify-content: space-between; }
+  .crow small { background: var(--surface); border-radius: 8px; padding: 7px 10px; font-size: 12px; color: var(--muted); }
+  .send { width: 40px; height: 40px; border-radius: 50%; background: #9fc4bd; display: grid; place-items: center; }
+  .send.ok { background: var(--accent); }
+  .send svg { width: 18px; stroke: #fff; stroke-width: 2.4; fill: none; }
+  .quick { width: 820px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-top: 14px; }
+  .quick div { border: 1px solid var(--line); border-radius: 12px; padding: 12px 14px; font-size: 13px; font-weight: 600; }
+  .quick div small { display: block; font-weight: 400; color: var(--muted); font-size: 11.5px; margin-top: 2px; }
+  /* conversa */
+  #chat { position: absolute; left: 0; right: 0; top: 0; bottom: 0; padding: 18px 0 0; }
+  .col { width: 860px; margin: 0 auto; position: relative; height: 100%; }
+  .ubub { margin-left: auto; width: fit-content; max-width: 600px; background: var(--bubble); border-radius: 16px 16px 4px 16px; padding: 12px 16px; font-size: 16px; }
+  .who { display: flex; align-items: center; gap: 10px; margin: 16px 0 8px; font-weight: 700; font-size: 15px; }
+  .who svg.mark { width: 24px; }
+  .who small { font-weight: 500; color: var(--muted); font-size: 12.5px; }
+  .srcs { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 10px; }
+  .chip { font-size: 12.5px; font-weight: 600; border: 1px solid var(--line); border-radius: 99px; padding: 5px 11px; background: #fff; }
+  .chip i { display: inline-block; width: 7px; height: 7px; border-radius: 50%; background: var(--accent); margin-right: 6px; vertical-align: 1px; }
+  .bar { height: 3px; background: var(--line); border-radius: 3px; overflow: hidden; margin-bottom: 12px; }
+  .bar i { display: block; height: 100%; background: var(--accent); }
+  #cards { position: absolute; left: 0; right: 0; top: 168px; }
+  .card { position: absolute; left: 0; right: 0; top: 0; background: #fff; border-radius: 16px; border: 1px solid var(--line); padding: 18px 22px; }
+  .card h3 { font-size: 22px; font-weight: 700; letter-spacing: -.3px; display: flex; align-items: center; gap: 10px; margin-bottom: 10px; }
+  .card h3 .n { width: 30px; height: 30px; border-radius: 9px; background: var(--accent); color: #fff; display: grid; place-items: center; font-size: 15px; }
+  .row { display: flex; gap: 12px; align-items: baseline; font-size: 19px; line-height: 1.38; margin: 10px 0; }
+  .row .tick { flex: none; width: 19px; height: 19px; border-radius: 50%; background: var(--accent); position: relative; top: 2px; }
+  .row .tick::after { content: ''; position: absolute; left: 6px; top: 3px; width: 4px; height: 8px; border: solid #fff; border-width: 0 2px 2px 0; transform: rotate(45deg); }
+  b { font-weight: 700; }
+  .cite { font-size: 12.5px; color: var(--muted); margin-top: 10px; }
+  .cite::before { content: 'SOURCE  '; font-weight: 700; letter-spacing: .6px; color: var(--accent); }
+  table { width: 100%; border-collapse: collapse; font-size: 17px; }
+  th { text-align: left; font-size: 11.5px; text-transform: uppercase; letter-spacing: .7px; color: var(--muted); font-weight: 700; padding: 2px 8px 8px; border-bottom: 1px solid var(--line); }
+  td { padding: 8px; border-bottom: 1px solid #eef4f2; vertical-align: top; }
+  tr.hl td { background: #fff6e6; }
+  .tiles { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; }
+  .tile { border: 1px solid var(--line); border-radius: 12px; padding: 13px; font-size: 14.5px; line-height: 1.38; }
+  .tile h4 { font-size: 18px; font-weight: 700; color: var(--accent); margin-bottom: 5px; }
+  .split { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  .lane { border-radius: 12px; padding: 13px 15px; font-size: 16.5px; line-height: 1.4; }
+  .lane div { margin: 4px 0; }
+  .lane h4 { font-size: 13px; letter-spacing: .7px; text-transform: uppercase; margin-bottom: 4px; }
+  .lane.st { background: #fbecea; } .lane.st h4 { color: #a3392b; }
+  .lane.ns { background: var(--bubble); } .lane.ns h4 { color: var(--accent); }
+  .gauge { height: 10px; border-radius: 6px; background: linear-gradient(90deg, #6baf8c 0 30%, #e9b872 30% 70%, #d9695b 70%); position: relative; margin: 8px 0 4px; }
+  .gauge i { position: absolute; top: -4px; width: 4px; height: 18px; background: var(--ink); border-radius: 2px; }
+  .nota { margin-top: 8px; font-size: 14.5px; color: #8a4b1f; }
+  #cap { position: absolute; left: 60px; bottom: 10px; font-size: 12px; letter-spacing: 2.2px; color: rgba(237,230,218,.7); text-transform: uppercase; }
+</style>
+</head>
+<body>
+<svg style="display:none"><symbol id="m" viewBox="0 0 175 124"><path fill-rule="evenodd" d="M5 34C13 12 32 0 58 0H112C151 0 175 25 175 61C175 99 150 124 112 124H0V113C0 92 11 78 32 64L51 52C63 44 66 37 63 32C59 23 42 25 36 34ZM84 26C94 52 82 67 56 82L34 99H109C134 99 147 84 147 62C147 40 134 26 112 26Z"/></symbol></svg>
+<div id="stage"><div id="glow"></div>
+  <div id="cam"><div id="app">
+    <div class="rail" id="rail"></div>
+    <div class="head"><svg class="mark"><use href="#m"/></svg><b>2Doctor</b><span class="sep"></span><small>Your medical assistant</small>
+      <div class="r"><span>EN</span><span class="btn">Sign in</span></div></div>
+    <div id="main">
+      <div id="home">
+        <svg class="mark"><use href="#m"/></svg>
+        <h1>How can I help today?</h1>
+        <div class="composer">
+          <div class="tabs"><span class="on">Automatic</span><span>Quick reference</span><span>Learn</span></div>
+          <span class="attach">📎 Attach files</span><small>Images · PDF · Word · text</small>
+          <div class="text" id="q"></div>
+          <div class="crow"><small>Discuss a case · text or audio</small><span class="send" id="send"><svg viewBox="0 0 24 24"><path d="M12 19V5M5 12l7-7 7 7"/></svg></span></div>
+        </div>
+        <div class="quick"><div>Discuss a case<small>Structure your clinical reasoning</small></div><div>Calculate a score<small>Clinical calculators</small></div><div>Prepare for exams<small>Questions and explanations</small></div></div>
+      </div>
+      <div id="chat"><div class="col">
+        <div class="ubub" id="ubub"></div>
+        <div class="who" id="who"><svg class="mark"><use href="#m"/></svg>2Doctor <small id="whos"></small></div>
+        <div class="srcs" id="srcs"></div>
+        <div class="bar"><i id="prog"></i></div>
+        <div id="cards"></div>
+      </div></div>
+    </div>
+  </div></div>
+  <div id="cap"></div>
+</div>
+<script src="../hipertensao/conteudo.js"></script>
+<script>
+// Cada quadro é função pura do tempo t (s): render(t) monta o estado inteiro, sem transições CSS.
+const C = window.CONTEUDO, T = C.tempos;
+const clamp = (x, a = 0, b = 1) => Math.max(a, Math.min(b, x));
+const ease = x => { x = clamp(x); return x < .5 ? 4 * x * x * x : 1 - Math.pow(-2 * x + 2, 3) / 2; };
+const $ = id => document.getElementById(id);
+const esc = s => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;');
+const ICON = { // ícones de linha (estilo lucide, como no app)
+  menu: 'M4 6h16M4 12h16M4 18h16', plus: 'M12 5v14M5 12h14', hist: 'M3 12a9 9 0 1 0 3-6.7L3 8M3 3v5h5M12 7v5l3 2',
+  chat: 'M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z', steth: 'M5 3v6a5 5 0 0 0 10 0V3M10 14v2a4 4 0 0 0 8 0v-3M18 13a2 2 0 1 0 0-4 2 2 0 0 0 0 4',
+  cap: 'M22 10 12 5 2 10l10 5 10-5zM6 12v5c3 2 9 2 12 0v-5', book: 'M4 19.5A2.5 2.5 0 0 1 6.5 17H20V3H6.5A2.5 2.5 0 0 0 4 5.5zM20 17v4H6.5', flask: 'M9 3h6M10 3v6L4 20h16l-6-11V3', user: 'M20 21a8 8 0 0 0-16 0M12 13a5 5 0 1 0 0-10 5 5 0 0 0 0 10' };
+const ic = (k, on) => `<i class="${on ? 'on' : ''}"><svg viewBox="0 0 24 24"><path d="${ICON[k]}"/></svg></i>`;
+$('rail').innerHTML = `<svg class="mark"><use href="#m"/></svg>${ic('menu')}${ic('plus')}${ic('hist')}<span class="rule"></span>${ic('chat', 1)}${ic('steth')}${ic('cap')}${ic('book')}${ic('flask')}<span style="flex:1"></span>${ic('user')}<span style="height:14px"></span>`;
+
+const tEnvio = T.digitar, tResposta = T.digitar + T.buscar;
+const inicio = []; { let x = tResposta; for (const d of T.cartoes) { inicio.push(x); x += d; } }
+const tFontes = inicio.at(-1) + T.cartoes.at(-1), fim = tFontes + T.fontes;
+
+const revela = (i, lt, passo, atraso = .5) => ease((lt - atraso - i * passo) / .45);
+const entrada = (k, dy = 14) => `opacity:${k};transform:translateY(${(1 - k) * dy}px)`;
+
+function cartao(c, lt) {
+  const r = (i, h) => `<div style="${entrada(revela(i, lt, c.passo))}">${h}</div>`;
+  let corpo = '';
+  if (c.tipo === 'lista') corpo = c.itens.map((it, i) => r(i, `<div class="row"><span class="tick"></span><span>${it}</span></div>`)).join('');
+  if (c.tipo === 'duas') corpo = `<div class="split">${c.colunas.map((col, i) => r(i, `<div class="lane ${col.classe}"><h4>${col.titulo}</h4>${col.linhas.map(l => `<div>${l}</div>`).join('')}</div>`)).join('')}</div>`;
+  if (c.tipo === 'tabela') corpo = `<table><tr>${c.cab.map(h => `<th>${h}</th>`).join('')}</tr>${c.linhas.map((l, i) =>
+      `<tr class="${l.destaque && lt > c.destaqueEm ? 'hl' : ''}" style="opacity:${revela(i, lt, c.passo)}">${l.celulas.map(x => `<td>${x}</td>`).join('')}</tr>`).join('')}</table>`;
+  if (c.tipo === 'escores') corpo = `<div class="tiles">${c.itens.map((e, i) => r(i, `<div class="tile"><h4>${e.nome}</h4><div>${e.texto}</div>${e.gauge ? `<div class="gauge"><i style="left:${4 + 90 * ease((lt - 1.5 - i * c.passo) / 2.5) * e.gauge}%"></i></div><div style="font-size:11.5px;color:#61747c">${e.faixas}</div>` : ''}</div>`)).join('')}</div>`;
+  const nota = c.nota ? `<div class="nota" style="${entrada(ease((lt - c.notaEm) / .5))}">${c.nota}</div>` : '';
+  return `<h3><span class="n">${c.num}</span>${c.titulo}</h3>${corpo}${nota}<div class="cite">${c.fonte}</div>`;
+}
+
+function render(t) {
+  $('glow').style.left = (-220 + 70 * Math.sin(t / 7)) + 'px'; $('glow').style.top = (-320 + 50 * Math.cos(t / 9)) + 'px';
+  const e = ease(t / 1.6);
+  $('app').style.transform = `perspective(1500px) translateY(${(1 - e) * 60}px) rotateX(${(1 - e) * 12}deg) rotateY(${(1 - e) * -9}deg)`;
+  $('app').style.opacity = e;
+
+  // tela inicial com a pergunta sendo digitada; depois some e entra a conversa
+  const td = clamp((t - 1.6) / (T.digitar - 2.4)), n = Math.floor(C.pergunta.length * td);
+  $('q').innerHTML = n === 0 ? `<span class="ph">Ask or describe a clinical question…</span>` : esc(C.pergunta.slice(0, n)) + (t < tEnvio && Math.floor(t * 2) % 2 === 0 ? '<span class="caret"></span>' : '');
+  $('send').className = 'send' + (n > 0 ? ' ok' : '');
+  $('send').style.transform = `scale(${1 + .18 * Math.max(0, 1 - Math.abs(t - tEnvio + .15) / .2)})`;
+  const kc = ease((t - tEnvio) / .7);
+  $('home').style.cssText = `opacity:${1 - kc};transform:translateY(${-30 * kc}px)`;
+  $('chat').style.cssText = `opacity:${kc};transform:translateY(${(1 - kc) * 30}px)`;
+  $('ubub').textContent = C.pergunta;
+
+  // busca nas fontes oficiais
+  const tb = t - tEnvio;
+  $('whos').textContent = t < tResposta ? 'Searching official sources…' : 'Answer · based on the sources below';
+  $('prog').style.width = (100 * ease(tb / T.buscar)) + '%';
+  $('srcs').innerHTML = C.fontesBusca.map((f, i) => `<span class="chip" style="opacity:${ease((tb - .5 - i * .4) / .4)}"><i></i>${f}</span>`).join('');
+
+  // cartões, um por vez, com a câmera indo até o ativo
+  let html = '', alvo = null;
+  C.cartoes.forEach((c, i) => {
+    const lt = t - inicio[i];
+    if (lt < -0.2 || lt > T.cartoes[i] + 0.6) return;
+    const kin = ease(lt / .6), kout = ease((lt - T.cartoes[i]) / .6);
+    html += `<div class="card" style="opacity:${kin * (1 - kout)};transform:translateY(${(1 - kin) * 40 - kout * 40}px)">${cartao(c, lt)}</div>`;
+    if (lt >= 0 && lt <= T.cartoes[i]) alvo = { i, lt };
+  });
+  if (t >= tFontes) {
+    const k = ease((t - tFontes) / .6);
+    html = `<div class="card" style="opacity:${k}"><h3><span class="n">✓</span>Sources</h3>${C.fontesFinais.map((f, i) =>
+      `<div class="row" style="font-size:16px;${entrada(ease((t - tFontes - .4 - i * .35) / .4))}"><span>${f}</span></div>`).join('')}<div class="nota" style="color:#61747c">${C.aviso}</div></div>`;
+  }
+  $('cards').innerHTML = html;
+
+  let z = 1, x = 0, y = 0;
+  if (alvo) {
+    const k = ease(alvo.lt / 1.2) * (1 - ease((alvo.lt - T.cartoes[alvo.i] + .8) / .8));
+    z = 1 + .24 * k; x = -210 * k + 10 * Math.sin(t / 2.3); y = -300 * k + 7 * Math.cos(t / 2.9);
+  } else if (t < tEnvio) { const k = ease((t - 1.6) / 2); z = 1 + .12 * k; x = -80 * k; y = -95 * k; }
+  $('cam').style.transform = `translate(${x}px, ${y}px) scale(${z})`;
+  const leg = alvo ? C.cartoes[alvo.i].legenda : (t < tEnvio ? 'Asking 2Doctor' : t >= tFontes ? 'Sources' : 'Searching official sources');
+  $('cap').textContent = leg;
+  return fim;
+}
+window.render = render; window.duracao = fim; render(0);
+</script>
+</body>
+</html>

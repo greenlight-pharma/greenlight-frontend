@@ -322,3 +322,32 @@ if __name__ == '__main__':
     for nome, dur, fn in [('g-titulo', 3.0, titulo), ('g-titulo-est', 3.5, titulo_estudantes), ('g1', 3.5, g1), ('g2', 11.0, g2),
                           ('g3', 12.5, g3), ('g4', 14.5, g4), ('g5', 5.0, g5), ('g6', 9.0, g6), ('g-final', 6.0, final)]:
         gravar(nome, dur, fn)
+
+
+# ---- Hipertensão (episódio para estudantes, 26/09) ----
+def titulo_hipertensao(t):  # 3,5 s
+    im, d = quadro()
+    marca(im, 640, 205, 96, 76, fade(t, 0.2))
+    d = ImageDraw.Draw(im, 'RGBA')
+    texto(d, (640, 370), 'Hypertension: diagnosis and treatment', 36, CREME, fade(t, 0.7), italico=True, anchor='ma')
+    texto(d, (640, 425), 'for medical students', 24, OURO, fade(t, 1.1), italico=True, anchor='ma')
+    return im
+
+
+def rotulos_hipertensao(saida):
+    itens = {
+        'r-arteria': ('chronic high pressure', 'the artery wall thickens and stiffens'),
+        'r-afericao': ('seated · 5 min rest', 'arm supported at heart level · a cuff that fits'),
+        'r-coracao': ('heart', 'left ventricular hypertrophy'),
+        'r-rim': ('kidney', 'albumin leaks through the filters'),
+        'r-retina': ('retina', 'narrowed arterioles'),
+    }
+    for nome, (l1, l2) in itens.items():
+        im = Image.new('RGBA', (W, H), (0, 0, 0, 0))
+        sombra = Image.new('RGBA', (W, H), (0, 0, 0, 0)); ds = ImageDraw.Draw(sombra)
+        ds.text((62, 62), l1, font=fonte(40, True), fill=(0, 0, 0, 200))
+        if l2: ds.text((62, 118), l2, font=fonte(26), fill=(0, 0, 0, 200))
+        im = Image.alpha_composite(im, sombra.filter(ImageFilter.GaussianBlur(4))); d = ImageDraw.Draw(im)
+        d.text((60, 60), l1, font=fonte(40, True), fill=CREME + (255,))
+        if l2: d.text((60, 116), l2, font=fonte(26), fill=OURO + (255,))
+        im.save(Path(saida) / f'{nome}.png')
