@@ -3,7 +3,15 @@ import { FileDown, Loader2 } from 'lucide-react';
 import { useI18n } from './I18n';
 import './chat-pdf.css';
 
-export default function ChatPdfButton({ message }) {
+// Nome do arquivo a partir da pergunta: "2doctor-como-tratar-hipertensao.pdf". Evita o "(1)", "(2)"
+// de quem salva vários PDFs com o mesmo nome.
+export function pdfFileName(question) {
+  const slug = String(question || '').normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase()
+    .replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '').slice(0, 60).replace(/-+[^-]*$/, (m) => (m.length > 1 && String(question).length > 60 ? '' : m)).replace(/-+$/, '');
+  return `2doctor-${slug || 'resposta'}.pdf`;
+}
+
+export default function ChatPdfButton({ message, question = '' }) {
   const { locale } = useI18n();
   const [busy, setBusy] = useState(false), [url, setUrl] = useState(''), [error, setError] = useState(false);
   const working = useRef(false), alive = useRef(true), download = useRef(null), trigger = useRef(null), restoreFocus = useRef(false);
@@ -37,7 +45,7 @@ export default function ChatPdfButton({ message }) {
     finally { working.current = false; if (alive.current) setBusy(false); }
   }
   return <span className="chat-pdf-action">
-    {url ? <a ref={download} className="copy" href={url} download="2doctor-resposta.pdf"><FileDown size={15}/>{label('Baixar PDF', 'Download PDF', 'Descargar PDF')}</a> : <button ref={trigger} className="copy" type="button" aria-disabled={busy} aria-busy={busy} onClick={generate}>{busy ? <Loader2 size={15} className="chat-pdf-spin"/> : <FileDown size={15}/>}<span aria-live="polite">{busy ? label('Gerando PDF…', 'Generating PDF…', 'Generando PDF…') : label('Gerar PDF', 'Generate PDF', 'Generar PDF')}</span></button>}
+    {url ? <a ref={download} className="copy" href={url} download={pdfFileName(question)}><FileDown size={15}/>{label('Baixar PDF', 'Download PDF', 'Descargar PDF')}</a> : <button ref={trigger} className="copy" type="button" aria-disabled={busy} aria-busy={busy} onClick={generate}>{busy ? <Loader2 size={15} className="chat-pdf-spin"/> : <FileDown size={15}/>}<span aria-live="polite">{busy ? label('Gerando PDF…', 'Generating PDF…', 'Generando PDF…') : label('Gerar PDF', 'Generate PDF', 'Generar PDF')}</span></button>}
     {error && <span className="chat-pdf-error" role="alert">{label('Não foi possível gerar. Tente novamente.', 'Could not generate. Try again.', 'No se pudo generar. Inténtalo de nuevo.')}</span>}
   </span>;
 }
