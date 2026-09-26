@@ -40,6 +40,15 @@
   - Pedido seguinte: câmera mais longe (biblioteca aberta, 10 créditos) e cenário menos sofisticado. Testados sala de aula de faculdade e sala dos médicos no hospital (20 créditos). **Escolhida: sala dos médicos no hospital, imagem hospital-b** (jaleco, negatoscópio com raio-X, jalecos pendurados, computador, café).
   - Comparação no mesmo plano: Veo 3.1 Fast 120 créditos (111 s) × Veo 3.1 completo 320 (137 s, funcionou de primeira desta vez); voz Lara 3 + 3. Nos dois a câmera se aproxima dela durante o plano, apesar de "no zoom": no próximo, pedir "locked-off, framing stays exactly as the first frame".
   - Saldo: 2.109 créditos.
+- **Explicador "Por Dentro · The heart attack, explained" (26/09, 1:53, 16:9, 1280×720).** Briefing do Dilson: o prompt do vídeo de referência "exatamente igual", trocando o tema por síndrome coronariana aguda para leigos; ~2 min pelo saldo; a Iris britânica. Arquivo final `out/sca/por-dentro-sca.mp4`.
+  - Scripts: `runway/ep-sca.mjs` (vozes, imagens, falas no Veo 3.1 Fast, apoio no wan3, troca de voz, narração), `runway/graficos_sca.py` (grafismos animados com Pillow + ffmpeg, sem custo) e `runway/montar_sca.sh` (montagem, tratamento, trilha, loudnorm −16 LUFS).
+  - Voz: **Maggie** (`eleven_v3`, escolhida pelo Dilson entre Eleanor, Serene, Mabel, Maggie e Paula). As falas saem do Veo com sotaque britânico pedido no prompt e são convertidas para a Maggie; as narrações do grafismo são TTS da Maggie.
+  - Cenários (Iris sempre de longe, câmera travada): sala dos médicos (h1, h2, h4), corredor (h3), escada de madrugada (h5, h6). Corredor e escada: ela se aproxima da câmera no fim, então a montagem usa só o começo e a fala continua sobre o grafismo.
+  - Apoio sem pessoas: `wan3` 832×480, 5 s, 25 créditos cada (ambulância na chuva; entrada da emergência). Trilha ambiente: `eleven_text_to_sound_v2` 30 s em loop, 30 créditos.
+  - Falhas: troca de voz da h1 recusada 2× por "content policy" (3 créditos cada) e aceita mandando o vídeo em vez do áudio; narração n5 ("Por Dentro. A 2Doctor series.") falha sempre sem custo, a assinatura ficou só em texto; n4 falhou 1× sem custo.
+  - Sincronia: cada trecho com `-shortest`, desvio acumulado ≤ 0,03 s.
+  - Afirmações usadas: I1, I2 ("within minutes"), I3, I4, I5, EM, I6, I8 e uma nova, acesso pelo punho no cateterismo (conferir na ESC 2023, preferência pela via radial). Todas "parcial" até anotar as páginas.
+  - Gasto do explicador: 886 créditos. Saldo: 1.220.
 
 ## Modelos 3D próprios (`../models3d/`)
 Tudo procedural, com código nosso. Visual de documentário no palco comum (`stage.js`, `look:'doc'`): luz quente de lado, contraluz azul, vinheta, grão por quadro, foco raso (`dof` + `stage.setFocus`), oclusão de ambiente (`ao`) e texturas de tecido (`tissueMaterial`). Cada cena exporta `stageOptions`.
