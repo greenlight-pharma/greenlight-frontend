@@ -25,8 +25,16 @@ ffmpeg -v error -y -i app-motion.mp4 -i e0.mp3 -i e1.mp3 -i e2.mp3 -i e3.mp3 -i 
   -map "[v]" -map "[a]" "${ENC[@]}" seg-est/p07.mp4
 ffmpeg -v error -y -i g-final.mp4 "${ENC[@]}" seg-est/p08.mp4
 
-(cd seg-est && ls p*.mp4 | sort | sed "s/^/file '/; s/$/'/") > seg-est/lista.txt
-ffmpeg -v error -y -f concat -safe 0 -i seg-est/lista.txt -c copy seg-est/corte.mp4
+# Junta com o filtro concat (reencoda): cada trecho entra com áudio e imagem alinhados.
+# O concat por lista (-c copy) somava sobras de áudio de cada trecho e adiantava a boca da Iris.
+IN=(); FC=""; i=0
+for f in $(ls seg-est/p*.mp4 | sort); do
+  IN+=(-i "$f"); d=$(ffprobe -v error -select_streams v:0 -show_entries stream=duration -of csv=p=0 "$f")
+  FC+="[$i:v]setpts=PTS-STARTPTS[v$i];[$i:a]aresample=48000,apad,atrim=0:$d,asetpts=PTS-STARTPTS[a$i];"; i=$((i+1))
+done
+for ((k=0;k<i;k++)); do FC+="[v$k][a$k]"; done
+ffmpeg -v error -y "${IN[@]}" -filter_complex "${FC}concat=n=$i:v=1:a=1[v][a]" -map "[v]" -map "[a]" \
+  -c:v libx264 -crf 18 -preset medium -c:a aac -ar 48000 -ac 2 seg-est/corte.mp4
 DUR=$(ffprobe -v error -show_entries format=duration -of csv=p=0 seg-est/corte.mp4)
 ffmpeg -v error -y -i seg-est/corte.mp4 -stream_loop -1 -i trilha.mp3 -filter_complex \
   "[1:a]volume=0.12,afade=t=in:d=2,afade=t=out:st=$(echo "$DUR-3" | bc):d=3[m];[0:a][m]amix=inputs=2:duration=first:normalize=0,loudnorm=I=-16:TP=-1.5[a]" \

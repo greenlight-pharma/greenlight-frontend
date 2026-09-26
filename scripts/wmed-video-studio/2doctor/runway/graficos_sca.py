@@ -209,7 +209,7 @@ def sobreposicoes():
     """Cartões transparentes (PNG) aplicados sobre as falas da Iris na montagem."""
     nome = Image.new('RGBA', (W, H), (0, 0, 0, 0)); d = ImageDraw.Draw(nome)
     d.rectangle([60, 612, 92, 614], fill=OURO + (255,))
-    texto(d, (60, 624), 'Dr Iris Maren', 32)
+    texto(d, (60, 624), 'Iris Maren, MD', 32)
     texto(d, (62, 666), 'P H Y S I C I A N   ·   2 D O C T O R', 12, CREME, 0.7)
     nome.save(SAIDA / 'ov-nome-720.png')
     termo = Image.new('RGBA', (W, H), (0, 0, 0, 0)); d = ImageDraw.Draw(termo)

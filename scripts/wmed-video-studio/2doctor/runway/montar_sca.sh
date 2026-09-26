@@ -65,8 +65,16 @@ anim_narrada s11 n4.mp3 15 "a2.mp4 m6a-wan.mp4 m6b-wan.mp4" "r-ecg.png:5.3:8.6 r
 filmado h6-final.mp4 s12
 ffmpeg -v error -y -i g-final.mp4 "${ENC[@]}" seg/s13.mp4
 
-(cd seg && ls s[0-9]*.mp4 | sort | sed "s/^/file '/; s/$/'/") > seg/lista.txt
-ffmpeg -v error -y -f concat -safe 0 -i seg/lista.txt -c copy seg/corte.mp4
+# Junta com o filtro concat (reencoda): cada trecho entra com áudio e imagem alinhados.
+# O concat por lista (-c copy) somava sobras de áudio de cada trecho e adiantava a boca da Iris.
+IN=(); FC=""; i=0
+for f in $(ls seg/s[0-9]*.mp4 | sort); do
+  IN+=(-i "$f"); d=$(ffprobe -v error -select_streams v:0 -show_entries stream=duration -of csv=p=0 "$f")
+  FC+="[$i:v]setpts=PTS-STARTPTS[v$i];[$i:a]aresample=48000,apad,atrim=0:$d,asetpts=PTS-STARTPTS[a$i];"; i=$((i+1))
+done
+for ((k=0;k<i;k++)); do FC+="[v$k][a$k]"; done
+ffmpeg -v error -y "${IN[@]}" -filter_complex "${FC}concat=n=$i:v=1:a=1[v][a]" -map "[v]" -map "[a]" \
+  -c:v libx264 -crf 18 -preset medium -c:a aac -ar 48000 -ac 2 seg/corte.mp4
 
 # Trilha em loop, baixa, com fade no fim; fala e narração por cima.
 DUR=$(ffprobe -v error -show_entries format=duration -of csv=p=0 seg/corte.mp4)
