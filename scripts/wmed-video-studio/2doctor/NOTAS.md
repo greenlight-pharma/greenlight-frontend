@@ -102,3 +102,9 @@ Abertura fria (exame de rotina, sem sintomas) → título → apresentadora: o f
   - A) `seedance2_5` com a Iris como referência e a voz da Lara como áudio de referência: **bloqueado pela moderação do fornecedor** (`INPUT_PREPROCESSING.SAFETY.THIRD_PARTY`, provável rosto realista), 0 crédito. Também não aceita áudio de referência junto com quadro-chave (`position: first`).
   - B) `veo3.1_fast`, primeiro quadro p5-cafe-a, 1080:1920, 8 s, áudio gerado pelo modelo: **120 créditos**, 131 s. Saída vertical nativa, câmera se aproxima, rosto estável e expressão natural. A voz é do Veo (não é a Lara): risco de mudar de plano para plano.
   - Saldo: 4.638 créditos.
+- **Estilo aprovado: "de longe" (25/09)**, `runway/teste-longe.mjs`, saída `out/longe/`. O Dilson achou o close para a lente com cara de IA e pediu câmera mais longe.
+  - 2 versões do café, cada uma com 2 imagens iniciais (`gpt_image_2` médio com `@Iris`, 10 créditos por versão) + Veo 3.1 Fast 8 s vertical (120 créditos) + troca da voz do Veo pela Lara (`eleven_multilingual_sts_v2`, `removeBackgroundNoise`, 3 créditos).
+  - **Escolhida: v1, pela janela** (imagem v1-a; câmera do lado de fora, através do vidro com chuva, ela conversa com alguém à frente, não com a câmera). Cópia em `out/longe/cafe-aprovado.mp4`. v2 (entrevista, olhar fora da lente) ficou de reserva.
+  - A troca de voz remove o ambiente do café: repor chuva e burburinho na mixagem.
+  - Regra para os próximos planos da Iris: plano aberto ou médio-aberto, olhar fora da lente, algo em primeiro plano, luz irregular, câmera quase parada.
+  - Saldo: 4.372 créditos.
