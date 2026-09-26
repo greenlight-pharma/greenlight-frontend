@@ -1,3 +1,11 @@
+## 2026-09-26 20:37 BRT — Erro de gateway no chat corrigido localmente
+
+Rodada 23:30Z: estado/diário e planos lidos; Git inicial 2ce18fe e Railway e7140d4e SUCCESS/health200. Reproduzido em fixture local sem upstream/persistência: resposta HTTP502 em HTML exibia “Unexpected token '<' ... is not valid JSON”. Correção restrita ao frontend 2Doctor: parser de erro com fallback traduzido “O assistente não conseguiu concluir a resposta. Tente novamente.” para corpo HTML, vazio ou JSON sem mensagem válida. Mantém mensagens válidas da API e AbortError; tratamento de401 segue acessível quando corpo não éJSON. Pergunta recuperada e envio habilitado, sem reenvio automático. WMed mantém o fluxo anterior; API/modelos/dados não alterados.
+
+223 testes passaram/10 integrações ignoradas por TEST_DATABASE_URL ausente; testes novos cobrem HTML/vazio PT/EN/ES, mensagens de401/429, formato inválido e interrupção. Builds2Doctor e site completo aprovados, aviso preexistente de chunks grandes; diffcheck limpo. Logs /tmp/2doctor-chat-error-{tests,build,site}.log. CUA390×844 local confirmou fallback, pergunta preservada, envio habilitado, sem overflow; screenshot conferido. Fixture de histórico é simulada, não valida salvamento. Não provocada indisponibilidade real nem rodaram chamada clínica, banco, Safari/VoiceOver físicos.
+
+Próximo: publicar somente2doctor-web comcwdapp/--path-as-root; Dockerfile/railway.json conferidos; confirmar SUCCESS/health200/asset/interface pública. Rollback funcional b46b3dd. Não declarar publicação concluída antes da conferência.
+
 ## 2026-09-26 18:33 BRT — Rascunho do chat preservado na navegação móvel
 
 Rodada 21:30Z: estado/diário e planos relidos. HEAD 7409714; nenhum código novo desde b46b3dd, somente dist-samu preexistente não rastreado. Railway e7140d4e-c2b2-48d9-ad1a-51759ee6c9f0 permanece SUCCESS, healthz 200/product 2doctor. Não houve publicação.
