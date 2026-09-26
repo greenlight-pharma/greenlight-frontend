@@ -1,3 +1,9 @@
+## 2026-09-26 02:08 BRT — Conta: correção publicada na 2Doctor
+
+Fonte 90c97e9. Deployment 14754033-7159-43a7-878a-bf5f8debcfb3 confirmado SUCCESS no serviço 2doctor-web/projeto 2doctor. Health 200 e produto 2doctor; asset público /assets/index-DRNREAeO.js idêntico byte a byte ao build local. Os 206 testes e os builds da 2Doctor e do site completo passaram. Interface pública em 390×844: Minha conta exige login, fechar entrada retorna ao chat, largura 390 sem overflow horizontal e console sem erros. Sem login real; janela autenticada validada com fixture sintética conforme registro anterior. Fixture encerrada, aba 73 fechada, viewport restaurado. API Vytal/ECG intactos; candidato beforeunload não aplicado.
+
+Próximo passo executável: verificar abertura e fechamento da janela de login pelo menu móvel, pois a conferência pública mostrou foco ainda no botão Abrir menu atrás do diálogo. Reproduzir e corrigir somente esse problema, preservando autenticação. Não ampliar catálogo. Rollback por reconstrução c8c67bf no diretório scripts/wmed-app. Não foram testados iPhone físico, Safari/VoiceOver nem sessão real de usuário.
+
 ## 2026-09-26 02:05 BRT — Conta: fechamento e leitura preservados, candidata validada
 
 Fricção reproduzida na conta em320×568: rolar o conteúdo deixou o botãoFechar em y−222; Escape não fechou, foco permaneceu emAbrir menu atrás da janela; rolar margem moveu chat y3860→4428. AccountDialog agora mantém cabeçalho/Fechar44px fora da rolagem, contémTab/ShiftTab, fechaEscape e restaura foco/overflow após fechar. Efeito apóscleanup do drawer mantém posição da página. Header ganhou nome acessívelMinha conta quando texto oculto. Restrito à2Doctor; conteúdo/conexões/login/logout preservados, WMed conserva estrutura anterior.
