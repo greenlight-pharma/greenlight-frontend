@@ -398,6 +398,7 @@ function ClinicalCaseBody({ session, onLogin, onProgress, onPendingChange, activ
             />
             <div className="voice-actions">
               <button
+                className={"voice-record"+(recording?" is-recording":"")}
                 disabled={!!busy||requestingMic||!!retryAudio}
                 onClick={recording ? () => recorder.current.stop() : record}
               >
@@ -428,10 +429,10 @@ function ClinicalCaseBody({ session, onLogin, onProgress, onPendingChange, activ
               <div><button type="button" onClick={()=>{if(requireLogin())transcribe(retryAudio);}}>{t("Tentar transcrição novamente")}</button><button type="button" onClick={()=>{setRetryAudio(null);setError('');}}>{t("Descartar áudio")}</button></div>
               <small>{t("O áudio pendente não fica salvo no histórico. Ao fechar ou atualizar esta aba, ele será perdido.")}</small>
             </div>}
-            <p className="module-note">
+            <p className="module-note case-audio-note">
               {t("Áudio de até 3 minutos ou 2,9 MB. Revise a transcrição antes de continuar. Não grave a voz do paciente.")}
             </p>
-            <button disabled={!!busy||recording||!relato.trim()} onClick={()=>setPrivacyOpen(true)}>{t("Revisar dados pessoais")}</button>
+            <button className="case-privacy-button" disabled={!!busy||recording||!relato.trim()} onClick={()=>setPrivacyOpen(true)}>{t("Revisar dados pessoais")}</button>
             {audioRecovery && organizedStory!==null && <p className="module-note" role="status">{canResumeReview ? t("Suas correções nos campos foram mantidas nesta aba.") : t("O relato mudou. Ao reorganizar, os campos serão refeitos e substituirão as correções anteriores.")}</p>}
             {relatoTooShort && <p id={lengthHintId} className="module-note" role="status">{t("Escreva pelo menos 20 caracteres para continuar.")}</p>}
             {audioRecovery && errorNotice}
