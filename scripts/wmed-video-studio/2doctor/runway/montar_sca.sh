@@ -34,7 +34,7 @@ anim_narrada() {  # anim_narrada <saída> <narração.mp3|-> <duração> "<clip1
   for c in "${clips[@]}"; do ins+=(-i "$c"); fc+="[$i:v]$G,setpts=PTS-STARTPTS[c$i];"; i=$((i+1)); done
   n=$i; for ((k=0;k<n;k++)); do fc+="[c$k]"; done; fc+="concat=n=$n:v=1:a=0[b0];"
   local j=0
-  for r in "${rot[@]}"; do IFS=: read -r png e s <<<"$r"
+  for r in ${rot[@]+"${rot[@]}"}; do IFS=: read -r png e s <<<"$r"
     ins+=(-loop 1 -t "$dur" -i "$png")
     fc+="[$i:v]format=rgba,fade=t=in:st=$e:d=0.5:alpha=1,fade=t=out:st=$s:d=0.5:alpha=1[o$j];[b$j][o$j]overlay[b$((j+1))];"
     i=$((i+1)); j=$((j+1)); done
@@ -47,8 +47,10 @@ filmado a1.mp4 s01
 com_cartao h1-final.mp4 ov-nome-720.png 0.6 4.0 s02
 ffmpeg -v error -y -i g-titulo.mp4 "${ENC[@]}" seg/s03.mp4
 com_cartao h2-final.mp4 ov-termo-720.png 3.2 7.2 s04
-anim_narrada tmp-m1 - 3.5 "m1-wan.mp4" "r-coronarias.png:0.2:3.0"
-fala_sobre_grafico h3-final.mp4 4.5 seg/tmp-m1.mp4 s05
+# 26/09: corredor e escada da ambulância tinham "cara de IA" (Dilson); a Iris sai de cena
+# nesses dois trechos e a fala dela vira narração sobre animação/apoio, como na referência.
+ffmpeg -v error -y -i m1-wan.mp4 -vf "setpts=2*PTS,minterpolate=fps=24:mi_mode=blend" -an seg/m1-lento.mp4
+anim_narrada s05 h3-voz.mp3 8 "seg/m1-lento.mp4" "r-coronarias.png:0.4:7.2"
 anim_narrada s06 n1.mp3 11 "m2a-wan.mp4 m2b-wan.mp4" "r-placa.png:1.5:5.4 r-coagulo.png:6.3:10.5"
 # m3: no fim o coração inteiro acinzenta (errado: só a região da artéria bloqueada sofre);
 # usa só os 6 s iniciais, com o escurecimento concentrado embaixo, em câmera lenta 2x.
@@ -56,7 +58,8 @@ ffmpeg -v error -y -i m3-wan.mp4 -vf "trim=0:6,setpts=2*(PTS-STARTPTS),minterpol
 anim_narrada s07 n2.mp3 12 "seg/m3-lento.mp4" "r-musculo.png:0.4:7.6 r-tempo.png:8.8:11.5"
 filmado h4-final.mp4 s08
 anim_narrada s09 n3.mp3 14 "m4-wan.mp4 m4b-wan.mp4" "r-sintomas.png:0.4:7.4 r-sintomas2.png:8.2:13.5"
-fala_sobre_grafico h5-final.mp4 3.0 g5.mp4 s10
+ffmpeg -v error -y -ss 2.2 -t 3 -i a1.mp4 -an seg/a1-corte.mp4
+anim_narrada s10 h5-voz.mp3 8 "seg/a1-corte.mp4 g5.mp4" ""
 # ambulância chegando + monitor de ECG + balão e stent, com a narração n4 atravessando tudo
 anim_narrada s11 n4.mp3 15 "a2.mp4 m6a-wan.mp4 m6b-wan.mp4" "r-ecg.png:5.3:8.6 r-stent.png:9.6:14.5"
 filmado h6-final.mp4 s12

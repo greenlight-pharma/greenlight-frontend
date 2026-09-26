@@ -55,6 +55,7 @@
   - Moderação do wan3: m3a barrado na entrada (**cobrou 60**), m3b barrado na saída (0); refeito como m3 com descrição neutra ("the light in that area is slowly fading"). No fim do m3 o coração inteiro acinzenta (errado: só a região da artéria bloqueada sofre), então a montagem usa só os 6 s iniciais em câmera lenta 2x.
   - Revisão quadro a quadro: placa, coágulo, stent e ECG coerentes; sem texto legível.
   - Gasto desta versão: 580 créditos (100 perdidos em moderação). Saldo: 640.
+- **Versão 3 (26/09, sem custo):** o Dilson achou a Iris com cara de IA no corredor (h3) e na escada da ambulância (h5). Ela sai de cena nesses dois trechos: h3 vira narração sobre as coronárias em câmera lenta; h5 vira narração sobre a ambulância na chuva + cartão "Call an ambulance". A Iris fica na tela só na sala dos médicos (h1, h2, h4) e no encerramento (h6), como na referência (metade do tempo sem a apresentadora).
 
 ## Modelos 3D próprios (`../models3d/`)
 Tudo procedural, com código nosso. Visual de documentário no palco comum (`stage.js`, `look:'doc'`): luz quente de lado, contraluz azul, vinheta, grão por quadro, foco raso (`dof` + `stage.setFocus`), oclusão de ambiente (`ao`) e texturas de tecido (`tissueMaterial`). Cada cena exporta `stageOptions`.
