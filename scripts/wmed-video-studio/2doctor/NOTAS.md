@@ -15,11 +15,17 @@
    - Regra: vídeo gerado por IA (Runway) só em cenas sem afirmação clínica; mecanismo sempre nos nossos modelos 3D; rótulo "criado por IA" na legenda e em selo discreto (regra do Instagram e do X).
 
 ## Modelos 3D próprios (`../models3d/`)
-- `build_lungs.py`: pulmões por campo implícito (5 lobos, fissuras, incisura cardíaca, cúpulas) e árvore brônquica por divisão de volume (Kitaoka 1999) com a lei de Murray. Gera `out/lungs.glb` e `out/airways.json` (cerca de 3.300 ramos, 13 gerações). Volumes: D 2,55 L, E 2,16 L.
-- `bronchus.js`: corte do brônquio com parâmetros contract, edema, mucus, eos, neut, goblet, fibrosis e flow. Está legível, mas precisa de acabamento: ficou chapado e sem textura; faltam as dobras bem visíveis e as células inflamatórias maiores.
-- A fazer: ácino alveolar com enfisema; coração com coronárias (placa → ruptura → trombo → área de necrose → angioplastia); fígado (liso → fibrose → nódulos; circulação porta, varizes, ascite).
-- Rodar: `node models3d/serve.mjs` (porta 3070) e `node models3d/stills.mjs <cena> <t1,t2> <saída>`. Precisa de `pip install numpy scipy scikit-image trimesh fast-simplification`.
-- Não usar Z-Anatomy (CC BY-SA) nem o CT TotalSegmentator s1397: tem derrame e redução do pulmão esquerdo, então não serve de modelo normal.
+Tudo procedural, com código nosso. Visual de documentário no palco comum (`stage.js`, `look:'doc'`): luz quente de lado, contraluz azul, vinheta, grão por quadro, foco raso (`dof` + `stage.setFocus`), oclusão de ambiente (`ao`) e texturas de tecido (`tissueMaterial`). Cada cena exporta `stageOptions`.
+- Pulmões: `build_lungs.py` (Kitaoka 1999 + lei de Murray; cerca de 3.300 ramos, 13 gerações) → `scene-lungs`.
+- Brônquio (Ep. 1): `bronchus.js` → `scene-bronchus` (12 s: normal → crise com eosinófilos, contração, edema, muco e dobras → reabre). Câmera se aproxima no clímax.
+- Ácino (DPOC, futuro): `acinus.js` → `scene-acinus` (12 s: normal → enfisema centroacinar com bolhas; `?mode=normal` em loop de 8 s).
+- Coração (Ep. 2): `heart.js`, `heart-vessel.js`, `heart-slice.js`, `heart-geo.js` → `scene-heart` (8 s), `scene-coronary` (12 s: placa → ruptura → plaquetas e fibrina → trombo), `scene-necrosis` (10 s: frente de onda do endocárdio ao epicárdio no território da DA), `scene-cath` (12 s: fio-guia, balão, stent, fluxo volta).
+- Fígado (Ep. 3): `liver-geom.js`, `liver.js`, `liver-lobule.js`, `liver-vessels.js` → `scene-liver` (8 s), `scene-liver-injury` (10 s), `scene-fibrosis` (12 s: estreladas → septos → nódulos), `scene-portal` (11 s: varizes, baço, ascite), `scene-ultrasound` (7 s).
+- Render em CPU (swiftshader), 540x960: 0,9 a 4,5 s por quadro. Em 1080x1920, cerca de 4 vezes mais.
+- Pendências de acabamento: baço com cara de rim na cena porta; bolhas do enfisema ainda parecem cacho por fora; cartilagem do brônquio ainda chama atenção demais.
+- Simplificações para o revisor médico estão nos relatórios de cada modelo (resumo: anatomia idealizada, cirrose exagerada para ler no celular, esôfago deslocado para aparecer, stent comprime o trombo em vez de removê-lo).
+- Rodar: `node models3d/serve.mjs` (porta 3070) e `QS="mode=normal" node models3d/stills.mjs <cena> <t1,t2> <saída> 540 960`. Precisa de `pip install numpy scipy scikit-image trimesh fast-simplification` e `npm install` em `scripts/wmed-app` (three.js).
+- Não usar Z-Anatomy (CC BY-SA) nem o CT TotalSegmentator s1397.
 
 ## Fontes verificadas (Asma/DPOC; o proxy bloqueou os PDFs, confirmar a página exata)
 - GINA 2026 (05/05/2026), GOLD 2026 v1.3 (08/12/2025), PCDT Asma (Portaria Conjunta SAES/SCTIE nº 43, 24/03/2026), PCDT DPOC (nº 29, 27/11/2025), SBPT Asma 2020, StatPearls NBK551579, bulas Symbicort/Spiolto/Anoro.
