@@ -113,7 +113,7 @@ const NOISE = `
 function wallMaterial() {
   const m = new THREE.MeshPhysicalMaterial({
     color: 0xe6a09a, roughness: 0.38, sheen: 0.8, sheenColor: new THREE.Color(0xffc4b8), sheenRoughness: 0.45,
-    clearcoat: 0.7, clearcoatRoughness: 0.18, transparent: true, opacity: 0.13, side: THREE.DoubleSide, depthWrite: false,
+    clearcoat: 0.5, clearcoatRoughness: 0.22, transparent: true, opacity: 0.13, side: THREE.DoubleSide, depthWrite: false,
   });
   const U = { uE: { value: 0 }, uCapF: { value: 58 }, uRim: { value: 0.5 }, uCap: { value: 1 } };
   m.userData.u = U;
@@ -159,7 +159,7 @@ function wallMaterial() {
         gCap = cap;`)
       .replace('#include <opaque_fragment>', `
         float fres = pow(1.0 - clamp(abs(dot(normalize(normal), normalize(vViewPosition))), 0.0, 1.0), 2.4);
-        outgoingLight += vec3(1.0, 0.78, 0.74) * fres * uRim * (1.0 - 0.3 * uE);
+        outgoingLight += vec3(1.0, 0.78, 0.74) * fres * uRim;
         diffuseColor.a = clamp(diffuseColor.a + fres * 0.4 * (1.0 - 0.35 * uE), 0.0, 0.92);
         #include <opaque_fragment>`);
   };
@@ -198,7 +198,7 @@ export function buildAcinus(stage) {
   alv.forEach((a, i) => { const G = gCent[g1[i]]; G.c.add(a.c); G.n++; G.grad += a.grad; });
   gCent.forEach((G) => { G.c.divideScalar(G.n); G.grad /= G.n; });
   // nível 2: regiões do ácino (amostragem do ponto mais distante + vizinho mais próximo) → bolhas grandes
-  const K = 7, seeds = [alv[0].c];
+  const K = 5, seeds = [alv[0].c];
   while (seeds.length < K) {
     let best = null, bd = -1;
     for (const a of alv) { const d = Math.min(...seeds.map((c) => c.distanceTo(a.c))); if (d > bd) { bd = d; best = a.c; } }
@@ -206,6 +206,9 @@ export function buildAcinus(stage) {
   }
   const regionOf = (c) => { let k = 0, bd = 1e9; seeds.forEach((sc, i) => { const d = sc.distanceTo(c); if (d < bd) { bd = d; k = i; } }); return k; };
   const g2 = gCent.map((G) => regionOf(G.c)); const ng2 = K;
+  const rCent = Array.from({ length: K }, () => V()), rN = new Array(K).fill(0);
+  gCent.forEach((G, g) => { rCent[g2[g]].addScaledVector(G.c, G.n); rN[g2[g]] += G.n; });
+  rCent.forEach((c, k) => c.divideScalar(Math.max(1, rN[k])));
   // início da destruição por grupo: centroacinar (perto dos bronquíolos respiratórios primeiro)
   const on1 = gCent.map((G, g) => 0.04 + 0.4 * G.grad + 0.18 * hash(g * 4.7));
   const on2 = Array.from({ length: ng2 }, (_, k) => 0.42 + 0.2 * hash(k * 8.3));
@@ -294,9 +297,10 @@ export function buildAcinus(stage) {
     alv.forEach((a, i) => {
       const { d1, d2 } = dE[i];
       // alvéolos do mesmo grupo crescem e se afastam do centro do grupo: o espaço fundido fica maior
-      const c = a.c.clone().addScaledVector(a.push, 0.15 * d1 + 0.1 * d2);
+      // e, na fase tardia, convergem para o centro da região: a união vira um balão liso (bolha)
+      const c = a.c.clone().addScaledVector(a.push, 0.15 * d1).lerp(rCent[a.g2], 0.55 * d2);
       cen[i] = c.sub(pivot).multiplyScalar(S).add(pivot);
-      rad[i] = a.r * S * rS * (1 + 0.28 * d1 + 0.2 * d2);
+      rad[i] = a.r * S * rS * (1 + 0.28 * d1 + 0.7 * d2);
     });
     const ductR = (d) => d.r * S * (1 + 0.5 * E);                 // ductos alveolares dilatam
     const dA = ducts.map((d) => d.a.clone().sub(pivot).multiplyScalar(S).add(pivot));
