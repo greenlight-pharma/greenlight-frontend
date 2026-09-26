@@ -41,3 +41,27 @@ Abertura fria (exame de rotina, sem sintomas) → título → apresentadora: o f
 - SDK oficial `@runwayml/sdk` (4.20.1). Não há MCP oficial no npm; os que existem são de terceiros (não passar a chave para eles).
 - A API tem imagem (`gen4_image`), vídeo (`gen4_turbo`, `gen4.5`), atuação (`act_two`), avatar falante com áudio ou texto (`gwm1_avatars`) e voz (`eleven_multilingual_v2`).
 - Na nuvem: a rede bloqueia `api.dev.runwayml.com` e não há Chrome logado. Precisa liberar o domínio e guardar `RUNWAYML_API_SECRET` nas variáveis do ambiente.
+
+### Conta de API (conferido em 25/09/2026, no Mac)
+- Organização de API **2Doctor** criada em dev.runwayml.com (login Google, dilsonpanisio@gmail.com). É separada do plano do app web: os créditos do app **não** valem na API.
+- Chave `2doctor-por-dentro` em `~/.config/2doctor/runway.env` (permissão 600, carregada pelo `~/.zshrc`). Nunca no Git.
+- **Saldo da API: 0 crédito.** Sem cartão salvo (o cadastro oferece 500 créditos grátis ao salvar um cartão). Compra: 1 crédito = US$ 0,01, no portal.
+- Tier: teto de 10.000 créditos por mês (US$ 100). Limites: `gen4_image` e `gen4_image_turbo` 2 simultâneas / 200 por dia; `gen4_turbo`, `gen4.5`, `act_two`, `gwm1_avatars` e `eleven_multilingual_v2` 1 simultânea / 50 por dia.
+- Modelos liberados incluem todos os da série: `gen4_image`, `gen4_image_turbo`, `gen4_turbo`, `gen4.5`, `act_two`, `gwm1_avatars`, `gwm1_avatar_async_audio_to_video`, `gwm1_avatar_async_text_to_video`, `eleven_multilingual_v2`, `eleven_v3` (e outros: veo3.1, seedance2, kling3.0, gpt_image_2…).
+
+### Preços conferidos (docs.dev.runwayml.com/guides/pricing, 25/09/2026)
+| Modelo | Preço |
+|---|---|
+| gen4_image | 5 créditos por imagem 720p; 8 por imagem 1080p |
+| gen4_image_turbo | 2 créditos por imagem, qualquer resolução |
+| gen4_turbo | 5 créditos por segundo |
+| gen4.5 | 12 créditos por segundo |
+| act_two | 5 créditos por segundo |
+| gwm1_avatars (avatar em tempo real) | 2 créditos na entrada + 2 a cada 6 s |
+| eleven_multilingual_v2 (voz) | 1 crédito a cada 50 caracteres |
+
+### Rostos de referência da Dra. Iris Maren (pendente: sem crédito)
+- Script: `runway/gerar-ref.mjs` (`node gerar-ref.mjs saldo` sem custo; `node gerar-ref.mjs gerar` gasta crédito). SDK `@runwayml/sdk` 4.20.1 em `runway/` (instalar com `npm install @runwayml/sdk`).
+- `gen4_image`, ratio `1080:1920` (aceito), prompt da seção "A apresentadora" sem alteração.
+- Seeds fixas: iris-01 = 250925001, iris-02 = 250925002, iris-03 = 250925003, iris-04 = 250925004.
+- Custo previsto: 4 × 8 = 32 créditos (US$ 0,32). Saída em `out/ref/iris-01..04.png` e `out/ref/iris-log.json` (créditos antes e depois de cada chamada).
