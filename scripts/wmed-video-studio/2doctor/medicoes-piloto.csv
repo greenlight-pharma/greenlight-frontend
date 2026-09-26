@@ -14,3 +14,4 @@ data,episodio,etapa,ferramenta,tempo_parede_min,custo_usd,unidade,notas
 2026-09-26,2,"modelo 3D do coração (4 cenas: coração batendo, placa e trombo, necrose em frente de onda, cateterismo)",Claude Code (agente),40,0,,"render 0,9 s (coração, necrose) a 4,1 s (coronária, cateterismo) por quadro 540x960"
 2026-09-25,todos,"Runway: rostos com gpt_image_2 (médio, 4 numa chamada)",Runway API,0.7,0.20,20 créditos,"prompt r2; sem seed; 43 s"
 2026-09-25,todos,"Runway: rostos com gemini_image3_pro (2K, 4 numa chamada)",Runway API,1.6,0.80,80 créditos,"prompt r2; sem seed; 93 s"
+2026-09-25,todos,"Runway: pacote de referências da Iris (6 planos × 2, gpt_image_2 médio com @Iris)",Runway API,4.4,0.60,60 créditos,"10 créditos por plano (4836→4776); 39-48 s por plano; rosto consistente nas 12"

@@ -5,11 +5,14 @@
 //   node gerar-ref.mjs gerar r2 → 2ª rodada, prompt ajustado (idade, sem maquiagem, noite)
 //   node gerar-ref.mjs modelo gpt_image_2 | gemini_image3_pro
 //                               → prompt r2 em outro modelo, 4 imagens numa chamada (sem seed)
+//   node gerar-ref.mjs pacote   → pacote de referências a partir do rosto aprovado
+//                                 (gpt_image_2 médio, 6 planos × 2 variações, GASTA crédito)
 //
 // A chave vem só de RUNWAYML_API_SECRET (~/.config/2doctor/runway.env, fora do Git).
 // Este script nunca imprime nem grava a chave. Saídas em ../out/ref/ (ignorado pelo Git).
 
 import RunwayML from '@runwayml/sdk';
+import { createReadStream } from 'node:fs';
 import { mkdir, writeFile } from 'node:fs/promises';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -115,8 +118,55 @@ async function gerarOutroModelo(modelo) {
   await writeFile(path.join(pasta, 'iris-log.json'), JSON.stringify({ prompt: PROMPT_R2, ...linha }, null, 2));
 }
 
+// Pacote de referências. Rosto aprovado em 25/09: gpt_image_2/iris-03
+// (cópia em out/ref/iris-aprovada.png). O suéter da aprovada saiu azul-marinho;
+// aqui ele passa para o verde-petróleo da marca (#265B5A).
+const APROVADA = path.join(SAIDA, 'iris-aprovada.png');
+const MESMA = 'The same woman as in @Iris: identical face, identical age (early to mid 40s, fine lines, a few grey strands), identical shoulder-length wavy dark brown hair, warm brown eyes, no makeup, no jewellery except a simple stainless steel watch.';
+const SUETER = 'She wears a deep teal (#265B5A) knit sweater over a white collared shirt.';
+const ACABAMENTO = 'Photorealistic, 50mm, shallow depth of field, documentary color grade, fine film grain. No text, no signs, no logos, no landmarks.';
+const PLANOS = [
+  { id: 'p1-frente',    txt: `${MESMA} ${SUETER} Medium shot from the waist up, facing the camera, calm half-smile, arms relaxed. Night, wet street of an unnamed harbour city, tram rails, warm shop lights and cool blue shadows out of focus.` },
+  { id: 'p2-tres-quartos', txt: `${MESMA} ${SUETER} Three-quarter view, body turned 45 degrees to the left, looking at the camera, as if about to speak. Same night harbour street with tram rails, warm and blue bokeh.` },
+  { id: 'p3-close',     txt: `${MESMA} ${SUETER} Close-up of the face and shoulders, eye level, warm light on one side of the face and cool blue light on the other, gentle attentive expression. Night street bokeh behind.` },
+  { id: 'p4-jaleco',    txt: `${MESMA} She wears a clean white doctor's coat over the deep teal (#265B5A) sweater, no stethoscope, no badge text. Medium shot in a quiet hospital corridor at 3 a.m., soft fluorescent light, pale green walls, empty, slightly tired but warm expression.` },
+  { id: 'p5-cafe',      txt: `${MESMA} ${SUETER} Sitting at a small table in a corner café late at night, hands around a cup, brass lamps, green ceramic wall tiles, rain on the window behind, talking to the camera.` },
+  { id: 'p6-corpo',     txt: `${MESMA} ${SUETER} Dark trousers, simple dark shoes. Full-body wide shot standing on a wet cobbled street with tram rails at night, harbour masts far in the background, puddle reflections, she is small in the frame.` },
+];
+
+async function gerarPacote() {
+  const pasta = path.join(SAIDA, 'pacote');
+  await mkdir(pasta, { recursive: true });
+  // Upload temporário da aprovada (URI runway://, vale só para as tarefas).
+  const { uri } = await client.uploads.createEphemeral({ file: createReadStream(APROVADA) });
+  const log = [];
+  for (const p of PLANOS) {
+    const antes = (await saldo()).creditBalance;
+    const t0 = Date.now();
+    const tarefa = await client.textToImage
+      .create({ model: 'gpt_image_2', promptText: p.txt, ratio: '1088:1920', quality: 'medium', outputCount: 2,
+        referenceImages: [{ uri, tag: 'Iris' }] })
+      .waitForTaskOutput();
+    const arquivos = [];
+    for (const [i, url] of tarefa.output.entries()) {
+      const nome = `${p.id}-${'ab'[i] ?? i}.png`;
+      const resp = await fetch(url);
+      if (!resp.ok) throw new Error(`download ${nome}: HTTP ${resp.status}`);
+      await writeFile(path.join(pasta, nome), Buffer.from(await resp.arrayBuffer()));
+      arquivos.push(nome);
+    }
+    const depois = (await saldo()).creditBalance;
+    const linha = { plano: p.id, tarefa: tarefa.id, arquivos, creditosAntes: antes, creditosDepois: depois,
+      custoCreditos: antes - depois, segundos: Math.round((Date.now() - t0) / 1000) };
+    log.push({ ...linha, prompt: p.txt });
+    console.log(JSON.stringify(linha));
+  }
+  await writeFile(path.join(pasta, 'pacote-log.json'), JSON.stringify({ referencia: 'iris-aprovada.png', geracoes: log }, null, 2));
+}
+
 const modo = process.argv[2];
 if (modo === 'saldo') await mostrarSaldo();
 else if (modo === 'gerar') await gerar(process.argv[3] || 'r1');
 else if (modo === 'modelo') await gerarOutroModelo(process.argv[3]);
+else if (modo === 'pacote') await gerarPacote();
 else { console.error('uso: node gerar-ref.mjs saldo | gerar r1|r2 | modelo gpt_image_2|gemini_image3_pro'); process.exit(1); }
