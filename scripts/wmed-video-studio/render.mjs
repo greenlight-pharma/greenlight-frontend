@@ -19,9 +19,9 @@ if (!/^[a-z0-9-]+$/.test(TOPIC)) throw new Error('--topic inválido');
 const CHROME = args.chrome || process.env.CHROME || '/opt/pw-browsers/chromium';
 // --studio=tech usa o motor Canvas 2D (studio-tech.html, 30 fps); --studio=vytal, o vertical 9:16 do Vytal Acadêmico
 // (studio-vytal.html, 30 fps, --fmt=reel|feed); o padrão é o de aquarela (studio.html, 24 fps)
-const STUDIO = { tech: 'studio-tech.html', vytal: 'studio-vytal.html' }[args.studio] || 'studio.html';
+const STUDIO = { tech: 'studio-tech.html', vytal: 'studio-vytal.html', '2doctor': 'studio-2doctor.html' }[args.studio] || 'studio.html';
 const FMT = args.fmt && /^[a-z]+$/.test(args.fmt) ? args.fmt : '';
-const FPS = args.studio === 'tech' || args.studio === 'vytal' ? 30 : 24, FRAMES = `out/${TOPIC}${FMT ? '-' + FMT : ''}/frames`, PUBLISH = resolve(HERE, '../../wmed-videos/resumos-enamed');
+const FPS = ['tech', 'vytal', '2doctor'].includes(args.studio) ? 30 : 24, FRAMES = `out/${TOPIC}${FMT ? '-' + FMT : ''}/frames`, PUBLISH = resolve(HERE, '../../wmed-videos/resumos-enamed');
 const run = (cmd, a) => new Promise((ok, bad) => { const p = spawn(cmd, a, { stdio: 'inherit' }); p.on('close', c => c ? bad(new Error(cmd + ' saiu com ' + c)) : ok()); });
 const times = s => String(s).split(',').map(Number);
 

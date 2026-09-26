@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<title>2Doctor · estúdio tech</title>
+<style>
+  @font-face { font-family: Manrope; font-weight: 200 800; src: url(2doctor/app-motion/fonts/Manrope.ttf); font-display: block; }
+  @font-face { font-family: "JetBrains Mono"; font-weight: 500; src: url(node_modules/@fontsource/jetbrains-mono/files/jetbrains-mono-latin-500-normal.woff2) format("woff2"); font-display: block; }
+  html, body { margin: 0; background: #202329; color: #eee; font: 13px system-ui, sans-serif; }
+  main { padding: 12px; display: grid; gap: 8px; }
+  #out { width: min(100%, 1280px); aspect-ratio: 16 / 9; height: auto; background: #F6F7F8; }
+  .bar { display: flex; gap: 10px; align-items: center; max-width: 1280px; }
+  #scrub { flex: 1; }
+</style>
+</head>
+<body>
+<main>
+  <canvas id="out" width="1920" height="1080"></canvas>
+  <div class="bar"><input id="scrub" type="range" min="0" max="90" step="0.0333" value="0"><span id="tt">carregando…</span></div>
+</main>
+<script src="tech/brand.js"></script>
+<script src="tech/engine.js"></script>
+<script src="tech/brand-2doctor.js"></script>
+<script>
+  // ?topic=<arquivo em topics/, sem .js>
+  const TOPIC = new URLSearchParams(location.search).get('topic') || '2doctor-apresentacao';
+  if (!/^[a-z0-9-]+$/.test(TOPIC)) throw new Error('tema inválido');
+  document.write('<script src="topics/' + TOPIC + '.js"><\/script>');
+</script>
+</body>
+</html>
