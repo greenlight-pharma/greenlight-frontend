@@ -23,6 +23,10 @@
   - Corredor (imagem a): 10 + 120 + 3. Bom enquadramento pela porta. A fala (149 caracteres) ocupa os 8 s inteiros: conferir se não ficou corrida ou cortada; se ficou, encurtar a fala e refazer.
   - O café aprovado é vertical: refazer em 16:9 (cerca de 130 créditos).
   - Saldo: 3.976 créditos.
+- **2ª versão dos planos (26/09)**, depois da crítica do Dilson (UBS com elenco que não parecia brasileiro; Iris perto e de frente demais): abrir com o paciente já passando mal; elenco brasileiro; Iris de lado ou três-quartos, falando com alguém fora do quadro; falas em tom de entrevista (o "pause e responda" vai para o cartão). Processo novo: aprovar as imagens paradas antes do vídeo.
+  - Imagens: 8 (2 por plano), 40 créditos. Escolhidas: ubs2-b, rua2-b, corredor2-b, cafe2-a.
+  - Vídeos: 4 × 120 créditos + 3 trocas de voz (9). Saídas `out/ep2/{ubs2,rua2,corredor2,cafe2}-final.mp4`.
+  - Saldo: 3.447 créditos.
 
 ## Modelos 3D próprios (`../models3d/`)
 Tudo procedural, com código nosso. Visual de documentário no palco comum (`stage.js`, `look:'doc'`): luz quente de lado, contraluz azul, vinheta, grão por quadro, foco raso (`dof` + `stage.setFocus`), oclusão de ambiente (`ao`) e texturas de tecido (`tissueMaterial`). Cada cena exporta `stageOptions`.

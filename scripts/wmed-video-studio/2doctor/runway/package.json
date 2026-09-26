@@ -1,0 +1,13 @@
+{
+  "name": "2doctor-runway",
+  "private": true,
+  "type": "module",
+  "description": "Chamadas à API do Runway para a série Por Dentro (2Doctor). A chave vem de RUNWAYML_API_SECRET, nunca do repositório.",
+  "scripts": {
+    "org": "node org.mjs",
+    "ref": "node gerar-ref.mjs"
+  },
+  "dependencies": {
+    "@runwayml/sdk": "^4.20.1"
+  }
+}
