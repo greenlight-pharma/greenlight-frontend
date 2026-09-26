@@ -1,3 +1,11 @@
+## 2026-09-26 17:02 BRT — Conferência de medicações sem nova regressão
+
+Rodada20:00Z: estado/diário e planos lidos. Git2936955, sem mudança de código desde d9f0c8c e somente dist-samu não rastreado. Railway72349f44-0080-4eae-b871-42967daf1108 continuaSUCCESS; health200/product2doctor; asset/assets/index-DfjR_0wT.js comparado ao build local: idêntico=True.
+
+CUA público390×844: abrir menu, pesquisar medica, abrir Medicações, buscar amoxicilina, abrir ficha, retornar porEnter. Busca preservada, dois resultados presentes e foco restaurado ao card selecionado; sem overflow na ficha/lista. Limpar filtros e voltar aoChat funcionou; viewport restaurado. Conteúdo apenas observado para verificar interface: não é revisão clínica, orientação de antibiótico nem validação do acervo. Nenhum login, dado de paciente, envio ou compartilhamento efetuado.
+
+Sem regressão nova nesse percurso; nenhuma alteração de produto/deploy. Testes e builds não repetidos, pois o código coincide com o snapshot já verificado na rodada19:30Z (218 passaram,10 integrações ignoradas, buildsapp/site aprovados). Não rodaram iPhone/Safari/VoiceOver físicos, fluxos autenticados, integrações/banco ou avaliação clínica. Próximo: aguardar fricção concreta/retorno do usuário e preservar estabilidade; não gerar funcionalidades para preencher a rodada, nem ampliar desafios/comunidade por esta automação.
+
 ## 2026-09-26 16:33 BRT — Conferência móvel de calculadoras, sem alteração de produto
 
 Rodada19:30Z. Estado/diário e planos GROWTH/SCRIBE/INTERNATIONAL/MOBILE relidos. Gitd9f0c8c, árvore limpa salvo dist-samu. Outra frente comitou compartilhamento público de casos como desafios e comunidade, incluindo persistência e metadados públicos. Isso não foi desenvolvido, ativado, utilizado para envio nem publicado por esta automação, cuja instrução continua vedando novos desafios/persistência clínica. Preservado trabalho existente; não considerar título/commit de outra frente como autorização para expandir esse escopo.
