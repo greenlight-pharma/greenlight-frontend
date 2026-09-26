@@ -1,3 +1,9 @@
+## 2026-09-26 04:09 BRT — Navegação de condições publicada
+
+Fonte 86729b0; deployment d8c2420b-0f27-4ff5-a088-261d479d470b SUCCESS no serviço 2doctor-web/projeto 2doctor. Healthz 200/product 2doctor; index-DHeIEfQg.js e Libraries-BB4FD_8h.js públicos idênticos byte a byte ao build local. Interface pública 390×844 comprovou cartão O24 y1013→detalhe y0→retorno y1013 com foco no cartão, busca diabetes preservada e sem overflow horizontal. Screenshot conferido; nenhum erro de console. 206 testes e builds app/site completos aprovados. Fixture encerrada, aba temporária fechada e viewport restaurado. Não testado iPhone físico/Safari/VoiceOver, sem alterações clínicas/API/ECG.
+
+Próximo executável: conferir no celular navegação por teclado e retorno no banco de imagens existente; corrigir somente fricção reproduzida, sem ampliar acervo ou criar ferramenta nova. Synthetic Hospital continua proposta de avaliação offline, sem execução autorizada. Rollback por reconstrução 2b7facb. Trabalho preexistente medico-app/dist-samu preservado.
+
 ## 2026-09-26 04:06 BRT — Condições: retorno à lista preservado
 
 Fricção reproduzida no site público em 390×844: busca diabetes, cartão O24 em y1013; abrir e voltar perdia a posição e retornava a y0. ReferenceLibrary estende às condições o mecanismo já existente nas medicações, restrito à 2Doctor: abre detalhe no topo e devolve foco e rolagem ao cartão anterior. Sem mudar dados clínicos, busca, autenticação ou persistência.
