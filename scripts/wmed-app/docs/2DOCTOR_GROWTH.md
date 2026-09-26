@@ -1,3 +1,11 @@
+## 2026-09-26 18:03 BRT — Acesso móvel ao histórico sem sessão
+
+Rodada 21:00Z: estado/diário e quatro planos relidos. Git b2481a4, código sem mudanças desde b46b3dd, somente dist-samu não rastreado. Railway e7140d4e-c2b2-48d9-ad1a-51759ee6c9f0 SUCCESS; healthz 200/product 2doctor; asset index-CNyOvHc2.js público idêntico ao build local. Nenhuma publicação ou alteração de produto.
+
+CUA público 320×568: botão do histórico não aparece no cabeçalho estreito, mas Menu → Histórico está disponível. Sem sessão, abre entrada da conta com foco em Fechar entrada. Modal legível e sem overflow lateral (scrollWidth 305, viewport 320); fechar devolve foco a Abrir menu. Viewport restaurado. Não identificada regressão nesse percurso. Lista/reabertura de conversas salvas não conferida, pois navegador estava desconectado; não solicitada nova autenticação nem acessados dados privados. Não confundir teste de acesso ao histórico com validação de persistência.
+
+Testes/builds não repetidos: código coincide com snapshot da rodada 20:30Z, com 220 testes aprovados/10 integrações ignoradas e builds app/site completo aprovados. Não rodaram autenticação real, histórico autenticado, banco, iPhone/Safari/VoiceOver físicos ou avaliação clínica. Sem mudança artificial para preencher rodada. Próximo: atuar em fricção reproduzível dos fluxos existentes; retomar reabertura do histórico em sessão de teste disponível, sem publicar por mera continuidade automática.
+
 ## 2026-09-26 17:35 BRT — Pesquisa no celular conferida, sem nova regressão
 
 Rodada 20:30Z: estado/diário e planos lidos. Git b46b3dd (restrição regional de ENAMED feita por outra frente, preservada); somente medico-app/dist-samu não rastreado. Railway e7140d4e-c2b2-48d9-ad1a-51759ee6c9f0 SUCCESS, healthz 200/product 2doctor. Asset público /assets/index-CNyOvHc2.js idêntico byte a byte ao build local. Nenhum deploy ou mudança de produto por esta rodada.
