@@ -1,3 +1,17 @@
+## 2026-09-26 15:38 BRT — Retorno do caso publicado e conferido
+
+Código167fdfd, deployment96bdff99-d164-43b1-b072-2da6295d08d4 SUCCESS no2doctor-web. Health200/product2doctor. Assets index-lWz6mFns.js e ClinicalCase-B3SVMoZb.js públicos idênticos byte a byte ao build local. CUA público320×568, após carregamento do formulário: scrollTop0 e botão Voltar à conversa emy13, visível; retorno ao chat funcionou. Screenshot conferido, viewport restaurado. Fixture encerrada e aba90 fechada. Publicação desta rodada concluída; sem API/modelo/persistência alterados.
+
+218 testes aprovados/8 integrações ignoradas; builds app/site e diffcheck aprovados. Não houve envio/autenticação/modelo clínico/pagamento, iPhone/Safari/VoiceOver físicos. Próxima fricção observável a avaliar: ao fechar overlay, foco retorna ao BODY em vez do botão que abriu o caso; o overlay também não declara role dialog. Tratar em correção pequena de foco se confirmado por teclado, preservando rascunho e modais de login; não ampliar catálogo. A ação Organizar meu relato está fixa por mudança da outra frente; qualquer ajuste deve respeitar essa simplificação recente.
+
+## 2026-09-26 15:34 BRT — Retorno ao chat visível ao abrir caso
+
+Rodada18:30Z: estado/diário/planos relidos. Git8fdf388, somente dist-samu preexistente. Frente paralela comitou simplificação de conta/caso e traduções; preservados, não atribuir a esta rodada. Railway1fb15cf6 SUCCESS na entrada, depois d5d07120-4682-43b0-8357-21b7b7f31cd3 SUCCESS em18:30:27Z. Health200. Fricção observada na interface pública320×568: abrir Discutir um caso dispara scrollIntoView do conteúdo e esconde cabeçalho/Voltar à conversa; scrollTop81, botão entre y-68 e-12.
+
+Correção167fdfd restrita ao efeito de rolagem no ClinicalCase: no overlay2Doctor rola o próprio painel para0 ao abrir/trocar etapa; rota normal e outros produtos preservados. Cabeçalho não virou fixo. CUA local320×568: scrollTop0, botão y13–69 visível, sem overflow; digitar relato fictício, sair e reabrir preservou texto e topo. Fixture sem upstream, sem envio clínico/modelo/persistência. 226 testes existentes:218 passaram,8 integrações ignoradas por TEST_DATABASE_URL ausente (conjunto menor por remoções da outra frente, não por esta correção). Build2doctor/site completo/diffcheck aprovados. Logs /tmp/2doctor-case-return-tests.log, -build.log, -site.log. Sem avaliação clínica, geração/salvamento reais, teclado iOS/VoiceOver/Safari/iPhone físicos; transição de etapa com resposta real não executada.
+
+Dockerfile/railway.json conferidos. Publicação solicitada só2doctor-web a partir do cwdapp/--path-as-root, ainda pendente deSUCCESS/health/asset/interface. Próximo: confirmar os critérios e testar botão público; não ampliar catálogo. Rollback8fdf388.
+
 ## 2026-09-26 15:02 BRT — Notas do chat: publicação confirmada na retomada
 
 Rodada18:00Z. Relidos estado/diário e planos GROWTH/SCRIBE/INTERNATIONAL/MOBILE. Git agora1e345f1, alteração posterior da outra frente em cobrança/PlanPanel; árvore limpa salvo medico-app/dist-samu preexistente. Preservado esse trabalho, sem editar cobrança. Railway projeto2doctor/serviço2doctor-web confirmou deployment5e29cf84-7550-4348-99f5-cea6bcf238b9 SUCCESS, posterior às duas falhas de upload. Nenhum novo deploy necessário nesta rodada.
