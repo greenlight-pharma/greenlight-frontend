@@ -1,3 +1,9 @@
+## 2026-09-26 03:38 BRT — Navegação dos scores publicada
+
+Fonte 1b579f6; deployment a842e7f0-3e96-4961-8938-906552691d73 SUCCESS em 2doctor-web/projeto 2doctor. Health 200/product 2doctor; /assets/index-BKExKWSP.js e Libraries-D938F7gi.js públicos idênticos byte a byte ao build local. CUA público 390×844: cartão Winter em y844, toque abriu detalhe no topo y0 com foco em Voltar; retorno restaurou y844 e foco no mesmo cartão, sem overflow horizontal ou console errors. Busca/especialidade e score por critérios conferidos localmente conforme registro anterior. 206 testes e builds app/site completos passaram. Sem validação em iPhone físico; nenhuma alteração clínica. Viewport restaurado; trabalho preexistente medico-app/dist-samu preservado.
+
+Próximo executável: verificar jornada de condições médicas (buscar, abrir conteúdo, voltar à lista) no celular e corrigir perda de contexto somente se reproduzida; não ampliar acervo. Synthetic Hospital segue proposta, sem treino, benchmark ou modelo novo. Rollback por reconstrução cc210ac.
+
 ## 2026-09-26 03:34 BRT — Scores: navegação de ida e volta validada
 
 Fricção pública reproduzida em 390×844: abrir Winter deixou página em y439,5, título em y−220,5 e botão Voltar em y−289,5; retorno colocou lista no início. Scores agora guarda apenas referência de cartão/rolagem em memória: abre calculadora ou score no topo com foco em Voltar, e retorna à posição/cartão anteriores. Busca/especialidade permanecem no estado existente. Escopo 2Doctor; WMed não recebe reposicionamento. Fórmulas, critérios, limiares, fontes e limpeza de respostas não alterados. Nenhuma persistência nova.
