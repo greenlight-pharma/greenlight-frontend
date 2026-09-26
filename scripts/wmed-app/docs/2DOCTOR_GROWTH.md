@@ -1,3 +1,11 @@
+## 2026-09-26 06:37 BRT — Aviso do caso clínico publicado
+
+Fontebe1648e; deploymentb98f423d-7084-45b2-87c4-ceb821b37c61 SUCCESS no serviço2doctor-web/projeto2doctor. Healthz200/product2doctor; index-YJztBLaJ.js e ClinicalCase-BPkVPhUi.js públicos idênticos ao build local. CUA público390×844 confirmou aviso local y412–488 antes do dock783, foco role alert e console sem erros. Exemplo inteiramente fictício, sem envio ao modelo. Relato limpo por recarga ao final; viewport restaurado, aba82/servidor local encerrados.
+
+206 testes e builds app/site completos aprovados. Sem teste clínico, sessão real, iPhone físico/Safari/VoiceOver. Rollback9dcd400. API/ECG/modelos intocados, diretório preexistente medico-app/dist-samu preservado.
+
+Próximo executável: conferir orientação existente para relato curto (botão Organizar desabilitado antes de20 caracteres sem motivo visível) e definir correção mínima de ajuda no campo, sem alterar limiares ou gerar resposta. Não ampliar funcionalidades.
+
 ## 2026-09-26 06:34 BRT — Caso clínico: erro visível junto à ação
 
 Baseline9dcd400/deploymentbf35b88a-4390-45ac-9b5b-51a1328ac8db SUCCESS; Git/Railway conferidos. Produção390×844: relato fictício com endereço example.invalid acionou validação local existente, mas alerta aparecia em y884–953 abaixo do bloco explicativo, fora da tela844. Nenhum relato enviado ao modelo.
