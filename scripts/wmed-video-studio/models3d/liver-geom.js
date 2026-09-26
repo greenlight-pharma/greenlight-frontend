@@ -47,7 +47,7 @@ export function liverSDF(X, Y, Z, S = SHAPES.healthy) {
   // porta hepatis: sulco transverso na face visceral
   d = smax(d, -sdCapsule(x, y, z, -0.3, -0.26, -0.1, 0.1, -0.15, -0.1, 0.07), 0.06);
   // leito da vesícula biliar (fossa rasa sob o lobo direito)
-  d = smax(d, -sdEll(x + 0.22, y + 0.4, z - 0.2, 0.08, 0.06, 0.26), 0.05);
+  d = smax(d, -sdEll(x + 0.2, y + 0.36, z - 0.18, 0.085, 0.07, 0.3), 0.05);
   return d * S.s - S.round;
 }
 
@@ -162,7 +162,7 @@ export function worley(x, y, z, cell, seed = 0) {
 }
 
 // Malha base completa do fígado: posições saudável/cirrótica em correspondência, normais de referência e campos por vértice.
-export function buildLiverMesh({ h = 0.016, cell = 0.105 } = {}) {
+export function buildLiverMesh({ h = 0.016, cell = 0.12 } = {}) {
   const fA = (x, y, z) => liverSDF(x, y, z, SHAPES.healthy), fB = (x, y, z) => liverSDF(x, y, z, SHAPES.cirrhotic);
   const net = surfaceNets(fA, [-1.3, -0.72, -0.92], [1.2, 0.82, 0.72], h);
   let A = taubin(net.position, net.index, 2);
@@ -176,12 +176,12 @@ export function buildLiverMesh({ h = 0.016, cell = 0.105 } = {}) {
   for (let i = 0; i < n; i++) {
     const x = A[i * 3], y = A[i * 3 + 1], z = A[i * 3 + 2];
     const w = worley(x, y, z, cell, 3);
-    const r = w.f1 / Math.max(1e-4, w.f2);          // 0 no centro do nódulo, ~1 no septo
+    const r = clamp01((w.f1 + 0.22) / (w.f2 + 0.22));  // 0 no centro do nódulo, ~1 no septo
     nod[i] = 1 - r * r;                              // cúpula
-    sept[i] = 1 - clamp01((w.f2 - w.f1) / 0.16);     // faixa de cicatriz entre nódulos
+    sept[i] = 1 - clamp01((w.f2 - w.f1) / 0.09);     // faixa de cicatriz entre nódulos
     cid[i] = w.id;
     const m = worley(x, y, z, cell * 0.45, 8);       // micronódulos (textura secundária)
-    mic[i] = 1 - (m.f1 / Math.max(1e-4, m.f2)) ** 2;
+    mic[i] = 1 - clamp01((m.f1 + 0.22) / (m.f2 + 0.22)) ** 2;
   }
   return { A, B, index: net.index, nod, sept, cid, mic, count: n };
 }

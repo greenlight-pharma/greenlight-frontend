@@ -6,22 +6,23 @@
 //   fibrosis (septos fibrosos claros na superfície), nodules (nódulos de regeneração em relevo, Worley),
 //   shrink (fígado cirrótico menor, lobo direito atrófico, borda romba), tone (cor saudável → castanho-amarelado fosco;
 //   padrão = max(nodules, 0.7·fibrosis)), steatosis (amarelado, aumentado, liso), inflam (placas avermelhadas),
-//   spots [{p:[x,y,z], r, a}] (brilhos locais, ex. onde a agressão chega), scan {apex, dir, normal, half, depth, on}
+//   spots [{p:[x,y,z], r, a, c:[r,g,b]}] (brilhos locais em coordenadas do fígado, ex. onde a agressão chega), scan {apex, dir, normal, half, depth, on}
 //   (faixa luminosa onde o feixe de ultrassom corta o órgão).
 import * as THREE from 'three';
 import { tissueMaterial, rimMaterial, clamp } from './stage.js';
 import { buildLiverMesh, liverSDF, SHAPES } from './liver-geom.js';
 
 const C = (hex) => new THREE.Color(hex);          // hex sRGB → linear
+const DEF_GLOW = [1.0, 0.45, 0.15];
 const PAL = {
-  healthy: C(0x7a2a22), healthy2: C(0x8e3a2c), fatty: C(0xc08850),
-  nod: [C(0xb07a44), C(0xa06a38), C(0xbf915a), C(0x9c8444), C(0xa87040)], septa: C(0xdcd0bf), red: C(0xa8261e),
+  healthy: C(0x6e2620), healthy2: C(0x86362a), fatty: C(0xc49a62),
+  nod: [C(0xb07a42), C(0x9c6a3c), C(0xba8a50), C(0x8e6038), C(0xa8743e)], septa: C(0xd6ccbc), red: C(0xa8261e),
 };
 
 export function liverMaterial() {
-  const m = tissueMaterial({ color: 0xffffff, sheen: 0x9a4436, kind: 'cells', seed: 7, cell: 12, repeat: [14, 10], normal: 0.22, wet: 0.85, roughness: 0.34, rim: 0.1, rimColor: 0xffc4b0 });
+  const m = tissueMaterial({ color: 0xffffff, sheen: 0x9a4436, kind: 'cells', seed: 7, cell: 12, repeat: [14, 10], normal: 0.32, wet: 0.7, roughness: 0.4, rim: 0.1, rimColor: 0xffc4b0 });
   m.vertexColors = true;
-  m.sheen = 0.35;
+  m.sheen = 0.25;
   const U = {
     uGlowCol: { value: C(0xffb070) }, uScan: { value: new THREE.Vector4(1, 0, 0, 99) }, uScanOn: { value: 0 }, uScanCol: { value: C(0x9fe8ff) },
     uFanApex: { value: new THREE.Vector3() }, uFanDir: { value: new THREE.Vector3(0, -1, 0) }, uFanCos: { value: 0.8 }, uFanDepth: { value: 2 },
@@ -32,13 +33,13 @@ export function liverMaterial() {
     prev(sh, r);
     Object.assign(sh.uniforms, U);
     sh.vertexShader = sh.vertexShader
-      .replace('#include <common>', '#include <common>\nattribute float aGlow; varying float vGlow; varying vec3 vLW;')
+      .replace('#include <common>', '#include <common>\nattribute vec3 aGlow; varying vec3 vGlow; varying vec3 vLW;')
       .replace('#include <fog_vertex>', '#include <fog_vertex>\nvGlow = aGlow; vLW = (modelMatrix * vec4(transformed, 1.0)).xyz;');
     sh.fragmentShader = sh.fragmentShader
       .replace('#include <common>', `#include <common>
-        varying float vGlow; varying vec3 vLW; uniform vec3 uGlowCol, uScanCol, uFanApex, uFanDir; uniform vec4 uScan; uniform float uScanOn, uFanCos, uFanDepth;`)
+        varying vec3 vGlow; varying vec3 vLW; uniform vec3 uGlowCol, uScanCol, uFanApex, uFanDir; uniform vec4 uScan; uniform float uScanOn, uFanCos, uFanDepth;`)
       .replace('#include <emissivemap_fragment>', `#include <emissivemap_fragment>
-        totalEmissiveRadiance += uGlowCol * vGlow;
+        totalEmissiveRadiance += vGlow;
         if (uScanOn > 0.001) {
           float dp = dot(vLW, uScan.xyz) - uScan.w;
           vec3 rel = vLW - uFanApex; float L = length(rel);
@@ -76,7 +77,7 @@ export function buildLiver(stage, { vessels = true, gallbladder = true, ligament
   for (let i = 0; i < n; i++) { uv[i * 2] = (Math.atan2(M.A[i * 3 + 1] - 0.05, M.A[i * 3 + 2]) / (Math.PI * 2) + 0.5); uv[i * 2 + 1] = M.A[i * 3] * 0.45 + 0.5; }
   geo.setAttribute('uv', new THREE.BufferAttribute(uv, 2));
   const col = new THREE.BufferAttribute(new Float32Array(n * 3), 3); geo.setAttribute('color', col);
-  const glow = new THREE.BufferAttribute(new Float32Array(n), 1); geo.setAttribute('aGlow', glow);
+  const glow = new THREE.BufferAttribute(new Float32Array(n * 3), 3); geo.setAttribute('aGlow', glow);
   const mat = liverMaterial();
   const mesh = new THREE.Mesh(geo, mat); root.add(mesh);
 
@@ -100,7 +101,7 @@ export function buildLiver(stage, { vessels = true, gallbladder = true, ligament
     const lg = new THREE.BufferGeometry(), lp = new Float32Array((N + 1) * 2 * 3), li = [];
     for (let i = 0; i < N; i++) { const a = i * 2; li.push(a, a + 1, a + 2, a + 1, a + 3, a + 2); }
     lg.setAttribute('position', new THREE.BufferAttribute(lp, 3)); lg.setIndex(li);
-    const lmat = rimMaterial({ color: 0xe8cfc0, rimColor: 0xfff0e6, opacity: 0.55, rimStrength: 0.4, roughness: 0.3, side: THREE.DoubleSide });
+    const lmat = rimMaterial({ color: 0xd8a898, rimColor: 0xffe0d4, opacity: 0.4, rimStrength: 0.3, roughness: 0.3, side: THREE.DoubleSide });
     const lig = new THREE.Mesh(lg, lmat); root.add(lig);
     extras.ligament = (s) => {
       for (let i = 0; i <= N; i++) {
@@ -113,18 +114,18 @@ export function buildLiver(stage, { vessels = true, gallbladder = true, ligament
       lg.attributes.position.needsUpdate = true; lg.computeVertexNormals();
     };
     // ligamento redondo: cordão saindo da incisura para baixo e para a frente
-    const teres = new THREE.Mesh(new THREE.TubeGeometry(new THREE.CatmullRomCurve3([new THREE.Vector3(0.1, -0.02, 0.36), new THREE.Vector3(0.1, -0.16, 0.5), new THREE.Vector3(0.12, -0.34, 0.66)]), 16, 0.014, 8), rimMaterial({ color: 0xe0c2b2, rimColor: 0xfff0e6, rimStrength: 0.3, roughness: 0.35 }));
+    const teres = new THREE.Mesh(new THREE.TubeGeometry(new THREE.CatmullRomCurve3([new THREE.Vector3(0.09, -0.06, 0.36), new THREE.Vector3(0.1, -0.16, 0.48), new THREE.Vector3(0.11, -0.26, 0.58)]), 16, 0.012, 8), rimMaterial({ color: 0xc89484, rimColor: 0xfff0e6, rimStrength: 0.3, roughness: 0.35 }));
     root.add(teres); extras.teres = teres;
   }
 
   // vesícula biliar: pera (lathe) no leito sob o lobo direito, fundo aparecendo na borda inferior
   if (gallbladder) {
     const prof = [];
-    for (let i = 0; i <= 24; i++) { const s = i / 24; const r = 0.03 + 0.085 * Math.sin(Math.min(1, s * 1.15) * Math.PI * 0.5) ** 1.3 * (s > 0.86 ? Math.sqrt(Math.max(0, 1 - ((s - 0.86) / 0.14) ** 2)) : 1); prof.push(new THREE.Vector2(Math.max(0.001, r), s * 0.62)); }
+    for (let i = 0; i <= 28; i++) { const s = i / 28; const cap = s > 0.78 ? Math.sqrt(Math.max(0, 1 - ((s - 0.78) / 0.22) ** 2)) : 1; prof.push(new THREE.Vector2(Math.max(0.0005, 0.088 * Math.min(1, s / 0.7) ** 0.75 * cap), s * 0.62)); }
     const gg = new THREE.LatheGeometry(prof, 28);
     const gmat = tissueMaterial({ color: 0x5c7a38, sheen: 0xb8d890, kind: 'wet', seed: 3, repeat: [3, 2], normal: 0.15, wet: 1, roughness: 0.25, rim: 0.25, rimColor: 0xdaf0b0 });
     const gb = new THREE.Mesh(gg, gmat);
-    const a = new THREE.Vector3(-0.12, -0.3, -0.1), b = new THREE.Vector3(-0.24, -0.46, 0.52);
+    const a = new THREE.Vector3(-0.13, -0.25, -0.14), b = new THREE.Vector3(-0.25, -0.37, 0.46);
     gb.position.copy(a); gb.quaternion.setFromUnitVectors(new THREE.Vector3(0, 1, 0), b.clone().sub(a).normalize());
     gb.scale.set(1, a.distanceTo(b) / 0.62, 1);
     root.add(gb); extras.gb = gb;
@@ -137,22 +138,22 @@ export function buildLiver(stage, { vessels = true, gallbladder = true, ligament
       const m = new THREE.Mesh(new THREE.TubeGeometry(cv, 48, r, 14), tissueMaterial({ color, sheen: 0xffffff, kind: 'wet', seed: 5, repeat: [2, 6], normal: 0.2, wet: 0.9, roughness: 0.3, rim: 0.2, rimColor: rim }));
       root.add(m); return { mesh: m, curve: cv };
     };
-    extras.portal = tube([[0.3, -1.05, 0.02], [0.16, -0.72, -0.02], [0.02, -0.46, -0.06], [-0.08, -0.33, -0.08], [-0.22, -0.26, -0.1]], 0.058, 0x5a3f78, 0xb8a8ff);
+    extras.portal = tube([[0.2, -0.8, -0.01], [0.13, -0.66, -0.03], [0.02, -0.46, -0.06], [-0.08, -0.33, -0.08], [-0.22, -0.26, -0.1]], 0.058, 0x5a3f78, 0xb8a8ff);
     extras.portalL = tube([[-0.04, -0.34, -0.08], [0.08, -0.26, -0.1], [0.2, -0.2, -0.12]], 0.035, 0x5a3f78, 0xb8a8ff);
-    extras.artery = tube([[0.42, -1.0, 0.12], [0.24, -0.66, 0.08], [0.06, -0.42, 0.02], [-0.06, -0.3, -0.02], [-0.18, -0.24, -0.04]], 0.02, 0xb02a2c, 0xffb0a0);
-    extras.duct = tube([[-0.1, -1.05, 0.14], [-0.08, -0.7, 0.06], [-0.1, -0.44, 0.0], [-0.16, -0.32, -0.02]], 0.024, 0x6f8a36, 0xe0f0a0);
+    extras.artery = tube([[0.28, -0.8, 0.09], [0.2, -0.62, 0.07], [0.06, -0.42, 0.02], [-0.06, -0.3, -0.02], [-0.18, -0.24, -0.04]], 0.02, 0xb02a2c, 0xffb0a0);
+    extras.duct = tube([[-0.08, -0.8, 0.08], [-0.08, -0.66, 0.05], [-0.1, -0.44, 0.0], [-0.16, -0.32, -0.02]], 0.024, 0x6f8a36, 0xe0f0a0);
     extras.cystic = tube([[-0.09, -0.52, 0.03], [-0.13, -0.42, -0.02], [-0.13, -0.33, -0.06]], 0.012, 0x6f8a36, 0xe0f0a0);
-    extras.ivc = tube([[-0.06, -1.1, -0.5], [-0.06, -0.4, -0.5], [-0.05, 0.2, -0.48], [-0.04, 0.9, -0.44]], 0.1, 0x3c3258, 0x9fa8ff);
+    extras.ivc = tube([[-0.06, -0.72, -0.52], [-0.06, -0.3, -0.52], [-0.05, 0.2, -0.5], [-0.04, 0.72, -0.46]], 0.1, 0x3c3258, 0x9fa8ff);
   }
 
   const cA = new THREE.Color(), cT = new THREE.Color();
   function update(p = {}) {
     const fib = clamp(p.fibrosis || 0), nd = clamp(p.nodules || 0), sh = clamp(p.shrink || 0), st = clamp(p.steatosis || 0), inf = clamp(p.inflam || 0);
-    const tone = clamp(p.tone ?? Math.max(nd, fib * 0.7));
+    const tone = clamp(p.tone ?? Math.max(nd, fib * 0.35));
     const P = pos.array, CO = col.array, GL = glow.array, spots = p.spots || [];
     for (let i = 0; i < n; i++) {
       const i3 = i * 3, nx = nRef[i3], ny = nRef[i3 + 1], nz = nRef[i3 + 2];
-      const disp = 0.032 * nd * (M.nod[i] - 0.4) + 0.008 * nd * (M.mic[i] - 0.5) - 0.006 * fib * M.sept[i] + 0.022 * st;
+      const disp = 0.04 * nd * (M.nod[i] - 0.4) + 0.008 * nd * (M.mic[i] - 0.5) - 0.006 * fib * M.sept[i] + 0.022 * st;
       for (let k = 0; k < 3; k++) P[i3 + k] = M.A[i3 + k] + (M.B[i3 + k] - M.A[i3 + k]) * sh + nRef[i3 + k] * disp;
       // cor: saudável (mosqueado lobular sutil) → esteatose → castanho-amarelado nodular → septos claros
       cA.copy(PAL.healthy).lerp(PAL.healthy2, M.mic[i] * 0.35);
@@ -160,18 +161,21 @@ export function buildLiver(stage, { vessels = true, gallbladder = true, ligament
       cT.copy(PAL.nod[Math.floor(M.cid[i] * 5) % 5]).multiplyScalar(0.8 + 0.3 * M.nod[i]);
       cA.lerp(cT, tone);
       if (inf > 0) cA.lerp(PAL.red, inf * 0.55 * clamp((M.cid[i] - 0.45) * 3) * (0.6 + 0.4 * M.mic[i]));
-      cA.lerp(PAL.septa, fib * 0.9 * M.sept[i] ** 1.5);
+      cA.lerp(PAL.septa, fib * 0.85 * M.sept[i] ** 2);
       CO[i3] = cA.r; CO[i3 + 1] = cA.g; CO[i3 + 2] = cA.b;
-      let g = 0;
-      for (const s of spots) { const dx = P[i3] - s.p[0], dy = P[i3 + 1] - s.p[1], dz = P[i3 + 2] - s.p[2]; g += s.a * Math.exp(-(dx * dx + dy * dy + dz * dz) / (s.r * s.r)); }
-      GL[i] = g;
+      let gr = 0, gg = 0, gb = 0;
+      for (const s of spots) {
+        const dx = P[i3] - s.p[0], dy = P[i3 + 1] - s.p[1], dz = P[i3 + 2] - s.p[2], d2 = dx * dx + dy * dy + dz * dz;
+        if (d2 > s.r * s.r * 9) continue;
+        const g = s.a * Math.exp(-d2 / (s.r * s.r)), c = s.c || DEF_GLOW; gr += g * c[0]; gg += g * c[1]; gb += g * c[2];
+      }
+      GL[i3] = gr; GL[i3 + 1] = gg; GL[i3 + 2] = gb;
     }
     pos.needsUpdate = true; col.needsUpdate = true; glow.needsUpdate = true;
     geo.computeVertexNormals();
     // brilho úmido some com a cirrose (superfície fosca), a esteatose deixa mais pálido/brilhante
-    mat.roughness = 0.34 + 0.34 * tone; mat.clearcoat = 0.85 - 0.6 * tone; mat.clearcoatRoughness = 0.22 + 0.3 * tone;
-    mat.normalScale.setScalar(0.22 + 0.25 * nd);
-    if (p.glowColor != null) mat.userData.U.uGlowCol.value.set(p.glowColor);
+    mat.roughness = 0.4 + 0.3 * tone; mat.clearcoat = 0.7 - 0.55 * tone; mat.clearcoatRoughness = 0.22 + 0.3 * tone;
+    mat.normalScale.setScalar(0.32 + 0.25 * nd);
     const U = mat.userData.U, sc = p.scan;
     U.uScanOn.value = sc ? sc.on ?? 1 : 0;
     if (sc) {

@@ -21,7 +21,7 @@ export default async function (stage, q) {
       // giro lento do órgão (vista anterior → ântero-lateral direita) e leve aproximação
       const az = q.has('az') ? THREE.MathUtils.degToRad(+q.get('az')) : -0.55 + 0.75 * u;
       const el = q.has('el') ? THREE.MathUtils.degToRad(+q.get('el')) : 0.2 + 0.05 * Math.sin(u * Math.PI);
-      const r = (q.has('r') ? +q.get('r') : 11.2 - 0.9 * ease(u));
+      const r = (q.has('r') ? +q.get('r') : 10.4 - 0.8 * ease(u));
       L.root.rotation.set(0, az, 0);
       cam.position.set(0, Math.sin(el) * r - 0.35, Math.cos(el) * r);
       cam.lookAt(target.x, target.y - 0.25 * (1 - ease(seg(t, 0, dur))), target.z);
