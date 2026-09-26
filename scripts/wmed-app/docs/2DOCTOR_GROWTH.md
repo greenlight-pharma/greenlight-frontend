@@ -1,3 +1,6 @@
+
+Observação ao encerrar19:00Z: surgiram alterações concorrentes não commitadas em server/accounts.mjs, db.mjs, railway.mjs e novo shared-cases.mjs. Não foram editadas, adicionadas ou publicadas intencionalmente por esta correção; não atribuir seu escopo a esta rodada. Na próxima retomada conferir estabilização e publicação da outra frente antes de qualquer deploy.
+
 ## 2026-09-26 16:07 BRT — Foco do caso publicado
 
 Código10f73c9, deploymentce6ccf1c-b15c-4426-8684-7a944086e619 SUCCESS no2doctor-web. Health200/product2doctor, index-DGep-RQd.js público idêntico ao build local. CUA público390×844: Enter no card abriu caso com foco emVoltar à conversa/topo0; após carregar formulário, Tab foi paraMeus casos; Enter emVoltar restituiu foco ao card de origem. Sem overflow. Viewport restaurado, fixture encerrada e aba91 fechada. Publicação verificada; nenhuma API/modelo/persistência alterada por esta correção.
