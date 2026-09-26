@@ -1,3 +1,9 @@
+## 2026-09-25 22:35 BRT — Enter no chat publicado
+
+Fonte779b29d, deploymentf778d55d-9d6b-43c5-80c4-b2fac08a47b4 SUCCESS no serviço2doctor-web/projeto2doctor. Health200/product2doctor; entrada/assets/index-DVjASMY9.js igual ao build local, asset200/bytes idênticos. CUA público390: texto em dois parágrafos após Enter, sem iniciar login/envio; screenshot legível, largura390/scroll390, console vazio. Texto fictício apagado e viewport restaurado.203testes e builds2Doctor/site completo aprovados.
+
+Limites: teste de EnterviaCUA e IME/coarse via unidade, sem teclado virtual/IME/iPhone físicos, sessão autenticada ou resposta clínica. Não alterado fluxo de autenticação/armazenamento/API. Próximo executável: verificar uma fricção concreta de escrita/edição no chat (por exemplo visibilidade do limite já existente), sem ampliar funcionalidades. Rollback reconstruindo f33ca71 em scripts/wmed-app.
+
 ## 2026-09-25 22:32 BRT — Chat: Enter no celular
 
 Fricção pública reproduzida anonimamente390px: Enter ao compor texto dispara fluxo de envio/login em vez de nova linha.2Doctor agora permite linha em viewport≤760px ou ponteiro primário coarse; desktop mantém Enterenvia/ShiftEnterlinha. enterkeyhint=enter. Helper bloqueia envio durante composiçãoIME, keyCode229 e repetição de tecla. WMed mantém atalho anterior. Sem alterar API, autenticação, modelo ou persistência; nada enviado ao assistente real.
