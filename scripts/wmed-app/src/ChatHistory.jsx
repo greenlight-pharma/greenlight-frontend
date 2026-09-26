@@ -1,6 +1,6 @@
 import './doctor/history-dialog.css';
 import { useI18n } from './doctor/I18n';
-import React, { useEffect, useLayoutEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { X, MessageSquare, Plus } from 'lucide-react';
 import { encodeMessages, decodeMessages, createHistoryWriter } from '../shared/history.mjs';
 export function useChatHistory({ api, scope, messages, setMessages, busy }) {const { t, locale } = useI18n();
@@ -35,12 +35,25 @@ export default function ChatHistory({ history, onClose, onNew, onSelect }) {
   const { t, locale } = useI18n();
   const doctor = import.meta.env.VITE_PRODUCT === '2doctor';
   const dialog = useRef(null), closeButton = useRef(null);
-  useLayoutEffect(() => {
+  useEffect(() => {
     if (!doctor) return;
     const previous = document.activeElement;
     closeButton.current?.focus({ preventScroll: true });
     return () => {
       if (previous?.isConnected && !previous.matches('input,textarea,select')) previous.focus({ preventScroll: true });
+    };
+  }, [doctor]);
+  useEffect(() => {
+    if (!doctor) return;
+    // Run after the mobile drawer releases its body lock. Keep the page at its
+    // current offset; programmatic scroll still works when selecting a chat.
+    const root = document.documentElement;
+    const previous = { overflow: root.style.overflow, scrollbarGutter: root.style.scrollbarGutter };
+    root.style.scrollbarGutter = 'stable';
+    root.style.overflow = 'hidden';
+    return () => {
+      root.style.overflow = previous.overflow;
+      root.style.scrollbarGutter = previous.scrollbarGutter;
     };
   }, [doctor]);
   function keys(event) {

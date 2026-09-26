@@ -1,3 +1,11 @@
+## 2026-09-26 01:34 BRT — Histórico sem mover a leitura ao fundo
+
+Fricção reproduzida com conversa fictícia longa: abrir Histórico pelo menu móvel em y5171,5 e rolar na margem da janela moveu a página para y6015,5; fechar manteve o deslocamento indesejado de844px. Correção restrita à2Doctor: enquanto Histórico está montado, trava overflow da raiz e reserva gutter; cleanup restaura estilos anteriores. Não fixa o corpo nem força scroll ao fechar, permitindo abrir outro chat no topo. Efeito roda depois da liberação do drawer móvel. Foco inicial/retorno também migrou para efeito posterior ao cleanup do drawer, pois o drawer roubava o foco do botãoFechar.
+
+206 testes existentes passaram; builds2Doctor e site completo aprovados. CUA fixture semupstream:390×844 manteve y4327,5 ao abrir/rolar fundo/fechar; lista interna rolou1649px, Escape mantém posição e libera rolagem.320×568 manteve y6502, focoFechar histórico→Abrir menu, largura305=scroll305. Selecionar conversa mudou para y0 e removeu bloqueio. Desktop1280 clique direto manteve y1570 ao abrir/rolar margem/fechar. Locator automático reposicionou stickyrail230px antes do clique; conferência por clique direto eliminou esse artefato. Rascunho+confirmaçãoManter não libera fundo enquanto histórico aberto; fechar libera e conserva texto. Console semerros. Sem testes em iPhone/Safari/VoiceOver físicos ou histórico real.
+
+Aviso de saída da rodada anterior continua só como patch não aplicado. API/modelos/persistência/ECG inalterados. Próximo: commit explícito e deploy isolado2doctor-web; exigirSUCCESS/health/asset/UI. Rollback pela reconstrução3f246d4. Não enviar raiz do repositório.
+
 ## 2026-09-26 01:06 BRT — Aviso de saída preservado como candidata, sem publicação
 
 Decisão de qualidade: não publicar sem comprovar diálogo nativo de saída. Patch e roteiro em scripts/wmed-app/docs/candidates/20260926-chat-exit.{patch,md}; git apply --check aprovado. Mudanças de runtime retiradas do código ativo, preservando exatamente main.jsx publicado. Teste adicional do harness confirmou saída livre após término da resposta fictícia. Harness/fixtures encerrados e abas temporárias fechadas; nenhuma chamada clínica, persistência, conta ou outro produto alterado. Teste nativo inconclusivo: não atribuir causa nem tratar evento sintético como validação de UI nativa.
