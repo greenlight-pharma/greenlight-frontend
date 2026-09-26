@@ -269,3 +269,11 @@ def rotulos():
         if l2: d.text((60, 116), l2, font=fonte(26), fill=OURO + (255,))
         im.save(SAIDA / f'{nome}.png')
     print('ok rotulos')
+
+
+def titulo_estudantes(t):  # 3,5 s
+    im, d = quadro()
+    texto(d, (640, 270), 'POR DENTRO', 70, alfa=fade(t, 0.2), anchor='ma')
+    texto(d, (640, 370), 'Acute coronary syndrome', 36, CREME, fade(t, 0.7), italico=True, anchor='ma')
+    texto(d, (640, 425), 'for medical students', 24, OURO, fade(t, 1.1), italico=True, anchor='ma')
+    return im

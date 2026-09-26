@@ -5,15 +5,16 @@
 window.CONTEUDO = {
   pergunta: 'How do I manage a patient with acute coronary syndrome? Include doses and risk scores.',
   fontesBusca: ['ESC 2023 · ACS guidelines', 'ACC/AHA 2025 · ACS guideline', 'HEART score · Six 2008'],
-  tempos: { digitar: 7.0, buscar: 3.5, cartoes: [13, 17, 21, 19, 13], fontes: 6 },
+  // ajustado às narrações e0..e6 (26/09): e0 7,7 s; e1 18,6; e2 26,4; e3 33,9; e4 25,8; e5 13,2; e6 5,6
+  tempos: { digitar: 5.5, buscar: 3.2, cartoes: [19.6, 27.4, 34.9, 26.8, 14.2], fontes: 7.1 },
   cartoes: [
-    { num: 1, titulo: 'First 10 minutes', legenda: 'First 10 minutes', tipo: 'lista', passo: 2.2,
+    { num: 1, titulo: 'First 10 minutes', legenda: 'First 10 minutes', tipo: 'lista', passo: 4.3,
       itens: ['<b>12-lead ECG</b> recorded and read within <b>10 min</b> of first medical contact',
               '<b>High-sensitivity troponin</b>: <b>0h/1h</b> algorithm (best) or 0h/2h',
               '<b>Oxygen only if SaO₂ &lt; 90%</b> · no routine oxygen',
               '<b>Aspirin</b> loading dose once ACS is suspected, unless contraindicated'],
       fonte: 'ESC 2023 · Recommendation Tables 1 and 3' },
-    { num: 2, titulo: 'STEMI or NSTE-ACS?', legenda: 'Reperfusion and invasive timing', tipo: 'duas', passo: 5.5,
+    { num: 2, titulo: 'STEMI or NSTE-ACS?', legenda: 'Reperfusion and invasive timing', tipo: 'duas', passo: 14.5,
       colunas: [
         { classe: 'st', titulo: 'STEMI', linhas: ['<b>Primary PCI</b> if diagnosis-to-PCI is <b>&lt; 120 min</b>',
           'If not: start <b>fibrinolysis within 10 min</b> of diagnosis',
@@ -22,7 +23,7 @@ window.CONTEUDO = {
           '<b>Early</b> (&lt; 24 h) should be considered if high risk: confirmed NSTEMI, dynamic ST-T changes, <b>GRACE &gt; 140</b>'] },
       ],
       fonte: 'ESC 2023 · Recommendation Table 4; section 5.3.1.1' },
-    { num: 3, titulo: 'Antithrombotics · loading and maintenance', legenda: 'Doses', tipo: 'tabela', passo: 2.3, destaqueEm: 5.2,
+    { num: 3, titulo: 'Antithrombotics · loading and maintenance', legenda: 'Doses', tipo: 'tabela', passo: 6.6, destaqueEm: 8.5,
       cab: ['Drug', 'Loading dose', 'Maintenance'],
       linhas: [
         { celulas: ['<b>Aspirin</b>', '150–300 mg PO (or 75–250 mg IV)', '75–100 mg once daily'] },
@@ -31,9 +32,9 @@ window.CONTEUDO = {
         { celulas: ['<b>Clopidogrel</b> · if the others can\'t be used', '300–600 mg PO', '75 mg daily'] },
         { celulas: ['<b>UFH</b> during PCI', '70–100 IU/kg IV bolus', '—'] },
       ],
-      nota: 'Prasugrel: contraindicated after prior stroke. DAPT for 12 months unless high bleeding risk.', notaEm: 13.5,
+      nota: 'Prasugrel: contraindicated after prior stroke. DAPT for 12 months unless high bleeding risk.', notaEm: 16.5,
       fonte: 'ESC 2023 · Recommendation Table 5; Table 6' },
-    { num: 4, titulo: 'Risk scores you should know', legenda: 'Risk scores', tipo: 'escores', passo: 3.6,
+    { num: 4, titulo: 'Risk scores you should know', legenda: 'Risk scores', tipo: 'escores', passo: 6.2,
       itens: [
         { nome: 'HEART', texto: 'Chest pain in the ED · History, ECG, Age, Risk factors, Troponin · 0–2 each', gauge: .35, faixas: '0–3 low · 4–6 intermediate · 7–10 high' },
         { nome: 'GRACE', texto: 'Death or MI in hospital and at 6 months · the score ESC recommends · <b>&gt; 140</b> = high risk' },
@@ -41,7 +42,7 @@ window.CONTEUDO = {
         { nome: 'Killip', texto: 'I no heart failure · II crackles, S3 · III pulmonary oedema · IV cardiogenic shock' },
       ],
       fonte: 'Six 2008 (HEART) · ACC/AHA 2025 Table 5 (TIMI, GRACE) · ESC 2023 · Killip & Kimball 1967' },
-    { num: 5, titulo: 'Before discharge', legenda: 'Secondary prevention', tipo: 'lista', passo: 2.3,
+    { num: 5, titulo: 'Before discharge', legenda: 'Secondary prevention', tipo: 'lista', passo: 2.9,
       itens: ['<b>DAPT</b> for 12 months, unless high bleeding risk',
               '<b>High-intensity statin</b> as early as possible · LDL-C <b>&lt; 55 mg/dL</b> and ≥ 50% reduction',
               '<b>Beta-blocker</b> if LVEF ≤ 40%',

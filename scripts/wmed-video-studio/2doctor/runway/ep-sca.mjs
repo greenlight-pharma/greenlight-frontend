@@ -63,6 +63,18 @@ const NARRACAO = {
   n5: "Por Dentro. A 2Doctor series.",
 };
 
+// Versão para estudantes (26/09): narração da Iris sobre a animação do 2Doctor.
+// Cada número bate com app-motion/conteudo.js e com a conferência no NOTAS.md.
+const NARRACAO_EST = {
+  e0: "Right. Now the part you'll actually be examined on. I asked 2Doctor how to manage it, and made it show its sources.",
+  e1: "First ten minutes. A twelve-lead ECG, read within ten minutes of first contact. High-sensitivity troponin, ideally a zero-and-one-hour algorithm. Oxygen only if saturation is below ninety percent. And aspirin, as soon as you suspect it.",
+  e2: "Then the fork in the road. ST elevation? Primary PCI, if you can get there within a hundred and twenty minutes of diagnosis. If you can't, start fibrinolysis within ten minutes, then angiography within two to twenty-four hours. No ST elevation? Very high risk goes to the cath lab within two hours; high risk, including a GRACE score above one-forty, should be considered within twenty-four.",
+  e3: "Now, the doses. Aspirin: one-fifty to three hundred milligrams to load, then seventy-five to a hundred a day. Prasugrel is preferred if they're going to PCI: sixty, then ten a day, or five if they're over seventy-five or under sixty kilos, and never after a stroke. Ticagrelor: one-eighty, then ninety twice a day. Clopidogrel, three to six hundred, then seventy-five, when the others can't be used. And in the lab, heparin, seventy to a hundred units per kilo.",
+  e4: "The scores they love to ask about. HEART, for chest pain in the emergency department: five items, zero to two each. GRACE, the one the European guideline recommends: above one-forty means high risk. TIMI, seven variables, one point each. And Killip, one to four, from no heart failure to cardiogenic shock.",
+  e5: "Before they go home: dual antiplatelet therapy for twelve months, a high-intensity statin with LDL below fifty-five, a beta-blocker if the ejection fraction is forty percent or less, and cardiac rehab.",
+  e6: "Sources on screen. Check the doses and your local protocol before you write a single prescription.",
+};
+
 // Planos de apoio sem pessoas em destaque (wan3, barato).
 const APOIO = {
   a1: 'Night, heavy rain on a city street, an ambulance with flashing blue lights speeds past through the frame, wet asphalt reflections, wide shot from the pavement, cinematic, muted colours, film grain. No readable text or logos.',
@@ -171,7 +183,8 @@ if (modo === 'vozes') {
     .waitForTaskOutput());
   await baixar(t.output[0], `${a1}${wan ? '-wan' : ''}.mp4`);
 } else if (modo === 'narracao') {
-  const so = a2 ? { [a2]: NARRACAO[a2] } : NARRACAO;      // narracao <Preset> [id]
+  const TODAS = { ...NARRACAO, ...NARRACAO_EST };
+  const so = a2 === 'estudantes' ? NARRACAO_EST : a2 ? { [a2]: TODAS[a2] } : NARRACAO;   // narracao <Preset> [id|estudantes]
   for (const [id, texto] of Object.entries(so)) {
     const t = await medir(`narração ${id} ${a1}`, () => tts(texto, a1));
     await baixar(t.output[0], `${id}.mp3`);

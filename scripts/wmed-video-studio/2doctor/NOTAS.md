@@ -69,6 +69,7 @@ Pedido do Dilson: versão para estudantes de medicina com conduta, doses e escor
   - Estatina de alta intensidade o quanto antes, LDL < 55 mg/dL e ≥ 50% de redução (I A, Rec. Table 16, p.68). Betabloqueador I A se FEVE ≤ 40%; IIa B para os demais.
   - Diferenças ESC × ACC/AHA para frasear com cuidado: AAS 162–325 mg na ACC/AHA; ACC/AHA não hierarquiza prasugrel × ticagrelor; porta-agulha de 30 min não está na ACC/AHA 2025; anticoagulante na SCASSST conservadora (ESC fondaparinux, ACC/AHA enoxaparina); HNF 50–70 UI/kg com GP IIb/IIIa e enoxaparina 0,5 mg/kg IV não estão na tabela da ESC 2023.
   - **Não conferido**: reabilitação cardíaca (está no cartão 5). Revisão médica obrigatória antes de publicar.
+- **Vídeo para estudantes pronto (26/09): `out/sca/por-dentro-sca-estudantes.mp4`, 3:14, 1280×720.** Parte 1 reaproveita a versão para leigos (Iris com nome, título "for medical students", verbete, coronárias, placa/coágulo, músculo); parte 2 = `app-motion.mp4` (138,7 s, render headless do `app-motion/index.html`) com as narrações e0–e6 da Maggie posicionadas no início de cada cartão (`runway/montar_sca_estudantes.sh`). Narração: 40 créditos (≈ 2.000 caracteres); resto sem custo. Saldo: 600.
 
 ## Modelos 3D próprios (`../models3d/`)
 Tudo procedural, com código nosso. Visual de documentário no palco comum (`stage.js`, `look:'doc'`): luz quente de lado, contraluz azul, vinheta, grão por quadro, foco raso (`dof` + `stage.setFocus`), oclusão de ambiente (`ao`) e texturas de tecido (`tissueMaterial`). Cada cena exporta `stageOptions`.
