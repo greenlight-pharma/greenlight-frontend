@@ -60,6 +60,28 @@ export function Scores() {
       (compact ? matchesInstrument(q, s.nome, s.sigla, s.especialidade, t(s.especialidade)) : norm(s.nome + " " + s.sigla).includes(norm(q))),
   );
   const [calculator,setCalculator]=useState(null);
+  const position = useRef(null), navigation = useRef(null);
+  const cards = useRef(new Map()), backButton = useRef(null);
+  function openInstrument(key, choose) {
+    if (compact) { position.current = { key, top: window.scrollY }; navigation.current = 'detail'; }
+    choose();
+  }
+  function backToList() {
+    if (compact) navigation.current = 'list';
+    setScore(null);setCalculator(null);
+  }
+  useLayoutEffect(() => {
+    if (!compact || !navigation.current) return;
+    const destination = navigation.current;navigation.current = null;
+    if (destination === 'detail') {
+      backButton.current?.focus({ preventScroll: true });
+      window.scrollTo({ top: 0, behavior: 'instant' });
+    } else if (position.current) {
+      cards.current.get(position.current.key)?.focus({ preventScroll: true });
+      window.scrollTo({ top: position.current.top, behavior: 'instant' });
+    }
+  }, [score, calculator, compact]);
+
   const formulaList=localizedCalculators(locale).filter(c=>{const original=calculators.find(o=>o.id===c.id);return (!area||original.area===area)&&(compact ? matchesInstrument(q,c.name,original.name,c.id,c.area,original.area) : norm(c.name+" "+original.name+" "+c.id).includes(norm(q)))});
   const complete = score?.criterios.every((c) => answers[c.id] !== undefined);
   const total =
@@ -67,11 +89,11 @@ export function Scores() {
   const band = complete
     ? score.faixas.find((f) => total >= f.min && total <= f.max)
     : null;
-  if(calculator)return <Calculators key={calculator} id={calculator} onBack={()=>setCalculator(null)}/>;
+  if(calculator)return <Calculators key={calculator} id={calculator} onBack={backToList} backRef={backButton}/>;
   if (score)
     return (
       <section className="module-page">
-        <button className="back-button" onClick={() => setScore(null)}>
+        <button ref={backButton} className="back-button" onClick={backToList}>
           <ArrowLeft size={17} />
           Scores e calculadoras
         </button>
@@ -154,18 +176,19 @@ export function Scores() {
         </select>
       </div>
       {compact && (q || area) && <button className="back-button scores-reset" onClick={() => {setQ('');setArea('');}}>{t('Limpar filtros')}</button>}
-      {formulaList.length>0&&<><h2 className="library-section-title">{t("Calculadoras por fórmula")} <small>{formulaList.length}</small></h2><div className="resource-grid">{formulaList.map(c=><button className="resource-card" key={c.id} onClick={()=>setCalculator(c.id)}><Calculator size={22}/><small>{c.area}</small><h3>{c.name}</h3><p>{c.summary}</p><span>{t("Calcular")} ↗</span></button>)}</div></>}
+      {formulaList.length>0&&<><h2 className="library-section-title">{t("Calculadoras por fórmula")} <small>{formulaList.length}</small></h2><div className="resource-grid">{formulaList.map(c=><button className="resource-card" key={c.id} ref={node => { if (node) cards.current.set(`formula:${c.id}`,node); else cards.current.delete(`formula:${c.id}`); }} onClick={()=>openInstrument(`formula:${c.id}`,()=>setCalculator(c.id))}><Calculator size={22}/><small>{c.area}</small><h3>{c.name}</h3><p>{c.summary}</p><span>{t("Calcular")} ↗</span></button>)}</div></>}
       <h2 className="library-section-title">{t("Scores por critérios")} <small>{list.length}</small></h2>
       {list.length>0&&<LibraryLanguageNotice />}
       <div className="resource-grid">
         {list.map((s) => (
           <button
             key={s.id}
+            ref={node => { if (node) cards.current.set(`score:${s.id}`,node); else cards.current.delete(`score:${s.id}`); }}
             className="resource-card"
-            onClick={() => {
+            onClick={() => openInstrument(`score:${s.id}`, () => {
               setScore(s);
               setAnswers({});
-            }}
+            })}
           >
             <Calculator size={22} />
             <small>{s.especialidade}</small>

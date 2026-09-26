@@ -1,3 +1,11 @@
+## 2026-09-26 03:34 BRT — Scores: navegação de ida e volta validada
+
+Fricção pública reproduzida em 390×844: abrir Winter deixou página em y439,5, título em y−220,5 e botão Voltar em y−289,5; retorno colocou lista no início. Scores agora guarda apenas referência de cartão/rolagem em memória: abre calculadora ou score no topo com foco em Voltar, e retorna à posição/cartão anteriores. Busca/especialidade permanecem no estado existente. Escopo 2Doctor; WMed não recebe reposicionamento. Fórmulas, critérios, limiares, fontes e limpeza de respostas não alterados. Nenhuma persistência nova.
+
+206 testes passaram; builds 2Doctor e site completo aprovados (warning de bundle preexistente). CUA local com auth fictícia, sem upstream: toque direto em Winter preservou y852→0→852, entrada fictícia produziu saída e voltou à lista; locator Playwright reposicionou cartão antes do clique, por isso prova da posição usou toque direto. Score NYHA: seleção gera resultado, retorno preserva classificação/Cardiologia, reabertura segue limpando respostas como antes. Conferidos 320×568, 390×844 e 1280×800; foco no botão Voltar/cartão, sem overflow horizontal ou erros de console. Isto verifica interação, não validação clínica. Não testados iPhone físico/Safari/VoiceOver. Fixture encerrada e aba76 fechada.
+
+Próximo: commit/deploy isolado, exigir SUCCESS/health200/asset e UI pública. Rollback por reconstrução cc210ac. Synthetic Hospital permanece proposta sem benchmark executado; API/ECG/modelos intocados.
+
 ## 2026-09-26 03:04 BRT — Login compacto publicado
 
 Fonte 26c1215; deployment 66404018-c7af-449d-8cf6-077a4f885845 SUCCESS no projeto 2doctor/serviço 2doctor-web. Health 200/product 2doctor; asset público /assets/index-DEXDcRmr.js idêntico byte a byte ao build local. Conferência pública CUA em 320×400: auth-scroll rolou 282px, Fechar 44×44 permaneceu em y56,5; clique fechou, liberou rolagem e voltou ao chat, sem overflow horizontal ou erros de console. Sem envio de credenciais. Viewport restaurado. 206 testes e builds app/site aprovados, limites físicos e de autenticação registrados acima. API, ECG, fornecedores e persistência inalterados. Árvore preserva apenas medico-app/dist-samu preexistente fora do commit.

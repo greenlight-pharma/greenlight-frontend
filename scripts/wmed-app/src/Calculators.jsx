@@ -5,7 +5,7 @@ import {calculate} from '../shared/calculators.mjs';
 import {localizedCalculators, calculatorError} from '../shared/i18n/calculators.mjs';
 import {useI18n} from './doctor/I18n';
 
-export default function Calculators({id,onBack}) {
+export default function Calculators({id,onBack,backRef}) {
  const {locale,t}=useI18n();
  const c=localizedCalculators(locale).find(c=>c.id===id);
  const [values,setValues]=useState({});
@@ -15,7 +15,7 @@ export default function Calculators({id,onBack}) {
  const text={decimal:['Use ponto ou vírgula decimal, com até 3 casas. Sem separador de milhares ou notação científica.','Use a decimal point or comma, up to 3 decimal places. No thousands separator or scientific notation.','Usa punto o coma decimal, hasta 3 decimales. Sin separador de miles ni notación científica.'],accepted:['Valores aceitos nesta calculadora','Accepted values in this calculator','Valores admitidos en esta calculadora'],bounds:['Esses limites são de entrada, não um intervalo de normalidade.','These are input limits, not a normal range.','Estos límites son de entrada, no un intervalo de normalidad.'],expected:['PaCO₂ esperada · faixa estimada','Expected PaCO₂ · estimated range','PaCO₂ esperada · intervalo estimado'],gap:['Ânion gap calculado','Calculated anion gap','Brecha aniónica calculada'],scope:['Cálculo educativo. Não identifica o distúrbio primário, valores críticos ou tratamento.','Educational calculation. Does not identify the primary disorder, critical values or treatment.','Cálculo educativo. No identifica el trastorno primario, valores críticos ni tratamiento.'],winter:['A acidose metabólica precisa ter sido identificada antes. PaCO₂ é arterial; este resultado não é um alvo de ventilação.','Metabolic acidosis must already have been identified. PaCO₂ is arterial; this result is not a ventilation target.','La acidosis metabólica debe haberse identificado previamente. La PaCO₂ es arterial; este resultado no es un objetivo de ventilación.'],center:['Estimativa central','Central estimate','Estimación central']};const tr=k=>text[k][i];
  const fmt=n=>n.toLocaleString(locale,{maximumFractionDigits:2});
  return <section className={`module-page formula-calculator${acidBase?' doctor-acid-base':''}`}>
-  <button className="back-button" onClick={onBack}>← {t('Scores e calculadoras')}</button>
+  <button ref={backRef} className="back-button" onClick={onBack}>← {t('Scores e calculadoras')}</button>
   <header className="module-heading"><h1>{c.name}</h1><p>{c.summary}</p></header>
   {acidBase&&<div className="acid-base-context"><p>{tr('scope')}</p><p id="acid-format">{tr('bounds')} {tr('decimal')}</p>{id==='winter'&&<p>{tr('winter')}</p>}</div>}
   <div className="calculator-layout">
