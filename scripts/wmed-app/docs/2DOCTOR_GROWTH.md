@@ -1,3 +1,7 @@
+## 2026-09-26 09:36 BRT — Foco do PDF publicado
+
+Código 8af0d2e, deployment c7b3ab39-ea7d-4320-acf6-1506658cbf2b SUCCESS exclusivamente no 2doctor-web. Healthz 200/product2doctor; asset index-CSGWDSvt.js público idêntico ao build local. CUA público 390×844 confirmou chat e navegação íntegros, viewport restaurado. Teste funcional do foco ficou na fixture local: Enter mantém foco durante geração e em Baixar PDF; Tab segue para próxima opção. 214 testes e builds app/site passaram. Não realizado envio autenticado em produção, iPhone/Safari/VoiceOver físico; não alterada geração do documento, prompt/API ou modelo. Próximo: acompanhar eventual fricção real ao salvar/compartilhar PDF; sem nova demanda ou regressão observável, manter versão estável. Rollback f379800; dist-samu preservado.
+
 ## 2026-09-26 09:33 BRT — PDF: correção do foco por teclado
 
 Rodada 12:30Z. Git f379800; Railway 22b5df42-0727-47ff-9ad6-8679544f4382 SUCCESS confirmado. Fricção reproduzida em fixture isolada: ativar Gerar PDF por Enter fazia activeElement voltar ao BODY quando o botão recebia disabled. Ao terminar, o usuário perdia a posição na navegação.
