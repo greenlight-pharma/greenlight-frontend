@@ -1,3 +1,13 @@
+## 2026-09-26 04:33 BRT — Banco de imagens: navegação corrigida em teste isolado
+
+Git e Railway conferidos: baseline b8a4a1f, produção d8c2420b-0f27-4ff5-a088-261d479d470b SUCCESS. Site público exige login para imagens; sessão desconectada, sem repetir pedido ao usuário. Fixture local auth/academic com seis imagens da própria marca, texto explicitamente fictício, sem upstream, prontuários ou persistência. Fricção reproduzida em 390×844: último cartão em y1549, abrir deixava Acervo em y−91,5; voltar perdia contexto (y0/foco BODY).
+
+ImageLibrary agora, somente no build 2Doctor, abre leitor no topo com foco em Acervo e restaura cartão/rolagem ao voltar. Preserva tanto rolagem da página móvel quanto da grade desktop. Navegação Anterior/Próxima no leitor não sobrescreve origem; zoom mantém comportamento. Sem modificar conteúdo, filtros, API, autenticação, arquivos de imagem ou WMed.
+
+206 testes existentes passaram, build 2Doctor e site completo aprovados (bundle warning preexistente). CUA local: y1549→0→1549; busca teste e página 2 preservadas, zoom125%, retorno após trocar imagem; grade desktop1280×600 retornou scrollTop165; 320×568/390×844 sem overflow horizontal, screenshot e console conferidos. Não testados iPhone físico/Safari/VoiceOver nem acervo autenticado de produção. Dockerfile/railway.json inspecionados.
+
+Próximo: deploy isolado e confirmar SUCCESS, health200, assets e acesso público. Limite explícito: fluxo autenticado verificado em fixture local, não na conta real. Rollback b8a4a1f. Pré-existente medico-app/dist-samu preservado.
+
 ## 2026-09-26 04:09 BRT — Navegação de condições publicada
 
 Fonte 86729b0; deployment d8c2420b-0f27-4ff5-a088-261d479d470b SUCCESS no serviço 2doctor-web/projeto 2doctor. Healthz 200/product 2doctor; index-DHeIEfQg.js e Libraries-BB4FD_8h.js públicos idênticos byte a byte ao build local. Interface pública 390×844 comprovou cartão O24 y1013→detalhe y0→retorno y1013 com foco no cartão, busca diabetes preservada e sem overflow horizontal. Screenshot conferido; nenhum erro de console. 206 testes e builds app/site completos aprovados. Fixture encerrada, aba temporária fechada e viewport restaurado. Não testado iPhone físico/Safari/VoiceOver, sem alterações clínicas/API/ECG.
