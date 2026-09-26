@@ -1,5 +1,9 @@
 // Portuguese is the source language. Content libraries are translated separately.
 export const catalog={
+'Mensagem não enviada':['Unsent message','Mensaje sin enviar'],
+'Trocar de conversa descarta o texto e os anexos que você ainda não enviou.':['Switching conversations discards your unsent text and attachments.','Cambiar de conversación descarta el texto y los archivos que aún no has enviado.'],
+'Manter rascunho':['Keep draft','Conservar borrador'],
+'Descartar e continuar':['Discard and continue','Descartar y continuar'],
 'Limpar filtros':['Clear filters','Limpiar filtros'],
 'Exames laboratoriais':['Laboratory tests','Pruebas de laboratorio'],
 'Leitura de laudos · protótipo':['Reading reports · prototype','Lectura de informes · prototipo'],

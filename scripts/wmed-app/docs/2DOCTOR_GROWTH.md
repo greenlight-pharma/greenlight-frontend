@@ -1,5 +1,12 @@
 ## 2026-09-26 00:06 BRT — Histórico com fechamento visível publicado
 
+## 2026-09-26 00:38 BRT — Proteger rascunho ao trocar de conversa
+
+Reproduzida perda do texto não enviado ao abrir item do histórico na fixture local. A2Doctor agora pede escolha entre Manter rascunho e Descartar e continuar quando Nova conversa/abrir histórico encontra texto ou anexos. Sem rascunho não acrescenta etapa. Confirmação própria com foco inicial na opção segura, Escape/cancelar, Tab contido e textos PT/EN/ES; tentativa inicial de confirmação nativa teve comportamento inconsistente no navegador de QA e foi substituída. Rascunho só é limpo após sucesso da troca; falha mantém texto/arquivos. Bloqueio de troca/envio concorrente e edição/anexação enquanto carrega; atualização funcional preserva alterações mais recentes de outras ações. Nada de armazenamento novo ou mudança de API.
+
+206testes existentes passaram; build2Doctor aprovado. CUA fixture semupstream/banco real: cancelar e Escape preservam texto+1anexo;503 simulado ao abrir preserva ambos; descarte explícito abre conversa3 ou inicia vazia; anexo semtexto também protegido; ausência de rascunho não abre aviso; Tab alterna os2botões.320×568 semcorte após corrigir largura(areavisível305px, direita285px),390×844 e desktop1280 semoverflow. Não testados conta/histórico real, Safari/iPhone físico, VoiceOver ou falha real de rede. Build completo do site em andamento; publicação pendente. Próximo: conferir build completo, deployisolado,health/asset/UI pública. Rollback reconstruindo92f662a com cwd scripts/wmed-app.
+
+
 Fonte5e6ce3c; deployment4120333b-0e8a-47dc-8d37-4bb1e508ac34 SUCCESS em2doctor/2doctor-web. Health200/product2doctor, entrada/assets/index-Bn9q5U94.js confere com local e asset200/bytes idênticos. CUA público390: abrir Histórico exige login e fechar retorna ao chat, width390=scroll390, console vazio. Não houve login nem leitura de conversas reais. Nova janela foi validada com30conversas sintéticas localmente, incluindo scroll, Escape, Tab, reabertura e rascunho conforme registro anterior.206testes/builds completos passaram.
 
 Limites: sem conta/histórico real, iPhone/VoiceOver físicos, nem avaliação clínica. Viewportrestaurado e fixtureencerrada. Próximo executável: revisar abertura de conversa salva quando há texto/anexos não enviados (atualmente pode apagar o rascunho); reproduzir com fixture antes de mudar comportamento. Não ampliar catálogo. Rollback por reconstruçãoc2707bc em scripts/wmed-app.
