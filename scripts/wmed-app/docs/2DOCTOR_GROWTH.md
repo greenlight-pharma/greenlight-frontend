@@ -1,3 +1,13 @@
+## 2026-09-26 08:02 BRT — Anexo preservado na navegação móvel, sem mudança de produto
+
+Rodada 11:00Z. Documentos de continuidade e quatro planos relidos; Git baseline 8689d6d com apenas medico-app/dist-samu/ preexistente não rastreado. Railway mantém dad2025f-1941-400d-83f4-6fbc99fd9e23 SUCCESS. Healthz 200/product 2doctor e /assets/index-0mWKEJXY.js público idêntico ao dist local, conferidos nesta rodada.
+
+CUA público390×844, sem login: anexado TXT fictício sem dados clínicos (39 caracteres) e preenchido rascunho não enviado. Chat → Scores → Chat; menu/busca → Medicações → Voltar ao chat; dois retornos pelo navegador preservaram rascunho e cartão do arquivo com mesmo nome/contagem. Campo sem inert residual; sem overflow horizontal. Não houve falha reproduzida. Não foi inspecionado payload privado nem enviado ao modelo, portanto a verificação comprova presença do anexo na interface, não integridade do conteúdo entregue ao backend. Nenhuma nova persistência.
+
+Arquivo removido e rascunho apagado ao fim, confirmados zero cartões/campo vazio; viewport restaurado. Sem edição de código, testes automatizados/build/deploy não repetidos. A versão anterior tem seus próprios 206 testes/builds registrados, não contados como novos. Não testados anexos após recarga, histórico autenticado, iPhone físico/Safari ou envio real.
+
+Próximo passo: a navegação de rascunho/anexo testada está encerrada sem correção necessária. Em nova rodada, reproduzir outra fricção real antes de editar; fluxos autenticados de envio e reabertura continuam pendentes de sessão disponível, sem repetir pedido de login. Não criar recursos nem persistência para preencher a fila.
+
 ## 2026-09-26 07:34 BRT — Navegação móvel: rascunho preservado, sem alteração de produto
 
 Rodada de 10:30Z. Baseline 26e1f25, código aee32eb; Git e Railway conferidos. Mantido deployment dad2025f-1941-400d-83f4-6fbc99fd9e23 SUCCESS, index-0mWKEJXY.js. Apenas diretório preexistente medico-app/dist-samu/ não rastreado, preservado.
