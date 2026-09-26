@@ -1,3 +1,11 @@
+## 2026-09-26 18:33 BRT — Rascunho do chat preservado na navegação móvel
+
+Rodada 21:30Z: estado/diário e planos relidos. HEAD 7409714; nenhum código novo desde b46b3dd, somente dist-samu preexistente não rastreado. Railway e7140d4e-c2b2-48d9-ad1a-51759ee6c9f0 permanece SUCCESS, healthz 200/product 2doctor. Não houve publicação.
+
+CUA público 320×568: rascunho não clínico digitado no compositor, Menu → Chat preservou texto e retornou foco a Abrir menu. Controles visíveis, sem overflow lateral (305px em viewport 320px); screenshot conferido. Rascunho removido por selecionar tudo/Backspace, campo vazio e envio desabilitado confirmados. O fill vazio da automação não limpou o campo na primeira tentativa; teclado funcionou, sem evidência de falha de exclusão pelo usuário. Nenhuma solicitação enviada, conta acessada ou persistência clínica testada. Viewport restaurado.
+
+Sem nova regressão reproduzível; nenhum ajuste artificial ou recurso criado. Testes e builds não repetidos porque código segue o snapshot verificado em 20:30Z (220 passaram, 10 integrações ignoradas, builds app/site completo aprovados). Não rodaram login/histórico autenticado, banco, iPhone/teclado iOS/VoiceOver físicos ou avaliação clínica. Próximo passo: preservar esta versão e atuar quando houver mudança de código ou fricção concreta; a reabertura do histórico depende de sessão de teste disponível, sem repetir pedido de login a cada rodada.
+
 ## 2026-09-26 18:03 BRT — Acesso móvel ao histórico sem sessão
 
 Rodada 21:00Z: estado/diário e quatro planos relidos. Git b2481a4, código sem mudanças desde b46b3dd, somente dist-samu não rastreado. Railway e7140d4e-c2b2-48d9-ad1a-51759ee6c9f0 SUCCESS; healthz 200/product 2doctor; asset index-CNyOvHc2.js público idêntico ao build local. Nenhuma publicação ou alteração de produto.
