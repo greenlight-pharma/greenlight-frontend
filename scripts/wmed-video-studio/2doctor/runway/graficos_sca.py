@@ -201,27 +201,8 @@ def g6(t):  # 9 s: ECG em 10 min, balão e stent (narração n4, continuação)
     return im
 
 
-def titulo(t):  # 3 s
-    im, d = quadro()
-    texto(d, (640, 290), 'POR DENTRO', 70, alfa=fade(t, 0.2), anchor='ma')
-    texto(d, (640, 390), 'The heart attack, explained', 34, MUTED, fade(t, 0.8), italico=True, anchor='ma')
-    return im
 
 
-def final(t):  # 5 s
-    im, d = quadro()
-    texto(d, (640, 250), 'POR DENTRO', 58, alfa=fade(t, 0.1), anchor='ma')
-    texto(d, (640, 330), 'a 2Doctor series', 30, OURO, fade(t, 0.4), italico=True, anchor='ma')
-    texto(d, (640, 430), 'Educational content, not medical advice  ·  Sources in the caption', 22, MUTED, fade(t, 0.8), anchor='ma')
-    texto(d, (640, 470), 'Presenter and some scenes created with AI', 22, MUTED, fade(t, 0.8), anchor='ma')
-    return im
-
-
-if __name__ == '__main__':
-    SAIDA.mkdir(parents=True, exist_ok=True)
-    for nome, dur, fn in [('g-titulo', 3.0, titulo), ('g1', 3.5, g1), ('g2', 11.0, g2), ('g3', 12.5, g3),
-                          ('g4', 14.5, g4), ('g5', 5.0, g5), ('g6', 9.0, g6), ('g-final', 5.0, final)]:
-        gravar(nome, dur, fn)
 
 
 def sobreposicoes():
@@ -271,9 +252,73 @@ def rotulos():
     print('ok rotulos')
 
 
+
+# ---- Marca 2Doctor (abertura e convite final) ----
+# Logo: cópia de scripts/wmed-app/public/brand/2doctor/logo-1024.png em out/ref/ (imagem fica fora do Git).
+LOGO = SAIDA.parent / 'ref' / 'logo-2doctor.png'
+MANROPE = Path(__file__).resolve().parent.parent / 'app-motion' / 'fonts' / 'Manrope.ttf'
+TEAL_MARCA = (0, 93, 91)
+VERDE_CLARO = (94, 196, 180)
+
+
+def manrope(tam, peso='Bold'):
+    f = ImageFont.truetype(str(MANROPE), tam)
+    f.set_variation_by_name(peso)
+    return f
+
+
+def marca(im, cx, y, tam_logo, tam_nome, alfa):
+    """Logo + "2Doctor" centralizados em cx, topo em y."""
+    if alfa <= 0:
+        return
+    logo = Image.open(LOGO).convert('RGBA').resize((tam_logo, tam_logo), Image.LANCZOS)
+    logo.putalpha(logo.getchannel('A').point(lambda a: int(a * alfa)))
+    f = manrope(tam_nome, 'ExtraBold')
+    larg_nome = f.getlength('2Doctor')
+    gap = int(tam_logo * 0.28)
+    x0 = int(cx - (tam_logo + gap + larg_nome) / 2)
+    im.alpha_composite(logo, (x0, y))
+    d = ImageDraw.Draw(im, 'RGBA')
+    d.text((x0 + tam_logo + gap, y + tam_logo / 2), '2Doctor', font=f, fill=CREME + (int(255 * alfa),), anchor='lm')
+
+
 def titulo_estudantes(t):  # 3,5 s
     im, d = quadro()
-    texto(d, (640, 270), 'POR DENTRO', 70, alfa=fade(t, 0.2), anchor='ma')
+    marca(im, 640, 205, 96, 76, fade(t, 0.2))
+    d = ImageDraw.Draw(im, 'RGBA')
     texto(d, (640, 370), 'Acute coronary syndrome', 36, CREME, fade(t, 0.7), italico=True, anchor='ma')
     texto(d, (640, 425), 'for medical students', 24, OURO, fade(t, 1.1), italico=True, anchor='ma')
     return im
+
+
+def final(t):  # 6 s: convite para usar o 2Doctor
+    im, d = quadro()
+    marca(im, 640, 150, 84, 64, fade(t, 0.1))
+    d = ImageDraw.Draw(im, 'RGBA')
+    texto(d, (640, 300), 'Study the next case with 2Doctor', 34, CREME, fade(t, 0.5), italico=True, anchor='ma')
+    a = fade(t, 1.0)
+    if a > 0:
+        f = manrope(46, 'Bold')
+        larg = f.getlength('2doctor.ai')
+        x0, y0 = 640 - larg / 2 - 38, 362
+        d.rounded_rectangle([x0, y0, 640 + larg / 2 + 38, y0 + 78], radius=39, fill=TEAL_MARCA + (int(255 * a),))
+        d.text((640, y0 + 39), '2doctor.ai', font=f, fill=(255, 255, 255, int(255 * a)), anchor='mm')
+    texto(d, (640, 478), 'Unlimited AI for medicine  ·  New tools every week', 24, VERDE_CLARO, fade(t, 1.5), anchor='ma')
+    texto(d, (640, 580), 'Educational content, not medical advice  ·  Sources in the caption', 19, MUTED, fade(t, 2.0), anchor='ma')
+    texto(d, (640, 610), 'Presenter and some scenes created with AI', 19, MUTED, fade(t, 2.0), anchor='ma')
+    return im
+
+
+def titulo(t):  # 3 s (versão leiga)
+    im, d = quadro()
+    marca(im, 640, 215, 96, 76, fade(t, 0.2))
+    d = ImageDraw.Draw(im, 'RGBA')
+    texto(d, (640, 390), 'The heart attack, explained', 34, MUTED, fade(t, 0.8), italico=True, anchor='ma')
+    return im
+
+
+if __name__ == '__main__':
+    SAIDA.mkdir(parents=True, exist_ok=True)
+    for nome, dur, fn in [('g-titulo', 3.0, titulo), ('g-titulo-est', 3.5, titulo_estudantes), ('g1', 3.5, g1), ('g2', 11.0, g2),
+                          ('g3', 12.5, g3), ('g4', 14.5, g4), ('g5', 5.0, g5), ('g6', 9.0, g6), ('g-final', 6.0, final)]:
+        gravar(nome, dur, fn)
