@@ -1,3 +1,13 @@
+## 2026-09-26 16:33 BRT — Conferência móvel de calculadoras, sem alteração de produto
+
+Rodada19:30Z. Estado/diário e planos GROWTH/SCRIBE/INTERNATIONAL/MOBILE relidos. Gitd9f0c8c, árvore limpa salvo dist-samu. Outra frente comitou compartilhamento público de casos como desafios e comunidade, incluindo persistência e metadados públicos. Isso não foi desenvolvido, ativado, utilizado para envio nem publicado por esta automação, cuja instrução continua vedando novos desafios/persistência clínica. Preservado trabalho existente; não considerar título/commit de outra frente como autorização para expandir esse escopo.
+
+Railway72349f44-0080-4eae-b871-42967daf1108 SUCCESS; health200/product2doctor. Sem deploy nesta rodada. CUA público320×568: chat → Consultar um score → busca massa → IMC → valores sintéticos70/175 → Limpar → lista com busca preservada e foco no card → limpar filtros → Chat. Sem overflow; navegação, campos e retorno funcionaram. Conferência de interface/aritimética, não validação clínica de todos os scores. Não houve nova fricção reproduzível nesse percurso, portanto nenhum recurso ou ajuste artificial foi criado. Viewport restaurado, chat preservado.
+
+Snapshot atual:228 testes,218 passaram/10 integrações ignoradas porTEST_DATABASE_URL ausente (nova integração da outra frente). Build2Doctor e build completo do site passaram; diffcheck limpo. Logs /tmp/2doctor-1930-tests.log, -build.log e -site.log. Nenhuma avaliação clínica, login/envio real, compartilhamento de casos, dados de pacientes, iPhone/Safari/VoiceOver físicos ou integração com banco rodou. Não inferir homologação da comunidade por esses testes.
+
+Próximo: preservar versão estável; atuar em fricção concreta ou retorno do usuário. Antes de qualquer novo deploy, conferir mudanças de escopo da outra frente e não recriar desafios, enviar casos públicos ou alterar persistência por continuidade automática.
+
 
 Observação ao encerrar19:00Z: surgiram alterações concorrentes não commitadas em server/accounts.mjs, db.mjs, railway.mjs e novo shared-cases.mjs. Não foram editadas, adicionadas ou publicadas intencionalmente por esta correção; não atribuir seu escopo a esta rodada. Na próxima retomada conferir estabilização e publicação da outra frente antes de qualquer deploy.
 
