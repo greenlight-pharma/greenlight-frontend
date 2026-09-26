@@ -1,3 +1,9 @@
+## 2026-09-26 00:06 BRT — Histórico com fechamento visível publicado
+
+Fonte5e6ce3c; deployment4120333b-0e8a-47dc-8d37-4bb1e508ac34 SUCCESS em2doctor/2doctor-web. Health200/product2doctor, entrada/assets/index-Bn9q5U94.js confere com local e asset200/bytes idênticos. CUA público390: abrir Histórico exige login e fechar retorna ao chat, width390=scroll390, console vazio. Não houve login nem leitura de conversas reais. Nova janela foi validada com30conversas sintéticas localmente, incluindo scroll, Escape, Tab, reabertura e rascunho conforme registro anterior.206testes/builds completos passaram.
+
+Limites: sem conta/histórico real, iPhone/VoiceOver físicos, nem avaliação clínica. Viewportrestaurado e fixtureencerrada. Próximo executável: revisar abertura de conversa salva quando há texto/anexos não enviados (atualmente pode apagar o rascunho); reproduzir com fixture antes de mudar comportamento. Não ampliar catálogo. Rollback por reconstruçãoc2707bc em scripts/wmed-app.
+
 ## 2026-09-26 00:03 BRT — Histórico: fechar sem voltar ao topo
 
 Fixture com30conversas fictícias reproduziu botãoFechar fora da tela(top−1156px) após rolar e Escape sem efeito. Na2Doctor, cabeçalho/título/Fechar44px ficam fora da área de rolagem; só a lista/conteúdo rola. Escape fecha, Tab/ShiftTab permanecem nos controles do diálogo; foco inicial semscroll e retorno ao acionador sem abrir teclado. Fechar mantém rascunho; selecionar conversa usa fluxo existente. WMed mantém markup anterior e não recebe CSS scoped. Sem alterar autenticação/historyAPI/persistência.
