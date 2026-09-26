@@ -22,7 +22,7 @@ import CaseFeedbackLoading from "./doctor/CaseFeedbackLoading";
 import CaseHistory, {caseRequest} from "./CaseHistory";
 import {restoreCase} from "../shared/case-storage.mjs";
 import "./case-feedback.css";
-import { academicRequest } from "./Libraries";
+import { academicRequest, academicStream } from "./Libraries";
 import PrivacyReview from "./PrivacyReview";
 import { detectAcademicPII } from "../shared/pii.mjs";
 import { fields, feedbackPayload, guidanceFeedback } from "../shared/case-contract.mjs";
@@ -43,6 +43,9 @@ function ClinicalCaseBody({ session, onLogin, onProgress, onPendingChange, activ
     [feedback, setFeedback] = useState(null),
     [quality, setQuality] = useState(null),
     [qualityError, setQualityError] = useState(""),
+    [grading, setGrading] = useState(false),
+    [restPending, setRestPending] = useState(false),
+    [restError, setRestError] = useState(""),
     [recording, setRecording] = useState(false),
     [seconds, setSeconds] = useState(0);
   const lengthHintId=useId();
@@ -240,6 +243,7 @@ function ClinicalCaseBody({ session, onLogin, onProgress, onPendingChange, activ
   }
   async function grade() {
     setQualityError("");
+    setGrading(true);
     try {
       const d = await academicRequest("quality", { fields: form, relato });
       if (alive.current) {
@@ -253,37 +257,51 @@ function ClinicalCaseBody({ session, onLogin, onProgress, onPendingChange, activ
     } catch (e) {
       if (alive.current) setQualityError(e.message);
       return null;
+    } finally {
+      if (alive.current) setGrading(false);
     }
   }
   async function evaluate() {
     if (evaluating.current || !requireLogin()) return;
     evaluating.current=true;
     if(audioRecovery)setStage("aguardando");
-    setBusy("Preparando seu feedback completo…");
+    setBusy("Preparando seu feedback…");
     setError("");
     setQuality(null);
     setQualityError("");
+    setRestError("");
+    setRestPending(false);
     reported.current = false;
+    // A pontuação do relato não depende do feedback: corre em paralelo.
+    const scoring = grade();
     try {
-      const d = await request("feedback", { fields: form, relato });
-      if (
-        !d.feedback ||
-        typeof d.feedback !== "object" ||
-        !Object.keys(d.feedback).length
-      )
-        throw Error("O serviço não retornou um feedback completo.");
-      if (d.feedback.erro_pii) throw Error(d.feedback.erro_pii);
-      if(!alive.current)return;
-      setFeedback(guidanceFeedback(d.feedback));
-      setStage("feedback");
+      const c = new AbortController();
+      cancel.current = c;
+      let merged = null, failure = null;
+      await academicStream("feedback", { fields: form, relato }, c.signal, (event, data) => {
+        if (!alive.current) return;
+        if (event === "part" && data.feedback && typeof data.feedback === "object") {
+          merged = guidanceFeedback({ ...(merged || {}), ...data.feedback });
+          setFeedback(merged);
+          setStage("feedback");
+          if (data.secao === "essencial") { setRestPending(true); setBusy("Gerando as demais seções…"); }
+          else setRestPending(false);
+        } else if (event === "error") failure = data;
+      });
+      if (!alive.current) return;
+      setRestPending(false);
+      if (!merged || !Object.keys(merged).length)
+        throw Error(failure?.error || "O serviço não retornou um feedback completo.");
+      if (failure) setRestError("Algumas seções não foram geradas: " + failure.error);
       setBusy("Avaliando a qualidade do relato…");
-      const score = await grade();
+      const score = await scoring;
       if(!alive.current)return;
-      pendingSave.current={requestId:crypto.randomUUID(),relato,fields:form,feedback:guidanceFeedback(d.feedback),quality:score};
+      pendingSave.current={requestId:crypto.randomUUID(),relato,fields:form,feedback:merged,quality:score};
       setBusy("Salvando caso…");
       await persist();
     } catch (e) {
       if(alive.current){
+        setRestPending(false);
         if(audioRecovery)setStage("revisao");
         if (e.name !== "AbortError") setError(e.message);
       }
@@ -535,7 +553,7 @@ function ClinicalCaseBody({ session, onLogin, onProgress, onPendingChange, activ
       {stage === "feedback" && feedback && <>
         <div className="case-result-actions"><div role="status" className={'case-save-state '+saveStatus}>{saveStatus==='saved'?<><Check size={15}/> Salvo na sua conta</>:saveStatus==='saving'?'Salvando caso…':saveStatus==='error'?'Caso ainda não salvo':'Preparando para salvar…'}</div><button disabled={!!busy||saveStatus==='saving'} onClick={async()=>{if(pendingSave.current&&!await persist())return;setStage('relato');setConfirmed(false);setSaveStatus('');}}>Complementar relato</button><button disabled={!!busy||saveStatus==='saving'} onClick={fresh}>Novo caso</button></div>
         {saveError&&<div className="error" role="alert">{saveError} Mantenha esta tela aberta.<button disabled={saveStatus==='saving'} onClick={persist}>Tentar salvar novamente</button></div>}
-        <CaseFeedback key={feedback?JSON.stringify(form):'empty'} feedback={feedback} quality={quality} qualityError={qualityError} relato={relato} form={form} busy={!!busy}/>
+        <CaseFeedback key={JSON.stringify(form)} feedback={feedback} quality={quality} qualityError={qualityError} grading={grading} restPending={restPending} restError={restError} relato={relato} form={form} onGrade={grade} busy={!!busy}/>
       </>}
       {busy && stage!=="aguardando" && !(audioRecovery && transcribing.current) && (
         <p role="status" className="progress">

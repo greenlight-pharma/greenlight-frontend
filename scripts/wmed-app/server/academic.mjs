@@ -1,6 +1,7 @@
 import {imageQuery} from "../shared/image-filters.mjs";
 import { detectAcademicPII } from "../shared/pii.mjs";
 import { sessionToken, allowWrite } from "./vytal-assistant.mjs";
+import { parseSSE } from "./research.mjs";
 import {
   reviewedFields,
   feedbackPayload,
@@ -97,7 +98,8 @@ export async function academic(
       } else {
         report = p.relato;
         if (report.length > 12000) throw Error();
-        path = "/estudante/tutor/chat";
+        // Streaming devolve o texto cru do modelo; o /tutor/chat embrulha em {resposta} e perdia o JSON da rubrica.
+        path = "/estudante/tutor/chat-stream";
         body = { historico: qualityMessages(report) };
       }
     } else return send(res, 400, { error: "Operação não permitida." });
@@ -126,6 +128,8 @@ export async function academic(
     });
   quota.count++;
   limits.set(key, quota);
+  if (action === "feedback" && p?.stream === true)
+    return streamFeedback(res, token, body, fetchImpl);
   try {
     const r = await fetchImpl(API + path, {
       method: body ? "POST" : "GET",
@@ -152,10 +156,9 @@ export async function academic(
         { error: message },
       );
     }
-    const data = await r.json();
     if (action === "quality") {
       try {
-        return send(res, 200, validateQuality(data.resposta, report));
+        return send(res, 200, validateQuality(await streamedText(r), report));
       } catch {
         return send(res, 422, {
           error:
@@ -163,6 +166,7 @@ export async function academic(
         });
       }
     }
+    const data = await r.json();
     if (action === "feedback" && data.feedback && typeof data.feedback === "object")
       return send(res, 200, { ...data, feedback: guidanceFeedback(data.feedback) });
     return send(res, 200, data);
@@ -171,4 +175,82 @@ export async function academic(
       error: "O serviço não concluiu a tempo. Tente novamente.",
     });
   }
+}
+
+// Junta os pedaços {t} do SSE do tutor; um {error} vira falha.
+export async function streamedText(r) {
+  const raw = await r.text();
+  if (!/^data:/m.test(raw)) {
+    try { const d = JSON.parse(raw); return typeof d.resposta === "string" ? d.resposta : raw; } catch { return raw; }
+  }
+  let out = "";
+  for (const line of raw.split(/\r?\n/)) {
+    if (!line.startsWith("data:")) continue;
+    let d; try { d = JSON.parse(line.slice(5).trim()); } catch { continue; }
+    if (d.error) throw Error(String(d.error));
+    if (typeof d.t === "string") out += d.t;
+  }
+  return out;
+}
+
+// Resumo e hipóteses da 1ª parte, para a 2ª parte ficar coerente com ela.
+export function feedbackContext(f) {
+  const hyp = Array.isArray(f?.hipoteses_para_discussao)
+    ? f.hipoteses_para_discussao.map((h) => (typeof h === "string" ? h : h?.hipotese || h?.nome || "")).filter(Boolean).join("; ")
+    : typeof f?.hipoteses_para_discussao === "string" ? f.hipoteses_para_discussao : "";
+  return { resumo: typeof f?.resumo_caso === "string" ? f.resumo_caso.slice(0, 2000) : "", hipoteses: hyp.slice(0, 2000) };
+}
+// Feedback em duas partes, como no app Vytal: "essencial" (aba Raciocínio, ~30 s) chega
+// primeiro e aparece na tela; "complementar" (Semiologia, Manejo, Estudo, apresentação) vem depois.
+async function streamFeedback(res, token, body, fetchImpl) {
+  const abort = new AbortController();
+  res.on?.("close", () => { if (!res.writableEnded) abort.abort(); });
+  res.statusCode = 200;
+  res.setHeader("Content-Type", "text/event-stream; charset=utf-8");
+  res.setHeader("Cache-Control", "no-store, no-transform");
+  res.setHeader("X-Accel-Buffering", "no");
+  res.flushHeaders?.();
+  const out = (event, data) => { if (!res.destroyed) res.write(`event: ${event}\ndata: ${JSON.stringify(data)}\n\n`); };
+  const ping = setInterval(() => { if (!res.destroyed) res.write(": ping\n\n"); }, 10000);
+  async function part(secao, payload) {
+    const r = await fetchImpl(`${API}/estudante/case-feedback-${secao}-stream`, {
+      method: "POST",
+      headers: { Authorization: `Bearer ${token}`, "Content-Type": "application/json" },
+      body: JSON.stringify(payload),
+      redirect: "error",
+      signal: AbortSignal.any([abort.signal, AbortSignal.timeout(270000)]),
+    });
+    if (!r.ok) {
+      let message = "Não foi possível gerar o feedback. Tente novamente.";
+      if (r.status < 500) try { const d = await r.json(); const m = d.error || d.message; if (typeof m === "string") message = m.slice(0, 500); } catch {}
+      throw Object.assign(Error(message), { status: r.status });
+    }
+    for await (const event of parseSSE(r.body)) {
+      if (typeof event?.error === "string") throw Error(event.error.slice(0, 500));
+      if (event?.feedback && typeof event.feedback === "object") return event.feedback;
+    }
+    throw Error("O feedback foi interrompido. Tente novamente.");
+  }
+  let first = null;
+  try {
+    out("progress", { secao: "essencial" });
+    first = await part("essencial", body);
+    if (first.erro_pii) throw Error(String(first.erro_pii));
+    out("part", { secao: "essencial", feedback: guidanceFeedback(first) });
+    out("progress", { secao: "complementar" });
+    const rest = { ...body, contexto: feedbackContext(first) };
+    // A 2ª parte é a maior e já falhou por truncamento em produção: uma nova tentativa antes de desistir.
+    const second = await part("complementar", rest).catch((e) => {
+      if (abort.signal.aborted || [401, 403, 429].includes(e.status)) throw e;
+      return part("complementar", rest);
+    });
+    out("part", { secao: "complementar", feedback: guidanceFeedback(second) });
+    out("done", {});
+  } catch (e) {
+    if (!abort.signal.aborted)
+      out("error", { secao: first ? "complementar" : "essencial", error: e?.name === "TimeoutError" ? "O serviço não concluiu a tempo. Tente novamente." : e?.message || "Não foi possível gerar o feedback." });
+  } finally {
+    clearInterval(ping);
+  }
+  res.end();
 }

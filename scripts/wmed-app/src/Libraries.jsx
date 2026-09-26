@@ -17,6 +17,37 @@ import { calculators } from "../shared/calculators.mjs";
 import {localizedCalculators} from "../shared/i18n/calculators.mjs";
 import {useI18n, LibraryLanguageNotice} from "./doctor/I18n";
 const SCORES=[...ORIGINAL_SCORES,...EXTRA_SCORES];
+// Mesma rota, com resposta em SSE (feedback em partes). Erros antes do fluxo chegam como JSON.
+export async function academicStream(action, payload, signal, onEvent) {
+  const r = await fetch("/api/wmed/academic", {
+    method: "POST",
+    headers: { "Content-Type": "application/json", "X-WMed-Request": "1" },
+    body: JSON.stringify({ action, payload: { ...payload, stream: true } }),
+    signal,
+  });
+  if (!r.ok || !r.headers.get("content-type")?.includes("text/event-stream")) {
+    let d = {};
+    try { d = await r.json(); } catch {}
+    const e = Error(d.error || "Não foi possível gerar o feedback.");
+    e.status = r.status;
+    throw e;
+  }
+  const reader = r.body.getReader(), decoder = new TextDecoder();
+  let buffer = "";
+  for (;;) {
+    const { done, value } = await reader.read();
+    if (done) break;
+    buffer += decoder.decode(value, { stream: true }).replace(/\r/g, "");
+    let end;
+    while ((end = buffer.indexOf("\n\n")) >= 0) {
+      const block = buffer.slice(0, end);
+      buffer = buffer.slice(end + 2);
+      const event = block.split("\n").find((l) => l.startsWith("event:"))?.slice(6).trim();
+      const data = block.split("\n").filter((l) => l.startsWith("data:")).map((l) => l.slice(5)).join("\n");
+      if (event && data) onEvent(event, JSON.parse(data));
+    }
+  }
+}
 export async function academicRequest(action, payload, signal) {
   const r = await fetch("/api/wmed/academic", {
     method: "POST",
