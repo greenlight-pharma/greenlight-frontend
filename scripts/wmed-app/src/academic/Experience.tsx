@@ -71,22 +71,43 @@ const systemNames: Record<string, string> = {
   "reprodutor-feminino": "Reprodutor feminino",
   "reprodutor-masculino": "Reprodutor masculino",
 };
+// Fora do português, os textos dos catálogos (células, estruturas, sistemas) vêm de
+// public/dados/i18n/atlas-{en,es}.json: mapa texto em português → tradução.
+const SIDES:Record<string,Record<string,string>>={en:{esquerdo:"left",direito:"right",esquerda:"left",direita:"right"},es:{esquerdo:"izquierdo",direito:"derecho",esquerda:"izquierda",direita:"derecha"}};
+export function translateCatalog<T>(rows:T[],dict:Record<string,string>,lang:string):T[]{
+  const tr=(v:unknown):unknown=>{
+    if(typeof v!=="string"||!v)return v;
+    if(dict[v])return dict[v];
+    const m=v.match(/^(.*) \((esquerdo|direito|esquerda|direita)\)$/);
+    return m&&dict[m[1]]?`${dict[m[1]]} (${SIDES[lang]?.[m[2]]||m[2]})`:v;
+  };
+  const keys=new Set(["title","summary","status","appearance","function","rotulo","resumo","texto","nome","descricao"]);
+  const walk=(v:any,key=""):any=>Array.isArray(v)?v.map(x=>key==="temas"?tr(x):walk(x)):v&&typeof v==="object"?Object.fromEntries(Object.entries(v).map(([k,x])=>[k,keys.has(k)?tr(x):walk(x,k)])):v;
+  return walk(rows);
+}
 function useCatalog<T>(file: string) {
+  const {locale}=useI18n();
+  const lang=locale.startsWith("pt")?"":locale.slice(0,2);
   const [data, setData] = useState<T[]>([]);
   const [error, setError] = useState("");
   useEffect(() => {
     const abort = new AbortController();
+    const dict=lang?fetch(`${import.meta.env.BASE_URL}dados/i18n/atlas-${lang}.json`,{signal:abort.signal}).then(r=>r.ok?r.json():{}).catch(()=>({})):Promise.resolve(null);
     fetch(`${assets}/${file}`, { signal: abort.signal })
       .then((r) => {
         if (!r.ok) throw Error("Não foi possível abrir o catálogo.");
         return r.json();
       })
-      .then(rows => setData(rows.map(row => row.baseUrl ? {...row,baseUrl:row.baseUrl.replace("/academico-assets",assets)} : row)))
+      .then(async rows => {
+        const d=await dict;
+        rows=rows.map(row => row.baseUrl ? {...row,baseUrl:row.baseUrl.replace("/academico-assets",assets)} : row);
+        setData(d?translateCatalog(rows,d,lang):rows);
+      })
       .catch((e) => {
         if (e.name !== "AbortError") setError(e.message);
       });
     return () => abort.abort();
-  }, [file]);
+  }, [file,lang]);
   return { data, error };
 }
 function Header({
@@ -516,6 +537,8 @@ export function Radiology() {
     return () => globalThis.removeEventListener("keydown", escape);
   }, []);
   const label = volume?.meta.estruturas.find((s) => s.id === selected);
+  const [ctNames,setCtNames]=useState<Record<string,string>>({});
+  useEffect(()=>{if(locale.startsWith("pt"))return setCtNames({});fetch(`${import.meta.env.BASE_URL}dados/i18n/atlas-${locale.slice(0,2)}.json`).then(r=>r.ok?r.json():{}).then(setCtNames).catch(()=>{});},[locale]);
   const total = volume?.meta.dims[2] || 1;
   return (
     <div ref={workspace} className={"va-page va-radiology " + (cinema ? "va-cinema" : "")}>
@@ -629,7 +652,7 @@ export function Radiology() {
           </div>
           <div className="va-slice-caption">
             <span>{t(label ? "ESTRUTURA IDENTIFICADA" : "ESTUDO DO CORTE")}</span>
-            <h3>{label?.nome || t("Toque na TC para identificar")}</h3>
+            <h3>{label ? ctNames[label.nome] || label.nome : t("Toque na TC para identificar")}</h3>
             <p>
               {t(label
                 ? "Identificação pelos rótulos do conjunto original."
