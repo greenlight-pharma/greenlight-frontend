@@ -388,7 +388,7 @@ export function ReferenceLibrary({ kind }) {
             title={title}
             subtitle={
               meds
-                ? t("Classes, mecanismos e relações clínicas do acervo Vytal.")
+                ? (import.meta.env.VITE_PRODUCT === "2doctor" ? t("Classes, mecanismos e relações clínicas.") : t("Classes, mecanismos e relações clínicas do acervo Vytal."))
                 : t("Consulta por nome, código CID-10 e grupo clínico.")
             }
           />

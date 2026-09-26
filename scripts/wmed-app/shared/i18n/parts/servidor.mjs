@@ -39,4 +39,9 @@ export default {
 'moderada':['moderate','moderada'],
 'baixa':['low','baja'],
 'Pagamento seguro pelo Stripe. Cancele quando quiser.':['Secure payment by Stripe. Cancel anytime.','Pago seguro con Stripe. Cancela cuando quieras.'],
+'BIBLIOTECA 2DOCTOR':['2DOCTOR LIBRARY','BIBLIOTECA 2DOCTOR'],
+'CURSO 2DOCTOR':['2DOCTOR COURSE','CURSO 2DOCTOR'],
+'Progresso salvo neste navegador, separado por conta.':['Progress saved in this browser, separately for each account.','Progreso guardado en este navegador, por cuenta.'],
+'Classes, mecanismos e relações clínicas.':['Classes, mechanisms and clinical relationships.','Clases, mecanismos y relaciones clínicas.'],
+'Assistente':['Assistant','Asistente'],
 };
