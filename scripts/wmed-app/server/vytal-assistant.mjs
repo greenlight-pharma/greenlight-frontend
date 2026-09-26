@@ -13,6 +13,9 @@ export function sessionToken(req){
  const value=String(req.headers.cookie||'').split(';').map(x=>x.trim()).find(x=>x.startsWith(`${COOKIE}=`))?.slice(COOKIE.length+1);
  return value&&value.length<=8192&&/^[A-Za-z0-9_-]+\.[A-Za-z0-9_-]+\.[A-Za-z0-9_-]+$/.test(value)?value:null;
 }
+// Identidade padrão (WMed no site Vytal): o token da conta Vytal vai como Bearer.
+// O 2Doctor troca por accounts.identify (chave de serviço + conta própria).
+export async function vytalIdentity(req){const token=sessionToken(req);return token?{id:token,headers:{Authorization:`Bearer ${token}`},path:p=>p}:null;}
 export function allowWrite(req,res){
  const origin=req.headers.origin;
  if(req.headers['x-wmed-request']!=='1'||!origin)return json(res,403,{error:'Atualize a página antes de continuar.'}),false;
@@ -50,9 +53,10 @@ export async function auth(req,res,{fetchImpl=fetch,now=Date.now}={}){
   return json(res,200,{authenticated:true,user:userInfo(data.user)});
  }catch{return json(res,503,{error:'O acesso ao Vytal está indisponível no momento. Tente novamente.'});}
 }
-export async function chat(req,res,{fetchImpl=fetch,twoDoctorEnabled=process.env.TWO_DOCTOR_CHAT_ENABLED==='true'}={}){
- headers(res);if(req.method!=='POST')return json(res,405,{error:'Método não permitido.'});if(!allowWrite(req,res))return;
- const token=sessionToken(req);if(!token)return json(res,401,{error:'Entre com sua conta Vytal Acadêmico para conversar.',code:'AUTH_REQUIRED'});
+export async function chat(req,res,{fetchImpl=fetch,twoDoctorEnabled=process.env.TWO_DOCTOR_CHAT_ENABLED==='true',identify=vytalIdentity,allow=allowWrite}={}){
+ headers(res);if(req.method!=='POST')return json(res,405,{error:'Método não permitido.'});if(!allow(req,res))return;
+ let caller;try{caller=await identify(req);}catch{return json(res,503,{error:'O assistente está indisponível no momento. Tente novamente.'});}
+ if(!caller)return json(res,401,{error:'Entre com sua conta para conversar.',code:'AUTH_REQUIRED'});
  let input,attachments;try{const raw=await body(req,4400000);input=validateRequest(raw);const context=validateContext(raw);const style=validateResponseStyle(raw);if(style!==null&&!context)throw Error('INVALID_CONTEXT');const presentation=twoDoctorEnabled?twoDoctorPresentation(style??'auto'):responseStylePrompt(style);
   // The tutor keeps only 4,000 characters per message. Preferences must not
   // consume the user's 2,000-character question budget (including with files).
@@ -60,7 +64,8 @@ export async function chat(req,res,{fetchImpl=fetch,twoDoctorEnabled=process.env
   attachments=validateAttachments(raw.attachments);}catch(e){return json(res,400,{error:e.message==='BODY'?'Arquivos muito grandes. Envie até 3 MB.':e.message||'Mensagem ou arquivos inválidos.'});}
  const abort=new AbortController();res.on('close',()=>abort.abort());
  let upstream;
- try{upstream=await fetchImpl(`${API}/estudante/${twoDoctorEnabled?'2doctor':'tutor'}/chat-stream`,{method:'POST',headers:{'Content-Type':'application/json',Authorization:`Bearer ${token}`},body:JSON.stringify(attachments.length?assistantPayload(input,attachments):{historico:[...input.history,{role:'user',content:input.question}]}),signal:AbortSignal.any([abort.signal,AbortSignal.timeout(attachments.length?270000:55000)]),redirect:'error'});}
+ try{if(caller.charge&&!(await caller.charge('chat')))return json(res,429,{error:'Você atingiu o limite de uso de hoje. Volte amanhã.',code:'QUOTA'});
+ upstream=await fetchImpl(API+caller.path(`/estudante/${twoDoctorEnabled?'2doctor':'tutor'}/chat-stream`),{method:'POST',headers:{'Content-Type':'application/json',...caller.headers},body:JSON.stringify(attachments.length?assistantPayload(input,attachments):{historico:[...input.history,{role:'user',content:input.question}]}),signal:AbortSignal.any([abort.signal,AbortSignal.timeout(attachments.length?270000:55000)]),redirect:'error'});}
  catch{if(!res.destroyed)return json(res,503,{error:'O assistente não respondeu. Tente novamente.'});return;}
  if(!upstream.ok){if(upstream.status===401)clear(res);return json(res,[400,401,403,429].includes(upstream.status)?upstream.status:502,{error:await upstreamError(upstream,'Não foi possível conversar agora.'),code:upstream.status===401?'AUTH_REQUIRED':'ASSISTANT_UNAVAILABLE'});}
  if(!upstream.headers.get('content-type')?.includes('text/event-stream'))return json(res,502,{error:'O assistente retornou uma resposta inválida.'});

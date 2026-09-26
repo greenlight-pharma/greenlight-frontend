@@ -16,6 +16,18 @@ import {publicResearch} from './public-research.mjs';
 const ROOT=fileURLToPath(new URL('../dist-2doctor/',import.meta.url));
 const MIME={'.html':'text/html; charset=utf-8','.js':'text/javascript; charset=utf-8','.css':'text/css; charset=utf-8','.json':'application/json; charset=utf-8','.svg':'image/svg+xml','.png':'image/png','.jpg':'image/jpeg','.jpeg':'image/jpeg','.webp':'image/webp','.ttf':'font/ttf','.woff2':'font/woff2','.glb':'model/gltf-binary','.gltf':'model/gltf+json','.bin':'application/octet-stream','.pdb':'chemical/x-pdb','.mp4':'video/mp4'};
 const routes={auth,chat,academic,cases,history,privacy,discovery,research:publicResearch};
+// Com DATABASE_URL, o 2Doctor usa contas próprias (banco separado da Vytal) e fala com a API
+// Vytal pela chave de serviço. Sem ela, mantém o comportamento anterior (conta Vytal).
+export async function doctorRoutes(){
+ const accounts=await import('./accounts.mjs');const store=await import('./doctor-store.mjs');const {migrate}=await import('./db.mjs');
+ await migrate();
+ const allow=(req,res)=>{if(accounts.sameSite(req))return true;res.statusCode=403;res.setHeader('Content-Type','application/json; charset=utf-8');res.end(JSON.stringify({error:accounts.t(accounts.lang(req),'origin')}));return false;};
+ const identify=(req)=>accounts.identify(req);
+ return {
+  routes:{auth:accounts.auth,chat:(req,res)=>chat(req,res,{identify,allow}),academic:(req,res)=>academic(req,res,{identify,allow}),cases:store.cases,history:store.history,privacy:(req,res)=>privacy(req,res,{identify,allow}),discovery,research:publicResearch},
+  status:accounts.authStatus,
+ };
+}
 function json(res,status,value){res.writeHead(status,{'Content-Type':'application/json; charset=utf-8','Cache-Control':'no-store'});res.end(JSON.stringify(value));}
 export function byteRange(header,size){
  if(!header)return null;
@@ -26,7 +38,7 @@ export function byteRange(header,size){
  if(!Number.isSafeInteger(start)||!Number.isSafeInteger(end)||start<0||start>end||start>=size)return false;
  return {start,end};
 }
-export function createApp({root=ROOT,publicOrigin=process.env.PUBLIC_ORIGIN,fetchImpl=fetch,handlers=routes}={}){
+export function createApp({root=ROOT,publicOrigin=process.env.PUBLIC_ORIGIN,fetchImpl=fetch,handlers=routes,status=null}={}){
  const absoluteRoot=resolve(root);
  const origin=publicOrigin?new URL(publicOrigin).origin:null;
  const server=http.createServer(async(req,res)=>{
@@ -51,11 +63,13 @@ export function createApp({root=ROOT,publicOrigin=process.env.PUBLIC_ORIGIN,fetc
     if(!path.startsWith('/api/wmed/'))return json(res,404,{error:'Recurso não encontrado.'});
     // Same-origin requests only. Existing cookie, permission and quota checks still run.
     if(!['GET','HEAD'].includes(req.method)&&origin&&req.headers.origin!==origin)return json(res,403,{error:'Origem não permitida.'});
-    const name=path.slice('/api/wmed/'.length);
-    if(name==='status')return json(res,req.method==='GET'?200:405,{research:'europe-pmc',jev:'not-configured',synthesis:'vytal-assistant',auth:'vytal-account',mode:'2doctor-preview'});
+    const full=path.slice('/api/wmed/'.length);
+    // Só a conta 2Doctor tem sub-rotas (auth/google, auth/google/retorno, auth/verificar).
+    const [name,...rest]=full.split('/');const sub=rest.join('/');
+    if(name==='status')return json(res,req.method==='GET'?200:405,{research:'europe-pmc',jev:'not-configured',synthesis:'vytal-assistant',auth:'vytal-account',mode:'2doctor-preview',...(status?status():{})});
     const handler=Object.hasOwn(handlers,name)?handlers[name]:null;
-    if(!handler)return json(res,404,{error:'Recurso não encontrado.'});
-    return await handler(req,res);
+    if(!handler||(sub&&!(status&&name==='auth')))return json(res,404,{error:'Recurso não encontrado.'});
+    return await handler(req,res,sub?{sub}:undefined);
    }
    if(!['GET','HEAD'].includes(req.method))return json(res,405,{error:'Método não permitido.'});
    if(path==='/2doctor'||path==='/2doctor/'||path==='/2doctor/index.html'){
@@ -104,7 +118,8 @@ export function createApp({root=ROOT,publicOrigin=process.env.PUBLIC_ORIGIN,fetc
  return server;
 }
 if(process.argv[1]&&resolve(process.argv[1])===fileURLToPath(import.meta.url)){
- const server=createApp();
- server.listen(Number(process.env.PORT||8080),'0.0.0.0',()=>console.log('2Doctor HTTPS edge server ready'));
+ const doctor=process.env.DATABASE_URL?await doctorRoutes():null;
+ const server=createApp(doctor?{handlers:doctor.routes,status:doctor.status}:{});
+ server.listen(Number(process.env.PORT||8080),'0.0.0.0',()=>console.log('2Doctor HTTPS edge server ready'+(doctor?' · contas 2Doctor':'')));
  process.on('SIGTERM',()=>server.close(()=>process.exit(0)));
 }

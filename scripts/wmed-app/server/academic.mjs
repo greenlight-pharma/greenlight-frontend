@@ -1,6 +1,6 @@
 import {imageQuery} from "../shared/image-filters.mjs";
 import { detectAcademicPII } from "../shared/pii.mjs";
-import { sessionToken, allowWrite } from "./vytal-assistant.mjs";
+import { allowWrite, vytalIdentity } from "./vytal-assistant.mjs";
 import { parseSSE } from "./research.mjs";
 import {
   reviewedFields,
@@ -20,17 +20,19 @@ function send(res, status, data) {
 export async function academic(
   req,
   res,
-  { fetchImpl = fetch, now = Date.now } = {},
+  { fetchImpl = fetch, now = Date.now, identify = vytalIdentity, allow = allowWrite } = {},
 ) {
   res.setHeader("Cache-Control", "private, no-store");
   res.setHeader("X-Content-Type-Options", "nosniff");
   if (req.method !== "POST")
     return send(res, 405, { error: "Método não permitido." });
-  if (!allowWrite(req, res)) return;
-  const token = sessionToken(req);
-  if (!token)
+  if (!allow(req, res)) return;
+  let caller;
+  try { caller = await identify(req); } catch { return send(res, 503, { error: "Serviço indisponível no momento. Tente novamente." }); }
+  if (!caller)
     return send(res, 401, {
-      error: "Entre com sua conta Vytal para continuar.",
+      error: "Entre com sua conta para continuar.",
+      code: "AUTH_REQUIRED",
     });
   let b;
   try {
@@ -119,7 +121,7 @@ export async function academic(
   }
   // Authenticated, per-session defense in depth; upstream remains authorization authority.
   const { createHash } = await import("node:crypto");
-  const key = createHash("sha256").update(token).digest("hex");
+  const key = createHash("sha256").update(caller.id).digest("hex");
   for (const [k, v] of limits) if (v.until <= now()) limits.delete(k);
   const quota = limits.get(key) || { count: 0, until: now() + 60000 };
   if (quota.count >= 12 || (!limits.has(key) && limits.size >= 5000))
@@ -128,13 +130,15 @@ export async function academic(
     });
   quota.count++;
   limits.set(key, quota);
+  if (caller.charge && !(await caller.charge(action)))
+    return send(res, 429, { error: "Você atingiu o limite de uso de hoje. Volte amanhã." });
   if (action === "feedback" && p?.stream === true)
-    return streamFeedback(res, token, body, fetchImpl);
+    return streamFeedback(res, caller, body, fetchImpl);
   try {
-    const r = await fetchImpl(API + path, {
+    const r = await fetchImpl(API + caller.path(path), {
       method: body ? "POST" : "GET",
       headers: {
-        Authorization: `Bearer ${token}`,
+        ...caller.headers,
         ...(body ? { "Content-Type": "application/json" } : {}),
       },
       ...(body ? { body: JSON.stringify(body) } : {}),
@@ -202,7 +206,7 @@ export function feedbackContext(f) {
 }
 // Feedback em duas partes, como no app Vytal: "essencial" (aba Raciocínio, ~30 s) chega
 // primeiro e aparece na tela; "complementar" (Semiologia, Manejo, Estudo, apresentação) vem depois.
-async function streamFeedback(res, token, body, fetchImpl) {
+async function streamFeedback(res, caller, body, fetchImpl) {
   const abort = new AbortController();
   res.on?.("close", () => { if (!res.writableEnded) abort.abort(); });
   res.statusCode = 200;
@@ -213,9 +217,9 @@ async function streamFeedback(res, token, body, fetchImpl) {
   const out = (event, data) => { if (!res.destroyed) res.write(`event: ${event}\ndata: ${JSON.stringify(data)}\n\n`); };
   const ping = setInterval(() => { if (!res.destroyed) res.write(": ping\n\n"); }, 10000);
   async function part(secao, payload) {
-    const r = await fetchImpl(`${API}/estudante/case-feedback-${secao}-stream`, {
+    const r = await fetchImpl(API + caller.path(`/estudante/case-feedback-${secao}-stream`), {
       method: "POST",
-      headers: { Authorization: `Bearer ${token}`, "Content-Type": "application/json" },
+      headers: { ...caller.headers, "Content-Type": "application/json" },
       body: JSON.stringify(payload),
       redirect: "error",
       signal: AbortSignal.any([abort.signal, AbortSignal.timeout(270000)]),
