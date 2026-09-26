@@ -1,3 +1,9 @@
+## 2026-09-26 14:37 BRT — Notas navegáveis no chat 2Doctor
+
+Rodada 17:30Z. Estado/diário e quatro planos lidos; Git13be04c, somente dist-samu preexistente. Railway24e35b93 SUCCESS e health200 antes da mudança. Fricção reproduzida no navegador: marcador e retorno das notas eram spans e título Footnotes. CitationText extraído em ChatResponseText, com IDs únicos por resposta, rótulos PT/EN/ES e navegação por foco/rolagem sem mudar o hash usado pelo roteador. Apenas âncoras geradas pelo processador de notas são habilitadas; política de links externos preservada. Comportamento antigo preservado fora do produto2Doctor. Não altera texto/modelo/fontes/API/PDF.
+
+CUA local390×844 com fixture fictícia sem upstream: duas respostas usando nota com mesmo identificador mantiveram IDs distintos; clique no segundo marcador focou segunda nota e retorno focou segundo marcador; URL intacta e sem overflow. Título e retorno conferidos também em EN e ES. Screenshot móvel conferido. 228 testes existentes:220 passaram,8 integrações ignoradas por falta de TEST_DATABASE_URL. Builds2Doctor/site completo e diffcheck passaram. Logs /tmp/2doctor-note-nav-tests.log, -build.log, -site.log. Sem avaliação clínica, envio real autenticado, iPhone/Safari/VoiceOver físicos ou nova renderização do PDF. Dockerfile/railway.json conferidos. Publicação ainda pendente; próximo: publicar apenas2doctor-web e verificar SUCCESS/health/asset/interface. Rollback13be04c.
+
 ## 2026-09-26 14:11 BRT — Notas do PDF publicadas
 
 Código6fcb133, deployment24e35b93-ac40-4ed8-a0e8-e4d3e11754b0 SUCCESS no2doctor-web. Railway demorou na preparação do snapshot, depois concluiu build/rollout. Healthz200/product2doctor; index-BH_QakA6.js e chat-pdf-B3hdYMSi.js públicos idênticos ao build. CUA público390×844 carregou chat/navegação, viewport restaurado. Verificação de assets durante BUILDING ainda mostrou versão antiga/404 do novo chunk; repetida somente apósSUCCESS e aprovada. Não foi falha da versão ativa.
