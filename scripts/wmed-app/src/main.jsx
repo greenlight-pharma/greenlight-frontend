@@ -10,7 +10,7 @@ import { createRoot } from 'react-dom/client';
 import { ArrowUp, ArrowUpRight, Plus, Search, BookOpen, SlidersHorizontal, X, Square, Check, Copy, ChevronRight, Activity, Palette, History } from 'lucide-react';
 import CitationText from './doctor/ChatResponseText';
 import { loadProgress, saveProgress } from '../shared/progress.mjs';
-import Modules, { moduleItems } from './Modules';import './modules.css';
+import Modules, { moduleItems } from './Modules';import { definirBrasil } from './doctor/regiao';import './modules.css';
 import PrivacyReview from './PrivacyReview';
 import ChatHistory, { useChatHistory } from './ChatHistory';
 import { reviewPrivacy } from '../shared/privacy-review.mjs';
@@ -69,7 +69,7 @@ function App() {
   useEffect(() => {try {setProgress(loadProgress(localStorage, session?.user?.progressScope));} catch {setProgress([]);}}, [session?.user?.progressScope]);
   function recordProgress(score) {setProgress((previous) => {const next = [...previous, { score, date: new Date().toISOString() }];try {saveProgress(localStorage, session?.user?.progressScope, next);} catch {}return next;});}
   const abort = useRef(null),scroll = useRef(null),input = useRef(null),busyRef = useRef(false),pinned = useRef(true);
-  useEffect(() => {fetch(`${API}/auth`).then((r) => r.ok ? r.json() : Promise.reject()).then((d) => setSession(d.authenticated ? d : null)).catch(() => setSession(null));fetch(`${API}/status`).then((r) => r.ok ? r.json() : Promise.reject()).then(setStatus).catch(() => setStatus({ offline: true }));return () => abort.current?.abort();}, []);
+  useEffect(() => {fetch(`${API}/auth`).then((r) => r.ok ? r.json() : Promise.reject()).then((d) => setSession(d.authenticated ? d : null)).catch(() => setSession(null));fetch(`${API}/status`).then((r) => r.ok ? r.json() : Promise.reject()).then((d) => {definirBrasil(d?.brasil);setStatus(d);}).catch(() => setStatus({ offline: true }));return () => abort.current?.abort();}, []);
   useEffect(() => {const track = () => {pinned.current = document.documentElement.scrollHeight - window.scrollY - window.innerHeight < 180;};addEventListener('scroll', track, { passive: true });return () => removeEventListener('scroll', track);}, []);
   useEffect(() => {if (pinned.current && messages.length) window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'instant' });}, [messages, busy]);
   function update(id, patch) {setMessages((ms) => ms.map((m) => m.id === id ? { ...m, ...(typeof patch === 'function' ? patch(m) : patch) } : m));}

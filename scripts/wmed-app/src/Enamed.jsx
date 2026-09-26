@@ -6,13 +6,14 @@ import {montarFila,aplicarNota,estadoInicial,contarPendentes} from './enamed/srs
 import {progressKey,readProgress,gradeQueue,normalize} from './enamed/progress.mjs';
 import {useWorkspaceHeight} from './academic/useWorkspaceHeight';
 import './enamed/study.css';
-import {useI18n} from './doctor/I18n';
+import {useI18n} from './doctor/I18n';import {useBrasil} from './doctor/regiao';
 const notes={errei:'Errei',chute:'Acertei por acaso',inseguro:'Acertei com dúvida',confiante:'Acertei com segurança'};
 const md={a:({href,children})=><a href={href} target="_blank" rel="noreferrer">{children}</a>,img:()=>null};
 export default function Enamed({initialMode='summaries',scope='guest'}){
  const {t,locale}=useI18n();
  // Fora do português, os flashcards usam o deck próprio em inglês (áreas com prefixo en-, progresso separado).
- const [intl,setIntl]=useState(null),foreign=!locale.startsWith('pt');
+ // Fora do Brasil (IP) o conteúdo ENAMED não aparece: só o deck internacional de flashcards.
+ const brasil=useBrasil(),[intl,setIntl]=useState(null),foreign=!locale.startsWith('pt')||brasil!==true;
  useEffect(()=>{if(foreign&&!intl)import('./enamed/flashcards-en.json').then(m=>setIntl(m.default)).catch(()=>{})},[foreign,intl]);
  const key=progressKey(scope),[saved,setSaved]=useState(()=>{try{return readProgress(localStorage,key)}catch{return {checks:{},cards:{}}}}),[storageError,setStorageError]=useState(false),[mode,setMode]=useState(initialMode),[areaId,setAreaId]=useState(''),[query,setQuery]=useState(''),[topic,setTopic]=useState(null),[filterTopic,setFilterTopic]=useState(''),[queue,setQueue]=useState(null),[index,setIndex]=useState(0),[answer,setAnswer]=useState(false),[notice,setNotice]=useState('');
  const en=foreign&&!!intl&&mode==='cards',areas=en?intl.areas:PT_AREAS,decks=en?intl.decks:PT_DECKS,totalTopics=en?intl.totalTopics:PT_TOPICS,totalCards=en?intl.totalCards:PT_CARDS;

@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { Globe2, Menu, X, Plus, History, MessageSquare, Stethoscope, GraduationCap, FlaskConical, Search, ArrowUpRight, ChevronRight, Palette, Check, UserRound, BookOpen, Calculator, FileText } from 'lucide-react';
 import { moduleItems } from '../Modules';
+import { useBrasil, liberado } from './regiao';
 import { searchNavigation, navigationGroups } from '../../shared/product.mjs';
 import { useI18n, LanguageSettings, useCloseOnOutside } from './I18n';
 const groupIcons = { pesquisa: BookOpen, plantao: Stethoscope, estudos: GraduationCap, laboratorio: FlaskConical };
@@ -16,7 +17,8 @@ export function Drawer({ onClose, onNavigate, onNew, onHistory, onSources, onAcc
   const [query, setQuery] = useState('');
   const [expanded, setExpanded] = useState(initialGroup || navigationGroups.find(g => g.modules.includes(module))?.id || null);
   const ref = useRef(null), shade = useRef(null);
-  const groups = searchNavigation(moduleItems.map(item => ({ ...item, label: t(item.label), description: t(item.description) })), query, navigationGroups.map(group => ({ ...group, label: t(group.label) })));
+  const brasil = useBrasil();
+  const groups = searchNavigation(moduleItems.filter(item => liberado(item.id, brasil)).map(item => ({ ...item, label: t(item.label), description: t(item.description) })), query, navigationGroups.map(group => ({ ...group, label: t(group.label) })));
   useEffect(() => {
     const previous = document.activeElement, y = window.scrollY;
     const background = [];

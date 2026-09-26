@@ -6,6 +6,7 @@ import {fileURLToPath} from 'node:url';
 import {Readable} from 'node:stream';
 import {pipeline} from 'node:stream/promises';
 import {auth,chat} from './vytal-assistant.mjs';
+import {noBrasil} from './regiao.mjs';
 import {academic} from './academic.mjs';
 import {cases} from './cases.mjs';
 import {history} from './history.mjs';
@@ -68,7 +69,7 @@ export function createApp({root=ROOT,publicOrigin=process.env.PUBLIC_ORIGIN,fetc
     const full=path.slice('/api/wmed/'.length);
     // Só a conta 2Doctor tem sub-rotas (auth/google, auth/google/retorno, auth/verificar).
     const [name,...rest]=full.split('/');const sub=rest.join('/');
-    if(name==='status')return json(res,req.method==='GET'?200:405,{research:'europe-pmc',jev:'not-configured',synthesis:'vytal-assistant',auth:'vytal-account',mode:'2doctor-preview',...(status?status():{})});
+    if(name==='status')return json(res,req.method==='GET'?200:405,{research:'europe-pmc',jev:'not-configured',synthesis:'vytal-assistant',auth:'vytal-account',mode:'2doctor-preview',brasil:noBrasil(req),...(status?status():{})});
     const handler=Object.hasOwn(handlers,name)?handlers[name]:null;
     if(!handler||(sub&&!(status&&name==='auth')))return json(res,404,{error:'Recurso não encontrado.'});
     return await handler(req,res,sub?{sub}:undefined);

@@ -1,5 +1,6 @@
 import {recoverableLazy as lazy, RecoverableBoundary} from './doctor/ModuleRecovery';
 import { useI18n } from './doctor/I18n';
+import { useBrasil, SO_BRASIL } from './doctor/regiao';
 import React, { Suspense, Component, useState } from "react";
 import {
   Atom,
@@ -151,6 +152,7 @@ export default function Modules({
   onCasePending,
 }) {
   const { t, locale } = useI18n();
+  const brasil = useBrasil();
   const [openedCase, setOpenedCase] = useState(false);
   if (active === "caso" && !openedCase) setOpenedCase(true);
   return (
@@ -192,6 +194,8 @@ export default function Modules({
                 <Questions session={session} />
               ) : active === "curso-ecg" ? (
                 <EcgCourse key={session?.user?.progressScope||"guest"} scope={session?.authenticated?session.user?.progressScope||"guest":"guest"}/>
+              ) : SO_BRASIL.has(active) && brasil !== true ? (
+                <p className="module-loading">{brasil === null ? t("Abrindo biblioteca…") : t("Os Resumos ENAMED estão disponíveis apenas no Brasil.")}</p>
               ) : active === "enamed" || active === "flashcards" ? (
                 <Enamed key={`${active}:${session?.authenticated?session.user?.progressScope||"guest":"guest"}`} initialMode={active==="flashcards"?"cards":"summaries"} scope={session?.authenticated?session.user?.progressScope||"guest":"guest"}/>
               ) : active === "scores" ? (

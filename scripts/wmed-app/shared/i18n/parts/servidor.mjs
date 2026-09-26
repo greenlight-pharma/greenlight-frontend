@@ -96,4 +96,5 @@ export default {
 "Casos compartilhados por médicos, sem dados do paciente. Tente o diagnóstico antes de ver o feedback.":["Cases shared by doctors, with no patient data. Try the diagnosis before you see the feedback.","Casos compartidos por médicos, sin datos del paciente. Intenta el diagnóstico antes de ver el feedback."],
 "Ainda não há casos compartilhados. Termine um caso clínico e toque em Compartilhar.":["No shared cases yet. Finish a clinical case and tap Share.","Aún no hay casos compartidos. Termina un caso clínico y toca Compartir."],
 "Abrir caso clínico":["Open clinical case","Abrir caso clínico"],
+'Os Resumos ENAMED estão disponíveis apenas no Brasil.':['ENAMED summaries are available only in Brazil.','Los resúmenes ENAMED están disponibles solo en Brasil.'],
 };
