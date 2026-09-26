@@ -1,3 +1,9 @@
+## 2026-09-26 06:05 BRT — Foco dos anexos publicado
+
+Fonte4b65d98; deploymentbf35b88a-4390-45ac-9b5b-51a1328ac8db SUCCESS em 2doctor-web/projeto2doctor. Health200/product2doctor e index-Qf2IGV5i.js público idêntico ao build local. CUA público390×844: anexar TXT fictício e remover por Enter deixou foco em BUTTON Anexar arquivos, zero anexos, sem overflow ou console errors. Arquivo removido, nenhuma mensagem enviada ao modelo. 206 testes, build app e site completos aprovados. Servidor local encerrado, aba81 fechada, viewport restaurado. Sem teste iPhone físico/Safari/VoiceOver.
+
+Próximo executável: verificar legibilidade e navegação de mensagens de erro já existentes em caso clínico (sessão ausente, texto vazio, recuperação), sem gerar resposta clínica ou mudar API. Corrigir somente falha observável; não ampliar catálogo. Rollback ba0c513. Trabalho preexistente medico-app/dist-samu preservado.
+
 ## 2026-09-26 06:02 BRT — Remoção de anexo: foco preservado
 
 Baseline ba0c513/deployment24aa5a7a-ec5e-4497-be3b-9666fa0d2860 SUCCESS; Git/Railway conferidos. Em produção390×844, remover o último TXT fictício por Enter deixava document.activeElement=BODY. Tab seguinte ainda alcançava a textarea, mas a remoção não preservava foco explícito em controle identificável.
