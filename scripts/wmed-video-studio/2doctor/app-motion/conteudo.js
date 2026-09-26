@@ -1,0 +1,53 @@
+// Conteúdo clínico da animação do 2Doctor (explicador de SCA para estudantes, em inglês).
+// ATENÇÃO: cada valor precisa bater com a diretriz citada (ver NOTAS.md, "SCA · estudantes").
+// Tempos em segundos; os tempos dos cartões são ajustados à duração da narração da Iris.
+window.CONTEUDO = {
+  pergunta: 'How do I manage a patient with acute coronary syndrome?',
+  fontesBusca: ['ESC 2023 · ACS', 'ACC/AHA 2025 · ACS', 'HEART · GRACE · TIMI · Killip'],
+  tempos: { digitar: 6.0, buscar: 3.0, cartoes: [11, 15, 18, 18, 11], fontes: 5 },
+  cartoes: [
+    { num: 1, titulo: 'First 10 minutes', legenda: 'First 10 minutes', tipo: 'lista', passo: 1.6,
+      itens: ['<b>12-lead ECG within 10 min</b> of first medical contact; repeat if pain persists',
+              '<b>hs-troponin</b> with a <b>0h/1h</b> (or 0h/2h) algorithm',
+              '<b>Oxygen only if SpO₂ &lt; 90%</b>',
+              '<b>Aspirin</b> loading dose as soon as ACS is suspected, unless contraindicated'],
+      fonte: 'ESC 2023 ACS Guidelines · initial management' },
+    { num: 2, titulo: 'STEMI or NSTE-ACS?', legenda: 'Reperfusion and invasive timing', tipo: 'duas', passo: 3.0,
+      colunas: [
+        { classe: 'st', titulo: 'STEMI', linhas: ['<b>Primary PCI</b> if it can be done within <b>120 min</b> of diagnosis',
+          'Otherwise <b>fibrinolysis within 10 min</b> of diagnosis, then transfer for angiography (2–24 h)'] },
+        { classe: 'ns', titulo: 'NSTE-ACS', linhas: ['<b>Immediate</b> invasive (&lt; 2 h) if very high risk: shock, refractory pain, arrhythmia',
+          '<b>Early</b> invasive (&lt; 24 h) if high risk: confirmed NSTEMI, dynamic ST changes, <b>GRACE &gt; 140</b>'] },
+      ],
+      fonte: 'ESC 2023 ACS Guidelines · reperfusion and invasive strategy' },
+    { num: 3, titulo: 'Antithrombotics · loading and maintenance', legenda: 'Doses', tipo: 'tabela', passo: 1.6, destaqueEm: 12,
+      cab: ['Drug', 'Loading dose', 'Maintenance'],
+      linhas: [
+        { celulas: ['<b>Aspirin</b>', '150–300 mg PO (or 75–250 mg IV)', '75–100 mg once daily'] },
+        { celulas: ['<b>Prasugrel</b>', '60 mg PO', '10 mg daily · 5 mg if ≥ 75 y or &lt; 60 kg'], destaque: true },
+        { celulas: ['<b>Ticagrelor</b>', '180 mg PO', '90 mg twice daily'] },
+        { celulas: ['<b>Clopidogrel</b>', '300–600 mg PO', '75 mg daily'] },
+        { celulas: ['<b>UFH</b> (during PCI)', '70–100 IU/kg IV bolus', '—'] },
+      ],
+      nota: 'Prasugrel: avoid after previous stroke or TIA. Default DAPT: 12 months.', notaEm: 13.5,
+      fonte: 'ESC 2023 ACS Guidelines · antithrombotic therapy (dose table)' },
+    { num: 4, titulo: 'Risk scores you should know', legenda: 'Risk scores', tipo: 'escores', passo: 1.6,
+      itens: [
+        { nome: 'HEART', texto: 'History, ECG, Age, Risk factors, Troponin · 0–2 each', gauge: .35, faixas: '0–3 low · 4–6 moderate · 7–10 high' },
+        { nome: 'GRACE', texto: 'In-hospital and 6-month mortality in ACS · &gt; 140 = high risk' },
+        { nome: 'TIMI', texto: '7 variables for UA/NSTEMI · 1 point each' },
+        { nome: 'Killip', texto: 'I no heart failure · II crackles, S3 · III pulmonary oedema · IV cardiogenic shock' },
+      ],
+      fonte: 'Six 2008 (HEART) · Antman 2000 (TIMI) · Killip & Kimball 1967 · ESC 2023 (GRACE)' },
+    { num: 5, titulo: 'Before discharge', legenda: 'Secondary prevention', tipo: 'lista', passo: 1.8,
+      itens: ['<b>DAPT</b> for 12 months by default',
+              '<b>High-intensity statin</b> early · LDL-C &lt; 55 mg/dL and ≥ 50% reduction',
+              '<b>Beta-blocker</b> if LVEF ≤ 40%',
+              '<b>Cardiac rehabilitation</b> and risk-factor control'],
+      fonte: 'ESC 2023 ACS Guidelines · long-term management' },
+  ],
+  fontesFinais: ['Byrne RA et al. 2023 ESC Guidelines for the management of acute coronary syndromes. Eur Heart J 2023;44:3720–3826',
+                 'Rao SV et al. 2025 ACC/AHA/ACEP/NAEMSP/SCAI Guideline for the Management of Patients With ACS. Circulation 2025',
+                 'Six AJ et al. The HEART score. Neth Heart J 2008 · Antman EM et al. TIMI risk score. JAMA 2000'],
+  aviso: 'Educational content for medical students. Doses for adults; check contraindications, renal function and local protocols.',
+};
