@@ -29,7 +29,7 @@ export default function AccountDialog({ doctor, productName, onClose, children }
     }
   }
   const close = <button ref={closeButton} autoFocus={!doctor} className="icon-btn close" aria-label={t('Fechar conexões')} onClick={onClose}><X /></button>;
-  const heading = <><span className="eyebrow blue">{productName} LAB</span><h2 id="connections-title">{t('Conexões da plataforma')}</h2></>;
+  const heading = <><span className="eyebrow blue">{productName}</span><h2 id="connections-title">{doctor ? t('Minha conta') : t('Conexões da plataforma')}</h2></>;
   return <div className="modal-shade" onClick={onClose}>
     <section ref={dialog} className={`modal${doctor ? ' doctor-account-dialog' : ''}`} role="dialog" aria-modal="true" aria-labelledby="connections-title" onClick={event => event.stopPropagation()} onKeyDown={keys}>
       {doctor ? <><header className="account-titlebar"><div>{heading}</div>{close}</header><div className="account-scroll">{children}</div></> : <>{close}{heading}{children}</>}
