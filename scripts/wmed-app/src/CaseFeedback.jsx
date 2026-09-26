@@ -2,7 +2,7 @@ import React,{useState,useId} from 'react';
 import {ChevronDown,ArrowRight,ShieldAlert,FileText} from 'lucide-react';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
-import {orderedSbar,studentComparisonKeys} from '../shared/case-contract.mjs';
+import {orderedSbar,studentComparisonKeys,hiddenFeedbackKeys} from '../shared/case-contract.mjs';
 const labels = {
   resumo_caso: "Resumo do caso",
   como_apresentar_caso: "Como apresentar o caso · SBAR",
@@ -18,7 +18,6 @@ const labels = {
   pontos_a_aprofundar: "Seu aprendizado",
   analise_anamnese: "Anamnese",
   analise_exame_fisico: "Exame físico",
-  conexao_enamed: "Conexão ENAMED",
   exames_para_discussao_academica: "Exames para discussão",
   temas_de_estudo: "Temas para estudar",
   perguntas_ao_preceptor: "Perguntas ao preceptor",
@@ -49,7 +48,7 @@ const groups = [
     ],
   ],
   ["Semiologia", ["analise_anamnese", "analise_exame_fisico"]],
-  ["Estudo", ["conexao_enamed", "temas_de_estudo", "referencias"]],
+  ["Estudo", ["temas_de_estudo", "referencias"]],
   [
     "Seu aprendizado",
     [
@@ -139,7 +138,7 @@ export default function CaseFeedback({feedback,quality,qualityError,relato,form,
  const uid=useId();
  const [tab,setTab]=useState(0),[selected,setSelected]=useState('resumo_caso');
  const known=new Set(groups.flatMap(group=>group[1]));
- const extras=Object.keys(feedback).filter(key=>!known.has(key)&&!studentComparisonKeys.has(key)&&key!=='erro_pii');
+ const extras=Object.keys(feedback).filter(key=>!known.has(key)&&!studentComparisonKeys.has(key)&&!hiddenFeedbackKeys.has(key)&&key!=='erro_pii');
  const keys=[...groups[tab][1],...(tab===3?extras:[])].filter(key=>hasContent(feedback[key]));
  if(tab===3)keys.unshift('pontuacao');
  if(tab===0)keys.push('relato_original');

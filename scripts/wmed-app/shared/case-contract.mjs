@@ -107,8 +107,10 @@ export const studentComparisonKeys = new Set([
  "comparacao_conduta_aluno", "alinhamento_conduta_didatico",
  "alinhamento_anamnese_didatico", "alinhamento_exame_fisico_didatico",
 ]);
+// Seções que o 2Doctor não mostra, mesmo que a API Vytal ainda as gere (a "Conexão ENAMED" saiu da aba Estudo).
+export const hiddenFeedbackKeys = new Set(['conexao_enamed']);
 export function guidanceFeedback(feedback) {
- return Object.fromEntries(Object.entries(feedback).filter(([key])=>!studentComparisonKeys.has(key)));
+ return Object.fromEntries(Object.entries(feedback).filter(([key])=>!studentComparisonKeys.has(key)&&!hiddenFeedbackKeys.has(key)));
 }
 
 // JSON storage may reorder object keys. SBAR order is semantic, never alphabetical.
