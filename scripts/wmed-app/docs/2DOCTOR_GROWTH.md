@@ -1,3 +1,13 @@
+## 2026-09-26 09:01 BRT — Prompt pendente: regressão de limites verificada nos dois caminhos
+
+Rodada12:00Z não é resposta à confirmação pendente de publicar extensão na API compartilhada. Nenhuma ativação/deploy. Git app a7d33d9 e API candidata f6e8610; preexistente medico-app/dist-samu preservado. Railway a033a3a6-9ab5-4105-94fd-42c431a062d8 SUCCESS, TWO_DOCTOR_CHAT_ENABLED não true (inspecionado booleano, sem valores secretos), health200/product2doctor.
+
+Entrega independente: ampliado teste de limites para executar caminhos tutor atual e2Doctor opt-in.504 combinações idioma/país/estilo/com-sem anexos: pergunta2000, documento12000, imagem/PDF e preferências passam pela janela10/corte4000 sem perder final. Teste também confere endpoint escolhido.210 testes passaram; builds2doctor e site completo passaram, diff--check limpo. Nenhuma mudança de runtime nesta rodada. Testes são simulados e não atestam precisão clínica/posologia nem geração real.
+
+CUA público390×844: chat acessível/campo visível e sem overflow horizontal; viewport restaurado. Não testados login/envio/modelo, iPhone físico/Safari, clínica, API real nova. Não repetida suíteAPI (sem mudança nela);5 testes/buildNest/prisma pertencem à etapa anterior. Logs /tmp/2doctor-prompt-budget-{tests,build,site}.log.
+
+Próximo: aguardar resposta explícita já solicitada para avaliação/publicação da extensão compartilhada. Não repetir pedido nem ativar por heartbeat. Se outra fricção concreta não for observada, manter versão atual; não inventar recurso ou nova persistência. Candidata documentada em2DOCTOR_PROMPT_V1.md.
+
 ## 2026-09-26 08:40 BRT — Prompt exclusivo com doses: implementado, não ativado
 
 Pedido explícito: usuário concordou em alterar o prompt da2Doctor e autoriza orientar doses. Preparado sistema 2doctor-clinical-support-v1 com apoio a médicos/estudantes, hipóteses/condutas e posologia para revisão profissional, unidades/intervalos/vias, dados necessários para ajustes e fontes honestas. Não proíbe doses em bloco; não inventa parâmetros nem promete certeza. Fontes FDA/OMS registradas em2DOCTOR_PROMPT_V1.md. Nenhuma prescrição concreta produzida.
