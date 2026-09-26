@@ -1,3 +1,15 @@
+## 2026-09-26 09:14 BRT — Feedback: tela de espera imediata e retirada do Scribe
+
+Pedido direto: feedback demora, exibir loading ao solicitar e remover Scribe pois não corresponde ao desejado. Implementado somente2Doctor: etapa aguardando substitui revisão imediatamente; título focado, animação com reduced-motion, tempo decorrido (sem percentual/etapas fictícias), aviso de demora após30s e instrução de não reenviar. Trava síncrona evita evaluate duplicado. Erro devolve revisão preservando campos/confirmação e recebe foco; feedback recebido substitui loading antes da pontuação/salvamento. Nenhuma alteração no conteúdo clínico/API.
+
+Diagnóstico por leitura: /case-feedback upstream retorna JSON completo após geração não streaming; tela anterior deixava indicador no fim do formulário. Não se mediu latência real nem se trocou modelo; mudança resolve ausência de confirmação visual, não promete reduzir geração. As etapas de quality/save permanecem existentes.
+
+Scribe removido do registro de módulos, grupoLaboratório, atalhos e link no Radar; deep link#scribe cai no chat em vez de abrir demonstração. Código antigo de demonstração/testes permanece como histórico não importado, para não apagar trabalho. Transcrição/estruturação usadas por Caso clínico permanecem intactas. Atualizar direção: não recriar demonstração Scribe automaticamente.
+
+210 testes existentes, builds2doctor/site completos e diff--check passaram. CUA local390×844 screenshot: loading visível imediatamente, foco no título.320×568 sem overflow. Fixture isolada /tmp/2doctor-feedback-fixture.mjs sem rede/persistência:35s→erro visível/focado y233–282; nova tentativa→loading→resultado enquanto quality ainda pendente8s; log confirmou2 requests para2 tentativas. BuscaScribe sem resultados; antigo#scribe abriuchat. Teste usa resultado fictício, não clínica. Não testado envio real/login/iPhone/Safari. Aba85/servidor encerrados; viewportrestaurado.
+
+Próximo: publicar apenas2doctor-web após build; validarSUCCESS/health/assets/UI pública. Dockerfile/railway.json e projeto8e161bd1 conferidos. TWO_DOCTOR_CHAT_ENABLED=false confirmado; integração do prompt preparada antes viaja desativada, sem ativar API compartilhada nem novo prompt. Rollback8be7c7a; preexistente dist-samu preservado.
+
 ## 2026-09-26 09:01 BRT — Prompt pendente: regressão de limites verificada nos dois caminhos
 
 Rodada12:00Z não é resposta à confirmação pendente de publicar extensão na API compartilhada. Nenhuma ativação/deploy. Git app a7d33d9 e API candidata f6e8610; preexistente medico-app/dist-samu preservado. Railway a033a3a6-9ab5-4105-94fd-42c431a062d8 SUCCESS, TWO_DOCTOR_CHAT_ENABLED não true (inspecionado booleano, sem valores secretos), health200/product2doctor.

@@ -5,9 +5,6 @@ import './chat-tools.css';
 
 // Fixed destinations only. This component never receives conversation text or attachments.
 const tools = [
-  { id: 'scribe', icon: FileText,
-    name: ['Scribe · demonstração', 'Scribe · demo', 'Scribe · demostración'],
-    detail: ['Notas SOAP e SBAR com exemplos fictícios', 'SOAP and SBAR notes with fictional examples', 'Notas SOAP y SBAR con ejemplos ficticios'] },
   { id: 'fontes-oficiais', icon: BookOpen,
     name: ['Fontes oficiais', 'Official sources', 'Fuentes oficiales'],
     detail: ['Medicamentos e diretrizes por país', 'Medicines and guidelines by country', 'Medicamentos y guías por país'] },

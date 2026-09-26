@@ -18,6 +18,7 @@ import {
   Check,
 } from "lucide-react";
 import CaseFeedback from "./CaseFeedback";
+import CaseFeedbackLoading from "./doctor/CaseFeedbackLoading";
 import CaseHistory, {caseRequest} from "./CaseHistory";
 import {restoreCase} from "../shared/case-storage.mjs";
 import "./case-feedback.css";
@@ -45,6 +46,7 @@ function ClinicalCaseBody({ session, onLogin, onProgress, onPendingChange, activ
     [recording, setRecording] = useState(false),
     [seconds, setSeconds] = useState(0);
   const lengthHintId=useId();
+  const evaluating=useRef(false);
   const relatoTooShort=audioRecovery&&relato.length>0&&relato.trim().length<20;
   const [privacyOpen,setPrivacyOpen]=useState(false);
   const [organizedStory,setOrganizedStory]=useState(null);
@@ -58,7 +60,7 @@ function ClinicalCaseBody({ session, onLogin, onProgress, onPendingChange, activ
   const [historyOpen,setHistoryOpen]=useState(false),[saveStatus,setSaveStatus]=useState(""),[saveError,setSaveError]=useState("");
   const pendingSave=useRef(null),saving=useRef(null),pageRef=useRef(null),errorRef=useRef(null);
   useEffect(()=>{
-    if(!audioRecovery||stage!=="relato"||!error||active===false)return;
+    if(!audioRecovery||!["relato","revisao"].includes(stage)||!error||active===false)return;
     errorRef.current?.focus({preventScroll:true});
     errorRef.current?.scrollIntoView({block:'nearest',behavior:'instant'});
   },[error,active,stage]);
@@ -254,7 +256,9 @@ function ClinicalCaseBody({ session, onLogin, onProgress, onPendingChange, activ
     }
   }
   async function evaluate() {
-    if (!requireLogin()) return;
+    if (evaluating.current || !requireLogin()) return;
+    evaluating.current=true;
+    if(audioRecovery)setStage("aguardando");
     setBusy("Preparando seu feedback completo…");
     setError("");
     setQuality(null);
@@ -279,9 +283,13 @@ function ClinicalCaseBody({ session, onLogin, onProgress, onPendingChange, activ
       setBusy("Salvando caso…");
       await persist();
     } catch (e) {
-      if (e.name !== "AbortError") setError(e.message);
+      if(alive.current){
+        if(audioRecovery)setStage("revisao");
+        if (e.name !== "AbortError") setError(e.message);
+      }
     } finally {
-      setBusy("");
+      evaluating.current=false;
+      if(alive.current)setBusy("");
     }
   }
   async function persist() {
@@ -320,7 +328,7 @@ function ClinicalCaseBody({ session, onLogin, onProgress, onPendingChange, activ
     input?.focus({preventScroll:true});
     input?.scrollIntoView({block:"center",behavior:"instant"});
   }
-  const errorNotice=error&&<p ref={errorRef} tabIndex={audioRecovery&&stage==="relato"?-1:undefined} role="alert" className="error">{error}</p>;
+  const errorNotice=error&&<p ref={errorRef} tabIndex={audioRecovery&&["relato","revisao"].includes(stage)?-1:undefined} role="alert" className="error">{error}</p>;
   const feedbackLength =
     feedbackPayload(form).clinicalHistory.length +
     "\nRelato original para contexto: ".length +
@@ -341,7 +349,7 @@ function ClinicalCaseBody({ session, onLogin, onProgress, onPendingChange, activ
         {["Seu relato", "Revisão", "Feedback"].map((s, i) => (
           <span
             className={
-              ["relato", "revisao", "feedback"][i] === stage ? "active" : ""
+              ["relato", "revisao", "feedback"][i] === (stage==="aguardando"?"feedback":stage) ? "active" : ""
             }
             key={s}
           >
@@ -440,8 +448,10 @@ function ClinicalCaseBody({ session, onLogin, onProgress, onPendingChange, activ
           </aside>
         </div>
       )}
+      {stage === "aguardando" && <CaseFeedbackLoading/>}
       {stage === "revisao" && (
         <>
+          {audioRecovery && errorNotice}
           <button
             className="back-button"
             disabled={!!busy}
@@ -527,13 +537,13 @@ function ClinicalCaseBody({ session, onLogin, onProgress, onPendingChange, activ
         {saveError&&<div className="error" role="alert">{saveError} Mantenha esta tela aberta.<button disabled={saveStatus==='saving'} onClick={persist}>Tentar salvar novamente</button></div>}
         <CaseFeedback key={feedback?JSON.stringify(form):'empty'} feedback={feedback} quality={quality} qualityError={qualityError} relato={relato} form={form} busy={!!busy}/>
       </>}
-      {busy && !(audioRecovery && transcribing.current) && (
+      {busy && stage!=="aguardando" && !(audioRecovery && transcribing.current) && (
         <p role="status" className="progress">
           <span className="spinner" />
           {busy}
         </p>
       )}
-      {(!audioRecovery || stage!=="relato") && errorNotice}
+      {(!audioRecovery || !["relato","revisao"].includes(stage)) && errorNotice}
     </section>
   );
 }

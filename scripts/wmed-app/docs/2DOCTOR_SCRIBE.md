@@ -1,3 +1,7 @@
+## 26/09/2026 — Demonstração retirada por pedido explícito
+
+O usuário pediu remover o Scribe atual: não corresponde à experiência desejada. Removido da interface e links; não recriar automaticamente. A transcrição/estruturação que sustenta Caso clínico permanece. Se retomar a proposta de consulta gravada, partir de novo direcionamento, não restaurar esta demonstração.
+
 ## 25/09/2026 — Direção confirmada: consulta assistida como núcleo da 2Doctor
 
 O usuário reforçou: referência de experiência Dr Scriba e 2Doctor como apoio ao médico que ouve a consulta, transcreve automaticamente e apresenta hipóteses diagnósticas/condutas para revisão. Isso deve substituir a expansão de utilitários sem demanda como prioridade de produto.

@@ -22,7 +22,6 @@ import {
 const LabReference = lazy(()=>import('./doctor/LabReference'));
 const OfficialSources = lazy(()=>import('./doctor/OfficialSources'));
 const ShiftDivider = lazy(()=>import('./doctor/ShiftDivider'));
-const Scribe = lazy(()=>import('./doctor/Scribe'));
 const CountryHub = lazy(()=>import('./doctor/GlobalTools').then(m=>({default:m.CountryHub})));
 const EvidenceLab = lazy(()=>import('./doctor/GlobalTools').then(m=>({default:m.EvidenceLab})));
 const Research = lazy(()=>import('./doctor/Research'));
@@ -54,7 +53,7 @@ const Images = lazy(() =>
   import("./Libraries").then((m) => ({ default: m.Images })),
 );
 export const moduleItems = [
- ...(import.meta.env.VITE_PRODUCT==='2doctor'?[{id:'fontes-oficiais',label:'Fontes oficiais',description:'Medicamentos e diretrizes por país',icon:BookOpen},{id:'dividir-plantao',label:'Dividir plantão',description:'Horários distribuídos por pessoa',icon:ClipboardList},{id:'scribe',label:'Scribe · demonstração',description:'Do relato à nota organizada',icon:FileText},{id:'pais',label:'Seu país',description:'Fontes e caminhos de estudo',icon:BookOpen},{id:'evidencias',label:'Interpretar um estudo',description:'Risco absoluto, relativo e NNT',icon:Calculator},{id:'pesquisa',label:'Fontes e estudos',description:'Artigos e ensaios clínicos',icon:BookOpen},{id:'inovacoes',label:'Radar de inovação',description:'Tecnologias em avaliação',icon:FlaskConical}]:[]),
+ ...(import.meta.env.VITE_PRODUCT==='2doctor'?[{id:'fontes-oficiais',label:'Fontes oficiais',description:'Medicamentos e diretrizes por país',icon:BookOpen},{id:'dividir-plantao',label:'Dividir plantão',description:'Horários distribuídos por pessoa',icon:ClipboardList},{id:'pais',label:'Seu país',description:'Fontes e caminhos de estudo',icon:BookOpen},{id:'evidencias',label:'Interpretar um estudo',description:'Risco absoluto, relativo e NNT',icon:Calculator},{id:'pesquisa',label:'Fontes e estudos',description:'Artigos e ensaios clínicos',icon:BookOpen},{id:'inovacoes',label:'Radar de inovação',description:'Tecnologias em avaliação',icon:FlaskConical}]:[]),
   {
     id: "chat",
     label: "Chat",
@@ -171,11 +170,11 @@ export default function Modules({
       </div>
       {active !== "chat" && active !== "caso" && (
         <div className="module-container va-connected">
-          <Boundary key={active} clinical={active === 'scribe'}>
+          <Boundary key={active}>
             <Suspense
               fallback={<p className="module-loading">Abrindo biblioteca…</p>}
             >
-              {active === "exames-laboratoriais" ? <LabReference/> : active === "fontes-oficiais" ? <OfficialSources/> : active === "dividir-plantao" ? <ShiftDivider/> : active === "scribe" ? <Scribe/> : active === "pais" ? <CountryHub/> : active === "evidencias" ? <EvidenceLab/> : active === "pesquisa" ? <Research/> : active === "inovacoes" ? <InnovationRadar/> : active === "anatomia" ? (
+              {active === "exames-laboratoriais" ? <LabReference/> : active === "fontes-oficiais" ? <OfficialSources/> : active === "dividir-plantao" ? <ShiftDivider/> : active === "pais" ? <CountryHub/> : active === "evidencias" ? <EvidenceLab/> : active === "pesquisa" ? <Research/> : active === "inovacoes" ? <InnovationRadar/> : active === "anatomia" ? (
                 <Anatomy />
               ) : active === "histologia" ? (
                 <Histology />
