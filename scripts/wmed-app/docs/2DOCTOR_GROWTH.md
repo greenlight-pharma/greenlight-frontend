@@ -1,3 +1,13 @@
+## 2026-09-26 07:34 BRT — Navegação móvel: rascunho preservado, sem alteração de produto
+
+Rodada de 10:30Z. Baseline 26e1f25, código aee32eb; Git e Railway conferidos. Mantido deployment dad2025f-1941-400d-83f4-6fbc99fd9e23 SUCCESS, index-0mWKEJXY.js. Apenas diretório preexistente medico-app/dist-samu/ não rastreado, preservado.
+
+CUA público em https://www.2doctor.ai, viewport 390×844, sessão sem login: texto fictício não enviado permaneceu idêntico após Chat → Consultar um score → Chat, menu com busca medicações → Medicações → Voltar ao chat, e dois retornos pelo histórico do navegador. Campo visível, sem ancestral inert e sem overflow horizontal (390/390). Nenhuma falha reproduzida; nenhuma mudança no runtime ou novo recurso. Rascunho de teste apagado ao final, viewport restaurado. Nenhum dado clínico, envio ao modelo ou persistência nova.
+
+Não foram executados novamente testes automatizados/builds nem deploy nesta rodada sem alteração de código. A aprovação anterior de 206 testes/builds continua sendo evidência daquela versão, não um teste novo. Não testados histórico autenticado, recarga com rascunho, anexos nesse percurso, iPhone físico/Safari/VoiceOver.
+
+Próximo passo executável: conferir o mesmo percurso com um anexo TXT estritamente fictício e verificar se nome/conteúdo permanecem no compositor; se não houver regressão, registrar sem mudar produto. Evitar novas funcionalidades ou alterações especulativas.
+
 ## 2026-09-26 07:05 BRT — Ajuda de relato curto publicada
 
 Fonteaee32eb; deploymentdad2025f-1941-400d-83f4-6fbc99fd9e23 SUCCESS em 2doctor-web/projeto2doctor. Health200/product2doctor; index-0mWKEJXY.js e ClinicalCase-Br1qUdf8.js públicos idênticos ao build local. CUA público390×844 confirmou texto fictício15 caracteres com ajuda ligada por aria-describedby/botão bloqueado; acima20 remove ajuda e habilita, sem envio. Sem overflow/console errors. 206 testes e builds app/site aprovados. Relato de teste limpo, aba83/servidor encerrados, viewport restaurado. Não testados iPhone físico/Safari/VoiceOver.
