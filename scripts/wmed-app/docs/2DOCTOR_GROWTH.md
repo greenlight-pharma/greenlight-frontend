@@ -1,3 +1,13 @@
+## 2026-09-26 06:02 BRT — Remoção de anexo: foco preservado
+
+Baseline ba0c513/deployment24aa5a7a-ec5e-4497-be3b-9666fa0d2860 SUCCESS; Git/Railway conferidos. Em produção390×844, remover o último TXT fictício por Enter deixava document.activeElement=BODY. Tab seguinte ainda alcançava a textarea, mas a remoção não preservava foco explícito em controle identificável.
+
+ChatAttachments agora registra índice apenas em remoção deliberada na 2Doctor. Após atualizar lista, foco vai ao próximo botão Remover, ao anterior quando retirado o último da lista, ou a Anexar arquivos quando lista vazia; preventScroll evita rolagem programática. Nenhuma mudança de processamento, limites, persistência ou foco automático no campo de texto; WMed mantém comportamento anterior.
+
+206 testes existentes passaram, builds app/site completos aprovados, diff --check limpo. CUA local390×844: três arquivos fictícios, remover2→foco3, remover3→foco1, remover1→Anexar. 320×568 foco visível solid/sem overflow;1280×800 foco preservado/sem overflow. Console sem erros. Nenhum arquivo enviado ao modelo; não testado iPhone físico/Safari/VoiceOver. Retorno nativo do seletor não foi alterado. Dockerfile/railway.json conferidos.
+
+Próximo: deploy isolado com SUCCESS/health200/asset/interface. Rollback ba0c513. Pré-existente medico-app/dist-samu preservado; API/ECG intocados.
+
 ## 2026-09-26 05:35 BRT — Controles de anexo publicados
 
 Fonte a9c1537; deployment24aa5a7a-ec5e-4497-be3b-9666fa0d2860 SUCCESS em 2doctor-web/projeto2doctor. Healthz200/product2doctor; JS index-x3kQAae6.js e CSS index-CrrrQz45.css públicos idênticos ao build local. CUA público390×844 confirmou anexar44px e remover44×44px, nome longo sem overflow e remoção concluída. Console sem erros; TXT fictício removido ao final, nenhuma mensagem enviada ao modelo. 206 testes e builds app/site aprovados. Viewport restaurado, servidor local encerrado e aba80 fechada. Sem iPhone físico/Safari/VoiceOver.
