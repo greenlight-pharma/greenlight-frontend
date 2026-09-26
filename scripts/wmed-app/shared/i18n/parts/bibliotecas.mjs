@@ -2,6 +2,7 @@
 export default {
 // Scores por critérios
 'BIBLIOTECA WMED':['WMED LIBRARY','BIBLIOTECA WMED'],
+'BIBLIOTECA 2DOCTOR':['2DOCTOR LIBRARY','BIBLIOTECA 2DOCTOR'],
 'Não':['No','No'],
 'Sim':['Yes','Sí'],
 'Consulte a referência do instrumento.':['See the instrument’s reference.','Consulta la referencia del instrumento.'],

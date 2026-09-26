@@ -15,7 +15,7 @@ import { EXTRA_SCORES } from "./academic/extra-scores";
 import Calculators from "./Calculators";
 import { calculators } from "../shared/calculators.mjs";
 import {localizedCalculators} from "../shared/i18n/calculators.mjs";
-import {useI18n, LibraryLanguageNotice} from "./doctor/I18n";
+import {useI18n} from "./doctor/I18n";
 import {translate} from "../shared/i18n/catalog.mjs";
 const SCORES=[...ORIGINAL_SCORES,...EXTRA_SCORES];
 // Mesma rota, com resposta em SSE (feedback em partes). Erros antes do fluxo chegam como JSON.
@@ -75,7 +75,7 @@ function LibraryHead({ title, subtitle, children }) {
   const { t } = useI18n();
   return (
     <header className="module-heading">
-      <span className="eyebrow blue">{t("BIBLIOTECA WMED")}</span>
+      <span className="eyebrow blue">{import.meta.env.VITE_PRODUCT === "2doctor" ? t("BIBLIOTECA 2DOCTOR") : t("BIBLIOTECA WMED")}</span>
       <h1>{title}</h1>
       <p>{subtitle}</p>
       {children}
@@ -132,7 +132,6 @@ export function Scores() {
           <ArrowLeft size={17} />
           {t("Scores e calculadoras")}
         </button>
-        <LibraryLanguageNotice />
         <LibraryHead title={t(score.nome)} subtitle={t(score.descricao)} />
         <div className="calculator-layout">
           <div className="criteria-list">
@@ -213,7 +212,6 @@ export function Scores() {
       {compact && (q || area) && <button className="back-button scores-reset" onClick={() => {setQ('');setArea('');}}>{t('Limpar filtros')}</button>}
       {formulaList.length>0&&<><h2 className="library-section-title">{t("Calculadoras por fórmula")} <small>{formulaList.length}</small></h2><div className="resource-grid">{formulaList.map(c=><button className="resource-card" key={c.id} ref={node => { if (node) cards.current.set(`formula:${c.id}`,node); else cards.current.delete(`formula:${c.id}`); }} onClick={()=>openInstrument(`formula:${c.id}`,()=>setCalculator(c.id))}><Calculator size={22}/><small>{c.area}</small><h3>{c.name}</h3><p>{c.summary}</p><span>{t("Calcular")} ↗</span></button>)}</div></>}
       <h2 className="library-section-title">{t("Scores por critérios")} <small>{list.length}</small></h2>
-      {list.length>0&&<LibraryLanguageNotice />}
       <div className="resource-grid">
         {list.map((s) => (
           <button
