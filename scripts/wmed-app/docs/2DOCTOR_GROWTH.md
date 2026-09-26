@@ -1,3 +1,9 @@
+## 2026-09-25 22:32 BRT — Chat: Enter no celular
+
+Fricção pública reproduzida anonimamente390px: Enter ao compor texto dispara fluxo de envio/login em vez de nova linha.2Doctor agora permite linha em viewport≤760px ou ponteiro primário coarse; desktop mantém Enterenvia/ShiftEnterlinha. enterkeyhint=enter. Helper bloqueia envio durante composiçãoIME, keyCode229 e repetição de tecla. WMed mantém atalho anterior. Sem alterar API, autenticação, modelo ou persistência; nada enviado ao assistente real.
+
+203testes passaram(3novos: desktop, compact/touch, IME/repeat); build2Doctor e site completo passaram. CUA local390: Enter adiciona\n sem modal, botãoEnviar abre login; desktop1280: ShiftEnter adiciona\n e Enterabrelogin. Screenshot de dois parágrafos legível, viewport390/scroll390, console semerros. IME/coarse avaliados unitariamente; sem teclado/iPhone/IME físicos, sessão autenticada ou chamada clínica. Fixture semupstream encerrada/aba65fechada/viewportrestaurado. Publicação pendente; próximo deploy isolado+SUCCESS/health/asset/UI.
+
 ## 2026-09-25 22:06 BRT — Retorno à lista de medicações publicado
 
 Fonte e1cf29f, deployment b59ed3a0-5be3-4440-b841-a5c1c7da25f7 SUCCESS no serviço2doctor-web/projeto2doctor. Health200/product2doctor; entrada pública index-CxIT7hRR.js confere com build local, asset200 e bytes idênticos. CUA público390: amoxicilina abriu no topo(título300px), voltar restaurou scroll3532/cartão341px e foco no item; screenshot legível, largura375/scroll375 e console vazio.200 testes e ambos os builds aprovados, sem alteração médica/API. Viewport restaurado.
