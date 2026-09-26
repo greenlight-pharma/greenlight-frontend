@@ -1,11 +1,14 @@
 #!/usr/bin/env bash
 # Hipertensão para estudantes (~3:40, 1280x720, 24 fps), mesmo modelo do vídeo de SCA. Sem custo de crédito.
-# Entra (../out/has): falas da Iris na câmera A (h1..h4-final.mp4), animações a1..a5-wan.mp4,
+# Entra (../out/has): falas da Iris na câmera A (h1..h4-$FALA.mp4), animações a1..a5-wan.mp4,
 # narrações n1..n4 e e0..e6 (Maggie), app-motion.mp4 (render-app.mjs --pagina=has.html --saida=has),
 # rótulos r-*.png, g-titulo-has.mp4, g-final.mp4, ov-nome-720.png e trilha.mp3.
 # Linha do tempo e conferência clínica: ../hipertensao/roteiro.md.
 set -euo pipefail
 cd "$(dirname "$0")/../out/has"
+# FALA=veo usa a voz original do Veo nas falas da Iris (boca casa com o som); padrão: Maggie.
+FALA=${FALA:-final}
+SUF=$([ "$FALA" = final ] && echo "" || echo "-voz$FALA")
 rm -rf seg && mkdir -p seg
 
 G="scale=1280:720:flags=bicubic,scale=iw*0.5:-2:flags=bicubic,scale=1280:720:flags=bicubic,eq=saturation=0.78:contrast=0.93:brightness=-0.02:gamma=0.97,curves=r='0/0.03 0.5/0.52 1/0.95':g='0/0.04 0.5/0.5 1/0.93':b='0/0.07 0.5/0.49 1/0.88',noise=alls=9:allf=t+u,vignette=PI/5,fps=24,format=yuv420p"
@@ -34,20 +37,20 @@ anim_narrada() {  # anim_narrada <saída> <narração.mp3> <duração> "<clip1> 
 }
 
 # Parte 1: a Iris (câmera A, entrevista) explica; animações realistas com a narração dela.
-com_cartao h1-final.mp4 ov-nome-720.png 0.6 4.0 p01
+com_cartao h1-$FALA.mp4 ov-nome-720.png 0.6 4.0 p01
 ffmpeg -v error -y -i g-titulo-has.mp4 "${ENC[@]}" seg/p02.mp4
 lento a1-wan.mp4 1.8 seg/a1-lento.mp4
 anim_narrada p03 n1.mp3 8.8 "seg/a1-lento.mp4" "r-arteria.png:0.4:8.0"
-filmado h2-final.mp4 p04
+filmado h2-$FALA.mp4 p04
 lento a2-wan.mp4 2.1 seg/a2-lento.mp4
 anim_narrada p05 n2.mp3 10.2 "seg/a2-lento.mp4" "r-afericao.png:0.4:9.4"
-filmado h3-final.mp4 p06
+filmado h3-$FALA.mp4 p06
 lento a3-wan.mp4 1.0 seg/a3-c.mp4 0 4.4
 lento a4-wan.mp4 1.0 seg/a4-c.mp4 0 4.4
 anim_narrada p07 n3.mp3 8.6 "seg/a3-c.mp4 seg/a4-c.mp4" "r-coracao.png:0.3:3.9 r-rim.png:4.6:8.1"
 lento a5-wan.mp4 1.6 seg/a5-lento.mp4
 anim_narrada p08 n4.mp3 7.4 "seg/a5-lento.mp4" "r-retina.png:0.4:6.8"
-filmado h4-final.mp4 p09
+filmado h4-$FALA.mp4 p09
 
 # Parte 2: só a voz da Iris (Maggie) sobre o app 2Doctor. Cartões começam em 8,7 s e depois
 # a cada tempos.cartoes de ../hipertensao/conteudo.js (26,4 · 24,1 · 31,4 · 29,9 · 26,2); fontes em 146,7 s.
@@ -73,7 +76,7 @@ ffmpeg -v error -y "${IN[@]}" -filter_complex "${FC}concat=n=$i:v=1:a=1[v][a]" -
 DUR=$(ffprobe -v error -show_entries format=duration -of csv=p=0 seg/corte.mp4)
 ffmpeg -v error -y -i seg/corte.mp4 -stream_loop -1 -i trilha.mp3 -filter_complex \
   "[1:a]volume=0.12,afade=t=in:d=2,afade=t=out:st=$(echo "$DUR-3" | bc):d=3[m];[0:a][m]amix=inputs=2:duration=first:normalize=0,loudnorm=I=-16:TP=-1.5[a]" \
-  -map 0:v -map "[a]" -c:v copy -c:a aac -b:a 192k -ar 48000 -movflags +faststart -t "$DUR" 2doctor-hipertensao-estudantes-full.mp4
+  -map 0:v -map "[a]" -c:v copy -c:a aac -b:a 192k -ar 48000 -movflags +faststart -t "$DUR" 2doctor-hipertensao-estudantes$SUF-full.mp4
 # versão leve para celular/X
-ffmpeg -v error -y -i 2doctor-hipertensao-estudantes-full.mp4 -c:v libx264 -crf 26 -preset medium -c:a aac -b:a 160k -ar 48000 -movflags +faststart 2doctor-hipertensao-estudantes.mp4
-echo "ok 2doctor-hipertensao-estudantes.mp4 ($DUR s)"
+ffmpeg -v error -y -i 2doctor-hipertensao-estudantes$SUF-full.mp4 -c:v libx264 -crf 26 -preset medium -c:a aac -b:a 160k -ar 48000 -movflags +faststart 2doctor-hipertensao-estudantes$SUF.mp4
+echo "ok 2doctor-hipertensao-estudantes$SUF.mp4 ($DUR s)"

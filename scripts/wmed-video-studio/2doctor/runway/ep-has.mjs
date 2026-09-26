@@ -38,6 +38,18 @@ const LONGE = 'Wide shot: she occupies no more than a quarter of the frame heigh
 // lado, em três-quartos; ela fala com um entrevistador sentado logo ao lado da lente, então o
 // olhar passa perto da câmera sem cravar nela. "Câmera B" = plano mais lateral para variar.
 const ENTREVISTA = 'Documentary interview framing: the camera is placed to her side at a three-quarter angle; she is talking to an interviewer who sits just beside the camera, out of frame, so her eyes look slightly off-lens, engaged, mid-conversation, as in a Netflix documentary interview.';
+// Ângulos SEM a boca visível (26/09): a voz da Maggie não casa com a boca gerada pelo Veo, então
+// enquanto ela fala a câmera fica atrás do ombro, de perfil longe na contraluz ou nos detalhes.
+const CONSULT = 'an ordinary outpatient consulting room: desk with an automated blood pressure monitor and cuff, stethoscope, small anatomical heart model, computer with a blurred unreadable screen, examination couch with paper roll, soft late-afternoon daylight through half-closed blinds';
+const SALA = "an ordinary hospital doctors' office at night: plain desk, computer monitor with a blurred unreadable screen, an X-ray lightbox on the wall, white coats on hooks, a paper cup of coffee";
+const SEMBOCA = {
+  'has-ombro': `${IRIS}. Over-the-shoulder shot from BEHIND her: we see the back of her head, her shoulder and her gesturing hands in the foreground, slightly out of focus; her face is NOT visible. She sits in ${CONSULT}, turned toward an empty patient chair across the desk. ${FILME}`,
+  'has-perfil': `${IRIS}. Wide shot from across the room: she stands by the window in ${CONSULT}, seen in pure side profile against the bright window, her face small and in soft silhouette so her mouth cannot be seen, one hand raised mid-explanation. ${FILME}`,
+  'has-detalhe': `Close-up detail shot of ${IRIS.replace('@Iris, ', 'the hands of @Iris, ')}: only her hands and forearms in the white coat sleeves are visible, wrapping a blood pressure cuff and pointing at the monitor on the desk of ${CONSULT}; her face is out of frame. ${FILME}`,
+  'sca-ombro': `${IRIS}. Over-the-shoulder shot from BEHIND her: we see the back of her head, her shoulder and her gesturing hands in the foreground, slightly out of focus; her face is NOT visible. She sits at the desk in ${SALA}, turned toward an empty chair. ${FILME}`,
+  'sca-perfil': `${IRIS}. Wide shot from across the room: she stands by the X-ray lightbox in ${SALA}, seen in side profile against the glowing lightbox, her face small and in soft silhouette so her mouth cannot be seen, pointing at a chest X-ray. ${FILME}`,
+  'sca-detalhe': `Close-up detail shot of ${IRIS.replace('@Iris, ', 'the hands of @Iris, ')}: only her hands and forearms in the white coat sleeves are visible, writing notes next to an ECG printout on the desk in ${SALA}; her face is out of frame. ${FILME}`,
+};
 const CENARIOS = {
   entrevista: `${IRIS}. ${ENTREVISTA} She sits in her own chair beside the desk of an ordinary outpatient consulting room, turned toward the interviewer, one hand gesturing gently: an automated blood pressure monitor and cuff on the desk, a stethoscope, a small anatomical heart model, a computer monitor with a blurred unreadable screen, an examination couch with a paper roll, a window with soft late-afternoon daylight through half-closed blinds. ${LONGE} ${FILME}`,
   cameraB: `${IRIS}. Second camera of the same documentary interview: a more lateral angle from across the room, she is seen from the side as she explains something to the interviewer off-screen, mid-sentence, hands slightly raised; she does not look at the camera. Ordinary outpatient consulting room: desk with automated blood pressure monitor and cuff, examination couch with paper roll, soft late-afternoon daylight through half-closed blinds. ${LONGE} ${FILME}`,
@@ -138,10 +150,11 @@ if (modo === 'vozes') {
     await baixar(t.output[0], `voz-${p.toLowerCase()}.mp3`);
   }
 } else if (modo === 'imagens') {
-  if (!CENARIOS[a1]) throw new Error(`cenário: ${Object.keys(CENARIOS).join(' | ')}`);
+  const CEN = { ...CENARIOS, ...SEMBOCA };
+  if (!CEN[a1]) throw new Error(`cenário: ${Object.keys(CEN).join(' | ')}`);
   const uri = await subir(APROVADA);
   const t = await medir(`imagem ${a1}`, () => client.textToImage
-    .create({ model: 'gpt_image_2', promptText: CENARIOS[a1], ratio: '1920:1088', quality: 'medium', outputCount: 2,
+    .create({ model: 'gpt_image_2', promptText: CEN[a1], ratio: '1920:1088', quality: 'medium', outputCount: 2,
       referenceImages: [{ uri, tag: 'Iris' }] })
     .waitForTaskOutput());
   for (const [i, url] of t.output.entries()) await baixar(url, `${a1}-${'ab'[i]}.png`);
