@@ -62,7 +62,7 @@ export default function QuestionBank({storageKey,standalone=false}:{storageKey:s
  {standalone&&<header className="qb-public-nav"><a className="qb-brand" href="https://www.vytalsaude.com.br/"><img src="/bancodequestoes/vytal-logo.png" alt="Vytal"/><span>{t('ACADÊMICO')}</span></a><span className="qb-nav-label">{t('UM ESPAÇO PARA APRENDER')}</span><a className="qb-button" href="https://app.vytalsaude.com.br/estudante/questoes">{t('Entrar no Acadêmico')} <ArrowUpRight size={17}/></a></header>}
  <Main className="qb-main">
  <div className="qb-page-title"><div><span className="qb-eyebrow">{questions.length} {t('QUESTÕES')} · {banks.length} {t('PROVAS')}</span><h1>{t('Banco de questões')}<span>.</span></h1></div><div className="qb-backups"><button onClick={exportProgress}><ArrowDownToLine size={16}/>{t('Salvar progresso')}</button><button onClick={()=>importRef.current?.click()}><FileUp size={16}/>{t('Importar')}</button><input ref={importRef} type="file" accept=".json,application/json" hidden onChange={e=>void importProgress(e.target.files?.[0])}/></div></div>
- {locale!=='pt-BR'&&<p className="doctor-language-notice" role="note">{t('As questões estão em português. A tradução do acervo está em preparação.')}</p>}
+ 
  {saveError&&<p role="alert" className="qb-notice">{t('O navegador não permitiu salvar seu progresso. Use “Salvar progresso” antes de sair.')}</p>}
  {notice&&<div role="status" className="qb-notice">{t(notice)}<button aria-label={t('Fechar aviso')} onClick={()=>setNotice('')}><X size={16}/></button></div>}
  {mode==='banks'?<section className="qb-exam-library">

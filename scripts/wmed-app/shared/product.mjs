@@ -9,7 +9,7 @@ export function productConfig(id = 'wmed', base = '/') {
   };
 }
 export const navigationGroups = [
-  {id:'plantao', label:'Plantão', description:'Apoio à consulta clínica', modules:['caso','scores','medicacoes','condicoes','imagens','dividir-plantao']},
+  {id:'plantao', label:'Plantão', description:'Apoio à consulta clínica', modules:['caso','scores','medicacoes','condicoes','imagens']},
   {id:'estudos', label:'Estudos', description:'Do conceito à prática', modules:['pais','questoes','enamed','flashcards','curso-ecg','anatomia','histologia','radiologia','microbiologia','genetica','molecular','evolucao']},
   {id:'pesquisa', label:'Pesquisa', description:'Fontes e estudos', modules:['pesquisa','fontes-oficiais']},
   {id:'laboratorio', label:'Laboratório de IA', description:'Explore nossos protótipos', modules:['laboratorio','inovacoes']},
