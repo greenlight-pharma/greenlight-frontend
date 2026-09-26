@@ -22,3 +22,19 @@ test('PDF research references retain numbering and links without inventing citat
  const json=JSON.stringify(chatPdfDefinition({mode:'research',text:'Texto [1].',sources:[{title:'Fonte',url:'https://example.org/paper'}]}));
  assert.ok(json.includes('https://example.org/paper')); assert.ok(json.includes('1. Fonte'));
 });
+
+test('PDF preserves footnote citations, repeated notes, and linked note bodies', () => {
+ const doc=chatPdfDefinition({text:'Texto[^b] e repetição[^b]. Depois[^a].\n\n[^a]: Nota A com **ênfase**.\n[^b]: Nota B: [fonte](https://example.org/fonte)\n\n[^unused]: Não citada.'});
+ const json=JSON.stringify(doc);
+ assert.equal((json.match(/"linkToDestination":"note-1"/g)||[]).length,2);
+ assert.ok(json.includes('"linkToDestination":"note-2"'));
+ assert.equal((json.match(/"id":"note-1"/g)||[]).length,1);
+ assert.ok(json.includes('https://example.org/fonte'));
+ assert.ok(json.includes('Nota A')); assert.ok(json.includes('ênfase'));
+ assert.ok(!json.includes('Não citada'));
+});
+test('PDF keeps reference-style links alongside footnotes and does not fetch anything', () => {
+ const json=JSON.stringify(chatPdfDefinition({text:'[Fonte][ref] e nota[^1].\n\n[ref]: https://example.org/ref\n[^1]: [Documento][ref]'}));
+ assert.equal((json.match(/"link":"https:\/\/example.org\/ref"/g)||[]).length,2);
+ assert.ok(json.includes('"id":"note-1"'));
+});

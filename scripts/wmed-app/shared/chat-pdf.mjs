@@ -12,8 +12,12 @@ function inline(nodes, marks = {}, definitions = {}) {
     if (node.type === 'emphasis') return inline(node.children, { ...marks, italics: true }, definitions);
     if (node.type === 'delete') return inline(node.children, { ...marks, decoration: 'lineThrough' }, definitions);
     if (node.type === 'link' || node.type === 'linkReference') {
-      const link = safeLink(node.url || definitions[node.identifier]);
+      const link = safeLink(node.url || definitions.links?.[node.identifier]);
       return inline(node.children, link ? { ...marks, link, color: '#17635e', decoration: 'underline' } : marks, definitions);
+    }
+    if (node.type === 'footnoteReference') {
+      const number = definitions.notes?.get(node.identifier);
+      return [{ text: `[${number || node.identifier}]`, ...marks, ...(number ? { linkToDestination: `note-${number}`, color: '#17635e' } : {}) }];
     }
     if (node.type === 'html' || node.type === 'image') return [];
     return (node.type === 'break' ? '\n' : plain(node)).split(/([\u2190-\u2bff])/u).filter(Boolean).map(text => ({ text, ...marks, ...(/[\u2190-\u2bff]/u.test(text) ? { font: 'Symbols' } : {}) }));
@@ -44,7 +48,19 @@ export function chatPdfDefinition({ text, mode = 'chat', sources = [], locale = 
   let prepared = chatContent(text).text;
   if (mode !== 'chat') prepared = prepared.replace(/\[(\d+)\](?!\()/g, (match, n) => safeLink(sources[n - 1]?.url) ? `[${n}](${sources[n - 1].url})` : match);
   const tree = parser.parse(prepared);
-  const definitions = Object.fromEntries(tree.children.filter(n => n.type === 'definition').map(n => [n.identifier, n.url]));
+  const noteDefinitions = new Map(tree.children.filter(n => n.type === 'footnoteDefinition').map(n => [n.identifier, n]));
+  const notes = new Map();
+  function collectNotes(nodes) {
+    for (const node of nodes) {
+      if (node.type === 'footnoteDefinition') continue;
+      if (node.type === 'footnoteReference' && noteDefinitions.has(node.identifier) && !notes.has(node.identifier)) notes.set(node.identifier, notes.size + 1);
+      if (node.children) collectNotes(node.children);
+    }
+  }
+  collectNotes(tree.children);
+  // Map iteration includes notes referenced by another note, without duplicating cycles.
+  for (const [id] of notes) collectNotes(noteDefinitions.get(id).children);
+  const definitions = { links: Object.fromEntries(tree.children.filter(n => n.type === 'definition').map(n => [n.identifier, n.url])), notes };
   const en = locale.startsWith('en'), es = locale.startsWith('es');
   const title = en ? 'Chat response' : es ? 'Respuesta del chat' : 'Resposta do chat';
   const refs = sources.filter(s => safeLink(s.url));
@@ -57,6 +73,7 @@ export function chatPdfDefinition({ text, mode = 'chat', sources = [], locale = 
     content: [
       { text: `${title} · ${date.toLocaleDateString(locale)}`, fontSize: 9, color: '#697780', margin: [0, 0, 0, 16] },
       ...blocks(tree.children, definitions),
+      ...(notes.size ? [{ text: en ? 'Notes' : es ? 'Notas' : 'Notas', style: 'h2' }, ...Array.from(notes, ([id, number]) => ({ id: `note-${number}`, stack: [{ text: `[${number}]`, bold: true, margin: [0, 0, 0, 4] }, ...blocks(noteDefinitions.get(id).children, definitions)], fontSize: 9, margin: [0, 3, 0, 9] }))] : []),
       ...(refs.length ? [{ text: en ? 'Sources' : es ? 'Fuentes' : 'Fontes', style: 'h2' }, ...refs.map((s, i) => ({ text: [{ text: `${i + 1}. ${s.title || s.url}\n`, bold: true }, { text: s.url, link: s.url, color: '#17635e' }], fontSize: 9, margin: [0, 0, 0, 10] }))] : []),
     ],
     styles: { h1: { fontSize: 21, bold: true, margin: [0, 14, 0, 10] }, h2: { fontSize: 15, bold: true, margin: [0, 12, 0, 8] }, h3: { fontSize: 12, bold: true, margin: [0, 10, 0, 7] } },
