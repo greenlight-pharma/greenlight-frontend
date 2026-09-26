@@ -1,3 +1,11 @@
+## 2026-09-26 04:36 BRT — Navegação do banco de imagens publicada
+
+Fonte d1ad509; deployment 6859aaa2-ff98-472a-a697-a86b0debf118 SUCCESS em 2doctor-web/projeto 2doctor. Healthz200/product2doctor; index-B5CcQOGj.js e Libraries-CsTbqn0i.js públicos idênticos byte a byte ao build local. CUA público390×844 confirmou tela de entrada do banco, ausência de overflow horizontal, abertura/fechamento do login e console sem erros. Não houve sessão autenticada disponível: comportamento do leitor/lista foi verificado em fixture local conforme entrada anterior, NÃO em acervo real de produção. Sem iPhone físico/Safari/VoiceOver.
+
+206 testes e builds app/site aprovados. Fixture encerrada, aba78 fechada, viewport restaurado. Nenhuma mudança de API, dados clínicos, autenticação ou outros produtos. Rollback por reconstrução b8a4a1f; diretório preexistente medico-app/dist-samu preservado.
+
+Próximo executável: verificar fluxo já existente de busca bibliográfica no celular (termo, resultados, abrir fonte, retorno), corrigindo apenas fricção concreta reproduzida. Manter pendente validação do banco de imagens com conta real quando houver sessão disponível, sem repetir solicitação de login ou criar funcionalidades para preencher a rodada.
+
 ## 2026-09-26 04:33 BRT — Banco de imagens: navegação corrigida em teste isolado
 
 Git e Railway conferidos: baseline b8a4a1f, produção d8c2420b-0f27-4ff5-a088-261d479d470b SUCCESS. Site público exige login para imagens; sessão desconectada, sem repetir pedido ao usuário. Fixture local auth/academic com seis imagens da própria marca, texto explicitamente fictício, sem upstream, prontuários ou persistência. Fricção reproduzida em 390×844: último cartão em y1549, abrir deixava Acervo em y−91,5; voltar perdia contexto (y0/foco BODY).
