@@ -1,4 +1,12 @@
-## Correção de verificação — busca de medicações — 25/09/2026 21:40 BRT
+## Publicação verificada — busca de medicações — 2026-09-25 21:40 BRT
+
+Código 8ab4666, fonte enviada 413a4e7. Deployment fccbb0ae-c45b-4cfb-bfca-1d9f2f2f809a SUCCESS no projeto2doctor/serviço2doctor-web. Healthz200/product2doctor; entrada pública index-BfpSnWzn.js igual ao build local, asset200 e bytes idênticos. A tentativa anterior86f29cd7 falhou no transporteTLS; repetição bem-sucedida. Build completo na raiz, build2doctor e200testes passaram.
+
+CUA público em390×844: busca biguanida metformina→1resultado/ficha correta; Limpar busca e filtros→214resultados; retorno ao chat funciona. Screenshot conferido, largura útil375/scroll375, console semerros. Localmente verificados acentos, caixa, espaços, grupo clínico, ausência de resultados e desktop1280. Sem aparelho físico, login real, chamadas clínicas ou avaliação clínica do acervo. API Vytal/ECG preservados. Commit de documentação posterior não exige novo deploy.
+
+Próximo passo executável: revisar a navegação de busca→ficha→voltar em Medicações no celular, verificando preservação do ponto de leitura antes de qualquer mudança; não ampliar catálogo. Rollback por reconstrução383b8ac usando somente cwd scripts/wmed-app.
+
+## Correção de verificação — busca de medicações — 25/09/2026 (build repetido)
 
 Código 8ab4666. A última invocação do build completo inicialmente usou cwd incorreto (scripts/wmed-app), falhando por ausência do lockfile relativo esperado. Upload interrompido; Railway registrou a9455d2c-576f-4320-94c7-f0ebeb26fcb2 FAILED, mantendo 37613971 SUCCESS. Diretório descartável .vercel-out criado dentro do app removido antes de novo envio. Build completo repetido na raiz da worktree terminou exit0; 200 testes e build2doctor também aprovados. QA local móvel/desktop concluído. Publicação da correção ainda pendente; próximo passo enviar somente scripts/wmed-app e verificar SUCCESS, health, asset e UI pública. Sem teste em aparelho físico, login real ou validação clínica.
 
