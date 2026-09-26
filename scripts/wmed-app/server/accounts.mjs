@@ -31,6 +31,7 @@ const TEXT = {
   subjectReset: 'Redefinir sua senha do 2Doctor', subjectVerify: 'Confirme seu e-mail no 2Doctor',
   bodyReset: 'Recebemos um pedido para redefinir sua senha. O link vale por 1 hora:', bodyVerify: 'Confirme seu e-mail para proteger sua conta:',
   ignore: 'Se não foi você, ignore esta mensagem.',
+  currentWrong: 'Senha atual incorreta.', changed: 'Senha alterada. As outras sessões foram encerradas.',
  },
  en: {
   invalid: 'Check the information you sent.', email: 'Enter a valid email.', password: 'Your password must have 8 to 200 characters.',
@@ -44,6 +45,7 @@ const TEXT = {
   subjectReset: 'Reset your 2Doctor password', subjectVerify: 'Confirm your email on 2Doctor',
   bodyReset: 'We received a request to reset your password. The link is valid for 1 hour:', bodyVerify: 'Confirm your email to protect your account:',
   ignore: 'If this wasn\'t you, ignore this message.',
+  currentWrong: 'Current password is incorrect.', changed: 'Password changed. Your other sessions were signed out.',
  },
  es: {
   invalid: 'Revisa los datos enviados.', email: 'Ingresa un correo válido.', password: 'La contraseña debe tener de 8 a 200 caracteres.',
@@ -57,6 +59,7 @@ const TEXT = {
   subjectReset: 'Restablece tu contraseña de 2Doctor', subjectVerify: 'Confirma tu correo en 2Doctor',
   bodyReset: 'Recibimos una solicitud para restablecer tu contraseña. El enlace vale por 1 hora:', bodyVerify: 'Confirma tu correo para proteger tu cuenta:',
   ignore: 'Si no fuiste tú, ignora este mensaje.',
+  currentWrong: 'La contraseña actual es incorrecta.', changed: 'Contraseña cambiada. Se cerraron tus otras sesiones.',
  },
 };
 export function lang(req, fallback) {
@@ -121,13 +124,13 @@ async function startSession(userId) {
 export async function currentUser(req) {
  const token = cookies(req)[COOKIE];
  if (!token || !/^[A-Za-z0-9_-]{30,80}$/.test(token)) return null;
- const { rows } = await q(`select u.id, u.email, u.nome, u.email_verificado, u.google_sub is not null as google, u.plano, u.assinatura_status
+ const { rows } = await q(`select u.id, u.email, u.nome, u.email_verificado, u.google_sub is not null as google, u.senha_hash is not null as tem_senha, u.plano, u.assinatura_status
    from sessoes s join usuarios u on u.id = s.usuario_id where s.token_hash = $1 and s.expira_em > now()`, [sha(token)]);
  return rows[0] || null;
 }
 function publicUser(u) {
  return { nome: String(u.nome || u.email.split('@')[0]).split(' ')[0].slice(0, 60), email: u.email, emailVerificado: u.email_verificado,
-  progressScope: sha('2doctor-progress:' + u.id), conta: '2doctor', plano: planOf(u) };
+  progressScope: sha('2doctor-progress:' + u.id), conta: '2doctor', plano: planOf(u), temSenha: u.tem_senha ?? !!u.senha_hash };
 }
 
 // ---- limites ----
@@ -209,6 +212,7 @@ export async function auth(req, res, { sub = '', fetchImpl = fetch } = {}) {
   const action = b.action || 'entrar';
   if (action === 'sair') return await logout(req, res);
   if (action === 'redefinir') return await resetPassword(req, res, b, l);
+  if (action === 'trocar') return await changePassword(req, res, b, l);
   if (!EMAIL_RE.test(email) || email.length > 254) return reply(res, 400, { error: t(l, 'email') });
   if (!throttle('email:' + email, 8)) return reply(res, 429, { error: t(l, 'tooMany') });
   if (action === 'esqueci') return await forgotPassword(res, email, l, fetchImpl);
@@ -264,7 +268,20 @@ async function resetPassword(req, res, b, l) {
  await q('update usuarios set senha_hash = $2, email_verificado = true where id = $1', [id, await hashPassword(password)]);
  await q('delete from sessoes where usuario_id = $1', [id]);
  const { rows: u } = await q('select id, email, nome, email_verificado, plano, assinatura_status from usuarios where id = $1', [id]);
- return reply(res, 200, { authenticated: true, user: publicUser(u[0]), message: t(l, 'resetOk') }, { 'Set-Cookie': await startSession(id) });
+ return reply(res, 200, { authenticated: true, user: publicUser({ ...u[0], tem_senha: true }), message: t(l, 'resetOk') }, { 'Set-Cookie': await startSession(id) });
+}
+// Troca de senha com a sessão aberta. Conta só com Google cria a primeira senha sem pedir a atual.
+async function changePassword(req, res, b, l) {
+ const user = await currentUser(req);
+ if (!user) return reply(res, 401, { error: t(l, 'login'), code: 'AUTH_REQUIRED' });
+ if (!throttle('trocar:' + user.id, 6)) return reply(res, 429, { error: t(l, 'tooMany') });
+ const password = typeof b.password === 'string' ? b.password : '';
+ if (password.length < 8 || password.length > 200) return reply(res, 400, { error: t(l, 'password') });
+ const { rows } = await q('select senha_hash from usuarios where id = $1', [user.id]);
+ if (rows[0]?.senha_hash && !(await checkPassword(typeof b.current === 'string' ? b.current : '', rows[0].senha_hash))) return reply(res, 401, { error: t(l, 'currentWrong') });
+ await q('update usuarios set senha_hash = $2 where id = $1', [user.id, await hashPassword(password)]);
+ await q('delete from sessoes where usuario_id = $1 and token_hash <> $2', [user.id, sha(cookies(req)[COOKIE])]);
+ return reply(res, 200, { ok: true, message: t(l, 'changed'), user: publicUser({ ...user, tem_senha: true }) });
 }
 async function verifyEmail(req, res, url) {
  const token = url.searchParams.get('token') || '';

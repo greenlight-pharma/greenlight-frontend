@@ -201,3 +201,17 @@ test('Stripe: checkout de assinatura com Tax e webhook assinado liga e desliga o
 });
 import { createHmac } from 'node:crypto';
 function createHmacLocal(secret, payload) { return createHmac('sha256', secret).update(payload).digest('hex'); }
+
+test('troca de senha: exige a atual, encerra as outras sessões e mantém esta', { skip }, async () => {
+ const { cookie } = await signup('troca@teste.com');
+ const outra = res(); await accounts.auth(req({ body: { action: 'entrar', email: 'troca@teste.com', password: 'senha-de-teste-1' } }), outra);
+ const cookie2 = cookieOf(outra);
+ const errada = res(); await accounts.auth(req({ cookie, body: { action: 'trocar', current: 'nao-e-esta', password: 'senha-nova-123' } }), errada);
+ assert.equal(errada.statusCode, 401);
+ const ok = res(); await accounts.auth(req({ cookie, body: { action: 'trocar', current: 'senha-de-teste-1', password: 'senha-nova-123' } }), ok);
+ assert.equal(ok.statusCode, 200); assert.equal(ok.data.user.temSenha, true);
+ const esta = res(); await accounts.auth(req({ method: 'GET', cookie }), esta); assert.equal(esta.data.authenticated, true);
+ const velha = res(); await accounts.auth(req({ method: 'GET', cookie: cookie2 }), velha); assert.equal(velha.data.authenticated, false);
+ const nova = res(); await accounts.auth(req({ body: { action: 'entrar', email: 'troca@teste.com', password: 'senha-nova-123' } }), nova); assert.equal(nova.statusCode, 200);
+ const anon = res(); await accounts.auth(req({ body: { action: 'trocar', password: 'senha-nova-456' } }), anon); assert.equal(anon.statusCode, 401);
+});

@@ -30,3 +30,7 @@
 .plan-panel small{display:block;margin-top:10px;font-size:10px;color:var(--muted);line-height:1.6}
 .plan-panel .plan-manage{width:100%;min-height:44px;border-radius:10px;background:#005d5b;color:#fff;font-weight:600}
 @media(max-width:420px){.plan-options{grid-template-columns:1fr}}
+.password-panel .password-toggle{border:1px solid var(--line);background:var(--raised);color:var(--ink);border-radius:999px;padding:7px 13px;font-size:12px;font-weight:600}
+.password-form{display:grid;gap:10px;margin-top:12px}.password-form label{display:grid;gap:5px;font-size:12px;font-weight:600;color:var(--ink)}
+.password-form input{min-height:42px;border:1px solid var(--line);border-radius:10px;padding:0 12px;font:inherit;font-size:16px;background:var(--raised);color:var(--ink)}
+.password-actions{display:grid;grid-template-columns:auto 1fr;gap:8px}.password-actions>button:first-child{border:1px solid var(--line);background:var(--raised);color:var(--ink);border-radius:10px;padding:0 14px;min-height:44px}

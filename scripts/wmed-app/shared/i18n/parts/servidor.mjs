@@ -44,4 +44,16 @@ export default {
 'Progresso salvo neste navegador, separado por conta.':['Progress saved in this browser, separately for each account.','Progreso guardado en este navegador, por cuenta.'],
 'Classes, mecanismos e relações clínicas.':['Classes, mechanisms and clinical relationships.','Clases, mecanismos y relaciones clínicas.'],
 'Assistente':['Assistant','Asistente'],
+// Minha conta · senha
+'Trocar senha':['Change password','Cambiar contraseña'],
+'Criar senha':['Create password','Crear contraseña'],
+'Senha atual':['Current password','Contraseña actual'],
+'Repita a nova senha':['Repeat the new password','Repite la nueva contraseña'],
+'Cancelar':['Cancel','Cancelar'],
+'Salvando…':['Saving…','Guardando…'],
+'As senhas não conferem.':['The passwords do not match.','Las contraseñas no coinciden.'],
+'A nova senha precisa ter pelo menos 8 caracteres.':['The new password must have at least 8 characters.','La nueva contraseña debe tener al menos 8 caracteres.'],
+'Não foi possível trocar a senha.':['Could not change the password.','No se pudo cambiar la contraseña.'],
+'Use pelo menos 8 caracteres. Ao trocar, as outras sessões são encerradas.':['Use at least 8 characters. Changing it signs out your other sessions.','Usa al menos 8 caracteres. Al cambiarla, se cierran tus otras sesiones.'],
+'Sua conta entra com o Google. Crie uma senha para entrar também com e-mail.':['Your account signs in with Google. Create a password to also sign in with email.','Tu cuenta entra con Google. Crea una contraseña para entrar también con correo.'],
 };
