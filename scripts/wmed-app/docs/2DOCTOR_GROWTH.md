@@ -1,3 +1,9 @@
+## 2026-09-26 07:05 BRT — Ajuda de relato curto publicada
+
+Fonteaee32eb; deploymentdad2025f-1941-400d-83f4-6fbc99fd9e23 SUCCESS em 2doctor-web/projeto2doctor. Health200/product2doctor; index-0mWKEJXY.js e ClinicalCase-Br1qUdf8.js públicos idênticos ao build local. CUA público390×844 confirmou texto fictício15 caracteres com ajuda ligada por aria-describedby/botão bloqueado; acima20 remove ajuda e habilita, sem envio. Sem overflow/console errors. 206 testes e builds app/site aprovados. Relato de teste limpo, aba83/servidor encerrados, viewport restaurado. Não testados iPhone físico/Safari/VoiceOver.
+
+Próximo executável: conferir navegação móvel de retorno entre chat e ferramentas existentes com texto ainda não enviado; reproduzir eventual perda de contexto antes de alterar código. Manter preservação do rascunho, autenticação/histórico e ausência de novos recursos. Rollback1388eea; preexistente medico-app/dist-samu preservado; API/ECG/modelos intocados.
+
 ## 2026-09-26 07:02 BRT — Relato curto: motivo do botão desabilitado
 
 Baseline1388eea/deploymentb98f423d-7084-45b2-87c4-ceb821b37c61 SUCCESS. Git/Railway conferidos. Produção390×844 com texto fictício15 caracteres: Organizar desabilitado sem orientação de mínimo e textarea sem descrição associada.
