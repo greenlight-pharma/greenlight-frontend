@@ -31,6 +31,12 @@
   - Imagens 40 créditos (ubs3-b, anfiteatro-a, posto-a, descanso-a); vídeos 4 × 120; troca de voz 9. Saídas `out/ep2/{ubs3,anfiteatro,posto,descanso}-final.mp4`.
   - Leitura: UBS com um só aparelho; posto e descanso bons. No anfiteatro o residente vira e sorri para a câmera no meio do plano: usar só começo e fim ou refazer.
   - Saldo: 2.918 créditos.
+- **Formato novo (26/09): só a Iris + grafismo.** O Dilson reprovou a 3ª versão (cara de IA, figurantes artificiais). Decisão: uma pessoa só, a Iris, falando para a câmera em plano médio como na referência; sem paciente nem figurantes; a explicação vai em grafismo nosso (verbete do termo, nome na apresentação, números, alternativas, 3D). Script `runway/teste-modelo.mjs`, saída `out/modelo/`.
+  - Cenário: biblioteca de faculdade de medicina à noite, luminária verde (imagem `gpt_image_2` com @Iris, 10 créditos; escolhida biblioteca-a).
+  - **Seedance 2.5 bloqueado de novo** pela moderação, agora também com a imagem como primeiro quadro (0 crédito): não aceita a Iris. Descartado para a apresentadora.
+  - **Veo 3.1 completo**: falhou 4 vezes ("try again later", 0 crédito) e funcionou na 5ª: 8 s 1920×1080 com áudio, **320 créditos**, 166 s. Voz trocada pela Lara (3).
+  - Grafismo sem custo: cartões PNG transparentes (Pillow, Georgia) sobrepostos com fade no ffmpeg (o ffmpeg daqui não tem `drawtext`): nome "Dr Iris Maren · Physician · 2Doctor" e verbete "hypertensive emergency · medical term · Very high blood pressure + an organ already in trouble". Script de composição em `out/modelo/grade.sh`.
+  - Saldo: 2.585 créditos.
 
 ## Modelos 3D próprios (`../models3d/`)
 Tudo procedural, com código nosso. Visual de documentário no palco comum (`stage.js`, `look:'doc'`): luz quente de lado, contraluz azul, vinheta, grão por quadro, foco raso (`dof` + `stage.setFocus`), oclusão de ambiente (`ao`) e texturas de tecido (`tissueMaterial`). Cada cena exporta `stageOptions`.
