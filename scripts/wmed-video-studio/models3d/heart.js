@@ -26,14 +26,14 @@ export function ventPoint(s, phi, out = new THREE.Vector3()) {
   let r = _p.x; const y = _p.y;
   // ventrículo direito: abaulamento anterior e à direita, some antes do ápice (o ápice é do VE)
   const rvW = clamp(s / 0.2) * (1 - clamp((s - 0.55) / 0.35));
-  r *= 1 + 0.2 * gauss(dAng(phi, -1.0), 1.05) * rvW;
+  r *= 1 + 0.13 * gauss(dAng(phi, -1.0), 1.05) * rvW;
   // face diafragmática (posterior-inferior) achatada
   r *= 1 - 0.1 * gauss(dAng(phi, Math.PI), 0.9) * clamp(s / 0.3);
   // sulcos: interventricular anterior e posterior (distância em unidades de arco), atrioventricular (em s)
   const w = 0.1;
-  r -= 0.055 * (1 - 0.6 * s) * gauss(dAng(phi, PHI_LAD(s)) * r / w, 1) * clamp((s - 0.1) / 0.1);
-  r -= 0.045 * (1 - 0.6 * s) * gauss(dAng(phi, PHI_PIV(s)) * r / w, 1) * clamp((s - 0.1) / 0.1);
-  r -= 0.07 * gauss(s - S_AV, 0.035);
+  r -= 0.03 * (1 - 0.6 * s) * gauss(dAng(phi, PHI_LAD(s)) * r / w, 1) * clamp((s - 0.1) / 0.1);
+  r -= 0.03 * (1 - 0.6 * s) * gauss(dAng(phi, PHI_PIV(s)) * r / w, 1) * clamp((s - 0.1) / 0.1);
+  r -= 0.05 * gauss(s - S_AV, 0.035);
   // leve irregularidade orgânica
   r *= 1 + 0.012 * Math.sin(phi * 3 + s * 7) + 0.008 * Math.sin(phi * 7 - s * 13);
   const cx = 0.16 * s * s;                       // ápice desviado para a esquerda (formado pelo VE)
@@ -44,7 +44,7 @@ export function ventNormal(s, phi, out = new THREE.Vector3()) {
   const e = 0.004;
   ventPoint(s + e, phi, _a); ventPoint(s - e, phi, _b); _a.sub(_b);
   ventPoint(s, phi + e, _b); ventPoint(s, phi - e, _c); _b.sub(_c);
-  return out.crossVectors(_b, _a).normalize();
+  return out.crossVectors(_a, _b).normalize();
 }
 // ponto acima da superfície (lift em unidades do mundo) — usado para assentar vasos no sulco
 export function onSurface(s, phi, lift) {
@@ -58,10 +58,19 @@ function ventGeometry(ns = 140, nf = 180) {
     ventPoint(s, phi, P); pos.push(P.x, P.y, P.z); uv.push(j / nf, s);
   }
   for (let i = 0; i < ns; i++) for (let j = 0; j < nf; j++) {
-    const a = i * (nf + 1) + j, b = a + nf + 1; idx.push(a, b, a + 1, b, b + 1, a + 1);
+    const a = i * (nf + 1) + j, b = a + nf + 1; idx.push(a, a + 1, b, b, a + 1, b + 1);
   }
   const g = new THREE.BufferGeometry();
   g.setAttribute('position', new THREE.Float32BufferAttribute(pos, 3)); g.setAttribute('uv', new THREE.Float32BufferAttribute(uv, 2));
+  // manchas sutis de cor (tecido vivo não é uniforme): mais escuro perto do ápice e em placas irregulares
+  const col = [];
+  for (let i = 0; i <= ns; i++) for (let j = 0; j <= nf; j++) {
+    const s = i / ns, phi = Math.PI - (j / nf) * Math.PI * 2;
+    const n = 0.5 * Math.sin(phi * 3 + s * 9) * Math.sin(phi * 5 - s * 4 + 1) + 0.3 * Math.sin(phi * 11 + s * 23) * Math.sin(s * 17 - phi * 2);
+    const k = 0.92 + 0.1 * n - 0.1 * clamp((s - 0.6) / 0.4);
+    col.push(k, k * (0.97 + 0.04 * n), k * (1.0 + 0.05 * n));
+  }
+  g.setAttribute('color', new THREE.Float32BufferAttribute(col, 3));
   g.setIndex(idx); g.computeVertexNormals();
   // solda a normal da costura (φ = ±π)
   const n = g.attributes.normal;
@@ -109,15 +118,15 @@ export function buildHeart(stage, { coronaryColor = 0xb0282a } = {}) {
   const tilt = new THREE.Group(); root.add(tilt);
   const core = new THREE.Group(); tilt.add(core);
   // orientação: eixo longo a ~45° na tela, ápice para a frente
-  tilt.rotation.z = 0.78; core.rotation.x = -0.42; core.rotation.y = 0.18;
+  tilt.rotation.z = 0.78; core.rotation.x = -0.5; core.rotation.y = 0.15;
   root.updateMatrixWorld(true);
   const qInv = new THREE.Quaternion(); core.getWorldQuaternion(qInv); qInv.invert();
   const W = (x, y, z) => new THREE.Vector3(x, y, z).applyQuaternion(qInv);      // direção do mundo → local
 
   const mats = {
-    myo: tissueMaterial({ color: 0x5e141c, sheen: 0xc8504a, kind: 'wet', seed: 3, cell: 20, repeat: [4, 3], normal: 0.35, wet: 0.75, roughness: 0.42, rim: 0.12, rimColor: 0xff9a8a }),
+    myo: tissueMaterial({ color: 0x5e141c, sheen: 0xc8504a, kind: 'wet', seed: 3, cell: 20, repeat: [5, 3], normal: 0.6, wet: 0.45, roughness: 0.55, rim: 0.12, rimColor: 0xff9a8a }),
     atrium: tissueMaterial({ color: 0x55182a, sheen: 0xc0606a, kind: 'fibers', seed: 5, cell: 10, repeat: [2, 2], normal: 0.3, wet: 0.75, roughness: 0.42, rim: 0.12, rimColor: 0xff9a8a }),
-    ra: tissueMaterial({ color: 0x4a1e36, sheen: 0xb0708c, kind: 'fibers', seed: 7, cell: 10, repeat: [2, 2], normal: 0.3, wet: 0.75, roughness: 0.42, rim: 0.12, rimColor: 0xd9a8ff }),
+    ra: tissueMaterial({ color: 0x561a2e, sheen: 0xc07080, kind: 'fibers', seed: 7, cell: 10, repeat: [2, 2], normal: 0.3, wet: 0.75, roughness: 0.42, rim: 0.12, rimColor: 0xd9a8ff }),
     artery: tissueMaterial({ color: coronaryColor, sheen: 0xff8f80, kind: 'wet', seed: 9, repeat: [1, 8], normal: 0.35, wet: 0.95, roughness: 0.3, rim: 0.2, rimColor: 0xffb0a0 }),
     vein: tissueMaterial({ color: 0x3e2440, sheen: 0xa07ab8, kind: 'wet', seed: 11, repeat: [1, 8], normal: 0.35, wet: 0.9, roughness: 0.32, rim: 0.12, rimColor: 0xc0a0ff }),
     fat: tissueMaterial({ color: 0xcfa75c, sheen: 0xfff0b0, kind: 'cells', seed: 13, cell: 12, repeat: [2, 10], normal: 0.9, wet: 0.6, roughness: 0.45, rim: 0.1, rimColor: 0xfff0c0 }),
@@ -127,6 +136,7 @@ export function buildHeart(stage, { coronaryColor = 0xb0282a } = {}) {
   };
 
   // ---------- ventrículos (grupo que bate; pivô no plano AV) ----------
+  mats.myo.vertexColors = true;
   const PIV_Y = 0.78;
   const vent = new THREE.Group(); vent.position.y = PIV_Y; core.add(vent);
   const ventIn = new THREE.Group(); ventIn.position.y = -PIV_Y; vent.add(ventIn);
@@ -142,7 +152,7 @@ export function buildHeart(stage, { coronaryColor = 0xb0282a } = {}) {
   };
   // gordura epicárdica: cordão lobulado afundado no sulco (o vaso fica por cima), afina em direção ao ápice
   const addFat = (pts, r0, r1, seed, seg = 120) => {
-    const c = onPath(pts.map(([s, f]) => [s, f, -0.35 * r0]));
+    const c = onPath(pts.map(([s, f]) => [s, f, 0.0]));
     const fm = new THREE.Mesh(taperTube(c, (u, a) => {
       const lump = 1 + 0.22 * Math.sin(u * 70 + seed + 2 * Math.sin(a * 3)) * Math.sin(a * 5 + u * 23 + seed) + 0.12 * Math.sin(a * 2 + u * 9 + seed);
       return (r0 + (r1 - r0) * u) * lump;
@@ -159,8 +169,8 @@ export function buildHeart(stage, { coronaryColor = 0xb0282a } = {}) {
   const lmEnd = onSurface(S_AV, 0.62, 0.035);
   // DA (descendente anterior): pelo sulco interventricular anterior até contornar o ápice
   const ladPts = range(S_AV + 0.02, 1.0, 16, (s) => [s, PHI_LAD(s) + (s > 0.9 ? -(s - 0.9) * 3 : 0), 0.025]);
-  addVessel(new THREE.CatmullRomCurve3([lmOrigin, lmOrigin.clone().lerp(lmEnd, 0.5).add(new THREE.Vector3(0.05, 0.02, -0.02)), lmEnd, ...ladPts.map(([s, f, l]) => onSurface(s, f, l))], false, 'centripetal'), 0.058, 0.016, mats.artery, { seg: 140 });
-  addFat(range(S_AV + 0.02, 0.8, 14, (s) => [s, PHI_LAD(s)]), 0.075, 0.02, 2);
+  addVessel(new THREE.CatmullRomCurve3([lmOrigin, lmOrigin.clone().lerp(lmEnd, 0.5).add(new THREE.Vector3(0.05, 0.02, -0.02)), lmEnd, ...ladPts.map(([s, f, l]) => onSurface(s, f, l))], false, 'centripetal'), 0.068, 0.02, mats.artery, { seg: 140 });
+  addFat(range(S_AV + 0.02, 0.8, 14, (s) => [s, PHI_LAD(s)]), 0.11, 0.025, 2);
   // diagonais: da DA para a parede anterolateral do VE
   for (const [s0, s1, f1, r, w] of [[0.32, 0.66, 1.2, 0.024, 0.3], [0.52, 0.8, 1.02, 0.017, -0.2]]) {
     addVessel(onPath(range(s0, s1, 7, (s) => { const u = (s - s0) / (s1 - s0); return [s, PHI_LAD(s0) + (f1 - PHI_LAD(s0)) * Math.sin(u * Math.PI / 2) + 0.06 * w * Math.sin(u * 7), 0.012]; }), 0.012), r, r * 0.4, mats.artery, { seg: 50 });
@@ -168,7 +178,7 @@ export function buildHeart(stage, { coronaryColor = 0xb0282a } = {}) {
   // circunflexa: sulco AV esquerdo até a margem posterior
   const cxPts = range(0.62, 2.35, 12, (f) => [S_AV + 0.01, f, 0.035]);
   addVessel(onPath([[S_AV + 0.005, 0.64, 0.035], ...cxPts]), 0.045, 0.022, mats.artery, { seg: 90 });
-  addFat(range(0.5, 2.4, 14, (f) => [S_AV, f]), 0.085, 0.05, 5);
+  addFat(range(0.3, 2.4, 14, (f) => [S_AV, f]), 0.12, 0.07, 5);
   // marginais obtusas
   for (const [f0, df, s1, r] of [[1.45, 0.3, 0.6, 0.022], [2.0, 0.15, 0.66, 0.019]]) {
     addVessel(onPath(range(S_AV + 0.02, s1, 7, (s) => { const u = (s - S_AV) / (s1 - S_AV); return [s, f0 + df * u + 0.05 * Math.sin(u * 6 + f0), 0.012]; })), r, r * 0.4, mats.artery, { seg: 50 });
@@ -177,9 +187,9 @@ export function buildHeart(stage, { coronaryColor = 0xb0282a } = {}) {
   const rcaEnt = onSurface(S_AV, -0.35, 0.04);
   const rcaPts = range(-0.4, -2.5, 16, (f) => [S_AV + 0.005, f, 0.04]);
   addVessel(new THREE.CatmullRomCurve3([rcaOrigin, rcaOrigin.clone().lerp(rcaEnt, 0.5).add(new THREE.Vector3(-0.02, 0.0, 0.05)), rcaEnt, ...rcaPts.map(([s, f, l]) => onSurface(s, f, l))], false, 'centripetal'), 0.055, 0.035, mats.artery, { seg: 120 });
-  addFat(range(-0.2, -2.6, 16, (f) => [S_AV, f]), 0.09, 0.07, 7);
+  addFat(range(-0.1, -2.6, 16, (f) => [S_AV, f]), 0.13, 0.09, 7);
   addVessel(onPath(range(S_AV + 0.02, 0.8, 10, (s) => [s, PHI_PIV(s), 0.02])), 0.034, 0.014, mats.artery, { seg: 70 });  // DP
-  addFat(range(S_AV + 0.02, 0.7, 10, (s) => [s, PHI_PIV(s)]), 0.07, 0.02, 9);
+  addFat(range(S_AV + 0.02, 0.7, 10, (s) => [s, PHI_PIV(s)]), 0.09, 0.025, 9);
   addVessel(onPath(range(S_AV + 0.02, 0.62, 8, (s) => [s, -1.62 - 0.1 * s, 0.012])), 0.024, 0.01, mats.artery, { seg: 50 });              // marginal aguda
   addVessel(onPath(range(S_AV + 0.03, 0.4, 5, (s) => [s, -0.9 + 0.3 * (s - S_AV), 0.012])), 0.017, 0.008, mats.artery, { seg: 30 });      // ramo do cone / VD anterior
   // veia cardíaca magna, paralela à DA (mais escura), e veia interventricular posterior
@@ -189,10 +199,14 @@ export function buildHeart(stage, { coronaryColor = 0xb0282a } = {}) {
   // ---------- átrios e aurículas (grupo com a sístole atrial) ----------
   const atria = new THREE.Group(); core.add(atria);
   const addBlob = (geo, mat) => { const m = new THREE.Mesh(geo, mat); atria.add(m); return m; };
-  addBlob(blobGeometry(new THREE.Vector3(-0.72, 1.06, -0.32), new THREE.Vector3(0.58, 0.6, 0.6), { seed: 2, lumpy: 0.035 }), mats.ra);          // AD
-  addBlob(auricleGeometry(new THREE.Vector3(-0.44, 1.14, 0.52), new THREE.Vector3(0.3, 0.13, 0.3), null, 1), mats.ra);                              // aurícula direita
-  addBlob(blobGeometry(new THREE.Vector3(0.25, 1.18, -0.62), new THREE.Vector3(0.66, 0.42, 0.44), { seed: 4, lumpy: 0.03 }), mats.atrium);        // AE
-  addBlob(auricleGeometry(new THREE.Vector3(0.66, 1.12, 0.3), new THREE.Vector3(0.24, 0.11, 0.3), null, 3), mats.atrium);                          // aurícula esquerda
+  // posições pensadas na vista anterior (direções do mundo → local): AD forma a borda direita, AE fica atrás,
+  // aurícula direita abraça a raiz da aorta e a esquerda aparece na borda esquerda, junto ao tronco pulmonar
+  const baseC = new THREE.Vector3(0, 0.95, 0);
+  const at = (x, y, z) => baseC.clone().add(W(x, y, z));
+  addBlob(blobGeometry(at(-0.82, 0.02, -0.12), new THREE.Vector3(0.6, 0.68, 0.6), { seed: 2, lumpy: 0.035 }), mats.ra);            // AD
+  addBlob(auricleGeometry(at(-0.62, 0.42, 0.28), new THREE.Vector3(0.3, 0.14, 0.3), null, 1), mats.ra);                               // aurícula direita
+  addBlob(blobGeometry(at(0.15, 0.3, -0.85), new THREE.Vector3(0.7, 0.45, 0.48), { seed: 4, lumpy: 0.03 }), mats.atrium);            // AE
+  addBlob(auricleGeometry(at(0.78, 0.38, 0.05), new THREE.Vector3(0.26, 0.12, 0.3), null, 3), mats.atrium);                           // aurícula esquerda
 
   // ---------- grandes vasos (fixos) ----------
   const statics = new THREE.Group(); core.add(statics);

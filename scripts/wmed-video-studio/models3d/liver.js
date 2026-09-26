@@ -10,7 +10,7 @@
 //   (faixa luminosa onde o feixe de ultrassom corta o órgão).
 import * as THREE from 'three';
 import { tissueMaterial, rimMaterial, clamp } from './stage.js';
-import { buildLiverMesh, liverSDF, SHAPES, project } from './liver-geom.js';
+import { buildLiverMesh, liverSDF, SHAPES } from './liver-geom.js';
 
 const C = (hex) => new THREE.Color(hex);          // hex sRGB → linear
 const PAL = {

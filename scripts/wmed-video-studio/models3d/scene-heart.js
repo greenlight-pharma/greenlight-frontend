@@ -19,9 +19,10 @@ export default async function (stage, q) {
       H.update(t, { bpm: 60 });
       // giro lento: de −14° a +10° em torno do eixo vertical
       const u = ease(t / dur);
-      H.root.rotation.y = -0.25 + 0.42 * u;
+      H.root.rotation.y = -0.22 + 0.34 * u;
+      H.root.position.set(0.22, -0.1, 0);
       // câmera: leve aproximação (dolly-in) e subida mínima
-      const d = 14.2 - 1.0 * u;
+      const d = 14.6 - 0.9 * u;
       cam.position.set(0.25, 0.6 + 0.3 * u, d);
       cam.lookAt(target);
       stage.setFocus(cam.position.distanceTo(target) - 0.6);

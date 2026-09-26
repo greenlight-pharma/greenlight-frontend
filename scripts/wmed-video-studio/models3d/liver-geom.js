@@ -19,32 +19,35 @@ function sdCapsule(x, y, z, ax, ay, az, bx, by, bz, r) {
 // Formas: 'healthy' (normal) e 'cirrhotic' (menor, lobo direito atrofiado, caudado/esquerdo relativamente
 // maiores, borda inferior romba). A morfologia intermediária é interpolada vértice a vértice.
 export const SHAPES = {
-  healthy: { s: 1.0, rR: [0.74, 0.64, 0.6], rL: [0.78, 0.27, 0.44], cau: 1.0, edge: 0.05, round: 0.0 },
-  cirrhotic: { s: 0.9, rR: [0.64, 0.58, 0.54], rL: [0.8, 0.29, 0.44], cau: 1.35, edge: 0.16, round: 0.025 },
+  healthy: { s: 1.0, rR: [0.74, 0.64, 0.62], rL: [0.74, 0.36, 0.45], cau: 1.0, edge: 0.05, round: 0.0, cut: 0.17 },
+  cirrhotic: { s: 0.9, rR: [0.66, 0.58, 0.56], rL: [0.74, 0.38, 0.46], cau: 1.35, edge: 0.16, round: 0.02, cut: 0.19 },
 };
-const VN = (() => { const n = [0.24, -0.9, -0.36], l = Math.hypot(...n); return n.map((v) => v / l); })();
+const VN = (() => { const n = [0.28, -0.94, -0.2], l = Math.hypot(...n); return n.map((v) => v / l); })();
 
 export function liverSDF(X, Y, Z, S = SHAPES.healthy) {
   const x = X / S.s, y = Y / S.s, z = Z / S.s;
-  // lobo direito: domo grande, afinando para a frente (borda anterior mais fina)
-  const ysR = 1 - 0.28 * clamp01((z + 0.05) / 0.6);
-  let d = sdEll(x + 0.4, (y - 0.08) / ysR, z + 0.02, S.rR[0], S.rR[1], S.rR[2]);
-  // lobo esquerdo: cunha achatada que se afila e desce para a esquerda
-  const tL = clamp01((x - 0.05) / 1.05), ysL = 1 - 0.6 * tL;
-  const L = sdEll(x - 0.38, (y - 0.26 + 0.1 * tL * tL) / ysL, z - 0.02 + 0.08 * tL, S.rL[0], S.rL[1], S.rL[2] * (1 - 0.25 * tL));
-  d = smin(d, L, 0.32);
+  // lobo direito: domo grande (a face visceral é cortada pelo plano abaixo)
+  // cisalhamento: a parte de baixo avança para a frente → face diafragmática desce até uma borda anterior fina
+  const shz = z - 0.32 * (0.05 - y);
+  let d = sdEll(x + 0.42, y - 0.06, shz + 0.1, S.rR[0], S.rR[1], S.rR[2]);
+  // lobo esquerdo: cunha achatada que se afila para a esquerda, topo contínuo com o domo
+  const tL = clamp01((x - 0.1) / 0.9), ysL = 1 - 0.38 * tL;
+  const L = sdEll(x - 0.28, (y - 0.2 + 0.05 * tL) / ysL, z - 0.3 * (0.2 - y) + 0.02 * tL, S.rL[0], S.rL[1], S.rL[2] * (1 - 0.3 * tL));
+  d = smin(d, L, 0.3);
+  // impressão cardíaca: leve depressão no topo do lobo esquerdo
+  d = smax(d, -(Math.hypot((x - 0.25) / 1.6, y - 0.95, (z - 0.05) / 1.2) - 0.5), 0.1);
   // lobo caudado (posterior, junto à veia cava)
-  const C = sdEll(x + 0.06, y + 0.02, z + 0.36, 0.17 * S.cau, 0.24 * S.cau, 0.15 * S.cau);
+  const C = sdEll(x + 0.06, y + 0.0, z + 0.4, 0.17 * S.cau, 0.24 * S.cau, 0.15 * S.cau);
   d = smin(d, C, 0.12);
-  // face visceral: plano voltado para baixo, para trás e para a esquerda, gera a borda inferior cortante
-  const pl = x * VN[0] + y * VN[1] + z * VN[2] - 0.3;
+  // face visceral: plano voltado para baixo, para trás e para a esquerda → borda inferior oblíqua e cortante
+  const pl = x * VN[0] + y * VN[1] + z * VN[2] - S.cut;
   d = smax(d, pl, S.edge);
   // incisura do ligamento redondo/falciforme na borda anterior
-  d = smax(d, -(Math.hypot((x - 0.1) / 0.8, y + 0.12, z - 0.5) - 0.085), 0.05);
+  d = smax(d, -(Math.hypot((x - 0.08) / 0.8, y + 0.12, z - 0.45) - 0.07), 0.05);
   // porta hepatis: sulco transverso na face visceral
-  d = smax(d, -sdCapsule(x, y, z, -0.28, -0.3, -0.08, 0.1, -0.17, -0.08, 0.075), 0.06);
+  d = smax(d, -sdCapsule(x, y, z, -0.3, -0.26, -0.1, 0.1, -0.15, -0.1, 0.07), 0.06);
   // leito da vesícula biliar (fossa rasa sob o lobo direito)
-  d = smax(d, -sdEll(x + 0.2, y + 0.4, z - 0.22, 0.09, 0.07, 0.28), 0.05);
+  d = smax(d, -sdEll(x + 0.22, y + 0.4, z - 0.2, 0.08, 0.06, 0.26), 0.05);
   return d * S.s - S.round;
 }
 
@@ -98,7 +101,7 @@ export function surfaceNets(f, [x0, y0, z0], [x1, y1, z1], h) {
 }
 
 // Leva cada vértice até a isosuperfície de f (passos de Newton com gradiente numérico).
-export function project(pos, f, iters = 3, e = 1e-3) {
+export function project(pos, f, iters = 3, e = 1e-3, maxStep = 0.03) {
   const out = new Float32Array(pos);
   for (let i = 0; i < out.length; i += 3) {
     let x = out[i], y = out[i + 1], z = out[i + 2];
@@ -106,7 +109,9 @@ export function project(pos, f, iters = 3, e = 1e-3) {
       const d = f(x, y, z);
       const gx = (f(x + e, y, z) - f(x - e, y, z)) / (2 * e), gy = (f(x, y + e, z) - f(x, y - e, z)) / (2 * e), gz = (f(x, y, z + e) - f(x, y, z - e)) / (2 * e);
       const g2 = gx * gx + gy * gy + gz * gz || 1;
-      x -= d * gx / g2; y -= d * gy / g2; z -= d * gz / g2;
+      let sx = d * gx / g2, sy = d * gy / g2, sz = d * gz / g2; const L = Math.hypot(sx, sy, sz);
+      if (L > maxStep) { sx *= maxStep / L; sy *= maxStep / L; sz *= maxStep / L; }
+      x -= sx; y -= sy; z -= sz;
     }
     out[i] = x; out[i + 1] = y; out[i + 2] = z;
   }
@@ -128,6 +133,19 @@ export function taubin(pos, index, iters = 2) {
   return P;
 }
 
+function smoothDelta(A, B, index, iters) {
+  const n = A.length / 3, D = new Float32Array(B.length);
+  for (let i = 0; i < B.length; i++) D[i] = B[i] - A[i];
+  const nb = Array.from({ length: n }, () => []);
+  for (let t = 0; t < index.length; t += 3) { const a = index[t], b = index[t + 1], c = index[t + 2]; nb[a].push(b, c); nb[b].push(a, c); nb[c].push(a, b); }
+  for (let it = 0; it < iters; it++) {
+    const E = new Float32Array(D);
+    for (let i = 0; i < n; i++) { const L = nb[i]; if (!L.length) continue; for (let k = 0; k < 3; k++) { let s = 0; for (const j of L) s += D[j * 3 + k]; E[i * 3 + k] = 0.5 * D[i * 3 + k] + 0.5 * s / L.length; } }
+    D.set(E);
+  }
+  const out = new Float32Array(B.length); for (let i = 0; i < B.length; i++) out[i] = A[i] + D[i]; return out;
+}
+
 // ---------- ruído celular (Worley 3D) e hash ----------
 export const hash3 = (i, j, k) => { const x = Math.sin(i * 127.1 + j * 311.7 + k * 74.7) * 43758.5453; return x - Math.floor(x); };
 export function worley(x, y, z, cell, seed = 0) {
@@ -146,10 +164,13 @@ export function worley(x, y, z, cell, seed = 0) {
 // Malha base completa do fígado: posições saudável/cirrótica em correspondência, normais de referência e campos por vértice.
 export function buildLiverMesh({ h = 0.016, cell = 0.105 } = {}) {
   const fA = (x, y, z) => liverSDF(x, y, z, SHAPES.healthy), fB = (x, y, z) => liverSDF(x, y, z, SHAPES.cirrhotic);
-  const net = surfaceNets(fA, [-1.3, -0.75, -0.8], [1.3, 0.85, 0.75], h);
+  const net = surfaceNets(fA, [-1.3, -0.72, -0.92], [1.2, 0.82, 0.72], h);
   let A = taubin(net.position, net.index, 2);
   A = project(A, fA, 2);
-  const B = project(A, fB, 4);
+  // forma cirrótica: projeta a malha saudável na superfície cirrótica e suaviza o campo de deslocamento
+  let B = project(A, fB, 7);
+  B = smoothDelta(A, B, net.index, 4);
+  B = project(B, fB, 2);
   const n = A.length / 3;
   const nod = new Float32Array(n), sept = new Float32Array(n), cid = new Float32Array(n), mic = new Float32Array(n);
   for (let i = 0; i < n; i++) {
