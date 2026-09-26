@@ -1,3 +1,9 @@
+## 2026-09-26 14:43 BRT — Publicação das notas bloqueada no upload
+
+Código58713f5 concluído e testado. Duas tentativas railway up no cwdapp, com --path-as-root e service2doctor-web, expiraram no upload ao backboard antes de build. Primeira tentativa b76c7414-76fc-4b39-9c67-33eb49333493 FAILED, sem build associado. Não atribuir isso à aplicação nem afirmar publicação da correção. Health público200/product2doctor; asset público continua /assets/index-BH_QakA6.js. CUA público390×844 confirmou chat/menu da versão anterior carregando; viewport restaurado. Fixture local encerrada, aba89 fechada.
+
+Próximo executável: verificar Git e estado do serviço, repetir publicação do código58713f5 quando o envio ao Railway estiver disponível; exigir SUCCESS, health200, asset novo idêntico ao build e interface pública. Não recriar funcionalidades para contornar bloqueio. Testes/builds e limites registrados na entrada anterior; não houve alterações de código após verificação. Site permanece na versão anterior, que já tinha notas no PDF, ainda sem notas clicáveis no chat. Sem mudanças API/modelo/dados/contas/cobrança.
+
 ## 2026-09-26 14:37 BRT — Notas navegáveis no chat 2Doctor
 
 Rodada 17:30Z. Estado/diário e quatro planos lidos; Git13be04c, somente dist-samu preexistente. Railway24e35b93 SUCCESS e health200 antes da mudança. Fricção reproduzida no navegador: marcador e retorno das notas eram spans e título Footnotes. CitationText extraído em ChatResponseText, com IDs únicos por resposta, rótulos PT/EN/ES e navegação por foco/rolagem sem mudar o hash usado pelo roteador. Apenas âncoras geradas pelo processador de notas são habilitadas; política de links externos preservada. Comportamento antigo preservado fora do produto2Doctor. Não altera texto/modelo/fontes/API/PDF.
