@@ -1,3 +1,9 @@
+## 2026-09-26 03:04 BRT — Login compacto publicado
+
+Fonte 26c1215; deployment 66404018-c7af-449d-8cf6-077a4f885845 SUCCESS no projeto 2doctor/serviço 2doctor-web. Health 200/product 2doctor; asset público /assets/index-DEXDcRmr.js idêntico byte a byte ao build local. Conferência pública CUA em 320×400: auth-scroll rolou 282px, Fechar 44×44 permaneceu em y56,5; clique fechou, liberou rolagem e voltou ao chat, sem overflow horizontal ou erros de console. Sem envio de credenciais. Viewport restaurado. 206 testes e builds app/site aprovados, limites físicos e de autenticação registrados acima. API, ECG, fornecedores e persistência inalterados. Árvore preserva apenas medico-app/dist-samu preexistente fora do commit.
+
+Próximo executável: revisar em celular uma jornada existente de calculadora (abrir, preencher valores fictícios, calcular, voltar à lista), verificando legibilidade e preservação de navegação; só corrigir fricção reproduzida e não alterar fórmulas/limiares sem avaliação própria. Não criar ferramentas para preencher a rodada. Rollback por reconstrução 83ee57b.
+
 ## 2026-09-26 03:01 BRT — Login em pouca altura: fechamento fixo validado
 
 Reproduzido publicamente em 320×400: rolagem de 368px do login levou botão Fechar a y−334, fora da tela. Mudança restrita à apresentação 2Doctor: cabeçalho com título e Fechar 44×44 fora da área rolável; formulário e ajuda dentro de auth-scroll. Limite acompanha 100dvh, rolagem interna contém encadeamento. Textos, campos, autenticação e estrutura anterior WMed preservados; decoração de cadeado mantida apenas no layout anterior para economizar altura na 2Doctor.
