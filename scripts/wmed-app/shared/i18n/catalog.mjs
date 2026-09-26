@@ -278,4 +278,11 @@ export const catalog={
 'Interpretar um estudo':['Interpret a study','Interpretar un estudio'],
 'Risco absoluto, relativo e NNT':['Absolute risk, relative risk and NNT','Riesgo absoluto, relativo y NNT']
 };
+// Partes do catálogo por área (cada tela/grupo em seu arquivo, para edição em paralelo sem conflito).
+import caso from './parts/caso.mjs';
+import navegacao from './parts/navegacao.mjs';
+import bibliotecas from './parts/bibliotecas.mjs';
+import ciencias from './parts/ciencias.mjs';
+import estudo from './parts/estudo.mjs';
+for(const part of [caso,navegacao,bibliotecas,ciencias,estudo])for(const [k,v] of Object.entries(part))if(!(k in catalog))catalog[k]=v;
 export function translate(locale,text){if(locale==='pt-BR')return text;return catalog[text]?.[locale==='es'?1:0]??text;}
