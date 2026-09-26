@@ -1,3 +1,11 @@
+## 2026-09-26 05:07 BRT — Atalho da seleção bibliográfica publicado
+
+Fonte f267f20; deployment ffc674ab-423b-4d38-874b-134990f766b3 SUCCESS em 2doctor-web/projeto2doctor. Healthz200/product2doctor e assets index-Dp1KTqmG.js, Research-xzG5c2h_.js, Research-D8ZWyYYG.css públicos idênticos ao build local. CUA público390×844 com busca asthma real: selecionar último artigo mostra Ver seleção (1), bottom756 antes do dock783; toque leva ao painel y17,8/foco Sua seleção e esconde atalho. Sem overflow horizontal/console errors. Cópia e limpeza verificadas localmente. 206 testes/builds app e site completos aprovados.
+
+Servidor local encerrado, aba79 fechada, viewport restaurado. Sem teste físico iPhone/Safari/VoiceOver ou avaliação clínica dos resultados; nenhuma mudança de conteúdo/API/ECG/modelos. Rollback def92cb. Pré-existente medico-app/dist-samu preservado.
+
+Próximo executável: revisar interação existente de anexos no chat móvel (seleção, remoção, estados de erro e leitura), somente com arquivo fictício e sem enviar ao modelo; corrigir apenas fricção reproduzida. Fluxo real autenticado do banco de imagens permanece pendente até sessão disponível, sem novo pedido de login.
+
 ## 2026-09-26 05:04 BRT — Pesquisa: acesso à seleção sem rolagem longa
 
 Baseline def92cb/deployment6859aaa2-ff98-472a-a697-a86b0debf118 SUCCESS, Git/Railway conferidos. Pesquisa pública asthma em Europe PMC: selecionar último de oito artigos deixou Copiar lista em y−2534,5 com rolagem3407. Atrito concreto de acesso à exportação existente.
