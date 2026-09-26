@@ -27,3 +27,25 @@ test('Invalid or context-free modes never call the paid upstream',async()=>{
   const [req,res]=request({question:'Explain asthma',...payload});await chat(req,res,{fetchImpl:()=>assert.fail('must not call upstream')});assert.equal(res.statusCode,400);
  }
 });
+
+test('Dedicated system is server opt-in; presentation no longer contradicts dosing policy',async()=>{
+ const [req,res]=request({question:'Pergunta fictícia',locale:'pt-BR',country:'BR',responseStyle:'concise',system:'injected'});
+ await chat(req,res,{twoDoctorEnabled:true,fetchImpl:async(url,opts)=>{
+  assert.match(url,/estudante\/2doctor\/chat-stream$/);
+  const payload=JSON.parse(opts.body);
+  assert.equal(payload.historico.at(-1).content,'Pergunta fictícia');
+  const prefs=payload.historico.at(-2).content;
+  assert.match(prefs,/dedicated 2Doctor system/);
+  assert.doesNotMatch(prefs,/does not authorize patient-specific|not clinical permissions/);
+  assert.equal(payload.system,undefined);
+  return new Response('data: {"done":true}\n\n',{headers:{'Content-Type':'text/event-stream'}});
+ }});assert.equal(res.statusCode,200);
+});
+
+test('Request body cannot enable dedicated endpoint',async()=>{
+ const [req,res]=request({question:'Pergunta fictícia',twoDoctorEnabled:true});
+ await chat(req,res,{twoDoctorEnabled:false,fetchImpl:async(url)=>{
+  assert.match(url,/estudante\/tutor\/chat-stream$/);
+  return new Response('data: {"done":true}\n\n',{headers:{'Content-Type':'text/event-stream'}});
+ }});assert.equal(res.statusCode,200);
+});

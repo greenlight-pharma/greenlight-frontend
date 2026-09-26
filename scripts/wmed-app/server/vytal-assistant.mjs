@@ -1,4 +1,4 @@
-import {validateResponseStyle,responseStylePrompt} from '../shared/assistant-style.mjs';
+import {validateResponseStyle,responseStylePrompt,twoDoctorPresentation} from '../shared/assistant-style.mjs';
 import {validateContext,contextualQuestion} from '../shared/international.mjs';
 import {createHash} from 'node:crypto';
 import {validateAttachments,assistantPayload} from '../shared/chat-attachments.mjs';
@@ -50,17 +50,17 @@ export async function auth(req,res,{fetchImpl=fetch,now=Date.now}={}){
   return json(res,200,{authenticated:true,user:userInfo(data.user)});
  }catch{return json(res,503,{error:'O acesso ao Vytal está indisponível no momento. Tente novamente.'});}
 }
-export async function chat(req,res,{fetchImpl=fetch}={}){
+export async function chat(req,res,{fetchImpl=fetch,twoDoctorEnabled=process.env.TWO_DOCTOR_CHAT_ENABLED==='true'}={}){
  headers(res);if(req.method!=='POST')return json(res,405,{error:'Método não permitido.'});if(!allowWrite(req,res))return;
  const token=sessionToken(req);if(!token)return json(res,401,{error:'Entre com sua conta Vytal Acadêmico para conversar.',code:'AUTH_REQUIRED'});
- let input,attachments;try{const raw=await body(req,4400000);input=validateRequest(raw);const context=validateContext(raw);const style=validateResponseStyle(raw);if(style!==null&&!context)throw Error('INVALID_CONTEXT');const presentation=responseStylePrompt(style);
+ let input,attachments;try{const raw=await body(req,4400000);input=validateRequest(raw);const context=validateContext(raw);const style=validateResponseStyle(raw);if(style!==null&&!context)throw Error('INVALID_CONTEXT');const presentation=twoDoctorEnabled?twoDoctorPresentation(style??'auto'):responseStylePrompt(style);
   // The tutor keeps only 4,000 characters per message. Preferences must not
   // consume the user's 2,000-character question budget (including with files).
   if(context)input.history=[...input.history,{role:'user',content:contextualQuestion(presentation,context)}];
   attachments=validateAttachments(raw.attachments);}catch(e){return json(res,400,{error:e.message==='BODY'?'Arquivos muito grandes. Envie até 3 MB.':e.message||'Mensagem ou arquivos inválidos.'});}
  const abort=new AbortController();res.on('close',()=>abort.abort());
  let upstream;
- try{upstream=await fetchImpl(`${API}/estudante/tutor/chat-stream`,{method:'POST',headers:{'Content-Type':'application/json',Authorization:`Bearer ${token}`},body:JSON.stringify(attachments.length?assistantPayload(input,attachments):{historico:[...input.history,{role:'user',content:input.question}]}),signal:AbortSignal.any([abort.signal,AbortSignal.timeout(attachments.length?270000:55000)]),redirect:'error'});}
+ try{upstream=await fetchImpl(`${API}/estudante/${twoDoctorEnabled?'2doctor':'tutor'}/chat-stream`,{method:'POST',headers:{'Content-Type':'application/json',Authorization:`Bearer ${token}`},body:JSON.stringify(attachments.length?assistantPayload(input,attachments):{historico:[...input.history,{role:'user',content:input.question}]}),signal:AbortSignal.any([abort.signal,AbortSignal.timeout(attachments.length?270000:55000)]),redirect:'error'});}
  catch{if(!res.destroyed)return json(res,503,{error:'O assistente não respondeu. Tente novamente.'});return;}
  if(!upstream.ok){if(upstream.status===401)clear(res);return json(res,[400,401,403,429].includes(upstream.status)?upstream.status:502,{error:await upstreamError(upstream,'Não foi possível conversar agora.'),code:upstream.status===401?'AUTH_REQUIRED':'ASSISTANT_UNAVAILABLE'});}
  if(!upstream.headers.get('content-type')?.includes('text/event-stream'))return json(res,502,{error:'O assistente retornou uma resposta inválida.'});

@@ -1,3 +1,15 @@
+## 2026-09-26 08:40 BRT — Prompt exclusivo com doses: implementado, não ativado
+
+Pedido explícito: usuário concordou em alterar o prompt da2Doctor e autoriza orientar doses. Preparado sistema 2doctor-clinical-support-v1 com apoio a médicos/estudantes, hipóteses/condutas e posologia para revisão profissional, unidades/intervalos/vias, dados necessários para ajustes e fontes honestas. Não proíbe doses em bloco; não inventa parâmetros nem promete certeza. Fontes FDA/OMS registradas em2DOCTOR_PROMPT_V1.md. Nenhuma prescrição concreta produzida.
+
+Integração atual usa tutor Vytal com bloqueio em system; não é resolvido acrescentando instrução contraditória no texto user. Serviço2doctor-web sem credenciais diretas de modelo (somente nomes de variáveis foram inspecionados). Criada worktree isolada /Users/dilson/Vytal-Migracao-20260911/_worktrees/2doctor-prompt-api, branch codex/2doctor-prompt-20260926 a partir bdff9198. Nova rota /estudante/2doctor/chat-stream seleciona prompt no servidor, mantém JWT/role/instituição/quotas/modelo/SSE, flag TWO_DOCTOR_CHAT_ENABLED false por padrão. Código tutorVytal conserva prompt/default. Nenhuma edição no checkout canônico API ou rolloutAPI/ECG. node_modules da worktree é symlink para dependências existentes, não comitar.
+
+App worktree2doctor-preview: proxy opt-in pela mesma variável do servidor, preferências sem conflito com o novo system; body não pode habilitar rota ou passar system. Sem variável mantém versão legada. Documento completo em scripts/wmed-app/docs/2DOCTOR_PROMPT_V1.md; não publicado. Não ligar proxy antes de nova rota validada e ativa.
+
+Validação:209 testes app,5 testesAPI com transporte simulado, build2doctor, buildsite completo, buildNest e prisma validate passaram. TesteAPI inicialmente corrigido na fixture (constructor9args, não10); depois verde. Schema sem mudança, validação usou URL fictícia sem conexãoDB. Não executados avaliação clínica/geração real, envio autenticado, teste móvel novo (interface não mudou), testesECG completos ou deploy. Produção permanece a033a3a6-9ab5-4105-94fd-42c431a062d8/código0eaf551. Pré-existente dist-samu e trabalho canônico preservados.
+
+Próximo executável: obter autorização explícita para publicar a extensão isolada na API compartilhada, pois a instrução anterior da automação proíbe alterar API Vytal. Depois avaliar respostas fictícias com o mesmo modelo, sobretudo posologia/ajustes/fontes/negações, antes de ativar; seguir roteiro em2DOCTOR_PROMPT_V1.md. Não confundir testes estruturais com validação clínica nem publicar automaticamente na próxima rodada. Nada comprado, nenhum fornecedor/modelo/persistência novo.
+
 ## 2026-09-26 08:35 BRT — Correção de pergunta longa publicada
 
 Código0eaf551; deployment a033a3a6-9ab5-4105-94fd-42c431a062d8 SUCCESS no2doctor-web/projeto2doctor. Healthz200/product2doctor; index-0mWKEJXY.js público idêntico ao build (frontend não mudou; correção está no proxy servidor). Deploy a partir de scripts/wmed-app com --path-as-root, Dockerfile/railway.json conferidos. API Vytal/ECG intactos.
