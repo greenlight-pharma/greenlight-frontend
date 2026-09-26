@@ -13,6 +13,10 @@ const API = 'https://vytal-api-production.up.railway.app';
 
 // Limites por pessoa e por dia (UTC). "IA ilimitada" para uso normal; o teto só barra abuso.
 export const DAILY_LIMITS = { chat: 300, feedback: 40, quality: 80, structure: 80, transcribe: 60, images: 600, privacy: 60 };
+// Plano gratuito (decisão do Dilson, 26/09): mesmas funções, limite diário menor.
+export const FREE_LIMITS = { chat: 20, feedback: 3, quality: 6, structure: 6, transcribe: 5, images: 100, privacy: 10 };
+const ATIVOS = new Set(['active', 'trialing', 'past_due']);
+export const planOf = (u) => (u?.plano === 'pro' && ATIVOS.has(u?.assinatura_status) ? 'pro' : 'gratis');
 
 const TEXT = {
  pt: {
@@ -117,13 +121,13 @@ async function startSession(userId) {
 export async function currentUser(req) {
  const token = cookies(req)[COOKIE];
  if (!token || !/^[A-Za-z0-9_-]{30,80}$/.test(token)) return null;
- const { rows } = await q(`select u.id, u.email, u.nome, u.email_verificado, u.google_sub is not null as google
+ const { rows } = await q(`select u.id, u.email, u.nome, u.email_verificado, u.google_sub is not null as google, u.plano, u.assinatura_status
    from sessoes s join usuarios u on u.id = s.usuario_id where s.token_hash = $1 and s.expira_em > now()`, [sha(token)]);
  return rows[0] || null;
 }
 function publicUser(u) {
  return { nome: String(u.nome || u.email.split('@')[0]).split(' ')[0].slice(0, 60), email: u.email, emailVerificado: u.email_verificado,
-  progressScope: sha('2doctor-progress:' + u.id), conta: '2doctor' };
+  progressScope: sha('2doctor-progress:' + u.id), conta: '2doctor', plano: planOf(u) };
 }
 
 // ---- limites ----
@@ -134,8 +138,9 @@ function throttle(key, max = 8, now = Date.now()) {
  if (rec.n >= max || (attempts.size > 20000 && !attempts.has(key))) return false;
  rec.n++; attempts.set(key, rec); return true;
 }
-export async function charge(userId, kind) {
- const limit = DAILY_LIMITS[kind];
+export async function charge(userId, kind, plan) {
+ if (!plan) { const { rows } = await q('select plano, assinatura_status from usuarios where id = $1', [userId]); plan = planOf(rows[0]); }
+ const limit = (plan === 'pro' ? DAILY_LIMITS : FREE_LIMITS)[kind];
  if (!limit) return true;
  const { rows } = await q(`insert into uso_diario (usuario_id, dia, tipo, n) values ($1, (now() at time zone 'utc')::date, $2, 1)
    on conflict (usuario_id, dia, tipo) do update set n = uso_diario.n + 1 returning n`, [userId, kind]);
@@ -151,7 +156,7 @@ export async function identify(req) {
   id: user.id,
   headers: { 'X-2Doctor-Chave': key, 'X-2Doctor-Usuario': user.id },
   path: (p) => p.replace(/^\/estudante\/(?:2doctor\/|tutor\/)?/, '/servico/2doctor/'),
-  charge: (kind) => charge(user.id, kind),
+  charge: (kind) => charge(user.id, kind, planOf(user)),
   user,
  };
 }
@@ -178,7 +183,7 @@ async function emailToken(userId, tipo, hours) {
 
 const EMAIL_RE = /^[^\s@]{1,64}@[^\s@]{1,190}\.[^\s@]{2,}$/;
 const googleOn = () => !!(process.env.GOOGLE_CLIENT_ID && process.env.GOOGLE_CLIENT_SECRET);
-export function authStatus() { return { auth: '2doctor', google: googleOn(), email: !!process.env.RESEND_API_KEY }; }
+export function authStatus() { return { auth: '2doctor', google: googleOn(), email: !!process.env.RESEND_API_KEY, billing: !!process.env.STRIPE_SECRET_KEY }; }
 
 // /api/wmed/auth, /api/wmed/auth/google, /api/wmed/auth/google/retorno, /api/wmed/auth/verificar
 export async function auth(req, res, { sub = '', fetchImpl = fetch } = {}) {
@@ -222,7 +227,7 @@ export async function auth(req, res, { sub = '', fetchImpl = fetch } = {}) {
    return reply(res, 201, { authenticated: true, user: publicUser(user) }, { 'Set-Cookie': await startSession(id) });
   }
   if (action !== 'entrar') return reply(res, 400, { error: t(l, 'invalid') });
-  const { rows } = await q('select id, email, nome, senha_hash, email_verificado from usuarios where email = $1', [email]);
+  const { rows } = await q('select id, email, nome, senha_hash, email_verificado, plano, assinatura_status from usuarios where email = $1', [email]);
   const user = rows[0];
   if (user && !user.senha_hash) return reply(res, 401, { error: t(l, 'google') });
   // Sem conta, compara com um hash qualquer para o tempo de resposta não revelar se o e-mail existe.
@@ -258,7 +263,7 @@ async function resetPassword(req, res, b, l) {
  // O link chegou pelo e-mail: vale como confirmação do endereço. Sessões antigas caem.
  await q('update usuarios set senha_hash = $2, email_verificado = true where id = $1', [id, await hashPassword(password)]);
  await q('delete from sessoes where usuario_id = $1', [id]);
- const { rows: u } = await q('select id, email, nome, email_verificado from usuarios where id = $1', [id]);
+ const { rows: u } = await q('select id, email, nome, email_verificado, plano, assinatura_status from usuarios where id = $1', [id]);
  return reply(res, 200, { authenticated: true, user: publicUser(u[0]), message: t(l, 'resetOk') }, { 'Set-Cookie': await startSession(id) });
 }
 async function verifyEmail(req, res, url) {

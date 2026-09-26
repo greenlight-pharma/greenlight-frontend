@@ -1,5 +1,18 @@
 // Portuguese is the source language. Content libraries are translated separately.
 export const catalog={
+"Seu plano":["Your plan", "Tu plan"],
+"Gratuito":["Free", "Gratis"],
+"Pagamento pendente. Atualize o cartão para manter o Pro.":["Payment pending. Update your card to keep Pro.", "Pago pendiente. Actualiza tu tarjeta para mantener Pro."],
+"Renova em":["Renews on", "Se renueva el"],
+"IA sem limite prático para estudar e trabalhar.":["AI with no practical limit for study and work.", "IA sin límite práctico para estudiar y trabajar."],
+"Abrindo…":["Opening…", "Abriendo…"],
+"Gerenciar assinatura":["Manage subscription", "Gestionar suscripción"],
+"No gratuito, o uso diário é limitado. O Pro libera IA para uso intenso, todos os dias.":["On Free, daily use is limited. Pro unlocks AI for heavy use, every day.", "En el plan gratuito el uso diario es limitado. Pro libera la IA para uso intensivo, todos los días."],
+"por mês":["per month", "al mes"],
+"por ano · economize 34%":["per year · save 34%", "al año · ahorra 34%"],
+"Impostos calculados no pagamento, conforme o país. Cancele quando quiser.":["Taxes calculated at checkout based on your country. Cancel anytime.", "Impuestos calculados en el pago según tu país. Cancela cuando quieras."],
+"Assinaturas em breve.":["Subscriptions coming soon.", "Suscripciones próximamente."],
+"Não foi possível abrir o pagamento.":["Could not open checkout.", "No se pudo abrir el pago."],
 "Crie sua conta.":["Create your account.","Crea tu cuenta."],
 "Recupere o acesso.":["Recover access.","Recupera el acceso."],
 "Nova senha.":["New password.","Nueva contraseña."],

@@ -19,12 +19,12 @@ const routes={auth,chat,academic,cases,history,privacy,discovery,research:public
 // Com DATABASE_URL, o 2Doctor usa contas próprias (banco separado da Vytal) e fala com a API
 // Vytal pela chave de serviço. Sem ela, mantém o comportamento anterior (conta Vytal).
 export async function doctorRoutes(){
- const accounts=await import('./accounts.mjs');const store=await import('./doctor-store.mjs');const {migrate}=await import('./db.mjs');
+ const accounts=await import('./accounts.mjs');const store=await import('./doctor-store.mjs');const pay=await import('./billing.mjs');const {migrate}=await import('./db.mjs');
  await migrate();
  const allow=(req,res)=>{if(accounts.sameSite(req))return true;res.statusCode=403;res.setHeader('Content-Type','application/json; charset=utf-8');res.end(JSON.stringify({error:accounts.t(accounts.lang(req),'origin')}));return false;};
  const identify=(req)=>accounts.identify(req);
  return {
-  routes:{auth:accounts.auth,chat:(req,res)=>chat(req,res,{identify,allow}),academic:(req,res)=>academic(req,res,{identify,allow}),cases:store.cases,history:store.history,privacy:(req,res)=>privacy(req,res,{identify,allow}),discovery,research:publicResearch},
+  routes:{auth:accounts.auth,chat:(req,res)=>chat(req,res,{identify,allow}),academic:(req,res)=>academic(req,res,{identify,allow}),cases:store.cases,history:store.history,billing:pay.billing,'stripe-webhook':pay.stripeWebhook,privacy:(req,res)=>privacy(req,res,{identify,allow}),discovery,research:publicResearch},
   status:accounts.authStatus,
  };
 }
@@ -62,7 +62,8 @@ export function createApp({root=ROOT,publicOrigin=process.env.PUBLIC_ORIGIN,fetc
    if(path.startsWith('/api/')){
     if(!path.startsWith('/api/wmed/'))return json(res,404,{error:'Recurso não encontrado.'});
     // Same-origin requests only. Existing cookie, permission and quota checks still run.
-    if(!['GET','HEAD'].includes(req.method)&&origin&&req.headers.origin!==origin)return json(res,403,{error:'Origem não permitida.'});
+    // O webhook do Stripe vem de servidor (sem Origin); ele se autentica pela assinatura HMAC.
+    if(!['GET','HEAD'].includes(req.method)&&origin&&req.headers.origin!==origin&&path!=='/api/wmed/stripe-webhook')return json(res,403,{error:'Origem não permitida.'});
     const full=path.slice('/api/wmed/'.length);
     // Só a conta 2Doctor tem sub-rotas (auth/google, auth/google/retorno, auth/verificar).
     const [name,...rest]=full.split('/');const sub=rest.join('/');

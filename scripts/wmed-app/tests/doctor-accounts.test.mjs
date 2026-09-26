@@ -146,11 +146,58 @@ test('IA vai à API Vytal pela rota de serviço, com a chave e o id da conta 2Do
  assert.equal(anon.statusCode, 401);
 });
 
-test('teto diário por pessoa', { skip }, async () => {
+test('teto diário por pessoa (gratuito menor que o Pro)', { skip }, async () => {
  await signup('limite@exemplo.com');
  const { rows } = await db.q('select id from usuarios where email = $1', ['limite@exemplo.com']);
- const limit = accounts.DAILY_LIMITS.feedback;
+ assert.ok(accounts.FREE_LIMITS.feedback < accounts.DAILY_LIMITS.feedback);
+ const limit = accounts.FREE_LIMITS.feedback;
  for (let i = 0; i < limit; i++) assert.equal(await accounts.charge(rows[0].id, 'feedback'), true);
  assert.equal(await accounts.charge(rows[0].id, 'feedback'), false);
  assert.equal(await accounts.charge(rows[0].id, 'chat'), true);
 });
+
+test('Stripe: checkout de assinatura com Tax e webhook assinado liga e desliga o Pro', { skip }, async () => {
+ const billing = await import('../server/billing.mjs');
+ process.env.STRIPE_SECRET_KEY = 'sk_test_fake';
+ process.env.STRIPE_WEBHOOK_SECRET = 'whsec_teste';
+ const a = await signup('pro@exemplo.com');
+ const user = (await db.q('select id from usuarios where email = $1', ['pro@exemplo.com'])).rows[0];
+ const calls = [];
+ const fetchImpl = async (url, opts = {}) => {
+  calls.push({ url, body: opts.body ? Object.fromEntries(new URLSearchParams(opts.body)) : null });
+  if (url.includes('/prices?')) return Response.json({ data: [{ id: 'price_mensal' }] });
+  if (url.endsWith('/customers')) return Response.json({ id: 'cus_teste' });
+  if (url.endsWith('/checkout/sessions')) return Response.json({ url: 'https://checkout.stripe.com/c/pay/teste' });
+  return Response.json({ error: { message: 'inesperado' } }, { status: 400 });
+ };
+ const r = res();
+ await billing.billing(req({ url: '/api/wmed/billing', cookie: a.cookie, body: { action: 'checkout', intervalo: 'mensal' } }), r, { fetchImpl });
+ assert.equal(r.statusCode, 200); assert.match(r.data.url, /checkout\.stripe\.com/);
+ const session = calls.find((c) => c.url.endsWith('/checkout/sessions')).body;
+ assert.equal(session.mode, 'subscription'); assert.equal(session['automatic_tax[enabled]'], 'true');
+ assert.equal(session.customer, 'cus_teste'); assert.equal(session.client_reference_id, user.id);
+ assert.equal(session['subscription_data[billing_mode][type]'], 'flexible');
+ assert.equal(session['line_items[0][price]'], 'price_mensal');
+ // webhook: assinatura ativa vira Pro; cancelada volta ao gratuito
+ const send = async (event, secret = 'whsec_teste') => {
+  const raw = JSON.stringify(event); const t = Math.floor(Date.now() / 1000);
+  const sig = createHmacLocal(secret, `${t}.${raw}`);
+  const rq = Object.assign(new EventEmitter(), { method: 'POST', url: '/api/wmed/stripe-webhook', headers: { 'stripe-signature': `t=${t},v1=${sig}` } });
+  rq[Symbol.asyncIterator] = async function* () { yield raw; };
+  const out = res(); await billing.stripeWebhook(rq, out); return out;
+ };
+ const sub = (status) => ({ type: 'customer.subscription.updated', data: { object: { id: 'sub_1', customer: 'cus_teste', status, metadata: { usuario_id: user.id }, items: { data: [{ current_period_end: Math.floor(Date.now() / 1000) + 2592000 }] } } } });
+ assert.equal((await send(sub('active'), 'errado')).statusCode, 400);
+ assert.equal((await send(sub('active'))).statusCode, 200);
+ let me = res(); await accounts.auth(req({ method: 'GET', cookie: a.cookie }), me);
+ assert.equal(me.data.user.plano, 'pro');
+ assert.equal(await accounts.charge(user.id, 'feedback'), true);
+ await send({ ...sub('canceled'), type: 'customer.subscription.deleted' });
+ me = res(); await accounts.auth(req({ method: 'GET', cookie: a.cookie }), me);
+ assert.equal(me.data.user.plano, 'gratis');
+ const again = res();
+ await billing.billing(req({ url: '/api/wmed/billing', cookie: a.cookie, body: { action: 'portal' } }), again, { fetchImpl: async () => Response.json({ url: 'https://billing.stripe.com/p/teste' }) });
+ assert.equal(again.data.url, 'https://billing.stripe.com/p/teste');
+});
+import { createHmac } from 'node:crypto';
+function createHmacLocal(secret, payload) { return createHmac('sha256', secret).update(payload).digest('hex'); }

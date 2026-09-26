@@ -51,6 +51,12 @@ export const SCHEMA = [
    atualizada_em timestamptz not null default now()
  )`,
  `create index if not exists conversas_usuario on conversas(usuario_id, atualizada_em desc)`,
+ // Assinatura (Stripe). Pro só vale com status active/trialing/past_due (ver billing.isPro).
+ `alter table usuarios add column if not exists plano text not null default 'gratis'`,
+ `alter table usuarios add column if not exists stripe_customer_id text unique`,
+ `alter table usuarios add column if not exists stripe_subscription_id text`,
+ `alter table usuarios add column if not exists assinatura_status text`,
+ `alter table usuarios add column if not exists assinatura_fim timestamptz`,
  `create table if not exists uso_diario (
    usuario_id uuid not null references usuarios(id) on delete cascade,
    dia date not null,
