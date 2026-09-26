@@ -1,3 +1,9 @@
+## 2026-09-26 02:36 BRT — Login: publicado e conferido
+
+Fonte 937306b; deployment c88e60b6-a2b7-414b-9dfd-69d6a0e2954e SUCCESS no serviço 2doctor-web/projeto 2doctor. Health 200/product 2doctor, asset /assets/index-C2t6b93I.js público idêntico byte a byte ao build local. Interface pública 390×844 confirmou menu → Minha conta → foco Fechar entrada, Escape fecha, foco volta a Abrir menu e overflow da raiz é restaurado. Largura 390 sem rolagem horizontal; console sem erros. Não foram inseridas credenciais no site público. Viewport restaurado. 206 testes, build 2Doctor e build completo do site aprovados; demais limites registrados acima.
+
+Próximo executável: conferir a janela de login em altura reduzida (320×400), verificando se o botão Fechar permanece alcançável quando o conteúdo precisa rolar; corrigir somente se reproduzido. Preservar autenticação e rascunho, sem ampliar catálogo. API/ECG intactos. Árvore limpa exceto medico-app/dist-samu preexistente. Rollback por reconstrução b642595.
+
 ## 2026-09-26 02:33 BRT — Login: foco e retorno ao chat corrigidos
 
 Reprodução pública em 320×568: Minha conta pelo menu deixou foco em Abrir menu atrás do login; Escape não fechava. AuthDialog da 2Doctor agora foca Fechar após cleanup do drawer, bloqueia rolagem da página enquanto aberto e restaura estilos/foco sem reabrir teclado do compositor. Campo e-mail deixa de receber autofocus na 2Doctor. Durante envio, foco fica no diálogo enquanto controles estão desabilitados; após resposta recusada volta a Fechar. Tab/ShiftTab ficam nos controles disponíveis. Contrato HTTP, cookies, validação de formulário e callback de sucesso preservados; WMed conserva autofocus anterior.
