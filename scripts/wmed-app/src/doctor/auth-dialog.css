@@ -1,0 +1,8 @@
+.modal.doctor-auth-dialog{display:flex;flex-direction:column;overflow:hidden;padding:0;max-height:calc(100dvh - 40px)}
+.doctor-auth-dialog .auth-titlebar{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-shrink:0;padding:16px 24px;border-bottom:1px solid var(--line)}
+.doctor-auth-dialog .auth-titlebar>div{min-width:0}
+.doctor-auth-dialog .auth-titlebar h2{margin:6px 0 0;font-size:22px;overflow-wrap:anywhere}
+.doctor-auth-dialog .auth-titlebar .close{position:static;flex-shrink:0;width:44px;height:44px}
+.doctor-auth-dialog .auth-scroll{overflow:auto;overscroll-behavior:contain;min-height:0;padding:0 24px 24px;scroll-padding-block:16px}
+.doctor-auth-dialog .auth-scroll>p{font-size:12px;color:var(--muted);line-height:1.8}
+.doctor-auth-dialog .auth-scroll>.modal-note{font-size:10px}

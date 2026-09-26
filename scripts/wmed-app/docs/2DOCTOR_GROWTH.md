@@ -1,3 +1,11 @@
+## 2026-09-26 03:01 BRT — Login em pouca altura: fechamento fixo validado
+
+Reproduzido publicamente em 320×400: rolagem de 368px do login levou botão Fechar a y−334, fora da tela. Mudança restrita à apresentação 2Doctor: cabeçalho com título e Fechar 44×44 fora da área rolável; formulário e ajuda dentro de auth-scroll. Limite acompanha 100dvh, rolagem interna contém encadeamento. Textos, campos, autenticação e estrutura anterior WMed preservados; decoração de cadeado mantida apenas no layout anterior para economizar altura na 2Doctor.
+
+206 testes, build 2Doctor e build completo do site passaram. CUA fixture sem upstream/persistência em 320×400: rolagem interna 282px, Fechar permanece y56,5 e clicável, rascunho retorna intacto, Tab traz e-mail à área visível, tentativa fictícia recusada mostra alerta e mantém foco/fechamento corretos. Conferido também 390×844 e 1280×800, sem corte do diálogo. Fixture encerrada e aba75 fechada. Não testados teclado iOS, Safari/VoiceOver físicos nem login real bem-sucedido. Beforeunload candidato segue não aplicado; API/ECG intactos.
+
+Próximo: commit e publicação isolada 2doctor-web, exigir SUCCESS, health200, asset idêntico e conferência móvel pública. Rollback por reconstrução 83ee57b.
+
 ## 2026-09-26 02:36 BRT — Login: publicado e conferido
 
 Fonte 937306b; deployment c88e60b6-a2b7-414b-9dfd-69d6a0e2954e SUCCESS no serviço 2doctor-web/projeto 2doctor. Health 200/product 2doctor, asset /assets/index-C2t6b93I.js público idêntico byte a byte ao build local. Interface pública 390×844 confirmou menu → Minha conta → foco Fechar entrada, Escape fecha, foco volta a Abrir menu e overflow da raiz é restaurado. Largura 390 sem rolagem horizontal; console sem erros. Não foram inseridas credenciais no site público. Viewport restaurado. 206 testes, build 2Doctor e build completo do site aprovados; demais limites registrados acima.
