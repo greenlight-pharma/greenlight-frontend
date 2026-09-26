@@ -3,6 +3,8 @@
 //   node gerar-ref.mjs saldo    → organization.retrieve(): saldo, tier e modelos (sem custo)
 //   node gerar-ref.mjs gerar r1 → 4 rostos de referência da Dra. Iris Maren (gen4_image, GASTA crédito)
 //   node gerar-ref.mjs gerar r2 → 2ª rodada, prompt ajustado (idade, sem maquiagem, noite)
+//   node gerar-ref.mjs modelo gpt_image_2 | gemini_image3_pro
+//                               → prompt r2 em outro modelo, 4 imagens numa chamada (sem seed)
 //
 // A chave vem só de RUNWAYML_API_SECRET (~/.config/2doctor/runway.env, fora do Git).
 // Este script nunca imprime nem grava a chave. Saídas em ../out/ref/ (ignorado pelo Git).
@@ -79,7 +81,42 @@ async function gerar(rodada) {
   await writeFile(path.join(R.pasta, 'iris-log.json'), JSON.stringify({ rodada, prompt: R.prompt, geracoes: log }, null, 2));
 }
 
+// Outros modelos para o rosto. Nenhum aceita seed: para refazer, guardar a
+// imagem e o id da tarefa. Preço (25/09): gpt_image_2 médio 5 créditos por
+// imagem 1K/2K; gemini_image3_pro 20 por imagem 1K/2K.
+const OUTROS = {
+  gpt_image_2:       { ratio: '1088:1920', extra: { quality: 'medium', outputCount: 4 } },
+  gemini_image3_pro: { ratio: '1536:2752', extra: { outputCount: 4 } },
+};
+
+async function gerarOutroModelo(modelo) {
+  const M = OUTROS[modelo];
+  if (!M) throw new Error(`modelo não previsto: ${modelo}`);
+  const pasta = path.join(SAIDA, modelo);
+  await mkdir(pasta, { recursive: true });
+  const antes = (await saldo()).creditBalance;
+  const t0 = Date.now();
+  const tarefa = await client.textToImage
+    .create({ model: modelo, promptText: PROMPT_R2, ratio: M.ratio, ...M.extra })
+    .waitForTaskOutput();
+  const arquivos = [];
+  for (const [i, url] of tarefa.output.entries()) {
+    const nome = `iris-${String(i + 1).padStart(2, '0')}.png`;
+    const resp = await fetch(url);
+    if (!resp.ok) throw new Error(`download ${nome}: HTTP ${resp.status}`);
+    await writeFile(path.join(pasta, nome), Buffer.from(await resp.arrayBuffer()));
+    arquivos.push(nome);
+  }
+  const depois = (await saldo()).creditBalance;
+  const linha = { modelo, ratio: M.ratio, ...M.extra, tarefa: tarefa.id, arquivos,
+    creditosAntes: antes, creditosDepois: depois, custoCreditos: antes - depois,
+    segundos: Math.round((Date.now() - t0) / 1000) };
+  console.log(JSON.stringify(linha));
+  await writeFile(path.join(pasta, 'iris-log.json'), JSON.stringify({ prompt: PROMPT_R2, ...linha }, null, 2));
+}
+
 const modo = process.argv[2];
 if (modo === 'saldo') await mostrarSaldo();
 else if (modo === 'gerar') await gerar(process.argv[3] || 'r1');
-else { console.error('uso: node gerar-ref.mjs saldo | gerar r1|r2'); process.exit(1); }
+else if (modo === 'modelo') await gerarOutroModelo(process.argv[3]);
+else { console.error('uso: node gerar-ref.mjs saldo | gerar r1|r2 | modelo gpt_image_2|gemini_image3_pro'); process.exit(1); }
