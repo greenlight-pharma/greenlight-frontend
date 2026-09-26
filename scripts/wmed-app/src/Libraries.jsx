@@ -190,6 +190,7 @@ export function ReferenceLibrary({ kind }) {
     [limit, setLimit] = useState(30),
     [retry, setRetry] = useState(0);
   const meds = kind === "medicacoes";
+  const flexibleMedicationSearch = meds && import.meta.env.VITE_PRODUCT === "2doctor";
   useEffect(() => {
     setSelected(null);
     setQ("");
@@ -220,9 +221,9 @@ export function ReferenceLibrary({ kind }) {
   const rows = data ? (meds ? data.medications : data.conditions) : [];
   const list = rows.filter(
     (r) =>
-      norm(meds ? `${r.n} ${r.cl} ${r.m}` : `${r.n} ${r.c}`).includes(
+      (flexibleMedicationSearch ? matchesInstrument(q,r.n,r.cl,r.m) : norm(meds ? `${r.n} ${r.cl} ${r.m}` : `${r.n} ${r.c}`).includes(
         norm(q),
-      ) &&
+      )) &&
       (!group || (meds ? r.areas.includes(group) : r.capNome === group)),
   );
   const groups = [
@@ -327,6 +328,7 @@ export function ReferenceLibrary({ kind }) {
               ))}
             </select>
           </div>
+          {flexibleMedicationSearch && (q || group) && <button className="back-button scores-reset medication-reset" onClick={()=>{setQ("");setGroup("");setLimit(30);}}>Limpar busca e filtros</button>}
           {error ? (
             <p role="alert">
               {error}{" "}
@@ -338,7 +340,7 @@ export function ReferenceLibrary({ kind }) {
             <p>Carregando biblioteca…</p>
           ) : (
             <>
-              <p className="module-note">{list.length} resultados</p>
+              <p className="module-note" role={flexibleMedicationSearch ? "status" : undefined}>{list.length} {flexibleMedicationSearch && list.length===1 ? "resultado" : "resultados"}</p>
               <div className="resource-grid">
                 {list.slice(0, limit).map((r) => (
                   <button
@@ -355,7 +357,7 @@ export function ReferenceLibrary({ kind }) {
                   </button>
                 ))}
               </div>
-              {!list.length && <p>Nenhum resultado encontrado.</p>}
+              {!list.length && <p>{flexibleMedicationSearch ? "Nenhuma medicação encontrada com esta busca e estes filtros. Tente menos palavras ou limpe os filtros." : "Nenhum resultado encontrado."}</p>}
               {limit < list.length && (
                 <button
                   className="module-primary"
