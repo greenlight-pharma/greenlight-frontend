@@ -53,7 +53,35 @@ await mkdir(SAIDA, { recursive: true });
 const [modo, arq] = process.argv.slice(2);
 const subir = async f => (await client.uploads.createEphemeral({ file: createReadStream(f) })).uri;
 
-if (modo === 'imagens') {
+// 26/09: o Dilson pediu a câmera mais longe; plano médio-aberto, Iris em ~1/3 do quadro.
+const IMAGEM_ABERTA = IMAGEM.replace('medium shot from the waist up, facing the camera,',
+  'medium-wide shot: the whole desk and her chair visible, she sits facing the camera and occupies about a third of the frame, the room around her visible,')
+  .replace('shelves of old medical books softly out of focus behind', 'tall shelves of old medical books and a reading table behind her, softly out of focus');
+
+// 26/09: a biblioteca ficou sofisticada demais; cenários do dia a dia médico.
+const IRIS_BASE = '@Iris, a physician in her early 40s: identical face, fine lines, a few grey strands, shoulder-length wavy dark brown hair, no makeup, simple stainless steel watch, deep teal (#265B5A) knit sweater over a white collared shirt';
+const ACAB = 'Medium-wide shot, she faces the camera and occupies about a third of the frame, the room around her visible. Night, ordinary practical light: overhead fluorescent tubes partly off and one desk lamp. Shot on 35mm film, muted colours, soft contrast, fine grain, documentary interview look, widescreen 16:9. She is alone. No text, no readable signs, no logos.';
+const CENARIOS = {
+  aula: `${IRIS_BASE}. She sits on the edge of the lecturer's desk at the front of an ordinary modern medical-school classroom: rows of simple desks and chairs, a clean whiteboard with no writing, a switched-off ceiling projector, a plastic anatomical skeleton model standing in a corner. ${ACAB}`,
+  hospital: `${IRIS_BASE}, with a white doctor's coat over it. She sits at a plain desk in an ordinary hospital doctors' office: a computer monitor with an unreadable blurred screen, an X-ray lightbox on the wall, white coats hanging on hooks, a window onto a dim corridor, a paper cup of coffee. ${ACAB}`,
+};
+
+if (modo === 'cenario') {
+  const id = arq; if (!CENARIOS[id]) throw new Error('cenario: aula | hospital');
+  const uri = await subir(APROVADA);
+  const t = await medir(`imagem ${id}`, () => client.textToImage
+    .create({ model: 'gpt_image_2', promptText: CENARIOS[id], ratio: '1920:1088', quality: 'medium', outputCount: 2,
+      referenceImages: [{ uri, tag: 'Iris' }] })
+    .waitForTaskOutput());
+  for (const [i, url] of t.output.entries()) await baixar(url, `${id}-${'ab'[i]}.png`);
+} else if (modo === 'imagens-aberta') {
+  const uri = await subir(APROVADA);
+  const t = await medir('imagem biblioteca aberta', () => client.textToImage
+    .create({ model: 'gpt_image_2', promptText: IMAGEM_ABERTA, ratio: '1920:1088', quality: 'medium', outputCount: 2,
+      referenceImages: [{ uri, tag: 'Iris' }] })
+    .waitForTaskOutput());
+  for (const [i, url] of t.output.entries()) await baixar(url, `aberta-${'ab'[i]}.png`);
+} else if (modo === 'imagens') {
   const uri = await subir(APROVADA);
   const t = await medir('imagem biblioteca', () => client.textToImage
     .create({ model: 'gpt_image_2', promptText: IMAGEM, ratio: '1920:1088', quality: 'medium', outputCount: 2,
@@ -69,7 +97,7 @@ if (modo === 'imagens') {
     .create({ model: modelo, promptImage: uri, ratio, duration: 8, audio: true,
       promptText: `${CENA} She says, ${VOZ}: "${FALA}"` })
     .waitForTaskOutput());
-  await baixar(t.output[0], `A-${modelo.replace('.', '')}.mp4`);
+  await baixar(t.output[0], `${path.basename(arq, '.png')}-${modelo.replace('.', '')}.mp4`);
 } else if (modo === 'seedance') {
   const uri = await subir(path.resolve(SAIDA, arq));
   const t = await medir('seedance2_5 8s 480p', () => client.imageToVideo

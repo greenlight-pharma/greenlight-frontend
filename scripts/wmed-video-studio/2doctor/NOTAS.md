@@ -37,6 +37,9 @@
   - **Veo 3.1 completo**: falhou 4 vezes ("try again later", 0 crédito) e funcionou na 5ª: 8 s 1920×1080 com áudio, **320 créditos**, 166 s. Voz trocada pela Lara (3).
   - Grafismo sem custo: cartões PNG transparentes (Pillow, Georgia) sobrepostos com fade no ffmpeg (o ffmpeg daqui não tem `drawtext`): nome "Dr Iris Maren · Physician · 2Doctor" e verbete "hypertensive emergency · medical term · Very high blood pressure + an organ already in trouble". Script de composição em `out/modelo/grade.sh`.
   - Saldo: 2.585 créditos.
+  - Pedido seguinte: câmera mais longe (biblioteca aberta, 10 créditos) e cenário menos sofisticado. Testados sala de aula de faculdade e sala dos médicos no hospital (20 créditos). **Escolhida: sala dos médicos no hospital, imagem hospital-b** (jaleco, negatoscópio com raio-X, jalecos pendurados, computador, café).
+  - Comparação no mesmo plano: Veo 3.1 Fast 120 créditos (111 s) × Veo 3.1 completo 320 (137 s, funcionou de primeira desta vez); voz Lara 3 + 3. Nos dois a câmera se aproxima dela durante o plano, apesar de "no zoom": no próximo, pedir "locked-off, framing stays exactly as the first frame".
+  - Saldo: 2.109 créditos.
 
 ## Modelos 3D próprios (`../models3d/`)
 Tudo procedural, com código nosso. Visual de documentário no palco comum (`stage.js`, `look:'doc'`): luz quente de lado, contraluz azul, vinheta, grão por quadro, foco raso (`dof` + `stage.setFocus`), oclusão de ambiente (`ao`) e texturas de tecido (`tissueMaterial`). Cada cena exporta `stageOptions`.
