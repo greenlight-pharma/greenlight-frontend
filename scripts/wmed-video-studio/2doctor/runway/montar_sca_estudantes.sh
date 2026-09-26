@@ -30,5 +30,5 @@ ffmpeg -v error -y -f concat -safe 0 -i seg-est/lista.txt -c copy seg-est/corte.
 DUR=$(ffprobe -v error -show_entries format=duration -of csv=p=0 seg-est/corte.mp4)
 ffmpeg -v error -y -i seg-est/corte.mp4 -stream_loop -1 -i trilha.mp3 -filter_complex \
   "[1:a]volume=0.12,afade=t=in:d=2,afade=t=out:st=$(echo "$DUR-3" | bc):d=3[m];[0:a][m]amix=inputs=2:duration=first:normalize=0,loudnorm=I=-16:TP=-1.5[a]" \
-  -map 0:v -map "[a]" -c:v copy -c:a aac -b:a 192k -t "$DUR" por-dentro-sca-estudantes.mp4
+  -map 0:v -map "[a]" -c:v copy -c:a aac -b:a 192k -ar 48000 -movflags +faststart -t "$DUR" por-dentro-sca-estudantes.mp4
 echo "ok por-dentro-sca-estudantes.mp4 ($DUR s)"
