@@ -1,3 +1,13 @@
+## 2026-09-26 15:02 BRT — Notas do chat: publicação confirmada na retomada
+
+Rodada18:00Z. Relidos estado/diário e planos GROWTH/SCRIBE/INTERNATIONAL/MOBILE. Git agora1e345f1, alteração posterior da outra frente em cobrança/PlanPanel; árvore limpa salvo medico-app/dist-samu preexistente. Preservado esse trabalho, sem editar cobrança. Railway projeto2doctor/serviço2doctor-web confirmou deployment5e29cf84-7550-4348-99f5-cea6bcf238b9 SUCCESS, posterior às duas falhas de upload. Nenhum novo deploy necessário nesta rodada.
+
+Correção58713f5 das notas do chat está incluída na versão pública: healthz200/product2doctor; asset /assets/index-DrsTFWO9.js byte a byte idêntico ao build atual e contém navegação das notas. SHA256c0144dc16b8b734362702e9dde51f4ed73f2ea8380bb7569c1552ffb0ef0a30e. Portanto o bloqueio de publicação registrado anteriormente está resolvido pela publicação posterior; não repetir upload antigo sobre trabalho atual.
+
+Snapshot atual verificado:228 testes,220 passaram/8 integrações ignoradas por ausência de TEST_DATABASE_URL; build2doctor e site completo aprovados, diffcheck limpo. Logs /tmp/2doctor-1800-tests.log, -build.log, -site.log. CUA público390×844 confirmou abertura/fechamento do menu e retorno de foco, chat íntegro, sem overflow/inert residual; screenshot conferido e viewport restaurado. Fluxo de ida/retorno das notas com duas respostas e PT/EN/ES foi testado na fixture na rodada anterior, código inalterado; não houve envio autenticado real, pagamento/checkout, iPhone/Safari/VoiceOver físico ou avaliação clínica nesta rodada. Não alteradas API, modelos ou persistência.
+
+Próximo executável: manter publicação estável e atuar apenas em nova fricção observável ou retorno do usuário; não ampliar catálogo nem recriar Scribe. Caso precise retomar notas, usar esta versão publicada como base, não a anterior aos uploads falhos.
+
 ## 2026-09-26 14:43 BRT — Publicação das notas bloqueada no upload
 
 Código58713f5 concluído e testado. Duas tentativas railway up no cwdapp, com --path-as-root e service2doctor-web, expiraram no upload ao backboard antes de build. Primeira tentativa b76c7414-76fc-4b39-9c67-33eb49333493 FAILED, sem build associado. Não atribuir isso à aplicação nem afirmar publicação da correção. Health público200/product2doctor; asset público continua /assets/index-BH_QakA6.js. CUA público390×844 confirmou chat/menu da versão anterior carregando; viewport restaurado. Fixture local encerrada, aba89 fechada.
