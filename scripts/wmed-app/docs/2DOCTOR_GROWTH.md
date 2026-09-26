@@ -1,3 +1,9 @@
+## 2026-09-26 01:37 BRT — Posição de leitura preservada: publicado
+
+Fonte6aca53d; deployment2bce02ce-c336-4fce-9030-625b2e7a01ae SUCCESS no projeto2doctor/serviço2doctor-web. Health200/product2doctor; assetindex-D-Tiklug.js200 idêntico byte a byte ao build local.206testes existentes/build2Doctor/buildsite completo passaram. CUA público390 confirmou acesso ao histórico protegido por login, fechamento retorna ao chat, largura390=scroll390 e console semerros. Não houve login ou acesso a histórico real. Travamento/retorno de rolagem e foco validados na fixture com conteúdo fictício, conforme seção anterior; não equivalem a teste em iPhone físico.
+
+Fixture encerrada, aba72fechada, viewport restaurado. Candidata de beforeunload continua não aplicada/não publicada. Git preservou medico-app/dist-samu preexistente; API/ECG intactos. Próximo executável: verificar na conversa longa se abrir e fechar Minha conta também desloca a leitura/foco; só corrigir após reproduzir. Não ampliar catálogo. Rollback por reconstrução3f246d4 no diretório scripts/wmed-app.
+
 ## 2026-09-26 01:34 BRT — Histórico sem mover a leitura ao fundo
 
 Fricção reproduzida com conversa fictícia longa: abrir Histórico pelo menu móvel em y5171,5 e rolar na margem da janela moveu a página para y6015,5; fechar manteve o deslocamento indesejado de844px. Correção restrita à2Doctor: enquanto Histórico está montado, trava overflow da raiz e reserva gutter; cleanup restaura estilos anteriores. Não fixa o corpo nem força scroll ao fechar, permitindo abrir outro chat no topo. Efeito roda depois da liberação do drawer móvel. Foco inicial/retorno também migrou para efeito posterior ao cleanup do drawer, pois o drawer roubava o foco do botãoFechar.
