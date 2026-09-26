@@ -1,3 +1,11 @@
+## 2026-09-26 09:24 BRT — Exportação PDF por resposta do chat
+
+Pedido direto: botão Gerar PDF nas respostas. Implementado ao lado de Copiar resposta, apenas 2Doctor, em respostas completas sem erro. Geração local sob demanda, sem API ou envio a terceiros; link Baixar PDF permanece disponível após download automático para reabrir/salvar. Estados gerando/erro, bloqueio de clique repetido e liberação de Blob ao desmontar. Resposta individual, sem anexos nem restante da conversa.
+
+Markdown convertido em texto selecionável A4 com títulos, negrito/itálico, listas, tabelas de até4 colunas (cabeçalho repetido), tabelas largas como registros rotulados, links HTTP(S) e fontes existentes. Remove metadata TEMAS; nenhuma fonte inventada. Cabeçalho2Doctor, data de exportação e paginação. pdfmake0.2.20/MIT carregado dinamicamente; parser unified/remark/MIT. Roboto embutido; DejaVu local para símbolos/setas, licença preservada no código e /licenses/DejaVu.txt. Referência técnica https://pdfmake.github.io/docs/0.1/getting-started/client-side/ e /document-definition-object/tables/.
+
+214 testes passaram. Build2doctor passou; build completo do site em andamento. Fixture /tmp/2doctor-pdf-fixture.mjs isolada, sem rede/upstream/persistência: CUA390×844 gerou resposta fictícia, clicou Gerar PDF, mostrou Baixar PDF e arquivo apareceu em Downloads/2doctor-resposta.pdf. Alvo44px/sem overflow. PDF baixado renderizado e inspecionado; teste multipágina3p com setas/acentos/tabelas revisado visualmente. Não testado iPhone físico/Safari ou chat real autenticado. Nenhuma mudança no prompt/modelo, história ou API. Próximo: concluir buildsite, publicar somente2doctor-web, conferirSUCCESS/health/assets/interface. Baseline a0db5bd; dist-samu preexistente preservado.
+
 ## 2026-09-26 09:18 BRT — Loading do feedback e remoção do Scribe publicados
 
 Código 77cd829 publicado exclusivamente no 2doctor-web/projeto 2doctor. Deployment 26a1f830-1a05-4208-95b6-673f4556b077 SUCCESS; healthz público 200/product2doctor. Assets index-DKvjZs9w.js, ClinicalCase-DyE-0QJU.js e ClinicalCase-DXnPXreE.css públicos comparados byte a byte com build local: iguais. Deploy no cwd scripts/wmed-app com --path-as-root.
