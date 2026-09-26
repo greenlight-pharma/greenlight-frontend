@@ -5,3 +5,6 @@
 .chat-pdf-spin{animation:chat-pdf-turn 1s linear infinite}
 @keyframes chat-pdf-turn{to{transform:rotate(360deg)}}
 @media(prefers-reduced-motion:reduce){.chat-pdf-spin{animation:none}}
+
+.chat-pdf-action button[aria-disabled="true"]{opacity:.65;cursor:progress}
+.chat-pdf-action :is(button,a):focus-visible{outline:2px solid currentColor;outline-offset:3px;border-radius:5px}

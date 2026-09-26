@@ -1,3 +1,11 @@
+## 2026-09-26 09:33 BRT — PDF: correção do foco por teclado
+
+Rodada 12:30Z. Git f379800; Railway 22b5df42-0727-47ff-9ad6-8679544f4382 SUCCESS confirmado. Fricção reproduzida em fixture isolada: ativar Gerar PDF por Enter fazia activeElement voltar ao BODY quando o botão recebia disabled. Ao terminar, o usuário perdia a posição na navegação.
+
+Correção restrita à interface: aria-disabled/aria-busy preservam o foco durante geração; trava síncrona já existente impede segunda execução. Ao substituir pelo link, transfere foco com preventScroll somente se o usuário ainda estiver no botão. Contorno focus-visible torna a posição identificável. Documento PDF, API, modelo e persistência inalterados.
+
+CUA local 390×844 com resposta fictícia: antes BODY; depois Gerando PDF focado, seguido por link Baixar PDF focado; Tab segue para Automático. Sem overflow, screenshot conferido. Fixture sem upstream/persistência, encerrada e aba87 fechada; viewport restaurado. 214 testes existentes, build2doctor, build completo do site e diffcheck passaram. Não repetida renderização do PDF (conteúdo não mudou), nem testes clínicos/login real/Safari/iPhone físico/VoiceOver. Próximo: publicar só 2doctor-web, conferir SUCCESS/health/asset/UI; não recriar Scribe nem ativar prompt pendente. Rollback f379800; dist-samu preexistente preservado.
+
 ## 2026-09-26 09:28 BRT — PDF do chat publicado e conferido
 
 Commit0f6183c, deployment22b5df42-0727-47ff-9ad6-8679544f4382 SUCCESS no2doctor-web/projeto2doctor. Healthz200/product2doctor; index-RrkA_zBD.js e chunks pdfmake-BFTYH9M7.js, chat-pdf-r6KWyWfE.js, vfs_fonts-DhSc05oJ.js, symbols-Bp3breFH.js públicos idênticos ao build local. Interface pública do chat carregada viaCUA. Build completo do site passou na raiz da worktree; tentativa anterior no cwdapp falhou por diretório incorreto e foi refeita corretamente, sem alteração para contornar checks.

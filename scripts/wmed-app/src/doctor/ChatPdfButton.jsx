@@ -6,12 +6,13 @@ import './chat-pdf.css';
 export default function ChatPdfButton({ message }) {
   const { locale } = useI18n();
   const [busy, setBusy] = useState(false), [url, setUrl] = useState(''), [error, setError] = useState(false);
-  const working = useRef(false), alive = useRef(true), download = useRef(null);
+  const working = useRef(false), alive = useRef(true), download = useRef(null), trigger = useRef(null), restoreFocus = useRef(false);
   const en = locale.startsWith('en'), es = locale.startsWith('es');
   const label = (pt, english, spanish) => en ? english : es ? spanish : pt;
   useEffect(() => { alive.current = true; return () => { alive.current = false; }; }, []);
   useEffect(() => {
     if (!url) return;
+    if (restoreFocus.current) download.current?.focus({ preventScroll: true });
     download.current?.click();
     return () => URL.revokeObjectURL(url);
   }, [url]);
@@ -28,12 +29,15 @@ export default function ChatPdfButton({ message }) {
         const timer = setTimeout(() => reject(new Error('PDF timeout')), 45000);
         pdfMake.createPdf(chatPdfDefinition({ ...message, locale })).getBlob(value => { clearTimeout(timer); resolve(value); });
       });
-      if (alive.current) setUrl(URL.createObjectURL(blob));
+      if (alive.current) {
+        restoreFocus.current = document.activeElement === trigger.current;
+        setUrl(URL.createObjectURL(blob));
+      }
     } catch { if (alive.current) setError(true); }
     finally { working.current = false; if (alive.current) setBusy(false); }
   }
   return <span className="chat-pdf-action">
-    {url ? <a ref={download} className="copy" href={url} download="2doctor-resposta.pdf"><FileDown size={15}/>{label('Baixar PDF', 'Download PDF', 'Descargar PDF')}</a> : <button className="copy" type="button" disabled={busy} onClick={generate}>{busy ? <Loader2 size={15} className="chat-pdf-spin"/> : <FileDown size={15}/>}<span aria-live="polite">{busy ? label('Gerando PDF…', 'Generating PDF…', 'Generando PDF…') : label('Gerar PDF', 'Generate PDF', 'Generar PDF')}</span></button>}
+    {url ? <a ref={download} className="copy" href={url} download="2doctor-resposta.pdf"><FileDown size={15}/>{label('Baixar PDF', 'Download PDF', 'Descargar PDF')}</a> : <button ref={trigger} className="copy" type="button" aria-disabled={busy} aria-busy={busy} onClick={generate}>{busy ? <Loader2 size={15} className="chat-pdf-spin"/> : <FileDown size={15}/>}<span aria-live="polite">{busy ? label('Gerando PDF…', 'Generating PDF…', 'Generando PDF…') : label('Gerar PDF', 'Generate PDF', 'Generar PDF')}</span></button>}
     {error && <span className="chat-pdf-error" role="alert">{label('Não foi possível gerar. Tente novamente.', 'Could not generate. Try again.', 'No se pudo generar. Inténtalo de nuevo.')}</span>}
   </span>;
 }
