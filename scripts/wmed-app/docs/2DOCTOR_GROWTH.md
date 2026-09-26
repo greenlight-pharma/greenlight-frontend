@@ -1,3 +1,11 @@
+## 2026-09-25 23:33 BRT — Recuperar chat após falha
+
+Fixture local reproduziu errorSSE→done apagando anexo e deixando campo vazio. Somente2Doctor passa a rastrear falha no stream: done após error não limpa anexos nem marca resposta completa. FalhaSSE/HTTP/abort recupera pergunta enviada no campo apenas se vazio; preserva novo rascunho digitado.401 também evita sobrescrever novo texto. Usa pergunta efetivamente enviada/revisada, não original antes da revisão. Sem reenvio automático/persistência nova/API/modelo.
+
+Durante QA foi reproduzida corrida no botãoParar: abort fazia o mesmo nó virar submit antes da ação padrão do clique, reenviando a pergunta recuperada. preventDefault no clique deParar da2Doctor resolveu: teste final manteve exatamente1mensagem após interromper/aguardar.
+
+206testes existentes e builds2Doctor/site completo passaram após ajuste final. CUA fixture semupstream nem histórico real: erroSSE+done mantém1anexo e pergunta; HTTP503 recupera; falha atrasada preserva novo rascunho; abort não reenvia; sucesso subsequente envia mesmo anexo e limpa0/campo vazio. Logs só contagens/tamanho confirmam anexos na requisição. Mobile375/375 e desktop1265/1265 sem overflow. HTTP503 e falhas são simulados, não avaliação clínica. Sem conta/API real, socket interrompido/Safari físico/401 real. Fixture e aba67encerradas/viewportrestaurado. Publicação pendente; próximo deploy+health+asset+UI pública.
+
 ## 2026-09-25 23:05 BRT — Limite do chat publicado
 
 Fontebd02689; deployment12d8de53-9a7a-42b2-b8b2-719034dfd34c SUCCESS em2doctor/2doctor-web. Health200/product2doctor; entrada/assets/index-Bo2_Dr0s.js e bytes do asset público idênticos ao local/200. CUA público390 confirmou2008caracteres com finalCONCLUSAO intacto, aviso reduza8, botão desativado; editar para2000 reabilita. Screenshot conferido, largura390/scroll390, console semerros. Texto fictício removido/viewport restaurado.206testes/build2Doctor/buildsite passaram. Não testados sessão real, envio clínico, dispositivo físico ou VoiceOver.
