@@ -1,3 +1,17 @@
+## 2026-09-26 01:06 BRT — Aviso de saída preservado como candidata, sem publicação
+
+Decisão de qualidade: não publicar sem comprovar diálogo nativo de saída. Patch e roteiro em scripts/wmed-app/docs/candidates/20260926-chat-exit.{patch,md}; git apply --check aprovado. Mudanças de runtime retiradas do código ativo, preservando exatamente main.jsx publicado. Teste adicional do harness confirmou saída livre após término da resposta fictícia. Harness/fixtures encerrados e abas temporárias fechadas; nenhuma chamada clínica, persistência, conta ou outro produto alterado. Teste nativo inconclusivo: não atribuir causa nem tratar evento sintético como validação de UI nativa.
+
+Produção permanece e53cd3e/deployment50026317-a0d9-46a5-8f12-8f837ca0c331, proteção ao trocar de conversa intacta.208 testes/builds referem-se à candidata. Versão ativa restaurada e reconstruída: 206 testes, build 2Doctor e build completo do site passaram; health público200 e asset index-9aQvxGjm.js byte a byte igual ao build restaurado. Interface pública390×844 conferida, viewport restaurado. Sem novo deploy. Próximo executável: validar patch em navegador convencional sem depuração, com relato/arquivo fictícios e recarga Cancelar; enquanto indisponível, revisar outra fricção existente (por exemplo retorno à posição de leitura após fechar histórico), sem repetir tentativas inconclusivas ou expandir catálogo.
+
+## 2026-09-26 01:06 BRT — Proteção ao sair da página em verificação
+
+Reproduzida perda de rascunho no reload da prévia. A 2Doctor registra beforeunload somente enquanto há texto não vazio, anexo, preparo de arquivo ou resposta em andamento; remove o listener ao concluir/limpar. Sem persistência nova, envio de conteúdo ou alteração do histórico existente. Helper remove apenas seu próprio listener. WMed não ativa a proteção adicional.
+
+Fonte técnica: https://developer.mozilla.org/en-US/docs/Web/API/Window/beforeunload_event (consultada nesta rodada): aviso depende de interação e suporte do navegador, mensagem é nativa, encerramento pelo sistema móvel pode não disparar evento. Não é recuperação nem salvamento do rascunho.
+
+208 testes passaram (2 novos verificam cancelamento/cleanup e coexistência com proteção do histórico). Build 2Doctor e site completo passaram. CUA com harness temporário fora do repositório, usando bundle real e evento sintético cancelável, comprovou estado livre→protegido com texto/anexo→livre após apagar/remover; resposta fictícia em andamento também protegida. Esse teste confirma registro do handler, NÃO confirma exibição do diálogo nativo. Reload por automação IAB/Chrome e botão nativo na sessão depurada não exibiram diálogo; motivo não determinado. Não prometer suporte físico iOS/Safari, proteção contra encerramento do app ou conta/histórico reais. Próximo: concluir conferência após resposta, verificar interface móvel normal e registrar decisão de publicação com estes limites.
+
 ## 2026-09-26 00:06 BRT — Histórico com fechamento visível publicado
 
 ## 2026-09-26 00:41 BRT — Proteção de rascunho publicada
