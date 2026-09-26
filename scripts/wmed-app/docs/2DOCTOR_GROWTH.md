@@ -1,3 +1,13 @@
+## 2026-09-26 05:04 BRT — Pesquisa: acesso à seleção sem rolagem longa
+
+Baseline def92cb/deployment6859aaa2-ff98-472a-a697-a86b0debf118 SUCCESS, Git/Railway conferidos. Pesquisa pública asthma em Europe PMC: selecionar último de oito artigos deixou Copiar lista em y−2534,5 com rolagem3407. Atrito concreto de acesso à exportação existente.
+
+Research adiciona somente atalho Ver seleção (N), PT/EN/ES, quando há seleção e o painel está fora de vista (IntersectionObserver). Um toque rola para o painel existente e transfere foco; some quando painel aparece, seleção fica vazia ou tipo/tema muda. Botão fica acima do dock móvel. Nenhuma nova busca, API, síntese, fonte, persistência ou conteúdo clínico. ReferenceExport aceita ref de foco, exportação inalterada.
+
+206 testes existentes, build 2Doctor e build completo do site passaram; git diff --check limpo. CUA local com busca real bibliográfica: último artigo selecionado → atalho → painel em y17,8/foco Sua seleção → Lista copiada; selecionar todos/limpar remove atalho; troca para ensaios remove seleção. 320×568: botão45px, bottom480 antes do dock507, sem overflow; 390×844 screenshot conferido e desktop1280×800 funcional. Console sem erros. Não testados iPhone físico/Safari/VoiceOver; navegação não valida qualidade clínica dos artigos. Dockerfile/railway.json conferidos.
+
+Próximo: publicar apenas serviço2doctor-web e conferir SUCCESS, health200, assets e interface pública. Rollback def92cb. Pré-existente medico-app/dist-samu preservado.
+
 ## 2026-09-26 04:36 BRT — Navegação do banco de imagens publicada
 
 Fonte d1ad509; deployment 6859aaa2-ff98-472a-a697-a86b0debf118 SUCCESS em 2doctor-web/projeto 2doctor. Healthz200/product2doctor; index-B5CcQOGj.js e Libraries-CsTbqn0i.js públicos idênticos byte a byte ao build local. CUA público390×844 confirmou tela de entrada do banco, ausência de overflow horizontal, abertura/fechamento do login e console sem erros. Não houve sessão autenticada disponível: comportamento do leitor/lista foi verificado em fixture local conforme entrada anterior, NÃO em acervo real de produção. Sem iPhone físico/Safari/VoiceOver.
