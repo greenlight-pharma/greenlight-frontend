@@ -213,24 +213,25 @@ export function ReferenceLibrary({ kind }) {
     [limit, setLimit] = useState(30),
     [retry, setRetry] = useState(0);
   const meds = kind === "medicacoes";
-  const flexibleMedicationSearch = meds && import.meta.env.VITE_PRODUCT === "2doctor";
+  const preserveLibraryPosition = import.meta.env.VITE_PRODUCT === "2doctor";
+  const flexibleMedicationSearch = meds && preserveLibraryPosition;
   const listPosition = useRef(null);
   const navigation = useRef(null);
-  const medicationCards = useRef(new Map());
-  const medicationBack = useRef(null);
+  const libraryCards = useRef(new Map());
+  const libraryBack = useRef(null);
   useLayoutEffect(() => {
-    if (!flexibleMedicationSearch || !navigation.current) return;
+    if (!preserveLibraryPosition || !navigation.current) return;
     const destination = navigation.current;
     navigation.current = null;
     if (destination === "detail") {
-      medicationBack.current?.focus({ preventScroll: true });
+      libraryBack.current?.focus({ preventScroll: true });
       window.scrollTo({ top: 0, behavior: "instant" });
     } else if (listPosition.current) {
       const { name, top } = listPosition.current;
-      medicationCards.current.get(name)?.focus({ preventScroll: true });
+      libraryCards.current.get(name)?.focus({ preventScroll: true });
       window.scrollTo({ top, behavior: "instant" });
     }
-  }, [selected, flexibleMedicationSearch]);
+  }, [selected, preserveLibraryPosition]);
   useEffect(() => {
     setSelected(null);
     setQ("");
@@ -275,8 +276,8 @@ export function ReferenceLibrary({ kind }) {
       {import.meta.env.VITE_PRODUCT==='2doctor' && <OfficialSourcesLink/>}
       {selected ? (
         <>
-          <button className="back-button" ref={medicationBack} onClick={() => {
-            if (flexibleMedicationSearch) navigation.current = "list";
+          <button className="back-button" ref={libraryBack} onClick={() => {
+            if (preserveLibraryPosition) navigation.current = "list";
             setSelected(null);
           }}>
             <ArrowLeft size={16} />
@@ -389,12 +390,12 @@ export function ReferenceLibrary({ kind }) {
                   <button
                     className="resource-card"
                     key={r.n}
-                    ref={flexibleMedicationSearch ? (node) => {
-                      if (node) medicationCards.current.set(r.n, node);
-                      else medicationCards.current.delete(r.n);
+                    ref={preserveLibraryPosition ? (node) => {
+                      if (node) libraryCards.current.set(r.n, node);
+                      else libraryCards.current.delete(r.n);
                     } : undefined}
                     onClick={() => {
-                      if (flexibleMedicationSearch) {
+                      if (preserveLibraryPosition) {
                         listPosition.current = { name: r.n, top: window.scrollY };
                         navigation.current = "detail";
                       }

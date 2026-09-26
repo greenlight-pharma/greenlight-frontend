@@ -1,3 +1,11 @@
+## 2026-09-26 04:06 BRT — Condições: retorno à lista preservado
+
+Fricção reproduzida no site público em 390×844: busca diabetes, cartão O24 em y1013; abrir e voltar perdia a posição e retornava a y0. ReferenceLibrary estende às condições o mecanismo já existente nas medicações, restrito à 2Doctor: abre detalhe no topo e devolve foco e rolagem ao cartão anterior. Sem mudar dados clínicos, busca, autenticação ou persistência.
+
+206 testes passaram; build 2Doctor e build completo do site aprovados (warning preexistente de bundle). CUA local em 390×844 comprovou y1013→0→1013 e foco correto. Em 320×640 e 1280×800 não houve overflow horizontal; consulta diabetes e filtro gravidez preservados; Mostrar mais manteve 60 cartões após abrir A69 e voltar. Smoke de medicações preservou retorno e foco. Sem teste em iPhone físico, Safari ou VoiceOver. Fixture local sem upstream/dados reais. Dockerfile e railway.json conferidos.
+
+Próximo: publicar somente no serviço 2doctor-web, exigir SUCCESS, healthz 200, assets idênticos e retorno à lista na interface pública. Rollback por reconstrução 2b7facb. Trabalho preexistente medico-app/dist-samu preservado; nenhum outro produto alterado.
+
 ## 2026-09-26 03:38 BRT — Navegação dos scores publicada
 
 Fonte 1b579f6; deployment a842e7f0-3e96-4961-8938-906552691d73 SUCCESS em 2doctor-web/projeto 2doctor. Health 200/product 2doctor; /assets/index-BKExKWSP.js e Libraries-D938F7gi.js públicos idênticos byte a byte ao build local. CUA público 390×844: cartão Winter em y844, toque abriu detalhe no topo y0 com foco em Voltar; retorno restaurou y844 e foco no mesmo cartão, sem overflow horizontal ou console errors. Busca/especialidade e score por critérios conferidos localmente conforme registro anterior. 206 testes e builds app/site completos passaram. Sem validação em iPhone físico; nenhuma alteração clínica. Viewport restaurado; trabalho preexistente medico-app/dist-samu preservado.
