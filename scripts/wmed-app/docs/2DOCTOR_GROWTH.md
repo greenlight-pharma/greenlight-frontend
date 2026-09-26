@@ -1,3 +1,9 @@
+## 2026-09-25 22:06 BRT — Retorno à lista de medicações publicado
+
+Fonte e1cf29f, deployment b59ed3a0-5be3-4440-b841-a5c1c7da25f7 SUCCESS no serviço2doctor-web/projeto2doctor. Health200/product2doctor; entrada pública index-CxIT7hRR.js confere com build local, asset200 e bytes idênticos. CUA público390: amoxicilina abriu no topo(título300px), voltar restaurou scroll3532/cartão341px e foco no item; screenshot legível, largura375/scroll375 e console vazio.200 testes e ambos os builds aprovados, sem alteração médica/API. Viewport restaurado.
+
+Limites: sem iPhone físico/VoiceOver, autenticação real ou avaliação clínica. Retomada permanece só em memória durante a visita ao módulo, não entre sessões. Próximo executável: observar uma fricção concreta no chat ou caso clínico antes de editar; evitar ampliar catálogo e não extrapolar esta correção a outros módulos sem reproduzir problema. Rollback por reconstrução9fb34a5 usando cwd scripts/wmed-app.
+
 ## 2026-09-25 22:02 BRT — Medicações: abrir ficha e retomar lista
 
 Fricção reproduzida no público390px: abrir amoxicilina distante da lista mantinha scrollY398,5 e título acima da tela(-98,5px); voltar perdia item e retornava topo. Correção somente na2Doctor/Medicações: guarda posição e nome em refs na memória, abre detalhe no topo com foco no botão de voltar e, no retorno, restaura scroll e foco no cartão após montagem. Busca/grupo/limite preservados. Nenhuma persistência, conteúdo médico ou API alterada; WMed/Condições mantêm comportamento anterior.
