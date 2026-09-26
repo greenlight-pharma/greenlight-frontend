@@ -1,6 +1,6 @@
 {
  "meta": {
-  "gerado_em": "2026-09-25T15:08+00:00",
+  "gerado_em": "2026-09-26T14:19+00:00",
   "gerado_por": "scripts/governo/agentes/agente_noticias.py",
   "janela_dias": 90,
   "fontes": [
@@ -30,14 +30,14 @@
     "url": "https://www.gov.br/planalto/pt-br/acompanhe-o-planalto/noticias/RSS"
    }
   ],
-  "total_artigos": 1284,
-  "artigos_com_no": 360,
-  "novos_nesta_rodada": 80,
+  "total_artigos": 1336,
+  "artigos_com_no": 379,
+  "novos_nesta_rodada": 59,
   "artigos_por_fonte": {
-   "senado": 620,
-   "camara": 346,
-   "agenciabrasil": 287,
-   "planalto": 27,
+   "agenciabrasil": 319,
+   "senado": 634,
+   "camara": 350,
+   "planalto": 29,
    "stf": 4
   },
   "ordem": "peso igual por fonte; contagem real de matérias",
@@ -45,207 +45,207 @@
  },
  "resumo": [
   {
-   "texto": "Lei 15.520/2026 cria a Universidade Federal da Fronteira Norte, com sede em Oiapoque (AP), por desmembramento da Universidade Federal do Amapá.",
-   "artigo_id": "n-389745979d",
-   "no_id": "mec"
-  },
-  {
-   "texto": "O Conselho Superior do Ministério Público Federal se reúne para decidir se abre investigação contra o procurador-geral da República, Paulo Gonet, citado em conversas obtidas pela Polícia Federal.",
-   "artigo_id": "n-46e98896be",
+   "texto": "O Conselho Superior do Ministério Público Federal rejeitou, por 5 votos a 4, a abertura de investigação contra o procurador-geral da República, Paulo Gonet, citado em conversas encontradas pela Polícia Federal no celular do ex-banqueiro Daniel Vorcaro.",
+   "artigo_id": "n-2922609f76",
    "no_id": "mpf"
   },
   {
-   "texto": "O Conselho Nacional de Justiça fez operação no gabinete do desembargador Newton Ramos, do Tribunal Regional Federal da 1ª Região, alvo de investigação do órgão.",
-   "artigo_id": "n-4eabc11e50",
-   "no_id": "cnj"
+   "texto": "O presidente do Supremo Tribunal Federal, Edson Fachin, fixou prazo de cinco dias para a Procuradoria-Geral da República se manifestar sobre medidas urgentes nas investigações do caso Master e dos descontos ilegais em benefícios do INSS.",
+   "artigo_id": "n-63094d153d",
+   "no_id": "stf"
   },
   {
-   "texto": "O Supremo Tribunal Federal decidiu que estados não podem revogar unilateralmente benefícios fiscais de ICMS aprovados em convênios do Conselho Nacional de Política Fazendária.",
-   "artigo_id": "n-f84719eef7",
-   "no_id": "stf"
+   "texto": "O Tribunal Superior do Trabalho decidiu que a greve dos trabalhadores dos Correios não é abusiva, mas determinou o retorno da categoria ao trabalho.",
+   "artigo_id": "n-c0ce7acce7",
+   "no_id": "tst"
+  },
+  {
+   "texto": "Foi sancionada a Lei 15.520, de 2026, que cria a Universidade Federal da Fronteira Norte, com sede em Oiapoque (AP), por desmembramento da Universidade Federal do Amapá.",
+   "artigo_id": "n-389745979d",
+   "no_id": "mec"
   }
  ],
  "ranking": {
   "orgaos": [
    {
     "id": "stf",
-    "artigos": 52,
-    "peso": 34.841726710503835,
-    "ultima": "2026-09-25T13:46+00:00"
+    "artigos": 55,
+    "peso": 35.5906152648613,
+    "ultima": "2026-09-25T22:46+00:00"
    },
    {
     "id": "tse",
-    "artigos": 45,
-    "peso": 30.52348096812526,
-    "ultima": "2026-09-25T15:03:00+00:00"
+    "artigos": 46,
+    "peso": 30.32648902538773,
+    "ultima": "2026-09-26T11:43+00:00"
    },
    {
     "id": "camara",
     "artigos": 50,
-    "peso": 20.709677419354836,
+    "peso": 21.0725552050473,
     "ultima": "2026-09-25T12:23:00+00:00"
    },
    {
     "id": "congresso",
-    "artigos": 39,
-    "peso": 18.098717278864534,
-    "ultima": "2026-09-24T12:01:00+00:00"
+    "artigos": 40,
+    "peso": 18.71630946753669,
+    "ultima": "2026-09-25T16:14:00+00:00"
+   },
+   {
+    "id": "pf",
+    "artigos": 20,
+    "peso": 14.25535239263075,
+    "ultima": "2026-09-26T00:47+00:00"
+   },
+   {
+    "id": "caixa",
+    "artigos": 17,
+    "peso": 14.239498432601875,
+    "ultima": "2026-09-25T19:39+00:00"
    },
    {
     "id": "prf",
     "artigos": 7,
-    "peso": 14.399172255317023,
+    "peso": 13.823331981843891,
     "ultima": "2026-09-17T13:36+00:00"
    },
    {
-    "id": "caixa",
-    "artigos": 16,
-    "peso": 14.316376306620212,
-    "ultima": "2026-09-25T14:28+00:00"
-   },
-   {
-    "id": "pf",
-    "artigos": 17,
-    "peso": 12.327670001123975,
-    "ultima": "2026-09-25T09:45+00:00"
-   },
-   {
     "id": "inss",
-    "artigos": 16,
-    "peso": 9.884277599580557,
-    "ultima": "2026-09-24T21:00+00:00"
+    "artigos": 17,
+    "peso": 10.807010393283424,
+    "ultima": "2026-09-25T22:25+00:00"
    },
    {
-    "id": "anvisa",
+    "id": "inep",
     "artigos": 12,
-    "peso": 9.62354530103997,
-    "ultima": "2026-09-25T13:16+00:00"
+    "peso": 10.051410658307207,
+    "ultima": "2026-09-25T17:58+00:00"
    },
    {
     "id": "mte",
     "artigos": 1,
-    "peso": 9.511111111111111,
+    "peso": 9.213793103448275,
     "ultima": "2026-08-12T21:09:00+00:00"
    },
    {
     "id": "inpe",
     "artigos": 1,
-    "peso": 9.511111111111111,
+    "peso": 9.213793103448275,
     "ultima": "2026-08-06T22:13:00+00:00"
+   },
+   {
+    "id": "anvisa",
+    "artigos": 12,
+    "peso": 9.144888773360869,
+    "ultima": "2026-09-25T13:16+00:00"
    },
    {
     "id": "ibge",
     "artigos": 11,
-    "peso": 9.361928740024728,
+    "peso": 8.797626652690287,
     "ultima": "2026-09-25T14:28+00:00"
-   },
-   {
-    "id": "inep",
-    "artigos": 10,
-    "peso": 8.947735191637632,
-    "ultima": "2026-09-25T14:25+00:00"
-   },
-   {
-    "id": "ms",
-    "artigos": 11,
-    "peso": 7.767611840322873,
-    "ultima": "2026-09-24T22:25+00:00"
    },
    {
     "id": "mec",
-    "artigos": 11,
-    "peso": 6.959028886141397,
-    "ultima": "2026-09-25T14:49:00+00:00"
+    "artigos": 13,
+    "peso": 8.392029508618215,
+    "ultima": "2026-09-25T17:58+00:00"
    },
    {
-    "id": "tst",
-    "artigos": 10,
-    "peso": 6.87283832115911,
-    "ultima": "2026-09-25T14:28+00:00"
+    "id": "ms",
+    "artigos": 12,
+    "peso": 8.312555871844893,
+    "ultima": "2026-09-26T00:10+00:00"
    },
    {
     "id": "anp",
-    "artigos": 10,
-    "peso": 6.87283832115911,
-    "ultima": "2026-09-25T12:27+00:00"
+    "artigos": 11,
+    "peso": 7.474938316985959,
+    "ultima": "2026-09-25T20:44+00:00"
    },
    {
-    "id": "agu",
-    "artigos": 8,
-    "peso": 6.677608182533439,
-    "ultima": "2026-09-24T23:21+00:00"
+    "id": "mpf",
+    "artigos": 9,
+    "peso": 7.122391542972418,
+    "ultima": "2026-09-25T21:11+00:00"
+   },
+   {
+    "id": "tst",
+    "artigos": 11,
+    "peso": 7.058771866227971,
+    "ultima": "2026-09-25T17:44:00+00:00"
    },
    {
     "id": "petrobras",
     "artigos": 9,
-    "peso": 6.611221760143869,
+    "peso": 6.290058641456442,
     "ultima": "2026-09-23T14:38+00:00"
+   },
+   {
+    "id": "agu",
+    "artigos": 8,
+    "peso": 6.284773988113484,
+    "ultima": "2026-09-24T23:21+00:00"
    },
    {
     "id": "tcu",
     "artigos": 11,
-    "peso": 5.692714969844352,
+    "peso": 5.736083530523647,
     "ultima": "2026-09-23T21:51+00:00"
    },
    {
     "id": "stj",
     "artigos": 7,
-    "peso": 5.477680688625964,
+    "peso": 5.298778466393825,
     "ultima": "2026-09-22T00:00+00:00"
    },
    {
-    "id": "mpf",
+    "id": "cvm",
     "artigos": 6,
-    "peso": 4.8880611442059125,
-    "ultima": "2026-09-25T09:45+00:00"
+    "peso": 4.951516345723242,
+    "ultima": "2026-09-25T21:11+00:00"
+   },
+   {
+    "id": "cnj",
+    "artigos": 6,
+    "peso": 4.609538878395616,
+    "ultima": "2026-09-25T21:11+00:00"
    },
    {
     "id": "senacon",
     "artigos": 5,
-    "peso": 4.473867595818816,
+    "peso": 4.1880877742946705,
     "ultima": "2026-09-25T12:27+00:00"
-   },
-   {
-    "id": "cvm",
-    "artigos": 5,
-    "peso": 4.32129060844696,
-    "ultima": "2026-09-25T09:45+00:00"
-   },
-   {
-    "id": "cnj",
-    "artigos": 5,
-    "peso": 3.993287625042149,
-    "ultima": "2026-09-24T21:12+00:00"
    },
    {
     "id": "correios",
     "artigos": 4,
-    "peso": 3.5790940766550525,
+    "peso": 3.3504702194357368,
     "ultima": "2026-09-25T00:35+00:00"
    },
    {
     "id": "aeronautica",
     "artigos": 4,
-    "peso": 3.5790940766550525,
+    "peso": 3.3504702194357368,
     "ultima": "2026-09-24T00:19+00:00"
    },
    {
     "id": "anac",
     "artigos": 5,
-    "peso": 2.879550696116961,
+    "peso": 2.8653994385903445,
     "ultima": "2026-09-23T14:04+00:00"
+   },
+   {
+    "id": "aneel",
+    "artigos": 4,
+    "peso": 2.518137317919761,
+    "ultima": "2026-09-25T20:54+00:00"
    },
    {
     "id": "bndes",
     "artigos": 4,
-    "peso": 2.4653571477298644,
+    "peso": 2.443948334489398,
     "ultima": "2026-09-17T17:19+00:00"
-   },
-   {
-    "id": "senado",
-    "artigos": 3,
-    "peso": 2.2265895953757227,
-    "ultima": "2026-09-25T13:48+00:00"
    }
   ],
   "pessoas": [
@@ -260,9 +260,9 @@
     "uf": null,
     "foto": "https://commons.wikimedia.org/wiki/Special:FilePath/Foto_oficial_de_Luiz_In%C3%A1cio_Lula_da_Silva_%28estreita%29.jpg?width=160",
     "foto_fonte": "https://www.wikidata.org/wiki/Q37181",
-    "artigos": 20,
-    "peso": 21.072851309307424,
-    "ultima": "2026-09-24T12:03+00:00"
+    "artigos": 24,
+    "peso": 23.826976923435524,
+    "ultima": "2026-09-26T12:34+00:00"
    },
    {
     "id": "damares-alves",
@@ -276,7 +276,7 @@
     "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador6335.jpg",
     "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/6335",
     "artigos": 23,
-    "peso": 9.526451612903225,
+    "peso": 9.69337539432176,
     "ultima": "2026-09-21T19:30:00+00:00"
    },
    {
@@ -291,7 +291,7 @@
     "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador3830.jpg",
     "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/3830",
     "artigos": 20,
-    "peso": 9.245030909295266,
+    "peso": 9.261354983534897,
     "ultima": "2026-09-23T18:08+00:00"
    },
    {
@@ -306,8 +306,23 @@
     "foto": "https://www.camara.leg.br/internet/deputado/bandep/160674.jpg",
     "foto_fonte": "https://www.camara.leg.br/deputados/160674",
     "artigos": 11,
-    "peso": 5.868140965877307,
+    "peso": 6.003872014420908,
     "ultima": "2026-09-08T14:44:00+00:00"
+   },
+   {
+    "id": "nunes-marques",
+    "nome": "Nunes Marques",
+    "nome_completo": "Nunes Marques",
+    "cargo": "Presidente · TSE",
+    "no_id": "tse",
+    "poder": "judiciario",
+    "partido": null,
+    "uf": null,
+    "foto": "https://commons.wikimedia.org/wiki/Special:FilePath/Nunes_Marques%2C_February_2025_%28cropped%29.jpg?width=160",
+    "foto_fonte": "https://www.wikidata.org/wiki/Q99831978",
+    "artigos": 8,
+    "peso": 5.868607537355498,
+    "ultima": "2026-09-26T00:25+00:00"
    },
    {
     "id": "paulo-paim",
@@ -321,23 +336,23 @@
     "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador825.jpg",
     "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/825",
     "artigos": 12,
-    "peso": 4.970322580645161,
+    "peso": 5.057413249211356,
     "ultima": "2026-09-21T19:30:00+00:00"
    },
    {
-    "id": "flavio-bolsonaro",
-    "nome": "Flávio Bolsonaro",
-    "nome_completo": "Flávio Nantes Bolsonaro",
-    "cargo": "Senador, RJ",
-    "no_id": "senado",
-    "poder": "legislativo",
-    "partido": "PL",
-    "uf": "RJ",
-    "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador5894.jpg",
-    "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/5894",
+    "id": "paulo-gonet",
+    "nome": "Paulo Gonet",
+    "nome_completo": "Paulo Gonet",
+    "cargo": "Procurador(a)-Geral da República · MPU",
+    "no_id": "mpu",
+    "poder": "essencial",
+    "partido": null,
+    "uf": null,
+    "foto": null,
+    "foto_fonte": null,
     "artigos": 7,
-    "peso": 4.8216747218163425,
-    "ultima": "2026-09-21T12:40+00:00"
+    "peso": 5.030989982496562,
+    "ultima": "2026-09-25T21:11+00:00"
    },
    {
     "id": "omar-aziz",
@@ -351,23 +366,38 @@
     "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador5525.jpg",
     "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/5525",
     "artigos": 11,
-    "peso": 4.556129032258064,
+    "peso": 4.63596214511041,
     "ultima": "2026-09-02T23:20:00+00:00"
    },
    {
-    "id": "nunes-marques",
-    "nome": "Nunes Marques",
-    "nome_completo": "Nunes Marques",
-    "cargo": "Presidente · TSE",
-    "no_id": "tse",
-    "poder": "judiciario",
-    "partido": null,
-    "uf": null,
-    "foto": "https://commons.wikimedia.org/wiki/Special:FilePath/Nunes_Marques%2C_February_2025_%28cropped%29.jpg?width=160",
-    "foto_fonte": "https://www.wikidata.org/wiki/Q99831978",
-    "artigos": 6,
-    "peso": 4.407481173429247,
-    "ultima": "2026-09-25T15:03:00+00:00"
+    "id": "flavio-bolsonaro",
+    "nome": "Flávio Bolsonaro",
+    "nome_completo": "Flávio Nantes Bolsonaro",
+    "cargo": "Senador, RJ",
+    "no_id": "senado",
+    "poder": "legislativo",
+    "partido": "PL",
+    "uf": "RJ",
+    "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador5894.jpg",
+    "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/5894",
+    "artigos": 7,
+    "peso": 4.614823531738576,
+    "ultima": "2026-09-21T12:40+00:00"
+   },
+   {
+    "id": "flavio-arns",
+    "nome": "Flávio Arns",
+    "nome_completo": "Flávio José Arns",
+    "cargo": "Senador, PR",
+    "no_id": "senado",
+    "poder": "legislativo",
+    "partido": "PSB",
+    "uf": "PR",
+    "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador345.jpg",
+    "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/345",
+    "artigos": 10,
+    "peso": 4.214511041009463,
+    "ultima": "2026-09-25T18:03:00+00:00"
    },
    {
     "id": "mara-gabrilli",
@@ -381,7 +411,7 @@
     "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador5376.jpg",
     "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/5376",
     "artigos": 10,
-    "peso": 4.141935483870967,
+    "peso": 4.214511041009463,
     "ultima": "2026-09-23T18:20:00+00:00"
    },
    {
@@ -396,7 +426,7 @@
     "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador5352.jpg",
     "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/5352",
     "artigos": 10,
-    "peso": 4.141935483870967,
+    "peso": 4.214511041009463,
     "ultima": "2026-09-14T16:27:00+00:00"
    },
    {
@@ -411,7 +441,7 @@
     "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador5979.jpg",
     "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/5979",
     "artigos": 9,
-    "peso": 3.7277419354838703,
+    "peso": 3.793059936908517,
     "ultima": "2026-09-10T18:45:00+00:00"
    },
    {
@@ -426,23 +456,8 @@
     "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador5990.jpg",
     "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/5990",
     "artigos": 9,
-    "peso": 3.7277419354838703,
+    "peso": 3.793059936908517,
     "ultima": "2026-09-04T21:56:00+00:00"
-   },
-   {
-    "id": "flavio-arns",
-    "nome": "Flávio Arns",
-    "nome_completo": "Flávio José Arns",
-    "cargo": "Senador, PR",
-    "no_id": "senado",
-    "poder": "legislativo",
-    "partido": "PSB",
-    "uf": "PR",
-    "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador345.jpg",
-    "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/345",
-    "artigos": 9,
-    "peso": 3.7277419354838703,
-    "ultima": "2026-09-03T23:38:00+00:00"
    },
    {
     "id": "astronauta-marcos-pontes",
@@ -456,8 +471,38 @@
     "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador6009.jpg",
     "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/6009",
     "artigos": 8,
-    "peso": 3.3135483870967737,
+    "peso": 3.3716088328075706,
     "ultima": "2026-09-23T18:51:00+00:00"
+   },
+   {
+    "id": "edson-fachin",
+    "nome": "Luiz Edson Fachin",
+    "nome_completo": "Edson Fachin",
+    "cargo": "Presidente · STF",
+    "no_id": "stf",
+    "poder": "judiciario",
+    "partido": null,
+    "uf": null,
+    "foto": "https://commons.wikimedia.org/wiki/Special:FilePath/Luiz_Edson_Fachin-12-05.2015.jpg?width=160",
+    "foto_fonte": "https://www.wikidata.org/wiki/Q10320705",
+    "artigos": 5,
+    "peso": 3.355754872778695,
+    "ultima": "2026-09-25T22:25+00:00"
+   },
+   {
+    "id": "izalci-lucas",
+    "nome": "Izalci Lucas",
+    "nome_completo": "Izalci Lucas Ferreira",
+    "cargo": "Senador, DF",
+    "no_id": "senado",
+    "poder": "legislativo",
+    "partido": "PL",
+    "uf": "DF",
+    "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador4770.jpg",
+    "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/4770",
+    "artigos": 7,
+    "peso": 2.9501577287066243,
+    "ultima": "2026-09-25T21:09:00+00:00"
    },
    {
     "id": "fernando-dueire",
@@ -471,7 +516,7 @@
     "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador5917.jpg",
     "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/5917",
     "artigos": 7,
-    "peso": 2.899354838709677,
+    "peso": 2.9501577287066243,
     "ultima": "2026-09-02T19:51:00+00:00"
    },
    {
@@ -486,53 +531,8 @@
     "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador5732.jpg",
     "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/5732",
     "artigos": 5,
-    "peso": 2.7269737087451054,
+    "peso": 2.7912104551599817,
     "ultima": "2026-09-02T16:46:00+00:00"
-   },
-   {
-    "id": "paulo-gonet",
-    "nome": "Paulo Gonet",
-    "nome_completo": "Paulo Gonet",
-    "cargo": "Procurador(a)-Geral da República · MPU",
-    "no_id": "mpu",
-    "poder": "essencial",
-    "partido": null,
-    "uf": null,
-    "foto": null,
-    "foto_fonte": null,
-    "artigos": 4,
-    "peso": 2.6179341351017196,
-    "ultima": "2026-09-25T09:45+00:00"
-   },
-   {
-    "id": "edson-fachin",
-    "nome": "Luiz Edson Fachin",
-    "nome_completo": "Edson Fachin",
-    "cargo": "Presidente · STF",
-    "no_id": "stf",
-    "poder": "judiciario",
-    "partido": null,
-    "uf": null,
-    "foto": "https://commons.wikimedia.org/wiki/Special:FilePath/Luiz_Edson_Fachin-12-05.2015.jpg?width=160",
-    "foto_fonte": "https://www.wikidata.org/wiki/Q10320705",
-    "artigos": 4,
-    "peso": 2.6179341351017196,
-    "ultima": "2026-09-18T15:06+00:00"
-   },
-   {
-    "id": "izalci-lucas",
-    "nome": "Izalci Lucas",
-    "nome_completo": "Izalci Lucas Ferreira",
-    "cargo": "Senador, DF",
-    "no_id": "senado",
-    "poder": "legislativo",
-    "partido": "PL",
-    "uf": "DF",
-    "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador4770.jpg",
-    "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/4770",
-    "artigos": 6,
-    "peso": 2.4851612903225804,
-    "ultima": "2026-09-17T21:37:00+00:00"
    },
    {
     "id": "teresa-leitao",
@@ -546,7 +546,7 @@
     "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador6338.jpg",
     "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/6338",
     "artigos": 6,
-    "peso": 2.4851612903225804,
+    "peso": 2.528706624605678,
     "ultima": "2026-09-10T18:45:00+00:00"
    },
    {
@@ -561,7 +561,7 @@
     "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador475.jpg",
     "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/475",
     "artigos": 6,
-    "peso": 2.4851612903225804,
+    "peso": 2.528706624605678,
     "ultima": "2026-09-01T22:31:00+00:00"
    },
    {
@@ -576,7 +576,7 @@
     "foto": "https://www.camara.leg.br/internet/deputado/bandep/74161.jpg",
     "foto_fonte": "https://www.camara.leg.br/deputados/74161",
     "artigos": 5,
-    "peso": 2.3989707253402948,
+    "peso": 2.4492329878323567,
     "ultima": "2026-09-01T19:56:00+00:00"
    },
    {
@@ -591,7 +591,7 @@
     "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador5985.jpg",
     "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/5985",
     "artigos": 5,
-    "peso": 2.0709677419354837,
+    "peso": 2.1072555205047316,
     "ultima": "2026-09-22T14:16:00+00:00"
    },
    {
@@ -606,12 +606,587 @@
     "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador22.jpg",
     "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/22",
     "artigos": 5,
-    "peso": 2.0709677419354837,
+    "peso": 2.1072555205047316,
     "ultima": "2026-09-11T19:48:00+00:00"
    }
   ]
  },
  "artigos": [
+  {
+   "id": "n-741a6ea0a3",
+   "titulo": "Saiba como funcionará compra de dívidas pela União",
+   "url": "https://agenciabrasil.ebc.com.br/economia/noticia/2026-09/saiba-como-funcionara-compra-de-dividas-pela-uniao",
+   "data": "2026-09-26T13:02+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "Criada nessa sexta-feira (25) por medida provisória, a terceira fase do programa de renegociação de dívidas de pessoas físicas, chamada de Desenrola 3.0, traz mudança importante em relação às etapas anteriores. A União poderá comprar em leilões, carteiras de dívidas inadimplidas e repassar integralmente ao devedor o desconto obtido na operação. Nas fases anteriores, os débitos eram negociados diretamente entre credores e devedores. Notícias relacionadas: Governo cria 3ª fase do Desenrola com compra de dívidas pela União. MP das Bets: veja o que muda e saiba datas para devolução de valores. Bet"
+  },
+  {
+   "id": "n-1917e8a1be",
+   "titulo": "Confira a agenda dos presidenciáveis neste fim de semana (26 e 27)",
+   "url": "https://agenciabrasil.ebc.com.br/politica/noticia/2026-09/confira-agenda-dos-presidenciaveis-neste-fim-de-semana-26-e-27",
+   "data": "2026-09-26T12:45+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "A agenda dos candidatos à Presidência da República neste fim de semana inclui caminhadas, comícios, entrevistas e encontros com apoiadores em diferentes cidades. Há atividades previstas de campanha em São Paulo, Rio de Janeiro, Minas Gerais, Bahia e Paraná. Romeu Zema (Novo) Participa de atos de campanha em cidades do Sul de Minas. Pela manhã, concede entrevista para o portal Terra do Mandu em Pouso Alegre e depois se encontra com apoiadores na cidade. Às 12h, faz caminhada nos comércios de Varginha e almoça com apoiadores. No início da tarde concede entrevista ao vivo para a rádio Itatiaia de"
+  },
+  {
+   "id": "n-8678049578",
+   "titulo": "Professor de ciências precisa de formação constante, diz pesquisadora",
+   "url": "https://agenciabrasil.ebc.com.br/educacao/noticia/2026-09/professor-de-ciencias-precisa-de-formacao-constante-diz-pesquisadora",
+   "data": "2026-09-26T12:37+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "O ensino de um conjunto de disciplinas conhecidas como Stem (ciência, tecnologia, engenharia e matemática, na sigla em inglês) requer formação constante de professores, para além dos investimentos necessários em infraestrutura. A avaliação é defendida pelos autores do Panorama da Educação Stem no Brasil . O levantamento faz uma análise de como ciência, tecnologia, engenharia e matemática estão sendo incorporadas à educação básica brasileira . Notícias relacionadas: Andes lança documentário sobre a importância da educação e ciência . Analfabetismo entre jovens e adultos com deficiência é 12 vez"
+  },
+  {
+   "id": "n-9a2b091101",
+   "titulo": "MP das Bets: veja o que muda e saiba datas para devolução de valores",
+   "url": "https://agenciabrasil.ebc.com.br/economia/noticia/2026-09/mp-das-bets-veja-o-que-muda-e-saiba-datas-para-devolucao-de-valores",
+   "data": "2026-09-26T12:34+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [],
+   "pessoas": [
+    "luiz-inacio-lula-da-silva"
+   ],
+   "resumo": "Sob o argumento de problema de saúde pública, o presidente Luiz Inácio Lula da Silva assinou nesta sexta-feira (25) medida provisória (MP) que determina o fim da exploração, oferta, intermediação e publicidade das chamadas bets no Brasil. A decisão alcança tanto as apostas esportivas quanto os jogos online , em ambientes físicos e virtuais, e também as autorizações concedidas por estados e pelo Distrito Federal. A medida não atinge outras modalidades de loteria com autorização prevista em lei. O que muda? Notícias relacionadas: Bets passam a ser proibidas no país e apostador receberá saldo. Sa"
+  },
+  {
+   "id": "n-42cd899bbd",
+   "titulo": "Veja quem são os candidatos a governador de Mato Grosso do Sul",
+   "url": "https://agenciabrasil.ebc.com.br/politica/noticia/2026-09/veja-quem-sao-os-candidatos-governador-de-mato-grosso-do-sul",
+   "data": "2026-09-26T12:00+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "Oito candidatos concorrem ao governo de Mato Grosso do Sul nas eleições de 2026. No estado, 2.024.884 eleitores estão aptos a votar. Desse total, 53% são mulheres e 47%, homens . Entre os eleitores que declararam cor/raça, 49,62% são pessoas pardas; 38,84%, brancas; 6,79%, pretas; 3,94%, indígenas; e 0,82%, amarelas. Notícias relacionadas: Saiba quais são as atribuições dos governadores e vice-governadores. O primeiro turno das eleições ocorre no dia 4 de outubro. Em eventual segundo turno, os eleitores voltam às urnas em 25 de outubro. Serão escolhidos os chefes do Poder Executivo - president"
+  },
+  {
+   "id": "n-3949d614e1",
+   "titulo": "Saiba quem são os candidatos ao governo de Mato Grosso",
+   "url": "https://agenciabrasil.ebc.com.br/politica/noticia/2026-09/saiba-quem-sao-os-candidatos-ao-governo-de-mato-grosso",
+   "data": "2026-09-26T11:45+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "Seis candidatos concorrem ao governo de Mato Grosso nas eleições de 2026. No estado, 2.638.230 eleitores estão aptos a votar. Desse total, 51% são mulheres e 49%, homens . Entre os eleitores que declararam cor/raça, 59,85% são pessoas pardas; 27,16%, brancas; 10,21%, pretas; 2,17%, indígenas; e 0,62%, amarelas. Notícias relacionadas: Saiba quais são as atribuições dos governadores e vice-governadores. O primeiro turno das eleições está marcado para o dia 4 de outubro. Se houver segundo turno, será em 25 de outubro. Serão escolhidos os chefes do Poder Executivo - presidente da República e gover"
+  },
+  {
+   "id": "n-0ce9ff1581",
+   "titulo": "Quase 1 milhão de brasileiros no exterior poderão votar nas eleições",
+   "url": "https://agenciabrasil.ebc.com.br/politica/noticia/2026-09/quase-1-milhao-de-brasileiros-no-exterior-poderao-votar-nas-eleicoes",
+   "data": "2026-09-26T11:43+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [
+    "tse"
+   ],
+   "pessoas": [],
+   "resumo": "Quase 1 milhão de brasileiros com domicílio eleitoral no exterior estão aptos a votar nas eleições de 2026. Segundo o Tribunal Superior Eleitoral (TSE), são 918.876 eleitores em 134 países, o equivalente a pouco mais de 0,5% dos cerca de 158,7 milhões totais do país. Os brasileiros que vivem fora do país votam apenas para os cargos de presidente e vice-presidente da República. Seções eleitorais Notícias relacionadas: Exército simula defesa cibernética no Brasil às vésperas da eleição. Parlamentares dos EUA criticam ações de Trump nas eleições do Brasil. Entidades pedem livre acesso à internet "
+  },
+  {
+   "id": "n-5e11be6a0d",
+   "titulo": "Conheça os candidatos ao governo de Goiás nas eleições deste ano",
+   "url": "https://agenciabrasil.ebc.com.br/politica/noticia/2026-09/conheca-os-candidatos-ao-governo-de-goias-nas-eleicoes-deste-ano",
+   "data": "2026-09-26T11:30+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "Seis candidatos concorrem ao governo de Goiás nas eleições de 2026. No estado, 5.080.755 eleitores estão aptos a votar. Desse total, 53% são mulheres e 47%, homens. Entre os eleitores que declararam cor/raça, 59,17% são pessoas pardas; 29,95%, brancas; 9,71%, pretas; 1,06%, amarelas; e 0,12% indígenas. Notícias relacionadas: Saiba quais são as atribuições dos governadores e vice-governadores. O primeiro turno das eleições está marcado para 4 de outubro. Se houver segundo turno, os eleitores voltam às urnas em 25 de outubro. Serão escolhidos os chefes do Poder Executivo - presidente da Repúblic"
+  },
+  {
+   "id": "n-bea897f53b",
+   "titulo": "Eleições 2026: saiba quem são os candidatos ao governo do DF",
+   "url": "https://agenciabrasil.ebc.com.br/politica/noticia/2026-09/eleicoes-2026-saiba-quem-sao-os-candidatos-ao-governo-do-df",
+   "data": "2026-09-26T11:15+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "Dez candidatos concorrem ao governo do Distrito Federal (GDF) nas eleições de 2026. No total, 2.253.132 eleitores estão aptos a votar. Desse total, 54% são mulheres e 46%, homens . Entre os eleitores que declararam cor/raça, 49,17% são pessoas pardas; 38,02%, brancas; 11,71%, pretas; 0,89%, amarelas; e 0,22%, indígenas. Notícias relacionadas: Saiba quais são as atribuições dos governadores e vice-governadores. O primeiro turno das eleições ocorre no dia 4 de outubro. Em eventual segundo turno, os eleitores voltam às urnas em 25 de outubro. Serão escolhidos os chefes do Poder Executivo - presid"
+  },
+  {
+   "id": "n-2ef012d29e",
+   "titulo": "Brasileiro Feminino: Corinthians x São Paulo sustenta força paulista",
+   "url": "https://agenciabrasil.ebc.com.br/esportes/noticia/2026-09/brasileiro-feminino-corinthians-x-sao-paulo-sustenta-forca-paulista",
+   "data": "2026-09-26T11:10+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "A final da Série A1 (primeira divisão) do Campeonato Brasileiro Feminino de futebol, entre Corinthians e São Paulo, sustenta um cenário que se mostra desde a primeira edição, em 2013. Além de todas as decisões terem contado com pelo menos um clube paulista, a de agora é a nona em que ambas as equipes são do estado. Notícias relacionadas: Brasil decepciona e empata com Austrália em amistoso. Internacional contrata técnico Eduardo Baptista até o fim da temporada. O clássico, conhecido pelo apelido Majestoso, terá o primeiro jogo neste sábado (26), às 16h30 (horário de Brasília), na Neo Química A"
+  },
+  {
+   "id": "n-19f52dd927",
+   "titulo": "Bets que continuarem no ar após prazo serão bloqueadas, diz Durigan",
+   "url": "https://agenciabrasil.ebc.com.br/economia/noticia/2026-09/bets-que-continuarem-no-ar-apos-prazo-serao-bloqueadas-diz-durigan",
+   "data": "2026-09-26T01:00+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [],
+   "pessoas": [
+    "dario-carnevalli-durigan"
+   ],
+   "resumo": "Com a proibição das bets , a partir de medida provisória editada nesta sexta-feira (25), o governo federal vai intensificar o combate às plataformas que continuarem no ar a partir do dia 6 de outubro. A partir dessa data, serão considerados ilegais e terão recursos confiscados. \"Hoje são 85 sites e cerca de 180 marcas legais. Elas deixam de existir completamente no dia 5 de outubro. Qualquer outra será bloqueada, rastrearemos os recursos movimentados e vamos confiscar o dinheiro que tenham recebido”, afirmou o ministro da Fazenda, Dario Durigan, em coletiva nesta sexta-feira.” Notícias relacio"
+  },
+  {
+   "id": "n-8ab7db66b6",
+   "titulo": "Líder do PCC é preso na Bolívia e transferido para São Paulo",
+   "url": "https://agenciabrasil.ebc.com.br/justica/noticia/2026-09/lider-do-pcc-e-preso-na-bolivia-e-transferido-para-sao-paulo",
+   "data": "2026-09-26T00:47+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [
+    "pf"
+   ],
+   "pessoas": [],
+   "resumo": "Apontado como um dos líderes da facção criminosa Primeiro Comando da Capital (PCC), Roberto Prieto Filho, o Betinho da Baixada, está detido desde a última quarta-feira (23) em unidade prisional de SP, onde segue à disposição da Justiça no Centro de Detenção Provisória IV, no bairro de Pinheiros, em São Paulo (SP). Prieto foi preso em Santa Cruz de la Sierra, na Bolívia, na última terça-feira (22), com o apoio da Polícia Federal (PF) e da Polícia Civil de São Paulo. Ele estava foragido desde janeiro de 2022, quando homens armados com fuzis invadiram a cadeia pública anexa ao 1º Distrito Policia"
+  },
+  {
+   "id": "n-6de1acada2",
+   "titulo": "Confira como foi a sexta-feira (25) dos presidenciáveis",
+   "url": "https://agenciabrasil.ebc.com.br/politica/noticia/2026-09/confira-como-foi-sexta-feira-25-dos-presidenciaveis",
+   "data": "2026-09-26T00:25+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [],
+   "pessoas": [
+    "nunes-marques"
+   ],
+   "resumo": "A agenda dos presidenciáveis nesta sexta-feira (25) incluiu caminhadas, carreatas, panfletagens e encontros com apoiadores. Também estão previstos debates, roda de conversa com trabalhadores, evento cultural, culto religioso e jantar com empresários. >> Veja como foi o dia dos candidatos: Hertz Dias (PSTU) O candidato Hertz Dias fez campanha em Belo Horizonte (MG), onde fez panfletagens na Santa Casa de Misericórdia no Mercado Central, na PUC Coreu e em bairros da cidade. Notícias relacionadas: Nunes Marques diz que e-Título poderá ser baixado em dia de votação. Ele defende a valorização da ed"
+  },
+  {
+   "id": "n-182a0a5975",
+   "titulo": "Saúde fará busca ativa de apostadores após fim das bets",
+   "url": "https://agenciabrasil.ebc.com.br/saude/noticia/2026-09/saude-fara-busca-ativa-de-apostadores-apos-fim-das-bets",
+   "data": "2026-09-26T00:10+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [
+    "ms"
+   ],
+   "pessoas": [
+    "luiz-inacio-lula-da-silva",
+    "alexandre-rocha-santos-padilha"
+   ],
+   "resumo": "Com a proibição das apostas on-line, anunciada nesta sexta-feira (25) pelo presidente Luiz Inácio Lula da Silva em São Paulo, o Ministério da Saúde aumentará os esforços para contatar apostadores contumazes, oferecendo acompanhamento e tratamento nos casos necessários. Segundo o ministro da Saúde, Alexandre Padilha, as políticas de busca ativa por pessoas com comportamento de jogo problemático já ocorrem desde dezembro de 2025, a partir de dados compartilhados pelos ministérios da Fazenda e Segurança e pela Receita Federal. “O Ministério da Saúde é dono do ambiente onde circulam estes dados, o"
+  },
+  {
+   "id": "n-3ea2cc6940",
+   "titulo": "Governo cria 3ª fase do Desenrola com compra de dívidas pela União",
+   "url": "https://agenciabrasil.ebc.com.br/economia/noticia/2026-09/governo-cria-terceira-fase-do-desenrola-com-compra-de-dividas-pela-uni",
+   "data": "2026-09-25T23:46+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [],
+   "pessoas": [
+    "luiz-inacio-lula-da-silva"
+   ],
+   "resumo": "O presidente Luiz Inácio Lula da Silva assinou nesta sexta-feira (25), em São Paulo, medida provisória que cria a terceira fase do programa de renegociação de dívidas de pessoas físicas, o Desenrola Brasil 3.0. A principal novidade é que a União poderá comprar, em leilão, carteiras de dívidas que não foram pagas e repassar integralmente ao devedor o desconto obtido na operação. Notícias relacionadas: Bets passam a ser proibidas no país e apostador receberá saldo. Pelo programa, poderão ser adquiridas, em leilão, carteiras de dívidas bancárias e não bancárias de até R$ 10 mil , considerando o v"
+  },
+  {
+   "id": "n-1fe43bb344",
+   "titulo": "Bets passam a ser proibidas no país e apostador receberá saldo",
+   "url": "https://agenciabrasil.ebc.com.br/economia/noticia/2026-09/mp-proibe-bets-no-brasil-e-determina-devolucao-de-saldo-ao-apostador",
+   "data": "2026-09-25T23:33+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "O governo federal anunciou nesta sexta-feira (25) uma medida provisória (MP) que proíbe a exploração, a oferta, a intermediação e a publicidade de apostas e jogos on-line no Brasil, as chamadas bets. A partir da publicação da MP, as plataformas ficam impedidas de receber novos apostas . A medida estabelece um período de transição para o fim das operações das empresas autorizadas. Notícias relacionadas: Bets reduzem consumo e atividade econômica, diz pesquisa da USP . Impacto financeiro de bets no SUS chega a R$ 30,6 bilhões por ano. Apostas em bets avançam entre jovens e ampliam risco de depen"
+  },
+  {
+   "id": "n-ab53615590",
+   "titulo": "Editadas medidas provisórias contra bets e endividamento das famílias",
+   "url": "https://www12.senado.leg.br/noticias/materias/2026/09/25/poder-executivo-anuncia-mps-contra-bets-e-endividamento-das-familias",
+   "data": "2026-09-25T23:27:00+00:00",
+   "fonte": "senado",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "Foram editadas pela Presidência da República nesta sexta-feira (25) duas medidas provisórias: a MP 1.393, com ações para aliviar a situação de endividamento das famílias, programa batizado como Desenrola Brasil 3.0; e a MP 1.394, proibindo as chamadas loterias de apostas de quota fixa, conhecidas como bets. No mesmo evento em São Paulo que tratou da edição das MPs, também foi anunciado um projeto de lei de iniciativa do Poder Executivo, que tipifica crimes relacionados aos jogos de azar on-line. As MPs passaram a valer a partir de sua publicação, em edição extra do Diário Oficial da União. Cal"
+  },
+  {
+   "id": "n-1c92acc008",
+   "titulo": "Zanin manda investigar uso de IA para burlar sistema do STF",
+   "url": "https://agenciabrasil.ebc.com.br/justica/noticia/2026-09/zanin-manda-investigar-uso-de-ia-para-burlar-sistema-do-stf",
+   "data": "2026-09-25T22:46+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [
+    "stf"
+   ],
+   "pessoas": [],
+   "resumo": "O ministro Cristiano Zanin, do Supremo Tribunal Federal (STF),determinou nesta sexta-feira (25) a abertura de investigação para apurar o uso de inteligência artificial (IA) para direcionar o sistema eletrônico da Corte. A medida foi tomada após o Supremo identificar o uso de prompt de comando para forçar o sistema eletrônico a aceitar automaticamente um recurso protocolado na Corte. Notícias relacionadas: STF veta revogação unilateral de ICMS aprovado pelo Confaz . STF: defesa de Bolsonaro pede suspensão do cumprimento da pena. STF iguala licença-maternidade de mães biológicas e adotivas. O ca"
+  },
+  {
+   "id": "n-63094d153d",
+   "titulo": "Fachin cobra manifestação da PGR sobre casos do INSS e Master",
+   "url": "https://agenciabrasil.ebc.com.br/justica/noticia/2026-09/fachin-cobra-manifestacao-da-pgr-sobre-casos-do-inss-e-master",
+   "data": "2026-09-25T22:25+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [
+    "inss",
+    "stf"
+   ],
+   "pessoas": [
+    "edson-fachin"
+   ],
+   "resumo": "O presidente do Supremo Tribunal Federal (STF), Edson Fachin, deu prazo de cinco dias para a Procuradoria-Geral da República (PGR) se manifestar sobre medidas urgentes que foram solicitadas nas investigações do caso Master e nas apurações que envolvem os descontos ilegais de benefícios do Instituto Nacional do Seguro Social (INSS). Os casos eram relatados pelo ministro André Mendonça, mas foram enviados para a presidência do Supremo no auge do conflito interno deflagrado na Corte após Mendonça retirar o sigilo das supostas conversas entre Alexandre de Moraes e o ex-banqueiro Daniel Vorcaro. No"
+  },
+  {
+   "id": "n-020c08eee4",
+   "titulo": "Projeto prevê divulgação de protocolo Calma para lidar com crises convulsivas",
+   "url": "https://www.camara.leg.br/noticias/1304720-projeto-preve-divulgacao-de-protocolo-calma-para-lidar-com-crises-convulsivas",
+   "data": "2026-09-25T21:56+00:00",
+   "fonte": "camara",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "Breno Esaki/Agência Brasília Se a crise durar mais de cinco minutos, é importante chamar o Samu O Projeto de Lei 2488/26 determina a divulgação obrigatória em todo o país do Protocolo Calma, que reúne orientações de primeiros socorros para atendimento de pessoas em crises convulsivas. A Câmara dos Deputados analisa a proposta. Desenvolvido pela Associação Brasileira de Epilepsia (ABE), o protocolo utiliza a sigla Calma para orientar a população em cinco passos principais: manter a calma; afastar objetos cortantes ou móveis próximos; lateralizar a pessoa para facilitar a respiração e evitar suf"
+  },
+  {
+   "id": "n-7dfe067f2b",
+   "titulo": "CNU 2025: sai nova lista de classificados para vagas remanescentes",
+   "url": "https://agenciabrasil.ebc.com.br/economia/noticia/2026-09/cnu-2025-sai-nova-lista-de-classificados-para-vagas-remanescentes",
+   "data": "2026-09-25T21:33+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [
+    "mgi",
+    "enap"
+   ],
+   "pessoas": [],
+   "resumo": "Os candidatos que estão em lista de espera na segunda edição do Concurso Público Nacional Unificado (CNU), realizada em 2025, já podem conferir a nova lista de classificação para ocupação das vagas remanescentes de convocações anteriores do certame. O resultado foi publicado pela Fundação Escola Nacional de Administração Pública, vinculada ao Ministério da Gestão e da Inovação em Serviços Públicos (MGI), no Diário Oficial da União desta sexta-feira (25) . Notícias relacionadas: Prazo para optar por seguir na lista de espera do CNU 1 termina hoje. Concursos públicos seguem previstos durante per"
+  },
+  {
+   "id": "n-2922609f76",
+   "titulo": "Conselho do MPF rejeita abertura de investigação contra Gonet",
+   "url": "https://agenciabrasil.ebc.com.br/justica/noticia/2026-09/conselho-do-mpf-rejeita-abertura-de-investigacao-contra-gonet",
+   "data": "2026-09-25T21:11+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [
+    "mpf",
+    "pf",
+    "cvm",
+    "cnj"
+   ],
+   "pessoas": [
+    "nunes-marques",
+    "paulo-gonet"
+   ],
+   "resumo": "Por 5 votos a 4, o Conselho Superior do Ministério Público Federal (CSMPF) rejeitou nesta sexta-feira (25) a abertura de um procedimento de investigação contra procurador-geral da República, Paulo Gonet. O procurador foi citado em conversas encontradas pela Polícia Federal (PF) no celular do ex-banqueiro Daniel Vorcaro, dono do Banco Master, que está preso. Notícias relacionadas: CNJ faz operação em gabinete de desembargador ligado a Nunes Marques. Dino manda Polícia Federal investigar atuação da CVM no caso Master. Conselho do MPF forma maioria para manter Gonet no caso Master. O colegiado ne"
+  },
+  {
+   "id": "n-b3aa59c37e",
+   "titulo": "Sessão destaca excelência do ensino da Escola Superior de Ciências da Saúde",
+   "url": "https://www12.senado.leg.br/noticias/materias/2026/09/25/sessao-destaca-excelencia-do-ensino-da-escola-superior-de-ciencias-da-saude",
+   "data": "2026-09-25T21:09:00+00:00",
+   "fonte": "senado",
+   "nos": [],
+   "pessoas": [
+    "izalci-lucas"
+   ],
+   "resumo": "O Senado fez nesta sexta-feira (25) sessão especial em homenagem aos 25 anos da Fundação de Ensino e Pesquisa em Ciências da Saúde (Fepecs) e da Escola Superior de Ciências da Saúde (a ESCS, mantida pela fundação). O autor da homenagem foi o senador Izalci Lucas (PL-DF), que destacou a relevância das instituições públicas de ensino do Distrito Federal para a inovação tecnológica e o fortalecimento do Sistema Único de Saúde (SUS). Izalci ressaltou ainda que o ensino da ESCS expõe os alunos à realidade e lembrou que mais de 2 mil médicos e enfermeiros já foram formados pela instituição, criada p"
+  },
+  {
+   "id": "n-45c291531e",
+   "titulo": "Projeto prioriza matrícula de aluno com deficiência em escola integral próxima",
+   "url": "https://www.camara.leg.br/noticias/1304640-projeto-prioriza-matricula-de-aluno-com-deficiencia-em-escola-integral-proxima",
+   "data": "2026-09-25T20:55+00:00",
+   "fonte": "camara",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "Marcelo Camargo/Agência Brasil Autor acredita que proposta pode evitar longos deslocamentos que virem barreiras O Projeto de Lei 3205/26 garante ao aluno com deficiência prioridade na matrícula em escola pública de tempo integral mais próxima de sua residência ou do local de trabalho de seus responsáveis. Em análise na Câmara dos Deputados, a proposta altera a Lei de Diretrizes e Bases da Educação Nacional (LDB) . Atualmente, a legislação já prevê o direito geral de matrícula em escolas próximas à residência, no entanto, não o atribui de forma específica ao aluno com deficiência. O objetivo, s"
+  },
+  {
+   "id": "n-1800d0f8f8",
+   "titulo": "Após cinco meses, conta de luz voltará à bandeira verde em outubro",
+   "url": "https://agenciabrasil.ebc.com.br/economia/noticia/2026-09/apos-cinco-meses-conta-de-luz-voltara-bandeira-verde-em-outubro",
+   "data": "2026-09-25T20:54+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [
+    "aneel"
+   ],
+   "pessoas": [],
+   "resumo": "As contas de luz voltarão em outubro à bandeira verde, sem cobrança de tarifas adicionais, informou nesta sexta-feira (25) a Agência Nacional de Energia Elétrica (Aneel). A bandeira tarifária voltará a vigorar após cinco meses de bandeira amarela , que tem custo adicional de R$ 1,885 a cada 100 kWh consumidos. Notícias relacionadas: Bandeira tarifária de energia permanecerá amarela em setembro. Consumidores poderão escolher fornecedores de energia a partir de 2027. Eventos climáticos extremos desafiam concessionárias de energia. Segundo a Aneel, o retorno da bandeira verde se deve ao aumento n"
+  },
+  {
+   "id": "n-474144db78",
+   "titulo": "Multas por aumento abusivo de combustíveis passam de R$ 700 milhões",
+   "url": "https://agenciabrasil.ebc.com.br/economia/noticia/2026-09/multas-por-aumento-abusivo-de-combustiveis-passam-de-r-700-milhoes",
+   "data": "2026-09-25T20:44+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [
+    "anp"
+   ],
+   "pessoas": [],
+   "resumo": "A Agência Nacional do Petróleo, Gás Natural e Biocombustíveis (ANP), responsável pela regulamentação do setor no país, aplicou mais de R$ 700 milhões em multas a distribuidoras de combustíveis por causa de aumento abusivo de preço , informou o órgão nesta sexta-feira (25). As infrações são referentes a dez processos administrativos contra nove distribuidoras. No meio da semana, a ANP já havia anunciado que os cinco primeiros julgamentos resultaram em R$ 200 milhões em multas . Notícias relacionadas: Combustíveis terão novos preços médios a partir de outubro. ANP aplicou R$ 200 milhões em multa"
+  },
+  {
+   "id": "n-fc5f32e89a",
+   "titulo": "Projeto exige pessoal treinado para auxiliar pessoas idosas em viagens interestaduais",
+   "url": "https://www.camara.leg.br/noticias/1305482-projeto-exige-pessoal-treinado-para-auxiliar-pessoas-idosas-em-viagens-interestaduais",
+   "data": "2026-09-25T20:28+00:00",
+   "fonte": "camara",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "Texto está em análise na Câmara dos Deputados"
+  },
+  {
+   "id": "n-7a8d409667",
+   "titulo": "Vídeo: Visitação ao Congresso deve ser agendada pela internet a partir de segunda",
+   "url": "https://www12.senado.leg.br/noticias/videos/2026/09/visitacao-ao-congresso-deve-ser-agendada-pela-internet-a-partir-de-segunda-28",
+   "data": "2026-09-25T20:23:00+00:00",
+   "fonte": "senado",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "A partir desta segunda-feira (28), a visitação ao Congresso deverá ser agendada pela internet, no endereço congressonacional.leg.br/visite. Com o agendamento prévio, o visitante já poderá saber o horário da sua visita, reduzindo a espera. O passeio ao Palácio do Congresso inclui passagens pelos Plenários da Câmara e do Senado e acesso a obras de artistas renomados, como Athos Bulcão, Di Cavalcanti e Mariane Peretti."
+  },
+  {
+   "id": "n-07f8023578",
+   "titulo": "Áudio: Leis reconhecem Franca como capital do basquete e Piranguinho, do pé de moleque",
+   "url": "https://www12.senado.leg.br/noticias/audios/2026/09/leis-reconhecem-franca-como-capital-do-basquete-e-piranguinho-do-pe-de-moleque",
+   "data": "2026-09-25T20:08:00+00:00",
+   "fonte": "senado",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "A Presidência da República sancionou nesta semana a Lei 15.514, de 2026, que reconhece a cidade de Franca, no interior de São Paulo, como a Capital Nacional do Basquete. Também sancionou a Lei 15.515, de 2026, que reconhece Piranguinho, cidade de Minas Gerais, como a Capital Nacional do Pé de Moleque. Ouça o áudio."
+  },
+  {
+   "id": "n-8bb1202b86",
+   "titulo": "Caixa libera dinheiro de antigo fundo PIS/Pasep; veja como sacar",
+   "url": "https://agenciabrasil.ebc.com.br/economia/noticia/2026-09/caixa-libera-dinheiro-de-antigo-fundo-pispasep-veja-como-sacar",
+   "data": "2026-09-25T19:39+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [
+    "caixa"
+   ],
+   "pessoas": [],
+   "resumo": "Empregados com carteira assinada e servidores públicos que trabalharam de 1971 a 1988 e estão na fila para sacar as cotas do antigo fundo Programa de Integração Social (PIS) e Programa de Formação do Patrimônio do Servidor Público (Pasep) podem reaver o valor. A Caixa Econômica Federal começou a pagar nesta sexta-feira (25) um novo lote de valores esquecidos. Nesta rodada, recebem aqueles que pediram o ressarcimento até 31 de agosto. O valor médio pago varia de R$ 2,8 mil a R$ 2,9 mil, dependendo do tempo de trabalho e do salário da época. Quem tem direito Notícias relacionadas: Prévia da infl"
+  },
+  {
+   "id": "n-2eab99a8e7",
+   "titulo": "Conselho do MPF forma maioria para manter Gonet no caso Master",
+   "url": "https://agenciabrasil.ebc.com.br/justica/noticia/2026-09/csmpf-forma-maioria-para-manter-gonet-no-caso-master",
+   "data": "2026-09-25T19:33+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [
+    "mpf"
+   ],
+   "pessoas": [
+    "paulo-gonet"
+   ],
+   "resumo": "O Conselho Superior do Ministério Público Federal (CSMPF) formou nesta sexta-feira (25) maioria de votos para manter procurador-geral da República, Paulo Gonet, na condução das investigações que envolvem o Banco Master. O colegiado analisa uma representação apresentada por deputados do Partido Novo que pede o afastamento de Gonet das investigações e a apuração de sua atuação no caso. Notícias relacionadas: Conselho do MPF tem 3 votos para manter Gonet à frente do caso Master. Até o momento, seis conselheiros votaram pela permanência de Gonet na condução das investigações. Os conselheiros ainda"
+  },
+  {
+   "id": "n-41a4c37602",
+   "titulo": "Projeto cria política nacional de valorização de costureiras",
+   "url": "https://www.camara.leg.br/noticias/1304407-projeto-cria-politica-nacional-de-valorizacao-de-costureiras",
+   "data": "2026-09-25T18:58+00:00",
+   "fonte": "camara",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "Paulo H. Carvalho/Agência Brasília Proposta permite priorizar empreendimentos liderados por mulheres, mães solo, pessoas negras, dentre outros grupos O Projeto de Lei 2987/26 cria a Política Nacional de Valorização, Qualificação, Formalização e Proteção Produtiva das Costureiras, Costureiros e Trabalhadores da Confecção. A iniciativa deverá considerar gênero, raça, renda, idade, deficiência, território e condição migratória. A proposta prioriza grupos mais expostos à informalidade, à baixa remuneração, à falta de proteção previdenciária e à precarização do trabalho. O texto em análise na Câmar"
+  },
+  {
+   "id": "n-3dd774e812",
+   "titulo": "Áudio: Direito de crianças e adolescentes à natureza é reforçado por lei federal",
+   "url": "https://www12.senado.leg.br/noticias/audios/2026/09/direito-de-criancas-e-adolescentes-a-natureza-e-reforcado-por-lei-federal",
+   "data": "2026-09-25T18:03:00+00:00",
+   "fonte": "senado",
+   "nos": [],
+   "pessoas": [
+    "flavio-arns"
+   ],
+   "resumo": "Entrou em vigor nesta semana a lei que estabelece diretrizes para garantir o direito de crianças e adolescentes à natureza, também chamada de ECA Ambiental (Lei 15.512). União, estados e municípios deverão promover políticas públicas (como as de planejamento urbano) que facilitem o acesso desse público a áreas verdes. Também deverão adotar ações para reduzir os efeitos das mudanças do clima, com prioridade para a primeira infância e crianças com deficiência. Para o senador Flávio Arns (PSB-PR), \"a degradação ambiental desorganiza a vida cotidiana das famílias e agrava desigualdades já existent"
+  },
+  {
+   "id": "n-84822c937e",
+   "titulo": "Mais de 10 mil professores são selecionados via Prova Nacional Docente",
+   "url": "https://agenciabrasil.ebc.com.br/educacao/noticia/2026-09/mais-de-10-mil-professores-sao-selecionados-prova-nacional-docente",
+   "data": "2026-09-25T17:58+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [
+    "mec",
+    "inep"
+   ],
+   "pessoas": [],
+   "resumo": "O Ministério da Educação (MEC) contabilizou que mais de 10 mil professores foram selecionados em editais públicos que utilizam a nota da primeira edição da Prova Nacional Docente (PND). O exame tem o objetivo de auxiliar estados e municípios a selecionar professores para as próprias redes de ensino e, desta forma, aumentar o número de docentes efetivos no magistério público do país. Notícias relacionadas: PND 2026: gabaritos preliminares já estão disponíveis. Censo Escolar: resultado preliminar está disponível no site do Inep. Programa de bolsas vai incentivar formação para a educação básica. "
+  },
+  {
+   "id": "n-b34ead0a72",
+   "titulo": "Tesouro Direto bate recorde em agosto com R$ 15 bi em investimentos",
+   "url": "https://agenciabrasil.ebc.com.br/economia/noticia/2026-09/tesouro-direto-bate-recorde-em-agosto-com-r-15-bi-em-investimentos",
+   "data": "2026-09-25T17:51+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "Os investimentos no Tesouro Direto somaram R$ 15 bilhões em agosto, o maior valor da série histórica do programa. No período, foram realizados 1,32 milhão de operações. Os resgates e vencimentos totalizaram R$ 17,22 bilhões, resultando em captação líquida negativa (quando o governo paga mais dinheiro aos investidores do que capta com novas aplicações) de R$ 2,21 bilhões. Notícias relacionadas: Tesouro honra R$ 79,95 mi em dívidas de estados e municípios em agosto. BC reduz projeção de crescimento da economia para 1,8% . Mercado reduz projeção da Selic para 13,50%. O resultado foi influenciado "
+  },
+  {
+   "id": "n-a481d0a8e6",
+   "titulo": "Áudio: Estabilidade para grávida em contrato temporário vai a nova votação na CAS",
+   "url": "https://www12.senado.leg.br/noticias/audios/2026/09/estabilidade-para-gravida-em-contrato-temporario-vai-a-nova-votacao-na-cas",
+   "data": "2026-09-25T17:44:00+00:00",
+   "fonte": "senado",
+   "nos": [
+    "tst",
+    "stf"
+   ],
+   "pessoas": [],
+   "resumo": "A Comissão de Assuntos Sociais (CAS) do Senado deve votar, em turno suplementar, um projeto (PL 3.522/2025) que garante estabilidade no emprego para mulheres que engravidarem durante um contrato temporário. Pela proposta, a trabalhadora terá estabilidade desde a confirmação da gravidez até cinco meses depois do parto. Hoje, esse direito é reconhecido com base em decisões do Supremo Tribunal Federal e do Tribunal Superior do Trabalho."
+  },
+  {
+   "id": "n-946139a848",
+   "titulo": "Conselho do MPF tem 3 votos para manter Gonet à frente do caso Master",
+   "url": "https://agenciabrasil.ebc.com.br/justica/noticia/2026-09/conselho-do-mpf-tem-3-votos-para-manter-gonet-frente-do-caso-master",
+   "data": "2026-09-25T17:17+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [
+    "mpf"
+   ],
+   "pessoas": [
+    "paulo-gonet"
+   ],
+   "resumo": "O Conselho Superior do Ministério Público Federal (MPF) tem três votos para rejeitar um pedido pelo afastamento do procurador-geral da República, Paulo Gonet, das investigações sobre o caso Master. Prevalece até o momento a posição do relator, o subprocurador-geral da República Francisco de Assis Sanseverino, que votou nesta sexta-feira (25) pelo arquivamento integral da notícia-crime na qual o Partido Novo fez o pedido. A legenda levantou suspeitas de que Gonet possa ter prevaricado na condução do caso. Notícias relacionadas: Mendonça volta a suspender multas sobre saúde mental no trabalho. P"
+  },
+  {
+   "id": "n-af036d7fd7",
+   "titulo": "Vídeo: Eleições 2026: saiba o que é o voto de legenda",
+   "url": "https://www12.senado.leg.br/noticias/videos/2026/09/eleicoes-2026-saiba-o-que-e-o-voto-de-legenda",
+   "data": "2026-09-25T17:09:00+00:00",
+   "fonte": "senado",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "Na eleição para deputado federal, estadual ou distrital, o eleitor pode votar no candidato ou no partido, que é o voto de legenda. Nesse caso, o eleitor digita apenas os dois números que identificam a agremiação. O voto é contabilizado no cálculo do quociente partidário para definir quantos deputados o partido elegerá. Isso também pode acontecer nas eleições para vereadores. Já para o Senado, o voto precisa ser dado ao candidato. Em 2026, cada eleitor vai escolher dois candidatos ao Senado."
+  },
+  {
+   "id": "n-f475bdaea7",
+   "titulo": "Eleições 2026: Guia prático para eleitores",
+   "url": "https://www12.senado.leg.br/noticias/infomaterias/2026/09/eleicoes-2026-guia-pratico-para-eleitores",
+   "data": "2026-09-25T17:04:00+00:00",
+   "fonte": "senado",
+   "nos": [],
+   "pessoas": [],
+   "resumo": ""
+  },
+  {
+   "id": "n-b89f657987",
+   "titulo": "Vídeo: Dia Nacional de Luta da Pessoa com Deficiência foi celebrado no Plenário",
+   "url": "https://www12.senado.leg.br/noticias/videos/2026/09/dia-nacional-de-luta-da-pessoa-com-deficiencia-foi-celebrado-no-plenario",
+   "data": "2026-09-25T17:00:00+00:00",
+   "fonte": "senado",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "O Dia Nacional de Luta da Pessoa com Deficiência foi celebrado no Senado em sessão especial na segunda-feira (21). A Lei 11.133, de 2005 instituiu a data. Garantia de direitos conquistados, acessibilidade, representação política e combate ao capacitismo foram questões destacadas na sessão."
+  },
+  {
+   "id": "n-e5d95d52d0",
+   "titulo": "SGM e DGer: 80 anos a serviço do Senado",
+   "url": "https://www12.senado.leg.br/noticias/infomaterias/2026/09/sgm-e-dger-80-anos-a-servico-do-senado",
+   "data": "2026-09-25T16:46:00+00:00",
+   "fonte": "senado",
+   "nos": [],
+   "pessoas": [],
+   "resumo": ""
+  },
+  {
+   "id": "n-5655908af9",
+   "titulo": "Pronatec oferta mais de 1,5 mil vagas nas áreas de meio ambiente",
+   "url": "https://agenciabrasil.ebc.com.br/educacao/noticia/2026-09/pronatec-oferta-mais-de-15-mil-vagas-nas-areas-de-meio-ambiente",
+   "data": "2026-09-25T16:45+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [
+    "mec"
+   ],
+   "pessoas": [],
+   "resumo": "O Programa Nacional de Acesso ao Ensino Técnico e Emprego (Pronatec) , do Ministério da Educação (MEC), ofertará, em outubro, 1.580 vagas gratuitas em cursos de qualificação profissional relacionados ao meio ambiente, à sustentabilidade e bioeconomia. Os 11 cursos técnicos disponíveis serão ofertados nas modalidades presenciais e de ensino a distância (EaD). Notícias relacionadas: Senado aprova ampliação de instituições participantes do Pronatec. MEC publica normas para execução de bolsas do Pronatec. São 14 instituições de ensino das redes federal e estaduais dos seguintes localidades: Maranh"
+  },
+  {
+   "id": "n-bd1a726ee4",
+   "titulo": "Áudio: Congresso analisará MP que liberou R$ 64,3 milhões a agricultores e indígenas",
+   "url": "https://www12.senado.leg.br/noticias/audios/2026/09/congresso-analisara-mp-que-liberou-r-64-3-milhoes-a-agricultores-e-indigenas",
+   "data": "2026-09-25T16:14:00+00:00",
+   "fonte": "senado",
+   "nos": [
+    "mds",
+    "mpi",
+    "congresso"
+   ],
+   "pessoas": [],
+   "resumo": "O Congresso Nacional analisará a medida provisória (MP 1.392/2026) que na terça-feira (22) liberou R$ 64,3 milhões para apoio aos direitos das comunidades indígenas e a compra de alimentos da agricultura familiar. Cerca de R$ 40,3 milhões vão para o Ministério do Desenvolvimento e Assistência Social, Família e Combate à Fome e R$ 24 milhões para o Ministério dos Povos Indígenas. Ainda que os recursos já tenham sido liberados, o texto deve passar na Comissão de Orçamento e nos plenários da Câmara e do Senado em até 120 dias para ser convertido em lei."
+  },
+  {
+   "id": "n-5a794d89db",
+   "titulo": "Vídeo: Eleições 2026: veja o perfil dos candidatos ao Senado",
+   "url": "https://www12.senado.leg.br/noticias/videos/2026/09/eleicoes-2026-veja-o-perfil-dos-candidatos-ao-senado",
+   "data": "2026-09-25T16:14:00+00:00",
+   "fonte": "senado",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "Dos 314 candidatos que disputam vagas ao Senado neste ano, apenas 22% são mulheres. A maioria se declara branca (60,8%) e dois em cada três candidatos têm 50 anos ou mais. Veja mais informações no vídeo."
+  },
+  {
+   "id": "n-c885c64811",
+   "titulo": "Meta desabilitou anúncios do perfil de Lula no Facebook",
+   "url": "https://agenciabrasil.ebc.com.br/politica/noticia/2026-09/meta-desabilitou-anuncios-do-perfil-de-lula-no-facebook",
+   "data": "2026-09-25T16:06+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [],
+   "pessoas": [
+    "luiz-inacio-lula-da-silva"
+   ],
+   "resumo": "A empresa Meta - dona do Facebook, WhatsApp e Instagram – desabilitou os anúncios do perfil do candidato à presidência Luiz Inácio Lula da Silva (PT) no Facebook a 10 dias do 1º turno da eleição. A direção da campanha entrou com recurso contra a Meta, alegando que o bloqueio não foi justificado. A conta de anúncios de Lula no Facebook foi normalizada no mesmo dia e a campanha do presidenciável aguarda manifestação da big tech para entender o que ocorreu. Notícias relacionadas: Exército simula defesa cibernética no Brasil às vésperas da eleição. Parlamentares dos EUA criticam ações de Trump nas"
+  },
+  {
+   "id": "n-ff4eea8cdc",
+   "titulo": "Exército simula defesa cibernética no Brasil às vésperas da eleição",
+   "url": "https://agenciabrasil.ebc.com.br/politica/noticia/2026-09/exercito-simula-defesa-cibernetica-no-brasil-vesperas-da-eleicao",
+   "data": "2026-09-25T15:42+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [
+    "abin"
+   ],
+   "pessoas": [],
+   "resumo": "O Exército brasileiro coordenou, entre os dias 21 e 25 de setembro, a oitava edição do evento Guardião Cibernético às vésperas da eleição presidencial. A ação veio em meio aos alertas, tanto de especialistas, quando da Agência Brasileira de Inteligência (Abin), para possíveis interferências estrangeiras no pleito brasileiro. O evento do Exército reuniu 1,3 mil participantes em Brasília e outras seis capitais do país, como São Paulo, Recife, Curitiba e Manaus. A simulação contou com cerca de 300 organizações e representantes de 14 países . Notícias relacionadas: Parlamentares dos EUA criticam a"
+  },
+  {
+   "id": "n-64b6b9f370",
+   "titulo": "Tenente da Marinha é encontrada morta na USP",
+   "url": "https://agenciabrasil.ebc.com.br/geral/noticia/2026-09/tenente-da-marinha-e-encontrada-morta-na-usp",
+   "data": "2026-09-25T15:35+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [
+    "pf"
+   ],
+   "pessoas": [],
+   "resumo": "A Polícia Federal (PF) e a Marinha do Brasil investigam a morte da Segundo-Tenente da Marinha, Beatriz Ficket Santoro, de 33 anos, encontrada morta na tarde dessa quinta-feira (24) dentro da Universidade de São Paulo (USP). O corpo da oficial foi localizado no interior do Centro Tecnológico da Marinha, que fica dentro da USP, na zona oeste de São Paulo, onde Beatriz trabalhava. A militar foi encaminhada para o Hospital Universitário da própria USP, mas chegou sem vida ao local. Segundo a Secretaria de Segurança Pública paulista, uma médica se recusou a fazer o atestado de óbito. De acordo com "
+  },
+  {
+   "id": "n-e42736b2c3",
+   "titulo": "Centros de educação tecnológica de MG e do RJ viram universidades",
+   "url": "https://www12.senado.leg.br/noticias/materias/2026/09/25/centros-de-educacao-tecnologica-de-mg-e-do-rj-viram-universidades",
+   "data": "2026-09-25T15:30:00+00:00",
+   "fonte": "senado",
+   "nos": [],
+   "pessoas": [
+    "camilo-santana"
+   ],
+   "resumo": "Os Centros Federais de Educação Tecnológica (Cefets) de Minas Gerais e do Rio de Janeiro foram transformados em universidades federais. É o que determina lei sancionada sem vetos na quinta-feira (24) e publicada no Diário Oficial da União desta sexta (25). As instituições passam a se chamar Universidade Federal de Ciência e Inovação de Minas Gerais e Universidade Federal de Ciência e Inovação do Rio de Janeiro. A Lei 15.521, de 2026, já em vigor, tem origem no Projeto de Lei (PL) 4.952/2026, aprovado no Plenário no início de setembro, com relatoria do senador Camilo Santana (PT-CE). Segundo o "
+  },
+  {
+   "id": "n-6c2c7facc6",
+   "titulo": "Vídeo: Mulheres com deficiência são mais agredidas, revela DataSenado",
+   "url": "https://www12.senado.leg.br/noticias/videos/2026/09/mulheres-com-deficiencia-sao-mais-agredidas-revela-datasenado",
+   "data": "2026-09-25T15:05:00+00:00",
+   "fonte": "senado",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "Mulheres com deficiência são mais agredidas do que as que não têm nenhuma deficiência. É o que revela pesquisa do DataSenado discutida pela Comissão de Direitos Humanos (CDH) na quarta (23). De acordo com os resultados, 38% de mulheres com deficiência (4,4 milhões) já sofreram violência doméstica e familiar; dado superior aos 25% de mulheres sem deficiência. Participantes do debate apontaram como desafio a acessibilidade das vítimas aos sistemas de apoio."
+  },
+  {
+   "id": "n-66ca6d3ba4",
+   "titulo": "Censo Escolar: resultado preliminar está disponível no site do Inep",
+   "url": "https://agenciabrasil.ebc.com.br/educacao/noticia/2026-09/censo-escolar-resultado-preliminar-esta-disponivel-no-site-do-inep",
+   "data": "2026-09-25T15:04+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [
+    "inep"
+   ],
+   "pessoas": [],
+   "resumo": "Os resultados preliminares do Censo Escolar da Educação Básica de 2026 estão disponíveis para conferência no painel de resultados no site do Instituto Nacional de Estudos e Pesquisas Educacionais Anísio Teixeira (Inep). Os resultados referem-se às matrículas presenciais efetivas na educação básica das redes estaduais e municipais de educação e estão apresentados em ordem alfabética dos estados. Os responsáveis pelo envio dos dados têm agora 30 dias para corrigir erros, por meio do Sistema EducaCenso do Inep . Cronograma Notícias relacionadas: Programa de bolsas vai incentivar formação para a e"
+  },
   {
    "id": "n-73b71926ed",
    "titulo": "TSE libera download e primeiro acesso ao e-Título no dia da eleição",
@@ -1136,6 +1711,16 @@
    "resumo": "O Ministério Público de São Paulo (MPSP) recomendou à prefeitura da capital paulista a intervenção na administração da Feira da Madrugada do Brás, concedida à empresa Circuito de Compras. A feira reúne milhares de pequenos comerciantes de produtos populares, roupas e eletrônicos e onde circulam cerca de 15 mil pessoas por dia. Segundo o MP, a empresa cometeu uma série de irregularidades e acumula dívida de R$ 163 milhões, o que inviabiliza a continuidade da gestão. O MP pede que a prefeitura e a agência reguladora, a SP Regula, decretem a intervenção na concessão no prazo de 15 dias, além de a"
   },
   {
+   "id": "n-3b95174f23",
+   "titulo": "Em São Paulo, Presidente da República apresenta novas medidas de proteção às famílias e à economia popular",
+   "url": "https://www.gov.br/planalto/pt-br/acompanhe-o-planalto/noticias/em-sao-paulo-presidente-da-republica-apresenta-novas-medidas-de-protecao-as-familias-e-a-economia-popular",
+   "data": "2026-09-24T22:01:00+00:00",
+   "fonte": "planalto",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "Agenda será às 18h desta sexta-feira, 25, no Edifício Matarazzo, na capital paulista"
+  },
+  {
    "id": "n-4eabc11e50",
    "titulo": "CNJ faz operação em gabinete de desembargador ligado a Nunes Marques",
    "url": "https://agenciabrasil.ebc.com.br/justica/noticia/2026-09/cnj-faz-operacao-em-gabinete-de-desembargador-ligado-nunes-marques",
@@ -1194,6 +1779,16 @@
    ],
    "pessoas": [],
    "resumo": "Seis em cada dez brasileiros avaliam a própria saúde como ótima ou boa, mas 63% estão acima do peso e 42% não fazem atividade física, reunindo dois dos principais fatores de risco para o câncer, aponta uma pesquisa feita pelo A.C.Camargo Cancer Center e a Nexus Pesquisa e Inteligência de Dados. A pesquisa A saúde do brasileiro, hábitos de vida e o uso de tecnologia em diagnósticos médicos mostra ainda 26% dos entrevistados com obesidade, segundo os critérios da Organização Mundial da Saúde. Notícias relacionadas: Anvisa alerta para venda irregular de tirzepatida em pó na internet . Em 30 anos,"
+  },
+  {
+   "id": "n-d9dad7f050",
+   "titulo": "Visita presidencial a novos campi em instituições federais de ensino na Zona Leste da capital paulista",
+   "url": "https://www.gov.br/planalto/pt-br/acompanhe-o-planalto/noticias/visita-presidencial-a-novos-campi-em-instituicoes-federais-de-ensino-na-zona-leste-da-capital-paulista",
+   "data": "2026-09-24T20:35:00+00:00",
+   "fonte": "planalto",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "Obras do campus da Unifesp que sediará o Instituto das Cidades serão vistas neste sábado, às 12h30. Já as instalações do Instituto Federal de São Paulo na Cidade Tiradentes, às 13h30 do mesmo dia"
   },
   {
    "id": "n-2cdcedb96b",
