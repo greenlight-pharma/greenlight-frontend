@@ -1,3 +1,9 @@
+## 2026-09-25 22:02 BRT — Medicações: abrir ficha e retomar lista
+
+Fricção reproduzida no público390px: abrir amoxicilina distante da lista mantinha scrollY398,5 e título acima da tela(-98,5px); voltar perdia item e retornava topo. Correção somente na2Doctor/Medicações: guarda posição e nome em refs na memória, abre detalhe no topo com foco no botão de voltar e, no retorno, restaura scroll e foco no cartão após montagem. Busca/grupo/limite preservados. Nenhuma persistência, conteúdo médico ou API alterada; WMed/Condições mantêm comportamento anterior.
+
+200 testes existentes passaram; build2Doctor e build completo na raiz concluídos exit0; gitdiffcheck limpo. CUA local390: amoxicilina abre scroll0/título300px, volta scroll3532/cartão341px; Mostrar mais→60 itens, cianocobalamina abre0 e volta8138 mantendo60. Busca biguanida metformina e grupoEndócrino preservados. Desktop1280 abre título250px e volta cartão316px; sem overflow375/375 e1265/1265, console semerros. Fixture somente estática/sem upstream encerrada e aba64 fechada. Sem aparelho físico, VoiceOver, sessão real ou teste clínico. Publicação pendente. Próximo: deploy isolado, health/asset/UI pública; não ampliar catálogo.
+
 ## Publicação verificada — busca de medicações — 2026-09-25 21:40 BRT
 
 Código 8ab4666, fonte enviada 413a4e7. Deployment fccbb0ae-c45b-4cfb-bfca-1d9f2f2f809a SUCCESS no projeto2doctor/serviço2doctor-web. Healthz200/product2doctor; entrada pública index-BfpSnWzn.js igual ao build local, asset200 e bytes idênticos. A tentativa anterior86f29cd7 falhou no transporteTLS; repetição bem-sucedida. Build completo na raiz, build2doctor e200testes passaram.

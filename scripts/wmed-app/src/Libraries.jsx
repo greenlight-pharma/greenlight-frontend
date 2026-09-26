@@ -1,6 +1,6 @@
 import { matchesInstrument } from '../shared/instrument-search.mjs';
 import {OfficialSourcesLink} from './doctor/OfficialSources';
-import React, { useEffect, useState, useMemo } from "react";
+import React, { useEffect, useState, useMemo, useRef, useLayoutEffect } from "react";
 import {
   Search,
   ArrowLeft,
@@ -191,6 +191,23 @@ export function ReferenceLibrary({ kind }) {
     [retry, setRetry] = useState(0);
   const meds = kind === "medicacoes";
   const flexibleMedicationSearch = meds && import.meta.env.VITE_PRODUCT === "2doctor";
+  const listPosition = useRef(null);
+  const navigation = useRef(null);
+  const medicationCards = useRef(new Map());
+  const medicationBack = useRef(null);
+  useLayoutEffect(() => {
+    if (!flexibleMedicationSearch || !navigation.current) return;
+    const destination = navigation.current;
+    navigation.current = null;
+    if (destination === "detail") {
+      medicationBack.current?.focus({ preventScroll: true });
+      window.scrollTo({ top: 0, behavior: "instant" });
+    } else if (listPosition.current) {
+      const { name, top } = listPosition.current;
+      medicationCards.current.get(name)?.focus({ preventScroll: true });
+      window.scrollTo({ top, behavior: "instant" });
+    }
+  }, [selected, flexibleMedicationSearch]);
   useEffect(() => {
     setSelected(null);
     setQ("");
@@ -235,7 +252,10 @@ export function ReferenceLibrary({ kind }) {
       {import.meta.env.VITE_PRODUCT==='2doctor' && <OfficialSourcesLink/>}
       {selected ? (
         <>
-          <button className="back-button" onClick={() => setSelected(null)}>
+          <button className="back-button" ref={medicationBack} onClick={() => {
+            if (flexibleMedicationSearch) navigation.current = "list";
+            setSelected(null);
+          }}>
             <ArrowLeft size={16} />
             {title}
           </button>
@@ -346,7 +366,17 @@ export function ReferenceLibrary({ kind }) {
                   <button
                     className="resource-card"
                     key={r.n}
-                    onClick={() => setSelected(r)}
+                    ref={flexibleMedicationSearch ? (node) => {
+                      if (node) medicationCards.current.set(r.n, node);
+                      else medicationCards.current.delete(r.n);
+                    } : undefined}
+                    onClick={() => {
+                      if (flexibleMedicationSearch) {
+                        listPosition.current = { name: r.n, top: window.scrollY };
+                        navigation.current = "detail";
+                      }
+                      setSelected(r);
+                    }}
                   >
                     {meds ? <Pill size={22} /> : <BookOpen size={22} />}
                     <small>{meds ? r.cl : r.c}</small>
