@@ -1,3 +1,9 @@
+## 2026-09-26 05:35 BRT — Controles de anexo publicados
+
+Fonte a9c1537; deployment24aa5a7a-ec5e-4497-be3b-9666fa0d2860 SUCCESS em 2doctor-web/projeto2doctor. Healthz200/product2doctor; JS index-x3kQAae6.js e CSS index-CrrrQz45.css públicos idênticos ao build local. CUA público390×844 confirmou anexar44px e remover44×44px, nome longo sem overflow e remoção concluída. Console sem erros; TXT fictício removido ao final, nenhuma mensagem enviada ao modelo. 206 testes e builds app/site aprovados. Viewport restaurado, servidor local encerrado e aba80 fechada. Sem iPhone físico/Safari/VoiceOver.
+
+Próximo executável: verificar foco após remover anexo e ao retornar do seletor de arquivos no chat, com material fictício e sem envio clínico; corrigir apenas falha reproduzida. Não ampliar escopo. Rollback ca597ae; pré-existente medico-app/dist-samu preservado; API/ECG/modelos intocados.
+
 ## 2026-09-26 05:33 BRT — Anexos: alvos de toque ampliados
 
 Baseline ca597ae/deploymentffc674ab-423b-4d38-874b-134990f766b3 SUCCESS, Git/Railway conferidos. Reproduzido em produção390×844 com TXT fictício local, sem envio ao modelo: remover anexo media23×23px, anexar33px de altura. Nome longo mantido; nenhum dado pessoal/clínico.
