@@ -1,3 +1,13 @@
+## 2026-09-26 05:33 BRT — Anexos: alvos de toque ampliados
+
+Baseline ca597ae/deploymentffc674ab-423b-4d38-874b-134990f766b3 SUCCESS, Git/Railway conferidos. Reproduzido em produção390×844 com TXT fictício local, sem envio ao modelo: remover anexo media23×23px, anexar33px de altura. Nome longo mantido; nenhum dado pessoal/clínico.
+
+Correção CSS restrita a .doctor-app: anexar com altura mínima44px, remover44×44 sem encolhimento, ícone do arquivo preservado e foco visível. WMed, processamento dos arquivos, limites, APIs, autenticação e persistência intocados. Não há nova funcionalidade.
+
+206 testes existentes passaram, build 2Doctor e site completo aprovados, diff --check limpo. CUA local320×568/390×844/1280×800: alvos44px, nome longo legível e sem overflow, remoção mantém mensagem fictícia. TXT vazio mostra erro existente e mantém texto/botão disponível. Screenshot conferido, console sem erros. Sem envio ao modelo; sem teste iPhone físico/Safari/VoiceOver. Dockerfile/railway.json conferidos.
+
+Próximo: deploy isolado e confirmar SUCCESS, health200, CSS/JS e interface pública. Rollback ca597ae; preexistente medico-app/dist-samu preservado.
+
 ## 2026-09-26 05:07 BRT — Atalho da seleção bibliográfica publicado
 
 Fonte f267f20; deployment ffc674ab-423b-4d38-874b-134990f766b3 SUCCESS em 2doctor-web/projeto2doctor. Healthz200/product2doctor e assets index-Dp1KTqmG.js, Research-xzG5c2h_.js, Research-D8ZWyYYG.css públicos idênticos ao build local. CUA público390×844 com busca asthma real: selecionar último artigo mostra Ver seleção (1), bottom756 antes do dock783; toque leva ao painel y17,8/foco Sua seleção e esconde atalho. Sem overflow horizontal/console errors. Cópia e limpeza verificadas localmente. 206 testes/builds app e site completos aprovados.
