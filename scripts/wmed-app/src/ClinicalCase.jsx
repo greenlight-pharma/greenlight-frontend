@@ -54,7 +54,12 @@ function ClinicalCaseBody({ session, onLogin, onProgress, onPendingChange, activ
   const microphoneRequest=useRef(createMicrophoneRequest());
   const activeRef=useRef(active);activeRef.current=active;
   const [historyOpen,setHistoryOpen]=useState(false),[saveStatus,setSaveStatus]=useState(""),[saveError,setSaveError]=useState("");
-  const pendingSave=useRef(null),saving=useRef(null),pageRef=useRef(null);
+  const pendingSave=useRef(null),saving=useRef(null),pageRef=useRef(null),errorRef=useRef(null);
+  useEffect(()=>{
+    if(!audioRecovery||stage!=="relato"||!error||active===false)return;
+    errorRef.current?.focus({preventScroll:true});
+    errorRef.current?.scrollIntoView({block:'nearest',behavior:'instant'});
+  },[error,active,stage]);
   useEffect(()=>{if(active)pageRef.current?.scrollIntoView({block:"start",behavior:"instant"});},[stage,active]);
   const recorder = useRef(null),
     stream = useRef(null),
@@ -97,6 +102,7 @@ function ClinicalCaseBody({ session, onLogin, onProgress, onPendingChange, activ
       );
       return;
     }
+    if(audioRecovery)setError("");
     if (!requireLogin()) return;
     if(canResumeReview){setError("");setStage("revisao");return;}
     setBusy("Organizando o relato…");
@@ -312,6 +318,7 @@ function ClinicalCaseBody({ session, onLogin, onProgress, onPendingChange, activ
     input?.focus({preventScroll:true});
     input?.scrollIntoView({block:"center",behavior:"instant"});
   }
+  const errorNotice=error&&<p ref={errorRef} tabIndex={audioRecovery&&stage==="relato"?-1:undefined} role="alert" className="error">{error}</p>;
   const feedbackLength =
     feedbackPayload(form).clinicalHistory.length +
     "\nRelato original para contexto: ".length +
@@ -394,6 +401,7 @@ function ClinicalCaseBody({ session, onLogin, onProgress, onPendingChange, activ
             </p>
             <button disabled={!!busy||recording||!relato.trim()} onClick={()=>setPrivacyOpen(true)}>Revisar dados pessoais</button>
             {audioRecovery && organizedStory!==null && <p className="module-note" role="status">{canResumeReview ? "Suas correções nos campos foram mantidas nesta aba." : "O relato mudou. Ao reorganizar, os campos serão refeitos e substituirão as correções anteriores."}</p>}
+            {audioRecovery && errorNotice}
             <button
               className="module-primary"
               disabled={
@@ -521,11 +529,7 @@ function ClinicalCaseBody({ session, onLogin, onProgress, onPendingChange, activ
           {busy}
         </p>
       )}
-      {error && (
-        <p role="alert" className="error">
-          {error}
-        </p>
-      )}
+      {(!audioRecovery || stage!=="relato") && errorNotice}
     </section>
   );
 }

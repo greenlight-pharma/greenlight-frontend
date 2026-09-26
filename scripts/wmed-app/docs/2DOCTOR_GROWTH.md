@@ -1,3 +1,13 @@
+## 2026-09-26 06:34 BRT — Caso clínico: erro visível junto à ação
+
+Baseline9dcd400/deploymentbf35b88a-4390-45ac-9b5b-51a1328ac8db SUCCESS; Git/Railway conferidos. Produção390×844: relato fictício com endereço example.invalid acionou validação local existente, mas alerta aparecia em y884–953 abaixo do bloco explicativo, fora da tela844. Nenhum relato enviado ao modelo.
+
+Somente etapa Relato da 2Doctor: erro agora fica antes de Organizar meu relato, recebe foco programático e scroll nearest quando aparece/retoma tela. Ao tentar continuar com texto corrigido, limpa aviso antigo antes de exigir login. Mensagens, detector, limites, API e demais etapas não alterados; WMed preservado.
+
+206 testes existentes e builds app/site completos passaram após versão final; diff --check limpo. CUA local390×844: alerta y412–488, acima do dock783;320×568:y274–373/dock507;1280×800:y729–781, foco role alert/sem overflow. Corrigir texto → login abre → fechar mantém relato e zero alertas antigos. Screenshot320 e console conferidos. Não houve login real, geração clínica, microfone nem persistência; sem iPhone físico/Safari/VoiceOver. Dockerfile/railway.json conferidos.
+
+Próximo: publicar isoladamente, verificar SUCCESS/health200/assets/interface. Rollback9dcd400; pré-existente medico-app/dist-samu preservado.
+
 ## 2026-09-26 06:05 BRT — Foco dos anexos publicado
 
 Fonte4b65d98; deploymentbf35b88a-4390-45ac-9b5b-51a1328ac8db SUCCESS em 2doctor-web/projeto2doctor. Health200/product2doctor e index-Qf2IGV5i.js público idêntico ao build local. CUA público390×844: anexar TXT fictício e remover por Enter deixou foco em BUTTON Anexar arquivos, zero anexos, sem overflow ou console errors. Arquivo removido, nenhuma mensagem enviada ao modelo. 206 testes, build app e site completos aprovados. Servidor local encerrado, aba81 fechada, viewport restaurado. Sem teste iPhone físico/Safari/VoiceOver.
