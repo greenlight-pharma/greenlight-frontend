@@ -1,3 +1,9 @@
+## 2026-09-26 09:28 BRT — PDF do chat publicado e conferido
+
+Commit0f6183c, deployment22b5df42-0727-47ff-9ad6-8679544f4382 SUCCESS no2doctor-web/projeto2doctor. Healthz200/product2doctor; index-RrkA_zBD.js e chunks pdfmake-BFTYH9M7.js, chat-pdf-r6KWyWfE.js, vfs_fonts-DhSc05oJ.js, symbols-Bp3breFH.js públicos idênticos ao build local. Interface pública do chat carregada viaCUA. Build completo do site passou na raiz da worktree; tentativa anterior no cwdapp falhou por diretório incorreto e foi refeita corretamente, sem alteração para contornar checks.
+
+214 testes, buildapp/site e diffcheck passaram. Download real de resposta fictícia via navegador local inspecionado em PNG; PDF multipágina3p inteiramente revisado visualmente. Telas390×844 e320×568 sem overflow e alvo44px. Aba86/fixture encerrados, viewportrestaurado. Não testado download em iPhone físico/Safari nem envio autenticado em produção. Novo prompt continua desativado; API/modelo inalterados. Próximo: acompanhar uso real do botão, especialmente salvar/compartilhar no Safari, corrigindo eventual fricção observada sem ampliar escopo. Rollbacka0db5bd; preexistente dist-samu preservado.
+
 ## 2026-09-26 09:24 BRT — Exportação PDF por resposta do chat
 
 Pedido direto: botão Gerar PDF nas respostas. Implementado ao lado de Copiar resposta, apenas 2Doctor, em respostas completas sem erro. Geração local sob demanda, sem API ou envio a terceiros; link Baixar PDF permanece disponível após download automático para reabrir/salvar. Estados gerando/erro, bloqueio de clique repetido e liberação de Blob ao desmontar. Resposta individual, sem anexos nem restante da conversa.
