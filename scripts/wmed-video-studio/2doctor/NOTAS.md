@@ -37,7 +37,14 @@ Tudo procedural, com código nosso. Visual de documentário no palco comum (`sta
 - Proposta: tabela de doses curada, cada linha com a bula Anvisa, a diretriz e o revisor; a IA só cita linhas aprovadas.
 - Interações: licenciar. Candidatos: DrugBank, Micromedex, Lexidrug, Memed. Fontes não comerciais que não podem entrar: DDInter, DrugBank acadêmico, ATC/DDD da OMS e o FTN 2010.
 
-## Esboço Ep. 2 · Infarto ("cada minuto conta")
+## Ep. 2 no formato de questão (25/09/2026, escolha do Dilson)
+- Questão 10 do Revalida 2024/1 (INEP), gabarito definitivo D: dor torácica, dispneia e confusão na UBS com PA 190×120 → monitorar, AAS 300 mg e encaminhar para a urgência. Página reescrita: "Dor no peito: questão de prova", 12 planos, 1:32.
+- Licença do gov.br: CC BY-ND 3.0. Mostrar o enunciado e as alternativas **sem alterar** e com crédito ("INEP · Revalida 2024/1 · Questão 10"); a explicação fica separada, como comentário. Confirmar com jurídico se houver monetização.
+- Ressalva que o episódio acrescenta: dor torácica com PA muito alta também pode ser dissecção de aorta; se houver suspeita, o AAS espera a imagem (afirmação DA2, localizar a frase exata na diretriz ESC 2024 de aorta).
+- Buscas no Revalida 2023/1 a 2025/1: a Q46 de 2024/2 (dor precordial com ECG seriado) foi anulada; a Q76 de 2023/2 (TV após angioplastia, gabarito A) ficou como reserva.
+- Todas as afirmações do Ep. 2 estão como "parcial": DOIs conferidos em 25/09, falta ler as seções e anotar as páginas.
+
+## Esboço antigo do Ep. 2 · Infarto ("cada minuto conta"), substituído
 Abertura fria (homem de ~55 anos para na escada, mão no peito) → título → apresentadora: "tempo é músculo" → 3D: placa na coronária rompe, coágulo fecha → 3D: músculo sem sangue, área que cresce com o tempo → apresentadora: sinais (dor/aperto > 20 min, irradiação, suor, náusea; atípico em mulheres, idosos e diabéticos) → ligar para a emergência local (192 no Brasil; no internacional, "número de emergência") → 3D: ECG em até 10 min e cateterismo reabrindo a artéria → prevenção (pressão, glicose, colesterol, cigarro) → assinatura.
 
 ## Esboço Ep. 3 · Cirrose ("o fígado que se cala")
