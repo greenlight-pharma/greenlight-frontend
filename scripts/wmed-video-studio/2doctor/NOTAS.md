@@ -97,3 +97,8 @@ Abertura fria (exame de rotina, sem sintomas) → título → apresentadora: o f
   - Voz em inglês (pedido do Dilson: natural, sem parecer IA). `eleven_v3`, `languageCode: en`, presets Rachel, Eleanor, Lara e Claudia com a mesma fala (145 caracteres): 3 créditos cada, 12 no total; 11,5 a 13,5 s de áudio. O catálogo do Runway não descreve as vozes. Alternativa não testada: voz desenhada por descrição (`voices.preview` / `voices.create` com `from: text`), preço não publicado.
   - Avatar falante: `avatars.create` com p5-cafe-a (grátis, cerca de 40 s de processamento) + `avatarVideos.create` (`gwm1_avatars`, áudio da Rachel, 6,7 s): **2 créditos**. Saída **1088×704, horizontal, 24 fps**: não dá 9:16 nativo (recorte vertical ficaria com 396×704). A boca acompanha o áudio, mas o **rosto muda** em parte dos quadros (fica mais fino e o nariz muda); a imagem é recomposta em paisagem.
   - Saldo depois da fase 1: 4.760 créditos (16 gastos).
+- **Teste cinematográfico (25/09)**, `runway/teste-cinema.mjs`, saída `out/cinema/`. Motivo: o Dilson achou o avatar com cara de IA.
+  - Voz escolhida: **Lara** (`eleven_v3`, en). Fala do café: 2 créditos.
+  - A) `seedance2_5` com a Iris como referência e a voz da Lara como áudio de referência: **bloqueado pela moderação do fornecedor** (`INPUT_PREPROCESSING.SAFETY.THIRD_PARTY`, provável rosto realista), 0 crédito. Também não aceita áudio de referência junto com quadro-chave (`position: first`).
+  - B) `veo3.1_fast`, primeiro quadro p5-cafe-a, 1080:1920, 8 s, áudio gerado pelo modelo: **120 créditos**, 131 s. Saída vertical nativa, câmera se aproxima, rosto estável e expressão natural. A voz é do Veo (não é a Lara): risco de mudar de plano para plano.
+  - Saldo: 4.638 créditos.
