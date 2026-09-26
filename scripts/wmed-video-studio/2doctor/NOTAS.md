@@ -39,7 +39,8 @@ Tudo procedural, com código nosso. Visual de documentário no palco comum (`sta
 
 ## Ep. 2 no formato de questão (25/09/2026, escolha do Dilson)
 - Questão 10 do Revalida 2024/1 (INEP), gabarito definitivo D: dor torácica, dispneia e confusão na UBS com PA 190×120 → monitorar, AAS 300 mg e encaminhar para a urgência. Página reescrita: "Dor no peito: questão de prova", 12 planos, 1:32.
-- Licença do gov.br: CC BY-ND 3.0. Mostrar o enunciado e as alternativas **sem alterar** e com crédito ("INEP · Revalida 2024/1 · Questão 10"); a explicação fica separada, como comentário. Confirmar com jurídico se houver monetização.
+- Decisão do Dilson (25/09): a questão é só **inspiração**. O caso e as alternativas do vídeo são escritos por nós, em inglês, sem copiar o texto da prova (a licença CC BY-ND do gov.br proíbe traduzir ou adaptar o texto original). Assinatura: "Case inspired by Revalida 2024/1 (INEP)".
+- Narração do Ep. 2 em inglês (voz natural, "sem parecer IA"); a página mostra o inglês e, abaixo, o português para revisão.
 - Ressalva que o episódio acrescenta: dor torácica com PA muito alta também pode ser dissecção de aorta; se houver suspeita, o AAS espera a imagem (afirmação DA2, localizar a frase exata na diretriz ESC 2024 de aorta).
 - Buscas no Revalida 2023/1 a 2025/1: a Q46 de 2024/2 (dor precordial com ECG seriado) foi anulada; a Q76 de 2023/2 (TV após angioplastia, gabarito A) ficou como reserva.
 - Todas as afirmações do Ep. 2 estão como "parcial": DOIs conferidos em 25/09, falta ler as seções e anotar as páginas.
