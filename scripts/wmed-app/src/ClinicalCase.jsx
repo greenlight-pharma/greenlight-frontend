@@ -5,7 +5,7 @@ import {caseReviewIssues} from '../shared/case-review.mjs';
 import {caseAudioType} from '../shared/case-audio.mjs';
 const brandName=productConfig(import.meta.env.VITE_PRODUCT).name;
 const audioRecovery=import.meta.env.VITE_PRODUCT==='2doctor';
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef, useId } from "react";
 import {
   Mic,
   Square,
@@ -44,6 +44,8 @@ function ClinicalCaseBody({ session, onLogin, onProgress, onPendingChange, activ
     [qualityError, setQualityError] = useState(""),
     [recording, setRecording] = useState(false),
     [seconds, setSeconds] = useState(0);
+  const lengthHintId=useId();
+  const relatoTooShort=audioRecovery&&relato.length>0&&relato.trim().length<20;
   const [privacyOpen,setPrivacyOpen]=useState(false);
   const [organizedStory,setOrganizedStory]=useState(null);
   const canResumeReview=audioRecovery && organizedStory!==null && organizedStory===relato;
@@ -356,6 +358,7 @@ function ClinicalCaseBody({ session, onLogin, onProgress, onPendingChange, activ
             </label>
             <textarea
               id="case-story"
+              aria-describedby={relatoTooShort?lengthHintId:undefined}
               rows={12}
               maxLength={5000}
               value={relato}
@@ -401,6 +404,7 @@ function ClinicalCaseBody({ session, onLogin, onProgress, onPendingChange, activ
             </p>
             <button disabled={!!busy||recording||!relato.trim()} onClick={()=>setPrivacyOpen(true)}>Revisar dados pessoais</button>
             {audioRecovery && organizedStory!==null && <p className="module-note" role="status">{canResumeReview ? "Suas correções nos campos foram mantidas nesta aba." : "O relato mudou. Ao reorganizar, os campos serão refeitos e substituirão as correções anteriores."}</p>}
+            {relatoTooShort && <p id={lengthHintId} className="module-note" role="status">Escreva pelo menos 20 caracteres para continuar.</p>}
             {audioRecovery && errorNotice}
             <button
               className="module-primary"

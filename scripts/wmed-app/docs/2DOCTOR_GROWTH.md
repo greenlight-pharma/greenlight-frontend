@@ -1,3 +1,13 @@
+## 2026-09-26 07:02 BRT — Relato curto: motivo do botão desabilitado
+
+Baseline1388eea/deploymentb98f423d-7084-45b2-87c4-ceb821b37c61 SUCCESS. Git/Railway conferidos. Produção390×844 com texto fictício15 caracteres: Organizar desabilitado sem orientação de mínimo e textarea sem descrição associada.
+
+Somente 2Doctor: ajuda Escreva pelo menos 20 caracteres para continuar quando campo tem texto e trim<20. Fica junto à ação, associada à textarea via aria-describedby/useId e role status. Some no mínimo ou campo vazio. Critério20, limite5000, conteúdo clínico, autenticação/API e demais produtos intocados.
+
+206 testes existentes passaram; builds app/site completos e diff --check aprovados. CUA local:19→ajuda/botão desabilitado;20→sem ajuda/habilitado;19 com espaços externos segue bloqueado; apagar tudo remove descrição. 320×568 screenshot legível,390×844/1280×800 sem overflow, console sem erros. Dados fictícios, nenhuma submissão/modelo/áudio. Não testados iPhone físico/Safari/VoiceOver. Dockerfile/railway.json conferidos.
+
+Próximo: deploy isolado com SUCCESS/health200/assets e UI pública. Rollback1388eea; preexistente medico-app/dist-samu preservado.
+
 ## 2026-09-26 06:37 BRT — Aviso do caso clínico publicado
 
 Fontebe1648e; deploymentb98f423d-7084-45b2-87c4-ceb821b37c61 SUCCESS no serviço2doctor-web/projeto2doctor. Healthz200/product2doctor; index-YJztBLaJ.js e ClinicalCase-BPkVPhUi.js públicos idênticos ao build local. CUA público390×844 confirmou aviso local y412–488 antes do dock783, foco role alert e console sem erros. Exemplo inteiramente fictício, sem envio ao modelo. Relato limpo por recarga ao final; viewport restaurado, aba82/servidor local encerrados.
