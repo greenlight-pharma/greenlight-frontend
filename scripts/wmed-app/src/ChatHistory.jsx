@@ -1,5 +1,6 @@
+import './doctor/history-dialog.css';
 import { useI18n } from './doctor/I18n';
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useLayoutEffect, useRef, useState } from 'react';
 import { X, MessageSquare, Plus } from 'lucide-react';
 import { encodeMessages, decodeMessages, createHistoryWriter } from '../shared/history.mjs';
 export function useChatHistory({ api, scope, messages, setMessages, busy }) {const { t, locale } = useI18n();
@@ -30,4 +31,33 @@ export function useChatHistory({ api, scope, messages, setMessages, busy }) {con
   async function select(id) {if (busy || loading) return false;if (!(await flush())) return false;const s = state.current;setLoading(true);try {const d = await call({ action: 'open', id });if (state.current !== s) return false;const rows = decodeMessages(d);s.writer.setId(id);s.signature = JSON.stringify(encodeMessages(rows));setMessages(rows);try {localStorage.setItem(key, id);} catch {}setSaved(true);setError('');setOpen(false);return true;} catch (e) {setError(e.message);return false;} finally {setLoading(false);}}
   return { items, open, setOpen, error, saving, loading, saved, flush, fresh, select, refresh: () => list().catch((e) => setError(e.message)) };
 }
-export default function ChatHistory({ history, onClose, onNew, onSelect }) {const { t, locale } = useI18n();return <div className="modal-shade" onClick={onClose}><section className="modal history-modal" role="dialog" aria-modal="true" aria-labelledby="history-title" onClick={(e) => e.stopPropagation()}><button autoFocus className="icon-btn close" aria-label={t("Fechar hist\xF3rico")} onClick={onClose}><X /></button><h2 id="history-title">{t("Suas conversas")}</h2><p>{t("Chats salvos na sua conta Vytal. As 50 conversas mais recentes aparecem aqui.")}</p><button className="history-new" onClick={onNew} disabled={history.loading}><Plus size={17} /> {t("Nova conversa")}</button>{history.error && <p role="alert" className="error">{t(history.error)}<button onClick={history.refresh}>{t("Tentar novamente")}</button></p>}{history.loading ? <p role="status">{t("Carregando\u2026")}</p> : history.items.length ? <div className="history-list">{history.items.map((item) => <button key={item.id} onClick={() => onSelect(item.id)}><MessageSquare size={19} /><span><strong>{item.titulo || t("Conversa")}</strong><small>{new Date(item.updatedAt).toLocaleDateString(locale)} · {item.mensagens} {t("mensagens")}</small></span></button>)}</div> : <p>{t("Suas pr\xF3ximas conversas aparecer\xE3o aqui.")}</p>}</section></div>;}
+export default function ChatHistory({ history, onClose, onNew, onSelect }) {
+  const { t, locale } = useI18n();
+  const doctor = import.meta.env.VITE_PRODUCT === '2doctor';
+  const dialog = useRef(null), closeButton = useRef(null);
+  useLayoutEffect(() => {
+    if (!doctor) return;
+    const previous = document.activeElement;
+    closeButton.current?.focus({ preventScroll: true });
+    return () => {
+      if (previous?.isConnected && !previous.matches('input,textarea,select')) previous.focus({ preventScroll: true });
+    };
+  }, [doctor]);
+  function keys(event) {
+    if (!doctor) return;
+    if (event.key === 'Escape') { event.preventDefault();event.stopPropagation();onClose(); }
+    if (event.key === 'Tab') {
+      const controls = [...dialog.current.querySelectorAll('button:not(:disabled),a[href]')].filter(node => node.getClientRects().length);
+      if (event.shiftKey && document.activeElement === controls[0]) { event.preventDefault();controls.at(-1)?.focus(); }
+      else if (!event.shiftKey && document.activeElement === controls.at(-1)) { event.preventDefault();controls[0]?.focus(); }
+    }
+  }
+  const close = <button ref={closeButton} autoFocus={!doctor} className="icon-btn close" aria-label={t("Fechar histórico")} onClick={onClose}><X /></button>;
+  const title = <h2 id="history-title">{t("Suas conversas")}</h2>;
+  const content = <><p>{t("Chats salvos na sua conta Vytal. As 50 conversas mais recentes aparecem aqui.")}</p><button className="history-new" onClick={onNew} disabled={history.loading}><Plus size={17} /> {t("Nova conversa")}</button>{history.error && <p role="alert" className="error">{t(history.error)}<button onClick={history.refresh}>{t("Tentar novamente")}</button></p>}{history.loading ? <p role="status">{t("Carregando\u2026")}</p> : history.items.length ? <div className="history-list">{history.items.map((item) => <button key={item.id} onClick={() => onSelect(item.id)}><MessageSquare size={19} /><span><strong>{item.titulo || t("Conversa")}</strong><small>{new Date(item.updatedAt).toLocaleDateString(locale)} · {item.mensagens} {t("mensagens")}</small></span></button>)}</div> : <p>{t("Suas pr\xF3ximas conversas aparecer\xE3o aqui.")}</p>}</>;
+  return <div className="modal-shade" onClick={onClose}>
+    <section ref={dialog} className={`modal history-modal${doctor ? ' doctor-history' : ''}`} role="dialog" aria-modal="true" aria-labelledby="history-title" onClick={event => event.stopPropagation()} onKeyDown={keys}>
+      {doctor ? <><header className="history-titlebar">{title}{close}</header><div className="history-scroll">{content}</div></> : <>{close}{title}{content}</>}
+    </section>
+  </div>;
+}

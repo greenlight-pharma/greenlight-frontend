@@ -1,3 +1,9 @@
+## 2026-09-26 00:03 BRT — Histórico: fechar sem voltar ao topo
+
+Fixture com30conversas fictícias reproduziu botãoFechar fora da tela(top−1156px) após rolar e Escape sem efeito. Na2Doctor, cabeçalho/título/Fechar44px ficam fora da área de rolagem; só a lista/conteúdo rola. Escape fecha, Tab/ShiftTab permanecem nos controles do diálogo; foco inicial semscroll e retorno ao acionador sem abrir teclado. Fechar mantém rascunho; selecionar conversa usa fluxo existente. WMed mantém markup anterior e não recebe CSS scoped. Sem alterar autenticação/historyAPI/persistência.
+
+206testes existentes/build2Doctor/buildsite passaram. CUA local390 rolou lista1137px mantendoFechar top36; Escape fecha e preserva rascunho/foco. ShiftTab deFechar→últimaconversa; Tab→Fechar. Conversa30reaberta com texto sintético.320×568:Fechar44×44/lista451px/largura305=scroll305; desktop1280 foco retorna e semoverflow. Console vazio. Fixture semupstream/banco real encerrada/aba68fechada/viewportrestaurado. Sem conta real, persistência real/VoiceOver/iPhone físico; posição de janela longa atrás do modal não foi validada. Publicação pendente: próximo deployisolado/health/asset/UI pública.
+
 ## 2026-09-25 23:36 BRT — Recuperação de falha do chat publicada
 
 Fonte72fb5a1; deployment0037cfe9-6b4a-4e7f-acd3-b4ee7eabbbf8 SUCCESS no serviço2doctor-web/projeto2doctor. Health200/product2doctor; entradaindex-BMUAJ05S.js200 com bytes idênticos ao build local. CUA público390 conferiu chat, nova linha, largura390/scroll390 e console semerros; nenhum envio real efetuado. Campo limpo/viewportrestaurado.206testes e builds completos aprovados.
