@@ -1,3 +1,11 @@
+## 2026-09-26 16:03 BRT — Foco ao abrir e fechar caso clínico
+
+Rodada19:00Z: estado/diário e planos relidos. Gitadac765 (outra frente adicionou mudança de senha; preservada), árvore limpa salvo dist-samu. Railway96bdff99 SUCCESS anterior, b079e43e emINITIALIZING na entrada. Reproduzido em CUA público390×844: abrir Discutir um caso porEnter mantém foco no botão atrás do formulário. Fechamento já havia mostradoBODY na rodada anterior.
+
+Correção restrita ao main.jsx e produto2Doctor: ao abrir o painel, foco no botão Voltar à conversa com preventScroll; ao fechar, volta ao controle de origem somente se o foco ainda está no painel/BODY e o controle existe. Não toma foco de login/outra sobreposição nem reabre teclado. Não altera fechamento, rascunho, processamento ou API. Não adiciona role/aria-modal sem completar gestão modal; esse aspecto não é declarado resolvido.
+
+CUA local390×844 com fixture sem upstream: Enter abriu com foco emVoltar; Tab seguiu paraMeus casos; digitar rascunho fictício e fechar voltou ao cardDiscutir; abrir pelo atalho do compositor preservou o texto e fechar devolveu foco àquele atalho. Sem overflow. 227 testes existentes:218 passaram,9 integrações ignoradas porTEST_DATABASE_URL ausente (nova integração de senha da outra frente); builds2Doctor/site completo e diffcheck aprovados. Logs /tmp/2doctor-case-focus-tests.log, -build.log, -site.log. Sem teste clínico/API autenticada/salvamento real/iPhone/Safari/VoiceOver físico; login aninhado não acionado, preservado por guarda de foco. Próximo: publicar só2doctor-web comcwdapp/--path-as-root, conferirSUCCESS/health/assets/interface. Dockerfile/railway.json conferidos. Rollbackadac765.
+
 ## 2026-09-26 15:38 BRT — Retorno do caso publicado e conferido
 
 Código167fdfd, deployment96bdff99-d164-43b1-b072-2da6295d08d4 SUCCESS no2doctor-web. Health200/product2doctor. Assets index-lWz6mFns.js e ClinicalCase-B3SVMoZb.js públicos idênticos byte a byte ao build local. CUA público320×568, após carregamento do formulário: scrollTop0 e botão Voltar à conversa emy13, visível; retorno ao chat funcionou. Screenshot conferido, viewport restaurado. Fixture encerrada e aba90 fechada. Publicação desta rodada concluída; sem API/modelo/persistência alterados.
