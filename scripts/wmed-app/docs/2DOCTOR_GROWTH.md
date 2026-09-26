@@ -1,5 +1,12 @@
 ## 2026-09-26 00:06 BRT — Histórico com fechamento visível publicado
 
+## 2026-09-26 00:41 BRT — Proteção de rascunho publicada
+
+Fonte e53cd3e; deployment50026317-a0d9-46a5-8f12-8f837ca0c331 SUCCESS no serviço2doctor-web/projeto2doctor. Health200/product2doctor; assetindex-9aQvxGjm.js200 idêntico byteabyte ao build local.206testes existentes/build2Doctor/buildsite completo aprovados; gitdiffcheck semerro. CUA público390×844 verificou aviso de Nova conversa, Manter rascunho preservando texto e descarte explícito voltando ao chat vazio; nenhum envio real/autenticação efetuados. Console semerros. Fixture encerrada, aba69fechada e viewportrestaurado. Histórico/anexos/falha503 foram testados apenas na fixture sintética.
+
+Limites: rascunhos continuam em memória; fechar/recarregar página não ganha salvamento nesta mudança. Não testados histórico de conta real, Safari/iPhone físico ou VoiceOver. Sem novos modelos, persistência, APIs ou conteúdo médico. Próximo executável: conferir fechamento acidental da página com rascunho e, se reproduzir perda, avaliar aviso de saída sem armazenar conteúdo; manter foco em fricções existentes. Rollback reconstruindo92f662a em scripts/wmed-app; não usar raiz no Railway.
+
+
 ## 2026-09-26 00:38 BRT — Proteger rascunho ao trocar de conversa
 
 Reproduzida perda do texto não enviado ao abrir item do histórico na fixture local. A2Doctor agora pede escolha entre Manter rascunho e Descartar e continuar quando Nova conversa/abrir histórico encontra texto ou anexos. Sem rascunho não acrescenta etapa. Confirmação própria com foco inicial na opção segura, Escape/cancelar, Tab contido e textos PT/EN/ES; tentativa inicial de confirmação nativa teve comportamento inconsistente no navegador de QA e foi substituída. Rascunho só é limpo após sucesso da troca; falha mantém texto/arquivos. Bloqueio de troca/envio concorrente e edição/anexação enquanto carrega; atualização funcional preserva alterações mais recentes de outras ações. Nada de armazenamento novo ou mudança de API.
