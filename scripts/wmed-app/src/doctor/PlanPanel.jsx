@@ -29,7 +29,7 @@ export default function PlanPanel({ api }) {
     <button disabled={!!busy || !info.stripe} onClick={() => go({ action: 'checkout', intervalo: 'mensal' })}><strong>US$ 9.99</strong><span>{t('por mês')}</span></button>
     <button className="best" disabled={!!busy || !info.stripe} onClick={() => go({ action: 'checkout', intervalo: 'anual' })}><strong>US$ 79</strong><span>{t('por ano · economize 34%')}</span></button>
    </div>
-   <small>{t('Impostos calculados no pagamento, conforme o país. Cancele quando quiser.')}</small>
+   <small>{t('Pagamento seguro pelo Stripe. Cancele quando quiser.')}</small>
   </>}
   {!info.stripe && <small>{t('Assinaturas em breve.')}</small>}
   {error && <p role="alert" className="error">{error}</p>}

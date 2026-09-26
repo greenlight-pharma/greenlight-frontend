@@ -174,7 +174,7 @@ test('Stripe: checkout de assinatura com Tax e webhook assinado liga e desliga o
  await billing.billing(req({ url: '/api/wmed/billing', cookie: a.cookie, body: { action: 'checkout', intervalo: 'mensal' } }), r, { fetchImpl });
  assert.equal(r.statusCode, 200); assert.match(r.data.url, /checkout\.stripe\.com/);
  const session = calls.find((c) => c.url.endsWith('/checkout/sessions')).body;
- assert.equal(session.mode, 'subscription'); assert.equal(session['automatic_tax[enabled]'], 'true');
+ assert.equal(session.mode, 'subscription'); assert.equal(session['automatic_tax[enabled]'], undefined);
  assert.equal(session.customer, 'cus_teste'); assert.equal(session.client_reference_id, user.id);
  assert.equal(session['subscription_data[billing_mode][type]'], 'flexible');
  assert.equal(session['line_items[0][price]'], 'price_mensal');

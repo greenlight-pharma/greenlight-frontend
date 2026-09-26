@@ -38,4 +38,5 @@ export default {
 'alta':['high','alta'],
 'moderada':['moderate','moderada'],
 'baixa':['low','baja'],
+'Pagamento seguro pelo Stripe. Cancele quando quiser.':['Secure payment by Stripe. Cancel anytime.','Pago seguro con Stripe. Cancela cuando quieras.'],
 };

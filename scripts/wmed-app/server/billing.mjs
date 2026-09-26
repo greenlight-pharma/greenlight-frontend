@@ -76,9 +76,9 @@ export async function billing(req, res, { fetchImpl = fetch } = {}) {
   const s = await stripe('/checkout/sessions', { method: 'POST', fetchImpl, body: {
    mode: 'subscription', customer, client_reference_id: user.id,
    line_items: [{ price, quantity: 1 }],
-   automatic_tax: { enabled: true },
-   customer_update: { address: 'auto', name: 'auto' },
-   billing_address_collection: 'required',
+   // Stripe Tax não existe para contas do Brasil (erro "not supported for your account country").
+   // Liga só com STRIPE_TAX=1, numa conta de país suportado.
+   ...(process.env.STRIPE_TAX === '1' ? { automatic_tax: { enabled: true }, customer_update: { address: 'auto', name: 'auto' }, billing_address_collection: 'required' } : { billing_address_collection: 'auto' }),
    allow_promotion_codes: true,
    locale: ['pt', 'es', 'en'].includes(lang(req)) ? (lang(req) === 'pt' ? 'pt-BR' : lang(req)) : 'auto',
    subscription_data: { billing_mode: { type: 'flexible' }, metadata: { usuario_id: user.id, produto: '2doctor' } },
