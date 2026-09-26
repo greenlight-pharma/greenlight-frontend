@@ -1,3 +1,9 @@
+## 2026-09-25 23:02 BRT — Limite visível sem cortar rascunho
+
+Reproduzido público: maxLength2000 interrompeu CONCLUSAO em C sem aviso.2Doctor mantém limite de envio2000, mas retira corte do textarea, preservando texto longo na memória. Contagem aparece a partir1800, erro acima2000 explica excesso e impede botão/atalho antes de login/revisão/API. aria-describedby/invalid associados ao aviso, PT/EN/ES. WMed conserva maxLength anterior; nenhum limite/backend/modelo/persistência alterado.
+
+206testes passaram(3novos: fronteira, excesso/edição, UTF16/espaços); builds2Doctor e site completo exit0. CUA local390:2008caracteres mantidos incluindoCONCLUSAO, aviso reduza8, envio desativado; desktopEnter acima do limite não abriu login; edição para2000 liberou botão e abriu login da fixture. MensagensEN/ES/PT conferidas, texto curto remove aviso. Screenshot móvel legível e console vazio. Fixture somente semupstream encerrada/aba66fechada/viewportrestaurado. Sem conta real, envio clínico, teclado iPhone/VoiceOver físicos ou validação clínica. Publicação pendente; próximo deploy+SUCCESS/health/asset/UI pública.
+
 ## 2026-09-25 22:35 BRT — Enter no chat publicado
 
 Fonte779b29d, deploymentf778d55d-9d6b-43c5-80c4-b2fac08a47b4 SUCCESS no serviço2doctor-web/projeto2doctor. Health200/product2doctor; entrada/assets/index-DVjASMY9.js igual ao build local, asset200/bytes idênticos. CUA público390: texto em dois parágrafos após Enter, sem iniciar login/envio; screenshot legível, largura390/scroll390, console vazio. Texto fictício apagado e viewport restaurado.203testes e builds2Doctor/site completo aprovados.
