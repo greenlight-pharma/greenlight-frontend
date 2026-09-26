@@ -1,3 +1,11 @@
+## 2026-09-26 08:35 BRT — Correção de pergunta longa publicada
+
+Código0eaf551; deployment a033a3a6-9ab5-4105-94fd-42c431a062d8 SUCCESS no2doctor-web/projeto2doctor. Healthz200/product2doctor; index-0mWKEJXY.js público idêntico ao build (frontend não mudou; correção está no proxy servidor). Deploy a partir de scripts/wmed-app com --path-as-root, Dockerfile/railway.json conferidos. API Vytal/ECG intactos.
+
+207 testes e builds app/site passaram. CUA público390×844 confirmou campo2000 caracteres, Enviar habilitado, sem overflow; rascunho fictício limpo e viewport restaurado. Um timeout do seletor da ferramenta ao ler o campo foi resolvido por observação atual e leitura DOM do id conhecido; não se reproduziu falha do app. Não enviado ao modelo. Aba local84/servidor encerrados. Sem teste autenticado end-to-end, iPhone/Safari ou validação clínica. Teste de contrato comprova integridade do texto sob limites locais existentes, não qualidade clínica da resposta.
+
+Próximo: quando houver sessão disponível, conferir uma pergunta fictícia com informação relevante no final, sem repetir solicitação de login. A revisão do prompt principal continua apenas identificada/proposta; não alterar o tutor Vytal nem ampliar escopo clínico nesta automação. Rollback6b31b5a; preexistente medico-app/dist-samu preservado.
+
 ## 2026-09-26 08:33 BRT — Pergunta longa: correção do corte causado pelas preferências
 
 Rodada 11:30Z. Baseline 6b31b5a; Railway dad2025f-1941-400d-83f4-6fbc99fd9e23 SUCCESS, projeto2doctor conferido. Leitura do prompt mostrou que 2Doctor usa tutor Vytal educacional como sistema, preferências no conteúdo user; não revisado o escopo clínico, não criada IA independente.
