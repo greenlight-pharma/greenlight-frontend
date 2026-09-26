@@ -1,3 +1,11 @@
+## 2026-09-26 02:05 BRT — Conta: fechamento e leitura preservados, candidata validada
+
+Fricção reproduzida na conta em320×568: rolar o conteúdo deixou o botãoFechar em y−222; Escape não fechou, foco permaneceu emAbrir menu atrás da janela; rolar margem moveu chat y3860→4428. AccountDialog agora mantém cabeçalho/Fechar44px fora da rolagem, contémTab/ShiftTab, fechaEscape e restaura foco/overflow após fechar. Efeito apóscleanup do drawer mantém posição da página. Header ganhou nome acessívelMinha conta quando texto oculto. Restrito à2Doctor; conteúdo/conexões/login/logout preservados, WMed conserva estrutura anterior.
+
+206testes passaram; npm run build:2doctor e bash scripts/build-vercel.sh na raiz da worktree passaram, apenas warning preexistente de chunks. CUA fixture local semupstream/dadosreais:320×568,390×844,1280×800; Fechar visível apósscroll interno247px,TabciclaFechar↔Sair,Escape devolve foco, chat y2840 preservado ao abrir/rolar margem/fechar móvel e desktop; console semerros. Sair alcançável, semacionar logout. Não testados conta real, iPhone/Safari/VoiceOver físicos. Candidata beforeunload continua não aplicada.
+
+Próximo:commit explícito e deploy isolado2doctor-web comcwd scripts/wmed-app/--path-as-root; exigirSUCCESS,health200,asset e interface pública. Rollback: reconstruirc8c67bf. API/ECG/modelos/persistência intocados.
+
 ## 2026-09-26 01:37 BRT — Posição de leitura preservada: publicado
 
 Fonte6aca53d; deployment2bce02ce-c336-4fce-9030-625b2e7a01ae SUCCESS no projeto2doctor/serviço2doctor-web. Health200/product2doctor; assetindex-D-Tiklug.js200 idêntico byte a byte ao build local.206testes existentes/build2Doctor/buildsite completo passaram. CUA público390 confirmou acesso ao histórico protegido por login, fechamento retorna ao chat, largura390=scroll390 e console semerros. Não houve login ou acesso a histórico real. Travamento/retorno de rolagem e foco validados na fixture com conteúdo fictício, conforme seção anterior; não equivalem a teste em iPhone físico.
