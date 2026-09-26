@@ -1,3 +1,9 @@
+## 2026-09-26 20:38 BRT — Mensagem de falha do chat publicada
+
+Código6fe46a8, deployment b988a6c1-9341-47bf-883e-d25dbe805761 SUCCESS no serviço isolado2doctor-web. Healthz200/product2doctor; asset index-Bw2w0Ur4.js público idêntico byte a byte ao build local. CUA público390×844 confirmou novoasset, chat/menu/compositor carregados e ausência de overflow; viewport restaurado. Não provocada falha no servidor público; reprodução do HTTP502 e recuperação da pergunta conferidas apenas na fixture local, agora encerrada e abas92/93 fechadas.
+
+223 testes aprovados/10 integrações ignoradas; builds app/site completos e diffcheck aprovados. Sem API Vytal, modelo, persistência ou dados reais alterados. Não testados produção autenticada, banco ou dispositivo físico. Próximo executável: preservar versão e verificar outra fricção concreta; se surgir erro de rede/stream distinto do HTTP nãoJSON, reproduzir separadamente antes de ampliar este tratamento.
+
 ## 2026-09-26 20:37 BRT — Erro de gateway no chat corrigido localmente
 
 Rodada 23:30Z: estado/diário e planos lidos; Git inicial 2ce18fe e Railway e7140d4e SUCCESS/health200. Reproduzido em fixture local sem upstream/persistência: resposta HTTP502 em HTML exibia “Unexpected token '<' ... is not valid JSON”. Correção restrita ao frontend 2Doctor: parser de erro com fallback traduzido “O assistente não conseguiu concluir a resposta. Tente novamente.” para corpo HTML, vazio ou JSON sem mensagem válida. Mantém mensagens válidas da API e AbortError; tratamento de401 segue acessível quando corpo não éJSON. Pergunta recuperada e envio habilitado, sem reenvio automático. WMed mantém o fluxo anterior; API/modelos/dados não alterados.
