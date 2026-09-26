@@ -1,3 +1,9 @@
+## 2026-09-26 16:07 BRT — Foco do caso publicado
+
+Código10f73c9, deploymentce6ccf1c-b15c-4426-8684-7a944086e619 SUCCESS no2doctor-web. Health200/product2doctor, index-DGep-RQd.js público idêntico ao build local. CUA público390×844: Enter no card abriu caso com foco emVoltar à conversa/topo0; após carregar formulário, Tab foi paraMeus casos; Enter emVoltar restituiu foco ao card de origem. Sem overflow. Viewport restaurado, fixture encerrada e aba91 fechada. Publicação verificada; nenhuma API/modelo/persistência alterada por esta correção.
+
+218 testes aprovados,9 integrações ignoradas; builds2Doctor/site completo e diffcheck aprovados. Teste dos dois atalhos e rascunho ficou na fixture local; no público, nenhum texto clínico/autenticação/envio foi feito. Não testados login aninhado, iPhone/Safari/VoiceOver físicos ou modalização completa; escopo foi transferência/restauração de foco. Próximo: manter versão estável e conferir apenas fricção reproduzível, preservando mudanças da outra frente e sem ampliar catálogo.
+
 ## 2026-09-26 16:03 BRT — Foco ao abrir e fechar caso clínico
 
 Rodada19:00Z: estado/diário e planos relidos. Gitadac765 (outra frente adicionou mudança de senha; preservada), árvore limpa salvo dist-samu. Railway96bdff99 SUCCESS anterior, b079e43e emINITIALIZING na entrada. Reproduzido em CUA público390×844: abrir Discutir um caso porEnter mantém foco no botão atrás do formulário. Fechamento já havia mostradoBODY na rodada anterior.
