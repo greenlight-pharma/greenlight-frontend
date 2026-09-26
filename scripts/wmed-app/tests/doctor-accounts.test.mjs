@@ -215,3 +215,26 @@ test('troca de senha: exige a atual, encerra as outras sessões e mantém esta',
  const nova = res(); await accounts.auth(req({ body: { action: 'entrar', email: 'troca@teste.com', password: 'senha-nova-123' } }), nova); assert.equal(nova.statusCode, 200);
  const anon = res(); await accounts.auth(req({ body: { action: 'trocar', password: 'senha-nova-456' } }), anon); assert.equal(anon.statusCode, 401);
 });
+
+test('casos compartilhados: cria sem o relato, feed público, dono remove, denúncias escondem', { skip }, async () => {
+ const shared = await import('../server/shared-cases.mjs');
+ const a = await signup('comp-a@exemplo.com', 'Ana Autora');
+ const salvar = res(); await store.cases(req({ url: '/api/wmed/cases', cookie: a.cookie, body: { action: 'save', snapshot: snapshot('aaaa0000-bbbb-cccc-dddd-eeee00000077') } }), salvar);
+ const casoId = salvar.data.caso.id;
+ const call = async (body, cookie = '', method = 'POST', url = '/api/wmed/compartilhados') => { const r = res(); await shared.sharedCases(req({ method, url, cookie, body }), r); return r; };
+ assert.equal((await call({ action: 'criar', casoId }, a.cookie)).statusCode, 400);           // sem confirmar
+ const c = await call({ action: 'criar', casoId, confirmo: true, anonimo: true }, a.cookie);
+ assert.equal(c.statusCode, 200); assert.match(c.data.caso.id, /^[A-Za-z0-9]{10}$/); assert.equal(c.data.caso.autor, null);
+ assert.equal(JSON.stringify(c.data.caso).includes('Caso fictício'), false);                  // relato não vai a público
+ const c2 = await call({ action: 'criar', casoId, confirmo: true, anonimo: false }, a.cookie);
+ assert.equal(c2.data.caso.id, c.data.caso.id); assert.equal(c2.data.caso.autor, 'Ana Autora');
+ const id = c.data.caso.id;
+ const aberto = await call(undefined, '', 'GET', '/api/wmed/compartilhados?id=' + id); assert.equal(aberto.data.caso.titulo, 'Tosse seca');
+ const feed = await call(undefined, '', 'GET', '/api/wmed/compartilhados?pagina=1'); assert.ok(feed.data.casos.some((x) => x.id === id));
+ const outro = await signup('comp-b@exemplo.com');
+ assert.equal((await call({ action: 'remover', id }, outro.cookie)).statusCode, 404);            // só o dono remove
+ for (let i = 0; i < 3; i++) { const d = await signup(`denuncia${i}@exemplo.com`); await call({ action: 'denunciar', id }, d.cookie); }
+ assert.equal((await call(undefined, '', 'GET', '/api/wmed/compartilhados?id=' + id)).statusCode, 404);
+ const html = res(); await shared.sharePage(req({ method: 'GET', url: '/c/' + id }), html, { id, root: new URL('../', import.meta.url).pathname });
+ assert.equal(html.statusCode, 404);
+});

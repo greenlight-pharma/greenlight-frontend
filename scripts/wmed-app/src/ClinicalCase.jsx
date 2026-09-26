@@ -24,6 +24,7 @@ import {restoreCase} from "../shared/case-storage.mjs";
 import "./case-feedback.css";
 import { academicRequest, academicStream } from "./Libraries";
 import PrivacyReview from "./PrivacyReview";
+const ShareCase = React.lazy(() => import("./doctor/ShareCase"));
 import { useI18n } from "./doctor/I18n";
 import { detectAcademicPII } from "../shared/pii.mjs";
 import { fields, feedbackPayload, guidanceFeedback } from "../shared/case-contract.mjs";
@@ -320,6 +321,8 @@ function ClinicalCaseBody({ session, onLogin, onProgress, onPendingChange, activ
       if(alive.current)setBusy("");
     }
   }
+  // id do caso salvo na conta: só caso salvo pode virar desafio compartilhado
+  const [savedId,setSavedId]=useState(null),[sharing,setSharing]=useState(false);
   async function persist() {
     if(saving.current)return saving.current;
     if(!pendingSave.current)return true;
@@ -328,7 +331,7 @@ function ClinicalCaseBody({ session, onLogin, onProgress, onPendingChange, activ
     const promise=(async()=>{try{
       const result=await caseRequest({action:'save',snapshot});
       if(!result.caso?.id)throw Error('O servidor não confirmou o salvamento.');
-      if(alive.current){pendingSave.current=null;setSaveStatus('saved');}
+      if(alive.current){pendingSave.current=null;setSaveStatus('saved');setSavedId(result.caso.id);}
       return true;
     }catch(e){if(alive.current){setSaveStatus('error');setSaveError(e.message);}return false;
     }finally{saving.current=null;}})();saving.current=promise;return promise;
@@ -339,11 +342,12 @@ function ClinicalCaseBody({ session, onLogin, onProgress, onPendingChange, activ
     const data=await caseRequest({action:'open',id});
     const saved=restoreCase(data.caso);
     if(!alive.current)return;
-    setOrganizedStory(saved.relato);
+    setOrganizedStory(saved.relato);setSavedId(saved.id);
     setRelato(saved.relato);setForm(saved.form);setFeedback(saved.feedback);setQuality(saved.quality);setQualityError('');setStage('feedback');setSaveStatus('saved');setSaveError('');setError('');setHistoryOpen(false);reported.current=true;
   }
   async function fresh(){
     if(pendingSave.current&&!await persist())return;
+    setSavedId(null);
     setRetryAudio(null);
     setOrganizedStory(null);
     setRelato('');setForm(empty());setFeedback(null);setQuality(null);setConfirmed(false);setError('');setQualityError('');setSaveStatus('');setSaveError('');reported.current=false;setStage('relato');
@@ -557,7 +561,8 @@ function ClinicalCaseBody({ session, onLogin, onProgress, onPendingChange, activ
         </>
       )}
       {stage === "feedback" && feedback && <>
-        <div className="case-result-actions"><div role="status" className={'case-save-state '+saveStatus}>{saveStatus==='saved'?<><Check size={15}/> {t('Salvo na sua conta')}</>:saveStatus==='saving'?t('Salvando caso…'):saveStatus==='error'?t('Caso ainda não salvo'):t('Preparando para salvar…')}</div><button disabled={!!busy||saveStatus==='saving'} onClick={async()=>{if(pendingSave.current&&!await persist())return;setStage('relato');setConfirmed(false);setSaveStatus('');}}>{t('Complementar relato')}</button><button disabled={!!busy||saveStatus==='saving'} onClick={fresh}>{t('Novo caso')}</button></div>
+        <div className="case-result-actions"><div role="status" className={'case-save-state '+saveStatus}>{saveStatus==='saved'?<><Check size={15}/> {t('Salvo na sua conta')}</>:saveStatus==='saving'?t('Salvando caso…'):saveStatus==='error'?t('Caso ainda não salvo'):t('Preparando para salvar…')}</div><button disabled={!!busy||saveStatus==='saving'} onClick={async()=>{if(pendingSave.current&&!await persist())return;setStage('relato');setConfirmed(false);setSaveStatus('');}}>{t('Complementar relato')}</button><button disabled={!!busy||saveStatus==='saving'} onClick={fresh}>{t('Novo caso')}</button>{import.meta.env.VITE_PRODUCT==='2doctor'&&<button className="case-share" disabled={saveStatus!=='saved'||!savedId} onClick={()=>setSharing(true)}>{t('Compartilhar')}</button>}</div>
+        {sharing&&savedId&&<React.Suspense fallback={null}><ShareCase casoId={savedId} form={form} onClose={()=>setSharing(false)}/></React.Suspense>}
         {saveError&&<div className="error" role="alert">{t(saveError)} {t('Mantenha esta tela aberta.')}<button disabled={saveStatus==='saving'} onClick={persist}>{t('Tentar salvar novamente')}</button></div>}
         <CaseFeedback key={JSON.stringify(form)} feedback={feedback} quality={quality} qualityError={qualityError} grading={grading} restPending={restPending} restError={restError} relato={relato} form={form} onGrade={grade} busy={!!busy}/>
       </>}

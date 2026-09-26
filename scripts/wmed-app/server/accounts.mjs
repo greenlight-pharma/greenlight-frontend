@@ -135,7 +135,7 @@ function publicUser(u) {
 
 // ---- limites ----
 const attempts = new Map();
-function throttle(key, max = 8, now = Date.now()) {
+export function throttle(key, max = 8, now = Date.now()) {
  for (const [k, v] of attempts) if (v.until < now) attempts.delete(k);
  const rec = attempts.get(key) || { n: 0, until: now + 60000 };
  if (rec.n >= max || (attempts.size > 20000 && !attempts.has(key))) return false;

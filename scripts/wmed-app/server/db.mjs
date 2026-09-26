@@ -64,6 +64,30 @@ export const SCHEMA = [
    n integer not null default 0,
    primary key (usuario_id, dia, tipo)
  )`,
+ // Casos compartilhados (link público + feed da comunidade): cópia sem o relato original.
+ `create table if not exists casos_publicos (
+   id text primary key,
+   caso_id uuid not null unique references casos(id) on delete cascade,
+   usuario_id uuid not null references usuarios(id) on delete cascade,
+   autor text,
+   titulo text not null,
+   campos jsonb not null,
+   feedback jsonb not null,
+   score integer,
+   idioma text not null default 'en',
+   respostas integer not null default 0,
+   visitas integer not null default 0,
+   denuncias integer not null default 0,
+   criado_em timestamptz not null default now(),
+   removido_em timestamptz
+ )`,
+ `create index if not exists casos_publicos_feed on casos_publicos(criado_em desc) where removido_em is null`,
+ `create table if not exists denuncias_caso (
+   caso_publico text not null references casos_publicos(id) on delete cascade,
+   usuario_id uuid not null references usuarios(id) on delete cascade,
+   criado_em timestamptz not null default now(),
+   primary key (caso_publico, usuario_id)
+ )`,
 ];
 
 let pool = null, ready = null;
