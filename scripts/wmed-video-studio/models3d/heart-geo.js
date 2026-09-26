@@ -51,7 +51,8 @@ export function taperTube(curve, rFn, { seg = 64, rad = 16, caps = [false, false
 // Casca parcial de cilindro ao longo de x (arco th0..th1), raio interno rin(th,x) e externo rout(th,x).
 // Faces: externa, interna, bordas do corte e pontas. col(th, x, face) → [r,g,b] opcional (cores por vértice).
 // UV: u = ângulo (×uRep), v = x (×vRep), bordas do corte usam (x, profundidade).
-export function cutShell(rin, rout, { th0, th1, x0, x1, segT = 72, segL = 48, segW = 4, col = null, uRep = 1, vRep = 1, faces = 'all' } = {}) {
+// xMap(u) opcional: distribui as amostras ao longo de x (mais densas perto da lesão).
+export function cutShell(rin, rout, { th0, th1, x0, x1, segT = 72, segL = 48, segW = 4, col = null, uRep = 1, vRep = 1, faces = 'all', xMap = null } = {}) {
   const pos = [], idx = [], uv = [], cols = [];
   const grid = (fn, nu, nv, flip, uvfn, face) => {
     const base = pos.length / 3;
@@ -66,7 +67,7 @@ export function cutShell(rin, rout, { th0, th1, x0, x1, segT = 72, segL = 48, se
       flip ? idx.push(a, a + 1, b, b, a + 1, b + 1) : idx.push(a, b, a + 1, b, b + 1, a + 1);
     }
   };
-  const X = (u) => x0 + u * (x1 - x0), TH = (v) => th0 + v * (th1 - th0);
+  const X = xMap || ((u) => x0 + u * (x1 - x0)), TH = (v) => th0 + v * (th1 - th0);
   const uvS = (u, v) => [v * uRep, u * vRep];
   const all = faces === 'all';
   if (all || faces.includes('out')) grid((u, v) => [TH(v), X(u), rout(TH(v), X(u))], segL, segT, false, uvS, 'out');
@@ -85,8 +86,9 @@ export function cutShell(rin, rout, { th0, th1, x0, x1, segT = 72, segL = 48, se
 export function rbcGeometry(seg = 16) {
   // perfil: do centro do topo até a borda e de volta pelo fundo
   const prof = [];
-  for (let i = 0; i <= 12; i++) { const r = i / 12; prof.push(new THREE.Vector2(r * 0.999 + 0.001, rbcH(r))); }
-  for (let i = 12; i >= 0; i--) { const r = i / 12; prof.push(new THREE.Vector2(r * 0.999 + 0.001, -rbcH(r))); }
+  const rs = [0, 0.2, 0.4, 0.58, 0.72, 0.84, 0.93, 0.98, 1];
+  for (const r of rs) prof.push(new THREE.Vector2(r * 0.999 + 0.001, rbcH(r)));
+  for (const r of rs.slice().reverse()) prof.push(new THREE.Vector2(r * 0.999 + 0.001, -rbcH(r)));
   const g = new THREE.LatheGeometry(prof, seg); g.computeVertexNormals();
   return g;
 }

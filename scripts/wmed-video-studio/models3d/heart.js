@@ -125,8 +125,8 @@ export function buildHeart(stage, { coronaryColor = 0xb0282a } = {}) {
 
   const mats = {
     myo: tissueMaterial({ color: 0x5e141c, sheen: 0xc8504a, kind: 'wet', seed: 3, cell: 20, repeat: [5, 3], normal: 0.6, wet: 0.45, roughness: 0.55, rim: 0.12, rimColor: 0xff9a8a }),
-    atrium: tissueMaterial({ color: 0x55182a, sheen: 0xc0606a, kind: 'fibers', seed: 5, cell: 10, repeat: [2, 2], normal: 0.3, wet: 0.75, roughness: 0.42, rim: 0.12, rimColor: 0xff9a8a }),
-    ra: tissueMaterial({ color: 0x561a2e, sheen: 0xc07080, kind: 'fibers', seed: 7, cell: 10, repeat: [2, 2], normal: 0.3, wet: 0.75, roughness: 0.42, rim: 0.12, rimColor: 0xd9a8ff }),
+    atrium: tissueMaterial({ color: 0x55182a, sheen: 0xc0606a, kind: 'wet', seed: 5, cell: 10, repeat: [3, 3], normal: 0.5, wet: 0.75, roughness: 0.42, rim: 0.12, rimColor: 0xff9a8a }),
+    ra: tissueMaterial({ color: 0x561a2e, sheen: 0xc07080, kind: 'wet', seed: 7, cell: 10, repeat: [3, 3], normal: 0.5, wet: 0.75, roughness: 0.42, rim: 0.12, rimColor: 0xd9a8ff }),
     artery: tissueMaterial({ color: coronaryColor, sheen: 0xff8f80, kind: 'wet', seed: 9, repeat: [1, 8], normal: 0.35, wet: 0.95, roughness: 0.3, rim: 0.2, rimColor: 0xffb0a0 }),
     vein: tissueMaterial({ color: 0x3e2440, sheen: 0xa07ab8, kind: 'wet', seed: 11, repeat: [1, 8], normal: 0.35, wet: 0.9, roughness: 0.32, rim: 0.12, rimColor: 0xc0a0ff }),
     fat: tissueMaterial({ color: 0xcfa75c, sheen: 0xfff0b0, kind: 'cells', seed: 13, cell: 12, repeat: [2, 10], normal: 0.9, wet: 0.6, roughness: 0.45, rim: 0.1, rimColor: 0xfff0c0 }),
@@ -137,6 +137,8 @@ export function buildHeart(stage, { coronaryColor = 0xb0282a } = {}) {
 
   // ---------- ventrículos (grupo que bate; pivô no plano AV) ----------
   mats.myo.vertexColors = true;
+  mats.myo.clearcoat = 0.35; mats.myo.clearcoatRoughness = 0.38;
+  for (const k of ['ra', 'atrium']) { mats[k].clearcoat = 0.3; mats[k].clearcoatRoughness = 0.4; mats[k].roughness = 0.55; }   // brilho úmido mais espalhado (sem ponto quente de plástico)
   const PIV_Y = 0.78;
   const vent = new THREE.Group(); vent.position.y = PIV_Y; core.add(vent);
   const ventIn = new THREE.Group(); ventIn.position.y = -PIV_Y; vent.add(ventIn);
@@ -192,6 +194,14 @@ export function buildHeart(stage, { coronaryColor = 0xb0282a } = {}) {
   addFat(range(S_AV + 0.02, 0.7, 10, (s) => [s, PHI_PIV(s)]), 0.09, 0.025, 9);
   addVessel(onPath(range(S_AV + 0.02, 0.62, 8, (s) => [s, -1.62 - 0.1 * s, 0.012])), 0.024, 0.01, mats.artery, { seg: 50 });              // marginal aguda
   addVessel(onPath(range(S_AV + 0.03, 0.4, 5, (s) => [s, -0.9 + 0.3 * (s - S_AV), 0.012])), 0.017, 0.008, mats.artery, { seg: 30 });      // ramo do cone / VD anterior
+  // ramúsculos finos (determinísticos): saem da DA para os dois lados e da coronária direita para a parede do VD
+  for (let i = 0; i < 16; i++) {
+    const fromLAD = i < 10, side = i % 2 ? 1 : -1;
+    const s0 = fromLAD ? 0.24 + 0.66 * hash(i * 3.1) : S_AV + 0.02, f0 = fromLAD ? PHI_LAD(s0) : -0.5 - 1.1 * hash(i * 5.3);
+    const ds = fromLAD ? 0.08 + 0.1 * hash(i * 7.7) : 0.2 + 0.2 * hash(i * 2.2), df = fromLAD ? side * (0.3 + 0.35 * hash(i * 1.9)) : 0.12 * (hash(i * 4.4) - 0.5);
+    const pts = range(0, 1, 5, (u) => [s0 + ds * u, f0 + df * Math.sin(u * 1.4) + 0.04 * Math.sin(u * 9 + i), 0.008]);
+    addVessel(onPath(pts), 0.011, 0.004, mats.artery, { seg: 20 });
+  }
   // veia cardíaca magna, paralela à DA (mais escura), e veia interventricular posterior
   addVessel(onPath(range(S_AV + 0.03, 0.82, 12, (s) => [s, PHI_LAD(s) + 0.13, 0.012])), 0.03, 0.012, mats.vein, { seg: 70 });
   addVessel(onPath(range(S_AV + 0.03, 0.8, 10, (s) => [s, PHI_PIV(s) - 0.12, 0.012])), 0.028, 0.012, mats.vein, { seg: 60 });
