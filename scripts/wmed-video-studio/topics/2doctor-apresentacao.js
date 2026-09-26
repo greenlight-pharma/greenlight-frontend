@@ -19,10 +19,9 @@
     novos: [['Scribe', 'From an account to a structured note', 'echo'], ['Innovation radar', 'Technologies under evaluation', 'shield'], ['Interpret a study', 'Absolute risk, relative risk and NNT', 'check'],
       ['ECG in 10 steps', 'Course, tracings and exercises', 'pulse'], ['Split a shift', 'Time allocation per person', 'steth'], ['3D X-ray', 'Interactive prototype', 'flask']],
     wkEnd: 'An AI lab for medicine, *every week*.',
-    d3Eb: 'Visual library', d3T: '*3D* content to explore',
-    d3Cards: [['Genetics', 'Cell in section · nucleus and mitochondria'], ['Microbiology', 'Escherichia coli · wall and flagella'], ['Molecular library', 'ATP · energy transfer']],
-    d3Mods: ['Anatomy', 'Histology', 'Genetics', 'Molecules', 'Microbiology', 'Radiology'],
-    end: '*Unlimited* AI. New *every week*.', kicker: 'Meet 2Doctor', secs: ['2Doctor', 'The 2', 'AI', 'Every week', '3D', 'Start']
+    d3Eb: 'Radiology', d3T: 'CT connected to *3D* anatomy', d3Sub: 'Scroll through real slices and see where you are in the body.',
+    d3Lab: ['3D context', 'Axial CT', 'Slice'], d3Regs: ['Chest', 'Abdomen and pelvis', 'Head and neck'], credito: 'Public reference CT · TotalSegmentator, CC BY 4.0',
+    end: '*Unlimited* AI. New *every week*.', kicker: 'Meet 2Doctor', secs: ['2Doctor', 'The 2', 'AI', 'Every week', 'CT + 3D', 'Start']
   } : {
     tagline: 'Medicina conectada ao *conhecimento*.', pills: ['IA ilimitada', 'Novidades toda semana', 'Plantão e estudo'],
     eb2: 'O 2 da 2Doctor', dois: [['*2* cabeças', 'Você e a IA, raciocinando juntas'], ['*2ª* opinião', 'Em segundos, a qualquer hora'], ['*2* frentes', 'Do plantão aos estudos'], ['*2* mundos', 'Diretrizes do Brasil e do mundo']],
@@ -37,10 +36,9 @@
     novos: [['Scribe', 'Do relato à nota organizada', 'echo'], ['Radar de inovação', 'Tecnologias em avaliação', 'shield'], ['Interpretar um estudo', 'Risco absoluto, relativo e NNT', 'check'],
       ['ECG em 10 passos', 'Curso, traçados e exercícios', 'pulse'], ['Dividir plantão', 'Horários distribuídos por pessoa', 'steth'], ['Laboratório de ideias', 'Radiografia em 3D · protótipo', 'flask']],
     wkEnd: 'Um laboratório de IA para a medicina, *toda semana*.',
-    d3Eb: 'Acervo visual', d3T: 'Conteúdo *3D* para explorar',
-    d3Cards: [['Genética', 'Célula em corte · núcleo e mitocôndrias'], ['Microbiologia', 'Escherichia coli · parede e flagelos'], ['Biblioteca molecular', 'ATP · transferência de energia']],
-    d3Mods: ['Anatomia', 'Histologia', 'Genética', 'Moléculas', 'Microbiologia', 'Radiologia'],
-    end: 'IA *ilimitada*. Novidades *toda semana*.', kicker: 'Conheça a 2Doctor', secs: ['2Doctor', 'O 2', 'IA', 'Toda semana', '3D', 'Comece']
+    d3Eb: 'Radiologia', d3T: 'Tomografia conectada ao *3D*', d3Sub: 'Percorra cortes reais e veja onde você está no corpo.',
+    d3Lab: ['Contexto 3D', 'TC axial', 'Corte'], d3Regs: ['Tórax', 'Abdome e pelve', 'Cabeça e pescoço'], credito: 'TC pública de referência · TotalSegmentator, CC BY 4.0',
+    end: 'IA *ilimitada*. Novidades *toda semana*.', kicker: 'Conheça a 2Doctor', secs: ['2Doctor', 'O 2', 'IA', 'Toda semana', 'TC + 3D', 'Comece']
   };
   const S = { intro: 0, dois: 4.5, ai: 14, semana: 23, d3: 32, outro: 38.5 };
   const CAP = 'out/app-captures/', seq = m => Array.from({ length: 90 }, (_, i) => `${CAP}${m}/f${String(i).padStart(3, '0')}.jpg`);
@@ -182,30 +180,39 @@
     text(L.wkEnd, W / 2, 950, { size: 30, color: C.ink2, align: 'center', accent: C.blue, alpha: expoOut(seg(lt, 7.6, 8.3)) });
   }
 
-  // ---------------- 04 · conteúdo 3D ----------------
-  // capturas reais do 2Doctor (tools/capture-app.mjs --url=https://www.2doctor.ai/2doctor/ → out/app-captures/)
+  // ---------------- 04 · tomografia conectada ao 3D ----------------
+  // capturas reais do módulo Radiologia do 2Doctor (tools/capture-2doctor-tc.mjs → out/app-captures/tc3d e tc):
+  // o corte sobe pelo tórax no 3D e a TC axial acompanha o mesmo nível.
   function d3(t, lt) {
-    header(lt, L.d3Eb, L.d3T, null);
-    const cards = [{ k: 'cell', at: .5 }, { k: 'ecoli', at: .8 }, { k: 'atp', at: 1.1 }];
-    const cw = 540, gap = 30, x0 = (W - 3 * cw - 2 * gap) / 2, y = 330, ih = 405;
-    cards.forEach((c, i) => {
-      const e = expoOut(seg(lt, c.at, c.at + .8)), x = x0 + i * (cw + gap), yy = y + (1 - e) * 60;
-      panel(x, yy, cw, ih + 130, { alpha: e, r: 24 });
-      if (e < .005) return;
-      X.save(); X.globalAlpha = e;
-      const ix = x + 14, iy = yy + 14, iw = cw - 28, p = seg(lt, 0, 6.5);
-      if (c.k === 'cell') turntable(IMG.cell, p, ix, iy, iw, ih - 14, { r: 14 });
-      else if (c.k === 'ecoli') turntable(IMG.ecoli, p, ix, iy, iw, ih - 14, { r: 14, src: [0, .08, 1, .92] });
-      else turntable(IMG.atp, p, ix, iy, iw, ih - 14, { r: 14 });
-      pill(ix + 18, iy + 36, '3D', { size: 17, mono: true, weight: 500, color: C.ink });
-      text(L.d3Cards[i][0], x + 34, yy + ih + 44, { size: 32, weight: 700 });
-      text(L.d3Cards[i][1], x + 34, yy + ih + 88, { size: 22, color: C.muted });
+    header(lt, L.d3Eb, L.d3T, L.d3Sub, { subW: 900 });
+    const p = seg(lt, .8, 5.8), y = 360, h = 560;
+    // contexto 3D (esquerda)
+    const e1 = expoOut(seg(lt, .4, 1.2)), x1 = 120, w1 = 980, y1 = y + (1 - e1) * 60;
+    panel(x1, y1, w1, h, { alpha: e1, r: 24 });
+    if (e1 > .005) {
+      X.save(); X.globalAlpha = e1;
+      turntable(IMG.tc3d, p, x1 + 14, y1 + 14, w1 - 28, h - 28, { r: 14, src: [0, .09, 1, .88] });
+      pill(x1 + 34, y1 + 50, '3D', { size: 17, mono: true, weight: 500, color: C.ink });
+      text(L.d3Lab[0], x1 + 100, y1 + 51, { size: 22, weight: 700 });
       X.restore();
-    });
-    const mods = L.d3Mods;
-    const total = mods.reduce((s, m) => { X.font = `400 22px ${F.sans}`; return s + X.measureText(m).width + 40 + 12; }, 0);
-    let px = W / 2 - total / 2;
-    mods.forEach((m, i) => { const e = expoOut(seg(lt, 2 + i * .12, 2.6 + i * .12)); px += pill(px, 945 + (1 - e) * 14, m, { size: 22, weight: 400, alpha: e, color: C.ink2 }) + 12; });
+    }
+    // TC axial (direita), no mesmo nível do corte
+    const e2 = expoOut(seg(lt, .7, 1.5)), x2 = 1130, w2 = 670, y2 = y + (1 - e2) * 60;
+    panel(x2, y2, w2, h, { alpha: e2, r: 24, fill: '#0B0F12', stroke: '#1C2A2C' });
+    if (e2 > .005) {
+      X.save(); X.globalAlpha = e2;
+      turntable(IMG.tc, p, x2 + 14, y2 + 70, w2 - 28, h - 120, { r: 12 });
+      text(L.d3Lab[1], x2 + 30, y2 + 40, { size: 22, weight: 700, color: '#E6F2EE' });
+      const n = Math.round(lerp(14, 106, p));   // posição aproximada no volume de 120 cortes
+      text(`${L.d3Lab[2]} ${n} / 120`, x2 + w2 - 30, y2 + 40, { size: 18, mono: true, color: '#92D5C5', align: 'right' });
+      rr(x2 + 30, y2 + h - 32, w2 - 60, 6, 3); X.fillStyle = 'rgba(230,242,238,.15)'; X.fill();
+      rr(x2 + 30, y2 + h - 32, Math.max(6, (w2 - 60) * p), 6, 3); X.fillStyle = '#92D5C5'; X.fill();
+      X.restore();
+    }
+    // regiões do módulo e crédito do exame
+    let px = 120;
+    L.d3Regs.forEach((m, i) => { const e = expoOut(seg(lt, 1.6 + i * .12, 2.2 + i * .12)); px += pill(px, 965 + (1 - e) * 14, m, { size: 21, weight: i ? 400 : 600, alpha: e, fill: i ? C.page : C.ink, stroke: i ? C.line : false, color: i ? C.ink2 : '#FFFFFF' }) + 12; });
+    text(L.credito, W - 120, 966, { size: 16, mono: true, color: C.faint, align: 'right', alpha: expoOut(seg(lt, 2, 2.6)) });
   }
 
   // ---------------- 05 · encerramento ----------------
@@ -219,7 +226,7 @@
 
   video({
     slug: EN ? '2doctor-apresentacao-en' : '2doctor-apresentacao', title: L.kicker, dur: 44, chrome: [3.9, 38.7], code: '2DOCTOR', kicker: L.kicker,
-    images: { cell: seq('genetica'), ecoli: seq('microbiologia'), atp: seq('molecular') },
+    images: { tc3d: seq('tc3d'), tc: seq('tc') },
     sections: [[S.intro, L.secs[0]], [S.dois, L.secs[1]], [S.ai, L.secs[2]], [S.semana, L.secs[3]], [S.d3, L.secs[4]], [S.outro, L.secs[5]]],
     scenes: [[S.intro, intro], [S.dois, dois], [S.ai, ai], [S.semana, semana], [S.d3, d3], [S.outro, outro]]
   });
