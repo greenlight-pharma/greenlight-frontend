@@ -16,3 +16,5 @@ data,episodio,etapa,ferramenta,tempo_parede_min,custo_usd,unidade,notas
 2026-09-25,todos,"Runway: rostos com gemini_image3_pro (2K, 4 numa chamada)",Runway API,1.6,0.80,80 créditos,"prompt r2; sem seed; 93 s"
 2026-09-25,todos,"Runway: pacote de referências da Iris (6 planos × 2, gpt_image_2 médio com @Iris)",Runway API,4.4,0.60,60 créditos,"10 créditos por plano (4836→4776); 39-48 s por plano; rosto consistente nas 12"
 2026-09-25,2,"roteiro do Ep. 2 no formato de questão (Revalida 2024/1 Q10) + busca nas provas do INEP",Claude Code,35,0,,"5 cadernos lidos (2023/1 a 2025/1); DOIs das fontes conferidos; afirmações novas como parcial"
+2026-09-25,2,"Runway: 4 amostras de voz em inglês (eleven_v3, 145 caracteres cada)",Runway API,1,0.12,12 créditos,"3 créditos por amostra; 7 a 14 s por chamada"
+2026-09-25,2,"Runway: teste de avatar falante no café (gwm1_avatars, 6,7 s)",Runway API,1,0.04,4 créditos,"voz 2 + vídeo 2; avatar grátis; saída 1088x704 horizontal; rosto varia"
