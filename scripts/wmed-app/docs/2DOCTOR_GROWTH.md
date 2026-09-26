@@ -1,3 +1,9 @@
+## 2026-09-25 23:05 BRT — Limite do chat publicado
+
+Fontebd02689; deployment12d8de53-9a7a-42b2-b8b2-719034dfd34c SUCCESS em2doctor/2doctor-web. Health200/product2doctor; entrada/assets/index-Bo2_Dr0s.js e bytes do asset público idênticos ao local/200. CUA público390 confirmou2008caracteres com finalCONCLUSAO intacto, aviso reduza8, botão desativado; editar para2000 reabilita. Screenshot conferido, largura390/scroll390, console semerros. Texto fictício removido/viewport restaurado.206testes/build2Doctor/buildsite passaram. Não testados sessão real, envio clínico, dispositivo físico ou VoiceOver.
+
+Rascunho continua só na memória da tela: manter texto no campo não significa salvar em conta ou preservar após reload. WMed/API/ECG intactos. Próximo executável: verificar recuperação de falha de rede no chat e preservação da pergunta/anexos usando fixture, antes de qualquer alteração. Rollback reconstruindo e1df3a1 com cwd scripts/wmed-app.
+
 ## 2026-09-25 23:02 BRT — Limite visível sem cortar rascunho
 
 Reproduzido público: maxLength2000 interrompeu CONCLUSAO em C sem aviso.2Doctor mantém limite de envio2000, mas retira corte do textarea, preservando texto longo na memória. Contagem aparece a partir1800, erro acima2000 explica excesso e impede botão/atalho antes de login/revisão/API. aria-describedby/invalid associados ao aviso, PT/EN/ES. WMed conserva maxLength anterior; nenhum limite/backend/modelo/persistência alterado.
