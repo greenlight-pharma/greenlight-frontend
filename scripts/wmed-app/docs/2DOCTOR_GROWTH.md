@@ -1,3 +1,13 @@
+## 2026-09-26 17:35 BRT — Pesquisa no celular conferida, sem nova regressão
+
+Rodada 20:30Z: estado/diário e planos lidos. Git b46b3dd (restrição regional de ENAMED feita por outra frente, preservada); somente medico-app/dist-samu não rastreado. Railway e7140d4e-c2b2-48d9-ad1a-51759ee6c9f0 SUCCESS, healthz 200/product 2doctor. Asset público /assets/index-CNyOvHc2.js idêntico byte a byte ao build local. Nenhum deploy ou mudança de produto por esta rodada.
+
+CUA público 390×844: menu → Pesquisa → Fontes e estudos → busca bibliográfica “asthma”; loading encerrou com oito referências. Selecionar uma referência atualizou 1/8 e habilitou ações; “Ver seleção (1)” retornou ao painel com foco em “Sua seleção”. Sem overflow lateral (scrollWidth 375, viewport 390), screenshot legível. Busca e seleção limpas e retorno ao chat verificado; viewport restaurado. Nenhum dado de paciente, login, cópia/compartilhamento ou envio de caso. Conteúdo observado somente para QA de interface; não houve revisão clínica ou avaliação da relevância dos artigos.
+
+230 testes existentes: 220 passaram, 10 integrações ignoradas por TEST_DATABASE_URL ausente. Build 2Doctor e build completo do site aprovados; diffcheck limpo. Logs /tmp/2doctor-2030-tests.log, -build.log e -site.log. Não rodaram iPhone/Safari/VoiceOver físicos, integrações de banco, fluxos autenticados, validação clínica ou teste geográfico real da alteração de outra frente. Nenhuma nova falha reproduzível neste percurso; não criado recurso para preencher a rodada.
+
+Próximo passo executável: conferir fricção concreta relatada ou reproduzível nos fluxos existentes antes de editar; preservar estabilidade, sem ampliar catálogo, desafios ou Scribe. A automação não homologa nem expande as mudanças de comunidade da outra frente.
+
 ## 2026-09-26 17:02 BRT — Conferência de medicações sem nova regressão
 
 Rodada20:00Z: estado/diário e planos lidos. Git2936955, sem mudança de código desde d9f0c8c e somente dist-samu não rastreado. Railway72349f44-0080-4eae-b871-42967daf1108 continuaSUCCESS; health200/product2doctor; asset/assets/index-DfjR_0wT.js comparado ao build local: idêntico=True.
