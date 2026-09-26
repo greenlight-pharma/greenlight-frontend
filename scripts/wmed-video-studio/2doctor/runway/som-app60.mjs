@@ -6,13 +6,19 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 const OUT = path.join(path.dirname(fileURLToPath(import.meta.url)), '..', 'out', 'app60');
 const client = new RunwayML();
-const SONS = {
+const SO = process.argv[2];   // node som-app60.mjs trilha-a  → gera só esse
+const SONS_ALL = {
+  'trilha-a': { duration: 30, loop: true, promptText: 'Minimal elegant ambient electronic music for a premium medical technology app video: soft deep pulse, airy evolving pads, delicate glassy plucks and subtle glitchy textures, calm and sophisticated, Apple keynote style, 100 bpm, no vocals, seamless loop' },
+  'trilha-b': { duration: 30, loop: true, promptText: 'Inspiring cinematic tech promo music: emotive felt piano motif over a warm modern beat, gentle strings swelling, clean sub bass, hopeful and confident, healthcare innovation, 96 bpm, no vocals, seamless loop' },
+};
+const SONS0 = {
   trilha: { duration: 30, loop: true, promptText: 'Modern, premium technology promo background music for a healthcare app: clean electronic pulse, warm synth pads, soft plucked arpeggios, light crisp percussion, confident and optimistic, 112 bpm, no vocals, seamless loop' },
   abertura: { duration: 4, promptText: 'Cinematic tech logo reveal: soft rising shimmer that resolves into a deep, clean digital impact with a subtle sparkle tail, modern and elegant' },
   whoosh: { duration: 1.2, promptText: 'Short soft airy UI whoosh transition, modern, clean, subtle' },
   clique: { duration: 0.5, promptText: 'Single soft modern user interface tap click, crisp and subtle, no reverb' },
   sinal: { duration: 1.5, promptText: 'Gentle positive digital notification chime, two soft notes, clean and modern, healthcare app' },
 };
+const SONS = SO ? { [SO]: SONS_ALL[SO] } : SONS0;
 const saldo = async () => (await client.organization.retrieve()).creditBalance;
 for (const [nome, o] of Object.entries(SONS)) {
   const antes = await saldo();
