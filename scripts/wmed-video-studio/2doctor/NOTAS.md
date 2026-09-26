@@ -16,6 +16,14 @@
    - Ep. 2 Infarto e Ep. 3 Cirrose: roteiros escritos. Fontes checadas em 25/09 só por extratos de busca (a rede bloqueou os sites), então todas estão como "parcial". Fontes novas: 5ª Definição Universal de IAM (2026) e Baveno VIII (2026). Reformulado: sem "tipo 1", sem limiar de 20 min na dor, sem a palavra "atípico".
    - Regra: vídeo gerado por IA (Runway) só em cenas sem afirmação clínica; mecanismo sempre nos nossos modelos 3D; rótulo "criado por IA" na legenda e em selo discreto (regra do Instagram e do X).
 
+## Produção do Ep. 2 (Runway)
+- **Formato decidido (26/09): 16:9.** Planos do Ep. 2 com `runway/planos-ep2.mjs` (imagem inicial `gpt_image_2` 1920:1088 → Veo 3.1 Fast 1920:1080, 8 s, com som → troca da voz da Iris pela Lara → tratamento de imagem). Saída `out/ep2/*-final.mp4`.
+  - UBS (imagem b): 10 + 120 créditos. Boa: pai com a mão no peito, filho, enfermeira mede a pressão.
+  - Rua (imagem a): 10 + 120 + 3. Anda e fala para a câmera com bonde desfocado; no fim ela vira o rosto e parece outra pessoa, e o letreiro do bonde está aceso (conferir texto). Usar só o começo ou refazer.
+  - Corredor (imagem a): 10 + 120 + 3. Bom enquadramento pela porta. A fala (149 caracteres) ocupa os 8 s inteiros: conferir se não ficou corrida ou cortada; se ficou, encurtar a fala e refazer.
+  - O café aprovado é vertical: refazer em 16:9 (cerca de 130 créditos).
+  - Saldo: 3.976 créditos.
+
 ## Modelos 3D próprios (`../models3d/`)
 Tudo procedural, com código nosso. Visual de documentário no palco comum (`stage.js`, `look:'doc'`): luz quente de lado, contraluz azul, vinheta, grão por quadro, foco raso (`dof` + `stage.setFocus`), oclusão de ambiente (`ao`) e texturas de tecido (`tissueMaterial`). Cada cena exporta `stageOptions`.
 - Pulmões: `build_lungs.py` (Kitaoka 1999 + lei de Murray; cerca de 3.300 ramos, 13 gerações) → `scene-lungs`.
