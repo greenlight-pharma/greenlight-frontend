@@ -3,6 +3,9 @@ import * as THREE from 'three';
 import { buildBronchus } from './bronchus.js';
 import { seg, ease } from './stage.js';
 
+// Visual de documentário: luz quente de lado, contraluz azul, oclusão de ambiente e foco raso na face do corte.
+export const stageOptions = { look: 'doc', ao: true, dof: { focus: 9, aperture: 0.0035, maxblur: 0.006 }, bloom: 0.15 };
+
 export default async function (stage, q) {
   const B = buildBronchus(stage);
   B.root.rotation.x = 0.32; B.root.rotation.z = -0.12;
@@ -22,9 +25,14 @@ export default async function (stage, q) {
       }
       B.update(p, t);
       const cam = stage.camera;
-      cam.position.set(0.9 + 0.25 * Math.sin(t * 0.25), 0.5, 5.4);
-      cam.lookAt(0, 0, 0);
-      cam.fov = 34; cam.near = 0.05; cam.far = 50; cam.updateProjectionMatrix();
+      // enquadramento inteiro em 9:16; na crise a câmera se aproxima da luz do brônquio e volta ao abrir
+      const push = ease(seg(t, 2.5, 6.5)) * (1 - ease(seg(t, 8.5, 11)));
+      const dist = 9.4 - 4.2 * push;
+      cam.position.set(2.0 + 0.5 * Math.sin(t * 0.22) - 0.9 * push, 1.6 - 0.9 * push, dist);
+      cam.lookAt(0.12 * push, -0.05 + 0.25 * push, 0);
+      stage.lights.key.intensity = 2.6 + 0.8 * push;   // luz mais dura no clímax
+      cam.fov = 30; cam.near = 0.05; cam.far = 50; cam.updateProjectionMatrix();
+      stage.setFocus(cam.position.length() - 0.6, 0.0035 + 0.004 * push);
     },
   };
 }

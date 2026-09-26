@@ -1,0 +1,6 @@
+data,episodio,etapa,ferramenta,tempo_parede_min,custo_usd,unidade,notas
+2026-09-25,1-3,roteiro Ep. 2 e 3 + reestruturação da página,Claude Code,25,0,,inclui leitura do estado anterior; roteiro do Ep. 1 veio pronto
+2026-09-25,2-3,checagem de fontes (IAM e cirrose),Claude Code (agente de busca),3.3,0,,rede bloqueou os sites; só extratos de busca; 41 buscas
+2026-09-26,todos,instalar dependências 3D + gerar pulmões,pip/npm + build_lungs.py,3,0,,build_lungs.py: 13 s
+2026-09-26,1,acabamento do corte do brônquio + palco de documentário,Claude Code,20,0,,4 iterações de stills
+2026-09-26,1,render 3D do brônquio (quadro 540x960),Chromium swiftshader (CPU),,0,s/quadro,2,2 a 4,5 s por quadro com AO + foco raso; 1080x1920 estimado 4x
