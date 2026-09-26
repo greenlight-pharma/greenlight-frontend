@@ -1,9 +1,49 @@
-// Vídeo institucional · Conheça a 2Doctor · 38 s · motor tech com a marca 2Doctor (--studio=2doctor).
+// Vídeo institucional · Conheça a 2Doctor / Meet 2Doctor · 44 s · motor tech com a marca 2Doctor (--studio=2doctor).
 // Mesmo estilo do "Conheça a WMed" (topics/wmed-apresentacao.js). Ênfase no "2", IA ilimitada e novidades
 // semanais desenvolvidas com IA. Módulos e descrições tirados de scripts/wmed-app/src/Modules.jsx (2Doctor).
 // Doses da conversa conferidas na ESC 2023 e na ACC/AHA 2025 (ver 2doctor/NOTAS.md, "SCA · estudantes").
 (() => {
-  const S = { intro: 0, dois: 4.5, ai: 14, semana: 23, outro: 32 };
+  // idioma: 'pt' (padrão) ou 'en' (topics/2doctor-apresentacao-en.js define window.DOCTOR_LANG antes de carregar este arquivo)
+  const EN = window.DOCTOR_LANG === 'en';
+  const L = EN ? {
+    tagline: 'Medicine connected to *knowledge*.', pills: ['Unlimited AI', 'New every week', 'On shift and in study'],
+    eb2: 'The 2 in 2Doctor', dois: [['*2* heads', 'You and AI, reasoning together'], ['*2*nd opinion', 'In seconds, any time'], ['*2* fronts', 'From the shift to your studies'], ['*2* worlds', 'Local and international guidelines']],
+    starts: 'It all starts with *2*.', orb: ['You', 'AI'],
+    aiEb: 'Artificial intelligence', aiT: '*Unlimited* AI', aiSub: 'Ask as much as you like. Answers with sources you can check.',
+    aiPts: [['∞', 'Unlimited questions'], ['[1]', 'Official sources you can check'], ['3', 'Automatic · Quick reference · Learn']],
+    chatNoLimit: 'No question limit', synth: 'search · synthesis',
+    Q: 'What is the aspirin loading dose in suspected ACS?',
+    A: 'With no contraindication: aspirin 150–300 mg orally (or 75–250 mg IV), then 75–100 mg daily [1]. The US guideline uses 162–325 mg, chewed [2].',
+    srcs: [['1', 'ESC 2023 · acute coronary syndromes', 'Eur Heart J'], ['2', 'ACC/AHA 2025 · acute coronary syndromes', 'Circulation']],
+    wkEb: '2Doctor Lab', wkT: 'New *every week*', wkSub: 'New tools for medicine, built with AI.', week: 'WEEK', novo: 'NEW',
+    novos: [['Scribe', 'From an account to a structured note', 'echo'], ['Innovation radar', 'Technologies under evaluation', 'shield'], ['Interpret a study', 'Absolute risk, relative risk and NNT', 'check'],
+      ['ECG in 10 steps', 'Course, tracings and exercises', 'pulse'], ['Split a shift', 'Time allocation per person', 'steth'], ['3D X-ray', 'Interactive prototype', 'flask']],
+    wkEnd: 'An AI lab for medicine, *every week*.',
+    d3Eb: 'Visual library', d3T: '*3D* content to explore',
+    d3Cards: [['Genetics', 'Cell in section · nucleus and mitochondria'], ['Microbiology', 'Escherichia coli · wall and flagella'], ['Molecular library', 'ATP · energy transfer']],
+    d3Mods: ['Anatomy', 'Histology', 'Genetics', 'Molecules', 'Microbiology', 'Radiology'],
+    end: '*Unlimited* AI. New *every week*.', kicker: 'Meet 2Doctor', secs: ['2Doctor', 'The 2', 'AI', 'Every week', '3D', 'Start']
+  } : {
+    tagline: 'Medicina conectada ao *conhecimento*.', pills: ['IA ilimitada', 'Novidades toda semana', 'Plantão e estudo'],
+    eb2: 'O 2 da 2Doctor', dois: [['*2* cabeças', 'Você e a IA, raciocinando juntas'], ['*2ª* opinião', 'Em segundos, a qualquer hora'], ['*2* frentes', 'Do plantão aos estudos'], ['*2* mundos', 'Diretrizes do Brasil e do mundo']],
+    starts: 'Tudo começa pelo *2*.', orb: ['Você', 'IA'],
+    aiEb: 'Inteligência artificial', aiT: 'IA *ilimitada*', aiSub: 'Pergunte quanto quiser. Respostas com fontes que você confere.',
+    aiPts: [['∞', 'Perguntas sem limite'], ['[1]', 'Fontes oficiais que você confere'], ['3', 'Automático · Consulta rápida · Estudar']],
+    chatNoLimit: 'Sem limite de perguntas', synth: 'pesquisa · síntese',
+    Q: 'Qual a dose de ataque do AAS na suspeita de SCA?',
+    A: 'Sem contraindicação: AAS 150–300 mg VO (ou 75–250 mg IV) e manutenção de 75–100 mg/dia [1]. A diretriz americana usa 162–325 mg mastigado [2].',
+    srcs: [['1', 'ESC 2023 · síndromes coronarianas agudas', 'Eur Heart J'], ['2', 'ACC/AHA 2025 · síndromes coronarianas agudas', 'Circulation']],
+    wkEb: 'Laboratório 2Doctor', wkT: 'Novidades *toda semana*', wkSub: 'Ferramentas novas para a medicina, desenvolvidas com IA.', week: 'SEM', novo: 'NOVO',
+    novos: [['Scribe', 'Do relato à nota organizada', 'echo'], ['Radar de inovação', 'Tecnologias em avaliação', 'shield'], ['Interpretar um estudo', 'Risco absoluto, relativo e NNT', 'check'],
+      ['ECG em 10 passos', 'Curso, traçados e exercícios', 'pulse'], ['Dividir plantão', 'Horários distribuídos por pessoa', 'steth'], ['Laboratório de ideias', 'Radiografia em 3D · protótipo', 'flask']],
+    wkEnd: 'Um laboratório de IA para a medicina, *toda semana*.',
+    d3Eb: 'Acervo visual', d3T: 'Conteúdo *3D* para explorar',
+    d3Cards: [['Genética', 'Célula em corte · núcleo e mitocôndrias'], ['Microbiologia', 'Escherichia coli · parede e flagelos'], ['Biblioteca molecular', 'ATP · transferência de energia']],
+    d3Mods: ['Anatomia', 'Histologia', 'Genética', 'Moléculas', 'Microbiologia', 'Radiologia'],
+    end: 'IA *ilimitada*. Novidades *toda semana*.', kicker: 'Conheça a 2Doctor', secs: ['2Doctor', 'O 2', 'IA', 'Toda semana', '3D', 'Comece']
+  };
+  const S = { intro: 0, dois: 4.5, ai: 14, semana: 23, d3: 32, outro: 38.5 };
+  const CAP = 'out/app-captures/', seq = m => Array.from({ length: 90 }, (_, i) => `${CAP}${m}/f${String(i).padStart(3, '0')}.jpg`);
 
   // ---------------- 00 · abertura ----------------
   function intro(t, lt) {
@@ -14,8 +54,8 @@
     }
     logo(W / 2 - s / 2, 420 - s / 2, s, { alpha: k });
     text('*2*Doctor', W / 2, 640, { size: 116, weight: 700, align: 'center', reveal: seg(lt, .6, 1.5), accent: C.blue });
-    text('Medicina conectada ao *conhecimento*.', W / 2, 740, { size: 36, color: C.muted, align: 'center', alpha: expoOut(seg(lt, 1.3, 2.1)), accent: C.blue });
-    const labs = ['IA ilimitada', 'Novidades toda semana', 'Plantão e estudo'];
+    text(L.tagline, W / 2, 740, { size: 36, color: C.muted, align: 'center', alpha: expoOut(seg(lt, 1.3, 2.1)), accent: C.blue });
+    const labs = L.pills;
     X.font = `400 24px ${F.sans}`; const tot = labs.reduce((a, l) => a + X.measureText(l).width + 24 * 1.8 + 22 + 16, -16);
     let px = W / 2 - tot / 2;
     labs.forEach((l, i) => {
@@ -25,14 +65,9 @@
   }
 
   // ---------------- 01 · o 2 da 2Doctor ----------------
-  const DOIS = [
-    ['*2* cabeças', 'Você e a IA, raciocinando juntas'],
-    ['*2ª* opinião', 'Em segundos, a qualquer hora'],
-    ['*2* frentes', 'Do plantão aos estudos'],
-    ['*2* mundos', 'Diretrizes do Brasil e do mundo'],
-  ];
+  const DOIS = L.dois;
   function dois(t, lt, dur) {
-    eyebrow(120, 250, 'O 2 da 2Doctor', { alpha: expoOut(seg(lt, .1, .6)) });
+    eyebrow(120, 250, L.eb2, { alpha: expoOut(seg(lt, .1, .6)) });
     const step = 2.1, cur = clamp(Math.floor((lt - .4) / step), 0, DOIS.length - 1);
     DOIS.forEach(([big, sub], i) => {
       const a = .4 + i * step, kin = expoOut(seg(lt, a, a + .55)), kout = i < DOIS.length - 1 ? ease(seg(lt, a + step - .25, a + step + .1)) : 0;
@@ -45,7 +80,7 @@
       const on = i === cur, e = expoOut(seg(lt, .3 + i * .05, .8 + i * .05));
       rr(120 + i * 58, 700, on ? 44 : 30, 6, 3); X.globalAlpha = e; X.fillStyle = on ? C.ink : rgba(C.ink, .15); X.fill(); X.globalAlpha = 1;
     });
-    text('Tudo começa pelo *2*.', 120, 790, { size: 30, color: C.ink2, alpha: expoOut(seg(lt, 8.2, 8.9)), accent: C.blue });
+    text(L.starts, 120, 790, { size: 30, color: C.ink2, alpha: expoOut(seg(lt, 8.2, 8.9)), accent: C.blue });
 
     // o "2" gigante à direita: contorno que se desenha, preenchimento que sobe e dois pontos em órbita (você e a IA)
     const cx = 1400, cy = 560, size = 720;
@@ -66,16 +101,15 @@
       X.save(); X.globalAlpha = orb;
       X.beginPath(); X.arc(ox, oy, 16, 0, TAU); X.fillStyle = col; X.shadowColor = rgba(col, .5); X.shadowBlur = 24; X.fill();
       X.restore();
-      text(['Você', 'IA'][i], ox, oy - 40, { size: 22, weight: 600, align: 'center', color: C.ink2, alpha: orb });
+      text(L.orb[i], ox, oy - 40, { size: 22, weight: 600, align: 'center', color: C.ink2, alpha: orb });
     });
   }
 
   // ---------------- 02 · IA ilimitada ----------------
-  const Q = 'Qual a dose de ataque do AAS na suspeita de SCA?';
-  const A = 'Sem contraindicação: AAS 150–300 mg VO (ou 75–250 mg IV) e manutenção de 75–100 mg/dia [1]. A diretriz americana usa 162–325 mg mastigado [2].';
+  const Q = L.Q, A = L.A;
   function ai(t, lt) {
-    header(lt, 'Inteligência artificial', 'IA *ilimitada*', 'Pergunte quanto quiser. Respostas com fontes que você confere.', { subW: 640 });
-    [['∞', 'Perguntas sem limite'], ['[1]', 'Fontes oficiais que você confere'], ['3', 'Automático · Consulta rápida · Estudar']].forEach(([ic, lab], i) => {
+    header(lt, L.aiEb, L.aiT, L.aiSub, { subW: 640 });
+    L.aiPts.forEach(([ic, lab], i) => {
       const e = expoOut(seg(lt, 1.2 + i * .25, 1.9 + i * .25)), y = 520 + i * 110;
       X.save(); X.globalAlpha = e; X.translate((1 - e) * -30, 0);
       rr(120, y - 36, 72, 72, 18); X.fillStyle = rgba(C.blue, .08); X.fill();
@@ -88,7 +122,7 @@
     if (k < .01) return;
     X.save(); X.globalAlpha = k; X.translate(0, (1 - k) * 40);
     eyebrow(x + 40, y + 46, 'Chat', { size: 15, dotCol: C.blue });
-    text('Sem limite de perguntas', x + w - 40, y + 46, { size: 18, mono: true, color: C.muted, align: 'right' });
+    text(L.chatNoLimit, x + w - 40, y + 46, { size: 18, mono: true, color: C.muted, align: 'right' });
     X.strokeStyle = C.line; X.lineWidth = 1.5; X.beginPath(); X.moveTo(x + 40, y + 82); X.lineTo(x + w - 40, y + 82); X.stroke();
     const qn = Math.floor(clamp(seg(lt, 1.2, 2.6)) * Q.length);
     if (qn > 0) {
@@ -100,11 +134,11 @@
     if (lt > 2.7) {
       logo(x + 36, y + 196, 44);
       text('*2*Doctor', x + 90, y + 219, { size: 24, weight: 700, accent: C.blue });
-      text('pesquisa · síntese', x + 200, y + 220, { size: 18, mono: true, color: C.muted });
+      text(L.synth, x + 200, y + 220, { size: 18, mono: true, color: C.muted });
       const dots = lt < 3 ? '•••'.slice(0, 1 + Math.floor(lt * 6) % 3) : '';
       text(A.slice(0, an).replace(/\[(\d)\]/g, '*[$1]*') + (an < A.length && an > 0 ? ' ▍' : dots), x + 40, y + 290, { size: 28, lh: 1.45, maxW: w - 80, accent: C.blue, color: C.ink2 });
     }
-    [['1', 'ESC 2023 · síndromes coronarianas agudas', 'Eur Heart J'], ['2', 'ACC/AHA 2025 · síndromes coronarianas agudas', 'Circulation']].forEach(([n, ti, src], i) => {
+    L.srcs.forEach(([n, ti, src], i) => {
       const e = expoOut(seg(lt, 6.2 + i * .3, 6.9 + i * .3)), yy = y + 560 + i * 72; if (e <= .005) return;
       X.save(); X.globalAlpha = e; X.translate(0, (1 - e) * 20);
       rr(x + 40, yy, w - 80, 58, 12); X.fillStyle = C.bg; X.fill(); X.strokeStyle = C.line; X.lineWidth = 1.5; X.stroke();
@@ -117,16 +151,9 @@
   }
 
   // ---------------- 03 · novidades toda semana ----------------
-  const NOVOS = [
-    ['Scribe', 'Do relato à nota organizada', 'echo'],
-    ['Radar de inovação', 'Tecnologias em avaliação', 'shield'],
-    ['Interpretar um estudo', 'Risco absoluto, relativo e NNT', 'check'],
-    ['ECG em 10 passos', 'Curso, traçados e exercícios', 'pulse'],
-    ['Dividir plantão', 'Horários distribuídos por pessoa', 'steth'],
-    ['Laboratório de ideias', 'Radiografia em 3D · protótipo', 'flask'],
-  ];
+  const NOVOS = L.novos;
   function semana(t, lt) {
-    header(lt, 'Laboratório 2Doctor', 'Novidades *toda semana*', 'Ferramentas novas para a medicina, desenvolvidas com IA.', { subW: 760 });
+    header(lt, L.wkEb, L.wkT, L.wkSub, { subW: 760 });
     // linha do tempo semanal
     const x0 = 120, x1 = W - 120, yl = 470, n = NOVOS.length, step = 1.05;
     const kline = expoOut(seg(lt, .6, 1.6));
@@ -141,32 +168,59 @@
       X.save(); X.globalAlpha = kline;
       X.beginPath(); X.arc(dotx, yl, 10, 0, TAU); X.fillStyle = lt > a ? C.blue : C.page; X.fill(); X.lineWidth = 3; X.strokeStyle = lt > a ? C.blue : rgba(C.ink, .2); X.stroke();
       X.restore();
-      text(`SEM ${String(i + 1).padStart(2, '0')}`, dotx, yl - 40, { size: 16, mono: true, align: 'center', color: lt > a ? C.blue : C.faint, alpha: kline });
+      text(`${L.week} ${String(i + 1).padStart(2, '0')}`, dotx, yl - 40, { size: 16, mono: true, align: 'center', color: lt > a ? C.blue : C.faint, alpha: kline });
       if (ea <= .005) return;
       const yy = 540 + (1 - e) * 60;
       panel(cx, yy, cw, 330, { alpha: ea, r: 22 });
       X.save(); X.globalAlpha = ea;
       badge(ic, cx + 58, yy + 70, 34, C.blue, 1, ea);
-      pill(cx + cw - 24, yy + 42, 'NOVO', { size: 15, mono: true, align: 'right', fill: C.blue, stroke: false, color: '#FFFFFF', alpha: ea * (.75 + .25 * Math.abs(wob(t, .8, i * .2))) });
+      pill(cx + cw - 24, yy + 42, L.novo, { size: 15, mono: true, align: 'right', fill: C.blue, stroke: false, color: '#FFFFFF', alpha: ea * (.75 + .25 * Math.abs(wob(t, .8, i * .2))) });
       text(nome, cx + 28, yy + 160, { size: 28, weight: 700, maxW: cw - 50, lh: 1.15 });
       text(desc, cx + 28, yy + 250, { size: 20, color: C.muted, maxW: cw - 50, lh: 1.3 });
       X.restore();
     });
-    text('Um laboratório de IA para a medicina, *toda semana*.', W / 2, 950, { size: 30, color: C.ink2, align: 'center', accent: C.blue, alpha: expoOut(seg(lt, 7.6, 8.3)) });
+    text(L.wkEnd, W / 2, 950, { size: 30, color: C.ink2, align: 'center', accent: C.blue, alpha: expoOut(seg(lt, 7.6, 8.3)) });
   }
 
-  // ---------------- 04 · encerramento ----------------
+  // ---------------- 04 · conteúdo 3D ----------------
+  // capturas reais do 2Doctor (tools/capture-app.mjs --url=https://www.2doctor.ai/2doctor/ → out/app-captures/)
+  function d3(t, lt) {
+    header(lt, L.d3Eb, L.d3T, null);
+    const cards = [{ k: 'cell', at: .5 }, { k: 'ecoli', at: .8 }, { k: 'atp', at: 1.1 }];
+    const cw = 540, gap = 30, x0 = (W - 3 * cw - 2 * gap) / 2, y = 330, ih = 405;
+    cards.forEach((c, i) => {
+      const e = expoOut(seg(lt, c.at, c.at + .8)), x = x0 + i * (cw + gap), yy = y + (1 - e) * 60;
+      panel(x, yy, cw, ih + 130, { alpha: e, r: 24 });
+      if (e < .005) return;
+      X.save(); X.globalAlpha = e;
+      const ix = x + 14, iy = yy + 14, iw = cw - 28, p = seg(lt, 0, 6.5);
+      if (c.k === 'cell') turntable(IMG.cell, p, ix, iy, iw, ih - 14, { r: 14 });
+      else if (c.k === 'ecoli') turntable(IMG.ecoli, p, ix, iy, iw, ih - 14, { r: 14, src: [0, .08, 1, .92] });
+      else turntable(IMG.atp, p, ix, iy, iw, ih - 14, { r: 14 });
+      pill(ix + 18, iy + 36, '3D', { size: 17, mono: true, weight: 500, color: C.ink });
+      text(L.d3Cards[i][0], x + 34, yy + ih + 44, { size: 32, weight: 700 });
+      text(L.d3Cards[i][1], x + 34, yy + ih + 88, { size: 22, color: C.muted });
+      X.restore();
+    });
+    const mods = L.d3Mods;
+    const total = mods.reduce((s, m) => { X.font = `400 22px ${F.sans}`; return s + X.measureText(m).width + 40 + 12; }, 0);
+    let px = W / 2 - total / 2;
+    mods.forEach((m, i) => { const e = expoOut(seg(lt, 2 + i * .12, 2.6 + i * .12)); px += pill(px, 945 + (1 - e) * 14, m, { size: 22, weight: 400, alpha: e, color: C.ink2 }) + 12; });
+  }
+
+  // ---------------- 05 · encerramento ----------------
   function outro(t, lt) {
     const k = expoOut(seg(lt, .1, 1)), s = 190 * lerp(.8, 1, k);
     logo(W / 2 - s / 2, 300 + (1 - k) * 30, s, { alpha: k });
     text('*2*Doctor', W / 2, 555, { size: 108, weight: 700, align: 'center', reveal: seg(lt, .3, 1.1), accent: C.blue });
-    text('IA *ilimitada*. Novidades *toda semana*.', W / 2, 650, { size: 38, color: C.muted, align: 'center', alpha: expoOut(seg(lt, .7, 1.4)), accent: C.blue });
+    text(L.end, W / 2, 650, { size: 38, color: C.muted, align: 'center', alpha: expoOut(seg(lt, .7, 1.4)), accent: C.blue });
     pill(W / 2, 770, '2doctor.ai', { size: 28, align: 'center', fill: C.ink, stroke: false, color: '#FFFFFF', dot: C.cyan, alpha: expoOut(seg(lt, 1, 1.7)) });
   }
 
   video({
-    slug: '2doctor-apresentacao', title: 'Conheça a 2Doctor', dur: 38, chrome: [3.9, 32.2], code: '2DOCTOR', kicker: 'Conheça a 2Doctor',
-    sections: [[S.intro, '2Doctor'], [S.dois, 'O 2'], [S.ai, 'IA'], [S.semana, 'Toda semana'], [S.outro, 'Comece']],
-    scenes: [[S.intro, intro], [S.dois, dois], [S.ai, ai], [S.semana, semana], [S.outro, outro]]
+    slug: EN ? '2doctor-apresentacao-en' : '2doctor-apresentacao', title: L.kicker, dur: 44, chrome: [3.9, 38.7], code: '2DOCTOR', kicker: L.kicker,
+    images: { cell: seq('genetica'), ecoli: seq('microbiologia'), atp: seq('molecular') },
+    sections: [[S.intro, L.secs[0]], [S.dois, L.secs[1]], [S.ai, L.secs[2]], [S.semana, L.secs[3]], [S.d3, L.secs[4]], [S.outro, L.secs[5]]],
+    scenes: [[S.intro, intro], [S.dois, dois], [S.ai, ai], [S.semana, semana], [S.d3, d3], [S.outro, outro]]
   });
 })();
