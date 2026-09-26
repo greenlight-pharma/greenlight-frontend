@@ -71,7 +71,13 @@ function ClinicalCaseBody({ session, onLogin, onProgress, onPendingChange, activ
     errorRef.current?.focus({preventScroll:true});
     errorRef.current?.scrollIntoView({block:'nearest',behavior:'instant'});
   },[error,active,stage]);
-  useEffect(()=>{if(active)pageRef.current?.scrollIntoView({block:"start",behavior:"instant"});},[stage,active]);
+  useEffect(() => {
+    if (!active) return;
+    const panel = audioRecovery && pageRef.current?.closest('.case-conversation');
+    // Keep the return button visible when opening or changing steps in the overlay.
+    if (panel) panel.scrollTo({ top: 0, behavior: 'instant' });
+    else pageRef.current?.scrollIntoView({ block: 'start', behavior: 'instant' });
+  }, [stage, active]);
   const recorder = useRef(null),
     stream = useRef(null),
     cancel = useRef(null),
