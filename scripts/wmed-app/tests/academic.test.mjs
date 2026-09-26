@@ -254,3 +254,13 @@ test("streamed feedback reports which part failed", async () => {
     assert.equal(last.data.error, "Falha sintética");
   }
 });
+test("interface language reaches feedback, structure and quality; Portuguese sends nothing new", async () => {
+  const seen = [];
+  const fetchImpl = async (url, opts) => { seen.push({ url, body: JSON.parse(opts.body) }); return url.includes("chat-stream") ? new Response(`data: ${JSON.stringify({ t: JSON.stringify(result()) })}\n\n`, { headers: { "Content-Type": "text/event-stream" } }) : Response.json({ campos: {}, feedback: { resumo_caso: "x" } }); };
+  for (const [action, payload] of [["structure", { relato: story, idioma: "en" }], ["feedback", { fields: f, relato: story, idioma: "es" }], ["quality", { fields: f, relato: story, idioma: "en" }], ["structure", { relato: story }]])
+    await academic(req(action, payload), res(), { fetchImpl, now: fresh() });
+  assert.equal(seen[0].body.idioma, "en");
+  assert.equal(seen[1].body.idioma, "es");
+  assert.match(seen[2].body.historico.at(-1).content, /in English/);
+  assert.equal(seen[3].body.idioma, undefined);
+});

@@ -87,7 +87,7 @@ export function MobileNavigation({module,onNavigate,onMenu}) {
     <button aria-current={module==='chat'?'page':undefined} onClick={()=>onNavigate('chat')}><MessageSquare size={21}/><span>Chat</span></button>
     <button aria-current={navigationGroups[0].modules.includes(module)?'page':undefined} onClick={()=>onMenu('plantao')}><Stethoscope size={21}/><span>{t('Plantão')}</span></button>
     <button aria-current={navigationGroups[1].modules.includes(module)?'page':undefined} onClick={()=>onMenu('estudos')}><GraduationCap size={21}/><span>{t('Estudos')}</span></button>
-    <button onClick={()=>onMenu()} aria-label={t('Abrir menu')}><Menu size={21}/><span>Menu</span></button>
+    <button onClick={()=>onMenu()} aria-label={t('Abrir menu')}><Menu size={21}/><span>{t('Menu')}</span></button>
   </nav>;
 }
 export function Welcome() {const { t } = useI18n();return <div className="doctor-welcome"><div className="doctor-hero-mark"><Mark /></div><h1>{t("Como posso ajudar hoje?")}</h1></div>;}

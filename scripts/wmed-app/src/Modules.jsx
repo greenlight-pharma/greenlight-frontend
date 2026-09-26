@@ -1,4 +1,5 @@
 import {recoverableLazy as lazy, RecoverableBoundary} from './doctor/ModuleRecovery';
+import { useI18n } from './doctor/I18n';
 import React, { Suspense, Component, useState } from "react";
 import {
   Atom,
@@ -148,6 +149,7 @@ export default function Modules({
   onProgress,
   onCasePending,
 }) {
+  const { t, locale } = useI18n();
   const [openedCase, setOpenedCase] = useState(false);
   if (active === "caso" && !openedCase) setOpenedCase(true);
   return (
@@ -155,7 +157,7 @@ export default function Modules({
       <div hidden={active !== "caso"} className="module-container">
         {openedCase && (
           <Boundary key={caseKey} clinical>
-            <Suspense fallback={<p>Preparando caso clínico…</p>}>
+            <Suspense fallback={<p>{t('Preparando caso clínico…')}</p>}>
               <ClinicalCase
                 active={active === "caso"}
                 session={session}
@@ -171,7 +173,7 @@ export default function Modules({
         <div className="module-container va-connected">
           <Boundary key={active}>
             <Suspense
-              fallback={<p className="module-loading">Abrindo biblioteca…</p>}
+              fallback={<p className="module-loading">{t('Abrindo biblioteca…')}</p>}
             >
               {active === "exames-laboratoriais" ? <LabReference/> : active === "fontes-oficiais" ? <OfficialSources/> : active === "dividir-plantao" ? <ShiftDivider/> : active === "pais" ? <CountryHub/> : active === "pesquisa" ? <Research/> : active === "inovacoes" ? <InnovationRadar/> : active === "anatomia" ? (
                 <Anatomy />
@@ -202,37 +204,36 @@ export default function Modules({
               ) : active === "evolucao" ? (
                 <section className="module-page">
                   <header className="module-heading">
-                    <span className="eyebrow blue">APRENDER COM CADA CASO</span>
-                    <h1>Minha evolução</h1>
+                    <span className="eyebrow blue">{t('APRENDER COM CADA CASO')}</span>
+                    <h1>{t('Minha evolução')}</h1>
                     <p>
-                      Qualidade dos seus relatos. Acompanhe seu aprendizado, sem
-                      comparação pública.
+                      {t('Qualidade dos seus relatos. Acompanhe seu aprendizado, sem comparação pública.')}
                     </p>
                   </header>
                   {progress.length ? (
                     <>
                       <div className="quality-card">
                         <div>
-                          <span>Último relato</span>
+                          <span>{t('Último relato')}</span>
                           <strong>
                             {progress.at(-1).score}
                             <small>/100</small>
                           </strong>
-                          <p>{progress.length} avaliações neste navegador</p>
+                          <p>{progress.length} {t('avaliações neste navegador')}</p>
                         </div>
                       </div>
                       <div className="progress-achievement">
                         <TrendingUp size={20} />
                         {progress.length >= 5
-                          ? "Conquista: cinco relatos avaliados"
-                          : "Conquista: primeiro relato avaliado"}
+                          ? t("Conquista: cinco relatos avaliados")
+                          : t("Conquista: primeiro relato avaliado")}
                       </div>
                       <div className="resource-grid">
                         {progress.map((p, i) => (
                           <article className="resource-card" key={i}>
-                            <small>Avaliação {i + 1}</small>
+                            <small>{t('Avaliação')} {i + 1}</small>
                             <h2>{p.score}/100</h2>
-                            <p>{new Date(p.date).toLocaleString("pt-BR")}</p>
+                            <p>{new Date(p.date).toLocaleString(locale)}</p>
                           </article>
                         ))}
                       </div>
@@ -240,21 +241,17 @@ export default function Modules({
                   ) : (
                     <div className="resource-card">
                       <TrendingUp />
-                      <h2>Sua evolução começa com um caso.</h2>
+                      <h2>{t('Sua evolução começa com um caso.')}</h2>
                       <p>
-                        Envie seu primeiro relato e confira a avaliação da sua
-                        apresentação.
+                        {t('Envie seu primeiro relato e confira a avaliação da sua apresentação.')}
                       </p>
                       <a href="#caso" className="module-primary">
-                        Relatar um caso
+                        {t('Relatar um caso')}
                       </a>
                     </div>
                   )}
                   <p className="module-note">
-                    Somente notas e datas são salvas neste navegador, separadas
-                    por conta. Não há sincronização entre aparelhos. Pontuação
-                    experimental; não representa nota acadêmica ou competência
-                    profissional.
+                    {t('Somente notas e datas são salvas neste navegador, separadas por conta. Não há sincronização entre aparelhos. Pontuação experimental; não representa nota acadêmica ou competência profissional.')}
                   </p>
                 </section>
               ) : null}

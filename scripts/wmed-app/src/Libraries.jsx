@@ -16,6 +16,7 @@ import Calculators from "./Calculators";
 import { calculators } from "../shared/calculators.mjs";
 import {localizedCalculators} from "../shared/i18n/calculators.mjs";
 import {useI18n, LibraryLanguageNotice} from "./doctor/I18n";
+import {translate} from "../shared/i18n/catalog.mjs";
 const SCORES=[...ORIGINAL_SCORES,...EXTRA_SCORES];
 // Mesma rota, com resposta em SSE (feedback em partes). Erros antes do fluxo chegam como JSON.
 export async function academicStream(action, payload, signal, onEvent) {
@@ -48,6 +49,8 @@ export async function academicStream(action, payload, signal, onEvent) {
     }
   }
 }
+// Fora do React: usa o idioma que o I18nProvider grava em <html lang>.
+const uiLocale = () => (typeof document !== "undefined" && document.documentElement.lang) || "pt-BR";
 export async function academicRequest(action, payload, signal) {
   const r = await fetch("/api/wmed/academic", {
     method: "POST",
@@ -57,7 +60,7 @@ export async function academicRequest(action, payload, signal) {
   });
   const d = await r.json();
   if (!r.ok) {
-    const e = Error(d.error || "Não foi possível carregar.");
+    const e = Error(translate(uiLocale(), d.error || "Não foi possível carregar."));
     e.status = r.status;
     throw e;
   }
@@ -69,9 +72,10 @@ const norm = (s) =>
     .replace(/[\u0300-\u036f]/g, "")
     .toLowerCase();
 function LibraryHead({ title, subtitle, children }) {
+  const { t } = useI18n();
   return (
     <header className="module-heading">
-      <span className="eyebrow blue">BIBLIOTECA WMED</span>
+      <span className="eyebrow blue">{t("BIBLIOTECA WMED")}</span>
       <h1>{title}</h1>
       <p>{subtitle}</p>
       {children}
@@ -88,7 +92,7 @@ export function Scores() {
   const list = SCORES.filter(
     (s) =>
       (!area || s.especialidade === area) &&
-      (compact ? matchesInstrument(q, s.nome, s.sigla, s.especialidade, t(s.especialidade)) : norm(s.nome + " " + s.sigla).includes(norm(q))),
+      (compact ? matchesInstrument(q, s.nome, t(s.nome), s.sigla, s.especialidade, t(s.especialidade)) : norm(s.nome + " " + s.sigla).includes(norm(q))),
   );
   const [calculator,setCalculator]=useState(null);
   const position = useRef(null), navigation = useRef(null);
@@ -126,19 +130,19 @@ export function Scores() {
       <section className="module-page">
         <button ref={backButton} className="back-button" onClick={backToList}>
           <ArrowLeft size={17} />
-          Scores e calculadoras
+          {t("Scores e calculadoras")}
         </button>
         <LibraryLanguageNotice />
-        <LibraryHead title={score.nome} subtitle={score.descricao} />
+        <LibraryHead title={t(score.nome)} subtitle={t(score.descricao)} />
         <div className="calculator-layout">
           <div className="criteria-list">
             {score.criterios.map((c) => (
               <fieldset className="resource-card" key={c.id}>
-                <legend>{c.pergunta}</legend>
+                <legend>{t(c.pergunta)}</legend>
                 {(c.tipo === "checkbox"
                   ? [
-                      { rotulo: "Não", valor: 0 },
-                      { rotulo: "Sim", valor: c.valor || 0 },
+                      { rotulo: t("Não"), valor: 0 },
+                      { rotulo: t("Sim"), valor: c.valor || 0 },
                     ]
                   : c.opcoes
                 ).map((o, i) => (
@@ -151,7 +155,7 @@ export function Scores() {
                         setAnswers((a) => ({ ...a, [c.id]: o.valor }))
                       }
                     />
-                    {o.rotulo}
+                    {t(o.rotulo)}
                     <small>{o.valor} pts</small>
                   </label>
                 ))}
@@ -159,25 +163,25 @@ export function Scores() {
             ))}
           </div>
           <aside className="result-card">
-            <span className="eyebrow">RESULTADO</span>
+            <span className="eyebrow">{t("RESULTADO")}</span>
             <strong>{complete ? total : "—"}</strong>
             <p>
               {complete
-                ? band?.texto || "Consulte a referência do instrumento."
-                : "Responda a todos os critérios para calcular."}
+                ? (band && t(band.texto)) || t("Consulte a referência do instrumento.")
+                : t("Responda a todos os critérios para calcular.")}
             </p>
-            <small>{score.observacao}</small>
+            <small>{score.observacao && t(score.observacao)}</small>
             <details>
-              <summary>Referência</summary>
+              <summary>{t("Referência")}</summary>
               <p>
-                {score.fonte ||
-                  "Referência não informada no catálogo de origem."}
+                {(score.fonte && t(score.fonte)) ||
+                  t("Referência não informada no catálogo de origem.")}
               </p>
             </details>
             <p className="module-note">
-              Ferramenta de estudo. A soma não substitui avaliação clínica.
+              {t("Ferramenta de estudo. A soma não substitui avaliação clínica.")}
             </p>
-            <button onClick={() => setAnswers({})}>Limpar respostas</button>
+            <button onClick={() => setAnswers({})}>{t("Limpar respostas")}</button>
           </aside>
         </div>
       </section>
@@ -222,11 +226,11 @@ export function Scores() {
             })}
           >
             <Calculator size={22} />
-            <small>{s.especialidade}</small>
-            <h3>{s.nome}</h3>
-            <p>{s.descricao}</p>
+            <small>{t(s.especialidade)}</small>
+            <h3>{t(s.nome)}</h3>
+            <p>{t(s.descricao)}</p>
             <span>
-              Calcular <ArrowUpRight size={16} />
+              {t("Calcular")} <ArrowUpRight size={16} />
             </span>
           </button>
         ))}
@@ -236,6 +240,7 @@ export function Scores() {
   );
 }
 export function ReferenceLibrary({ kind }) {
+  const { t, locale } = useI18n();
   const [data, setData] = useState(null),
     [error, setError] = useState(""),
     [q, setQ] = useState(""),
@@ -282,18 +287,31 @@ export function ReferenceLibrary({ kind }) {
         }),
       ),
     )
-      .then(([conditions, rich, medications]) =>
-        setData({ conditions, rich, medications }),
-      )
+      .then(async ([conditions, rich, medications]) => {
+        // Acervo traduzido (EN/ES): sobrepõe nome, descrição e sinais; os campos de
+        // agrupamento (capítulo, áreas) seguem em PT e são traduzidos na exibição com t().
+        const l = locale?.startsWith("en") ? "en" : locale?.startsWith("es") ? "es" : null;
+        if (l) {
+          const get = (n) => fetch(`${import.meta.env.BASE_URL}dados/i18n/${n}-${l}.json`, { signal: c.signal }).then((r) => (r.ok ? r.json() : null)).catch(() => null);
+          const [cidT, medT] = await Promise.all([get("cid10"), get("medicacoes")]);
+          if (cidT) {
+            conditions = conditions.map((r) => (cidT[r.c]?.n ? { ...r, pt: r.n, n: cidT[r.c].n } : r));
+            rich = Object.fromEntries(Object.entries(rich).map(([k, v]) => [k, cidT[k]?.d ? { ...v, d: cidT[k].d, s: cidT[k].s || v.s } : v]));
+          }
+          if (Array.isArray(medT) && medT.length === medications.length)
+            medications = medications.map((r, i) => ({ ...r, pt: r.n, n: medT[i].n || r.n, cl: medT[i].cl || r.cl, m: medT[i].m || r.m }));
+        }
+        setData({ conditions, rich, medications });
+      })
       .catch((e) => {
         if (e.name !== "AbortError") setError(e.message);
       });
     return () => c.abort();
-  }, [retry]);
+  }, [retry, locale]);
   const rows = data ? (meds ? data.medications : data.conditions) : [];
   const list = rows.filter(
     (r) =>
-      (flexibleMedicationSearch ? matchesInstrument(q,r.n,r.cl,r.m) : norm(meds ? `${r.n} ${r.cl} ${r.m}` : `${r.n} ${r.c}`).includes(
+      (flexibleMedicationSearch ? matchesInstrument(q,`${r.n} ${r.pt || ""}`,r.cl,r.m) : norm(meds ? `${r.n} ${r.pt || ""} ${r.cl} ${r.m}` : `${r.n} ${r.pt || ""} ${r.c}`).includes(
         norm(q),
       )) &&
       (!group || (meds ? r.areas.includes(group) : r.capNome === group)),
@@ -301,7 +319,7 @@ export function ReferenceLibrary({ kind }) {
   const groups = [
     ...new Set(rows.flatMap((r) => (meds ? r.areas : [r.capNome]))),
   ];
-  const title = meds ? "Medicações" : "Condições";
+  const title = meds ? t("Medicações") : t("Condições");
   return (
     <section className="module-page">
       {import.meta.env.VITE_PRODUCT==='2doctor' && <OfficialSourcesLink/>}
@@ -316,14 +334,14 @@ export function ReferenceLibrary({ kind }) {
           </button>
           <LibraryHead
             title={selected.n}
-            subtitle={meds ? selected.cl : `CID-10 · ${selected.c}`}
+            subtitle={meds ? selected.cl : `${t("CID-10")} · ${selected.c}`}
           />
           <article className="resource-card reading-card">
             {meds ? (
               <>
-                <h3>Mecanismo de ação</h3>
+                <h3>{t("Mecanismo de ação")}</h3>
                 <p>{selected.m}</p>
-                <h3>Condições relacionadas</h3>
+                <h3>{t("Condições relacionadas")}</h3>
                 <ul>
                   {selected.trata.map((code) => (
                     <li key={code}>
@@ -332,19 +350,19 @@ export function ReferenceLibrary({ kind }) {
                   ))}
                 </ul>
                 <p className="module-note">
-                  Material de estudo. Não inclui doses ou prescrição.
+                  {t("Material de estudo. Não inclui doses ou prescrição.")}
                 </p>
               </>
             ) : (
               <>
-                <h3>Sobre esta condição</h3>
+                <h3>{t("Sobre esta condição")}</h3>
                 <p>
                   {data.rich[selected.c]?.d ||
-                    "Descrição ampliada ainda não disponível no acervo."}
+                    t("Descrição ampliada ainda não disponível no acervo.")}
                 </p>
                 {data.rich[selected.c]?.s?.length > 0 && (
                   <>
-                    <h3>Sinais e sintomas</h3>
+                    <h3>{t("Sinais e sintomas")}</h3>
                     <ul>
                       {data.rich[selected.c].s.map((s) => (
                         <li key={s}>{s}</li>
@@ -352,7 +370,7 @@ export function ReferenceLibrary({ kind }) {
                     </ul>
                   </>
                 )}
-                <h3>Medicações relacionadas no acervo</h3>
+                <h3>{t("Medicações relacionadas no acervo")}</h3>
                 <ul>
                   {data.medications
                     .filter((m) => m.trata.includes(selected.c))
@@ -372,16 +390,16 @@ export function ReferenceLibrary({ kind }) {
             title={title}
             subtitle={
               meds
-                ? "Classes, mecanismos e relações clínicas do acervo Vytal."
-                : "Consulta por nome, código CID-10 e grupo clínico."
+                ? t("Classes, mecanismos e relações clínicas do acervo Vytal.")
+                : t("Consulta por nome, código CID-10 e grupo clínico.")
             }
           />
           <div className="library-filters">
             <label>
               <Search size={18} />
               <input
-                aria-label={`Buscar ${title.toLowerCase()}`}
-                placeholder={meds ? "Nome ou classe…" : "Nome ou CID-10…"}
+                aria-label={meds ? t("Buscar medicações") : t("Buscar condições")}
+                placeholder={meds ? t("Nome ou classe…") : t("Nome ou CID-10…")}
                 value={q}
                 onChange={(e) => {
                   setQ(e.target.value);
@@ -390,32 +408,32 @@ export function ReferenceLibrary({ kind }) {
               />
             </label>
             <select
-              aria-label="Grupo clínico"
+              aria-label={t("Grupo clínico")}
               value={group}
               onChange={(e) => {
                 setGroup(e.target.value);
                 setLimit(30);
               }}
             >
-              <option value="">Todos os grupos</option>
+              <option value="">{t("Todos os grupos")}</option>
               {groups.map((g) => (
-                <option key={g}>{g}</option>
+                <option key={g} value={g}>{t(g)}</option>
               ))}
             </select>
           </div>
-          {flexibleMedicationSearch && (q || group) && <button className="back-button scores-reset medication-reset" onClick={()=>{setQ("");setGroup("");setLimit(30);}}>Limpar busca e filtros</button>}
+          {flexibleMedicationSearch && (q || group) && <button className="back-button scores-reset medication-reset" onClick={()=>{setQ("");setGroup("");setLimit(30);}}>{t("Limpar busca e filtros")}</button>}
           {error ? (
             <p role="alert">
-              {error}{" "}
+              {t(error)}{" "}
               <button onClick={() => setRetry((x) => x + 1)}>
-                Tentar novamente
+                {t("Tentar novamente")}
               </button>
             </p>
           ) : !data ? (
-            <p>Carregando biblioteca…</p>
+            <p>{t("Carregando biblioteca…")}</p>
           ) : (
             <>
-              <p className="module-note" role={flexibleMedicationSearch ? "status" : undefined}>{list.length} {flexibleMedicationSearch && list.length===1 ? "resultado" : "resultados"}</p>
+              <p className="module-note" role={flexibleMedicationSearch ? "status" : undefined}>{list.length} {flexibleMedicationSearch && list.length===1 ? t("resultado") : t("resultados")}</p>
               <div className="resource-grid">
                 {list.slice(0, limit).map((r) => (
                   <button
@@ -437,18 +455,18 @@ export function ReferenceLibrary({ kind }) {
                     <small>{meds ? r.cl : r.c}</small>
                     <h3>{r.n}</h3>
                     <span>
-                      Abrir ficha <ArrowUpRight size={16} />
+                      {t("Abrir ficha")} <ArrowUpRight size={16} />
                     </span>
                   </button>
                 ))}
               </div>
-              {!list.length && <p>{flexibleMedicationSearch ? "Nenhuma medicação encontrada com esta busca e estes filtros. Tente menos palavras ou limpe os filtros." : "Nenhum resultado encontrado."}</p>}
+              {!list.length && <p>{flexibleMedicationSearch ? t("Nenhuma medicação encontrada com esta busca e estes filtros. Tente menos palavras ou limpe os filtros.") : t("Nenhum resultado encontrado.")}</p>}
               {limit < list.length && (
                 <button
                   className="module-primary"
                   onClick={() => setLimit((n) => n + 30)}
                 >
-                  Mostrar mais
+                  {t("Mostrar mais")}
                 </button>
               )}
             </>

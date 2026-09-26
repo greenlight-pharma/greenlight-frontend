@@ -52,6 +52,8 @@ export async function academic(
   const action = b?.action,
     p = b?.payload;
   let path, body, report;
+  // Idioma da saída pedido pela interface (2Doctor internacional). Só en/es mudam algo.
+  const idioma = ["en", "es"].includes(p?.idioma) ? p.idioma : undefined;
   try {
     if (action === "images") {
       const q=imageQuery(p);
@@ -64,7 +66,7 @@ export async function academic(
       )
         throw Error();
       path = "/estudante/scribe/estruturar";
-      body = { relato: p.relato };
+      body = { relato: p.relato, ...(idioma ? { idioma } : {}) };
     } else if (action === "transcribe") {
       if (
         typeof p?.audioBase64 !== "string" ||
@@ -93,7 +95,7 @@ export async function academic(
         throw Error("Revise o relato original.");
       if (action === "feedback") {
         path = "/estudante/case-feedback";
-        body = feedbackPayload(f);
+        body = { ...feedbackPayload(f), ...(idioma ? { idioma } : {}) };
         body.clinicalHistory += "\nRelato original para contexto: " + p.relato;
         if (body.clinicalHistory.length > 5000)
           throw Error("A história organizada deve ter até 5.000 caracteres.");
@@ -102,7 +104,7 @@ export async function academic(
         if (report.length > 12000) throw Error();
         // Streaming devolve o texto cru do modelo; o /tutor/chat embrulha em {resposta} e perdia o JSON da rubrica.
         path = "/estudante/tutor/chat-stream";
-        body = { historico: qualityMessages(report) };
+        body = { historico: qualityMessages(report, idioma) };
       }
     } else return send(res, 400, { error: "Operação não permitida." });
   } catch (e) {

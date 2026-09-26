@@ -24,6 +24,7 @@ import {restoreCase} from "../shared/case-storage.mjs";
 import "./case-feedback.css";
 import { academicRequest, academicStream } from "./Libraries";
 import PrivacyReview from "./PrivacyReview";
+import { useI18n } from "./doctor/I18n";
 import { detectAcademicPII } from "../shared/pii.mjs";
 import { fields, feedbackPayload, guidanceFeedback } from "../shared/case-contract.mjs";
 const empty = () => Object.fromEntries(fields.map(([k]) => [k, ""]));
@@ -34,6 +35,9 @@ export default function ClinicalCase(props) {
   return <ClinicalCaseBody key={identity.generation} {...props}/>;
 }
 function ClinicalCaseBody({ session, onLogin, onProgress, onPendingChange, active, initialStory = "" }) {
+  const { t, locale } = useI18n();
+  // Idioma da resposta da IA (organização do relato, feedback e pontuação). Português não manda nada.
+  const idioma = locale?.startsWith("en") ? "en" : locale?.startsWith("es") ? "es" : undefined;
   const [stage, setStage] = useState("relato"),
     [relato, setRelato] = useState(initialStory),
     [form, setForm] = useState(empty),
@@ -115,7 +119,7 @@ function ClinicalCaseBody({ session, onLogin, onProgress, onPendingChange, activ
     setBusy("Organizando o relato…");
     setError("");
     try {
-      const d = await request("structure", { relato });
+      const d = await request("structure", { relato, idioma });
       if (d.erro_pii) throw Error(d.erro_pii);
       if (!d.campos || typeof d.campos !== "object")
         throw Error("Não foi possível organizar o relato.");
@@ -245,7 +249,7 @@ function ClinicalCaseBody({ session, onLogin, onProgress, onPendingChange, activ
     setQualityError("");
     setGrading(true);
     try {
-      const d = await academicRequest("quality", { fields: form, relato });
+      const d = await academicRequest("quality", { fields: form, relato, idioma });
       if (alive.current) {
         setQuality(d);
         if (!reported.current) {
@@ -278,7 +282,7 @@ function ClinicalCaseBody({ session, onLogin, onProgress, onPendingChange, activ
       const c = new AbortController();
       cancel.current = c;
       let merged = null, failure = null;
-      await academicStream("feedback", { fields: form, relato }, c.signal, (event, data) => {
+      await academicStream("feedback", { fields: form, relato, idioma }, c.signal, (event, data) => {
         if (!alive.current) return;
         if (event === "part" && data.feedback && typeof data.feedback === "object") {
           merged = guidanceFeedback({ ...(merged || {}), ...data.feedback });
@@ -292,7 +296,7 @@ function ClinicalCaseBody({ session, onLogin, onProgress, onPendingChange, activ
       setRestPending(false);
       if (!merged || !Object.keys(merged).length)
         throw Error(failure?.error || "O serviço não retornou um feedback completo.");
-      if (failure) setRestError("Algumas seções não foram geradas: " + failure.error);
+      if (failure) setRestError(`${t("Algumas seções não foram geradas:")} ${failure.error}`);
       setBusy("Avaliando a qualidade do relato…");
       const score = await scoring;
       if(!alive.current)return;
@@ -346,7 +350,7 @@ function ClinicalCaseBody({ session, onLogin, onProgress, onPendingChange, activ
     input?.focus({preventScroll:true});
     input?.scrollIntoView({block:"center",behavior:"instant"});
   }
-  const errorNotice=error&&<p ref={errorRef} tabIndex={audioRecovery&&["relato","revisao"].includes(stage)?-1:undefined} role="alert" className="error">{error}</p>;
+  const errorNotice=error&&<p ref={errorRef} tabIndex={audioRecovery&&["relato","revisao"].includes(stage)?-1:undefined} role="alert" className="error">{t(error)}</p>;
   const feedbackLength =
     feedbackPayload(form).clinicalHistory.length +
     "\nRelato original para contexto: ".length +
@@ -356,14 +360,14 @@ function ClinicalCaseBody({ session, onLogin, onProgress, onPendingChange, activ
       {historyOpen&&<CaseHistory onClose={()=>setHistoryOpen(false)} onSelect={openSaved}/>}
       {privacyOpen&&<PrivacyReview text={relato} onCancel={()=>setPrivacyOpen(false)} onApply={text=>{setRelato(text);setConfirmed(false);setPrivacyOpen(false)}}/>}
       <header className="module-heading case-heading">
-        <button className="case-history-button" disabled={!!busy||requestingMic||!!retryAudio||saveStatus==="saving"} onClick={()=>{if(requireLogin())setHistoryOpen(true)}}><History size={17}/> Meus casos</button>
-        <span className="eyebrow blue">PRÁTICA CLÍNICA</span>
-        <h1>Caso clínico</h1>
+        <button className="case-history-button" disabled={!!busy||requestingMic||!!retryAudio||saveStatus==="saving"} onClick={()=>{if(requireLogin())setHistoryOpen(true)}}><History size={17}/> {t("Meus casos")}</button>
+        <span className="eyebrow blue">{t("PRÁTICA CLÍNICA")}</span>
+        <h1>{t("Caso clínico")}</h1>
         <p>
-          Conte o caso. Veja hipóteses, exames e condutas a considerar.
+          {t("Conte o caso. Veja hipóteses, exames e condutas a considerar.")}
         </p>
       </header>
-      {stage!=="feedback"&&<nav className="case-steps" aria-label="Etapas do caso">
+      {stage!=="feedback"&&<nav className="case-steps" aria-label={t("Etapas do caso")}>
         {["Seu relato", "Revisão", "Feedback"].map((s, i) => (
           <span
             className={
@@ -372,7 +376,7 @@ function ClinicalCaseBody({ session, onLogin, onProgress, onPendingChange, activ
             key={s}
           >
             <b>{i + 1}</b>
-            {s}
+            {t(s)}
           </span>
         ))}
       </nav>}
@@ -380,7 +384,7 @@ function ClinicalCaseBody({ session, onLogin, onProgress, onPendingChange, activ
         <div className="case-entry">
           <div className="resource-card">
             <label className="field-label" htmlFor="case-story">
-              Relato livre
+              {t("Relato livre")}
             </label>
             <textarea
               id="case-story"
@@ -390,7 +394,7 @@ function ClinicalCaseBody({ session, onLogin, onProgress, onPendingChange, activ
               value={relato}
               disabled={!!busy || recording}
               onChange={(e) => {setRelato(e.target.value);setConfirmed(false)}}
-              placeholder="Descreva a queixa, a evolução, os antecedentes, os medicamentos e os achados disponíveis. Não inclua nome, CPF, telefone ou endereço do paciente."
+              placeholder={t("Descreva a queixa, a evolução, os antecedentes, os medicamentos e os achados disponíveis. Não inclua nome, CPF, telefone ou endereço do paciente.")}
             />
             <div className="voice-actions">
               <button
@@ -398,11 +402,11 @@ function ClinicalCaseBody({ session, onLogin, onProgress, onPendingChange, activ
                 onClick={recording ? () => recorder.current.stop() : record}
               >
                 {recording ? <Square size={17} /> : <Mic size={17} />}{" "}
-                {requestingMic ? "Aguardando microfone…" : recording ? `Parar · ${seconds}s` : "Gravar relato"}
+                {requestingMic ? t("Aguardando microfone…") : recording ? `${t("Parar")} · ${seconds}s` : t("Gravar relato")}
               </button>
               <label className="audio-upload">
                 <Upload size={17} />
-                Enviar áudio
+                {t("Enviar áudio")}
                 <input
                   type="file"
                   accept="audio/*,.m4a"
@@ -416,21 +420,20 @@ function ClinicalCaseBody({ session, onLogin, onProgress, onPendingChange, activ
               </label>
               <small>{relato.length}/5.000</small>
             </div>
-            {requestingMic && <p className="module-note" role="status">Autorize o microfone no navegador. A gravação ainda não começou.</p>}
-            {audioRecovery && busy && transcribing.current && <div className="case-audio-retry" role="status"><strong>Transcrevendo áudio…</strong><div><button type="button" onClick={()=>{setAudioCancelled(true);transcribing.current?.abort();}}>Cancelar espera</button></div></div>}
+            {requestingMic && <p className="module-note" role="status">{t("Autorize o microfone no navegador. A gravação ainda não começou.")}</p>}
+            {audioRecovery && busy && transcribing.current && <div className="case-audio-retry" role="status"><strong>{t("Transcrevendo áudio…")}</strong><div><button type="button" onClick={()=>{setAudioCancelled(true);transcribing.current?.abort();}}>{t("Cancelar espera")}</button></div></div>}
             {audioRecovery && retryAudio && !busy && <div className="case-audio-retry" role="status">
-              <strong>{audioCancelled ? "Espera cancelada" : "Não foi possível transcrever"}</strong>
-              <p>O áudio continua nesta aba. Tente novamente sem gravar ou selecionar o arquivo de novo.</p>
-              <div><button type="button" onClick={()=>{if(requireLogin())transcribe(retryAudio);}}>Tentar transcrição novamente</button><button type="button" onClick={()=>{setRetryAudio(null);setError('');}}>Descartar áudio</button></div>
-              <small>O áudio pendente não fica salvo no histórico. Ao fechar ou atualizar esta aba, ele será perdido.</small>
+              <strong>{audioCancelled ? t("Espera cancelada") : t("Não foi possível transcrever")}</strong>
+              <p>{t("O áudio continua nesta aba. Tente novamente sem gravar ou selecionar o arquivo de novo.")}</p>
+              <div><button type="button" onClick={()=>{if(requireLogin())transcribe(retryAudio);}}>{t("Tentar transcrição novamente")}</button><button type="button" onClick={()=>{setRetryAudio(null);setError('');}}>{t("Descartar áudio")}</button></div>
+              <small>{t("O áudio pendente não fica salvo no histórico. Ao fechar ou atualizar esta aba, ele será perdido.")}</small>
             </div>}
             <p className="module-note">
-              Áudio de até 3 minutos ou 2,9 MB. Revise a transcrição antes de
-              continuar. Não grave a voz do paciente.
+              {t("Áudio de até 3 minutos ou 2,9 MB. Revise a transcrição antes de continuar. Não grave a voz do paciente.")}
             </p>
-            <button disabled={!!busy||recording||!relato.trim()} onClick={()=>setPrivacyOpen(true)}>Revisar dados pessoais</button>
-            {audioRecovery && organizedStory!==null && <p className="module-note" role="status">{canResumeReview ? "Suas correções nos campos foram mantidas nesta aba." : "O relato mudou. Ao reorganizar, os campos serão refeitos e substituirão as correções anteriores."}</p>}
-            {relatoTooShort && <p id={lengthHintId} className="module-note" role="status">Escreva pelo menos 20 caracteres para continuar.</p>}
+            <button disabled={!!busy||recording||!relato.trim()} onClick={()=>setPrivacyOpen(true)}>{t("Revisar dados pessoais")}</button>
+            {audioRecovery && organizedStory!==null && <p className="module-note" role="status">{canResumeReview ? t("Suas correções nos campos foram mantidas nesta aba.") : t("O relato mudou. Ao reorganizar, os campos serão refeitos e substituirão as correções anteriores.")}</p>}
+            {relatoTooShort && <p id={lengthHintId} className="module-note" role="status">{t("Escreva pelo menos 20 caracteres para continuar.")}</p>}
             {audioRecovery && errorNotice}
             <button
               className="module-primary"
@@ -444,24 +447,22 @@ function ClinicalCaseBody({ session, onLogin, onProgress, onPendingChange, activ
               }
               onClick={structure}
             >
-              {canResumeReview ? "Continuar revisão" : audioRecovery && organizedStory!==null ? "Reorganizar relato" : "Organizar meu relato"} <ArrowRight size={17} />
+              {canResumeReview ? t("Continuar revisão") : audioRecovery && organizedStory!==null ? t("Reorganizar relato") : t("Organizar meu relato")} <ArrowRight size={17} />
             </button>
           </div>
           <aside className="case-guide">
             <FileText size={27} />
-            <h2>Do relato ao aprendizado</h2>
+            <h2>{t("Do relato ao aprendizado")}</h2>
             <p>
-              Você traz o relato. {brandName==='WMed'?'O WMed':'A 2Doctor'} organiza os dados e apresenta hipóteses
-              e opções de conduta, com justificativas.
+              {brandName==='WMed'?t('Você traz o relato. O WMed organiza os dados e apresenta hipóteses e opções de conduta, com justificativas.'):t('Você traz o relato. A 2Doctor organiza os dados e apresenta hipóteses e opções de conduta, com justificativas.')}
             </p>
             <ol>
-              <li>Conte o caso por texto ou voz.</li>
-              <li>Confira os campos e corrija o que precisar.</li>
-              <li>Veja hipóteses, exames e condutas a considerar.</li>
+              <li>{t("Conte o caso por texto ou voz.")}</li>
+              <li>{t("Confira os campos e corrija o que precisar.")}</li>
+              <li>{t("Veja hipóteses, exames e condutas a considerar.")}</li>
             </ol>
             <p className="module-note">
-              A nota é experimental e avalia o relato, não sua competência
-              médica. Sem ranking público nesta etapa.
+              {t("A nota é experimental e avalia o relato, não sua competência médica. Sem ranking público nesta etapa.")}
             </p>
           </aside>
         </div>
@@ -476,31 +477,29 @@ function ClinicalCaseBody({ session, onLogin, onProgress, onPendingChange, activ
             onClick={() => setStage("relato")}
           >
             <ArrowLeft size={17} />
-            Voltar ao relato
+            {t("Voltar ao relato")}
           </button>
           <details className="resource-card">
-            <summary>Conferir relato original</summary>
+            <summary>{t("Conferir relato original")}</summary>
             <p>{relato}</p>
           </details>
           <p className="module-note">
-            Abra apenas os campos que quiser corrigir. Confira especialmente os
-            nomes de medicamentos e os valores transcritos. Campos vazios serão
-            tratados como não informados.
+            {t("Abra apenas os campos que quiser corrigir. Confira especialmente os nomes de medicamentos e os valores transcritos. Campos vazios serão tratados como não informados.")}
           </p>
-          {reviewIssues.length > 0 && <div className="case-review-pending" aria-label="Campos pendentes">
-            <strong>Complete antes do feedback</strong>
-            <p>Use somente informações do relato.</p>
-            <div>{reviewIssues.map(issue=><button key={issue.key} type="button" disabled={!!busy} onClick={()=>focusReviewField(issue.key)}>Revisar {issue.label.toLowerCase()} <ArrowRight size={16}/></button>)}</div>
+          {reviewIssues.length > 0 && <div className="case-review-pending" aria-label={t("Campos pendentes")}>
+            <strong>{t("Complete antes do feedback")}</strong>
+            <p>{t("Use somente informações do relato.")}</p>
+            <div>{reviewIssues.map(issue=><button key={issue.key} type="button" disabled={!!busy} onClick={()=>focusReviewField(issue.key)}>{t("Revisar")} {t(issue.label).toLowerCase()} <ArrowRight size={16}/></button>)}</div>
           </div>}
           <div className="review-fields">
             {fields.map(([k, l]) => (
               <details key={k} className="resource-card review-field">
                 <summary>
-                  <b>{l}</b>
-                  <span>{form[k] || "Não informado"}</span>
+                  <b>{t(l)}</b>
+                  <span>{form[k] || t("Não informado")}</span>
                 </summary>
                 <label className="field-label" htmlFor={"review-" + k}>
-                  Revisar {l.toLowerCase()}
+                  {t("Revisar")} {t(l).toLowerCase()}
                 </label>
                 <textarea
                   id={"review-" + k}
@@ -514,9 +513,9 @@ function ClinicalCaseBody({ session, onLogin, onProgress, onPendingChange, activ
                     setForm((f) => ({ ...f, [k]: e.target.value }));
                     if(audioRecovery)setConfirmed(false);
                   }}
-                  placeholder="Não informado"
+                  placeholder={t("Não informado")}
                 />
-                {reviewIssues.filter(issue=>issue.key===k).map(issue=><p key={k} id={"review-hint-"+k} className="module-note">{issue.message}</p>)}
+                {reviewIssues.filter(issue=>issue.key===k).map(issue=><p key={k} id={"review-hint-"+k} className="module-note">{t(issue.message)}</p>)}
               </details>
             ))}
           </div>
@@ -527,12 +526,12 @@ function ClinicalCaseBody({ session, onLogin, onProgress, onPendingChange, activ
               disabled={!!busy}
               onChange={(e) => setConfirmed(e.target.checked)}
             />
-            Conferi os campos. Eles representam os dados que relatei.
+            {t("Conferi os campos. Eles representam os dados que relatei.")}
           </label>
           <p className="module-note">
-            História e contexto para análise: {feedbackLength}/5.000 caracteres.
+            {t("História e contexto para análise:")} {feedbackLength}/5.000 {t("caracteres.")}
             {feedbackLength > 5000
-              ? " Resuma os campos repetidos antes de continuar."
+              ? " " + t("Resuma os campos repetidos antes de continuar.")
               : ""}
           </p>
           <button
@@ -546,19 +545,19 @@ function ClinicalCaseBody({ session, onLogin, onProgress, onPendingChange, activ
             }
             onClick={evaluate}
           >
-            Receber feedback <ArrowRight size={17} />
+            {t("Receber feedback")} <ArrowRight size={17} />
           </button>
         </>
       )}
       {stage === "feedback" && feedback && <>
-        <div className="case-result-actions"><div role="status" className={'case-save-state '+saveStatus}>{saveStatus==='saved'?<><Check size={15}/> Salvo na sua conta</>:saveStatus==='saving'?'Salvando caso…':saveStatus==='error'?'Caso ainda não salvo':'Preparando para salvar…'}</div><button disabled={!!busy||saveStatus==='saving'} onClick={async()=>{if(pendingSave.current&&!await persist())return;setStage('relato');setConfirmed(false);setSaveStatus('');}}>Complementar relato</button><button disabled={!!busy||saveStatus==='saving'} onClick={fresh}>Novo caso</button></div>
-        {saveError&&<div className="error" role="alert">{saveError} Mantenha esta tela aberta.<button disabled={saveStatus==='saving'} onClick={persist}>Tentar salvar novamente</button></div>}
+        <div className="case-result-actions"><div role="status" className={'case-save-state '+saveStatus}>{saveStatus==='saved'?<><Check size={15}/> {t('Salvo na sua conta')}</>:saveStatus==='saving'?t('Salvando caso…'):saveStatus==='error'?t('Caso ainda não salvo'):t('Preparando para salvar…')}</div><button disabled={!!busy||saveStatus==='saving'} onClick={async()=>{if(pendingSave.current&&!await persist())return;setStage('relato');setConfirmed(false);setSaveStatus('');}}>{t('Complementar relato')}</button><button disabled={!!busy||saveStatus==='saving'} onClick={fresh}>{t('Novo caso')}</button></div>
+        {saveError&&<div className="error" role="alert">{t(saveError)} {t('Mantenha esta tela aberta.')}<button disabled={saveStatus==='saving'} onClick={persist}>{t('Tentar salvar novamente')}</button></div>}
         <CaseFeedback key={JSON.stringify(form)} feedback={feedback} quality={quality} qualityError={qualityError} grading={grading} restPending={restPending} restError={restError} relato={relato} form={form} onGrade={grade} busy={!!busy}/>
       </>}
       {busy && stage!=="aguardando" && !(audioRecovery && transcribing.current) && (
         <p role="status" className="progress">
           <span className="spinner" />
-          {busy}
+          {t(busy)}
         </p>
       )}
       {(!audioRecovery || !["relato","revisao"].includes(stage)) && errorNotice}

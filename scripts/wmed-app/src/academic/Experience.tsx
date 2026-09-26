@@ -32,6 +32,7 @@ import {
 import { drawSlice, loadVolume, type Volume } from "./volume";
 import {useWorkspaceHeight} from "./useWorkspaceHeight";
 import "./experience.css";
+import {useI18n} from "../doctor/I18n";
 const Scene=lazy(()=>import("./Scene"));
 const assets = "/wmed/acervo";
 type Part = { id: string; title: string; appearance: string; function: string };
@@ -111,6 +112,7 @@ function Header({
   );
 }
 export function Histology() {
+  const {t}=useI18n();
   const workspace = useWorkspaceHeight();
   const [panel, setPanel] = useState<"library" | "detail" | null>(null);
   useEffect(() => {
@@ -139,38 +141,38 @@ export function Histology() {
   return (
     <div ref={workspace} className="va-page va-workbench va-focus-studio va-histology">
       <Header
-        eyebrow="ATLAS DE HISTOLOGIA"
-        title="Histologia 3D"
-        subtitle="Explore a célula inteira, abra o corte e selecione uma estrutura."
+        eyebrow={t("ATLAS DE HISTOLOGIA")}
+        title={t("Histologia 3D")}
+        subtitle={t("Explore a célula inteira, abra o corte e selecione uma estrutura.")}
       >
-        <div className="va-studio-tools"><button className="va-button" aria-expanded={panel === "library"} aria-controls="studio-library" onClick={() => setPanel(panel === "library" ? null : "library")}><Microscope size={17}/>Trocar célula</button><button className="va-button" aria-expanded={panel === "detail"} aria-controls="studio-detail" onClick={() => setPanel(panel === "detail" ? null : "detail")}><BookOpen size={17}/>Função e estruturas</button></div>
+        <div className="va-studio-tools"><button className="va-button" aria-expanded={panel === "library"} aria-controls="studio-library" onClick={() => setPanel(panel === "library" ? null : "library")}><Microscope size={17}/>{t("Trocar célula")}</button><button className="va-button" aria-expanded={panel === "detail"} aria-controls="studio-detail" onClick={() => setPanel(panel === "detail" ? null : "detail")}><BookOpen size={17}/>{t("Função e estruturas")}</button></div>
       </Header>
       <div className={"va-studio-grid " + (panel ? "has-panel" : "")} onKeyDown={e => {if(e.key === "Escape") setPanel(null);}}>
         <aside id="studio-library" className="va-library" hidden={panel !== "library"}>
-          <button className="va-panel-close" onClick={() => setPanel(null)} aria-label="Fechar biblioteca"><X size={18}/></button>
+          <button className="va-panel-close" onClick={() => setPanel(null)} aria-label={t("Fechar biblioteca")}><X size={18}/></button>
           <div className="va-library-head">
             <Microscope size={18} />
-            <b>Biblioteca celular</b>
+            <b>{t("Biblioteca celular")}</b>
             <small>{cells.length}</small>
           </div>
           <label className="va-search">
             <Search size={16} />
             <input
-              aria-label="Buscar célula ou organela"
+              aria-label={t("Buscar célula ou organela")}
               value={query}
               onChange={(e) => setQuery(e.target.value)}
-              placeholder="Célula ou organela…"
+              placeholder={t("Célula ou organela…")}
             />
           </label>
           <select
-            aria-label="Sistema histológico"
+            aria-label={t("Sistema histológico")}
             value={system}
             onChange={(e) => setSystem(e.target.value)}
           >
-            <option value="todos">Todos os sistemas</option>
+            <option value="todos">{t("Todos os sistemas")}</option>
             {Object.entries(systemNames).map(([key, name]) => (
               <option key={key} value={key}>
-                {name}
+                {t(name)}
               </option>
             ))}
           </select>
@@ -189,13 +191,13 @@ export function Histology() {
                 <span className="va-cell-dot" />
                 <span>
                   {c.title}
-                  <small>{systemNames[c.systemID]}</small>
+                  <small>{t(systemNames[c.systemID] || "")}</small>
                 </span>
               </button>
             ))}
             {!visible.length && (
               <p className="va-empty">
-                {error || "Nenhuma célula encontrada."}
+                {t(error || "Nenhuma célula encontrada.")}
               </p>
             )}
           </div>
@@ -203,29 +205,29 @@ export function Histology() {
         <section className="va-viewer">
           <div className="va-viewer-top">
             <span>
-              <i /> MODELO INTERATIVO
+              <i /> {t("MODELO INTERATIVO")}
             </span>
             <div className="va-segments">
               <button
                 className={!open ? "active" : ""}
                 onClick={() => setOpen(false)}
               >
-                Célula completa
+                {t("Célula completa")}
               </button>
               <button
                 className={open ? "active" : ""}
                 onClick={() => setOpen(true)}
               >
-                Abrir corte
+                {t("Abrir corte")}
               </button>
             </div>
           </div>
           <div className="va-viewer-title">
-            <span>{systemNames[cell?.systemID]}</span>
-            <h2>{cell?.title || "Histologia"}</h2>
+            <span>{t(systemNames[cell?.systemID] || "")}</span>
+            <h2>{cell?.title || t("Histologia")}</h2>
           </div>
           <div className="va-3d-area">
-            <Suspense fallback={<p>Carregando visualizador…</p>}>
+            <Suspense fallback={<p>{t("Carregando visualizador…")}</p>}>
               {cell && (
                 <Scene
                   urls={[
@@ -240,15 +242,15 @@ export function Histology() {
             </Suspense>
           </div>
           <div className="va-viewer-bottom">
-            <span>Ilustração didática · cores e escala ilustrativas</span>
+            <span>{t("Ilustração didática · cores e escala ilustrativas")}</span>
             <button onClick={() => setRotate(!rotate)}>
-              {rotate ? <Pause size={14} /> : <Play size={14} />}Giro automático
+              {rotate ? <Pause size={14} /> : <Play size={14} />}{t("Giro automático")}
             </button>
           </div>
         </section>
         <aside id="studio-detail" className="va-inspector" hidden={panel !== "detail"}>
-          <button className="va-panel-close" onClick={() => setPanel(null)} aria-label="Fechar detalhes"><X size={18}/></button>
-          <p className="va-eyebrow">FUNÇÃO DA CÉLULA</p>
+          <button className="va-panel-close" onClick={() => setPanel(null)} aria-label={t("Fechar detalhes")}><X size={18}/></button>
+          <p className="va-eyebrow">{t("FUNÇÃO DA CÉLULA")}</p>
           <h3>{cell?.title}</h3>
           <p>{cell?.summary.split("Ilustração 3D")[0]}</p>
           {part && (
@@ -260,12 +262,12 @@ export function Histology() {
                 className="va-button"
                 onClick={() => setIsolate(!isolate)}
               >
-                {isolate ? "Mostrar a célula" : "Isolar estrutura"}
+                {t(isolate ? "Mostrar a célula" : "Isolar estrutura")}
               </button>
             </div>
           )}
           <div className="va-divider" />
-          <p className="va-eyebrow">ESTRUTURAS · {cell?.parts.length}</p>
+          <p className="va-eyebrow">{t("ESTRUTURAS")} · {cell?.parts.length}</p>
           <div className="va-structure-list">
             {cell?.parts.map((p) => (
               <button
@@ -280,10 +282,9 @@ export function Histology() {
             ))}
           </div>
           <details className="va-provenance">
-            <summary>Sobre este modelo</summary>
+            <summary>{t("Sobre este modelo")}</summary>
             <p>
-              {cell?.status}. A revisão histológica e os testes no iPhone são
-              etapas distintas desta prévia web.
+              {cell?.status}. {t("A revisão histológica e os testes no iPhone são etapas distintas desta prévia web.")}
             </p>
           </details>
         </aside>
@@ -292,6 +293,7 @@ export function Histology() {
   );
 }
 export function Anatomy() {
+  const {t}=useI18n();
   const workspace = useWorkspaceHeight();
   const [panel, setPanel] = useState<"library" | "detail" | null>(null);
   useEffect(() => {
@@ -315,18 +317,18 @@ export function Anatomy() {
   return (
     <div ref={workspace} className="va-page va-workbench va-anatomy va-focus-studio">
       <Header
-        eyebrow="ATLAS ANATÔMICO"
-        title="Anatomia 3D"
-        subtitle="Uma estrutura de cada vez. Uma visão do todo."
+        eyebrow={t("ATLAS ANATÔMICO")}
+        title={t("Anatomia 3D")}
+        subtitle={t("Uma estrutura de cada vez. Uma visão do todo.")}
       >
-        <div className="va-studio-tools"><button className="va-button" aria-expanded={panel === "library"} aria-controls="studio-library" onClick={() => setPanel(panel === "library" ? null : "library")}><Layers3 size={17}/>Sistemas do corpo</button><button className="va-button" aria-expanded={panel === "detail"} aria-controls="studio-detail" onClick={() => setPanel(panel === "detail" ? null : "detail")}><Search size={17}/>Estruturas e função</button></div>
+        <div className="va-studio-tools"><button className="va-button" aria-expanded={panel === "library"} aria-controls="studio-library" onClick={() => setPanel(panel === "library" ? null : "library")}><Layers3 size={17}/>{t("Sistemas do corpo")}</button><button className="va-button" aria-expanded={panel === "detail"} aria-controls="studio-detail" onClick={() => setPanel(panel === "detail" ? null : "detail")}><Search size={17}/>{t("Estruturas e função")}</button></div>
       </Header>
       <div className={"va-studio-grid " + (panel ? "has-panel" : "")} onKeyDown={e => {if(e.key === "Escape") setPanel(null);}}>
         <aside id="studio-library" className="va-library" hidden={panel !== "library"}>
-          <button className="va-panel-close" onClick={() => setPanel(null)} aria-label="Fechar biblioteca"><X size={18}/></button>
+          <button className="va-panel-close" onClick={() => setPanel(null)} aria-label={t("Fechar biblioteca")}><X size={18}/></button>
           <div className="va-library-head">
             <Box size={18} />
-            <b>Sistemas do corpo</b>
+            <b>{t("Sistemas do corpo")}</b>
           </div>
           <div className="va-library-list">
             {systems.map((s) => (
@@ -343,28 +345,28 @@ export function Anatomy() {
                 <Layers3 size={17} />
                 <span>
                   {s.rotulo}
-                  <small>{s.estruturas.length} estruturas</small>
+                  <small>{s.estruturas.length} {t("estruturas")}</small>
                 </span>
               </button>
             ))}
           </div>
-          {error && <p role="alert">{error}</p>}
+          {error && <p role="alert">{t(error)}</p>}
         </aside>
         <section className="va-viewer">
           <div className="va-viewer-top">
             <span>
-              <i /> ATLAS ANATÔMICO
+              <i /> {t("ATLAS ANATÔMICO")}
             </span>
             <button onClick={() => setRotate(!rotate)}>
-              {rotate ? <Pause size={15} /> : <Play size={15} />}Giro
+              {rotate ? <Pause size={15} /> : <Play size={15} />}{t("Giro")}
             </button>
           </div>
           <div className="va-viewer-title">
-            <span>EXPLORAÇÃO POR SISTEMAS</span>
+            <span>{t("EXPLORAÇÃO POR SISTEMAS")}</span>
             <h2>{system?.rotulo}</h2>
           </div>
           <div className="va-3d-area">
-            <Suspense fallback={<p>Abrindo atlas…</p>}>
+            <Suspense fallback={<p>{t("Abrindo atlas…")}</p>}>
               {system && (
                 <Scene
                   urls={system.malhas.map((m) => `${assets}/${m}`)}
@@ -384,17 +386,17 @@ export function Anatomy() {
             >
               Z-Anatomy · CC BY-SA 4.0 ↗
             </a>
-            <span>Acervo anatômico · versão web otimizada</span>
+            <span>{t("Acervo anatômico · versão web otimizada")}</span>
           </div>
         </section>
         <aside id="studio-detail" className="va-inspector" hidden={panel !== "detail"}>
-          <button className="va-panel-close" onClick={() => setPanel(null)} aria-label="Fechar detalhes"><X size={18}/></button>
-          <p className="va-eyebrow">RECONHECER E COMPREENDER</p>
-          <h3>{structure?.nome || "Selecione uma estrutura"}</h3>
-          {structure && <span className="va-selection-key"><i/>Selecionada em dourado</span>}
+          <button className="va-panel-close" onClick={() => setPanel(null)} aria-label={t("Fechar detalhes")}><X size={18}/></button>
+          <p className="va-eyebrow">{t("RECONHECER E COMPREENDER")}</p>
+          <h3>{structure?.nome || t("Selecione uma estrutura")}</h3>
+          {structure && <span className="va-selection-key"><i/>{t("Selecionada em dourado")}</span>}
           <p>
             {structure?.descricao ||
-              "Clique no modelo ou use a lista para explorar as estruturas do sistema."}
+              t("Clique no modelo ou use a lista para explorar as estruturas do sistema.")}
           </p>
           {structure?.latim && (
             <p>
@@ -403,7 +405,7 @@ export function Anatomy() {
           )}
           {!!structure?.temas?.length && (
             <div className="va-study-links">
-              <p className="va-eyebrow">CONECTAR AO ESTUDO</p>
+              <p className="va-eyebrow">{t("CONECTAR AO ESTUDO")}</p>
               {structure.temas.map((tema) => (
                 <a
                   key={tema}
@@ -417,15 +419,15 @@ export function Anatomy() {
           )}
           {selected && (
             <button className="va-button" onClick={() => setIsolate(!isolate)}>
-              {isolate ? "Mostrar sistema" : "Isolar estrutura"}
+              {t(isolate ? "Mostrar sistema" : "Isolar estrutura")}
             </button>
           )}
           <div className="va-divider" />
           <label className="va-search">
             <Search size={16} />
             <input
-              placeholder="Nome ou termo em latim"
-              aria-label="Buscar estrutura anatômica"
+              placeholder={t("Nome ou termo em latim")}
+              aria-label={t("Buscar estrutura anatômica")}
               value={query}
               onChange={(e) => setQuery(e.target.value)}
             />
@@ -441,7 +443,7 @@ export function Anatomy() {
                 {s.nome}
               </button>
             ))}
-            {!list.length && <p>Nenhuma estrutura encontrada.</p>}
+            {!list.length && <p>{t("Nenhuma estrutura encontrada.")}</p>}
           </div>
         </aside>
       </div>
@@ -449,6 +451,9 @@ export function Anatomy() {
   );
 }
 export function Radiology() {
+  const {t,locale}=useI18n();
+  // Marcadores de lado da imagem: direita/esquerda em cada idioma (EN usa R/L; ES usa D/I).
+  const [sideRight,sideLeft]=locale==="en"?["R","L"]:locale==="es"?["D","I"]:["D","E"];
   const [region, setRegion] = useState("torax");
   const [volume, setVolume] = useState<Volume>();
   const [error, setError] = useState("");
@@ -515,11 +520,11 @@ export function Radiology() {
   return (
     <div ref={workspace} className={"va-page va-radiology " + (cinema ? "va-cinema" : "")}>
       <Header
-        title="Radiologia imersiva"
+        title={t("Radiologia imersiva")}
       >
         <button className="va-button" onClick={() => setCinema(!cinema)}>
           {cinema ? <Minimize2 size={17} /> : <Maximize2 size={17} />}{" "}
-          {cinema ? "Sair da apresentação" : "Modo apresentação"}
+          {t(cinema ? "Sair da apresentação" : "Modo apresentação")}
         </button>
       </Header>
       <div className="va-radiology-toolbar">
@@ -534,25 +539,25 @@ export function Radiology() {
               className={region === key ? "active" : ""}
               onClick={() => setRegion(key)}
             >
-              {text}
+              {t(text)}
             </button>
           ))}
         </div>
         <span>
-          <i /> TC REAL DO ACERVO
+          <i /> {t("TC REAL DO ACERVO")}
         </span>
       </div>
       <div className="va-radiology-grid">
         <section className="va-volume-panel">
           <div className="va-viewer-top">
-            <span>01 / CONTEXTO TRIDIMENSIONAL</span>
+            <span>01 / {t("CONTEXTO TRIDIMENSIONAL")}</span>
             <button onClick={() => setRotate(!rotate)}>
-              {rotate ? <Pause size={14} /> : <Play size={14} />}Girar
+              {rotate ? <Pause size={14} /> : <Play size={14} />}{t("Girar")}
             </button>
           </div>
           <div className="va-volume-canvas">
             {volume ? (
-              <Suspense fallback={<p>Preparando a reconstrução…</p>}>
+              <Suspense fallback={<p>{t("Preparando a reconstrução…")}</p>}>
                 <Scene
                   volume={volume}
                   surfaceUrl={`${import.meta.env.BASE_URL}radiology/${region}.glb`}
@@ -565,23 +570,23 @@ export function Radiology() {
               </Suspense>
             ) : (
               <div className="va-loading" role="status">
-                {error || "Abrindo o exame real…"}
+                {t(error || "Abrindo o exame real…")}
               </div>
             )}
           </div>
-          <div className="va-region-label">{region==="torax"?"Tórax":region==="abdome"?"Abdome e pelve":"Cabeça e pescoço"}</div>
+          <div className="va-region-label">{t(region==="torax"?"Tórax":region==="abdome"?"Abdome e pelve":"Cabeça e pescoço")}</div>
           <div className="va-volume-legend">
             <span />
             <p>
-              Superfícies dos órgãos da própria TC.
+              {t("Superfícies dos órgãos da própria TC.")}
               <br />
-              Acima do corte: transparente · abaixo: anatomia visível.
+              {t("Acima do corte: transparente · abaixo: anatomia visível.")}
             </p>
           </div>
         </section>
         <section className="va-slice-panel">
           <div className="va-viewer-top">
-            <span>02 / TOMOGRAFIA AXIAL</span>
+            <span>02 / {t("TOMOGRAFIA AXIAL")}</span>
             <b>
               {Math.round(fraction * (total - 1)) + 1}
               <small> / {total}</small>
@@ -589,12 +594,12 @@ export function Radiology() {
           </div>
           <div className="va-slice-image">
             <span className="va-direction anterior">A</span>
-            <span className="va-direction right">D</span>
-            <span className="va-direction left">E</span>
+            <span className="va-direction right">{sideRight}</span>
+            <span className="va-direction left">{sideLeft}</span>
             <span className="va-direction posterior">P</span>
             <canvas
               ref={canvas}
-              aria-label="Corte axial da tomografia; clique para identificar uma estrutura"
+              aria-label={t("Corte axial da tomografia; clique para identificar uma estrutura")}
               style={
                 volume
                   ? {
@@ -623,19 +628,19 @@ export function Radiology() {
             />
           </div>
           <div className="va-slice-caption">
-            <span>{label ? "ESTRUTURA IDENTIFICADA" : "ESTUDO DO CORTE"}</span>
-            <h3>{label?.nome || "Toque na TC para identificar"}</h3>
+            <span>{t(label ? "ESTRUTURA IDENTIFICADA" : "ESTUDO DO CORTE")}</span>
+            <h3>{label?.nome || t("Toque na TC para identificar")}</h3>
             <p>
-              {label
+              {t(label
                 ? "Identificação pelos rótulos do conjunto original."
-                : "Navegue pelos cortes e reconheça as estruturas."}
+                : "Navegue pelos cortes e reconheça as estruturas.")}
             </p>
           </div>
         </section>
       </div>
       <div className="va-timeline">
         <button
-          aria-label={play ? "Pausar cortes" : "Reproduzir cortes"}
+          aria-label={t(play ? "Pausar cortes" : "Reproduzir cortes")}
           disabled={!volume}
           onClick={() => setPlay(!play)}
         >
@@ -643,7 +648,7 @@ export function Radiology() {
         </button>
         <div>
           <label htmlFor="slice">
-            Nível do corte <span>{Math.round(fraction * 100)}% do volume</span>
+            {t("Nível do corte")} <span>{Math.round(fraction * 100)}% {t("do volume")}</span>
           </label>
           <input
             id="slice"
@@ -659,21 +664,21 @@ export function Radiology() {
           />
         </div>
         <label className="va-window">
-          Janela
+          {t("Janela")}
           <select value={window} onChange={(e) => setWindow(e.target.value)}>
-            <option value="moles">Tecidos moles</option>
-            <option value="pulmonar">Pulmonar</option>
-            <option value="ossea">Óssea</option>
+            <option value="moles">{t("Tecidos moles")}</option>
+            <option value="pulmonar">{t("Pulmonar")}</option>
+            <option value="ossea">{t("Óssea")}</option>
           </select>
         </label>
         <label className="va-opacity">
-          Acima do corte
+          {t("Acima do corte")}
           <input
             type="range"
             min=".04"
             max=".85"
             step=".01"
-            aria-label="Transparência da anatomia acima do corte"
+            aria-label={t("Transparência da anatomia acima do corte")}
             value={opacity}
             onChange={(e) => setOpacity(+e.target.value)}
           />
@@ -682,14 +687,13 @@ export function Radiology() {
       <div className="va-science-note">
         <ShieldCheck size={16} />
         <span>
-          Exame público de ensino · TotalSegmentator, CC BY 4.0. Os três
-          recortes pertencem ao mesmo exame.{" "}
+          {t("Exame público de ensino · TotalSegmentator, CC BY 4.0. Os três recortes pertencem ao mesmo exame.")}{" "}
           <a
             href={`${assets}/radiology-sources.txt`}
             target="_blank"
             rel="noreferrer"
           >
-            Fontes e preparação ↗
+            {t("Fontes e preparação")} ↗
           </a>
         </span>
       </div>
