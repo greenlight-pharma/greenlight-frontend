@@ -60,8 +60,10 @@ Abertura fria (exame de rotina, sem sintomas) → título → apresentadora: o f
 | gwm1_avatars (avatar em tempo real) | 2 créditos na entrada + 2 a cada 6 s |
 | eleven_multilingual_v2 (voz) | 1 crédito a cada 50 caracteres |
 
-### Rostos de referência da Dra. Iris Maren (pendente: sem crédito)
+### Rostos de referência da Dra. Iris Maren (1ª rodada: 25/09/2026, aguardando aprovação)
 - Script: `runway/gerar-ref.mjs` (`node gerar-ref.mjs saldo` sem custo; `node gerar-ref.mjs gerar` gasta crédito). SDK `@runwayml/sdk` 4.20.1 em `runway/` (instalar com `npm install @runwayml/sdk`).
 - `gen4_image`, ratio `1080:1920` (aceito), prompt da seção "A apresentadora" sem alteração.
 - Seeds fixas: iris-01 = 250925001, iris-02 = 250925002, iris-03 = 250925003, iris-04 = 250925004.
-- Custo previsto: 4 × 8 = 32 créditos (US$ 0,32). Saída em `out/ref/iris-01..04.png` e `out/ref/iris-log.json` (créditos antes e depois de cada chamada).
+- Saldo da API antes: 5.000 créditos (US$ 50). Custo real: 8 créditos por imagem (5000 → 4992 → 4984 → 4976 → 4968), igual à tabela. Total 32 créditos (US$ 0,32); 35 a 54 s por imagem, 169 s no total.
+- Saída em `out/ref/iris-01..04.png` (1080×1920) e `out/ref/iris-log.json` (ids das tarefas e créditos antes e depois de cada chamada).
+- Leitura da 1ª rodada: nenhuma parece ter 40 e poucos anos (todas aparentam 25 a 30); maquiagem marcada, não mínima; luz de fim de tarde, não noite. iris-02 tem bindi (marca cultural, contra "traços sem país"). iris-01 e 02 têm relógio dourado; iris-01 mostra letras soltas numa fachada. A mais próxima do briefing é iris-04 (trilhos, relógio de aço, luz quente e azul).
