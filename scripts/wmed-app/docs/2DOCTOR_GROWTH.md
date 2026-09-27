@@ -1,3 +1,9 @@
+## 2026-09-27 07:30 UTC — Busca por IMC publicada
+
+Commit7526bbb publicado em2doctor-web/projeto2doctor: deployment d60ab913-77af-4b6c-8e1f-1188bd1c311e SUCCESS, healthz200/product2doctor, asset /assets/index-BwZ8Pgzv.js público idêntico ao build. CUA público320×568 confirmou buscaIMC encontrando a única calculadora correta, sem overflow305/305px; retornou ao chat, viewport restaurado. Prévia local encerrada/aba96 fechada.
+
+227 testes passaram/10 integrações ignoradas; builds2Doctor/site completos. Metadados de busca somente, cálculos e resultados intactos; IMC/BMI conferidosPT/EN/ES em teste direto, interfacePT no navegador. Não feito teste clínico, autenticado ou aparelho físico. Próximo executável: preservar versão; investigar outra fricção reproduzível nas ferramentas existentes antes de editar, sem expansão de catálogo. Limites de retomada/autenticação anteriores permanecem.
+
 ## 2026-09-27 07:30 UTC — Busca por IMC corrigida localmente
 
 Git54ac17c e Railway fdeb4074 SUCCESS/healthz200 conferidos, estado/diário/planos lidos. CUA público320px reproduziu fricção: buscar IMC mostrava nenhum instrumento apesar da calculadora existente. Adicionado metadado searchAliases IMC/BMI à calculadora bmi e incluído na busca exclusiva2Doctor. Fórmulas, limites, resultados e comportamento WMed intactos; nenhuma biblioteca nova.
