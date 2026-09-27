@@ -1,6 +1,6 @@
 {
  "meta": {
-  "gerado_em": "2026-09-26T14:19+00:00",
+  "gerado_em": "2026-09-27T15:05+00:00",
   "gerado_por": "scripts/governo/agentes/agente_noticias.py",
   "janela_dias": 90,
   "fontes": [
@@ -30,11 +30,11 @@
     "url": "https://www.gov.br/planalto/pt-br/acompanhe-o-planalto/noticias/RSS"
    }
   ],
-  "total_artigos": 1336,
-  "artigos_com_no": 379,
-  "novos_nesta_rodada": 59,
+  "total_artigos": 1354,
+  "artigos_com_no": 388,
+  "novos_nesta_rodada": 25,
   "artigos_por_fonte": {
-   "agenciabrasil": 319,
+   "agenciabrasil": 337,
    "senado": 634,
    "camara": 350,
    "planalto": 29,
@@ -45,206 +45,206 @@
  },
  "resumo": [
   {
-   "texto": "O Conselho Superior do Ministério Público Federal rejeitou, por 5 votos a 4, a abertura de investigação contra o procurador-geral da República, Paulo Gonet, citado em conversas encontradas pela Polícia Federal no celular do ex-banqueiro Daniel Vorcaro.",
+   "texto": "O Supremo Tribunal Federal condenou o ex-deputado Eduardo Bolsonaro a um ano de detenção e multa de R$ 80 mil por difamação contra a deputada Tabata Amaral, por 7 votos a 3.",
+   "artigo_id": "n-1ec5baa3be",
+   "no_id": "stf"
+  },
+  {
+   "texto": "O Conselho Superior do Ministério Público Federal rejeitou, por 5 votos a 4, a abertura de investigação contra o procurador-geral da República, Paulo Gonet, mantendo-o à frente do caso Banco Master.",
    "artigo_id": "n-2922609f76",
    "no_id": "mpf"
   },
   {
-   "texto": "O presidente do Supremo Tribunal Federal, Edson Fachin, fixou prazo de cinco dias para a Procuradoria-Geral da República se manifestar sobre medidas urgentes nas investigações do caso Master e dos descontos ilegais em benefícios do INSS.",
-   "artigo_id": "n-63094d153d",
-   "no_id": "stf"
+   "texto": "O Ministério da Fazenda publicou portaria em edição extra do Diário Oficial da União que mantém a subvenção de R$ 2,12 por litro ao óleo diesel.",
+   "artigo_id": "n-70b8b8c1d9",
+   "no_id": "mf"
   },
   {
-   "texto": "O Tribunal Superior do Trabalho decidiu que a greve dos trabalhadores dos Correios não é abusiva, mas determinou o retorno da categoria ao trabalho.",
-   "artigo_id": "n-c0ce7acce7",
-   "no_id": "tst"
-  },
-  {
-   "texto": "Foi sancionada a Lei 15.520, de 2026, que cria a Universidade Federal da Fronteira Norte, com sede em Oiapoque (AP), por desmembramento da Universidade Federal do Amapá.",
-   "artigo_id": "n-389745979d",
-   "no_id": "mec"
+   "texto": "A Agência Nacional de Energia Elétrica informou que a conta de luz volta à bandeira verde em outubro, após cinco meses de bandeira amarela.",
+   "artigo_id": "n-1800d0f8f8",
+   "no_id": "aneel"
   }
  ],
  "ranking": {
   "orgaos": [
    {
     "id": "stf",
-    "artigos": 55,
-    "peso": 35.5906152648613,
-    "ultima": "2026-09-25T22:46+00:00"
+    "artigos": 57,
+    "peso": 36.362333480876664,
+    "ultima": "2026-09-26T16:55+00:00"
    },
    {
     "id": "tse",
-    "artigos": 46,
-    "peso": 30.32648902538773,
-    "ultima": "2026-09-26T11:43+00:00"
+    "artigos": 48,
+    "peso": 31.299335327619715,
+    "ultima": "2026-09-26T21:56+00:00"
    },
    {
     "id": "camara",
     "artigos": 50,
-    "peso": 21.0725552050473,
+    "peso": 21.356466876971616,
     "ultima": "2026-09-25T12:23:00+00:00"
    },
    {
     "id": "congresso",
     "artigos": 40,
-    "peso": 18.71630946753669,
+    "peso": 18.87779133274405,
     "ultima": "2026-09-25T16:14:00+00:00"
+   },
+   {
+    "id": "caixa",
+    "artigos": 18,
+    "peso": 14.46409495548961,
+    "ultima": "2026-09-27T14:54+00:00"
    },
    {
     "id": "pf",
     "artigos": 20,
-    "peso": 14.25535239263075,
+    "peso": 13.812627657284068,
     "ultima": "2026-09-26T00:47+00:00"
-   },
-   {
-    "id": "caixa",
-    "artigos": 17,
-    "peso": 14.239498432601875,
-    "ultima": "2026-09-25T19:39+00:00"
    },
    {
     "id": "prf",
     "artigos": 7,
-    "peso": 13.823331981843891,
+    "peso": 13.782864526324863,
     "ultima": "2026-09-17T13:36+00:00"
+   },
+   {
+    "id": "anvisa",
+    "artigos": 15,
+    "peso": 11.27070293111956,
+    "ultima": "2026-09-27T11:55+00:00"
    },
    {
     "id": "inss",
     "artigos": 17,
-    "peso": 10.807010393283424,
+    "peso": 10.816587855357628,
     "ultima": "2026-09-25T22:25+00:00"
    },
    {
     "id": "inep",
     "artigos": 12,
-    "peso": 10.051410658307207,
+    "peso": 9.64272997032641,
     "ultima": "2026-09-25T17:58+00:00"
    },
    {
     "id": "mte",
     "artigos": 1,
-    "peso": 9.213793103448275,
+    "peso": 9.337931034482759,
     "ultima": "2026-08-12T21:09:00+00:00"
    },
    {
     "id": "inpe",
     "artigos": 1,
-    "peso": 9.213793103448275,
+    "peso": 9.337931034482759,
     "ultima": "2026-08-06T22:13:00+00:00"
    },
    {
-    "id": "anvisa",
-    "artigos": 12,
-    "peso": 9.144888773360869,
-    "ultima": "2026-09-25T13:16+00:00"
+    "id": "ms",
+    "artigos": 13,
+    "peso": 8.910718282756287,
+    "ultima": "2026-09-27T11:55+00:00"
    },
    {
     "id": "ibge",
     "artigos": 11,
-    "peso": 8.797626652690287,
+    "peso": 8.462737646144774,
     "ultima": "2026-09-25T14:28+00:00"
    },
    {
     "id": "mec",
     "artigos": 13,
-    "peso": 8.392029508618215,
+    "peso": 8.187701841260333,
     "ultima": "2026-09-25T17:58+00:00"
    },
    {
-    "id": "ms",
+    "id": "tst",
     "artigos": 12,
-    "peso": 8.312555871844893,
-    "ultima": "2026-09-26T00:10+00:00"
+    "peso": 7.730725958574651,
+    "ultima": "2026-09-27T14:54+00:00"
    },
    {
     "id": "anp",
     "artigos": 11,
-    "peso": 7.474938316985959,
+    "peso": 7.303596621035219,
     "ultima": "2026-09-25T20:44+00:00"
+   },
+   {
+    "id": "petrobras",
+    "artigos": 10,
+    "peso": 6.906313828642035,
+    "ultima": "2026-09-26T15:33+00:00"
    },
    {
     "id": "mpf",
     "artigos": 9,
-    "peso": 7.122391542972418,
+    "peso": 6.8556159844237055,
     "ultima": "2026-09-25T21:11+00:00"
-   },
-   {
-    "id": "tst",
-    "artigos": 11,
-    "peso": 7.058771866227971,
-    "ultima": "2026-09-25T17:44:00+00:00"
-   },
-   {
-    "id": "petrobras",
-    "artigos": 9,
-    "peso": 6.290058641456442,
-    "ultima": "2026-09-23T14:38+00:00"
    },
    {
     "id": "agu",
     "artigos": 8,
-    "peso": 6.284773988113484,
+    "peso": 6.052055153563171,
     "ultima": "2026-09-24T23:21+00:00"
    },
    {
     "id": "tcu",
     "artigos": 11,
-    "peso": 5.736083530523647,
+    "peso": 5.768024102604563,
     "ultima": "2026-09-23T21:51+00:00"
    },
    {
     "id": "stj",
     "artigos": 7,
-    "peso": 5.298778466393825,
+    "peso": 5.188801232410141,
     "ultima": "2026-09-22T00:00+00:00"
    },
    {
     "id": "cvm",
     "artigos": 6,
-    "peso": 4.951516345723242,
+    "peso": 4.791518440016957,
     "ultima": "2026-09-25T21:11+00:00"
    },
    {
     "id": "cnj",
     "artigos": 6,
-    "peso": 4.609538878395616,
+    "peso": 4.444933491842103,
     "ultima": "2026-09-25T21:11+00:00"
    },
    {
     "id": "senacon",
     "artigos": 5,
-    "peso": 4.1880877742946705,
+    "peso": 4.017804154302671,
     "ultima": "2026-09-25T12:27+00:00"
    },
    {
     "id": "correios",
     "artigos": 4,
-    "peso": 3.3504702194357368,
+    "peso": 3.214243323442137,
     "ultima": "2026-09-25T00:35+00:00"
    },
    {
     "id": "aeronautica",
     "artigos": 4,
-    "peso": 3.3504702194357368,
+    "peso": 3.214243323442137,
     "ultima": "2026-09-24T00:19+00:00"
    },
    {
     "id": "anac",
     "artigos": 5,
-    "peso": 2.8653994385903445,
+    "peso": 2.858663129193117,
     "ultima": "2026-09-23T14:04+00:00"
    },
    {
     "id": "aneel",
     "artigos": 4,
-    "peso": 2.518137317919761,
+    "peso": 2.461380336799933,
     "ultima": "2026-09-25T20:54+00:00"
    },
    {
     "id": "bndes",
     "artigos": 4,
-    "peso": 2.443948334489398,
+    "peso": 2.4315337916536843,
     "ultima": "2026-09-17T17:19+00:00"
    }
   ],
@@ -260,9 +260,9 @@
     "uf": null,
     "foto": "https://commons.wikimedia.org/wiki/Special:FilePath/Foto_oficial_de_Luiz_In%C3%A1cio_Lula_da_Silva_%28estreita%29.jpg?width=160",
     "foto_fonte": "https://www.wikidata.org/wiki/Q37181",
-    "artigos": 24,
-    "peso": 23.826976923435524,
-    "ultima": "2026-09-26T12:34+00:00"
+    "artigos": 25,
+    "peso": 24.452798003457204,
+    "ultima": "2026-09-26T15:15+00:00"
    },
    {
     "id": "damares-alves",
@@ -276,7 +276,7 @@
     "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador6335.jpg",
     "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/6335",
     "artigos": 23,
-    "peso": 9.69337539432176,
+    "peso": 9.823974763406936,
     "ultima": "2026-09-21T19:30:00+00:00"
    },
    {
@@ -291,7 +291,7 @@
     "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador3830.jpg",
     "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/3830",
     "artigos": 20,
-    "peso": 9.261354983534897,
+    "peso": 9.295449737430845,
     "ultima": "2026-09-23T18:08+00:00"
    },
    {
@@ -306,7 +306,7 @@
     "foto": "https://www.camara.leg.br/internet/deputado/bandep/160674.jpg",
     "foto_fonte": "https://www.camara.leg.br/deputados/160674",
     "artigos": 11,
-    "peso": 6.003872014420908,
+    "peso": 6.084762505633168,
     "ultima": "2026-09-08T14:44:00+00:00"
    },
    {
@@ -321,7 +321,7 @@
     "foto": "https://commons.wikimedia.org/wiki/Special:FilePath/Nunes_Marques%2C_February_2025_%28cropped%29.jpg?width=160",
     "foto_fonte": "https://www.wikidata.org/wiki/Q99831978",
     "artigos": 8,
-    "peso": 5.868607537355498,
+    "peso": 5.67562366024207,
     "ultima": "2026-09-26T00:25+00:00"
    },
    {
@@ -336,7 +336,7 @@
     "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador825.jpg",
     "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/825",
     "artigos": 12,
-    "peso": 5.057413249211356,
+    "peso": 5.1255520504731855,
     "ultima": "2026-09-21T19:30:00+00:00"
    },
    {
@@ -351,7 +351,7 @@
     "foto": null,
     "foto_fonte": null,
     "artigos": 7,
-    "peso": 5.030989982496562,
+    "peso": 4.872062829381535,
     "ultima": "2026-09-25T21:11+00:00"
    },
    {
@@ -366,7 +366,7 @@
     "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador5525.jpg",
     "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/5525",
     "artigos": 11,
-    "peso": 4.63596214511041,
+    "peso": 4.698422712933754,
     "ultima": "2026-09-02T23:20:00+00:00"
    },
    {
@@ -381,7 +381,7 @@
     "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador5894.jpg",
     "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/5894",
     "artigos": 7,
-    "peso": 4.614823531738576,
+    "peso": 4.495631336060433,
     "ultima": "2026-09-21T12:40+00:00"
    },
    {
@@ -396,7 +396,7 @@
     "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador345.jpg",
     "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/345",
     "artigos": 10,
-    "peso": 4.214511041009463,
+    "peso": 4.271293375394322,
     "ultima": "2026-09-25T18:03:00+00:00"
    },
    {
@@ -411,7 +411,7 @@
     "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador5376.jpg",
     "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/5376",
     "artigos": 10,
-    "peso": 4.214511041009463,
+    "peso": 4.271293375394322,
     "ultima": "2026-09-23T18:20:00+00:00"
    },
    {
@@ -426,7 +426,7 @@
     "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador5352.jpg",
     "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/5352",
     "artigos": 10,
-    "peso": 4.214511041009463,
+    "peso": 4.271293375394322,
     "ultima": "2026-09-14T16:27:00+00:00"
    },
    {
@@ -441,7 +441,7 @@
     "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador5979.jpg",
     "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/5979",
     "artigos": 9,
-    "peso": 3.793059936908517,
+    "peso": 3.84416403785489,
     "ultima": "2026-09-10T18:45:00+00:00"
    },
    {
@@ -456,7 +456,7 @@
     "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador5990.jpg",
     "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/5990",
     "artigos": 9,
-    "peso": 3.793059936908517,
+    "peso": 3.84416403785489,
     "ultima": "2026-09-04T21:56:00+00:00"
    },
    {
@@ -471,7 +471,7 @@
     "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador6009.jpg",
     "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/6009",
     "artigos": 8,
-    "peso": 3.3716088328075706,
+    "peso": 3.4170347003154578,
     "ultima": "2026-09-23T18:51:00+00:00"
    },
    {
@@ -486,7 +486,7 @@
     "foto": "https://commons.wikimedia.org/wiki/Special:FilePath/Luiz_Edson_Fachin-12-05.2015.jpg?width=160",
     "foto_fonte": "https://www.wikidata.org/wiki/Q10320705",
     "artigos": 5,
-    "peso": 3.355754872778695,
+    "peso": 3.264941167660467,
     "ultima": "2026-09-25T22:25+00:00"
    },
    {
@@ -501,7 +501,7 @@
     "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador4770.jpg",
     "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/4770",
     "artigos": 7,
-    "peso": 2.9501577287066243,
+    "peso": 2.9899053627760255,
     "ultima": "2026-09-25T21:09:00+00:00"
    },
    {
@@ -516,7 +516,7 @@
     "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador5917.jpg",
     "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/5917",
     "artigos": 7,
-    "peso": 2.9501577287066243,
+    "peso": 2.9899053627760255,
     "ultima": "2026-09-02T19:51:00+00:00"
    },
    {
@@ -531,7 +531,7 @@
     "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador5732.jpg",
     "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/5732",
     "artigos": 5,
-    "peso": 2.7912104551599817,
+    "peso": 2.8288165840468684,
     "ultima": "2026-09-02T16:46:00+00:00"
    },
    {
@@ -546,7 +546,7 @@
     "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador6338.jpg",
     "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/6338",
     "artigos": 6,
-    "peso": 2.528706624605678,
+    "peso": 2.562776025236593,
     "ultima": "2026-09-10T18:45:00+00:00"
    },
    {
@@ -561,7 +561,7 @@
     "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador475.jpg",
     "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/475",
     "artigos": 6,
-    "peso": 2.528706624605678,
+    "peso": 2.562776025236593,
     "ultima": "2026-09-01T22:31:00+00:00"
    },
    {
@@ -576,7 +576,7 @@
     "foto": "https://www.camara.leg.br/internet/deputado/bandep/74161.jpg",
     "foto_fonte": "https://www.camara.leg.br/deputados/74161",
     "artigos": 5,
-    "peso": 2.4492329878323567,
+    "peso": 2.4822316358720147,
     "ultima": "2026-09-01T19:56:00+00:00"
    },
    {
@@ -591,7 +591,7 @@
     "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador5985.jpg",
     "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/5985",
     "artigos": 5,
-    "peso": 2.1072555205047316,
+    "peso": 2.135646687697161,
     "ultima": "2026-09-22T14:16:00+00:00"
    },
    {
@@ -606,12 +606,219 @@
     "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador22.jpg",
     "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/22",
     "artigos": 5,
-    "peso": 2.1072555205047316,
+    "peso": 2.135646687697161,
     "ultima": "2026-09-11T19:48:00+00:00"
    }
   ]
  },
  "artigos": [
+  {
+   "id": "n-1b023fd2a6",
+   "titulo": "Mega-Sena acumula para R$ 52 milhões; veja os números sorteados",
+   "url": "https://agenciabrasil.ebc.com.br/geral/noticia/2026-09/mega-sena-acumula-para-r-52-milhoes-veja-os-numeros-sorteados",
+   "data": "2026-09-27T14:54+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [
+    "caixa",
+    "tst"
+   ],
+   "pessoas": [],
+   "resumo": "O prêmio da Mega-Sena acumulou neste domingo (27) para R$ 52 milhões, após o sorteio do Concurso 3063, realizado no Espaço da Sorte, em São Paulo. Nenhum dos apostadores acertou as dezenas 05, 35, 36, 41, 43 e 48. Notícias relacionadas: Caixa libera dinheiro de antigo fundo PIS/Pasep; veja como sacar. TST: 60% dos empregados da Caixa devem permanecer em atividade. MP das Bets: veja o que muda e saiba datas para devolução de valores. O prêmio de R$ 73.111,35 será pago a 29 apostas que acertaram cinco números. As 2.642 apostas que acertaram quatro números vão faturar R$ 1.322,81. O próximo sorte"
+  },
+  {
+   "id": "n-52ec30e95a",
+   "titulo": "Quilombo urbano na zona sul do Rio guarda lições de resistência",
+   "url": "https://agenciabrasil.ebc.com.br/direitos-humanos/noticia/2026-09/quilombo-urbano-na-zona-sul-do-rio-guarda-licoes-de-resistencia",
+   "data": "2026-09-27T14:43+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [
+    "iphan"
+   ],
+   "pessoas": [],
+   "resumo": "É em um quintal com coqueiro, goiabeira, bananeiras, uma paineira-rosa e um raro pé de abiu que vivem as 14 famílias do Quilombo Urbano Ferreira Diniz. A comunidade fica na Glória, na zona sul do Rio de Janeiro, e foi tombada pelo Instituto do Patrimônio Histórico e Artístico Nacional (Iphan) . O local se tornou ponto de encontro dos amantes da tradicional feijoada da Tia Cida e também representa a resistência comunitária em meio à especulação imobiliária no bairro . Notícias relacionadas: Iphan tomba primeiro quilombo do RJ e revalida registros de patrimônio. Programa de Reforma Agrária inclu"
+  },
+  {
+   "id": "n-8d42d685c9",
+   "titulo": "Geledés lança guia para acesso às políticas de cuidados",
+   "url": "https://agenciabrasil.ebc.com.br/direitos-humanos/noticia/2026-09/geledes-lanca-guia-para-acesso-politicas-de-cuidados",
+   "data": "2026-09-27T12:29+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "Quais os direitos de populações que exercem o trabalho de cuidado no Brasil? Quais políticas de Estado podem contribuir para que essas pessoas tenham uma vida mais digna? As respostas estão no Guia de Acesso a Políticas de Cuidado lançado nesta sexta-feira (25) pelo Geledés - Instituto da Mulher Negra . De maneira simples e didática, o manual apresenta quais os passos para conseguir acesso a políticas públicas . As informações vão desde os documentos necessários e como abrir uma conta no portal sougov.br ou acessar o SUS digital até um resumo de todas as políticas voltadas para cada população."
+  },
+  {
+   "id": "n-b0d3f44b07",
+   "titulo": "Setembro Verde: idosos também podem ser doadores vivos de órgãos",
+   "url": "https://agenciabrasil.ebc.com.br/saude/noticia/2026-09/setembro-verde-idosos-tambem-podem-ser-doadores-vivos-de-orgaos",
+   "data": "2026-09-27T11:55+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [
+    "ms",
+    "anvisa"
+   ],
+   "pessoas": [],
+   "resumo": "Em 2023, Arivaldo Sampaio, à época com 69 anos, viu o filho perder a função do único rim que tinha após passar por hemodiálise quase diária. Com o transplante como única opção, toda a família se colocou à disposição como um possível doador – inclusive Arivaldo. O resultado: compatibilidade total entre pai e filho. De acordo com o Ministério da Saúde, um doador vivo pode doar um dos rins, parte do fígado, parte da medula ou parte dos pulmões, sendo que a compatibilidade sanguínea é necessária em todos os casos . Notícias relacionadas: Anvisa alerta para venda irregular de tirzepatida em pó na i"
+  },
+  {
+   "id": "n-27d27a0dfb",
+   "titulo": "Conheça os candidatos que disputam o governo estadual em São Paulo",
+   "url": "https://agenciabrasil.ebc.com.br/politica/noticia/2026-09/conheca-os-candidatos-que-disputam-o-governo-estadual-em-sao-paulo",
+   "data": "2026-09-27T11:35+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "Seis candidatos concorrem ao governo de São Paulo nas eleições deste ano. Com o maior eleitorado do país, os paulistas somam 34.104.226 eleitores aptos a votar. Desse total, 53% são mulheres e 47% homens. Entre os 15,77% de eleitores que declaram cor/raça, 36,32% são pardos, 52,46% são brancos e 9,97% são pretos.Outros 1,12% são amarelos e 0,14% são indígenas. Notícias relacionadas: Saiba quais são as atribuições dos governadores e vice-governadores. O primeiro turno acontece no dia 4 de outubro , quando serão votados candidatos a deputado federal, estadual, dois senadores, governador e presid"
+  },
+  {
+   "id": "n-2167b80cbb",
+   "titulo": "Conheça os nove candidatos a governador do Rio de Janeiro",
+   "url": "https://agenciabrasil.ebc.com.br/politica/noticia/2026-09/conheca-os-nove-candidatos-governador-do-rio-de-janeiro",
+   "data": "2026-09-27T11:25+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "Nove candidatos concorrem ao governo do Rio de Janeiro nas eleições deste ano. No estado, 12,857 milhões de eleitores estão aptos a votar, universo que perde apenas para Minas Gerais e São Paulo. Desse total, 54% são mulheres e 46% homens. Entre os eleitores que declararam cor/raça, 41,54% são pardos, 39,76% são brancos e 18,19%, pretos. Amarelos e indígenas somam cerca de 0,5%. Notícias relacionadas: Saiba quais são as atribuições dos governadores e vice-governadores. O primeiro turno acontece no dia 4 de outubro, quando serão votados candidatos a deputado federal, estadual, dois senadores, g"
+  },
+  {
+   "id": "n-9bb8e88c82",
+   "titulo": "Minas Gerais tem 11 candidatos a governador; veja quais são",
+   "url": "https://agenciabrasil.ebc.com.br/politica/noticia/2026-09/minas-gerais-tem-11-candidatos-governador-veja-quais-sao",
+   "data": "2026-09-27T11:15+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "Onze candidatos concorrem ao governo de Minas Gerais nas eleições deste ano. Segundo maior colégio eleitoral e estado de maiores dimensões da região sudeste, abriga um total de 16.377.659 eleitores aptos a votar. Desse total, 52% são mulheres e 47% homens. Entre os 22,08% eleitores que declaram cor/raça, 49,64%% são pardos, 36,13% são brancos e 13,49% são pretos. Notícias relacionadas: Saiba quais são as atribuições dos governadores e vice-governadores. O primeiro turno acontece no dia 4 de outubro , quando serão votados candidatos a deputado federal, estadual, dois senadores, governador e pre"
+  },
+  {
+   "id": "n-c3dea5c11c",
+   "titulo": "Saiba quem são os cinco candidatos a governador no Espírito Santo",
+   "url": "https://agenciabrasil.ebc.com.br/politica/noticia/2026-09/saiba-quem-sao-os-cinco-candidatos-governador-no-espirito-santo",
+   "data": "2026-09-27T11:05+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "Cinco candidatos concorrem ao governo do Espírito Santo nas eleições deste ano. Um total de 2.990.490 eleitores estão aptos a votar. Desse total, 53% são mulheres e 47% homens. 24,45% dos eleitores declaram cor/raça, e entre eles 51,88% são pardos, 34,41% são brancos e 13,13% são pretos. Notícias relacionadas: Saiba quais são as atribuições dos governadores e vice-governadores. O primeiro turno acontece no dia 4 de outubro , quando serão votados candidatos a deputado federal, estadual, dois senadores, governador e presidente da República, esses dois últimos incluindo seus vices. A chapa de sen"
+  },
+  {
+   "id": "n-f10072a018",
+   "titulo": "São Paulo vence o Corinthians, faz história e fica perto do título",
+   "url": "https://agenciabrasil.ebc.com.br/esportes/noticia/2026-09/sao-paulo-vence-o-corinthians-faz-historia-e-fica-perto-do-titulo",
+   "data": "2026-09-26T22:13+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "Neste sábado (26), o São Paulo se encontrou com a história na Neo Química Arena. As Soberanas viraram sobre o Corinthians por 2 a 1, na partida de ida da final do Campeonato Brasileiro Feminino A1, que teve transmissão ao vivo da TV Brasil. O resultado representou a primeira derrota da equipe feminina do Timão no estádio. Desde 2016, eram 32 jogos, com 29 vitórias e três empates até então. No próximo sábado (3), no Morumbis, o Tricolor pode ter outro encontro com a história. Um empate será suficiente para garantir o primeiro título brasileiro das Soberanas e interromper uma sequência de seis t"
+  },
+  {
+   "id": "n-9bf17cc7c1",
+   "titulo": "Eleitor deve se antecipar na consulta a local de votação, alerta TSE",
+   "url": "https://agenciabrasil.ebc.com.br/politica/noticia/2026-09/eleitor-deve-se-antecipar-na-consulta-local-de-votacao-alerta-tse",
+   "data": "2026-09-26T21:56+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [
+    "tse"
+   ],
+   "pessoas": [],
+   "resumo": "A menos de oito dias para o primeiro turno das eleições, o eleitor deve lembrar de conferir o local de votação, uma vez que sua seção pode ter mudado de endereço desde o último pleito, alerta o Tribunal Superior Eleitoral (TSE). No caso dos eleitores de primeira viagem, é preciso descobrir onde fica a zona e a seção eleitorais que constam em seu título. Notícias relacionadas: Eleições 2026: saiba em quantos candidatos votar e a ordem de votação . Confira a agenda dos presidenciáveis neste fim de semana (26 e 27). Quase 1 milhão de brasileiros no exterior poderão votar nas eleições. Para os mai"
+  },
+  {
+   "id": "n-5d5acbc4c6",
+   "titulo": "Brasil conquista três ouros no Mundial Paralímpico de Judô",
+   "url": "https://agenciabrasil.ebc.com.br/esportes/noticia/2026-09/brasil-conquista-tres-ouros-no-mundial-paralimpico-de-judo",
+   "data": "2026-09-26T20:42+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "O segundo dia de competições no Mundial Paralímpico de judô, em Tbilisi, na Geórgia, foi extremamente produtivo para o Brasil. Neste sábado (26), vieram os três primeiros ouros do país nesta edição, junto com mais duas pratas e dois bronzes. Com isso, os atletas brasileiros até agora somam dez medalhas, sendo três ouros, cinco pratas e dois bronzes. O Mundial se encerra neste domingo (27), com as disputas por equipes. O grande destaque do sábado ficou por conta de Alana Maldonado. A judoca paulista, atual bicampeã paralímpica da classe J2 (baixa visão), categoria até 70 kg, conquistou o quarto"
+  },
+  {
+   "id": "n-eaf623743a",
+   "titulo": "Saiba como baixar o e-Título para votar",
+   "url": "https://agenciabrasil.ebc.com.br/justica/noticia/2026-09/saiba-como-baixar-o-e-titulo-para-votar",
+   "data": "2026-09-26T19:14+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "Os eleitores poderão utilizar o e-Título, a via digital do título de eleitor, para se identificar perante os mesários e votar nas eleições de 2026 – o primeiro turno ocorrerá no próximo dia 4 de outubro . No entanto, para votar apresentando somente o e-Título, disponível nas plataformas iOS ou Android, é preciso que o aplicativo contenha a foto do eleitor. Para baixar o e-Título, é necessário acessar a AppStore ou Google Play Store e fazer o download gratuito. É importante verificar se o app aparece como \"e-Título - Justiça Eleitoral Brasileira\". Notícias relacionadas: Eleições 2026: saiba em "
+  },
+  {
+   "id": "n-bac0c60264",
+   "titulo": "Aeroporto de Confins volta à normalidade depois de suspender operações",
+   "url": "https://agenciabrasil.ebc.com.br/geral/noticia/2026-09/aeroporto-de-confins-volta-normalidade-depois-de-suspender-operacoes",
+   "data": "2026-09-26T19:01+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [
+    "anvisa"
+   ],
+   "pessoas": [],
+   "resumo": "A pista do Aeroporto Internacional de Belo Horizonte/Confins foi liberada para funcionamento às 15h08 deste sábado (26) após ficar interditada totalmente para pousos e decolagens. A informação é da concessionária que administra o local, a BH Airport. A interrupção, causada por um problema na pista, acarretou o cancelamento de 45 voos (pousos ou decolagens) neste sábado. O aeroporto é o segundo maior em destinos domésticos no Brasil. Notícias relacionadas: BH: Aeroporto de Confins suspende operações por problema na pista. Anvisa atualiza regras de segurança sanitária para aviões e aeroportos. A"
+  },
+  {
+   "id": "n-d99b93baa1",
+   "titulo": "BH: Aeroporto de Confins suspende operações por problema na pista",
+   "url": "https://agenciabrasil.ebc.com.br/geral/noticia/2026-09/bh-aeroporto-de-confins-suspende-operacoes-por-problema-na-pista",
+   "data": "2026-09-26T18:40+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [
+    "anvisa"
+   ],
+   "pessoas": [],
+   "resumo": "As operações de pouso e decolagem no Aeroporto Internacional de Belo Horizonte/Confins estão suspensas neste sábado (26) em razão de um problema na pista. De acordo com a concessionária que administra o local, a BH Airport, ainda não há previsão para a normalização do funcionamento. “Como medida preventiva para garantir a segurança das pessoas, as operações do aeroporto estão temporariamente suspensas neste sábado (26) para a realização de uma intervenção pontual na pista de pousos e decolagens”, diz a concessionária em nota. Notícias relacionadas: Anvisa atualiza regras de segurança sanitária"
+  },
+  {
+   "id": "n-603dd3eabc",
+   "titulo": "Internet grátis pode derrubar rede móvel na eleição, diz Anatel ao STF",
+   "url": "https://agenciabrasil.ebc.com.br/geral/noticia/2026-09/internet-gratis-pode-derrubar-rede-movel-na-eleicao-diz-anatel-ao-stf",
+   "data": "2026-09-26T16:55+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [
+    "anatel",
+    "stf"
+   ],
+   "pessoas": [],
+   "resumo": "A Agência Nacional de Telecomunicações (Anatel) alertou o ministro Cristiano Zanin, do Supremo Tribunal Federal (STF), que a liberação irrestrita do acesso à internet móvel durante as eleições pode provocar picos de tráfego capazes de interromper a conectividade em aparelhos celulares, em especial na proximidade de zonas eleitorais. Na quinta-feira (24), Zanin havia dado 48 horas para a Anatel apresentar um parecer sobre um pedido da Confederação Nacional dos Trabalhadores em Educação (CNTE) e do Partido Verde (PV) para que a internet móvel seja liberada em todo o país nas 72 horas anteriores "
+  },
+  {
+   "id": "n-70b8b8c1d9",
+   "titulo": "Fazenda mantém subsídio de R$ 2,12 ao óleo diesel",
+   "url": "https://agenciabrasil.ebc.com.br/economia/noticia/2026-09/fazenda-mantem-subsidio-de-r-212-ao-oleo-diesel",
+   "data": "2026-09-26T15:33+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [
+    "mf",
+    "petrobras"
+   ],
+   "pessoas": [],
+   "resumo": "O Ministério da Fazenda publicou nessa sexta-feira (25), em edição extra do Diário Oficial da União , uma portaria que assegura a manutenção da subvenção de R$ 2,12 por litro ao óleo diesel. A Portaria nº 2.946 evita a redução do benefício, prevista para este sábado (26) após o término da vigência da Medida Provisória nº 1.363/2026. Notícias relacionadas: Subsídio de R$ 2,12 ao diesel deve ser mantido por 30 dias. Petrobras aumenta diesel, mas subsídio mantém valor final; entenda. De acordo com o ministério, a continuidade da subvenção se deve à persistência da volatilidade dos preços internac"
+  },
+  {
+   "id": "n-ff0368b826",
+   "titulo": "Eleições 2026: saiba em quantos candidatos votar e a ordem de votação",
+   "url": "https://agenciabrasil.ebc.com.br/politica/noticia/2026-09/eleicoes2026-saiba-em-quantos-candidatos-votar-e-ordem-de-votacao",
+   "data": "2026-09-26T15:15+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [],
+   "pessoas": [
+    "luiz-inacio-lula-da-silva"
+   ],
+   "resumo": "O eleitor poderá escolher até seis candidatos no 1º turno das Eleições 2026 , que serão realizadas no próximo domingo, dia 4 de outubro. Cada cargo é identificado por uma sequência numérica: para votar em deputado federal, é necessário teclar 4 dígitos na urna eletrônica. Para deputado estadual, são 5 números. Para senadores, 3 dígitos. Já para governador e presidente da República, são 2 dígitos. Notícias relacionadas: Quase 1 milhão de brasileiros no exterior poderão votar nas eleições. Meta desabilitou anúncios do perfil de Lula no Facebook. Exército brasileiro promove exercício de defesa ci"
+  },
+  {
+   "id": "n-1ec5baa3be",
+   "titulo": "STF condena Eduardo Bolsonaro por difamar deputada Tábata Amaral",
+   "url": "https://agenciabrasil.ebc.com.br/justica/noticia/2026-09/stf-condena-eduardo-bolsonaro-por-difamar-deputada-tabata-amaral",
+   "data": "2026-09-26T14:35+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [
+    "stf",
+    "tse"
+   ],
+   "pessoas": [
+    "tabata-amaral"
+   ],
+   "resumo": "O plenário do Supremo Tribunal Federal (STF) decidiu condenar, por 7 votos a 3, o ex-deputado Eduardo Bolsonaro (PL-SP) a um ano de detenção, mais multa de R$ 80 mil, por ter difamado a deputada Tabata Amaral (PSB-SP). O julgamento foi realizado em plenário virtual, prevalecendo ao final o entendimento do relator, ministro Alexandre de Moraes. Notícias relacionadas: Ministério da Justiça demite Eduardo Bolsonaro por abandono de cargo. STF condena Eduardo Bolsonaro a inelegibilidade e a 4 anos de prisão. TSE manda Eduardo Bolsonaro retirar posts de desinformação sobre urnas. O caso está relacio"
+  },
   {
    "id": "n-741a6ea0a3",
    "titulo": "Saiba como funcionará compra de dívidas pela União",
