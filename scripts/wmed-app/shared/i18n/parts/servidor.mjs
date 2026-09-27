@@ -99,4 +99,16 @@ export default {
 'Os Resumos ENAMED estão disponíveis apenas no Brasil.':['ENAMED summaries are available only in Brazil.','Los resúmenes ENAMED están disponibles solo en Brasil.'],
 'Reconectando ao feedback…':['Reconnecting to your feedback…','Reconectando al feedback…'],
 'A conexão caiu durante o feedback. Tente novamente.':['The connection dropped during feedback. Try again.','La conexión se cayó durante el feedback. Inténtalo de nuevo.'],
+// Vídeos
+"Vídeos":["Videos", "Videos"],
+"Doenças explicadas em animação":["Diseases explained in animation", "Enfermedades explicadas en animación"],
+"Doenças explicadas em animação, com a conduta conferida nas diretrizes. Em inglês.":["Diseases explained in animation, with management checked against the guidelines. In English.", "Enfermedades explicadas en animación, con la conducta verificada en las guías. En inglés."],
+"ESTUDOS":["LEARNING", "ESTUDIOS"],
+"Hipertensão portal":["Portal hypertension", "Hipertensión portal"],
+"Síndrome coronariana aguda":["Acute coronary syndrome", "Síndrome coronario agudo"],
+"Hepatologia":["Hepatology", "Hepatología"],
+"Cardiologia":["Cardiology", "Cardiología"],
+"Da cirrose à variz que sangra: mecanismo em animação e a conduta com doses, conferida no Baveno VIII.":["From cirrhosis to the bleeding varix: the mechanism in animation and management with doses, checked against Baveno VIII.", "De la cirrosis a la várice que sangra: el mecanismo en animación y la conducta con dosis, verificada con Baveno VIII."],
+"O que acontece dentro da coronária e a conduta: primeiros 10 minutos, supra ou não, doses, escores e alta.":["What happens inside the coronary artery, then management: first 10 minutes, STEMI or not, doses, scores and discharge.", "Qué ocurre dentro de la coronaria y la conducta: primeros 10 minutos, con o sin supradesnivel, dosis, escalas y alta."],
+"Conteúdo educativo, não é orientação médica. Animações e narração feitas com IA; conteúdo clínico conferido nas diretrizes citadas no vídeo.":["Educational content, not medical advice. Animations and narration made with AI; clinical content checked against the guidelines cited in the video.", "Contenido educativo, no es orientación médica. Animaciones y narración hechas con IA; contenido clínico verificado en las guías citadas en el video."],
 };
