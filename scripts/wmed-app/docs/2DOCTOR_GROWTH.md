@@ -1,3 +1,9 @@
+## 2026-09-26 21:38 BRT — Correção de cota na retomada publicada
+
+Código9aa2ff3 sobre2820d49; deployment1181823b-af9e-4a0b-b658-af96aa5f8f50 SUCCESS no2doctor-web. Healthz200/product2doctor, asset index-CWfONl2N.js público idêntico byte a byte ao build local. CUA público390×844: chat → Discutir um caso → formulário carregado → Voltar à conversa; foco correto, sem overflow. Viewport restaurado, prévia local encerrada/aba94 fechada. Não houve envio clínico/autenticação nem teste real de troca de aplicativos.
+
+225 testes passaram/10 integrações ignoradas; builds2Doctor/site completos e diffcheck aprovados. Corrigido consumo duplicado na repetição de jobs já existentes; não alegar idempotência de solicitações simultâneas antes de o job existir, persistência durável ou suporte entre réplicas. Próximo: preservar versão e, antes de ampliar garantias de retomada, avaliar separadamente concorrência durante criação, reinício do servidor e alternância em celular físico. Nenhum modelo/API Vytal/limite de uso foi modificado por esta correção.
+
 ## 2026-09-26 21:34 BRT — Repetição de feedback não deve consumir cota novamente
 
 Rodada00:30Z: estado/diário e planos lidos. Outra frente comitou2820d49 e publicou cbb0c1df-6ca3-4748-825f-8f1b14bdf1d5: retomada do feedback com jobs em memória. Preservado esse trabalho; esta automação não criou a retenção de eventos. Revisão encontrou falha: se nenhum evento chegar ao navegador, o cliente repete action feedback com mesmo jobId; charge rodava antes do reaproveitamento. Reprodução isolada:2 tentativas mesmo job,2 chamadas à função de consumo de cota, sem necessidade de nova geração.
