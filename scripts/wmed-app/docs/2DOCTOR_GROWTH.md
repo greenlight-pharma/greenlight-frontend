@@ -1,3 +1,9 @@
+## 2026-09-27 10:30 UTC — Correção de PDF publicada
+
+Commit 81d46e3 publicado exclusivamente em 2doctor-web/projeto2doctor. Deployment de4d33ad-b095-4143-902b-77605a49d1cc SUCCESS, healthz HTTP 200/product2doctor. Assets /assets/index-n7VBc0bG.js e /assets/chat-pdf-h9z8TOPx.js públicos idênticos aos arquivos locais. Interface pública recarregada e conferida em 390×844, sem transbordamento (390/390); viewport restaurado. Fixture local encerrada e aba 97 fechada.
+
+Entrega: exportação de tabelas Markdown com células finais omitidas deixa de falhar; células ausentes permanecem vazias e excedentes seguem comportamento do chat. 229 testes passaram/10 integrações ignoradas; builds 2Doctor/site completos; PDF efetivamente baixado e renderizado para inspeção visual em teste local fictício. Não houve uso clínico, envio ao modelo, persistência clínica nova ou alteração de API. Testes autenticados/banco/Safari/aparelho físico continuam não executados. Próximo executável: preservar esta versão e reproduzir outra fricção concreta em fluxo existente antes de editar; não ampliar catálogo.
+
 ## 2026-09-27 10:30 UTC — PDF de tabelas incompletas corrigido localmente
 
 Reproduzido erro real do pdfmake: tabela Markdown com célula final omitida causava “Malformed table row, a cell is undefined”. Conversor agora normaliza cada linha para as colunas do cabeçalho: completa células ausentes com vazio e ignora excedentes, igual à exibição Markdown do chat. Também trata tabelas largas convertidas em registros. Sem conteúdo clínico novo ou valores inventados; nenhuma mudança de API/modelo/autenticação.
