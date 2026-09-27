@@ -1,3 +1,11 @@
+## 2026-09-27 05:00 UTC — Correção de concorrência publicada e verificada
+
+Código1b2a941 + exclusões de artefatos b1b770c publicados no serviço isolado2doctor-web/projeto2doctor, implantação fdeb4074-f2e9-4816-ab22-952d6e4740b1 SUCCESS. Healthz200/product2doctor, asset público /assets/index-R51OZKsy.js idêntico ao build local. CUA público390×844: chat → caso carregado → voltar; 390/390px sem overflow e foco devolvido ao botão original. Viewport restaurado. Upload inicial413 resolvido excluindo caches/saídas locais, sem retirar acervos.
+
+Entrega: duas solicitações concorrentes do mesmo feedback/dono compartilham admissão enquanto a quota é verificada, com um único consumo e uma geração em duas partes. Recusa/erro libera a reserva e não expõe detalhes internos; outro dono é bloqueado.227 testes aprovados/10 integrações ignoradas; buildsapp/site completos. Sem chamada clínica real, teste autenticado de banco, iPhone físico ou prova entre réplicas/reinícios. Garantia limitada ao processo vivo/jobId e ao contrato de charge; não é transação distribuída. Nenhum novo recurso de catálogo/modelo/dados persistidos.
+
+Próximo executável: preservar versão publicada e tratar nova fricção concreta; se houver acesso a teste autenticado, medir retomada ao alternar aplicativos em celular físico sem dados reais. Não ativar banco de testes/fornecedor/modelos nem criar features para preencher rodada.
+
 ## 2026-09-27 05:00 UTC — Concorrência na retomada de feedback corrigida localmente
 
 Reprodução sintética confirmou dois consumos de quota para duas solicitações simultâneas com mesmo jobId enquanto a primeira aguardava charge. Corrigido apenas no adaptador da 2Doctor: reserva em memória antes do primeiro await, compartilhamento da admissão e geração, verificação do proprietário também durante admissão. Reserva liberada em sucesso/recusa/erro; falha retorna mensagem genérica sem detalhes internos. Sem persistência nova, novos modelos, mudança de limite ou API Vytal.
