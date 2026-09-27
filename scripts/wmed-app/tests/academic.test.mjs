@@ -287,3 +287,33 @@ test("feedback keeps running if the phone drops the connection and can be resume
   await academic(req("feedback-resume", { jobId }), other, { now: agora, identify: async () => ({ id: "u2", headers: {}, path: (x) => x }), allow: () => true });
   assert.equal(other.statusCode, 404);
 });
+
+test("retrying feedback before receiving its first event reuses the active job without another charge", async () => {
+  const jobId = "73109592-f35f-48db-b34f-0355f5c1eb69";
+  const now = fresh();
+  let charges = 0, upstreamCalls = 0, release, began;
+  const blocked = new Promise(resolve => { release = resolve; });
+  const started = new Promise(resolve => { began = resolve; });
+  const options = {
+    now, allow: () => true,
+    identify: async () => ({ id: "retry-owner", headers: {}, path: x => x, charge: async () => (++charges, true) }),
+    fetchImpl: async () => { upstreamCalls++; began(); await blocked; return sse({feedback:{resumo_caso:"Teste sintético"}}); },
+  };
+  const payload = {fields:f, relato:story, stream:true, jobId};
+  const first = streamRes(); first.write = () => {}; // no event reaches the first client
+  const running = academic(req("feedback", payload), first, options);
+  await started;
+  const replay = streamRes();
+  const reconnect = academic(req("feedback", payload), replay, options);
+  release();
+  await Promise.all([running, reconnect]);
+  assert.equal(charges, 1);
+  assert.equal(upstreamCalls, 2); // essential + complementary, once each
+  assert.equal(events(replay.out).at(-1).event, "done");
+  await academic(req("feedback", payload), streamRes(), options);
+  assert.equal(charges, 1); // completed jobs are replayed too
+  const foreign = streamRes();
+  await academic(req("feedback", payload), foreign, {...options, identify:async()=>({id:"other-owner",charge:async()=>assert.fail("must not charge")})});
+  assert.equal(foreign.statusCode, 404);
+  assert.equal(upstreamCalls, 2);
+});

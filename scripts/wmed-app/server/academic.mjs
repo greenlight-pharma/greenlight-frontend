@@ -161,6 +161,17 @@ export async function academic(
           "Identificamos possível dado pessoal. Remova os identificadores do paciente antes de continuar.",
       });
   }
+  // A reconnect before the first SSE event repeats "feedback", not "feedback-resume".
+  // Reuse an already-created job before counting another use of the allowance.
+  if (action === "feedback" && p?.stream === true && JOB_ID.test(p?.jobId || "")) {
+    for (const [k, j] of jobs) if (now() - j.created > JOB_TTL) jobs.delete(k);
+    const existing = jobs.get(p.jobId);
+    if (existing) {
+      if (existing.owner !== caller.id)
+        return send(res, 404, { error: "Este feedback não está mais disponível. Envie o caso de novo.", code: "JOB_GONE" });
+      return attach(res, existing);
+    }
+  }
   // Authenticated, per-session defense in depth; upstream remains authorization authority.
   const { createHash } = await import("node:crypto");
   const key = createHash("sha256").update(caller.id).digest("hex");
