@@ -38,3 +38,32 @@ test('PDF keeps reference-style links alongside footnotes and does not fetch any
  assert.equal((json.match(/"link":"https:\/\/example.org\/ref"/g)||[]).length,2);
  assert.ok(json.includes('"id":"note-1"'));
 });
+
+test('PDF renders Markdown tables with omitted trailing cells and ignores excess cells', async () => {
+ const { default: PdfPrinter } = await import('pdfmake');
+ const { default: fonts } = await import('pdfmake/build/vfs_fonts.js');
+ const printer = new PdfPrinter({ Roboto: Object.fromEntries(Object.entries({
+  normal: 'Roboto-Regular.ttf', bold: 'Roboto-Medium.ttf',
+  italics: 'Roboto-Italic.ttf', bolditalics: 'Roboto-MediumItalic.ttf',
+ }).map(([style, file]) => [style, Buffer.from(fonts[file], 'base64')])) });
+ const doc = chatPdfDefinition({ text: '| Campo | Descrição | Observação |\n|---|---|---|\n| Exemplo | Texto |\n| Outro | Texto | Completo | Ignorado |' });
+ const table = doc.content.find(n => n.table).table;
+ assert.deepEqual(table.body.map(row => row.length), [3, 3, 3]);
+ assert.deepEqual(table.body[1][2].text, []);
+ assert.ok(!JSON.stringify(doc).includes('Ignorado'));
+ const pdf = printer.createPdfKitDocument(doc);
+ const chunks = [];
+ const completed = new Promise((resolve, reject) => {
+  pdf.on('data', chunk => chunks.push(chunk));
+  pdf.on('end', resolve); pdf.on('error', reject);
+ });
+ pdf.end(); await completed;
+ assert.equal(Buffer.concat(chunks).subarray(0, 5).toString(), '%PDF-');
+});
+test('wide PDF tables accept missing and excess cells without inventing values', () => {
+ const doc = chatPdfDefinition({ text: '| A | B | C | D | E |\n|---|---|---|---|---|\n| Um | Dois |\n| Um | Dois | Três | Quatro | Cinco | Ignorado |' });
+ const json = JSON.stringify(doc);
+ assert.ok(json.includes('E: '));
+ assert.ok(json.includes('Cinco'));
+ assert.ok(!json.includes('Ignorado'));
+});

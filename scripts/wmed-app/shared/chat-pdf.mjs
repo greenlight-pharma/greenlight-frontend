@@ -36,9 +36,11 @@ function blocks(nodes, definitions) {
       case 'table': {
         const count = node.children[0]?.children.length || 0;
         if (!count) return [];
+        // Match Markdown table rendering: pad missing cells and ignore excess cells.
+        const rows = node.children.map(row => Array.from({ length: count }, (_, i) => row.children[i] || { children: [] }));
         // Wide tables become labeled records so no column is cropped on A4.
-        if (count > 4) return node.children.slice(1).map(row => ({ stack: row.children.map((cell, i) => ({ text: [{ text: `${plain(node.children[0].children[i])}: `, bold: true }, ...inline(cell.children, {}, definitions)], margin: [0, 0, 0, 5] })), margin: [0, 4, 0, 12] }));
-        return [{ table: { headerRows: 1, widths: Array(count).fill('*'), body: node.children.map((row, i) => row.children.map(cell => ({ text: inline(cell.children, {}, definitions), bold: i === 0, fillColor: i === 0 ? '#edf4f3' : null, margin: [3, 5, 3, 5] }))) }, layout: 'lightHorizontalLines', fontSize: 9, margin: [0, 4, 0, 14] }];
+        if (count > 4) return rows.slice(1).map(row => ({ stack: row.map((cell, i) => ({ text: [{ text: `${plain(node.children[0].children[i])}: `, bold: true }, ...inline(cell.children, {}, definitions)], margin: [0, 0, 0, 5] })), margin: [0, 4, 0, 12] }));
+        return [{ table: { headerRows: 1, widths: Array(count).fill('*'), body: rows.map((row, i) => row.map(cell => ({ text: inline(cell.children, {}, definitions), bold: i === 0, fillColor: i === 0 ? '#edf4f3' : null, margin: [3, 5, 3, 5] }))) }, layout: 'lightHorizontalLines', fontSize: 9, margin: [0, 4, 0, 14] }];
       }
       default: return [];
     }

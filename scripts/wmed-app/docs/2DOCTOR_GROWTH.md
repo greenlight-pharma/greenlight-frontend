@@ -1,3 +1,11 @@
+## 2026-09-27 10:30 UTC — PDF de tabelas incompletas corrigido localmente
+
+Reproduzido erro real do pdfmake: tabela Markdown com célula final omitida causava “Malformed table row, a cell is undefined”. Conversor agora normaliza cada linha para as colunas do cabeçalho: completa células ausentes com vazio e ignora excedentes, igual à exibição Markdown do chat. Também trata tabelas largas convertidas em registros. Sem conteúdo clínico novo ou valores inventados; nenhuma mudança de API/modelo/autenticação.
+
+229 testes passaram, 10 integrações ignoradas por TEST_DATABASE_URL ausente; dois testes de regressão novos, incluindo renderização real via pdfmake. Builds 2Doctor e site completo aprovados, diffcheck limpo. Logs /tmp/2doctor-1030-{tests,build,site}.log. CUA em fixture local 390×844, sem upstream/persistência: resposta fictícia → Gerar PDF → Baixar PDF, foco preservado e largura da página 375/375. Download confirmado em disco e renderizado com Poppler, uma página legível com célula vazia e sem cortes; eventos de download da ferramenta expiraram apesar dos arquivos efetivamente baixados. pdftotext indisponível, inspeção visual via PNG concluída. Não testados login real, banco, dispositivo físico/Safari ou conteúdo médico.
+
+Git inicial 81423fb; Railway d60ab913-77af-4b6c-8e1f-1188bd1c311e SUCCESS/healthz200. Dockerfile/railway.json conferidos. Próximo: publicar apenas 2doctor-web/projeto2doctor pelo appcwd/path-as-root e verificar SUCCESS, healthz, assets e interface pública. Sem publicação ainda nesta etapa.
+
 ## 2026-09-27 07:30 UTC — Busca por IMC publicada
 
 Commit7526bbb publicado em2doctor-web/projeto2doctor: deployment d60ab913-77af-4b6c-8e1f-1188bd1c311e SUCCESS, healthz200/product2doctor, asset /assets/index-BwZ8Pgzv.js público idêntico ao build. CUA público320×568 confirmou buscaIMC encontrando a única calculadora correta, sem overflow305/305px; retornou ao chat, viewport restaurado. Prévia local encerrada/aba96 fechada.
