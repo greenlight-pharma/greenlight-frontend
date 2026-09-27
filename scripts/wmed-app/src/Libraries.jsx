@@ -117,7 +117,7 @@ export function Scores() {
     }
   }, [score, calculator, compact]);
 
-  const formulaList=localizedCalculators(locale).filter(c=>{const original=calculators.find(o=>o.id===c.id);return (!area||original.area===area)&&(compact ? matchesInstrument(q,c.name,original.name,c.id,c.area,original.area) : norm(c.name+" "+original.name+" "+c.id).includes(norm(q)))});
+  const formulaList=localizedCalculators(locale).filter(c=>{const original=calculators.find(o=>o.id===c.id);return (!area||original.area===area)&&(compact ? matchesInstrument(q,c.name,original.name,c.id,c.area,original.area,original.searchAliases) : norm(c.name+" "+original.name+" "+c.id).includes(norm(q)))});
   const complete = score?.criterios.every((c) => answers[c.id] !== undefined);
   const total =
     score?.criterios.reduce((sum, c) => sum + (answers[c.id] || 0), 0) || 0;

@@ -1,3 +1,9 @@
+## 2026-09-27 07:30 UTC — Busca por IMC corrigida localmente
+
+Git54ac17c e Railway fdeb4074 SUCCESS/healthz200 conferidos, estado/diário/planos lidos. CUA público320px reproduziu fricção: buscar IMC mostrava nenhum instrumento apesar da calculadora existente. Adicionado metadado searchAliases IMC/BMI à calculadora bmi e incluído na busca exclusiva2Doctor. Fórmulas, limites, resultados e comportamento WMed intactos; nenhuma biblioteca nova.
+
+227 testes passaram/10 integrações ignoradas; builds2Doctor/site completos e diffcheck aprovados. Verificação diretaPT/EN/ES confirmou IMC/BMI retornando somente bmi. CUA prévia320×568: buscarIMC→abrir→voltar mantém filtro/foco e305/305px úteis sem overflow. Logs /tmp/2doctor-0730-{tests,build,site}.log. Não valida conteúdo clínico nem uso autenticado/dispositivo físico; nenhum cálculo ou chamada médica real realizado. Próximo: publicar apenas2doctor-web com appcwd/path-as-root, conferirSUCCESS/healthz/asset/interface. Dockerfile/railway.json conferidos, base recuperávelb1b770c.
+
 ## 2026-09-27 05:00 UTC — Correção de concorrência publicada e verificada
 
 Código1b2a941 + exclusões de artefatos b1b770c publicados no serviço isolado2doctor-web/projeto2doctor, implantação fdeb4074-f2e9-4816-ab22-952d6e4740b1 SUCCESS. Healthz200/product2doctor, asset público /assets/index-R51OZKsy.js idêntico ao build local. CUA público390×844: chat → caso carregado → voltar; 390/390px sem overflow e foco devolvido ao botão original. Viewport restaurado. Upload inicial413 resolvido excluindo caches/saídas locais, sem retirar acervos.
