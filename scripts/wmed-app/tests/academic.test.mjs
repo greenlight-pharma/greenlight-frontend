@@ -317,3 +317,66 @@ test("retrying feedback before receiving its first event reuses the active job w
   assert.equal(foreign.statusCode, 404);
   assert.equal(upstreamCalls, 2);
 });
+
+test("simultaneous feedback requests share admission while the quota check is pending", async () => {
+  const jobId = "ee3b6da3-bf2f-4749-bc10-179702970f91";
+  let charges = 0, upstreamCalls = 0, release, began;
+  const gate = new Promise(resolve => { release = resolve; });
+  const started = new Promise(resolve => { began = resolve; });
+  const options = {
+    now: fresh(), allow: () => true,
+    identify: async () => ({id:"concurrent-owner", headers:{}, path:x=>x, charge:async()=>{charges++; began(); await gate; return true;}}),
+    fetchImpl: async () => {upstreamCalls++; return sse({feedback:{resumo_caso:"Teste sintético"}});},
+  };
+  const payload = {fields:f, relato:story, stream:true, jobId};
+  const first = streamRes(), second = streamRes();
+  const a = academic(req("feedback", payload), first, options);
+  await started;
+  const b = academic(req("feedback", payload), second, options);
+  await new Promise(resolve => setImmediate(resolve));
+  release();
+  await Promise.all([a,b]);
+  assert.equal(charges, 1);
+  assert.equal(upstreamCalls, 2);
+  assert.deepEqual(events(first.out), events(second.out));
+  assert.equal(events(second.out).at(-1).event, "done");
+});
+
+test("pending feedback admission rejects another owner and releases failed reservations", async () => {
+  for (const failure of ["denied", "unavailable"]) {
+    const jobId = failure === "denied" ? "430f9ccc-7fb4-487b-9e05-90511776d601" : "430f9ccc-7fb4-487b-9e05-90511776d602";
+    let charges = 0, release, began, reject = true, upstreamCalls = 0;
+    const gate = new Promise(resolve => { release = resolve; });
+    const started = new Promise(resolve => { began = resolve; });
+    const options = {
+      now:fresh(), allow:()=>true,
+      identify:async()=>({id:`reservation-${failure}`,headers:{},path:x=>x,charge:async()=>{
+        charges++; began(); await gate;
+        if (!reject) return true;
+        if (failure === "unavailable") throw Error("private database details");
+        return false;
+      }}),
+      fetchImpl:async()=>{upstreamCalls++; return sse({feedback:{resumo_caso:"Teste sintético"}});},
+    };
+    const payload = {fields:f, relato:story, stream:true, jobId};
+    const first = res(), second = res(), foreign = res();
+    const a = academic(req("feedback",payload),first,options);
+    await started;
+    const b = academic(req("feedback",payload),second,options);
+    await academic(req("feedback",payload),foreign,{...options,identify:async()=>({id:"foreign",charge:async()=>assert.fail("must not charge")})});
+    assert.equal(foreign.statusCode,404);
+    release();
+    await Promise.all([a,b]);
+    assert.equal(charges,1);
+    assert.equal(upstreamCalls,0);
+    assert.equal(first.statusCode,failure === "denied" ? 429 : 503);
+    assert.deepEqual(first.data,second.data);
+    assert.doesNotMatch(first.data.error,/private database/);
+    reject=false;
+    const retry=streamRes();
+    await academic(req("feedback",payload),retry,options);
+    assert.equal(charges,2);
+    assert.equal(upstreamCalls,2);
+    assert.equal(events(retry.out).at(-1).event,"done");
+  }
+});

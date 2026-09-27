@@ -15,6 +15,8 @@ const limits = new Map();
 // Trabalhos de feedback (26/09): no celular, trocar de app corta a conexão da aba. O feedback continua
 // sendo gerado aqui e a tela retoma com action "feedback-resume" (reenvia os eventos já gerados, sem nova cobrança).
 const jobs = new Map();
+// Admission is shared only while quota is checked; no clinical payload is stored here.
+const pendingJobs = new Map();
 const JOB_ID = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
 const JOB_TTL = 15 * 60000;
 export const feedbackJobs = jobs;
@@ -171,20 +173,30 @@ export async function academic(
         return send(res, 404, { error: "Este feedback não está mais disponível. Envie o caso de novo.", code: "JOB_GONE" });
       return attach(res, existing);
     }
+    let pending = pendingJobs.get(p.jobId);
+    if (pending && pending.owner !== caller.id)
+      return send(res, 404, { error: "Este feedback não está mais disponível. Envie o caso de novo.", code: "JOB_GONE" });
+    if (!pending) {
+      let resolve;
+      pending = { owner: caller.id, ready: new Promise(ok => { resolve = ok; }) };
+      pendingJobs.set(p.jobId, pending); // Reserve before the first await in admission.
+      void (async () => {
+        try {
+          const rejection = await admit(caller, action, now);
+          resolve(rejection ? { rejection } : { job: startFeedback(caller, body, fetchImpl, p.jobId, now) });
+        } catch {
+          resolve({ rejection: { status: 503, error: "Serviço indisponível no momento. Tente novamente." } });
+        } finally {
+          pendingJobs.delete(p.jobId);
+        }
+      })();
+    }
+    const outcome = await pending.ready;
+    if (outcome.rejection) return send(res, outcome.rejection.status, { error: outcome.rejection.error });
+    return attach(res, outcome.job);
   }
-  // Authenticated, per-session defense in depth; upstream remains authorization authority.
-  const { createHash } = await import("node:crypto");
-  const key = createHash("sha256").update(caller.id).digest("hex");
-  for (const [k, v] of limits) if (v.until <= now()) limits.delete(k);
-  const quota = limits.get(key) || { count: 0, until: now() + 60000 };
-  if (quota.count >= 12 || (!limits.has(key) && limits.size >= 5000))
-    return send(res, 429, {
-      error: "Aguarde um minuto antes de tentar novamente.",
-    });
-  quota.count++;
-  limits.set(key, quota);
-  if (caller.charge && !(await caller.charge(action)))
-    return send(res, 429, { error: "Você atingiu o limite de uso de hoje. Volte amanhã." });
+  const rejection = await admit(caller, action, now);
+  if (rejection) return send(res, rejection.status, { error: rejection.error });
   if (action === "feedback" && p?.stream === true)
     return streamFeedback(res, caller, body, fetchImpl, JOB_ID.test(p?.jobId || "") ? p.jobId : null, now);
   try {
@@ -234,6 +246,21 @@ export async function academic(
   }
 }
 
+async function admit(caller, action, now) {
+  // Authenticated, per-session defense in depth; upstream remains authorization authority.
+  const { createHash } = await import("node:crypto");
+  const key = createHash("sha256").update(caller.id).digest("hex");
+  for (const [k, v] of limits) if (v.until <= now()) limits.delete(k);
+  const quota = limits.get(key) || { count: 0, until: now() + 60000 };
+  if (quota.count >= 12 || (!limits.has(key) && limits.size >= 5000))
+    return { status: 429, error: "Aguarde um minuto antes de tentar novamente." };
+  quota.count++;
+  limits.set(key, quota);
+  if (caller.charge && !(await caller.charge(action)))
+    return { status: 429, error: "Você atingiu o limite de uso de hoje. Volte amanhã." };
+  return null;
+}
+
 // Junta os pedaços {t} do SSE do tutor; um {error} vira falha.
 export async function streamedText(r) {
   const raw = await r.text();
@@ -259,15 +286,15 @@ export function feedbackContext(f) {
 }
 // Feedback em duas partes, como no app Vytal: "essencial" (aba Raciocínio, ~30 s) chega
 // primeiro e aparece na tela; "complementar" (Semiologia, Manejo, Estudo, apresentação) vem depois.
-async function streamFeedback(res, caller, body, fetchImpl, jobId, now = Date.now) {
+function startFeedback(caller, body, fetchImpl, jobId, now = Date.now) {
   for (const [k, j] of jobs) if (now() - j.created > JOB_TTL) jobs.delete(k);
-  const existing = jobId && jobs.get(jobId);
-  if (existing && existing.owner === caller.id) return attach(res, existing);
   const job = { owner: caller.id, created: now(), events: [], done: false, listeners: new Set() };
   if (jobId) jobs.set(jobId, job);
-  const done = attach(res, job);
-  await runFeedback(job, caller, body, fetchImpl);
-  return done;
+  void runFeedback(job, caller, body, fetchImpl);
+  return job;
+}
+function streamFeedback(res, caller, body, fetchImpl, jobId, now = Date.now) {
+  return attach(res, startFeedback(caller, body, fetchImpl, jobId, now));
 }
 // Roda sem depender da conexão da tela: só o tempo-limite de cada parte interrompe.
 async function runFeedback(job, caller, body, fetchImpl) {

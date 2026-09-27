@@ -1,3 +1,11 @@
+## 2026-09-27 05:00 UTC — Concorrência na retomada de feedback corrigida localmente
+
+Reprodução sintética confirmou dois consumos de quota para duas solicitações simultâneas com mesmo jobId enquanto a primeira aguardava charge. Corrigido apenas no adaptador da 2Doctor: reserva em memória antes do primeiro await, compartilhamento da admissão e geração, verificação do proprietário também durante admissão. Reserva liberada em sucesso/recusa/erro; falha retorna mensagem genérica sem detalhes internos. Sem persistência nova, novos modelos, mudança de limite ou API Vytal.
+
+237 testes:227 passaram/10 integrações ignoradas por TEST_DATABASE_URL ausente. Regressões novas cobrem concorrência com quota pendente, um consumo e duas partes de geração, outro dono bloqueado, 429/503 compartilhados e nova tentativa após falha. Builds2Doctor/site completo e diffcheck aprovados; logs /tmp/2doctor-0500-*.log. CUA público390×844 conferiu formulário existente sem overflow; frontend não modificado. Não testados conta/banco real, upstream clínico, iPhone físico, reinício ou múltiplas réplicas; deduplicação continua limitada ao mesmo processo/jobId. Não há garantia transacional se a função de consumo lançar erro após já ter confirmado gravação no banco.
+
+Próximo: publicar serviço isolado2doctor-web/projeto2doctor com appcwd e path-as-root; confirmarSUCCESS/healthz/asset/interface. Dockerfile/railway.json e vínculo Railway conferidos. Base recuperável3533791/deploy eaaa7b33-f929-4dea-9c79-8f6171674a9c. Nenhum deploy iniciado até este registro.
+
 ## 2026-09-26 21:38 BRT — Correção de cota na retomada publicada
 
 Código9aa2ff3 sobre2820d49; deployment1181823b-af9e-4a0b-b658-af96aa5f8f50 SUCCESS no2doctor-web. Healthz200/product2doctor, asset index-CWfONl2N.js público idêntico byte a byte ao build local. CUA público390×844: chat → Discutir um caso → formulário carregado → Voltar à conversa; foco correto, sem overflow. Viewport restaurado, prévia local encerrada/aba94 fechada. Não houve envio clínico/autenticação nem teste real de troca de aplicativos.
