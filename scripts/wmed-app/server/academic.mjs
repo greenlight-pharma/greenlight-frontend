@@ -12,6 +12,39 @@ import {
 } from "../shared/case-contract.mjs";
 const API = "https://vytal-api-production.up.railway.app";
 const limits = new Map();
+// Trabalhos de feedback (26/09): no celular, trocar de app corta a conexão da aba. O feedback continua
+// sendo gerado aqui e a tela retoma com action "feedback-resume" (reenvia os eventos já gerados, sem nova cobrança).
+const jobs = new Map();
+const JOB_ID = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
+const JOB_TTL = 15 * 60000;
+export const feedbackJobs = jobs;
+function emit(job, event, data) {
+  job.events.push({ event, data });
+  if (event === "done" || event === "error") job.done = true;
+  for (const fn of job.listeners) fn();
+}
+function attach(res, job) {
+  let finish; const closed = new Promise((ok) => { finish = ok; });
+  res.statusCode = 200;
+  res.setHeader("Content-Type", "text/event-stream; charset=utf-8");
+  res.setHeader("Cache-Control", "no-store, no-transform");
+  res.setHeader("X-Accel-Buffering", "no");
+  res.flushHeaders?.();
+  let sent = 0;
+  const flush = () => {
+    while (sent < job.events.length && !res.destroyed) {
+      const { event, data } = job.events[sent++];
+      res.write(`event: ${event}\ndata: ${JSON.stringify(data)}\n\n`);
+    }
+    if (job.done && sent >= job.events.length) stop();
+  };
+  const ping = setInterval(() => { if (!res.destroyed) res.write(": ping\n\n"); }, 10000);
+  function stop() { clearInterval(ping); job.listeners.delete(flush); if (!res.writableEnded) res.end(); finish(); }
+  job.listeners.add(flush);
+  res.on?.("close", () => { clearInterval(ping); job.listeners.delete(flush); finish(); });
+  flush();
+  return closed;
+}
 function send(res, status, data) {
   res.statusCode = status;
   res.setHeader("Content-Type", "application/json");
@@ -51,6 +84,13 @@ export async function academic(
   }
   const action = b?.action,
     p = b?.payload;
+  if (action === "feedback-resume") {
+    for (const [k, j] of jobs) if (now() - j.created > JOB_TTL) jobs.delete(k);
+    const job = JOB_ID.test(p?.jobId || "") ? jobs.get(p.jobId) : null;
+    if (!job || job.owner !== caller.id)
+      return send(res, 404, { error: "Este feedback não está mais disponível. Envie o caso de novo.", code: "JOB_GONE" });
+    return attach(res, job);
+  }
   let path, body, report;
   // Idioma da saída pedido pela interface (2Doctor internacional). Só en/es mudam algo.
   const idioma = ["en", "es"].includes(p?.idioma) ? p.idioma : undefined;
@@ -135,7 +175,7 @@ export async function academic(
   if (caller.charge && !(await caller.charge(action)))
     return send(res, 429, { error: "Você atingiu o limite de uso de hoje. Volte amanhã." });
   if (action === "feedback" && p?.stream === true)
-    return streamFeedback(res, caller, body, fetchImpl);
+    return streamFeedback(res, caller, body, fetchImpl, JOB_ID.test(p?.jobId || "") ? p.jobId : null, now);
   try {
     const r = await fetchImpl(API + caller.path(path), {
       method: body ? "POST" : "GET",
@@ -208,23 +248,25 @@ export function feedbackContext(f) {
 }
 // Feedback em duas partes, como no app Vytal: "essencial" (aba Raciocínio, ~30 s) chega
 // primeiro e aparece na tela; "complementar" (Semiologia, Manejo, Estudo, apresentação) vem depois.
-async function streamFeedback(res, caller, body, fetchImpl) {
-  const abort = new AbortController();
-  res.on?.("close", () => { if (!res.writableEnded) abort.abort(); });
-  res.statusCode = 200;
-  res.setHeader("Content-Type", "text/event-stream; charset=utf-8");
-  res.setHeader("Cache-Control", "no-store, no-transform");
-  res.setHeader("X-Accel-Buffering", "no");
-  res.flushHeaders?.();
-  const out = (event, data) => { if (!res.destroyed) res.write(`event: ${event}\ndata: ${JSON.stringify(data)}\n\n`); };
-  const ping = setInterval(() => { if (!res.destroyed) res.write(": ping\n\n"); }, 10000);
+async function streamFeedback(res, caller, body, fetchImpl, jobId, now = Date.now) {
+  for (const [k, j] of jobs) if (now() - j.created > JOB_TTL) jobs.delete(k);
+  const existing = jobId && jobs.get(jobId);
+  if (existing && existing.owner === caller.id) return attach(res, existing);
+  const job = { owner: caller.id, created: now(), events: [], done: false, listeners: new Set() };
+  if (jobId) jobs.set(jobId, job);
+  const done = attach(res, job);
+  await runFeedback(job, caller, body, fetchImpl);
+  return done;
+}
+// Roda sem depender da conexão da tela: só o tempo-limite de cada parte interrompe.
+async function runFeedback(job, caller, body, fetchImpl) {
   async function part(secao, payload) {
     const r = await fetchImpl(API + caller.path(`/estudante/case-feedback-${secao}-stream`), {
       method: "POST",
       headers: { ...caller.headers, "Content-Type": "application/json" },
       body: JSON.stringify(payload),
       redirect: "error",
-      signal: AbortSignal.any([abort.signal, AbortSignal.timeout(270000)]),
+      signal: AbortSignal.timeout(270000),
     });
     if (!r.ok) {
       let message = "Não foi possível gerar o feedback. Tente novamente.";
@@ -239,24 +281,20 @@ async function streamFeedback(res, caller, body, fetchImpl) {
   }
   let first = null;
   try {
-    out("progress", { secao: "essencial" });
+    emit(job, "progress", { secao: "essencial" });
     first = await part("essencial", body);
     if (first.erro_pii) throw Error(String(first.erro_pii));
-    out("part", { secao: "essencial", feedback: guidanceFeedback(first) });
-    out("progress", { secao: "complementar" });
+    emit(job, "part", { secao: "essencial", feedback: guidanceFeedback(first) });
+    emit(job, "progress", { secao: "complementar" });
     const rest = { ...body, contexto: feedbackContext(first) };
     // A 2ª parte é a maior e já falhou por truncamento em produção: uma nova tentativa antes de desistir.
     const second = await part("complementar", rest).catch((e) => {
-      if (abort.signal.aborted || [401, 403, 429].includes(e.status)) throw e;
+      if ([401, 403, 429].includes(e.status)) throw e;
       return part("complementar", rest);
     });
-    out("part", { secao: "complementar", feedback: guidanceFeedback(second) });
-    out("done", {});
+    emit(job, "part", { secao: "complementar", feedback: guidanceFeedback(second) });
+    emit(job, "done", {});
   } catch (e) {
-    if (!abort.signal.aborted)
-      out("error", { secao: first ? "complementar" : "essencial", error: e?.name === "TimeoutError" ? "O serviço não concluiu a tempo. Tente novamente." : e?.message || "Não foi possível gerar o feedback." });
-  } finally {
-    clearInterval(ping);
+    emit(job, "error", { secao: first ? "complementar" : "essencial", error: e?.name === "TimeoutError" ? "O serviço não concluiu a tempo. Tente novamente." : e?.message || "Não foi possível gerar o feedback." });
   }
-  res.end();
 }

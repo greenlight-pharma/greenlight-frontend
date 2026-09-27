@@ -97,4 +97,6 @@ export default {
 "Ainda não há casos compartilhados. Termine um caso clínico e toque em Compartilhar.":["No shared cases yet. Finish a clinical case and tap Share.","Aún no hay casos compartidos. Termina un caso clínico y toca Compartir."],
 "Abrir caso clínico":["Open clinical case","Abrir caso clínico"],
 'Os Resumos ENAMED estão disponíveis apenas no Brasil.':['ENAMED summaries are available only in Brazil.','Los resúmenes ENAMED están disponibles solo en Brasil.'],
+'Reconectando ao feedback…':['Reconnecting to your feedback…','Reconectando al feedback…'],
+'A conexão caiu durante o feedback. Tente novamente.':['The connection dropped during feedback. Try again.','La conexión se cayó durante el feedback. Inténtalo de nuevo.'],
 };

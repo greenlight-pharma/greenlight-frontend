@@ -29,6 +29,12 @@ import { useI18n } from "./doctor/I18n";
 import { detectAcademicPII } from "../shared/pii.mjs";
 import { fields, feedbackPayload, guidanceFeedback } from "../shared/case-contract.mjs";
 const empty = () => Object.fromEntries(fields.map(([k]) => [k, ""]));
+// Espera a aba voltar a ficar visível (o usuário voltou ao app).
+const untilVisible = () => new Promise((resolve) => {
+  if (typeof document === "undefined" || document.visibilityState === "visible") return resolve();
+  const on = () => { if (document.visibilityState === "visible") { document.removeEventListener("visibilitychange", on); resolve(); } };
+  document.addEventListener("visibilitychange", on);
+});
 export default function ClinicalCase(props) {
   const scope=props.session?.user?.progressScope||null;
   const [identity,setIdentity]=useState({scope,generation:0});
@@ -288,8 +294,9 @@ function ClinicalCaseBody({ session, onLogin, onProgress, onPendingChange, activ
     try {
       const c = new AbortController();
       cancel.current = c;
-      let merged = null, failure = null;
-      await academicStream("feedback", { fields: form, relato, idioma }, c.signal, (event, data) => {
+      let merged = null, failure = null, finished = false, started = false;
+      const onEvent = (event, data) => {
+        started = true;
         if (!alive.current) return;
         if (event === "part" && data.feedback && typeof data.feedback === "object") {
           merged = guidanceFeedback({ ...(merged || {}), ...data.feedback });
@@ -297,8 +304,24 @@ function ClinicalCaseBody({ session, onLogin, onProgress, onPendingChange, activ
           setStage("feedback");
           if (data.secao === "essencial") { setRestPending(true); setBusy("Gerando as demais seções…"); }
           else setRestPending(false);
-        } else if (event === "error") failure = data;
-      });
+        } else if (event === "error") { failure = data; finished = true; }
+        else if (event === "done") finished = true;
+      };
+      // No celular, trocar de app derruba a conexão, mas o feedback continua no servidor:
+      // ao voltar para a tela, retomamos pelo mesmo jobId (sem nova cobrança).
+      const jobId = crypto.randomUUID();
+      for (let attempt = 0; ; attempt++) {
+        try {
+          await academicStream(started ? "feedback-resume" : "feedback", started ? { jobId } : { fields: form, relato, idioma, jobId }, c.signal, onEvent);
+        } catch (e) {
+          if (e.name === "AbortError" || c.signal.aborted || e.status) throw e;
+        }
+        if (finished || !alive.current) break;
+        if (attempt >= 8) throw Error("A conexão caiu durante o feedback. Tente novamente.");
+        setBusy("Reconectando ao feedback…");
+        await untilVisible();
+        await new Promise((r) => setTimeout(r, Math.min(1000 * (attempt + 1), 4000)));
+      }
       if (!alive.current) return;
       setRestPending(false);
       if (!merged || !Object.keys(merged).length)

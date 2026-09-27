@@ -264,3 +264,26 @@ test("interface language reaches feedback, structure and quality; Portuguese sen
   assert.match(seen[2].body.historico.at(-1).content, /in English/);
   assert.equal(seen[3].body.idioma, undefined);
 });
+test("feedback keeps running if the phone drops the connection and can be resumed without a new charge", async () => {
+  const jobId = "8f14e45f-ceea-4671-8a3b-3c1d2e0f9a11";
+  const agora = fresh();
+  let charges = 0, closeFirst;
+  const first = { ...streamRes(), on(ev, fn) { if (ev === "close") closeFirst = fn; }, get destroyed() { return this.gone; } };
+  let release; const gate = new Promise((ok) => { release = ok; });
+  const fetchImpl = async (url) => {
+    if (url.includes("essencial")) return sse({ feedback: { resumo_caso: "R" } });
+    await gate; return sse({ feedback: { referencias: ["Ref"] } });
+  };
+  const running = academic(req("feedback", { fields: f, relato: story, stream: true, jobId }), first, { now: agora, fetchImpl, identify: async () => ({ id: "u1", headers: {}, path: (x) => x, charge: async () => (++charges, true) }), allow: () => true });
+  await new Promise((r) => setTimeout(r, 20));
+  first.gone = true; closeFirst?.();               // troca de app: a aba perde a conexão
+  release();                                        // o servidor termina a 2ª parte mesmo assim
+  await running;
+  const again = streamRes();
+  await academic(req("feedback-resume", { jobId }), again, { now: agora, identify: async () => ({ id: "u1", headers: {}, path: (x) => x, charge: async () => (++charges, true) }), allow: () => true });
+  assert.deepEqual(events(again.out).map((e) => e.event), ["progress", "part", "progress", "part", "done"]);
+  assert.equal(charges, 1);
+  const other = streamRes(); other.end = function (t) { this.data = JSON.parse(t); this.ended = true; };
+  await academic(req("feedback-resume", { jobId }), other, { now: agora, identify: async () => ({ id: "u2", headers: {}, path: (x) => x }), allow: () => true });
+  assert.equal(other.statusCode, 404);
+});
