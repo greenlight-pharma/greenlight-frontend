@@ -1,6 +1,6 @@
 {
  "meta": {
-  "gerado_em": "2026-09-27T15:05+00:00",
+  "gerado_em": "2026-09-28T18:04+00:00",
   "gerado_por": "scripts/governo/agentes/agente_noticias.py",
   "janela_dias": 90,
   "fontes": [
@@ -30,14 +30,14 @@
     "url": "https://www.gov.br/planalto/pt-br/acompanhe-o-planalto/noticias/RSS"
    }
   ],
-  "total_artigos": 1354,
-  "artigos_com_no": 388,
-  "novos_nesta_rodada": 25,
+  "total_artigos": 1394,
+  "artigos_com_no": 402,
+  "novos_nesta_rodada": 47,
   "artigos_por_fonte": {
-   "agenciabrasil": 337,
-   "senado": 634,
-   "camara": 350,
-   "planalto": 29,
+   "agenciabrasil": 360,
+   "senado": 645,
+   "camara": 355,
+   "planalto": 30,
    "stf": 4
   },
   "ordem": "peso igual por fonte; contagem real de matérias",
@@ -45,207 +45,207 @@
  },
  "resumo": [
   {
-   "texto": "O Supremo Tribunal Federal condenou o ex-deputado Eduardo Bolsonaro a um ano de detenção e multa de R$ 80 mil por difamação contra a deputada Tabata Amaral, por 7 votos a 3.",
+   "texto": "Associações do setor de apostas pediram ao Supremo Tribunal Federal a suspensão da medida provisória que proibiu as bets, enquanto o Ministério da Justiça e Segurança Pública derrubou 506 sites de apostas online.",
+   "artigo_id": "n-0ff8cf8340",
+   "no_id": "stf"
+  },
+  {
+   "texto": "O plenário do Supremo Tribunal Federal condenou o ex-deputado Eduardo Bolsonaro a um ano de detenção e multa de R$ 80 mil por difamação da deputada Tabata Amaral.",
    "artigo_id": "n-1ec5baa3be",
    "no_id": "stf"
   },
   {
-   "texto": "O Conselho Superior do Ministério Público Federal rejeitou, por 5 votos a 4, a abertura de investigação contra o procurador-geral da República, Paulo Gonet, mantendo-o à frente do caso Banco Master.",
+   "texto": "O Conselho Superior do Ministério Público Federal rejeitou a abertura de investigação contra o procurador-geral da República, Paulo Gonet, e o manteve à frente do caso Banco Master.",
    "artigo_id": "n-2922609f76",
    "no_id": "mpf"
   },
   {
-   "texto": "O Ministério da Fazenda publicou portaria em edição extra do Diário Oficial da União que mantém a subvenção de R$ 2,12 por litro ao óleo diesel.",
+   "texto": "O Ministério da Fazenda publicou portaria que mantém a subvenção de R$ 2,12 por litro ao óleo diesel.",
    "artigo_id": "n-70b8b8c1d9",
    "no_id": "mf"
-  },
-  {
-   "texto": "A Agência Nacional de Energia Elétrica informou que a conta de luz volta à bandeira verde em outubro, após cinco meses de bandeira amarela.",
-   "artigo_id": "n-1800d0f8f8",
-   "no_id": "aneel"
   }
  ],
  "ranking": {
   "orgaos": [
    {
     "id": "stf",
-    "artigos": 57,
-    "peso": 36.362333480876664,
-    "ultima": "2026-09-26T16:55+00:00"
+    "artigos": 59,
+    "peso": 37.148220329730314,
+    "ultima": "2026-09-28T16:09+00:00"
    },
    {
     "id": "tse",
-    "artigos": 48,
-    "peso": 31.299335327619715,
-    "ultima": "2026-09-26T21:56+00:00"
+    "artigos": 53,
+    "peso": 33.90306219747425,
+    "ultima": "2026-09-28T13:49:00+00:00"
    },
    {
     "id": "camara",
     "artigos": 50,
-    "peso": 21.356466876971616,
+    "peso": 21.612403100775182,
     "ultima": "2026-09-25T12:23:00+00:00"
    },
    {
     "id": "congresso",
-    "artigos": 40,
-    "peso": 18.87779133274405,
-    "ultima": "2026-09-25T16:14:00+00:00"
-   },
-   {
-    "id": "caixa",
-    "artigos": 18,
-    "peso": 14.46409495548961,
-    "ultima": "2026-09-27T14:54+00:00"
+    "artigos": 43,
+    "peso": 20.672567965935134,
+    "ultima": "2026-09-28T17:59+00:00"
    },
    {
     "id": "pf",
-    "artigos": 20,
-    "peso": 13.812627657284068,
-    "ultima": "2026-09-26T00:47+00:00"
+    "artigos": 22,
+    "peso": 14.984599483204134,
+    "ultima": "2026-09-28T16:52+00:00"
+   },
+   {
+    "id": "caixa",
+    "artigos": 19,
+    "peso": 14.714444444444448,
+    "ultima": "2026-09-28T10:45+00:00"
    },
    {
     "id": "prf",
     "artigos": 7,
-    "peso": 13.782864526324863,
+    "peso": 13.59780361757106,
     "ultima": "2026-09-17T13:36+00:00"
    },
    {
     "id": "anvisa",
     "artigos": 15,
-    "peso": 11.27070293111956,
+    "peso": 10.943181570040398,
     "ultima": "2026-09-27T11:55+00:00"
    },
    {
     "id": "inss",
     "artigos": 17,
-    "peso": 10.816587855357628,
+    "peso": 10.846534556174257,
     "ultima": "2026-09-25T22:25+00:00"
    },
    {
     "id": "inep",
     "artigos": 12,
-    "peso": 9.64272997032641,
+    "peso": 9.293333333333335,
     "ultima": "2026-09-25T17:58+00:00"
    },
    {
     "id": "mte",
     "artigos": 1,
-    "peso": 9.337931034482759,
+    "peso": 9.293333333333333,
     "ultima": "2026-08-12T21:09:00+00:00"
    },
    {
     "id": "inpe",
     "artigos": 1,
-    "peso": 9.337931034482759,
+    "peso": 9.293333333333333,
     "ultima": "2026-08-06T22:13:00+00:00"
    },
    {
     "id": "ms",
     "artigos": 13,
-    "peso": 8.910718282756287,
+    "peso": 8.70989991629363,
     "ultima": "2026-09-27T11:55+00:00"
    },
    {
     "id": "ibge",
     "artigos": 11,
-    "peso": 8.462737646144774,
+    "peso": 8.176692506459949,
     "ultima": "2026-09-25T14:28+00:00"
    },
    {
     "id": "mec",
     "artigos": 13,
-    "peso": 8.187701841260333,
+    "peso": 8.014599483204137,
     "ultima": "2026-09-25T17:58+00:00"
    },
    {
     "id": "tst",
     "artigos": 12,
-    "peso": 7.730725958574651,
+    "peso": 7.593259089420245,
     "ultima": "2026-09-27T14:54+00:00"
    },
    {
     "id": "anp",
     "artigos": 11,
-    "peso": 7.303596621035219,
+    "peso": 7.161011027404741,
     "ultima": "2026-09-25T20:44+00:00"
    },
    {
     "id": "petrobras",
     "artigos": 10,
-    "peso": 6.906313828642035,
+    "peso": 6.717855297157625,
     "ultima": "2026-09-26T15:33+00:00"
    },
    {
     "id": "mpf",
     "artigos": 9,
-    "peso": 6.8556159844237055,
+    "peso": 6.627803617571061,
     "ultima": "2026-09-25T21:11+00:00"
    },
    {
     "id": "agu",
     "artigos": 8,
-    "peso": 6.052055153563171,
+    "peso": 5.853359173126616,
     "ultima": "2026-09-24T23:21+00:00"
    },
    {
     "id": "tcu",
     "artigos": 11,
-    "peso": 5.768024102604563,
+    "peso": 5.803133165920589,
     "ultima": "2026-09-23T21:51+00:00"
+   },
+   {
+    "id": "cvm",
+    "artigos": 7,
+    "peso": 5.432018779342724,
+    "ultima": "2026-09-27T18:52+00:00"
    },
    {
     "id": "stj",
     "artigos": 7,
-    "peso": 5.188801232410141,
+    "peso": 5.100730065145395,
     "ultima": "2026-09-22T00:00+00:00"
-   },
-   {
-    "id": "cvm",
-    "artigos": 6,
-    "peso": 4.791518440016957,
-    "ultima": "2026-09-25T21:11+00:00"
    },
    {
     "id": "cnj",
     "artigos": 6,
-    "peso": 4.444933491842103,
+    "peso": 4.304470284237727,
     "ultima": "2026-09-25T21:11+00:00"
    },
    {
     "id": "senacon",
     "artigos": 5,
-    "peso": 4.017804154302671,
+    "peso": 3.8722222222222227,
     "ultima": "2026-09-25T12:27+00:00"
    },
    {
     "id": "correios",
     "artigos": 4,
-    "peso": 3.214243323442137,
+    "peso": 3.097777777777778,
     "ultima": "2026-09-25T00:35+00:00"
    },
    {
     "id": "aeronautica",
     "artigos": 4,
-    "peso": 3.214243323442137,
+    "peso": 3.097777777777778,
     "ultima": "2026-09-24T00:19+00:00"
    },
    {
     "id": "anac",
     "artigos": 5,
-    "peso": 2.858663129193117,
+    "peso": 2.8565407431670127,
     "ultima": "2026-09-23T14:04+00:00"
-   },
-   {
-    "id": "aneel",
-    "artigos": 4,
-    "peso": 2.461380336799933,
-    "ultima": "2026-09-25T20:54+00:00"
    },
    {
     "id": "bndes",
     "artigos": 4,
-    "peso": 2.4315337916536843,
+    "peso": 2.424292681151509,
     "ultima": "2026-09-17T17:19+00:00"
+   },
+   {
+    "id": "mf",
+    "artigos": 4,
+    "peso": 2.4133850129198966,
+    "ultima": "2026-09-28T14:51+00:00"
    }
   ],
   "pessoas": [
@@ -260,9 +260,9 @@
     "uf": null,
     "foto": "https://commons.wikimedia.org/wiki/Special:FilePath/Foto_oficial_de_Luiz_In%C3%A1cio_Lula_da_Silva_%28estreita%29.jpg?width=160",
     "foto_fonte": "https://www.wikidata.org/wiki/Q37181",
-    "artigos": 25,
-    "peso": 24.452798003457204,
-    "ultima": "2026-09-26T15:15+00:00"
+    "artigos": 27,
+    "peso": 25.67563635040215,
+    "ultima": "2026-09-28T16:09+00:00"
    },
    {
     "id": "damares-alves",
@@ -276,7 +276,7 @@
     "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador6335.jpg",
     "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/6335",
     "artigos": 23,
-    "peso": 9.823974763406936,
+    "peso": 9.94170542635659,
     "ultima": "2026-09-21T19:30:00+00:00"
    },
    {
@@ -291,7 +291,7 @@
     "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador3830.jpg",
     "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/3830",
     "artigos": 20,
-    "peso": 9.295449737430845,
+    "peso": 9.32935400516796,
     "ultima": "2026-09-23T18:08+00:00"
    },
    {
@@ -306,7 +306,7 @@
     "foto": "https://www.camara.leg.br/internet/deputado/bandep/160674.jpg",
     "foto_fonte": "https://www.camara.leg.br/deputados/160674",
     "artigos": 11,
-    "peso": 6.084762505633168,
+    "peso": 6.167144884812754,
     "ultima": "2026-09-08T14:44:00+00:00"
    },
    {
@@ -321,7 +321,7 @@
     "foto": "https://commons.wikimedia.org/wiki/Special:FilePath/Nunes_Marques%2C_February_2025_%28cropped%29.jpg?width=160",
     "foto_fonte": "https://www.wikidata.org/wiki/Q99831978",
     "artigos": 8,
-    "peso": 5.67562366024207,
+    "peso": 5.511162790697676,
     "ultima": "2026-09-26T00:25+00:00"
    },
    {
@@ -336,23 +336,8 @@
     "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador825.jpg",
     "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/825",
     "artigos": 12,
-    "peso": 5.1255520504731855,
+    "peso": 5.1869767441860475,
     "ultima": "2026-09-21T19:30:00+00:00"
-   },
-   {
-    "id": "paulo-gonet",
-    "nome": "Paulo Gonet",
-    "nome_completo": "Paulo Gonet",
-    "cargo": "Procurador(a)-Geral da República · MPU",
-    "no_id": "mpu",
-    "poder": "essencial",
-    "partido": null,
-    "uf": null,
-    "foto": null,
-    "foto_fonte": null,
-    "artigos": 7,
-    "peso": 4.872062829381535,
-    "ultima": "2026-09-25T21:11+00:00"
    },
    {
     "id": "omar-aziz",
@@ -366,8 +351,23 @@
     "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador5525.jpg",
     "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/5525",
     "artigos": 11,
-    "peso": 4.698422712933754,
+    "peso": 4.754728682170543,
     "ultima": "2026-09-02T23:20:00+00:00"
+   },
+   {
+    "id": "paulo-gonet",
+    "nome": "Paulo Gonet",
+    "nome_completo": "Paulo Gonet",
+    "cargo": "Procurador(a)-Geral da República · MPU",
+    "no_id": "mpu",
+    "poder": "essencial",
+    "partido": null,
+    "uf": null,
+    "foto": null,
+    "foto_fonte": null,
+    "artigos": 7,
+    "peso": 4.736718346253231,
+    "ultima": "2026-09-25T21:11+00:00"
    },
    {
     "id": "flavio-bolsonaro",
@@ -381,7 +381,7 @@
     "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador5894.jpg",
     "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/5894",
     "artigos": 7,
-    "peso": 4.495631336060433,
+    "peso": 4.39452196382429,
     "ultima": "2026-09-21T12:40+00:00"
    },
    {
@@ -396,7 +396,7 @@
     "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador345.jpg",
     "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/345",
     "artigos": 10,
-    "peso": 4.271293375394322,
+    "peso": 4.322480620155039,
     "ultima": "2026-09-25T18:03:00+00:00"
    },
    {
@@ -411,7 +411,7 @@
     "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador5376.jpg",
     "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/5376",
     "artigos": 10,
-    "peso": 4.271293375394322,
+    "peso": 4.322480620155039,
     "ultima": "2026-09-23T18:20:00+00:00"
    },
    {
@@ -426,7 +426,7 @@
     "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador5352.jpg",
     "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/5352",
     "artigos": 10,
-    "peso": 4.271293375394322,
+    "peso": 4.322480620155039,
     "ultima": "2026-09-14T16:27:00+00:00"
    },
    {
@@ -441,7 +441,7 @@
     "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador5979.jpg",
     "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/5979",
     "artigos": 9,
-    "peso": 3.84416403785489,
+    "peso": 3.8902325581395347,
     "ultima": "2026-09-10T18:45:00+00:00"
    },
    {
@@ -456,7 +456,7 @@
     "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador5990.jpg",
     "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/5990",
     "artigos": 9,
-    "peso": 3.84416403785489,
+    "peso": 3.8902325581395347,
     "ultima": "2026-09-04T21:56:00+00:00"
    },
    {
@@ -471,7 +471,7 @@
     "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador6009.jpg",
     "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/6009",
     "artigos": 8,
-    "peso": 3.4170347003154578,
+    "peso": 3.457984496124031,
     "ultima": "2026-09-23T18:51:00+00:00"
    },
    {
@@ -486,7 +486,7 @@
     "foto": "https://commons.wikimedia.org/wiki/Special:FilePath/Luiz_Edson_Fachin-12-05.2015.jpg?width=160",
     "foto_fonte": "https://www.wikidata.org/wiki/Q10320705",
     "artigos": 5,
-    "peso": 3.264941167660467,
+    "peso": 3.187829457364341,
     "ultima": "2026-09-25T22:25+00:00"
    },
    {
@@ -501,7 +501,7 @@
     "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador4770.jpg",
     "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/4770",
     "artigos": 7,
-    "peso": 2.9899053627760255,
+    "peso": 3.025736434108527,
     "ultima": "2026-09-25T21:09:00+00:00"
    },
    {
@@ -516,7 +516,7 @@
     "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador5917.jpg",
     "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/5917",
     "artigos": 7,
-    "peso": 2.9899053627760255,
+    "peso": 3.025736434108527,
     "ultima": "2026-09-02T19:51:00+00:00"
    },
    {
@@ -531,7 +531,7 @@
     "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador5732.jpg",
     "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/5732",
     "artigos": 5,
-    "peso": 2.8288165840468684,
+    "peso": 2.8674484113986245,
     "ultima": "2026-09-02T16:46:00+00:00"
    },
    {
@@ -546,7 +546,7 @@
     "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador6338.jpg",
     "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/6338",
     "artigos": 6,
-    "peso": 2.562776025236593,
+    "peso": 2.5934883720930233,
     "ultima": "2026-09-10T18:45:00+00:00"
    },
    {
@@ -561,7 +561,7 @@
     "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador475.jpg",
     "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/475",
     "artigos": 6,
-    "peso": 2.562776025236593,
+    "peso": 2.5934883720930233,
     "ultima": "2026-09-01T22:31:00+00:00"
    },
    {
@@ -576,8 +576,23 @@
     "foto": "https://www.camara.leg.br/internet/deputado/bandep/74161.jpg",
     "foto_fonte": "https://www.camara.leg.br/deputados/74161",
     "artigos": 5,
-    "peso": 2.4822316358720147,
+    "peso": 2.514344360738072,
     "ultima": "2026-09-01T19:56:00+00:00"
+   },
+   {
+    "id": "camilo-santana",
+    "nome": "Camilo Santana",
+    "nome_completo": "Camilo Sobreira de Santana",
+    "cargo": "Senador, CE",
+    "no_id": "senado",
+    "poder": "legislativo",
+    "partido": "PT",
+    "uf": "CE",
+    "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador6336.jpg",
+    "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/6336",
+    "artigos": 5,
+    "peso": 2.1612403100775195,
+    "ultima": "2026-09-28T14:52:00+00:00"
    },
    {
     "id": "nelsinho-trad",
@@ -591,27 +606,440 @@
     "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador5985.jpg",
     "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/5985",
     "artigos": 5,
-    "peso": 2.135646687697161,
+    "peso": 2.1612403100775195,
     "ultima": "2026-09-22T14:16:00+00:00"
-   },
-   {
-    "id": "esperidiao-amin",
-    "nome": "Esperidião Amin",
-    "nome_completo": "Esperidião Amin Helou Filho",
-    "cargo": "Senador, SC",
-    "no_id": "senado",
-    "poder": "legislativo",
-    "partido": "PP",
-    "uf": "SC",
-    "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador22.jpg",
-    "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/22",
-    "artigos": 5,
-    "peso": 2.135646687697161,
-    "ultima": "2026-09-11T19:48:00+00:00"
    }
   ]
  },
  "artigos": [
+  {
+   "id": "n-069ef3ebea",
+   "titulo": "Congresso Nacional tem novo site para agendar visitas guiadas",
+   "url": "https://agenciabrasil.ebc.com.br/geral/noticia/2026-09/congresso-nacional-tem-novo-site-para-agendar-visitas-guiadas",
+   "data": "2026-09-28T17:59+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [
+    "congresso"
+   ],
+   "pessoas": [],
+   "resumo": "A partir desta segunda-feira (28), entrou no ar o novo site do Programa Visite o Congresso Nacional. A ferramenta possibilita o agendamento da visita guiada ao prédio público, em Brasília, às segundas, quintas, sextas, sábados, domingos e feriados, das 9h às 17h. “Do hotel, o visitante pode já entrar no site e marcar o horário que esteja disponível e ver o que ele pode fazer em Brasília para além da visita ao Congresso”, conta Daniel Pinto, coordenador-geral da Secretaria de Relações Públicas do Senado. >> Clique aqui e acesse o site para agendar a visita Cada visita dura em média cerca de 50 "
+  },
+  {
+   "id": "n-6ad7105140",
+   "titulo": "Áudio: CCJ deve votar projeto que classifica desaparecimentos para agilizar buscas",
+   "url": "https://www12.senado.leg.br/noticias/audios/2026/09/ccj-deve-votar-projeto-que-classifica-desaparecimentos-para-agilizar-buscas",
+   "data": "2026-09-28T17:56:00+00:00",
+   "fonte": "senado",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "Está pronto para votação na Comissão de Constituição e Justiça (CCJ) do Senado um projeto de lei que divide os casos de pessoas desaparecidas em três categorias: voluntário, involuntário e forçado (PL 306/2025). Aprovada na Comissão de Direitos Humanos (CDH) em julho, a proposta deve levar a respostas mais rápidas e adequadas a cada um dos mais de 84 mil registros anuais de desaparecimentos no país."
+  },
+  {
+   "id": "n-72996b81c4",
+   "titulo": "Congresso passa a ter agendamento prévio para visitação",
+   "url": "https://www12.senado.leg.br/noticias/materias/2026/09/28/congresso-passa-a-ter-agendamento-previo-para-visitacao",
+   "data": "2026-09-28T17:52:00+00:00",
+   "fonte": "senado",
+   "nos": [
+    "congresso"
+   ],
+   "pessoas": [],
+   "resumo": "Quem quiser visitar o Congresso Nacional deve fazer o agendamento pela internet a partir desta segunda-feira (28). O novo sistema permite escolher antecipadamente o dia e o horário da visita guiada. A medida também pretende reduzir o tempo de espera nos dias de maior movimento. O agendamento deve ser feito pelo portal Visite o Congresso. O visitante escolhe a data e o horário, informa os dados pessoais e recebe um código QR de confirmação. Na chegada ao Palácio do Congresso Nacional, em Brasília, é necessário apresentar documento de identidade com foto e o código de confirmação para fazer o ch"
+  },
+  {
+   "id": "n-ea34300f9e",
+   "titulo": "Policial é preso em Cajamar, na Grande SP, por suspeita de feminicídio",
+   "url": "https://agenciabrasil.ebc.com.br/direitos-humanos/noticia/2026-09/policial-e-preso-em-cajamar-na-grande-sp-por-suspeita-de-feminicidio",
+   "data": "2026-09-28T17:52+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "O policial penal Felipe Arthur Bugni, de 40 anos, foi preso na noite deste domingo (27) suspeito de matar a esposa Aline Alves Bugni, de 31 anos, dentro de uma casa na cidade de Cajamar, na região metropolitana de São Paulo. Aline e Felipe eram casados havia cerca de dez anos e tinham uma filha de 9 anos. Segundo a Secretaria Estadual de Segurança Pública de São Paulo (SSP-SP), a morte foi constatada no local por uma equipe médica. Notícias relacionadas: Fragmentação de dados dificulta prevenção de feminicídios. Justiça do Rio condena homem a 42 anos de prisão por feminicídio. SP: laudo descar"
+  },
+  {
+   "id": "n-4250593a39",
+   "titulo": "Rio: operação policial na Maré deixa um morto e 10 feridos",
+   "url": "https://agenciabrasil.ebc.com.br/direitos-humanos/noticia/2026-09/rio-operacao-policial-na-mare-deixa-um-morto-e-10-feridos",
+   "data": "2026-09-28T17:37+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "Uma operação da Polícia Militar nas comunidades do Timbau e Baixa do Sapateiro, no Conjunto de Favelas da Maré, na zona norte do Rio de Janeiro, deixou 10 homens feridos, entre eles um PM, e um morto. Todos foram levados para o Hospital Federal de Bonsucesso. Conforme o hospital, uma vítima tem estado grave. Durante a ação, dois ônibus com alunos da Escola Eleva que iam para uma excursão escolar foram sequestrados por criminosos e usados como barricada para atrapalhar a atuação dos policiais no local. Depois da atuação de policiais militares, os alunos foram transferidos para outros ônibus e s"
+  },
+  {
+   "id": "n-ba7d72703b",
+   "titulo": "Ex-presidente José Sarney segue internado em hospital de São Paulo",
+   "url": "https://agenciabrasil.ebc.com.br/politica/noticia/2026-09/ex-presidente-jose-sarney-segue-internado-em-hospital-de-sao-paulo",
+   "data": "2026-09-28T17:25+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "O ex-presidente da República, José Sarney, de 96 anos, continua internado no Hospital Sírio-Libanês, na capital paulista. Ele deu entrada no hospital na última quinta-feira (24) para fazer um check-up após receber um diagnóstico de pneumonia. Segundo o hospital, o quadro de saúde de Sarney é o mesmo de quinta-feira, quando foi divulgado o último boletim médico informando que ele havia sido internado para avaliação clínica e continuidade do tratamento de uma pneumonia bacteriana. O quadro clínico no ex-presidente é estável. Notícias relacionadas: Sarney é internado no Sírio-Libanês para tratar "
+  },
+  {
+   "id": "n-7ea04c11d8",
+   "titulo": "PF prende candidato de extrema direita por depredar patrimônio da UnB",
+   "url": "https://agenciabrasil.ebc.com.br/geral/noticia/2026-09/pf-prende-candidato-de-extrema-direita-por-depredar-patrimonio-da-unb",
+   "data": "2026-09-28T16:52+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [
+    "pf"
+   ],
+   "pessoas": [],
+   "resumo": "A Universidade de Brasília (UnB) divulgou nota de repúdio contra “atos de violência e depredação de patrimônio público” que teriam sido praticados por um candidato de extrema direita no campus universitário. Segundo a UnB, Wilker Leão, candidato a deputado federal pelo Novo, foi preso em flagrante pela Polícia Federal, após depredar pinturas em muro do Instituto de Artes, acompanhado de apoiadores que teriam agredido estudantes no local. Notícias relacionadas: Estudante é expulso da UnB por gravar aulas e debochar de professores. Extremistas que ameaçaram estudantes da UnB suspendem ato em cam"
+  },
+  {
+   "id": "n-56639bf15e",
+   "titulo": "Semana começa com termômetros a 40°C no Centro-Oeste, Sudeste e Sul",
+   "url": "https://agenciabrasil.ebc.com.br/meio-ambiente/noticia/2026-09/semana-comeca-com-termometros-40degc-no-centro-oeste-sudeste-e-sul",
+   "data": "2026-09-28T16:30+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [
+    "inmet"
+   ],
+   "pessoas": [],
+   "resumo": "Cidades do interior do Centro-Oeste, Sudeste e Sul do Brasil podem registrar temperaturas superiores a 40°C neste início de semana, em decorrência da onda de calor que atinge boa parte do país desde sábado (26). De acordo com o Instituto Nacional de Meteorologia (Inmet) , o tempo começa a ficar mais ameno na quarta-feira (30), com o avanço de uma frente fria pelo sul do Brasil. Nesta segunda-feira (28), Mato Grosso do Sul deve concentrar algumas das maiores temperaturas, principalmente em áreas do oeste e noroeste, mas o calor intenso também deve atingir cidades de outros estados. Entre as loc"
+  },
+  {
+   "id": "n-5cb630fb6d",
+   "titulo": "Preço do petróleo sobe, após Trump rejeitar proposta de paz do Irã",
+   "url": "https://agenciabrasil.ebc.com.br/internacional/noticia/2026-09/preco-do-petroleo-sobe-apos-trump-rejeitar-proposta-de-paz-do-ira",
+   "data": "2026-09-28T16:21+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "Os eira principais índices de Wall Street caíram nesta segunda-feira (28) depois que o presidente dos Estados Unidos (EUA), Donald Trump, rejeitou proposta iraniana para pôr fim ao conflito no Oriente Médio, o que levou a um aumento nos preços do petróleo bruto e reacendeu os temores de inflação , elevando os rendimentos dos Treasuries - títulos de dívida emitidos pelo governo norte-americano para captar recursos no mercado Em compensação, a Nvidia (empresa de tecnologia dos Estados Unidos que cria chips de computador avançados) registrava alta de 3,2%, depois de anunciar autorização de recomp"
+  },
+  {
+   "id": "n-0ff8cf8340",
+   "titulo": "Associações de jogos acionam STF contra MP que proibiu apostas online",
+   "url": "https://agenciabrasil.ebc.com.br/justica/noticia/2026-09/associacoes-de-jogos-acionam-stf-contra-mp-que-proibiu-apostas-online",
+   "data": "2026-09-28T16:09+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [
+    "stf"
+   ],
+   "pessoas": [
+    "luiz-inacio-lula-da-silva"
+   ],
+   "resumo": "A Associação Nacional de Jogos e Loterias (ANJL) e o Instituto Brasileiro de Jogo Responsável (IBJR) pediram nesta segunda-feira (28) ao Supremo Tribunal Federal (STF) a suspensão da medida provisória que vedou as bets no Brasil. A MP foi assinada pelo presidente Luiz Inácio Lula da Silva na sexta-feira (25). A MP proibiu em todo território nacional a exploração, a oferta, a intermediação e a publicidade de apostas de quotas fixas, as chamadas bets. As plataformas já estão impedidas de receber novas apostas. Notícias relacionadas: Governo monitora rede de divulgação de bets e derruba 506 sites"
+  },
+  {
+   "id": "n-0c12c866fc",
+   "titulo": "Medida provisória cria programa Desenrola 3.0 para renegociar R$ 150 bilhões em dívidas",
+   "url": "https://www.camara.leg.br/noticias/1306974-medida-provisoria-cria-programa-desenrola-3-0-para-renegociar-r-150-bilhoes-em-dividas",
+   "data": "2026-09-28T15:46+00:00",
+   "fonte": "camara",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "Texto já está em vigor, mas precisa ser aprovado pela Câmara e pelo Senado para virar lei"
+  },
+  {
+   "id": "n-98ee16d686",
+   "titulo": "Áudio: Lei cria Universidade Federal da Fronteira Norte em Oiapoque, no Amapá",
+   "url": "https://www12.senado.leg.br/noticias/audios/2026/09/lei-cria-universidade-federal-da-fronteira-norte-em-oiapoque-no-amapa",
+   "data": "2026-09-28T15:21:00+00:00",
+   "fonte": "senado",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "Foi publicada na última sexta-feira (25) a Lei 15.520, de 2026, que cria cria a Universidade Federal da Fronteira Norte, que terá sede no município de Oiapoque, no Amapá, próximo à fronteira com a Guiana Francesa. Ouça o áudio."
+  },
+  {
+   "id": "n-28b712bf9e",
+   "titulo": "Desenrola Brasil 3.0 já está em vigor; veja como funciona",
+   "url": "https://www12.senado.leg.br/noticias/materias/2026/09/28/desenrola-brasil-3-0-ja-esta-em-vigor-veja-como-funciona",
+   "data": "2026-09-28T14:59:00+00:00",
+   "fonte": "senado",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "Pessoas físicas com dívidas em atraso poderão renegociá-las por meio do Desenrola Brasil 3.0, criado por meio da Medida Provisória (MPV) 1.393/2026. Publicado pelo Poder Executivo em edição extra do Diário Oficial da União (DOU) de sexta-feira (25), o texto autoriza a União a comprar carteiras de dívidas de instituições financeiras e de outras empresas credoras, com desconto mínimo de 90%, para depois oferecer condições de pagamento aos devedores. A nova modalidade do programa poderá funcionar até 30 de junho de 2028. Pela regra geral, poderão entrar nas carteiras dívidas de pessoas físicas co"
+  },
+  {
+   "id": "n-49562c954f",
+   "titulo": "Áudio: Lei transforma Cefets de MG e do RJ em universidades federais",
+   "url": "https://www12.senado.leg.br/noticias/audios/2026/09/lei-transforma-cefets-de-mg-e-do-rj-em-universidades-federais",
+   "data": "2026-09-28T14:52:00+00:00",
+   "fonte": "senado",
+   "nos": [],
+   "pessoas": [
+    "camilo-santana"
+   ],
+   "resumo": "Aprovada no Congresso, está em vigor a Lei 15.521/2026 que transforma em universidades federais os Centros de Educação Federal Tecnológica (Cefets) de Minas Gerais e do Rio de Janeiro. No Senado, o senador Camilo Santana (PT-CE) foi o relator do projeto (PL 4.952/2026) que deu origem à lei. Para ele, a conversão dessas instituições em universidades representa medida compatível com sua evolução institucional e com a complexidade das atividades atualmente desenvolvidas."
+  },
+  {
+   "id": "n-cea0aac3da",
+   "titulo": "Governo monitora rede de divulgação de bets e derruba 506 sites",
+   "url": "https://agenciabrasil.ebc.com.br/justica/noticia/2026-09/governo-monitora-rede-de-divulgacao-de-bets-e-derruba-506-sites",
+   "data": "2026-09-28T14:51+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [
+    "mjsp",
+    "mf"
+   ],
+   "pessoas": [],
+   "resumo": "Uma força-tarefa do governo federal derrubou 506 sites com indícios de oferta irregular de apostas online depois da edição da medida provisória (MP) que proibiu as bets no Brasil. Uma rede para divulgação de apostas online com 212 mil usuários no Telegram também é monitorada. O Ministério da Justiça e Segurança Pública (MJSP) informou que ampliou o monitoramento do mercado de apostas online no ambiente digital depois da publicação da MP do fim das bets por meio de força-tarefa entre a pasta e o Ministério da Fazenda (MF). Notícias relacionadas: Saiba como as bets adoeceram e endividaram os bra"
+  },
+  {
+   "id": "n-5616c43595",
+   "titulo": "Eleições 2026: veja o que é fato sobre o voto para o Senado",
+   "url": "https://www12.senado.leg.br/noticias/materias/2026/09/28/eleicoes-2026-veja-o-que-e-fato-sobre-o-voto-para-o-senado",
+   "data": "2026-09-28T14:43:00+00:00",
+   "fonte": "senado",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "Nas eleições de domingo (4), cada eleitor terá dois votos para senador, que devem ser dados a nomes diferentes. Na urna, as duas escolhas para o Senado são a terceira e a quarta da sequência de votação, depois dos votos para deputado federal e deputado estadual ou distrital. Os candidatos a senador são identificados por números de três dígitos e concorrem com dois suplentes. Veja como será a votação e o que é preciso saber antes de ir à urna. Por que são dois votos para o Senado em 2026? Cada estado e o Distrito Federal são representados por três senadores, com mandato de oito anos. As vagas s"
+  },
+  {
+   "id": "n-f957434bcb",
+   "titulo": "Déficit nas contas externas soma US$ 5,1 bilhões em agosto",
+   "url": "https://agenciabrasil.ebc.com.br/economia/noticia/2026-09/deficit-nas-contas-externas-soma-us-51-bilhoes-em-agosto",
+   "data": "2026-09-28T14:05+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "O déficit em transações correntes do Brasil somou US$ 5,1 bilhões em agosto deste ano, informou nesta segunda-feira (28) o Banco Central (BC). O resultado ficou acima do déficit de US$ 3,8 bilhões registrado no mesmo mês de 2025. De acordo com as estatísticas do setor externo, o aumento do déficit ocorreu apesar da melhora da balança comercial, em razão da ampliação dos gastos líquidos com serviços e das remessas de lucros e dividendos ao exterior. Notícias relacionadas: Mercado eleva projeção de inflação para 4,99% e reduz PIB. Fazenda mantém subsídio de R$ 2,12 ao óleo diesel. Saiba como fun"
+  },
+  {
+   "id": "n-2da5d82a0d",
+   "titulo": "MP proíbe bets e determina encerramento das operações em 30 dias",
+   "url": "https://www12.senado.leg.br/noticias/materias/2026/09/28/mp-proibe-bets-e-determina-encerramento-das-operacoes-em-30-dias",
+   "data": "2026-09-28T13:51:00+00:00",
+   "fonte": "senado",
+   "nos": [
+    "congresso"
+   ],
+   "pessoas": [],
+   "resumo": "Começou a tramitar no Congresso Nacional a medida provisória que proíbe a exploração, a oferta, a intermediação e a publicidade de apostas de quota fixa em todo o país. O texto foi publicado na sexta-feira (25) e prevê a extinção, em 30 dias, das autorizações concedidas às empresas que atualmente operam nesse mercado. A MP também estabelece regras para a devolução dos recursos dos apostadores, proíbe publicidade e patrocínio das bets e cria mecanismos para bloquear sites, aplicativos e transações financeiras relacionados às apostas. A medida já está em vigor, mas precisa ser analisada no prazo"
+  },
+  {
+   "id": "n-8e5fb05332",
+   "titulo": "Vídeo: Eleições 2026 | E-título poderá ser baixado no dia da eleição",
+   "url": "https://www12.senado.leg.br/noticias/videos/2026/09/eleicoes-2026-e-titulo-podera-ser-baixado-no-dia-da-eleicao",
+   "data": "2026-09-28T13:49:00+00:00",
+   "fonte": "senado",
+   "nos": [
+    "tse"
+   ],
+   "pessoas": [],
+   "resumo": "O eleitor vai poder baixar o e-título no dia da votação. Em eleições anteriores, o download e o primeiro acesso ao aplicativo eram suspensos, para evitar a sobrecarga. Este ano, o TSE reforçou a infraestrutura e preparou uma operação específica para manter o serviço disponível e dar segurança no uso do aplicativo em larga escala. A novidade, anunciada pelo Tribunal Superior Eleitoral (TSE), vale para o primeiro e o segundo turnos."
+  },
+  {
+   "id": "n-1e01969997",
+   "titulo": "Protestos em Madri entram no 3º dia após despejo de aposentada",
+   "url": "https://agenciabrasil.ebc.com.br/internacional/noticia/2026-09/protestos-em-madri-entram-no-3o-dia-apos-despejo-de-aposentada",
+   "data": "2026-09-28T13:49+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "Manifestantes iniciaram nesta segunda-feira (28) o terceiro dia acampados em frente à sede do governo regional de Madri para se opor ao despejo de uma idosa e exigir maior proteção aos inquilinos diante da escassez de moradias e do aumento vertiginoso dos aluguéis. Os protestos se intensificaram na semana passada depois que a polícia despejou Maricarmen Abascal, de 87 anos, em uma maca, de sua casa em Madri, onde morava há mais de sete décadas, devido a uma ordem de despejo obtida pelo fundo de investimento que comprou seu apartamento. Notícias relacionadas: Pessoas com deficiência vivem em pi"
+  },
+  {
+   "id": "n-b57c58791b",
+   "titulo": "Medida provisória proíbe o funcionamento de bets no Brasil",
+   "url": "https://www.camara.leg.br/noticias/1306939-medida-provisoria-proibe-o-funcionamento-de-bets-no-brasil",
+   "data": "2026-09-28T13:43+00:00",
+   "fonte": "camara",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "Texto já está em vigor, mas precisa ser aprovado pela Câmara e pelo Senado para virar lei"
+  },
+  {
+   "id": "n-6ab99f7b43",
+   "titulo": "Maior poder do Congresso aumenta importância do voto para o Legislativo, diz especialista",
+   "url": "https://www.camara.leg.br/noticias/1306941-maior-poder-do-congresso-aumenta-importancia-do-voto-para-o-legislativo-diz-especialista",
+   "data": "2026-09-28T13:39+00:00",
+   "fonte": "camara",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "Cientista político defende que eleitor acompanhe propostas, emendas e atuação dos parlamentares"
+  },
+  {
+   "id": "n-2e70270f1c",
+   "titulo": "Projeto cria cashback para compras nacionais de até 50 dólares",
+   "url": "https://www.camara.leg.br/noticias/1304409-projeto-cria-cashback-para-compras-nacionais-de-ate-50-dolares",
+   "data": "2026-09-28T13:25+00:00",
+   "fonte": "camara",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "O objetivo compensar as isenções tributárias de importações de pequeno valor"
+  },
+  {
+   "id": "n-83367878d9",
+   "titulo": "Mercado eleva projeção de inflação para 4,99% e reduz PIB",
+   "url": "https://agenciabrasil.ebc.com.br/economia/noticia/2026-09/mercado-aumenta-projecao-de-inflacao-para-499-e-reduz-pib",
+   "data": "2026-09-28T13:22+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "O mercado financeiro elevou a expectativa para a inflação e reduziu a estimativa de crescimento da economia em 2026. Os dados constam do boletim Focus, divulgado nesta segunda-feira (28) pelo Banco Central. A projeção para o Índice Nacional de Preços ao Consumidor Amplo (IPCA) passou de 4,92% para 4,99%. Para 2027, a estimativa sobe de 4,3% para 4,31%, enquanto a para 2028 foi mantida em 3,8%. Notícias relacionadas: MP das Bets: veja o que muda e saiba datas para devolução de valores. Fazenda mantém subsídio de R$ 2,12 ao óleo diesel. Saiba como funcionará compra de dívidas pela União. As esti"
+  },
+  {
+   "id": "n-3c50306e75",
+   "titulo": "Inscrição de trabalhos no Fórum de Educação Ambiental termina dia 30",
+   "url": "https://agenciabrasil.ebc.com.br/meio-ambiente/noticia/2026-09/inscricao-de-trabalhos-no-forum-de-educacao-ambiental-termina-dia-30",
+   "data": "2026-09-28T12:51+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [
+    "mma"
+   ],
+   "pessoas": [],
+   "resumo": "As inscrições para o 10º Fórum Brasileiro de Educação Ambiental (FBEA) terminam na próxima quarta-feira (30) para estudantes e profissionais que vão apresentar trabalho sobre o tema. O encontro ocorrerá de 23 a 28 de novembro deste ano, em Brasília. Poderão ser inscritas pesquisas, relatos de experiência, práticas educativas, projetos, ações comunitárias e tecnologias sociais de educação ambiental que cumpram os requisitos publicados no edital de submissão , pelo Ministério do Meio Ambiente (MMA). Notícias relacionadas: Dia da Educação Ambiental destaca iniciativas de conscientização. Amazônia"
+  },
+  {
+   "id": "n-009401c533",
+   "titulo": "Áudio: SC permite voto em trânsito para eleitoras sob medida protetiva",
+   "url": "https://www12.senado.leg.br/noticias/audios/2026/09/sc-permite-voto-em-transito-para-eleitoras-sob-medida-protetiva",
+   "data": "2026-09-28T12:22:00+00:00",
+   "fonte": "senado",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "As eleitoras de Santa Catarina com medidas protetivas poderão mudar provisoriamente seus locais de votação. A Justiça Eleitoral de Santa Catarina, em parceria com a Polícia Civil, entendeu que a Transferência Temporária de Eleitores — o voto em trânsito — poderia dar maior proteção a essas mulheres. Elas poderão votar em seções diferentes daquelas conhecidas por seus agressores, ainda que dentro do mesmo município."
+  },
+  {
+   "id": "n-c5db3e3013",
+   "titulo": "Confira a agenda dos presidenciáveis nesta segunda-feira (28)",
+   "url": "https://agenciabrasil.ebc.com.br/politica/noticia/2026-09/confira-agenda-dos-presidenciaveis-nesta-segunda-feira-28",
+   "data": "2026-09-28T12:13+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "Na última semana de campanha política, os candidatos à Presidência intensificam as agendas com entrevistas para veículos de imprensa e atos em todo o país. Ronaldo Caiado (PSD) Faz caminhada no bairro Jardim Guanabara, em Goiânia. Notícias relacionadas: Saiba como baixar o e-Título para votar. Samara Martins (UP) Às 12h, faz panfletagem na Fábrica Lorenzetti, na Mooca, em São Paulo. Às 18h, participa de ato pela legalização do aborto no Masp. Às 20h, participa em evento na Universidade Zumbi dos Palmares em São Paulo. Augusto Cury (Avante) Às 10h, tem reunião com representantes do Banco Brades"
+  },
+  {
+   "id": "n-f198e68eb5",
+   "titulo": "Projeto assegura em lei vacina contra bronquiolite em crianças pelo SUS",
+   "url": "https://www.camara.leg.br/noticias/1304465-projeto-assegura-em-lei-vacina-contra-bronquiolite-em-criancas-pelo-sus",
+   "data": "2026-09-28T11:51+00:00",
+   "fonte": "camara",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "Projeto transformar a vacinação contra a vírus sincicial respiratório em política pública permanente"
+  },
+  {
+   "id": "n-f5410e4bf0",
+   "titulo": "Áudio: TSE libera download do e-Título nos dias das eleições",
+   "url": "https://www12.senado.leg.br/noticias/audios/2026/09/tse-libera-download-do-e-titulo-nos-dias-das-eleicoes",
+   "data": "2026-09-28T11:48:00+00:00",
+   "fonte": "senado",
+   "nos": [
+    "tse"
+   ],
+   "pessoas": [],
+   "resumo": "O Tribunal Superior Eleitoral (TSE) liberou o download e a ativação do aplicativo e-Título no dia da votação, tanto no primeiro como no segundo turno. Antes, o aplicativo só podia ser baixado até um dia antes do pleito. O e-Título contém o documento de identificação eleitoral digital, informa o local de votação e serve para justificar a ausência na eleição."
+  },
+  {
+   "id": "n-74a0844a86",
+   "titulo": "Vídeo: Governo proíbe bets no Brasil; MP segue para análise do Congresso",
+   "url": "https://www12.senado.leg.br/noticias/videos/2026/09/governo-proibe-bets-no-brasil-mp-segue-para-analise-do-congresso",
+   "data": "2026-09-28T11:46:00+00:00",
+   "fonte": "senado",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "Na última sexta (25), o governou publicou a medida provisória que proíbe o funcionamento de bets, cassinos virtuais e a veiculação de publicidade do setor. A a MP 1.393/2026 entrou em vigor imediatamente e deu prazos para o encerramento das atividades e saque dos valores pelos usuários, enquanto um projeto de lei, encaminhado pelo governo ao Congresso, tipifica os crimes para quem descumprir as regras."
+  },
+  {
+   "id": "n-890f942e52",
+   "titulo": "Eleição e inteligência artificial é o tema do Caminhos da Reportagem",
+   "url": "https://agenciabrasil.ebc.com.br/geral/noticia/2026-09/eleicao-e-inteligencia-artificial-e-o-tema-do-caminhos-da-reportagem",
+   "data": "2026-09-28T11:02+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [
+    "tse"
+   ],
+   "pessoas": [],
+   "resumo": "O impacto da inteligência artificial (IA) nas eleições é tema do programa Caminhos da Reportagem que vai ao ar nesta segunda-feira (28), às 23h30, na TV Brasil e no canal da emissora pública no YouTube . O uso dessa tecnologia é um dos focos de atenção do Tribunal Superior Eleitoral (TSE), que estabeleceu regras para utilização nas propagandas eleitorais. Inteligência artificial é a capacidade de sistemas e máquinas simularem habilidades humanas, como aprender, analisar informações, tomar decisões e gerar respostas. Atualmente, vídeos, áudios e imagens gerados por IA tornam cada vez mais difíc"
+  },
+  {
+   "id": "n-898ef7a4a3",
+   "titulo": "Beneficiários com NIS de final 8 recebem Bolsa Família de setembro",
+   "url": "https://agenciabrasil.ebc.com.br/economia/noticia/2026-09/beneficiarios-com-nis-de-final-8-recebem-bolsa-familia-de-setembro",
+   "data": "2026-09-28T10:45+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [
+    "caixa"
+   ],
+   "pessoas": [],
+   "resumo": "A Caixa Econômica Federal paga nesta segunda-feira (28) a parcela de setembro do Bolsa Família aos beneficiários com Número de Inscrição Social (NIS) de final 8. Neste mês, 19,29 milhões de família serão beneficiadas, com o valor médio do benefício em R$ 678,18. Os moradores de 179 municípios de sete estados receberam o crédito no último dia 17, independentemente do número final do NIS. O pagamento unificado beneficiou localidades em situação de emergência ou em estado de calamidade pública nos seguintes estados: Acre (todos os 22 municípios), Amazonas (3 municípios), Paraíba (31), Rio Grande "
+  },
+  {
+   "id": "n-6c8c5393de",
+   "titulo": "Santa Catarina tem oito candidatos a governador, veja quais são",
+   "url": "https://agenciabrasil.ebc.com.br/politica/noticia/2026-09/santa-catarina-tem-oito-candidatos-governador-veja-quais-sao",
+   "data": "2026-09-28T10:25+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "Oito candidatos concorrem ao governo de Santa Catarina nas eleições deste ano. Um total de 5.725.753 eleitores estão aptos a votar. Desse total, 52% são mulheres e 48% homens. Entre os 20,73% dos eleitores que declaram cor/raça, 22,59% são pardos, 71,27% são brancos e 5,37% são pretos. O primeiro turno acontece no dia 4 de outubro , quando serão votados candidatos a deputado federal, estadual, dois senadores, governador e presidente da República, esses dois últimos incluindo seus vices. A chapa de senador é composta por um titular e dois suplentes. Notícias relacionadas: Saiba quais são as atr"
+  },
+  {
+   "id": "n-003ae818c8",
+   "titulo": "Conheça os sete candidatos ao governo do Rio Grande do Sul",
+   "url": "https://agenciabrasil.ebc.com.br/politica/noticia/2026-09/conheca-os-sete-candidatos-ao-governo-do-rio-grande-do-sul",
+   "data": "2026-09-28T10:15+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "Sete candidatos concorrem ao governo do Rio Grande do Sul nas eleições deste ano. Um total de 8.526.233 eleitores estão aptos a votar, dos quais 53% são mulheres e 47% homens. Entre os 16,09% dos eleitores que declaram cor/raça, 17,1% são pardos, 74,37% são brancos e 7,79% são pretos. Notícias relacionadas: Saiba quais são as atribuições dos governadores e vice-governadores. O primeiro turno acontece no dia 4 de outubro , quando serão votados candidatos a deputado federal, estadual, dois senadores, governador e presidente da República, esses dois últimos incluindo seus vices. A chapa de senado"
+  },
+  {
+   "id": "n-0130212168",
+   "titulo": "Confira quem são os candidatos a governador do Paraná",
+   "url": "https://agenciabrasil.ebc.com.br/politica/noticia/2026-09/confira-quem-sao-os-candidatos-governador-do-parana",
+   "data": "2026-09-28T10:05+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "Oito candidatos concorrem ao governo do Paraná nas eleições deste ano. Um total de 8.609.026 eleitores estão aptos a votar. Desse total, 53% são mulheres e 47% homens. Entre os 17,46% dos eleitores que declaram cor/raça, 32,57% são pardos, 60,54% são brancos e 5,04% são pretos, além de 1,08% amarelos e 0,41% indígenas. Notícias relacionadas: Saiba quais são as atribuições dos governadores e vice-governadores. O primeiro turno acontece no dia 4 de outubro , quando serão votados candidatos a deputado federal, estadual, dois senadores, governador e presidente da República, esses dois últimos incl"
+  },
+  {
+   "id": "n-73a422fd72",
+   "titulo": "Veja como foi o final de semana dos candidatos à presidência",
+   "url": "https://agenciabrasil.ebc.com.br/politica/noticia/2026-09/veja-como-foi-o-final-de-semana-dos-candidatos-presidencia",
+   "data": "2026-09-27T20:44+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [
+    "tse"
+   ],
+   "pessoas": [
+    "luiz-inacio-lula-da-silva"
+   ],
+   "resumo": "No último fim de semana antes do primeiro turno das eleições, no próximo domingo (4), os candidatos à Presidência da República priorizaram atividades nas ruas pelo país, com eventos como caminhadas e carreatas pelo interior e capitais. Veja abaixo detalhes das agendas no sábado (26) e no domingo (27): Leonardo Avalanche (PRTB) A agenda do candidato não foi divulgada. Lula (PT) Notícias relacionadas: Eleitor deve se antecipar na consulta a local de votação, alerta TSE. Eleições 2026: saiba em quantos candidatos votar e a ordem de votação . Quase 1 milhão de brasileiros no exterior poderão votar"
+  },
+  {
+   "id": "n-aed65e5b14",
+   "titulo": "Dino derruba decisão de Mendonça e libera post sobre Nossa Senhora",
+   "url": "https://agenciabrasil.ebc.com.br/justica/noticia/2026-09/dino-derruba-decisao-de-mendonca-e-libera-post-sobre-nossa-senhora",
+   "data": "2026-09-27T18:52+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [
+    "tse",
+    "stf",
+    "pf",
+    "cvm"
+   ],
+   "pessoas": [],
+   "resumo": "O ministro Flávio Dino, do Supremo Tribunal Federal (STF), atendeu a um pedido do humorista Antonio Tabet para restaurar uma postagem no X sobre Nossa Senhora Aparecida, que havia sido removida por decisão do ministro André Mendonça, do Tribunal Superior Eleitoral (TSE). O humorista veiculou uma foto de imagem religiosa com a legenda: “a família miliciana odeia tanto mulher preta, que resolveu atacar Nossa Senhora Aparecida”. Notícias relacionadas: Dino manda Polícia Federal investigar atuação da CVM no caso Master. Mendonça rejeita ação contra reajuste do Bolsa Família . “A mensagem não trazi"
+  },
+  {
+   "id": "n-26391ade05",
+   "titulo": "Pacientes com alopecia areata contam trajetória para reaver autoestima",
+   "url": "https://agenciabrasil.ebc.com.br/saude/noticia/2026-09/pacientes-com-alopecia-areata-contam-trajetoria-para-reaver-autoestima",
+   "data": "2026-09-27T18:40+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "Uma doença imprevisível. É assim que a médica dermatologista da Sociedade Brasileira de Dermatologia (SBD), Enilde Borges Costa, define a alopecia areata. No mês dedicado à doença, que acomete cerca de 2% da população mundial, segundo a SBD, a Agência Brasil traz histórias de pacientes que convivem com a queda de cabelo. A alopecia areata é uma doença autoimune, caracterizada pelo ataque do organismo ao folículo piloso, e provoca episódios de queda de cabelo que podem se manifestar em qualquer etapa da vida . É comum, inclusive, que ocorram de forma cíclica: seguidos do crescimento do cabelo n"
+  },
+  {
+   "id": "n-fcdf98e472",
+   "titulo": "Saiba como as bets adoeceram e endividaram os brasileiros",
+   "url": "https://agenciabrasil.ebc.com.br/politica/noticia/2026-09/saiba-como-bets-adoeceram-e-endividaram-os-brasileiros",
+   "data": "2026-09-27T16:37+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "“Um grande alívio.” Foi assim que Kaio*, de 42 anos, definiu o sentimento ao ouvir a notícia, na última sexta (25), de que as operações das empresas de apostas on-line, as bets, foram proibidas no Brasil . Ele diz que tenta recomeçar a vida depois de perder o carro, a casa e o emprego por causa das dívidas de jogo. Hoje, Kaio mora sozinho em um dormitório em uma cidade do interior de Goiás. No local, ele se abriga, todas as noites, no chão. Temendo pela segurança, em função de dívidas contraídas com agiotas, preferiu se afastar e ficar longe da família. Ele reconhece que, nos últimos seis anos"
+  },
   {
    "id": "n-1b023fd2a6",
    "titulo": "Mega-Sena acumula para R$ 52 milhões; veja os números sorteados",
@@ -636,6 +1064,16 @@
    ],
    "pessoas": [],
    "resumo": "É em um quintal com coqueiro, goiabeira, bananeiras, uma paineira-rosa e um raro pé de abiu que vivem as 14 famílias do Quilombo Urbano Ferreira Diniz. A comunidade fica na Glória, na zona sul do Rio de Janeiro, e foi tombada pelo Instituto do Patrimônio Histórico e Artístico Nacional (Iphan) . O local se tornou ponto de encontro dos amantes da tradicional feijoada da Tia Cida e também representa a resistência comunitária em meio à especulação imobiliária no bairro . Notícias relacionadas: Iphan tomba primeiro quilombo do RJ e revalida registros de patrimônio. Programa de Reforma Agrária inclu"
+  },
+  {
+   "id": "n-6d86377882",
+   "titulo": "Visita presidencial ao complexo hospitalar da Benemérita Sociedade Portuguesa Beneficente do Pará",
+   "url": "https://www.gov.br/planalto/pt-br/acompanhe-o-planalto/noticias/visita-presidencial-ao-complexo-hospitalar-da-benemerita-sociedade-portuguesa-beneficente-do-para",
+   "data": "2026-09-27T14:00:00+00:00",
+   "fonte": "planalto",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "Presidente da República conhecerá a nova estrutura do Hospital São João de Deus, que integra um dos maiores complexos da Região Amazônica e que presta atendimento a pacientes do SUS"
   },
   {
    "id": "n-8d42d685c9",

@@ -1,6 +1,6 @@
 {
  "meta": {
-  "gerado_em": "2026-09-27T15:04+00:00",
+  "gerado_em": "2026-09-28T18:03+00:00",
   "gerado_por": "scripts/governo/agentes/agente_dou.py",
   "janela_dias": 120,
   "fonte": {
@@ -11,11 +11,56 @@
   "contagem": {
    "comando": 3,
    "alta": 39,
-   "outra": 377
+   "outra": 378
   },
-  "refinados_por_claude": 0
+  "refinados_por_claude": 0,
+  "estrutura_verificada_em": "2026-09-28"
  },
  "mudancas": [
+  {
+   "id": "siorg-9cc0600cc8d2",
+   "data": "2026-09-28",
+   "publicado_em": "2026-09-28",
+   "tipo": "estrutura",
+   "subtipo": "criacao",
+   "cargo": null,
+   "entra": null,
+   "sai": null,
+   "interino": false,
+   "a_pedido": false,
+   "orgao": "Universidade Federal da Fronteira Norte",
+   "sigla": "UFFN",
+   "pai": "Ministério da Educação",
+   "no_id": null,
+   "nivel": "alta",
+   "ato": "SIORG, unidade 668873",
+   "assinante": "SIORG (MGI)",
+   "fonte": "https://estruturaorganizacional.dados.gov.br/doc/unidade-organizacional/668873",
+   "fonte_nome": "SIORG",
+   "origem": "siorg",
+   "resumo": "Universidade Federal da Fronteira Norte passa a constar na estrutura, vinculado a Ministério da Educação."
+  },
+  {
+   "id": "dou-16d77dfed8e1",
+   "data": "2026-09-25",
+   "publicado_em": "2026-09-28",
+   "tipo": "troca",
+   "cargo": "Chefe da Assessoria Especial de Assuntos Internacionais do Ministério do Empreendedorismo, da Microempresa e da Empresa de Pequeno Porte",
+   "codigo": "FCE 1.15.",
+   "entra": "Roseli Teixeira Alves",
+   "sai": "Luciana Rocha Mancini",
+   "interino": false,
+   "a_pedido": true,
+   "desde": null,
+   "no_id": "memp",
+   "nivel": "outra",
+   "ato": "Portaria nº 1.060, de 25/09/2026",
+   "assinante": "Casa Civil da Presidência da República",
+   "fonte": "https://www.in.gov.br/web/dou/-/portarias-de-25-de-setembro-de-2026-734869233",
+   "fonte_nome": "DOU, seção 2",
+   "origem": "dou",
+   "resumo": "Luciana Rocha Mancini deixa o cargo de Chefe da Assessoria Especial de Assuntos Internacionais do Ministério do Empreendedorismo, da Microempresa e da Empresa de Pequeno Porte; assume Roseli Teixeira Alves."
+  },
   {
    "id": "dou-1ae30fd9a79a",
    "data": "2026-09-24",
