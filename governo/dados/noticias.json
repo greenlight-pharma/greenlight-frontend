@@ -1,6 +1,6 @@
 {
  "meta": {
-  "gerado_em": "2026-09-28T18:04+00:00",
+  "gerado_em": "2026-09-29T16:27+00:00",
   "gerado_por": "scripts/governo/agentes/agente_noticias.py",
   "janela_dias": 90,
   "fontes": [
@@ -30,13 +30,13 @@
     "url": "https://www.gov.br/planalto/pt-br/acompanhe-o-planalto/noticias/RSS"
    }
   ],
-  "total_artigos": 1394,
-  "artigos_com_no": 402,
-  "novos_nesta_rodada": 47,
+  "total_artigos": 1437,
+  "artigos_com_no": 425,
+  "novos_nesta_rodada": 50,
   "artigos_por_fonte": {
-   "agenciabrasil": 360,
-   "senado": 645,
-   "camara": 355,
+   "agenciabrasil": 389,
+   "camara": 364,
+   "senado": 650,
    "planalto": 30,
    "stf": 4
   },
@@ -45,207 +45,207 @@
  },
  "resumo": [
   {
-   "texto": "Associações do setor de apostas pediram ao Supremo Tribunal Federal a suspensão da medida provisória que proibiu as bets, enquanto o Ministério da Justiça e Segurança Pública derrubou 506 sites de apostas online.",
-   "artigo_id": "n-0ff8cf8340",
+   "texto": "Começou a tramitar no Congresso Nacional a medida provisória que proíbe a exploração, oferta, intermediação e publicidade das apostas de quota fixa, com extinção das autorizações em 30 dias.",
+   "artigo_id": "n-2da5d82a0d",
+   "no_id": "congresso"
+  },
+  {
+   "texto": "O presidente do Tribunal Superior Eleitoral, Kassio Nunes Marques, enviou ofício ao presidente do Supremo Tribunal Federal, Edson Fachin, para reclamar de sobreposição de competência sobre decisões da Justiça Eleitoral.",
+   "artigo_id": "n-b5703c20bf",
+   "no_id": "tse"
+  },
+  {
+   "texto": "O ministro Cristiano Zanin, do Supremo Tribunal Federal, autorizou acesso gratuito aos sites da Justiça Eleitoral para usuários com franquia de dados esgotada nos dois turnos das eleições.",
+   "artigo_id": "n-b59e9995bc",
    "no_id": "stf"
   },
   {
-   "texto": "O plenário do Supremo Tribunal Federal condenou o ex-deputado Eduardo Bolsonaro a um ano de detenção e multa de R$ 80 mil por difamação da deputada Tabata Amaral.",
-   "artigo_id": "n-1ec5baa3be",
-   "no_id": "stf"
-  },
-  {
-   "texto": "O Conselho Superior do Ministério Público Federal rejeitou a abertura de investigação contra o procurador-geral da República, Paulo Gonet, e o manteve à frente do caso Banco Master.",
-   "artigo_id": "n-2922609f76",
-   "no_id": "mpf"
-  },
-  {
-   "texto": "O Ministério da Fazenda publicou portaria que mantém a subvenção de R$ 2,12 por litro ao óleo diesel.",
-   "artigo_id": "n-70b8b8c1d9",
-   "no_id": "mf"
+   "texto": "O Instituto Brasileiro de Geografia e Estatística informou que a taxa de desemprego ficou em 5,3% no trimestre encerrado em agosto, menor patamar da série iniciada em 2012.",
+   "artigo_id": "n-a154ed31a8",
+   "no_id": "ibge"
   }
  ],
  "ranking": {
   "orgaos": [
    {
     "id": "stf",
-    "artigos": 59,
-    "peso": 37.148220329730314,
-    "ultima": "2026-09-28T16:09+00:00"
+    "artigos": 67,
+    "peso": 42.13492330291811,
+    "ultima": "2026-09-29T15:54+00:00"
    },
    {
     "id": "tse",
-    "artigos": 53,
-    "peso": 33.90306219747425,
-    "ultima": "2026-09-28T13:49:00+00:00"
+    "artigos": 59,
+    "peso": 37.56326687194553,
+    "ultima": "2026-09-29T15:10+00:00"
    },
    {
     "id": "camara",
     "artigos": 50,
-    "peso": 21.612403100775182,
+    "peso": 22.10769230769232,
     "ultima": "2026-09-25T12:23:00+00:00"
    },
    {
     "id": "congresso",
-    "artigos": 43,
-    "peso": 20.672567965935134,
-    "ultima": "2026-09-28T17:59+00:00"
+    "artigos": 45,
+    "peso": 21.829133760840715,
+    "ultima": "2026-09-29T12:22:00+00:00"
+   },
+   {
+    "id": "caixa",
+    "artigos": 22,
+    "peso": 16.253984575835467,
+    "ultima": "2026-09-29T11:10+00:00"
    },
    {
     "id": "pf",
     "artigos": 22,
-    "peso": 14.984599483204134,
+    "peso": 14.474002768439785,
     "ultima": "2026-09-28T16:52+00:00"
-   },
-   {
-    "id": "caixa",
-    "artigos": 19,
-    "peso": 14.714444444444448,
-    "ultima": "2026-09-28T10:45+00:00"
    },
    {
     "id": "prf",
     "artigos": 7,
-    "peso": 13.59780361757106,
+    "peso": 13.716241249752818,
     "ultima": "2026-09-17T13:36+00:00"
-   },
-   {
-    "id": "anvisa",
-    "artigos": 15,
-    "peso": 10.943181570040398,
-    "ultima": "2026-09-27T11:55+00:00"
    },
    {
     "id": "inss",
     "artigos": 17,
-    "peso": 10.846534556174257,
+    "peso": 10.838452442159383,
     "ultima": "2026-09-25T22:25+00:00"
    },
    {
-    "id": "inep",
-    "artigos": 12,
-    "peso": 9.293333333333335,
-    "ultima": "2026-09-25T17:58+00:00"
+    "id": "anvisa",
+    "artigos": 15,
+    "peso": 10.539677900505662,
+    "ultima": "2026-09-27T11:55+00:00"
    },
    {
     "id": "mte",
     "artigos": 1,
-    "peso": 9.293333333333333,
+    "peso": 9.58,
     "ultima": "2026-08-12T21:09:00+00:00"
    },
    {
     "id": "inpe",
     "artigos": 1,
-    "peso": 9.293333333333333,
+    "peso": 9.58,
     "ultima": "2026-08-06T22:13:00+00:00"
+   },
+   {
+    "id": "ibge",
+    "artigos": 13,
+    "peso": 9.307963614791374,
+    "ultima": "2026-09-29T13:00+00:00"
+   },
+   {
+    "id": "inep",
+    "artigos": 12,
+    "peso": 8.86580976863753,
+    "ultima": "2026-09-25T17:58+00:00"
    },
    {
     "id": "ms",
     "artigos": 13,
-    "peso": 8.70989991629363,
+    "peso": 8.468715669934179,
     "ultima": "2026-09-27T11:55+00:00"
    },
    {
-    "id": "ibge",
-    "artigos": 11,
-    "peso": 8.176692506459949,
-    "ultima": "2026-09-25T14:28+00:00"
+    "id": "tst",
+    "artigos": 13,
+    "peso": 8.172052035368228,
+    "ultima": "2026-09-29T11:10+00:00"
    },
    {
     "id": "mec",
     "artigos": 13,
-    "peso": 8.014599483204137,
+    "peso": 7.824645441961635,
     "ultima": "2026-09-25T17:58+00:00"
    },
    {
-    "id": "tst",
-    "artigos": 12,
-    "peso": 7.593259089420245,
-    "ultima": "2026-09-27T14:54+00:00"
+    "id": "petrobras",
+    "artigos": 11,
+    "peso": 7.237001384219892,
+    "ultima": "2026-09-29T15:51+00:00"
+   },
+   {
+    "id": "agu",
+    "artigos": 10,
+    "peso": 7.091511172631994,
+    "ultima": "2026-09-28T21:23+00:00"
    },
    {
     "id": "anp",
     "artigos": 11,
-    "peso": 7.161011027404741,
+    "peso": 6.9910807084945885,
     "ultima": "2026-09-25T20:44+00:00"
    },
    {
-    "id": "petrobras",
-    "artigos": 10,
-    "peso": 6.717855297157625,
-    "ultima": "2026-09-26T15:33+00:00"
+    "id": "stj",
+    "artigos": 9,
+    "peso": 6.45417960959349,
+    "ultima": "2026-09-29T15:54+00:00"
    },
    {
     "id": "mpf",
     "artigos": 9,
-    "peso": 6.627803617571061,
+    "peso": 6.3526936919122,
     "ultima": "2026-09-25T21:11+00:00"
-   },
-   {
-    "id": "agu",
-    "artigos": 8,
-    "peso": 5.853359173126616,
-    "ultima": "2026-09-24T23:21+00:00"
    },
    {
     "id": "tcu",
     "artigos": 11,
-    "peso": 5.803133165920589,
+    "peso": 5.855169129071441,
     "ultima": "2026-09-23T21:51+00:00"
    },
    {
     "id": "cvm",
     "artigos": 7,
-    "peso": 5.432018779342724,
+    "peso": 5.222465323879205,
     "ultima": "2026-09-27T18:52+00:00"
    },
    {
-    "id": "stj",
-    "artigos": 7,
-    "peso": 5.100730065145395,
-    "ultima": "2026-09-22T00:00+00:00"
-   },
-   {
     "id": "cnj",
-    "artigos": 6,
-    "peso": 4.304470284237727,
-    "ultima": "2026-09-25T21:11+00:00"
+    "artigos": 7,
+    "peso": 4.875058730472611,
+    "ultima": "2026-09-29T15:54+00:00"
    },
    {
     "id": "senacon",
     "artigos": 5,
-    "peso": 3.8722222222222227,
+    "peso": 3.6940874035989713,
     "ultima": "2026-09-25T12:27+00:00"
+   },
+   {
+    "id": "senado",
+    "artigos": 4,
+    "peso": 3.158241758241758,
+    "ultima": "2026-09-29T14:59+00:00"
+   },
+   {
+    "id": "anatel",
+    "artigos": 4,
+    "peso": 2.955269922879177,
+    "ultima": "2026-09-28T23:12+00:00"
    },
    {
     "id": "correios",
     "artigos": 4,
-    "peso": 3.097777777777778,
+    "peso": 2.955269922879177,
     "ultima": "2026-09-25T00:35+00:00"
    },
    {
     "id": "aeronautica",
     "artigos": 4,
-    "peso": 3.097777777777778,
+    "peso": 2.955269922879177,
     "ultima": "2026-09-24T00:19+00:00"
    },
    {
     "id": "anac",
     "artigos": 5,
-    "peso": 2.8565407431670127,
+    "peso": 2.854839458741772,
     "ultima": "2026-09-23T14:04+00:00"
-   },
-   {
-    "id": "bndes",
-    "artigos": 4,
-    "peso": 2.424292681151509,
-    "ultima": "2026-09-17T17:19+00:00"
-   },
-   {
-    "id": "mf",
-    "artigos": 4,
-    "peso": 2.4133850129198966,
-    "ultima": "2026-09-28T14:51+00:00"
    }
   ],
   "pessoas": [
@@ -260,9 +260,9 @@
     "uf": null,
     "foto": "https://commons.wikimedia.org/wiki/Special:FilePath/Foto_oficial_de_Luiz_In%C3%A1cio_Lula_da_Silva_%28estreita%29.jpg?width=160",
     "foto_fonte": "https://www.wikidata.org/wiki/Q37181",
-    "artigos": 27,
-    "peso": 25.67563635040215,
-    "ultima": "2026-09-28T16:09+00:00"
+    "artigos": 30,
+    "peso": 27.793149919489252,
+    "ultima": "2026-09-29T00:37+00:00"
    },
    {
     "id": "damares-alves",
@@ -276,7 +276,7 @@
     "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador6335.jpg",
     "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/6335",
     "artigos": 23,
-    "peso": 9.94170542635659,
+    "peso": 10.16953846153846,
     "ultima": "2026-09-21T19:30:00+00:00"
    },
    {
@@ -291,8 +291,23 @@
     "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador3830.jpg",
     "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/3830",
     "artigos": 20,
-    "peso": 9.32935400516796,
+    "peso": 9.436404192208819,
     "ultima": "2026-09-23T18:08+00:00"
+   },
+   {
+    "id": "nunes-marques",
+    "nome": "Nunes Marques",
+    "nome_completo": "Nunes Marques",
+    "cargo": "Presidente · TSE",
+    "no_id": "tse",
+    "poder": "judiciario",
+    "partido": null,
+    "uf": null,
+    "foto": "https://commons.wikimedia.org/wiki/Special:FilePath/Nunes_Marques%2C_February_2025_%28cropped%29.jpg?width=160",
+    "foto_fonte": "https://www.wikidata.org/wiki/Q99831978",
+    "artigos": 11,
+    "peso": 7.533665018785839,
+    "ultima": "2026-09-29T15:54+00:00"
    },
    {
     "id": "hugo-motta",
@@ -306,23 +321,38 @@
     "foto": "https://www.camara.leg.br/internet/deputado/bandep/160674.jpg",
     "foto_fonte": "https://www.camara.leg.br/deputados/160674",
     "artigos": 11,
-    "peso": 6.167144884812754,
+    "peso": 6.25331868131868,
     "ultima": "2026-09-08T14:44:00+00:00"
    },
    {
-    "id": "nunes-marques",
-    "nome": "Nunes Marques",
-    "nome_completo": "Nunes Marques",
-    "cargo": "Presidente · TSE",
-    "no_id": "tse",
+    "id": "flavio-bolsonaro",
+    "nome": "Flávio Bolsonaro",
+    "nome_completo": "Flávio Nantes Bolsonaro",
+    "cargo": "Senador, RJ",
+    "no_id": "senado",
+    "poder": "legislativo",
+    "partido": "PL",
+    "uf": "RJ",
+    "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador5894.jpg",
+    "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/5894",
+    "artigos": 9,
+    "peso": 5.759366422780303,
+    "ultima": "2026-09-29T11:48+00:00"
+   },
+   {
+    "id": "edson-fachin",
+    "nome": "Luiz Edson Fachin",
+    "nome_completo": "Edson Fachin",
+    "cargo": "Presidente · STF",
+    "no_id": "stf",
     "poder": "judiciario",
     "partido": null,
     "uf": null,
-    "foto": "https://commons.wikimedia.org/wiki/Special:FilePath/Nunes_Marques%2C_February_2025_%28cropped%29.jpg?width=160",
-    "foto_fonte": "https://www.wikidata.org/wiki/Q99831978",
+    "foto": "https://commons.wikimedia.org/wiki/Special:FilePath/Luiz_Edson_Fachin-12-05.2015.jpg?width=160",
+    "foto_fonte": "https://www.wikidata.org/wiki/Q10320705",
     "artigos": 8,
-    "peso": 5.511162790697676,
-    "ultima": "2026-09-26T00:25+00:00"
+    "peso": 5.317212576626457,
+    "ultima": "2026-09-29T15:54+00:00"
    },
    {
     "id": "paulo-paim",
@@ -336,7 +366,7 @@
     "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador825.jpg",
     "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/825",
     "artigos": 12,
-    "peso": 5.1869767441860475,
+    "peso": 5.305846153846152,
     "ultima": "2026-09-21T19:30:00+00:00"
    },
    {
@@ -351,7 +381,7 @@
     "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador5525.jpg",
     "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/5525",
     "artigos": 11,
-    "peso": 4.754728682170543,
+    "peso": 4.863692307692306,
     "ultima": "2026-09-02T23:20:00+00:00"
    },
    {
@@ -366,23 +396,23 @@
     "foto": null,
     "foto_fonte": null,
     "artigos": 7,
-    "peso": 4.736718346253231,
+    "peso": 4.5783950959066635,
     "ultima": "2026-09-25T21:11+00:00"
    },
    {
-    "id": "flavio-bolsonaro",
-    "nome": "Flávio Bolsonaro",
-    "nome_completo": "Flávio Nantes Bolsonaro",
-    "cargo": "Senador, RJ",
+    "id": "leila-barros",
+    "nome": "Leila Barros",
+    "nome_completo": "Leila Gomes de Barros Rêgo",
+    "cargo": "Senadora, DF",
     "no_id": "senado",
     "poder": "legislativo",
-    "partido": "PL",
-    "uf": "RJ",
-    "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador5894.jpg",
-    "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/5894",
-    "artigos": 7,
-    "peso": 4.39452196382429,
-    "ultima": "2026-09-21T12:40+00:00"
+    "partido": "PDT",
+    "uf": "DF",
+    "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador5979.jpg",
+    "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/5979",
+    "artigos": 10,
+    "peso": 4.42153846153846,
+    "ultima": "2026-09-29T13:34:00+00:00"
    },
    {
     "id": "flavio-arns",
@@ -396,7 +426,7 @@
     "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador345.jpg",
     "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/345",
     "artigos": 10,
-    "peso": 4.322480620155039,
+    "peso": 4.42153846153846,
     "ultima": "2026-09-25T18:03:00+00:00"
    },
    {
@@ -411,7 +441,7 @@
     "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador5376.jpg",
     "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/5376",
     "artigos": 10,
-    "peso": 4.322480620155039,
+    "peso": 4.42153846153846,
     "ultima": "2026-09-23T18:20:00+00:00"
    },
    {
@@ -426,23 +456,8 @@
     "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador5352.jpg",
     "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/5352",
     "artigos": 10,
-    "peso": 4.322480620155039,
+    "peso": 4.42153846153846,
     "ultima": "2026-09-14T16:27:00+00:00"
-   },
-   {
-    "id": "leila-barros",
-    "nome": "Leila Barros",
-    "nome_completo": "Leila Gomes de Barros Rêgo",
-    "cargo": "Senadora, DF",
-    "no_id": "senado",
-    "poder": "legislativo",
-    "partido": "PDT",
-    "uf": "DF",
-    "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador5979.jpg",
-    "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/5979",
-    "artigos": 9,
-    "peso": 3.8902325581395347,
-    "ultima": "2026-09-10T18:45:00+00:00"
    },
    {
     "id": "carlos-viana",
@@ -456,7 +471,7 @@
     "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador5990.jpg",
     "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/5990",
     "artigos": 9,
-    "peso": 3.8902325581395347,
+    "peso": 3.979384615384614,
     "ultima": "2026-09-04T21:56:00+00:00"
    },
    {
@@ -471,23 +486,8 @@
     "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador6009.jpg",
     "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/6009",
     "artigos": 8,
-    "peso": 3.457984496124031,
+    "peso": 3.537230769230768,
     "ultima": "2026-09-23T18:51:00+00:00"
-   },
-   {
-    "id": "edson-fachin",
-    "nome": "Luiz Edson Fachin",
-    "nome_completo": "Edson Fachin",
-    "cargo": "Presidente · STF",
-    "no_id": "stf",
-    "poder": "judiciario",
-    "partido": null,
-    "uf": null,
-    "foto": "https://commons.wikimedia.org/wiki/Special:FilePath/Luiz_Edson_Fachin-12-05.2015.jpg?width=160",
-    "foto_fonte": "https://www.wikidata.org/wiki/Q10320705",
-    "artigos": 5,
-    "peso": 3.187829457364341,
-    "ultima": "2026-09-25T22:25+00:00"
    },
    {
     "id": "izalci-lucas",
@@ -501,7 +501,7 @@
     "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador4770.jpg",
     "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/4770",
     "artigos": 7,
-    "peso": 3.025736434108527,
+    "peso": 3.095076923076922,
     "ultima": "2026-09-25T21:09:00+00:00"
    },
    {
@@ -516,7 +516,7 @@
     "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador5917.jpg",
     "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/5917",
     "artigos": 7,
-    "peso": 3.025736434108527,
+    "peso": 3.095076923076922,
     "ultima": "2026-09-02T19:51:00+00:00"
    },
    {
@@ -531,7 +531,7 @@
     "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador5732.jpg",
     "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/5732",
     "artigos": 5,
-    "peso": 2.8674484113986245,
+    "peso": 2.9055824175824174,
     "ultima": "2026-09-02T16:46:00+00:00"
    },
    {
@@ -546,7 +546,7 @@
     "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador6338.jpg",
     "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/6338",
     "artigos": 6,
-    "peso": 2.5934883720930233,
+    "peso": 2.6529230769230763,
     "ultima": "2026-09-10T18:45:00+00:00"
    },
    {
@@ -561,7 +561,7 @@
     "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador475.jpg",
     "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/475",
     "artigos": 6,
-    "peso": 2.5934883720930233,
+    "peso": 2.6529230769230763,
     "ultima": "2026-09-01T22:31:00+00:00"
    },
    {
@@ -576,7 +576,7 @@
     "foto": "https://www.camara.leg.br/internet/deputado/bandep/74161.jpg",
     "foto_fonte": "https://www.camara.leg.br/deputados/74161",
     "artigos": 5,
-    "peso": 2.514344360738072,
+    "peso": 2.558175824175824,
     "ultima": "2026-09-01T19:56:00+00:00"
    },
    {
@@ -591,7 +591,7 @@
     "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador6336.jpg",
     "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/6336",
     "artigos": 5,
-    "peso": 2.1612403100775195,
+    "peso": 2.2107692307692304,
     "ultima": "2026-09-28T14:52:00+00:00"
    },
    {
@@ -606,12 +606,520 @@
     "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador5985.jpg",
     "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/5985",
     "artigos": 5,
-    "peso": 2.1612403100775195,
+    "peso": 2.2107692307692304,
     "ultima": "2026-09-22T14:16:00+00:00"
    }
   ]
  },
  "artigos": [
+  {
+   "id": "n-5b9f4486bf",
+   "titulo": "Fachin defende segurança e transparência na liberação de precatórios",
+   "url": "https://agenciabrasil.ebc.com.br/justica/noticia/2026-09/fachin-defende-seguranca-e-transparencia-na-liberacao-de-precatorios",
+   "data": "2026-09-29T15:54+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [
+    "cnj",
+    "stf",
+    "stj"
+   ],
+   "pessoas": [
+    "edson-fachin",
+    "nunes-marques"
+   ],
+   "resumo": "O presidente do Conselho Nacional de Justiça (CNJ) e do Supremo Tribunal Federal (STF), ministro Edson Fachin, defendeu nesta terça-feira (29) mais transparência no mercado secundário de precatórios. “O objetivo é muito simples, direto e importante: segurança, transparência e, ainda mais importante, rastreabilidade a um mercado que movimenta direitos”, afirmou Fachin em sessão do CNJ. Notícias relacionadas: Gilmar cobra medidas de STF e STJ contra irregularidade em precatórios. Nunes Marques cobra TREs por transporte público gratuito nas eleições. Fux suspende decisão de Dino que restabelecia "
+  },
+  {
+   "id": "n-80ee836683",
+   "titulo": "Petrobras fecha acordo para comprar gás dos EUA por mais de 20 anos",
+   "url": "https://agenciabrasil.ebc.com.br/economia/noticia/2026-09/petrobras-fecha-acordo-para-comprar-gas-dos-eua-por-mais-de-20-anos",
+   "data": "2026-09-29T15:51+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [
+    "petrobras"
+   ],
+   "pessoas": [],
+   "resumo": "A Petrobras fechou um contrato de longo prazo para comprar Gás Natural Liquefeito (GNL) dos Estados Unidos por um período de 22 anos. O anúncio foi feito pela petroleira brasileira nesta terça-feira (29) e é o segundo em um período de cerca de um mês. O GNL é o gás que passa pelo processo de resfriamento a ponto de se tornar líquido e ocupar volume 600 vezes menor (1/600), de forma que possa ser transportado por navios. Com isso, não precisa de gasoduto interligando comprador e vendedor. Notícias relacionadas: Fiscalização é reforçada para conter alta dos combustíveis. Fazenda mantém subsídio "
+  },
+  {
+   "id": "n-3f539ce4d3",
+   "titulo": "Governo Central registra déficit de R$ 13,6 bilhões em agosto",
+   "url": "https://agenciabrasil.ebc.com.br/economia/noticia/2026-09/governo-central-registra-deficit-de-r-136-bilhoes-em-agosto",
+   "data": "2026-09-29T15:30+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "O Governo Central registrou déficit primário de R$ 13,6 bilhões em agosto, informou nesta terça-feira (29) o Tesouro Nacional. O resultado foi melhor que o registrado em agosto de 2025, quando o saldo negativo ficou em R$ 15,5 bilhões. O desempenho também superou as projeções do mercado, que esperava déficit de R$ 16 bilhões. Notícias relacionadas: Governo cobra na Justiça gastos do SUS com tratamento de apostadores. Déficit nas contas externas soma US$ 5,1 bilhões em agosto. Em valores corrigidos pela inflação, a receita líquida cresceu 3,5% em relação a agosto de 2025, enquanto as despesas a"
+  },
+  {
+   "id": "n-3c0c85e1be",
+   "titulo": "Prêmio Jabuti anuncia semifinalistas da 68ª edição",
+   "url": "https://agenciabrasil.ebc.com.br/cultura/noticia/2026-09/premio-jabuti-anuncia-semifinalistas-da-68a-edicao",
+   "data": "2026-09-29T15:13+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "Os semifinalistas da 68ª edição do Prêmio Jabuti foram anunciados nesta terça-feira (29) pela Câmara Brasileira do Livro (CBL). A cerimônia de entrega dos prêmios será em 27 de outubro, na Sala São Paulo, em evento para convidados na capital paulista. Haverá transmissão ao vivo pelo canal da CBL no YouTube . Além do Livro do Ano, são 23 categorias, distribuídas em quatro eixos: Literatura, Não Ficção, Produção Editorial e Inovação. Notícias relacionadas: CBL: Bienal do Livro de São Paulo terá maior edição de sua história. Cerimônia em São Paulo revela vencedores do 3º Prêmio Jabuti Acadêmico. "
+  },
+  {
+   "id": "n-6dc67bcc5f",
+   "titulo": "Nunes Marques cobra TREs por transporte público gratuito nas eleições",
+   "url": "https://agenciabrasil.ebc.com.br/justica/noticia/2026-09/nunes-marques-cobra-tres-por-transporte-publico-gratuito-nas-eleicoes",
+   "data": "2026-09-29T15:10+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [
+    "tse"
+   ],
+   "pessoas": [
+    "nunes-marques"
+   ],
+   "resumo": "O presidente do Tribunal Superior Eleitoral (TSE), ministro Kassio Nunes Marques, cobrou dos presidentes dos 27 tribunais regionais eleitorais (TREs) providências para garantir o transporte público gratuito no primeiro turno da eleição presidencial, marcado para o próximo domingo (4). Em ofício, Nunes Marques orientou os TREs a se certificarem junto às prefeituras e aos governos estaduais e o Distrito Federal informaram à Justiça Eleitoral os itinerários, as modalidades e os horários do transporte gratuito. O prazo para o envio dessas informações terminou em 15 de agosto. Notícias relacionadas"
+  },
+  {
+   "id": "n-c36ddde888",
+   "titulo": "Eleições 2026: saiba como funcionam o voto em trânsito e a justificativa eleitoral",
+   "url": "https://www.camara.leg.br/noticias/1307174-eleicoes-2026-saiba-como-funcionam-o-voto-em-transito-e-a-justificativa-eleitoral",
+   "data": "2026-09-29T14:59+00:00",
+   "fonte": "camara",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "Eleitor fora do domicílio eleitoral poderá votar em trânsito se tiver solicitado a opção até 20 de agosto"
+  },
+  {
+   "id": "n-ac8d806207",
+   "titulo": "Lei torna futebol feminino prioridade na política de esporte",
+   "url": "https://www.camara.leg.br/noticias/1307201-lei-torna-futebol-feminino-prioridade-na-politica-de-esporte",
+   "data": "2026-09-29T14:59+00:00",
+   "fonte": "camara",
+   "nos": [
+    "senado"
+   ],
+   "pessoas": [],
+   "resumo": "Norma surgiu de projeto aprovado na Câmara dos Deputados e no Senado Federal"
+  },
+  {
+   "id": "n-6db1d8e612",
+   "titulo": "Gilmar cobra medidas de STF e STJ contra irregularidade em precatórios",
+   "url": "https://agenciabrasil.ebc.com.br/justica/noticia/2026-09/gilmar-cobra-medidas-de-stf-e-stj-contra-irregularidade-em-precatorios",
+   "data": "2026-09-29T14:35+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [
+    "stj",
+    "stf"
+   ],
+   "pessoas": [
+    "edson-fachin",
+    "luis-felipe-salomao"
+   ],
+   "resumo": "O ministro Gilmar Mendes, decano do Supremo Tribunal Federal (STF), enviou ofício ao presidente do STF, ministro Edson Fachin, e ao presidente do Superior Tribunal de Justiça (STJ), Luís Felipe Salomão, cobrando medidas contra irregularidades na expedição de precatórios. O documento é datado desta segunda-feira (28). Precatórios são dívidas geradas por decisões judiciais que tenham o Poder Público como parte perdedora. O pagamento de tais compromissos depende de questões orçamentárias e segue uma fila. Para adiantar os pagamentos, é comum que a parte vencedora venda com deságio o direito a rec"
+  },
+  {
+   "id": "n-106629a889",
+   "titulo": "Donos de propriedades rurais têm até esta quarta para declarar ITR",
+   "url": "https://agenciabrasil.ebc.com.br/economia/noticia/2026-09/donos-de-propriedades-rurais-tem-ate-esta-quarta-para-declarar-ITR",
+   "data": "2026-09-29T14:30+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "O prazo para entrega da Declaração do Imposto sobre a Propriedade Territorial Rural (DITR) 2026 termina nesta quarta-feira (30). Este ano, o preenchimento e envio do documento online está disponível desde o dia 10 de agosto no site da Receita Federal . A declaração é obrigatória para pessoas físicas e jurídicas que sejam proprietárias ou titulares do direito de uso de imóvel rural, exceto nos casos de imunidade ou isenção previstos em lei. Notícias relacionadas: Começa em agosto prazo para declarar imposto sobre propriedade rural. Donos de imóveis rurais com área superior a 100 hectares e empr"
+  },
+  {
+   "id": "n-1e047f78b4",
+   "titulo": "Eleições 2026: especialistas analisam desafios em habitação, saneamento e esporte",
+   "url": "https://www.camara.leg.br/noticias/1307184-eleicoes-2026-especialistas-analisam-desafios-em-habitacao-saneamento-e-esporte",
+   "data": "2026-09-29T14:15+00:00",
+   "fonte": "camara",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "Série de entrevistas da Rádio Câmara discute prioridades para o país nos próximos anos"
+  },
+  {
+   "id": "n-66f44bb840",
+   "titulo": "Juros para famílias sobem em agosto e inadimplência chega a 6%",
+   "url": "https://agenciabrasil.ebc.com.br/economia/noticia/2026-09/juros-para-familias-sobem-em-agosto-e-inadimplencia-chega-6",
+   "data": "2026-09-29T13:41+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "As famílias brasileiras continuaram enfrentando aumento dos juros, da inadimplência e do endividamento em agosto, segundo as Estatísticas Monetárias e de Crédito divulgadas nesta terça-feira (29) pelo Banco Central (BC). A taxa média de juros do crédito livre para pessoas físicas chegou a 61,7% ao ano, com alta de 1,4 ponto percentual (p.p.) em relação a julho; e de 2,9 p.p. na comparação com agosto do ano passado. Notícias relacionadas: BC reduz juros básicos para 13,75% ao ano. Mercado eleva projeção de inflação para 4,99% e reduz PIB. Prévia da inflação oficial de setembro fica em 0,70%, mo"
+  },
+  {
+   "id": "n-4592d995d3",
+   "titulo": "Sancionado repasse de loterias para Comitê Brasileiro de Clubes",
+   "url": "https://www12.senado.leg.br/noticias/materias/2026/09/29/sancionado-repasse-de-loterias-para-comite-brasileiro-de-clubes",
+   "data": "2026-09-29T13:34:00+00:00",
+   "fonte": "senado",
+   "nos": [],
+   "pessoas": [
+    "leila-barros"
+   ],
+   "resumo": "Foi sancionada a lei que transfere ao Comitê Brasileiro de Clubes (CBC) 0,01% da arrecadação de jogos de loteria federal, percentual que era destinado à Federação Nacional dos Clubes (Fenaclubes). Os recursos serão aplicados na formação de gestores de clubes esportivos. O texto foi publicado no Diário Oficial da União desta terça-feira (29). A Lei 15.523, de 2026, teve origem no PL 2.584/2025, aprovado no início de setembro no Plenário do Senado, com relatório da senadora Leila Barros (PDT-DF). A proposta altera a Lei das Loterias (Lei 13.756, de 2018) justamente para mudar o destinatário dess"
+  },
+  {
+   "id": "n-a154ed31a8",
+   "titulo": "Taxa de desemprego cai para 5,3%, a menor para o trimestre até agosto",
+   "url": "https://agenciabrasil.ebc.com.br/economia/noticia/2026-09/taxa-de-desemprego-cai-para-53-menor-para-o-trimestre-ate-agosto",
+   "data": "2026-09-29T13:00+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [
+    "ibge"
+   ],
+   "pessoas": [],
+   "resumo": "A taxa de desemprego no trimestre encerrado em agosto ficou em 5,3%, a menor já registrada para o período desde 2012, quando se inicia a série histórica do Instituto Brasileiro de Geografia e Estatística (IBGE). Além disso, o instituto registrou recorde no número de trabalhadores ocupados, carteira assinada, massa salarial e contribuição para a previdência. O desempenho do desemprego no período de três meses até agosto representa recuo em relação ao trimestre móvel até maio (5,6%) e em comparação ao mesmo período de 2025 (5,6%). De acordo com a Secretaria de Política Econômica (SPE) do Ministé"
+  },
+  {
+   "id": "n-b63a6a7f78",
+   "titulo": "Lei torna futebol feminino prioridade na política de esporte",
+   "url": "https://www12.senado.leg.br/noticias/materias/2026/09/29/lei-torna-futebol-feminino-prioridade-na-politica-de-esporte-1",
+   "data": "2026-09-29T12:53:00+00:00",
+   "fonte": "senado",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "Entrou em vigor a lei que torna o desenvolvimento do futebol feminino prioridade na política pública esportiva nacional, com foco na profissionalização e na igualdade de oportunidades. Publicada no Diário Oficial da União desta terça-feira (29), a norma estabelece atribuições para o Estado, a Confederação Brasileira de Futebol (CBF), federações e clubes e define diretrizes nacionais para o desenvolvimento da modalidade. De acordo com a Lei 15.522, de 2026, as entidades formadoras de atletas de futebol deverão manter também equipes femininas. A exigência, no entanto, entrará em vigor 180 dias a"
+  },
+  {
+   "id": "n-c33a923b2e",
+   "titulo": "Governo publica estratégia para avaliar hospitais particulares; veja",
+   "url": "https://agenciabrasil.ebc.com.br/saude/noticia/2026-09/governo-publica-estrategia-para-avaliar-hospitais-particulares-veja",
+   "data": "2026-09-29T12:39+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [
+    "stf"
+   ],
+   "pessoas": [],
+   "resumo": "A Estratégia Nacional de Controle e Avaliação da Qualidade da Assistência à Saúde prestada pela Iniciativa Privada é a mais nova lei brasileira para fiscalizar os serviços ofertados por hospitais e clínicas particulares. A norma, publicada na edição desta terça-feira (29) no Diário Oficial da União , define padrões e critérios de verificação para os serviços de assistência à saúde, além da avaliação periódica desses estabelecimentos e da divulgação pública dos resultados. Notícias relacionadas: Lei define padrões de qualidade a hospitais particulares. STF define regra para reembolso de hospita"
+  },
+  {
+   "id": "n-2b1fc7929e",
+   "titulo": "Projeto obriga fabricantes a orientar consumidor sobre descarte correto do papel que acompanha figurinhas",
+   "url": "https://www.camara.leg.br/noticias/1305050-projeto-obriga-fabricantes-a-orientar-consumidor-sobre-descarte-correto-do-papel-que-acompanha-figurinhas",
+   "data": "2026-09-29T12:34+00:00",
+   "fonte": "camara",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "Texto está em análise na Câmara dos Deputados"
+  },
+  {
+   "id": "n-456eef4015",
+   "titulo": "Áudio: Medida provisória que proíbe bets no país já está no Congresso Nacional",
+   "url": "https://www12.senado.leg.br/noticias/audios/2026/09/medida-provisoria-que-proibe-bets-no-pais-ja-esta-no-congresso-nacional",
+   "data": "2026-09-29T12:22:00+00:00",
+   "fonte": "senado",
+   "nos": [
+    "congresso"
+   ],
+   "pessoas": [],
+   "resumo": "Já está no Congresso Nacional a medida provisória que proíbe, em todo o território nacional, a exploração, oferta, intermediação e publicidade de loterias de aposta de quota fixa, as chamadas bets (MPV 1394/2026). A restrição valerá para apostas em competições esportivas e em jogos virtuais on-line. A medida provisória deverá ser analisada num prazo de 60 dias, prorrogável por igual período. A população pode se manifestar sobre a MP clicando em \"consulta pública\" no endereço senado.leg.br/ecidadania."
+  },
+  {
+   "id": "n-5ef7a5799b",
+   "titulo": "IGP-M volta a subir em setembro e acumula alta de 3,34% em 12 meses",
+   "url": "https://agenciabrasil.ebc.com.br/economia/noticia/2026-09/igp-m-volta-subir-em-setembro-e-acumula-alta-de-334-em-12-meses",
+   "data": "2026-09-29T12:19+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [
+    "ibge"
+   ],
+   "pessoas": [],
+   "resumo": "O Índice Geral de Preços – Mercado (IGP-M) registrou inflação de 1,57% em setembro deste ano. No mês anterior, o indicador havia tido deflação (queda de preços) de 0,22%. Com os dados divulgados nesta terça-feira (29) pela Fundação Getulio Vargas (FGV), o IGP-M acumula inflação de 3,45% neste ano e de 3,34% em 12 meses. Em setembro de 2025, o IGP-M havia registrado taxas de 0,42% no mês e de 2,82% em 12 meses. Notícias relacionadas: Mercado eleva projeção de inflação para 4,99% e reduz PIB. Prévia da inflação oficial de setembro fica em 0,70%, mostra IBGE. A alta em setembro foi puxada pelo Ín"
+  },
+  {
+   "id": "n-dd5a5a9cfc",
+   "titulo": "Fux suspende decisão de Dino que restabelecia posts de Nossa Senhora",
+   "url": "https://agenciabrasil.ebc.com.br/justica/noticia/2026-09/fux-suspende-decisao-de-dino-que-restabelecia-posts-sobre-nossa-senhora",
+   "data": "2026-09-29T11:48+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [
+    "tse",
+    "stf"
+   ],
+   "pessoas": [
+    "flavio-bolsonaro"
+   ],
+   "resumo": "O ministro Luiz Fux, do Supremo Tribunal Federal (STF), suspendeu a decisão do ministro Flávio Dino, também do STF, que havia derrubado uma ordem do ministro André Mendonça, do Tribunal Superior Eleitoral (TSE), para que fossem tiradas do ar publicações na internet associando o presidenciável Flávio Bolsonaro (PL) a um suposto ataque à Nossa Senhora Aparecida, padroeira do Brasil. Na decisão assinada na noite desta segunda-feira (28), F ux determinou que a ordem de Dino, que havia mandado manter os posts no ar, fique suspensa ao menos até que o plenário do STF analise o caso. Notícias relacion"
+  },
+  {
+   "id": "n-877910acd4",
+   "titulo": "Projeto proíbe cobrança por consultas de retorno em planos de saúde e atendimentos privados",
+   "url": "https://www.camara.leg.br/noticias/1305203-projeto-proibe-cobranca-por-consultas-de-retorno-em-planos-de-saude-e-atendimentos-privados",
+   "data": "2026-09-29T11:41+00:00",
+   "fonte": "camara",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "O texto está em análise na Câmara dos Deputados"
+  },
+  {
+   "id": "n-0ac010d98b",
+   "titulo": "Confira a agenda dos presidenciáveis nesta terça-feira (29)",
+   "url": "https://agenciabrasil.ebc.com.br/politica/noticia/2026-09/confira-agenda-dos-presidenciaveis-nesta-terca-feira-29",
+   "data": "2026-09-29T11:31+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [
+    "tse"
+   ],
+   "pessoas": [],
+   "resumo": "A agenda dos presidenciáveis nesta terça-feira (29) inclui sabatina e entrevistas em veículos de comunicação, além de caminhadas, panfletagens e encontros com apoiadores. Também estão previstas participação em roda de conversa e atividades em diferentes regiões do país. Notícias relacionadas: TSE recebeu mais de 50 mil denúncias de propaganda irregular. Zanin libera acesso gratuito a sites da Justiça Eleitoral nas eleições. Renan Santos (Missão) Participa de encontro com apoiadores em Brasília (DF). Romeu Zema (Novo) Em Ipatinga (MG), concede entrevistas para o portal Plox e para a rádio 98.1."
+  },
+  {
+   "id": "n-8751949cb5",
+   "titulo": "Dissídio de greve da Caixa será julgado nesta terça-feira",
+   "url": "https://agenciabrasil.ebc.com.br/economia/noticia/2026-09/dissidio-de-greve-da-caixa-sera-julgado-nesta-terca-feira",
+   "data": "2026-09-29T11:10+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [
+    "tst",
+    "caixa"
+   ],
+   "pessoas": [],
+   "resumo": "O Tribunal Superior do Trabalho (TST) irá julgar na tarde desta terça-feira (29) o dissídio coletivo de greve ajuizado pela Caixa contra os trabalhadores do banco, em greve desde 10 de setembro . O dissídio ocorre quando não há acordo entre as partes e uma delas pede a intervenção da Justiça. Os trabalhadores da Caixa, representados pela Confederação Nacional dos Trabalhadores do Ramo Financeiro (Contraf) e pela Confederação Nacional dos Trabalhadores nas Empresas de Crédito (Contec), estão com o acordo coletivo de trabalho expirado desde 31 de agosto. Notícias relacionadas: TST: 60% dos empre"
+  },
+  {
+   "id": "n-997174cbd4",
+   "titulo": "Beneficiários com NIS de final 9 recebem Bolsa Família de setembro",
+   "url": "https://agenciabrasil.ebc.com.br/economia/noticia/2026-09/beneficiarios-com-nis-de-final-9-recebem-bolsa-familia-de-setembro",
+   "data": "2026-09-29T10:48+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [
+    "caixa"
+   ],
+   "pessoas": [],
+   "resumo": "A Caixa Econômica Federal paga nesta terça-feira (29) a parcela de setembro do Bolsa Família aos beneficiários com Número de Inscrição Social (NIS) de final 9. Neste mês, 19,29 milhões de família serão beneficiadas, com o valor médio do benefício em R$ 678,18. Os moradores de 179 municípios de sete estados receberam o crédito no dia 17, independentemente do número final do NIS. O pagamento unificado beneficiou localidades em situação de emergência ou em estado de calamidade pública nos seguintes estados: Acre (todos os 22 municípios), Amazonas (três municípios), Paraíba (31), Rio Grande do Nor"
+  },
+  {
+   "id": "n-0ed4a8cf4c",
+   "titulo": "Mega-Sena sorteia prêmio de R$ 52 milhões nesta terça-feira",
+   "url": "https://agenciabrasil.ebc.com.br/geral/noticia/2026-09/mega-sena-sorteia-premio-de-r-52-milhoes-nesta-terca-feira",
+   "data": "2026-09-29T10:28+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [
+    "caixa"
+   ],
+   "pessoas": [],
+   "resumo": "A Mega-Sena sorteia nesta terça-feira (29) prêmio estimado em R$ 52 milhões. As seis dezenas do concurso 3.064 serão sorteadas a partir das 21h (horário de Brasília) no Espaço da Sorte, em São Paulo. As apostas podem ser feitas até às 20h (horário de Brasília) em casas lotéricas credenciadas pela Caixa em todo o país ou pela internet, no site ou aplicativo da Caixa. A aposta simples, com seis dezenas, custa R$ 6. Notícias relacionadas: Mega-Sena acumula para R$ 52 milhões; veja os números sorteados. No último concurso, foram sorteados os números 05 - 35 - 36 - 41 - 43 - 48 e nenhum apostador a"
+  },
+  {
+   "id": "n-d4ff81ae7f",
+   "titulo": "Confira como foi a segunda-feira (28) dos candidatos a presidente",
+   "url": "https://agenciabrasil.ebc.com.br/politica/noticia/2026-09/confira-como-foi-segunda-feira-28-dos-candidatos-presidente",
+   "data": "2026-09-29T00:37+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [
+    "tse"
+   ],
+   "pessoas": [
+    "luiz-inacio-lula-da-silva"
+   ],
+   "resumo": "Na última semana de campanha política, os candidatos à Presidência intensificam as agendas com entrevistas para veículos de imprensa e atos em todo o país. >> Veja como foi o dia dos candidatos Luiz Inácio Lula da Silva (PT) O candidato Luiz Inácio Lula da Silva participou de atos de campanha em Belém e em Manaus. Notícias relacionadas: Zanin libera acesso gratuito a sites da Justiça Eleitoral nas eleições. Eleitor deve se antecipar na consulta a local de votação, alerta TSE. Eleições 2026: saiba em quantos candidatos votar e a ordem de votação . Em Belém, Lula prometeu a ampliação do acesso d"
+  },
+  {
+   "id": "n-d3092a7de0",
+   "titulo": "TSE recebeu mais de 50 mil denúncias de propaganda irregular",
+   "url": "https://agenciabrasil.ebc.com.br/justica/noticia/2026-09/tse-recebeu-mais-de-50-mil-denuncias-de-propaganda-irregular",
+   "data": "2026-09-28T23:39+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [
+    "tse"
+   ],
+   "pessoas": [],
+   "resumo": "Desde o início da campanha para as eleições gerais de 2026, a Justiça Eleitoral já recebeu 51.395 denúncias de propaganda irregular por meio do aplicativo Pardal , um sistema eletrônico criado pelo Tribunal Superior Eleitoral (TSE) para receber esse tipo de ocorrência. Lideram o ranking São Paulo (10.388), seguido por Bahia (5.969), Minas Gerais (4.635) e Pernambuco (3.505). Os estados com menor quantidade de denúncias são Tocantins (74), Roraima (104) e Piauí (172). Notícias relacionadas: TSE recebe mais de mil denúncias nos primeiros dias de campanha. O principal tipo de ocorrência (43,78%) "
+  },
+  {
+   "id": "n-c6fc58203d",
+   "titulo": "Sociedade civil rebate Anatel sobre internet grátis na eleição",
+   "url": "https://agenciabrasil.ebc.com.br/justica/noticia/2026-09/sociedade-civil-rebate-anatel-sobre-internet-gratis-na-eleicao",
+   "data": "2026-09-28T23:12+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [
+    "stf",
+    "anatel"
+   ],
+   "pessoas": [],
+   "resumo": "Um grupo de 12 entidades da sociedade civil pediu ao Supremo Tribunal Federal (STF) para ingressar como amici curiae em processo que pede garantia de acesso à internet móvel para todos os brasileiros, independentemente do limite da franquia de dados, nas 72 horas que antecedem as eleições. Se o pedido for aceito, as entidades podem apresentar informações técnicas, científicos e dados importantes para esclarecer pontos do processo. É vedado, no entanto, fazer pedidos ao juiz da ação ou apresentar recursos quanto ao mérito. Notícias relacionadas: Entidades pedem livre acesso à internet nas 72h a"
+  },
+  {
+   "id": "n-b59e9995bc",
+   "titulo": "Zanin libera acesso gratuito a sites da Justiça Eleitoral nas eleições",
+   "url": "https://agenciabrasil.ebc.com.br/justica/noticia/2026-09/zanin-libera-acesso-gratuito-sites-da-justica-eleitoral-nas-eleicoes",
+   "data": "2026-09-28T23:03+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [
+    "anatel",
+    "stf"
+   ],
+   "pessoas": [],
+   "resumo": "O ministro Cristiano Zanin, do Supremo Tribunal Federal (STF), autorizou nesta segunda-feira (28) que pessoas com franquia de dados esgotada tenham acesso gratuito aos sites da Justiça Eleitoral durante os dois turnos das eleições. Com a decisão, o acesso gratuito deverá ser liberado pelas operadoras 72 horas antes dos turnos e 24 horas após a votação. Notícias relacionadas: Internet grátis pode derrubar rede móvel na eleição, diz Anatel ao STF. Zanin pede manifestação da Anatel sobre acesso à internet nas eleições. O ministro determinou que a Agência Nacional de Telecomunicações (Anatel) deve"
+  },
+  {
+   "id": "n-71806a091d",
+   "titulo": "Lei define padrões de qualidade a hospitais particulares",
+   "url": "https://agenciabrasil.ebc.com.br/saude/noticia/2026-09/lei-define-padroes-de-qualidade-hospitais-particulares",
+   "data": "2026-09-28T22:57+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [],
+   "pessoas": [
+    "luiz-inacio-lula-da-silva"
+   ],
+   "resumo": "O presidente Luiz Inácio Lula da Silva sancionou, nesta segunda-feira (28), uma lei que visa aprimora a qualidade e fiscalização dos serviços de saúde prestados pela iniciativa privada. A lei cria a Estratégia Nacional de Controle e Avaliação da Qualidade da Assistência à Saúde prestada pela Iniciativa Privada. Notícias relacionadas: Governo cobra na Justiça gastos do SUS com tratamento de apostadores. Pacientes com alopecia areata contam trajetória para reaver autoestima. Setembro Verde: idosos também podem ser doadores vivos de órgãos. O texto fixa padrões de qualidade que devem ser cumprido"
+  },
+  {
+   "id": "n-58241a25eb",
+   "titulo": "Dólar sobe para R$ 5,22 e atinge maior nível desde março",
+   "url": "https://agenciabrasil.ebc.com.br/economia/noticia/2026-09/dolar-sobe-para-r-522-e-atinge-maior-nivel-desde-marco",
+   "data": "2026-09-28T22:35+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "Em um dia de turbulências no exterior, o dólar ultrapassou a barreira de R$ 5,20 e fechou em R$ 5,22 – maior nível em quase seis meses. A bolsa recuou pela quarta vez consecutiva. A moeda acompanhou o movimento de fortalecimento do dólar no exterior, em um dia marcado pela aversão ao risco, pela alta dos rendimentos dos títulos do Tesouro dos Estados Unidos e pelas incertezas envolvendo as negociações entre Estados Unidos e Irã. Notícias relacionadas: Mercado eleva projeção de inflação para 4,99% e reduz PIB. O petróleo também terminou o dia em alta, embora distante das máximas alcançadas dura"
+  },
+  {
+   "id": "n-ef1ca57149",
+   "titulo": "Projeto prevê medidas de acolhimento para trabalhadora que retorna da licença-maternidade",
+   "url": "https://www.camara.leg.br/noticias/1304558-projeto-preve-medidas-de-acolhimento-para-trabalhadora-que-retorna-da-licenca-maternidade",
+   "data": "2026-09-28T22:30+00:00",
+   "fonte": "camara",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "Depositphotos Ideia é garantir a permanência da mulher no mercado de trabalho após a licença O Projeto de Lei 2307/26 exige que as empresas com 20 ou mais funcionários adotem programas de acolhimento e reintegração para trabalhadoras que retornam da licença-maternidade. A ideia é garantir a permanência da mulher no mercado de trabalho e combater demissões após o período de afastamento. O texto em análise na Câmara dos Deputados prevê, no mínimo, uma entrevista de alinhamento com a profissional logo no retorno às atividades. Esse encontro servirá para definir tarefas, alinhar escopo de atuação "
+  },
+  {
+   "id": "n-b5703c20bf",
+   "titulo": "Presidente do TSE reclama de interferência em decisões da Corte",
+   "url": "https://agenciabrasil.ebc.com.br/justica/noticia/2026-09/presidente-do-tse-reclama-de-interferencia-em-decisoes-da-corte",
+   "data": "2026-09-28T22:07+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [
+    "tse",
+    "stf"
+   ],
+   "pessoas": [
+    "edson-fachin",
+    "nunes-marques"
+   ],
+   "resumo": "O presidente do Tribunal Superior Eleitoral (TSE), Kassio Nunes Marques, enviou nesta segunda-feira (28) um ofício ao presidente do Supremo Tribunal Federal (STF), Edson Fachin, para reclamar de \"indevida sobreposição de competência\" sobre as decisões da Justiça Eleitoral. A manifestação ocorreu após o ministro Flávio Dino derrubar a decisão de André Mendonça, do TSE, e liberar a postagem do humorista Antonio Tabet sobre Nossa Senhora Aparecida. Notícias relacionadas: CNBB nega envolvimento em polêmica sobre santa católica. Flávio recorre a Fux para derrubar post sobre Nossa Senhora Aparecida."
+  },
+  {
+   "id": "n-0ee8baab54",
+   "titulo": "Renegociação de dívidas de adimplentes é prorrogada até 26 de outubro",
+   "url": "https://agenciabrasil.ebc.com.br/economia/noticia/2026-09/renegociacao-de-dividas-de-adimplentes-e-prorrogada-ate-26-de-outubro",
+   "data": "2026-09-28T22:06+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [
+    "cmn"
+   ],
+   "pessoas": [],
+   "resumo": "Programa voltado a trabalhadores informais com dívidas em dia ou com atraso inferior a 90 dias, o Desenrola Adimplentes foi estendido por mais 30 dias. As renegociações poderão ser feitas até 26 de outubro, data em que também termina a vigência da medida provisória que criou a iniciativa. O prazo inicial era de 90 dias e terminaria na semana passada. A extensão foi estabelecida pela medida provisória que instituiu o Desenrola 3.0, nova etapa do programa de renegociação de dívidas. Como funciona Notícias relacionadas: Governo cria 3ª fase do Desenrola com compra de dívidas pela União. CMN regul"
+  },
+  {
+   "id": "n-71ed84fed5",
+   "titulo": "Projeto de lei apresentado pelo governo torna crime a exploração e a publicidade de bets",
+   "url": "https://www.camara.leg.br/noticias/1307129-projeto-de-lei-apresentado-pelo-governo-torna-crime-a-exploracao-e-a-publicidade-de-bets",
+   "data": "2026-09-28T21:47+00:00",
+   "fonte": "camara",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "Proposta foi enviada pelo Poder Executivo após a edição de MP que proíbe as loterias de apostas de quota fixa no Brasil"
+  },
+  {
+   "id": "n-9467de2995",
+   "titulo": "Governo cobra na Justiça gastos do SUS com tratamento de apostadores",
+   "url": "https://agenciabrasil.ebc.com.br/justica/noticia/2026-09/governo-cobra-na-justica-gastos-do-sus-com-tratamento-de-apostadores",
+   "data": "2026-09-28T21:23+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [
+    "agu"
+   ],
+   "pessoas": [],
+   "resumo": "A Advocacia-Geral da União (AGU) anunciou nesta segunda-feira (28) que entrou na Justiça para cobrar os gastos do Sistema Único de Saúde (SUS) com o tratamento dos danos causados pelos jogos on-line. A ação civil pública foi protocolada na Justiça Federal em Pernambuco contra 17 plataformas de apostas esportivas e pede a reparação mínima de R$ 1 bilhão em danos morais coletivos. Notícias relacionadas: AGU pede 72 horas para se manifestar sobre ações para liberar bets. Saiba como as bets adoeceram e endividaram os brasileiros. MP das Bets: veja o que muda e saiba datas para devolução de valores"
+  },
+  {
+   "id": "n-399538dbf6",
+   "titulo": "Projeto cria política de assistência integral a doenças crônicas no SUS",
+   "url": "https://www.camara.leg.br/noticias/1306355-projeto-cria-politica-de-assistencia-integral-a-doencas-cronicas-no-sus",
+   "data": "2026-09-28T21:04+00:00",
+   "fonte": "camara",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "Proposta prevê estrutura permanente para essa área na rede pública de saúde; texto está em análise na Câmara dos Deputados"
+  },
+  {
+   "id": "n-a1af7be8a9",
+   "titulo": "AGU pede 72 horas para se manifestar sobre ações para liberar bets",
+   "url": "https://agenciabrasil.ebc.com.br/justica/noticia/2026-09/agu-pede-72-horas-para-se-manifestar-sobre-acoes-para-liberar-bets",
+   "data": "2026-09-28T20:15+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [
+    "agu",
+    "stf"
+   ],
+   "pessoas": [],
+   "resumo": "A Advocacia-Geral da União (AGU) pediu nesta segunda-feira (28) ao Supremo Tribunal Federal (STF) prazo de 72 horas para apresentar manifestação nas ações nas quais o setor de bets defende a retomada das apostas on-line. Segundo a AGU, o prazo é necessário para que os órgãos governamentais envolvidos na regulamentação do setor sejam ouvidos. Notícias relacionadas: Governo monitora rede de divulgação de bets e derruba 506 sites. Saiba como as bets adoeceram e endividaram os brasileiros. Saúde fará busca ativa de apostadores após fim das bets. Mais cedo, a Associação Nacional de Jogos e Loterias"
+  },
+  {
+   "id": "n-efd42cb622",
+   "titulo": "Projeto regulamenta perdimento de veículos e cargas em infrações à defesa agropecuária federal",
+   "url": "https://www.camara.leg.br/noticias/1304578-projeto-regulamenta-perdimento-de-veiculos-e-cargas-em-infracoes-a-defesa-agropecuaria-federal",
+   "data": "2026-09-28T20:13+00:00",
+   "fonte": "camara",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "Texto está em análise na Câmara dos Deputados"
+  },
+  {
+   "id": "n-571bdabf96",
+   "titulo": "Rio: Operação no Complexo da Maré deixa três mortos, diz secretaria",
+   "url": "https://agenciabrasil.ebc.com.br/geral/noticia/2026-09/rio-operacao-no-complexo-da-mare-deixa-tres-mortos-diz-secretaria",
+   "data": "2026-09-28T19:34+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "Três pessoas morreram na operação policial realizada nesta segunda-feira (28) nas comunidades do Timbau e Baixa do Sapateiro, no Conjunto de Favelas da Maré, na zona norte do Rio de Janeiro. O balanço foi divulgado no início da tarde pela Secretaria de Estado de Polícia Militar do Rio de Janeiro. De acordo com o órgão, os três mortos eram considerados suspeitos. Os policiais apreenderam 12 fuzis, oito pistolas, além de granadas, munições e carregadores. Além disso, os agentes recuperaram seis veículos e apreenderam 83 quilos de drogas. Feridos Notícias relacionadas: Rio: operação policial na M"
+  },
+  {
+   "id": "n-1f70052718",
+   "titulo": "Áudio: Ideias enviadas via e-Cidadania viraram projetos de lei em 2026",
+   "url": "https://www12.senado.leg.br/noticias/audios/2026/09/ideias-enviadas-via-e-cidadania-viraram-projetos-de-lei-em-2026",
+   "data": "2026-09-28T19:32:00+00:00",
+   "fonte": "senado",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "Criado pelo Senado em 2012, o e-Cidadania é um portal que amplia a participação da população nas atividades legislativas e educativas da Casa. Entre janeiro e setembro de 2026, 19 ideias enviadas por cidadãos receberam pelo menos 20 mil apoios e foram encaminhadas à Comissão de Direitos Humanos (CDH) do Senado para discussão. Desse total, cinco foram transformadas em projetos de lei."
+  },
+  {
+   "id": "n-3b04813b71",
+   "titulo": "Chega ao Congresso projeto que torna crime a exploração de bets",
+   "url": "https://www12.senado.leg.br/noticias/materias/2026/09/28/chega-ao-congresso-projeto-que-torna-crime-a-exploracao-de-bets",
+   "data": "2026-09-28T19:17:00+00:00",
+   "fonte": "senado",
+   "nos": [
+    "congresso"
+   ],
+   "pessoas": [],
+   "resumo": "O Congresso Nacional recebeu o projeto de lei do Executivo que tipifica crimes relacionados às loterias de apostas de quota fixa, conhecidas como bets. A apresentação do projeto havia sido anunciada pelo governo federal na sexta-feira (25), mesmo dia em que a Presidência da República editou uma medida provisória para proibir as bets no Brasil (MP 1.394/2026). O projeto de lei (PL 5.477/2026) torna crime tanto a exploração quanto a publicidade de bets, tipificando cinco condutas como criminosas. De acordo com o governo, a intenção é enfrentar os diferentes meios empregados pelas empresas para m"
+  },
+  {
+   "id": "n-487ecdbfdb",
+   "titulo": "CNBB nega envolvimento em polêmica sobre santa católica",
+   "url": "https://agenciabrasil.ebc.com.br/politica/noticia/2026-09/cnbb-nega-envolvimento-em-polemica-sobre-santa-catolica",
+   "data": "2026-09-28T18:47+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [],
+   "pessoas": [
+    "flavio-bolsonaro"
+   ],
+   "resumo": "A Conferência Nacional dos Bispos do Brasil (CNBB) divulgou uma nota na qual nega ter produzido, autorizado ou participado da elaboração ou divulgação de informações falsas relacionadas ao atual processo eleitoral. A declaração veio a público após o candidato do PL à Presidência da República, Flávio Bolsonaro, ter acusado “gente de dentro da CNBB” de ter ajudado na divulgação de que, se eleito, retiraria de Nossa Senhora da Aparecida o título de padroeira do Brasil. Notícias relacionadas: Lei cria diretrizes permanentes para o futebol feminino no Brasil. Ex-presidente José Sarney segue interna"
+  },
+  {
+   "id": "n-fe8aad0397",
+   "titulo": "Lei cria diretrizes permanentes para o futebol feminino no Brasil",
+   "url": "https://agenciabrasil.ebc.com.br/politica/noticia/2026-09/lei-cria-diretrizes-permanentes-para-o-futebol-feminino-no-Brasil",
+   "data": "2026-09-28T18:09+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [],
+   "pessoas": [
+    "luiz-inacio-lula-da-silva"
+   ],
+   "resumo": "O presidente Luiz Inácio Lula da Silva sancionou, nesta segunda-feira (28), a lei que estabelece diretrizes nacionais e permanentes para o desenvolvimento do futebol feminino no Brasil . A Lei nº 15.522 traz uma série de atribuições para o Estado, para a Confederação Brasileira de Futebol (CBF) e para os clubes. “Nós queremos que as mulheres conquistem espaço em todo mercado de trabalho, toda atividade política, em toda atividade profissional e toda atividade esportiva. Não há porque a mulher ser tratada de forma inferior”, disse Lula. Notícias relacionadas: Conmebol anuncia datas e horários d"
+  },
   {
    "id": "n-069ef3ebea",
    "titulo": "Congresso Nacional tem novo site para agendar visitas guiadas",

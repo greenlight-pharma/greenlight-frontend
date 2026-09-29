@@ -1,6 +1,6 @@
 {
  "meta": {
-  "gerado_em": "2026-09-28T18:03+00:00",
+  "gerado_em": "2026-09-29T16:27+00:00",
   "gerado_por": "scripts/governo/agentes/agente_dou.py",
   "janela_dias": 120,
   "fonte": {
@@ -10,11 +10,10 @@
   "regra": "O feed registra o que o DOU publicou, com link para cada ato. Ocupantes no grafo só mudam com revisão humana.",
   "contagem": {
    "comando": 3,
-   "alta": 39,
-   "outra": 378
+   "alta": 40,
+   "outra": 379
   },
-  "refinados_por_claude": 0,
-  "estrutura_verificada_em": "2026-09-28"
+  "refinados_por_claude": 0
  },
  "mudancas": [
   {
@@ -39,6 +38,27 @@
    "fonte_nome": "SIORG",
    "origem": "siorg",
    "resumo": "Universidade Federal da Fronteira Norte passa a constar na estrutura, vinculado a Ministério da Educação."
+  },
+  {
+   "id": "dou-a475a8aa098e",
+   "data": "2026-09-28",
+   "publicado_em": "2026-09-28",
+   "tipo": "nomeacao",
+   "cargo": "Ministro do Tribunal de Contas da União, na vaga decorrente da renúncia do Ministro Bruno Dantas Nascimento",
+   "codigo": null,
+   "entra": "Rodrigo Otávio Soares Pacheco",
+   "sai": null,
+   "interino": false,
+   "a_pedido": false,
+   "desde": null,
+   "no_id": "tcu",
+   "nivel": "outra",
+   "ato": "Decreto, de 28/09/2026",
+   "assinante": "Presidência da República",
+   "fonte": "https://www.in.gov.br/web/dou/-/decreto-de-28-de-setembro-de-2026-735038784",
+   "fonte_nome": "DOU, seção 2",
+   "origem": "dou",
+   "resumo": "Rodrigo Otávio Soares Pacheco assume o cargo de Ministro do Tribunal de Contas da União, na vaga decorrente da renúncia do Ministro Bruno Dantas Nascimento."
   },
   {
    "id": "dou-16d77dfed8e1",
