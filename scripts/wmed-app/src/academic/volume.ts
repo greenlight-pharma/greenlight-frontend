@@ -104,12 +104,31 @@ function parseColor(cor: string): [number, number, number] | undefined {
   const n = parseInt(m[1], 16);
   return [(n >> 16) & 255, (n >> 8) & 255, n & 255];
 }
+/**
+ * Cores só do modo "todas as estruturas": no arquivo de dados vários órgãos
+ * vizinhos do abdome têm tons de bege quase iguais. Esta sobreposição
+ * separa os vizinhos sem mexer nos dados.
+ */
+const ALL_MODE_COLORS: Record<number, string> = {
+  2: "#3fae6b", // vesícula biliar: verde
+  4: "#ecc94b", // estômago: amarelo-ouro
+  5: "#f2b48a", // pâncreas: pêssego
+  6: "#d9822b", // duodeno: âmbar
+  7: "#e98aa3", // intestino delgado: rosa-salmão
+  8: "#8a7d3b", // cólon: marrom-oliva
+  24: "#3f6fd0", // veia cava inferior: azul-royal
+  25: "#58a0e8", // veia porta e esplênica: azul-claro
+  27: "#7a86e6", // veias ilíacas: azul-violeta
+};
+export function structureColor(s: { id: number; cor: string }) {
+  return ALL_MODE_COLORS[s.id] || s.cor;
+}
 const tables = new WeakMap<Volume, ([number, number, number] | undefined)[]>();
 function colorTable(v: Volume) {
   let table = tables.get(v);
   if (!table) {
     table = [];
-    for (const s of v.meta.estruturas) table[s.id] = parseColor(s.cor);
+    for (const s of v.meta.estruturas) table[s.id] = parseColor(structureColor(s));
     tables.set(v, table);
   }
   return table;
@@ -127,5 +146,6 @@ export function sliceStructures(v: Volume, fraction: number, max = 8) {
   return v.meta.estruturas
     .filter((s) => counts.has(s.id) && colors[s.id])
     .sort((a, b) => counts.get(b.id)! - counts.get(a.id)!)
-    .slice(0, max);
+    .slice(0, max)
+    .map((s) => ({ ...s, cor: structureColor(s) }));
 }
