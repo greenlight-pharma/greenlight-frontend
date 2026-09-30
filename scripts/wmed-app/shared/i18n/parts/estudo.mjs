@@ -242,6 +242,7 @@ export default {
 "Corte axial da tomografia; clique para identificar uma estrutura":["Axial CT slice; click to identify a structure","Corte axial de la tomografía; haz clic para identificar una estructura"],
 "ESTRUTURA IDENTIFICADA":["IDENTIFIED STRUCTURE","ESTRUCTURA IDENTIFICADA"],
 "ESTUDO DO CORTE":["SLICE STUDY","ESTUDIO DEL CORTE"],
+"Mostrar todas as estruturas":["Show all structures","Mostrar todas las estructuras"],
 "Toque na TC para identificar":["Tap the CT to identify","Toca la TC para identificar"],
 "Identificação pelos rótulos do conjunto original.":["Identified using the labels from the original dataset.","Identificación por las etiquetas del conjunto original."],
 "Navegue pelos cortes e reconheça as estruturas.":["Move through the slices and recognize the structures.","Recorre los cortes y reconoce las estructuras."],

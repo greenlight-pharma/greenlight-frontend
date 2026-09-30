@@ -1,5 +1,5 @@
 import {recoverableLazy as lazy} from '../doctor/ModuleRecovery';
-import { useEffect, useRef, useState, Suspense, Fragment } from "react";
+import { useEffect, useMemo, useRef, useState, Suspense, Fragment } from "react";
 
 import {
   ArrowUpRight,
@@ -29,7 +29,7 @@ import {
   ShieldCheck,
   HeartPulse,
 } from "lucide-react";
-import { drawSlice, loadVolume, type Volume } from "./volume";
+import { drawSlice, loadVolume, sliceStructures, type Volume } from "./volume";
 import {useWorkspaceHeight} from "./useWorkspaceHeight";
 import "./experience.css";
 import {useI18n} from "../doctor/I18n";
@@ -485,6 +485,13 @@ export function Radiology() {
   const [rotate, setRotate] = useState(false);
   const [play, setPlay] = useState(false);
   const [cinema, setCinema] = useState(false);
+  const [showAll, setShowAll] = useState(() => {
+    try {
+      return localStorage.getItem("va-radiology-show-all") === "1";
+    } catch {
+      return false;
+    }
+  });
   const canvas = useRef<HTMLCanvasElement>(null);
   const workspace = useWorkspaceHeight(cinema);
   // Keep the actual canvas box fitted to the physical image ratio. This also
@@ -519,8 +526,18 @@ export function Radiology() {
   }, [region]);
   useEffect(() => {
     if (volume && canvas.current)
-      drawSlice(canvas.current, volume, fraction, window, selected);
-  }, [volume, fraction, window, selected]);
+      drawSlice(canvas.current, volume, fraction, window, selected, showAll);
+  }, [volume, fraction, window, selected, showAll]);
+  const legend = useMemo(
+    () => (volume && showAll ? sliceStructures(volume, fraction) : []),
+    [volume, fraction, showAll],
+  );
+  const toggleAll = (on: boolean) => {
+    setShowAll(on);
+    try {
+      localStorage.setItem("va-radiology-show-all", on ? "1" : "0");
+    } catch {}
+  };
   useEffect(() => {
     if (!play) return;
     const timer = globalThis.setInterval(
@@ -649,6 +666,26 @@ export function Radiology() {
                 );
               }}
             />
+          </div>
+          <div className="va-slice-options">
+            <label>
+              <input
+                type="checkbox"
+                checked={showAll}
+                onChange={(e) => toggleAll(e.target.checked)}
+              />
+              {t("Mostrar todas as estruturas")}
+            </label>
+            {showAll && legend.length > 0 && (
+              <ul className="va-slice-legend">
+                {legend.map((s) => (
+                  <li key={s.id}>
+                    <i style={{ background: s.cor }} />
+                    {ctNames[s.nome] || s.nome}
+                  </li>
+                ))}
+              </ul>
+            )}
           </div>
           <div className="va-slice-caption">
             <span>{t(label ? "ESTRUTURA IDENTIFICADA" : "ESTUDO DO CORTE")}</span>
