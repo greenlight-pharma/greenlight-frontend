@@ -211,6 +211,10 @@ export async function academic(
       signal: AbortSignal.timeout(270000),
     });
     if (!r.ok) {
+      if (caller.service && [401, 403].includes(r.status)) {
+        console.error("[2doctor] academic: serviço de IA recusou a chave de serviço", r.status);
+        return send(res, 503, { error: "Serviço indisponível. Tente de novo em instantes.", code: "SERVICE_UNAVAILABLE" });
+      }
       let message = "Não foi possível concluir. Tente novamente.";
       if (r.status < 500) {
         try {
@@ -307,6 +311,10 @@ async function runFeedback(job, caller, body, fetchImpl) {
       signal: AbortSignal.timeout(270000),
     });
     if (!r.ok) {
+      if (caller.service && [401, 403].includes(r.status)) {
+        console.error("[2doctor] feedback: serviço de IA recusou a chave de serviço", r.status);
+        throw Object.assign(Error("Serviço indisponível. Tente de novo em instantes."), { status: 503 });
+      }
       let message = "Não foi possível gerar o feedback. Tente novamente.";
       if (r.status < 500) try { const d = await r.json(); const m = d.error || d.message; if (typeof m === "string") message = m.slice(0, 500); } catch {}
       throw Object.assign(Error(message), { status: r.status });

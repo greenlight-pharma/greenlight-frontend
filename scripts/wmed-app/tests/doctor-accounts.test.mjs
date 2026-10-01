@@ -127,6 +127,41 @@ test('conversas: cria, atualiza e protege de outra conta', { skip }, async () =>
  assert.equal(open.statusCode, 403);
 });
 
+test('conversas: renomeia e apaga só pelo dono', { skip }, async () => {
+ const a = await signup('ren-a@exemplo.com'), b = await signup('ren-b@exemplo.com');
+ const call = async (cookie, body) => { const r = res(); await store.history(req({ url: '/api/wmed/history', cookie, body }), r); return r; };
+ const msgs = [{ papel: 'user', conteudo: 'Pergunta original' }, { papel: 'assistant', conteudo: 'Resposta' }];
+ const c = await call(a.cookie, { action: 'save', messages: msgs });
+ assert.equal((await call(b.cookie, { action: 'rename', id: c.data.id, title: 'Invasor' })).statusCode, 403);
+ assert.equal((await call(a.cookie, { action: 'rename', id: c.data.id, title: '  ' })).statusCode, 400);
+ assert.equal((await call(a.cookie, { action: 'rename', id: c.data.id, title: 'x'.repeat(81) })).statusCode, 400);
+ const ren = await call(a.cookie, { action: 'rename', id: c.data.id, title: '  Meu   título ' });
+ assert.equal(ren.statusCode, 200); assert.equal(ren.data.titulo, 'Meu título');
+ await call(a.cookie, { action: 'save', id: c.data.id, messages: [...msgs, { papel: 'user', conteudo: 'Mais' }] });
+ assert.equal((await call(a.cookie, { action: 'list' })).data[0].titulo, 'Meu título');
+ assert.equal((await call(b.cookie, { action: 'delete', id: c.data.id })).statusCode, 403);
+ assert.equal((await call('', { action: 'delete', id: c.data.id })).statusCode, 401);
+ const del = await call(a.cookie, { action: 'delete', id: c.data.id });
+ assert.equal(del.statusCode, 200);
+ assert.equal((await call(a.cookie, { action: 'list' })).data.length, 0);
+ assert.equal((await call(a.cookie, { action: 'open', id: c.data.id })).statusCode, 403);
+ assert.equal((await call(a.cookie, { action: 'delete', id: c.data.id })).statusCode, 403);
+});
+
+test('chat: 401 da chave de serviço não desloga (503 SERVICE_UNAVAILABLE)', { skip }, async () => {
+ const { chat } = await import('../server/vytal-assistant.mjs');
+ const a = await signup('svc@exemplo.com');
+ for (const status of [401, 403]) {
+  const r = res();
+  await chat(req({ url: '/api/wmed/chat', cookie: a.cookie, body: { question: 'Pergunta válida' } }), r, { identify: accounts.identify, allow: () => true, fetchImpl: async () => Response.json({ error: 'chave inválida' }, { status }) });
+  assert.equal(r.statusCode, 503); assert.equal(r.data.code, 'SERVICE_UNAVAILABLE');
+  assert.equal(r.headers['set-cookie'], undefined);
+ }
+ const anon = res();
+ await chat(req({ url: '/api/wmed/chat', body: { question: 'Pergunta válida' } }), anon, { identify: accounts.identify, allow: () => true, fetchImpl: () => assert.fail() });
+ assert.equal(anon.statusCode, 401); assert.equal(anon.data.code, 'AUTH_REQUIRED');
+});
+
 test('IA vai à API Vytal pela rota de serviço, com a chave e o id da conta 2Doctor', { skip }, async () => {
  const a = await signup('ia@exemplo.com');
  const user = (await db.q('select id from usuarios where email = $1', ['ia@exemplo.com'])).rows[0];

@@ -88,6 +88,8 @@ export const SCHEMA = [
    criado_em timestamptz not null default now(),
    primary key (caso_publico, usuario_id)
  )`,
+ // Título editado pela pessoa: salvar a conversa de novo não o sobrescreve.
+ `alter table conversas add column if not exists titulo_manual boolean not null default false`,
 ];
 
 let pool = null, ready = null;

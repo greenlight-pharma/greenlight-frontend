@@ -161,6 +161,8 @@ export async function identify(req) {
   path: (p) => p.replace(/^\/estudante\/(?:2doctor\/|tutor\/)?/, '/servico/2doctor/'),
   charge: (kind) => charge(user.id, kind, planOf(user)),
   user,
+  // Credencial é a chave de serviço: 401/403 do upstream é falha do serviço, não da sessão.
+  service: true,
  };
 }
 
