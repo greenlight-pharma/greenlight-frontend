@@ -15,10 +15,11 @@ export function useChatHistory({ api, scope, messages, setMessages, busy }) {con
     setItems([]);setError('');setSaved(false);setOpen(false);
     if (!scope) {state.current = null;return;}
     const s = { writer: null, signature: '', key };
-    s.writer = createHistoryWriter(async (id, rows) => {if (state.current !== s) throw Error('A conta mudou. Entre novamente para salvar.');const d = await call({ action: 'save', id, messages: rows });if (state.current === s) {try {localStorage.setItem(s.key, d.id);} catch {}}return d;});state.current = s;
+    s.writer = createHistoryWriter(async (id, rows) => {if (state.current !== s) throw Error('A conta mudou. Entre novamente para salvar.');const d = await call({ action: 'save', id, messages: rows });return d;});state.current = s;
     setLoading(true);
-    (async () => {try {await list(s);let id;try {id = localStorage.getItem(key);} catch {}
-        if (id && latest.current.length === 0) {const d = await call({ action: 'open', id });if (state.current === s && latest.current.length === 0) {const rows = decodeMessages(d);s.writer.setId(id);s.signature = JSON.stringify(encodeMessages(rows));setMessages(rows);setSaved(true);}}
+    // Returning to the site starts a new conversation; old chats stay in the history list.
+    try {localStorage.removeItem(key);} catch {}
+    (async () => {try {await list(s);
       } catch (e) {if (state.current === s) setError(e.message);} finally {if (state.current === s) setLoading(false);}})();
     return () => {if (state.current === s) state.current = null;};
   }, [scope]);
@@ -27,8 +28,8 @@ export function useChatHistory({ api, scope, messages, setMessages, busy }) {con
   // A checkpoint also runs during uninterrupted streaming; no text is stored in localStorage.
   useEffect(() => {if (!scope || !busy) return;const timer = setInterval(flush, 5000);return () => clearInterval(timer);}, [scope, busy]);
   useEffect(() => {const warn = (e) => {if (saving || encodeMessages(latest.current).length && !saved && scope) {e.preventDefault();e.returnValue = '';}};addEventListener('beforeunload', warn);return () => removeEventListener('beforeunload', warn);}, [saving, saved, scope]);
-  async function fresh() {if (busy || loading) return false;if (!(await flush())) return false;state.current?.writer.setId(null);if (state.current) {state.current.signature = '';try {localStorage.removeItem(key);} catch {}}setSaved(false);setOpen(false);return true;}
-  async function select(id) {if (busy || loading) return false;if (!(await flush())) return false;const s = state.current;setLoading(true);try {const d = await call({ action: 'open', id });if (state.current !== s) return false;const rows = decodeMessages(d);s.writer.setId(id);s.signature = JSON.stringify(encodeMessages(rows));setMessages(rows);try {localStorage.setItem(key, id);} catch {}setSaved(true);setError('');setOpen(false);return true;} catch (e) {setError(e.message);return false;} finally {setLoading(false);}}
+  async function fresh() {if (busy || loading) return false;if (!(await flush())) return false;state.current?.writer.setId(null);if (state.current) {state.current.signature = '';}setSaved(false);setOpen(false);return true;}
+  async function select(id) {if (busy || loading) return false;if (!(await flush())) return false;const s = state.current;setLoading(true);try {const d = await call({ action: 'open', id });if (state.current !== s) return false;const rows = decodeMessages(d);s.writer.setId(id);s.signature = JSON.stringify(encodeMessages(rows));setMessages(rows);setSaved(true);setError('');setOpen(false);return true;} catch (e) {setError(e.message);return false;} finally {setLoading(false);}}
   return { items, open, setOpen, error, saving, loading, saved, flush, fresh, select, refresh: () => list().catch((e) => setError(e.message)) };
 }
 export default function ChatHistory({ history, onClose, onNew, onSelect }) {
