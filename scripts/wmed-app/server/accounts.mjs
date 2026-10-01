@@ -227,7 +227,7 @@ export async function auth(req, res, { sub = '', fetchImpl = fetch } = {}) {
    if (!rowCount) return reply(res, 409, { error: t(l, 'exists') });
    const token = await emailToken(id, 'verificar', 72);
    sendEmail(email, t(l, 'subjectVerify'), [t(l, 'bodyVerify')], `${publicOrigin()}/api/wmed/auth/verificar?token=${token}`, { fetchImpl }).catch(() => {});
-   const user = { id, email, nome, email_verificado: false };
+   const user = { id, email, nome, email_verificado: false, tem_senha: true };
    return reply(res, 201, { authenticated: true, user: publicUser(user) }, { 'Set-Cookie': await startSession(id) });
   }
   if (action !== 'entrar') return reply(res, 400, { error: t(l, 'invalid') });

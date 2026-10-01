@@ -45,6 +45,7 @@ test('cria conta, recusa e-mail repetido e entra só com a senha certa', { skip 
  const { r, cookie } = await signup('Pessoa@Exemplo.com');
  assert.equal(r.statusCode, 201);
  assert.equal(r.data.user.conta, '2doctor');
+ assert.equal(r.data.user.temSenha, true); // conta criada com senha não deve pedir "Criar senha"
  assert.match(cookie, /^__Host-2d_sessao=/);
  assert.match(String(r.headers['set-cookie']), /HttpOnly; Secure; SameSite=Lax/);
  const again = await signup('pessoa@exemplo.com');
