@@ -285,5 +285,6 @@ import bibliotecas from './parts/bibliotecas.mjs';
 import ciencias from './parts/ciencias.mjs';
 import estudo from './parts/estudo.mjs';
 import servidor from './parts/servidor.mjs';
-for(const part of [caso,navegacao,bibliotecas,ciencias,estudo,servidor])for(const [k,v] of Object.entries(part))if(!(k in catalog))catalog[k]=v;
+import paciente from './parts/paciente.mjs';
+for(const part of [caso,navegacao,bibliotecas,ciencias,estudo,servidor,paciente])for(const [k,v] of Object.entries(part))if(!(k in catalog))catalog[k]=v;
 export function translate(locale,text){if(locale==='pt-BR')return text;return catalog[text]?.[locale==='es'?1:0]??text;}

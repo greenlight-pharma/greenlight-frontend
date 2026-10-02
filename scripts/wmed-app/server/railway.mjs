@@ -13,6 +13,7 @@ import {history} from './history.mjs';
 import {privacy} from './privacy.mjs';
 import {discovery} from './discovery.mjs';
 import {publicResearch} from './public-research.mjs';
+import {LEGAL_ROUTES,legalHtml,pickLocale} from './legal-pages.mjs';
 
 const ROOT=fileURLToPath(new URL('../dist-2doctor/',import.meta.url));
 const MIME={'.html':'text/html; charset=utf-8','.js':'text/javascript; charset=utf-8','.css':'text/css; charset=utf-8','.json':'application/json; charset=utf-8','.svg':'image/svg+xml','.png':'image/png','.jpg':'image/jpeg','.jpeg':'image/jpeg','.webp':'image/webp','.ttf':'font/ttf','.woff2':'font/woff2','.glb':'model/gltf-binary','.gltf':'model/gltf+json','.bin':'application/octet-stream','.pdb':'chemical/x-pdb','.mp4':'video/mp4'};
@@ -75,6 +76,9 @@ export function createApp({root=ROOT,publicOrigin=process.env.PUBLIC_ORIGIN,fetc
     return await handler(req,res,sub?{sub}:undefined);
    }
    if(!['GET','HEAD'].includes(req.method))return json(res,405,{error:'Método não permitido.'});
+   // Política de privacidade e termos para pacientes (páginas públicas, EN/ES/PT).
+   const legalPath=path.length>1?path.replace(/\/$/,''):path;
+   if(Object.hasOwn(LEGAL_ROUTES,legalPath)){const html=legalHtml(LEGAL_ROUTES[legalPath],pickLocale(req.url,req.headers['accept-language']),legalPath);res.writeHead(200,{'Content-Type':'text/html; charset=utf-8','Cache-Control':'public, max-age=300',Vary:'Accept-Language'});return res.end(req.method==='HEAD'?undefined:html);}
    // Link público de caso compartilhado (etiquetas de prévia para o X e mensageiros).
    const shared=/^\/c\/([A-Za-z0-9]{10})$/.exec(path);
    if(shared&&sharePage)return await sharePage(req,res,{id:shared[1],root:absoluteRoot});

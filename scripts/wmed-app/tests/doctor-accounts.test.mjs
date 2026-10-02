@@ -238,3 +238,65 @@ test('casos compartilhados: cria sem o relato, feed público, dono remove, denú
  const html = res(); await shared.sharePage(req({ method: 'GET', url: '/c/' + id }), html, { id, root: new URL('../', import.meta.url).pathname });
  assert.equal(html.statusCode, 404);
 });
+
+test('perfil: cadastro como paciente exige termos, fica salvo e o servidor usa no chat', { skip }, async () => {
+ const { TERMOS_PACIENTE_VERSAO } = await import('../shared/patient-mode.mjs');
+ const { chat } = await import('../server/vytal-assistant.mjs');
+ const criar = async (body) => { const r = res(); await accounts.auth(req({ body: { action: 'criar', nome: 'Paciente Teste', password: 'senha-de-teste-1', locale: 'en', ...body } }), r); return r; };
+ const sem = await criar({ email: 'pac-sem@exemplo.com', perfil: 'paciente' });
+ assert.equal(sem.statusCode, 400);
+ assert.equal(sem.data.code, 'PATIENT_TERMS');
+ assert.equal((await db.q('select 1 from usuarios where email = $1', ['pac-sem@exemplo.com'])).rowCount, 0);
+ assert.equal((await criar({ email: 'pac-x@exemplo.com', perfil: 'admin' })).statusCode, 400);
+ const ok = await criar({ email: 'pac@exemplo.com', perfil: 'paciente', termosPaciente: TERMOS_PACIENTE_VERSAO });
+ assert.equal(ok.statusCode, 201);
+ assert.equal(ok.data.user.perfil, 'paciente');
+ assert.equal(ok.data.user.termosPaciente, true);
+ const row = (await db.q('select perfil, termos_paciente, termos_paciente_em from usuarios where email = $1', ['pac@exemplo.com'])).rows[0];
+ assert.equal(row.perfil, 'paciente'); assert.equal(row.termos_paciente, TERMOS_PACIENTE_VERSAO); assert.ok(row.termos_paciente_em);
+ const cookie = cookieOf(ok);
+ const me = res(); await accounts.auth(req({ method: 'GET', cookie }), me);
+ assert.equal(me.data.user.perfil, 'paciente');
+ // O chat decide pelo perfil salvo, mesmo que o navegador peça "profissional".
+ let body;
+ const r = res();
+ await chat(req({ url: '/api/wmed/chat', cookie, body: { question: 'What does a high TSH mean?', locale: 'en', country: 'global', perfil: 'profissional' } }), r, {
+  twoDoctorEnabled: true, identify: accounts.identify, allow: (q) => accounts.sameSite(q),
+  fetchImpl: async (url, opts) => { body = JSON.parse(opts.body); return new Response('data: {"t":"ok"}\n\ndata: {"done":true}\n\n', { headers: { 'Content-Type': 'text/event-stream' } }); },
+ });
+ assert.equal(r.statusCode, 200);
+ assert.equal(body.modo, 'paciente');
+ assert.match(body.historico.map((m) => m.content).join('\n'), /2Doctor patient mode/);
+ // Conta antiga sem perfil continua profissional.
+ const antiga = await signup('antiga@exemplo.com');
+ assert.equal(antiga.r.data.user.perfil, 'profissional');
+ assert.equal((await db.q('select perfil from usuarios where email = $1', ['antiga@exemplo.com'])).rows[0].perfil, null);
+ const caller = await accounts.identify(req({ cookie: antiga.cookie }));
+ assert.equal(caller.perfil, 'profissional');
+});
+
+test('perfil: trocar em Conta (virar paciente pede os termos uma vez)', { skip }, async () => {
+ const { TERMOS_PACIENTE_VERSAO } = await import('../shared/patient-mode.mjs');
+ const { cookie } = await signup('troca-perfil@exemplo.com');
+ const troca = async (body) => { const r = res(); await accounts.auth(req({ cookie, body: { action: 'perfil', locale: 'pt', ...body } }), r); return r; };
+ assert.equal((await troca({ perfil: 'paciente' })).statusCode, 400);
+ assert.equal((await troca({ perfil: 'qualquer' })).statusCode, 400);
+ const est = await troca({ perfil: 'estudante' });
+ assert.equal(est.statusCode, 200); assert.equal(est.data.user.perfil, 'estudante');
+ const pac = await troca({ perfil: 'paciente', termosPaciente: TERMOS_PACIENTE_VERSAO });
+ assert.equal(pac.statusCode, 200); assert.equal(pac.data.user.perfil, 'paciente');
+ assert.equal((await troca({ perfil: 'profissional' })).data.user.perfil, 'profissional');
+ // Já aceitou: voltar a paciente não pede de novo.
+ assert.equal((await troca({ perfil: 'paciente' })).statusCode, 200);
+ assert.equal((await accounts.identify(req({ cookie }))).perfil, 'paciente');
+ const anon = res(); await accounts.auth(req({ body: { action: 'perfil', perfil: 'paciente' } }), anon);
+ assert.equal(anon.statusCode, 401);
+});
+
+test('Google: perfil escolhido no cadastro só vale com termos (paciente)', { skip }, () => {
+ const u = (qs) => new URL('http://x/api/wmed/auth/google?' + qs);
+ assert.equal(accounts.googlePerfil(u('perfil=paciente')), '');
+ assert.equal(accounts.googlePerfil(u('perfil=paciente&termos=paciente-v1')), 'paciente');
+ assert.equal(accounts.googlePerfil(u('perfil=profissional')), 'profissional');
+ assert.equal(accounts.googlePerfil(u('perfil=x.y')), '');
+});

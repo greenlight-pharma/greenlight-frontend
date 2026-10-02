@@ -88,6 +88,11 @@ export const SCHEMA = [
    criado_em timestamptz not null default now(),
    primary key (caso_publico, usuario_id)
  )`,
+ // Modo paciente: perfil da conta (null = conta antiga, segue como profissional) e aceite dos
+ // termos para pacientes (versão + data).
+ `alter table usuarios add column if not exists perfil text`,
+ `alter table usuarios add column if not exists termos_paciente text`,
+ `alter table usuarios add column if not exists termos_paciente_em timestamptz`,
 ];
 
 let pool = null, ready = null;

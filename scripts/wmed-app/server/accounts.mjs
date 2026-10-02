@@ -4,6 +4,7 @@
 import { randomBytes, randomUUID, scrypt as scryptCb, timingSafeEqual, createHash } from 'node:crypto';
 import { promisify } from 'node:util';
 import { q } from './db.mjs';
+import { perfilValido, perfilEfetivo, TERMOS_PACIENTE_VERSAO } from '../shared/patient-mode.mjs';
 
 const scrypt = promisify(scryptCb);
 export const COOKIE = '__Host-2d_sessao';
@@ -32,6 +33,7 @@ const TEXT = {
   bodyReset: 'Recebemos um pedido para redefinir sua senha. O link vale por 1 hora:', bodyVerify: 'Confirme seu e-mail para proteger sua conta:',
   ignore: 'Se não foi você, ignore esta mensagem.',
   currentWrong: 'Senha atual incorreta.', changed: 'Senha alterada. As outras sessões foram encerradas.',
+  perfil: 'Escolha quem você é.', terms: 'Para usar como paciente, aceite os termos para pacientes.', perfilOk: 'Perfil atualizado.',
  },
  en: {
   invalid: 'Check the information you sent.', email: 'Enter a valid email.', password: 'Your password must have 8 to 200 characters.',
@@ -46,6 +48,7 @@ const TEXT = {
   bodyReset: 'We received a request to reset your password. The link is valid for 1 hour:', bodyVerify: 'Confirm your email to protect your account:',
   ignore: 'If this wasn\'t you, ignore this message.',
   currentWrong: 'Current password is incorrect.', changed: 'Password changed. Your other sessions were signed out.',
+  perfil: 'Choose who you are.', terms: 'To use 2Doctor as a patient, accept the terms for patients.', perfilOk: 'Profile updated.',
  },
  es: {
   invalid: 'Revisa los datos enviados.', email: 'Ingresa un correo válido.', password: 'La contraseña debe tener de 8 a 200 caracteres.',
@@ -60,6 +63,7 @@ const TEXT = {
   bodyReset: 'Recibimos una solicitud para restablecer tu contraseña. El enlace vale por 1 hora:', bodyVerify: 'Confirma tu correo para proteger tu cuenta:',
   ignore: 'Si no fuiste tú, ignora este mensaje.',
   currentWrong: 'La contraseña actual es incorrecta.', changed: 'Contraseña cambiada. Se cerraron tus otras sesiones.',
+  perfil: 'Elige quién eres.', terms: 'Para usar 2Doctor como paciente, acepta los términos para pacientes.', perfilOk: 'Perfil actualizado.',
  },
 };
 export function lang(req, fallback) {
@@ -124,13 +128,14 @@ async function startSession(userId) {
 export async function currentUser(req) {
  const token = cookies(req)[COOKIE];
  if (!token || !/^[A-Za-z0-9_-]{30,80}$/.test(token)) return null;
- const { rows } = await q(`select u.id, u.email, u.nome, u.email_verificado, u.google_sub is not null as google, u.senha_hash is not null as tem_senha, u.plano, u.assinatura_status
+ const { rows } = await q(`select u.id, u.email, u.nome, u.email_verificado, u.google_sub is not null as google, u.senha_hash is not null as tem_senha, u.plano, u.assinatura_status, u.perfil, u.termos_paciente
    from sessoes s join usuarios u on u.id = s.usuario_id where s.token_hash = $1 and s.expira_em > now()`, [sha(token)]);
  return rows[0] || null;
 }
 function publicUser(u) {
  return { nome: String(u.nome || u.email.split('@')[0]).split(' ')[0].slice(0, 60), email: u.email, emailVerificado: u.email_verificado,
-  progressScope: sha('2doctor-progress:' + u.id), conta: '2doctor', plano: planOf(u), temSenha: u.tem_senha ?? !!u.senha_hash };
+  progressScope: sha('2doctor-progress:' + u.id), conta: '2doctor', plano: planOf(u), temSenha: u.tem_senha ?? !!u.senha_hash,
+  perfil: perfilEfetivo(u.perfil), termosPaciente: u.termos_paciente === TERMOS_PACIENTE_VERSAO };
 }
 
 // ---- limites ----
@@ -160,6 +165,7 @@ export async function identify(req) {
   headers: { 'X-2Doctor-Chave': key, 'X-2Doctor-Usuario': user.id },
   path: (p) => p.replace(/^\/estudante\/(?:2doctor\/|tutor\/)?/, '/servico/2doctor/'),
   charge: (kind) => charge(user.id, kind, planOf(user)),
+  perfil: perfilEfetivo(user.perfil),
   user,
  };
 }
@@ -213,6 +219,7 @@ export async function auth(req, res, { sub = '', fetchImpl = fetch } = {}) {
   if (action === 'sair') return await logout(req, res);
   if (action === 'redefinir') return await resetPassword(req, res, b, l);
   if (action === 'trocar') return await changePassword(req, res, b, l);
+  if (action === 'perfil') return await changeProfile(req, res, b, l);
   if (!EMAIL_RE.test(email) || email.length > 254) return reply(res, 400, { error: t(l, 'email') });
   if (!throttle('email:' + email, 8)) return reply(res, 429, { error: t(l, 'tooMany') });
   if (action === 'esqueci') return await forgotPassword(res, email, l, fetchImpl);
@@ -221,17 +228,21 @@ export async function auth(req, res, { sub = '', fetchImpl = fetch } = {}) {
   if (action === 'criar') {
    const nome = typeof b.nome === 'string' ? b.nome.trim().replace(/\s+/g, ' ') : '';
    if (!nome || nome.length > 80) return reply(res, 400, { error: t(l, 'name') });
+   const perfil = b.perfil == null ? null : b.perfil;
+   if (perfil !== null && !perfilValido(perfil)) return reply(res, 400, { error: t(l, 'perfil') });
+   const termos = perfil === 'paciente' ? b.termosPaciente : null;
+   if (perfil === 'paciente' && termos !== TERMOS_PACIENTE_VERSAO) return reply(res, 400, { error: t(l, 'terms'), code: 'PATIENT_TERMS' });
    const id = randomUUID();
-   const { rowCount } = await q(`insert into usuarios (id, email, nome, senha_hash, idioma, pais) values ($1, $2, $3, $4, $5, $6) on conflict (email) do nothing`,
-    [id, email, nome, await hashPassword(password), l, typeof b.country === 'string' ? b.country.slice(0, 2).toUpperCase() : null]);
+   const { rowCount } = await q(`insert into usuarios (id, email, nome, senha_hash, idioma, pais, perfil, termos_paciente, termos_paciente_em) values ($1, $2, $3, $4, $5, $6, $7, $8, case when $8::text is null then null else now() end) on conflict (email) do nothing`,
+    [id, email, nome, await hashPassword(password), l, typeof b.country === 'string' ? b.country.slice(0, 2).toUpperCase() : null, perfil, termos]);
    if (!rowCount) return reply(res, 409, { error: t(l, 'exists') });
    const token = await emailToken(id, 'verificar', 72);
    sendEmail(email, t(l, 'subjectVerify'), [t(l, 'bodyVerify')], `${publicOrigin()}/api/wmed/auth/verificar?token=${token}`, { fetchImpl }).catch(() => {});
-   const user = { id, email, nome, email_verificado: false };
+   const user = { id, email, nome, email_verificado: false, tem_senha: true, perfil, termos_paciente: termos };
    return reply(res, 201, { authenticated: true, user: publicUser(user) }, { 'Set-Cookie': await startSession(id) });
   }
   if (action !== 'entrar') return reply(res, 400, { error: t(l, 'invalid') });
-  const { rows } = await q('select id, email, nome, senha_hash, email_verificado, plano, assinatura_status from usuarios where email = $1', [email]);
+  const { rows } = await q('select id, email, nome, senha_hash, email_verificado, plano, assinatura_status, perfil, termos_paciente from usuarios where email = $1', [email]);
   const user = rows[0];
   if (user && !user.senha_hash) return reply(res, 401, { error: t(l, 'google') });
   // Sem conta, compara com um hash qualquer para o tempo de resposta não revelar se o e-mail existe.
@@ -267,7 +278,7 @@ async function resetPassword(req, res, b, l) {
  // O link chegou pelo e-mail: vale como confirmação do endereço. Sessões antigas caem.
  await q('update usuarios set senha_hash = $2, email_verificado = true where id = $1', [id, await hashPassword(password)]);
  await q('delete from sessoes where usuario_id = $1', [id]);
- const { rows: u } = await q('select id, email, nome, email_verificado, plano, assinatura_status from usuarios where id = $1', [id]);
+ const { rows: u } = await q('select id, email, nome, email_verificado, plano, assinatura_status, perfil, termos_paciente from usuarios where id = $1', [id]);
  return reply(res, 200, { authenticated: true, user: publicUser({ ...u[0], tem_senha: true }), message: t(l, 'resetOk') }, { 'Set-Cookie': await startSession(id) });
 }
 // Troca de senha com a sessão aberta. Conta só com Google cria a primeira senha sem pedir a atual.
@@ -283,6 +294,18 @@ async function changePassword(req, res, b, l) {
  await q('delete from sessoes where usuario_id = $1 and token_hash <> $2', [user.id, sha(cookies(req)[COOKIE])]);
  return reply(res, 200, { ok: true, message: t(l, 'changed'), user: publicUser({ ...user, tem_senha: true }) });
 }
+// Troca de perfil em Conta. Virar paciente exige o aceite dos termos para pacientes (uma vez).
+async function changeProfile(req, res, b, l) {
+ const user = await currentUser(req);
+ if (!user) return reply(res, 401, { error: t(l, 'login'), code: 'AUTH_REQUIRED' });
+ if (!perfilValido(b.perfil)) return reply(res, 400, { error: t(l, 'perfil') });
+ const aceitou = user.termos_paciente === TERMOS_PACIENTE_VERSAO || b.termosPaciente === TERMOS_PACIENTE_VERSAO;
+ if (b.perfil === 'paciente' && !aceitou) return reply(res, 400, { error: t(l, 'terms'), code: 'PATIENT_TERMS' });
+ const novoTermo = b.perfil === 'paciente' && user.termos_paciente !== TERMOS_PACIENTE_VERSAO;
+ await q(`update usuarios set perfil = $2${novoTermo ? ', termos_paciente = $3, termos_paciente_em = now()' : ''} where id = $1`,
+  novoTermo ? [user.id, b.perfil, TERMOS_PACIENTE_VERSAO] : [user.id, b.perfil]);
+ return reply(res, 200, { ok: true, message: t(l, 'perfilOk'), user: publicUser({ ...user, perfil: b.perfil, termos_paciente: novoTermo ? TERMOS_PACIENTE_VERSAO : user.termos_paciente }) });
+}
 async function verifyEmail(req, res, url) {
  const token = url.searchParams.get('token') || '';
  let ok = false;
@@ -296,6 +319,13 @@ async function verifyEmail(req, res, url) {
 
 // ---- Google (OpenID Connect, código + PKCE) ----
 const redirectUri = () => `${publicOrigin()}/api/wmed/auth/google/retorno`;
+// Perfil escolhido no cadastro antes do Google (só vale para conta nova; paciente exige termos).
+export function googlePerfil(url) {
+ const perfil = url.searchParams.get('perfil');
+ if (!perfilValido(perfil)) return '';
+ if (perfil === 'paciente' && url.searchParams.get('termos') !== TERMOS_PACIENTE_VERSAO) return '';
+ return perfil;
+}
 function googleStart(req, res, url) {
  if (!googleOn()) { res.writeHead(302, { Location: '/#google-indisponivel' }); return res.end(); }
  const state = randomBytes(16).toString('base64url');
@@ -305,7 +335,7 @@ function googleStart(req, res, url) {
  const params = new URLSearchParams({ client_id: process.env.GOOGLE_CLIENT_ID, redirect_uri: redirectUri(), response_type: 'code', scope: 'openid email profile',
   state, code_challenge: challenge, code_challenge_method: 'S256', prompt: 'select_account', hl: l });
  res.writeHead(302, { Location: 'https://accounts.google.com/o/oauth2/v2/auth?' + params, 'Cache-Control': 'no-store',
-  'Set-Cookie': `${OAUTH_COOKIE}=${state}.${verifier}.${l}; Path=/api/wmed/auth; HttpOnly; Secure; SameSite=Lax; Max-Age=600` });
+  'Set-Cookie': `${OAUTH_COOKIE}=${state}.${verifier}.${l}.${googlePerfil(url)}; Path=/api/wmed/auth; HttpOnly; Secure; SameSite=Lax; Max-Age=600` });
  res.end();
 }
 async function googleReturn(req, res, url, fetchImpl) {
@@ -313,7 +343,8 @@ async function googleReturn(req, res, url, fetchImpl) {
   const headers = { Location: '/#' + hash, 'Cache-Control': 'no-store', 'Set-Cookie': [`${OAUTH_COOKIE}=; Path=/api/wmed/auth; HttpOnly; Secure; SameSite=Lax; Max-Age=0`, ...(cookie ? [cookie] : [])] };
   res.writeHead(302, headers); res.end();
  };
- const [state, verifier, l] = String(cookies(req)[OAUTH_COOKIE] || '').split('.');
+ const [state, verifier, l, perfilCookie] = String(cookies(req)[OAUTH_COOKIE] || '').split('.');
+ const perfil = perfilValido(perfilCookie) ? perfilCookie : null;
  const code = url.searchParams.get('code');
  if (!googleOn() || !state || !verifier || url.searchParams.get('state') !== state || !code) return done('google-falhou');
  const tok = await fetchImpl('https://oauth2.googleapis.com/token', { method: 'POST', headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
@@ -328,9 +359,10 @@ async function googleReturn(req, res, url, fetchImpl) {
  const email = g.email.trim().toLowerCase();
  const nome = typeof g.name === 'string' ? g.name.slice(0, 80) : null;
  // Mesmo e-mail já cadastrado com senha: o Google confirmou o endereço, então vincula.
- const { rows } = await q(`insert into usuarios (id, email, nome, google_sub, email_verificado, idioma) values ($1, $2, $3, $4, true, $5)
+ // Perfil e termos só entram na conta nova (conta existente mantém o que já tinha).
+ const { rows } = await q(`insert into usuarios (id, email, nome, google_sub, email_verificado, idioma, perfil, termos_paciente, termos_paciente_em) values ($1, $2, $3, $4, true, $5, $6, $7, case when $7::text is null then null else now() end)
    on conflict (email) do update set google_sub = coalesce(usuarios.google_sub, excluded.google_sub), email_verificado = true, nome = coalesce(usuarios.nome, excluded.nome)
-   returning id, google_sub`, [randomUUID(), email, nome, g.sub, l || 'en']);
+   returning id, google_sub`, [randomUUID(), email, nome, g.sub, l || 'en', perfil, perfil === 'paciente' ? TERMOS_PACIENTE_VERSAO : null]);
  if (rows[0].google_sub !== g.sub) return done('google-falhou');
  return done('entrou', await startSession(rows[0].id));
 }
