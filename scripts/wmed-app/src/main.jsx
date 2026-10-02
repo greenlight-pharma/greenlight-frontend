@@ -6,6 +6,8 @@ import { chatResponseError } from '../shared/chat-response-error.mjs';
 import { composerLength } from '../shared/composer-length.mjs';
 import { shouldSubmitComposer } from '../shared/composer-keyboard.mjs';
 import ResponseStyle from './doctor/ResponseStyle';
+import { captureOrigin } from './doctor/origem';
+captureOrigin();
 import React, { useState, useEffect, useRef, useCallback, lazy, Suspense } from 'react';
 import { createRoot } from 'react-dom/client';
 import { ArrowUp, ArrowUpRight, Plus, Search, BookOpen, SlidersHorizontal, X, Square, Check, Copy, ChevronRight, Activity, Palette, History } from 'lucide-react';

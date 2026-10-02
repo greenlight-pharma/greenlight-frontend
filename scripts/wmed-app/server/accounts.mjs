@@ -16,7 +16,9 @@ export const DAILY_LIMITS = { chat: 300, feedback: 40, quality: 80, structure: 8
 // Plano gratuito (decisão do Dilson, 26/09): mesmas funções, limite diário menor.
 export const FREE_LIMITS = { chat: 20, feedback: 3, quality: 6, structure: 6, transcribe: 5, images: 100, privacy: 10 };
 const ATIVOS = new Set(['active', 'trialing', 'past_due']);
-export const planOf = (u) => (u?.plano === 'pro' && ATIVOS.has(u?.assinatura_status) ? 'pro' : 'gratis');
+// Pro pela assinatura ativa ou por cortesia dada no painel de administração (com prazo).
+export const cortesiaAtiva = (u) => !!u?.cortesia_ate && new Date(u.cortesia_ate) > new Date();
+export const planOf = (u) => ((u?.plano === 'pro' && ATIVOS.has(u?.assinatura_status)) || cortesiaAtiva(u) ? 'pro' : 'gratis');
 
 const TEXT = {
  pt: {
@@ -124,9 +126,12 @@ async function startSession(userId) {
 export async function currentUser(req) {
  const token = cookies(req)[COOKIE];
  if (!token || !/^[A-Za-z0-9_-]{30,80}$/.test(token)) return null;
- const { rows } = await q(`select u.id, u.email, u.nome, u.email_verificado, u.google_sub is not null as google, u.senha_hash is not null as tem_senha, u.plano, u.assinatura_status
+ const { rows } = await q(`select u.id, u.email, u.nome, u.email_verificado, u.google_sub is not null as google, u.senha_hash is not null as tem_senha, u.plano, u.assinatura_status, u.cortesia_ate
    from sessoes s join usuarios u on u.id = s.usuario_id where s.token_hash = $1 and s.expira_em > now()`, [sha(token)]);
- return rows[0] || null;
+ const user = rows[0] || null;
+ // Último acesso para o painel: no máximo uma escrita a cada 10 minutos por pessoa.
+ if (user) q(`update usuarios set ultimo_acesso = now() where id = $1 and (ultimo_acesso is null or ultimo_acesso < now() - interval '10 minutes')`, [user.id]).catch(() => {});
+ return user;
 }
 function publicUser(u) {
  return { nome: String(u.nome || u.email.split('@')[0]).split(' ')[0].slice(0, 60), email: u.email, emailVerificado: u.email_verificado,
@@ -142,7 +147,7 @@ export function throttle(key, max = 8, now = Date.now()) {
  rec.n++; attempts.set(key, rec); return true;
 }
 export async function charge(userId, kind, plan) {
- if (!plan) { const { rows } = await q('select plano, assinatura_status from usuarios where id = $1', [userId]); plan = planOf(rows[0]); }
+ if (!plan) { const { rows } = await q('select plano, assinatura_status, cortesia_ate from usuarios where id = $1', [userId]); plan = planOf(rows[0]); }
  const limit = (plan === 'pro' ? DAILY_LIMITS : FREE_LIMITS)[kind];
  if (!limit) return true;
  const { rows } = await q(`insert into uso_diario (usuario_id, dia, tipo, n) values ($1, (now() at time zone 'utc')::date, $2, 1)
@@ -186,6 +191,21 @@ async function emailToken(userId, tipo, hours) {
  return token;
 }
 
+// Origem do cadastro (utm_source/ref guardado pelo site): só letras, números e . _ - : /, até 80.
+export const cleanOrigin = (v) => (typeof v === 'string' && v.trim() ? v.trim().toLowerCase().replace(/[^a-z0-9._:\/-]/g, '').slice(0, 80) || null : null);
+
+// Reenvio do e-mail de verificação (painel de administração).
+export async function resendVerification(userId, { fetchImpl = fetch } = {}) {
+ const { rows } = await q('select email, idioma, email_verificado from usuarios where id = $1', [userId]);
+ const u = rows[0];
+ if (!u) return { ok: false, motivo: 'nao-encontrado' };
+ if (u.email_verificado) return { ok: false, motivo: 'ja-verificado' };
+ const l = TEXT[u.idioma] ? u.idioma : 'en';
+ const token = await emailToken(userId, 'verificar', 72);
+ const sent = await sendEmail(u.email, t(l, 'subjectVerify'), [t(l, 'bodyVerify')], `${publicOrigin()}/api/wmed/auth/verificar?token=${token}`, { fetchImpl }).catch(() => false);
+ return { ok: !!sent, motivo: sent ? null : (process.env.RESEND_API_KEY ? 'falha-envio' : 'email-desligado') };
+}
+
 const EMAIL_RE = /^[^\s@]{1,64}@[^\s@]{1,190}\.[^\s@]{2,}$/;
 const googleOn = () => !!(process.env.GOOGLE_CLIENT_ID && process.env.GOOGLE_CLIENT_SECRET);
 export function authStatus() { return { auth: '2doctor', google: googleOn(), email: !!process.env.RESEND_API_KEY, billing: !!process.env.STRIPE_SECRET_KEY }; }
@@ -224,8 +244,8 @@ export async function auth(req, res, { sub = '', fetchImpl = fetch } = {}) {
    const nome = typeof b.nome === 'string' ? b.nome.trim().replace(/\s+/g, ' ') : '';
    if (!nome || nome.length > 80) return reply(res, 400, { error: t(l, 'name') });
    const id = randomUUID();
-   const { rowCount } = await q(`insert into usuarios (id, email, nome, senha_hash, idioma, pais) values ($1, $2, $3, $4, $5, $6) on conflict (email) do nothing`,
-    [id, email, nome, await hashPassword(password), l, typeof b.country === 'string' ? b.country.slice(0, 2).toUpperCase() : null]);
+   const { rowCount } = await q(`insert into usuarios (id, email, nome, senha_hash, idioma, pais, origem) values ($1, $2, $3, $4, $5, $6, $7) on conflict (email) do nothing`,
+    [id, email, nome, await hashPassword(password), l, typeof b.country === 'string' ? b.country.slice(0, 2).toUpperCase() : null, cleanOrigin(b.origem)]);
    if (!rowCount) return reply(res, 409, { error: t(l, 'exists') });
    const token = await emailToken(id, 'verificar', 72);
    sendEmail(email, t(l, 'subjectVerify'), [t(l, 'bodyVerify')], `${publicOrigin()}/api/wmed/auth/verificar?token=${token}`, { fetchImpl }).catch(() => {});
@@ -233,7 +253,7 @@ export async function auth(req, res, { sub = '', fetchImpl = fetch } = {}) {
    return reply(res, 201, { authenticated: true, user: publicUser(user) }, { 'Set-Cookie': await startSession(id) });
   }
   if (action !== 'entrar') return reply(res, 400, { error: t(l, 'invalid') });
-  const { rows } = await q('select id, email, nome, senha_hash, email_verificado, plano, assinatura_status from usuarios where email = $1', [email]);
+  const { rows } = await q('select id, email, nome, senha_hash, email_verificado, plano, assinatura_status, cortesia_ate from usuarios where email = $1', [email]);
   const user = rows[0];
   if (user && !user.senha_hash) return reply(res, 401, { error: t(l, 'google') });
   // Sem conta, compara com um hash qualquer para o tempo de resposta não revelar se o e-mail existe.
@@ -269,7 +289,7 @@ async function resetPassword(req, res, b, l) {
  // O link chegou pelo e-mail: vale como confirmação do endereço. Sessões antigas caem.
  await q('update usuarios set senha_hash = $2, email_verificado = true where id = $1', [id, await hashPassword(password)]);
  await q('delete from sessoes where usuario_id = $1', [id]);
- const { rows: u } = await q('select id, email, nome, email_verificado, plano, assinatura_status from usuarios where id = $1', [id]);
+ const { rows: u } = await q('select id, email, nome, email_verificado, plano, assinatura_status, cortesia_ate from usuarios where id = $1', [id]);
  return reply(res, 200, { authenticated: true, user: publicUser({ ...u[0], tem_senha: true }), message: t(l, 'resetOk') }, { 'Set-Cookie': await startSession(id) });
 }
 // Troca de senha com a sessão aberta. Conta só com Google cria a primeira senha sem pedir a atual.
@@ -307,7 +327,7 @@ function googleStart(req, res, url) {
  const params = new URLSearchParams({ client_id: process.env.GOOGLE_CLIENT_ID, redirect_uri: redirectUri(), response_type: 'code', scope: 'openid email profile',
   state, code_challenge: challenge, code_challenge_method: 'S256', prompt: 'select_account', hl: l });
  res.writeHead(302, { Location: 'https://accounts.google.com/o/oauth2/v2/auth?' + params, 'Cache-Control': 'no-store',
-  'Set-Cookie': `${OAUTH_COOKIE}=${state}.${verifier}.${l}; Path=/api/wmed/auth; HttpOnly; Secure; SameSite=Lax; Max-Age=600` });
+  'Set-Cookie': `${OAUTH_COOKIE}=${state}.${verifier}.${l}.${Buffer.from(cleanOrigin(url.searchParams.get('origem')) || '').toString('base64url')}; Path=/api/wmed/auth; HttpOnly; Secure; SameSite=Lax; Max-Age=600` });
  res.end();
 }
 async function googleReturn(req, res, url, fetchImpl) {
@@ -315,7 +335,8 @@ async function googleReturn(req, res, url, fetchImpl) {
   const headers = { Location: '/#' + hash, 'Cache-Control': 'no-store', 'Set-Cookie': [`${OAUTH_COOKIE}=; Path=/api/wmed/auth; HttpOnly; Secure; SameSite=Lax; Max-Age=0`, ...(cookie ? [cookie] : [])] };
   res.writeHead(302, headers); res.end();
  };
- const [state, verifier, l] = String(cookies(req)[OAUTH_COOKIE] || '').split('.');
+ const [state, verifier, l, o64] = String(cookies(req)[OAUTH_COOKIE] || '').split('.');
+ const origem = cleanOrigin(Buffer.from(o64 || '', 'base64url').toString());
  const code = url.searchParams.get('code');
  if (!googleOn() || !state || !verifier || url.searchParams.get('state') !== state || !code) return done('google-falhou');
  const tok = await fetchImpl('https://oauth2.googleapis.com/token', { method: 'POST', headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
@@ -330,9 +351,9 @@ async function googleReturn(req, res, url, fetchImpl) {
  const email = g.email.trim().toLowerCase();
  const nome = typeof g.name === 'string' ? g.name.slice(0, 80) : null;
  // Mesmo e-mail já cadastrado com senha: o Google confirmou o endereço, então vincula.
- const { rows } = await q(`insert into usuarios (id, email, nome, google_sub, email_verificado, idioma) values ($1, $2, $3, $4, true, $5)
+ const { rows } = await q(`insert into usuarios (id, email, nome, google_sub, email_verificado, idioma, origem) values ($1, $2, $3, $4, true, $5, $6)
    on conflict (email) do update set google_sub = coalesce(usuarios.google_sub, excluded.google_sub), email_verificado = true, nome = coalesce(usuarios.nome, excluded.nome)
-   returning id, google_sub`, [randomUUID(), email, nome, g.sub, l || 'en']);
+   returning id, google_sub`, [randomUUID(), email, nome, g.sub, l || 'en', origem]);
  if (rows[0].google_sub !== g.sub) return done('google-falhou');
  return done('entrou', await startSession(rows[0].id));
 }
