@@ -330,9 +330,9 @@ async function googleReturn(req, res, url, fetchImpl) {
  // Mesmo e-mail já cadastrado com senha: o Google confirmou o endereço, então vincula.
  const { rows } = await q(`insert into usuarios (id, email, nome, google_sub, email_verificado, idioma) values ($1, $2, $3, $4, true, $5)
    on conflict (email) do update set google_sub = coalesce(usuarios.google_sub, excluded.google_sub), email_verificado = true, nome = coalesce(usuarios.nome, excluded.nome)
-   returning id, google_sub`, [randomUUID(), email, nome, g.sub, l || 'en']);
+   returning id, google_sub, (xmax = 0) as novo`, [randomUUID(), email, nome, g.sub, l || 'en']);
  if (rows[0].google_sub !== g.sub) return done('google-falhou');
- return done('entrou', await startSession(rows[0].id));
+ return done(rows[0].novo ? 'entrou-novo' : 'entrou', await startSession(rows[0].id));
 }
 
 // ---- guarda para proxies que precisam de conta (casos, histórico) ----

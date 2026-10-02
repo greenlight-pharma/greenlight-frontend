@@ -25,6 +25,7 @@ import { productConfig } from '../shared/product.mjs';
 import { Rail as DoctorRail, Header as DoctorHeader, Drawer as DoctorDrawer, Welcome as DoctorWelcome, QuickActions, MobileNavigation } from './doctor/Navigation';
 import './doctor/doctor.css';
 import { I18nProvider, useI18n } from './doctor/I18n';
+import './doctor/pixel-init';
 const BASE = import.meta.env.BASE_URL;const PUBLIC = import.meta.env.VITE_PUBLIC_PREVIEW === 'true';const API = PUBLIC ? '/api/wmed' : '/api';
 const PRODUCT = productConfig(import.meta.env.VITE_PRODUCT, BASE);
 const prompts = ['Explique a insuficiência mitral', 'Compare asma e DPOC', 'Como interpretar o escore de Wells?'];
@@ -65,7 +66,7 @@ function App() {
   const switchingChatRef = useRef(false);
   // Retornos da conta 2Doctor: link de nova senha (#redefinir=…) e volta do Google (#entrou, #google-falhou).
   const [resetToken, setResetToken] = useState('');
-  useEffect(() => {const h = location.hash.slice(1);const clean = () => history.replaceState(null, '', location.pathname + location.search);if (h.startsWith('redefinir=')) {setResetToken(h.slice('redefinir='.length).replace(/[^A-Za-z0-9_-]/g, ''));setLogin(true);clean();} else if (h === 'google-falhou' || h === 'google-indisponivel') {setLogin(true);clean();} else if (h === 'assinatura-ok' || h === 'planos' || h === 'conta') {setSettings(true);clean();} else if (['entrou', 'email-confirmado', 'link-invalido'].includes(h)) clean();}, []);
+  useEffect(() => {const h = location.hash.slice(1);const clean = () => history.replaceState(null, '', location.pathname + location.search);if (h.startsWith('redefinir=')) {setResetToken(h.slice('redefinir='.length).replace(/[^A-Za-z0-9_-]/g, ''));setLogin(true);clean();} else if (h === 'google-falhou' || h === 'google-indisponivel') {setLogin(true);clean();} else if (h === 'assinatura-ok' || h === 'planos' || h === 'conta') {setSettings(true);clean();} else if (['entrou', 'entrou-novo', 'email-confirmado', 'link-invalido'].includes(h)) clean();}, []);
   const historyStore = useChatHistory({ api: API, scope: session?.user?.progressScope, messages, setMessages, busy });
   useEffect(() => {try {setProgress(loadProgress(localStorage, session?.user?.progressScope));} catch {setProgress([]);}}, [session?.user?.progressScope]);
   function recordProgress(score) {setProgress((previous) => {const next = [...previous, { score, date: new Date().toISOString() }];try {saveProgress(localStorage, session?.user?.progressScope, next);} catch {}return next;});}

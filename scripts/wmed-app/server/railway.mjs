@@ -1,6 +1,7 @@
 import http from 'node:http';
 import {createReadStream} from 'node:fs';
-import {stat} from 'node:fs/promises';
+import {stat,readFile} from 'node:fs/promises';
+import {injectPixelMeta} from '../shared/meta-pixel.mjs';
 import {resolve,extname,sep} from 'node:path';
 import {fileURLToPath} from 'node:url';
 import {Readable} from 'node:stream';
@@ -40,7 +41,7 @@ export function byteRange(header,size){
  if(!Number.isSafeInteger(start)||!Number.isSafeInteger(end)||start<0||start>end||start>=size)return false;
  return {start,end};
 }
-export function createApp({root=ROOT,publicOrigin=process.env.PUBLIC_ORIGIN,fetchImpl=fetch,handlers=routes,status=null,sharePage=null}={}){
+export function createApp({root=ROOT,publicOrigin=process.env.PUBLIC_ORIGIN,fetchImpl=fetch,metaPixelId=process.env.META_PIXEL_ID,handlers=routes,status=null,sharePage=null}={}){
  const absoluteRoot=resolve(root);
  const origin=publicOrigin?new URL(publicOrigin).origin:null;
  const server=http.createServer(async(req,res)=>{
@@ -104,6 +105,14 @@ export function createApp({root=ROOT,publicOrigin=process.env.PUBLIC_ORIGIN,fetc
    if(!file.startsWith(absoluteRoot+sep))return json(res,404,{error:'Arquivo não encontrado.'});
    let info;try{info=await stat(file);}catch{return json(res,404,{error:'Arquivo não encontrado.'});}
    if(!info.isFile())return json(res,404,{error:'Arquivo não encontrado.'});
+   if(relative==='index.html'){
+    // Injeta o ID do Meta Pixel (variável de ambiente) no HTML; sem ID válido, o HTML sai intacto.
+    const html=injectPixelMeta(await readFile(file,'utf8'),metaPixelId);
+    res.setHeader('Content-Type',MIME['.html']);res.setHeader('Cache-Control','no-cache');
+    res.setHeader('Content-Length',Buffer.byteLength(html));
+    if(req.method==='HEAD')return res.end();
+    return res.end(html);
+   }
    const range=byteRange(req.headers.range,info.size);
    if(range===false){res.writeHead(416,{'Content-Range':`bytes */${info.size}`});return res.end();}
    const ext=extname(file);res.setHeader('Content-Type',MIME[ext]||'application/octet-stream');
