@@ -33,7 +33,7 @@ test.before(async () => {
  process.env.TWO_DOCTOR_SERVICE_KEY = 'chave-de-servico-de-teste-com-32-caracteres';
  delete process.env.RESEND_API_KEY;
  db = await import('../server/db.mjs');
- await db.q('drop table if exists uso_diario, conversas, casos, tokens_email, sessoes, usuarios cascade').catch(() => {});
+ await db.q('drop table if exists admin_auditoria, erros_servico, uso_diario, conversas, casos, tokens_email, sessoes, usuarios cascade').catch(() => {});
  await db.closeDb();
  accounts = await import('../server/accounts.mjs');
  store = await import('../server/doctor-store.mjs');
@@ -273,4 +273,123 @@ test('casos compartilhados: cria sem o relato, feed público, dono remove, denú
  assert.equal((await call(undefined, '', 'GET', '/api/wmed/compartilhados?id=' + id)).statusCode, 404);
  const html = res(); await shared.sharePage(req({ method: 'GET', url: '/c/' + id }), html, { id, root: new URL('../', import.meta.url).pathname });
  assert.equal(html.statusCode, 404);
+});
+
+// ---- Painel de administração ----
+test('admin: 404 para anônimo, não admin e admin sem e-mail verificado; API e página só para admin', { skip }, async () => {
+ const admin = await import('../server/admin.mjs');
+ delete process.env.STRIPE_SECRET_KEY; admin._resetStripeCache();
+ process.env.ADMIN_EMAILS = 'chefe@exemplo.com, outro@exemplo.com';
+ const comum = await signup('comum@exemplo.com');
+ const chefe = await signup('chefe@exemplo.com', 'Chefe');
+ const call = async (cookie, sub, opts = {}) => { const r = res(); await admin.adminApi(req({ method: opts.method || 'GET', url: '/api/wmed/admin/' + sub + (opts.qs || ''), cookie, body: opts.body }), r, { sub }); return r; };
+ assert.equal((await call('', 'resumo')).statusCode, 404);
+ assert.equal((await call(comum.cookie, 'resumo')).statusCode, 404);
+ // E-mail na lista mas ainda não verificado: qualquer um poderia criar a conta com esse e-mail.
+ assert.equal((await call(chefe.cookie, 'resumo')).statusCode, 404);
+ const page = res(); await admin.adminPage(req({ method: 'GET', url: '/admin', cookie: chefe.cookie }), page);
+ assert.equal(page.statusCode, 404);
+ await db.q(`update usuarios set email_verificado = true where email = 'chefe@exemplo.com'`);
+ const ok = res(); await admin.adminPage(req({ method: 'GET', url: '/admin', cookie: chefe.cookie }), ok);
+ assert.equal(ok.statusCode, 200); assert.match(ok.out, /2Doctor · Painel/);
+ assert.match(String(ok.headers['content-security-policy']), /frame-ancestors 'none'/);
+ const sem = res(); await admin.adminPage(req({ method: 'GET', url: '/admin', cookie: comum.cookie }), sem);
+ assert.equal(sem.statusCode, 404);
+});
+
+test('admin: resumo conta cadastros, Pro, teste, MRR e erros sem expor conteúdo', { skip }, async () => {
+ const admin = await import('../server/admin.mjs');
+ const { chat } = await import('../server/vytal-assistant.mjs');
+ delete process.env.STRIPE_SECRET_KEY; admin._resetStripeCache();
+ process.env.ADMIN_EMAILS = 'chefe@exemplo.com';
+ const chefe = cookieOf(await (async () => { const r = res(); await accounts.auth(req({ body: { email: 'chefe@exemplo.com', password: 'senha-de-teste-1' } }), r); return r; })());
+ const m = await signup('mensal@exemplo.com'); const an = await signup('anual@exemplo.com'); await signup('teste7@exemplo.com'); await signup('cancelou@exemplo.com');
+ await db.q(`update usuarios set plano='gratis', assinatura_status=null`); // isola dos testes anteriores
+ await db.q(`update usuarios set plano='pro', assinatura_status='active', assinatura_intervalo='mensal' where email='mensal@exemplo.com'`);
+ await db.q(`update usuarios set plano='pro', assinatura_status='active', assinatura_intervalo='anual' where email='anual@exemplo.com'`);
+ await db.q(`update usuarios set plano='pro', assinatura_status='trialing' where email='teste7@exemplo.com'`);
+ await db.q(`update usuarios set plano='gratis', assinatura_status='canceled' where email='cancelou@exemplo.com'`);
+ const conteudoSecreto = 'CONTEUDO-SECRETO-DA-CONVERSA';
+ const h = res(); await store.history(req({ url: '/api/wmed/history', cookie: m.cookie, body: { action: 'save', messages: [{ papel: 'user', conteudo: conteudoSecreto }, { papel: 'assistant', conteudo: 'ok' }] } }), h);
+ assert.equal(h.statusCode, 200);
+ await accounts.charge((await db.q(`select id from usuarios where email='mensal@exemplo.com'`)).rows[0].id, 'chat');
+ // Falha do serviço de IA fica contada (só o código).
+ const c = res();
+ await chat(req({ url: '/api/wmed/chat', cookie: an.cookie, body: { question: 'Pergunta válida' } }), c, { identify: accounts.identify, allow: () => true, report: admin.reportError('chat'), fetchImpl: async () => Response.json({ error: 'x' }, { status: 401 }) });
+ assert.equal(c.data.code, 'SERVICE_UNAVAILABLE');
+ await new Promise((r) => setTimeout(r, 50));
+ const r = res(); await admin.adminApi(req({ method: 'GET', url: '/api/wmed/admin/resumo', cookie: chefe }), r, { sub: 'resumo' });
+ assert.equal(r.statusCode, 200);
+ const d = r.data;
+ assert.ok(d.usuarios.total >= 6); assert.ok(d.usuarios.hoje >= 6);
+ assert.equal(d.assinaturas.mensal, 1); assert.equal(d.assinaturas.anual, 1); assert.equal(d.assinaturas.teste, 1); assert.equal(d.assinaturas.canceladas, 1);
+ assert.equal(d.assinaturas.mrrBanco, Math.round((9.99 + 79 / 12) * 100) / 100);
+ assert.equal(d.stripe, null);
+ assert.equal(d.series.cadastros.length, 30);
+ assert.ok(d.series.conversas.at(-1).n >= 1);
+ assert.equal(d.erros.find((e) => e.codigo === 'SERVICE_UNAVAILABLE')?.h24, 1);
+ assert.ok(d.topMensagens.some((u) => u.email === 'mensal@exemplo.com'));
+ assert.ok(d.ativos.hoje >= 1);
+ assert.ok(!r.out.includes(conteudoSecreto)); assert.ok(!/senha_hash|scrypt\$/.test(r.out));
+ const l = res(); await admin.adminApi(req({ method: 'GET', url: '/api/wmed/admin/usuarios?busca=mensal', cookie: chefe }), l, { sub: 'usuarios' });
+ assert.equal(l.data.total, 1); assert.equal(l.data.usuarios[0].conversas, 1);
+ const f = res(); await admin.adminApi(req({ method: 'GET', url: '/api/wmed/admin/usuario/x', cookie: chefe }), f, { sub: 'usuario/' + l.data.usuarios[0].id });
+ assert.equal(f.statusCode, 200); assert.equal(f.data.usuario.mensagensSalvas, 2);
+ assert.ok(!f.out.includes(conteudoSecreto)); assert.ok(!/senha_hash|scrypt\$|stripe_customer_id/.test(f.out));
+});
+
+test('admin: cortesia Pro com prazo libera o plano, fica auditada e pode ser removida', { skip }, async () => {
+ const admin = await import('../server/admin.mjs');
+ process.env.ADMIN_EMAILS = 'chefe@exemplo.com';
+ const chefe = cookieOf(await (async () => { const r = res(); await accounts.auth(req({ body: { email: 'chefe@exemplo.com', password: 'senha-de-teste-1' } }), r); return r; })());
+ const p = await signup('presente@exemplo.com');
+ const id = (await db.q(`select id from usuarios where email='presente@exemplo.com'`)).rows[0].id;
+ const act = async (body, cookie = chefe, extra = {}) => { const r = res(); await admin.adminApi(req({ url: '/api/wmed/admin/acao', cookie, body, ...extra }), r, { sub: 'acao' }); return r; };
+ assert.equal((await act({ id, acao: 'cortesia', dias: 30 }, p.cookie)).statusCode, 404); // não admin
+ assert.equal((await act({ id, acao: 'cortesia', dias: 30 }, chefe, { origin: 'https://mal.example' })).statusCode, 403);
+ assert.equal((await act({ id, acao: 'cortesia', dias: 0 })).statusCode, 400);
+ assert.equal((await act({ id, acao: 'apagar' })).statusCode, 400); // não existe ação de apagar conta
+ const ok = await act({ id, acao: 'cortesia', dias: 30, motivo: 'parceiro' });
+ assert.equal(ok.statusCode, 200);
+ const me = res(); await accounts.auth(req({ method: 'GET', cookie: p.cookie }), me);
+ assert.equal(me.data.user.plano, 'pro');
+ assert.equal(await accounts.charge(id, 'feedback'), true);
+ const u = (await db.q('select cortesia_por, cortesia_ate from usuarios where id = $1', [id])).rows[0];
+ assert.equal(u.cortesia_por, 'chefe@exemplo.com'); assert.ok(u.cortesia_ate > new Date(Date.now() + 29 * 86400000));
+ const v = await act({ id, acao: 'reenviar-verificacao' });
+ assert.equal(v.statusCode, 409); // sem RESEND_API_KEY no teste
+ assert.equal((await act({ id, acao: 'remover-cortesia' })).statusCode, 200);
+ const me2 = res(); await accounts.auth(req({ method: 'GET', cookie: p.cookie }), me2);
+ assert.equal(me2.data.user.plano, 'gratis');
+ const a = res(); await admin.adminApi(req({ method: 'GET', url: '/api/wmed/admin/auditoria', cookie: chefe }), a, { sub: 'auditoria' });
+ const acoes = a.data.auditoria.filter((x) => x.usuario_id === id).map((x) => x.acao);
+ assert.deepEqual(acoes.sort(), ['cortesia_pro', 'reenviar_verificacao', 'remover_cortesia']);
+ assert.ok(a.data.auditoria.every((x) => x.admin_email === 'chefe@exemplo.com'));
+});
+
+test('admin: origem do cadastro é limpa e gravada; Stripe lido só por GET', { skip }, async () => {
+ const admin = await import('../server/admin.mjs');
+ const r = res();
+ await accounts.auth(req({ body: { action: 'criar', nome: 'Origem', email: 'origem@exemplo.com', password: 'senha-de-teste-1', locale: 'pt', origem: 'Instagram/Story <script>' } }), r);
+ assert.equal(r.statusCode, 201);
+ assert.equal((await db.q(`select origem from usuarios where email='origem@exemplo.com'`)).rows[0].origem, 'instagram/storyscript');
+ process.env.STRIPE_SECRET_KEY = 'sk_test_fake'; admin._resetStripeCache();
+ const seen = [];
+ const fetchImpl = async (url, opts) => {
+  seen.push([opts.method || 'GET', String(url)]);
+  if (String(url).includes('/invoices')) return Response.json({ data: [{ id: 'in_1', currency: 'usd', amount_paid: 999 }, { id: 'in_2', currency: 'usd', amount_paid: 7900 }], has_more: false });
+  return Response.json({ data: [
+   { status: 'active', items: { data: [{ quantity: 1, price: { unit_amount: 999, recurring: { interval: 'month' } } }] } },
+   { status: 'active', cancel_at_period_end: true, items: { data: [{ quantity: 1, price: { unit_amount: 7900, recurring: { interval: 'year' } } }] } },
+   { status: 'trialing', items: { data: [{ price: { unit_amount: 999, recurring: { interval: 'month' } } }] } },
+   { status: 'canceled', items: { data: [{ price: {} }] } },
+  ], has_more: false });
+ };
+ const s = await admin.stripeResumo({ fetchImpl });
+ assert.deepEqual(s.receitaMes, { usd: 88.99 });
+ assert.equal(s.assinaturas.mensal, 1); assert.equal(s.assinaturas.anual, 1); assert.equal(s.assinaturas.teste, 1); assert.equal(s.assinaturas.canceladas, 1); assert.equal(s.assinaturas.cancelaNoFim, 1);
+ assert.equal(s.assinaturas.mrr, Math.round((9.99 + 79 / 12) * 100) / 100);
+ assert.ok(seen.every(([m]) => m === 'GET'));
+ assert.equal(s.teste, true);
+ delete process.env.STRIPE_SECRET_KEY; admin._resetStripeCache();
 });
