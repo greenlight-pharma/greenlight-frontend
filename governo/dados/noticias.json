@@ -1,6 +1,6 @@
 {
  "meta": {
-  "gerado_em": "2026-10-01T17:00+00:00",
+  "gerado_em": "2026-10-02T16:13+00:00",
   "gerado_por": "scripts/governo/agentes/agente_noticias.py",
   "janela_dias": 90,
   "fontes": [
@@ -30,13 +30,13 @@
     "url": "https://www.gov.br/planalto/pt-br/acompanhe-o-planalto/noticias/RSS"
    }
   ],
-  "total_artigos": 1556,
-  "artigos_com_no": 473,
-  "novos_nesta_rodada": 72,
+  "total_artigos": 1607,
+  "artigos_com_no": 496,
+  "novos_nesta_rodada": 58,
   "artigos_por_fonte": {
-   "senado": 674,
-   "agenciabrasil": 463,
-   "camara": 385,
+   "agenciabrasil": 500,
+   "camara": 395,
+   "senado": 678,
    "planalto": 30,
    "stf": 4
   },
@@ -45,207 +45,207 @@
  },
  "resumo": [
   {
-   "texto": "Rodrigo Pacheco tomou posse como ministro do Tribunal de Contas da União, na vaga deixada por Bruno Dantas, após nomeação publicada em edição extra do Diário Oficial da União.",
-   "artigo_id": "n-f098491d8f",
+   "texto": "O Ministério do Planejamento e Orçamento liberou R$ 1,88 bilhão do Orçamento de 2026, com R$ 1,46 bilhão para o Ministério das Cidades e R$ 420 milhões para o Ministério da Saúde.",
+   "artigo_id": "n-962200afdf",
+   "no_id": "mpo"
+  },
+  {
+   "texto": "O Instituto Nacional do Seguro Social pagará benefício a mulheres afastadas do trabalho por medida protetiva em casos de violência doméstica, conforme parecer assinado pela Advocacia-Geral da União.",
+   "artigo_id": "n-cda1b81ab8",
+   "no_id": "inss"
+  },
+  {
+   "texto": "Renzo Braz tomou posse como senador por Minas Gerais na vaga de Rodrigo Pacheco, que deixou o Senado para assumir como ministro do Tribunal de Contas da União.",
+   "artigo_id": "n-55b1eff0d6",
    "no_id": "tcu"
   },
   {
-   "texto": "A defesa de Jair Bolsonaro apresentou pedido de revisão criminal ao Supremo Tribunal Federal para anular a condenação de 27 anos e três meses por tentativa de golpe de Estado.",
-   "artigo_id": "n-b9d086fd85",
-   "no_id": "stf"
-  },
-  {
-   "texto": "O Tribunal Superior Eleitoral formou maioria para manter a decisão do ministro André Mendonça que determinou a retirada de postagens sobre Nossa Senhora Aparecida.",
-   "artigo_id": "n-99fee7e849",
-   "no_id": "tse"
-  },
-  {
-   "texto": "O Ministério do Planejamento e Orçamento liberou R$ 1,88 bilhão do Orçamento de 2026, sendo R$ 1,46 bilhão para o Ministério das Cidades e o restante para a Saúde.",
-   "artigo_id": "n-962200afdf",
-   "no_id": "mpo"
+   "texto": "O Banco Central retirou o teto de R$ 500 por transação no Pix por aproximação, permitindo que o cliente defina limites com o banco.",
+   "artigo_id": "n-2d29f6df63",
+   "no_id": "bcb"
   }
  ],
  "ranking": {
   "orgaos": [
    {
     "id": "stf",
-    "artigos": 78,
-    "peso": 47.30252629951078,
-    "ultima": "2026-10-01T16:42+00:00"
+    "artigos": 82,
+    "peso": 48.66150333445353,
+    "ultima": "2026-10-02T13:48+00:00"
    },
    {
     "id": "tse",
-    "artigos": 71,
-    "peso": 43.63733055710626,
-    "ultima": "2026-10-01T16:42+00:00"
+    "artigos": 77,
+    "peso": 46.466392098876064,
+    "ultima": "2026-10-02T13:13+00:00"
+   },
+   {
+    "id": "camara",
+    "artigos": 51,
+    "peso": 24.176106194690252,
+    "ultima": "2026-10-02T13:02:00+00:00"
    },
    {
     "id": "congresso",
     "artigos": 46,
-    "peso": 23.120609642422856,
+    "peso": 23.499823277696862,
     "ultima": "2026-09-30T19:31+00:00"
    },
    {
-    "id": "camara",
-    "artigos": 50,
-    "peso": 23.086053412462896,
-    "ultima": "2026-09-25T12:23:00+00:00"
-   },
-   {
     "id": "caixa",
-    "artigos": 28,
-    "peso": 18.819870410367155,
-    "ultima": "2026-10-01T10:28+00:00"
-   },
-   {
-    "id": "pf",
-    "artigos": 24,
-    "peso": 14.868814530445864,
-    "ultima": "2026-09-30T21:45+00:00"
+    "artigos": 29,
+    "peso": 18.641199999999998,
+    "ultima": "2026-10-02T00:33+00:00"
    },
    {
     "id": "prf",
-    "artigos": 8,
-    "peso": 14.867883775232698,
-    "ultima": "2026-10-01T14:30+00:00"
+    "artigos": 9,
+    "peso": 15.686974631268436,
+    "ultima": "2026-10-01T23:06+00:00"
+   },
+   {
+    "id": "pf",
+    "artigos": 25,
+    "peso": 15.05744778761062,
+    "ultima": "2026-10-01T23:16+00:00"
+   },
+   {
+    "id": "inss",
+    "artigos": 19,
+    "peso": 12.227985288077367,
+    "ultima": "2026-10-01T20:17+00:00"
    },
    {
     "id": "anvisa",
-    "artigos": 18,
-    "peso": 11.81382725893547,
-    "ultima": "2026-10-01T13:17+00:00"
+    "artigos": 19,
+    "peso": 12.046553481946155,
+    "ultima": "2026-10-02T14:29+00:00"
    },
    {
     "id": "mte",
     "artigos": 2,
-    "peso": 11.045471562275019,
+    "peso": 11.356133333333332,
     "ultima": "2026-09-29T18:56+00:00"
-   },
-   {
-    "id": "inss",
-    "artigos": 17,
-    "peso": 10.90664398275168,
-    "ultima": "2026-09-25T22:25+00:00"
    },
    {
     "id": "inpe",
     "artigos": 1,
-    "peso": 10.373333333333333,
+    "peso": 10.713333333333333,
     "ultima": "2026-08-06T22:13:00+00:00"
    },
    {
     "id": "mec",
-    "artigos": 17,
-    "peso": 10.089603226531654,
-    "ultima": "2026-10-01T15:28+00:00"
+    "artigos": 18,
+    "peso": 10.559959971621673,
+    "ultima": "2026-10-02T15:38+00:00"
    },
    {
     "id": "ibge",
-    "artigos": 14,
-    "peso": 9.199518044491157,
-    "ultima": "2026-09-30T13:01+00:00"
+    "artigos": 15,
+    "peso": 9.473241297935102,
+    "ultima": "2026-10-02T12:50+00:00"
+   },
+   {
+    "id": "petrobras",
+    "artigos": 15,
+    "peso": 9.135723893805311,
+    "ultima": "2026-10-02T14:02+00:00"
    },
    {
     "id": "tst",
     "artigos": 15,
-    "peso": 9.166161090033139,
+    "peso": 8.969077375751468,
     "ultima": "2026-09-29T23:40+00:00"
    },
    {
     "id": "ms",
     "artigos": 14,
-    "peso": 8.704440021783883,
+    "peso": 8.495036077816362,
     "ultima": "2026-09-30T16:08+00:00"
-   },
-   {
-    "id": "petrobras",
-    "artigos": 13,
-    "peso": 8.106545494164621,
-    "ultima": "2026-10-01T16:15+00:00"
-   },
-   {
-    "id": "inep",
-    "artigos": 12,
-    "peso": 8.065658747300215,
-    "ultima": "2026-09-25T17:58+00:00"
    },
    {
     "id": "tcu",
     "artigos": 15,
-    "peso": 8.039831585248587,
+    "peso": 8.127396049438033,
     "ultima": "2026-10-01T12:20:00+00:00"
    },
    {
+    "id": "inep",
+    "artigos": 12,
+    "peso": 7.7136000000000005,
+    "ultima": "2026-09-25T17:58+00:00"
+   },
+   {
     "id": "agu",
-    "artigos": 11,
-    "peso": 7.183103357666105,
-    "ultima": "2026-09-30T15:39+00:00"
+    "artigos": 12,
+    "peso": 7.544841297935103,
+    "ultima": "2026-10-01T19:03+00:00"
    },
    {
     "id": "mpf",
     "artigos": 11,
-    "peso": 7.183103357666105,
+    "peso": 6.902041297935103,
     "ultima": "2026-09-29T23:40+00:00"
    },
    {
     "id": "stj",
     "artigos": 10,
-    "peso": 6.7833120474644275,
+    "peso": 6.600983070087001,
     "ultima": "2026-09-30T18:25+00:00"
    },
    {
     "id": "anp",
     "artigos": 11,
-    "peso": 6.68802533495883,
+    "peso": 6.56663607781636,
     "ultima": "2026-09-25T20:44+00:00"
    },
    {
     "id": "cvm",
     "artigos": 7,
-    "peso": 4.841141061961796,
+    "peso": 4.6704708860759485,
     "ultima": "2026-09-27T18:52+00:00"
    },
    {
     "id": "cnj",
     "artigos": 7,
-    "peso": 4.494550441899366,
+    "peso": 4.330841297935103,
     "ultima": "2026-09-29T15:54+00:00"
+   },
+   {
+    "id": "senado",
+    "artigos": 4,
+    "peso": 3.254683544303797,
+    "ultima": "2026-09-29T14:59+00:00"
    },
    {
     "id": "cmn",
     "artigos": 5,
-    "peso": 3.360691144708423,
+    "peso": 3.2139999999999995,
     "ultima": "2026-09-30T17:48+00:00"
    },
    {
     "id": "senacon",
     "artigos": 5,
-    "peso": 3.360691144708423,
+    "peso": 3.2139999999999995,
     "ultima": "2026-09-25T12:27+00:00"
-   },
-   {
-    "id": "senado",
-    "artigos": 4,
-    "peso": 3.2332467532467533,
-    "ultima": "2026-09-29T14:59+00:00"
    },
    {
     "id": "anac",
     "artigos": 5,
-    "peso": 2.865613122001147,
+    "peso": 2.878594779881259,
     "ultima": "2026-09-23T14:04+00:00"
+   },
+   {
+    "id": "inmet",
+    "artigos": 4,
+    "peso": 2.5711999999999997,
+    "ultima": "2026-10-02T12:04+00:00"
    },
    {
     "id": "anatel",
     "artigos": 4,
-    "peso": 2.6885529157667385,
+    "peso": 2.5711999999999997,
     "ultima": "2026-09-28T23:12+00:00"
-   },
-   {
-    "id": "correios",
-    "artigos": 4,
-    "peso": 2.6885529157667385,
-    "ultima": "2026-09-25T00:35+00:00"
    }
   ],
   "pessoas": [
@@ -260,9 +260,9 @@
     "uf": null,
     "foto": "https://commons.wikimedia.org/wiki/Special:FilePath/Foto_oficial_de_Luiz_In%C3%A1cio_Lula_da_Silva_%28estreita%29.jpg?width=160",
     "foto_fonte": "https://www.wikidata.org/wiki/Q37181",
-    "artigos": 32,
-    "peso": 29.03120312227886,
-    "ultima": "2026-10-01T00:35+00:00"
+    "artigos": 34,
+    "peso": 30.24025849669541,
+    "ultima": "2026-10-01T23:10+00:00"
    },
    {
     "id": "damares-alves",
@@ -276,7 +276,7 @@
     "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador6335.jpg",
     "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/6335",
     "artigos": 25,
-    "peso": 11.543026706231453,
+    "peso": 11.851032448377582,
     "ultima": "2026-10-01T12:52:00+00:00"
    },
    {
@@ -291,7 +291,7 @@
     "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador3830.jpg",
     "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/3830",
     "artigos": 20,
-    "peso": 9.655255686370017,
+    "peso": 9.818343362831857,
     "ultima": "2026-09-23T18:08+00:00"
    },
    {
@@ -306,7 +306,7 @@
     "foto": "https://commons.wikimedia.org/wiki/Special:FilePath/Nunes_Marques%2C_February_2025_%28cropped%29.jpg?width=160",
     "foto_fonte": "https://www.wikidata.org/wiki/Q99831978",
     "artigos": 14,
-    "peso": 8.98910088379873,
+    "peso": 8.661682595870207,
     "ultima": "2026-10-01T15:22+00:00"
    },
    {
@@ -320,9 +320,9 @@
     "uf": "RJ",
     "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador5894.jpg",
     "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/5894",
-    "artigos": 12,
-    "peso": 7.434407265222937,
-    "ultima": "2026-10-01T00:35+00:00"
+    "artigos": 14,
+    "peso": 8.49292389380531,
+    "ultima": "2026-10-01T19:47+00:00"
    },
    {
     "id": "edson-fachin",
@@ -335,9 +335,9 @@
     "uf": null,
     "foto": "https://commons.wikimedia.org/wiki/Special:FilePath/Luiz_Edson_Fachin-12-05.2015.jpg?width=160",
     "foto_fonte": "https://www.wikidata.org/wiki/Q10320705",
-    "artigos": 11,
-    "peso": 6.972686196973679,
-    "ultima": "2026-09-30T18:25+00:00"
+    "artigos": 13,
+    "peso": 8.018882595870206,
+    "ultima": "2026-10-01T23:06+00:00"
    },
    {
     "id": "hugo-motta",
@@ -351,7 +351,7 @@
     "foto": "https://www.camara.leg.br/internet/deputado/bandep/160674.jpg",
     "foto_fonte": "https://www.camara.leg.br/deputados/160674",
     "artigos": 11,
-    "peso": 6.465294230991561,
+    "peso": 6.572972629849519,
     "ultima": "2026-09-08T14:44:00+00:00"
    },
    {
@@ -366,7 +366,7 @@
     "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador825.jpg",
     "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/825",
     "artigos": 13,
-    "peso": 6.002373887240357,
+    "peso": 6.1625368731563395,
     "ultima": "2026-09-29T16:37:00+00:00"
    },
    {
@@ -381,7 +381,7 @@
     "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador5979.jpg",
     "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/5979",
     "artigos": 11,
-    "peso": 5.07893175074184,
+    "peso": 5.2144542772861335,
     "ultima": "2026-09-30T13:54:00+00:00"
    },
    {
@@ -396,7 +396,7 @@
     "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador5525.jpg",
     "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/5525",
     "artigos": 11,
-    "peso": 5.07893175074184,
+    "peso": 5.2144542772861335,
     "ultima": "2026-09-02T23:20:00+00:00"
    },
    {
@@ -411,7 +411,7 @@
     "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador345.jpg",
     "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/345",
     "artigos": 10,
-    "peso": 4.617210682492582,
+    "peso": 4.740412979351031,
     "ultima": "2026-09-25T18:03:00+00:00"
    },
    {
@@ -426,7 +426,7 @@
     "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador5376.jpg",
     "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/5376",
     "artigos": 10,
-    "peso": 4.617210682492582,
+    "peso": 4.740412979351031,
     "ultima": "2026-09-23T18:20:00+00:00"
    },
    {
@@ -441,23 +441,8 @@
     "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador5352.jpg",
     "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/5352",
     "artigos": 10,
-    "peso": 4.617210682492582,
+    "peso": 4.740412979351031,
     "ultima": "2026-09-14T16:27:00+00:00"
-   },
-   {
-    "id": "paulo-gonet",
-    "nome": "Paulo Gonet",
-    "nome_completo": "Paulo Gonet",
-    "cargo": "Procurador(a)-Geral da República · MPU",
-    "no_id": "mpu",
-    "poder": "essencial",
-    "partido": null,
-    "uf": null,
-    "foto": null,
-    "foto_fonte": null,
-    "artigos": 7,
-    "peso": 4.284133281206939,
-    "ultima": "2026-09-25T21:11+00:00"
    },
    {
     "id": "carlos-viana",
@@ -471,8 +456,23 @@
     "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador5990.jpg",
     "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/5990",
     "artigos": 9,
-    "peso": 4.155489614243323,
+    "peso": 4.266371681415928,
     "ultima": "2026-09-04T21:56:00+00:00"
+   },
+   {
+    "id": "paulo-gonet",
+    "nome": "Paulo Gonet",
+    "nome_completo": "Paulo Gonet",
+    "cargo": "Procurador(a)-Geral da República · MPU",
+    "no_id": "mpu",
+    "poder": "essencial",
+    "partido": null,
+    "uf": null,
+    "foto": null,
+    "foto_fonte": null,
+    "artigos": 7,
+    "peso": 4.1620825958702055,
+    "ultima": "2026-09-25T21:11+00:00"
    },
    {
     "id": "astronauta-marcos-pontes",
@@ -486,7 +486,7 @@
     "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador6009.jpg",
     "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/6009",
     "artigos": 8,
-    "peso": 3.693768545994065,
+    "peso": 3.7923303834808246,
     "ultima": "2026-09-23T18:51:00+00:00"
    },
    {
@@ -501,7 +501,7 @@
     "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador4770.jpg",
     "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/4770",
     "artigos": 7,
-    "peso": 3.232047477744807,
+    "peso": 3.3182890855457217,
     "ultima": "2026-09-25T21:09:00+00:00"
    },
    {
@@ -516,7 +516,7 @@
     "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador5917.jpg",
     "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/5917",
     "artigos": 7,
-    "peso": 3.232047477744807,
+    "peso": 3.3182890855457217,
     "ultima": "2026-09-02T19:51:00+00:00"
    },
    {
@@ -531,7 +531,7 @@
     "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador6336.jpg",
     "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/6336",
     "artigos": 6,
-    "peso": 2.770326409495549,
+    "peso": 2.8442477876106187,
     "ultima": "2026-09-30T15:55:00+00:00"
    },
    {
@@ -546,7 +546,7 @@
     "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador6338.jpg",
     "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/6338",
     "artigos": 6,
-    "peso": 2.770326409495549,
+    "peso": 2.8442477876106187,
     "ultima": "2026-09-10T18:45:00+00:00"
    },
    {
@@ -561,7 +561,7 @@
     "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador475.jpg",
     "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/475",
     "artigos": 6,
-    "peso": 2.770326409495549,
+    "peso": 2.8442477876106187,
     "ultima": "2026-09-01T22:31:00+00:00"
    },
    {
@@ -576,7 +576,7 @@
     "foto": "https://www.camara.leg.br/internet/deputado/bandep/74161.jpg",
     "foto_fonte": "https://www.camara.leg.br/deputados/74161",
     "artigos": 5,
-    "peso": 2.6551959613087206,
+    "peso": 2.709836077816362,
     "ultima": "2026-09-01T19:56:00+00:00"
    },
    {
@@ -591,7 +591,7 @@
     "foto": "https://www.camara.leg.br/internet/deputado/bandep/220645.jpg",
     "foto_fonte": "https://www.camara.leg.br/deputados/220645",
     "artigos": 4,
-    "peso": 2.478135755074312,
+    "peso": 2.402441297935103,
     "ultima": "2026-10-01T00:35+00:00"
    },
    {
@@ -606,12 +606,586 @@
     "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador5985.jpg",
     "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/5985",
     "artigos": 5,
-    "peso": 2.308605341246291,
+    "peso": 2.3702064896755157,
     "ultima": "2026-09-22T14:16:00+00:00"
    }
   ]
  },
  "artigos": [
+  {
+   "id": "n-87285a6b19",
+   "titulo": "Confira quais são os maiores colégios eleitorais; São Paulo lidera",
+   "url": "https://agenciabrasil.ebc.com.br/politica/noticia/2026-10/confira-quais-sao-os-maiores-colegios-eleitorais-sao-paulo-lidera",
+   "data": "2026-10-02T15:50+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "Neste domingo (4), 158.745.463 eleitores estão aptos a votar para escolher seus representantes aos cargos de presidente da República, governador, senador, deputado federal e deputado estadual ou distrital. O contingente que vai às urnas cresceu 1,46% em relação a 2022, e o maior colégio eleitoral, ou seja, o estado que concentra o maior número de eleitores, segue sendo São Paulo. Confira abaixo os cinco maiores colégios eleitorais do país: 1º São Paulo - 34.104.226 - 21,48% do total; 2º Minas Gerais - 16.377.659 - 10,32% do total; 3º Rio de Janeiro -12.857.000 - 8,10%; 4º Bahia - 11.321.005 - "
+  },
+  {
+   "id": "n-f25bc40f5c",
+   "titulo": "MEC divulga avaliação de livros didáticos",
+   "url": "https://agenciabrasil.ebc.com.br/educacao/noticia/2026-10/mec-divulga-avaliacao-de-livros-didaticos",
+   "data": "2026-10-02T15:38+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [
+    "mec"
+   ],
+   "pessoas": [],
+   "resumo": "A lista final da avaliação pedagógica das obras do Programa Nacional do Livro e do Material Didático (PNLD) para os anos iniciais do ensino fundamental (1º ao 5º ano) no período 2027-2030 já está disponível para consulta no edital (nº 145, 2026), publicado pelo Ministério da Educação (MEC) nesta quinta-feira (1º). Segundo o MEC, os materiais são voltados à formação continuada e ao trabalho pedagógico dos professores da educação básica pública, das redes federal, estaduais, municipais e do Distrito Federal participantes do programa. Notícias relacionadas: Prazo para escolas escolherem livros di"
+  },
+  {
+   "id": "n-963619b337",
+   "titulo": "Mãe de Kathlen Romeu cobra apoio da sociedade no Tribunal do Júri",
+   "url": "https://agenciabrasil.ebc.com.br/direitos-humanos/noticia/2026-09/mae-de-kathlen-romeu-cobra-apoio-da-sociedade-no-tribunal-do-juri",
+   "data": "2026-10-02T15:14+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "Há seis anos, a comerciária Jacklline de Oliveira, de 45 anos, e o professor de educação física Luciano Gonçalves, de 49, comemoraram o aniversário da única filha pela última vez. A lembrança da festa de 24 anos de Kathlen Romeu, no terraço da avó, no Lins de Vasconcelos, na Zona Norte do Rio de Janeiro, reacende na memória da mãe a alegria, a juventude e o carisma de Kathlen, que completaria 30 anos no próximo sábado (3) : \"Kathlen era uma filha intensa e amorosa\", recordou Jacklline. “Sempre foi muito sonhadora, tinha vontade de ser modelo, ficar famosa, ganhar o dinheirinho dela”. Notícias "
+  },
+  {
+   "id": "n-74461b9b27",
+   "titulo": "Revelando SP anuncia Zé Ramalho, Yasmin Santos e Demônios da Garoa",
+   "url": "https://agenciabrasil.ebc.com.br/cultura/noticia/2026-10/revelando-sp-anuncia-ze-ramalho-yasmin-santos-e-demonios-da-garoa",
+   "data": "2026-10-02T15:07+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "Os artistas Zé Ramalho, Yasmin Santos e o grupo Demônios da Garoa estão confirmados para os shows do festival Revelando SP, de 12 a 15 de novembro, na capital paulista. O evento conta com apresentação de artistas consagrados, grupos de dança tradicional, artesanato e gastronomia típicas de diferentes regiões do estado. A dupla sertaneja Maria Cecília & Rodolfo abre o evento na quinta-feira (12). Na sexta-feira, o veterano Zé Ramalho será o artista principal. No sábado, os destaques serão os shows de Roberta Miranda e Yasmin Santos. No domingo, dia do encerramento, Gabriel Sater, Bavini e Edson"
+  },
+  {
+   "id": "n-2b0505fe2f",
+   "titulo": "Projeto obriga estados e municípios a divulgar fotos de obras públicas nos portais da transparência",
+   "url": "https://www.camara.leg.br/noticias/1305883-projeto-obriga-estados-e-municipios-a-divulgar-fotos-de-obras-publicas-nos-portais-da-transparencia",
+   "data": "2026-10-02T15:04+00:00",
+   "fonte": "camara",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "Texto está em análise na Câmara dos Deputados"
+  },
+  {
+   "id": "n-b9ae588cb0",
+   "titulo": "Campanha arrecada alimentos para afetados por seca no Amazonas",
+   "url": "https://agenciabrasil.ebc.com.br/meio-ambiente/noticia/2026-10/campanha-arrecada-alimentos-para-afetados-por-seca-no-amazonas",
+   "data": "2026-10-02T15:03+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "A Campanha Humanitária Amazônia Solidária 2026 iniciou, neste mês de outubro, uma mobilização para criar uma grande rede de pontos de coleta de alimentos não perecíveis e água potável para comunidades ribeirinhas da Região Metropolitana de Manaus afetadas pela estiagem. A iniciativa é organizada pela rede colaborativa Converge Amazônia e pretende arrecadar de 23,4 toneladas de alimentos até o dia 31 de outubro, a serem entregues nas comunidades das bacias do Puraquequara e do Tarumã-Açu, de Jatuarana, do Paraná da Eva, do Paraná do Terra Nova e do Janauari, incluindo Vila Nova e Nova Vila. Not"
+  },
+  {
+   "id": "n-ca33cf793e",
+   "titulo": "Anvisa proíbe venda de cosméticos e manda recolher gel falsificado",
+   "url": "https://agenciabrasil.ebc.com.br/saude/noticia/2026-10/anvisa-proibe-venda-de-cosmeticos-e-manda-recolher-gel-falsificado",
+   "data": "2026-10-02T14:29+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [
+    "anvisa"
+   ],
+   "pessoas": [],
+   "resumo": "A Agência Nacional de Vigilância Sanitária (Anvisa) publicou nesta sexta-feira (2) medidas para recolher lote falsificado e proibir a fabricação, comercialização e uso de diversos cosméticos e saneantes sem regularização sanitária. As medidas foram publicadas nesta sexta-feira (2) no Diário Oficial da União (DOU) . Gel intravaginal Notícias relacionadas: Anvisa aprova regularização de cosméticos artesanais. Cosméticos sem registro têm fabricação e venda proibidas pela Anvisa. A partir da determinação da Agência, o Lote 2 2511006 do Hidrafemme Gel Hidratante Intravaginal precisará ser retirado "
+  },
+  {
+   "id": "n-c971e34f09",
+   "titulo": "EUA e Austrália fecham embaixadas no Brasil às vésperas da eleição",
+   "url": "https://agenciabrasil.ebc.com.br/internacional/noticia/2026-10/eua-e-australia-fecham-embaixadas-no-brasil-vesperas-da-eleicao",
+   "data": "2026-10-02T14:11+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "As embaixadas dos Estados Unidos (EUA) e da Austrália no Brasil anunciaram a suspensão dos serviços consulares a partir desta sexta-feira (2) em todas as cidades com atendimento presencial, alegando questões de segurança. Porém, não detalharam quais seriam as possíveis ameaças. Austrália e EUA mantêm parceria na área de inteligência chamada de Five Eyes (Cinco Olhos, em português). Em nota, o governo australiano cita até mesmo risco de “terrorismo” às vésperas do 1º turno das eleições gerais. Notícias relacionadas: Observadores internacionais chegam ao Brasil para monitorar eleições. EUA desti"
+  },
+  {
+   "id": "n-60b58113cf",
+   "titulo": "Projeto proíbe compra pública de produtos agropecuários de áreas invadidas",
+   "url": "https://www.camara.leg.br/noticias/1305296-projeto-proibe-compra-publica-de-produtos-agropecuarios-de-areas-invadidas",
+   "data": "2026-10-02T14:07+00:00",
+   "fonte": "camara",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "Texto está em análise na Câmara dos Deputados"
+  },
+  {
+   "id": "n-6b61664f0b",
+   "titulo": "Petrobras faz 2ª descoberta de petróleo em poço da Margem Equatorial",
+   "url": "https://agenciabrasil.ebc.com.br/economia/noticia/2026-10/petrobras-faz-2a-descoberta-de-petroleo-em-poco-da-margem-equatorial",
+   "data": "2026-10-02T14:02+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [
+    "petrobras"
+   ],
+   "pessoas": [],
+   "resumo": "A Petrobras fez mais uma descoberta de petróleo no poço Morpho, que fica na chamada Margem Equatorial, a 175 quilômetros (km) da costa do Amapá. O anúncio foi feito pela estatal na manhã desta sexta-feira (2). A descoberta anterior havia sido em meados de agosto . O poço identificado como 1-BRSA-1405-APS fica em águas ultra profundas, em lâmina d’água (profundidade do mar no local da operação) de 2.886 metros, na bacia da Foz do Amazonas. Notícias relacionadas: Petrobras reajusta preço médio do querosene de aviação em 11,76%. Petrobras fecha acordo para comprar gás dos EUA por mais de 20 anos."
+  },
+  {
+   "id": "n-9794df61f4",
+   "titulo": "Áudio: Exposição internacional é inaugurada no Senado",
+   "url": "https://www12.senado.leg.br/noticias/audios/2026/10/exposicao-internacional-e-inaugurada-no-senado",
+   "data": "2026-10-02T14:01:00+00:00",
+   "fonte": "senado",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "Está aberta ao público até o próximo dia 8, no Espaço Cultural Ivandro Cunha Lima, do Senado Federal, a exposição Arte além das fronteiras - Brasil: diversidades em diálogo. São obras de 80 artistas, de 23 países, inclusive do Brasil e do Japão, tendo como temática principal os biomas brasileiros. As pinturas foram feitas com a técnica ancestral japonesa de pintura a pincel chamada Sumi-ê."
+  },
+  {
+   "id": "n-7d680ba8da",
+   "titulo": "Associação de emissoras de rádio e TV pede suspensão de MP das bets",
+   "url": "https://agenciabrasil.ebc.com.br/justica/noticia/2026-10/associacao-de-emissoras-de-radio-e-tv-pede-suspensao-de-mp-das-bets",
+   "data": "2026-10-02T13:48+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [
+    "stf"
+   ],
+   "pessoas": [],
+   "resumo": "A Associação Brasileira de Emissoras de Rádio e Televisão (Abert) pediu ao ministro Luiz Fux, do Supremo Tribunal Federal (STF), a suspensão dos efeitos da medida provisória (MP) que proibiu as bets no Brasil . A entidade argumenta que suas associadas foram diretamente afetadas pela proibição imediata da veiculação de publicidade relacionada às bets. Notícias relacionadas: MP das Bets: veja o que muda e saiba datas para devolução de valores. Número de transações com Pix cai 10% após proibição de bets. “O dano já está em curso”, diz a peça protocolada pela associação. O pedido foi encaminhado a"
+  },
+  {
+   "id": "n-92bb3d56a0",
+   "titulo": "Projeto facilita legalização de poços domésticos e flexibiliza regras de esgoto",
+   "url": "https://www.camara.leg.br/noticias/1304993-projeto-facilita-legalizacao-de-pocos-domesticos-e-flexibiliza-regras-de-esgoto",
+   "data": "2026-10-02T13:30+00:00",
+   "fonte": "camara",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "Texto está em analise na Câmara dos Deputados"
+  },
+  {
+   "id": "n-876da42d23",
+   "titulo": "Confira a agenda dos presidenciáveis nesta sexta-feira",
+   "url": "https://agenciabrasil.ebc.com.br/politica/noticia/2026-10/confira-agenda-dos-presidenciaveis-nesta-sexta-feira-2",
+   "data": "2026-10-02T13:13+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [
+    "tse"
+   ],
+   "pessoas": [],
+   "resumo": "Nos últimos dias antes do primeiro turno das eleições 2026, a agenda dos presidenciáveis nesta sexta-feira (2) inclui caminhadas, comício e atos de campanha em diferentes cidades. Também estão previstos encontros com apoiadores e bandeiraço, com atividades concentradas principalmente no Rio de Janeiro, em Minas Gerais, em Goiás e em São Paulo. Wilson Grassi (Democrata) Concede entrevista à Sputnik Brasil, à tarde. Notícias relacionadas: Eleições: propagandas gratuitas de candidatos terminam nesta quinta. TSE recebeu mais de 50 mil denúncias de propaganda irregular. Augusto Cury (Avante) Fará a"
+  },
+  {
+   "id": "n-e7e00c5e29",
+   "titulo": "Áudio: Destinação de multas a projetos de preservação será analisado pela Câmara",
+   "url": "https://www12.senado.leg.br/noticias/audios/2026/10/destinacao-de-multas-a-projetos-de-preservacao-sera-analisado-pela-camara",
+   "data": "2026-10-02T13:02:00+00:00",
+   "fonte": "senado",
+   "nos": [
+    "camara"
+   ],
+   "pessoas": [
+    "beto-faro"
+   ],
+   "resumo": "Aprovado no início de setembro na Comissão de Meio Ambiente (CMA), o projeto que permite converter multas ambientais em financiamento para um fundo destinado a serviços de preservação e recuperação do meio ambiente seguiu para a Câmara dos Deputados. De acordo com o PL 4.794/2020, o infrator que optar pela conversão terá desconto de até 50% no valor da multa. Relator, o senador Beto Faro (PT-PA) afirmou que os órgãos do Sistema Nacional do Meio Ambiente (Sisnama) enfrentam deficiências estruturais, comprometendo a cobrança das multas e a proposta vai acelerar a recuperação de áreas degradadas."
+  },
+  {
+   "id": "n-7b3d22354d",
+   "titulo": "Produção industrial cai 0,6% de julho para agosto, diz IBGE",
+   "url": "https://agenciabrasil.ebc.com.br/economia/noticia/2026-10/producao-industrial-cai-06-de-julho-para-agosto-diz-ibge",
+   "data": "2026-10-02T12:50+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [
+    "ibge"
+   ],
+   "pessoas": [],
+   "resumo": "A produção da indústria brasileira recuou 0,6% em agosto deste ano, na comparação com o mês anterior. Os dados da Pesquisa Industrial Mensal foram divulgados nesta sexta-feira (2), pelo Instituto Brasileiro de Geografia e Estatística (IBGE). Em julho, a indústria havia registrado variação positiva de 0,1%. No entanto, o setor teve perdas de 1% em maio e de 1,6% em junho. Notícias relacionadas: Produção industrial interrompe 2 meses de queda e sobe 0,2% em julho. Produção industrial reverte queda e sobe 0,1% em outubro, mostra IBGE. Produção industrial recua 0,4% em setembro, mostra IBGE. Segun"
+  },
+  {
+   "id": "n-aadc1ac27f",
+   "titulo": "Vídeo: Veja os horários de votação nas Eleições 2026",
+   "url": "https://www12.senado.leg.br/noticias/videos/2026/10/veja-os-horarios-de-votacao-nas-eleicoes-2026",
+   "data": "2026-10-02T12:44:00+00:00",
+   "fonte": "senado",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "No domingo (4), a votação seguirá o horário de Brasília: das 8h às 17h no Distrito Federal e na maior parte do país. No Acre e em 11 municípios do Amazonas, as urnas funcionarão das 6h às 15h. Já em Manaus e em 51 municípios do Amazonas, além de Mato Grosso, Mato Grosso do Sul, Rondônia e Roraima, a votação será das 7h às 16h."
+  },
+  {
+   "id": "n-e4e3335f0b",
+   "titulo": "Chuvas avançam sobre as regiões Nordeste e Norte",
+   "url": "https://agenciabrasil.ebc.com.br/meio-ambiente/noticia/2026-10/chuvas-avancam-sobre-regioes-nordeste-e-norte",
+   "data": "2026-10-02T12:04+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [
+    "inmet"
+   ],
+   "pessoas": [],
+   "resumo": "A frente fria que passa pelo Oceano Atlântico e provoca chuvas no Centro-Oeste e Sudeste do país, avançam nesta sexta-feira (2) para o interior do Nordeste e sobre o Norte do país, informa o Instituto Nacional de Meteorologia (Inmet). Na Região Nordeste, chove sobre o interior da região, especialmente no chamado Matopiba - que abrange os estados do Maranhão, Tocantins, Piauí e da Bahia – onde há um aviso amarelo de perigo potencial para tempestade. Notícias relacionadas: Sob El Niño, primavera deve ter calor, seca e tempestades severas. Pode chover também no Ceará, centro e leste do Piauí, Rio"
+  },
+  {
+   "id": "n-0f2b7b3a13",
+   "titulo": "Morre ex-deputado federal Edgar Moury Fernandes Sobrinho",
+   "url": "https://www.camara.leg.br/noticias/1307958-morre-ex-deputado-federal-edgar-moury-fernandes-sobrinho",
+   "data": "2026-10-02T12:02+00:00",
+   "fonte": "camara",
+   "nos": [
+    "casa-civil"
+   ],
+   "pessoas": [
+    "gilberto-nascimento"
+   ],
+   "resumo": "Gilberto Nascimento Edgar Moury foi deputado federal Morreu na quarta-feira (30) o ex-deputado federal Edgar Moury Fernandes Sobrinho, aos 82 anos, vítima de câncer. Natural de Recife, o advogado e empresário Edgar Moury foi deputado federal entre 2007 e 2011. Também foi deputado estadual e exerceu funções de destaque no Governo de Pernambuco, entre elas a de secretário da Casa Civil."
+  },
+  {
+   "id": "n-6c67c238b6",
+   "titulo": "Lei Seca: Ceará e 4 municípios de Rondônia aderem; veja lista completa",
+   "url": "https://agenciabrasil.ebc.com.br/politica/noticia/2026-10/lei-seca-ceara-e-4-municipios-de-rondonia-aderem-veja-lista-completa",
+   "data": "2026-10-02T12:00+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "O Tribunal Regional Eleitoral do Ceará (TRE-CE) decidiu restringir a venda de bebidas alcoólicas no primeiro turno das eleições. A proibição à venda e ao consumo de bebidas alcoólicas em bares, restaurantes, supermercados, estabelecimentos congêneres e demais locais abertos ao público, será das 8h às 18h de domingo (4). Notícias relacionadas: Lei Seca: confira onde haverá restrição a bebidas nas eleições 2026. A portaria foi publicada no Diário Oficial da Justiça do TRE-CE nesta sexta-feira (2). O TRE de Rondônia informou que, no estado, dois juízos eleitorais também decidiram aplicar a lei se"
+  },
+  {
+   "id": "n-1e1ebe8ef0",
+   "titulo": "Projeto estabelece que pessoas com deficiência ocupem pelo menos 5% dos cargos do serviço público federal",
+   "url": "https://www.camara.leg.br/noticias/1304618-projeto-estabelece-que-pessoas-com-deficiencia-ocupem-pelo-menos-5-dos-cargos-do-servico-publico-federal",
+   "data": "2026-10-02T11:52+00:00",
+   "fonte": "camara",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "O texto está em análise na Câmara dos Deputados"
+  },
+  {
+   "id": "n-8ea2795908",
+   "titulo": "TSE: denúncias eleitorais podem ser feitas pelo aplicativo Pardal",
+   "url": "https://agenciabrasil.ebc.com.br/justica/noticia/2026-10/tse-denuncias-eleitorais-pode-ser-feitas-pelo-aplicativo-pardal",
+   "data": "2026-10-02T10:56+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [
+    "tse"
+   ],
+   "pessoas": [],
+   "resumo": "Às vésperas do primeiro turno das eleições, a Justiça eleitoral continua recebendo denúncias de propaganda irregular. Até o momento, 51.395 notificações foram feitas por meio do aplicativo Pardal , sistema eletrônico criado pelo Tribunal Superior Eleitoral (TSE) para receber esse tipo de ocorrência. Criado há 10 anos pelo Tribunal Superior Eleitoral (TSE), o Pardal permite o registro de ocorrências em todo o país. Podem ser encaminhadas irregularidades como propaganda eleitoral antecipada, compra de votos, uso da máquina pública, abuso de poder e uso indevido dos meios de comunicação.. Notícia"
+  },
+  {
+   "id": "n-26410bf8a7",
+   "titulo": "Agência espacial institui política de inovação para fortalecer setor",
+   "url": "https://agenciabrasil.ebc.com.br/economia/noticia/2026-10/agencia-espacial-institui-politica-de-inovacao-para-fortalecer-setor",
+   "data": "2026-10-02T10:51+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [
+    "aeb"
+   ],
+   "pessoas": [],
+   "resumo": "A Agência Espacial Brasileira (AEB) tem a partir desta sexta-feira (2) uma nova política de inovação voltada ao fortalecimento do setor espacial nacional. A medida prevê princípios, diretrizes, objetivos e instrumentos para orientar programas e ações de longo prazo destinados a estimular o desenvolvimento tecnológico. Notícias relacionadas: Brasileira é selecionada para missão simulada de agência espacial. Agência Espacial Brasileira usa internet para estimular interesse de jovens. O objetivo é aumentar a competitividade da economia brasileira e ampliar a autonomia do país em áreas estratégica"
+  },
+  {
+   "id": "n-9d13282c7b",
+   "titulo": "Transporte público de graça no dia da eleição: veja como irá funcionar",
+   "url": "https://agenciabrasil.ebc.com.br/geral/noticia/2026-09/transporte-publico-de-graca-no-dia-da-eleicao-veja-como-ira-funcionar",
+   "data": "2026-10-02T10:32+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [
+    "tse"
+   ],
+   "pessoas": [],
+   "resumo": "No próximo domingo (4), data do primeiro turno das eleições 2026, o transporte público coletivo deve ser gratuito em várias capitais e cidades do país. Isso é para garantir que os eleitores cheguem ao local de votação com antecedência. A medida está prevista na Resolução-TSE nº 23.751/2026, que determina a oferta gratuita de transporte coletivo urbano e intermunicipal no 1º turno, em 4 de outubro, e em eventual 2º turno, em 25 de outubro. Notícias relacionadas: Eleições 2026: saiba o que pode e o que não pode no dia da votação. Eleições: propagandas gratuitas de candidatos terminam nesta quint"
+  },
+  {
+   "id": "n-ce0e14bb6e",
+   "titulo": "Origem das bets passa por lobby estrangeiro e “jabutis” no Congresso",
+   "url": "https://agenciabrasil.ebc.com.br/politica/noticia/2026-10/origem-das-bets-passa-por-lobby-estrangeiro-e-jabutis-no-congresso",
+   "data": "2026-10-02T10:30+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "O lobby de empresas estrangeiras articulado com legisladores e agentes do Estado brasileiro, que buscavam mais arrecadação, possibilitou a legalização das apostas esportivas online no Brasil, as chamadas bets, em dezembro de 2018. A avaliação é do pesquisador Francisco Cláudio Freitas Silva, doutor pela Pontifícia Universidade Católica de Minas Gerais (PUC Minas). Autor da tese Categorização Regulatória de Produtos Estigmatizados: o Caso das Apostas Esportivas Online de Cota Fixa e Cassinos Online no Brasil , Silva investigou o caminho percorrido para a legalização das bets em meio ao estigma "
+  },
+  {
+   "id": "n-1554869d99",
+   "titulo": "Lives e cancelamento de debate marcam quinta-feira dos candidatos",
+   "url": "https://agenciabrasil.ebc.com.br/politica/noticia/2026-10/Lives-e-cancelamento-de-debate-marcam-quinta-feira-dos-candidatos",
+   "data": "2026-10-02T01:21+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "A agenda dos presidenciáveis nesta quinta-feira (1º) incluiu lives, entrevista em podcast e atos de campanha. >> Veja como foi o dia dos candidatos Ronaldo Caiado (PSD) Estava prevista a participação do candidato Ronaldo Caiado no debate da Rede Globo. O debate foi cancelado pela emissora de televisão. Notícias relacionadas: Entidades sugerem políticas de proteção a crianças e adolescentes. Eleições 2026: saiba o que pode e o que não pode no dia da votação. Lei Seca: confira onde haverá restrição a bebidas nas eleições 2026. Rui Costa Pimenta (PCO) O candidato Rui Costa Pimenta não teve agenda"
+  },
+  {
+   "id": "n-50429fedbb",
+   "titulo": "Trump diz acompanhar de perto eleição brasileira e não declara apoio",
+   "url": "https://agenciabrasil.ebc.com.br/politica/noticia/2026-10/trump-diz-acompanhar-de-perto-eleicao-brasileira-e-nao-declarar-apoio",
+   "data": "2026-10-02T01:00+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "O presidente dos Estados Unidos (EUA), Donald Trump, afirmou nesta quinta-feira (1º) que acompanha \"muito de perto\" as eleições brasileiras, que ocorrerão daqui a três dias, em 1º turno. A declaração foi dada em resposta à pergunta de uma jornalista, na saída da Casa Branca, antes do presidente norte-americano embarcar em uma aeronave para o Texas. \"Estou acompanhando [as eleições] muito de perto. O Brasil é um país muito importante. É um grande país. As pessoas no Brasil são fantásticas. É uma eleição muito importante\", disse Trump, sem citar nomes ou declaração de apoio a nenhum concorrente,"
+  },
+  {
+   "id": "n-a334f792a5",
+   "titulo": "Mega-Sena acumula para R$ 82 milhões; confira os números sorteados",
+   "url": "https://agenciabrasil.ebc.com.br/geral/noticia/2026-10/mega-sena-acumula-para-r-82-milhoes-confira-os-numeros-sorteados",
+   "data": "2026-10-02T00:33+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [
+    "caixa"
+   ],
+   "pessoas": [],
+   "resumo": "Nenhum apostador acertou as seis dezenas do Concurso 3.065 da Mega-Sena, realizado nesta quinta-feira (1º). O prêmio acumulou e está estimado em R$ 82 milhões para o próximo sorteio. Os números sorteados são: 08 - 10 - 30 - 38 - 50 - 53 47 apostas acertaram cinco dezenas e irão receber R$ 49.503,22 cada 3.642 apostas acertaram quatro dezenas e irão receber R$ 1.053,03 cada Apostas O próximo concurso acontece sábado (3), às 21h. As apostas podem ser feitas até as 20h (horário de Brasília), em qualquer lotérica do país ou pela internet, no site ou aplicativo da Caixa. A aposta simples, com seis "
+  },
+  {
+   "id": "n-1ec7358843",
+   "titulo": "Homem é preso ao tentar invadir a sede do STF em Brasília",
+   "url": "https://agenciabrasil.ebc.com.br/justica/noticia/2026-10/homem-e-preso-ao-tentar-inavadir-sede-do-stf-em-brasilia",
+   "data": "2026-10-01T23:26+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [
+    "stf"
+   ],
+   "pessoas": [],
+   "resumo": "Um homem foi preso no início da noite desta quinta-feira (1) ao tentar invadir o edifício-sede do Supremo Tribunal Federal (STF). De acordo com informações das equipes de segurança da Corte, o homem tentou pular a grade de segurança e jogou uma mochila no telhado de uma parada de ônibus. \"Como ele arremessou uma mochila sobre o ponto de ônibus, tornou-se necessário acionar a Operação Petardo, com a adoção dos procedimentos previstos para averiguação de possível artefato explosivo\", informou o STF. Neste momento, a Polícia Militar do Distrito Federal realiza uma operação com equipes do esquadrã"
+  },
+  {
+   "id": "n-cccbd84456",
+   "titulo": "TRE-RJ suspende porte de arma e autoriza inquérito contra deputado",
+   "url": "https://agenciabrasil.ebc.com.br/justica/noticia/2026-10/tre-rj-suspende-porte-de-arma-e-autoriza-inquerito-contra-deputado",
+   "data": "2026-10-01T23:16+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [
+    "pf",
+    "tse"
+   ],
+   "pessoas": [],
+   "resumo": "O Tribunal Regional Eleitoral do Rio de Janeiro (TRE-RJ) suspendeu o porte de arma do deputado estadual e candidato à reeleição Alexandre Knoploch (PL) até 5 de outubro, após o primeiro turno das eleições. A decisão foi tomada após uma discussão envolvendo o parlamentar e integrantes da campanha à reeleição do deputado estadual Flávio Serafini (Psol). Alexandre Knoploch também deverá entregar à Polícia Federal, no prazo de 24 horas após ser notificado, todas as armas de fogo registradas no nome dele. Notícias relacionadas: TSE decide que Globo não poderá exibir cadeira vazia em debate. Fachin "
+  },
+  {
+   "id": "n-e4939f639c",
+   "titulo": "TSE decide que Globo não poderá exibir cadeira vazia em debate",
+   "url": "https://agenciabrasil.ebc.com.br/justica/noticia/2026-10/tse-decide-que-globo-nao-podera-exibir-cadeira-vazia-em-debate",
+   "data": "2026-10-01T23:10+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [
+    "tse"
+   ],
+   "pessoas": [
+    "luiz-inacio-lula-da-silva"
+   ],
+   "resumo": "A ministra Estela Aranha, do Tribunal Superior Eleitoral (TSE), decidiu nesta quinta-feira (1°) que a TV Globo não poderá exibir o púlpito vazio do candidato à reeleição Luiz Inácio Lula da Silva (PT) durante o debate dos candidatos à Presidência da República que será realizado na noite de hoje. A decisão foi motivada por um pedido da coligação de Lula para suspender uma cláusula do contrato do debate que previa a exibição da cadeira vazia de candidatos ausentes. Ontem, a equipe do candidato informou que Lula não vai participar do debate. Notícias relacionadas: TSE manda Nikolas retirar postag"
+  },
+  {
+   "id": "n-ac6202cd05",
+   "titulo": "Fachin defende democracia e livre escolha dos eleitores",
+   "url": "https://agenciabrasil.ebc.com.br/justica/noticia/2026-10/fachin-defende-democracia-e-livre-escolha-dos-eleitores",
+   "data": "2026-10-01T23:06+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [
+    "stf",
+    "prf"
+   ],
+   "pessoas": [
+    "edson-fachin"
+   ],
+   "resumo": "O presidente do Supremo Tribunal Federal (STF), Edson Fachin, defendeu nesta quinta-feira (1°) o respeito ao voto dos eleitores e a paz nas eleições do próximo domingo (4). Em nota à imprensa, Fachin reafirmou compromisso com a democracia e a liberdade de escolha dos eleitores \"em ambiente de paz\". Notícias relacionadas: Observadores internacionais chegam ao Brasil para monitorar eleições. PRF, TREs e forças de segurança atuarão em conjunto nas eleições. Violência política no período pré-eleitoral foi a maior da década. \"O voto é a expressão máxima da cidadania e a garantia de que a vontade po"
+  },
+  {
+   "id": "n-29a2814e24",
+   "titulo": "Morre o piloto e youtuber Lito Sousa, aos 59 anos",
+   "url": "https://agenciabrasil.ebc.com.br/politica/noticia/2026-10/morre-o-piloto-e-youtuber-lito-sousa-aos-59-anos",
+   "data": "2026-10-01T22:46+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "Joselito Geraldo de Sousa, conhecido como Lito Sousa, morreu aos 59 anos, nesta quinta-feira (1º), por complicações da doença de Creutzfeldt-Jakob (DCJ), uma rara condição neurológica que compromete o funcionamento do cérebro. O velório e o enterro abertos ao público ocorrerão das 9h às 12h desta sexta-feira (20), no Museu Aeroespacial Paulista, no bairro de Santana, na cidade de São Paulo. Notícias relacionadas: Entenda Doença de Creutzfeldt-Jakob, diagnóstico do piloto Lito Sousa. Nos últimos anos, Lito se tornou conhecido na internet pela divulgação de informações sobre aviação. Mecânico de"
+  },
+  {
+   "id": "n-3a68e29bbd",
+   "titulo": "Defensoria Pública da União fará plantão nos dias de votação",
+   "url": "https://agenciabrasil.ebc.com.br/justica/noticia/2026-10/defensoria-publica-da-uniao-fara-plantao-nos-dias-de-votacao",
+   "data": "2026-10-01T22:36+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [
+    "dpu"
+   ],
+   "pessoas": [],
+   "resumo": "A Defensoria Pública da União realizará plantões nos dias 4 e 25 de outubro para garantir os direitos durante as eleições deste ano. O atendimento ocorre nas sedes do órgão, que podem ser consultadas no site do órgão ou, em cidades em que não exista uma, com um e-mail para o Núcleo Estratégico de Interiorização Eleitoral (NEIE), através do e-mail eleitoral@dpu.def.br. Notícias relacionadas: Ligue 180 tem 1,5 mil denúncias de violência política contra mulher. Eleições 2026: saiba o que pode e o que não pode no dia da votação. Lei Seca: confira onde haverá restrição a bebidas nas eleições 2026. "
+  },
+  {
+   "id": "n-0174a17139",
+   "titulo": "Dólar fecha acima de R$ 5,22 em dia de mal-estar global",
+   "url": "https://agenciabrasil.ebc.com.br/economia/noticia/2026-10/dolar-fecha-acima-de-r-522-em-dia-de-mal-estar-global",
+   "data": "2026-10-01T22:13+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [
+    "petrobras"
+   ],
+   "pessoas": [],
+   "resumo": "O dólar subiu quase 1% em comparação com o real nesta quinta-feira (1º). A moeda dos Estados Unidos ganhou força no exterior em meio à aversão ao risco provocada pelas tensões no Oriente Médio e pela alta do petróleo. Na bolsa, o Ibovespa avançou, apoiado principalmente pelas ações da Petrobras, apesar da cautela de investidores diante do cenário internacional e da proximidade do primeiro turno das eleições. Principais números Dólar à vista: R$ 5,224 (+0,97%); Ibovespa: 187.197,46 pontos (+0,46%); Petróleo tipo Brent: US$ 102,31 (+4,37%); Petróleo tipo WTI: US$ 92,87 (+2,71%). Dólar em alta No"
+  },
+  {
+   "id": "n-3d2f26cb18",
+   "titulo": "Ligue 180 tem 1,5 mil denúncias de violência política contra mulher",
+   "url": "https://agenciabrasil.ebc.com.br/justica/noticia/2026-10/ligue-180-tem-15-mil-denuncias-de-violencia-politica-contra-mulher",
+   "data": "2026-10-01T22:12+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "As mulheres têm direito à participação política livre de violência e de discriminação. Porém, entre janeiro e agosto de 2026, o número de denúncias de violência política registradas contra elas na Central de Atendimento à Mulher - Ligue 180 alcançou a marca de 1.564 denúncias. Ao todo, estas denúncias correspondem a 1.581 violações identificadas como violências políticas, no ano de eleições gerais no Brasil. A diferença entre os números ocorre porque uma única denúncia, cometida pelo mesmo agressor, pode conter mais de um tipo de violência. Notícias relacionadas: Eleições: propagandas gratuita"
+  },
+  {
+   "id": "n-ea94299283",
+   "titulo": "Entra em vigor tarifa zero para instrumentos musicais importados",
+   "url": "https://agenciabrasil.ebc.com.br/economia/noticia/2026-10/entra-em-vigor-tarifa-zero-para-instrumentos-musicais-importados",
+   "data": "2026-10-01T21:52+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "Entrou em vigor nesta quinta-feira (1º) a redução a zero do imposto de importação para microfones, grupos de instrumentos musicais e máquinas de costura de uso doméstico. A medida elimina tarifas que chegavam a 18% para instrumentos e a 20% para máquinas de costura. A mudança está prevista na Resolução 926/2026 do Comitê Executivo de Gestão da Câmara de Comércio Exterior (Gecex/Camex), que incorporou ao ordenamento jurídico brasileiro decisões do Grupo Mercado Comum do Mercosul. Beneficiados No setor musical, a tarifa de importação, que era de 18%, passa a zero para instrumentos de corda (acús"
+  },
+  {
+   "id": "n-b6b0a51e69",
+   "titulo": "Projeto vincula crédito rural à rastreabilidade bovina na Amazônia",
+   "url": "https://www.camara.leg.br/noticias/1305285-projeto-vincula-credito-rural-a-rastreabilidade-bovina-na-amazonia",
+   "data": "2026-10-01T21:26+00:00",
+   "fonte": "camara",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "Bruno Cecim/Agência Pará Criação de gado em São Félix do Xingu (PA) O projeto de lei (PL) 3233/26 condiciona o acesso prioritário a crédito rural e seguro agrícola na Amazônia Legal à rastreabilidade individual de bovinos e búfalos. O objetivo é incentivar produtores rurais a manter seus rebanhos cadastrados e monitorados nos sistemas oficiais de controle sanitário. A proposta está em análise na Câmara dos Deputados. O texto também enumera uma série de incentivos que poderão ser direcionados a esses pecuaristas, entre eles: taxas de juros reduzidas; prazos longos para pagamento; limites amplia"
+  },
+  {
+   "id": "n-09d559efbe",
+   "titulo": "Entidades sugerem políticas de proteção a crianças e adolescentes",
+   "url": "https://agenciabrasil.ebc.com.br/politica/noticia/2026-10/entidades-sugerem-politicas-de-protecao-criancas-e-adolescentes",
+   "data": "2026-10-01T20:39+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "Organizações da sociedade civil entregaram aos candidatos à Presidência da República e aos governos dos estados propostas de políticas públicas e metas para proteção a crianças e adolescentes. O movimento, chamado Agenda 227, é composto por mais de 520 entidades de diferentes áreas. São dois documentos distintos, um voltado aos candidatos a presidente e outro voltado aos candidatos aos governos estaduais. Ambos apresentam sugestões para áreas como educação, saúde, primeira infância, enfrentamento das violências e profissionalização. Notícias relacionadas: Eleições: propagandas gratuitas de can"
+  },
+  {
+   "id": "n-48ae7d0002",
+   "titulo": "Órgãos públicos no Rio de Janeiro terão sala de apoio à amamentação",
+   "url": "https://agenciabrasil.ebc.com.br/direitos-humanos/noticia/2026-10/orgaos-publicos-no-rio-de-janeiro-terao-sala-de-apoio-amamentacao",
+   "data": "2026-10-01T20:17+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [
+    "inss"
+   ],
+   "pessoas": [],
+   "resumo": "O estado do Rio de Janeiro terá salas de apoio à amamentação em órgãos e entidades públicas estaduais. A medida está prevista em decreto publicado nesta quinta-feira (1º) no Diário Oficial. Todos os órgãos e entidades públicas diretas e indiretas que tenham em seus quadros servidoras, empregadas públicas ou trabalhadoras terceirizadas deverão implementar as salas de amamentação. Além de oferecer o espaço, as unidades também deverão divulgar formas de doação para bancos de leite humano. Notícias relacionadas: INSS pagará benefício a mulheres afastadas por violência doméstica. Conheça os direito"
+  },
+  {
+   "id": "n-5c5b07edc6",
+   "titulo": "Eleições 2026: o que o eleitor pode e não pode fazer antes, durante e logo após a votação",
+   "url": "https://www.camara.leg.br/noticias/1307940-eleicoes-2026-o-que-o-eleitor-pode-e-nao-pode-fazer-antes-durante-e-logo-apos-a-votacao",
+   "data": "2026-10-01T20:10+00:00",
+   "fonte": "camara",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "Justiça Eleitoral tem uma série de regras para esse período"
+  },
+  {
+   "id": "n-a946890a0b",
+   "titulo": "Eleições: propagandas gratuitas de candidatos terminam nesta quinta",
+   "url": "https://agenciabrasil.ebc.com.br/justica/noticia/2026-10/eleicoes-propagandas-gratuitas-de-candidatos-terminam-nesta-quinta",
+   "data": "2026-10-01T19:47+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [
+    "tse"
+   ],
+   "pessoas": [
+    "flavio-bolsonaro"
+   ],
+   "resumo": "A propaganda eleitoral gratuita no rádio e na televisão para o 1º turno das Eleições 2026 termina nesta quinta-feira (1º). As inserções começaram a ser veiculadas no dia 28 de agosto em horários reservados nas emissoras e também ao longo da programação. O Tribunal Superior Eleitoral disse que o encerramento da propaganda gratuita ocorre juntamente com outros prazos da campanha eleitoral, a exemplo do prazo para realização de comícios e para a utilização de aparelhagem de sonorização fixa, das 8h às 24h. Notícias relacionadas: Fachin nega pedido para afastar Dino de ações sobre Flávio Bolsonaro"
+  },
+  {
+   "id": "n-f5b4d1329e",
+   "titulo": "Carne brasileira vai pagar tarifa de 67% para entrar na China",
+   "url": "https://agenciabrasil.ebc.com.br/economia/noticia/2026-10/carne-brasileira-vai-pagar-tarifa-de-67-para-entrar-na-china",
+   "data": "2026-10-01T19:45+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "A carne bovina brasileira pagará uma tarifa total de 67% para entrar no mercado chinês a partir desta quinta-feira (1º). Uma cobrança adicional de 55% se somará à tarifa regular de 12%, uma vez que o Brasil esgotou a cota anual de exportações estipulada pelo país asiático. A medida preocupa frigoríficos e pecuaristas, que já avaliam antecipar abates e embarques para aproveitar a cota de 2027. Notícias relacionadas: Cota chinesa faz exportação de carne bovina recuar 27,1% em agosto. China e EUA concordam em reduzir tarifas sobre US$60 bi em mercadorias. Brasil e EUA criam grupo específico para "
+  },
+  {
+   "id": "n-3831b5774b",
+   "titulo": "Fachin nega pedido para afastar Dino de ações sobre Flávio Bolsonaro",
+   "url": "https://agenciabrasil.ebc.com.br/justica/noticia/2026-10/fachin-nega-pedido-para-afastar-dino-de-acoes-sobre-flavio-bolsonaro",
+   "data": "2026-10-01T19:34+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [
+    "stf"
+   ],
+   "pessoas": [
+    "edson-fachin",
+    "flavio-bolsonaro"
+   ],
+   "resumo": "O presidente do Supremo Tribunal Federal (STF), ministro Edson Fachin, rejeitou pedido para afastar o ministro Flávio Dino do julgamento de processos contra o senador e candidato a presidente Flávio Bolsonaro (PL). Em decisão assinada nesta quinta-feira (1°), Fachin negou seguimento a uma arguição de suspeição protocolada pelo candidato. Notícias relacionadas: Dino declara perda de objeto em pedido de Tabet sobre Nossa Senhora . Dino manda PF investigar suposta onda de ataques a imagens católicas . Para Flávio, Dino deveria ser declarado suspeito para atuar como relator da investigação que tra"
+  },
+  {
+   "id": "n-9b3cae1e45",
+   "titulo": "Projeto criminaliza em todo o país a venda e o uso de linha com cerol",
+   "url": "https://www.camara.leg.br/noticias/1306622-projeto-criminaliza-em-todo-o-pais-a-venda-e-o-uso-de-linha-com-cerol",
+   "data": "2026-10-01T19:12+00:00",
+   "fonte": "camara",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "Texto está em análise na Câmara dos Deputados"
+  },
+  {
+   "id": "n-e23c8e686b",
+   "titulo": "Nova modalidade de renegociação de dívidas de MEI começa nesta quinta",
+   "url": "https://agenciabrasil.ebc.com.br/economia/noticia/2026-10/nova-modalidade-de-renegociacao-de-dividas-de-mei-comeca-nesta-quinta",
+   "data": "2026-10-01T19:08+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "O governo federal ampliou as opções para microempreendedores individuais (MEIs) renegociarem dívidas e prorrogou até 29 de janeiro de 2027 o prazo de adesão ao Desenrola MEI. A partir desta quinta-feira (1º), começa também uma nova modalidade para débitos de até cinco salários mínimos, atualmente equivalentes a R$ 8.105. Outra negociação será aberta para dívidas de MEIs com autarquias e fundações públicas federais. Notícias relacionadas: Governo cria 3ª fase do Desenrola com compra de dívidas pela União. Desenrola Adimplentes começa a operar nesta terça-feira. As medidas foram anunciadas em co"
+  },
+  {
+   "id": "n-cda1b81ab8",
+   "titulo": "INSS pagará benefício a mulheres afastadas por violência doméstica",
+   "url": "https://agenciabrasil.ebc.com.br/direitos-humanos/noticia/2026-10/inss-pagara-beneficio-mulheres-afastadas-por-violencia-domestica",
+   "data": "2026-10-01T19:03+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [
+    "inss",
+    "agu"
+   ],
+   "pessoas": [
+    "luiz-inacio-lula-da-silva"
+   ],
+   "resumo": "Mulheres vítimas de violência doméstica que conseguirem, na Justiça, medida protetiva de afastamento do trabalho vão receber benefício pago via Instituto Nacional do Seguro Social (INSS). O parecer que garante o afastamento remunerado, elaborado pela Advocacia-Geral da União (AGU), foi assinado nesta quinta-feira (1º) pelo presidente Luiz Inácio Lula da Silva. Notícias relacionadas: Conheça os direitos das pessoas com deficiência no dia das eleições. Violência política no período pré-eleitoral foi a maior da década. WhatsApp lança regras para controle parental no Brasil; saiba como. Em nota, a"
+  },
+  {
+   "id": "n-6d80799078",
+   "titulo": "Conselho de Comunicação debate audiovisual e comunicação pública na segunda-feira; participe",
+   "url": "https://www.camara.leg.br/noticias/1307857-conselho-de-comunicacao-debate-audiovisual-e-comunicacao-publica-na-segunda-feira-participe",
+   "data": "2026-10-01T19:03+00:00",
+   "fonte": "camara",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "Carolina Curi/Agência Senado Conselho vai analisar o relatório do conselheiro Marcus Martins O Conselho de Comunicação Social (CCS) se reúne na segunda-feira (5), às 14 horas, para analisar temas relacionados à comunicação, ao setor audiovisual e ao conteúdo jornalístico. A reunião será realizada no plenário 7 da ala senador Alexandre Costa, no Senado. Veja a pauta e envie suas perguntas A pauta prevê a análise de um relatório sobre o Projeto de Lei (PL) 4675/25, que trata de mercados digitais e concorrência, e a apresentação de trabalhos desenvolvidos por integrantes do conselho. Entre os ass"
+  },
+  {
+   "id": "n-34549fe338",
+   "titulo": "Projeto vincula reajuste de planos de saúde aos indicadores de reclamações dos usuários",
+   "url": "https://www.camara.leg.br/noticias/1305652-projeto-vincula-reajuste-de-planos-de-saude-aos-indicadores-de-reclamacoes-dos-usuarios",
+   "data": "2026-10-01T18:46+00:00",
+   "fonte": "camara",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "O texto está em análise na Câmara dos Deputados"
+  },
+  {
+   "id": "n-2c294e61cb",
+   "titulo": "BB fará pagamentos via Pix a mesários nas eleições",
+   "url": "https://agenciabrasil.ebc.com.br/politica/noticia/2026-10/bb-fara-pagamentos-pix-mesarios-nas-eleicoes",
+   "data": "2026-10-01T18:04+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "Os mesários e demais colaboradores da Justiça Eleitoral que atuarão nas Eleições Gerais de 2026 receberão o auxílio-alimentação por meio de Pix processado pelo Banco do Brasil. A instituição firmou acordos de cooperação técnica com os tribunais regionais eleitorais (TREs) de todo o país para operacionalizar os pagamentos do primeiro turno e, se houver, do segundo turno. O Banco do Brasil será responsável pelo processamento dos créditos a partir das informações encaminhadas pelos tribunais eleitorais. A operação utilizará sistemas eletrônicos do banco para dar agilidade aos pagamentos e permiti"
+  },
+  {
+   "id": "n-02fb7a9894",
+   "titulo": "Vídeo: Eleições 2026: confira documentos e regras para votar neste domingo",
+   "url": "https://www12.senado.leg.br/noticias/videos/2026/10/eleicoes-2026-confira-documentos-e-regras-para-votar-neste-domingo-4",
+   "data": "2026-10-01T17:27:00+00:00",
+   "fonte": "senado",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "Para votar neste domingo (4), o eleitor poderá apresentar o título de eleitor em papel, um documento oficial com foto ou o e-Título, desde que o aplicativo esteja com a foto do eleitor e a biometria cadastrada. Na cabine de votação, não é permitido levar celular ou qualquer equipamento que possa captar imagens ou sons. Para consultar os números dos seis candidatos, o eleitor poderá levar uma “colinha” em papel, o que ajuda a evitar esquecimentos na hora do voto."
+  },
   {
    "id": "n-6bf3e8b2ef",
    "titulo": "Áudio: Novo lei sobre o seguro rural amplia a proteção de produtores contra perdas",
