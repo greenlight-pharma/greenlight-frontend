@@ -93,6 +93,33 @@ export const SCHEMA = [
  `alter table usuarios add column if not exists perfil text`,
  `alter table usuarios add column if not exists termos_paciente text`,
  `alter table usuarios add column if not exists termos_paciente_em timestamptz`,
+ // Título editado pela pessoa: salvar a conversa de novo não o sobrescreve.
+ `alter table conversas add column if not exists titulo_manual boolean not null default false`,
+ // Painel de administração (02/10): cortesia Pro com prazo, origem do cadastro, intervalo da
+ // assinatura, auditoria das ações do admin e contagem de erros do serviço de IA (sem conteúdo).
+ `alter table usuarios add column if not exists cortesia_ate timestamptz`,
+ `alter table usuarios add column if not exists cortesia_por text`,
+ `alter table usuarios add column if not exists origem text`,
+ `alter table usuarios add column if not exists assinatura_intervalo text`,
+ `alter table usuarios add column if not exists assinatura_cancela boolean not null default false`,
+ `create table if not exists admin_auditoria (
+   id bigserial primary key,
+   admin_email text not null,
+   acao text not null,
+   usuario_id uuid,
+   detalhe jsonb,
+   criado_em timestamptz not null default now()
+ )`,
+ `create index if not exists admin_auditoria_data on admin_auditoria(criado_em desc)`,
+ `create table if not exists erros_servico (
+   id bigserial primary key,
+   rota text not null,
+   codigo text not null,
+   http integer,
+   usuario_id uuid,
+   criado_em timestamptz not null default now()
+ )`,
+ `create index if not exists erros_servico_data on erros_servico(criado_em desc)`,
 ];
 
 let pool = null, ready = null;

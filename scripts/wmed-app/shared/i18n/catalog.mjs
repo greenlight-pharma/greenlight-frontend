@@ -276,7 +276,21 @@ export const catalog={
 'Desafio do dia':['Daily challenge','Reto del día'],
 'Aprenda e desafie um colega':['Learn and challenge a colleague','Aprende y reta a un colega'],
 'Interpretar um estudo':['Interpret a study','Interpretar un estudio'],
-'Risco absoluto, relativo e NNT':['Absolute risk, relative risk and NNT','Riesgo absoluto, relativo y NNT']
+'Risco absoluto, relativo e NNT':['Absolute risk, relative risk and NNT','Riesgo absoluto, relativo y NNT'],
+"Renomear":["Rename", "Renombrar"],
+"Apagar":["Delete", "Eliminar"],
+"Apagando…":["Deleting…", "Eliminando…"],
+"Salvando…":["Saving…", "Guardando…"],
+"Salvar":["Save", "Guardar"],
+"Cancelar":["Cancel", "Cancelar"],
+"Apagar esta conversa?":["Delete this conversation?", "¿Eliminar esta conversación?"],
+"Ela sai do histórico e não dá para desfazer.":["It will be removed from your history. This can't be undone.", "Se quitará de tu historial. No se puede deshacer."],
+"Novo nome da conversa":["New conversation name", "Nuevo nombre de la conversación"],
+"Digite um nome.":["Enter a name.", "Escribe un nombre."],
+"Aguarde a resposta terminar para apagar esta conversa.":["Wait for the answer to finish before deleting this conversation.", "Espera a que termine la respuesta para eliminar esta conversación."],
+"Não foi possível concluir. Tente novamente.":["Could not finish. Try again.", "No se pudo completar. Inténtalo de nuevo."],
+"Serviço indisponível. Tente de novo em instantes.":["Service unavailable. Please try again in a moment.", "Servicio no disponible. Inténtalo de nuevo en un momento."],
+"Conversa não encontrada.":["Conversation not found.", "Conversación no encontrada."],
 };
 // Partes do catálogo por área (cada tela/grupo em seu arquivo, para edição em paralelo sem conflito).
 import caso from './parts/caso.mjs';

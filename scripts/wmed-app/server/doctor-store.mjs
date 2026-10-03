@@ -62,7 +62,9 @@ export async function history(req, res) {
  let b;
  try {
   b = await readJson(req, 1000000);
-  if (!['list', 'open', 'save'].includes(b.action)) throw Error();
+  if (!['list', 'open', 'save', 'rename', 'delete'].includes(b.action)) throw Error();
+  if (['open', 'rename', 'delete'].includes(b.action) && !b.id) throw Error();
+  if (b.action === 'rename' && (typeof b.title !== 'string' || !b.title.trim() || b.title.trim().length > 80)) throw Error();
   if ((b.action === 'open' || b.id != null) && !ID.test(b.id || '')) throw Error();
   if (b.action === 'save' && (!Array.isArray(b.messages) || !b.messages.length || b.messages.length > 200 || b.messages.some((x) => !['user', 'assistant'].includes(x?.papel) || typeof x.conteudo !== 'string' || !x.conteudo.trim() || x.conteudo.length > 20000))) throw Error();
  } catch { return reply(res, 400, { error: m(req, 'chatInvalid') }); }
@@ -76,10 +78,21 @@ export async function history(req, res) {
    if (!rows[0]) return reply(res, 403, { error: m(req, 'chatNotFound') });
    return reply(res, 200, rows[0]);
   }
+  if (b.action === 'rename') {
+   const titulo = b.title.trim().replace(/\s+/g, ' ');
+   const { rowCount } = await q('update conversas set titulo = $3, titulo_manual = true where id = $1 and usuario_id = $2', [b.id, user.id, titulo]);
+   if (!rowCount) return reply(res, 403, { error: m(req, 'chatNotFound') });
+   return reply(res, 200, { id: b.id, titulo });
+  }
+  if (b.action === 'delete') {
+   const { rowCount } = await q('delete from conversas where id = $1 and usuario_id = $2', [b.id, user.id]);
+   if (!rowCount) return reply(res, 403, { error: m(req, 'chatNotFound') });
+   return reply(res, 200, { id: b.id, deleted: true });
+  }
   const mensagens = b.messages.map(({ papel, conteudo }) => ({ papel, conteudo }));
   const titulo = (mensagens.find((x) => x.papel === 'user')?.conteudo || 'Conversa').slice(0, 80);
   if (b.id) {
-   const { rowCount } = await q('update conversas set titulo = $3, mensagens = $4, atualizada_em = now() where id = $1 and usuario_id = $2', [b.id, user.id, titulo, JSON.stringify(mensagens)]);
+   const { rowCount } = await q('update conversas set titulo = case when titulo_manual then titulo else $3 end, mensagens = $4, atualizada_em = now() where id = $1 and usuario_id = $2', [b.id, user.id, titulo, JSON.stringify(mensagens)]);
    if (!rowCount) return reply(res, 403, { error: m(req, 'chatNotFound') });
    return reply(res, 200, { id: b.id });
   }

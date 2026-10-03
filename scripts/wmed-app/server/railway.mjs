@@ -22,14 +22,15 @@ const routes={auth,chat,academic,cases,history,privacy,discovery,research:public
 // Com DATABASE_URL, o 2Doctor usa contas próprias (banco separado da Vytal) e fala com a API
 // Vytal pela chave de serviço. Sem ela, mantém o comportamento anterior (conta Vytal).
 export async function doctorRoutes(){
- const accounts=await import('./accounts.mjs');const store=await import('./doctor-store.mjs');const pay=await import('./billing.mjs');const shared=await import('./shared-cases.mjs');const {migrate}=await import('./db.mjs');
+ const accounts=await import('./accounts.mjs');const store=await import('./doctor-store.mjs');const pay=await import('./billing.mjs');const shared=await import('./shared-cases.mjs');const admin=await import('./admin.mjs');const {migrate}=await import('./db.mjs');
  await migrate();
  const allow=(req,res)=>{if(accounts.sameSite(req))return true;res.statusCode=403;res.setHeader('Content-Type','application/json; charset=utf-8');res.end(JSON.stringify({error:accounts.t(accounts.lang(req),'origin')}));return false;};
  const identify=(req)=>accounts.identify(req);
  return {
-  routes:{auth:accounts.auth,chat:(req,res)=>chat(req,res,{identify,allow}),academic:(req,res)=>academic(req,res,{identify,allow}),cases:store.cases,history:store.history,billing:pay.billing,compartilhados:shared.sharedCases,'stripe-webhook':pay.stripeWebhook,privacy:(req,res)=>privacy(req,res,{identify,allow}),discovery,research:publicResearch},
+  routes:{auth:accounts.auth,chat:(req,res)=>chat(req,res,{identify,allow,report:admin.reportError('chat')}),admin:admin.adminApi,academic:(req,res)=>academic(req,res,{identify,allow}),cases:store.cases,history:store.history,billing:pay.billing,compartilhados:shared.sharedCases,'stripe-webhook':pay.stripeWebhook,privacy:(req,res)=>privacy(req,res,{identify,allow}),discovery,research:publicResearch},
   status:accounts.authStatus,
   sharePage:shared.sharePage,
+  adminPage:admin.adminPage,
  };
 }
 function json(res,status,value){res.writeHead(status,{'Content-Type':'application/json; charset=utf-8','Cache-Control':'no-store'});res.end(JSON.stringify(value));}
@@ -42,7 +43,7 @@ export function byteRange(header,size){
  if(!Number.isSafeInteger(start)||!Number.isSafeInteger(end)||start<0||start>end||start>=size)return false;
  return {start,end};
 }
-export function createApp({root=ROOT,publicOrigin=process.env.PUBLIC_ORIGIN,fetchImpl=fetch,metaPixelId=process.env.META_PIXEL_ID,handlers=routes,status=null,sharePage=null}={}){
+export function createApp({root=ROOT,publicOrigin=process.env.PUBLIC_ORIGIN,fetchImpl=fetch,metaPixelId=process.env.META_PIXEL_ID,handlers=routes,status=null,sharePage=null,adminPage=null}={}){
  const absoluteRoot=resolve(root);
  const origin=publicOrigin?new URL(publicOrigin).origin:null;
  const server=http.createServer(async(req,res)=>{
@@ -73,7 +74,7 @@ export function createApp({root=ROOT,publicOrigin=process.env.PUBLIC_ORIGIN,fetc
     const [name,...rest]=full.split('/');const sub=rest.join('/');
     if(name==='status')return json(res,req.method==='GET'?200:405,{research:'europe-pmc',jev:'not-configured',synthesis:'vytal-assistant',auth:'vytal-account',mode:'2doctor-preview',brasil:noBrasil(req),...(status?status():{})});
     const handler=Object.hasOwn(handlers,name)?handlers[name]:null;
-    if(!handler||(sub&&!(status&&name==='auth')))return json(res,404,{error:'Recurso não encontrado.'});
+    if(!handler||(sub&&!(status&&['auth','admin'].includes(name))))return json(res,404,{error:'Recurso não encontrado.'});
     return await handler(req,res,sub?{sub}:undefined);
    }
    if(!['GET','HEAD'].includes(req.method))return json(res,405,{error:'Método não permitido.'});
@@ -83,6 +84,8 @@ export function createApp({root=ROOT,publicOrigin=process.env.PUBLIC_ORIGIN,fetc
    // Link público de caso compartilhado (etiquetas de prévia para o X e mensageiros).
    const shared=/^\/c\/([A-Za-z0-9]{10})$/.exec(path);
    if(shared&&sharePage)return await sharePage(req,res,{id:shared[1],root:absoluteRoot});
+   // Painel de administração: o handler devolve 404 para quem não está na lista ADMIN_EMAILS.
+   if(adminPage&&(path==='/admin'||path==='/admin/'||path==='/painel'||path==='/painel/'))return await adminPage(req,res);
    if(path==='/2doctor'||path==='/2doctor/'||path==='/2doctor/index.html'){
     // Browsers retain the fragment (e.g. #scores); keep the query as well.
     const query=(req.url||'').includes('?')?'?'+req.url.split('?').slice(1).join('?'):'';
@@ -138,7 +141,7 @@ export function createApp({root=ROOT,publicOrigin=process.env.PUBLIC_ORIGIN,fetc
 }
 if(process.argv[1]&&resolve(process.argv[1])===fileURLToPath(import.meta.url)){
  const doctor=process.env.DATABASE_URL?await doctorRoutes():null;
- const server=createApp(doctor?{handlers:doctor.routes,status:doctor.status,sharePage:doctor.sharePage}:{});
+ const server=createApp(doctor?{handlers:doctor.routes,status:doctor.status,sharePage:doctor.sharePage,adminPage:doctor.adminPage}:{});
  server.listen(Number(process.env.PORT||8080),'0.0.0.0',()=>console.log('2Doctor HTTPS edge server ready'+(doctor?' · contas 2Doctor':'')));
  process.on('SIGTERM',()=>server.close(()=>process.exit(0)));
 }

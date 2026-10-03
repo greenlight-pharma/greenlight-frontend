@@ -3,7 +3,7 @@
 // Variáveis: STRIPE_SECRET_KEY, STRIPE_WEBHOOK_SECRET. Preços pelos lookup_keys abaixo.
 import { createHmac, timingSafeEqual } from 'node:crypto';
 import { q } from './db.mjs';
-import { requireUser, reply, readJson, publicOrigin, lang } from './accounts.mjs';
+import { requireUser, reply, readJson, publicOrigin, lang, planOf } from './accounts.mjs';
 
 export const PRICES = { mensal: '2doctor_pro_mensal', anual: '2doctor_pro_anual' };
 const ATIVOS = new Set(['active', 'trialing', 'past_due']);
@@ -20,7 +20,7 @@ export function form(obj, prefix = '', out = new URLSearchParams()) {
  }
  return out;
 }
-async function stripe(path, { method = 'GET', body, fetchImpl = fetch } = {}) {
+export async function stripe(path, { method = 'GET', body, fetchImpl = fetch } = {}) {
  const key = process.env.STRIPE_SECRET_KEY;
  if (!key) throw Object.assign(Error('Stripe não configurado.'), { status: 503 });
  const r = await fetchImpl(API + path, {
@@ -56,9 +56,9 @@ export async function billing(req, res, { fetchImpl = fetch } = {}) {
  const user = await requireUser(req, res);
  if (!user) return;
  try {
-  const { rows } = await q('select plano, assinatura_status, assinatura_fim, stripe_customer_id from usuarios where id = $1', [user.id]);
+  const { rows } = await q('select plano, assinatura_status, assinatura_fim, stripe_customer_id, cortesia_ate from usuarios where id = $1', [user.id]);
   const u = rows[0];
-  if (req.method === 'GET') return reply(res, 200, { plano: isPro(u) ? 'pro' : 'gratis', status: u.assinatura_status, fim: u.assinatura_fim, stripe: !!process.env.STRIPE_SECRET_KEY, cliente: !!u.stripe_customer_id });
+  if (req.method === 'GET') return reply(res, 200, { plano: planOf(u), cortesia: !isPro(u) && planOf(u) === 'pro' ? u.cortesia_ate : null, status: u.assinatura_status, fim: u.assinatura_fim, stripe: !!process.env.STRIPE_SECRET_KEY, cliente: !!u.stripe_customer_id });
   if (req.method !== 'POST') return reply(res, 405, { error: 'Method not allowed.' });
   if (!process.env.STRIPE_SECRET_KEY) return reply(res, 503, { error: m(req, 'off') });
   const b = await readJson(req);
@@ -108,11 +108,13 @@ async function applySubscription(sub) {
  const status = sub.status;
  const fim = sub.items?.data?.[0]?.current_period_end || sub.current_period_end || null;
  const usuario = sub.metadata?.usuario_id || null;
- const params = [sub.customer, ATIVOS.has(status) ? 'pro' : 'gratis', status, fim ? new Date(fim * 1000) : null, sub.id];
- const { rowCount } = await q(`update usuarios set plano = $2, assinatura_status = $3, assinatura_fim = $4, stripe_subscription_id = $5 where stripe_customer_id = $1`, params);
+ const price = sub.items?.data?.[0]?.price || {};
+ const intervalo = price.lookup_key === PRICES.anual || price.recurring?.interval === 'year' ? 'anual' : price.lookup_key === PRICES.mensal || price.recurring?.interval === 'month' ? 'mensal' : null;
+ const params = [sub.customer, ATIVOS.has(status) ? 'pro' : 'gratis', status, fim ? new Date(fim * 1000) : null, sub.id, intervalo, !!sub.cancel_at_period_end];
+ const { rowCount } = await q(`update usuarios set plano = $2, assinatura_status = $3, assinatura_fim = $4, stripe_subscription_id = $5, assinatura_intervalo = coalesce($6, assinatura_intervalo), assinatura_cancela = $7 where stripe_customer_id = $1`, params);
  // Cliente criado fora do app (ex.: pelo painel): liga pelo usuario_id da assinatura.
  if (!rowCount && usuario && /^[0-9a-f-]{36}$/i.test(usuario))
-  await q(`update usuarios set stripe_customer_id = coalesce(stripe_customer_id, $1), plano = $2, assinatura_status = $3, assinatura_fim = $4, stripe_subscription_id = $5 where id = $6`, [...params, usuario]);
+  await q(`update usuarios set stripe_customer_id = coalesce(stripe_customer_id, $1), plano = $2, assinatura_status = $3, assinatura_fim = $4, stripe_subscription_id = $5, assinatura_intervalo = coalesce($6, assinatura_intervalo), assinatura_cancela = $7 where id = $8`, [...params, usuario]);
 }
 export async function stripeWebhook(req, res) {
  if (req.method !== 'POST') return reply(res, 405, { error: 'Method not allowed.' });
