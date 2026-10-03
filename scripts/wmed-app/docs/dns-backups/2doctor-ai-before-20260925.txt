@@ -1,0 +1,31 @@
+
+; <<>> DiG 9.10.6 <<>> @ns09.domaincontrol.com 2doctor.ai SOA +noall +answer
+; (2 servers found)
+;; global options: +cmd
+2doctor.ai.		3600	IN	SOA	ns09.domaincontrol.com. dns.jomax.net. 2026092500 28800 7200 604800 600
+
+; <<>> DiG 9.10.6 <<>> @ns09.domaincontrol.com 2doctor.ai A +noall +answer
+; (2 servers found)
+;; global options: +cmd
+2doctor.ai.		600	IN	A	3.33.130.190
+2doctor.ai.		600	IN	A	15.197.148.33
+
+; <<>> DiG 9.10.6 <<>> @ns09.domaincontrol.com www.2doctor.ai CNAME +noall +answer
+; (2 servers found)
+;; global options: +cmd
+www.2doctor.ai.		3600	IN	CNAME	2doctor.ai.
+
+; <<>> DiG 9.10.6 <<>> @ns09.domaincontrol.com _dmarc.2doctor.ai TXT +noall +answer
+; (2 servers found)
+;; global options: +cmd
+_dmarc.2doctor.ai.	3600	IN	TXT	"v=DMARC1; p=quarantine; adkim=r; aspf=r; rua=mailto:dmarc_rua@onsecureserver.net;"
+
+Inventário GoDaddy antes das alterações: 7 registros, sem MX.
+A @ Parked TTL600 (IPs acima)
+NS @ ns09.domaincontrol.com. TTL3600
+NS @ ns10.domaincontrol.com. TTL3600
+CNAME www 2doctor.ai. TTL3600
+CNAME _domainconnect _domainconnect.gd.domaincontrol.com. TTL3600
+SOA @ ns09.domaincontrol.com. TTL3600 (resposta acima)
+TXT _dmarc (valor acima) TTL3600
+Encaminhamento: não configurado.

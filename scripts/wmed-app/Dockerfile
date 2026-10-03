@@ -13,6 +13,8 @@ ENV NODE_ENV=production PORT=8080
 WORKDIR /app
 COPY --from=build --chown=node:node /app/dist-2doctor ./dist-2doctor
 COPY --chown=node:node server ./server
+# Dependências só do servidor (Postgres das contas 2Doctor); o front já vem compilado.
+RUN cd server && npm ci --omit=dev --no-audit --no-fund && rm -rf /root/.npm
 COPY --chown=node:node shared ./shared
 USER node
 EXPOSE 8080

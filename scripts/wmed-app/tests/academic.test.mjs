@@ -132,26 +132,46 @@ test("quality totals are computed by server, levels bounded and non-applicable c
   r.criterios[1].nivel = 10;
   assert.throws(() => validateQuality(JSON.stringify(r), story));
 });
-test("fabricated evidence, missing criteria, duplicate ids and ungrounded score are rejected", () => {
+test("missing criteria and duplicate ids are rejected; fabricated evidence is hidden, never shown", () => {
   for (const mutate of [
-    (r) => (r.criterios[0].evidencia = "Not in source"),
     (r) => r.criterios.pop(),
     (r) => (r.criterios[0].id = "historia"),
-    (r) => (r.criterios[0].evidencia = ""),
   ]) {
     const r = result();
     mutate(r);
     assert.throws(() => validateQuality(JSON.stringify(r), story));
   }
+  const r = result();
+  r.criterios[0].evidencia = "Not in source";
+  const q = validateQuality(JSON.stringify(r), story);
+  assert.equal(q.criteria[0].evidencia, "");
+  assert.equal(q.score, 75);
+});
+test("quality tolerates how the model actually answers", () => {
+  const r = result();
+  const ev = r.criterios[1].evidencia;
+  r.criterios[1].evidencia = "“" + ev.toUpperCase() + "”";
+  r.criterios[2].nivel = String(r.criterios[2].nivel);
+  delete r.criterios[3].aplicavel;
+  for (const raw of [
+    "Segue a avaliação:\n```json\n" + JSON.stringify(r) + "\n```\n###TEMAS### [\"Anamnese\"]",
+    JSON.stringify({ resposta: JSON.stringify(r), temas: [] }),
+  ]) {
+    const q = validateQuality(raw, story);
+    assert.equal(q.criteria[1].evidencia, r.criterios[1].evidencia);
+    assert.ok(q.score >= 0 && q.score <= 100);
+  }
+  assert.throws(() => validateQuality("## Avaliação\nBom relato.", story));
 });
 test("quality scores the original account, never the AI reorganization; upstream errors not hidden", async () => {
   const o = res();
   await academic(req("quality", { fields: f, relato: story }), o, {
     fetchImpl: async (url, opts) => {
-      assert.ok(url.endsWith("/tutor/chat"));
+      assert.ok(url.endsWith("/tutor/chat-stream"));
       const prompt = JSON.parse(opts.body).historico.map(m=>m.content).join("\n");
       assert.ok(prompt.includes("<relato>\n" + story + "\n</relato>"));
-      return Response.json({ resposta: JSON.stringify(result()) });
+      const text = JSON.stringify(result());
+      return new Response(`data: ${JSON.stringify({ t: text.slice(0, 40) })}\n\ndata: ${JSON.stringify({ t: text.slice(40) + "\n###TEMAS### []" })}\n\ndata: {"done":true}\n\n`, { headers: { "Content-Type": "text/event-stream" } });
     },
   });
   assert.equal(o.data.score, 75);
@@ -183,4 +203,180 @@ test('guidance keeps generated hypotheses and management without student compari
  const hypotheses=[{hipotese:'Exemplo sintético'}], management=['Conduta educacional sintética'];
  const feedback=guidanceFeedback({hipoteses_para_discussao:hypotheses,elementos_de_manejo_academico:management,comparacao_hipoteses_aluno:'Não respondeu',comparacao_conduta_aluno:'Não respondeu',alinhamento_conduta_didatico:'divergencia',alinhamento_hipoteses_didatico:'divergencia'});
  assert.deepEqual(feedback,{hipoteses_para_discussao:hypotheses,elementos_de_manejo_academico:management});
+});
+
+let clock = Date.now() + 1e10;
+const fresh = () => { const t = (clock += 1e8); return () => t; };
+const sse = (...events) => new Response(events.map((e) => (e === "ping" ? ": ping\n\n" : `data: ${JSON.stringify(e)}\n\n`)).join(""), { headers: { "Content-Type": "text/event-stream" } });
+const streamRes = () => ({ statusCode: 0, headers: {}, out: "", setHeader(k, v) { this.headers[k] = v; }, write(t) { this.out += t; }, end(t = "") { this.out += t; this.ended = true; }, on() {} });
+const events = (out) => out.split("\n\n").filter((b) => b.startsWith("event:")).map((b) => ({ event: b.split("\n")[0].slice(7), data: JSON.parse(b.split("\n")[1].slice(6)) }));
+test("streamed feedback shows the reasoning part first, then the rest with its context", async () => {
+  const calls = [];
+  const o = streamRes();
+  await academic(req("feedback", { fields: f, relato: story, stream: true }), o, {
+    now: fresh(),
+    fetchImpl: async (url, opts) => {
+      const body = JSON.parse(opts.body);
+      calls.push({ url, body });
+      if (url.endsWith("/case-feedback-essencial-stream"))
+        return sse("ping", { feedback: { resumo_caso: "Resumo sintético", hipoteses_para_discussao: [{ hipotese: "Hipótese A" }], comparacao_hipoteses_aluno: "oculto" } });
+      return sse({ feedback: { temas_de_estudo: ["Tema"], conexao_enamed: "oculto" } });
+    },
+  });
+  assert.match(o.headers["Content-Type"], /event-stream/);
+  const ev = events(o.out);
+  assert.deepEqual(ev.map((e) => e.event), ["progress", "part", "progress", "part", "done"]);
+  assert.deepEqual(ev[1].data.feedback, { resumo_caso: "Resumo sintético", hipoteses_para_discussao: [{ hipotese: "Hipótese A" }] });
+  assert.deepEqual(ev[3].data.feedback, { temas_de_estudo: ["Tema"] });
+  assert.deepEqual(calls[1].body.contexto, { resumo: "Resumo sintético", hipoteses: "Hipótese A" });
+  assert.ok(o.ended);
+});
+test("the second part is retried once before failing", async () => {
+  let rest = 0;
+  const o = streamRes();
+  await academic(req("feedback", { fields: f, relato: story, stream: true }), o, {
+    now: fresh(),
+    fetchImpl: async (url) => url.includes("essencial") ? sse({ feedback: { resumo_caso: "R" } }) : ++rest === 1 ? sse({ error: "Truncado" }) : sse({ feedback: { referencias: ["Ref"] } }),
+  });
+  assert.equal(rest, 2);
+  assert.equal(events(o.out).at(-1).event, "done");
+});
+test("streamed feedback reports which part failed", async () => {
+  for (const [fail, secao] of [["essencial", "essencial"], ["complementar", "complementar"]]) {
+    const o = streamRes();
+    await academic(req("feedback", { fields: f, relato: story, stream: true }), o, {
+      now: fresh(),
+    fetchImpl: async (url) => url.includes(fail) ? sse({ error: "Falha sintética" }) : sse({ feedback: { resumo_caso: "R" } }),
+    });
+    const last = events(o.out).at(-1);
+    assert.equal(last.event, "error");
+    assert.equal(last.data.secao, secao);
+    assert.equal(last.data.error, "Falha sintética");
+  }
+});
+test("interface language reaches feedback, structure and quality; Portuguese sends nothing new", async () => {
+  const seen = [];
+  const fetchImpl = async (url, opts) => { seen.push({ url, body: JSON.parse(opts.body) }); return url.includes("chat-stream") ? new Response(`data: ${JSON.stringify({ t: JSON.stringify(result()) })}\n\n`, { headers: { "Content-Type": "text/event-stream" } }) : Response.json({ campos: {}, feedback: { resumo_caso: "x" } }); };
+  for (const [action, payload] of [["structure", { relato: story, idioma: "en" }], ["feedback", { fields: f, relato: story, idioma: "es" }], ["quality", { fields: f, relato: story, idioma: "en" }], ["structure", { relato: story }]])
+    await academic(req(action, payload), res(), { fetchImpl, now: fresh() });
+  assert.equal(seen[0].body.idioma, "en");
+  assert.equal(seen[1].body.idioma, "es");
+  assert.match(seen[2].body.historico.at(-1).content, /in English/);
+  assert.equal(seen[3].body.idioma, undefined);
+});
+test("feedback keeps running if the phone drops the connection and can be resumed without a new charge", async () => {
+  const jobId = "8f14e45f-ceea-4671-8a3b-3c1d2e0f9a11";
+  const agora = fresh();
+  let charges = 0, closeFirst;
+  const first = { ...streamRes(), on(ev, fn) { if (ev === "close") closeFirst = fn; }, get destroyed() { return this.gone; } };
+  let release; const gate = new Promise((ok) => { release = ok; });
+  const fetchImpl = async (url) => {
+    if (url.includes("essencial")) return sse({ feedback: { resumo_caso: "R" } });
+    await gate; return sse({ feedback: { referencias: ["Ref"] } });
+  };
+  const running = academic(req("feedback", { fields: f, relato: story, stream: true, jobId }), first, { now: agora, fetchImpl, identify: async () => ({ id: "u1", headers: {}, path: (x) => x, charge: async () => (++charges, true) }), allow: () => true });
+  await new Promise((r) => setTimeout(r, 20));
+  first.gone = true; closeFirst?.();               // troca de app: a aba perde a conexão
+  release();                                        // o servidor termina a 2ª parte mesmo assim
+  await running;
+  const again = streamRes();
+  await academic(req("feedback-resume", { jobId }), again, { now: agora, identify: async () => ({ id: "u1", headers: {}, path: (x) => x, charge: async () => (++charges, true) }), allow: () => true });
+  assert.deepEqual(events(again.out).map((e) => e.event), ["progress", "part", "progress", "part", "done"]);
+  assert.equal(charges, 1);
+  const other = streamRes(); other.end = function (t) { this.data = JSON.parse(t); this.ended = true; };
+  await academic(req("feedback-resume", { jobId }), other, { now: agora, identify: async () => ({ id: "u2", headers: {}, path: (x) => x }), allow: () => true });
+  assert.equal(other.statusCode, 404);
+});
+
+test("retrying feedback before receiving its first event reuses the active job without another charge", async () => {
+  const jobId = "73109592-f35f-48db-b34f-0355f5c1eb69";
+  const now = fresh();
+  let charges = 0, upstreamCalls = 0, release, began;
+  const blocked = new Promise(resolve => { release = resolve; });
+  const started = new Promise(resolve => { began = resolve; });
+  const options = {
+    now, allow: () => true,
+    identify: async () => ({ id: "retry-owner", headers: {}, path: x => x, charge: async () => (++charges, true) }),
+    fetchImpl: async () => { upstreamCalls++; began(); await blocked; return sse({feedback:{resumo_caso:"Teste sintético"}}); },
+  };
+  const payload = {fields:f, relato:story, stream:true, jobId};
+  const first = streamRes(); first.write = () => {}; // no event reaches the first client
+  const running = academic(req("feedback", payload), first, options);
+  await started;
+  const replay = streamRes();
+  const reconnect = academic(req("feedback", payload), replay, options);
+  release();
+  await Promise.all([running, reconnect]);
+  assert.equal(charges, 1);
+  assert.equal(upstreamCalls, 2); // essential + complementary, once each
+  assert.equal(events(replay.out).at(-1).event, "done");
+  await academic(req("feedback", payload), streamRes(), options);
+  assert.equal(charges, 1); // completed jobs are replayed too
+  const foreign = streamRes();
+  await academic(req("feedback", payload), foreign, {...options, identify:async()=>({id:"other-owner",charge:async()=>assert.fail("must not charge")})});
+  assert.equal(foreign.statusCode, 404);
+  assert.equal(upstreamCalls, 2);
+});
+
+test("simultaneous feedback requests share admission while the quota check is pending", async () => {
+  const jobId = "ee3b6da3-bf2f-4749-bc10-179702970f91";
+  let charges = 0, upstreamCalls = 0, release, began;
+  const gate = new Promise(resolve => { release = resolve; });
+  const started = new Promise(resolve => { began = resolve; });
+  const options = {
+    now: fresh(), allow: () => true,
+    identify: async () => ({id:"concurrent-owner", headers:{}, path:x=>x, charge:async()=>{charges++; began(); await gate; return true;}}),
+    fetchImpl: async () => {upstreamCalls++; return sse({feedback:{resumo_caso:"Teste sintético"}});},
+  };
+  const payload = {fields:f, relato:story, stream:true, jobId};
+  const first = streamRes(), second = streamRes();
+  const a = academic(req("feedback", payload), first, options);
+  await started;
+  const b = academic(req("feedback", payload), second, options);
+  await new Promise(resolve => setImmediate(resolve));
+  release();
+  await Promise.all([a,b]);
+  assert.equal(charges, 1);
+  assert.equal(upstreamCalls, 2);
+  assert.deepEqual(events(first.out), events(second.out));
+  assert.equal(events(second.out).at(-1).event, "done");
+});
+
+test("pending feedback admission rejects another owner and releases failed reservations", async () => {
+  for (const failure of ["denied", "unavailable"]) {
+    const jobId = failure === "denied" ? "430f9ccc-7fb4-487b-9e05-90511776d601" : "430f9ccc-7fb4-487b-9e05-90511776d602";
+    let charges = 0, release, began, reject = true, upstreamCalls = 0;
+    const gate = new Promise(resolve => { release = resolve; });
+    const started = new Promise(resolve => { began = resolve; });
+    const options = {
+      now:fresh(), allow:()=>true,
+      identify:async()=>({id:`reservation-${failure}`,headers:{},path:x=>x,charge:async()=>{
+        charges++; began(); await gate;
+        if (!reject) return true;
+        if (failure === "unavailable") throw Error("private database details");
+        return false;
+      }}),
+      fetchImpl:async()=>{upstreamCalls++; return sse({feedback:{resumo_caso:"Teste sintético"}});},
+    };
+    const payload = {fields:f, relato:story, stream:true, jobId};
+    const first = res(), second = res(), foreign = res();
+    const a = academic(req("feedback",payload),first,options);
+    await started;
+    const b = academic(req("feedback",payload),second,options);
+    await academic(req("feedback",payload),foreign,{...options,identify:async()=>({id:"foreign",charge:async()=>assert.fail("must not charge")})});
+    assert.equal(foreign.statusCode,404);
+    release();
+    await Promise.all([a,b]);
+    assert.equal(charges,1);
+    assert.equal(upstreamCalls,0);
+    assert.equal(first.statusCode,failure === "denied" ? 429 : 503);
+    assert.deepEqual(first.data,second.data);
+    assert.doesNotMatch(first.data.error,/private database/);
+    reject=false;
+    const retry=streamRes();
+    await academic(req("feedback",payload),retry,options);
+    assert.equal(charges,2);
+    assert.equal(upstreamCalls,2);
+    assert.equal(events(retry.out).at(-1).event,"done");
+  }
 });

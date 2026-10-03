@@ -1,0 +1,10 @@
+.response-actions{display:flex;align-items:center;flex-wrap:wrap;gap:6px 16px;margin-top:10px}
+.response-actions .copy{min-height:44px;margin:0;display:inline-flex;align-items:center;gap:7px;text-decoration:none}
+.chat-pdf-action{display:inline-flex;align-items:center;flex-wrap:wrap;gap:8px}
+.chat-pdf-error{font-size:12px;color:var(--text-muted,#697780)}
+.chat-pdf-spin{animation:chat-pdf-turn 1s linear infinite}
+@keyframes chat-pdf-turn{to{transform:rotate(360deg)}}
+@media(prefers-reduced-motion:reduce){.chat-pdf-spin{animation:none}}
+
+.chat-pdf-action button[aria-disabled="true"]{opacity:.65;cursor:progress}
+.chat-pdf-action :is(button,a):focus-visible{outline:2px solid currentColor;outline-offset:3px;border-radius:5px}
