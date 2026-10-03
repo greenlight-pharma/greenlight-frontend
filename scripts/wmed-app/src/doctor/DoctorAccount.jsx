@@ -2,6 +2,9 @@
 import { useState } from 'react';
 import { ArrowRight } from 'lucide-react';
 import { useI18n } from './I18n';
+import { ProfileChoice } from './Patient';
+import { TERMOS_PACIENTE_VERSAO } from '../../shared/patient-mode.mjs';
+import { trackRegistration } from './pixel';
 import { signupOrigin } from './origem';
 
 function GoogleMark() {
@@ -13,31 +16,35 @@ export default function DoctorAccount({ api, google, resetToken, onMode, busy, s
  const [mode, setMode] = useState(resetToken ? 'redefinir' : 'entrar');
  const [nome, setNome] = useState(''), [email, setEmail] = useState(''), [password, setPassword] = useState('');
  const [error, setError] = useState(''), [notice, setNotice] = useState('');
+ const [perfil, setPerfil] = useState(null), [terms, setTerms] = useState(false);
+ const perfilPronto = !!perfil && (perfil !== 'paciente' || terms);
  const lang = locale.slice(0, 2);
  function go(next) { setMode(next); onMode?.(next); setError(''); setNotice(''); setPassword(''); }
  async function submit(e) {
   e.preventDefault(); if (busy) return;
+  if (mode === 'criar' && !perfilPronto) { setError(perfil === 'paciente' ? t('Aceite os termos para pacientes para continuar.') : t('Quem é você?')); return; }
   setBusy(true); setError(''); setNotice('');
   controller.current = new AbortController();
   const action = { entrar: 'entrar', criar: 'criar', esqueci: 'esqueci', redefinir: 'redefinir' }[mode];
-  const body = { action, locale: lang, email: email.trim(), ...(mode !== 'esqueci' ? { password } : {}), ...(mode === 'criar' ? { nome: nome.trim(), country, origem: signupOrigin() || undefined } : {}), ...(mode === 'redefinir' ? { token: resetToken } : {}) };
+  const body = { action, locale: lang, email: email.trim(), ...(mode !== 'esqueci' ? { password } : {}), ...(mode === 'criar' ? { nome: nome.trim(), country, perfil, ...(perfil === 'paciente' ? { termosPaciente: TERMOS_PACIENTE_VERSAO } : {}), origem: signupOrigin() || undefined } : {}), ...(mode === 'redefinir' ? { token: resetToken } : {}) };
   try {
    const r = await fetch(`${api}/auth`, { method: 'POST', headers: { 'Content-Type': 'application/json', 'X-WMed-Request': '1', 'X-2Doctor-Idioma': lang }, body: JSON.stringify(body), signal: controller.current.signal });
    const data = await r.json();
    if (!r.ok) throw Error(data.error || t('Não foi possível entrar.'));
    if (mode === 'esqueci') { setNotice(data.message); return; }
    if (!data.authenticated) throw Error(t('Não foi possível entrar.'));
-   setPassword(''); onSuccess(data);
+   setPassword(''); if (mode === 'criar') trackRegistration(); onSuccess(data);
   } catch (e) { if (e.name !== 'AbortError') setError(e.message); } finally { setBusy(false); }
  }
  const googleButton = google && mode !== 'redefinir' && mode !== 'esqueci' && <>
-  <a className="auth-google" href={`${api}/auth/google?idioma=${lang}${signupOrigin() ? '&origem=' + encodeURIComponent(signupOrigin()) : ''}`} aria-disabled={busy}><GoogleMark /> {t('Continuar com Google')}</a>
+  <a className="auth-google" href={`${api}/auth/google?idioma=${lang}${mode === 'criar' && perfilPronto ? `&perfil=${perfil}${perfil === 'paciente' ? `&termos=${TERMOS_PACIENTE_VERSAO}` : ''}` : ''}${signupOrigin() ? '&origem=' + encodeURIComponent(signupOrigin()) : ''}`} aria-disabled={busy || (mode === 'criar' && !perfilPronto)} onClick={(e) => { if (mode === 'criar' && !perfilPronto) { e.preventDefault(); setError(perfil === 'paciente' ? t('Aceite os termos para pacientes para continuar.') : t('Quem é você?')); } }}><GoogleMark /> {t('Continuar com Google')}</a>
   <p className="auth-or"><span>{t('ou')}</span></p>
  </>;
  const intro = { entrar: t('Entre para salvar suas conversas e casos.'), criar: t('Crie sua conta gratuita em segundos.'), esqueci: t('Informe seu e-mail para receber um link de nova senha.'), redefinir: t('Escolha uma nova senha para sua conta.') }[mode];
  const submitLabel = busy ? t('Aguarde…') : { entrar: t('Entrar na 2Doctor'), criar: t('Criar conta'), esqueci: t('Enviar link'), redefinir: t('Salvar nova senha') }[mode];
  return <>
   <p>{intro}</p>
+  {mode === 'criar' && <ProfileChoice perfil={perfil} setPerfil={setPerfil} terms={terms} setTerms={setTerms} disabled={busy} />}
   {googleButton}
   <form onSubmit={submit}>
    {mode === 'criar' && <><label htmlFor="doctor-name">{t('Nome')}</label><input id="doctor-name" name="name" autoComplete="name" required maxLength={80} value={nome} onChange={(e) => setNome(e.target.value)} disabled={busy} /></>}
@@ -51,6 +58,6 @@ export default function DoctorAccount({ api, google, resetToken, onMode, busy, s
    {mode === 'entrar' && <><button type="button" onClick={() => go('esqueci')}>{t('Esqueci minha senha')}</button><button type="button" onClick={() => go('criar')}>{t('Criar conta')}</button></>}
    {mode !== 'entrar' && <button type="button" onClick={() => go('entrar')}>{t('Já tenho conta')}</button>}
   </div>
-  {mode === 'criar' && <p className="modal-note">{t('Ao criar a conta, você concorda com o uso educacional da 2Doctor. Não insira dados que identifiquem pacientes.')}</p>}
+  {mode === 'criar' && <p className="modal-note">{t('Ao criar a conta, você concorda com o uso educacional da 2Doctor. Não insira dados que identifiquem pacientes.')} <a href={`/privacy?lang=${lang}`} target="_blank" rel="noopener noreferrer">{t('Política de privacidade')}</a></p>}
  </>;
 }

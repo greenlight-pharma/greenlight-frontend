@@ -1,6 +1,7 @@
 import http from 'node:http';
 import {createReadStream} from 'node:fs';
-import {stat} from 'node:fs/promises';
+import {stat,readFile} from 'node:fs/promises';
+import {injectPixelMeta} from '../shared/meta-pixel.mjs';
 import {resolve,extname,sep} from 'node:path';
 import {fileURLToPath} from 'node:url';
 import {Readable} from 'node:stream';
@@ -13,6 +14,7 @@ import {history} from './history.mjs';
 import {privacy} from './privacy.mjs';
 import {discovery} from './discovery.mjs';
 import {publicResearch} from './public-research.mjs';
+import {LEGAL_ROUTES,legalHtml,pickLocale} from './legal-pages.mjs';
 
 const ROOT=fileURLToPath(new URL('../dist-2doctor/',import.meta.url));
 const MIME={'.html':'text/html; charset=utf-8','.js':'text/javascript; charset=utf-8','.css':'text/css; charset=utf-8','.json':'application/json; charset=utf-8','.svg':'image/svg+xml','.png':'image/png','.jpg':'image/jpeg','.jpeg':'image/jpeg','.webp':'image/webp','.ttf':'font/ttf','.woff2':'font/woff2','.glb':'model/gltf-binary','.gltf':'model/gltf+json','.bin':'application/octet-stream','.pdb':'chemical/x-pdb','.mp4':'video/mp4'};
@@ -41,7 +43,7 @@ export function byteRange(header,size){
  if(!Number.isSafeInteger(start)||!Number.isSafeInteger(end)||start<0||start>end||start>=size)return false;
  return {start,end};
 }
-export function createApp({root=ROOT,publicOrigin=process.env.PUBLIC_ORIGIN,fetchImpl=fetch,handlers=routes,status=null,sharePage=null,adminPage=null}={}){
+export function createApp({root=ROOT,publicOrigin=process.env.PUBLIC_ORIGIN,fetchImpl=fetch,metaPixelId=process.env.META_PIXEL_ID,handlers=routes,status=null,sharePage=null,adminPage=null}={}){
  const absoluteRoot=resolve(root);
  const origin=publicOrigin?new URL(publicOrigin).origin:null;
  const server=http.createServer(async(req,res)=>{
@@ -76,6 +78,9 @@ export function createApp({root=ROOT,publicOrigin=process.env.PUBLIC_ORIGIN,fetc
     return await handler(req,res,sub?{sub}:undefined);
    }
    if(!['GET','HEAD'].includes(req.method))return json(res,405,{error:'Método não permitido.'});
+   // Política de privacidade e termos para pacientes (páginas públicas, EN/ES/PT).
+   const legalPath=path.length>1?path.replace(/\/$/,''):path;
+   if(Object.hasOwn(LEGAL_ROUTES,legalPath)){const html=legalHtml(LEGAL_ROUTES[legalPath],pickLocale(req.url,req.headers['accept-language']),legalPath);res.writeHead(200,{'Content-Type':'text/html; charset=utf-8','Cache-Control':'public, max-age=300',Vary:'Accept-Language'});return res.end(req.method==='HEAD'?undefined:html);}
    // Link público de caso compartilhado (etiquetas de prévia para o X e mensageiros).
    const shared=/^\/c\/([A-Za-z0-9]{10})$/.exec(path);
    if(shared&&sharePage)return await sharePage(req,res,{id:shared[1],root:absoluteRoot});
@@ -107,6 +112,14 @@ export function createApp({root=ROOT,publicOrigin=process.env.PUBLIC_ORIGIN,fetc
    if(!file.startsWith(absoluteRoot+sep))return json(res,404,{error:'Arquivo não encontrado.'});
    let info;try{info=await stat(file);}catch{return json(res,404,{error:'Arquivo não encontrado.'});}
    if(!info.isFile())return json(res,404,{error:'Arquivo não encontrado.'});
+   if(relative==='index.html'){
+    // Injeta o ID do Meta Pixel (variável de ambiente) no HTML; sem ID válido, o HTML sai intacto.
+    const html=injectPixelMeta(await readFile(file,'utf8'),metaPixelId);
+    res.setHeader('Content-Type',MIME['.html']);res.setHeader('Cache-Control','no-cache');
+    res.setHeader('Content-Length',Buffer.byteLength(html));
+    if(req.method==='HEAD')return res.end();
+    return res.end(html);
+   }
    const range=byteRange(req.headers.range,info.size);
    if(range===false){res.writeHead(416,{'Content-Range':`bytes */${info.size}`});return res.end();}
    const ext=extname(file);res.setHeader('Content-Type',MIME[ext]||'application/octet-stream');
