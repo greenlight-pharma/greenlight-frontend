@@ -76,7 +76,7 @@ export async function history(req, res) {
   if (b.action === 'open') {
    const { rows } = await q('select id, titulo, mensagens from conversas where id = $1 and usuario_id = $2', [b.id, user.id]);
    if (!rows[0]) return reply(res, 403, { error: m(req, 'chatNotFound') });
-   return reply(res, 200, rows[0]);
+   return reply(res, 200, { ...rows[0], mensagens: rows[0].mensagens.map(({ papel, conteudo }) => ({ papel, conteudo })) });
   }
   if (b.action === 'rename') {
    const titulo = b.title.trim().replace(/\s+/g, ' ');
@@ -89,7 +89,11 @@ export async function history(req, res) {
    if (!rowCount) return reply(res, 403, { error: m(req, 'chatNotFound') });
    return reply(res, 200, { id: b.id, deleted: true });
   }
-  const mensagens = b.messages.map(({ papel, conteudo }) => ({ papel, conteudo }));
+  // Horário de cada mensagem (só para o painel admin): mantém o de mensagens já salvas iguais.
+  const agora = new Date().toISOString();
+  let antes = [];
+  if (b.id) antes = (await q('select mensagens from conversas where id = $1 and usuario_id = $2', [b.id, user.id])).rows[0]?.mensagens || [];
+  const mensagens = b.messages.map(({ papel, conteudo }, i) => ({ papel, conteudo, em: antes[i]?.papel === papel && antes[i]?.conteudo === conteudo && antes[i]?.em ? antes[i].em : agora }));
   const titulo = (mensagens.find((x) => x.papel === 'user')?.conteudo || 'Conversa').slice(0, 80);
   if (b.id) {
    const { rowCount } = await q('update conversas set titulo = case when titulo_manual then titulo else $3 end, mensagens = $4, atualizada_em = now() where id = $1 and usuario_id = $2', [b.id, user.id, titulo, JSON.stringify(mensagens)]);

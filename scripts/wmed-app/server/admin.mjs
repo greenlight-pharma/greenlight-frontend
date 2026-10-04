@@ -1,7 +1,7 @@
 // Painel de administração do 2Doctor (/admin e /api/wmed/admin/*).
 // Acesso só para e-mails verificados da lista ADMIN_EMAILS (padrão: dilsonpanisio@gmail.com).
-// Quem não é admin recebe 404, como se a rota não existisse. Nunca devolve conteúdo de
-// conversas/casos, hashes de senha, tokens ou chaves; não apaga contas.
+// Quem não é admin recebe 404, como se a rota não existisse. Nunca devolve hashes de senha,
+// tokens ou chaves; não apaga contas. Conversas: só leitura, e cada abertura fica na auditoria.
 import { readFile } from 'node:fs/promises';
 import { q } from './db.mjs';
 import { currentUser, reply, readJson, sameSite, resendVerification } from './accounts.mjs';
@@ -167,6 +167,31 @@ async function audit(admin, acao, usuarioId, detalhe) {
  await q('insert into admin_auditoria (admin_email, acao, usuario_id, detalhe) values ($1, $2, $3, $4)', [admin.email, acao, usuarioId, detalhe ? JSON.stringify(detalhe) : null]);
 }
 
+// ---- Conversas (somente leitura) ----
+async function conversasDe(id, url) {
+ const pagina = Math.max(1, Math.min(10000, parseInt(url.searchParams.get('pagina'), 10) || 1)); const size = 20;
+ const u = await q('select id, nome, email from usuarios where id = $1', [id]);
+ if (!u.rows[0]) return null;
+ const { rows } = await q(`select id, titulo, criada_em, atualizada_em, jsonb_array_length(mensagens)::int mensagens, count(*) over () total
+   from conversas where usuario_id = $1 order by atualizada_em desc limit ${size} offset ${(pagina - 1) * size}`, [id]);
+ const total = Number(rows[0]?.total || 0);
+ return { usuario: u.rows[0], conversas: rows.map(({ total: _t, ...c }) => c), pagina, total, paginas: Math.max(1, Math.ceil(total / size)) };
+}
+
+async function conversa(admin, id, url) {
+ const pagina = Math.max(1, Math.min(10000, parseInt(url.searchParams.get('pagina'), 10) || 1)); const size = 50;
+ const { rows } = await q(`select c.id, c.usuario_id, c.titulo, c.criada_em, c.atualizada_em, jsonb_array_length(c.mensagens)::int total,
+   (select coalesce(jsonb_agg(m order by i), '[]') from jsonb_array_elements(c.mensagens) with ordinality x(m, i) where i > $2 and i <= $2 + ${size}) mensagens,
+   u.email usuario_email, u.nome usuario_nome
+   from conversas c join usuarios u on u.id = c.usuario_id where c.id = $1`, [id, (pagina - 1) * size]);
+ const c = rows[0];
+ if (!c) return null;
+ await audit(admin, 'ver_conversa', c.usuario_id, { conversa: c.id, titulo: String(c.titulo).slice(0, 80), pagina });
+ const mensagens = c.mensagens.map((m, i) => ({ n: (pagina - 1) * size + i + 1, papel: m?.papel === 'assistant' ? 'assistant' : 'user', conteudo: String(m?.conteudo ?? ''), em: m?.em || m?.criadoEm || null }));
+ return { conversa: { id: c.id, titulo: c.titulo, criada_em: c.criada_em, atualizada_em: c.atualizada_em, usuario: { id: c.usuario_id, email: c.usuario_email, nome: c.usuario_nome } },
+  mensagens, pagina, total: c.total, paginas: Math.max(1, Math.ceil(c.total / size)) };
+}
+
 async function acao(req, admin, { fetchImpl }) {
  const b = await readJson(req, 4000);
  if (!ID.test(b.id || '')) return [400, { error: 'Usuário inválido.' }];
@@ -208,6 +233,18 @@ export async function adminApi(req, res, { sub = '', fetchImpl = fetch } = {}) {
     if (!ID.test(id)) return notFound(res);
     const f = await ficha(id);
     return f ? reply(res, 200, f) : notFound(res);
+   }
+   if (sub.startsWith('conversas/')) {
+    const id = sub.slice('conversas/'.length);
+    if (!ID.test(id)) return notFound(res);
+    const r = await conversasDe(id, url);
+    return r ? reply(res, 200, r) : notFound(res);
+   }
+   if (sub.startsWith('conversa/')) {
+    const id = sub.slice('conversa/'.length);
+    if (!ID.test(id)) return notFound(res);
+    const r = await conversa(admin, id, url);
+    return r ? reply(res, 200, r) : notFound(res);
    }
    if (sub === 'auditoria') {
     const { rows } = await q(`select a.admin_email, a.acao, a.detalhe, a.usuario_id, u.email usuario_email, to_char(a.criado_em at time zone '${TZ}', 'DD/MM/YYYY HH24:MI') quando

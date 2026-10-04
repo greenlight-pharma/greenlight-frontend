@@ -455,3 +455,35 @@ test('admin: origem do cadastro é limpa e gravada; Stripe lido só por GET', { 
  assert.equal(s.teste, true);
  delete process.env.STRIPE_SECRET_KEY; admin._resetStripeCache();
 });
+
+test('admin: conversas do usuário em leitura, com horário por mensagem e cada abertura auditada', { skip }, async () => {
+ const admin = await import('../server/admin.mjs');
+ process.env.ADMIN_EMAILS = 'chefe@exemplo.com';
+ const chefe = cookieOf(await (async () => { const r = res(); await accounts.auth(req({ body: { email: 'chefe@exemplo.com', password: 'senha-de-teste-1' } }), r); return r; })());
+ const p = await signup('conversa@exemplo.com');
+ const uid = (await db.q(`select id from usuarios where email='conversa@exemplo.com'`)).rows[0].id;
+ const h = async (body) => { const r = res(); await store.history(req({ url: '/api/wmed/history', cookie: p.cookie, body }), r); return r; };
+ const s1 = await h({ action: 'save', messages: [{ papel: 'user', conteudo: 'Dor torácica fictícia' }] });
+ const cid = s1.data.id;
+ const em1 = (await db.q('select mensagens from conversas where id = $1', [cid])).rows[0].mensagens[0].em;
+ assert.ok(em1);
+ await h({ action: 'save', id: cid, messages: [{ papel: 'user', conteudo: 'Dor torácica fictícia' }, { papel: 'assistant', conteudo: 'Resposta fictícia' }] });
+ const salvas = (await db.q('select mensagens from conversas where id = $1', [cid])).rows[0].mensagens;
+ assert.equal(salvas[0].em, em1); assert.ok(salvas[1].em);
+ const aberta = await h({ action: 'open', id: cid });
+ assert.deepEqual(aberta.data.mensagens, [{ papel: 'user', conteudo: 'Dor torácica fictícia' }, { papel: 'assistant', conteudo: 'Resposta fictícia' }]);
+ const call = async (sub, cookie = chefe, method = 'GET') => { const r = res(); await admin.adminApi(req({ method, url: '/api/wmed/admin/' + sub, cookie }), r, { sub: sub.split('?')[0] }); return r; };
+ assert.equal((await call('conversas/' + uid, p.cookie)).statusCode, 404);
+ assert.equal((await call('conversa/' + cid, p.cookie)).statusCode, 404);
+ assert.equal((await call('conversa/' + cid, chefe, 'POST')).statusCode, 404); // sem escrita
+ const lista = await call('conversas/' + uid + '?pagina=1');
+ assert.equal(lista.data.total, 1); assert.equal(lista.data.conversas[0].mensagens, 2);
+ const antes = (await db.q(`select count(*)::int n from admin_auditoria where acao = 'ver_conversa'`)).rows[0].n;
+ assert.equal(antes, 0); // listar não registra
+ const v = await call('conversa/' + cid);
+ assert.equal(v.statusCode, 200);
+ assert.deepEqual(v.data.mensagens.map((m) => [m.papel, m.conteudo, !!m.em]), [['user', 'Dor torácica fictícia', true], ['assistant', 'Resposta fictícia', true]]);
+ const a = (await db.q(`select admin_email, usuario_id, detalhe from admin_auditoria where acao = 'ver_conversa'`)).rows;
+ assert.equal(a.length, 1); assert.equal(a[0].admin_email, 'chefe@exemplo.com'); assert.equal(a[0].usuario_id, uid); assert.equal(a[0].detalhe.conversa, cid);
+ assert.equal((await call('conversa/00000000-0000-4000-8000-000000000000')).statusCode, 404);
+});
