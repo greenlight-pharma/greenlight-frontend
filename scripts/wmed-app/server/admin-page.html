@@ -49,6 +49,9 @@ dialog::backdrop{background:rgba(0,0,0,.45)}
 .actions{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
 .msg{font-size:13px;margin-top:8px}.msg.err{color:var(--bad)}.msg.ok{color:var(--ok)}
 .empty{color:var(--mut);font-size:13px}
+.conv{display:block;width:100%;text-align:left;background:none;border:0;border-bottom:1px solid var(--line);padding:9px 2px;color:inherit;font:inherit}.conv b{display:block;font-weight:600}
+.aviso{font-size:12px;color:var(--mut);background:var(--pri2);border-radius:8px;padding:5px 9px;margin:8px 0}
+.bolha{border:1px solid var(--line);border-radius:10px;padding:8px 10px;margin:0 0 8px;white-space:pre-wrap;word-break:break-word;font-size:14px}.bolha.ia{background:var(--pri2)}.bolha .s{display:block;margin-bottom:3px;white-space:normal}
 .legend{font-size:12px;color:var(--mut);display:flex;gap:12px;margin-top:4px}.legend i{display:inline-block;width:10px;height:10px;border-radius:2px;margin-right:4px;vertical-align:-1px}
 </style>
 </head>
@@ -66,7 +69,7 @@ dialog::backdrop{background:rgba(0,0,0,.45)}
  <section id="geral"></section>
  <section id="uso" hidden></section>
  <section id="usuarios" hidden>
-  <div class="row" style="margin-bottom:10px"><input id="busca" type="search" placeholder="Buscar nome, e-mail, país…" autocomplete="off">
+  <div class="row" style="margin-bottom:10px"><input id="busca" type="search" placeholder="Buscar por e-mail, nome, país…" autocomplete="off">
    <select id="filtro" style="flex:0 0 120px"><option value="">Todos</option><option value="hoje">Hoje</option><option value="pro">Pro</option><option value="teste">Em teste</option><option value="cortesia">Cortesia</option></select></div>
   <div id="lista"></div>
   <div class="row" style="margin-top:8px"><button class="btn sec" id="ant" type="button">Anterior</button><span id="pag" class="s" style="text-align:center;align-self:center"></span><button class="btn sec" id="prox" type="button">Próxima</button></div>
@@ -179,20 +182,46 @@ async function abrir(id){
   <button class="btn" type="button" id="dar">${cort?'Renovar cortesia Pro':'Dar cortesia Pro'}</button>
   ${cort?'<button class="btn bad" type="button" id="tirar">Remover cortesia</button>':''}
   ${u.email_verificado?'':'<button class="btn sec" type="button" id="verif">Reenviar verificação</button>'}
+  ${u.conversas?`<button class="btn sec" type="button" id="verConv">Ver conversas (${num(u.conversas)})</button>`:''}
   ${u.stripeUrl?`<a class="btn sec" href="${esc(u.stripeUrl)}" target="_blank" rel="noopener noreferrer" style="text-decoration:none">Abrir no Stripe</a>`:''}
  </div>
  <p class="msg" id="fmsg"></p>
  ${j.auditoria.length?`<h3 style="margin-top:12px">Ações do admin</h3>${tabela(j.auditoria,[{t:'Quando',k:'quando'},{t:'Ação',k:'acao'},{t:'Por',k:'admin_email'}])}`:''}
- <p class="s">O conteúdo das conversas e dos casos não é exibido no painel.</p>`;
+ <p class="s">Conversas abertas aqui ficam registradas na auditoria. Casos não são exibidos.</p>`;
+ if($('#verConv'))$('#verConv').onclick=()=>conversas(u.id,1);
  $('#fechar').onclick=()=>$('#ficha').close();
  const act=async(body,ok,btn)=>{const m=$('#fmsg');btn.disabled=true;m.className='msg';m.textContent='Enviando…';try{await post({id:u.id,...body});m.className='msg ok';m.textContent=ok;setTimeout(()=>abrir(u.id),900);lista();}catch(e){m.className='msg err';m.textContent=e.message;btn.disabled=false;}};
  $('#dar').onclick=(e)=>{const dias=+$('#dias').value;if(confirm(`Dar Pro de cortesia por ${dias} dias para ${u.email}?`))act({acao:'cortesia',dias},'Cortesia registrada.',e.target);};
  if($('#tirar'))$('#tirar').onclick=(e)=>{if(confirm('Remover a cortesia Pro?'))act({acao:'remover-cortesia'},'Cortesia removida.',e.target);};
  if($('#verif'))$('#verif').onclick=(e)=>act({acao:'reenviar-verificacao'},'E-mail de verificação enviado.',e.target);
 }
+const papel=(p)=>p==='assistant'?'2Doctor':'Usuário';
+function pager(j,fn){return j.paginas>1?`<div class="row" style="margin-top:8px"><button class="btn sec" type="button" id="cAnt" ${j.pagina<=1?'disabled':''}>Anterior</button><span class="s" style="text-align:center;align-self:center">${j.pagina}/${j.paginas}</span><button class="btn sec" type="button" id="cProx" ${j.pagina>=j.paginas?'disabled':''}>Próxima</button></div>`:'';}
+function ligarPager(j,fn){if($('#cAnt'))$('#cAnt').onclick=()=>fn(j.pagina-1);if($('#cProx'))$('#cProx').onclick=()=>fn(j.pagina+1);}
+async function conversas(uid,pg){
+ const box=$('#fichaBody');box.innerHTML='<p class="s">Carregando…</p>';
+ let j;try{j=await get('conversas/'+uid+'?pagina='+pg);}catch(e){box.innerHTML=`<p class="msg err">${esc(e.message)}</p>`;return;}
+ box.innerHTML=`<div class="row" style="align-items:start"><div><h3 style="font-size:17px;margin:0">Conversas</h3><div class="s">${esc(j.usuario.nome||'—')} · ${esc(j.usuario.email)} · ${num(j.total)}</div></div><button class="btn sec" style="flex:0" type="button" id="voltar">Voltar</button></div>
+ <p class="aviso">Somente leitura. Abrir uma conversa fica registrado na auditoria.</p>
+ ${j.conversas.length?j.conversas.map(c=>`<button class="conv" type="button" data-c="${esc(c.id)}"><b>${esc(c.titulo)}</b><span class="s">${dt(c.atualizada_em)} · criada ${dt(c.criada_em)} · ${num(c.mensagens)} mensagens</span></button>`).join(''):'<p class="empty">Nenhuma conversa salva.</p>'}
+ ${pager(j)}`;
+ $('#voltar').onclick=()=>abrir(uid);ligarPager(j,(p)=>conversas(uid,p));
+ box.querySelectorAll('[data-c]').forEach(b=>b.onclick=()=>verConversa(uid,b.dataset.c,1,pg));
+}
+async function verConversa(uid,cid,pg,pgLista){
+ const box=$('#fichaBody');box.innerHTML='<p class="s">Carregando…</p>';
+ let j;try{j=await get('conversa/'+cid+'?pagina='+pg);}catch(e){box.innerHTML=`<p class="msg err">${esc(e.message)}</p>`;return;}
+ const c=j.conversa;
+ box.innerHTML=`<p class="aviso">Acesso registrado na auditoria (${esc(document.body.dataset.admin||'admin')}, ${dt(new Date())}). Somente leitura.</p>
+ <div class="row" style="align-items:start"><div><h3 style="font-size:16px;margin:0">${esc(c.titulo)}</h3><div class="s">${esc(c.usuario.email)} · criada ${dt(c.criada_em)} · última atualização ${dt(c.atualizada_em)} · ${num(j.total)} mensagens</div></div><button class="btn sec" style="flex:0" type="button" id="voltar">Voltar</button></div>
+ <div style="margin-top:10px">${j.mensagens.map(m=>`<div class="bolha ${m.papel==='assistant'?'ia':'pessoa'}"><span class="s">#${m.n} · <b>${papel(m.papel)}</b>${m.em?' · '+dt(m.em):''}</span>${esc(m.conteudo)}</div>`).join('')||'<p class="empty">Sem mensagens.</p>'}</div>
+ ${j.mensagens.some(m=>!m.em)?'<p class="s">Mensagens salvas antes de 04/10/2026 não têm horário próprio.</p>':''}
+ ${pager(j)}`;
+ $('#voltar').onclick=()=>conversas(uid,pgLista);ligarPager(j,(p)=>verConversa(uid,cid,p,pgLista));
+}
 async function auditoria(){
  let j;try{j=await get('auditoria');}catch(e){$('#auditoria').innerHTML=`<p class="msg err">${esc(e.message)}</p>`;return;}
- $('#auditoria').innerHTML=`<div class="card"><h3>Ações do admin</h3>${tabela(j.auditoria,[{t:'Quando',k:'quando'},{t:'Ação',f:r=>esc(r.acao)+(r.detalhe?.dias?` (${r.detalhe.dias} d)`:'')},{t:'Usuário',f:r=>r.usuario_id?`<a href="#" data-u="${esc(r.usuario_id)}">${esc(r.usuario_email||r.usuario_id)}</a>`:'—'},{t:'Por',k:'admin_email'}])}</div>`;
+ $('#auditoria').innerHTML=`<div class="card"><h3>Ações do admin</h3>${tabela(j.auditoria,[{t:'Quando',k:'quando'},{t:'Ação',f:r=>esc(r.acao)+(r.detalhe?.dias?` (${r.detalhe.dias} d)`:'')+(r.detalhe?.conversa?`<div class="s">${esc(r.detalhe.titulo||r.detalhe.conversa)}</div>`:'')},{t:'Usuário',f:r=>r.usuario_id?`<a href="#" data-u="${esc(r.usuario_id)}">${esc(r.usuario_email||r.usuario_id)}</a>`:'—'},{t:'Por',k:'admin_email'}])}</div>`;
 }
 document.addEventListener('click',(e)=>{const el=e.target.closest('[data-u]');if(el){e.preventDefault();abrir(el.dataset.u);}});
 $('#ficha').addEventListener('click',(e)=>{if(e.target===$('#ficha'))$('#ficha').close();});
@@ -201,6 +230,7 @@ $('#busca').oninput=()=>{clearTimeout(t);t=setTimeout(()=>{pagina=1;lista();},30
 $('#filtro').onchange=()=>{pagina=1;lista();};
 $('#ant').onclick=()=>{pagina--;lista();};$('#prox').onclick=()=>{pagina++;lista();};
 $('#recarregar').onclick=()=>{carregar();const tab=document.querySelector('nav [aria-selected=true]').dataset.tab;if(tab==='usuarios')lista();if(tab==='auditoria')auditoria();};
+get('eu').then(j=>document.body.dataset.admin=j.email).catch(()=>{});
 carregar();
 try{const a=sessionStorage.getItem('aba');if(a&&a!=='geral')document.querySelector(`nav [data-tab="${a}"]`)?.click();}catch{}
 </script>
