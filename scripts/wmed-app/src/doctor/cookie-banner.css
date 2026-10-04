@@ -1,0 +1,7 @@
+.cookie-banner{position:fixed;left:12px;right:12px;bottom:calc(12px + env(safe-area-inset-bottom));z-index:60;max-width:520px;margin:0 auto;display:flex;flex-direction:column;gap:10px;padding:14px 16px;border:1px solid var(--line,#d8dee4);border-radius:12px;background:var(--raised,#fff);color:var(--ink,#111);box-shadow:0 8px 28px rgba(0,0,0,.16);font-size:13px;line-height:1.5}
+.cookie-banner p{margin:0}
+.cookie-banner a{color:inherit;text-decoration:underline;text-underline-offset:3px}
+.cookie-banner div{display:flex;gap:8px;justify-content:flex-end}
+.cookie-banner button{min-height:40px;padding:0 16px;border-radius:9px;font-size:13px;font-weight:600;cursor:pointer;border:1px solid var(--line,#d8dee4);background:transparent;color:inherit}
+.cookie-banner .cookie-accept{background:var(--ink,#111);color:var(--raised,#fff);border-color:var(--ink,#111)}
+@media(min-width:700px){.cookie-banner{left:auto;right:20px;margin:0}}

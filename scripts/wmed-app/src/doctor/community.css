@@ -1,0 +1,18 @@
+.community-page{max-width:880px}
+.community-list{display:grid;gap:10px;margin-top:18px}
+.community-list>button{display:grid;grid-template-columns:1fr auto auto;gap:12px;align-items:center;text-align:left;border:1px solid var(--line);background:var(--raised);color:var(--ink);border-radius:14px;padding:16px 18px}
+.community-list strong{display:block;font-size:16px;line-height:1.35}.community-list small{display:block;margin-top:4px;color:var(--muted);font-size:12px}
+.community-lang{font-size:11px;font-weight:700;border:1px solid var(--line);border-radius:999px;padding:3px 8px;color:var(--muted)}
+.community-empty{display:grid;justify-items:center;gap:8px;text-align:center;padding:40px 20px;color:var(--muted);border:1px dashed var(--line);border-radius:16px;margin-top:18px}
+.community-case-head h1{font-size:clamp(24px,3vw,32px);margin:6px 0}.community-case-head p{color:var(--muted);font-size:13px;margin:0 0 14px}
+.community-fields{margin:0 0 16px;border:1px solid var(--line);border-radius:14px;padding:4px 18px;background:var(--raised)}
+.community-fields div{padding:12px 0;border-bottom:1px solid var(--line)}.community-fields div:last-child{border:0}
+.community-fields dt{font-size:11px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;color:var(--muted)}.community-fields dd{margin:5px 0 0;font-size:15px;line-height:1.55}
+.community-answer{display:grid;gap:10px;padding:18px;border:1.5px solid var(--action,#005d5b);border-radius:16px;background:var(--surface)}
+.community-answer label{display:grid;gap:4px}.community-answer label span{font-size:12px;color:var(--muted)}
+.community-answer textarea{border:1px solid var(--line);border-radius:12px;padding:12px;font:inherit;font-size:16px;background:var(--raised);color:var(--ink)}
+.community-skip{justify-self:center;border:0;background:none;color:var(--muted);text-decoration:underline;font-size:13px}
+.community-mine{padding:12px 16px;border-radius:12px;background:var(--surface);border:1px solid var(--line);font-size:14px}
+.community-actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:16px}
+.community-actions button{display:inline-flex;gap:7px;align-items:center;min-height:42px;padding:0 14px;border-radius:999px;border:1px solid var(--line);background:var(--raised);color:var(--ink);font-size:13px;font-weight:600}
+@media(max-width:700px){.community-page{padding-top:14px}.community-page .module-heading>p{font-size:13px}.community-answer .module-primary{position:static;box-shadow:none}}
