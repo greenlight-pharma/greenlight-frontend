@@ -1,6 +1,6 @@
 {
  "meta": {
-  "gerado_em": "2026-10-03T14:39+00:00",
+  "gerado_em": "2026-10-04T15:15+00:00",
   "gerado_por": "scripts/governo/agentes/agente_noticias.py",
   "janela_dias": 90,
   "fontes": [
@@ -30,13 +30,13 @@
     "url": "https://www.gov.br/planalto/pt-br/acompanhe-o-planalto/noticias/RSS"
    }
   ],
-  "total_artigos": 1660,
-  "artigos_com_no": 517,
-  "novos_nesta_rodada": 60,
+  "total_artigos": 1679,
+  "artigos_com_no": 525,
+  "novos_nesta_rodada": 26,
   "artigos_por_fonte": {
-   "agenciabrasil": 536,
+   "agenciabrasil": 554,
+   "senado": 688,
    "camara": 403,
-   "senado": 687,
    "planalto": 30,
    "stf": 4
   },
@@ -45,12 +45,12 @@
  },
  "resumo": [
   {
-   "texto": "O presidente do Supremo Tribunal Federal, Edson Fachin, editou resolução que submete petições em processos em andamento a análise prévia, para evitar direcionamento de casos a ministros específicos.",
+   "texto": "O Supremo Tribunal Federal publicou resolução que submete petições em processos em andamento a análise prévia, para evitar direcionamento de casos a ministros específicos.",
    "artigo_id": "n-d1042983ff",
    "no_id": "stf"
   },
   {
-   "texto": "O Tribunal Superior Eleitoral decidiu que os votos dados a Anthony Garotinho, candidato ao governo do Rio de Janeiro, serão anulados.",
+   "texto": "O Tribunal Superior Eleitoral decidiu que os votos dados ao candidato ao governo do Rio de Janeiro Anthony Garotinho serão anulados e não entrarão no total de votos válidos.",
    "artigo_id": "n-f15d029de7",
    "no_id": "tse"
   },
@@ -68,183 +68,183 @@
  "ranking": {
   "orgaos": [
    {
-    "id": "stf",
-    "artigos": 86,
-    "peso": 50.06951427266665,
-    "ultima": "2026-10-02T22:20+00:00"
+    "id": "tse",
+    "artigos": 89,
+    "peso": 51.90326841204193,
+    "ultima": "2026-10-04T14:38+00:00"
    },
    {
-    "id": "tse",
-    "artigos": 84,
-    "peso": 49.44396336714464,
-    "ultima": "2026-10-02T23:34+00:00"
+    "id": "stf",
+    "artigos": 86,
+    "peso": 49.40351655099974,
+    "ultima": "2026-10-02T22:20+00:00"
    },
    {
     "id": "camara",
     "artigos": 51,
-    "peso": 24.646288209606958,
+    "peso": 24.892151162790675,
     "ultima": "2026-10-02T13:02:00+00:00"
    },
    {
     "id": "congresso",
     "artigos": 46,
-    "peso": 23.796237532202003,
+    "peso": 23.95947501610891,
     "ultima": "2026-09-30T19:31+00:00"
    },
    {
     "id": "caixa",
-    "artigos": 30,
-    "peso": 18.582089552238806,
-    "ultima": "2026-10-03T12:25+00:00"
+    "artigos": 31,
+    "peso": 18.79025270758123,
+    "ultima": "2026-10-04T10:44+00:00"
+   },
+   {
+    "id": "pf",
+    "artigos": 28,
+    "peso": 16.26350642263454,
+    "ultima": "2026-10-04T14:18+00:00"
    },
    {
     "id": "prf",
     "artigos": 9,
-    "peso": 15.885748115318604,
+    "peso": 15.924375017490837,
     "ultima": "2026-10-01T23:06+00:00"
-   },
-   {
-    "id": "pf",
-    "artigos": 26,
-    "peso": 15.287623020269834,
-    "ultima": "2026-10-02T19:13+00:00"
-   },
-   {
-    "id": "mec",
-    "artigos": 21,
-    "peso": 12.258884017827366,
-    "ultima": "2026-10-02T19:46+00:00"
    },
    {
     "id": "inss",
     "artigos": 19,
-    "peso": 12.246588176932583,
+    "peso": 12.28001003045124,
     "ultima": "2026-10-01T20:17+00:00"
    },
    {
-    "id": "anvisa",
-    "artigos": 19,
-    "peso": 11.700790207403502,
-    "ultima": "2026-10-02T14:29+00:00"
+    "id": "mec",
+    "artigos": 21,
+    "peso": 12.12960378129106,
+    "ultima": "2026-10-02T19:46+00:00"
    },
    {
     "id": "mte",
     "artigos": 2,
-    "peso": 11.686069651741294,
+    "peso": 11.799470517448857,
     "ultima": "2026-09-29T18:56+00:00"
+   },
+   {
+    "id": "anvisa",
+    "artigos": 19,
+    "peso": 11.507608356893444,
+    "ultima": "2026-10-02T14:29+00:00"
    },
    {
     "id": "inpe",
     "artigos": 1,
-    "peso": 11.066666666666666,
+    "peso": 11.193333333333333,
     "ultima": "2026-08-06T22:13:00+00:00"
    },
    {
     "id": "petrobras",
-    "artigos": 18,
-    "peso": 10.740826435508051,
-    "ultima": "2026-10-02T22:25+00:00"
+    "artigos": 19,
+    "peso": 11.162439131894887,
+    "ultima": "2026-10-03T16:03+00:00"
    },
    {
     "id": "ibge",
     "artigos": 15,
-    "peso": 9.154902344174326,
+    "peso": 8.974001972966166,
     "ultima": "2026-10-02T12:50+00:00"
    },
    {
     "id": "tst",
     "artigos": 15,
-    "peso": 8.81475097126976,
+    "peso": 8.728892254131292,
     "ultima": "2026-09-29T23:40+00:00"
    },
    {
     "id": "inep",
     "artigos": 14,
-    "peso": 8.671641791044777,
+    "peso": 8.485920577617328,
     "ultima": "2026-10-02T19:46+00:00"
    },
    {
     "id": "agu",
     "artigos": 14,
-    "peso": 8.535499359099699,
+    "peso": 8.36786478885064,
     "ultima": "2026-10-02T22:20+00:00"
-   },
-   {
-    "id": "ms",
-    "artigos": 14,
-    "peso": 8.33149041814021,
-    "ultima": "2026-09-30T16:08+00:00"
    },
    {
     "id": "tcu",
     "artigos": 15,
-    "peso": 8.202314734475035,
+    "peso": 8.247670957763047,
     "ultima": "2026-10-01T12:20:00+00:00"
+   },
+   {
+    "id": "ms",
+    "artigos": 14,
+    "peso": 8.240810858782455,
+    "ultima": "2026-09-30T16:08+00:00"
    },
    {
     "id": "anp",
     "artigos": 12,
-    "peso": 7.092684447990956,
+    "peso": 7.028536490551409,
     "ultima": "2026-10-02T19:10+00:00"
    },
    {
     "id": "mpf",
     "artigos": 11,
-    "peso": 6.677290403875818,
+    "peso": 6.549453236504072,
     "ultima": "2026-09-29T23:40+00:00"
    },
    {
     "id": "stj",
     "artigos": 10,
-    "peso": 6.4667241285526815,
+    "peso": 6.397542924852291,
     "ultima": "2026-09-30T18:25+00:00"
    },
    {
     "id": "cvm",
     "artigos": 7,
-    "peso": 4.540239250398133,
+    "peso": 4.470073725040536,
     "ultima": "2026-09-27T18:52+00:00"
    },
    {
     "id": "cnj",
     "artigos": 7,
-    "peso": 4.1996784635773095,
+    "peso": 4.124904500041978,
     "ultima": "2026-09-29T15:54+00:00"
    },
    {
     "id": "senado",
     "artigos": 4,
-    "peso": 3.295285359801489,
+    "peso": 3.3330024813895784,
     "ultima": "2026-09-29T14:59+00:00"
    },
    {
     "id": "ebc",
     "artigos": 5,
-    "peso": 3.0970149253731343,
+    "peso": 3.0306859205776178,
     "ultima": "2026-10-02T23:34+00:00"
    },
    {
     "id": "cmn",
     "artigos": 5,
-    "peso": 3.0970149253731343,
+    "peso": 3.0306859205776178,
     "ultima": "2026-09-30T17:48+00:00"
    },
    {
     "id": "senacon",
     "artigos": 5,
-    "peso": 3.0970149253731343,
+    "peso": 3.0306859205776178,
     "ultima": "2026-09-25T12:27+00:00"
    },
    {
     "id": "anac",
     "artigos": 5,
-    "peso": 2.8930059844136453,
+    "peso": 2.90363199050943,
     "ultima": "2026-09-23T14:04+00:00"
    },
    {
     "id": "aneel",
     "artigos": 5,
-    "peso": 2.8247300614829784,
+    "peso": 2.7945743430442453,
     "ultima": "2026-10-02T20:17+00:00"
    }
   ],
@@ -260,9 +260,9 @@
     "uf": null,
     "foto": "https://commons.wikimedia.org/wiki/Special:FilePath/Foto_oficial_de_Luiz_In%C3%A1cio_Lula_da_Silva_%28estreita%29.jpg?width=160",
     "foto_fonte": "https://www.wikidata.org/wiki/Q37181",
-    "artigos": 34,
-    "peso": 30.21381677760923,
-    "ultima": "2026-10-01T23:10+00:00"
+    "artigos": 36,
+    "peso": 31.336634537174966,
+    "ultima": "2026-10-04T13:59+00:00"
    },
    {
     "id": "damares-alves",
@@ -276,7 +276,7 @@
     "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador6335.jpg",
     "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/6335",
     "artigos": 25,
-    "peso": 12.08151382823872,
+    "peso": 12.202034883720934,
     "ultima": "2026-10-01T12:52:00+00:00"
    },
    {
@@ -291,7 +291,7 @@
     "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador3830.jpg",
     "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/3830",
     "artigos": 21,
-    "peso": 10.55689891155576,
+    "peso": 10.603876668625643,
     "ultima": "2026-10-02T22:50+00:00"
    },
    {
@@ -305,9 +305,24 @@
     "uf": null,
     "foto": "https://commons.wikimedia.org/wiki/Special:FilePath/Nunes_Marques%2C_February_2025_%28cropped%29.jpg?width=160",
     "foto_fonte": "https://www.wikidata.org/wiki/Q99831978",
+    "artigos": 18,
+    "peso": 10.556301947779362,
+    "ultima": "2026-10-04T13:59+00:00"
+   },
+   {
+    "id": "flavio-bolsonaro",
+    "nome": "Flávio Bolsonaro",
+    "nome_completo": "Flávio Nantes Bolsonaro",
+    "cargo": "Senador, RJ",
+    "no_id": "senado",
+    "poder": "legislativo",
+    "partido": "PL",
+    "uf": "RJ",
+    "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador5894.jpg",
+    "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/5894",
     "artigos": 16,
-    "peso": 9.502020465358797,
-    "ultima": "2026-10-02T23:34+00:00"
+    "peso": 9.344027579548316,
+    "ultima": "2026-10-04T13:18+00:00"
    },
    {
     "id": "edson-fachin",
@@ -321,23 +336,8 @@
     "foto": "https://commons.wikimedia.org/wiki/Special:FilePath/Luiz_Edson_Fachin-12-05.2015.jpg?width=160",
     "foto_fonte": "https://www.wikidata.org/wiki/Q10320705",
     "artigos": 15,
-    "peso": 9.018759912229248,
+    "peso": 8.855946184199478,
     "ultima": "2026-10-02T19:13+00:00"
-   },
-   {
-    "id": "flavio-bolsonaro",
-    "nome": "Flávio Bolsonaro",
-    "nome_completo": "Flávio Nantes Bolsonaro",
-    "cargo": "Senador, RJ",
-    "no_id": "senado",
-    "poder": "legislativo",
-    "partido": "PL",
-    "uf": "RJ",
-    "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador5894.jpg",
-    "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/5894",
-    "artigos": 15,
-    "peso": 8.88261748028417,
-    "ultima": "2026-10-03T12:39+00:00"
    },
    {
     "id": "hugo-motta",
@@ -351,7 +351,7 @@
     "foto": "https://www.camara.leg.br/internet/deputado/bandep/160674.jpg",
     "foto_fonte": "https://www.camara.leg.br/deputados/160674",
     "artigos": 11,
-    "peso": 6.678109231708331,
+    "peso": 6.74957224883144,
     "ultima": "2026-09-08T14:44:00+00:00"
    },
    {
@@ -366,7 +366,7 @@
     "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador825.jpg",
     "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/825",
     "artigos": 13,
-    "peso": 6.282387190684134,
+    "peso": 6.345058139534886,
     "ultima": "2026-09-29T16:37:00+00:00"
    },
    {
@@ -381,7 +381,7 @@
     "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador5979.jpg",
     "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/5979",
     "artigos": 11,
-    "peso": 5.3158660844250365,
+    "peso": 5.368895348837211,
     "ultima": "2026-09-30T13:54:00+00:00"
    },
    {
@@ -396,7 +396,7 @@
     "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador5525.jpg",
     "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/5525",
     "artigos": 11,
-    "peso": 5.3158660844250365,
+    "peso": 5.368895348837211,
     "ultima": "2026-09-02T23:20:00+00:00"
    },
    {
@@ -411,7 +411,7 @@
     "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador345.jpg",
     "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/345",
     "artigos": 10,
-    "peso": 4.832605531295488,
+    "peso": 4.880813953488373,
     "ultima": "2026-09-25T18:03:00+00:00"
    },
    {
@@ -426,7 +426,7 @@
     "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador5376.jpg",
     "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/5376",
     "artigos": 10,
-    "peso": 4.832605531295488,
+    "peso": 4.880813953488373,
     "ultima": "2026-09-23T18:20:00+00:00"
    },
    {
@@ -441,7 +441,7 @@
     "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador5352.jpg",
     "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/5352",
     "artigos": 10,
-    "peso": 4.832605531295488,
+    "peso": 4.880813953488373,
     "ultima": "2026-09-14T16:27:00+00:00"
    },
    {
@@ -456,7 +456,7 @@
     "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador5990.jpg",
     "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/5990",
     "artigos": 9,
-    "peso": 4.349344978165939,
+    "peso": 4.392732558139536,
     "ultima": "2026-09-04T21:56:00+00:00"
    },
    {
@@ -471,7 +471,7 @@
     "foto": null,
     "foto_fonte": null,
     "artigos": 7,
-    "peso": 4.063536031632232,
+    "peso": 4.006848711275293,
     "ultima": "2026-09-25T21:11+00:00"
    },
    {
@@ -486,7 +486,7 @@
     "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador6009.jpg",
     "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/6009",
     "artigos": 8,
-    "peso": 3.8660844250363904,
+    "peso": 3.9046511627906986,
     "ultima": "2026-09-23T18:51:00+00:00"
    },
    {
@@ -501,7 +501,7 @@
     "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador4770.jpg",
     "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/4770",
     "artigos": 7,
-    "peso": 3.3828238719068415,
+    "peso": 3.416569767441861,
     "ultima": "2026-09-25T21:09:00+00:00"
    },
    {
@@ -516,7 +516,7 @@
     "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador5917.jpg",
     "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/5917",
     "artigos": 7,
-    "peso": 3.3828238719068415,
+    "peso": 3.416569767441861,
     "ultima": "2026-09-02T19:51:00+00:00"
    },
    {
@@ -531,7 +531,7 @@
     "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador6336.jpg",
     "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/6336",
     "artigos": 6,
-    "peso": 2.8995633187772927,
+    "peso": 2.9284883720930237,
     "ultima": "2026-09-30T15:55:00+00:00"
    },
    {
@@ -546,7 +546,7 @@
     "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador6338.jpg",
     "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/6338",
     "artigos": 6,
-    "peso": 2.8995633187772927,
+    "peso": 2.9284883720930237,
     "ultima": "2026-09-10T18:45:00+00:00"
    },
    {
@@ -561,7 +561,7 @@
     "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador475.jpg",
     "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/475",
     "artigos": 6,
-    "peso": 2.8995633187772927,
+    "peso": 2.9284883720930237,
     "ultima": "2026-09-01T22:31:00+00:00"
    },
    {
@@ -576,7 +576,7 @@
     "foto": "https://www.camara.leg.br/internet/deputado/bandep/74161.jpg",
     "foto_fonte": "https://www.camara.leg.br/deputados/74161",
     "artigos": 5,
-    "peso": 2.756863552468567,
+    "peso": 2.7855762017427432,
     "ultima": "2026-09-01T19:56:00+00:00"
    },
    {
@@ -591,7 +591,7 @@
     "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador5985.jpg",
     "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/5985",
     "artigos": 5,
-    "peso": 2.416302765647744,
+    "peso": 2.4404069767441863,
     "ultima": "2026-09-22T14:16:00+00:00"
    },
    {
@@ -606,12 +606,229 @@
     "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador22.jpg",
     "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/22",
     "artigos": 5,
-    "peso": 2.416302765647744,
+    "peso": 2.4404069767441863,
     "ultima": "2026-09-11T19:48:00+00:00"
    }
   ]
  },
  "artigos": [
+  {
+   "id": "n-670e3fa058",
+   "titulo": "TSE registra 421 urnas substituídas nas primeiras 2 horas de votação",
+   "url": "https://agenciabrasil.ebc.com.br/politica/noticia/2026-10/tse-registra-421-urnas-substituidas-nas-primeiras-2-horas-de-votacao",
+   "data": "2026-10-04T14:38+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [
+    "tse"
+   ],
+   "pessoas": [],
+   "resumo": "Com pouco mais de duas horas de votação, o Tribunal Superior Eleitoral (TSE) informou em boletim que 421 urnas eletrônicas precisaram ser substituídas em todo o país neste domingo (4) de primeiro turno das eleições. O número corresponde a 0,7% das 499.248 urnas empregadas na votação deste ano. A Justiça Eleitoral deixou reservadas mais 68.912 equipamentos para substituição, se necessário. Notícias relacionadas: Justiça está preparada para eleição tranquila, diz presidente do TSE. Tribunais distribuem urnas e preparam seções para eleição. Presidente do TSE diz que voto é direito fundamental dos"
+  },
+  {
+   "id": "n-74ec487874",
+   "titulo": "Polícia Federal prende 28 pessoas por crimes eleitorais neste domingo",
+   "url": "https://agenciabrasil.ebc.com.br/politica/noticia/2026-10/policia-federal-prende-28-pessoas-crimes-eleitorais-neste-domingo",
+   "data": "2026-10-04T14:18+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [
+    "pf"
+   ],
+   "pessoas": [],
+   "resumo": "Ao menos 28 pessoas foram detidas em sete estados e no Distrito Federal por crimes eleitorais. Os delitos foram registrados em Roraima, Acre, Rondônia, Amapá, Distrito Federal, Paraíba, Bahia e Minas Gerais. Propaganda eleitoral irregular e compra de votos são os principais crimes investigados. Até o momento, a PF apreendeu R$ 57.379 em bens e valores. Desse total, R$ 34.228 era dinheiro em espécie. Notícias relacionadas: Eleições: propaganda eleitoral nas ruas termina às 22h deste sábado. Paraguai vai às urnas para eleições municipais neste domingo. Eleições 2026: e-Título permite justificar "
+  },
+  {
+   "id": "n-c982eb9b02",
+   "titulo": "Justiça está preparada para eleição tranquila, diz presidente do TSE",
+   "url": "https://agenciabrasil.ebc.com.br/politica/noticia/2026-10/tse-justica-eleitoral-esta-preparada-para-eleicao-tranquila",
+   "data": "2026-10-04T13:59+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [
+    "tse"
+   ],
+   "pessoas": [
+    "luiz-inacio-lula-da-silva",
+    "nunes-marques"
+   ],
+   "resumo": "O presidente do Tribunal Superior Eleitoral (TSE), Kassio Nunes Marques, disse, ao votar neste domingo (4), que a Justiça Eleitoral está preparada para que o país tenha uma das eleições “mais tranquilas e exitosas”. “Amanhecemos no dia de hoje com a segurança de que as eleições vão transcorrer na maior normalidade”. Notícias relacionadas: Flávio e Lula votam no 1º turno; acompanhe voto dos demais candidatos. Eleições 2026: veja a ordem de votação na urna eletrônica. Eleições 2026: boca de urna é crime; saiba o que é proibido . Nunes Marques afirmou que os incidentes registrados até a véspera d"
+  },
+  {
+   "id": "n-e3ebad0737",
+   "titulo": "Solicitou voto em trânsito? Saiba como verificar onde votar",
+   "url": "https://agenciabrasil.ebc.com.br/politica/noticia/2026-10/solicitou-voto-em-transito-saiba-como-verificar-onde-votar",
+   "data": "2026-10-04T13:19+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [
+    "tse"
+   ],
+   "pessoas": [],
+   "resumo": "Quem solicitou o voto em trânsito nas eleições 2026 deverá votar no local de votação para o qual foi transferido. Não será possível votar na seção original. Caso a pessoa não esteja no município para o qual se transferiu, deverá apresentar a justificativa da sua ausência, inclusive se estiver no seu local de votação de origem. Notícias relacionadas: Eleições 2026: saiba o que pode e o que não pode no dia da votação. Eleitor deve se antecipar na consulta a local de votação, alerta TSE. É possível votar em trânsito em cidades distintas nos dois turnos. O retorno para o local de votação original "
+  },
+  {
+   "id": "n-9c21a752e5",
+   "titulo": "Flávio e Lula votam no 1º turno; acompanhe voto dos demais candidatos",
+   "url": "https://agenciabrasil.ebc.com.br/politica/noticia/2026-10/flavio-e-lula-votam-no-1o-turno-saiba-candidatos-que-ja-votaram",
+   "data": "2026-10-04T13:18+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [],
+   "pessoas": [
+    "luiz-inacio-lula-da-silva",
+    "carlos-jordy",
+    "carlos-portinho",
+    "flavio-bolsonaro"
+   ],
+   "resumo": "O candidato Flávio Bolsonaro (PL) votou na manhã deste domingo (4) no Rio de Janeiro. Ele chegou pouco depois das 8h, logo após a abertura dos portões da Escola Municipal Barão Homem de Mello, na Vila Isabel. Depois de votar, o candidato posou para fotos ao lado da esposa, Fernanda Bolsonaro. Flávio foi acompanhado do candidato ao governo do Rio de Janeiro, Douglas Ruas, e dos candidatos ao Senado pelo PL Carlos Portinho e Carlos Jordy. A mãe do candidato, Rogéria Bolsonaro, candidata a deputada federal, também acompanhou o voto do filho. Depois do voto, Flávio conversou com a imprensa e disse"
+  },
+  {
+   "id": "n-ddd1cfac54",
+   "titulo": "No estado de São Paulo, 32 urnas com problemas são substituídas",
+   "url": "https://agenciabrasil.ebc.com.br/justica/noticia/2026-10/em-sao-paulo-32-urnas-com-problemas-sao-substituidas-no-estado",
+   "data": "2026-10-04T13:06+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "Boletim divulgado por volta das 9h30 de hoje (4) pelo Tribunal Regional Eleitoral de São Paulo (TRE-SP) informa que as eleições no estado estão transcorrendo bem, dentro da normalidade. No total, 32 urnas eletrônicas apresentaram algum problema e precisaram ser substituídas por outras. Oito urnas com problema foram detectadas na capital paulista e o restante, no interior do estado. Notícias relacionadas: Cerca de 158,7 milhões de eleitores vão às urnas em todo o país. Votação começa com poucas filas na zona sul de São Paulo. Ao todo, o TRE-SP preparou 114.605 urnas eletrônicas para serem utili"
+  },
+  {
+   "id": "n-0e6bef8248",
+   "titulo": "Votação começa com poucas filas na zona sul de São Paulo",
+   "url": "https://agenciabrasil.ebc.com.br/politica/noticia/2026-10/votacao-comeca-com-poucas-filas-na-zona-sul-de-sao-paulo",
+   "data": "2026-10-04T12:48+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "A votação transcorreu sem dificuldades para os eleitores da 6ª Zona Eleitoral (ZE), no bairro Paraíso, na zona sul da capital. Próxima do metrô Vergueiro, a ZE registrava um bom fluxo, com eleitores votando rapidamente e com poucas filas. O colégio eleitoral tinha movimento principalmente de idosos e voluntários das eleições, por volta das 9h deste domingo (4). Notícias relacionadas: Eleições: propaganda eleitoral nas ruas termina às 22h deste sábado. Paraguai vai às urnas para eleições municipais neste domingo. Fim de semana de eleições será de chuva em grande parte do país . A advogada Vanes"
+  },
+  {
+   "id": "n-0c9e6d5902",
+   "titulo": "Saiba o que são crimes eleitorais e como denunciar",
+   "url": "https://agenciabrasil.ebc.com.br/justica/noticia/2026-10/saiba-o-que-sao-crimes-eleitorais-e-como-denuncia-los",
+   "data": "2026-10-04T12:47+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "Neste domingo (4), mais de 158 milhões de eleitores brasileiros vão às urnas para escolher deputados federais, estaduais (ou distritais), senadores, governadores e o presidente da República. Quaisquer condutas proibidas por lei que comprometam a liberdade de escolha, a igualdade entre os candidatos e a legitimidade das eleições são classificadas como crimes eleitorais. A violação do sigilo do voto, a boca de urna, o derramamento de santinhos e o caixa 2 são algumas práticas ilícitas que afetam os direitos dos eleitores e o funcionamento regular do processo eleitoral . Por isso, o Código Eleito"
+  },
+  {
+   "id": "n-3787c51938",
+   "titulo": "Eleições 2026: camiseta, adesivo, bandeira: o que pode usar para votar",
+   "url": "https://agenciabrasil.ebc.com.br/politica/noticia/2026-10/eleicoes-2026-camiseta-adesivo-bandeira-o-que-pode-usar-para-votar",
+   "data": "2026-10-04T12:01+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "Durante a votação, é permitida a manifestação individual e silenciosa da sua posição política. Isso significa que eleitores podem usar itens que expressem sua preferência, como: bandeiras, camisetas, broches e adesivos. Notícias relacionadas: Eleições 2026: saiba o que pode e o que não pode no dia da votação. O que não pode é haver aglomerações, manifestações coletivas ruidosas, abordagem a outros eleitores ou qualquer tentativa de aliciamento, que é considerado crime de boca de urna . Quem identificar possíveis irregularidades pode denunciar por meio do aplicativo Pardal, da Justiça Eleitoral"
+  },
+  {
+   "id": "n-1757383aa9",
+   "titulo": "Irã diz que Ormuz não será reaberto até que condições sejam atendidas",
+   "url": "https://agenciabrasil.ebc.com.br/internacional/noticia/2026-10/ira-diz-que-ormuz-nao-sera-reaberto-ate-que-condicoes-sejam-atendidas",
+   "data": "2026-10-04T11:54+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "O Estreito de Ormuz não será reaberto até que sejam cumpridas as sete condições iranianas estabelecidas em um acordo provisório firmado em junho com os Estados Unidos (EUA), informou a mídia estatal, citando declarações do presidente do Parlamento iraniano, Mohammad Baqer Qalibaf, neste domingo (4). O Irã apresentou uma proposta durante a Assembleia Geral da ONU, segundo a qual a via navegável do Estreito de Ormuz poderia ser reaberta e a passagem marítima normal restabelecida em até sete dias caso as condições fossem cumpridas. Os EUA responderam a essa proposta, na semana passada, por meio d"
+  },
+  {
+   "id": "n-83e9683ced",
+   "titulo": "TRE-SP inicia testes de integridade em urnas da capital paulista",
+   "url": "https://agenciabrasil.ebc.com.br/politica/noticia/2026-10/tre-sp-inicia-testes-de-integridade-em-urnas-da-capital-paulista",
+   "data": "2026-10-04T11:51+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "Os testes de integridade de urnas eletrônicas começaram a ser feitos neste domingo (4), em São Paulo, em 33 urnas auditadas em seções especiais, na capital paulista, envolvendo cerca de 400 pessoas, entre trabalhadores do Tribunal Regional Eleitoral e voluntários. Realizados há 20 anos, os testes de integridade servem para conferir a segurança do processo eleitoral. O objetivo é conferir se os votos digitados nos equipamentos equivalem aos votos registrados em células de papel pré-preenchidas por voluntários e lançados na urna eletrônica. O processo é mostrado para a câmera e, ao final do perí"
+  },
+  {
+   "id": "n-5a6c4050b9",
+   "titulo": "No Rio de Janeiro, 12,86 milhões de eleitores são esperados para votar",
+   "url": "https://agenciabrasil.ebc.com.br/politica/noticia/2026-10/no-rio-de-janeiro-1286-milhoes-de-eleitores-sao-esperados-para-votar",
+   "data": "2026-10-04T11:27+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "Mesmo antes da abertura das seções eleitorais no Rio de Janeiro, muitas pessoas já aguardavam para votar. São esperados nas urnas, neste domingo (4), em todo o estado, 12,86 milhões de eleitores. Paulo Dias chegou às 6h em frente ao seu local de votação, a Escola Municipal Madri, em Vila Isabel, na zona norte da cidade, com o objetivo de ser um dos primeiros da fila. Notícias relacionadas: Fim de semana de eleições será de chuva em grande parte do país . Eleições 2026: e-Título permite justificar ausência pelo celular. Eleições 2026: boca de urna é crime; saiba o que é proibido . \"Eu trabalho "
+  },
+  {
+   "id": "n-99f4036515",
+   "titulo": "Colinha em papel e sem celular: saiba o que pode entrar na cabine",
+   "url": "https://agenciabrasil.ebc.com.br/politica/noticia/2026-10/colinha-em-papel-e-sem-celular-saiba-o-que-pode-entrar-na-cabine",
+   "data": "2026-10-04T11:18+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "No dia da votação, o eleitor não poderá levar para a cabine de votação itens como celular, smartwatch, máquina fotográfica, filmadora, óculos inteligentes e outros equipamentos que possam comprometer o sigilo do voto. O celular pode ser utilizado para apresentar o e-Título ou outro documento digital aceito pela Justiça Eleitoral durante a identificação na seção eleitoral. Notícias relacionadas: Eleições 2026: saiba o que pode e o que não pode no dia da votação. Novas tecnologias levam Justiça Eleitoral a reforçar regras de votação. Mas, antes de se dirigir à urna eletrônica, o eleitor deve des"
+  },
+  {
+   "id": "n-a4c53d4136",
+   "titulo": "Vídeo: Eleições 2026 ao vivo: acompanhe a votação em todo o Brasil - 4/10/26",
+   "url": "https://www12.senado.leg.br/noticias/videos/2026/10/eleicoes-2026-ao-vivo-acompanhe-a-votacao-em-todo-o-brasil-4-10-26",
+   "data": "2026-10-04T11:06:00+00:00",
+   "fonte": "senado",
+   "nos": [],
+   "pessoas": [],
+   "resumo": ""
+  },
+  {
+   "id": "n-bbdeac8ba8",
+   "titulo": "Mega-Sena acumula e próximo concurso pode pagar R$ 92 milhões",
+   "url": "https://agenciabrasil.ebc.com.br/geral/noticia/2026-10/mega-sena-acumula-e-proximo-concurso-pode-pagar-r-92-milhoes",
+   "data": "2026-10-04T10:44+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [
+    "caixa"
+   ],
+   "pessoas": [],
+   "resumo": "Ninguém acertou as seis dezenas sorteadas nesse sábado (3) em São Paulo, no concurso 3066 da Mega-Sena. O próximo concurso, na terça-feira (6), pode pagar até R$ 92 milhões. Os números sorteados foram 04 - 06 - 09 - 13 - 28 - 48. Notícias relacionadas: Caixa muda horário do sorteio da Lotofácil da Independência. Caixa libera dinheiro de antigo fundo PIS/Pasep; veja como sacar. O sorteio do concurso 3066 foi feito excepcionalmente no sábado por causa da realização das eleições neste domingo (4). Acertaram as cinco dezenas 118 apostadores que vão receber, cada um, R$ 25.224,37. Quatro números fo"
+  },
+  {
+   "id": "n-d282a31c28",
+   "titulo": "Presidente do TSE diz que voto é direito fundamental dos brasileiros",
+   "url": "https://agenciabrasil.ebc.com.br/justica/noticia/2026-10/presidente-do-tse-diz-que-voto-e-direito-fundamental-dos-brasileiros",
+   "data": "2026-10-04T00:16+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [
+    "tse"
+   ],
+   "pessoas": [
+    "nunes-marques"
+   ],
+   "resumo": "O presidente do Tribunal Superior Eleitoral (TSE), ministro Kassio Nunes Marques, destacou a importância do voto como direito dos brasileiros. \"O voto é direito fundamental e o principal instrumento de participação na vida pública. Por meio dele, cada cidadã e cada cidadão dá a sua contribuição para definir os rumos do país\", disse o ministro em cadeia de rádio e televisão na noite deste sábado (3), véspera do primeiro turno das eleições deste ano. Notícias relacionadas: Eleições 2026: boca de urna é crime; saiba o que é proibido . Eleições 2026: saiba quais documentos são aceitos para votar ."
+  },
+  {
+   "id": "n-628911f176",
+   "titulo": "Operação Rastilho: PF cumpre mandados em investigação eleitoral no CE",
+   "url": "https://agenciabrasil.ebc.com.br/justica/noticia/2026-10/operacao-rastilho-pf-cumpre-mandados-em-investigacao-eleitoral-no-ce",
+   "data": "2026-10-03T19:25+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [
+    "pf",
+    "tse"
+   ],
+   "pessoas": [],
+   "resumo": "A Polícia Federal (PF) deflagrou, na manhã deste sábado (3), a Operação Rastilho, para aprofundar a investigação sobre possíveis irregularidades eleitorais no Ceará. A ação é o desdobramento da Operação Rastro, deflagrada no último dia 31 de agosto, quando foram apreendidos R$ 334 mil em espécie, além de computadores e aparelhos celulares. Notícias relacionadas: Eleições: propaganda eleitoral nas ruas termina às 22h deste sábado. TSE faz teste final de sistemas e emite zerézima. E-Título: saiba como votar usando o aplicativo do TSE . As investigações miram em possíveis pagamentos para obter ap"
+  },
+  {
+   "id": "n-c951bdea18",
+   "titulo": "Monitoramento aponta 13 mil ataques a contas de candidaturas LGBT+",
+   "url": "https://agenciabrasil.ebc.com.br/direitos-humanos/noticia/2026-10/monitoramento-aponta-13-mil-ataques-contas-de-candidaturas-lgbt",
+   "data": "2026-10-03T17:16+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "A análise de contas de candidaturas LGBT+ pela plataforma Sentinela indicou a publicação, desde o início do período eleitoral, de 13 mil comentários classificados como ofensivos com alvo definido, o que significa que foram dirigidos a uma pessoa ou candidatura identificável. Para chegar a esse resultado, a Sentinela selecionou, no período, 307.185 comentários em contas de candidaturas que permitiram ser monitoradas pelo projeto por apresentarem potencial de violência em um universo de mais de 1 milhão de interações publicadas no Instagram . Notícias relacionadas: Candidaturas LGBT+ têm recorde"
+  },
+  {
+   "id": "n-633f3571a2",
+   "titulo": "Petrobras atinge recorde de valor de mercado após descoberta no Amapá",
+   "url": "https://agenciabrasil.ebc.com.br/economia/noticia/2026-10/petrobras-atinge-recorde-de-valor-de-mercado-apos-descoberta-no-amapa",
+   "data": "2026-10-03T16:03+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [
+    "petrobras"
+   ],
+   "pessoas": [],
+   "resumo": "A Petrobras atingiu R$ 700,08 bilhões no encerramento do pregão na B3, a Bolsa de Valores de São Paulo, nesta sexta-feira (2), batendo o recorde de valor de mercado, como informado pela própria companhia. O recorde ocorreu após o anúncio de uma nova descoberta de petróleo em águas ultraprofundas, na Bacia Sedimentar da Bacia da Foz do Amazonas, na Margem Equatorial brasileira . Notícias relacionadas: Distribuidoras se preparam para garantir energia no dia da eleição. Nova descoberta aumenta expectativa da Petrobras na Foz do Amazonas. Preço do limão está acima da média, mesmo na entressafra. S"
+  },
   {
    "id": "n-0e1316c92a",
    "titulo": "Votos para o Senado exigem atenção redobrada do eleitor",
