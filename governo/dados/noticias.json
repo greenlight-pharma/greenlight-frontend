@@ -1,6 +1,6 @@
 {
  "meta": {
-  "gerado_em": "2026-10-04T15:15+00:00",
+  "gerado_em": "2026-10-05T19:13+00:00",
   "gerado_por": "scripts/governo/agentes/agente_noticias.py",
   "janela_dias": 90,
   "fontes": [
@@ -30,221 +30,221 @@
     "url": "https://www.gov.br/planalto/pt-br/acompanhe-o-planalto/noticias/RSS"
    }
   ],
-  "total_artigos": 1679,
-  "artigos_com_no": 525,
-  "novos_nesta_rodada": 26,
+  "total_artigos": 1736,
+  "artigos_com_no": 542,
+  "novos_nesta_rodada": 63,
   "artigos_por_fonte": {
-   "agenciabrasil": 554,
-   "senado": 688,
-   "camara": 403,
-   "planalto": 30,
-   "stf": 4
+   "camara": 423,
+   "agenciabrasil": 575,
+   "senado": 703,
+   "stf": 5,
+   "planalto": 30
   },
   "ordem": "peso igual por fonte; contagem real de matérias",
   "resumo_por": "claude"
  },
  "resumo": [
   {
-   "texto": "O Supremo Tribunal Federal publicou resolução que submete petições em processos em andamento a análise prévia, para evitar direcionamento de casos a ministros específicos.",
-   "artigo_id": "n-d1042983ff",
-   "no_id": "stf"
-  },
-  {
-   "texto": "O Tribunal Superior Eleitoral decidiu que os votos dados ao candidato ao governo do Rio de Janeiro Anthony Garotinho serão anulados e não entrarão no total de votos válidos.",
-   "artigo_id": "n-f15d029de7",
-   "no_id": "tse"
-  },
-  {
    "texto": "A Advocacia-Geral da União pediu ao Supremo Tribunal Federal que declare inconstitucionais dispositivos das leis que legalizaram as apostas de quota fixa.",
    "artigo_id": "n-794f7131de",
    "no_id": "agu"
   },
   {
-   "texto": "O presidente do Senado, Davi Alcolumbre, marcou para terça-feira a votação em Plenário da PEC que acaba com a escala 6x1 e reduz a jornada de trabalho.",
-   "artigo_id": "n-39d6a159cc",
-   "no_id": null
+   "texto": "O presidente do Supremo Tribunal Federal, Edson Fachin, marcou para 13 de outubro reunião com o diretor-geral da Polícia Federal sobre citações a ministros nas investigações do caso Master.",
+   "artigo_id": "n-91c0d5138b",
+   "no_id": "stf"
+  },
+  {
+   "texto": "O presidente do Tribunal Superior Eleitoral, Kassio Nunes Marques, derrubou decisão monocrática que havia negado o registro da candidatura de Deltan Dallagnol ao Senado pelo Paraná.",
+   "artigo_id": "n-760ad4af00",
+   "no_id": "tse"
+  },
+  {
+   "texto": "O PL elegeu 19 senadores e passará a ter 28 cadeiras no Senado Federal a partir de 2027, seguido por MDB, com sete, e PT, com seis.",
+   "artigo_id": "n-12cfca3f4b",
+   "no_id": "senado"
   }
  ],
  "ranking": {
   "orgaos": [
    {
     "id": "tse",
-    "artigos": 89,
-    "peso": 51.90326841204193,
-    "ultima": "2026-10-04T14:38+00:00"
+    "artigos": 98,
+    "peso": 56.854528136393874,
+    "ultima": "2026-10-05T16:01:00+00:00"
    },
    {
     "id": "stf",
-    "artigos": 86,
-    "peso": 49.40351655099974,
-    "ultima": "2026-10-02T22:20+00:00"
+    "artigos": 87,
+    "peso": 50.00127901288501,
+    "ultima": "2026-10-05T18:48+00:00"
    },
    {
     "id": "camara",
-    "artigos": 51,
-    "peso": 24.892151162790675,
-    "ultima": "2026-10-02T13:02:00+00:00"
+    "artigos": 55,
+    "peso": 27.493412827014666,
+    "ultima": "2026-10-05T17:44+00:00"
    },
    {
     "id": "congresso",
-    "artigos": 46,
-    "peso": 23.95947501610891,
-    "ultima": "2026-09-30T19:31+00:00"
+    "artigos": 48,
+    "peso": 25.346818793865687,
+    "ultima": "2026-10-05T17:24+00:00"
    },
    {
     "id": "caixa",
     "artigos": 31,
-    "peso": 18.79025270758123,
+    "peso": 18.71860869565218,
     "ultima": "2026-10-04T10:44+00:00"
-   },
-   {
-    "id": "pf",
-    "artigos": 28,
-    "peso": 16.26350642263454,
-    "ultima": "2026-10-04T14:18+00:00"
    },
    {
     "id": "prf",
     "artigos": 9,
-    "peso": 15.924375017490837,
+    "peso": 16.293999299070236,
     "ultima": "2026-10-01T23:06+00:00"
+   },
+   {
+    "id": "pf",
+    "artigos": 28,
+    "peso": 16.24747405529099,
+    "ultima": "2026-10-04T14:18+00:00"
    },
    {
     "id": "inss",
     "artigos": 19,
-    "peso": 12.28001003045124,
+    "peso": 12.221940411612746,
     "ultima": "2026-10-01T20:17+00:00"
-   },
-   {
-    "id": "mec",
-    "artigos": 21,
-    "peso": 12.12960378129106,
-    "ultima": "2026-10-02T19:46+00:00"
    },
    {
     "id": "mte",
     "artigos": 2,
-    "peso": 11.799470517448857,
+    "peso": 12.177159420289854,
     "ultima": "2026-09-29T18:56+00:00"
    },
    {
+    "id": "mec",
+    "artigos": 21,
+    "peso": 12.127726412229457,
+    "ultima": "2026-10-02T19:46+00:00"
+   },
+   {
     "id": "anvisa",
-    "artigos": 19,
-    "peso": 11.507608356893444,
-    "ultima": "2026-10-02T14:29+00:00"
+    "artigos": 20,
+    "peso": 12.073613974849284,
+    "ultima": "2026-10-05T10:41+00:00"
    },
    {
     "id": "inpe",
     "artigos": 1,
-    "peso": 11.193333333333333,
+    "peso": 11.573333333333332,
     "ultima": "2026-08-06T22:13:00+00:00"
    },
    {
     "id": "petrobras",
     "artigos": 19,
-    "peso": 11.162439131894887,
+    "peso": 11.142867462428104,
     "ultima": "2026-10-03T16:03+00:00"
+   },
+   {
+    "id": "agu",
+    "artigos": 15,
+    "peso": 8.947448574432556,
+    "ultima": "2026-10-05T18:48+00:00"
    },
    {
     "id": "ibge",
     "artigos": 15,
-    "peso": 8.974001972966166,
+    "peso": 8.947448574432556,
     "ultima": "2026-10-02T12:50+00:00"
    },
    {
     "id": "tst",
     "artigos": 15,
-    "peso": 8.728892254131292,
+    "peso": 8.724655350320866,
     "ultima": "2026-09-29T23:40+00:00"
    },
    {
     "id": "inep",
     "artigos": 14,
-    "peso": 8.485920577617328,
+    "peso": 8.453565217391304,
     "ultima": "2026-10-02T19:46+00:00"
-   },
-   {
-    "id": "agu",
-    "artigos": 14,
-    "peso": 8.36786478885064,
-    "ultima": "2026-10-02T22:20+00:00"
    },
    {
     "id": "tcu",
     "artigos": 15,
-    "peso": 8.247670957763047,
+    "peso": 8.281976666378634,
     "ultima": "2026-10-01T12:20:00+00:00"
    },
    {
     "id": "ms",
     "artigos": 14,
-    "peso": 8.240810858782455,
+    "peso": 8.230771993279614,
     "ultima": "2026-09-30T16:08+00:00"
    },
    {
     "id": "anp",
     "artigos": 12,
-    "peso": 7.028536490551409,
+    "peso": 7.0231198193665705,
     "ultima": "2026-10-02T19:10+00:00"
    },
    {
     "id": "mpf",
     "artigos": 11,
-    "peso": 6.549453236504072,
+    "peso": 6.532144226606469,
     "ultima": "2026-09-29T23:40+00:00"
    },
    {
     "id": "stj",
     "artigos": 10,
-    "peso": 6.397542924852291,
+    "peso": 6.362273530748725,
     "ultima": "2026-09-30T18:25+00:00"
+   },
+   {
+    "id": "senado",
+    "artigos": 6,
+    "peso": 4.707844999486072,
+    "ultima": "2026-10-05T15:49+00:00"
    },
    {
     "id": "cvm",
     "artigos": 7,
-    "peso": 4.470073725040536,
+    "peso": 4.443760304245041,
     "ultima": "2026-09-27T18:52+00:00"
    },
    {
     "id": "cnj",
     "artigos": 7,
-    "peso": 4.124904500041978,
+    "peso": 4.116839878780382,
     "ultima": "2026-09-29T15:54+00:00"
-   },
-   {
-    "id": "senado",
-    "artigos": 4,
-    "peso": 3.3330024813895784,
-    "ultima": "2026-09-29T14:59+00:00"
    },
    {
     "id": "ebc",
     "artigos": 5,
-    "peso": 3.0306859205776178,
+    "peso": 3.0191304347826087,
     "ultima": "2026-10-02T23:34+00:00"
    },
    {
     "id": "cmn",
     "artigos": 5,
-    "peso": 3.0306859205776178,
+    "peso": 3.0191304347826087,
     "ultima": "2026-09-30T17:48+00:00"
    },
    {
     "id": "senacon",
     "artigos": 5,
-    "peso": 3.0306859205776178,
+    "peso": 3.0191304347826087,
     "ultima": "2026-09-25T12:27+00:00"
    },
    {
     "id": "anac",
     "artigos": 5,
-    "peso": 2.90363199050943,
+    "peso": 2.906279940586187,
     "ultima": "2026-09-23T14:04+00:00"
    },
    {
     "id": "aneel",
     "artigos": 5,
-    "peso": 2.7945743430442453,
+    "peso": 2.799244974952069,
     "ultima": "2026-10-02T20:17+00:00"
    }
   ],
@@ -260,9 +260,24 @@
     "uf": null,
     "foto": "https://commons.wikimedia.org/wiki/Special:FilePath/Foto_oficial_de_Luiz_In%C3%A1cio_Lula_da_Silva_%28estreita%29.jpg?width=160",
     "foto_fonte": "https://www.wikidata.org/wiki/Q37181",
-    "artigos": 36,
-    "peso": 31.336634537174966,
-    "ultima": "2026-10-04T13:59+00:00"
+    "artigos": 43,
+    "peso": 35.8316939220734,
+    "ultima": "2026-10-05T18:48+00:00"
+   },
+   {
+    "id": "nunes-marques",
+    "nome": "Nunes Marques",
+    "nome_completo": "Nunes Marques",
+    "cargo": "Presidente · TSE",
+    "no_id": "tse",
+    "poder": "judiciario",
+    "partido": null,
+    "uf": null,
+    "foto": "https://commons.wikimedia.org/wiki/Special:FilePath/Nunes_Marques%2C_February_2025_%28cropped%29.jpg?width=160",
+    "foto_fonte": "https://www.wikidata.org/wiki/Q99831978",
+    "artigos": 26,
+    "peso": 15.039821881377947,
+    "ultima": "2026-10-05T16:01:00+00:00"
    },
    {
     "id": "damares-alves",
@@ -276,8 +291,23 @@
     "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador6335.jpg",
     "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/6335",
     "artigos": 25,
-    "peso": 12.202034883720934,
+    "peso": 12.347083926031297,
     "ultima": "2026-10-01T12:52:00+00:00"
+   },
+   {
+    "id": "flavio-bolsonaro",
+    "nome": "Flávio Bolsonaro",
+    "nome_completo": "Flávio Nantes Bolsonaro",
+    "cargo": "Senador, RJ",
+    "no_id": "senado",
+    "poder": "legislativo",
+    "partido": "PL",
+    "uf": "RJ",
+    "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador5894.jpg",
+    "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/5894",
+    "artigos": 19,
+    "peso": 11.032924732512834,
+    "ultima": "2026-10-05T18:04:00+00:00"
    },
    {
     "id": "davi-alcolumbre",
@@ -291,38 +321,8 @@
     "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador3830.jpg",
     "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/3830",
     "artigos": 21,
-    "peso": 10.603876668625643,
+    "peso": 10.7013786876121,
     "ultima": "2026-10-02T22:50+00:00"
-   },
-   {
-    "id": "nunes-marques",
-    "nome": "Nunes Marques",
-    "nome_completo": "Nunes Marques",
-    "cargo": "Presidente · TSE",
-    "no_id": "tse",
-    "poder": "judiciario",
-    "partido": null,
-    "uf": null,
-    "foto": "https://commons.wikimedia.org/wiki/Special:FilePath/Nunes_Marques%2C_February_2025_%28cropped%29.jpg?width=160",
-    "foto_fonte": "https://www.wikidata.org/wiki/Q99831978",
-    "artigos": 18,
-    "peso": 10.556301947779362,
-    "ultima": "2026-10-04T13:59+00:00"
-   },
-   {
-    "id": "flavio-bolsonaro",
-    "nome": "Flávio Bolsonaro",
-    "nome_completo": "Flávio Nantes Bolsonaro",
-    "cargo": "Senador, RJ",
-    "no_id": "senado",
-    "poder": "legislativo",
-    "partido": "PL",
-    "uf": "RJ",
-    "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador5894.jpg",
-    "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/5894",
-    "artigos": 16,
-    "peso": 9.344027579548316,
-    "ultima": "2026-10-04T13:18+00:00"
    },
    {
     "id": "edson-fachin",
@@ -336,7 +336,7 @@
     "foto": "https://commons.wikimedia.org/wiki/Special:FilePath/Luiz_Edson_Fachin-12-05.2015.jpg?width=160",
     "foto_fonte": "https://www.wikidata.org/wiki/Q10320705",
     "artigos": 15,
-    "peso": 8.855946184199478,
+    "peso": 8.837505844517286,
     "ultima": "2026-10-02T19:13+00:00"
    },
    {
@@ -351,7 +351,7 @@
     "foto": "https://www.camara.leg.br/internet/deputado/bandep/160674.jpg",
     "foto_fonte": "https://www.camara.leg.br/deputados/160674",
     "artigos": 11,
-    "peso": 6.74957224883144,
+    "peso": 6.740398629312404,
     "ultima": "2026-09-08T14:44:00+00:00"
    },
    {
@@ -366,7 +366,7 @@
     "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador825.jpg",
     "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/825",
     "artigos": 13,
-    "peso": 6.345058139534886,
+    "peso": 6.420483641536275,
     "ultima": "2026-09-29T16:37:00+00:00"
    },
    {
@@ -381,7 +381,7 @@
     "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador5979.jpg",
     "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/5979",
     "artigos": 11,
-    "peso": 5.368895348837211,
+    "peso": 5.432716927453771,
     "ultima": "2026-09-30T13:54:00+00:00"
    },
    {
@@ -396,7 +396,7 @@
     "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador5525.jpg",
     "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/5525",
     "artigos": 11,
-    "peso": 5.368895348837211,
+    "peso": 5.432716927453771,
     "ultima": "2026-09-02T23:20:00+00:00"
    },
    {
@@ -411,7 +411,7 @@
     "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador345.jpg",
     "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/345",
     "artigos": 10,
-    "peso": 4.880813953488373,
+    "peso": 4.938833570412519,
     "ultima": "2026-09-25T18:03:00+00:00"
    },
    {
@@ -426,7 +426,7 @@
     "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador5376.jpg",
     "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/5376",
     "artigos": 10,
-    "peso": 4.880813953488373,
+    "peso": 4.938833570412519,
     "ultima": "2026-09-23T18:20:00+00:00"
    },
    {
@@ -441,8 +441,23 @@
     "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador5352.jpg",
     "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/5352",
     "artigos": 10,
-    "peso": 4.880813953488373,
+    "peso": 4.938833570412519,
     "ultima": "2026-09-14T16:27:00+00:00"
+   },
+   {
+    "id": "erika-hilton",
+    "nome": "Erika Hilton",
+    "nome_completo": "Erika Hilton",
+    "cargo": "Deputado(a) federal, SP",
+    "no_id": "camara",
+    "poder": "legislativo",
+    "partido": "PSOL",
+    "uf": "SP",
+    "foto": "https://www.camara.leg.br/internet/deputado/bandep/220645.jpg",
+    "foto_fonte": "https://www.camara.leg.br/deputados/220645",
+    "artigos": 8,
+    "peso": 4.937643661286293,
+    "ultima": "2026-10-05T17:44+00:00"
    },
    {
     "id": "carlos-viana",
@@ -456,7 +471,7 @@
     "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador5990.jpg",
     "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/5990",
     "artigos": 9,
-    "peso": 4.392732558139536,
+    "peso": 4.444950213371267,
     "ultima": "2026-09-04T21:56:00+00:00"
    },
    {
@@ -471,7 +486,7 @@
     "foto": null,
     "foto_fonte": null,
     "artigos": 7,
-    "peso": 4.006848711275293,
+    "peso": 4.006897148865113,
     "ultima": "2026-09-25T21:11+00:00"
    },
    {
@@ -486,7 +501,7 @@
     "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador6009.jpg",
     "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/6009",
     "artigos": 8,
-    "peso": 3.9046511627906986,
+    "peso": 3.951066856330015,
     "ultima": "2026-09-23T18:51:00+00:00"
    },
    {
@@ -501,7 +516,7 @@
     "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador4770.jpg",
     "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/4770",
     "artigos": 7,
-    "peso": 3.416569767441861,
+    "peso": 3.457183499288763,
     "ultima": "2026-09-25T21:09:00+00:00"
    },
    {
@@ -516,7 +531,7 @@
     "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador5917.jpg",
     "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/5917",
     "artigos": 7,
-    "peso": 3.416569767441861,
+    "peso": 3.457183499288763,
     "ultima": "2026-09-02T19:51:00+00:00"
    },
    {
@@ -531,7 +546,7 @@
     "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador6336.jpg",
     "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/6336",
     "artigos": 6,
-    "peso": 2.9284883720930237,
+    "peso": 2.963300142247511,
     "ultima": "2026-09-30T15:55:00+00:00"
    },
    {
@@ -546,7 +561,7 @@
     "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador6338.jpg",
     "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/6338",
     "artigos": 6,
-    "peso": 2.9284883720930237,
+    "peso": 2.963300142247511,
     "ultima": "2026-09-10T18:45:00+00:00"
    },
    {
@@ -561,7 +576,7 @@
     "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador475.jpg",
     "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/475",
     "artigos": 6,
-    "peso": 2.9284883720930237,
+    "peso": 2.963300142247511,
     "ultima": "2026-09-01T22:31:00+00:00"
    },
    {
@@ -576,7 +591,7 @@
     "foto": "https://www.camara.leg.br/internet/deputado/bandep/74161.jpg",
     "foto_fonte": "https://www.camara.leg.br/deputados/74161",
     "artigos": 5,
-    "peso": 2.7855762017427432,
+    "peso": 2.796337210670917,
     "ultima": "2026-09-01T19:56:00+00:00"
    },
    {
@@ -591,27 +606,681 @@
     "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador5985.jpg",
     "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/5985",
     "artigos": 5,
-    "peso": 2.4404069767441863,
+    "peso": 2.469416785206259,
     "ultima": "2026-09-22T14:16:00+00:00"
-   },
-   {
-    "id": "esperidiao-amin",
-    "nome": "Esperidião Amin",
-    "nome_completo": "Esperidião Amin Helou Filho",
-    "cargo": "Senador, SC",
-    "no_id": "senado",
-    "poder": "legislativo",
-    "partido": "PP",
-    "uf": "SC",
-    "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador22.jpg",
-    "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/22",
-    "artigos": 5,
-    "peso": 2.4404069767441863,
-    "ultima": "2026-09-11T19:48:00+00:00"
    }
   ]
  },
  "artigos": [
+  {
+   "id": "n-8c66483b76",
+   "titulo": "Confira o número de reeleitos, deputados de primeiro mandato e ex-deputados que voltam à Câmara",
+   "url": "https://www.camara.leg.br/noticias/1309398-confira-o-numero-de-reeleitos-deputados-de-primeiro-mandato-e-ex-deputados-que-voltam-a-camara",
+   "data": "2026-10-05T18:50+00:00",
+   "fonte": "camara",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "PL lidera com mais reeleitos, novos deputados e ex-deputados eleitos para mais um mandato"
+  },
+  {
+   "id": "n-0a12f02449",
+   "titulo": "Prazo para sacar dinheiro das bets termina nesta segunda",
+   "url": "https://agenciabrasil.ebc.com.br/economia/noticia/2026-10/prazo-para-sacar-dinheiro-das-bets-termina-nesta-segunda",
+   "data": "2026-10-05T18:48+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [
+    "agu",
+    "stf"
+   ],
+   "pessoas": [
+    "luiz-inacio-lula-da-silva"
+   ],
+   "resumo": "Quem ainda tem dinheiro em sites de apostas esportivas e jogos virtuais tem até as 23h59 desta segunda-feira (5) para solicitar o saque diretamente nas plataformas. A partir da 0h de terça-feira (6), os sites e aplicativos deverão ser retirados do ar. A medida faz parte da Medida Provisória (MP) 1.394/2026 , assinada pelo presidente Luiz Inácio Lula da Silva em 25 de setembro. A iniciativa estabelece o encerramento das plataformas de apostas autorizadas e cria um mecanismo para devolver aos usuários os valores que permanecerem nas contas. Notícias relacionadas: AGU pede ao STF que declare inco"
+  },
+  {
+   "id": "n-ec44d268c1",
+   "titulo": "23 deputados federais são eleitos para outros cargos: 1 governador, 17 senadores e 5 estaduais",
+   "url": "https://www.camara.leg.br/noticias/1309452-23-deputados-federais-sao-eleitos-para-outros-cargos-1-governador-17-senadores-e-5-estaduais",
+   "data": "2026-10-05T18:37+00:00",
+   "fonte": "camara",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "Bruno Spada / Câmara dos Deputados Zucco foi eleito governador do Rio Grande do Sul O resultado das eleições de 2026 mostra que 23 deputados federais foram eleitos para outros cargos – governador, senador e deputado estadual. Seis serão suplentes. O deputado Zucco (PL-RS) foi eleito em primeiro turno governador do Rio Grande do Sul, com 3.516048 votos. 17 deputados federais foram eleitos para o Senado e outros cinco para assembleias legislativas estaduais. Suplentes Dois parlamentares foram eleitos suplente de senador e quatro como suplentes de deputado estadual. Segundo turno No Tocantins, o "
+  },
+  {
+   "id": "n-5dc036451d",
+   "titulo": "Áudio: Segundo turno: eleitores escolherão entre Flávio Bolsonaro e Lula",
+   "url": "https://www12.senado.leg.br/noticias/audios/2026/10/segundo-turno-eleitores-escolherao-entre-flavio-bolsonaro-e-lula",
+   "data": "2026-10-05T18:04:00+00:00",
+   "fonte": "senado",
+   "nos": [],
+   "pessoas": [
+    "luiz-inacio-lula-da-silva",
+    "flavio-bolsonaro"
+   ],
+   "resumo": "O segundo turno das eleições deste ano acontece no dia 25 de outubro, último domingo do mês. O próximo presidente da República será Flávio Bolsonaro ou o atual governante, Luiz Inácio Lula da Silva. Ouça o áudio."
+  },
+  {
+   "id": "n-517132b377",
+   "titulo": "Página da Ouvidoria do STF",
+   "url": "https://noticias.stf.jus.br/pagina-da-ouvidoria-do-stf/",
+   "data": "2026-10-05T17:56+00:00",
+   "fonte": "stf",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "https://portal.stf.jus.br/ouvidoria"
+  },
+  {
+   "id": "n-35455302b2",
+   "titulo": "Áudio: Doze mulheres são eleitas para o Senado; DF terá bancada exclusivamente feminina",
+   "url": "https://www12.senado.leg.br/noticias/audios/2026/10/doze-mulheres-sao-eleitas-para-o-senado-df-tera-bancada-exclusivamente-feminina",
+   "data": "2026-10-05T17:45:00+00:00",
+   "fonte": "senado",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "Nas eleições deste domingo (4), dos 54 senadores eleitos, 12 são mulheres. E, a partir de fevereiro, o Distrito Federal (DF) será representado por três senadoras. Ouça o áudio."
+  },
+  {
+   "id": "n-fdc97de4ed",
+   "titulo": "Conheça os dez deputados com maior votação proporcional em seus estados; PL lidera a lista",
+   "url": "https://www.camara.leg.br/noticias/1309438-conheca-os-dez-deputados-com-maior-votacao-proporcional-em-seus-estados-pl-lidera-a-lista",
+   "data": "2026-10-05T17:45+00:00",
+   "fonte": "camara",
+   "nos": [],
+   "pessoas": [
+    "lucio-mosquini",
+    "nikolas-ferreira"
+   ],
+   "resumo": "Nikolas Ferreira, Lucas Polese e Lucio Mosquini lideram o ranking com maiores percentuais em seus estados"
+  },
+  {
+   "id": "n-0a397dd3ac",
+   "titulo": "População trans amplia representação no Poder Legislativo",
+   "url": "https://agenciabrasil.ebc.com.br/direitos-humanos/noticia/2026-10/populacao-trans-amplia-representacao-no-poder-legislativo",
+   "data": "2026-10-05T17:44+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [
+    "camara"
+   ],
+   "pessoas": [
+    "duda-salabert",
+    "erika-hilton"
+   ],
+   "resumo": "A eleição da deputada federal Thabatta Pimenta (PSOL-RN) ampliou a representatividade da população transexual e travesti na Câmara dos Deputados, para a qual se reelegeram Duda Salabert (PSOL-MG) e Erika Hilton (PSOL-SP). Nas assembleias legislativas estaduais, também foram eleitas pela primeira vez Natasha Ferreira (PT-RS) e Sofia Favero (PSOL-SP), que se somam às deputadas estaduais reeleitas Dani Balbi (PCdoB-RJ) e Linda Brasil (PSOL-SE). Notícias relacionadas: PL elege 19 senadores e soma 28; MDB conquista sete vagas e PT, seis. Mineira de 21 anos é mulher mais jovem a ser eleita deputada "
+  },
+  {
+   "id": "n-6d92d242c3",
+   "titulo": "Câmara: PL obtém a maior bancada; federação PT-PCdoB-PV é a segunda força",
+   "url": "https://www12.senado.leg.br/noticias/materias/2026/10/05/camara-pl-obtem-a-maior-bancada-federacao-pt-pcdob-pv-e-a-segunda-forca",
+   "data": "2026-10-05T17:43:00+00:00",
+   "fonte": "senado",
+   "nos": [
+    "camara"
+   ],
+   "pessoas": [],
+   "resumo": "Assim como aconteceu no Senado, o PL conseguiu eleger nesse domingo de eleições gerais a maior bancada na Câmara dos Deputados. Para a próxima legislatura, o partido deverá ter 121 deputados, ou seja, 24 parlamentares a mais do que no pleito de 2022, o que representará 23,6% das 513 vagas. Os números mantém o partido como o de maior extensão na Casa. A segunda maior bancada ficou com federação PT-PCdoB-PV, que obteve 88 cadeiras, com acréscimo de seis parlamentares eleitos na comparação com a última eleição. Desse total, 70 são do PT. O União Progressista, que reúne os partidos União e PP, con"
+  },
+  {
+   "id": "n-030a1621cb",
+   "titulo": "Eleições 2026: veja quem são os deputados estaduais eleitos por SP",
+   "url": "https://agenciabrasil.ebc.com.br/politica/noticia/2026-10/eleicoes-2026-veja-quem-sao-os-deputados-estaduais-eleitos-por-sp",
+   "data": "2026-10-05T17:24+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [
+    "camara",
+    "congresso"
+   ],
+   "pessoas": [
+    "erika-hilton",
+    "samia-bomfim"
+   ],
+   "resumo": "O estado de São Paulo, o mais populoso do país, tem direito a 70 das 513 cadeiras da Câmara dos Deputados. Os parlamentares eleitos representam a população paulista e seus interesses no Congresso Nacional. Com 100% das urnas apuradas no domingo (4), a maior votação no estado de São Paulo foi para o candidato Lucas Pavanato (PL), que teve 3.038.438 votos, seguido por Erika Hilton (PSOL), com 1.596.472 votos, e Sâmia Bomfim (PSOL), que teve 583.107 votos. Notícias relacionadas: Eleições 2026: confira os deputados federais eleitos por São Paulo. Eleições: abstenção cresce para 21,6% e soma 33 mil"
+  },
+  {
+   "id": "n-5040d3f789",
+   "titulo": "Vídeo: Ao vivo: CDH avalia política de proteção a crianças e adolescentes – 5/10/26",
+   "url": "https://www12.senado.leg.br/noticias/videos/2026/10/ao-vivo-cdh-avalia-politica-de-protecao-a-criancas-e-adolescentes-2013-5-10-26",
+   "data": "2026-10-05T17:12:00+00:00",
+   "fonte": "senado",
+   "nos": [],
+   "pessoas": [],
+   "resumo": ""
+  },
+  {
+   "id": "n-63793de910",
+   "titulo": "Mineira de 21 anos é mulher mais jovem a ser eleita deputada federal",
+   "url": "https://agenciabrasil.ebc.com.br/politica/noticia/2026-10/mineira-de-21-anos-e-mulher-mais-jovem-a-ser-eleita-deputada-federal",
+   "data": "2026-10-05T17:11+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "A deputada federal mais jovem eleita na disputa deste domingo (4) por Minas Gerais foi Ana Elisa Santos Silva, 21 anos, do PT. Com 1, 9 milhão de seguidores em apenas uma rede social, ela se destaca por abordar temas como racismo, feminismo e direitos sociais. Negra e nascida em Divinópolis, além de influenciadora digital, Ana Elisa é estudante de Direito e estagiária. Sua campanha foi feita principalmente pelas redes sociais, as quais ela atribui o sucesso nas eleições. Entre suas propostas estão as cotas raciais, combate à desinformação e ao racismo, o passe livre universitário intermunicipa"
+  },
+  {
+   "id": "n-ccd4d92ee9",
+   "titulo": "Veja a lista dos 513 deputados federais eleitos, por estado e por partido",
+   "url": "https://www.camara.leg.br/noticias/1309429-veja-a-lista-dos-513-deputados-federais-eleitos-por-estado-e-por-partido",
+   "data": "2026-10-05T17:03+00:00",
+   "fonte": "camara",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "Leia mais notícias sobre as eleições 2026"
+  },
+  {
+   "id": "n-80adfde52e",
+   "titulo": "Áudio: PL elege 19 senadores e terá a maior bancada da Casa",
+   "url": "https://www12.senado.leg.br/noticias/audios/2026/10/pl-elege-19-senadores-e-tera-a-maior-bancada-da-casa",
+   "data": "2026-10-05T16:48:00+00:00",
+   "fonte": "senado",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "Na eleição deste domingo (4), o PL elegeu 19 senadores. Como o partido já tinha outros nove parlamentares na Casa, a partir de fevereiro o PL passará a ter 28 senadores, tornando-se a maior bancada da Casa. Ouça o áudio."
+  },
+  {
+   "id": "n-952d379c2c",
+   "titulo": "Fenabrave: emplacamentos passam de 500 mil e batem recorde em setembro",
+   "url": "https://agenciabrasil.ebc.com.br/economia/noticia/2026-10/fenabrave-emplacamentos-passam-de-500-mil-e-batem-recorde-em-setembro",
+   "data": "2026-10-05T16:47+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "Emplacamentos de veículos bateram recorde para o mês, em setembro. Foram registradas 509.686 unidades – crescimento de 8,32% na comparação com setembro de 2025 e de 1,15% sobre agosto. Os dados são da Federação Nacional da Distribuição de Veículos Automotores (Fenabrave) . Esse resultado engloba a venda de automóveis, comerciais leves (picapes e furgões), ônibus, caminhões, motos e implementos rodoviários [como reboques e carrocerias]. Notícias relacionadas: Fenabrave eleva a 8,6% previsão de alta na venda de veículos em 2026. Fenabrave: emplacamentos crescem 16,01% no primeiro semestre . Cons"
+  },
+  {
+   "id": "n-37ca63f56a",
+   "titulo": "Terceiro colocado, Cury fala em manter “silêncio” no segundo turno",
+   "url": "https://agenciabrasil.ebc.com.br/politica/noticia/2026-10/terceiro-colocado-cury-fala-em-manter-silencio-no-segundo-turno",
+   "data": "2026-10-05T16:34+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [],
+   "pessoas": [
+    "luiz-inacio-lula-da-silva",
+    "flavio-bolsonaro"
+   ],
+   "resumo": "O candidato à Presidência da República pelo Avante, Augusto Cury, afirmou que vai ficar em “silêncio” em relação ao segundo turno, que será disputado entre o candidato à reeleição Luiz Inácio Lula da Silva e o senador do PL pelo Rio de Janeiro (RJ) Flávio Bolsonaro. \"Eu me silencio completamente em relação àqueles que estarão no segundo turno, dizendo o seguinte, que ninguém está autorizado em meu nome e nem em nome do Júlio [Delgado, coordenador da campanha] a pedir ou dizer que vai apoiar qualquer um dos candidatos. E eu gostaria de me silenciar em relação a isso. Não quero responder nada em"
+  },
+  {
+   "id": "n-ac16e63a89",
+   "titulo": "Com 109 deputadas eleitas, bancada feminina cresce 21,1% na Câmara",
+   "url": "https://www.camara.leg.br/noticias/1309285-com-109-deputadas-eleitas-bancada-feminina-cresce-211-na-camara",
+   "data": "2026-10-05T16:34+00:00",
+   "fonte": "camara",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "Apesar do avanço, o cenário ainda evidencia a baixa representatividade feminina"
+  },
+  {
+   "id": "n-40e72f4689",
+   "titulo": "Áudio: Eleição mobiliza eleitores brasileiros em 134 países",
+   "url": "https://www12.senado.leg.br/noticias/audios/2026/10/eleicao-mobiliza-eleitores-brasileiros-em-134-paises",
+   "data": "2026-10-05T16:24:00+00:00",
+   "fonte": "senado",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "Eleitores brasileiros residentes no exterior puderam votar, num clima de tranquilidade, em seções eleitorais instaladas em 186 cidades de 134 países. Em cidades como Paris, Londres e Milão, os eleitores enfrentaram longas filas. A votação ocorreu em urnas eletrônicas semelhantes às utilizadas no território nacional, com exceção de Moscou. Na capital Russa, os equipamentos não chegaram a tempo, e foi necessário o voto em papel."
+  },
+  {
+   "id": "n-d049f0dbe1",
+   "titulo": "Áudio: Presidente do TSE faz balanço positivo do primeiro turno das eleições",
+   "url": "https://www12.senado.leg.br/noticias/audios/2026/10/presidente-do-tse-faz-balanco-positivo-do-primeiro-turno-das-eleicoes",
+   "data": "2026-10-05T16:01:00+00:00",
+   "fonte": "senado",
+   "nos": [
+    "tse"
+   ],
+   "pessoas": [
+    "nunes-marques"
+   ],
+   "resumo": "O presidente do Tribunal Superior Eleitoral (TSE), Kássio Nunes Marques, considerou positivo o primeiro turno das eleições no país. Segundo o ministro, a transparência e a confiabilidade das eleições brasileiras foram atestadas por observadores internacionais. Ele negou qualquer interferência estrangeira no pleito, e afirmou que os brasileiros puderam comparecer às urnas com \"segurança, tranquilidade e liberdade\". A abstenção chegou a 21%, com mais de 33 milhões de eleitores ausentes. Nunes Marques destacou que o TSE tem incentivado o comparecimento às urnas e que vai trabalhar para reduzir o "
+  },
+  {
+   "id": "n-12cfca3f4b",
+   "titulo": "PL elege 19 senadores e soma 28; MDB conquista sete vagas e PT, seis",
+   "url": "https://agenciabrasil.ebc.com.br/politica/noticia/2026-10/pl-elege-19-senadores-e-soma-28-mdb-conquista-sete-vagas-e-pt-seis",
+   "data": "2026-10-05T15:49+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [
+    "senado"
+   ],
+   "pessoas": [],
+   "resumo": "As eleições de 2026 definiram os 54 senadores que ocuparão as vagas em disputa no Senado Federal a partir de 2027. Entre os partidos, o PL foi o que mais elegeu representantes, com 19 cadeiras . MDB e PT aparecem na sequência, com sete e seis eleitos, respectivamente; PP, PSB, União Brasil e Novo tiveram três senadores eleitos; Republicanos, PSD, PSDB e Podemos conquistaram duas vagas cada; Rede e PDT elegeram um representante. >> Saiba quem foram os 54 senadores eleitos em 2026 Desempenho por estado Notícias relacionadas: Conheça governadores e senadores eleitos e os deputados mais votados. P"
+  },
+  {
+   "id": "n-15f952bc1b",
+   "titulo": "Paraíba elege governador mais novo do país com 37 anos",
+   "url": "https://agenciabrasil.ebc.com.br/politica/noticia/2026-10/paraiba-elege-governador-mais-novo-do-pais-com-37-anos",
+   "data": "2026-10-05T15:43+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [],
+   "pessoas": [
+    "luiz-inacio-lula-da-silva",
+    "julio-cesar-castelo-branco-reis-moreira",
+    "filipe-barros"
+   ],
+   "resumo": "Entre os candidatos eleitos em primeiro turno nas eleições neste domingo (4), o governador mais novo é Lucas Ribeiro (PP), de 37 anos, da Paraíba com 64,3% dos votos. Por sua vez, o mais velho é Jorginho Mello (PL), reeleito em Santa Catarina, aos 70 anos, com 68,98% dos votos. Filipe Barros (PL-PR) foi eleito o senador mais jovem do país aos 35 anos com 27,25% dos votos válidos. O mais velho a ser eleito foi Julio César, o Julim do Lula (PSD-PI), aos 78 anos. Notícias relacionadas: Campanha eleitoral para o segundo turno começa nesta segunda-feira. Renan descarta apoio no 2º turno; PSD de Cai"
+  },
+  {
+   "id": "n-21a483e007",
+   "titulo": "Renan descarta apoio no 2º turno; PSD de Caiado libera bases estaduais",
+   "url": "https://agenciabrasil.ebc.com.br/politica/noticia/2026-10/renan-descarta-apoio-no-2o-turno-psd-de-caiado-libera-bases-estaduais",
+   "data": "2026-10-05T15:41+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [],
+   "pessoas": [
+    "luiz-inacio-lula-da-silva",
+    "flavio-bolsonaro"
+   ],
+   "resumo": "O quarto colocado na eleição presidencial deste domingo (4), o candidato Renan Santos (Missão), afirmou que não vai apoiar nenhum dos candidatos que chegaram ao 2º turno . Por sua vez, o partido do quinto colocado, Ronald Caiado, o PSD, informou que vai liberar os diretórios estaduais para que definam o apoio no 2º turno entre Luiz Inácio Lula da Silva e Flávio Bolsonaro no próximo dia 25 de outubro. Notícias relacionadas: Campanha eleitoral para o segundo turno começa nesta segunda-feira. Eleições: abstenção cresce para 21,6% e soma 33 milhões de brasileiros. Eleitor que faltou ao primeiro tu"
+  },
+  {
+   "id": "n-e59f1fe535",
+   "titulo": "Vídeo: Governos de seis estados e do DF serão definidos no segundo turno",
+   "url": "https://www12.senado.leg.br/noticias/videos/2026/10/governos-de-seis-estados-e-do-df-serao-definidos-no-segundo-turno",
+   "data": "2026-10-05T15:02:00+00:00",
+   "fonte": "senado",
+   "nos": [],
+   "pessoas": [
+    "da-vitoria"
+   ],
+   "resumo": "Seis estados e o Distrito Federal terão segundo turno para governador nas Eleições 2026. Além do DF, a disputa continua no Acre, Amazonas, Espírito Santo, Rio de Janeiro, Rio Grande do Norte e Tocantins. Em três estados e no DF, o primeiro colocado ficou a menos de um ponto percentual da vitória no primeiro turno. A nova votação será em 25 de outubro."
+  },
+  {
+   "id": "n-9541c7e421",
+   "titulo": "Eleições 2026: confira os deputados federais eleitos por São Paulo",
+   "url": "https://agenciabrasil.ebc.com.br/politica/noticia/2026-10/eleicoes-2026-confira-os-deputados-federais-eleitos-por-sao-paulo",
+   "data": "2026-10-05T14:57+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [
+    "camara",
+    "congresso"
+   ],
+   "pessoas": [
+    "erika-hilton",
+    "samia-bomfim"
+   ],
+   "resumo": "O estado de São Paulo, o mais populoso do país, tem direito a 70 das 513 cadeiras da Câmara dos Deputados. Os parlamentares eleitos representam a população paulista e seus interesses no Congresso Nacional. Com 100% das urnas apuradas no domingo (4), a maior votação no estado de São Paulo foi para o candidato Lucas Pavanato (PL) , que teve 3.038.438 votos, seguido por Erika Hilton (PSOL), com 1.596.472 votos, e Sâmia Bomfim (PSOL), que teve 583.107 votos. Notícias relacionadas: Campanha eleitoral para o segundo turno começa nesta segunda-feira. PL, PSD, PT e Republicanos têm 15 governadores ele"
+  },
+  {
+   "id": "n-d0f40f45cb",
+   "titulo": "Campanha eleitoral para o segundo turno começa nesta segunda-feira",
+   "url": "https://agenciabrasil.ebc.com.br/politica/noticia/2026-10/campanha-eleitoral-para-o-segundo-turno-comeca-nesta-segunda-feira",
+   "data": "2026-10-05T14:49+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "Os candidatos que disputarão o segundo turno das eleições gerais à Presidência da República e aos governos estaduais e do Distrito Federal poderão retomar as campanhas eleitorais nesta segunda-feira (5) – 24 horas depois do encerramento das urnas . A partir das 17h, são permitidos comícios, carreatas, caminhadas e distribuição de panfletos, além de propagandas e divulgações pagas na internet e em meios impressos. O prazo de encerramento dessas atividades começa no dia 22 de outubro, com o fim do uso de equipamentos sonoros. Notícias relacionadas: Eleitor que faltou ao primeiro turno pode votar"
+  },
+  {
+   "id": "n-140c5c366f",
+   "titulo": "Número de deputados pretos e pardos diminui 2,9% em relação a 2022",
+   "url": "https://www.camara.leg.br/noticias/1309312-numero-de-deputados-pretos-e-pardos-diminui-29-em-relacao-a-2022",
+   "data": "2026-10-05T14:46+00:00",
+   "fonte": "camara",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "Cadeiras conquistadas neste ano representam 26,3% do total de 513 deputados federais"
+  },
+  {
+   "id": "n-7be16fb9bc",
+   "titulo": "PL, PSD, PT e Republicanos têm 15 governadores eleitos",
+   "url": "https://agenciabrasil.ebc.com.br/politica/noticia/2026-10/pl-psd-pt-e-republicanos-tem-15-governadores-eleitos",
+   "data": "2026-10-05T14:21+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "As eleições de 2026 definiram no primeiro turno os governadores de 20 estados, o maior número desde o início da série histórica iniciada em 1990. A marca supera o recorde anterior, de 18 estados, registrado em 2010. O resultado redesenha o mapa partidário dos estados e mostra vantagem do PL, que elegeu cinco governadores. O PSD ficou em segundo lugar, com quatro eleitos. PT e Republicanos conquistaram três governos cada. O PP venceu em dois estados, enquanto MDB, Podemos e PSDB elegeram um governador cada. PL e PSD Notícias relacionadas: Eleições: abstenção cresce para 21,6% e soma 33 milhões "
+  },
+  {
+   "id": "n-12847cc9d3",
+   "titulo": "Integrantes da Mesa Diretora se elegem para novo mandato na Câmara",
+   "url": "https://www.camara.leg.br/noticias/1309278-integrantes-da-mesa-diretora-se-elegem-para-novo-mandato-na-camara",
+   "data": "2026-10-05T14:21+00:00",
+   "fonte": "camara",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "O presidente e os vice-presidentes da Câmara e ainda os secretários se reelegeram para cumprir mandato na próxima legislatura"
+  },
+  {
+   "id": "n-8ada2ff2d3",
+   "titulo": "Alvinho Lira torna-se o deputado mais jovem da história; Magda Mofatto é a mais idosa entre os eleitos",
+   "url": "https://www.camara.leg.br/noticias/1309236-alvinho-lira-torna-se-o-deputado-mais-jovem-da-historia-magda-mofatto-e-a-mais-idosa-entre-os-eleitos",
+   "data": "2026-10-05T14:20+00:00",
+   "fonte": "camara",
+   "nos": [],
+   "pessoas": [
+    "magda-mofatto"
+   ],
+   "resumo": "Alvinho, 20 anos, conseguirá tomar posse por conta de mudança na lei aprovada no ano passado"
+  },
+  {
+   "id": "n-cdcbd5c212",
+   "titulo": "Conheça governadores e senadores eleitos e os deputados mais votados",
+   "url": "https://agenciabrasil.ebc.com.br/politica/noticia/2026-10/conheca-governadores-senadores-eleitos-e-os-deputados-mais-votados",
+   "data": "2026-10-05T14:04+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "Pouco mais de 125,2 milhões de eleitores foram às urnas nesse domingo (4) escolher candidatos aos cargos de deputado estadual, deputado federal, dois senadores, governador e presidente da República. Para consultar todos os dados referentes ao resultado do primeiro turno, acesse a Agência Brasil . Confira a relação completa de eleitos para os governos estaduais, Senado e a lista dos três deputados federais mais votados em cada unidade da Federação: Acre Notícias relacionadas: Eleitor que faltou ao primeiro turno pode votar no segundo. PL e PSOL elegem os cinco deputados federais mais votados. F"
+  },
+  {
+   "id": "n-bb7f2a1e8f",
+   "titulo": "Confira a lista dos campeões de voto por estado",
+   "url": "https://www.camara.leg.br/noticias/1309260-confira-a-lista-dos-campeoes-de-voto-por-estado",
+   "data": "2026-10-05T13:48+00:00",
+   "fonte": "camara",
+   "nos": [],
+   "pessoas": [
+    "andre-fernandes",
+    "nikolas-ferreira"
+   ],
+   "resumo": "Kayo Magalhães / Câmara dos Deputados André Fernandes foi o campeão de votos no Ceará O PL teve o candidato a deputado federal mais votado em 11 das 27 unidades da federação nas eleições do último domingo (4). Os dois campeões de votos do país são do partido: Nikolas Ferreira (MG) e Lucas Pavanato (SP). União e PP lideraram em quatro estados cada, e o PT, em dois. Novo, PSB, Avante, PSD, Psol e Republicanos tiveram o mais votado em um estado cada. Veja a lista dos mais votados de cada estado Minas Gerais: Nikolas Ferreira (PL) - 3.119.314 votos São Paulo: Lucas Pavanato (PL) - 3.038.438 votos "
+  },
+  {
+   "id": "n-339df54f31",
+   "titulo": "Vídeo: Primeiro turno define governadores em 20 estados",
+   "url": "https://www12.senado.leg.br/noticias/videos/2026/10/primeiro-turno-define-governadores-em-20-estados",
+   "data": "2026-10-05T13:22:00+00:00",
+   "fonte": "senado",
+   "nos": [],
+   "pessoas": [
+    "sergio-moro"
+   ],
+   "resumo": "Vinte estados definiram a eleição para governador no primeiro turno das Eleições 2026. Entre os eleitos estão Tarcísio de Freitas (Republicanos), em São Paulo; Cleitinho Azevedo (Republicanos), em Minas Gerais; Sergio Moro (PL), no Paraná; Jerônimo Rodrigues (PT), na Bahia; e Elmano de Freitas (PT), no Ceará. Nos outros seis estados e no Distrito Federal, a disputa pelo governo será decidida no segundo turno, em 25 de outubro."
+  },
+  {
+   "id": "n-ac4157b385",
+   "titulo": "Doze mulheres são eleitas para o Senado Federal",
+   "url": "https://www.camara.leg.br/noticias/1309208-doze-mulheres-sao-eleitas-para-o-senado-federal",
+   "data": "2026-10-05T13:02+00:00",
+   "fonte": "camara",
+   "nos": [
+    "senado"
+   ],
+   "pessoas": [],
+   "resumo": "Bancada feminina deve passar de 15 para 18 integrantes a partir de 2027; nenhuma das atuais senadoras que concorriam a novo mandato conseguiu se reeleger"
+  },
+  {
+   "id": "n-d1d1b9ae66",
+   "titulo": "Áudio: Paraná terá bancada completamente renovada no Senado",
+   "url": "https://www12.senado.leg.br/noticias/audios/2026/10/parana-tera-bancada-completamente-renovada-no-senado",
+   "data": "2026-10-05T12:43:00+00:00",
+   "fonte": "senado",
+   "nos": [
+    "tse"
+   ],
+   "pessoas": [
+    "sergio-moro"
+   ],
+   "resumo": "Com o senador Sérgio Moro (PL-PR) eleito em primeiro turno para o governo do estado e a chegada de dois novos senadores, o Paraná terá mudanças na representação do estado em Brasília. No entanto, um questionamento judicial no TSE sobre o registro da candidatura do ex-procurador Deltan Dallagnol, questionada com base na Lei da Ficha Limpa, deixa o resultado em aberto e pode levar a uma nova eleição para o Senado no estado."
+  },
+  {
+   "id": "n-213c56c443",
+   "titulo": "Saiba quais foram os 54 senadores eleitos neste domingo",
+   "url": "https://www.camara.leg.br/noticias/1309213-saiba-quais-foram-os-54-senadores-eleitos-neste-domingo",
+   "data": "2026-10-05T12:38+00:00",
+   "fonte": "camara",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "Eles terão direito a um mandato de oito anos"
+  },
+  {
+   "id": "n-cf230eed86",
+   "titulo": "Em 2027, Senado terá 40 senadores novos e 14 reeleitos",
+   "url": "https://www.camara.leg.br/noticias/1309215-em-2027-senado-tera-40-senadores-novos-e-14-reeleitos",
+   "data": "2026-10-05T12:34+00:00",
+   "fonte": "camara",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "Taxa de renovação chega a 74%, enquanto 14 dos 32 senadores que buscavam a reeleição permanecem na Casa"
+  },
+  {
+   "id": "n-bc39002d74",
+   "titulo": "Focus: mercado eleva previsão da inflação para 5,01% em 2026",
+   "url": "https://agenciabrasil.ebc.com.br/economia/noticia/2026-10/focus-mercado-eleva-previsao-da-inflacao-para-501-em-2026",
+   "data": "2026-10-05T12:25+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "A projeção do mercado financeiro para a inflação oficial em 2026 subiu de 4,99% para 5,01%, segundo o Boletim Focus divulgado nesta segunda-feira (5) pelo Banco Central . Foi a terceira alta consecutiva da estimativa para o Índice Nacional de Preços ao Consumidor Amplo (IPCA) , considerado a inflação oficial do país. Para 2027, a expectativa para a inflação passou de 4,31% para 4,30%. Para 2028, a projeção foi mantida em 3,8%. PIB Notícias relacionadas: Boletim Focus: mercado prevê redução da inflação e do PIB de 2026 . Mercado eleva projeção de inflação para 4,99% e reduz PIB. Em relação ao c"
+  },
+  {
+   "id": "n-1e386e193d",
+   "titulo": "PL terá maior bancada em início de legislatura no Senado desde 1988",
+   "url": "https://www.camara.leg.br/noticias/1309210-pl-tera-maior-bancada-em-inicio-de-legislatura-no-senado-desde-1988",
+   "data": "2026-10-05T12:04+00:00",
+   "fonte": "camara",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "Partido elegeu 19 senadores e poderá chegar a 28 integrantes em 2027; resultado também altera o equilíbrio de forças entre as bancadas da Casa"
+  },
+  {
+   "id": "n-b7e40e3368",
+   "titulo": "Conselho de Comunicação debate audiovisual e comunicação pública nesta segunda-feira; participe",
+   "url": "https://www.camara.leg.br/noticias/1307857-conselho-de-comunicacao-debate-audiovisual-e-comunicacao-publica-nesta-segunda-feira-participe",
+   "data": "2026-10-05T11:18+00:00",
+   "fonte": "camara",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "Carolina Curi/Agência Senado Conselho vai analisar o relatório do conselheiro Marcus Martins O Conselho de Comunicação Social (CCS) se reúne nesta segunda-feira (5), às 14 horas, para analisar temas relacionados à comunicação, ao setor audiovisual e ao conteúdo jornalístico. A reunião será realizada no plenário 7 da ala senador Alexandre Costa, no Senado. Veja a pauta e envie suas perguntas A pauta prevê a análise de um relatório sobre o Projeto de Lei (PL) 4675/25, que trata de mercados digitais e concorrência, e a apresentação de trabalhos desenvolvidos por integrantes do conselho. Entre os "
+  },
+  {
+   "id": "n-6fe7be83be",
+   "titulo": "Erika Hilton é a campeã de votos da bancada feminina",
+   "url": "https://www.camara.leg.br/noticias/1309197-erika-hilton-e-a-campea-de-votos-da-bancada-feminina",
+   "data": "2026-10-05T11:10+00:00",
+   "fonte": "camara",
+   "nos": [],
+   "pessoas": [
+    "erika-hilton"
+   ],
+   "resumo": "Com 1,5 milhão de votos conquistados em São Paulo, ela é a segunda parlamentar no País a romper a barreira de 1 milhão de votos para o cargo"
+  },
+  {
+   "id": "n-ca0a58ceac",
+   "titulo": "Anvisa: veja a lista de cosméticos que podem ter fabricação artesanal",
+   "url": "https://agenciabrasil.ebc.com.br/saude/noticia/2026-10/anvisa-veja-lista-de-cosmeticos-que-podem-ter-fabricacao-artesanal",
+   "data": "2026-10-05T10:41+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [
+    "anvisa"
+   ],
+   "pessoas": [],
+   "resumo": "A Agência Nacional de Vigilância Sanitária (Anvisa) publica nesta segunda-feira (5) a lista de produtos de higiene pessoal, cosméticos e perfumes que poderão ser produzidos de forma artesanal no país. A medida define sete categorias de produtos autorizados, além de regras para rotulagem, publicidade e segurança. Veja a seguir: produtos de perfumaria com base alcoólica, como perfumes, colônias e águas perfumadas; odorizantes de ambiente, incluindo velas aromáticas, sachês perfumados, difusores e sprays; produtos sólidos para banho e imersão, como sais e bombas de banho; sabonetes sólidos para o"
+  },
+  {
+   "id": "n-6ecfded5e5",
+   "titulo": "PL sai na frente na eleição da Câmara dos Deputados, com 121 eleitos",
+   "url": "https://www.camara.leg.br/noticias/1309192-pl-sai-na-frente-na-eleicao-da-camara-dos-deputados-com-121-eleitos",
+   "data": "2026-10-05T05:32+00:00",
+   "fonte": "camara",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "Segunda maior bancada será a da federação PT-PCdoB-PV, com 88 deputados"
+  },
+  {
+   "id": "n-d0048633d6",
+   "titulo": "MDB elege cinco representantes para a bancada do Maranhão",
+   "url": "https://www.camara.leg.br/noticias/1307818-mdb-elege-cinco-representantes-para-a-bancada-do-maranhao",
+   "data": "2026-10-05T05:26+00:00",
+   "fonte": "camara",
+   "nos": [],
+   "pessoas": [
+    "pedro-lucas-fernandes"
+   ],
+   "resumo": "Thiago Cristino/Câmara dos Deputados Pedro Lucas Fernandes foi o mais votado para deputado federal no estado O MDB obteve nestas eleições cinco vagas na bancada do Maranhão na Câmara dos Deputados. O segundo melhor desempenho foi do PL, com quatro. A Federação União-PP conquistou três vagas, e a Federação PT-PCdoB-PV, duas. PDT, Republicanos e federações PSDB-Cidadania e PRD-Solidariedade ficaram com uma cada. Na última eleição (2022), o PL elegeu quatro deputados, seguido de PP, Federação PT-PCdoB-PV e União, com dois cada; e MDB, Avante, PDT, Pode, PSC, Patriota e Republicanos, com um cada. "
+  },
+  {
+   "id": "n-7bb6745b1c",
+   "titulo": "PL obtém 19 vagas das 70 vagas de São Paulo na Câmara dos Deputados",
+   "url": "https://www.camara.leg.br/noticias/1307851-pl-obtem-19-vagas-das-70-vagas-de-sao-paulo-na-camara-dos-deputados",
+   "data": "2026-10-05T05:25+00:00",
+   "fonte": "camara",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "Câmara Municipal de SP Lucas Pavanato, o candidato mais votado do estado O PL obteve 19 vagas na bancada de São Paulo na Câmara dos Deputados nas eleições deste domingo. O segundo melhor desempenho foi da federação PT-PCdoB-PV, com 11 vagas. Em seguida vieram Podemos, PSD, Republicanos e Federação Psol-Rede, com seis vagas cada. A Federação União-PP obteve cinco, e o MDB, quatro. PSB e Novo obtiveram duas vagas cada. Missão e federações PRD-Solidariedade e PSDB-Cidadania, uma cada. Na última eleição (2022), o PL elegeu 17 deputados, seguido da federação PT-PCdoB-PV, com 11; Federação Psol-Rede"
+  },
+  {
+   "id": "n-80dc6cdeec",
+   "titulo": "PL, MDB e Federação União-PP dividem bancada federal do Amazonas",
+   "url": "https://www.camara.leg.br/noticias/1307794-pl-mdb-e-federacao-uniao-pp-dividem-bancada-federal-do-amazonas",
+   "data": "2026-10-05T04:45+00:00",
+   "fonte": "camara",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "Divulgação/Assessoria Sargento Salazar foi o mais votado para deputado federal no Amazonas PL, MDB e Federação União-PP elegeram dois representantes cada para a bancada do Amazonas na Câmara dos Deputados. PSD e Republicanos completaram a lista com uma vaga cada. Na última eleição (2022), PSD, Republicanos e União elegeram dois deputados cada, seguidos de PL e Federação PSDB-Cidadania, com um cada. Mais votado O atual vereador de Manaus Sargento Salazer (PL) foi o mais votado entre os candidatos à Câmara. Com 99,99% das urnas apuradas, ele contava com 212.948 votos (10,05% dos válidos). Senado"
+  },
+  {
+   "id": "n-e2dddd5f24",
+   "titulo": "29 ex-deputados federais são eleitos e voltam à Câmara",
+   "url": "https://www.camara.leg.br/noticias/1309179-29-ex-deputados-federais-sao-eleitos-e-voltam-a-camara",
+   "data": "2026-10-05T04:45+00:00",
+   "fonte": "camara",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "Dos 513 deputados federais eleitos neste domingo, 29 (5,6%) foram deputados eleitos em legislaturas anteriores à atual – entre eles o ex-presidente da Câmara João Paulo Cunha (PT-SP) e o ex-líder do governo Bolsonaro Major Vitor Hugo (PL-GO). Os percentuais de candidatos reeleitos, de ex-deputados de legislaturas anteriores que foram eleitos e de deputados de primeiro mandato (renovação) se mantêm estáveis nas últimas eleições, conforme se vê em quadro abaixo. Veja a lista dos ex-deputados federais que voltam à Câmara como titulares dos mandatos, em ordem alfabética. Mais notícias sobre as Ele"
+  },
+  {
+   "id": "n-2a79170358",
+   "titulo": "Em 2027, Senado terá 40 senadores novos e 14 reeleitos",
+   "url": "https://www12.senado.leg.br/noticias/materias/2026/10/05/em-2027-senado-tera-40-senadores-novos-e-14-reeleitos",
+   "data": "2026-10-05T03:04:00+00:00",
+   "fonte": "senado",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "A eleição deste domingo (4) definiu os ocupantes de 54 das 81 cadeiras do Senado para os próximos oito anos. Quarenta vagas serão renovadas, o equivalente a 74% das cadeiras em disputa. As demais serão ocupadas por senadores que conseguiram se reeleger. Dos 32 atuais senadores que tentaram a reeleição, 14 conseguiram um novo mandato, o que corresponde a 43,7%. Antes mesmo da apuração, já se sabia que haveria mudança significativa na composição da Casa a partir de 2027. Isso porque, entre os ocupantes das 54 cadeiras em disputa, 13 não eram candidatos e outros 9 disputaram cargos diferentes ou "
+  },
+  {
+   "id": "n-3bde3116ec",
+   "titulo": "Eleição para governador será decidida no segundo turno em seis estados e no DF",
+   "url": "https://www12.senado.leg.br/noticias/materias/2026/10/04/eleicao-para-governador-sera-decidida-em-segundo-turno-em-seis-estados-e-no-df",
+   "data": "2026-10-05T02:56:00+00:00",
+   "fonte": "senado",
+   "nos": [],
+   "pessoas": [
+    "alan-rick"
+   ],
+   "resumo": "A eleição para governador será decidida em segundo turno em seis estados e no Distrito Federal. Veja abaixo a tabela com todos os estados em que a eleição não foi decidida no primeiro turno e os candidatos que ainda estão na disputa. O segundo turno das eleições de 2026 está marcado para o último domingo de outubro (25). Este é o menor número de estados que ficaram com eleição indefinida no primeiro turno desde a redemocratização. Antes, o maior número era o de 2010, com 9 estados, seguido por 2006, com 10 governadores eleitos em primeiro turno. Acre Mailza Assis (PP) Alan Rick (Republicanos) "
+  },
+  {
+   "id": "n-f11ba93a0b",
+   "titulo": "Vídeo: TSE registra queda de 86% nas denúncias sobre integridade das eleições",
+   "url": "https://www12.senado.leg.br/noticias/videos/2026/10/tse-registra-queda-de-86-nas-denuncias-sobre-integridade-das-eleicoes",
+   "data": "2026-10-05T02:55:00+00:00",
+   "fonte": "senado",
+   "nos": [
+    "tse"
+   ],
+   "pessoas": [
+    "nunes-marques"
+   ],
+   "resumo": "A Justiça Eleitoral registrou queda de 86% nas denúncias de ameaça à integridade do processo eleitoral, em relação a 2022. \"Redução é significativa, mas não significa que devamos baixar a guarda\", destacou o presidente do Tribunal Superior Eleitoral (TSE), ministro Kassio Nunes Marques."
+  },
+  {
+   "id": "n-924aa2f64d",
+   "titulo": "TSE destaca normalidade no 1º turno e redução das denúncias de desinformação",
+   "url": "https://www12.senado.leg.br/noticias/materias/2026/10/04/tse-destaca-normalidade-no-1o-turno-e-reducao-das-denuncias-de-desinformacao",
+   "data": "2026-10-05T02:50:00+00:00",
+   "fonte": "senado",
+   "nos": [
+    "tse"
+   ],
+   "pessoas": [
+    "nunes-marques"
+   ],
+   "resumo": "O presidente do Tribunal Superior Eleitoral (TSE), ministro Kassio Nunes Marques, avaliou que o primeiro turno das eleições deste domingo (4) transcorreu dentro da normalidade, sem ocorrências capazes de comprometer o exercício do voto. Ao fazer o balanço do pleito, o ministro também destacou a abstenção de 21,07% do eleitorado, o equivalente a mais de 33,4 milhões de eleitores. Em 2022, a abstenção no primeiro turno foi de 20,95%. Apesar de considerar o índice dentro do esperado, Nunes Marques reconheceu que o percentual não é o ideal e defendeu a intensificação de ações para ampliar o compar"
+  },
+  {
+   "id": "n-e4d8b80705",
+   "titulo": "PL terá maior bancada em início de legislatura no Senado desde 1988",
+   "url": "https://www12.senado.leg.br/noticias/materias/2026/10/04/pl-tera-maior-bancada-em-inicio-de-legislatura-no-senado-desde-1988",
+   "data": "2026-10-05T02:32:00+00:00",
+   "fonte": "senado",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "O PL deverá ser o maior partido no Senado a partir do início de 2027, após eleger 19 senadores nas eleições deste domingo (4). A bancada do partido deverá ter 28 membros. A de nenhum outro partido deve chegar a um terço desse total: o PT, com 9 senadores, e o MDB, com 8, são as bancadas seguintes em número de integrantes. Caso esse número se confirme em fevereiro, quando os novos senadores tomarem posse, isso também fará do PL a maior bancada partidária do Senado ao início de uma legislatura desde a promulgação da Constituição de 1988. O recorde anterior era de 1999, do MDB (então PMDB), que i"
+  },
+  {
+   "id": "n-4150ac82f1",
+   "titulo": "TSE vai trabalhar para diminuir a abstenção no segundo turno",
+   "url": "https://agenciabrasil.ebc.com.br/justica/noticia/2026-10/tse-vai-trabalhar-para-diminuir-abstencao-no-segundo-turno",
+   "data": "2026-10-05T02:06+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [
+    "tse"
+   ],
+   "pessoas": [
+    "luiz-inacio-lula-da-silva",
+    "nunes-marques"
+   ],
+   "resumo": "O presidente do Tribunal Superior Eleitoral (TSE), Kassio Nunes Marques, afirmou neste domingo (4) que pretende trabalhar para diminuir a abstenção de eleitores no segundo turno. De acordo com os dados do sistema de totalização de votos do TSE, o primeiro turno registrou abstenção de 21,08%, percentual equivalente a 33,4 milhões de eleitores. Notícias relacionadas: Congestionamento no sistema de dados gerou atraso na apuração, diz TSE. Kassio diz que não há alerta de interferência nas eleições brasileiras. Flávio e Lula vão disputar 2º turno para presidente da República. “Não é o ideal uma abs"
+  },
+  {
+   "id": "n-ffd013fbd1",
+   "titulo": "Kassio diz que não há alerta de interferência nas eleições brasileiras",
+   "url": "https://agenciabrasil.ebc.com.br/justica/noticia/2026-10/kassio-diz-que-nao-ha-alerta-de-interferencia-nas-eleicoes-brasileiras",
+   "data": "2026-10-05T01:57+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [
+    "tse"
+   ],
+   "pessoas": [
+    "nunes-marques"
+   ],
+   "resumo": "O presidente do Tribunal Superior Eleitoral (TSE), Kassio Nunes Marques, afirmou neste domingo (4) que não foi constatada nenhuma intercorrência no primeiro turno das eleições que possa ser caracterizada como interferência estrangeira no pleito. Em coletiva de imprensa para apresentar um balanço sobre o trabalho da Justiça Eleitoral durante o dia de votação, o presidente disse que observadores internacionais que acompanharam o pleito confirmaram a transparência e a normalidade das eleições. Notícias relacionadas: Congestionamento no sistema de dados gerou atraso na apuração, diz TSE. Veja os 2"
+  },
+  {
+   "id": "n-e9ff538ec7",
+   "titulo": "Congestionamento no sistema de dados gerou atraso na apuração, diz TSE",
+   "url": "https://agenciabrasil.ebc.com.br/justica/noticia/2026-10/congestionamento-no-sistema-de-dados-gerou-atraso-na-apuracao-diz-tse",
+   "data": "2026-10-05T01:14+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [
+    "tse"
+   ],
+   "pessoas": [
+    "luiz-inacio-lula-da-silva",
+    "nunes-marques"
+   ],
+   "resumo": "O presidente do Tribunal Superior Eleitoral (TSE), Kassio Nunes Marques, confirmou neste domingo (4) que houve um atraso na totalização dos votos do primeiro turno das eleições. Segundo o ministro, o atraso de uma hora na divulgação dos dados ocorreu por causa de um congestionamento do sistema de dados da Corte. Notícias relacionadas: Flávio e Lula vão disputar 2º turno para presidente da República. Seis estados e o DF terão segundo turno para governador. Por volta das 19h, a totalização nacional dos votos para presidente da República ficou travada no patamar de 64%. A totalização foi retomada"
+  },
+  {
+   "id": "n-439a73010c",
+   "titulo": "Eleição segue normal e sem sinal de interferência externa, diz Marques",
+   "url": "https://agenciabrasil.ebc.com.br/justica/noticia/2026-10/eleicao-segue-normal-e-sem-sinal-de-interferencia-externa-diz-marques",
+   "data": "2026-10-04T19:05+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [
+    "tse"
+   ],
+   "pessoas": [
+    "nunes-marques"
+   ],
+   "resumo": "O presidente do Tribunal Superior Eleitoral (TSE), ministro Kassio Nunes Marques, disse neste domingo (4) não haver grandes obstáculos ou ocorrências durante a realização das eleições deste ano. Ele afastou suspeitas de interferências estrangeiras no processo eleitoral brasileiro. “Estamos a quase três horas do fim da votação e tudo tem funcionado na maior tranquilidade e transparência possível”, disse o ministro em entrevista coletiva na sede do TSE, em Brasília. Notícias relacionadas: Jornais dizem que voto no Brasil define geopolítica na América Latina. PF diz que não há risco ou indício de"
+  },
+  {
+   "id": "n-4bc43a5c1e",
+   "titulo": "Tribunal Eleitoral de Minas vai apurar uso de celular por Zema na urna",
+   "url": "https://agenciabrasil.ebc.com.br/justica/noticia/2026-10/tribunal-eleitoral-de-minas-vai-apurar-uso-de-celular-por-zema-na-urna",
+   "data": "2026-10-04T15:53+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "O presidente do Tribunal Regional Eleitoral de Minas Gerais (TRE-MG), Carlos Henrique Perpétuo Braga, afirmou que o uso de celular pelo presidenciável Romeu Zema (Novo) durante a votação na urna vai ser apurado pelas autoridades eleitorais. “Nós vamos apurar os fatos e, uma vez apurados pelo juiz eleitoral, isso chegando ao nosso conhecimento do tribunal, nós tomaremos as providências. Quero dizer também que os mesários foram devidamente instruídos também para evitar isso. Então, se isso aconteceu, foi uma sucessão de equívocos, para dizer o mínimo, que nós apuraremos”, afirmou o chefe do TRE "
+  },
+  {
+   "id": "n-760ad4af00",
+   "titulo": "Decisão de Nunes Marques recoloca Deltan na disputa pelo Senado no PR",
+   "url": "https://agenciabrasil.ebc.com.br/justica/noticia/2026-10/decisao-de-nunes-marques-recoloca-deltan-na-disputa-pelo-senado-no-pr",
+   "data": "2026-10-04T15:22+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [
+    "tse"
+   ],
+   "pessoas": [
+    "nunes-marques"
+   ],
+   "resumo": "O presidente do Tribunal Superior Eleitoral (TSE), ministro Kassio Nunes Marques, derrubou neste domingo (4) a decisão monocrática (individual) que havia negado o registro de candidatura do ex-procurador Deltan Dalagnol ao Senado pelo Paraná. Nunes Marques considerou não ser “razoável” que o caso tenha sido decidido de forma individual e com poucas horas para o horário do início de votação. Ele determinou que o registro de candidatura de Deltan volte a constar como “deferido com recurso”. Notícias relacionadas: Presidente do TSE diz que voto é direito fundamental dos brasileiros. Justiça está "
+  },
   {
    "id": "n-670e3fa058",
    "titulo": "TSE registra 421 urnas substituídas nas primeiras 2 horas de votação",
