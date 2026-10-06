@@ -93,3 +93,7 @@
 @media(min-width:1000px) and (max-height:800px){.qb-exam-library{padding: 18px;gap: 12px}.qb-root .qb-exam-card{padding: 13px 16px;gap: 7px}.qb-exam-card strong{font-size: 14px}.qb-exam-card-icon svg:first-child{width: 18px;height: 18px}.qb-exam-card-icon{height: 20px}}
 @media(max-width:900px){.qb-exam-catalog{grid-template-columns: repeat(2,minmax(0,1fr));overflow: visible}.qb-exam-library{padding: 18px}.qb-exam-library .qb-library-heading{flex-direction: column;align-items: flex-start}}
 @media(max-width:550px){.qb-exam-catalog{grid-template-columns: 1fr}}
+/* Original diagram preview uses the existing question reading pane. */
+.qb-question-reading .challenge-illustration{max-width:400px;margin:16px auto}.qb-question-reading .challenge-illustration svg{width:100%;height:auto}.qb-explanation li{margin:8px 0}.qb-notice{overflow-wrap:anywhere}
+
+.qb-notice[role="alert"]{display:block}.qb-notice[role="alert"]>button{display:block;white-space:nowrap;margin-top:8px}
