@@ -1,6 +1,6 @@
 {
  "meta": {
-  "gerado_em": "2026-10-05T19:13+00:00",
+  "gerado_em": "2026-10-06T16:39+00:00",
   "gerado_por": "scripts/governo/agentes/agente_noticias.py",
   "janela_dias": 90,
   "fontes": [
@@ -30,14 +30,14 @@
     "url": "https://www.gov.br/planalto/pt-br/acompanhe-o-planalto/noticias/RSS"
    }
   ],
-  "total_artigos": 1736,
-  "artigos_com_no": 542,
-  "novos_nesta_rodada": 63,
+  "total_artigos": 1783,
+  "artigos_com_no": 569,
+  "novos_nesta_rodada": 51,
   "artigos_por_fonte": {
-   "camara": 423,
-   "agenciabrasil": 575,
-   "senado": 703,
-   "stf": 5,
+   "agenciabrasil": 599,
+   "senado": 718,
+   "camara": 429,
+   "stf": 7,
    "planalto": 30
   },
   "ordem": "peso igual por fonte; contagem real de matérias",
@@ -45,206 +45,206 @@
  },
  "resumo": [
   {
-   "texto": "A Advocacia-Geral da União pediu ao Supremo Tribunal Federal que declare inconstitucionais dispositivos das leis que legalizaram as apostas de quota fixa.",
-   "artigo_id": "n-794f7131de",
+   "texto": "A Advocacia-Geral da União pediu ao Supremo Tribunal Federal que mantenha em vigor a medida provisória que proibiu as bets, cujos sites começaram a sair do ar nesta terça-feira.",
+   "artigo_id": "n-a0e07bf864",
    "no_id": "agu"
   },
   {
-   "texto": "O presidente do Supremo Tribunal Federal, Edson Fachin, marcou para 13 de outubro reunião com o diretor-geral da Polícia Federal sobre citações a ministros nas investigações do caso Master.",
-   "artigo_id": "n-91c0d5138b",
-   "no_id": "stf"
-  },
-  {
-   "texto": "O presidente do Tribunal Superior Eleitoral, Kassio Nunes Marques, derrubou decisão monocrática que havia negado o registro da candidatura de Deltan Dallagnol ao Senado pelo Paraná.",
-   "artigo_id": "n-760ad4af00",
+   "texto": "O ministro André Mendonça, do Tribunal Superior Eleitoral, multou Flávio Bolsonaro em R$ 5 mil por impulsionamento irregular de propaganda negativa e deu 24 horas para plataformas removerem publicações falsas sobre Lula.",
+   "artigo_id": "n-be40c5f821",
    "no_id": "tse"
   },
   {
-   "texto": "O PL elegeu 19 senadores e passará a ter 28 cadeiras no Senado Federal a partir de 2027, seguido por MDB, com sete, e PT, com seis.",
-   "artigo_id": "n-12cfca3f4b",
-   "no_id": "senado"
+   "texto": "A Câmara dos Deputados confirmou que 183 dos 513 eleitos terão primeiro mandato, taxa de renovação de 35,67%, com o PL formando a maior bancada, de 121 deputados.",
+   "artigo_id": "n-a445ab65c5",
+   "no_id": "camara"
+  },
+  {
+   "texto": "O Banco Central passará a divulgar mensalmente indicadores sobre reajustes salariais negociados em convenções coletivas de trabalho.",
+   "artigo_id": "n-a5470386a4",
+   "no_id": null
   }
  ],
  "ranking": {
   "orgaos": [
    {
     "id": "tse",
-    "artigos": 98,
-    "peso": 56.854528136393874,
-    "ultima": "2026-10-05T16:01:00+00:00"
+    "artigos": 107,
+    "peso": 61.4860914591785,
+    "ultima": "2026-10-06T15:39+00:00"
    },
    {
     "id": "stf",
-    "artigos": 87,
-    "peso": 50.00127901288501,
-    "ultima": "2026-10-05T18:48+00:00"
+    "artigos": 92,
+    "peso": 52.53915578130821,
+    "ultima": "2026-10-06T15:39+00:00"
    },
    {
     "id": "camara",
-    "artigos": 55,
-    "peso": 27.493412827014666,
-    "ultima": "2026-10-05T17:44+00:00"
+    "artigos": 60,
+    "peso": 30.490120023623387,
+    "ultima": "2026-10-05T23:14+00:00"
    },
    {
     "id": "congresso",
-    "artigos": 48,
-    "peso": 25.346818793865687,
-    "ultima": "2026-10-05T17:24+00:00"
+    "artigos": 52,
+    "peso": 27.520595119558095,
+    "ultima": "2026-10-05T23:19:00+00:00"
    },
    {
     "id": "caixa",
     "artigos": 31,
-    "peso": 18.71860869565218,
+    "peso": 18.455091819699486,
     "ultima": "2026-10-04T10:44+00:00"
+   },
+   {
+    "id": "pf",
+    "artigos": 30,
+    "peso": 17.267757311396423,
+    "ultima": "2026-10-06T12:58+00:00"
    },
    {
     "id": "prf",
     "artigos": 9,
-    "peso": 16.293999299070236,
+    "peso": 16.550602846278927,
     "ultima": "2026-10-01T23:06+00:00"
    },
    {
-    "id": "pf",
-    "artigos": 28,
-    "peso": 16.24747405529099,
-    "ultima": "2026-10-04T14:18+00:00"
+    "id": "anvisa",
+    "artigos": 23,
+    "peso": 13.731061045885657,
+    "ultima": "2026-10-06T14:53+00:00"
+   },
+   {
+    "id": "mte",
+    "artigos": 3,
+    "peso": 13.07731775180857,
+    "ultima": "2026-10-06T15:22+00:00"
    },
    {
     "id": "inss",
     "artigos": 19,
-    "peso": 12.221940411612746,
+    "peso": 12.271877402811965,
     "ultima": "2026-10-01T20:17+00:00"
-   },
-   {
-    "id": "mte",
-    "artigos": 2,
-    "peso": 12.177159420289854,
-    "ultima": "2026-09-29T18:56+00:00"
    },
    {
     "id": "mec",
     "artigos": 21,
-    "peso": 12.127726412229457,
+    "peso": 12.047069155966987,
     "ultima": "2026-10-02T19:46+00:00"
-   },
-   {
-    "id": "anvisa",
-    "artigos": 20,
-    "peso": 12.073613974849284,
-    "ultima": "2026-10-05T10:41+00:00"
    },
    {
     "id": "inpe",
     "artigos": 1,
-    "peso": 11.573333333333332,
+    "peso": 11.886666666666667,
     "ultima": "2026-08-06T22:13:00+00:00"
    },
    {
     "id": "petrobras",
-    "artigos": 19,
-    "peso": 11.142867462428104,
-    "ultima": "2026-10-03T16:03+00:00"
+    "artigos": 20,
+    "peso": 11.610506368552972,
+    "ultima": "2026-10-05T21:24+00:00"
    },
    {
     "id": "agu",
-    "artigos": 15,
-    "peso": 8.947448574432556,
-    "ultima": "2026-10-05T18:48+00:00"
+    "artigos": 17,
+    "peso": 10.021866062750824,
+    "ultima": "2026-10-06T15:27+00:00"
    },
    {
     "id": "ibge",
     "artigos": 15,
-    "peso": 8.947448574432556,
+    "peso": 8.83121497760892,
     "ultima": "2026-10-02T12:50+00:00"
+   },
+   {
+    "id": "tcu",
+    "artigos": 16,
+    "peso": 8.81301052699995,
+    "ultima": "2026-10-06T13:17:00+00:00"
    },
    {
     "id": "tst",
     "artigos": 15,
-    "peso": 8.724655350320866,
+    "peso": 8.672452222451989,
     "ultima": "2026-09-29T23:40+00:00"
    },
    {
     "id": "inep",
     "artigos": 14,
-    "peso": 8.453565217391304,
+    "peso": 8.334557595993322,
     "ultima": "2026-10-02T19:46+00:00"
-   },
-   {
-    "id": "tcu",
-    "artigos": 15,
-    "peso": 8.281976666378634,
-    "ultima": "2026-10-01T12:20:00+00:00"
    },
    {
     "id": "ms",
     "artigos": 14,
-    "peso": 8.230771993279614,
+    "peso": 8.17579484083639,
     "ultima": "2026-09-30T16:08+00:00"
    },
    {
     "id": "anp",
     "artigos": 12,
-    "peso": 7.0231198193665705,
+    "peso": 6.985143755694487,
     "ultima": "2026-10-02T19:10+00:00"
    },
    {
     "id": "mpf",
     "artigos": 11,
-    "peso": 6.532144226606469,
+    "peso": 6.449912807325115,
     "ultima": "2026-09-29T23:40+00:00"
    },
    {
     "id": "stj",
     "artigos": 10,
-    "peso": 6.362273530748725,
+    "peso": 6.326407042083122,
     "ultima": "2026-09-30T18:25+00:00"
    },
    {
     "id": "senado",
-    "artigos": 6,
-    "peso": 4.707844999486072,
-    "ultima": "2026-10-05T15:49+00:00"
+    "artigos": 7,
+    "peso": 5.346828241319059,
+    "ultima": "2026-10-05T23:14+00:00"
    },
    {
     "id": "cvm",
     "artigos": 7,
-    "peso": 4.443760304245041,
+    "peso": 4.4031886866611405,
     "ultima": "2026-09-27T18:52+00:00"
    },
    {
     "id": "cnj",
     "artigos": 7,
-    "peso": 4.116839878780382,
+    "peso": 4.068610637041308,
     "ultima": "2026-09-29T15:54+00:00"
    },
    {
     "id": "ebc",
     "artigos": 5,
-    "peso": 3.0191304347826087,
+    "peso": 2.976627712854758,
     "ultima": "2026-10-02T23:34+00:00"
    },
    {
     "id": "cmn",
     "artigos": 5,
-    "peso": 3.0191304347826087,
+    "peso": 2.976627712854758,
     "ultima": "2026-09-30T17:48+00:00"
    },
    {
     "id": "senacon",
     "artigos": 5,
-    "peso": 3.0191304347826087,
+    "peso": 2.976627712854758,
     "ultima": "2026-09-25T12:27+00:00"
    },
    {
     "id": "anac",
     "artigos": 5,
-    "peso": 2.906279940586187,
+    "peso": 2.91653311865318,
     "ultima": "2026-09-23T14:04+00:00"
    },
    {
     "id": "aneel",
     "artigos": 5,
-    "peso": 2.799244974952069,
+    "peso": 2.779291390944053,
     "ultima": "2026-10-02T20:17+00:00"
    }
   ],
@@ -260,9 +260,9 @@
     "uf": null,
     "foto": "https://commons.wikimedia.org/wiki/Special:FilePath/Foto_oficial_de_Luiz_In%C3%A1cio_Lula_da_Silva_%28estreita%29.jpg?width=160",
     "foto_fonte": "https://www.wikidata.org/wiki/Q37181",
-    "artigos": 43,
-    "peso": 35.8316939220734,
-    "ultima": "2026-10-05T18:48+00:00"
+    "artigos": 46,
+    "peso": 37.72820803955972,
+    "ultima": "2026-10-06T15:39+00:00"
    },
    {
     "id": "nunes-marques",
@@ -276,7 +276,7 @@
     "foto": "https://commons.wikimedia.org/wiki/Special:FilePath/Nunes_Marques%2C_February_2025_%28cropped%29.jpg?width=160",
     "foto_fonte": "https://www.wikidata.org/wiki/Q99831978",
     "artigos": 26,
-    "peso": 15.039821881377947,
+    "peso": 14.886455141112616,
     "ultima": "2026-10-05T16:01:00+00:00"
    },
    {
@@ -290,9 +290,9 @@
     "uf": "DF",
     "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador6335.jpg",
     "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/6335",
-    "artigos": 25,
-    "peso": 12.347083926031297,
-    "ultima": "2026-10-01T12:52:00+00:00"
+    "artigos": 26,
+    "peso": 12.913091922005567,
+    "ultima": "2026-10-05T20:58:00+00:00"
    },
    {
     "id": "flavio-bolsonaro",
@@ -305,9 +305,9 @@
     "uf": "RJ",
     "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador5894.jpg",
     "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/5894",
-    "artigos": 19,
-    "peso": 11.032924732512834,
-    "ultima": "2026-10-05T18:04:00+00:00"
+    "artigos": 22,
+    "peso": 12.702489292739518,
+    "ultima": "2026-10-06T15:39+00:00"
    },
    {
     "id": "davi-alcolumbre",
@@ -320,9 +320,9 @@
     "uf": "AP",
     "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador3830.jpg",
     "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/3830",
-    "artigos": 21,
-    "peso": 10.7013786876121,
-    "ultima": "2026-10-02T22:50+00:00"
+    "artigos": 22,
+    "peso": 11.22246687840923,
+    "ultima": "2026-10-05T21:56:00+00:00"
    },
    {
     "id": "edson-fachin",
@@ -336,7 +336,7 @@
     "foto": "https://commons.wikimedia.org/wiki/Special:FilePath/Luiz_Edson_Fachin-12-05.2015.jpg?width=160",
     "foto_fonte": "https://www.wikidata.org/wiki/Q10320705",
     "artigos": 15,
-    "peso": 8.837505844517286,
+    "peso": 8.732546816653569,
     "ultima": "2026-10-02T19:13+00:00"
    },
    {
@@ -351,7 +351,7 @@
     "foto": "https://www.camara.leg.br/internet/deputado/bandep/160674.jpg",
     "foto_fonte": "https://www.camara.leg.br/deputados/160674",
     "artigos": 11,
-    "peso": 6.740398629312404,
+    "peso": 6.801543396250917,
     "ultima": "2026-09-08T14:44:00+00:00"
    },
    {
@@ -366,7 +366,7 @@
     "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador825.jpg",
     "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/825",
     "artigos": 13,
-    "peso": 6.420483641536275,
+    "peso": 6.456545961002785,
     "ultima": "2026-09-29T16:37:00+00:00"
    },
    {
@@ -381,7 +381,7 @@
     "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador5979.jpg",
     "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/5979",
     "artigos": 11,
-    "peso": 5.432716927453771,
+    "peso": 5.463231197771588,
     "ultima": "2026-09-30T13:54:00+00:00"
    },
    {
@@ -396,7 +396,7 @@
     "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador5525.jpg",
     "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/5525",
     "artigos": 11,
-    "peso": 5.432716927453771,
+    "peso": 5.463231197771588,
     "ultima": "2026-09-02T23:20:00+00:00"
    },
    {
@@ -411,7 +411,7 @@
     "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador345.jpg",
     "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/345",
     "artigos": 10,
-    "peso": 4.938833570412519,
+    "peso": 4.966573816155989,
     "ultima": "2026-09-25T18:03:00+00:00"
    },
    {
@@ -426,7 +426,7 @@
     "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador5376.jpg",
     "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/5376",
     "artigos": 10,
-    "peso": 4.938833570412519,
+    "peso": 4.966573816155989,
     "ultima": "2026-09-23T18:20:00+00:00"
    },
    {
@@ -441,7 +441,7 @@
     "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador5352.jpg",
     "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/5352",
     "artigos": 10,
-    "peso": 4.938833570412519,
+    "peso": 4.966573816155989,
     "ultima": "2026-09-14T16:27:00+00:00"
    },
    {
@@ -456,7 +456,7 @@
     "foto": "https://www.camara.leg.br/internet/deputado/bandep/220645.jpg",
     "foto_fonte": "https://www.camara.leg.br/deputados/220645",
     "artigos": 8,
-    "peso": 4.937643661286293,
+    "peso": 4.899846068276739,
     "ultima": "2026-10-05T17:44+00:00"
    },
    {
@@ -471,23 +471,8 @@
     "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador5990.jpg",
     "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/5990",
     "artigos": 9,
-    "peso": 4.444950213371267,
+    "peso": 4.469916434540391,
     "ultima": "2026-09-04T21:56:00+00:00"
-   },
-   {
-    "id": "paulo-gonet",
-    "nome": "Paulo Gonet",
-    "nome_completo": "Paulo Gonet",
-    "cargo": "Procurador(a)-Geral da República · MPU",
-    "no_id": "mpu",
-    "poder": "essencial",
-    "partido": null,
-    "uf": null,
-    "foto": null,
-    "foto_fonte": null,
-    "artigos": 7,
-    "peso": 4.006897148865113,
-    "ultima": "2026-09-25T21:11+00:00"
    },
    {
     "id": "astronauta-marcos-pontes",
@@ -501,8 +486,23 @@
     "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador6009.jpg",
     "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/6009",
     "artigos": 8,
-    "peso": 3.951066856330015,
+    "peso": 3.9732590529247918,
     "ultima": "2026-09-23T18:51:00+00:00"
+   },
+   {
+    "id": "paulo-gonet",
+    "nome": "Paulo Gonet",
+    "nome_completo": "Paulo Gonet",
+    "cargo": "Procurador(a)-Geral da República · MPU",
+    "no_id": "mpu",
+    "poder": "essencial",
+    "partido": null,
+    "uf": null,
+    "foto": null,
+    "foto_fonte": null,
+    "artigos": 7,
+    "peso": 3.969942476085956,
+    "ultima": "2026-09-25T21:11+00:00"
    },
    {
     "id": "izalci-lucas",
@@ -516,7 +516,7 @@
     "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador4770.jpg",
     "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/4770",
     "artigos": 7,
-    "peso": 3.457183499288763,
+    "peso": 3.4766016713091927,
     "ultima": "2026-09-25T21:09:00+00:00"
    },
    {
@@ -531,7 +531,7 @@
     "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador5917.jpg",
     "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/5917",
     "artigos": 7,
-    "peso": 3.457183499288763,
+    "peso": 3.4766016713091927,
     "ultima": "2026-09-02T19:51:00+00:00"
    },
    {
@@ -546,7 +546,7 @@
     "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador6336.jpg",
     "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/6336",
     "artigos": 6,
-    "peso": 2.963300142247511,
+    "peso": 2.9799442896935937,
     "ultima": "2026-09-30T15:55:00+00:00"
    },
    {
@@ -561,7 +561,7 @@
     "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador6338.jpg",
     "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/6338",
     "artigos": 6,
-    "peso": 2.963300142247511,
+    "peso": 2.9799442896935937,
     "ultima": "2026-09-10T18:45:00+00:00"
    },
    {
@@ -576,7 +576,7 @@
     "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador475.jpg",
     "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/475",
     "artigos": 6,
-    "peso": 2.963300142247511,
+    "peso": 2.9799442896935937,
     "ultima": "2026-09-01T22:31:00+00:00"
    },
    {
@@ -591,7 +591,7 @@
     "foto": "https://www.camara.leg.br/internet/deputado/bandep/74161.jpg",
     "foto_fonte": "https://www.camara.leg.br/deputados/74161",
     "artigos": 5,
-    "peso": 2.796337210670917,
+    "peso": 2.817864957697827,
     "ultima": "2026-09-01T19:56:00+00:00"
    },
    {
@@ -606,12 +606,565 @@
     "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador5985.jpg",
     "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/5985",
     "artigos": 5,
-    "peso": 2.469416785206259,
+    "peso": 2.4832869080779947,
     "ultima": "2026-09-22T14:16:00+00:00"
    }
   ]
  },
  "artigos": [
+  {
+   "id": "n-5048a380bf",
+   "titulo": "Com 91 anos, Erundina é a deputada estadual mais velha eleita em 2026",
+   "url": "https://agenciabrasil.ebc.com.br/politica/noticia/2026-10/com-91-anos-erundina-e-deputada-estadual-mais-velha-eleita-em-2026",
+   "data": "2026-10-06T16:25+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [],
+   "pessoas": [
+    "luiza-erundina"
+   ],
+   "resumo": "Luiza Erundina (Psol) tornou-se a deputada estadual mais velha a ser eleita em todo o país no pleito de 2026. Aos 91 anos, ela ocupará uma das 94 cadeiras da Assembleia Legislativa de São Paulo (Alesp) . A ex-prefeita de São Paulo ficou na 13ª posição, com 169.567 votos, para iniciar mandato em 2027. No estado, superou o deputado Eduardo Suplicy (PT) , de 85 anos, até então o mais velho da Alesp. Notícias relacionadas: Luiza Erundina defende ampliação do passe livre na cidade de São Paulo. Erundina: incluir transporte entre direitos sociais é conquista da sociedade. Nascida no dia 30 de novemb"
+  },
+  {
+   "id": "n-be40c5f821",
+   "titulo": "Mendonça multa Flávio por impulsionar post negativo contra Lula",
+   "url": "https://agenciabrasil.ebc.com.br/politica/noticia/2026-10/mendonca-multa-flavio-por-impulsionar-post-negativo-contra-lula",
+   "data": "2026-10-06T15:39+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [
+    "stf",
+    "tse"
+   ],
+   "pessoas": [
+    "luiz-inacio-lula-da-silva",
+    "flavio-bolsonaro"
+   ],
+   "resumo": "O ministro André Mendonça, do Supremo Tribunal Federal (STF), decidiu nesta segunda-feira (5) multar o presidenciável Flávio Bolsonaro em R$ 5 mil por impulsionamento irregular de propaganda negativa contra o presidente Luiz Inácio Lula da Silva, candidato à reeleição. A publicação questionada pela campanha de Lula mostra uma foto de Flávio, com uma imagem de identificação de sua candidatura, seguida pela legenda: Notícias relacionadas: TSE quer parecer do MP antes de decisão sobre recurso de Garotinho. Bolsonaro pede liberação de visitas de Flávio na prisão domiciliar. Flávio e Lula vão dispu"
+  },
+  {
+   "id": "n-a0e07bf864",
+   "titulo": "AGU pede a Fux que aguarde PGR e mantenha proibição das bets no país",
+   "url": "https://agenciabrasil.ebc.com.br/justica/noticia/2026-10/agu-pede-fux-que-aguarde-pgr-e-mantenha-proibicao-das-bets-no-pais",
+   "data": "2026-10-06T15:27+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [
+    "agu",
+    "stf"
+   ],
+   "pessoas": [
+    "jorge-rodrigo-araujo-messias"
+   ],
+   "resumo": "A Advocacia-Geral da União (AGU) pediu ao Supremo Tribunal Federal (STF) que mantenha em vigor a medida provisória (MP) que proibiu a atividade das bets no país . No parecer, o advogado-geral da União, Jorge Messias, pede ainda que o ministro Luiz Fux, relator do tema no STF, aguarde a manifestação da Procuradoria-Geral da República (PGR) antes de decidir sobre o pedido para que os efeitos da MP sejam suspensos. Notícias relacionadas: Bets começam a sair do ar nesta terça-feira. Prazo para sacar dinheiro das bets termina nesta segunda. Movimentação das bets cai R$ 652 milhões por dia após proi"
+  },
+  {
+   "id": "n-a5470386a4",
+   "titulo": "BC cria indicador para acompanhar reajustes salariais negociados",
+   "url": "https://agenciabrasil.ebc.com.br/economia/noticia/2026-10/bc-cria-indicador-para-acompanhar-reajustes-salariais-negociados",
+   "data": "2026-10-06T15:22+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [
+    "mte"
+   ],
+   "pessoas": [],
+   "resumo": "O Banco Central (BC) passará a divulgar mensalmente um novo conjunto de indicadores sobre reajustes salariais negociados em convenções coletivas de trabalho. A iniciativa deve ampliar a capacidade de monitorar as condições do mercado de trabalho e seus efeitos sobre a inflação. Com base em informações do Sistema de Negociações Coletivas de Trabalho (Mediador), do Ministério do Trabalho e Emprego , os indicadores mostrarão os percentuais de reajustes negociados e a proporção de acordos que resultaram em aumentos acima, abaixo ou em linha com a inflação. Notícias relacionadas: Inflação usada par"
+  },
+  {
+   "id": "n-53e58574be",
+   "titulo": "Áudio: Senado terá 13 partidos representados a partir de 2027",
+   "url": "https://www12.senado.leg.br/noticias/audios/2026/10/senado-tera-13-partidos-representados-a-partir-de-2027",
+   "data": "2026-10-06T14:59:00+00:00",
+   "fonte": "senado",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "O Senado terá representantes de 13 partidos em 2027. Além de PL, PT e MDB, haverá integrantes de União, PP, PSD, PSB, Novo, Republicanos, PSDB, Podemos, Rede e PDT. A bancada feminina terá 18 representantes em 2027, a maior em um inicio de legislatura. A composição do Senado ainda pode sofrer alterações após o segundo turno para governador. Senadores em exercício, caso eleitos para outros cargos, poderão abrir lugar para a convocação de suplentes. Após o primeiro turno, o PL aparece com a maior bancada projetada para 2027, com 28 integrantes."
+  },
+  {
+   "id": "n-119e40400d",
+   "titulo": "Projeto cria política nacional para levar internet de alta velocidade a todas as escolas públicas",
+   "url": "https://www.camara.leg.br/noticias/1306854-projeto-cria-politica-nacional-para-levar-internet-de-alta-velocidade-a-todas-as-escolas-publicas",
+   "data": "2026-10-06T14:57+00:00",
+   "fonte": "camara",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "Texto está em análise na Câmara dos Deputados"
+  },
+  {
+   "id": "n-9d159ea582",
+   "titulo": "Anvisa libera fabricação de produtos de limpeza da Unilever",
+   "url": "https://agenciabrasil.ebc.com.br/saude/noticia/2026-10/anvisa-libera-fabricacao-de-produtos-de-limpeza-da-unilever",
+   "data": "2026-10-06T14:53+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [
+    "anvisa"
+   ],
+   "pessoas": [],
+   "resumo": "A Agência Nacional de Vigilância Sanitária (Anvisa) liberou, nesta terça-feira (6) , a fabricação de todos os produtos de limpeza na unidade Unilever em Vinhedo, São Paulo. A medida foi tomada após nova inspeção sanitária, realizada no período de 29 de setembro a 1º de outubro, e que, segundo a Anvisa, verificou a correção das não conformidades registradas no mês de agosto . Entenda Notícias relacionadas: Anvisa aprova novo tratamento para doença do enxerto contra hospedeiro. Anvisa proíbe venda de insulina e tirzepatida irregulares. Anvisa: veja a lista de cosméticos que podem ter fabricação "
+  },
+  {
+   "id": "n-76f8377ca6",
+   "titulo": "Big techs descumprem regras eleitorais no dia da votação, diz estudo",
+   "url": "https://agenciabrasil.ebc.com.br/politica/noticia/2026-10/big-techs-descumprem-regras-eleitorais-no-dia-da-votacao-diz-estudo",
+   "data": "2026-10-06T14:46+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "Redes sociais continuaram a veicular anúncios político-eleitorais e a recomendar conteúdos de candidatos neste domingo (4), dia do primeiro turno das eleições de 2026. Levantamento do Observatório das Big Techs, do NetLab da Universidade Federal do Rio de Janeiro (UFRJ), identificou anúncios irregulares na Meta, no Kwai e no Google, além de recomendações irregulares de vídeos de candidatos pelo TikTok e pelo YouTube. Notícias relacionadas: Menos numerosos em 2026, adolescentes exercem direito ao voto. Idosos superam dificuldades e ressaltam importância do voto. De acordo com as regras do Tribu"
+  },
+  {
+   "id": "n-b972bb28e0",
+   "titulo": "Projeto cria programa para distribuir materiais esportivos a crianças em vulnerabilidade social",
+   "url": "https://www.camara.leg.br/noticias/1305826-projeto-cria-programa-para-distribuir-materiais-esportivos-a-criancas-em-vulnerabilidade-social",
+   "data": "2026-10-06T14:06+00:00",
+   "fonte": "camara",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "Texto está em análise na Câmara dos Deputados"
+  },
+  {
+   "id": "n-a9ca15ff0d",
+   "titulo": "OMS: dois em cada três jovens europeus dizem ter sofrido abusos",
+   "url": "https://agenciabrasil.ebc.com.br/internacional/noticia/2026-10/oms-dois-em-cada-tres-jovens-europeus-dizem-ter-sofrido-abusos",
+   "data": "2026-10-06T14:01+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "Dois em cada três jovens europeus afirmam ter sido vítimas de abusos, negligência, violência doméstica ou outras experiências adversas semelhantes durante a infância, segundo relatório divulgado pela Organização Mundial da Saúde (OMS). De acordo com o estudo, realizado junto a 26 mil pessoas com idades entre 18 e 30 anos na União Europeia, Noruega e Islândia, um em cada cinco entrevistados revelou ter vivido quatro ou mais tipos de experiências adversas na infância. Notícias relacionadas: Diretor da OMS diz que Brasil é exemplo mundial por sistema de saúde. OMS defende calendário vacinal após "
+  },
+  {
+   "id": "n-398714144e",
+   "titulo": "Moraes concede regime semiaberto a Débora do Batom, condenada pelo 8/1",
+   "url": "https://agenciabrasil.ebc.com.br/justica/noticia/2026-10/moraes-concede-regime-semiaberto-debora-do-batom-condenada-pelo-81",
+   "data": "2026-10-06T14:01+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [
+    "stf"
+   ],
+   "pessoas": [],
+   "resumo": "O ministro Alexandre de Moraes, do Supremo Tribunal Federal (STF), concedeu progressão de regime para o semiaberto à cabeleireira Débora Rodrigues dos Santos, conhecida como Débora do Batom, que foi condenada a 14 anos de prisão por sua participação nos atos antidemocráticos de 8 de janeiro de 2023. Débora ganhou notoriedade por ter pichado com um batom a frase Perdeu, mané na estátua A Justiça, localizada em frente ao edifício-sede do STF. Notícias relacionadas: Débora do Batom recorre para ser beneficiada pela Lei da Dosimetria . Mulher que pichou \"Perdeu, mané\" pede perdão em depoimento ao "
+  },
+  {
+   "id": "n-3235b48805",
+   "titulo": "Vídeo: Encontro reúne mulheres dos três Poderes e lança rede de lideranças",
+   "url": "https://www12.senado.leg.br/noticias/videos/2026/10/encontro-reune-mulheres-dos-tres-poderes-e-lanca-rede-de-liderancas",
+   "data": "2026-10-06T13:57:00+00:00",
+   "fonte": "senado",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "Durante a abertura do 1º Encontro Nacional de Mulheres na Liderança na Administração Pública, na segunda-feira (5), gestoras dos três Poderes lançaram uma rede de mulheres na liderança de órgãos públicos. O evento vai até terça (6) e conta com palestras, aulas e oficinas que buscam fortalecer a atuação feminina no Executivo, no Legislativo e no Judiciário. Também foi lançado um videocast com conversas com mulheres que ocupam posições de destaque da administração pública. O material está disponível nas principais plataformas de áudio, no canal do YouTube e no site da TV Senado."
+  },
+  {
+   "id": "n-708166c3ac",
+   "titulo": "Anvisa aprova novo tratamento para doença do enxerto contra hospedeiro",
+   "url": "https://agenciabrasil.ebc.com.br/saude/noticia/2026-10/anvisa-aprova-novo-tratamento-para-doenca-do-enxerto-contra-hospedeiro",
+   "data": "2026-10-06T13:49+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [
+    "anvisa"
+   ],
+   "pessoas": [],
+   "resumo": "A Agência Nacional de Vigilância Sanitária (Anvisa) aprovou o registro do medicamento Niktimvo (axatilimabe), anticorpo monoclonal indicado para o tratamento da doença crônica do enxerto contra o hospedeiro em adultos e pacientes pediátricos com peso igual ou superior a 40 quilos. Em nota, a Anvisa explicou que a doença é uma complicação tardia que pode ocorrer após um transplante de medula óssea, que costuma surgir geralmente depois de 100 dias do procedimento . O problema se manifesta quando os linfócitos T do doador reconhecem os tecidos do próprio receptor como estranhos e passam a atacá-l"
+  },
+  {
+   "id": "n-03684c2f1f",
+   "titulo": "Anvisa proíbe venda de insulina e tirzepatida irregulares",
+   "url": "https://agenciabrasil.ebc.com.br/saude/noticia/2026-10/anvisa-proibe-venda-de-insulina-e-tirzepatida-irregulares",
+   "data": "2026-10-06T13:45+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [
+    "anvisa"
+   ],
+   "pessoas": [],
+   "resumo": "A Agência Nacional de Vigilância Sanitária (Anvisa) proibiu a venda e o uso de todos os lotes de insulina produzidos pela empresa Costa Mar Comércio Licitatório. A decisão foi publicada nesta terça-feira (6) no Diário Oficial da União . Em nota, a Anvisa informou que a empresa distribuiu insulina glargina 3 mL/100 UI sem a Autorização de Funcionamento de Empresa (AFE) para a atividade, em desacordo com a legislação sanitária vigente. Notícias relacionadas: Governo pede à Conitec incorporação de canetas emagrecedoras no SUS. SUS vai ofertar canetas emagrecedoras para pacientes com obesidade. Ca"
+  },
+  {
+   "id": "n-e9da8bc3df",
+   "titulo": "Mendonça dá 24h para remoção de posts sobre Lula e bandeira do Brasil",
+   "url": "https://agenciabrasil.ebc.com.br/justica/noticia/2026-10/mendonca-da-24h-para-remocao-de-posts-sobre-lula-e-bandeira-do-brasil",
+   "data": "2026-10-06T13:40+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [
+    "tse"
+   ],
+   "pessoas": [
+    "luiz-inacio-lula-da-silva"
+   ],
+   "resumo": "O ministro André Mendonça, do Tribunal Superior Eleitoral (TSE), deu 24h para que plataformas de redes sociais removam publicações que veicularam a informação falsa de que o presidente Luiz Inácio Lula da Silva, candidato à reeleição, teria jogado a bandeira do Brasil no chão após votar no primeiro turno das eleições, no último domingo (4). Mendonça atendeu a um pedido da coligação Brasil Pronto Pra Mais, com alvo em posts do influenciador Pablo Marçal, entre outros perfis nas plataformas Facebook, TikTok, Threads, Instagram e X. Notícias relacionadas: Flávio e Lula votam no 1º turno; acompanh"
+  },
+  {
+   "id": "n-4c51c6dac0",
+   "titulo": "Áudio: Eleitor que faltou no primeiro turno pode votar no segundo",
+   "url": "https://www12.senado.leg.br/noticias/audios/2026/10/eleitor-que-faltou-no-primeiro-turno-pode-votar-no-segundo",
+   "data": "2026-10-06T13:26:00+00:00",
+   "fonte": "senado",
+   "nos": [
+    "tse"
+   ],
+   "pessoas": [],
+   "resumo": "Eleitores que faltaram ao primeiro turno ainda podem votar no segundo turno, dia 25 de outubro, desde que o título de eleitor esteja regularizado. A ausência no primeiro turno deve ser justificada até 3 de dezembro, pelo e-Título, autoatendimento eleitoral (no site do TSE) ou cartório eleitoral. Segundo o Tribunal Superior Eleitoral (TSE), 33,4 milhões de eleitores não compareceram às urnas no primeiro turno. No segundo, estão em disputa apenas os cargos de presidente e, dependendo do estado, de governador."
+  },
+  {
+   "id": "n-fab93555a4",
+   "titulo": "Áudio: Especialistas alertam para aliciamento de crianças na internet",
+   "url": "https://www12.senado.leg.br/noticias/audios/2026/10/especialistas-alertam-para-aliciamento-de-criancas-na-internet",
+   "data": "2026-10-06T13:17:00+00:00",
+   "fonte": "senado",
+   "nos": [
+    "tcu"
+   ],
+   "pessoas": [],
+   "resumo": "Uma criança é aliciada na internet a cada 45 minutos no Brasil, segundo dados do Tribunal de Contas da União (TCU) apresentados na Comissão de Direitos Humanos (CDH) do Senado nesta segunda-feira (5). Para combater esse e outros crimes, a comissão encerrou um ciclo de debates para avaliar o Plano Nacional de Enfrentamento da Violência contra Crianças e Adolescentes, com foco em reforçar os recursos orçamentários para a capacitação de professores e conselheiros."
+  },
+  {
+   "id": "n-67127eafd3",
+   "titulo": "Confira a agenda dos presidenciáveis nesta terça-feira (6)",
+   "url": "https://agenciabrasil.ebc.com.br/politica/noticia/2026-10/confira-agenda-dos-presidenciaveis-nesta-terca-feira-6",
+   "data": "2026-10-06T13:10+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [],
+   "pessoas": [
+    "luiz-inacio-lula-da-silva",
+    "flavio-bolsonaro"
+   ],
+   "resumo": "Os candidatos que disputam o segundo turno das eleições à Presidência da República participam de reuniões em Brasília e Goiânia nesta terça-feira (6). Flávio Bolsonaro (PL) Participa de reuniões internas de campanha em Brasília. Às 14h, tem encontro com Ronaldo Caiado (PSD) e Daniel Vilela (MDB) em Goiânia. Luiz Inácio Lula da Silva (PT) Participa de reunião de campanha no Palácio da Alvorada pela manhã. Às 11h, reúne-se com líderes no Palácio do Planalto. À tarde, participa de reunião executiva da campanha."
+  },
+  {
+   "id": "n-99c280801c",
+   "titulo": "Projeto amplia transparência sobre dados usados na análise de crédito",
+   "url": "https://www.camara.leg.br/noticias/1304402-projeto-amplia-transparencia-sobre-dados-usados-na-analise-de-credito",
+   "data": "2026-10-06T13:03+00:00",
+   "fonte": "camara",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "Proposta está em análise na Câmara dos Deputados"
+  },
+  {
+   "id": "n-419aa9b8de",
+   "titulo": "Polícia Federal faz ação contra garimpo ilegal no Pará",
+   "url": "https://agenciabrasil.ebc.com.br/direitos-humanos/noticia/2026-10/policia-federal-prende-seis-em-acao-contra-garimpo-ilegal-no-para",
+   "data": "2026-10-06T12:58+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [
+    "pf"
+   ],
+   "pessoas": [],
+   "resumo": "Policiais federais fizeram, nessa segunda-feira (5), uma ação contra garimpo ilegal em Tucumã, no Pará. Segundo a Polícia Federal (PF), a atividade de exploração mineral irregular ocorria em imóvel rural vizinho à Terra Indígena Kayapó. Na ação, foram apreendidas duas escavadeiras hidráulicas, dois motores e dois celulares. Um galpão era usado, no local, como alojamento para os trabalhadores do garimpo. Notícias relacionadas: Estudo revela evolução do garimpo ilegal e novas táticas de exploração. PF já apreendeu mais de R$ 30 milhões em crimes eleitorais em 2026. De acordo com a PF, as condiçõ"
+  },
+  {
+   "id": "n-b0be4b62ad",
+   "titulo": "Bets começam a sair do ar nesta terça-feira",
+   "url": "https://agenciabrasil.ebc.com.br/geral/noticia/2026-10/bets-comecam-sair-do-ar-nesta-terca-feira",
+   "data": "2026-10-06T12:55+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [
+    "agu",
+    "stf"
+   ],
+   "pessoas": [],
+   "resumo": "Os sites e aplicativos de apostas esportivas e jogos online , conhecidos como bets, começam a sair do ar em todo o país nesta terça-feira (6). A medida cumpre o previsto na MP 1.394/2026 , que proibiu a exploração, a oferta, a intermediação e a publicidade dessas atividades no Brasil. O prazo para que os usuários retirassem voluntariamente os recursos mantidos nas plataformas terminou às 23h59 de ontem (5). Notícias relacionadas: MP das Bets: veja o que muda e saiba datas para devolução de valores. Fux pede manifestação da AGU sobre pedido para liberar bets. AGU pede ao STF que declare inconst"
+  },
+  {
+   "id": "n-86720d1b2e",
+   "titulo": "Projeto prevê folga em dobro para trabalhadores que atuarem no Tribunal do Júri",
+   "url": "https://www.camara.leg.br/noticias/1306431-projeto-preve-folga-em-dobro-para-trabalhadores-que-atuarem-no-tribunal-do-juri",
+   "data": "2026-10-06T12:43+00:00",
+   "fonte": "camara",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "Texto está em análise na Câmara dos Deputados"
+  },
+  {
+   "id": "n-542eae1ac5",
+   "titulo": "Áudio: Mais de 33 milhões de eleitores faltaram ao primeiro turno",
+   "url": "https://www12.senado.leg.br/noticias/audios/2026/10/mais-de-33-milhoes-de-eleitores-faltaram-ao-primeiro-turno",
+   "data": "2026-10-06T12:41:00+00:00",
+   "fonte": "senado",
+   "nos": [
+    "tse"
+   ],
+   "pessoas": [],
+   "resumo": "Mais de 33 milhões de eleitores não compareceram às urnas no primeiro turno das eleições. Isso significa 21,08% do eleitorado, o maior índice desde 1998. Entre os maiores de 70 anos, para quem o voto não é obrigatório, a abstenção chegou a 50%. Para o segundo turno, o Tribunal Superior Eleitoral pretende intensificar as ações já realizadas para aumentar o comparecimento dos eleitores, como campanhas com influenciadores digitais. Quem não votou no primeiro turno pode votar normalmente no segundo, marcado para 25 de outubro."
+  },
+  {
+   "id": "n-b883687344",
+   "titulo": "Áudio: Senadores podem iniciar análise da PEC da escala 6x1 esta semana",
+   "url": "https://www12.senado.leg.br/noticias/audios/2026/10/senadores-podem-iniciar-analise-da-pec-da-escala-6x1-esta-semana",
+   "data": "2026-10-06T12:23:00+00:00",
+   "fonte": "senado",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "O Senado pode analisar nesta semana a proposta de emenda à Constituição que acaba com a escala 6x1 — seis dias de trabalho e um de repouso (PEC 221/2019). O texto reduz a jornada laboral de 44 para 40 horas semanais, que podem ser cumpridas em cinco dias de oito horas diárias com repouso semanal remunerado de dois dias. A proposta estabelece dois dias de repouso, um deles preferencialmente aos domingos, sem redução salarial."
+  },
+  {
+   "id": "n-0727262b97",
+   "titulo": "Projeto cria política de promoção da independência financeira das mulheres",
+   "url": "https://www12.senado.leg.br/noticias/materias/2026/10/06/projeto-cria-politica-de-promocao-da-independencia-financeira-das-mulheres",
+   "data": "2026-10-06T12:04:00+00:00",
+   "fonte": "senado",
+   "nos": [],
+   "pessoas": [
+    "ciro-nogueira"
+   ],
+   "resumo": "O Senado vai apreciar um projeto de lei que institui uma política nacional de incentivo à independência financeira das mulheres. O texto estrutura medidas para reduzir a dependência econômica, por meio da capacitação para empreender e do acesso a crédito e aos mercados nacional e internacional. O PL 1.763/2026 dá à iniciativa o nome de Política Nacional Integrada de Autonomia Econômica, Empreendedorismo e Inserção Produtiva de Mulheres (PNIAEF). Na justificativa do projeto, seu autor, o senador Ciro Nogueira (PP-PI), explica que o texto estrutura “medidas para enfrentar um dos principais fator"
+  },
+  {
+   "id": "n-97faf27e94",
+   "titulo": "Conselho de Comunicação Social defende regulação de mercados digitais",
+   "url": "https://www.camara.leg.br/noticias/1309515-conselho-de-comunicacao-social-defende-regulacao-de-mercados-digitais",
+   "data": "2026-10-06T11:19+00:00",
+   "fonte": "camara",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "O Conselho é um órgão consultivo que realiza estudos, emite pareceres e faz recomendações sobre temas de comunicação social a pedido do Congresso ou de parlamentares"
+  },
+  {
+   "id": "n-0bfd4b4395",
+   "titulo": "Senado sedia encontro sobre liderança feminina na administração pública",
+   "url": "https://www12.senado.leg.br/noticias/materias/2026/10/05/senado-sedia-encontro-sobre-lideranca-feminina-na-administracao-publica",
+   "data": "2026-10-05T23:19:00+00:00",
+   "fonte": "senado",
+   "nos": [
+    "congresso"
+   ],
+   "pessoas": [],
+   "resumo": "O Senado promoveu nesta segunda-feira (5) a abertura do 1º Encontro Nacional de Mulheres na Liderança na Administração Pública. O objetivo é formar uma rede com essas lideranças e fortalecer a atuação feminina nos três Poderes, com a consolidação de boas práticas em governança pública e a produção de subsídios para a formulação de políticas de equidade. Na abertura do evento, que aconteceu no Salão Negro do Congresso Nacional, a diretora-geral do Senado, Ilana Trombka, defendeu a presença de mulheres nesses espaços e a importância de se criar ambientes institucionais que facilitem a troca de e"
+  },
+  {
+   "id": "n-33ad948e08",
+   "titulo": "Cresce número de mulheres eleitas para o Congresso Nacional",
+   "url": "https://agenciabrasil.ebc.com.br/politica/noticia/2026-10/cresce-numero-de-mulheres-eleitas-para-o-congresso-nacional",
+   "data": "2026-10-05T23:14+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [
+    "camara",
+    "congresso",
+    "senado"
+   ],
+   "pessoas": [],
+   "resumo": "A bancada feminina na Câmara dos Deputados e no Senado Federal será a maior da história. Na Câmara, o número de mulheres eleitas passou de 90 para 109, um crescimento de 21%. O resultado ocorreu apesar de uma queda no número de candidatas. Em 2022, 3.317 mulheres concorreram ao cargo de deputada federal. Em 2026 foram 2.820, uma diminuição de 24%. Notícias relacionadas: Renovação da Câmara federal chegou a 35%; veja nova composição da Casa. Eleições: abstenção cresce para 21,6% e soma 33 milhões de brasileiros. Entidades denunciam agressões às mulheres que disputam cargos. Para o Senado Federa"
+  },
+  {
+   "id": "n-0d32afdabb",
+   "titulo": "Primeiro videocast do Senado destaca mulheres no topo da gestão pública",
+   "url": "https://www12.senado.leg.br/noticias/materias/2026/10/05/primeiro-videocast-do-senado-destaca-mulheres-no-topo-da-gestao-publica",
+   "data": "2026-10-05T22:47:00+00:00",
+   "fonte": "senado",
+   "nos": [
+    "congresso"
+   ],
+   "pessoas": [],
+   "resumo": "Uma conversa franca sobre poder, escolhas e bastidores com mulheres que estão no topo da administração pública: essa é a proposta do LiderA, primeiro videocast produzido pelo Senado, lançado nesta segunda-feira (5) durante o 1º Encontro Nacional de Mulheres na Liderança na Administração Pública, no Salão Negro do Congresso Nacional. De acordo com a diretora-geral do Senado, Ilana Trombka, o videocast é inovador por colocar no centro da conversa mulheres que administram em alto nível na área pública. — São mulheres que conseguiram se sobrepor aos labirintos da liderança, subiram esses degraus t"
+  },
+  {
+   "id": "n-d734db918d",
+   "titulo": "TSE quer parecer do MP antes de decisão sobre recurso de Garotinho",
+   "url": "https://agenciabrasil.ebc.com.br/justica/noticia/2026-10/tse-quer-parecer-do-mp-antes-de-decisao-sobre-recurso-de-garotinho",
+   "data": "2026-10-05T22:35+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [
+    "tse"
+   ],
+   "pessoas": [],
+   "resumo": "O ministro Floriano de Azevedo Marques, do Tribunal Superior Eleitoral (TSE), concedeu prazo de dois dias para a Procuradoria-Geral Eleitoral (PGE) se manifestar sobre o pedido do candidato ao governo do Rio de Janeiro Anthony Garotinho (Republicanos) para desistir de um recurso apresentado à Corte. Após receber o parecer da procuradoria, o ministro vai decidir a questão. O caso também envolve a possibilidade de o candidato Douglas Ruas (PL) ser declarado eleito no primeiro turno para comandar o governo estadual. Notícias relacionadas: Garotinho desiste de recurso e eleição do RJ pode acabar e"
+  },
+  {
+   "id": "n-7b7a0fa0b6",
+   "titulo": "Série ‘STF Dados”",
+   "url": "https://noticias.stf.jus.br/serie-stf-dados/",
+   "data": "2026-10-05T22:34+00:00",
+   "fonte": "stf",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "Confira as matérias especiais da série ‘STF Dados’"
+  },
+  {
+   "id": "n-db490fc8c6",
+   "titulo": "Confira as matérias especiais da série ‘STF Dados’",
+   "url": "https://noticias.stf.jus.br/confira-as-materias-especiais-da-serie-stf-dados/",
+   "data": "2026-10-05T22:32+00:00",
+   "fonte": "stf",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "O STF Dados é um projeto de jornalismo de dados que busca ampliar a compreensão sobre a atuação do Supremo Tribunal Federal (STF) a partir da análise de informações, estatísticas e séries históricas. Por meio do levantamento e do cruzamento de dados, as reportagens apresentam diferentes aspectos da atividade da Corte de forma acessível, contextualizada e visual. Esta página reúne os conteúdos produzidos pelo projeto, com análises sobre julgamentos, processos e outros temas relacionados ao funcionamento do Supremo. A proposta é transformar números em informação de interesse público, identificar"
+  },
+  {
+   "id": "n-eab386915e",
+   "titulo": "Filho de Arthur Lira se torna o mais jovem deputado federal já eleito",
+   "url": "https://agenciabrasil.ebc.com.br/politica/noticia/2026-10/filho-de-arthur-lira-se-torna-o-mais-jovem-deputado-federal-ja-eleito",
+   "data": "2026-10-05T22:11+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [
+    "camara"
+   ],
+   "pessoas": [
+    "arthur-lira"
+   ],
+   "resumo": "O alagoano Alvinho Lira (PP-AL), filho do ex-presidente da Câmara dos Deputados Arthur Lira (PP-AL), se tornou o deputado federal eleito mais jovem da história do país nas eleições de 2026. Alvinho tem 20 anos e, em 17 de março de 2027, completará 21, a idade mínima para se tornar deputado federal . Até o ano passado, era exigido ter essa idade na data da posse, que está marcada para 1º de fevereiro de 2027. Notícias relacionadas: Mineira de 21 anos é mulher mais jovem a ser eleita deputada federal . População trans amplia representação no Poder Legislativo. Conheça governadores e senadores el"
+  },
+  {
+   "id": "n-74b29d72a3",
+   "titulo": "Representação de parlamentares negros segue baixa, diz pesquisadora",
+   "url": "https://agenciabrasil.ebc.com.br/direitos-humanos/noticia/2026-10/representacao-de-parlamentares-negros-segue-baixa-diz-pesquisadora",
+   "data": "2026-10-05T22:08+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [
+    "camara"
+   ],
+   "pessoas": [],
+   "resumo": "A redução no número de parlamentares pardos e pretos de 139 para 135 na Câmara dos Deputados tem um significado que vai além dos números, para a cientista política Evelyn Apolinária. Segundo a pesquisadora e professora do Centro Universitário de Brasília (Ceub), o dado mais relevante não é a perda de quatro cadeiras, mas sim a sub-representação persistente. Notícias relacionadas: Eleições: abstenção cresce para 21,6% e soma 33 milhões de brasileiros. Quando será o segundo turno das eleições? Veja a data . “Os negros são cerca de metade das candidaturas à Câmara e pouco mais da metade da popula"
+  },
+  {
+   "id": "n-a87f644f60",
+   "titulo": "Agência Senado teve recorde de 3,6 milhões de acessos no domingo",
+   "url": "https://www12.senado.leg.br/noticias/materias/2026/10/05/agencia-senado-teve-recorde-de-3-6-milhoes-de-acessos-no-domingo",
+   "data": "2026-10-05T22:02:00+00:00",
+   "fonte": "senado",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "Durante a cobertura das eleições no domingo (4), o Portal Senado Notícias, que é produzido pela Agência Senado, alcançou 3,6 milhões de acessos. Além da apuração das votações em tempo real, a página especial Eleições 2026 publicou várias reportagens com orientações para os eleitores (sobre como votar e onde encontrar o local de votação, por exemplo). À noite, foram publicados no portal os números finais — do primeiro turno — das votações dos candidatos ao Senado, aos governos dos estados e do Distrito Federal e à Presidência da República. Haverá segundo turno para seis estados, para o Distrito"
+  },
+  {
+   "id": "n-4aa70d035e",
+   "titulo": "Conselho de Comunicação Social defende regulação de mercados digitais",
+   "url": "https://www12.senado.leg.br/noticias/materias/2026/10/05/conselho-de-comunicacao-social-defende-regulacao-de-mercados-digitais",
+   "data": "2026-10-05T21:56:00+00:00",
+   "fonte": "senado",
+   "nos": [
+    "camara",
+    "congresso"
+   ],
+   "pessoas": [
+    "davi-alcolumbre"
+   ],
+   "resumo": "O Conselho de Comunicação Social do Congresso Nacional (CCS) aprovou nesta segunda-feira (5) parecer ao projeto de lei que impõe obrigações especiais de concorrência e transparência às chamadas big techs (PL 4.675/2025). O tema dos mercados digitais será debatido em audiência pública do órgão em 7 de dezembro. O parecer do CCS ao projeto de lei, que tramita atualmente na Câmara dos Deputados, será encaminhado ao presidente do Senado, Davi Alcolumbre. Como o CCS não possui atribuição constitucional de legislar, o texto servirá somente para orientar os parlamentares quando a matéria for apreciad"
+  },
+  {
+   "id": "n-a445ab65c5",
+   "titulo": "Renovação da Câmara federal chegou a 35%; veja nova composição da Casa",
+   "url": "https://agenciabrasil.ebc.com.br/politica/noticia/2026-10/renovacao-da-camara-federal-chegou-35-veja-nova-composicao-da-casa",
+   "data": "2026-10-05T21:29+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [
+    "tse",
+    "camara"
+   ],
+   "pessoas": [],
+   "resumo": "Com base nos dados do Tribunal Superior Eleitoral ( TSE ), a Câmara dos Deputados confirmou que entre os 513 deputados federais eleitos neste domingo (4), 183 vão exercer seu primeiro mandato . Esse número representa uma taxa de renovação de 35,67% dos integrantes da Casa. Os parlamentares representarão os estados e o Distrito Federal na 58ª legislatura, de 1º de fevereiro de 2027 a 31 de janeiro de 2031. Enquanto isso, 301 deputados federais foram reeleitos, o que representa 58,6% do total de parlamentares eleitos titulares nas eleições de outubro de 2022 ou os suplentes que foram efetivados "
+  },
+  {
+   "id": "n-7d115fc7dc",
+   "titulo": "Dólar cai a R$ 5, e bolsa sobe quase 8% após primeiro turno",
+   "url": "https://agenciabrasil.ebc.com.br/economia/noticia/2026-10/dolar-cai-r-5-e-bolsa-sobe-quase-8-apos-primeiro-turno",
+   "data": "2026-10-05T21:24+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [
+    "petrobras"
+   ],
+   "pessoas": [],
+   "resumo": "O mercado financeiro brasileiro reagiu com forte alta nesta segunda-feira (5) ao resultado do primeiro turno das eleições presidenciais. O dólar caiu para a casa dos R$ 5, enquanto o Ibovespa avançou quase 8% e ultrapassou pela primeira vez os 200 mil pontos. No exterior, ativos brasileiros também registraram forte valorização, em meio à percepção de redução do prêmio de risco do país. Notícias relacionadas: Prazo para sacar dinheiro das bets termina nesta segunda. Fenabrave: emplacamentos passam de 500 mil e batem recorde em setembro. Petrobras atinge recorde de valor de mercado após descober"
+  },
+  {
+   "id": "n-1600d6aab9",
+   "titulo": "Polícia Federal apreende R$ 2,8 milhões no primeiro turno das eleições",
+   "url": "https://agenciabrasil.ebc.com.br/politica/noticia/2026-10/policia-federal-apreende-r-28-milhoes-no-primeiro-turno-das-eleicoes",
+   "data": "2026-10-05T21:00+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [
+    "pf"
+   ],
+   "pessoas": [],
+   "resumo": "A Polícia Federal (PF) apreendeu R$ 2,8 milhões durante o primeiro turno das eleições, realizado nesse domingo (4). Do total, R$ 520 mil foram em espécie. O restante foi em forma de bens. A PF atuou na prevenção e repressão de crimes eleitorais. Até as 23h59 do domingo foram instaurados 49 inquéritos policiais e lavrados 100 termos circunstanciados de ocorrência (TCs) para apurar a prática desse tipo de crime. Durante todo o dia, 204 pessoas foram conduzidas a delegacias. Notícias relacionadas: PF investiga uso de broches com câmera para gravar votos. PF já apreendeu mais de R$ 30 milhões em c"
+  },
+  {
+   "id": "n-4f726943ea",
+   "titulo": "Debate na CDH aponta lacunas na capacitação contra violência a crianças",
+   "url": "https://www12.senado.leg.br/noticias/materias/2026/10/05/debate-na-cdh-aponta-lacunas-na-capacitacao-contra-violencia-a-criancas",
+   "data": "2026-10-05T20:58:00+00:00",
+   "fonte": "senado",
+   "nos": [],
+   "pessoas": [
+    "damares-alves"
+   ],
+   "resumo": "Especialistas discutiram nesta segunda-feira (5), na Comissão de Direitos Humanos (CDH) do Senado, a melhoria da capacitação dos profissionais encarregados da implementação do Plano Nacional de Enfrentamento da Violência contra Crianças e Adolescentes. Presidente da CDH e autora do requerimento da audiência, a senadora Damares Alves (Republicanos-DF) afirmou que o Estado precisa estar preparado para identificar esse tipo de violência. Damares defendeu o uso obrigatório do Sistema de Informação para a Infância e Adolescência (Sipia) pelos conselhos tutelares. O Sipia é uma plataforma do governo"
+  },
+  {
+   "id": "n-46b989a668",
+   "titulo": "Mais de 10 milhões de eleitores optam por branco e nulo para deputado federal",
+   "url": "https://www.camara.leg.br/noticias/1309482-mais-de-10-milhoes-de-eleitores-optam-por-branco-e-nulo-para-deputado-federal",
+   "data": "2026-10-05T20:08+00:00",
+   "fonte": "camara",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "O total representa o menor percentual desde 2010 e praticamente a metade do registrado em 2018"
+  },
+  {
+   "id": "n-21d81c5f96",
+   "titulo": "Destaques da semana (28 de setembro a 4 de outubro)",
+   "url": "https://www12.senado.leg.br/noticias/infomaterias/2026/10/destaques-da-semana-28-de-setembro-a-4-de-outubro",
+   "data": "2026-10-05T19:59:00+00:00",
+   "fonte": "senado",
+   "nos": [],
+   "pessoas": [],
+   "resumo": ""
+  },
+  {
+   "id": "n-1dac74e9e3",
+   "titulo": "Bolsonaro pede liberação de visitas de Flávio na prisão domiciliar",
+   "url": "https://agenciabrasil.ebc.com.br/justica/noticia/2026-10/bolsonaro-pede-liberacao-de-visitas-de-flavio-na-prisao-domiciliar",
+   "data": "2026-10-05T19:55+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [
+    "stf"
+   ],
+   "pessoas": [
+    "flavio-bolsonaro"
+   ],
+   "resumo": "O ex-presidente Jair Bolsonaro pediu nesta segunda-feira (5) ao Supremo Tribunal Federal (STF) a liberação das visitas do senador Flávio Bolsonaro (PL) na prisão domiciliar. Na petição encaminhada ao Supremo, a defesa diz que a decisão do ministro Alexandre de Moraes que determinou a suspensão da visitação pelo prazo de 90 dias perde a validade no dia 11 de outubro. Notícias relacionadas: OAB pede que STF autorize comunicação entre Flávio e Jair Bolsonaro. Defesa pede revogação de medidas cautelares contra Jair Bolsonaro. \"Não mais se mostra necessária a manutenção de regime excepcionalmente r"
+  },
+  {
+   "id": "n-54d509601a",
+   "titulo": "Vídeo: Representantes do Parlasul afirmam confiança no sistema eleitoral brasileiro",
+   "url": "https://www12.senado.leg.br/noticias/videos/2026/10/representantes-do-parlasul-afirmam-confianca-no-sistema-eleitoral-brasileiro",
+   "data": "2026-10-05T19:44:00+00:00",
+   "fonte": "senado",
+   "nos": [
+    "tse"
+   ],
+   "pessoas": [],
+   "resumo": "Representantes do Parlamento do Mercosul (Parlasul) acompanharam o primeiro turno das eleições na sede do Tribunal Superior Eleitoral (TSE), em Brasília. Em entrevista, eles afirmaram confiar no sistema eletrônico de votação do Brasil e defenderam a união de países do bloco."
+  },
+  {
+   "id": "n-45c77411e8",
+   "titulo": "Vídeo: Senado terá nova composição partidária em 2027; veja como ficam as bancadas",
+   "url": "https://www12.senado.leg.br/noticias/videos/2026/10/senado-tera-nova-composicao-partidaria-em-2027-veja-como-ficam-as-bancadas",
+   "data": "2026-10-05T19:31:00+00:00",
+   "fonte": "senado",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "As eleições de 2026 vão alterar a composição partidária do Senado a partir de 2027. O PL passa de 15 para 28 senadores e terá a maior bancada. O PT permanece com 9 integrantes, enquanto o MDB passa de 10 para oito. O PSD registra a maior redução, de 13 para 5 senadores. União Brasil sobe de 5 para 6, e o Novo passa de 1 para três. A Rede, atualmente sem representação no Senado, terá um integrante na próxima legislatura."
+  },
+  {
+   "id": "n-899f236798",
+   "titulo": "Votação em SP registra índice de abstenção de 22,5% no primeiro turno",
+   "url": "https://agenciabrasil.ebc.com.br/politica/noticia/2026-10/votacao-em-sp-registra-indice-de-abstencao-de-225-no-primeiro-turno",
+   "data": "2026-10-05T19:13+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [
+    "tse"
+   ],
+   "pessoas": [],
+   "resumo": "O primeiro turno das Eleições Gerais de 2026 registrou taxa de abstenção de 22,5% no estado de São Paulo, de acordo com dados divulgados pelo Tribunal Superior Eleitoral (TSE). O percentual no estado é superior à média nacional, que registrou abstenção de 21,6% . Os números indicam que dos mais de 34,1 milhões de eleitores aptos a comparecer às urnas, cerca de 7,6 milhões não votaram no domingo (4). A ausência foi ainda maior na capital paulista, onde 23,4% do eleitorado faltou à votação, somando mais de 2,1 milhões de cidadãos. Notícias relacionadas: Eleições 2026: veja quem são os deputados "
+  },
+  {
+   "id": "n-1fcd75be81",
+   "titulo": "Garotinho desiste de recurso e eleição do RJ pode acabar em 1º turno",
+   "url": "https://agenciabrasil.ebc.com.br/politica/noticia/2026-10/garotinho-desiste-de-recurso-e-eleicao-do-rj-pode-acabar-em-1o-turno",
+   "data": "2026-10-05T19:11+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [
+    "tse"
+   ],
+   "pessoas": [],
+   "resumo": "O candidato ao governo do Rio de Janeiro Anthony Garotinho (Republicanos) anunciou, nesta segunda-feira (5), que desistiu do recurso que mantinha no Tribunal Superior Eleitoral (TSE) para se manter na disputa . A decisão foi anunciada pelo próprio candidato, o terceiro mais votado na eleição de domingo (4). Com o movimento, Garotinho abre caminho para que Douglas Ruas (PL) alcance a marca de mais de 50% dos votos válidos, o que resultaria em vitória já no primeiro turno. O segundo colocado foi o ex-prefeito do Rio de Janeiro Eduardo Paes (PSD). Notícias relacionadas: TSE decide que votos para "
+  },
   {
    "id": "n-8c66483b76",
    "titulo": "Confira o número de reeleitos, deputados de primeiro mandato e ex-deputados que voltam à Câmara",
