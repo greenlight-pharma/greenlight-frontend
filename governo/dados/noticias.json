@@ -1,6 +1,6 @@
 {
  "meta": {
-  "gerado_em": "2026-10-07T17:24+00:00",
+  "gerado_em": "2026-10-08T17:21+00:00",
   "gerado_por": "scripts/governo/agentes/agente_noticias.py",
   "janela_dias": 90,
   "fontes": [
@@ -30,13 +30,13 @@
     "url": "https://www.gov.br/planalto/pt-br/acompanhe-o-planalto/noticias/RSS"
    }
   ],
-  "total_artigos": 1844,
-  "artigos_com_no": 595,
-  "novos_nesta_rodada": 65,
+  "total_artigos": 1908,
+  "artigos_com_no": 613,
+  "novos_nesta_rodada": 68,
   "artigos_por_fonte": {
-   "senado": 733,
-   "agenciabrasil": 632,
-   "camara": 442,
+   "senado": 748,
+   "camara": 454,
+   "agenciabrasil": 669,
    "stf": 7,
    "planalto": 30
   },
@@ -45,207 +45,207 @@
  },
  "resumo": [
   {
-   "texto": "A Agência Nacional do Petróleo, Gás Natural e Biocombustíveis arrematou sete dos 13 blocos ofertados no 4º Ciclo da Oferta Permanente de Partilha de Produção no pré-sal.",
-   "artigo_id": "n-b474940ec2",
-   "no_id": "anp"
+   "texto": "O Tribunal Superior Eleitoral anulou os votos de Anthony Garotinho (Republicanos) no primeiro turno da eleição para o governo do Rio de Janeiro, por 5 votos a 2, resultado que deu a vitória a Ruas no primeiro turno.",
+   "artigo_id": "n-1bb88b9b01",
+   "no_id": "tse"
   },
   {
-   "texto": "A Agência Nacional de Energia Elétrica adiou por 60 dias, após pedido de vista, o julgamento sobre a suspensão do contrato de concessão com a Enel SP.",
-   "artigo_id": "n-a3aa92fd20",
-   "no_id": "aneel"
+   "texto": "O Supremo Tribunal Federal decidiu que os créditos presumidos de ICMS não integram a base de cálculo do PIS e da Cofins.",
+   "artigo_id": "n-269ba8a944",
+   "no_id": "stf"
   },
   {
-   "texto": "O Conselho Nacional de Justiça e o Banco Central assinaram acordo para criar regras mais rígidas na concessão de créditos de precatórios.",
+   "texto": "O Conselho Nacional de Justiça e o Banco Central assinaram acordo para estabelecer regras mais rígidas na concessão de créditos de precatórios.",
    "artigo_id": "n-2bb32421cd",
    "no_id": "cnj"
   },
   {
-   "texto": "O Tribunal Superior Eleitoral julga na quinta-feira o pedido de desistência de recurso de Anthony Garotinho, que pode definir a eleição para o governo do Rio de Janeiro.",
-   "artigo_id": "n-b5600c2d5d",
-   "no_id": "tse"
+   "texto": "A Agência Nacional do Petróleo, Gás Natural e Biocombustíveis arrecadou R$ 3 bilhões em bônus de assinatura no 6º ciclo da Oferta Permanente de Concessão, com a venda de 49 blocos.",
+   "artigo_id": "n-19f335fbd3",
+   "no_id": "anp"
   }
  ],
  "ranking": {
   "orgaos": [
    {
     "id": "tse",
-    "artigos": 113,
-    "peso": 64.37087723043498,
-    "ultima": "2026-10-07T00:43+00:00"
+    "artigos": 120,
+    "peso": 67.4806632533031,
+    "ultima": "2026-10-08T16:49+00:00"
    },
    {
     "id": "stf",
-    "artigos": 93,
-    "peso": 52.510302242314324,
-    "ultima": "2026-10-06T21:29+00:00"
+    "artigos": 96,
+    "peso": 53.52279045062458,
+    "ultima": "2026-10-08T10:46+00:00"
    },
    {
     "id": "camara",
     "artigos": 61,
-    "peso": 31.25425078142542,
+    "peso": 31.54148821371194,
     "ultima": "2026-10-06T21:57:00+00:00"
    },
    {
     "id": "congresso",
     "artigos": 55,
-    "peso": 29.309584606992345,
+    "peso": 29.531873426164715,
     "ultima": "2026-10-07T16:51:00+00:00"
    },
    {
-    "id": "caixa",
-    "artigos": 32,
-    "peso": 18.67341772151899,
-    "ultima": "2026-10-07T00:38+00:00"
+    "id": "pf",
+    "artigos": 34,
+    "peso": 19.03226301527543,
+    "ultima": "2026-10-08T13:23+00:00"
    },
    {
-    "id": "pf",
-    "artigos": 32,
-    "peso": 18.1909786381612,
-    "ultima": "2026-10-07T10:35+00:00"
+    "id": "caixa",
+    "artigos": 33,
+    "peso": 18.823318385650225,
+    "ultima": "2026-10-08T10:02+00:00"
    },
    {
     "id": "prf",
     "artigos": 9,
-    "peso": 16.881281249820116,
+    "peso": 17.22298553991511,
     "ultima": "2026-10-01T23:06+00:00"
    },
    {
     "id": "mte",
     "artigos": 4,
-    "peso": 14.043966244725738,
+    "peso": 14.43121076233184,
     "ultima": "2026-10-06T23:51+00:00"
+   },
+   {
+    "id": "mec",
+    "artigos": 24,
+    "peso": 13.538109028116782,
+    "ultima": "2026-10-08T14:00+00:00"
    },
    {
     "id": "anvisa",
     "artigos": 23,
-    "peso": 13.51155079602987,
+    "peso": 13.268921238855134,
     "ultima": "2026-10-06T14:53+00:00"
-   },
-   {
-    "id": "mec",
-    "artigos": 22,
-    "peso": 12.525973922767566,
-    "ultima": "2026-10-07T10:05+00:00"
    },
    {
     "id": "inpe",
     "artigos": 1,
-    "peso": 12.293333333333333,
+    "peso": 12.72,
     "ultima": "2026-08-06T22:13:00+00:00"
+   },
+   {
+    "id": "petrobras",
+    "artigos": 22,
+    "peso": 12.36814944485744,
+    "ultima": "2026-10-08T00:12+00:00"
    },
    {
     "id": "inss",
     "artigos": 19,
-    "peso": 12.28041003021931,
+    "peso": 12.306841372400768,
     "ultima": "2026-10-01T20:17+00:00"
-   },
-   {
-    "id": "petrobras",
-    "artigos": 21,
-    "peso": 12.01321083806794,
-    "ultima": "2026-10-07T10:20+00:00"
    },
    {
     "id": "agu",
     "artigos": 18,
-    "peso": 10.423390954461468,
+    "peso": 10.207021414354575,
     "ultima": "2026-10-06T22:37+00:00"
+   },
+   {
+    "id": "ms",
+    "artigos": 17,
+    "peso": 9.726013394918535,
+    "ultima": "2026-10-08T16:07+00:00"
    },
    {
     "id": "tcu",
     "artigos": 17,
-    "peso": 9.457064670789416,
+    "peso": 9.514193164744146,
     "ultima": "2026-10-07T10:38+00:00"
    },
    {
-    "id": "ms",
+    "id": "ibge",
     "artigos": 16,
-    "peso": 9.265927641661653,
-    "ultima": "2026-10-07T11:37+00:00"
+    "peso": 9.066214239466683,
+    "ultima": "2026-10-07T22:39+00:00"
    },
    {
-    "id": "ibge",
+    "id": "anp",
     "artigos": 15,
-    "peso": 8.672758043069061,
-    "ultima": "2026-10-02T12:50+00:00"
+    "peso": 8.585206220030642,
+    "ultima": "2026-10-08T00:12+00:00"
    },
    {
     "id": "tst",
     "artigos": 15,
-    "peso": 8.601976823971219,
+    "peso": 8.524963060394184,
     "ultima": "2026-09-29T23:40+00:00"
    },
    {
     "id": "inep",
     "artigos": 14,
-    "peso": 8.16962025316456,
+    "peso": 7.98565022421525,
     "ultima": "2026-10-02T19:46+00:00"
    },
    {
-    "id": "anp",
-    "artigos": 14,
-    "peso": 8.098839034066717,
-    "ultima": "2026-10-07T16:11+00:00"
+    "id": "stj",
+    "artigos": 11,
+    "peso": 6.754446396081524,
+    "ultima": "2026-10-07T23:14+00:00"
    },
    {
     "id": "mpf",
     "artigos": 11,
-    "peso": 6.338580827879187,
+    "peso": 6.21419630224695,
     "ultima": "2026-09-29T23:40+00:00"
-   },
-   {
-    "id": "stj",
-    "artigos": 10,
-    "peso": 6.256726197029766,
-    "ultima": "2026-09-30T18:25+00:00"
    },
    {
     "id": "senado",
     "artigos": 7,
-    "peso": 5.339034308952403,
+    "peso": 5.343450346694061,
     "ultima": "2026-10-05T23:14+00:00"
    },
    {
     "id": "cnj",
-    "artigos": 8,
-    "peso": 4.5879479164867805,
-    "ultima": "2026-10-06T23:48+00:00"
+    "artigos": 9,
+    "peso": 5.073389127359057,
+    "ultima": "2026-10-07T19:31+00:00"
    },
    {
     "id": "cvm",
     "artigos": 7,
-    "peso": 4.335654963056303,
+    "peso": 4.262950159024911,
     "ultima": "2026-09-27T18:52+00:00"
    },
    {
     "id": "aneel",
     "artigos": 6,
-    "peso": 3.3404527949988774,
+    "peso": 3.3019352053907585,
     "ultima": "2026-10-07T10:38+00:00"
+   },
+   {
+    "id": "dpu",
+    "artigos": 5,
+    "peso": 3.0016566648640994,
+    "ultima": "2026-10-07T17:43+00:00"
    },
    {
     "id": "anac",
     "artigos": 5,
-    "peso": 2.9273468137824676,
+    "peso": 2.9414135052276396,
     "ultima": "2026-09-23T14:04+00:00"
    },
    {
     "id": "inmet",
     "artigos": 5,
-    "peso": 2.9177215189873418,
+    "peso": 2.852017937219731,
     "ultima": "2026-10-07T11:15+00:00"
    },
    {
     "id": "ebc",
     "artigos": 5,
-    "peso": 2.9177215189873418,
+    "peso": 2.852017937219731,
     "ultima": "2026-10-02T23:34+00:00"
-   },
-   {
-    "id": "cmn",
-    "artigos": 5,
-    "peso": 2.9177215189873418,
-    "ultima": "2026-09-30T17:48+00:00"
    }
   ],
   "pessoas": [
@@ -260,9 +260,9 @@
     "uf": null,
     "foto": "https://commons.wikimedia.org/wiki/Special:FilePath/Foto_oficial_de_Luiz_In%C3%A1cio_Lula_da_Silva_%28estreita%29.jpg?width=160",
     "foto_fonte": "https://www.wikidata.org/wiki/Q37181",
-    "artigos": 50,
-    "peso": 40.092564375274755,
-    "ultima": "2026-10-07T12:35+00:00"
+    "artigos": 54,
+    "peso": 42.43835410617247,
+    "ultima": "2026-10-08T11:54+00:00"
    },
    {
     "id": "flavio-bolsonaro",
@@ -275,9 +275,9 @@
     "uf": "RJ",
     "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador5894.jpg",
     "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/5894",
-    "artigos": 26,
-    "peso": 14.77011932926935,
-    "ultima": "2026-10-07T12:35+00:00"
+    "artigos": 30,
+    "peso": 16.810891825136096,
+    "ultima": "2026-10-08T11:54+00:00"
    },
    {
     "id": "nunes-marques",
@@ -290,9 +290,9 @@
     "uf": null,
     "foto": "https://commons.wikimedia.org/wiki/Special:FilePath/Nunes_Marques%2C_February_2025_%28cropped%29.jpg?width=160",
     "foto_fonte": "https://www.wikidata.org/wiki/Q99831978",
-    "artigos": 26,
-    "peso": 14.689712815376385,
-    "ultima": "2026-10-05T16:01:00+00:00"
+    "artigos": 28,
+    "peso": 15.609841490611743,
+    "ultima": "2026-10-08T16:49+00:00"
    },
    {
     "id": "davi-alcolumbre",
@@ -305,9 +305,9 @@
     "uf": "AP",
     "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador3830.jpg",
     "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/3830",
-    "artigos": 27,
-    "peso": 13.906346382993418,
-    "ultima": "2026-10-07T12:25:00+00:00"
+    "artigos": 29,
+    "peso": 15.035625044962947,
+    "ultima": "2026-10-08T13:45:00+00:00"
    },
    {
     "id": "damares-alves",
@@ -321,7 +321,7 @@
     "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador6335.jpg",
     "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/6335",
     "artigos": 26,
-    "peso": 13.08158253751705,
+    "peso": 13.264171122994647,
     "ultima": "2026-10-05T20:58:00+00:00"
    },
    {
@@ -336,7 +336,7 @@
     "foto": "https://commons.wikimedia.org/wiki/Special:FilePath/Luiz_Edson_Fachin-12-05.2015.jpg?width=160",
     "foto_fonte": "https://www.wikidata.org/wiki/Q10320705",
     "artigos": 15,
-    "peso": 8.592351529176094,
+    "peso": 8.435567492386276,
     "ultima": "2026-10-02T19:13+00:00"
    },
    {
@@ -351,7 +351,7 @@
     "foto": "https://www.camara.leg.br/internet/deputado/bandep/160674.jpg",
     "foto_fonte": "https://www.camara.leg.br/deputados/160674",
     "artigos": 12,
-    "peso": 7.693910230688982,
+    "peso": 7.773766166458572,
     "ultima": "2026-10-07T14:30+00:00"
    },
    {
@@ -365,9 +365,9 @@
     "uf": "RS",
     "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador825.jpg",
     "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/825",
-    "artigos": 13,
-    "peso": 6.540791268758529,
-    "ultima": "2026-09-29T16:37:00+00:00"
+    "artigos": 15,
+    "peso": 7.652406417112298,
+    "ultima": "2026-10-07T19:54:00+00:00"
    },
    {
     "id": "omar-aziz",
@@ -381,7 +381,7 @@
     "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador5525.jpg",
     "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/5525",
     "artigos": 12,
-    "peso": 6.037653478854026,
+    "peso": 6.121925133689839,
     "ultima": "2026-10-06T22:54:00+00:00"
    },
    {
@@ -396,7 +396,7 @@
     "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador345.jpg",
     "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/345",
     "artigos": 10,
-    "peso": 5.0313778990450215,
+    "peso": 5.101604278074866,
     "ultima": "2026-09-25T18:03:00+00:00"
    },
    {
@@ -411,7 +411,7 @@
     "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador5376.jpg",
     "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/5376",
     "artigos": 10,
-    "peso": 5.0313778990450215,
+    "peso": 5.101604278074866,
     "ultima": "2026-09-23T18:20:00+00:00"
    },
    {
@@ -426,7 +426,7 @@
     "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador5352.jpg",
     "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/5352",
     "artigos": 10,
-    "peso": 5.0313778990450215,
+    "peso": 5.101604278074866,
     "ultima": "2026-09-14T16:27:00+00:00"
    },
    {
@@ -441,7 +441,7 @@
     "foto": "https://www.camara.leg.br/internet/deputado/bandep/220645.jpg",
     "foto_fonte": "https://www.camara.leg.br/deputados/220645",
     "artigos": 8,
-    "peso": 4.8387927529608055,
+    "peso": 4.773110586832399,
     "ultima": "2026-10-05T17:44+00:00"
    },
    {
@@ -456,7 +456,7 @@
     "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador5990.jpg",
     "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/5990",
     "artigos": 9,
-    "peso": 4.528240109140519,
+    "peso": 4.59144385026738,
     "ultima": "2026-09-04T21:56:00+00:00"
    },
    {
@@ -471,7 +471,7 @@
     "foto": null,
     "foto_fonte": null,
     "artigos": 8,
-    "peso": 4.507541402593815,
+    "peso": 4.44274238027865,
     "ultima": "2026-10-06T21:29+00:00"
    },
    {
@@ -486,8 +486,38 @@
     "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador6009.jpg",
     "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/6009",
     "artigos": 8,
-    "peso": 4.025102319236017,
+    "peso": 4.081283422459894,
     "ultima": "2026-09-23T18:51:00+00:00"
+   },
+   {
+    "id": "teresa-leitao",
+    "nome": "Teresa Leitão",
+    "nome_completo": "Maria Teresa Leitão de Melo",
+    "cargo": "Senadora, PE",
+    "no_id": "senado",
+    "poder": "legislativo",
+    "partido": "PT",
+    "uf": "PE",
+    "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador6338.jpg",
+    "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/6338",
+    "artigos": 7,
+    "peso": 3.571122994652407,
+    "ultima": "2026-10-08T12:29:00+00:00"
+   },
+   {
+    "id": "confucio-moura",
+    "nome": "Confúcio Moura",
+    "nome_completo": "Confúcio Aires Moura",
+    "cargo": "Senador, RO",
+    "no_id": "senado",
+    "poder": "legislativo",
+    "partido": "MDB",
+    "uf": "RO",
+    "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador475.jpg",
+    "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/475",
+    "artigos": 7,
+    "peso": 3.571122994652407,
+    "ultima": "2026-10-07T19:20:00+00:00"
    },
    {
     "id": "izalci-lucas",
@@ -501,7 +531,7 @@
     "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador4770.jpg",
     "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/4770",
     "artigos": 7,
-    "peso": 3.5219645293315143,
+    "peso": 3.571122994652407,
     "ultima": "2026-09-25T21:09:00+00:00"
    },
    {
@@ -516,7 +546,7 @@
     "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador5917.jpg",
     "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/5917",
     "artigos": 7,
-    "peso": 3.5219645293315143,
+    "peso": 3.571122994652407,
     "ultima": "2026-09-02T19:51:00+00:00"
    },
    {
@@ -531,7 +561,7 @@
     "foto": "https://www.camara.leg.br/internet/deputado/bandep/74161.jpg",
     "foto_fonte": "https://www.camara.leg.br/deputados/74161",
     "artigos": 6,
-    "peso": 3.3500780897940037,
+    "peso": 3.391330773398667,
     "ultima": "2026-10-06T22:54:00+00:00"
    },
    {
@@ -546,38 +576,8 @@
     "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador6336.jpg",
     "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/6336",
     "artigos": 6,
-    "peso": 3.0188267394270123,
+    "peso": 3.0609625668449203,
     "ultima": "2026-09-30T15:55:00+00:00"
-   },
-   {
-    "id": "teresa-leitao",
-    "nome": "Teresa Leitão",
-    "nome_completo": "Maria Teresa Leitão de Melo",
-    "cargo": "Senadora, PE",
-    "no_id": "senado",
-    "poder": "legislativo",
-    "partido": "PT",
-    "uf": "PE",
-    "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador6338.jpg",
-    "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/6338",
-    "artigos": 6,
-    "peso": 3.0188267394270123,
-    "ultima": "2026-09-10T18:45:00+00:00"
-   },
-   {
-    "id": "confucio-moura",
-    "nome": "Confúcio Moura",
-    "nome_completo": "Confúcio Aires Moura",
-    "cargo": "Senador, RO",
-    "no_id": "senado",
-    "poder": "legislativo",
-    "partido": "MDB",
-    "uf": "RO",
-    "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador475.jpg",
-    "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/475",
-    "artigos": 6,
-    "peso": 3.0188267394270123,
-    "ultima": "2026-09-01T22:31:00+00:00"
    },
    {
     "id": "alan-rick",
@@ -591,7 +591,7 @@
     "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador5672.jpg",
     "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/5672",
     "artigos": 5,
-    "peso": 2.5156889495225103,
+    "peso": 2.5508021390374336,
     "ultima": "2026-10-07T13:32:00+00:00"
    },
    {
@@ -606,12 +606,732 @@
     "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador5985.jpg",
     "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/5985",
     "artigos": 5,
-    "peso": 2.5156889495225103,
+    "peso": 2.5508021390374336,
     "ultima": "2026-09-22T14:16:00+00:00"
    }
   ]
  },
  "artigos": [
+  {
+   "id": "n-908caf9213",
+   "titulo": "Vídeo: Acompanhe ao vivo: sessão deliberativa ordinária – 8/10/26",
+   "url": "https://www12.senado.leg.br/noticias/videos/2026/10/acompanhe-ao-vivo-sessao-deliberativa-ordinaria-2013-8-10-26",
+   "data": "2026-10-08T17:01:00+00:00",
+   "fonte": "senado",
+   "nos": [],
+   "pessoas": [],
+   "resumo": ""
+  },
+  {
+   "id": "n-e580f35c9b",
+   "titulo": "Projeto proíbe anúncios em planos pagos de streaming contratados sem publicidade",
+   "url": "https://www.camara.leg.br/noticias/1305837-projeto-proibe-anuncios-em-planos-pagos-de-streaming-contratados-sem-publicidade",
+   "data": "2026-10-08T16:59+00:00",
+   "fonte": "camara",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "A inclusão de comerciais em planos originalmente sem anúncios passará a ser considerada prática abusiva"
+  },
+  {
+   "id": "n-14c1f66bf3",
+   "titulo": "TSE adia julgamento sobre candidatura de Deltan Dallagnol ao Senado",
+   "url": "https://agenciabrasil.ebc.com.br/justica/noticia/2026-10/tse-adia-julgamento-sobre-candidatura-de-deltan-dallagnol-ao-senado",
+   "data": "2026-10-08T16:49+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [
+    "tse"
+   ],
+   "pessoas": [
+    "nunes-marques"
+   ],
+   "resumo": "O Tribunal Superior Eleitoral (TSE) adiou nesta quinta-feira (8) o julgamento sobre a validade do registro de candidatura Deltan Dallagnol (Novo) ao Senado pelo Paraná. O adiamento atende a um pedido da defesa do ex-procurador da República . Uma nova data de julgamento ainda deverá ser definida. Notícias relacionadas: Decisão de Nunes Marques recoloca Deltan na disputa pelo Senado no PR. Deltan obteve 2.904.594 votos (25,14%) no primeiro turno das eleições, realizado no último domingo (4), e garantiu a segunda cadeira do estado no Senado. Ex-procurador da Operação Lava Jato, o candidato foi al"
+  },
+  {
+   "id": "n-1bb88b9b01",
+   "titulo": "TSE anula votos de Garotinho, e Ruas vence governo do Rio no 1º turno",
+   "url": "https://agenciabrasil.ebc.com.br/justica/noticia/2026-10/tse-anula-votos-de-garotinho-e-ruas-vence-governo-do-rio-no-1o-turno",
+   "data": "2026-10-08T16:11+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [
+    "tse"
+   ],
+   "pessoas": [],
+   "resumo": "O plenário do Tribunal Superior Eleitoral (TSE) decidiu anular os votos recebidos pelo candidato ao governo do Rio de Janeiro Anthony Garotinho (Republicanos) no último domingo (4), primeiro turno das eleições majoritárias . A sessão desta quinta-feira (8) terminou com 5 votos a 2. Pela decisão da maioria, deve ocorrer a retotalização dos votos válidos, excluindo-se da conta os direcionados a Garotinho. Notícias relacionadas: MPE dá parecer favorável à desistência de recurso de Garotinho no TSE. TSE quer parecer do MP antes de decisão sobre recurso de Garotinho. Garotinho desiste de recurso e "
+  },
+  {
+   "id": "n-b109f496ec",
+   "titulo": "Aedes aegypti: quase metade dos municípios está em alerta ou risco",
+   "url": "https://agenciabrasil.ebc.com.br/saude/noticia/2026-10/aedes-aegypti-quase-metade-dos-municipios-esta-em-alerta-ou-risco",
+   "data": "2026-10-08T16:07+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [
+    "ms"
+   ],
+   "pessoas": [],
+   "resumo": "O resultado do 2º ciclo do Levantamento Rápido de Índices para Aedes aegypti (LIRAa) mostra que, dos 3.732 municípios que encaminharam dados ao governo federal, quase metade (49,2%) apresentou índices que indicam situação de alerta ou de risco para a presença do mosquito transmissor das seguintes doenças: dengue, da chikungunya e da zika. O levantamento, realizado nos meses de maio a agosto, foi divulgado pelo Ministério da Saúde nesta quarta-feira (7) e mostra que apesar do alerta de infestação, os dados de infecções apresentaram melhora significativa em relação ao ano anterior. Notícias rela"
+  },
+  {
+   "id": "n-aa724bebfd",
+   "titulo": "Deputada federal eleita Ana Elisa denuncia ameaças durante a campanha",
+   "url": "https://agenciabrasil.ebc.com.br/politica/noticia/2026-10/deputada-federal-eleita-ana-elisa-denuncia-ameacas-durante-campanha",
+   "data": "2026-10-08T16:01+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [],
+   "pessoas": [
+    "arthur-lira"
+   ],
+   "resumo": "A deputada federal eleita por Minas Gerais Ana Elisa Santos Silva (PT), de 21 anos , denunciou à Polícia Civil ameaças de morte e violência sexual que recebeu no período da campanha. Segundo a parlamentar eleita, as mensagens incluem ataques machistas, racistas e ameaças de estupro. Além disso, ela conta que dados pessoais como o endereço residencial, número de telefone e documentos foram expostos . Por esse motivo, o partido contratou segurança armada para protegê-la. Notícias relacionadas: Mineira de 21 anos é mulher mais jovem a ser eleita deputada federal . Filho de Arthur Lira se torna o "
+  },
+  {
+   "id": "n-7fb4de025f",
+   "titulo": "Outubro Rosa: tratamento termina, mas medo do câncer pode permanecer",
+   "url": "https://agenciabrasil.ebc.com.br/saude/noticia/2026-10/outubro-rosa-tratamento-termina-mas-medo-do-cancer-pode-permanecer",
+   "data": "2026-10-08T15:59+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "As campanhas do Outubro Rosa são tradicionalmente marcadas por informações sobre prevenção, diagnóstico e tratamento do câncer de mama. Mas existe outra dimensão menos falada: quando o tratamento termina, o medo de a doenças voltar assombra muitas mulheres. “Enquanto familiares e amigos celebram a remissão e esperam que a vida volte ao normal, a mulher pode continuar convivendo com medos, inseguranças e transformações que não desaparecem com o fim do tratamento”, escreve, em artigo, a psicóloga clínica Laís Mutuberria Vieira. Psicóloga Laís Mutuberria Vieira diz que pacientes precisam também d"
+  },
+  {
+   "id": "n-cee4fd41bb",
+   "titulo": "Calderano vence 3ª e terá Félix Lebrun pela frente no Smash China",
+   "url": "https://agenciabrasil.ebc.com.br/esportes/noticia/2026-10/calderano-vence-3a-e-tera-felix-lebrun-pela-frente-no-smash-china",
+   "data": "2026-10-08T15:50+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "Número 6 do mundo, o mesatenista brasileiro fez valer seu favoritismo nesta quinta-feira (8) ao derrotar o alemão Patrick Franziska (22º no ranking) e avançar as quartas de final do China Smash, torneio com maior pontuação (2.000) no circuito mundial. Calderano sobrou diante do adversário com vitória por 3 sets a 0, com parciais de 11/2, 11/5/ e 11/7). O próximo embate será contra um velho conhecido do brasileiro, o francês Félix Lebrun, vice-líder do ranking mundial, que superou hoje o croata Tomislav Pucar (30º) também por 3 sets a 0 (11/9, 12/10 e 11/5). O dia e o horário da partida ainda n"
+  },
+  {
+   "id": "n-1efc2a4d22",
+   "titulo": "Áudio: Senadores analisarão medidas de prevenção ao assoreamento de rios",
+   "url": "https://www12.senado.leg.br/noticias/audios/2026/10/senadores-analisarao-medidas-de-prevencao-ao-assoreamento-de-rios",
+   "data": "2026-10-08T15:26:00+00:00",
+   "fonte": "senado",
+   "nos": [],
+   "pessoas": [
+    "eliziane-gama"
+   ],
+   "resumo": "A Comissão de Meio Ambiente (CMA) analisará o projeto que cria a Política Nacional de Prevenção ao Assoreamento de Rios (PL 4.488/2023), com medidas para combater a erosão do solo e recompor as matas ciliares. O texto prevê a criação de um cadastro nacional de áreas degradadas. Relatora, a senadora Eliziane Gama disse que a proposta busca soluções para processos que comprometem a estabilidade do solo e dos sistemas hídricos. Um debate ainda será realizado antes da votação (REQ 14/2026-CMA)."
+  },
+  {
+   "id": "n-4970db1bc2",
+   "titulo": "Projeto cria programa para identificar talentos esportivos em áreas remotas e vulneráveis",
+   "url": "https://www.camara.leg.br/noticias/1309561-projeto-cria-programa-para-identificar-talentos-esportivos-em-areas-remotas-e-vulneraveis",
+   "data": "2026-10-08T14:29+00:00",
+   "fonte": "camara",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "Texto está em análise na Câmara dos Deputados"
+  },
+  {
+   "id": "n-0308661ea2",
+   "titulo": "Áudio: Pará e MT podem ganhar Região Integrada de Desenvolvimento do Araguaia-Xingu",
+   "url": "https://www12.senado.leg.br/noticias/audios/2026/10/para-e-mt-podem-ganhar-regiao-integrada-de-desenvolvimento-do-araguaia-xingu",
+   "data": "2026-10-08T14:18:00+00:00",
+   "fonte": "senado",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "O Senado pode analisar um projeto de lei complementar que autoriza a União a criar a Região Integrada de Desenvolvimento (Ride) do Araguaia-Xingu, com abrangência em 15 municípios na região da divisa entre Pará e Mato Grosso (PLP 174/2026). O objetivo da Ride é harmonizar ações do poder público em diversas áreas, como saúde, educação, transporte, energia, meio ambiente, conectividade, agricultura e meio ambiente."
+  },
+  {
+   "id": "n-f561025154",
+   "titulo": "Não votou no primeiro turno? Você pode votar no segundo; saiba as regras",
+   "url": "https://www12.senado.leg.br/noticias/materias/2026/10/08/nao-votou-no-primeiro-turno-voce-pode-votar-no-segundo-saiba-as-regras",
+   "data": "2026-10-08T14:00:00+00:00",
+   "fonte": "senado",
+   "nos": [
+    "tse"
+   ],
+   "pessoas": [],
+   "resumo": "Os mais de 33,4 milhões de eleitores que não compareceram às urnas no primeiro turno das eleições, realizado no último domingo (4), poderão votar normalmente no segundo turno, marcado para 25 de outubro. Isso porque, segundo o Tribunal Superior Eleitoral (TSE), cada turno é considerado uma eleição independente. Assim, a ausência na primeira etapa da votação não impede a participação na segunda, desde que o eleitor esteja em situação regular com a Justiça Eleitoral, ou seja, com o título eleitoral não cancelado nem suspenso. No primeiro turno, cerca de 125,2 milhões de brasileiros compareceram "
+  },
+  {
+   "id": "n-e94a97af42",
+   "titulo": "Enem 2026: inscrito automaticamente deve escolher idioma da prova",
+   "url": "https://agenciabrasil.ebc.com.br/educacao/noticia/2026-10/enem-2026-inscrito-automaticamente-deve-escolher-idioma-da-prova",
+   "data": "2026-10-08T14:00+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [
+    "mec"
+   ],
+   "pessoas": [],
+   "resumo": "Os inscritos automaticamente no Exame Nacional do Ensino Médio (Enem) 2026 deverão, obrigatoriamente, selecionar até 18 de outubro o idioma de preferência para a prova de língua estrangeira. As opções são inglês ou espanhol. A inscrição automática no Enem 2026 contemplou os estudantes concluintes do ensino médio da rede pública em 2026, pela primeira vez. O procedimento foi realizado com base nos dados enviados pelas redes de ensino ao Ministério da Educação (MEC). Notícias relacionadas: Cartilha reúne orientações para a redação do Enem 2026. Plataforma Enem Libras ganha atualização com provas"
+  },
+  {
+   "id": "n-9bf1e425fa",
+   "titulo": "Juiz é encontrado morto dentro de veículo em chamas no interior de SP",
+   "url": "https://agenciabrasil.ebc.com.br/geral/noticia/2026-10/juiz-e-encontrado-morto-dentro-de-veiculo-em-chamas-no-interior-de-sp",
+   "data": "2026-10-08T14:00+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "O corpo do juiz Gustavo de Castro Campos do Tribunal de Justiça de São Paulo (TJ-SP) foi encontrado carbonizado no banco do motorista de seu carro em chamas, na noite de quarta-feira (7), na zona rural de São João da Boa Vista (SP). As equipes da Polícia Militar e do Corpo de Bombeiros foram chamadas para conter o incêndio na Estrada da Fazenda Aliança e encontraram a vítima, de 45 anos, no interior do veículo. A Polícia Civil e peritos do Instituto de Criminalística compareceram ao local para dar início aos levantamentos. O caso foi registrado como morte suspeita, com localização e apreensão "
+  },
+  {
+   "id": "n-eff114778c",
+   "titulo": "Agência da ONU diz que El Niño deve se intensificar e ir até fevereiro",
+   "url": "https://agenciabrasil.ebc.com.br/internacional/noticia/2026-10/agencia-da-onu-diz-que-el-nino-deve-se-intensificar-e-ir-ate-fevereiro",
+   "data": "2026-10-08T13:46+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "O El Niño deste ano se intensificará antes de atingir seu pico em dezembro e há quase 100% de certeza de que se estenderá até fevereiro de 2027. A informação é da Organização Meteorológica Mundial (OMM) em seu boletim climático mensal divulgado nesta quinta-feira (8), com as temperaturas da superfície do mar prestes a bater recordes. “As previsões da OMM indicam probabilidade de quase 100% de que (o El Niño) persista até fevereiro de 2027, podendo ser um dos mais fortes desde pelo menos 1950”, afirmou a secretária-geral da OMM, Celeste Saulo, em comunicado divulgado junto com o boletim. Notíci"
+  },
+  {
+   "id": "n-e270d4bdc9",
+   "titulo": "Vídeo: Davi diz que calendário especial para PEC do Fim da 6x1 depende de requerimento",
+   "url": "https://www12.senado.leg.br/noticias/videos/2026/10/davi-diz-que-calendario-especial-para-pec-do-fim-da-6x1-depende-de-requerimento",
+   "data": "2026-10-08T13:45:00+00:00",
+   "fonte": "senado",
+   "nos": [],
+   "pessoas": [
+    "davi-alcolumbre"
+   ],
+   "resumo": "O presidente do Senado, Davi Alcolumbre (União-AP), afirmou que a votação antecipada da proposta que acaba com a escala 6x1 depende da apresentação de requerimento. Segundo ele, ainda não há solicitação formal para antecipar a votação da PEC 221/2019. Caso seja apresentada, Davi afirmou que levará a matéria à deliberação do Plenário, como já fez em situações semelhantes. \"O Plenário é soberano e a vontade da maioria vai prevalecer\", afirmou o presidente."
+  },
+  {
+   "id": "n-a48b7c1923",
+   "titulo": "Reitor da UFPE estima prejuízo de incêndio em cerca R$ 100 milhões",
+   "url": "https://agenciabrasil.ebc.com.br/geral/noticia/2026-10/reitor-da-ufpe-estima-prejuizo-de-incendio-em-cerca-r-100-milhoes",
+   "data": "2026-10-08T13:40+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "O incêndio que atingiu um prédio no campus Recife da Universidade Federal de Pernambuco (UFPE), na noite desta quarta-feira (7), causou um prejuízo estimado em cerca de R$ 100 milhões, segundo o reitor da instituição, Alfredo Gomes. A informação foi divulgada em entrevista coletiva na manhã desta quinta-feira (8). Segundo ele, o prédio afetado pelas chamas acomodava diversos laboratórios de pesquisa em áreas como fármacos, genética e informática, além de dependências de faculdades como a de educação física. Notícias relacionadas: Incêndio causa danos a prédio da Universidade Federal de Pernamb"
+  },
+  {
+   "id": "n-f02020c3aa",
+   "titulo": "Rádio Nacional transmite Fluminense x Coritiba nesta quinta",
+   "url": "https://agenciabrasil.ebc.com.br/esportes/noticia/2026-10/radio-nacional-transmite-fluminense-x-coritiba-nesta-quinta",
+   "data": "2026-10-08T13:25+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [
+    "mec"
+   ],
+   "pessoas": [],
+   "resumo": "A Rádio Nacional leva ao ar nesta quinta-feira (8) o jogo Fluminense x Coritiba válido pela 29ª rodada da Série A do Brasileirão 2026 . A disputa acontece no estádio do Maracanã, no Rio de Janeiro, com transmissão ao vivo na emissora pública a partir das 21h15. O Tricolor carioca chega para o duelo em quarto lugar no campeonato, com 48 pontos. Já o time do Coritiba é o nono colocado, somando 38 pontos na tabela do torneio. Notícias relacionadas: SP: TV Brasil fecha acordo para exibir 41 partidas de futebol feminino. Rádios Nacional e MEC estreiam nova temporada do programa Alma Blues . Saiba a"
+  },
+  {
+   "id": "n-e684a50021",
+   "titulo": "PF vai investigar incêndio na Universidade Federal de Pernambuco",
+   "url": "https://agenciabrasil.ebc.com.br/geral/noticia/2026-10/pf-vai-investigar-incendio-na-universidade-federal-de-pernambuco",
+   "data": "2026-10-08T13:23+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [
+    "pf"
+   ],
+   "pessoas": [],
+   "resumo": "A Polícia Federal (PF) informou nesta quinta-feira (8) que vai instaurar inquérito policial para investigar o incêndio de grandes proporções que atingiu a Universidade Federal de Pernambuco (UFPE) , na noite dessa quarta-feira (7). Segundo a PF, o objetivo é “apurar todas as circunstâncias e causas prováveis”. Notícias relacionadas: Incêndio causa danos a prédio da Universidade Federal de Pernambuco. O reitor da instituição, Alfredo Gomes, estima que as chamas tenham causado prejuízo de R$ 100 milhões . “Outra grande perda no laboratório foram as pesquisas. Funcionavam ali vários grupos de pes"
+  },
+  {
+   "id": "n-107675f994",
+   "titulo": "CAS examina aprimoramentos no atendimento a pessoas com câncer",
+   "url": "https://www12.senado.leg.br/noticias/materias/2026/10/08/cas-examina-aprimoramentos-no-atendimento-a-pessoas-com-cancer",
+   "data": "2026-10-08T13:08:00+00:00",
+   "fonte": "senado",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "Está em análise na Comissão de Assuntos Sociais (CAS) o projeto que altera o Programa Nacional de Navegação da Pessoa com Diagnóstico de Câncer para otimizar o atendimento, agilizar a confirmação da doença e direcionar de forma rápida os pacientes para os tratamentos adequados. O Programa Nacional de Navegação da Pessoa com Diagnóstico de Câncer foi instituído pela Lei 14.758, de 2023. De autoria da ex-deputada Tereza Nelma (AL), o PL 4.272/2021 busca aprimorar o treinamento dos profissionais de saúde, em especial os enfermeiros, para atuação no cuidado oncológico; estabelece estratégias de bu"
+  },
+  {
+   "id": "n-322d846ea2",
+   "titulo": "Vídeo: Governo e oposição divergem sobre calendário especial para PEC do Fim da Escala 6x1",
+   "url": "https://www12.senado.leg.br/noticias/videos/2026/10/governo-e-oposicao-divergem-sobre-calendario-especial-para-pec-do-fim-da-escala-6x1",
+   "data": "2026-10-08T12:29:00+00:00",
+   "fonte": "senado",
+   "nos": [],
+   "pessoas": [
+    "rogerio-marinho",
+    "teresa-leitao"
+   ],
+   "resumo": "Nesta quarta-feira (7), governo e oposição divergiram sobre a tramitação da proposta que acaba com a escala 6x1. Antes da segunda sessão de discussão da PEC 221/2019, a líder do governo, senadora Teresa Leitão (PT-PE), informou que busca assinaturas para um requerimento de calendário especial, que pode acelerar a análise da proposta. O líder da oposição, senador Rogério Marinho (PL-RN), defendeu o cumprimento do rito regimental. Em Plenário, senadores apoiaram a PEC, mas também criticaram a condução do processo e defenderam ajustes no texto."
+  },
+  {
+   "id": "n-d3c84caced",
+   "titulo": "Saiba como ficam os serviços bancários no feriado do dia 12 de outubro",
+   "url": "https://agenciabrasil.ebc.com.br/economia/noticia/2026-10/saiba-como-ficam-os-servicos-bancarios-no-feriado-do-dia-12-de-outubro",
+   "data": "2026-10-08T12:28+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "As agências bancárias de todo o país não terão atendimento presencial na próxima segunda-feira (12), feriado de Nossa Senhora Aparecida. Segundo a Federação Brasileira de Bancos (Febraban), os clientes poderão utilizar os canais digitais das instituições financeiras para realizar operações durante o dia. O atendimento nas agências será retomado na terça-feira (13) nas localidades onde não houver feriado estadual ou municipal. Canais eletrônicos Notícias relacionadas: Bets começam a informar bancos sobre R$ 1,3 bilhão a devolver. De acordo com a Febraban, o Pix funcionará normalmente, 24 horas "
+  },
+  {
+   "id": "n-36a58589c6",
+   "titulo": "Áudio: TSE altera status de ausência após dúvidas de eleitores",
+   "url": "https://www12.senado.leg.br/noticias/audios/2026/10/tse-altera-status-de-ausencia-apos-duvidas-de-eleitores",
+   "data": "2026-10-08T12:09:00+00:00",
+   "fonte": "senado",
+   "nos": [
+    "tse"
+   ],
+   "pessoas": [],
+   "resumo": "Eleitores que votaram no primeiro turno e depois consultaram o site ou aplicativo do Tribunal Superior Eleitoral foram surpreendidos com uma mensagem indicando ausência na votação, o que gerou dúvidas. O tribunal explicou que os dados de comparecimento, ausência e justificativa ainda estão sendo computados. Para evitar novas interpretações equivocadas, o status foi alterado para \"em processamento\"."
+  },
+  {
+   "id": "n-cb207a336a",
+   "titulo": "Projeto vincula quantidade de vagas de estacionamento para pessoas idosas à população local",
+   "url": "https://www.camara.leg.br/noticias/1306308-projeto-vincula-quantidade-de-vagas-de-estacionamento-para-pessoas-idosas-a-populacao-local",
+   "data": "2026-10-08T12:03+00:00",
+   "fonte": "camara",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "Índice de reservas deve ser proporcional à população com mais de 60 anos na cidade"
+  },
+  {
+   "id": "n-efd6ecc887",
+   "titulo": "Confira a agenda dos presidenciáveis nesta quinta-feira (8)",
+   "url": "https://agenciabrasil.ebc.com.br/politica/noticia/2026-10/confira-agenda-dos-presidenciaveis-nesta-quinta-feira-8",
+   "data": "2026-10-08T11:54+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [
+    "secom"
+   ],
+   "pessoas": [
+    "luiz-inacio-lula-da-silva",
+    "sidonio-cardoso-palmeira",
+    "flavio-bolsonaro"
+   ],
+   "resumo": "Os candidatos à presidência da República que disputam o segundo turno das eleições gerais cumprem agenda em Brasília, nesta quinta-feira. Flávio Bolsonaro (PL) Pela manhã, se reúne com integrantes do Podemos e com governadores eleitos, em Brasília. À noite realiza a tradicional live de quinta, em seu canal do YouTube. Luiz Inácio Lula da Silva (PT) Também em Brasília, Lula se reúne com o ministro da Secretaria de Comunicação Social, Sidônio Palmeira e, em seguida, com o chefe do Gabinete Pessoal do Presidente, Oswaldo Malatesta. A ordem de apresentação da agenda dos candidatos a presidente seg"
+  },
+  {
+   "id": "n-fc2e03045c",
+   "titulo": "Incêndio causa danos a prédio da Universidade Federal de Pernambuco",
+   "url": "https://agenciabrasil.ebc.com.br/geral/noticia/2026-10/incendio-causa-danos-predio-da-universidade-federal-de-pernambuco",
+   "data": "2026-10-08T11:44+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "Um incêndio que começou na noite dessa quarta-feira (7), em um prédio do campus Recife da Universidade Federal de Pernambuco (UFPE) , causou grandes danos ao edifício. De acordo com a instituição, ninguém ficou ferido. A universidade informou que no local funcionavam vários laboratórios nas áreas de fármacos, informática e genética. O Corpo de Bombeiros foi prontamente acionado, mas, devido aos produtos armazenados no local, o fogo se alastrou rapidamente e causou grandes danos ao prédio. Em nota divulgada no fim da noite de quarta, a UFPE lamentou “profundamente o ocorrido, especialmente em r"
+  },
+  {
+   "id": "n-fe7353e86d",
+   "titulo": "Enem 2026: falta um mês para o primeiro dia de provas",
+   "url": "https://agenciabrasil.ebc.com.br/educacao/noticia/2026-10/enem-2026-falta-um-mes-para-o-primeiro-dia-de-provas",
+   "data": "2026-10-08T11:33+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "A um mês do primeiro dia de provas do Exame Nacional do Ensino Médio (Enem), candidatos e professores do ensino médio e cursinhos preparatórios adotam estratégias que migram do estudo intensivo de conteúdos inéditos para a consolidação do que já foi estudado. Rafaela de Araújo Caldas, de 17 anos, tem optado pela revisão de conteúdos. Estudante do 3º ano de uma escola pública do Gama, cidade do Distrito Federal distante 35 km do centro de Brasília, ela fará o Enem pela primeira vez e quer conquistar a vaga em um curso superior na área de computação. Notícias relacionadas: Fies 2026/2: faculdade"
+  },
+  {
+   "id": "n-b9714eb39b",
+   "titulo": "PF cumpre mandados contra juiz suspeito de favorecer imobiliárias",
+   "url": "https://agenciabrasil.ebc.com.br/justica/noticia/2026-10/pf-cumpre-mandados-contra-juiz-suspeito-de-favorecer-imobiliarias",
+   "data": "2026-10-08T11:23+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [
+    "pf"
+   ],
+   "pessoas": [],
+   "resumo": "A Polícia Federal (PF) cumpre seis mandados de busca e apreensão, nesta quinta-feira (8), na cidade de Niterói, no Rio de Janeiro . A operação Em Nome do Pai investiga possível corrupção envolvendo um juiz estadual para favorecer empresas do ramo imobiliário. A ação ocorre no bairro de Icaraí. Informações repassadas pela Corregedoria Geral do Tribunal de Justiça do Rio levaram a PF a identificar que o magistrado favorecia as empresas por meio de decisões judiciais. Notícias relacionadas: PF investiga ligação de policiais com facção criminosa. Crimes eleitorais: PF apreende quase R$ 1 milhão em"
+  },
+  {
+   "id": "n-6aa43edfd5",
+   "titulo": "Projeto proíbe linguagem neutra e conteúdos que estimulem aborto em cartilhas do SUS para gestantes",
+   "url": "https://www.camara.leg.br/noticias/1310125-projeto-proibe-linguagem-neutra-e-conteudos-que-estimulem-aborto-em-cartilhas-do-sus-para-gestantes",
+   "data": "2026-10-08T11:21+00:00",
+   "fonte": "camara",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "O projeto está em análise na Câmara dos Deputados"
+  },
+  {
+   "id": "n-546877fba8",
+   "titulo": "TSE julga recurso que pode definir eleições no Rio",
+   "url": "https://agenciabrasil.ebc.com.br/justica/noticia/2026-10/tse-julga-recurso-que-pode-definir-eleicoes-no-rio",
+   "data": "2026-10-08T11:02+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [
+    "tse"
+   ],
+   "pessoas": [],
+   "resumo": "O Tribunal Superior Eleitoral (TSE) julga nesta quinta-feira (8) o processo que pode definir o resultado das eleições para o governo estado do Rio de Janeiro. A sessão está prevista para começar às 10h. Os ministros vão decidir se o candidato ao governo do Rio Anthony Garotinho (Republicanos) pode desistir de um recurso apresentado ao tribunal. Notícias relacionadas: Garotinho desiste de recurso e eleição do RJ pode acabar em 1º turno. MPE dá parecer favorável à desistência de recurso de Garotinho no TSE. Justiça do Rio suspende direitos políticos do ex-governador Garotinho. O resultado do jul"
+  },
+  {
+   "id": "n-e452963c39",
+   "titulo": "TSE julga validade da candidatura de Deltan ao Senado",
+   "url": "https://agenciabrasil.ebc.com.br/justica/noticia/2026-10/tse-julga-validade-da-candidatura-de-deltan-ao-senado",
+   "data": "2026-10-08T10:46+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [
+    "tse",
+    "stf"
+   ],
+   "pessoas": [],
+   "resumo": "O Tribunal Superior Eleitoral (TSE) vai julgar nesta quinta-feira (8) a validade do registro de candidatura Deltan Dallagnol (Novo) ao Senado pelo Paraná. Deltan obteve 2.904.594 votos (25,14%) no primeiro turno das eleições, realizado no último domingo (4), e garantiu a segunda cadeira do estado no Senado. Notícias relacionadas: STF retira crédito presumido do ICMS da base de cálculo do PIS/Cofins. STF deve julgar revisão da condenação de Bolsonaro após eleições . MPRJ recomenda que partida entre Vasco e Boca Juniors seja no Maracanã. Ex-procurador da Operação Lava Jato, o candidato foi alvo "
+  },
+  {
+   "id": "n-08e503e334",
+   "titulo": "Nove contêineres com produtos da China são apreendidos no Porto do Rio",
+   "url": "https://agenciabrasil.ebc.com.br/economia/noticia/2026-10/nove-conteineres-com-produtos-da-china-sao-apreendidos-no-porto-do-rio",
+   "data": "2026-10-08T10:28+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "Em duas operações no Porto do Rio de Janeiro, a Receita Federal apreendeu nove contêineres com mercadorias irregulares provenientes da China, no âmbito da Operação Play Fake. São 135 toneladas, equivalentes a R$ 63 milhões em mercadorias ocultas em contêineres. Na primeira fase, iniciada em setembro, foram retidos cinco contêineres, com mercadorias avaliadas em R$ 35 milhões. A ação teve origem em análise de risco que identificou inconsistências nas informações declaradas na importação dos produtos chineses. Notícias relacionadas: PF investiga furto de computadores e carros da Receita Federal "
+  },
+  {
+   "id": "n-6f3cc782f7",
+   "titulo": "Brasil: 30 milhões de crianças estão expostas aos riscos climáticos",
+   "url": "https://agenciabrasil.ebc.com.br/direitos-humanos/noticia/2026-10/brasil-30-milhoes-de-criancas-estao-expostas-aos-riscos-climaticos",
+   "data": "2026-10-08T10:03+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "Uma nova análise do Fundo das Nações Unidas para a Infância (Unicef) alerta que crianças e adolescentes podem sofrer desproporcionalmente os impactos do El Niño 2026–2027. O fenômeno chega ao Brasil onde mais de 30 milhões de crianças e adolescentes, seis em cada dez, já estão expostos a dois ou mais riscos climáticos. Desses, 16 milhões convivem com três ou mais riscos. Segundo o Unicef, eventos recentes mostram como extremos podem interromper direitos: em 2024, as enchentes no Rio Grande do Sul afetaram a educação de 741 mil estudantes, enquanto a seca extrema na Amazônia atingiu outros 436 "
+  },
+  {
+   "id": "n-33d60c0be2",
+   "titulo": "Mega-Sena sorteia prêmio acumulado de R$ 100 milhões nesta quinta",
+   "url": "https://agenciabrasil.ebc.com.br/geral/noticia/2026-10/mega-sena-sorteia-premio-acumulado-de-r-100-milhoes-nesta-quinta",
+   "data": "2026-10-08T10:02+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [
+    "caixa"
+   ],
+   "pessoas": [],
+   "resumo": "A Mega-Sena sorteia nesta quinta-feira (8) prêmio estimado em R$ 100 milhões . As seis dezenas do concurso 3.068 serão sorteadas a partir das 21h (horário de Brasília) no Espaço da Sorte, em São Paulo. As apostas podem ser feitas até às 20h (horário de Brasília) de hoje em casas lotéricas credenciadas pela Caixa em todo o país ou pela internet, no site ou aplicativo da Caixa. A aposta simples, com seis dezenas, custa R$ 6. Notícias relacionadas: Mega-Sena acumula para R$ 100 milhões; confira os números sorteados. No último concurso, foram sorteados os números 01 - 04 - 17 - 33 - 41 - 52 e nenh"
+  },
+  {
+   "id": "n-19f335fbd3",
+   "titulo": "Leilão da ANP arrecada R$ 3 bilhões com a venda de 49 blocos",
+   "url": "https://agenciabrasil.ebc.com.br/economia/noticia/2026-10/leilao-da-anp-arrecada-r-3-bilhoes-com-venda-de-49-blocos",
+   "data": "2026-10-08T00:12+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [
+    "anp",
+    "petrobras"
+   ],
+   "pessoas": [],
+   "resumo": "O 6º ciclo da Oferta Permanente de Concessão, realizado pela Agência Nacional do Petróleo, Gás Natural e Biocombustíveis (ANP) nesta quarta-feira (7), arrecadou R$ 3 bilhões, em bônus de assinatura pela venda de 49 blocos. Estão previstos investimentos de R$ 4,5 bilhões somente na primeira fase dos contratos, a fase de exploração. Notícias relacionadas: Maior leilão do pré-sal termina com sete dos 13 blocos arrematados. Petrobras atinge recorde de valor de mercado após descoberta no Amapá. Os 49 blocos arrematados estão localizados nas bacias: Potiguar, Tacutu, Recôncavo, Parnaíba, Tucano Sul,"
+  },
+  {
+   "id": "n-269ba8a944",
+   "titulo": "STF retira crédito presumido do ICMS da base de cálculo do PIS/Cofins",
+   "url": "https://agenciabrasil.ebc.com.br/justica/noticia/2026-10/stf-retira-credito-presumido-do-icms-da-base-de-calculo-do-piscofins",
+   "data": "2026-10-07T23:14+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [
+    "stf",
+    "stj"
+   ],
+   "pessoas": [],
+   "resumo": "O Supremo Tribunal Federal (STF) decidiu nesta quarta-feira (7) que os créditos presumidos do Imposto sobre Circulação de Mercadorias e Serviços (ICMS) não podem incidir sobre a base de cálculo do Programa de Integração Social (PIS) e da Contribuição para Financiamento da Seguridade Social (Cofins). A decisão terá impacto de R$ 16 milhões nas contas do governo federal. Notícias relacionadas: Fachin cria regra para evitar direcionamento de processos no STF. Gilmar cobra medidas de STF e STJ contra irregularidade em precatórios. O caso começou a tramitar no Supremo em 2014. Por 7 votos a 4, o pl"
+  },
+  {
+   "id": "n-9ba84a1644",
+   "titulo": "Estudantes fazem ato no Rio de Janeiro em defesa de voto em Lula",
+   "url": "https://agenciabrasil.ebc.com.br/politica/noticia/2026-10/estudantes-fazem-ato-no-rio-de-janeiro-em-defesa-de-voto-em-lula",
+   "data": "2026-10-07T23:12+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [],
+   "pessoas": [
+    "luiz-inacio-lula-da-silva",
+    "flavio-bolsonaro"
+   ],
+   "resumo": "Estudantes organizaram nesta quarta-feira (7) um ato no Rio de Janeiro em defesa da candidatura de Luiz Inácio Lula da Silva (PT) à Presidência da República. O atual presidente busca um segundo mandato consecutivo e disputa o segundo turno das eleições de 2026 contra Flávio Bolsonaro (PL). A manifestação começou no início da tarde na Candelária, região central da cidade, de onde os jovens partiram em caminhada pela Avenida Rio Branco até a Cinelândia. Participaram estudantes secundaristas e universitários de diferentes instituições. Entre os temas defendidos estavam a educação pública, o fim d"
+  },
+  {
+   "id": "n-8b1056036d",
+   "titulo": "Ceagesp constrói estrutura provisória para atingidos por incêndio",
+   "url": "https://agenciabrasil.ebc.com.br/economia/noticia/2026-10/ceagesp-constroi-estrutura-provisoria-para-atingidos-por-incendio",
+   "data": "2026-10-07T22:47+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "Os trabalhadores e comerciantes que atuavam no pavilhão MFE-A da Companhia de Entrepostos e Armazéns Gerais de São Paulo (Ceagesp)​, consumido por um incêndio entre a noite de 05 de setembro e a madrugada do dia 06, passarão a trabalhar em novo espaço no dia 16 de outubro, protegidos por duas tendas galpão, distantes uma quadra da estrutura inicial. O espaço será um pouco menor do que o original, passando de 6 mil metros quadrados (m²) para 4,8 mil m², onde os 124 comerciantes voltarão a ter um local centralizado para atendimentos. São Paulo (SP), 07/10/2026 - Obras no Ceagesp após incêndio. F"
+  },
+  {
+   "id": "n-2277b04112",
+   "titulo": "Dólar volta a R$ 5 com ambiente externo e ajuste pós-eleitoral",
+   "url": "https://agenciabrasil.ebc.com.br/economia/noticia/2026-10/dolar-volta-r-5-com-ambiente-externo-e-ajuste-pos-eleitoral",
+   "data": "2026-10-07T22:41+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "O mercado financeiro brasileiro teve uma sessão de ajuste nesta quarta-feira (7), após o rali (forte queda do dólar e alta da bolsa) registrado depois do primeiro turno das eleições. O dólar voltou a superar R$ 5, e o Ibovespa recuou 0,74% e encerrou aos 204 mil pontos. No exterior, bolsas caíram, os juros dos Treasuries permaneceram elevados e o petróleo seguiu acima de US$ 100 por barril. Principais números Dólar à vista: R$ 5,016 (-0,83%); Dólar no ano: queda de 8,62% Ibovespa: 204.302,33 pontos (-0,74%); Ibovespa no mês: alta de 9,64%; Ibovespa no ano: alta de 26,8%. Dólar acima de R$ 5 O "
+  },
+  {
+   "id": "n-49699d3814",
+   "titulo": "Faturamento da indústria cai 3,5% em agosto, informa CNI",
+   "url": "https://agenciabrasil.ebc.com.br/economia/noticia/2026-10/faturamento-da-industria-cai-35-em-agosto-informa-cni",
+   "data": "2026-10-07T22:39+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [
+    "ibge"
+   ],
+   "pessoas": [],
+   "resumo": "O faturamento da indústria de transformação caiu 3,5% em agosto, no segundo mês consecutivo de retração, segundo os Indicadores Industriais divulgados pela Confederação Nacional da Indústria (CNI) nesta quarta-feira (7). O resultado ocorre acompanhado de uma redução das horas trabalhadas e da utilização da capacidade instalada, sinalizando perda de ritmo da atividade industrial. Notícias relacionadas: Fenabrave: emplacamentos passam de 500 mil e batem recorde em setembro. Produção industrial cai 0,6% de julho para agosto, diz IBGE. Principais indicadores Faturamento em agosto: queda de 3,5%; F"
+  },
+  {
+   "id": "n-57abe97e42",
+   "titulo": "Flávio Bolsonaro recebe apoio de partidos e fala em mudar Constituição",
+   "url": "https://agenciabrasil.ebc.com.br/politica/noticia/2026-10/flavio-bolsonaro-recebe-apoio-de-partidos-e-fala-em-mudar-constituicao",
+   "data": "2026-10-07T22:20+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [],
+   "pessoas": [
+    "luiz-inacio-lula-da-silva",
+    "flavio-bolsonaro"
+   ],
+   "resumo": "O candidato do PL à presidência da República, Flávio Bolsonaro, obteve apoio formal da federação União Progressista, formada pelos partidos União Brasil e Progressistas. Também confirmou o apoio o partido Novo, do candidato Romeu Zema. Zema teve pouco mais de 326 mil votos na disputa de primeiro turno, 0,27% do total de votos. Notícias relacionadas: Flávio busca apoio de Caiado e Lula defende fim da 6x1. PL elege 19 senadores e soma 28; MDB conquista sete vagas e PT, seis. Durante a entrevista coletiva em Brasília para a confirmação do apoio da federação União Progressista, Bolsonaro reforçou "
+  },
+  {
+   "id": "n-780c5ab471",
+   "titulo": "PEC do fim da escala 6x1 passa por 2ª sessão de discussão no Plenário",
+   "url": "https://www12.senado.leg.br/noticias/materias/2026/10/07/pec-do-fim-da-escala-6x1-passa-por-2a-sessao-de-discussao-no-plenario",
+   "data": "2026-10-07T22:08:00+00:00",
+   "fonte": "senado",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "O Senado fez nesta quarta-feira (7) a segunda sessão de discussão, em primeiro turno, da proposta de emenda à Constituição que reduz de 44 para 40 horas a duração máxima da jornada semanal de trabalho e prevê dois dias de repouso por semana, sem redução salarial. A PEC 221/2019, que acaba com a chamada escala 6x1 (seis dias de trabalho e um de folga), precisa passar por cinco sessões de discussão antes de ser votada em primeiro turno. A primeira sessão ocorreu nesta terça-feira (6), quando a proposta começou a ser discutida pelo Plenário. Se aprovada, ainda haverá três sessões de debate antes "
+  },
+  {
+   "id": "n-3027168f91",
+   "titulo": "Projeto cria incentivo fiscal para empresa que comprar de catadores",
+   "url": "https://www.camara.leg.br/noticias/1309989-projeto-cria-incentivo-fiscal-para-empresa-que-comprar-de-catadores",
+   "data": "2026-10-07T21:55+00:00",
+   "fonte": "camara",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "Proposta está em análise na Câmara dos Deputados"
+  },
+  {
+   "id": "n-d19278f000",
+   "titulo": "Projeto prevê inclusão digital e produtiva para comunidades quilombolas",
+   "url": "https://www.camara.leg.br/noticias/1306843-projeto-preve-inclusao-digital-e-produtiva-para-comunidades-quilombolas",
+   "data": "2026-10-07T21:39+00:00",
+   "fonte": "camara",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "A Câmara dos Deputados analisa a proposta"
+  },
+  {
+   "id": "n-276243224f",
+   "titulo": "Projeto cria política de tolerância zero contra pichação e vandalismo urbano",
+   "url": "https://www.camara.leg.br/noticias/1306140-projeto-cria-politica-de-tolerancia-zero-contra-pichacao-e-vandalismo-urbano",
+   "data": "2026-10-07T20:57+00:00",
+   "fonte": "camara",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "Entre outras medidas, a proposta prevê multa entre R$ 5 mil e R$ 100 mil; texto está em análise na Câmara dos Deputados"
+  },
+  {
+   "id": "n-160803678a",
+   "titulo": "Recém-empossado, Renzo Braz promete trabalhar pelo setor produtivo",
+   "url": "https://www12.senado.leg.br/noticias/materias/2026/10/07/recem-empossado-renzo-braz-promete-trabalhar-pelo-setor-produtivo",
+   "data": "2026-10-07T20:56:00+00:00",
+   "fonte": "senado",
+   "nos": [],
+   "pessoas": [
+    "renzo-braz"
+   ],
+   "resumo": "O recém-empossado senador Renzo Braz (PP-MG), em pronunciamento no Plenário nesta quarta-feira (7), defendeu o fortalecimento do setor produtivo e o apoio aos municípios de Minas Gerais para garantir o desenvolvimento econômico do estado. O parlamentar destacou sua experiência como empresário e argumentou que é necessária a adoção de medidas de responsabilidade fiscal, redução da burocracia e estímulo à geração de emprego e renda. — Como empresário, conheço o setor produtivo, as dificuldades diárias que o empregador precisa enfrentar. Sei o que é abrir uma empresa, assinar a carteira de trabal"
+  },
+  {
+   "id": "n-0bc9964931",
+   "titulo": "Produção de veículos tem melhor setembro desde 2014, diz Anfavea",
+   "url": "https://agenciabrasil.ebc.com.br/economia/noticia/2026-10/producao-de-veiculos-tem-melhor-setembro-desde-2014-diz-anfavea",
+   "data": "2026-10-07T20:42+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "Apesar de apresentar queda de 1,1% em relação a agosto, a produção de veículos no Brasil – que engloba automóveis, comerciais leves, ônibus e caminhões – teve um bom desempenho em setembro, com crescimento de 10,2% na comparação com o mesmo mês do ano passado. Segundo balanço divulgado na tarde desta quarta-feira (7) pela Associação Nacional dos Fabricantes de Veículos Automotores (Anfavea), este foi o melhor mês de setembro desde 2014, com uma produção de 268,3 mil veículos. No acumulado do ano, entre janeiro e setembro, a alta é de 8,7% em relação ao mesmo período do ano passado, com quase 2"
+  },
+  {
+   "id": "n-b4c49175d0",
+   "titulo": "Veneziano cobra argumentos de senadores contrários ao fim da escala 6x1",
+   "url": "https://www12.senado.leg.br/noticias/materias/2026/10/07/veneziano-cobra-argumentos-de-senadores-contrarios-ao-fim-da-escala-6x1",
+   "data": "2026-10-07T20:27:00+00:00",
+   "fonte": "senado",
+   "nos": [],
+   "pessoas": [
+    "vital-do-rego",
+    "veneziano-vital-do-rego"
+   ],
+   "resumo": "O senador Veneziano Vital do Rêgo (MDB-PB) cobrou dos parlamentares contrários ao fim da escala de trabalho 6x1 que apresentem seus argumentos durante a discussão da PEC 221/2019 no Plenário do Senado. Em pronunciamento nesta quarta-feira (7), ele defendeu que as posições a favor e contra a proposta sejam explicitadas, para que os brasileiros possam identificar as diferenças entre os projetos políticos em disputa nas eleições presidenciais. A matéria passa pela segunda sessão de discussão nesta quarta. — É importante que nós exponhamos, é importante que nós digamos à nação brasileira que serem"
+  },
+  {
+   "id": "n-87c9891897",
+   "titulo": "Votação mais rápida do fim da escala 6x1 depende dos senadores, diz Davi",
+   "url": "https://www12.senado.leg.br/noticias/materias/2026/10/07/votacao-mais-rapida-do-fim-da-escala-6x1-depende-dos-senadores-diz-davi",
+   "data": "2026-10-07T20:24:00+00:00",
+   "fonte": "senado",
+   "nos": [],
+   "pessoas": [
+    "davi-alcolumbre"
+   ],
+   "resumo": "O presidente do Senado, Davi Alcolumbre, informou nesta quarta-feira (7) que uma votação mais rápida da PEC do fim da escala 6x1 (PEC 221/2019) depende dos senadores. De acordo com o presidente, ainda não há nenhum requerimento com essa finalidade, mas, caso seja apresentado, ele incluirá na pauta para deliberação, como sempre fez com outras proposições semelhantes. — Hoje eu não tenho nenhum requerimento de calendário especial ou de quebra de interstício. (...) Se o requerimento aparecer, eu vou colocar para deliberação, e o Plenário é soberano, a vontade da maioria vai prevalecer — disse Dav"
+  },
+  {
+   "id": "n-9fce870f2c",
+   "titulo": "Projeto prevê desconto em multas para motoristas e entregadores de aplicativo",
+   "url": "https://www.camara.leg.br/noticias/1307684-projeto-preve-desconto-em-multas-para-motoristas-e-entregadores-de-aplicativo",
+   "data": "2026-10-07T20:11+00:00",
+   "fonte": "camara",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "Proposta está em análise na Câmara"
+  },
+  {
+   "id": "n-342738616d",
+   "titulo": "PCCE indicia namorado de Isabelle Caracristi por violência psicológica",
+   "url": "https://agenciabrasil.ebc.com.br/direitos-humanos/noticia/2026-10/pcce-indicia-namorado-de-isabelle-caracristi-por-violencia-psicologica",
+   "data": "2026-10-07T19:58+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "A Polícia Civil do Ceará (PCCE) indiciou João Munhoz Neto, de 34 anos, por violência psicológica contra a namorada, a estudante Isabelle Caracristi, de 22 anos, e por fraude processual contra as investigações sobre a morte dela. As informações foram divulgadas pela corporação nesta quarta-feira (7), com a conclusão do inquérito sobre o caso. Notícias relacionadas: Polícia investiga indução ao suicídio na morte de Isabelle no Ceará. Polícia do Ceará prende João Munhoz, namorado de Isabelle Caracristi. Fragmentação de dados dificulta prevenção de feminicídios. A universitária foi encontrada mort"
+  },
+  {
+   "id": "n-b313e5af19",
+   "titulo": "Melhor investimento em saúde pode evitar 739 mil mortes no Brasil",
+   "url": "https://agenciabrasil.ebc.com.br/saude/noticia/2026-10/melhor-investimento-em-saude-pode-evitar-739-mil-mortes-no-brasil",
+   "data": "2026-10-07T19:57+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "Aumentar os investimentos em saúde de forma direcionada pode prevenir 739 mil mortes prematuras no Brasil, além de incrementar o Produto Interno Bruto em mais de R$1 trilhão, até 2050. É o que mostra o recorte nacional da pesquisa A saúde das nações: saúde mais forte, economias mais fortes , realizada pelo McKinsey Health Institute’s. De acordo com o diretor de dados de Saúde do instituto, Brad Herbig, não basta o aumento das cifras: também é preciso destinar os recursos para ações comprovadamente eficazes e custo-efetivas, ou seja, cujo investimento entrega o melhor resultado pelo menor custo"
+  },
+  {
+   "id": "n-0d2a771df5",
+   "titulo": "Paim: Redução da jornada é reivindicação histórica",
+   "url": "https://www12.senado.leg.br/noticias/materias/2026/10/07/paim-reducao-da-jornada-e-reivindicacao-historica",
+   "data": "2026-10-07T19:54:00+00:00",
+   "fonte": "senado",
+   "nos": [],
+   "pessoas": [
+    "paulo-paim"
+   ],
+   "resumo": "Ao discursar em Plenário nesta quarta-feira (7), o senador Paulo Paim (PT-RS) defendeu mais uma vez a redução da jornada de trabalho, por meio da aprovação da PEC 221/2019 — proposta de emenda à Constituição que está em discussão na Casa. Ele destacou que essa é uma reivindicação histórica que acompanha as mudanças nas relações laborais dos últimos séculos. — O mundo está avançando. O Brasil precisa avançar. Lembramos que lá atrás eram praticamente 60 horas por semana, e o mundo caminhou para menos de 40 horas. O Brasil está agora lutando para chegar às 40 horas. Isso não é ruptura com a histó"
+  },
+  {
+   "id": "n-70d7fc2875",
+   "titulo": "Projeto define regras para trabalho cooperado em assistência domiciliar à saúde",
+   "url": "https://www.camara.leg.br/noticias/1304646-projeto-define-regras-para-trabalho-cooperado-em-assistencia-domiciliar-a-saude",
+   "data": "2026-10-07T19:39+00:00",
+   "fonte": "camara",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "Texto está em análise na Câmara"
+  },
+  {
+   "id": "n-3ef71ca73c",
+   "titulo": "STF deve julgar revisão da condenação de Bolsonaro após eleições",
+   "url": "https://agenciabrasil.ebc.com.br/justica/noticia/2026-10/stf-deve-julgar-revisao-da-condenacao-de-bolsonaro-apos-eleicoes",
+   "data": "2026-10-07T19:31+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [
+    "stf",
+    "cnj",
+    "tse"
+   ],
+   "pessoas": [
+    "nunes-marques"
+   ],
+   "resumo": "O Supremo Tribunal Federal (STF) deve julgar a revisão criminal do ex-presidente Jair Bolsonaro após o segundo turno das eleições, marcado 25 de outubro. Em nota divulgada à imprensa, o gabinete do relator do caso, ministro Kassio Nunes Marques, informou que o caso não será julgado antes do término do pleito para não interferir nas eleições. Notícias relacionadas: TSE marca para quinta-feira julgamento que pode definir eleição no Rio. CNJ e BC assinam acordo para disciplinar pagamento de precatórios. TSE: dados sobre comparecimento de eleitores estão em processamento. O caso está pendente de m"
+  },
+  {
+   "id": "n-79fa68bc1a",
+   "titulo": "Áudio: Para proteger quem compra imóvel na planta, projeto exige garantias da incorporadora",
+   "url": "https://www12.senado.leg.br/noticias/audios/2026/10/para-proteger-quem-compra-imovel-na-planta-projeto-exige-garantias-da-incorporadora",
+   "data": "2026-10-07T19:23:00+00:00",
+   "fonte": "senado",
+   "nos": [],
+   "pessoas": [
+    "paulo-paim"
+   ],
+   "resumo": "O senador Paulo Paim (PT-RS) apresentou projeto de lei para proteger quem compra imóvel na planta. O projeto (PL 3.108/2026) prevê uma série de medidas, como a exigência de que os incorporadores constituam uma garantia financeira de 5% do custo da obra. Ouça o áudio para saber mais."
+  },
+  {
+   "id": "n-e33a0d724f",
+   "titulo": "Votar fim da escala 6x1 agora não é casuísmo, afirma Confúcio",
+   "url": "https://www12.senado.leg.br/noticias/materias/2026/10/07/votar-fim-da-escala-6x1-agora-nao-e-casuismo-afirma-confucio",
+   "data": "2026-10-07T19:20:00+00:00",
+   "fonte": "senado",
+   "nos": [],
+   "pessoas": [
+    "confucio-moura"
+   ],
+   "resumo": "O senador Confúcio Moura (MDB-RO), em pronunciamento no Plenário nesta quarta-feira (7), defendeu a aprovação da PEC 221/2019, que reduz a jornada máxima de trabalho de 44 para 40 horas semanais e prevê dois dias de descanso por semana. Para o senador, as mudanças tecnológicas e as novas formas de trabalho justificam a revisão da jornada, especialmente diante do tempo gasto pelos trabalhadores nos deslocamentos entre casa e emprego. — Em São Paulo e outras capitais e regiões metropolitanas, um trabalhador de periferia distante consome 14 horas. Levanta às 4h da manhã para pegar seu ônibus, e o"
+  },
+  {
+   "id": "n-65704b8793",
+   "titulo": "Projeto permite que pequenos geradores vendam créditos de carbono",
+   "url": "https://www.camara.leg.br/noticias/1309987-projeto-permite-que-pequenos-geradores-vendam-creditos-de-carbono",
+   "data": "2026-10-07T19:17+00:00",
+   "fonte": "camara",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "Texto está em discussão na Câmara"
+  },
+  {
+   "id": "n-f64aeb6757",
+   "titulo": "Lula cobra Flávio Bolsonaro sobre apoio ao fim da escala 6x1",
+   "url": "https://agenciabrasil.ebc.com.br/politica/noticia/2026-10/lula-cobra-flavio-bolsonaro-sobre-apoio-ao-fim-da-escala-6x1",
+   "data": "2026-10-07T18:52+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [],
+   "pessoas": [
+    "luiz-inacio-lula-da-silva",
+    "flavio-bolsonaro"
+   ],
+   "resumo": "O candidato à reeleição nas eleições 2026, Luiz Inácio Lula da Silva, desafiou nesta quarta-feira (7) o senador Flávio Bolsonaro (PL) a apoiar a proposta de redução da jornada de trabalho 6x1, que prevê o direito de dois dias de folgas semanais sem redução salarial . Em discurso durante plenária do PT com parlamentares, Lula afirmou que pretende acompanhar a posição do adversário sobre o tema. Notícias relacionadas: Flávio busca apoio de Caiado e Lula defende fim da 6x1. Flávio e Lula vão disputar 2º turno para presidente da República. “Eu quero ver como é que o Flávio Bolsonaro vai votar. Eu "
+  },
+  {
+   "id": "n-acb86fd85d",
+   "titulo": "Dos 513 deputados federais eleitos, 39 têm mais de 1 milhão de seguidores no Instagram",
+   "url": "https://www.camara.leg.br/noticias/1310011-dos-513-deputados-federais-eleitos-39-tem-mais-de-1-milhao-de-seguidores-no-instagram",
+   "data": "2026-10-07T18:36+00:00",
+   "fonte": "camara",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "Instagram foi a plataforma mais utilizada pelos candidatos na eleição, com quase 6 mil contas utilizadas na campanha"
+  },
+  {
+   "id": "n-4b6e76455f",
+   "titulo": "Bets começam a informar bancos sobre R$ 1,3 bilhão a devolver",
+   "url": "https://agenciabrasil.ebc.com.br/economia/noticia/2026-10/bets-comecam-informar-bancos-sobre-r-13-bilhao-devolver",
+   "data": "2026-10-07T18:04+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "As empresas de apostas on-line autorizadas a operar no Brasil começam nesta quarta-feira (7) a informar aos bancos os saldos que ainda estão nas contas dos apostadores. Ao todo, R$ 1,325 bilhão de cerca de 26,5 milhões de pessoas aguardam devolução após o fim das operações das bets no país. Os dados, separados por Cadastro de Pessoa Física (CPF) e vinculados à conta bancária usada nos depósitos, deverão ser enviados pelas plataformas até quinta-feira (8). Com essas informações, as instituições financeiras terão de devolver os valores de 9 a 14 de outubro. Veja os números R$ 1,325 bilhão ainda "
+  },
+  {
+   "id": "n-9fbb62613d",
+   "titulo": "Deputadas afirmam que bancada feminina seguirá atuando acima das diferenças partidárias",
+   "url": "https://www.camara.leg.br/noticias/1310000-deputadas-afirmam-que-bancada-feminina-seguira-atuando-acima-das-diferencas-partidarias",
+   "data": "2026-10-07T18:04+00:00",
+   "fonte": "camara",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "Entre os pontos defendidos por elas estão a reserva de cadeiras para mulheres no Parlamento e mais orçamento para o combate ao feminicídio"
+  },
+  {
+   "id": "n-11cf619844",
+   "titulo": "Receita envia cartas a 498 mil que estão na malha fina até o dia 20",
+   "url": "https://agenciabrasil.ebc.com.br/economia/noticia/2026-10/receita-envia-cartas-498-mil-que-estao-na-malha-fina-ate-o-dia-20",
+   "data": "2026-10-07T18:01+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "Os contribuintes que tiveram a Declaração do Imposto de Renda da Pessoa Física (DIRPF) 2026 retida na malha fina começaram a ser avisados pelo Fisco. A Receita Federal está encaminhando os avisos em lotes semanais até o dia 20 de outubro , para estimular a regularização voluntária antes de uma eventual intimação ou notificação. Quem identificar algum erro na declaração pode fazer a correção por meio de uma declaração retificadora, sem precisar comparecer a uma unidade da Receita . A regularização antecipada reduz o risco de multas e de atraso no pagamento da restituição. Como consultar O contr"
+  },
+  {
+   "id": "n-b8ab3f4f0d",
+   "titulo": "Defensoria e Univaja assinam acordo para apoiar indígenas do Javari",
+   "url": "https://agenciabrasil.ebc.com.br/direitos-humanos/noticia/2026-10/defensoria-e-univaja-assinam-acordo-para-apoiar-indigenas-do-javari",
+   "data": "2026-10-07T17:43+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [
+    "dpu"
+   ],
+   "pessoas": [],
+   "resumo": "A Defensoria Pública do Amazonas (DPAM) e a União dos Povos Indígenas do Vale do Javari (Univaja) assinaram nesta quarta-feira (7) um termo de cooperação técnica para ampliar o acesso à assistência jurídica gratuita aos povos indígenas da região. A iniciativa prevê atendimento a demandas como documentação civil, registros públicos e questões de direito de família. Notícias relacionadas: Univaja e DPU denunciam tortura de indígena no Vale do Javari. Indígenas do Vale do Javari serão atendidos por mutirão médico. Dom e Bruno: 3 anos após crime, Vale do Javari continua sob ameaça. A parceria busc"
+  },
   {
    "id": "n-b0d2109848",
    "titulo": "Vídeo: Acompanhe ao vivo: sessão deliberativa ordinária - 7/10/26",
