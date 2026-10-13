@@ -1,6 +1,6 @@
 {
  "meta": {
-  "gerado_em": "2026-10-12T19:45+00:00",
+  "gerado_em": "2026-10-13T17:30+00:00",
   "gerado_por": "scripts/governo/agentes/agente_noticias.py",
   "janela_dias": 90,
   "fontes": [
@@ -30,13 +30,13 @@
     "url": "https://www.gov.br/planalto/pt-br/acompanhe-o-planalto/noticias/RSS"
    }
   ],
-  "total_artigos": 2061,
-  "artigos_com_no": 688,
-  "novos_nesta_rodada": 29,
+  "total_artigos": 2099,
+  "artigos_com_no": 704,
+  "novos_nesta_rodada": 44,
   "artigos_por_fonte": {
-   "agenciabrasil": 778,
-   "camara": 474,
-   "senado": 774,
+   "senado": 784,
+   "agenciabrasil": 803,
+   "camara": 477,
    "stf": 7,
    "planalto": 28
   },
@@ -45,207 +45,207 @@
  },
  "resumo": [
   {
-   "texto": "O presidente do Supremo Tribunal Federal, Edson Fachin, informou ao ministro Luiz Fux que pretende arquivar definitivamente o inquérito das Fake News, aberto pela Corte em 2018.",
-   "artigo_id": "n-7da9b84c8f",
-   "no_id": "stf"
+   "texto": "O presidente do Tribunal Superior Eleitoral, Kássio Nunes Marques, suspendeu novamente o canal Exército do Lula no WhatsApp, derrubando decisão do corregedor-nacional da Justiça Eleitoral, Ricardo Villas Bôas Cueva.",
+   "artigo_id": "n-e5ac5bf476",
+   "no_id": "tse"
   },
   {
-   "texto": "O presidente do Senado Federal, Davi Alcolumbre, marcou para quarta-feira (14) a votação em primeiro turno da PEC 221/2019, que acaba com a jornada 6x1.",
-   "artigo_id": "n-8e1d305f6b",
-   "no_id": "senado"
+   "texto": "O governo federal anunciou pacote de cinco medidas para microempreendedores individuais, incluindo perdão de dívidas, aumento do teto de faturamento e ampliação do acesso a crédito.",
+   "artigo_id": "n-f0fc6a8063",
+   "no_id": "congresso"
   },
   {
-   "texto": "A Agência Nacional de Vigilância Sanitária autorizou o início de testes em humanos da primeira vacina contra a malária por Plasmodium vivax, desenvolvida com tecnologia nacional.",
+   "texto": "Medida provisória publicada no Diário Oficial da União obriga operadoras de telecomunicações a autenticar e bloquear chamadas e mensagens abusivas, sob regulação da Anatel.",
+   "artigo_id": "n-f06d74c07a",
+   "no_id": "anatel"
+  },
+  {
+   "texto": "A Agência Nacional de Vigilância Sanitária autorizou testes em humanos da primeira vacina contra a malária por Plasmodium vivax, desenvolvida com tecnologia nacional.",
    "artigo_id": "n-d1038f88d5",
    "no_id": "anvisa"
-  },
-  {
-   "texto": "O corregedor-geral eleitoral, Ricardo Villas Bôas Cueva, derrubou a decisão do presidente do Tribunal Superior Eleitoral, Kassio Nunes Marques, que havia suspendido o canal Exército do Lula no WhatsApp.",
-   "artigo_id": "n-37715aecb7",
-   "no_id": "tse"
   }
  ],
  "ranking": {
   "orgaos": [
    {
     "id": "tse",
-    "artigos": 149,
-    "peso": 80.39548346378498,
-    "ultima": "2026-10-12T19:37+00:00"
+    "artigos": 155,
+    "peso": 82.89232376433102,
+    "ultima": "2026-10-13T14:58+00:00"
    },
    {
     "id": "stf",
     "artigos": 112,
-    "peso": 59.750836251251435,
+    "peso": 59.239133467323526,
     "ultima": "2026-10-12T14:38+00:00"
    },
    {
-    "id": "camara",
+    "id": "congresso",
     "artigos": 61,
-    "peso": 32.46687989478092,
-    "ultima": "2026-10-06T21:57:00+00:00"
+    "peso": 33.57018778093255,
+    "ultima": "2026-10-13T16:14:00+00:00"
    },
    {
-    "id": "congresso",
-    "artigos": 59,
-    "peso": 32.40747378035816,
-    "ultima": "2026-10-09T18:44:00+00:00"
+    "id": "camara",
+    "artigos": 62,
+    "peso": 33.09711223219053,
+    "ultima": "2026-10-13T13:13+00:00"
    },
    {
     "id": "pf",
     "artigos": 41,
-    "peso": 21.739050636695175,
+    "peso": 21.51038897501716,
     "ultima": "2026-10-10T18:06+00:00"
    },
    {
     "id": "prf",
     "artigos": 12,
-    "peso": 20.552187225102276,
+    "peso": 20.75621171880957,
     "ultima": "2026-10-11T12:59+00:00"
    },
    {
     "id": "caixa",
-    "artigos": 36,
-    "peso": 19.07352185089975,
-    "ultima": "2026-10-10T11:32+00:00"
+    "artigos": 37,
+    "peso": 19.343212951432125,
+    "ultima": "2026-10-13T10:02+00:00"
    },
    {
     "id": "mte",
     "artigos": 4,
-    "peso": 16.310888725670218,
+    "peso": 16.56122576054083,
     "ultima": "2026-10-06T23:51+00:00"
    },
    {
     "id": "inpe",
     "artigos": 2,
-    "peso": 15.251248622842454,
+    "peso": 15.51564668208504,
     "ultima": "2026-10-12T16:43+00:00"
    },
    {
     "id": "mec",
-    "artigos": 27,
-    "peso": 14.664108206772497,
-    "ultima": "2026-10-08T23:30+00:00"
+    "artigos": 28,
+    "peso": 15.441383245928995,
+    "ultima": "2026-10-13T12:30+00:00"
    },
    {
     "id": "anvisa",
-    "artigos": 24,
-    "peso": 13.060957611925843,
-    "ultima": "2026-10-10T19:37+00:00"
+    "artigos": 25,
+    "peso": 13.452372087802987,
+    "ultima": "2026-10-13T17:20+00:00"
    },
    {
     "id": "agu",
     "artigos": 24,
-    "peso": 12.718419322054167,
+    "peso": 12.559618585915066,
     "ultima": "2026-10-10T18:06+00:00"
    },
    {
     "id": "inss",
     "artigos": 19,
-    "peso": 12.464349005965493,
+    "peso": 12.522748983950196,
     "ultima": "2026-10-01T20:17+00:00"
    },
    {
     "id": "petrobras",
     "artigos": 22,
-    "peso": 11.664255395468405,
+    "peso": 11.539378796350421,
     "ultima": "2026-10-08T00:12+00:00"
    },
    {
     "id": "ms",
     "artigos": 19,
-    "peso": 10.417333531098436,
+    "peso": 10.340974141326761,
     "ultima": "2026-10-10T19:37+00:00"
    },
    {
     "id": "tcu",
     "artigos": 17,
-    "peso": 9.719398334989364,
+    "peso": 9.754046536650016,
     "ultima": "2026-10-07T10:38+00:00"
    },
    {
     "id": "ibge",
     "artigos": 18,
-    "peso": 9.539499013570877,
+    "peso": 9.422881350547694,
     "ultima": "2026-10-09T13:48+00:00"
    },
    {
     "id": "anp",
     "artigos": 16,
-    "peso": 8.830611464977794,
+    "peso": 8.785275168088651,
     "ultima": "2026-10-09T15:09:00+00:00"
    },
    {
     "id": "tst",
     "artigos": 15,
-    "peso": 8.300791413563914,
+    "peso": 8.262485628860755,
     "ultima": "2026-09-29T23:40+00:00"
    },
    {
     "id": "inep",
     "artigos": 14,
-    "peso": 7.417480719794347,
+    "peso": 7.319053549190538,
     "ultima": "2026-10-02T19:46+00:00"
+   },
+   {
+    "id": "senado",
+    "artigos": 10,
+    "peso": 7.014366983351218,
+    "ultima": "2026-10-13T13:13+00:00"
    },
    {
     "id": "stj",
     "artigos": 11,
-    "peso": 6.510359057175053,
+    "peso": 6.47794321238133,
     "ultima": "2026-10-07T23:14+00:00"
-   },
-   {
-    "id": "senado",
-    "artigos": 9,
-    "peso": 6.467381471478313,
-    "ultima": "2026-10-10T00:34+00:00"
    },
    {
     "id": "mpf",
     "artigos": 12,
-    "peso": 6.360578705087585,
+    "peso": 6.286144115180321,
     "ultima": "2026-10-08T23:38+00:00"
    },
    {
     "id": "cnj",
     "artigos": 9,
-    "peso": 4.771118550845939,
+    "peso": 4.717775497496634,
     "ultima": "2026-10-07T19:31+00:00"
    },
    {
     "id": "cvm",
     "artigos": 7,
-    "peso": 4.048540561647848,
+    "peso": 4.016821092809721,
     "ultima": "2026-09-27T18:52+00:00"
+   },
+   {
+    "id": "anatel",
+    "artigos": 7,
+    "peso": 3.6721964190408425,
+    "ultima": "2026-10-13T13:58:00+00:00"
+   },
+   {
+    "id": "ebc",
+    "artigos": 7,
+    "peso": 3.6595267745952684,
+    "ultima": "2026-10-12T22:04+00:00"
    },
    {
     "id": "mme",
     "artigos": 6,
-    "peso": 3.187134572846297,
+    "peso": 3.174746168704095,
     "ultima": "2026-10-09T15:09:00+00:00"
    },
    {
     "id": "aneel",
     "artigos": 6,
-    "peso": 3.184396484725295,
+    "peso": 3.162076524258521,
     "ultima": "2026-10-07T10:38+00:00"
    },
    {
     "id": "aeronautica",
     "artigos": 6,
-    "peso": 3.178920308483291,
+    "peso": 3.136737235367373,
     "ultima": "2026-10-12T19:04+00:00"
-   },
-   {
-    "id": "anac",
-    "artigos": 5,
-    "peso": 2.99711472318309,
-    "ultima": "2026-09-23T14:04+00:00"
-   },
-   {
-    "id": "dpu",
-    "artigos": 5,
-    "peso": 2.994376635062088,
-    "ultima": "2026-10-07T17:43+00:00"
    }
   ],
   "pessoas": [
@@ -260,9 +260,9 @@
     "uf": null,
     "foto": "https://commons.wikimedia.org/wiki/Special:FilePath/Foto_oficial_de_Luiz_In%C3%A1cio_Lula_da_Silva_%28estreita%29.jpg?width=160",
     "foto_fonte": "https://www.wikidata.org/wiki/Q37181",
-    "artigos": 86,
-    "peso": 60.13426637705321,
-    "ultima": "2026-10-12T19:37+00:00"
+    "artigos": 94,
+    "peso": 64.14695363150382,
+    "ultima": "2026-10-13T14:58+00:00"
    },
    {
     "id": "flavio-bolsonaro",
@@ -275,9 +275,9 @@
     "uf": "RJ",
     "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador5894.jpg",
     "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/5894",
-    "artigos": 50,
-    "peso": 26.50743109942011,
-    "ultima": "2026-10-12T19:37+00:00"
+    "artigos": 56,
+    "peso": 29.352232063435565,
+    "ultima": "2026-10-13T13:41+00:00"
    },
    {
     "id": "nunes-marques",
@@ -290,9 +290,9 @@
     "uf": null,
     "foto": "https://commons.wikimedia.org/wiki/Special:FilePath/Nunes_Marques%2C_February_2025_%28cropped%29.jpg?width=160",
     "foto_fonte": "https://www.wikidata.org/wiki/Q99831978",
-    "artigos": 36,
-    "peso": 19.089950379625762,
-    "ultima": "2026-10-12T19:18+00:00"
+    "artigos": 40,
+    "peso": 20.987599435789253,
+    "ultima": "2026-10-13T14:58+00:00"
    },
    {
     "id": "davi-alcolumbre",
@@ -305,9 +305,9 @@
     "uf": "AP",
     "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador3830.jpg",
     "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/3830",
-    "artigos": 32,
-    "peso": 17.028170024511265,
-    "ultima": "2026-10-10T00:34+00:00"
+    "artigos": 33,
+    "peso": 17.60680483899662,
+    "ultima": "2026-10-13T11:32:00+00:00"
    },
    {
     "id": "damares-alves",
@@ -321,7 +321,7 @@
     "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador6335.jpg",
     "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/6335",
     "artigos": 26,
-    "peso": 13.846511627906972,
+    "peso": 13.9219387755102,
     "ultima": "2026-10-05T20:58:00+00:00"
    },
    {
@@ -336,7 +336,7 @@
     "foto": "https://commons.wikimedia.org/wiki/Special:FilePath/Luiz_Edson_Fachin-12-05.2015.jpg?width=160",
     "foto_fonte": "https://www.wikidata.org/wiki/Q10320705",
     "artigos": 18,
-    "peso": 9.542237101691876,
+    "peso": 9.435550994993266,
     "ultima": "2026-10-09T23:35+00:00"
    },
    {
@@ -351,7 +351,7 @@
     "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador825.jpg",
     "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/825",
     "artigos": 17,
-    "peso": 9.053488372093025,
+    "peso": 9.102806122448982,
     "ultima": "2026-10-09T16:28:00+00:00"
    },
    {
@@ -366,7 +366,7 @@
     "foto": "https://www.camara.leg.br/internet/deputado/bandep/160674.jpg",
     "foto_fonte": "https://www.camara.leg.br/deputados/160674",
     "artigos": 12,
-    "peso": 8.076008242566973,
+    "peso": 8.148633572926027,
     "ultima": "2026-10-07T14:30+00:00"
    },
    {
@@ -381,7 +381,7 @@
     "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador5525.jpg",
     "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/5525",
     "artigos": 12,
-    "peso": 6.390697674418607,
+    "peso": 6.425510204081635,
     "ultima": "2026-10-06T22:54:00+00:00"
    },
    {
@@ -396,7 +396,7 @@
     "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador6009.jpg",
     "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/6009",
     "artigos": 11,
-    "peso": 5.858139534883723,
+    "peso": 5.8900510204081655,
     "ultima": "2026-10-09T21:56:00+00:00"
    },
    {
@@ -411,7 +411,7 @@
     "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador4770.jpg",
     "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/4770",
     "artigos": 10,
-    "peso": 5.325581395348839,
+    "peso": 5.354591836734696,
     "ultima": "2026-10-09T21:56:00+00:00"
    },
    {
@@ -426,7 +426,7 @@
     "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador345.jpg",
     "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/345",
     "artigos": 10,
-    "peso": 5.325581395348839,
+    "peso": 5.354591836734696,
     "ultima": "2026-09-25T18:03:00+00:00"
    },
    {
@@ -441,7 +441,7 @@
     "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador5376.jpg",
     "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/5376",
     "artigos": 10,
-    "peso": 5.325581395348839,
+    "peso": 5.354591836734696,
     "ultima": "2026-09-23T18:20:00+00:00"
    },
    {
@@ -456,7 +456,7 @@
     "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador5352.jpg",
     "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/5352",
     "artigos": 10,
-    "peso": 5.325581395348839,
+    "peso": 5.354591836734696,
     "ultima": "2026-09-14T16:27:00+00:00"
    },
    {
@@ -471,7 +471,7 @@
     "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador5990.jpg",
     "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/5990",
     "artigos": 9,
-    "peso": 4.793023255813955,
+    "peso": 4.819132653061226,
     "ultima": "2026-09-04T21:56:00+00:00"
    },
    {
@@ -486,7 +486,7 @@
     "foto": "https://www.camara.leg.br/internet/deputado/bandep/220645.jpg",
     "foto_fonte": "https://www.camara.leg.br/deputados/220645",
     "artigos": 8,
-    "peso": 4.581098701182732,
+    "peso": 4.552280276483191,
     "ultima": "2026-10-05T17:44+00:00"
    },
    {
@@ -501,7 +501,7 @@
     "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador5917.jpg",
     "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/5917",
     "artigos": 8,
-    "peso": 4.260465116279071,
+    "peso": 4.2836734693877565,
     "ultima": "2026-10-08T21:29:00+00:00"
    },
    {
@@ -516,7 +516,7 @@
     "foto": null,
     "foto_fonte": null,
     "artigos": 8,
-    "peso": 4.244036587553059,
+    "peso": 4.207655602714312,
     "ultima": "2026-10-06T21:29+00:00"
    },
    {
@@ -531,7 +531,7 @@
     "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador6338.jpg",
     "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/6338",
     "artigos": 7,
-    "peso": 3.727906976744187,
+    "peso": 3.748214285714287,
     "ultima": "2026-10-08T12:29:00+00:00"
    },
    {
@@ -546,7 +546,7 @@
     "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador475.jpg",
     "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/475",
     "artigos": 7,
-    "peso": 3.727906976744187,
+    "peso": 3.748214285714287,
     "ultima": "2026-10-07T19:20:00+00:00"
    },
    {
@@ -561,7 +561,7 @@
     "foto": "https://www.camara.leg.br/internet/deputado/bandep/74161.jpg",
     "foto_fonte": "https://www.camara.leg.br/deputados/74161",
     "artigos": 6,
-    "peso": 3.532410950838976,
+    "peso": 3.5573797758096957,
     "ultima": "2026-10-06T22:54:00+00:00"
    },
    {
@@ -576,7 +576,7 @@
     "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador5672.jpg",
     "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/5672",
     "artigos": 6,
-    "peso": 3.195348837209303,
+    "peso": 3.212755102040817,
     "ultima": "2026-10-09T11:34:00+00:00"
    },
    {
@@ -591,7 +591,7 @@
     "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador6336.jpg",
     "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/6336",
     "artigos": 6,
-    "peso": 3.195348837209303,
+    "peso": 3.212755102040817,
     "ultima": "2026-09-30T15:55:00+00:00"
    },
    {
@@ -606,12 +606,460 @@
     "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador5936.jpg",
     "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/5936",
     "artigos": 6,
-    "peso": 3.192610749088301,
+    "peso": 3.200085457595243,
     "ultima": "2026-10-09T16:28:00+00:00"
    }
   ]
  },
  "artigos": [
+  {
+   "id": "n-ca4136cc93",
+   "titulo": "Vídeo: Acompanhe ao vivo: sessão deliberativa ordinária – 13/10/26",
+   "url": "https://www12.senado.leg.br/noticias/videos/2026/10/acompanhe-ao-vivo-sessao-deliberativa-ordinaria-2013-13-10-26",
+   "data": "2026-10-13T17:21:00+00:00",
+   "fonte": "senado",
+   "nos": [],
+   "pessoas": [],
+   "resumo": ""
+  },
+  {
+   "id": "n-11d020e274",
+   "titulo": "Homens costumam descobrir câncer de mama em estágio mais avançado",
+   "url": "https://agenciabrasil.ebc.com.br/saude/noticia/2026-10/homens-costumam-descobrir-cancer-de-mama-em-estagio-mais-avancado",
+   "data": "2026-10-13T17:20+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [
+    "inca",
+    "anvisa"
+   ],
+   "pessoas": [],
+   "resumo": "Os homens também são afetados pelo câncer de mama e normalmente o descobrem em estágios mais avançados. O alerta é da Sociedade Brasileira de Radioterapia (SBRT) e faz parte da conscientização sobre a doença neste Outubro Rosa. Um levantamento da sociedade com dados dos Registros Hospitalares de Câncer (RHC), do Instituto Nacional de Câncer (Inca), identificou mais de 163 mil registros de câncer de mama entre 2020 e 2023, dos quais 2.126 foram em homens. Notícias relacionadas: Outubro Rosa: tratamento termina, mas medo do câncer pode permanecer. Anvisa manda apreender medicamento falsificado p"
+  },
+  {
+   "id": "n-701a0045e0",
+   "titulo": "Duas federações e três partidos não atingem a cláusula de barreira na eleição para a Câmara",
+   "url": "https://www.camara.leg.br/noticias/1310849-duas-federacoes-e-tres-partidos-nao-atingem-a-clausula-de-barreira-na-eleicao-para-a-camara",
+   "data": "2026-10-13T17:19+00:00",
+   "fonte": "camara",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "Juntas, essas agremiações elegeram 34 deputados federais"
+  },
+  {
+   "id": "n-f56041a8af",
+   "titulo": "Vídeo: Comissão retoma votação da PEC da Segurança Pública nesta quarta",
+   "url": "https://www12.senado.leg.br/noticias/videos/2026/10/comissao-retoma-votacao-da-pec-da-seguranca-publica-nesta-quarta",
+   "data": "2026-10-13T17:15:00+00:00",
+   "fonte": "senado",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "A Comissão de Constituição e Justiça (CCJ) retoma, nesta quarta-feira (14), a análise da PEC da Segurança Pública. A PEC 18/2025 busca, entre outros pontos, fortalecer a integração das forças policiais no combate ao crime."
+  },
+  {
+   "id": "n-00c64e8194",
+   "titulo": "Aena assume Galeão e propõe aumentar destinos e frequência de voos",
+   "url": "https://agenciabrasil.ebc.com.br/geral/noticia/2026-10/aena-assume-galeao-e-propoe-aumentar-destinos-e-frequencia-de-voos",
+   "data": "2026-10-13T16:43+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "A concessionária espanhola Aena informou, nesta terça-feira (13), que buscará aumentar o número de destinos a partir do Aeroporto Internacional do Rio de Janeiro (Tom Jobim/Galeão) e aumentar a frequência de voos no terminal. A empresa assumiu a concessão do aeroporto carioca na semana passada. O contrato vale até 2039. Notícias relacionadas: Galeão é arrematado por R$ 2,9 bilhões pela espanhola Aena. Em coletiva de imprensa, a Aena anunciou aumento em mais de 50 frequências semanais para nove destinos internacionais – Paris, Miami, Frankfurt, Lisboa, Porto, Santiago, Córdoba, Atlanta e Panamá"
+  },
+  {
+   "id": "n-ca8e3c444c",
+   "titulo": "Defesa Civil alerta para chuvas fortes no estado de São Paulo",
+   "url": "https://agenciabrasil.ebc.com.br/geral/noticia/2026-10/defesa-civil-alerta-para-chuvas-fortes-no-estado-de-sao-paulo",
+   "data": "2026-10-13T16:25+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "Chuvas fortes deverão ocorrer em todo o estado de São Paulo entre hoje (13) e quinta-feira (15). O alerta é da Defesa Civil do estado de São Paulo. Segundo o órgão, o tempo deverá ficar instável em todas as regiões do estado, com possibilidade de temporais, acompanhados de queda de granizo, raios e rajadas de vento. Como o solo já está mais saturado por causa das chuvas da última semana, os temporais previstos para os próximos dias podem facilitar a ocorrência de alagamentos, enxurradas e elevação dos níveis de rios e córregos, principalmente em áreas mais vulneráveis. Notícias relacionadas: M"
+  },
+  {
+   "id": "n-bfdac01c4f",
+   "titulo": "Papa está internado para retirada de nódulo no pulmão",
+   "url": "https://agenciabrasil.ebc.com.br/internacional/noticia/2026-10/papa-esta-internado-para-retirada-de-nodulo-no-pulmao",
+   "data": "2026-10-13T16:23+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "O papa Leão XIV chegou, nesta terça-feira (13), às 13h07 (hora local) ao Hospital Gemelli, em Roma, para a cirurgia de retirada de um nódulo no pulmão, prevista para esta tarde. Segundo os médicos, ele deverá permanecer internado por cerca de uma semana. Ao chegar, o pontífice recebeu demonstrações de carinho de pessoas que o aguardavam à porta e dentro da instituição. “Estamos com você, vença esta batalha!”, era uma das frases ditas pelo público, desejando rápida recuperação. Notícias relacionadas: Papa será internado na terça para retirada de nódulo do pulmão. Papa Leão XIV fará cirurgia par"
+  },
+  {
+   "id": "n-1d86ae45cc",
+   "titulo": "Sessão solene destaca papel do Brasil na produção mundial de alimentos",
+   "url": "https://www12.senado.leg.br/noticias/materias/2026/10/13/sessao-solene-destaca-papel-do-brasil-na-producao-mundial-de-alimentos",
+   "data": "2026-10-13T16:14:00+00:00",
+   "fonte": "senado",
+   "nos": [
+    "congresso"
+   ],
+   "pessoas": [
+    "tereza-cristina"
+   ],
+   "resumo": "Senadores e representantes do governo e do setor produtivo destacaram, em sessão solene do Congresso Nacional nesta terça-feira (13), a capacidade brasileira de produzir alimentos e o papel do país na segurança alimentar mundial. Realizada no Plenário do Senado, a sessão homenageou o Dia Mundial da Alimentação, a ser celebrado na sexta-feira (16). A campanha de 2026 da Organização das Nações Unidas para a Alimentação e a Agricultura (FAO) tem como slogan “Inovar hoje para nutrir o amanhã”. A sessão foi requerida (REQ 18/2026 - Mesa) pela senadora Tereza Cristina (PP-MS), que presidiu os trabal"
+  },
+  {
+   "id": "n-902727d55f",
+   "titulo": "Cantor de axé Netinho morre em Salvador aos 60 anos",
+   "url": "https://agenciabrasil.ebc.com.br/geral/noticia/2026-10/cantor-de-axe-netinho-morre-em-salvador-aos-60-anos",
+   "data": "2026-10-13T16:02+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "O cantor de axé Netinho morreu, aos 60 anos, nesta terça-feira (13), no Hospital Aliança Star, em Salvador, Bahia. A notícia foi confirmada pela assessoria do artista. Um dos maiores destaques do axé music, com sucessos como Milla , Fim de Semana , Menina e Beijo na Boca , estava internado após a volta de um linfoma não Hodgkin, câncer no sistema linfático, diagnosticado em 2025. “É com uma tristeza que corta a alma que comunicamos o falecimento do cantor Netinho, ocorrido na manhã de hoje.” De acordo com a assessoria, o quadro clínico evoluiu para falência renal e disfunção múltipla de órgãos"
+  },
+  {
+   "id": "n-f0fc6a8063",
+   "titulo": "Governo anuncia perdão de dívidas e pacote de estímulo para MEIs",
+   "url": "https://agenciabrasil.ebc.com.br/economia/noticia/2026-10/governo-anuncia-perdao-de-dividas-e-pacote-de-estimulo-para-meis",
+   "data": "2026-10-13T15:46+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [
+    "congresso"
+   ],
+   "pessoas": [],
+   "resumo": "O governo federal anunciou nesta terça-feira (13) um pacote de cinco medidas voltadas aos microempreendedores individuais (MEIs), com foco na redução do endividamento, ampliação do acesso a recursos para investimento, aumento do teto de faturamento e simplificação de regras para pequenos negócios. A principal iniciativa é o envio ao Congresso Nacional de um projeto de lei complementar que prevê o perdão das dívidas acumuladas pelos MEIs com o governo federal . A proposta poderá beneficiar cerca de 3,6 milhões de microempreendedores e alcançar aproximadamente R$ 12,6 bilhões em débitos acumulad"
+  },
+  {
+   "id": "n-89a95a5a6a",
+   "titulo": "Plenário terá sessão especial pelo Dia do Médico nesta quarta",
+   "url": "https://www12.senado.leg.br/noticias/materias/2026/10/13/plenario-tera-sessao-especial-pelo-dia-do-medico-nesta-quarta",
+   "data": "2026-10-13T15:09:00+00:00",
+   "fonte": "senado",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "O Senado promove, nesta quarta-feira (14), a partir das 10h, sessão especial para celebrar o Dia do Médico, comemorado anualmente em 18 de outubro. A homenagem foi proposta pelo senador Dr. Hiran (PP-RR), por meio de requerimento (RQS 897/2025). Na justificativa da homenagem, o senador destaca a importância dos profissionais para a promoção da saúde e a prevenção de doenças, além dos desafios enfrentados no exercício da medicina. — Os médicos enfrentam diversos desafios na profissão e merecem que essa data seja comemorada como reconhecimento da importância para a sociedade — ressalta Hiran. O "
+  },
+  {
+   "id": "n-e5ac5bf476",
+   "titulo": "Nunes Marques volta a suspender Exército do Lula por falta de registro",
+   "url": "https://agenciabrasil.ebc.com.br/justica/noticia/2026-10/nunes-marques-volta-suspender-exercito-de-lula-por-falta-de-registro",
+   "data": "2026-10-13T14:58+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [
+    "tse"
+   ],
+   "pessoas": [
+    "luiz-inacio-lula-da-silva",
+    "nunes-marques"
+   ],
+   "resumo": "O presidente do Tribunal Superior Eleitoral (TSE), ministro Kássio Nunes Marques, derrubou nesta terça-feira (13) a decisão do ministro Ricardo Villas Bôas Cueva, corregedor-nacional da Justiça Eleitoral, que havia recolocado no ar o canal Exército do Lula, no aplicativo de mensagens WhatsApp. Mais cedo, Nunes Marques havia ordenado a suspensão de novas publicações no canal , por falta de registro formal junto à Justiça Eleitoral. Agora, o ministro voltou a suspender o canal por completo , cassando a decisão que o mantinha no ar . Notícias relacionadas: Nunes Marques suspende novos posts e seg"
+  },
+  {
+   "id": "n-6fbbf2e45e",
+   "titulo": "Projeto estabelece regras de privacidade para verificação de idade na internet",
+   "url": "https://www.camara.leg.br/noticias/1307686-projeto-estabelece-regras-de-privacidade-para-verificacao-de-idade-na-internet",
+   "data": "2026-10-13T14:45+00:00",
+   "fonte": "camara",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "A proposta está em análise na Câmara dos Deputados"
+  },
+  {
+   "id": "n-19de82f9ad",
+   "titulo": "CCJ pode concluir votação da PEC da Segurança Pública nesta quarta",
+   "url": "https://www12.senado.leg.br/noticias/materias/2026/10/13/ccj-pode-concluir-votacao-da-pec-da-seguranca-publica-nesta-quarta",
+   "data": "2026-10-13T14:32:00+00:00",
+   "fonte": "senado",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "A Comissão de Constituição e Justiça (CCJ) pode concluir nesta quarta-feira (14) a votação da chamada PEC da Segurança Pública, a proposta de emenda à Constituição que cria o Sistema Único de Segurança Pública (Susp) e o Sistema de Políticas Penais. Após aprovar o texto-base da PEC 18/2025, em setembro, a CCJ deve analisar os destaques apresentados à proposta. Também estão na pauta dois projetos que alteram o Código de Trânsito Brasileiro (CTB), com medidas para aumentar as penas de motoristas que provocarem acidentes sob efeito de álcool ou drogas e tornar obrigatória a realização do teste do"
+  },
+  {
+   "id": "n-5ec984e6ce",
+   "titulo": "Mercado eleva previsão da inflação para 5,22% em 2026",
+   "url": "https://agenciabrasil.ebc.com.br/economia/noticia/2026-10/mercado-eleva-previsao-da-inflacao-para-522-em-2026",
+   "data": "2026-10-13T14:28+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "A projeção do mercado financeiro para a inflação oficial em 2026 subiu de 5,01% para 5,22%, segundo o Boletim Focus divulgado nesta terça-feira (13) pelo Banco Central . Essa foi a quarta alta consecutiva da estimativa para o Índice Nacional de Preços ao Consumidor Amplo (IPCA). Ao mesmo tempo, o mercado financeiro manteve a previsão de crescimento da economia em 1,85% e reduziu a expectativa para a taxa básica de juros (Selic) ao fim do próximo ano, de 13,50% para 13,25% ao ano. Notícias relacionadas: INPC, inflação que corrige salários, acumula 4,29% em 12 meses. Inflação oficial de setembro"
+  },
+  {
+   "id": "n-e968be5a26",
+   "titulo": "Nunes Marques suspende novos posts e seguidores no Exército do Lula",
+   "url": "https://agenciabrasil.ebc.com.br/politica/noticia/2026-10/nunes-marques-suspende-novos-posts-e-seguidores-no-exercito-do-lula",
+   "data": "2026-10-13T14:15+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [
+    "tse"
+   ],
+   "pessoas": [
+    "luiz-inacio-lula-da-silva",
+    "nunes-marques"
+   ],
+   "resumo": "O presidente do Tribunal Superior Eleitoral (TSE), ministro Kassio Nunes Marques, decidiu nesta terça-feira (13) suspender as atualizações e o ingresso de novos seguidores no canal Exército do Lula, que possui 3,7 milhões de usuários no aplicativo de mensagens WhatsApp. De acordo com a decisão, o canal somente poderá receber atualizações após uma comunicação formal de seu endereço eletrônico à Justiça Eleitoral e, depois disso, decorrido um prazo de 48 horas, conforme previsto em resolução eleitoral, frisou Nunes Marques. Notícias relacionadas: Técnicos do TSE não encontram conteúdo falso no c"
+  },
+  {
+   "id": "n-8e4950b895",
+   "titulo": "Áudio: Projeto prevê análise prévia para decisões sobre cursos e vagas em universidades",
+   "url": "https://www12.senado.leg.br/noticias/audios/2026/10/projeto-preve-analise-previa-para-decisoes-sobre-cursos-e-vagas-em-universidades",
+   "data": "2026-10-13T14:11:00+00:00",
+   "fonte": "senado",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "O Senado poderá examinar projeto que estabelece a exigência de estudos prévios sobre a oferta de cursos e vagas nas universidades públicas. O PL 5.525/2026, prevê que a análise de oferta considere critérios objetivos, definidos previamente pela instituição e compatíveis com sua missão institucional. Entre os critérios estão a demanda pelo curso, a ocupação de vagas e a disponibilidade de infraestrutura e de recursos. Também estão previstos aspectos como evasão, conclusão dos cursos e relevância da formação oferecida. O estudo deverá subsidiar as decisões sobre criação, expansão, modificação ou"
+  },
+  {
+   "id": "n-ba816fa631",
+   "titulo": "Áudio: CCJ pode concluir votação da PEC da Segurança Pública na quarta",
+   "url": "https://www12.senado.leg.br/noticias/audios/2026/10/ccj-pode-concluir-votacao-da-pec-da-seguranca-publica-na-quarta",
+   "data": "2026-10-13T14:06:00+00:00",
+   "fonte": "senado",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "A Comissão de Constituição e Justiça (CCJ) pode concluir nesta quarta-feira (14) a votação da proposta que insere na Constituição o Sistema Único de Segurança Pública. A PEC 18/2025 amplia as competências federais no combate ao crime organizada, permite a criação de polícias municipais e redefine o papel de forças policiais."
+  },
+  {
+   "id": "n-b2406d5617",
+   "titulo": "Polícia de SP prende três suspeitos de explorar bets",
+   "url": "https://agenciabrasil.ebc.com.br/justica/noticia/2026-10/policia-de-sp-prende-tres-suspeitos-de-explorar-bets",
+   "data": "2026-10-13T14:02+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "A Polícia Civil de São Paulo faz na manhã desta segunda-feira (13) a Operação Disque 151 contra organização criminosa suspeita de explorar apostas e jogos ilegais clandestinos, as bets. Três suspeitos foram presos na capital paulista e na cidade de Mogi das Cruzes, região metropolitana. A Justiça autorizou bloqueio de R$ 154 milhões. A polícia estima que o esquema ilegal tenha prejudicado cerca de 10 milhões de pessoas. A partir da análise de dados bancários, investigações da polícia identificaram mais de 38,5 milhões de operações financeiras feitas pelos suspeitos. Em apenas seis meses, os cr"
+  },
+  {
+   "id": "n-f6231b92e8",
+   "titulo": "MP determina bloqueio de chamadas e mensagens abusivas",
+   "url": "https://www12.senado.leg.br/noticias/materias/2026/10/13/mp-determina-bloqueio-de-chamadas-e-mensagens-abusivas",
+   "data": "2026-10-13T13:58:00+00:00",
+   "fonte": "senado",
+   "nos": [
+    "anatel"
+   ],
+   "pessoas": [],
+   "resumo": "Entrou em vigor a medida provisória destinada a combater fraudes e o uso abusivo de chamadas telefônicas e mensagens. Publicada no Diário Oficial da União (DOU) de sexta-feira (9), a MP aplica-se às prestadoras de serviços de telecomunicações que atendem ao público em geral. A MP 1.396/2026 trata da autenticação, da identificação e do bloqueio de chamadas telefônicas e mensagens nas redes de telecomunicações. Também institui uma base de dados centralizada de recursos de numeração, sob supervisão da Agência Nacional de Telecomunicações (Anatel), para fornecer informações necessárias à autentica"
+  },
+  {
+   "id": "n-913bcbfc02",
+   "titulo": "Redução de desastres: especialistas defendem \"cultura da prevenção\"",
+   "url": "https://agenciabrasil.ebc.com.br/meio-ambiente/noticia/2026-10/reducao-de-desastres-especialistas-defendem-cultura-da-prevencao",
+   "data": "2026-10-13T13:47+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "Abandonar a cultura da tragédia e investir em prevenção. Essa é a recomendação de especialistas em conservação da natureza e adaptação climática diante do aumento dos riscos associados a eventos extremos no Brasil. O caminho inclui mapear áreas vulneráveis, preparar serviços essenciais, ampliar sistemas de alerta e incorporar a natureza ao planejamento urbano para reduzir os impactos de chuvas intensas, secas e ondas de calor. Notícias relacionadas: Chuvas: desabamento em Araçatuba, em SP, deixa uma pessoa morta. Eventos climáticos extremos desafiam concessionárias de energia. O alerta ganha d"
+  },
+  {
+   "id": "n-94277b9fbb",
+   "titulo": "Nunes Marques convoca campanhas de Lula e Flávio para reunião no TSE",
+   "url": "https://agenciabrasil.ebc.com.br/justica/noticia/2026-10/nunes-marques-convoca-campanhas-presidencia-para-reuniao-no-tse",
+   "data": "2026-10-13T13:41+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [
+    "tse"
+   ],
+   "pessoas": [
+    "luiz-inacio-lula-da-silva",
+    "nunes-marques",
+    "flavio-bolsonaro"
+   ],
+   "resumo": "O presidente do Tribunal Superior Eleitoral (TSE), ministro Kássio Nunes Marques, marcou para a tarde desta terça-feira (13) uma reunião com representantes das campanhas do presidente Luiz Inácio Lula da Silva, candidato à reeleição, e do senador Flávio Bolsonaro (PL-RJ), que também disputa o segundo turno da corrida presidencial. A previsão é que o encontro ocorra às 15h30, a portas fechadas. O objetivo é buscar a colaboração das campanhas para evitar a disseminação de informações falsas na reta final do segundo turno, marcado para 25 de outubro. A reunião foi convocada após uma disputa de li"
+  },
+  {
+   "id": "n-d9e8694e00",
+   "titulo": "Governo cria programa nacional para bloquear celulares em presídios",
+   "url": "https://agenciabrasil.ebc.com.br/justica/noticia/2026-10/governo-cria-programa-nacional-para-bloquear-celulares-em-presidios",
+   "data": "2026-10-13T13:33+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [
+    "anatel"
+   ],
+   "pessoas": [],
+   "resumo": "O Brasil tem, a partir desta terça-feira (13), plano voltado a impedir o uso irregular de celulares e outros equipamentos de telecomunicações dentro de presídios. O Programa Nacional de Neutralização de Comunicações Ilícitas em Estabelecimentos Penais prevê a atuação conjunta da União, estados e Agência Nacional de Telecomunicações (Anatel) para identificar e bloquear comunicações clandestinas em unidades prisionais. Notícias relacionadas: Operação Mute apreendeu 8,5 mil celulares em presídios desde 2023. Entre as ações previstas está a criação do Cadastro Nacional de Perímetros de Segurança P"
+  },
+  {
+   "id": "n-731a49feb5",
+   "titulo": "TSE ordena remoção de post falso sobre uso de droga em ato pró-Lula",
+   "url": "https://agenciabrasil.ebc.com.br/politica/noticia/2026-10/tse-ordena-remocao-de-post-falso-sobre-uso-de-droga-em-ato-pro-lula",
+   "data": "2026-10-13T13:29+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [
+    "tse"
+   ],
+   "pessoas": [
+    "luiz-inacio-lula-da-silva"
+   ],
+   "resumo": "O ministro Marco Aurélio Bellizze, do Tribunal Superior Eleitoral (TSE), ordenou na segunda-feira (12) a remoção das redes sociais de publicações que associam um vídeo falso ao ato em apoio ao presidente Luiz Inácio Lula da Silva, candidato à reeleição, na Avenida Paulista, em São Paulo. Nas publicações, imagens genuínas do ato são misturadas a um vídeo de uma mulher com cabelo vermelho cheirando um pó branco, supostamente cocaína, que, segundo a campanha de Lula, trata-se de uma gravação feita no Chile, sem qualquer relação com o ato na Paulista, que já circulava em redes sociais um dia antes"
+  },
+  {
+   "id": "n-0ae8d0b117",
+   "titulo": "Fim da escala 6x1: confira próximos passos da tramitação no Senado",
+   "url": "https://agenciabrasil.ebc.com.br/politica/noticia/2026-10/fim-da-escala-6x1-confira-proximos-passos-da-tramitacao-no-senado",
+   "data": "2026-10-13T13:13+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [
+    "camara",
+    "senado"
+   ],
+   "pessoas": [],
+   "resumo": "A Proposta de Emenda à Constituição (PEC) 221/2019, que acaba com a escala de seis dias de trabalho para um de descanso (escala 6x1), entrou na reta final de tramitação no Senado Federal. Após ser aprovada pela Câmara dos Deputados e pela Comissão de Constituição e Justiça (CCJ) do Senado , a matéria está em discussão no plenário da Casa e tem votação em primeiro turno prevista para quarta-feira (14). Notícias relacionadas: Alcolumbre marca votação da PEC pelo fim da 6x1 para quarta-feira. Entenda PEC que acaba com escala 6x1: mais tempo livre e mesmo salário. A PEC 221/2019 prevê a redução da"
+  },
+  {
+   "id": "n-a2735783a2",
+   "titulo": "Vídeo: Sessão do Congresso celebra o Dia Mundial da Alimentação – 13/10/26",
+   "url": "https://www12.senado.leg.br/noticias/videos/2026/10/ao-vivo-sessao-do-congresso-celebra-o-dia-mundial-da-alimentacao-2013-13-10-26",
+   "data": "2026-10-13T13:10:00+00:00",
+   "fonte": "senado",
+   "nos": [],
+   "pessoas": [],
+   "resumo": ""
+  },
+  {
+   "id": "n-f06d74c07a",
+   "titulo": "Medida provisória quer coibir excesso de chamadas e golpes telefônicos",
+   "url": "https://agenciabrasil.ebc.com.br/economia/noticia/2026-10/medida-provisoria-quer-coibir-excesso-de-chamadas-e-golpes-telefonicos",
+   "data": "2026-10-13T12:30+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [
+    "anatel"
+   ],
+   "pessoas": [],
+   "resumo": "A área de telecomunicação brasileira deverá seguir novas regras para identificar e bloquear chamadas e mensagens telefônicas com o objetivo de combater fraudes e reduzir o número de ligações abusivas. Medida provisória publicada nesta terça-feira (13) determina que as operadoras autentiquem as chamadas feitas em suas redes. As ligações que não passarem por esse processo poderão ser bloqueadas antes de chegar ao destinatário, conforme regulamentação da Agência Nacional de Telecomunicações (Anatel) . Notícias relacionadas: Chamadas de emergência usando Android terão localização compartilhada. An"
+  },
+  {
+   "id": "n-d23506b437",
+   "titulo": "Comissão mista adia votação de parecer sobre obrigatoriedade de exame para exercício da medicina",
+   "url": "https://www.camara.leg.br/noticias/1310758-comissao-mista-adia-votacao-de-parecer-sobre-obrigatoriedade-de-exame-para-exercicio-da-medicina",
+   "data": "2026-10-13T12:30+00:00",
+   "fonte": "camara",
+   "nos": [
+    "mec"
+   ],
+   "pessoas": [
+    "doutor-luizinho"
+   ],
+   "resumo": "Marcelo Camargo/Agência Brasil O exame também substituirá a etapa teórica do Revalida, exigido para médicos formados no exterior que desejam atuar no Brasil A comissão mista que analisa a Medida Provisória 1370/26 adiou reunião que seria realizada nesta terça-feira (13) para votar o parecer do relator, deputado Doutor Luizinho (PP-RJ). A MP torna obrigatória a aprovação no Exame Nacional de Avaliação da Formação Médica (Enamed), organizado pelo Ministério da Educação, para obter registro profissional nos conselhos regionais de Medicina (CRMs). Ainda não há nova data para a reunião. Conforme a "
+  },
+  {
+   "id": "n-62f7241ba0",
+   "titulo": "Polícia investiga ligação de policiais com facção criminosa",
+   "url": "https://agenciabrasil.ebc.com.br/geral/noticia/2026-10/policia-investiga-ligacao-de-policiais-com-faccao-criminosa",
+   "data": "2026-10-13T12:00+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "Policiais civis fazem, nesta terça-feira (13), operação contra policiais suspeitos de favorecer atividades criminosas da facção Comando Vermelho, no Rio de Janeiro. Os agentes públicos são investigados por indícios de que utilizavam sua própria função para repassar informações privilegiadas e para se envolver em negociações clandestinas de armamentos e munições. As investigações, que contam com o apoio da Corregedoria da Polícia Militar e também do Ministério Público do Rio de Janeiro (MPRJ), começaram em outubro de 2023, quando a Polícia Civil prendeu um policial militar e outro homem que tra"
+  },
+  {
+   "id": "n-eef42f19c6",
+   "titulo": "Norma amplia exigências para atendimento ao consumidor; saiba quais",
+   "url": "https://agenciabrasil.ebc.com.br/economia/noticia/2026-10/norma-amplia-exigencias-para-atendimento-ao-consumidor-saiba-quais",
+   "data": "2026-10-13T11:51+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "Serviços de atendimento ao consumidor (SAC) passam a ter novas regras em todo o país. As mudanças entram em vigor em 20 dias e valem para empresas de setores regulados pelo governo federal e por instituições que prestam serviços financeiros digitais supervisionados pelo Banco Central . Entre as principais providências estão disponibilizar aos clientes atendimento humano obrigatório, SAC gratuito, limite de cinco níveis de atendimento ou menus, cancelamento facilitado, suporte 24 horas em canais eletrônicos. Notícias relacionadas: Conheça as novas regras para proteger consumidores em grandes ev"
+  },
+  {
+   "id": "n-9275d8ba55",
+   "titulo": "Vídeo: PEC do fim da escala 6x1 deve ser votada em primeiro turno na quarta",
+   "url": "https://www12.senado.leg.br/noticias/videos/2026/10/pec-do-fim-da-escala-6x1-deve-ser-votada-em-primeiro-turno-na-quarta",
+   "data": "2026-10-13T11:32:00+00:00",
+   "fonte": "senado",
+   "nos": [],
+   "pessoas": [
+    "davi-alcolumbre"
+   ],
+   "resumo": "O presidente do Senado, Davi Alcolumbre, marcou para quarta-feira (14) a votação em primeiro turno da PEC que acaba com a escala 6x1. O Plenário já realizou três das cinco sessões de discussão necessárias antes da análise da PEC 221/2019."
+  },
+  {
+   "id": "n-f185763d30",
+   "titulo": "Confira a agenda dos presidenciáveis nesta segunda-feira (13)",
+   "url": "https://agenciabrasil.ebc.com.br/politica/noticia/2026-10/confira-agenda-dos-presidenciaveis-nesta-segunda-feira-13",
+   "data": "2026-10-13T11:31+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [],
+   "pessoas": [
+    "luiz-inacio-lula-da-silva",
+    "flavio-bolsonaro"
+   ],
+   "resumo": "Os candidatos à presidência da República que disputam o segundo turno das eleições gerais cumprem agenda em Brasília e São Paulo, nesta segunda-feira (13). Flávio Bolsonaro (PL) Se reúne à tarde com integrantes do MDB e em seguida participa de encontro do Associativismo, no Clube Atlético Monte Líbano. Luiz Inácio Lula da Silva (PT) Grava vídeos para campanha eleitoral à tarde. A ordem de apresentação da agenda dos candidatos a presidente segue alternância diária."
+  },
+  {
+   "id": "n-654744f487",
+   "titulo": "Mega-Sena sorteia prêmio acumulado de R$ 150 milhões nesta quarta",
+   "url": "https://agenciabrasil.ebc.com.br/geral/noticia/2026-10/mega-sena-sorteia-premio-acumulado-de-r-150-milhoes-nesta-quarta",
+   "data": "2026-10-13T10:02+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [
+    "caixa"
+   ],
+   "pessoas": [],
+   "resumo": "A Mega-Sena sorteia nesta quarta-feira (14) prêmio estimado em R$ 150 milhões . As seis dezenas do concurso 3.070 serão sorteadas a partir das 21h (horário de Brasília) no Espaço da Sorte, em São Paulo. As apostas podem ser feitas até às 20h (horário de Brasília) de quarta em casas lotéricas credenciadas pela Caixa em todo o país ou pela internet, no site ou aplicativo da Caixa. A aposta simples, com seis dezenas, custa R$ 6. Notícias relacionadas: Mega-Sena acumula para R$ 150 milhões; confira os números sorteados . No último concurso, foram sorteados os números 05 - 19 - 22 - 44 - 47 e 57. e"
+  },
+  {
+   "id": "n-3fa2171c2e",
+   "titulo": "Milhares ocupam Copacabana em ato pela democracia e em apoio a Lula",
+   "url": "https://agenciabrasil.ebc.com.br/politica/noticia/2026-10/milhares-de-pessoas-lotam-orla-de-copacabana-em-apoio-lula",
+   "data": "2026-10-12T22:04+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [
+    "ebc"
+   ],
+   "pessoas": [
+    "luiz-inacio-lula-da-silva",
+    "flavio-bolsonaro"
+   ],
+   "resumo": "Milhares de apoiadores lotaram as duas faixas da orla de Copacabana, na zona sul do Rio de Janeiro, em apoio à democracia e à reeleição do presidente Luiz Inácio Lula da Silva (PT) , na tarde desta segunda-feira (12), feriado de Nossa Senhora Aparecida . A professora aposentada Clara Davidorch, de 87 anos, foi à manifestação acompanhada de duas amigas, de 85 e 82 anos. Notícias relacionadas: SBT admite erro ao atribuir à EBC falha em propaganda eleitoral. Flávio Bolsonaro participa de missa na Catedral de Brasília. Em Aparecida, Alckmin pede isenção da Justiça Eleitoral. “Vim nesse ato pelo Lu"
+  },
+  {
+   "id": "n-d41308bbd4",
+   "titulo": "Kassio atende Flávio e suspende circulação de jornal de sindicato",
+   "url": "https://agenciabrasil.ebc.com.br/justica/noticia/2026-10/kassio-atende-flavio-e-suspende-circulacao-de-jornal-de-sindicato",
+   "data": "2026-10-12T21:23+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [
+    "tse"
+   ],
+   "pessoas": [
+    "luiz-inacio-lula-da-silva",
+    "nunes-marques",
+    "flavio-bolsonaro"
+   ],
+   "resumo": "O presidente do Tribunal Superior Eleitoral (TSE), Kassio Nunes Marques, mandou suspender a circulação de um jornal do Sindicato dos Petroleiros de São Paulo (Sindipetro Unificado). A decisão foi tomada em sigilo, na semana passada, após a campanha do candidato à Presidência da República Flávio Bolsonaro (PL) alegar que o sindicato teve sua estrutura usada para propaganda eleitoral, ato ilegal de acordo com a legislação eleitoral. Cerca de 30 mil exemplares foram impressos. Notícias relacionadas: Campanha de Lula aciona TSE após post falso sobre comício na Paulista. Técnicos do TSE não encontr"
+  },
+  {
+   "id": "n-2678da2851",
+   "titulo": "Flávio Bolsonaro participa de missa na Catedral de Brasília",
+   "url": "https://agenciabrasil.ebc.com.br/politica/noticia/2026-10/flavio-bolsonaro-participa-de-missa-na-catedral-de-brasilia-0",
+   "data": "2026-10-12T21:03+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [],
+   "pessoas": [
+    "flavio-bolsonaro"
+   ],
+   "resumo": "O candidato do PL à Presidência da República, Flávio Bolsonaro, participou nesta segunda-feira (12) de uma missa na Catedral de Brasília. O candidato disse ter ido à missa a convite do cardeal Dom Paulo Cezar Costa, arcebispo metropolitano de Brasília. No mês passado, após boatos de que poderia retirar de Nossa Senhora Aparecida o título de padroeira do Brasil, Flávio Bolsonaro disse que “gente de dentro da CNBB” teria ajudado na divulgação do tema. A Conferência Nacional dos Bispos do Brasil (CNBB) negou a elaboração ou divulgação de informações falsas relacionadas ao atual processo eleitoral"
+  },
+  {
+   "id": "n-b379bfad29",
+   "titulo": "Polícia do Rio apreende armas após morte de suboficial do Bope",
+   "url": "https://agenciabrasil.ebc.com.br/geral/noticia/2026-10/policia-do-rio-apreende-armas-apos-morte-de-suboficial-do-bope",
+   "data": "2026-10-12T20:49+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "A Delegacia de Homicídios da Capital (DHC) está investigando a morte do subtenente do Batalhão de Operações Policiais Especiais (Bope), Glaucio Marcelo Fonseca da Silva, de 54 anos, em troca de tiros com militares do batalhão de Jacarepaguá, zona sudoeste do Rio de Janeiro, na madrugada deste domingo (11). Em nota, a Polícia Civil do Rio diz que os agentes do Bope faziam uma abordagem a ocupantes de um carro no Beco do Saci, na Gardênia Azul, quando foram confundidos com criminosos pelos policiais do batalhão de Jacarepaguá. Notícias relacionadas: Aviões militares iniciam combate a focos de in"
+  },
+  {
+   "id": "n-f41d5549fe",
+   "titulo": "SBT admite erro ao atribuir à EBC falha em propaganda eleitoral",
+   "url": "https://agenciabrasil.ebc.com.br/politica/noticia/2026-10/sbt-admite-erro-ao-atribuir-ebc-falha-em-propaganda-eleitoral",
+   "data": "2026-10-12T20:35+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [
+    "ebc",
+    "tse"
+   ],
+   "pessoas": [
+    "luiz-inacio-lula-da-silva",
+    "flavio-bolsonaro"
+   ],
+   "resumo": "O SBT publicou uma nota nesta segunda-feira (12) em seu portal de notícias na qual admite ter informado de forma incorreta que a Empresa Brasil de Comunicação (EBC) seria responsável pela falha de áudio registrada na propaganda eleitoral do candidato à Presidência Flávio Bolsonaro (PL), exibida na tarde de hoje. Segundo o SBT, o problema ocorreu durante a conversão técnica do programa. Notícias relacionadas: Técnicos do TSE não encontram conteúdo falso no canal Exército do Lula. TSE barra anúncios de Lula acusando Flávio de ser contra escala 6x1. Na atualização da reportagem, o portal afirmou "
+  },
   {
    "id": "n-c8e70ddf6a",
    "titulo": "Campanha de Lula aciona TSE após post falso sobre comício na Paulista",
