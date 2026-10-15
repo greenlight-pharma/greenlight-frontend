@@ -1,6 +1,6 @@
 {
  "meta": {
-  "gerado_em": "2026-10-14T15:00+00:00",
+  "gerado_em": "2026-10-15T14:53+00:00",
   "gerado_por": "scripts/governo/agentes/agente_noticias.py",
   "janela_dias": 90,
   "fontes": [
@@ -30,222 +30,222 @@
     "url": "https://www.gov.br/planalto/pt-br/acompanhe-o-planalto/noticias/RSS"
    }
   ],
-  "total_artigos": 2164,
-  "artigos_com_no": 727,
-  "novos_nesta_rodada": 71,
+  "total_artigos": 2231,
+  "artigos_com_no": 749,
+  "novos_nesta_rodada": 74,
   "artigos_por_fonte": {
-   "camara": 488,
-   "agenciabrasil": 842,
-   "senado": 799,
+   "agenciabrasil": 875,
+   "senado": 814,
+   "camara": 508,
    "stf": 7,
-   "planalto": 28
+   "planalto": 27
   },
   "ordem": "peso igual por fonte; contagem real de matérias",
   "resumo_por": "claude"
  },
  "resumo": [
   {
-   "texto": "A Medida Provisória 1.395/2026 abre crédito extraordinário de R$ 7,5 bilhões para subsídios a combustíveis, com R$ 6,1 bilhões destinados ao diesel rodoviário e pagamento pela Agência Nacional do Petróleo a produtores e importadores.",
-   "artigo_id": "n-f374777cce",
-   "no_id": "anp"
+   "texto": "O Senado Federal aprovou, em dois turnos, a PEC 221/2019, que põe fim à escala 6x1 e reduz a jornada de trabalho para cinco dias semanais, com 75 votos favoráveis.",
+   "artigo_id": "n-c651343ec0",
+   "no_id": "senado"
   },
   {
-   "texto": "A Procuradoria-Geral da República enviou parecer ao Supremo Tribunal Federal contra o afastamento do diretor-geral da Polícia Federal, Andrei Rodrigues, por falta de elementos que justifiquem a medida.",
+   "texto": "A Câmara dos Deputados aprovou, por 461 votos a 4, o aumento do teto de receita bruta do MEI e o perdão de dívidas inscritas na Dívida Ativa da União até 13 de outubro de 2026; o texto segue ao Senado.",
+   "artigo_id": "n-0f902a8996",
+   "no_id": "camara"
+  },
+  {
+   "texto": "A Procuradoria-Geral da República enviou parecer ao Supremo Tribunal Federal contrário ao afastamento do diretor-geral da Polícia Federal, Andrei Rodrigues.",
    "artigo_id": "n-ccc0470f5f",
    "no_id": "stf"
   },
   {
-   "texto": "Entrou em vigor a Medida Provisória 1.396/2026, que obriga operadoras de telecomunicações a autenticar e bloquear chamadas e mensagens abusivas e cria base de dados centralizada sob supervisão da Agência Nacional de Telecomunicações.",
-   "artigo_id": "n-f6231b92e8",
-   "no_id": "anatel"
-  },
-  {
-   "texto": "O governo federal anunciou pacote de cinco medidas para microempreendedores individuais, incluindo perdão de dívidas e aumento do teto de faturamento, com projeto de lei complementar enviado ao Congresso Nacional e impacto fiscal estimado pelo Ministério da Fazenda em R$ 3,04 bilhões entre 2027 e 2029.",
-   "artigo_id": "n-f0fc6a8063",
-   "no_id": "congresso"
+   "texto": "O Ministério do Trabalho e Emprego iniciou o pagamento do lote complementar do Abono Salarial a 1.030.899 trabalhadores, totalizando R$ 804,24 milhões.",
+   "artigo_id": "n-89909692eb",
+   "no_id": "mte"
   }
  ],
  "ranking": {
   "orgaos": [
    {
     "id": "tse",
-    "artigos": 160,
-    "peso": 84.67430097754213,
-    "ultima": "2026-10-14T00:50+00:00"
+    "artigos": 166,
+    "peso": 87.42341797840405,
+    "ultima": "2026-10-15T11:23+00:00"
    },
    {
     "id": "stf",
     "artigos": 115,
-    "peso": 60.20374390830333,
+    "peso": 60.00540633735281,
     "ultima": "2026-10-14T12:46+00:00"
    },
    {
     "id": "congresso",
-    "artigos": 62,
-    "peso": 34.315313133083365,
-    "ultima": "2026-10-14T01:09+00:00"
+    "artigos": 66,
+    "peso": 37.332537337869624,
+    "ultima": "2026-10-15T14:25+00:00"
    },
    {
     "id": "camara",
-    "artigos": 63,
-    "peso": 33.87669147003828,
-    "ultima": "2026-10-14T14:23+00:00"
-   },
-   {
-    "id": "pf",
-    "artigos": 42,
-    "peso": 21.754575642355803,
-    "ultima": "2026-10-14T12:46+00:00"
+    "artigos": 66,
+    "peso": 35.75802007722008,
+    "ultima": "2026-10-15T14:28:00+00:00"
    },
    {
     "id": "prf",
     "artigos": 13,
-    "peso": 21.652976723109518,
+    "peso": 22.683454602654603,
     "ultima": "2026-10-13T18:15+00:00"
+   },
+   {
+    "id": "pf",
+    "artigos": 44,
+    "peso": 22.666772060372057,
+    "ultima": "2026-10-15T12:01+00:00"
    },
    {
     "id": "caixa",
     "artigos": 38,
-    "peso": 19.532541567695965,
+    "peso": 19.377828571428562,
     "ultima": "2026-10-14T10:28+00:00"
    },
    {
     "id": "mte",
-    "artigos": 4,
-    "peso": 16.999185612487274,
-    "ultima": "2026-10-06T23:51+00:00"
+    "artigos": 5,
+    "peso": 18.565697354497352,
+    "ultima": "2026-10-15T14:38+00:00"
    },
    {
     "id": "inpe",
     "artigos": 2,
-    "peso": 15.97115710892433,
+    "peso": 17.035868783068782,
     "ultima": "2026-10-12T16:43+00:00"
    },
    {
     "id": "mec",
     "artigos": 29,
-    "peso": 15.845795202025982,
+    "peso": 15.792650793343698,
     "ultima": "2026-10-13T19:51+00:00"
    },
    {
     "id": "anvisa",
     "artigos": 29,
-    "peso": 15.334609984960863,
+    "peso": 15.233175238721689,
     "ultima": "2026-10-14T13:44+00:00"
    },
    {
     "id": "inss",
     "artigos": 19,
-    "peso": 12.570007654812086,
+    "peso": 12.535240219665413,
     "ultima": "2026-10-01T20:17+00:00"
    },
    {
     "id": "agu",
     "artigos": 24,
-    "peso": 12.36400488734434,
+    "peso": 12.276842962442958,
     "ultima": "2026-10-10T18:06+00:00"
    },
    {
     "id": "petrobras",
     "artigos": 22,
-    "peso": 11.391302072959373,
+    "peso": 11.333386030186025,
     "ultima": "2026-10-08T00:12+00:00"
+   },
+   {
+    "id": "ibge",
+    "artigos": 21,
+    "peso": 10.747014391014387,
+    "ultima": "2026-10-15T13:18+00:00"
    },
    {
     "id": "ms",
     "artigos": 19,
-    "peso": 10.249793156324111,
+    "peso": 10.210175449321902,
     "ultima": "2026-10-10T19:37+00:00"
    },
    {
     "id": "tcu",
     "artigos": 17,
-    "peso": 9.81593840359326,
+    "peso": 9.864408462701375,
     "ultima": "2026-10-07T10:38+00:00"
-   },
-   {
-    "id": "ibge",
-    "artigos": 19,
-    "peso": 9.793933628436973,
-    "ultima": "2026-10-14T13:02+00:00"
    },
    {
     "id": "anp",
     "artigos": 17,
-    "peso": 9.277090341939147,
+    "peso": 9.266718517064971,
     "ultima": "2026-10-14T14:33:00+00:00"
+   },
+   {
+    "id": "senado",
+    "artigos": 13,
+    "peso": 8.839678740157481,
+    "ultima": "2026-10-15T01:41+00:00"
    },
    {
     "id": "tst",
     "artigos": 15,
-    "peso": 8.22139899378721,
+    "peso": 8.208618411764867,
     "ultima": "2026-09-29T23:40+00:00"
    },
    {
     "id": "inep",
-    "artigos": 15,
-    "peso": 7.710213776722089,
-    "ultima": "2026-10-14T14:18+00:00"
-   },
-   {
-    "id": "senado",
-    "artigos": 10,
-    "peso": 7.004497488415561,
-    "ultima": "2026-10-13T13:13+00:00"
+    "artigos": 16,
+    "peso": 8.159085714285712,
+    "ultima": "2026-10-14T15:27+00:00"
    },
    {
     "id": "mpf",
     "artigos": 13,
-    "peso": 6.709848117748134,
+    "peso": 6.667471533871533,
     "ultima": "2026-10-13T22:05+00:00"
    },
    {
     "id": "stj",
     "artigos": 11,
-    "peso": 6.4275616024255235,
+    "peso": 6.384393018685932,
     "ultima": "2026-10-07T23:14+00:00"
    },
    {
     "id": "cnj",
     "artigos": 9,
-    "peso": 4.653791110622244,
+    "peso": 4.6277001053001054,
     "ultima": "2026-10-07T19:31+00:00"
    },
    {
     "id": "anatel",
     "artigos": 8,
-    "peso": 4.512647852960939,
+    "peso": 4.486160847707304,
     "ultima": "2026-10-14T12:53+00:00"
    },
    {
     "id": "cvm",
     "artigos": 7,
-    "peso": 3.9709707565904755,
+    "peso": 3.9380035995500564,
     "ultima": "2026-09-27T18:52+00:00"
    },
    {
     "id": "ebc",
     "artigos": 7,
-    "peso": 3.5980997624703086,
+    "peso": 3.5696000000000003,
     "ultima": "2026-10-12T22:04+00:00"
    },
    {
     "id": "mme",
     "artigos": 6,
-    "peso": 3.1670740444558074,
+    "peso": 3.1743003159003162,
     "ultima": "2026-10-09T15:09:00+00:00"
    },
    {
     "id": "aneel",
     "artigos": 6,
-    "peso": 3.1394111998668173,
+    "peso": 3.1360859248859247,
     "ultima": "2026-10-07T10:38+00:00"
    },
    {
-    "id": "correios",
+    "id": "inmet",
     "artigos": 6,
-    "peso": 3.084085510688836,
-    "ultima": "2026-10-14T12:51+00:00"
+    "peso": 3.059657142857143,
+    "ultima": "2026-10-15T11:54+00:00"
    }
   ],
   "pessoas": [
@@ -260,9 +260,9 @@
     "uf": null,
     "foto": "https://commons.wikimedia.org/wiki/Special:FilePath/Foto_oficial_de_Luiz_In%C3%A1cio_Lula_da_Silva_%28estreita%29.jpg?width=160",
     "foto_fonte": "https://www.wikidata.org/wiki/Q37181",
-    "artigos": 105,
-    "peso": 69.6747758607821,
-    "ultima": "2026-10-14T13:57+00:00"
+    "artigos": 117,
+    "peso": 76.62091681926336,
+    "ultima": "2026-10-15T11:46+00:00"
    },
    {
     "id": "flavio-bolsonaro",
@@ -275,9 +275,9 @@
     "uf": "RJ",
     "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador5894.jpg",
     "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/5894",
-    "artigos": 61,
-    "peso": 31.520846426203764,
-    "ultima": "2026-10-14T11:17+00:00"
+    "artigos": 67,
+    "peso": 34.43367216567215,
+    "ultima": "2026-10-15T11:23+00:00"
    },
    {
     "id": "nunes-marques",
@@ -290,9 +290,9 @@
     "uf": null,
     "foto": "https://commons.wikimedia.org/wiki/Special:FilePath/Nunes_Marques%2C_February_2025_%28cropped%29.jpg?width=160",
     "foto_fonte": "https://www.wikidata.org/wiki/Q99831978",
-    "artigos": 44,
-    "peso": 22.78260414591874,
-    "ultima": "2026-10-13T23:35+00:00"
+    "artigos": 45,
+    "peso": 23.176714917514907,
+    "ultima": "2026-10-15T02:07+00:00"
    },
    {
     "id": "davi-alcolumbre",
@@ -305,9 +305,9 @@
     "uf": "AP",
     "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador3830.jpg",
     "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/3830",
-    "artigos": 37,
-    "peso": 19.876075498173208,
-    "ultima": "2026-10-14T13:19:00+00:00"
+    "artigos": 38,
+    "peso": 20.600689083889083,
+    "ultima": "2026-10-15T01:36:00+00:00"
    },
    {
     "id": "damares-alves",
@@ -320,9 +320,24 @@
     "uf": "DF",
     "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador6335.jpg",
     "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/6335",
-    "artigos": 28,
-    "peso": 15.166958698372976,
-    "ultima": "2026-10-14T12:57:00+00:00"
+    "artigos": 29,
+    "peso": 15.896560196560188,
+    "ultima": "2026-10-14T22:25:00+00:00"
+   },
+   {
+    "id": "hugo-motta",
+    "nome": "Hugo Motta",
+    "nome_completo": "Hugo Motta",
+    "cargo": "Presidente da Câmara dos Deputados · CD",
+    "no_id": "camara",
+    "poder": "legislativo",
+    "partido": "REPUBLICANOS",
+    "uf": "PB",
+    "foto": "https://www.camara.leg.br/internet/deputado/bandep/160674.jpg",
+    "foto_fonte": "https://www.camara.leg.br/deputados/160674",
+    "artigos": 15,
+    "peso": 10.863872390644042,
+    "ultima": "2026-10-15T11:06+00:00"
    },
    {
     "id": "edson-fachin",
@@ -336,7 +351,7 @@
     "foto": "https://commons.wikimedia.org/wiki/Special:FilePath/Luiz_Edson_Fachin-12-05.2015.jpg?width=160",
     "foto_fonte": "https://www.wikidata.org/wiki/Q10320705",
     "artigos": 19,
-    "peso": 9.821596473025963,
+    "peso": 9.765343067743064,
     "ultima": "2026-10-13T22:05+00:00"
    },
    {
@@ -351,23 +366,8 @@
     "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador825.jpg",
     "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/825",
     "artigos": 17,
-    "peso": 9.208510638297877,
+    "peso": 9.318673218673219,
     "ultima": "2026-10-09T16:28:00+00:00"
-   },
-   {
-    "id": "hugo-motta",
-    "nome": "Hugo Motta",
-    "nome_completo": "Hugo Motta",
-    "cargo": "Presidente da Câmara dos Deputados · CD",
-    "no_id": "camara",
-    "poder": "legislativo",
-    "partido": "REPUBLICANOS",
-    "uf": "PB",
-    "foto": "https://www.camara.leg.br/internet/deputado/bandep/160674.jpg",
-    "foto_fonte": "https://www.camara.leg.br/deputados/160674",
-    "artigos": 13,
-    "peso": 9.113051150003082,
-    "ultima": "2026-10-13T21:27+00:00"
    },
    {
     "id": "omar-aziz",
@@ -381,8 +381,23 @@
     "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador5525.jpg",
     "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/5525",
     "artigos": 12,
-    "peso": 6.500125156445559,
+    "peso": 6.577886977886979,
     "ultima": "2026-10-06T22:54:00+00:00"
+   },
+   {
+    "id": "mara-gabrilli",
+    "nome": "Mara Gabrilli",
+    "nome_completo": "Mara Cristina Gabrilli",
+    "cargo": "Senadora, SP",
+    "no_id": "senado",
+    "poder": "legislativo",
+    "partido": "PSD",
+    "uf": "SP",
+    "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador5376.jpg",
+    "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/5376",
+    "artigos": 11,
+    "peso": 6.0297297297297305,
+    "ultima": "2026-10-15T00:06:00+00:00"
    },
    {
     "id": "astronauta-marcos-pontes",
@@ -396,7 +411,7 @@
     "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador6009.jpg",
     "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/6009",
     "artigos": 11,
-    "peso": 5.958448060075096,
+    "peso": 6.0297297297297305,
     "ultima": "2026-10-09T21:56:00+00:00"
    },
    {
@@ -411,7 +426,7 @@
     "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador4770.jpg",
     "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/4770",
     "artigos": 10,
-    "peso": 5.416770963704632,
+    "peso": 5.481572481572482,
     "ultima": "2026-10-09T21:56:00+00:00"
    },
    {
@@ -426,23 +441,8 @@
     "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador345.jpg",
     "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/345",
     "artigos": 10,
-    "peso": 5.416770963704632,
+    "peso": 5.481572481572482,
     "ultima": "2026-09-25T18:03:00+00:00"
-   },
-   {
-    "id": "mara-gabrilli",
-    "nome": "Mara Gabrilli",
-    "nome_completo": "Mara Cristina Gabrilli",
-    "cargo": "Senadora, SP",
-    "no_id": "senado",
-    "poder": "legislativo",
-    "partido": "PSD",
-    "uf": "SP",
-    "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador5376.jpg",
-    "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/5376",
-    "artigos": 10,
-    "peso": 5.416770963704632,
-    "ultima": "2026-09-23T18:20:00+00:00"
    },
    {
     "id": "rogerio-carvalho",
@@ -456,7 +456,7 @@
     "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador5352.jpg",
     "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/5352",
     "artigos": 10,
-    "peso": 5.416770963704632,
+    "peso": 5.481572481572482,
     "ultima": "2026-09-14T16:27:00+00:00"
    },
    {
@@ -471,7 +471,7 @@
     "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador5990.jpg",
     "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/5990",
     "artigos": 9,
-    "peso": 4.875093867334169,
+    "peso": 4.933415233415234,
     "ultima": "2026-09-04T21:56:00+00:00"
    },
    {
@@ -486,7 +486,7 @@
     "foto": null,
     "foto_fonte": null,
     "artigos": 9,
-    "peso": 4.681453955211236,
+    "peso": 4.665914496314497,
     "ultima": "2026-10-14T12:46+00:00"
    },
    {
@@ -501,7 +501,7 @@
     "foto": "https://www.camara.leg.br/internet/deputado/bandep/220645.jpg",
     "foto_fonte": "https://www.camara.leg.br/deputados/220645",
     "artigos": 8,
-    "peso": 4.512647852960939,
+    "peso": 4.486160847707304,
     "ultima": "2026-10-05T17:44+00:00"
    },
    {
@@ -516,7 +516,7 @@
     "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador5917.jpg",
     "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/5917",
     "artigos": 8,
-    "peso": 4.333416770963705,
+    "peso": 4.385257985257986,
     "ultima": "2026-10-08T21:29:00+00:00"
    },
    {
@@ -531,7 +531,7 @@
     "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador6338.jpg",
     "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/6338",
     "artigos": 7,
-    "peso": 3.791739674593242,
+    "peso": 3.8371007371007373,
     "ultima": "2026-10-08T12:29:00+00:00"
    },
    {
@@ -546,7 +546,7 @@
     "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador475.jpg",
     "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/475",
     "artigos": 7,
-    "peso": 3.791739674593242,
+    "peso": 3.8371007371007373,
     "ultima": "2026-10-07T19:20:00+00:00"
    },
    {
@@ -561,8 +561,23 @@
     "foto": "https://www.camara.leg.br/internet/deputado/bandep/74161.jpg",
     "foto_fonte": "https://www.camara.leg.br/deputados/74161",
     "artigos": 6,
-    "peso": 3.595270727753955,
+    "peso": 3.619132697479154,
     "ultima": "2026-10-06T22:54:00+00:00"
+   },
+   {
+    "id": "esperidiao-amin",
+    "nome": "Esperidião Amin",
+    "nome_completo": "Esperidião Amin Helou Filho",
+    "cargo": "Senador, SC",
+    "no_id": "senado",
+    "poder": "legislativo",
+    "partido": "PP",
+    "uf": "SC",
+    "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador22.jpg",
+    "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/22",
+    "artigos": 6,
+    "peso": 3.288943488943489,
+    "ultima": "2026-10-14T20:47:00+00:00"
    },
    {
     "id": "alan-rick",
@@ -576,7 +591,7 @@
     "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador5672.jpg",
     "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/5672",
     "artigos": 6,
-    "peso": 3.2500625782227788,
+    "peso": 3.288943488943489,
     "ultima": "2026-10-09T11:34:00+00:00"
    },
    {
@@ -591,27 +606,794 @@
     "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador6336.jpg",
     "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/6336",
     "artigos": 6,
-    "peso": 3.2500625782227788,
+    "peso": 3.288943488943489,
     "ultima": "2026-09-30T15:55:00+00:00"
-   },
-   {
-    "id": "carlos-portinho",
-    "nome": "Carlos Portinho",
-    "nome_completo": "Carlos Francisco Portinho",
-    "cargo": "Senador, RJ",
-    "no_id": "senado",
-    "poder": "legislativo",
-    "partido": "PL",
-    "uf": "RJ",
-    "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador5936.jpg",
-    "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/5936",
-    "artigos": 6,
-    "peso": 3.2223997336337886,
-    "ultima": "2026-10-09T16:28:00+00:00"
    }
   ]
  },
  "artigos": [
+  {
+   "id": "n-89909692eb",
+   "titulo": "Lote complementar do abono salarial começa a ser pago nesta quinta",
+   "url": "https://agenciabrasil.ebc.com.br/economia/noticia/2026-10/lote-complementar-do-abono-salarial-comeca-a-ser-pago-nesta-quinta",
+   "data": "2026-10-15T14:38+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [
+    "mte"
+   ],
+   "pessoas": [],
+   "resumo": "O Ministério do Trabalho e Emprego (MTE) começa a pagar, nesta quinta-feira (15), o lote complementar do Abono Salarial. Ao todo, serão contemplados 1.030.899 trabalhadores com direito ao benefício e os valores depositados somam R$ 804,24 milhões. Notícias relacionadas: Senado aprova fim da escala 6x1 e redução da jornada de trabalho. Exploração de trabalhadores rurais sustenta fruticultura bilionária. Fim da 6x1: saiba quando entra em vigor nova jornada de trabalho. O valor corresponde ao salário mínimo, hoje R$ 1.621, dividido por 12 e multiplicado pela quantidade de meses trabalhados no ano"
+  },
+  {
+   "id": "n-fa2dea8adc",
+   "titulo": "Vídeo: Senado aprova PEC que acaba com a escala 6x1 e reduz jornada para 40 horas",
+   "url": "https://www12.senado.leg.br/noticias/videos/2026/10/senado-aprova-pec-que-acaba-com-a-escala-6x1-e-reduz-jornada-para-40-horas",
+   "data": "2026-10-15T14:33:00+00:00",
+   "fonte": "senado",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "O Senado aprovou, em dois turnos, a PEC 221/2019, que acaba com a escala de trabalho 6x1. O texto reduz a jornada máxima de 44 para 40 horas semanais, sem redução de salário, com até oito horas por dia e dois dias de descanso semanal, um deles preferencialmente aos domingos. A transição será feita em duas etapas: a jornada cai para 42 horas dois meses após a publicação da emenda e chega a 40 horas um ano e dois meses depois. As novas regras não valem para servidores públicos nem para empregados com diploma superior que recebam ao menos R$ 21.188,00."
+  },
+  {
+   "id": "n-d7c0ddb6a1",
+   "titulo": "Projeto que amplia limite do MEI e perdoa dívidas chega ao Senado",
+   "url": "https://www12.senado.leg.br/noticias/materias/2026/10/15/projeto-que-amplia-limite-do-mei-e-perdoa-dividas-chega-ao-senado",
+   "data": "2026-10-15T14:28:00+00:00",
+   "fonte": "senado",
+   "nos": [
+    "camara"
+   ],
+   "pessoas": [
+    "rubens-pereira-junior"
+   ],
+   "resumo": "O Senado deve analisar projeto de lei complementar que prevê o reajuste do limite de enquadramento como microempreendedor individual (MEI) para até R$ 140 mil em 2028, o perdão de débitos inscritos ou não na Dívida Ativa da União até 13 de outubro de 2026 e a ampliação do limite de contratação de empregados de um para até dois. O PLP 186/2026 foi aprovado nesta quarta-feira (14) na Câmara dos Deputados. O substitutivo, apresentado pelo relator, deputado Rubens Pereira Júnior (PT-MA), também incorporou o PLP 267/2026. Ambos os projetos foram apresentados pelo Poder Executivo e alteram a Lei Com"
+  },
+  {
+   "id": "n-85d19dcc39",
+   "titulo": "CUT elogia fim da “massacrante” 6x1; CNI quer revisar PEC aprovada",
+   "url": "https://agenciabrasil.ebc.com.br/politica/noticia/2026-10/cut-elogia-fim-da-massacrante-6x1-cni-quer-revisar-pec-aprovada",
+   "data": "2026-10-15T14:25+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [
+    "congresso"
+   ],
+   "pessoas": [],
+   "resumo": "Enquanto os sindicatos que representam trabalhadores comemoram o fim da escala 6x1, as entidades empresariais lamentam a abolição da jornada e cobram do Congresso Nacional a revisão da proposta de emenda à Constituição (PEC) aprovada na noite desta quarta-feira (14). A Central Única dos Trabalhadores (CUT) saudou o fim da “massacrante escala 6x1” e a redução da jornada de trabalho das atuais 44 horas para 40 horas semanais como uma vitória “maiúscula da luta, do suor e da organização da classe trabalhadora brasileira”. Notícias relacionadas: Senado aprova fim da escala 6x1 e redução da jornada"
+  },
+  {
+   "id": "n-32c7c50405",
+   "titulo": "Projeto abre crédito orçamentário para despesas decorrentes de emendas individuais",
+   "url": "https://www.camara.leg.br/noticias/1311380-projeto-abre-credito-orcamentario-para-despesas-decorrentes-de-emendas-individuais",
+   "data": "2026-10-15T14:08+00:00",
+   "fonte": "camara",
+   "nos": [
+    "congresso"
+   ],
+   "pessoas": [],
+   "resumo": "Texto será analisado pela Comissão Mista de Orçamento e pelo Plenário do Congresso Nacional"
+  },
+  {
+   "id": "n-b0e74f9955",
+   "titulo": "Começam hoje as inscrições para concurso de analista legislativo da Câmara dos Deputados",
+   "url": "https://www.camara.leg.br/noticias/1311427-comecam-hoje-as-inscricoes-para-concurso-de-analista-legislativo-da-camara-dos-deputados",
+   "data": "2026-10-15T13:45+00:00",
+   "fonte": "camara",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "Seleção oferece 66 vagas imediatas e 118 para cadastro de reserva; inscrições seguem até 17 de novembro"
+  },
+  {
+   "id": "n-c353425f1c",
+   "titulo": "IBGE estima safra de grãos recorde em 2026: 354,5 milhões de toneladas",
+   "url": "https://agenciabrasil.ebc.com.br/economia/noticia/2026-10/ibge-estima-safra-de-graos-recorde-em-2026-3545-milhoes-de-toneladas",
+   "data": "2026-10-15T13:18+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [
+    "conab",
+    "ibge"
+   ],
+   "pessoas": [],
+   "resumo": "A estimativa de setembro para a produção de grãos em 2026 aumentou 2,4%, para 354,5 milhões de toneladas, na comparação com 2025 (346,1 milhões de toneladas). Em relação a agosto de 2026, a previsão ficou praticamente estável, com variação de 0,4% – aumento de 1.566.233 de toneladas. Notícias relacionadas: Conab estima safra de grãos de 360,8 milhões de toneladas em 2025/26. As informações constam do Levantamento Sistemático da Produção Agrícola do Instituto Brasileiro de Geografia e Estatística (IBGE), divulgado nesta quinta-feira (15). A estimativa da produção de cereais, leguminosas e oleag"
+  },
+  {
+   "id": "n-147173547d",
+   "titulo": "Projeto abre crédito de R$ 290 milhões para Angra 3",
+   "url": "https://www.camara.leg.br/noticias/1311357-projeto-abre-credito-de-r-290-milhoes-para-angra-3",
+   "data": "2026-10-15T13:13+00:00",
+   "fonte": "camara",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "Alguns gastos serão antecipados de 2027 para 2026"
+  },
+  {
+   "id": "n-94e157a160",
+   "titulo": "Vendas no comércio varejista têm variação de 0,1% em agosto",
+   "url": "https://agenciabrasil.ebc.com.br/economia/noticia/2026-10/vendas-no-comercio-varejista-tem-variacao-de-01-em-agosto",
+   "data": "2026-10-15T13:09+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [
+    "ibge"
+   ],
+   "pessoas": [],
+   "resumo": "O volume de vendas no comércio varejista registrou variação de 0,1% em agosto deste ano frente a julho, na série com ajuste sazonal, após queda de 0,8% no mês anterior. Com esse resultado, a média móvel trimestral para o varejo, depois de recuar 0,1% no trimestre encerrado em julho, volta a apresentar -0,1% de variação no trimestre encerrado em agosto. Os dados estão na Pesquisa Mensal do Comércio, do Instituto Brasileiro de Geografia e Estatística (IBGE), divulgados nesta quinta-feira (15). Notícias relacionadas: Comércio eletrônico em compras federais é regulamentado. Vendas no comércio caem"
+  },
+  {
+   "id": "n-bd6bbf5135",
+   "titulo": "Projeto abre crédito especial para despesas não previstas de vários órgãos",
+   "url": "https://www.camara.leg.br/noticias/1311364-projeto-abre-credito-especial-para-despesas-nao-previstas-de-varios-orgaos",
+   "data": "2026-10-15T13:03+00:00",
+   "fonte": "camara",
+   "nos": [
+    "congresso"
+   ],
+   "pessoas": [],
+   "resumo": "Texto será analisado pela Comissão Mista de Orçamento e pelo Plenário do Congresso Nacional"
+  },
+  {
+   "id": "n-8bf31c27f2",
+   "titulo": "MapBiomas: Amazônia registra menor nível de desmatamento em 41 anos",
+   "url": "https://agenciabrasil.ebc.com.br/meio-ambiente/noticia/2026-10/mapbiomas-amazonia-registra-menor-nivel-de-desmatamento-em-41-anos",
+   "data": "2026-10-15T12:57+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "A Amazônia registrou o menor nível de desmatamento em 2025, quando a área devastada somou 693 mil hectares – número mais baixo nos últimos em 41 anos. O dado faz parte da Coleção 11 do MapBiomas , que reúne informações sobre cobertura e uso da terra do Brasil entre 1985 e 2025. A maior parte do desmatamento, 639 mil hectares, ocorreu em vegetação primária, ou seja, em locais onde a vegetação nativa continuava intocada. Outros 54 mil hectares desmatados foram de vegetação secundária, onde os ecossistemas já haviam sofrido intervenção, mas ainda mantinham capacidade de regeneração natural. Entre"
+  },
+  {
+   "id": "n-64664b1421",
+   "titulo": "Áudio: Proposta pune uso de emendas parlamentares para shows",
+   "url": "https://www12.senado.leg.br/noticias/audios/2026/10/proposta-pune-uso-de-emendas-parlamentares-para-shows",
+   "data": "2026-10-15T12:35:00+00:00",
+   "fonte": "senado",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "O senador Eduardo Girão (Novo-CE) apresentou o projeto que considera ato de improbidade o uso de verbas de emendas parlamentares para a contratação de artistas e shows musicais (PL 3.533/2026). As punições previstas podem envolver multa de até duas vezes o valor utilizado bem como a perda da função pública."
+  },
+  {
+   "id": "n-a01c868ff5",
+   "titulo": "Vídeo: Ao vivo: CDH debate políticas públicas de proteção a meninas – 15/10/26",
+   "url": "https://www12.senado.leg.br/noticias/videos/2026/10/ao-vivo-cdh-debate-politicas-publicas-de-protecao-a-meninas-2013-15-10-26",
+   "data": "2026-10-15T12:29:00+00:00",
+   "fonte": "senado",
+   "nos": [],
+   "pessoas": [],
+   "resumo": ""
+  },
+  {
+   "id": "n-cb351661df",
+   "titulo": "Comissão mista pode votar nesta quinta parecer sobre obrigatoriedade de exame para exercício da medicina",
+   "url": "https://www.camara.leg.br/noticias/1311374-comissao-mista-pode-votar-nesta-quinta-parecer-sobre-obrigatoriedade-de-exame-para-exercicio-da-medicina",
+   "data": "2026-10-15T12:26+00:00",
+   "fonte": "camara",
+   "nos": [],
+   "pessoas": [
+    "doutor-luizinho"
+   ],
+   "resumo": "Marcelo Camargo/Agência Brasil Exame também substituirá a etapa teórica do Revalida, exigido para médicos formados no exterior que desejam atuar no Brasil A comissão mista que analisa a Medida Provisória1370/26 reúne-se nesta quinta-feira (15) para votar o parecer do relator, deputado Doutor Luizinho (PP-RJ). A apreciação do texto foi adiada duas vezes nesta semana. A reunião desta quinta está marcada para as 10 horas, no plenário 3 da ala Alexandre Costa, no Senado. Veja a pauta A MP A medida provisória torna obrigatória a aprovação no Exame Nacional de Avaliação da Formação Médica (Enamed), "
+  },
+  {
+   "id": "n-bcc09829a9",
+   "titulo": "Polícia Federal e MPSP fazem operação contra tráfico de drogas",
+   "url": "https://agenciabrasil.ebc.com.br/geral/noticia/2026-10/policia-federal-e-mpsp-fazem-operacao-contra-trafico-de-drogas",
+   "data": "2026-10-15T12:01+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [
+    "pf"
+   ],
+   "pessoas": [],
+   "resumo": "O Ministério Público de São Paulo (MPSP), por meio do Grupo de Atuação Especial de Combate ao Crime Organizado (Gaeco), e a Polícia Federal (PF) fazem, na manhã desta quinta-feira (15), em São Paulo e no Paraná, a Operação YellowCode. O objetivo é combater organização criminosa suspeita de tráfico de drogas interestadual e de lavagem de dinheiro. Segundo a investigação, os criminosos traficavam drogas dentro de eletrodomésticos. Moradores de São Paulo recebiam encomendas compradas pela internet que traziam entorpecentes em seu interior. Os envios eram feitos sempre pela mesma vendedora e eram "
+  },
+  {
+   "id": "n-9710310c81",
+   "titulo": "Centro-Oeste e Sudeste têm alerta laranja para tempestades",
+   "url": "https://agenciabrasil.ebc.com.br/meio-ambiente/noticia/2026-10/inmet-centro-oeste-e-sudeste-tem-alerta-laranja-para-tempestades",
+   "data": "2026-10-15T11:54+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [
+    "inmet"
+   ],
+   "pessoas": [],
+   "resumo": "Chove com mais intensidade no Centro-Oeste e Sudeste, nesta quinta-feira (15), com possibilidade de precipitação também na região entre Tocantins, sul do Maranhão e do Piauí e oeste e sul da Bahia conhecida como Matopiba , informa o Instituto Nacional de Meteorologia (Inmet). Na Região Centro-Oeste, um aviso laranja de perigo alerta para tempestades com trovoadas no sudoeste, sul, centro e leste de Mato Grosso, em todo o estado de Goiás e no Distrito Federal, além das regiões norte, centro e leste de Mato Grosso do Sul. Em todas as outras áreas também deve chover, mas o aviso é amarelo de peri"
+  },
+  {
+   "id": "n-f3c24f26e0",
+   "titulo": "Câmara pode votar proposta que obriga SUS a aceitar exames da rede privada",
+   "url": "https://www.camara.leg.br/noticias/1311362-camara-pode-votar-proposta-que-obriga-sus-a-aceitar-exames-da-rede-privada",
+   "data": "2026-10-15T11:52+00:00",
+   "fonte": "camara",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "Sessão está marcada para as 10 horas; pauta inclui proteção às mulheres e prevenção de engasgos"
+  },
+  {
+   "id": "n-95250df903",
+   "titulo": "Conheça detalhes da regulamentação dos jogos eletrônicos no Brasil",
+   "url": "https://agenciabrasil.ebc.com.br/politica/noticia/2026-10/conheca-detalhes-da-regulamentacao-dos-jogos-eletronicos-no-brasil",
+   "data": "2026-10-15T11:46+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [],
+   "pessoas": [
+    "luiz-inacio-lula-da-silva"
+   ],
+   "resumo": "Ampliar a formação profissional, incentivar a produção nacional e tratar do impacto dos esportes digitais na saúde e na formação de crianças e adolescentes são alguns dos principais pontos da regulamentação do Marco Legal da Indústria de Jogos Eletrônicos. Entre as medidas previstas no decreto publicado nesta quinta-feira (15) estão a criação da plataforma pública GameBrasil, o acesso do setor a mecanismos federais de fomento, ações de qualificação profissional e o incentivo à inovação tecnológica. Notícias relacionadas: Governo federal regulamenta Marco Legal dos Jogos Eletrônicos. Lula sanci"
+  },
+  {
+   "id": "n-a809654080",
+   "titulo": "Flávio quer escolas militares; Lula propõe ampliar educação integral",
+   "url": "https://agenciabrasil.ebc.com.br/educacao/noticia/2026-10/flavio-quer-escolas-militares-lula-propoe-ampliar-educacao-integral",
+   "data": "2026-10-15T11:30+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [],
+   "pessoas": [
+    "luiz-inacio-lula-da-silva"
+   ],
+   "resumo": "O debate sobre os modelos educacionais propostos pelos candidatos costuma ocupar espaço central na disputa pelo voto do eleitor. Neste ano, temas estruturantes, como a educação, tiveram menos destaque no debate público, em razão do contexto político e do escândalo do caso Master. Nos planos de governo dos dois candidatos à Presidência da República, a educação ocupa papel de destaque, mas as prioridades são distintas. Enquanto o presidente e candidato à reeleição, Luiz Inácio Lula Silva (PT), afirma que a educação constitui o principal instrumento de transformação e mobilidade social , o senado"
+  },
+  {
+   "id": "n-3702ae2525",
+   "titulo": "Confira a agenda dos presidenciáveis nesta quinta-feira (15)",
+   "url": "https://agenciabrasil.ebc.com.br/politica/noticia/2026-10/confira-agenda-dos-presidenciaveis-nesta-quinta-feira-15",
+   "data": "2026-10-15T11:23+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [
+    "tse"
+   ],
+   "pessoas": [
+    "luiz-inacio-lula-da-silva",
+    "nikolas-ferreira",
+    "flavio-bolsonaro"
+   ],
+   "resumo": "Os candidatos à Presidência da República que disputam o segundo turno das eleições gerais cumprem agenda em Minas Gerais e Rio de Janeiro, nesta quinta-feira (15). Flávio Bolsonaro (PL) Flávio Bolsonaro faz live em seu canal no YouTube às 18h e, a partir das 19h, participa do Bloquinho do 22, em Capelinha, Minas Gerais, ao lado do deputado federal Nikolas Ferreira (PL). Notícias relacionadas: Eleições 2026: boca de urna é crime; saiba o que é proibido . E-Título: saiba como votar usando o aplicativo do TSE . Luiz Inácio Lula da Silva (PT) À noite, após o Jornal Nacional , o candidato à reeleiç"
+  },
+  {
+   "id": "n-31c6744c67",
+   "titulo": "PF faz nova ação contra suspeitos de lavagem de dinheiro em postos",
+   "url": "https://agenciabrasil.ebc.com.br/geral/noticia/2026-10/pf-faz-nova-acao-contra-suspeitos-de-lavagem-de-dinheiro-em-postos",
+   "data": "2026-10-15T11:11+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [
+    "pf"
+   ],
+   "pessoas": [],
+   "resumo": "A Polícia Federal cumpriu, nesta quinta-feira (15), seis mandados de prisão preventiva contra acusados de integrar organização criminosa armada envolvida com lavagem de dinheiro em postos de combustível. Entre os alvos presos na operação estão o ex-secretário de Polícia Civil, Marcus Amim, e o ex-prefeito de Belford Roxo e deputado estadual eleito Márcio Canella. A Justiça também determinou o cumprimento de 16 mandados de busca e apreensão, sequestro de bens e valores e suspensão das atividades econômicas de 112 empresas suspeitas de integrarem o esquema de lavagem de dinheiro. Os mandados est"
+  },
+  {
+   "id": "n-a42ff71362",
+   "titulo": "Hugo Motta comemora aprovação do fim da escala 6x1 no Senado",
+   "url": "https://www.camara.leg.br/noticias/1311348-hugo-motta-comemora-aprovacao-do-fim-da-escala-6x1-no-senado",
+   "data": "2026-10-15T11:06+00:00",
+   "fonte": "camara",
+   "nos": [],
+   "pessoas": [
+    "hugo-motta"
+   ],
+   "resumo": "Presidente da Câmara destaca redução da jornada, dois dias de descanso e manutenção do salário"
+  },
+  {
+   "id": "n-e27c87075b",
+   "titulo": "Prazo para empresas optarem por Simples acaba nesta quinta",
+   "url": "https://agenciabrasil.ebc.com.br/economia/noticia/2026-10/prazo-para-empresas-optarem-por-simples-acaba-nesta-quinta",
+   "data": "2026-10-15T11:04+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "Os micro e pequenos empresários precisam ficar atentos. Acaba nesta quinta-feira (15) o prazo de adesão ao Simples Nacional, regime simplificado de tributação para quem fatura até R$ 4,8 milhões por ano. Por causa da reforma tributária, o prazo inicial de adesão foi antecipado em quatro meses, de janeiro de 2027 para setembro deste ano. A data limite acabaria em 30 de setembro, mas, após diálogo com o Conselho Federal de Contabilidade e o Serviço Brasileiro de Apoio às Micro e Pequenas Empresas (Sebrae), o Comitê Gestor do Simples Nacional (CGSN) estendeu o prazo para 15 de outubro . Notícias "
+  },
+  {
+   "id": "n-d2f7da83e2",
+   "titulo": "ONU: inovação para enfrentar crise alimentar é tema de ação no Brasil",
+   "url": "https://agenciabrasil.ebc.com.br/direitos-humanos/noticia/2026-10/inovacao-para-enfrentar-crise-alimentar-e-tema-de-acao-no-brasil",
+   "data": "2026-10-15T10:32+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "Nesta sexta-feira (16), no Dia Mundial da Alimentação, uma ação promovida por agências da Organização das Nações Unidas (ONU) vai ocupar a capital do país, com a exibição de vídeos no centro de Brasília e em plataformas digitais. Com o tema Inovar Hoje para Nutrir o Amanhã, a campanha vai transformar o Conic, mais antigo centro comercial e cultural de Brasília, em um grande painel para a exibição de um vídeo institucional que mostra como a inovação pode tornar os sistemas agroalimentares sustentáveis, inclusivos e resilientes. Notícias relacionadas: Jornalistas sofreram mais de 14 mil ataques "
+  },
+  {
+   "id": "n-bd35dfe13c",
+   "titulo": "Vídeo: Médicos são homenageados pelo Senado",
+   "url": "https://www12.senado.leg.br/noticias/videos/2026/10/medicos-sao-homenageados-pelo-senado",
+   "data": "2026-10-15T02:14:00+00:00",
+   "fonte": "senado",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "Para destacar o Dia do Médico, que é celebrado no dia 18 de outubro, o Senado promoveu nesta quarta-feira (14) uma sessão especial para homenagear a categoria. Ouça o áudio."
+  },
+  {
+   "id": "n-5026cf476c",
+   "titulo": "Canal Exército do Lula volta ao ar após registro no TSE",
+   "url": "https://agenciabrasil.ebc.com.br/politica/noticia/2026-10/canal-exercito-do-lula-volta-ao-ar-apos-registro-no-tse",
+   "data": "2026-10-15T02:07+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [
+    "tse"
+   ],
+   "pessoas": [
+    "luiz-inacio-lula-da-silva",
+    "nunes-marques",
+    "andre-janones"
+   ],
+   "resumo": "O canal Exército do Lula, criado no WhatsApp para postagens de apoio ao candidato à reeleição Luiz Inácio Lula da Silva (PT), voltou ao ar na noite desta quarta-feira (14). O canal é administrado pelo deputado federal André Janones (Rede-MG). A retomada foi possível após a campanha de Lula registrar o canal no Tribunal Superior Eleitoral (TSE), conforme determinado pelo presidente da corte, Kassio Nunes Marques. Notícias relacionadas: TSE: Kassio autoriza reativação do canal Exército do Lula . Campanha registra canal Exército do Lula na Justiça Eleitoral. Técnicos do TSE não encontram conteúdo"
+  },
+  {
+   "id": "n-88366bc825",
+   "titulo": "Fim da 6x1: saiba quando entra em vigor nova jornada de trabalho",
+   "url": "https://agenciabrasil.ebc.com.br/politica/noticia/2026-10/fim-da-6x1-saiba-quando-entra-em-vigor-nova-jornada-de-trabalho",
+   "data": "2026-10-15T01:43+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [
+    "congresso"
+   ],
+   "pessoas": [],
+   "resumo": "O Senado aprovou nesta quarta-feira (14) a proposta de emenda à Constituição (PEC) que acaba com a jornada de trabalho 6x1 – seis dias de trabalho para um de descanso. Com a mudança na legislação, o trabalhador agora terá dois dias de folga na semana, para cada cinco trabalhados, sem redução de salário. O texto também prevê a redução da jornada de trabalho das atuais 44 horas para 40 horas semanais. A PEC, agora, deverá ser promulgada pelo Congresso Nacional. Notícias relacionadas: Escala 6x1: 67% apontam que jornada piora saúde mental, diz pesquisa. Empresários atacam PEC 6x1 no Senado; sindi"
+  },
+  {
+   "id": "n-a6ce79657f",
+   "titulo": "Senadores aprovam pedido para acelerar votação da PEC da Segurança",
+   "url": "https://agenciabrasil.ebc.com.br/politica/noticia/2026-10/senadores-aprovam-pedido-para-acelerar-votacao-da-pec-da-seguranca",
+   "data": "2026-10-15T01:41+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [
+    "camara",
+    "senado"
+   ],
+   "pessoas": [],
+   "resumo": "O plenário do Senado Federal aprovou na noite desta quarta-feira (14) um requerimento que cria um calendário especial de tramitação da Proposta de Emenda à Constituição (PEC) da Segurança Pública. O texto, que já passou pela Câmara dos Deputados, havia sido aprovado mais cedo pela Comissão de Constituição e Justiça (CCJ) do Senado, sem alterações. Com isso, a votação da PEC em dois turnos poderá ser feita de forma direta, sem necessidade de sessões de deliberação antes e após cada turno, como prevê o Regimento Interno da Casa legislativa. Notícias relacionadas: Aposta do governo, PEC da Segura"
+  },
+  {
+   "id": "n-1e83c53ed9",
+   "titulo": "PEC da Segurança Pública está na pauta do Plenário nesta quinta-feira",
+   "url": "https://www12.senado.leg.br/noticias/materias/2026/10/14/pec-da-seguranca-publica-esta-na-pauta-do-plenario-nesta-quinta-feira",
+   "data": "2026-10-15T01:36:00+00:00",
+   "fonte": "senado",
+   "nos": [],
+   "pessoas": [
+    "davi-alcolumbre",
+    "eduardo-braga"
+   ],
+   "resumo": "O Plenário do Senado pode votar nesta quinta-feira (15), a partir das 14h, a PEC da Segurança Pública (PEC 18/2025), que busca ampliar a integração entre os órgãos de segurança e fortalecer o combate ao crime organizado. Ao encerrar a sessão desta quarta-feira (14), o presidente do Senado, Davi Alcolumbre, anunciou a inclusão da proposta na pauta do dia seguinte, após a aprovação de um requerimento de calendário especial de tramitação da matéria. Apresentado pelo senador Eduardo Braga (MDB-AM) e outros líderes partidários, o requerimento (RQS 713/2026) permite acelerar a tramitação da PEC, que"
+  },
+  {
+   "id": "n-f8bdca93b9",
+   "titulo": "Lula reforça compromisso com evangélicos; Flávio recebe apoio no RS",
+   "url": "https://agenciabrasil.ebc.com.br/politica/noticia/2026-10/lula-reforca-compromisso-com-evangelicos-flavio-recebe-apoio-no-rs",
+   "data": "2026-10-15T01:27+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [],
+   "pessoas": [
+    "luiz-inacio-lula-da-silva",
+    "flavio-bolsonaro"
+   ],
+   "resumo": "Os candidatos a presidente Flávio Bolsonaro (PL) e Luiz Inácio Lula da Silva (PT) passaram a quarta-feira (14) buscando votos para o segundo turno. Enquanto o candidato do PL foi ao Sul do país, Lula fez um gesto ao eleitor evangélico e acompanhou a votação da proposta do fim da escala 6x1 de trabalho. Lula O atual presidente, candidato à reeleição, entregou nesta quarta-feira (14) uma carta direcionada aos evangélicos. A carta foi divulgada pela Frente de Evangélicos pelo Estado de Direito. Na carta, Lula diz que governou o país três vezes “com a proteção divina, orientado por um propósito e "
+  },
+  {
+   "id": "n-1e1b00427a",
+   "titulo": "Áudio: Fim da escala de trabalho 6x1 é aprovado",
+   "url": "https://www12.senado.leg.br/noticias/audios/2026/10/fim-da-escala-de-trabalho-6x1-e-aprovada",
+   "data": "2026-10-15T01:26:00+00:00",
+   "fonte": "senado",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "O Senado aprovou na noite desta quarta-feira (14), em dois turnos, a proposta de emenda à Constituição que acaba com a escala de trabalho 6 por 1 (PEC 221/2019)."
+  },
+  {
+   "id": "n-d8a92b1084",
+   "titulo": "Em editorial, veículos independentes de imprensa defendem democracia",
+   "url": "https://agenciabrasil.ebc.com.br/politica/noticia/2026-10/em-editorial-veiculos-independentes-de-imprensa-defendem-democracia",
+   "data": "2026-10-15T01:11+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "Um total de 55 veículos de jornalismo independente publicou nesta quarta-feira (14) um editorial em defesa da democracia, da liberdade de imprensa e contra o autoritarismo. O texto critica ataques à imprensa, defende o direito da população de ter acesso à informação de qualidade e alertam para ameaças à democracia brasileira. Notícias relacionadas: Liberdade de imprensa está em queda nas democracias, alerta RSF. \"Esse direito depende de um ambiente de informação íntegro, onde informações confiáveis, verificáveis e plurais possam circular livremente. O jornalismo tem papel essencial na construç"
+  },
+  {
+   "id": "n-c651343ec0",
+   "titulo": "Senado aprova fim da escala 6x1 e redução da jornada de trabalho",
+   "url": "https://agenciabrasil.ebc.com.br/politica/noticia/2026-10/senado-aprova-fim-da-escala-6x1-e-reducao-da-jornada-de-trabalho",
+   "data": "2026-10-15T01:02+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [
+    "senado"
+   ],
+   "pessoas": [],
+   "resumo": "Em uma decisão histórica, o plenário do Senado Federal aprovou na noite desta quarta-feira (14), em votação em dois turnos, a Proposta de Emenda Constitucional (PEC) 221/2019, que põe fim à escala 6x1 de trabalho, aquela em que o empregado trabalha seis dias por um de folga na semana. Foram 75 votos a favor da PEC e apenas um contrário, em ambos os turnos. Notícias relacionadas: Entenda PEC que acaba com escala 6x1: mais tempo livre e mesmo salário. O quórum exigido para uma emenda constitucional era de pelo menos 49 votos favoráveis. O número de parlamentares com presença registrada em plenár"
+  },
+  {
+   "id": "n-9f8fa97534",
+   "titulo": "Senado aprova fim da escala 6x1",
+   "url": "https://www12.senado.leg.br/noticias/materias/2026/10/14/senado-aprova-fim-da-6x1-em-primeiro-turno",
+   "data": "2026-10-15T00:59:00+00:00",
+   "fonte": "senado",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "O Senado aprovou nesta quarta-feira (14) o fim da escala 6x1, de seis dias de trabalho para um dia de repouso. A PEC 221/2019 foi aprovada em dois turnos, com a mesma votação em ambos: 75 votos favoráveis e apenas um contrário. A PEC vai à promulgação. Com a aprovação, o trabalhador terá direito a repouso semanal remunerado de dois dias, um deles preferencialmente aos domingos, sem redução salarial. Além disso, o texto reduz a jornada máxima de trabalho semanal de 44 para 40 horas. Serão até oito horas diárias de trabalho, com possibilidade de compensação de horários e redução da jornada por a"
+  },
+  {
+   "id": "n-8e5e306c8c",
+   "titulo": "Mega-Sena acumula para R$ 170 milhões; confira os números sorteados",
+   "url": "https://agenciabrasil.ebc.com.br/geral/noticia/2026-10/mega-sena-acumula-para-r-170-milhoes-confira-os-numeros-sorteados",
+   "data": "2026-10-15T00:50+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "Ninguém acertou as seis dezenas da Mega-Sena do Concurso 3.070, que foram sorteadas nesta quarta-feira (14) no Espaço da Sorte, em São Paulo (SP). O prêmio acumulou e está estimado em R$ 170 milhões para o próximo sorteio. Os números sorteados são: 19 - 27 - 29 - 43 - 54 - 60 91 apostas acertaram cinco dezenas e irão receber R$ 52.767,96 cada 7.384 apostas acertaram quatro dezenas e irão receber R$ 1.071,93 cada Apostas O próximo concurso acontece domingo (18). As apostas podem ser feitas até as 22h (horário de Brasília) de sábado (17), em qualquer lotérica do país ou pela internet, no site ou"
+  },
+  {
+   "id": "n-772844e6ef",
+   "titulo": "Campanha de Flávio aciona TSE contra posts de artistas e parlamentares",
+   "url": "https://agenciabrasil.ebc.com.br/justica/noticia/2026-10/campanha-de-flavio-aciona-tse-contra-posts-de-artistas-e-deputados",
+   "data": "2026-10-15T00:40+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [
+    "tse"
+   ],
+   "pessoas": [
+    "luiz-inacio-lula-da-silva",
+    "flavio-bolsonaro"
+   ],
+   "resumo": "A campanha do candidato à Presidência da República Flávio Bolsonaro (PL) acionou o Tribunal Superior Eleitoral (TSE) para suspender 221 postagens de parlamentares do PT, do coletivo de artistas 342 Artes, da Central Única dos Trabalhadores (CUT), da Mídia Ninja e outros apoiadores da candidatura à reeleição de Luiz Inácio Lula da Silva (PT). A representação foi protocolada no dia 9 deste mês e pede a suspensão de perfis que, segundo a campanha, disseminaram desinformação contra a candidatura de Flávio. Notícias relacionadas: Campanha de Lula vai ao TSE após IA da Meta restringir buscas. TSE or"
+  },
+  {
+   "id": "n-0339725579",
+   "titulo": "Câmara rejeita criação de novo regime para socorrer ou liquidar bancos",
+   "url": "https://www.camara.leg.br/noticias/1311331-camara-rejeita-criacao-de-novo-regime-para-socorrer-ou-liquidar-bancos",
+   "data": "2026-10-15T00:29+00:00",
+   "fonte": "camara",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "Texto do relator não atingiu o número mínimo de votos necessários para que fosse aprovado em Plenário"
+  },
+  {
+   "id": "n-50c76fedbd",
+   "titulo": "Projeto amplia proteção a pesquisadoras durante a licença-maternidade",
+   "url": "https://www12.senado.leg.br/noticias/materias/2026/10/14/projeto-amplia-protecao-a-pesquisadoras-durante-a-licenca-maternidade",
+   "data": "2026-10-15T00:06:00+00:00",
+   "fonte": "senado",
+   "nos": [],
+   "pessoas": [
+    "mara-gabrilli",
+    "soraya-thronicke"
+   ],
+   "resumo": "Pesquisadoras gestantes ou adotantes poderão ter os prazos de bolsas, editais e projetos de pesquisa suspensos durante a licença-maternidade, sem prejuízo na avaliação de produtividade ou na participação em novos financiamentos públicos. É o que prevê projeto de lei da senadora Soraya Thronicke (PSB-MS), que recebeu parecer favorável da senadora Mara Gabrilli (PSD-SP), aprovado na Comissão de Direitos Humanos (CDH). O PL 646/2026, que aguarda votação na Comissão de Educação (CE), determina a suspensão automática dos prazos de bolsas, editais e projetos financiados com recursos públicos federai"
+  },
+  {
+   "id": "n-9885e752f1",
+   "titulo": "OAB Rio ganha ação que proíbe plataforma de oferecer petições com IA",
+   "url": "https://agenciabrasil.ebc.com.br/justica/noticia/2026-10/oab-rio-ganha-acao-que-proibe-plataforma-de-oferecer-peticoes-com-ia",
+   "data": "2026-10-15T00:02+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [
+    "tse"
+   ],
+   "pessoas": [
+    "luiz-inacio-lula-da-silva"
+   ],
+   "resumo": "A Ordem dos Advogados do Brasil, seccional do Rio de Janeiro (OABRJ) obteve na Justiça Federal uma vitória no caso envolvendo a plataforma Resolve Juizado, que oferece a elaboração automatizada de petições por meio de inteligência artificial, mediante pagamento de R$ 20. A entidade apresentou apelação para reverter decisão anterior no processo e conseguiu proibir a cobrança pelas petições disponibilizadas pela plataforma sem a participação de um advogado. Notícias relacionadas: Campanha de Lula vai ao TSE após IA da Meta restringir buscas. Justiça condena 3º réu acusado do assassinato de Mãe B"
+  },
+  {
+   "id": "n-931cd7879f",
+   "titulo": "Hugo Motta destaca aprovação quase unânime de novo limite para enquadramento de MEI",
+   "url": "https://www.camara.leg.br/noticias/1311316-hugo-motta-destaca-aprovacao-quase-unanime-de-novo-limite-para-enquadramento-de-mei",
+   "data": "2026-10-14T23:10+00:00",
+   "fonte": "camara",
+   "nos": [],
+   "pessoas": [
+    "hugo-motta"
+   ],
+   "resumo": "Presidente da Câmara também elogiou a possibilidade de contratação de dois trabalhadores pelo microempreendedor individual"
+  },
+  {
+   "id": "n-0f902a8996",
+   "titulo": "Câmara aprova aumento no limite de receita bruta do MEI",
+   "url": "https://agenciabrasil.ebc.com.br/politica/noticia/2026-10/camara-aprova-aumento-no-limite-de-receita-bruta-do-mei",
+   "data": "2026-10-14T23:09+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [
+    "camara"
+   ],
+   "pessoas": [],
+   "resumo": "A Câmara dos Deputados aprovou nesta quarta-feira (14), por 461 votos favoráveis e quatro contrários, o aumento do teto da receita bruta anual para enquadramento como microempreendedor individual (MEI) e o perdão de dívidas inscritas na dívida ativa da União até 13 de outubro de 2026. Com a aprovação, o limite vai subir progressivamente dos atuais R$ 81 mil para R$ 110 mil em 2027 e R$ 140 mil em 2028. Está é a primeira vez desde 2018 que o teto é reajustado. A matéria passará por análise do Senado. Notícias relacionadas: Acompanhe ao vivo: Senado vota PEC pelo fim da escala 6x1. OEA será acio"
+  },
+  {
+   "id": "n-0f2acefa89",
+   "titulo": "Câmara aprova novo limite de enquadramento para microempreendedor individual e inclui perdão de dívidas",
+   "url": "https://www.camara.leg.br/noticias/1311288-camara-aprova-novo-limite-de-enquadramento-para-microempreendedor-individual-e-inclui-perdao-de-dividas",
+   "data": "2026-10-14T22:44+00:00",
+   "fonte": "camara",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "Proposta de autoria do governo também permite que um MEI contrate até dois empregados; texto segue para o Senado"
+  },
+  {
+   "id": "n-77dd44a682",
+   "titulo": "Áudio: Comissão de Direitos Humanos debate políticas públicas de proteção às meninas",
+   "url": "https://www12.senado.leg.br/noticias/audios/2026/10/comissao-de-direitos-humanos-debate-politicas-publicas-de-protecao-as-meninas",
+   "data": "2026-10-14T22:25:00+00:00",
+   "fonte": "senado",
+   "nos": [],
+   "pessoas": [
+    "damares-alves"
+   ],
+   "resumo": "A Comissão de Direitos Humanos (CDH) do Senado debate nesta quinta-feira (15), a partir das 9h, políticas públicas de proteção às meninas. A audiência foi proposta pela senadora Damares Alves (Republicanos-DF) em referência ao Dia Internacional da Menina, celebrado em 11 de outubro. O debate abordará a prevenção à violência sexual e doméstica e ao abandono escolar, além da segurança na internet. O encontro reunirá representantes do poder público e de organizações que atuam na defesa desses direitos."
+  },
+  {
+   "id": "n-d9d305e1d3",
+   "titulo": "Quilombolas expulsos por mineradora buscam reparação depois de 20 anos",
+   "url": "https://agenciabrasil.ebc.com.br/direitos-humanos/noticia/2026-10/quilombolas-expulsos-por-mineradora-buscam-reparacao-depois-de-20-anos",
+   "data": "2026-10-14T22:04+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "A imagem da avó Antônia na plantação de algodão está na memória da autônoma Claudinês Lopes, de 32 anos. “Ela adorava plantar para fazer linha de costura”, lembra. A matriarca, nascida e criada na comunidade quilombola do Machadinho, em Paracatu (MG), morreu aos 99 anos de idade sem ter a reparação que tanto esperava. Ela ficou arrasada depois que teve que deixar sua terra por causa da instalação de uma mineradora na cidade. “Ela desejava justiça. Eu cresci ouvindo isso dela”, diz a neta Claudinês, presidente da associação de moradores da comunidade que perdeu o território para a multinacional"
+  },
+  {
+   "id": "n-cee15aeb4e",
+   "titulo": "O que eu faço com isto?",
+   "url": "https://www12.senado.leg.br/noticias/infomaterias/2026/10/o-que-eu-faco-com-isto",
+   "data": "2026-10-14T21:27:00+00:00",
+   "fonte": "senado",
+   "nos": [],
+   "pessoas": [],
+   "resumo": ""
+  },
+  {
+   "id": "n-442de6834f",
+   "titulo": "Justiça condena 3º réu acusado do assassinato de Mãe Bernadete",
+   "url": "https://agenciabrasil.ebc.com.br/justica/noticia/2026-10/justica-condena-3o-reu-acusado-do-assassinato-de-mae-bernadete",
+   "data": "2026-10-14T21:27+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "O tribunal do Júri condenou nesta terça-feira (13) Josevan Dionísio dos Santos, conhecido como BZ ou Buzuin, a 28 anos de reclusão pelo assassinato da líder quilombola e ialorixá Maria Bernadete Pacífico Moreira, a Mãe Bernadete . Ele é o terceiro condenado por envolvimento com o crime. Outros dois réus já foram condenados : Arielson da Conceição dos Santos teve pena de 40 anos, 5 meses e 22 dias de reclusão e Marílio dos Santos teve a pena de 29 anos e 9 meses de reclusão determinada pela Justiça. No entanto, Marílio faleceu dois dias após o julgamento. Outros dois réus ainda serão julgados. "
+  },
+  {
+   "id": "n-ed8fd67049",
+   "titulo": "Redução da jornada beneficia trabalhador e economia, diz Beto Faro",
+   "url": "https://www12.senado.leg.br/noticias/materias/2026/10/14/reducao-da-jornada-beneficia-trabalhador-e-economia-diz-beto-faro",
+   "data": "2026-10-14T21:20:00+00:00",
+   "fonte": "senado",
+   "nos": [],
+   "pessoas": [
+    "beto-faro"
+   ],
+   "resumo": "O senador Beto Faro (PT-PA), em pronunciamento no Plenário nesta quarta-feira (14), manifestou apoio à proposta de emenda à Constituição (PEC) que prevê a redução da jornada semanal de 44 para 40 horas, sem redução de salário. O parlamentar afirmou que a PEC 221/2019 acompanha transformações no mercado de trabalho provocadas pelos avanços tecnológicos e pela inteligência artificial. O senador também rebateu previsões de que a mudança poderá provocar demissões, aumento da informalidade e dificuldades para micro e pequenas empresas. Ele comparou essas críticas às resistências enfrentadas por out"
+  },
+  {
+   "id": "n-8f30ccc8f7",
+   "titulo": "Projeto cria marco regulatório para fintechs com foco no combate a fraudes e lavagem de dinheiro",
+   "url": "https://www.camara.leg.br/noticias/1306829-projeto-cria-marco-regulatorio-para-fintechs-com-foco-no-combate-a-fraudes-e-lavagem-de-dinheiro",
+   "data": "2026-10-14T21:20+00:00",
+   "fonte": "camara",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "Texto está em análise na Câmara dos Deputados"
+  },
+  {
+   "id": "n-183538279a",
+   "titulo": "Marcelo Castro aponta divisão regional do MDB no segundo turno das eleições",
+   "url": "https://www12.senado.leg.br/noticias/materias/2026/10/14/marcelo-castro-aponta-divisao-regional-do-mdb-no-segundo-turno-das-eleicoes",
+   "data": "2026-10-14T21:15:00+00:00",
+   "fonte": "senado",
+   "nos": [],
+   "pessoas": [
+    "luiz-inacio-lula-da-silva",
+    "flavio-bolsonaro",
+    "marcelo-castro"
+   ],
+   "resumo": "Em pronunciamento em Plenário nesta quarta-feira (14), o senador Marcelo Castro (MDB-PI) afirmou que a divisão política e ideológica do país também se reflete em seu partido. Segundo ele, os diretórios estaduais do MDB se dividiram entre o apoio à reeleição do presidente Luiz Inácio Lula da Silva (PT) e à candidatura de Flávio Bolsonaro (PL) no segundo turno. Marcelo Castro avalia que as diferenças de posicionamento dentro de sua legenda seguem uma distribuição regional: ele destacou que os diretórios que declararam apoio a Lula estão concentrados no Norte e no Nordeste, enquanto os que apoiam"
+  },
+  {
+   "id": "n-6cd6fd7a8d",
+   "titulo": "Relator defende perdão a dívidas de microempreendedores individuais",
+   "url": "https://www.camara.leg.br/noticias/1311274-relator-defende-perdao-a-dividas-de-microempreendedores-individuais",
+   "data": "2026-10-14T20:55+00:00",
+   "fonte": "camara",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "Proposta da anistia de dívidas foi apresentada pelo governo e aprovada pelos deputados"
+  },
+  {
+   "id": "n-d9b55a557e",
+   "titulo": "Esperidião Amin: aprovação da PEC que acaba com 6x1 terá efeitos 'assimétricos'",
+   "url": "https://www12.senado.leg.br/noticias/materias/2026/10/14/esperidiao-amin-aprovacao-da-pec-que-acaba-com-6x1-tera-efeitos-assimetricos",
+   "data": "2026-10-14T20:47:00+00:00",
+   "fonte": "senado",
+   "nos": [],
+   "pessoas": [
+    "esperidiao-amin"
+   ],
+   "resumo": "Durante pronunciamento em Plenário nesta quarta-feira (14), o senador Esperidião Amin (PP-SC) afirmou que a aprovação da proposta de emenda à Constituição que acaba com a escala 6x1 (PEC 221/2019) terá impactos assimétricos sobre a economia. Por isso, argumentou ele, o Senado deve se preparar para corrigir rapidamente eventuais efeitos negativos sobre microempresários e o setor de serviços. — Eu acho que seria prudente, considerando os impactos assimétricos que esta PEC vai provocar, que nós nos aparelhemos para evitar que tais impactos junto a microempresários, MEIs [microempreendedores indiv"
+  },
+  {
+   "id": "n-0f8f1fe2a0",
+   "titulo": "Entenda o linfoma não Hodgkin, câncer que causou morte de Netinho",
+   "url": "https://agenciabrasil.ebc.com.br/saude/noticia/2026-10/entenda-o-linfoma-nao-hodgkin-cancer-que-causou-morte-de-netinho",
+   "data": "2026-10-14T20:44+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "O linfoma não Hodgkin tipo B, doença que tirou a vida do cantor Netinho na terça-feira (13) , é um câncer do sangue que começa no sistema linfático ─ uma rede de vasos, gânglios e órgãos, como as amígdalas e o baço, que faz parte das defesas do organismo. Esse sistema coleta e redireciona para o sistema circulatório um líquido claro, chamado linfa, que contém células de defesa, os linfócitos, que exercem um papel vital no sistema imunológico e na proteção contra infecções. Notícias relacionadas: Cantor de axé Netinho morre em Salvador aos 60 anos. Saiba o que é adenocarcinoma pulmonar, câncer "
+  },
+  {
+   "id": "n-f7a931d3b8",
+   "titulo": "Motta diz que reajuste para o Simples Nacional será votado até o fim do ano",
+   "url": "https://www.camara.leg.br/noticias/1311266-motta-diz-que-reajuste-para-o-simples-nacional-sera-votado-ate-o-fim-do-ano",
+   "data": "2026-10-14T20:34+00:00",
+   "fonte": "camara",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "Presidente da Câmara afirmou que o novo enquadramento para MEI foi votado antes porque já havia acordo com o governo"
+  },
+  {
+   "id": "n-b1daab327c",
+   "titulo": "Mapa Nacional da Violência de Gênero é destaque em fórum internacional",
+   "url": "https://www12.senado.leg.br/noticias/materias/2026/10/14/mapa-nacional-da-violencia-de-genero-e-destaque-em-forum-internacional",
+   "data": "2026-10-14T20:22:00+00:00",
+   "fonte": "senado",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "O Mapa Nacional da Violência de Gênero conquistou reconhecimento internacional em um dos principais encontros globais dedicados ao enfrentamento à violência contra a mulher, na semana passada, na Tailândia. O mapa é iniciativa do Observatório da Mulher contra a Violência (OMV) do Senado, em parceria com o Instituto Natura e a organização Gênero e Número. O Fórum SVRI 2026 ocorreu em Bangkok entre 5 e 9 de outubro. A SVRI (da sigla em inglês para Iniciativa de Pesquisa sobre Violência Sexual) é uma entidade global que promove ações e pesquisas baseadas em evidências para prevenção e combate à v"
+  },
+  {
+   "id": "n-e36b816c4f",
+   "titulo": "Câmara inicia votações de hoje com análise de projeto sobre microempreendedor individual; acompanhe",
+   "url": "https://www.camara.leg.br/noticias/1311239-camara-inicia-votacoes-de-hoje-com-analise-de-projeto-sobre-microempreendedor-individual-acompanhe",
+   "data": "2026-10-14T20:07+00:00",
+   "fonte": "camara",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "Vinicius Loures/Câmara dos Deputados Sessão do Plenário desta quarta-feira A Câmara dos Deputados iniciou a Ordem do Dia do Plenário. O primeiro item em análise é o projeto que aumenta o limite de faturamento do microempreendedor individual (MEI). De autoria do governo, o texto (PLP 186/26) estabelece reajuste progressivo do teto da receita bruta anual para enquadramento como MEI. Segundo a proposta, o teto vai subir dos atuais R$ 81 mil para R$ 110 mil em 2027 e R$ 140 mil em 2028. Mais informações em instantes Assista ao vivo"
+  },
+  {
+   "id": "n-5fda7e2a2b",
+   "titulo": "Campanha de Lula vai ao TSE após IA da Meta restringir buscas",
+   "url": "https://agenciabrasil.ebc.com.br/justica/noticia/2026-10/campanha-de-lula-vai-ao-tse-apos-ia-da-meta-restringir-buscas",
+   "data": "2026-10-14T20:05+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [
+    "tse"
+   ],
+   "pessoas": [
+    "luiz-inacio-lula-da-silva",
+    "flavio-bolsonaro"
+   ],
+   "resumo": "A campanha do candidato à reeleição Luiz Inácio Lula da Silva (PT) acionou nesta quarta-feira (14) o Tribunal Superior Eleitoral (TSE) após constatar restrições na entrega de postagens aos usuários de plataformas da Meta (Facebook, Instagram e WhatsApp). Além das restrições relacionadas às postagens, a campanha também citou que comandos para geração de imagens de inteligência artificial não permitem a criação de conteúdos sobre Lula. Contudo, a criação de imagens relacionadas ao candidato Flávio Bolsonaro (PL) está liberada. Notícias relacionadas: Lula defende Sul Global; Flávio quer proximida"
+  },
+  {
+   "id": "n-f3f22a4ec2",
+   "titulo": "Percentual de deputados federais reeleitos chega a 60,62%, o maior desde a redemocratização do país",
+   "url": "https://www.camara.leg.br/noticias/1311223-percentual-de-deputados-federais-reeleitos-chega-a-6062-o-maior-desde-a-redemocratizacao-do-pais",
+   "data": "2026-10-14T19:37+00:00",
+   "fonte": "camara",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "Como consequência, a renovação foi a menor no mesmo período: 33,72%"
+  },
+  {
+   "id": "n-824d9f882c",
+   "titulo": "Partidos de centro da Câmara dos Deputados decidem manter bloco na próxima legislatura",
+   "url": "https://www.camara.leg.br/noticias/1311237-partidos-de-centro-da-camara-dos-deputados-decidem-manter-bloco-na-proxima-legislatura",
+   "data": "2026-10-14T19:35+00:00",
+   "fonte": "camara",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "Líderes dizem que o bloco também caminhará unido na eleição da Mesa Diretora do próximo ano"
+  },
+  {
+   "id": "n-02104628bf",
+   "titulo": "Corte amplo de gastos públicos afetaria área social, dizem economistas",
+   "url": "https://agenciabrasil.ebc.com.br/economia/noticia/2026-10/corte-amplo-de-gastos-publicos-afetaria-area-social-dizem-economistas",
+   "data": "2026-10-14T19:20+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [],
+   "pessoas": [
+    "luiz-inacio-lula-da-silva",
+    "pedro-paulo"
+   ],
+   "resumo": "Um corte de gastos públicos no Brasil de grandes proporções que preserve os programas sociais e os reajustes do salário mínimo, pensões e aposentadorias é inviável, calculam economistas ouvidos pela Agência Brasil. O professor Pedro Paulo Zahluth Bastos, do Instituto de Economia da Universidade Estadual de Campinas (Unicamp), afirmou que cortes expressivos, como os de cerca de R$ 200 bilhões discutidos durante a campanha presidencial, tendem a alcançar as áreas sociais. Notícias relacionadas: Veja os planos de governo de Flávio e Lula para meio ambiente e clima. Lula defende Sul Global; Flávio"
+  },
+  {
+   "id": "n-045a389706",
+   "titulo": "Confiança da indústria sobe em outubro, mas setor segue pessimista",
+   "url": "https://agenciabrasil.ebc.com.br/economia/noticia/2026-10/confianca-da-industria-sobe-em-outubro-mas-setor-segue-pessimista",
+   "data": "2026-10-14T18:59+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "O Índice de Confiança do Empresário Industrial (Icei) subiu 1,3 ponto em outubro, para 46,2 pontos, segundo pesquisa divulgada nesta quarta-feira (14) pela Confederação Nacional da Indústria (CNI). Apesar da melhora, o indicador permanece abaixo dos 50 pontos, faixa que separa a confiança da falta de confiança. Com isso, a indústria brasileira completa 22 meses consecutivos sem confiança. Notícias relacionadas: Indústria aponta juros altos como principal barreira ao crédito. Faturamento da indústria cai 3,5% em agosto, informa CNI. Brasil abriu 700 mercados para agropecuária desde 2023. O avan"
+  },
+  {
+   "id": "n-f04b7a2a33",
+   "titulo": "Comissão aprova crédito para incentivar contratação de pessoa com deficiência",
+   "url": "https://www.camara.leg.br/noticias/1311084-comissao-aprova-credito-para-incentivar-contratacao-de-pessoa-com-deficiencia",
+   "data": "2026-10-14T18:38+00:00",
+   "fonte": "camara",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "O texto está em análise na Câmara dos Deputados"
+  },
+  {
+   "id": "n-dbb1d447bd",
+   "titulo": "Governo federal regulamenta Marco Legal dos Jogos Eletrônicos",
+   "url": "https://agenciabrasil.ebc.com.br/economia/noticia/2026-10/governo-federal-regulamenta-marco-legal-dos-jogos-eletronicos",
+   "data": "2026-10-14T18:32+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [],
+   "pessoas": [
+    "luiz-inacio-lula-da-silva"
+   ],
+   "resumo": "O presidente Luiz Inácio Lula da Silva assinou nesta quarta-feira (14) o decreto que regulamenta o Marco Legal da Indústria de Jogos Eletrônicos, sancionado em 2024 . A medida estabelece diretrizes para fortalecer o setor por meio de ações voltadas à produção nacional, inovação tecnológica, qualificação profissional, internacionalização e proteção da propriedade intelectual . Segundo o governo, a regulamentação busca dar segurança jurídica ao segmento e estimular o desenvolvimento da indústria brasileira de jogos eletrônicos. O decreto também amplia a integração dos jogos eletrônicos com polít"
+  },
+  {
+   "id": "n-674c7b1bc3",
+   "titulo": "TSE ordena que Flávio e Nikolas removam vídeo de crianças contra Lula",
+   "url": "https://agenciabrasil.ebc.com.br/justica/noticia/2026-10/tse-ordena-que-flavio-e-nikolas-removam-video-de-criancas-contra-lula",
+   "data": "2026-10-14T18:07+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [
+    "tse"
+   ],
+   "pessoas": [
+    "luiz-inacio-lula-da-silva",
+    "nikolas-ferreira",
+    "flavio-bolsonaro"
+   ],
+   "resumo": "O ministro Marco Aurélio Bellizze, do Tribunal Superior Eleitoral (TSE), deu nesta terça-feira (13) 24 horas para que o deputado Nikolas Ferreira (PL-MG) e o senador e candidato à Presidência Flávio Bolsonaro (PL-RJ) removam um vídeo que mostra crianças criticando o presidente Luiz Inácio Lula da Silva, candidato à reeleição. Publicado na segunda-feira (12), Dia das Crianças, o vídeo editado mostra crianças lendo um texto que atribui a Lula problemas como inflação e falta de segurança . Também são alvo de críticas Fábio Luís Lula da Silva, o Lulinha, um dos filhos do presidente, e o PT. Notíci"
+  },
+  {
+   "id": "n-d0acdf9130",
+   "titulo": "Comissão de Constituição e Justiça aprova fim de taxa de fiscalização sobre telefones celulares",
+   "url": "https://www.camara.leg.br/noticias/1311131-comissao-de-constituicao-e-justica-aprova-fim-de-taxa-de-fiscalizacao-sobre-telefones-celulares",
+   "data": "2026-10-14T17:13+00:00",
+   "fonte": "camara",
+   "nos": [
+    "senado"
+   ],
+   "pessoas": [],
+   "resumo": "A proposta segue agora para a análise do Senado Federal"
+  },
+  {
+   "id": "n-1a05dd91a6",
+   "titulo": "Projeto permite autogestão de proteção veicular de caminhoneiros",
+   "url": "https://www.camara.leg.br/noticias/1305503-projeto-permite-autogestao-de-protecao-veicular-de-caminhoneiros",
+   "data": "2026-10-14T16:52+00:00",
+   "fonte": "camara",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "Texto está em análise na Câmara dos Deputados"
+  },
+  {
+   "id": "n-d7eef56f7e",
+   "titulo": "Comissão aprova aumento de prazo para credor em recuperação judicial",
+   "url": "https://www.camara.leg.br/noticias/1311082-comissao-aprova-aumento-de-prazo-para-credor-em-recuperacao-judicial",
+   "data": "2026-10-14T15:39+00:00",
+   "fonte": "camara",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "Projeto de lei continua sendo discutido na Câmara dos Deputados"
+  },
+  {
+   "id": "n-bd324e76e1",
+   "titulo": "Candidato já pode conferir onde fará reaplicação da PND, no domingo",
+   "url": "https://agenciabrasil.ebc.com.br/educacao/noticia/2026-10/candidato-ja-pode-conferir-onde-fara-reaplicacao-da-pnd-no-domingo",
+   "data": "2026-10-14T15:27+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [
+    "inep"
+   ],
+   "pessoas": [],
+   "resumo": "O Instituto Nacional de Estudos e Pesquisas Educacionais Anísio Teixeira (Inep) disponibilizou o Cartão de Confirmação da Inscrição para a reaplicação da Prova Nacional Docente (PND) 2026 aos candidatos que tiveram a solicitação aprovada pelo órgão. A PND será reaplicada em todo o país no próximo domingo (18) e o novo documento traz as informações sobre data, horário, endereço do local da prova e, também, se o candidato terá direito ao atendimento especializado e ao tratamento pelo nome social, se as respectivas solicitações foram aprovadas pelo Inep. Notícias relacionadas: PND 2026: gabaritos"
+  },
+  {
+   "id": "n-f8fc1eb5d4",
+   "titulo": "Justiça do Rio condena homens por estupro coletivo de jovem de 17 anos",
+   "url": "https://agenciabrasil.ebc.com.br/justica/noticia/2026-10/justica-do-rio-condena-homens-por-estupro-coletivo-de-jovem-de-17-anos",
+   "data": "2026-10-14T15:25+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "A Justiça do Rio de Janeiro condenou quatro homens a 15 anos de prisão, em regime fechado, pela participação no dia 31 de janeiro deste ano no estupro coletivo de uma adolescente de 17 anos de idade, em um apartamento em Copacabana, na zona sul da cidade. Os condenados são Bruno Felipe dos Santos Allegretti, João Gabriel Xavier Bertho, Mattheus Verissimo Zoel Martins e Vitor Hugo Oliveira Simonin, que tinham idades entre 18 e 19 anos, quando o crime foi cometido. Notícias relacionadas: Ligue 180 tem 1,5 mil denúncias de violência política contra mulher. Entidades cobram propostas de candidatos"
+  },
   {
    "id": "n-949195cb03",
    "titulo": "Comissão aprova projeto que proíbe penas e plumas de animais em fantasias",
@@ -12022,6 +12804,7 @@
    "fonte": "senado",
    "nos": [],
    "pessoas": [
+    "renata-abreu",
     "astronauta-marcos-pontes"
    ],
    "resumo": "A partir desta quarta-feira (23), o município de Franca (SP) é oficialmente a Capital Nacional do Basquete. A lei que confere o título à cidade de 365 mil habitantes está em vigor após ser publicada no Diário Oficial da União (Lei 15.514). A nova lei tem origem em projeto de lei da deputada Renata Abreu (Podemos-SP). O relator do PL 127/2019 no Senado foi o senador Astronauta Marcos Pontes (PL-SP). Em seu relatório na Comissão de Educação (CE), Pontes apontou que Franca é reconhecida pela relação histórica com o basquete desde a década de 1940, quando a modalidade passou a fazer parte da ident"
@@ -20928,6 +21711,7 @@
    "fonte": "senado",
    "nos": [],
    "pessoas": [
+    "renata-abreu",
     "astronauta-marcos-pontes"
    ],
    "resumo": "A Comissão de Educação (CE) aprovou, em decisão terminativa, nesta terça-feira (1º), projeto que confere ao município de Franca (SP) o título de Capital Nacional do Basquete. O PL 127/2019, da deputada Renata Abreu (Podemos-SP), recebeu parecer favorável do senador Astronauta Marcos Pontes (PL-SP) e, se não houver recurso para votação em Plenário, seguirá diretamente para sanção do presidente da República. Pontes aponta que Franca é reconhecida pela relação histórica com o basquete desde a década de 1940, quando a modalidade passou a fazer parte da identidade local. Segundo o relator, a cidade"
@@ -25024,16 +25808,6 @@
    "nos": [],
    "pessoas": [],
    "resumo": "Assinatura ocorre nesta segunda-feira (20/7) no Palácio do Planalto, em Brasília"
-  },
-  {
-   "id": "n-47fcd2fc47",
-   "titulo": "Visita presidencial ao Rio de Janeiro contempla duas agendas na área da saúde",
-   "url": "https://www.gov.br/planalto/pt-br/acompanhe-o-planalto/noticias/visita-presidencial-ao-rio-de-janeiro-contempla-duas-agendas-na-area-da-saude",
-   "data": "2026-07-16T12:39:00+00:00",
-   "fonte": "planalto",
-   "nos": [],
-   "pessoas": [],
-   "resumo": "Agenda reúne visitas a unidade móvel de saúde da mulher e instituto especializado em traumatologia e ortopedia"
   }
  ]
 }
