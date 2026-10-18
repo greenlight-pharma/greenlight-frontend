@@ -1,6 +1,6 @@
 {
  "meta": {
-  "gerado_em": "2026-10-17T13:35+00:00",
+  "gerado_em": "2026-10-18T13:54+00:00",
   "gerado_por": "scripts/governo/agentes/agente_dou.py",
   "janela_dias": 120,
   "fonte": {
@@ -10,8 +10,8 @@
   "regra": "O feed registra o que o DOU publicou, com link para cada ato. Ocupantes no grafo só mudam com revisão humana.",
   "contagem": {
    "comando": 1,
-   "alta": 36,
-   "outra": 302
+   "alta": 35,
+   "outra": 299
   },
   "refinados_por_claude": 0
  },
@@ -7052,90 +7052,6 @@
    "fonte_nome": "DOU, seção 2",
    "origem": "dou",
    "resumo": "Agnaldo do Nascimento Filho assume o cargo de Assessor Especial da Secretaria de Administração da Secretaria-Executiva da Casa Civil da Presidência da República."
-  },
-  {
-   "id": "dou-c21d2c6ec9d1",
-   "data": "2026-06-19",
-   "publicado_em": "2026-06-22",
-   "tipo": "nomeacao",
-   "cargo": "Assessora Especial da Assessoria Especial da Casa Civil da Presidência da República",
-   "codigo": "FCE 2.16",
-   "entra": "Mayara Nascimento Santos",
-   "sai": null,
-   "interino": false,
-   "a_pedido": false,
-   "desde": null,
-   "no_id": "casa-civil",
-   "nivel": "outra",
-   "ato": "Portaria nº 745, de 19/06/2026",
-   "assinante": "Casa Civil da Presidência da República",
-   "fonte": "https://www.in.gov.br/web/dou/-/portarias-de-19-de-junho-de-2026-713608071",
-   "fonte_nome": "DOU, seção 2",
-   "origem": "dou",
-   "resumo": "Mayara Nascimento Santos assume o cargo de Assessora Especial da Assessoria Especial da Casa Civil da Presidência da República."
-  },
-  {
-   "id": "dou-a389bbd9ac38",
-   "data": "2026-06-19",
-   "publicado_em": "2026-06-22",
-   "tipo": "nomeacao",
-   "cargo": "Diretor do Sistema Único de Segurança Pública da Secretaria Nacional de Segurança Pública do Ministério da Justiça e Segurança Pública",
-   "codigo": "CCE 1.15",
-   "entra": "João Alberto Nogueira Júnior",
-   "sai": null,
-   "interino": false,
-   "a_pedido": false,
-   "desde": null,
-   "no_id": "mjsp",
-   "nivel": "outra",
-   "ato": "Portaria nº 747, de 19/06/2026",
-   "assinante": "Casa Civil da Presidência da República",
-   "fonte": "https://www.in.gov.br/web/dou/-/portarias-de-19-de-junho-de-2026-713608071",
-   "fonte_nome": "DOU, seção 2",
-   "origem": "dou",
-   "resumo": "João Alberto Nogueira Júnior assume o cargo de Diretor do Sistema Único de Segurança Pública da Secretaria Nacional de Segurança Pública do Ministério da Justiça e Segurança Pública."
-  },
-  {
-   "id": "dou-9b53226f6001",
-   "data": "2026-06-19",
-   "publicado_em": "2026-06-22",
-   "tipo": "saida",
-   "cargo": "Diretor de Gestão Administrativa do Instituto Nacional de Colonização e Reforma Agrária - Incra",
-   "codigo": "CCE 1.15.",
-   "entra": null,
-   "sai": "Leonardo Henrique Bezerra Lopes",
-   "interino": false,
-   "a_pedido": false,
-   "desde": null,
-   "no_id": "incra",
-   "nivel": "outra",
-   "ato": "Portaria nº 748, de 19/06/2026",
-   "assinante": "Casa Civil da Presidência da República",
-   "fonte": "https://www.in.gov.br/web/dou/-/portarias-de-19-de-junho-de-2026-713608071",
-   "fonte_nome": "DOU, seção 2",
-   "origem": "dou",
-   "resumo": "Leonardo Henrique Bezerra Lopes deixa o cargo de Diretor de Gestão Administrativa do Instituto Nacional de Colonização e Reforma Agrária - Incra."
-  },
-  {
-   "id": "dou-57709679f4b3",
-   "data": "2026-06-19",
-   "publicado_em": "2026-06-22",
-   "tipo": "troca",
-   "cargo": "Superintendente Adjunto Executivo da Superintendência da Zona Franca de Manaus - Suframa",
-   "codigo": "CCE 1.15.",
-   "entra": "Wagner Ferreira Santana",
-   "sai": "Luiz Frederico Oliveira de Aguiar",
-   "interino": false,
-   "a_pedido": false,
-   "desde": null,
-   "no_id": "suframa",
-   "nivel": "alta",
-   "ato": "Portaria nº 749, de 19/06/2026",
-   "assinante": "Casa Civil da Presidência da República",
-   "fonte": "https://www.in.gov.br/web/dou/-/portarias-de-19-de-junho-de-2026-713608071",
-   "fonte_nome": "DOU, seção 2",
-   "origem": "dou",
-   "resumo": "Luiz Frederico Oliveira de Aguiar deixa o cargo de Superintendente Adjunto Executivo da Superintendência da Zona Franca de Manaus - Suframa; assume Wagner Ferreira Santana."
   }
  ]
 }

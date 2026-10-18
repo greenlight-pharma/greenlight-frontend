@@ -1,6 +1,6 @@
 {
  "meta": {
-  "gerado_em": "2026-10-17T13:35+00:00",
+  "gerado_em": "2026-10-18T13:55+00:00",
   "gerado_por": "scripts/governo/agentes/agente_noticias.py",
   "janela_dias": 90,
   "fontes": [
@@ -30,11 +30,11 @@
     "url": "https://www.gov.br/planalto/pt-br/acompanhe-o-planalto/noticias/RSS"
    }
   ],
-  "total_artigos": 2346,
-  "artigos_com_no": 797,
-  "novos_nesta_rodada": 53,
+  "total_artigos": 2358,
+  "artigos_com_no": 800,
+  "novos_nesta_rodada": 20,
   "artigos_por_fonte": {
-   "agenciabrasil": 937,
+   "agenciabrasil": 949,
    "senado": 844,
    "camara": 532,
    "stf": 7,
@@ -45,7 +45,7 @@
  },
  "resumo": [
   {
-   "texto": "O Congresso Nacional promulgou a Emenda Constitucional 141, que extingue a escala 6x1 e reduz a jornada semanal para 42 horas em 60 dias e 40 horas em um ano.",
+   "texto": "O Congresso Nacional promulgou a Emenda Constitucional 141, que extingue a escala 6x1 e institui a jornada com dois dias de descanso semanal, com início em 15 de dezembro de 2026.",
    "artigo_id": "n-a04fd334c0",
    "no_id": "congresso"
   },
@@ -55,12 +55,12 @@
    "no_id": "congresso"
   },
   {
-   "texto": "O Congresso Nacional aprovou a Medida Provisória 1370/26, que condiciona o registro profissional de médicos à aprovação no Enamed, exame organizado pelo Ministério da Educação; o texto segue para sanção.",
+   "texto": "O Congresso Nacional aprovou a Medida Provisória 1370/26, que condiciona o registro profissional de médicos à aprovação no Exame Nacional de Avaliação da Formação Médica, organizado pelo Ministério da Educação.",
    "artigo_id": "n-f6be8b4642",
    "no_id": "congresso"
   },
   {
-   "texto": "O plenário do Tribunal Superior Eleitoral manteve, por unanimidade, decisão que proíbe a Meta de restringir a entrega de postagens sobre candidatos à Presidência da República.",
+   "texto": "O Tribunal Superior Eleitoral manteve, por unanimidade, a decisão que proíbe a Meta de restringir a entrega de postagens sobre candidatos à Presidência da República.",
    "artigo_id": "n-fc72208c73",
    "no_id": "tse"
   }
@@ -69,182 +69,182 @@
   "orgaos": [
    {
     "id": "tse",
-    "artigos": 174,
-    "peso": 90.53084220360871,
-    "ultima": "2026-10-17T13:03+00:00"
+    "artigos": 176,
+    "peso": 91.12226186699377,
+    "ultima": "2026-10-17T20:58+00:00"
    },
    {
     "id": "stf",
     "artigos": 119,
-    "peso": 61.45989041807936,
+    "peso": 61.195113831452645,
     "ultima": "2026-10-17T00:18+00:00"
    },
    {
     "id": "congresso",
     "artigos": 80,
-    "peso": 45.978637271810044,
+    "peso": 46.08653652869786,
     "ultima": "2026-10-16T21:42:00+00:00"
    },
    {
     "id": "camara",
     "artigos": 72,
-    "peso": 39.198883701639296,
+    "peso": 39.30392530925548,
     "ultima": "2026-10-16T17:25:00+00:00"
    },
    {
     "id": "pf",
     "artigos": 48,
-    "peso": 24.366921757954945,
+    "peso": 24.22426100809532,
     "ultima": "2026-10-16T22:49+00:00"
    },
    {
     "id": "prf",
     "artigos": 13,
-    "peso": 24.110295732885223,
+    "peso": 24.16361498009878,
     "ultima": "2026-10-13T18:15+00:00"
    },
    {
     "id": "mte",
     "artigos": 6,
-    "peso": 20.549889171660784,
+    "peso": 20.623182297154898,
     "ultima": "2026-10-16T16:31+00:00"
    },
    {
     "id": "caixa",
     "artigos": 39,
-    "peso": 19.52913553895411,
+    "peso": 19.38082191780821,
     "ultima": "2026-10-17T11:32+00:00"
    },
    {
     "id": "inpe",
     "artigos": 2,
-    "peso": 18.546900911255232,
+    "peso": 18.63540569020021,
     "ultima": "2026-10-12T16:43+00:00"
    },
    {
     "id": "mec",
-    "artigos": 33,
-    "peso": 18.109693458813574,
-    "ultima": "2026-10-16T18:54:00+00:00"
+    "artigos": 34,
+    "peso": 18.55925616632485,
+    "ultima": "2026-10-18T12:01+00:00"
    },
    {
     "id": "anvisa",
     "artigos": 29,
-    "peso": 15.013226921086355,
+    "peso": 14.924549655642709,
     "ultima": "2026-10-14T13:44+00:00"
    },
    {
     "id": "inss",
     "artigos": 19,
-    "peso": 12.568888730346051,
+    "peso": 12.601358324171036,
     "ultima": "2026-10-01T20:17+00:00"
    },
    {
     "id": "ms",
     "artigos": 23,
-    "peso": 12.174275847022207,
+    "peso": 12.128355607530203,
     "ultima": "2026-10-16T20:53:00+00:00"
    },
    {
     "id": "agu",
     "artigos": 24,
-    "peso": 12.073106667948032,
+    "peso": 11.98848326250131,
     "ultima": "2026-10-10T18:06+00:00"
    },
    {
     "id": "petrobras",
     "artigos": 23,
-    "peso": 11.682713813876097,
+    "peso": 11.615186352308989,
     "ultima": "2026-10-15T23:23+00:00"
    },
    {
     "id": "ibge",
     "artigos": 23,
-    "peso": 11.572359602846644,
+    "peso": 11.49153911076264,
     "ultima": "2026-10-16T13:01+00:00"
    },
    {
     "id": "tcu",
     "artigos": 17,
-    "peso": 9.937241017133621,
+    "peso": 9.968978056185264,
     "ultima": "2026-10-07T10:38+00:00"
    },
    {
     "id": "senado",
     "artigos": 15,
-    "peso": 9.798452909220758,
+    "peso": 9.791294358129253,
     "ultima": "2026-10-16T00:41+00:00"
    },
    {
     "id": "anp",
     "artigos": 18,
-    "peso": 9.78089473254472,
+    "peso": 9.767282090383194,
     "ultima": "2026-10-15T23:42:00+00:00"
    },
    {
     "id": "tst",
     "artigos": 16,
-    "peso": 8.669046391312492,
+    "peso": 8.649746545359498,
     "ultima": "2026-10-16T16:31+00:00"
    },
    {
     "id": "inep",
     "artigos": 16,
-    "peso": 8.011953041622203,
+    "peso": 7.951106427818757,
     "ultima": "2026-10-14T15:27+00:00"
    },
    {
     "id": "mpf",
     "artigos": 14,
-    "peso": 7.065636016934153,
+    "peso": 7.019041745114588,
     "ultima": "2026-10-16T23:00+00:00"
    },
    {
     "id": "stj",
     "artigos": 12,
-    "peso": 6.826557530964692,
+    "peso": 6.804197468986967,
     "ultima": "2026-10-16T23:00+00:00"
    },
    {
     "id": "cnj",
     "artigos": 9,
-    "peso": 4.561900691427214,
+    "peso": 4.534320986421227,
     "ultima": "2026-10-07T19:31+00:00"
    },
    {
     "id": "anatel",
     "artigos": 8,
-    "peso": 4.442361448442483,
+    "peso": 4.426898848357416,
     "ultima": "2026-10-14T12:53+00:00"
    },
    {
     "id": "ebc",
     "artigos": 8,
-    "peso": 4.0059765208111,
+    "peso": 3.9755532139093783,
     "ultima": "2026-10-15T21:56+00:00"
    },
    {
     "id": "cvm",
     "artigos": 7,
-    "peso": 3.88643727782637,
+    "peso": 3.8681310758455676,
     "ultima": "2026-09-27T18:52+00:00"
    },
    {
     "id": "anac",
     "artigos": 6,
-    "peso": 3.5512215292691613,
+    "peso": 3.5566577864264235,
     "ultima": "2026-10-17T00:03+00:00"
    },
    {
     "id": "mme",
     "artigos": 6,
-    "peso": 3.1700137071525036,
+    "peso": 3.167135772751562,
     "ultima": "2026-10-09T15:09:00+00:00"
    },
    {
     "id": "aneel",
     "artigos": 6,
-    "peso": 3.1148366016377773,
+    "peso": 3.105312151978386,
     "ultima": "2026-10-07T10:38+00:00"
    }
   ],
@@ -260,9 +260,9 @@
     "uf": null,
     "foto": "https://commons.wikimedia.org/wiki/Special:FilePath/Foto_oficial_de_Luiz_In%C3%A1cio_Lula_da_Silva_%28estreita%29.jpg?width=160",
     "foto_fonte": "https://www.wikidata.org/wiki/Q37181",
-    "artigos": 134,
-    "peso": 86.34593994262191,
-    "ultima": "2026-10-17T02:01+00:00"
+    "artigos": 135,
+    "peso": 86.55902345193736,
+    "ultima": "2026-10-17T15:33+00:00"
    },
    {
     "id": "flavio-bolsonaro",
@@ -276,7 +276,7 @@
     "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador5894.jpg",
     "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/5894",
     "artigos": 72,
-    "peso": 36.44002842590295,
+    "peso": 36.21274427059661,
     "ultima": "2026-10-17T03:55+00:00"
    },
    {
@@ -291,7 +291,7 @@
     "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador3830.jpg",
     "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/3830",
     "artigos": 47,
-    "peso": 25.902695680412002,
+    "peso": 25.97154749322682,
     "ultima": "2026-10-16T18:44+00:00"
    },
    {
@@ -306,7 +306,7 @@
     "foto": "https://commons.wikimedia.org/wiki/Special:FilePath/Nunes_Marques%2C_February_2025_%28cropped%29.jpg?width=160",
     "foto_fonte": "https://www.wikidata.org/wiki/Q99831978",
     "artigos": 46,
-    "peso": 23.365427627752172,
+    "peso": 23.230372704617963,
     "ultima": "2026-10-16T23:04+00:00"
    },
    {
@@ -321,7 +321,7 @@
     "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador6335.jpg",
     "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/6335",
     "artigos": 30,
-    "peso": 16.67772511848342,
+    "peso": 16.76303317535545,
     "ultima": "2026-10-16T20:53:00+00:00"
    },
    {
@@ -336,7 +336,7 @@
     "foto": "https://www.camara.leg.br/internet/deputado/bandep/160674.jpg",
     "foto_fonte": "https://www.camara.leg.br/deputados/160674",
     "artigos": 21,
-    "peso": 15.150391254530184,
+    "peso": 15.215158303121001,
     "ultima": "2026-10-16T18:44+00:00"
    },
    {
@@ -351,7 +351,7 @@
     "foto": "https://commons.wikimedia.org/wiki/Special:FilePath/Luiz_Edson_Fachin-12-05.2015.jpg?width=160",
     "foto_fonte": "https://www.wikidata.org/wiki/Q10320705",
     "artigos": 20,
-    "peso": 10.125295513057207,
+    "peso": 10.062530276319796,
     "ultima": "2026-10-17T00:18+00:00"
    },
    {
@@ -366,7 +366,7 @@
     "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador825.jpg",
     "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/825",
     "artigos": 18,
-    "peso": 9.951457965575326,
+    "peso": 9.995996284440094,
     "ultima": "2026-10-16T18:44+00:00"
    },
    {
@@ -381,7 +381,7 @@
     "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador5376.jpg",
     "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/5376",
     "artigos": 12,
-    "peso": 6.671090047393367,
+    "peso": 6.705213270142182,
     "ultima": "2026-10-16T17:53:00+00:00"
    },
    {
@@ -396,7 +396,7 @@
     "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador5525.jpg",
     "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/5525",
     "artigos": 12,
-    "peso": 6.671090047393367,
+    "peso": 6.705213270142182,
     "ultima": "2026-10-06T22:54:00+00:00"
    },
    {
@@ -411,7 +411,7 @@
     "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador6009.jpg",
     "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/6009",
     "artigos": 11,
-    "peso": 6.115165876777253,
+    "peso": 6.146445497630333,
     "ultima": "2026-10-09T21:56:00+00:00"
    },
    {
@@ -426,7 +426,7 @@
     "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador4770.jpg",
     "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/4770",
     "artigos": 10,
-    "peso": 5.5592417061611386,
+    "peso": 5.587677725118485,
     "ultima": "2026-10-09T21:56:00+00:00"
    },
    {
@@ -441,7 +441,7 @@
     "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador345.jpg",
     "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/345",
     "artigos": 10,
-    "peso": 5.5592417061611386,
+    "peso": 5.587677725118485,
     "ultima": "2026-09-25T18:03:00+00:00"
    },
    {
@@ -456,7 +456,7 @@
     "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador5352.jpg",
     "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/5352",
     "artigos": 10,
-    "peso": 5.5592417061611386,
+    "peso": 5.587677725118485,
     "ultima": "2026-09-14T16:27:00+00:00"
    },
    {
@@ -471,7 +471,7 @@
     "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador5990.jpg",
     "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/5990",
     "artigos": 9,
-    "peso": 5.003317535545024,
+    "peso": 5.028909952606636,
     "ultima": "2026-09-04T21:56:00+00:00"
    },
    {
@@ -486,7 +486,7 @@
     "foto": null,
     "foto_fonte": null,
     "artigos": 9,
-    "peso": 4.61707779694194,
+    "peso": 4.596144607194403,
     "ultima": "2026-10-14T12:46+00:00"
    },
    {
@@ -501,7 +501,7 @@
     "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador475.jpg",
     "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/475",
     "artigos": 8,
-    "peso": 4.44739336492891,
+    "peso": 4.470142180094787,
     "ultima": "2026-10-16T13:16:00+00:00"
    },
    {
@@ -516,7 +516,7 @@
     "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador6338.jpg",
     "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/6338",
     "artigos": 8,
-    "peso": 4.44739336492891,
+    "peso": 4.470142180094787,
     "ultima": "2026-10-16T13:16:00+00:00"
    },
    {
@@ -531,7 +531,7 @@
     "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador5917.jpg",
     "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/5917",
     "artigos": 8,
-    "peso": 4.44739336492891,
+    "peso": 4.470142180094787,
     "ultima": "2026-10-08T21:29:00+00:00"
    },
    {
@@ -546,7 +546,7 @@
     "foto": "https://www.camara.leg.br/internet/deputado/bandep/220645.jpg",
     "foto_fonte": "https://www.camara.leg.br/deputados/220645",
     "artigos": 8,
-    "peso": 4.442361448442483,
+    "peso": 4.426898848357416,
     "ultima": "2026-10-05T17:44+00:00"
    },
    {
@@ -561,7 +561,7 @@
     "foto": "https://www.camara.leg.br/internet/deputado/bandep/74161.jpg",
     "foto_fonte": "https://www.camara.leg.br/deputados/74161",
     "artigos": 6,
-    "peso": 3.661575740298614,
+    "peso": 3.680305027972776,
     "ultima": "2026-10-06T22:54:00+00:00"
    },
    {
@@ -576,7 +576,7 @@
     "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador5012.jpg",
     "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/5012",
     "artigos": 6,
-    "peso": 3.3355450236966826,
+    "peso": 3.35260663507109,
     "ultima": "2026-10-16T19:20:00+00:00"
    },
    {
@@ -591,7 +591,7 @@
     "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador22.jpg",
     "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/22",
     "artigos": 6,
-    "peso": 3.3355450236966826,
+    "peso": 3.35260663507109,
     "ultima": "2026-10-14T20:47:00+00:00"
    },
    {
@@ -606,12 +606,142 @@
     "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador5672.jpg",
     "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/5672",
     "artigos": 6,
-    "peso": 3.3355450236966826,
+    "peso": 3.35260663507109,
     "ultima": "2026-10-09T11:34:00+00:00"
    }
   ]
  },
  "artigos": [
+  {
+   "id": "n-ea2c92ec9f",
+   "titulo": "BB recebe até 31 de outubro inscrições para projetos de impacto social",
+   "url": "https://agenciabrasil.ebc.com.br/economia/noticia/2026-10/bb-recebe-ate-31-de-outubro-inscricoes-para-projetos-de-impacto-social",
+   "data": "2026-10-18T13:15+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "Projetos de impacto social podem se inscrever até 31 de outubro para receber recursos do Banco do Brasil (BB). A instituição financeira abriu edital de 2026 do Programa Mãos Dadas, que também inclui projetos de saúde e, a partir deste ano, empreendimentos de reciclagem e de economia circular. Podem participar iniciativas que já tenham sido aprovadas nos mecanismos de incentivo fiscal previstos no regulamento de cada modalidade. Notícias relacionadas: Quatro em cada 10 brasileiros nunca ouviram falar em economia circular. A novidade desta edição é a inclusão de projetos amparados pela Lei de In"
+  },
+  {
+   "id": "n-30985eff5f",
+   "titulo": "Pescadoras brasileiras recebem título de heróinas em premiação da FAO",
+   "url": "https://agenciabrasil.ebc.com.br/direitos-humanos/noticia/2026-10/pescadoras-brasileiras-recebem-titulo-de-heroinas-em-premiacao-da-fao",
+   "data": "2026-10-18T12:23+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "Luena Maria Ferreira dos Santos, ou Luena Pataxó, tem 44 anos e uma vida inteira conectada à pesca e ao mar. Criança, ajudava os pais na limpeza de peixes e mariscos. Já adulta, trabalhou como pescadora, mas abandonou o barco para catar camarões depois que ficou viúva. Nesta semana, Luena recebeu uma homenagem da Organização das Nações Unidas para a Alimentação e Agricultura (FAO) em Roma, na Itália. Ela e a pescadora Joana Rodrigues Mousinho, de 70 anos, foram as duas brasileiras escolhidas como Heroínas da FAO nos Sistemas Agroalimentares e no Desenvolvimento Rural. Notícias relacionadas: Am"
+  },
+  {
+   "id": "n-573e2d964f",
+   "titulo": "Roda de Choro apresenta Grupo Tamoio em homenagem a Ernesto Nazareth",
+   "url": "https://agenciabrasil.ebc.com.br/cultura/noticia/2026-10/roda-de-choro-apresenta-grupo-tamoio-em-homenagem-ernesto-nazareth",
+   "data": "2026-10-18T12:01+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [
+    "mec"
+   ],
+   "pessoas": [],
+   "resumo": "O novo episódio do Roda de Choro , da Rádio MEC , apresenta o concerto de estreia do Grupo Tamoio em programa dedicado à obra de Ernesto Nazareth. Gravado ao vivo na Sala Cecília Meireles, no Rio de Janeiro (RJ), em setembro de 2026, o espetáculo vai ao ar neste domingo (18), às 20h, com reapresentação pela Rádio Nacional na sexta-feira (23), às 22h. No concerto, o Grupo Tamoio interpreta obras de Ernesto Nazareth com arranjos camerísticos inéditos e exclusivos. A apresentação celebra a trajetória e a influência do compositor, pianista e um dos nomes fundamentais da formação do choro e da músi"
+  },
+  {
+   "id": "n-ed08093389",
+   "titulo": "Rádio Nacional transmite duelo Fluminense x Santos pelo Brasileirão",
+   "url": "https://agenciabrasil.ebc.com.br/esportes/noticia/2026-10/radio-nacional-transmite-duelo-fluminense-x-santos-pelo-brasileirao",
+   "data": "2026-10-18T11:24+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [],
+   "pessoas": [
+    "da-vitoria"
+   ],
+   "resumo": "A Rádio Nacional leva ao ar neste domingo (18) o confronto entre Fluminense e Santos, válido pela 31ª rodada do Brasileirão Masculino 2026. A bola rola a partir das 15h30, no Estádio do Maracanã, no Rio de Janeiro (RJ). Jogando em casa, o Fluminense busca a recuperação após a derrota na última rodada para o rival Flamengo. Quarto colocado na tabela, com 51 pontos, o Tricolor precisa da vitória para se consolidar no G4. Já o Santos, oitavo colocado com 42 pontos, vai ao Rio em busca dos três pontos para se aproximar da parte de cima da tabela e garantir uma vaga em competições internacionais. N"
+  },
+  {
+   "id": "n-6642c299a3",
+   "titulo": "COP17 da Biodiversidade começa segunda-feira na Armênia",
+   "url": "https://agenciabrasil.ebc.com.br/meio-ambiente/noticia/2026-10/cop17-da-biodiversidade-comeca-segunda-feira-na-armenia",
+   "data": "2026-10-18T11:12+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "Representantes de mais de 200 países se reunirão a partir desta segunda-feira (16), na Armênia, na 17ª Conferência das Partes das Nações Unidas (COP17) da Convenção sobre Diversidade Biológica (CDB). O encontro sobre ações de proteção e restauração da natureza ocorre na capital do país, Yerevan, até o próximo dia 30. Notícias relacionadas: Depois da COP17, Brasil é cobrado a efetivar metas de restauração. Mudanças climáticas preocupam mais que perda de emprego, diz estudo. Proteção da biodiversidade mundial demanda mais US$1,3 trilhão por ano. Neste ano, será realizada a primeira revisão do Ma"
+  },
+  {
+   "id": "n-2a17005a62",
+   "titulo": "Partido Novo entra com ação no TSE contra atos musicais por democracia",
+   "url": "https://agenciabrasil.ebc.com.br/justica/noticia/2026-10/partido-novo-entra-com-acao-no-tse-contra-atos-musicais-por-democracia",
+   "data": "2026-10-17T20:58+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [
+    "tse"
+   ],
+   "pessoas": [],
+   "resumo": "O Partido Novo informou, por meio das redes sociais, que entrou, neste sábado (17), com uma ação no Tribunal Superior Eleitoral (TSE) contra os atos musicais pela democracia. As manifestações estão marcadas para este domingo (18), em vários em cidades como Rio de Janeiro, Salvador, Belém, Brasília, Belo Horizonte, Recife, Florianópolis e Curitiba, entre outras. Notícias relacionadas: Justiça Federal manda Meta restabelecer contas estudantis do RS. TSE decide manter ordem para Meta garantir isonomia a candidatos. Defesa de Vorcaro pede investigação sobre vazamento de conversas . No Rio, o event"
+  },
+  {
+   "id": "n-7db3ee839f",
+   "titulo": "Cortes em auxílios sociais podem gerar retração em cidades do interior",
+   "url": "https://agenciabrasil.ebc.com.br/economia/noticia/2026-10/cortes-em-auxilios-sociais-podem-gerar-retracao-em-cidades-do-interior",
+   "data": "2026-10-17T20:29+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "A estagnação ou cortes no valor dos benefícios sociais e previdenciários poderão causar uma retração severa à atividade econômica em municípios do interior do Brasil, mostra levantamento do Centro de Pesquisa em Macroeconomia das Desigualdades (Made), da Faculdade de Economia e Administração da Universidade de São Paulo (FEA-USP), lançado nesta semana. Segundo o estudo, as aposentadorias, o Bolsa Família e o Benefício de Prestação Continuada (BPC) têm peso significativo na economia dessas cidades e chegam a representar quase metade do orçamento das famílias mais pobres. Notícias relacionadas: "
+  },
+  {
+   "id": "n-8b102f3119",
+   "titulo": "Justiça Federal manda Meta restabelecer contas estudantis do RS",
+   "url": "https://agenciabrasil.ebc.com.br/justica/noticia/2026-10/justica-federal-manda-meta-restabelecer-contas-estudantis-do-rs",
+   "data": "2026-10-17T19:46+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "A 1ª Vara Federal de Porto Alegre determinou que a empresa Meta restabeleça, em até dois dias, as contas no Instagram de entidades estudantis do Rio Grande do Sul que foram bloqueadas. Segundo as entidades, no dia 6 de outubro a Meta derrubou, de forma simultânea e sem aviso prévio ou justificativa , as contas do Centro Acadêmico André da Rocha (@caarufrgs), do Serviço de Assessoria Jurídica Universitária (@sajudaufrgs) e do Diretório Acadêmico de Economia, Contábeis e Atuariais (@ufrgsdaeca), todos ligados à Universidade Federal do Rio Grande do Sul (UFRGS) e também a conta do Diretório Centr"
+  },
+  {
+   "id": "n-24687ff9b9",
+   "titulo": "Festival de Cinema valoriza produções de crianças e adolescentes",
+   "url": "https://agenciabrasil.ebc.com.br/cultura/noticia/2026-10/festival-de-cinema-valoriza-producoes-de-criancas-e-adolescentes",
+   "data": "2026-10-17T19:20+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "O interesse pelo cinema começou cedo. Por volta dos 5 anos, as brincadeiras do menino já tinham montagem de filmes com histórias de super-heróis. Enquanto ia gostando dessa brincadeira, Miguel Figueiredo Viglio deu o primeiro passo para conhecer mais a arte do cinema e resolveu, aos 7 anos, fazer um curso de stop motion , que é uma animação feita quadro a quadro. “Aí comecei a fazer os filmes em stop motion com brinquedos que eu tinha e fui me aprimorando”, contou em entrevista à Agência Brasil Notícias relacionadas: Recife vai sediar maior festival de animação do Brasil, o Animage. Duelo de G"
+  },
+  {
+   "id": "n-c403fbf8e2",
+   "titulo": "Organizações promovem ação de empregabilidade para refugiados",
+   "url": "https://agenciabrasil.ebc.com.br/direitos-humanos/noticia/2026-10/organizacoes-promovem-acao-de-empregabilidade-para-refugiados",
+   "data": "2026-10-17T19:04+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "O casal Victor Arce, 65 anos de idade, e Morelba Margarida Aquilar, 64 anos, vivem no Brasil há um ano com sua filha. Vindos da Venezuela, eles hoje buscam uma maneira de encontrar um emprego. Na Venezuela, ele era marceneiro profissional, mas teve que vir para o Brasil por causa de um problema de saúde de sua esposa. E enquanto a oportunidade de emprego não aparece, eles vão vendendo artesanato. Notícias relacionadas: Dia Mundial do Refugiado: pedidos de asilo sobem 11% no Brasil em 2025. Brasil chega a 35% dos empreendedores com CNPJ. Segundo Acnur, sete em cada dez deslocados enfrentam amea"
+  },
+  {
+   "id": "n-167602e4db",
+   "titulo": "Eleições: mais de 4 mil seções tiveram locais alterados; confira",
+   "url": "https://agenciabrasil.ebc.com.br/politica/noticia/2026-10/mais-de-4-mil-secoes-eleitorais-tiveram-locais-de-votacao-alterados",
+   "data": "2026-10-17T17:20+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [
+    "tse"
+   ],
+   "pessoas": [],
+   "resumo": "O Tribunal Regional Eleitoral (TRE) alterou o local de votação de 4.352 seções eleitorais neste 2º turno. Isso corresponde a apenas 0,87% das seções do país. Mesmo assim, o TRE alerta os eleitores para que confiram com antecedência se a sua seção está entre as que mudaram de endereço. Notícias relacionadas: TSE decide manter ordem para Meta garantir isonomia a candidatos. Estado de SP começa a preparar mais de 114 mil urnas para o 2º turno. OEA elogia eleição no Brasil, mas aponta preocupação com desinformação. A consulta pode ser feita no aplicativo e-título ou no portal do TRE, no menu “auto"
+  },
+  {
+   "id": "n-af823c6d44",
+   "titulo": "José Sarney recebe alta hospitalar após nove dias de internação",
+   "url": "https://agenciabrasil.ebc.com.br/politica/noticia/2026-10/jose-sarney-recebe-alta-hospitalar-apos-nove-dias-de-internacao",
+   "data": "2026-10-17T15:33+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [],
+   "pessoas": [
+    "luiz-inacio-lula-da-silva"
+   ],
+   "resumo": "Após nove dias de internação, o ex-presidente da República, José Sarney, de 96 anos, recebeu alta hospitalar na manhã deste sábado (17). Ele estava internado na UDI Hospital, da Rede D’Or, em São Luís (MA) desde o dia 09 de outubro, onde passou por uma cirurgia abdominal . Notícias relacionadas: Abstenção de eleitores com mais de 70 anos cai 9,7 pontos percentuais. Em sabatina, Flávio não explica propostas e faz acusações sem provas. Descanso de trabalhador não quebra empresas, diz Lula após fim da 6x1. Segundo o boletim médico divulgado de hoje, Sarney recebeu alta após apresentar uma evoluçã"
+  },
   {
    "id": "n-0fe813d89c",
    "titulo": "Estudantes desenvolvem plataformas para combater a desinformação",
