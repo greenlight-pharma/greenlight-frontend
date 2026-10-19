@@ -1,6 +1,6 @@
 {
  "meta": {
-  "gerado_em": "2026-10-18T13:55+00:00",
+  "gerado_em": "2026-10-19T16:55+00:00",
   "gerado_por": "scripts/governo/agentes/agente_noticias.py",
   "janela_dias": 90,
   "fontes": [
@@ -30,13 +30,13 @@
     "url": "https://www.gov.br/planalto/pt-br/acompanhe-o-planalto/noticias/RSS"
    }
   ],
-  "total_artigos": 2358,
-  "artigos_com_no": 800,
-  "novos_nesta_rodada": 20,
+  "total_artigos": 2397,
+  "artigos_com_no": 816,
+  "novos_nesta_rodada": 47,
   "artigos_por_fonte": {
-   "agenciabrasil": 949,
-   "senado": 844,
-   "camara": 532,
+   "agenciabrasil": 975,
+   "senado": 851,
+   "camara": 538,
    "stf": 7,
    "planalto": 26
   },
@@ -45,206 +45,206 @@
  },
  "resumo": [
   {
-   "texto": "O Congresso Nacional promulgou a Emenda Constitucional 141, que extingue a escala 6x1 e institui a jornada com dois dias de descanso semanal, com início em 15 de dezembro de 2026.",
-   "artigo_id": "n-a04fd334c0",
+   "texto": "O Congresso Nacional promulgou a Emenda Constitucional 141/2026, que acaba com a escala 6x1 e reduz a jornada semanal para 42 horas em dezembro e 40 horas em um ano.",
+   "artigo_id": "n-e9adb12181",
    "no_id": "congresso"
   },
   {
-   "texto": "O Congresso Nacional promulgou a Emenda Constitucional 140, que cria regras de aposentadoria diferenciada para agentes comunitários de saúde e agentes de combate às endemias.",
+   "texto": "O Congresso Nacional promulgou a Emenda Constitucional 140/2026, que cria regras diferenciadas de aposentadoria para agentes comunitários de saúde e agentes de combate às endemias.",
    "artigo_id": "n-f20b78f325",
    "no_id": "congresso"
   },
   {
-   "texto": "O Congresso Nacional aprovou a Medida Provisória 1370/26, que condiciona o registro profissional de médicos à aprovação no Exame Nacional de Avaliação da Formação Médica, organizado pelo Ministério da Educação.",
-   "artigo_id": "n-f6be8b4642",
-   "no_id": "congresso"
-  },
-  {
-   "texto": "O Tribunal Superior Eleitoral manteve, por unanimidade, a decisão que proíbe a Meta de restringir a entrega de postagens sobre candidatos à Presidência da República.",
+   "texto": "O Tribunal Superior Eleitoral manteve, por unanimidade, a decisão que proíbe a Meta de restringir a entrega de postagens sobre candidatos à Presidência.",
    "artigo_id": "n-fc72208c73",
    "no_id": "tse"
+  },
+  {
+   "texto": "O Ministério da Justiça e Segurança Pública autorizou a atuação da Força Nacional por 90 dias na região da Usina Hidrelétrica de Belo Monte, no Pará.",
+   "artigo_id": "n-f7a66acdc1",
+   "no_id": "mjsp"
   }
  ],
  "ranking": {
   "orgaos": [
    {
     "id": "tse",
-    "artigos": 176,
-    "peso": 91.12226186699377,
-    "ultima": "2026-10-17T20:58+00:00"
+    "artigos": 181,
+    "peso": 93.10142372024738,
+    "ultima": "2026-10-19T16:19:00+00:00"
    },
    {
     "id": "stf",
     "artigos": 119,
-    "peso": 61.195113831452645,
+    "peso": 60.8451838248462,
     "ultima": "2026-10-17T00:18+00:00"
    },
    {
     "id": "congresso",
-    "artigos": 80,
-    "peso": 46.08653652869786,
-    "ultima": "2026-10-16T21:42:00+00:00"
+    "artigos": 81,
+    "peso": 46.747700012130515,
+    "ultima": "2026-10-19T11:19+00:00"
    },
    {
     "id": "camara",
-    "artigos": 72,
-    "peso": 39.30392530925548,
-    "ultima": "2026-10-16T17:25:00+00:00"
+    "artigos": 74,
+    "peso": 40.54063744011563,
+    "ultima": "2026-10-19T12:58:00+00:00"
    },
    {
     "id": "pf",
-    "artigos": 48,
-    "peso": 24.22426100809532,
-    "ultima": "2026-10-16T22:49+00:00"
+    "artigos": 49,
+    "peso": 24.52279273253185,
+    "ultima": "2026-10-19T12:44+00:00"
    },
    {
     "id": "prf",
     "artigos": 13,
-    "peso": 24.16361498009878,
+    "peso": 24.410414173370693,
     "ultima": "2026-10-13T18:15+00:00"
    },
    {
     "id": "mte",
     "artigos": 6,
-    "peso": 20.623182297154898,
+    "peso": 20.896923076923077,
     "ultima": "2026-10-16T16:31+00:00"
+   },
+   {
+    "id": "inpe",
+    "artigos": 3,
+    "peso": 19.421846153846154,
+    "ultima": "2026-10-19T14:03+00:00"
    },
    {
     "id": "caixa",
     "artigos": 39,
-    "peso": 19.38082191780821,
+    "peso": 19.176,
     "ultima": "2026-10-17T11:32+00:00"
-   },
-   {
-    "id": "inpe",
-    "artigos": 2,
-    "peso": 18.63540569020021,
-    "ultima": "2026-10-12T16:43+00:00"
    },
    {
     "id": "mec",
     "artigos": 34,
-    "peso": 18.55925616632485,
+    "peso": 18.48885528001674,
     "ultima": "2026-10-18T12:01+00:00"
    },
    {
     "id": "anvisa",
-    "artigos": 29,
-    "peso": 14.924549655642709,
-    "ultima": "2026-10-14T13:44+00:00"
+    "artigos": 31,
+    "peso": 15.785137182886656,
+    "ultima": "2026-10-19T15:18+00:00"
    },
    {
     "id": "inss",
     "artigos": 19,
-    "peso": 12.601358324171036,
+    "peso": 12.639368758919428,
     "ultima": "2026-10-01T20:17+00:00"
    },
    {
     "id": "ms",
     "artigos": 23,
-    "peso": 12.128355607530203,
+    "peso": 12.066533549152588,
     "ultima": "2026-10-16T20:53:00+00:00"
    },
    {
     "id": "agu",
     "artigos": 24,
-    "peso": 11.98848326250131,
+    "peso": 11.872260327216848,
     "ultima": "2026-10-10T18:06+00:00"
    },
    {
     "id": "petrobras",
     "artigos": 23,
-    "peso": 11.615186352308989,
+    "peso": 11.52385790472747,
     "ultima": "2026-10-15T23:23+00:00"
    },
    {
     "id": "ibge",
     "artigos": 23,
-    "peso": 11.49153911076264,
+    "peso": 11.38056801952454,
     "ultima": "2026-10-16T13:01+00:00"
    },
    {
     "id": "tcu",
     "artigos": 17,
-    "peso": 9.968978056185264,
+    "peso": 10.017280060431185,
     "ultima": "2026-10-07T10:38+00:00"
    },
    {
     "id": "senado",
     "artigos": 15,
-    "peso": 9.791294358129253,
+    "peso": 9.771699170717756,
     "ultima": "2026-10-16T00:41+00:00"
    },
    {
     "id": "anp",
     "artigos": 18,
-    "peso": 9.767282090383194,
+    "peso": 9.751361895893979,
     "ultima": "2026-10-15T23:42:00+00:00"
    },
    {
     "id": "tst",
     "artigos": 16,
-    "peso": 8.649746545359498,
+    "peso": 8.624687395306434,
     "ultima": "2026-10-16T16:31+00:00"
    },
    {
     "id": "inep",
     "artigos": 16,
-    "peso": 7.951106427818757,
+    "peso": 7.867076923076922,
     "ultima": "2026-10-14T15:27+00:00"
    },
    {
     "id": "mpf",
-    "artigos": 14,
-    "peso": 7.019041745114588,
-    "ultima": "2026-10-16T23:00+00:00"
+    "artigos": 15,
+    "peso": 7.447029557986079,
+    "ultima": "2026-10-19T15:47+00:00"
    },
    {
     "id": "stj",
     "artigos": 12,
-    "peso": 6.804197468986967,
+    "peso": 6.770724153353537,
     "ultima": "2026-10-16T23:00+00:00"
    },
    {
     "id": "cnj",
     "artigos": 9,
-    "peso": 4.534320986421227,
+    "peso": 4.496875711832233,
     "ultima": "2026-10-07T19:31+00:00"
    },
    {
     "id": "anatel",
     "artigos": 8,
-    "peso": 4.426898848357416,
+    "peso": 4.404569163362116,
     "ultima": "2026-10-14T12:53+00:00"
    },
    {
     "id": "ebc",
     "artigos": 8,
-    "peso": 3.9755532139093783,
+    "peso": 3.933538461538461,
     "ultima": "2026-10-15T21:56+00:00"
    },
    {
     "id": "cvm",
     "artigos": 7,
-    "peso": 3.8681310758455676,
+    "peso": 3.841231913068344,
     "ultima": "2026-09-27T18:52+00:00"
    },
    {
     "id": "anac",
     "artigos": 6,
-    "peso": 3.5566577864264235,
+    "peso": 3.56447443318043,
     "ultima": "2026-10-17T00:03+00:00"
    },
    {
     "id": "mme",
     "artigos": 6,
-    "peso": 3.167135772751562,
+    "peso": 3.1650886739582393,
     "ultima": "2026-10-09T15:09:00+00:00"
    },
    {
     "id": "aneel",
     "artigos": 6,
-    "peso": 3.105312151978386,
+    "peso": 3.093443731356775,
     "ultima": "2026-10-07T10:38+00:00"
    }
   ],
@@ -260,9 +260,9 @@
     "uf": null,
     "foto": "https://commons.wikimedia.org/wiki/Special:FilePath/Foto_oficial_de_Luiz_In%C3%A1cio_Lula_da_Silva_%28estreita%29.jpg?width=160",
     "foto_fonte": "https://www.wikidata.org/wiki/Q37181",
-    "artigos": 135,
-    "peso": 86.55902345193736,
-    "ultima": "2026-10-17T15:33+00:00"
+    "artigos": 139,
+    "peso": 88.30873554266904,
+    "ultima": "2026-10-19T15:57+00:00"
    },
    {
     "id": "flavio-bolsonaro",
@@ -275,9 +275,9 @@
     "uf": "RJ",
     "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador5894.jpg",
     "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/5894",
-    "artigos": 72,
-    "peso": 36.21274427059661,
-    "ultima": "2026-10-17T03:55+00:00"
+    "artigos": 76,
+    "peso": 37.87012998282559,
+    "ultima": "2026-10-19T15:57+00:00"
    },
    {
     "id": "davi-alcolumbre",
@@ -290,9 +290,9 @@
     "uf": "AP",
     "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador3830.jpg",
     "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/3830",
-    "artigos": 47,
-    "peso": 25.97154749322682,
-    "ultima": "2026-10-16T18:44+00:00"
+    "artigos": 48,
+    "peso": 26.65147940470711,
+    "ultima": "2026-10-19T15:09:00+00:00"
    },
    {
     "id": "nunes-marques",
@@ -306,7 +306,7 @@
     "foto": "https://commons.wikimedia.org/wiki/Special:FilePath/Nunes_Marques%2C_February_2025_%28cropped%29.jpg?width=160",
     "foto_fonte": "https://www.wikidata.org/wiki/Q99831978",
     "artigos": 46,
-    "peso": 23.230372704617963,
+    "peso": 23.047715809454935,
     "ultima": "2026-10-16T23:04+00:00"
    },
    {
@@ -321,7 +321,7 @@
     "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador6335.jpg",
     "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/6335",
     "artigos": 30,
-    "peso": 16.76303317535545,
+    "peso": 16.90011750881316,
     "ultima": "2026-10-16T20:53:00+00:00"
    },
    {
@@ -336,7 +336,22 @@
     "foto": "https://www.camara.leg.br/internet/deputado/bandep/160674.jpg",
     "foto_fonte": "https://www.camara.leg.br/deputados/160674",
     "artigos": 21,
-    "peso": 15.215158303121001,
+    "peso": 15.291941353794268,
+    "ultima": "2026-10-16T18:44+00:00"
+   },
+   {
+    "id": "paulo-paim",
+    "nome": "Paulo Paim",
+    "nome_completo": "Paulo Renato Paim",
+    "cargo": "Senador, RS",
+    "no_id": "senado",
+    "poder": "legislativo",
+    "partido": "PT",
+    "uf": "RS",
+    "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador825.jpg",
+    "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/825",
+    "artigos": 18,
+    "peso": 10.068425562686434,
     "ultima": "2026-10-16T18:44+00:00"
    },
    {
@@ -351,23 +366,8 @@
     "foto": "https://commons.wikimedia.org/wiki/Special:FilePath/Luiz_Edson_Fachin-12-05.2015.jpg?width=160",
     "foto_fonte": "https://www.wikidata.org/wiki/Q10320705",
     "artigos": 20,
-    "peso": 10.062530276319796,
+    "peso": 9.977136039049082,
     "ultima": "2026-10-17T00:18+00:00"
-   },
-   {
-    "id": "paulo-paim",
-    "nome": "Paulo Paim",
-    "nome_completo": "Paulo Renato Paim",
-    "cargo": "Senador, RS",
-    "no_id": "senado",
-    "poder": "legislativo",
-    "partido": "PT",
-    "uf": "RS",
-    "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador825.jpg",
-    "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/825",
-    "artigos": 18,
-    "peso": 9.995996284440094,
-    "ultima": "2026-10-16T18:44+00:00"
    },
    {
     "id": "mara-gabrilli",
@@ -381,7 +381,7 @@
     "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador5376.jpg",
     "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/5376",
     "artigos": 12,
-    "peso": 6.705213270142182,
+    "peso": 6.760047003525265,
     "ultima": "2026-10-16T17:53:00+00:00"
    },
    {
@@ -396,8 +396,23 @@
     "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador5525.jpg",
     "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/5525",
     "artigos": 12,
-    "peso": 6.705213270142182,
+    "peso": 6.760047003525265,
     "ultima": "2026-10-06T22:54:00+00:00"
+   },
+   {
+    "id": "flavio-arns",
+    "nome": "Flávio Arns",
+    "nome_completo": "Flávio José Arns",
+    "cargo": "Senador, PR",
+    "no_id": "senado",
+    "poder": "legislativo",
+    "partido": "PSB",
+    "uf": "PR",
+    "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador345.jpg",
+    "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/345",
+    "artigos": 11,
+    "peso": 6.1967097532314925,
+    "ultima": "2026-10-19T12:30:00+00:00"
    },
    {
     "id": "astronauta-marcos-pontes",
@@ -411,8 +426,23 @@
     "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador6009.jpg",
     "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/6009",
     "artigos": 11,
-    "peso": 6.146445497630333,
+    "peso": 6.1967097532314925,
     "ultima": "2026-10-09T21:56:00+00:00"
+   },
+   {
+    "id": "carlos-viana",
+    "nome": "Carlos Viana",
+    "nome_completo": "Carlos Alberto Dias Viana",
+    "cargo": "Senador, MG",
+    "no_id": "senado",
+    "poder": "legislativo",
+    "partido": "PSD",
+    "uf": "MG",
+    "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador5990.jpg",
+    "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/5990",
+    "artigos": 10,
+    "peso": 5.63337250293772,
+    "ultima": "2026-10-19T12:58:00+00:00"
    },
    {
     "id": "izalci-lucas",
@@ -426,23 +456,8 @@
     "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador4770.jpg",
     "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/4770",
     "artigos": 10,
-    "peso": 5.587677725118485,
+    "peso": 5.63337250293772,
     "ultima": "2026-10-09T21:56:00+00:00"
-   },
-   {
-    "id": "flavio-arns",
-    "nome": "Flávio Arns",
-    "nome_completo": "Flávio José Arns",
-    "cargo": "Senador, PR",
-    "no_id": "senado",
-    "poder": "legislativo",
-    "partido": "PSB",
-    "uf": "PR",
-    "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador345.jpg",
-    "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/345",
-    "artigos": 10,
-    "peso": 5.587677725118485,
-    "ultima": "2026-09-25T18:03:00+00:00"
    },
    {
     "id": "rogerio-carvalho",
@@ -456,23 +471,23 @@
     "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador5352.jpg",
     "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/5352",
     "artigos": 10,
-    "peso": 5.587677725118485,
+    "peso": 5.63337250293772,
     "ultima": "2026-09-14T16:27:00+00:00"
    },
    {
-    "id": "carlos-viana",
-    "nome": "Carlos Viana",
-    "nome_completo": "Carlos Alberto Dias Viana",
-    "cargo": "Senador, MG",
+    "id": "teresa-leitao",
+    "nome": "Teresa Leitão",
+    "nome_completo": "Maria Teresa Leitão de Melo",
+    "cargo": "Senadora, PE",
     "no_id": "senado",
     "poder": "legislativo",
-    "partido": "PSD",
-    "uf": "MG",
-    "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador5990.jpg",
-    "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/5990",
+    "partido": "PT",
+    "uf": "PE",
+    "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador6338.jpg",
+    "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/6338",
     "artigos": 9,
-    "peso": 5.028909952606636,
-    "ultima": "2026-09-04T21:56:00+00:00"
+    "peso": 5.070035252643948,
+    "ultima": "2026-10-19T15:16:00+00:00"
    },
    {
     "id": "paulo-gonet",
@@ -486,7 +501,7 @@
     "foto": null,
     "foto_fonte": null,
     "artigos": 9,
-    "peso": 4.596144607194403,
+    "peso": 4.568520654433698,
     "ultima": "2026-10-14T12:46+00:00"
    },
    {
@@ -501,22 +516,7 @@
     "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador475.jpg",
     "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/475",
     "artigos": 8,
-    "peso": 4.470142180094787,
-    "ultima": "2026-10-16T13:16:00+00:00"
-   },
-   {
-    "id": "teresa-leitao",
-    "nome": "Teresa Leitão",
-    "nome_completo": "Maria Teresa Leitão de Melo",
-    "cargo": "Senadora, PE",
-    "no_id": "senado",
-    "poder": "legislativo",
-    "partido": "PT",
-    "uf": "PE",
-    "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador6338.jpg",
-    "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/6338",
-    "artigos": 8,
-    "peso": 4.470142180094787,
+    "peso": 4.506698002350176,
     "ultima": "2026-10-16T13:16:00+00:00"
    },
    {
@@ -531,7 +531,7 @@
     "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador5917.jpg",
     "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/5917",
     "artigos": 8,
-    "peso": 4.470142180094787,
+    "peso": 4.506698002350176,
     "ultima": "2026-10-08T21:29:00+00:00"
    },
    {
@@ -546,7 +546,7 @@
     "foto": "https://www.camara.leg.br/internet/deputado/bandep/220645.jpg",
     "foto_fonte": "https://www.camara.leg.br/deputados/220645",
     "artigos": 8,
-    "peso": 4.426898848357416,
+    "peso": 4.404569163362116,
     "ultima": "2026-10-05T17:44+00:00"
    },
    {
@@ -560,9 +560,24 @@
     "uf": "MG",
     "foto": "https://www.camara.leg.br/internet/deputado/bandep/74161.jpg",
     "foto_fonte": "https://www.camara.leg.br/deputados/74161",
-    "artigos": 6,
-    "peso": 3.680305027972776,
-    "ultima": "2026-10-06T22:54:00+00:00"
+    "artigos": 7,
+    "peso": 4.1994566260756665,
+    "ultima": "2026-10-19T11:19+00:00"
+   },
+   {
+    "id": "andre-janones",
+    "nome": "André Janones",
+    "nome_completo": "André Janones",
+    "cargo": "Deputado(a) federal, MG",
+    "no_id": "camara",
+    "poder": "legislativo",
+    "partido": "REDE",
+    "uf": "MG",
+    "foto": "https://www.camara.leg.br/internet/deputado/bandep/204515.jpg",
+    "foto_fonte": "https://www.camara.leg.br/deputados/204515",
+    "artigos": 7,
+    "peso": 3.4418461538461536,
+    "ultima": "2026-10-19T15:57+00:00"
    },
    {
     "id": "randolfe-rodrigues",
@@ -576,7 +591,7 @@
     "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador5012.jpg",
     "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/5012",
     "artigos": 6,
-    "peso": 3.35260663507109,
+    "peso": 3.3800235017626323,
     "ultima": "2026-10-16T19:20:00+00:00"
    },
    {
@@ -591,27 +606,449 @@
     "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador22.jpg",
     "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/22",
     "artigos": 6,
-    "peso": 3.35260663507109,
+    "peso": 3.3800235017626323,
     "ultima": "2026-10-14T20:47:00+00:00"
-   },
-   {
-    "id": "alan-rick",
-    "nome": "Alan Rick",
-    "nome_completo": "Alan Rick Miranda",
-    "cargo": "Senador, AC",
-    "no_id": "senado",
-    "poder": "legislativo",
-    "partido": "REPUBLICANOS",
-    "uf": "AC",
-    "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador5672.jpg",
-    "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/5672",
-    "artigos": 6,
-    "peso": 3.35260663507109,
-    "ultima": "2026-10-09T11:34:00+00:00"
    }
   ]
  },
  "artigos": [
+  {
+   "id": "n-5190e49858",
+   "titulo": "Provas de português para estrangeiros começam nesta terça-feira",
+   "url": "https://agenciabrasil.ebc.com.br/educacao/noticia/2026-10/provas-de-portugues-para-estrangeiros-comecam-nesta-terca-feira",
+   "data": "2026-10-19T16:24+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "A aplicação das provas da segunda edição de 2026 do Certificado de Proficiência em Língua Portuguesa para Estrangeiros (Celpe-Bras) ocorre entre esta terça-feira (20) e sexta-feira (23). O Cartão de Confirmação de Inscrição do Celpe-Bras reúne as informações de cada candidato e está disponível na área restrita da Página do Participante . É necessário ter a senha da plataforma Gov.br. Notícias relacionadas: Inscrições para exame de proficiência em português terminam quinta. A participação é voluntária e destinada a estrangeiros e brasileiros, cuja língua materna não seja o português, que precis"
+  },
+  {
+   "id": "n-e394383f14",
+   "titulo": "Áudio: TSE revisa mudanças nos locais de votação para o segundo turno",
+   "url": "https://www12.senado.leg.br/noticias/audios/2026/10/tse-revisa-mudancas-nos-locais-de-votacao-para-o-segundo-turno-1",
+   "data": "2026-10-19T16:19:00+00:00",
+   "fonte": "senado",
+   "nos": [
+    "tse"
+   ],
+   "pessoas": [],
+   "resumo": "Os eleitores devem conferir o local de votação antes do segundo turno, neste domingo (25). O Tribunal Superior Eleitoral (TSE) revisou o levantamento de seções com endereço alterado, inicialmente divulgado com mais de quatro mil mudanças, após identificar inconsistências nos registros. As transferências podem ocorrer por danos causados por chuvas, reformas e questões de acessibilidade. Para confirmar onde votar, basta consultar o aplicativo e-Título ou o Autoatendimento Eleitoral no site do TSE."
+  },
+  {
+   "id": "n-14a9ca68e5",
+   "titulo": "Deputado André Janones é internado com arritmia em São Paulo",
+   "url": "https://agenciabrasil.ebc.com.br/politica/noticia/2026-10/deputado-andre-janones-e-internado-com-arritmia-em-sao-paulo",
+   "data": "2026-10-19T15:57+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [
+    "tse"
+   ],
+   "pessoas": [
+    "luiz-inacio-lula-da-silva",
+    "andre-janones",
+    "flavio-bolsonaro"
+   ],
+   "resumo": "O deputado federal André Janones (Rede-MG) foi internado com arritmia cardíaca na madrugada desta segunda-feira (19), na Unidade de Terapia Intensiva (UTI) do Hospital Vila Nova Star, em São Paulo. Janones também apresentava um quadro de falta de ar quando entrou no hospital, por volta das 2h da manhã. Antes da internação, o deputado federal havia acompanhado o debate entre o presidente Luiz Inácio Lula da Silva (PT) e o senador Flávio Bolsonaro (PL) , na noite de domingo (18), na Rede Bandeirantes. Notícias relacionadas: Janones denuncia censura em decisão do TSE contra Exército do Lula. Cana"
+  },
+  {
+   "id": "n-c2fa1b0ce1",
+   "titulo": "Deputado estadual Marcelo Aguiar é detido após disparo em bar",
+   "url": "https://agenciabrasil.ebc.com.br/geral/noticia/2026-10/deputado-estadual-marcelo-aguiar-e-detido-apos-disparo-em-bar",
+   "data": "2026-10-19T15:47+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [
+    "mpf"
+   ],
+   "pessoas": [],
+   "resumo": "O deputado estadual Marcelo Aguiar, do Partido Liberal, foi detido pela Polícia Militar de São Paulo, na madrugada desta segunda-feira (19), após fazer um disparo com uma arma de fogo no interior de um bar na Vila Nova Conceição, zona sul da capital paulista. O caso aconteceu em um estabelecimento na Rua Professor Atílio Innocenti e a PM foi acionada para atender a ocorrência. Chegando ao local, os policiais encontraram Aguiar aparentemente embriagado. Notícias relacionadas: Polícia do Rio apreende armas após morte de suboficial do Bope. MPF defende prisão de PM por matar estudante de medicina"
+  },
+  {
+   "id": "n-8ce9cdc18a",
+   "titulo": "Pé-de-Meia: pagamento da sétima parcela começa nesta segunda",
+   "url": "https://agenciabrasil.ebc.com.br/educacao/noticia/2026-10/pe-de-meia-pagamento-da-setima-parcela-comeca-nesta-segunda",
+   "data": "2026-10-19T15:21+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "Os beneficiários do programa Pé-de-Meia de 2026 do ensino médio regular que atingiram pelo menos 80% de frequência nas aulas em agosto deste ano começaram a receber, nesta segunda-feira (19), a sétima parcela do incentivo à frequência. O repasse será feito até 26 de outubro, de forma escalonada, de acordo com o mês de nascimento dos estudantes. Notícias relacionadas: Termina neste domingo prazo escolher idioma da prova do Enem 2026. Estudantes desenvolvem plataformas para combater a desinformação. Alunos e professores participam hoje de Olimpíada de Matemática . A parcela é no valor de R$ 200 "
+  },
+  {
+   "id": "n-c654314114",
+   "titulo": "Anvisa proíbe lotes de medicamento para tratar câncer",
+   "url": "https://agenciabrasil.ebc.com.br/saude/noticia/2026-10/anvisa-proibe-lotes-de-medicamento-para-tratar-cancer",
+   "data": "2026-10-19T15:18+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [
+    "anvisa"
+   ],
+   "pessoas": [],
+   "resumo": "A Agência Nacional de Vigilância (Anvisa) determinou a apreensão dos lotes Z005197 e Z012354 do medicamento Keytruda (pembrolizumabe) 100 mg/4 mL , indicado para o tratamento de diversos tipos de câncer. A decisão foi publicada nesta segunda-feira (19) no Diário Oficial da União . Notícias relacionadas: Anvisa determina apreensão de lote falsificado de toxina botulínica. Anvisa proíbe canetas emagrecedoras sem registro vendidas na internet. Anvisa aprova novo medicamento para tratar lúpus. Em nota, a Anvisa informou que a própria empresa detentora do registro do produto, Merck Sharp & Dohme Fa"
+  },
+  {
+   "id": "n-48a89b8dee",
+   "titulo": "Áudio: Senado analisa a criação da Política Nacional de Inclusão para o Ensino Superior",
+   "url": "https://www12.senado.leg.br/noticias/audios/2026/10/senado-analisa-a-criacao-da-politica-nacional-de-inclusao-para-o-ensino-superior",
+   "data": "2026-10-19T15:16:00+00:00",
+   "fonte": "senado",
+   "nos": [],
+   "pessoas": [
+    "teresa-leitao"
+   ],
+   "resumo": "Está em análise na Comissão de Direitos Humanos (CDH) a criação da Política Nacional de Inclusão nas Instituições de Ensino Superior (PL 4.641/2024), com medidas para ampliar acessibilidade e condições de acesso e permanência nas universidades a pessoas com deficiência, transtornos do neurodesenvolvimento e altas habilidades ou superdotação. A autora, senadora Teresa Leitão (PT-PE) disse que, apesar do aumento desses estudantes no ensino superior, persistem dificuldades para sua plena inclusão."
+  },
+  {
+   "id": "n-6b033f8370",
+   "titulo": "Projeto obriga SUS a oferecer alimentos especiais para doenças metabólicas raras",
+   "url": "https://www.camara.leg.br/noticias/1307075-projeto-obriga-sus-a-oferecer-alimentos-especiais-para-doencas-metabolicas-raras",
+   "data": "2026-10-19T15:13+00:00",
+   "fonte": "camara",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "Texto está em análise na Câmara dos Deputados"
+  },
+  {
+   "id": "n-551655e77b",
+   "titulo": "Prorrogadas MPs de proteção ao tarifaço dos EUA e do preço de combustíveis",
+   "url": "https://www12.senado.leg.br/noticias/materias/2026/10/19/prorrogadas-mps-de-protecao-ao-tarifaco-dos-eua-e-do-preco-de-combustiveis",
+   "data": "2026-10-19T15:09:00+00:00",
+   "fonte": "senado",
+   "nos": [],
+   "pessoas": [
+    "davi-alcolumbre"
+   ],
+   "resumo": "O presidente do Congresso e do Senado, Davi Alcolumbre, prorrogou por 60 dias a validade de duas medidas provisórias que buscam proteger empresas exportadoras da série de tarifas impostas pelos Estados Unidos aos produtos brasileiros. Os atos de prorrogação foram publicados no Diário Oficial da União desta segunda-feira (19). Com isso, as regras continuam em vigor enquanto os textos são analisados por deputados e senadores. A MP 1.386/2026 estende por um ano a suspensão de tributos para empresas exportadoras afetadas pelas tarifas americanas, desde que atendam a condições específicas: a empres"
+  },
+  {
+   "id": "n-dbcc4c9d8e",
+   "titulo": "Anvisa determina apreensão de lote falsificado de toxina botulínica",
+   "url": "https://agenciabrasil.ebc.com.br/saude/noticia/2026-10/anvisa-determina-apreensao-de-lote-falsificado-de-toxina-botulinica",
+   "data": "2026-10-19T14:59+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [
+    "anvisa"
+   ],
+   "pessoas": [],
+   "resumo": "A Agência Nacional de Vigilância (Anvisa) determinou a apreensão do lote 025155 do medicamento Dysport, um neuromodulador à base de toxina botulínica. A decisão foi publicada nesta segunda-feira (19) no Diário Oficial da União . Em nota, a Anvisa informou que a própria detentora do registro do produto, Beaufour Ipsen Farmacêutica Ltda., identificou unidades do lote com características divergentes das do medicamento original. Notícias relacionadas: A cada 72 segundos, uma pessoa morre por doença cardiovascular no país. Governo monitora saúde de amazonenses em locais afetados por queimadas. Cong"
+  },
+  {
+   "id": "n-6d26762222",
+   "titulo": "Economia cresce 0,5% em agosto após dois meses de recuo, estima FGV",
+   "url": "https://agenciabrasil.ebc.com.br/economia/noticia/2026-10/economia-cresce-05-em-agosto-apos-dois-meses-de-recuo-estima-fgv",
+   "data": "2026-10-19T14:52+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "Depois de dois meses de recuo, a economia brasileira voltou a crescer e apresentou expansão de 0,5% na passagem de julho para agosto . Como resultado, o desempenho chega a 1,8% no acumulado de 12 meses. A constatação faz parte do Monitor do PIB , estudo mensal elaborado pelo Instituto Brasileiro de Economia (Ibre) da Fundação Getulio Vargas (FGV), divulgado nesta segunda-feira (19). Notícias relacionadas: FMI prevê crescimento de 2,2% do PIB do Brasil em 2026. Confiança da indústria sobe em outubro, mas setor segue pessimista. Brasil deve voltar a ser 8ª maior economia do mundo em 2027, prevê "
+  },
+  {
+   "id": "n-a98bf9ab94",
+   "titulo": "Morre Mãe Senhora de Ewá, liderança do candomblé, aos 104 anos",
+   "url": "https://agenciabrasil.ebc.com.br/direitos-humanos/noticia/2026-10/morre-mae-senhora-de-ewa-lideranca-do-candomble-aos-104-anos",
+   "data": "2026-10-19T14:31+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [
+    "mir"
+   ],
+   "pessoas": [],
+   "resumo": "Elza Bahia de Araújo, conhecida como Mãe Senhora de Ewá, morreu em Salvador no último sábado (17). Uma das mais antigas lideranças do candomblé no Brasil, a ialorixá (mãe de santo) do Ilê Axé Omi Ewá tinha 104 anos de idade, completados no último dia 11 de setembro. Em nota, o Ministério da Igualdade Racial destacou que a ialorixá dedicou mais de sete décadas de vida à preservação dos saberes do candomblé e de suas tradições, sendo reconhecida também por acolher pessoas em sua comunidade. Notícias relacionadas: Rio reconhece validade civil de casamentos na Umbanda e no Candomblé. Crescimento d"
+  },
+  {
+   "id": "n-42a4ac183c",
+   "titulo": "Áudio: Ampliação de vacinação pelo SUS está em análise no Senado",
+   "url": "https://www12.senado.leg.br/noticias/audios/2026/10/ampliacao-de-vacinacao-pelo-sus-esta-em-analise-no-senado",
+   "data": "2026-10-19T14:30:00+00:00",
+   "fonte": "senado",
+   "nos": [],
+   "pessoas": [
+    "jorge-kajuru"
+   ],
+   "resumo": "O Congresso debate medidas para ampliar a vacinação pelo SUS. A senadora Dra. Eudócia (PSDB-AL) apresentou uma propostas para a inclusão no sistema da vacina nonavalente contra o HPV (PL 3.907/2025) e da vacina contra o herpes-zóster para idosos (PL 4.426/2025). Além de propostas sobre novas vacinas, o Senado analisa o combate à desinformação. Jorge Kajuru (PSB-GO) é autor de projeto que prevê punição para a divulgação de informações falsas sobre imunizantes (PL 2.745/2021)."
+  },
+  {
+   "id": "n-5b5838d4e0",
+   "titulo": "Projeto reserva 5% das compras públicas de alimentos para produtos típicos de biomas locais",
+   "url": "https://www.camara.leg.br/noticias/1311934-projeto-reserva-5-das-compras-publicas-de-alimentos-para-produtos-tipicos-de-biomas-locais",
+   "data": "2026-10-19T14:23+00:00",
+   "fonte": "camara",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "Texto está em análise na Câmara do Deputados"
+  },
+  {
+   "id": "n-cf2b1d530d",
+   "titulo": "TSE dá 24 horas para Meta dar informações sobre igualdade de campanhas",
+   "url": "https://agenciabrasil.ebc.com.br/justica/noticia/2026-10/tse-da-24-horas-para-meta-dar-informacoes-sobre-igualdade-de-campanhas",
+   "data": "2026-10-19T14:05+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [
+    "tse"
+   ],
+   "pessoas": [],
+   "resumo": "O ministro Marco Aurélio Bellizze, do Tribunal Superior Eleitoral (TSE), deu 24 horas para que a empresa Meta - responsável por plataformas como Facebook, Instagram e WhatsApp - comprove a adoção de medidas de isonomia na distribuição de posts políticos e na veiculação de anúncios de campanha, em meio ao segundo turno da corrida presidencial. A medida foi tomada depois de a Meta não cumprir um prazo inicial de 72 horas para apresentar as informações. Notícias relacionadas: TSE decide manter ordem para Meta garantir isonomia a candidatos. TSE determina isonomia após IA da Meta barrar imagens de"
+  },
+  {
+   "id": "n-a314b93807",
+   "titulo": "Incêndios avançam sobre o oeste do Pará e deixam ar insalubre",
+   "url": "https://agenciabrasil.ebc.com.br/meio-ambiente/noticia/2026-10/incendios-avancam-sobre-o-oeste-do-para-e-deixam-ar-insalubre",
+   "data": "2026-10-19T14:03+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [
+    "inpe"
+   ],
+   "pessoas": [],
+   "resumo": "Com 922 focos ativos, o Pará é o estado com mais ocorrências de incêndios florestais no país, de acordo com a plataforma Queimadas , do Instituto Nacional de Pesquisas Espaciais (Inpe). No vizinho Amazonas, atualmente estão ativos 90 focos, após o estado ter registrado mais de mil pontos de fogo este mês. Enquanto a qualidade do ar em Manaus , na manhã desta segunda-feira (19), permanece classificada como insalubre, com índice de 153, segundo a plataforma IQAir ; a cidade de Santarém, no oeste do Pará, registra o índice de 260, considerado muito insalubre. Notícias relacionadas: Governo monito"
+  },
+  {
+   "id": "n-2c6e23f5c1",
+   "titulo": "Projeto prevê que um terço da jornada de professores regidos pela CLT seja reservado para planejamento",
+   "url": "https://www.camara.leg.br/noticias/1307742-projeto-preve-que-um-terco-da-jornada-de-professores-regidos-pela-clt-seja-reservado-para-planejamento",
+   "data": "2026-10-19T13:55+00:00",
+   "fonte": "camara",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "Proposta altera a Consolidação das Leis do Trabalho para incluir formalmente preparação de aulas, correções e estudos na carga horária semanal"
+  },
+  {
+   "id": "n-76c5db9b98",
+   "titulo": "Projeto exige presença de fisioterapeuta em equipes de segurança de grandes empresas",
+   "url": "https://www.camara.leg.br/noticias/1306699-projeto-exige-presenca-de-fisioterapeuta-em-equipes-de-seguranca-de-grandes-empresas",
+   "data": "2026-10-19T13:44+00:00",
+   "fonte": "camara",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "Texto está em análise na Câmara dos Deputados"
+  },
+  {
+   "id": "n-9ddb994753",
+   "titulo": "Áudio: Exercício ilegal da profissão de biólogo pode virar crime",
+   "url": "https://www12.senado.leg.br/noticias/audios/2026/10/exercicio-ilegal-da-profissao-de-biologo-pode-virar-crime",
+   "data": "2026-10-19T13:19:00+00:00",
+   "fonte": "senado",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "O Senado pode transformar em crime o exercício ilegal da profissão de biólogo. Isso é o que prevê o projeto (PL 3558/2026), que equipara a prática aos crimes já previstos no Código Penal, como o exercício ilegal da medicina, da medicina veterinária, da odontologia e da farmácia. A nova legislação busca reforçar a necessidade de profissionais qualificados para atuarem em áreas como biossegurança, biotecnologia e saúde pública. Se a proposta for aprovada, a pena para quem descumprir a lei será de seis meses a dois anos de prisão."
+  },
+  {
+   "id": "n-3d1012ca59",
+   "titulo": "Pagamentos de outubro do Bolsa Família começam nesta segunda",
+   "url": "https://agenciabrasil.ebc.com.br/economia/noticia/2026-10/pagamentos-de-outubro-do-bolsa-familia-comecam-nesta-segunda",
+   "data": "2026-10-19T13:04+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [
+    "secom"
+   ],
+   "pessoas": [],
+   "resumo": "Os pagamentos do Bolsa Família referentes ao mês de outubro começam a ser feitos nesta segunda-feira (19), quando recebem os beneficiários com NIS terminado em 1. Na terça-feira (20), será a vez de quem tem NIS terminado em 2. De acordo com a Secretaria de Comunicação Social (Secom), os demais pagamentos do mês serão unificados a partir de quarta-feira (21) como medida preventiva para mitigar os efeitos do super El Niño sobre as famílias classificadas como mais vulneráveis. Notícias relacionadas: Bolsa Família é reajustado em 15%; medida vale a partir de outubro. Gilmar Mendes valida reajuste "
+  },
+  {
+   "id": "n-605ae11aab",
+   "titulo": "Áudio: Projeto amplia Fundeb para atenção a alunos autistas e com doenças raras",
+   "url": "https://www12.senado.leg.br/noticias/audios/2026/10/projeto-amplia-fundeb-para-atencao-a-alunos-autistas-e-com-doencas-raras",
+   "data": "2026-10-19T12:58:00+00:00",
+   "fonte": "senado",
+   "nos": [
+    "camara"
+   ],
+   "pessoas": [
+    "carlos-viana"
+   ],
+   "resumo": "A Comissão de Educação (CE) pode votar um projeto de lei que amplia o uso de recursos do Fundeb para remunerar equipes multiprofissionais que atendem alunos com autismo e doenças raras. O PL 1.392/2025, do senador Carlos Viana (PSD-MG), permite pagar profissionais como fonoaudiólogos, fisioterapeutas e terapeutas ocupacionais. A proposta já passou pela Comissão de Assuntos Econômicos (CAE) e, se aprovada na CE sem pedido para votação no Plenário, poderá seguir diretamente para a Câmara dos Deputados."
+  },
+  {
+   "id": "n-6e0689e6c6",
+   "titulo": "PF faz ação para prender 23 envolvidos com facção criminosa no Rio",
+   "url": "https://agenciabrasil.ebc.com.br/justica/noticia/2026-10/pf-faz-acao-para-prender-23-envolvidos-com-faccao-criminosa-no-rio",
+   "data": "2026-10-19T12:44+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [
+    "pf"
+   ],
+   "pessoas": [],
+   "resumo": "A Polícia Federal (PF) cumpre 23 mandados de prisão preventiva e 24 de busca e apreensão nesta segunda-feira (19) . A operação Backbone mira pessoas acusadas de impor monopólio sobre a exploração de serviço de internet em áreas dominadas pela facção criminosa Comando Vermelho , no Rio de Janeiro. Até as 9h15, 19 pessoas já haviam sido presas. De acordo com a PF, a facção criminosa impõe o monopólio sobre a oferta de serviço de internet nos complexos do Alemão, da Penha e do Chapadão, na zona norte da cidade do Rio de Janeiro, por meio do uso de armas e de ameaças contra os moradores. Notícias "
+  },
+  {
+   "id": "n-ecaaec76b3",
+   "titulo": "Áudio: Projeto visa dar mais segurança a motoristas e usuários de aplicativo",
+   "url": "https://www12.senado.leg.br/noticias/audios/2026/10/projeto-visa-dar-mais-seguranca-a-motoristas-e-usuarios-de-aplicativo",
+   "data": "2026-10-19T12:30:00+00:00",
+   "fonte": "senado",
+   "nos": [],
+   "pessoas": [
+    "flavio-arns"
+   ],
+   "resumo": "A Comissão de Assuntos Sociais (CAS) pode votar um projeto de lei da senadora Leila Barros (PDT-DF) que muda a Política Nacional de Mobilidade Urbana (Lei 12.587/2012) para aumentar a segurança de motoristas e usuários de aplicativos de transporte. O PL 485/2020 determina que os motoristas poderão recusar corridas para terceiros e bloquear pagamentos em dinheiro, e mudanças inesperadas na rota deverão acionar um alerta nos aplicativos. Medidas de fácil implementação, avalia o senador Flávio Arns (PSB-PR), que foi relator da proposta na Comissão de Ciência e Tecnologia (CCT)."
+  },
+  {
+   "id": "n-0b433d52ce",
+   "titulo": "Projeto obriga integração da rede de atendimento a crianças vítimas de violência sexual",
+   "url": "https://www.camara.leg.br/noticias/1306360-projeto-obriga-integracao-da-rede-de-atendimento-a-criancas-vitimas-de-violencia-sexual",
+   "data": "2026-10-19T12:28+00:00",
+   "fonte": "camara",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "Para virar lei, precisa ser aprovado pela Câmara e pelo Senado"
+  },
+  {
+   "id": "n-bd9e8f4023",
+   "titulo": "Confira a agenda dos presidenciáveis nesta segunda-feira (19)",
+   "url": "https://agenciabrasil.ebc.com.br/politica/noticia/2026-10/confira-agenda-dos-presidenciaveis-nesta-segunda-feira-19",
+   "data": "2026-10-19T11:40+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [],
+   "pessoas": [
+    "luiz-inacio-lula-da-silva",
+    "flavio-bolsonaro"
+   ],
+   "resumo": "Os candidatos à Presidência da República que disputam o segundo turno das eleições gerais cumprem agenda no Norte e no Sul do país, nesta segunda-feira (19). Flávio Bolsonaro estará no Pará e no Amazonas. Lula, no Rio Grande do Sul. Flávio Bolsonaro (PL) Às 11h, participa de motociata em Marabá (PA). Às 20h, estará no “Bloquinho do 22”, em Manaus (AM). Luiz Inácio Lula da Silva (PT) Às 16h, tem ato político em Porto Alegre (RS). A ordem de apresentação da agenda dos candidatos a presidente segue alternância diária."
+  },
+  {
+   "id": "n-f7a66acdc1",
+   "titulo": "Força Nacional vai atuar por 90 dias na região de Belo Monte",
+   "url": "https://agenciabrasil.ebc.com.br/justica/noticia/2026-10/forca-nacional-vai-atuar-por-90-dias-na-regiao-de-belo-monte",
+   "data": "2026-10-19T11:27+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [
+    "mjsp"
+   ],
+   "pessoas": [],
+   "resumo": "O Ministério da Justiça e Segurança Pública autorizou a atuação da Força Nacional de Segurança Pública por 90 dias na região da Usina Hidrelétrica de Belo Monte , no Pará. A medida prevê apoio aos órgãos de segurança pública federais e estaduais. O trabalho será voltado à preservação da ordem pública e à proteção das pessoas e do patrimônio. Segundo a Portaria nº 1.321/2026 , publicada nesta segunda-feira (19), a ação tem caráter temporário e planejado. Atuação Notícias relacionadas: Após dez anos, Belo Monte ainda enfrenta críticas sociais e ambientais. Belo Monte: Dino determina liberação de"
+  },
+  {
+   "id": "n-fb40a93949",
+   "titulo": "Projeto torna obrigatório indicar a cor de roupa na etiqueta para auxiliar daltônicos",
+   "url": "https://www.camara.leg.br/noticias/1307050-projeto-torna-obrigatorio-indicar-a-cor-de-roupa-na-etiqueta-para-auxiliar-daltonicos",
+   "data": "2026-10-19T11:22+00:00",
+   "fonte": "camara",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "A Câmara dos Deputados analisa a proposta."
+  },
+  {
+   "id": "n-28c73f3ee2",
+   "titulo": "Com ação Vida Além do Trabalho, ex-balconista mobilizou trabalhadores",
+   "url": "https://agenciabrasil.ebc.com.br/politica/noticia/2026-10/ex-balconista-de-farmacia-mobilizou-trabalhadores-para-reduzir-jornada",
+   "data": "2026-10-19T11:19+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [
+    "camara",
+    "congresso"
+   ],
+   "pessoas": [
+    "reginaldo-lopes"
+   ],
+   "resumo": "Na última sexta-feira (16), o Congresso Nacional promulgou a Emenda Constitucional 141/2026 , que acaba com a escala de trabalho 6x1. A partir de dezembro deste ano, os trabalhadores brasileiros terão direito a dois dias de descanso semanal, em vez de um, como é atualmente. A proposta de emenda à Constituição 221/2019 , que deu origem à emenda constitucional, foi elaborada pelo deputado federal Reginaldo Lopes (PT-MG), em 11 de dezembro de 2019. Mas ficou parada na Comissão de Constituição e Justiça (CCJ) da Câmara dos Deputados por mais de três anos. Somente em 2023, o texto começou a avançar"
+  },
+  {
+   "id": "n-1420099292",
+   "titulo": "Lula e Flávio fazem primeiro debate das eleições na TV Band",
+   "url": "https://agenciabrasil.ebc.com.br/politica/noticia/2026-10/lula-e-flavio-fazem-primeiro-debate-das-eleicoes-na-band",
+   "data": "2026-10-19T11:07+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [],
+   "pessoas": [
+    "luiz-inacio-lula-da-silva",
+    "flavio-bolsonaro"
+   ],
+   "resumo": "Candidatos à presidência da República, Luiz Inácio Lula da Silva (PT) e Flávio Bolsonaro (PL) participaram neste domingo (18) de debate realizado pela TV Bandeirantes. O encontro foi marcado por provocações entre os candidatos e, em alguns momentos, necessidade de intervenção dos mediadores. Ainda no primeiro bloco, Lula questionou Flávio sobre os R$ 134 milhões recebidos do banqueiro Daniel Vorcaro e a defesa de acusado de assassinar uma criança. Notícias relacionadas: Ato em apoio à democracia e a Lula reúne milhares no Rio e Brasília. Campanha de Flávio Bolsonaro realiza manifestação na Pau"
+  },
+  {
+   "id": "n-412abc4ff1",
+   "titulo": "Ato em apoio à democracia e a Lula reúne milhares no Rio e Brasília",
+   "url": "https://agenciabrasil.ebc.com.br/politica/noticia/2026-10/ato-em-apoio-democracia-e-lula-reune-milhares-no-rio-e-brasilia",
+   "data": "2026-10-19T01:53+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [],
+   "pessoas": [
+    "luiz-inacio-lula-da-silva"
+   ],
+   "resumo": "O domingo foi marcado por atos em defesa da democracia e da reeleição do presidente Luiz Inácio Lula da Silva (PT) pelo Brasil, com milhares de pessoas reunidas em cerca de 500 cidades, entre elas Rio de Janeiro, Brasília, Curitiba, Porto Alegre, Belo Horizonte e Fortaleza. A estimativa é da coordenação de campanha do partido. Na capital federal, a mobilização tomou conta da Esplanada dos Ministérios pela manhã e permaneceu nas ruas ao longo do dia. No Rio, à tarde, um ato musical reuniu milhares de pessoas na orla de Copacabana. O evento foi convocado pelo cantor Caetano Veloso e teve a parti"
+  },
+  {
+   "id": "n-016335c877",
+   "titulo": "Campanha de Flávio Bolsonaro realiza manifestação na Paulista",
+   "url": "https://agenciabrasil.ebc.com.br/politica/noticia/2026-10/campanha-de-flavio-bolsonaro-realiza-manifestacao-na-paulista",
+   "data": "2026-10-18T22:44+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [],
+   "pessoas": [
+    "flavio-bolsonaro"
+   ],
+   "resumo": "A uma semana do segundo turno das eleições para presidência da República, o candidato Flávio Bolsonaro (PL) participou de ato na Avenida Paulista, na região central de São Paulo, neste domingo (18) . Durante seu discurso, ele voltou a afirmar que o ex-presidente Jair Bolsonaro (PL), seu pai, participará da cerimônia de posse caso ele seja eleito, dando a entender que cuidará da anistia ao pai que cumpre prisão domiciliar em sua residência em Brasília. \"Vocês verão Jair Messias Bolsonaro colocar a faixa de presidente da República no filho dele\", declarou. Flávio disse ainda que pretende indicar"
+  },
+  {
+   "id": "n-30ee1f2116",
+   "titulo": "Minerais críticos e estratégicos empregam 129 mil pessoas no Brasil",
+   "url": "https://agenciabrasil.ebc.com.br/economia/noticia/2026-10/minerais-criticos-e-estrategicos-empregam-129-mil-pessoas-no-brasil",
+   "data": "2026-10-18T20:12+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "As atividades relacionadas ao setor de minerais críticos e estratégicos (MCE) para o Brasil somaram 129.423 empregos, em 2025, o equivalente a 57% dos 226.634 empregos da indústria extrativa mineral do país. Quando comparado ao mesmo mercado de trabalho registrado em 2023, houve crescimento de 8,6% no período. Notícias relacionadas: Brasil cria política para ampliar produção de minerais críticos. Mineradoras elogiam, mas municípios criticam PL de minerais críticos. Os dados estão disponíveis no Portal de Minerais Críticos e Estratégicos , lançado na última semana pela Agência Nacional de Miner"
+  },
+  {
+   "id": "n-d93eedfafd",
+   "titulo": "Mega-Sena acumula; prêmio pode chegar a R$ 185 milhões na terça-feira",
+   "url": "https://agenciabrasil.ebc.com.br/geral/noticia/2026-10/mega-sena-acumula-premio-pode-chegar-r-185-milhoes-na-terca-feira",
+   "data": "2026-10-18T17:22+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "O concurso 3.071 da Mega-sena acumulou já que nenhuma aposta acertou as seis dezenas sorteadas na manhã deste domingo (18). Com isso, o prêmio estimado para o concurso de terça-feira (20) deve chegar a R$ 185 milhões. Os números sorteados no Espaço da Sorte, em São Paulo foram: 12, 22, 41, 45, 51 e 52. Nesta edição, 102 apostas acertaram cinco dezenas e levarão prêmio de R$ 58.806 cada. Já as 7.381 apostas vencedoras da quadra (quatro acertos) receberão R$ 1.339 cada. Prêmio O resgate de prêmios da Mega-Sena depende do valor e de como a aposta foi realizada. Para prêmios até R$ 2.428, o valor "
+  },
+  {
+   "id": "n-a91f55e3d5",
+   "titulo": "Eleitor sem biometria pode votar no segundo turno das eleições",
+   "url": "https://agenciabrasil.ebc.com.br/politica/noticia/2026-10/eleitor-sem-biometria-pode-votar-no-segundo-turno-das-eleicoes",
+   "data": "2026-10-18T17:02+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [
+    "tse"
+   ],
+   "pessoas": [],
+   "resumo": "O cadastro biométrico na Justiça Eleitoral não é obrigatório para o exercício do voto. O eleitor que não tiver a biometria cadastrada ou tiver problemas no reconhecimento da biometria dentro da seção eleitoral, poderá votar também no segundo turno das eleições, marcado para o próximo domingo (25) de outubro. A coleta da biometria foi feita até dia 6 de maio, quando o cadastro eleitoral foi fechado. De acordo com o Tribunal Superior Eleitoral (TSE), cerca de 10,99% do eleitorado brasileiro ainda não tem biometria cadastrada por diferentes razões. Notícias relacionadas: Eleições: mais de 4 mil s"
+  },
+  {
+   "id": "n-c2bed5ebcf",
+   "titulo": "Termina neste domingo prazo escolher idioma da prova do Enem 2026",
+   "url": "https://agenciabrasil.ebc.com.br/educacao/noticia/2026-10/termina-neste-domingo-prazo-escolher-idioma-da-prova-do-enem-2026",
+   "data": "2026-10-18T16:15+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "Termina neste domingo (18) o prazo para que os candidatos inscritos automaticamente no Exame Nacional do Ensino Médio (Enem) 2026 selecionem o idioma de preferência para a prova de língua estrangeira . As opções são inglês ou espanhol e a escolha deve ser feita na Página do Participante . Pela primeira vez, o exame nacional contou com inscrição automática para estudantes concluintes do ensino médio na rede pública com o objetivo de aumentar a participação desse público no exame. Notícias relacionadas: Interpretação é a base da prova de Linguagens do Enem; veja dicas. Aplicativo de simulados do"
+  },
+  {
+   "id": "n-a8030ec320",
+   "titulo": "Estudantes retomam protagonismo em momento decisivo no país, diz UNE",
+   "url": "https://agenciabrasil.ebc.com.br/politica/noticia/2026-10/estudantes-retomam-protagonismo-em-momento-decisivo-no-pais-diz-une",
+   "data": "2026-10-18T15:45+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "A preocupação com os rumos do país e com os riscos para as instituições democráticas e para a educação, às vésperas do segundo turno das eleições presidenciais, impulsionou a retomada das ruas pelo movimento estudantil. Milhares de estudantes têm promovido atos em diversas cidades para defender a democracia e a educação pública, além de se posicionar sobre os candidatos e suas propostas. Em entrevista à Agência Brasil, a presidente da União Nacional dos Estudantes (UNE), Bianca Borges, destaca o protagonismo de universitários e secundaristas nos atos realizados pelo país e recupera a trajetóri"
+  },
+  {
+   "id": "n-42043fd3b9",
+   "titulo": "Eleições: quem não votou no primeiro turno pode participar do segundo",
+   "url": "https://agenciabrasil.ebc.com.br/politica/noticia/2026-10/eleicoes-quem-nao-votou-no-primeiro-turno-pode-participar-do-segundo",
+   "data": "2026-10-18T14:38+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "O eleitor que não votou no primeiro turno das Eleições Gerais de 2026, em 4 de outubro, pode participar normalmente do segundo turno, marcado para o próximo domingo, 25 de outubro. A ausência na primeira etapa não impede a participação na segunda fase, desde que a situação eleitoral esteja regular. Isto porque cada turno é considerado uma eleição independente. Notícias relacionadas: Eleições: mais de 4 mil seções tiveram locais alterados; confira. 2º turno: 7 cidades também terão eleições complementares para prefeito. O eleitor tem até 60 dias, após cada turno, para apresentar a justificativa "
+  },
+  {
+   "id": "n-51f706ef9d",
+   "titulo": "Empresas de três regiões terão aporte de R$ 450 milhões para inovação",
+   "url": "https://agenciabrasil.ebc.com.br/economia/noticia/2026-10/empresas-de-tres-regioes-terao-aporte-de-r-450-milhoes-para-inovacao",
+   "data": "2026-10-18T14:20+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [
+    "finep"
+   ],
+   "pessoas": [],
+   "resumo": "A segunda rodada da chamada Mais Inovação Brasil Subvenção Econômica, edital da Financiadora de Estudos e Projetos (Finep) terá um total de R$ 450 milhões em recursos não reembolsáveis para empresas de todos os portes que atuam nas regiões Norte, Nordeste e Centro-Oeste. O financiamento irá fomentar 114 projetos inovadores e de risco tecnológico com impacto no desenvolvimento regional e relevância social. Notícias relacionadas: Edital da Finep sobre mobilidade sustentável recebe projetos até sexta. Docentes usam inteligência artificial para inovar e engajar alunos. A complementação de R$ 150 m"
+  },
   {
    "id": "n-ea2c92ec9f",
    "titulo": "BB recebe até 31 de outubro inscrições para projetos de impacto social",
@@ -729,6 +1166,18 @@
    ],
    "pessoas": [],
    "resumo": "O Tribunal Regional Eleitoral (TRE) alterou o local de votação de 4.352 seções eleitorais neste 2º turno. Isso corresponde a apenas 0,87% das seções do país. Mesmo assim, o TRE alerta os eleitores para que confiram com antecedência se a sua seção está entre as que mudaram de endereço. Notícias relacionadas: TSE decide manter ordem para Meta garantir isonomia a candidatos. Estado de SP começa a preparar mais de 114 mil urnas para o 2º turno. OEA elogia eleição no Brasil, mas aponta preocupação com desinformação. A consulta pode ser feita no aplicativo e-título ou no portal do TRE, no menu “auto"
+  },
+  {
+   "id": "n-e0079e5fe0",
+   "titulo": "Eleições: mais de 4 mil seções tiveram locais alterados; confira",
+   "url": "https://agenciabrasil.ebc.com.br/politica/noticia/2026-10/eleicoes-mais-de-4-mil-secoes-tiveram-locais-alterados-confira",
+   "data": "2026-10-17T17:20+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [
+    "tse"
+   ],
+   "pessoas": [],
+   "resumo": "Os tribunais regionais eleitorais (TREs) alteraram o local de votação de 4.352 seções eleitorais neste 2º turno. Isso corresponde a apenas 0,87% das seções do país. Mesmo assim, os TREs alertam os eleitores para que confiram com antecedência se a sua seção está entre as que mudaram de endereço. Notícias relacionadas: TSE decide manter ordem para Meta garantir isonomia a candidatos. Estado de SP começa a preparar mais de 114 mil urnas para o 2º turno. OEA elogia eleição no Brasil, mas aponta preocupação com desinformação. A consulta pode ser feita no aplicativo e-título ou nos portais do TREs, "
   },
   {
    "id": "n-af823c6d44",
