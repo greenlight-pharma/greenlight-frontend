@@ -1,6 +1,6 @@
 {
  "meta": {
-  "gerado_em": "2026-10-21T15:02+00:00",
+  "gerado_em": "2026-10-22T15:02+00:00",
   "gerado_por": "scripts/governo/agentes/agente_noticias.py",
   "janela_dias": 90,
   "fontes": [
@@ -30,222 +30,222 @@
     "url": "https://www.gov.br/planalto/pt-br/acompanhe-o-planalto/noticias/RSS"
    }
   ],
-  "total_artigos": 2533,
-  "artigos_com_no": 862,
-  "novos_nesta_rodada": 83,
+  "total_artigos": 2600,
+  "artigos_com_no": 884,
+  "novos_nesta_rodada": 78,
   "artigos_por_fonte": {
-   "agenciabrasil": 1050,
-   "camara": 571,
-   "senado": 881,
+   "camara": 591,
+   "agenciabrasil": 1083,
+   "senado": 896,
    "stf": 7,
-   "planalto": 24
+   "planalto": 23
   },
   "ordem": "peso igual por fonte; contagem real de matérias",
   "resumo_por": "claude"
  },
  "resumo": [
   {
-   "texto": "A Medida Provisória 1.398/2026 abriu crédito extraordinário de R$ 300 milhões ao Ministério da Integração e do Desenvolvimento Regional para ações de defesa civil.",
-   "artigo_id": "n-a62749133a",
-   "no_id": "midr"
+   "texto": "O Supremo Tribunal Federal decidiu que o ISS não integra a base de cálculo do PIS e da Cofins, com impacto estimado de R$ 35 bilhões nas contas federais.",
+   "artigo_id": "n-2f586ecd8b",
+   "no_id": "stf"
   },
   {
-   "texto": "A Advocacia-Geral da União ajuizou quatro ações civis para recuperar R$ 190,3 milhões em bens de integrantes do PCC e do Comando Vermelho, com base na Lei Antifacção.",
-   "artigo_id": "n-991896822d",
-   "no_id": "agu"
+   "texto": "Foi sancionada a lei, aprovada pelo Senado Federal, que perdoa dívidas de microempreendedores individuais com a União e amplia o limite anual de faturamento do MEI.",
+   "artigo_id": "n-ca4cf3ea50",
+   "no_id": "senado"
   },
   {
-   "texto": "O Tribunal de Contas da União aprovou as contas do Banco Central de 2025 e deu quitação plena aos nove gestores responsáveis, entre eles o presidente Gabriel Galípolo.",
+   "texto": "O Tribunal de Contas da União aprovou as contas do Banco Central de 2025 e deu quitação plena aos nove gestores responsáveis, incluindo o presidente Gabriel Galípolo.",
    "artigo_id": "n-7013676100",
    "no_id": "tcu"
   },
   {
-   "texto": "O Ministério da Saúde passou a ofertar nove novos medicamentos oncológicos de alta tecnologia no Sistema Único de Saúde.",
-   "artigo_id": "n-7ca62205f6",
-   "no_id": "ms"
+   "texto": "O Instituto Brasileiro de Geografia e Estatística foi autorizado a contratar 325 temporários por processo seletivo simplificado, com edital em até seis meses.",
+   "artigo_id": "n-eceac6174d",
+   "no_id": "ibge"
   }
  ],
  "ranking": {
   "orgaos": [
    {
     "id": "tse",
-    "artigos": 199,
-    "peso": 101.36833671943349,
-    "ultima": "2026-10-21T01:10+00:00"
+    "artigos": 207,
+    "peso": 105.096914198065,
+    "ultima": "2026-10-22T12:13:00+00:00"
    },
    {
     "id": "stf",
-    "artigos": 122,
-    "peso": 61.76574349112196,
-    "ultima": "2026-10-21T10:28+00:00"
+    "artigos": 124,
+    "peso": 62.64369031883746,
+    "ultima": "2026-10-21T19:56+00:00"
    },
    {
     "id": "congresso",
-    "artigos": 82,
-    "peso": 47.70622726522758,
-    "ultima": "2026-10-21T12:29:00+00:00"
+    "artigos": 83,
+    "peso": 48.76081279039177,
+    "ultima": "2026-10-21T18:59+00:00"
    },
    {
     "id": "camara",
-    "artigos": 75,
-    "peso": 41.646293281444265,
-    "ultima": "2026-10-19T18:31:00+00:00"
+    "artigos": 76,
+    "peso": 42.403582970584395,
+    "ultima": "2026-10-21T16:33+00:00"
    },
    {
     "id": "prf",
     "artigos": 13,
-    "peso": 26.990599805415926,
+    "peso": 28.470677910451183,
     "ultima": "2026-10-13T18:15+00:00"
    },
    {
     "id": "pf",
-    "artigos": 52,
-    "peso": 25.64407502297177,
-    "ultima": "2026-10-21T11:06+00:00"
+    "artigos": 53,
+    "peso": 26.04908653211979,
+    "ultima": "2026-10-21T19:47+00:00"
    },
    {
     "id": "mte",
-    "artigos": 6,
-    "peso": 23.520714285714288,
-    "ultima": "2026-10-16T16:31+00:00"
+    "artigos": 7,
+    "peso": 25.489582078766713,
+    "ultima": "2026-10-21T19:47+00:00"
    },
    {
     "id": "inpe",
-    "artigos": 3,
-    "peso": 22.073285714285717,
-    "ultima": "2026-10-19T14:03+00:00"
+    "artigos": 4,
+    "peso": 24.04913886547031,
+    "ultima": "2026-10-21T17:41+00:00"
    },
    {
     "id": "caixa",
     "artigos": 41,
-    "peso": 19.781523809523833,
+    "peso": 19.686057248384135,
     "ultima": "2026-10-21T10:28+00:00"
    },
    {
     "id": "mec",
     "artigos": 34,
-    "peso": 18.358825630384356,
+    "peso": 18.325849020092313,
     "ultima": "2026-10-18T12:01+00:00"
    },
    {
     "id": "anvisa",
-    "artigos": 32,
-    "peso": 16.029081689057197,
-    "ultima": "2026-10-20T13:03+00:00"
+    "artigos": 36,
+    "peso": 17.985663673276175,
+    "ultima": "2026-10-22T14:37+00:00"
    },
    {
     "id": "agu",
     "artigos": 29,
-    "peso": 14.08436171017784,
+    "peso": 14.024493800290205,
     "ultima": "2026-10-21T10:28+00:00"
    },
    {
     "id": "inss",
     "artigos": 21,
-    "peso": 13.705592038523786,
+    "peso": 13.682796022918636,
     "ultima": "2026-10-20T19:08:00+00:00"
    },
    {
     "id": "ms",
     "artigos": 24,
-    "peso": 12.446928724352574,
+    "peso": 12.42430963027392,
     "ultima": "2026-10-20T19:15+00:00"
    },
    {
     "id": "ibge",
     "artigos": 24,
-    "peso": 11.67198075779688,
+    "peso": 11.62375511146287,
     "ultima": "2026-10-20T18:29+00:00"
    },
    {
     "id": "petrobras",
     "artigos": 23,
-    "peso": 11.374608940057298,
+    "peso": 11.344026183880754,
     "ultima": "2026-10-15T23:23+00:00"
    },
    {
     "id": "tcu",
     "artigos": 19,
-    "peso": 11.08715229763223,
+    "peso": 11.124753675532673,
     "ultima": "2026-10-20T22:48+00:00"
+   },
+   {
+    "id": "senado",
+    "artigos": 16,
+    "peso": 10.080665194913545,
+    "ultima": "2026-10-21T16:33+00:00"
    },
    {
     "id": "anp",
     "artigos": 18,
-    "peso": 9.73717595423204,
+    "peso": 9.743842013864475,
     "ultima": "2026-10-15T23:42:00+00:00"
    },
    {
-    "id": "senado",
-    "artigos": 15,
-    "peso": 9.665578183637729,
-    "ultima": "2026-10-16T00:41+00:00"
+    "id": "inep",
+    "artigos": 18,
+    "peso": 8.642659279778393,
+    "ultima": "2026-10-22T14:18+00:00"
    },
    {
     "id": "tst",
     "artigos": 16,
-    "peso": 8.587119200543048,
+    "peso": 8.583127728150192,
     "ultima": "2026-10-16T16:31+00:00"
    },
    {
-    "id": "inep",
-    "artigos": 17,
-    "peso": 8.20209523809524,
-    "ultima": "2026-10-19T20:49+00:00"
-   },
-   {
     "id": "mpf",
-    "artigos": 16,
-    "peso": 7.812171233987352,
-    "ultima": "2026-10-19T23:18+00:00"
+    "artigos": 17,
+    "peso": 8.262720947104603,
+    "ultima": "2026-10-21T19:47+00:00"
    },
    {
     "id": "stj",
     "artigos": 12,
-    "peso": 6.691744914247548,
+    "peso": 6.661416055165968,
     "ultima": "2026-10-16T23:00+00:00"
    },
    {
     "id": "cnj",
     "artigos": 9,
-    "peso": 4.434837900654019,
+    "peso": 4.421539044980873,
     "ultima": "2026-10-07T19:31+00:00"
    },
    {
     "id": "anatel",
     "artigos": 8,
-    "peso": 4.357100931260307,
+    "peso": 4.341108205659754,
     "ultima": "2026-10-14T12:53+00:00"
    },
    {
     "id": "inmet",
+    "artigos": 9,
+    "peso": 4.321329639889196,
+    "ultima": "2026-10-22T11:42+00:00"
+   },
+   {
+    "id": "aeronautica",
     "artigos": 8,
-    "peso": 3.859809523809524,
-    "ultima": "2026-10-21T11:33+00:00"
+    "peso": 4.041600712307083,
+    "ultima": "2026-10-21T19:41:00+00:00"
    },
    {
     "id": "ebc",
     "artigos": 8,
-    "peso": 3.859809523809524,
+    "peso": 3.84118190212373,
     "ultima": "2026-10-15T21:56+00:00"
    },
    {
     "id": "cvm",
     "artigos": 7,
-    "peso": 3.7820725544158122,
+    "peso": 3.760751062802612,
     "ultima": "2026-09-27T18:52+00:00"
    },
    {
     "id": "anac",
     "artigos": 6,
-    "peso": 3.5772529230445347,
+    "peso": 3.581231540312175,
     "ultima": "2026-10-17T00:03+00:00"
-   },
-   {
-    "id": "aeronautica",
-    "artigos": 7,
-    "peso": 3.469885519701638,
-    "ultima": "2026-10-19T20:36:00+00:00"
    }
   ],
   "pessoas": [
@@ -260,9 +260,9 @@
     "uf": null,
     "foto": "https://commons.wikimedia.org/wiki/Special:FilePath/Foto_oficial_de_Luiz_In%C3%A1cio_Lula_da_Silva_%28estreita%29.jpg?width=160",
     "foto_fonte": "https://www.wikidata.org/wiki/Q37181",
-    "artigos": 147,
-    "peso": 93.93272275328343,
-    "ultima": "2026-10-21T11:38+00:00"
+    "artigos": 157,
+    "peso": 100.41445332547798,
+    "ultima": "2026-10-22T12:27+00:00"
    },
    {
     "id": "flavio-bolsonaro",
@@ -275,9 +275,9 @@
     "uf": "RJ",
     "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador5894.jpg",
     "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/5894",
-    "artigos": 81,
-    "peso": 39.72843673314961,
-    "ultima": "2026-10-21T11:38+00:00"
+    "artigos": 88,
+    "peso": 42.95446675900276,
+    "ultima": "2026-10-22T12:27+00:00"
    },
    {
     "id": "davi-alcolumbre",
@@ -291,7 +291,7 @@
     "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador3830.jpg",
     "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/3830",
     "artigos": 49,
-    "peso": 27.56305563641141,
+    "peso": 27.734913442435897,
     "ultima": "2026-10-21T12:29:00+00:00"
    },
    {
@@ -305,9 +305,9 @@
     "uf": null,
     "foto": "https://commons.wikimedia.org/wiki/Special:FilePath/Nunes_Marques%2C_February_2025_%28cropped%29.jpg?width=160",
     "foto_fonte": "https://www.wikidata.org/wiki/Q99831978",
-    "artigos": 48,
-    "peso": 23.714170261066997,
-    "ultima": "2026-10-21T00:24+00:00"
+    "artigos": 50,
+    "peso": 24.60864331882339,
+    "ultima": "2026-10-22T01:20+00:00"
    },
    {
     "id": "damares-alves",
@@ -321,7 +321,7 @@
     "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador6335.jpg",
     "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/6335",
     "artigos": 31,
-    "peso": 17.825879682179348,
+    "peso": 17.991071428571423,
     "ultima": "2026-10-19T18:07:00+00:00"
    },
    {
@@ -335,24 +335,9 @@
     "uf": "PB",
     "foto": "https://www.camara.leg.br/internet/deputado/bandep/160674.jpg",
     "foto_fonte": "https://www.camara.leg.br/deputados/160674",
-    "artigos": 22,
-    "peso": 16.21176433441237,
-    "ultima": "2026-10-20T23:33+00:00"
-   },
-   {
-    "id": "edson-fachin",
-    "nome": "Luiz Edson Fachin",
-    "nome_completo": "Edson Fachin",
-    "cargo": "Presidente · STF",
-    "no_id": "stf",
-    "poder": "judiciario",
-    "partido": null,
-    "uf": null,
-    "foto": "https://commons.wikimedia.org/wiki/Special:FilePath/Luiz_Edson_Fachin-12-05.2015.jpg?width=160",
-    "foto_fonte": "https://www.wikidata.org/wiki/Q10320705",
-    "artigos": 21,
-    "peso": 10.317104372736612,
-    "ultima": "2026-10-19T23:54+00:00"
+    "artigos": 23,
+    "peso": 17.041392889115652,
+    "ultima": "2026-10-21T17:29+00:00"
    },
    {
     "id": "paulo-paim",
@@ -365,9 +350,24 @@
     "uf": "RS",
     "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador825.jpg",
     "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/825",
-    "artigos": 18,
-    "peso": 10.257958596832603,
-    "ultima": "2026-10-16T18:44+00:00"
+    "artigos": 19,
+    "peso": 10.926576309194036,
+    "ultima": "2026-10-22T13:54:00+00:00"
+   },
+   {
+    "id": "edson-fachin",
+    "nome": "Luiz Edson Fachin",
+    "nome_completo": "Edson Fachin",
+    "cargo": "Presidente · STF",
+    "no_id": "stf",
+    "poder": "judiciario",
+    "partido": null,
+    "uf": null,
+    "foto": "https://commons.wikimedia.org/wiki/Special:FilePath/Luiz_Edson_Fachin-12-05.2015.jpg?width=160",
+    "foto_fonte": "https://www.wikidata.org/wiki/Q10320705",
+    "artigos": 22,
+    "peso": 10.763669041023611,
+    "ultima": "2026-10-21T17:19+00:00"
    },
    {
     "id": "mara-gabrilli",
@@ -381,7 +381,7 @@
     "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador5376.jpg",
     "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/5376",
     "artigos": 13,
-    "peso": 7.4753688989784335,
+    "peso": 7.544642857142859,
     "ultima": "2026-10-21T12:02:00+00:00"
    },
    {
@@ -396,7 +396,7 @@
     "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador6009.jpg",
     "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/6009",
     "artigos": 13,
-    "peso": 7.4753688989784335,
+    "peso": 7.544642857142859,
     "ultima": "2026-10-21T11:36:00+00:00"
    },
    {
@@ -411,7 +411,7 @@
     "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador5525.jpg",
     "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/5525",
     "artigos": 13,
-    "peso": 7.382816712610128,
+    "peso": 7.444433452051182,
     "ultima": "2026-10-21T11:00+00:00"
    },
    {
@@ -426,7 +426,7 @@
     "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador345.jpg",
     "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/345",
     "artigos": 11,
-    "peso": 6.325312145289444,
+    "peso": 6.383928571428573,
     "ultima": "2026-10-19T12:30:00+00:00"
    },
    {
@@ -441,7 +441,7 @@
     "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador5990.jpg",
     "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/5990",
     "artigos": 10,
-    "peso": 5.750283768444949,
+    "peso": 5.80357142857143,
     "ultima": "2026-10-19T12:58:00+00:00"
    },
    {
@@ -456,7 +456,7 @@
     "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador4770.jpg",
     "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/4770",
     "artigos": 10,
-    "peso": 5.750283768444949,
+    "peso": 5.80357142857143,
     "ultima": "2026-10-09T21:56:00+00:00"
    },
    {
@@ -471,7 +471,7 @@
     "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador5352.jpg",
     "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/5352",
     "artigos": 10,
-    "peso": 5.750283768444949,
+    "peso": 5.80357142857143,
     "ultima": "2026-09-14T16:27:00+00:00"
    },
    {
@@ -486,7 +486,7 @@
     "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador6338.jpg",
     "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/6338",
     "artigos": 9,
-    "peso": 5.175255391600454,
+    "peso": 5.2232142857142865,
     "ultima": "2026-10-19T15:16:00+00:00"
    },
    {
@@ -501,7 +501,7 @@
     "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador475.jpg",
     "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/475",
     "artigos": 8,
-    "peso": 4.600227014755959,
+    "peso": 4.642857142857143,
     "ultima": "2026-10-16T13:16:00+00:00"
    },
    {
@@ -516,7 +516,7 @@
     "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador5917.jpg",
     "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/5917",
     "artigos": 8,
-    "peso": 4.600227014755959,
+    "peso": 4.642857142857143,
     "ultima": "2026-10-08T21:29:00+00:00"
    },
    {
@@ -531,7 +531,7 @@
     "foto": null,
     "foto_fonte": null,
     "artigos": 9,
-    "peso": 4.527390087022323,
+    "peso": 4.5217484500725496,
     "ultima": "2026-10-14T12:46+00:00"
    },
    {
@@ -546,7 +546,7 @@
     "foto": "https://www.camara.leg.br/internet/deputado/bandep/220645.jpg",
     "foto_fonte": "https://www.camara.leg.br/deputados/220645",
     "artigos": 8,
-    "peso": 4.357100931260307,
+    "peso": 4.341108205659754,
     "ultima": "2026-10-05T17:44+00:00"
    },
    {
@@ -561,8 +561,23 @@
     "foto": "https://www.camara.leg.br/internet/deputado/bandep/74161.jpg",
     "foto_fonte": "https://www.camara.leg.br/deputados/74161",
     "artigos": 7,
-    "peso": 4.244833486257334,
+    "peso": 4.261798088260995,
     "ultima": "2026-10-19T11:19+00:00"
+   },
+   {
+    "id": "camilo-santana",
+    "nome": "Camilo Santana",
+    "nome_completo": "Camilo Sobreira de Santana",
+    "cargo": "Senador, CE",
+    "no_id": "senado",
+    "poder": "legislativo",
+    "partido": "PT",
+    "uf": "CE",
+    "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador6336.jpg",
+    "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/6336",
+    "artigos": 7,
+    "peso": 3.9622905949083234,
+    "ultima": "2026-10-21T22:45+00:00"
    },
    {
     "id": "alan-rick",
@@ -576,7 +591,7 @@
     "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador5672.jpg",
     "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/5672",
     "artigos": 7,
-    "peso": 3.9326464515431594,
+    "peso": 3.9622905949083234,
     "ultima": "2026-10-21T11:00+00:00"
    },
    {
@@ -591,27 +606,789 @@
     "foto": "https://www.camara.leg.br/internet/deputado/bandep/204515.jpg",
     "foto_fonte": "https://www.camara.leg.br/deputados/204515",
     "artigos": 8,
-    "peso": 3.859809523809524,
+    "peso": 3.84118190212373,
     "ultima": "2026-10-19T20:25+00:00"
-   },
-   {
-    "id": "randolfe-rodrigues",
-    "nome": "Randolfe Rodrigues",
-    "nome_completo": "Randolph Frederich Rodrigues Alves",
-    "cargo": "Senador, AP",
-    "no_id": "senado",
-    "poder": "legislativo",
-    "partido": "PT",
-    "uf": "AP",
-    "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador5012.jpg",
-    "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/5012",
-    "artigos": 6,
-    "peso": 3.4501702610669693,
-    "ultima": "2026-10-16T19:20:00+00:00"
    }
   ]
  },
  "artigos": [
+  {
+   "id": "n-44521c25d6",
+   "titulo": "Motta diz que Lei Antifacção começa a produzir efeitos após pedido de confisco de R$ 190 milhões em bens",
+   "url": "https://www.camara.leg.br/noticias/1313155-motta-diz-que-lei-antifaccao-comeca-a-produzir-efeitos-apos-pedido-de-confisco-de-r-190-milhoes-em-bens",
+   "data": "2026-10-22T14:49+00:00",
+   "fonte": "camara",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "“É assim que se combate facção: tirando o dinheiro delas”, afirmou por meio de suas redes sociais"
+  },
+  {
+   "id": "n-44af4dabc7",
+   "titulo": "Arrecadação federal cresce 5,62% em setembro e soma R$ 239,4 bilhões",
+   "url": "https://agenciabrasil.ebc.com.br/economia/noticia/2026-10/arrecadacao-federal-cresce-562-em-setembro-e-soma-r-2394-bilhoes",
+   "data": "2026-10-22T14:45+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "A arrecadação das receitas federais somou R$ 239,4 bilhões em setembro, informou nesta quinta-feira (22) a Receita Federal . O valor representa crescimento real de 5,62%, descontada a inflação pelo Índice Nacional de Preços ao Consumidor Amplo (IPCA) , na comparação com setembro de 2025. De janeiro a setembro, a arrecadação alcançou R$ 2,351 trilhões, com alta real de 6,97% em relação ao mesmo período do ano passado. Notícias relacionadas: Arrecadação federal ultrapassa R$ 2 trilhões em oito meses. Arrecadação com ‘imposto do pecado’ deve chegar a R$ 41,9 bi em 2027. As receitas administradas "
+  },
+  {
+   "id": "n-0b5d0e151a",
+   "titulo": "Anvisa proíbe venda de teste de glicemia Accu-Check Active na Amazon",
+   "url": "https://agenciabrasil.ebc.com.br/saude/noticia/2026-10/anvisa-proibe-venda-de-teste-de-glicemia-accu-check-active-na-amazon",
+   "data": "2026-10-22T14:37+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [
+    "anvisa"
+   ],
+   "pessoas": [],
+   "resumo": "A Agência Nacional de Vigilância Sanitária (Anvisa) proibiu a venda de tiras de glicemia da marca Accu-Check Active na plataforma Amazon. Os produtos, segundo a agência, são falsificados e não podem ser distribuídos, importados nem utilizados. Notícias relacionadas: Anvisa aprova novo medicamento para câncer de pulmão avançado. A resolução foi publicada nesta quinta-feira (22) no Diário Oficial da União. Em nota, a Anvisa informou que a Roche Diabetes Care Brasil Ltda., responsável pelo produto Accu-Chek Active, identificou no mercado tiras reagentes com características divergentes das origina"
+  },
+  {
+   "id": "n-d6a2e8a174",
+   "titulo": "Enamed: termina hoje prazo para recurso contra gabarito preliminar",
+   "url": "https://agenciabrasil.ebc.com.br/educacao/noticia/2026-10/enamed-termina-hoje-prazo-para-recurso-contra-gabarito-preliminar",
+   "data": "2026-10-22T14:18+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [
+    "inep"
+   ],
+   "pessoas": [],
+   "resumo": "Os candidatos que fizeram a reaplicação do Exame Nacional de Avaliação da Formação Médica (Enamed) 2026 podem apresentar recurso contra o gabarito preliminar até 23h59 desta quinta-feira (22). O gabarito foi divulgado na terça-feira pelo Instituto Nacional de Estudos e Pesquisas Educacionais Anísio Teixeira (Inep), na página oficial do Enamed . Notícias relacionadas: Enamed 2026: Inep divulga gabarito preliminar da reaplicação da prova. Congresso aprova exame obrigatório para exercício da medicina. Enamed: candidatos podem checar se pedido de reaplicação foi aprovado. Para contestar as respost"
+  },
+  {
+   "id": "n-6be22e8446",
+   "titulo": "Contribuição sobre Bens e Serviços entra em vigor em 2027 e novas regulamentações serão enviadas ao Congresso",
+   "url": "https://www.camara.leg.br/noticias/1313045-contribuicao-sobre-bens-e-servicos-entra-em-vigor-em-2027-e-novas-regulamentacoes-serao-enviadas-ao-congresso",
+   "data": "2026-10-22T14:18+00:00",
+   "fonte": "camara",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "A contribuição foi criada pela reforma tributária para substituir o PIS, a Cofins e o IPI"
+  },
+  {
+   "id": "n-93cae1fec7",
+   "titulo": "Áudio: Projeto atualiza atendimento destinado às pessoas idosas",
+   "url": "https://www12.senado.leg.br/noticias/audios/2026/10/projeto-atualiza-atendimento-destinado-as-pessoas-idosas",
+   "data": "2026-10-22T13:54:00+00:00",
+   "fonte": "senado",
+   "nos": [],
+   "pessoas": [
+    "paulo-paim"
+   ],
+   "resumo": "Está em análise no Senado um projeto que altera a lei que criou o Disque Idoso — que faz parte do Programa Disque 100. O projeto (PL 5.202/2026) foi apresentado pelo senador Paulo Paim (PT-RS). Ele explica que seu objetivo é ampliar as funções desse serviço (que hoje recebe denúncias de maus-tratos e violência contra idosos a partir de 60 anos), incluindo a prestação de informações sobre direitos e a orientação sobre o acesso a benefícios e programas, entre outros. Ouça o áudio."
+  },
+  {
+   "id": "n-7ad1cf9682",
+   "titulo": "Vídeo: Segundo turno: quem faltou no primeiro pode votar",
+   "url": "https://www12.senado.leg.br/noticias/videos/2026/10/segundo-turno-quem-faltou-no-primeiro-pode-votar",
+   "data": "2026-10-22T13:39:00+00:00",
+   "fonte": "senado",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "Mais de 158 milhões de brasileiros estão aptos a votar neste domingo, no segundo turno das eleições para presidente da República e para governador em seis estados e no Distrito Federal. No primeiro turno, 33 milhões de eleitores não compareceram às urnas. Em entrevista à TV Senado, o consultor legislativo Arlindo Fernandes analisa os índices de abstenção, o voto branco e nulo e a importância da participação dos eleitores."
+  },
+  {
+   "id": "n-0fad9c006e",
+   "titulo": "Termina hoje prazo para realização de comícios e ações de campanha",
+   "url": "https://agenciabrasil.ebc.com.br/justica/noticia/2026-10/termina-hoje-prazo-para-realizacao-de-comicios-e-acoes-de-campanha",
+   "data": "2026-10-22T13:29+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "A três dias do segundo turno das eleições, termina nesta quinta-feira (22) o prazo para que candidatos façam comícios e atividades de campanha. Também é o último dia para a circulação paga ou impulsionada de propaganda eleitoral na internet. De hoje até 24 horas depois do fim do pleito, ficam vedadas a publicação e a republicação de novos conteúdos produzidos ou alterados por inteligência artificial ou tecnologia equivalente, que use imagem, voz ou manifestação de candidatos ou pessoas públicas. Notícias relacionadas: Eleições: saiba quais documentos são aceitos para votar no 2° turno. Eleiçõe"
+  },
+  {
+   "id": "n-acbe42486e",
+   "titulo": "Câmara e Senado fazem cobertura integrada do segundo turno das eleições",
+   "url": "https://www.camara.leg.br/noticias/1313047-camara-e-senado-fazem-cobertura-integrada-do-segundo-turno-das-eleicoes",
+   "data": "2026-10-22T13:23+00:00",
+   "fonte": "camara",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "Boletins começam às 8 horas; transmissão ao vivo terá participação de mais de 30 emissoras legislativas"
+  },
+  {
+   "id": "n-e91ba2d29a",
+   "titulo": "Vídeo: Ao vivo: CMA debate efeitos do tarifaço dos EUA sobre o Brasil - 22/10/26",
+   "url": "https://www12.senado.leg.br/noticias/videos/2026/10/ao-vivo-cma-debate-efeitos-do-tarifaco-dos-eua-sobre-o-brasil-22-10-26",
+   "data": "2026-10-22T13:15:00+00:00",
+   "fonte": "senado",
+   "nos": [],
+   "pessoas": [],
+   "resumo": ""
+  },
+  {
+   "id": "n-1976c5ee71",
+   "titulo": "Projeto amplia proteção a pessoas com autismo na adolescência e na vida adulta",
+   "url": "https://www.camara.leg.br/noticias/1313062-projeto-amplia-protecao-a-pessoas-com-autismo-na-adolescencia-e-na-vida-adulta",
+   "data": "2026-10-22T13:03+00:00",
+   "fonte": "camara",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "Com a aprovação do regime de urgência, o projeto poderá ser analisado diretamente pelo Plenário"
+  },
+  {
+   "id": "n-cbefb0337f",
+   "titulo": "Áudio: Rede de proteção a mulheres vítimas de violência doméstica pode ser ampliada",
+   "url": "https://www12.senado.leg.br/noticias/audios/2026/10/rede-de-protecao-a-mulheres-vitimas-de-violencia-domestica-pode-ser-ampliada",
+   "data": "2026-10-22T13:01:00+00:00",
+   "fonte": "senado",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "A senadora Dra. Eudócia (PSDB-AL) apresentou projeto de lei para fortalecer a rede de proteção a mulheres vítimas de violência doméstica (PL 5.185/2026). A proposta prevê o reforço das Patrulhas Maria da Penha e apoio financeiro da União para ações de prevenção e atendimento. O texto ainda aguarda despacho para começar a ser analisado pelas comissões do Senado."
+  },
+  {
+   "id": "n-a55616c4cb",
+   "titulo": "Anvisa aprova novo medicamento para câncer de pulmão avançado",
+   "url": "https://agenciabrasil.ebc.com.br/saude/noticia/2026-10/anvisa-aprova-novo-medicamento-para-cancer-de-pulmao-avancado",
+   "data": "2026-10-22T12:48+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [
+    "anvisa"
+   ],
+   "pessoas": [],
+   "resumo": "A Agência Nacional de Vigilância Sanitária (Anvisa) aprovou novo medicamento para o tratamento do câncer de pulmão. O Emrelis (telisotuzumabe vedotina) é indicado para pacientes adultos com câncer de pulmão de células não pequenas (CPCNP) com as seguintes características: não escamoso, localmente avançado ou metastático, com receptor do fator de crescimento epidérmico tipo selvagem, com alta superexpressão da proteína c-Met e que receberam terapia sistêmica previamente. Em nota, a Anvisa destacou que o medicamento foi desenvolvido para reconhecer e se ligar seletivamente à proteína c-Met prese"
+  },
+  {
+   "id": "n-c85b153990",
+   "titulo": "Projeto proíbe exibição de anúncios em planos pagos de streaming",
+   "url": "https://www.camara.leg.br/noticias/1311955-projeto-proibe-exibicao-de-anuncios-em-planos-pagos-de-streaming",
+   "data": "2026-10-22T12:48+00:00",
+   "fonte": "camara",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "Texto está em análise na Câmara dos Deputados"
+  },
+  {
+   "id": "n-13c4577d8e",
+   "titulo": "Ashwagandha: Anvisa alerta que suplemento do TikTok não tem registro",
+   "url": "https://agenciabrasil.ebc.com.br/saude/noticia/2026-10/ashwagandha-anvisa-alerta-que-suplemento-do-tiktok-nao-tem-registro",
+   "data": "2026-10-22T12:45+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [
+    "anvisa"
+   ],
+   "pessoas": [],
+   "resumo": "A Agência Nacional de Vigilância Sanitária (Anvisa) emitiu alerta para reforçar a proibição do uso do suplemento alimentar ashwagandha no Brasil. A erva asiática tem sido indicada, principalmente pela rede social TikTok, para relaxamento e alívio dos sintomas da perimenopausa. Em nota, a Anvisa citou o caso de uma mulher britânica que teve falência do fígado, paradas cardíacas e sérios danos cerebrais após o uso do produto e reforçou que o suplemento não tem registro no Brasil. Notícias relacionadas: Anvisa proíbe lotes de medicamento para tratar câncer. Anvisa determina apreensão de lote fals"
+  },
+  {
+   "id": "n-d3309dca7d",
+   "titulo": "Confira a agenda dos presidenciáveis nesta quinta-feira (22)",
+   "url": "https://agenciabrasil.ebc.com.br/politica/noticia/2026-10/confira-agenda-dos-presidenciaveis-nesta-quinta-feira-22",
+   "data": "2026-10-22T12:27+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [],
+   "pessoas": [
+    "luiz-inacio-lula-da-silva",
+    "flavio-bolsonaro"
+   ],
+   "resumo": "A três dias do segundo turno das eleições gerais, confira a agenda de campanha dos candidatos à presidência da República nesta quinta-feira (22): Luiz Inácio Lula da Silva (PT) O candidato à reeleição tirou o dia para gravação de propaganda eleitoral. Flávio Bolsonaro (PL) Sem agenda pública durante o dia, candidato faz live no YouTube às 19h, com transmissão pelo canal TV Celular Flávio Bolsonaro. A ordem de apresentação da agenda dos candidatos a presidente segue alternância diária."
+  },
+  {
+   "id": "n-b4add97c60",
+   "titulo": "Direitos Humanos: planos de Lula e Flávio refletem diferença histórica",
+   "url": "https://agenciabrasil.ebc.com.br/direitos-humanos/noticia/2026-10/direitos-humanos-programas-de-lula-e-flavio-refletem-diferencas-histo",
+   "data": "2026-10-22T12:20+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [],
+   "pessoas": [
+    "luiz-inacio-lula-da-silva",
+    "flavio-bolsonaro"
+   ],
+   "resumo": "Os direitos humanos são uma área que, historicamente, diferenciam de maneira significativa os candidatos que disputam o segundo turno das eleições presidenciais em 2026: o atual presidente Luiz Inácio Lula da Silva (PT) e o senador Flávio Bolsonaro (PL). Enquanto Lula ascendeu politicamente no fim dos anos 1970, fazendo o enfrentamento à ditadura militar e às graves violações de direitos humanos do regime, Flávio Bolsonaro é herdeiro político de seu pai, Jair Bolsonaro, um notório defensor da ditadura e admirador do coronel Carlos Brilhante Ustra, apontado pela Comissão Nacional da Verdade com"
+  },
+  {
+   "id": "n-4248aa14d0",
+   "titulo": "Vídeo: Abstenção eleitoral: Minas Gerais concentra municípios com mais ausências",
+   "url": "https://www12.senado.leg.br/noticias/videos/2026/10/abstencao-eleitoral-minas-gerais-concentra-municipios-com-mais-ausencias",
+   "data": "2026-10-22T12:13:00+00:00",
+   "fonte": "senado",
+   "nos": [
+    "tse"
+   ],
+   "pessoas": [],
+   "resumo": "A abstenção no primeiro turno das eleições de 2026 chegou a 21,08%, segundo o Tribunal Superior Eleitoral (TSE). Oito dos dez municípios com maior índice de ausências estão em Minas Gerais, com destaque para a cidade de Rio Vermelho, onde 40,1% dos eleitores não votaram. Dificuldades de transporte, chuvas, distância e desinteresse ajudam a explicar o cenário. Quem não votou no primeiro turno pode participar do segundo, desde que o título esteja regular."
+  },
+  {
+   "id": "n-91ebfaed14",
+   "titulo": "Vídeo: Outubro Rosa: Exposição retrata sobreviventes do câncer de mama",
+   "url": "https://www12.senado.leg.br/noticias/videos/2026/10/outubro-rosa-exposicao-retrata-sobreviventes-do-cancer-de-mama",
+   "data": "2026-10-22T12:04:00+00:00",
+   "fonte": "senado",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "Registrar a vida de quem enfrenta o câncer de mama. Esse é o objetivo da mostra \"Cicatrizes\", exposição fotográfica que retrata a experiência de 11 mulheres e um homem após o diagnóstico. Disponível até 30 de outubro no Senado Galeria, a iniciativa integra o Outubro Rosa, campanha de conscientização sobre diagnóstico precoce e tratamento do câncer de mama."
+  },
+  {
+   "id": "n-d2abe0ec15",
+   "titulo": "Áudio: Exposição 'Cicatrizes' retrata histórias de luta contra o câncer de mama",
+   "url": "https://www12.senado.leg.br/noticias/audios/2026/10/exposicao-cicatrizes-retrata-historias-de-luta-contra-o-cancer-de-mama",
+   "data": "2026-10-22T12:00:00+00:00",
+   "fonte": "senado",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "O Senado Galeria inauguroiu na quarta-feira (21) a exposição fotográfica “Cicatrizes”, organizada pela Associação Recomeçar. A mostra reúne fotos de 12 pessoas que compartilham suas experiências na luta contra o câncer de mama. Além de dar visibilidade às marcas físicas e emocionais da doença, a iniciativa busca conscientizar sobre a importância do diagnóstico precoce e do acesso à informação de qualidade."
+  },
+  {
+   "id": "n-7bf69f90b4",
+   "titulo": "Projeto cria programa para proteger animais em aglomerações e ruídos intensos",
+   "url": "https://www.camara.leg.br/noticias/1311927-projeto-cria-programa-para-proteger-animais-em-aglomeracoes-e-ruidos-intensos",
+   "data": "2026-10-22T11:46+00:00",
+   "fonte": "camara",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "Texto está em análise na Câmara dos Deputados"
+  },
+  {
+   "id": "n-6b6085118e",
+   "titulo": "Áudio: Senado e Câmara farão cobertura integrada do segundo turno das eleições",
+   "url": "https://www12.senado.leg.br/noticias/audios/2026/10/senado-e-camara-farao-cobertura-integrada-do-segundo-turno-das-eleicoes",
+   "data": "2026-10-22T11:42:00+00:00",
+   "fonte": "senado",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "No segundo turno das eleições, neste domingo (25), as emissoras do Senado e da Câmara, em parceria com outras rádios e TVs legislativas do país, vão acompanhar a votação até a divulgação dos resultados oficiais. A cobertura terá boletins, entradas ao vivo direto de tribunais eleitorais e localidades com segundo turno para governador ou eleições suplementares para prefeito, além de análises de especialistas e consultores das duas Casas."
+  },
+  {
+   "id": "n-7a4b4b42fc",
+   "titulo": "Inmet alerta para tempestades em toda a faixa leste do país",
+   "url": "https://agenciabrasil.ebc.com.br/meio-ambiente/noticia/2026-10/inmet-alerta-para-tempestades-em-toda-faixa-leste-do-pais",
+   "data": "2026-10-22T11:42+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [
+    "inmet"
+   ],
+   "pessoas": [],
+   "resumo": "Uma área de baixa pressão entre o norte da Argentina, o oeste do Paraguai e o sul da Bolívia aumenta as condições para a ocorrência de tempestades em todo o leste do país, nesta quinta-feira (22). As informações são do Instituto Nacional de Meteorologia (Inmet). Na Região Norte, chove com trovoadas isoladas no Acre, em Rondônia e nas regiões sul e oeste do Amazonas, onde há um aviso amarelo de perigo potencial para tempestades. Pode chover de forma isolada em Roraima, no sul do Pará e no oeste do Tocantins. Notícias relacionadas: Chuvas: Defesa Civil decreta situação de emergência em cidades d"
+  },
+  {
+   "id": "n-f53a4a1a91",
+   "titulo": "PEC em análise no Senado amplia exploração econômica de terras indígenas",
+   "url": "https://www12.senado.leg.br/noticias/materias/2026/10/22/pec-em-analise-no-senado-amplia-exploracao-economica-de-terras-indigenas",
+   "data": "2026-10-22T11:38:00+00:00",
+   "fonte": "senado",
+   "nos": [],
+   "pessoas": [
+    "zequinha-marinho"
+   ],
+   "resumo": "Um projeto de emenda à Constituição (PEC) em análise no Senado permite que povos indígenas exerçam atividades florestais e agropecuárias, comercializem sua produção e celebrem contratos, inclusive de arrendamento e parceria. A PEC 10/2024 também assegura autonomia às comunidades para decidir sobre a partilha dos frutos dessas atividades e determina que a União as fomente por meio de políticas públicas de apoio. Autor da proposta, o senador Zequinha Marinho (Podemos-PA) afirma que a atual redação da Constituição adota uma visão que, segundo ele, “condena os povos originários a viver eternamente"
+  },
+  {
+   "id": "n-16619d3a0f",
+   "titulo": "Governo francês anuncia proibição de protestos considerados ilegítimos",
+   "url": "https://agenciabrasil.ebc.com.br/internacional/noticia/2026-10/presidente-anuncia-proibicao-de-protestos-ilegitimos",
+   "data": "2026-10-22T11:32+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "O presidente francês, Emmanuel Macron, anunciou nesta quinta-feira (22) a proibição, nos próximos dias, de ações de protesto avaliadas como “ilegítimas”. O anúncio foi feito após reunião com representantes dos serviços de informações e ministros. Para as manifestações organizadas por estruturas como os sindicatos vão ser definidos trajetos alternativos. O objetivo, segundo o governo, é proteger os estabelecimentos comerciais. Notícias relacionadas: Tensões voltam a crescer; França contabiliza custos de protestos. França: estudantes prometem continuar luta após primeira vitória. França quer imp"
+  },
+  {
+   "id": "n-f60b33ee1e",
+   "titulo": "Chuvas: Defesa Civil decreta situação de emergência em cidades do Sul",
+   "url": "https://agenciabrasil.ebc.com.br/geral/noticia/2026-10/chuvas-defesa-civil-decreta-situacao-de-emergencia-em-cidades-do-sul",
+   "data": "2026-10-22T11:30+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "A Secretaria Nacional de Proteção e Defesa Civil reconheceu nesta quinta-feira (22) situação de emergência em sete municípios atingidos por tempestades na Região Sul . A Portaria nº 3.646 cita cidades do Paraná, Rio Grande do Sul e Santa Catarina que registraram ocorrências no final de setembro e início de outubro. Notícias relacionadas: Defesa Civil reconhece situação de emergência em seis cidades do Sul. No Paraná, o reconhecimento alcança Altamira do Paraná e Santa Terezinha de Itaipu, municípios afetados por vendavais. No Rio Grande do Sul, também houve reconhecimento de emergência por ven"
+  },
+  {
+   "id": "n-c42d2dac4a",
+   "titulo": "TO: eleitores escolherão entre Professora Dorinha e Vicentinho Júnior",
+   "url": "https://agenciabrasil.ebc.com.br/politica/noticia/2026-10/eleitores-escolherao-entre-professora-dorinha-e-vicentinho-junior",
+   "data": "2026-10-22T11:00+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [],
+   "pessoas": [
+    "vicentinho-junior"
+   ],
+   "resumo": "Neste domingo (25), os 1.182.307 eleitores do Tocantins retornam às urnas para escolher o novo governador . Disputam o cargo Professora Dorinha (União) e Vicentinho Júnior (PSDB). Notícias relacionadas: Dorinha e Vicentinho Junior vão disputar o 2° turno no Tocantins. No primeiro turno, Dorinha ficou em primeiro lugar, com 45,52% dos votos válidos, ou 386.260 votos. Vicentinho ficou em segundo, com 43,94%, equivalente a 372.848 votos. Maria Auxiliadora Seabra Rezende, a Professora Dorinha, é senadora pelo Tocantins. Foi deputada federal por três mandatos e secretária estadual de Educação do es"
+  },
+  {
+   "id": "n-c17ad10f5a",
+   "titulo": "RN: eleitores vão escolher entre Allyson e Cadu de Lula para governo",
+   "url": "https://agenciabrasil.ebc.com.br/politica/noticia/2026-10/rn-eleitores-vao-escolher-entre-allyson-e-cadu-de-lula-para-governo",
+   "data": "2026-10-22T11:00+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [],
+   "pessoas": [
+    "luiz-inacio-lula-da-silva"
+   ],
+   "resumo": "Os 2,6 milhões de eleitores do Rio Grande do Norte retornam às urnas neste domingo (25) para escolher o novo governador . Disputam o cargo Allyson Bezerra (União) e Cadu de Lula (PT). Notícias relacionadas: Allyson e Cadu de Lula vão disputar o 2º turno para governador do RN . No primeiro turno, a disputa foi apertada. Allyson ficou em primeiro lugar, com 36,94% dos votos válidos, ou 799.809 votos. Cadu de Lula ficou em segundo, com 36,16%, equivalente a 718.300 votos. Ex-prefeito de Mossoró, Allyson tem 34 anos, é engenheiro civil e servidor público federal. Foi deputado estadual e eleito pre"
+  },
+  {
+   "id": "n-726d0d2461",
+   "titulo": "Eleitores do ES definem disputa para governo entre Ferraço e Pazolini",
+   "url": "https://agenciabrasil.ebc.com.br/politica/noticia/2026-10/eleitores-do-es-definem-disputa-para-governo-entre-ferraco-e-pazolini",
+   "data": "2026-10-22T11:00+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "Neste domingo (25), os 2,9 milhões de eleitores do Espírito Santo retornam às urnas para votar para governador . Disputam o cargo Lorenzo Pazolini (Republicanos) e Ricardo Ferraço (MDB). Notícias relacionadas: Espírito Santo terá 2º turno entre Lorenzo Pazolini e Ricardo Ferraço. No primeiro turno, Pazolini ficou em primeiro lugar, com 49,65% dos votos válidos, ou 1.048.633 votos. Ferraço ficou em segundo, com 34,06%, equivalente a 719.397 votos. Pazolini foi prefeito de Vitória por dois mandatos. Em 2026, deixou o comando municipal para disputar o governo do Espírito Santo. Natural de Vitória"
+  },
+  {
+   "id": "n-2f1a9d2726",
+   "titulo": "Flávio faz campanha em São Paulo; Lula teve ato em Belo Horizonte",
+   "url": "https://agenciabrasil.ebc.com.br/politica/noticia/2026-10/flavio-faz-campanha-em-sao-paulo-lula-teve-ato-em-belo-horizonte",
+   "data": "2026-10-22T01:45+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [],
+   "pessoas": [
+    "luiz-inacio-lula-da-silva",
+    "flavio-bolsonaro"
+   ],
+   "resumo": "Os candidatos a presidente cumpriram agenda de campanha nesta quarta-feira (21) em Belo Horizonte, Fortaleza e São Paulo. >> Veja como foi o dia dos candidatos Flávio Bolsonaro O candidato Flávio Bolsonaro (PL) participou de um evento em Guarulhos (SP) pela manhã ao lado do governador Tarcísio de Freitas (Republicanos). 21.10.2026 - Evento de Flávio Bolsonaro no Espaço Inter (SP). Foto: Charles Vieira Notícias relacionadas: Lula aceita proposta de Flávio para quebra de sigilo bancário. Flávio Bolsonaro impõe condições para liberar sigilos. Flávio Bolsonaro informou nesta quarta-feira (21) ao T"
+  },
+  {
+   "id": "n-cc13c7622d",
+   "titulo": "Campanha de Lula entra com ação no TSE para cassar chapa de Flávio",
+   "url": "https://agenciabrasil.ebc.com.br/justica/noticia/2026-10/campanha-de-lula-entra-com-acao-no-tse-para-cassar-chapa-de-flavio",
+   "data": "2026-10-22T01:20+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [
+    "tse"
+   ],
+   "pessoas": [
+    "luiz-inacio-lula-da-silva",
+    "nunes-marques",
+    "alfredo-gaspar",
+    "flavio-bolsonaro"
+   ],
+   "resumo": "A campanha do candidato à reeleição Luiz Inácio Lula da Silva (PT) protocolou nesta quarta-feira (21) no Tribunal Superior Eleitoral (TSE) uma ação de investigação eleitoral para cassar o registro da candidatura da chapa formada pelo candidato Flávio Bolsonaro (PL) e o candidato a vice-presidente Alfredo Gaspar (PL). Os advogados da campanha acusam a chapa adversária de cometer abuso de poder econômico e uso indevidos dos meios de comunicação. Notícias relacionadas: Nunes Marques suspende postagens ilegais contra campanha de Lula . Lula aceita proposta de Flávio para quebra de sigilo bancário."
+  },
+  {
+   "id": "n-841aa7bde6",
+   "titulo": "Nunes Marques suspende postagens ilegais contra campanha de Lula",
+   "url": "https://agenciabrasil.ebc.com.br/politica/noticia/2026-10/nunes-marques-suspende-postagens-ilegais-contra-campanha-de-lula",
+   "data": "2026-10-22T00:39+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [
+    "tse"
+   ],
+   "pessoas": [
+    "luiz-inacio-lula-da-silva",
+    "nunes-marques",
+    "flavio-bolsonaro"
+   ],
+   "resumo": "O presidente do Tribunal Superior Eleitoral (TSE), ministro Kassio Nunes Marques, determinou nesta quarta-feira (21) a suspensão de 20 postagens ilegais nas redes sociais contra o candidato à reeleição Luiz Inácio Lula da Silva (PT) O ministro atendeu ao pedido da campanha de Lula, que alegou a ação estruturada de parlamentares que apoiam o candidato Flávio Bolsonaro (PL) para compartilhamento de deepfake, a criação de conteúdo artificial para prejudicar candidatos. Notícias relacionadas: TSE: informação de que 4 mil seções mudaram de lugar estava incorreta. TSE estuda desativar canais polític"
+  },
+  {
+   "id": "n-726bb90661",
+   "titulo": "Nova lei amplia limite de faturamento do MEI e prevê perdão de dívidas",
+   "url": "https://www.camara.leg.br/noticias/1312953-nova-lei-amplia-limite-de-faturamento-do-mei-e-preve-perdao-de-dividas",
+   "data": "2026-10-21T23:09+00:00",
+   "fonte": "camara",
+   "nos": [],
+   "pessoas": [
+    "rubens-pereira-junior"
+   ],
+   "resumo": "GettyImages Limite de faturamento chegará a R$ 140 mil em 2028 Entrou em vigor a lei que amplia o limite de faturamento anual do microempreendedor individual (MEI), prevê o perdão de dívidas da categoria com a União e permite a contratação pelo MEI de até dois empregados. A Lei Complementar 238/26 foi publicada em edição extra do Diário Oficial da União nesta quarta-feira (21). O texto teve origem em projeto aprovado pela Câmara dos Deputados em 14 de outubro . A versão aprovada, do deputado Rubens Pereira Júnior (PT-MA), incorporou medidas dos projetos de lei complementar (PLPs) 186/26 e 267/"
+  },
+  {
+   "id": "n-b70621c07e",
+   "titulo": "Ministro prevê renegociação de R$ 90 bi em 3ª fase do Desenrola",
+   "url": "https://agenciabrasil.ebc.com.br/economia/noticia/2026-10/ministro-preve-renegociacao-de-r-90-bi-em-3a-fase-do-desenrola",
+   "data": "2026-10-21T23:07+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [],
+   "pessoas": [
+    "dario-carnevalli-durigan"
+   ],
+   "resumo": "As instituições financeiras poderão apresentar até R$ 90 bilhões em dívidas antigas a serem renegociadas na primeira etapa do Desenrola 3.0, disse nesta quarta-feira (21) o ministro da Fazenda, Dario Durigan. Segundo ele, o edital de chamamento dos bancos e de outras instituições será publicado nesta quinta-feira (22), dando início ao processo de habilitação de bancos e fundos interessados em vender carteiras de crédito à União. Apesar do volume previsto, o custo máximo estimado para a compra de todo esse montante seria de R$ 9 bilhões, considerando o desconto mínimo de 90% exigido pelo progra"
+  },
+  {
+   "id": "n-aeaa46cbd4",
+   "titulo": "Projeto cria Rede de Desenvolvimento do Esporte",
+   "url": "https://www.camara.leg.br/noticias/1312672-projeto-cria-rede-de-desenvolvimento-do-esporte",
+   "data": "2026-10-21T22:47+00:00",
+   "fonte": "camara",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "A Câmara dos Deputados analisa a proposta"
+  },
+  {
+   "id": "n-264c46051b",
+   "titulo": "Lula aceita proposta de Flávio para quebra de sigilo bancário",
+   "url": "https://agenciabrasil.ebc.com.br/politica/noticia/2026-10/lula-aceita-proposta-de-flavio-para-quebra-de-sigilo-bancario",
+   "data": "2026-10-21T22:45+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [
+    "tse"
+   ],
+   "pessoas": [
+    "luiz-inacio-lula-da-silva",
+    "camilo-santana",
+    "flavio-bolsonaro"
+   ],
+   "resumo": "A coordenação da campanha de Luiz Inácio Lula da Silva à reeleição afirmou que o candidato do PT aceitou as condições de seu adversário, Flávio Bolsonaro (PL), para quebra do sigilo bancário e telefônico dele e de seus parentes. A informação foi dada pelo coordenador da campanha do petista, Camilo Santana. “Todas as condicionantes que ele [Flávio] colocou, a resposta do presidente é que ele não se opõe a absolutamente nada do que ele está propondo. Contanto que ele também cumpra e abra tudo que está no pedido protocolado junto ao TSE.” Notícias relacionadas: Flávio Bolsonaro impõe condições pa"
+  },
+  {
+   "id": "n-a284687841",
+   "titulo": "Arquivistas do Senado ajudam a guardar e contar a história do Brasil",
+   "url": "https://www12.senado.leg.br/noticias/materias/2026/10/21/arquivistas-do-senado-ajudam-a-guardar-e-contar-a-historia-do-brasil",
+   "data": "2026-10-21T21:36:00+00:00",
+   "fonte": "senado",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "O Dia do Arquivista, celebrado em 20 de outubro, chama a atenção para o trabalho dos profissionais responsáveis pela organização, preservação e disponibilização de documentos. No Senado, registros produzidos ao longo dos 200 anos da atuação da instituição são conservados pelo Arquivo da Casa. O acervo também é fonte para projetos como o Arquivo S, que transforma o conteúdo dos documentos em reportagens acessíveis sobre o papel do Parlamento em momentos históricos do Brasil. Memórias preservadas O Arquivo S é um projeto multimídia mensal da Agência Senado em parceria com o Arquivo. Publicadas n"
+  },
+  {
+   "id": "n-94cf034729",
+   "titulo": "Projeto cria programa nacional para fortalecer a pesca artesanal continental",
+   "url": "https://www.camara.leg.br/noticias/1309865-projeto-cria-programa-nacional-para-fortalecer-a-pesca-artesanal-continental",
+   "data": "2026-10-21T21:21+00:00",
+   "fonte": "camara",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "Texto está em análise na Câmara dos Deputados"
+  },
+  {
+   "id": "n-936b5759e9",
+   "titulo": "Áudio: Projeto cria Frente Parlamentar de Enfrentamento ao Câncer Infantojuvenil",
+   "url": "https://www12.senado.leg.br/noticias/audios/2026/10/projeto-cria-frente-parlamentar-de-enfrentamento-ao-cancer-infantojuvenil",
+   "data": "2026-10-21T21:18:00+00:00",
+   "fonte": "senado",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "A senadora Dra. Eudócia (PSDB-AL) apresentou um projeto de resolução que cria a Frente Parlamentar de Enfrentamento ao Câncer Infantojuvenil. O projeto (PRS 49/2026) está em análise no Senado. Ouça o áudio."
+  },
+  {
+   "id": "n-ee84ee7df3",
+   "titulo": "Perdão de dívidas e novo teto do MEI: entenda o que muda",
+   "url": "https://agenciabrasil.ebc.com.br/economia/noticia/2026-10/perdao-de-dividas-e-novo-teto-do-mei-entenda-o-que-muda",
+   "data": "2026-10-21T21:17+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [],
+   "pessoas": [
+    "luiz-inacio-lula-da-silva"
+   ],
+   "resumo": "Sancionada nesta quarta-feira (21) pelo presidente Luiz Inácio Lula da Silva, a Lei Complementar 238/2026 , que estabelece novas regras para os microempreendedores individuais (MEI), estabelece o perdão de dívidas tributárias com a União. A legislação também aumenta gradualmente o limite de faturamento anual e amplia a possibilidade de contratação de funcionários. Batizado de Prospera MEI, o pacote inclui ainda medidas para facilitar a participação de pequenos negócios em compras públicas . Parte das mudanças, porém, só começa a valer em 2027. Notícias relacionadas: Sancionada lei que perdoa d"
+  },
+  {
+   "id": "n-5140c52eb9",
+   "titulo": "TSE: informação de que 4 mil seções mudaram de lugar estava incorreta",
+   "url": "https://agenciabrasil.ebc.com.br/politica/noticia/2026-10/tse-informacao-de-que-4-mil-secoes-mudaram-de-lugar-estava-incorreta",
+   "data": "2026-10-21T21:16+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [
+    "tse"
+   ],
+   "pessoas": [],
+   "resumo": "Uma leitura equivocada dos dados levou a Justiça Eleitoral a informar, no último sábado (17), que 4.352 seções eleitorais teriam mudado de local entre o primeiro e o segundo turno da eleição deste ano. O presidente do Colégio de Presidentes dos Tribunais Regionais Eleitorais (Coptrel), desembargador Carlos Roberto Silva, explicou nesta quarta-feira (21), à Agência Brasil, que os dados foram erradamente comparados com os da eleição de 2024. Segundo a assessoria de imprensa do TSE, houve uma falha dos Tribunais Regionais Eleitorais (TREs) ao alimentar o sistema da Justiça. Notícias relacionadas:"
+  },
+  {
+   "id": "n-38a06149dc",
+   "titulo": "Dia do médico e a saúde no Brasil",
+   "url": "https://www12.senado.leg.br/noticias/infomaterias/2026/10/dia-do-medico-e-a-saude-no-brasil",
+   "data": "2026-10-21T21:08:00+00:00",
+   "fonte": "senado",
+   "nos": [],
+   "pessoas": [],
+   "resumo": ""
+  },
+  {
+   "id": "n-80f3264836",
+   "titulo": "Flávio Bolsonaro impõe condições para liberar sigilos",
+   "url": "https://agenciabrasil.ebc.com.br/politica/noticia/2026-10/flavio-bolsonaro-impoe-condicoes-para-liberar-sigilos",
+   "data": "2026-10-21T20:52+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [
+    "tse"
+   ],
+   "pessoas": [
+    "luiz-inacio-lula-da-silva",
+    "flavio-bolsonaro"
+   ],
+   "resumo": "O candidato à Presidência da República Flávio Bolsonaro (PL) informou nesta quarta-feira (21) ao Tribunal Superior Eleitoral (TSE) que autoriza o levantamento de seus sigilos bancário, fiscal e telefônico dos últimos 20 anos, desde que o candidato à reeleição Luiz Inácio Lula da Silva (PT) amplie o alcance do levantamento de seus sigilos. Para divulgar suas informações financeiras, o candidato do PL quer que Lula também divulgue os dados de Marco Aurélio Santana Ribeiro, ex-chefe de gabinete do presidente, os registros de entrada da empresária Roberta Luchsinger no Palácio do Planalto, os sigi"
+  },
+  {
+   "id": "n-4e1963d736",
+   "titulo": "Áudio: Doenças raras: projeto determina divulgação das fases de registro de medicamento",
+   "url": "https://www12.senado.leg.br/noticias/audios/2026/10/doencas-raras-projeto-determina-divulgacao-das-fases-de-registro-de-medicamento",
+   "data": "2026-10-21T20:48:00+00:00",
+   "fonte": "senado",
+   "nos": [
+    "anvisa"
+   ],
+   "pessoas": [],
+   "resumo": "Cada fase do processo de registro de um medicamento para doença rara terá que ser divulgada na internet pela Anvisa, segundo projeto (PL 5.201/2026) apresentado nesta quinta-feira (27) pelo senador Hermes Klann (PL-SC). O objetivo é ampliar a previsibilidade para pacientes, famílias e profissionais de saúde, sem interferir na autonomia técnico-científica da agência."
+  },
+  {
+   "id": "n-3eaea29dae",
+   "titulo": "Projeto atualiza lei do crime de perseguição para detalhar condutas digitais",
+   "url": "https://www.camara.leg.br/noticias/1307688-projeto-atualiza-lei-do-crime-de-perseguicao-para-detalhar-condutas-digitais",
+   "data": "2026-10-21T20:35+00:00",
+   "fonte": "camara",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "Para virar lei, o texto precisa ser aprovado pela Câmara e pelo Senado"
+  },
+  {
+   "id": "n-ba742c39c7",
+   "titulo": "Projeto estabelece regras de saúde e ergonomia para trabalhadores do setor têxtil",
+   "url": "https://www.camara.leg.br/noticias/1312650-projeto-estabelece-regras-de-saude-e-ergonomia-para-trabalhadores-do-setor-textil",
+   "data": "2026-10-21T20:19+00:00",
+   "fonte": "camara",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "Texto está em análise na Câmara dos Deputados"
+  },
+  {
+   "id": "n-2f586ecd8b",
+   "titulo": "STF decide que ISS não integra base de cálculo do PIS/Cofins",
+   "url": "https://agenciabrasil.ebc.com.br/justica/noticia/2026-10/stf-decide-que-iss-nao-integra-base-de-calculo-do-piscofins",
+   "data": "2026-10-21T19:56+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [
+    "stf"
+   ],
+   "pessoas": [],
+   "resumo": "O plenário do Supremo Tribunal Federal (STF) decidiu nesta quarta-feira (21) que o Imposto Sobre Serviços de Qualquer Natureza (ISS) não integra a base de cálculo do PIS e da Cofins. A decisão terá impacto de R$ 35 bilhões nas contas do governo federal . Por maioria de votos, os ministros encerraram o julgamento de uma ação que tramitava na Corte desde 2008. Notícias relacionadas: STF cobra cumprimento de acesso gratuito a sites da Justiça Eleitoral. STF retira crédito presumido do ICMS da base de cálculo do PIS/Cofins. Importações para pesquisa pública terão imunidade tributária. Conforme o e"
+  },
+  {
+   "id": "n-b9f1545801",
+   "titulo": "Áudio: Projeto reduz dívida do Fies para médicos em áreas carentes",
+   "url": "https://www12.senado.leg.br/noticias/audios/2026/10/projeto-reduz-divida-do-fies-para-medicos-em-areas-carentes",
+   "data": "2026-10-21T19:53:00+00:00",
+   "fonte": "senado",
+   "nos": [],
+   "pessoas": [
+    "professora-dorinha-seabra"
+   ],
+   "resumo": "Está pronto para votação na Comissão de Assuntos Sociais (CAS) um projeto que reduz a dívida do Fies (Fundo de Financiamento Estudantil) para médicos que trabalham na rede pública em regiões com escassez de profissionais (PL 4.571/2025). A proposta prevê desconto de até 50% da parcela mensal. A proposta do senador Dr. Hiran (PP-RR) recebeu voto favorável da relatora, senadora Professora Dorinha Seabra (União-TO). Se for aprovada, seguirá para análise da Comissão de Assuntos Econômicos (CAE)."
+  },
+  {
+   "id": "n-3684a516fb",
+   "titulo": "Projeto estende regras da Lei Maria da Penha para agressões praticadas por ex-namorados",
+   "url": "https://www.camara.leg.br/noticias/1310401-projeto-estende-regras-da-lei-maria-da-penha-para-agressoes-praticadas-por-ex-namorados",
+   "data": "2026-10-21T19:48+00:00",
+   "fonte": "camara",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "O texto está em análise na Câmara dos Deputados"
+  },
+  {
+   "id": "n-a50aa1fa64",
+   "titulo": "ONU aponta falta de isenção da Meta em eleição brasileira",
+   "url": "https://agenciabrasil.ebc.com.br/politica/noticia/2026-10/onu-aponta-falta-de-isencao-da-meta-em-eleicao-brasileira",
+   "data": "2026-10-21T19:47+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [
+    "tse"
+   ],
+   "pessoas": [],
+   "resumo": "Especialistas das Organizações das Nações Unidas (ONU) assinaram uma carta em que apontam restrições à liberdade de expressão em plataformas como Instagram, Facebook e WhatsApp, todas da empresa Meta, nas eleições brasileiras em 2026. Eles disseram que os observadores internacionais que participaram das eleições detectaram tratamento desigual das plataformas em relação aos conteúdos das campanhas, apontando que as contas ligadas a um dos candidatos foi prejudicada. Notícias relacionadas: Ato em São Paulo cobra neutralidade da Meta nas eleições. Ao TSE, Meta nega tratamento desigual entre candi"
+  },
+  {
+   "id": "n-6929aa4ab3",
+   "titulo": "Justiça torna réus 12 denunciados por queda de avião da Voepass",
+   "url": "https://agenciabrasil.ebc.com.br/justica/noticia/2026-10/justica-torna-reus-12-denunciados-por-queda-de-aviao-da-voepass",
+   "data": "2026-10-21T19:47+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [
+    "mpf",
+    "pf",
+    "mte"
+   ],
+   "pessoas": [],
+   "resumo": "A Justiça Federal aceitou a denúncia do Ministério Público Federal (MPF) e tornou réus 12 integrantes da Voepass por envolvimento na queda do avião da empresa . O acidente ocorreu em agosto de 2024, em Vinhedo, no interior paulista, e matou 62 pessoas. Os réus vão responder pelos crimes de atentado contra a segurança do transporte aéreo e sinistro em transporte aéreo. Notícias relacionadas: Polícia Federal indicia 16 pessoas por queda de avião da Voepass. Pilotos da Voepass não relatavam falhas nas aeronaves, diz Cenipa. Fadiga pode ter contribuído para queda de avião da Voepass, diz MTE. Segu"
+  },
+  {
+   "id": "n-bf442a45ef",
+   "titulo": "Áudio: Santos Dumont é lembrado durante homenagem à Força Aérea Brasileira",
+   "url": "https://www12.senado.leg.br/noticias/audios/2026/10/santos-dumont-e-lembrado-durante-homenagem-a-forca-aerea-brasileira",
+   "data": "2026-10-21T19:41:00+00:00",
+   "fonte": "senado",
+   "nos": [
+    "aeronautica"
+   ],
+   "pessoas": [],
+   "resumo": "O Senado promoveu uma sessão especial nesta quarta-feira (21) para comemorar os 120 anos do primeiro voo do 14-Bis, o Dia do Aviador e o Dia da Força Aérea Brasileira (FAB). O pioneirismo de Santos Dumont, que construiu e pilotou o 14-Bis, foi destacado durante a cerimônia. Ouça o áudio."
+  },
+  {
+   "id": "n-26f41f8064",
+   "titulo": "Medida provisória abre crédito extra de R$ 300 milhões para combate a incêndios na Amazônia",
+   "url": "https://www.camara.leg.br/noticias/1312761-medida-provisoria-abre-credito-extra-de-r-300-milhoes-para-combate-a-incendios-na-amazonia",
+   "data": "2026-10-21T19:24+00:00",
+   "fonte": "camara",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "Recursos vão ser utilizados em ações da Defesa Civil"
+  },
+  {
+   "id": "n-3abdc077f3",
+   "titulo": "Medida provisória destina mais R$ 6,5 bilhões para setores afetados por tarifaço dos EUA",
+   "url": "https://www.camara.leg.br/noticias/1312754-medida-provisoria-destina-mais-r-65-bilhoes-para-setores-afetados-por-tarifaco-dos-eua",
+   "data": "2026-10-21T18:59+00:00",
+   "fonte": "camara",
+   "nos": [
+    "congresso",
+    "bndes"
+   ],
+   "pessoas": [],
+   "resumo": "Depositphotos Crédito extraordinário faz parte do Plano Brasil Soberano, que financia setores afetados pelo tarifaço O Congresso Nacional analisa a Medida Provisória 1397/26, que abre crédito extraordinário de R$ 6,5 bilhões no Orçamento de 2026 para financiar setores afetados pelo tarifaço dos Estados Unidos sobre produtos de exportação. A MP faz parte do Plano Brasil Soberano. Outra medida ( MP 1379/26 ), editada em agosto, havia previsto R$ 13,5 bilhões para esses financiamentos coordenados pelo BNDES . Desse limite, R$ 7 bilhões foram disponibilizados pela MP 1387/26 . O total restante, R$"
+  },
+  {
+   "id": "n-a5c573840d",
+   "titulo": "Negacionismo impulsiona sarampo nos EUA e representa ameaça ao Brasil",
+   "url": "https://agenciabrasil.ebc.com.br/saude/noticia/2026-10/negacionismo-impulsiona-sarampo-nos-eua-e-representa-ameaca-ao-brasil",
+   "data": "2026-10-21T18:40+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "Mudanças recentes no calendário vacinal dos Estados Unidos, impulsionadas por discursos antivacinação do governo Donald Trump, ajudam a explicar por que o país está passando pelo pior surto de sarampo em mais de três décadas . Mais de 4,4 mil casos já foram confirmados este ano, com três mortes. Entre os infectados, 98% não estavam totalmente vacinados. A avaliação do diretor do Programa Nacional de Imunizações do Brasil, Eder Gatti, é que os Estados Unidos passam por um período de retrocessos que ameaça todo o continente . Notícias relacionadas: Sarampo: Brasil intensifica ações face a avanço"
+  },
+  {
+   "id": "n-722021db4d",
+   "titulo": "Projeto regulamenta transporte turístico terrestre em veículos de pequeno porte",
+   "url": "https://www.camara.leg.br/noticias/1310149-projeto-regulamenta-transporte-turistico-terrestre-em-veiculos-de-pequeno-porte",
+   "data": "2026-10-21T18:18+00:00",
+   "fonte": "camara",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "O texto está em análise na Câmara dos Deputados"
+  },
+  {
+   "id": "n-9e04bf99c6",
+   "titulo": "Empresários e advogados são maioria entre os deputados eleitos para a nova legislatura",
+   "url": "https://www.camara.leg.br/noticias/1312742-empresarios-e-advogados-sao-maioria-entre-os-deputados-eleitos-para-a-nova-legislatura",
+   "data": "2026-10-21T17:51+00:00",
+   "fonte": "camara",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "Considerando as áreas de atuação, saúde e educação têm o maior destaque"
+  },
+  {
+   "id": "n-9f4e75fc68",
+   "titulo": "Importações para pesquisa pública terão imunidade tributária",
+   "url": "https://agenciabrasil.ebc.com.br/economia/noticia/2026-10/importacoes-para-pesquisa-publica-terao-imunidade-tributaria",
+   "data": "2026-10-21T17:41+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [
+    "mf"
+   ],
+   "pessoas": [],
+   "resumo": "O Ministério da Fazenda anunciou nesta quarta-feira (21) medidas para assegurar a aplicação da imunidade tributária prevista na Constituição nas importações para projetos de universidades públicas, institutos federais e instituições públicas de ciência, tecnologia e inovação. De acordo com o ministério, equipamentos, softwares e insumos importados por fundações de apoio em nome dessas instituições passam a contar com o amparo da imunidade tributária recíproca . Notícias relacionadas: Professor de ciências precisa de formação constante, diz pesquisadora. Estudantes de escolas públicas querem en"
+  },
+  {
+   "id": "n-88f5c80627",
+   "titulo": "Força Nacional do SUS apoia atendimentos no Amazonas após incêndios",
+   "url": "https://agenciabrasil.ebc.com.br/saude/noticia/2026-10/forca-nacional-do-sus-apoia-atendimentos-no-amazonas-apos-incendios",
+   "data": "2026-10-21T17:41+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [
+    "inpe"
+   ],
+   "pessoas": [],
+   "resumo": "Com o aumento da demanda de atendimento em saúde em razão dos incêndios florestais na região, começou a funcionar em Manaus uma base regional da Força Nacional do SUS. Segundo a última atualização da Fundação de Vigilância em Saúde do Amazonas, desde que a fumaça dos incêndios florestais começou a afetar a população, no início de outubro, até o último dia 14, os atendimentos por exposição à fumaça chegaram a 541 na rede pública. De acordo com o Instituto Nacional de Pesquisas Espaciais (Inpe), nas últimas 23 horas estão ativos 13 focos de incêndios florestais . Cerca de 370 lançamentos de água"
+  },
+  {
+   "id": "n-6523c876f7",
+   "titulo": "Motta comemora sanção de novo limite de MEI e o perdão de dívidas de microempreendedores",
+   "url": "https://www.camara.leg.br/noticias/1312795-motta-comemora-sancao-de-novo-limite-de-mei-e-o-perdao-de-dividas-de-microempreendedores",
+   "data": "2026-10-21T17:29+00:00",
+   "fonte": "camara",
+   "nos": [],
+   "pessoas": [
+    "luiz-inacio-lula-da-silva",
+    "hugo-motta"
+   ],
+   "resumo": "Marina Ramos / Câmara dos Deputados Hugo Motta: É mais espaço para crescer e prosperar O presidente da Câmara dos Deputados, Hugo Motta (Republicanos-PB), comemorou a sanção pelo presidente Lula da lei que aumenta o limite de faturamento do Microempreendedor Individual (MEI) e perdoa a dívida de quase 3 milhões de empreendedores . A nova legislação aumenta o faturamento de R$ 80 mil para R$ 110 mil em 2027 e R$ 140 mil em 2028, permite a contratação de até dois funcionários com carteira assinada e o perdão das dívidas. Para Motta, fortalecer o MEI é fortalecer milhões de famílias brasileiras. "
+  },
+  {
+   "id": "n-8c20e0f4d5",
+   "titulo": "Democracia exige que perdedor respeite as regras do jogo, diz Fachin",
+   "url": "https://agenciabrasil.ebc.com.br/justica/noticia/2026-10/democracia-exige-que-perdedor-respeite-regras-do-jogo-diz-fachin",
+   "data": "2026-10-21T17:19+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [
+    "stf",
+    "tse"
+   ],
+   "pessoas": [
+    "edson-fachin"
+   ],
+   "resumo": "O presidente do Supremo Tribunal Federal (STF), Edson Fachin, afirmou nesta quarta-feira (21) que o Estado Democrático de Direito exige “lealdade às regras do jogo, inclusive por parte de quem perde”. O ministro discursou na abertura de um seminário realizado no STF sobre o papel dos tribunais constitucionais. Em sua fala, Fachin acrescentou que a democracia depende do respeito às decisões judiciais bem fundamentadas, embora com frequência, em tempos de polarização política, elas sejam “reduzidas e instrumentalizadas por slogans”. Notícias relacionadas: TSE não participa de mudança de locais d"
+  },
+  {
+   "id": "n-b4902cbe36",
+   "titulo": "Procon paulistano multa Enel por falhas no fornecimento de energia",
+   "url": "https://agenciabrasil.ebc.com.br/economia/noticia/2026-10/procon-paulistano-multa-enel-por-falhas-no-fornecimento-de-energia",
+   "data": "2026-10-21T16:43+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [
+    "aneel"
+   ],
+   "pessoas": [],
+   "resumo": "O Procon Paulistano, órgão vinculado à Secretaria de Justiça da prefeitura de São Paulo, multou a concessionária de energia Enel em R$ 11,4 milhões por problemas no fornecimento de energia elétrica na capital paulista ocorridos no ano passado. A medida foi publicada no Diário Oficial da cidade de São Paulo desta quarta-feira (21). Segundo o órgão, a multa se refere a falhas registradas entre setembro e dezembro de 2025, principalmente entre os dias 8 e 10 de dezembro, período em que até 3 milhões de consumidores ficaram sem fornecimento de energia elétrica. Notícias relacionadas: Aneel adia di"
+  },
+  {
+   "id": "n-ca4cf3ea50",
+   "titulo": "Sancionada lei que perdoa dívida e aumenta limite de MEI",
+   "url": "https://agenciabrasil.ebc.com.br/economia/noticia/2026-10/sancionada-lei-que-perdoa-divida-e-aumenta-limite-de-mei",
+   "data": "2026-10-21T16:33+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [
+    "camara",
+    "senado"
+   ],
+   "pessoas": [],
+   "resumo": "Foi sancionado nesta quarta-feira (21) o Projeto de Lei Complementar (PLP) nº 186/2026, que prevê o perdão de dívidas de microempreendedores individuais (MEIs) com a União e amplia o limite anual de faturamento da categoria. O projeto foi aprovado pelo Senado Federal em votação nominal, com 78 votos favoráveis, nenhum contrário e nenhuma abstenção. A Câmara dos Deputados já havia aprovado a proposta por 461 votos a 4. Notícias relacionadas: Governo destina R$ 6,49 bilhões a setor de exportação. Empresas de três regiões terão aporte de R$ 450 milhões para inovação. Cortes em auxílios sociais po"
+  },
+  {
+   "id": "n-d76c2384a5",
+   "titulo": "Comissão debate buscas por crianças e adolescentes desaparecidos",
+   "url": "https://www.camara.leg.br/noticias/1312716-comissao-debate-buscas-por-criancas-e-adolescentes-desaparecidos",
+   "data": "2026-10-21T16:14+00:00",
+   "fonte": "camara",
+   "nos": [],
+   "pessoas": [
+    "fernando-rodolfo"
+   ],
+   "resumo": "Renato Araújo / Câmara dos Deputados Fernando Rodolfo, coordenador da comissão A Comissão Externa sobre Prevenção e Enfrentamento da Violência Sexual Infantojuvenil da Câmara dos Deputados realiza audiência pública nesta quarta-feira (21). O debate, que atende a pedido do presidente do colegiado, deputado Fernando Rodolfo (PRD-PE), está marcado para as 14h30, no plenário 7. O objetivo é discutir a atuação de órgãos federais e internacionais responsáveis pelas buscas de crianças e adolescentes desaparecidos e os desafios enfrentados pelas famílias. Veja quem foi convidado"
+  },
+  {
+   "id": "n-1a8e2c6a7c",
+   "titulo": "Metrô de São Paulo amplia uso do Pix no autoatendimento",
+   "url": "https://agenciabrasil.ebc.com.br/geral/noticia/2026-10/metro-de-sao-paulo-amplia-uso-do-pix-no-autoatendimento",
+   "data": "2026-10-21T15:53+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "As máquinas de autoatendimento do metrô de São Paulo já estão aceitando o Pix como forma de pagamento. A nova modalidade de pagamento passou a ser aceita nesta terça-feira (20), inicialmente, apenas para a Linha 1-Azul. A funcionalidade será ampliada para usuários de outras linhas nos próximos dias, o que exige que os equipamentos sejam reprogramados. Segundo a prefeitura, o calendário de implementação do sistema nas máquinas do Metrô ocorrerá da seguinte forma: Linha 2-Verde, 23 a 26 de outubro; Linha 3-Vermelha, 27 e 28 de outubro; Linha 15-Prata, 29 e 30 de outubro. Trens No sistema ferrovi"
+  },
+  {
+   "id": "n-721088caea",
+   "titulo": "Projeto cria política nacional de apoio a crianças e adolescentes neurodivergentes",
+   "url": "https://www.camara.leg.br/noticias/1310576-projeto-cria-politica-nacional-de-apoio-a-criancas-e-adolescentes-neurodivergentes",
+   "data": "2026-10-21T15:41+00:00",
+   "fonte": "camara",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "Texto está em análise na Câmara dos Deputados"
+  },
+  {
+   "id": "n-53c6d82b4d",
+   "titulo": "Quedas: mais de 330 mil crianças foram internadas no Brasil em 10 anos",
+   "url": "https://agenciabrasil.ebc.com.br/saude/noticia/2026-10/quedas-mais-de-330-mil-criancas-foram-internadas-no-brasil-em-10-anos",
+   "data": "2026-10-21T15:36+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "Apenas no primeiro semestre de 2026, quase 15 mil crianças com menos de 10 anos foram internadas após acidentes envolvendo quedas. Entre 2016 e 2025, esse número soma 330 mil internações – média de 33 mil casos por ano. Os dados constam de levantamento da Sociedade Brasileira de Pediatria (SBP) a partir de registros do Sistema de Informações Hospitalares do Sistema Único de Saúde (SUS) . Notícias relacionadas: Hipertensão atinge 28% de crianças e adolescentes, mostra estudo. Saúde aprova protocolo para tratar crianças com hemofilia A. OMS lança guia para enfrentar obesidade em crianças e adole"
+  },
+  {
+   "id": "n-8e1629bfbb",
+   "titulo": "Projeto proíbe perdão e benefícios penais para condenados por crimes contra crianças",
+   "url": "https://www.camara.leg.br/noticias/1308092-projeto-proibe-perdao-e-beneficios-penais-para-condenados-por-crimes-contra-criancas",
+   "data": "2026-10-21T15:08+00:00",
+   "fonte": "camara",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "A proposta está em análise na Câmara dos Deputados"
+  },
   {
    "id": "n-6e9c3f78e3",
    "titulo": "Pediatras alertam para riscos de brinquedos com IA",
@@ -29242,16 +30019,6 @@
    "nos": [],
    "pessoas": [],
    "resumo": "A agenda será às 17h da segunda-feira (27/07), no Palácio Itamaraty"
-  },
-  {
-   "id": "n-aa378a9173",
-   "titulo": "Presidente da República participa de encontro com lideranças do sistema de ciência e tecnologia no Brasil",
-   "url": "https://www.gov.br/planalto/pt-br/acompanhe-o-planalto/noticias/presidente-da-republica-participa-de-encontro-com-liderancas-do-sistema-de-ciencia-e-tecnologia-no-brasil",
-   "data": "2026-07-23T17:21:00+00:00",
-   "fonte": "planalto",
-   "nos": [],
-   "pessoas": [],
-   "resumo": "A agenda será às 14h desta sexta-feira (24/07), em São Paulo"
   }
  ]
 }
