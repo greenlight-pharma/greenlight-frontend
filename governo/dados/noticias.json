@@ -1,6 +1,6 @@
 {
  "meta": {
-  "gerado_em": "2026-10-23T14:52+00:00",
+  "gerado_em": "2026-10-24T13:56+00:00",
   "gerado_por": "scripts/governo/agentes/agente_noticias.py",
   "janela_dias": 90,
   "fontes": [
@@ -30,37 +30,37 @@
     "url": "https://www.gov.br/planalto/pt-br/acompanhe-o-planalto/noticias/RSS"
    }
   ],
-  "total_artigos": 2669,
-  "artigos_com_no": 904,
-  "novos_nesta_rodada": 80,
+  "total_artigos": 2709,
+  "artigos_com_no": 923,
+  "novos_nesta_rodada": 52,
   "artigos_por_fonte": {
-   "camara": 607,
-   "agenciabrasil": 1121,
-   "senado": 911,
+   "agenciabrasil": 1145,
+   "senado": 923,
+   "camara": 612,
    "stf": 7,
-   "planalto": 23
+   "planalto": 22
   },
   "ordem": "peso igual por fonte; contagem real de matérias",
   "resumo_por": "claude"
  },
  "resumo": [
   {
-   "texto": "O Supremo Tribunal Federal decidiu que o ISS não integra a base de cálculo do PIS e da Cofins, com impacto estimado de R$ 35 bilhões nas contas federais.",
-   "artigo_id": "n-2f586ecd8b",
+   "texto": "O ministro Alexandre de Moraes, do Supremo Tribunal Federal, determinou o bloqueio de até R$ 6 bilhões do advogado Willer Tomaz, além da quebra de sigilos bancário, fiscal e cambial e da suspensão de passaportes.",
+   "artigo_id": "n-d8fdbeac30",
    "no_id": "stf"
   },
   {
-   "texto": "O Conselho Monetário Nacional e o Banco Central aprovaram mudanças nas regras de compartilhamento de dados do Open Finance.",
+   "texto": "Medida provisória liberou R$ 300 milhões para ações de resposta e recuperação da Defesa Civil em áreas atingidas por eventos climáticos extremos.",
+   "artigo_id": "n-67d682cafb",
+   "no_id": "midr"
+  },
+  {
+   "texto": "O Conselho Monetário Nacional e o Banco Central aprovaram mudanças nas regras de compartilhamento de dados do Open Finance, com novos requisitos de segurança e transparência.",
    "artigo_id": "n-795baebfd6",
    "no_id": "cmn"
   },
   {
-   "texto": "O Congresso Nacional analisa a Medida Provisória 1397/26, que abre crédito extraordinário de R$ 6,5 bilhões para setores atingidos pelas tarifas dos Estados Unidos.",
-   "artigo_id": "n-3abdc077f3",
-   "no_id": "congresso"
-  },
-  {
-   "texto": "O Tribunal Superior Eleitoral deu prazo de 24 horas para que Meta e X expliquem a remoção de publicações e a distribuição de conteúdo político.",
+   "texto": "O corregedor-geral da Justiça Eleitoral, ministro Ricardo Villas Bôas Cueva, deu prazo de 24 horas para Meta e X explicarem a remoção e a distribuição de conteúdos políticos.",
    "artigo_id": "n-b2ea286ab5",
    "no_id": "tse"
   }
@@ -69,182 +69,182 @@
   "orgaos": [
    {
     "id": "tse",
-    "artigos": 215,
-    "peso": 108.56641645023596,
-    "ultima": "2026-10-23T14:05+00:00"
+    "artigos": 226,
+    "peso": 113.553414150854,
+    "ultima": "2026-10-24T12:49+00:00"
    },
    {
     "id": "stf",
-    "artigos": 127,
-    "peso": 63.84205963937461,
-    "ultima": "2026-10-22T23:49+00:00"
+    "artigos": 129,
+    "peso": 64.52622993071155,
+    "ultima": "2026-10-24T00:56+00:00"
    },
    {
     "id": "congresso",
     "artigos": 83,
-    "peso": 48.969807681322145,
+    "peso": 49.01553286881285,
     "ultima": "2026-10-21T18:59+00:00"
    },
    {
     "id": "camara",
-    "artigos": 77,
-    "peso": 43.2520640286086,
-    "ultima": "2026-10-22T18:59:00+00:00"
+    "artigos": 78,
+    "peso": 43.85112605089728,
+    "ultima": "2026-10-23T19:20:00+00:00"
    },
    {
     "id": "prf",
     "artigos": 13,
-    "peso": 29.03264694233255,
+    "peso": 30.41933714603251,
     "ultima": "2026-10-13T18:15+00:00"
    },
    {
     "id": "mte",
     "artigos": 7,
-    "peso": 26.065787534421904,
+    "peso": 27.46639936482731,
     "ultima": "2026-10-21T19:47+00:00"
    },
    {
     "id": "pf",
-    "artigos": 53,
-    "peso": 25.896250113833194,
-    "ultima": "2026-10-21T19:47+00:00"
+    "artigos": 54,
+    "peso": 26.235006599894973,
+    "ultima": "2026-10-24T00:56+00:00"
    },
    {
     "id": "inpe",
     "artigos": 4,
-    "peso": 24.637241593297908,
+    "peso": 26.046836046050018,
     "ultima": "2026-10-21T17:41+00:00"
    },
    {
     "id": "caixa",
-    "artigos": 43,
-    "peso": 20.475825156110613,
-    "ultima": "2026-10-23T00:44+00:00"
+    "artigos": 44,
+    "peso": 20.82026200873363,
+    "ultima": "2026-10-24T11:32+00:00"
    },
    {
     "id": "anvisa",
     "artigos": 37,
-    "peso": 18.4610283154137,
+    "peso": 18.375298517577033,
     "ultima": "2026-10-22T19:31:00+00:00"
    },
    {
     "id": "mec",
     "artigos": 34,
-    "peso": 18.278002354741243,
+    "peso": 18.235192462844797,
     "ultima": "2026-10-18T12:01+00:00"
+   },
+   {
+    "id": "inss",
+    "artigos": 22,
+    "peso": 14.205364566620805,
+    "ultima": "2026-10-24T12:43+00:00"
    },
    {
     "id": "agu",
     "artigos": 29,
-    "peso": 13.919044956527953,
+    "peso": 13.836256558497773,
     "ultima": "2026-10-21T10:28+00:00"
    },
    {
-    "id": "inss",
-    "artigos": 21,
-    "peso": 13.700536365472427,
-    "ultima": "2026-10-20T19:08:00+00:00"
-   },
-   {
     "id": "ms",
-    "artigos": 24,
-    "peso": 12.380430096205709,
-    "ultima": "2026-10-20T19:15+00:00"
+    "artigos": 25,
+    "peso": 12.81085638611848,
+    "ultima": "2026-10-23T17:53+00:00"
    },
    {
     "id": "ibge",
     "artigos": 25,
-    "peso": 12.014317035029292,
+    "peso": 11.943505466794718,
     "ultima": "2026-10-23T13:42+00:00"
    },
    {
     "id": "petrobras",
     "artigos": 23,
-    "peso": 11.281488125605273,
+    "peso": 11.224752208244425,
     "ultima": "2026-10-15T23:23+00:00"
    },
    {
     "id": "tcu",
     "artigos": 19,
-    "peso": 11.171117812871433,
+    "peso": 11.180514098839513,
     "ultima": "2026-10-20T22:48+00:00"
    },
    {
     "id": "senado",
     "artigos": 16,
-    "peso": 10.038261319397392,
+    "peso": 10.043642435139994,
     "ultima": "2026-10-21T16:33+00:00"
    },
    {
     "id": "anp",
     "artigos": 18,
-    "peso": 9.742873265283029,
+    "peso": 9.72616426293937,
     "ultima": "2026-10-15T23:42:00+00:00"
    },
    {
     "id": "inep",
     "artigos": 19,
-    "peso": 9.047457627118643,
+    "peso": 8.99056768558952,
     "ultima": "2026-10-22T17:17+00:00"
    },
    {
     "id": "tst",
     "artigos": 16,
-    "peso": 8.570974253208385,
+    "peso": 8.55216642978661,
     "ultima": "2026-10-16T16:31+00:00"
    },
    {
     "id": "mpf",
     "artigos": 17,
-    "peso": 8.204861192031968,
+    "peso": 8.15800328338861,
     "ultima": "2026-10-21T19:47+00:00"
    },
    {
     "id": "stj",
     "artigos": 12,
-    "peso": 6.6304011679595565,
+    "peso": 6.616277108202377,
     "ultima": "2026-10-16T23:00+00:00"
+   },
+   {
+    "id": "ebc",
+    "artigos": 10,
+    "peso": 4.731877729257642,
+    "ultima": "2026-10-24T11:15+00:00"
    },
    {
     "id": "inmet",
     "artigos": 10,
-    "peso": 4.761819803746654,
+    "peso": 4.731877729257642,
     "ultima": "2026-10-23T12:06+00:00"
    },
    {
     "id": "cnj",
     "artigos": 9,
-    "peso": 4.395405349034645,
+    "peso": 4.372501099982495,
     "ultima": "2026-10-07T19:31+00:00"
    },
    {
     "id": "anatel",
     "artigos": 8,
-    "peso": 4.322448307560437,
+    "peso": 4.311419671778025,
     "ultima": "2026-10-14T12:53+00:00"
-   },
-   {
-    "id": "ebc",
-    "artigos": 9,
-    "peso": 4.285637823371989,
-    "ultima": "2026-10-22T17:22+00:00"
    },
    {
     "id": "aeronautica",
     "artigos": 8,
-    "peso": 4.028990894322636,
+    "peso": 4.013124470707347,
     "ultima": "2026-10-21T19:41:00+00:00"
    },
    {
     "id": "cvm",
     "artigos": 7,
-    "peso": 3.736498801523116,
+    "peso": 3.7244207552016437,
     "ultima": "2026-09-27T18:52+00:00"
    },
    {
     "id": "anac",
     "artigos": 6,
-    "peso": 3.5896193981364193,
+    "peso": 3.592666413227731,
     "ultima": "2026-10-17T00:03+00:00"
    }
   ],
@@ -260,9 +260,9 @@
     "uf": null,
     "foto": "https://commons.wikimedia.org/wiki/Special:FilePath/Foto_oficial_de_Luiz_In%C3%A1cio_Lula_da_Silva_%28estreita%29.jpg?width=160",
     "foto_fonte": "https://www.wikidata.org/wiki/Q37181",
-    "artigos": 166,
-    "peso": 104.85444516695996,
-    "ultima": "2026-10-23T14:05+00:00"
+    "artigos": 178,
+    "peso": 111.78023929865859,
+    "ultima": "2026-10-24T13:42+00:00"
    },
    {
     "id": "flavio-bolsonaro",
@@ -275,9 +275,9 @@
     "uf": "RJ",
     "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador5894.jpg",
     "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/5894",
-    "artigos": 95,
-    "peso": 46.005660815231735,
-    "ultima": "2026-10-23T13:04+00:00"
+    "artigos": 103,
+    "peso": 49.76264090420924,
+    "ultima": "2026-10-24T13:42+00:00"
    },
    {
     "id": "davi-alcolumbre",
@@ -291,7 +291,7 @@
     "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador3830.jpg",
     "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/3830",
     "artigos": 49,
-    "peso": 27.907307952439968,
+    "peso": 27.923130676807176,
     "ultima": "2026-10-21T12:29:00+00:00"
    },
    {
@@ -305,9 +305,9 @@
     "uf": null,
     "foto": "https://commons.wikimedia.org/wiki/Special:FilePath/Nunes_Marques%2C_February_2025_%28cropped%29.jpg?width=160",
     "foto_fonte": "https://www.wikidata.org/wiki/Q99831978",
-    "artigos": 51,
-    "peso": 24.943886153083866,
-    "ultima": "2026-10-22T19:25+00:00"
+    "artigos": 53,
+    "peso": 25.875629970619833,
+    "ultima": "2026-10-23T23:48+00:00"
    },
    {
     "id": "damares-alves",
@@ -320,9 +320,9 @@
     "uf": "DF",
     "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador6335.jpg",
     "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/6335",
-    "artigos": 34,
-    "peso": 19.922283205268922,
-    "ultima": "2026-10-23T12:30:00+00:00"
+    "artigos": 35,
+    "peso": 20.54496208017333,
+    "ultima": "2026-10-23T19:09:00+00:00"
    },
    {
     "id": "hugo-motta",
@@ -336,7 +336,7 @@
     "foto": "https://www.camara.leg.br/internet/deputado/bandep/160674.jpg",
     "foto_fonte": "https://www.camara.leg.br/deputados/160674",
     "artigos": 23,
-    "peso": 17.072249959624504,
+    "peso": 17.15119040787434,
     "ultima": "2026-10-21T17:29+00:00"
    },
    {
@@ -351,7 +351,7 @@
     "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador825.jpg",
     "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/825",
     "artigos": 20,
-    "peso": 11.609222595083775,
+    "peso": 11.626167187877005,
     "ultima": "2026-10-22T17:02:00+00:00"
    },
    {
@@ -366,8 +366,23 @@
     "foto": "https://commons.wikimedia.org/wiki/Special:FilePath/Luiz_Edson_Fachin-12-05.2015.jpg?width=160",
     "foto_fonte": "https://www.wikidata.org/wiki/Q10320705",
     "artigos": 22,
-    "peso": 10.695538619567952,
+    "peso": 10.637753291668044,
     "ultima": "2026-10-21T17:19+00:00"
+   },
+   {
+    "id": "astronauta-marcos-pontes",
+    "nome": "Astronauta Marcos Pontes",
+    "nome_completo": "Marcos Cesar Pontes",
+    "cargo": "Senador, SP",
+    "no_id": "senado",
+    "poder": "legislativo",
+    "partido": "PL",
+    "uf": "SP",
+    "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador6009.jpg",
+    "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/6009",
+    "artigos": 14,
+    "peso": 8.21798483206934,
+    "ultima": "2026-10-23T20:44:00+00:00"
    },
    {
     "id": "mara-gabrilli",
@@ -381,23 +396,8 @@
     "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador5376.jpg",
     "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/5376",
     "artigos": 13,
-    "peso": 7.617343578485181,
+    "peso": 7.630985915492958,
     "ultima": "2026-10-21T12:02:00+00:00"
-   },
-   {
-    "id": "astronauta-marcos-pontes",
-    "nome": "Astronauta Marcos Pontes",
-    "nome_completo": "Marcos Cesar Pontes",
-    "cargo": "Senador, SP",
-    "no_id": "senado",
-    "poder": "legislativo",
-    "partido": "PL",
-    "uf": "SP",
-    "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador6009.jpg",
-    "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/6009",
-    "artigos": 13,
-    "peso": 7.617343578485181,
-    "ultima": "2026-10-21T11:36:00+00:00"
    },
    {
     "id": "omar-aziz",
@@ -411,7 +411,7 @@
     "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador5525.jpg",
     "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/5525",
     "artigos": 13,
-    "peso": 7.507576052822525,
+    "peso": 7.517174771842341,
     "ultima": "2026-10-21T11:00+00:00"
    },
    {
@@ -426,7 +426,7 @@
     "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador345.jpg",
     "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/345",
     "artigos": 11,
-    "peso": 6.445444566410537,
+    "peso": 6.456988082340195,
     "ultima": "2026-10-19T12:30:00+00:00"
    },
    {
@@ -441,7 +441,7 @@
     "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador5990.jpg",
     "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/5990",
     "artigos": 10,
-    "peso": 5.859495060373216,
+    "peso": 5.869989165763814,
     "ultima": "2026-10-19T12:58:00+00:00"
    },
    {
@@ -456,7 +456,7 @@
     "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador4770.jpg",
     "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/4770",
     "artigos": 10,
-    "peso": 5.859495060373216,
+    "peso": 5.869989165763814,
     "ultima": "2026-10-09T21:56:00+00:00"
    },
    {
@@ -471,7 +471,7 @@
     "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador5352.jpg",
     "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/5352",
     "artigos": 10,
-    "peso": 5.859495060373216,
+    "peso": 5.869989165763814,
     "ultima": "2026-09-14T16:27:00+00:00"
    },
    {
@@ -486,7 +486,7 @@
     "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador475.jpg",
     "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/475",
     "artigos": 9,
-    "peso": 5.273545554335894,
+    "peso": 5.282990249187432,
     "ultima": "2026-10-22T20:10:00+00:00"
    },
    {
@@ -501,7 +501,7 @@
     "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador6338.jpg",
     "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/6338",
     "artigos": 9,
-    "peso": 5.273545554335894,
+    "peso": 5.282990249187432,
     "ultima": "2026-10-19T15:16:00+00:00"
    },
    {
@@ -516,7 +516,7 @@
     "foto": null,
     "foto_fonte": null,
     "artigos": 10,
-    "peso": 4.981354855071967,
+    "peso": 4.959500016558876,
     "ultima": "2026-10-22T23:49+00:00"
    },
    {
@@ -531,8 +531,23 @@
     "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador5917.jpg",
     "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/5917",
     "artigos": 8,
-    "peso": 4.687596048298572,
+    "peso": 4.695991332611051,
     "ultima": "2026-10-08T21:29:00+00:00"
+   },
+   {
+    "id": "alan-rick",
+    "nome": "Alan Rick",
+    "nome_completo": "Alan Rick Miranda",
+    "cargo": "Senador, AC",
+    "no_id": "senado",
+    "poder": "legislativo",
+    "partido": "REPUBLICANOS",
+    "uf": "AC",
+    "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador5672.jpg",
+    "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/5672",
+    "artigos": 8,
+    "peso": 4.582180188960434,
+    "ultima": "2026-10-23T15:50:00+00:00"
    },
    {
     "id": "camilo-santana",
@@ -546,7 +561,7 @@
     "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador6336.jpg",
     "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/6336",
     "artigos": 8,
-    "peso": 4.468060996973261,
+    "peso": 4.468369045309816,
     "ultima": "2026-10-22T18:33+00:00"
    },
    {
@@ -561,23 +576,8 @@
     "foto": "https://www.camara.leg.br/internet/deputado/bandep/220645.jpg",
     "foto_fonte": "https://www.camara.leg.br/deputados/220645",
     "artigos": 8,
-    "peso": 4.322448307560437,
+    "peso": 4.311419671778024,
     "ultima": "2026-10-05T17:44+00:00"
-   },
-   {
-    "id": "andre-janones",
-    "nome": "André Janones",
-    "nome_completo": "André Janones",
-    "cargo": "Deputado(a) federal, MG",
-    "no_id": "camara",
-    "poder": "legislativo",
-    "partido": "REDE",
-    "uf": "MG",
-    "foto": "https://www.camara.leg.br/internet/deputado/bandep/204515.jpg",
-    "foto_fonte": "https://www.camara.leg.br/deputados/204515",
-    "artigos": 9,
-    "peso": 4.285637823371989,
-    "ultima": "2026-10-23T01:02+00:00"
    },
    {
     "id": "reginaldo-lopes",
@@ -591,27 +591,525 @@
     "foto": "https://www.camara.leg.br/internet/deputado/bandep/74161.jpg",
     "foto_fonte": "https://www.camara.leg.br/deputados/74161",
     "artigos": 7,
-    "peso": 4.285336429836397,
+    "peso": 4.29347647345473,
     "ultima": "2026-10-19T11:19+00:00"
    },
    {
-    "id": "leany-lemos",
-    "nome": "Leany Lemos",
-    "nome_completo": "Leany Barreiro de Sousa Lemos",
-    "cargo": "Senadora, DF",
-    "no_id": "senado",
+    "id": "andre-janones",
+    "nome": "André Janones",
+    "nome_completo": "André Janones",
+    "cargo": "Deputado(a) federal, MG",
+    "no_id": "camara",
     "poder": "legislativo",
-    "partido": "PSB",
-    "uf": "DF",
-    "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador5977.jpg",
-    "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/5977",
-    "artigos": 7,
-    "peso": 4.101646542261251,
-    "ultima": "2026-10-22T20:24:00+00:00"
+    "partido": "REDE",
+    "uf": "MG",
+    "foto": "https://www.camara.leg.br/internet/deputado/bandep/204515.jpg",
+    "foto_fonte": "https://www.camara.leg.br/deputados/204515",
+    "artigos": 9,
+    "peso": 4.258689956331877,
+    "ultima": "2026-10-23T01:02+00:00"
    }
   ]
  },
  "artigos": [
+  {
+   "id": "n-8ce1f7d994",
+   "titulo": "Confira a agenda dos presidenciáveis neste sábado (24)",
+   "url": "https://agenciabrasil.ebc.com.br/politica/noticia/2026-10/confira-agenda-dos-presidenciaveis-neste-sabado-25",
+   "data": "2026-10-24T13:42+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [],
+   "pessoas": [
+    "luiz-inacio-lula-da-silva",
+    "flavio-bolsonaro"
+   ],
+   "resumo": "Neste sábado (24), último dia da campanha eleitoral, os candidatos à presidência da República Flávio Bolsonaro e Luiz Inácio Lula da Silva participam de atos em Minas Gerais, Rio de Janeiro e São Paulo. Confira as agendas: Flávio Bolsonaro (PL) Pela manhã, participa de ato em Belo Horizonte, no bairro Savassi. Na parte da tarde, estará no Rio de Janeiro, em evento na Barra da Tijuca. Luiz Inácio Lula da Silva (PT) Pela manhã, Lula participa de ato no Rio de Janeiro, em Copacabana. Encerra a campanha com caminha na parte da tarde na Avenida Paulista, em São Paulo."
+  },
+  {
+   "id": "n-12c962975c",
+   "titulo": "Saiba quais documentos são aceitos para votar neste domingo",
+   "url": "https://agenciabrasil.ebc.com.br/politica/noticia/2026-10/saiba-quais-documentos-sao-aceitos-para-votar-neste-domingo",
+   "data": "2026-10-24T13:21+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "Em todo o Brasil, 158 milhões de pessoas vão retornar às urnas neste domingo (25) para escolher quem será o chefe do Poder Executivo de 2027 a 2030. Além do cargo de presidente da República, em cinco estados e o Distrito Federal terão disputa para governador. Para ter direito a votar, o eleitor deve comparecer a uma das 499 mil seções eleitorais e apresentar um documento oficial com foto. São aceitos como documento de identificação, inclusive em formato digital: e-Título (desde que apareça a foto do eleitor no aplicativo) carteira de identidade identidade social passaporte carteira de categori"
+  },
+  {
+   "id": "n-b761df2d4b",
+   "titulo": "Último dia para qualquer tipo de propaganda eleitoral é neste sábado",
+   "url": "https://agenciabrasil.ebc.com.br/politica/noticia/2026-10/ultimo-dia-para-qualquer-tipo-de-propaganda-eleitoral-e-neste-sabado",
+   "data": "2026-10-24T12:59+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "Na reta final do segundo turno das Eleições de 2026, os candidatos só poderão fazer campanha eleitoral até as 22h deste sábado (24). A partir deste horário ficam proibidos o uso de alto-falantes ou amplificadores de som; a distribuição de material gráfico; e a promoção de caminhada, carreata, passeata ou carro de som que transite divulgando jingles ou mensagens de candidatos. Além disso, até 24 horas depois do fim do pleito estão vedadas a publicação e a republicação de novos conteúdos produzidos ou alterados por inteligência artificial ou tecnologia equivalente, que use imagem, voz ou manifes"
+  },
+  {
+   "id": "n-bdfda8252d",
+   "titulo": "Flávio defende inocência do único acusado pela morte de Ana Clara",
+   "url": "https://agenciabrasil.ebc.com.br/politica/noticia/2026-10/flavio-defende-inocencia-do-unico-acusado-pela-morte-de-ana-clara",
+   "data": "2026-10-24T12:49+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [
+    "tse"
+   ],
+   "pessoas": [
+    "luiz-inacio-lula-da-silva",
+    "flavio-bolsonaro"
+   ],
+   "resumo": "Os candidatos à Presidência da República Luiz Inácio Lula da Silva (PT) e Flávio Bolsonaro (PL) discutiram segurança pública no debate da TV Globo, na noite desta sexta-feira (23). Questionado por Lula sobre os motivos de ter defendido o policial acusado pelo Ministério Público de matar a menina Ana Clara, de 5 anos, em 2021, Flávio afirmou que acredita na inocência do cabo da Polícia Militar (PM) do Rio de Janeiro. Notícias relacionadas: Caso Ana Clara: ativistas protestam no TSE contra decisão de Mendonça. Mendonça reitera que Lula e Flávio podem abrir sigilos por ato próprio. Meta diz ao TS"
+  },
+  {
+   "id": "n-33a3883b0f",
+   "titulo": "BB capacitará funcionários para acolher mulheres em risco",
+   "url": "https://agenciabrasil.ebc.com.br/direitos-humanos/noticia/2026-10/bb-capacitara-funcionarios-para-acolher-mulheres-em-risco",
+   "data": "2026-10-24T12:43+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [
+    "inss"
+   ],
+   "pessoas": [],
+   "resumo": "Mulheres que procurarem ajuda em agências do Banco do Brasil (BB) ao enfrentar situações de violência poderão ser acolhidas por funcionários capacitados e receber orientações. A instituição também prevê divulgar informações sobre denúncia e atendimento em aplicativos, canais eletrônicos e telas de terminais de autoatendimento (TAA). Notícias relacionadas: INSS pagará benefício a mulheres afastadas por violência doméstica. Programa Marielle Franco abre edital para apoiar mulheres negras. Com alta da violência política no Brasil, mulheres são maiores vítimas. A iniciativa faz parte de acordo nac"
+  },
+  {
+   "id": "n-72ef216459",
+   "titulo": "Mega-Sena sorteia prêmio acumulado em R$ 230 milhões neste sábado",
+   "url": "https://agenciabrasil.ebc.com.br/geral/noticia/2026-10/mega-sena-sorteia-premio-acumulado-em-r-230-milhoes-neste-sabado",
+   "data": "2026-10-24T11:32+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [
+    "caixa"
+   ],
+   "pessoas": [],
+   "resumo": "A Mega-Sena sorteia neste sábado (24) prêmio estimado em R$ 230milhões. As seis dezenas do concurso 3.074 serão sorteadas a partir das 21h (horário de Brasília) no Espaço da Sorte, em São Paulo. As apostas podem ser feitas até as 20h (horário de Brasília), em qualquer lotérica do país ou pela internet, no site ou aplicativo da Caixa. Notícias relacionadas: Mega-Sena acumula para R$ 230 milhões; confira os números sorteados. Caixa Loterias anuncia antecipação de sorteios para sábado. A aposta simples, com seis dezenas, custa R$ 6. A Caixa Loterias anunciou a antecipação para sábado dos sorteios"
+  },
+  {
+   "id": "n-d1e44b0078",
+   "titulo": "Rádio Nacional transmite neste sábado Internacional x Botafogo",
+   "url": "https://agenciabrasil.ebc.com.br/esportes/noticia/2026-10/radio-nacional-transmite-neste-sabado-internacional-x-botafogo",
+   "data": "2026-10-24T11:15+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [
+    "ebc"
+   ],
+   "pessoas": [],
+   "resumo": "Neste sábado (24), as ondas da Rádio Nacional transmitem ao vivo o confronto entre Internacional e Botafogo pela 32ª rodada do Campeonato Brasileiro Série A Masculino 2026. As equipes se enfrentam no Estádio Beira-Rio, em Porto Alegre a partir das 16h. O Internacional abre a zona de rebaixamento com 32 pontos e aposta na força da sua torcida para conquistar os três pontos e deixar o Z-4. Do outro lado, o Botafogo vive a reta final do Brasileirão focado em garantir uma vaga nas competições sul-americanas; o clube carioca ocupa a 11ª posição, com 39 pontos. Notícias relacionadas: EBC tem três fi"
+  },
+  {
+   "id": "n-00c0326774",
+   "titulo": "Saiba como votar usando o aplicativo e-Título do TSE",
+   "url": "https://agenciabrasil.ebc.com.br/politica/noticia/2026-10/saiba-como-votar-usando-o-aplicativo-e-titulo-do-tse",
+   "data": "2026-10-24T11:12+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [
+    "tse"
+   ],
+   "pessoas": [],
+   "resumo": "Para exercer o direito ao voto no segundo turno neste domingo (25), os eleitores poderão utilizar o e-Título, a versão digital do título de eleitor. O app pode ser utilizado desde que ele contenha a foto do eleitor. Apesar do uso não ser obrigatório, o aplicativo facilita o acesso às informações mais importantes no dia da votação. Notícias relacionadas: 2º turno: 130 mil eleitores de 22 estados votarão em local diferente . Eleições: quem não votou no primeiro turno pode participar do segundo. Eleitor sem biometria pode votar no segundo turno das eleições. Baixe o e-Título para iOS Baixe o e-Tí"
+  },
+  {
+   "id": "n-44320a7126",
+   "titulo": "Candidatos trocam acusações e defendem propostas em debate na Globo",
+   "url": "https://agenciabrasil.ebc.com.br/politica/noticia/2026-10/candidatos-trocam-acusacoes-e-defendem-propostas-em-debate-na-globo",
+   "data": "2026-10-24T05:20+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [],
+   "pessoas": [
+    "luiz-inacio-lula-da-silva",
+    "flavio-bolsonaro"
+   ],
+   "resumo": "O debate na TV Globo entre Lula (PT) e Flávio Bolsonaro (PL) foi marcado por uma manifestação indignada do atual presidente após uma fala do adversário. Flávio afirmou que o presidente \"dá com uma mão e tira com nove dedos\". Lula perdeu o dedo mínimo da mão esquerda quando trabalhava como torneiro mecânico, em 1964, aos 17 anos. \"Ele disse uma grande asneira e eu não vou levar para casa. Ele me chamou de nove dedos. Se tem alguém que sabe o que é o mundo do trabalho sou eu. Se tem alguém que perdeu o dedo com 17 anos, fui eu. Não vou permitir que um miliciano me chame de nove dedos, não vou pe"
+  },
+  {
+   "id": "n-d8fdbeac30",
+   "titulo": "Moraes determina bloqueio de até R$ 6 bilhões do advogado Willer Tomaz",
+   "url": "https://agenciabrasil.ebc.com.br/justica/noticia/2026-10/moraes-determina-bloqueio-de-ate-r-6-bilhoes-do-advogado-willer-tomaz",
+   "data": "2026-10-24T00:56+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [
+    "stf",
+    "pf"
+   ],
+   "pessoas": [],
+   "resumo": "O ministro Alexandre de Moraes, do Supremo Tribunal Federal (STF), determinou nesta sexta-feira (23) o bloqueio de até R$ 6 bilhões do advogado Willer Tomaz. O ministro também ordenou quebra dos sigilos bancário, fiscal e cambial, além da suspensão dos passaportes e a paralisação das atividades econômicas, financeiras e empresariais de todas as empresas do advogado. Willer é investigado pela Polícia Federal (PF) por suspeitas de lavagem de dinheiro relacionado a negócios envolvendo bets. O valor bloqueado se refere a bens móveis, imóveis, aviões e barcos. As medidas foram tomadas pelo ministro"
+  },
+  {
+   "id": "n-00063c197d",
+   "titulo": "MPT apura carta de supermercado a funcionários com teor eleitoral",
+   "url": "https://agenciabrasil.ebc.com.br/justica/noticia/2026-10/mpt-apura-carta-de-supermercado-funcionarios-com-teor-eleitoral",
+   "data": "2026-10-24T00:42+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [
+    "mpt",
+    "tse"
+   ],
+   "pessoas": [
+    "luiz-inacio-lula-da-silva"
+   ],
+   "resumo": "O Ministério Público do Trabalho no Rio de Janeiro (MPT-RJ) informou nesta sexta-feira (23) que registrou uma Notícia de Fato (NF) para apurar o envio de uma carta pela rede de Supermercados Zona Sul a seus funcionários, às vésperas da eleição. No texto, a rede defende o \"voto consciente\" e mudança. Assinado pelo presidente da empresa, o documento “não cita nominalmente nenhum candidato, mas defende uma revisão de prioridades, posturas e modelos”. Notícias relacionadas: Sociedade civil manifesta preocupação ao TSE por censura nas redes. Meta diz ao TSE que Exército do Lula não viola políticas "
+  },
+  {
+   "id": "n-82d805f8d1",
+   "titulo": "Ministra rejeita ação que pedia transporte interestadual na eleição",
+   "url": "https://agenciabrasil.ebc.com.br/justica/noticia/2026-10/ministra-rejeita-acao-que-pedia-transporte-interestadual-na-eleicao",
+   "data": "2026-10-24T00:12+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [
+    "tse",
+    "stf"
+   ],
+   "pessoas": [
+    "luiz-inacio-lula-da-silva"
+   ],
+   "resumo": "A ministra Cármen Lúcia, do Supremo Tribunal Federal (STF), negou nesta sexta-feira (23) pedido protocolado pela campanha do candidato à reeleição Luiz Inácio Lula da Silva (PT) para estender a gratuidade de transporte público no segundo turno para viagens interestaduais. Na decisão, a ministra disse que a competência para decidir a questão é do Tribunal Superior Eleitoral (TSE). Além disso, Cármen ressaltou que seria inviável para o Supremo decidir a questão dois dias antes do pleito. Notícias relacionadas: Prefeituras e estados devem garantir transporte gratuito no 2° turno. Indígenas do Val"
+  },
+  {
+   "id": "n-5db791bcac",
+   "titulo": "Meta diz ao TSE que Exército do Lula não viola políticas da plataforma",
+   "url": "https://agenciabrasil.ebc.com.br/justica/noticia/2026-10/meta-diz-ao-tse-que-exercito-do-lula-nao-viola-politicas-da-plataforma",
+   "data": "2026-10-23T23:48+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [
+    "tse"
+   ],
+   "pessoas": [
+    "luiz-inacio-lula-da-silva",
+    "nunes-marques",
+    "flavio-bolsonaro"
+   ],
+   "resumo": "A Meta afirmou nesta sexta-feira (23) ao Tribunal Superior Eleitoral (STE) que não encontrou irregularidades no funcionamento do canal Exército do Lula, criado no WhatsApp para postagens de apoio ao candidato à reeleição Luiz Inácio Lula da Silva (PT). A manifestação da empresa, que opera as plataformas WhatsApp, Instagram e Facebook, foi solicitada pelo presidente do TSE, Kassio Nunes Marques, que determinou um pente-fino no canal após pedido do candidato Flávio Bolsonaro (PL). Notícias relacionadas: Ministro do TSE proíbe suspensão do canal Exército do Lula . Presidente do TSE pede à Meta re"
+  },
+  {
+   "id": "n-bf3e421c99",
+   "titulo": "BC reforça regras de proteção ao consumidor nas ofertas de crédito",
+   "url": "https://agenciabrasil.ebc.com.br/economia/noticia/2026-10/bc-reforca-regras-de-protecao-ao-consumidor-nas-ofertas-de-credito",
+   "data": "2026-10-23T22:31+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "As propagandas de empréstimos obedecerão a novas regras a partir do próximo ano, decidiu nesta sexta-feira (23) o Banco Central (BC). O órgão aprovou três resoluções para reforçar a proteção dos consumidores na contratação de crédito. As mudanças também criam um painel para consulta de dívidas e aumentam as exigências para a oferta de crédito durante transações pelo Pix. Notícias relacionadas: Portaria convoca instituições financeiras para 3ª fase do Desenrola. Dinheiro esquecido em bancos sobe para R$ 5,8 bilhões em agosto. Juros para famílias sobem em agosto e inadimplência chega a 6%. As me"
+  },
+  {
+   "id": "n-a71d252d84",
+   "titulo": "Sociedade civil manifesta preocupação ao TSE por censura nas redes",
+   "url": "https://agenciabrasil.ebc.com.br/politica/noticia/2026-10/sociedade-civil-manifesta-preocupacao-ao-tse-por-censura-nas-redes",
+   "data": "2026-10-23T22:03+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [
+    "tse"
+   ],
+   "pessoas": [
+    "luiz-inacio-lula-da-silva"
+   ],
+   "resumo": "Diversas entidades da sociedade civil entregaram nesta sexta-feira (23) uma nota pública ao Tribunal Superior Eleitoral (TSE) para demonstrar preocupação com riscos de censura pelas plataformas que operam as redes sociais. A manifestação foi assinada por 50 organizações sociais, movimentos populares e sindicatos que fazem parte do DiraCom – Direito à Comunicação e Democracia, entidade que atua na defesa do direito humano à comunicação. Notícias relacionadas: Caso Ana Clara: ativistas protestam no TSE contra decisão de Mendonça. Ministro do TSE proíbe suspensão do canal Exército do Lula . TSE d"
+  },
+  {
+   "id": "n-2dcd101ef8",
+   "titulo": "Dólar fecha abaixo de R$ 5 e recua 1,58% na semana",
+   "url": "https://agenciabrasil.ebc.com.br/economia/noticia/2026-10/dolar-fecha-abaixo-de-r-5-e-recua-158-na-semana",
+   "data": "2026-10-23T22:02+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "O dólar fechou abaixo de R$ 5 nesta sexta-feira (23), e a bolsa brasileira subiu no último dia útil antes do segundo turno das eleições presidenciais. O petróleo avançou mais de 3% , atingindo o maior patamar desde abril, com o agravamento das tensões no Oriente Médio. No mercado doméstico, investidores ajustaram posições antes da votação de domingo (25) , com as tensões geopolíticas no Oriente Médio impulsionando os preços da commodity no exterior. Notícias relacionadas: Economia da Argentina recua 1,7% em agosto sob risco de recessão. Receita abre consulta a lote residual do Imposto de Renda"
+  },
+  {
+   "id": "n-b362c3b887",
+   "titulo": "Caso Ana Clara: ativistas protestam no TSE contra decisão de Mendonça",
+   "url": "https://agenciabrasil.ebc.com.br/justica/noticia/2026-10/caso-ana-clara-ativistas-protestam-no-tse-contra-decisao-de-mendonca",
+   "data": "2026-10-23T21:40+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [
+    "tse"
+   ],
+   "pessoas": [
+    "flavio-bolsonaro"
+   ],
+   "resumo": "Cerca de 100 pessoas protestaram nesta sexta-feira (23) em Brasília contra decisão do ministro André Mendonça de suspender o impulsionamento pago de vídeo (de 2 minutos e 28 segundos) sobre o caso da menina Ana Clara em plataformas digitais. Ele atendeu a uma solicitação do candidato Flávio Bolsonaro . O ato ocorreu em frente ao Tribunal Superior Eleitoral (TSE) , instituição que tem Mendonça como vice-presidente. O ministro decidiu ainda que a campanha deveria se abster de contratar novos impulsionamentos da gravação, sob pena de multa de R$ 10 mil para cada alavancagem. Notícias relacionadas"
+  },
+  {
+   "id": "n-717fd99e38",
+   "titulo": "Mais Médicos Especialistas oferece 224 vagas imediatas em nova chamada",
+   "url": "https://agenciabrasil.ebc.com.br/saude/noticia/2026-10/mais-medicos-especialistas-oferece-224-vagas-imediatas-em-nova-chamada",
+   "data": "2026-10-23T21:04+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "As inscrições para a segunda chamada do 3º ciclo do Projeto Mais Médicos Especialistas (PMM-E) estão abertas até o dia 29 de outubro. Os interessados devem se inscrever pelo Portal da Universidade Aberta do Sistema Único de Saúde (UNA-SUS) . A estratégia busca incentivar a presença de especialistas em regiões historicamente desassistidas, com o objetivo de ampliar o acesso à atenção especializada no Sistema Único de Saúde (SUS) e reduzir o tempo de espera por consultas, exames e procedimentos. Distribuição de vagas Notícias relacionadas: Saúde inicia oferta de novos medicamentos oncológicos no"
+  },
+  {
+   "id": "n-a6c6eef2a4",
+   "titulo": "Áudio: Biossegurança: projeto traz regras para reduzir riscos em laboratórios",
+   "url": "https://www12.senado.leg.br/noticias/audios/2026/10/biosseguranca-projeto-traz-regras-para-reduzir-riscos-em-laboratorios",
+   "data": "2026-10-23T20:44:00+00:00",
+   "fonte": "senado",
+   "nos": [],
+   "pessoas": [
+    "astronauta-marcos-pontes"
+   ],
+   "resumo": "Para reduzir riscos de atividades com vírus, bactérias, toxinas e outros agentes biológicos, o senador Astronauta Marcos Pontes (PL-SP) apresentou projeto de lei que cria o Marco Legal da Biossegurança e Bioproteção (PL 5.358/2026). O texto apresenta diretrizes de produção, armazenamento, transporte e descarte de materiais biológicos, para instituições que vão desde universidades e laboratórios de diagnóstico médico até grandes centros de pesquisa tecnológica, sem engessar a liberdade científica."
+  },
+  {
+   "id": "n-2ca7d1c5c0",
+   "titulo": "Senado faz debate sobre fraudes em contratos administrativos na área de saúde",
+   "url": "https://www12.senado.leg.br/noticias/materias/2026/10/23/senado-faz-debate-sobre-fraudes-em-contratos-administrativos-na-area-de-saude",
+   "data": "2026-10-23T20:05:00+00:00",
+   "fonte": "senado",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "O Senado promove na tarde de quarta-feira (28) uma audiência pública sobre contratos administrativos na área da saúde feitos com cooperativas e Organizações Sociais. O senador Dr. Hiran (PP-RR), que solicitou o debate, afirma que há uma \"crescente ocorrência de fraudes\" nesses contratos. Ele também quer discutir o que chamou de \"precarização das relações de trabalho de todos os profissionais da saúde\". A audiência acontece na Comissão de Fiscalização e Controle do Senado (CTFC), logo após a reunião deliberativa desse colegiado — que está agendada para as 14h. Hiran, que é o presidente da CTFC,"
+  },
+  {
+   "id": "n-f0f9b89578",
+   "titulo": "Projeto cria política de incentivo à integração lavoura-pecuária-floresta",
+   "url": "https://www.camara.leg.br/noticias/1310455-projeto-cria-politica-de-incentivo-a-integracao-lavoura-pecuaria-floresta",
+   "data": "2026-10-23T19:28+00:00",
+   "fonte": "camara",
+   "nos": [],
+   "pessoas": [
+    "jose-medeiros"
+   ],
+   "resumo": "Kayo Magalhães/Câmara dos Deputados José Medeiros: ideia é aproveitar terras improdutivas, não abrir novas fronteiras agrícolas O Projeto de Lei 2968/26 institui a Política Nacional de Incentivo à Integração Lavoura-Pecuária-Floresta (ILPF). A proposta, do deputado José Medeiros (PL-MT), tem como objetivos: estimular a recuperação produtiva de áreas degradadas; promover práticas agropecuárias sustentáveis no país; aumentar a produtividade por hectare; reduzir a pressão por abertura de novas áreas nativas; e incentivar o uso racional do solo e dos recursos hídricos. O projeto também busca ampli"
+  },
+  {
+   "id": "n-818f4c6a27",
+   "titulo": "Veículos de Senado e Câmara farão cobertura integrada do segundo turno",
+   "url": "https://www12.senado.leg.br/noticias/materias/2026/10/23/veiculos-de-senado-e-camara-farao-cobertura-integrada-do-segundo-turno",
+   "data": "2026-10-23T19:20:00+00:00",
+   "fonte": "senado",
+   "nos": [
+    "camara",
+    "secom"
+   ],
+   "pessoas": [],
+   "resumo": "Os veículos de comunicação do Senado e da Câmara dos Deputados preparam uma nova cobertura integrada para acompanhar o segundo turno das Eleições 2026, marcado para este domingo (25). A programação terá boletins informativos de hora em hora, das 8h às 13h. A partir das 14h, começa a transmissão contínua, que seguirá até a conclusão da apuração dos resultados, com a participação de mais de 30 emissoras legislativas de TV e rádio de diferentes regiões do país. O coordenador-geral da Secretaria de Comunicação (Secom) do Senado, Ronaldo Martins, destaca que a participação das equipes de jornalismo"
+  },
+  {
+   "id": "n-aa28a47004",
+   "titulo": "Mendonça reitera que Lula e Flávio podem abrir sigilos por ato próprio",
+   "url": "https://agenciabrasil.ebc.com.br/justica/noticia/2026-10/mendonca-reitera-que-lula-e-flavio-podem-abrir-sigilos-por-ato-proprio",
+   "data": "2026-10-23T19:19+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [
+    "tse"
+   ],
+   "pessoas": [
+    "luiz-inacio-lula-da-silva",
+    "flavio-bolsonaro"
+   ],
+   "resumo": "O ministro André Mendonça, do Tribunal Superior Eleitoral (TSE), reiterou nesta sexta-feira (23) a decisão em que liberou as campanhas de Luiz Inácio Lula da Silva (PT) e Flávio Bolsonaro (PL) a divulgarem, por conta própria, seus sigilos bancários, fiscal e telefônico, conforme acordo assinado entre os candidatos. Na decisão, Mendonça disse que não cabe ao TSE fiscalizar “desafios” lançados pelas campanhas dos presidenciáveis. Notícias relacionadas: Mendonça diz que Flávio e Lula podem divulgar sigilos. Campanha de Lula apresenta acordo com Flávio para abrir sigilos. Ontem, Mendonça decidiu q"
+  },
+  {
+   "id": "n-be70447459",
+   "titulo": "Subcomissão avalia políticas públicas em execução na Terra Indígena Yanomami",
+   "url": "https://www12.senado.leg.br/noticias/materias/2026/10/23/subcomissao-avalia-politicas-publicas-em-execucao-na-terra-indigena-yanomami",
+   "data": "2026-10-23T19:09:00+00:00",
+   "fonte": "senado",
+   "nos": [],
+   "pessoas": [
+    "damares-alves"
+   ],
+   "resumo": "O Senado realiza nesta terça-feira (27), às 10h, audiência pública para avaliar a efetividade das ações do governo federal na Terra Indígena Yanomami. O debate abordará a implementação das Unidades Demonstrativas de Referência (UDR), as ações de proteção social básica e especial no âmbito do Sistema Único de Assistência Social (Suas) e o Plano de Recuperação Ambiental (PRA) na região. A audiência é promovida pela Subcomissão Permanente dos Povos Indígenas Yanomami, vinculada à Comissão de Direitos Humanos (CDH). O debate foi proposto pela senadora Damares Alves (Republicanos-DF), que preside a"
+  },
+  {
+   "id": "n-3880014bd9",
+   "titulo": "Vídeo: 2º turno: votação será mais rápida, mas ‘colinha’ de papel pode ajudar",
+   "url": "https://www12.senado.leg.br/noticias/videos/2026/10/2o-turno-votacao-sera-mais-rapida-mas-2018colinha2019-de-papel-pode-ajudar",
+   "data": "2026-10-23T18:57:00+00:00",
+   "fonte": "senado",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "Neste domingo (25), os eleitores vão às urnas para votar para presidente da República e, em alguns estados, para governador. Para cada eleitor, o processo de votação será mais rápido que no primeiro turno, mas a chamada \"colinha\" em papel pode ajudar. Assista ao vídeo."
+  },
+  {
+   "id": "n-e2ef11d182",
+   "titulo": "Segundo turno: acesso à Esplanada será controlado no domingo",
+   "url": "https://agenciabrasil.ebc.com.br/politica/noticia/2026-10/segundo-turno-acesso-esplanada-sera-controlado-no-domingo",
+   "data": "2026-10-23T18:42+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "O acesso à Esplanada dos Ministérios será controlado no domingo (25), quando ocorre o segundo turno das eleições gerais . Desde a noite de sábado (24), a circulação na área poderá sofrer alterações ao longo do dia, de acordo com informações do Governo do Distrito Federal (GDF) . O principal bloqueio ficará próximo à Catedral de Brasília, na altura das vias L2 Norte e L2 Sul. Grupos que pretendam promover manifestações ou comemorações políticas não poderão avançar para o interior da Esplanada. Notícias relacionadas: Eleições: saiba quais documentos são aceitos para votar no 2° turno. Eleitor se"
+  },
+  {
+   "id": "n-3f0a7cecd8",
+   "titulo": "Áudio: Senado recebe selo por preservação de residências oficiais",
+   "url": "https://www12.senado.leg.br/noticias/audios/2026/10/senado-recebe-selo-por-preservacao-de-residencias-oficiais",
+   "data": "2026-10-23T18:20:00+00:00",
+   "fonte": "senado",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "O Senado recebeu o selo do Conselho de Arquitetura e Urbanismo do Distrito Federal (CAU-DF) pela conservação de suas residências oficiais. Criado em 2020, o selo reconhece boas práticas de preservação da arquitetura moderna de Brasília. Um bloco de apartamentos funcionais ficou em primeiro lugar entre os imóveis avaliados em 2025 e recebeu o selo no início de 2026. As obras incluíram a troca de esquadrias, a organização dos aparelhos de ar-condicionado e a recuperação dos cobogós, preservando a identidade do prédio."
+  },
+  {
+   "id": "n-67d682cafb",
+   "titulo": "Áudio: Medida Provisória libera R$ 300 milhões para ações da Defesa Civil",
+   "url": "https://www12.senado.leg.br/noticias/audios/2026/10/medida-provisoria-libera-r-300-milhoes-para-acoes-da-defesa-civil",
+   "data": "2026-10-23T18:19:00+00:00",
+   "fonte": "senado",
+   "nos": [
+    "midr"
+   ],
+   "pessoas": [],
+   "resumo": "A Defesa Civil contará com um reforço de R$ 300 milhões para ações de resposta e recuperação em áreas atingidas por eventos climáticos extremos. Os recursos serão destinados a diferentes regiões do país afetadas por fenômenos como o El Niño. O montante foi liberado por meio da medida provisória (MP 1.398/2026), que destina crédito extraordinário ao Ministério da Integração e do Desenvolvimento Regional, no âmbito do programa Gestão de Riscos e de Desastres."
+  },
+  {
+   "id": "n-441582f483",
+   "titulo": "Áudio: Medida provisória destina R$ 6,5 bi a exportadores prejudicados por tarifas dos EUA",
+   "url": "https://www12.senado.leg.br/noticias/audios/2026/10/medida-provisoria-destina-r-6-5-bi-a-exportadores-prejudicados-por-tarifas-dos-eua",
+   "data": "2026-10-23T18:14:00+00:00",
+   "fonte": "senado",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "O governo federal editou nesta semana uma medida provisória — a MP 1.397/2026 — que abre crédito extraordinário de R$ 6,5 bilhões em favor do Fundo de Garantia à Exportação (FGE). Ouça ou áudio."
+  },
+  {
+   "id": "n-cefb154bc5",
+   "titulo": "Ministro do TSE proíbe suspensão do canal Exército do Lula",
+   "url": "https://agenciabrasil.ebc.com.br/justica/noticia/2026-10/ministro-do-tse-proibe-suspensao-do-canal-exercito-do-lula",
+   "data": "2026-10-23T18:11+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [
+    "tse"
+   ],
+   "pessoas": [
+    "luiz-inacio-lula-da-silva"
+   ],
+   "resumo": "O ministro Floriano de Azevedo Marques, do Tribunal Superior Eleitoral (TSE), decidiu nesta sexta-feira (23) que o canal Exército do Lula não poderá ser suspenso ou restringido novamente pela Corte. Segundo o ministro, somente o plenário pode decidir sobre eventual suspensão do canal. \"A partir do momento em que afetada a matéria ao colegiado, toda e qualquer decisão monocrática sobre o mesmo tema, notadamente às de natureza administrativa, padece de grave e incontornável vício de competência\", completou Floriano. Notícias relacionadas: Presidente do TSE pede à Meta relatório sobre canal Exérc"
+  },
+  {
+   "id": "n-a39f06e38e",
+   "titulo": "Projeto permite que professor da rede pública prepare aulas em casa",
+   "url": "https://www.camara.leg.br/noticias/1305735-projeto-permite-que-professor-da-rede-publica-prepare-aulas-em-casa",
+   "data": "2026-10-23T18:03+00:00",
+   "fonte": "camara",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "Texto está em análise na Câmara dos Deputados"
+  },
+  {
+   "id": "n-6c31770fab",
+   "titulo": "Desinformação faz com que só 5% das crianças sejam protegidas da covid",
+   "url": "https://agenciabrasil.ebc.com.br/saude/noticia/2026-10/desinformacao-faz-com-que-so-5-das-criancas-sejam-protegidas-da-covid",
+   "data": "2026-10-23T17:53+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [
+    "ms"
+   ],
+   "pessoas": [],
+   "resumo": "A covid-19 causou mais de 1 mil internações e 25 mortes de crianças e adolescentes no Brasil em 2026. Mesmo assim, apenas 5% das crianças pequenas do país estão protegidas com as três doses da vacina contra a doença, segundo o Programa Nacional de Imunizações (PNI), do Ministério da Saúde. O diretor do PNI, Eder Gatti, afirma que o país tem estoques do imunizante e contratos para manter o abastecimento em dia e atribui o percentual alarmante aos ataques contra a vacina feitos durante a pandemia, inclusive por membros do governo da época . Notícias relacionadas: Consultas por lesões pré-cancerí"
+  },
+  {
+   "id": "n-36d6afa556",
+   "titulo": "Barra do Corda afasta secretário por ameaça a eleitores do PT",
+   "url": "https://agenciabrasil.ebc.com.br/politica/noticia/2026-10/barra-do-corda-afasta-secretario-por-ameaca-eleitores-do-pt",
+   "data": "2026-10-23T17:24+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "O prefeito de Barra do Corda, no Maranhão, Rigo Alberto Teles de Sousa, determinou, na quinta-feira (22), o afastamento do secretário municipal de Segurança Pública, Antonio James Mota da Silva, até o fim das eleições. Em portaria , o prefeito afirma que a decisão foi motivada pelas declarações de James Mota que sugerem prisão e perseguição de eleitores e apoiadores do PT. Notícias relacionadas: Propaganda eleitoral gratuita termina nesta sexta-feira. Entidades estimulam domésticas a denunciar assédio eleitoral. Racismo e intolerância religiosa atravessam debate eleitoral no Brasil. “Durante o"
+  },
+  {
+   "id": "n-38cfb975f1",
+   "titulo": "Áudio: Eleitores voltam às urnas no domingo para definir o próximo presidente",
+   "url": "https://www12.senado.leg.br/noticias/audios/2026/10/eleitores-voltam-as-urnas-no-domingo-para-definir-o-proximo-presidente",
+   "data": "2026-10-23T17:16:00+00:00",
+   "fonte": "senado",
+   "nos": [
+    "tse"
+   ],
+   "pessoas": [
+    "luiz-inacio-lula-da-silva",
+    "nunes-marques",
+    "flavio-bolsonaro"
+   ],
+   "resumo": "O segundo turno da eleição presidencial será decidido neste domingo (25) entre o senador Flávio Bolsonaro (PL-RJ) e o atual presidente Luiz Inácio Lula da Silva (PT). No primeiro turno, Flávio recebeu 47,03% dos votos válidos, contra 45,16% de Lula. Cerca de 158,7 milhões de brasileiros estão aptos a votar. O presidente do Tribunal Superior Eleitoral, ministro Nunes Marques, afirma que a redução da abstenção, 21,08% no primeiro turno, é um dos desafios da Justiça Eleitoral no segundo turno."
+  },
+  {
+   "id": "n-6eaac905df",
+   "titulo": "Projeto cria recuperação judicial simplificada para pequenas dívidas",
+   "url": "https://www.camara.leg.br/noticias/1300663-projeto-cria-recuperacao-judicial-simplificada-para-pequenas-dividas",
+   "data": "2026-10-23T17:14+00:00",
+   "fonte": "camara",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "A Câmara dos Deputados analisa o assunto"
+  },
+  {
+   "id": "n-ec30490677",
+   "titulo": "Presidente e governadores eleitos tomam posse em novas datas em 2027",
+   "url": "https://www12.senado.leg.br/noticias/materias/2026/10/23/presidente-e-governadores-eleitos-tomam-posse-em-novas-datas-em-2027",
+   "data": "2026-10-23T17:11:00+00:00",
+   "fonte": "senado",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "A posse dos chefes dos Executivos federal e estaduais passa a ter novas datas em 2027. O presidente e o vice-presidente da República eleitos em 2026 serão empossados em 5 de janeiro. Os governadores e vice-governadores, em 6 de janeiro. A mudança foi estabelecida pela Emenda Constitucional 111, de 2021. Desde a promulgação da Constituição de 1988, a data de posse ocorria sempre no dia 1º de janeiro para esses cargos. Antes de 1988, os chefes do Executivo eram empossados em 15 de março. A posse dos chefes dos Executivos federal e estaduais em dias diferenciados possibilita aos novos governadore"
+  },
+  {
+   "id": "n-caae8a89a1",
+   "titulo": "Domingo é dia de votar: eleitores voltam às urnas para escolher presidente",
+   "url": "https://www12.senado.leg.br/noticias/materias/2026/10/23/domingo-e-dia-de-votar-eleitores-voltam-as-urnas-para-escolher-presidente",
+   "data": "2026-10-23T16:51:00+00:00",
+   "fonte": "senado",
+   "nos": [
+    "tse"
+   ],
+   "pessoas": [
+    "luiz-inacio-lula-da-silva",
+    "flavio-bolsonaro"
+   ],
+   "resumo": "Neste domingo (25), os 158 milhões de eleitores brasileiros poderão votar no segundo turno da eleição para Presidência da República. Os candidatos são Luiz Inácio Lula da Silva (PT), que busca a reeleição, e o senador Flávio Bolsonaro (PL). As propostas de governo dos dois candidatos estão disponíveis no portal do Tribunal Superior Eleitoral (TSE). Em cinco estados e no Distrito Federal, também haverá segundo turno para governador. Os locais de votação vão funcionar das 8h até as 17h, no horário de Brasília. Quem não votou no primeiro turno pode votar normalmente no domingo; basta levar um doc"
+  },
+  {
+   "id": "n-c618f195fb",
+   "titulo": "Projeto cria Rede Nacional de Proteção e Defesa dos Direitos Humanos das Pessoas Idosas",
+   "url": "https://www.camara.leg.br/noticias/1310180-projeto-cria-rede-nacional-de-protecao-e-defesa-dos-direitos-humanos-das-pessoas-idosas",
+   "data": "2026-10-23T16:30+00:00",
+   "fonte": "camara",
+   "nos": [
+    "mdhc"
+   ],
+   "pessoas": [
+    "laura-carneiro"
+   ],
+   "resumo": "Bruno Spada / Câmara dos Deputados Laura Carneiro: Brasil caminha para se tornar um país idoso O Projeto de Lei 3250/26 cria a Rede Nacional de Proteção e Defesa dos Direitos Humanos das Pessoas Idosas. A proposta estabelece mecanismos de articulação e cooperação entre União, estados, Distrito Federal e municípios para a proteção dos direitos dessa população. A Portaria 1.058/26, do Ministério dos Direitos Humanos e da Cidadania, instituiu a Rede Nacional de Proteção e Defesa dos Direitos Humanos das Pessoas Idosas. O objeto é dar caráter legal à norma. Pelo texto, a rede deverá promover a int"
+  },
+  {
+   "id": "n-f7dbedee7e",
+   "titulo": "Projeto reconhece cultivo de café como opção para reflorestamento na Amazônia Legal",
+   "url": "https://www.camara.leg.br/noticias/1309995-projeto-reconhece-cultivo-de-cafe-como-opcao-para-reflorestamento-na-amazonia-legal",
+   "data": "2026-10-23T15:59+00:00",
+   "fonte": "camara",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "Texto está em analise na Câmara dos Deputados"
+  },
+  {
+   "id": "n-06e979bf41",
+   "titulo": "Áudio: Área de livre comércio pode alcançar mais um município do Acre",
+   "url": "https://www12.senado.leg.br/noticias/audios/2026/10/area-de-livre-comercio-pode-alcancar-mais-um-municipio-do-acre",
+   "data": "2026-10-23T15:50:00+00:00",
+   "fonte": "senado",
+   "nos": [],
+   "pessoas": [
+    "alan-rick",
+    "sergio-petecao"
+   ],
+   "resumo": "Aguarda votação na Comissão de Desenvolvimento Regional e Turismo (CDR) do Senado projeto que estende a Área de Livre Comércio de Brasiléia ao município de Assis Brasil, no Acre. O PL 4.232/2025 foi apresentado pelo senador Sérgio Petecão (PSD-AC) e tem como relator o senador Alan Rick (Republicanos-AC). A iniciativa tem objetivo de estimular o comércio e o desenvolvimento econômico da região de fronteira com o Peru e a Bolívia. Se aprovada na CDR, a proposta seguirá para a Comissão de Assuntos Econômicos (CAE)."
+  },
+  {
+   "id": "n-dd71a46285",
+   "titulo": "ONS fará operação especial para garantir energia no segundo turno",
+   "url": "https://agenciabrasil.ebc.com.br/politica/noticia/2026-10/ons-fara-operacao-especial-para-garantir-energia-no-segundo-turno",
+   "data": "2026-10-23T14:53+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [],
+   "pessoas": [
+    "luiz-inacio-lula-da-silva"
+   ],
+   "resumo": "O Operador Nacional do Sistema Elétrico (ONS) adotará uma operação especial para reforçar a segurança do fornecimento de energia durante o segundo turno das eleições, neste domingo (25). O plano prevê restrições a manutenções e intervenções programadas com potencial de impacto sobre o Sistema Interligado Nacional (SIN), além do monitoramento intensificado da rede elétrica e das condições meteorológicas. Notícias relacionadas: Segundo turno: saiba como consultar local de votação para domingo. Direitos Humanos: planos de Lula e Flávio refletem diferença histórica. Racismo e intolerância religios"
+  },
   {
    "id": "n-5cdbc80982",
    "titulo": "Governo vai apresentar projeto de lei para perdoar dívidas dos setores de eventos, bares e restaurantes",
@@ -30801,16 +31299,6 @@
    "nos": [],
    "pessoas": [],
    "resumo": "A agenda será às 13h45 desta terça-feira (28/07), no Hospital do Andaraí"
-  },
-  {
-   "id": "n-f5199b77f8",
-   "titulo": "Presidente da República oferece recepção em homenagem ao presidente da Coreia do Sul, Lee Jae-Myung",
-   "url": "https://www.gov.br/planalto/pt-br/acompanhe-o-planalto/noticias/presidente-da-republica-oferece-recepcao-em-homenagem-ao-presidente-da-coreia-do-sul-lee-jae-myung",
-   "data": "2026-07-25T18:54:00+00:00",
-   "fonte": "planalto",
-   "nos": [],
-   "pessoas": [],
-   "resumo": "A agenda será às 17h da segunda-feira (27/07), no Palácio Itamaraty"
   }
  ]
 }
