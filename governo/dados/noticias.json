@@ -1,6 +1,6 @@
 {
  "meta": {
-  "gerado_em": "2026-10-26T16:44+00:00",
+  "gerado_em": "2026-10-27T15:52+00:00",
   "gerado_por": "scripts/governo/agentes/agente_noticias.py",
   "janela_dias": 90,
   "fontes": [
@@ -30,13 +30,13 @@
     "url": "https://www.gov.br/planalto/pt-br/acompanhe-o-planalto/noticias/RSS"
    }
   ],
-  "total_artigos": 2763,
-  "artigos_com_no": 949,
-  "novos_nesta_rodada": 71,
+  "total_artigos": 2827,
+  "artigos_com_no": 969,
+  "novos_nesta_rodada": 81,
   "artigos_por_fonte": {
-   "agenciabrasil": 1173,
-   "senado": 938,
-   "camara": 625,
+   "senado": 953,
+   "agenciabrasil": 1207,
+   "camara": 640,
    "stf": 7,
    "planalto": 20
   },
@@ -45,206 +45,206 @@
  },
  "resumo": [
   {
-   "texto": "O Tribunal Superior Eleitoral confirmou a reeleição de Luiz Inácio Lula da Silva no segundo turno, com 51,79% dos votos válidos, e o presidente da Corte, Kassio Nunes Marques, afirmou que o pleito ocorreu com segurança.",
-   "artigo_id": "n-6bc8ae82dd",
+   "texto": "O Tribunal Superior Eleitoral confirmou a reeleição de Luiz Inácio Lula da Silva para o mandato de 2027 a 2030, segundo o presidente da Corte, ministro Kassio Nunes Marques.",
+   "artigo_id": "n-539f7319c8",
    "no_id": "tse"
   },
   {
-   "texto": "O ministro Cristiano Zanin, do Supremo Tribunal Federal, prorrogou em duas horas o horário de votação, decisão contestada pelo senador Flávio Bolsonaro, que anunciou pedido de anulação das eleições.",
-   "artigo_id": "n-b50e709fdb",
+   "texto": "O ministro Alexandre de Moraes, do Supremo Tribunal Federal, proibiu o senador Flávio Bolsonaro de deixar o país e determinou a entrega dos passaportes à Polícia Federal.",
+   "artigo_id": "n-7f02367b87",
    "no_id": "stf"
   },
   {
-   "texto": "A Polícia Federal abriu inquérito para apurar se falhas na circulação de ônibus no dia do segundo turno prejudicaram o deslocamento de eleitores em Sergipe, São Paulo e outros estados.",
-   "artigo_id": "n-19899f0ef0",
-   "no_id": "pf"
+   "texto": "O Tribunal de Contas da União deve encaminhar ao Senado, até sexta-feira, a proposta de alíquota de referência da Contribuição sobre Bens e Serviços, que substituirá PIS/Pasep e Cofins.",
+   "artigo_id": "n-0d84b8e184",
+   "no_id": "tcu"
   },
   {
-   "texto": "A Força Nacional de Segurança Pública atuará com a Polícia Federal na fronteira com a Colômbia, em Tabatinga (AM), por 90 dias, conforme portaria publicada no Diário Oficial da União.",
-   "artigo_id": "n-cf12ec618f",
-   "no_id": "pf"
+   "texto": "O Ministério da Fazenda informou que o governo enviará ao Congresso Nacional medida provisória com as alíquotas do Imposto Seletivo e renovará por um mês a subvenção de R$ 2,12 por litro ao diesel.",
+   "artigo_id": "n-3bd831f69a",
+   "no_id": "congresso"
   }
  ],
  "ranking": {
   "orgaos": [
    {
     "id": "tse",
-    "artigos": 240,
-    "peso": 121.85660129982135,
-    "ultima": "2026-10-26T14:00+00:00"
+    "artigos": 242,
+    "peso": 122.4646507032363,
+    "ultima": "2026-10-27T00:38+00:00"
    },
    {
     "id": "stf",
-    "artigos": 139,
-    "peso": 69.73174056614975,
-    "ultima": "2026-10-26T14:34+00:00"
+    "artigos": 142,
+    "peso": 70.96831048781127,
+    "ultima": "2026-10-27T14:59+00:00"
    },
    {
     "id": "congresso",
-    "artigos": 85,
-    "peso": 50.13442755037379,
-    "ultima": "2026-10-26T02:31+00:00"
+    "artigos": 86,
+    "peso": 50.76227830577538,
+    "ultima": "2026-10-27T14:33+00:00"
    },
    {
     "id": "camara",
-    "artigos": 80,
-    "peso": 45.005594969980194,
-    "ultima": "2026-10-26T02:31+00:00"
+    "artigos": 82,
+    "peso": 46.402013786316516,
+    "ultima": "2026-10-26T22:13:00+00:00"
    },
    {
     "id": "prf",
     "artigos": 13,
-    "peso": 33.40122298627433,
+    "peso": 34.01605984155039,
     "ultima": "2026-10-13T18:15+00:00"
    },
    {
     "id": "mte",
     "artigos": 7,
-    "peso": 30.45659846547315,
+    "peso": 31.080604805302404,
     "ultima": "2026-10-21T19:47+00:00"
+   },
+   {
+    "id": "pf",
+    "artigos": 63,
+    "peso": 30.26045184134869,
+    "ultima": "2026-10-27T15:38+00:00"
    },
    {
     "id": "inpe",
     "artigos": 4,
-    "peso": 29.043299232736576,
+    "peso": 29.6753024026512,
     "ultima": "2026-10-21T17:41+00:00"
    },
    {
-    "id": "pf",
-    "artigos": 56,
-    "peso": 27.089742009717593,
-    "ultima": "2026-10-26T13:05+00:00"
-   },
-   {
     "id": "caixa",
-    "artigos": 45,
-    "peso": 21.199488491048598,
-    "ultima": "2026-10-25T10:18+00:00"
+    "artigos": 47,
+    "peso": 22.016404308202155,
+    "ultima": "2026-10-27T01:08+00:00"
    },
    {
     "id": "anvisa",
-    "artigos": 37,
-    "peso": 18.31585501415103,
-    "ultima": "2026-10-22T19:31:00+00:00"
+    "artigos": 39,
+    "peso": 19.18333552403087,
+    "ultima": "2026-10-26T21:40+00:00"
    },
    {
     "id": "mec",
     "artigos": 34,
-    "peso": 18.20078051423555,
+    "peso": 18.170572508293706,
     "ultima": "2026-10-18T12:01+00:00"
    },
    {
     "id": "inss",
     "artigos": 22,
-    "peso": 14.199824606307152,
+    "peso": 14.20937636082062,
     "ultima": "2026-10-24T12:43+00:00"
    },
    {
     "id": "agu",
     "artigos": 29,
-    "peso": 13.779918638448244,
+    "peso": 13.709440123240531,
     "ultima": "2026-10-21T10:28+00:00"
    },
    {
     "id": "ms",
     "artigos": 25,
-    "peso": 12.780684138532767,
+    "peso": 12.750107875937497,
     "ultima": "2026-10-23T17:53+00:00"
+   },
+   {
+    "id": "petrobras",
+    "artigos": 25,
+    "peso": 12.085404048263412,
+    "ultima": "2026-10-27T15:41+00:00"
    },
    {
     "id": "ibge",
     "artigos": 25,
-    "peso": 11.895519661466146,
+    "peso": 11.83570358637226,
     "ultima": "2026-10-23T13:42+00:00"
    },
    {
     "id": "tcu",
-    "artigos": 19,
-    "peso": 11.193328316110348,
-    "ultima": "2026-10-20T22:48+00:00"
-   },
-   {
-    "id": "petrobras",
-    "artigos": 23,
-    "peso": 11.189372283631169,
-    "ultima": "2026-10-15T23:23+00:00"
+    "artigos": 20,
+    "peso": 11.821742418199706,
+    "ultima": "2026-10-27T15:46:00+00:00"
    },
    {
     "id": "senado",
     "artigos": 16,
-    "peso": 10.015957442455242,
+    "peso": 9.98496634217067,
     "ultima": "2026-10-21T16:33+00:00"
    },
    {
     "id": "anp",
     "artigos": 18,
-    "peso": 9.719038039470169,
+    "peso": 9.72076939830918,
     "ultima": "2026-10-15T23:42:00+00:00"
    },
    {
     "id": "inep",
     "artigos": 19,
-    "peso": 8.950895140664963,
+    "peso": 8.900248550124276,
     "ultima": "2026-10-22T17:17+00:00"
    },
    {
     "id": "tst",
     "artigos": 16,
-    "peso": 8.540786440323046,
+    "peso": 8.53420066798389,
     "ultima": "2026-10-16T16:31+00:00"
    },
    {
     "id": "mpf",
     "artigos": 17,
-    "peso": 8.126721707501952,
+    "peso": 8.088230512635718,
     "ultima": "2026-10-21T19:47+00:00"
    },
    {
     "id": "stj",
     "artigos": 12,
-    "peso": 6.59734349778328,
+    "peso": 6.5760665731162495,
     "ultima": "2026-10-16T23:00+00:00"
    },
    {
     "id": "inmet",
-    "artigos": 11,
-    "peso": 5.182097186700768,
-    "ultima": "2026-10-26T11:58+00:00"
+    "artigos": 12,
+    "peso": 5.621209610604805,
+    "ultima": "2026-10-27T13:21+00:00"
    },
    {
     "id": "ebc",
     "artigos": 10,
-    "peso": 4.710997442455244,
+    "peso": 4.684341342170671,
     "ultima": "2026-10-24T11:15+00:00"
    },
    {
     "id": "cnj",
     "artigos": 9,
-    "peso": 4.357923753537756,
+    "peso": 4.340757438899181,
     "ultima": "2026-10-07T19:31+00:00"
    },
    {
     "id": "anatel",
     "artigos": 8,
-    "peso": 4.299884265046707,
+    "peso": 4.287326670465046,
     "ultima": "2026-10-14T12:53+00:00"
    },
    {
     "id": "aeronautica",
     "artigos": 8,
-    "peso": 4.004850064620268,
+    "peso": 3.9971735356276907,
     "ultima": "2026-10-21T19:41:00+00:00"
    },
    {
     "id": "cvm",
     "artigos": 7,
-    "peso": 3.710758465473146,
+    "peso": 3.6940423053024025,
     "ultima": "2026-09-27T18:52+00:00"
    },
    {
     "id": "anac",
     "artigos": 6,
-    "peso": 3.593736887211731,
+    "peso": 3.6001588639220667,
     "ultima": "2026-10-17T00:03+00:00"
    }
   ],
@@ -260,9 +260,9 @@
     "uf": null,
     "foto": "https://commons.wikimedia.org/wiki/Special:FilePath/Foto_oficial_de_Luiz_In%C3%A1cio_Lula_da_Silva_%28estreita%29.jpg?width=160",
     "foto_fonte": "https://www.wikidata.org/wiki/Q37181",
-    "artigos": 200,
-    "peso": 127.51595647876769,
-    "ultima": "2026-10-26T16:19+00:00"
+    "artigos": 211,
+    "peso": 133.62230448221536,
+    "ultima": "2026-10-27T13:47:00+00:00"
    },
    {
     "id": "flavio-bolsonaro",
@@ -275,9 +275,9 @@
     "uf": "RJ",
     "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador5894.jpg",
     "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/5894",
-    "artigos": 112,
-    "peso": 54.828596385845564,
-    "ultima": "2026-10-26T14:00+00:00"
+    "artigos": 114,
+    "peso": 55.56439789976676,
+    "ultima": "2026-10-26T23:18+00:00"
    },
    {
     "id": "davi-alcolumbre",
@@ -290,9 +290,9 @@
     "uf": "AP",
     "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador3830.jpg",
     "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/3830",
-    "artigos": 51,
-    "peso": 29.455223625824136,
-    "ultima": "2026-10-26T02:15:00+00:00"
+    "artigos": 53,
+    "peso": 30.775875313839105,
+    "ultima": "2026-10-27T13:47:00+00:00"
    },
    {
     "id": "nunes-marques",
@@ -305,9 +305,9 @@
     "uf": null,
     "foto": "https://commons.wikimedia.org/wiki/Special:FilePath/Nunes_Marques%2C_February_2025_%28cropped%29.jpg?width=160",
     "foto_fonte": "https://www.wikidata.org/wiki/Q99831978",
-    "artigos": 58,
-    "peso": 28.79907991994723,
-    "ultima": "2026-10-26T13:32:00+00:00"
+    "artigos": 59,
+    "peso": 29.176269363100086,
+    "ultima": "2026-10-26T21:13+00:00"
    },
    {
     "id": "damares-alves",
@@ -320,9 +320,9 @@
     "uf": "DF",
     "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador6335.jpg",
     "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/6335",
-    "artigos": 35,
-    "peso": 20.61940298507463,
-    "ultima": "2026-10-23T19:09:00+00:00"
+    "artigos": 36,
+    "peso": 21.3582371458552,
+    "ultima": "2026-10-27T13:22:00+00:00"
    },
    {
     "id": "hugo-motta",
@@ -335,9 +335,9 @@
     "uf": "PB",
     "foto": "https://www.camara.leg.br/internet/deputado/bandep/160674.jpg",
     "foto_fonte": "https://www.camara.leg.br/deputados/160674",
-    "artigos": 26,
-    "peso": 19.09367142889862,
-    "ultima": "2026-10-26T02:31+00:00"
+    "artigos": 28,
+    "peso": 20.299555419440292,
+    "ultima": "2026-10-27T13:47:00+00:00"
    },
    {
     "id": "paulo-paim",
@@ -351,7 +351,7 @@
     "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador825.jpg",
     "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/825",
     "artigos": 20,
-    "peso": 11.664489936143173,
+    "peso": 11.740837072307302,
     "ultima": "2026-10-22T17:02:00+00:00"
    },
    {
@@ -366,7 +366,7 @@
     "foto": "https://commons.wikimedia.org/wiki/Special:FilePath/Luiz_Edson_Fachin-12-05.2015.jpg?width=160",
     "foto_fonte": "https://www.wikidata.org/wiki/Q10320705",
     "artigos": 23,
-    "peso": 11.071346228303133,
+    "peso": 11.0236855488837,
     "ultima": "2026-10-26T02:11+00:00"
    },
    {
@@ -381,7 +381,7 @@
     "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador5525.jpg",
     "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/5525",
     "artigos": 15,
-    "peso": 9.01389513870181,
+    "peso": 9.064568381331439,
     "ultima": "2026-10-26T12:13:00+00:00"
    },
    {
@@ -396,7 +396,7 @@
     "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador5376.jpg",
     "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/5376",
     "artigos": 14,
-    "peso": 8.247761194029849,
+    "peso": 8.305981112277017,
     "ultima": "2026-10-26T13:58:00+00:00"
    },
    {
@@ -411,8 +411,23 @@
     "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador6009.jpg",
     "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/6009",
     "artigos": 14,
-    "peso": 8.247761194029849,
+    "peso": 8.305981112277017,
     "ultima": "2026-10-23T20:44:00+00:00"
+   },
+   {
+    "id": "rogerio-carvalho",
+    "nome": "Rogério Carvalho",
+    "nome_completo": "Rogério Carvalho Santos",
+    "cargo": "Senador, SE",
+    "no_id": "senado",
+    "poder": "legislativo",
+    "partido": "PT",
+    "uf": "SE",
+    "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador5352.jpg",
+    "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/5352",
+    "artigos": 11,
+    "peso": 6.526128016789086,
+    "ultima": "2026-10-27T15:04:00+00:00"
    },
    {
     "id": "flavio-arns",
@@ -426,8 +441,23 @@
     "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador345.jpg",
     "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/345",
     "artigos": 11,
-    "peso": 6.480383795309168,
+    "peso": 6.526128016789086,
     "ultima": "2026-10-19T12:30:00+00:00"
+   },
+   {
+    "id": "teresa-leitao",
+    "nome": "Teresa Leitão",
+    "nome_completo": "Maria Teresa Leitão de Melo",
+    "cargo": "Senadora, PE",
+    "no_id": "senado",
+    "poder": "legislativo",
+    "partido": "PT",
+    "uf": "PE",
+    "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador6338.jpg",
+    "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/6338",
+    "artigos": 10,
+    "peso": 5.932843651626442,
+    "ultima": "2026-10-26T20:54:00+00:00"
    },
    {
     "id": "carlos-viana",
@@ -441,7 +471,7 @@
     "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador5990.jpg",
     "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/5990",
     "artigos": 10,
-    "peso": 5.891257995735607,
+    "peso": 5.932843651626442,
     "ultima": "2026-10-19T12:58:00+00:00"
    },
    {
@@ -456,23 +486,8 @@
     "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador4770.jpg",
     "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/4770",
     "artigos": 10,
-    "peso": 5.891257995735607,
+    "peso": 5.932843651626442,
     "ultima": "2026-10-09T21:56:00+00:00"
-   },
-   {
-    "id": "rogerio-carvalho",
-    "nome": "Rogério Carvalho",
-    "nome_completo": "Rogério Carvalho Santos",
-    "cargo": "Senador, SE",
-    "no_id": "senado",
-    "poder": "legislativo",
-    "partido": "PT",
-    "uf": "SE",
-    "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador5352.jpg",
-    "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/5352",
-    "artigos": 10,
-    "peso": 5.891257995735607,
-    "ultima": "2026-09-14T16:27:00+00:00"
    },
    {
     "id": "confucio-moura",
@@ -486,23 +501,8 @@
     "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador475.jpg",
     "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/475",
     "artigos": 9,
-    "peso": 5.302132196162047,
+    "peso": 5.339559286463798,
     "ultima": "2026-10-22T20:10:00+00:00"
-   },
-   {
-    "id": "teresa-leitao",
-    "nome": "Teresa Leitão",
-    "nome_completo": "Maria Teresa Leitão de Melo",
-    "cargo": "Senadora, PE",
-    "no_id": "senado",
-    "poder": "legislativo",
-    "partido": "PT",
-    "uf": "PE",
-    "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador6338.jpg",
-    "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/6338",
-    "artigos": 9,
-    "peso": 5.302132196162047,
-    "ultima": "2026-10-19T15:16:00+00:00"
    },
    {
     "id": "alan-rick",
@@ -516,8 +516,23 @@
     "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador5672.jpg",
     "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/5672",
     "artigos": 9,
-    "peso": 5.184106140834009,
+    "peso": 5.21470905551822,
     "ultima": "2026-10-26T14:54:00+00:00"
+   },
+   {
+    "id": "dario-carnevalli-durigan",
+    "nome": "Dario Carnevalli Durigan",
+    "nome_completo": "Dario Carnevalli Durigan",
+    "cargo": "Ministro(a) de Estado · MF",
+    "no_id": "mf",
+    "poder": "executivo",
+    "partido": null,
+    "uf": null,
+    "foto": null,
+    "foto_fonte": null,
+    "artigos": 11,
+    "peso": 5.152775476387738,
+    "ultima": "2026-10-27T15:41+00:00"
    },
    {
     "id": "paulo-gonet",
@@ -531,7 +546,7 @@
     "foto": null,
     "foto_fonte": null,
     "artigos": 10,
-    "peso": 4.9470495531113166,
+    "peso": 4.934041804061826,
     "ultima": "2026-10-22T23:49+00:00"
    },
    {
@@ -546,7 +561,7 @@
     "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador5917.jpg",
     "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/5917",
     "artigos": 8,
-    "peso": 4.7130063965884865,
+    "peso": 4.746274921301154,
     "ultima": "2026-10-08T21:29:00+00:00"
    },
    {
@@ -561,7 +576,7 @@
     "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador6336.jpg",
     "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/6336",
     "artigos": 8,
-    "peso": 4.476954285932413,
+    "peso": 4.49657445941,
     "ultima": "2026-10-22T18:33+00:00"
    },
    {
@@ -576,7 +591,7 @@
     "foto": "https://www.camara.leg.br/internet/deputado/bandep/74161.jpg",
     "foto_fonte": "https://www.camara.leg.br/deputados/74161",
     "artigos": 7,
-    "peso": 4.300888742113328,
+    "peso": 4.318293460030288,
     "ultima": "2026-10-19T11:19+00:00"
    },
    {
@@ -591,27 +606,753 @@
     "foto": "https://www.camara.leg.br/internet/deputado/bandep/220645.jpg",
     "foto_fonte": "https://www.camara.leg.br/deputados/220645",
     "artigos": 8,
-    "peso": 4.299884265046707,
+    "peso": 4.287326670465047,
     "ultima": "2026-10-05T17:44+00:00"
-   },
-   {
-    "id": "andre-janones",
-    "nome": "André Janones",
-    "nome_completo": "André Janones",
-    "cargo": "Deputado(a) federal, MG",
-    "no_id": "camara",
-    "poder": "legislativo",
-    "partido": "REDE",
-    "uf": "MG",
-    "foto": "https://www.camara.leg.br/internet/deputado/bandep/204515.jpg",
-    "foto_fonte": "https://www.camara.leg.br/deputados/204515",
-    "artigos": 9,
-    "peso": 4.239897698209719,
-    "ultima": "2026-10-23T01:02+00:00"
    }
   ]
  },
  "artigos": [
+  {
+   "id": "n-0d84b8e184",
+   "titulo": "Áudio: Reforma tributária: alíquota da CBS será definida pelo Senado",
+   "url": "https://www12.senado.leg.br/noticias/audios/2026/10/reforma-tributaria-aliquota-da-cbs-sera-definida-pelo-senado",
+   "data": "2026-10-27T15:46:00+00:00",
+   "fonte": "senado",
+   "nos": [
+    "tcu"
+   ],
+   "pessoas": [],
+   "resumo": "A reforma tributária entra em uma nova etapa com a definição da alíquota da Contribuição sobre Bens e Serviços (CBS). O Tribunal de Contas da União (TCU) deve encaminhar ao Senado até esta sexta-feira (30) a proposta de percentual de referência para o tributo federal que substituirá o PIS/Pasep e a Cofins a partir de 2027. Após receber o cálculo, o Senado tem até 15 de dezembro para definir a alíquota por meio de resolução."
+  },
+  {
+   "id": "n-8edb9ccf2b",
+   "titulo": "Governo prorroga por um mês subvenção de R$ 2,12 ao diesel",
+   "url": "https://agenciabrasil.ebc.com.br/economia/noticia/2026-10/governo-prorroga-por-um-mes-subvencao-de-r-212-ao-diesel",
+   "data": "2026-10-27T15:41+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [
+    "petrobras"
+   ],
+   "pessoas": [
+    "dario-carnevalli-durigan"
+   ],
+   "resumo": "O governo federal informou nesta terça-feira (27) que renovará por mais um mês a subvenção de R$ 2,12 por litro ao óleo diesel. A medida será formalizada por meio de portaria a ser publicada no Diário Oficial da União . A renovação já havia sido sinalizada mais cedo pelo ministro da Fazenda, Dario Durigan. Ao ser questionado sobre o tema, ele disse que o governo ainda discutia os detalhes para a publicação da medida. Notícias relacionadas: Fazenda mantém subsídio de R$ 2,12 ao óleo diesel. Petrobras inova na produção sustentável de combustível de aviação. “A gente vai tratar [da questão da ren"
+  },
+  {
+   "id": "n-9f13c7a6ef",
+   "titulo": "Polícia investiga morte de engenheiro agredido em Santos",
+   "url": "https://agenciabrasil.ebc.com.br/geral/noticia/2026-10/policia-investiga-morte-de-engenheiro-agredido-em-santos",
+   "data": "2026-10-27T15:38+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [
+    "pf"
+   ],
+   "pessoas": [],
+   "resumo": "A Polícia Civil investiga a morte do engenheiro Marcelo de Oliveira da Rocha, de 30 anos, que morreu no último domingo (25) após ter sido brutalmente espancado na madrugada de sábado (24), em Santos, no litoral paulista. Imagens que circulam nas redes sociais mostram o momento em que Rocha caminhava pela rua quando foi abordado por dois homens exigindo a entrega de seu aparelho celular. Em seguida, mais cinco pessoas se aproximam, cercam Marcelo e passam a agredi-lo com socos e chutes. Ele cai no chão, já sem consciência. Notícias relacionadas: Polícia Federal e MPSP fazem operação contra tráf"
+  },
+  {
+   "id": "n-fd8d62d674",
+   "titulo": "Para conter oscilações, Tesouro anuncia nova recompra de títulos",
+   "url": "https://agenciabrasil.ebc.com.br/economia/noticia/2026-10/para-conter-oscilacoes-tesouro-anuncia-nova-recompra-de-titulos",
+   "data": "2026-10-27T15:36+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [],
+   "pessoas": [
+    "dario-carnevalli-durigan"
+   ],
+   "resumo": "O Tesouro Nacional anunciou nesta terça-feira (27) que vai recomprar Notas do Tesouro Nacional Série B (NTN-B) com vencimentos em 15/08/2030, 15/05/2035, 15/08/2040 e 15/05/2045. O edital com as condições do leilão de recompra será divulgado no site da instituição. A medida foi autorizada pelo ministro da Fazenda, Dario Durigan, que disse a jornalistas, em Brasília, que a recompra dos títulos seria anunciada “na medida em que estivessem colocadas as condições e a necessidade [do governo federal] de fazer uma intervenção”. Notícias relacionadas: Governo vai enviar MP do Imposto Seletivo e renov"
+  },
+  {
+   "id": "n-65e5ca7b63",
+   "titulo": "MPSP instaura inquérito para investigar vereador Lucas Pavanato",
+   "url": "https://agenciabrasil.ebc.com.br/justica/noticia/2026-10/mpsp-instaura-inquerito-para-investigar-vereador-lucas-pavanato",
+   "data": "2026-10-27T15:27+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "O Ministério Público de São Paulo (MP-SP) vai investigar o deputado federal eleito Lucas Pavanato (PL-SP) por suposta prática de discriminação, incitação à hostilidade e discurso de ódio por meio de um inquérito civil instaurado nesta segunda-feira (26), com base em declarações feitas por ele no início de outubro, quando afirmou em uma entrevista para a rádio Jovem Pan que colocaria minorias \"no devido lugar\". O inquérito pede que seja analisado o contexto das falas, a identificação dos grupos a quem ele se referia e a verificação de eventual responsabilização civil eleitoral ou penal. Para o "
+  },
+  {
+   "id": "n-3841fdf8a1",
+   "titulo": "Projeto muda regras para incorporação de novas tecnologias no SUS",
+   "url": "https://www.camara.leg.br/noticias/1313222-projeto-muda-regras-para-incorporacao-de-novas-tecnologias-no-sus",
+   "data": "2026-10-27T15:24+00:00",
+   "fonte": "camara",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "Texto está em análise na Câmrara dos Deputados"
+  },
+  {
+   "id": "n-b3197bfab3",
+   "titulo": "Áudio: PEC da Segurança Pública amplia o papel da União contra o crime organizado",
+   "url": "https://www12.senado.leg.br/noticias/audios/2026/10/pec-da-seguranca-publica-amplia-o-papel-da-uniao-contra-o-crime-organizado",
+   "data": "2026-10-27T15:04:00+00:00",
+   "fonte": "senado",
+   "nos": [],
+   "pessoas": [
+    "rogerio-carvalho"
+   ],
+   "resumo": "O Plenário já pode votar a proposta que dá à União a competência expressa para definir diretrizes gerais de segurança pública e para padronizar protocolos de inteligência em todo o território nacional. A PEC 18/2025 insere na Constituição o Sistema Único de Segurança Pública e reforça a integração das forças de segurança. Com relatoria do Senador Rogério Carvalho (PT-SE) a proposta teve o parecer aprovado na Comissão de Constituição e Justiça."
+  },
+  {
+   "id": "n-730bfd5643",
+   "titulo": "Áudio: Incentivo à fabricação de motores está na pauta da CI",
+   "url": "https://www12.senado.leg.br/noticias/audios/2026/10/incentivo-a-fabricacao-de-motores-esta-na-pauta-da-ci",
+   "data": "2026-10-27T15:03:00+00:00",
+   "fonte": "senado",
+   "nos": [],
+   "pessoas": [
+    "laercio-oliveira"
+   ],
+   "resumo": "Projeto que cria a Política Nacional de Incentivo à Fabricação de Motores (PL 4.621/2024) pode ser votado pela Comissão de Infraestrutura. O texto prevê linhas de crédito específicas para empresas que fabricam motores e seus componentes. O objetivo é fortalecer a indústria nacional, reduzir a dependência de produtos importados e estimular a inovação tecnológica. O relator do projeto, senador Laércio Oliveira (PP-SE), elogiou o estímulo para a instalação de unidades produtivas em regiões menos industrializadas."
+  },
+  {
+   "id": "n-65d9cd1a86",
+   "titulo": "Deputado do Rio volta a ser alvo da PF por suspeita de fraudes",
+   "url": "https://agenciabrasil.ebc.com.br/geral/noticia/2026-10/deputado-do-rio-volta-ser-alvo-da-pf-por-suspeita-de-fraudes",
+   "data": "2026-10-27T14:59+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [
+    "stf",
+    "pf"
+   ],
+   "pessoas": [
+    "marcelo-queiroz"
+   ],
+   "resumo": "O deputado federal Marcelo Queiroz (PSDB-RJ) voltou a ser alvo da Polícia Federal , nesta terça-feira (27), na segunda fase da Operação Castratio . Os agentes cumprem cinco mandados de busca e apreensão na capital fluminense e em Niterói, expedidos pelo Supremo Tribunal Federal (STF). O objetivo é de desarticular organização criminosa que fraudava contratos na Secretaria de Agricultura, Pecuária e Abastecimento do Rio de Janeiro (Seapa). Notícias relacionadas: PF mira deputado do RJ e fraudes em contratos de R$ 200 milhões . O deputado, que era secretário de Agricultura na época das irregulari"
+  },
+  {
+   "id": "n-672e3f1b41",
+   "titulo": "Projeto prevê GPS obrigatório em veículos de transporte escolar",
+   "url": "https://www.camara.leg.br/noticias/1313021-projeto-preve-gps-obrigatorio-em-veiculos-de-transporte-escolar",
+   "data": "2026-10-27T14:46+00:00",
+   "fonte": "camara",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "Texto está em análise na Câmara dos Deputados"
+  },
+  {
+   "id": "n-78502b0cf8",
+   "titulo": "Dino manda PF apurar interferência externa no processo eleitoral",
+   "url": "https://agenciabrasil.ebc.com.br/justica/noticia/2026-10/dino-manda-pf-apurar-interferencia-externa-no-processo-eleitoral",
+   "data": "2026-10-27T14:33+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [
+    "stf",
+    "pf"
+   ],
+   "pessoas": [],
+   "resumo": "O ministro Flávio Dino, do Supremo Tribunal Federal (STF), ordenou que a Polícia Federal (PF) abra um inquérito para apurar a possível interferência estrangeira sobre o processo eleitoral brasileiro, sobretudo por meio do financiamento oculto de campanha política . Dino tomou a decisão após ser provocado pelo PT numa arguição de descumprimento de preceito fundamental (ADPF) aberta pelo Instituto Brasileiro de Mineração (Ibram), na qual o ministro já decidiu sobre questões relativas à soberania nacional e à aplicação de ordens judiciais e leis estrangeiras no Brasil . Notícias relacionadas: Ita"
+  },
+  {
+   "id": "n-3bd831f69a",
+   "titulo": "Governo vai enviar MP do Imposto Seletivo e renova subvenção ao diesel",
+   "url": "https://agenciabrasil.ebc.com.br/economia/noticia/2026-10/governo-enviara-mp-do-imposto-seletivo-e-renova-subvencao-ao-diesel",
+   "data": "2026-10-27T14:33+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [
+    "congresso"
+   ],
+   "pessoas": [
+    "dario-carnevalli-durigan"
+   ],
+   "resumo": "O ministro da Fazenda, Dario Durigan, afirmou que o governo federal deve enviar ao Congresso Nacional, nos próximos dias, uma Medida Provisória (MP) estabelecendo as alíquotas do chamado Imposto Seletivo (IS). Também conhecido como Imposto do Pecado, o tributo foi aprovado junto com a reforma tributária e será cobrado a partir de 2027, com a justificativa de desestimular o consumo de produtos e atividades consideradas prejudiciais à saúde ou ao meio ambiente , como cigarros, bebidas alcoólicas, refrigerantes, alguns tipos de veículos, além da extração de bens minerais, loterias, apostas e jogo"
+  },
+  {
+   "id": "n-2a167da599",
+   "titulo": "Banco Central diz que estabilidade financeira não está em risco",
+   "url": "https://agenciabrasil.ebc.com.br/economia/noticia/2026-10/banco-central-diz-que-estabilidade-financeira-nao-esta-em-risco",
+   "data": "2026-10-27T14:28+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "O Banco Central (BC) informou nesta terça-feira (27) que \"não vê risco relevante\" para a estabilidade financeira do país, apesar da piora dos indicadores de crédito das famílias. Segundo o Relatório de Estabilidade Financeira referente ao primeiro semestre de 2026, o sistema financeiro continua com níveis confortáveis de capitalização e liquidez, além de capacidade de resistir a cenários adversos. Notícias relacionadas: IBC-Br recuou 0,6% em junho, diz Banco Central. Banco Central estuda interligar Pix com sistemas de outros países. O documento mostra que os ativos problemáticos das famílias, "
+  },
+  {
+   "id": "n-d366d15a62",
+   "titulo": "Concentração de gases do efeito estufa atingem níveis recordes",
+   "url": "https://agenciabrasil.ebc.com.br/meio-ambiente/noticia/2026-10/concentracao-de-gases-do-efeito-estufa-atingem-niveis-recordes",
+   "data": "2026-10-27T14:14+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "Um relatório publicado nesta terça-feira (27) pela Organização Meteorológica Mundial (WMO) mostrou que 2025 atingiu níveis de concentração “sem precedentes” de gases do efeito estufa na atmosfera. O estudo constatou que a concentração de dióxido de carbono (CO₂), o principal desses gases, é 53% mais alto do que em níveis pré-industriais (antes de 1750). Notícias relacionadas: Fazenda define setores que relatarão emissão de gases de efeito estufa. Setor de gás natural reduzirá 0,5% a emissão de gás do efeito estufa . Em relação ao metano (CH₄), a concentração é 167% maior, na mesma base de comp"
+  },
+  {
+   "id": "n-36ad44a875",
+   "titulo": "PF investiga desvio de dinheiro em empresa de previdência de São Roque",
+   "url": "https://agenciabrasil.ebc.com.br/geral/noticia/2026-10/pf-investiga-desvio-de-dinheiro-em-empresa-de-previdencia-de-sao-roque",
+   "data": "2026-10-27T14:12+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [
+    "pf"
+   ],
+   "pessoas": [],
+   "resumo": "A empresa São Roque Prev, responsável pela previdência social dos servidores da cidade de São Roque, no interior de São Paulo, é alvo, nesta terça-feira (27), de investigação da Polícia Federal por desvio de dinheiro. Segundo a apuração, que é feita por meio da Operação Entressafras, cerca de R$ 100 milhões foram movimentados sem pareceres técnicos e fundamentação adequada entre 2022 e 2024. A empresa teria aplicado mais de R$ 90 milhões no Banco Master, de Daniel Vorcaro, que está preso atualmente. Notícias relacionadas: PF faz operação contra fraudes em concurso público no Rio. PF faz ação p"
+  },
+  {
+   "id": "n-34b48177c4",
+   "titulo": "Projeto prevê compartilhamento de dados bancários e telefônicos de candidatos",
+   "url": "https://www12.senado.leg.br/noticias/materias/2026/10/27/projeto-preve-compartilhamento-de-dados-bancarios-e-telefonicos-de-candidatos",
+   "data": "2026-10-27T14:06:00+00:00",
+   "fonte": "senado",
+   "nos": [],
+   "pessoas": [
+    "randolfe-rodrigues"
+   ],
+   "resumo": "Candidatos a cargos eletivos e seus cônjuges ou companheiros deverão autorizar o compartilhamento de informações bancárias e registros de chamadas e mensagens com a Justiça Eleitoral para obter o registro de candidatura. É o que propõe projeto de lei recém-apresentado pelo senador Randolfe Rodrigues (PT-AP). O PL 5.648/2026, que altera a Lei Geral das Eleições, tem o objetivo de ampliar a transparência sobre a vida financeira e as comunicações de candidatos a cargos eletivos. “É imprescindível que a sociedade tenha amplo acesso a informações bancárias e telefônicas relativas à vida pregressa d"
+  },
+  {
+   "id": "n-0dcdf1f1fc",
+   "titulo": "Projeto institui política de esporte inclusivo para crianças neurodivergentes",
+   "url": "https://www.camara.leg.br/noticias/1311917-projeto-institui-politica-de-esporte-inclusivo-para-criancas-neurodivergentes",
+   "data": "2026-10-27T14:03+00:00",
+   "fonte": "camara",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "A proposta está em análise na Câmara dos Deputados"
+  },
+  {
+   "id": "n-aaa5d4d2a0",
+   "titulo": "Projeto inclui psicopedagogos em equipes interdisciplinares das escolas públicas",
+   "url": "https://www.camara.leg.br/noticias/1312622-projeto-inclui-psicopedagogos-em-equipes-interdisciplinares-das-escolas-publicas",
+   "data": "2026-10-27T13:56+00:00",
+   "fonte": "camara",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "Texto está em análise na Câmara dos Deputados"
+  },
+  {
+   "id": "n-981b337284",
+   "titulo": "Vídeo: Em encontro com Lula, Davi defende entendimento em favor do país",
+   "url": "https://www12.senado.leg.br/noticias/videos/2026/10/em-encontro-com-lula-davi-defende-entendimento-em-favor-do-pais",
+   "data": "2026-10-27T13:47:00+00:00",
+   "fonte": "senado",
+   "nos": [],
+   "pessoas": [
+    "luiz-inacio-lula-da-silva",
+    "davi-alcolumbre",
+    "hugo-motta"
+   ],
+   "resumo": "Os presidentes do Senado, Davi Alcolumbre, e da Câmara, Hugo Motta, se encontraram com o presidente Lula na noite dessa segunda-feira (26). Davi reforçou a importância do diálogo institucional e a busca de entendimento entre os Poderes."
+  },
+  {
+   "id": "n-7ce859f317",
+   "titulo": "Vídeo: Ao vivo: audiência avalia políticas no território ianomâmi - 27/10/26",
+   "url": "https://www12.senado.leg.br/noticias/videos/2026/10/ao-vivo-audiencia-avalia-politicas-no-territorio-ianomami-27-10-26",
+   "data": "2026-10-27T13:46:00+00:00",
+   "fonte": "senado",
+   "nos": [],
+   "pessoas": [],
+   "resumo": ""
+  },
+  {
+   "id": "n-726e421568",
+   "titulo": "Áudio: Senado vai analisar criação de Estatuto da Pessoa com Obesidade",
+   "url": "https://www12.senado.leg.br/noticias/audios/2026/10/senado-vai-analisar-criacao-de-estatuto-da-pessoa-com-obesidade",
+   "data": "2026-10-27T13:22:00+00:00",
+   "fonte": "senado",
+   "nos": [],
+   "pessoas": [
+    "damares-alves"
+   ],
+   "resumo": "Um projeto em análise no Senado cria o Estatuto da Pessoa com Obesidade (PL 6.130/2025). Já aprovado pela Câmara, o texto prevê acesso a tratamentos adequados e individualizados, inclusão no mercado de trabalho, incentivo à pesquisa e campanhas contra o preconceito. A proposta está na Comissão de Educação e Cultura (CE), sob a relatoria da senadora Damares Alves (Republicanos-DF)."
+  },
+  {
+   "id": "n-b8036636c6",
+   "titulo": "Projeto aumenta pena para adulteração de alimentos e torna o crime hediondo",
+   "url": "https://www.camara.leg.br/noticias/1310596-projeto-aumenta-pena-para-adulteracao-de-alimentos-e-torna-o-crime-hediondo",
+   "data": "2026-10-27T13:22+00:00",
+   "fonte": "camara",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "Para virar lei, o texto precisa ser aprovado pela Câmara e pelo Senado"
+  },
+  {
+   "id": "n-d862120d65",
+   "titulo": "Chuvas atingem importantes áreas agrícolas nesta terça, prevê Inmet",
+   "url": "https://agenciabrasil.ebc.com.br/meio-ambiente/noticia/2026-10/chuvas-atingem-importantes-areas-agricolas-nesta-terca-preve-inmet",
+   "data": "2026-10-27T13:21+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [
+    "inmet"
+   ],
+   "pessoas": [],
+   "resumo": "A presença de uma frente fria no litoral sul da Bahia favorece um canal de umidade sobre o país nesta terça-feira (27), propiciando a ocorrência de chuvas e trovoadas em importantes áreas agrícolas. Segundo o Instituto Nacional de Meteorologia (Inmet), as chuvas mais intensas podem atingir Rondônia, Mato Grosso, Tocantins e o Distrito Federal, além do sul do Pará; centro e norte de Goiás; norte de Minas Gerais; sul do Piauí e áreas da Bahia e do Maranhão. Notícias relacionadas: Novo canal de umidade leva chuvas ao Norte, Centro-Oeste e Nordeste. O instituto alerta para o perigo potencial de te"
+  },
+  {
+   "id": "n-91050673cc",
+   "titulo": "Projeto cria política de proteção climática para agricultura familiar e pecuária leiteira",
+   "url": "https://www.camara.leg.br/noticias/1313870-projeto-cria-politica-de-protecao-climatica-para-agricultura-familiar-e-pecuaria-leiteira",
+   "data": "2026-10-27T12:42+00:00",
+   "fonte": "camara",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "O texto está em análise na Câmara dos Deputados"
+  },
+  {
+   "id": "n-ff27c138f1",
+   "titulo": "Áudio: Senado analisa projeto que atualiza serviço Disque Idoso",
+   "url": "https://www12.senado.leg.br/noticias/audios/2026/10/senado-analisa-projeto-que-atualiza-servico-disque-idoso",
+   "data": "2026-10-27T12:07:00+00:00",
+   "fonte": "senado",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "O Senado analisa projeto que muda o nome do Programa Disque Idoso para Disque Pessoa Idosa e amplia suas funções. De acordo com o PL 5.202/2026, além de receber denúncias de violência e maus-tratos, o serviço dará informações sobre direitos e orientações para acesso a benefícios e serviços públicos. O atendimento será feito pelo Disque 100, serviço gratuito do Ministério da Cidadania e pretende priorizar os direitos dessa parcela da população no planejamento das políticas públicas."
+  },
+  {
+   "id": "n-baccc641c1",
+   "titulo": "Projeto prevê acordos em ações sobre mineração irregular e ressarcimento à União",
+   "url": "https://www.camara.leg.br/noticias/1310860-projeto-preve-acordos-em-acoes-sobre-mineracao-irregular-e-ressarcimento-a-uniao",
+   "data": "2026-10-27T11:55+00:00",
+   "fonte": "camara",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "Texto está em análise na Câmara dos Deputados"
+  },
+  {
+   "id": "n-112fc6a49b",
+   "titulo": "Petrobras inova na produção sustentável de combustível de aviação",
+   "url": "https://agenciabrasil.ebc.com.br/meio-ambiente/noticia/2026-10/petrobras-inova-na-producao-sustentavel-de-combustivel-de-aviacao",
+   "data": "2026-10-27T10:32+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [
+    "petrobras"
+   ],
+   "pessoas": [],
+   "resumo": "Um novo marco na produção de combustível sustentável de aviação (SAF) foi obtido pela Refinaria Duque de Caxias (Reduc) na primeira quinzena de outubro. Com a recertificação internacional do produto, a Petrobras obteve avanços que reduziram significativamente a intensidade de carbono SAF, reforçando os mais elevados padrões globais de sustentabilidade, rastreabilidade e governança. Uma auditoria internacional de aviação confirmou evolução expressiva no desempenho ambiental do combustível. O processo reconheceu melhorias implementadas na gestão das fontes de hidrogênio utilizadas na produção do"
+  },
+  {
+   "id": "n-1c541812b4",
+   "titulo": "Um ano depois, mortes da Operação Contenção ainda são investigadas",
+   "url": "https://agenciabrasil.ebc.com.br/direitos-humanos/noticia/2026-10/um-ano-depois-mortes-da-operacao-contencao-ainda-sao-investigadas",
+   "data": "2026-10-27T10:05+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "Ainda era madrugada, em 28 de outubro de 2025, quando mais de 2,5 mil policiais civis e militares começaram a se preparar para uma operação nos complexos de favelas do Alemão e da Penha. Entre as milhares de incursões em comunidades realizadas no Rio de Janeiro nos últimos 40 anos, aquela seria a mais letal . O que se viu ao longo do dia foram horas de confrontos armados, ônibus incendiados por criminosos nas ruas, e o avanço dos policiais pelas ruas e vielas das favelas. Em 29 de outubro, o balanço era de que 121 pessoas haviam perdido suas vidas, sendo quatro policiais. O número subiu para c"
+  },
+  {
+   "id": "n-a0c690dcb9",
+   "titulo": "Gol nos acréscimos assegura Flamengo na liderança do Brasileirão",
+   "url": "https://agenciabrasil.ebc.com.br/esportes/noticia/2026-10/gol-nos-acrescimos-assegura-flamengo-na-lideranca-do-brasileirao",
+   "data": "2026-10-27T09:45+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "A 32ª rodada do Campeonato Brasileiro chegou ao fim da forma que começou. A dramática vitória por 3 a 2 sobre o Atlético-MG na noite de segunda-feira (26), no Maracanã, manteve o Rubro-Negro na liderança da competição. Os cariocas foram a campo sob pressão. Além da necessidade de vencer, já que o vice-líder Palmeiras superou o Red Bull Bragantino no último sábado (24), por 2 a 0, na Arena Barueri, o time da Gávea vinha de recente eliminação nas semifinais da Libertadores, no próprio Maracanã, para o Estudiantes (Argentina), na última quinta-feira (22). Notícias relacionadas: Harry Kane e Alexi"
+  },
+  {
+   "id": "n-a808b70f39",
+   "titulo": "Mega-Sena não tem ganhador; prêmio acumula para R$ 305 milhões",
+   "url": "https://agenciabrasil.ebc.com.br/economia/noticia/2026-10/mega-sena-nao-tem-ganhador-premio-acumula-para-r-305-milhoes",
+   "data": "2026-10-27T01:08+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [
+    "caixa"
+   ],
+   "pessoas": [],
+   "resumo": "Ninguém acertou acertou as seis dezenas do Concurso 3.075 da Mega-Sena, sorteado nesta segunda-feira (26). O prêmio acumulou novamente e está estimado em R$ 305 milhões para a nova rodada. Os números sorteados são: 07 - 10 - 14 - 27 - 36 - 55 A quina teve 182 apostas ganhadoras. Cada uma receberá R$ 19.433,12. A quadra saiu para 11.018 apostas, no valor de R$ 458,57 cada. Apostas O próximo concurso será nesta terça-feira (27). Até sexta-feira (30), a Caixa realiza a Mega Semana da Mega-Sena, com cinco sorteios consecutivos. A ação especial terá sorteios (concursos 3075, 3076, 3077, 3078 e 3079"
+  },
+  {
+   "id": "n-622209ea7a",
+   "titulo": "PL, partido de Flávio, reconhece vitória de Lula nas eleições",
+   "url": "https://agenciabrasil.ebc.com.br/politica/noticia/2026-10/partido-de-flavio-pl-reconhece-vitoria-de-lula-nas-eleicoes",
+   "data": "2026-10-27T00:38+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [
+    "tse"
+   ],
+   "pessoas": [
+    "luiz-inacio-lula-da-silva"
+   ],
+   "resumo": "O presidente do Partido Liberal (PL), Valdemar Costa Neto, publicou nota oficial, nesta segunda-feira (26), em que reconhece a vitória do presidente Luiz Inácio Lula da Silva nas eleições deste ano. No entanto, ele cobrou esclarecimentos sobre o que chamou de medidas “eleitoreiras”, com “ampliação de gastos públicos”. ““Reconhecemos o resultado presidencial, proclamado pelo Tribunal Superior Eleitoral (TSE), mas entendemos que os questionamentos levantados precisam ser devidamente esclarecidos”, afirmou a nota. Argumentos Notícias relacionadas: Moraes manda Flávio entregar passaporte e o proíb"
+  },
+  {
+   "id": "n-04dd29259e",
+   "titulo": "CNBB parabeniza Lula e pede atenção aos mais pobres",
+   "url": "https://agenciabrasil.ebc.com.br/politica/noticia/2026-10/cnbb-parabeniza-lula-e-pede-atencao-aos-mais-pobres",
+   "data": "2026-10-26T23:52+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [],
+   "pessoas": [
+    "luiz-inacio-lula-da-silva",
+    "geraldo-alckmin"
+   ],
+   "resumo": "A Conferência Nacional dos Bispos do Brasil (CNBB) parabenizou o presidente Luiz Inácio Lula da Silva e ao vice-presidente Geraldo Alckmin pela reeleição, no 2º turno das eleições e pediu atenção prioritária para os pobres e vulneráveis. \"Acreditamos que a dignidade da pessoa humana, a destinação universal dos bens, a solidariedade, a subsidiariedade e o bem comum devem orientar as decisões políticas e econômicas\", diz nota da entidade da Igreja Católica. Notícias relacionadas: Líderes estrangeiros reconhecem vitória e parabenizam Lula. Posse de Lula será em 5 de janeiro . Vitória de Lula repe"
+  },
+  {
+   "id": "n-17816314c6",
+   "titulo": "Trump questiona eleição brasileira e Alckmin rebate: “equivocado”",
+   "url": "https://agenciabrasil.ebc.com.br/politica/noticia/2026-10/trump-questiona-eleicao-brasileira-e-alckmin-rebate-equivocado",
+   "data": "2026-10-26T23:18+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [],
+   "pessoas": [
+    "luiz-inacio-lula-da-silva",
+    "flavio-bolsonaro"
+   ],
+   "resumo": "O presidente dos Estados Unidos, Donald Trump, questionou o processo eleitoral brasileiro, nesta segunda-feira (26). Em conversa com jornalistas, o presidente estadunidense questionou a prorrogação do horário da votação, ecoando o posicionamento da campanha do candidato derrotado no segundo turno das eleições, Flávio Bolsonaro. Notícias relacionadas: Líderes estrangeiros reconhecem vitória e parabenizam Lula. Horário de votação ampliado será apenas onde urnas não foram fechadas. “Acho que pareceu ruim a eleição, o jeito que foi organizada, com a prorrogação [do prazo de votação]. Muito estranh"
+  },
+  {
+   "id": "n-ff006bf650",
+   "titulo": "Motta e Alcolumbre parabenizam Lula e reafirmam compromisso com harmonia institucional",
+   "url": "https://www.camara.leg.br/noticias/1314009-motta-e-alcolumbre-parabenizam-lula-e-reafirmam-compromisso-com-harmonia-institucional",
+   "data": "2026-10-26T23:17+00:00",
+   "fonte": "camara",
+   "nos": [],
+   "pessoas": [
+    "luiz-inacio-lula-da-silva"
+   ],
+   "resumo": "Presidentes da Câmara e do Senado foram recebidos no Palácio da Alvorada"
+  },
+  {
+   "id": "n-3cee114a6e",
+   "titulo": "Davi Alcolumbre e Hugo Motta visitam presidente Lula",
+   "url": "https://www12.senado.leg.br/noticias/materias/2026/10/26/davi-alcolumbre-e-hugo-motta-visitam-presidente-lula",
+   "data": "2026-10-26T22:13:00+00:00",
+   "fonte": "senado",
+   "nos": [
+    "camara"
+   ],
+   "pessoas": [
+    "luiz-inacio-lula-da-silva",
+    "davi-alcolumbre",
+    "hugo-motta"
+   ],
+   "resumo": "O presidente do Senado, Davi Alcolumbre, fez uma visita de cortesia ao presidente da República, Luiz Inácio Lula da Silva, que foi reeleito neste domingo (25) para seu quarto mandato. O encontro ocorreu no fim da tarde desta segunda-feira (26), no Palácio da Alvorada. Davi estava acompanhado do presidente da Câmara dos Deputados, Hugo Motta. Esse é o primeiro encontro entre os presidentes do Senado e da Câmara com Lula após a reeleição. Depois da visita, Alcolumbre divulgou um comunicado. No texto, ele reafirma “o compromisso com o diálogo institucional e a construção de entendimentos em favor"
+  },
+  {
+   "id": "n-7c168633fa",
+   "titulo": "Dólar sobe 8,21%, e bolsa cai 13,88% após reeleição de Lula",
+   "url": "https://agenciabrasil.ebc.com.br/economia/noticia/2026-10/dolar-sobe-821-e-bolsa-cai-1388-apos-reeleicao-de-lula",
+   "data": "2026-10-26T22:07+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [],
+   "pessoas": [
+    "luiz-inacio-lula-da-silva"
+   ],
+   "resumo": "O mercado financeiro brasileiro teve um dia de forte turbulência nesta segunda-feira (26), após a reeleição do presidente Luiz Inácio Lula da Silva no segundo turno das eleições presidenciais. O dólar fechou em alta de 8,21%, a R$ 5,403. O Ibovespa, principal índice da Bolsa de Valores brasileira, recuou 13,88% e atingiu os 176.608,23 pontos. Durante a manhã, a bolsa acionou o mecanismo de circuit breaker , que interrompe temporariamente as negociações diante de quedas acentuadas. Notícias relacionadas: Líderes estrangeiros reconhecem vitória e parabenizam Lula. Nas redes sociais, líderes lati"
+  },
+  {
+   "id": "n-08c0444454",
+   "titulo": "Áudio: Projeto proíbe ensino a distância em cursos de medicina e educação física",
+   "url": "https://www12.senado.leg.br/noticias/audios/2026/10/projeto-proibe-ensino-a-distancia-em-cursos-de-medicina-e-educacao-fisica",
+   "data": "2026-10-26T21:51:00+00:00",
+   "fonte": "senado",
+   "nos": [
+    "camara"
+   ],
+   "pessoas": [],
+   "resumo": "Começou a tramitar no Senado um projeto de lei — o PL 5.628/2026 — que proíbe cursos de graduação a distância nas áreas da saúde (como é o caso de medicina) e de educação física. A proposta já aprovada pela Câmara dos Deputados. Ouça o áudio."
+  },
+  {
+   "id": "n-472ce57fba",
+   "titulo": "Projeto facilita captação de recursos privados para produtores rurais",
+   "url": "https://www.camara.leg.br/noticias/1310277-projeto-facilita-captacao-de-recursos-privados-para-produtores-rurais",
+   "data": "2026-10-26T21:41+00:00",
+   "fonte": "camara",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "Texto está em análise na Câmara dos Deputados"
+  },
+  {
+   "id": "n-3a384bea79",
+   "titulo": "Anvisa proíbe venda de picolé com melatonina e suplemento de proteína",
+   "url": "https://agenciabrasil.ebc.com.br/saude/noticia/2026-10/anvisa-proibe-venda-de-picole-com-melatonina-e-suplemento-de-proteina",
+   "data": "2026-10-26T21:40+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [
+    "anvisa"
+   ],
+   "pessoas": [],
+   "resumo": "A Agência Nacional de Vigilância Sanitária (Anvisa) decidiu, nesta segunda (26), recolher e proibir a comercialização de dois produtos alimentícios, um picolé e um suplemento, por conterem ingredientes que não passaram por avaliação de segurança. O Picolé Bentô Gelatos Magnésio + Inositol Relief 3.0. , fabricado pela empresa ABB Gelateria Ltda, está proibido porque ingredientes do produto, a melatonina e o inositol, foram a utorizados apenas para uso em suplementos alimentares e em composto líquido pronto para consumo (inositol). Notícias relacionadas: Anvisa proíbe venda de teste de glicemia "
+  },
+  {
+   "id": "n-a48be77362",
+   "titulo": "Dengue: 3 milhões de adolescentes estão com vacinação incompleta",
+   "url": "https://agenciabrasil.ebc.com.br/saude/noticia/2026-10/dengue-3-milhoes-de-adolescentes-estao-com-vacinacao-incompleta",
+   "data": "2026-10-26T21:34+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [
+    "anvisa"
+   ],
+   "pessoas": [],
+   "resumo": "Mais de 3 milhões de adolescentes que tomaram a primeira dose da vacina contra a dengue ainda precisam voltar aos postos de saúde para completar o esquema vacinal. Como a vacina é aplicada em duas doses, a proteção completa só é adquirida após a segunda, que deve ser tomada três meses depois da primeira . Notícias relacionadas: Consultas por lesões pré-cancerígenas caem após vacina contra HPV. Desinformação faz com que só 5% das crianças sejam protegidas da covid. Malária: Anvisa autoriza teste em humanos de vacina 100% brasileira. Os dados foram apresentados pelo diretor do Programa Nacional "
+  },
+  {
+   "id": "n-c3d5d19b2c",
+   "titulo": "Líderes estrangeiros reconhecem vitória e parabenizam Lula",
+   "url": "https://agenciabrasil.ebc.com.br/politica/noticia/2026-10/lideres-estrangeiros-reconhecem-vitoria-e-parabenizam-lula",
+   "data": "2026-10-26T21:33+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [],
+   "pessoas": [
+    "luiz-inacio-lula-da-silva"
+   ],
+   "resumo": "Políticos de várias partes do mundo continuam se manifestando, após a reeleição do presidente Luiz Inácio Lula da Silva, no último domingo (25). O presidente da França, Emmanuel Macron, usou as redes sociais para parabenizar o seu homólogo brasileiro. Notícias relacionadas: Imprensa internacional destaca vitória histórica de Lula. Vitória de Lula repercute na imprensa europeia e asiática. “Meus parabéns, Lula, pela sua reeleição. A França e o Brasil têm muito a construir juntos. Diante dos grandes desafios do nosso tempo, reforcemos nossa parceria estratégica e façamos viver a amizade entre no"
+  },
+  {
+   "id": "n-2b8fba8a7b",
+   "titulo": "Áudio: Projeto em análise na CDH inclui o turismo entre os direitos dos idosos",
+   "url": "https://www12.senado.leg.br/noticias/audios/2026/10/projeto-em-analise-na-cdh-inclui-o-turismo-entre-os-direitos-dos-idosos",
+   "data": "2026-10-26T21:32:00+00:00",
+   "fonte": "senado",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "Está pronto para ser votado na Comissão de Direitos Humanos do Senado (CDH) o projeto de lei que inclui o turismo entre os direitos dos idosos. O projeto (PL 2.154/2026) já conta com relatório favorável. Ouça o áudio."
+  },
+  {
+   "id": "n-48c802af39",
+   "titulo": "Dia do Servidor Público: ponto facultativo será na sexta-feira",
+   "url": "https://agenciabrasil.ebc.com.br/geral/noticia/2026-10/dia-do-servidor-publico-ponto-facultativo-sera-na-sexta-feira",
+   "data": "2026-10-26T21:28+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [
+    "mgi"
+   ],
+   "pessoas": [],
+   "resumo": "Celebrado no dia 28 de outubro, o Dia do Servidor Público terá este ano o ponto facultativo transferido para a sexta-feira. dia 30, próxima sexta-feira. Desta forma, a data se une ao fim de semana e ao feriado do Dia de Finados, em 2 de novembro, na segunda-feira. De acordo com o Ministério da Gestão e da Inovação em Serviços Públicos, o ponto facultativo é seguido pelas entidades da administração pública federal direta, autárquica e fundacional, mas não pode prejudicar a continuidade dos serviços essenciais. Notícias relacionadas: Bombeiros encontram corpo de mulher levada por correnteza . Fo"
+  },
+  {
+   "id": "n-61608ed8dc",
+   "titulo": "Áudio: Projeto destina 1% de royalties da Margem Equatorial a servidor de ex-territórios",
+   "url": "https://www12.senado.leg.br/noticias/audios/2026/10/projeto-destina-1-de-royalties-da-margem-equatorial-a-servidor-de-ex-territorios",
+   "data": "2026-10-26T21:25:00+00:00",
+   "fonte": "senado",
+   "nos": [],
+   "pessoas": [
+    "jaime-bagattoli"
+   ],
+   "resumo": "Projeto de lei apresentado no Senado destina uma parcela da receita de royalties da exploração de petróleo e gás natural na bacia da Foz do Rio Amazonas e na Margem Equatorial para o pagamento de despesas salariais de servidores públicos (PL 5.396/2026). De autoria do senador Jaime Bagattoli (PL-RO), a proposta foca no quadro funcional especial de servidores ativos e inativos e pensionistas dos antigos territórios federais do Amapá, Roraima e Rondônia."
+  },
+  {
+   "id": "n-5e30894c2f",
+   "titulo": "TRE-BA revoga ordem de prisão de secretário de Mobilidade de Salvador",
+   "url": "https://agenciabrasil.ebc.com.br/justica/noticia/2026-10/tre-ba-revoga-ordem-de-prisao-de-secretario-de-mobilidade-de-salvador",
+   "data": "2026-10-26T21:13+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [
+    "pf"
+   ],
+   "pessoas": [
+    "nunes-marques"
+   ],
+   "resumo": "O presidente do Tribunal Regional Eleitoral da Bahia (TRE-BA), Maurício Kertzman Szporer, revogou, nesta segunda-feira (26), a ordem de prisão em flagrante do secretário municipal de Mobilidade de Salvador, Pablo Souza. O magistrado tinha ordenado , no domingo (25), que a Polícia Federal (PF) detivesse Souza. A determinação buscava “constranger” a Secretaria de Mobilidade (Semob) a tomar as providências necessárias para garantir a circulação de 100% da frota de ônibus na capital baiana durante o segundo turno das eleições. Notícias relacionadas: Nunes Marques dá meia hora para TRE-BA responder"
+  },
+  {
+   "id": "n-7f02367b87",
+   "titulo": "Moraes manda Flávio entregar passaporte e o proíbe de deixar o país",
+   "url": "https://agenciabrasil.ebc.com.br/politica/noticia/2026-10/moraes-manda-flavio-entregar-passaporte-e-o-proibe-de-deixar-o-pais",
+   "data": "2026-10-26T20:55+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [
+    "stf",
+    "pf",
+    "tse"
+   ],
+   "pessoas": [
+    "luiz-inacio-lula-da-silva",
+    "flavio-bolsonaro"
+   ],
+   "resumo": "O ministro Alexandre de Moraes, do Supremo Tribunal Federal (STF), proibiu nesta segunda-feira (26) o senador Flávio Bolsonaro (PL) de deixar o país. O parlamentar será obrigado a entregar os seus passaportes à Polícia Federal (PF) . A decisão está em segredo de justiça e foi tornada pública pelo senador em suas redes sociais. A ordem judicial faz parte do processo em que Flávio e o advogado Willer Tomaz são investigados no STF . Notícias relacionadas: Lula cresce em número de votos em todos os estados; Flávio recua em 6. Flávio não reconhece vitória de Lula e tentará anulação do pleito. TSE n"
+  },
+  {
+   "id": "n-4c60bcd190",
+   "titulo": "Áudio: Proposta proriza iniciativas voltadas ao esporte feminino",
+   "url": "https://www12.senado.leg.br/noticias/audios/2026/10/proposta-proriza-iniciativas-voltadas-ao-esporte-feminino",
+   "data": "2026-10-26T20:54:00+00:00",
+   "fonte": "senado",
+   "nos": [],
+   "pessoas": [
+    "carlos-gomes",
+    "teresa-leitao"
+   ],
+   "resumo": "Um projeto que será analisado pelo Senado altera a lei que permite o uso da renúncia fiscal de empresas e pessoas físicas no incentivo ao esporte, dando prioridade a projetos voltados ao público feminino. O PLP 260/2026, de autoria do senador Eduardo Gomes (PL/TO), também destina, no mínimo, 10% dos valores às iniciativas que promovam a prática esportiva por mulheres e meninas. Em audiência pública sobre o tema, a senadora Teresa Leitão (PT-PE) destaca a desigualdade entre o que o esporte oferece para homens e para mulheres."
+  },
+  {
+   "id": "n-c7c103601c",
+   "titulo": "Posse de Lula será em 5 de janeiro",
+   "url": "https://agenciabrasil.ebc.com.br/politica/noticia/2026-10/posse-de-lula-sera-em-5-de-janeiro",
+   "data": "2026-10-26T20:54+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [],
+   "pessoas": [
+    "luiz-inacio-lula-da-silva",
+    "geraldo-alckmin"
+   ],
+   "resumo": "A posse para o quarto mandato do presidente Luiz Inácio Lula da Silva e do vice Geraldo Alckmin ocorrerá no dia 5 de janeiro de 2027, e não mais no primeiro dia do ano. Os governadores e vices vão assumir o mandato no dia seguinte. Essa mudança de datas foi estabelecida pela Emenda Constitucional nº 111, de 28 de setembro de 2021 . Trata-se de uma novidade na rotina da democracia brasileira. Desde a promulgação da Constituição de 1988, a data de posse ocorria sempre no dia 1º de janeiro. Antes de 1988, os chefes do Executivo tinham o evento de início de mandato no dia 15 de março . Agenda Notí"
+  },
+  {
+   "id": "n-4d2f85d7ff",
+   "titulo": "Projeto incentiva emprego para mães e escola para autistas",
+   "url": "https://www.camara.leg.br/noticias/1310589-projeto-incentiva-emprego-para-maes-e-escola-para-autistas",
+   "data": "2026-10-26T20:47+00:00",
+   "fonte": "camara",
+   "nos": [],
+   "pessoas": [
+    "marcos-pereira"
+   ],
+   "resumo": "Bruno Spada/Câmara dos Deputados Marcos Pereira: custos elevados sobrecarregam famílias O Projeto de Lei 3343/26 prevê incentivos fiscais para instituições de ensino privadas que criarem reserva de vagas e apoio especializado para estudantes com Transtorno do Espectro Autista (TEA). Esses benefícios também se aplicam a empresas que contratarem mães, pais ou responsáveis legais de estudantes com TEA para o período de contraturno escolar, permitindo que conciliem o trabalho com os cuidados e terapias dos filhos. Em análise na Câmara dos Deputados, o texto estabelece os seguintes critérios para a"
+  },
+  {
+   "id": "n-842c4df32d",
+   "titulo": "PF registrou 86 casos de possíveis crimes eleitorais no 2º turno",
+   "url": "https://agenciabrasil.ebc.com.br/politica/noticia/2026-10/pf-registrou-no-2o-turno-86-casos-de-possiveis-crimes-eleitorais",
+   "data": "2026-10-26T20:29+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [
+    "pf"
+   ],
+   "pessoas": [],
+   "resumo": "A Polícia Federal divulgou nesta segunda-feira (26) que 86 casos relacionados a possíveis crimes eleitorais foram registrados no segundo turno das eleições. Também foram instaurados 13 inquéritos policiais e lavrados 64 termos circunstanciados de ocorrência. Além disso, seis situações de flagrante permaneciam em análise. Notícias relacionadas: PF investiga se problemas na circulação de ônibus prejudicaram eleitor. PF vai apurar ataque a vereadora de Montes Claros, diz diretor-geral. Eleições 2026: oito partidos vão comandar 26 estados e o DF. Entre os principais registros, estão 38 casos de po"
+  },
+  {
+   "id": "n-d44d7ada35",
+   "titulo": "Destaques da semana (19 a 25 de outubro)",
+   "url": "https://www12.senado.leg.br/noticias/infomaterias/2026/10/destaques-da-semana-19-a-25-de-outubro",
+   "data": "2026-10-26T20:28:00+00:00",
+   "fonte": "senado",
+   "nos": [],
+   "pessoas": [],
+   "resumo": ""
+  },
+  {
+   "id": "n-351eda55e3",
+   "titulo": "Áudio: Presidente e governadores terão novas datas de posse em 2027",
+   "url": "https://www12.senado.leg.br/noticias/audios/2026/10/presidente-e-governadores-terao-novas-datas-de-posse-em-2027",
+   "data": "2026-10-26T20:26:00+00:00",
+   "fonte": "senado",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "O presidente e o vice-presidente eleitos tomarão posse em 5 de janeiro de 2027. Governadores e vices assumem no dia 6. As novas datas foram definidas por emenda constitucional promulgada em 2021 (EC 111/2021) para evitar a coincidência com o feriado de Ano Novo, facilitando a presença de autoridades na posse presidencial, como os próprios governadores eleitos. Senadores e deputados federais continuam tomando posse em 1º de fevereiro."
+  },
+  {
+   "id": "n-02dcf28970",
+   "titulo": "Projeto cria programa para simplificar regularização ambiental e fundiária de imóveis rurais",
+   "url": "https://www.camara.leg.br/noticias/1310183-projeto-cria-programa-para-simplificar-regularizacao-ambiental-e-fundiaria-de-imoveis-rurais",
+   "data": "2026-10-26T20:14+00:00",
+   "fonte": "camara",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "O texto está em análise na Câmara dos Deputados"
+  },
+  {
+   "id": "n-4d5ed5e7e1",
+   "titulo": "Mega-Sena terá semana especial com cinco sorteios consecutivos",
+   "url": "https://agenciabrasil.ebc.com.br/geral/noticia/2026-10/mega-sena-tera-semana-especial-com-cinco-sorteios-consecutivos",
+   "data": "2026-10-26T20:01+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [
+    "caixa"
+   ],
+   "pessoas": [],
+   "resumo": "Desta segunda-feira (26) até sexta-feira (30), a Caixa realiza a Mega Semana da Mega-Sena, com cinco sorteios consecutivos. A ação especial terá sorteios (concursos 3075, 3076, 3077, 3078 e 3079) de segunda a sexta-feira, substituindo o calendário regular. Notícias relacionadas: Mega-Sena acumula, e próximo prêmio será de R$ 300 milhões. Nesta segunda-feira, corre o concurso 3075, cujo prêmio está acumulado em R$ 300 milhões. As regras para aposta e prêmios segue a mesma. Os interessados devem apostar até as 20h e os sorteios serão realizados às 21h no horário de Brasília. A aposta simples, de"
+  },
+  {
+   "id": "n-748d7c2bd8",
+   "titulo": "Eleições 2026: oito partidos vão comandar 26 estados e o DF",
+   "url": "https://agenciabrasil.ebc.com.br/politica/noticia/2026-10/eleicoes-2026-oito-partidos-vao-comandar-26-estados-e-o-df",
+   "data": "2026-10-26T19:55+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [],
+   "pessoas": [
+    "sergio-moro"
+   ],
+   "resumo": "O resultado do segundo turno das eleições de 2026, nesse domingo (25), consolidou o novo mapa partidário do Brasil. Com a definição de quem governará os estados do Acre, Amazonas, Espírito Santo, Rio Grande do Norte, Tocantins e o Distrito Federal, um fato chama a atenção: a partir de 2027, o comando das 27 unidades da federação ficará concentrado em apenas oito partidos. PL Embora não tenha eleito nenhum novo governador nesse domingo, o PL manteve a liderança conquistada no primeiro turno, em 4 de outubro. Políticos filiados à legenda comandarão seis estados: Paraná ( Sergio Moro ); Rio de Ja"
+  },
+  {
+   "id": "n-d163e7b5ad",
+   "titulo": "Projeto cria política nacional para profissionais de portaria, vigia e controle de acesso",
+   "url": "https://www.camara.leg.br/noticias/1309849-projeto-cria-politica-nacional-para-profissionais-de-portaria-vigia-e-controle-de-acesso",
+   "data": "2026-10-26T19:23+00:00",
+   "fonte": "camara",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "Proposta estabelece piso salarial e define medidas de segurança e de capacitação; texto está em análise na Câmara"
+  },
+  {
+   "id": "n-f826308991",
+   "titulo": "Bombeiros encontram corpo de mulher levada por correnteza",
+   "url": "https://agenciabrasil.ebc.com.br/geral/noticia/2026-10/bombeiros-encontram-corpo-de-mulher-levada-por-correnteza",
+   "data": "2026-10-26T19:11+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "O Corpo de Bombeiros encontrou nesta segunda-feira (26) o corpo de uma mulher que desapareceu após ter o carro arrastado por uma correnteza no Ribeirão do Pinhal, na zona rural de Pinhalzinho, no interior paulista. Ela estava desaparecida desde a manhã de domingo (25), quando tentou atravessar um trecho alagado em uma ponte. Agora, o estado de São Paulo soma 26 mortes em decorrência das chuvas neste ano . No domingo, a Defesa Civil já havia confirmado a morte de duas mulheres que haviam sido arrastadas pela correnteza após tentarem atravessar um córrego no bairro Casa Branca, em Jundiaí. Notíc"
+  },
+  {
+   "id": "n-9d119b3c0b",
+   "titulo": "Prazo para empresas escolherem modelo do Simples acaba nesta sexta",
+   "url": "https://agenciabrasil.ebc.com.br/economia/noticia/2026-10/prazo-para-empresas-escolherem-modelo-do-simples-acaba-nesta-sexta",
+   "data": "2026-10-26T18:22+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "Os micro e pequenos empresários precisam ficar atentos. Acaba nesta sexta-feira (30) o prazo para a escolha do regime tributário que entrará em vigor em janeiro, com a reforma tributária. Os negócios que desejarem recolher o Imposto sobre Bens e Serviços (IBS) e a Contribuição sobre Bens e Serviços (CBS) pelo regime regular terão até sexta-feira para registrar a opção. Quem não fizer a escolha continuará a recolher pelo regime simplificado, que tem uma alíquota variável por tipo e tamanho de negócio posteriormente rateada em diversos tributos. Notícias relacionadas: Reforma Tributária: 86% das"
+  },
+  {
+   "id": "n-5aa32089db",
+   "titulo": "Segundo turno das eleições registra menor abstenção em 20 anos",
+   "url": "https://agenciabrasil.ebc.com.br/politica/noticia/2026-10/segundo-turno-das-eleicoes-registra-menor-abstencao-em-20-anos",
+   "data": "2026-10-26T18:14+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "As abstenções nas eleições gerais de 2026 caíram de 33.469.244 no primeiro turno, para 30.509.005 de eleitores no segundo turno, diferença de mais de 2,9 milhões de pessoas. Em termos percentuais, no primeiro turno 21,08% dos eleitores aptos a votar preferiram não ir às urnas no último dia 4. Já neste domingo (25), o número de ausentes caiu 19,22% dos 158.745.502. Notícias relacionadas: Abstenção de eleitores com mais de 70 anos cai 9,7 pontos percentuais. De acordo com os dados da Justiça Eleitoral, o maior percentual de abstenções ontem foi registrado entre os eleitores no exterior, que soma"
+  },
+  {
+   "id": "n-81f9b4d727",
+   "titulo": "Projeto suspende cobrança de tributos na importação de urânio",
+   "url": "https://www.camara.leg.br/noticias/1312038-projeto-suspende-cobranca-de-tributos-na-importacao-de-uranio",
+   "data": "2026-10-26T18:03+00:00",
+   "fonte": "camara",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "Texto está em análise na Câmara dos Deputados"
+  },
+  {
+   "id": "n-cf9f91b088",
+   "titulo": "Em São Paulo, três municípios escolhem novos prefeitos",
+   "url": "https://agenciabrasil.ebc.com.br/politica/noticia/2026-10/em-sao-paulo-tres-municipios-escolhem-novos-prefeitos",
+   "data": "2026-10-26T17:36+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [],
+   "pessoas": [
+    "luiz-inacio-lula-da-silva"
+   ],
+   "resumo": "Os eleitores das cidades paulistas de Macedônia, Martinópolis e Narandiba foram às urnas ontem (25) não somente para votar no novo presidente da República, mas também para eleger seus novos prefeitos. Segundo o Tribunal Regional Eleitoral de São Paulo (TRE-SP), a eleição suplementar nestas três cidades ocorreu junto com a votação do segundo turno para presidente da República, após os eleitos em 2024 terem os mandatos cassados em decisões da Justiça Eleitoral. Notícias relacionadas: Votação de Lula é a maior já recebida por um presidenciável no país. Lula agradece votos e diz que teve de vencer"
+  },
+  {
+   "id": "n-e9e00e15bb",
+   "titulo": "Projeto cria política para incentivar economia compartilhada no campo",
+   "url": "https://www.camara.leg.br/noticias/1310135-projeto-cria-politica-para-incentivar-economia-compartilhada-no-campo",
+   "data": "2026-10-26T17:08+00:00",
+   "fonte": "camara",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "Proposta institui a Política Nacional do Agro Colaborativo; texto está em análise na Câmara dos Deputados"
+  },
+  {
+   "id": "n-00cc011b8a",
+   "titulo": "PM registra 7 ocorrências e 6 detidos até o meio-dia de domingo em SP",
+   "url": "https://agenciabrasil.ebc.com.br/geral/noticia/2026-10/pm-registra-7-ocorrencias-e-6-detidos-ate-o-meio-dia-de-domingo-em-sp",
+   "data": "2026-10-26T17:07+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "Sete ocorrências foram registradas pela Polícia Militar durante o segundo turno das eleições até o meio-dia deste domingo (25). Cinco pessoas foram presas. Entre os casos atendidos estão três ocorrências na capital, além de uma em São Caetano do Sul, uma em Marília, uma em Guarantã e uma em Osasco. Foram cinco registros de crimes eleitorais, um de desacato e um atendimento de apoio a oficial de Justiça. Um eleitor foi flagrado por mesárias, na cidade de São Paulo, fotografando a urna eletrônica. A imagem foi apagada, e os envolvidos foram encaminhados a um Distrito Policial para a elaboração d"
+  },
+  {
+   "id": "n-693615085a",
+   "titulo": "Projeto proíbe cobrança de taxa para acesso a praias, rios e cachoeiras",
+   "url": "https://www.camara.leg.br/noticias/1313505-projeto-proibe-cobranca-de-taxa-para-acesso-a-praias-rios-e-cachoeiras",
+   "data": "2026-10-26T16:49+00:00",
+   "fonte": "camara",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "Texto está em análise na Câmara dos Deputados"
+  },
   {
    "id": "n-35891c5288",
    "titulo": "Votação de Lula é a maior já recebida por um presidenciável no país",
