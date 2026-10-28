@@ -1,6 +1,6 @@
 {
  "meta": {
-  "gerado_em": "2026-10-27T15:51+00:00",
+  "gerado_em": "2026-10-28T16:34+00:00",
   "gerado_por": "scripts/governo/agentes/agente_dou.py",
   "janela_dias": 120,
   "fonte": {
@@ -10,12 +10,54 @@
   "regra": "O feed registra o que o DOU publicou, com link para cada ato. Ocupantes no grafo só mudam com revisão humana.",
   "contagem": {
    "comando": 1,
-   "alta": 35,
-   "outra": 280
+   "alta": 34,
+   "outra": 282
   },
-  "refinados_por_claude": 0
+  "refinados_por_claude": 1
  },
  "mudancas": [
+  {
+   "id": "dou-8c3ad45a323d",
+   "data": "2026-10-27",
+   "publicado_em": "2026-10-28",
+   "tipo": "saida",
+   "cargo": "Diretora de Programa da Secretaria-Executiva do Ministério de Minas e Energia",
+   "codigo": "FCE 3.15",
+   "entra": null,
+   "sai": "Alexandra Lucio Sales de Carvalho",
+   "interino": false,
+   "a_pedido": true,
+   "desde": "2026-10-23",
+   "no_id": "mme",
+   "nivel": "outra",
+   "ato": "Portaria nº 1.100, de 27/10/2026",
+   "assinante": "Casa Civil da Presidência da República",
+   "fonte": "https://www.in.gov.br/web/dou/-/portarias-de-27-de-outubro-de-2026-740676202",
+   "fonte_nome": "DOU, seção 2",
+   "origem": "dou",
+   "resumo": "Alexandra Lucio Sales de Carvalho deixa a pedido o cargo de Diretora de Programa da Secretaria-Executiva do Ministério de Minas e Energia."
+  },
+  {
+   "id": "dou-ca44b609b36e",
+   "data": "2026-10-27",
+   "publicado_em": "2026-10-28",
+   "tipo": "nomeacao",
+   "cargo": "Secretário-Executivo do Conselho Nacional para Industrialização de Minerais Críticos e Estratégicos do Ministério do Desenvolvimento, Indústria, Comércio e Serviços",
+   "codigo": "CCE 1.17",
+   "entra": "Carlos Leonardo Teofilo Durans",
+   "sai": null,
+   "interino": false,
+   "a_pedido": false,
+   "desde": null,
+   "no_id": "mdic",
+   "nivel": "outra",
+   "ato": "Portaria nº 1.101, de 27/10/2026",
+   "assinante": "Casa Civil da Presidência da República",
+   "fonte": "https://www.in.gov.br/web/dou/-/portarias-de-27-de-outubro-de-2026-740676202",
+   "fonte_nome": "DOU, seção 2",
+   "origem": "dou",
+   "resumo": "Carlos Leonardo Teofilo Durans assume a Secretaria-Executiva do Conselho Nacional para Industrialização de Minerais Críticos e Estratégicos do Ministério do Desenvolvimento, Indústria, Comércio e Serviços."
+  },
   {
    "id": "dou-721fb0a645e3",
    "data": "2026-10-22",
@@ -6632,27 +6674,6 @@
    "fonte_nome": "DOU, seção 2",
    "origem": "dou",
    "resumo": "Ranier Grande de Castro deixa o cargo de Chefe da Assessoria Especial de Comunicação Social do Ministério do Empreendedorismo, da Microempresa e da Empresa de Pequeno Porte; assume Daniella Fernandes Cambauva."
-  },
-  {
-   "id": "dou-de4cc9c13804",
-   "data": "2026-06-29",
-   "publicado_em": "2026-06-30",
-   "tipo": "nomeacao",
-   "cargo": "Secretária-Executiva do Ministério de Portos e Aeroportos",
-   "codigo": null,
-   "entra": "Thairyne Jéssica Martins de Oliveira",
-   "sai": null,
-   "interino": false,
-   "a_pedido": false,
-   "desde": null,
-   "no_id": "mpor",
-   "nivel": "alta",
-   "ato": "Decreto, de 29/06/2026",
-   "assinante": "Presidência da República",
-   "fonte": "https://www.in.gov.br/web/dou/-/decreto-de-29-de-junho-de-2026-715452741",
-   "fonte_nome": "DOU, seção 2",
-   "origem": "dou",
-   "resumo": "Thairyne Jéssica Martins de Oliveira assume o cargo de Secretária-Executiva do Ministério de Portos e Aeroportos."
   }
  ]
 }
