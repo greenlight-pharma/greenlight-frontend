@@ -1,6 +1,6 @@
 {
  "meta": {
-  "gerado_em": "2026-11-02T20:14+00:00",
+  "gerado_em": "2026-11-03T17:42+00:00",
   "gerado_por": "scripts/governo/agentes/agente_noticias.py",
   "janela_dias": 90,
   "fontes": [
@@ -30,13 +30,13 @@
     "url": "https://www.gov.br/planalto/pt-br/acompanhe-o-planalto/noticias/RSS"
    }
   ],
-  "total_artigos": 3085,
-  "artigos_com_no": 1070,
-  "novos_nesta_rodada": 38,
+  "total_artigos": 3128,
+  "artigos_com_no": 1080,
+  "novos_nesta_rodada": 60,
   "artigos_por_fonte": {
-   "agenciabrasil": 1379,
-   "senado": 992,
-   "camara": 687,
+   "camara": 701,
+   "senado": 1007,
+   "agenciabrasil": 1393,
    "stf": 8,
    "planalto": 19
   },
@@ -45,206 +45,206 @@
  },
  "resumo": [
   {
-   "texto": "O presidente do Supremo Tribunal Federal, Edson Fachin, devolveu ao ministro André Mendonça a relatoria das investigações sobre descontos ilegais em benefícios do INSS.",
-   "artigo_id": "n-c01834c235",
-   "no_id": "stf"
+   "texto": "O Tribunal de Contas da União deve enviar ao Senado, em 10 de novembro, o estudo que fixou em 11,3% a alíquota de referência da CBS para 2027.",
+   "artigo_id": "n-fb3235b599",
+   "no_id": "tcu"
   },
   {
-   "texto": "A pedido da Advocacia-Geral da União, o ministro Luiz Fux, do STF, convocou representantes dos ministérios da Saúde e da Justiça e Segurança Pública para audiência sobre a Medida Provisória 1.394/2026, que trata das bets.",
-   "artigo_id": "n-362172f86b",
-   "no_id": "agu"
+   "texto": "O Ministério da Fazenda informou que o governo pretende enviar ao Congresso Nacional a medida provisória que regulamenta o Imposto Seletivo.",
+   "artigo_id": "n-5f82b9419d",
+   "no_id": "mf"
   },
   {
-   "texto": "O Ministério da Gestão e da Inovação em Serviços Públicos informou que a terceira edição do Concurso Público Nacional Unificado pode ter até 3 mil vagas em 2027, com realização condicionada à aprovação orçamentária.",
-   "artigo_id": "n-7a9b8987e5",
-   "no_id": "mgi"
+   "texto": "O Ministério da Justiça e Segurança Pública autorizou, por portaria, a atuação da Força Nacional por 180 dias na Terra Indígena Ituna-Itatá, no Pará, em apoio à Funai.",
+   "artigo_id": "n-c22b60cf1f",
+   "no_id": "mjsp"
   },
   {
-   "texto": "A Agência Nacional de Energia Elétrica leiloou oito lotes de transmissão de energia, com previsão de R$ 8,9 bilhões em investimentos, e prevê três novos leilões em 2027.",
-   "artigo_id": "n-07a80725e0",
-   "no_id": "aneel"
+   "texto": "A Justiça Eleitoral reabriu o cadastro eleitoral em todo o país e retomou serviços como emissão de título, transferência de domicílio e regularização.",
+   "artigo_id": "n-f99b19ec8d",
+   "no_id": "tse"
   }
  ],
  "ranking": {
   "orgaos": [
    {
     "id": "tse",
-    "artigos": 247,
-    "peso": 122.25048504671533,
-    "ultima": "2026-10-30T20:09+00:00"
+    "artigos": 248,
+    "peso": 122.9420269154815,
+    "ultima": "2026-11-03T15:13+00:00"
    },
    {
     "id": "stf",
-    "artigos": 155,
-    "peso": 75.3142969927149,
-    "ultima": "2026-11-01T20:55+00:00"
+    "artigos": 156,
+    "peso": 75.9389967598935,
+    "ultima": "2026-11-03T14:52+00:00"
    },
    {
     "id": "congresso",
-    "artigos": 92,
-    "peso": 56.346153836331816,
-    "ultima": "2026-10-30T21:30+00:00"
+    "artigos": 93,
+    "peso": 56.726908384754886,
+    "ultima": "2026-11-03T14:42+00:00"
    },
    {
     "id": "camara",
-    "artigos": 84,
-    "peso": 49.10406529977315,
-    "ultima": "2026-10-29T17:58:00+00:00"
+    "artigos": 85,
+    "peso": 49.707680978306136,
+    "ultima": "2026-11-03T15:08:00+00:00"
    },
    {
     "id": "prf",
     "artigos": 14,
-    "peso": 38.464768066289025,
+    "peso": 38.93679890443849,
     "ultima": "2026-10-30T15:44+00:00"
    },
    {
     "id": "mte",
     "artigos": 10,
-    "peso": 36.50051524750964,
+    "peso": 36.96823969471417,
     "ultima": "2026-10-31T21:24+00:00"
    },
    {
     "id": "pf",
     "artigos": 77,
-    "peso": 35.49907746380034,
+    "peso": 35.61379603365101,
     "ultima": "2026-11-01T20:06+00:00"
    },
    {
     "id": "inpe",
     "artigos": 4,
-    "peso": 33.81596122285409,
+    "peso": 34.27362375788718,
     "ultima": "2026-10-21T17:41+00:00"
+   },
+   {
+    "id": "mec",
+    "artigos": 44,
+    "peso": 22.639864285183783,
+    "ultima": "2026-11-03T10:02+00:00"
    },
    {
     "id": "caixa",
     "artigos": 49,
-    "peso": 21.923857868020306,
+    "peso": 22.00603015075377,
     "ultima": "2026-10-29T01:54+00:00"
    },
    {
-    "id": "mec",
-    "artigos": 42,
-    "peso": 21.714875525447052,
-    "ultima": "2026-11-02T13:24+00:00"
-   },
-   {
     "id": "anvisa",
-    "artigos": 44,
-    "peso": 20.83561210076911,
-    "ultima": "2026-11-01T15:56+00:00"
+    "artigos": 45,
+    "peso": 21.341550583081823,
+    "ultima": "2026-11-03T12:55+00:00"
    },
    {
     "id": "inss",
     "artigos": 27,
-    "peso": 16.806218639510888,
+    "peso": 16.778465995590317,
     "ultima": "2026-10-30T16:50+00:00"
    },
    {
     "id": "tcu",
-    "artigos": 24,
-    "peso": 14.35941399418316,
-    "ultima": "2026-10-30T11:00+00:00"
+    "artigos": 25,
+    "peso": 14.967656744429949,
+    "ultima": "2026-11-03T16:40:00+00:00"
    },
    {
     "id": "petrobras",
-    "artigos": 30,
-    "peso": 14.120970665980488,
-    "ultima": "2026-11-02T17:05+00:00"
+    "artigos": 31,
+    "peso": 14.610776680964761,
+    "ultima": "2026-11-03T15:42+00:00"
    },
    {
     "id": "agu",
-    "artigos": 31,
-    "peso": 14.04474592972935,
-    "ultima": "2026-11-01T20:55+00:00"
+    "artigos": 32,
+    "peso": 14.543433581583617,
+    "ultima": "2026-11-03T14:52+00:00"
    },
    {
     "id": "ms",
     "artigos": 27,
-    "peso": 13.578475968929766,
+    "peso": 13.601999942946836,
     "ultima": "2026-11-01T11:12+00:00"
    },
    {
     "id": "ibge",
     "artigos": 26,
-    "peso": 11.807617575849727,
+    "peso": 11.848817644756625,
     "ultima": "2026-10-30T12:50+00:00"
    },
    {
     "id": "inep",
     "artigos": 23,
-    "peso": 10.290790427846266,
+    "peso": 10.329361091170137,
     "ultima": "2026-11-01T17:47+00:00"
    },
    {
     "id": "senado",
     "artigos": 16,
-    "peso": 9.862902995968852,
+    "peso": 9.845662795329817,
     "ultima": "2026-10-21T16:33+00:00"
    },
    {
     "id": "anp",
     "artigos": 18,
-    "peso": 9.726195067622136,
+    "peso": 9.732224622879341,
     "ultima": "2026-10-15T23:42:00+00:00"
    },
    {
     "id": "tst",
     "artigos": 17,
-    "peso": 8.929669125494836,
+    "peso": 8.938824796395524,
     "ultima": "2026-10-28T22:36+00:00"
    },
    {
     "id": "mpf",
     "artigos": 17,
-    "peso": 7.780786538866407,
+    "peso": 7.806893739516136,
     "ultima": "2026-10-21T19:47+00:00"
-   },
-   {
-    "id": "stj",
-    "artigos": 13,
-    "peso": 6.892447943614062,
-    "ultima": "2026-10-30T14:42+00:00"
    },
    {
     "id": "mpt",
     "artigos": 14,
-    "peso": 6.88919157046431,
+    "peso": 6.902922487290059,
     "ultima": "2026-11-01T20:06+00:00"
+   },
+   {
+    "id": "stj",
+    "artigos": 13,
+    "peso": 6.897156547339645,
+    "ultima": "2026-10-30T14:42+00:00"
    },
    {
     "id": "inmet",
     "artigos": 15,
-    "peso": 6.711385061638869,
+    "peso": 6.73653984206748,
     "ultima": "2026-11-01T14:01+00:00"
    },
    {
     "id": "ebc",
     "artigos": 15,
-    "peso": 6.711385061638869,
+    "peso": 6.73653984206748,
     "ultima": "2026-11-01T10:30+00:00"
+   },
+   {
+    "id": "mf",
+    "artigos": 11,
+    "peso": 5.284426387862137,
+    "ultima": "2026-11-03T14:42+00:00"
    },
    {
     "id": "aneel",
     "artigos": 10,
-    "peso": 4.823356979110622,
+    "peso": 4.835323731724305,
     "ultima": "2026-10-30T20:50+00:00"
-   },
-   {
-    "id": "mf",
-    "artigos": 10,
-    "peso": 4.823356979110622,
-    "ultima": "2026-10-29T22:24+00:00"
    },
    {
     "id": "anatel",
     "artigos": 9,
-    "peso": 4.652063216584686,
+    "peso": 4.657409206600898,
     "ultima": "2026-10-29T14:28+00:00"
    },
    {
     "id": "bndes",
     "artigos": 7,
-    "peso": 4.382444054634202,
+    "peso": 4.374689195685644,
     "ultima": "2026-10-31T12:11+00:00"
    }
   ],
@@ -260,9 +260,9 @@
     "uf": null,
     "foto": "https://commons.wikimedia.org/wiki/Special:FilePath/Foto_oficial_de_Luiz_In%C3%A1cio_Lula_da_Silva_%28estreita%29.jpg?width=160",
     "foto_fonte": "https://www.wikidata.org/wiki/Q37181",
-    "artigos": 240,
-    "peso": 149.25332580807458,
-    "ultima": "2026-11-01T21:48+00:00"
+    "artigos": 241,
+    "peso": 150.4078175254595,
+    "ultima": "2026-11-03T14:42+00:00"
    },
    {
     "id": "flavio-bolsonaro",
@@ -276,7 +276,7 @@
     "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador5894.jpg",
     "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/5894",
     "artigos": 134,
-    "peso": 63.4746560069608,
+    "peso": 63.648658132439195,
     "ultima": "2026-10-31T17:58+00:00"
    },
    {
@@ -291,7 +291,7 @@
     "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador3830.jpg",
     "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/3830",
     "artigos": 57,
-    "peso": 34.084833291809325,
+    "peso": 34.060062579842885,
     "ultima": "2026-10-31T13:22+00:00"
    },
    {
@@ -306,7 +306,7 @@
     "foto": "https://commons.wikimedia.org/wiki/Special:FilePath/Nunes_Marques%2C_February_2025_%28cropped%29.jpg?width=160",
     "foto_fonte": "https://www.wikidata.org/wiki/Q99831978",
     "artigos": 62,
-    "peso": 29.93657498878988,
+    "peso": 30.009187248462915,
     "ultima": "2026-10-29T14:20:00+00:00"
    },
    {
@@ -321,7 +321,7 @@
     "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador6335.jpg",
     "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/6335",
     "artigos": 39,
-    "peso": 24.257056451612883,
+    "peso": 24.228798411122135,
     "ultima": "2026-10-29T20:34:00+00:00"
    },
    {
@@ -336,7 +336,7 @@
     "foto": "https://www.camara.leg.br/internet/deputado/bandep/160674.jpg",
     "foto_fonte": "https://www.camara.leg.br/deputados/160674",
     "artigos": 29,
-    "peso": 21.655626603819528,
+    "peso": 21.567662207711297,
     "ultima": "2026-10-27T23:41+00:00"
    },
    {
@@ -351,7 +351,7 @@
     "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador825.jpg",
     "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/825",
     "artigos": 23,
-    "peso": 14.130893412711401,
+    "peso": 14.11662996497597,
     "ultima": "2026-10-29T15:30:00+00:00"
    },
    {
@@ -366,7 +366,7 @@
     "foto": "https://commons.wikimedia.org/wiki/Special:FilePath/Luiz_Edson_Fachin-12-05.2015.jpg?width=160",
     "foto_fonte": "https://www.wikidata.org/wiki/Q10320705",
     "artigos": 26,
-    "peso": 11.982167711525415,
+    "peso": 12.020966229929618,
     "ultima": "2026-10-30T00:48+00:00"
    },
    {
@@ -381,7 +381,7 @@
     "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador5525.jpg",
     "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/5525",
     "artigos": 15,
-    "peso": 9.431218869348491,
+    "peso": 9.4178081655038,
     "ultima": "2026-10-26T12:13:00+00:00"
    },
    {
@@ -396,7 +396,7 @@
     "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador5376.jpg",
     "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/5376",
     "artigos": 14,
-    "peso": 8.70766129032258,
+    "peso": 8.697517378351542,
     "ultima": "2026-10-26T13:58:00+00:00"
    },
    {
@@ -411,8 +411,23 @@
     "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador6009.jpg",
     "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/6009",
     "artigos": 14,
-    "peso": 8.70766129032258,
+    "peso": 8.697517378351542,
     "ultima": "2026-10-23T20:44:00+00:00"
+   },
+   {
+    "id": "flavio-arns",
+    "nome": "Flávio Arns",
+    "nome_completo": "Flávio José Arns",
+    "cargo": "Senador, PR",
+    "no_id": "senado",
+    "poder": "legislativo",
+    "partido": "PSB",
+    "uf": "PR",
+    "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador345.jpg",
+    "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/345",
+    "artigos": 12,
+    "peso": 7.455014895729892,
+    "ultima": "2026-11-03T16:44:00+00:00"
    },
    {
     "id": "rogerio-carvalho",
@@ -426,23 +441,8 @@
     "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador5352.jpg",
     "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/5352",
     "artigos": 12,
-    "peso": 7.463709677419355,
+    "peso": 7.455014895729892,
     "ultima": "2026-10-28T14:06:00+00:00"
-   },
-   {
-    "id": "flavio-arns",
-    "nome": "Flávio Arns",
-    "nome_completo": "Flávio José Arns",
-    "cargo": "Senador, PR",
-    "no_id": "senado",
-    "poder": "legislativo",
-    "partido": "PSB",
-    "uf": "PR",
-    "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador345.jpg",
-    "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/345",
-    "artigos": 11,
-    "peso": 6.841733870967742,
-    "ultima": "2026-10-19T12:30:00+00:00"
    },
    {
     "id": "randolfe-rodrigues",
@@ -455,9 +455,24 @@
     "uf": "AP",
     "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador5012.jpg",
     "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/5012",
-    "artigos": 10,
-    "peso": 6.219758064516129,
-    "ultima": "2026-10-29T14:16:00+00:00"
+    "artigos": 11,
+    "peso": 6.833763654419068,
+    "ultima": "2026-11-03T12:03:00+00:00"
+   },
+   {
+    "id": "dario-carnevalli-durigan",
+    "nome": "Dario Carnevalli Durigan",
+    "nome_completo": "Dario Carnevalli Durigan",
+    "cargo": "Ministro(a) de Estado · MF",
+    "no_id": "mf",
+    "poder": "executivo",
+    "partido": null,
+    "uf": null,
+    "foto": null,
+    "foto_fonte": null,
+    "artigos": 14,
+    "peso": 6.287437185929648,
+    "ultima": "2026-11-03T14:42+00:00"
    },
    {
     "id": "fernando-dueire",
@@ -471,7 +486,7 @@
     "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador5917.jpg",
     "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/5917",
     "artigos": 10,
-    "peso": 6.219758064516129,
+    "peso": 6.212512413108243,
     "ultima": "2026-10-29T12:20:00+00:00"
    },
    {
@@ -486,7 +501,7 @@
     "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador6338.jpg",
     "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/6338",
     "artigos": 10,
-    "peso": 6.219758064516129,
+    "peso": 6.212512413108243,
     "ultima": "2026-10-26T20:54:00+00:00"
    },
    {
@@ -501,7 +516,7 @@
     "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador5990.jpg",
     "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/5990",
     "artigos": 10,
-    "peso": 6.219758064516129,
+    "peso": 6.212512413108243,
     "ultima": "2026-10-19T12:58:00+00:00"
    },
    {
@@ -516,23 +531,8 @@
     "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador4770.jpg",
     "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/4770",
     "artigos": 10,
-    "peso": 6.219758064516129,
+    "peso": 6.212512413108243,
     "ultima": "2026-10-09T21:56:00+00:00"
-   },
-   {
-    "id": "dario-carnevalli-durigan",
-    "nome": "Dario Carnevalli Durigan",
-    "nome_completo": "Dario Carnevalli Durigan",
-    "cargo": "Ministro(a) de Estado · MF",
-    "no_id": "mf",
-    "poder": "executivo",
-    "partido": null,
-    "uf": null,
-    "foto": null,
-    "foto_fonte": null,
-    "artigos": 13,
-    "peso": 5.81653372008702,
-    "ultima": "2026-10-29T14:54+00:00"
    },
    {
     "id": "confucio-moura",
@@ -546,7 +546,7 @@
     "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador475.jpg",
     "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/475",
     "artigos": 9,
-    "peso": 5.597782258064516,
+    "peso": 5.591261171797418,
     "ultima": "2026-10-22T20:10:00+00:00"
    },
    {
@@ -561,7 +561,7 @@
     "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador5672.jpg",
     "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/5672",
     "artigos": 9,
-    "peso": 5.423232122388828,
+    "peso": 5.419112586624426,
     "ultima": "2026-10-26T14:54:00+00:00"
    },
    {
@@ -576,7 +576,7 @@
     "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador5977.jpg",
     "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/5977",
     "artigos": 8,
-    "peso": 4.975806451612903,
+    "peso": 4.970009930486594,
     "ultima": "2026-10-28T22:43:00+00:00"
    },
    {
@@ -591,7 +591,7 @@
     "foto": null,
     "foto_fonte": null,
     "artigos": 10,
-    "peso": 4.823356979110622,
+    "peso": 4.835323731724305,
     "ultima": "2026-10-22T23:49+00:00"
    },
    {
@@ -606,12 +606,492 @@
     "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador6336.jpg",
     "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/6336",
     "artigos": 8,
-    "peso": 4.626706180261527,
+    "peso": 4.62571276014061,
     "ultima": "2026-10-22T18:33+00:00"
    }
   ]
  },
  "artigos": [
+  {
+   "id": "n-3748dba301",
+   "titulo": "Comissão aprova aumento de pena para estelionato contra entidades públicas e sociais",
+   "url": "https://www.camara.leg.br/noticias/1315167-comissao-aprova-aumento-de-pena-para-estelionato-contra-entidades-publicas-e-sociais",
+   "data": "2026-11-03T18:29+00:00",
+   "fonte": "camara",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "O projeto segue em análise na Câmara dos Deputados"
+  },
+  {
+   "id": "n-9fa119d9fb",
+   "titulo": "Comissões debatem projeto para ampliar a concorrência no mercado de gás natural",
+   "url": "https://www.camara.leg.br/noticias/1314776-comissoes-debatem-projeto-para-ampliar-a-concorrencia-no-mercado-de-gas-natural",
+   "data": "2026-11-03T18:13+00:00",
+   "fonte": "camara",
+   "nos": [],
+   "pessoas": [
+    "arnaldo-jardim"
+   ],
+   "resumo": "Divulgação/Compagas O projeto prevê instrumentos transitórios para ampliar a concorrência no mercado As comissões de Desenvolvimento Econômico; e de Minas e Energia da Câmara dos Deputados realizam, nesta quarta-feira (4), audiência pública para discutir o Projeto de Lei 5802/25, que prevê medidas para reduzir a concentração da oferta de gás natural no Brasil. O debate está marcado para as 14 horas, em plenário a ser definido. Veja quem foi convidado para o debate A audiência atende a pedido do deputado Arnaldo Jardim (Cidadania-SP), relator da proposta. O projeto prevê instrumentos transitóri"
+  },
+  {
+   "id": "n-36c586a225",
+   "titulo": "Comissão aprova mecanismo de segurança de dois fatores para transações financeiras de idosos",
+   "url": "https://www.camara.leg.br/noticias/1315216-comissao-aprova-mecanismo-de-seguranca-de-dois-fatores-para-transacoes-financeiras-de-idosos",
+   "data": "2026-11-03T18:05+00:00",
+   "fonte": "camara",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "A Câmara dos Deputados continua analisando o projeto"
+  },
+  {
+   "id": "n-bbee18c0cd",
+   "titulo": "Comissão aprova proposta de compartilhamento de dados de óbitos entre cartórios e SUS",
+   "url": "https://www.camara.leg.br/noticias/1315157-comissao-aprova-proposta-de-compartilhamento-de-dados-de-obitos-entre-cartorios-e-sus",
+   "data": "2026-11-03T17:40+00:00",
+   "fonte": "camara",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "Texto aprovado aproveita sistema nacional já existente para evitar custos e garantir rapidez no repasse de informações de mortalidade"
+  },
+  {
+   "id": "n-92de28122b",
+   "titulo": "Câmara analisa projetos sobre sobre proteção às mulheres, saúde e maus-tratos a animais",
+   "url": "https://www.camara.leg.br/noticias/1315214-camara-analisa-projetos-sobre-sobre-protecao-as-mulheres-saude-e-maus-tratos-a-animais",
+   "data": "2026-11-03T17:23+00:00",
+   "fonte": "camara",
+   "nos": [],
+   "pessoas": [
+    "yury-bruno"
+   ],
+   "resumo": "Thiago Cristino / Câmara dos Deputados Deputados reunidos no Plenário O Plenário da Câmara dos Deputados reúne-se nesta terça-feira (3) com 21 itens na pauta. Entre eles, projetos sobre monitoramento eletrônico de agressores, oferta de ultrassonografia morfológica no SUS e punição por maus-tratos a animais. A sessão está marcada para as 13h55. Uma das propostas pautadas é o Projeto de Lei 5542/26, do deputado Yury Bruno (MDB-CE), que altera a Lei Maria da Penha para estabelecer garantias mínimas na execução da monitoração eletrônica como medida protetiva de urgência. O projeto prevê alertas so"
+  },
+  {
+   "id": "n-453eca9f8c",
+   "titulo": "Comissão aprova projeto com diretrizes para formação continuada de professores em educação inclusiva",
+   "url": "https://www.camara.leg.br/noticias/1315111-comissao-aprova-projeto-com-diretrizes-para-formacao-continuada-de-professores-em-educacao-inclusiva",
+   "data": "2026-11-03T17:09+00:00",
+   "fonte": "camara",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "Texto continua em análise na Câmara dos Deputados"
+  },
+  {
+   "id": "n-5a91434402",
+   "titulo": "Vídeo: Acompanhe ao vivo: sessão deliberativa ordinária - 3/11/26",
+   "url": "https://www12.senado.leg.br/noticias/videos/2026/11/acompanhe-ao-vivo-sessao-deliberativa-ordinaria-3-11-26",
+   "data": "2026-11-03T17:01:00+00:00",
+   "fonte": "senado",
+   "nos": [],
+   "pessoas": [],
+   "resumo": ""
+  },
+  {
+   "id": "n-60b43f9a6c",
+   "titulo": "Comissão aprova projeto que assegura exame periódico no SUS para pessoas com diabetes",
+   "url": "https://www.camara.leg.br/noticias/1315078-comissao-aprova-projeto-que-assegura-exame-periodico-no-sus-para-pessoas-com-diabetes",
+   "data": "2026-11-03T16:50+00:00",
+   "fonte": "camara",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "A proposta continua em análise na Câmara dos Deputados"
+  },
+  {
+   "id": "n-80b74070fe",
+   "titulo": "Áudio: CE aprova regulamentação da profissão de audiodescritor",
+   "url": "https://www12.senado.leg.br/noticias/audios/2026/11/ce-aprova-regulamentacao-da-profissao-de-audiodescritor",
+   "data": "2026-11-03T16:44:00+00:00",
+   "fonte": "senado",
+   "nos": [],
+   "pessoas": [
+    "alessandro-vieira",
+    "flavio-arns"
+   ],
+   "resumo": "A Comissão de Educação aprovou nesta terça-feira (3) projeto que regulamenta a profissão de audiodescritor. O PL 2.273/2025, do senador Alessandro Vieira (MDB-SE), estabelece regras de qualificação e atuação para profissionais que tornam conteúdos visuais acessíveis a pessoas cegas ou com baixa visão. O relator, senador Flávio Arns (PSB-PR), lembrou que essa é uma função essencial para a inclusão. O texto segue para a Comissão de Assuntos Sociais (CAS)."
+  },
+  {
+   "id": "n-fb3235b599",
+   "titulo": "Senado deve receber cálculo da CBS na próxima terça para definir alíquota",
+   "url": "https://www12.senado.leg.br/noticias/materias/2026/11/03/senado-deve-receber-calculo-da-cbs-na-proxima-terca-para-definir-aliquota",
+   "data": "2026-11-03T16:40:00+00:00",
+   "fonte": "senado",
+   "nos": [
+    "tcu"
+   ],
+   "pessoas": [
+    "eduardo-braga"
+   ],
+   "resumo": "O Tribunal de Contas da União (TCU) deve encaminhar à Presidência do Senado, na terça-feira (10), o estudo que definiu em 11,3% a alíquota de referência da Contribuição sobre Bens e Serviços (CBS) para 2027. A informação foi apresentada nesta terça-feira (3) pelo senador Eduardo Braga (MDB-AM), durante reunião da Comissão de Assuntos Econômicos (CAE), com base em comunicação da Secretaria-Geral da Mesa (SGM). Segundo o parlamentar, que relatou a reforma tributária, o documento será enviado por ofício à Presidência do Senado e, posteriormente, remetido à CAE , responsável para a elaboração do p"
+  },
+  {
+   "id": "n-fac0879ca1",
+   "titulo": "Nova regra para dívidas de estados e municípios tem votação suspensa",
+   "url": "https://www12.senado.leg.br/noticias/materias/2026/11/03/nova-regra-para-dividas-de-estados-e-municipios-tem-votacao-suspensa",
+   "data": "2026-11-03T16:39:00+00:00",
+   "fonte": "senado",
+   "nos": [],
+   "pessoas": [
+    "esperidiao-amin"
+   ],
+   "resumo": "A contração de crédito para reestruturar dívidas de estados e municípios ao fim dos mandatos de governadores e prefeitos continuará em discussão na Comissão de Assuntos Econômicos (CAE). Após amplo debate, a senador Esperidião Amin (PP-SC), que presidiu a reunião desta terça-feira (3), concedeu vista coletiva ao Projeto de Resolução do Senado (PRS) 50/2026. Suspensa, a reunião será retomada nesta quarta-feira (4). Pelo texto, os chefes do Executivo em fim de mandato poderão contratar operações de crédito para reestruturação e recomposição de dívidas nos 120 dias anteriores ao término de seus m"
+  },
+  {
+   "id": "n-7fa1f31e42",
+   "titulo": "Áudio: Piso salarial para profissionais de apoio à educação básica segue para a CAE",
+   "url": "https://www12.senado.leg.br/noticias/audios/2026/11/piso-salarial-para-profissionais-de-apoio-a-educacao-basica-segue-para-a-cae",
+   "data": "2026-11-03T16:09:00+00:00",
+   "fonte": "senado",
+   "nos": [],
+   "pessoas": [
+    "marcelo-castro"
+   ],
+   "resumo": "Funcionários de secretarias escolares, bibliotecas, serviços de limpeza, manutenção e merenda poderão ter um piso salarial nacional. A medida está prevista em projeto (PL 2.531/2021) aprovado pela Comissão de Educação e Cultura do Senado (CE). O relator, senador Marcelo Castro (MDB-PI), destacou que o funcionamento das escolas depende do trabalho conjunto de professores e profissionais de apoio. O projeto será analisado agora pela Comissão de Assuntos Econômicos (CAE)."
+  },
+  {
+   "id": "n-7525007cee",
+   "titulo": "Acessos a site e aplicativo do Banco do Brasil são normalizados",
+   "url": "https://agenciabrasil.ebc.com.br/economia/noticia/2026-11/acessos-site-e-aplicativo-do-banco-do-brasil-sao-normalizados",
+   "data": "2026-11-03T16:07+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "O Banco do Brasil informou que retornou à normalidade o acesso dos clientes ao site e aplicativo no início da tarde desta terça-feira (3). “Os canais digitais já operam normalmente e todos os serviços estão à disposição dos clientes”, afirma comunicado da instituição financeira enviado à Agência Brasil . Notícias relacionadas: Site e aplicativo do Banco do Brasil apresentam instabilidade. BB capacitará funcionários para acolher mulheres em risco. Durante a manhã, clientes utilizaram as redes sociais para relatar dificuldade no acesso . Em alguns casos, o aplicativo nem sequer fornecia a opção "
+  },
+  {
+   "id": "n-92699cd216",
+   "titulo": "Dia Nacional da Herança Cultural dos Poloneses vai à sanção presidencial",
+   "url": "https://www12.senado.leg.br/noticias/materias/2026/11/03/dia-nacional-da-heranca-cultural-dos-poloneses-vai-a-sancao-presidencial",
+   "data": "2026-11-03T15:54:00+00:00",
+   "fonte": "senado",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "Dia Nacional da Herança Cultural dos Poloneses no Brasil poderá ser comemorado anualmente em 11 de novembro. É o que projeto prevê aprovado nesta terça-feira (3) na Comissão de Educação e Cultura (CE). A data coincide com o dia da independência da Polônia e tem objetivo de celebrar a contribuição dos poloneses na formação cultural brasileira. Aprovado em caráter terminativo, o texto segue para sanção presidencial, a não ser que seja requerida votação no Plenário do Senado. O PL 2.335/2025 determina que os poderes públicos promovam a divulgação da data e a realização de solenidades para celebra"
+  },
+  {
+   "id": "n-ad3e282ab2",
+   "titulo": "Comissão aprova desconto na compra de livros para professores e alunos de cursos de licenciatura",
+   "url": "https://www.camara.leg.br/noticias/1315102-comissao-aprova-desconto-na-compra-de-livros-para-professores-e-alunos-de-cursos-de-licenciatura",
+   "data": "2026-11-03T15:49+00:00",
+   "fonte": "camara",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "O projeto segue em análise na Câmara dos Deputados"
+  },
+  {
+   "id": "n-74d07dbf0f",
+   "titulo": "Prêmio TV Brasil Petrobras Para Elas: Vasco tem a goleadora do ano",
+   "url": "https://agenciabrasil.ebc.com.br/esportes/noticia/2026-11/premio-tv-brasil-petrobras-para-elas-vasco-tem-goleadora-do-ano",
+   "data": "2026-11-03T15:42+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [
+    "petrobras"
+   ],
+   "pessoas": [],
+   "resumo": "A atacante Lourdes González, do Vasco, encabeça a categoria Artilheira da Temporada no Prêmio TV Brasil Petrobras Para Elas. A disputa condecora a jogadora que mais gols marcou nas quatro competições nacionais femininas do ano: as três divisões do Campeonato Brasileiro e a Copa do Brasil. A paraguaia de 27 anos balançou as redes 21 vezes em 25 jogos em 2026. Considerando apenas os torneios nacionais, foram 15 gols em 16 partidas - todos na campanha do título vascaíno no Brasileirão A2 (segunda divisão). Na Copa do Brasil, ela passou em branco na derrota por 1 a 0 para o São Paulo no Estádio Ra"
+  },
+  {
+   "id": "n-f0fae9ce61",
+   "titulo": "Comissão aprova projeto que prevê carteira de docente para professores aposentados",
+   "url": "https://www.camara.leg.br/noticias/1315095-comissao-aprova-projeto-que-preve-carteira-de-docente-para-professores-aposentados",
+   "data": "2026-11-03T15:42+00:00",
+   "fonte": "camara",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "Proposta continua em análise na Câmara"
+  },
+  {
+   "id": "n-4dc5f5d2c1",
+   "titulo": "CE aprova Prêmio Nacional da Educação Brasileira",
+   "url": "https://www12.senado.leg.br/noticias/materias/2026/11/03/ce-aprova-premio-nacional-da-educacao-brasileira",
+   "data": "2026-11-03T15:40:00+00:00",
+   "fonte": "senado",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "A Comissão de Educação e Cultura (CE) aprovou nesta terça-feira (3) a criação do Prêmio Nacional da Educação Brasileira (PNEB). A premiação visa reconhecer estratégias e iniciativas para a melhoria da qualidade da aprendizagem na educação básica e será concedida a entes federativos, escolas e estudantes das redes públicas de ensino estaduais, distritais e municipais, em todo o território nacional. O prêmio será concedido em oito categorias: educação infantil; alfabetização; anos iniciais do ensino fundamental; anos finais do ensino fundamental; ensino médio; Exame Nacional do Ensino Médio (Ene"
+  },
+  {
+   "id": "n-57e744e8a4",
+   "titulo": "Plenário analisa Estatuto do Aprendiz na quarta-feira",
+   "url": "https://www12.senado.leg.br/noticias/materias/2026/11/03/plenario-analisa-estatuto-do-aprendiz-na-quarta-feira",
+   "data": "2026-11-03T15:23:00+00:00",
+   "fonte": "senado",
+   "nos": [],
+   "pessoas": [
+    "vital-do-rego",
+    "veneziano-vital-do-rego"
+   ],
+   "resumo": "O Plenário analisa na sessão desta quarta-feira (4) cinco projetos. Entre eles o chamado Estatuto do Aprendiz, que estabelece novas regras para a aprendizagem profissional e agrega em uma só lei as normas hoje dispersas em diferentes decretos. O relator do PL 6.461/2019 no Senado é Veneziano Vital do Rêgo (MDB-PB), com parecer favorável pela aprovação. O projeto define a aprendizagem profissional como contrato de trabalho voltado à formação técnico-profissional metódica, a qual consiste em um processo de aprendizagem que combina aulas teóricas e práticas organizadas em tarefas de complexidade "
+  },
+  {
+   "id": "n-8df51b02e1",
+   "titulo": "Semana Nacional do Pequeno Investidor em outubro vai à Câmara",
+   "url": "https://www12.senado.leg.br/noticias/materias/2026/11/03/semana-nacional-do-pequeno-investidor-em-outubro-vai-a-camara",
+   "data": "2026-11-03T15:20:00+00:00",
+   "fonte": "senado",
+   "nos": [],
+   "pessoas": [
+    "jussara-lima"
+   ],
+   "resumo": "A segunda semana de outubro poderá se tornar a Semana Nacional do Pequeno Investidor, com ações para ampliar o acesso da população aos investimentos e promover a educação financeira. A criação da data está prevista em projeto de lei aprovado nesta terça-feira (3) pela Comissão de Educação e Cultura (CE). De autoria da senadora Jussara Lima (PSD-PI), o PL 5.520/2025 prevê a realização de seminários, palestras e debates para estimular o hábito de investir e divulgar opções de investimento. As atividades poderão ser promovidas por instituições públicas e privadas. A proposta foi debatida em audiê"
+  },
+  {
+   "id": "n-9b75d3e015",
+   "titulo": "Comissão aprova diretrizes para atender pacientes com condições pós-Covid no SUS",
+   "url": "https://www.camara.leg.br/noticias/1315082-comissao-aprova-diretrizes-para-atender-pacientes-com-condicoes-pos-covid-no-sus",
+   "data": "2026-11-03T15:15+00:00",
+   "fonte": "camara",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "Proposta define parâmetros para diagnóstico precoce, tratamento e acompanhamento contínuo; o texto continua em análise na Câmara dos Deputados"
+  },
+  {
+   "id": "n-f99b19ec8d",
+   "titulo": "Justiça Eleitoral reabre cadastro e retoma serviços ao eleitor",
+   "url": "https://agenciabrasil.ebc.com.br/justica/noticia/2026-11/justica-eleitoral-reabre-cadastro-e-retoma-servicos-ao-eleitor",
+   "data": "2026-11-03T15:13+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [
+    "tse"
+   ],
+   "pessoas": [],
+   "resumo": "A Justiça Eleitoral reabriu o cadastro eleitoral em todo o país nesta terça-feira (3). Com a retomada dos serviços, eleitores podem voltar a solicitar a emissão do primeiro título de eleitor, a transferência de domicílio eleitoral, a atualização de dados cadastrais e a regularização da situação eleitoral. Os serviços podem ser acessados pelo Autoatendimento Eleitoral, disponível no portal do Tribunal Superior Eleitoral (TSE) , ou presencialmente em cartórios eleitorais, centrais e postos de atendimento. Serviços disponibilizados emissão do primeiro título de eleitor; transferência de domicílio"
+  },
+  {
+   "id": "n-560dd2599c",
+   "titulo": "Romaria do Divino Pai Eterno como manifestação cultural vai à Câmara",
+   "url": "https://www12.senado.leg.br/noticias/materias/2026/11/03/romaria-do-divino-pai-eterno-como-manifestacao-cultural-vai-a-camara",
+   "data": "2026-11-03T15:08:00+00:00",
+   "fonte": "senado",
+   "nos": [
+    "camara"
+   ],
+   "pessoas": [
+    "vanderlan-cardoso"
+   ],
+   "resumo": "A Romaria do Divino Pai Eterno, realizada em Trindade (GO), poderá ser reconhecida como manifestação da cultura nacional, de acordo com projeto aprovado em decisão terminativa na Comissão de Educação e Cultura (CE) nesta terça-feira (3). De autoria do senador Vanderlan Cardoso (PSD-GO), o texto segue para análise da Câmara dos Deputados, se não houver recurso para votação em Plenário. Segundo o autor do PL 2.423/2026, a romaria é uma das mais expressivas manifestações de fé, cultura popular e identidade comunitária do país. Para Vanderlan, o reconhecimento também valoriza a participação popula"
+  },
+  {
+   "id": "n-aa1ddf7392",
+   "titulo": "Fux rebate críticas e diz ter percepção de que bets devem ser banidas",
+   "url": "https://agenciabrasil.ebc.com.br/justica/noticia/2026-11/fux-rebate-criticas-e-diz-ter-percepcao-de-que-bets-devem-ser-banidas",
+   "data": "2026-11-03T14:52+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [
+    "stf",
+    "agu"
+   ],
+   "pessoas": [],
+   "resumo": "O ministro Luiz Fux, do Supremo Tribunal Federal (STF), rebateu nesta terça-feira (3) críticas sobre a escolha de participantes para a audiência pública convocada por ele sobre a proibição das bets no Brasil. Fux destacou que em uma primeira audiência sobre as apostas online, convocada por ele em novembro de 2024, ouviu durante dois dias entidades contrárias à autorização das bets no país, que expuseram os malefícios para a sociedade da ludopatia - o vício em jogos de azar. Notícias relacionadas: Fux atende AGU e inclui ministérios e Abras em debate sobre bets. STF determina soltura de desemba"
+  },
+  {
+   "id": "n-08560784b4",
+   "titulo": "Site e aplicativo do Banco do Brasil apresentam instabilidade",
+   "url": "https://agenciabrasil.ebc.com.br/economia/noticia/2026-11/site-e-aplicativo-do-banco-do-brasil-apresentam-instabilidade",
+   "data": "2026-11-03T14:51+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "Os canais digitais do Banco do Brasil , como o site e aplicativo de celular, apresentaram instabilidade na manhã desta terça-feira (3). Clientes do banco utilizaram as redes sociais para relatar dificuldade no acesso. Em alguns momentos, os aplicativos nem sequer forneceram a opção de fazer login. Em outros, mesmo digitando usuário e senha, o acesso não foi realizado. Notícias relacionadas: Banco do Brasil lança novo aplicativo com foco em IA e personalização. “Algo deu errado, tente novamente mais tarde”, informa a mensagem de erro no app. De acordo com o site Downdetector, que monitora probl"
+  },
+  {
+   "id": "n-5f82b9419d",
+   "titulo": "Governo quer enviar MP do Imposto Seletivo ainda hoje ao Congresso",
+   "url": "https://agenciabrasil.ebc.com.br/economia/noticia/2026-11/governo-quer-enviar-mp-do-imposto-seletivo-ainda-hoje-ao-congresso",
+   "data": "2026-11-03T14:42+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [
+    "mf",
+    "congresso"
+   ],
+   "pessoas": [
+    "luiz-inacio-lula-da-silva",
+    "dario-carnevalli-durigan"
+   ],
+   "resumo": "O ministro da Fazenda, Dario Durigan, informou que o governo pretende enviar ainda nesta terça-feira (3) ao Congresso Nacional a medida provisória (MP) que regulamenta o Imposto Seletivo. Segundo ele, o texto será discutido com o presidente Luiz Inácio Lula da Silva antes do envio ao Legislativo. “A MP já saiu aqui do Ministério da Fazenda. Devo despachar com o presidente hoje [terça-feira]. A expectativa é que seja hoje [enviada ao Congresso]”, disse Durigan ao chegar no ministério. Notícias relacionadas: Reforma Tributária: 86% das notas fiscais destacam a CBS. Governo buscará cumprir meta f"
+  },
+  {
+   "id": "n-c5d6b78ab9",
+   "titulo": "Comissão aprova isenção de taxa da carteira de habilitação para motoristas de veículos de emergência",
+   "url": "https://www.camara.leg.br/noticias/1315104-comissao-aprova-isencao-de-taxa-da-carteira-de-habilitacao-para-motoristas-de-veiculos-de-emergencia",
+   "data": "2026-11-03T14:37+00:00",
+   "fonte": "camara",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "Texto segue em análise na Câmara do Deputados"
+  },
+  {
+   "id": "n-529af483c0",
+   "titulo": "Avança regulamentação da profissão de audiodescritor",
+   "url": "https://www12.senado.leg.br/noticias/materias/2026/11/03/avanca-regulamentacao-da-profissao-de-audiodescritor",
+   "data": "2026-11-03T14:16:00+00:00",
+   "fonte": "senado",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "A Comissão de Educação e Cultura (CE) aprovou nesta terça-feira (3) projeto que regulamenta a profissão de audiodescritor, profissional responsável por traduzir imagens em palavras para pessoas com deficiência visual. A proposta estabelece quem pode ser audiodescritor, suas funções, como planejar roteiros e garantir a qualidade do trabalho, e como deve ser a equipe de audiodescrição. O texto define a audiodescrição como recurso de acessibilidade comunicacional que traduz conteúdos visuais estáticos e dinâmicos em linguagem verbal, escrita, oral ou sinalizada. O objetivo é ampliar o acesso das "
+  },
+  {
+   "id": "n-662aae438e",
+   "titulo": "Proposta assegura exame periódico no SUS para pessoas com diabetes",
+   "url": "https://www.camara.leg.br/noticias/1315076-proposta-assegura-exame-periodico-no-sus-para-pessoas-com-diabetes",
+   "data": "2026-11-03T14:09+00:00",
+   "fonte": "camara",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "Para virar lei, proposta precisa ser aprovada pela Câmara e pelo Senado"
+  },
+  {
+   "id": "n-53dffcc045",
+   "titulo": "Vídeo: CAE analisa previdência para bolsistas de pós-graduação – 03/11/26",
+   "url": "https://www12.senado.leg.br/noticias/videos/2026/11/ao-vivo-cae-analisa-previdencia-para-bolsistas-de-pos-graduacao-2013-03-11-26",
+   "data": "2026-11-03T14:02:00+00:00",
+   "fonte": "senado",
+   "nos": [],
+   "pessoas": [],
+   "resumo": ""
+  },
+  {
+   "id": "n-0debe4515d",
+   "titulo": "CE aprova piso salarial nacional para profissionais de apoio da educação básica",
+   "url": "https://www12.senado.leg.br/noticias/materias/2026/11/03/ce-aprova-piso-salarial-nacional-para-profissionais-de-apoio-da-educacao-basica",
+   "data": "2026-11-03T14:00:00+00:00",
+   "fonte": "senado",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "A Comissão de Educação e Cultura (CE) aprovou nesta terça-feira (3) um piso salarial nacional para os profissionais da educação básica pública que exercem funções de apoio, como merendeiras, auxiliares de limpeza e secretários escolares. O valor será equivalente a 75% do piso salarial dos professores — atualmente de R$ 5.130,63 — para os trabalhadores com formação de nível médio e jornada de até 40 horas semanais. O piso salarial, portanto, corresponde a R$ 3.847,97. De autoria da então deputada Rose Modesto (União-MS), o PL 2.531/2021 determina que União, estados, Distrito Federal e município"
+  },
+  {
+   "id": "n-cb5aeb6a6f",
+   "titulo": "Mercado eleva projeção para inflação, juros e dólar em 2026",
+   "url": "https://agenciabrasil.ebc.com.br/economia/noticia/2026-11/mercado-eleva-projecao-para-inflacao-juros-e-dolar-em-2026",
+   "data": "2026-11-03T13:43+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "O mercado financeiro elevou as projeções para a taxa básica de juros (Selic), a inflação e o dólar neste ano e reduziu, pela terceira semana consecutiva, a estimativa de crescimento da economia. Os dados constam do Boletim Focus, relatório semanal divulgado pelo Banco Central com projeções do mercado financeiro para inflação, câmbio, taxa Selic, entre outros indicadores. Notícias relacionadas: Após cinco meses, conta de luz voltará à bandeira verde em outubro. Neste primeiro boletim após o resultado das eleições presidenciais, a projeção para a taxa básica de juros (Selic) ao final de 2026 pas"
+  },
+  {
+   "id": "n-eedc4a2ca9",
+   "titulo": "Terremoto de magnitude 5,6 atinge a Colômbia",
+   "url": "https://agenciabrasil.ebc.com.br/internacional/noticia/2026-11/terremoto-de-magnitude-56-atinge-colombia",
+   "data": "2026-11-03T13:31+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "Um terremoto de magnitude 5,6 atingiu vasta área do centro e oeste da Colômbia na madrugada desta terça-feira (3), ferindo pelo menos uma pessoa e causando danos, segundo autoridades. Moradores correram para as ruas ao sentirem o tremor no departamento de Tolima, como mostram vídeos postados nas redes sociais. Notícias relacionadas: Terremoto no Tibete deixa pelo menos 16 pessoas mortas. Forte terremoto sacode o Panamá; operações do canal seguem normalmente. O terremoto ocorreu a uma profundidade de cerca de 19 km na cidade de Chaparral, segundo o Serviço Geológico da Colômbia. Uma pessoa fico"
+  },
+  {
+   "id": "n-077b8e94c2",
+   "titulo": "Comissão debate projeto que cria Marco de Fomento à Economia Digital no Brasil",
+   "url": "https://www.camara.leg.br/noticias/1314773-comissao-debate-projeto-que-cria-marco-de-fomento-a-economia-digital-no-brasil",
+   "data": "2026-11-03T13:28+00:00",
+   "fonte": "camara",
+   "nos": [],
+   "pessoas": [
+    "jadyel-alencar"
+   ],
+   "resumo": "Depositphotos Objetivo é aprofundar análise técnica da proposta A Comissão de Desenvolvimento Econômico da Câmara dos Deputados realiza, nesta quarta-feira (4), audiência pública para discutir o Projeto de Lei 5960/25 , que institui o Marco de Fomento à Economia Digital no Brasil. O debate está marcado para as 9h30, no plenário 5. Veja quem foi convidado para o debate . A audiência atende a pedido do deputado Jadyel Alencar (Republicanos-PI). Segundo o parlamentar, o objetivo é aprofundar a análise técnica da proposta antes da aprovação da norma, com a participação de especialistas e represent"
+  },
+  {
+   "id": "n-ffb52ca397",
+   "titulo": "Anvisa interdita parte de terminal no Porto de Santos",
+   "url": "https://agenciabrasil.ebc.com.br/saude/noticia/2026-11/anvisa-interdita-parte-de-terminal-no-porto-de-santos",
+   "data": "2026-11-03T12:55+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [
+    "anvisa"
+   ],
+   "pessoas": [],
+   "resumo": "A Agência Nacional de Vigilância Sanitária (Anvisa) determinou a interdição parcial do Brasil Terminal Portuário S.A. (BTP), localizado no Porto de Santos (SP) , após identificar irregularidades sanitárias durante inspeção de rotina baseada em análise de risco. A resolução da Gerência-Geral de Portos, Aeroportos, Fronteiras e Recintos Alfandegados da agência foi assinada em 29 de outubro e publicada na edição desta terça-feira (3) do Diário Oficial da União . Notícias relacionadas: Anvisa aprova 5 novas canetas para tratamento de diabetes e obesidade. Anvisa suspende venda de linguiça defumada"
+  },
+  {
+   "id": "n-f0a2f14e80",
+   "titulo": "Vídeo: CE pode criar o Prêmio Nacional da Educação Brasileira – 03/11/26",
+   "url": "https://www12.senado.leg.br/noticias/videos/2026/11/ao-vivo-ce-pode-criar-o-premio-nacional-da-educacao-brasileira-2013-03-11-26",
+   "data": "2026-11-03T12:34:00+00:00",
+   "fonte": "senado",
+   "nos": [],
+   "pessoas": [],
+   "resumo": ""
+  },
+  {
+   "id": "n-b6c0fa7217",
+   "titulo": "Comissão aprova divulgação de notas fiscais de compras feitas por órgãos públicos",
+   "url": "https://www.camara.leg.br/noticias/1314944-comissao-aprova-divulgacao-de-notas-fiscais-de-compras-feitas-por-orgaos-publicos",
+   "data": "2026-11-03T12:34+00:00",
+   "fonte": "camara",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "Projeto segue em análise na Câmara dos Deputados"
+  },
+  {
+   "id": "n-c22b60cf1f",
+   "titulo": "Força Nacional apoiará Funai na Terra Indígena Ituna-Itatá, no Pará",
+   "url": "https://agenciabrasil.ebc.com.br/direitos-humanos/noticia/2026-11/forca-nacional-apoiara-funai-na-terra-indigena-ituna-itata-no-para",
+   "data": "2026-11-03T12:26+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [
+    "mjsp",
+    "funai"
+   ],
+   "pessoas": [],
+   "resumo": "Agentes da Força Nacional de Segurança Pública vão atuar na Terra Indígena Ituna-Itatá, no Pará, em apoio à Fundação Nacional dos Povos Indígenas (Funai). O Ministério da Justiça e Segurança Pública autorizou a permanência das equipes por 180 dias na região, por meio da Portaria 1.336/2026 . Notícias relacionadas: Funai aciona PF e pede apuração de casos de ataques contra indígenas. Indígenas de MS denunciam casos de violência e ameaças após eleição. A área, localizada entre os municípios de Altamira e Senador José Porfírio, é reservada para a proteção de povos indígenas isolados e está sob re"
+  },
+  {
+   "id": "n-96b26fefb2",
+   "titulo": "Áudio: Projeto prevê prisão e multa de até 20% do faturamento por assédio eleitoral",
+   "url": "https://www12.senado.leg.br/noticias/audios/2026/11/projeto-preve-prisao-e-multa-de-ate-20-do-faturamento-por-assedio-eleitoral",
+   "data": "2026-11-03T12:03:00+00:00",
+   "fonte": "senado",
+   "nos": [],
+   "pessoas": [
+    "randolfe-rodrigues"
+   ],
+   "resumo": "Um projeto em tramitação no Senado amplia a proteção à liberdade política dos trabalhadores e combate o assédio eleitoral nas relações de trabalho. O PL 5.701/2026, do senador Randolfe Rodrigues (PT-AP), define como prática abusiva ameaçar, intimidar, monitorar ou oferecer vantagens a trabalhadores para influenciar seus votos, opiniões ou participação política. A proposta ainda não foi distribuída para as comissões temáticas."
+  },
+  {
+   "id": "n-024d26fa15",
+   "titulo": "Semana de Educação Midiática terá atividades em todas as regiões",
+   "url": "https://agenciabrasil.ebc.com.br/educacao/noticia/2026-11/semana-de-educacao-midiatica-tera-atividades-em-todas-regioes",
+   "data": "2026-11-03T10:58+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "Instituições públicas, escolas, universidades e organizações sociais em todo o país participam, de 4 a 10 de novembro, da 4ª Semana Brasileira de Educação Midiática. Sob o tema “Educação Midiática: integridade da informação para a formação cidadã”, a programação inclui mais de 300 atividades com experiências que conectam o tema às realidades locais e impactam mais de 60 mil pessoas. Notícias relacionadas: Educação midiática: mapa revela projetos de conscientização pelo país. Educação midiática e rotina do jornalismo são temas de podcast. A mobilização inclui debates, formações e experiências e"
+  },
+  {
+   "id": "n-121feddda6",
+   "titulo": "Fies 2: inscrições para vagas remanescentes terminam nesta terça",
+   "url": "https://agenciabrasil.ebc.com.br/educacao/noticia/2026-11/fies-2-inscricoes-para-vagas-remanescentes-terminam-nesta-terca",
+   "data": "2026-11-03T10:02+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [
+    "mec"
+   ],
+   "pessoas": [],
+   "resumo": "O prazo de inscrição para as vagas remanescentes do Fundo de Financiamento Estudantil (Fies), referentes ao segundo semestre de 2026, termina nesta terça-feira (3). Os estudantes interessados podem se inscrever exclusivamente pelo Portal Único de Acesso ao Ensino Superior. Para isso, é preciso fazer login pela conta da plataforma Gov.br. O programa oferece financiamento para estudantes que desejam cursar o ensino superior em faculdades privadas bem avaliadas pelo Ministério da Educação (MEC). O Fies cobre as mensalidades do curso e permite que o estudante pague, com condições facilitadas, o va"
+  },
+  {
+   "id": "n-12afb33bf4",
+   "titulo": "A menos de uma semana para o Enem 2026, MEC dá dicas aos participantes",
+   "url": "https://agenciabrasil.ebc.com.br/educacao/noticia/2026-11/menos-de-uma-semana-para-o-enem-2026-mec-da-dicas-aos-participantes",
+   "data": "2026-11-02T21:29+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [
+    "mec"
+   ],
+   "pessoas": [],
+   "resumo": "A primeira prova do Exame Nacional do Ensino Médio (Enem) de 2026 está marcada para o próximo domingo (8) e o Ministério da Educação (MEC) elaborou uma lista para facilitar a preparação dos mais de 5 milhões de inscritos com itens que devem estar prontos antes da data do exame. Segundo o MEC, nesta última semana o corpo e a cabeça precisam de previsibilidade e por isso os últimos dias servem para consolidar o que foi estudado e resolver problemas que ainda são possíveis. Notícias relacionadas: Falta uma semana para o Enem 2026: veja horários e o que levar . Enem: mulheres e pardos lideram insc"
+  },
+  {
+   "id": "n-4b225fa6b9",
+   "titulo": "Desembargador assume governo de MS após licença de governador e vice",
+   "url": "https://agenciabrasil.ebc.com.br/politica/noticia/2026-11/desembargador-assume-governo-de-ms-apos-licenca-de-governador-e-vice",
+   "data": "2026-11-02T20:29+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "Terceiro na linha de sucessão ao governo de Mato Grosso do Sul em caso de vacância do cargo de governador, o presidente do Tribunal de Justiça estadual (TJ-MS), desembargador Dorival Renato Pavan, assumiu interinamente a chefia do Poder Executivo estadual neste domingo (1º). Pavan deve permanecer à frente do governo sul-mato-grossense até a próxima sexta-feira (6), quando termina a licença temporária solicitada pelo governador Eduardo Riedel (PP) – reeleito no primeiro turno das eleições de 2026, em 4 de outubro. Notícias relacionadas: Eduardo Riedel é reeleito governador de MS no primeiro tur"
+  },
   {
    "id": "n-b50c9a4290",
    "titulo": "Polícia investiga acidente com asa-delta que deixou dois mortos no Rio",
