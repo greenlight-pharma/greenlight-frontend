@@ -2,8 +2,30 @@
   "$schema": "https://openapi.vercel.sh/vercel.json",
   "buildCommand": "bash scripts/build-vercel.sh",
   "outputDirectory": ".vercel-out",
-  "installCommand": "echo 'sem depend\u00eancias na raiz \u2014 o painel instala as suas no build'",
+  "installCommand": "echo 'sem dependências na raiz — o painel instala as suas no build'",
   "redirects": [
+    {
+      "source": "/:caminho*",
+      "has": [
+        {
+          "type": "host",
+          "value": "vytalacademico.com.br"
+        }
+      ],
+      "destination": "https://www.vytalsaude.com.br/academico/",
+      "permanent": false
+    },
+    {
+      "source": "/:caminho*",
+      "has": [
+        {
+          "type": "host",
+          "value": "www.vytalacademico.com.br"
+        }
+      ],
+      "destination": "https://www.vytalsaude.com.br/academico/",
+      "permanent": false
+    },
     {
       "source": "/care-whatsapp",
       "destination": "https://wa.me/5512996527434?text=Quero%20come%C3%A7ar%20o%20Vytal%20Care%20%5BIG-BIO-001%5D",
