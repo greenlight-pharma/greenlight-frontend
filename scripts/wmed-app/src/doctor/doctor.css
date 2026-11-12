@@ -97,3 +97,9 @@
 .doctor-app .scores-directory .resource-card:focus-visible{outline:3px solid var(--focus);outline-offset:2px}
 @media(max-width:760px){.doctor-app .scores-directory .resource-grid{grid-template-columns:1fr}.doctor-app .scores-directory .resource-card{padding:13px 14px}.doctor-app .scores-directory .library-filters label{flex-basis:100%;min-height:48px}.doctor-app .scores-directory .library-filters select{min-height:48px}}
 .doctor-app .case-audio-retry{margin:16px 0;padding:16px;border:1px solid var(--line);border-radius:12px;background:var(--surface)}.doctor-app .case-audio-retry strong{font-size:15px}.doctor-app .case-audio-retry p{font-size:14px;margin:8px 0 12px;line-height:1.6}.doctor-app .case-audio-retry>div{display:flex;gap:10px;flex-wrap:wrap}.doctor-app .case-audio-retry button{min-height:44px}.doctor-app .case-audio-retry button:first-child{background:var(--action);color:var(--action-text)}.doctor-app .case-audio-retry small{margin:12px 0 0;line-height:1.5}.doctor-app .case-audio-retry button:focus-visible{outline:2px solid var(--focus);outline-offset:3px}@media(max-width:760px){.doctor-app .case-audio-retry button{width:100%}}
+
+/* Fim das perguntas grátis sem conta: convite para criar a conta, com a conversa na tela. */
+.anon-wall{margin:18px 0 8px;padding:16px 18px;border:1.5px solid var(--accent);border-radius:14px;background:var(--surface);display:grid;gap:8px;justify-items:start}
+.anon-wall strong{font-size:17px;color:var(--ink)}
+.anon-wall p{margin:0;color:var(--muted);font-size:14.5px;line-height:1.5}
+.anon-wall button{min-height:44px;padding:0 18px;border:0;border-radius:10px;background:var(--action);color:var(--action-text);font:inherit;font-weight:700;cursor:pointer}

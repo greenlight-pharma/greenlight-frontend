@@ -103,3 +103,28 @@ test('General terms of use page exists in English and is linked from the other l
  assert.match(await fetch(url+'/privacy?lang=en').then(r=>r.text()),/<a href="\/terms">Terms of use<\/a>/);
  const patients=await fetch(url+'/terms/patients?lang=en').then(r=>r.text());assert.match(patients,/<a href="\/terms">Terms of use<\/a>/);assert.match(patients,/href="\/privacy\?lang=en"/);
 });
+test('landing dos anúncios (/start e /lp): HTML leve em inglês, sem o bundle, com pixel só por consentimento',async t=>{
+ const {url}=await fixture(t,{metaPixelId:'1234567890',landing:()=>({freeChat:20,freeCases:3,anonFree:2})});
+ for(const path of ['/start','/lp','/start/','/start?utm_source=instagram&fbclid=abc']){
+  const r=await fetch(url+path);assert.equal(r.status,200,path);assert.match(r.headers.get('content-type'),/text\/html/);
+  const html=await r.text();
+  assert.match(html,/<html lang="en">/);assert.match(html,/Hard case at 3&nbsp;a\.m\.\?/);
+  assert.ok(Buffer.byteLength(html)<40000,'página leve');
+  assert.doesNotMatch(html,/assets\/index-|type="module"/); // não puxa o app
+  for(const text of ['Answers with sources','Clinical cases with feedback','3D anatomy, histology and radiology','Ask your first question','20 AI answers a day','US$ 9.99','US$ 79 / year','Cancel anytime','Educational tool. Does not replace clinical judgment.','href="/privacy"','href="/terms"','Try 2 questions free'])assert.ok(html.includes(text),text);
+  assert.match(html,/data-app="criar-conta"[^>]*>Start free/);
+  // Pixel: o ID vai no script, mas só carrega com o consentimento salvo pelo mesmo aviso do app.
+  assert.match(html,/var PIXEL="1234567890",CONSENT="2doctor-cookie-consent"/);
+  assert.match(html,/fbq\('track','ViewContent',\{content_name:'landing'\}\)/);
+  assert.match(html,/if\(c==='accepted'\)pixel\(\)/);
+ }
+ const head=await fetch(url+'/start',{method:'HEAD'});assert.equal(head.status,200);assert.equal(await head.text(),'');
+ assert.equal((await fetch(url+'/start',{method:'POST'})).status,405);
+});
+test('landing sem pixel e sem perguntas grátis: nada de Meta carrega e o texto não promete pergunta sem conta',async t=>{
+ const {url}=await fixture(t,{metaPixelId:'',landing:()=>({freeChat:20,freeCases:3,anonFree:0})});
+ const html=await fetch(url+'/start').then(r=>r.text());
+ assert.match(html,/var PIXEL=""/);assert.doesNotMatch(html,/Try \d+ question/);assert.match(html,/Free account, takes seconds/);
+ // Sem banco (prévia): não inventa número de limite.
+ const {url:bare}=await fixture(t);assert.match(await fetch(bare+'/lp').then(r=>r.text()),/AI answers with a daily limit/);
+});

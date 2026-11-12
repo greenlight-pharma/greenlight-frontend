@@ -120,6 +120,20 @@ export const SCHEMA = [
    criado_em timestamptz not null default now()
  )`,
  `create index if not exists erros_servico_data on erros_servico(criado_em desc)`,
+ // Perguntas grátis sem conta (11/11): total por visitante anônimo (id do cookie assinado) e
+ // contagem diária por chave ('ip:<resumo>' e 'global'). Sem IP em claro e sem texto das perguntas.
+ `create table if not exists anon_visitantes (
+   id uuid primary key,
+   n integer not null default 0,
+   criado_em timestamptz not null default now(),
+   ultimo_em timestamptz not null default now()
+ )`,
+ `create table if not exists uso_anonimo (
+   chave text not null,
+   dia date not null,
+   n integer not null default 0,
+   primary key (chave, dia)
+ )`,
 ];
 
 let pool = null, ready = null;
