@@ -24,8 +24,8 @@
 .plan-badge{font-size:11px;font-weight:700;padding:4px 10px;border-radius:99px;border:1px solid var(--line);color:var(--muted)}
 .plan-badge.pro{background:#005d5b;border-color:#005d5b;color:#fff}
 .plan-options{display:grid;grid-template-columns:1fr 1fr;gap:10px}
-.plan-options button{display:flex;flex-direction:column;align-items:flex-start;gap:2px;min-height:64px;padding:12px;border:1px solid var(--line);border-radius:10px;background:var(--raised);color:var(--ink);text-align:left}
-.plan-options button.best{border-color:#005d5b;box-shadow:0 0 0 1px #005d5b inset}
+.plan-options button,.plan-options>div{display:flex;flex-direction:column;align-items:flex-start;gap:2px;min-height:64px;padding:12px;border:1px solid var(--line);border-radius:10px;background:var(--raised);color:var(--ink);text-align:left}
+.plan-options button.best,.plan-options>div.best{border-color:#005d5b;box-shadow:0 0 0 1px #005d5b inset}
 .plan-options strong{font-size:17px}.plan-options span{font-size:11px;color:var(--muted)}
 .plan-panel small{display:block;margin-top:10px;font-size:10px;color:var(--muted);line-height:1.6}
 .plan-panel .plan-manage{width:100%;min-height:44px;border-radius:10px;background:#005d5b;color:#fff;font-weight:600}
@@ -34,3 +34,7 @@
 .password-form{display:grid;gap:10px;margin-top:12px}.password-form label{display:grid;gap:5px;font-size:12px;font-weight:600;color:var(--ink)}
 .password-form input{min-height:42px;border:1px solid var(--line);border-radius:10px;padding:0 12px;font:inherit;font-size:16px;background:var(--raised);color:var(--ink)}
 .password-actions{display:grid;grid-template-columns:auto 1fr;gap:8px}.password-actions>button:first-child{border:1px solid var(--line);background:var(--raised);color:var(--ink);border-radius:10px;padding:0 14px;min-height:44px}
+
+/* Oferta do Pro no chat (limite gratuito do dia) e preços para visitante (/pricing) */
+.plan-panel.plan-upsell{margin:12px 0 0;max-width:520px}
+.plan-options+.plan-manage{margin-top:12px}

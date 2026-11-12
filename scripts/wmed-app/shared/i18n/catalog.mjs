@@ -1,5 +1,13 @@
 // Portuguese is the source language. Content libraries are translated separately.
 export const catalog={
+"Crie sua conta gratuita para ver a resposta.":["Create your free account to get the answer.","Crea tu cuenta gratuita para ver la respuesta."],
+"Leva segundos. Sua pergunta está guardada e é enviada assim que você criar a conta.":["It takes seconds. Your question is saved and will be sent as soon as you create your account.","Toma segundos. Tu pregunta está guardada y se enviará en cuanto crees tu cuenta."],
+"Termos de uso":["Terms of use","Términos de uso"],
+"Planos":["Plans","Planes"],
+"Comece grátis, com limite diário. O Pro libera IA para uso intenso, todos os dias.":["Start free, with a daily limit. Pro unlocks AI for heavy use, every day.","Empieza gratis, con límite diario. Pro libera la IA para uso intensivo, todos los días."],
+"Criar conta gratuita":["Create free account","Crear cuenta gratuita"],
+"Continue agora com o Pro":["Keep going now with Pro","Continúa ahora con Pro"],
+"Você usou o limite gratuito de hoje. O Pro libera IA para uso intenso, todos os dias: US$ 9.99 por mês ou US$ 79 por ano.":["You've used today's free limit. Pro unlocks AI for heavy use, every day: US$ 9.99/month or US$ 79/year.","Usaste el límite gratuito de hoy. Pro libera la IA para uso intensivo, todos los días: US$ 9.99 al mes o US$ 79 al año."],
 "Seu plano":["Your plan", "Tu plan"],
 "Gratuito":["Free", "Gratis"],
 "Pagamento pendente. Atualize o cartão para manter o Pro.":["Payment pending. Update your card to keep Pro.", "Pago pendiente. Actualiza tu tarjeta para mantener Pro."],
@@ -179,7 +187,7 @@ export const catalog={
 'Conversa salva na sua conta':['Conversation saved to your account','Conversación guardada en tu cuenta'],
 'O chat é salvo automaticamente.':['Chats are saved automatically.','Las conversaciones se guardan automáticamente.'],
 'Entre para salvar suas conversas.':['Sign in to save your chats.','Inicia sesión para guardar tus conversaciones.'],
-'Protótipo educacional. Confira as fontes. Não inclua dados que identifiquem pacientes.':['Educational prototype. Check sources. Do not include information that identifies patients.','Prototipo educativo. Revisa las fuentes. No incluyas datos que identifiquen a pacientes.'],
+'Protótipo educacional. Confira as fontes. Não inclua dados que identifiquem pacientes.':['Educational tool. Check sources. Do not include information that identifies patients.','Herramienta educativa. Revisa las fuentes. No incluyas datos que identifiquen a pacientes.'],
 'Suporte a idiomas':['Language settings','Configuración de idioma'],
 'Idioma':['Language','Idioma'],
 'País de referência':['Country context','País de referencia'],
