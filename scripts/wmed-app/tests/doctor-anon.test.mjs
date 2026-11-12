@@ -35,12 +35,19 @@ test.before(async () => {
  for (const k of ['ANON_FREE_QUESTIONS', 'ANON_IP_DAILY_LIMIT', 'ANON_GLOBAL_DAILY_LIMIT', 'ANON_RATE_PER_MINUTE', 'ANON_COOKIE_SECRET']) delete process.env[k];
  process.env.TWO_DOCTOR_SERVICE_KEY = 'chave-de-servico-de-teste-com-32-caracteres';
  process.env.PUBLIC_ORIGIN = ORIGIN;
- if (URL_TESTE) process.env.DATABASE_URL = URL_TESTE;
  ({ chat } = await import('../server/vytal-assistant.mjs'));
  if (skip) return;
+ // Esquema próprio no mesmo banco: os testes de contas apagam e recriam as tabelas deles em
+ // paralelo (cada arquivo roda em um processo), e as migrações não podem se cruzar.
+ const pg = (await import('../server/node_modules/pg/lib/index.js')).default;
+ const admin = new pg.Client({ connectionString: URL_TESTE });
+ await admin.connect();
+ await admin.query('drop schema if exists anon_teste cascade');
+ await admin.query('create schema anon_teste');
+ await admin.end();
+ process.env.DATABASE_URL = URL_TESTE + (URL_TESTE.includes('?') ? '&' : '?') + 'options=' + encodeURIComponent('-c search_path=anon_teste');
  db = await import('../server/db.mjs');
  anon = await import('../server/anon.mjs');
- await db.q('truncate anon_visitantes, uso_anonimo');
 });
 test.after(async () => { if (!skip) await db.closeDb(); });
 

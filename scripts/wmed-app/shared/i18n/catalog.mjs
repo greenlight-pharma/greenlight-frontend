@@ -1,5 +1,7 @@
 // Portuguese is the source language. Content libraries are translated separately.
 export const catalog={
+"Crie sua conta gratuita para continuar.":["Create your free account to keep going.","Crea tu cuenta gratuita para continuar."],
+"Você usou suas perguntas grátis sem conta. Com a conta gratuita você continua perguntando e salva suas conversas.":["You've used your free questions without an account. With a free account you can keep asking and save your conversations.","Usaste tus preguntas gratis sin cuenta. Con la cuenta gratuita sigues preguntando y guardas tus conversaciones."],
 "Crie sua conta gratuita para ver a resposta.":["Create your free account to get the answer.","Crea tu cuenta gratuita para ver la respuesta."],
 "Leva segundos. Sua pergunta está guardada e é enviada assim que você criar a conta.":["It takes seconds. Your question is saved and will be sent as soon as you create your account.","Toma segundos. Tu pregunta está guardada y se enviará en cuanto crees tu cuenta."],
 "Termos de uso":["Terms of use","Términos de uso"],

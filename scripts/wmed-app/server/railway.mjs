@@ -16,6 +16,7 @@ import {discovery} from './discovery.mjs';
 import {publicResearch} from './public-research.mjs';
 import {LEGAL_ROUTES,legalHtml,pickLocale,notFoundHtml} from './legal-pages.mjs';
 import {SITE,robotsTxt,sitemapXml} from '../shared/seo.mjs';
+import {LANDING_ROUTES,landingHtml} from './landing.mjs';
 
 const ROOT=fileURLToPath(new URL('../dist-2doctor/',import.meta.url));
 const MIME={'.html':'text/html; charset=utf-8','.js':'text/javascript; charset=utf-8','.css':'text/css; charset=utf-8','.json':'application/json; charset=utf-8','.svg':'image/svg+xml','.png':'image/png','.jpg':'image/jpeg','.jpeg':'image/jpeg','.webp':'image/webp','.ttf':'font/ttf','.woff2':'font/woff2','.glb':'model/gltf-binary','.gltf':'model/gltf+json','.bin':'application/octet-stream','.pdb':'chemical/x-pdb','.mp4':'video/mp4'};
@@ -50,7 +51,7 @@ export function byteRange(header,size){
  if(!Number.isSafeInteger(start)||!Number.isSafeInteger(end)||start<0||start>end||start>=size)return false;
  return {start,end};
 }
-export function createApp({root=ROOT,publicOrigin=process.env.PUBLIC_ORIGIN,fetchImpl=fetch,metaPixelId=process.env.META_PIXEL_ID,handlers=routes,status=null,sharePage=null,adminPage=null}={}){
+export function createApp({root=ROOT,publicOrigin=process.env.PUBLIC_ORIGIN,fetchImpl=fetch,metaPixelId=process.env.META_PIXEL_ID,handlers=routes,status=null,sharePage=null,adminPage=null,landing=null}={}){
  const absoluteRoot=resolve(root);
  const origin=publicOrigin?new URL(publicOrigin).origin:null;
  const server=http.createServer(async(req,res)=>{
@@ -106,6 +107,11 @@ export function createApp({root=ROOT,publicOrigin=process.env.PUBLIC_ORIGIN,fetc
     // Mantém a query (UTM dos anúncios) e abre o estado pelo #hash.
     const query=(req.url||'').includes('?')?'?'+req.url.split('?').slice(1).join('?'):'';
     res.writeHead(302,{Location:'/'+query+'#'+SHORTCUTS[legalPath],'Cache-Control':'no-store'});return res.end();
+   }
+   // Página de destino dos anúncios: HTML estático, sem o bundle do app.
+   if(LANDING_ROUTES.includes(legalPath)){
+    const html=landingHtml({pixelId:metaPixelId,path:legalPath,...(landing?landing():{})});
+    res.writeHead(200,{'Content-Type':'text/html; charset=utf-8','Cache-Control':'public, max-age=300','Content-Length':Buffer.byteLength(html)});return res.end(req.method==='HEAD'?undefined:html);
    }
    if(Object.hasOwn(LEGAL_ROUTES,legalPath)){const html=legalHtml(LEGAL_ROUTES[legalPath],pickLocale(req.url,req.headers['accept-language']),legalPath);res.writeHead(200,{'Content-Type':'text/html; charset=utf-8','Cache-Control':'public, max-age=300',Vary:'Accept-Language'});return res.end(req.method==='HEAD'?undefined:html);}
    // Link público de caso compartilhado (etiquetas de prévia para o X e mensageiros).
@@ -168,7 +174,7 @@ export function createApp({root=ROOT,publicOrigin=process.env.PUBLIC_ORIGIN,fetc
 }
 if(process.argv[1]&&resolve(process.argv[1])===fileURLToPath(import.meta.url)){
  const doctor=process.env.DATABASE_URL?await doctorRoutes():null;
- const server=createApp(doctor?{handlers:doctor.routes,status:doctor.status,sharePage:doctor.sharePage,adminPage:doctor.adminPage}:{});
+ const server=createApp(doctor?{handlers:doctor.routes,status:doctor.status,sharePage:doctor.sharePage,adminPage:doctor.adminPage,landing:doctor.landing}:{});
  server.listen(Number(process.env.PORT||8080),'0.0.0.0',()=>console.log('2Doctor HTTPS edge server ready'+(doctor?' · contas 2Doctor':'')));
  process.on('SIGTERM',()=>server.close(()=>process.exit(0)));
 }
