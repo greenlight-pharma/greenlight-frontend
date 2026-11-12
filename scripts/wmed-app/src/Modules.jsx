@@ -1,4 +1,7 @@
-import React, { lazy, Suspense, Component, useState } from "react";
+import {recoverableLazy as lazy, RecoverableBoundary} from './doctor/ModuleRecovery';
+import { useI18n } from './doctor/I18n';
+import { useBrasil, SO_BRASIL } from './doctor/regiao';
+import React, { Suspense, Component, useState } from "react";
 import {
   Atom,
   Dna,
@@ -17,10 +20,14 @@ import {
   TrendingUp,
   ClipboardList,
   FlaskConical,
+  Users,
+  PlayCircle,
 } from "lucide-react";
+const LabReference = lazy(()=>import('./doctor/LabReference'));
+const CommunityCases = lazy(()=>import('./doctor/CommunityCases'));
+const Videos = lazy(()=>import('./doctor/Videos'));
+const OfficialSources = lazy(()=>import('./doctor/OfficialSources'));
 const CountryHub = lazy(()=>import('./doctor/GlobalTools').then(m=>({default:m.CountryHub})));
-const Challenge = lazy(()=>import('./doctor/GlobalTools').then(m=>({default:m.Challenge})));
-const EvidenceLab = lazy(()=>import('./doctor/GlobalTools').then(m=>({default:m.EvidenceLab})));
 const Research = lazy(()=>import('./doctor/Research'));
 const InnovationRadar = lazy(()=>import('./doctor/Research').then(m=>({default:m.InnovationRadar})));
 const Anatomy = lazy(() =>
@@ -50,7 +57,7 @@ const Images = lazy(() =>
   import("./Libraries").then((m) => ({ default: m.Images })),
 );
 export const moduleItems = [
- ...(import.meta.env.VITE_PRODUCT==='2doctor'?[{id:'pais',label:'Seu país',description:'Fontes e caminhos de estudo',icon:BookOpen},{id:'desafio',label:'Desafio do dia',description:'Aprenda e desafie um colega',icon:ClipboardList},{id:'evidencias',label:'Interpretar um estudo',description:'Risco absoluto, relativo e NNT',icon:Calculator},{id:'pesquisa',label:'Fontes e estudos',description:'Artigos e ensaios clínicos',icon:BookOpen},{id:'inovacoes',label:'Radar de inovação',description:'Tecnologias em avaliação',icon:FlaskConical}]:[]),
+ ...(import.meta.env.VITE_PRODUCT==='2doctor'?[{id:'videos',label:'Vídeos',description:'Doenças explicadas em animação',icon:PlayCircle},{id:'comunidade',label:'Casos da comunidade',description:'Desafios compartilhados por médicos',icon:Users},{id:'fontes-oficiais',label:'Fontes oficiais',description:'Medicamentos e diretrizes por país',icon:BookOpen},{id:'pais',label:'Seu país',description:'Fontes e caminhos de estudo',icon:BookOpen},{id:'pesquisa',label:'Fontes e estudos',description:'Artigos e ensaios clínicos',icon:BookOpen},{id:'inovacoes',label:'Radar de inovação',description:'Tecnologias em avaliação',icon:FlaskConical}]:[]),
   {
     id: "chat",
     label: "Chat",
@@ -120,7 +127,7 @@ export const moduleItems = [
     icon: TrendingUp,
   },
 ];
-class Boundary extends Component {
+class LegacyBoundary extends Component {
   state = { error: false };
   static getDerivedStateFromError() {
     return { error: true };
@@ -136,6 +143,7 @@ class Boundary extends Component {
     );
   }
 }
+const Boundary = import.meta.env.VITE_PRODUCT === '2doctor' ? RecoverableBoundary : LegacyBoundary;
 export default function Modules({
   active,
   session,
@@ -145,14 +153,16 @@ export default function Modules({
   onProgress,
   onCasePending,
 }) {
+  const { t, locale } = useI18n();
+  const brasil = useBrasil();
   const [openedCase, setOpenedCase] = useState(false);
   if (active === "caso" && !openedCase) setOpenedCase(true);
   return (
     <>
       <div hidden={active !== "caso"} className="module-container">
         {openedCase && (
-          <Boundary key={caseKey}>
-            <Suspense fallback={<p>Preparando caso clínico…</p>}>
+          <Boundary key={caseKey} clinical>
+            <Suspense fallback={<p>{t('Preparando caso clínico…')}</p>}>
               <ClinicalCase
                 active={active === "caso"}
                 session={session}
@@ -168,9 +178,9 @@ export default function Modules({
         <div className="module-container va-connected">
           <Boundary key={active}>
             <Suspense
-              fallback={<p className="module-loading">Abrindo biblioteca…</p>}
+              fallback={<p className="module-loading">{t('Abrindo biblioteca…')}</p>}
             >
-              {active === "pais" ? <CountryHub/> : active === "desafio" ? <Challenge/> : active === "evidencias" ? <EvidenceLab/> : active === "pesquisa" ? <Research/> : active === "inovacoes" ? <InnovationRadar/> : active === "anatomia" ? (
+              {active === "videos" ? <Videos/> : active === "comunidade" ? <CommunityCases session={session} onLogin={onLogin}/> : active === "exames-laboratoriais" ? <LabReference/> : active === "fontes-oficiais" ? <OfficialSources/> : active === "pais" ? <CountryHub/> : active === "pesquisa" ? <Research/> : active === "inovacoes" ? <InnovationRadar/> : active === "anatomia" ? (
                 <Anatomy />
               ) : active === "histologia" ? (
                 <Histology />
@@ -186,6 +196,8 @@ export default function Modules({
                 <Questions session={session} />
               ) : active === "curso-ecg" ? (
                 <EcgCourse key={session?.user?.progressScope||"guest"} scope={session?.authenticated?session.user?.progressScope||"guest":"guest"}/>
+              ) : SO_BRASIL.has(active) && brasil !== true ? (
+                <p className="module-loading">{brasil === null ? t("Abrindo biblioteca…") : t("Os Resumos ENAMED estão disponíveis apenas no Brasil.")}</p>
               ) : active === "enamed" || active === "flashcards" ? (
                 <Enamed key={`${active}:${session?.authenticated?session.user?.progressScope||"guest":"guest"}`} initialMode={active==="flashcards"?"cards":"summaries"} scope={session?.authenticated?session.user?.progressScope||"guest":"guest"}/>
               ) : active === "scores" ? (
@@ -199,37 +211,36 @@ export default function Modules({
               ) : active === "evolucao" ? (
                 <section className="module-page">
                   <header className="module-heading">
-                    <span className="eyebrow blue">APRENDER COM CADA CASO</span>
-                    <h1>Minha evolução</h1>
+                    <span className="eyebrow blue">{t('APRENDER COM CADA CASO')}</span>
+                    <h1>{t('Minha evolução')}</h1>
                     <p>
-                      Qualidade dos seus relatos. Acompanhe seu aprendizado, sem
-                      comparação pública.
+                      {t('Qualidade dos seus relatos. Acompanhe seu aprendizado, sem comparação pública.')}
                     </p>
                   </header>
                   {progress.length ? (
                     <>
                       <div className="quality-card">
                         <div>
-                          <span>Último relato</span>
+                          <span>{t('Último relato')}</span>
                           <strong>
                             {progress.at(-1).score}
                             <small>/100</small>
                           </strong>
-                          <p>{progress.length} avaliações neste navegador</p>
+                          <p>{progress.length} {t('avaliações neste navegador')}</p>
                         </div>
                       </div>
                       <div className="progress-achievement">
                         <TrendingUp size={20} />
                         {progress.length >= 5
-                          ? "Conquista: cinco relatos avaliados"
-                          : "Conquista: primeiro relato avaliado"}
+                          ? t("Conquista: cinco relatos avaliados")
+                          : t("Conquista: primeiro relato avaliado")}
                       </div>
                       <div className="resource-grid">
                         {progress.map((p, i) => (
                           <article className="resource-card" key={i}>
-                            <small>Avaliação {i + 1}</small>
+                            <small>{t('Avaliação')} {i + 1}</small>
                             <h2>{p.score}/100</h2>
-                            <p>{new Date(p.date).toLocaleString("pt-BR")}</p>
+                            <p>{new Date(p.date).toLocaleString(locale)}</p>
                           </article>
                         ))}
                       </div>
@@ -237,21 +248,17 @@ export default function Modules({
                   ) : (
                     <div className="resource-card">
                       <TrendingUp />
-                      <h2>Sua evolução começa com um caso.</h2>
+                      <h2>{t('Sua evolução começa com um caso.')}</h2>
                       <p>
-                        Envie seu primeiro relato e confira a avaliação da sua
-                        apresentação.
+                        {t('Envie seu primeiro relato e confira a avaliação da sua apresentação.')}
                       </p>
                       <a href="#caso" className="module-primary">
-                        Relatar um caso
+                        {t('Relatar um caso')}
                       </a>
                     </div>
                   )}
                   <p className="module-note">
-                    Somente notas e datas são salvas neste navegador, separadas
-                    por conta. Não há sincronização entre aparelhos. Pontuação
-                    experimental; não representa nota acadêmica ou competência
-                    profissional.
+                    {t('Somente notas e datas são salvas neste navegador, separadas por conta. Não há sincronização entre aparelhos. Pontuação experimental; não representa nota acadêmica ou competência profissional.')}
                   </p>
                 </section>
               ) : null}

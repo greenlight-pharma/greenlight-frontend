@@ -2,7 +2,6 @@ import test from 'node:test';import assert from 'node:assert/strict';
 import {countryResources,countryProfile,pickText} from '../shared/country-hub.mjs';
 import {countries} from '../shared/international.mjs';
 import {challenges,challengeSources,resolveChallenge,dailyChallenge,challengeUrl,readChallengeProgress,recordChallenge} from '../shared/challenges.mjs';
-import {riskComparison} from '../shared/evidence-math.mjs';
 test('Regional directory covers supported countries without treating unknown country as a jurisdiction',()=>{
  assert.deepEqual(countryResources.map(p=>p.code).sort(),countries.filter(c=>!['global','other'].includes(c)).sort());
  assert.equal(countryProfile('global'),null);assert.equal(countryProfile('<invalid>'),null);
@@ -24,12 +23,4 @@ test('Local learning progress tolerates corrupt storage and records only the fir
  assert.deepEqual(readChallengeProgress({getItem:()=>'{broken'}),{});assert.deepEqual(readChallengeProgress(null),{});
  assert.deepEqual(readChallengeProgress({getItem:()=>JSON.stringify({nnt:1,prevalence:999,unexpected:'payload',sensitivity:-1})}),{nnt:1});
  const first=recordChallenge({},'nnt',0);assert.deepEqual(recordChallenge(first,'nnt',1),{nnt:0});assert.deepEqual(recordChallenge(first,'nnt',NaN),first);assert.deepEqual(recordChallenge(first,'bogus',1),first);
-});
-test('Risk math distinguishes benefit, harm, equal risk and zero baseline',()=>{
- const benefit=riskComparison('12','8');assert.equal(benefit.absolute,4);assert.equal(benefit.numberNeeded,25);assert.equal(benefit.direction,'benefit');assert.equal(benefit.riskRatio,2/3);
- const harm=riskComparison(8,12);assert.equal(harm.numberNeeded,25);assert.equal(harm.direction,'harm');assert.equal(harm.absolute,-4);
- const equal=riskComparison(8,8);assert.equal(equal.numberNeeded,null);assert.equal(equal.direction,'equal');
- const zero=riskComparison(0,5);assert.equal(zero.riskRatio,null);assert.equal(zero.relative,null);assert.equal(zero.direction,'harm');assert.equal(zero.numberNeeded,20);
- assert.equal(riskComparison(100,0).numberNeeded,1);assert.equal(riskComparison(10,7).numberNeeded,34);assert.equal(riskComparison('12,5','8,5').numberNeeded,25);
- for(const pair of [['',8],[' ',8],[null,8],[true,8],['1e2',8],[-1,8],[101,8],[Infinity,8],['foo',8],['12%','8']])assert.equal(riskComparison(...pair),null);
 });

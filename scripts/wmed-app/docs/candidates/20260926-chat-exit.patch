@@ -1,0 +1,71 @@
+diff --git a/scripts/wmed-app/shared/page-exit.mjs b/scripts/wmed-app/shared/page-exit.mjs
+new file mode 100644
+index 0000000..6c471e2
+--- /dev/null
++++ b/scripts/wmed-app/shared/page-exit.mjs
+@@ -0,0 +1,10 @@
++// Use only while work is pending. This does not save or transmit any content.
++// Mobile OS termination can bypass beforeunload entirely.
++export function protectPageExit(target) {
++  const warn = event => {
++    event.preventDefault();
++    event.returnValue = true;
++  };
++  target.addEventListener('beforeunload', warn);
++  return () => target.removeEventListener('beforeunload', warn);
++}
+diff --git a/scripts/wmed-app/src/main.jsx b/scripts/wmed-app/src/main.jsx
+index ad97c3e..8ebab94 100644
+--- a/scripts/wmed-app/src/main.jsx
++++ b/scripts/wmed-app/src/main.jsx
+@@ -1,3 +1,4 @@
++import { protectPageExit } from '../shared/page-exit.mjs';
+ import DraftDiscardDialog from './doctor/DraftDiscardDialog';
+ import ComposerLimit from './doctor/ComposerLimit';
+ import { composerLength } from '../shared/composer-length.mjs';
+@@ -49,6 +50,10 @@ function App() {
+   const [question, setQuestion] = useState(''),[messages, setMessages] = useState([]),[busy, setBusy] = useState(false),[status, setStatus] = useState(null),[settings, setSettings] = useState(false),[view, setView] = useState('chat'),[copied, setCopied] = useState(''),[mode, setMode] = useState('chat'),[session, setSession] = useState(null),[login, setLogin] = useState(false),[pending, setPending] = useState(''),[accountError, setAccountError] = useState('');
+   const [switchingChat, setSwitchingChat] = useState(false), [pendingSwitch, setPendingSwitch] = useState(null);
+   const switchingChatRef = useRef(false);
++  const hasPendingChat = PRODUCT.doctor && Boolean(question.trim() || attachments.length || attachmentLoading || busy);
++  useEffect(() => {
++    if (hasPendingChat) return protectPageExit(window);
++  }, [hasPendingChat]);
+   const historyStore = useChatHistory({ api: API, scope: session?.user?.progressScope, messages, setMessages, busy });
+   useEffect(() => {try {setProgress(loadProgress(localStorage, session?.user?.progressScope));} catch {setProgress([]);}}, [session?.user?.progressScope]);
+   function recordProgress(score) {setProgress((previous) => {const next = [...previous, { score, date: new Date().toISOString() }];try {saveProgress(localStorage, session?.user?.progressScope, next);} catch {}return next;});}
+diff --git a/scripts/wmed-app/tests/page-exit.test.mjs b/scripts/wmed-app/tests/page-exit.test.mjs
+new file mode 100644
+index 0000000..12a4755
+--- /dev/null
++++ b/scripts/wmed-app/tests/page-exit.test.mjs
+@@ -0,0 +1,29 @@
++import test from 'node:test';
++import assert from 'node:assert/strict';
++import { protectPageExit } from '../shared/page-exit.mjs';
++
++test('exit protection cancels unload only while registered and cleans up', () => {
++  const target = new EventTarget();
++  const exit = () => new Event('beforeunload', {cancelable:true});
++  assert.equal(target.dispatchEvent(exit()), true);
++  const release = protectPageExit(target);
++  const pending = exit();
++  assert.equal(target.dispatchEvent(pending), false);
++  assert.equal(pending.defaultPrevented, true);
++  release();
++  assert.equal(target.dispatchEvent(exit()), true);
++  release();
++  assert.equal(target.dispatchEvent(exit()), true);
++});
++
++test('cleanup preserves independent history protection and internal navigation', () => {
++  const target = new EventTarget();
++  const history = e => e.preventDefault();
++  target.addEventListener('beforeunload', history);
++  const release = protectPageExit(target);
++  assert.equal(target.dispatchEvent(new Event('hashchange', {cancelable:true})), true);
++  release();
++  assert.equal(target.dispatchEvent(new Event('beforeunload', {cancelable:true})), false);
++  target.removeEventListener('beforeunload', history);
++  assert.equal(target.dispatchEvent(new Event('beforeunload', {cancelable:true})), true);
++});

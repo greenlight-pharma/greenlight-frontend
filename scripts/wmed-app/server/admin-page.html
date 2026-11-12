@@ -1,0 +1,238 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#005d5b">
+<title>2Doctor · Painel</title>
+<style>
+:root{--bg:#f4f7f7;--card:#fff;--ink:#10201f;--mut:#5b6b6a;--line:#dde6e5;--pri:#005d5b;--pri2:#e3f1f0;--ok:#1d7a3e;--warn:#a35a00;--bad:#b42318;--bar:#0e7c79;--bar2:#7aa9a7}
+@media (prefers-color-scheme:dark){:root{--bg:#0d1514;--card:#15201f;--ink:#e6efee;--mut:#94a6a4;--line:#263533;--pri:#4fc1bc;--pri2:#173331;--bar:#4fc1bc;--bar2:#2f6e6b}}
+*{box-sizing:border-box}html,body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.45 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif}
+header{position:sticky;top:0;z-index:5;background:#005d5b;color:#fff;padding:10px 16px calc(0px);}
+header .top{display:flex;align-items:center;justify-content:space-between;gap:8px}
+header h1{font-size:17px;margin:0}header small{opacity:.8;font-size:12px}
+header button{background:rgba(255,255,255,.15);color:#fff;border:0;border-radius:8px;padding:6px 10px;font-size:13px}
+nav{display:flex;gap:4px;overflow-x:auto;margin:8px -16px 0;padding:0 12px}
+nav button{flex:none;background:none;border:0;color:#fff;opacity:.75;padding:9px 10px;font-size:14px;border-bottom:3px solid transparent}
+nav button[aria-selected=true]{opacity:1;border-color:#fff;font-weight:600}
+main{max-width:1100px;margin:0 auto;padding:14px 16px 60px}
+.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+@media(min-width:760px){.grid{grid-template-columns:repeat(4,minmax(0,1fr))}.two{display:grid;grid-template-columns:1fr 1fr;gap:12px}}
+.card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:12px 14px;margin-bottom:12px}
+.grid .card{margin:0}
+.k{font-size:12px;color:var(--mut);text-transform:uppercase;letter-spacing:.03em}
+.v{font-size:24px;font-weight:700;margin-top:2px;font-variant-numeric:tabular-nums}
+.s{font-size:12px;color:var(--mut)}
+a{color:var(--pri);text-decoration:none;font-weight:600}
+h2{font-size:15px;margin:18px 0 8px}
+h3{font-size:14px;margin:0 0 8px}
+table{width:100%;border-collapse:collapse;font-size:14px}
+td,th{padding:7px 4px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}
+th{font-size:12px;color:var(--mut);font-weight:600}
+td.n,th.n{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}
+.chart svg{width:100%;height:120px;display:block}
+.chart .ax{display:flex;justify-content:space-between;font-size:11px;color:var(--mut)}
+.pill{display:inline-block;font-size:11px;padding:1px 7px;border-radius:99px;background:var(--pri2);color:var(--pri);font-weight:600;white-space:nowrap}
+.pill.warn{background:#fff1dc;color:var(--warn)}.pill.bad{background:#fde7e5;color:var(--bad)}.pill.mut{background:var(--line);color:var(--mut)}
+input,select{font:inherit;padding:9px 10px;border:1px solid var(--line);border-radius:8px;background:var(--card);color:var(--ink);width:100%}
+.row{display:flex;gap:8px}.row>*{flex:1}
+.user{display:block;width:100%;text-align:left;background:var(--card);border:1px solid var(--line);border-radius:10px;padding:10px 12px;margin:0 0 8px;color:inherit;font:inherit}
+.user b{display:block}.user .meta{font-size:12px;color:var(--mut);margin-top:3px}
+.btn{background:#005d5b;color:#fff;border:0;border-radius:8px;padding:9px 12px;font:inherit;font-weight:600}
+.btn.sec{background:var(--pri2);color:var(--pri)}.btn.bad{background:#fde7e5;color:var(--bad)}
+.btn:disabled{opacity:.5}
+dialog{border:0;border-radius:14px;padding:0;width:min(560px,100vw - 16px);max-height:92vh;background:var(--card);color:var(--ink)}
+dialog::backdrop{background:rgba(0,0,0,.45)}
+.dlg{padding:14px 16px}.dlg dl{display:grid;grid-template-columns:auto 1fr;gap:4px 10px;font-size:14px;margin:8px 0}.dlg dt{color:var(--mut)}.dlg dd{margin:0;word-break:break-word}
+.actions{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
+.msg{font-size:13px;margin-top:8px}.msg.err{color:var(--bad)}.msg.ok{color:var(--ok)}
+.empty{color:var(--mut);font-size:13px}
+.conv{display:block;width:100%;text-align:left;background:none;border:0;border-bottom:1px solid var(--line);padding:9px 2px;color:inherit;font:inherit}.conv b{display:block;font-weight:600}
+.aviso{font-size:12px;color:var(--mut);background:var(--pri2);border-radius:8px;padding:5px 9px;margin:8px 0}
+.bolha{border:1px solid var(--line);border-radius:10px;padding:8px 10px;margin:0 0 8px;white-space:pre-wrap;word-break:break-word;font-size:14px}.bolha.ia{background:var(--pri2)}.bolha .s{display:block;margin-bottom:3px;white-space:normal}
+.legend{font-size:12px;color:var(--mut);display:flex;gap:12px;margin-top:4px}.legend i{display:inline-block;width:10px;height:10px;border-radius:2px;margin-right:4px;vertical-align:-1px}
+</style>
+</head>
+<body>
+<header>
+ <div class="top"><div><h1>2Doctor · Painel</h1><small id="atual">carregando…</small></div><button id="recarregar" type="button">Atualizar</button></div>
+ <nav role="tablist">
+  <button role="tab" data-tab="geral" aria-selected="true">Visão geral</button>
+  <button role="tab" data-tab="uso">Uso</button>
+  <button role="tab" data-tab="usuarios">Usuários</button>
+  <button role="tab" data-tab="auditoria">Auditoria</button>
+ </nav>
+</header>
+<main>
+ <section id="geral"></section>
+ <section id="uso" hidden></section>
+ <section id="usuarios" hidden>
+  <div class="row" style="margin-bottom:10px"><input id="busca" type="search" placeholder="Buscar por e-mail, nome, país…" autocomplete="off">
+   <select id="filtro" style="flex:0 0 120px"><option value="">Todos</option><option value="hoje">Hoje</option><option value="pro">Pro</option><option value="teste">Em teste</option><option value="cortesia">Cortesia</option></select></div>
+  <div id="lista"></div>
+  <div class="row" style="margin-top:8px"><button class="btn sec" id="ant" type="button">Anterior</button><span id="pag" class="s" style="text-align:center;align-self:center"></span><button class="btn sec" id="prox" type="button">Próxima</button></div>
+ </section>
+ <section id="auditoria" hidden></section>
+</main>
+<dialog id="ficha"><div class="dlg" id="fichaBody"></div></dialog>
+<script>
+const API='/api/wmed/admin/';
+const $=(s)=>document.querySelector(s);
+const esc=(v)=>String(v??'').replace(/[&<>"']/g,(c)=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'})[c]);
+const num=(v)=>Number(v||0).toLocaleString('pt-BR');
+const usd=(v)=>'US$ '+Number(v||0).toLocaleString('pt-BR',{minimumFractionDigits:2,maximumFractionDigits:2});
+const money=(v,c)=>(c||'usd').toUpperCase()+' '+Number(v||0).toLocaleString('pt-BR',{minimumFractionDigits:2,maximumFractionDigits:2});
+const dt=(v)=>v?new Date(v).toLocaleString('pt-BR',{day:'2-digit',month:'2-digit',year:'2-digit',hour:'2-digit',minute:'2-digit',timeZone:'America/Sao_Paulo'}):'—';
+const d=(v)=>v?new Date(v).toLocaleDateString('pt-BR',{timeZone:'America/Sao_Paulo'}):'—';
+async function get(p){const r=await fetch(API+p,{credentials:'same-origin',cache:'no-store'});if(r.status===404){location.href='/';throw Error('');}const j=await r.json();if(!r.ok)throw Error(j.error||'Erro');return j;}
+async function post(body){const r=await fetch(API+'acao',{method:'POST',credentials:'same-origin',headers:{'Content-Type':'application/json','X-WMed-Request':'1'},body:JSON.stringify(body)});const j=await r.json().catch(()=>({}));if(!r.ok)throw Error(j.error||'Erro');return j;}
+const card=(k,v,s='')=>`<div class="card"><div class="k">${esc(k)}</div><div class="v">${v}</div>${s?`<div class="s">${s}</div>`:''}</div>`;
+function bars(series,color='var(--bar)',label=''){
+ const max=Math.max(1,...series.map(x=>x.n)),w=100/series.length,tot=series.reduce((a,x)=>a+x.n,0);
+ const rects=series.map((x,i)=>{const h=x.n/max*100;return `<rect x="${i*w+w*.12}" y="${100-h}" width="${w*.76}" height="${Math.max(h,x.n?1.5:.4)}" fill="${x.n?color:'var(--line)'}"><title>${esc(x.dia.split('-').reverse().slice(0,2).join('/'))}: ${x.n}</title></rect>`;}).join('');
+ const f=(s)=>s.split('-').reverse().slice(0,2).join('/');
+ return `<div class="chart"><h3>${esc(label)} <span class="s">· ${num(tot)} em 30 dias · máx. ${num(max)}/dia</span></h3><svg viewBox="0 0 100 100" preserveAspectRatio="none" role="img" aria-label="${esc(label)}">${rects}</svg><div class="ax"><span>${f(series[0].dia)}</span><span>hoje ${series.at(-1).n}</span></div></div>`;
+}
+function stack(a,b){
+ const max=Math.max(1,...a.map((x,i)=>x.n+b[i].n)),w=100/a.length;
+ const rects=a.map((x,i)=>{const h1=x.n/max*100,h2=b[i].n/max*100;return `<rect x="${i*w+w*.12}" y="${100-h1}" width="${w*.76}" height="${h1}" fill="var(--bar)"><title>${x.dia}: ${x.n} conversas</title></rect><rect x="${i*w+w*.12}" y="${100-h1-h2}" width="${w*.76}" height="${h2}" fill="var(--bar2)"><title>${x.dia}: ${b[i].n} casos</title></rect>`;}).join('');
+ const f=(s)=>s.split('-').reverse().slice(0,2).join('/');
+ return `<div class="chart"><h3>Conversas e casos por dia <span class="s">· máx. ${num(max)}/dia</span></h3><svg viewBox="0 0 100 100" preserveAspectRatio="none" role="img" aria-label="Conversas e casos por dia">${rects}</svg><div class="ax"><span>${f(a[0].dia)}</span><span>hoje ${a.at(-1).n} + ${b.at(-1).n}</span></div><div class="legend"><span><i style="background:var(--bar)"></i>Conversas</span><span><i style="background:var(--bar2)"></i>Casos</span></div></div>`;
+}
+const tabela=(rows,cols)=>rows.length?`<table><tr>${cols.map(c=>`<th class="${c.n?'n':''}">${esc(c.t)}</th>`).join('')}</tr>${rows.map(r=>`<tr>${cols.map(c=>`<td class="${c.n?'n':''}">${c.f?c.f(r):esc(r[c.k])}</td>`).join('')}</tr>`).join('')}</table>`:'<p class="empty">Nada por aqui ainda.</p>';
+let R=null;
+async function carregar(){
+ $('#atual').textContent='carregando…';
+ try{R=await get('resumo');}catch(e){if(e.message)$('#geral').innerHTML=`<div class="card msg err">${esc(e.message)}</div>`;return;}
+ $('#atual').textContent='Atualizado '+dt(R.geradoEm)+' (Brasília)';
+ const a=R.assinaturas,s=R.stripe;
+ const sub=s?s.assinaturas:null;
+ const mrr=sub?sub.mrr:a.mrrBanco;
+ const receita=s?Object.entries(s.receitaMes):[];
+ $('#geral').innerHTML=`
+ <div class="grid">
+  ${card('Usuários',num(R.usuarios.total),`${num(R.usuarios.verificados)} com e-mail verificado`)}
+  ${card('Novos hoje',num(R.usuarios.hoje),`7 dias: ${num(R.usuarios.d7)} · 30 dias: ${num(R.usuarios.d30)}`)}
+  ${card('Ativos hoje',num(R.ativos.hoje),`7 dias: ${num(R.ativos.d7)}`)}
+  ${card('MRR estimado',usd(mrr),sub?'pelo Stripe'+(s.teste?' (modo teste)':''):'pelo banco (US$ 9,99/mês · 79/ano)')}
+  ${card('Assinantes Pro',num(sub?sub.mensal+sub.anual:a.mensal+a.anual),`mensal ${num(sub?sub.mensal:a.mensal)} · anual ${num(sub?sub.anual:a.anual)}`)}
+  ${card('Em teste grátis',num(sub?sub.teste:a.teste),'7 dias')}
+  ${card('Cancelamentos',num(sub?sub.canceladas:a.canceladas),`${num(sub?sub.cancelaNoFim:a.cancela_no_fim)} cancelam no fim do período · ${num(sub?sub.atrasadas:a.atrasadas)} em atraso`)}
+  ${card('Receita do mês',receita.length?receita.map(([c,v])=>money(v,c)).join('<br>'):(s?money(0):'—'),s?'faturas pagas no Stripe':R.stripeErro?esc(R.stripeErro):'sem chave Stripe no servidor')}
+ </div>
+ ${a.cortesias?`<p class="s">Cortesias Pro ativas: ${num(a.cortesias)} (não entram no MRR).</p>`:''}
+ ${R.stripeErro?`<p class="msg err">${esc(R.stripeErro)} Números de assinatura vêm do banco.</p>`:''}
+ <h2>Cadastros de hoje</h2>
+ <div class="card">${tabela(R.cadastrosHoje,[{t:'Hora',k:'hora'},{t:'Nome',f:r=>`<a href="#" data-u="${esc(r.id)}">${esc(r.nome||'—')}</a><div class="s">${esc(r.email)}</div>`},{t:'País',f:r=>esc(r.pais||'—')+(r.google?' <span class="pill mut">Google</span>':'')}])}</div>
+ <div class="two"><div class="card">${bars(R.series.cadastros,'var(--bar)','Cadastros por dia')}</div><div class="card">${stack(R.series.conversas,R.series.casos)}</div></div>`;
+ const u=R.uso;
+ $('#uso').innerHTML=`
+ <div class="grid">
+  ${card('Conversas hoje',num(u.conversas_hoje),`7 dias: ${num(u.conversas_7d)}`)}
+  ${card('Casos hoje',num(u.casos_hoje),`7 dias: ${num(u.casos_7d)}`)}
+  ${card('Mensagens hoje',num(u.mensagens_hoje),`7 dias: ${num(u.mensagens_7d)} (dia UTC)`)}
+  ${card('Erros da IA (24 h)',num(R.erros.reduce((a,x)=>a+x.h24,0)),`7 dias: ${num(R.erros.reduce((a,x)=>a+x.d7,0))}`)}
+ </div>
+ <h2>Quem mais conversa (30 dias)</h2>
+ <div class="card">${tabela(R.topMensagens,[{t:'Pessoa',f:r=>`<a href="#" data-u="${esc(r.id)}">${esc(r.nome||r.email)}</a><div class="s">${esc(r.email)}</div>`},{t:'Msgs',k:'mensagens',n:1},{t:'Conv.',k:'conversas',n:1},{t:'Casos',k:'casos',n:1}])}<p class="s">Só contagens; o conteúdo das conversas não aparece aqui.</p></div>
+ <div class="two">
+  <div class="card"><h3>Países</h3>${tabela(R.paises,[{t:'País',k:'chave'},{t:'Pessoas',k:'n',n:1}])}</div>
+  <div class="card"><h3>Idiomas</h3>${tabela(R.idiomas,[{t:'Idioma',k:'chave'},{t:'Pessoas',k:'n',n:1}])}</div>
+ </div>
+ <div class="card"><h3>Origem do cadastro (30 dias)</h3>${tabela(R.origens,[{t:'Origem',k:'chave'},{t:'Cadastros',k:'n',n:1}])}</div>
+ <div class="card"><h3>Erros do serviço de IA</h3>${tabela(R.erros,[{t:'Código',f:r=>`<span class="pill ${r.codigo==='SERVICE_UNAVAILABLE'?'bad':'warn'}">${esc(r.codigo)}</span>`},{t:'24 h',k:'h24',n:1},{t:'7 dias',k:'d7',n:1}])}
+  ${R.errosRecentes.length?`<h3 style="margin-top:12px">Últimos</h3>${tabela(R.errosRecentes,[{t:'Quando',k:'quando'},{t:'Rota',k:'rota'},{t:'Código',k:'codigo'},{t:'HTTP',k:'http',n:1}])}`:''}</div>`;
+}
+let pagina=1,t=null;
+async function lista(){
+ const p=new URLSearchParams({busca:$('#busca').value,filtro:$('#filtro').value,pagina});
+ let j;try{j=await get('usuarios?'+p);}catch(e){$('#lista').innerHTML=`<p class="msg err">${esc(e.message)}</p>`;return;}
+ $('#lista').innerHTML=j.usuarios.length?j.usuarios.map(u=>`<button class="user" type="button" data-u="${esc(u.id)}"><b>${esc(u.nome||'—')} ${plano(u)}</b><div class="meta">${esc(u.email)}${u.email_verificado?'':' · <span class="pill warn">não verificado</span>'}</div><div class="meta">${esc(u.pais||'—')} · cadastro ${d(u.criado_em)} · último acesso ${u.ultimo_acesso?dt(u.ultimo_acesso):'—'} · ${num(u.conversas)} conv. · ${num(u.casos)} casos</div></button>`).join(''):'<p class="empty">Nenhum usuário encontrado.</p>';
+ $('#pag').textContent=`${j.pagina}/${j.paginas} · ${num(j.total)}`;$('#ant').disabled=j.pagina<=1;$('#prox').disabled=j.pagina>=j.paginas;
+}
+function plano(u){
+ const st=u.assinatura_status,cort=u.cortesia_ate&&new Date(u.cortesia_ate)>new Date();
+ if(st==='trialing')return '<span class="pill">Teste</span>';
+ if(u.plano==='pro'&&['active','past_due'].includes(st))return `<span class="pill${st==='past_due'?' warn':''}">Pro${u.assinatura_intervalo?' '+esc(u.assinatura_intervalo):''}${st==='past_due'?' · atraso':''}${u.assinatura_cancela?' · cancela':''}</span>`;
+ if(cort)return '<span class="pill">Cortesia</span>';
+ if(st==='canceled')return '<span class="pill bad">Cancelado</span>';
+ return '<span class="pill mut">Grátis</span>';
+}
+async function abrir(id){
+ const box=$('#fichaBody');box.innerHTML='<p class="s">Carregando…</p>';$('#ficha').showModal();
+ let j;try{j=await get('usuario/'+id);}catch(e){box.innerHTML=`<p class="msg err">${esc(e.message)}</p>`;return;}
+ const u=j.usuario,cort=u.cortesia_ate&&new Date(u.cortesia_ate)>new Date();
+ box.innerHTML=`<div class="row" style="align-items:start"><div><h3 style="font-size:17px;margin:0">${esc(u.nome||'—')}</h3><div class="s">${esc(u.email)}</div></div><button class="btn sec" style="flex:0" type="button" id="fechar">Fechar</button></div>
+ <dl>
+  <dt>Plano</dt><dd>${plano(u)} ${u.assinatura_status?`<span class="s">${esc(u.assinatura_status)}${u.assinatura_fim?' até '+d(u.assinatura_fim):''}</span>`:''}</dd>
+  <dt>Cortesia</dt><dd>${cort?`até ${dt(u.cortesia_ate)} <span class="s">por ${esc(u.cortesia_por||'—')}</span>`:'—'}</dd>
+  <dt>E-mail</dt><dd>${u.email_verificado?'verificado':'<span class="pill warn">não verificado</span>'} · entra com ${[u.google&&'Google',u.tem_senha&&'senha'].filter(Boolean).join(' + ')||'—'}</dd>
+  <dt>País/idioma</dt><dd>${esc(u.pais||'—')} · ${esc(u.idioma||'—')}</dd>
+  <dt>Origem</dt><dd>${esc(u.origem||'—')}</dd>
+  <dt>Cadastro</dt><dd>${dt(u.criado_em)}</dd>
+  <dt>Último acesso</dt><dd>${dt(u.ultimo_acesso)}</dd>
+  <dt>Conversas</dt><dd>${num(u.conversas)} (${num(u.mensagensSalvas)} mensagens salvas)</dd>
+  <dt>Casos</dt><dd>${num(u.casos)}</dd>
+  <dt>Uso 30 dias</dt><dd>${j.uso30d.length?j.uso30d.map(x=>`${esc(x.tipo)} ${num(x.n)}`).join(' · '):'—'}</dd>
+ </dl>
+ <div class="actions">
+  <select id="dias" style="flex:0 0 110px"><option value="7">7 dias</option><option value="30" selected>30 dias</option><option value="90">90 dias</option><option value="365">1 ano</option></select>
+  <button class="btn" type="button" id="dar">${cort?'Renovar cortesia Pro':'Dar cortesia Pro'}</button>
+  ${cort?'<button class="btn bad" type="button" id="tirar">Remover cortesia</button>':''}
+  ${u.email_verificado?'':'<button class="btn sec" type="button" id="verif">Reenviar verificação</button>'}
+  ${u.conversas?`<button class="btn sec" type="button" id="verConv">Ver conversas (${num(u.conversas)})</button>`:''}
+  ${u.stripeUrl?`<a class="btn sec" href="${esc(u.stripeUrl)}" target="_blank" rel="noopener noreferrer" style="text-decoration:none">Abrir no Stripe</a>`:''}
+ </div>
+ <p class="msg" id="fmsg"></p>
+ ${j.auditoria.length?`<h3 style="margin-top:12px">Ações do admin</h3>${tabela(j.auditoria,[{t:'Quando',k:'quando'},{t:'Ação',k:'acao'},{t:'Por',k:'admin_email'}])}`:''}
+ <p class="s">Conversas abertas aqui ficam registradas na auditoria. Casos não são exibidos.</p>`;
+ if($('#verConv'))$('#verConv').onclick=()=>conversas(u.id,1);
+ $('#fechar').onclick=()=>$('#ficha').close();
+ const act=async(body,ok,btn)=>{const m=$('#fmsg');btn.disabled=true;m.className='msg';m.textContent='Enviando…';try{await post({id:u.id,...body});m.className='msg ok';m.textContent=ok;setTimeout(()=>abrir(u.id),900);lista();}catch(e){m.className='msg err';m.textContent=e.message;btn.disabled=false;}};
+ $('#dar').onclick=(e)=>{const dias=+$('#dias').value;if(confirm(`Dar Pro de cortesia por ${dias} dias para ${u.email}?`))act({acao:'cortesia',dias},'Cortesia registrada.',e.target);};
+ if($('#tirar'))$('#tirar').onclick=(e)=>{if(confirm('Remover a cortesia Pro?'))act({acao:'remover-cortesia'},'Cortesia removida.',e.target);};
+ if($('#verif'))$('#verif').onclick=(e)=>act({acao:'reenviar-verificacao'},'E-mail de verificação enviado.',e.target);
+}
+const papel=(p)=>p==='assistant'?'2Doctor':'Usuário';
+function pager(j,fn){return j.paginas>1?`<div class="row" style="margin-top:8px"><button class="btn sec" type="button" id="cAnt" ${j.pagina<=1?'disabled':''}>Anterior</button><span class="s" style="text-align:center;align-self:center">${j.pagina}/${j.paginas}</span><button class="btn sec" type="button" id="cProx" ${j.pagina>=j.paginas?'disabled':''}>Próxima</button></div>`:'';}
+function ligarPager(j,fn){if($('#cAnt'))$('#cAnt').onclick=()=>fn(j.pagina-1);if($('#cProx'))$('#cProx').onclick=()=>fn(j.pagina+1);}
+async function conversas(uid,pg){
+ const box=$('#fichaBody');box.innerHTML='<p class="s">Carregando…</p>';
+ let j;try{j=await get('conversas/'+uid+'?pagina='+pg);}catch(e){box.innerHTML=`<p class="msg err">${esc(e.message)}</p>`;return;}
+ box.innerHTML=`<div class="row" style="align-items:start"><div><h3 style="font-size:17px;margin:0">Conversas</h3><div class="s">${esc(j.usuario.nome||'—')} · ${esc(j.usuario.email)} · ${num(j.total)}</div></div><button class="btn sec" style="flex:0" type="button" id="voltar">Voltar</button></div>
+ <p class="aviso">Somente leitura. Abrir uma conversa fica registrado na auditoria.</p>
+ ${j.conversas.length?j.conversas.map(c=>`<button class="conv" type="button" data-c="${esc(c.id)}"><b>${esc(c.titulo)}</b><span class="s">${dt(c.atualizada_em)} · criada ${dt(c.criada_em)} · ${num(c.mensagens)} mensagens</span></button>`).join(''):'<p class="empty">Nenhuma conversa salva.</p>'}
+ ${pager(j)}`;
+ $('#voltar').onclick=()=>abrir(uid);ligarPager(j,(p)=>conversas(uid,p));
+ box.querySelectorAll('[data-c]').forEach(b=>b.onclick=()=>verConversa(uid,b.dataset.c,1,pg));
+}
+async function verConversa(uid,cid,pg,pgLista){
+ const box=$('#fichaBody');box.innerHTML='<p class="s">Carregando…</p>';
+ let j;try{j=await get('conversa/'+cid+'?pagina='+pg);}catch(e){box.innerHTML=`<p class="msg err">${esc(e.message)}</p>`;return;}
+ const c=j.conversa;
+ box.innerHTML=`<p class="aviso">Acesso registrado na auditoria (${esc(document.body.dataset.admin||'admin')}, ${dt(new Date())}). Somente leitura.</p>
+ <div class="row" style="align-items:start"><div><h3 style="font-size:16px;margin:0">${esc(c.titulo)}</h3><div class="s">${esc(c.usuario.email)} · criada ${dt(c.criada_em)} · última atualização ${dt(c.atualizada_em)} · ${num(j.total)} mensagens</div></div><button class="btn sec" style="flex:0" type="button" id="voltar">Voltar</button></div>
+ <div style="margin-top:10px">${j.mensagens.map(m=>`<div class="bolha ${m.papel==='assistant'?'ia':'pessoa'}"><span class="s">#${m.n} · <b>${papel(m.papel)}</b>${m.em?' · '+dt(m.em):''}</span>${esc(m.conteudo)}</div>`).join('')||'<p class="empty">Sem mensagens.</p>'}</div>
+ ${j.mensagens.some(m=>!m.em)?'<p class="s">Mensagens salvas antes de 04/10/2026 não têm horário próprio.</p>':''}
+ ${pager(j)}`;
+ $('#voltar').onclick=()=>conversas(uid,pgLista);ligarPager(j,(p)=>verConversa(uid,cid,p,pgLista));
+}
+async function auditoria(){
+ let j;try{j=await get('auditoria');}catch(e){$('#auditoria').innerHTML=`<p class="msg err">${esc(e.message)}</p>`;return;}
+ $('#auditoria').innerHTML=`<div class="card"><h3>Ações do admin</h3>${tabela(j.auditoria,[{t:'Quando',k:'quando'},{t:'Ação',f:r=>esc(r.acao)+(r.detalhe?.dias?` (${r.detalhe.dias} d)`:'')+(r.detalhe?.conversa?`<div class="s">${esc(r.detalhe.titulo||r.detalhe.conversa)}</div>`:'')},{t:'Usuário',f:r=>r.usuario_id?`<a href="#" data-u="${esc(r.usuario_id)}">${esc(r.usuario_email||r.usuario_id)}</a>`:'—'},{t:'Por',k:'admin_email'}])}</div>`;
+}
+document.addEventListener('click',(e)=>{const el=e.target.closest('[data-u]');if(el){e.preventDefault();abrir(el.dataset.u);}});
+$('#ficha').addEventListener('click',(e)=>{if(e.target===$('#ficha'))$('#ficha').close();});
+document.querySelectorAll('nav button').forEach(b=>b.onclick=()=>{document.querySelectorAll('nav button').forEach(x=>x.setAttribute('aria-selected',x===b));document.querySelectorAll('main>section').forEach(s=>s.hidden=s.id!==b.dataset.tab);if(b.dataset.tab==='usuarios')lista();if(b.dataset.tab==='auditoria')auditoria();try{sessionStorage.setItem('aba',b.dataset.tab);}catch{}});
+$('#busca').oninput=()=>{clearTimeout(t);t=setTimeout(()=>{pagina=1;lista();},300);};
+$('#filtro').onchange=()=>{pagina=1;lista();};
+$('#ant').onclick=()=>{pagina--;lista();};$('#prox').onclick=()=>{pagina++;lista();};
+$('#recarregar').onclick=()=>{carregar();const tab=document.querySelector('nav [aria-selected=true]').dataset.tab;if(tab==='usuarios')lista();if(tab==='auditoria')auditoria();};
+get('eu').then(j=>document.body.dataset.admin=j.email).catch(()=>{});
+carregar();
+try{const a=sessionStorage.getItem('aba');if(a&&a!=='geral')document.querySelector(`nav [data-tab="${a}"]`)?.click();}catch{}
+</script>
+</body>
+</html>

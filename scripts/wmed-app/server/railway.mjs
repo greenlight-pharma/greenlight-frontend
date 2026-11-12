@@ -1,21 +1,46 @@
 import http from 'node:http';
 import {createReadStream} from 'node:fs';
-import {stat} from 'node:fs/promises';
+import {stat,readFile} from 'node:fs/promises';
+import {injectPixelMeta} from '../shared/meta-pixel.mjs';
 import {resolve,extname,sep} from 'node:path';
 import {fileURLToPath} from 'node:url';
 import {Readable} from 'node:stream';
 import {pipeline} from 'node:stream/promises';
 import {auth,chat} from './vytal-assistant.mjs';
+import {noBrasil} from './regiao.mjs';
 import {academic} from './academic.mjs';
 import {cases} from './cases.mjs';
 import {history} from './history.mjs';
 import {privacy} from './privacy.mjs';
 import {discovery} from './discovery.mjs';
 import {publicResearch} from './public-research.mjs';
+import {LEGAL_ROUTES,legalHtml,pickLocale,notFoundHtml} from './legal-pages.mjs';
+import {SITE,robotsTxt,sitemapXml} from '../shared/seo.mjs';
+import {LANDING_ROUTES,landingHtml} from './landing.mjs';
 
 const ROOT=fileURLToPath(new URL('../dist-2doctor/',import.meta.url));
 const MIME={'.html':'text/html; charset=utf-8','.js':'text/javascript; charset=utf-8','.css':'text/css; charset=utf-8','.json':'application/json; charset=utf-8','.svg':'image/svg+xml','.png':'image/png','.jpg':'image/jpeg','.jpeg':'image/jpeg','.webp':'image/webp','.ttf':'font/ttf','.woff2':'font/woff2','.glb':'model/gltf-binary','.gltf':'model/gltf+json','.bin':'application/octet-stream','.pdb':'chemical/x-pdb','.mp4':'video/mp4'};
 const routes={auth,chat,academic,cases,history,privacy,discovery,research:publicResearch};
+// Com DATABASE_URL, o 2Doctor usa contas próprias (banco separado da Vytal) e fala com a API
+// Vytal pela chave de serviço. Sem ela, mantém o comportamento anterior (conta Vytal).
+export async function doctorRoutes(){
+ const accounts=await import('./accounts.mjs');const store=await import('./doctor-store.mjs');const pay=await import('./billing.mjs');const shared=await import('./shared-cases.mjs');const admin=await import('./admin.mjs');const {migrate}=await import('./db.mjs');const anon=await import('./anon.mjs');
+ await migrate();
+ const allow=(req,res)=>{if(accounts.sameSite(req))return true;res.statusCode=403;res.setHeader('Content-Type','application/json; charset=utf-8');res.end(JSON.stringify({error:accounts.t(accounts.lang(req),'origin')}));return false;};
+ const identify=(req)=>accounts.identify(req);
+ return {
+  routes:{auth:accounts.auth,chat:(req,res)=>chat(req,res,{identify:async(r)=>(await identify(r))??anon.anonCaller(r,res),allow,report:admin.reportError('chat')}),admin:admin.adminApi,academic:(req,res)=>academic(req,res,{identify,allow}),cases:store.cases,history:store.history,billing:pay.billing,compartilhados:shared.sharedCases,'stripe-webhook':pay.stripeWebhook,privacy:(req,res)=>privacy(req,res,{identify,allow}),discovery,research:publicResearch},
+  // anonFree: perguntas grátis sem conta (0 = desligado); o site usa para decidir quando abrir o muro.
+  status:()=>({...accounts.authStatus(),anonFree:anon.anonLimits().perVisitor}),
+  landing:()=>({freeChat:accounts.FREE_LIMITS.chat,freeCases:accounts.FREE_LIMITS.feedback,anonFree:anon.anonLimits().perVisitor}),
+  sharePage:shared.sharePage,
+  adminPage:admin.adminPage,
+ };
+}
+// Atalhos de anúncio/busca: abrem a home já no estado certo (o app lê o #hash e limpa).
+const SHORTCUTS={'/pricing':'planos','/signup':'criar-conta'};
+// Fora das páginas públicas, nada deve ser indexado.
+const PRIVATE_PATH=/^\/(?:api|admin|painel|c)(?:\/|$)/;
 function json(res,status,value){res.writeHead(status,{'Content-Type':'application/json; charset=utf-8','Cache-Control':'no-store'});res.end(JSON.stringify(value));}
 export function byteRange(header,size){
  if(!header)return null;
@@ -26,13 +51,14 @@ export function byteRange(header,size){
  if(!Number.isSafeInteger(start)||!Number.isSafeInteger(end)||start<0||start>end||start>=size)return false;
  return {start,end};
 }
-export function createApp({root=ROOT,publicOrigin=process.env.PUBLIC_ORIGIN,fetchImpl=fetch,handlers=routes}={}){
+export function createApp({root=ROOT,publicOrigin=process.env.PUBLIC_ORIGIN,fetchImpl=fetch,metaPixelId=process.env.META_PIXEL_ID,handlers=routes,status=null,sharePage=null,adminPage=null,landing=null}={}){
  const absoluteRoot=resolve(root);
  const origin=publicOrigin?new URL(publicOrigin).origin:null;
  const server=http.createServer(async(req,res)=>{
   res.setHeader('X-Content-Type-Options','nosniff');
   res.setHeader('X-Frame-Options','DENY');
   res.setHeader('Referrer-Policy','strict-origin-when-cross-origin');
+  // Indexável só no domínio oficial e nas páginas públicas (ver abaixo); o padrão é não indexar.
   res.setHeader('X-Robots-Tag','noindex, nofollow');
   res.setHeader('Permissions-Policy','camera=(), geolocation=(), microphone=(self)');
   if(origin?.startsWith('https:'))res.setHeader('Strict-Transport-Security','max-age=31536000');
@@ -41,19 +67,63 @@ export function createApp({root=ROOT,publicOrigin=process.env.PUBLIC_ORIGIN,fetc
    try{path=decodeURIComponent((req.url||'/').split('?')[0]);}catch{return json(res,400,{error:'Endereço inválido.'});}
    if(path.includes('\\')||path.includes('\0')||path.split('/').some(part=>part==='..'||part==='.'))return json(res,400,{error:'Endereço inválido.'});
    if(path==='/healthz'&&req.method==='GET')return json(res,200,{ok:true,product:'2doctor'});
+   // Keep existing public links working after the custom-domain migration.
+   // Never redirect API requests, request bodies, or unrecognised hosts.
+   if(origin==='https://www.2doctor.ai'&&req.headers.host==='2doctor-web-production.up.railway.app'&&['GET','HEAD'].includes(req.method)&&(path==='/'||path==='/2doctor'||path.startsWith('/2doctor/'))){
+    res.writeHead(302,{Location:origin+req.url,'Cache-Control':'no-store'});return res.end();
+   }
    if(origin&&req.headers.host!==new URL(origin).host)return json(res,400,{error:'Endereço não permitido.'});
+   const indexable=origin===SITE;
+   if(indexable&&!PRIVATE_PATH.test(path))res.removeHeader('X-Robots-Tag');
+   // Página que não existe: HTML em inglês para quem navega; JSON para o resto.
+   const notFound=()=>{
+    res.setHeader('X-Robots-Tag','noindex, nofollow');
+    if(!String(req.headers.accept||'').includes('text/html'))return json(res,404,{error:'Not found.'});
+    res.writeHead(404,{'Content-Type':'text/html; charset=utf-8','Cache-Control':'no-store'});return res.end(req.method==='HEAD'?undefined:notFoundHtml());
+   };
    if(path.startsWith('/api/')){
     if(!path.startsWith('/api/wmed/'))return json(res,404,{error:'Recurso não encontrado.'});
     // Same-origin requests only. Existing cookie, permission and quota checks still run.
-    if(!['GET','HEAD'].includes(req.method)&&origin&&req.headers.origin!==origin)return json(res,403,{error:'Origem não permitida.'});
-    const name=path.slice('/api/wmed/'.length);
-    if(name==='status')return json(res,req.method==='GET'?200:405,{research:'europe-pmc',jev:'not-configured',synthesis:'vytal-assistant',auth:'vytal-account',mode:'2doctor-preview'});
+    // O webhook do Stripe vem de servidor (sem Origin); ele se autentica pela assinatura HMAC.
+    if(!['GET','HEAD'].includes(req.method)&&origin&&req.headers.origin!==origin&&path!=='/api/wmed/stripe-webhook')return json(res,403,{error:'Origem não permitida.'});
+    const full=path.slice('/api/wmed/'.length);
+    // Só a conta 2Doctor tem sub-rotas (auth/google, auth/google/retorno, auth/verificar).
+    const [name,...rest]=full.split('/');const sub=rest.join('/');
+    if(name==='status')return json(res,req.method==='GET'?200:405,{research:'europe-pmc',jev:'not-configured',synthesis:'vytal-assistant',auth:'vytal-account',mode:'2doctor-preview',brasil:noBrasil(req),...(status?status():{})});
     const handler=Object.hasOwn(handlers,name)?handlers[name]:null;
-    if(!handler)return json(res,404,{error:'Recurso não encontrado.'});
-    return await handler(req,res);
+    if(!handler||(sub&&!(status&&['auth','admin'].includes(name))))return json(res,404,{error:'Recurso não encontrado.'});
+    return await handler(req,res,sub?{sub}:undefined);
    }
    if(!['GET','HEAD'].includes(req.method))return json(res,405,{error:'Método não permitido.'});
-   if(path==='/'||path==='/2doctor'){res.writeHead(302,{Location:'/2doctor/','Cache-Control':'no-store'});return res.end();}
+   // Política de privacidade e termos para pacientes (páginas públicas, EN/ES/PT).
+   const legalPath=path.length>1?path.replace(/\/$/,''):path;
+   if(path==='/robots.txt'||path==='/sitemap.xml'){
+    if(path==='/sitemap.xml'&&!indexable)return notFound();
+    const text=path==='/robots.txt'?robotsTxt(indexable):sitemapXml();
+    res.writeHead(200,{'Content-Type':path==='/robots.txt'?'text/plain; charset=utf-8':'application/xml; charset=utf-8','Cache-Control':'public, max-age=3600'});return res.end(req.method==='HEAD'?undefined:text);
+   }
+   if(path==='/favicon.ico'){res.writeHead(302,{Location:'/brand/2doctor/favicon.svg','Cache-Control':'public, max-age=86400'});return res.end();}
+   if(Object.hasOwn(SHORTCUTS,legalPath)){
+    // Mantém a query (UTM dos anúncios) e abre o estado pelo #hash.
+    const query=(req.url||'').includes('?')?'?'+req.url.split('?').slice(1).join('?'):'';
+    res.writeHead(302,{Location:'/'+query+'#'+SHORTCUTS[legalPath],'Cache-Control':'no-store'});return res.end();
+   }
+   // Página de destino dos anúncios: HTML estático, sem o bundle do app.
+   if(LANDING_ROUTES.includes(legalPath)){
+    const html=landingHtml({pixelId:metaPixelId,path:legalPath,...(landing?landing():{})});
+    res.writeHead(200,{'Content-Type':'text/html; charset=utf-8','Cache-Control':'public, max-age=300','Content-Length':Buffer.byteLength(html)});return res.end(req.method==='HEAD'?undefined:html);
+   }
+   if(Object.hasOwn(LEGAL_ROUTES,legalPath)){const html=legalHtml(LEGAL_ROUTES[legalPath],pickLocale(req.url,req.headers['accept-language']),legalPath);res.writeHead(200,{'Content-Type':'text/html; charset=utf-8','Cache-Control':'public, max-age=300',Vary:'Accept-Language'});return res.end(req.method==='HEAD'?undefined:html);}
+   // Link público de caso compartilhado (etiquetas de prévia para o X e mensageiros).
+   const shared=/^\/c\/([A-Za-z0-9]{10})$/.exec(path);
+   if(shared&&sharePage)return await sharePage(req,res,{id:shared[1],root:absoluteRoot});
+   // Painel de administração: o handler devolve 404 para quem não está na lista ADMIN_EMAILS.
+   if(adminPage&&(path==='/admin'||path==='/admin/'||path==='/painel'||path==='/painel/'))return await adminPage(req,res);
+   if(path==='/2doctor'||path==='/2doctor/'||path==='/2doctor/index.html'){
+    // Browsers retain the fragment (e.g. #scores); keep the query as well.
+    const query=(req.url||'').includes('?')?'?'+req.url.split('?').slice(1).join('?'):'';
+    res.writeHead(302,{Location:'/'+query,'Cache-Control':'no-store'});return res.end();
+   }
    if(path.startsWith('/wmed/acervo/')){
     const relative=path.slice('/wmed/acervo/'.length);
     if(!relative||relative.split('/').some(part=>!part||part.startsWith('.')))return json(res,400,{error:'Arquivo inválido.'});
@@ -68,16 +138,21 @@ export function createApp({root=ROOT,publicOrigin=process.env.PUBLIC_ORIGIN,fetc
     if(req.method==='HEAD'||!upstream.body)return res.end();
     await pipeline(Readable.fromWeb(upstream.body),res);return;
    }
-   let relative;
-   if(path.startsWith('/2doctor/'))relative=path.slice('/2doctor/'.length)||'index.html';
-   // Legacy font URLs inside the existing library styles.
-   else if(path.startsWith('/fonts/'))relative=path.slice(1);
-   else return json(res,404,{error:'Página não encontrada.'});
-   if(relative.split('/').some(part=>part.startsWith('.')))return json(res,404,{error:'Arquivo não encontrado.'});
+   // Root build, with compatibility aliases for previously shared asset URLs.
+   const relative=path==='/'?'index.html':path.startsWith('/2doctor/')?path.slice('/2doctor/'.length):path.slice(1);
+   if(relative.split('/').some(part=>part.startsWith('.')))return notFound();
    const file=resolve(absoluteRoot,relative);
-   if(!file.startsWith(absoluteRoot+sep))return json(res,404,{error:'Arquivo não encontrado.'});
-   let info;try{info=await stat(file);}catch{return json(res,404,{error:'Arquivo não encontrado.'});}
-   if(!info.isFile())return json(res,404,{error:'Arquivo não encontrado.'});
+   if(!file.startsWith(absoluteRoot+sep))return notFound();
+   let info;try{info=await stat(file);}catch{return notFound();}
+   if(!info.isFile())return notFound();
+   if(relative==='index.html'){
+    // Injeta o ID do Meta Pixel (variável de ambiente) no HTML; sem ID válido, o HTML sai intacto.
+    const html=injectPixelMeta(await readFile(file,'utf8'),metaPixelId);
+    res.setHeader('Content-Type',MIME['.html']);res.setHeader('Cache-Control','no-cache');
+    res.setHeader('Content-Length',Buffer.byteLength(html));
+    if(req.method==='HEAD')return res.end();
+    return res.end(html);
+   }
    const range=byteRange(req.headers.range,info.size);
    if(range===false){res.writeHead(416,{'Content-Range':`bytes */${info.size}`});return res.end();}
    const ext=extname(file);res.setHeader('Content-Type',MIME[ext]||'application/octet-stream');
@@ -98,7 +173,8 @@ export function createApp({root=ROOT,publicOrigin=process.env.PUBLIC_ORIGIN,fetc
  return server;
 }
 if(process.argv[1]&&resolve(process.argv[1])===fileURLToPath(import.meta.url)){
- const server=createApp();
- server.listen(Number(process.env.PORT||8080),'0.0.0.0',()=>console.log('2Doctor HTTPS edge server ready'));
+ const doctor=process.env.DATABASE_URL?await doctorRoutes():null;
+ const server=createApp(doctor?{handlers:doctor.routes,status:doctor.status,sharePage:doctor.sharePage,adminPage:doctor.adminPage,landing:doctor.landing}:{});
+ server.listen(Number(process.env.PORT||8080),'0.0.0.0',()=>console.log('2Doctor HTTPS edge server ready'+(doctor?' · contas 2Doctor':'')));
  process.on('SIGTERM',()=>server.close(()=>process.exit(0)));
 }

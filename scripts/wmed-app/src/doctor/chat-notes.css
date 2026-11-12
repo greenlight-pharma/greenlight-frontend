@@ -1,0 +1,15 @@
+.doctor-response-text [data-footnotes] {
+  border-top: 1px solid var(--line, #dde2e8);
+  margin-top: 1.5rem;
+  padding-top: .75rem;
+  font-size: .9em;
+}
+.doctor-response-text [data-footnotes] h2 { font-size: 1em; margin: 0 0 .65rem; }
+.doctor-response-text [data-footnote-ref],
+.doctor-response-text [data-footnote-backref] { padding: .25em; border-radius: .25em; }
+.doctor-response-text [data-footnotes] li:focus,
+.doctor-response-text [data-footnote-ref]:focus-visible,
+.doctor-response-text [data-footnote-backref]:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 4px;
+}

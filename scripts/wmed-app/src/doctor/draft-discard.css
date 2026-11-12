@@ -1,0 +1,8 @@
+.doctor-app .doctor-draft-shade{z-index:2000}
+.doctor-app .doctor-draft-dialog{width:100%;max-width:420px;min-width:0;padding:24px;max-height:calc(100dvh - 32px);overflow:auto}
+.doctor-app .doctor-draft-dialog h2{margin:0 0 12px;font-size:22px}
+.doctor-app .doctor-draft-dialog p{font-size:15px;line-height:1.55;margin:0 0 22px}
+.doctor-draft-actions{display:grid;gap:10px}
+.doctor-draft-actions button{min-height:46px;padding:12px 16px;border:1px solid var(--line);border-radius:12px;background:var(--surface);color:var(--ink);font:inherit;cursor:pointer}
+.doctor-draft-actions .doctor-draft-keep{background:var(--action);color:var(--action-text);border-color:var(--action)}
+.doctor-draft-actions button:focus-visible{outline:2px solid var(--accent);outline-offset:3px}

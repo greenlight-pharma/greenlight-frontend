@@ -1,6 +1,11 @@
 import {productConfig} from '../shared/product.mjs';
+import {createMicrophoneRequest, stopMicrophone} from '../shared/microphone-request.mjs';
+import {transcribeCaseAudio} from '../shared/audio-transcription.mjs';
+import {caseReviewIssues} from '../shared/case-review.mjs';
+import {caseAudioType} from '../shared/case-audio.mjs';
 const brandName=productConfig(import.meta.env.VITE_PRODUCT).name;
-import React, { useState, useEffect, useRef } from "react";
+const audioRecovery=import.meta.env.VITE_PRODUCT==='2doctor';
+import React, { useState, useEffect, useRef, useId } from "react";
 import {
   Mic,
   Square,
@@ -13,14 +18,23 @@ import {
   Check,
 } from "lucide-react";
 import CaseFeedback from "./CaseFeedback";
+import CaseFeedbackLoading from "./doctor/CaseFeedbackLoading";
 import CaseHistory, {caseRequest} from "./CaseHistory";
 import {restoreCase} from "../shared/case-storage.mjs";
 import "./case-feedback.css";
-import { academicRequest } from "./Libraries";
+import { academicRequest, academicStream } from "./Libraries";
 import PrivacyReview from "./PrivacyReview";
+const ShareCase = React.lazy(() => import("./doctor/ShareCase"));
+import { useI18n } from "./doctor/I18n";
 import { detectAcademicPII } from "../shared/pii.mjs";
 import { fields, feedbackPayload, guidanceFeedback } from "../shared/case-contract.mjs";
 const empty = () => Object.fromEntries(fields.map(([k]) => [k, ""]));
+// Espera a aba voltar a ficar visível (o usuário voltou ao app).
+const untilVisible = () => new Promise((resolve) => {
+  if (typeof document === "undefined" || document.visibilityState === "visible") return resolve();
+  const on = () => { if (document.visibilityState === "visible") { document.removeEventListener("visibilitychange", on); resolve(); } };
+  document.addEventListener("visibilitychange", on);
+});
 export default function ClinicalCase(props) {
   const scope=props.session?.user?.progressScope||null;
   const [identity,setIdentity]=useState({scope,generation:0});
@@ -28,6 +42,9 @@ export default function ClinicalCase(props) {
   return <ClinicalCaseBody key={identity.generation} {...props}/>;
 }
 function ClinicalCaseBody({ session, onLogin, onProgress, onPendingChange, active, initialStory = "" }) {
+  const { t, locale } = useI18n();
+  // Idioma da resposta da IA (organização do relato, feedback e pontuação). Português não manda nada.
+  const idioma = locale?.startsWith("en") ? "en" : locale?.startsWith("es") ? "es" : undefined;
   const [stage, setStage] = useState("relato"),
     [relato, setRelato] = useState(initialStory),
     [form, setForm] = useState(empty),
@@ -37,12 +54,37 @@ function ClinicalCaseBody({ session, onLogin, onProgress, onPendingChange, activ
     [feedback, setFeedback] = useState(null),
     [quality, setQuality] = useState(null),
     [qualityError, setQualityError] = useState(""),
+    [grading, setGrading] = useState(false),
+    [restPending, setRestPending] = useState(false),
+    [restError, setRestError] = useState(""),
     [recording, setRecording] = useState(false),
     [seconds, setSeconds] = useState(0);
+  const lengthHintId=useId();
+  const evaluating=useRef(false);
+  const relatoTooShort=audioRecovery&&relato.length>0&&relato.trim().length<20;
   const [privacyOpen,setPrivacyOpen]=useState(false);
+  const [organizedStory,setOrganizedStory]=useState(null);
+  const canResumeReview=audioRecovery && organizedStory!==null && organizedStory===relato;
+  const [retryAudio,setRetryAudio]=useState(null);
+  const transcribing=useRef(null);
+  const [audioCancelled,setAudioCancelled]=useState(false);
+  const [requestingMic,setRequestingMic]=useState(false);
+  const microphoneRequest=useRef(createMicrophoneRequest());
+  const activeRef=useRef(active);activeRef.current=active;
   const [historyOpen,setHistoryOpen]=useState(false),[saveStatus,setSaveStatus]=useState(""),[saveError,setSaveError]=useState("");
-  const pendingSave=useRef(null),saving=useRef(null),pageRef=useRef(null);
-  useEffect(()=>{if(active)pageRef.current?.scrollIntoView({block:"start",behavior:"instant"});},[stage,active]);
+  const pendingSave=useRef(null),saving=useRef(null),pageRef=useRef(null),errorRef=useRef(null);
+  useEffect(()=>{
+    if(!audioRecovery||!["relato","revisao"].includes(stage)||!error||active===false)return;
+    errorRef.current?.focus({preventScroll:true});
+    errorRef.current?.scrollIntoView({block:'nearest',behavior:'instant'});
+  },[error,active,stage]);
+  useEffect(() => {
+    if (!active) return;
+    const panel = audioRecovery && pageRef.current?.closest('.case-conversation');
+    // Keep the return button visible when opening or changing steps in the overlay.
+    if (panel) panel.scrollTo({ top: 0, behavior: 'instant' });
+    else pageRef.current?.scrollIntoView({ block: 'start', behavior: 'instant' });
+  }, [stage, active]);
   const recorder = useRef(null),
     stream = useRef(null),
     cancel = useRef(null),
@@ -54,6 +96,7 @@ function ClinicalCaseBody({ session, onLogin, onProgress, onPendingChange, activ
     alive.current = true;
     return () => {
       alive.current = false;
+      microphoneRequest.current.cancel();
       cancel.current?.abort();
       clearInterval(recordTimer.current);
       if (recorder.current?.state === "recording") recorder.current.stop();
@@ -61,10 +104,11 @@ function ClinicalCaseBody({ session, onLogin, onProgress, onPendingChange, activ
     };
   }, []);
   useEffect(() => {
+    if (!active && audioRecovery) { microphoneRequest.current.cancel();setRequestingMic(false); }
     if (!active && recorder.current?.state === "recording")
       recorder.current.stop();
   }, [active]);
-  useEffect(()=>{onPendingChange?.(Boolean(busy||recording||saveStatus==='saving'||saveStatus==='error'));},[busy,recording,saveStatus,onPendingChange]);
+  useEffect(()=>{onPendingChange?.(Boolean(busy||recording||requestingMic||retryAudio||saveStatus==='saving'||saveStatus==='error'));},[busy,recording,requestingMic,retryAudio,saveStatus,onPendingChange]);
   const requireLogin = () => {
     if (session?.authenticated) return true;
     onLogin();
@@ -82,18 +126,22 @@ function ClinicalCaseBody({ session, onLogin, onProgress, onPendingChange, activ
       );
       return;
     }
+    if(audioRecovery)setError("");
     if (!requireLogin()) return;
+    if(canResumeReview){setError("");setStage("revisao");return;}
     setBusy("Organizando o relato…");
     setError("");
     try {
-      const d = await request("structure", { relato });
+      const d = await request("structure", { relato, idioma });
       if (d.erro_pii) throw Error(d.erro_pii);
       if (!d.campos || typeof d.campos !== "object")
         throw Error("Não foi possível organizar o relato.");
       const values = empty();
       for (const [k] of fields)
         values[k] = typeof d.campos[k] === "string" ? d.campos[k] : "";
+      if(!alive.current)return;
       setForm(values);
+      setOrganizedStory(relato);
       setStage("revisao");
       setConfirmed(false);
     } catch (e) {
@@ -104,14 +152,23 @@ function ClinicalCaseBody({ session, onLogin, onProgress, onPendingChange, activ
   }
   async function transcribe(blob) {
     if (!alive.current) return;
+    if (transcribing.current) return;
+    if (audioRecovery) {
+      try { caseAudioType(blob); } catch(e) { setError(e.message); return; }
+      setRetryAudio(blob);
+    }
     if (blob.size > 2900000) {
       setError("O áudio deve ter até 2,9 MB. Grave um trecho menor.");
       return;
     }
     setBusy("Transcrevendo áudio…");
     setError("");
+    const controller=new AbortController();
+    transcribing.current=controller;
+    cancel.current=controller;
+    setAudioCancelled(false);
     try {
-      const base64 = await new Promise((resolve, reject) => {
+      const read = () => new Promise((resolve, reject) => {
         const r = new FileReader();
         r.onload = () => resolve(String(r.result).split(",")[1]);
         r.onerror = reject;
@@ -120,34 +177,46 @@ function ClinicalCaseBody({ session, onLogin, onProgress, onPendingChange, activ
       const rawType = (blob.type || "audio/mp4").split(";")[0];
       const type = ({"audio/x-m4a":"audio/m4a","audio/x-wav":"audio/wav"})[rawType] || rawType;
       if(!["audio/mp4","audio/m4a","audio/webm","audio/mpeg","audio/wav","audio/ogg"].includes(type))throw Error("Use áudio M4A, MP4, MP3, WAV, OGG ou WebM.");
-      const d = await request("transcribe", {
-        audioBase64: base64,
-        mimeType: type,
+      const d = await transcribeCaseAudio(blob, {
+        signal:controller.signal, read,
+        send:(audioBase64,signal)=>academicRequest("transcribe",{audioBase64,mimeType:type},signal),
       });
       if (!d.texto)
         throw Error("Não encontramos fala no áudio. Tente novamente.");
-      if (alive.current) setRelato((old) => (old ? old + "\n" : "") + d.texto);
+      if (alive.current && !controller.signal.aborted) {
+        setRelato((old) => (old ? old + "\n" : "") + d.texto);
+        setRetryAudio(null);
+      }
     } catch (e) {
       if (alive.current && e.name !== "AbortError") setError(e.message);
     } finally {
-      if (alive.current) setBusy("");
+      if(transcribing.current===controller) {
+        transcribing.current=null;
+        if (alive.current) setBusy("");
+      }
     }
   }
   async function record() {
     if (!requireLogin()) return;
+    if(audioRecovery && (!activeRef.current||busy||recording||retryAudio))return;
+    const ticket=audioRecovery?microphoneRequest.current.begin():null;
+    if(audioRecovery && ticket===null)return;
+    if(audioRecovery)setRequestingMic(true);
+    let acquiredStream;
     setError("");
     try {
       if (!navigator.mediaDevices?.getUserMedia || !globalThis.MediaRecorder)
         throw Error(
           "Gravação indisponível neste navegador. Envie um arquivo de áudio.",
         );
-      stream.current = await navigator.mediaDevices.getUserMedia({
+      acquiredStream = await navigator.mediaDevices.getUserMedia({
         audio: true,
       });
-      if (!alive.current) {
-        stream.current.getTracks().forEach((t) => t.stop());
+      if (!alive.current || audioRecovery && (!activeRef.current||!microphoneRequest.current.isCurrent(ticket))) {
+        stopMicrophone(acquiredStream);
         return;
       }
+      stream.current=acquiredStream;
       const mime = ["audio/mp4", "audio/webm;codecs=opus", "audio/webm"].find(
         (t) => MediaRecorder.isTypeSupported(t),
       );
@@ -162,7 +231,7 @@ function ClinicalCaseBody({ session, onLogin, onProgress, onPendingChange, activ
       };
       r.onstop = () => {
         clearInterval(recordTimer.current);
-        stream.current?.getTracks().forEach((t) => t.stop());
+        stopMicrophone(acquiredStream);
         if (alive.current) {
           setRecording(false);
           transcribe(new Blob(chunks.current, { type: r.mimeType }));
@@ -178,18 +247,22 @@ function ClinicalCaseBody({ session, onLogin, onProgress, onPendingChange, activ
         if (elapsed >= 180 && r.state === "recording") r.stop();
       }, 1000);
     } catch (e) {
-      stream.current?.getTracks().forEach((t) => t.stop());
+      stopMicrophone(acquiredStream);
+      if(!alive.current || audioRecovery && !microphoneRequest.current.isCurrent(ticket))return;
       setError(
         e.name === "NotAllowedError"
           ? "Microfone não autorizado. Você pode escrever ou enviar um áudio."
           : e.message,
       );
+    } finally {
+      if(audioRecovery && microphoneRequest.current.finish(ticket) && alive.current)setRequestingMic(false);
     }
   }
   async function grade() {
     setQualityError("");
+    setGrading(true);
     try {
-      const d = await academicRequest("quality", { fields: form, relato });
+      const d = await academicRequest("quality", { fields: form, relato, idioma });
       if (alive.current) {
         setQuality(d);
         if (!reported.current) {
@@ -201,39 +274,78 @@ function ClinicalCaseBody({ session, onLogin, onProgress, onPendingChange, activ
     } catch (e) {
       if (alive.current) setQualityError(e.message);
       return null;
+    } finally {
+      if (alive.current) setGrading(false);
     }
   }
   async function evaluate() {
-    if (!requireLogin()) return;
-    setBusy("Preparando seu feedback completo…");
+    if (evaluating.current || !requireLogin()) return;
+    evaluating.current=true;
+    if(audioRecovery)setStage("aguardando");
+    setBusy("Preparando seu feedback…");
     setError("");
     setQuality(null);
     setQualityError("");
+    setRestError("");
+    setRestPending(false);
     reported.current = false;
+    // A pontuação do relato não depende do feedback: corre em paralelo.
+    const scoring = grade();
     try {
-      const d = await request("feedback", { fields: form, relato });
-      if (
-        !d.feedback ||
-        typeof d.feedback !== "object" ||
-        !Object.keys(d.feedback).length
-      )
-        throw Error("O serviço não retornou um feedback completo.");
-      if (d.feedback.erro_pii) throw Error(d.feedback.erro_pii);
-      if(!alive.current)return;
-      setFeedback(guidanceFeedback(d.feedback));
-      setStage("feedback");
+      const c = new AbortController();
+      cancel.current = c;
+      let merged = null, failure = null, finished = false, started = false;
+      const onEvent = (event, data) => {
+        started = true;
+        if (!alive.current) return;
+        if (event === "part" && data.feedback && typeof data.feedback === "object") {
+          merged = guidanceFeedback({ ...(merged || {}), ...data.feedback });
+          setFeedback(merged);
+          setStage("feedback");
+          if (data.secao === "essencial") { setRestPending(true); setBusy("Gerando as demais seções…"); }
+          else setRestPending(false);
+        } else if (event === "error") { failure = data; finished = true; }
+        else if (event === "done") finished = true;
+      };
+      // No celular, trocar de app derruba a conexão, mas o feedback continua no servidor:
+      // ao voltar para a tela, retomamos pelo mesmo jobId (sem nova cobrança).
+      const jobId = crypto.randomUUID();
+      for (let attempt = 0; ; attempt++) {
+        try {
+          await academicStream(started ? "feedback-resume" : "feedback", started ? { jobId } : { fields: form, relato, idioma, jobId }, c.signal, onEvent);
+        } catch (e) {
+          if (e.name === "AbortError" || c.signal.aborted || e.status) throw e;
+        }
+        if (finished || !alive.current) break;
+        if (attempt >= 8) throw Error("A conexão caiu durante o feedback. Tente novamente.");
+        setBusy("Reconectando ao feedback…");
+        await untilVisible();
+        await new Promise((r) => setTimeout(r, Math.min(1000 * (attempt + 1), 4000)));
+      }
+      if (!alive.current) return;
+      setRestPending(false);
+      if (!merged || !Object.keys(merged).length)
+        throw Error(failure?.error || "O serviço não retornou um feedback completo.");
+      if (failure) setRestError(`${t("Algumas seções não foram geradas:")} ${failure.error}`);
       setBusy("Avaliando a qualidade do relato…");
-      const score = await grade();
+      const score = await scoring;
       if(!alive.current)return;
-      pendingSave.current={requestId:crypto.randomUUID(),relato,fields:form,feedback:guidanceFeedback(d.feedback),quality:score};
+      pendingSave.current={requestId:crypto.randomUUID(),relato,fields:form,feedback:merged,quality:score};
       setBusy("Salvando caso…");
       await persist();
     } catch (e) {
-      if (e.name !== "AbortError") setError(e.message);
+      if(alive.current){
+        setRestPending(false);
+        if(audioRecovery)setStage("revisao");
+        if (e.name !== "AbortError") setError(e.message);
+      }
     } finally {
-      setBusy("");
+      evaluating.current=false;
+      if(alive.current)setBusy("");
     }
   }
+  // id do caso salvo na conta: só caso salvo pode virar desafio compartilhado
+  const [savedId,setSavedId]=useState(null),[sharing,setSharing]=useState(false);
   async function persist() {
     if(saving.current)return saving.current;
     if(!pendingSave.current)return true;
@@ -242,23 +354,36 @@ function ClinicalCaseBody({ session, onLogin, onProgress, onPendingChange, activ
     const promise=(async()=>{try{
       const result=await caseRequest({action:'save',snapshot});
       if(!result.caso?.id)throw Error('O servidor não confirmou o salvamento.');
-      if(alive.current){pendingSave.current=null;setSaveStatus('saved');}
+      if(alive.current){pendingSave.current=null;setSaveStatus('saved');setSavedId(result.caso.id);}
       return true;
     }catch(e){if(alive.current){setSaveStatus('error');setSaveError(e.message);}return false;
     }finally{saving.current=null;}})();saving.current=promise;return promise;
   }
-  useEffect(()=>{const warn=e=>{if(pendingSave.current||busy){e.preventDefault();e.returnValue='';}};window.addEventListener('beforeunload',warn);return()=>window.removeEventListener('beforeunload',warn);},[busy]);
+  useEffect(()=>{const warn=e=>{if(pendingSave.current||busy||retryAudio){e.preventDefault();e.returnValue='';}};window.addEventListener('beforeunload',warn);return()=>window.removeEventListener('beforeunload',warn);},[busy,retryAudio]);
   async function openSaved(id){
     if(pendingSave.current&&!await persist())throw Error('Salve o caso atual antes de abrir outro.');
     const data=await caseRequest({action:'open',id});
     const saved=restoreCase(data.caso);
     if(!alive.current)return;
+    setOrganizedStory(saved.relato);setSavedId(saved.id);
     setRelato(saved.relato);setForm(saved.form);setFeedback(saved.feedback);setQuality(saved.quality);setQualityError('');setStage('feedback');setSaveStatus('saved');setSaveError('');setError('');setHistoryOpen(false);reported.current=true;
   }
   async function fresh(){
     if(pendingSave.current&&!await persist())return;
+    setSavedId(null);
+    setRetryAudio(null);
+    setOrganizedStory(null);
     setRelato('');setForm(empty());setFeedback(null);setQuality(null);setConfirmed(false);setError('');setQualityError('');setSaveStatus('');setSaveError('');reported.current=false;setStage('relato');
   }
+  const reviewIssues = audioRecovery ? caseReviewIssues(form) : [];
+  function focusReviewField(key) {
+    const input = pageRef.current?.querySelector("#review-" + key);
+    const section = input?.closest("details");
+    if(section) section.open=true;
+    input?.focus({preventScroll:true});
+    input?.scrollIntoView({block:"center",behavior:"instant"});
+  }
+  const errorNotice=error&&<p ref={errorRef} tabIndex={audioRecovery&&["relato","revisao"].includes(stage)?-1:undefined} role="alert" className="error">{t(error)}</p>;
   const feedbackLength =
     feedbackPayload(form).clinicalHistory.length +
     "\nRelato original para contexto: ".length +
@@ -268,23 +393,23 @@ function ClinicalCaseBody({ session, onLogin, onProgress, onPendingChange, activ
       {historyOpen&&<CaseHistory onClose={()=>setHistoryOpen(false)} onSelect={openSaved}/>}
       {privacyOpen&&<PrivacyReview text={relato} onCancel={()=>setPrivacyOpen(false)} onApply={text=>{setRelato(text);setConfirmed(false);setPrivacyOpen(false)}}/>}
       <header className="module-heading case-heading">
-        <button className="case-history-button" disabled={!!busy||saveStatus==="saving"} onClick={()=>{if(requireLogin())setHistoryOpen(true)}}><History size={17}/> Meus casos</button>
-        <span className="eyebrow blue">PRÁTICA CLÍNICA</span>
-        <h1>Caso clínico</h1>
+        <button className="case-history-button" disabled={!!busy||requestingMic||!!retryAudio||saveStatus==="saving"} onClick={()=>{if(requireLogin())setHistoryOpen(true)}}><History size={17}/> {t("Meus casos")}</button>
+        <span className="eyebrow blue">{t("PRÁTICA CLÍNICA")}</span>
+        <h1>{t("Caso clínico")}</h1>
         <p>
-          Conte o caso. Veja hipóteses, exames e condutas a considerar.
+          {t("Conte o caso. Veja hipóteses, exames e condutas a considerar.")}
         </p>
       </header>
-      {stage!=="feedback"&&<nav className="case-steps" aria-label="Etapas do caso">
+      {stage!=="feedback"&&<nav className="case-steps" aria-label={t("Etapas do caso")}>
         {["Seu relato", "Revisão", "Feedback"].map((s, i) => (
           <span
             className={
-              ["relato", "revisao", "feedback"][i] === stage ? "active" : ""
+              ["relato", "revisao", "feedback"][i] === (stage==="aguardando"?"feedback":stage) ? "active" : ""
             }
             key={s}
           >
             <b>{i + 1}</b>
-            {s}
+            {t(s)}
           </span>
         ))}
       </nav>}
@@ -292,32 +417,34 @@ function ClinicalCaseBody({ session, onLogin, onProgress, onPendingChange, activ
         <div className="case-entry">
           <div className="resource-card">
             <label className="field-label" htmlFor="case-story">
-              Relato livre
+              {t("Relato livre")}
             </label>
             <textarea
               id="case-story"
+              aria-describedby={relatoTooShort?lengthHintId:undefined}
               rows={12}
               maxLength={5000}
               value={relato}
               disabled={!!busy || recording}
               onChange={(e) => {setRelato(e.target.value);setConfirmed(false)}}
-              placeholder="Descreva a queixa, a evolução, os antecedentes, os medicamentos e os achados disponíveis. Não inclua nome, CPF, telefone ou endereço do paciente."
+              placeholder={t("Descreva a queixa, a evolução, os antecedentes, os medicamentos e os achados disponíveis. Não inclua nome, CPF, telefone ou endereço do paciente.")}
             />
             <div className="voice-actions">
               <button
-                disabled={!!busy}
+                className={"voice-record"+(recording?" is-recording":"")}
+                disabled={!!busy||requestingMic||!!retryAudio}
                 onClick={recording ? () => recorder.current.stop() : record}
               >
                 {recording ? <Square size={17} /> : <Mic size={17} />}{" "}
-                {recording ? `Parar · ${seconds}s` : "Gravar relato"}
+                {requestingMic ? t("Aguardando microfone…") : recording ? `${t("Parar")} · ${seconds}s` : t("Gravar relato")}
               </button>
               <label className="audio-upload">
                 <Upload size={17} />
-                Enviar áudio
+                {t("Enviar áudio")}
                 <input
                   type="file"
                   accept="audio/*,.m4a"
-                  disabled={!!busy || recording}
+                  disabled={!!busy || recording || requestingMic || !!retryAudio}
                   onChange={(e) => {
                     const f = e.target.files?.[0];
                     e.target.value = "";
@@ -327,83 +454,102 @@ function ClinicalCaseBody({ session, onLogin, onProgress, onPendingChange, activ
               </label>
               <small>{relato.length}/5.000</small>
             </div>
-            <p className="module-note">
-              Áudio de até 3 minutos ou 2,9 MB. Revise a transcrição antes de
-              continuar. Não grave a voz do paciente.
+            {requestingMic && <p className="module-note" role="status">{t("Autorize o microfone no navegador. A gravação ainda não começou.")}</p>}
+            {audioRecovery && busy && transcribing.current && <div className="case-audio-retry" role="status"><strong>{t("Transcrevendo áudio…")}</strong><div><button type="button" onClick={()=>{setAudioCancelled(true);transcribing.current?.abort();}}>{t("Cancelar espera")}</button></div></div>}
+            {audioRecovery && retryAudio && !busy && <div className="case-audio-retry" role="status">
+              <strong>{audioCancelled ? t("Espera cancelada") : t("Não foi possível transcrever")}</strong>
+              <p>{t("O áudio continua nesta aba. Tente novamente sem gravar ou selecionar o arquivo de novo.")}</p>
+              <div><button type="button" onClick={()=>{if(requireLogin())transcribe(retryAudio);}}>{t("Tentar transcrição novamente")}</button><button type="button" onClick={()=>{setRetryAudio(null);setError('');}}>{t("Descartar áudio")}</button></div>
+              <small>{t("O áudio pendente não fica salvo no histórico. Ao fechar ou atualizar esta aba, ele será perdido.")}</small>
+            </div>}
+            <p className="module-note case-audio-note">
+              {t("Áudio de até 3 minutos ou 2,9 MB. Revise a transcrição antes de continuar. Não grave a voz do paciente.")}
             </p>
-            <button disabled={!!busy||recording||!relato.trim()} onClick={()=>setPrivacyOpen(true)}>Revisar dados pessoais</button>
+            <button className="case-privacy-button" disabled={!!busy||recording||!relato.trim()} onClick={()=>setPrivacyOpen(true)}>{t("Revisar dados pessoais")}</button>
+            {audioRecovery && organizedStory!==null && <p className="module-note" role="status">{canResumeReview ? t("Suas correções nos campos foram mantidas nesta aba.") : t("O relato mudou. Ao reorganizar, os campos serão refeitos e substituirão as correções anteriores.")}</p>}
+            {relatoTooShort && <p id={lengthHintId} className="module-note" role="status">{t("Escreva pelo menos 20 caracteres para continuar.")}</p>}
+            {audioRecovery && errorNotice}
             <button
               className="module-primary"
               disabled={
                 !!busy ||
                 recording ||
+                requestingMic ||
+                !!retryAudio ||
                 relato.trim().length < 20 ||
                 relato.length > 5000
               }
               onClick={structure}
             >
-              Organizar meu relato <ArrowRight size={17} />
+              {canResumeReview ? t("Continuar revisão") : audioRecovery && organizedStory!==null ? t("Reorganizar relato") : t("Organizar meu relato")} <ArrowRight size={17} />
             </button>
           </div>
           <aside className="case-guide">
             <FileText size={27} />
-            <h2>Do relato ao aprendizado</h2>
+            <h2>{t("Do relato ao aprendizado")}</h2>
             <p>
-              Você traz o relato. {brandName==='WMed'?'O WMed':'A 2Doctor'} organiza os dados e apresenta hipóteses
-              e opções de conduta, com justificativas.
+              {brandName==='WMed'?t('Você traz o relato. O WMed organiza os dados e apresenta hipóteses e opções de conduta, com justificativas.'):t('Você traz o relato. A 2Doctor organiza os dados e apresenta hipóteses e opções de conduta, com justificativas.')}
             </p>
             <ol>
-              <li>Conte o caso por texto ou voz.</li>
-              <li>Confira os campos e corrija o que precisar.</li>
-              <li>Veja hipóteses, exames e condutas a considerar.</li>
+              <li>{t("Conte o caso por texto ou voz.")}</li>
+              <li>{t("Confira os campos e corrija o que precisar.")}</li>
+              <li>{t("Veja hipóteses, exames e condutas a considerar.")}</li>
             </ol>
             <p className="module-note">
-              A nota é experimental e avalia o relato, não sua competência
-              médica. Sem ranking público nesta etapa.
+              {t("A nota é experimental e avalia o relato, não sua competência médica. Sem ranking público nesta etapa.")}
             </p>
           </aside>
         </div>
       )}
+      {stage === "aguardando" && <CaseFeedbackLoading/>}
       {stage === "revisao" && (
         <>
+          {audioRecovery && errorNotice}
           <button
             className="back-button"
             disabled={!!busy}
             onClick={() => setStage("relato")}
           >
             <ArrowLeft size={17} />
-            Voltar ao relato
+            {t("Voltar ao relato")}
           </button>
           <details className="resource-card">
-            <summary>Conferir relato original</summary>
+            <summary>{t("Conferir relato original")}</summary>
             <p>{relato}</p>
           </details>
           <p className="module-note">
-            Abra apenas os campos que quiser corrigir. Confira especialmente os
-            nomes de medicamentos e os valores transcritos. Campos vazios serão
-            tratados como não informados.
+            {t("Abra apenas os campos que quiser corrigir. Confira especialmente os nomes de medicamentos e os valores transcritos. Campos vazios serão tratados como não informados.")}
           </p>
+          {reviewIssues.length > 0 && <div className="case-review-pending" aria-label={t("Campos pendentes")}>
+            <strong>{t("Complete antes do feedback")}</strong>
+            <p>{t("Use somente informações do relato.")}</p>
+            <div>{reviewIssues.map(issue=><button key={issue.key} type="button" disabled={!!busy} onClick={()=>focusReviewField(issue.key)}>{t("Revisar")} {t(issue.label).toLowerCase()} <ArrowRight size={16}/></button>)}</div>
+          </div>}
           <div className="review-fields">
             {fields.map(([k, l]) => (
               <details key={k} className="resource-card review-field">
                 <summary>
-                  <b>{l}</b>
-                  <span>{form[k] || "Não informado"}</span>
+                  <b>{t(l)}</b>
+                  <span>{form[k] || t("Não informado")}</span>
                 </summary>
                 <label className="field-label" htmlFor={"review-" + k}>
-                  Revisar {l.toLowerCase()}
+                  {t("Revisar")} {t(l).toLowerCase()}
                 </label>
                 <textarea
                   id={"review-" + k}
                   rows={k === "hma" ? 5 : 3}
                   value={form[k]}
                   maxLength={5000}
+                  aria-invalid={reviewIssues.some(issue=>issue.key===k) || undefined}
+                  aria-describedby={reviewIssues.some(issue=>issue.key===k) ? "review-hint-"+k : undefined}
                   disabled={!!busy}
-                  onChange={(e) =>
-                    setForm((f) => ({ ...f, [k]: e.target.value }))
-                  }
-                  placeholder="Não informado"
+                  onChange={(e) => {
+                    setForm((f) => ({ ...f, [k]: e.target.value }));
+                    if(audioRecovery)setConfirmed(false);
+                  }}
+                  placeholder={t("Não informado")}
                 />
+                {reviewIssues.filter(issue=>issue.key===k).map(issue=><p key={k} id={"review-hint-"+k} className="module-note">{t(issue.message)}</p>)}
               </details>
             ))}
           </div>
@@ -411,14 +557,15 @@ function ClinicalCaseBody({ session, onLogin, onProgress, onPendingChange, activ
             <input
               type="checkbox"
               checked={confirmed}
+              disabled={!!busy}
               onChange={(e) => setConfirmed(e.target.checked)}
             />
-            Conferi os campos. Eles representam os dados que relatei.
+            {t("Conferi os campos. Eles representam os dados que relatei.")}
           </label>
           <p className="module-note">
-            História e contexto para análise: {feedbackLength}/5.000 caracteres.
+            {t("História e contexto para análise:")} {feedbackLength}/5.000 {t("caracteres.")}
             {feedbackLength > 5000
-              ? " Resuma os campos repetidos antes de continuar."
+              ? " " + t("Resuma os campos repetidos antes de continuar.")
               : ""}
           </p>
           <button
@@ -432,26 +579,23 @@ function ClinicalCaseBody({ session, onLogin, onProgress, onPendingChange, activ
             }
             onClick={evaluate}
           >
-            Receber feedback <ArrowRight size={17} />
+            {t("Receber feedback")} <ArrowRight size={17} />
           </button>
         </>
       )}
       {stage === "feedback" && feedback && <>
-        <div className="case-result-actions"><div role="status" className={'case-save-state '+saveStatus}>{saveStatus==='saved'?<><Check size={15}/> Salvo na sua conta</>:saveStatus==='saving'?'Salvando caso…':saveStatus==='error'?'Caso ainda não salvo':'Preparando para salvar…'}</div><button disabled={!!busy||saveStatus==='saving'} onClick={async()=>{if(pendingSave.current&&!await persist())return;setStage('relato');setConfirmed(false);setSaveStatus('');}}>Complementar relato</button><button disabled={!!busy||saveStatus==='saving'} onClick={fresh}>Novo caso</button></div>
-        {saveError&&<div className="error" role="alert">{saveError} Mantenha esta tela aberta.<button disabled={saveStatus==='saving'} onClick={persist}>Tentar salvar novamente</button></div>}
-        <CaseFeedback key={feedback?JSON.stringify(form):'empty'} feedback={feedback} quality={quality} qualityError={qualityError} relato={relato} form={form} busy={!!busy}/>
+        <div className="case-result-actions"><div role="status" className={'case-save-state '+saveStatus}>{saveStatus==='saved'?<><Check size={15}/> {t('Salvo na sua conta')}</>:saveStatus==='saving'?t('Salvando caso…'):saveStatus==='error'?t('Caso ainda não salvo'):t('Preparando para salvar…')}</div><button disabled={!!busy||saveStatus==='saving'} onClick={async()=>{if(pendingSave.current&&!await persist())return;setStage('relato');setConfirmed(false);setSaveStatus('');}}>{t('Complementar relato')}</button><button disabled={!!busy||saveStatus==='saving'} onClick={fresh}>{t('Novo caso')}</button>{import.meta.env.VITE_PRODUCT==='2doctor'&&<button className="case-share" disabled={saveStatus!=='saved'||!savedId} onClick={()=>setSharing(true)}>{t('Compartilhar')}</button>}</div>
+        {sharing&&savedId&&<React.Suspense fallback={null}><ShareCase casoId={savedId} form={form} onClose={()=>setSharing(false)}/></React.Suspense>}
+        {saveError&&<div className="error" role="alert">{t(saveError)} {t('Mantenha esta tela aberta.')}<button disabled={saveStatus==='saving'} onClick={persist}>{t('Tentar salvar novamente')}</button></div>}
+        <CaseFeedback key={JSON.stringify(form)} feedback={feedback} quality={quality} qualityError={qualityError} grading={grading} restPending={restPending} restError={restError} relato={relato} form={form} onGrade={grade} busy={!!busy}/>
       </>}
-      {busy && (
+      {busy && stage!=="aguardando" && !(audioRecovery && transcribing.current) && (
         <p role="status" className="progress">
           <span className="spinner" />
-          {busy}
+          {t(busy)}
         </p>
       )}
-      {error && (
-        <p role="alert" className="error">
-          {error}
-        </p>
-      )}
+      {(!audioRecovery || !["relato","revisao"].includes(stage)) && errorNotice}
     </section>
   );
 }

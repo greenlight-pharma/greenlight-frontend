@@ -1,5 +1,5 @@
 import { useI18n } from './doctor/I18n';
-import React, { useRef, useState } from 'react';
+import React, { useRef, useState, useLayoutEffect } from 'react';
 import { Paperclip, FileText, Image as ImageIcon, X } from 'lucide-react';
 import { validateAttachments, MAX_ATTACHMENT_BYTES, MAX_DOCUMENT_CHARS } from '../shared/chat-attachments.mjs';
 const base64 = (blob) => new Promise((resolve, reject) => {const r = new FileReader();r.onload = () => resolve(String(r.result).split(',')[1]);r.onerror = () => reject(Error('Não foi possível ler o arquivo.'));r.readAsDataURL(blob);});
@@ -22,7 +22,18 @@ async function prepare(file) {
 }
 export default function ChatAttachments({ items, onChange, disabled, onLoading }) {const {t,locale}=useI18n();
   const fileInput = useRef(null),[error, setError] = useState(''),[loading, setLoading] = useState(false),generation = useRef(0);
+  const attachButton=useRef(null),removeButtons=useRef([]),removedIndex=useRef(null);
+  function remove(index){
+    if(import.meta.env.VITE_PRODUCT==='2doctor')removedIndex.current=index;
+    onChange(items.filter((_,n)=>n!==index));
+  }
+  useLayoutEffect(()=>{
+    if(removedIndex.current===null)return;
+    const index=removedIndex.current;removedIndex.current=null;
+    const next=items.length?removeButtons.current[Math.min(index,items.length-1)]:attachButton.current;
+    next?.focus({preventScroll:true});
+  },[items]);
   React.useEffect(() => () => {generation.current++;}, []);
   async function add(files) {if (!files.length) return;setError('');setLoading(true);onLoading(true);const version = generation.current;try {if (items.length + files.length > 5) throw Error(t("Envie até 5 arquivos por mensagem."));const next = [...items];for (const file of files) next.push(await prepare(file));validateAttachments(next);if (version === generation.current) onChange(next);} catch (e) {if (version === generation.current) setError(e.message || t("Não foi possível abrir esse arquivo."));} finally {if (version === generation.current) {setLoading(false);onLoading(false);}}}
-  return <div className="chat-attachments"><input ref={fileInput} type="file" multiple accept=".jpg,.jpeg,.png,.webp,.pdf,.docx,.txt,.md" aria-label={t("Selecionar arquivos para o chat")} hidden onChange={(e) => {const files = Array.from(e.target.files || []);e.target.value = '';add(files);}} /><div className="attachment-toolbar"><button type="button" disabled={disabled || loading} onClick={() => fileInput.current.click()}><Paperclip size={17} />{loading ? t("Preparando…") : t("Anexar arquivos")}</button><small>{t("Imagens · PDF · Word · texto")}</small></div>{items.length > 0 && <><ul className="attachment-list">{items.map((a, i) => <li key={i}>{a.kind === 'image' ? <ImageIcon size={16} /> : <FileText size={16} />}<span>{a.name}<small>{a.kind === 'text' ? `${a.text.length.toLocaleString(locale)} ${t('caracteres')}` : t("Pronto para enviar")}</small></span><button type="button" aria-label={`${t('Remover')} ${a.name}`} disabled={disabled || loading} onClick={() => onChange(items.filter((_, n) => n !== i))}><X size={15} /></button></li>)}</ul><p className="attachment-note">{t("Até 5 arquivos, 1 PDF e 3 MB após o preparo. Textos: até 12.000 caracteres. DOCX: somente texto. Os arquivos são analisados nesta mensagem; o histórico guarda a conversa, sem os anexos.")}</p></>}{error && <p className="error" role="alert">{t(error)}</p>}</div>;
+  return <div className="chat-attachments"><input ref={fileInput} type="file" multiple accept=".jpg,.jpeg,.png,.webp,.pdf,.docx,.txt,.md" aria-label={t("Selecionar arquivos para o chat")} hidden onChange={(e) => {const files = Array.from(e.target.files || []);e.target.value = '';add(files);}} /><div className="attachment-toolbar"><button ref={attachButton} type="button" disabled={disabled || loading} onClick={() => fileInput.current.click()}><Paperclip size={17} />{loading ? t("Preparando…") : t("Anexar arquivos")}</button><small>{t("Imagens · PDF · Word · texto")}</small></div>{items.length > 0 && <><ul className="attachment-list">{items.map((a, i) => <li key={i}>{a.kind === 'image' ? <ImageIcon size={16} /> : <FileText size={16} />}<span>{a.name}<small>{a.kind === 'text' ? `${a.text.length.toLocaleString(locale)} ${t('caracteres')}` : t("Pronto para enviar")}</small></span><button ref={node=>{removeButtons.current[i]=node;}} type="button" aria-label={`${t('Remover')} ${a.name}`} disabled={disabled || loading} onClick={() => remove(i)}><X size={15} /></button></li>)}</ul><p className="attachment-note">{t("Até 5 arquivos, 1 PDF e 3 MB após o preparo. Textos: até 12.000 caracteres. DOCX: somente texto. Os arquivos são analisados nesta mensagem; o histórico guarda a conversa, sem os anexos.")}</p></>}{error && <p className="error" role="alert">{t(error)}</p>}</div>;
 }

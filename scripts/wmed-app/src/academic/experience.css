@@ -1024,6 +1024,37 @@
   right: 10px;
   top: 50%;
 }
+.va-slice-options {
+  padding: 12px 25px 0;
+  font-size: 11px;
+  color: var(--muted);
+}
+.va-slice-options label {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+}
+.va-slice-legend {
+  list-style: none;
+  margin: 10px 0 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 14px;
+}
+.va-slice-legend li {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 10px;
+}
+.va-slice-legend i {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  flex: none;
+}
 .va-slice-caption {
   padding: 25px;
 }

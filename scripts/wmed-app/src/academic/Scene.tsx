@@ -7,6 +7,7 @@ import { RotateCcw, Download, Move3D, Plus, Minus } from "lucide-react";
 import { drawSlice, type Volume } from "./volume";
 import { prepareSelection } from "./selection";
 import {applyAtlasMaterial,findAtlasPart} from "./atlasMaterials";
+import {useI18n} from "../doctor/I18n";
 
 type Props = {
   urls?: string[];
@@ -39,6 +40,7 @@ function release(object: THREE.Object3D) {
   });
 }
 export default function Scene(props: Props) {
+  const {t} = useI18n();
   const host = useRef<HTMLDivElement>(null);
   const api = useRef<{
     reset: () => void;
@@ -383,27 +385,27 @@ export default function Scene(props: Props) {
       {status && (
         <div className={"va-loading " + (failed ? "error" : "")} role="status">
           {!failed && <span />}
-          {status}
+          {t(status)}
         </div>
       )}
       {!props.minimal && (
         <>
           <div className="va-scene-hint">
-            <Move3D size={14} /> Arraste para girar · role para aproximar
+            <Move3D size={14} /> {t("Arraste para girar · role para aproximar")}
           </div>
           <div className="va-scene-tools">
-            <button disabled={!!status} aria-label="Aproximar modelo" title="Aproximar" onClick={()=>api.current?.zoom(.8)}><Plus size={18}/></button>
-            <button disabled={!!status} aria-label="Afastar modelo" title="Afastar" onClick={()=>api.current?.zoom(1.25)}><Minus size={18}/></button>
+            <button disabled={!!status} aria-label={t("Aproximar modelo")} title={t("Aproximar")} onClick={()=>api.current?.zoom(.8)}><Plus size={18}/></button>
+            <button disabled={!!status} aria-label={t("Afastar modelo")} title={t("Afastar")} onClick={()=>api.current?.zoom(1.25)}><Minus size={18}/></button>
             <button
-              aria-label="Restaurar câmera"
-              title="Restaurar câmera"
+              aria-label={t("Restaurar câmera")}
+              title={t("Restaurar câmera")}
               onClick={() => api.current?.reset()}
             >
               <RotateCcw size={17} />
             </button>
             <button
-              aria-label="Salvar imagem da cena"
-              title="Salvar imagem"
+              aria-label={t("Salvar imagem da cena")}
+              title={t("Salvar imagem")}
               onClick={() => api.current?.snapshot()}
             >
               <Download size={17} />

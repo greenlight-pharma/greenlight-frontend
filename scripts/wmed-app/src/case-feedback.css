@@ -20,6 +20,7 @@
 .case-topic-list{padding:18px 12px;border-right:1px solid var(--line);background:var(--surface);display:flex;flex-direction:column;gap:4px}
 .case-topic-list button{display:flex;align-items:center;justify-content:space-between;gap:8px;text-align:left;padding:12px 10px;border:1px solid transparent;border-radius:9px;background:none;color:var(--muted);font-size:12px;line-height:1.4}
 .case-topic-list button svg{flex-shrink:0}.case-topic-list button[aria-current=true]{background:var(--raised);border-color:var(--line);color:var(--ink);font-weight:650}
+.case-topic-pending{display:flex;align-items:center;gap:8px;margin:6px 0 0;padding:10px;color:var(--muted);font-size:12px}.case-topic-pending .spinner,.case-score .spinner{width:14px;height:14px}
 .case-topic-mobile{display:none}
 .case-topic-content{min-width:0;padding:23px 28px;font-size:14px;line-height:1.7;overflow-wrap:anywhere}
 .case-topic-content>h3{font-size:17px;margin:0 0 17px}.case-topic-content p{font-size:14px;line-height:1.7;margin:8px 0 14px}.case-topic-content dl,.case-topic-content dd{margin:0}.case-topic-content dt{font-size:11px;font-weight:650;color:var(--muted);margin:16px 0 3px}
@@ -79,3 +80,31 @@
 .case-sbar-letter{display:flex;align-items:center;justify-content:center;width:32px;height:32px;flex-shrink:0;border-radius:10px;background:var(--hover);color:var(--ink);font-weight:750;font-size:17px}
 .case-topic-content .case-sbar h4{margin:3px 0 12px;font-size:14px}
 .case-sbar .feedback-items>div+div{padding-top:7px;margin-top:7px}
+
+.case-review-pending{border:1px solid var(--line);border-radius:14px;background:var(--surface);padding:16px;margin:16px 0;color:var(--ink)}
+.case-review-pending p{margin:6px 0 12px;color:var(--muted);font-size:14px}
+.case-review-pending>div{display:flex;flex-wrap:wrap;gap:8px}
+.case-review-pending button{display:flex;align-items:center;justify-content:space-between;gap:10px;min-height:44px;padding:10px 14px;border:1px solid var(--line);border-radius:10px;background:var(--raised);color:var(--ink);text-align:left;font:inherit;font-size:14px}
+@media(max-width:600px){.case-review-pending button{width:100%}}
+
+/* Celular (26/09): relato com menos atrito — cabeçalho curto, voz em destaque, botão principal fixo acima da barra. */
+@media(max-width:700px){
+ .case-page{padding-top:14px}
+ .case-page .case-heading{padding-right:110px;margin-bottom:8px}.case-page .case-heading>p,.case-page .case-heading>.eyebrow{display:none}
+ .case-page .case-heading h1{font-size:22px;margin:4px 0}.case-history-button{top:0}
+ .case-page .case-steps{margin:0 0 12px;gap:10px}.case-page .case-steps span{padding:3px 6px}
+ .case-entry{gap:0}.case-entry>.resource-card{padding:0;border:0;background:transparent!important;box-shadow:none;display:flex;flex-direction:column;gap:10px}
+ .case-entry .field-label{display:none}
+ .case-entry textarea{height:34dvh;min-height:170px;border-radius:14px;padding:14px;line-height:1.45}
+ .case-entry .voice-actions{display:grid;grid-template-columns:1fr auto;align-items:center;gap:8px;margin:0}
+ .case-entry .voice-actions .voice-record{justify-content:center;min-height:50px;font-size:15px;border-radius:14px;border:1.5px solid var(--action);color:var(--action);background:var(--raised)}
+ .case-entry .voice-actions .voice-record.is-recording{background:#b23a48;border-color:#b23a48;color:#fff}
+ .case-entry .voice-actions .audio-upload{min-height:50px;border-radius:14px;padding:0 14px;font-size:13px}
+ .case-entry .voice-actions small{grid-column:1/-1;text-align:right;font-size:11px;margin-top:-4px}
+ .case-entry .case-audio-note{font-size:11px;margin:0}
+ .case-entry .case-privacy-button{align-self:flex-start;border:0;background:none;padding:2px 0;font-size:13px;text-decoration:underline;color:var(--muted)}
+ .case-guide{display:none!important}
+ .case-page .module-primary{position:sticky;bottom:calc(78px + env(safe-area-inset-bottom));z-index:5;width:100%;min-height:52px;justify-content:center;font-size:15px;border-radius:14px;box-shadow:0 8px 24px rgba(0,0,0,.18);margin-top:6px}
+ .case-page .review-field summary{padding:12px 14px}
+ .case-page .confirm-row{font-size:13px;padding:12px 0}
+}
