@@ -70,3 +70,36 @@ test('Custom domain redirects only legacy public pages and retains host/origin r
  assert.equal((await request('/','GET','www.2doctor.ai')).status,200);
  assert.equal((await request('/healthz')).status,200);
 });
+
+test('SEO: only the official domain is indexable; robots, sitemap and favicon are served',async t=>{
+ const local=await fixture(t);
+ const home=await fetch(local.url);assert.equal(home.headers.get('x-robots-tag'),'noindex, nofollow');
+ assert.equal(await fetch(local.url+'/robots.txt').then(r=>r.text()),'User-agent: *\nDisallow: /\n');
+ assert.equal((await fetch(local.url+'/sitemap.xml')).status,404);
+ const {server}=await fixture(t,{publicOrigin:'https://www.2doctor.ai'});const port=server.address().port;
+ const get=(path,headers={})=>new Promise((resolve,reject)=>{const req=http.request({host:'127.0.0.1',port,path,method:'GET',headers:{Host:'www.2doctor.ai',...headers}},res=>{let body='';res.on('data',c=>body+=c);res.on('end',()=>resolve({status:res.statusCode,headers:res.headers,body}));});req.on('error',reject);req.end();});
+ for(const path of ['/','/privacy','/terms','/terms/patients'])assert.equal((await get(path)).headers['x-robots-tag'],undefined,path);
+ for(const path of ['/api/wmed/status','/c/abcdefghij','/admin','/nope'])assert.equal((await get(path)).headers['x-robots-tag'],'noindex, nofollow',path);
+ const robots=await get('/robots.txt');assert.match(robots.headers['content-type'],/text\/plain/);assert.match(robots.body,/Allow: \/\n/);assert.match(robots.body,/Disallow: \/api\//);assert.match(robots.body,/Sitemap: https:\/\/www\.2doctor\.ai\/sitemap\.xml/);
+ const sitemap=await get('/sitemap.xml');assert.match(sitemap.headers['content-type'],/xml/);for(const loc of ['https://www.2doctor.ai/','https://www.2doctor.ai/privacy','https://www.2doctor.ai/terms'])assert.ok(sitemap.body.includes(`<loc>${loc}</loc>`),loc);
+ const icon=await get('/favicon.ico');assert.equal(icon.status,302);assert.equal(icon.headers.location,'/brand/2doctor/favicon.svg');
+});
+test('Shortcuts /pricing and /signup redirect to the app state and keep the campaign query',async t=>{
+ const {url}=await fixture(t);
+ for(const [path,hash] of [['/pricing','planos'],['/pricing/','planos'],['/signup','criar-conta']]){
+  const r=await fetch(url+path+'?utm_source=meta&utm_campaign=x',{redirect:'manual'});assert.equal(r.status,302);assert.equal(r.headers.get('location'),'/?utm_source=meta&utm_campaign=x#'+hash);
+  assert.equal((await fetch(url+path,{redirect:'manual'})).headers.get('location'),'/#'+hash);
+ }
+});
+test('Unknown pages get an English 404 page; non-HTML clients get English JSON',async t=>{
+ const {url}=await fixture(t);
+ const page=await fetch(url+'/does-not-exist',{headers:{Accept:'text/html,application/xhtml+xml'}});assert.equal(page.status,404);assert.match(page.headers.get('content-type'),/text\/html/);
+ const html=await page.text();assert.match(html,/<html lang="en">/);assert.match(html,/Page not found/);assert.match(html,/Open 2Doctor/);
+ const api=await fetch(url+'/missing.js');assert.equal(api.status,404);assert.deepEqual(await api.json(),{error:'Not found.'});
+});
+test('General terms of use page exists in English and is linked from the other legal pages',async t=>{
+ const {url}=await fixture(t);
+ for(const path of ['/terms','/terms/','/termos?lang=pt']){const r=await fetch(url+path);assert.equal(r.status,200,path);const html=await r.text();assert.match(html,/<html lang="en">/);assert.match(html,/<h1>Terms of use<\/h1>/);for(const piece of ['educational tool','does not replace clinical judgment','Stripe','cancel at any time','pro-rated refunds','mailto:'])assert.ok(html.includes(piece),piece);}
+ assert.match(await fetch(url+'/privacy?lang=en').then(r=>r.text()),/<a href="\/terms">Terms of use<\/a>/);
+ const patients=await fetch(url+'/terms/patients?lang=en').then(r=>r.text());assert.match(patients,/<a href="\/terms">Terms of use<\/a>/);assert.match(patients,/href="\/privacy\?lang=en"/);
+});

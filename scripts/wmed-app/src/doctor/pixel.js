@@ -40,6 +40,10 @@ export function track(event, params) {
  return true;
 }
 export const trackRegistration = () => track('CompleteRegistration');
+// Muro de cadastro aberto (visitante tentou perguntar ou chegou por /signup).
+export const trackLead = () => track('Lead');
+// Módulo aberto pelo #hash (ex.: #scores). Só o identificador do módulo, nenhum dado pessoal.
+export const trackModule = (id) => track('ViewContent', { content_name: String(id), content_category: 'module' });
 export function trackCheckout(intervalo) {
  const value = PIXEL_PRICES[intervalo];
  if (!value) return;
