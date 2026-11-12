@@ -1,6 +1,6 @@
 {
  "meta": {
-  "gerado_em": "2026-11-11T17:51+00:00",
+  "gerado_em": "2026-11-12T18:04+00:00",
   "gerado_por": "scripts/governo/agentes/agente_dou.py",
   "janela_dias": 120,
   "fonte": {
@@ -9,13 +9,55 @@
   },
   "regra": "O feed registra o que o DOU publicou, com link para cada ato. Ocupantes no grafo só mudam com revisão humana.",
   "contagem": {
-   "comando": 1,
+   "comando": 2,
    "alta": 32,
-   "outra": 236
+   "outra": 237
   },
-  "refinados_por_claude": 0
+  "refinados_por_claude": 1
  },
  "mudancas": [
+  {
+   "id": "dou-ba0b45cbdf0e",
+   "data": "2026-11-11",
+   "publicado_em": "2026-11-12",
+   "tipo": "nomeacao",
+   "cargo": "Vice-Reitora da Universidade Federal Fluminense",
+   "codigo": null,
+   "entra": "Luciana Maria Almeida de Freitas",
+   "sai": null,
+   "interino": false,
+   "a_pedido": false,
+   "desde": null,
+   "no_id": null,
+   "nivel": "outra",
+   "ato": "Decreto, de 11/11/2026",
+   "assinante": "Presidência da República",
+   "fonte": "https://www.in.gov.br/web/dou/-/decretos-de-11-de-novembro-de-2026-743893354",
+   "fonte_nome": "DOU, seção 2",
+   "origem": "dou",
+   "resumo": "Luciana Maria Almeida de Freitas assume o cargo de Vice-Reitora da Universidade Federal Fluminense."
+  },
+  {
+   "id": "dou-f7ae53796bda",
+   "data": "2026-11-11",
+   "publicado_em": "2026-11-12",
+   "tipo": "nomeacao",
+   "cargo": "Reitor da Universidade Federal Fluminense",
+   "codigo": null,
+   "entra": "Roberto de Souza Salles",
+   "sai": null,
+   "interino": false,
+   "a_pedido": false,
+   "desde": null,
+   "no_id": "universidades",
+   "nivel": "comando",
+   "ato": "Decreto, de 11/11/2026",
+   "assinante": "Presidência da República",
+   "fonte": "https://www.in.gov.br/web/dou/-/decretos-de-11-de-novembro-de-2026-743893354",
+   "fonte_nome": "DOU, seção 2",
+   "origem": "dou",
+   "resumo": "Roberto de Souza Salles assume a reitoria da Universidade Federal Fluminense."
+  },
   {
    "id": "dou-ea06c6a71e9c",
    "data": "2026-11-10",

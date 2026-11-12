@@ -1,6 +1,6 @@
 {
  "meta": {
-  "gerado_em": "2026-11-11T17:51+00:00",
+  "gerado_em": "2026-11-12T18:05+00:00",
   "gerado_por": "scripts/governo/agentes/agente_noticias.py",
   "janela_dias": 90,
   "fontes": [
@@ -30,14 +30,14 @@
     "url": "https://www.gov.br/planalto/pt-br/acompanhe-o-planalto/noticias/RSS"
    }
   ],
-  "total_artigos": 3592,
-  "artigos_com_no": 1224,
-  "novos_nesta_rodada": 86,
+  "total_artigos": 3664,
+  "artigos_com_no": 1267,
+  "novos_nesta_rodada": 90,
   "artigos_por_fonte": {
-   "senado": 1110,
-   "agenciabrasil": 1643,
-   "camara": 814,
-   "stf": 8,
+   "camara": 834,
+   "senado": 1125,
+   "agenciabrasil": 1681,
+   "stf": 7,
    "planalto": 17
   },
   "ordem": "peso igual por fonte; contagem real de matérias",
@@ -45,24 +45,24 @@
  },
  "resumo": [
   {
-   "texto": "O Supremo Tribunal Federal, por decisão do presidente Edson Fachin, arquivou em definitivo o inquérito das Fake News, atendendo a pedido da Procuradoria-Geral da República.",
-   "artigo_id": "n-da3f87cd70",
-   "no_id": "stf"
-  },
-  {
-   "texto": "O presidente do Congresso Nacional, Davi Alcolumbre, prorrogou por 60 dias as medidas provisórias que proíbem apostas de quota fixa e que instituem o Desenrola, enquanto cinco outras MPs perderam eficácia.",
-   "artigo_id": "n-489867bce2",
+   "texto": "O Congresso Nacional autorizou o governo a contratar operações de crédito de até R$ 149,4 bilhões para pagar aposentadorias, pensões, Bolsa Família e benefícios assistenciais; o texto segue para sanção.",
+   "artigo_id": "n-432b976ec7",
    "no_id": "congresso"
   },
   {
-   "texto": "O Conselho da Justiça Federal desistiu do pedido de crédito extra de R$ 208,9 milhões destinado ao pagamento de verbas indenizatórias a magistrados.",
-   "artigo_id": "n-6e2bdb64cd",
-   "no_id": "cjf"
+   "texto": "O Congresso Nacional aprovou projeto que reestrutura carreiras e prevê reajustes para servidores da Receita Federal, do INSS, do Ibama, do ICMBio e da Funai.",
+   "artigo_id": "n-4dfffd6fb3",
+   "no_id": "congresso"
   },
   {
-   "texto": "O Ministério da Gestão e da Inovação em Serviços Públicos republicou o edital de classificação do Concurso Público Nacional Unificado de 2025, com novas listas de espera para vagas remanescentes.",
-   "artigo_id": "n-75809fe2ac",
-   "no_id": "mgi"
+   "texto": "O Congresso Nacional aprovou projeto que autoriza o Executivo a nomear 851 servidores e criar 1.821 cargos e funções de confiança na Receita Federal em 2026.",
+   "artigo_id": "n-6645a09fc7",
+   "no_id": "congresso"
+  },
+  {
+   "texto": "A Advocacia-Geral da União instituiu o Exame Nacional da Advocacia Pública como etapa prévia de habilitação para concursos de advogado da União, procurador da Fazenda Nacional, procurador federal e procurador do Banco Central.",
+   "artigo_id": "n-a456d87b9c",
+   "no_id": "agu"
   }
  ],
  "ranking": {
@@ -70,182 +70,182 @@
    {
     "id": "tse",
     "artigos": 254,
-    "peso": 124.30715057003539,
+    "peso": 124.19066557599886,
     "ultima": "2026-11-11T01:56+00:00"
    },
    {
     "id": "stf",
-    "artigos": 180,
-    "peso": 85.68421087052847,
-    "ultima": "2026-11-10T23:02+00:00"
+    "artigos": 184,
+    "peso": 87.34471170304687,
+    "ultima": "2026-11-12T14:38+00:00"
    },
    {
     "id": "congresso",
-    "artigos": 105,
-    "peso": 64.74292336933854,
-    "ultima": "2026-11-11T17:30+00:00"
+    "artigos": 123,
+    "peso": 75.9880186638553,
+    "ultima": "2026-11-12T17:44:00+00:00"
    },
    {
     "id": "camara",
-    "artigos": 100,
-    "peso": 60.10163872941727,
-    "ultima": "2026-11-11T17:00:00+00:00"
+    "artigos": 103,
+    "peso": 61.70574150307341,
+    "ultima": "2026-11-11T23:46+00:00"
    },
    {
     "id": "prf",
     "artigos": 14,
-    "peso": 48.15301795512171,
+    "peso": 48.98843205219426,
     "ultima": "2026-10-30T15:44+00:00"
    },
    {
     "id": "pf",
-    "artigos": 84,
-    "peso": 37.98866016351106,
-    "ultima": "2026-11-10T11:31+00:00"
+    "artigos": 86,
+    "peso": 38.99819292749017,
+    "ultima": "2026-11-12T17:09:00+00:00"
    },
    {
     "id": "mec",
-    "artigos": 57,
-    "peso": 28.568649326579934,
-    "ultima": "2026-11-10T22:26+00:00"
+    "artigos": 63,
+    "peso": 31.604471538818892,
+    "ultima": "2026-11-12T17:51+00:00"
    },
    {
     "id": "caixa",
-    "artigos": 57,
-    "peso": 24.923189287888007,
-    "ultima": "2026-11-11T00:36+00:00"
+    "artigos": 58,
+    "peso": 25.283997620463982,
+    "ultima": "2026-11-12T10:02+00:00"
    },
    {
     "id": "anvisa",
-    "artigos": 54,
-    "peso": 24.896581920270293,
-    "ultima": "2026-11-10T18:35+00:00"
-   },
-   {
-    "id": "inss",
-    "artigos": 30,
-    "peso": 18.12423693100504,
-    "ultima": "2026-11-06T15:37+00:00"
+    "artigos": 55,
+    "peso": 25.280717858265422,
+    "ultima": "2026-11-12T14:19+00:00"
    },
    {
     "id": "ms",
-    "artigos": 37,
-    "peso": 18.093224844387347,
-    "ultima": "2026-11-10T15:25+00:00"
+    "artigos": 39,
+    "peso": 19.383055884572535,
+    "ultima": "2026-11-12T16:53:00+00:00"
+   },
+   {
+    "id": "inss",
+    "artigos": 31,
+    "peso": 18.551964422227833,
+    "ultima": "2026-11-12T16:18+00:00"
    },
    {
     "id": "agu",
-    "artigos": 39,
-    "peso": 17.262666732465878,
-    "ultima": "2026-11-10T16:55+00:00"
+    "artigos": 40,
+    "peso": 17.652686522572544,
+    "ultima": "2026-11-12T14:48+00:00"
    },
    {
     "id": "petrobras",
-    "artigos": 35,
-    "peso": 16.1435458099609,
-    "ultima": "2026-11-11T16:02+00:00"
+    "artigos": 37,
+    "peso": 16.991233895168225,
+    "ultima": "2026-11-12T16:25+00:00"
    },
    {
     "id": "tcu",
-    "artigos": 26,
-    "peso": 15.643807162443805,
-    "ultima": "2026-11-10T21:20+00:00"
+    "artigos": 27,
+    "peso": 16.330016830794737,
+    "ultima": "2026-11-12T17:14:00+00:00"
    },
    {
     "id": "ibge",
-    "artigos": 33,
-    "peso": 14.63917312321451,
-    "ultima": "2026-11-11T13:15+00:00"
+    "artigos": 35,
+    "peso": 15.473031555291168,
+    "ultima": "2026-11-12T13:18+00:00"
    },
    {
     "id": "inep",
-    "artigos": 30,
-    "peso": 13.117468046256846,
-    "ultima": "2026-11-10T21:04+00:00"
+    "artigos": 31,
+    "peso": 13.513860797144561,
+    "ultima": "2026-11-11T22:00+00:00"
    },
    {
     "id": "senado",
     "artigos": 19,
-    "peso": 10.97956784870966,
+    "peso": 10.939045360974752,
     "ultima": "2026-11-08T23:37+00:00"
    },
    {
     "id": "anp",
     "artigos": 19,
-    "peso": 10.432702288965224,
+    "peso": 10.448989231125513,
     "ultima": "2026-11-10T12:06:00+00:00"
    },
    {
     "id": "ebc",
     "artigos": 23,
-    "peso": 10.056725502130249,
+    "peso": 10.026412849494351,
     "ultima": "2026-11-09T22:15+00:00"
+   },
+   {
+    "id": "stj",
+    "artigos": 18,
+    "peso": 8.947656828302973,
+    "ultima": "2026-11-12T15:40+00:00"
    },
    {
     "id": "tst",
     "artigos": 17,
-    "peso": 8.92832960221883,
+    "peso": 8.930786891248454,
     "ultima": "2026-10-28T22:36+00:00"
-   },
-   {
-    "id": "stj",
-    "artigos": 16,
-    "peso": 8.096553925695739,
-    "ultima": "2026-11-10T16:55+00:00"
    },
    {
     "id": "mpf",
     "artigos": 18,
-    "peso": 8.080439100086087,
+    "peso": 8.062204666534472,
     "ultima": "2026-11-06T20:39+00:00"
    },
    {
     "id": "inmet",
     "artigos": 16,
-    "peso": 6.995982958003651,
+    "peso": 6.974895895300417,
     "ultima": "2026-11-07T21:59+00:00"
    },
    {
     "id": "mpt",
     "artigos": 14,
-    "peso": 6.7767497082652275,
+    "peso": 6.761206773593616,
     "ultima": "2026-11-01T20:06+00:00"
+   },
+   {
+    "id": "bndes",
+    "artigos": 10,
+    "peso": 6.118381745858517,
+    "ultima": "2026-11-12T00:06+00:00"
    },
    {
     "id": "aneel",
     "artigos": 13,
-    "peso": 6.104152698041924,
+    "peso": 6.09799648357459,
     "ultima": "2026-11-10T16:11+00:00"
    },
    {
-    "id": "bndes",
-    "artigos": 9,
-    "peso": 5.691076001581173,
-    "ultima": "2026-11-11T17:10+00:00"
+    "id": "mf",
+    "artigos": 12,
+    "peso": 5.877512274439816,
+    "ultima": "2026-11-12T16:22:00+00:00"
    },
    {
     "id": "anatel",
     "artigos": 11,
-    "peso": 5.465002903639544,
+    "peso": 5.45341379322479,
     "ultima": "2026-11-05T13:45+00:00"
    },
    {
     "id": "cnj",
     "artigos": 12,
-    "peso": 5.456945490834717,
+    "peso": 5.446618705796813,
     "ultima": "2026-11-09T18:46+00:00"
    },
    {
-    "id": "mf",
-    "artigos": 11,
-    "peso": 5.229654828291467,
-    "ultima": "2026-11-03T14:42+00:00"
-   },
-   {
-    "id": "mte",
-    "artigos": 10,
-    "peso": 4.372489348752282,
-    "ultima": "2026-11-04T20:33+00:00"
+    "id": "dpu",
+    "artigos": 8,
+    "peso": 4.576514381498964,
+    "ultima": "2026-11-12T17:14:00+00:00"
    }
   ],
   "pessoas": [
@@ -260,9 +260,9 @@
     "uf": null,
     "foto": "https://commons.wikimedia.org/wiki/Special:FilePath/Foto_oficial_de_Luiz_In%C3%A1cio_Lula_da_Silva_%28estreita%29.jpg?width=160",
     "foto_fonte": "https://www.wikidata.org/wiki/Q37181",
-    "artigos": 266,
-    "peso": 127.50533467125061,
-    "ultima": "2026-11-11T14:02+00:00"
+    "artigos": 268,
+    "peso": 128.1628966656544,
+    "ultima": "2026-11-12T15:14+00:00"
    },
    {
     "id": "flavio-bolsonaro",
@@ -276,7 +276,7 @@
     "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador5894.jpg",
     "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/5894",
     "artigos": 137,
-    "peso": 63.94309085824607,
+    "peso": 63.83970003010069,
     "ultima": "2026-11-06T20:51+00:00"
    },
    {
@@ -290,9 +290,9 @@
     "uf": "AP",
     "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador3830.jpg",
     "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/3830",
-    "artigos": 68,
-    "peso": 41.77671850348662,
-    "ultima": "2026-11-11T17:09:00+00:00"
+    "artigos": 71,
+    "peso": 43.48251156276639,
+    "ultima": "2026-11-12T17:09:00+00:00"
    },
    {
     "id": "damares-alves",
@@ -306,7 +306,7 @@
     "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador6335.jpg",
     "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/6335",
     "artigos": 48,
-    "peso": 31.06594594594592,
+    "peso": 31.266133333333347,
     "ultima": "2026-11-11T17:23:00+00:00"
    },
    {
@@ -321,7 +321,7 @@
     "foto": "https://commons.wikimedia.org/wiki/Special:FilePath/Nunes_Marques%2C_February_2025_%28cropped%29.jpg?width=160",
     "foto_fonte": "https://www.wikidata.org/wiki/Q99831978",
     "artigos": 62,
-    "peso": 29.654323033263985,
+    "peso": 29.624915518388356,
     "ultima": "2026-10-29T14:20:00+00:00"
    },
    {
@@ -336,7 +336,7 @@
     "foto": "https://www.camara.leg.br/internet/deputado/bandep/160674.jpg",
     "foto_fonte": "https://www.camara.leg.br/deputados/160674",
     "artigos": 32,
-    "peso": 23.871714822219992,
+    "peso": 23.846049793169627,
     "ultima": "2026-11-11T11:53+00:00"
    },
    {
@@ -350,9 +350,9 @@
     "uf": "RS",
     "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador825.jpg",
     "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/825",
-    "artigos": 25,
-    "peso": 15.970221907848206,
-    "ultima": "2026-11-09T19:49:00+00:00"
+    "artigos": 26,
+    "peso": 16.504928653579224,
+    "ultima": "2026-11-11T18:48+00:00"
    },
    {
     "id": "edson-fachin",
@@ -365,9 +365,9 @@
     "uf": null,
     "foto": "https://commons.wikimedia.org/wiki/Special:FilePath/Luiz_Edson_Fachin-12-05.2015.jpg?width=160",
     "foto_fonte": "https://www.wikidata.org/wiki/Q10320705",
-    "artigos": 33,
-    "peso": 14.84913139554649,
-    "ultima": "2026-11-10T14:50+00:00"
+    "artigos": 34,
+    "peso": 15.252547346156394,
+    "ultima": "2026-11-11T23:00+00:00"
    },
    {
     "id": "flavio-arns",
@@ -380,9 +380,9 @@
     "uf": "PR",
     "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador345.jpg",
     "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/345",
-    "artigos": 18,
-    "peso": 11.64972972972973,
-    "ultima": "2026-11-09T17:49:00+00:00"
+    "artigos": 19,
+    "peso": 12.376177777777778,
+    "ultima": "2026-11-12T17:46:00+00:00"
    },
    {
     "id": "astronauta-marcos-pontes",
@@ -396,7 +396,7 @@
     "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador6009.jpg",
     "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/6009",
     "artigos": 17,
-    "peso": 11.002522522522522,
+    "peso": 11.073422222222222,
     "ultima": "2026-11-10T17:08:00+00:00"
    },
    {
@@ -411,7 +411,7 @@
     "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador5525.jpg",
     "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/5525",
     "artigos": 15,
-    "peso": 9.733497911124203,
+    "peso": 9.782499178907914,
     "ultima": "2026-10-26T12:13:00+00:00"
    },
    {
@@ -426,7 +426,7 @@
     "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador5376.jpg",
     "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/5376",
     "artigos": 15,
-    "peso": 9.708108108108107,
+    "peso": 9.770666666666665,
     "ultima": "2026-11-11T17:00:00+00:00"
    },
    {
@@ -441,7 +441,7 @@
     "foto": null,
     "foto_fonte": null,
     "artigos": 18,
-    "peso": 7.870480827754108,
+    "peso": 7.8467578822129695,
     "ultima": "2026-11-10T21:20+00:00"
    },
    {
@@ -456,7 +456,7 @@
     "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador4770.jpg",
     "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/4770",
     "artigos": 12,
-    "peso": 7.766486486486484,
+    "peso": 7.816533333333331,
     "ultima": "2026-11-10T16:15:00+00:00"
    },
    {
@@ -471,8 +471,23 @@
     "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador5352.jpg",
     "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/5352",
     "artigos": 12,
-    "peso": 7.766486486486484,
+    "peso": 7.816533333333331,
     "ultima": "2026-10-28T14:06:00+00:00"
+   },
+   {
+    "id": "nelsinho-trad",
+    "nome": "Nelsinho Trad",
+    "nome_completo": "Nelson Trad Filho",
+    "cargo": "Senador, MS",
+    "no_id": "senado",
+    "poder": "legislativo",
+    "partido": "PSD",
+    "uf": "MS",
+    "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador5985.jpg",
+    "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/5985",
+    "artigos": 11,
+    "peso": 7.165155555555554,
+    "ultima": "2026-11-12T17:44:00+00:00"
    },
    {
     "id": "esperidiao-amin",
@@ -486,7 +501,7 @@
     "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador22.jpg",
     "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/22",
     "artigos": 11,
-    "peso": 7.119279279279278,
+    "peso": 7.165155555555554,
     "ultima": "2026-11-10T17:07:00+00:00"
    },
    {
@@ -501,7 +516,7 @@
     "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador5012.jpg",
     "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/5012",
     "artigos": 11,
-    "peso": 7.119279279279278,
+    "peso": 7.165155555555554,
     "ultima": "2026-11-03T12:03:00+00:00"
    },
    {
@@ -516,7 +531,7 @@
     "foto": "https://www.camara.leg.br/internet/deputado/bandep/74856.jpg",
     "foto_fonte": "https://www.camara.leg.br/deputados/74856",
     "artigos": 9,
-    "peso": 6.530909090909089,
+    "peso": 6.544237889688249,
     "ultima": "2026-11-11T16:20:00+00:00"
    },
    {
@@ -531,23 +546,8 @@
     "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador475.jpg",
     "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/475",
     "artigos": 10,
-    "peso": 6.472072072072071,
+    "peso": 6.513777777777777,
     "ultima": "2026-11-09T19:58:00+00:00"
-   },
-   {
-    "id": "nelsinho-trad",
-    "nome": "Nelsinho Trad",
-    "nome_completo": "Nelson Trad Filho",
-    "cargo": "Senador, MS",
-    "no_id": "senado",
-    "poder": "legislativo",
-    "partido": "PSD",
-    "uf": "MS",
-    "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador5985.jpg",
-    "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/5985",
-    "artigos": 10,
-    "peso": 6.472072072072071,
-    "ultima": "2026-11-06T15:09:00+00:00"
    },
    {
     "id": "fernando-dueire",
@@ -561,7 +561,7 @@
     "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador5917.jpg",
     "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/5917",
     "artigos": 10,
-    "peso": 6.472072072072071,
+    "peso": 6.513777777777777,
     "ultima": "2026-10-29T12:20:00+00:00"
    },
    {
@@ -576,7 +576,7 @@
     "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador6338.jpg",
     "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/6338",
     "artigos": 10,
-    "peso": 6.472072072072071,
+    "peso": 6.513777777777777,
     "ultima": "2026-10-26T20:54:00+00:00"
    },
    {
@@ -591,7 +591,7 @@
     "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador5990.jpg",
     "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/5990",
     "artigos": 10,
-    "peso": 6.472072072072071,
+    "peso": 6.513777777777777,
     "ultima": "2026-10-19T12:58:00+00:00"
    },
    {
@@ -606,12 +606,887 @@
     "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador5982.jpg",
     "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/5982",
     "artigos": 9,
-    "peso": 5.824864864864864,
+    "peso": 5.862399999999999,
     "ultima": "2026-11-11T17:23:00+00:00"
    }
   ]
  },
  "artigos": [
+  {
+   "id": "n-4b7f32bf6c",
+   "titulo": "Especialistas criticam a exigência de laudo médico para atendimento na educação especial",
+   "url": "https://www.camara.leg.br/noticias/1318988-especialistas-criticam-a-exigencia-de-laudo-medico-para-atendimento-na-educacao-especial",
+   "data": "2026-11-12T17:51+00:00",
+   "fonte": "camara",
+   "nos": [
+    "mec"
+   ],
+   "pessoas": [],
+   "resumo": "Relatora afirma que orientações do MEC impõem barreiras burocráticas excessivas e excludentes"
+  },
+  {
+   "id": "n-1f71465bcf",
+   "titulo": "Áudio: Nova subcomissão vai monitorar metas do Plano Nacional de Educação",
+   "url": "https://www12.senado.leg.br/noticias/audios/2026/11/nova-subcomissao-vai-monitorar-metas-do-plano-nacional-de-educacao",
+   "data": "2026-11-12T17:46:00+00:00",
+   "fonte": "senado",
+   "nos": [],
+   "pessoas": [
+    "flavio-arns"
+   ],
+   "resumo": "O senador Flávio Arns (PSB-PR) foi eleito presidente da nova Subcomissão Permanente do Plano Nacional de Educação, instalada pelo Senado nesta quarta-feira (11). Durante a instalação, ele defendeu a educação como prioridade para o desenvolvimento brasileiro, com atenção especial ao ensino básico, da creche ao ensino médio. O colegiado acompanhará a execução das metas do PNE até 2036."
+  },
+  {
+   "id": "n-e8ef29071c",
+   "titulo": "Áudio: Novembro Azul ilumina o Congresso Nacional",
+   "url": "https://www12.senado.leg.br/noticias/audios/2026/11/novembro-azul-ilumina-o-congresso-nacional",
+   "data": "2026-11-12T17:44:00+00:00",
+   "fonte": "senado",
+   "nos": [
+    "congresso"
+   ],
+   "pessoas": [
+    "nelsinho-trad"
+   ],
+   "resumo": "O Congresso Nacional recebe iluminação azul de quinta (12) até domingo (14) durante o Novembro Azul, campanha de conscientização sobre a saúde masculina e a prevenção do câncer de próstata, um dos mais frequentes entre os homens. A iniciativa foi solicitada pelo senador Nelsinho Trad (PSD-MS) e busca chamar a atenção da população para a importância do diagnóstico precoce e do acompanhamento médico. Em entrevista à Rádio Senado, o urologista Rodrigo Trivilado alertou que o preconceito ainda afasta homens dos exames."
+  },
+  {
+   "id": "n-1c7366c9f9",
+   "titulo": "Cacique Raoni está internado em Mato Grosso; quadro de saúde é estável",
+   "url": "https://agenciabrasil.ebc.com.br/direitos-humanos/noticia/2026-11/cacique-raoni-esta-internado-em-mato-grosso-quadro-de-saude-e-estavel",
+   "data": "2026-11-12T17:44+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "O cacique Raoni Metuktire, de 94 anos, está internado há quatro dias no Hospital Regional de Peixoto de Azevedo, em Mato Grosso, devido a uma infecção pulmonar e também para acompanhamento da pressão arterial. O quadro de saúde é considerado estável. No boletim médico mais recente, a família de Raoni pede que “todos respeitem a privacidade do cacique e de seus familiares para que ele possa receber os cuidados necessários com tranquilidade” . Notícias relacionadas: Cacique Raoni, de 94 anos, recebe cuidados paliativos em Mato Grosso. Cacique Raoni tem alta hospitalar. O líder indígena foi subme"
+  },
+  {
+   "id": "n-20158a847b",
+   "titulo": "Fiocruz: aumentam casos de síndrome respiratória aguda por covid-19",
+   "url": "https://agenciabrasil.ebc.com.br/saude/noticia/2026-11/fiocruz-aumentam-casos-de-sindrome-respiratoria-aguda-por-covid-19",
+   "data": "2026-11-12T17:43+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [
+    "fiocruz"
+   ],
+   "pessoas": [],
+   "resumo": "Os casos confirmados de síndrome respiratória aguda grave (SRAG) por covid-19 tiveram alta no país no início de novembro , informou nesta quinta-feira (12) a Fundação Oswaldo Cruz (Fiocruz), no Boletim Infogripe . A Fiocruz ressalta, entretanto, que o número de casos graves por covid-19 permanece em níveis baixos. Notícias relacionadas: Covid-19: pelo menos 5 estados registram aumento de casos graves. Nas últimas quatro semanas, 11,5% das hospitalizações e 26,9% das mortes por SRAG viral foram causadas pelo coronavírus Sars-CoV-2, causador da doença. O boletim foi atualizado com os dados de 1º"
+  },
+  {
+   "id": "n-4c5ae10851",
+   "titulo": "Comissão debate impactos do contrabando e da falsificação no mercado de bebidas e cigarros",
+   "url": "https://www.camara.leg.br/noticias/1318951-comissao-debate-impactos-do-contrabando-e-da-falsificacao-no-mercado-de-bebidas-e-cigarros",
+   "data": "2026-11-12T17:43+00:00",
+   "fonte": "camara",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "Audiência pública vai reunir informações para propor medidas legislativas que reduzam os impactos econômicos da pirataria no setor"
+  },
+  {
+   "id": "n-432b976ec7",
+   "titulo": "Previdência e Bolsa Família terão crédito de R$ 149 bi após aval do Congresso",
+   "url": "https://www12.senado.leg.br/noticias/materias/2026/11/12/previdencia-e-bolsa-familia-terao-credito-de-r-149-bi-apos-aval-do-congresso",
+   "data": "2026-11-12T17:41:00+00:00",
+   "fonte": "senado",
+   "nos": [
+    "congresso"
+   ],
+   "pessoas": [],
+   "resumo": "O Congresso Nacional autorizou nesta quinta-feira (12) o governo a contratar operações de crédito de até R$ 149,4 bilhões para financiar o pagamento de aposentadorias, pensões, Bolsa Família e benefícios assistenciais. O texto foi aprovado em deputados e senadores, em votação nominal, e segue para sanção presidencial. A autorização está prevista no substitutivo ao Projeto de Lei do Congresso Nacional (PLN) 23/2026. Os recursos serão obtidos por meio da emissão de títulos públicos e destinados a despesas já previstas no Orçamento de 2026. Do total autorizado, R$ 119 bilhões serão destinados a b"
+  },
+  {
+   "id": "n-7f08d0c648",
+   "titulo": "Comissão externa apresenta relatório sobre rompimento da barragem de Fundão",
+   "url": "https://www.camara.leg.br/noticias/1318888-comissao-externa-apresenta-relatorio-sobre-rompimento-da-barragem-de-fundao",
+   "data": "2026-11-12T17:38+00:00",
+   "fonte": "camara",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "O rompimento da Barragem de Fundão aconteceu há 11 anos e despejou uma lama de rejeitos de minério de ferro ao longo do Rio Doce, entre Minas Gerais e Espírito Santo"
+  },
+  {
+   "id": "n-14f7ef50e3",
+   "titulo": "Congresso aprova indicação de suplente para o Conselho de Comunicação Social",
+   "url": "https://www12.senado.leg.br/noticias/materias/2026/11/12/congresso-aprova-indicacao-de-suplente-para-o-conselho-de-comunicacao-social",
+   "data": "2026-11-12T17:32:00+00:00",
+   "fonte": "senado",
+   "nos": [
+    "congresso"
+   ],
+   "pessoas": [],
+   "resumo": "O Congresso Nacional aprovou, em sessão conjunta nesta quinta-feira (12), a indicação de Paulo Henrique Pimenta da Silva para ocupar uma vaga de membro suplente do Conselho de Comunicação Social (CCS), na representação das empresas de televisão. Ele substitui Fernando Justus Fischer. Paulo Henrique é diretor de Relações Institucionais do Sistema Brasileiro de Televisão (SBT). É bacharel em Comunicação Social pela Universidade de Brasília (UnB), com habilitação em Jornalismo, especialista em Gerenciamento de Crise e pós-graduando em Ciência Política na Universidade Federal do Rio Grande do Sul "
+  },
+  {
+   "id": "n-177a18141f",
+   "titulo": "Lei libera apoio a produtores de cana e até R$ 14,5 bi para renovar frota de caminhões",
+   "url": "https://www12.senado.leg.br/noticias/materias/2026/11/12/lei-libera-apoio-a-produtores-de-cana-e-ate-r-14-5-bi-para-renovar-frota-de-caminhoes",
+   "data": "2026-11-12T17:30:00+00:00",
+   "fonte": "senado",
+   "nos": [],
+   "pessoas": [
+    "geraldo-alckmin"
+   ],
+   "resumo": "Produtores de cana-de-açúcar afetados pela seca e por barreiras comerciais impostas pelos Estados Unidos poderão receber apoio financeiro de R$ 12 por tonelada produzida. A norma também autoriza até R$ 14,5 bilhões em financiamentos para a renovação sustentável da frota de transporte de cargas e passageiros. É o que estabelece a Lei 15.528, de 2026, sancionada pelo presidente da República em exercício, Geraldo Alckmin, e publicada no Diário Oficial da União desta quinta-feira (12). A medida beneficia ainda os setores de aviação civil, agronegócio e infraestrutura ao alterar regras de acesso a "
+  },
+  {
+   "id": "n-71d9479ce6",
+   "titulo": "Congresso aprova indicação para o Conselho de Comunicação Social",
+   "url": "https://www.camara.leg.br/noticias/1319007-congresso-aprova-indicacao-para-o-conselho-de-comunicacao-social",
+   "data": "2026-11-12T17:25+00:00",
+   "fonte": "camara",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "O Conselho elabora estudos, pareceres e recomendações para o Congresso sobre temas da comunicação social"
+  },
+  {
+   "id": "n-fd0f447f8a",
+   "titulo": "Comissão da Câmara comemora os 35 anos da Lei de Informática",
+   "url": "https://www.camara.leg.br/noticias/1318852-comissao-da-camara-comemora-os-35-anos-da-lei-de-informatica",
+   "data": "2026-11-12T17:19+00:00",
+   "fonte": "camara",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "Debate vai avaliar os resultados da legislação e discutir os desafios futuros para o desenvolvimento tecnológico brasileiro"
+  },
+  {
+   "id": "n-abd97e48dc",
+   "titulo": "Congresso aprova reforço orçamentário para ministérios e Judiciário",
+   "url": "https://www12.senado.leg.br/noticias/materias/2026/11/12/congresso-aprova-reforco-orcamentario-para-ministerios-e-judiciario",
+   "data": "2026-11-12T17:14:00+00:00",
+   "fonte": "senado",
+   "nos": [
+    "tcu",
+    "mpu",
+    "dpu",
+    "congresso"
+   ],
+   "pessoas": [],
+   "resumo": "O Congresso Nacional aprovou nesta quinta-feira (12) dez projetos de lei que liberam recursos para ministérios e para as justiças Federal, Eleitoral e do Trabalho, além da Defensoria Pública da União (DPU), Ministério Público da União (MPU) e Tribunal de Contas da União (TCU). A verba aprovada pelos parlamentares gira em torno de R$ 2 bilhões e será aplicada em ações como a construção e reajuste de obras em andamento, a melhoria da infraestrutura do sistema penitenciário federal, gestão de riscos de desastres, apoio ao setor audiovisual e suporte para aposentadorias compulsórias. As propostas "
+  },
+  {
+   "id": "n-b54f641531",
+   "titulo": "Ministério Público, PF e Judiciário tratam das investigações do Banco Master, diz Davi",
+   "url": "https://www12.senado.leg.br/noticias/materias/2026/11/12/ministerio-publico-pf-e-judiciario-tratam-das-investigacoes-do-banco-master-diz-davi",
+   "data": "2026-11-12T17:09:00+00:00",
+   "fonte": "senado",
+   "nos": [
+    "congresso",
+    "pf"
+   ],
+   "pessoas": [
+    "davi-alcolumbre"
+   ],
+   "resumo": "O presidente do Congresso Nacional, Davi Alcolumbre, reiterou na sessão conjunta desta quinta-feira (12) que o Ministério Público, a Polícia Federal e o Judiciário estão tratando das investigações relacionadas às fraudes do Banco Master. Questionado sobre a instalação da Comissão Parlamentar Mista de Inquérito (CPMI) do Master, Davi afirmou ainda que cabe à Presidência da Casa decidir o momento da leitura ou não dos requerimentos que criam comissões. Ele informou que no dia 30 de abril a Mesa do Congresso já havia respondido às questões de ordem de parlamentares sobre a instalação da CPMI. “A "
+  },
+  {
+   "id": "n-ac298efed4",
+   "titulo": "Congresso aprova créditos orçamentários de R$ 152,4 bilhões no Orçamento de 2026",
+   "url": "https://www.camara.leg.br/noticias/1318963-congresso-aprova-creditos-orcamentarios-de-r-1524-bilhoes-no-orcamento-de-2026",
+   "data": "2026-11-12T17:00+00:00",
+   "fonte": "camara",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "Deputados e senadores aprovaram 26 projetos que abrem crédito extra no Orçamento deste ano"
+  },
+  {
+   "id": "n-95597f1103",
+   "titulo": "Congresso Nacional aprova R$ 32,8 milhões para o Ministério da Saúde",
+   "url": "https://www12.senado.leg.br/noticias/materias/2026/11/12/congresso-nacional-aprova-r-32-8-milhoes-para-o-ministerio-da-saude",
+   "data": "2026-11-12T16:53:00+00:00",
+   "fonte": "senado",
+   "nos": [
+    "ms",
+    "congresso"
+   ],
+   "pessoas": [],
+   "resumo": "O Congresso Nacional aprovou nesta quinta-feira (12) um projeto de lei que destina R$ 39 milhões a ações de órgãos do governo federal e a transferências para estados, Distrito Federal e municípios. A maior parte dessa verba — R$ 32,8 milhões — vai para o Ministério da Saúde. O projeto (PLN 28/2026), de autoria do Executivo, trata de recursos que devem reforçar despesas já previstas no Orçamento da União. Ou seja, é o chamado crédito suplementar: uma autorização para aumentar o valor disponível para determinadas ações orçamentárias. O texto, que foi aprovado sem alterações, segue agora para a s"
+  },
+  {
+   "id": "n-ad61ef1c9c",
+   "titulo": "Comissão de Desenvolvimento Urbano aprova diretriz para segurança de infraestrutura",
+   "url": "https://www.camara.leg.br/noticias/1318858-comissao-de-desenvolvimento-urbano-aprova-diretriz-para-seguranca-de-infraestrutura",
+   "data": "2026-11-12T16:52+00:00",
+   "fonte": "camara",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "A Câmara dos Deputados continua discutindo o assunto"
+  },
+  {
+   "id": "n-2710ab6c2f",
+   "titulo": "Congresso muda orçamento em favor da Copa do Mundo de futebol feminino",
+   "url": "https://agenciabrasil.ebc.com.br/esportes/noticia/2026-11/congresso-muda-orcamento-favor-da-copa-do-mundo-de-futebol-feminino",
+   "data": "2026-11-12T16:47+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [
+    "congresso"
+   ],
+   "pessoas": [],
+   "resumo": "O Congresso Nacional aprovou, nesta quinta-feira (12), projeto de lei que flexibiliza regras fiscais e orçamentárias para a realização da Copa do Mundo Feminina da Fifa 2027 , no Brasil entre 24 de junho e 25 de julho. De autoria da Presidência da República, o Projeto de Lei do Congresso Nacional (PLN) nº 5 de 2026 prevê exceções pontuais a algumas regras Lei de Diretrizes Orçamentárias (LDO) de 2026 e da Lei de Responsabilidade Fiscal . Entre os pontos que podem ser flexibilizados, estão: proibição de criação de novas despesas obrigatórias em 2026; exigência de comprovação de que despesas con"
+  },
+  {
+   "id": "n-7eefc75229",
+   "titulo": "Recursos para Angra 3 e seis agências reguladoras seguem para sanção",
+   "url": "https://www12.senado.leg.br/noticias/materias/2026/11/12/recursos-para-angra-3-e-seis-agencias-reguladoras-seguem-para-sancao",
+   "data": "2026-11-12T16:36:00+00:00",
+   "fonte": "senado",
+   "nos": [
+    "antaq",
+    "anac",
+    "congresso"
+   ],
+   "pessoas": [],
+   "resumo": "O Congresso Nacional aprovou, em sessão conjunta nesta quinta-feira (12), créditos de R$ 314,4 milhões para a Eletronuclear, responsável pela construção da usina nuclear Angra 3, e para seis agências reguladoras federais. As propostas estão previstas nos Projetos de Lei do Congresso Nacional, que seguem para sanção presidencial. O PLN 5/2026 abre crédito suplementar de R$ 24,4 milhões para reforçar o orçamento de seis agências reguladoras. A maior parcela, de R$ 11,3 milhões, será destinada à Agência Nacional de Transportes Aquaviários (Antaq) e à Agência Nacional de Aviação Civil (Anac), para"
+  },
+  {
+   "id": "n-9bf6bdc68c",
+   "titulo": "Aprovados créditos para educação em Roraima e instituições federais de ensino",
+   "url": "https://www12.senado.leg.br/noticias/materias/2026/11/12/aprovados-creditos-para-educacao-em-roraima-e-instituicoes-federais-de-ensino",
+   "data": "2026-11-12T16:29:00+00:00",
+   "fonte": "senado",
+   "nos": [
+    "congresso"
+   ],
+   "pessoas": [],
+   "resumo": "O Congresso Nacional aprovou, em sessão conjunta nesta quinta-feira (12), dois projetos que abrem créditos especiais para a educação. As propostas destinam R$ 10 milhões para compensar despesas extraordinárias de Roraima com educação, decorrentes do fluxo migratório, e R$ 45,3 mil a três instituições federais de ensino na Paraíba, no Pará e em Goiás. Os textos seguem para sanção presidencial. Os recursos estão previstos nos Projetos de Lei do Congresso Nacional (PLNs) 27/2026 e 16/2026, respectivamente, encaminhados pelo Poder Executivo e aprovados anteriormente pela Comissão Mista de Orçament"
+  },
+  {
+   "id": "n-9fddeef222",
+   "titulo": "Petrobras faz acordo para deter 100% da transportadora de etanol Logum",
+   "url": "https://agenciabrasil.ebc.com.br/economia/noticia/2026-11/petrobras-faz-acordo-para-deter-100-da-transportadora-de-etanol-logum",
+   "data": "2026-11-12T16:25+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [
+    "petrobras"
+   ],
+   "pessoas": [],
+   "resumo": "A Petrobras firmou um acordo para se tornar 100% dona da empresa Logum Logística, que atua no transporte, movimentação e armazenamento de etanol. A estatal já era proprietária de 30% do capital social da Logum e fechou os termos para pagar R$ 620 milhões pelos demais 70%, que pertencem às empresas Raízen Energia (30%), Copersucar (30%) e Uniduto Logística (10%). A informação foi divulgada nesta quinta-feira (12), inicialmente por meio de um comunicado a investidores da companhia. A aquisição depende ainda do cumprimento de condições precedentes previstas no contrato de compra e venda, incluind"
+  },
+  {
+   "id": "n-5f1a60ca31",
+   "titulo": "Comissão aprova medidas para ampliar regularização fundiária e saneamento em áreas informais",
+   "url": "https://www.camara.leg.br/noticias/1318848-comissao-aprova-medidas-para-ampliar-regularizacao-fundiaria-e-saneamento-em-areas-informais",
+   "data": "2026-11-12T16:23+00:00",
+   "fonte": "camara",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "Agora a proposta será analisada pela Comissão de Constituição e Justiça da Câmara dos Deputados"
+  },
+  {
+   "id": "n-5aefa8a9f3",
+   "titulo": "Aprovados R$ 522 mi para modernização fiscal e compromissos internacionais",
+   "url": "https://www12.senado.leg.br/noticias/materias/2026/11/12/aprovados-r-522-mi-para-modernizacao-fiscal-e-compromissos-internacionais",
+   "data": "2026-11-12T16:22:00+00:00",
+   "fonte": "senado",
+   "nos": [
+    "mf",
+    "congresso"
+   ],
+   "pessoas": [],
+   "resumo": "O Congresso Nacional aprovou, em sessão conjunta nesta quinta-feira (12), dois projetos que somam R$ 522,1 milhões em créditos orçamentários para financiar ações de modernização da gestão fiscal e pagar compromissos do Brasil com organismos financeiros internacionais. As propostas foram encaminhadas pelo Poder Executivo e seguem para sanção presidencial. Reforma tributária O PLN 4/2026 destina R$ 34 milhões ao Ministério da Fazenda para a implantação de soluções tecnológicas relacionadas à reforma tributária sobre o consumo. Os recursos integram a terceira edição do Programa de Modernização da"
+  },
+  {
+   "id": "n-4dfffd6fb3",
+   "titulo": "Congresso aprova reestruturação de carreiras na Receita, Ibama e INSS",
+   "url": "https://agenciabrasil.ebc.com.br/politica/noticia/2026-11/congresso-aprova-reestruturacao-de-carreiras-na-receita-ibama-e-inss",
+   "data": "2026-11-12T16:18+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [
+    "ibama",
+    "icmbio",
+    "inss",
+    "congresso",
+    "funai"
+   ],
+   "pessoas": [],
+   "resumo": "O Congresso Nacional aprovou, nesta quinta-feira (12), projeto de lei (PL) que reestrutura as carreiras, com previsão de reajustes, de servidores da Receita Federal, do Instituto Nacional do Seguro Social (INSS), Instituto Brasileiro do Meio Ambiente e dos Recursos Naturais Renováveis (Ibama), Instituto Chico Mendes de Conservação da Biodiversidade (ICMBio), da Fundação Nacional do Índio (Funai), do Departamento Nacional de Auditoria do SUS (Denasus) e de professores do magistério federal. A medida altera a Lei Orçamentária Anual (LOA) de 2026 .O Executivo afirma que o projeto de lei do Congre"
+  },
+  {
+   "id": "n-807d6fec2d",
+   "titulo": "Comissão aprova proposta com regras para representação legal de provedores de internet no Brasil",
+   "url": "https://www.camara.leg.br/noticias/1318885-comissao-aprova-proposta-com-regras-para-representacao-legal-de-provedores-de-internet-no-brasil",
+   "data": "2026-11-12T16:15+00:00",
+   "fonte": "camara",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "Texto segue em análise na Câmara dos Deputados"
+  },
+  {
+   "id": "n-9cb16273cc",
+   "titulo": "Aprovada dispensa de regras fiscais para Copa do Mundo Feminina de 2027",
+   "url": "https://www12.senado.leg.br/noticias/materias/2026/11/12/aprovada-dispensa-de-regras-fiscais-para-copa-do-mundo-feminina-de-2027",
+   "data": "2026-11-12T16:10:00+00:00",
+   "fonte": "senado",
+   "nos": [
+    "congresso"
+   ],
+   "pessoas": [],
+   "resumo": "O Congresso Nacional aprovou, em sessão conjunta nesta quinta-feira (12), projeto que dispensa despesas relacionadas à realização da Copa do Mundo Feminina de Futebol de 2027, a ser disputada em junho e julho em oito cidades brasileiras, de cumprir determinadas regras fiscais e orçamentárias. O texto segue para sanção. O Projeto de Lei do Congresso Nacional (PLN) 7/2026, do Poder Executivo, prevê exceções a regras da Lei de Diretrizes Orçamentárias (LDO) de 2026 e da Lei de Responsabilidade Fiscal. Entre elas estão: proibição de criação de novas despesas obrigatórias em 2026; exigência de comp"
+  },
+  {
+   "id": "n-86a8ea8a27",
+   "titulo": "Comissão aprova proposta de gratuidade para pessoas com deficiência de baixa renda em eventos",
+   "url": "https://www.camara.leg.br/noticias/1318855-comissao-aprova-proposta-de-gratuidade-para-pessoas-com-deficiencia-de-baixa-renda-em-eventos",
+   "data": "2026-11-12T16:09+00:00",
+   "fonte": "camara",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "Na Câmara, proposta precisa ser aprovada por mais uma comissão; depois, segue pra análise do Senado"
+  },
+  {
+   "id": "n-0bfecd8c7c",
+   "titulo": "Congresso aprova R$ 13,2 milhões para a pesquisa científica no Brasil",
+   "url": "https://www12.senado.leg.br/noticias/materias/2026/11/12/congresso-aprova-r-13-2-milhoes-para-a-pesquisa-cientifica-no-brasil",
+   "data": "2026-11-12T15:59:00+00:00",
+   "fonte": "senado",
+   "nos": [
+    "congresso"
+   ],
+   "pessoas": [],
+   "resumo": "O Ministério da Ciência e Tecnologia está autorizado a receber R$ 13,2 milhões, para aplicação em pesquisas e desenvolvimento científico. O PLN 3/2026, que libera a verba, foi aprovado pelo Congresso Nacional por unanimidade nesta quinta-feira (12). Os recursos vão para continuidade e ampliação de iniciativas estratégicas para fortalecer a base científica e tecnológica nacional e para garantir mais efetividade nas políticas de fomento à ciência, tecnologia e inovação. O dinheiro terá destinação especial para as áreas de ciências biotecnológicas, agrárias e da saúde. O texto segue agora para sa"
+  },
+  {
+   "id": "n-6645a09fc7",
+   "titulo": "Congresso aprova possibilidade de novas nomeações de servidores em 2026",
+   "url": "https://www12.senado.leg.br/noticias/materias/2026/11/12/congresso-aprova-possibilidade-de-novas-nomeacoes-de-servidores-em-2026",
+   "data": "2026-11-12T15:54:00+00:00",
+   "fonte": "senado",
+   "nos": [
+    "congresso"
+   ],
+   "pessoas": [],
+   "resumo": "Senadores e deputados aprovaram, em sessão conjunta do Congresso Nacional nesta quinta-feira (12), projeto que autoriza o Poder Executivo a nomear 851 servidores e criar 1.821 cargos e funções de confiança na Receita Federal em 2026. O texto segue para sanção presidencial. O Projeto de Lei do Congresso Nacional (PLN) 1/2026 também permite a progressão na carreira de professores que integram o quadro em extinção da União. São profissionais oriundos dos antigos territórios federais que deram origem aos estados do Amapá, de Rondônia e de Roraima e que atualmente são remunerados pela União. O bene"
+  },
+  {
+   "id": "n-b5f7bff337",
+   "titulo": "Alcolumbre reafirma que decisão sobre CPMI do Banco Master cabe a ele",
+   "url": "https://agenciabrasil.ebc.com.br/politica/noticia/2026-11/alcolumbre-reafirma-que-decisao-sobre-cpmi-do-banco-master-cabe-ele",
+   "data": "2026-11-12T15:46+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [
+    "congresso"
+   ],
+   "pessoas": [
+    "davi-alcolumbre"
+   ],
+   "resumo": "O presidente do Congresso Nacional, Davi Alcolumbre (União-AP), reafirmou, nesta quinta-feira (12), que cabe a ele, como presidente do Legislativo, a decisão para a abertura da Comissão Parlamentar Mista de Inquérito (CPMI) sobre o Banco Master, investigado por fraude bilionária no sistema financeiro do país. “A Mesa já tomou uma decisão na questão de ordem e cabe à presidência o momento ou não da leitura do requerimento”, afirmou o senador amapaense. Notícias relacionadas: PGR envia ao Supremo parecer favorável a manter prisão de Vorcaro. Brasil não será governado por sócios do Banco Master, "
+  },
+  {
+   "id": "n-e8fbd22d81",
+   "titulo": "Governo estuda novo modelo para concurso público unificado em 2027",
+   "url": "https://agenciabrasil.ebc.com.br/economia/noticia/2026-11/governo-estuda-novo-modelo-para-concurso-publico-unificado-em-2027",
+   "data": "2026-11-12T15:42+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [
+    "mgi"
+   ],
+   "pessoas": [
+    "esther-dweck"
+   ],
+   "resumo": "A ministra da Gestão e da Inovação em Serviços Públicos (MGI), Esther Dweck, anunciou nesta quinta-feira (12) que o governo estuda novo modelo para a 3ª edição do Concurso Público Nacional Unificado (CPNU 3), prevista para 2027. No novo modelo, o governo aplicaria uma prova nacional unificada dividida por áreas de atuação, que tenha a mesma dinâmica do Exame Nacional do Ensino Médio (Enem), que é diferente da lógica tradicional dos concursos públicos federais. Notícias relacionadas: Reúso de computadores pelo governo brasileiro gera economia de água. Inflação perde força e fica em 0,14% em out"
+  },
+  {
+   "id": "n-9cbbc69264",
+   "titulo": "Operação mira suspeitos de fraudar concurso de 2025 da Polícia Federal",
+   "url": "https://agenciabrasil.ebc.com.br/justica/noticia/2026-11/operacao-mira-suspeitos-de-fraudar-concurso-de-2025-da-policia-federal",
+   "data": "2026-11-12T15:40+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [
+    "pf",
+    "stj"
+   ],
+   "pessoas": [],
+   "resumo": "A Polícia Federal deflagrou nesta quinta-feira (12) uma operação contra supostas fraudes no concurso realizado pela própria corporação em 2025. Chamada de Operação Falso Mérito, a ação apura também possíveis crimes de associação criminosa e lavagem de dinheiro. Notícias relacionadas: PF prende ex-servidor do STJ suspeito de vazar informações sigilosas. PF investiga ameaças recebidas pela deputada eleita Ana Elisa . PF faz operação contra fraudes em concurso público no Rio. Segundo a PF, seis pessoas estão entre os alvos de medidas judiciais autorizadas pela 3ª Vara Federal de Campo Grande, no "
+  },
+  {
+   "id": "n-9113c8f5ec",
+   "titulo": "Aprovados créditos especiais para a saúde e para o meio ambiente",
+   "url": "https://www12.senado.leg.br/noticias/materias/2026/11/12/aprovados-creditos-especiais-para-a-saude-e-para-o-meio-ambiente",
+   "data": "2026-11-12T15:39:00+00:00",
+   "fonte": "senado",
+   "nos": [
+    "ms",
+    "congresso"
+   ],
+   "pessoas": [],
+   "resumo": "Senadores e deputados aprovaram nesta quinta-feira (12) dois projetos de lei do Congresso Nacional (PLNs) que destinam R$ 3 milhões em crédito especial em favor do Ministério da Saúde e R$ 3,4 milhões em favor do Ministério do Meio Ambiente. As matérias seguem à sanção presidencial. Pelo PLN 14/2026, enviado pelo Poder Executivo, são autorizados R$ 3 milhões para a seguridade social da União. O crédito será destinado a incluir nova categoria no orçamento. Esse valor será usado para despesas relacionadas ao Sistema Informatizado de Compensação Previdenciária (Comprev), que envolve a compensação"
+  },
+  {
+   "id": "n-489ae35b33",
+   "titulo": "Conheça as novas diretrizes da educação profissional e tecnológica",
+   "url": "https://agenciabrasil.ebc.com.br/educacao/noticia/2026-11/conheca-novas-diretrizes-da-educacao-profissional-e-tecnologica",
+   "data": "2026-11-12T15:30+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [
+    "mec"
+   ],
+   "pessoas": [],
+   "resumo": "A educação profissional e tecnológica no país deve seguir novas diretrizes de ensino. Parecer do Conselho Nacional de Educação (CNE) prevê prioridades quanto à organização, ao planejamento e à oferta de cursos nessa modalidade. O documento homologado na terça-feira (10) pelo Ministério da Educação (MEC) atualiza e revisa a Resolução do CNE/CP nº1 de 2021 , de acordo com as mudanças na legislação educacional brasileira e as transformações tecnológicas. Notícias relacionadas: Educação profissional no Brasil cresce mais de 68% em cinco anos. Educação profissional pode estimular interesse por curs"
+  },
+  {
+   "id": "n-051d6d9224",
+   "titulo": "Reúso de computadores pelo governo brasileiro gera economia de água",
+   "url": "https://agenciabrasil.ebc.com.br/economia/noticia/2026-11/reuso-de-computadores-pelo-governo-brasileiro-gera-economia-de-agua",
+   "data": "2026-11-12T15:24+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [
+    "mcom"
+   ],
+   "pessoas": [],
+   "resumo": "Um programa do governo brasileiro, que reaproveita computadores usados, já economizou 133,3 milhões de litros de água. A estimativa é do Ministério das Comunicações, que coordena a iniciativa de reúso dos equipamentos eletrônicos, através de seu Programa Computadores para Inclusão. De acordo com o ministério, o reaproveitamento das máquinas evita a produção de um computador novo, cujo processo de produção gastaria em média 1.500 litros de água. Notícias relacionadas: Novo computador quântico educacional passa a ser usado no Senai. RN vai abrigar supercomputador brasileiro de Inteligência Artif"
+  },
+  {
+   "id": "n-3b6f1e9ee8",
+   "titulo": "Lula cobra pedido de desculpas da imprensa sobre triplex em Guarujá",
+   "url": "https://agenciabrasil.ebc.com.br/politica/noticia/2026-11/lula-cobra-pedido-de-desculpas-da-imprensa-sobre-triplex-em-guaruja",
+   "data": "2026-11-12T15:14+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [],
+   "pessoas": [
+    "luiz-inacio-lula-da-silva"
+   ],
+   "resumo": "O presidente Luiz Inácio Lula da Silva disse nesta quinta-feira (12) que espera um pedido de desculpas, por parte da imprensa brasileira, sobre o caso envolvendo um apartamento triplex em Guarujá (SP). “Fiquei 580 dias preso dizendo que o apartamento não era meu. Agora que a Justiça decidiu que o apartamento não era meu, eu só espero que as pessoas que me acusaram e as pessoas que falaram durante anos que o apartamento era meu pedissem desculpa”, disse. Notícias relacionadas: Justiça determina que valor do triplex em Guarujá deve ir para OAS. O pedido de retratação foi feito durante live no ca"
+  },
+  {
+   "id": "n-7fb4bed85d",
+   "titulo": "Audiência na Câmara debate prevenção e tratamento de doenças cardiovasculares",
+   "url": "https://www.camara.leg.br/noticias/1318857-audiencia-na-camara-debate-prevencao-e-tratamento-de-doencas-cardiovasculares",
+   "data": "2026-11-12T15:09+00:00",
+   "fonte": "camara",
+   "nos": [],
+   "pessoas": [
+    "geraldo-resende",
+    "giovani-cherini",
+    "pedro-westphalen",
+    "silvia-cristina"
+   ],
+   "resumo": "Bruno Spada/Câmara dos Deputados Balões em formato de coração espalhados no plenário da Câmara em debate sobre o Setembro Vermelho A Comissão de Saúde da Câmara dos Deputados realiza, na terça-feira (17), audiência pública para discutir a campanha Setembro Vermelho e as doenças cardiovasculares, que estão entre as principais causas de morte no Brasil. O debate será realizado às 10 horas, no plenário 7. Veja quem foi convidado A audiência atende a pedido dos deputados Giovani Cherini (PL-RS), Geraldo Resende (União-MS), Silvia Cristina (PP-RO) e Pedro Westphalen (PP-RS). Os parlamentares destac"
+  },
+  {
+   "id": "n-a456d87b9c",
+   "titulo": "AGU institui exame prévio para ingresso em carreiras jurídicas",
+   "url": "https://agenciabrasil.ebc.com.br/justica/noticia/2026-11/agu-institui-exame-previo-para-ingresso-em-carreiras-juridicas",
+   "data": "2026-11-12T14:48+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [
+    "agu",
+    "bcb",
+    "enap",
+    "stj"
+   ],
+   "pessoas": [],
+   "resumo": "Advogados interessados em disputar uma vaga no serviço público como advogado da União, procurador da Fazenda Nacional, procurador federal ou procurador do Banco Central do Brasil vão ter que se submeter a uma etapa prévia de habilitação, o Exame Nacional da Advocacia Pública (Enap) . Instituído pela Advocacia-Geral da União (AGU) , o exame terá caráter eliminatório, sendo requisito de habilitação indispensável à participação nos concursos das quatro carreiras. Notícias relacionadas: STJ restabelece sanções a cursos de medicina com nota baixa no Enamed. As diretrizes e objetivos do exame estão "
+  },
+  {
+   "id": "n-68249a320a",
+   "titulo": "Justiça determina que valor do triplex em Guarujá deve ir para OAS",
+   "url": "https://agenciabrasil.ebc.com.br/justica/noticia/2026-11/justica-determina-que-valor-do-triplex-em-guaruja-deve-ir-para-oas",
+   "data": "2026-11-12T14:38+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [
+    "stf"
+   ],
+   "pessoas": [
+    "luiz-inacio-lula-da-silva"
+   ],
+   "resumo": "O juiz Marcelo Gentil Monteiro, da 12ª Vara Federal Criminal de Brasília, determinou que todo o dinheiro obtido com o leilão de um tríplex em Guarujá (SP) seja entregue ao grupo da empreiteira OAS. O imóvel havia sido atribuído ao presidente Luiz Inácio Lula da Silva durante a Operação Lava Jato. Na decisão assinada na semana passada, o magistrado observou não haver investigação em curso ou outro motivo jurídico que justifique a retenção dos R$ 2,4 milhões arrecadados com o leilão, realizado em 2018. Notícias relacionadas: STF confirma decisão que considera Moro parcial no caso do tríplex. O a"
+  },
+  {
+   "id": "n-fc97e0c884",
+   "titulo": "Motta destaca sanção de lei que garante auxílio a produtores de cana-de-açúcar do Nordeste",
+   "url": "https://www.camara.leg.br/noticias/1318917-motta-destaca-sancao-de-lei-que-garante-auxilio-a-produtores-de-cana-de-acucar-do-nordeste",
+   "data": "2026-11-12T14:22+00:00",
+   "fonte": "camara",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "Nova lei também libera linhas de crédito para transporte, agricultura e aviação"
+  },
+  {
+   "id": "n-ecdfe3bdcd",
+   "titulo": "Anvisa manda recolher lotes de insumos para canetas emagrecedoras",
+   "url": "https://agenciabrasil.ebc.com.br/saude/noticia/2026-11/anvisa-manda-recolher-lotes-de-insumos-para-canetas-emagrecedoras",
+   "data": "2026-11-12T14:19+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [
+    "anvisa"
+   ],
+   "pessoas": [],
+   "resumo": "A Agência Nacional de Vigilância Sanitária (Anvisa) determinou o recolhimento do lote 20241030 de insumo farmacêutico ativo (IFA) tirzepatida e de todos os lotes de IFA retatrutida armazenados na distribuidora Condor Importador & Operador Logístico Ltda. A medida foi publicada nesta quinta-feira (12) no Diário Oficial da União . A tirzepatida é o princípio ativo do medicamento agonista do receptor de GLP-1 Mounjaro, popularmente conhecido como uma das diversas canetas emagrecedoras disponíveis no mercado. Notícias relacionadas: Anvisa determina apreensão de suplementos alimentares. Anvisa regi"
+  },
+  {
+   "id": "n-cfc3bfe766",
+   "titulo": "Comissão aprova projeto que obriga bibliotecas a disponibilizarem texto atualizado da Constituição",
+   "url": "https://www.camara.leg.br/noticias/1318846-comissao-aprova-projeto-que-obriga-bibliotecas-a-disponibilizarem-texto-atualizado-da-constituicao",
+   "data": "2026-11-12T14:04+00:00",
+   "fonte": "camara",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "Texto segue em análise na Câmara. Se for aprovado, seguirá para sanção presidencial"
+  },
+  {
+   "id": "n-bfa5d83d6e",
+   "titulo": "Começa sessão do Congresso Nacional para votação de créditos ao Orçamento 2026; acompanhe",
+   "url": "https://www.camara.leg.br/noticias/1318646-comeca-sessao-do-congresso-nacional-para-votacao-de-creditos-ao-orcamento-2026-acompanhe",
+   "data": "2026-11-12T13:45+00:00",
+   "fonte": "camara",
+   "nos": [
+    "congresso"
+   ],
+   "pessoas": [],
+   "resumo": "Pauta com 24 projetos prevê liberação de recursos adicionais para órgãos públicos e ministérios"
+  },
+  {
+   "id": "n-ceccb794df",
+   "titulo": "Projeto institui protocolos para resgate de animais em acidentes rodoviários",
+   "url": "https://www.camara.leg.br/noticias/1314055-projeto-institui-protocolos-para-resgate-de-animais-em-acidentes-rodoviarios",
+   "data": "2026-11-12T13:39+00:00",
+   "fonte": "camara",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "Proposta proíbe abate de sobreviventes na pista e responsabiliza transportadoras pelo socorro de carga viva"
+  },
+  {
+   "id": "n-3c1e9ef5d9",
+   "titulo": "Inflação perde força e fica em 0,14% em outubro; conta de luz cai",
+   "url": "https://agenciabrasil.ebc.com.br/economia/noticia/2026-11/inflacao-perde-forca-e-fica-em-014-em-outubro-conta-de-luz-cai",
+   "data": "2026-11-12T13:18+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [
+    "ibge"
+   ],
+   "pessoas": [],
+   "resumo": "A bandeira verde na conta de luz e o custo dos transportes deram alívio ao bolso dos brasileiros em outubro e ajudaram a inflação oficial a perder força e fechar o mês de outubro em 0,14%. Em setembro, o indicador ficou em 0,82%. No acumulado de 12 meses, o Índice Nacional de Preços ao Consumidor Amplo (IPCA) alcançou 4,63%, percentual acima da meta do governo. Notícias relacionadas: INPC, inflação que corrige salários, acumula 4,49% em 12 meses. Os dados foram divulgados nesta quinta-feira (12) pelo Instituto Brasileiro de Geografia e Estatística (IBGE). O IPCA do mês passado veio abaixo da e"
+  },
+  {
+   "id": "n-b886bb6d3f",
+   "titulo": "INPC, inflação que corrige salários, acumula 4,49% em 12 meses",
+   "url": "https://agenciabrasil.ebc.com.br/economia/noticia/2026-11/inpc-inflacao-que-corrige-salarios-acumula-449-em-12-meses",
+   "data": "2026-11-12T13:11+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [
+    "ibge"
+   ],
+   "pessoas": [],
+   "resumo": "O Índice Nacional de Preços ao Consumidor (INPC) fechou o mês de outubro em 0,22%. Com isso, o acumulado de 12 meses chega a 4,49%. Em setembro, a inflação de um ano estava em 4,29%. Os dados foram divulgados nesta quinta-feira (12) pelo Instituto Brasileiro de Geografia e Estatística (IBGE). Notícias relacionadas: Ata do Copom indica que desaceleração da economia não conteve inflação. Mercado eleva projeção para inflação, juros e dólar em 2026. Dólar sobe para R$ 5,06; bolsa cai com IPCA-15 e recuo do petróleo. No mês passado, o grupo dos produtos alimentícios subiram 1,10%; já o dos não alim"
+  },
+  {
+   "id": "n-2d3d916055",
+   "titulo": "Projeto inclui valorização do folclore e de tradições populares em licitações de eventos culturais",
+   "url": "https://www.camara.leg.br/noticias/1310397-projeto-inclui-valorizacao-do-folclore-e-de-tradicoes-populares-em-licitacoes-de-eventos-culturais",
+   "data": "2026-11-12T13:10+00:00",
+   "fonte": "camara",
+   "nos": [],
+   "pessoas": [
+    "amom-mandel"
+   ],
+   "resumo": "Bruno Spada / Câmara dos Deputados Amom Mandel, autor do projeto O Projeto de Lei 2726/26 permite que o poder público leve em conta a valorização do folclore e das tradições populares brasileiras em licitações e contratos voltados à realização ou ao apoio a eventos culturais. A proposta altera a Lei de Licitações e Contratos Administrativos e está sendo analisada pela Câmara dos Deputados. Pelo texto, as contratações poderão considerar a diversidade cultural brasileira, a representatividade regional e a promoção de manifestações artísticas populares quando for compatível com o objeto da contra"
+  },
+  {
+   "id": "n-647808d407",
+   "titulo": "Senado deve votar ajuste fiscal com previsão de economia de R$ 60 bi",
+   "url": "https://agenciabrasil.ebc.com.br/politica/noticia/2026-11/senado-deve-votar-ajuste-fiscal-com-previsao-de-economia-de-r-60-bi",
+   "data": "2026-11-12T12:54+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [],
+   "pessoas": [
+    "davi-alcolumbre"
+   ],
+   "resumo": "O Senado deve votar nesta quinta-feira (12) projeto de lei complementar que prevê medidas de ajuste fiscal com potencial de gerar economia entre R$ 50 bilhões e R$ 60 bilhões em 2027. As ações diminuem espaço para o aumento de despesas e permite ao governo ampliar o controle dos gastos públicos com o objetivo de cumprir a meta do próximo ano. Notícias relacionadas: Governo anuncia medidas de ajuste para economia de até R$ 60 bilhões . O presidente do Senado, Davi Alcolumbre , disse que, se ao longo desta quinta as lideranças manifestarem necessidade de mais tempo para apreciar o texto, a votaç"
+  },
+  {
+   "id": "n-4c5b6b9c9b",
+   "titulo": "Cinco milhões vivem em áreas dominadas por facções e milícias no Rio",
+   "url": "https://agenciabrasil.ebc.com.br/direitos-humanos/noticia/2026-11/cinco-milhoes-vivem-em-areas-dominadas-por-faccoes-e-milicias-no-rio",
+   "data": "2026-11-12T12:18+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "Cerca de 5,2 milhões de pessoas viviam em comunidades controladas por grupos criminosos armados no Rio de Janeiro, em 2025, ou seja, quase um terço da população fluminense. Levantamento realizado pelo Instituto de Segurança Pública (ISP), órgão de pesquisa e consolidação de dados da Secretaria Estadual de Segurança, mostra que as facções e milícias controlavam 1.530 comunidades do estado. O número de pessoas e de comunidades submetidas ao domínio de facções criminosas e milícias é cerca de 80% maior do que o observado em 2016, quando havia 843 territórios, com 2,9 milhões de pessoas, vivendo s"
+  },
+  {
+   "id": "n-6f860751ee",
+   "titulo": "Mega-Sena sorteia prêmio de R$ 20 milhões nesta quinta-feira",
+   "url": "https://agenciabrasil.ebc.com.br/geral/noticia/2026-11/mega-sena-sorteia-premio-de-r-20-milhoes-nesta-quinta-feira",
+   "data": "2026-11-12T10:02+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [
+    "caixa"
+   ],
+   "pessoas": [],
+   "resumo": "A Mega-Sena sorteia nesta quinta-feira (12) prêmio estimado em R$ 20 milhões . As seis dezenas do concurso 3.085 serão sorteadas a partir das 21h (horário de Brasília) no Espaço da Sorte, em São Paulo. As apostas podem ser feitas até às 20h (horário de Brasília) de hoje em casas lotéricas credenciadas pela Caixa em todo o país ou pela internet, no site ou aplicativo da Caixa. A aposta simples, com seis dezenas, custa R$ 6. Notícias relacionadas: Mega da Virada: Caixa anuncia que prêmio deve superar R$ 1 bilhão. No último concurso, foram sorteados os números 06 - 14 - 22 - 30 - 31 - 37 e uma ap"
+  },
+  {
+   "id": "n-12118bdfb3",
+   "titulo": "Lucro do BB cai 66,5% no 3º trimestre com inadimplência do agro",
+   "url": "https://agenciabrasil.ebc.com.br/economia/noticia/2026-11/lucro-do-bb-cai-665-no-3o-trimestre-com-inadimplencia-do-agro",
+   "data": "2026-11-12T01:20+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "Pressionado pelo aumento da inadimplência, principalmente do agronegócio, o Banco do Brasil (BB) registrou lucro líquido ajustado de R$ 1,27 bilhão no terceiro trimestre de 2026, queda de 66,5% em relação ao mesmo período do ano passado. Com esse cenário, a instituição reduziu pela metade a projeção de lucro para o ano e elevou a estimativa de despesas com perdas em operações de crédito. Notícias relacionadas: Governo anuncia medidas de ajuste para economia de até R$ 60 bilhões . Proposta que facilita transição tributária será enviada ao Congresso. \"O aumento reflete principalmente a continuid"
+  },
+  {
+   "id": "n-ee19980236",
+   "titulo": "BNDES recebe selo Diamante de transparência pública pela quarta vez",
+   "url": "https://agenciabrasil.ebc.com.br/economia/noticia/2026-11/bndes-recebe-selo-diamante-de-transparencia-publica-pela-quarta-vez",
+   "data": "2026-11-12T00:06+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [
+    "bndes",
+    "amazul",
+    "md"
+   ],
+   "pessoas": [],
+   "resumo": "O Banco Nacional de Desenvolvimento Econômico e Social (BNDES) recebeu, pela quarta vez consecutiva, o selo Diamante do Radar Nacional da Transparência Pública. Neste ano, a instituição alcançou 100% de pontuação na avaliação, resultado inédito entre os órgãos federais. Além do BNDES, apenas a Amazônia Azul Tecnologias de Defesa (Amazul), empresa pública vinculada ao Ministério da Defesa, obteve nota máxima entre os 53 órgãos federais avaliados em 2026. O questionário da avaliação continha 101 perguntas, que correspondiam a 266 critérios de avaliação da transparência. A certificação foi entreg"
+  },
+  {
+   "id": "n-8f0aeec83e",
+   "titulo": "Câmara aprova criação da Política Nacional de Residência em Saúde",
+   "url": "https://www.camara.leg.br/noticias/1318796-camara-aprova-criacao-da-politica-nacional-de-residencia-em-saude",
+   "data": "2026-11-11T23:53+00:00",
+   "fonte": "camara",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "Projeto estabelece regras para residências multiprofissionais e uniprofissionais e segue para análise do Senado"
+  },
+  {
+   "id": "n-9d10c30a45",
+   "titulo": "Precariedade do sistema prisional entra no debate da maioridade penal",
+   "url": "https://agenciabrasil.ebc.com.br/politica/noticia/2026-11/precariedade-do-sistema-prisional-entra-no-debate-da-maioridade-penal",
+   "data": "2026-11-11T23:46+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [
+    "camara"
+   ],
+   "pessoas": [],
+   "resumo": "Duas comissões parlamentares da Câmara dos Deputados dedicaram, nesta quarta-feira (11), audiências públicas simultâneas para discutir a Proposta de Emenda à Constituição (PEC) 32/2015, que trata da redução da maioridade penal. Uma delas é uma comissão especial sobre o tema iniciada na terça-feira (10). O outro colegiado que se debruçou sobre o assunto foi a Comissão de Segurança Pública e Combate ao Crime Organizado da Câmara. Ambas as audiências receberam juristas, advogados, trabalhadores da segurança pública e representantes do governo federal e do Ministério Público. Notícias relacionadas"
+  },
+  {
+   "id": "n-3c5f9b990d",
+   "titulo": "Letramento digital precisa vir antes de uso da IA, diz Unesco",
+   "url": "https://agenciabrasil.ebc.com.br/educacao/noticia/2026-11/letramento-digital-precisa-vir-antes-de-uso-da-ia-diz-unesco",
+   "data": "2026-11-11T23:46+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [
+    "mec"
+   ],
+   "pessoas": [],
+   "resumo": "A aprovação pelo Ministério da Educação (MEC) de diretrizes para a utilização da inteligência artificial (AI) na educação foi bem recebida por especialistas e instituições que trabalham com o tema. A norma proíbe o uso de IA para estudantes dos primeiros anos da educação básica e orienta sobre o uso da ferramenta por alunos do ensino médio e superior e a utilização ética e adequada pelos professores. Notícias relacionadas: MEC fixa novas normas para educação de alunos com altas habilidades. MEC aprova diretrizes para uso de IA em cada etapa da educação. Uma das organizações que ajudaram na ela"
+  },
+  {
+   "id": "n-2f79c59824",
+   "titulo": "Motta anuncia grupo de trabalho para discutir propaganda eleitoral nas redes sociais",
+   "url": "https://www.camara.leg.br/noticias/1318798-motta-anuncia-grupo-de-trabalho-para-discutir-propaganda-eleitoral-nas-redes-sociais",
+   "data": "2026-11-11T23:44+00:00",
+   "fonte": "camara",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "Colegiado terá 15 dias para apresentar proposta sobre regras para campanhas no ambiente digital"
+  },
+  {
+   "id": "n-9ea9dec27f",
+   "titulo": "Projetos de lei que envolvem saúde feminina avançam na Câmara",
+   "url": "https://agenciabrasil.ebc.com.br/politica/noticia/2026-11/projetos-de-lei-que-envolvem-saude-feminina-avancam-na-camara",
+   "data": "2026-11-11T23:21+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [
+    "camara"
+   ],
+   "pessoas": [],
+   "resumo": "Dois projetos de lei que envolvem a saúde e dignidade da mulher tiveram avanço no trâmite legislativo em comissões na Câmara dos Deputados nesta segunda-feira (11). Um deles, que obriga todas as cidades brasileiras a ter pelo menos um local para distribuição de absorventes, já deve seguir para discussão no Senado. Notícias relacionadas: Mulheres defendem articulação em rede para ampliar participação. Presença feminina no comando de prefeituras mais que dobrou em 24 anos. A outra proposta que teve evolução na Câmara é de um projeto para garantir atendimento de saúde remoto para gestantes que vi"
+  },
+  {
+   "id": "n-d275270ae1",
+   "titulo": "Petrobras amplia capacidade de 11 plataformas sem novos investimentos",
+   "url": "https://agenciabrasil.ebc.com.br/economia/noticia/2026-11/petrobras-amplia-capacidade-de-11-plataformas-sem-novos-investimentos",
+   "data": "2026-11-11T23:19+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [
+    "petrobras"
+   ],
+   "pessoas": [
+    "magda-chambriard"
+   ],
+   "resumo": "A presidente da Petrobras, Magda Chambriard, destacou a eficiência operacional da companhia ao ampliar a capacidade de produção de 11 plataformas em 282 mil barris de óleo por dia. Segundo ela, os dados reforçam o resultado positivo do terceiro trimestre de 2026, período em que a estatal lucrou quase R$ 40 bilhões. Magda disse que o aumento da produção impulsiona a autossuficiência e a posição do Brasil entre os maiores produtores mundiais de petróleo. Notícias relacionadas: Projeto quer retirar R$ 10,5 bi em subsídios ao diesel da meta fiscal. Receita retém R$ 35 milhões em itens irregulares "
+  },
+  {
+   "id": "n-35fe3c69a7",
+   "titulo": "Câmara aprova projeto que torna hediondo o crime de maus-tratos de cães e gatos quando resulta em morte",
+   "url": "https://www.camara.leg.br/noticias/1318510-camara-aprova-projeto-que-torna-hediondo-o-crime-de-maus-tratos-de-caes-e-gatos-quando-resulta-em-morte",
+   "data": "2026-11-11T23:15+00:00",
+   "fonte": "camara",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "Texto será enviado ao Senado; pena para o crime pode chegar a cinco anos de reclusão"
+  },
+  {
+   "id": "n-0b141d47bb",
+   "titulo": "PGR envia ao Supremo parecer favorável a manter prisão de Vorcaro",
+   "url": "https://agenciabrasil.ebc.com.br/justica/noticia/2026-11/pgr-envia-ao-supremo-parecer-favoravel-manter-prisao-de-vorcaro",
+   "data": "2026-11-11T23:00+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [
+    "stf"
+   ],
+   "pessoas": [
+    "edson-fachin",
+    "paulo-gonet"
+   ],
+   "resumo": "O procurador-geral da República, Paulo Gonet, enviou nesta quarta-feira (11) ao Supremo Tribunal Federal (STF) parecer favorável à manutenção da prisão do ex-banqueiro Daniel Vorcaro. A manifestação foi solicitada pelo presidente do STF, ministro Edson Fachin, após de defesa de Vorcaro pedir a revogação da prisão . Notícias relacionadas: Defesa de Vorcaro reforça pedido de soltura no STF . GDF pede transferência de R$ 2,2 bilhões do pai de Vorcaro para BRB . Fachin mantém prisão de cunhado de Vorcaro. O ex-banqueiro foi preso em março deste ano e está custodiado no presídio da Papudinha, no Di"
+  },
+  {
+   "id": "n-603da6bd3b",
+   "titulo": "Relator de mudanças no Código de Trânsito altera texto para facilitar aprovação",
+   "url": "https://www.camara.leg.br/noticias/1318733-relator-de-mudancas-no-codigo-de-transito-altera-texto-para-facilitar-aprovacao",
+   "data": "2026-11-11T22:59+00:00",
+   "fonte": "camara",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "Votação na comissão especial foi adiada para o dia 17; proposta retira obrigatoriedade de baliza"
+  },
+  {
+   "id": "n-5db90264ef",
+   "titulo": "Dólar cai 0,42% e fecha a R$ 5,56 com foco em pacote fiscal",
+   "url": "https://agenciabrasil.ebc.com.br/economia/noticia/2026-11/dolar-cai-042-e-fecha-r-556-com-foco-em-pacote-fiscal",
+   "data": "2026-11-11T22:51+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "O dólar fechou em queda nesta quarta-feira (11), e a bolsa brasileira avançou, em uma sessão marcada pela repercussão do pacote de ajuste fiscal do governo e pelo desempenho positivo dos mercados internacionais. A moeda estadunidense recuou cerca de 0,4%, para R$ 5,56, enquanto o Ibovespa subiu na mesma proporção, aos 172 mil pontos. No exterior, o petróleo também avançou, com as tensões entre Estados Unidos e Irã no radar dos investidores. Números do dia Dólar comercial: R$ 5,5628 (-0,42%); Ibovespa: 172.060,44 pontos (+0,42%) Volume negociado na Bolsa: R$ 28,5 bilhões Dólar global (DXY): 102"
+  },
+  {
+   "id": "n-0947d571db",
+   "titulo": "Pacote fiscal prevê 120 dias para Congresso discutir supersalários",
+   "url": "https://agenciabrasil.ebc.com.br/economia/noticia/2026-11/pacote-fiscal-preve-120-dias-para-congresso-discutir-supersalarios",
+   "data": "2026-11-11T22:40+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [
+    "congresso"
+   ],
+   "pessoas": [
+    "jaques-wagner"
+   ],
+   "resumo": "O pacote de ajuste fiscal apresentado pelo governo federal ao Congresso Nacional prevê prazo de até 120 dias para que os parlamentares analisem uma proposta de regulamentação dos chamados supersalários no funcionalismo público. O projeto de lei complementar, protocolado nesta quarta-feira (11) pelo senador Jaques Wagner (PT-BA), também prevê redução de benefícios tributários, mudanças nas regras de gastos públicos e autorização para retirar subsídios ao diesel da meta fiscal de 2026 . Notícias relacionadas: Projeto quer retirar R$ 10,5 bi em subsídios ao diesel da meta fiscal. Governo anuncia "
+  },
+  {
+   "id": "n-5f6528b2c5",
+   "titulo": "Viva Maria recebe a Homenagem do Ano do Prêmio Engenho de Comunicação",
+   "url": "https://agenciabrasil.ebc.com.br/direitos-humanos/noticia/2026-11/viva-maria-recebe-homenagem-do-ano-do-premio-engenho-de-comunicacao",
+   "data": "2026-11-11T22:07+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "O programa Viva Maria, da Rádio Nacional, recebeu a Homenagem do Ano na 22ª edição do Prêmio Engenho de Comunicação. A premiação reconheceu o pioneirismo da atração, apresentada pela jornalista Mara Régia, na escuta e no acolhimento das mulheres ao longo de seus 45 anos de história. A homenagem destacou a contribuição do programa para ampliar a presença das vozes femininas na comunicação brasileira e levar informações sobre saúde, combate à violência e igualdade de gênero a diferentes regiões do país. Na apresentação da premiação, o Viva Maria foi reconhecido por criar um canal pioneiro de esc"
+  },
+  {
+   "id": "n-f462448b08",
+   "titulo": "Toffoli vota por fim da imunidade para crime patrimonial contra mulher",
+   "url": "https://agenciabrasil.ebc.com.br/justica/noticia/2026-11/toffoli-vota-por-fim-da-imunidade-para-crime-patrimonial-contra-mulher",
+   "data": "2026-11-11T22:06+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [
+    "stf"
+   ],
+   "pessoas": [],
+   "resumo": "O ministro Dias Toffoli, do Supremo Tribunal Federal (STF), votou nesta quarta-feira (11) para suspender a regra que impede punição de homens que cometem crimes patrimoniais contra mulheres no contexto de violência doméstica e familiar. A imunidade vigora desde 1940. O plenário da Corte começou a julgar a validade do Artigo 181 do Código Penal. Notícias relacionadas: STF: ministro Fachin arquiva inquérito das Fake News. O trecho do código isenta de punição o cônjuge que comete furto, roubo, extorsão, apropriação indébita, estelionato e fraude contra bens e recursos financeiros da esposa. No en"
+  },
+  {
+   "id": "n-2d91fe2a31",
+   "titulo": "Enem 2026: entenda como funciona a Teoria da Resposta ao Item",
+   "url": "https://agenciabrasil.ebc.com.br/educacao/noticia/2026-11/enem-2026-entenda-como-funciona-teoria-da-resposta-ao-item",
+   "data": "2026-11-11T22:00+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [
+    "inep",
+    "mec"
+   ],
+   "pessoas": [],
+   "resumo": "Uma redação e 180 questões objetivas em dois dias de provas do Exame Nacional do Ensino Médio (Enem). Saber como é calculada a nota faz diferença na hora de o candidato marcar o cartão-resposta. Para pontuar o desempenho individual dos candidatos nas quatro provas objetivas, o Instituto Nacional de Estudos e Pesquisas Educacionais Anísio Teixeira (Inep) aplica a Teoria de Resposta ao Item (TRI) que leva em consideração a coerência pedagógica na marcação das respostas. Notícias relacionadas: MEC fixa novas normas para educação de alunos com altas habilidades. Enem 2026: saiba quem tem direito à"
+  },
+  {
+   "id": "n-a0458532dd",
+   "titulo": "Projetos de servidores públicos disputam sete prêmios de R$ 12 mil",
+   "url": "https://agenciabrasil.ebc.com.br/politica/noticia/2026-11/projetos-de-servidores-publicos-disputam-sete-premios-de-r-12-mil",
+   "data": "2026-11-11T21:47+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "Um total de 14 projetos criados por servidores públicos disputa, até o dia 27, o Prêmio Espírito Público . As iniciativas finalistas, criadas por servidores públicos brasileiros das cinco regiões brasileiras, foram selecionadas entre 867 inscritos. Agora, as melhores práticas serão avaliadas tanto por um grupo de especialistas como por votação popular. Notícias relacionadas: Eleições: fórum de servidores públicos denuncia censura na internet. Os vencedores em cada uma das sete categorias receberão R$ 12 mil e serão anunciados no dia 9 de dezembro, em uma cerimônia em Brasília (DF). O prêmio es"
+  },
+  {
+   "id": "n-400dc76d2f",
+   "titulo": "Violência política: estudo registra 18 mortes e 379 casos em 27 dias",
+   "url": "https://agenciabrasil.ebc.com.br/politica/noticia/2026-11/violencia-politica-estudo-registra-18-mortes-e-379-casos-em-27-dias",
+   "data": "2026-11-11T20:37+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [
+    "mec"
+   ],
+   "pessoas": [
+    "marcia-helena-carvalho-lopes"
+   ],
+   "resumo": "Pelo menos 18 pessoas foram mortas e outras 18 foram vítimas de atentados entre os dias 5 e 31 de outubro, período que compreendeu a campanha de segundo turno e uma semana após as eleições. Os dados são de levantamento das organizações de direitos humanos Terra de Direitos e Justiça Global, divulgado nesta quarta-feira (11). Os registros mostram que dos 379 casos de violência política, 350 deles (92,3%) atingiram eleitores, militantes, equipes de campanha e comitês partidários em 27 dias. Notícias relacionadas: MEC encaminha à PF denúncias de violência política. Márcia Lopes detalha campanha p"
+  },
+  {
+   "id": "n-ae091f7656",
+   "titulo": "Polícia Civil indicia influenciador e marido por vídeo na casa de FHC",
+   "url": "https://agenciabrasil.ebc.com.br/geral/noticia/2026-11/policia-civil-indicia-influenciador-e-marido-por-video-na-casa-de-fhc",
+   "data": "2026-11-11T20:08+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "Wesley Oliveira e o marido, Lessandro Gonçalves, foram indiciados nesta quarta-feira (11) pela Polícia Civil do Estado de São Paulo por difamação e discriminação de pessoa idosa, após a publicação na internet de imagens do ex-presidente Fernando Henrique Cardoso (FHC) . No mês de outubro, os dois entraram no apartamento do ex-presidente, no bairro paulistano de Higienópolis, e gravaram imagens da residência e também de Cardoso, que está com a saúde fragilizada. O vídeo circulou nas redes sociais nesta semana. Notícias relacionadas: Saiba o que é a interdição judicial, medida adotada por famíli"
+  },
+  {
+   "id": "n-0e0df6b0da",
+   "titulo": "Parada LGBTI do Rio cobrará leis que consolidem direitos conquistados",
+   "url": "https://agenciabrasil.ebc.com.br/direitos-humanos/noticia/2026-11/parada-lgbti-do-rio-cobrara-leis-que-consolidem-direitos-conquistados",
+   "data": "2026-11-11T20:07+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [
+    "stf"
+   ],
+   "pessoas": [
+    "benedita-da-silva"
+   ],
+   "resumo": "No ano em que as famílias homoafetivas celebram 15 anos de r econhecimento pela Justiça , a 31ª Parada LGBTI+ do Rio de Janeiro vai cobrar leis que consolidem os direitos conquistados a partir de decisões do Supremo Tribunal Federal (STF). A manifestação está marcada para 22 de novembro, a partir das 11h, com concentração no Posto 5 da Praia de Copacabana. O tema divulgado é Reconhecemos justa toda forma de amor . Notícias relacionadas: Benedita da Silva e Paim recebem homenagem em sessão solene da Câmara. Brasil repatria restos mortais de escravizados que estavam nos EUA. Do linguajar ao salá"
+  },
+  {
+   "id": "n-92e4b8edf0",
+   "titulo": "MEC fixa novas normas para educação de alunos com altas habilidades",
+   "url": "https://agenciabrasil.ebc.com.br/educacao/noticia/2026-11/mec-fixa-novas-normas-para-educacao-de-alunos-com-altas-habilidades",
+   "data": "2026-11-11T19:34+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [
+    "mec"
+   ],
+   "pessoas": [],
+   "resumo": "O Ministério da Educação (MEC) homologou nesta terça-feira (10) um parecer do Conselho Nacional de Educação (CNE) que estabelece novas orientações para o atendimento pedagógico de estudantes com altas habilidades/superdotação. Aprovado pelo Conselho Pleno do CNE no início de agosto deste ano, o Parecer nº 12/2026 atualiza algumas das diretrizes que estavam em vigor desde 2023, ajustando-as à Política Nacional de Educação Especial Inclusiva ( Decreto nº 12.686/2025 ) e à Política Nacional para Estudantes com Altas Habilidades ou Superdotação ( Lei nº 15.436/2026 ). Notícias relacionadas: MEC ap"
+  },
+  {
+   "id": "n-c318e559ca",
+   "titulo": "Benedita da Silva e Paim recebem homenagem em sessão solene da Câmara",
+   "url": "https://agenciabrasil.ebc.com.br/direitos-humanos/noticia/2026-11/benedita-da-silva-e-paim-recebem-homenagem-em-sessao-solene-da-camara",
+   "data": "2026-11-11T18:48+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [
+    "camara"
+   ],
+   "pessoas": [
+    "benedita-da-silva",
+    "paulo-paim"
+   ],
+   "resumo": "A Câmara dos Deputados homenageou, nesta quarta-feira (11), a deputada federal Benedita da Silva (PT-RJ) e o senador Paulo Paim (PT-RS) em sessão solene do Dia Nacional da Consciência Negra, comemorado no dia 20 de novembro. Os parlamentares homenageados fizeram parte da chamada “bancada negra” da Assembleia Constituinte de 1988 e são considerados referências da luta da população negra do Brasil das últimas quatro décadas. Notícias relacionadas: Movimento negro reivindica projetos de leis antirracistas para escolas. Mostra une mulheres abolicionistas e luta antirracista contemporânea. Com o pl"
+  },
+  {
+   "id": "n-0592b5503a",
+   "titulo": "Brasil repatria restos mortais de escravizados que estavam nos EUA",
+   "url": "https://agenciabrasil.ebc.com.br/direitos-humanos/noticia/2026-11/brasil-repatria-restos-mortais-de-escravizados-que-estavam-nos-eua",
+   "data": "2026-11-11T18:11+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "Restos mortais de duas pessoas escravizadas retirados do Brasil no Século 19 foram repatriados para o país neste Mês da Consciência Negra. Os remanescentes permaneceram por 150 anos sob a guarda de instituições vinculadas à Universidade de Harvard, nos Estados Unidos. O Museu Nacional da Universidade Federal do Rio de Janeiro (UFRJ) e a Universidade Federal da Bahia (UFBA) serão as instituições responsáveis pela guarda temporária do acervo. Notícias relacionadas: Movimento negro reivindica projetos de leis antirracistas para escolas. Eliana Alves Cruz questiona ausência de autoras negras no Ja"
+  },
   {
    "id": "n-226e48631a",
    "titulo": "CCJ agrava pena para quem mata ou fere dirigindo sob efeito de álcool ou drogas",
@@ -41441,16 +42316,6 @@
    "nos": [],
    "pessoas": [],
    "resumo": "No local, será acompanhado o desenvolvimento do Programa Nuclear da Marinha. Visita ocorre quarta-feira"
-  },
-  {
-   "id": "n-ada7dd1948",
-   "titulo": "Centro de Estudos Constitucionais do STF (CESTF)",
-   "url": "https://noticias.stf.jus.br/centro-de-estudos-constitucionais-do-stf-cestf/",
-   "data": "2026-08-13T22:00+00:00",
-   "fonte": "stf",
-   "nos": [],
-   "pessoas": [],
-   "resumo": "https://portal.stf.jus.br/cestf"
   }
  ]
 }
