@@ -23,13 +23,15 @@ const routes={auth,chat,academic,cases,history,privacy,discovery,research:public
 // Com DATABASE_URL, o 2Doctor usa contas próprias (banco separado da Vytal) e fala com a API
 // Vytal pela chave de serviço. Sem ela, mantém o comportamento anterior (conta Vytal).
 export async function doctorRoutes(){
- const accounts=await import('./accounts.mjs');const store=await import('./doctor-store.mjs');const pay=await import('./billing.mjs');const shared=await import('./shared-cases.mjs');const admin=await import('./admin.mjs');const {migrate}=await import('./db.mjs');
+ const accounts=await import('./accounts.mjs');const store=await import('./doctor-store.mjs');const pay=await import('./billing.mjs');const shared=await import('./shared-cases.mjs');const admin=await import('./admin.mjs');const {migrate}=await import('./db.mjs');const anon=await import('./anon.mjs');
  await migrate();
  const allow=(req,res)=>{if(accounts.sameSite(req))return true;res.statusCode=403;res.setHeader('Content-Type','application/json; charset=utf-8');res.end(JSON.stringify({error:accounts.t(accounts.lang(req),'origin')}));return false;};
  const identify=(req)=>accounts.identify(req);
  return {
-  routes:{auth:accounts.auth,chat:(req,res)=>chat(req,res,{identify,allow,report:admin.reportError('chat')}),admin:admin.adminApi,academic:(req,res)=>academic(req,res,{identify,allow}),cases:store.cases,history:store.history,billing:pay.billing,compartilhados:shared.sharedCases,'stripe-webhook':pay.stripeWebhook,privacy:(req,res)=>privacy(req,res,{identify,allow}),discovery,research:publicResearch},
-  status:accounts.authStatus,
+  routes:{auth:accounts.auth,chat:(req,res)=>chat(req,res,{identify:async(r)=>(await identify(r))??anon.anonCaller(r,res),allow,report:admin.reportError('chat')}),admin:admin.adminApi,academic:(req,res)=>academic(req,res,{identify,allow}),cases:store.cases,history:store.history,billing:pay.billing,compartilhados:shared.sharedCases,'stripe-webhook':pay.stripeWebhook,privacy:(req,res)=>privacy(req,res,{identify,allow}),discovery,research:publicResearch},
+  // anonFree: perguntas grátis sem conta (0 = desligado); o site usa para decidir quando abrir o muro.
+  status:()=>({...accounts.authStatus(),anonFree:anon.anonLimits().perVisitor}),
+  landing:()=>({freeChat:accounts.FREE_LIMITS.chat,freeCases:accounts.FREE_LIMITS.feedback,anonFree:anon.anonLimits().perVisitor}),
   sharePage:shared.sharePage,
   adminPage:admin.adminPage,
  };

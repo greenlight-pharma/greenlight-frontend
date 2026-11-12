@@ -67,6 +67,8 @@ export async function chat(req,res,{fetchImpl=fetch,twoDoctorEnabled=process.env
  // paciente (mais restrito) — usado quando não há conta própria (sem banco) — nunca o contrário.
  let input,attachments,patient=false,urgent='';try{const raw=await body(req,4400000);input=validateRequest(raw);const context=validateContext(raw);const style=validateResponseStyle(raw);if(style!==null&&!context)throw Error('INVALID_CONTEXT');
   if(raw.perfil!=null&&!perfilValido(raw.perfil))throw Error('INVALID_PROFILE');
+  // Visitante sem conta (2Doctor): só o chat de texto. Arquivos e modo paciente pedem conta.
+  if(caller.anon&&(raw.perfil==='paciente'||Array.isArray(raw.attachments)&&raw.attachments.length))throw Error('ANON_ACCOUNT');
   patient=modoPaciente(caller.perfil,raw.perfil);
   if(patient){
    const triage=emergencyTriage(input.question);const locale=context?.locale||'en';
@@ -78,16 +80,16 @@ export async function chat(req,res,{fetchImpl=fetch,twoDoctorEnabled=process.env
    // consume the user's 2,000-character question budget (including with files).
    if(context)input.history=[...input.history,{role:'user',content:contextualQuestion(presentation,context)}];
   }
-  attachments=validateAttachments(raw.attachments);}catch(e){return json(res,400,{error:e.message==='BODY'?'Arquivos muito grandes. Envie até 3 MB.':e.message||'Mensagem ou arquivos inválidos.'});}
+  attachments=validateAttachments(raw.attachments);}catch(e){if(e.message==='ANON_ACCOUNT')return json(res,401,{error:'Entre com sua conta para conversar.',code:'AUTH_REQUIRED'});return json(res,400,{error:e.message==='BODY'?'Arquivos muito grandes. Envie até 3 MB.':e.message||'Mensagem ou arquivos inválidos.'});}
  const abort=new AbortController();res.on('close',()=>abort.abort());
  const fixed=urgent?urgent.replace(/\n\n---\n\n$/,''):'';
  let upstream;
- try{if(caller.charge&&!(await caller.charge('chat'))){if(urgent)return emergencyOnly(res,fixed);return json(res,429,{error:'Você atingiu o limite de uso de hoje. Volte amanhã.',code:'QUOTA'});}
+ try{if(caller.charge&&!(await caller.charge('chat'))){if(caller.anon)return json(res,401,{error:'Entre com sua conta para conversar.',code:'AUTH_REQUIRED',anon:true});if(urgent)return emergencyOnly(res,fixed);return json(res,429,{error:'Você atingiu o limite de uso de hoje. Volte amanhã.',code:'QUOTA'});}
  const payload=attachments.length?assistantPayload(input,attachments):{historico:[...input.history,{role:'user',content:input.question}]};
  upstream=await fetchImpl(API+caller.path(`/estudante/${twoDoctorEnabled?'2doctor':'tutor'}/chat-stream`),{method:'POST',headers:{'Content-Type':'application/json',...caller.headers},body:JSON.stringify(patient?{...payload,modo:'paciente'}:payload),signal:AbortSignal.any([abort.signal,AbortSignal.timeout(attachments.length?270000:55000)]),redirect:'error'});}
- catch{if(!abort.signal.aborted)fail('NO_RESPONSE');if(res.destroyed)return;if(urgent)return emergencyOnly(res,fixed);return json(res,503,{error:'O assistente não respondeu. Tente novamente.'});}
- if(!upstream.ok){fail(caller.service&&[401,403].includes(upstream.status)?'SERVICE_UNAVAILABLE':'ASSISTANT_UNAVAILABLE',upstream.status);if(caller.service&&[401,403].includes(upstream.status)&&!urgent){console.error('[2doctor] chat: serviço de IA recusou a chave de serviço',upstream.status);return json(res,503,{error:'Serviço indisponível. Tente de novo em instantes.',code:'SERVICE_UNAVAILABLE'});}if(upstream.status===401&&!caller.service)clear(res);if(urgent)return emergencyOnly(res,fixed);return json(res,[400,401,403,429].includes(upstream.status)?upstream.status:502,{error:await upstreamError(upstream,'Não foi possível conversar agora.'),code:upstream.status===401?'AUTH_REQUIRED':'ASSISTANT_UNAVAILABLE'});}
- if(!upstream.headers.get('content-type')?.includes('text/event-stream')){fail('INVALID_RESPONSE',upstream.status);if(urgent)return emergencyOnly(res,fixed);return json(res,502,{error:'O assistente retornou uma resposta inválida.'});}
+ catch{await caller.refund?.();if(!abort.signal.aborted)fail('NO_RESPONSE');if(res.destroyed)return;if(urgent)return emergencyOnly(res,fixed);return json(res,503,{error:'O assistente não respondeu. Tente novamente.'});}
+ if(!upstream.ok){await caller.refund?.();fail(caller.service&&[401,403].includes(upstream.status)?'SERVICE_UNAVAILABLE':'ASSISTANT_UNAVAILABLE',upstream.status);if(caller.service&&[401,403].includes(upstream.status)&&!urgent){console.error('[2doctor] chat: serviço de IA recusou a chave de serviço',upstream.status);return json(res,503,{error:'Serviço indisponível. Tente de novo em instantes.',code:'SERVICE_UNAVAILABLE'});}if(upstream.status===401&&!caller.service)clear(res);if(urgent)return emergencyOnly(res,fixed);return json(res,[400,401,403,429].includes(upstream.status)?upstream.status:502,{error:await upstreamError(upstream,'Não foi possível conversar agora.'),code:upstream.status===401?'AUTH_REQUIRED':'ASSISTANT_UNAVAILABLE'});}
+ if(!upstream.headers.get('content-type')?.includes('text/event-stream')){await caller.refund?.();fail('INVALID_RESPONSE',upstream.status);if(urgent)return emergencyOnly(res,fixed);return json(res,502,{error:'O assistente retornou uma resposta inválida.'});}
  startSSE(res);
  const send=(event,data)=>{if(!res.destroyed)res.write(`event: ${event}\ndata: ${JSON.stringify(data)}\n\n`);};let completed=false;
  try{
