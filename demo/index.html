@@ -129,8 +129,12 @@ body{
 .chrome .url{flex:1;background:rgba(255,255,255,.08);border-radius:7px;
   font-family:var(--mono);font-size:11.5px;color:#9cc6e6;padding:6px 12px;text-align:center}
 .screen{padding:0;min-height:620px;position:relative}
-.view{display:none;animation:fadeIn .45s ease}
-.view.on{display:block}
+/* A entrada da tela só desliza: nunca parte de opacidade 0. Se a animação ficar
+   parada (aba em segundo plano, captura de tela), a tela continua visível. */
+.view{display:none}
+.view.on{display:block;opacity:1;animation:viewIn .45s ease both}
+@keyframes viewIn{from{transform:translateY(6px)}to{transform:none}}
+@media (prefers-reduced-motion:reduce){.view.on{animation:none}}
 @keyframes fadeIn{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
 @keyframes grow{from{transform:scaleY(0)}to{transform:scaleY(1)}}
 
@@ -357,6 +361,28 @@ body{
 .login .enter.pressed{transform:scale(.97);background:var(--navy)}
 .login .alt{text-align:center;font-size:13px;color:var(--slate-500);margin-top:16px}
 .login .alt a{color:var(--aco)}
+
+/* ===== Chamadas (topo e passo final) ===== */
+.top-right{display:flex;align-items:center;gap:10px;flex-wrap:wrap;justify-content:flex-end}
+.cta-link{display:inline-flex;align-items:center;justify-content:center;min-height:44px;padding:10px 16px;
+  border-radius:10px;font-weight:700;font-size:13.5px;text-decoration:none;border:1px solid transparent;text-align:center}
+.cta-link:focus-visible{outline:2px solid #5aa9dd;outline-offset:2px}
+.cta-pri{background:#fff;color:var(--navy)}
+.cta-pri:hover{background:#e6f1fb}
+.cta-sec{color:#cfe1f2;border-color:rgba(232,238,246,.3)}
+.cta-sec:hover{background:rgba(232,238,246,.07)}
+.final .final-cta{display:flex;gap:10px;flex-wrap:wrap;justify-content:center;margin-top:22px}
+.final .cta-pri{background:var(--aco);color:#fff}
+.final .cta-pri:hover{background:var(--navy)}
+.final .cta-sec{color:var(--navy);border-color:var(--linha);background:#fff}
+.final .cta-sec:hover{background:#e6f1fb}
+@media (max-width:860px){
+  .topbar{flex-wrap:wrap;gap:12px}
+  .top-right{width:100%;justify-content:stretch}
+  .top-right .tag{display:none}
+  .top-right .cta-link{flex:1 1 150px}
+}
+@media (max-width:430px){.final .final-cta{flex-direction:column;align-self:stretch}.final .cta-link{width:100%}}
 
 /* ===== Final ===== */
 .final{display:grid;place-items:center;min-height:620px;text-align:center;padding:36px;
@@ -689,7 +715,11 @@ fbq('init','1617614242681933');fbq('track','PageView');
       <span>Demo interativa</span>
     </div>
   </div>
-  <div class="tag" id="tagPassos">Tour guiado · 10 passos</div>
+  <div class="top-right">
+    <div class="tag" id="tagPassos">Tour guiado · 10 passos</div>
+    <a class="cta-link cta-sec" href="/academico/#contato">Apresentar à minha instituição</a>
+    <a class="cta-link cta-pri" href="https://app.vytalsaude.com.br/assinar?oferta=teste">Começar 7 dias grátis</a>
+  </div>
 </header>
 
 <main class="wrap">
@@ -1060,6 +1090,10 @@ fbq('init','1617614242681933');fbq('track','PageView');
             <div class="flow"><span>Praticar</span> → <span>Receber feedback</span> → <span>Evoluir</span></div>
             <p>Questões comentadas, casos com feedback da IA, exame físico, 3D, ECG e Assistente no mesmo lugar. E a coordenação acompanha a turma de perto.</p>
             <div class="motto">Aprender sem medo de errar.</div>
+            <div class="final-cta">
+              <a class="cta-link cta-pri" href="https://app.vytalsaude.com.br/assinar?oferta=teste">Começar 7 dias grátis</a>
+              <a class="cta-link cta-sec" href="/academico/#contato">Apresentar à minha instituição</a>
+            </div>
           </div>
         </div>
 
