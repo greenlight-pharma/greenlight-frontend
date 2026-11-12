@@ -14,7 +14,8 @@ import {history} from './history.mjs';
 import {privacy} from './privacy.mjs';
 import {discovery} from './discovery.mjs';
 import {publicResearch} from './public-research.mjs';
-import {LEGAL_ROUTES,legalHtml,pickLocale} from './legal-pages.mjs';
+import {LEGAL_ROUTES,legalHtml,pickLocale,notFoundHtml} from './legal-pages.mjs';
+import {SITE,robotsTxt,sitemapXml} from '../shared/seo.mjs';
 
 const ROOT=fileURLToPath(new URL('../dist-2doctor/',import.meta.url));
 const MIME={'.html':'text/html; charset=utf-8','.js':'text/javascript; charset=utf-8','.css':'text/css; charset=utf-8','.json':'application/json; charset=utf-8','.svg':'image/svg+xml','.png':'image/png','.jpg':'image/jpeg','.jpeg':'image/jpeg','.webp':'image/webp','.ttf':'font/ttf','.woff2':'font/woff2','.glb':'model/gltf-binary','.gltf':'model/gltf+json','.bin':'application/octet-stream','.pdb':'chemical/x-pdb','.mp4':'video/mp4'};
@@ -33,6 +34,10 @@ export async function doctorRoutes(){
   adminPage:admin.adminPage,
  };
 }
+// Atalhos de anúncio/busca: abrem a home já no estado certo (o app lê o #hash e limpa).
+const SHORTCUTS={'/pricing':'planos','/signup':'criar-conta'};
+// Fora das páginas públicas, nada deve ser indexado.
+const PRIVATE_PATH=/^\/(?:api|admin|painel|c)(?:\/|$)/;
 function json(res,status,value){res.writeHead(status,{'Content-Type':'application/json; charset=utf-8','Cache-Control':'no-store'});res.end(JSON.stringify(value));}
 export function byteRange(header,size){
  if(!header)return null;
@@ -50,6 +55,7 @@ export function createApp({root=ROOT,publicOrigin=process.env.PUBLIC_ORIGIN,fetc
   res.setHeader('X-Content-Type-Options','nosniff');
   res.setHeader('X-Frame-Options','DENY');
   res.setHeader('Referrer-Policy','strict-origin-when-cross-origin');
+  // Indexável só no domínio oficial e nas páginas públicas (ver abaixo); o padrão é não indexar.
   res.setHeader('X-Robots-Tag','noindex, nofollow');
   res.setHeader('Permissions-Policy','camera=(), geolocation=(), microphone=(self)');
   if(origin?.startsWith('https:'))res.setHeader('Strict-Transport-Security','max-age=31536000');
@@ -64,6 +70,14 @@ export function createApp({root=ROOT,publicOrigin=process.env.PUBLIC_ORIGIN,fetc
     res.writeHead(302,{Location:origin+req.url,'Cache-Control':'no-store'});return res.end();
    }
    if(origin&&req.headers.host!==new URL(origin).host)return json(res,400,{error:'Endereço não permitido.'});
+   const indexable=origin===SITE;
+   if(indexable&&!PRIVATE_PATH.test(path))res.removeHeader('X-Robots-Tag');
+   // Página que não existe: HTML em inglês para quem navega; JSON para o resto.
+   const notFound=()=>{
+    res.setHeader('X-Robots-Tag','noindex, nofollow');
+    if(!String(req.headers.accept||'').includes('text/html'))return json(res,404,{error:'Not found.'});
+    res.writeHead(404,{'Content-Type':'text/html; charset=utf-8','Cache-Control':'no-store'});return res.end(req.method==='HEAD'?undefined:notFoundHtml());
+   };
    if(path.startsWith('/api/')){
     if(!path.startsWith('/api/wmed/'))return json(res,404,{error:'Recurso não encontrado.'});
     // Same-origin requests only. Existing cookie, permission and quota checks still run.
@@ -80,6 +94,17 @@ export function createApp({root=ROOT,publicOrigin=process.env.PUBLIC_ORIGIN,fetc
    if(!['GET','HEAD'].includes(req.method))return json(res,405,{error:'Método não permitido.'});
    // Política de privacidade e termos para pacientes (páginas públicas, EN/ES/PT).
    const legalPath=path.length>1?path.replace(/\/$/,''):path;
+   if(path==='/robots.txt'||path==='/sitemap.xml'){
+    if(path==='/sitemap.xml'&&!indexable)return notFound();
+    const text=path==='/robots.txt'?robotsTxt(indexable):sitemapXml();
+    res.writeHead(200,{'Content-Type':path==='/robots.txt'?'text/plain; charset=utf-8':'application/xml; charset=utf-8','Cache-Control':'public, max-age=3600'});return res.end(req.method==='HEAD'?undefined:text);
+   }
+   if(path==='/favicon.ico'){res.writeHead(302,{Location:'/brand/2doctor/favicon.svg','Cache-Control':'public, max-age=86400'});return res.end();}
+   if(Object.hasOwn(SHORTCUTS,legalPath)){
+    // Mantém a query (UTM dos anúncios) e abre o estado pelo #hash.
+    const query=(req.url||'').includes('?')?'?'+req.url.split('?').slice(1).join('?'):'';
+    res.writeHead(302,{Location:'/'+query+'#'+SHORTCUTS[legalPath],'Cache-Control':'no-store'});return res.end();
+   }
    if(Object.hasOwn(LEGAL_ROUTES,legalPath)){const html=legalHtml(LEGAL_ROUTES[legalPath],pickLocale(req.url,req.headers['accept-language']),legalPath);res.writeHead(200,{'Content-Type':'text/html; charset=utf-8','Cache-Control':'public, max-age=300',Vary:'Accept-Language'});return res.end(req.method==='HEAD'?undefined:html);}
    // Link público de caso compartilhado (etiquetas de prévia para o X e mensageiros).
    const shared=/^\/c\/([A-Za-z0-9]{10})$/.exec(path);
@@ -107,11 +132,11 @@ export function createApp({root=ROOT,publicOrigin=process.env.PUBLIC_ORIGIN,fetc
    }
    // Root build, with compatibility aliases for previously shared asset URLs.
    const relative=path==='/'?'index.html':path.startsWith('/2doctor/')?path.slice('/2doctor/'.length):path.slice(1);
-   if(relative.split('/').some(part=>part.startsWith('.')))return json(res,404,{error:'Arquivo não encontrado.'});
+   if(relative.split('/').some(part=>part.startsWith('.')))return notFound();
    const file=resolve(absoluteRoot,relative);
-   if(!file.startsWith(absoluteRoot+sep))return json(res,404,{error:'Arquivo não encontrado.'});
-   let info;try{info=await stat(file);}catch{return json(res,404,{error:'Arquivo não encontrado.'});}
-   if(!info.isFile())return json(res,404,{error:'Arquivo não encontrado.'});
+   if(!file.startsWith(absoluteRoot+sep))return notFound();
+   let info;try{info=await stat(file);}catch{return notFound();}
+   if(!info.isFile())return notFound();
    if(relative==='index.html'){
     // Injeta o ID do Meta Pixel (variável de ambiente) no HTML; sem ID válido, o HTML sai intacto.
     const html=injectPixelMeta(await readFile(file,'utf8'),metaPixelId);
