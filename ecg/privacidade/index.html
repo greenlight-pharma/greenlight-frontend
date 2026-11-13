@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<!-- Versão para revisão — não publicada. Texto preparado para revisão do Dilson (e, se ele quiser, de advogado). Não fazer merge antes de resolver os campos [A DEFINIR], [CONFIRMAR] e os do encarregado. -->
+<!-- Versão para revisão — não publicada. Texto preparado para revisão do Dilson (e, se ele quiser, de advogado). Não fazer merge antes de resolver os campos [A DEFINIR], [CONFIRMAR] e os do encarregado. Fatos conferidos no código em 12/11/2026 (vytal-api origin/main f5ffbf7, app build 19); ver _coordenacao/lancamento-ecg/TERMOS_PENDENCIAS.md. -->
 <html lang="pt-BR">
 <head>
 <meta charset="utf-8">
@@ -78,7 +78,7 @@ footer nav a:hover{color:var(--navy)}
   <section class="resumo">
     <h2>Em poucas palavras</h2>
     <ul>
-      <li>Para melhorar a leitura, guardamos <strong>só o recorte do traçado</strong>, sem cabeçalho nem rodapé e <strong>sem vínculo com a sua conta</strong>. Você pode desligar isso nos ajustes do app (seção 5).</li>
+      <li>Para melhorar a leitura, guardamos <strong>uma cópia da foto de cada leitura</strong>, com tarja preta no topo e no rodapé e <strong>sem vínculo com a sua conta</strong> (seção 5).</li>
       <li>O <strong>resultado e o histórico ficam só no seu aparelho</strong>.</li>
       <li>O profissional que envia o exame é responsável por <strong>tarjar os dados de identificação</strong> (nome, data de nascimento, registro) antes de fotografar.</li>
       <li>O resultado é automático e <strong>não substitui a avaliação médica</strong>.</li>
@@ -106,22 +106,23 @@ footer nav a:hover{color:var(--navy)}
     <li><strong>Login com Apple ou Google</strong>, quando usado: o identificador da conta e o e-mail que a Apple ou o Google nos repassam.</li>
     <li><strong>Confirmação do e-mail</strong>, necessária para liberar as leituras grátis.</li>
     <li><strong>Vínculo com instituição conveniada</strong>, quando o acesso é dado por ela.</li>
-    <li><strong>Aceite</strong> destes documentos, com data, hora e versão. [CONFIRMAR: se o app do Vytal ECG registra o aceite]</li>
+    <li><strong>Aceite</strong> dos termos no aplicativo: guardamos na conta a data, a hora e a versão do documento aceito.</li>
   </ul>
 
   <h3>2.2. Dados de assinatura e pagamento</h3>
   <ul>
     <li><strong>Compras pela App Store:</strong> o pagamento é feito à Apple, na conta Apple do usuário. Recebemos da Apple só a confirmação da compra e a situação da assinatura (plano, vigência, renovação). Não recebemos dados do cartão.</li>
-    <li><strong>Compras pelo site (Pagar.me):</strong> para gerar o Pix ou a cobrança no cartão, o usuário informa nome completo, CPF, celular e endereço, que são enviados ao Pagar.me. Os dados do cartão vão direto ao Pagar.me; a Vytal não recebe nem guarda o número do cartão. Guardamos o plano, a forma de pagamento, a situação e a vigência da assinatura. [CONFIRMAR: se a Vytal guarda o CPF, o celular e o endereço no próprio banco ou só os repassa ao Pagar.me]</li>
+    <li><strong>Compras pelo site (Pagar.me):</strong> para gerar o Pix ou a cobrança no cartão, o usuário informa nome completo, CPF, celular e endereço, que são enviados ao Pagar.me. Os dados do cartão vão direto ao Pagar.me; a Vytal não recebe nem guarda o número do cartão. O CPF, o celular e o endereço informados na compra são repassados ao Pagar.me e <strong>não ficam gravados no banco de dados da Vytal</strong>. Guardamos o plano, a forma de pagamento, a situação e a vigência da assinatura, o identificador da assinatura ou do pedido no Pagar.me e, no cartão, a bandeira e os 4 últimos dígitos.</li>
     <li><strong>Leituras usadas</strong>, para controlar as 3 leituras grátis e o acesso pago.</li>
   </ul>
 
   <h3>2.3. Dados de cada leitura</h3>
   <ul>
-    <li><strong>Foto do ECG:</strong> enviada para processamento. A foto inteira não fica guardada; se o uso para melhoria estiver ligado, guardamos só o recorte anonimizado do traçado (seção 5).</li>
-    <li><strong>Contexto clínico opcional:</strong> se o paciente é adulto ou criança, se há suspeita de síndrome coronariana aguda, um texto livre e um ditado por voz. O texto passa por um filtro que procura e remove dados que identifiquem pessoas antes de seguir adiante. O áudio do ditado é enviado para transcrição. [CONFIRMAR: se o texto clínico e a transcrição ficam registrados no servidor e por quanto tempo]</li>
-    <li><strong>Registros técnicos da leitura</strong>, guardados no servidor <strong>sem a imagem</strong>: data e hora, tempo de processamento, número de tentativas, se a leitura foi aceita ou recusada e o motivo da recusa.</li>
-    <li><strong>Resultado</strong> (medidas, achados sugeridos, traçado redesenhado e PDF): devolvido ao aparelho do usuário. O histórico de até 50 leituras e 12 fotos fica <strong>só no aparelho</strong>.</li>
+    <li><strong>Foto do ECG:</strong> enviada para processamento. A foto original não é gravada no nosso banco de dados; guardamos uma cópia reduzida, sem metadados e com tarja preta no topo e no rodapé, sem vínculo com a conta (seção 5).</li>
+    <li><strong>Contexto clínico opcional:</strong> se o paciente é adulto ou criança, se há suspeita de síndrome coronariana aguda, um texto livre e um ditado por voz. O texto passa por um filtro automático: se ele encontrar um dado que pareça identificar uma pessoa (por exemplo, CPF, telefone ou data exata), a leitura é barrada e o aplicativo pede para retirar o trecho; nesse caso, o trecho barrado fica anotado no registro de erros do servidor. O áudio do ditado é enviado para transcrição e não é gravado no servidor; o texto transcrito volta ao aplicativo. O texto clínico e a transcrição <strong>não são gravados no nosso banco de dados</strong>: o texto só é usado na interpretação por IA.</li>
+    <li><strong>Registros técnicos da leitura</strong>, guardados no servidor <strong>sem vínculo com a conta</strong>: data e hora, versão do leitor, tempo de processamento, número de tentativas, se a leitura foi aceita ou recusada e o motivo da recusa, formato do exame, tamanho da foto recebida, frequência cardíaca medida, ritmo e achados sugeridos (só os nomes), alertas e qualidade da leitura.</li>
+    <li><strong>Resultado</strong> (medidas, achados sugeridos, traçado redesenhado e PDF): devolvido ao aparelho do usuário. O histórico de até 50 leituras e 12 fotos fica <strong>só no aparelho</strong>. Exceção: se a conexão cair antes de o resultado chegar, ele fica guardado no servidor, ligado à conta, para ser entregue quando o aplicativo voltar (o aplicativo só o busca nas 24 horas seguintes).</li>
+    <li><strong>Relato de erro</strong>, quando o usuário toca em reportar uma leitura: o achado principal, a confiança, o texto da leitura e o motivo que o usuário escreveu, ligados à conta, sem a imagem.</li>
   </ul>
 
   <h3>2.4. Dados técnicos de acesso</h3>
@@ -140,7 +141,7 @@ footer nav a:hover{color:var(--navy)}
       <tr><td>Processar a foto e devolver a leitura</td><td>Foto do ECG, contexto clínico opcional</td><td>Tutela da saúde em procedimento realizado por profissional de saúde (art. 11, II, “f”), pedida pelo profissional no atendimento</td></tr>
       <tr><td>Interpretar com IA, quando o usuário pede</td><td>Foto do ECG e contexto clínico</td><td>As mesmas bases da linha anterior</td></tr>
       <tr><td>Transcrever o ditado</td><td>Áudio do ditado</td><td>As mesmas bases da leitura</td></tr>
-      <tr><td>Recortar e anonimizar o traçado para melhorar a leitura e treinar modelos próprios (seção 5)</td><td>Foto do ECG, até o recorte</td><td>[A DEFINIR com advogado: base do art. 11 para o tratamento até a anonimização]. Depois de anonimizado, o recorte deixa de ser dado pessoal (art. 12)</td></tr>
+      <tr><td>Guardar a cópia tarjada da foto e os sinais para melhorar a leitura e treinar modelos próprios (seção 5)</td><td>Foto do ECG, até a tarja; cópia tarjada e sinais</td><td>[A DEFINIR com advogado: base do art. 11 para o tratamento até a anonimização, e se a cópia tarjada conta como dado anonimizado (art. 12)]</td></tr>
       <tr><td>Medir a qualidade das leituras, corrigir falhas e melhorar o serviço</td><td>Registros técnicos da leitura, sem imagem</td><td>Legítimo interesse (art. 7º, IX), com dados mínimos e sem imagem</td></tr>
       <tr><td>Guardar registros de acesso</td><td>IP, data e hora</td><td>Obrigação legal — Marco Civil da Internet, art. 15 (art. 7º, II)</td></tr>
       <tr><td>Enviar e-mails de serviço (confirmação, senha, cobrança, avisos)</td><td>Nome e e-mail</td><td>Execução de contrato (art. 7º, V)</td></tr>
@@ -152,25 +153,34 @@ footer nav a:hover{color:var(--navy)}
 
   <h2>4. O que não guardamos e o que não fazemos</h2>
   <ul>
-    <li><strong>Não guardamos a foto inteira</strong> nem o cabeçalho e o rodapé impressos do ECG.</li>
-    <li><strong>Não guardamos o resultado nem o histórico</strong> das leituras no servidor. Eles ficam no aparelho do usuário.</li>
-    <li><strong>Não vendemos nem compartilhamos com terceiros</strong> os recortes guardados para melhoria.</li>
+    <li><strong>Não guardamos a foto original</strong> no nosso banco de dados: só a cópia com tarja no topo e no rodapé (seção 5).</li>
+    <li><strong>Não guardamos o histórico das leituras ligado à conta.</strong> Ele fica no aparelho do usuário. As exceções são o resultado não entregue por queda de conexão e o relato de erro (seção 2.3).</li>
+    <li><strong>Não vendemos nem cedemos a terceiros</strong> as fotos guardadas para melhoria.</li>
+    <li><strong>Não guardamos o CPF nem o endereço</strong> informados na compra pelo site.</li>
     <li><strong>Não recebemos nem guardamos o número do cartão.</strong></li>
     <li><strong>Não vendemos dados pessoais</strong> e não usamos dados de saúde para publicidade.</li>
     <li><strong>Não rastreamos</strong> o usuário entre aplicativos e sites de terceiros a partir do aplicativo.</li>
   </ul>
 
   <h2>5. Fotos guardadas para melhorar a leitura</h2>
-  <p>Para melhorar o Vytal ECG, guardamos parte das fotos enviadas. É assim que funciona:</p>
+  <p>Para melhorar o Vytal ECG, guardamos uma cópia da foto de <strong>cada leitura</strong>, inclusive das leituras recusadas ou que falharam. É assim que funciona:</p>
   <ul>
-    <li><strong>O que guardamos:</strong> só o <strong>recorte do traçado</strong>, a área da grade com as derivações. Antes de guardar, retiramos o cabeçalho e o rodapé impressos, que costumam trazer nome, data de nascimento, número de registro e o laudo do aparelho. Guardamos junto apenas dados técnicos da leitura, como o formato do exame e as medidas obtidas, <strong>sem nenhum vínculo com a conta</strong> de quem enviou. [CONFIRMAR: lista exata do que vai junto com o recorte]</li>
-    <li><strong>Para quê:</strong> melhorar a leitura e treinar modelos próprios da Vytal.</li>
-    <li><strong>Onde fica:</strong> no ambiente de processamento da Vytal, contratado da Modal, nos EUA, com acesso restrito à equipe da Vytal.</li>
-    <li><strong>Por quanto tempo:</strong> 5 anos.</li>
-    <li><strong>Com quem compartilhamos:</strong> com ninguém. Não vendemos nem cedemos esses recortes a terceiros.</li>
+    <li><strong>O que guardamos:</strong> uma <strong>cópia reduzida da foto</strong> (a mesma versão usada na leitura), regravada sem os metadados do arquivo (como data, aparelho e localização) e com <strong>duas tarjas pretas</strong>: uma cobre os 15% de cima da imagem e a outra, os 8% de baixo. São as faixas onde o aparelho de ECG costuma imprimir nome, data de nascimento e número de registro. O restante da foto fica como foi enviado.</li>
+    <li><strong>O que vai junto com a foto:</strong>
+      <ul>
+        <li>os sinais digitais lidos: formato do exame, frequência de amostragem, qualidade do encaixe do formato, o sinal de cada derivação e a marcação dos trechos estimados;</li>
+        <li>o registro técnico da leitura (seção 2.3): data e hora, versão do leitor, tempos, tentativas, aceita ou recusada e motivo, formato, tamanho da foto, frequência cardíaca, ritmo, achados sugeridos, alertas e qualidade.</li>
+      </ul>
+    </li>
+    <li><strong>O que não vai junto:</strong> nome, e-mail ou qualquer identificador da conta de quem enviou; o texto clínico; o áudio do ditado. A cópia <strong>não tem vínculo com a conta</strong>.</li>
+    <li><strong>Para quê:</strong> investigar leituras ruins, melhorar a leitura e treinar modelos próprios da Vytal.</li>
+    <li><strong>Onde fica:</strong> no banco de dados da Vytal, hospedado na Railway (seção 6), em tabela separada.</li>
+    <li><strong>Quem acessa:</strong> só administradores da Vytal, com login próprio.</li>
+    <li><strong>Por quanto tempo:</strong> até 5 anos. [CONFIRMAR: o sistema ainda não apaga sozinho ao fim do prazo; criar a rotina de exclusão ou ajustar esta frase]</li>
+    <li><strong>Com quem compartilhamos:</strong> com ninguém além do fornecedor que hospeda o banco. Não vendemos nem cedemos essas fotos a terceiros.</li>
   </ul>
-  <p><strong>Sobre a anonimização, com franqueza:</strong> o recorte sem cabeçalho, sem rodapé e sem vínculo com a conta é dado anonimizado e, pela LGPD (art. 12), deixa de ser dado pessoal. Até o momento do recorte, porém, a foto é dado pessoal sensível e é tratada como tal (seção 3). O recorte é automático e pode falhar, por exemplo se houver nome escrito à mão sobre o traçado. Por isso continua valendo a regra de tarjar os dados de identificação antes de fotografar (seção 11).</p>
-  <p><strong>Como desligar:</strong> você pode <strong>desligar a qualquer momento</strong>, nos ajustes do aplicativo, o uso das próximas fotos para melhoria. Os recortes já guardados não têm vínculo com a sua conta, por isso não conseguimos localizá-los para apagar.</p>
+  <p><strong>Sobre a anonimização, com franqueza:</strong> as tarjas ficam em posição fixa, no topo e no rodapé da imagem. Elas <strong>podem não cobrir tudo</strong>: nome escrito à mão ou etiqueta colada sobre o traçado, cabeçalho impresso mais abaixo, texto na lateral, foto tirada de lado ou de cabeça para baixo, ou foto com muita margem em volta da folha. Nesses casos, a cópia guardada pode conter dado que identifica o paciente e continua sendo dado pessoal. Até a aplicação das tarjas, a foto é dado pessoal sensível e é tratada como tal (seção 3). Por isso continua valendo a regra de tarjar os dados de identificação antes de fotografar (seção 11).</p>
+  <p><strong>Não há como desligar por usuário:</strong> hoje o aplicativo não tem opção para desligar a guarda das fotos. Como as cópias não têm vínculo com a conta, também não conseguimos localizar nem apagar as fotos de um usuário específico.</p>
   <p>O leitor também foi e continua sendo treinado em bases públicas de ECG para pesquisa: PTB-XL, CODE-15, Chapman, SPH, STAFF III, LUDB e MIMIC-IV-ECG.</p>
 
   <h2>6. Com quem compartilhamos</h2>
@@ -178,8 +188,8 @@ footer nav a:hover{color:var(--navy)}
   <div class="tabela"><table>
     <thead><tr><th>Fornecedor</th><th>Para quê</th><th>Dados que recebe</th><th>Onde</th></tr></thead>
     <tbody>
-      <tr><td><strong>Modal</strong></td><td>Processamento da foto em GPU</td><td>Foto do ECG e contexto da leitura, durante o processamento; recortes anonimizados guardados para melhoria (seção 5), em ambiente exclusivo da Vytal</td><td>EUA</td></tr>
-      <tr><td><strong>Railway</strong></td><td>Servidor e banco de dados (Postgres)</td><td>Conta, assinatura, leituras usadas, registros técnicos; a foto passa pelo servidor a caminho do processamento</td><td>[CONFIRMAR: região — provavelmente EUA]</td></tr>
+      <tr><td><strong>Modal</strong></td><td>Processamento da foto em GPU</td><td>Foto do ECG e dados técnicos da leitura (formato e calibração), durante o processamento</td><td>EUA</td></tr>
+      <tr><td><strong>Railway</strong></td><td>Servidor e banco de dados (Postgres)</td><td>Conta, assinatura, leituras usadas, registros técnicos; a foto passa pelo servidor a caminho do processamento; cópias tarjadas das fotos e sinais guardados para melhoria (seção 5)</td><td>[CONFIRMAR: região — provavelmente EUA]</td></tr>
       <tr><td><strong>Vercel</strong></td><td>Hospedagem dos sites, incluindo a página de assinatura</td><td>Dados técnicos de acesso às páginas</td><td>EUA</td></tr>
       <tr><td><strong>Anthropic (Claude)</strong></td><td>Interpretação por IA, <strong>só quando o usuário toca em “interpretar com IA”</strong></td><td>Foto do ECG e contexto clínico</td><td>EUA</td></tr>
       <tr><td><strong>OpenAI (Whisper)</strong></td><td>Transcrição do ditado</td><td>Áudio do ditado</td><td>EUA</td></tr>
@@ -189,7 +199,7 @@ footer nav a:hover{color:var(--navy)}
       <tr><td><strong>Resend</strong></td><td>Envio de e-mails do serviço</td><td>Nome, e-mail e conteúdo da mensagem</td><td>EUA</td></tr>
     </tbody>
   </table></div>
-  <p>Os contratos de uso das APIs da Anthropic e da OpenAI [CONFIRMAR: preveem que os dados enviados não são usados para treinar os modelos deles e são apagados em prazo curto; citar o prazo].</p>
+  <p>Usamos a Anthropic e a OpenAI pelas APIs comerciais. Pelos termos públicos dessas APIs, os dados enviados não são usados, por padrão, para treinar os modelos delas. Cada uma pode guardar os dados por prazo limitado, para segurança e prevenção de abuso, conforme a política própria (<a href="https://www.anthropic.com/legal/commercial-terms">Anthropic</a>, <a href="https://openai.com/enterprise-privacy">OpenAI</a>).</p>
   <p>Também podemos compartilhar dados com:</p>
   <ul>
     <li><strong>Instituição conveniada</strong> que dá acesso ao usuário: só o necessário para confirmar o vínculo. [A DEFINIR: se a instituição recebe o número de leituras do usuário] A instituição não recebe as fotos nem os resultados.</li>
@@ -206,13 +216,15 @@ footer nav a:hover{color:var(--navy)}
   <div class="tabela"><table>
     <thead><tr><th>Dado</th><th>Prazo</th></tr></thead>
     <tbody>
-      <tr><td>Foto inteira do ECG</td><td>Apagada ao fim do processamento.</td></tr>
-      <tr><td>Recorte anonimizado do traçado (seção 5)</td><td>5 anos.</td></tr>
+      <tr><td>Foto original do ECG</td><td>Não é gravada no nosso banco de dados; é usada só durante o processamento.</td></tr>
+      <tr><td>Cópia tarjada da foto e sinais (seção 5)</td><td>Até 5 anos.</td></tr>
+      <tr><td>Resultado não entregue por queda de conexão</td><td>Oferecido ao aplicativo por 24 horas. [CONFIRMAR: o sistema ainda não apaga esse registro depois; ele sai com a exclusão da conta]</td></tr>
+      <tr><td>Relato de erro de leitura</td><td>Enquanto a conta existir; apagado com a exclusão da conta.</td></tr>
       <tr><td>Resultado e histórico no aparelho (até 50 leituras e 12 fotos)</td><td>Ficam no aparelho até o usuário apagar ou desinstalar o aplicativo. A Vytal não tem acesso a eles.</td></tr>
       <tr><td>Conta</td><td>Enquanto estiver ativa. Depois da exclusão, apagada em até 30 dias.</td></tr>
       <tr><td>Assinatura e pagamentos</td><td>5 anos após a cobrança, por obrigação fiscal e de consumo.</td></tr>
       <tr><td>Registros técnicos da leitura (sem imagem)</td><td>12 meses; depois, só números agregados e anônimos.</td></tr>
-      <tr><td>Contexto clínico e transcrição do ditado</td><td>Não são guardados depois da leitura; se isso for necessário, no máximo 30 dias.</td></tr>
+      <tr><td>Contexto clínico, áudio e transcrição do ditado</td><td>Não são gravados no nosso banco de dados.</td></tr>
       <tr><td>Registros de acesso (IP, data e hora)</td><td>6 meses, como exige o Marco Civil da Internet.</td></tr>
       <tr><td>Aceite dos termos</td><td>Enquanto a conta existir e mais 5 anos, para prova.</td></tr>
       <tr><td>E-mails de suporte e pedidos de titular</td><td>2 anos.</td></tr>
@@ -223,15 +235,15 @@ footer nav a:hover{color:var(--navy)}
   <h2>9. Seus direitos e como exercê-los</h2>
   <p>Pelo art. 18 da LGPD, você pode pedir: confirmação de que tratamos seus dados; acesso; correção; anonimização, bloqueio ou eliminação de dados desnecessários ou tratados em desacordo com a lei; portabilidade; eliminação de dados tratados com consentimento; informação sobre com quem compartilhamos; informação sobre a possibilidade de não consentir; revogação do consentimento; e revisão de decisões tomadas só por tratamento automatizado.</p>
   <div class="destaque">
-    <p><strong>Excluir a conta:</strong> no aplicativo, em Conta, com a sua senha, ou na página <a href="/exclusao-de-conta.html">vytalsaude.com.br/exclusao-de-conta</a>. A conta é a mesma do Vytal Acadêmico: [CONFIRMAR: excluir pelo Vytal ECG exclui também a conta do Vytal Acadêmico]. Assinaturas feitas pela App Store devem ser canceladas também nos Ajustes do iPhone.</p>
+    <p><strong>Excluir a conta:</strong> no aplicativo, em Conta, com a sua senha, ou na página <a href="/exclusao-de-conta.html">vytalsaude.com.br/exclusao-de-conta</a>. A conta é a mesma do Vytal Acadêmico: <strong>excluir a conta pelo Vytal ECG exclui também a conta e os dados do Vytal Acadêmico</strong>, e não há como desfazer. Excluir a conta não cancela a assinatura: a da App Store deve ser cancelada nos Ajustes do iPhone, e a do cartão, pelo site, deve ser cancelada antes, por <a href="mailto:contato@vytalsaude.com.br">contato@vytalsaude.com.br</a>.</p>
   </div>
   <p>Para os outros pedidos, escreva para <a href="mailto:rodrigo@vytalsaude.com.br">rodrigo@vytalsaude.com.br</a>. Podemos pedir informações para confirmar sua identidade. Respondemos nos prazos da LGPD (em até 15 dias para a declaração completa do art. 19).</p>
   <p>Como o resultado, as fotos e o histórico das leituras ficam só no seu aparelho, não conseguimos mostrar nem apagar esses dados: você mesmo os controla no aplicativo.</p>
   <p>Você também pode reclamar à Autoridade Nacional de Proteção de Dados (ANPD).</p>
-  <p><strong>Pacientes:</strong> a Vytal não sabe quem é o paciente de cada exame e não guarda vínculo entre o recorte do traçado e a conta de quem o enviou. Pedidos sobre um exame enviado por profissional de saúde devem ser feitos a esse profissional ou ao serviço de saúde que fez o atendimento. Se mesmo assim você nos escrever, ajudaremos no que estiver ao nosso alcance.</p>
+  <p><strong>Pacientes:</strong> a Vytal não sabe quem é o paciente de cada exame e não guarda vínculo entre a cópia da foto e a conta de quem a enviou. Pedidos sobre um exame enviado por profissional de saúde devem ser feitos a esse profissional ou ao serviço de saúde que fez o atendimento. Se mesmo assim você nos escrever, ajudaremos no que estiver ao nosso alcance.</p>
 
   <h2>10. Segurança</h2>
-  <p>Adotamos medidas técnicas e administrativas para proteger os dados, entre elas: comunicação criptografada (HTTPS); senhas com hash; acesso restrito ao banco de dados; foto inteira apagada ao fim do processamento; recorte do traçado sem cabeçalho, sem rodapé e sem vínculo com a conta; filtro de dados identificáveis no texto clínico; envio a cada fornecedor só do necessário; e acesso interno só a quem precisa.</p>
+  <p>Adotamos medidas técnicas e administrativas para proteger os dados, entre elas: comunicação criptografada (HTTPS); senhas com hash; acesso restrito ao banco de dados; foto original não gravada no banco; cópia guardada com tarja no topo e no rodapé, sem metadados e sem vínculo com a conta, com acesso só de administradores; filtro de dados identificáveis no texto clínico; envio a cada fornecedor só do necessário; e acesso interno só a quem precisa.</p>
   <p>Nenhum sistema é totalmente imune a riscos. Se houver incidente de segurança que possa causar risco ou dano relevante, avisaremos os titulares afetados e a ANPD, como manda o art. 48 da LGPD.</p>
   <p>O histórico fica no seu aparelho. Mantenha o iPhone com senha ou biometria e o sistema atualizado.</p>
 

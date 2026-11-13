@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<!-- Versão para revisão — não publicada. Texto preparado para revisão do Dilson (e, se ele quiser, de advogado). Não fazer merge antes de resolver os campos [A PREENCHER], [A DEFINIR], [CONFIRMAR] e os do encarregado. -->
+<!-- Versão para revisão — não publicada. Texto preparado para revisão do Dilson (e, se ele quiser, de advogado). Não fazer merge antes de resolver os campos [A PREENCHER], [A DEFINIR], [CONFIRMAR] e os do encarregado. Fatos conferidos no código em 12/11/2026 (vytal-api origin/main f5ffbf7, app build 19); ver _coordenacao/lancamento-ecg/TERMOS_PENDENCIAS.md. -->
 <html lang="pt-BR">
 <head>
 <meta charset="utf-8">
@@ -126,7 +126,7 @@ footer nav a:hover{color:var(--navy)}
   <h2>5. Conta</h2>
   <p>5.1. A conta é pessoal e intransferível. É a mesma conta do Vytal Acadêmico. O Usuário é responsável pelo sigilo da senha e por tudo o que for feito com a sua conta.</p>
   <p>5.2. O acesso pode ser feito com e-mail e senha ou com login da Apple ou do Google, quando disponíveis.</p>
-  <p>5.3. O Usuário pode excluir a conta no aplicativo, em Conta, com a senha, ou em <a href="/exclusao-de-conta.html">vytalsaude.com.br/exclusao-de-conta</a>. Excluir a conta não cancela assinatura feita pela App Store: ela deve ser cancelada nos Ajustes do iPhone.</p>
+  <p>5.3. O Usuário pode excluir a conta no aplicativo, em Conta, com a senha, ou em <a href="/exclusao-de-conta.html">vytalsaude.com.br/exclusao-de-conta</a>. Como a conta é a mesma, a exclusão apaga também a conta e os dados do Vytal Acadêmico. Excluir a conta não cancela a assinatura: a da App Store deve ser cancelada nos Ajustes do iPhone, e a do cartão, pelo site, deve ser cancelada antes da exclusão (cláusula 10.1).</p>
 
   <h2>6. Obrigações do Usuário</h2>
   <p>O Usuário se obriga a:</p>
@@ -150,11 +150,11 @@ footer nav a:hover{color:var(--navy)}
   <div class="tabela"><table>
     <thead><tr><th>Plano</th><th>Valor no site</th><th>Valor na App Store</th></tr></thead>
     <tbody>
-      <tr><td>Mensal</td><td>R$ 79,90 por mês</td><td>[CONFIRMAR valor na App Store]</td></tr>
-      <tr><td>Anual</td><td>R$ 859,90 por ano (equivale a R$ 71,66 por mês)</td><td>[CONFIRMAR valor na App Store]</td></tr>
+      <tr><td>Mensal</td><td>R$ 79,90 por mês</td><td>R$ 79,90 por mês</td></tr>
+      <tr><td>Anual</td><td>R$ 859,90 por ano (equivale a R$ 71,66 por mês)</td><td>R$ 859,90 por ano</td></tr>
     </tbody>
   </table></div>
-  <p>8.1. O valor de cada período é cobrado no início dele. Os valores na App Store seguem a tabela de preços da Apple e podem diferir dos do site.</p>
+  <p>8.1. O valor de cada período é cobrado no início dele. Os valores na App Store seguem a tabela de preços da Apple e podem diferir dos do site; vale o valor mostrado pela Apple na hora da compra.</p>
   <p>8.2. A assinatura inclui <strong>até 30 leituras por mês do calendário</strong> por conta. Leitura recusada não conta. Ao atingir o limite, novas leituras ficam bloqueadas até o dia 1º do mês seguinte.</p>
   <p>8.3. Os preços podem ser reajustados com aviso de 30 dias. O reajuste não altera período já pago e vale a partir da renovação seguinte; o Usuário pode cancelar antes dela.</p>
   <p>8.4. A assinatura vale no aplicativo com a mesma conta, qualquer que seja o canal de compra.</p>
@@ -167,7 +167,7 @@ footer nav a:hover{color:var(--navy)}
   </ul>
 
   <h2>10. Cancelamento e reembolso</h2>
-  <p>10.1. O Usuário pode cancelar a renovação a qualquer momento: no iPhone, em Ajustes &gt; Assinaturas; no site, [A PREENCHER: onde o usuário cancela a assinatura no cartão — tela ou e-mail]. O acesso continua até o fim do período já pago.</p>
+  <p>10.1. O Usuário pode cancelar a renovação a qualquer momento: no iPhone, em Ajustes &gt; Assinaturas; a assinatura no cartão, feita pelo site, por pedido a <a href="mailto:contato@vytalsaude.com.br">contato@vytalsaude.com.br</a>, enviado do e-mail da conta. O acesso continua até o fim do período já pago.</p>
   <p>10.2. <strong>Compras pelo site:</strong> o Usuário pode desistir em até 7 dias da contratação, com devolução integral do valor pago, pedindo por <a href="mailto:contato@vytalsaude.com.br">contato@vytalsaude.com.br</a> (art. 49 do Código de Defesa do Consumidor). Depois desse prazo, não há reembolso proporcional do período em curso, salvo falha do serviço ou previsão legal.</p>
   <p>10.3. <strong>Compras pela App Store:</strong> o reembolso é decidido pela Apple, conforme as regras dela, e deve ser pedido em <a href="https://reportaproblem.apple.com">reportaproblem.apple.com</a>.</p>
   <p>10.4. <strong>Acesso por instituição:</strong> vale enquanto durarem o convênio e o vínculo do usuário, conforme o contrato com a instituição.</p>
@@ -179,7 +179,7 @@ footer nav a:hover{color:var(--navy)}
   <p>12.1. O software, os modelos de leitura, as marcas, os textos e o visual do Vytal ECG pertencem à Vytal ou a quem a licenciou. A assinatura dá ao Usuário uma licença pessoal, não exclusiva e intransferível de uso, pelo período contratado, e não transfere nenhum direito de propriedade.</p>
   <p>12.2. O Usuário pode usar os resultados e o PDF das suas leituras, inclusive no prontuário, sempre identificados como resultado automático do Vytal ECG. Não pode usá-los para treinar ou avaliar sistemas de inteligência artificial sem autorização escrita da Vytal.</p>
   <p>12.3. O leitor foi treinado em bases públicas de ECG para pesquisa (PTB-XL, CODE-15, Chapman, SPH, STAFF III, LUDB e MIMIC-IV-ECG), usadas conforme as licenças de cada uma.</p>
-  <p>12.4. O Usuário autoriza a Vytal a guardar o <strong>recorte anonimizado do traçado</strong> das fotos enviadas, sem cabeçalho, sem rodapé e sem vínculo com a conta, para melhorar a leitura e treinar modelos próprios, como descrito na seção 5 da <a href="/ecg/privacidade">Política de Privacidade</a>. O Usuário pode desligar esse uso a qualquer momento nos ajustes do aplicativo, para as fotos seguintes. Os recortes já guardados não podem ser localizados nem apagados, porque não têm vínculo com a conta. Os recortes não são vendidos nem cedidos a terceiros.</p>
+  <p>12.4. O Usuário autoriza a Vytal a guardar uma <strong>cópia da foto de cada leitura</strong>, inclusive das recusadas, reduzida, sem os metadados do arquivo, <strong>com tarja preta no topo (15% da imagem) e no rodapé (8%)</strong> e sem vínculo com a conta, junto com os sinais digitais e o registro técnico da leitura, para melhorar a leitura e treinar modelos próprios, como descrito na seção 5 da <a href="/ecg/privacidade">Política de Privacidade</a>. As tarjas têm posição fixa e podem não cobrir todo dado de identificação; por isso o Usuário deve tarjar esses dados antes de fotografar (cláusula 6). O aplicativo não tem, hoje, opção para desligar essa guarda. As cópias guardadas não podem ser localizadas nem apagadas por usuário, porque não têm vínculo com a conta. Elas não são vendidas nem cedidas a terceiros.</p>
 
   <h2>13. Limitação de responsabilidade</h2>
   <p>13.1. O Vytal ECG é fornecido como apoio, sem garantia de que os resultados estejam corretos ou completos. Na medida permitida pela lei, a Vytal não responde por:</p>
