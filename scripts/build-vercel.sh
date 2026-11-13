@@ -21,7 +21,7 @@ echo "==> Copiando o site estático (raiz do repo)"
 cp -R ./* "$OUT"/
 
 echo "==> Removendo do publicado o que é fonte, não site"
-rm -rf "$OUT/medico-app" "$OUT/docs" "$OUT/scripts" "$OUT/vercel.json" "$OUT/api"
+rm -rf "$OUT/medico-app" "$OUT/docs" "$OUT/scripts" "$OUT/vercel.json" "$OUT/api" "$OUT/middleware.js"
 
 echo "==> Instalando dependências dos painéis"
 npm ci --prefix medico-app

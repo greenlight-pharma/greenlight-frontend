@@ -2,7 +2,7 @@
   "$schema": "https://openapi.vercel.sh/vercel.json",
   "buildCommand": "bash scripts/build-vercel.sh",
   "outputDirectory": ".vercel-out",
-  "installCommand": "echo 'sem depend\u00eancias na raiz \u2014 o painel instala as suas no build'",
+  "installCommand": "echo 'sem dependências na raiz — o painel instala as suas no build'",
   "redirects": [
     {
       "source": "/care-whatsapp",
@@ -68,6 +68,26 @@
     }
   ],
   "rewrites": [
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "host",
+          "value": "vytalacademico.com.br"
+        }
+      ],
+      "destination": "/academico/index.html"
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "host",
+          "value": "www.vytalacademico.com.br"
+        }
+      ],
+      "destination": "/academico/index.html"
+    },
     {
       "source": "/wmed/acervo/:path*",
       "destination": "https://app.vytalsaude.com.br/academico-assets/:path*"
