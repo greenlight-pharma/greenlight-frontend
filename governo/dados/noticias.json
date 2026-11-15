@@ -1,6 +1,6 @@
 {
  "meta": {
-  "gerado_em": "2026-11-14T16:30+00:00",
+  "gerado_em": "2026-11-15T16:56+00:00",
   "gerado_por": "scripts/governo/agentes/agente_noticias.py",
   "janela_dias": 90,
   "fontes": [
@@ -30,11 +30,11 @@
     "url": "https://www.gov.br/planalto/pt-br/acompanhe-o-planalto/noticias/RSS"
    }
   ],
-  "total_artigos": 3771,
-  "artigos_com_no": 1308,
-  "novos_nesta_rodada": 53,
+  "total_artigos": 3790,
+  "artigos_com_no": 1314,
+  "novos_nesta_rodada": 37,
   "artigos_por_fonte": {
-   "agenciabrasil": 1740,
+   "agenciabrasil": 1759,
    "senado": 1147,
    "camara": 860,
    "stf": 7,
@@ -47,22 +47,22 @@
   {
    "texto": "O Plenário do Senado aprovou o texto principal do projeto de ajuste fiscal do governo (PLP 299/2026), por 45 votos a 31, em substitutivo do senador Eduardo Braga.",
    "artigo_id": "n-ffc4cd9885",
-   "no_id": "camara"
+   "no_id": null
   },
   {
-   "texto": "O Senado aprovou a Emenda Constitucional 141, que encerra a escala 6x1 e reduz de forma gradual a jornada máxima para 40 horas semanais, com dois dias de descanso.",
-   "artigo_id": "n-ef5d3e5ba3",
-   "no_id": "congresso"
+   "texto": "A Secretaria do Tesouro Nacional informou acesso não autorizado a seu ambiente tecnológico, com exposição de dados de cerca de 30 mil cadastros e 4 mil chaves Pix de beneficiários de pagamentos federais.",
+   "artigo_id": "n-54a230fa48",
+   "no_id": "stn"
   },
   {
-   "texto": "O Congresso Nacional aprovou 24 projetos de lei com abertura de crédito suplementar de R$ 152,4 bilhões para ministérios, agências reguladoras, tribunais e empresas públicas.",
-   "artigo_id": "n-a659661553",
-   "no_id": "congresso"
-  },
-  {
-   "texto": "O Supremo Tribunal Federal decidiu, por unanimidade, suspender a regra vigente desde 1940 que impedia a punição de crimes patrimoniais contra mulheres em contexto de violência doméstica.",
-   "artigo_id": "n-96396ee833",
+   "texto": "O Supremo Tribunal Federal reuniu quatro votos para referendar a liminar do ministro Flávio Dino que fixa regras de transição para o início da escala 5x2 em dezembro.",
+   "artigo_id": "n-706659a6fe",
    "no_id": "stf"
+  },
+  {
+   "texto": "O Ministério da Fazenda não renovou a subvenção de R$ 1,40 por litro ao diesel importado, encerrada com o vencimento da Portaria 3.082.",
+   "artigo_id": "n-7ea3172402",
+   "no_id": "mf"
   }
  ],
  "ranking": {
@@ -70,182 +70,182 @@
    {
     "id": "tse",
     "artigos": 256,
-    "peso": 125.03870597891753,
+    "peso": 124.71819216615944,
     "ultima": "2026-11-13T20:29:00+00:00"
    },
    {
     "id": "stf",
-    "artigos": 194,
-    "peso": 91.47472341291288,
-    "ultima": "2026-11-14T00:23+00:00"
+    "artigos": 195,
+    "peso": 91.59954109034902,
+    "ultima": "2026-11-15T13:24+00:00"
    },
    {
     "id": "congresso",
     "artigos": 126,
-    "peso": 78.07439502233437,
+    "peso": 78.29837030535839,
     "ultima": "2026-11-13T19:40:00+00:00"
    },
    {
     "id": "camara",
     "artigos": 105,
-    "peso": 63.439519886961385,
+    "peso": 63.64151879510681,
     "ultima": "2026-11-13T01:54:00+00:00"
    },
    {
     "id": "prf",
     "artigos": 14,
-    "peso": 50.22362660507789,
+    "peso": 50.42020965142715,
     "ultima": "2026-10-30T15:44+00:00"
    },
    {
     "id": "pf",
     "artigos": 87,
-    "peso": 39.27865195562638,
+    "peso": 39.10011384965994,
     "ultima": "2026-11-13T14:09+00:00"
    },
    {
     "id": "mec",
     "artigos": 65,
-    "peso": 32.41327630602899,
+    "peso": 32.34131296986929,
     "ultima": "2026-11-14T15:05+00:00"
    },
    {
     "id": "caixa",
-    "artigos": 64,
-    "peso": 27.74068965517243,
-    "ultima": "2026-11-14T13:04+00:00"
+    "artigos": 65,
+    "peso": 28.010233086981213,
+    "ultima": "2026-11-15T15:14+00:00"
    },
    {
     "id": "anvisa",
     "artigos": 57,
-    "peso": 26.046452738534132,
+    "peso": 25.932999429581734,
     "ultima": "2026-11-13T15:12+00:00"
    },
    {
     "id": "ms",
     "artigos": 40,
-    "peso": 19.798297731469223,
+    "peso": 19.75688486024523,
     "ultima": "2026-11-13T10:00+00:00"
    },
    {
     "id": "inss",
     "artigos": 33,
-    "peso": 19.425330610378595,
+    "peso": 19.443210335872237,
     "ultima": "2026-11-13T19:56+00:00"
    },
    {
     "id": "agu",
     "artigos": 41,
-    "peso": 17.995472446862887,
+    "peso": 17.897920917855274,
     "ultima": "2026-11-13T00:35+00:00"
+   },
+   {
+    "id": "petrobras",
+    "artigos": 38,
+    "peso": 17.294924148965126,
+    "ultima": "2026-11-15T16:17+00:00"
    },
    {
     "id": "tcu",
     "artigos": 28,
-    "peso": 17.05262731339871,
+    "peso": 17.09619645703953,
     "ultima": "2026-11-13T19:02:00+00:00"
-   },
-   {
-    "id": "petrobras",
-    "artigos": 37,
-    "peso": 16.93395875296877,
-    "ultima": "2026-11-12T16:25+00:00"
    },
    {
     "id": "ibge",
     "artigos": 36,
-    "peso": 15.82823106755254,
+    "peso": 15.743287603472103,
     "ultima": "2026-11-13T13:26+00:00"
+   },
+   {
+    "id": "ebc",
+    "artigos": 31,
+    "peso": 13.358726549175676,
+    "ultima": "2026-11-15T13:49+00:00"
    },
    {
     "id": "inep",
     "artigos": 31,
-    "peso": 13.436896551724141,
+    "peso": 13.358726549175676,
     "ultima": "2026-11-11T22:00+00:00"
-   },
-   {
-    "id": "ebc",
-    "artigos": 29,
-    "peso": 12.570000000000002,
-    "ultima": "2026-11-14T12:03+00:00"
    },
    {
     "id": "senado",
     "artigos": 20,
-    "peso": 11.773664795509221,
+    "peso": 11.771814059256714,
     "ultima": "2026-11-13T20:34+00:00"
    },
    {
     "id": "anp",
     "artigos": 19,
-    "peso": 10.471790801847707,
+    "peso": 10.47749719992265,
     "ultima": "2026-11-10T12:06:00+00:00"
    },
    {
     "id": "tst",
     "artigos": 17,
-    "peso": 8.932614840569414,
+    "peso": 8.925860654429624,
     "ultima": "2026-10-28T22:36+00:00"
    },
    {
     "id": "stj",
     "artigos": 18,
-    "peso": 8.913219038683247,
+    "peso": 8.887545043613825,
     "ultima": "2026-11-12T15:40+00:00"
    },
    {
     "id": "mpf",
     "artigos": 18,
-    "peso": 8.026162102035292,
+    "peso": 7.986607671692675,
     "ultima": "2026-11-06T20:39+00:00"
    },
    {
     "id": "inmet",
     "artigos": 16,
-    "peso": 6.935172413793101,
+    "peso": 6.894826606026154,
     "ultima": "2026-11-07T21:59+00:00"
    },
    {
     "id": "mpt",
     "artigos": 14,
-    "peso": 6.735897466910996,
+    "peso": 6.71336970614671,
     "ultima": "2026-11-01T20:06+00:00"
    },
    {
     "id": "mf",
     "artigos": 13,
-    "peso": 6.307106995761055,
+    "peso": 6.291829837136005,
     "ultima": "2026-11-13T22:54+00:00"
    },
    {
     "id": "cnj",
     "artigos": 14,
-    "peso": 6.292368998587017,
+    "peso": 6.262901020186136,
     "ultima": "2026-11-13T20:47+00:00"
    },
    {
     "id": "bndes",
     "artigos": 10,
-    "peso": 6.113254436628728,
+    "peso": 6.120528166474573,
     "ultima": "2026-11-12T00:06+00:00"
    },
    {
     "id": "aneel",
     "artigos": 13,
-    "peso": 6.083013859243002,
+    "peso": 6.061902097222752,
     "ultima": "2026-11-10T16:11+00:00"
    },
    {
     "id": "anatel",
     "artigos": 11,
-    "peso": 5.435552639324788,
+    "peso": 5.420589717516807,
     "ultima": "2026-11-05T13:45+00:00"
    },
    {
     "id": "anac",
-    "artigos": 8,
-    "peso": 4.8074872212927415,
-    "ultima": "2026-11-14T00:00+00:00"
+    "artigos": 9,
+    "peso": 5.248519611503293,
+    "ultima": "2026-11-14T21:43+00:00"
    }
   ],
   "pessoas": [
@@ -260,9 +260,9 @@
     "uf": null,
     "foto": "https://commons.wikimedia.org/wiki/Special:FilePath/Foto_oficial_de_Luiz_In%C3%A1cio_Lula_da_Silva_%28estreita%29.jpg?width=160",
     "foto_fonte": "https://www.wikidata.org/wiki/Q37181",
-    "artigos": 272,
-    "peso": 129.49953828158738,
-    "ultima": "2026-11-14T00:11+00:00"
+    "artigos": 275,
+    "peso": 130.35782003403773,
+    "ultima": "2026-11-15T16:30+00:00"
    },
    {
     "id": "flavio-bolsonaro",
@@ -276,7 +276,7 @@
     "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador5894.jpg",
     "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/5894",
     "artigos": 137,
-    "peso": 63.630867777522226,
+    "peso": 63.38680628471896,
     "ultima": "2026-11-06T20:51+00:00"
    },
    {
@@ -291,7 +291,7 @@
     "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador3830.jpg",
     "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/3830",
     "artigos": 73,
-    "peso": 45.07333891487781,
+    "peso": 45.22515040319168,
     "ultima": "2026-11-13T16:46:00+00:00"
    },
    {
@@ -306,7 +306,7 @@
     "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador6335.jpg",
     "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/6335",
     "artigos": 49,
-    "peso": 32.219529206626,
+    "peso": 32.38186573670446,
     "ultima": "2026-11-13T21:17:00+00:00"
    },
    {
@@ -321,7 +321,7 @@
     "foto": "https://commons.wikimedia.org/wiki/Special:FilePath/Nunes_Marques%2C_February_2025_%28cropped%29.jpg?width=160",
     "foto_fonte": "https://www.wikidata.org/wiki/Q99831978",
     "artigos": 62,
-    "peso": 29.558252936952808,
+    "peso": 29.467199183444414,
     "ultima": "2026-10-29T14:20:00+00:00"
    },
    {
@@ -336,7 +336,7 @@
     "foto": "https://www.camara.leg.br/internet/deputado/bandep/160674.jpg",
     "foto_fonte": "https://www.camara.leg.br/deputados/160674",
     "artigos": 32,
-    "peso": 23.875353290792415,
+    "peso": 23.976826012427853,
     "ultima": "2026-11-11T11:53+00:00"
    },
    {
@@ -351,7 +351,7 @@
     "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador825.jpg",
     "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/825",
     "artigos": 27,
-    "peso": 17.30543186122718,
+    "peso": 17.38321339550044,
     "ultima": "2026-11-13T19:40:00+00:00"
    },
    {
@@ -366,7 +366,7 @@
     "foto": "https://commons.wikimedia.org/wiki/Special:FilePath/Luiz_Edson_Fachin-12-05.2015.jpg?width=160",
     "foto_fonte": "https://www.wikidata.org/wiki/Q10320705",
     "artigos": 36,
-    "peso": 16.052324204070594,
+    "peso": 15.973215343385355,
     "ultima": "2026-11-13T20:47+00:00"
    },
    {
@@ -381,7 +381,7 @@
     "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador345.jpg",
     "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/345",
     "artigos": 22,
-    "peso": 14.46591107236268,
+    "peso": 14.53879686137751,
     "ultima": "2026-11-13T16:46:00+00:00"
    },
    {
@@ -396,7 +396,7 @@
     "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador6009.jpg",
     "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/6009",
     "artigos": 17,
-    "peso": 11.178204010462073,
+    "peso": 11.234524847428073,
     "ultima": "2026-11-10T17:08:00+00:00"
    },
    {
@@ -411,7 +411,7 @@
     "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador5376.jpg",
     "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/5376",
     "artigos": 15,
-    "peso": 9.86312118570183,
+    "peso": 9.912816041848298,
     "ultima": "2026-11-11T17:00:00+00:00"
    },
    {
@@ -426,7 +426,7 @@
     "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador5525.jpg",
     "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/5525",
     "artigos": 15,
-    "peso": 9.858463380989702,
+    "peso": 9.90342924798237,
     "ultima": "2026-10-26T12:13:00+00:00"
    },
    {
@@ -441,7 +441,7 @@
     "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador4770.jpg",
     "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/4770",
     "artigos": 14,
-    "peso": 9.205579773321709,
+    "peso": 9.251961639058411,
     "ultima": "2026-11-13T19:02:00+00:00"
    },
    {
@@ -456,7 +456,7 @@
     "foto": null,
     "foto_fonte": null,
     "artigos": 19,
-    "peso": 8.459610377897361,
+    "peso": 8.41753433456931,
     "ultima": "2026-11-13T19:02:00+00:00"
    },
    {
@@ -471,7 +471,7 @@
     "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador5352.jpg",
     "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/5352",
     "artigos": 12,
-    "peso": 7.8904969485614656,
+    "peso": 7.9302528334786375,
     "ultima": "2026-10-28T14:06:00+00:00"
    },
    {
@@ -486,7 +486,7 @@
     "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador5985.jpg",
     "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/5985",
     "artigos": 11,
-    "peso": 7.232955536181343,
+    "peso": 7.269398430688751,
     "ultima": "2026-11-12T17:44:00+00:00"
    },
    {
@@ -501,7 +501,7 @@
     "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador22.jpg",
     "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/22",
     "artigos": 11,
-    "peso": 7.232955536181343,
+    "peso": 7.269398430688751,
     "ultima": "2026-11-10T17:07:00+00:00"
    },
    {
@@ -516,7 +516,7 @@
     "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador5012.jpg",
     "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/5012",
     "artigos": 11,
-    "peso": 7.232955536181343,
+    "peso": 7.269398430688751,
     "ultima": "2026-11-03T12:03:00+00:00"
    },
    {
@@ -531,7 +531,7 @@
     "foto": "https://www.camara.leg.br/internet/deputado/bandep/74856.jpg",
     "foto_fonte": "https://www.camara.leg.br/deputados/74856",
     "artigos": 9,
-    "peso": 6.576178706838872,
+    "peso": 6.609312463250947,
     "ultima": "2026-11-11T16:20:00+00:00"
    },
    {
@@ -546,7 +546,7 @@
     "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador5982.jpg",
     "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/5982",
     "artigos": 10,
-    "peso": 6.575414123801221,
+    "peso": 6.608544027898865,
     "ultima": "2026-11-13T14:46:00+00:00"
    },
    {
@@ -561,7 +561,7 @@
     "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador475.jpg",
     "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/475",
     "artigos": 10,
-    "peso": 6.575414123801221,
+    "peso": 6.608544027898865,
     "ultima": "2026-11-09T19:58:00+00:00"
    },
    {
@@ -576,7 +576,7 @@
     "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador5917.jpg",
     "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/5917",
     "artigos": 10,
-    "peso": 6.575414123801221,
+    "peso": 6.608544027898865,
     "ultima": "2026-10-29T12:20:00+00:00"
    },
    {
@@ -591,7 +591,7 @@
     "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador6338.jpg",
     "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/6338",
     "artigos": 10,
-    "peso": 6.575414123801221,
+    "peso": 6.608544027898865,
     "ultima": "2026-10-26T20:54:00+00:00"
    },
    {
@@ -606,12 +606,220 @@
     "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador5990.jpg",
     "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/5990",
     "artigos": 10,
-    "peso": 6.575414123801221,
+    "peso": 6.608544027898865,
     "ultima": "2026-10-19T12:58:00+00:00"
    }
   ]
  },
  "artigos": [
+  {
+   "id": "n-2d905d0b9a",
+   "titulo": "Lula vê oportunidades na Ásia para explorar minerais críticos",
+   "url": "https://agenciabrasil.ebc.com.br/economia/noticia/2026-11/lula-ve-oportunidades-na-asia-para-explorar-minerais-criticos",
+   "data": "2026-11-15T16:30+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [],
+   "pessoas": [
+    "luiz-inacio-lula-da-silva"
+   ],
+   "resumo": "O presidente Luiz Inácio Lula da Silva afirmou neste domingo (15), nas Filipinas, que o Brasil pretende atrair investimentos para a exploração e a industrialização de minerais críticos e terras raras, em uma estratégia que, segundo ele, pode ampliar a inserção do país nas cadeias produtivas ligadas à transição energética. A declaração foi feita após a abertura da Cúpula da Associação das Nações do Sudeste Asiático (Asean), em Manila. “Queremos ser parceiros definitivos da Asean”, diz Lula. Notícias relacionadas: Lula quer ampliar relações comerciais com países da Asean. Brasil e Filipinas assi"
+  },
+  {
+   "id": "n-f2b0277a2e",
+   "titulo": "Festival de futebol feminino de várzea reúne 1,5 mil atletas em SP",
+   "url": "https://agenciabrasil.ebc.com.br/esportes/noticia/2026-11/festival-de-futebol-feminino-de-varzea-reune-15-mil-atletas-em-sp",
+   "data": "2026-11-15T16:17+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [
+    "petrobras"
+   ],
+   "pessoas": [],
+   "resumo": "Com entrada gratuita, o Festival Feminino de Várzea reúne 1,5 mil atletas neste domingo (15) até as 17h, no Parque Sete Campos, na Zona Sul de São Paulo. Apesar de contar com 96 equipes, o festival é realizado sem patrocinadores. O evento recebe apoio da Federação Paulista de Futebol, que enviou equipes de arbitragem formadas exclusivamente por mulheres. Notícias relacionadas: Prêmio TV Brasil Petrobras Para Elas celebra futebol feminino do país. Congresso muda orçamento em favor da Copa do Mundo de futebol feminino. Livro resgata a história das pioneiras do futebol feminino no Brasil. Além da"
+  },
+  {
+   "id": "n-cf57bd7faf",
+   "titulo": "Rio de Janeiro tem primeira morte confirmada por mpox no país",
+   "url": "https://agenciabrasil.ebc.com.br/saude/noticia/2026-11/rio-de-janeiro-tem-primeira-morte-confirmada-por-mpox-no-pais",
+   "data": "2026-11-15T16:07+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "O estado do Rio de Janeiro confirmou nesta semana a primeira morte por mpox do país. Não foram divulgados detalhes da vítima, apenas que ela era da capital. A doença infecciosa é causada pelo Mpox vírus (MPXV) e provoca sintomas como feridas na pele e mucosas, assim como febre, dores de cabeça e no corpo. Notícias relacionadas: Ministério informa ter adquirido 25 mil doses de vacina contra mpox. Casos de mpox ultrapassam mil em 2026 e se concentram em seis estados. Até a última sexta-feira (13), a Secretaria de Saúde tinha registrado 382 casos de pessoas infectadas pelo vírus em 2026. Do total"
+  },
+  {
+   "id": "n-9d51a5938f",
+   "titulo": "Dupla brasileira é campeã mundial de tênis de mesa paralímpico",
+   "url": "https://agenciabrasil.ebc.com.br/esportes/noticia/2026-11/dupla-brasileira-e-campea-mundial-de-tenis-de-mesa-paralimpico",
+   "data": "2026-11-15T15:52+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "Na madrugada deste domingo (15), teve ouro para o Brasil no Mundial de tênis de mesa paralímpico, que está sendo disputado em Pattaya, na Tailândia. A parceria formada por Lucas Arabian e Joyce Oliveira conquistou o título nas duplas mistas da classe XD10 ao bater os chineses Zhengyang Peng e Bian Zhang na grande decisão por 3 sets a 0, parciais de 11/9, 11/7 e 11/4. O torneio continua até a próxima quinta-feira, dia 19. Notícias relacionadas: Seleção feminina de tênis é convocada para Billie Jean King Cup. \"Eu vim com a certeza que eu ganharia uma medalha nas duplas, seja com a Cátia ou com o"
+  },
+  {
+   "id": "n-c58fc2748c",
+   "titulo": "Vasco bate Chape e afasta risco de rebaixamento no Brasileirão",
+   "url": "https://agenciabrasil.ebc.com.br/esportes/noticia/2026-11/vasco-bate-chape-e-afasta-risco-de-rebaixamento-no-brasileirao",
+   "data": "2026-11-15T15:47+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "Na última partida atrasada que ainda restava ser realizada pelo Campeonato Brasileiro, o Vasco derrotou a Chapecoense por 2 a 0, na noite deste sábado (14), em Chapecó, em duelo originalmente marcado para a 21ª rodada. O triunfo, alcançado com dois gols de Bruno Duarte, levou o Cruzmaltino a 44 pontos, abrindo sete de vantagem para o Corinthians, o primeiro time dentro da zona de rebaixamento da competição. A Chape, com apenas 21 pontos somados, já estava rebaixada antes mesmo de entrar em campo. Notícias relacionadas: Novorizontino conquista a Série B e sobe junto com o Juventude. Prêmio TV B"
+  },
+  {
+   "id": "n-335dea211e",
+   "titulo": "Candidatos contam expectativas para o segundo dia de provas do Enem",
+   "url": "https://agenciabrasil.ebc.com.br/educacao/noticia/2026-11/candidatos-contam-expectativas-para-o-segundo-dia-de-provas-do-enem",
+   "data": "2026-11-15T15:41+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "Os portões dos locais de prova já foram abertos para que os estudantes possam participar do segundo dia de provas do Exame Nacional do Ensino Médio (Enem). Neste domingo (15), os participantes vão responder a 90 questões objetivas, sendo 45 de matemática e suas tecnologias e 45 de ciências da natureza e suas tecnologias. No primeiro domingo de provas, realizado no dia 8 de novembro, os participantes responderam a 45 questões de Linguagens e outras 45 de Ciências Humanas, além de produzir uma redação com o tema “A valorização do Sistema Único de Saúde (SUS) como direito universal”. Notícias rel"
+  },
+  {
+   "id": "n-31c780ef88",
+   "titulo": "Veja o que esperar do segundo dia de provas do Enem 2026",
+   "url": "https://agenciabrasil.ebc.com.br/educacao/noticia/2026-11/veja-o-que-esperar-do-segundo-dia-de-provas-do-enem-2026",
+   "data": "2026-11-15T15:28+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "Logo mais, às 13h30 deste domingo (15), quando os mais de 5,05 milhões de candidatos do Exame Nacional do Ensino Médio (Enem) de 2026 iniciarem as provas do segundo dia terão à frente 90 questões objetivas, sendo 45 de matemática e suas tecnologias e 45 de ciências da natureza (química, física e biologia). No caderno de provas, estão sendo cobrados os conhecimentos e habilidades que devem ter sido adquiridas nos três anos do ensino médio e nas próprias vivências dos candidatos. Notícias relacionadas: Enem 2026: candidatos fazem hoje 2º dia de provas em 1,9 mil cidades. Ao vivo: professores com"
+  },
+  {
+   "id": "n-237b6c8566",
+   "titulo": "Mega-Sena acumula para R$ 34 milhões; confira os números sorteados",
+   "url": "https://agenciabrasil.ebc.com.br/geral/noticia/2026-11/mega-sena-acumula-para-r-34-milhoes-confira-os-numeros-sorteados",
+   "data": "2026-11-15T15:14+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [
+    "caixa"
+   ],
+   "pessoas": [],
+   "resumo": "Nenhum apostador acertou as seis dezenas do Concurso 3.086 da Mega-Sena, realizado neste domingo (15). O prêmio acumulou e está estimado em R$ 34 milhões para o próximo sorteio. Os números sorteados foram: 03 - 20 - 35 - 38 - 43 - 46 . 44 apostas acertaram cinco dezenas e irão receber R$ 32.785,73 cada 2.538 apostas acertaram quatro dezenas e irão receber R$ 811,98 cada Apostas Notícias relacionadas: Mega da Virada: Caixa anuncia que prêmio deve superar R$ 1 bilhão. Para o próximo concurso, as apostas podem ser feitas até às 20h de terça-feira (17) em qualquer lotérica do país ou pela internet"
+  },
+  {
+   "id": "n-aa75f65f30",
+   "titulo": "Lula quer ampliar relações comerciais com países da Asean",
+   "url": "https://agenciabrasil.ebc.com.br/internacional/noticia/2026-11/lula-quer-ampliar-relacoes-comerciais-com-paises-da-asean",
+   "data": "2026-11-15T14:48+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [],
+   "pessoas": [
+    "luiz-inacio-lula-da-silva"
+   ],
+   "resumo": "O presidente Luiz Inácio Lula da Silva e o primeiro-ministro de Singapura, Lawrence Wong, discutiram uma possível retomada de discussões visando um acordo entre o Mercosul e a Associação de Nações do Sudeste Asiático (Asean). O encontro bilateral entre os dois chefes de Estado foi neste domingo (15), após Lula participar da 49ª Cúpula da Asean, nas Filipinas, onde defendeu o aprofundamento das relações entre o Brasil e o bloco do Sudeste Asiático. Notícias relacionadas: Lula chega às Filipinas; Brasil quer ser Parceiro de Diálogo da Asean. Brasil e Filipinas assinam acordos sobre agro e livre "
+  },
+  {
+   "id": "n-dd76764f62",
+   "titulo": "Inhotim encerra celebrações de seus 20 anos com duas novas atrações",
+   "url": "https://agenciabrasil.ebc.com.br/cultura/noticia/2026-11/inhotim-encerra-celebracoes-de-seus-20-anos-com-duas-novas-atracoes",
+   "data": "2026-11-15T14:28+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "Com um público de 5 milhões de visitantes nacionais e estrangeiros desde sua abertura em 2006, o Instituto Inhotim, o maior museu a céu aberto de arte contemporânea da América Latina, localizado em Brumadinho (MG), encerrou suas comemorações de duas décadas com a inauguração da exposição A Céu Aberto e a remontagem da instalação sonora The Murder of Crows no sábado (14). A Céu Aberto reconta a história do museu com suas 19 galerias (12 permanentes e sete temporárias) e obras a céu aberto com mais de 900 trabalhos em exposição de 50 artistas de mais de 18 países. A instituição também se destaca"
+  },
+  {
+   "id": "n-0c8e121b54",
+   "titulo": "Ao vivo: professores comentam 2º dia de prova na live Resenha do Enem",
+   "url": "https://agenciabrasil.ebc.com.br/educacao/noticia/2026-11/ao-vivo-professores-comentam-2o-dia-de-prova-na-live-resenha-do-enem",
+   "data": "2026-11-15T14:00+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "Neste domingo (15), a partir das 19h30, a Agência Brasil promove a transmissão ao vivo Resenha do Enem . A live contará com professores convidados para comentar as questões de matemática e ciências da natureza e poderá ser acompanhada pelos canais da Agência Brasil e da Rádio Nacional no YouTube . */ A apresentação será das jornalistas Camila Bairros e Thaís de Luna. No estúdio, participam os professores Gabriel Carvalho e Paulo Luís, de matemática; Ingrid Gabrielli, de física; Fred Kyoimi, de química; e Alessandro Santana, de biologia. Acesso ao ensino superior Notícias relacionadas: Rec’n’Pl"
+  },
+  {
+   "id": "n-790000e131",
+   "titulo": "Enem 2026: um a cada cinco participantes faz prova como treineiro",
+   "url": "https://agenciabrasil.ebc.com.br/educacao/noticia/2026-11/enem-2026-um-cada-cinco-participantes-faz-prova-como-treineiro",
+   "data": "2026-11-15T13:49+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [
+    "ebc"
+   ],
+   "pessoas": [],
+   "resumo": "O Exame Nacional do Ensino Médio (Enem) de 2026 conta com 1.015.132 participantes que não vão concluir esta etapa da educação básica neste ano, mas realizam as provas para autoavaliação do desempenho e para perceber como é o exame na prática. Eles correspondem a cerca de 20% dos mais de 5,05 milhões de inscritos confirmados. São os treineiros. Notícias relacionadas: Enem 2026: candidatos fazem hoje 2º dia de provas em 1,9 mil cidades. Resenha do Enem: EBC prepara live para segundo dia de prova. A nota que conquistarem no Enem não vale vaga em uma faculdade, nem garante o certificado de conclus"
+  },
+  {
+   "id": "n-31c61ce758",
+   "titulo": "Fortes chuvas devem atingir estado de São Paulo neste domingo",
+   "url": "https://agenciabrasil.ebc.com.br/geral/noticia/2026-11/fortes-chuvas-devem-atingir-estado-de-sao-paulo-neste-domingo",
+   "data": "2026-11-15T13:34+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "Pancadas de chuva típicas de verão, que podem ser de forte intensidade, são esperadas para este domingo (15) no estado de São Paulo. O alerta é da Defesa Civil do estado de São Paulo, que informou esperar acumulados elevados de chuva em todo território paulista. A expectativa de pancadas de chuva é decorrência da existência de um corredor de umidade da Amazônia e de um cavado meteorológico - nome dado a uma área de instabilidade que favorece a formação de nuvens de tempestade - que devem aumentar a instabilidade em todo o estado paulista, provocando também raios, rajadas de vento e quedas de g"
+  },
+  {
+   "id": "n-2115df6f7c",
+   "titulo": "Oxê de Xangô, símbolo da justiça, será inaugurado no STF",
+   "url": "https://agenciabrasil.ebc.com.br/justica/noticia/2026-11/oxe-de-xango-simbolo-da-justica-sera-inaugurado-no-stf",
+   "data": "2026-11-15T13:24+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [
+    "stf"
+   ],
+   "pessoas": [],
+   "resumo": "O Supremo Tribunal Federal (STF) terá em seu Salão Nobre, a partir da próxima terça-feira (17), um símbolo da justiça na tradição yorubá, o Oxê de Xangô. Trata-se de um machado com lâminas nas duas pontas, simbolizando a igualdade no julgamento, sem favorecer um lado em detrimento de outro. O Oxê é envergado por Xangô, orixá da lei e da justiça nas religiões de matriz africana. Notícias relacionadas: Racismo e intolerância religiosa atravessam debate eleitoral no Brasil. Unesco reconhece três lugares de memória da escravidão no Brasil. A inauguração da peça ocorre a três dias do Dia da Consciê"
+  },
+  {
+   "id": "n-2cfe889e6e",
+   "titulo": "Enem 2026: candidatos fazem hoje 2º dia de provas em 1,9 mil cidades",
+   "url": "https://agenciabrasil.ebc.com.br/educacao/noticia/2026-11/enem-2026-candidatos-fazem-hoje-2o-dia-de-provas-em-19-mil-cidades",
+   "data": "2026-11-15T13:09+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [
+    "ebc"
+   ],
+   "pessoas": [],
+   "resumo": "Mais de 5,05 milhões inscritos confirmados no Exame Nacional do Ensino Médio (Enem) 2026 podem participar do segundo dia de aplicação de provas, neste domingo (15). Mesmo aqueles candidatos que faltaram ao primeiro domingo (8), podem fazer as provas de matemática e de ciências da natureza (química, física e biologia). Participam do exame candidatos em 1.901 municípios, distribuídos pelas 27 unidades da Federação, com 14,8 mil locais de prova e 184 mil salas de aula. Notícias relacionadas: Enem: confira os horários e o que levar no segundo dia de prova. Resenha do Enem: EBC prepara live para se"
+  },
+  {
+   "id": "n-e1db84a494",
+   "titulo": "Prevenção da dengue deve começar agora, diz especialista",
+   "url": "https://agenciabrasil.ebc.com.br/saude/noticia/2026-11/prevencao-da-dengue-deve-comecar-agora-diz-especialista",
+   "data": "2026-11-15T12:30+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "As medidas de prevenção e combate à dengue devem ser intensificadas antes da epidemia da doença, já neste mês de novembro . O alerta é feito pela infectologista professora da Escola de Medicina da PUC-PR Marion Burger, em entrevista à Agência Brasil . O fenômeno do El Niño, que este ano terá maiores proporções, ocasionando calor e chuvas, deverá favorecer também a proliferação do mosquito que transmite a dengue, o Aedes aegypti . A projeção é que o Brasil pode chegar a contabilizar 860 mil casos prováveis de dengue em 2027 . Notícias relacionadas: Especialistas alertam para risco de reinfecção"
+  },
+  {
+   "id": "n-8dbcf470f6",
+   "titulo": "Falha aérea nos EUA cancela sete voos e atrasa outros 14 no Brasil",
+   "url": "https://agenciabrasil.ebc.com.br/geral/noticia/2026-11/falha-aerea-nos-eua-cancela-sete-voos-e-atrasa-outros-14-no-brasil",
+   "data": "2026-11-14T21:43+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [
+    "anac"
+   ],
+   "pessoas": [],
+   "resumo": "Sete dos 29 voos programados para partir do Brasil com destino aos Estados Unidos entre o fim da tarde desta sexta-feira (13) e as 14h deste sábado (14) tiveram que ser cancelados devido à interrupção do tráfego aéreo em território estadunidense . Segundo a Agência Nacional de Aviação Civil (Anac), outros 14 voos partiram com atraso durante o mesmo período. Notícias relacionadas: EUA retomarão voos após falha na rede de tráfego aéreo causar caos. Anac orienta passageiros a consultar aéreas sobre voos para os EUA. Os problemas em território brasileiro são reflexos da falha de comunicação que af"
+  },
+  {
+   "id": "n-875b75d540",
+   "titulo": "Lula cita herói anticolonial das Filipinas ao comentar sua reeleição",
+   "url": "https://agenciabrasil.ebc.com.br/economia/noticia/2026-11/lula-cita-heroi-anticolonial-das-filipinas-ao-comentar-sua-reeleicao",
+   "data": "2026-11-14T19:48+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [],
+   "pessoas": [
+    "luiz-inacio-lula-da-silva"
+   ],
+   "resumo": "Em visita oficial às Filipinas, o presidente Luiz Inácio Lula da Silva citou o herói da independência do país, José Rizal, um símbolo da luta contra o colonialismo, ao se referir a sua reeleição, em outubro. “No último dia 25, diante do extremismo e de tentativas de ingerência externa, o povo brasileiro escolheu a soberania, a democracia e a justiça social. Escolheu não abaixar a cabeça quando pôde levantá-la, como escreveu o herói filipino José Rizal.” Notícias relacionadas: Lula chega às Filipinas; Brasil quer ser Parceiro de Diálogo da Asean. Lula participa, como convidado, da Cúpula da Ass"
+  },
+  {
+   "id": "n-bbb6805548",
+   "titulo": "Coritiba lança camisa com Enedina Marques em alusão ao 20 de novembro",
+   "url": "https://agenciabrasil.ebc.com.br/direitos-humanos/noticia/2026-11/coritiba-lanca-camisa-com-enedina-marques-em-alusao-ao-20-de-novembro",
+   "data": "2026-11-14T18:22+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "Uma camisa para homenagear o dia da Consciência Negra, celebrado em 20 de novembro, foi a forma como o clube de futebol Coritiba resolveu fazer para chamar atenção para a data. A camisa, lançada nessa sexta-feira (13), faz uma homenagem a Enedina Alves Marques, a primeira mulher negra a se formar em engenharia no Brasil. A iniciativa faz parte da coleção Pelo Mundo Vai Brilhar, que valoriza personagens e símbolos da história de Curitiba. Trajetória Enedina nasceu na capital paranaense, em 1913 e teve uma trajetória marcada pelo enfrentamento a barreiras raciais e de gênero. Em 1945, se tornou "
+  },
   {
    "id": "n-d04bad7458",
    "titulo": "Programa na Rádio MEC celebra Proclamação da República neste sábado",
