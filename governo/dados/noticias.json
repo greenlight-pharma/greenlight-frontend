@@ -1,6 +1,6 @@
 {
  "meta": {
-  "gerado_em": "2026-11-15T16:56+00:00",
+  "gerado_em": "2026-11-16T20:14+00:00",
   "gerado_por": "scripts/governo/agentes/agente_noticias.py",
   "janela_dias": 90,
   "fontes": [
@@ -30,39 +30,39 @@
     "url": "https://www.gov.br/planalto/pt-br/acompanhe-o-planalto/noticias/RSS"
    }
   ],
-  "total_artigos": 3790,
-  "artigos_com_no": 1314,
-  "novos_nesta_rodada": 37,
+  "total_artigos": 3841,
+  "artigos_com_no": 1325,
+  "novos_nesta_rodada": 70,
   "artigos_por_fonte": {
-   "agenciabrasil": 1759,
-   "senado": 1147,
-   "camara": 860,
+   "senado": 1162,
+   "camara": 875,
+   "agenciabrasil": 1781,
    "stf": 7,
-   "planalto": 17
+   "planalto": 16
   },
   "ordem": "peso igual por fonte; contagem real de matérias",
   "resumo_por": "claude"
  },
  "resumo": [
   {
-   "texto": "O Plenário do Senado aprovou o texto principal do projeto de ajuste fiscal do governo (PLP 299/2026), por 45 votos a 31, em substitutivo do senador Eduardo Braga.",
-   "artigo_id": "n-ffc4cd9885",
-   "no_id": null
-  },
-  {
-   "texto": "A Secretaria do Tesouro Nacional informou acesso não autorizado a seu ambiente tecnológico, com exposição de dados de cerca de 30 mil cadastros e 4 mil chaves Pix de beneficiários de pagamentos federais.",
-   "artigo_id": "n-54a230fa48",
-   "no_id": "stn"
-  },
-  {
-   "texto": "O Supremo Tribunal Federal reuniu quatro votos para referendar a liminar do ministro Flávio Dino que fixa regras de transição para o início da escala 5x2 em dezembro.",
+   "texto": "O Supremo Tribunal Federal reuniu quatro votos para referendar a liminar do ministro Flávio Dino que define regras de transição para o início da escala de trabalho 5x2 em dezembro.",
    "artigo_id": "n-706659a6fe",
    "no_id": "stf"
   },
   {
-   "texto": "O Ministério da Fazenda não renovou a subvenção de R$ 1,40 por litro ao diesel importado, encerrada com o vencimento da Portaria 3.082.",
+   "texto": "O Ministério da Fazenda informou que não renovará a subvenção de R$ 1,40 por litro ao diesel importado, encerrada com o vencimento da Portaria 3.082.",
    "artigo_id": "n-7ea3172402",
    "no_id": "mf"
+  },
+  {
+   "texto": "O presidente do STF e do CNJ, Edson Fachin, suspendeu os prazos processuais no Judiciário de todo o país por causa de falhas nos sistemas da Microsoft.",
+   "artigo_id": "n-f03d098660",
+   "no_id": "cnj"
+  },
+  {
+   "texto": "A Agência Nacional de Vigilância Sanitária determinou a apreensão de todos os lotes de dois alvejantes tira-manchas à base de percarbonato de sódio, em decisão publicada no Diário Oficial da União.",
+   "artigo_id": "n-9da30066dd",
+   "no_id": "anvisa"
   }
  ],
  "ranking": {
@@ -70,181 +70,181 @@
    {
     "id": "tse",
     "artigos": 256,
-    "peso": 124.71819216615944,
+    "peso": 124.77985946435996,
     "ultima": "2026-11-13T20:29:00+00:00"
    },
    {
     "id": "stf",
     "artigos": 195,
-    "peso": 91.59954109034902,
+    "peso": 91.66606758236944,
     "ultima": "2026-11-15T13:24+00:00"
    },
    {
     "id": "congresso",
     "artigos": 126,
-    "peso": 78.29837030535839,
+    "peso": 78.27966470711593,
     "ultima": "2026-11-13T19:40:00+00:00"
    },
    {
     "id": "camara",
     "artigos": 105,
-    "peso": 63.64151879510681,
+    "peso": 63.67139175133194,
     "ultima": "2026-11-13T01:54:00+00:00"
    },
    {
     "id": "prf",
     "artigos": 14,
-    "peso": 50.42020965142715,
+    "peso": 53.849570106043814,
     "ultima": "2026-10-30T15:44+00:00"
    },
    {
     "id": "pf",
-    "artigos": 87,
-    "peso": 39.10011384965994,
-    "ultima": "2026-11-13T14:09+00:00"
+    "artigos": 88,
+    "peso": 39.56549860305907,
+    "ultima": "2026-11-16T17:59+00:00"
    },
    {
     "id": "mec",
-    "artigos": 65,
-    "peso": 32.34131296986929,
-    "ultima": "2026-11-14T15:05+00:00"
+    "artigos": 66,
+    "peso": 32.781754835367785,
+    "ultima": "2026-11-16T18:11+00:00"
    },
    {
     "id": "caixa",
-    "artigos": 65,
-    "peso": 28.010233086981213,
-    "ultima": "2026-11-15T15:14+00:00"
+    "artigos": 66,
+    "peso": 28.467827063447505,
+    "ultima": "2026-11-16T10:28+00:00"
    },
    {
     "id": "anvisa",
-    "artigos": 57,
-    "peso": 25.932999429581734,
-    "ultima": "2026-11-13T15:12+00:00"
+    "artigos": 59,
+    "peso": 26.814207559813333,
+    "ultima": "2026-11-16T19:02+00:00"
    },
    {
     "id": "ms",
     "artigos": 40,
-    "peso": 19.75688486024523,
+    "peso": 19.7677781910992,
     "ultima": "2026-11-13T10:00+00:00"
    },
    {
     "id": "inss",
     "artigos": 33,
-    "peso": 19.443210335872237,
+    "peso": 19.428136063883354,
     "ultima": "2026-11-13T19:56+00:00"
    },
    {
     "id": "agu",
     "artigos": 41,
-    "peso": 17.897920917855274,
+    "peso": 17.914330072354876,
     "ultima": "2026-11-13T00:35+00:00"
    },
    {
     "id": "petrobras",
     "artigos": 38,
-    "peso": 17.294924148965126,
+    "peso": 17.309650441019716,
     "ultima": "2026-11-15T16:17+00:00"
    },
    {
     "id": "tcu",
     "artigos": 28,
-    "peso": 17.09619645703953,
+    "peso": 17.09342977402511,
     "ultima": "2026-11-13T19:02:00+00:00"
    },
    {
     "id": "ibge",
-    "artigos": 36,
-    "peso": 15.743287603472103,
-    "ultima": "2026-11-13T13:26+00:00"
+    "artigos": 37,
+    "peso": 16.189007220024724,
+    "ultima": "2026-11-15T18:00+00:00"
+   },
+   {
+    "id": "inep",
+    "artigos": 33,
+    "peso": 14.233913531723752,
+    "ultima": "2026-11-15T23:43+00:00"
    },
    {
     "id": "ebc",
     "artigos": 31,
-    "peso": 13.358726549175676,
+    "peso": 13.371252105558677,
     "ultima": "2026-11-15T13:49+00:00"
-   },
-   {
-    "id": "inep",
-    "artigos": 31,
-    "peso": 13.358726549175676,
-    "ultima": "2026-11-11T22:00+00:00"
    },
    {
     "id": "senado",
     "artigos": 20,
-    "peso": 11.771814059256714,
+    "peso": 11.752899270072994,
     "ultima": "2026-11-13T20:34+00:00"
    },
    {
     "id": "anp",
     "artigos": 19,
-    "peso": 10.47749719992265,
+    "peso": 10.480062380395086,
     "ultima": "2026-11-10T12:06:00+00:00"
    },
    {
     "id": "tst",
     "artigos": 17,
-    "peso": 8.925860654429624,
+    "peso": 8.928088446317556,
     "ultima": "2026-10-28T22:36+00:00"
    },
    {
     "id": "stj",
     "artigos": 18,
-    "peso": 8.887545043613825,
+    "peso": 8.88694795957714,
     "ultima": "2026-11-12T15:40+00:00"
    },
    {
     "id": "mpf",
     "artigos": 18,
-    "peso": 7.986607671692675,
+    "peso": 7.993723671456501,
     "ultima": "2026-11-06T20:39+00:00"
    },
    {
     "id": "inmet",
     "artigos": 16,
-    "peso": 6.894826606026154,
+    "peso": 6.901291409320607,
     "ultima": "2026-11-07T21:59+00:00"
    },
    {
     "id": "mpt",
     "artigos": 14,
-    "peso": 6.71336970614671,
+    "peso": 6.715012963186669,
     "ultima": "2026-11-01T20:06+00:00"
+   },
+   {
+    "id": "cnj",
+    "artigos": 15,
+    "peso": 6.6997315322088875,
+    "ultima": "2026-11-16T19:36+00:00"
    },
    {
     "id": "mf",
     "artigos": 13,
-    "peso": 6.291829837136005,
+    "peso": 6.296611777985448,
     "ultima": "2026-11-13T22:54+00:00"
-   },
-   {
-    "id": "cnj",
-    "artigos": 14,
-    "peso": 6.262901020186136,
-    "ultima": "2026-11-13T20:47+00:00"
    },
    {
     "id": "bndes",
     "artigos": 10,
-    "peso": 6.120528166474573,
+    "peso": 6.112685234947974,
     "ultima": "2026-11-12T00:06+00:00"
    },
    {
     "id": "aneel",
     "artigos": 13,
-    "peso": 6.061902097222752,
+    "peso": 6.06684094201463,
     "ultima": "2026-11-10T16:11+00:00"
    },
    {
     "id": "anatel",
     "artigos": 11,
-    "peso": 5.420589717516807,
+    "peso": 5.421020823939055,
     "ultima": "2026-11-05T13:45+00:00"
    },
    {
     "id": "anac",
     "artigos": 9,
-    "peso": 5.248519611503293,
+    "peso": 5.247671905686434,
     "ultima": "2026-11-14T21:43+00:00"
    }
   ],
@@ -260,9 +260,9 @@
     "uf": null,
     "foto": "https://commons.wikimedia.org/wiki/Special:FilePath/Foto_oficial_de_Luiz_In%C3%A1cio_Lula_da_Silva_%28estreita%29.jpg?width=160",
     "foto_fonte": "https://www.wikidata.org/wiki/Q37181",
-    "artigos": 275,
-    "peso": 130.35782003403773,
-    "ultima": "2026-11-15T16:30+00:00"
+    "artigos": 277,
+    "peso": 131.28446618765201,
+    "ultima": "2026-11-16T18:09+00:00"
    },
    {
     "id": "flavio-bolsonaro",
@@ -276,7 +276,7 @@
     "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador5894.jpg",
     "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/5894",
     "artigos": 137,
-    "peso": 63.38680628471896,
+    "peso": 63.432094519990606,
     "ultima": "2026-11-06T20:51+00:00"
    },
    {
@@ -291,7 +291,7 @@
     "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador3830.jpg",
     "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/3830",
     "artigos": 73,
-    "peso": 45.22515040319168,
+    "peso": 45.23460362963041,
     "ultima": "2026-11-13T16:46:00+00:00"
    },
    {
@@ -305,9 +305,9 @@
     "uf": "DF",
     "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador6335.jpg",
     "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/6335",
-    "artigos": 49,
-    "peso": 32.38186573670446,
-    "ultima": "2026-11-13T21:17:00+00:00"
+    "artigos": 52,
+    "peso": 34.37728055077452,
+    "ultima": "2026-11-16T19:34:00+00:00"
    },
    {
     "id": "nunes-marques",
@@ -321,7 +321,7 @@
     "foto": "https://commons.wikimedia.org/wiki/Special:FilePath/Nunes_Marques%2C_February_2025_%28cropped%29.jpg?width=160",
     "foto_fonte": "https://www.wikidata.org/wiki/Q99831978",
     "artigos": 62,
-    "peso": 29.467199183444414,
+    "peso": 29.486824714885852,
     "ultima": "2026-10-29T14:20:00+00:00"
    },
    {
@@ -336,7 +336,7 @@
     "foto": "https://www.camara.leg.br/internet/deputado/bandep/160674.jpg",
     "foto_fonte": "https://www.camara.leg.br/deputados/160674",
     "artigos": 32,
-    "peso": 23.976826012427853,
+    "peso": 23.92246846334565,
     "ultima": "2026-11-11T11:53+00:00"
    },
    {
@@ -350,9 +350,9 @@
     "uf": "RS",
     "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador825.jpg",
     "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/825",
-    "artigos": 27,
-    "peso": 17.38321339550044,
-    "ultima": "2026-11-13T19:40:00+00:00"
+    "artigos": 32,
+    "peso": 20.69570789776576,
+    "ultima": "2026-11-16T18:49:00+00:00"
    },
    {
     "id": "edson-fachin",
@@ -366,7 +366,7 @@
     "foto": "https://commons.wikimedia.org/wiki/Special:FilePath/Luiz_Edson_Fachin-12-05.2015.jpg?width=160",
     "foto_fonte": "https://www.wikidata.org/wiki/Q10320705",
     "artigos": 36,
-    "peso": 15.973215343385355,
+    "peso": 15.987447342913002,
     "ultima": "2026-11-13T20:47+00:00"
    },
    {
@@ -381,7 +381,7 @@
     "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador345.jpg",
     "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/345",
     "artigos": 22,
-    "peso": 14.53879686137751,
+    "peso": 14.544234079173835,
     "ultima": "2026-11-13T16:46:00+00:00"
    },
    {
@@ -396,7 +396,7 @@
     "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador6009.jpg",
     "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/6009",
     "artigos": 17,
-    "peso": 11.234524847428073,
+    "peso": 11.238726333907055,
     "ultima": "2026-11-10T17:08:00+00:00"
    },
    {
@@ -410,9 +410,9 @@
     "uf": "SP",
     "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador5376.jpg",
     "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/5376",
-    "artigos": 15,
-    "peso": 9.912816041848298,
-    "ultima": "2026-11-11T17:00:00+00:00"
+    "artigos": 16,
+    "peso": 10.577624784853699,
+    "ultima": "2026-11-16T16:32:00+00:00"
    },
    {
     "id": "omar-aziz",
@@ -426,7 +426,7 @@
     "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador5525.jpg",
     "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/5525",
     "artigos": 15,
-    "peso": 9.90342924798237,
+    "peso": 9.903593707919025,
     "ultima": "2026-10-26T12:13:00+00:00"
    },
    {
@@ -441,7 +441,7 @@
     "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador4770.jpg",
     "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/4770",
     "artigos": 14,
-    "peso": 9.251961639058411,
+    "peso": 9.255421686746987,
     "ultima": "2026-11-13T19:02:00+00:00"
    },
    {
@@ -456,7 +456,7 @@
     "foto": null,
     "foto_fonte": null,
     "artigos": 19,
-    "peso": 8.41753433456931,
+    "peso": 8.42505438453904,
     "ultima": "2026-11-13T19:02:00+00:00"
    },
    {
@@ -471,8 +471,23 @@
     "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador5352.jpg",
     "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/5352",
     "artigos": 12,
-    "peso": 7.9302528334786375,
+    "peso": 7.9332185886402735,
     "ultima": "2026-10-28T14:06:00+00:00"
+   },
+   {
+    "id": "fernando-dueire",
+    "nome": "Fernando Dueire",
+    "nome_completo": "Fernando Antonio Caminha Dueire",
+    "cargo": "Senador, PE",
+    "no_id": "senado",
+    "poder": "legislativo",
+    "partido": "PSD",
+    "uf": "PE",
+    "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador5917.jpg",
+    "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/5917",
+    "artigos": 11,
+    "peso": 7.2721170395869175,
+    "ultima": "2026-11-16T15:42:00+00:00"
    },
    {
     "id": "nelsinho-trad",
@@ -486,7 +501,7 @@
     "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador5985.jpg",
     "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/5985",
     "artigos": 11,
-    "peso": 7.269398430688751,
+    "peso": 7.2721170395869175,
     "ultima": "2026-11-12T17:44:00+00:00"
    },
    {
@@ -501,7 +516,7 @@
     "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador22.jpg",
     "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/22",
     "artigos": 11,
-    "peso": 7.269398430688751,
+    "peso": 7.2721170395869175,
     "ultima": "2026-11-10T17:07:00+00:00"
    },
    {
@@ -516,23 +531,8 @@
     "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador5012.jpg",
     "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/5012",
     "artigos": 11,
-    "peso": 7.269398430688751,
+    "peso": 7.2721170395869175,
     "ultima": "2026-11-03T12:03:00+00:00"
-   },
-   {
-    "id": "laura-carneiro",
-    "nome": "Laura Carneiro",
-    "nome_completo": "Laura Carneiro",
-    "cargo": "Deputado(a) federal, RJ",
-    "no_id": "camara",
-    "poder": "legislativo",
-    "partido": "PSD",
-    "uf": "RJ",
-    "foto": "https://www.camara.leg.br/internet/deputado/bandep/74856.jpg",
-    "foto_fonte": "https://www.camara.leg.br/deputados/74856",
-    "artigos": 9,
-    "peso": 6.609312463250947,
-    "ultima": "2026-11-11T16:20:00+00:00"
    },
    {
     "id": "alessandro-vieira",
@@ -546,7 +546,7 @@
     "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador5982.jpg",
     "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/5982",
     "artigos": 10,
-    "peso": 6.608544027898865,
+    "peso": 6.611015490533561,
     "ultima": "2026-11-13T14:46:00+00:00"
    },
    {
@@ -561,23 +561,8 @@
     "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador475.jpg",
     "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/475",
     "artigos": 10,
-    "peso": 6.608544027898865,
+    "peso": 6.611015490533561,
     "ultima": "2026-11-09T19:58:00+00:00"
-   },
-   {
-    "id": "fernando-dueire",
-    "nome": "Fernando Dueire",
-    "nome_completo": "Fernando Antonio Caminha Dueire",
-    "cargo": "Senador, PE",
-    "no_id": "senado",
-    "poder": "legislativo",
-    "partido": "PSD",
-    "uf": "PE",
-    "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador5917.jpg",
-    "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/5917",
-    "artigos": 10,
-    "peso": 6.608544027898865,
-    "ultima": "2026-10-29T12:20:00+00:00"
    },
    {
     "id": "teresa-leitao",
@@ -591,7 +576,7 @@
     "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador6338.jpg",
     "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/6338",
     "artigos": 10,
-    "peso": 6.608544027898865,
+    "peso": 6.611015490533561,
     "ultima": "2026-10-26T20:54:00+00:00"
    },
    {
@@ -606,16 +591,613 @@
     "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador5990.jpg",
     "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/5990",
     "artigos": 10,
-    "peso": 6.608544027898865,
+    "peso": 6.611015490533561,
     "ultima": "2026-10-19T12:58:00+00:00"
+   },
+   {
+    "id": "laura-carneiro",
+    "nome": "Laura Carneiro",
+    "nome_completo": "Laura Carneiro",
+    "cargo": "Deputado(a) federal, RJ",
+    "no_id": "camara",
+    "poder": "legislativo",
+    "partido": "PSD",
+    "uf": "RJ",
+    "foto": "https://www.camara.leg.br/internet/deputado/bandep/74856.jpg",
+    "foto_fonte": "https://www.camara.leg.br/deputados/74856",
+    "artigos": 9,
+    "peso": 6.600437865748709,
+    "ultima": "2026-11-11T16:20:00+00:00"
    }
   ]
  },
  "artigos": [
   {
+   "id": "n-9c306649f1",
+   "titulo": "Áudio: Plenário analisa destaques da oposição ao projeto de ajuste fiscal",
+   "url": "https://www12.senado.leg.br/noticias/audios/2026/11/plenario-analisa-destaques-da-oposicao-ao-projeto-de-ajuste-fiscal",
+   "data": "2026-11-16T20:06:00+00:00",
+   "fonte": "senado",
+   "nos": [],
+   "pessoas": [
+    "jaques-wagner"
+   ],
+   "resumo": "O ajuste nas contas do governo continua em discussão no Plenário do Senado. Os senadores e senadoras devem votar esta semana os destaques ao texto principal do projeto (PLP 299/2026) apresentado pelo senador Jaques Wagner (PT-BA), que foi aprovado na última quinta-feira (12). Entre os pontos questionados estão o adiamento dos repasses a estados e municípios previstos na Lei Kandir."
+  },
+  {
+   "id": "n-88092fd49a",
+   "titulo": "Comissão promove dois debates sobre redução da maioridade penal nesta semana",
+   "url": "https://www.camara.leg.br/noticias/1319616-comissao-promove-dois-debates-sobre-reducao-da-maioridade-penal-nesta-semana",
+   "data": "2026-11-16T19:49+00:00",
+   "fonte": "camara",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "Vinicius Loures / Câmara dos Deputados Reunião da Comissão Especial sobre Maioridade Penal (PEC 32/15) A comissão especial da Câmara dos Deputados que analisa a Proposta de Emenda à Constituição que reduz a maioridade penal para 16 anos (PEC 32/15) realiza, na terça-feira (17) e na quarta-feira (18), audiências públicas para discutir o tema. O debate de terça-feira (17) está marcado para as 14h30, no plenário 3. Veja quem foi convidado. Na quarta-feira (18), a audiência pública também ocorrerá às 14h30, no plenário 13. Veja quem foi convidado. As audiências atendem a requerimentos de diferente"
+  },
+  {
+   "id": "n-f6880e4562",
+   "titulo": "Comissão aprova incentivo a empresas que desenvolvem tecnologias assistivas",
+   "url": "https://www.camara.leg.br/noticias/1319658-comissao-aprova-incentivo-a-empresas-que-desenvolvem-tecnologias-assistivas",
+   "data": "2026-11-16T19:46+00:00",
+   "fonte": "camara",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "O projeto segue em análise na Câmara dos Deputados"
+  },
+  {
+   "id": "n-954a6fcb55",
+   "titulo": "Jovens com medida socioeducativa têm oficina de robótica no REC’n’Play",
+   "url": "https://agenciabrasil.ebc.com.br/cultura/noticia/2026-11/jovens-com-medida-socioeducativa-tem-oficina-de-robotica-no-recnplay",
+   "data": "2026-11-16T19:36+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [
+    "cnj"
+   ],
+   "pessoas": [],
+   "resumo": "Na Rua Dona Maria César, única que tem nome feminino no centro histórico de Recife, jovens mulheres se reuniram, na semana passada, para participar de uma oficina inusitada. Foi ali que elas construíram e participaram de uma competição de robôs. “Eu nunca tinha tocado em nada de robótica. E eu gostei”, contou a jovem **Sofia [nome fictício]. “Estou aprendendo coisas novas, coisas que eu nem sabia que existiam”, acrescentou. Notícias relacionadas: Projeto usa robótica para reintegrar jovens privados de liberdade. CNJ lança painel com dados nacionais sobre o sistema socioeducativo. Na última qui"
+  },
+  {
+   "id": "n-f33d0b739e",
+   "titulo": "Áudio: Senadoras cobram investigação federal sobre crianças desaparecidas no MA",
+   "url": "https://www12.senado.leg.br/noticias/audios/2026/11/senadoras-cobram-investigacao-federal-sobre-criancas-desaparecidas-no-ma",
+   "data": "2026-11-16T19:34:00+00:00",
+   "fonte": "senado",
+   "nos": [],
+   "pessoas": [
+    "damares-alves"
+   ],
+   "resumo": "A Comissão de Direitos Humanos e Legislação Participativa (CDH) fez uma diligência no município de Bacabal (MA), para acompanhar as investigações sobre o desaparecimento dos irmãos Ágatha Isabelly, de 6 anos, e Allan Michael, de 4 anos. As crianças desapareceram no dia 4 de janeiro, na comunidade quilombola São Sebastião dos Pretos. A comissão ouviu a mãe das crianças, além de autoridades municipais e representantes das forças de segurança. A senadora Damares Alves (Republicanos-DF) defendeu a federalização das investigações."
+  },
+  {
+   "id": "n-32443edbd0",
+   "titulo": "Áudio: Debatedores defendem recursos para políticas em território ianomâmi",
+   "url": "https://www12.senado.leg.br/noticias/audios/2026/11/debatedores-defendem-recursos-para-politicas-em-territorio-ianomami",
+   "data": "2026-11-16T19:19:00+00:00",
+   "fonte": "senado",
+   "nos": [
+    "funai",
+    "mpi"
+   ],
+   "pessoas": [
+    "damares-alves"
+   ],
+   "resumo": "A Subcomissão dos Povos Indígenas Yanomami debateu nesta segunda-feira (16) recursos para manter ações de saúde, alimentação e proteção territorial em 2027. A presidenta da Fundação Nacional dos Povos Indígenas (Funai), Lúcia Alberta Baré, alertou para a pressão pelo retorno do garimpo. O Ministério dos Povos Indígenas defendeu apoio à produção de alimentos para reduzir a dependência de cestas básicas. A senadora Damares Alves (Republicanos-DF) propôs um plano de dez anos para a região."
+  },
+  {
+   "id": "n-a0b5987dd0",
+   "titulo": "Ajuste fiscal não compromete políticas sociais, garante Humberto Costa",
+   "url": "https://www12.senado.leg.br/noticias/materias/2026/11/16/ajuste-fiscal-nao-compromete-politicas-sociais-garante-humberto-costa",
+   "data": "2026-11-16T19:06:00+00:00",
+   "fonte": "senado",
+   "nos": [],
+   "pessoas": [
+    "humberto-costa"
+   ],
+   "resumo": "O senador Humberto Costa (PT-PE), em pronunciamento no Plenário nesta segunda-feira (16), defendeu o projeto de lei complementar que trata do ajuste fiscal proposto pelo governo federal (PLP 299/2026). O parlamentar afirmou que votou a favor do texto principal e que apoiará os itens restantes que preservem a proposta. Segundo ele, as medidas buscam equilibrar as contas públicas sem comprometer políticas sociais. Humberto afirmou que o ajuste fiscal é necessário para reduzir o endividamento público, recuperar a confiança na economia e criar condições para a redução dos juros. Ele destacou que o"
+  },
+  {
+   "id": "n-116bbc262a",
+   "titulo": "Projeto estabelece regras para uso de anticoncepcionais hormonais em cadelas e gatas",
+   "url": "https://www.camara.leg.br/noticias/1313139-projeto-estabelece-regras-para-uso-de-anticoncepcionais-hormonais-em-cadelas-e-gatas",
+   "data": "2026-11-16T19:05+00:00",
+   "fonte": "camara",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "A Câmara dos Deputados analisa o assunto"
+  },
+  {
+   "id": "n-9da30066dd",
+   "titulo": "Anvisa proíbe dois tira-manchas à base de percarbonato de sódio",
+   "url": "https://agenciabrasil.ebc.com.br/saude/noticia/2026-11/anvisa-proibe-dois-tira-manchas-base-de-percarbonato-de-sodio",
+   "data": "2026-11-16T19:02+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [
+    "anvisa"
+   ],
+   "pessoas": [],
+   "resumo": "A Agência Nacional de Vigilância Sanitária (Anvisa) determinou, nesta segunda-feira (16), a apreensão de todos os lotes de dois alvejantes tira-manchas à base de percarbonato de sódio, Brankissimo Alvejante e Alveclean Tira Manchas em Pó. A decisão foi publicada no Diário Oficial da União . Os produtos são popularizados nas redes sociais e também vendidos pela internet. A comercialização, distribuição, fabricação, propaganda e o uso foram proibidos. Notícias relacionadas: Anvisa manda recolher anestésico por amostra com \"partícula estranha\". Anvisa manda recolher lotes de insumos para canetas "
+  },
+  {
+   "id": "n-848c9b8aaa",
+   "titulo": "Senado vota nesta quarta mais prazo para escolas usarem verba para internet",
+   "url": "https://www12.senado.leg.br/noticias/materias/2026/11/16/senado-vota-nesta-quarta-mais-prazo-para-escolas-usarem-verba-para-internet",
+   "data": "2026-11-16T18:56:00+00:00",
+   "fonte": "senado",
+   "nos": [],
+   "pessoas": [
+    "professora-dorinha-seabra"
+   ],
+   "resumo": "Um dos itens pautados para a sessão do Plenário do Senado nesta quarta-feira (18) é o projeto de lei que amplia em dois anos o prazo limite para as escolas públicas usarem as verbas destinadas a garantir acesso à internet em estabelecimentos de ensino. O PL 5.756/2026, da senadora Professora Dorinha Seabra (União-TO), determina que o prazo, que terminaria no final de 2026, será estendido até 31 de dezembro de 2028. O objetivo é aumentar a aplicação dos recursos da União repassados a estados e DF para a garantia do acesso à internet, com fins educacionais, para estudantes e profissionais da edu"
+  },
+  {
+   "id": "n-71c2c0217a",
+   "titulo": "'Arquivo S' ganha novo volume com registro de fatos históricos",
+   "url": "https://www12.senado.leg.br/noticias/materias/2026/11/16/arquivo-s-ganha-novo-volume-com-registro-de-fatos-historicos",
+   "data": "2026-11-16T18:49:00+00:00",
+   "fonte": "senado",
+   "nos": [],
+   "pessoas": [
+    "paulo-paim"
+   ],
+   "resumo": "O Senado lança nesta quarta-feira (18), às 15h, o 11º volume da coleção Arquivo S – O Senado na História do Brasil, produzido pela Agência Senado. A obra reúne reportagens sobre fatos marcantes do país, com base em documentos históricos que estão sob a guarda do Arquivo do Senado. O lançamento ocorrerá em uma live do programa Leituras, no canal da TV Senado no YouTube, com a participação do senador Paulo Paim (PT-RS). Publicados desde 2014, os textos do Arquivo S cobrem a trajetória do Brasil ao longo de dois séculos, tendo como protagonista uma de suas mais importantes instituições: o Senado "
+  },
+  {
+   "id": "n-2f2a472ecd",
+   "titulo": "Áudio: Senado discute bloqueio de chamadas de números desconhecidos em celulares",
+   "url": "https://www12.senado.leg.br/noticias/audios/2026/11/senado-discute-bloqueio-de-chamadas-de-numeros-desconhecidos-em-celulares",
+   "data": "2026-11-16T18:25:00+00:00",
+   "fonte": "senado",
+   "nos": [],
+   "pessoas": [
+    "damares-alves",
+    "laercio-oliveira",
+    "styvenson-valentim"
+   ],
+   "resumo": "O senador Styvenson Valentim (Podemos-RN) apresentou projeto de lei (PL 5.535/2026) que obriga os celulares comercializados no Brasil a oferecer uma funcionalidade para bloquear, rejeitar ou silenciar chamadas de números que não estejam na lista de contatos dos usuários. A proposta busca ampliar o controle dos consumidores sobre ligações indesejadas e começa agora a ser analisada pelo Senado. O senador Laércio Oliveira (PP-SE) defende medida que alivie a rotina da população que recebe ligações indesejadas diuturnamente de empresas de telefonia e telemarketing. A senadora Damares Alves (PL-DF) "
+  },
+  {
+   "id": "n-4d9b10d3b3",
+   "titulo": "Economia circular movimenta até R$ 90,7 bilhões no Brasil, aponta CNI",
+   "url": "https://agenciabrasil.ebc.com.br/economia/noticia/2026-11/economia-circular-movimenta-ate-r-907-bilhoes-no-brasil-aponta-cni",
+   "data": "2026-11-16T18:25+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "A economia circular movimenta entre R$ 31 bilhões e R$ 90,7 bilhões no Brasil, segundo levantamento inédito da Confederação Nacional da Indústria (CNI). Apresentado na 31ª Conferência das Nações Unidas sobre Mudança do Clima (COP31), em Antália, na Turquia, o estudo Financiamento para a Economia Circular na Indústria Brasileira, mostra que o país tem um mercado de finanças sustentáveis estimado em R$ 884 bilhões. Segundo a CNI, os recursos destinados diretamente à circularidade representam entre 3,5% e 10,3% desse total. O percentual é superior à média mundial, de aproximadamente 2%. Notícias "
+  },
+  {
+   "id": "n-2e1d05f1ad",
+   "titulo": "Comissão aprova regra específica para empréstimos concedidos por fundos de pensão",
+   "url": "https://www.camara.leg.br/noticias/1319688-comissao-aprova-regra-especifica-para-emprestimos-concedidos-por-fundos-de-pensao",
+   "data": "2026-11-16T18:14+00:00",
+   "fonte": "camara",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "O projeto segue em análise na Câmara dos Deputados"
+  },
+  {
+   "id": "n-cf569feb5d",
+   "titulo": "Fies 2026: chamada para vagas remanescentes sai nesta segunda-feira",
+   "url": "https://agenciabrasil.ebc.com.br/educacao/noticia/2026-11/fies-2026-chamada-para-vagas-remanescentes-sai-nesta-segunda-feira",
+   "data": "2026-11-16T18:11+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [
+    "mec"
+   ],
+   "pessoas": [],
+   "resumo": "O resultado da chamada única para as vagas remanescentes do Fundo de Financiamento Estudantil (Fies) do segundo semestre será divulgado nesta segunda-feira (16) pelo Ministério da Educação (MEC). Os interessados podem consultar a lista dos convocados no Portal Único de Acesso ao Ensino Superior, na parte do Fies . O acesso é com o login da conta Gov.br. Notícias relacionadas: Enem 2026: começa prazo para pedir reaplicação de provas em dezembro. Gabarito do Enem sai na quarta-feira, e resultado em 18 de janeiro. Enem 2026: um a cada cinco participantes faz prova como treineiro. Quem não for pré"
+  },
+  {
+   "id": "n-8bc7fd47a3",
+   "titulo": "Lula e Sánchez defendem união contra o avanço da extrema-direita",
+   "url": "https://agenciabrasil.ebc.com.br/politica/noticia/2026-11/lula-e-sanchez-defendem-uniao-contra-avanco-da-extrema-direita",
+   "data": "2026-11-16T18:09+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [],
+   "pessoas": [
+    "luiz-inacio-lula-da-silva"
+   ],
+   "resumo": "O presidente Luiz Inácio Lula da Silva se encontrou, na manhã desta segunda-feira (16), com o presidente do governo da Espanha, Pedro Sánchez, em Madri. Lula parou no país ibérico durante a viagem de volta das Filipinas. Segundo o Palácio do Planalto, Lula e Sánchez trataram de temas como o combate ao discurso de ódio e desinformação da extrema-direita, além da promoção de uma agenda de inclusão social para o fortalecimento da democracia no mundo. Notícias relacionadas: Lula quer ampliar relações comerciais com países da Asean. Brasil e Espanha firmam acordo para estimular taxação de super-ric"
+  },
+  {
+   "id": "n-a0bb8c87ed",
+   "titulo": "Diretor diz que recuperação de R$ 20 bilhões comprova eficiência da PF",
+   "url": "https://agenciabrasil.ebc.com.br/geral/noticia/2026-11/diretor-diz-que-recuperacao-de-r-20-bilhoes-comprova-eficiencia-da-pf",
+   "data": "2026-11-16T17:59+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [
+    "pf"
+   ],
+   "pessoas": [
+    "andrei-augusto-passos-rodrigues"
+   ],
+   "resumo": "A credibilidade conquistada pela Polícia Federal (PF) junto à sociedade reflete-se nos números que atestam a eficiência da corporação em asfixiar financeiramente as organizações criminosas. Esta é a avaliação que o diretor-geral Andrei Rodrigues fez nesta segunda-feira (16), na cerimônia comemorativa pelo Dia do Policial Federal, na sede da corporação, em Brasília. Dados divulgados pela PF mostram que, nos últimos quatro anos, foram recuperados R$ 20 bilhões desses grupos, sendo R$ 4,4 bilhões entre junho e setembro de 2026. Brasília (DF), 16/11/2026 - Andrei Rodrigues participa de solenidade "
+  },
+  {
+   "id": "n-2f9b7813c2",
+   "titulo": "Operação Fronteira apreende R$ 581 mi em produtos ilegais e drogas",
+   "url": "https://agenciabrasil.ebc.com.br/geral/noticia/2026-11/operacao-fronteira-apreende-r-581-mi-em-produtos-ilegais-e-drogas",
+   "data": "2026-11-16T17:55+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "A Receita Federal, em conjunto com órgãos de segurança, apreendeu R$ 581 milhões em produtos ilegais, drogas e armas. As mercadorias aprendidas, fruto de crimes transfronteiriços, foram confiscadas durante a última edição da Operação Fronteira, que este ano ocorreu entre 3 e 13 de novembro em quase todo o país. Cerca de 2 mil agentes públicos efetuaram 82 prisões em flagrante, retiveram 273 veículos, embarcações e aeronaves e apreenderam quantidade de drogas equivalente a pouco mais de R$ 257 milhões. No total, foram apreendidos mais de R$ 581 milhões em mercadorias e drogas. PF deflagra opera"
+  },
+  {
+   "id": "n-5eb707b919",
+   "titulo": "Estudo alerta para diminuição da conectividade de rios na Amazônia",
+   "url": "https://agenciabrasil.ebc.com.br/meio-ambiente/noticia/2026-11/estudo-alerta-para-diminuicao-da-conectividade-de-rios-na-amazonia",
+   "data": "2026-11-16T17:43+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "A fragmentação do fluxo de rios da Amazônia cresceu até 40% nos últimos dez anos, indica o relatório Conectividade primeiro: rios de fluxo livre para a Amazônia brasileira divulgado nesta segunda-feira (16), pela Aliança Águas Amazônicas, rede internacional de organizações sociais. O estudo alerta para a necessidade de proteção de 19 rios prioritários para manter o estado de conectividade do fluxo das águas, essencial para a preservação de espécies e ecossistemas, e para a garantia da subsistência e desenvolvimento de comunidades ribeirinhas. Notícias relacionadas: COP31: ministro defende esfo"
+  },
+  {
+   "id": "n-444419678d",
+   "titulo": "Brasil alcança meta de turismo internacional de 2026",
+   "url": "https://agenciabrasil.ebc.com.br/economia/noticia/2026-11/brasil-alcanca-meta-de-turismo-internacional-de-2026",
+   "data": "2026-11-16T17:30+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [
+    "mtur"
+   ],
+   "pessoas": [],
+   "resumo": "O Brasil superou a meta de atração de turistas internacionais de 2026 com dois meses de antecedência. O Ministério do Turismo divulgou nesta segunda-feira (16) que, de janeiro a outubro, o país recebeu 7.594.425 visitantes estrangeiros, volume que supera o objetivo anual de 7,5 milhões de viajantes. A meta foi estabelecida pelo Plano Nacional de Turismo (PNT) 2024-2027, e o resultado alcançado até outubro manteve o patamar recorde de 2025. Notícias relacionadas: Brasil é quarto país que mais ampliou turismo internacional, diz OCDE. Movimentação nas fronteiras do Brasil sobe 15,6% em 2025. A pa"
+  },
+  {
+   "id": "n-fb57b4f414",
+   "titulo": "Comissão aprova proibição de pesca subaquática e noturna predatória na bacia do rio Paraná",
+   "url": "https://www.camara.leg.br/noticias/1319630-comissao-aprova-proibicao-de-pesca-subaquatica-e-noturna-predatoria-na-bacia-do-rio-parana",
+   "data": "2026-11-16T17:30+00:00",
+   "fonte": "camara",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "Proposta segue em análise na Câmara dos Deputados"
+  },
+  {
+   "id": "n-c4efd4b5c0",
+   "titulo": "Dia da Consciência Negra: participantes de sessão especial apontam desafios",
+   "url": "https://www12.senado.leg.br/noticias/materias/2026/11/16/dia-da-consciencia-negra-participantes-de-sessao-especial-apontam-desafios",
+   "data": "2026-11-16T17:25:00+00:00",
+   "fonte": "senado",
+   "nos": [],
+   "pessoas": [
+    "paulo-paim"
+   ],
+   "resumo": "O Senado celebrou em sessão especial o Dia Nacional de Zumbi e da Consciência Negra. Os representantes de movimentos sociais e especialistas convidados apontaram os avanços e desafios em efetivar seus direitos no cotidiano, além de homenagearem Zumbi dos Palmares, símbolo da resistência à escravidão. A data comemorativa, feriado nacional, é no 20 de novembro, dia da morte de Zumbi, em 1695. A celebração educa o povo a agir contra o racismo, disse o senador Paulo Paim (PT-RS) na sessão especial desta segunda-feira (16) em Plenário. Ele afirmou que os direitos dos negros “não caem do céu, mas se"
+  },
+  {
+   "id": "n-f6f6b48ae4",
+   "titulo": "Áudio: Sessão especial celebra legado de Zumbi e a história do povo negro",
+   "url": "https://www12.senado.leg.br/noticias/audios/2026/11/sessao-especial-celebra-legado-de-zumbi-e-a-historia-do-povo-negro",
+   "data": "2026-11-16T17:07:00+00:00",
+   "fonte": "senado",
+   "nos": [],
+   "pessoas": [
+    "paulo-paim"
+   ],
+   "resumo": "O Dia Nacional de Zumbi e da Consciência Negra, comemorado em 20 de novembro, foi celebrado pelo Senado nesta segunda-feira (16) em sessão especial no Plenário do Senado. A data faz referência ao dia da morte do último líder do Quilombo dos Palmares, Zumbi, em 1695. Durante a cerimônia, o senador Paulo Paim (PT-RS) destacou que a história do povo negro não se resume à dor da escravização."
+  },
+  {
+   "id": "n-fc0af008ac",
+   "titulo": "Áudio: DataSenado: uma em cada três mulheres negras sofreu violência doméstica em 2025",
+   "url": "https://www12.senado.leg.br/noticias/audios/2026/11/datasenado-uma-em-cada-tres-mulheres-negras-sofreu-violencia-domestica-em-2025",
+   "data": "2026-11-16T17:01:00+00:00",
+   "fonte": "senado",
+   "nos": [],
+   "pessoas": [
+    "paulo-paim"
+   ],
+   "resumo": "Dados da 11ª edição da Pesquisa Nacional de Violência contra a Mulher, realizada pelo Instituto DataSenado e pelo Observatório da Mulher contra a Violência revelam desafios enfrentados pelas mulheres negras no país. O recorte “Violência Doméstica e Familiar contra Mulheres Negras” foi lançado nesta segunda-feira (16), na sessão especial do Senado para celebrar o Dia de Zumbi e da Consciência Negra, iniciativa do senador Paulo Paim (PT-RS)."
+  },
+  {
+   "id": "n-19ee051540",
+   "titulo": "Mpox: com quase 400 casos, Rio passa a atualizar diariamente os dados",
+   "url": "https://agenciabrasil.ebc.com.br/saude/noticia/2026-11/mpox-com-quase-400-casos-rio-passa-atualizar-diariamente-os-dados",
+   "data": "2026-11-16T16:54+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "A Secretaria Estadual de Saúde do Rio de Janeiro decidiu que atualizará diariamente, a partir desta segunda-feira (16), os números de casos da mpox, doença infecciosa viral que tem 396 casos confirmados e uma morte no estado no ano de 2026. Outros 281 casos registrados estão em investigação para confirmar ou descartar o vírus Mpox. De acordo com a Secretaria Estadual de Saúde, o número de notificações da doença tem crescido no estado desde a semana epidemiológica de 13 a 19 de setembro. Desde então, o número de casos semanais notificados aumentou 15 vezes, ao passar de 13 casos naquela semana,"
+  },
+  {
+   "id": "n-591d67e1fc",
+   "titulo": "Áudio: Titulação de terras em nome de trabalhadoras rurais depende do Plenário",
+   "url": "https://www12.senado.leg.br/noticias/audios/2026/11/titulacao-de-terras-em-nome-de-trabalhadoras-rurais-depende-do-plenario",
+   "data": "2026-11-16T16:49:00+00:00",
+   "fonte": "senado",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "A Comissão de Agricultura e Reforma Agrária (CRA) aprovou na quarta-feira (11) o projeto (PL) 810/2020, que facilita a titulação de terras em nome de mulheres trabalhadoras rurais da agricultura familiar. A proposta também dá prioridade a outros grupos no processo de seleção, como mulheres vítimas de violência doméstica, mulheres que cuidam da família sozinhas e famílias com pessoa com deficiência. O projeto segue para análise no Plenário."
+  },
+  {
+   "id": "n-cc3bd4b70b",
+   "titulo": "Áudio: CAS aprova cordão de identificação para pessoas com Parkinson",
+   "url": "https://www12.senado.leg.br/noticias/audios/2026/11/cas-aprova-cordao-de-identificacao-para-pessoas-com-parkinson",
+   "data": "2026-11-16T16:32:00+00:00",
+   "fonte": "senado",
+   "nos": [],
+   "pessoas": [
+    "mara-gabrilli"
+   ],
+   "resumo": "A Comissão de Assuntos Sociais (CAS) aprovou projeto que institui o uso de cordão com desenhos de tulipas vermelhas para identificar pessoas com a doença de Parkinson. O uso será opcional, e a ausência do acessório não limitará direitos e garantias. O cordão também não dispensa a apresentação do documento comprobatório da doença, quando solicitado. Trata-se de instrumento complementar de comunicação em favor do cuidado e da humanização do atendimento. De autoria do senador Romário (sem partido-RJ), o PL 4.366/2024 recebeu parecer favorável da relatora, a senadora Mara Gabrilli (PSD-SP). Se não"
+  },
+  {
+   "id": "n-4d84efb017",
+   "titulo": "Comissão aprova projeto que obriga a União a custodiar presos federais",
+   "url": "https://www.camara.leg.br/noticias/1319627-comissao-aprova-projeto-que-obriga-a-uniao-a-custodiar-presos-federais",
+   "data": "2026-11-16T16:22+00:00",
+   "fonte": "camara",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "O projeto continua em análise na Câmara dos Deputados"
+  },
+  {
+   "id": "n-ff3ad1cd96",
+   "titulo": "Áudio: Paulo Paim lamenta a morte de Dino Sani, campeão da Copa de 58",
+   "url": "https://www12.senado.leg.br/noticias/audios/2026/11/paulo-paim-lamenta-a-morte-de-dino-sani-campeao-da-copa-de-58",
+   "data": "2026-11-16T16:15:00+00:00",
+   "fonte": "senado",
+   "nos": [],
+   "pessoas": [
+    "paulo-paim"
+   ],
+   "resumo": "O futebol brasileiro perdeu neste domingo (15) Dino Sani, campeão mundial pela Seleção do Brasil em 1958. O ex-meio-campista atuou por Palmeiras, São Paulo, Boca Juniors, Milan e Corinthians. Ele também teve longa carreira como técnico de futebol. O senador Paulo Paim (PT-RS) destacou a importância do atleta como exemplo de respeito e espírito esportivo."
+  },
+  {
+   "id": "n-e18c7265b0",
+   "titulo": "Comissão aprova proposta que amplia Política de Agricultura Urbana para fortalecer segurança alimentar",
+   "url": "https://www.camara.leg.br/noticias/1319667-comissao-aprova-proposta-que-amplia-politica-de-agricultura-urbana-para-fortalecer-seguranca-alimentar",
+   "data": "2026-11-16T16:15+00:00",
+   "fonte": "camara",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "Texto segue em análise na Câmara"
+  },
+  {
+   "id": "n-4962ef89f5",
+   "titulo": "Comissão debate fiscalização de contratos de concessão de rodovias federais",
+   "url": "https://www.camara.leg.br/noticias/1319624-comissao-debate-fiscalizacao-de-contratos-de-concessao-de-rodovias-federais",
+   "data": "2026-11-16T16:12+00:00",
+   "fonte": "camara",
+   "nos": [],
+   "pessoas": [
+    "jorge-solla"
+   ],
+   "resumo": "Vinicius Loures / Câmara dos Deputados Jorge Solla pediu a realização da audiência A Comissão de Fiscalização Financeira e Controle da Câmara dos Deputados realiza audiência pública nesta quarta-feira (18) para discutir a fiscalização dos contratos de concessão de rodovias federais. O debate foi solicitado pelo deputado Jorge Solla (PT-BA) e está marcado para as 10 horas, no plenário 9. Veja quem foi convidado A audiência integra o Plano Anual de Fiscalização e Controle (PAFC 2026), aprovado em março, que definiu a fiscalização dos contratos de concessão de rodovias federais como um dos temas "
+  },
+  {
+   "id": "n-05ba401ba2",
+   "titulo": "Áudio: 'Conhecendo o Senado' prepara novos senadores e assessores",
+   "url": "https://www12.senado.leg.br/noticias/audios/2026/11/conhecendo-o-senado-prepara-novos-senadores-e-assessores",
+   "data": "2026-11-16T16:10:00+00:00",
+   "fonte": "senado",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "O Senado promoveu na quarta (11), quinta (12) e sexta-feira (13) o evento Conhecendo o Senado, para apresentar a estrutura administrativa e legislativa da Casa aos parlamentares eleitos em 2026. A diretora-geral, Ilana Trombka, destacou que a iniciativa busca oferecer condições para o exercício dos mandatos. Os 54 senadores eleitos tomarão posse em 1º de fevereiro de 2027."
+  },
+  {
+   "id": "n-b9f43e884b",
+   "titulo": "Comissão aprova regras mais rígidas para uso de medicamentos manipulados em UTIs neonatais",
+   "url": "https://www.camara.leg.br/noticias/1319633-comissao-aprova-regras-mais-rigidas-para-uso-de-medicamentos-manipulados-em-utis-neonatais",
+   "data": "2026-11-16T15:45+00:00",
+   "fonte": "camara",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "O projeto continua em análise na Câmara dos Deputados"
+  },
+  {
+   "id": "n-e79a79885e",
+   "titulo": "Áudio: Fiação elétrica subterrânea pode virar lei",
+   "url": "https://www12.senado.leg.br/noticias/audios/2026/11/fiacao-eletrica-subterranea-pode-virar-lei",
+   "data": "2026-11-16T15:42:00+00:00",
+   "fonte": "senado",
+   "nos": [],
+   "pessoas": [
+    "fernando-dueire"
+   ],
+   "resumo": "A Comissão de Constituição e Justiça (CCJ) aprovou na semana passada a criação do Programa Nacional de Modernização da Infraestrutura de Energia Elétrica e Telecomunicações (PL 3.801/2025). A proposta, do senador Fernando Dueire (PSD-PE), que seguiu para a Comissão de Assuntos Econômicos (CAE), prevê a substituição progressiva de fios em postes por galerias subterrâneas compartilhadas para reduzir os riscos de acidentes e a poluição visual. Caso aprovada pelo Senado, o PL 3.801/2025, que também cria o Serviço de Gestão de Infraestrutura Urbana Compartilhada (SGIUC), para organizar estruturas u"
+  },
+  {
+   "id": "n-7c91cf82a3",
+   "titulo": "Enem 2026: começa prazo para pedir reaplicação de provas em dezembro",
+   "url": "https://agenciabrasil.ebc.com.br/educacao/noticia/2026-11/enem-2026-aberto-prazo-para-pedir-reaplicacao-de-provas-em-dezembro",
+   "data": "2026-11-16T15:41+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "Os inscritos no Exame Nacional do Ensino Médio (Enem) 2026 que não conseguiram fazer as avaliações, por problemas logísticos ou doenças infectocontagiosas, podem pedir a reaplicação da prova a partir desta segunda-feira (16). O prazo termina na sexta-feira (20). O pedido pode ser feito individualmente para cada um dos domingos em que o candidato faltou, desde que se enquadre nas condições previstas no edital . Notícias relacionadas: Gabarito do Enem sai na quarta-feira, e resultado em 18 de janeiro. Alckmin destaca alcance do Enem e desafio logístico para a aplicação. Candidatos contam expecta"
+  },
+  {
+   "id": "n-9914bb083a",
+   "titulo": "Atividade econômica tem queda de 0,9% no terceiro trimestre",
+   "url": "https://agenciabrasil.ebc.com.br/economia/noticia/2026-11/atividade-economica-tem-queda-de-09-no-terceiro-trimestre",
+   "data": "2026-11-16T15:02+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "A atividade econômica no Brasil registrou queda no terceiro trimestre, de acordo com informações divulgadas nesta segunda-feira (16) pelo Banco Central (BC). O Índice de Atividade Econômica do BC (IBC-Br) teve redução de 0,9% de julho a setembro em relação ao trimestre anterior (abril a junho), de acordo com dados dessazonalizados (ajustados para o período). As quedas foram de 2% na agropecuária, 1,1% na indústria e 0,5% em serviços. Notícias relacionadas: Atividade econômica tem alta de 0,3% em agosto, mostra IBC-Br. Bets reduzem consumo e atividade econômica, diz pesquisa da USP . Atividade "
+  },
+  {
+   "id": "n-efcff39b9a",
+   "titulo": "Comissão aprova inclusão da empatia e proteção animal na educação ambiental",
+   "url": "https://www.camara.leg.br/noticias/1319636-comissao-aprova-inclusao-da-empatia-e-protecao-animal-na-educacao-ambiental",
+   "data": "2026-11-16T14:58+00:00",
+   "fonte": "camara",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "Proposta segue em análise na Câmara dos Deputados"
+  },
+  {
+   "id": "n-154ac15058",
+   "titulo": "Comissão aprova instalação de sensores para prevenir deslizamentos e enchentes",
+   "url": "https://www.camara.leg.br/noticias/1319621-comissao-aprova-instalacao-de-sensores-para-prevenir-deslizamentos-e-enchentes",
+   "data": "2026-11-16T14:52+00:00",
+   "fonte": "camara",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "O projeto continua em análise na Câmara dos Deputados"
+  },
+  {
+   "id": "n-37a1ec6c2b",
+   "titulo": "Comissão aprova projeto que inclui professores no programa habitacional Habite Seguro",
+   "url": "https://www.camara.leg.br/noticias/1319582-comissao-aprova-projeto-que-inclui-professores-no-programa-habitacional-habite-seguro",
+   "data": "2026-11-16T14:31+00:00",
+   "fonte": "camara",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "O projeto continua em análise na Câmara dos Deputados"
+  },
+  {
+   "id": "n-c2e7711185",
+   "titulo": "Comissão aprova regulamentação de cadastro para facilitar a contratação de pessoas com deficiência",
+   "url": "https://www.camara.leg.br/noticias/1319610-comissao-aprova-regulamentacao-de-cadastro-para-facilitar-a-contratacao-de-pessoas-com-deficiencia",
+   "data": "2026-11-16T14:24+00:00",
+   "fonte": "camara",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "Proposta segue em análise na Câmara dos Deputados"
+  },
+  {
+   "id": "n-9e6d6996af",
+   "titulo": "Comissão aprova proposta de envio de relatórios sobre veículos recuperados para órgãos de segurança",
+   "url": "https://www.camara.leg.br/noticias/1319555-comissao-aprova-proposta-de-envio-de-relatorios-sobre-veiculos-recuperados-para-orgaos-de-seguranca",
+   "data": "2026-11-16T13:15+00:00",
+   "fonte": "camara",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "Texto segue em análise na Câmara dos Deputados"
+  },
+  {
+   "id": "n-7dfe3c20e1",
+   "titulo": "ANS amplia cobertura obrigatória para tratamento de câncer de pulmão",
+   "url": "https://agenciabrasil.ebc.com.br/saude/noticia/2026-11/ans-amplia-cobertura-obrigatoria-para-tratamento-de-cancer-de-pulmao",
+   "data": "2026-11-16T12:28+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [
+    "ans",
+    "anvisa"
+   ],
+   "pessoas": [],
+   "resumo": "Nova resolução da Agência Nacional de Saúde Suplementar (ANS) inclui exames e medicamentos na lista de procedimentos obrigatórios aos planos de saúde no tratamento do câncer de pulmã o. Os pacientes terão direito ao protocolo de sequenciamento de nova geração, além do remédio oral cloridrato de tepotinibe. Notícias relacionadas: Anvisa aprova novo medicamento para câncer de pulmão avançado. SUS terá três novos medicamentos para câncer de pulmão . Diagnóstico tardio dá poucas chances de cura para o câncer de pulmão . De acordo com o texto publicado na edição desta segunda-feira (16) do Diário O"
+  },
+  {
+   "id": "n-0d9064c7a5",
+   "titulo": "Mercado reduz projeções para inflação e crescimento econômico em 2026",
+   "url": "https://agenciabrasil.ebc.com.br/economia/noticia/2026-11/mercado-reduz-projecoes-para-inflacao-e-crescimento-da-economia-em-202",
+   "data": "2026-11-16T12:12+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "O mercado financeiro reduziu as projeções para a inflação e o crescimento da economia brasileira em 2026. Ao mesmo tempo, elevou a estimativa para a cotação do dólar no fim do próximo ano. A previsão para a taxa básica de juros (Selic) permaneceu estável. As estimativas das instituições financeiras constam do Boletim Focus divulgado nesta segunda-feira (16) pelo Banco Central. Notícias relacionadas: Dólar sobe para R$ 5,06; bolsa cai com IPCA-15 e recuo do petróleo. Copom decide nesta quarta-feira se corta ou mantém a Taxa Selic . Boletim Focus: mercado prevê redução da inflação e do PIB de 20"
+  },
+  {
+   "id": "n-9064312601",
+   "titulo": "Projeto aumenta pena para crimes sexuais praticados por professores, treinadores e líderes religiosos",
+   "url": "https://www.camara.leg.br/noticias/1310652-projeto-aumenta-pena-para-crimes-sexuais-praticados-por-professores-treinadores-e-lideres-religiosos",
+   "data": "2026-11-16T12:02+00:00",
+   "fonte": "camara",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "O texto está em análise na Câmara dos Deputados"
+  },
+  {
+   "id": "n-7675520153",
+   "titulo": "Caixa começa a pagar parcela do Bolsa Família de novembro",
+   "url": "https://agenciabrasil.ebc.com.br/economia/noticia/2026-11/caixa-comeca-pagar-parcela-do-bolsa-familia-de-novembro",
+   "data": "2026-11-16T10:28+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [
+    "caixa"
+   ],
+   "pessoas": [],
+   "resumo": "A Caixa Econômica Federal começa a pagar a parcela de outubro do Bolsa Família. Recebem nesta segunda-feira (16) os beneficiários com Número de Inscrição Social (NIS) de final 1. Neste mês, 19,1 milhões de famílias serão beneficiadas. Por causa do aumento recente nos benefícios, o valor da folha de pagamentos está em R$ 15 bilhões em novembro. Notícias relacionadas: Caixa passa a pagar prêmios de loterias via Pix em apostas digitais. Caixa apresenta nova identidade visual após quase 30 anos. Os moradores de 112 municípios de oito estados recebem o crédito hoje, independentemente do número fina"
+  },
+  {
+   "id": "n-bfccabb55c",
+   "titulo": "Caminhos da Reportagem mostra negócios de impacto social",
+   "url": "https://agenciabrasil.ebc.com.br/economia/noticia/2026-11/caminhos-da-reportagem-mostra-negocios-de-impacto-social",
+   "data": "2026-11-16T10:27+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "O que são negócios de impacto social e como essas iniciativas podem transformar realidades? Diferentemente de uma organização sem fins lucrativos e das ações de responsabilidade social de empresas, esse modelo de empreendedorismo une geração de lucro à solução de problemas sociais. O assunto é o tema do Caminhos da Reportagem desta segunda-feira (16), às 23h, na TV Brasil . \"As pessoas precisam saber que isso existe. É um campo de trabalho para muita gente, um trabalho com propósito\", afirma a professora Rita Afonso, da Faculdade de Administração da Universidade Federal do Rio de Janeiro (UFRJ"
+  },
+  {
+   "id": "n-7daa938740",
+   "titulo": "“É só a cor”: estudante negra relata episódios de racismo na faculdade",
+   "url": "https://agenciabrasil.ebc.com.br/educacao/noticia/2026-11/e-so-cor-estudante-negra-relata-episodios-de-racismo-na-faculdade",
+   "data": "2026-11-16T09:32+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "A estudante bolsista Iza, uma mulher preta, de 19 anos, conta que ao iniciar a vida universitária em uma faculdade privada de elite, na cidade de São Paulo, vivenciou quatro casos de discriminação em apenas quatro meses. Em todas as ocasiões, mesmo estando nas condições de qualquer outro aluno, foi confundida como funcionária do estabelecimento. Notícias relacionadas: Racismo e desigualdades afetam aprendizagem das crianças, diz estudo. Justiça aumenta indenização a estudantes vítimas de racismo na Uerj. “É só a cor”, constata ela. O episódio que a mais impactou foi ser confundida por uma prof"
+  },
+  {
+   "id": "n-bc865643f3",
+   "titulo": "Gabarito do Enem sai na quarta-feira, e resultado em 18 de janeiro",
+   "url": "https://agenciabrasil.ebc.com.br/educacao/noticia/2026-11/gabarito-do-enem-sai-na-quarta-feira-e-resultado-em-18-de-janeiro",
+   "data": "2026-11-15T23:43+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [
+    "inep"
+   ],
+   "pessoas": [],
+   "resumo": "O gabarito oficial do Exame Nacional do Ensino Médio (Enem) de 2026 será publicado na próxima quarta-feira (18). Já o resultado do exame está previsto para ser divulgado pelo Instituto Nacional de Estudos e Pesquisas Educacionais Anísio Teixeira (Inep) no dia 18 de janeiro de 2027 . O segundo dia da aplicação da prova do Enem de 2026 terminou sem intercorrências graves neste domingo (15). Foi um “imenso sucesso”, avaliou o ministro da Educação, Leonardo Barchini. A prova contou com 90 questões de matemática e ciências da natureza. Notícias relacionadas: Alckmin destaca alcance do Enem e desafi"
+  },
+  {
+   "id": "n-5a79e91920",
+   "titulo": "Bullying: após morte, família e especialistas pedem rigor de escolas",
+   "url": "https://agenciabrasil.ebc.com.br/educacao/noticia/2026-11/bullying-apos-morte-familia-e-especialistas-pedem-rigor-de-escolas",
+   "data": "2026-11-15T18:26+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "Se não existe nome para a dor de perder um filho, um casal em Brasília adotou os substantivos coragem e luta para viver um dia de cada vez. O filho Davi, de 14 anos, morreu no último dia 30. Ele foi vítima da depressão ocasionada pelo bullying reiterado na escola, conforme contam os pais, Luiz Henrique Mota e Aline Helou. Eles, que têm também uma filha de um ano de idade, disseram, em redes sociais, que viverão para que outras famílias não tenham que vivenciar a pior dor do mundo. Notícias relacionadas: Bullying: cartórios têm recorde de atas que podem comprovar agressões. “A dor dele foi tão "
+  },
+  {
+   "id": "n-8448480198",
+   "titulo": "Curso capacita servidores para inclusão de pessoas com deficiência",
+   "url": "https://agenciabrasil.ebc.com.br/economia/noticia/2026-11/curso-capacita-servidores-para-inclusao-de-pessoas-com-deficiencia",
+   "data": "2026-11-15T18:00+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [
+    "ibge"
+   ],
+   "pessoas": [],
+   "resumo": "O Programa Nacional de Inclusão Produtiva para Agentes Públicos vai oferecer formação gratuita e certificada a 3 mil profissionais. O objetivo é preparar órgãos públicos para identificar e eliminar barreiras enfrentadas por pessoas com deficiência no acesso a serviços, oportunidades de trabalho e participação social. A iniciativa foi lançada em Brasília na última sexta-feira (13) pelo Banco do Brasil (BB), o Tesouro Nacional e a empresa Inclusi lançaram. Notícias relacionadas: Pessoas com deficiência vivem em piores condições de moradia, diz IBGE. Cargos de liderança são só 1,5% das vagas para"
+  },
+  {
+   "id": "n-4b0ef02170",
+   "titulo": "Alckmin destaca alcance do Enem e desafio logístico para a aplicação",
+   "url": "https://agenciabrasil.ebc.com.br/educacao/noticia/2026-11/alckmin-destaca-alcance-do-enem-e-desafio-logistico-para-aplicacao",
+   "data": "2026-11-15T17:20+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [
+    "inep"
+   ],
+   "pessoas": [
+    "geraldo-alckmin"
+   ],
+   "resumo": "O presidente em exercício, Geraldo Alckmin, destacou neste domingo (15) o papel do Exame Nacional do Ensino Médio (Enem) para a democratização do acesso ao ensino superior. Ele ressaltou também o desafio logístico necessário para a aplicação da prova em todo o país. Em visita ao Instituto Nacional de Estudos e Pesquisas Educacionais Anísio Teixeira (Inep), em Brasília, Alckmin classificou como “impressionante” a operação necessária para realizar o exame simultaneamente em um país de dimensões continentais. Notícias relacionadas: Candidatos contam expectativas para o segundo dia de provas do En"
+  },
+  {
    "id": "n-2d905d0b9a",
    "titulo": "Lula vê oportunidades na Ásia para explorar minerais críticos",
    "url": "https://agenciabrasil.ebc.com.br/economia/noticia/2026-11/lula-ve-oportunidades-na-asia-para-explorar-minerais-criticos",
+   "data": "2026-11-15T16:30+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [],
+   "pessoas": [
+    "luiz-inacio-lula-da-silva"
+   ],
+   "resumo": "O presidente Luiz Inácio Lula da Silva afirmou neste domingo (15), nas Filipinas, que o Brasil pretende atrair investimentos para a exploração e a industrialização de minerais críticos e terras raras, em uma estratégia que, segundo ele, pode ampliar a inserção do país nas cadeias produtivas ligadas à transição energética. A declaração foi feita após a abertura da Cúpula da Associação das Nações do Sudeste Asiático (Asean), em Manila. “Queremos ser parceiros definitivos da Asean”, diz Lula. Notícias relacionadas: Lula quer ampliar relações comerciais com países da Asean. Brasil e Filipinas assi"
+  },
+  {
+   "id": "n-2f60bc24c2",
+   "titulo": "Lula busca investimentos da Ásia para exploração de minerais críticos",
+   "url": "https://agenciabrasil.ebc.com.br/economia/noticia/2026-11/lula-busca-investimentos-na-asia-para-explorar-minerais-criticos",
    "data": "2026-11-15T16:30+00:00",
    "fonte": "agenciabrasil",
    "nos": [],
@@ -43734,16 +44316,6 @@
    "nos": [],
    "pessoas": [],
    "resumo": "O presidente da República visita às 15h desta quinta-feira (20/8) o Parque Tecnológico de Macaíba e acompanha os anúncios relativos aos supercomputadores e soberania digital. CREDENCIAMENTO - Profissionais de veículos de imprensa interessados na cobertura devem acessar o sistema de credenciamento do Palácio do Planalto até 10h do dia 20/8 (horário de Brasília) . Profissionais com credencial anual também devem informar a participação na agenda. As credenciais serão entregues das 13h30 às 14h30 de 20/8 no local da agenda presidencial. Serviço Visita presidencial ao Parque Tecnológico de Macaíba "
-  },
-  {
-   "id": "n-698586693d",
-   "titulo": "Visita presencial ao Centro Industrial Nuclear de Aramar, em Iperó (SP)",
-   "url": "https://www.gov.br/planalto/pt-br/acompanhe-o-planalto/noticias/visita-presencial-ao-centro-industrial-nuclear-de-aramar-em-ipero-sp",
-   "data": "2026-08-17T19:52:00+00:00",
-   "fonte": "planalto",
-   "nos": [],
-   "pessoas": [],
-   "resumo": "No local, será acompanhado o desenvolvimento do Programa Nuclear da Marinha. Visita ocorre quarta-feira"
   }
  ]
 }
