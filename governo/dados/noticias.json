@@ -1,6 +1,6 @@
 {
  "meta": {
-  "gerado_em": "2026-11-16T20:14+00:00",
+  "gerado_em": "2026-11-17T19:04+00:00",
   "gerado_por": "scripts/governo/agentes/agente_noticias.py",
   "janela_dias": 90,
   "fontes": [
@@ -30,39 +30,39 @@
     "url": "https://www.gov.br/planalto/pt-br/acompanhe-o-planalto/noticias/RSS"
    }
   ],
-  "total_artigos": 3841,
-  "artigos_com_no": 1325,
-  "novos_nesta_rodada": 70,
+  "total_artigos": 3897,
+  "artigos_com_no": 1343,
+  "novos_nesta_rodada": 76,
   "artigos_por_fonte": {
-   "senado": 1162,
-   "camara": 875,
-   "agenciabrasil": 1781,
+   "agenciabrasil": 1807,
+   "camara": 891,
+   "senado": 1177,
    "stf": 7,
-   "planalto": 16
+   "planalto": 15
   },
   "ordem": "peso igual por fonte; contagem real de matérias",
   "resumo_por": "claude"
  },
  "resumo": [
   {
-   "texto": "O Supremo Tribunal Federal reuniu quatro votos para referendar a liminar do ministro Flávio Dino que define regras de transição para o início da escala de trabalho 5x2 em dezembro.",
-   "artigo_id": "n-706659a6fe",
+   "texto": "O ministro Flávio Dino decidiu que as ações sobre as regras de transição da escala de trabalho 5x2 serão julgadas diretamente no mérito pelo Supremo Tribunal Federal.",
+   "artigo_id": "n-bbfd5a2ae4",
    "no_id": "stf"
   },
   {
-   "texto": "O Ministério da Fazenda informou que não renovará a subvenção de R$ 1,40 por litro ao diesel importado, encerrada com o vencimento da Portaria 3.082.",
-   "artigo_id": "n-7ea3172402",
-   "no_id": "mf"
+   "texto": "Os presidentes da Câmara e do Senado pediram ao Supremo Tribunal Federal o julgamento da validade da Lei da Dosimetria ainda neste ano.",
+   "artigo_id": "n-60230de7da",
+   "no_id": "stf"
   },
   {
-   "texto": "O presidente do STF e do CNJ, Edson Fachin, suspendeu os prazos processuais no Judiciário de todo o país por causa de falhas nos sistemas da Microsoft.",
-   "artigo_id": "n-f03d098660",
-   "no_id": "cnj"
+   "texto": "Decreto publicado no Diário Oficial da União cria o Sistema de Satélites de Defesa e Comunicações Estratégicas, que reunirá os satélites governamentais de comunicações.",
+   "artigo_id": "n-a15e51026b",
+   "no_id": null
   },
   {
-   "texto": "A Agência Nacional de Vigilância Sanitária determinou a apreensão de todos os lotes de dois alvejantes tira-manchas à base de percarbonato de sódio, em decisão publicada no Diário Oficial da União.",
-   "artigo_id": "n-9da30066dd",
-   "no_id": "anvisa"
+   "texto": "A Comissão de Assuntos Econômicos do Senado iniciou audiências sobre a alíquota da CBS, estimada em 11,3% pelo Tribunal de Contas da União.",
+   "artigo_id": "n-10f0cc5dd6",
+   "no_id": "tcu"
   }
  ],
  "ranking": {
@@ -70,181 +70,181 @@
    {
     "id": "tse",
     "artigos": 256,
-    "peso": 124.77985946435996,
+    "peso": 124.79853999291883,
     "ultima": "2026-11-13T20:29:00+00:00"
    },
    {
     "id": "stf",
-    "artigos": 195,
-    "peso": 91.66606758236944,
-    "ultima": "2026-11-15T13:24+00:00"
+    "artigos": 197,
+    "peso": 92.99604546151978,
+    "ultima": "2026-11-17T18:10+00:00"
    },
    {
     "id": "congresso",
-    "artigos": 126,
-    "peso": 78.27966470711593,
-    "ultima": "2026-11-13T19:40:00+00:00"
+    "artigos": 127,
+    "peso": 79.18797544671271,
+    "ultima": "2026-11-17T17:58+00:00"
    },
    {
     "id": "camara",
-    "artigos": 105,
-    "peso": 63.67139175133194,
-    "ultima": "2026-11-13T01:54:00+00:00"
+    "artigos": 107,
+    "peso": 64.85194159031305,
+    "ultima": "2026-11-17T17:34:00+00:00"
    },
    {
     "id": "prf",
     "artigos": 14,
-    "peso": 53.849570106043814,
+    "peso": 57.79806362399786,
     "ultima": "2026-10-30T15:44+00:00"
    },
    {
     "id": "pf",
-    "artigos": 88,
-    "peso": 39.56549860305907,
-    "ultima": "2026-11-16T17:59+00:00"
+    "artigos": 89,
+    "peso": 40.00380009958437,
+    "ultima": "2026-11-17T14:30+00:00"
    },
    {
     "id": "mec",
-    "artigos": 66,
-    "peso": 32.781754835367785,
-    "ultima": "2026-11-16T18:11+00:00"
+    "artigos": 67,
+    "peso": 33.211879026939854,
+    "ultima": "2026-11-17T13:03+00:00"
    },
    {
     "id": "caixa",
-    "artigos": 66,
-    "peso": 28.467827063447505,
-    "ultima": "2026-11-16T10:28+00:00"
+    "artigos": 69,
+    "peso": 29.761261759822865,
+    "ultima": "2026-11-17T11:12+00:00"
    },
    {
     "id": "anvisa",
-    "artigos": 59,
-    "peso": 26.814207559813333,
-    "ultima": "2026-11-16T19:02+00:00"
+    "artigos": 61,
+    "peso": 27.677583044341574,
+    "ultima": "2026-11-17T14:27+00:00"
    },
    {
     "id": "ms",
     "artigos": 40,
-    "peso": 19.7677781910992,
+    "peso": 19.774154623102373,
     "ultima": "2026-11-13T10:00+00:00"
    },
    {
     "id": "inss",
     "artigos": 33,
-    "peso": 19.428136063883354,
+    "peso": 19.415445226982918,
     "ultima": "2026-11-13T19:56+00:00"
+   },
+   {
+    "id": "tcu",
+    "artigos": 31,
+    "peso": 18.626055631542084,
+    "ultima": "2026-11-17T18:16:00+00:00"
+   },
+   {
+    "id": "petrobras",
+    "artigos": 40,
+    "peso": 18.176382885587472,
+    "ultima": "2026-11-17T17:53+00:00"
    },
    {
     "id": "agu",
     "artigos": 41,
-    "peso": 17.914330072354876,
+    "peso": 17.915097381607147,
     "ultima": "2026-11-13T00:35+00:00"
-   },
-   {
-    "id": "petrobras",
-    "artigos": 38,
-    "peso": 17.309650441019716,
-    "ultima": "2026-11-15T16:17+00:00"
-   },
-   {
-    "id": "tcu",
-    "artigos": 28,
-    "peso": 17.09342977402511,
-    "ultima": "2026-11-13T19:02:00+00:00"
    },
    {
     "id": "ibge",
     "artigos": 37,
-    "peso": 16.189007220024724,
+    "peso": 16.189806844805823,
     "ultima": "2026-11-15T18:00+00:00"
    },
    {
     "id": "inep",
     "artigos": 33,
-    "peso": 14.233913531723752,
+    "peso": 14.233646928610945,
     "ultima": "2026-11-15T23:43+00:00"
    },
    {
     "id": "ebc",
-    "artigos": 31,
-    "peso": 13.371252105558677,
-    "ultima": "2026-11-15T13:49+00:00"
+    "artigos": 32,
+    "peso": 13.802324294410614,
+    "ultima": "2026-11-16T21:42+00:00"
    },
    {
     "id": "senado",
     "artigos": 20,
-    "peso": 11.752899270072994,
+    "peso": 11.730426567836638,
     "ultima": "2026-11-13T20:34+00:00"
    },
    {
     "id": "anp",
     "artigos": 19,
-    "peso": 10.480062380395086,
+    "peso": 10.485509925501855,
     "ultima": "2026-11-10T12:06:00+00:00"
    },
    {
     "id": "tst",
     "artigos": 17,
-    "peso": 8.928088446317556,
+    "peso": 8.93025651892054,
     "ultima": "2026-10-28T22:36+00:00"
    },
    {
     "id": "stj",
     "artigos": 18,
-    "peso": 8.88694795957714,
+    "peso": 8.881526476093812,
     "ultima": "2026-11-12T15:40+00:00"
    },
    {
     "id": "mpf",
     "artigos": 18,
-    "peso": 7.993723671456501,
+    "peso": 7.994676794999527,
     "ultima": "2026-11-06T20:39+00:00"
+   },
+   {
+    "id": "bndes",
+    "artigos": 12,
+    "peso": 6.967884890832513,
+    "ultima": "2026-11-17T12:20+00:00"
    },
    {
     "id": "inmet",
     "artigos": 16,
-    "peso": 6.901291409320607,
+    "peso": 6.901162147205312,
     "ultima": "2026-11-07T21:59+00:00"
+   },
+   {
+    "id": "mf",
+    "artigos": 14,
+    "peso": 6.7311250169853,
+    "ultima": "2026-11-16T22:59+00:00"
    },
    {
     "id": "mpt",
     "artigos": 14,
-    "peso": 6.715012963186669,
+    "peso": 6.712811098745341,
     "ultima": "2026-11-01T20:06+00:00"
    },
    {
     "id": "cnj",
     "artigos": 15,
-    "peso": 6.6997315322088875,
+    "peso": 6.700708892398531,
     "ultima": "2026-11-16T19:36+00:00"
-   },
-   {
-    "id": "mf",
-    "artigos": 13,
-    "peso": 6.296611777985448,
-    "ultima": "2026-11-13T22:54+00:00"
-   },
-   {
-    "id": "bndes",
-    "artigos": 10,
-    "peso": 6.112685234947974,
-    "ultima": "2026-11-12T00:06+00:00"
    },
    {
     "id": "aneel",
     "artigos": 13,
-    "peso": 6.06684094201463,
+    "peso": 6.068933003391417,
     "ultima": "2026-11-10T16:11+00:00"
    },
    {
     "id": "anatel",
     "artigos": 11,
-    "peso": 5.421020823939055,
+    "peso": 5.418843196144345,
     "ultima": "2026-11-05T13:45+00:00"
    },
    {
     "id": "anac",
     "artigos": 9,
-    "peso": 5.247671905686434,
+    "peso": 5.248806065924333,
     "ultima": "2026-11-14T21:43+00:00"
    }
   ],
@@ -260,9 +260,9 @@
     "uf": null,
     "foto": "https://commons.wikimedia.org/wiki/Special:FilePath/Foto_oficial_de_Luiz_In%C3%A1cio_Lula_da_Silva_%28estreita%29.jpg?width=160",
     "foto_fonte": "https://www.wikidata.org/wiki/Q37181",
-    "artigos": 277,
-    "peso": 131.28446618765201,
-    "ultima": "2026-11-16T18:09+00:00"
+    "artigos": 278,
+    "peso": 132.154871776064,
+    "ultima": "2026-11-17T17:58+00:00"
    },
    {
     "id": "flavio-bolsonaro",
@@ -276,7 +276,7 @@
     "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador5894.jpg",
     "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/5894",
     "artigos": 137,
-    "peso": 63.432094519990606,
+    "peso": 63.44109125744315,
     "ultima": "2026-11-06T20:51+00:00"
    },
    {
@@ -291,7 +291,7 @@
     "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador3830.jpg",
     "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/3830",
     "artigos": 73,
-    "peso": 45.23460362963041,
+    "peso": 45.2837733055174,
     "ultima": "2026-11-13T16:46:00+00:00"
    },
    {
@@ -306,7 +306,7 @@
     "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador6335.jpg",
     "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/6335",
     "artigos": 52,
-    "peso": 34.37728055077452,
+    "peso": 34.43398470688193,
     "ultima": "2026-11-16T19:34:00+00:00"
    },
    {
@@ -321,7 +321,7 @@
     "foto": "https://commons.wikimedia.org/wiki/Special:FilePath/Nunes_Marques%2C_February_2025_%28cropped%29.jpg?width=160",
     "foto_fonte": "https://www.wikidata.org/wiki/Q99831978",
     "artigos": 62,
-    "peso": 29.486824714885852,
+    "peso": 29.494121954903207,
     "ultima": "2026-10-29T14:20:00+00:00"
    },
    {
@@ -336,7 +336,7 @@
     "foto": "https://www.camara.leg.br/internet/deputado/bandep/160674.jpg",
     "foto_fonte": "https://www.camara.leg.br/deputados/160674",
     "artigos": 32,
-    "peso": 23.92246846334565,
+    "peso": 23.880109757041122,
     "ultima": "2026-11-11T11:53+00:00"
    },
    {
@@ -350,9 +350,9 @@
     "uf": "RS",
     "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador825.jpg",
     "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/825",
-    "artigos": 32,
-    "peso": 20.69570789776576,
-    "ultima": "2026-11-16T18:49:00+00:00"
+    "artigos": 33,
+    "peso": 21.39059768981104,
+    "ultima": "2026-11-17T18:28:00+00:00"
    },
    {
     "id": "edson-fachin",
@@ -366,7 +366,7 @@
     "foto": "https://commons.wikimedia.org/wiki/Special:FilePath/Luiz_Edson_Fachin-12-05.2015.jpg?width=160",
     "foto_fonte": "https://www.wikidata.org/wiki/Q10320705",
     "artigos": 36,
-    "peso": 15.987447342913002,
+    "peso": 15.989353589999041,
     "ultima": "2026-11-13T20:47+00:00"
    },
    {
@@ -381,8 +381,23 @@
     "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador345.jpg",
     "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/345",
     "artigos": 22,
-    "peso": 14.544234079173835,
+    "peso": 14.568224299065418,
     "ultima": "2026-11-13T16:46:00+00:00"
+   },
+   {
+    "id": "mara-gabrilli",
+    "nome": "Mara Gabrilli",
+    "nome_completo": "Mara Cristina Gabrilli",
+    "cargo": "Senadora, SP",
+    "no_id": "senado",
+    "poder": "legislativo",
+    "partido": "PSD",
+    "uf": "SP",
+    "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador5376.jpg",
+    "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/5376",
+    "artigos": 17,
+    "peso": 11.257264231096006,
+    "ultima": "2026-11-17T12:00:00+00:00"
    },
    {
     "id": "astronauta-marcos-pontes",
@@ -396,23 +411,8 @@
     "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador6009.jpg",
     "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/6009",
     "artigos": 17,
-    "peso": 11.238726333907055,
+    "peso": 11.257264231096006,
     "ultima": "2026-11-10T17:08:00+00:00"
-   },
-   {
-    "id": "mara-gabrilli",
-    "nome": "Mara Gabrilli",
-    "nome_completo": "Mara Cristina Gabrilli",
-    "cargo": "Senadora, SP",
-    "no_id": "senado",
-    "poder": "legislativo",
-    "partido": "PSD",
-    "uf": "SP",
-    "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador5376.jpg",
-    "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/5376",
-    "artigos": 16,
-    "peso": 10.577624784853699,
-    "ultima": "2026-11-16T16:32:00+00:00"
    },
    {
     "id": "omar-aziz",
@@ -426,8 +426,23 @@
     "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador5525.jpg",
     "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/5525",
     "artigos": 15,
-    "peso": 9.903593707919025,
+    "peso": 9.91456628566828,
     "ultima": "2026-10-26T12:13:00+00:00"
+   },
+   {
+    "id": "dario-carnevalli-durigan",
+    "nome": "Dario Carnevalli Durigan",
+    "nome_completo": "Dario Carnevalli Durigan",
+    "cargo": "Ministro(a) de Estado · MF",
+    "no_id": "mf",
+    "poder": "executivo",
+    "partido": null,
+    "uf": null,
+    "foto": null,
+    "foto_fonte": null,
+    "artigos": 22,
+    "peso": 9.719967331800852,
+    "ultima": "2026-11-17T18:56+00:00"
    },
    {
     "id": "izalci-lucas",
@@ -441,23 +456,23 @@
     "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador4770.jpg",
     "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/4770",
     "artigos": 14,
-    "peso": 9.255421686746987,
+    "peso": 9.270688190314358,
     "ultima": "2026-11-13T19:02:00+00:00"
    },
    {
-    "id": "dario-carnevalli-durigan",
-    "nome": "Dario Carnevalli Durigan",
-    "nome_completo": "Dario Carnevalli Durigan",
-    "cargo": "Ministro(a) de Estado · MF",
-    "no_id": "mf",
-    "poder": "executivo",
-    "partido": null,
-    "uf": null,
-    "foto": null,
-    "foto_fonte": null,
-    "artigos": 19,
-    "peso": 8.42505438453904,
-    "ultima": "2026-11-13T19:02:00+00:00"
+    "id": "nelsinho-trad",
+    "nome": "Nelsinho Trad",
+    "nome_completo": "Nelson Trad Filho",
+    "cargo": "Senador, MS",
+    "no_id": "senado",
+    "poder": "legislativo",
+    "partido": "PSD",
+    "uf": "MS",
+    "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador5985.jpg",
+    "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/5985",
+    "artigos": 13,
+    "peso": 8.608496176720475,
+    "ultima": "2026-11-17T17:34:00+00:00"
    },
    {
     "id": "rogerio-carvalho",
@@ -471,8 +486,23 @@
     "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador5352.jpg",
     "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/5352",
     "artigos": 12,
-    "peso": 7.9332185886402735,
+    "peso": 7.946304163126592,
     "ultima": "2026-10-28T14:06:00+00:00"
+   },
+   {
+    "id": "alessandro-vieira",
+    "nome": "Alessandro Vieira",
+    "nome_completo": "Alessandro Vieira",
+    "cargo": "Senador, SE",
+    "no_id": "senado",
+    "poder": "legislativo",
+    "partido": "MDB",
+    "uf": "SE",
+    "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador5982.jpg",
+    "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/5982",
+    "artigos": 11,
+    "peso": 7.284112149532709,
+    "ultima": "2026-11-17T17:34:00+00:00"
    },
    {
     "id": "fernando-dueire",
@@ -486,23 +516,8 @@
     "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador5917.jpg",
     "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/5917",
     "artigos": 11,
-    "peso": 7.2721170395869175,
+    "peso": 7.284112149532709,
     "ultima": "2026-11-16T15:42:00+00:00"
-   },
-   {
-    "id": "nelsinho-trad",
-    "nome": "Nelsinho Trad",
-    "nome_completo": "Nelson Trad Filho",
-    "cargo": "Senador, MS",
-    "no_id": "senado",
-    "poder": "legislativo",
-    "partido": "PSD",
-    "uf": "MS",
-    "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador5985.jpg",
-    "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/5985",
-    "artigos": 11,
-    "peso": 7.2721170395869175,
-    "ultima": "2026-11-12T17:44:00+00:00"
    },
    {
     "id": "esperidiao-amin",
@@ -516,7 +531,7 @@
     "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador22.jpg",
     "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/22",
     "artigos": 11,
-    "peso": 7.2721170395869175,
+    "peso": 7.284112149532709,
     "ultima": "2026-11-10T17:07:00+00:00"
    },
    {
@@ -531,23 +546,23 @@
     "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador5012.jpg",
     "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/5012",
     "artigos": 11,
-    "peso": 7.2721170395869175,
+    "peso": 7.284112149532709,
     "ultima": "2026-11-03T12:03:00+00:00"
    },
    {
-    "id": "alessandro-vieira",
-    "nome": "Alessandro Vieira",
-    "nome_completo": "Alessandro Vieira",
-    "cargo": "Senador, SE",
+    "id": "leany-lemos",
+    "nome": "Leany Lemos",
+    "nome_completo": "Leany Barreiro de Sousa Lemos",
+    "cargo": "Senadora, DF",
     "no_id": "senado",
     "poder": "legislativo",
-    "partido": "MDB",
-    "uf": "SE",
-    "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador5982.jpg",
-    "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/5982",
+    "partido": "PSB",
+    "uf": "DF",
+    "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador5977.jpg",
+    "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/5977",
     "artigos": 10,
-    "peso": 6.611015490533561,
-    "ultima": "2026-11-13T14:46:00+00:00"
+    "peso": 6.621920135938827,
+    "ultima": "2026-11-17T15:08:00+00:00"
    },
    {
     "id": "confucio-moura",
@@ -561,7 +576,7 @@
     "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador475.jpg",
     "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/475",
     "artigos": 10,
-    "peso": 6.611015490533561,
+    "peso": 6.621920135938827,
     "ultima": "2026-11-09T19:58:00+00:00"
    },
    {
@@ -576,7 +591,7 @@
     "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador6338.jpg",
     "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/6338",
     "artigos": 10,
-    "peso": 6.611015490533561,
+    "peso": 6.621920135938827,
     "ultima": "2026-10-26T20:54:00+00:00"
    },
    {
@@ -591,27 +606,658 @@
     "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador5990.jpg",
     "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/5990",
     "artigos": 10,
-    "peso": 6.611015490533561,
+    "peso": 6.621920135938827,
     "ultima": "2026-10-19T12:58:00+00:00"
-   },
-   {
-    "id": "laura-carneiro",
-    "nome": "Laura Carneiro",
-    "nome_completo": "Laura Carneiro",
-    "cargo": "Deputado(a) federal, RJ",
-    "no_id": "camara",
-    "poder": "legislativo",
-    "partido": "PSD",
-    "uf": "RJ",
-    "foto": "https://www.camara.leg.br/internet/deputado/bandep/74856.jpg",
-    "foto_fonte": "https://www.camara.leg.br/deputados/74856",
-    "artigos": 9,
-    "peso": 6.600437865748709,
-    "ultima": "2026-11-11T16:20:00+00:00"
    }
   ]
  },
  "artigos": [
+  {
+   "id": "n-935f0cffb8",
+   "titulo": "Durigan prevê impacto inicial da reforma tributária sobre inflação",
+   "url": "https://agenciabrasil.ebc.com.br/economia/noticia/2026-11/durigan-preve-impacto-inicial-da-reforma-tributaria-sobre-inflacao",
+   "data": "2026-11-17T18:56+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [],
+   "pessoas": [
+    "dario-carnevalli-durigan"
+   ],
+   "resumo": "O ministro da Fazenda, Dario Durigan, afirmou, nesta terça-feira (17), que a implementação da reforma tributária pode gerar pequeno impacto inicial sobre a inflação. A observação foi em resposta à preocupação manifestada por senadores com uma eventual alta do índice. Segundo o ministro, esse efeito tende a diminuir gradualmente à medida que as empresas se adaptem às novas regras tributárias e ajustem a formação de preços. Notícias relacionadas: Durigan defende alíquota da reforma e estima média efetiva de 8,5%. Reforma tributária: Receita descarta punição a erros de boa-fé. Mais de 276 mil tra"
+  },
+  {
+   "id": "n-43ea158e13",
+   "titulo": "Comissão aprova projeto que cria banco de monitoramento de crimes violentos",
+   "url": "https://www.camara.leg.br/noticias/1319998-comissao-aprova-projeto-que-cria-banco-de-monitoramento-de-crimes-violentos",
+   "data": "2026-11-17T18:47+00:00",
+   "fonte": "camara",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "Câmara continua analisando o assunto"
+  },
+  {
+   "id": "n-21b8a1b418",
+   "titulo": "Ministra destaca investimentos de R$ 37 bilhões em ciência e tecnologia com lei do setor",
+   "url": "https://www.camara.leg.br/noticias/1320096-ministra-destaca-investimentos-de-r-37-bilhoes-em-ciencia-e-tecnologia-com-lei-do-setor",
+   "data": "2026-11-17T18:35+00:00",
+   "fonte": "camara",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "Comissão celebra 35 anos da Lei de TICs e debate futuro do setor tecnológico"
+  },
+  {
+   "id": "n-1f6b612a41",
+   "titulo": "Paim relembra comissão que propôs política de valorização do salário mínimo",
+   "url": "https://www12.senado.leg.br/noticias/materias/2026/11/17/paim-relembra-comissao-que-propos-politica-de-valorizacao-do-salario-minimo",
+   "data": "2026-11-17T18:28:00+00:00",
+   "fonte": "senado",
+   "nos": [],
+   "pessoas": [
+    "paulo-paim"
+   ],
+   "resumo": "O senador Paulo Paim (PT-RS) relembrou nesta terça-feira (17) a atuação da Comissão Mista Especial do Salário Mínimo, criada em 2005 para discutir mecanismos permanentes de reajuste do piso nacional. Em pronunciamento no Plenário, Paim destacou a promoção de 15 audiências públicas e a participação de representantes de trabalhadores, empregadores, sindicatos, aposentados, pesquisadores e diferentes setores da sociedade na elaboração do texto final, do qual foi relator. Segundo o senador, a comissão fez debates em diversas capitais, entre elas Curitiba, São Paulo, Salvador, Porto Alegre e Manaus"
+  },
+  {
+   "id": "n-b19c63590c",
+   "titulo": "Comissão aprova criação da Política Nacional Escola da Floresta para comunidades da Amazônia",
+   "url": "https://www.camara.leg.br/noticias/1319930-comissao-aprova-criacao-da-politica-nacional-escola-da-floresta-para-comunidades-da-amazonia",
+   "data": "2026-11-17T18:24+00:00",
+   "fonte": "camara",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "O projeto segue em análise na Câmara dos Deputados"
+  },
+  {
+   "id": "n-0ba545c368",
+   "titulo": "Comissão aprova projeto com diretrizes para reforçar atenção à saúde mental em regiões isoladas",
+   "url": "https://www.camara.leg.br/noticias/1319941-comissao-aprova-projeto-com-diretrizes-para-reforcar-atencao-a-saude-mental-em-regioes-isoladas",
+   "data": "2026-11-17T18:20+00:00",
+   "fonte": "camara",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "Texto segue em análise na Câmara dos Deputados"
+  },
+  {
+   "id": "n-10f0cc5dd6",
+   "titulo": "Vídeo: Reforma Tributária: alíquota da CBS divide opiniões em debate na CAE",
+   "url": "https://www12.senado.leg.br/noticias/videos/2026/11/reforma-tributaria-aliquota-da-cbs-divide-opinioes-em-debate-na-cae",
+   "data": "2026-11-17T18:16:00+00:00",
+   "fonte": "senado",
+   "nos": [
+    "tcu"
+   ],
+   "pessoas": [],
+   "resumo": "O Tribunal de Contas da União (TCU) estimou a Contribuição sobre Bens e Serviços (CBS) em 11,3%, alíquota maior do que a previsão inicial. Mas o Senado é quem vai dar a palavra final. Por isso, a Comissão de Assuntos Econômicos (CAE) começou nesta terça-feira (17) uma série de audiências públicas sobre o assunto. A CBS (que vai substituir impostos federais como PIS/Pasep e Cofins) começa a ser cobrada em janeiro de 2027, quando entra em vigor a Reforma Tributária."
+  },
+  {
+   "id": "n-28ad0a990a",
+   "titulo": "Governo quer que o projeto do ajuste fiscal seja votado ainda nesta terça-feira na Câmara",
+   "url": "https://www.camara.leg.br/noticias/1320183-governo-quer-que-o-projeto-do-ajuste-fiscal-seja-votado-ainda-nesta-terca-feira-na-camara",
+   "data": "2026-11-17T18:11+00:00",
+   "fonte": "camara",
+   "nos": [],
+   "pessoas": [
+    "jose-nobre-guimaraes"
+   ],
+   "resumo": "Acervo Câmara dos Deputados Guimarães: \"A retirada da urgência não altera a proibição das bets\" O ministro das Relações Institucionais, José Guimarães, afirmou que o governo construiu um acordo com a Câmara dos Deputados para votar ainda hoje o texto do ajuste fiscal, assim que os destaques da proposta forem votados no Senado. Segundo Guimarães, o Executivo retirou a urgência do projeto que criminaliza a exploração das bets para viabilizar a votação do Projeto de Lei Complementar 299/26. O projeto do governo altera o arcabouço fiscal para reforçar o controle das contas públicas e criar novos m"
+  },
+  {
+   "id": "n-bbfd5a2ae4",
+   "titulo": "Dino decide que escala 5x2 será julgada de forma definitiva pelo STF",
+   "url": "https://agenciabrasil.ebc.com.br/justica/noticia/2026-11/dino-decide-que-escala-5x2-sera-julgada-de-forma-definitiva-pelo-stf",
+   "data": "2026-11-17T18:10+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [
+    "stf"
+   ],
+   "pessoas": [],
+   "resumo": "O ministro Flávio Dino, do Supremo Tribunal Federal (STF), decidiu nesta terça-feira (17) que as ações que tratam das regras de transição para o início da escala de trabalho 5x2 serão julgadas de forma definitiva, ou seja, diretamente no mérito. Na semana passada, o plenário virtual da Corte iniciou o julgamento para referendar a liminar do ministro, que é relator do caso, sobre a questão, mas o julgamento foi suspenso por um pedido de destaque feito por Luiz Fux. O placar parcial do julgamento está 4 votos a 0 para manter a decisão do relator. Notícias relacionadas: Oxê de Xangô, símbolo da j"
+  },
+  {
+   "id": "n-3f3e89e9b7",
+   "titulo": "Comissão discute desafios para ampliar proteção a mulheres idosas vítimas de violência; participe",
+   "url": "https://www.camara.leg.br/noticias/1320062-comissao-discute-desafios-para-ampliar-protecao-a-mulheres-idosas-vitimas-de-violencia-participe",
+   "data": "2026-11-17T18:05+00:00",
+   "fonte": "camara",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "Convidados também vão debater a aplicação dos mecanismos de proteção previstos na Lei Maria da Penha e no Estatuto da Pessoa Idosa"
+  },
+  {
+   "id": "n-6f73ba0be8",
+   "titulo": "Capobianco reforça responsabilidades de países na COP31 na Turquia",
+   "url": "https://agenciabrasil.ebc.com.br/meio-ambiente/noticia/2026-11/capobianco-reforca-responsabilidades-de-paises-na-cop31-na-turquia",
+   "data": "2026-11-17T18:03+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "A menos de uma semana do fim da 31ª Conferência das Nações Unidas sobre Mudança do Clima (COP31), em Antalya, na Turquia o ministro do Meio Ambiente e Mudança do Clima, João Paulo Capobianco, destacou a responsabilidade dos países no processo de negociação de definição das ações climáticas. Capobianco discursou nesta terça-feira (17), na Sessão Ministerial de Alto Nível sobre Ação Climática, quando reforçou o papel de delegados e representantes dos países que participam da Convenção do Clima de ajudar o mundo a recuperar a confiança no sistema multilateral e lembrar que a mudança do clima afet"
+  },
+  {
+   "id": "n-60230de7da",
+   "titulo": "Presidentes da Câmara e do Senado pedem que STF julgue validade da Lei da Dosimetria neste ano",
+   "url": "https://www.camara.leg.br/noticias/1320142-presidentes-da-camara-e-do-senado-pedem-que-stf-julgue-validade-da-lei-da-dosimetria-neste-ano",
+   "data": "2026-11-17T17:58+00:00",
+   "fonte": "camara",
+   "nos": [
+    "congresso",
+    "stf"
+   ],
+   "pessoas": [
+    "luiz-inacio-lula-da-silva"
+   ],
+   "resumo": "A lei foi promulgada pelo Congresso Nacional em 8 de maio de 2026, após a derrubada de um veto integral do presidente Lula"
+  },
+  {
+   "id": "n-8a4193fe7d",
+   "titulo": "RJ: polo petrolífero, Macaé voltará a receber voos comerciais",
+   "url": "https://agenciabrasil.ebc.com.br/geral/noticia/2026-11/polo-petrolifero-macae-voltara-receber-voos-comerciais",
+   "data": "2026-11-17T17:53+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [
+    "petrobras"
+   ],
+   "pessoas": [],
+   "resumo": "A cidade de Macaé, no Rio de Janeiro, voltará a receber voos comerciais em fevereiro de 2027. Considerado um dos principais polos da indústria do petróleo no país, o município terá voos conectando-o ao Aeroporto Internacional de São Paulo, em Guarulhos, três vezes por semana. A retomada se dá após obras de ampliação no Aeroporto de Macaé , o principal aeroporto offshore da América Latina e operado pela empresa suíça Zurich Airport Brasil desde junho de 2025. Notícias relacionadas: Petrobras tem lucro de R$ 39,8 bilhões no 3º trimestre, alta de 21,5%. O aeroporto ganhou uma segunda pista, de 1."
+  },
+  {
+   "id": "n-c73212eba4",
+   "titulo": "Comissão aprova proposta de criação de ronda escolar para pessoas com deficiência",
+   "url": "https://www.camara.leg.br/noticias/1320047-comissao-aprova-proposta-de-criacao-de-ronda-escolar-para-pessoas-com-deficiencia",
+   "data": "2026-11-17T17:50+00:00",
+   "fonte": "camara",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "Projeto segue em análise na Câmara dos Deputados"
+  },
+  {
+   "id": "n-63ac9ef183",
+   "titulo": "Áudio: Municípios poderão contar com apoio técnico federal para planos diretores",
+   "url": "https://www12.senado.leg.br/noticias/audios/2026/11/municipios-poderao-contar-com-apoio-tecnico-federal-para-planos-diretores",
+   "data": "2026-11-17T17:34:00+00:00",
+   "fonte": "senado",
+   "nos": [
+    "camara"
+   ],
+   "pessoas": [
+    "alessandro-vieira",
+    "nelsinho-trad"
+   ],
+   "resumo": "Municípios com dificuldades financeiras e técnicas poderão receber ajuda federal para elaborar seus planos diretores. O projeto (PL 3.020/2024), do senador Alessandro Vieira (MDB-SE), foi aprovado pela Comissão de Desenvolvimento Regional e Turismo (CDR) do Senado. O relator, senador Nelsinho Trad (PSD-MS), destacou que a medida pode beneficiar gestores interessados em organizar o crescimento das cidades. Se não houver recurso para votação do projeto no Plenário, o texto seguirá para análise da Câmara dos Deputados."
+  },
+  {
+   "id": "n-12dcd8a9c8",
+   "titulo": "Durigan defende alíquota da reforma e estima média efetiva de 8,5%",
+   "url": "https://agenciabrasil.ebc.com.br/economia/noticia/2026-11/durigan-defende-aliquota-da-reforma-e-estima-media-efetiva-de-85",
+   "data": "2026-11-17T17:26+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [],
+   "pessoas": [
+    "dario-carnevalli-durigan"
+   ],
+   "resumo": "O ministro da Fazenda, Dario Durigan, afirmou que a reforma tributária trará ganhos permanentes de responsabilidade fiscal, justiça social e transparência ao sistema tributário brasileiro. Ao defender o modelo aprovado, o ministro reiterou que a alíquota máxima estimada para o novo sistema é de 11,3%, mas que a carga efetiva média deverá ficar em 8,5%, enquanto setores beneficiados por regimes diferenciados e parte da população terão tributação menor ou zerada. Notícias relacionadas: Reforma tributária: Receita descarta punição a erros de boa-fé. Mulheres lideram 63% dos negócios na Rocinha, d"
+  },
+  {
+   "id": "n-5a18a00ff8",
+   "titulo": "Vídeo: Acompanhe ao vivo: sessão deliberativa ordinária – 17/11/26",
+   "url": "https://www12.senado.leg.br/noticias/videos/2026/11/acompanhe-ao-vivo-sessao-deliberativa-ordinaria-2013-17-11-26",
+   "data": "2026-11-17T17:01:00+00:00",
+   "fonte": "senado",
+   "nos": [],
+   "pessoas": [],
+   "resumo": ""
+  },
+  {
+   "id": "n-2b384a1511",
+   "titulo": "Projeto busca ampliar acesso a serviços públicos em locais isolados",
+   "url": "https://www.camara.leg.br/noticias/1320074-projeto-busca-ampliar-acesso-a-servicos-publicos-em-locais-isolados",
+   "data": "2026-11-17T16:29+00:00",
+   "fonte": "camara",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "Para virar lei, proposta precisa ser aprovada por deputados e senadores"
+  },
+  {
+   "id": "n-6f25604cc7",
+   "titulo": "Áudio: Debatedores destacam papel dos seguros na proteção de famílias e empresas",
+   "url": "https://www12.senado.leg.br/noticias/audios/2026/11/debatedores-destacam-papel-dos-seguros-na-protecao-de-familias-e-empresas",
+   "data": "2026-11-17T16:27:00+00:00",
+   "fonte": "senado",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "O Senado Federal celebrou nesta terça-feira (17), em sessão especial, os 75 anos da Confederação Nacional das Seguradoras (CNseg). A entidade representa empresas dos segmentos de seguros gerais, previdência privada e vida, saúde suplementar e capitalização. Durante a sessão, parlamentares e representantes do setor destacaram a contribuição dos seguros para a proteção financeira de famílias e empresas e os desafios para ampliar o acesso da população a esses serviços."
+  },
+  {
+   "id": "n-7375b02cc6",
+   "titulo": "Áudio: Combate a fraude contábil no mercado de capitais é tema de projeto de lei",
+   "url": "https://www12.senado.leg.br/noticias/audios/2026/11/fraude-contabil-no-mercado-de-capitais-e-tema-de-projeto-de-lei-1",
+   "data": "2026-11-17T16:23:00+00:00",
+   "fonte": "senado",
+   "nos": [],
+   "pessoas": [
+    "oriovisto-guimaraes"
+   ],
+   "resumo": "A Comissão de Constituição e Justiça (CCJ) analisa um projeto que tipifica o crime de fraude contábil no mercado de valores mobiliários e endurece punições contra a manipulação de dados financeiros de empresas de capital aberto. De acordo com o PL 2.091/2023, relatado pelo senador Oriovisto Guimarães (PSDB-PR), fraudar a contabilidade, apresentar documentos falsos ou mentir para investidores terá pena de dois a seis anos de reclusão, além de multa. A proposta foi motivada pela crise das Lojas Americanas."
+  },
+  {
+   "id": "n-ee3f58fae9",
+   "titulo": "Áudio: Comissão aprova ampliação de áreas de livre comércio em quatro cidades do Acre",
+   "url": "https://www12.senado.leg.br/noticias/audios/2026/11/comissao-aprova-ampliacao-de-areas-de-livre-comercio-em-quatro-cidades-do-acre",
+   "data": "2026-11-17T16:09:00+00:00",
+   "fonte": "senado",
+   "nos": [],
+   "pessoas": [
+    "alan-rick",
+    "sergio-petecao"
+   ],
+   "resumo": "A Comissão de Desenvolvimento Regional e Turismo (CDR) aprovou nesta terça-feira (17) projeto que amplia áreas de livre comércio no Acre. O PL 4.232/2025, do senador Sérgio Petecão (PSD-AC), contempla Assis Brasil e Epitaciolândia, além de Mâncio Lima e Rodrigues Alves. O texto foi relatado pelo senador Alan Rick (Republicanos-AC) e segue para a Comissão de Assuntos Econômicos (CAE)."
+  },
+  {
+   "id": "n-61f16be29d",
+   "titulo": "Vini Jr. brilha e Brasil goleia Singapura em último confronto do ano",
+   "url": "https://agenciabrasil.ebc.com.br/esportes/noticia/2026-11/vini-jr-brilha-e-brasil-goleia-singapura-em-ultimo-confronto-do-ano",
+   "data": "2026-11-17T15:58+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "Número 6 no ranking da Fifa, a seleção brasileira masculina de futebol aplicou 7 a 0 sobre Singapura (148º), com direito a hat-trick inédito de Vinicius Júnior vestindo a Amarelinha, no último compromisso de 2026. Em processo de renovação, a equipe entrou em campo pela última este ano nesta terça-feira (17), no Estádio Nacional de Singapur. O atacante de 26 anos balançou a rede três vezes nos primeiros 21 minutos do jogo no Estádio Nacional de Singapura. Depois, Endrick, Estevâo, Rayan também marcaram, e, por fim, teve gol contra Suhaimi, ao tentar desviar um chute cruzado de Allan, estreante "
+  },
+  {
+   "id": "n-3686ef72ff",
+   "titulo": "SBPC e ABC defendem 3% do PIB e cota regional para ciência e inovação",
+   "url": "https://agenciabrasil.ebc.com.br/cultura/noticia/2026-11/sbpc-e-abc-defendem-3-do-pib-e-cota-regional-para-ciencia-e-inovacao",
+   "data": "2026-11-17T15:50+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "A Sociedade Brasileira para o Progresso da Ciência (SBPC) e a Academia Brasileira de Ciências (ABC) defendem o aumento progressivo do investimento nacional em pesquisa e desenvolvimento (P&D) - de 1,19% do Produto Interno Bruto (PIB, soma de todos os bens e serviços produzidos no país) para 2% em 2034 e 3% em 2040. O incremento orçamentário para custear o setor é uma das ações que as entidades propõem que sejam implementadas ao longo dos próximos 13 anos (2027-2040), de forma efetiva e integrada a um projeto de desenvolvimento nacional. As propostas constam do Plano Brasil 2040 – Ciência, Tecn"
+  },
+  {
+   "id": "n-7543d2e274",
+   "titulo": "Comissão aprova proposta de uso de fundo nacional para indenizar vítimas de crimes e policiais",
+   "url": "https://www.camara.leg.br/noticias/1319919-comissao-aprova-proposta-de-uso-de-fundo-nacional-para-indenizar-vitimas-de-crimes-e-policiais",
+   "data": "2026-11-17T15:38+00:00",
+   "fonte": "camara",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "Texto segue em análise na Câmara"
+  },
+  {
+   "id": "n-a36fa41f59",
+   "titulo": "Sessão especial destaca atuação da CNseg no setor de seguros",
+   "url": "https://www12.senado.leg.br/noticias/materias/2026/11/17/senado-celebra-os-75-anos-da-cnseg-pelo-desenvolvimento-dos-seguros-privados",
+   "data": "2026-11-17T15:35:00+00:00",
+   "fonte": "senado",
+   "nos": [],
+   "pessoas": [
+    "carlos-gomes"
+   ],
+   "resumo": "Desenvolver o sistema de seguros privados no Brasil e expandir a cultura de proteção pessoal e patrimonial são diretrizes da Confederação Nacional das Empresas de Seguros Gerais, Previdência Privada e Vida, Saúde Suplementar e Capitalização (CNseg). A entidade foi celebrada nesta terça-feira (17) em sessão especial no Senado pelos seus 75 anos de instituição. Primeiro signatário da sessão especial, o senador Eduardo Gomes (PL-TO) destacou que a CNseg se consolidou como uma das mais importantes entidades representativas da economia, ao ter “papel fundamental no fortalecimento do mercado segurad"
+  },
+  {
+   "id": "n-7642158e53",
+   "titulo": "Reforma tributária: Receita descarta punição a erros de boa-fé",
+   "url": "https://agenciabrasil.ebc.com.br/economia/noticia/2026-11/reforma-tributaria-receita-descarta-punicao-erros-de-boa-fe",
+   "data": "2026-11-17T15:30+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [
+    "tcu"
+   ],
+   "pessoas": [
+    "robinson-sakiyama-barreirinhas"
+   ],
+   "resumo": "O secretário da Receita Federal, Robinson Barreirinhas, afirmou nesta terça-feira (17) que os riscos e desafios da implementação da reforma tributária já foram identificados e que o governo pretende orientar os contribuintes durante a transição para o novo sistema. Em audiência pública na Comissão de Assuntos Econômicos (CAE) do Senado, Barreirinhas reconheceu que as mudanças geram dúvidas entre empresas e profissionais, mas disse que os principais problemas já estão mapeados. Notícias relacionadas: Reforma Tributária: 86% das notas fiscais destacam a CBS. TCU aprova cálculo da alíquota de ref"
+  },
+  {
+   "id": "n-b3e022d5f4",
+   "titulo": "Indústria e acordo ambiental serão temas de audiências na CRE",
+   "url": "https://www12.senado.leg.br/noticias/materias/2026/11/17/industria-e-acordo-ambiental-serao-temas-de-audiencias-na-cre",
+   "data": "2026-11-17T15:08:00+00:00",
+   "fonte": "senado",
+   "nos": [],
+   "pessoas": [
+    "leany-lemos",
+    "nelsinho-trad",
+    "tereza-cristina"
+   ],
+   "resumo": "A Comissão de Relações Exteriores (CRE) aprovou três requerimentos para a realização de audiências públicas sobre os desafios da indústria brasileira diante da concorrência internacional e os possíveis impactos do Acordo de Escazú. Os pedidos, apresentados pelos senadores Nelsinho Trad (PSD-MS), Tereza Cristina (PP-MS) e Leany Lemos (PSB-DF), foram aprovados na reunião desta terça-feira (17). As audiências ainda não têm data definida. O debate sobre a indústria, proposto por Nelsinho Trad (REQ 19/2026 – CRE), abordará os efeitos das importações e da instalação de empresas estrangeiras no Brasi"
+  },
+  {
+   "id": "n-64fa6e687a",
+   "titulo": "CDR aprova apoio da União a municípios para elaboração de planos diretores",
+   "url": "https://www12.senado.leg.br/noticias/materias/2026/11/17/cdr-aprova-apoio-da-uniao-a-municipios-para-elaboracao-de-planos-diretores",
+   "data": "2026-11-17T14:54:00+00:00",
+   "fonte": "senado",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "Municípios que comprovarem não ter meios para elaborar ou manter atualizados seus planos diretores poderão receber assistência técnica e financeira da União. A medida está prevista em projeto aprovado nesta terça-feira (17) pela Comissão de Desenvolvimento Regional (CDR). O PL 3.020/2024 altera o Estatuto da Cidade (Lei 10.257, de 2001) para incluir a prestação desse apoio entre as atribuições da União, conforme a disponibilidade orçamentária e financeira. A assistência deverá ser oferecida por meio de programas estruturados, com critérios de priorização, acompanhamento e apoio à implementação"
+  },
+  {
+   "id": "n-348b6ee62a",
+   "titulo": "CDR aprova ampliação de áreas de livre comércio no Acre",
+   "url": "https://www12.senado.leg.br/noticias/materias/2026/11/17/cdr-aprova-ampliacao-de-areas-de-livre-comercio-no-acre",
+   "data": "2026-11-17T14:36:00+00:00",
+   "fonte": "senado",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "A Comissão de Desenvolvimento Regional (CDR) aprovou nesta terça-feira (17) projeto que estende as áreas de livre comércio aos municípios de Assis Brasil, Mâncio Lima e Rodrigues Alves, no Acre. Essas áreas permitem operações de exportação e importação com regras tributárias especiais para estimular o desenvolvimento regional. O projeto também elimina o limite de 20 km² para o tamanho dessas áreas e a exigência de que sua demarcação seja contínua. Caberá ao Poder Executivo definir os limites, incluindo os locais destinados ao armazenamento de mercadorias que serão incorporadas ao mercado brasi"
+  },
+  {
+   "id": "n-84bfd7cacf",
+   "titulo": "Comissão de Cultura aprova proposta que cria Política de Coleções Biológicas",
+   "url": "https://www.camara.leg.br/noticias/1319841-comissao-de-cultura-aprova-proposta-que-cria-politica-de-colecoes-biologicas",
+   "data": "2026-11-17T14:32+00:00",
+   "fonte": "camara",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "Texto busca organizar e manter acervos biológicos de pesquisas no país; a Câmara dos Deputados continua discutindo o assunto"
+  },
+  {
+   "id": "n-f0318de48e",
+   "titulo": "PF cria divisão especializada em integridade esportiva",
+   "url": "https://agenciabrasil.ebc.com.br/geral/noticia/2026-11/pf-faz-parceria-com-ministerio-para-combater-fraudes-no-esporte",
+   "data": "2026-11-17T14:30+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [
+    "mesp",
+    "pf",
+    "petrobras"
+   ],
+   "pessoas": [
+    "andrei-augusto-passos-rodrigues"
+   ],
+   "resumo": "A Polícia Federal criou uma divisão especializada em integridade esportiva. O anúncio foi feito pelo diretor-geral da corporação, Andrei Augusto Passos Rodrigues, na segunda-feira (16), durante assinatura de acordo de cooperação técnica com o Ministério do Esporte. A parceria entre as duas instituições tem como objetivo ampliar a cooperação entre os dois órgãos para prevenir, identificar e combater a manipulação de resultados e outras fraudes em competições esportivas. Notícias relacionadas: Prêmio TV Brasil Petrobras Para Elas: Yanne é eleita a craque do ano. Clubes, Ministério e FPF repudiam"
+  },
+  {
+   "id": "n-0af037b925",
+   "titulo": "Suplementos alimentares têm fabricação e venda suspensas no Brasil",
+   "url": "https://agenciabrasil.ebc.com.br/saude/noticia/2026-11/suplementos-alimentares-tem-fabricacao-e-venda-suspensas-no-brasil",
+   "data": "2026-11-17T14:27+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [
+    "anvisa"
+   ],
+   "pessoas": [],
+   "resumo": "Suplementos alimentares de pelo menos três empresas tiveram fabricação e venda suspensas no país. Resoluções da Agência Nacional de Vigilância Sanitária (Anvisa) desta terça-feira (17/11) citam irregulares na produção e determinam o recolhimento dos produtos. O suplemento alimentar líquido Melatonina Spray-Norvy, da empresa Norvy Saúde, é uma das substâncias. Segundo o texto, além de o ingrediente não ter sido avaliado em relação à segurança para uso sublingual, foi identificada a divulgação de alegações não aprovadas na propaganda do produto, como \"Ação mais rápida na hora de dormir\" e\" Sono "
+  },
+  {
+   "id": "n-9e019195dd",
+   "titulo": "Comissão aprova projeto que garante plano de saúde para PMs e bombeiros militares",
+   "url": "https://www.camara.leg.br/noticias/1319914-comissao-aprova-projeto-que-garante-plano-de-saude-para-pms-e-bombeiros-militares",
+   "data": "2026-11-17T14:15+00:00",
+   "fonte": "camara",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "A proposta continua em análise na Câmara dos Deputados"
+  },
+  {
+   "id": "n-9ca37b33d6",
+   "titulo": "Botox poderá ser usado no relaxamento do músculo da mastigação",
+   "url": "https://agenciabrasil.ebc.com.br/saude/noticia/2026-11/botox-podera-ser-usado-no-relaxamento-do-musculo-da-mastigacao",
+   "data": "2026-11-17T13:57+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [
+    "anvisa"
+   ],
+   "pessoas": [],
+   "resumo": "O botox poderá ser usado no Brasil para o relaxamento do músculo da mastigação. A Agência Nacional de Vigilância Sanitária (Anvisa) aprovou a indicação terapêutica da toxina butolínica tipo A no tratamento de hipertrofia benigna do masseter. A toxina atua no bloqueio temporário da liberação de acetilcolina nas terminações nervosas, o que promove a descontração localizada da musculatura tratada. Notícias relacionadas: Anvisa proíbe dois tira-manchas à base de percarbonato de sódio. Anvisa manda recolher anestésico por amostra com \"partícula estranha\". Anvisa manda recolher lotes de insumos para"
+  },
+  {
+   "id": "n-c9190f2dec",
+   "titulo": "Áudio: Eleitores têm até 60 dias para justificar ausência nas eleições",
+   "url": "https://www12.senado.leg.br/noticias/audios/2026/11/eleitores-tem-ate-60-dias-para-justificar-ausencia-nas-eleicoes",
+   "data": "2026-11-17T13:55:00+00:00",
+   "fonte": "senado",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "As eleições de 2026 terminaram em 25 de outubro, mas quem não votou ainda pode justificar a ausência. O prazo vai até 3 de dezembro para o primeiro turno e 8 de janeiro de 2027 para o segundo. Quem não justificar nem pagar a multa pode ficar impedido de tirar passaporte ou tomar posse em cargo público."
+  },
+  {
+   "id": "n-84d590b9bb",
+   "titulo": "Presidiário usava celular para praticar abuso sexual infantojuvenil",
+   "url": "https://agenciabrasil.ebc.com.br/geral/noticia/2026-11/presidiario-usava-celular-para-praticar-abuso-sexual-infantojuvenil",
+   "data": "2026-11-17T13:26+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "Policiais federais fizeram, nesta terça-feira (17), operação para reprimir o uso de um aparelho celular por um presidiário no complexo penitenciário de Gericinó (Bangu), na zona oeste da cidade do Rio de Janeiro. O homem é acusado de usar o equipamento para aliciar e constranger crianças e adolescentes, para assim obter e disseminar imagens de cenas de abuso sexual infantojuvenil. A ação, que resultou na apreensão do celular, no presídio Nelson Hungria (Bangu 7), contou com o apoio da Secretaria Estadual de Polícia Penal, que administra a unidade. Notícias relacionadas: Diretor diz que recuper"
+  },
+  {
+   "id": "n-d1b6afadc4",
+   "titulo": "Vídeo: Senado celebra 75 anos da CNseg – 17/11/26",
+   "url": "https://www12.senado.leg.br/noticias/videos/2026/11/ao-vivo-senado-celebra-75-anos-da-cnseg-2013-17-11-26",
+   "data": "2026-11-17T13:20:00+00:00",
+   "fonte": "senado",
+   "nos": [],
+   "pessoas": [],
+   "resumo": ""
+  },
+  {
+   "id": "n-0fd3b7084f",
+   "titulo": "Fies: candidatos pré-selecionados devem validar dados da inscrição",
+   "url": "https://agenciabrasil.ebc.com.br/educacao/noticia/2026-11/fies-candidatos-pre-selecionados-devem-validar-dados-da-inscricao",
+   "data": "2026-11-17T13:03+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [
+    "mec"
+   ],
+   "pessoas": [],
+   "resumo": "Candidatos pré-selecionados na chamada única para as vagas remanescentes do segundo semestre do Fundo de Financiamento Estudantil (Fies) devem validar os dados da inscrição até esta quarta-feira (18). O Fies é um programa do Ministério da Educação (MEC), que oferece financiamento para estudantes cursarem a educação superior em instituições privadas. Notícias relacionadas: Enem 2026: começa prazo para pedir reaplicação de provas em dezembro. Gabarito do Enem sai na quarta-feira, e resultado em 18 de janeiro. O processo deve ser realizado na Comissão Permanente de Supervisão e Acompanhamento do "
+  },
+  {
+   "id": "n-4a549fb7b1",
+   "titulo": "Vídeo: Durigan fala em comissão sobre alíquota da CBS – 17/11/26",
+   "url": "https://www12.senado.leg.br/noticias/videos/2026/11/ao-vivo-durigan-fala-em-comissao-sobre-aliquota-da-cbs-2013-17-11-26",
+   "data": "2026-11-17T13:00:00+00:00",
+   "fonte": "senado",
+   "nos": [],
+   "pessoas": [],
+   "resumo": ""
+  },
+  {
+   "id": "n-4c783d8e47",
+   "titulo": "Mulheres lideram 63% dos negócios na Rocinha, diz pesquisa",
+   "url": "https://agenciabrasil.ebc.com.br/economia/noticia/2026-11/mulheres-lideram-63-dos-negocios-da-rocinha-diz-pesquisa",
+   "data": "2026-11-17T12:20+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [
+    "bndes"
+   ],
+   "pessoas": [],
+   "resumo": "Pesquisa feita com 1.670 empreendedores da Favela da Rocinha, na zona sudoeste do Rio de Janeiro, revela que as mulheres representam 63% dos responsáveis pelos empreendimentos analisados, enquanto pessoas negras, considerando pretas e pardas, correspondem a 70%. Para 74% dos entrevistados, o negócio é a principal fonte de renda. O levantamento faz parte do programa BNDES Periferias Rocinha Empreende, desenvolvido em parceria pelo Banco Nacional de Desenvolvimento Econômico e Social (BNDES), o Instituto Ekloos e o Fala Roça, com apoio da Light. Notícias relacionadas: Curso forma guias turístico"
+  },
+  {
+   "id": "n-a15e51026b",
+   "titulo": "Brasil terá Sistema de Satélites de Defesa e Comunicações Estratégica",
+   "url": "https://agenciabrasil.ebc.com.br/geral/noticia/2026-11/brasil-tera-sistema-de-satelites-de-defesa-e-comunicacoes-estrategica",
+   "data": "2026-11-17T12:09+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [
+    "bndes"
+   ],
+   "pessoas": [],
+   "resumo": "O Sistema de Satélites de Defesa e Comunicações Estratégicas passará a integrar a estrutura do governo brasileiro. De acordo com decreto publicado na edição desta terça-feira (17) do Diário Oficial da União , o sistema reunirá os satélites governamentais de comunicações desenvolvidos, fabricados, lançados e operados pelo Brasil. O objetivo é atender às necessidades dos órgãos de defesa nacional e demais instituições governamentais, além de ampliar a infraestrutura de satélites voltados às comunicações estratégicas. Notícias relacionadas: BNDES usa imagens de satélite para barrar empréstimo a d"
+  },
+  {
+   "id": "n-8176135192",
+   "titulo": "Áudio: Dia Nacional de Conscientização sobre a Síndrome do Nariz Vazio vai à Câmara",
+   "url": "https://www12.senado.leg.br/noticias/audios/2026/11/dia-nacional-de-conscientizacao-sobre-a-sindrome-do-nariz-vazio-vai-a-camara",
+   "data": "2026-11-17T12:00:00+00:00",
+   "fonte": "senado",
+   "nos": [],
+   "pessoas": [
+    "jussara-lima",
+    "mara-gabrilli"
+   ],
+   "resumo": "A Comissão de Assuntos Sociais (CAS) aprovou na semana passada o projeto que cria o Dia Nacional de Conscientização sobre a Síndrome do Nariz Vazio, a ser lembrado anualmente em 4 de novembro (PL 5.772/2025). A síndrome, causada pela perda significativa de tecido intranasal em decorrência de cirurgias, é uma condição rara e crônica em que o paciente sente intensa falta de ar e sufocamento, mesmo com o interior do nariz anatomicamente livre e amplo. Da senadora Mara Gabrilli (PSD-SP), o projeto teve relatório favorável da senadora Jussara Lima (PSD-PI). Se não houver pedido para votação em Plen"
+  },
+  {
+   "id": "n-6027b37852",
+   "titulo": "Hospitais privados oferecem vagas em cursos de medicina em 2027",
+   "url": "https://agenciabrasil.ebc.com.br/educacao/noticia/2026-11/hospitais-privados-oferecem-vagas-em-cursos-de-medicina-em-2027",
+   "data": "2026-11-17T11:30+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "Mais de uma década após a criação do Programa Mais Médicos (PMM) em 2013, os cursos de graduação em medicina oferecidos por instituições de Educação Superior (IESs) ligadas a mantenedoras de hospitais terminarão o ano com os processos seletivos de suas primeiras turmas. É o penúltimo passo para duplicar a quantidade de médicos atuando no país, meta que motivou a criação da Lei 12.781/2013 , do PMM. Na prática, as redes e hospitais Einstein, Moinhos de Vento, Beneficência Portuguesa, Rede D’Or e Pontifícia Universidade Católica (PUC) do Rio de Janeiro poderão iniciar suas próprias turmas, atuan"
+  },
+  {
+   "id": "n-af28ea6e9b",
+   "titulo": "Comissão promove debate sobre redução da maioridade penal nesta terça-feira",
+   "url": "https://www.camara.leg.br/noticias/1319616-comissao-promove-debate-sobre-reducao-da-maioridade-penal-nesta-terca-feira",
+   "data": "2026-11-17T11:25+00:00",
+   "fonte": "camara",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "Vinicius Loures / Câmara dos Deputados Reunião da Comissão Especial sobre Maioridade Penal (PEC 32/15) A comissão especial da Câmara dos Deputados que analisa a Proposta de Emenda à Constituição que reduz a maioridade penal para 16 anos (PEC 32/15) realiza, na terça-feira (17), audiência pública para discutir o tema. O debate está marcado para as 14h30, no plenário 3. Veja quem foi convidado. A audiência atende a requerimentos de diferentes parlamentares, que defendem abordagens distintas sobre a proposta. Com o debate, os deputados pretendem reunir diferentes perspectivas sobre a responsabili"
+  },
+  {
+   "id": "n-9bf7be4992",
+   "titulo": "Mais de 276 mil trabalhadores ainda não sacaram o abono salarial 2026",
+   "url": "https://agenciabrasil.ebc.com.br/economia/noticia/2026-11/mais-de-276-mil-trabalhadores-ainda-nao-sacaram-o-abono-salarial-2026",
+   "data": "2026-11-17T11:12+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [
+    "mte",
+    "caixa"
+   ],
+   "pessoas": [],
+   "resumo": "Mais de 276 mil trabalhadores ainda não retiraram o abono salarial 2026. Segundo levantamento do Ministério do Trabalho e Emprego (MTE), 276.831 pessoas têm valores disponíveis para saque, que somam R$ 304,8 milhões. O prazo para receber o benefício termina em 28 de dezembro de 2026. Os pagamentos são feitos pela Caixa Econômica Federal e pelo Banco do Brasil. Até 9 de novembro, foram pagos 26.588.717 benefícios, totalizando R$ 33,1 bilhões. O volume representa 98,97% do total de pagamentos previstos para o calendário deste ano. Notícias relacionadas: Economia circular movimenta até R$ 90,7 bi"
+  },
+  {
+   "id": "n-11b6bee8df",
+   "titulo": "Brasil gasta R$ 14,5 bilhões por ano com guerra às drogas",
+   "url": "https://agenciabrasil.ebc.com.br/direitos-humanos/noticia/2026-11/brasil-gasta-r-145-bilhoes-por-ano-com-guerra-drogas",
+   "data": "2026-11-17T10:41+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "O sistema de justiça criminal brasileiro gasta R$ 14,5 bilhões por ano com a guerra às drogas ilícitas. O dado foi calculado em uma pesquisa do Centro de Estudos de Segurança e Cidadania (Cesec) divulgada nesta terça-feira (17). O montante foi usado, em 2024, para manter o trabalho de polícias, defensorias públicas, ministérios públicos, sistema prisional e órgãos da Justiça no enfrentamento ao tráfico de drogas e na punição dos envolvidos com o comércio dessas substâncias. Notícias relacionadas: Flagrante por drogas gera mais prisão preventiva do que outros crimes. Comissão Global sobre Droga"
+  },
+  {
+   "id": "n-65a5a1c78e",
+   "titulo": "Mega-Sena sorteia prêmio de R$ 34 milhões nesta terça-feira",
+   "url": "https://agenciabrasil.ebc.com.br/geral/noticia/2026-11/mega-sena-sorteia-premio-de-r-34-milhoes-nesta-terca-feira",
+   "data": "2026-11-17T10:20+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [
+    "caixa"
+   ],
+   "pessoas": [],
+   "resumo": "A Mega-Sena sorteia nesta terça-feira (17) prêmio estimado em R$ 34 milhões. As seis dezenas do concurso 3.087 serão sorteadas a partir das 21h (horário de Brasília) no Espaço da Sorte, em São Paulo. As apostas podem ser feitas até às 20h (horário de Brasília) em casas lotéricas credenciadas pela Caixa em todo o país ou pela internet, no site ou aplicativo da Caixa. A aposta simples, com seis dezenas, custa R$ 6. Notícias relacionadas: Mega da Virada: Caixa anuncia que prêmio deve superar R$ 1 bilhão. No último concurso, foram sorteados os números 03 - 20 - 35 - 38 - 43 - 46 e nenhuma aposta a"
+  },
+  {
+   "id": "n-9b34d8e8d8",
+   "titulo": "Durigan explica no Senado alíquota de 11,3% da CBS",
+   "url": "https://agenciabrasil.ebc.com.br/economia/noticia/2026-11/durigan-explica-no-senado-aliquota-de-113-da-cbs",
+   "data": "2026-11-17T10:15+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [
+    "tcu"
+   ],
+   "pessoas": [
+    "dario-carnevalli-durigan"
+   ],
+   "resumo": "Em meio a questionamentos sobre a reforma tributária, o ministro da Fazenda, Dario Durigan, participa nesta terça-feira (17), às 10h, de audiência pública na Comissão de Assuntos Econômicos (CAE) do Senado para discutir a alíquota de referência da Contribuição sobre Bens e Serviços (CBS). Criado pela reforma, o tributo está previsto para entrar em vigor em 2027. O percentual de 11,3% recomendado pelo Tribunal de Contas da União (TCU) provocou questionamentos de parlamentares e representantes do setor produtivo, que pedem esclarecimentos sobre os critérios utilizados no cálculo e discutem a nec"
+  },
+  {
+   "id": "n-1da168f66e",
+   "titulo": "Beneficiários com NIS de final 2 recebem Bolsa Família de novembro",
+   "url": "https://agenciabrasil.ebc.com.br/economia/noticia/2026-11/beneficiarios-com-nis-de-final-2-recebem-bolsa-familia-de-novembro",
+   "data": "2026-11-17T10:02+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [
+    "caixa"
+   ],
+   "pessoas": [],
+   "resumo": "A Caixa Econômica Federal paga nesta terça-feira (17) a parcela de outubro do Bolsa Família aos beneficiários com Número de Inscrição Social (NIS) de final 2. Neste mês, 19,07 milhões de família serão beneficiadas, com o valor médio do benefício em R$ 783,63, com gasto de R$ 14,88 bilhões. Os moradores de 112 municípios de oito estados receberam o crédito na segunda-feira (16), independentemente do número final do NIS. O pagamento unificado beneficiou localidades em situação de emergência ou em estado de calamidade pública nos seguintes estados: Amazonas (23), Minas Gerais (uma), Piauí (22), P"
+  },
+  {
+   "id": "n-557a495383",
+   "titulo": "Famílias de 14 vítimas da ditadura têm nova certidão de óbito no RS",
+   "url": "https://agenciabrasil.ebc.com.br/direitos-humanos/noticia/2026-11/familias-de-14-vitimas-da-ditadura-tem-nova-certidao-de-obito-no-rs",
+   "data": "2026-11-17T00:03+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "“Para nós, familiares, isso é uma grande conquista”, disse, nesta segunda-feira (16), a ativista Suzana Lisboa. As mãos que erguiam a foto do marido, o catarinense Luiz Eurico Tejera Lisboa, assassinado em 1972, aos 24 anos de idade, receberam, em evento em Porto Alegre (RS), o que ela chamou de conquista, uma certidão de óbito corrigida. Foi a nona reunião de entrega da certidão, a primeira na Região Sul . O documento aponta que a morte foi violenta, causada pelo Estado brasileiro no “contexto da perseguição sistemática” a quem foi dissidente do regime ditatorial instaurado em 1964. Além da f"
+  },
+  {
+   "id": "n-21a076e92c",
+   "titulo": "Dólar sobe para R$ 5,77 e fecha no maior valor desde abril de 2025",
+   "url": "https://agenciabrasil.ebc.com.br/economia/noticia/2026-11/dolar-sobe-para-r-577-e-fecha-no-maior-valor-desde-abril-de-2025",
+   "data": "2026-11-16T23:06+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "O mercado financeiro brasileiro teve uma segunda-feira (16) de forte pressão sobre os ativos. O dólar subiu mais de 2%, aproximou-se de R$ 5,80 e fechou no maior nível em cerca de um ano e meio. Na bolsa, o Ibovespa recuou quase 2%, aos 169 mil pontos, enquanto o petróleo registrou perdas superiores a 3% no mercado internacional. Notícias relacionadas: Mercado reduz projeções para inflação e crescimento econômico em 2026. A expectativa em relação à política fiscal brasileira, a indefinição da equipe econômica do próximo mandato e o cenário externo desfavorável marcaram o desempenho dos mercado"
+  },
+  {
+   "id": "n-28a443eb00",
+   "titulo": "Regulação de big techs pode reduzir custos em até R$ 50 bilhões",
+   "url": "https://agenciabrasil.ebc.com.br/economia/noticia/2026-11/regulacao-de-big-techs-pode-reduzir-custos-em-ate-r-50-bilhoes",
+   "data": "2026-11-16T22:59+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [
+    "mf",
+    "camara"
+   ],
+   "pessoas": [],
+   "resumo": "A regulação concorrencial das big techs , grandes plataformas digitais, pode gerar uma redução de custos entre R$ 15,3 bilhões e R$ 50,6 bilhões por ano no Brasil, segundo estudo da Secretaria de Reformas Econômicas do Ministério da Fazenda divulgado nesta segunda-feira (16). A estimativa considera os efeitos da ampliação da concorrência sobre preços e taxas cobrados por empresas de tecnologia. A proposta, que mira gigantes como Google, Meta, Amazon e Microsoft, está em tramitação na Câmara dos Deputados e pode ser votada ainda neste ano. Impacto econômico Notícias relacionadas: Eleitores dos "
+  },
+  {
+   "id": "n-d426ec8c79",
+   "titulo": "Comissão aprova classificar Hamas e Hezbollah como grupos terroristas",
+   "url": "https://www.camara.leg.br/noticias/1319821-comissao-aprova-classificar-hamas-e-hezbollah-como-grupos-terroristas",
+   "data": "2026-11-16T22:19+00:00",
+   "fonte": "camara",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "Outras 15 entidades também foram incluídas no texto, que segue para a análise da CCJ da Câmara"
+  },
+  {
+   "id": "n-a0374cef4f",
+   "titulo": "CDH do Senado pede federalização do desaparecimento de crianças no MA",
+   "url": "https://agenciabrasil.ebc.com.br/direitos-humanos/noticia/2026-11/cdh-do-senado-pede-federalizacao-do-desaparecimento-de-criancas-no-ma",
+   "data": "2026-11-16T21:55+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "A Comissão de Direitos Humanos (CDH) do Senado vai pedir a federalização das investigações sobre o desaparecimento de duas crianças, em 4 de janeiro de 2026, no quilombo São Sebastião dos Pretos, em Bacabal, no Maranhão . A informação foi dada por representantes do colegiado que participaram de uma diligência sobre o caso no final de semana, quando ouviram autoridades que estão envolvidas nas investigações e também Clarice Cardoso, a mãe das crianças Ágatha Isabelly, de 6 anos, e Allan Michael, de 4 anos. Notícias relacionadas: Bullying: após morte, família e especialistas pedem rigor de escol"
+  },
+  {
+   "id": "n-1a9e66e65b",
+   "titulo": "EBC inaugura nova sede em São Paulo e amplia estrutura de produção",
+   "url": "https://agenciabrasil.ebc.com.br/geral/noticia/2026-11/ebc-inaugura-nova-sede-em-sao-paulo-e-amplia-estrutura-de-producao",
+   "data": "2026-11-16T21:42+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [
+    "ebc"
+   ],
+   "pessoas": [],
+   "resumo": "A Empresa Brasil de Comunicação (EBC) inaugurou oficialmente, nesta segunda-feira (16), sua nova sede em São Paulo, localizada na Avenida Prestes Maia, nº 733, na região central da capital paulista. A cerimônia marcou o início de uma nova etapa da atuação da empresa na maior cidade do Brasil, com uma estrutura modernizada, novos espaços de produção e perspectivas de fortalecimento da infraestrutura de transmissão. Notícias relacionadas: EBC recebe selo Diamante em avaliação de transparência pública. EBC conquista mais R$ 23 milhões para investimento na TV 3.0 no Brasil. Na ocasião, houve o des"
+  },
+  {
+   "id": "n-35eed8d3fd",
+   "titulo": "Projeto proíbe uso da imagem de empregado em redes sociais da empresa sem previsão contratual",
+   "url": "https://www.camara.leg.br/noticias/1313078-projeto-proibe-uso-da-imagem-de-empregado-em-redes-sociais-da-empresa-sem-previsao-contratual",
+   "data": "2026-11-16T21:35+00:00",
+   "fonte": "camara",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "Proposta enquadra a prática como desvio de função quando a atividade for incompatível com as atribuições do cargo contratado"
+  },
+  {
+   "id": "n-56b780cc9d",
+   "titulo": "Líder do governo afirma que ajuste fiscal não retira recursos da saúde e da educação",
+   "url": "https://www.camara.leg.br/noticias/1319835-lider-do-governo-afirma-que-ajuste-fiscal-nao-retira-recursos-da-saude-e-da-educacao",
+   "data": "2026-11-16T21:15+00:00",
+   "fonte": "camara",
+   "nos": [],
+   "pessoas": [
+    "paulo-pimenta"
+   ],
+   "resumo": "Paulo Pimenta afirma que proposta abre espaço no Orçamento para novos compromissos e mantém subsídios aos combustíveis"
+  },
   {
    "id": "n-9c306649f1",
    "titulo": "Áudio: Plenário analisa destaques da oposição ao projeto de ajuste fiscal",
@@ -44306,16 +44952,6 @@
    "nos": [],
    "pessoas": [],
    "resumo": "GettyImages O Observatório produz, reúne e divulga dados sobre a participação política feminina A Secretaria da Mulher da Câmara dos Deputados realiza um encontro nesta quarta-feira (19) para celebrar os cinco anos do Observatório Nacional da Mulher na Política . O evento vai ocorrer no auditório Freitas Nobre a partir das 14 horas. O encontro terá debates sobre a importância do trabalho em parceria, a divulgação de pesquisas e projetos já realizados e as perspectivas para o futuro do Observatório. Veja a programação O Observatório Criado em junho de 2021 e vinculado à Secretaria da Mulher, o "
-  },
-  {
-   "id": "n-f68928c1ac",
-   "titulo": "Visita presidencial ao Parque Tecnológico de Macaíba e anúncios relativos aos supercomputadores e soberania digital",
-   "url": "https://www.gov.br/planalto/pt-br/acompanhe-o-planalto/noticias/visita-presidencial-ao-parque-tecnologico-de-macaiba-e-anuncios-relativos-aos-supercomputadores-e-soberania-digital",
-   "data": "2026-08-18T20:23:00+00:00",
-   "fonte": "planalto",
-   "nos": [],
-   "pessoas": [],
-   "resumo": "O presidente da República visita às 15h desta quinta-feira (20/8) o Parque Tecnológico de Macaíba e acompanha os anúncios relativos aos supercomputadores e soberania digital. CREDENCIAMENTO - Profissionais de veículos de imprensa interessados na cobertura devem acessar o sistema de credenciamento do Palácio do Planalto até 10h do dia 20/8 (horário de Brasília) . Profissionais com credencial anual também devem informar a participação na agenda. As credenciais serão entregues das 13h30 às 14h30 de 20/8 no local da agenda presidencial. Serviço Visita presidencial ao Parque Tecnológico de Macaíba "
   }
  ]
 }
