@@ -58,6 +58,15 @@ export function trackPurchase(subscriptionKey) {
  return purchaseOnce(store(), subscriptionKey, () => track('Purchase', { value: PIXEL_PRICES[intervalo] ?? PIXEL_PRICES.mensal, currency: 'USD' }));
 }
 
+// 2Doctor Scribe (assinatura separada, US$ 29/mês).
+export const SCRIBE_PRICE = PIXEL_PRICES.scribe_mensal ?? 29;
+export const trackScribeCheckout = () => track('InitiateCheckout', { value: SCRIBE_PRICE, currency: 'USD', content_name: 'scribe' });
+// Chamado quando a conta aparece com o Scribe ativo logo após a volta do Stripe (#scribe-ok).
+export function trackScribePurchase(subscriptionKey) {
+ if (!pixelActive()) return false;
+ return purchaseOnce(store(), `scribe:${subscriptionKey || ''}`, () => track('Purchase', { value: SCRIBE_PRICE, currency: 'USD', content_name: 'scribe' }));
+}
+
 // Sinais de retorno (lidos antes de o app limpar o hash): volta do Stripe e cadastro pelo Google.
 export const RETURN_KEY = '2doctor-pixel-return';
 export function captureReturn() {

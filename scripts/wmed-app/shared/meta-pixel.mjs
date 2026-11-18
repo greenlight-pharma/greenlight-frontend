@@ -1,6 +1,6 @@
 // Meta Pixel: regras puras (sem DOM), usadas pelo servidor e pelo front.
 // O ID do pixel nunca fica no código: vem de META_PIXEL_ID (Railway).
-export const PIXEL_PRICES = { mensal: 9.99, anual: 79 };
+export const PIXEL_PRICES = { mensal: 9.99, anual: 79, scribe_mensal: 29 };
 export const CONSENT_KEY = '2doctor-cookie-consent';
 export const PURCHASE_KEY = '2doctor-pixel-purchase';
 export const CHECKOUT_KEY = '2doctor-pixel-checkout';

@@ -5,6 +5,7 @@ import { cleanPixelId, CONSENT_KEY } from '../shared/meta-pixel.mjs';
 import { SITE } from '../shared/seo.mjs';
 
 export const LANDING_ROUTES = ['/start', '/lp'];
+export const SCRIBE_LANDING = '/scribe';
 const esc = (s) => String(s).replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[c]);
 const TITLE = '2Doctor · Clinical answers with the guideline and the source';
 const DESCRIPTION = 'Hard case at 3 a.m.? Ask 2Doctor and get the answer with the guideline and the source. Clinical cases with feedback, 3D anatomy, histology and radiology. Free to start.';
@@ -85,7 +86,7 @@ footer p{margin:0 0 8px}
 `;
 
 // Script embutido (sem dependências). PIXEL e ANON vêm do servidor; nada pessoal sai daqui.
-const script = (pixelId, anonFree) => `(function(){
+const script = (pixelId, anonFree, content = 'landing') => `(function(){
 var PIXEL=${JSON.stringify(pixelId)},CONSENT=${JSON.stringify(CONSENT_KEY)},qs=location.search||'';
 function ls(k){try{return localStorage.getItem(k)}catch(e){return null}}
 // Origem do cadastro (primeiro toque), igual ao app: utm_source/medium/campaign ou ?ref=, senão o site de origem.
@@ -97,14 +98,14 @@ function app(hash){return '/'+qs+(hash?'#'+hash:'')}
 [].forEach.call(document.querySelectorAll('a[data-app]'),function(a){a.href=app(a.getAttribute('data-app'))});
 // Primeira pergunta: guardada só nesta aba e enviada pelo app (#ask).
 var form=document.getElementById('ask'),box=document.getElementById('first-question');
-form.addEventListener('submit',function(e){e.preventDefault();var q=box.value.trim();if(q.length<3){box.focus();return}
+if(form&&box){form.addEventListener('submit',function(e){e.preventDefault();var q=box.value.trim();if(q.length<3){box.focus();return}
 try{sessionStorage.setItem('2doctor-pending-question',JSON.stringify({q:q.slice(0,6000),at:Date.now()}));location.href=app('ask')}catch(err){location.href=app('criar-conta')}});
 box.addEventListener('keydown',function(e){if(e.key==='Enter'&&(e.metaKey||e.ctrlKey)){e.preventDefault();form.requestSubmit?form.requestSubmit():form.submit()}});
-[].forEach.call(document.querySelectorAll('[data-example]'),function(b){b.addEventListener('click',function(){box.value=b.textContent;box.focus()})});
+[].forEach.call(document.querySelectorAll('[data-example]'),function(b){b.addEventListener('click',function(){box.value=b.textContent;box.focus()})})}
 // Meta Pixel: só com ID configurado e consentimento (mesma chave e mesmas regras do app).
 function pixel(){if(window.fbq)return;
 !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
-fbq('set','autoConfig',false,PIXEL);fbq('init',PIXEL);fbq('track','PageView');fbq('track','ViewContent',{content_name:'landing'})}
+fbq('set','autoConfig',false,PIXEL);fbq('init',PIXEL);fbq('track','PageView');fbq('track','ViewContent',{content_name:${JSON.stringify(content).replace(/"/g, "'")}})}
 if(PIXEL){var c=ls(CONSENT);if(c==='accepted')pixel();else if(c!=='declined'){var bar=document.getElementById('cookie');bar.hidden=false;
 bar.addEventListener('click',function(e){var v=e.target&&e.target.getAttribute('data-consent');if(!v)return;try{localStorage.setItem(CONSENT,v)}catch(err){}bar.hidden=true;if(v==='accepted')pixel()})}}
 })();`;
@@ -191,5 +192,105 @@ export function landingHtml({ pixelId = '', freeChat = 0, freeCases = 0, anonFre
 <footer><div class="wrap"><p><b>Educational tool. Does not replace clinical judgment.</b> Do not enter information that identifies patients.</p><p><a href="/privacy">Privacy</a> · <a href="/terms">Terms</a> · © 2Doctor</p></div></footer>
 <aside class="cookie" id="cookie" role="region" aria-label="Cookies" hidden><p>We use marketing cookies (Meta) to measure our ads. They load only if you accept. <a href="/privacy">Privacy policy</a></p><div><button type="button" class="no" data-consent="declined">Decline</button><button type="button" data-consent="accepted">Accept</button></div></aside>
 <script>${script(id, anonFree)}</script>
+</body></html>`;
+}
+
+// ---- /scribe: página do 2Doctor Scribe (inglês). Mesmo visual, pixel, consentimento e UTM da /start.
+// Só afirma o que esta implementação faz: nada de conformidade, números de acerto ou registro sanitário.
+const SCRIBE_TITLE = '2Doctor Scribe · The note writes itself while you talk to your patient';
+const SCRIBE_DESCRIPTION = 'An ambient AI scribe for clinicians: a structured note in your template while you talk to the patient, plus differential suggestions, questions to ask and red flags for your review.';
+const SCRIBE_CSS = `
+.steps{counter-reset:step}.steps .card{position:relative}
+.steps .n{width:36px;height:36px;border-radius:999px;background:var(--accent);color:var(--accent-ink);display:grid;place-items:center;font-weight:800}
+.note b{display:block;font-size:12.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--accent);margin:10px 0 2px}
+.note p{margin:0}
+.support{border-top:1.5px dashed var(--line);margin-top:12px;padding-top:10px}
+.support small{display:block;color:var(--muted);font-size:12.5px;margin-bottom:4px}
+.checks{display:grid;gap:10px;padding:0;margin:0;list-style:none;max-width:760px}
+.checks li{background:var(--card);border:1.5px solid var(--line);border-radius:14px;padding:14px 16px}
+.checks b{display:block}.checks span{color:var(--muted);font-size:15px}
+.fine{color:var(--muted);font-size:14px;margin:14px 0 0}
+`;
+export function scribeLandingHtml({ pixelId = '', trial = 3 } = {}) {
+ const id = cleanPixelId(pixelId);
+ const n = Number.isInteger(trial) && trial > 0 ? trial : 0;
+ const free = n ? `${n} free consultation${n === 1 ? '' : 's'}` : '';
+ const cta = n ? `Try ${n} consultation${n === 1 ? '' : 's'} free` : 'Start with Scribe';
+ const price = n ? `${free}, then US$ 29/month, cancel anytime.` : 'US$ 29/month, cancel anytime.';
+ const description = `${SCRIBE_DESCRIPTION} ${n ? `${free}, then US$ 29/month.` : 'US$ 29/month.'}`;
+ const button = (cls = 'btn') => `<a class="${cls}" href="/#scribe" data-app="scribe">${esc(cta)}</a>`;
+ return `<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><meta name="theme-color" content="#005d5b">
+<title>${esc(SCRIBE_TITLE)}</title><meta name="description" content="${esc(description)}"><link rel="canonical" href="${SITE}/scribe">
+<link rel="icon" href="/brand/2doctor/favicon.svg"><link rel="apple-touch-icon" href="/brand/2doctor/logo-1024.png">
+<meta property="og:type" content="website"><meta property="og:site_name" content="2Doctor"><meta property="og:url" content="${SITE}/scribe"><meta property="og:title" content="${esc(SCRIBE_TITLE)}"><meta property="og:description" content="${esc(description)}"><meta property="og:image" content="${SITE}/brand/2doctor/og-2doctor.png"><meta name="twitter:card" content="summary_large_image">
+<style>${CSS}${SCRIBE_CSS}</style></head><body data-path="/scribe">
+<header class="top"><a class="brand" href="/" data-app="">${LOGO}<span>2Doctor</span></a><nav><a href="/" data-app="">Sign in</a>${button('btn small')}</nav></header>
+<main>
+<div class="hero"><div class="wrap">
+ <div>
+  <p class="eyebrow">2Doctor Scribe · AI scribe for clinicians</p>
+  <h1>Talk to your patient. <span>The note writes itself.</span></h1>
+  <p class="lead">2Doctor Scribe listens to the consultation and writes a structured note in your template while you talk. You review, edit and copy it when the visit ends.</p>
+  <div class="cta-row">${button()}<small>${esc(price)}</small></div>
+  <p class="fine">Works in the browser, in English, Spanish and Portuguese. Not available in the United States yet.</p>
+ </div>
+ <div class="demo note" aria-label="Example of a note written by 2Doctor Scribe (fictional patient)">
+  <div class="who">${LOGO}<span>Follow-up · fictional example</span></div>
+  <b>Reason for follow-up</b><p>Returns 4 weeks after starting losartan 50 mg once daily.</p>
+  <b>Course since last visit</b><p>Home readings around 150/95 mmHg. Denies headache, chest pain and dyspnea.</p>
+  <b>Plan</b><p>Losartan increased to 100 mg once daily. Return in 4 weeks with home readings.</p>
+  <div class="support"><small>Reasoning support · AI suggestions for your review</small>
+   <div class="src"><span>Question: adherence and salt intake?</span><span>Question: NSAID use?</span></div>
+  </div>
+ </div>
+</div></div>
+
+<section><div class="wrap">
+ <h2>Three steps</h2>
+ <p class="sub">No typing during the visit.</p>
+ <div class="grid three steps">
+  <div class="card"><div class="n">1</div><h3>Start</h3><p>Pick a template (first visit, follow-up or SOAP), ask the patient's consent and press Start.</p></div>
+  <div class="card"><div class="n">2</div><h3>Talk</h3><p>Run the consultation as usual. The note fills in section by section while you talk.</p></div>
+  <div class="card"><div class="n">3</div><h3>Review</h3><p>When you finish, the note gets a final review. Read it, edit what you want and copy it to your record.</p></div>
+ </div>
+</div></section>
+
+<section class="soft"><div class="wrap">
+ <h2>What you get</h2>
+ <p class="sub">The record and the suggestions are kept apart.</p>
+ <div class="grid two">
+  <div class="card">${icon('<path d="M6 3h9l4 4v14H6z"/><path d="M14 3v5h5M9 13h7M9 17h5"/>')}<h3>A structured note in your template</h3><p>Written from what was said in the visit, with numbers and units. A section nobody talked about is left empty. Set your specialty, level of detail and writing style once.</p></div>
+  <div class="card">${icon('<path d="M9 18h6M10 21h4"/><path d="M12 3a6 6 0 0 0-4 10.5c.7.7 1 1.5 1 2.5h6c0-1 .3-1.8 1-2.5A6 6 0 0 0 12 3z"/>')}<h3>Reasoning support, clearly labelled</h3><p>Differential suggestions, questions still to ask and red flags, shown beside the note for the clinician's review. They are support, never part of the record. The clinician decides.</p></div>
+ </div>
+</div></section>
+
+<section><div class="wrap">
+ <h2>Privacy, in plain words</h2>
+ <p class="sub">What happens to the consultation.</p>
+ <ul class="checks">
+  <li><b>Audio is not stored by 2Doctor</b><span>Your browser streams the audio to our speech-to-text provider for live transcription. 2Doctor's servers receive only text and never store the audio.</span></li>
+  <li><b>You can delete any record</b><span>The transcript and the note are saved to your account so you can review them. Delete any record whenever you want.</span></li>
+  <li><b>Ask the patient's consent first</b><span>Always ask the patient before recording. Scribe asks you to confirm it at the start of each consultation.</span></li>
+ </ul>
+</div></section>
+
+<section id="pricing" class="soft"><div class="wrap">
+ <h2>Simple pricing</h2>
+ <p class="sub">Try it in real consultations before you pay.</p>
+ <div class="grid two">
+  <div class="card plan pro"><span class="tag">2Doctor Scribe</span><p class="price">US$ 29 <small>/ month</small></p><p style="margin:0;color:var(--muted)">${esc(price)}</p><ul><li>Live structured notes in your template</li><li>Reasoning support for your review</li><li>Final review of every note</li></ul>${button()}</div>
+ </div>
+ <p class="fine">Scribe is a separate subscription from 2Doctor Pro. Not available in the United States yet.</p>
+</div></section>
+
+<section class="final"><div class="wrap">
+ <h2>Look at your patient, not at the keyboard.</h2>
+ <p class="sub" style="margin-left:auto;margin-right:auto">${esc(price)}</p>
+ ${button()}
+</div></section>
+</main>
+<footer><div class="wrap"><p><b>Documentation and reasoning support for clinicians. Does not replace clinical judgment.</b> Review every note before using it.</p><p><a href="/privacy">Privacy</a> · <a href="/terms">Terms</a> · © 2Doctor</p></div></footer>
+<aside class="cookie" id="cookie" role="region" aria-label="Cookies" hidden><p>We use marketing cookies (Meta) to measure our ads. They load only if you accept. <a href="/privacy">Privacy policy</a></p><div><button type="button" class="no" data-consent="declined">Decline</button><button type="button" data-consent="accepted">Accept</button></div></aside>
+<script>${script(id, 0, 'scribe')}</script>
 </body></html>`;
 }

@@ -134,6 +134,42 @@ export const SCHEMA = [
    n integer not null default 0,
    primary key (chave, dia)
  )`,
+ // 2Doctor Scribe (18/11): assinatura separada do Pro (um usuário pode ter as duas), consultas de
+ // teste usadas (vitalício), preferências de escrita e registros das consultas. Só texto: o áudio
+ // nunca passa por este servidor.
+ `alter table usuarios add column if not exists scribe_status text`,
+ `alter table usuarios add column if not exists scribe_fim timestamptz`,
+ `alter table usuarios add column if not exists scribe_subscription_id text`,
+ `alter table usuarios add column if not exists scribe_cancela boolean not null default false`,
+ `alter table usuarios add column if not exists scribe_testes_usados integer not null default 0`,
+ `create table if not exists scribe_preferencias (
+   usuario_id uuid primary key references usuarios(id) on delete cascade,
+   dados jsonb not null,
+   atualizado_em timestamptz not null default now()
+ )`,
+ `create table if not exists scribe_registros (
+   id uuid primary key,
+   usuario_id uuid not null references usuarios(id) on delete cascade,
+   rotulo text not null default '',
+   modelo text not null,
+   modelo_nome text not null,
+   secoes jsonb not null,
+   idioma text not null,
+   contexto text not null default '',
+   status text not null default 'live' check (status in ('live','finished')),
+   iniciado_em timestamptz not null default now(),
+   finalizado_em timestamptz,
+   nota jsonb not null,
+   apoio jsonb not null,
+   dialogo jsonb not null default '[]'::jsonb,
+   revisada boolean not null default false,
+   interrompida boolean not null default false,
+   teste boolean not null default false,
+   chaves_voz integer not null default 0,
+   atualizacoes integer not null default 0,
+   ultima_atualizacao timestamptz
+ )`,
+ `create index if not exists scribe_registros_usuario on scribe_registros(usuario_id, iniciado_em desc)`,
 ];
 
 let pool = null, ready = null;
