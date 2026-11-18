@@ -20,6 +20,8 @@ const ATIVOS = new Set(['active', 'trialing', 'past_due']);
 // Pro pela assinatura ativa ou por cortesia dada no painel de administração (com prazo).
 export const cortesiaAtiva = (u) => !!u?.cortesia_ate && new Date(u.cortesia_ate) > new Date();
 export const planOf = (u) => ((u?.plano === 'pro' && ATIVOS.has(u?.assinatura_status)) || cortesiaAtiva(u) ? 'pro' : 'gratis');
+// 2Doctor Scribe: assinatura separada do Pro (cortesia Pro e admin não dão Scribe).
+export const scribeOf = (u) => ATIVOS.has(u?.scribe_status);
 
 const TEXT = {
  pt: {
@@ -130,7 +132,7 @@ async function startSession(userId) {
 export async function currentUser(req) {
  const token = cookies(req)[COOKIE];
  if (!token || !/^[A-Za-z0-9_-]{30,80}$/.test(token)) return null;
- const { rows } = await q(`select u.id, u.email, u.nome, u.email_verificado, u.google_sub is not null as google, u.senha_hash is not null as tem_senha, u.plano, u.assinatura_status, u.perfil, u.termos_paciente, u.cortesia_ate
+ const { rows } = await q(`select u.id, u.email, u.nome, u.email_verificado, u.google_sub is not null as google, u.senha_hash is not null as tem_senha, u.plano, u.assinatura_status, u.perfil, u.termos_paciente, u.cortesia_ate, u.scribe_status
    from sessoes s join usuarios u on u.id = s.usuario_id where s.token_hash = $1 and s.expira_em > now()`, [sha(token)]);
  const user = rows[0] || null;
  // Último acesso para o painel: no máximo uma escrita a cada 10 minutos por pessoa.
@@ -139,7 +141,7 @@ export async function currentUser(req) {
 }
 function publicUser(u) {
  return { nome: String(u.nome || u.email.split('@')[0]).split(' ')[0].slice(0, 60), email: u.email, emailVerificado: u.email_verificado,
-  progressScope: sha('2doctor-progress:' + u.id), conta: '2doctor', plano: planOf(u), temSenha: u.tem_senha ?? !!u.senha_hash,
+  progressScope: sha('2doctor-progress:' + u.id), conta: '2doctor', plano: planOf(u), scribe: scribeOf(u), temSenha: u.tem_senha ?? !!u.senha_hash,
   perfil: perfilEfetivo(u.perfil), termosPaciente: u.termos_paciente === TERMOS_PACIENTE_VERSAO };
 }
 
@@ -264,7 +266,7 @@ export async function auth(req, res, { sub = '', fetchImpl = fetch } = {}) {
    return reply(res, 201, { authenticated: true, user: publicUser(user) }, { 'Set-Cookie': await startSession(id) });
   }
   if (action !== 'entrar') return reply(res, 400, { error: t(l, 'invalid') });
-  const { rows } = await q('select id, email, nome, senha_hash, email_verificado, plano, assinatura_status, perfil, termos_paciente, cortesia_ate from usuarios where email = $1', [email]);
+  const { rows } = await q('select id, email, nome, senha_hash, email_verificado, plano, assinatura_status, perfil, termos_paciente, cortesia_ate, scribe_status from usuarios where email = $1', [email]);
   const user = rows[0];
   if (user && !user.senha_hash) return reply(res, 401, { error: t(l, 'google') });
   // Sem conta, compara com um hash qualquer para o tempo de resposta não revelar se o e-mail existe.
@@ -300,7 +302,7 @@ async function resetPassword(req, res, b, l) {
  // O link chegou pelo e-mail: vale como confirmação do endereço. Sessões antigas caem.
  await q('update usuarios set senha_hash = $2, email_verificado = true where id = $1', [id, await hashPassword(password)]);
  await q('delete from sessoes where usuario_id = $1', [id]);
- const { rows: u } = await q('select id, email, nome, email_verificado, plano, assinatura_status, perfil, termos_paciente, cortesia_ate from usuarios where id = $1', [id]);
+ const { rows: u } = await q('select id, email, nome, email_verificado, plano, assinatura_status, perfil, termos_paciente, cortesia_ate, scribe_status from usuarios where id = $1', [id]);
  return reply(res, 200, { authenticated: true, user: publicUser({ ...u[0], tem_senha: true }), message: t(l, 'resetOk') }, { 'Set-Cookie': await startSession(id) });
 }
 // Troca de senha com a sessão aberta. Conta só com Google cria a primeira senha sem pedir a atual.

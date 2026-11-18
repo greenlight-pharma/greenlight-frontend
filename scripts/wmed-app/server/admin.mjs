@@ -5,11 +5,11 @@
 import { readFile } from 'node:fs/promises';
 import { q } from './db.mjs';
 import { currentUser, reply, readJson, sameSite, resendVerification } from './accounts.mjs';
-import { stripe } from './billing.mjs';
+import { stripe, SCRIBE_PRICE } from './billing.mjs';
 
 const TZ = 'America/Sao_Paulo';
 const ATIVOS = ['active', 'trialing', 'past_due'];
-export const PRECO = { mensal: 9.99, anual: 79 };
+export const PRECO = { mensal: 9.99, anual: 79, scribe: 29 };
 const ID = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
 
 export const adminEmails = () => String(process.env.ADMIN_EMAILS || 'dilsonpanisio@gmail.com').split(',').map((e) => e.trim().toLowerCase()).filter(Boolean);
@@ -36,7 +36,7 @@ export async function stripeResumo({ fetchImpl = fetch, now = Date.now() } = {})
   if (!page.has_more || !page.data?.length) break;
   after = `&starting_after=${page.data.at(-1).id}`;
  }
- const subs = { mensal: 0, anual: 0, teste: 0, atrasadas: 0, canceladas: 0, cancelaNoFim: 0, mrr: 0 }; after = '';
+ const subs = { mensal: 0, anual: 0, scribe: 0, teste: 0, atrasadas: 0, canceladas: 0, cancelaNoFim: 0, mrr: 0 }; after = '';
  for (let i = 0; i < 10; i++) {
   const page = await stripe(`/subscriptions?status=all&limit=100${after}`, { fetchImpl });
   for (const s of page.data || []) {
@@ -48,7 +48,9 @@ export async function stripeResumo({ fetchImpl = fetch, now = Date.now() } = {})
    if (!['active', 'past_due'].includes(s.status)) continue;
    if (s.status === 'past_due') subs.atrasadas++;
    if (s.cancel_at_period_end) subs.cancelaNoFim++;
-   anual ? subs.anual++ : subs.mensal++;
+   // Scribe é outro produto: entra no MRR, mas não na contagem de assinantes Pro.
+   if (price.lookup_key === SCRIBE_PRICE || s.metadata?.produto === 'scribe') subs.scribe++;
+   else anual ? subs.anual++ : subs.mensal++;
    subs.mrr += anual ? valor / 12 : valor;
   }
   if (!page.has_more || !page.data?.length) break;
@@ -85,7 +87,8 @@ async function resumo({ fetchImpl }) {
      count(*) filter (where assinatura_status = 'past_due')::int atrasadas,
      count(*) filter (where assinatura_status = 'canceled')::int canceladas,
      count(*) filter (where assinatura_cancela and assinatura_status in ('active','trialing','past_due'))::int cancela_no_fim,
-     count(*) filter (where cortesia_ate > now())::int cortesias from usuarios`),
+     count(*) filter (where cortesia_ate > now())::int cortesias,
+     count(*) filter (where scribe_status in ('active','past_due'))::int scribe from usuarios`),
   one(`select
      (select count(*) from conversas where criada_em >= ${dayStart(0)})::int conversas_hoje,
      (select count(*) from conversas where criada_em >= ${dayStart(6)})::int conversas_7d,
@@ -113,7 +116,7 @@ async function resumo({ fetchImpl }) {
      from erros_servico where criado_em >= now() - interval '7 days' group by codigo order by d7 desc`),
   all(`select rota, codigo, http, to_char(criado_em at time zone '${TZ}', 'DD/MM HH24:MI') quando from erros_servico order by criado_em desc limit 10`),
  ]);
- const mrrBanco = Math.round((assin.mensal * PRECO.mensal + assin.anual * PRECO.anual / 12) * 100) / 100;
+ const mrrBanco = Math.round((assin.mensal * PRECO.mensal + assin.anual * PRECO.anual / 12 + assin.scribe * PRECO.scribe) * 100) / 100;
  let stripeInfo = null, stripeErro = null;
  try { stripeInfo = await stripeResumo({ fetchImpl }); } catch (e) { stripeErro = 'Não foi possível ler o Stripe agora.'; console.error('[2doctor] admin stripe', e?.message); }
  return {

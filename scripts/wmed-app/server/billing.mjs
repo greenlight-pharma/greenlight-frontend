@@ -3,9 +3,11 @@
 // Variáveis: STRIPE_SECRET_KEY, STRIPE_WEBHOOK_SECRET. Preços pelos lookup_keys abaixo.
 import { createHmac, timingSafeEqual } from 'node:crypto';
 import { q } from './db.mjs';
-import { requireUser, reply, readJson, publicOrigin, lang, planOf } from './accounts.mjs';
+import { requireUser, reply, readJson, publicOrigin, lang, planOf, scribeOf } from './accounts.mjs';
 
 export const PRICES = { mensal: '2doctor_pro_mensal', anual: '2doctor_pro_anual' };
+// 2Doctor Scribe: assinatura separada (US$ 29/mês). Um usuário pode ter Pro e Scribe ao mesmo tempo.
+export const SCRIBE_PRICE = '2doctor_scribe_mensal';
 const ATIVOS = new Set(['active', 'trialing', 'past_due']);
 const API = 'https://api.stripe.com/v1';
 
@@ -48,17 +50,18 @@ const MSG = {
  off: { pt: 'Assinaturas indisponíveis no momento.', en: 'Subscriptions are unavailable right now.', es: 'Las suscripciones no están disponibles en este momento.' },
  fail: { pt: 'Não foi possível abrir o pagamento. Tente novamente.', en: 'Could not open checkout. Try again.', es: 'No se pudo abrir el pago. Inténtalo de nuevo.' },
  already: { pt: 'Você já é assinante Pro. Use "Gerenciar assinatura".', en: 'You already have Pro. Use "Manage subscription".', es: 'Ya tienes Pro. Usa "Gestionar suscripción".' },
+ alreadyScribe: { pt: 'Você já assina o Scribe. Use "Gerenciar assinatura".', en: 'You already have Scribe. Use "Manage subscription".', es: 'Ya tienes Scribe. Usa "Gestionar suscripción".' },
 };
 const m = (req, k) => MSG[k][lang(req)] || MSG[k].en;
 
-// /api/wmed/billing  GET: situação do plano · POST {action:'checkout', intervalo} | {action:'portal'}
+// /api/wmed/billing  GET: situação do plano · POST {action:'checkout', intervalo} | {action:'checkout', produto:'scribe'} | {action:'portal'}
 export async function billing(req, res, { fetchImpl = fetch } = {}) {
  const user = await requireUser(req, res);
  if (!user) return;
  try {
-  const { rows } = await q('select plano, assinatura_status, assinatura_fim, stripe_customer_id, cortesia_ate from usuarios where id = $1', [user.id]);
+  const { rows } = await q('select plano, assinatura_status, assinatura_fim, stripe_customer_id, cortesia_ate, scribe_status, scribe_fim, scribe_cancela from usuarios where id = $1', [user.id]);
   const u = rows[0];
-  if (req.method === 'GET') return reply(res, 200, { plano: planOf(u), cortesia: !isPro(u) && planOf(u) === 'pro' ? u.cortesia_ate : null, status: u.assinatura_status, fim: u.assinatura_fim, stripe: !!process.env.STRIPE_SECRET_KEY, cliente: !!u.stripe_customer_id });
+  if (req.method === 'GET') return reply(res, 200, { plano: planOf(u), cortesia: !isPro(u) && planOf(u) === 'pro' ? u.cortesia_ate : null, status: u.assinatura_status, fim: u.assinatura_fim, stripe: !!process.env.STRIPE_SECRET_KEY, cliente: !!u.stripe_customer_id, scribe: scribeOf(u), scribeStatus: u.scribe_status, scribeFim: u.scribe_fim, scribeCancela: !!u.scribe_cancela });
   if (req.method !== 'POST') return reply(res, 405, { error: 'Method not allowed.' });
   if (!process.env.STRIPE_SECRET_KEY) return reply(res, 503, { error: m(req, 'off') });
   const b = await readJson(req);
@@ -67,9 +70,10 @@ export async function billing(req, res, { fetchImpl = fetch } = {}) {
    const s = await stripe('/billing_portal/sessions', { method: 'POST', fetchImpl, body: { customer: u.stripe_customer_id, return_url: `${publicOrigin()}/#conta` } });
    return reply(res, 200, { url: s.url });
   }
-  if (b.action !== 'checkout' || !PRICES[b.intervalo]) return reply(res, 400, { error: m(req, 'fail') });
-  if (isPro(u)) return reply(res, 409, { error: m(req, 'already') });
-  const prices = await stripe(`/prices?lookup_keys[]=${PRICES[b.intervalo]}&active=true`, { fetchImpl });
+  const scribe = b.action === 'checkout' && b.produto === 'scribe';
+  if (b.action !== 'checkout' || (b.produto != null && !scribe) || (!scribe && !PRICES[b.intervalo])) return reply(res, 400, { error: m(req, 'fail') });
+  if (scribe ? scribeOf(u) : isPro(u)) return reply(res, 409, { error: m(req, scribe ? 'alreadyScribe' : 'already') });
+  const prices = await stripe(`/prices?lookup_keys[]=${scribe ? SCRIBE_PRICE : PRICES[b.intervalo]}&active=true`, { fetchImpl });
   const price = prices.data?.[0]?.id;
   if (!price) return reply(res, 503, { error: m(req, 'off') });
   const customer = await customerFor(user, fetchImpl);
@@ -81,9 +85,9 @@ export async function billing(req, res, { fetchImpl = fetch } = {}) {
    ...(process.env.STRIPE_TAX === '1' ? { automatic_tax: { enabled: true }, customer_update: { address: 'auto', name: 'auto' }, billing_address_collection: 'required' } : { billing_address_collection: 'auto' }),
    allow_promotion_codes: true,
    locale: ['pt', 'es', 'en'].includes(lang(req)) ? (lang(req) === 'pt' ? 'pt-BR' : lang(req)) : 'auto',
-   subscription_data: { billing_mode: { type: 'flexible' }, metadata: { usuario_id: user.id, produto: '2doctor' } },
-   success_url: `${publicOrigin()}/#assinatura-ok`,
-   cancel_url: `${publicOrigin()}/#planos`,
+   subscription_data: { billing_mode: { type: 'flexible' }, metadata: { usuario_id: user.id, produto: scribe ? 'scribe' : '2doctor' } },
+   success_url: `${publicOrigin()}/#${scribe ? 'scribe-ok' : 'assinatura-ok'}`,
+   cancel_url: `${publicOrigin()}/#${scribe ? 'scribe' : 'planos'}`,
   } });
   return reply(res, 200, { url: s.url });
  } catch (e) {
@@ -104,7 +108,29 @@ export function verifySignature(raw, header, secret, now = Date.now(), tolerance
   return got.length === expected.length && timingSafeEqual(got, expected);
  });
 }
+// De qual produto é a assinatura: primeiro pelo lookup_key do preço; sem ele, pelo metadata
+// "produto" gravado no checkout. O que não for Scribe segue como Pro (comportamento anterior).
+export function productOf(sub) {
+ const key = sub?.items?.data?.[0]?.price?.lookup_key;
+ if (key === SCRIBE_PRICE) return 'scribe';
+ if (key && Object.values(PRICES).includes(key)) return 'pro';
+ return sub?.metadata?.produto === 'scribe' ? 'scribe' : 'pro';
+}
+// Scribe: só os campos scribe_*; nunca toca em plano/assinatura_* do Pro (e vice-versa).
+// Evento de uma assinatura antiga (já substituída por outra ativa) não derruba a atual.
+async function applyScribe(sub) {
+ const fim = sub.items?.data?.[0]?.current_period_end || sub.current_period_end || null;
+ const usuario = sub.metadata?.usuario_id || null;
+ const set = `scribe_status = $2, scribe_fim = $3, scribe_subscription_id = $4, scribe_cancela = $5`;
+ const guard = `(scribe_subscription_id is null or scribe_subscription_id = $4 or $6::boolean or coalesce(scribe_status, '') not in ('active', 'trialing', 'past_due'))`;
+ const params = [sub.customer, sub.status, fim ? new Date(fim * 1000) : null, sub.id, !!sub.cancel_at_period_end, ATIVOS.has(sub.status)];
+ const { rows } = await q(`select id from usuarios where stripe_customer_id = $1`, [sub.customer]);
+ if (rows[0]) return q(`update usuarios set ${set} where stripe_customer_id = $1 and ${guard}`, params);
+ if (usuario && /^[0-9a-f-]{36}$/i.test(usuario))
+  await q(`update usuarios set stripe_customer_id = coalesce(stripe_customer_id, $1), ${set} where id = $7 and ${guard}`, [...params, usuario]);
+}
 async function applySubscription(sub) {
+ if (productOf(sub) === 'scribe') return applyScribe(sub);
  const status = sub.status;
  const fim = sub.items?.data?.[0]?.current_period_end || sub.current_period_end || null;
  const usuario = sub.metadata?.usuario_id || null;

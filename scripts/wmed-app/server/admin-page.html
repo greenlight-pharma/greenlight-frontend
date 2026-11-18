@@ -116,8 +116,9 @@ async function carregar(){
   ${card('Usuários',num(R.usuarios.total),`${num(R.usuarios.verificados)} com e-mail verificado`)}
   ${card('Novos hoje',num(R.usuarios.hoje),`7 dias: ${num(R.usuarios.d7)} · 30 dias: ${num(R.usuarios.d30)}`)}
   ${card('Ativos hoje',num(R.ativos.hoje),`7 dias: ${num(R.ativos.d7)}`)}
-  ${card('MRR estimado',usd(mrr),sub?'pelo Stripe'+(s.teste?' (modo teste)':''):'pelo banco (US$ 9,99/mês · 79/ano)')}
+  ${card('MRR estimado',usd(mrr),sub?'pelo Stripe'+(s.teste?' (modo teste)':''):'pelo banco (Pro US$ 9,99/mês · 79/ano · Scribe 29/mês)')}
   ${card('Assinantes Pro',num(sub?sub.mensal+sub.anual:a.mensal+a.anual),`mensal ${num(sub?sub.mensal:a.mensal)} · anual ${num(sub?sub.anual:a.anual)}`)}
+  ${card('Assinantes Scribe',num((sub?sub.scribe:a.scribe)||0),'US$ 29/mês')}
   ${card('Em teste grátis',num(sub?sub.teste:a.teste),'7 dias')}
   ${card('Cancelamentos',num(sub?sub.canceladas:a.canceladas),`${num(sub?sub.cancelaNoFim:a.cancela_no_fim)} cancelam no fim do período · ${num(sub?sub.atrasadas:a.atrasadas)} em atraso`)}
   ${card('Receita do mês',receita.length?receita.map(([c,v])=>money(v,c)).join('<br>'):(s?money(0):'—'),s?'faturas pagas no Stripe':R.stripeErro?esc(R.stripeErro):'sem chave Stripe no servidor')}

@@ -16,7 +16,7 @@ import {discovery} from './discovery.mjs';
 import {publicResearch} from './public-research.mjs';
 import {LEGAL_ROUTES,legalHtml,pickLocale,notFoundHtml} from './legal-pages.mjs';
 import {SITE,robotsTxt,sitemapXml} from '../shared/seo.mjs';
-import {LANDING_ROUTES,landingHtml} from './landing.mjs';
+import {LANDING_ROUTES,landingHtml,SCRIBE_LANDING,scribeLandingHtml} from './landing.mjs';
 
 const ROOT=fileURLToPath(new URL('../dist-2doctor/',import.meta.url));
 const MIME={'.html':'text/html; charset=utf-8','.js':'text/javascript; charset=utf-8','.css':'text/css; charset=utf-8','.json':'application/json; charset=utf-8','.svg':'image/svg+xml','.png':'image/png','.jpg':'image/jpeg','.jpeg':'image/jpeg','.webp':'image/webp','.ttf':'font/ttf','.woff2':'font/woff2','.glb':'model/gltf-binary','.gltf':'model/gltf+json','.bin':'application/octet-stream','.pdb':'chemical/x-pdb','.mp4':'video/mp4'};
@@ -24,15 +24,15 @@ const routes={auth,chat,academic,cases,history,privacy,discovery,research:public
 // Com DATABASE_URL, o 2Doctor usa contas próprias (banco separado da Vytal) e fala com a API
 // Vytal pela chave de serviço. Sem ela, mantém o comportamento anterior (conta Vytal).
 export async function doctorRoutes(){
- const accounts=await import('./accounts.mjs');const store=await import('./doctor-store.mjs');const pay=await import('./billing.mjs');const shared=await import('./shared-cases.mjs');const admin=await import('./admin.mjs');const {migrate}=await import('./db.mjs');const anon=await import('./anon.mjs');
+ const accounts=await import('./accounts.mjs');const store=await import('./doctor-store.mjs');const pay=await import('./billing.mjs');const shared=await import('./shared-cases.mjs');const admin=await import('./admin.mjs');const {migrate}=await import('./db.mjs');const anon=await import('./anon.mjs');const scribeApi=await import('./scribe.mjs');
  await migrate();
  const allow=(req,res)=>{if(accounts.sameSite(req))return true;res.statusCode=403;res.setHeader('Content-Type','application/json; charset=utf-8');res.end(JSON.stringify({error:accounts.t(accounts.lang(req),'origin')}));return false;};
  const identify=(req)=>accounts.identify(req);
  return {
-  routes:{auth:accounts.auth,chat:(req,res)=>chat(req,res,{identify:async(r)=>(await identify(r))??anon.anonCaller(r,res),allow,report:admin.reportError('chat')}),admin:admin.adminApi,academic:(req,res)=>academic(req,res,{identify,allow}),cases:store.cases,history:store.history,billing:pay.billing,compartilhados:shared.sharedCases,'stripe-webhook':pay.stripeWebhook,privacy:(req,res)=>privacy(req,res,{identify,allow}),discovery,research:publicResearch},
+  routes:{auth:accounts.auth,chat:(req,res)=>chat(req,res,{identify:async(r)=>(await identify(r))??anon.anonCaller(r,res),allow,report:admin.reportError('chat')}),admin:admin.adminApi,academic:(req,res)=>academic(req,res,{identify,allow}),cases:store.cases,history:store.history,billing:pay.billing,compartilhados:shared.sharedCases,'stripe-webhook':pay.stripeWebhook,privacy:(req,res)=>privacy(req,res,{identify,allow}),discovery,research:publicResearch,scribe:scribeApi.scribe},
   // anonFree: perguntas grátis sem conta (0 = desligado); o site usa para decidir quando abrir o muro.
   status:()=>({...accounts.authStatus(),anonFree:anon.anonLimits().perVisitor}),
-  landing:()=>({freeChat:accounts.FREE_LIMITS.chat,freeCases:accounts.FREE_LIMITS.feedback,anonFree:anon.anonLimits().perVisitor}),
+  landing:()=>({freeChat:accounts.FREE_LIMITS.chat,freeCases:accounts.FREE_LIMITS.feedback,anonFree:anon.anonLimits().perVisitor,scribeTrial:scribeApi.scribeTrial()}),
   sharePage:shared.sharePage,
   adminPage:admin.adminPage,
  };
@@ -103,6 +103,11 @@ export function createApp({root=ROOT,publicOrigin=process.env.PUBLIC_ORIGIN,fetc
     res.writeHead(200,{'Content-Type':path==='/robots.txt'?'text/plain; charset=utf-8':'application/xml; charset=utf-8','Cache-Control':'public, max-age=3600'});return res.end(req.method==='HEAD'?undefined:text);
    }
    if(path==='/favicon.ico'){res.writeHead(302,{Location:'/brand/2doctor/favicon.svg','Cache-Control':'public, max-age=86400'});return res.end();}
+   // Página do 2Doctor Scribe (vem antes dos atalhos: /scribe é página, o app abre em /#scribe).
+   if(legalPath===SCRIBE_LANDING){
+    const html=scribeLandingHtml({pixelId:metaPixelId,trial:landing?.().scribeTrial??3});
+    res.writeHead(200,{'Content-Type':'text/html; charset=utf-8','Cache-Control':'public, max-age=300','Content-Length':Buffer.byteLength(html)});return res.end(req.method==='HEAD'?undefined:html);
+   }
    if(Object.hasOwn(SHORTCUTS,legalPath)){
     // Mantém a query (UTM dos anúncios) e abre o estado pelo #hash.
     const query=(req.url||'').includes('?')?'?'+req.url.split('?').slice(1).join('?'):'';
