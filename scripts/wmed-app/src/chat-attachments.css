@@ -1,2 +1,10 @@
 .attachment-toolbar{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin:0 0 9px}.attachment-toolbar button{display:flex;align-items:center;gap:6px;padding:7px 9px;border:1px solid var(--line);background:var(--raised);color:var(--ink);border-radius:9px;font-size:12px}.attachment-toolbar small{font-size:10px;color:var(--muted)}
 .attachment-list{list-style:none;padding:0;margin:0 0 10px;display:flex;flex-wrap:wrap;gap:7px}.attachment-list li{display:flex;align-items:center;gap:8px;min-width:0;max-width:100%;padding:8px 10px;border:1px solid var(--line);border-radius:10px;background:var(--raised);font-size:12px}.attachment-list li>span{min-width:0;overflow-wrap:anywhere}.attachment-list small{display:block;font-size:10px;color:var(--muted)}.attachment-list button{background:none;color:var(--muted);padding:4px;display:flex}.attachment-note{font-size:10px;color:var(--muted);line-height:1.5;margin:0 0 10px}.chat-attachments button:disabled{opacity:.5}.chat-topics{margin:20px 0;display:flex;flex-wrap:wrap;gap:8px}.chat-topics>small{width:100%;color:var(--muted);font-size:11px}.chat-topics button{border:1px solid var(--line);background:var(--surface);color:var(--ink);border-radius:12px;padding:10px 12px;text-align:left;font-size:12px;line-height:1.4;max-width:100%}.chat-topics button:hover{background:var(--hover)}
+
+/* Larger touch targets without truncating attachment names in 2Doctor. */
+.doctor-app .attachment-toolbar button{min-height:44px;padding:10px 12px;cursor:pointer}
+.doctor-app .attachment-list li>svg{flex-shrink:0}
+.doctor-app .attachment-list button{flex:0 0 44px;width:44px;min-height:44px;align-items:center;justify-content:center;border-radius:9px;cursor:pointer}
+.doctor-app .chat-attachments button:hover:not(:disabled){background:var(--hover)}
+.doctor-app .chat-attachments button:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.doctor-app .chat-attachments button:disabled{cursor:default}

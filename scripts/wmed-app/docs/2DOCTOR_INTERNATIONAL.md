@@ -1,3 +1,5 @@
+> **Direção vigente (25/09/2026):** desafios abandonados por decisão do usuário. A fila ativa de GROWTH e a proposta SCRIBE prevalecem sobre planos antigos. Priorizar documentação assistida, evidências e adaptação por país.
+
 # 2Doctor internacional — etapa 1
 
 Pesquisa e decisões: 25/09/2026. Status desta nota: primeira etapa publicada no Railway; deployment fc4d81f1-bbad-4a5e-92fc-c55f3dc7c9c7, verificação registrada em 2DOCTOR_PREVIEW.md.

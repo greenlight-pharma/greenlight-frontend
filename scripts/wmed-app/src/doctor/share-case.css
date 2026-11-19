@@ -1,0 +1,13 @@
+.share-case{max-width:560px;max-height:min(90dvh,760px);overflow:auto}
+.share-case>p{color:var(--muted);font-size:13px;line-height:1.6}
+.share-preview{margin:14px 0;border:1px solid var(--line);border-radius:12px;padding:4px 14px;background:var(--surface);max-height:260px;overflow:auto}
+.share-preview div{padding:10px 0;border-bottom:1px solid var(--line)}.share-preview div:last-child{border:0}
+.share-preview dt{font-size:11px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;color:var(--muted)}.share-preview dd{margin:4px 0 0;font-size:13px;line-height:1.5}
+.share-author{border:0;padding:0;margin:12px 0;display:flex;gap:18px;flex-wrap:wrap;font-size:13px}.share-author legend{font-size:12px;font-weight:700;margin-bottom:6px}
+.share-author label{display:flex;gap:6px;align-items:center}
+.share-links{display:grid;gap:10px;margin-top:12px}
+.share-links input{min-height:44px;border:1px solid var(--line);border-radius:10px;padding:0 12px;font:inherit;font-size:14px;background:var(--raised);color:var(--ink)}
+.share-buttons{display:flex;flex-wrap:wrap;gap:8px}
+.share-buttons>*{display:inline-flex;align-items:center;gap:7px;min-height:44px;padding:0 16px;border-radius:999px;border:1px solid var(--line);background:var(--raised);color:var(--ink);font-weight:600;font-size:14px;text-decoration:none}
+.share-buttons .share-x{background:#000;color:#fff;border-color:#000}
+.share-remove{justify-self:start;border:0;background:none;color:var(--muted);text-decoration:underline;font-size:13px;padding:4px 0}
