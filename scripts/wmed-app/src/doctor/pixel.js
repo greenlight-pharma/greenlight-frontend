@@ -11,12 +11,18 @@ export function pixelId() {
 export const consent = () => readConsent(store());
 export const pixelActive = () => !!pixelId() && consent() === 'accepted' && loaded;
 
+// Tela de uma consulta do Scribe (#scribe?c=<id>): nada vai para a Meta enquanto ela está aberta.
+export const privatePage = () => { try { return /^#scribe\?/.test(location.hash); } catch { return false; } };
+
 function loadScript(id) {
  if (loaded) return;
  loaded = true;
  /* eslint-disable */
  !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
  /* eslint-enable */
+ // Sem PageView automático a cada troca de endereço: o endereço de uma consulta do Scribe
+ // (#scribe?c=<id>) não pode ir para a Meta. Fica só o PageView inicial e os eventos explícitos.
+ window.fbq.disablePushState = true;
  // Sem correspondência avançada automática nem captura automática de botões/formulários.
  window.fbq('set', 'autoConfig', false, id);
  window.fbq('init', id);
@@ -26,7 +32,7 @@ function loadScript(id) {
 // Chamado ao iniciar e quando o usuário aceita.
 export function startPixel() {
  const id = pixelId();
- if (!id || consent() !== 'accepted') return false;
+ if (!id || consent() !== 'accepted' || privatePage()) return false;
  loadScript(id);
  return true;
 }
@@ -35,6 +41,8 @@ export function choose(value) {
  if (value === 'accepted') startPixel();
 }
 export function track(event, params) {
+ if (privatePage()) return false;
+ if (!loaded) startPixel();
  if (!pixelActive() || typeof window.fbq !== 'function') return false;
  params ? window.fbq('track', event, params) : window.fbq('track', event);
  return true;
