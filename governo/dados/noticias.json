@@ -1,6 +1,6 @@
 {
  "meta": {
-  "gerado_em": "2026-11-21T17:24+00:00",
+  "gerado_em": "2026-11-22T17:53+00:00",
   "gerado_por": "scripts/governo/agentes/agente_noticias.py",
   "janela_dias": 90,
   "fontes": [
@@ -30,11 +30,11 @@
     "url": "https://www.gov.br/planalto/pt-br/acompanhe-o-planalto/noticias/RSS"
    }
   ],
-  "total_artigos": 4004,
-  "artigos_com_no": 1402,
-  "novos_nesta_rodada": 41,
+  "total_artigos": 4020,
+  "artigos_com_no": 1407,
+  "novos_nesta_rodada": 21,
   "artigos_por_fonte": {
-   "agenciabrasil": 1906,
+   "agenciabrasil": 1922,
    "senado": 1179,
    "camara": 898,
    "stf": 7,
@@ -45,24 +45,24 @@
  },
  "resumo": [
   {
-   "texto": "O Senado Federal aprovou o projeto de ajuste fiscal do governo, rejeitando os destaques da oposição; o texto segue para a Câmara dos Deputados.",
-   "artigo_id": "n-83b0160e77",
-   "no_id": "senado"
+   "texto": "O Conselho Nacional de Justiça aprovou resolução que determina a inclusão, na certidão de óbito, da informação de que a morte decorreu de intervenção policial.",
+   "artigo_id": "n-340f92d11c",
+   "no_id": "cnj"
   },
   {
-   "texto": "O presidente do Supremo Tribunal Federal, Edson Fachin, enviou à Procuradoria-Geral da República quatro relatórios da Polícia Federal com menções a ministros da Corte no caso Master, e autorizou a quebra de sigilo do documento que cita André Mendonça.",
+   "texto": "O presidente do Supremo Tribunal Federal, Edson Fachin, enviou à Procuradoria-Geral da República quatro relatórios da Polícia Federal sobre menções a ministros da Corte no caso Master, manteve a prisão de Daniel Vorcaro e autorizou a quebra de sigilo do relatório que cita o ministro André Mendonça.",
    "artigo_id": "n-8dd3dad0c6",
    "no_id": "stf"
   },
   {
-   "texto": "O ministro Alexandre de Moraes marcou para 4 de dezembro o julgamento virtual no Supremo Tribunal Federal sobre a validade da lei que altera a dosimetria das penas dos condenados pelos atos de 8 de janeiro de 2023.",
-   "artigo_id": "n-c2601d2138",
-   "no_id": "stf"
-  },
-  {
-   "texto": "O Conselho Monetário Nacional aprovou regra que obriga bancos e instituições autorizadas pelo Banco Central a enviar mensalmente dados tributários a partir de 1º de janeiro de 2028.",
+   "texto": "O Conselho Monetário Nacional aprovou regra que obriga bancos e demais instituições autorizadas pelo Banco Central a enviar mensalmente dados tributários a partir de 1º de janeiro de 2028.",
    "artigo_id": "n-accb9ed785",
    "no_id": "cmn"
+  },
+  {
+   "texto": "Lula sancionou a Lei 15.539, que abre crédito suplementar de R$ 24,4 milhões para agências reguladoras federais, entre elas ANA, Antaq, Anvisa, Aneel, Anac e ANM.",
+   "artigo_id": "n-5e9c82c266",
+   "no_id": "aneel"
   }
  ],
  "ranking": {
@@ -70,181 +70,181 @@
    {
     "id": "tse",
     "artigos": 255,
-    "peso": 122.78117571923705,
+    "peso": 122.56247522595842,
     "ultima": "2026-11-19T21:10:00+00:00"
    },
    {
     "id": "stf",
     "artigos": 213,
-    "peso": 98.41923876621628,
+    "peso": 98.17693057752213,
     "ultima": "2026-11-20T22:34+00:00"
    },
    {
     "id": "congresso",
     "artigos": 136,
-    "peso": 86.66043272409031,
+    "peso": 86.88031209898142,
     "ultima": "2026-11-19T21:35:00+00:00"
    },
    {
     "id": "camara",
     "artigos": 113,
-    "peso": 68.97964038387775,
+    "peso": 69.14993658535283,
     "ultima": "2026-11-21T17:12+00:00"
    },
    {
     "id": "prf",
     "artigos": 16,
-    "peso": 63.7612763408619,
+    "peso": 63.96690485457752,
     "ultima": "2026-11-21T11:56+00:00"
    },
    {
     "id": "pf",
     "artigos": 98,
-    "peso": 43.24697882762969,
+    "peso": 43.10375377641508,
     "ultima": "2026-11-20T22:34+00:00"
    },
    {
     "id": "mec",
-    "artigos": 67,
-    "peso": 32.36794780480361,
-    "ultima": "2026-11-21T15:36+00:00"
+    "artigos": 68,
+    "peso": 32.72598041870243,
+    "ultima": "2026-11-22T13:23+00:00"
    },
    {
     "id": "caixa",
-    "artigos": 72,
-    "peso": 30.25057712486881,
-    "ultima": "2026-11-20T01:20+00:00"
+    "artigos": 73,
+    "peso": 30.536940686784597,
+    "ultima": "2026-11-22T16:19+00:00"
    },
    {
     "id": "anvisa",
     "artigos": 64,
-    "peso": 28.656378315643515,
+    "peso": 28.56721899809663,
     "ultima": "2026-11-20T17:00+00:00"
    },
    {
     "id": "tcu",
     "artigos": 35,
-    "peso": 21.30143480444053,
+    "peso": 21.344416736183028,
     "ultima": "2026-11-19T20:59:00+00:00"
    },
    {
     "id": "ms",
     "artigos": 41,
-    "peso": 20.029290604589566,
+    "peso": 20.00046945550291,
     "ultima": "2026-11-18T20:52+00:00"
    },
    {
     "id": "inss",
     "artigos": 33,
-    "peso": 19.49779073429367,
+    "peso": 19.516007510934216,
     "ultima": "2026-11-13T19:56+00:00"
    },
    {
     "id": "agu",
     "artigos": 42,
-    "peso": 17.90524276268772,
+    "peso": 17.832818337556564,
     "ultima": "2026-11-17T23:01+00:00"
    },
    {
     "id": "petrobras",
     "artigos": 40,
-    "peso": 17.842167273206265,
+    "peso": 17.787048584357365,
     "ultima": "2026-11-17T17:53+00:00"
    },
    {
     "id": "ibge",
     "artigos": 41,
-    "peso": 17.48509585817565,
+    "peso": 17.414504081573213,
     "ultima": "2026-11-20T09:42+00:00"
    },
    {
     "id": "inep",
     "artigos": 36,
-    "peso": 15.125288562434426,
+    "peso": 15.059313215400623,
     "ultima": "2026-11-20T11:00+00:00"
    },
    {
     "id": "ebc",
-    "artigos": 34,
-    "peso": 14.28499475341029,
-    "ultima": "2026-11-18T22:12+00:00"
+    "artigos": 35,
+    "peso": 14.640998959417272,
+    "ultima": "2026-11-21T18:12+00:00"
    },
    {
     "id": "senado",
     "artigos": 23,
-    "peso": 12.964666730544964,
+    "peso": 12.9602886747982,
     "ultima": "2026-11-18T22:39+00:00"
    },
    {
     "id": "anp",
     "artigos": 19,
-    "peso": 10.52698593214319,
+    "peso": 10.533936237613363,
     "ultima": "2026-11-10T12:06:00+00:00"
    },
    {
     "id": "tst",
     "artigos": 17,
-    "peso": 8.909473803576379,
+    "peso": 8.906448966879156,
     "ultima": "2026-10-28T22:36+00:00"
    },
    {
     "id": "stj",
     "artigos": 18,
-    "peso": 8.76494217633165,
+    "peso": 8.747293561722184,
     "ultima": "2026-11-12T15:40+00:00"
    },
    {
     "id": "mpf",
     "artigos": 20,
-    "peso": 8.662010863422232,
+    "peso": 8.629904705922847,
     "ultima": "2026-11-18T15:19+00:00"
+   },
+   {
+    "id": "aneel",
+    "artigos": 16,
+    "peso": 7.7475064407569505,
+    "ultima": "2026-11-22T12:21+00:00"
    },
    {
     "id": "bndes",
     "artigos": 13,
-    "peso": 7.394892987918982,
+    "peso": 7.396350551944286,
     "ultima": "2026-11-19T19:24+00:00"
    },
    {
-    "id": "aneel",
-    "artigos": 15,
-    "peso": 7.338494660404577,
-    "ultima": "2026-11-19T21:00:00+00:00"
+    "id": "cnj",
+    "artigos": 17,
+    "peso": 7.374961937972796,
+    "ultima": "2026-11-22T16:19+00:00"
    },
    {
     "id": "mf",
     "artigos": 15,
-    "peso": 7.079421887223685,
+    "peso": 7.0655725985177655,
     "ultima": "2026-11-18T20:07+00:00"
    },
    {
     "id": "inmet",
     "artigos": 16,
-    "peso": 6.722350472193072,
+    "peso": 6.69302809573361,
     "ultima": "2026-11-07T21:59+00:00"
-   },
-   {
-    "id": "cnj",
-    "artigos": 15,
-    "peso": 6.561276340861898,
-    "ultima": "2026-11-16T19:36+00:00"
    },
    {
     "id": "mpt",
     "artigos": 13,
-    "peso": 5.933522319623646,
+    "peso": 5.915094011666578,
     "ultima": "2026-11-01T20:06+00:00"
    },
    {
     "id": "anac",
     "artigos": 10,
-    "peso": 5.709372698811018,
+    "peso": 5.714629588739866,
     "ultima": "2026-11-19T21:00:00+00:00"
    },
    {
     "id": "anatel",
     "artigos": 11,
-    "peso": 5.352301283780405,
+    "peso": 5.342085085955712,
     "ultima": "2026-11-05T13:45+00:00"
    }
   ],
@@ -260,9 +260,9 @@
     "uf": null,
     "foto": "https://commons.wikimedia.org/wiki/Special:FilePath/Foto_oficial_de_Luiz_In%C3%A1cio_Lula_da_Silva_%28estreita%29.jpg?width=160",
     "foto_fonte": "https://www.wikidata.org/wiki/Q37181",
-    "artigos": 292,
-    "peso": 137.15072113727518,
-    "ultima": "2026-11-21T17:12+00:00"
+    "artigos": 293,
+    "peso": 137.2532471424159,
+    "ultima": "2026-11-22T14:53+00:00"
    },
    {
     "id": "flavio-bolsonaro",
@@ -276,7 +276,7 @@
     "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador5894.jpg",
     "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/5894",
     "artigos": 139,
-    "peso": 63.22973644682419,
+    "peso": 63.05399274328949,
     "ultima": "2026-11-20T22:34+00:00"
    },
    {
@@ -291,7 +291,7 @@
     "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador3830.jpg",
     "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/3830",
     "artigos": 75,
-    "peso": 46.65671249989271,
+    "peso": 46.776433321959566,
     "ultima": "2026-11-19T21:34+00:00"
    },
    {
@@ -306,7 +306,7 @@
     "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador6335.jpg",
     "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/6335",
     "artigos": 50,
-    "peso": 33.96098388464799,
+    "peso": 34.09669211195928,
     "ultima": "2026-11-19T21:14:00+00:00"
    },
    {
@@ -321,7 +321,7 @@
     "foto": "https://commons.wikimedia.org/wiki/Special:FilePath/Nunes_Marques%2C_February_2025_%28cropped%29.jpg?width=160",
     "foto_fonte": "https://www.wikidata.org/wiki/Q99831978",
     "artigos": 63,
-    "peso": 29.531595277035915,
+    "peso": 29.46700267339246,
     "ultima": "2026-11-19T23:56+00:00"
    },
    {
@@ -336,7 +336,7 @@
     "foto": "https://www.camara.leg.br/internet/deputado/bandep/160674.jpg",
     "foto_fonte": "https://www.camara.leg.br/deputados/160674",
     "artigos": 35,
-    "peso": 26.04396826031411,
+    "peso": 26.126970718125794,
     "ultima": "2026-11-19T21:34+00:00"
    },
    {
@@ -351,7 +351,7 @@
     "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador825.jpg",
     "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/825",
     "artigos": 33,
-    "peso": 21.896103817505885,
+    "peso": 21.97657762138146,
     "ultima": "2026-11-19T18:07:00+00:00"
    },
    {
@@ -366,7 +366,7 @@
     "foto": "https://commons.wikimedia.org/wiki/Special:FilePath/Luiz_Edson_Fachin-12-05.2015.jpg?width=160",
     "foto_fonte": "https://www.wikidata.org/wiki/Q10320705",
     "artigos": 46,
-    "peso": 20.103975927097768,
+    "peso": 20.033314534001637,
     "ultima": "2026-11-20T22:34+00:00"
    },
    {
@@ -381,7 +381,7 @@
     "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador345.jpg",
     "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/345",
     "artigos": 23,
-    "peso": 15.622052586938073,
+    "peso": 15.684478371501273,
     "ultima": "2026-11-18T16:33:00+00:00"
    },
    {
@@ -396,7 +396,7 @@
     "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador6009.jpg",
     "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/6009",
     "artigos": 21,
-    "peso": 14.263613231552155,
+    "peso": 14.320610687022901,
     "ultima": "2026-11-19T13:13:00+00:00"
    },
    {
@@ -411,7 +411,7 @@
     "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador5376.jpg",
     "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/5376",
     "artigos": 17,
-    "peso": 11.546734520780317,
+    "peso": 11.592875318066158,
     "ultima": "2026-11-17T12:00:00+00:00"
    },
    {
@@ -426,7 +426,7 @@
     "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador5012.jpg",
     "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/5012",
     "artigos": 14,
-    "peso": 9.50907548770144,
+    "peso": 9.5470737913486,
     "ultima": "2026-11-19T21:27:00+00:00"
    },
    {
@@ -441,23 +441,8 @@
     "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador4770.jpg",
     "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/4770",
     "artigos": 14,
-    "peso": 9.50907548770144,
+    "peso": 9.5470737913486,
     "ultima": "2026-11-18T17:09:00+00:00"
-   },
-   {
-    "id": "dario-carnevalli-durigan",
-    "nome": "Dario Carnevalli Durigan",
-    "nome_completo": "Dario Carnevalli Durigan",
-    "cargo": "Ministro(a) de Estado · MF",
-    "no_id": "mf",
-    "poder": "executivo",
-    "partido": null,
-    "uf": null,
-    "foto": null,
-    "foto_fonte": null,
-    "artigos": 22,
-    "peso": 9.50230467244637,
-    "ultima": "2026-11-17T18:56+00:00"
    },
    {
     "id": "omar-aziz",
@@ -471,8 +456,23 @@
     "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador5525.jpg",
     "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/5525",
     "artigos": 14,
-    "peso": 9.462542502306428,
+    "peso": 9.49684330271995,
     "ultima": "2026-10-26T12:13:00+00:00"
+   },
+   {
+    "id": "dario-carnevalli-durigan",
+    "nome": "Dario Carnevalli Durigan",
+    "nome_completo": "Dario Carnevalli Durigan",
+    "cargo": "Ministro(a) de Estado · MF",
+    "no_id": "mf",
+    "poder": "executivo",
+    "partido": null,
+    "uf": null,
+    "foto": null,
+    "foto_fonte": null,
+    "artigos": 22,
+    "peso": 9.46653321788955,
+    "ultima": "2026-11-17T18:56+00:00"
    },
    {
     "id": "esperidiao-amin",
@@ -486,7 +486,7 @@
     "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador22.jpg",
     "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/22",
     "artigos": 13,
-    "peso": 8.82985581000848,
+    "peso": 8.865139949109414,
     "ultima": "2026-11-18T17:22:00+00:00"
    },
    {
@@ -501,7 +501,7 @@
     "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador5985.jpg",
     "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/5985",
     "artigos": 13,
-    "peso": 8.82985581000848,
+    "peso": 8.865139949109414,
     "ultima": "2026-11-17T17:34:00+00:00"
    },
    {
@@ -516,7 +516,7 @@
     "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador5982.jpg",
     "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/5982",
     "artigos": 12,
-    "peso": 8.15063613231552,
+    "peso": 8.183206106870228,
     "ultima": "2026-11-19T17:23:00+00:00"
    },
    {
@@ -531,7 +531,7 @@
     "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador5352.jpg",
     "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/5352",
     "artigos": 11,
-    "peso": 7.471416454622561,
+    "peso": 7.5012722646310435,
     "ultima": "2026-10-28T14:06:00+00:00"
    },
    {
@@ -546,7 +546,7 @@
     "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador4994.jpg",
     "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/4994",
     "artigos": 11,
-    "peso": 7.4248834692275505,
+    "peso": 7.451041776002393,
     "ultima": "2026-11-19T20:36:00+00:00"
    },
    {
@@ -561,7 +561,7 @@
     "foto": null,
     "foto_fonte": null,
     "artigos": 16,
-    "peso": 7.240496018554858,
+    "peso": 7.220267268245281,
     "ultima": "2026-11-19T01:01+00:00"
    },
    {
@@ -576,7 +576,7 @@
     "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador5977.jpg",
     "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/5977",
     "artigos": 10,
-    "peso": 6.792196776929601,
+    "peso": 6.819338422391858,
     "ultima": "2026-11-17T15:08:00+00:00"
    },
    {
@@ -591,7 +591,7 @@
     "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador5917.jpg",
     "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/5917",
     "artigos": 10,
-    "peso": 6.792196776929601,
+    "peso": 6.819338422391858,
     "ultima": "2026-11-16T15:42:00+00:00"
    },
    {
@@ -606,12 +606,189 @@
     "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador475.jpg",
     "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/475",
     "artigos": 10,
-    "peso": 6.792196776929601,
+    "peso": 6.819338422391858,
     "ultima": "2026-11-09T19:58:00+00:00"
    }
   ]
  },
  "artigos": [
+  {
+   "id": "n-3f07bc0668",
+   "titulo": "Brasil fecha Mundial Júnior de Judô com bronze por equipes mistas",
+   "url": "https://agenciabrasil.ebc.com.br/esportes/noticia/2026-11/brasil-fecha-mundial-junior-de-judo-com-bronze-por-equipes-mistas",
+   "data": "2026-11-22T16:28+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "Neste domingo (22), a equipe mista do Brasil conquistou a medalha de bronze no Campeonato Mundial Júnior, realizado em Tashkent, no Uzbequistão. A conquista veio no confronto decisivo contra a Geórgia e apenas no desempate: 4 a 3 para os brasileiros. Essa foi a terceira medalha do Brasil na prova nas últimas quatro edições da competição. Em 2023, a delegação também ficou com o bronze e, em 2025, repetiu o resultado em uma disputa semelhante contra o Uzbequistão, igualmente decidida no desempate. Nas quartas de final, contra a Alemanha, Alexandre Albano II (+90kg) abriu a contagem, fazendo Dani"
+  },
+  {
+   "id": "n-a30fd6bbf3",
+   "titulo": "Mega-Sena acumula e deverá pagar 65 milhões no próximo sorteio",
+   "url": "https://agenciabrasil.ebc.com.br/geral/noticia/2026-11/mega-sena-acumula-e-devera-pagar-65-milhoes-no-proximo-sorteio",
+   "data": "2026-11-22T16:19+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [
+    "sgb",
+    "caixa",
+    "cnj"
+   ],
+   "pessoas": [],
+   "resumo": "Nenhum apostador acertou as dezenas do concurso 3.089 da Mega-Sena, sorteadas neste domingo (22), e o prêmio acumulou. De acordo com a Caixa, o próximo sorteio, que ocorrerá na próxima terça-feira (24), deverá pagar R$ 65 milhões para quem acertar os 6 números. Notícias relacionadas: IA na educação exige capacitação de professores, dizem especialistas. CNJ cria regra para corrigir registros por mortes em ações policiais. Serviço Geológico do Brasil traz retorno de R$ 14 por real investido. Os números sorteados neste domingo (22) foram 17, 18, 27, 36, 58 e 59 . Vinte e seis apostas fizeram cinc"
+  },
+  {
+   "id": "n-a4dc7bf581",
+   "titulo": "Com impasse sobre combustíveis fósseis, COP31 termina sem acordo final",
+   "url": "https://agenciabrasil.ebc.com.br/meio-ambiente/noticia/2026-11/com-impasse-sobre-combustiveis-fosseis-cop31-termina-sem-acordo-final",
+   "data": "2026-11-22T15:59+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "A 31ª Conferência das Nações Unidas sobre Mudança do Clima (COP31), realizada em Antália, na Turquia, terminou neste domingo (22) sem a elaboração de um acordo final. O impasse ocorreu em função de divergências de países produtores de petróleo sobre menções a um prazo para o fim do uso de combustíveis fósseis. Notícias relacionadas: Sociedade civil diz que COP31 poderá ser a pior da história. Mapas do caminho ainda podem voltar à decisão final da COP31. As negociações para a definição de metas para barrar a utilização de combustíveis fósseis já trilhavam o caminho da falta de consenso desde se"
+  },
+  {
+   "id": "n-8ee6825009",
+   "titulo": "Chuvas no RS afetam mais de 25 mil pessoas em 42 cidades",
+   "url": "https://agenciabrasil.ebc.com.br/meio-ambiente/noticia/2026-11/chuvas-no-rs-afetam-mais-de-25-mil-pessoas-em-42-cidades",
+   "data": "2026-11-22T15:35+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "As chuvas que atingem Rio Grande do Sul desde a sexta-feira (20) afetaram mais de 25 mil pessoas, segundo informou a Defesa Civil do estado neste domingo (22). Foram registradas 47 ocorrências em 42 municípios gaúchos. Houve registro de danos humanos ou materiais em 39 municípios. Predominaram vendavais, queda de granizo, chuvas intensas e enxurradas. No total, 25.123 pessoas foram afetadas, entre elas 19.854 desalojadas, 40 desabrigadas, 265 feridas e cinco mortes foram confirmadas. Notícias relacionadas: Após temporal, governo reconhece calamidade pública em Tupanciretã. Sobe para 4 o número"
+  },
+  {
+   "id": "n-7916b1e2e8",
+   "titulo": "Após temporal, governo reconhece calamidade pública em Tupanciretã",
+   "url": "https://agenciabrasil.ebc.com.br/meio-ambiente/noticia/2026-11/apos-temporal-governo-reconhece-calamidade-publica-em-tupancireta",
+   "data": "2026-11-22T14:53+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [],
+   "pessoas": [
+    "luiz-inacio-lula-da-silva"
+   ],
+   "resumo": "O governo federal reconheceu o estado de calamidade pública na cidade de Tupanciretã, no Rio Grande do Sul, devastada por uma tempestade , na madrugada desta sexta-feira (20). A portaria foi publicada em edição extra do Diário Oficial da União (DOU) deste sábado (21). O estado de calamidade permite a mobilização de recursos e políticas públicas específicas para situações de desastre e atendimento à população. Notícias relacionadas: Sobe para 4 o número de mortos em Tupanciretã, no Sul. Força Nacional do SUS avalia instalar posto médico em Tupanciretã. Lula presta solidariedade à cidade gaúcha "
+  },
+  {
+   "id": "n-b1436a2c49",
+   "titulo": "Boca Juniors vence Sul-Americana sobre o Atlético-MG",
+   "url": "https://agenciabrasil.ebc.com.br/esportes/noticia/2026-11/boca-juniors-vence-sul-americana-sobre-o-atletico-mg",
+   "data": "2026-11-22T14:28+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "Derrota por 2 a 0 para os argentinos frustra torcida do Galo e deixa equipe com quatro vice-campeonatos em Copas desde 2024: duas Sul-Americanas, uma Libertadores e uma Copa do Brasil. Neste sábado (21), em Barranquilla, na Colômbia, o Boca Juniors dominou a final da Copa Sul-Americana 2026 e venceu o Atlético-MG por 2 a 0. Os gols foram marcados por Ascacíbar e Merentiel. Notícias relacionadas: Brasil vence Canadá e volta à elite da Billie Jean King Cup. Dez vezes Flamengo. Flamengo empata com Palmeiras e é campeão brasileiro de 2026. Além do vice-campeonato, o resultado frustrou a torcida mi"
+  },
+  {
+   "id": "n-7cd497db6c",
+   "titulo": "Brasil vence Canadá e volta à elite da Billie Jean King Cup",
+   "url": "https://agenciabrasil.ebc.com.br/esportes/noticia/2026-11/brasil-vence-canada-e-volta-elite-da-billie-jean-king-cup",
+   "data": "2026-11-22T14:15+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "Com vitória decisiva da jovem Naná, equipe brasileira supera o Canadá e se classifica para os Qualifiers da Copa do Mundo de tênis feminino em 2027. Pela primeira vez na história, a equipe brasileira eliminou o Canadá na Billie Jean King Cup (Copa do Mundo do tênis feminino). Com o placar de 3 a 2, em Vitória (ES), o Brasil garantiu vaga na disputa dos Qualifiers da BJK Cup em 2027. Notícias relacionadas: Dez vezes Flamengo. Flamengo empata com Palmeiras e é campeão brasileiro de 2026. Brasil vence Irlanda por 2 a 1 em estreia na Copa do Mundo Sub-17. A classificação foi confirmada por Nauhany"
+  },
+  {
+   "id": "n-19e09d683f",
+   "titulo": "MEC apresenta programa Toda Matemática em evento nacional no Maranhão",
+   "url": "https://agenciabrasil.ebc.com.br/educacao/noticia/2026-11/mec-apresenta-programa-toda-matematica-em-evento-nacional-no-maranhao",
+   "data": "2026-11-22T13:23+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [
+    "mec"
+   ],
+   "pessoas": [],
+   "resumo": "Equações de 1º grau, frações, as quatro operações básicas da Matemática (adição, subtração, multiplicação e divisão), potência e quadrado perfeito, números decimais, razão, proporção, regra de três, porcentagem, grandezas e medidas, figuras geométricas e fórmulas. Brasil afora, professores encontram alunos com dificuldades de acesso a um ensino de qualidade, que não compreendem os números, têm medo de errar, acham que saber Matemática é um dom ou uma aptidão natural ou carregam o preconceito de que a disciplina é difícil - por vezes, herdado dos pais. No fim, muitos deles afirmam que não gosta"
+  },
+  {
+   "id": "n-20beab4fc1",
+   "titulo": "IA na educação exige capacitação de professores, dizem especialistas",
+   "url": "https://agenciabrasil.ebc.com.br/educacao/noticia/2026-11/ia-na-educacao-exige-capacitacao-de-professores-dizem-especial",
+   "data": "2026-11-22T12:32+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "A discussão sobre Inteligência Artificial (IA) na Matemática é um dos eixos centrais do 9º Simpósio Nacional da Formação do Professor de Matemática, evento da Associação Nacional dos Professores de Matemática na Educação Básica (ANPMat), que ocorre de 19 a 22 de novembro de 2026, em São Luís (MA). O diretor-geral do Instituto de Matemática Pura e Aplicada (IMPA), o matemático Marcelo Viana, explica que a Inteligência Artificial já é uma realidade, com enormes impactos, e avança em ritmo acelerado em todas as atividades e setores. Ele prevê que a ferramenta se tornará tão indispensável quanto o"
+  },
+  {
+   "id": "n-66335c06ab",
+   "titulo": "Serviço Geológico do Brasil traz retorno de R$ 14 por real investido",
+   "url": "https://agenciabrasil.ebc.com.br/economia/noticia/2026-11/servico-geologico-do-brasil-traz-retorno-de-r-14-por-real-investido",
+   "data": "2026-11-22T12:21+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [
+    "sgb",
+    "aneel"
+   ],
+   "pessoas": [],
+   "resumo": "A cada R$ 1 investido no Serviço Geológico do Brasil (SGB) em 2025, R$ 14,47 voltaram à sociedade em forma de lucro social. O resultado representa um retorno estimado em R$ 10,1 bilhões, segundo a quinta edição do Balanço Social da instituição , publicada neste mês. O lucro social corresponde à estimativa, em valores monetários, dos benefícios econômicos, sociais e ambientais gerados por uma instituição para a população. O levantamento considera os impactos de 22 produtos e ações desenvolvidos pelo SGB ao longo do ano. Notícias relacionadas: Aneel prevê três leilões de transmissão de energia e"
+  },
+  {
+   "id": "n-340f92d11c",
+   "titulo": "CNJ cria regra para corrigir registros por mortes em ações policiais",
+   "url": "https://agenciabrasil.ebc.com.br/justica/noticia/2026-11/cnj-cria-regra-para-corrigir-registros-por-mortes-em-acoes-policiais",
+   "data": "2026-11-22T11:36+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [
+    "cnj"
+   ],
+   "pessoas": [],
+   "resumo": "Resolução recente do Conselho Nacional de Justiça (CNJ) que determinou a inclusão da informação de que a morte ocorreu em decorrência de intervenção policial na certidão de óbito é vista como um avanço pelo professor do Departamento de Sociologia da Universidade Estadual do Rio de Janeiro (Uerj) e pesquisador do Laboratório de Análise da Violência, Ignácio Cano. Ele explica que o país tem duas fontes de informação sobre mortalidade violenta: os dados da polícia e os da saúde. Estes são baseados nas certidões de óbito. Segundo ele, a informação de que a morte ocorreu em decorrência de intervenç"
+  },
+  {
+   "id": "n-0d4aff6e92",
+   "titulo": "Deputada Talíria Petrone é ameaçada de morte e violência sexual",
+   "url": "https://agenciabrasil.ebc.com.br/direitos-humanos/noticia/2026-11/deputada-taliria-petrone-e-ameacada-de-morte-e-violencia-sexual",
+   "data": "2026-11-21T21:59+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [],
+   "pessoas": [
+    "taliria-petrone"
+   ],
+   "resumo": "A deputada federal Talíria Petrone (Psol- RJ) recebeu ameaça de morte às vésperas do Dia da Consciência Negra , lembrado nessa sexta sexta-feira (20). Segundo a parlamentar, trata-se de ameaça explícita de morte, violência sexual e extermínio político, assinada por alguém que se diz representante de um partido neofascista. Notícias relacionadas: Denúncias de racismo chegam ao maior número da série histórica . Manifestação em Porto Alegre pede união contra o racismo. 20 de novembro: saiba a origem da data e quem foi Zumbi dos Palmares . Em nota pública, a deputada relatou ainda que, durante a ú"
+  },
+  {
+   "id": "n-2f0e55f29c",
+   "titulo": "Força Nacional do SUS avalia instalar posto médico em Tupanciretã",
+   "url": "https://agenciabrasil.ebc.com.br/geral/noticia/2026-11/forca-nacional-do-sus-avalia-instalar-posto-medico-em-tupancireta",
+   "data": "2026-11-21T21:28+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "Devastada por um forte temporal na madrugada dessa sexta-feira (20), a cidade de Tupanciretã, na região central do Rio Grande do Sul, pode receber um Posto Médico Avançado (PMA) instalado pela Força Nacional do SUS. A equipe chegou à cidade com 13 profissionais, entre médicos, enfermeiros, técnicos de enfermagem, psicólogo, assistente social e especialistas em diagnóstico de emergências e gestão de incidentes. Uma das prioridades do grupo é avaliar os danos e as condições de funcionamento dos serviços de saúde do município, especialmente do Hospital de Caridade Brasilina Terra, que sofreu dano"
+  },
+  {
+   "id": "n-7b71f71d26",
+   "titulo": "Cocal dos Alves: como a matemática mudou destino de município do Piauí",
+   "url": "https://agenciabrasil.ebc.com.br/educacao/noticia/2026-11/cocal-dos-alves-como-matematica-mudou-destino-de-municipio-do-piaui",
+   "data": "2026-11-21T19:43+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "Cocal dos Alves, no sertão do Piauí , é conhecida nacionalmente como a \"capital da matemática \" pelo desempenho histórico de seus estudantes em competições científicas, principalmente na Olimpíada Brasileira de Matemática das Escolas Públicas (Obmep) . O pioneiro local no ensino desse conteúdo é o professor Antonio Cardoso do Amaral que, em 2005, era o único docente de matemática do município, a cerca de 280 km de Teresina. Naquele ano de estreia, ele levou 35 estudantes para a fase final da Obmep e eles conquistaram 17 premiações. Notícias relacionadas: Dossiê mapeia desafios do ensino de mat"
+  },
+  {
+   "id": "n-a275468a4e",
+   "titulo": "Duas reportagens da EBC ficam entre finalistas de prêmio de jornalismo",
+   "url": "https://agenciabrasil.ebc.com.br/saude/noticia/2026-11/duas-reportagens-da-ebc-ficam-entre-finalistas-de-premio-de-jornalismo",
+   "data": "2026-11-21T18:12+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [
+    "ebc"
+   ],
+   "pessoas": [],
+   "resumo": "Uma reportagem da Agência Brasil sobre vacinação de indígenas e um material especial do Caminhos da Reportagem , da TV Brasil , sobre as memórias da pandemia, foram escolhidos como finalistas da primeira edição do prêmio de jornalismo promovido pelo Conselho Federal de Enfermagem (Cofen). O resultado final será divulgado no dia 9 de dezembro, na sede da entidade. A reportagem “ Profissionais de saúde vencem desafios para vacinação em área indígena ”, da Agência Brasil , de autoria da repórter Tâmara Freire Cardoso, com edição de Maria Claudia, ficou entre as três finalistas na categoria “jorna"
+  },
+  {
+   "id": "n-71fd0ab370",
+   "titulo": "Ex-presidente Jair Bolsonaro está internado em UTI no Distrito Federal",
+   "url": "https://agenciabrasil.ebc.com.br/politica/noticia/2026-11/ex-presidente-jair-bolsonaro-esta-internado-em-uti-no-distrito-federal",
+   "data": "2026-11-21T17:55+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "O ex-presidente da República Jair Messias Bolsonaro está internado em unidade de terapia intensiva (UTI), no Hospital DF Star, em Brasília, com o diagnóstico de abdômen agudo obstrutivo. Segundo o boletim médico divulgado pelo hospital neste sábado (21), foram iniciadas medidas clínicas como hidratação, manutenção do jejum oral com suporte nutricional e passagem de sonda gástrica. “No momento encontra-se estável clinicamente, consciente, orientado e em respiração espontânea”, diz o texto. Não há previsão de alta hospitalar. Histórico O ex-presidente passou mal nesta sexta-feira (20) e foi leva"
+  },
   {
    "id": "n-630c7c3fa4",
    "titulo": "\"O sistema financeiro não vai me ensinar a dirigir o Brasil\", diz Lula",
