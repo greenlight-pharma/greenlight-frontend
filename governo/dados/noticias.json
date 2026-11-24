@@ -1,6 +1,6 @@
 {
  "meta": {
-  "gerado_em": "2026-11-23T22:07+00:00",
+  "gerado_em": "2026-11-24T20:40+00:00",
   "gerado_por": "scripts/governo/agentes/agente_noticias.py",
   "janela_dias": 90,
   "fontes": [
@@ -30,13 +30,13 @@
     "url": "https://www.gov.br/planalto/pt-br/acompanhe-o-planalto/noticias/RSS"
    }
   ],
-  "total_artigos": 4018,
-  "artigos_com_no": 1419,
-  "novos_nesta_rodada": 63,
+  "total_artigos": 4060,
+  "artigos_com_no": 1437,
+  "novos_nesta_rodada": 78,
   "artigos_por_fonte": {
-   "camara": 904,
-   "agenciabrasil": 1945,
-   "senado": 1149,
+   "camara": 908,
+   "agenciabrasil": 1985,
+   "senado": 1147,
    "stf": 7,
    "planalto": 13
   },
@@ -45,24 +45,24 @@
  },
  "resumo": [
   {
-   "texto": "A Câmara dos Deputados pode votar o projeto de lei complementar 299/26, de ajuste fiscal, já aprovado pelo Senado, que prevê corte de despesas para superávit primário de cerca de R$ 18,7 bilhões.",
-   "artigo_id": "n-293dd53625",
+   "texto": "A Câmara dos Deputados aprovou sem alterações o PLP 299/26, de ajuste fiscal para 2027, que segue para sanção presidencial.",
+   "artigo_id": "n-ae8507143a",
    "no_id": "camara"
   },
   {
-   "texto": "O Ministério da Fazenda reduziu a projeção de crescimento do PIB e elevou a estimativa de inflação para 2027 no Boletim Macrofiscal de novembro, divulgado pela Secretaria de Política Econômica.",
-   "artigo_id": "n-b3c88d6fd3",
-   "no_id": "mf"
+   "texto": "O ministro André Mendonça, do Supremo Tribunal Federal, revogou a prisão preventiva de Adroaldo Portal, ex-secretário executivo do Ministério da Previdência Social, investigado na Operação Sem Desconto.",
+   "artigo_id": "n-94874164a3",
+   "no_id": "stf"
   },
   {
-   "texto": "A Advocacia-Geral da União pediu ao Supremo Tribunal Federal a dispensa da liminar do ministro Flávio Dino que fixou regras de transição para a escala 5x2 de trabalho.",
-   "artigo_id": "n-eec9407878",
-   "no_id": "agu"
-  },
-  {
-   "texto": "A Comissão de Valores Mobiliários suspendeu o registro de companhia aberta do Banco de Brasília e de outras quatro empresas por descumprimento de obrigações periódicas por mais de 12 meses.",
+   "texto": "A Comissão de Valores Mobiliários suspendeu o registro de companhia aberta do Banco de Brasília e de outras quatro empresas por descumprimento de obrigações periódicas.",
    "artigo_id": "n-c2629d85b9",
    "no_id": "cvm"
+  },
+  {
+   "texto": "O Ministério da Educação divulgou para consulta as regras que estados e municípios devem cumprir para receber a complementação VAAR do Fundeb em 2027.",
+   "artigo_id": "n-602646a93e",
+   "no_id": "mec"
   }
  ],
  "ranking": {
@@ -70,182 +70,182 @@
    {
     "id": "tse",
     "artigos": 254,
-    "peso": 121.34341315954607,
+    "peso": 120.93500762573066,
     "ultima": "2026-11-19T21:10:00+00:00"
    },
    {
     "id": "stf",
-    "artigos": 214,
-    "peso": 97.85839337985097,
-    "ultima": "2026-11-23T18:45+00:00"
+    "artigos": 215,
+    "peso": 97.77347796253488,
+    "ultima": "2026-11-24T12:35+00:00"
    },
    {
     "id": "congresso",
-    "artigos": 139,
-    "peso": 89.84715503043364,
-    "ultima": "2026-11-23T18:32:00+00:00"
+    "artigos": 135,
+    "peso": 87.49445311257683,
+    "ultima": "2026-11-24T20:16:00+00:00"
    },
    {
     "id": "camara",
-    "artigos": 115,
-    "peso": 71.55684563082691,
-    "ultima": "2026-11-23T20:47:00+00:00"
+    "artigos": 117,
+    "peso": 72.66681277848909,
+    "ultima": "2026-11-24T20:04:00+00:00"
    },
    {
     "id": "prf",
     "artigos": 16,
-    "peso": 68.29904274215632,
+    "peso": 68.8964243427882,
     "ultima": "2026-11-21T11:56+00:00"
    },
    {
     "id": "pf",
-    "artigos": 99,
-    "peso": 43.668640085265764,
-    "ultima": "2026-11-23T18:23+00:00"
+    "artigos": 101,
+    "peso": 44.191999976239906,
+    "ultima": "2026-11-24T12:19+00:00"
    },
    {
     "id": "mec",
-    "artigos": 68,
-    "peso": 32.57417663868161,
-    "ultima": "2026-11-22T13:23+00:00"
+    "artigos": 69,
+    "peso": 32.85630473697123,
+    "ultima": "2026-11-24T17:38+00:00"
    },
    {
     "id": "caixa",
-    "artigos": 73,
-    "peso": 30.16082262210797,
-    "ultima": "2026-11-22T16:19+00:00"
+    "artigos": 74,
+    "peso": 30.27103274559199,
+    "ultima": "2026-11-24T10:02+00:00"
    },
    {
     "id": "anvisa",
-    "artigos": 67,
-    "peso": 29.58877110340822,
-    "ultima": "2026-11-23T16:17+00:00"
+    "artigos": 68,
+    "peso": 29.79615845339751,
+    "ultima": "2026-11-24T14:28+00:00"
    },
    {
     "id": "tcu",
     "artigos": 35,
-    "peso": 21.61257309575405,
+    "peso": 21.750310308002813,
     "ultima": "2026-11-19T20:59:00+00:00"
    },
    {
     "id": "ms",
-    "artigos": 41,
-    "peso": 19.991475589929415,
-    "ultima": "2026-11-18T20:52+00:00"
+    "artigos": 43,
+    "peso": 20.764921121973252,
+    "ultima": "2026-11-24T16:03+00:00"
    },
    {
     "id": "inss",
-    "artigos": 33,
-    "peso": 19.540836556328394,
-    "ultima": "2026-11-13T19:56+00:00"
+    "artigos": 35,
+    "peso": 20.40360774743514,
+    "ultima": "2026-11-24T13:54+00:00"
    },
    {
     "id": "petrobras",
-    "artigos": 41,
-    "peso": 18.084555386264125,
-    "ultima": "2026-11-23T19:01+00:00"
+    "artigos": 44,
+    "peso": 19.19445536378989,
+    "ultima": "2026-11-24T17:31+00:00"
    },
    {
     "id": "agu",
     "artigos": 43,
-    "peso": 18.052192831141866,
+    "peso": 17.88879016336561,
     "ultima": "2026-11-23T18:45+00:00"
    },
    {
     "id": "ibge",
-    "artigos": 41,
-    "peso": 17.225868923686853,
-    "ultima": "2026-11-20T09:42+00:00"
+    "artigos": 42,
+    "peso": 17.77858788340628,
+    "ultima": "2026-11-24T19:21:00+00:00"
    },
    {
     "id": "inep",
-    "artigos": 37,
-    "peso": 15.286992287917737,
-    "ultima": "2026-11-23T13:27+00:00"
+    "artigos": 38,
+    "peso": 15.544584382871532,
+    "ultima": "2026-11-24T17:38+00:00"
    },
    {
     "id": "ebc",
-    "artigos": 35,
-    "peso": 14.460668380462725,
-    "ultima": "2026-11-21T18:12+00:00"
+    "artigos": 36,
+    "peso": 14.726448362720399,
+    "ultima": "2026-11-24T14:10+00:00"
    },
    {
     "id": "senado",
     "artigos": 23,
-    "peso": 12.833157631321516,
+    "peso": 12.805000055482191,
     "ultima": "2026-11-18T22:39+00:00"
    },
    {
     "id": "anp",
     "artigos": 19,
-    "peso": 10.615683787065185,
+    "peso": 10.64842315004341,
     "ultima": "2026-11-10T12:06:00+00:00"
    },
    {
     "id": "stj",
     "artigos": 18,
-    "peso": 8.674696186693883,
+    "peso": 8.632500146831912,
     "ultima": "2026-11-12T15:40+00:00"
    },
    {
     "id": "mpf",
     "artigos": 20,
-    "peso": 8.549467895409219,
+    "peso": 8.48022593162757,
     "ultima": "2026-11-18T15:19+00:00"
-   },
-   {
-    "id": "mf",
-    "artigos": 17,
-    "peso": 8.16866849680397,
-    "ultima": "2026-11-23T19:48+00:00"
    },
    {
     "id": "aneel",
     "artigos": 16,
-    "peso": 7.755506543076464,
+    "peso": 7.740551081674018,
     "ultima": "2026-11-22T12:21+00:00"
+   },
+   {
+    "id": "cnj",
+    "artigos": 18,
+    "peso": 7.662089911476437,
+    "ultima": "2026-11-24T17:28+00:00"
+   },
+   {
+    "id": "mf",
+    "artigos": 16,
+    "peso": 7.44168535155778,
+    "ultima": "2026-11-23T19:48+00:00"
    },
    {
     "id": "bndes",
     "artigos": 13,
-    "peso": 7.370891338285281,
+    "peso": 7.371230944248054,
     "ultima": "2026-11-19T19:24+00:00"
    },
    {
-    "id": "cnj",
-    "artigos": 17,
-    "peso": 7.3099820342266995,
-    "ultima": "2026-11-22T16:19+00:00"
-   },
-   {
     "id": "inmet",
-    "artigos": 16,
-    "peso": 6.610591259640103,
-    "ultima": "2026-11-07T21:59+00:00"
+    "artigos": 17,
+    "peso": 6.954156171284633,
+    "ultima": "2026-11-24T11:04+00:00"
    },
    {
     "id": "tst",
     "artigos": 13,
-    "peso": 6.133110318686512,
+    "peso": 6.101954978776342,
     "ultima": "2026-10-28T22:36+00:00"
    },
    {
     "id": "anac",
     "artigos": 10,
-    "peso": 5.752310920081266,
+    "peso": 5.771348138898356,
     "ultima": "2026-11-19T21:00:00+00:00"
    },
    {
     "id": "anatel",
     "artigos": 11,
-    "peso": 5.3067864112315,
+    "peso": 5.283818958625209,
     "ultima": "2026-11-05T13:45+00:00"
    },
    {
-    "id": "mte",
+    "id": "cmn",
     "artigos": 12,
-    "peso": 4.957943444730077,
-    "ultima": "2026-11-19T16:28+00:00"
+    "peso": 4.9088161209068,
+    "ultima": "2026-11-24T12:02+00:00"
    }
   ],
   "pessoas": [
@@ -260,9 +260,9 @@
     "uf": null,
     "foto": "https://commons.wikimedia.org/wiki/Special:FilePath/Foto_oficial_de_Luiz_In%C3%A1cio_Lula_da_Silva_%28estreita%29.jpg?width=160",
     "foto_fonte": "https://www.wikidata.org/wiki/Q37181",
-    "artigos": 297,
-    "peso": 138.72265100043526,
-    "ultima": "2026-11-23T19:35:00+00:00"
+    "artigos": 299,
+    "peso": 138.8929627089126,
+    "ultima": "2026-11-24T20:25+00:00"
    },
    {
     "id": "flavio-bolsonaro",
@@ -276,7 +276,7 @@
     "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador5894.jpg",
     "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/5894",
     "artigos": 140,
-    "peso": 63.08765803347712,
+    "peso": 62.722917597678325,
     "ultima": "2026-11-23T18:18+00:00"
    },
    {
@@ -291,7 +291,7 @@
     "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador3830.jpg",
     "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/3830",
     "artigos": 74,
-    "peso": 46.8852115586177,
+    "peso": 47.26766606466955,
     "ultima": "2026-11-19T21:34+00:00"
    },
    {
@@ -306,7 +306,7 @@
     "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador6335.jpg",
     "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/6335",
     "artigos": 48,
-    "peso": 33.570757180156654,
+    "peso": 33.98081952920664,
     "ultima": "2026-11-19T21:14:00+00:00"
    },
    {
@@ -321,7 +321,7 @@
     "foto": "https://commons.wikimedia.org/wiki/Special:FilePath/Nunes_Marques%2C_February_2025_%28cropped%29.jpg?width=160",
     "foto_fonte": "https://www.wikidata.org/wiki/Q99831978",
     "artigos": 63,
-    "peso": 29.367267392793647,
+    "peso": 29.245147053600856,
     "ultima": "2026-11-19T23:56+00:00"
    },
    {
@@ -336,7 +336,7 @@
     "foto": "https://www.camara.leg.br/internet/deputado/bandep/160674.jpg",
     "foto_fonte": "https://www.camara.leg.br/deputados/160674",
     "artigos": 35,
-    "peso": 26.173155198569813,
+    "peso": 26.33859550212273,
     "ultima": "2026-11-19T21:34+00:00"
    },
    {
@@ -350,9 +350,9 @@
     "uf": "RS",
     "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador825.jpg",
     "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/825",
-    "artigos": 32,
-    "peso": 21.808047145052917,
-    "ultima": "2026-11-23T18:56:00+00:00"
+    "artigos": 33,
+    "peso": 22.764081966097088,
+    "ultima": "2026-11-24T19:34:00+00:00"
    },
    {
     "id": "edson-fachin",
@@ -366,7 +366,7 @@
     "foto": "https://commons.wikimedia.org/wiki/Special:FilePath/Luiz_Edson_Fachin-12-05.2015.jpg?width=160",
     "foto_fonte": "https://www.wikidata.org/wiki/Q10320705",
     "artigos": 46,
-    "peso": 19.864136334042566,
+    "peso": 19.71372565382479,
     "ultima": "2026-11-20T22:34+00:00"
    },
    {
@@ -381,7 +381,7 @@
     "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador345.jpg",
     "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/345",
     "artigos": 23,
-    "peso": 16.08598781549173,
+    "peso": 16.282476024411512,
     "ultima": "2026-11-18T16:33:00+00:00"
    },
    {
@@ -395,8 +395,8 @@
     "uf": "SP",
     "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador6009.jpg",
     "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/6009",
-    "artigos": 22,
-    "peso": 15.386597040905132,
+    "artigos": 21,
+    "peso": 14.866608544027903,
     "ultima": "2026-11-23T21:01:00+00:00"
    },
    {
@@ -411,8 +411,23 @@
     "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador5376.jpg",
     "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/5376",
     "artigos": 17,
-    "peso": 11.889643167972148,
+    "peso": 12.034873583260682,
     "ultima": "2026-11-17T12:00:00+00:00"
+   },
+   {
+    "id": "esperidiao-amin",
+    "nome": "Esperidião Amin",
+    "nome_completo": "Esperidião Amin Helou Filho",
+    "cargo": "Senador, SC",
+    "no_id": "senado",
+    "poder": "legislativo",
+    "partido": "PP",
+    "uf": "SC",
+    "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador22.jpg",
+    "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/22",
+    "artigos": 14,
+    "peso": 9.911072362685266,
+    "ultima": "2026-11-24T19:21:00+00:00"
    },
    {
     "id": "nelsinho-trad",
@@ -426,7 +441,7 @@
     "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador5985.jpg",
     "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/5985",
     "artigos": 14,
-    "peso": 9.791470844212357,
+    "peso": 9.911072362685266,
     "ultima": "2026-11-23T18:59:00+00:00"
    },
    {
@@ -441,7 +456,7 @@
     "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador5012.jpg",
     "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/5012",
     "artigos": 14,
-    "peso": 9.791470844212357,
+    "peso": 9.911072362685266,
     "ultima": "2026-11-19T21:27:00+00:00"
    },
    {
@@ -456,7 +471,7 @@
     "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador4770.jpg",
     "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/4770",
     "artigos": 14,
-    "peso": 9.791470844212357,
+    "peso": 9.911072362685266,
     "ultima": "2026-11-18T17:09:00+00:00"
    },
    {
@@ -471,23 +486,8 @@
     "foto": null,
     "foto_fonte": null,
     "artigos": 22,
-    "peso": 9.375791802864232,
+    "peso": 9.298361951778704,
     "ultima": "2026-11-17T18:56+00:00"
-   },
-   {
-    "id": "esperidiao-amin",
-    "nome": "Esperidião Amin",
-    "nome_completo": "Esperidião Amin Helou Filho",
-    "cargo": "Senador, SC",
-    "no_id": "senado",
-    "poder": "legislativo",
-    "partido": "PP",
-    "uf": "SC",
-    "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador22.jpg",
-    "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/22",
-    "artigos": 13,
-    "peso": 9.09208006962576,
-    "ultima": "2026-11-18T17:22:00+00:00"
    },
    {
     "id": "alessandro-vieira",
@@ -501,7 +501,7 @@
     "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador5982.jpg",
     "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/5982",
     "artigos": 12,
-    "peso": 8.392689295039164,
+    "peso": 8.495204882301655,
     "ultima": "2026-11-19T17:23:00+00:00"
    },
    {
@@ -516,7 +516,7 @@
     "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador5525.jpg",
     "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/5525",
     "artigos": 12,
-    "peso": 8.296007752690821,
+    "peso": 8.382678539746916,
     "ultima": "2026-10-26T12:13:00+00:00"
    },
    {
@@ -531,7 +531,7 @@
     "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador475.jpg",
     "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/475",
     "artigos": 11,
-    "peso": 7.693298520452566,
+    "peso": 7.78727114210985,
     "ultima": "2026-11-23T19:43:00+00:00"
    },
    {
@@ -546,7 +546,7 @@
     "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador4994.jpg",
     "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/4994",
     "artigos": 11,
-    "peso": 7.596616978104224,
+    "peso": 7.6747447995551115,
     "ultima": "2026-11-19T20:36:00+00:00"
    },
    {
@@ -561,7 +561,7 @@
     "foto": null,
     "foto_fonte": null,
     "artigos": 16,
-    "peso": 7.1830489013582834,
+    "peso": 7.142819621441542,
     "ultima": "2026-11-19T01:01+00:00"
    },
    {
@@ -576,7 +576,7 @@
     "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador5977.jpg",
     "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/5977",
     "artigos": 10,
-    "peso": 6.993907745865969,
+    "peso": 7.079337401918045,
     "ultima": "2026-11-17T15:08:00+00:00"
    },
    {
@@ -591,27 +591,843 @@
     "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador5917.jpg",
     "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/5917",
     "artigos": 10,
-    "peso": 6.993907745865969,
+    "peso": 7.079337401918045,
     "ultima": "2026-11-16T15:42:00+00:00"
    },
    {
-    "id": "rogerio-carvalho",
-    "nome": "Rogério Carvalho",
-    "nome_completo": "Rogério Carvalho Santos",
-    "cargo": "Senador, SE",
+    "id": "teresa-leitao",
+    "nome": "Teresa Leitão",
+    "nome_completo": "Maria Teresa Leitão de Melo",
+    "cargo": "Senadora, PE",
     "no_id": "senado",
     "poder": "legislativo",
     "partido": "PT",
-    "uf": "SE",
-    "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador5352.jpg",
-    "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/5352",
+    "uf": "PE",
+    "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador6338.jpg",
+    "foto_fonte": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/6338",
     "artigos": 10,
-    "peso": 6.993907745865969,
-    "ultima": "2026-10-28T14:06:00+00:00"
+    "peso": 7.079337401918045,
+    "ultima": "2026-10-26T20:54:00+00:00"
    }
   ]
  },
  "artigos": [
+  {
+   "id": "n-0643a07df7",
+   "titulo": "Câmara aprova medidas para garantir igualdade à população negra em emergências de saúde; acompanhe",
+   "url": "https://www.camara.leg.br/noticias/1322489-camara-aprova-medidas-para-garantir-igualdade-a-populacao-negra-em-emergencias-de-saude-acompanhe",
+   "data": "2026-11-24T20:27+00:00",
+   "fonte": "camara",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "Proposta prevê atendimento humanizado, busca ativa e dados desagregados no SUS em epidemias e calamidades; texto vai ao Senado"
+  },
+  {
+   "id": "n-b8f5f51c3a",
+   "titulo": "Lula sanciona ajuste fiscal aprovado no Congresso",
+   "url": "https://agenciabrasil.ebc.com.br/politica/noticia/2026-11/lula-sanciona-ajuste-fiscal-aprovado-no-congresso",
+   "data": "2026-11-24T20:25+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [],
+   "pessoas": [
+    "luiz-inacio-lula-da-silva"
+   ],
+   "resumo": "O presidente Luiz Inácio Lula da Silva sancionou nesta terça-feira (24) a lei que prevê ajuste fiscal nas contas públicas em 2027. O texto muda as regras fiscais para permitir ao Executivo limitar a execução de despesas a fim de alcançar as metas de superávit primário a partir de 2027. O texto passou pelo Senado na semana passada e foi aprovado pela Câmara na madrugada desta terça-feira . O texto aprovado prevê um superávit de cerca de R$ 18,7 bilhões no ano que vem. Ajuste fiscal Notícias relacionadas: Câmara aprova ajuste fiscal sem alterações; projeto segue para sanção. Economistas criticam"
+  },
+  {
+   "id": "n-8e952a7a8e",
+   "titulo": "Superlua pode ser observada nesta terça-feira; veja melhor horário",
+   "url": "https://agenciabrasil.ebc.com.br/geral/noticia/2026-11/superlua-pode-ser-observada-nesta-terca-feira-veja-melhor-horario",
+   "data": "2026-11-24T20:24+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "Nesta terça-feira (24), os brasileiros podem observar uma superlua. Pode ser vista de todo o país, mas dependerá das condições climáticas para uma melhor observação. E após o pôr do sol deverá ser o melhor momento para avistar o astro. Segundo o Observatório Nacional (ON), o instante exato da Lua Cheia foi às 11h53, no horário de Brasília, com a Lua a 360.768 km de distância da Terra. Para ser considerada uma superlua, é preciso preencher alguns critérios, entre eles, estar a uma distância menor ou igual a 360 mil km no instante da Lua Cheia, que é o critério oficial do Observatório Nacional; "
+  },
+  {
+   "id": "n-e6122b363a",
+   "titulo": "Áudio: Iluminação laranja no Congresso reforça mobilização contra violência de gênero",
+   "url": "https://www12.senado.leg.br/noticias/audios/2026/11/iluminacao-laranja-no-congresso-reforca-mobilizacao-contra-violencia-de-genero",
+   "data": "2026-11-24T20:16:00+00:00",
+   "fonte": "senado",
+   "nos": [
+    "congresso"
+   ],
+   "pessoas": [],
+   "resumo": "O Palácio do Congresso Nacional ficará iluminado de laranja nesta terça (24) e nesta quarta-feira (25), a partir das 19h, em referência ao Dia Internacional pela Eliminação da Violência contra a Mulher (celebrado em 25 de novembro) e à campanha 21 Dias de Ativismo pelo Fim da Violência contra as Mulheres. A mobilização, promovida entre 20 de novembro e 10 de dezembro no Brasil, conta com uma programação especial no Senado, que inclui seminários, rodas de conversa e ações de conscientização."
+  },
+  {
+   "id": "n-bd062d35b7",
+   "titulo": "Humberto Costa celebra aprovação do projeto de ajuste fiscal",
+   "url": "https://www12.senado.leg.br/noticias/materias/2026/11/24/humberto-costa-celebra-aprovacao-do-projeto-de-ajuste-fiscal",
+   "data": "2026-11-24T20:04:00+00:00",
+   "fonte": "senado",
+   "nos": [
+    "camara"
+   ],
+   "pessoas": [
+    "humberto-costa"
+   ],
+   "resumo": "Em pronunciamento nesta terça-feira (24), o senador Humberto Costa (PT-PE) comemorou a aprovação, pela Câmara dos Deputados, do projeto de ajuste fiscal. Segundo o parlamentar, a proposta (PLP 299/2026) permite conciliar o equilíbrio das contas públicas com a manutenção de políticas sociais. O texto foi acatado pelos deputados sem alterações em relação à versão do Senado. Sancionado pela Presidência da República já nesta terça, foi publicado em edição extra do Diário Oficial da União (DOU) como Lei Complementar 239/2026. — Temos de fazer caber no Orçamento a agenda que venceu nas urnas e de mo"
+  },
+  {
+   "id": "n-f23b32ca3e",
+   "titulo": "Câmara aprova inclusão de dados sobre raça ou cor nos prontuários do SUS; acompanhe",
+   "url": "https://www.camara.leg.br/noticias/1322481-camara-aprova-inclusao-de-dados-sobre-raca-ou-cor-nos-prontuarios-do-sus-acompanhe",
+   "data": "2026-11-24T20:04+00:00",
+   "fonte": "camara",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "A proposta altera o Estatuto da Igualdade Racial e segue para análise do Senado"
+  },
+  {
+   "id": "n-46991c5734",
+   "titulo": "Julgamento de extradição de Zambelli é adiado novamente na Itália",
+   "url": "https://agenciabrasil.ebc.com.br/justica/noticia/2026-11/julgamento-de-extraditcao-de-zambelli-e-adiado-novamente-na-italia",
+   "data": "2026-11-24T20:02+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "A Justiça da Itália adiou nesta terça-feira (24) o julgamento do novo pedido do governo brasileiro para extraditar a ex-deputada federal Carla Zambelli. O julgamento estava previsto para ser realizado na Corte de Apelação de Roma, mas foi adiado para 2 de fevereiro de 2027. O tribunal citou uma greve de advogados criminalistas para cancelar os julgamentos previstos. Notícias relacionadas: Justiça italiana adia julgamento sobre extradição de Zambelli. Corte da Itália manda refazer julgamento sobre extradição de Zambelli. O caso envolve a segunda condenação de Zambelli pelo Supremo Tribunal Fede"
+  },
+  {
+   "id": "n-c096ec0816",
+   "titulo": "Reparação para população negra precisa ser política de Estado, afirma Zenaide",
+   "url": "https://www12.senado.leg.br/noticias/materias/2026/11/24/reparacao-para-populacao-negra-precisa-ser-politica-de-estado-afirma-zenaide",
+   "data": "2026-11-24T19:59:00+00:00",
+   "fonte": "senado",
+   "nos": [],
+   "pessoas": [
+    "zenaide-maia"
+   ],
+   "resumo": "A senadora Zenaide Maia (PSD-RN) defendeu, nesta terça-feira (24), a adoção de políticas públicas permanentes voltadas à reparação histórica da população negra e ao combate às desigualdades sociais. Em pronunciamento no Plenário, a parlamentar lembrou que o Brasil foi um dos últimos países a abolir a escravidão, em 1888. Em referência ao feriado do Dia Nacional de Zumbi e da Consciência Negra, celebrado na última sexta-feira (20), Zenaide destacou que o mês de novembro convoca a sociedade para um exercício de cidadania e responsabilidade coletiva sobre o passado, o presente e o futuro do país."
+  },
+  {
+   "id": "n-4d31f4109a",
+   "titulo": "Comissão aprova projeto que permite abertura de igrejas em períodos de calamidade pública",
+   "url": "https://www.camara.leg.br/noticias/1322460-comissao-aprova-projeto-que-permite-abertura-de-igrejas-em-periodos-de-calamidade-publica",
+   "data": "2026-11-24T19:54+00:00",
+   "fonte": "camara",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "Proposta segue para análise do Senado, a menos que haja recurso para que seja votado no Plenário da Câmara"
+  },
+  {
+   "id": "n-bbd8039ad5",
+   "titulo": "Extinta na natureza, ararinha-azul nasce no zoológico de São Paulo",
+   "url": "https://agenciabrasil.ebc.com.br/meio-ambiente/noticia/2026-11/extinta-na-natureza-ararinha-azul-nasce-no-zoologico-de-sao-paulo",
+   "data": "2026-11-24T19:41+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "Uma ararinha-azul, uma das espécies de aves mais ameaçadas do planeta, nasceu no final de outubro no Zoológico de São Paulo. O filhote — uma fêmea chamada Hope —, que veio ao mundo por meio de reprodução assistida e manejo genético, foi apresentado nesta terça-feira (24) para a imprensa. Hope é a primeira ave a nascer em um zoológico no Brasil. Notícias relacionadas: Zoológico de São Paulo abre novo espaço dedicado às ararinhas-azuis. O animal nasceu com 12,4 gramas e precisou de ajuda para sair do ovo, a chamada eclosão. Hope estava mal posicionada e já havia atingido o limite do período de i"
+  },
+  {
+   "id": "n-3ed32708ea",
+   "titulo": "Paim defende votação rápida do Estatuto dos Cães e Gatos",
+   "url": "https://www12.senado.leg.br/noticias/materias/2026/11/24/paim-defende-votacao-rapida-do-estatuto-dos-caes-e-gatos",
+   "data": "2026-11-24T19:34:00+00:00",
+   "fonte": "senado",
+   "nos": [],
+   "pessoas": [
+    "paulo-paim"
+   ],
+   "resumo": "O senador Paulo Paim (PT-RS) comemorou nesta terça-feira (24) a aprovação, pela Comissão de Meio Ambiente (CMA), do projeto de lei que institui o Estatuto dos Cães e Gatos. O PL 6.191/2025, que estabelece direitos e deveres relacionados à proteção e ao bem-estar dos animais, segue agora para votação no Plenário do Senado, em regime de urgência. — O estatuto reconhece esses animais como seres sencientes, capazes de sentir dor, sofrimento, medo, prazer e afeto. Esperamos que a votação aconteça de forma urgente — afirmou Paim, em pronunciamento. O Brasil tem cerca de 160 milhões de animais de est"
+  },
+  {
+   "id": "n-8a3bcdad0a",
+   "titulo": "Chico Rodrigues comemora liberação de R$ 115 milhões para Roraima",
+   "url": "https://www12.senado.leg.br/noticias/materias/2026/11/24/chico-rodrigues-comemora-liberacao-de-r-115-milhoes-para-roraima",
+   "data": "2026-11-24T19:30:00+00:00",
+   "fonte": "senado",
+   "nos": [],
+   "pessoas": [
+    "chico-rodrigues"
+   ],
+   "resumo": "O senador Chico Rodrigues (PSB-RR) comemorou a sanção da Lei 15.549, de 2026, que determina a liberação de crédito especial de R$ 115 milhões para despesas relacionadas ao atendimento de imigrantes venezuelanos em Roraima. Em pronunciamento no Plenário nesta terça-feira (24), o sendaor afirmou que os recursos devem aliviar a pressão sobre o orçamento estadual e reforçar os serviços de educação, saúde e segurança pública. — Lógico que é necessário que o governo federal tome uma iniciativa no sentido de mitigar os efeitos dessas despesas, que são despesas recorrentes tanto na área da segurança p"
+  },
+  {
+   "id": "n-aa0a3351a8",
+   "titulo": "Pé-de-Meia começa a pagar oitava parcela de 2026 a estudantes",
+   "url": "https://agenciabrasil.ebc.com.br/educacao/noticia/2026-11/pe-de-meia-comeca-pagar-oitava-parcela-de-2026-estudantes",
+   "data": "2026-11-24T19:30+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "Os beneficiários do programa Pé-de-Meia de 2026 do ensino médio regular e da educação de jovens e adultos (EJA) que atingiram pelo menos 80% de frequência nas aulas em setembro começaram a receber, nesta segunda-feira (23), a oitava parcela do incentivo à frequência. O repasse aos estudantes do ensino médio beneficiários do Pé-de-Meia será feito até 30 de novembro, de forma escalonada, de acordo com o mês de nascimento dos estudantes. Valores Notícias relacionadas: Pé-de-Meia Universitário deve começar em 2027 para aluno do CadÚnico. A parcela é no valor de R$ 200 para o estudante do ensino re"
+  },
+  {
+   "id": "n-41da67cb17",
+   "titulo": "Áudio: Projeto amplia as atribuições dos agentes municipais e estaduais de defesa civil",
+   "url": "https://www12.senado.leg.br/noticias/audios/2026/11/projeto-amplia-as-atribuicoes-dos-agentes-municipais-e-estaduais-de-defesa-civil",
+   "data": "2026-11-24T19:29:00+00:00",
+   "fonte": "senado",
+   "nos": [],
+   "pessoas": [
+    "juninho-do-pneu",
+    "efraim-filho"
+   ],
+   "resumo": "Projeto que amplia as atribuições de estados, municípios e agentes de proteção e defesa civil está pronto para votação na Comissão de Desenvolvimento Regional e Turismo (CDR). O texto do deputado Juninho do Pneu (União-RJ) prevê equipes técnicas permanentes em municípios com mais de 50 mil habitantes. A proposta (PL 1.219/2022) recebeu relatório com voto favorável do relator, senador Efraim Filho (PL-PB)."
+  },
+  {
+   "id": "n-67cb245dae",
+   "titulo": "SC tem menor desigualdade salarial entre pretos e brancos, aponta Esperidião Amin",
+   "url": "https://www12.senado.leg.br/noticias/materias/2026/11/24/sc-tem-menor-desigualdade-salarial-entre-pretos-e-brancos-aponta-esperidiao-amin",
+   "data": "2026-11-24T19:21:00+00:00",
+   "fonte": "senado",
+   "nos": [
+    "ibge"
+   ],
+   "pessoas": [
+    "esperidiao-amin"
+   ],
+   "resumo": "O senador Esperidião Amin (PP-SC), em pronunciamento por videoconferência nesta terça-feira (24), chamou a atenção para as diferenças de remuneração entre trabalhadores de diferentes grupos raciais no Brasil. O parlamentar citou um levantamento atribuído ao Instituto Brasileiro de Geografia e Estatística (IBGE), segundo o qual seu estado, Santa Catarina, apresenta a menor desigualdade salarial entre pretos, pardos e indígenas, de um lado, e brancos e amarelos, de outro. Segundo os dados citados, a diferença de rendimentos em Santa Catarina é de pouco mais de 20%, enquanto, na unidade da Federa"
+  },
+  {
+   "id": "n-c374e5bb38",
+   "titulo": "Adiada votação de parecer da comissão especial sobre política nacional para pessoas com autismo",
+   "url": "https://www.camara.leg.br/noticias/1321696-adiada-votacao-de-parecer-da-comissao-especial-sobre-politica-nacional-para-pessoas-com-autismo",
+   "data": "2026-11-24T19:20+00:00",
+   "fonte": "camara",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "Texto consolida a legislação sobre o transtorno e assegura a continuidade de políticas públicas já conquistadas"
+  },
+  {
+   "id": "n-e08267fcd8",
+   "titulo": "Políticas de gênero e raça precisam estar na execução orçamentária, mostra debate",
+   "url": "https://www12.senado.leg.br/noticias/materias/2026/11/24/politicas-de-genero-e-raca-precisam-estar-na-execucao-orcamentaria-mostra-debate",
+   "data": "2026-11-24T19:17:00+00:00",
+   "fonte": "senado",
+   "nos": [],
+   "pessoas": [
+    "denise-pessoa"
+   ],
+   "resumo": "Apesar da inclusão das agendas de gênero e raça no planejamento dos orçamentos públicos, ainda é preciso garantir os recursos para que essas políticas sejam efetivamente executadas. Essa é a avaliação dos participantes de audiência pública desta terça-feira (24) na Comissão Mista de Orçamento (CMO), que debateu o Projeto de Lei Orçamentária Anual (PLOA) de 2027 sob as perspectivas de gênero e raça. O debate foi requerido pela deputada Denise Pessôa (PT-RS). Ela afirmou que considerar as desigualdades de gênero e raça na elaboração do Orçamento da União é necessário para orientar as políticas p"
+  },
+  {
+   "id": "n-b3dadfae33",
+   "titulo": "Avançam diretrizes para política de apoio à indústria brasileira",
+   "url": "https://www12.senado.leg.br/noticias/materias/2026/11/24/avancam-diretrizes-para-politica-de-apoio-a-industria-brasileira",
+   "data": "2026-11-24T19:17:00+00:00",
+   "fonte": "senado",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "A Comissão de Assuntos Econômicos (CAE) aprovou nesta terça-feira (24) as bases para uma futura política de reindustrialização nacional. O PL 4.133/2023 define diretrizes para a política industrial, tecnológica, de inovação e de comércio exterior brasileira, com vistas à maior competitividade e à inovação. Entre as diretrizes, estão o foco na venda internacional de produtos industrializados, com exportações de maior valor agregado, além da atenção para inteligência artificial, data centers e melhor infraestrutura logística. Os instrumentos da política deverão incluir incentivos fiscais (que re"
+  },
+  {
+   "id": "n-cf74b05d86",
+   "titulo": "Especialistas pedem mais recursos de emendas parlamentares coletivas para mulheres e igualdade racial",
+   "url": "https://www.camara.leg.br/noticias/1322458-especialistas-pedem-mais-recursos-de-emendas-parlamentares-coletivas-para-mulheres-e-igualdade-racial",
+   "data": "2026-11-24T19:12+00:00",
+   "fonte": "camara",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "Em audiência na Comissão Mista de Orçamento, participantes apontaram baixo volume de emendas e pediram melhoria na classificação dos gastos"
+  },
+  {
+   "id": "n-9afc807a87",
+   "titulo": "Falta de salas e de divulgação limita alcance da animação brasileira",
+   "url": "https://agenciabrasil.ebc.com.br/cultura/noticia/2026-11/falta-de-salas-e-de-divulgacao-limita-alcance-da-animacao-brasileira",
+   "data": "2026-11-24T19:06+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "Nos últimos anos, o cinema brasileiro voltou a ficar em evidência após o sucesso de filmes como Ainda Estou Aqui e o Agente Secreto em festivais internacionais, incluindo o Oscar. Mas para que longa-metragens brasileiros cheguem às salas de cinema existe um árduo caminho, especialmente nos casos de longa-metragens de animação. Notícias relacionadas: Festival Animage reúne mais de 280 filmes de animação no Recife. Esse cenário foi um dos temas debatidos durante o Animage Conecta, um encontro para aproximar profissionais da área do cinema de animação e que faz parte da programação da 16ª edição "
+  },
+  {
+   "id": "n-2e1e158fd9",
+   "titulo": "Áudio: Pacientes defendem tratamento facilitado no SUS para a colangite biliar primária",
+   "url": "https://www12.senado.leg.br/noticias/audios/2026/11/pacientes-defendem-tratamento-facilitado-no-sus-para-a-colangite-biliar-primaria",
+   "data": "2026-11-24T18:59:00+00:00",
+   "fonte": "senado",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "O Senado promoveu na segunda-feira (23) uma audiência pública sobre a colangite biliar primária, doença que afeta o fígado e atinge principalmente mulheres. Durante a reunião, pacientes e médicos defenderam o acesso facilitado ao diagnóstico e ao tratamento da doença no Sistema Único de Saúde (SUS). Ouça o áudio."
+  },
+  {
+   "id": "n-d78faeb5a7",
+   "titulo": "Áudio: Febraf é homenageada em sessão especial no Senado",
+   "url": "https://www12.senado.leg.br/noticias/audios/2026/11/febraf-e-homenageada-em-sessao-especial-no-senado",
+   "data": "2026-11-24T18:48:00+00:00",
+   "fonte": "senado",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "O Senado promoveu nesta terça-feira (24) uma sessão especial para comemorar os 12 anos da Federação Brasileira de Fomento Comercial, Serviços e Atividades Financeiras (Febraf). Ouça o áudio."
+  },
+  {
+   "id": "n-a9f3a3b340",
+   "titulo": "Senado celebra 12 anos da Febraf, entidade de fomento ao comércio",
+   "url": "https://www12.senado.leg.br/noticias/materias/2026/11/24/senado-celebra-12-anos-da-febraf-entidade-de-fomento-ao-comercio",
+   "data": "2026-11-24T18:37:00+00:00",
+   "fonte": "senado",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "O Senado homenageou nesta terça-feira (24), em sessão especial, os 12 anos da Federação Brasileira de Fomento Comercial, Serviços e Atividades Financeiras (Febraf). A entidade representa setores como o factoring, que antecipa às empresas, mediante desconto, o dinheiro que elas têm a receber. Segundo dirigentes da federação, o mercado de recebíveis movimentou R$ 300 bilhões em 2025, atendeu cerca de 300 mil micro, pequenas e médias empresas e sustenta 6 milhões de empregos diretos e indiretos. O presidente do Conselho de Representantes da Febraf, Luiz Lemos Leite, de 97 anos, é considerado o pi"
+  },
+  {
+   "id": "n-7dd2b5094d",
+   "titulo": "Áudio: Plenário pode votar o Estatuto dos Cães e Gatos",
+   "url": "https://www12.senado.leg.br/noticias/audios/2026/11/plenario-pode-votar-o-estatuto-dos-caes-e-gatos",
+   "data": "2026-11-24T18:33:00+00:00",
+   "fonte": "senado",
+   "nos": [],
+   "pessoas": [
+    "fabiano-contarato"
+   ],
+   "resumo": "O Plenário do Senado deve votar em regime de urgência o projeto que cria o Estatuto dos Cães e Gatos, aprovado nesta terça-feira (24) pela Comissão de Meio Ambiente (CMA). O PL 6.191/2025 tem como origem a Sugestão Legislativa 10, de 2025, encaminhada por organizações não governamentais (ONGs) e estabelece regras para garantir o bem-estar dos animais, determinando deveres para os tutores e para o poder público. O projeto também reconhece cães e gatos como seres sencientes, ou seja, capazes de sentir dor, medo, prazer e afeto. O relator, senador Fabiano Contarato (PT-ES) disse que unir as regra"
+  },
+  {
+   "id": "n-3888b2b1fd",
+   "titulo": "Relator defende proibição de atividade exclusiva de formulação de combustíveis",
+   "url": "https://www.camara.leg.br/noticias/1322388-relator-defende-proibicao-de-atividade-exclusiva-de-formulacao-de-combustiveis",
+   "data": "2026-11-24T18:29+00:00",
+   "fonte": "camara",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "Parecer ainda será votado pela Comissão de Minas e Energia"
+  },
+  {
+   "id": "n-fedba41004",
+   "titulo": "Lula lamenta falta de acordo na COP31 e pede união pelo meio ambiente",
+   "url": "https://agenciabrasil.ebc.com.br/politica/noticia/2026-11/lula-lamenta-falta-de-acordo-na-cop-31-e-pede-uniao-pelo-meio-ambiente",
+   "data": "2026-11-24T18:23+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [],
+   "pessoas": [
+    "luiz-inacio-lula-da-silva"
+   ],
+   "resumo": "O presidente Luiz Inácio Lula da Silva fez um novo apelo pela atenção do mundo às questões climáticas. Em discurso na manhã desta terça-feira (24), no Palácio do Planalto, Lula lamentou a falta de consenso no final da 31ª Conferência das Nações Unidas sobre Mudança do Clima (COP31). “O multilateralismo não sofre apenas quando as regras de convivência entre as nações são rompidas. Ele sai enfraquecido toda vez que os países se recusam a trabalhar juntos pelo bem da humanidade”, disse. Notícias relacionadas: Após temporal, governo reconhece calamidade pública em Tupanciretã. Com impasse sobre co"
+  },
+  {
+   "id": "n-091be533b5",
+   "titulo": "Cidade de SP registrou o dia mais chuvoso do mês nesta segunda-feira",
+   "url": "https://agenciabrasil.ebc.com.br/meio-ambiente/noticia/2026-11/cidade-de-sp-registrou-o-dia-mais-chuvoso-do-mes-nesta-segunda-feira",
+   "data": "2026-11-24T18:05+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "A cidade de São Paulo teve o dia mais chuvoso do mês de novembro nesta segunda-feira (23). Segundo dados do Centro de Gerenciamento de Emergências Climáticas (CGE), a capital registrou cerca de 32,8mm de chuva até as 19h. De acordo com o monitoramento do CGE, os volumes acumulados por região até as 19h foram: Zona norte - 30,3 mm, Zona sul -31,7 mm, Zona oeste - 33,1 mm, Zona leste - 48,2 mm e Centro - 58,0 mm. Notícias relacionadas: Chuvas deixam 34 desalojados e um desaparecido em São Paulo . Áreas de chuva vindas do interior atuaram com forte intensidade desde o meio da tarde e causaram ala"
+  },
+  {
+   "id": "n-8f43699a95",
+   "titulo": "TV Câmara recebe prêmio internacional com programa que promove participação e cidadania",
+   "url": "https://www.camara.leg.br/noticias/1322385-tv-camara-recebe-premio-internacional-com-programa-que-promove-participacao-e-cidadania",
+   "data": "2026-11-24T17:57+00:00",
+   "fonte": "camara",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "Emissora foi finalista em seis categorias do prêmio TAL – ALCAP Parlamentar e Judicial"
+  },
+  {
+   "id": "n-bb3415623d",
+   "titulo": "Adiada votação de parecer sobre ampliação do limite de faturamento para o MEI",
+   "url": "https://www.camara.leg.br/noticias/1321031-adiada-votacao-de-parecer-sobre-ampliacao-do-limite-de-faturamento-para-o-mei",
+   "data": "2026-11-24T17:46+00:00",
+   "fonte": "camara",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "Reunião, que seria nesta terça-feira, foi remarcada para amanhã (25)"
+  },
+  {
+   "id": "n-b1941c28f9",
+   "titulo": "Venda ilegal de canetas emagrecedoras pressiona saúde e segurança, alertam debatedores",
+   "url": "https://www.camara.leg.br/noticias/1322349-venda-ilegal-de-canetas-emagrecedoras-pressiona-saude-e-seguranca-alertam-debatedores",
+   "data": "2026-11-24T17:45+00:00",
+   "fonte": "camara",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "Especialistas alertam que a comercialização fora das farmácias rompe a cadeia de controle sanitário"
+  },
+  {
+   "id": "n-ba0d20321b",
+   "titulo": "Participantes de sessão na Câmara apontam sobrecarga sobre mulheres e defendem ampliação de políticas de cuidado",
+   "url": "https://www.camara.leg.br/noticias/1322381-participantes-de-sessao-na-camara-apontam-sobrecarga-sobre-mulheres-e-defendem-ampliacao-de-politicas-de-cuidado",
+   "data": "2026-11-24T17:39+00:00",
+   "fonte": "camara",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "Sessão solene celebrou dois anos da Política Nacional de Cuidados"
+  },
+  {
+   "id": "n-602646a93e",
+   "titulo": "MEC divulga regras para distribuição de verbas adicionais do Fundeb",
+   "url": "https://agenciabrasil.ebc.com.br/educacao/noticia/2026-11/mec-divulga-regras-para-distribuicao-de-verbas-adicionais-do-fundeb",
+   "data": "2026-11-24T17:38+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [
+    "mec",
+    "inep"
+   ],
+   "pessoas": [],
+   "resumo": "O Ministério da Educação (MEC) liberou para consulta o resultado parcial das regras que estados e municípios precisam cumprir para receber uma fatia extra de verbas federais da educação em 2027, para complementar o Valor Aluno Ano por Resultados (VAAR). O repasse é feito via Fundo de Manutenção e Desenvolvimento da Educação Básica e de Valorização dos Profissionais da Educação (Fundeb). Notícias relacionadas: Censo Escolar: resultado preliminar está disponível no site do Inep. MEC: queda do analfabetismo no Brasil é ligada a políticas na educação. Todas as 5.596 (100%) redes de ensino do país "
+  },
+  {
+   "id": "n-c83589f9c0",
+   "titulo": "Vídeo: CE debate políticas educacionais para quilombolas - 24/11/26",
+   "url": "https://www12.senado.leg.br/noticias/videos/2026/11/ao-vivo-ce-debate-politicas-educacionais-para-quilombolas-24-11-26",
+   "data": "2026-11-24T17:31:00+00:00",
+   "fonte": "senado",
+   "nos": [],
+   "pessoas": [],
+   "resumo": ""
+  },
+  {
+   "id": "n-9c7601697d",
+   "titulo": "Petrobras prevê investimentos de US$ 122 bilhões entre 2027 e 2031",
+   "url": "https://agenciabrasil.ebc.com.br/economia/noticia/2026-11/petrobras-preve-investimentos-de-us-122-bilhoes-entre-2027-e-2031",
+   "data": "2026-11-24T17:31+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [
+    "petrobras"
+   ],
+   "pessoas": [],
+   "resumo": "O Conselho de Administração da Petrobras aprovou o plano de negócios da estatal para o período de 2027 a 2031, com investimentos totais previstos de US$ 122 bilhões. Desse montante, US$ 113 bilhões são destinados a projetos da Carteira em Implantação e US$ 9 bilhões, da Carteira em Avaliação, composta por oportunidades com menor grau de maturidade. \"Esse é um plano construído com ambição e que será conduzido com responsabilidade. Isso significa disciplina de capital e rigor em cada decisão. Vamos investir em projetos que mantêm retorno positivo mesmo nos cenários mais desafiadores, todos suste"
+  },
+  {
+   "id": "n-1a7022f429",
+   "titulo": "Jurista Fabio Konder Comparato morre aos 90 anos",
+   "url": "https://agenciabrasil.ebc.com.br/justica/noticia/2026-11/jurista-fabio-konder-comparato-morre-aos-90-anos",
+   "data": "2026-11-24T17:28+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [
+    "cnj"
+   ],
+   "pessoas": [],
+   "resumo": "Referência na defesa dos direitos humanos e um dos principais juristas brasileiros, Fabio Konder Comparato faleceu na madrugada desta terça-feira (24), aos 90 anos. Professor emérito da Faculdade de Direito da Universidade de São Paulo (USP), Comparato dedicou décadas ao ensino, à pesquisa e ao aprimoramento da ciência jurídica. Ele é autor de diversas obras com relevantes contribuições ao Direito Constitucional, ao Direito Comercial e à teoria dos direitos humanos. Notícias relacionadas: CNJ cria regra para corrigir registros por mortes em ações policiais. Mulheres retomam defesa de indicação"
+  },
+  {
+   "id": "n-3531f9b82e",
+   "titulo": "Projeto proíbe propaganda eleitoral em perfis de candidatos com mais de 100 mil seguidores",
+   "url": "https://www.camara.leg.br/noticias/1321660-projeto-proibe-propaganda-eleitoral-em-perfis-de-candidatos-com-mais-de-100-mil-seguidores",
+   "data": "2026-11-24T17:23+00:00",
+   "fonte": "camara",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "Proposta está em análise na Câmara dos Deputados"
+  },
+  {
+   "id": "n-9b682b7338",
+   "titulo": "Incubadora vai apoiar empreendimentos de afroturismo no país",
+   "url": "https://agenciabrasil.ebc.com.br/direitos-humanos/noticia/2026-11/incubadora-vai-apoiar-empreendimentos-de-afroturismo-no-pais",
+   "data": "2026-11-24T17:20+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "A criação de uma incubadora para apoiar até 50 projetos de afroturismo foi anunciada nesta terça-feira (24) pela ministra da Igualdade Racial, Rachel Barros, na abertura da 3ª Conferência Global de Afroturismo, que prossegue até quarta-feira (25), na cidade do Rio de Janeiro. De acordo com a ministra, a estrutura abrange experiências culturais em territórios de matriz africana e afrodiaspórica, como rotas turísticas, hospedagem em comunidades tradicionais, turismo de base comunitária, economia criativa e manifestações culturais Notícias relacionadas: Mulheres indígenas da Amazônia trocam exper"
+  },
+  {
+   "id": "n-174c4480fd",
+   "titulo": "Projeto fixa regras de transparência para gastos do governo com publicidade digital",
+   "url": "https://www.camara.leg.br/noticias/1313444-projeto-fixa-regras-de-transparencia-para-gastos-do-governo-com-publicidade-digital",
+   "data": "2026-11-24T17:11+00:00",
+   "fonte": "camara",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "Texto está em análise na Câmara dos Deputados"
+  },
+  {
+   "id": "n-fc1920038c",
+   "titulo": "Normas para descarte de armas são aprovadas em primeiro turno na CMA",
+   "url": "https://www12.senado.leg.br/noticias/materias/2026/11/24/normas-para-descarte-de-armas-sao-aprovadas-em-primeiro-turno-na-cma",
+   "data": "2026-11-24T17:03:00+00:00",
+   "fonte": "senado",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "A Comissão de Meio Ambiente (CMA) aprovou nesta terça-feira (24), em primeiro turno, projeto que estabelece normas gerais para controle, descarte e destinação final ambientalmente adequada de produtos controlados no país, como armas. Aprovado na forma de um texto substitutivo, o PL 5.771/2025 define como produtos controlados os submetidos a controle especial do poder público, como armas de fogo, munições, explosivos e produtos químicos que possam ser utilizados na fabricação de drogas. A nova versão inclui expressamente equipamentos de proteção balística, blindagens, componentes e resíduos des"
+  },
+  {
+   "id": "n-540f7ba0df",
+   "titulo": "BCs de países de língua portuguesa criam rede de cooperação",
+   "url": "https://agenciabrasil.ebc.com.br/economia/noticia/2026-11/bcs-de-paises-de-lingua-portuguesa-criam-rede-de-cooperacao",
+   "data": "2026-11-24T16:22+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "Os bancos centrais dos países de língua portuguesa formalizaram uma rede permanente de diálogo e cooperação para ampliar a troca de conhecimento e experiências entre as instituições. A criação da Rede dos Bancos Centrais dos Países de Língua Portuguesa (Rede BCPLP) foi oficializada em 4 de novembro, durante a primeira Reunião de Governadores, realizada em Luanda, capital de Angola . O Banco Central brasileiro só divulgou a notícia nesta terça-feira (24). Notícias relacionadas: Bancos centrais do Brasil e da Europa avaliam interligar Pix com Tips. Bancos Centrais do Brasil e da China assinam ac"
+  },
+  {
+   "id": "n-789e57910f",
+   "titulo": "Cidade de São Paulo encerra transmissão de casos importados de sarampo",
+   "url": "https://agenciabrasil.ebc.com.br/saude/noticia/2026-11/cidade-de-sao-paulo-encerra-transmissao-de-casos-importados-de-sarampo",
+   "data": "2026-11-24T16:03+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [
+    "ms"
+   ],
+   "pessoas": [],
+   "resumo": "Após três meses sem novos episódios de sarampo na cidade de São Paulo, a transmissão de casos importados da doença foi considerada encerrada em 2026. A confirmação foi feita pelas gestões federal, estadual e municipal, nesta segunda-feira (23). Segundo o Ministério da Saúde, o resultado reflete a atuação coordenada do Sistema Único de Saúde (SUS) para conter a circulação do vírus e evitar a disseminação da doença no país. O ministério explicou que desde a identificação dos primeiros casos, em junho, a atuação para conter a transmissão foi integrada com as autoridades locais, incluindo intensif"
+  },
+  {
+   "id": "n-85df8c7b5f",
+   "titulo": "Projeto proíbe destruição de bens e lavouras em fiscalização rural",
+   "url": "https://www.camara.leg.br/noticias/1313861-projeto-proibe-destruicao-de-bens-e-lavouras-em-fiscalizacao-rural",
+   "data": "2026-11-24T16:03+00:00",
+   "fonte": "camara",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "A proposta está em análise na Câmara dos Deputados"
+  },
+  {
+   "id": "n-605c26c3e6",
+   "titulo": "Arrecadação federal atinge R$ 294 bilhões e bate recorde para outubro",
+   "url": "https://agenciabrasil.ebc.com.br/economia/noticia/2026-11/arrecadacao-federal-atinge-r-294-bilhoes-e-bate-recorde-para-outubro",
+   "data": "2026-11-24T15:57+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "A arrecadação das receitas federais somou R$ 293,975 bilhões em outubro deste ano, informou a Receita Federal. O valor representa aumento real de 7,28% em relação ao mesmo mês de 2025 e é o maior já registrado para meses de outubro desde o início da série histórica, em 1995. De janeiro a outubro, a arrecadação alcançou R$ 2,645 trilhões, com crescimento real de 7% na comparação com igual período do ano passado. Em valores corrigidos pela inflação, o resultado é o maior da série histórica para os dez primeiros meses do ano. Notícias relacionadas: Empresas têm até 30 de novembro para pagar prime"
+  },
+  {
+   "id": "n-46fd78cfee",
+   "titulo": "Projeto garante salário 25% maior para professor com ensino superior",
+   "url": "https://www.camara.leg.br/noticias/1313229-projeto-garante-salario-25-maior-para-professor-com-ensino-superior",
+   "data": "2026-11-24T15:56+00:00",
+   "fonte": "camara",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "Proposta está em análise na Câmara dos Deputados"
+  },
+  {
+   "id": "n-d20e2ff6ec",
+   "titulo": "Projeto fixa em 15 anos prazo de vigência para patentes de medicamentos",
+   "url": "https://www.camara.leg.br/noticias/1314031-projeto-fixa-em-15-anos-prazo-de-vigencia-para-patentes-de-medicamentos",
+   "data": "2026-11-24T15:49+00:00",
+   "fonte": "camara",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "O texto está em análise na Câmara dos Deputados"
+  },
+  {
+   "id": "n-9d0a36f2bb",
+   "titulo": "Comissão especial debate redução da maioridade penal",
+   "url": "https://www.camara.leg.br/noticias/1321906-comissao-especial-debate-reducao-da-maioridade-penal",
+   "data": "2026-11-24T14:48+00:00",
+   "fonte": "camara",
+   "nos": [],
+   "pessoas": [
+    "fred-costa",
+    "julia-zanatta",
+    "juliana-cardoso"
+   ],
+   "resumo": "Vinicius Loures / Câmara dos Deputados Audiência pública da comissão especial A comissão especial da Câmara dos Deputados que analisa a Proposta de Emenda à Constituição que reduz a maioridade penal para 16 anos (PEC 32/15) realiza audiência pública nesta quarta-feira (25) para discutir o tema. O debate, que atende a pedido das deputadas Júlia Zanatta (PL-SC) e Juliana Cardoso (PT-SP) e do deputado Fred Costa (PRD-MG), está marcado para as 14h30, no plenário 8. Veja quem foi convidado Segundo Júlia Zanatta, organizações criminosas ligadas ao tráfico de drogas e a outras atividades ilícitas têm"
+  },
+  {
+   "id": "n-463db557a6",
+   "titulo": "Anvisa determina apreensão de água mineral por falhas na fabricação",
+   "url": "https://agenciabrasil.ebc.com.br/saude/noticia/2026-11/anvisa-determina-apreensao-de-agua-mineral-por-falhas-na-fabricacao",
+   "data": "2026-11-24T14:28+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [
+    "anvisa"
+   ],
+   "pessoas": [],
+   "resumo": "A Agência Nacional de Vigilância Sanitária (Anvisa) determinou a apreensão de todos os lotes da água mineral natural da marca Pura - Fonte Estrela da Manhã. A resolução foi publicada nesta terça-feira (24) no Diário Oficial da União . Em nota, a Anvisa informou que a medida proíbe a venda, distribuição, propaganda e uso do produto, fabricado pela empresa Raio de Sol Mineração Ltda, nas seguintes apresentações: 500 mililitros; 1,5 litro; 5 litros e galão de 20 litros. Notícias relacionadas: Anvisa aprova novo medicamento para tratar câncer de mama. Anvisa manda recolher xampu anticaspa para cri"
+  },
+  {
+   "id": "n-23ac2c89c6",
+   "titulo": "ONU: 5 mulheres foram mortas por hora por parceiro ou parente em 2025",
+   "url": "https://agenciabrasil.ebc.com.br/direitos-humanos/noticia/2026-11/onu-5-mulheres-foram-mortas-por-hora-por-parceiro-ou-parente-em-2025",
+   "data": "2026-11-24T14:19+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "Quarenta e sete mil meninas e mulheres foram mortas intencionalmente em 2025 por um parceiro íntimo ou familiar – uma média de cinco mortes a cada hora ou 129 mortes por dia. O número representa 60% de um total de 78 mil feminicídios registrados no ano. Os dados foram divulgados nesta terça-feira (24) pelo Escritório das Nações Unidas sobre Drogas e Crime (UNODC) e pela Entidade das Nações Unidas para a Igualdade de Gênero e o Empoderamento das Mulheres (ONU Mulheres) . Notícias relacionadas: Polícia de São Paulo investiga feminicídio na zona leste. Lutador de jiu-jitsu é preso por tentativa d"
+  },
+  {
+   "id": "n-68f5c895eb",
+   "titulo": "Governo publica regras para jornadas especiais até a próxima semana",
+   "url": "https://agenciabrasil.ebc.com.br/economia/noticia/2026-11/governo-publica-regras-para-jornadas-especiais-ate-proxima-semana",
+   "data": "2026-11-24T14:10+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [
+    "ebc"
+   ],
+   "pessoas": [
+    "luiz-marinho"
+   ],
+   "resumo": "O ministro do Trabalho e Emprego, Luiz Marinho, disse que o governo publicará na próxima semana as portarias que vão regulamentar as jornadas especiais após a promulgação da emenda constitucional que reduziu a jornada semanal de trabalho e instituiu a escala de cinco dias de trabalho por dois de descanso (5x2). As declarações foram feitas nesta terça-feira (24) durante o programa Bom Dia, Ministro , produzido pela Empresa Brasil de Comunicação (EBC). Notícias relacionadas: Jornada 5x2: veja como ficam regras de salário, folgas e horas extras. Veja como será o cálculo da hora extra com a escala"
+  },
+  {
+   "id": "n-69e553b8d5",
+   "titulo": "INSS começa a pagar décimo terceiro salário nesta terça-feira (24)",
+   "url": "https://agenciabrasil.ebc.com.br/economia/noticia/2026-11/inss-comeca-pagar-decimo-terceiro-salario-nesta-terca-feira-24",
+   "data": "2026-11-24T13:54+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [
+    "inss"
+   ],
+   "pessoas": [],
+   "resumo": "O Instituto Nacional do Seguro Social (INSS) começa a depositar, nesta terça-feira (24), os benefícios e auxílios referentes a novembro, além da parcela única do décimo terceiro salário para quem passou a receber o abono anual depois de abril deste ano. Os depósitos seguem até o dia 7 de dezembro. Este ano, o INSS antecipou o pagamento do décimo terceiro salário para quem já recebia benefício até abril. Nesses casos, o abono anual foi pago em duas parcelas, entre o fim de abril e o início de junho. Quem obteve o direito ao benefício após esse período, receberá o valor em uma única parcela. Not"
+  },
+  {
+   "id": "n-650999f751",
+   "titulo": "Justiça marca audiência sobre morte de médicos em quiosque no Rio",
+   "url": "https://agenciabrasil.ebc.com.br/justica/noticia/2026-11/justi%C3%A7a-marca-audiencia-sobre-morte-de-medicos-em-quiosque-no-rio",
+   "data": "2026-11-24T13:28+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "A Justiça do Rio marcou para 14 de dezembro, às 13h, a continuação da audiência de instrução e julgamento do processo que apura o assassinato de três médicos em um quiosque na praia da Barra da Tijuca, em outubro de 2023. A sessão será no 2º Tribunal do Júri da Capital. Dos cinco réus, quatro seguem foragidos, entre eles Edgar Alves de Andrade, o “Doca”, apontado como um dos chefes da facção criminosa Comando Vermelho. Notícias relacionadas: Saiba quem são os médicos assassinados no Rio. PF investiga esquema de lavagem de dinheiro e fraude com criptoativos. PF faz operação contra captura e trá"
+  },
+  {
+   "id": "n-fb67b085e4",
+   "titulo": "Comissão debate influência de facções criminosas nas eleições",
+   "url": "https://www.camara.leg.br/noticias/1321283-comissao-debate-influencia-de-faccoes-criminosas-nas-eleicoes",
+   "data": "2026-11-24T13:21+00:00",
+   "fonte": "camara",
+   "nos": [],
+   "pessoas": [
+    "general-pazuello",
+    "hugo-leal"
+   ],
+   "resumo": "Depositphotos Deputados citam estudo que aponta relação entre os ciclos eleitorais e a expansão territorial e política de grupos milicianos A Comissão de Segurança Pública da Câmara dos Deputados promove audiência pública nesta quarta-feira (25) para discutir a influência das facções criminosas e milícias nas eleições em áreas de domínio territorial desses grupos. O debate foi solicitado pelos deputados General Pazuello (PL-RJ) e Hugo Leal (PSD-RJ) e está marcado para as 14 horas, em plenário a ser definido. Veja quem foi convidado De acordo com os parlamentares, o enfrentamento ao crime organ"
+  },
+  {
+   "id": "n-ca0c102c23",
+   "titulo": "Polícia de São Paulo investiga feminicídio na zona leste",
+   "url": "https://agenciabrasil.ebc.com.br/justica/noticia/2026-11/policia-de-sao-paulo-investiga-feminicidio-na-zona-leste",
+   "data": "2026-11-24T13:14+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "Uma mulher de 49 anos foi morta por seu ex-namorado, em São Paulo, nessa segunda-feira (23) na escadaria de um condomínio no Parque do Carmo, bairro que fica na zona leste da capital. Na sexta-feira (20), ela havia registrado um boletim de ocorrência e também pediu medidas protetivas de urgência na 5ª Delegacia de Defesa da Mulher (DDM Leste). Segundo informações das autoridades, Simone Maria Fernandes, mãe de três filhos, foi atingida por golpes de um instrumento perfurocortante desferidos por seu ex-namorado Fernando Martins Santana, de 50 anos . Ela foi levada com vida para o Hospital Santa"
+  },
+  {
+   "id": "n-fb94fa53c4",
+   "titulo": "Petrobras adquire participação em empresa que produz etanol",
+   "url": "https://agenciabrasil.ebc.com.br/economia/noticia/2026-11/petrobras-adquire-participacao-em-empresa-que-produz-etanol",
+   "data": "2026-11-24T12:48+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [
+    "petrobras"
+   ],
+   "pessoas": [],
+   "resumo": "O Conselho de Administração da Petrobras aprovou, nesta segunda-feira, (23), a compra de 42% de participação na Neomille S.A., empresa produtora de etanol de milho do Grupo Cerradinho . A aquisição, no valor de R$ 2,8 bilhões, prevê a atuação na produção e comercialização de combustíveis de baixo carbono, com capacidade de produção de etanol de 800 milhões de litros por ano. Notícias relacionadas: Jornada 5x2: veja como ficam regras de salário, folgas e horas extras. Câmara aprova ajuste fiscal sem alterações; projeto segue para sanção. Fazenda reduz previsão do PIB e eleva inflação para 2027."
+  },
+  {
+   "id": "n-94874164a3",
+   "titulo": "Fraudes no INSS: Mendonça manda soltar ex-número 2 da Previdência",
+   "url": "https://agenciabrasil.ebc.com.br/justica/noticia/2026-11/fraudes-no-inss-mendonca-manda-soltar-ex-numero-2-da-previdencia",
+   "data": "2026-11-24T12:35+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [
+    "inss",
+    "mps",
+    "stf"
+   ],
+   "pessoas": [],
+   "resumo": "O ministro André Mendonça, do Supremo Tribunal Federal (STF), revogou na noite dessa segunda-feira (24) a prisão preventiva de Adroaldo Portal, ex-secretário executivo do Ministério da Previdência Social. Ele foi preso em dezembro, no âmbito da Operação Sem Desconto, que apura fraudes em aposentadorias e pensões do Instituto Nacional do Seguro Social (INSS). Em razão de uma deficiência física, Portal estava preso em regime domiciliar. Agora, poderá sair de casa, mas terá que usar uma tornozeleira eletrônica e está proibido de deixar o país e manter contato com outros investigados, além de não "
+  },
+  {
+   "id": "n-646ffdd8ce",
+   "titulo": "PF investiga esquema de lavagem de dinheiro e fraude com criptoativos",
+   "url": "https://agenciabrasil.ebc.com.br/geral/noticia/2026-11/pf-investiga-esquema-de-lavagem-de-dinheiro-e-fraude-com-criptoativos",
+   "data": "2026-11-24T12:19+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [
+    "pf"
+   ],
+   "pessoas": [],
+   "resumo": "A Polícia Federal (PF) deflagrou nesta terça-feira (24) as operações Narco Azimut III, Narco Oriente e Narco Alicerce, todas com o objetivo de combater esquemas de lavagem de dinheiro , movimentação ilegal de recursos e evasão de divisas. Em nota, a corporação informou que as investigações, desdobramentos de operações anteriores , identificaram grupos que usavam empresas, transferências bancárias e criptoativos para movimentar grandes quantias de dinheiro no Brasil e no exterior. Notícias relacionadas: Operação Cash Out investiga esquema de bets e bloqueia R$ 2,3 bilhões. Operação Fronteira ap"
+  },
+  {
+   "id": "n-7077145313",
+   "titulo": "Câmara pode votar projetos sobre saúde da população negra, educação e proteção às mulheres",
+   "url": "https://www.camara.leg.br/noticias/1322208-camara-pode-votar-projetos-sobre-saude-da-populacao-negra-educacao-e-protecao-as-mulheres",
+   "data": "2026-11-24T12:04+00:00",
+   "fonte": "camara",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "A sessão está marcada para as 13h55"
+  },
+  {
+   "id": "n-5c78182e41",
+   "titulo": "Nova ferramenta do Open Finance automatizará repasses entre bancos",
+   "url": "https://agenciabrasil.ebc.com.br/economia/noticia/2026-11/nova-ferramenta-do-open-finance-automatizara-repasses-entre-bancos",
+   "data": "2026-11-24T12:02+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [
+    "cmn",
+    "cvm"
+   ],
+   "pessoas": [],
+   "resumo": "Correntistas poderão, em breve, organizar recursos mantidos em diferentes bancos, programar transferências entre contas próprias e automatizar a proteção de saldo com novas aplicações do Open Finance. A possibilidade começa a ser oferecida pela Iniciador Actions , solução lançada nesta terça-feira (24) pela companhia Iniciador para acelerar o desenvolvimento de serviços financeiros por bancos e fintechs. Notícias relacionadas: CMN e BC atualizam regras de segurança e transparência do Open Finance. CVM suspende registro do BRB e de mais quatro empresas. A ferramenta permite integrar a infraestr"
+  },
+  {
+   "id": "n-d8af282be6",
+   "titulo": "PF faz operação contra captura e tráfico de macacos-prego na Tijuca",
+   "url": "https://agenciabrasil.ebc.com.br/geral/noticia/2026-11/pf-faz-operacao-contra-captura-e-trafico-de-macacos-prego-na-tijuca",
+   "data": "2026-11-24T11:59+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [
+    "pf"
+   ],
+   "pessoas": [],
+   "resumo": "A Polícia Federal (PF) investiga um esquema de tráfico de animais silvestres envolvendo macacos-pregos-pretos (Sapajus nigritus) capturados ilegalmente do Parque Nacional da Tijuca, na cidade do Rio de Janeiro. Os agentes cumprem, nesta terça-feira (24), um mandado de busca e apreensão em São João de Meriti. De acordo com a PF, as investigações, que resultaram na ação desta terça, chamada de Operação Punch, ocorre depois da prisão de um homem em flagrante, enquanto caçava os primatas dentro da unidade de conservação federal. Notícias relacionadas: Polícia Civil prende homem que fornecia fuzis "
+  },
+  {
+   "id": "n-9e240d68ef",
+   "titulo": "MPRJ quer reverter absolvição de acusados por mortes no Ninho do Urubu",
+   "url": "https://agenciabrasil.ebc.com.br/justica/noticia/2026-11/mprj-tent-reverter-absolvicao-de-acusados-por-mortes-no-ninho-do-urubu",
+   "data": "2026-11-24T11:28+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "O Grupo de Atuação Especial de Combate ao Crime Organizado (Gaeco), do Ministério Público (MP), sustenta, nesta terça-feira (24), na Terceira Câmara Criminal do Tribunal de Justiça, o parecer que pede a condenação definitiva de sete réus pelas mortes ocorridas no Centro de Treinamento George Helal, conhecido como Ninho do Urubu, do Clube de Regatas do Flamengo, em fevereiro de 2019. A manifestação será apresentada no âmbito dos recursos de apelação contra a sentença de primeira instância que absolveu os acusados. O incêndio , que provocou a morte de dez adolescentes que integravam as categoria"
+  },
+  {
+   "id": "n-ae8507143a",
+   "titulo": "Câmara aprova ajuste fiscal sem alterações; projeto segue para sanção",
+   "url": "https://agenciabrasil.ebc.com.br/politica/noticia/2026-11/camara-aprova-ajuste-fiscal-sem-alteracoes-projeto-segue-para-sancao",
+   "data": "2026-11-24T11:22+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [
+    "camara"
+   ],
+   "pessoas": [],
+   "resumo": "A Câmara dos Deputados aprovou na madrugada desta terça-feira (24) o Projeto de Lei Complementar (PLP) 299/26 , que prevê ajuste fiscal nas contas públicas em 2027. O texto muda as regras fiscais para permitir ao Executivo limitar a execução de despesas a fim de alcançar as metas de superávit primário a partir de 2027. Com a rejeição aos destaques apresentados, a matéria foi aprovada sem alterações e será enviada à sanção presidencial, pois já passou pelo Senado na última quarta-feira (18). Notícias relacionadas: Câmara aprova texto-base do projeto de ajuste fiscal . Câmara aprova urgência par"
+  },
+  {
+   "id": "n-d8f8cfefd1",
+   "titulo": "Inmet emite aviso de grande perigo para tempestades na Região Sul",
+   "url": "https://agenciabrasil.ebc.com.br/politica/noticia/2026-11/inmet-emite-aviso-de-grande-perigo-para-tempestades-na-regiao-sul",
+   "data": "2026-11-24T11:04+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [
+    "inmet"
+   ],
+   "pessoas": [],
+   "resumo": "O noroeste do Rio Grande do Sul, o centro e oeste de Santa Catarina e as áreas sudoeste, oeste, norte e centro do Paraná estão, nesta terça-feira (24), sob o aviso vermelho de grande perigo para tempestade, segundo o Instituto Nacional de Meteorologia (Inmet) . No Sul do país, as chuvas ocorrem acompanhadas de trovoadas em grande parte da região, e a temperatura começa a diminuir no estado do Rio Grande do Sul. Entre as capitais, a mínima será de 16 °C em Porto Alegre e a máxima será de 27 °C em Florianópolis. Norte Notícias relacionadas: Chuvas no RS afetam mais de 25 mil pessoas em 42 cidade"
+  },
+  {
+   "id": "n-1087690801",
+   "titulo": "Quem transporta o Brasil: os desafios dos caminhoneiros nas rodovias",
+   "url": "https://agenciabrasil.ebc.com.br/direitos-humanos/noticia/2026-11/quem-transporta-o-brasil-os-desafios-dos-caminhoneiros-nas-rodovias",
+   "data": "2026-11-24T11:02+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "A rotina de quem vive na estrada é marcada por longas jornadas ao volante, períodos longe da família, falta de estrutura nas rodovias e dificuldades para encontrar locais adequados de descanso. Embora 70% dos caminhoneiros avaliem a própria saúde como boa ou muito boa, nove em cada dez motoristas de caminhão dirigem mais de oito horas por dia. Quatro em cada dez, ultrapassam dez horas ao volante. Os dados constam em relatório do Instituto Motiva, que traça um perfil dos caminhoneiros e busca identificar as demandas da categoria. Entre maio e junho deste ano, foram realizadas 177 entrevistas pe"
+  },
+  {
+   "id": "n-c8e902babb",
+   "titulo": "Empresas têm até 30 de novembro para pagar primeira parcela do 13º",
+   "url": "https://agenciabrasil.ebc.com.br/economia/noticia/2026-11/empresas-tem-ate-30-de-novembro-para-pagar-primeira-parcela-do-13o",
+   "data": "2026-11-24T10:37+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "Empresas e órgãos públicos têm até a próxima segunda-feira (30) para pagar a primeira parcela do décimo terceiro salário de 2026 aos trabalhadores que têm direito ao benefício. A gratificação natalina pode ser antecipada, mas não deve ultrapassar o prazo previsto na legislação. O pagamento pode ser feito em duas parcelas. A primeira corresponde, em regra, a 50% do valor total estimado do benefício, sem descontos de contribuição previdenciária ou Imposto de Renda. Já a segunda parcela deve ser depositada até 20 de dezembro, com todos os descontos devidos. Notícias relacionadas: Cerca de 95,3 mi"
+  },
+  {
+   "id": "n-f13b874c34",
+   "titulo": "Mega-Sena sorteia prêmio de R$ 65 milhões nesta terça-feira",
+   "url": "https://agenciabrasil.ebc.com.br/geral/noticia/2026-11/mega-sena-sorteia-premio-de-r-65-milhoes-nesta-terca-feira",
+   "data": "2026-11-24T10:02+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [
+    "caixa"
+   ],
+   "pessoas": [],
+   "resumo": "A Mega-Sena sorteia nesta terça-feira (24) prêmio estimado em R$ 65 milhões. As seis dezenas do concurso 3.090 serão sorteadas a partir das 21h (horário de Brasília) no Espaço da Sorte, em São Paulo. As apostas podem ser feitas até às 20h (horário de Brasília) em casas lotéricas credenciadas pela Caixa em todo o país ou pela internet, no site ou aplicativo da Caixa. A aposta simples, com seis dezenas, custa R$ 6. Notícias relacionadas: Mega da Virada: Caixa anuncia que prêmio deve superar R$ 1 bilhão. No último concurso, foram sorteados os números 17, 18, 27, 36, 58 e 59 e nenhuma aposta acert"
+  },
+  {
+   "id": "n-7cb9312b1b",
+   "titulo": "Metodologia da Abin mostra diferenças entre organizações criminosas",
+   "url": "https://agenciabrasil.ebc.com.br/justica/noticia/2026-11/metodologia-da-abin-mostra-diferencas-entre-organizacoes-criminosas",
+   "data": "2026-11-24T09:01+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [
+    "abin"
+   ],
+   "pessoas": [],
+   "resumo": "A Agência Brasileira de Inteligência (Abin) desenvolveu uma metodologia para identificar e analisar as organizações criminosas consideradas mais relevantes para a dinâmica criminal do país. Segundo a Abin, o levantamento permitiu compreender particularidades de cada organização criminosa, identificando como cada grupo atua, quais danos produz e de que forma se diferencia dos demais. Notícias relacionadas: Classificar PCC e CV como terroristas favorece o crime, diz secretário. Bolsonaro é diagnosticado com pneumonia e continuará internado. O trabalho, feito em parceria com o Fórum Brasileiro de"
+  },
+  {
+   "id": "n-6fe38326cd",
+   "titulo": "Brasil tem 31 organizações criminosas relevantes, aponta Abin",
+   "url": "https://agenciabrasil.ebc.com.br/justica/noticia/2026-11/brasil-tem-31-organizacoes-criminosas-relevantes-aponta-abin",
+   "data": "2026-11-24T09:00+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [
+    "abin"
+   ],
+   "pessoas": [],
+   "resumo": "A Agência Brasileira de Inteligência (Abin) identificou 31 organizações criminosas relevantes e 75 células estaduais em um levantamento sobre os cenários do crime organizado no Brasil. O material foi apresentado na segunda-feira (23) aos órgãos integrantes do Sistema Brasileiro de Inteligência (Sisbin). O estudo, chamado de Cenários do Crime Organizado no Brasil, aponta: Consolidação de três grupos com atuação nacional; Expansão do Comando Vermelho (CV) no Norte e Nordeste; e Crescimento do Terceiro Comando Puro (TCP) como terceira via entre os principais grupos criminosos do país. Notícias re"
+  },
+  {
+   "id": "n-7783184233",
+   "titulo": "Câmara aprova texto-base do projeto de ajuste fiscal",
+   "url": "https://agenciabrasil.ebc.com.br/politica/noticia/2026-11/camara-aprova-texto-base-do-projeto-de-ajuste-fiscal",
+   "data": "2026-11-24T01:44+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [
+    "camara"
+   ],
+   "pessoas": [
+    "mauro-benevides-filho"
+   ],
+   "resumo": "A Câmara dos Deputados aprovou na noite desta segunda-feira (23) o texto-base do projeto de lei complementar que prevê ajuste fiscal nas contas públicas em 2027. Foram 353 votos a favor, 128 contra e cinco abstenções. O relator do projeto, deputado Mauro Benevides Filho (União-CE), apresentou parecer pela aprovação do projeto sem alterações. Notícias relacionadas: Câmara aprova urgência para votação do projeto de ajuste fiscal. O projeto prevê redução de despesas para se atingir superávit primário de cerca de R$ 18,7 bilhões no ano que vem. Os deputados ainda irão discutir os destaques, que sã"
+  },
+  {
+   "id": "n-2e8988c205",
+   "titulo": "BRB diz que banco segue funcionando após suspensão da CVM",
+   "url": "https://agenciabrasil.ebc.com.br/economia/noticia/2026-11/brb-diz-que-banco-segue-funcionando-apos-suspensao-da-cvm",
+   "data": "2026-11-24T00:29+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [
+    "cvm"
+   ],
+   "pessoas": [],
+   "resumo": "Horas depois de ter tido o registro de companhia aberta suspenso pela Comissão de Valores Mobiliários (CVM), o Banco de Brasília (BRB) afirmou que continua em pleno funcionamento. Em comunicado divulgado na noite desta segunda-feira (23), a instituição reconheceu a relevância da situação e informou que a decisão da autarquia se restringe ao mercado de capitais, sem interromper as atividades bancárias. A suspensão foi determinada pela CVM devido ao descumprimento, por mais de 12 meses, das obrigações periódicas de divulgação de informações financeiras. Com a medida, o BRB fica impedido de negoc"
+  },
+  {
+   "id": "n-8642d2ea67",
+   "titulo": "Bolsonaro é diagnosticado com pneumonia e continuará internado",
+   "url": "https://agenciabrasil.ebc.com.br/saude/noticia/2026-11/bolsonaro-e-diagnosticado-com-pneumonia-e-continuara-internado",
+   "data": "2026-11-24T00:13+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [],
+   "pessoas": [],
+   "resumo": "O ex-presidente Jair Bolsonaro foi diagnosticado com pneumonia broncoaspirativa bilateral e permanecerá internado na UTI do Hospital DF Star, em Brasília. O quadro de Bolsonaro é estável. Ele está internado desde sexta-feira (20). Notícias relacionadas: Bolsonaro segue internado na UTI sem previsão de alta. Em entrevista à imprensa nesta segunda-feira (23), o cardiologista Brasil Caiado explicou que o ex-presidente passou bem a sexta-feira e o sábado. No domingo, pelo período da tarde, ele apresentou distensão abdominal, aumento das queixas de dores e baixa saturação de oxigênio, após um episó"
+  },
+  {
+   "id": "n-0dca370a3c",
+   "titulo": "Petrobras aprova pagamento de R$ 15,6 bilhões a acionistas",
+   "url": "https://agenciabrasil.ebc.com.br/economia/noticia/2026-11/petrobras-aprova-pagamento-de-r-156-bilhoes-acionistas",
+   "data": "2026-11-24T00:03+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [
+    "petrobras"
+   ],
+   "pessoas": [],
+   "resumo": "O Conselho de Administração da Petrobras, em reunião realizada nesta segunda-feira (23), aprovou o pagamento de remuneração extraordinária aos acionistas no valor de R$ 15, 6 bilhões, equivalente a R$ 1,21035949 por ação ordinária e preferencial em circulação. O montante será pago em parcela única e integralmente sob a forma de dividendos intercalares (durante o próprio exercício em curso, antes do fechamento do balanço anual da empresa). Para os detentores de ações de emissão da Petrobras negociadas na B3, a data-base será 7 de dezembro de 2026. As ações da Petrobras serão negociadas ex-direi"
+  },
+  {
+   "id": "n-a4e7890ba8",
+   "titulo": "Câmara aprova urgência para votação do projeto de ajuste fiscal",
+   "url": "https://agenciabrasil.ebc.com.br/politica/noticia/2026-11/camara-aprova-urgencia-para-votacao-do-projeto-de-ajuste-fiscal",
+   "data": "2026-11-23T22:59+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [
+    "camara"
+   ],
+   "pessoas": [],
+   "resumo": "A Câmara dos Deputados aprovou nesta segunda-feira (23) o requerimento de urgência para a votação do projeto de Lei Complementar (PLP) 299/26, que trata de medidas de ajuste fiscal das contas públicas. Foram 318 votos favoráveis, 135 contrários e seis abstenções. Com isso, o texto será votado diretamente em plenário, sem necessidade de tramitar nas comissões da casa. Os deputados agora iniciaram a discussão do projeto. Notícias relacionadas: Senado rejeita mudanças no texto e aprova ajuste fiscal do governo. Governo anuncia medidas de ajuste para economia de até R$ 60 bilhões . A urgência para"
+  },
+  {
+   "id": "n-fd42f2d970",
+   "titulo": "Saúde repassa R$ 200 milhões para maternidades filantrópicas",
+   "url": "https://agenciabrasil.ebc.com.br/saude/noticia/2026-11/saude-repassa-r-200-milhoes-para-maternidades-filantropicas",
+   "data": "2026-11-23T22:50+00:00",
+   "fonte": "agenciabrasil",
+   "nos": [
+    "ms"
+   ],
+   "pessoas": [],
+   "resumo": "O Ministério da Saúde informou ter iniciado o repasse de R$ 200 milhões a maternidades de hospitais filantrópicos que atendem pacientes do Sistema Único de Saúde (SUS). Serão beneficiadas 893 instituições. Os recursos são para ampliar o atendimento a gestantes, puérperas e recém-nascidos. De acordo com o ministério, o repasse de R$ 200 milhões será feito em parcela única ainda este ano, por meio do Fundo Nacional de Saúde (FNS), que envia para fundos estaduais, distrital e municipais. Esses são os responsáveis pela transferência para as maternidades. Notícias relacionadas: Brasil defende forta"
+  },
   {
    "id": "n-6211398cd3",
    "titulo": "Comissão aprova apoio prioritário à inovação em regiões com baixo índice de desenvolvimento socioeconômico",
@@ -46141,339 +46957,6 @@
    "nos": [],
    "pessoas": [],
    "resumo": "Para virar lei, o texto deve ser aprovado pela Câmara e pelo Senado"
-  },
-  {
-   "id": "n-6315e255e2",
-   "titulo": "Senado Verifica reforça atuação contra desinformação nas eleições deste ano",
-   "url": "https://www12.senado.leg.br/noticias/materias/2026/08/25/senado-verifica-reforca-atuacao-contra-desinformacao-nas-eleicoes-deste-ano",
-   "data": "2026-08-25T22:09:00+00:00",
-   "fonte": "senado",
-   "nos": [],
-   "pessoas": [],
-   "resumo": "A circulação de vídeos manipulados, áudios clonados, conteúdos fora de contexto e falsas denúncias torna o enfrentamento à desinformação um dos principais desafios das eleições deste ano. Com o avanço da inteligência artificial e o aumento do consumo de notícias pelas redes sociais, a produção e a disseminação de conteúdos enganosos ganharam escala, tornando mais difícil distinguir informações verdadeiras de conteúdos manipulados. Nesse cenário, garantir a integridade das eleições também significa assegurar que o cidadão tenha acesso a informações confiáveis para exercer livremente o direito a"
-  },
-  {
-   "id": "n-a0ae541f93",
-   "titulo": "Transporte gratuito no dia da eleição deve garantir acesso ao voto",
-   "url": "https://www.camara.leg.br/noticias/1300155-transporte-gratuito-no-dia-da-eleicao-deve-garantir-acesso-ao-voto",
-   "data": "2026-08-25T21:19+00:00",
-   "fonte": "camara",
-   "nos": [],
-   "pessoas": [],
-   "resumo": "Regra vale para áreas urbanas e rurais; redução do transporte público pode configurar crime eleitoral"
-  },
-  {
-   "id": "n-c87ad7c5fb",
-   "titulo": "Debatedores na CDH pedem articulação para auxiliar pessoas em situação de rua",
-   "url": "https://www12.senado.leg.br/noticias/materias/2026/08/25/debatedores-na-cdh-pedem-articulacao-para-auxiliar-pessoas-em-situacao-de-rua",
-   "data": "2026-08-25T21:04:00+00:00",
-   "fonte": "senado",
-   "nos": [],
-   "pessoas": [
-    "astronauta-marcos-pontes"
-   ],
-   "resumo": "A Comissão de Direitos Humanos (CDH) debateu nesta terça-feira (25) as condições da população em situação de rua no Brasil e as medidas necessárias para enfrentar o problema. A audiência, proposta pelo senador Astronauta Marcos Pontes (PL-SP), reuniu representantes do poder público e de organizações que atuam diretamente com essa população. Os participantes defenderam maior articulação entre áreas como moradia, saúde, assistência social, trabalho e educação e destacaram a necessidade de políticas adaptadas aos diferentes perfis das pessoas em situação de rua. Marcos Pontes lembrou a complexida"
-  },
-  {
-   "id": "n-e4ad691a9b",
-   "titulo": "MP destina R$ 7 bilhões aos exportadores enquadrados no Plano Brasil Soberano",
-   "url": "https://www12.senado.leg.br/noticias/materias/2026/08/25/mp-destina-r-7-bilhoes-aos-exportadores-enquadrados-no-plano-brasil-soberano",
-   "data": "2026-08-25T21:00:00+00:00",
-   "fonte": "senado",
-   "nos": [
-    "mf",
-    "congresso"
-   ],
-   "pessoas": [],
-   "resumo": "O Congresso Nacional vai analisar uma medida provisória que abriu crédito extraordinário de R$ 7 bilhões para financiar exportadores e seus fornecedores, desde que eles estejam enquadrados no Plano Brasil Soberano. A medida provisória (MP 1.387/2026) foi publicada no Diário Oficial da União desta terça-feira (25). Créditos extraordinários são recursos liberados pelo governo federal que não estavam no orçamento previsto e que devem ser utilizados para despesas urgentes e imprevisíveis. De acordo com a MP, os recursos ficarão sob a supervisão do Ministério da Fazenda e devem ser destinados ao fi"
-  },
-  {
-   "id": "n-e6473f1cd6",
-   "titulo": "PEC da Segurança Pública: relator na CCJ informa que vai manter texto da Câmara",
-   "url": "https://www12.senado.leg.br/noticias/materias/2026/08/25/pec-da-seguranca-publica-relator-na-ccj-informa-que-vai-manter-texto-da-camara",
-   "data": "2026-08-25T20:46:00+00:00",
-   "fonte": "senado",
-   "nos": [
-    "camara"
-   ],
-   "pessoas": [
-    "rogerio-carvalho"
-   ],
-   "resumo": "O relator da PEC da Segurança Pública (PEC 18/2025) na Comissão de Constituição e Justiça (CCJ), senador Rogério Carvalho (PT-SE), informou nesta terça-feira (25) que vai apresentar relatório favorável à aprovação da proposta da forma como foi aprovada na Câmara dos Deputados. Por meio de nota, o senador afirma que a decisão tem como objetivo “agilizar a tramitação da matéria e permitir que a reforma da segurança pública comece a valer o quanto antes para a população brasileira”. A aprovação sem alterações evita que o texto volte para nova análise da Câmara. O relator disse entender que o text"
-  },
-  {
-   "id": "n-eb747aaf78",
-   "titulo": "Frente parlamentar lança guia para regulamentação do ECA Digital",
-   "url": "https://www.camara.leg.br/noticias/1300151-frente-parlamentar-lanca-guia-para-regulamentacao-do-eca-digital",
-   "data": "2026-08-25T20:38+00:00",
-   "fonte": "camara",
-   "nos": [],
-   "pessoas": [
-    "pedro-campos"
-   ],
-   "resumo": "Joá Souza/GOVBA Guia lançado hoje pretende apoiar a implementação do ECA Digital O Instituto de Estudos para Políticas de Saúde (Ieps), o Juntô – Iniciativa Brasileira de Saúde Mental de Crianças e Adolescentes – e a Frente Parlamentar Mista para Promoção da Saúde Mental lançaram o guia “A gente usa, a gente decide”. O guia pretende apoiar a implementação do ECA Digital a partir da experiência do usuário. Foram ouvidos jovens de várias regiões do país que construíram 14 recomendações para a regulamentação da lei, como explicou o presidente da frente parlamentar, deputado Pedro Campos (PSB-PE)."
-  },
-  {
-   "id": "n-3d2224528d",
-   "titulo": "Medida provisória abre crédito de R$ 7 bilhões para exportadores afetados pelo tarifaço dos EUA",
-   "url": "https://www.camara.leg.br/noticias/1300108-medida-provisoria-abre-credito-de-r-7-bilhoes-para-exportadores-afetados-pelo-tarifaco-dos-eua",
-   "data": "2026-08-25T19:31+00:00",
-   "fonte": "camara",
-   "nos": [
-    "congresso"
-   ],
-   "pessoas": [],
-   "resumo": "Depositphotos Plano Brasil Soberano foi criado para socorrer exportadores prejudicados pelo tarifaço O Congresso Nacional analisa a Medida Provisória 1387/26, que abre crédito extraordinário de R$ 7 bilhões no Orçamento de 2026 para a oferta de financiamentos a exportadores afetados pelo tarifaço imposto pelos Estados Unidos e pelas incertezas econômicas relacionadas ao aumento dos preços do petróleo. O governo afirma que há previsão de aplicação de tarifa de importação de 25% sobre parcela relevante da pauta exportadora brasileira, bem como de tarifa adicional de 12,5% da chamada “Seção 301”."
-  },
-  {
-   "id": "n-8a097b108b",
-   "titulo": "Programa Jovem Senador anuncia tema para 2027, quando completa 15 anos",
-   "url": "https://www12.senado.leg.br/noticias/materias/2026/08/25/programa-jovem-senador-anuncia-tema-para-2027-quando-completa-15-anos",
-   "data": "2026-08-25T19:18:00+00:00",
-   "fonte": "senado",
-   "nos": [],
-   "pessoas": [],
-   "resumo": "Ao final da 14ª edição do Programa Jovem Senador e Jovem Senadora, na semana passada, o chefe do serviço responsável pela iniciativa do Senado, George Cardim, anunciou o tema do concurso de redação para 2027: “O Brasil delas: como ampliar a participação das mulheres nos espaços de poder”. Se depender dos resultados do programa deste ano, o futuro dessa participação está garantido: dos 27 estudantes selecionados, 23 eram meninas, um recorde. — O tema do concurso de 2027 quer estimular essa reflexão entre os jovens, promover o debate sobre os obstáculos ainda existentes e incentivar propostas qu"
-  },
-  {
-   "id": "n-2c270d2426",
-   "titulo": "Governo edita mais uma medida provisória com crédito extra para subsidiar combustíveis",
-   "url": "https://www.camara.leg.br/noticias/1300125-governo-edita-mais-uma-medida-provisoria-com-credito-extra-para-subsidiar-combustiveis",
-   "data": "2026-08-25T19:12+00:00",
-   "fonte": "camara",
-   "nos": [],
-   "pessoas": [],
-   "resumo": "É a oitava medida que libera crédito para tentar conter o aumento do combustível causado pela guerra no Oriente Médio"
-  },
-  {
-   "id": "n-8ad4269e69",
-   "titulo": "Ministros e especialistas apoiam fiscalização de políticas sociais do governo",
-   "url": "https://www12.senado.leg.br/noticias/materias/2026/08/25/ministros-e-especialistas-apoiam-fiscalizacao-de-politicas-sociais-do-governo",
-   "data": "2026-08-25T19:04:00+00:00",
-   "fonte": "senado",
-   "nos": [
-    "congresso"
-   ],
-   "pessoas": [],
-   "resumo": "Um projeto de lei que obriga o Congresso Nacional a fiscalizar as políticas públicas do governo federal na área social recebeu o apoio de ministros e especialistas durante audiência pública no Senado nesta terça-feira (25). O projeto (PL 4.035/2023) também cria o Mês Nacional de Combate à Desigualdade Social e de Enfrentamento à Pobreza, campanha a ser realizada anualmente em agosto. Será nesse mês que, de acordo com a proposta, o Congresso terá de analisar e fiscalizar a implantação, a melhoria e a expansão das ações sociais federais. A audiência foi promovida pela Comissão de Assuntos Sociai"
-  },
-  {
-   "id": "n-5a204ec1bf",
-   "titulo": "'Junho Vermelho': campanha de incentivo à doação de sangue agora é lei",
-   "url": "https://www.camara.leg.br/noticias/1300062-junho-vermelho-campanha-de-incentivo-a-doacao-de-sangue-agora-e-lei",
-   "data": "2026-08-25T18:56+00:00",
-   "fonte": "camara",
-   "nos": [],
-   "pessoas": [],
-   "resumo": "Divulgação/Governo de São Paulo Número de doadores no Brasil está abaixo do preconizado pela OMS As campanhas de incentivo à doação de sangue ganharam reforço com a oficialização da campanha nacional Junho Vermelho. Sancionada pela Presidência da República, a Lei 15.491/26 estimula, no mês de junho, ações direcionadas à conscientização da população sobre a importância de doar sangue. Pela norma, o poder público deverá criar e divulgar material didático, impresso ou digital, sobre a doação de sangue, bem como promover ações educativas e eventos públicos de conscientização. Durante a campanha de"
-  },
-  {
-   "id": "n-1c312d1a0d",
-   "titulo": "Eleitor deve consultar fontes confiáveis antes de escolher candidatos",
-   "url": "https://www.camara.leg.br/noticias/1300076-eleitor-deve-consultar-fontes-confiaveis-antes-de-escolher-candidatos",
-   "data": "2026-08-25T18:40+00:00",
-   "fonte": "camara",
-   "nos": [],
-   "pessoas": [],
-   "resumo": "Justiça Eleitoral e Câmara dos Deputados oferecem conteúdos sobre voto consciente, eleições e funcionamento da democracia"
-  },
-  {
-   "id": "n-e662fcf870",
-   "titulo": "Projeto pune o uso ilegal de giroflex e sirenes",
-   "url": "https://www.camara.leg.br/noticias/1295346-projeto-pune-o-uso-ilegal-de-giroflex-e-sirenes",
-   "data": "2026-08-25T18:20+00:00",
-   "fonte": "camara",
-   "nos": [],
-   "pessoas": [],
-   "resumo": "Só veículos oficiais de segurança pública, saúde, defesa civil e Forças Armadas poderão usar luzes vermelhas ou azuis com som de alerta"
-  },
-  {
-   "id": "n-ea89476557",
-   "titulo": "Projeto cria regras para proteger comunidades vizinhas de parques eólicos",
-   "url": "https://www.camara.leg.br/noticias/1295542-projeto-cria-regras-para-proteger-comunidades-vizinhas-de-parques-eolicos",
-   "data": "2026-08-25T17:30+00:00",
-   "fonte": "camara",
-   "nos": [],
-   "pessoas": [],
-   "resumo": "Objetivo é equilibrar o desenvolvimento energético com a proteção das pessoas diretamente afetadas"
-  },
-  {
-   "id": "n-346ffa0390",
-   "titulo": "Vídeo: CDH debate as condições da população em situação de rua – 25/8/26",
-   "url": "https://www12.senado.leg.br/noticias/videos/2026/08/ao-vivo-cdh-debate-as-condicoes-da-populacao-em-situacao-de-rua-2013-25-8-26",
-   "data": "2026-08-25T17:01:00+00:00",
-   "fonte": "senado",
-   "nos": [],
-   "pessoas": [],
-   "resumo": ""
-  },
-  {
-   "id": "n-7e3fd71a37",
-   "titulo": "Medida provisória prorroga suspensão de tributos para exportadores afetados por tarifas dos EUA",
-   "url": "https://www.camara.leg.br/noticias/1299980-medida-provisoria-prorroga-suspensao-de-tributos-para-exportadores-afetados-por-tarifas-dos-eua",
-   "data": "2026-08-25T16:57+00:00",
-   "fonte": "camara",
-   "nos": [],
-   "pessoas": [],
-   "resumo": "MP prorroga prazos por mais um ano e vale para as suspensões tributárias cujas datas de término estejam entre 22 de julho de 2026 e 31 de dezembro de 2026"
-  },
-  {
-   "id": "n-ddbaf3a3ec",
-   "titulo": "Projeto permite que usar o FGTS para comprar outro imóvel se o atual estiver a mais de 50 km de distância",
-   "url": "https://www.camara.leg.br/noticias/1294747-projeto-permite-que-usar-o-fgts-para-comprar-outro-imovel-se-o-atual-estiver-a-mais-de-50-km-de-distancia",
-   "data": "2026-08-25T15:58+00:00",
-   "fonte": "camara",
-   "nos": [],
-   "pessoas": [],
-   "resumo": "Hoje, o trabalhador não pode usar o fundo se já tiver um imóvel no mesmo município ou em cidades vizinhas; a Câmara dos Deputados debate a proposta"
-  },
-  {
-   "id": "n-783bf0dead",
-   "titulo": "Projeto obriga autoridades a dar transparência ao uso de jatinhos privados",
-   "url": "https://www.camara.leg.br/noticias/1296286-projeto-obriga-autoridades-a-dar-transparencia-ao-uso-de-jatinhos-privados",
-   "data": "2026-08-25T15:50+00:00",
-   "fonte": "camara",
-   "nos": [],
-   "pessoas": [],
-   "resumo": "Obrigação abrange inclusive viagens durante férias e recessos; a Câmara dos Deputados discute ao assunto"
-  },
-  {
-   "id": "n-e095ae772c",
-   "titulo": "Áudio: Universidade Federal de Viçosa completa 100 anos",
-   "url": "https://www12.senado.leg.br/noticias/audios/2026/08/universidade-federal-de-vicosa-completa-100-anos",
-   "data": "2026-08-25T15:13:00+00:00",
-   "fonte": "senado",
-   "nos": [],
-   "pessoas": [
-    "tereza-cristina"
-   ],
-   "resumo": "A Universidade Federal de Viçosa (UFV), em Minas Gerais, completa 100 anos em 28 de agosto. Hoje, a UFV reúne cerca de 20 mil estudantes e mantém cursos no campus em Viçosa e em duas outras cidades mineiras: Rio Paranaíba e Florestal. A senadora Tereza Cristina (PP-MS) celebrou o centenário da UFV, onde se formou em agronomia em 1978. Segundo a parlamentar, a instituição consolidou excelência nas ciências agrárias. Ao longo dos anos, entretanto, ampliou sua atuação para áreas como engenharia, direito e medicina, sem abrir mão da qualidade acadêmica que a caracteriza."
-  },
-  {
-   "id": "n-fd02200eee",
-   "titulo": "'Junho Vermelho': campanha de incentivo à doação de sangue agora é lei",
-   "url": "https://www12.senado.leg.br/noticias/materias/2026/08/25/junho-vermelho-campanha-de-incentivo-a-doacao-de-sangue-agora-e-lei",
-   "data": "2026-08-25T15:08:00+00:00",
-   "fonte": "senado",
-   "nos": [],
-   "pessoas": [],
-   "resumo": "As ações de incentivo à doação de sangue ganharam reforço com a oficialização da campanha nacional Junho Vermelho. Sancionada pela Presidência da República e publicada no Diário Oficial da União (DOU) desta terça-feira (25), a Lei 15.491, de 2026, estimula, no mês de junho, ações direcionadas ao incentivo e à conscientização da população sobre a importância de doar sangue. Pela norma, o poder público deverá criar e divulgar material didático, impresso ou digital, sobre a doação de sangue, bem como promover ações educativas e eventos públicos de conscientização. Durante a campanha de mobilizaçã"
-  },
-  {
-   "id": "n-78c591660b",
-   "titulo": "Áudio: Dia Nacional da Educação Infantil é celebrado nesta terça-feira",
-   "url": "https://www12.senado.leg.br/noticias/audios/2026/08/dia-nacional-da-educacao-infantil-e-celebrado-nesta-terca-feira",
-   "data": "2026-08-25T14:20:00+00:00",
-   "fonte": "senado",
-   "nos": [],
-   "pessoas": [],
-   "resumo": "Esta terça-feira (25) marca o Dia Nacional da Educação Infantil e dá início a uma semana de discussões, debates e eventos sobre o tema. A educação infantil compreende a primeira etapa da educação básica e atende crianças de até 5 anos de idade. O dia também faz referência ao nascimento de Zilda Arns, médica pediatra e sanitarista que dedicou grande parte da vida à assistência às crianças. Propostas em análise no Senado tratam de diferentes aspectos da educação infantil."
-  },
-  {
-   "id": "n-e020690cc2",
-   "titulo": "Projeto garante remédios para síndrome rara no SUS e em planos de saúde",
-   "url": "https://www.camara.leg.br/noticias/1295828-projeto-garante-remedios-para-sindrome-rara-no-sus-e-em-planos-de-saude",
-   "data": "2026-08-25T14:17+00:00",
-   "fonte": "camara",
-   "nos": [],
-   "pessoas": [],
-   "resumo": "Para virar lei, o texto deve ser aprovado pela Câmara e pelo Senado"
-  },
-  {
-   "id": "n-d9ce5cf5a7",
-   "titulo": "MP libera R$ 3,15 bi de subsídios para produzir e importar diesel e gasolina",
-   "url": "https://www12.senado.leg.br/noticias/materias/2026/08/25/mp-libera-r-3-15-bi-para-beneficios-ligados-ao-diesel-e-a-gasolina",
-   "data": "2026-08-25T14:14:00+00:00",
-   "fonte": "senado",
-   "nos": [
-    "congresso"
-   ],
-   "pessoas": [],
-   "resumo": "O Congresso Nacional vai analisar a MP 1.388/2026, décima medida provisória editada pelo Executivo desde março visando conter o impacto do conflito no Oriente Médio sobre os preços da gasolina, do diesel, do gás de cozinha e da querosene de aviação. A MP, publicada no Diário Oficial da União nesta terça-feira (25), libera R$ 3,152 bilhões como subvenção a produtores e importadores de combustíveis. Desse total, R$ 2,552 bilhões são para produção e importação de óleo diesel de uso rodoviário, e R$ 600 milhões para combustíveis derivados do petróleo em geral. Na exposição de motivos, o governo at"
-  },
-  {
-   "id": "n-670ea3ea90",
-   "titulo": "MP prorroga suspensão de tributos para exportadores afetados por tarifas dos EUA",
-   "url": "https://www12.senado.leg.br/noticias/materias/2026/08/25/mp-prorroga-suspensao-de-tributos-para-exportadores-afetados-por-tarifas-dos-eua",
-   "data": "2026-08-25T14:02:00+00:00",
-   "fonte": "senado",
-   "nos": [],
-   "pessoas": [],
-   "resumo": "Uma medida provisória publicada nesta terça-feira (25) prorroga, por até um ano, os prazos de suspensão de tributos para empresas exportadoras prejudicadas pelas novas tarifas impostas pelos Estados Unidos aos produtos brasileiros. A MP alcança empresas beneficiárias do regime aduaneiro especial conhecido como drawback suspensão. De acordo com a MP 1.386/2026, para obter a prorrogação, a empresa deverá comprovar que as tarifas adicionais impostas pelos Estados Unidos prejudicaram o cumprimento do compromisso de exportação assumido no regime. O benefício vale para atos concessórios com prazo fi"
-  },
-  {
-   "id": "n-82a203cc83",
-   "titulo": "Senado firma parceria com o Movimento Pela Vida das Mulheres",
-   "url": "https://www12.senado.leg.br/noticias/materias/2026/08/25/senado-firma-parceria-com-o-movimento-pela-vida-das-mulheres",
-   "data": "2026-08-25T13:20:00+00:00",
-   "fonte": "senado",
-   "nos": [],
-   "pessoas": [],
-   "resumo": "O Senado é um dos parceiros do Movimento Pela Vida das Mulheres, criado durante o Agosto Lilás, campanha que destaca a importância da prevenção e do enfrentamento à violência doméstica e familiar contra a mulher. O movimento é resultado da parceria entre empresas, organizações da sociedade civil e o poder público. O movimento lançou a campanha Somos Maiores que a Violência Contra as Mulheres, com o objetivo de conscientizar a sociedade sobre a responsabilidade coletiva no combate a esse tipo de violência. De acordo com o Pela Vida das Mulheres, é necessária uma mobilização permanente contra a "
-  },
-  {
-   "id": "n-f8ba1c136c",
-   "titulo": "Vídeo: CAS debate criar mês de combate à desigualdade social – 25/8/26",
-   "url": "https://www12.senado.leg.br/noticias/videos/2026/08/ao-vivo-cas-debate-criar-mes-de-combate-a-desigualdade-social-2013-25-8-26",
-   "data": "2026-08-25T13:02:00+00:00",
-   "fonte": "senado",
-   "nos": [],
-   "pessoas": [],
-   "resumo": ""
-  },
-  {
-   "id": "n-485883388a",
-   "titulo": "Projeto garante a advogado acesso a documentos de órgãos públicos",
-   "url": "https://www.camara.leg.br/noticias/1299481-projeto-garante-a-advogado-acesso-a-documentos-de-orgaos-publicos",
-   "data": "2026-08-25T12:12+00:00",
-   "fonte": "camara",
-   "nos": [],
-   "pessoas": [],
-   "resumo": "Texto está em análise na Câmara dos Deputados"
-  },
-  {
-   "id": "n-cc13d7970c",
-   "titulo": "Áudio: CCJ analisa plano de ações para zerar desmatamento",
-   "url": "https://www12.senado.leg.br/noticias/audios/2026/08/ccj-analisa-plano-de-acoes-para-zerar-desmatamento",
-   "data": "2026-08-25T12:06:00+00:00",
-   "fonte": "senado",
-   "nos": [],
-   "pessoas": [],
-   "resumo": "A Comissão de Constituição e Justiça (CCJ) analisa projeto de lei que inclui na Política Nacional sobre Mudança do Clima o Mapa do Caminho da Transição para a Economia de Baixo Carbono e o Desmatamento Zero. O PL 6.616/2025 prevê financiamento de tecnologias limpas e fiscalização ambiental. O climatologista Carlos Nobre, referência mundial nos estudos sobre o impacto do aquecimento global na Amazônia, defende a restauração em larga escala dos biomas brasileiros."
-  },
-  {
-   "id": "n-0ad3af2a4e",
-   "titulo": "Vídeo: Crianças apresentam concerto de violino na rampa do Congresso",
-   "url": "https://www12.senado.leg.br/noticias/videos/2026/08/criancas-apresentam-concerto-de-violino-na-rampa-do-congresso",
-   "data": "2026-08-25T11:58:00+00:00",
-   "fonte": "senado",
-   "nos": [
-    "congresso"
-   ],
-   "pessoas": [],
-   "resumo": "Alunos do Colégio Doman School, de Brasília, levaram música ao Congresso Nacional na segunda-feira (24). As crianças participaram de um concerto de violino realizado na rampa do Congresso em uma em homenagem à democracia. A apresentação uniu arte, educação e cultura."
-  },
-  {
-   "id": "n-3db2359dc5",
-   "titulo": "Áudio: Isenção para marinha mercante no Norte e Nordeste deve ser votada este ano",
-   "url": "https://www12.senado.leg.br/noticias/audios/2026/08/isencao-para-marinha-mercante-no-norte-e-nordeste-deve-ser-votada-este-ano",
-   "data": "2026-08-25T11:39:00+00:00",
-   "fonte": "senado",
-   "nos": [
-    "camara"
-   ],
-   "pessoas": [],
-   "resumo": "O Senado deve votar ainda este ano um projeto de lei complementar que prorroga até 8 de janeiro de 2032 a isenção do Adicional ao Frete para a Renovação da Marinha Mercante, quando a origem ou o destino for um porto das regiões Norte ou Nordeste (PLP 80/2026). Essa taxa afeta o custo do transporte de mercadorias em navegação tanto pela costa brasileira, quanto no transporte realizado em rios e lagos. O texto já foi aprovado pela Câmara dos Deputados."
-  },
-  {
-   "id": "n-f96f187a04",
-   "titulo": "Projeto reforça validade de mensagens compartilhadas como prova",
-   "url": "https://www.camara.leg.br/noticias/1299789-projeto-reforca-validade-de-mensagens-compartilhadas-como-prova",
-   "data": "2026-08-25T10:54+00:00",
-   "fonte": "camara",
-   "nos": [],
-   "pessoas": [],
-   "resumo": "Proposta está em análise na Câmara dos Deputados"
   }
  ]
 }
